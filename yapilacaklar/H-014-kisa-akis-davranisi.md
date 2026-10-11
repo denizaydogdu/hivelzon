@@ -16,3 +16,4 @@ Akış otomatik oynasın ama sessiz başlasın; mobil veride düşük kalite var
 
 ## Notlar
 2026-10-11: `docs/SARTNAME.md` ve `docs/IS-PLANI.md` karşılaştırmasından açıldı.
+2026-10-11 (`ICERIK-MIMARISI.md` §6.5, K-15): Öneri: her 4–5 klipte bir quiz kartı, yaklaşık 10 klipte bir mola kartı. 13–17 yaş için günlük akış sınırı varsayılan 20 dk. Beğeni sayısı ve yorum gösterilmesin.

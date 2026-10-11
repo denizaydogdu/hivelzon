@@ -16,3 +16,4 @@ WishSay'deki uygulama içi yönetici rolü deseni kullanılsın (plan §9.4). Pa
 
 ## Notlar
 2026-10-11: `docs/SARTNAME.md` ve `docs/IS-PLANI.md` karşılaştırmasından açıldı.
+2026-10-11 (`ICERIK-MIMARISI.md` §9.1): Araştırmanın önerisi: içerik git'te tutulur (`icerik/`), `content-lint` ile doğrulanır, içe aktarılır ve ince bir Spring ekranında onaylanır, zamanlanır ya da kaldırılır. Headless CMS MVP için gereksiz. İleride dışarıdan editör gelirse Directus değerlendirilebilir.

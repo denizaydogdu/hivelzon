@@ -1,0 +1,29 @@
+# H-027: Kelime listesi ve içerik lisanslarının doğrulanması
+
+- **Durum:** Yapılacak
+- **Tür:** Araştırma (kodsuz) + hukuk
+- **Öncelik:** Yüksek (ilk içerik yayınından önce bitmeli)
+- **Bağımlılık:** —
+
+## Amaç
+Müfredat omurgasında kullanılacak kaynakların ticari, ücretsiz bir uygulamada yasal olarak kullanılabildiğini birincil kaynaktan doğrulamak.
+
+## Kapsam
+- **CEFR-J Wordlist ve Grammar Profile:** cefr-j.org'daki resmî kullanım koşulları ve güncel sürüm (1.5 mi, 1.6 mı?).
+- **Octanove C1/C2 ve NGSL/NAWL:** CC BY-SA yükümlülükleri. Liste uygulamaya gömülürse share-alike koşulu doğar.
+- **English Vocabulary Profile ve English Grammar Profile:** Ticari kullanım koşulları Cambridge'e yazılı olarak sorulur.
+- **Yardımcı araçlar:** CVLA, cefrpy (Google Ngram verisinin lisansı) ve Text Inspector API'nin otomatik ve ticari kullanım koşulları.
+- **Testler:** VST/VLT maddelerinin ticari kullanımı. Gerekirse yazarlardan izin istenir.
+- **Hukuk:** Referans listelerdeki seviyeleri sistematik biçimde kopyalamanın veritabanı hakkına takılıp takılmadığı.
+- **MEB:** Resmî İngilizce dersi programı metniyle eşleme kontrolü.
+
+## Kabul kriterleri
+- Her kaynak için şunlar `docs/` altında bir lisans raporuna yazılmış: lisans metninin bağlantısı, kontrol tarihi, "kullanılabilir / yalnızca referans / kullanılmaz" kararı ve atıf metni.
+- Uygulamanın "Lisanslar" ekranı için atıf listesi hazır.
+- Hukuki görüş gereken maddeler kullanıcıya iletilmiş.
+
+## Kaynak
+`docs/ICERIK-MIMARISI.md` §3.1, §12
+
+## Notlar
+2026-10-11: Web araştırması (5 kol) ve kullanıcının içerik stratejisi belgesinden açıldı. Ayrıntı: `docs/ICERIK-MIMARISI.md`.

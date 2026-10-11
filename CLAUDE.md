@@ -32,6 +32,8 @@ Ayrıntı: `docs/IS-PLANI.md` §10.
 | `CLAUDE.md` (bu dosya) | Bağlayıcı çalışma kuralları |
 | `docs/IS-PLANI.md` | İş ve ürün planı; kullanıcı onayı bekliyor (H-001) |
 | `docs/SARTNAME.md` | Ayrıntılı ürün, teknik mimari ve uygulama şartnamesi: ekranlar, veri modeli, API taslağı, test stratejisi, MVP kabul kriterleri |
+| `docs/ICERIK-MIMARISI.md` | İçerik mimarisi sentezi (web araştırması + içerik stratejisi): müfredat ve lisanslar, formatlar, ekranlar, seviye takibi, yayın hattı. Kararlar H-026'da bekliyor |
+| `docs/ICERIK-STRATEJISI.md` | Kullanıcının içerik stratejisi belgesi (olduğu gibi). Ünite listeleri ve beceri matrisi burada |
 | `yapilacaklar/IS-SIRASI.md` | Güncel durum ve sıra |
 
 - Şartnamedeki etiketler: **[KARAR]** onaysız değişmez. **[ARAŞTIRMA]** rakiplerin kamuya açık iddiasıdır ve doğrulanmadan ürün kararı sayılmaz. **[ÖNERİ]** plan onayında karara bağlanır.

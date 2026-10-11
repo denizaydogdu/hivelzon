@@ -16,3 +16,4 @@ Medya nesne depolamada tutulsun ve CDN üzerinden sunulsun; PostgreSQL'de blob t
 
 ## Notlar
 2026-10-11: `docs/SARTNAME.md` ve `docs/IS-PLANI.md` karşılaştırmasından açıldı.
+2026-10-11 (`ICERIK-MIMARISI.md` §9.5): Araştırmanın önerisi Bunny Stream; kaba maliyet 10 bin MAU'da ayda yaklaşık 17–35 USD. `VideoHostingPort` adaptörüyle kullanılır, böylece R2'ye geçiş kolay olur. CDN kullanıcı IP'lerini işlediği için KVKK yurt dışı aktarım bildirimi gerekir.
