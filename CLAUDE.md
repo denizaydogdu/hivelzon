@@ -5,7 +5,7 @@
 - Gelir modeli: tamamen ücretsiz.
 - Alan adı ileride `hi.velzon.tr`; şimdilik web yok.
 
-> **Durum:** Planlama. **Kullanıcı planı onaylamadan kod yazılmaz.** Plan: `docs/IS-PLANI.md`.
+> **Durum:** Planlama. **Kullanıcı planı onaylamadan kod yazılmaz.** Plan: `docs/IS-PLANI.md`. Ayrıntılı gereksinimler: `docs/SARTNAME.md` (taslak 0.1, 2026-10-11). Plan onayına kadar migration, dış servis çağrısı, Higgsfield üretimi ve yayın da yapılmaz.
 
 **Karışmasın:** Velzon'un genel Higgsfield görsel/video atölyesi bu klasör değildir; `~/Dev/velzon-gorsel` altındadır (ayrı oturum). HiVelzon kendi içeriği için Higgsfield'ı **buradan doğrudan** kullanır (bkz. "Higgsfield ile görsel, video ve ses üretimi"). WishSay ayrı bir projedir: `~/Dev/wishsay`. Hazır video boru hattı kodu `~/Dev/videoGenerator` altındadır (bkz. "videoGenerator projesinden yararlanma").
 
@@ -24,6 +24,54 @@ WishSay ile aynı: Flutter + Spring Boot 4 + PostgreSQL. WishSay'den yeniden kul
 - iş takip düzeni.
 
 Ayrıntı: `docs/IS-PLANI.md` §10.
+
+## Belgeler ve öncelik sırası
+
+| Belge | Rolü |
+|---|---|
+| `CLAUDE.md` (bu dosya) | Bağlayıcı çalışma kuralları |
+| `docs/IS-PLANI.md` | İş ve ürün planı; kullanıcı onayı bekliyor (H-001) |
+| `docs/SARTNAME.md` | Ayrıntılı ürün, teknik mimari ve uygulama şartnamesi: ekranlar, veri modeli, API taslağı, test stratejisi, MVP kabul kriterleri |
+| `yapilacaklar/IS-SIRASI.md` | Güncel durum ve sıra |
+
+- Şartnamedeki etiketler: **[KARAR]** onaysız değişmez. **[ARAŞTIRMA]** rakiplerin kamuya açık iddiasıdır ve doğrulanmadan ürün kararı sayılmaz. **[ÖNERİ]** plan onayında karara bağlanır.
+- Şartnamedeki veri modeli (§10) ve API (§11) **taslaktır**. Kod başlarken WishSay desenleriyle karşılaştırılıp kesinleştirilir.
+- Belgeler çeliştiğinde sessizce seçim yapılmaz. Çelişki "mevcut durum / rehber kararı / önerilen çözüm" biçiminde kullanıcıya sunulur.
+
+### Plan ile şartname arasındaki açık çelişkiler (H-001'de karara bağlanacak)
+
+| Konu | `IS-PLANI.md` | `SARTNAME.md` |
+|---|---|---|
+| Konuşma pratiğinin zamanı | Faz 2 (v1). MVP'de yok (§11). | P0/MVP içinde (§5.1). Yol haritasında ise Faz 4 (§16). |
+| Faz yapısı | Faz 0–3 (§11) | Faz 0–5 (§16) |
+| Seviye testi | Uyarlamalı, 15–25 soru (§4.5) | İsteğe bağlı, kısa, atlanabilir; sonuç yalnızca "önerilen başlangıç seviyesi" (§4.2) |
+| Günlük hedef seçenekleri | 10 / 20 / 30 dk (§4.7) | 5 / 10 / 15 dk (§4.2) |
+| Seri (streak) | Seri dondurma ve "kurtarma" görevi var (§4.7) | Rekabetçi seri baskısı ve suçlayıcı seri mesajlarından kaçınılır (§3.1, §14.3) |
+| Telaffuz puanı | v1'de "Söyle" alıştırmalarıyla birlikte (§11) | Yalnızca güvenilir biçimde ölçülebiliyorsa gösterilir; kesin skor iddiası yok (§6.5) |
+| Yaş | 13 altı alınmaz. 13–17 konuşma pratiği için karar H-002'de açık. | İçerik hedefi 13+. Kullanıcı yaş kapsamı hukukla doğrulanacak (§18/10). |
+
+Şartnamedeki **açık kararlar listesi** (§18) var olan H-002…H-005 işleriyle örtüşür. Örtüşmeyenler H-001 onayında yeni H işi olarak açılır. Örnekler: misafir kullanımı, çevrimdışı kullanım, CDN, kısa akışta otomatik oynatma.
+
+## Ürün ilkeleri (şartname §3.3, §6)
+- Kullanıcı uygulamayı açınca 3–10 dakikada bitirebileceği tek bir öğrenme eylemi görür. Ana sayfa sonsuz akış gibi davranmaz.
+- Pasif izleme aktif öğrenmeye bağlanır: video ve klipten sonra soru, kelime kaydetme ya da tam derse geçiş sunulur. Başarı yalnızca izlenme süresiyle ölçülmez.
+- Konuşmada önce akıcılık gelir. Düzeltme çoğunlukla oturum sonunda yapılır ve en fazla 1–3 öncelikli noktayla sınırlıdır. Dil yargılayıcı olmaz; hatanın nedeni Türkçe açıklanır.
+- Kota bittiğinde kullanıcıya sakin bir dille açıklama yapılır. Ücretsiz bir alternatif önerilir, sıfırlanma saati yerel saatle gösterilir. Ücretli plana yönlendirme baskısı yapılmaz.
+- Utandırıcı ve cezalandırıcı dil kullanılmaz: seri, hedef ve geri bildirim mesajlarında da.
+- Her kişiselleştirilmiş önerinin görünür bir gerekçesi vardır. İlk sürümde öneriler kural tabanlıdır.
+- AI öğretmen romantik, manipülatif ya da bağımlılık yaratan bir dil kullanmaz. Kullanıcıya AI ile konuştuğu açıkça söylenir.
+
+## Mühendislik ilkeleri (kod başladığında geçerli; şartname §9–§13)
+- Yapı modüler monolittir; modüller paket olarak ayrılır (§9.3). Controller ince tutulur, iş kuralı servistedir. DTO ile entity ayrıdır. Migration'lar sürümlenir.
+- AI, TTS ve ASR sağlayıcıları adaptör arkasında durur. **Sağlayıcı anahtarları yalnızca sunucuda tutulur, mobil uygulamaya konmaz.**
+- Medya PostgreSQL'de blob olarak tutulmaz; nesne depolama ya da CDN kullanılır. Uzun AI işleri arka plan işi olarak çalışır, API isteği içinde beklenmez.
+- Her ücretli çağrıdan **önce** kota ve bütçe kontrolü yapılır. Çağrılar idempotent olmalıdır: tekrar çağrı çift ücret ya da çift yayın üretmez. Kota sayacı eşzamanlı isteklerde atomik güncellenir.
+- Aylık tavan konfigürasyondan okunur, koda gömülmez. **Tavan tanımlı değilse ücretli üretim varsayılan olarak kapalıdır.**
+- Ham ses varsayılan olarak saklanmaz. Transkriptlerin erişimi kısıtlıdır ve saklama süresi vardır. Loglara ve telemetriye token, parola, ses, tam transkript ve e-posta yazılmaz.
+- Zaman UTC saklanır, kullanıcıya yerel saatle gösterilir. Hatalar makinece okunabilir kodla döner (`QUOTA_EXCEEDED` vb.). İstemciye stack trace ve prompt dönmez.
+- Mikrofon izni yalnızca konuşma özelliği açılınca istenir. Mikrofon izni olmadan da hikâye ve video özellikleri tam çalışır.
+- Her ekranda yükleniyor, boş ve hata durumları bulunur. Sonsuz spinner kullanılmaz. Erişilebilirlik için §13.1 geçerlidir.
+- İşler küçük parçalara bölünür. Her işin kapsamı, kabul kriteri, test komutu ve geri alma notu olur. İlgisiz refactor yapılmaz. Çalıştırılmayan test geçmiş gibi yazılmaz.
 
 ## İçerik türleri: sosyal medya + A1–C1 İngilizce hikâye ve videoları
 
@@ -62,7 +110,7 @@ icerik/A1-001-lost-cat/
 └── final/             # 9:16 (sosyal/kısa akış) ve 16:9 ya da 9:16 (uygulama) son videolar
 ```
 
-Bir hikâye, §5.5 kalite kontrol listesi tamamlanmadan "yayına hazır" sayılmaz.
+Bir hikâye, plandaki §5.5 kalite kontrol listesi ve şartnamedeki §7.2 yayın kontrol listesi tamamlanmadan "yayına hazır" sayılmaz. Şartname listesi plandakini genişletir; editör onayının kaydı da bu listededir. 30 sn'lik klipler yalnızca editörün onayladığı içerikten türetilir. Her klip bir öğrenme hedefi taşır: ifade, kelime ya da dilbilgisi.
 
 ## videoGenerator projesinden yararlanma
 
@@ -145,7 +193,15 @@ higgsfield workflow list                           # hazır iş akışları
 ### Higgsfield kuralları (zorunlu)
 
 1. **Önce maliyet:** Her `generate create` öncesinde `generate cost` ile kredi hesaplanır, kullanıcıya gösterilir ve **onay alınır**. Toplu üretimde toplam maliyet tek seferde gösterilir.
-2. **Kayıt:** Her prompt, model, parametre, tarih, job id ve harcanan kredi `icerik/<id>/PROMPTS.md`'ye yazılır (§5.6 telif kanıtı).
+2. **Kayıt:** Her prompt, model, parametre, tarih, job id ve harcanan kredi `icerik/<id>/PROMPTS.md`'ye yazılır (§5.6 telif kanıtı). Ayrıca şunlar da kaydedilir (şartname §8.3):
+   - prompt sürümü;
+   - tahmini ve gerçek kredi;
+   - kullanıcı onayının referansı;
+   - üretilen dosya yolları;
+   - editör değerlendirmesi;
+   - telif ve AI açıklaması kontrolü.
+
+   Maliyet verisi yoksa tahmin uydurulmaz; güncel fiyat doğrulanır.
 3. **Bütçe:** Aylık tavan aşılmaz (§8). Kalan kredi `higgsfield account status` ile kontrol edilir; kredi bitmeye yaklaşınca kullanıcıya **bir kez** hatırlatılır, plan önerisi tekrar tekrar yapılmaz (karar H-004'te).
 4. **Ucuz yol önce:** Kredi/sn farkı büyük (§5.3: görsel ~0,12 kredi; video 1–7 kredi/sn). Hikâyelerde varsayılan yol: **Higgsfield görselleri + yerel Ken Burns kurgu (videoGenerator `KenBurnsRenderer` deseni) + TTS + altyazı.** Gerçek video klip yalnızca kanca (ilk 3 sn) ve kilit sahnelerde kullanılır. `higgsfield-video-explainer` daha pahalı ama daha canlı seçenektir; ilk denemede ikisi aynı hikâyeyle karşılaştırılır.
 5. **Karakter ve stil tutarlılığı:** Öğretmen için Soul ID; hikâye karakterleri için hikâye başına sabit stil öneki ve karakter tanımı (`PROMPTS.md` başında).
