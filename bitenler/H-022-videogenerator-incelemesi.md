@@ -1,6 +1,6 @@
 # H-022: videoGenerator sınıflarının incelemesi
 
-- **Durum:** Yapılacak
+- **Durum:** Bitti (2026-10-11)
 - **Tür:** Araştırma (kodsuz)
 - **Öncelik:** Yüksek
 - **Bağımlılık:** —
@@ -22,3 +22,17 @@ CLAUDE.md "videoGenerator projesinden yararlanma" · `SARTNAME.md` §8.2
 
 ## Notlar
 2026-10-11: `docs/SARTNAME.md` ve `docs/IS-PLANI.md` karşılaştırmasından açıldı.
+
+## Sonuç (2026-10-11)
+Rapor: `docs/VIDEOGENERATOR-RAPORU.md`. 18 sınıf için taşıma notu, CEFR prompt taslağı (§4a), WebVTT ve kelime zamanlaması üretimi (§4c), 17 adımlık taşıma planı.
+
+**Kabul kriterleri karşılandı:** videoGenerator'da `git status` temiz; build ve ücretli çağrı yapılmadı.
+
+**CLAUDE.md'ye işlenen düzeltmeler:**
+- `SceneImageService` OpenAI gpt-image-2 kullanıyor.
+- `loudnorm` parametresiz (~-24 LUFS).
+- `BudgetGuard` tavan yoksa 100 USD varsayıyor.
+
+**Kullanıcıya iletilen risk:** videoGenerator'da git'e işlenmiş `TODO.md` dosyasının ~277. satırında bir API anahtarının parçası açık duruyor. Anahtar değiştirilmeli. O repo bu oturumdan değiştirilmez.
+
+**Not:** videoGenerator'ın ElevenLabs hesabı ücretsiz plan. HiVelzon ayrı ve ticari kullanıma uygun bir hesap kullanmalı (H-027 / H-006).

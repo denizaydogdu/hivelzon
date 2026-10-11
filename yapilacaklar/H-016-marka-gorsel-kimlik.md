@@ -16,3 +16,4 @@ Logo ve palet `higgsfield-brandkit` ile denensin; üretimden önce maliyet göst
 
 ## Notlar
 2026-10-11: `docs/SARTNAME.md` ve `docs/IS-PLANI.md` karşılaştırmasından açıldı.
+2026-10-11: Yol arkadaşı AI asistanın çalışma adı "Hi" (HiVelzon'la marka bağı, K-23). Kurumsal site oturumu, sitede adın "hiVelzon" yazılmasını kullanıcının seçtiğini iletti; onay bekliyor.

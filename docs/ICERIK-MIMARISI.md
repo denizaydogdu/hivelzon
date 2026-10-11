@@ -1,5 +1,7 @@
 # HiVelzon — İçerik Mimarisi (sentez)
 
+> **2026-10-11 güncellemesi:** Kullanıcı ana deneyimin **oyunlaştırılmış, bölümleri birbirine bağlı bir hikâye** olmasına karar verdi. Bu belgedeki müfredat, lisans, seviye takibi, yayın hattı ve teknik kararlar geçerliliğini korur. Değişen bölümler ve ayrıntılar: `docs/OYUN-TASARIMI.md` §16. Değişen bölümler: §3.5 ünite kalıbı, §4.3 seriler, §6.1–6.3 sekmeler, ana sayfa ve ünite yolu, §7.2 yerleştirme çerçevesi.
+
 **Sürüm:** 0.2 · **Tarih:** 2026-10-11 · **Durum:** §14 önerileri kullanıcı tarafından onaylandı (H-026, 2026-10-11). K-17, K-18 ve K-19 açık.
 **Ne bu belge:** İçeriğin nasıl yapılandırılacağı, uygulamada nerede ne görüneceği, nasıl üretilip yayınlanacağı ve kullanıcının seviyesinin nasıl takip edileceği için tek başvuru noktası.
 **Ne değil:** Kod yazma onayı değil. Kod, migration, ücretli çağrı, Higgsfield üretimi ve yayın; plan onayından (H-001) önce yapılmaz.
@@ -27,7 +29,7 @@ Fiyatlar ve politikalar 2026-10-11'de görülen hâlleridir; değişebilir.
    - İzlenme süresi öğrenme kanıtı sayılmaz.
 2. **Müfredat omurgası lisans açısından güvenli olmalı:**
    - Kelime listesi için **CEFR-J** (ticari kullanım atıfla serbest [resmî metin doğrulanmadı]) ve **Octanove C1/C2** (CC BY-SA).
-   - Dilbilgisi için **CEFR-J Grammar Profile**.
+   - Dilbilgisi için **CEFR-J Grammar Profile** (H-027 sonrası: yalnızca referans, ham veri gömülmez).
    - English Vocabulary Profile/English Grammar Profile (Cambridge), Oxford 3000/5000, Pearson GSE, COCA ve BNC yalnızca **referans**. Uygulamaya aktarılmaz.
 3. **Seviye denetimi yapay zekâya bırakılamaz.**
    - LLM'den "A2 yaz" istendiğinde, metinlerin yalnızca %5–12,5'i istenen seviyede çıktı (Uchida 2025).
@@ -73,11 +75,11 @@ Fiyatlar ve politikalar 2026-10-11'de görülen hâlleridir; değişebilir.
 
 | Kaynak | Lisans | Kullanım |
 |---|---|---|
-| **CEFR-J Wordlist** (A1–B2) | Araştırma ve ticari kullanım atıfla serbest. Kaynak: Open Language Profiles aynası, v1.5. Resmî cefr-j.org metni ve güncel sürüm (1.6?) [doğrulanmadı]. | **Omurga** |
-| **CEFR-J Grammar Profile** | Kelime listesiyle aynı koşullar | **Omurga** |
+| **CEFR-J Wordlist** (A1–B2) | **H-027:** Güncel sürüm **v1.6** (2020-03-24). Resmî sitede: "research and commercial purposes with a proper acknowledgement". | **Omurga** |
+| **CEFR-J Grammar Profile** | **H-027:** Resmî sayfada açık bir ticari izin yok; yalnızca atıf biçimi ve sorumluluk reddi var (son veri 2025-02-25). | **Referans:** dilbilgisi sırası referans alınır, ham veri gömülmez, Tono Lab'dan yazılı teyit istenir |
 | **Octanove C1/C2** | CC BY-SA 4.0 | C1 kelime omurgası. Uygulamaya gömülerek dağıtılırsa türev listeye share-alike koşulu uygulanır. |
 | **NGSL / NAWL** | CC BY-SA 4.0 | Tamamlayıcı sıklık bandı. Atıf şart. |
-| English Vocabulary Profile / English Grammar Profile (Cambridge) | Ticari kullanım Cambridge lisansı ister | Yalnızca referans |
+| English Vocabulary Profile / English Grammar Profile (Cambridge) | **H-027:** "we do not license out … for commercial purposes" | **Kullanılmaz.** Editör de seviye kararında EVP'ye başvurmaz. |
 | Oxford 3000/5000 | OUP telifi; ticari kullanım lisansla | Yalnızca referans |
 | Pearson GSE | Ticari kullanım için Pearson ile iletişim gerekir | Yalnızca referans |
 | COCA | Ücretli; sözleşmesi uygulamada sıra ve sıklık göstermeyi kısıtlar | Kaçınılmalı |
@@ -137,7 +139,7 @@ Fiyatlar ve politikalar 2026-10-11'de görülen hâlleridir; değişebilir.
 
 - **A1–C1 ünite başlıkları:** `ICERIK-STRATEJISI.md` §6'daki listeler (seviye başına 12 ünite) başlangıç olarak alınır.
 - **MEB eşlemesi (Türkiye Yüzyılı Maarif Modeli, 2025):** Kaynak program yazarının sunumu; resmî PDF ile karşılaştırılmadı [doğrulanmadı].
-  - İlkokul A1, ortaokul sonu A2, lise sonu B1. Program 8 ana temalı ve sarmal yapıda.
+  - İlkokul A1, ortaokul sonu A2, lise sonu B1. Program sarmal yapıda: 2–4. sınıflarda 6 tema, üst sınıflarda 8 tema (H-027'de resmî programla doğrulandı).
   - 13 yaş ve üstü kullanıcı kabaca 7–12. sınıf, yani A2.3–B1.4 aralığıdır.
 - **[Öneri]** A2–B1 ünitelerine MEB tema etiketi eklensin (ör. "8. sınıf · Şehir"). Okul ile uyum bir avantaj olur. [Karar gerekli: K-20]
 
@@ -577,6 +579,7 @@ Bütün eşikler **başlangıç tahminidir**. Beta verisiyle ayarlanmalıdır.
 ### 7.7 Öğrenme verisi modeli (taslak; kod onayından sonra kesinleşir)
 
 - **`learning_events`:** Yalnızca eklenen tek olay tablosu.
+  - **Teknik not (H-021):** PostgreSQL, partition'lı tabloda partition anahtarını içermeyen UNIQUE kısıta izin vermez. Bu yüzden ya `(client_event_id, occurred_at)` bileşik UNIQUE kullanılır ya da ayrı bir idempotentlik tablosu.
   - Alanlar: `id` (UUIDv7), `user_id`, `occurred_at`, `event_type`, `object_type/id`, `content_version_id`, `skill`, `correct`, `score`, `hints_used`, `duration_ms`, `scoring_version`.
   - `client_event_id` UNIQUE'tir, böylece gönderim idempotent olur.
   - Tablo aylık partition'lanır.

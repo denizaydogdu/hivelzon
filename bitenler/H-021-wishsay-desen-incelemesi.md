@@ -1,6 +1,6 @@
 # H-021: WishSay desenlerinin incelemesi
 
-- **Durum:** Yapılacak
+- **Durum:** Bitti (2026-10-11)
 - **Tür:** Araştırma (kodsuz)
 - **Öncelik:** Yüksek
 - **Bağımlılık:** —
@@ -24,3 +24,16 @@ Kimlik doğrulama, onay kayıtları, denetim kaydı ve 30 gün geri alınabilir 
 
 ## Notlar
 2026-10-11: `docs/SARTNAME.md` ve `docs/IS-PLANI.md` karşılaştırmasından açıldı.
+
+## Sonuç (2026-10-11)
+Rapor: `docs/WISHSAY-DESEN-RAPORU.md`. 13 desen için "aynen / uyarlanır / alınmaz" kararı, veri modeli karşılaştırması, R-01…R-17 riskleri.
+
+**Kabul kriterleri karşılandı:** Kod yazılmadı; WishSay'de hiçbir şey değiştirilmedi.
+
+**Kullanıcı kararı (aynı gün):** "WishSay'i unut, yalnızca HiVelzon'a odaklan." Rapor yalnızca arşiv referansıdır. Kimlik doğrulama, rıza, denetim ve silme HiVelzon'un kendi tasarımıyla yapılır.
+
+**HiVelzon'a doğrudan yarayan genel bulgular:**
+- Girişte hız sınırı ve brute-force koruması baştan tasarlanmalı.
+- Denetim kaydı, öğrenme olaylarını kapsamamalı; o veri `learning_events`'e gider.
+- Partition'lı tabloda UNIQUE kısıtı partition anahtarını içermeli (ICERIK-MIMARISI §7.7'ye not düşüldü).
+- SARTNAME §10'daki ad tutarsızlığı (`DELETION_PENDING` / `PENDING_DELETION`) ve eksik `refresh_tokens` / roller H-023'te düzeltilecek.

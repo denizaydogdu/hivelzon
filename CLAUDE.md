@@ -7,7 +7,7 @@
 
 > **Durum:** Planlama. **Kullanıcı planı onaylamadan kod yazılmaz.** Plan: `docs/IS-PLANI.md`. Ayrıntılı gereksinimler: `docs/SARTNAME.md` (taslak 0.1, 2026-10-11). Plan onayına kadar migration, dış servis çağrısı, Higgsfield üretimi ve yayın da yapılmaz.
 
-**Karışmasın:** Velzon'un genel Higgsfield görsel/video atölyesi bu klasör değildir; `~/Dev/velzon-gorsel` altındadır (ayrı oturum). HiVelzon kendi içeriği için Higgsfield'ı **buradan doğrudan** kullanır (bkz. "Higgsfield ile görsel, video ve ses üretimi"). WishSay ayrı bir projedir: `~/Dev/wishsay`. Hazır video boru hattı kodu `~/Dev/videoGenerator` altındadır (bkz. "videoGenerator projesinden yararlanma").
+**Karışmasın:** Velzon'un genel Higgsfield görsel/video atölyesi bu klasör değildir; `~/Dev/velzon-gorsel` altındadır (ayrı oturum). HiVelzon kendi içeriği için Higgsfield'ı **buradan doğrudan** kullanır (bkz. "Higgsfield ile görsel, video ve ses üretimi"). **WishSay'e başvurulmaz:** kullanıcı kararı, 2026-10-11 ("WishSay'i unut, yalnızca HiVelzon'a odaklan"). Okunmaz, takip edilmez, durumu raporlanmaz. Hazır video boru hattı kodu `~/Dev/videoGenerator` altındadır (bkz. "videoGenerator projesinden yararlanma").
 
 ## Ürünün dört ayağı
 1. Hazır ders videoları (Higgsfield; sabit yapay zekâ öğretmen karakteri)
@@ -15,13 +15,60 @@
 3. Kişiselleştirme: kişiye özel video değil, etkinlikler ve hazır videoların varyantları
 4. 30 sn'lik kısa video akışı
 
+## Ana deneyim: oyunlaştırılmış, sürekli hikâye (kullanıcı kararı, 2026-10-11)
+
+- HiVelzon'un omurgası **bir ana kahramanın etrafında, bölüm bölüm ilerleyen, oyun gibi oynanan bir video maceradır.** Dört ayak bu omurgaya bağlanır:
+  - hazır videolar = bölümler;
+  - konuşma pratiği = karakterlerle canlı sahne;
+  - kısa akış = bölüm klipleri;
+  - kişiselleştirme = tekrar ve yan görevler.
+- **Her bölüm bir öncekine bağlanır.** Her bölüm:
+  - kendi görevini kapatır;
+  - önceki bir soruyu cevaplar;
+  - tam olarak bir yeni somut soru açar.
+
+  Kullanıcı merak ettiği için devam eder.
+- **Ayrıntılar:** `docs/OYUN-TASARIMI.md`. Kullanıcının kaynak belgesi: `docs/HIKAYE-EVRENI.md`.
+
+### Onaylı oyun tasarımı kararları (H-029, 2026-10-11)
+
+| # | Karar |
+|---|---|
+| K-21 | Konsept: ***The Missing Signal***. Telsiz, Alex'in Türkiye'deki büyükannesinden kalmadır (Türkiye bağı). |
+| K-22 | Kahraman **Alex**: ~18–19 yaşında, şehre yeni gelmiş. **Hibrit:** ara sahnede görünür, karar anında POV ya da omuz üstü. Kullanıcı Alex'in repliklerini seçer. Özelleştirme yok. Alex'in İngilizcesi kullanıcıyla birlikte büyür. |
+| K-23 | Yol arkadaşı **Hi**: Alex'in telefonundaki maskot AI asistan, fotogerçekçi değil. Hikâye içinde yapay zekâ olduğunu söyler. Türkçe desteği sezonlar ilerledikçe azalır. Dile yardım eder, gizemi Alex'in yerine çözmez. |
+| K-24 | Görsel tarz: fotogerçekçi olmayan animasyon dizi / çizgi roman tonu, çocuksu değil. Görsel model pilotta seçilir. |
+| K-25 | Seviye ve hikâye: MVP'de **sezon = seviye** (Model A). Pilottan sonra yüksek seviyeden başlayana hızlı başlangıç varyantı (Model C). Her bölüm için her seviyede ayrı sürüm yapılmaz. |
+| K-26 | Sezon 1 = 12 bölüm + isteğe bağlı prolog (A1). **Üretim önde:** lansmanda 4 bölüm açık, sonra haftada 1. Yayınlanmış bölümler her zaman açık. |
+| K-27 | Bölüm anatomisi 9 adım, 5–8 dk. A1–A2'de sahne başına 1–2, bölüm başına en fazla 4 karar anı. Karar anında video durur, müzik ve hareket kısılır. |
+| K-28 | Dallanma: dal ve dar boğaz. Yanlış seçim kibar bir tepki parçasından sonra aynı karar anına döner. Bölüm başına en fazla 3 kalıcı bayrak. Zaman mağarası ve çoklu son yok. |
+| K-29 | Bölüm kapısı: anlama + hedef ifade + en az 1 aktif görev. Zaman kilidi yok. |
+| K-30 | Sekmeler: **Ana Sayfa · Keşfet · Hikâye · Konuş · Profil** (K-02'nin yerine geçer). |
+| K-31 | MVP oyun sistemleri: harita, görev kartı, ipucu panosu, defter, anı albümü, sezon özeti, yan görevler. P1: meydan okuma modu, karakter güveni. |
+| K-32 | Yasaklar: can/enerji, loot box, zaman kilidi ve geri sayım, suçlayıcı bildirim, lig, ilerleme satın alma, süreli soru. |
+| K-33 | Klasör: hikâye kanonu `icerik/_evren/`'de; bölümler K-01 düzeninde (`icerik/A1-001-a-strange-message/`). |
+| K-34 | Durum makinesi K-05 olarak kalır. Kanon kontrolü onay kontrol listesinin bir maddesidir. |
+| K-35 | A1 hikâye videosu 45–90 sn (CEFR tablosu güncellendi). |
+
+**Bölümler arası bağ kuralları** (`OYUN-TASARIMI.md` §4.3, bağlayıcı):
+- Her bölümün `content.json`'ında şu alanlar zorunludur: `previously`, `payoff`, `openQuestion`, `answers`, `cluesUnlocked`, `callbackPhrases`.
+- Açılan her soru en geç 3 bölümde kapanır.
+- Aynı anda en fazla 1 sezon sorusu + 2 bölüm sorusu açıktır. Seri sorusu arka plandadır ve bu sayıma girmez.
+- Sahte kanca yoktur.
+- **Kesin sınırlar** (önceki kararlarla uyumlu):
+  - can, enerji, loot box, zaman kilidi, satın alınan bekleme, suçlayıcı bildirim ve lig yok;
+  - hata hikâyeyi kalıcı kilitlemez;
+  - hikâye ilerlemesi ile dil ustalığı ayrı ölçülür;
+  - kanca hikâyenin içinden gelir, korkudan değil meraktan beslenir.
+
 ## Önerilen teknik yığın
-WishSay ile aynı: Flutter + Spring Boot 4 + PostgreSQL. WishSay'den yeniden kullanılacak desenler:
+Flutter + Spring Boot 4 + PostgreSQL. Aşağıdakiler HiVelzon'un **kendi tasarımıyla** yapılır:
 - kimlik doğrulama;
 - denetim kaydı (IP/port/saat);
 - onay kayıtları;
-- 30 gün geri alınabilir hesap silme;
-- iş takip düzeni.
+- 30 gün geri alınabilir hesap silme.
+
+`docs/WISHSAY-DESEN-RAPORU.md` (H-021) yalnızca arşiv referansıdır; WishSay'e bağımlılık kurulmaz.
 
 Ayrıntı: `docs/IS-PLANI.md` §10.
 
@@ -33,11 +80,14 @@ Ayrıntı: `docs/IS-PLANI.md` §10.
 | `docs/IS-PLANI.md` | İş ve ürün planı; kullanıcı onayı bekliyor (H-001) |
 | `docs/SARTNAME.md` | Ayrıntılı ürün, teknik mimari ve uygulama şartnamesi: ekranlar, veri modeli, API taslağı, test stratejisi, MVP kabul kriterleri |
 | `docs/ICERIK-MIMARISI.md` | İçerik mimarisi sentezi (web araştırması + içerik stratejisi): müfredat ve lisanslar, formatlar, ekranlar, seviye takibi, yayın hattı. Kararlar H-026'da bekliyor |
+| `docs/OYUN-TASARIMI.md` | **Oyunlaştırılmış hikâye tasarımı:** evren, kahraman, bölümler arası bağ, Sezon 1 zinciri, ekranlar, veri modeli. Kararlar H-029'da bekliyor. |
+| `docs/HIKAYE-EVRENI.md` | Kullanıcının Storyworld belgesi (*The Missing Signal*), olduğu gibi |
+| `docs/VIDEOGENERATOR-RAPORU.md` | videoGenerator sınıf incelemesi ve taşıma planı (H-022) |
 | `docs/ICERIK-STRATEJISI.md` | Kullanıcının içerik stratejisi belgesi (olduğu gibi). Ünite listeleri ve beceri matrisi burada |
 | `yapilacaklar/IS-SIRASI.md` | Güncel durum ve sıra |
 
 - Şartnamedeki etiketler: **[KARAR]** onaysız değişmez. **[ARAŞTIRMA]** rakiplerin kamuya açık iddiasıdır ve doğrulanmadan ürün kararı sayılmaz. **[ÖNERİ]** plan onayında karara bağlanır.
-- Şartnamedeki veri modeli (§10) ve API (§11) **taslaktır**. Kod başlarken WishSay desenleriyle karşılaştırılıp kesinleştirilir.
+- Şartnamedeki veri modeli (§10) ve API (§11) **taslaktır**. Kod başlarken kesinleştirilir.
 - Belgeler çeliştiğinde sessizce seçim yapılmaz. Çelişki "mevcut durum / rehber kararı / önerilen çözüm" biçiminde kullanıcıya sunulur.
 
 ### Plan ile şartname arasındaki açık çelişkiler (H-007'de karara bağlanacak)
@@ -60,7 +110,7 @@ Kullanıcı `docs/ICERIK-MIMARISI.md` §14'teki önerileri onayladı. Ayrıntı 
 | # | Karar |
 |---|---|
 | K-01 | İçerik kimliği `icerik/<SEVİYE>-<3 hane>-<kisa-baslik>/` olarak kalır. Konu `content.json`'da tutulur. `content.json` ve `rights-and-review.md` zorunludur. |
-| K-02 | Sekmeler: **Ana Sayfa · Keşfet · Öğren · Konuş · Profil**. Keşfet, kısa video akışıdır. |
+| K-02 | ~~Sekmeler: Ana Sayfa · Keşfet · Öğren · Konuş · Profil~~ → **K-30 ile değişti:** Ana Sayfa · Keşfet · **Hikâye** · Konuş · Profil. Keşfet, kısa video akışıdır. |
 | K-03 | Altyazı: varsayılan İngilizce, hedef kelimede küçük Türkçe karşılıkla. A1'de onboarding'de Türkçe satır önerilir; A2 ve üstünde Türkçe satır varsayılan kapalıdır. Uygulamada ayrı WebVTT, sosyal medyada gömülü `.ass` kullanılır. |
 | K-04 | Kelime tekrarı: **FSRS**, hedef hatırlama %90, hesaplama sunucuda (py-fsrs'ten Java'ya taşınır, kaynak belirtilir). |
 | K-05 | Durumlar: `DRAFT → IN_REVIEW → APPROVED → SCHEDULED → PUBLISHED → ARCHIVED`, ayrıca `WITHDRAWN`. İnceleme adımları onay kontrol listesinin maddeleridir. `APPROVED` kontrolü backend'de yapılır; AI'ın yayın yetkisi yoktur. |
@@ -115,7 +165,7 @@ Sosyal medya içeriğine **ek olarak** artık A1'den C1'e kadar seviyeli **İngi
 
 | Seviye | Hikâye uzunluğu | Kelime havuzu | Cümle | Dilbilgisi odağı | Anlatım hızı (TTS) | Video süresi |
 |---|---|---|---|---|---|---|
-| **A1** | 80–150 kelime | ~550 başlık kelime | ≤ 8 kelime, tek yan cümle yok | present simple, *to be*, *there is/are*, *can* | yavaş, ~100–110 kelime/dk | 30–60 sn |
+| **A1** | 80–150 kelime | ~550 başlık kelime | ≤ 8 kelime, tek yan cümle yok | present simple, *to be*, *there is/are*, *can* | yavaş, ~100–110 kelime/dk | 45–90 sn (K-35) |
 | **A2** | 150–300 kelime | ~1.000 | ≤ 12 kelime, *and/but/because* | past simple, *going to*, karşılaştırma | ~115–125 | 60–90 sn |
 | **B1** | 300–600 kelime | ~1.600–2.000 | bağlaçlı birleşik cümle | present perfect, 1. tip koşul, *used to* | ~130–140 | 1,5–3 dk |
 | **B2** | 500–900 kelime | ~2.500–2.800 | karmaşık cümle serbest | edilgen, dolaylı anlatım, 2./3. tip koşul | ~145–155 | 3–5 dk |
@@ -126,8 +176,12 @@ Kurallar:
 - Her hikâyede seviyenin **üstündeki** kelimeler sözlükte (glossary) açıklanır.
 - **Kapsama kuralı (bütün seviyeler):** Kümülatif CEFR-J listesine göre token kapsaması **≥ %98** hedeftir. Özel isimler sayılmaz.
   - **%95** alt sınırdır; buna yalnızca seviye üstü kelimeler sözlükte açıklanmış ve görselle desteklenmişse izin verilir.
-- **Müfredat omurgası:** kelime için CEFR-J Wordlist (A1–B2) ve Octanove C1/C2, dilbilgisi için CEFR-J Grammar Profile.
-  - EVP/EGP, Oxford 3000/5000, GSE, COCA ve BNC yalnızca referanstır; uygulamaya aktarılmaz.
+- **Müfredat omurgası** (lisanslar H-027'de doğrulandı, `docs/LISANS-RAPORU.md`):
+  - **Kelime:** CEFR-J Wordlist **v1.6** (A1–B2; atıfla ticari kullanım serbest) ve Octanove C1/C2 (CC BY-SA; ayrı veri seti olarak tutulur).
+  - **Dilbilgisi sırası:** CEFR-J Grammar Profile **referans** alınır. Ham veri uygulamaya gömülmez; Tono Lab'dan yazılı teyit beklenir.
+  - **Cambridge EVP/EGP kullanılmaz.** Cambridge bu verileri ticari amaçla lisanslamıyor. Editör de seviye kararında EVP'ye başvurmaz.
+  - **Ticari kullanıma kapalı:** Oxford 3000/5000, GSE, COCA ve BNC; uygulamaya aktarılmaz, LLM istemine konmaz.
+  - **CEFR tanımlayıcıları:** Companion Volume "All rights reserved"; can-do hedefleri kendi cümlemizle yazılır.
   - Lisanslar H-027'de doğrulanır.
 - **Seviye denetimi LLM'e bırakılmaz:** LLM taslağı → deterministik `content-lint` (kapsama, cümle uzunluğu, dilbilgisi) → editör.
 - **Vaat yok:** Uygulama tamamlayıcıdır. "Seni X seviyesine ulaştırır" vaadi verilmez (K-08).
@@ -145,7 +199,11 @@ K-01 (2026-10-11) ile şunlar onaylandı:
 - `content/A2/A2-TRAVEL-001-…` biçimi kullanılmaz.
 
 ```
-icerik/A1-001-lost-cat/
+icerik/_evren/          # hikâye kanonu (K-33): STORY_BIBLE, CHARACTER_PROFILES, CANON_AND_TIMELINE,
+                        #   OPEN_QUESTIONS, LANGUAGE_PROGRESSION, SEASON_xx_OUTLINE, style/
+icerik/A1-001-lost-cat/ # bölüm klasörü (ör. A1-001-a-strange-message)
+├── scenes.json        # segment ve karar düğümü grafiği (oyunlaştırılmış bölüm)
+├── mission.json       # görev, başarı ölçütü, ipucu politikası
 ├── content.json       # makinece okunur meta veri (seviye, konu, hedefler, sürüm, durum, publishAt, kaynak sahne…)
 ├── rights-and-review.md # kaynaklar, lisans, güvenlik ve onay geçmişi
 ├── story.en.md        # İngilizce metin (sahne sahne bölünmüş)
@@ -168,15 +226,15 @@ Bir hikâye, plandaki §5.5 kalite kontrol listesi ve şartnamedeki §7.2 yayın
 | videoGenerator sınıfı | Ne yapar | HiVelzon'da kullanımı |
 |---|---|---|
 | `service/StoryWriter` | Tek LLM çağrısında hikâye + sahne başına görsel prompt'u üretir (görsel her zaman anlatımla uyumlu) | Seviyeli hikâye üretimi: prompt'a CEFR kısıtları (yukarıdaki tablo) eklenerek |
-| `service/SceneImageService` | Her sahne için görsel üretir; kanalın sabit stil önekini (`stylePrefix`) uygular; var olan görseli tekrar üretmez | HiVelzon için tek tip görsel stil kilidi; yarıda kalan işte kredi israfını önler |
+| `service/SceneImageService` | Her sahne için görsel üretir; kanalın sabit stil önekini (`stylePrefix`) uygular; var olan görseli tekrar üretmez. **Düzeltme (H-022):** Higgsfield değil, **OpenAI gpt-image-2** kullanıyor (görsel başına sabit 0,08 USD). | Stil kilidi deseni alınır; Higgsfield adaptörü **yeniden yazılır** |
 | `service/TranslationService` | Anlatımı dillere çevirir, dil başına başlık/açıklama üretir | TR çeviri taslağı + sosyal medya metadata'sı |
 | `api/ElevenLabsClient` | Zaman damgalı (alignment) TTS | Seviyeye göre hız ayarlı anlatım; altyazı zamanlaması için hizalama |
 | `processor/SceneTimer` | TTS hizalamasından sahne geçiş zamanlarını çıkarır; görüntü ve altyazı aynı kaynaktan zamanlanır, kayma olmaz | Hikâye videosunda sahne süreleri |
 | `processor/SubtitleRenderer` | Kelime → cue gruplayıp güvenli alan payıyla `.ass` altyazı üretir | EN burn-in altyazı (A1–B1 için kelime vurgulu altyazı fikrinin temeli) |
 | `processor/KenBurnsRenderer` | Durağan görselleri yakınlaştırma/uzaklaştırma + geçiş + altyazıyla 1080×1920 videoya çevirir | **Ucuz hikâye videosu:** görsel başına ~0,12 kredi, video kredisi harcamadan |
-| `processor/AudioProcessor`, `FFmpegWrapper` | Anlatım + müzik karışımı (ducking, normalizasyon), ffmpeg işlemleri | Ses seviyesi normalizasyonu (§5.5), son kurgu |
+| `processor/AudioProcessor`, `FFmpegWrapper` | Anlatım + müzik karışımı (ducking, normalizasyon), ffmpeg işlemleri. **Not (H-022):** `loudnorm` parametresiz çalışıyor (~-24 LUFS, tek geçiş). | Son kurgu. Normalizasyon -16 LUFS (uygulama) ve -14 LUFS (sosyal medya) hedefiyle iki geçişli olarak yeniden yazılır. |
 | `job/JobPipeline`, `Job`, `JobStore` | Adım adım, her adımdan sonra atomik `job.json`; çökme sonrası kaldığı yerden devam | İçerik üretim boru hattının iskeleti |
-| `job/BudgetGuard`, `CostTracker` | Ücretli her çağrıdan **önce** aylık harcama tavanı kontrolü; aylık maliyet dosyası | §8 aylık tavan kuralının hazır uygulaması |
+| `job/BudgetGuard`, `CostTracker` | Ücretli her çağrıdan **önce** aylık harcama tavanı kontrolü; aylık maliyet dosyası. **Not (H-022):** Tavan yoksa 100 USD varsayıyor. Yarıda kalan işin harcaması kaydedilmiyor. | Desen alınır, ama HiVelzon kuralına göre düzeltilir: tavan yoksa üretim kapalı; her harcama kaydedilir; üretim öncesi onay |
 | `channel/ChannelProfile` (`channels/*.json`) | Kanal başına konu, stil öneki, ses kimliği, diller, platformlar | Seviye başına profil (ör. `hivelzon-a1-en`) mümkün |
 | `publish/*` (`YouTubePublisher`, `MetaReelsPublisher`, `TikTokPublisher`, `PublishService`) | İdempotent çoklu platform yayını | HiVelzon sosyal medya hesapları açılınca yeniden kullanılabilir |
 | `web/BackofficeServer` | İş onay/izleme paneli (`PENDING_REVIEW` → onay → yayın) | Editör onayı (insan kontrolü) akışı için örnek |
@@ -271,7 +329,6 @@ Kurallar:
 - İşler `H-<3 hane>-<kisa-baslik>.md`, tek sayaç. Dersler `D-<3 hane>-…`.
 - Durum değişince dosya ilgili klasöre taşınır ve `IS-SIRASI.md` güncellenir.
 - Bir iş, kabul kriterleri doğrulanmadan `bitenler/`e geçmez.
-- WishSay'de öğrenilen dersler `~/Dev/wishsay/ogrenilenler/` altında; ilgili olanlar burada da geçerli.
 
 ## Kurallar
 - Kullanıcıyla Türkçe konuş.

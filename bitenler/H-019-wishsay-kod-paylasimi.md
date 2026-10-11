@@ -1,6 +1,6 @@
 # H-019: WishSay ile kod paylaşım yöntemi
 
-- **Durum:** Yapılacak (kullanıcı kararı)
+- **Durum:** Bitti (2026-10-11)
 - **Tür:** Karar
 - **Öncelik:** Orta
 - **Bağımlılık:** H-021
@@ -16,3 +16,6 @@ Kopyala-uyarla: kaynak dosya belirtilerek taşınsın, iki repo arasında çalı
 
 ## Notlar
 2026-10-11: `docs/SARTNAME.md` ve `docs/IS-PLANI.md` karşılaştırmasından açıldı.
+
+## Sonuç (2026-10-11)
+**Kullanıcı kararı:** "WishSay'i unut, yalnızca HiVelzon'a odaklan." WishSay'den ne kopyalama ne ortak kütüphane yapılacak. HiVelzon kendi tasarımıyla ilerler.

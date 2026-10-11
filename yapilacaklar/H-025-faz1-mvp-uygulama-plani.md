@@ -23,3 +23,4 @@ Onaylanan plana göre MVP'nin uygulama planını küçük ve doğrulanabilir iş
 
 ## Notlar
 2026-10-11: `docs/SARTNAME.md` ve `docs/IS-PLANI.md` karşılaştırmasından açıldı.
+2026-10-11: MVP planı şunları kapsamalı: hikâye haritası, bölüm oynatıcısı (segment + karar katmanı), ipucu panosu, defter, bölüm kapısı, kontrol noktası. Teknik risk için önce H-031 prototipi.

@@ -25,3 +25,4 @@ Gerçek kredi ve emek maliyetini ölçmek; ucuz yol (görsel + Ken Burns + TTS +
 
 ## Notlar
 2026-10-11: `docs/SARTNAME.md` ve `docs/IS-PLANI.md` karşılaştırmasından açıldı.
+2026-10-11: Pilot artık **S1·B1 "A Strange Message"** etkileşimli bölümü + 3 klip olacak. İçinde 2 karar anı, 1 tepki dalı, Hi'nin dil laboratuvarı ve ipucu açılışı var. Ken Burns ile video-explainer karşılaştırması korunur. Bağımlılık: H-029, H-030.

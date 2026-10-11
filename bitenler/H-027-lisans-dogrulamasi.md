@@ -1,6 +1,6 @@
 # H-027: Kelime listesi ve içerik lisanslarının doğrulanması
 
-- **Durum:** Yapılacak
+- **Durum:** Bitti (2026-10-11)
 - **Tür:** Araştırma (kodsuz) + hukuk
 - **Öncelik:** Yüksek (ilk içerik yayınından önce bitmeli)
 - **Bağımlılık:** —
@@ -27,3 +27,25 @@ Müfredat omurgasında kullanılacak kaynakların ticari, ücretsiz bir uygulama
 
 ## Notlar
 2026-10-11: Web araştırması (5 kol) ve kullanıcının içerik stratejisi belgesinden açıldı. Ayrıntı: `docs/ICERIK-MIMARISI.md`.
+
+## Sonuç (2026-10-11)
+Rapor: `docs/LISANS-RAPORU.md`. Kabul kriterleri karşılandı:
+- her kaynak için lisans bağlantısı, alıntı, tarih, karar ve atıf;
+- "Lisanslar" ekranı için atıf taslağı (§4);
+- Cambridge e-posta taslağı (§6; **gönderilmedi**);
+- hukukçuya 12 soru (§8; kullanıcıya iletildi).
+
+**Kararlar:**
+- CEFR-J omurga kararı güçlendi; v1.6'ya geçilir.
+- CEFR-J Grammar Profile koşullu: yalnızca referans.
+- Cambridge EVP/EGP: kullanılmaz.
+- NGSL, NAWL ve Octanove CC BY-SA; ayrı veri seti olarak tutulur.
+- VST/VLT kullanılmaz; kendi test maddelerimiz yazılır.
+- FSRS MIT; port edilirken bildirim korunur.
+- MEB eşlemesi doğrulandı (2–4. sınıf 6 tema).
+
+**İşlendiği yerler:** CLAUDE.md ve ICERIK-MIMARISI §3.1/§3.4.
+
+**Açık kalanlar:**
+- hukuk soruları (S1–S12);
+- Tono Lab ve Cambridge'e yazılı teyit. Dışa dönük yazışma olduğu için kullanıcı onayı gerekir.

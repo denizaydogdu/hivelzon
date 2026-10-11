@@ -6,13 +6,13 @@ Bu dosya tek takip noktasıdır. Hangi işin hangi sırada yapıldığını, şu
 
 ## Nerede kaldık
 - **Şu an:** Planlama, Faz 0. Kod yok.
-- **Şimdi yapılan:** —
+- **Şimdi yapılan:** H-030: Story Bible, karakter kitabı, Sezon 1 bölüm planı ve ilk bölümlerin diyalog taslakları (kodsuz, kredisiz).
 - **Sıradaki adım:**
   1. Kullanıcı 1. adımda kalan kararları verir. En kritikleri:
      - H-001 ve H-007: konuşma pratiği MVP'de mi, faz yapısı ne olacak?
      - H-028: içeriği kim onaylayacak, ilk 3 ayın kapasitesi ne?
      - İçerik mimarisi kararları (H-026) verildi.
-  2. Bu sırada Claude 2. adımdaki kodsuz incelemeleri yapabilir (H-021, H-022).
+  2. H-029 onaylandı. Claude H-030'u (Story Bible ve Sezon 1) yazıyor.
 - **Engel:** Kullanıcı kararları.
 
 ## Nasıl takip ediyoruz
@@ -25,7 +25,7 @@ Bu dosya tek takip noktasıdır. Hangi işin hangi sırada yapıldığını, şu
   - H dosyasının `Durum` satırı güncellenir;
   - **Günlük** bölümüne bir satır eklenir.
 - **Biten işler:** "Biten işler" tablosuna doğrulama kanıtıyla birlikte yazılır.
-- **Numaralar:** Tek sayaçla verilir. Sıradaki boş numara: **H-029**.
+- **Numaralar:** Tek sayaçla verilir. Sıradaki boş numara: **H-032**.
 
 **Durum simgeleri:**
 - ⛔ Kullanıcı kararı bekliyor
@@ -41,6 +41,7 @@ Bu dosya tek takip noktasıdır. Hangi işin hangi sırada yapıldığını, şu
 |---|---|---|---|---|---|
 | 1 | H-001 | İş planını gözden geçir ve onayla | Yüksek | H-007 ile birlikte | ⛔ |
 | 2 | H-007 | Plan ile şartname arasındaki çelişkileri uzlaştır (konuşma pratiği MVP'de mi?) | Yüksek | H-001 ile birlikte | ⛔ |
+| 1a | H-029 | **Oyun ve hikâye tasarımı kararları** (`OYUN-TASARIMI.md` §17) | Yüksek | — | ✅ |
 | 2a | H-026 | İçerik mimarisi kararları (`ICERIK-MIMARISI.md` §14) | Yüksek | H-007 ile birlikte | ✅ |
 | 2b | H-028 | İçerik onayı, roller ve kapasite | Yüksek | H-004 | ⛔ |
 | 3 | H-002 | Yaş politikası | Yüksek | — | ⛔ |
@@ -55,7 +56,7 @@ Bu dosya tek takip noktasıdır. Hangi işin hangi sırada yapıldığını, şu
 | 12 | H-014 | Kısa video akışının davranışı | Orta | — | ✅ |
 | 13 | H-015 | Konuşma geri bildirimi ve telaffuz puanının güvenilirliği | Orta | H-006, H-007 | ⛔ |
 | 14 | H-016 | Marka ve görsel kimlik | Orta | H-005 | ⛔ |
-| 15 | H-019 | WishSay ile kod paylaşım yöntemi | Orta | H-021 | ⛔ |
+| 15 | H-019 | WishSay ile kod paylaşım yöntemi | Orta | H-021 | ✅ |
 | 16 | H-011 | İçerik yönetim ve editör onay paneli | Orta | H-021, H-022 | ✅ |
 | 17 | H-012 | Medya depolama ve CDN | Orta | H-021 | ✅ |
 | 18 | H-010 | Çevrimdışı kullanım MVP'de olacak mı? | Düşük | H-012 | ⛔ |
@@ -65,27 +66,29 @@ Bu dosya tek takip noktasıdır. Hangi işin hangi sırada yapıldığını, şu
 ### Adım 2 — Kodsuz inceleme (Claude; kararları beklemeden yapılabilir)
 | # | İş | Başlık | Öncelik | Bağımlılık | Durum |
 |---|---|---|---|---|---|
-| 21 | H-021 | WishSay desenlerinin incelemesi | Yüksek | — | ⏳ |
-| 22 | H-022 | videoGenerator sınıflarının incelemesi (yalnızca okuma) | Yüksek | — | ⏳ |
-| 22a | H-027 | Kelime listesi ve içerik lisanslarının doğrulanması (hukuk görüşü gereken maddeler kullanıcıya) | Yüksek | — | ⏳ |
+| 21 | H-021 | WishSay desenlerinin incelemesi | Yüksek | — | ✅ |
+| 22 | H-022 | videoGenerator sınıflarının incelemesi (yalnızca okuma) | Yüksek | — | ✅ |
+| 22a | H-027 | Kelime listesi ve içerik lisanslarının doğrulanması (hukuk görüşü gereken maddeler kullanıcıya) | Yüksek | — | ✅ |
 
 ### Adım 3 — Plan güncellemesi ve pilot
 | # | İş | Başlık | Öncelik | Bağımlılık | Durum |
 |---|---|---|---|---|---|
-| 23 | H-023 | İş planını şartnameyle güncelle | Yüksek | H-007, H-021, H-022, H-026 | ⏳ |
-| 24 | H-024 | Pilot içerik: A1-001 hikâyesi ve 3 kısa klip (kredi harcar, onaylı) | Yüksek | H-004, H-005, H-026, H-027, H-028 | ⏳ |
+| 22b | H-030 | Story Bible, karakter kitabı ve Sezon 1 bölüm planı (Claude yazar; kredisiz) | Yüksek | H-029 | 🔄 |
+| 23 | H-023 | İş planını şartnameyle ve oyun yönüyle güncelle | Yüksek | H-007, H-026, H-029 | ⏳ |
+| 24 | H-024 | Pilot: S1·B1 "A Strange Message" etkileşimli bölüm + 3 klip (kredi harcar, onaylı) | Yüksek | H-004, H-005, H-026, H-027, H-028 | ⏳ |
 
 ### Adım 4 — Uygulama planı
 | # | İş | Başlık | Öncelik | Bağımlılık | Durum |
 |---|---|---|---|---|---|
-| 25 | H-025 | Faz 1 (MVP) uygulama planı | Yüksek | H-001, H-007, H-023 | ⏳ |
+| 25 | H-025 | Faz 1 (MVP) uygulama planı | Yüksek | H-001, H-007, H-023, H-029 | ⏳ |
+| 26 | H-031 | Etkileşimli bölüm oynatıcısı prototipi (kod; onaydan sonra) | Yüksek | H-025 | ⏳ |
 
 Kod yazımı H-025 onaylandıktan sonra başlar. MVP işleri o aşamada sıradaki boş numaradan itibaren numaralanır.
 
 ## Devam eden işler
 | İş | Başlık | Başlangıç | Not |
 |---|---|---|---|
-| — | — | — | — |
+| H-030 | Story Bible ve Sezon 1 | 2026-10-11 | `icerik/_evren/` + ilk bölüm taslakları |
 
 ## Biten işler
 | İş | Başlık | Bitiş | Doğrulama |
@@ -97,6 +100,11 @@ Kod yazımı H-025 onaylandıktan sonra başlar. MVP işleri o aşamada sıradak
 | H-011 | İçerik yönetim ve editör onay paneli | 2026-10-11 | K-12: içerik kod olarak + ince Spring onay ekranı |
 | H-012 | Medya depolama ve CDN | 2026-10-11 | K-13: Bunny Stream (adaptör arkasında). KVKK bildirimi hukukçu teyidi bekliyor. |
 | H-014 | Kısa video akışının davranışı | 2026-10-11 | K-15: quiz ve mola kartları, 13–17 yaş için 20 dk sınır |
+| H-021 | WishSay desenlerinin incelemesi | 2026-10-11 | `docs/WISHSAY-DESEN-RAPORU.md` (arşiv referansı; kullanıcı WishSay'i kapsam dışı bıraktı) |
+| H-022 | videoGenerator sınıflarının incelemesi | 2026-10-11 | `docs/VIDEOGENERATOR-RAPORU.md`; videoGenerator `git status` temiz |
+| H-019 | WishSay ile kod paylaşımı | 2026-10-11 | Kullanıcı kararı: WishSay kullanılmaz |
+| H-029 | Oyun ve hikâye tasarımı kararları | 2026-10-11 | Kullanıcı onayı; K-21…K-35 CLAUDE.md'ye işlendi |
+| H-027 | Lisans doğrulaması | 2026-10-11 | `docs/LISANS-RAPORU.md`. CEFR-J v1.6 omurga; EVP/EGP kullanılmaz; hukukçuya 12 soru |
 
 ## Günlük
 - **2026-10-11:**
@@ -121,3 +129,21 @@ Kod yazımı H-025 onaylandıktan sonra başlar. MVP işleri o aşamada sıradak
       - H-013: seri kısmı çözüldü.
       - H-017: yöntem kararı verildi.
     - `IS-PLANI.md` ve `SARTNAME.md` henüz güncellenmedi; H-023 kapsamında yapılacak.
+  - Kullanıcı sıradaki adımı Claude'a bıraktı ("sen karar ver"). Ürün kararları kullanıcıda kalıyor. Kararları beklemeden yapılabilen kodsuz işler başlatıldı: H-021, H-022, H-027 (`devam-edenler/`).
+  - Kullanıcı yeni bir yön belirledi: **oyunlaştırılmış hikâye.** Bir ana kahraman olacak, bölüm bölüm oyun gibi öğrenilecek ve her bölüm bir öncekine bağlanacak. Kullanıcı ayrıca Storyworld belgesini paylaştı (*The Missing Signal*, Alex).
+    - Kaydedildi: `docs/HIKAYE-EVRENI.md`.
+    - Sentez: `docs/OYUN-TASARIMI.md`. İçinde bağ sistemi (4 katmanlı yay, bağ şablonu, en fazla 3 açık soru, 3 bölüm kuralı), Sezon 1'in 12 bölümlük zinciri, ekranlar, veri modeli ve K-21…K-35 kararları var.
+    - Oyun araştırması işlendi:
+      - hibrit kahraman (karar anında POV);
+      - sahne başına 1–2 karar anı;
+      - haftalık yayın;
+      - Flutter'da dallanan video paketi olmadığı için prototip gerekiyor.
+    - Yeni işler: H-029 (karar), H-030 (Story Bible), H-031 (oynatıcı prototipi).
+  - H-021 ve H-022 bitti. H-022 bulguları CLAUDE.md'ye işlendi:
+    - `SceneImageService` OpenAI kullanıyor;
+    - `loudnorm` ~-24 LUFS;
+    - `BudgetGuard` tavan yoksa 100 USD varsayıyor.
+    - **Risk:** videoGenerator'daki `TODO.md` dosyasında açık duran bir API anahtarı parçası kullanıcıya iletildi.
+  - **Kullanıcı kararı:** "WishSay'i unut, yalnızca HiVelzon'a odaklan." CLAUDE.md'den WishSay bağımlılığı kaldırıldı; H-019 kapandı.
+  - H-027 bitti. CEFR-J v1.6 (ticari kullanım atıfla serbest) doğrulandı. Cambridge EVP/EGP ticari lisans vermiyor → **kullanılmaz**. CEFR-J Grammar Profile yalnızca referans. CLAUDE.md ve ICERIK-MIMARISI güncellendi. Hukukçu soruları (S1–S12) ve yazılı teyit taslakları kullanıcıya iletildi; gönderilmedi.
+  - Kullanıcı "onayladım" dedi: H-029 onaylandı (K-21…K-35 CLAUDE.md'de). K-02 → K-30 (sekme "Hikâye"), A1 video 45–90 sn. Bağ kuralları bağlayıcı hâle geldi. H-030 başladı. Dışa yazışmalar (Cambridge, Tono Lab, hukukçu) ayrı onay bekliyor.
