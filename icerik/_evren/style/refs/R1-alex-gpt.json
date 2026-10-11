@@ -1,0 +1,23 @@
+[
+  {
+    "created_at": "2026-10-11T14:34:18.649948Z",
+    "display_name": "GPT Image 2.5",
+    "id": "8d1fcc99-e4e6-4359-9111-e0bd4de8988b",
+    "job_type": "gpt_image_2_5",
+    "min_result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261011_143418_8d1fcc99-e4e6-4359-9111-e0bd4de8988b_min.webp",
+    "params": {
+      "aspect_ratio": "3:2",
+      "height": 1360,
+      "medias": [],
+      "model": "flare",
+      "prompt": "Character reference sheet of an original character: Aleyna, called Alex, a 19-year-old young woman from Izmir, Turkey. Dark brown shoulder-length hair, warm brown eyes, casual simple clothes: olive jacket, cream sweater, jeans, white sneakers. Canvas backpack with an old portable radio in the side pocket, phone on a strap. Front view, side view, back view, and three facial expressions: curious, shy smile, surprised. Plain light background. Warm animated-series illustration, graphic-novel style, clean ink lines, soft cel shading, coastal palette of sea blue, sand, lighthouse yellow and evening orange, mature tone suitable for teens and adults, not childish, no text, no letters, no logos.",
+      "quality": "low",
+      "reference_elements": [],
+      "remove_bg": false,
+      "resolution": "2k",
+      "width": 2048
+    },
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261011_143418_8d1fcc99-e4e6-4359-9111-e0bd4de8988b.png",
+    "status": "completed"
+  }
+]

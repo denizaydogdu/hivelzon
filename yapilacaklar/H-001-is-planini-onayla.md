@@ -12,3 +12,4 @@ Faz 1 en ucuz ayaklarla başlasın: hazır videolar, kısa akış, quiz, kelime 
 
 ## Notlar
 2026-10-11: `docs/IS-PLANI.md` §13'ten.
+2026-10-11: Konuşma pratiği MVP'de değil; seviye testi ve seri kararı verildi (H-007, H-026). İş planının son onayı, H-023 güncellemesinden sonra istenecek.

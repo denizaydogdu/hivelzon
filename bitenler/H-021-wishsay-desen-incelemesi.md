@@ -6,7 +6,7 @@
 - **Bağımlılık:** —
 
 ## Amaç
-Kimlik doğrulama, onay kayıtları, denetim kaydı ve 30 gün geri alınabilir hesap silme desenlerinin WishSay'de hangi dosyalarda olduğunu bulmak ve HiVelzon'a uyumunu değerlendirmek.
+Kimlik doğrulama, onay kayıtları, denetim kaydı ve 30 gün geri alınabilir hesap silme desenlerinin WishSay'de hangi dosyalarda olduğunu bulmak ve hiVelzon'a uyumunu değerlendirmek.
 
 ## Kapsam
 - `~/Dev/wishsay` yalnızca okunur, değiştirilmez.
@@ -30,9 +30,9 @@ Rapor: `docs/WISHSAY-DESEN-RAPORU.md`. 13 desen için "aynen / uyarlanır / alı
 
 **Kabul kriterleri karşılandı:** Kod yazılmadı; WishSay'de hiçbir şey değiştirilmedi.
 
-**Kullanıcı kararı (aynı gün):** "WishSay'i unut, yalnızca HiVelzon'a odaklan." Rapor yalnızca arşiv referansıdır. Kimlik doğrulama, rıza, denetim ve silme HiVelzon'un kendi tasarımıyla yapılır.
+**Kullanıcı kararı (aynı gün):** "WishSay'i unut, yalnızca hiVelzon'a odaklan." Rapor yalnızca arşiv referansıdır. Kimlik doğrulama, rıza, denetim ve silme hiVelzon'un kendi tasarımıyla yapılır.
 
-**HiVelzon'a doğrudan yarayan genel bulgular:**
+**hiVelzon'a doğrudan yarayan genel bulgular:**
 - Girişte hız sınırı ve brute-force koruması baştan tasarlanmalı.
 - Denetim kaydı, öğrenme olaylarını kapsamamalı; o veri `learning_events`'e gider.
 - Partition'lı tabloda UNIQUE kısıtı partition anahtarını içermeli (ICERIK-MIMARISI §7.7'ye not düşüldü).

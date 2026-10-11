@@ -42,3 +42,13 @@ icerik/**/raw/
 
 # Claude Code yerel önbellek
 .claude/tsc-cache/
+# Medya dosyaları git dışında tutulur (ICERIK-MIMARISI §5); kayıt PROMPTS.md ve manifestte
+icerik/**/*.png
+icerik/**/*.jpg
+icerik/**/*.jpeg
+icerik/**/*.webp
+icerik/**/*.mp4
+icerik/**/*.mov
+icerik/**/*.mp3
+icerik/**/*.wav
+.DS_Store

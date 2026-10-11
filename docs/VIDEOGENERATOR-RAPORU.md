@@ -25,15 +25,15 @@
    - `KenBurnsRenderer.buildFilterGraph`: kare bazında kaymayı önleyen zamanlama modeli.
    - `JobStore`: atomik yazma.
    - `PublishService`: idempotent yayın deseni.
-5. **Ses normalizasyonu HiVelzon hedefini karşılamıyor.**
+5. **Ses normalizasyonu hiVelzon hedefini karşılamıyor.**
    - `loudnorm` parametresiz, tek geçişte çalışıyor. Bu, ffmpeg varsayılanı olan **I=-24 LUFS, TP=-2 dBTP, LRA=7** demektir.
    - Normalizasyon yalnızca müzik miksajı yapılınca uygulanıyor. **Yalnız sesli modda hiç normalizasyon yok.**
-   - HiVelzon hedefleri (-16 LUFS / -1 dBTP ve -14 LUFS) için iki geçişli yeni bir adım ve `ebur128` ölçüm kapısı gerekir.
+   - hiVelzon hedefleri (-16 LUFS / -1 dBTP ve -14 LUFS) için iki geçişli yeni bir adım ve `ebur128` ölçüm kapısı gerekir.
 6. **Çıktı formatı sabit kodlanmış.**
    - Çıktı: 1080×1920, 30 fps, H.264 (`libx264`, varsayılan CRF), `yuv420p`, AAC 192k ve `+faststart`.
    - **16:9 ve HLS desteği yok.**
    - `ChannelProfile.validate()` süreyi **60–90 sn**, sahne sayısını **3–10** ile sınırlıyor. A1 (30–60 sn) ve C1 (4–8 dk) bu aralığa girmiyor.
-7. **Bütçe koruması HiVelzon kuralına uymuyor.**
+7. **Bütçe koruması hiVelzon kuralına uymuyor.**
    - `budget.monthly.usd` tanımlı değilse varsayılan değer **100 USD**. Yani tavan yokken ücretli üretim **açık** kalıyor.
    - Maliyet aylık deftere **yalnızca iş başarıyla bitince** yazılıyor. Yarıda kalan işlerin harcaması hiç sayılmıyor.
    - Tahminler sabit sayılar; gerçek maliyet değil.
@@ -45,12 +45,12 @@
    - Görseller ve TTS sesi doğrudan hedef dosyaya yazılıyor (atomik değil). Bu yüzden yarım yazılmış bir PNG "var" sayılıp atlanabilir.
 9. **AI etiketleri eksik.**
    - YouTube'da `containsSyntheticMedia=true` her zaman gönderiliyor.
-   - `selfDeclaredMadeForKids=false` sabit kodlanmış; HiVelzon'da bu karar içerik başına verilmeli.
+   - `selfDeclaredMadeForKids=false` sabit kodlanmış; hiVelzon'da bu karar içerik başına verilmeli.
    - TikTok'ta AIGC bayrağı (`is_aigc`) ve Instagram'da `is_ai_generated` **gönderilmiyor**.
 10. **Sır ve lisans riskleri var.**
     - Git'e işlenmiş `TODO.md`'de bir API anahtarının parçası açık metin olarak duruyor (~277. satır; bu rapora kopyalanmadı).
     - `config/` altındaki dosyalar ve `channels/*.json` sır içeriyor ya da içerebilir. Bunlar gitignore'da.
-    - ElevenLabs hesabı **ücretsiz plan** (TODO §2). HiVelzon bu hesabı kullanmamalı; ticari kullanım lisansı H-027 kapsamında doğrulanmalı.
+    - ElevenLabs hesabı **ücretsiz plan** (TODO §2). hiVelzon bu hesabı kullanmamalı; ticari kullanım lisansı H-027 kapsamında doğrulanmalı.
 
 ---
 
@@ -67,7 +67,7 @@
 | `channel/` | `ChannelProfile`, `ChannelStore`, `NicheSpec` |
 | `publish/` | `Publisher` arayüzü; `YouTubePublisher`, `MetaReelsPublisher`, `TikTokPublisher`, `PublishService`, `UploadCounter`, HTTP istemcileri |
 | `web/` | `BackofficeServer` (JDK `HttpServer`), `JobService`, `RangeSupport`, `StatsCollector`; statik UI `src/main/resources/web/` altında |
-| `velzon/`, `pinterest/` | Velzon'un borsa paylaşımları ve Pinterest. **HiVelzon ile ilgisi yok.** |
+| `velzon/`, `pinterest/` | Velzon'un borsa paylaşımları ve Pinterest. **hiVelzon ile ilgisi yok.** |
 | `main/Main` | CLI ve bağımlılıkların elle bağlanması (1.174 satır). Spring yok. |
 
 **Bağımlılıklar** (`pom.xml`):
@@ -142,10 +142,10 @@
 - Ana yol: `DRAFTING → RENDERING → PENDING_REVIEW → APPROVED → PUBLISHING → PUBLISHED`
 - Yan çıkışlar: `FAILED` ve `REJECTED`
 
-HiVelzon K-05 ile karşılaştırma:
+hiVelzon K-05 ile karşılaştırma:
 - `PENDING_REVIEW` ≈ `IN_REVIEW`;
-- HiVelzon'da `SCHEDULED`, `ARCHIVED` ve `WITHDRAWN` ek durumları var;
-- HiVelzon'da onay **sürüme** bağlanıyor.
+- hiVelzon'da `SCHEDULED`, `ARCHIVED` ve `WITHDRAWN` ek durumları var;
+- hiVelzon'da onay **sürüme** bağlanıyor.
 
 ---
 
@@ -162,7 +162,7 @@ Taşıma notu kısaltmaları:
   ```java
   // Kaynak: github.com/denizaydogdu/videoGenerator @ 98902a8
   //   src/main/java/com/videogenerator/processor/SceneTimer.java
-  // Değişiklikler: <kısa liste> — gerekçe: <...> (HiVelzon H-0xx)
+  // Değişiklikler: <kısa liste> — gerekçe: <...> (hiVelzon H-0xx)
   ```
 
 - Aynı bilgi commit mesajında da yer alır.
@@ -263,13 +263,13 @@ Görsel ve anlatım aynı çağrıda üretildiği için birbiriyle uyumlu kalır
 **Test:** `TranslationServiceTest` (5).
 
 **Taşıma notu: U (kısmen).**
-- HiVelzon'da çeviri **anlatıma girmez**: ses her zaman İngilizce. Çeviri yalnızca şunlar için kullanılır:
+- hiVelzon'da çeviri **anlatıma girmez**: ses her zaman İngilizce. Çeviri yalnızca şunlar için kullanılır:
   - `story.tr.md` taslağı (insan kontrolünden geçecek);
   - sözlükteki Türkçe karşılıklar;
   - TR altyazı satırı (K-03, isteğe bağlı);
   - sosyal medya meta verisi.
 - "Satır sayısı ve sırası korunur" kuralı ve satır sayısı doğrulaması aynen alınır. Satırlar sahnelerle birebir eşleşmeli.
-- Başlık kalıpları ve dipnotlar alınmaz. HiVelzon'un dipnotu: "Yapay zekâ ile üretilmiştir".
+- Başlık kalıpları ve dipnotlar alınmaz. hiVelzon'un dipnotu: "Yapay zekâ ile üretilmiştir".
 - `StoryWriter`'daki geri bildirimli yeniden deneme buraya da eklenmeli.
 
 ### 3.4 `api/ElevenLabsClient`
@@ -303,7 +303,7 @@ Görsel ve anlatım aynı çağrıda üretildiği için birbiriyle uyumlu kalır
 - Alignment dizilerinin uzunlukları tutarsızsa ya da alignment boşsa `IllegalStateException` fırlatılıyor.
 - Ses ve alignment dosyaları atomik yazılmıyor.
 
-**Eksikler (HiVelzon için):**
+**Eksikler (hiVelzon için):**
 - `voice_settings.speed` gönderilmiyor. CEFR'e göre anlatım hızı ayarlanamıyor.
 - `output_format` belirtilmiyor.
 - `previous_text` / `next_text` (parça birleşiminde prozodi sürekliliği) kullanılmıyor.
@@ -373,7 +373,7 @@ Görsel ve anlatım aynı çağrıda üretildiği için birbiriyle uyumlu kalır
 
 **Test:** `SubtitleRendererTest` (9).
 
-**Eksikler (HiVelzon §9.6 için):**
+**Eksikler (hiVelzon §9.6 için):**
 - Cue'lar cümle sınırına göre bölünmüyor.
 - En kısa cue ≥ 1 sn kuralı yok.
 - Okuma hızı kontrolü (A1'de ≤ 15 karakter/sn) yok.
@@ -533,7 +533,7 @@ Diğer metotlar: `getMediaDuration` (ffprobe), `mergeVideoAudio`, `resizeVideo`,
   - "tamamlanma işareti çıktı dosyası değil, kayıttır" ilkesi;
   - sahte motorlarla uçtan uca test.
 - Değişiklikler:
-  - Faz 2'nin dil döngüsü kalkar. HiVelzon'da tek ses dili (EN) var; onun yerine **çıktı profilleri** döngüsü gelir: `app-16x9`, `app-9x16`, `social-9x16`.
+  - Faz 2'nin dil döngüsü kalkar. hiVelzon'da tek ses dili (EN) var; onun yerine **çıktı profilleri** döngüsü gelir: `app-16x9`, `app-9x16`, `social-9x16`.
   - Her adımın kendi işareti olur, ara çıktılar da kalıcı yazılır: `story`, `images[i]`, `tts`, `subs`, `render[profile]`, `loudness[profile]`. Böylece TTS iki kez ödenmez.
 - `content-tools` içinde `job.json`, içerik klasörünün yanında ya da `.work/<contentId>/` altında tutulabilir (medya git'e girmez, K-01).
 - Backend'in `generation` modülünde ise bunun karşılığı PostgreSQL'de bir `generation_job` tablosudur: durum, adım, deneme sayısı, idempotency anahtarı.
@@ -569,7 +569,7 @@ sahne × 0,08 + dil × 0,10 + 0,50 + (1 + dil) × 0,01
   - "çağrıdan önce kontrol";
   - "bozuk dosyada kapalı yönde hata";
   - atomik dosya yazma.
-- HiVelzon'da iki katman olur:
+- hiVelzon'da iki katman olur:
   1. **Backend `generation` (ve `speaking`) modülü:** PostgreSQL'de `cost_ledger` tablosu, `SELECT … FOR UPDATE` ya da koşullu `UPDATE` ile atomik **rezervasyon**, sonra gerçek değerle mutabakat. Tavan `@ConfigurationProperties` ile okunur; **null ya da 0 ise ücretli çağrı reddedilir.**
   2. **`content-tools`:** Higgsfield **kredisi** ve ElevenLabs karakteri için ayrı bir defter tutar. Her üretimden önce `generate cost` çalışır, ardından **açık kullanıcı onayı** alınır.
 
@@ -605,7 +605,7 @@ sahne × 0,08 + dil × 0,10 + 0,50 + (1 + dil) × 0,01
 
 **Test:** `ChannelStoreTest` (3), `ChannelUpdateTest`.
 
-**Taşıma notu: U.** HiVelzon'da "kanal" yerine iki kavram var:
+**Taşıma notu: U.** hiVelzon'da "kanal" yerine iki kavram var:
 1. **Seviye profili:** `profiles/level-a1.json` … `level-c1.json`. İçeriği:
    - kelime, cümle ve süre sınırları;
    - TTS `speed`;
@@ -638,7 +638,7 @@ Sırlar bu dosyalara **asla** konmaz; ortam değişkeninden ya da secret store'd
 **Test:** `BackofficeServerTest` (7), `BackofficeAuthTest` (8), `RangeSupportTest` (5) ve diğerleri.
 
 **Taşıma notu: X (kod alınmaz).**
-- HiVelzon'da bunun yerine `admin` modülü gelir: Spring MVC, Spring Security (rol ve oturum), denetim kaydı (WishSay deseni) ve ince bir onay ekranı (K-12).
+- hiVelzon'da bunun yerine `admin` modülü gelir: Spring MVC, Spring Security (rol ve oturum), denetim kaydı (WishSay deseni) ve ince bir onay ekranı (K-12).
 - Alınacak fikirler:
   - durum kontrolü serviste yapılır (`PENDING_REVIEW` değilse onay reddedilir);
   - onay sırasında platform seçimi;
@@ -687,7 +687,7 @@ Sırlar bu dosyalara **asla** konmaz; ortam değişkeninden ya da secret store'd
 **Taşıma notu: şimdilik X, ileride U.**
 - K-14 gereği önce elle yükleme yapılacak. Bu sınıflar şimdi taşınmaz.
 - Platform denetiminden sonra `distribution` modülüne şunlar alınır:
-  - `PublishService`'in idempotentlik deseni. HiVelzon'da veritabanında `(content_version_id, platform)` için tekil kısıt olmalı. Yüklemeden **önce** `PENDING` kaydı açılmalı ki çift yayın penceresi daralsın.
+  - `PublishService`'in idempotentlik deseni. hiVelzon'da veritabanında `(content_version_id, platform)` için tekil kısıt olmalı. Yüklemeden **önce** `PENDING` kaydı açılmalı ki çift yayın penceresi daralsın.
   - `Publisher` arayüzü.
 - Eklenecekler:
   - AI etiketi parametreleri;
@@ -696,7 +696,7 @@ Sırlar bu dosyalara **asla** konmaz; ortam değişkeninden ya da secret store'd
 
 ---
 
-## 4. HiVelzon özel soruları
+## 4. hiVelzon özel soruları
 
 ### 4a. StoryWriter prompt'una CEFR kısıtları
 
@@ -717,7 +717,7 @@ Sırlar bu dosyalara **asla** konmaz; ortam değişkeninden ya da secret store'd
 | TTS hızı | ~100–110 kelime/dk | ~115–125 | ~130–140 | ~145–155 | ~160+ |
 | Video | 30–60 sn | 60–90 sn | 1,5–3 dk | 3–5 dk | 4–8 dk |
 
-**Kelime bütçesi:** videoGenerator `süre × 2,2 kelime/sn` kullanıyor (≈132 kelime/dk). HiVelzon'da bütçe seviyenin **kelime/dk** değerinden hesaplanır. Örnek: A1, 45 sn × 105/60 ≈ 79 kelime.
+**Kelime bütçesi:** videoGenerator `süre × 2,2 kelime/sn` kullanıyor (≈132 kelime/dk). hiVelzon'da bütçe seviyenin **kelime/dk** değerinden hesaplanır. Örnek: A1, 45 sn × 105/60 ≈ 79 kelime.
 
 Ayrıca CLAUDE.md'deki **kelime aralığı** ile **video süresi** aralığı birbiriyle tutarlı olmalı:
 - A1'de 150 kelime ≈ 86 sn, ama video üst sınırı 60 sn.
@@ -847,8 +847,8 @@ Lisans durumu ve aracın dili (Java ya da Python, cefrpy) H-027'ye bağlı.
 - Üç dizi aynı uzunluktadır.
 - Boşluk ve noktalama da birer karakterdir.
 - `alignment`, gönderilen metne karşılık gelir.
-- API ayrıca `normalized_alignment` döndürebilir: sayıların okunuşa çevrildiği metin. videoGenerator bunu kullanmıyor; HiVelzon'da ham `alignment` kullanılmalı.
-- videoGenerator ham alignment JSON'unu `audio/<lang>.alignment.json` olarak saklıyor. HiVelzon'da da bu dosya **kanonik kaynak** olarak saklanmalı; diğer çıktılar ondan türetilir.
+- API ayrıca `normalized_alignment` döndürebilir: sayıların okunuşa çevrildiği metin. videoGenerator bunu kullanmıyor; hiVelzon'da ham `alignment` kullanılmalı.
+- videoGenerator ham alignment JSON'unu `audio/<lang>.alignment.json` olarak saklıyor. hiVelzon'da da bu dosya **kanonik kaynak** olarak saklanmalı; diğer çıktılar ondan türetilir.
 
 **Türetme hattı** (`content-tools`, deterministik):
 
@@ -909,7 +909,7 @@ Lisans durumu ve aracın dili (Java ya da Python, cefrpy) H-027'ye bağlı.
 - Bu ffmpeg varsayılanı demek: **I = -24 LUFS, TP = -2 dBTP, LRA = 7**, tek geçiş (dinamik mod).
 - Uygulanma koşulu: yalnızca `DefaultRenderEngine` müzik miksajı yaptığında ve `audio.normalize=true` (varsayılan) iken. **Yalnız sesli modda hiç normalizasyon yok.**
 - Ses miksten sonra MP3'e, render'da AAC 192k'ya kodlanıyor; çift kayıplı kodlama.
-- Sonuç: Bugünkü çıktılar HiVelzon hedeflerinin (**uygulama -16 LUFS / -1 dBTP, sosyal medya -14 LUFS**) yaklaşık 8–10 LU altında kalır ya da hiç normalize edilmemiştir. Bu tahmin koddan çıkarıldı; çıktı dosyaları ölçülmedi.
+- Sonuç: Bugünkü çıktılar hiVelzon hedeflerinin (**uygulama -16 LUFS / -1 dBTP, sosyal medya -14 LUFS**) yaklaşık 8–10 LU altında kalır ya da hiç normalize edilmemiştir. Bu tahmin koddan çıkarıldı; çıktı dosyaları ölçülmedi.
 
 **Öneri:**
 
@@ -932,7 +932,7 @@ Sosyal medya için ayrı bir çıktı profili kullanılır: `I=-14`.
 | HLS | **Yok.** K-13 gereği Bunny Stream kaynak MP4'ü HLS'ye kendisi kodlar. Yerelde HLS üretmek yalnızca R2 yoluna geçilirse gerekir. |
 | Süre | Pipeline 60–90 sn varsayımıyla çalışıyor (profil doğrulaması). 5 dk ffmpeg zaman aşımı C1 için risk. |
 
-### 4f. BudgetGuard/CostTracker, Higgsfield kredisi ve HiVelzon kuralı
+### 4f. BudgetGuard/CostTracker, Higgsfield kredisi ve hiVelzon kuralı
 
 **Higgsfield'i izliyor mu?** **Hayır.** videoGenerator Higgsfield kullanmıyor. Maliyetler USD cinsinden ve sabit:
 - görsel 0,08;
@@ -942,7 +942,7 @@ Sosyal medya için ayrı bir çıktı profili kullanılır: `I=-14`.
 
 Kredi, `generate cost` çıktısı ya da gerçek fatura okunmuyor.
 
-**HiVelzon kuralına uyum:**
+**hiVelzon kuralına uyum:**
 
 | Kural | videoGenerator | Uyum |
 |---|---|---|
@@ -955,7 +955,7 @@ Kredi, `generate cost` çıktısı ya da gerçek fatura okunmuyor.
 | Bozuk veride güvenli taraf | Kapalı yönde hata | ✔ |
 | Çift ücret yok | Görsel ✔, müzik ✔; TTS ve çeviri ✘ (bkz. 4g) | Kısmen |
 
-**HiVelzon için yeni tasarım:**
+**hiVelzon için yeni tasarım:**
 1. `CostGuard` tavanı `Optional` olarak okur. Değer **boşsa ya da ≤ 0 ise `PAID_GENERATION_DISABLED`** hatası verir.
 2. Her ücretli çağrı için şu sıra izlenir:
    1. `estimate` (Higgsfield'te `generate cost`, ElevenLabs'te karakter × fiyat);
@@ -983,7 +983,7 @@ Mekanizma:
 | Maliyet defteri | `costRecorded` bayrağı çift yazımı engelliyor | Yarıda kalan işin harcaması **hiç** yazılmıyor |
 | Durum | Hata → `FAILED` + `error`; devam ederken `error` temizleniyor | — |
 
-**HiVelzon önerisi:**
+**hiVelzon önerisi:**
 - Ara çıktılar da kalıcı olmalı: çeviri metni ve TTS sonucu kendi işaretini almalı.
 - TTS dosyası **içerik hash'iyle** adlandırılmalı: `audio/en.<sha256(text+voice+settings)[:12]>.mp3`. Hash'li dosya varsa çağrı yapılmaz.
 - Tüm yazmalar `.tmp` dosyasına yapılıp `ATOMIC_MOVE` ile taşınmalı.
@@ -994,8 +994,8 @@ Mekanizma:
 
 | Platform | Alan | videoGenerator | Not |
 |---|---|---|---|
-| YouTube | `status.containsSyntheticMedia` | **Var, her zaman `true`** (`YouTubeApiClient.buildVideoResource`, generic `status.set`) | HiVelzon'da da her zaman `true` (K-14) |
-| YouTube | `status.selfDeclaredMadeForKids` | **Sabit `false`** | HiVelzon'da **içerik başına** karar gerekir (§10.1: çizgi hayvanlı A1 hikâyeleri "çocuklara yönelik" sayılabilir). `content.json`'a `madeForKids` alanı eklenmeli; hukuki karar bekliyor. |
+| YouTube | `status.containsSyntheticMedia` | **Var, her zaman `true`** (`YouTubeApiClient.buildVideoResource`, generic `status.set`) | hiVelzon'da da her zaman `true` (K-14) |
+| YouTube | `status.selfDeclaredMadeForKids` | **Sabit `false`** | hiVelzon'da **içerik başına** karar gerekir (§10.1: çizgi hayvanlı A1 hikâyeleri "çocuklara yönelik" sayılabilir). `content.json`'a `madeForKids` alanı eklenmeli; hukuki karar bekliyor. |
 | YouTube | `defaultLanguage`, `defaultAudioLanguage` | Var | `en` |
 | TikTok | `post_info.is_aigc` (AIGC etiketi) | **Yok.** `post_info`'da yalnızca `title` ve `privacy_level` var. | Eklenmeli. Ayrıca `disable_comment` ve `brand_content_toggle` gibi alanlar değerlendirilmeli. Alan adları güncel dokümandan doğrulanmalı. |
 | Instagram | `is_ai_generated` | **Yok** (`media_type=REELS`, `caption`, `video_url` / yükleme) | ICERIK-MIMARISI §10.1'de "tek kaynak" olarak işaretli; doğrulanmadan kullanılmamalı. Caption'a görünür "AI ile üretilmiştir" ibaresi her durumda konmalı. |
@@ -1027,7 +1027,7 @@ Ortak DTO'lar (`content.json` şeması, kelime zamanlama şeması) ayrı küçü
 
 Her adım ayrı bir H-işi olarak açılmalı: kabul kriteri ve test komutuyla, kod onayından sonra.
 
-| # | videoGenerator kaynağı | Not | HiVelzon hedefi | Yapılacak |
+| # | videoGenerator kaynağı | Not | hiVelzon hedefi | Yapılacak |
 |---|---|---|---|---|
 | 1 | `model/Alignment`, `ElevenLabsClient.parseAlignment`, `fixtures/alignment-sample.json` | A | `content-model` / `tools…/subs` | Testleriyle kopyala |
 | 2 | `processor/SceneTimer` | A | `tools…/subs` | Testleriyle kopyala; karakter sayısı uyuşmazlığı uyarısı ekle |
@@ -1046,7 +1046,7 @@ Her adım ayrı bir H-işi olarak açılmalı: kabul kriteri ve test komutuyla, 
 | 15 | `JobService` onay kuralları (fikir olarak) | U | backend `admin` + `content` (K-05 durum makinesi) | Spring Security, denetim kaydı, sürüme bağlı onay |
 | 16 | `BackofficeServer`, `RangeSupport`, web UI | X | — | Spring MVC ile yeniden yazılır |
 | 17 | `publish/*` | Sonra U | backend `distribution` (platform denetiminden sonra, K-14) | AI bayrakları, içerik başına `madeForKids`, `PENDING` kaydı ve tekil kısıt |
-| — | `velzon/*`, `pinterest/*`, `IdeaGenerator`, `NicheFinder`, `TrendAnalyzer`, `MusicApiClient`, `LocalMusicLibrary`, SQLite repo'ları | X | — | HiVelzon'la ilgisiz. Müzik gerekirse ayrıca karar verilir. |
+| — | `velzon/*`, `pinterest/*`, `IdeaGenerator`, `NicheFinder`, `TrendAnalyzer`, `MusicApiClient`, `LocalMusicLibrary`, SQLite repo'ları | X | — | hiVelzon'la ilgisiz. Müzik gerekirse ayrıca karar verilir. |
 
 ---
 
@@ -1057,10 +1057,10 @@ Her adım ayrı bir H-işi olarak açılmalı: kabul kriteri ve test komutuyla, 
 - **Sırlar.** Şu dosyalar sır içeriyor ya da içerebilir. Hiçbiri kopyalanmamalı, okunup içeriği rapora da alınmadı.
   - Git'te takip edilen `TODO.md`, ~277. satır: bir API anahtarının parçası açık metin. **videoGenerator sahibinin bu anahtarı döndürmesi ve satırı temizlemesi önerilir.** Bu oturumda o repoda değişiklik yapılmadı.
   - Gitignore'da olanlar: `config/application.properties`, `config/google_credentials.json`, `config/tokens/**` (OAuth jetonları), `channels/*.json` (`meta.accessToken` alanı olabilir), `data/videogenerator.db`, `logs/*.log` (içeriği kontrol edilmedi).
-- **ElevenLabs hesabı ve ses kimlikleri.** videoGenerator'ın kullandığı hesap ücretsiz plan (TODO §2). HiVelzon kendi ticari lisanslı hesabını kullanmalı (H-027).
+- **ElevenLabs hesabı ve ses kimlikleri.** videoGenerator'ın kullandığı hesap ücretsiz plan (TODO §2). hiVelzon kendi ticari lisanslı hesabını kullanmalı (H-027).
 - **True-crime'a özgü içerik:** prompt kuralları, başlık kalıpları, dipnotlar, son kart metinleri, `PACING_VARIANTS`.
 - **`Configuration.getInstance()` singleton'ı ve elle bağlanmış `Main`.** Spring'de DI ve `@ConfigurationProperties` ile değiştirilir.
-- **İsteğe bağlı kimlik doğrulamalı backoffice.** "Ayar yoksa korumasız aç" deseni HiVelzon'da yasak.
+- **İsteğe bağlı kimlik doğrulamalı backoffice.** "Ayar yoksa korumasız aç" deseni hiVelzon'da yasak.
 - **Sabit `madeForKids=false`** ve **varsayılan 100 USD tavan**.
 
 ### 6.2 Bilinen hata ve zayıflıklar (koddan çıkarıldı)
@@ -1072,7 +1072,7 @@ Her adım ayrı bir H-işi olarak açılmalı: kabul kriteri ve test komutuyla, 
 5. `FFmpegWrapper` zaman aşımı, çıktı akışı kapanmadan devreye girmiyor. `executeCommandWithOutput`'ta hiç zaman aşımı yok. 5 dk, uzun videolar için kısa.
 6. `KenBurnsRenderer` `.ass` yolunu filtre grafına kaçışsız ekliyor.
 7. `ElevenLabsClient` 4xx yanıtlarını da yeniden deniyor (gereksiz çağrı). `Accept: audio/mpeg` başlığı JSON uç noktasıyla tutarsız.
-8. `ChannelProfile` 60–90 sn ve 3–10 sahne sınırları HiVelzon seviyeleriyle uyumsuz.
+8. `ChannelProfile` 60–90 sn ve 3–10 sahne sınırları hiVelzon seviyeleriyle uyumsuz.
 9. `PublishService.hasPublication`, `SKIPPED_LANG` durumunu atlama işareti saymıyor. Her devamda yeni bir atlama kaydı ekleniyor (zararsız ama kirli).
 10. `SubtitleRenderer` cümle sınırı, en kısa süre ve okuma hızı kurallarını uygulamıyor.
 
@@ -1089,14 +1089,14 @@ Her adım ayrı bir H-işi olarak açılmalı: kabul kriteri ve test komutuyla, 
 
 ### 6.4 İki repo arasında bağımlılık riski
 
-- **Çalışma zamanı bağımlılığı:** HiVelzon'un videoGenerator jar'ını, `channels/` klasörünü ya da `output/` klasörünü kullanması yasak. `mvn package` çalışan JVM'i bozar. Önlem: yalnızca kod kopyalama ve kaynak notu.
+- **Çalışma zamanı bağımlılığı:** hiVelzon'un videoGenerator jar'ını, `channels/` klasörünü ya da `output/` klasörünü kullanması yasak. `mvn package` çalışan JVM'i bozar. Önlem: yalnızca kod kopyalama ve kaynak notu.
 - **Hesap paylaşımı:**
   - Aynı ElevenLabs, OpenAI ya da Meta hesabının kullanılması kota, maliyet ve fatura karışıklığına yol açar.
   - Aynı Meta/TikTok uygulamasının kullanılması platform denetimi riskini paylaştırır.
-  - Önlem: HiVelzon'a ayrı hesaplar, ayrı anahtarlar, ayrı bütçe defteri.
-- **Kopyalanan kodun ayrışması:** videoGenerator'da sonradan düzeltilen bir hata HiVelzon'a otomatik geçmez. Önlem: kaynak notuna commit hash'i yazılır. Ara sıra `git log -- <dosya>` ile karşılaştırma yapılır, ya da bilinçli olarak tamamen ayrışmaya izin verilir.
+  - Önlem: hiVelzon'a ayrı hesaplar, ayrı anahtarlar, ayrı bütçe defteri.
+- **Kopyalanan kodun ayrışması:** videoGenerator'da sonradan düzeltilen bir hata hiVelzon'a otomatik geçmez. Önlem: kaynak notuna commit hash'i yazılır. Ara sıra `git log -- <dosya>` ile karşılaştırma yapılır, ya da bilinçli olarak tamamen ayrışmaya izin verilir.
 - **Lisans:** videoGenerator'da LICENSE dosyası yok (README "MIT" diyor). İki repo da aynı sahibe ait olduğu için risk düşük. Yine de kaynak notu tutulmalı.
-- **Kavram karışıklığı:** HiVelzon CLAUDE.md tablosu bazı sınıfları gerçekte olmadıkları gibi anlatıyor. Örneğin `SceneImageService` Higgsfield kullanmıyor, maliyeti USD; `AudioProcessor` "normalizasyon (§5.5)" diye geçiyor ama hedef LUFS yok. Bu rapor onaylanınca CLAUDE.md tablosu düzeltilmeli. Bu oturumda düzeltilmedi; yazma kapsamı yalnızca bu raporla sınırlıydı.
+- **Kavram karışıklığı:** hiVelzon CLAUDE.md tablosu bazı sınıfları gerçekte olmadıkları gibi anlatıyor. Örneğin `SceneImageService` Higgsfield kullanmıyor, maliyeti USD; `AudioProcessor` "normalizasyon (§5.5)" diye geçiyor ama hedef LUFS yok. Bu rapor onaylanınca CLAUDE.md tablosu düzeltilmeli. Bu oturumda düzeltilmedi; yazma kapsamı yalnızca bu raporla sınırlıydı.
 
 ---
 
@@ -1105,13 +1105,13 @@ Her adım ayrı bir H-işi olarak açılmalı: kabul kriteri ve test komutuyla, 
 1. **TTS sağlayıcısı:** Anlatım ElevenLabs ile mi, Higgsfield ses modelleriyle (Seed Audio vb.) mi yapılacak?
    - K-03, kelime zamanlaması için hizalama verisine bağlı. Higgsfield TTS'in karakter ya da kelime zaman damgası verip vermediği **doğrulanmadı**.
    - Vermiyorsa iki seçenek var: ElevenLabs'te kalmak ya da Whisper ile zorunlu hizalama (forced alignment) yapmak.
-2. **ElevenLabs lisansı:** HiVelzon için ayrı ve ticari kullanıma uygun bir plan alınacak mı? `eleven_v3` modelinin `with-timestamps` ve `speed` desteği teyit edilmeli (H-027).
+2. **ElevenLabs lisansı:** hiVelzon için ayrı ve ticari kullanıma uygun bir plan alınacak mı? `eleven_v3` modelinin `with-timestamps` ve `speed` desteği teyit edilmeli (H-027).
 3. **Seviye tablosundaki çelişki:** A1'de 80–150 kelime, ~105 kelime/dk hızla 46–86 sn eder; ama video sınırı 30–60 sn. Kelime aralığı mı daraltılacak, süre mi uzatılacak? Benzer kontrol A2 için de yapılmalı.
 4. **`content-tools` nerede çalışacak?** Yalnızca yerelde (Claude Code oturumu) mı, yoksa CI ya da sunucuda da mı?
    - Higgsfield CLI etkileşimli giriş istiyor ve Node 18'e bağlı; sunucuda çalıştırmak zor.
    - Öneri: yerelde çalışsın, backend yalnızca içe aktarsın.
 5. **Uygulama videosu 16:9 mu, 9:16 mı?** CLAUDE.md "16:9 ya da 9:16" diyor. Karar, görsel en-boy oranını ve kredi harcamasını doğrudan etkiliyor; her iki oran da gerekirse sahne başına iki görsel gerekebilir.
-6. **Arka plan müziği:** HiVelzon hikâyelerinde müzik olacak mı? Olacaksa kaynak ve lisans ne olacak? (videoGenerator ElevenLabs Music ya da yerel telifsiz klasör kullanıyor.)
+6. **Arka plan müziği:** hiVelzon hikâyelerinde müzik olacak mı? Olacaksa kaynak ve lisans ne olacak? (videoGenerator ElevenLabs Music ya da yerel telifsiz klasör kullanıyor.)
 7. **`madeForKids` kararı:** Hangi içerikler "çocuklara yönelik" işaretlenecek? Hukuki görüş gerekiyor (§10.1).
 8. **TikTok `is_aigc` ve Instagram `is_ai_generated`:** Alan adları ve davranışları güncel resmî dokümandan doğrulanmalı (API otomasyonu K-14 gereği sonraya kaldı).
 9. **Bütçe birimi:** Higgsfield için aylık tavan **kredi** olarak mı, USD olarak mı tanımlanacak? Öneri: sağlayıcı başına kendi biriminde ayrı tavan.

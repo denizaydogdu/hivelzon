@@ -1,6 +1,6 @@
 # H-009: Misafir kullanım ve kayıt zorunluluğu
 
-- **Durum:** Yapılacak (kullanıcı kararı)
+- **Durum:** Bitti — karar verildi (2026-10-11)
 - **Tür:** Karar
 - **Öncelik:** Orta
 - **Bağımlılık:** H-002 (yaş beyanı kayıt anında alınır)
@@ -16,3 +16,10 @@ Katalog ve kısa akış misafire açık olsun. İlerleme, kelime kaydetme ve kon
 
 ## Notlar
 2026-10-11: `docs/SARTNAME.md` ve `docs/IS-PLANI.md` karşılaştırmasından açıldı.
+
+## Karar (2026-10-11)
+**Misafir kullanımı: prolog + B1** (kullanıcı, soru-cevap).
+- Kayıt olmadan prolog ve ilk bölüm oynanır.
+- İlerlemeyi, defteri ve sonraki bölümleri saklamak için hesap istenir.
+- Misafir verisi cihazda tutulur, kayıtta hesaba taşınır.
+- Yaş beyanı ve rızalar veri toplanmadan önce alınır (H-002: 13+).

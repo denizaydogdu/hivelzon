@@ -1,4 +1,4 @@
-# HiVelzon — İçerik Mimarisi (sentez)
+# hiVelzon — İçerik Mimarisi (sentez)
 
 > **2026-10-11 güncellemesi:** Kullanıcı ana deneyimin **oyunlaştırılmış, bölümleri birbirine bağlı bir hikâye** olmasına karar verdi. Bu belgedeki müfredat, lisans, seviye takibi, yayın hattı ve teknik kararlar geçerliliğini korur. Değişen bölümler ve ayrıntılar: `docs/OYUN-TASARIMI.md` §16. Değişen bölümler: §3.5 ünite kalıbı, §4.3 seriler, §6.1–6.3 sekmeler, ana sayfa ve ünite yolu, §7.2 yerleştirme çerçevesi.
 

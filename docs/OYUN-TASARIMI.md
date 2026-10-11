@@ -1,11 +1,11 @@
-# HiVelzon — Oyun ve Hikâye Tasarımı
+# hiVelzon — Oyun ve Hikâye Tasarımı
 
 **Sürüm:** 0.2 (web araştırması işlendi) · **Tarih:** 2026-10-11 · **Durum:** §17'deki K-21…K-35 kullanıcı tarafından onaylandı (H-029, 2026-10-11)
 
 ## 0. Durum ve girdiler
 
 **Kullanıcı kararı (2026-10-11, bağlayıcı):**
-- HiVelzon'un ana deneyimi **oyunlaştırılmış, sürekli bir hikâye** olacak.
+- hiVelzon'un ana deneyimi **oyunlaştırılmış, sürekli bir hikâye** olacak.
 - Bir **ana kahraman** olacak. İngilizce, hikâye içinde adım adım, "sanki bir oyunun içindeymiş gibi" öğrenilecek.
 - **Her bölüm bir öncekine bağlanacak.** Kullanıcı merak ettiği için devam edecek; yani tek bir oyun hikâyesi anlatılacak.
 
@@ -202,7 +202,7 @@ Kullanıcılar bölümleri üretimden hızlı tüketir.
 
 ### 5.3 Yol arkadaşı: Hi (yapay zekâ öğretmen) [K-23, H-005, H-016]
 
-**[Öneri]** Sabit yapay zekâ öğretmen **hikâyenin içinde** Alex'in telefonundaki asistan olur. Çalışma adı: **"Hi"** (HiVelzon markasıyla bağ).
+**[Öneri]** Sabit yapay zekâ öğretmen **hikâyenin içinde** Alex'in telefonundaki asistan olur. Çalışma adı: **"Hi"** (hiVelzon markasıyla bağ).
 
 **Görevleri:**
 - Türkçe ipucu verir.
@@ -599,9 +599,9 @@ icerik/
 
 ### 12.3 videoGenerator raporundan düzeltmeler (H-022)
 
-- `SceneImageService` **Higgsfield değil, OpenAI gpt-image-2** kullanıyor (görsel başına sabit 0,08 USD). HiVelzon için Higgsfield adaptörü yeniden yazılacak. CLAUDE.md tablosu düzeltildi.
+- `SceneImageService` **Higgsfield değil, OpenAI gpt-image-2** kullanıyor (görsel başına sabit 0,08 USD). hiVelzon için Higgsfield adaptörü yeniden yazılacak. CLAUDE.md tablosu düzeltildi.
 - **Ses normalizasyonu:** `loudnorm` parametresiz çalışıyor, yani ffmpeg varsayılanı -24 LUFS. Hedefler -16 (uygulama) ve -14 (sosyal medya) LUFS. İki geçişli yeni bir adım ve ölçüm kapısı gerekir.
-- **BudgetGuard:** Tavan yoksa 100 USD varsayıyor; HiVelzon kuralına aykırı. Yarıda kalan işlerin harcaması kaydedilmiyor. Bunlar düzeltilerek taşınacak.
+- **BudgetGuard:** Tavan yoksa 100 USD varsayıyor; hiVelzon kuralına aykırı. Yarıda kalan işlerin harcaması kaydedilmiyor. Bunlar düzeltilerek taşınacak.
 - **Çıktı:** Sabit 1080×1920 ve 60–90 sn. Segmentli bölüm yapısı, 16:9 ve HLS yeni yazılacak.
 - **TTS hizalaması:** Karakter düzeyinde geliyor. WebVTT ve kelime JSON'u üretimi raporun §4c bölümünde.
 - **Yayıncılar:** `madeForKids` sabit `false`. TikTok AIGC ve Instagram AI bayrağı yok.

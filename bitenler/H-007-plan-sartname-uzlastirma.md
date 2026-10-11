@@ -1,6 +1,6 @@
 # H-007: Plan ile şartname arasındaki çelişkileri uzlaştır
 
-- **Durum:** Yapılacak (kullanıcı kararı)
+- **Durum:** Bitti — karar verildi (2026-10-11)
 - **Tür:** Karar
 - **Öncelik:** Yüksek
 - **Bağımlılık:** H-001 ile birlikte karara bağlanır
@@ -23,3 +23,21 @@ CLAUDE.md "Plan ile şartname arasındaki açık çelişkiler" · `SARTNAME.md` 
 2026-10-11: `docs/SARTNAME.md` ve `docs/IS-PLANI.md` karşılaştırmasından açıldı.
 2026-10-11: **Madde 3 (seviye testi) çözüldü** (K-06): kademeli, en fazla ~20 soru, atlanabilir; sonuç "önerilen başlangıç seviyesi" olarak sunulur. **Madde 4 (seri)** H-013'te K-16 ile çözüldü. **Hâlâ açık:** konuşma pratiğinin MVP'deki yeri, faz yapısı (K-17; plan 4 / şartname 6 / strateji 8 faz) ve telaffuz puanı (H-015).
 2026-10-11: Oyun çerçevesinde konuşma pratiği, karakterle **canlı sahne** ve "Hi ile pratik" olur (`OYUN-TASARIMI.md` §8.1). Bölüm görevlerinde konuşma **hiçbir zaman zorunlu değildir**; seçmeli ya da yazılı alternatifi vardır.
+2026-10-11: **Konuşma pratiği MVP'de yok** (kullanıcı kararı). MVP: hikâye, görev, defter, kısa akış. Konuşma pratiği v1'de gelir; kota, bütçe ve ses rızası hazır olunca. Hikâyedeki "Söyle" adımı isteğe bağlıdır ve puan vermez. **Açık kalan:** faz yapısı (K-17).
+
+## Karar (2026-10-11)
+Plan ile şartname arasındaki çelişkiler kapandı:
+- **Konuşma pratiği MVP'de yok,** v1'de gelir (kullanıcı, soru-cevap).
+- **Faz yapısı (K-17): birleşik 4 faz** (kullanıcı, soru-cevap):
+
+  | Faz | Kapsam |
+  |---|---|
+  | **F0** | Kararlar + pilot bölüm |
+  | **F1 MVP** | Hikâye modu, Sezon 1 (A1), harita, defter, ipucu panosu, kısa akış, editör onayı |
+  | **F2 v1** | AI konuşma pratiği, Sezon 2 (A2) |
+  | **F3 v2** | Sezon 3 ve sonrası, çevrimdışı, gelişmiş seviye modeli (Elo, Rasch) |
+
+- **Seviye testi:** K-06.
+- **Seri:** K-16.
+- **Günlük hedef:** H-013.
+- **Telaffuz puanı:** H-015'te ayrıca.

@@ -1,13 +1,13 @@
-# HiVelzon — Proje Rehberi
+# hiVelzon — Proje Rehberi
 
-**HiVelzon:** Velzon Bilişim Teknolojileri Ltd. Şti.'nin, yapay zekâ videolarıyla İngilizce öğreten **mobil uygulaması** (iOS + Android).
+**hiVelzon:** Velzon Bilişim Teknolojileri Ltd. Şti.'nin, yapay zekâ videolarıyla İngilizce öğreten **mobil uygulaması** (iOS + Android).
 - Kitle: herkes, A1–C1.
 - Gelir modeli: tamamen ücretsiz.
 - Alan adı ileride `hi.velzon.tr`; şimdilik web yok.
 
 > **Durum:** Planlama. **Kullanıcı planı onaylamadan kod yazılmaz.** Plan: `docs/IS-PLANI.md`. Ayrıntılı gereksinimler: `docs/SARTNAME.md` (taslak 0.1, 2026-10-11). Plan onayına kadar migration, dış servis çağrısı, Higgsfield üretimi ve yayın da yapılmaz.
 
-**Karışmasın:** Velzon'un genel Higgsfield görsel/video atölyesi bu klasör değildir; `~/Dev/velzon-gorsel` altındadır (ayrı oturum). HiVelzon kendi içeriği için Higgsfield'ı **buradan doğrudan** kullanır (bkz. "Higgsfield ile görsel, video ve ses üretimi"). **WishSay'e başvurulmaz:** kullanıcı kararı, 2026-10-11 ("WishSay'i unut, yalnızca HiVelzon'a odaklan"). Okunmaz, takip edilmez, durumu raporlanmaz. Hazır video boru hattı kodu `~/Dev/videoGenerator` altındadır (bkz. "videoGenerator projesinden yararlanma").
+**Karışmasın:** Velzon'un genel Higgsfield görsel/video atölyesi bu klasör değildir; `~/Dev/velzon-gorsel` altındadır (ayrı oturum). hiVelzon kendi içeriği için Higgsfield'ı **buradan doğrudan** kullanır (bkz. "Higgsfield ile görsel, video ve ses üretimi"). **WishSay'e başvurulmaz:** kullanıcı kararı, 2026-10-11 ("WishSay'i unut, yalnızca hiVelzon'a odaklan"). Okunmaz, takip edilmez, durumu raporlanmaz. Hazır video boru hattı kodu `~/Dev/videoGenerator` altındadır (bkz. "videoGenerator projesinden yararlanma").
 
 ## Ürünün dört ayağı
 1. Hazır ders videoları (Higgsfield; sabit yapay zekâ öğretmen karakteri)
@@ -17,7 +17,7 @@
 
 ## Ana deneyim: oyunlaştırılmış, sürekli hikâye (kullanıcı kararı, 2026-10-11)
 
-- HiVelzon'un omurgası **bir ana kahramanın etrafında, bölüm bölüm ilerleyen, oyun gibi oynanan bir video maceradır.** Dört ayak bu omurgaya bağlanır:
+- hiVelzon'un omurgası **bir ana kahramanın etrafında, bölüm bölüm ilerleyen, oyun gibi oynanan bir video maceradır.** Dört ayak bu omurgaya bağlanır:
   - hazır videolar = bölümler;
   - konuşma pratiği = karakterlerle canlı sahne;
   - kısa akış = bölüm klipleri;
@@ -49,6 +49,21 @@
 | K-33 | Klasör: hikâye kanonu `icerik/_evren/`'de; bölümler K-01 düzeninde (`icerik/A1-001-a-strange-message/`). |
 | K-34 | Durum makinesi K-05 olarak kalır. Kanon kontrolü onay kontrol listesinin bir maddesidir. |
 | K-35 | A1 hikâye videosu 45–90 sn (CEFR tablosu güncellendi). |
+| H-007 | **Konuşma pratiği (AI sohbet) MVP'de yok;** v1'de gelir. |
+| H-002 | **13+.** AI sohbeti yalnızca 18+. 13 yaş altı kayıt yok. (Hukuk teyidi bekliyor.) |
+| H-003 | **Aylık AI harcama tavanı 300 USD.** Tavan dolunca ücretli üretim ve AI özellikleri durur. |
+| H-028 | İçerik onayı: Claude üretir, kullanıcı onaylar; her ünite sonunda öğretmen ya da editör toplu kontrol yapar. |
+| K-17 | **Birleşik 4 faz:** F0 kararlar + pilot · F1 MVP (hikâye modu, S1 A1, harita, defter, kısa akış, editör onayı) · F2 v1 (AI konuşma, S2 A2) · F3 v2 (S3+, çevrimdışı, gelişmiş seviye modeli) |
+| H-016 | Ad yazımı **hiVelzon** |
+| H-013 | Günlük hedef 5 / 10 / 15 dk; günde en fazla 1 hatırlatma, saati kullanıcı seçer |
+| H-009 | Misafir: prolog + B1 kayıtsız; ilerleme için hesap |
+| H-018 | Yayın bölgesi: yalnızca Türkiye |
+| H-020 | Hiç reklam yok |
+| H-017 | Sosyal medya: ayrı ve onaylı faz; hesaplar lansmana yakın açılır; elle yükleme, her yayın onaylı |
+| H-010 | Çevrimdışı kullanım MVP'de yok (F3) |
+| H-005 | Hi'nin görünümü: yuvarlak, yumuşak ışıklı konuşma balonu ve gözler |
+| H-006 | Bölüm seslendirmesi ElevenLabs ile yapılır. hiVelzon'un **ayrı, ticari lisanslı** anahtarı kullanılır (videoGenerator'ınki değil). Anahtar repo dışında tutulur. |
+| H-024 | Pilot (S1·B1 + 3 klip) mevcut Higgsfield kredileriyle başladı. Her üretimden önce maliyet onayı alınır. |
 | H-030 | Kahraman **Aleyna "Alex" Yıldız** (kadın, 19, İzmir). Story Bible ve Sezon 1 planı onaylandı; kanon `icerik/_evren/`'de kilitli. S1'de fiyatlar birimsiz söylenir ("It's thirteen."). |
 
 **Bölümler arası bağ kuralları** (`OYUN-TASARIMI.md` §4.3, bağlayıcı):
@@ -63,7 +78,7 @@
   - kanca hikâyenin içinden gelir, korkudan değil meraktan beslenir.
 
 ## Önerilen teknik yığın
-Flutter + Spring Boot 4 + PostgreSQL. Aşağıdakiler HiVelzon'un **kendi tasarımıyla** yapılır:
+Flutter + Spring Boot 4 + PostgreSQL. Aşağıdakiler hiVelzon'un **kendi tasarımıyla** yapılır:
 - kimlik doğrulama;
 - denetim kaydı (IP/port/saat);
 - onay kayıtları;
@@ -222,9 +237,9 @@ Bir hikâye, plandaki §5.5 kalite kontrol listesi ve şartnamedeki §7.2 yayın
 
 ## videoGenerator projesinden yararlanma
 
-`~/Dev/videoGenerator` (Java 17 + Maven, saf Java SE, Spring yok) zaten **hikâye → sahne görselleri → TTS → altyazı → 1080×1920 video → çoklu platform yayını** hattını uçtan uca çalıştırıyor (Velzon sosyal medya paylaşımları ve İngilizce hikâye kanalları bu kodla üretiliyor). HiVelzon hikâye videoları için tekerleği yeniden icat etme; önce oradaki parçaları incele.
+`~/Dev/videoGenerator` (Java 17 + Maven, saf Java SE, Spring yok) zaten **hikâye → sahne görselleri → TTS → altyazı → 1080×1920 video → çoklu platform yayını** hattını uçtan uca çalıştırıyor (Velzon sosyal medya paylaşımları ve İngilizce hikâye kanalları bu kodla üretiliyor). hiVelzon hikâye videoları için tekerleği yeniden icat etme; önce oradaki parçaları incele.
 
-| videoGenerator sınıfı | Ne yapar | HiVelzon'da kullanımı |
+| videoGenerator sınıfı | Ne yapar | hiVelzon'da kullanımı |
 |---|---|---|
 | `service/StoryWriter` | Tek LLM çağrısında hikâye + sahne başına görsel prompt'u üretir (görsel her zaman anlatımla uyumlu) | Seviyeli hikâye üretimi: prompt'a CEFR kısıtları (yukarıdaki tablo) eklenerek |
 | `service/SceneImageService` | Her sahne için görsel üretir; kanalın sabit stil önekini (`stylePrefix`) uygular; var olan görseli tekrar üretmez. **Düzeltme (H-022):** Higgsfield değil, **OpenAI gpt-image-2** kullanıyor (görsel başına sabit 0,08 USD). | Stil kilidi deseni alınır; Higgsfield adaptörü **yeniden yazılır** |
@@ -235,16 +250,16 @@ Bir hikâye, plandaki §5.5 kalite kontrol listesi ve şartnamedeki §7.2 yayın
 | `processor/KenBurnsRenderer` | Durağan görselleri yakınlaştırma/uzaklaştırma + geçiş + altyazıyla 1080×1920 videoya çevirir | **Ucuz hikâye videosu:** görsel başına ~0,12 kredi, video kredisi harcamadan |
 | `processor/AudioProcessor`, `FFmpegWrapper` | Anlatım + müzik karışımı (ducking, normalizasyon), ffmpeg işlemleri. **Not (H-022):** `loudnorm` parametresiz çalışıyor (~-24 LUFS, tek geçiş). | Son kurgu. Normalizasyon -16 LUFS (uygulama) ve -14 LUFS (sosyal medya) hedefiyle iki geçişli olarak yeniden yazılır. |
 | `job/JobPipeline`, `Job`, `JobStore` | Adım adım, her adımdan sonra atomik `job.json`; çökme sonrası kaldığı yerden devam | İçerik üretim boru hattının iskeleti |
-| `job/BudgetGuard`, `CostTracker` | Ücretli her çağrıdan **önce** aylık harcama tavanı kontrolü; aylık maliyet dosyası. **Not (H-022):** Tavan yoksa 100 USD varsayıyor. Yarıda kalan işin harcaması kaydedilmiyor. | Desen alınır, ama HiVelzon kuralına göre düzeltilir: tavan yoksa üretim kapalı; her harcama kaydedilir; üretim öncesi onay |
+| `job/BudgetGuard`, `CostTracker` | Ücretli her çağrıdan **önce** aylık harcama tavanı kontrolü; aylık maliyet dosyası. **Not (H-022):** Tavan yoksa 100 USD varsayıyor. Yarıda kalan işin harcaması kaydedilmiyor. | Desen alınır, ama hiVelzon kuralına göre düzeltilir: tavan yoksa üretim kapalı; her harcama kaydedilir; üretim öncesi onay |
 | `channel/ChannelProfile` (`channels/*.json`) | Kanal başına konu, stil öneki, ses kimliği, diller, platformlar | Seviye başına profil (ör. `hivelzon-a1-en`) mümkün |
-| `publish/*` (`YouTubePublisher`, `MetaReelsPublisher`, `TikTokPublisher`, `PublishService`) | İdempotent çoklu platform yayını | HiVelzon sosyal medya hesapları açılınca yeniden kullanılabilir |
+| `publish/*` (`YouTubePublisher`, `MetaReelsPublisher`, `TikTokPublisher`, `PublishService`) | İdempotent çoklu platform yayını | hiVelzon sosyal medya hesapları açılınca yeniden kullanılabilir |
 | `web/BackofficeServer` | İş onay/izleme paneli (`PENDING_REVIEW` → onay → yayın) | Editör onayı (insan kontrolü) akışı için örnek |
 
 Kurallar:
-- **Önce oku, sonra taşı.** HiVelzon backend'i Spring Boot 4 olacak; videoGenerator saf Java SE. Sınıflar doğrudan bağımlılık olarak değil, **desen/kod olarak taşınır** (kaynağı belirterek). İki repo birbirine bağlanmaz.
-- videoGenerator'da değişiklik HiVelzon oturumundan **yapılmaz**; gerekiyorsa kullanıcıya sorulur. O projenin canlı Velzon paylaşım işleri vardır.
+- **Önce oku, sonra taşı.** hiVelzon backend'i Spring Boot 4 olacak; videoGenerator saf Java SE. Sınıflar doğrudan bağımlılık olarak değil, **desen/kod olarak taşınır** (kaynağı belirterek). İki repo birbirine bağlanmaz.
+- videoGenerator'da değişiklik hiVelzon oturumundan **yapılmaz**; gerekiyorsa kullanıcıya sorulur. O projenin canlı Velzon paylaşım işleri vardır.
 - videoGenerator'ın hattı çalışırken orada `mvn package` **çalıştırılmaz** (çalışan JVM'in jar'ı altından değişir).
-- videoGenerator'ı HiVelzon içeriği üretmek için doğrudan kullanmak (yeni `channels/hivelzon-*.json` profili + yayın) kullanıcı onayı ister; yayın dışa dönük ve geri alınamaz bir işlemdir.
+- videoGenerator'ı hiVelzon içeriği üretmek için doğrudan kullanmak (yeni `channels/hivelzon-*.json` profili + yayın) kullanıcı onayı ister; yayın dışa dönük ve geri alınamaz bir işlemdir.
 - Ayrıntı için videoGenerator'ın kendi `CLAUDE.md`, `README.md` ve `thoughts/` belgelerine bak.
 
 ## Higgsfield ile görsel, video ve ses üretimi
@@ -254,7 +269,7 @@ Bu klasörden Higgsfield CLI ve Claude Code skill'leriyle görsel, video, ses (T
 ### Kurulum durumu (2026-10-11 doğrulandı)
 
 - CLI: `higgsfield` **1.1.26** kurulu (`~/.nvm/versions/node/v18.20.7/bin/higgsfield`; kısa adları `higgs`, `hf`).
-- Oturum: açık — `info@velzon.tr`, **lite** plan, **204,25 kredi** (planda yazan 244,25'ten bu yana 40 kredi harcanmış).
+- Oturum: açık — `info@velzon.tr`, **lite** plan. Kredi 2026-10-11 akşamı **118,75**. Başka oturumlar da aynı hesabı kullanıyor; harcamadan önce her seferinde `higgsfield account status` ile kontrol edilir.
 - Skill'ler: `~/.claude/skills/higgsfield-*` altında kurulu (liste aşağıda).
 
 ### Yeni bir makinede kurulum (ya da kurulum bozulursa)
@@ -273,15 +288,15 @@ Not: CLI nvm'in Node 18 kurulumuna bağlı. Node sürümü değişirse `higgsfie
 
 ### Hangi iş için hangi skill
 
-| Skill | HiVelzon'da kullanım |
+| Skill | hiVelzon'da kullanım |
 |---|---|
 | `higgsfield-generate` | Genel üretim: sahne görselleri, kısa video klipleri, görselden videoya, TTS dışı ses/müzik/efekt. Varsayılanlar: görsel/metin için GPT Image 2.5, video için Seedance 2.5, çizgi karakter için Nano Banana 2, ses için Seed Audio 1.0 |
 | `higgsfield-video-explainer` | **Hikâye videoları için ilk aday:** 10 sn'lik bloklardan anlatımlı, foto-gerçekçi olmayan (animasyon/çizim) hikâye videosu; tek anlatıcı, tek stil anahtarı, isteğe bağlı gömülü altyazı. A1–B1 hikâyelerine çok uygun |
 | `higgsfield-soul-id` | Sabit öğretmen karakterinin yüzünü eğitir (§5.1, H-005). Sonra `higgsfield-generate` ile `--soul-id` kullanılarak tutarlı yüz |
 | `higgsfield-youtube-thumbnail` | YouTube kapağı, Shorts/Reels kapak görseli |
-| `higgsfield-brandkit` | HiVelzon görsel kimliği: renk paleti, logo, tipografi, sosyal medya şablonları |
+| `higgsfield-brandkit` | hiVelzon görsel kimliği: renk paleti, logo, tipografi, sosyal medya şablonları |
 | `higgsfield-websites` | İleride `hi.velzon.tr` tanıtım sitesi (şimdilik kapsam dışı) |
-| `higgsfield-product-photoshoot`, `higgsfield-marketplace-cards` | Ürün fotoğrafı/pazar yeri kartı içindir; HiVelzon'da genelde **kullanılmaz** |
+| `higgsfield-product-photoshoot`, `higgsfield-marketplace-cards` | Ürün fotoğrafı/pazar yeri kartı içindir; hiVelzon'da genelde **kullanılmaz** |
 
 ### Sık komutlar
 

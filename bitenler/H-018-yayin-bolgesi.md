@@ -1,6 +1,6 @@
 # H-018: Mağaza yayın bölgesi
 
-- **Durum:** Yapılacak (kullanıcı kararı)
+- **Durum:** Bitti — karar verildi (2026-10-11)
 - **Tür:** Karar
 - **Öncelik:** Orta
 - **Bağımlılık:** H-002
@@ -16,3 +16,6 @@ Başlangıçta yalnızca Türkiye. AB'ye açılmak GDPR yükümlülükleri getir
 
 ## Notlar
 2026-10-11: `docs/SARTNAME.md` ve `docs/IS-PLANI.md` karşılaştırmasından açıldı.
+
+## Karar (2026-10-11)
+**Yayın bölgesi: yalnızca Türkiye** (kullanıcı, soru-cevap). AB'ye açılmak ileride ayrı bir karardır (GDPR, AB Yapay Zekâ Yasası).

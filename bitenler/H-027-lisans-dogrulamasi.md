@@ -49,3 +49,5 @@ Rapor: `docs/LISANS-RAPORU.md`. Kabul kriterleri karşılandı:
 **Açık kalanlar:**
 - hukuk soruları (S1–S12);
 - Tono Lab ve Cambridge'e yazılı teyit. Dışa dönük yazışma olduğu için kullanıcı onayı gerekir.
+
+2026-10-11: **Dış yazışmalar şimdilik yapılmayacak** (kullanıcı, soru-cevap): Cambridge, Tono Lab, hukukçu. Taslaklar `docs/LISANS-RAPORU.md` §6–§8'de duruyor. Lansmandan önce yeniden sorulacak.

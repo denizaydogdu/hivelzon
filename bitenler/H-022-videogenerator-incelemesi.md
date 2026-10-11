@@ -6,7 +6,7 @@
 - **Bağımlılık:** —
 
 ## Amaç
-Hikâye video hattında yeniden kullanılacak sınıfları okuyup HiVelzon'a (Spring Boot 4) nasıl taşınacaklarını belirlemek.
+Hikâye video hattında yeniden kullanılacak sınıfları okuyup hiVelzon'a (Spring Boot 4) nasıl taşınacaklarını belirlemek.
 
 ## Kapsam
 - `~/Dev/videoGenerator` yalnızca okunur. **Değişiklik yapılmaz, `mvn package` çalıştırılmaz.**
@@ -35,4 +35,4 @@ Rapor: `docs/VIDEOGENERATOR-RAPORU.md`. 18 sınıf için taşıma notu, CEFR pro
 
 **Kullanıcıya iletilen risk:** videoGenerator'da git'e işlenmiş `TODO.md` dosyasının ~277. satırında bir API anahtarının parçası açık duruyor. Anahtar değiştirilmeli. O repo bu oturumdan değiştirilmez.
 
-**Not:** videoGenerator'ın ElevenLabs hesabı ücretsiz plan. HiVelzon ayrı ve ticari kullanıma uygun bir hesap kullanmalı (H-027 / H-006).
+**Not:** videoGenerator'ın ElevenLabs hesabı ücretsiz plan. hiVelzon ayrı ve ticari kullanıma uygun bir hesap kullanmalı (H-027 / H-006).

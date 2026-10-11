@@ -1,4 +1,4 @@
-# HiVelzon — İş ve Ürün Planı
+# hiVelzon — İş ve Ürün Planı
 
 > **Sürüm:** 0.1 (taslak, kullanıcı onayı bekliyor) · **Tarih:** 2026-10-11
 > **Sahibi / veri sorumlusu:** Velzon Bilişim Teknolojileri Ltd. Şti. (Eskişehir · info@velzon.tr)
@@ -30,7 +30,7 @@
 
 **Değer önerisi (kullanıcı gözünden):**
 
-| Kullanıcının derdi | HiVelzon'un cevabı |
+| Kullanıcının derdi | hiVelzon'un cevabı |
 |---|---|
 | "Uygulamalar pahalı, abonelik istiyor." | Tamamen ücretsiz; reklam yok (öneri). |
 | "Kelime ezberliyorum ama konuşamıyorum." | Her gün kısa konuşma pratiği (kotalı ama ücretsiz). |
@@ -76,12 +76,12 @@ Kitle: **herkes, A1–C1**. Ancak ürün ve hukuk kararları yaşa göre çok de
 
 > Kaynaklar 2026-10-11'de web aramasıyla toplandı. **[Doğrulanmadı]** etiketi taşıyan bilgiler resmi bir kaynaktan teyit edilemedi. Fiyatlar çoğunlukla ABD fiyatıdır. Türkiye mağaza fiyatları bölgesel olarak farklıdır; kontrol edilmeli.
 
-| Rakip | Ne sunuyor | Ölçek (son bilinen) | Fiyat | HiVelzon için ders |
+| Rakip | Ne sunuyor | Ölçek (son bilinen) | Fiyat | hiVelzon için ders |
 |---|---|---|---|---|
-| **Duolingo** | Oyunlaştırılmış dersler, seri. Max planında yapay zekâ "Video Call" (Lily) ve Roleplay. | Q2 2026: **58,7 milyon DAU** (yıllık +%23), **12,7 milyon ücretli abone**, çeyreklik gelir 298,5 milyon USD [1] | Max ≈ 29,99 USD/ay veya 168 USD/yıl (ABD) [2] [Türkiye fiyatı doğrulanmadı] | Seri ve oyunlaştırma çok güçlü. Duolingo'nun yapay zekâ konuşması ücretli bölümde; HiVelzon burada ücretsiz kalarak farklılaşabilir. |
+| **Duolingo** | Oyunlaştırılmış dersler, seri. Max planında yapay zekâ "Video Call" (Lily) ve Roleplay. | Q2 2026: **58,7 milyon DAU** (yıllık +%23), **12,7 milyon ücretli abone**, çeyreklik gelir 298,5 milyon USD [1] | Max ≈ 29,99 USD/ay veya 168 USD/yıl (ABD) [2] [Türkiye fiyatı doğrulanmadı] | Seri ve oyunlaştırma çok güçlü. Duolingo'nun yapay zekâ konuşması ücretli bölümde; hiVelzon burada ücretsiz kalarak farklılaşabilir. |
 | **Babbel** | Uzman müfredatı. "Babbel Speak": Eylül 2025'te Conversation Coach'un yerini aldı, senaryolu yapay zekâ konuşması. | 2025 itibarıyla toplam 25 milyonun üzerinde satılmış abonelik [3] [ikincil kaynak] | Abonelik [güncel fiyat doğrulanmadı] | Senaryo temelli konuşma ("kafede sipariş") A1–B1 için iyi bir kalıp. |
-| **Cambly** | Gerçek anadili İngilizce olan eğitmenlerle görüntülü ders; Cambly Kids. | 10 milyonun üzerinde kullanıcı [4] [ikincil kaynak] | Plana göre değişir. Bir kaynak günde 15 dakika için ~129 USD/ay; Kids ~9,99 USD/ay'dan başlıyor [5] [doğrulanmadı] | İnsan eğitmen pahalı. HiVelzon'un yapay zekâ pratiği "Cambly'ye hazırlık" gibi konumlanabilir. |
-| **Praktika** | Yapay zekâ avatar öğretmenler (farklı aksanlar, duygu ve ton). | Mayıs 2024'te 35,5 milyon USD Seri A; 1,2 milyon aylık aktif kullanıcı ve ~20 milyon USD yıllık gelir (o tarihte) [6] | Abonelik [güncel fiyat doğrulanmadı] | **En yakın rakip konsept:** avatar öğretmen + konuşma. Fark: Praktika ücretli; HiVelzon ücretsiz ve Türkçeye özel. |
+| **Cambly** | Gerçek anadili İngilizce olan eğitmenlerle görüntülü ders; Cambly Kids. | 10 milyonun üzerinde kullanıcı [4] [ikincil kaynak] | Plana göre değişir. Bir kaynak günde 15 dakika için ~129 USD/ay; Kids ~9,99 USD/ay'dan başlıyor [5] [doğrulanmadı] | İnsan eğitmen pahalı. hiVelzon'un yapay zekâ pratiği "Cambly'ye hazırlık" gibi konumlanabilir. |
+| **Praktika** | Yapay zekâ avatar öğretmenler (farklı aksanlar, duygu ve ton). | Mayıs 2024'te 35,5 milyon USD Seri A; 1,2 milyon aylık aktif kullanıcı ve ~20 milyon USD yıllık gelir (o tarihte) [6] | Abonelik [güncel fiyat doğrulanmadı] | **En yakın rakip konsept:** avatar öğretmen + konuşma. Fark: Praktika ücretli; hiVelzon ücretsiz ve Türkçeye özel. |
 | **Speak** | Sesli konuşma odaklı yapay zekâ öğretmen. OpenAI teknolojisi kullanıyor. | Aralık 2024'te 78 milyon USD Seri C, 1 milyar USD değerleme, 10 milyonun üzerinde kullanıcı [7] | Abonelik [doğrulanmadı] | "Önce konuş" yaklaşımı ve Kore'deki başarı, konuşma pratiğine talep olduğunu gösteriyor. |
 | **ELSA Speak** | Telaffuz puanlama (ses, akıcılık, tonlama, vurgu). | [Güncel kullanıcı sayısı doğrulanmadı] | Premium ~13,33 USD/ay'dan başlıyor; takım planı 18,20 USD/kullanıcı/ay [8] | Telaffuz puanı tek başına bir ürün olabilir. Biz bunu hazır bulut servisiyle (Azure) ucuza ekleyebiliriz (§6). |
 | **Türk rakipler** | **Konuşarak Öğren:** canlı eğitmenle konuşma pratiği, 6–65 yaş [9]. **Learnai, Talkinn, SmartTalk** gibi bağımsız Türk geliştiricilerin yapay zekâ konuşma uygulamaları App Store'da [10][11]. MEB 2025–2026'dan itibaren ortaokulda İngilizce ders saatini artırıyor [12]. | [Kullanıcı sayıları doğrulanmadı] | Çoğu abonelik veya ders paketi [doğrulanmadı] | Türk pazarında "yapay zekâ ile konuş" uygulamaları çoğalıyor ama dağınık ve küçük. Ücretsiz, kaliteli videolu ve güvenilir (KVKK uyumlu) bir yerli ürün için boşluk var. |
@@ -306,7 +306,7 @@ Kullanıcı konuşur
 Kullanıcı duyar + metni görür
 ```
 
-İstemci yapay zekâ sağlayıcısına **doğrudan bağlanmaz.** Her istek HiVelzon sunucusundan geçer. Sebepleri:
+İstemci yapay zekâ sağlayıcısına **doğrudan bağlanmaz.** Her istek hiVelzon sunucusundan geçer. Sebepleri:
 1. API anahtarı istemcide bulunmaz.
 2. Kota ve bütçe tavanı sunucuda uygulanır.
 3. Denetim kaydı tutulur.
@@ -503,7 +503,7 @@ Bu kurallarla 10 bin MAU'da yapay zekâ maliyeti yaklaşık **1.500–2.600 USD/
   - Anthropic, Deepgram ve Azure gibi sağlayıcılar yurt dışındadır.
   - 2024 değişikliğiyle standart sözleşme imzalanır ve imzadan sonra 5 iş günü içinde Kurum'a bildirilir. **[Hukukçu teyidi gerekli]**
   - Cihazda STT ve TTS kullanmak bu yükü azaltır.
-- **VERBİS:** Velzon'un kaydı WishSay için de geçerlidir; envantere HiVelzon işlemleri eklenir. **[Kontrol edilmeli]**
+- **VERBİS:** Velzon'un kaydı WishSay için de geçerlidir; envantere hiVelzon işlemleri eklenir. **[Kontrol edilmeli]**
 
 ### 9.2 Çocuklar
 
@@ -524,7 +524,7 @@ Bu kurallarla 10 bin MAU'da yapay zekâ maliyeti yaklaşık **1.500–2.600 USD/
 
 ### 9.4 WishSay'den tekrar kullanılacak kalıplar
 
-| WishSay kalıbı | HiVelzon'da kullanımı |
+| WishSay kalıbı | hiVelzon'da kullanımı |
 |---|---|
 | `audit_log` (IP, port, User-Agent, UTC; sadece ekleme) | Her yazma işlemi + her yapay zekâ oturumunun başlangıç/bitiş ve maliyet kaydı |
 | `user_consents` (politika sürümüyle) | KVKK aydınlatma, `VOICE_PROCESSING` açık rızası, veli onayı, bildirim izni |
@@ -656,7 +656,7 @@ Senaryo → Higgsfield CLI (Soul ID, video, ses) → kurgu → altyazı → QC �
 5. **Sağlayıcılar ve yurt dışı aktarım (H-006):** LLM için Claude (Haiku 4.5 / Sonnet 5.5) uygun mu? STT, TTS ve telaffuz için Azure / Deepgram uygun mu? Yurt dışına aktarım için hukukçu desteği var mı?
 6. **Yayın bölgesi:** Sadece Türkiye mi (öneri), yoksa AB'deki Türkler de mi?
 7. **Kod paylaşımı:** WishSay'den kopyala-uyarla mı (öneri), ortak kütüphane mi?
-8. **Marka:** "HiVelzon" adı ve logosu Higgsfield brandkit ile mi üretilecek? Mağaza adı "HiVelzon: İngilizce Öğren" gibi mi olacak?
+8. **Marka:** "hiVelzon" adı ve logosu Higgsfield brandkit ile mi üretilecek? Mağaza adı "hiVelzon: İngilizce Öğren" gibi mi olacak?
 9. **Reklam yok kararı:** Onaylanıyor mu (öneri: hiç reklam yok)?
 
 ---

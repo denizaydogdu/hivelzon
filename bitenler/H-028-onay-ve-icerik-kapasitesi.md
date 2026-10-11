@@ -1,6 +1,6 @@
 # H-028: İçerik onayı, roller ve kapasite
 
-- **Durum:** Yapılacak (kullanıcı kararı)
+- **Durum:** Bitti — karar verildi (2026-10-11)
 - **Tür:** Karar
 - **Öncelik:** Yüksek (pilot içerikten önce)
 - **Bağımlılık:** H-004
@@ -22,3 +22,8 @@
 
 ## Notlar
 2026-10-11: Web araştırması (5 kol) ve kullanıcının içerik stratejisi belgesinden açıldı. Ayrıntı: `docs/ICERIK-MIMARISI.md`.
+
+## Karar (2026-10-11)
+Kullanıcı soru-cevapla karar verdi: **Claude üretir, kullanıcı onaylar.** Her ünite (bölüm grubu) sonunda bir İngilizce öğretmeni ya da editör toplu kontrol yapar.
+
+**Kalan:** Öğretmen ya da editörün kim olacağı ve ücreti. Kontrolün sıklığı: Sezon 1 için en az B4, B8 ve B12'den sonra.

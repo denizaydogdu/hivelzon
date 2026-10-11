@@ -1,0 +1,22 @@
+[
+  {
+    "created_at": "2026-10-11T14:34:18.378643Z",
+    "display_name": "Nano Banana 2",
+    "id": "074160d2-c5fb-4214-a815-dfb761362a36",
+    "job_type": "nano_banana_flash",
+    "min_result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261011_143418_074160d2-c5fb-4214-a815-dfb761362a36_min.webp",
+    "params": {
+      "aspect_ratio": "3:2",
+      "batch_size": 1,
+      "height": 1696,
+      "is_inpaint": false,
+      "medias": [],
+      "prompt": "Character reference sheet of an original character: Aleyna, called Alex, a 19-year-old young woman from Izmir, Turkey. Dark brown shoulder-length hair, warm brown eyes, casual simple clothes: olive jacket, cream sweater, jeans, white sneakers. Canvas backpack with an old portable radio in the side pocket, phone on a strap. Front view, side view, back view, and three facial expressions: curious, shy smile, surprised. Plain light background. Warm animated-series illustration, graphic-novel style, clean ink lines, soft cel shading, coastal palette of sea blue, sand, lighthouse yellow and evening orange, mature tone suitable for teens and adults, not childish, no text, no letters, no logos.",
+      "reference_elements": [],
+      "resolution": "2k",
+      "width": 2528
+    },
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261011_143418_074160d2-c5fb-4214-a815-dfb761362a36.png",
+    "status": "completed"
+  }
+]

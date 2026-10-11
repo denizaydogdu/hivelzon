@@ -1,6 +1,6 @@
 # H-020: Reklam yok kararı
 
-- **Durum:** Yapılacak (kullanıcı kararı)
+- **Durum:** Bitti — karar verildi (2026-10-11)
 - **Tür:** Karar
 - **Öncelik:** Düşük
 - **Bağımlılık:** —
@@ -16,3 +16,6 @@ Hiç reklam olmasın. Reklam SDK'sı çocuk güvenliği ve mağaza kategorisi a�
 
 ## Notlar
 2026-10-11: `docs/SARTNAME.md` ve `docs/IS-PLANI.md` karşılaştırmasından açıldı.
+
+## Karar (2026-10-11)
+**Hiç reklam yok** (kullanıcı, soru-cevap). Reklam SDK'sı eklenmez.

@@ -1,0 +1,40 @@
+[
+  {
+    "created_at": "2026-10-11T14:42:38.350774Z",
+    "display_name": "GPT Image 2.5",
+    "id": "79759833-7016-4e97-8f28-2af795a5cf49",
+    "job_type": "gpt_image_2_5",
+    "min_result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261011_144238_79759833-7016-4e97-8f28-2af795a5cf49_min.webp",
+    "params": {
+      "aspect_ratio": "9:16",
+      "height": 2688,
+      "medias": [
+        {
+          "data": {
+            "id": "663ea0fe-3df5-4cea-ba8c-e08c80e48a96",
+            "type": "media_input",
+            "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/663ea0fe-3df5-4cea-ba8c-e08c80e48a96.png"
+          },
+          "role": "image"
+        },
+        {
+          "data": {
+            "id": "74fb45e8-d78d-4902-b6d6-e95fd85aca46",
+            "type": "media_input",
+            "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/74fb45e8-d78d-4902-b6d6-e95fd85aca46.png"
+          },
+          "role": "image"
+        }
+      ],
+      "model": "flare",
+      "prompt": "Use the reference image for the old radio and Alex's hands and jacket sleeve. Scene: first-person point of view looking down at the old radio on a wooden desk, its small green light glowing, Alex's hands near the radio, a phone lying next to it with a dark blank screen. Background softly blurred and simplified, warm dim evening light, focused and quiet decision moment. Vertical composition. Warm animated-series illustration, graphic-novel style, clean ink lines, soft cel shading, coastal palette of sea blue, sand, lighthouse yellow and evening orange, mature tone suitable for teens and adults, not childish, no text, no letters, no numbers, no logos.",
+      "quality": "low",
+      "reference_elements": [],
+      "remove_bg": false,
+      "resolution": "2k",
+      "width": 1520
+    },
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261011_144238_79759833-7016-4e97-8f28-2af795a5cf49.png",
+    "status": "completed"
+  }
+]

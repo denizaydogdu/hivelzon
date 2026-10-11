@@ -1,4 +1,4 @@
-# HiVelzon — Lisans Doğrulama Raporu (H-027)
+# hiVelzon — Lisans Doğrulama Raporu (H-027)
 
 - **Hazırlanma tarihi:** 2026-10-11
 - **Kapsam:** Müfredat omurgasında ve yardımcı araçlarda kullanılacak kelime/dilbilgisi listeleri, testler, yazılım kütüphaneleri ve MEB programı.
@@ -6,7 +6,7 @@
   - Lisans metinleri her kaynağın kendi sitesinden okundu.
   - JavaScript ile yüklenen sayfalar (English Profile) tarayıcıyla açılıp sitenin kendi yüklediği metinden okundu.
   - Erişimi engelleyen siteler (Avrupa Konseyi `rm.coe.int`, Text Inspector) için Internet Archive kopyası kullanıldı. Kullanılan arşiv tarihi her bulguda yazılıdır.
-- **Kullanım bağlamı:** HiVelzon, Velzon Bilişim Teknolojileri Ltd. Şti.'nin ürünüdür. Ücretsizdir; reklam ve abonelik yoktur. Yine de **ticari kullanım** varsayılarak değerlendirildi.
+- **Kullanım bağlamı:** hiVelzon, Velzon Bilişim Teknolojileri Ltd. Şti.'nin ürünüdür. Ücretsizdir; reklam ve abonelik yoktur. Yine de **ticari kullanım** varsayılarak değerlendirildi.
 - **Önemli:** Bu rapor hukuk görüşü değildir. "Kullanılabilir" kararı, lisans metninin açık ifadesine dayanır. Yoruma açık noktalar §8'de hukukçuya sorulacak sorular olarak ayrıca listelendi.
 - **İşaretler:**
   - **[doğrulandı]:** Birincil kaynak okundu, alıntı aşağıda.
@@ -80,7 +80,7 @@ Tüm kontroller 2026-10-11 tarihinde yapıldı.
 - **Karar: Kullanılabilir (omurga).**
   - Atıf verilir.
   - Uygulamaya gömülerek dağıtılabilir; share-alike yükümlülüğü yoktur.
-  - Türetilmiş HiVelzon listesinde de kaynak belirtilir.
+  - Türetilmiş hiVelzon listesinde de kaynak belirtilir.
 - **Gömülü dağıtım:** Lisans, ticari dağıtımı ve türev listeyi açıkça serbest bırakıyor. Tek koşul atıf. Uygulamadaki "Lisanslar" ekranında ve veri dosyasının başlığında atıf yer alır.
 
 ### 2.2 CEFR-J Grammar Profile [kısmen doğrulandı]
@@ -98,7 +98,7 @@ Tüm kontroller 2026-10-11 tarihinde yapıldı.
   - OLP, veriyi "kindly provided by the CEFR-J project" diye tanımlıyor.
   - Ancak resmî sitede aynı cümle Grammar Profile için **yok**.
 - **Karar: Kullanılabilir, koşullu.**
-  - Dilbilgisi maddelerinin seviye sırası, HiVelzon'un kendi dilbilgisi müfredatına **referans** olarak alınır.
+  - Dilbilgisi maddelerinin seviye sırası, hiVelzon'un kendi dilbilgisi müfredatına **referans** olarak alınır.
   - "Present perfect B1" gibi madde adları dilbilimsel kategorilerdir. Açıklamalar ve örnek cümleler bizim yazdıklarımız olur.
   - Excel verisi (sıklık tabloları, regex'ler, öğretmen sürümü) uygulamaya **gömülmez**.
   - Tono Lab'dan ticari kullanım için yazılı teyit alınması önerilir. E-posta gönderilmedi; iş kullanıcıya bırakıldı.
@@ -119,9 +119,9 @@ Tüm kontroller 2026-10-11 tarihinde yapıldı.
   - **Ek kısıtlama yasağı, §2(a)(5)(C):** "You may not offer or impose any additional or different terms or conditions on, or apply any Effective Technological Measures to, the Licensed Material if doing so restricts exercise of the Licensed Rights by any recipient".
 - **Karar: Kullanılabilir (C1 omurgası).** Share-alike yükümlülüğü vardır.
 - **Gömülü dağıtım:**
-  - Listenin tamamı veya önemli bir kısmı uygulamaya ya da HiVelzon'un kelime veri tabanına girerse, **o veri tabanı CC BY-SA 4.0 ile paylaşılmak zorunda kalabilir**. Bu yükümlülük veri tabanının tamamını kapsar; tek tek kayıtları kapsamaz.
+  - Listenin tamamı veya önemli bir kısmı uygulamaya ya da hiVelzon'un kelime veri tabanına girerse, **o veri tabanı CC BY-SA 4.0 ile paylaşılmak zorunda kalabilir**. Bu yükümlülük veri tabanının tamamını kapsar; tek tek kayıtları kapsamaz.
   - **[Öneri]** CC BY-SA kaynaklı kelime verisi (Octanove, NGSL/NAWL) ayrı bir veri seti olarak tutulsun. Kaynak sütunu (`source=octanove|ngsl|cefrj`) olsun. Bu veri seti açıkça CC BY-SA 4.0 ile etiketlensin.
-  - Böylece CEFR-J verisi ve HiVelzon'un özgün içerikleri (hikâyeler, sorular, görseller) share-alike kapsamına çekilmez.
+  - Böylece CEFR-J verisi ve hiVelzon'un özgün içerikleri (hikâyeler, sorular, görseller) share-alike kapsamına çekilmez.
   - Uygulama kodunun ve özgün içeriğin bundan etkilenip etkilenmeyeceği hukukçuya sorulur (§8 S2).
 
 ### 2.4 NGSL 1.2 ve NAWL 1.2 [doğrulandı]
@@ -209,7 +209,7 @@ Tüm kontroller 2026-10-11 tarihinde yapıldı.
   - Avrupa Konseyi'nin genel telif sayfası (https://www.coe.int/en/web/portal/copyright-licensing-permissions) 403 verdi [doğrulanmadı].
 - **Karar: Yalnızca referans.**
   - Tanımlayıcılar uygulamaya aynen konmaz, Türkçeye çevrilmez, yakın biçimde başka sözcüklerle de yazılmaz. Çeviri de açıkça izne bağlı.
-  - HiVelzon'un can-do hedefleri, ünite içeriğinden **bağımsız** olarak yazılır. "CEFR seviyesi" ifadesi kullanılabilir; seviye adları (A1…C2) genel bir terimdir.
+  - hiVelzon'un can-do hedefleri, ünite içeriğinden **bağımsız** olarak yazılır. "CEFR seviyesi" ifadesi kullanılabilir; seviye adları (A1…C2) genel bir terimdir.
   - Kendi cümlemizle yazmanın yeterli olup olmadığı hukukçuya sorulur (§8 S5). Kesin görüş bu rapor kapsamında verilmez.
 - **Gömülü dağıtım:** Tanımlayıcı metni dağıtılmaz.
 - **Ek bulgu (CEFR-J can-do):** CEFR-J'nin kendi can-do tanımlayıcıları, indirme sırasında bir kullanım sözleşmesinin onaylanmasını gerektiriyor ("You can download the descriptors only if you agree to the license agreement"). Sözleşme metni kayıt formunun arkasında olduğu için okunmadı [doğrulanmadı].
@@ -341,12 +341,12 @@ Bu bölüm bir hukuk görüşü değildir; lisans metinlerinden çıkan teknik b
 | CEFR-J Wordlist v1.6 (headword, pos, CEFR) | Sunucu ve istemci | Evet | "CEFR-J Wordlist v1.6 (Tono Lab, TUFS)" |
 | CEFR-J Grammar Profile | Yalnızca editör referansı | Hayır (teyide kadar) | — |
 | Octanove C1/C2, NGSL 1.2, NAWL 1.2 | Ayrı veri seti (`lexicon_ccbysa`) | Gerekirse, **ayrı dosya** olarak ve CC BY-SA 4.0 bildirimiyle | CC BY-SA 4.0 + atıf |
-| HiVelzon özgün içerikleri (hikâye, soru, görsel, ses) | Ayrı | Evet | © Velzon |
+| hiVelzon özgün içerikleri (hikâye, soru, görsel, ses) | Ayrı | Evet | © Velzon |
 | EVP/EGP, Oxford, GSE, COCA, BNC | — | Hayır | — |
 
 - Kelime kaydı başına `source` ve `license` alanları tutulsun. Bu, `ICERIK-MIMARISI.md` §12'deki `content_sources` tablosuyla uyumludur.
 - Uygulama, kelimenin seviyesini "CEFR-J: B1" biçiminde gösterebilir. Octanove kaynaklıysa "Octanove: C1" yazılır.
-- Kendi düzeltmemiz varsa "HiVelzon editörü" diye işaretlenir.
+- Kendi düzeltmemiz varsa "hiVelzon editörü" diye işaretlenir.
 
 ---
 
@@ -354,21 +354,21 @@ Bu bölüm bir hukuk görüşü değildir; lisans metinlerinden çıkan teknik b
 
 > **Kaynaklar ve lisanslar**
 >
-> HiVelzon'un kelime seviyeleri aşağıdaki açık kaynaklara dayanır. Teşekkür ederiz.
+> hiVelzon'un kelime seviyeleri aşağıdaki açık kaynaklara dayanır. Teşekkür ederiz.
 >
-> **CEFR-J Wordlist Version 1.6.** Compiled by Yukio Tono, Tokyo University of Foreign Studies. Retrieved from https://www.cefr-j.org/download.html on 11/10/2026. © Tono Laboratory, TUFS. Uygun atıfla araştırma ve ticari kullanıma açıktır. HiVelzon bu listeyi temel alıp değiştirmiştir.
+> **CEFR-J Wordlist Version 1.6.** Compiled by Yukio Tono, Tokyo University of Foreign Studies. Retrieved from https://www.cefr-j.org/download.html on 11/10/2026. © Tono Laboratory, TUFS. Uygun atıfla araştırma ve ticari kullanıma açıktır. hiVelzon bu listeyi temel alıp değiştirmiştir.
 >
 > **CEFR-J Grammar Profile** — Ishii, Y. (2025). *CEFR-J Grammar Profile 2025* [Data set]. https://www.cefr-j.org/download.html. (Yalnızca dilbilgisi sırası için referans alınmıştır.)
 >
-> **Octanove Vocabulary Profile C1/C2 v1.0** — Octanove Labs, Open Language Profiles. https://github.com/openlanguageprofiles/olp-en-cefrj. Lisans: Creative Commons Attribution-ShareAlike 4.0 International (https://creativecommons.org/licenses/by-sa/4.0/). HiVelzon'daki C1 kelime verisi bu listeden uyarlanmıştır ve aynı lisansla paylaşılır.
+> **Octanove Vocabulary Profile C1/C2 v1.0** — Octanove Labs, Open Language Profiles. https://github.com/openlanguageprofiles/olp-en-cefrj. Lisans: Creative Commons Attribution-ShareAlike 4.0 International (https://creativecommons.org/licenses/by-sa/4.0/). hiVelzon'daki C1 kelime verisi bu listeden uyarlanmıştır ve aynı lisansla paylaşılır.
 >
 > **New General Service List 1.2 / New Academic Word List 1.2** — Browne, C., Culligan, B., & Phillips, J. https://www.newgeneralservicelist.com. Lisans: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/). Değişiklik yapılmışsa: "Uyarlanmıştır."
 >
 > **FSRS (Free Spaced Repetition Scheduler)** — py-fsrs ve dart `fsrs`, Copyright (c) 2022 Open Spaced Repetition. MIT License. [Tam MIT metni]
 >
-> **Seviye sistemi** — Seviye adları (A1–C1), Avrupa Konseyi'nin *Common European Framework of Reference for Languages* (CEFR) çerçevesine göndermedir. Council of Europe (2020), *CEFR – Companion volume*, Council of Europe Publishing, Strasbourg, www.coe.int/lang-cefr. HiVelzon'un "yapabilirim" hedefleri HiVelzon tarafından yazılmıştır; Avrupa Konseyi tarafından onaylanmış değildir.
+> **Seviye sistemi** — Seviye adları (A1–C1), Avrupa Konseyi'nin *Common European Framework of Reference for Languages* (CEFR) çerçevesine göndermedir. Council of Europe (2020), *CEFR – Companion volume*, Council of Europe Publishing, Strasbourg, www.coe.int/lang-cefr. hiVelzon'un "yapabilirim" hedefleri hiVelzon tarafından yazılmıştır; Avrupa Konseyi tarafından onaylanmış değildir.
 >
-> **Okul programı etiketleri** — Ünite etiketleri, T.C. Millî Eğitim Bakanlığı İngilizce Dersi Öğretim Programları (Türkiye Yüzyılı Maarif Modeli, 2025) tema adlarına göndermedir. HiVelzon, MEB ile bağlantılı değildir.
+> **Okul programı etiketleri** — Ünite etiketleri, T.C. Millî Eğitim Bakanlığı İngilizce Dersi Öğretim Programları (Türkiye Yüzyılı Maarif Modeli, 2025) tema adlarına göndermedir. hiVelzon, MEB ile bağlantılı değildir.
 >
 > **Üçüncü taraf yazılım lisansları** — [Flutter `showLicensePage` otomatik listesi]
 
@@ -401,7 +401,7 @@ Subject: Permission enquiry – use of English Vocabulary Profile / English Gram
 Dear English Profile team,
 
 I am writing on behalf of Velzon Bilişim Teknolojileri Ltd. Şti., a software company
-based in Türkiye. We are developing HiVelzon, a mobile application (iOS and Android)
+based in Türkiye. We are developing hiVelzon, a mobile application (iOS and Android)
 that teaches English to Turkish-speaking learners from A1 to C1. The app is free of
 charge for users and contains no advertising or subscriptions; however, as it is
 published by a company, we treat it as a commercial use.
@@ -460,13 +460,13 @@ Bunlar hukuki görüş gerektiren sorulardır; rapor bu sorulara cevap vermez.
    - FSEK md. 39'daki veri tabanı hakkına (sui generis) takılır mı?
    - AB Veri Tabanı Direktifi'nin "önemli kısmın çıkarılması" ve "önemsiz kısımların tekrarlı, sistematik çıkarılması" hükümlerine takılır mı?
    - Tek tek kelimelerin seviyeleri bilgi (fakt) mıdır, yoksa korunan bir seçim ve düzenleme midir?
-2. **S2 — CC BY-SA listesini uygulamaya gömmek:** Octanove, NGSL veya NAWL'ın tamamı ya da önemli kısmı HiVelzon kelime veri tabanına girerse:
+2. **S2 — CC BY-SA listesini uygulamaya gömmek:** Octanove, NGSL veya NAWL'ın tamamı ya da önemli kısmı hiVelzon kelime veri tabanına girerse:
    - (a) CC BY-SA 4.0 §4 uyarınca hangi veri tabanı "Adapted Material" sayılır?
    - (b) Share-alike, uygulama kodunu, özgün hikâyeleri, soruları ve CEFR-J kaynaklı kayıtları kapsar mı?
    - (c) Ayrı veri seti ve ayrı lisans bildirimi stratejisi (§3) yeterli mi?
    - (d) App Store/Google Play dağıtımı ve şifreli paketleme, §2(a)(5)(C)'deki "Effective Technological Measures" yasağıyla çelişir mi?
    - (e) Kullanıcıya liste dosyasının kendisini sunmak gerekir mi?
-3. **S3 — EVP izi:** CEFR-J Wordlist yapılırken EVP ile karşılaştırılmış ve EVP'den farklar eklenmiş. Cambridge'in koşulları açısından CEFR-J'yi kullanan HiVelzon'a bir risk doğar mı?
+3. **S3 — EVP izi:** CEFR-J Wordlist yapılırken EVP ile karşılaştırılmış ve EVP'den farklar eklenmiş. Cambridge'in koşulları açısından CEFR-J'yi kullanan hiVelzon'a bir risk doğar mı?
 4. **S4 — Editörün EVP'ye "bakması":** EVP koşullarındaki "research gained from access to the EVP" ifadesi, editörün EVP'ye bakıp kendi kararını vermesini de kapsar mı? Bu kapsamı içerik üretim talimatına nasıl yazmalıyız?
 5. **S5 — CEFR Companion Volume:** Can-do tanımlayıcılarını "kendi cümlemizle" yeniden yazmak, telif hakkı açısından ne zaman serbest yaratım, ne zaman türev eser (çeviri veya uyarlama) sayılır? Avrupa Konseyi'nden izin almadan güvenli yazım için ölçüt nedir?
 6. **S6 — CEFR-J "uygun atıf" koşulu:** Bir mobil uygulamada "Lisanslar" ekranındaki atıf ve veri dosyası başlığındaki atıf, CEFR-J'nin istediği "適切な引用" (uygun atıf) için yeterli mi? Japon hukuku mu uygulanır, Türk hukuku mu?

@@ -1,6 +1,6 @@
 # H-010: Çevrimdışı kullanım MVP'de olacak mı?
 
-- **Durum:** Yapılacak (kullanıcı kararı)
+- **Durum:** Bitti — karar verildi (2026-10-11)
 - **Tür:** Karar
 - **Öncelik:** Düşük
 - **Bağımlılık:** H-012
@@ -16,3 +16,6 @@ MVP'de olmasın. Plan bunu Faz 3'e (v2) koyuyor; depolama ve telif kararlarına 
 
 ## Notlar
 2026-10-11: `docs/SARTNAME.md` ve `docs/IS-PLANI.md` karşılaştırmasından açıldı.
+
+## Karar (2026-10-11)
+**Çevrimdışı kullanım MVP'de yok** (kullanıcı, soru-cevap); F3 (v2)'de gelir.
