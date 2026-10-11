@@ -64,6 +64,13 @@
 | H-005 | Hi'nin görünümü: yuvarlak, yumuşak ışıklı konuşma balonu ve gözler |
 | H-006 | Bölüm seslendirmesi ElevenLabs ile yapılır. hiVelzon'un **ayrı, ticari lisanslı** anahtarı kullanılır (videoGenerator'ınki değil). Anahtar repo dışında tutulur. |
 | H-024 | Pilot (S1·B1 + 3 klip) mevcut Higgsfield kredileriyle başladı. Her üretimden önce maliyet onayı alınır. |
+| H-024 | **Standart üretim yolu** (pilotla doğrulandı, kullanıcı onayı):
+- **Görsel:** GPT Image 2.5, 9:16, quality low, 0,5 kr/görsel, referanslarla.
+- **Hareket:** Yerel Ken Burns. 3 kat süper örnekleme + `zoompan` + 0,35 sn geçiş; takılma ölçümü 0/44 hareketsiz kare.
+- **Kilit an:** Seedance 2.0 Mini, başlangıç ve bitiş karesiyle, 5 kr / 5 sn.
+- **Ses:** ElevenLabs zaman damgalı, -16 LUFS.
+- **Yazılar:** ImageMagick PNG ile eklenir.
+- **Explainer:** Kullanılmaz. Gemini Omni 10 sn = 30 kr; B1 ≈ 187 kr. Biçim de uymuyor (tek anlatıcı; karakter sesi ve karar anı yok). Kural 4 karşılaştırması bu gerekçeyle kapandı. |
 | H-030 | Kahraman **Aleyna "Alex" Yıldız** (kadın, 19, İzmir). Story Bible ve Sezon 1 planı onaylandı; kanon `icerik/_evren/`'de kilitli. S1'de fiyatlar birimsiz söylenir ("It's thirteen."). |
 
 **Bölümler arası bağ kuralları** (`OYUN-TASARIMI.md` §4.3, bağlayıcı):
@@ -269,7 +276,7 @@ Bu klasörden Higgsfield CLI ve Claude Code skill'leriyle görsel, video, ses (T
 ### Kurulum durumu (2026-10-11 doğrulandı)
 
 - CLI: `higgsfield` **1.1.26** kurulu (`~/.nvm/versions/node/v18.20.7/bin/higgsfield`; kısa adları `higgs`, `hf`).
-- Oturum: açık — `info@velzon.tr`, **lite** plan. Kredi 2026-10-11 akşamı **118,75**. Başka oturumlar da aynı hesabı kullanıyor; harcamadan önce her seferinde `higgsfield account status` ile kontrol edilir.
+- Oturum: açık — `info@velzon.tr`, **lite** plan. Kredi 2026-10-11 akşamı **110,25** (pilot sonrası). Başka oturumlar da aynı hesabı kullanıyor; harcamadan önce her seferinde `higgsfield account status` ile kontrol edilir.
 - Skill'ler: `~/.claude/skills/higgsfield-*` altında kurulu (liste aşağıda).
 
 ### Yeni bir makinede kurulum (ya da kurulum bozulursa)

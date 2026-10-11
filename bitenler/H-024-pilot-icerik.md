@@ -1,6 +1,6 @@
 # H-024: Pilot içerik: A1-001 hikâyesi ve 3 kısa klip
 
-- **Durum:** Devam ediyor (2026-10-11'de başladı; kullanıcı mevcut kredilerle başlamayı onayladı)
+- **Durum:** Bitti (2026-10-11); kullanıcı onayladı
 - **Tür:** İçerik üretimi (kredi harcar, onaylı)
 - **Öncelik:** Yüksek
 - **Bağımlılık:** H-004, H-005
@@ -60,4 +60,45 @@ Gerçek kredi ve emek maliyetini ölçmek; ucuz yol (görsel + Ken Burns + TTS +
   - video-explainer karşılaştırması.
 - **Doğrusal önizleme:** `final/A1-001-onizleme-ic-pilot.mp4`. 65,7 sn; -16 LUFS; yerel kurgu, 0 kredi. Kilit klip olarak Seedance Mini seçildi (kullanıcı). Kullanıcı geri bildirimi bekleniyor.
 - **Sırada:** 3 kısa klip (yerel), video-explainer karşılaştırması (maliyet onayıyla).
+- **Kullanıcı geri bildirimleri ve düzeltmeler:**
+  - "Donmuş gibi" → v2: akıcı hareket; ölçümde 0/44 hareketsiz kare.
+  - "Yazı ile ses uyumsuz" → v3: zaman damgalı altyazı + ses dolgusu düzeltmesi; en büyük fark 0,16 sn.
+  - Dersler: `ogrenilenler/D-001-pilot-kurgu-tuzaklari.md`.
+- **Video-explainer karşılaştırması kapandı:** ~187 kr; biçim uymuyor (kullanıcı kararı).
+- **3 kısa klip** (v3, senkron doğrulandı): 25,5 / 28,3 / 27,5 sn.
+- **Kalan:** kullanıcının v3 ve kısa klip değerlendirmesi; pilotun maliyet ve emek özeti.
+
+## Sonuç (2026-10-11)
+
+**Pilot S1·B1 "A Strange Message" tamamlandı.** Kullanıcı önizleme v3'ü ve 3 kısa klibi onayladı ("akıcı", "yazı ile ses uyumlu").
+
+**Maliyet:**
+
+| Kalem | Kredi | Not |
+|---|---|---|
+| Referans sayfaları (2 model × 3) | 7,5 | Tek seferlik; model seçimi |
+| Sahne testi | 1 | |
+| B1 görselleri (7 adet: T1, T2, I1–I5) | 3,5 | 0,5 kr/görsel |
+| Kilit klip (Seedance 2.0 Mini, 5 sn) | 5 | |
+| **Toplam** | **17** | 126,25 → 110,25 |
+| **Bir bölümün tekrarlanan maliyeti** | **~8,5** | 7 görsel + 1 kilit klip; referanslar ve testler hariç |
+
+- **TTS:** 447 karakter. Ücretli planda yaklaşık birkaç sent [fiyat doğrulanmadı].
+- **Video-explainer:** ~187 kr tutardı; kullanılmadı.
+
+**Sezon 1 tahmini:** 12 bölüm × ~8,5 kr ≈ **~100 kr** (+ prolog).
+- Bölüm başına bir kilit klip varsayıldı. Seedance Mini yalnızca kilit anlarda kullanılır (sezonda 3–4) ve diğer bölümler yerel geçişle yapılırsa ≈ **~60–70 kr**.
+- Kalan 110 kr, Sezon 1 için sınırda. Plan kararı H-004'te.
+
+**Süre:** Bir bölümün kurgusu yerelde ~1 dk sürüyor. Görsel üretimi paralel ~2–3 dk. Asıl emek yazım, onay ve kalite kontrolde.
+
+**Standart üretim yolu:** CLAUDE.md "Onaylı oyun tasarımı kararları" → H-024 satırı.
+
+**Dersler:** `ogrenilenler/D-001-pilot-kurgu-tuzaklari.md`.
+
+**Açık kalanlar:**
+- **Ticari ElevenLabs hesabı** (H-006). Pilot sesleri yayınlanamaz.
+- **Etkileşimli oynatıcı** (H-031). Önizleme doğrusal, gerçek etkileşim yok.
+- **Kurgu aracının kalıcı hâli** (`content-pipeline`). Kod onayından sonra yazılacak; şu an oturuma özgü betik.
+- **Karaoke kelime vurgusu.** Hizalama verisi hazır.
 

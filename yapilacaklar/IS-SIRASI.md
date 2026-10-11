@@ -6,7 +6,7 @@ Bu dosya tek takip noktasıdır. Hangi işin hangi sırada yapıldığını, şu
 
 ## Nerede kaldık
 - **Şu an:** Planlama, Faz 0. Kod yok.
-- **Şimdi yapılan:** H-024 pilot. Karakter referansları ve stil için prompt'lar ve maliyet tahmini hazırlanıyor; kredi harcamadan önce kullanıcı onayı alınacak.
+- **Şimdi yapılan:** — Pilot (H-024) bitti. Sıradaki: H-032 (B4–B12 diyalogları; kodsuz), H-004 (Higgsfield planı; Sezon 1 ≈ 60–100 kr), H-006 (ticari ElevenLabs).
 - **Sıradaki adım:**
   1. Kullanıcı 1. adımda kalan kararları verir. En kritikleri:
      - H-001 ve H-007: konuşma pratiği MVP'de mi, faz yapısı ne olacak?
@@ -76,7 +76,7 @@ Bu dosya tek takip noktasıdır. Hangi işin hangi sırada yapıldığını, şu
 | 22b | H-030 | Story Bible, karakter kitabı ve Sezon 1 bölüm planı (Claude yazar; kredisiz) | Yüksek | H-029 | ✅ |
 | 22c | H-032 | Sezon 1 diyalog taslakları B4–B12 (A1 denetimli; kodsuz) | Yüksek | H-030 | ⏳ |
 | 23 | H-023 | İş planını şartnameyle ve oyun yönüyle güncelle | Yüksek | H-007, H-026, H-029 | ⏳ |
-| 24 | H-024 | Pilot: S1·B1 "A Strange Message" etkileşimli bölüm + 3 klip (kredi harcar, onaylı) | Yüksek | H-004, H-005, H-026, H-027, H-028 | 🔄 |
+| 24 | H-024 | Pilot: S1·B1 "A Strange Message" etkileşimli bölüm + 3 klip (kredi harcar, onaylı) | Yüksek | H-004, H-005, H-026, H-027, H-028 | ✅ |
 
 ### Adım 4 — Uygulama planı
 | # | İş | Başlık | Öncelik | Bağımlılık | Durum |
@@ -89,7 +89,6 @@ Kod yazımı H-025 onaylandıktan sonra başlar. MVP işleri o aşamada sıradak
 ## Devam eden işler
 | İş | Başlık | Başlangıç | Not |
 |---|---|---|---|
-| H-024 | Pilot: S1·B1 + 3 klip | 2026-10-11 | Her üretimden önce maliyet onayı |
 
 ## Biten işler
 | İş | Başlık | Bitiş | Doğrulama |
@@ -104,6 +103,7 @@ Kod yazımı H-025 onaylandıktan sonra başlar. MVP işleri o aşamada sıradak
 | H-021 | WishSay desenlerinin incelemesi | 2026-10-11 | `docs/WISHSAY-DESEN-RAPORU.md` (arşiv referansı; kullanıcı WishSay'i kapsam dışı bıraktı) |
 | H-022 | videoGenerator sınıflarının incelemesi | 2026-10-11 | `docs/VIDEOGENERATOR-RAPORU.md`; videoGenerator `git status` temiz |
 | H-019 | WishSay ile kod paylaşımı | 2026-10-11 | Kullanıcı kararı: WishSay kullanılmaz |
+| H-024 | Pilot S1·B1 + 3 kısa klip | 2026-10-11 | Kullanıcı onayı. 17 kr (bölüm başı ~8,5). Önizleme v3 senkron ≤ 0,16 sn, -16 LUFS. D-001 dersleri. |
 | H-030 | Story Bible ve Sezon 1 planı | 2026-10-11 | Kullanıcı onayı. Aleyna "Alex", birimsiz fiyat. `icerik/_evren/` + prolog ve B1–B3 (A1 %96–98) |
 | H-029 | Oyun ve hikâye tasarımı kararları | 2026-10-11 | Kullanıcı onayı; K-21…K-35 CLAUDE.md'ye işlendi |
 | H-027 | Lisans doğrulaması | 2026-10-11 | `docs/LISANS-RAPORU.md`. CEFR-J v1.6 omurga; EVP/EGP kullanılmaz; hukukçuya 12 soru |
@@ -189,4 +189,8 @@ Kod yazımı H-025 onaylandıktan sonra başlar. MVP işleri o aşamada sıradak
     - ElevenLabs seslendirmesi (videoGenerator hesabı, ücretsiz plan, yalnızca iç pilot, kullanıcı onayı, 447 karakter);
     - B1 doğrusal önizleme videosu (65,7 sn, -16 LUFS, yerel kurgu).
     - Kredi 110,25.
-
+  - Pilot bitti (H-024).
+    - Kullanıcı geri bildirimleriyle iki düzeltme yapıldı: akıcılık (v2) ve ses-yazı senkronu (v3, zaman damgalı altyazı, ölçümle doğrulandı).
+    - Explainer karşılaştırması kapandı (~187 kr).
+    - Bölüm başına ~8,5 kr. Sezon 1 ≈ 60–100 kr; kalan 110 kr.
+    - Ders: D-001.

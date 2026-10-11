@@ -107,3 +107,75 @@
   - etkileşim gerçek değil (doğrusal önizleme; etkileşimli oynatıcı H-031);
   - seçenek kutularında ince bir kenar çizgisi kusuru;
   - Alex'in sesi Türk aksanlı değil.
+
+### Önizleme v2 (kullanıcı geri bildirimi: "bazı sahneler akıcı değil, donmuş gibi")
+
+**Kök nedenler:**
+1. Ken Burns, `scale` ile çift piksele yuvarlanarak yapılıyordu; kare kare takılma oluyordu.
+2. Aynı POV karesi art arda 4 bölümde kullanılıyordu.
+3. Bölümler sert kesimle bağlanıyordu; hareket her kesimde sıfırlanıyordu.
+
+**Düzeltmeler:**
+- Görsel tam 9:16'ya kırpılıp 3 kat büyütüldü (3240×5760). Yakınlaşma ve kaydırma `zoompan` ile o çözünürlükte hesaplanıyor; çıktı 1080×1920.
+- Sahne sırası çeşitlendirildi. Ana mesaj I1'de; tekrar dinleme T2'nin yakın planında.
+- Aynı görsel art arda gelince hareket kaldığı yerden devam ediyor.
+- 0,35 sn'lik `xfade` ve `acrossfade` geçişleri.
+
+**Ölçüm** (T1 sahnesi, 44 kare arası fark):
+
+| Sürüm | Hareketsiz kare | Std |
+|---|---|---|
+| v1 | 12/44 | 1,58 |
+| v2 | **0/44** | **0,37** |
+
+- **Dosya:** `final/A1-001-onizleme-ic-pilot-v2.mp4`. 64,5 sn; -16,1 LUFS; tepe -1,5 dBFS.
+
+## Video-explainer karşılaştırması (CLAUDE.md kural 4), 2026-10-11
+
+**Maliyet tahmini:**
+
+| Kalem | Kredi |
+|---|---|
+| gemini_omni, 10 sn, 720p, 9:16 | 30 / blok |
+| seed_audio | 0,8 / blok |
+| nano_banana_2 stil anahtarı | 2 |
+| **B1 (6 blok) toplam** | **~187** |
+
+Kalan kredi 110,25 olduğu için tutar karşılanamıyor. Biçim de uymuyor: tek anlatıcı var; karakter sesleri, telsiz mesajı ve karar anları yapılamıyor.
+
+**Kullanıcı kararı:** Karşılaştırma kapatıldı. Varsayılan yol: görsel + yerel Ken Burns + kilit an için Seedance Mini. Önizleme v2 kullanıcı tarafından "akıcı" onaylandı.
+
+### Önizleme v3 ve kısa klipler (kullanıcı geri bildirimi: "yazılar ile ses uyumlu değil; ses bazen önden, bazen arkadan gidiyor")
+
+**Kök nedenler (ölçümle bulundu):**
+1. **Yavaşlatılan bölümlerde ses kısa kalıyordu.** `atempo` ile `apad` birlikte çalışmadı: s04'te görüntü 5,0 sn iken ses 2,06 sn. Birleştirmede (`acrossfade`) her kısa ses sonraki bütün sesleri öne çekti. Ölçülen kayma -0,6 sn ve üstüydü; bazı yerlerde beklenen anda hiç ses yoktu.
+2. **Altyazı cümlenin tamamını bir anda gösteriyordu** ve bölüm sonuna kadar ekranda kalıyordu.
+3. **Geçiş sırasında** yeni sesin başlangıcı ile eski yazı çakışıyordu.
+
+**Düzeltmeler** (kurgu aracı v3, `scratchpad/tools/kurgu.py`):
+- Yavaşlatma önceden ayrı bir WAV dosyası olarak üretiliyor. Ses `apad=whole_dur=L, atrim=end=L` ile tam bölüm süresine dolduruluyor. Bölüm süreleri kare sayısına yuvarlanıyor.
+- **Altyazılar, ElevenLabs'in karakter düzeyindeki zaman damgalarıyla** cümle parçası düzeyinde zamanlanıyor. Bir parça, söylendiği an görünüyor ve söylenince kayboluyor. Ses ve yazı, 0,3 sn'lik geçişten sonra (0,5 sn) başlıyor.
+- **Otomatik doğrulama:** Her sesli bölümde beklenen yazı başlangıcı, çıktıdaki gerçek ses başlangıcıyla karşılaştırılıyor.
+
+**Sonuç:**
+
+| Dosya | En büyük fark | Not |
+|---|---|---|
+| Önizleme v3 | 0,16 sn | Yazı sesten 0,06–0,16 sn önce; altyazıda istenen küçük öncelik |
+| Kısa 1 | 0,15 sn | |
+| Kısa 2 | 0,09 sn | |
+| Kısa 3 | 0,13 sn | |
+
+- Bölüm başına ses ve görüntü süreleri eşit (fark < 0,02 sn).
+- **Ses yüksekliği:** v3 -15,8 LUFS; kısa klipler -16,1 / -16,1 / -16,4 LUFS.
+
+**Dosyalar:**
+- `final/A1-001-onizleme-ic-pilot-v3.mp4` (66,0 sn)
+- `final/A1-001-kisa-1-can-you-hear-me.mp4` (25,5 sn)
+- `final/A1-001-kisa-2-again-please.mp4` (28,3 sn)
+- `final/A1-001-kisa-3-telsiz-mesaji.mp4` (27,5 sn)
+- Eski v1 ve v2 dosyaları yerelde duruyor; geçersiz.
+
+**Kısa klip şablonu** (ICERIK-MIMARISI §4.5): kanca → söz → öğretim (Hi) → tekrar (yavaş) → test kartı → çağrı. Sosyal medya için -14 LUFS'lik ayrı bir çıktı gerekecek (K-14; yayın ayrıca onaylı).
+
+**Görüntü ve yazı uyumu düzeltmesi:** Kısa 1'de "Yes, I can hear you." yazısı Alex'in şaşkın olduğu karedeydi (I3); telsiz yakın planına (T2) taşındı.
