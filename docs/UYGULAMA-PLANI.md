@@ -2,7 +2,7 @@
 
 **Sürüm:** 0.1 · **Tarih:** 2026-10-11 · **Durum:** Onaylandı (2026-10-11). İlk dilim: önce oynatıcı; ilk test cihazı iOS simülatörü.
 **Dayanak:** CLAUDE.md "Onaylı içerik mimarisi kararları" ve "Onaylı oyun tasarımı kararları"; `docs/OYUN-TASARIMI.md`; `docs/ICERIK-MIMARISI.md`.
-**Kural:** Bu plan onaylanmadan kod yazılmaz. Oynatıcı işi var olan H-031 numarasını korur; yeni işler H-033'ten başlar, sıradaki boş numara H-044. Her alt faz ayrı bir H işidir: küçük, test edilebilir ve geri alınabilir.
+**Kural:** Bu plan onaylanmadan kod yazılmaz. Oynatıcı işi var olan H-031 numarasını korur; yeni işler H-033'ten başlar, sıradaki boş numara H-045. Her alt faz ayrı bir H işidir: küçük, test edilebilir ve geri alınabilir.
 
 ---
 
@@ -39,7 +39,7 @@
 | Yerel depolama | Drift (SQLite) | İlerleme, defter, FSRS kartları; sunucuyla eşitlenir |
 | FSRS | Dart `fsrs` (istemci) + Java portu (sunucu, py-fsrs'ten, MIT) | K-04; iki uygulama arasında eşdeğerlik testi |
 | Backend | Spring Boot 4, Java 17, Maven, Flyway, Testcontainers | Plan §10 |
-| Medya | Geliştirmede yerel paket; MVP'de Bunny Stream, `VideoHostingPort` arkasında | K-13 |
+| Medya | `VideoHostingPort` arkasında; Faz 1.0–1.11'de yerel adaptör (dosya sistemi / yerel sunucu). Bunny Stream adaptörü en sonda (H-044) | K-13; kullanıcı kararı: dış hesaplar en sona |
 | Sırlar | Repo dışı (`~/.config/hivelzon/`). Mobilde sağlayıcı anahtarı yok. | CLAUDE.md mühendislik ilkeleri |
 
 ## 3. Fazlar ve işler (sıra önemli)
@@ -57,23 +57,23 @@
 | **1.6** | **H-038** Mobil ↔ backend, misafir modu | Kayıt ve giriş; misafir verisinin hesaba taşınması; ilerleme ve olay eşitleme (idempotent `client_event_id`) | Misafir → kayıt akışı veri kaybetmeden çalışıyor |
 | **1.7** | **H-039** Onboarding ve yerleştirme | Dil, yaş beyanı (13+), rızalar, prolog, atlanabilir kademeli test (K-06), bildirim izni sonra | Yaş altı kayıt engelleniyor; test atlanabiliyor |
 | **1.8** | **H-040** Keşfet akışı | Kısa klipler (B1–B4'ten); Kaydet / Anlam / Tam hikâye; her 4–5 klipte quiz kartı, ~10 klipte mola kartı; 13–17 yaş için 20 dk sınırı (K-15) | Akış bellek sınırında; mola ve sınır testli |
-| **1.9** | **H-041** Editör onay ekranı ve içerik içe aktarma | `content-lint` → içe aktarma → Onayla / Zamanla / Kaldır; sürümler; `publish_at` (K-05, K-12) | Onaysız içerik katalogda görünmüyor (backend testi) |
+| **1.9** | **H-041** Editör onay ekranı ve içerik içe aktarma | `content-lint` → içe aktarma → Onayla / Zamanla / Kaldır; sürümler; `publish_at` (K-05, K-12); medya yerel adaptörle | Onaysız içerik katalogda görünmüyor (backend testi) |
 | **1.10** | **H-042** Profil, ayarlar, hukuki metinler, hesap silme arayüzü | Beceri ve ilerleme gösterimi; bildirim ayarları; gizlilik; lisans atıfları (CEFR-J vb.) | Hesap silme ve geri alma arayüzden çalışıyor |
-| **1.11** | **H-043** Kalite ve beta | Erişilebilirlik, hata durumları, çökme raporlama (veri minimizasyonuyla), TestFlight / dahili test | Beta kontrol listesi tamam |
+| **1.11** | **H-043** Kalite ve iç beta hazırlığı | Erişilebilirlik, hata durumları, çökme raporlama (veri minimizasyonuyla); simülatör ve yerel cihazda uçtan uca deneme | Beta kontrol listesi tamam (mağaza hariç) |
+| **1.12** | **H-044** Dış hesaplar, barındırma ve mağaza (en son) | Sunucu yeri ve kurulum; Bunny Stream hesabı ve adaptörü; Apple ve Google geliştirici hesapları; TestFlight / Play dahili test | Uygulama sunucudaki backend ve Bunny medyasıyla çalışıyor; dahili test sürümü yüklendi |
 
 **Bağımlılıklar:**
 - H-033 → H-034 → H-031 → H-035 → H-036.
 - H-037 paralel başlayabilir.
 - H-038 için H-035 ve H-037 gerekir.
 - H-039, H-040, H-041 ve H-042 H-038'den sonra.
-- H-043 en son.
+- H-043, sonra H-044 en son.
 
 ## 4. Açık olanlar (ilgili fazdan önce sorulacak)
 
 - **Giriş yöntemi** (H-037): e-posta + parola mı, Apple / Google ile giriş mi?
-- **Sunucu ve barındırma** (H-037 / H-038): nerede çalışacak?
+- **Kullanıcı kararı (2026-10-11):** Sunucu yeri, Bunny Stream hesabı ve Apple / Google geliştirici hesapları **en sona** bırakıldı (H-044). O zamana kadar her şey yerelde çalışır: backend Docker'daki PostgreSQL ile, medya yerel adaptörle, uygulama simülatörde.
 - **Ticari ElevenLabs** (H-006): yayından önce şart.
-- **Ticari kullanım lisansları:** Bunny Stream hesabı (H-041'den önce); Apple ve Google geliştirici hesapları (H-043).
 - **Hukuk metinleri ve hukukçu soruları:** KVKK aydınlatması, yaş, lisanslar (H-042'den önce).
 
 ## 5. Çalışma şekli

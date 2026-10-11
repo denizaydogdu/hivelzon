@@ -8,7 +8,7 @@
 ## Kapsam
 - `content-lint` → içe aktarma → Onayla / Zamanla / Kaldır.
 - İçerik sürümleri, `publish_at` (K-05, K-12).
-- Medya: Bunny Stream, `VideoHostingPort` arkasında (hesap bu işten önce gerekir).
+- Medya: `VideoHostingPort` arkasında **yerel adaptör**. Bunny Stream adaptörü H-044'te (kullanıcı kararı: dış hesaplar en sona).
 
 ## Kabul kriterleri
 - Onaysız içerik katalogda görünmüyor (backend testi).

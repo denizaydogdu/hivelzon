@@ -1,0 +1,24 @@
+# Yerel geliştirme veritabanı. Değerler yalnızca geliştirme içindir, sır değildir.
+# Başlat: docker compose up -d   ·   Durdur: docker compose down
+name: hivelzon
+
+services:
+  postgres:
+    image: postgres:17-alpine
+    container_name: hivelzon-postgres
+    environment:
+      POSTGRES_DB: hivelzon
+      POSTGRES_USER: hivelzon
+      POSTGRES_PASSWORD: hivelzon
+    ports:
+      - "127.0.0.1:5434:5432"   # 5432/5433 makinedeki başka projelerce kullanılıyor
+    volumes:
+      - hivelzon-pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U hivelzon -d hivelzon"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+volumes:
+  hivelzon-pgdata:

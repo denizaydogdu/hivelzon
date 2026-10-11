@@ -1,0 +1,44 @@
+import 'package:flutter/material.dart';
+
+/// Henüz yapılmamış ekranlar için basit yer tutucu.
+class PlaceholderView extends StatelessWidget {
+  const PlaceholderView({
+    super.key,
+    required this.title,
+    required this.icon,
+    required this.message,
+  });
+
+  final String title;
+  final IconData icon;
+  final String message;
+
+  @override
+  Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+    return Scaffold(
+      appBar: AppBar(title: Text(title)),
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(24),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(
+                icon,
+                size: 64,
+                color: Theme.of(context).colorScheme.primary,
+              ),
+              const SizedBox(height: 16),
+              Text(
+                message,
+                style: textTheme.bodyLarge,
+                textAlign: TextAlign.center,
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}

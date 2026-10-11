@@ -1,18 +1,17 @@
-# H-043: Kalite ve beta
+# H-043: Kalite ve iç beta hazırlığı
 
 - **Durum:** Yapılacak (H-025 onayından sonra)
 - **Tür:** Uygulama (kod)
 - **Faz:** 1.11 (`docs/UYGULAMA-PLANI.md`)
-- **Bağımlılık:** H-039 … H-042
+- **Bağımlılık:** H-039 … H-042 · **Sonraki:** H-044
 
 ## Kapsam
 - Erişilebilirlik, hata ve boş durumlar.
 - Çökme raporlama (veri minimizasyonuyla).
-- TestFlight ve Google Play dahili test (geliştirici hesapları gerekir).
+- Simülatör ve yerel cihazda uçtan uca deneme. Mağaza ve TestFlight H-044'te.
 
 ## Kabul kriterleri
-- Beta kontrol listesi tamam.
-- Ticari ElevenLabs (H-006) çözülmeden mağazaya çıkılmıyor.
+- Beta kontrol listesi tamam (mağaza maddeleri hariç).
 
 ## Test
 ```bash

@@ -17,6 +17,7 @@ Thumbs.db
 # Backend (Java / Maven)
 backend/target/
 backend/.mvn/wrapper/maven-wrapper.jar
+backend/HELP.md
 
 # Mobile (Flutter)
 mobile/.dart_tool/
@@ -26,6 +27,14 @@ mobile/.flutter-plugins-dependencies
 mobile/ios/Pods/
 mobile/android/.gradle/
 mobile/android/local.properties
+mobile/android/build/
+mobile/android/app/build/
+mobile/android/.kotlin/
+mobile/android/app/.cxx/
+mobile/ios/Flutter/ephemeral/
+mobile/ios/.symlinks/
+mobile/coverage/
+**/.gradle/
 
 # Node
 node_modules/
