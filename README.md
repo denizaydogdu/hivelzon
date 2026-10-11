@@ -1,4 +1,4 @@
-# HiVelzon
+# hiVelzon
 
 Yapay zekâ videolarıyla İngilizce öğrenme uygulaması (iOS + Android). Tüm seviyeler (A1–C1), tamamen ücretsiz.
 

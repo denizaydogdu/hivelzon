@@ -1,0 +1,40 @@
+[
+  {
+    "created_at": "2026-10-11T14:48:36.513633Z",
+    "display_name": "GPT Image 2.5",
+    "id": "c378602b-80a8-4805-9bf1-0ef717358f80",
+    "job_type": "gpt_image_2_5",
+    "min_result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261011_144836_c378602b-80a8-4805-9bf1-0ef717358f80_min.webp",
+    "params": {
+      "aspect_ratio": "9:16",
+      "height": 2688,
+      "medias": [
+        {
+          "data": {
+            "id": "663ea0fe-3df5-4cea-ba8c-e08c80e48a96",
+            "type": "media_input",
+            "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/663ea0fe-3df5-4cea-ba8c-e08c80e48a96.png"
+          },
+          "role": "image"
+        },
+        {
+          "data": {
+            "id": "74fb45e8-d78d-4902-b6d6-e95fd85aca46",
+            "type": "media_input",
+            "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/74fb45e8-d78d-4902-b6d6-e95fd85aca46.png"
+          },
+          "role": "image"
+        }
+      ],
+      "model": "flare",
+      "prompt": "Use the reference images for Alex and the old radio; keep the same face, hair and clothes. Scene: Alex leans toward the old radio on the desk, puzzled and frowning slightly, one hand near her ear as if listening hard; the radio's green light is on; a gentle, slightly humorous confused moment, not sad. Vertical composition. Warm animated-series illustration, graphic-novel style, clean ink lines, soft cel shading, coastal palette of sea blue, sand, lighthouse yellow and evening orange, mature tone suitable for teens and adults, not childish, no text, no letters, no numbers, no logos.",
+      "quality": "low",
+      "reference_elements": [],
+      "remove_bg": false,
+      "resolution": "2k",
+      "width": 1520
+    },
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261011_144836_c378602b-80a8-4805-9bf1-0ef717358f80.png",
+    "status": "completed"
+  }
+]

@@ -47,4 +47,17 @@ Gerçek kredi ve emek maliyetini ölçmek; ucuz yol (görsel + Ken Burns + TTS +
 - klip yöntemi;
 - ElevenLabs ticari anahtarı (TTS);
 - Ken Burns ile video-explainer karşılaştırması.
+- **B1 görselleri** (I1–I5): 2,5 kredi. Hepsi stile ve referanslara uygun.
+- **Kilit klip:**
+  - yerel geçiş (0 kredi, 1080p);
+  - Seedance 2.0 Mini başlangıç ve bitiş karesiyle (5 kredi, 720p).
+  - Karşılaştırma kullanıcıda.
+- **Seslendirme:** ElevenLabs `eleven_v3` zaman damgalı, speed 0.9. videoGenerator hesabı, ücretsiz plan, **yalnızca iç pilot** (kullanıcı onayı). 13 satır, 447 karakter. Ana mesaj 107 kelime/dk (A1 hedefi).
+- **Kredi:** 110,25.
+- **Sırada:**
+  - B1 doğrusal önizleme videosu (yerel kurgu: Ken Burns + ses + altyazı + karar kartları);
+  - 3 kısa klip;
+  - video-explainer karşılaştırması.
+- **Doğrusal önizleme:** `final/A1-001-onizleme-ic-pilot.mp4`. 65,7 sn; -16 LUFS; yerel kurgu, 0 kredi. Kilit klip olarak Seedance Mini seçildi (kullanıcı). Kullanıcı geri bildirimi bekleniyor.
+- **Sırada:** 3 kısa klip (yerel), video-explainer karşılaştırması (maliyet onayıyla).
 

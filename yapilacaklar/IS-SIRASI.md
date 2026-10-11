@@ -183,4 +183,10 @@ Kod yazımı H-025 onaylandıktan sonra başlar. MVP işleri o aşamada sıradak
     - ElevenLabs ücretsiz plan;
     - maliyetin ~%70'i görsel;
     - `TODO.md`'deki anahtar parçası AI servisine değil, Velzon piyasa verisi API'sine ait.
+  - H-024 ilerlemesi:
+    - B1 görselleri (2,5 kr);
+    - kilit klip olarak Seedance Mini seçildi (5 kr);
+    - ElevenLabs seslendirmesi (videoGenerator hesabı, ücretsiz plan, yalnızca iç pilot, kullanıcı onayı, 447 karakter);
+    - B1 doğrusal önizleme videosu (65,7 sn, -16 LUFS, yerel kurgu).
+    - Kredi 110,25.
 

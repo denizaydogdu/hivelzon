@@ -1,0 +1,48 @@
+[
+  {
+    "created_at": "2026-10-11T14:48:37.017224Z",
+    "display_name": "GPT Image 2.5",
+    "id": "fae1ad51-b5dd-416b-b5a1-7c4c3d68979a",
+    "job_type": "gpt_image_2_5",
+    "min_result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261011_144837_fae1ad51-b5dd-416b-b5a1-7c4c3d68979a_min.webp",
+    "params": {
+      "aspect_ratio": "9:16",
+      "height": 2688,
+      "medias": [
+        {
+          "data": {
+            "id": "663ea0fe-3df5-4cea-ba8c-e08c80e48a96",
+            "type": "media_input",
+            "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/663ea0fe-3df5-4cea-ba8c-e08c80e48a96.png"
+          },
+          "role": "image"
+        },
+        {
+          "data": {
+            "id": "48e01750-864a-4c0e-bdd3-e9bc989684cb",
+            "type": "media_input",
+            "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/48e01750-864a-4c0e-bdd3-e9bc989684cb.png"
+          },
+          "role": "image"
+        },
+        {
+          "data": {
+            "id": "74fb45e8-d78d-4902-b6d6-e95fd85aca46",
+            "type": "media_input",
+            "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/74fb45e8-d78d-4902-b6d6-e95fd85aca46.png"
+          },
+          "role": "image"
+        }
+      ],
+      "model": "flare",
+      "prompt": "Use the reference images for Alex, for the AI assistant Hi and for the old radio; keep their designs. Scene: evening, Alex holds her phone and looks at it with curiosity; on the phone screen the small glowing speech-bubble character Hi smiles at her; the old radio sits on the desk behind, its green light on. No text on the screen. Vertical composition. Warm animated-series illustration, graphic-novel style, clean ink lines, soft cel shading, coastal palette of sea blue, sand, lighthouse yellow and evening orange, mature tone suitable for teens and adults, not childish, no text, no letters, no numbers, no logos.",
+      "quality": "low",
+      "reference_elements": [],
+      "remove_bg": false,
+      "resolution": "2k",
+      "width": 1520
+    },
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261011_144837_fae1ad51-b5dd-416b-b5a1-7c4c3d68979a.png",
+    "status": "completed"
+  }
+]

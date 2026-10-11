@@ -1,0 +1,46 @@
+[
+  {
+    "created_at": "2026-10-11T14:51:33.262918Z",
+    "display_name": "Seedance 2.0 Mini",
+    "id": "30078f0c-7700-4017-897e-1db9553fcea0",
+    "job_type": "seedance_2_0_mini",
+    "min_result_url": null,
+    "params": {
+      "aspect_ratio": "9:16",
+      "duration": 5,
+      "generate_audio": false,
+      "genre": "auto",
+      "height": 1280,
+      "medias": [
+        {
+          "data": {
+            "id": "48f7fc69-5966-4f7c-a1d0-89275b5729e2",
+            "type": "media_input",
+            "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/48f7fc69-5966-4f7c-a1d0-89275b5729e2_resize.jpg"
+          },
+          "role": "start_image"
+        },
+        {
+          "data": {
+            "id": "75381b1d-355b-431b-acae-5775ef561cdb",
+            "type": "media_input",
+            "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/75381b1d-355b-431b-acae-5775ef561cdb_resize.jpg"
+          },
+          "role": "end_image"
+        }
+      ],
+      "multi_prompt": [],
+      "multi_shot_mode": "custom",
+      "multi_shots": false,
+      "prompt": "The small green indicator light on the old radio turns on and begins to glow softly with a faint flicker; very slow camera push-in; the hands stay still; nothing else changes.",
+      "prompt_language": "en",
+      "reference_elements": [],
+      "resolution": "720p",
+      "speedramp": "auto",
+      "width": 720
+    },
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261011_145133_30078f0c-7700-4017-897e-1db9553fcea0.mp4",
+    "status": "completed",
+    "thumbnail_url": "https://cdn.higgsfield.ai/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261011_145133_30078f0c-7700-4017-897e-1db9553fcea0_thumbnail.webp"
+  }
+]

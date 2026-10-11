@@ -52,3 +52,4 @@ icerik/**/*.mov
 icerik/**/*.mp3
 icerik/**/*.wav
 .DS_Store
+icerik/**/_build/
