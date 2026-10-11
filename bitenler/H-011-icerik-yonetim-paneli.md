@@ -1,6 +1,6 @@
 # H-011: İçerik yönetim ve editör onay paneli
 
-- **Durum:** Yapılacak (kullanıcı kararı)
+- **Durum:** Bitti — karar verildi (2026-10-11)
 - **Tür:** Karar
 - **Öncelik:** Orta
 - **Bağımlılık:** H-021, H-022
@@ -17,3 +17,6 @@ WishSay'deki uygulama içi yönetici rolü deseni kullanılsın (plan §9.4). Pa
 ## Notlar
 2026-10-11: `docs/SARTNAME.md` ve `docs/IS-PLANI.md` karşılaştırmasından açıldı.
 2026-10-11 (`ICERIK-MIMARISI.md` §9.1): Araştırmanın önerisi: içerik git'te tutulur (`icerik/`), `content-lint` ile doğrulanır, içe aktarılır ve ince bir Spring ekranında onaylanır, zamanlanır ya da kaldırılır. Headless CMS MVP için gereksiz. İleride dışarıdan editör gelirse Directus değerlendirilebilir.
+
+## Karar (2026-10-11)
+K-12 onaylandı: içerik kod olarak yönetilir (git `icerik/` → `content-lint` → içe aktarma). Onay için ince bir Spring ekranı kullanılır: önizleme, kontrol listesi, Onayla / Zamanla / Kaldır, onay geçmişi. Headless CMS kullanılmaz. Ayrıntı: `ICERIK-MIMARISI.md` §6.10, §9.

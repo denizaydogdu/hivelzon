@@ -46,13 +46,45 @@ Ayrıntı: `docs/IS-PLANI.md` §10.
 |---|---|---|
 | Konuşma pratiğinin zamanı | Faz 2 (v1). MVP'de yok (§11). | P0/MVP içinde (§5.1). Yol haritasında ise Faz 4 (§16). |
 | Faz yapısı | Faz 0–3 (§11) | Faz 0–5 (§16) |
-| Seviye testi | Uyarlamalı, 15–25 soru (§4.5) | İsteğe bağlı, kısa, atlanabilir; sonuç yalnızca "önerilen başlangıç seviyesi" (§4.2) |
+| ~~Seviye testi~~ | **Çözüldü (K-06, 2026-10-11):** kademeli, en fazla ~20 soru, atlanabilir; sonuç "önerilen başlangıç seviyesi" (`ICERIK-MIMARISI.md` §7.2) | |
 | Günlük hedef seçenekleri | 10 / 20 / 30 dk (§4.7) | 5 / 10 / 15 dk (§4.2) |
-| Seri (streak) | Seri dondurma ve "kurtarma" görevi var (§4.7) | Rekabetçi seri baskısı ve suçlayıcı seri mesajlarından kaçınılır (§3.1, §14.3) |
+| ~~Seri (streak)~~ | **Çözüldü (K-16, 2026-10-11):** kırık seri vurgulanmaz; dondurma ve onarma var; kurtarma görevi yok; seri anlamlı etkinlikle korunur | |
 | Telaffuz puanı | v1'de "Söyle" alıştırmalarıyla birlikte (§11) | Yalnızca güvenilir biçimde ölçülebiliyorsa gösterilir; kesin skor iddiası yok (§6.5) |
 | Yaş | 13 altı alınmaz. 13–17 konuşma pratiği için karar H-002'de açık. | İçerik hedefi 13+. Kullanıcı yaş kapsamı hukukla doğrulanacak (§18/10). |
 
 Şartnamedeki **açık kararlar listesi** (§18) H-002…H-020 işlerine dağıtıldı. Sıra ve durum: `yapilacaklar/IS-SIRASI.md`.
+
+### Onaylı içerik mimarisi kararları (H-026, 2026-10-11)
+Kullanıcı `docs/ICERIK-MIMARISI.md` §14'teki önerileri onayladı. Ayrıntı ve gerekçe o belgededir. Bağlayıcı olanlar:
+
+| # | Karar |
+|---|---|
+| K-01 | İçerik kimliği `icerik/<SEVİYE>-<3 hane>-<kisa-baslik>/` olarak kalır. Konu `content.json`'da tutulur. `content.json` ve `rights-and-review.md` zorunludur. |
+| K-02 | Sekmeler: **Ana Sayfa · Keşfet · Öğren · Konuş · Profil**. Keşfet, kısa video akışıdır. |
+| K-03 | Altyazı: varsayılan İngilizce, hedef kelimede küçük Türkçe karşılıkla. A1'de onboarding'de Türkçe satır önerilir; A2 ve üstünde Türkçe satır varsayılan kapalıdır. Uygulamada ayrı WebVTT, sosyal medyada gömülü `.ass` kullanılır. |
+| K-04 | Kelime tekrarı: **FSRS**, hedef hatırlama %90, hesaplama sunucuda (py-fsrs'ten Java'ya taşınır, kaynak belirtilir). |
+| K-05 | Durumlar: `DRAFT → IN_REVIEW → APPROVED → SCHEDULED → PUBLISHED → ARCHIVED`, ayrıca `WITHDRAWN`. İnceleme adımları onay kontrol listesinin maddeleridir. `APPROVED` kontrolü backend'de yapılır; AI'ın yayın yetkisi yoktur. |
+| K-06 | Seviye testi: kademeli, en fazla ~20 soru, atlanabilir. Sonuç "önerilen başlangıç seviyesi" olarak sunulur. |
+| K-07 | Kapsama kuralı ve kelime havuzu: bkz. "İçerik türleri" bölümü. |
+| K-08 | Hacim: A1–C1 için ~160 hikâye. Seviye vaadi yoktur. |
+| K-09 | Yayın ritmi: ilk 4 hafta haftada 1 hikâye + 3–4 kısa video. Ölçümden sonra haftada 1 hikâye + 1 ders + 7 kısa video. |
+| K-10 | Ana dizi "Yeni gelen" ortak evrenidir; her seviye bir sezondur. Yanında kısa seriler vardır (`ICERIK-MIMARISI.md` §4.3). Haftanın kelimeleri bütün serilerde tekrar eder; hedef, kelime başına 8 ve üzeri karşılaşmadır. |
+| K-11 | Rubrikli yazma görevi MVP'de yoktur (P1). |
+| K-12 | İçerik kod olarak yönetilir: git → `content-lint` → içe aktarma → ince Spring onay ekranı. Headless CMS kullanılmaz. |
+| K-13 | Video barındırma: Bunny Stream, `VideoHostingPort` adaptörünün arkasında. |
+| K-14 | Sosyal medya: önce elle yükleme. API otomasyonu platform denetiminden sonra kurulur. AI etiketi her zaman konur. |
+| K-15 | Keşfet akışı: 4–5 klipte bir quiz kartı, ~10 klipte bir mola kartı. 13–17 yaş için günlük 20 dk varsayılan sınır. Beğeni sayısı ve yorum yoktur. |
+| K-16 | Seri: kırık seri vurgulanmaz; dondurma ve onarma vardır. |
+| K-20 | A2–B1 içeriklerine MEB tema etiketi eklenir. |
+
+**Hâlâ açık olanlar:**
+- **K-17 Faz yapısı:** H-007 / H-023.
+- **K-18 Onay ve kapasite:** H-028.
+- **K-19 Lisans doğrulaması:** H-027.
+
+**Bu kararlarla kesinleşmeyenler:**
+- Günlük hedef seçenekleri (5/10/15 mi, 10/20/30 mu) ve bildirim sıklığı: H-013.
+- Telaffuz puanı: H-015.
 
 ## Ürün ilkeleri (şartname §3.3, §6)
 - Kullanıcı uygulamayı açınca 3–10 dakikada bitirebileceği tek bir öğrenme eylemi görür. Ana sayfa sonsuz akış gibi davranmaz.
@@ -83,14 +115,22 @@ Sosyal medya içeriğine **ek olarak** artık A1'den C1'e kadar seviyeli **İngi
 
 | Seviye | Hikâye uzunluğu | Kelime havuzu | Cümle | Dilbilgisi odağı | Anlatım hızı (TTS) | Video süresi |
 |---|---|---|---|---|---|---|
-| **A1** | 80–150 kelime | ~500 temel kelime | ≤ 8 kelime, tek yan cümle yok | present simple, *to be*, *there is/are*, *can* | yavaş, ~100–110 kelime/dk | 30–60 sn |
+| **A1** | 80–150 kelime | ~550 başlık kelime | ≤ 8 kelime, tek yan cümle yok | present simple, *to be*, *there is/are*, *can* | yavaş, ~100–110 kelime/dk | 30–60 sn |
 | **A2** | 150–300 kelime | ~1.000 | ≤ 12 kelime, *and/but/because* | past simple, *going to*, karşılaştırma | ~115–125 | 60–90 sn |
-| **B1** | 300–600 kelime | ~2.000 | bağlaçlı birleşik cümle | present perfect, 1. tip koşul, *used to* | ~130–140 | 1,5–3 dk |
-| **B2** | 500–900 kelime | ~4.000 | karmaşık cümle serbest | edilgen, dolaylı anlatım, 2./3. tip koşul | ~145–155 | 3–5 dk |
-| **C1** | 800–1.500 kelime | geniş, deyim ve eşdizimler | doğal, üslup çeşitliliği | inversion, cleft, modal nüansları, deyimler | doğal hız, ~160+ | 4–8 dk |
+| **B1** | 300–600 kelime | ~1.600–2.000 | bağlaçlı birleşik cümle | present perfect, 1. tip koşul, *used to* | ~130–140 | 1,5–3 dk |
+| **B2** | 500–900 kelime | ~2.500–2.800 | karmaşık cümle serbest | edilgen, dolaylı anlatım, 2./3. tip koşul | ~145–155 | 3–5 dk |
+| **C1** | 800–1.500 kelime | ~3.800, deyim ve eşdizimler | doğal, üslup çeşitliliği | inversion, cleft, modal nüansları, deyimler | doğal hız, ~160+ | 4–8 dk |
 
 Kurallar:
-- Her hikâyede seviyenin **üstündeki** kelimeler sözlükte (glossary) açıklanır; A1–A2'de toplam bilinmeyen kelime oranı %5'i geçmez.
+- Kelime havuzu değerleri graded reader standartlarına göre güncellendi (K-07, 2026-10-11; `ICERIK-MIMARISI.md` §3.2).
+- Her hikâyede seviyenin **üstündeki** kelimeler sözlükte (glossary) açıklanır.
+- **Kapsama kuralı (bütün seviyeler):** Kümülatif CEFR-J listesine göre token kapsaması **≥ %98** hedeftir. Özel isimler sayılmaz.
+  - **%95** alt sınırdır; buna yalnızca seviye üstü kelimeler sözlükte açıklanmış ve görselle desteklenmişse izin verilir.
+- **Müfredat omurgası:** kelime için CEFR-J Wordlist (A1–B2) ve Octanove C1/C2, dilbilgisi için CEFR-J Grammar Profile.
+  - EVP/EGP, Oxford 3000/5000, GSE, COCA ve BNC yalnızca referanstır; uygulamaya aktarılmaz.
+  - Lisanslar H-027'de doğrulanır.
+- **Seviye denetimi LLM'e bırakılmaz:** LLM taslağı → deterministik `content-lint` (kapsama, cümle uzunluğu, dilbilgisi) → editör.
+- **Vaat yok:** Uygulama tamamlayıcıdır. "Seni X seviyesine ulaştırır" vaadi verilmez (K-08).
 - Türk öğrencinin tipik hataları (ör. *I am agree*, *-s* takısı, *the* kullanımı) uygun hikâyelere bilinçli olarak yerleştirilir ve sözlükte not edilir.
 - Konular 13+ için güvenli olur (§5.5): şiddet, cinsellik, siyaset ve din yok; gerçek marka, ünlü veya telifli karakter yok (§5.6).
 - 30 sn'lik sosyal medya kesitleri uzun hikâyeden türetilir (ayrı hikâye yazılmaz); kesit kendi başına anlaşılır olmalı ve sonunda "devamı uygulamada" çağrısı olabilir.
@@ -99,8 +139,15 @@ Kurallar:
 
 Kimlik biçimi: `<SEVİYE>-<3 hane>-<kisa-baslik>` (ör. `icerik/A1-001-lost-cat/`). Plan §5.2'deki `icerik/<id>/` düzeninin devamıdır.
 
+K-01 (2026-10-11) ile şunlar onaylandı:
+- Kimlik değişmez.
+- Konu kodu kimliğe değil, `content.json`'a yazılır.
+- `content/A2/A2-TRAVEL-001-…` biçimi kullanılmaz.
+
 ```
 icerik/A1-001-lost-cat/
+├── content.json       # makinece okunur meta veri (seviye, konu, hedefler, sürüm, durum, publishAt, kaynak sahne…)
+├── rights-and-review.md # kaynaklar, lisans, güvenlik ve onay geçmişi
 ├── story.en.md        # İngilizce metin (sahne sahne bölünmüş)
 ├── story.tr.md        # Türkçe çeviri (insan kontrolünden geçmiş)
 ├── glossary.md        # seviye üstü kelimeler + Türkçe karşılık + örnek cümle

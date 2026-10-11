@@ -1,6 +1,6 @@
 # H-026: İçerik mimarisi kararları
 
-- **Durum:** Yapılacak (kullanıcı kararı)
+- **Durum:** Bitti — karar verildi (2026-10-11)
 - **Tür:** Karar
 - **Öncelik:** Yüksek
 - **Bağımlılık:** H-007 ile birlikte okunmalı
@@ -42,3 +42,13 @@ Onaylanırsa yapılacaklar:
 
 ## Notlar
 2026-10-11: Web araştırması (5 kol) ve kullanıcının içerik stratejisi belgesinden açıldı. Ayrıntı: `docs/ICERIK-MIMARISI.md`.
+
+## Karar (2026-10-11)
+Kullanıcı `docs/ICERIK-MIMARISI.md` §14'teki önerileri onayladı ("onayladım"). Onaylananlar: K-01…K-16 ve K-20. CLAUDE.md'ye "Onaylı içerik mimarisi kararları" bölümü olarak işlendi; CEFR tablosu ve dosya yapısı güncellendi.
+
+**Bu işte kapanmayanlar:**
+- K-17 Faz yapısı → H-007 / H-023.
+- K-18 Onay ve kapasite → H-028.
+- K-19 Lisans doğrulaması → H-027.
+
+**Sonraki adım:** `IS-PLANI.md` ve `SARTNAME.md` H-023 kapsamında bu kararlara göre güncellenecek.

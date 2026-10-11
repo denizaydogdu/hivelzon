@@ -1,6 +1,6 @@
 # HiVelzon — İçerik Mimarisi (sentez)
 
-**Sürüm:** 0.1 taslak · **Tarih:** 2026-10-11 · **Durum:** Kullanıcı kararı bekliyor (H-026)
+**Sürüm:** 0.2 · **Tarih:** 2026-10-11 · **Durum:** §14 önerileri kullanıcı tarafından onaylandı (H-026, 2026-10-11). K-17, K-18 ve K-19 açık.
 **Ne bu belge:** İçeriğin nasıl yapılandırılacağı, uygulamada nerede ne görüneceği, nasıl üretilip yayınlanacağı ve kullanıcının seviyesinin nasıl takip edileceği için tek başvuru noktası.
 **Ne değil:** Kod yazma onayı değil. Kod, migration, ücretli çağrı, Higgsfield üretimi ve yayın; plan onayından (H-001) önce yapılmaz.
 
@@ -846,6 +846,8 @@ Her yayının kaydı: içerik kimliği ve sürümü, zaman, seviye, kanal, hedef
 ---
 
 ## 14. Karar listesi
+
+> **2026-10-11:** Kullanıcı aşağıdaki önerileri onayladı. Onaylananlar K-01…K-16 ve K-20; bağlayıcı özetleri CLAUDE.md'de. K-17 (faz yapısı), K-18 (onay ve kapasite) ve K-19 (lisans doğrulaması) karar değil, açık iş olarak devam ediyor.
 
 Karar listesi H-026'ya bağlıdır. Bazı maddeler var olan işlere bağlanır.
 
