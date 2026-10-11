@@ -38,7 +38,7 @@ Ayrıntı: `docs/IS-PLANI.md` §10.
 - Şartnamedeki veri modeli (§10) ve API (§11) **taslaktır**. Kod başlarken WishSay desenleriyle karşılaştırılıp kesinleştirilir.
 - Belgeler çeliştiğinde sessizce seçim yapılmaz. Çelişki "mevcut durum / rehber kararı / önerilen çözüm" biçiminde kullanıcıya sunulur.
 
-### Plan ile şartname arasındaki açık çelişkiler (H-001'de karara bağlanacak)
+### Plan ile şartname arasındaki açık çelişkiler (H-007'de karara bağlanacak)
 
 | Konu | `IS-PLANI.md` | `SARTNAME.md` |
 |---|---|---|
@@ -50,7 +50,7 @@ Ayrıntı: `docs/IS-PLANI.md` §10.
 | Telaffuz puanı | v1'de "Söyle" alıştırmalarıyla birlikte (§11) | Yalnızca güvenilir biçimde ölçülebiliyorsa gösterilir; kesin skor iddiası yok (§6.5) |
 | Yaş | 13 altı alınmaz. 13–17 konuşma pratiği için karar H-002'de açık. | İçerik hedefi 13+. Kullanıcı yaş kapsamı hukukla doğrulanacak (§18/10). |
 
-Şartnamedeki **açık kararlar listesi** (§18) var olan H-002…H-005 işleriyle örtüşür. Örtüşmeyenler H-001 onayında yeni H işi olarak açılır. Örnekler: misafir kullanımı, çevrimdışı kullanım, CDN, kısa akışta otomatik oynatma.
+Şartnamedeki **açık kararlar listesi** (§18) H-002…H-020 işlerine dağıtıldı. Sıra ve durum: `yapilacaklar/IS-SIRASI.md`.
 
 ## Ürün ilkeleri (şartname §3.3, §6)
 - Kullanıcı uygulamayı açınca 3–10 dakikada bitirebileceği tek bir öğrenme eylemi görür. Ana sayfa sonsuz akış gibi davranmaz.

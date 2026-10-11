@@ -12,3 +12,4 @@ Eğitim uygulamasında çocuk ihtimali yüksek. Plan §9'daki seçenekler: 13+ (
 
 ## Notlar
 2026-10-11: `docs/IS-PLANI.md` §13'ten.
+2026-10-11: Şartname §12.3 ve §18/10'a göre içerik hedefi 13+. Kullanıcı yaş kapsamı ve Türkiye ile diğer pazarlardaki yükümlülükler hukuk danışmanıyla doğrulanmalı. İlgili işler: H-009 (misafir ve kayıt), H-018 (yayın bölgesi).
