@@ -1,0 +1,40 @@
+[
+  {
+    "created_at": "2026-10-11T16:36:25.351866Z",
+    "display_name": "GPT Image 2.5",
+    "id": "5639593d-bab4-4f17-88ee-e38d3e49013a",
+    "job_type": "gpt_image_2_5",
+    "min_result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261011_163625_5639593d-bab4-4f17-88ee-e38d3e49013a_min.webp",
+    "params": {
+      "aspect_ratio": "9:16",
+      "height": 2688,
+      "medias": [
+        {
+          "data": {
+            "id": "6db4fa91-a3ff-4587-9b02-43a480ecb45a",
+            "type": "media_input",
+            "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/6db4fa91-a3ff-4587-9b02-43a480ecb45a.png"
+          },
+          "role": "image"
+        },
+        {
+          "data": {
+            "id": "663ea0fe-3df5-4cea-ba8c-e08c80e48a96",
+            "type": "media_input",
+            "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/663ea0fe-3df5-4cea-ba8c-e08c80e48a96.png"
+          },
+          "role": "image"
+        }
+      ],
+      "model": "flare",
+      "prompt": "Use the reference images for Maya and Alex. Scene: at the shop counter Maya unfolds a large paper map of the coastal town and draws a circle around the harbour area with a pencil; Alex leans in, curious and hopeful. The map shows streets, piers and the sea, with no labels and no text. Vertical composition. Warm animated-series illustration, graphic-novel style, clean ink lines, soft cel shading, coastal palette of sea blue, sand, lighthouse yellow and evening orange, mature tone suitable for teens and adults, not childish, no text, no letters, no numbers, no logos.",
+      "quality": "low",
+      "reference_elements": [],
+      "remove_bg": false,
+      "resolution": "2k",
+      "width": 1520
+    },
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261011_163625_5639593d-bab4-4f17-88ee-e38d3e49013a.png",
+    "status": "completed"
+  }
+]

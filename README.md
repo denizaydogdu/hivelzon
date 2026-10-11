@@ -19,4 +19,4 @@ Velzon Bilişim Teknolojileri Ltd. Şti. (Eskişehir · info@velzon.tr) ürünü
 3. Kişiselleştirilmiş etkinlikler
 4. ~30 saniyelik kısa video akışı
 
-Önerilen teknoloji: Flutter + Spring Boot 4 + PostgreSQL (WishSay ile aynı yığın).
+Önerilen teknoloji: Flutter + Spring Boot 4 + PostgreSQL.

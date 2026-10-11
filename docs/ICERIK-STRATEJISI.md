@@ -634,7 +634,7 @@ Yayın sonrası ilk 24–72 saatte teknik hata, video başlatma, quiz şikâyeti
 # 22. Yol haritası
 
 ## Faz 0 — Repository keşfi
-Mevcut uygulama, plan, iş sırası, auth, admin, medya depolama, AI sağlayıcı ve testleri incele. `videoGenerator`/WishSay desenlerini sadece oku; başka projeyi değiştirme. Çelişkileri ve riskleri raporla. Planı hazırla, kod yazma, onay bekle.
+Mevcut uygulama, plan, iş sırası, auth, admin, medya depolama, AI sağlayıcı ve testleri incele. `videoGenerator` desenlerini sadece oku; başka projeyi değiştirme. Çelişkileri ve riskleri raporla. Planı hazırla, kod yazma, onay bekle.
 
 ## Faz 1 — İçerik modeli ve katalog
 Metadata, CEFR/beceri hedefleri, durum makinesi, API, editör onaylı örnek içerikler, katalog.

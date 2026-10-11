@@ -1,0 +1,23 @@
+[
+  {
+    "created_at": "2026-10-11T16:36:55.88665Z",
+    "display_name": "GPT Image 2.5",
+    "id": "8b976ac5-5429-4162-b5b3-0d95439f6b75",
+    "job_type": "gpt_image_2_5",
+    "min_result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261011_163655_8b976ac5-5429-4162-b5b3-0d95439f6b75_min.webp",
+    "params": {
+      "aspect_ratio": "9:16",
+      "height": 2688,
+      "medias": [],
+      "model": "flare",
+      "prompt": "First-person view at a crossroads in a coastal town: one road goes straight ahead and then curves left toward a glimpse of the harbour and boats, another road goes right uphill. Calm morning, no people, no signs with text. Vertical composition. Warm animated-series illustration, graphic-novel style, clean ink lines, soft cel shading, coastal palette of sea blue, sand, lighthouse yellow and evening orange, mature tone suitable for teens and adults, not childish, no text, no letters, no numbers, no logos.",
+      "quality": "low",
+      "reference_elements": [],
+      "remove_bg": false,
+      "resolution": "2k",
+      "width": 1520
+    },
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261011_163655_8b976ac5-5429-4162-b5b3-0d95439f6b75.png",
+    "status": "completed"
+  }
+]

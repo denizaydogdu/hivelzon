@@ -6,10 +6,10 @@
 - **Bağımlılık:** H-021, H-022
 
 ## Soru
-Editör onayı (insan kontrolü) için ayrı bir web paneli mi kurulacak, yoksa WishSay'deki gibi uygulama içi yönetici rolü mü kullanılacak?
+Editör onayı (insan kontrolü) için ayrı bir web paneli mi kurulacak, yoksa uygulama içi yönetici rolü mü kullanılacak?
 
 ## Plan önerisi
-WishSay'deki uygulama içi yönetici rolü deseni kullanılsın (plan §9.4). Panel, durum akışını videoGenerator `BackofficeServer`'daki gibi `PENDING_REVIEW` → onay → yayın olarak izlesin. Yönetici işlemleri denetim kaydına yazılsın.
+Uygulama içi yönetici rolü kullanılsın (plan §9.4). Panel, durum akışını videoGenerator `BackofficeServer`'daki gibi `PENDING_REVIEW` → onay → yayın olarak izlesin. Yönetici işlemleri denetim kaydına yazılsın.
 
 ## Kaynak
 `IS-PLANI.md` §9.4 · `SARTNAME.md` §5.1, §9.3 (`admin`), §18/6

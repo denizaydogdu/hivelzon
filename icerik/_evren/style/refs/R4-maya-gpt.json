@@ -1,0 +1,23 @@
+[
+  {
+    "created_at": "2026-10-11T16:35:23.388312Z",
+    "display_name": "GPT Image 2.5",
+    "id": "982653b9-6647-414e-a468-be856b8aee53",
+    "job_type": "gpt_image_2_5",
+    "min_result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261011_163523_982653b9-6647-414e-a468-be856b8aee53_min.webp",
+    "params": {
+      "aspect_ratio": "3:2",
+      "height": 1360,
+      "medias": [],
+      "model": "flare",
+      "prompt": "Character reference sheet of an original character: Maya Brooks, a 19-year-old young woman, local of a coastal town; curly dark-brown shoulder-length hair, warm light-brown skin with a few freckles, friendly bright eyes; yellow raincoat over a striped sweater, dark jeans, ankle boots; a folded paper map and a small notebook peeking from her shoulder bag. Front view, side view, back view, and three facial expressions: warm smile, thinking, surprised. Plain light background. Warm animated-series illustration, graphic-novel style, clean ink lines, soft cel shading, coastal palette of sea blue, sand, lighthouse yellow and evening orange, mature tone suitable for teens and adults, not childish, no text, no letters, no numbers, no logos.",
+      "quality": "low",
+      "reference_elements": [],
+      "remove_bg": false,
+      "resolution": "2k",
+      "width": 2048
+    },
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261011_163523_982653b9-6647-414e-a468-be856b8aee53.png",
+    "status": "completed"
+  }
+]

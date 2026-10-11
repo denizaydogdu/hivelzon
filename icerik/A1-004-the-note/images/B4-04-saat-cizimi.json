@@ -1,0 +1,23 @@
+[
+  {
+    "created_at": "2026-10-11T16:37:49.068589Z",
+    "display_name": "GPT Image 2.5",
+    "id": "e6d08db8-bea4-43f4-906e-899b2cc32a2b",
+    "job_type": "gpt_image_2_5",
+    "min_result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261011_163749_e6d08db8-bea4-43f4-906e-899b2cc32a2b_min.webp",
+    "params": {
+      "aspect_ratio": "9:16",
+      "height": 2688,
+      "medias": [],
+      "model": "flare",
+      "prompt": "Extreme close-up of the torn corner of a rain-stained paper note: a small hand-drawn clock face without any numbers, the short hand pointing to seven and the long hand pointing to twelve, half washed out by rain. Vertical composition. Warm animated-series illustration, graphic-novel style, clean ink lines, soft cel shading, coastal palette of sea blue, sand, lighthouse yellow and evening orange, mature tone suitable for teens and adults, not childish, no text, no letters, no numbers, no logos.",
+      "quality": "low",
+      "reference_elements": [],
+      "remove_bg": false,
+      "resolution": "2k",
+      "width": 1520
+    },
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261011_163749_e6d08db8-bea4-43f4-906e-899b2cc32a2b.png",
+    "status": "completed"
+  }
+]

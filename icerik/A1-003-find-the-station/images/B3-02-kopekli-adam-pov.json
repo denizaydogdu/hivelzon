@@ -1,0 +1,32 @@
+[
+  {
+    "created_at": "2026-10-11T16:36:55.550706Z",
+    "display_name": "GPT Image 2.5",
+    "id": "a1ad653b-cc47-4044-a40f-4b36549d9a11",
+    "job_type": "gpt_image_2_5",
+    "min_result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261011_163655_a1ad653b-cc47-4044-a40f-4b36549d9a11_min.webp",
+    "params": {
+      "aspect_ratio": "9:16",
+      "height": 2688,
+      "medias": [
+        {
+          "data": {
+            "id": "663ea0fe-3df5-4cea-ba8c-e08c80e48a96",
+            "type": "media_input",
+            "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/663ea0fe-3df5-4cea-ba8c-e08c80e48a96.png"
+          },
+          "role": "image"
+        }
+      ],
+      "model": "flare",
+      "prompt": "First-person view from Alex on a sloping street of colourful houses in a coastal town: a friendly older man with a small dog on a leash points down the street, explaining the way; Alex's hand in an olive jacket sleeve at the edge of the frame. Morning light. Vertical composition. Warm animated-series illustration, graphic-novel style, clean ink lines, soft cel shading, coastal palette of sea blue, sand, lighthouse yellow and evening orange, mature tone suitable for teens and adults, not childish, no text, no letters, no numbers, no logos.",
+      "quality": "low",
+      "reference_elements": [],
+      "remove_bg": false,
+      "resolution": "2k",
+      "width": 1520
+    },
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261011_163655_a1ad653b-cc47-4044-a40f-4b36549d9a11.png",
+    "status": "completed"
+  }
+]

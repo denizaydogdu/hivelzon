@@ -39,3 +39,9 @@
   - GPT Image 2.5 dört kat daha ucuz ve "yazı yok" kuralına daha iyi uydu. Görsel modelde varsayılan adayı bu.
   - Sahneler arası karakter tutarlılığı, referans görseliyle (`image_references`) yapılacak sahne testiyle ölçülecek.
 - **Nihai seçim:** kullanıcıda.
+
+## R4 Maya (2026-10-11)
+
+- **Prompt:** /tmp kaydı → "Character reference sheet of an original character: Maya Brooks, a 19-year-old young woman, local of a coastal town; curly dark-brown shoulder-length hair, warm light-brown skin with a few freckles, friendly bright eyes; yellow raincoat over a striped sweater, dark jeans, ankle boots; a folded paper map and a small notebook peeking from her shoulder bag. Front view, side view, back view, and three facial expressions: warm smile, thinking, surprised. Plain light background." + STYLE.
+- **Üretim:** gpt_image_2_5, 3:2, 2k. Tahmin 0,5 / gerçek 0,5. Job `R4-maya-gpt.json`; upload `6db4fa91-a3ff-4587-9b02-43a480ecb45a`.
+- **Değerlendirme:** ✅ Tarife uygun, yazı yok. Kullanıcı onayı: soru-cevap (B2–B4 paketi).

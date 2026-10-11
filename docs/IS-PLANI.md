@@ -20,7 +20,7 @@
   - konuşma pratiği **günlük ücretsiz kota** ve **Velzon'un belirlediği aylık bütçe tavanı** arkasında açılır;
   - kullanıcıya özel video üretilmez; kişiselleştirme ucuz yollarla yapılır (etkinlik, tekrar, şablon video).
 - **İlk yapılacak:** hazır dersler + kısa video akışı + quizler (MVP). Yapay zekâ konuşması v1'de, kotalı gelir.
-- **Teknoloji:** WishSay ile aynı yığın (Flutter + Spring Boot 4 + PostgreSQL). Böylece KVKK, denetim kaydı, rıza ve hesap silme kalıpları hazır gelir.
+- **Teknoloji:** Flutter + Spring Boot 4 + PostgreSQL. KVKK, denetim kaydı, rıza ve hesap silme baştan tasarlanır.
 
 ---
 
@@ -221,7 +221,7 @@ Ayrıntı §7'de. Kısaca:
 8. Kalite kontrolü (aşağıda) → yayın (CDN) → uygulamada görünür
 ```
 
-Her video için `icerik/<id>/` altında şunlar saklanır: senaryo, prompt'lar, kullanılan model, kredi harcaması ve altyazı dosyaları. Bu, WishSay'deki `design/PROMPTS.md` alışkanlığının devamıdır.
+Her video için `icerik/<id>/` altında şunlar saklanır: senaryo, prompt'lar, kullanılan model, kredi harcaması ve altyazı dosyaları.
 
 ### 5.3 Kredi maliyetleri (ölçülen)
 
@@ -244,7 +244,7 @@ Her video için `icerik/<id>/` altında şunlar saklanır: senaryo, prompt'lar, 
 **Kredinin dolar karşılığı:**
 - Plana göre değişir. Bir 2026 kaynağına göre Starter planında ~0,075 USD/kredi, üst planda ~0,028 USD/kredi [15].
 - Başka bir kaynak farklı plan adları ve fiyatlar veriyor [16].
-- Hesabımız **"lite" planda, 244,25 kredi** kaldı. Lite planın aylık ücreti ve kredi miktarı **doğrulanmadı**; WishSay notlarına göre 250 kredi.
+- Hesabımız **"lite" planda, 244,25 kredi** kaldı. Lite planın aylık ücreti ve kredi miktarı **doğrulanmadı**.
 
 **Tahmini üretim maliyeti:**
 - Varsayım: 1,5 kat yeniden çekim payı. Ders videolarında üçte biri slayt (kredisiz).
@@ -319,7 +319,7 @@ Kullanıcı duyar + metni görür
 | **Telaffuz puanı** | Yok (pratikte) | Azure Pronunciation Assessment: ~1,32 USD/saat (≈ 0,022 USD/dk) [18] | Sadece kısa "Söyle" alıştırmalarında kullanılır; serbest sohbette kullanılmaz. |
 | **LLM** | Küçük yerel modeller (kalite ve pil sorunu) | **Claude Haiku 4.5:** 1 / 5 USD (milyon girdi / çıktı token). **Claude Sonnet 5.5:** 2 / 10 USD. Önbellekten okuma ~0,1 kat (Haiku). Kaynak: Anthropic fiyat sayfası [19] | Öneri: **Haiku 4.5** varsayılan. Geri bildirim özeti gibi zor işler için Sonnet 5.5. Sistem talimatı önbelleğe alınır. |
 | **TTS** | iOS AVSpeechSynthesizer / Android TTS | Azure nöral: ~15 USD / 1 milyon karakter [18]; Deepgram Aura-2: 0,030 USD / 1.000 karakter, Aura-1: 0,015 USD [17] | Cihaz sesi robotik olabilir. Öğretmen karakter sesi için bulut TTS tercih edilir; sık cümleler önbelleğe alınır. |
-| **Uçtan uca ses modeli** | — | OpenAI gpt-realtime: gerçekçi bütçe ~0,06–0,11 USD/dk, mini model ~0,02–0,05 USD/dk [20] | En doğal ve en düşük gecikmeli seçenek ama en pahalısı. Sağlayıcıya bağımlılık getirir ve WishSay yığınıyla ilgisizdir. v2'de yeniden bakılır. |
+| **Uçtan uca ses modeli** | — | OpenAI gpt-realtime: gerçekçi bütçe ~0,06–0,11 USD/dk, mini model ~0,02–0,05 USD/dk [20] | En doğal ve en düşük gecikmeli seçenek ama en pahalısı. Sağlayıcıya bağımlılık getirir. v2'de yeniden bakılır. |
 
 ### 6.3 Gecikme
 
@@ -378,9 +378,9 @@ Hedef: kullanıcı sustuktan sonra **ilk sesin 1,5 saniyenin altında** gelmesi.
 | Kalem | Aylık tahmin | Not |
 |---|---|---|
 | Higgsfield içerik üretimi | ~50–130 USD (üst plan) + ek kredi | §5.4. Asıl maliyet insan emeği. |
-| Sunucu (API + PostgreSQL) | ~20–80 USD | WishSay ile aynı sunucu kiralama kararına bağlı (WishSay W-034). [Doğrulanmadı] |
+| Sunucu (API + PostgreSQL) | ~20–80 USD | Sunucu kiralama kararına bağlı. [Doğrulanmadı] |
 | Video depolama ve CDN | 1k MAU: ~5 USD · 10k: ~30 USD · 100k: ~200–400 USD | Varsayım: MAU başına ayda 20 izlenme × ~20 MB ≈ 100k MAU'da 40 TB. Çıkış trafiği ücretsiz veya ucuz bir depolama/CDN (ör. Cloudflare R2, Bunny) seçilmeli. **[Fiyatlar doğrulanmadı]** |
-| Apple Developer + Google Play | ~99 USD/yıl + 25 USD tek sefer | Velzon'un mevcut hesapları kullanılabilir (WishSay W-018). |
+| Apple Developer + Google Play | ~99 USD/yıl + 25 USD tek sefer | Velzon'un mevcut geliştirici hesapları kullanılabilir. [Doğrulanmalı] |
 | Alan adı ve e-posta | Mevcut (velzon.tr) | — |
 
 **Sonuç:** Hazır video, kısa video akışı ve quiz ayakları **100 bin MAU'da bile ayda birkaç yüz dolar** düzeyinde kalır. Bu ayaklar ücretsiz modelle **sürdürülebilir**.
@@ -494,7 +494,7 @@ Bu kurallarla 10 bin MAU'da yapay zekâ maliyeti yaklaşık **1.500–2.600 USD/
   - Telaffuz puanlaması tanıma amacı taşımaz. Ancak Kurul'un 2026/921 sayılı ilke kararı (RG 02.06.2026) "ses tınısı" gibi verileri de biyometrik kapsamda anıyor [21].
   - **İhtiyatlı yaklaşım:** Ses verisi özel nitelikli kabul edilir.
 - **Gereken adımlar:**
-  - Konuşma pratiği ilk açıldığında **ayrı bir açık rıza** alınır (ör. `VOICE_PROCESSING`). Rıza vermeyen kullanıcı **metin modunu** kullanır. Rıza Ayarlar'dan geri alınabilir. WishSay'deki `SENSITIVE_DATA_PUBLICATION` kalıbı aynen kullanılır.
+  - Konuşma pratiği ilk açıldığında **ayrı bir açık rıza** alınır (ör. `VOICE_PROCESSING`). Rıza vermeyen kullanıcı **metin modunu** kullanır. Rıza Ayarlar'dan geri alınabilir.
   - **Varsayılan: ses saklanmaz.** Ses işlenir ve atılır. Sunucuya giden ses bellekte işlenir, diske yazılmaz.
   - Sağlayıcı sözleşmelerinde veri saklamama ve modeli eğitmeme seçenekleri açılır.
   - Konuşmanın **metin dökümü** kullanıcının geçmişinde 30 gün tutulur (öneri), sonra silinir.
@@ -503,7 +503,7 @@ Bu kurallarla 10 bin MAU'da yapay zekâ maliyeti yaklaşık **1.500–2.600 USD/
   - Anthropic, Deepgram ve Azure gibi sağlayıcılar yurt dışındadır.
   - 2024 değişikliğiyle standart sözleşme imzalanır ve imzadan sonra 5 iş günü içinde Kurum'a bildirilir. **[Hukukçu teyidi gerekli]**
   - Cihazda STT ve TTS kullanmak bu yükü azaltır.
-- **VERBİS:** Velzon'un kaydı WishSay için de geçerlidir; envantere hiVelzon işlemleri eklenir. **[Kontrol edilmeli]**
+- **VERBİS:** Velzon'un VERBİS kaydı varsa envantere hiVelzon işlemleri eklenir. **[Kontrol edilmeli]**
 
 ### 9.2 Çocuklar
 
@@ -522,9 +522,9 @@ Bu kurallarla 10 bin MAU'da yapay zekâ maliyeti yaklaşık **1.500–2.600 USD/
 - Yaş sınırı m.8'e göre ülkeden ülkeye 13–16 arasındadır.
 - **Öneri:** Başlangıçta mağaza yayınını **Türkiye ile sınırla**. AB'ye açılmak ayrı bir karardır (§13).
 
-### 9.4 WishSay'den tekrar kullanılacak kalıplar
+### 9.4 Temel kalıplar (hiVelzon'un kendi tasarımı)
 
-| WishSay kalıbı | hiVelzon'da kullanımı |
+| Kalıp | hiVelzon'da kullanımı |
 |---|---|
 | `audit_log` (IP, port, User-Agent, UTC; sadece ekleme) | Her yazma işlemi + her yapay zekâ oturumunun başlangıç/bitiş ve maliyet kaydı |
 | `user_consents` (politika sürümüyle) | KVKK aydınlatma, `VOICE_PROCESSING` açık rızası, veli onayı, bildirim izni |
@@ -547,7 +547,7 @@ Bu kurallarla 10 bin MAU'da yapay zekâ maliyeti yaklaşık **1.500–2.600 USD/
                │ REST (JSON)                     │ WebSocket (ses akışı)
 ┌──────────────▼─────────────────────────────────▼───────────────────┐
 │ Spring Boot 4 API (Java 17)                                        │
-│ • Kimlik & hesap (WishSay'den)   • Rıza & denetim kaydı (WishSay)  │
+│ • Kimlik & hesap                 • Rıza & denetim kaydı            │
 │ • İçerik kataloğu (ders, kısa video, quiz, altyazı)                │
 │ • Öğrenme motoru (seviye testi, ilerleme, seri, SRS, günlük plan)  │
 │ • Konuşma geçidi (STT→LLM→TTS orkestrasyonu, akış)                 │
@@ -566,21 +566,15 @@ Bu kurallarla 10 bin MAU'da yapay zekâ maliyeti yaklaşık **1.500–2.600 USD/
 Senaryo → Higgsfield CLI (Soul ID, video, ses) → kurgu → altyazı → QC → yükleme → katalogda "yayında"
 ```
 
-**WishSay'den yeniden kullanılacaklar:**
+**Baştan kurulacak temel parçalar:**
 - Flutter proje yapısı;
 - TR/EN yerelleştirme (ARB);
 - kimlik doğrulama akışı;
 - ayarlar, hesap silme ve rıza ekranları;
 - Spring Boot katmanları ve hata modeli (ProblemDetail);
-- `audit_log` ve `user_consents` şemaları ve migration kalıpları;
+- `audit_log` ve `user_consents` şemaları ve migration'lar;
 - Testcontainers ile test;
-- yerelde docker-compose ile PostgreSQL;
-- `ogrenilenler/` içindeki ortam dersleri (ör. port 5433, Colima, Node sürümü).
-
-**Kod nasıl paylaşılır? (karar gerektirir):**
-- **Kopyala-uyarla:** basit ve hızlı başlar ama iki kod tabanı ayrışır.
-- **Ortak kütüphane:** düzenli ama ilk günden ek iş çıkarır.
-- **Öneri:** MVP'de kopyala-uyarla. Ortak parçalar ikinci kez değiştiğinde ortak modüle çıkarılır.
+- yerelde docker-compose ile PostgreSQL.
 
 **Bilinçli olarak yok:**
 - web sitesi ve web uygulaması (`hi.velzon.tr` şimdilik yapılmayacak);
@@ -593,12 +587,12 @@ Senaryo → Higgsfield CLI (Soul ID, video, ses) → kurgu → altyazı → QC �
 
 ## 11. Yol haritası
 
-> Efor tahminleri, Claude destekli tek geliştirici ve WishSay'den kalıp devralma varsayımıyla kabadır. İçerik üretimi ayrı bir iş koludur ve **paralel** yürür.
+> Efor tahminleri, Claude destekli tek geliştirici varsayımıyla kabadır. İçerik üretimi ayrı bir iş koludur ve **paralel** yürür.
 
 | Faz | Kapsam | Kaba efor | Çıkış ölçütü |
 |---|---|---|---|
 | **Faz 0: Karar ve pilot** | Planın onayı (H-001). Açık kararlar (H-002…H-006). Marka ve öğretmen karakteri (Soul ID). **Pilot içerik:** 1 ders + 3 kısa video, gerçek kredi ve emek ölçümü. Cihazda STT ile Türk aksanı küçük testi (kodsuz, hazır demo uygulamalarla). | 1–2 hafta | Kullanıcı planı onayladı; pilot videolar beğenildi; birim maliyetler doğrulandı. |
-| **Faz 1: MVP** | Proje iskeleti (WishSay kalıpları). Hesap, rıza, denetim kaydı, hesap silme. Seviye testi. Ders oynatıcı + quiz + altyazı. Kısa video akışı + mini quiz. İlerleme, seri, günlük hedef, SRS. İçerik yönetimi (uygulama içi yönetici rolü). CDN. Hukuki metinler. TR/EN. **İçerik:** A1–A2, 20 ders + 60 kısa video. | 8–10 hafta (kod) · içerik 3–4 ay (paralel, Faz 0'dan itibaren) | Kapalı beta (TestFlight / dahili test); 50–100 test kullanıcısı; çökme oranı < %1. |
+| **Faz 1: MVP** | Proje iskeleti. Hesap, rıza, denetim kaydı, hesap silme. Seviye testi. Ders oynatıcı + quiz + altyazı. Kısa video akışı + mini quiz. İlerleme, seri, günlük hedef, SRS. İçerik yönetimi (uygulama içi yönetici rolü). CDN. Hukuki metinler. TR/EN. **İçerik:** A1–A2, 20 ders + 60 kısa video. | 8–10 hafta (kod) · içerik 3–4 ay (paralel, Faz 0'dan itibaren) | Kapalı beta (TestFlight / dahili test); 50–100 test kullanıcısı; çökme oranı < %1. |
 | **Faz 2: v1** | **Yapay zekâ konuşma pratiği** (metin + ses, kotalı, bütçe tavanlı, maliyet ölçümü). Ses açık rızası. Telaffuz puanı ("Söyle" alıştırmaları). Push hatırlatmaları. Haftalık özet. Rozetler. B1–B2 içerik. İlgiye göre önbellekli metin üretimi. 13–17 politikası (H-002 kararına göre). | 6–8 hafta | Mağazada Türkiye yayını; MAU başı yapay zekâ maliyeti ölçülüyor ve tavan altında. |
 | **Faz 3: v2** | Şablon varyant videolar. C1 içerik. İkinci öğretmen karakteri. Çevrimdışı indirme. İsteğe bağlı lig. Konuşma konfigürasyonunun optimizasyonu (cihazda işleme, gerçek zamanlı model değerlendirmesi). Sponsorluk / premium kararının yeniden değerlendirilmesi. Gerekirse çocuk modu ve `hi.velzon.tr`. | 8+ hafta | Tutma ve maliyet hedefleri (§12). |
 
@@ -645,7 +639,7 @@ Senaryo → Higgsfield CLI (Soul ID, video, ses) → kurgu → altyazı → QC �
 | Mağaza reddi (yaş derecesi, yapay zekâ politikası) | Orta | Orta | 13+, bildir düğmesi, açık yapay zekâ etiketleme |
 | Higgsfield fiyat ya da koşul değişikliği | Orta | Orta | Prompt ve kaynak dosyalarını sakla, modelden bağımsız hat, alternatif araç listesi |
 | Duolingo ve benzerlerinin konuşma özelliğini ücretsize çekmesi | Düşük–Orta | Orta | Türkçeye özel içerik ve öğretmen karakteriyle farklılaş |
-| Tek kişilik ekip ve WishSay ile kaynak çakışması | Yüksek | Orta | Net faz sırası, WishSay kalıplarını yeniden kullanma |
+| Tek kişilik ekip ve diğer Velzon işleriyle kaynak çakışması | Yüksek | Orta | Net faz sırası, küçük ve doğrulanabilir işler |
 
 ### 13.2 Kullanıcıya açık sorular (karar bekleyenler)
 
@@ -655,7 +649,6 @@ Senaryo → Higgsfield CLI (Soul ID, video, ses) → kurgu → altyazı → QC �
 4. **Öğretmen karakteri (H-005):** Tamamen kurgusal yapay zekâ karakteri mi? Adı, cinsiyeti, aksanı (Amerikan / İngiliz) ne olacak? Kaç karakter?
 5. **Sağlayıcılar ve yurt dışı aktarım (H-006):** LLM için Claude (Haiku 4.5 / Sonnet 5.5) uygun mu? STT, TTS ve telaffuz için Azure / Deepgram uygun mu? Yurt dışına aktarım için hukukçu desteği var mı?
 6. **Yayın bölgesi:** Sadece Türkiye mi (öneri), yoksa AB'deki Türkler de mi?
-7. **Kod paylaşımı:** WishSay'den kopyala-uyarla mı (öneri), ortak kütüphane mi?
 8. **Marka:** "hiVelzon" adı ve logosu Higgsfield brandkit ile mi üretilecek? Mağaza adı "hiVelzon: İngilizce Öğren" gibi mi olacak?
 9. **Reklam yok kararı:** Onaylanıyor mu (öneri: hiç reklam yok)?
 

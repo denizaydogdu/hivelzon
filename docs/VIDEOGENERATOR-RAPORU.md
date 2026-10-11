@@ -638,7 +638,7 @@ Sırlar bu dosyalara **asla** konmaz; ortam değişkeninden ya da secret store'd
 **Test:** `BackofficeServerTest` (7), `BackofficeAuthTest` (8), `RangeSupportTest` (5) ve diğerleri.
 
 **Taşıma notu: X (kod alınmaz).**
-- hiVelzon'da bunun yerine `admin` modülü gelir: Spring MVC, Spring Security (rol ve oturum), denetim kaydı (WishSay deseni) ve ince bir onay ekranı (K-12).
+- hiVelzon'da bunun yerine `admin` modülü gelir: Spring MVC, Spring Security (rol ve oturum), denetim kaydı ve ince bir onay ekranı (K-12).
 - Alınacak fikirler:
   - durum kontrolü serviste yapılır (`PENDING_REVIEW` değilse onay reddedilir);
   - onay sırasında platform seçimi;

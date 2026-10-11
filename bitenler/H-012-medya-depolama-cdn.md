@@ -9,7 +9,7 @@
 Video, ses ve görseller nerede saklanacak? Velzon'un mevcut altyapısı kullanılabilir mi? Maliyet, erişim (süreli imzalı URL) ve saklama süresi şartları ne olacak?
 
 ## Plan önerisi
-Medya nesne depolamada tutulsun ve CDN üzerinden sunulsun; PostgreSQL'de blob tutulmasın. Önce Velzon'un mevcut altyapısı ve WishSay'in kullandığı çözüm incelensin, aylık maliyet 1k/10k MAU için hesaplansın.
+Medya nesne depolamada tutulsun ve CDN üzerinden sunulsun; PostgreSQL'de blob tutulmasın. Önce Velzon'un mevcut altyapısı incelensin, aylık maliyet 1k/10k MAU için hesaplansın.
 
 ## Kaynak
 `IS-PLANI.md` §8.1 · `SARTNAME.md` §9.2, §11.1, §18/7

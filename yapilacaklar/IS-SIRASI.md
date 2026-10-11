@@ -56,7 +56,6 @@ Bu dosya tek takip noktasıdır. Hangi işin hangi sırada yapıldığını, şu
 | 12 | H-014 | Kısa video akışının davranışı | Orta | — | ✅ |
 | 13 | H-015 | Konuşma geri bildirimi ve telaffuz puanının güvenilirliği | Orta | H-006, H-007 | ⛔ |
 | 14 | H-016 | Marka ve görsel kimlik | Orta | H-005 | ⛔ |
-| 15 | H-019 | WishSay ile kod paylaşım yöntemi | Orta | H-021 | ✅ |
 | 16 | H-011 | İçerik yönetim ve editör onay paneli | Orta | H-021, H-022 | ✅ |
 | 17 | H-012 | Medya depolama ve CDN | Orta | H-021 | ✅ |
 | 18 | H-010 | Çevrimdışı kullanım MVP'de olacak mı? | Düşük | H-012 | ✅ |
@@ -66,7 +65,6 @@ Bu dosya tek takip noktasıdır. Hangi işin hangi sırada yapıldığını, şu
 ### Adım 2 — Kodsuz inceleme (Claude; kararları beklemeden yapılabilir)
 | # | İş | Başlık | Öncelik | Bağımlılık | Durum |
 |---|---|---|---|---|---|
-| 21 | H-021 | WishSay desenlerinin incelemesi | Yüksek | — | ✅ |
 | 22 | H-022 | videoGenerator sınıflarının incelemesi (yalnızca okuma) | Yüksek | — | ✅ |
 | 22a | H-027 | Kelime listesi ve içerik lisanslarının doğrulanması (hukuk görüşü gereken maddeler kullanıcıya) | Yüksek | — | ✅ |
 
@@ -100,9 +98,7 @@ Kod yazımı H-025 onaylandıktan sonra başlar. MVP işleri o aşamada sıradak
 | H-011 | İçerik yönetim ve editör onay paneli | 2026-10-11 | K-12: içerik kod olarak + ince Spring onay ekranı |
 | H-012 | Medya depolama ve CDN | 2026-10-11 | K-13: Bunny Stream (adaptör arkasında). KVKK bildirimi hukukçu teyidi bekliyor. |
 | H-014 | Kısa video akışının davranışı | 2026-10-11 | K-15: quiz ve mola kartları, 13–17 yaş için 20 dk sınır |
-| H-021 | WishSay desenlerinin incelemesi | 2026-10-11 | `docs/WISHSAY-DESEN-RAPORU.md` (arşiv referansı; kullanıcı WishSay'i kapsam dışı bıraktı) |
 | H-022 | videoGenerator sınıflarının incelemesi | 2026-10-11 | `docs/VIDEOGENERATOR-RAPORU.md`; videoGenerator `git status` temiz |
-| H-019 | WishSay ile kod paylaşımı | 2026-10-11 | Kullanıcı kararı: WishSay kullanılmaz |
 | H-032 | Sezon 1 diyalogları B4–B12 | 2026-10-11 | Kullanıcı onayı. A1 %95,7–99,0; 8 kelimeyi aşan cümle yok; zincir tutarlı |
 | H-024 | Pilot S1·B1 + 3 kısa klip | 2026-10-11 | Kullanıcı onayı. 17 kr (bölüm başı ~8,5). Önizleme v3 senkron ≤ 0,16 sn, -16 LUFS. D-001 dersleri. |
 | H-030 | Story Bible ve Sezon 1 planı | 2026-10-11 | Kullanıcı onayı. Aleyna "Alex", birimsiz fiyat. `icerik/_evren/` + prolog ve B1–B3 (A1 %96–98) |
@@ -147,7 +143,6 @@ Kod yazımı H-025 onaylandıktan sonra başlar. MVP işleri o aşamada sıradak
     - `loudnorm` ~-24 LUFS;
     - `BudgetGuard` tavan yoksa 100 USD varsayıyor.
     - **Risk:** videoGenerator'daki `TODO.md` dosyasında açık duran bir API anahtarı parçası kullanıcıya iletildi.
-  - **Kullanıcı kararı:** "WishSay'i unut, yalnızca hiVelzon'a odaklan." CLAUDE.md'den WishSay bağımlılığı kaldırıldı; H-019 kapandı.
   - H-027 bitti. CEFR-J v1.6 (ticari kullanım atıfla serbest) doğrulandı. Cambridge EVP/EGP ticari lisans vermiyor → **kullanılmaz**. CEFR-J Grammar Profile yalnızca referans. CLAUDE.md ve ICERIK-MIMARISI güncellendi. Hukukçu soruları (S1–S12) ve yazılı teyit taslakları kullanıcıya iletildi; gönderilmedi.
   - Kullanıcı "onayladım" dedi: H-029 onaylandı (K-21…K-35 CLAUDE.md'de). K-02 → K-30 (sekme "Hikâye"), A1 video 45–90 sn. Bağ kuralları bağlayıcı hâle geldi. H-030 başladı. Dışa yazışmalar (Cambridge, Tono Lab, hukukçu) ayrı onay bekliyor.
   - H-030 taslağı yazıldı: Story Bible, karakterler, kanon (F-001…F-020), açık sorular denetimi, dil ilerlemesi, Sezon 1 planı (prolog + 12 bölüm), prolog ve B1–B3 diyalogları.
@@ -201,3 +196,9 @@ Kod yazımı H-025 onaylandıktan sonra başlar. MVP işleri o aşamada sıradak
     - B9 dilbilgisi ve hikâye boşluğu, B12 bayrak adı düzeltildi.
     - Kullanıcı onayı bekleniyor.
   - H-032 onaylandı ve bitti. Sıradaki: B2–B4 üretimi (kullanıcı kararı).
+  - Kullanıcı: "Bu proje başka bir projeyle ilgili değil." Proje dışı bütün atıflar belgelerden temizlendi. H-019 ve H-021 (proje dışı konu) ve ilgili rapor kaldırıldı; git geçmişinde duruyor.
+  - B2–B4 üretimi (kullanıcı onayı):
+    - Maya referansı + 22 sahne (11,5 kr) + B4-01 yeniden üretimi (0,5 kr; Maya'nın kıyafeti yanlıştı). Kredi 98,25.
+    - ElevenLabs: 75 satır, 2.314 karakter; yeni sesler Maya = Sarah, Mrs Brooks = Alice, adam = George.
+    - Sırada: B2–B4 önizleme kurgusu.
+

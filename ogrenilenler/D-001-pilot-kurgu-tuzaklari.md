@@ -24,3 +24,6 @@
 
 ## Seslendirme
 - ElevenLabs `eleven_v3` + `with-timestamps`, `voice_settings.speed` ve `language_code` kabul ediyor. Kısa repliklerde konuşma hızı yüksek çıkıyor (220–250 kelime/dk); hedef ifadeler kurguda yavaşlatılır.
+
+## Birden çok karakterli sahne
+- İki referanslı sahnede (Maya + Alex) model kıyafetleri karıştırabilir; B4-01'de Maya, Alex'in ceketiyle çıktı. **Kural:** Her karakterin ayırt edici kıyafeti prompt'a açıkça yazılır ve "NO <öteki karakterin kıyafeti>" eklenir.

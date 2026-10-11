@@ -35,7 +35,7 @@ Bilgiler üç sınıfa ayrılır:
 - [KARAR] Higgsfield üretiminden önce maliyet hesaplanır, kullanıcıya gösterilir ve onay alınır. Prompt/model/parametre/tarih/job ID/kredi kaydı tutulur; aylık harcama tavanı aşılmaz.
 - [KARAR] Hikâye içeriği insan kontrolünden geçmeden yayınlanmaz.
 - [KARAR] İçerik güvenliği hedefi 13+; şiddet, cinsellik, siyaset, din, gerçek markalar, ünlüler ve telifli karakterler kullanılmaz.
-- [KARAR] Hesap silme 30 gün geri alınabilir olacak; kimlik doğrulama, denetim ve onay kayıtları için WishSay'deki ilgili desenler incelenecek.
+- [KARAR] Hesap silme 30 gün geri alınabilir olacak; kimlik doğrulama, denetim ve onay kayıtları hiVelzon'un kendi tasarımıyla yapılacak.
 
 ### 1.2 Bu belgenin kapsamı
 
@@ -825,7 +825,6 @@ Analitik, kullanıcıyı gereksiz izlemeye değil ürün kalitesini ölçmeye hi
 Teslimatlar:
 - Repo ağacı ve mevcut uygulama durumu
 - Mevcut `docs/IS-PLANI.md` ve `yapilacaklar/IS-SIRASI.md` değerlendirmesi
-- WishSay'den incelenecek kimlik doğrulama/onay/silme/audit desenleri
 - `videoGenerator` koduna dokunmadan incelenecek sınıfların raporu
 - Mevcut teknolojilerin doğrulanması
 - Açık kararlar, riskler ve bağımlılıklar
@@ -902,7 +901,7 @@ Codex bu belgeyi doğrudan kodlama emri olarak değil, planlama ve gereksinim ka
 3. **Önce** `yapilacaklar/IS-SIRASI.md` dosyasını oku; mevcut sırayı, açık işleri, devam eden işleri ve son doğrulanmış durumu öğren.
 4. `yapilacaklar/`, `devam-edenler/`, `bitenler/`, `hatalar/`, `ogrenilenler/` klasörlerini mevcut yönergeye göre incele.
 5. Mevcut Flutter, Spring Boot, PostgreSQL, test, CI ve konfigürasyon yapısını doğrula; bu belgede varsayılan olan ama repoda bulunmayan şeyi varmış gibi raporlama.
-6. WishSay'de kimlik doğrulama, onay kayıtları, audit ve 30 günlük geri alınabilir silme desenlerinin hangi kod/belgelerde olduğunu incele. Kodu kopyalamadan önce uyumluluğunu değerlendir.
+6. Kimlik doğrulama, onay kayıtları, audit ve 30 günlük geri alınabilir silme için tasarım önerisi hazırla.
 7. `videoGenerator` için yalnızca ilgili `README.md`, `CLAUDE.md`, `thoughts/` ve yukarıdaki sınıfları oku. Bu projeyi değiştirme; paketleme/çalışan JVM'i etkileyen işlem yapma.
 8. Güvenlik, KVKK, çocuk kullanıcılar, AI maliyeti, içerik moderasyonu ve medya saklama açısından risk listesi hazırla.
 9. Bu belge ile mevcut repo arasında çelişki varsa sessizce karar verme; “mevcut durum / rehber kararı / önerilen çözüm” şeklinde raporla.

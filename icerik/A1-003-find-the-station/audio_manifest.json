@@ -1,0 +1,15 @@
+{
+ "ALEX|OK. The harbour.": "b3_01_alex",
+ "ALEX|Excuse me, where is the harbour?": "b3_02_alex",
+ "ALEX|Harbour where?": "b3_03_alex",
+ "MAN|Sorry?": "b3_04_man",
+ "HI (TR)|Dün kullandığın kalıbı hatırla: Excuse me, where is…?": "b3_05_hi",
+ "MAN|The harbour? Go straight. Then turn left.": "b3_06_man",
+ "ALEX|Again, please.": "b3_07_alex",
+ "MAN|Go straight. Turn left. It's near.": "b3_08_man",
+ "ALEX|Thank you!": "b3_09_alex",
+ "HI (TR)|between = ikisinin arasında. Otobüs durağına ve kafeye bak.": "b3_10_hi",
+ "ALEX|This is the old station! Hello? Is anybody here?": "b3_11_alex",
+ "ALEX|E! The message on the radio!": "b3_12_alex",
+ "HI (TR)|Bazı harfler silinmiş. Yarın birlikte bakalım mı?": "b3_13_hi"
+}

@@ -23,4 +23,4 @@ H-007 kararlarına göre `docs/IS-PLANI.md`'yi şartnameyle uyumlu hâle getirme
 
 ## Notlar
 2026-10-11: `docs/SARTNAME.md` ve `docs/IS-PLANI.md` karşılaştırmasından açıldı.
-2026-10-11: İş planı ve şartname şunlara göre güncellenecek: oyunlaştırılmış hikâye yönü (`OYUN-TASARIMI.md`), WishSay bağımlılığının kaldırılması (kullanıcı kararı) ve H-021 raporundaki SARTNAME §10 tutarsızlıkları (ad uyumsuzluğu, `refresh_tokens`, roller).
+2026-10-11: İş planı ve şartname şunlara göre güncellenecek: oyunlaştırılmış hikâye yönü (`OYUN-TASARIMI.md`) ve SARTNAME §10 tutarsızlıkları (`DELETION_PENDING` / `PENDING_DELETION` ad uyumsuzluğu, eksik `refresh_tokens` ve roller).

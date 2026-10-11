@@ -7,7 +7,7 @@
 
 > **Durum:** Planlama. **Kullanıcı planı onaylamadan kod yazılmaz.** Plan: `docs/IS-PLANI.md`. Ayrıntılı gereksinimler: `docs/SARTNAME.md` (taslak 0.1, 2026-10-11). Plan onayına kadar migration, dış servis çağrısı, Higgsfield üretimi ve yayın da yapılmaz.
 
-**Karışmasın:** Velzon'un genel Higgsfield görsel/video atölyesi bu klasör değildir; `~/Dev/velzon-gorsel` altındadır (ayrı oturum). hiVelzon kendi içeriği için Higgsfield'ı **buradan doğrudan** kullanır (bkz. "Higgsfield ile görsel, video ve ses üretimi"). **WishSay'e başvurulmaz:** kullanıcı kararı, 2026-10-11 ("WishSay'i unut, yalnızca hiVelzon'a odaklan"). Okunmaz, takip edilmez, durumu raporlanmaz. Hazır video boru hattı kodu `~/Dev/videoGenerator` altındadır (bkz. "videoGenerator projesinden yararlanma").
+**Karışmasın:** Velzon'un genel Higgsfield görsel/video atölyesi bu klasör değildir; `~/Dev/velzon-gorsel` altındadır (ayrı oturum). hiVelzon kendi içeriği için Higgsfield'ı **buradan doğrudan** kullanır (bkz. "Higgsfield ile görsel, video ve ses üretimi"). Hazır video boru hattı kodu `~/Dev/videoGenerator` altındadır (bkz. "videoGenerator projesinden yararlanma").
 
 ## Ürünün dört ayağı
 1. Hazır ders videoları (Higgsfield; sabit yapay zekâ öğretmen karakteri)
@@ -93,7 +93,6 @@ Flutter + Spring Boot 4 + PostgreSQL. Aşağıdakiler hiVelzon'un **kendi tasar�
 - onay kayıtları;
 - 30 gün geri alınabilir hesap silme.
 
-`docs/WISHSAY-DESEN-RAPORU.md` (H-021) yalnızca arşiv referansıdır; WishSay'e bağımlılık kurulmaz.
 
 Ayrıntı: `docs/IS-PLANI.md` §10.
 
