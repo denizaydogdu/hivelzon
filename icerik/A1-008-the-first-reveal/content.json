@@ -1,0 +1,77 @@
+{
+  "type": "story_episode",
+  "level": "A1",
+  "season": 1,
+  "seriesId": "the-missing-signal",
+  "version": 1,
+  "status": "DRAFT",
+  "publishAt": null,
+  "aiGenerated": true,
+  "humanReviewed": false,
+  "rightsStatus": "PENDING",
+  "canonVersion": "0.1",
+  "contentId": "A1-008",
+  "slug": "the-first-reveal",
+  "title": "The First Reveal",
+  "episode": 8,
+  "prev": "A1-007",
+  "next": "A1-009",
+  "topic": "review_radio_source",
+  "skills": [
+    "listening",
+    "reading",
+    "spoken_interaction"
+  ],
+  "communicativeFunction": "combine_information_give_simple_opinion",
+  "grammarTargets": [
+    "i_think",
+    "it_comes_from",
+    "review_units_1_8"
+  ],
+  "targetPhrases": [
+    "It's the same.",
+    "It comes from…",
+    "Look!",
+    "I think…",
+    "Channel seven."
+  ],
+  "glossary": [
+    "channel",
+    "recording",
+    "signal",
+    "weak"
+  ],
+  "estimatedMinutes": 7,
+  "previously": "B7: 'Friday. Seven o'clock. We find it.'",
+  "payoff": "Çağrının her cuma aynı olduğu, yani bir kayıt olduğu ve tepe/Lumen Point yönünden geldiği anlaşılır. Babaannenin notu (Kanal Yedi) bu kanalla ilişkilenir.",
+  "openQuestion": "Q8",
+  "answers": [
+    "Q7",
+    "S1-Q:partial",
+    "SQ0:touch"
+  ],
+  "cluesUnlocked": [
+    "C12",
+    "C13"
+  ],
+  "callbackPhrases": [
+    "Can you hear me?",
+    "Turn left.",
+    "seven o'clock",
+    "Friday",
+    "I don't know."
+  ],
+  "flags": [],
+  "decisionPoints": 3,
+  "realClips": 1,
+  "coverageCheck": {
+    "tool": "cefr_check(scratch) v2: TEPKİ satırları dahil",
+    "list": "CEFR-J v1.6",
+    "A1": 96.7,
+    "withGlossary": 100.0,
+    "maxSentenceWords": 8,
+    "sentencesOver8": 0,
+    "date": "2026-10-11",
+    "note": "Hedef ≥98, alt sınır 95 (K-07)"
+  }
+}

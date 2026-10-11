@@ -1,0 +1,72 @@
+{
+  "type": "story_episode",
+  "level": "A1",
+  "season": 1,
+  "seriesId": "the-missing-signal",
+  "version": 1,
+  "status": "DRAFT",
+  "publishAt": null,
+  "aiGenerated": true,
+  "humanReviewed": false,
+  "rightsStatus": "PENDING",
+  "canonVersion": "0.1",
+  "contentId": "A1-011",
+  "slug": "storm-warning",
+  "title": "Storm Warning",
+  "episode": 11,
+  "prev": "A1-010",
+  "next": "A1-012",
+  "topic": "weather_clothes",
+  "skills": [
+    "listening",
+    "reading",
+    "spoken_interaction"
+  ],
+  "communicativeFunction": "describe_weather_give_advice",
+  "grammarTargets": [
+    "its_weather",
+    "present_continuous_raining_chunk",
+    "imperatives_wear_take"
+  ],
+  "targetPhrases": [
+    "It's windy.",
+    "It's raining.",
+    "It's cold.",
+    "Wear a raincoat.",
+    "Take an umbrella."
+  ],
+  "glossary": [
+    "windy",
+    "raincoat",
+    "storm"
+  ],
+  "estimatedMinutes": 7,
+  "previously": "B10'un son karesi: Light Night duyurusu ve cumartesi günü fırtına simgesi.",
+  "payoff": "'The light test' = müzenin Light Night etkinliği. Gitmek güvenli ve mümkün.",
+  "openQuestion": "Q11",
+  "answers": [
+    "Q10"
+  ],
+  "cluesUnlocked": [
+    "C17",
+    "C18"
+  ],
+  "callbackPhrases": [
+    "at eight",
+    "on Saturday",
+    "Turn it on."
+  ],
+  "flags": [],
+  "decisionPoints": 2,
+  "realClips": 0,
+  "coverageCheck": {
+    "tool": "cefr_check(scratch) v2: TEPKİ satırları dahil",
+    "list": "CEFR-J v1.6",
+    "A1": 98.0,
+    "withGlossary": 99.6,
+    "maxSentenceWords": 8,
+    "sentencesOver8": 0,
+    "date": "2026-10-11",
+    "note": "Hedef ≥98, alt sınır 95 (K-07)"
+  }
+}

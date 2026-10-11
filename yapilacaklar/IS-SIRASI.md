@@ -6,7 +6,7 @@ Bu dosya tek takip noktasıdır. Hangi işin hangi sırada yapıldığını, şu
 
 ## Nerede kaldık
 - **Şu an:** Planlama, Faz 0. Kod yok.
-- **Şimdi yapılan:** — Pilot (H-024) bitti. Sıradaki: H-032 (B4–B12 diyalogları; kodsuz), H-004 (Higgsfield planı; Sezon 1 ≈ 60–100 kr), H-006 (ticari ElevenLabs).
+- **Şimdi yapılan:** B2–B4 üretimi (kullanıcı kararı; lansmanda ilk 4 bölüm, K-26). Her üretimden önce maliyet onayı.
 - **Sıradaki adım:**
   1. Kullanıcı 1. adımda kalan kararları verir. En kritikleri:
      - H-001 ve H-007: konuşma pratiği MVP'de mi, faz yapısı ne olacak?
@@ -48,7 +48,7 @@ Bu dosya tek takip noktasıdır. Hangi işin hangi sırada yapıldığını, şu
 | 4 | H-003 | Yapay zekâ aylık bütçe tavanı ve kotalar | Yüksek | — | ⛔ |
 | 5 | H-006 | Yapay zekâ sağlayıcıları ve yurt dışı aktarım | Yüksek | — | ⛔ |
 | 6 | H-008 | Ham ses ve transkript saklama politikası | Yüksek | H-006 | ⛔ |
-| 7 | H-004 | Higgsfield planı ve video üretim emeği | Yüksek | — | ⛔ |
+| 7 | H-004 | Higgsfield planı ve video üretim emeği | Yüksek | — | ✅ |
 | 8 | H-005 | Yapay zekâ öğretmen karakteri | Yüksek | — | ✅ |
 | 9 | H-018 | Mağaza yayın bölgesi | Orta | H-002 | ✅ |
 | 10 | H-009 | Misafir kullanım ve kayıt zorunluluğu | Orta | H-002 | ✅ |
@@ -74,7 +74,7 @@ Bu dosya tek takip noktasıdır. Hangi işin hangi sırada yapıldığını, şu
 | # | İş | Başlık | Öncelik | Bağımlılık | Durum |
 |---|---|---|---|---|---|
 | 22b | H-030 | Story Bible, karakter kitabı ve Sezon 1 bölüm planı (Claude yazar; kredisiz) | Yüksek | H-029 | ✅ |
-| 22c | H-032 | Sezon 1 diyalog taslakları B4–B12 (A1 denetimli; kodsuz) | Yüksek | H-030 | ⏳ |
+| 22c | H-032 | Sezon 1 diyalog taslakları B4–B12 (A1 denetimli; kodsuz) | Yüksek | H-030 | ✅ |
 | 23 | H-023 | İş planını şartnameyle ve oyun yönüyle güncelle | Yüksek | H-007, H-026, H-029 | ⏳ |
 | 24 | H-024 | Pilot: S1·B1 "A Strange Message" etkileşimli bölüm + 3 klip (kredi harcar, onaylı) | Yüksek | H-004, H-005, H-026, H-027, H-028 | ✅ |
 
@@ -103,6 +103,7 @@ Kod yazımı H-025 onaylandıktan sonra başlar. MVP işleri o aşamada sıradak
 | H-021 | WishSay desenlerinin incelemesi | 2026-10-11 | `docs/WISHSAY-DESEN-RAPORU.md` (arşiv referansı; kullanıcı WishSay'i kapsam dışı bıraktı) |
 | H-022 | videoGenerator sınıflarının incelemesi | 2026-10-11 | `docs/VIDEOGENERATOR-RAPORU.md`; videoGenerator `git status` temiz |
 | H-019 | WishSay ile kod paylaşımı | 2026-10-11 | Kullanıcı kararı: WishSay kullanılmaz |
+| H-032 | Sezon 1 diyalogları B4–B12 | 2026-10-11 | Kullanıcı onayı. A1 %95,7–99,0; 8 kelimeyi aşan cümle yok; zincir tutarlı |
 | H-024 | Pilot S1·B1 + 3 kısa klip | 2026-10-11 | Kullanıcı onayı. 17 kr (bölüm başı ~8,5). Önizleme v3 senkron ≤ 0,16 sn, -16 LUFS. D-001 dersleri. |
 | H-030 | Story Bible ve Sezon 1 planı | 2026-10-11 | Kullanıcı onayı. Aleyna "Alex", birimsiz fiyat. `icerik/_evren/` + prolog ve B1–B3 (A1 %96–98) |
 | H-029 | Oyun ve hikâye tasarımı kararları | 2026-10-11 | Kullanıcı onayı; K-21…K-35 CLAUDE.md'ye işlendi |
@@ -194,3 +195,9 @@ Kod yazımı H-025 onaylandıktan sonra başlar. MVP işleri o aşamada sıradak
     - Explainer karşılaştırması kapandı (~187 kr).
     - Bölüm başına ~8,5 kr. Sezon 1 ≈ 60–100 kr; kalan 110 kr.
     - Ders: D-001.
+  - Kullanıcı kararları: yerelde mevcut ElevenLabs hesabıyla devam (H-006 notu); Higgsfield 110 kr ile devam (H-004 bitti); H-032'yi Claude yapıyor.
+  - H-032: B4–B12 taslakları yazıldı (3 ajan paralel).
+    - Sezon denetimi: A1 %95,7–99,0; 8 kelimeyi aşan cümle yok; zincir ve açık sorular tutarlı.
+    - B9 dilbilgisi ve hikâye boşluğu, B12 bayrak adı düzeltildi.
+    - Kullanıcı onayı bekleniyor.
+  - H-032 onaylandı ve bitti. Sıradaki: B2–B4 üretimi (kullanıcı kararı).

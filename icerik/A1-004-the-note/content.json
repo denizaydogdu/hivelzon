@@ -1,0 +1,72 @@
+{
+  "type": "story_episode",
+  "level": "A1",
+  "season": 1,
+  "seriesId": "the-missing-signal",
+  "version": 1,
+  "status": "DRAFT",
+  "publishAt": null,
+  "aiGenerated": true,
+  "humanReviewed": false,
+  "rightsStatus": "PENDING",
+  "canonVersion": "0.1",
+  "contentId": "A1-004",
+  "slug": "the-note",
+  "title": "The Note",
+  "episode": 4,
+  "prev": "A1-003",
+  "next": "A1-005",
+  "topic": "time_days",
+  "skills": [
+    "listening",
+    "reading",
+    "spoken_interaction"
+  ],
+  "communicativeFunction": "tell_time_and_days",
+  "grammarTargets": [
+    "at_time",
+    "on_day",
+    "its_oclock"
+  ],
+  "targetPhrases": [
+    "What time is it?",
+    "It's seven o'clock.",
+    "on Friday",
+    "at seven",
+    "What day is it today?"
+  ],
+  "glossary": [
+    "harbour",
+    "fried"
+  ],
+  "estimatedMinutes": 6,
+  "previously": "B3'ün son karesi: kapıdaki yarım not ('Fri… …pm Pier … — E.').",
+  "payoff": "Notun tamamı çözülür: Cuma, 19:00, Pier 3.",
+  "openQuestion": "Q4",
+  "answers": [
+    "Q3"
+  ],
+  "cluesUnlocked": [
+    "C5",
+    "C6"
+  ],
+  "callbackPhrases": [
+    "Friday",
+    "seven o'clock",
+    "near",
+    "between"
+  ],
+  "flags": [],
+  "decisionPoints": 2,
+  "realClips": 0,
+  "coverageCheck": {
+    "tool": "cefr_check(scratch) v2: TEPKİ satırları dahil",
+    "list": "CEFR-J v1.6",
+    "A1": 97.6,
+    "withGlossary": 100.0,
+    "maxSentenceWords": 8,
+    "sentencesOver8": 0,
+    "date": "2026-10-11",
+    "note": "Hedef ≥98, alt sınır 95 (K-07)"
+  }
+}

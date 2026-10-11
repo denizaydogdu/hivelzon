@@ -1,0 +1,87 @@
+{
+  "type": "story_episode",
+  "level": "A1",
+  "season": 1,
+  "seriesId": "the-missing-signal",
+  "version": 1,
+  "status": "DRAFT",
+  "publishAt": null,
+  "aiGenerated": true,
+  "humanReviewed": false,
+  "rightsStatus": "PENDING",
+  "canonVersion": "0.1",
+  "contentId": "A1-009",
+  "slug": "the-cafe-on-the-hill",
+  "title": "The Café on the Hill",
+  "episode": 9,
+  "prev": "A1-008",
+  "next": "A1-010",
+  "topic": "cafe_ordering",
+  "skills": [
+    "listening",
+    "reading",
+    "spoken_interaction"
+  ],
+  "communicativeFunction": "order_food_and_drink_politely",
+  "grammarTargets": [
+    "can_i_have_please",
+    "articles_a_an",
+    "some"
+  ],
+  "targetPhrases": [
+    "Can I have a tea, please?",
+    "a / an",
+    "some",
+    "How much is it?",
+    "Here you are."
+  ],
+  "glossary": [
+    "voice",
+    "member",
+    "lighthouse",
+    "signal",
+    "weak",
+    "antenna",
+    "battery",
+    "cable",
+    "next to"
+  ],
+  "estimatedMinutes": 7,
+  "previously": "B8'in son karesi: tepede ışığı yanan Hilltop Café.",
+  "payoff": "Çağrının eski radyo kulübüne ait olduğu öğrenilir. Bir üye cumartesileri fenere gider.",
+  "openQuestion": "Q9",
+  "answers": [
+    "Q8"
+  ],
+  "cluesUnlocked": [
+    "C14",
+    "C15"
+  ],
+  "callbackPhrases": [
+    "Thank you.",
+    "Nice to meet you.",
+    "Can you play it?"
+  ],
+  "flags": [
+    {
+      "id": "drink_choice",
+      "values": [
+        "tea",
+        "hot_chocolate"
+      ],
+      "callbackIn": "A1-012"
+    }
+  ],
+  "decisionPoints": 2,
+  "realClips": 0,
+  "coverageCheck": {
+    "tool": "cefr_check(scratch) v2: TEPKİ satırları dahil",
+    "list": "CEFR-J v1.6",
+    "A1": 95.7,
+    "withGlossary": 100.0,
+    "maxSentenceWords": 8,
+    "sentencesOver8": 0,
+    "date": "2026-10-11",
+    "note": "Hedef ≥98, alt sınır 95 (K-07)"
+  }
+}

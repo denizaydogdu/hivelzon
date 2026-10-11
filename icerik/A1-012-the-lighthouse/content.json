@@ -1,0 +1,76 @@
+{
+  "type": "story_episode",
+  "level": "A1",
+  "season": 1,
+  "seriesId": "the-missing-signal",
+  "version": 1,
+  "status": "DRAFT",
+  "publishAt": null,
+  "aiGenerated": true,
+  "humanReviewed": false,
+  "rightsStatus": "PENDING",
+  "canonVersion": "0.1",
+  "contentId": "A1-012",
+  "slug": "the-lighthouse",
+  "title": "The Lighthouse",
+  "episode": 12,
+  "prev": "A1-011",
+  "next": "S2",
+  "topic": "asking_for_help_season_review",
+  "skills": [
+    "listening",
+    "reading",
+    "spoken_interaction"
+  ],
+  "communicativeFunction": "ask_for_help_say_what_you_look_for",
+  "grammarTargets": [
+    "can_you_requests",
+    "present_continuous_looking_for_chunk",
+    "season_review"
+  ],
+  "targetPhrases": [
+    "Can you help me, please?",
+    "I'm looking for…",
+    "What's this?",
+    "Who is she?",
+    "Thank you very much."
+  ],
+  "glossary": [
+    "lighthouse",
+    "storm",
+    "voice"
+  ],
+  "estimatedMinutes": 8,
+  "previously": "B11'in son karesi: babaannenin notu, 'Unutma.'",
+  "payoff": "S1-Q kapanır: çağrıyı kulübün fenerdeki eski vericisi gönderiyor; zamanlayıcıyı Ellen Hart kurmuş. Fotoğrafta genç Nermin var.",
+  "openQuestion": "Q12",
+  "answers": [
+    "Q11",
+    "S1-Q",
+    "SQ0:partial"
+  ],
+  "cluesUnlocked": [
+    "C19",
+    "C20",
+    "C21"
+  ],
+  "callbackPhrases": [
+    "Can you hear me?",
+    "Friday, seven o'clock",
+    "She has white hair.",
+    "Here you are."
+  ],
+  "flags": [],
+  "decisionPoints": 3,
+  "realClips": 2,
+  "coverageCheck": {
+    "tool": "cefr_check(scratch) v2: TEPKİ satırları dahil",
+    "list": "CEFR-J v1.6",
+    "A1": 99.0,
+    "withGlossary": 100.0,
+    "maxSentenceWords": 8,
+    "sentencesOver8": 0,
+    "date": "2026-10-11",
+    "note": "Hedef ≥98, alt sınır 95 (K-07)"
+  }
+}

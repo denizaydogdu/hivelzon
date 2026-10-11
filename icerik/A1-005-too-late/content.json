@@ -1,0 +1,70 @@
+{
+  "type": "story_episode",
+  "level": "A1",
+  "season": 1,
+  "seriesId": "the-missing-signal",
+  "version": 1,
+  "status": "DRAFT",
+  "publishAt": null,
+  "aiGenerated": true,
+  "humanReviewed": false,
+  "rightsStatus": "PENDING",
+  "canonVersion": "0.1",
+  "contentId": "A1-005",
+  "slug": "too-late",
+  "title": "Too Late?",
+  "episode": 5,
+  "prev": "A1-004",
+  "next": "A1-006",
+  "topic": "daily_routine",
+  "skills": [
+    "listening",
+    "spoken_interaction"
+  ],
+  "communicativeFunction": "understand_routines_apologise",
+  "grammarTargets": [
+    "present_simple_third_person_s",
+    "was_recognition_only"
+  ],
+  "targetPhrases": [
+    "He works every day.",
+    "She waits.",
+    "Sorry, I'm late.",
+    "Who is she?",
+    "She was here."
+  ],
+  "glossary": [
+    "battery",
+    "fix"
+  ],
+  "estimatedMinutes": 7,
+  "previously": "B4: 'Pier 3. Friday. 7.'",
+  "payoff": "Buluşma kaçırılır ama bir kayıt bırakılmıştır. Buluşma yerinin Pier 3'e taşındığı anlaşılır.",
+  "openQuestion": "Q5",
+  "answers": [
+    "Q4",
+    "Q2"
+  ],
+  "cluesUnlocked": [
+    "C7",
+    "C8"
+  ],
+  "callbackPhrases": [
+    "seven o'clock",
+    "Friday",
+    "Nice to meet you."
+  ],
+  "flags": [],
+  "decisionPoints": 2,
+  "realClips": 0,
+  "coverageCheck": {
+    "tool": "cefr_check(scratch) v2: TEPKİ satırları dahil",
+    "list": "CEFR-J v1.6",
+    "A1": 97.8,
+    "withGlossary": 98.9,
+    "maxSentenceWords": 8,
+    "sentencesOver8": 0,
+    "date": "2026-10-11",
+    "note": "Hedef ≥98, alt sınır 95 (K-07)"
+  }
+}

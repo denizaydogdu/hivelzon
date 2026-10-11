@@ -1,0 +1,81 @@
+{
+  "type": "story_episode",
+  "level": "A1",
+  "season": 1,
+  "seriesId": "the-missing-signal",
+  "version": 1,
+  "status": "DRAFT",
+  "publishAt": null,
+  "aiGenerated": true,
+  "humanReviewed": false,
+  "rightsStatus": "PENDING",
+  "canonVersion": "0.1",
+  "contentId": "A1-006",
+  "slug": "the-recording",
+  "title": "The Recording",
+  "episode": 6,
+  "prev": "A1-005",
+  "next": "A1-007",
+  "topic": "rooms_listening",
+  "skills": [
+    "listening",
+    "reading",
+    "spoken_interaction"
+  ],
+  "communicativeFunction": "describe_a_room_listen_for_details",
+  "grammarTargets": [
+    "there_is_there_are",
+    "prepositions_on_under",
+    "imperative_turn_on"
+  ],
+  "targetPhrases": [
+    "There is a…",
+    "There are…",
+    "on the desk",
+    "under the bed",
+    "Can you play it?"
+  ],
+  "glossary": [
+    "cable",
+    "slowly",
+    "lighthouse"
+  ],
+  "estimatedMinutes": 7,
+  "previously": "B5'in son karesi: pili biten kaydedici. 'Maya's cousin Sam! He can fix it!'",
+  "payoff": "Kayıt dinlenir. Üç ipucu bulunur: Lumen Point, Saturdays, the light.",
+  "openQuestion": "Q6",
+  "answers": [
+    "Q5"
+  ],
+  "cluesUnlocked": [
+    "C9",
+    "C10"
+  ],
+  "callbackPhrases": [
+    "Again, please.",
+    "Can you hear me?",
+    "She was here."
+  ],
+  "flags": [
+    {
+      "id": "ask_style",
+      "values": [
+        "slowly",
+        "again"
+      ],
+      "callbackIn": "A1-007"
+    }
+  ],
+  "decisionPoints": 2,
+  "realClips": 0,
+  "coverageCheck": {
+    "tool": "cefr_check(scratch) v2: TEPKİ satırları dahil",
+    "list": "CEFR-J v1.6",
+    "A1": 98.1,
+    "withGlossary": 100.0,
+    "maxSentenceWords": 8,
+    "sentencesOver8": 0,
+    "date": "2026-10-11",
+    "note": "Hedef ≥98, alt sınır 95 (K-07)"
+  }
+}

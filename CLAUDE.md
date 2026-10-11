@@ -71,6 +71,8 @@
 - **Ses:** ElevenLabs zaman damgalı, -16 LUFS.
 - **Yazılar:** ImageMagick PNG ile eklenir.
 - **Explainer:** Kullanılmaz. Gemini Omni 10 sn = 30 kr; B1 ≈ 187 kr. Biçim de uymuyor (tek anlatıcı; karakter sesi ve karar anı yok). Kural 4 karşılaştırması bu gerekçeyle kapandı. |
+| H-004 | Higgsfield: mevcut lite plan, 110,25 kr ile devam (Sezon 1 ≈ 60–100 kr). Kredi 25'in altına inince bir kez hatırlatılır. |
+| H-006 (ek) | Yerel çalışmada videoGenerator'ın ElevenLabs hesabı kullanılır (ücretsiz, iç kullanım). Yayından önce ticari plan şart. |
 | H-030 | Kahraman **Aleyna "Alex" Yıldız** (kadın, 19, İzmir). Story Bible ve Sezon 1 planı onaylandı; kanon `icerik/_evren/`'de kilitli. S1'de fiyatlar birimsiz söylenir ("It's thirteen."). |
 
 **Bölümler arası bağ kuralları** (`OYUN-TASARIMI.md` §4.3, bağlayıcı):

@@ -210,7 +210,7 @@
 
 | Alan | İçerik |
 |---|---|
-| Olay | Cumartesi. Hilltop Café. Alex sipariş verir (kibar istek). Kayıt Rosa'ya dinletilir. Rosa gülümser: "That's the old club call! The radio club. They meet here… long ago." Duvarda soluk bir anten fotoğrafı. Rosa ismi söylemez: "One member goes to the lighthouse on Saturdays." Sam: "The signal is weak. We need a better antenna." |
+| Olay | Cumartesi. Hilltop Café. Alex sipariş verir (kibar istek). Kayıt Rosa'ya dinletilir. Rosa gülümser: "That's the old club call! The radio club was here. Long ago." Duvarda soluk bir anten fotoğrafı. Rosa ismi söylemez: "One member goes to the lighthouse on Saturdays." Sam: "The signal is weak. We need a better antenna." Hemen fenere gidemezler: Lumen Point uzak, o saatte otobüs yok ve telsiz zayıf. |
 | Dil hedefi | Yiyecek ve içecek sipariş eder, kibar istekte bulunur. |
 | Ünite | A1-6 yiyecek ve kafede sipariş |
 | Hedef ifadeler | *Can I have a tea, please? / a / an / some / How much is it? / Here you are.* |
@@ -225,7 +225,7 @@
 | `cluesUnlocked` | C14 Kafedeki anten fotoğrafı (PLRC) · C15 Rosa'nın sözü: "lighthouse on Saturdays" |
 | `callbackPhrases` | B2'den *Thank you. / Nice to meet you.*; B6'dan *Can you play it?* |
 | Bayraklar | `drink_choice` (tea / hot chocolate) → B12'de Rosa'nın termosu |
-| Son kare | Sam bir kâğıda çizer: "Antenna. Battery. Cable." Alex: "Where can I buy them?" Rosa: "Mr. Grant's shop. Next to the bus stop." |
+| Son kare | Sam bir kâğıda çizer: "Antenna. Battery. Cable." Alex: "Where can I buy them?" Rosa: "Mr. Grant's shop. Near the bus stop." |
 
 ## B10: *Spare Parts* (`A1-010-spare-parts`)
 
@@ -239,7 +239,7 @@
 | Dil laboratuvarı | *thirteen / thirty* vurgu farkı; *How much is / are*. Türklerin hatası: *How much is they?* → *How much **are** they?* |
 | Görev | **Doğru parçayı doğru fiyata al:** bütçe, sayı, para üstü. |
 | Kanıt kontrolü | Yeni dükkân, fiyat dinleme (sayılar 11–99). |
-| `previously` | B9: "Mr. Grant's shop. Next to the bus stop." |
+| `previously` | B9: "Mr. Grant's shop. Near the bus stop." |
 | `payoff` | Telsiz güçlenir. **İkinci, canlı bir mesaj** yakalanır. |
 | `answers` | **Q9** |
 | `openQuestion` | **Q10:** "Gelecek cumartesi saat sekizde 'the light test' nedir? Gidebilir miyiz?" |

@@ -30,4 +30,4 @@ Sağlayıcılar kalite, Türk aksanı başarımı, veri işleme koşulları ve g
 - **OpenAI anahtarı** global bir ortam değişkeni; makinedeki her araç aynı faturayı paylaşıyor.
 - **hiVelzon tahmini:** 6 görselli A1 bölümü için ~0,55–0,80 USD (videoGenerator yolu). hiVelzon görselleri Higgsfield'de: 0,5 kredi/görsel (low).
 - **Öneri:** ElevenLabs zaman damgalı TTS deseni alınsın, ayrı ticari hesapla. Görsel için OpenAI değil Higgsfield (K-24). Programatik LLM gerekirse şemalı çıktıyla kullanılsın.
-
+2026-10-11: **Kullanıcı kararı:** Yerel çalışma süresince **mevcut (videoGenerator) ElevenLabs hesabıyla** devam edilecek. Ücretsiz plan; aylık 10.000 karakter, videoGenerator ile ortak. Bu sesler iç kullanım içindir. **Yayından önce ticari plan şartı geçerli.** AI sohbet sağlayıcısı v1'de seçilecek.

@@ -52,11 +52,13 @@
   "decisionPoints": 3,
   "realClips": 0,
   "coverageCheck": {
-    "tool": "cefr_check(scratch)",
+    "tool": "cefr_check(scratch) v2: TEPKİ satırları dahil",
     "list": "CEFR-J v1.6",
-    "A1": 98.0,
+    "A1": 98.2,
     "withGlossary": 100.0,
     "maxSentenceWords": 8,
-    "date": "2026-10-11"
+    "sentencesOver8": 0,
+    "date": "2026-10-11",
+    "note": "Hedef ≥98, alt sınır 95 (K-07)"
   }
 }
