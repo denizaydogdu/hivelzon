@@ -1,6 +1,6 @@
 # H-025: Faz 1 (MVP) uygulama planı
 
-- **Durum:** Yapılacak
+- **Durum:** Bitti
 - **Tür:** Plan
 - **Öncelik:** Yüksek
 - **Bağımlılık:** H-001, H-007, H-023
@@ -24,3 +24,4 @@ Onaylanan plana göre MVP'nin uygulama planını küçük ve doğrulanabilir iş
 ## Notlar
 2026-10-11: `docs/SARTNAME.md` ve `docs/IS-PLANI.md` karşılaştırmasından açıldı.
 2026-10-11: MVP planı şunları kapsamalı: hikâye haritası, bölüm oynatıcısı (segment + karar katmanı), ipucu panosu, defter, bölüm kapısı, kontrol noktası. Teknik risk için önce H-031 prototipi.
+2026-10-11: Plan `docs/UYGULAMA-PLANI.md` olarak yazıldı; işler H-033…H-043 açıldı (oynatıcı H-031). Kullanıcı onayladı: önce oynatıcı, ilk test cihazı iOS simülatörü.

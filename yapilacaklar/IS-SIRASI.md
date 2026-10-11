@@ -6,7 +6,7 @@ Bu dosya tek takip noktasıdır. Hangi işin hangi sırada yapıldığını, şu
 
 ## Nerede kaldık
 - **Şu an:** Planlama, Faz 0. Kod yok.
-- **Şimdi yapılan:** B2–B4 üretimi (kullanıcı kararı; lansmanda ilk 4 bölüm, K-26). Her üretimden önce maliyet onayı.
+- **Şimdi yapılan:** B1–B4 önizlemeleri hazır; içerik üretimi durduruldu. Mobil uygulama planı (H-025, `docs/UYGULAMA-PLANI.md`) onaylandı. Sıradaki: Faz 1.0 H-033 repo iskeleti, sonra H-034 ve H-031 (oynatıcı); ilk test cihazı iOS simülatörü.
 - **Sıradaki adım:**
   1. Kullanıcı 1. adımda kalan kararları verir. En kritikleri:
      - H-001 ve H-007: konuşma pratiği MVP'de mi, faz yapısı ne olacak?
@@ -25,7 +25,7 @@ Bu dosya tek takip noktasıdır. Hangi işin hangi sırada yapıldığını, şu
   - H dosyasının `Durum` satırı güncellenir;
   - **Günlük** bölümüne bir satır eklenir.
 - **Biten işler:** "Biten işler" tablosuna doğrulama kanıtıyla birlikte yazılır.
-- **Numaralar:** Tek sayaçla verilir. Sıradaki boş numara: **H-033**.
+- **Numaralar:** Tek sayaçla verilir. Sıradaki boş numara: **H-044**.
 
 **Durum simgeleri:**
 - ⛔ Kullanıcı kararı bekliyor
@@ -79,10 +79,25 @@ Bu dosya tek takip noktasıdır. Hangi işin hangi sırada yapıldığını, şu
 ### Adım 4 — Uygulama planı
 | # | İş | Başlık | Öncelik | Bağımlılık | Durum |
 |---|---|---|---|---|---|
-| 25 | H-025 | Faz 1 (MVP) uygulama planı | Yüksek | H-001, H-007, H-023, H-029 | ⏳ |
-| 26 | H-031 | Etkileşimli bölüm oynatıcısı prototipi (kod; onaydan sonra) | Yüksek | H-025 | ⏳ |
+| 25 | H-025 | Faz 1 (MVP) uygulama planı | Yüksek | H-001, H-007, H-023, H-029 | ✅ |
 
-Kod yazımı H-025 onaylandıktan sonra başlar. MVP işleri o aşamada sıradaki boş numaradan itibaren numaralanır.
+Plan: `docs/UYGULAMA-PLANI.md`. Kod yazımı H-025 onaylandıktan sonra başlar.
+
+### Adım 5 — Faz 1 (MVP) uygulaması (kod)
+| # | İş | Başlık | Öncelik | Bağımlılık | Durum |
+|---|---|---|---|---|---|
+| 1.0 | H-033 | Repo iskeleti (mobil + backend) | Yüksek | H-025 | ⏳ |
+| 1.1 | H-034 | Bölüm paketi formatı, dışa aktarma, content-lint | Yüksek | H-033 | ⏳ |
+| 1.2 | H-031 | Etkileşimli bölüm oynatıcısı | Yüksek | H-033, H-034 | ⏳ |
+| 1.3 | H-035 | Hikâye haritası, bölüm kapısı, yerel ilerleme | Yüksek | H-031 | ⏳ |
+| 1.4 | H-036 | Defter, ipucu panosu, FSRS | Yüksek | H-035 | ⏳ |
+| 1.5 | H-037 | Backend çekirdek | Yüksek | H-033 | ⏳ |
+| 1.6 | H-038 | Mobil ↔ backend, misafir modu | Yüksek | H-035, H-037 | ⏳ |
+| 1.7 | H-039 | Onboarding ve yerleştirme | Orta | H-038 | ⏳ |
+| 1.8 | H-040 | Keşfet akışı | Orta | H-038 | ⏳ |
+| 1.9 | H-041 | Editör onay ekranı, içerik içe aktarma | Orta | H-038 | ⏳ |
+| 1.10 | H-042 | Profil, ayarlar, hukuki metinler | Orta | H-038 | ⏳ |
+| 1.11 | H-043 | Kalite ve beta | Orta | H-039 … H-042 | ⏳ |
 
 ## Devam eden işler
 | İş | Başlık | Başlangıç | Not |
@@ -103,6 +118,7 @@ Kod yazımı H-025 onaylandıktan sonra başlar. MVP işleri o aşamada sıradak
 | H-024 | Pilot S1·B1 + 3 kısa klip | 2026-10-11 | Kullanıcı onayı. 17 kr (bölüm başı ~8,5). Önizleme v3 senkron ≤ 0,16 sn, -16 LUFS. D-001 dersleri. |
 | H-030 | Story Bible ve Sezon 1 planı | 2026-10-11 | Kullanıcı onayı. Aleyna "Alex", birimsiz fiyat. `icerik/_evren/` + prolog ve B1–B3 (A1 %96–98) |
 | H-029 | Oyun ve hikâye tasarımı kararları | 2026-10-11 | Kullanıcı onayı; K-21…K-35 CLAUDE.md'ye işlendi |
+| H-025 | Faz 1 (MVP) uygulama planı | 2026-10-11 | Kullanıcı onayı. `docs/UYGULAMA-PLANI.md`; H-033…H-043 açıldı |
 | H-027 | Lisans doğrulaması | 2026-10-11 | `docs/LISANS-RAPORU.md`. CEFR-J v1.6 omurga; EVP/EGP kullanılmaz; hukukçuya 12 soru |
 
 ## Günlük
@@ -200,5 +216,6 @@ Kod yazımı H-025 onaylandıktan sonra başlar. MVP işleri o aşamada sıradak
   - B2–B4 üretimi (kullanıcı onayı):
     - Maya referansı + 22 sahne (11,5 kr) + B4-01 yeniden üretimi (0,5 kr; Maya'nın kıyafeti yanlıştı). Kredi 98,25.
     - ElevenLabs: 75 satır, 2.314 karakter; yeni sesler Maya = Sarah, Mrs Brooks = Alice, adam = George.
-    - Sırada: B2–B4 önizleme kurgusu.
+    - B2–B4 önizlemeleri kurgulandı (78,8 / 67,9 / 98,9 sn; -16 LUFS; altyazı–ses farkı ölçümle doğrulandı).
+  - Kullanıcı: içerik üretiminde burada durulsun, mobil uygulamaya fazlı başlansın. H-025 planı yazıldı (`docs/UYGULAMA-PLANI.md`, Faz 1.0–1.11). İşler H-033…H-043 açıldı; oynatıcı H-031 numarasını korudu. Kullanıcı onayladı (önce oynatıcı, iOS simülatörü); H-025 bitti.
 
