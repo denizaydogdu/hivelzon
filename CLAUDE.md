@@ -49,6 +49,7 @@
 | K-33 | Klasör: hikâye kanonu `icerik/_evren/`'de; bölümler K-01 düzeninde (`icerik/A1-001-a-strange-message/`). |
 | K-34 | Durum makinesi K-05 olarak kalır. Kanon kontrolü onay kontrol listesinin bir maddesidir. |
 | K-35 | A1 hikâye videosu 45–90 sn (CEFR tablosu güncellendi). |
+| H-030 | Kahraman **Aleyna "Alex" Yıldız** (kadın, 19, İzmir). Story Bible ve Sezon 1 planı onaylandı; kanon `icerik/_evren/`'de kilitli. S1'de fiyatlar birimsiz söylenir ("It's thirteen."). |
 
 **Bölümler arası bağ kuralları** (`OYUN-TASARIMI.md` §4.3, bağlayıcı):
 - Her bölümün `content.json`'ında şu alanlar zorunludur: `previously`, `payoff`, `openQuestion`, `answers`, `cluesUnlocked`, `callbackPhrases`.

@@ -1,0 +1,76 @@
+{
+  "type": "story_episode",
+  "level": "A1",
+  "season": 1,
+  "seriesId": "the-missing-signal",
+  "version": 1,
+  "status": "DRAFT",
+  "publishAt": null,
+  "aiGenerated": true,
+  "humanReviewed": false,
+  "rightsStatus": "PENDING",
+  "canonVersion": "0.1",
+  "contentId": "A1-002",
+  "slug": "the-new-neighbour",
+  "title": "The New Neighbour",
+  "episode": 2,
+  "prev": "A1-001",
+  "next": "A1-003",
+  "topic": "neighbours_family",
+  "skills": [
+    "listening",
+    "reading",
+    "spoken_interaction"
+  ],
+  "communicativeFunction": "introduce_self_and_family_ask_politely",
+  "grammarTargets": [
+    "this_is",
+    "to_be",
+    "excuse_me_questions"
+  ],
+  "targetPhrases": [
+    "Nice to meet you.",
+    "This is my…",
+    "Excuse me, where is…?",
+    "Is it far?",
+    "Thank you."
+  ],
+  "glossary": [
+    "harbour",
+    "far"
+  ],
+  "estimatedMinutes": 7,
+  "previously": "B1: 'Meet me at the old station.'",
+  "payoff": "İstasyonun limanda olduğu ve kapalı olduğu öğrenilir.",
+  "openQuestion": "Q2",
+  "answers": [
+    "Q1:partial"
+  ],
+  "cluesUnlocked": [
+    "C3"
+  ],
+  "callbackPhrases": [
+    "Where is…?",
+    "Again, please."
+  ],
+  "flags": [
+    {
+      "id": "greet_tone",
+      "values": [
+        "formal",
+        "friendly"
+      ],
+      "callbackIn": "A1-003"
+    }
+  ],
+  "decisionPoints": 2,
+  "realClips": 0,
+  "coverageCheck": {
+    "tool": "cefr_check(scratch)",
+    "list": "CEFR-J v1.6",
+    "A1": 97.9,
+    "withGlossary": 100.0,
+    "maxSentenceWords": 8,
+    "date": "2026-10-11"
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "type": "story_episode",
+  "level": "A1",
+  "season": 1,
+  "seriesId": "the-missing-signal",
+  "version": 1,
+  "status": "DRAFT",
+  "publishAt": null,
+  "aiGenerated": true,
+  "humanReviewed": false,
+  "rightsStatus": "PENDING",
+  "canonVersion": "0.1",
+  "contentId": "A1-000",
+  "slug": "arrival",
+  "title": "Arrival",
+  "episode": 0,
+  "optional": true,
+  "prev": null,
+  "next": "A1-001",
+  "topic": "arrival",
+  "skills": [
+    "listening",
+    "spoken_interaction"
+  ],
+  "communicativeFunction": "introduce_yourself",
+  "grammarTargets": [
+    "to_be",
+    "possessive_my",
+    "article_a_role"
+  ],
+  "targetPhrases": [
+    "Hello.",
+    "My name is…",
+    "I'm from Türkiye.",
+    "I'm a student.",
+    "Just call me Alex."
+  ],
+  "glossary": [
+    "passport"
+  ],
+  "estimatedMinutes": 4,
+  "placementTest": "optional",
+  "previously": null,
+  "payoff": "Alex yerleşir; Hi kendini yapay zekâ asistanı olarak tanıtır.",
+  "openQuestion": "SQ0",
+  "answers": [],
+  "cluesUnlocked": [
+    "C0"
+  ],
+  "callbackPhrases": [],
+  "flags": [],
+  "decisionPoints": 3,
+  "realClips": 0,
+  "coverageCheck": {
+    "tool": "cefr_check(scratch)",
+    "list": "CEFR-J v1.6",
+    "A1": 98.0,
+    "withGlossary": 100.0,
+    "maxSentenceWords": 8,
+    "date": "2026-10-11"
+  }
+}

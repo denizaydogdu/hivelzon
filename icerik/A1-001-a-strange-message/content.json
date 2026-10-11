@@ -1,0 +1,63 @@
+{
+  "type": "story_episode",
+  "level": "A1",
+  "season": 1,
+  "seriesId": "the-missing-signal",
+  "version": 1,
+  "status": "DRAFT",
+  "publishAt": null,
+  "aiGenerated": true,
+  "humanReviewed": false,
+  "rightsStatus": "PENDING",
+  "canonVersion": "0.1",
+  "contentId": "A1-001",
+  "slug": "a-strange-message",
+  "title": "A Strange Message",
+  "episode": 1,
+  "prev": "A1-000",
+  "next": "A1-002",
+  "topic": "radio_message",
+  "skills": [
+    "listening",
+    "spoken_interaction"
+  ],
+  "communicativeFunction": "ask_for_repetition",
+  "grammarTargets": [
+    "can_questions_short_answers",
+    "imperative_listen"
+  ],
+  "targetPhrases": [
+    "Can you hear me?",
+    "Yes, I can.",
+    "Again, please.",
+    "Where is…?",
+    "Listen."
+  ],
+  "glossary": [
+    "channel"
+  ],
+  "estimatedMinutes": 6,
+  "previously": "Prolog: bavuldaki telsiz ve Türkçe not.",
+  "payoff": "Mesajdaki kişi (E.) ve yer (the old station) çözülür.",
+  "openQuestion": "Q1",
+  "answers": [],
+  "cluesUnlocked": [
+    "C1",
+    "C2"
+  ],
+  "callbackPhrases": [
+    "Hello.",
+    "My name is…"
+  ],
+  "flags": [],
+  "decisionPoints": 2,
+  "realClips": 1,
+  "coverageCheck": {
+    "tool": "cefr_check(scratch)",
+    "list": "CEFR-J v1.6",
+    "A1": 98.3,
+    "withGlossary": 100.0,
+    "maxSentenceWords": 8,
+    "date": "2026-10-11"
+  }
+}

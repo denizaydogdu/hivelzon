@@ -1,0 +1,67 @@
+{
+  "type": "story_episode",
+  "level": "A1",
+  "season": 1,
+  "seriesId": "the-missing-signal",
+  "version": 1,
+  "status": "DRAFT",
+  "publishAt": null,
+  "aiGenerated": true,
+  "humanReviewed": false,
+  "rightsStatus": "PENDING",
+  "canonVersion": "0.1",
+  "contentId": "A1-003",
+  "slug": "find-the-station",
+  "title": "Find the Station",
+  "episode": 3,
+  "prev": "A1-002",
+  "next": "A1-004",
+  "topic": "directions",
+  "skills": [
+    "listening",
+    "reading",
+    "spoken_interaction"
+  ],
+  "communicativeFunction": "ask_for_and_follow_directions",
+  "grammarTargets": [
+    "prepositions_near_between_behind",
+    "imperatives_go_turn"
+  ],
+  "targetPhrases": [
+    "Go straight.",
+    "Turn left / right.",
+    "It's near…",
+    "It's between…",
+    "It's behind…"
+  ],
+  "glossary": [
+    "harbour",
+    "next to"
+  ],
+  "estimatedMinutes": 7,
+  "previously": "B2: 'I can show you. Tomorrow?' → Maya'nın özür mesajı (greet_tone'a göre).",
+  "payoff": "Old Station bulunur.",
+  "openQuestion": "Q3",
+  "answers": [
+    "Q1"
+  ],
+  "cluesUnlocked": [
+    "C4"
+  ],
+  "callbackPhrases": [
+    "Excuse me, where is…?",
+    "Again, please.",
+    "Thank you."
+  ],
+  "flags": [],
+  "decisionPoints": 3,
+  "realClips": 0,
+  "coverageCheck": {
+    "tool": "cefr_check(scratch)",
+    "list": "CEFR-J v1.6",
+    "A1": 96.2,
+    "withGlossary": 100.0,
+    "maxSentenceWords": 8,
+    "date": "2026-10-11"
+  }
+}

@@ -6,13 +6,13 @@ Bu dosya tek takip noktasıdır. Hangi işin hangi sırada yapıldığını, şu
 
 ## Nerede kaldık
 - **Şu an:** Planlama, Faz 0. Kod yok.
-- **Şimdi yapılan:** H-030: Story Bible, karakter kitabı, Sezon 1 bölüm planı ve ilk bölümlerin diyalog taslakları (kodsuz, kredisiz).
+- **Şimdi yapılan:** — H-030 onaylandı. Sıradaki yazım işi H-032 (B4–B12 diyalogları).
 - **Sıradaki adım:**
   1. Kullanıcı 1. adımda kalan kararları verir. En kritikleri:
      - H-001 ve H-007: konuşma pratiği MVP'de mi, faz yapısı ne olacak?
      - H-028: içeriği kim onaylayacak, ilk 3 ayın kapasitesi ne?
      - İçerik mimarisi kararları (H-026) verildi.
-  2. H-029 onaylandı. Claude H-030'u (Story Bible ve Sezon 1) yazıyor.
+  2. H-029 ve H-030 onaylandı. Sıradaki yazım işi H-032 (Claude, kodsuz).
 - **Engel:** Kullanıcı kararları.
 
 ## Nasıl takip ediyoruz
@@ -25,7 +25,7 @@ Bu dosya tek takip noktasıdır. Hangi işin hangi sırada yapıldığını, şu
   - H dosyasının `Durum` satırı güncellenir;
   - **Günlük** bölümüne bir satır eklenir.
 - **Biten işler:** "Biten işler" tablosuna doğrulama kanıtıyla birlikte yazılır.
-- **Numaralar:** Tek sayaçla verilir. Sıradaki boş numara: **H-032**.
+- **Numaralar:** Tek sayaçla verilir. Sıradaki boş numara: **H-033**.
 
 **Durum simgeleri:**
 - ⛔ Kullanıcı kararı bekliyor
@@ -73,7 +73,8 @@ Bu dosya tek takip noktasıdır. Hangi işin hangi sırada yapıldığını, şu
 ### Adım 3 — Plan güncellemesi ve pilot
 | # | İş | Başlık | Öncelik | Bağımlılık | Durum |
 |---|---|---|---|---|---|
-| 22b | H-030 | Story Bible, karakter kitabı ve Sezon 1 bölüm planı (Claude yazar; kredisiz) | Yüksek | H-029 | 🔄 |
+| 22b | H-030 | Story Bible, karakter kitabı ve Sezon 1 bölüm planı (Claude yazar; kredisiz) | Yüksek | H-029 | ✅ |
+| 22c | H-032 | Sezon 1 diyalog taslakları B4–B12 (A1 denetimli; kodsuz) | Yüksek | H-030 | ⏳ |
 | 23 | H-023 | İş planını şartnameyle ve oyun yönüyle güncelle | Yüksek | H-007, H-026, H-029 | ⏳ |
 | 24 | H-024 | Pilot: S1·B1 "A Strange Message" etkileşimli bölüm + 3 klip (kredi harcar, onaylı) | Yüksek | H-004, H-005, H-026, H-027, H-028 | ⏳ |
 
@@ -88,7 +89,6 @@ Kod yazımı H-025 onaylandıktan sonra başlar. MVP işleri o aşamada sıradak
 ## Devam eden işler
 | İş | Başlık | Başlangıç | Not |
 |---|---|---|---|
-| H-030 | Story Bible ve Sezon 1 | 2026-10-11 | `icerik/_evren/` + ilk bölüm taslakları |
 
 ## Biten işler
 | İş | Başlık | Bitiş | Doğrulama |
@@ -103,6 +103,7 @@ Kod yazımı H-025 onaylandıktan sonra başlar. MVP işleri o aşamada sıradak
 | H-021 | WishSay desenlerinin incelemesi | 2026-10-11 | `docs/WISHSAY-DESEN-RAPORU.md` (arşiv referansı; kullanıcı WishSay'i kapsam dışı bıraktı) |
 | H-022 | videoGenerator sınıflarının incelemesi | 2026-10-11 | `docs/VIDEOGENERATOR-RAPORU.md`; videoGenerator `git status` temiz |
 | H-019 | WishSay ile kod paylaşımı | 2026-10-11 | Kullanıcı kararı: WishSay kullanılmaz |
+| H-030 | Story Bible ve Sezon 1 planı | 2026-10-11 | Kullanıcı onayı. Aleyna "Alex", birimsiz fiyat. `icerik/_evren/` + prolog ve B1–B3 (A1 %96–98) |
 | H-029 | Oyun ve hikâye tasarımı kararları | 2026-10-11 | Kullanıcı onayı; K-21…K-35 CLAUDE.md'ye işlendi |
 | H-027 | Lisans doğrulaması | 2026-10-11 | `docs/LISANS-RAPORU.md`. CEFR-J v1.6 omurga; EVP/EGP kullanılmaz; hukukçuya 12 soru |
 
@@ -147,3 +148,8 @@ Kod yazımı H-025 onaylandıktan sonra başlar. MVP işleri o aşamada sıradak
   - **Kullanıcı kararı:** "WishSay'i unut, yalnızca HiVelzon'a odaklan." CLAUDE.md'den WishSay bağımlılığı kaldırıldı; H-019 kapandı.
   - H-027 bitti. CEFR-J v1.6 (ticari kullanım atıfla serbest) doğrulandı. Cambridge EVP/EGP ticari lisans vermiyor → **kullanılmaz**. CEFR-J Grammar Profile yalnızca referans. CLAUDE.md ve ICERIK-MIMARISI güncellendi. Hukukçu soruları (S1–S12) ve yazılı teyit taslakları kullanıcıya iletildi; gönderilmedi.
   - Kullanıcı "onayladım" dedi: H-029 onaylandı (K-21…K-35 CLAUDE.md'de). K-02 → K-30 (sekme "Hikâye"), A1 video 45–90 sn. Bağ kuralları bağlayıcı hâle geldi. H-030 başladı. Dışa yazışmalar (Cambridge, Tono Lab, hukukçu) ayrı onay bekliyor.
+  - H-030 taslağı yazıldı: Story Bible, karakterler, kanon (F-001…F-020), açık sorular denetimi, dil ilerlemesi, Sezon 1 planı (prolog + 12 bölüm), prolog ve B1–B3 diyalogları.
+    - CEFR-J v1.6 indirildi (atıfla ticari kullanım serbest). Diyaloglar A1 listesine göre denetlendi: %96–98 A1, sözlükle %100; hiçbir cümle 8 kelimeyi aşmıyor.
+    - Denetim sonucunda A2/B1 kelimeler A1 karşılıklarıyla değiştirildi.
+    - Kullanıcıdan Alex'in adı ve cinsiyeti için karar ve taslak onayı bekleniyor.
+  - Kullanıcı soru-cevapla karar verdi: Alex = **Aleyna "Alex" Yıldız** (kadın); Story Bible ve Sezon 1 onaylandı (kanon kilitli); S1'de fiyatlar birimsiz; commit ve push onaylandı. H-030 bitti; H-032 (B4–B12 diyalogları) açıldı.
