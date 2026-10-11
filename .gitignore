@@ -1,0 +1,44 @@
+# OS / IDE
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.iml
+*.swp
+
+# Env / sırlar
+.env
+.env.*
+!.env.example
+*.local
+*.pem
+*.key
+
+# Backend (Java / Maven)
+backend/target/
+backend/.mvn/wrapper/maven-wrapper.jar
+
+# Mobile (Flutter)
+mobile/.dart_tool/
+mobile/build/
+mobile/.flutter-plugins
+mobile/.flutter-plugins-dependencies
+mobile/ios/Pods/
+mobile/android/.gradle/
+mobile/android/local.properties
+
+# Node
+node_modules/
+dist/
+
+# İçerik üretimi: büyük ham medya depoya girmez (CDN/depolamada tutulur)
+icerik/**/raw/
+*.mp4
+*.mov
+*.wav
+
+# Loglar
+*.log
+
+# Claude Code yerel önbellek
+.claude/tsc-cache/
