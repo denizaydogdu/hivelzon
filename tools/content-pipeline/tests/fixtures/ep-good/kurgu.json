@@ -1,0 +1,20 @@
+{
+  "kurguVersion": 1,
+  "contentId": "A1-901",
+  "start": "s01",
+  "gate": {"comprehension": ["t1"], "targetPhrase": ["k1"], "activeTask": ["t1"]},
+  "nodes": [
+    {"id": "s01", "type": "segment", "checkpoint": true,
+     "shots": [{"image": "images/none.png", "audio": [{"path": "../b2_05_maya", "speaker": "MAYA"}, {"path": "../b2_06_alex", "speaker": "ALEX"}]},
+               {"image": "images/none.png", "len": 2.0}],
+     "next": "k1"},
+    {"id": "k1", "type": "decision", "prompt": {"tr": "Alex ne desin?"},
+     "options": [{"id": "a", "text": "Nice to meet you.", "correct": true, "next": "t1"},
+                 {"id": "b", "text": "Meet nice.", "correct": false, "next": "r1"}]},
+    {"id": "r1", "type": "reaction", "bubble": {"speaker": "HI", "lang": "tr", "text": "Böyle de söyleyebilirsin: Nice to meet you."}, "next": "k1"},
+    {"id": "t1", "type": "task", "kind": "order", "role": "evidence", "prompt": {"tr": "Sırala"},
+     "items": [{"id": "i1", "tokens": ["you", "Nice", "meet", "to"], "answer": ["Nice", "to", "meet", "you"]}],
+     "next": "c1"},
+    {"id": "c1", "type": "card", "kind": "openQuestion", "questionId": "Q9", "lines": [{"text": "Açık soru", "lang": "tr"}], "next": null}
+  ]
+}

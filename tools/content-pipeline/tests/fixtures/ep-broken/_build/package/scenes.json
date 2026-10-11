@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "episode": {
+    "id": "A1-902", "slug": "broken", "level": "A1", "season": 1, "number": 902,
+    "title": "Broken", "contentVersion": 1, "status": "DRAFT", "aiGenerated": true,
+    "mission": {"tr": "Bozuk"}, "targetPhrases": [],
+    "links": {"previously": "x", "payoff": "y", "openQuestion": "Q9", "answers": [], "cluesUnlocked": [], "callbackPhrases": []}
+  },
+  "flags": [{"id": "f1", "values": ["a", "b"]}, {"id": "f2", "values": ["a", "b"]},
+            {"id": "f3", "values": ["a", "b"]}, {"id": "f4", "values": ["a", "b"]}],
+  "gate": {"rule": "all", "comprehension": ["k1"], "targetPhrase": ["k1"], "activeTask": ["missing-task"]},
+  "start": "s1",
+  "nodes": [
+    {"id": "s1", "type": "segment", "checkpoint": true, "video": "segments/s1.mp4", "duration": 2, "next": "k1"},
+    {"id": "k1", "type": "decision", "prompt": {"tr": "Doğru yok"},
+     "options": [{"id": "a", "text": "A", "correct": false, "next": "r1"},
+                 {"id": "b", "text": "B", "correct": false, "next": "s2"}]},
+    {"id": "r1", "type": "reaction", "bubble": {"speaker": "HI", "lang": "tr", "text": "Tepki"}, "next": "s2"},
+    {"id": "s2", "type": "segment", "video": "segments/s2.mp4", "duration": 2, "next": "k2"},
+    {"id": "k2", "type": "decision", "prompt": {"tr": "k2"},
+     "options": [{"id": "a", "text": "A", "correct": true, "setFlag": {"flag": "nope", "value": "x"}, "next": "k3"},
+                 {"id": "b", "text": "B", "correct": false, "next": "r2"}]},
+    {"id": "r2", "type": "reaction", "bubble": {"speaker": "HI", "lang": "tr", "text": "x"}, "next": "k3"},
+    {"id": "k3", "type": "decision", "prompt": {"tr": "k3"}, "options": [{"id": "a", "text": "A", "correct": true, "next": "k4"}, {"id": "b", "text": "B", "correct": true, "next": "k4"}]},
+    {"id": "k4", "type": "decision", "prompt": {"tr": "k4"}, "options": [{"id": "a", "text": "A", "correct": true, "next": "k5"}, {"id": "b", "text": "B", "correct": true, "next": "k5"}]},
+    {"id": "k5", "type": "decision", "prompt": {"tr": "k5"}, "options": [{"id": "a", "text": "A", "correct": true, "next": "loop"}, {"id": "b", "text": "B", "correct": true, "next": "loop"}]},
+    {"id": "loop", "type": "segment", "video": "segments/loop.mp4", "duration": 1, "next": "loop2"},
+    {"id": "loop2", "type": "segment", "video": "segments/loop2.mp4", "duration": 1, "next": "loop"},
+    {"id": "orphan", "type": "card", "kind": "note", "lines": [{"text": "kimse gelmiyor", "lang": "tr"}], "next": null},
+    {"id": "bad", "type": "segment", "video": "videos/bad.mov", "next": "ghost"}
+  ]
+}

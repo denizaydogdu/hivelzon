@@ -6,7 +6,7 @@ Bu dosya tek takip noktasıdır. Hangi işin hangi sırada yapıldığını, şu
 
 ## Nerede kaldık
 - **Şu an:** Planlama, Faz 0. Kod yok.
-- **Şimdi yapılan:** B1–B4 önizlemeleri hazır; içerik üretimi durduruldu. Mobil uygulama planı (H-025, `docs/UYGULAMA-PLANI.md`) onaylandı. H-033 bitti. Sıradaki: H-034 (bölüm paketi), sonra H-031 (oynatıcı); ilk test cihazı iOS simülatörü. Uygulama bitene kadar her şey yerelde.
+- **Şimdi yapılan:** B1–B4 önizlemeleri hazır; içerik üretimi durduruldu. Mobil uygulama planı (H-025, `docs/UYGULAMA-PLANI.md`) onaylandı. H-033, H-034, H-045 bitti. Sıradaki: H-031 (oynatıcı, T3/T4 taslaklarına göre); ilk test cihazı iOS simülatörü. Uygulama bitene kadar her şey yerelde.
 - **Sıradaki adım:**
   1. Kullanıcı 1. adımda kalan kararları verir. En kritikleri:
      - H-001 ve H-007: konuşma pratiği MVP'de mi, faz yapısı ne olacak?
@@ -25,7 +25,7 @@ Bu dosya tek takip noktasıdır. Hangi işin hangi sırada yapıldığını, şu
   - H dosyasının `Durum` satırı güncellenir;
   - **Günlük** bölümüne bir satır eklenir.
 - **Biten işler:** "Biten işler" tablosuna doğrulama kanıtıyla birlikte yazılır.
-- **Numaralar:** Tek sayaçla verilir. Sıradaki boş numara: **H-045**.
+- **Numaralar:** Tek sayaçla verilir. Sıradaki boş numara: **H-046**.
 
 **Durum simgeleri:**
 - ⛔ Kullanıcı kararı bekliyor
@@ -79,7 +79,9 @@ Bu dosya tek takip noktasıdır. Hangi işin hangi sırada yapıldığını, şu
 ### Adım 4 — Uygulama planı
 | # | İş | Başlık | Öncelik | Bağımlılık | Durum |
 |---|---|---|---|---|---|
-| 25 | H-033 | Repo iskeleti | 2026-10-11 | `flutter analyze` temiz, `flutter test` 1/1; `mvn test` 2/2 (Testcontainers); iOS simülatöründe 5 sekme; `/actuator/health` UP |
+| 25 | H-034 | Bölüm paketi ve content-lint | 2026-10-11 | pytest 43/43; lint 13 bölüm temiz (7 uyarı); B1–B4 paketleri, senkron ≤ 0,01 sn, -16 LUFS, 29–48 MB |
+| H-045 | Arayüz tasarım yönü | 2026-10-11 | Kullanıcı onayı ("devam"). 6 taslak, 6 kr; tema belirteçleri Flutter'a işlendi, testler yeşil |
+| H-033 | Repo iskeleti | 2026-10-11 | `flutter analyze` temiz, `flutter test` 1/1; `mvn test` 2/2 (Testcontainers); iOS simülatöründe 5 sekme; `/actuator/health` UP |
 | H-025 | Faz 1 (MVP) uygulama planı | Yüksek | H-001, H-007, H-023, H-029 | ✅ |
 
 Plan: `docs/UYGULAMA-PLANI.md`. Kod yazımı H-025 onaylandıktan sonra başlar.
@@ -88,7 +90,7 @@ Plan: `docs/UYGULAMA-PLANI.md`. Kod yazımı H-025 onaylandıktan sonra başlar.
 | # | İş | Başlık | Öncelik | Bağımlılık | Durum |
 |---|---|---|---|---|---|
 | 1.0 | H-033 | Repo iskeleti (mobil + backend) | Yüksek | H-025 | ✅ |
-| 1.1 | H-034 | Bölüm paketi formatı, dışa aktarma, content-lint | Yüksek | H-033 | ⏳ |
+| 1.1 | H-034 | Bölüm paketi formatı, dışa aktarma, content-lint | Yüksek | H-033 | ✅ |
 | 1.2 | H-031 | Etkileşimli bölüm oynatıcısı | Yüksek | H-033, H-034 | ⏳ |
 | 1.3 | H-035 | Hikâye haritası, bölüm kapısı, yerel ilerleme | Yüksek | H-031 | ⏳ |
 | 1.4 | H-036 | Defter, ipucu panosu, FSRS | Yüksek | H-035 | ⏳ |
@@ -99,6 +101,7 @@ Plan: `docs/UYGULAMA-PLANI.md`. Kod yazımı H-025 onaylandıktan sonra başlar.
 | 1.9 | H-041 | Editör onay ekranı, içerik içe aktarma | Orta | H-038 | ⏳ |
 | 1.10 | H-042 | Profil, ayarlar, hukuki metinler | Orta | H-038 | ⏳ |
 | 1.11 | H-043 | Kalite ve iç beta hazırlığı | Orta | H-039 … H-042 | ⏳ |
+| — | H-045 | Arayüz tasarım yönü (6 ekran taslağı, 6 kr) | Orta | H-033 | ✅ |
 | 1.12 | H-044 | Dış hesaplar, barındırma ve mağaza (en son) | Orta | H-043 | ⏳ |
 
 ## Devam eden işler
@@ -223,3 +226,6 @@ Plan: `docs/UYGULAMA-PLANI.md`. Kod yazımı H-025 onaylandıktan sonra başlar.
 
   - Kullanıcı kararı: sunucu yeri, Bunny Stream hesabı ve Apple / Google geliştirici hesapları en sona bırakıldı. Yeni iş H-044 açıldı; o zamana kadar her şey yerelde (Docker PostgreSQL, yerel medya adaptörü, iOS simülatörü).
   - H-033 bitti: Flutter (`tr.velzon.hivelzon`, Riverpod 3, go_router 17) + Spring Boot 4.0.8 + PostgreSQL 17 (yerel port 5434) + CI. Testler yeniden çalıştırılıp doğrulandı.
+  - H-045: Kullanıcı arayüz tasarımında Higgsfield/GPT kullanımına izin verdi. 6 ekran taslağı üretildi (GPT Image 2.5, 2k, 6 kr onaylı; kredi 92,25). Tasarım belirteçleri `tasarim/README.md`. Kullanıcı geri bildirimi bekleniyor.
+  - H-045 onaylandı ve bitti; tema `mobile/lib/app/theme.dart`'a işlendi.
+  - H-034 bitti: `tools/content-pipeline/` (dışa aktarma + content-lint), `docs/BOLUM-PAKETI.md`, bölüm başına `kurgu.json`. Editör onayı bekleyenler: Hi ipucu seviye 1–2 metinleri, A1-003 görev seçenekleri; sözlükte eksik: *yeah* (B5), *voice* (B7), *far* (B9).

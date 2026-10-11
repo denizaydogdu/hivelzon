@@ -1,0 +1,214 @@
+{
+  "kurguVersion": 1,
+  "contentId": "A1-004",
+  "source": "Ön izleme kurgusu b4_kurgu.py (H-032) düğümlere bölündü; karar kartları ve altyazı artık uygulamada (K-03).",
+  "start": "s01",
+  "gate": {
+    "comprehension": ["t-gorev"],
+    "targetPhrase": ["k2", "t-kanit"],
+    "activeTask": ["t-kanit"]
+  },
+  "nodes": [
+    {
+      "id": "s01", "type": "segment", "scene": "Soğuk açılış", "checkpoint": true,
+      "shots": [{"image": "../A1-003-find-the-station/images/B3-07-yarim-not.png", "len": 3.2, "move": [1.12, 1.18, 0.5, 0.5, 0.45, 0.45],
+                 "signs": [{"style": "note", "lines": [{"text": "Fri…    …pm"}, {"text": "Pier …        — E."}], "start": 0.35, "end": 3.2}]}],
+      "next": "h-01"
+    },
+    {
+      "id": "h-01", "type": "card", "kind": "hi", "advance": "tap",
+      "background": "images/B4-02-telefon-not.png",
+      "lines": [{"speaker": "HI", "text": "Bugün birlikte bakalım. Ama önce bir arkadaşa gösterebilirsin.", "lang": "tr"}],
+      "audio": "b4_01_hi",
+      "next": "c-title"
+    },
+    {
+      "id": "c-title", "type": "card", "kind": "title", "advance": "auto", "duration": 2.5,
+      "background": "images/B4-01-dukkan-sabah.png",
+      "lines": [{"text": "SEZON 1 · BÖLÜM 4", "lang": "tr", "style": "caption"},
+                {"text": "The Note", "lang": "en", "style": "heading"}],
+      "next": "c-mission"
+    },
+    {
+      "id": "c-mission", "type": "card", "kind": "mission", "advance": "tap",
+      "background": "images/B4-01-dukkan-sabah.png",
+      "lines": [{"text": "Yarım notun parçalarından tam notu kur: gün, saat, yer.", "lang": "tr", "style": "heading"},
+                {"text": "What time is it? · It's seven o'clock. · on Friday · at seven · What day is it today?", "lang": "en", "style": "highlight"}],
+      "next": "s02"
+    },
+    {
+      "id": "s02", "type": "segment", "scene": "Sahne 1: Tide & Pages", "checkpoint": true,
+      "shots": [{"image": "images/B4-01-dukkan-sabah.png", "audio": ["b4_02_maya", "b4_03_alex", "b4_04_maya", "b4_05_alex", "b4_06_maya"], "move": [1.06, 1.14, 0.5, 0.5, 0.45, 0.42]}],
+      "next": "s03"
+    },
+    {
+      "id": "s03", "type": "segment", "scene": "Sahne 2: Gün ve saat", "checkpoint": true,
+      "shots": [{"image": "images/B4-02-telefon-not.png", "audio": ["b4_07_maya"], "aoff": 1.4, "move": [1.06, 1.12, 0.5, 0.5, 0.5, 0.45],
+                 "signs": [{"style": "note", "lines": [{"text": "Fri…", "size": 80}], "start": 0.35, "end": 1.35}]}],
+      "next": "k1"
+    },
+    {
+      "id": "k1", "type": "decision", "skill": "vocabulary", "cefr": "A1",
+      "prompt": {"tr": "Notta ne yazıyor? Görselle seç."},
+      "cue": {"speaker": "MAYA", "text": "\"Fri…\" What is it?"},
+      "pov": "POV: telefon ekranı; yanında üç kart.",
+      "background": "images/B4-03-uc-kart.png",
+      "options": [
+        {"id": "a", "text": "Friday.", "correct": true, "audio": "b4_08_alex", "next": "k1-ok"},
+        {"id": "b", "text": "Free.", "correct": false, "next": "r-k1-b"},
+        {"id": "c", "text": "Fried.", "correct": false, "next": "r-k1-c"}
+      ],
+      "hints": [
+        {"level": 1, "kind": "keyword", "tr": "Notta bir gün olmalı."},
+        {"level": 2, "kind": "pattern", "tr": "Monday, Tuesday… Fri…?"},
+        {"level": 3, "kind": "explanation", "tr": "Böyle de söyleyebilirsin: \"Friday.\" Notta bir gün olmalı. Günler İngilizcede büyük harfle başlar: Friday."}
+      ]
+    },
+    {
+      "id": "r-k1-b", "type": "reaction",
+      "shots": [{"image": "images/B4-03-uc-kart.png", "audio": ["b4_09_alex", "b4_10_maya"], "move": [1.0, 1.05, 0.5, 0.5, 0.5, 0.5]}],
+      "bubble": {"speaker": "HI", "lang": "tr", "text": "Böyle de söyleyebilirsin: \"Friday.\" Notta bir gün olmalı. Günler İngilizcede büyük harfle başlar: Friday.", "audio": "b4_11_hi"},
+      "next": "k1"
+    },
+    {
+      "id": "r-k1-c", "type": "reaction",
+      "shots": [{"image": "images/B4-03-uc-kart.png", "audio": ["b4_12_alex", "b4_13_maya"], "move": [1.05, 1.0, 0.5, 0.5, 0.5, 0.5]}],
+      "bubble": {"speaker": "HI", "lang": "tr", "text": "Fri… ile başlayan bir gün: \"Friday.\" Günleri hatırla: Monday, Tuesday… Friday.", "audio": "b4_14_hi"},
+      "next": "k1"
+    },
+    {
+      "id": "k1-ok", "type": "segment",
+      "shots": [
+        {"image": "images/B4-03-uc-kart.png", "audio": ["b4_08_alex"], "aoff": 0.4, "move": [1.0, 1.05, 0.5, 0.5, 0.5, 0.5]},
+        {"image": "images/B4-02-telefon-not.png", "audio": ["b4_15_alex", {"id": "b4_16_voice", "radio": true}], "move": [1.12, 1.18, 0.5, 0.5, 0.45, 0.45]},
+        {"image": "images/B4-04-saat-cizimi.png", "audio": ["b4_17_maya"], "move": [1.0, 1.06, 0.5, 0.5, 0.45, 0.45]}
+      ],
+      "next": "k2"
+    },
+    {
+      "id": "k2", "type": "decision", "skill": "spoken_interaction", "cefr": "A1",
+      "prompt": {"tr": "Saati söyle."},
+      "cue": {"speaker": "MAYA", "text": "Look, a clock. What time is it?"},
+      "pov": "POV: saat çizimi.",
+      "background": "images/B4-04-saat-cizimi.png",
+      "targetPhrase": "It's seven o'clock.",
+      "options": [
+        {"id": "a", "text": "It's seven o'clock.", "correct": true, "audio": "b4_18_alex", "next": "k2-ok"},
+        {"id": "b", "text": "It's in seven o'clock.", "correct": false, "next": "r-k2-b"}
+      ],
+      "hints": [
+        {"level": 1, "kind": "keyword", "tr": "Saatin önünde *in* olmaz."},
+        {"level": 2, "kind": "pattern", "tr": "It's … o'clock."},
+        {"level": 3, "kind": "explanation", "tr": "Böyle de söyleyebilirsin: \"It's seven o'clock.\" Saatin önünde in olmaz. Cümlenin içinde at kullanılır: at seven."}
+      ]
+    },
+    {
+      "id": "r-k2-b", "type": "reaction",
+      "shots": [{"image": "images/B4-04-saat-cizimi.png", "audio": ["b4_19_alex", "b4_20_maya"], "move": [1.06, 1.1, 0.5, 0.5, 0.45, 0.45]}],
+      "bubble": {"speaker": "HI", "lang": "tr", "text": "Böyle de söyleyebilirsin: \"It's seven o'clock.\" Saatin önünde in olmaz. Cümlenin içinde at kullanılır: at seven.", "audio": "b4_21_hi"},
+      "next": "k2"
+    },
+    {
+      "id": "k2-ok", "type": "segment",
+      "shots": [
+        {"image": "images/B4-04-saat-cizimi.png", "audio": ["b4_18_alex"], "aoff": 0.4, "move": [1.06, 1.1, 0.5, 0.5, 0.45, 0.45]},
+        {"image": "images/B4-04-saat-cizimi.png", "audio": ["b4_22_maya"], "move": [1.1, 1.16, 0.5, 0.5, 0.45, 0.45]}
+      ],
+      "next": "s04"
+    },
+    {
+      "id": "s04", "type": "segment", "scene": "Sahne 3: Yer", "checkpoint": true,
+      "shots": [
+        {"image": "images/B4-05-maya-isik.png", "audio": ["b4_23_maya"], "move": [1.0, 1.08, 0.5, 0.55, 0.45, 0.4]},
+        {"image": "images/B4-06-iskele-harita.png", "audio": ["b4_24_alex", "b4_25_maya", "b4_26_maya"], "move": [1.0, 1.1, 0.5, 0.5, 0.5, 0.6]}
+      ],
+      "next": "t-gorev"
+    },
+    {
+      "id": "t-gorev", "type": "task", "kind": "match", "role": "comprehension", "skill": "reading", "cefr": "A1",
+      "scene": "Görev: Tam notu kur",
+      "prompt": {"tr": "Parçaları doğru yere sürükle."},
+      "background": "images/B4-06-iskele-harita.png",
+      "items": [{"id": "i1", "pairs": [
+        {"left": "Fri…", "right": "Friday."},
+        {"left": "…pm", "right": "7 pm."},
+        {"left": "Pier …", "right": "Pier 3."}
+      ]}],
+      "result": [{"text": "Friday. 7 pm. Pier 3. — E.", "lang": "en", "style": "highlight"}],
+      "next": "s05"
+    },
+    {
+      "id": "s05", "type": "segment", "scene": "Sahne 4: İki not", "checkpoint": true,
+      "shots": [{"image": "images/B4-07-telsiz-not.png", "len": 3.0, "move": [1.0, 1.06, 0.5, 0.5, 0.45, 0.45]}],
+      "next": "c-nermin"
+    },
+    {
+      "id": "c-nermin", "type": "card", "kind": "note", "advance": "tap",
+      "background": "images/B4-07-telsiz-not.png",
+      "title": "Babaannenin notu",
+      "lines": [{"text": "Cuma. Saat yedi. Yedinci kanal. Unutma.", "lang": "tr"}, {"text": "— N.", "lang": "tr"}],
+      "next": "c-alex"
+    },
+    {
+      "id": "c-alex", "type": "card", "kind": "line", "advance": "tap",
+      "background": "images/B4-08-iki-not.png",
+      "lines": [{"speaker": "ALEX", "text": "Cuma… saat yedi. Babaannemin notunda da aynı saat.", "lang": "tr"}],
+      "why": "Alex'in Türkçe repliği için ses üretilmedi",
+      "next": "s06"
+    },
+    {
+      "id": "s06", "type": "segment",
+      "shots": [{"image": "images/B4-07-telsiz-not.png", "audio": ["b4_27_maya", "b4_28_alex"], "move": [1.06, 1.12, 0.5, 0.5, 0.45, 0.42]}],
+      "next": "h-29"
+    },
+    {
+      "id": "h-29", "type": "card", "kind": "hi", "scene": "Dil laboratuvarı", "checkpoint": true, "advance": "tap",
+      "background": "images/B4-08-iki-not.png",
+      "lines": [{"speaker": "HI", "text": "Saat için at, gün için on: at seven, on Friday. Türkçede \"yedide\" deriz; İngilizcede in seven değil, at seven.", "lang": "tr"}],
+      "audio": "b4_29_hi",
+      "next": "c-schedule"
+    },
+    {
+      "id": "c-schedule", "type": "card", "kind": "note", "advance": "tap",
+      "background": "images/B4-01-dukkan-sabah.png",
+      "title": "Maya'nın ders programı",
+      "lines": [{"text": "History: Monday, 9:00.", "lang": "en"}, {"text": "Art: Friday, 2:00.", "lang": "en"}],
+      "next": "t-kanit"
+    },
+    {
+      "id": "t-kanit", "type": "task", "kind": "choice", "role": "evidence", "skill": "spoken_interaction", "cefr": "A1",
+      "prompt": {"tr": "Maya soruyor. Doğru cevabı seç.", "en": "I have Art on Friday. What time is it?"},
+      "context": "Yeni bağlam: Maya'nın ders programı",
+      "audio": "b4_30_maya",
+      "background": "images/B4-01-dukkan-sabah.png",
+      "items": [{"id": "i1", "stem": "I have Art on Friday. What time is it?", "options": [
+        {"id": "a", "text": "At two o'clock.", "correct": true, "audio": "b4_31_alex"},
+        {"id": "b", "text": "In two o'clock.", "correct": false, "audio": "b4_32_alex"}
+      ]}],
+      "feedback": {"wrong": {"speaker": "HI", "lang": "tr", "text": "Saatten önce at: at two o'clock.", "audio": "b4_33_hi"}},
+      "next": "s07"
+    },
+    {
+      "id": "s07", "type": "segment", "scene": "Son kare",
+      "shots": [{"image": "images/B4-08-iki-not.png", "len": 4.0, "move": [1.0, 1.06, 0.5, 0.5, 0.55, 0.5],
+                 "signs": [{"style": "caption", "lines": [{"text": "Pier 3. Friday. 7."}], "start": 1.0, "end": 4.0}]}],
+      "next": "c-clues"
+    },
+    {
+      "id": "c-clues", "type": "card", "kind": "clue", "advance": "tap", "clueIds": ["C5", "C6"], "answers": ["Q3"],
+      "lines": [{"text": "İpucu panosu", "lang": "tr", "style": "heading"},
+                {"text": "C5 · Tamamlanmış not: Friday. 7 pm. Pier 3. — E.", "lang": "tr"},
+                {"text": "C6 · İki not yan yana", "lang": "tr"},
+                {"text": "Q3 kapandı: Not çözüldü.", "lang": "tr"}],
+      "next": "c-oq"
+    },
+    {
+      "id": "c-oq", "type": "card", "kind": "openQuestion", "advance": "tap", "questionId": "Q4",
+      "background": "images/B4-08-iki-not.png",
+      "lines": [{"text": "AÇIK SORU", "lang": "tr", "style": "caption"},
+                {"text": "Cuma saat yedide Pier 3'te kim olacak?", "lang": "tr", "style": "heading"},
+                {"text": "Bölüm 5: Too Late?", "lang": "en", "style": "caption"}],
+      "next": null
+    }
+  ]
+}

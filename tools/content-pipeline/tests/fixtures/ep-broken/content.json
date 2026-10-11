@@ -1,0 +1,11 @@
+{
+  "contentId": "A1-902", "slug": "broken", "title": "Broken", "level": "A1", "season": 1,
+  "episode": 902, "version": 1, "prev": "A1-901", "next": null,
+  "glossary": [],
+  "previously": null,
+  "payoff": "",
+  "openQuestion": "Q10",
+  "answers": [],
+  "cluesUnlocked": [],
+  "flags": [{"id": "a", "values": ["x", "y"]}, {"id": "b", "values": ["x", "y"]}, {"id": "c", "values": ["x", "y"]}, {"id": "d", "values": ["x", "y"]}]
+}

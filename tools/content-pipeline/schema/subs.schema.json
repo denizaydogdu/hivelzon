@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hi.velzon.tr/schema/subs.v1.schema.json",
+  "title": "hiVelzon segment altyazısı (subs/<segment>.en.json)",
+  "description": "Zamanlar saniyedir ve segmentin başına görelidir. Kelime zamanları ElevenLabs karakter hizalamasından gelir (K-03: altyazıyı uygulama çizer).",
+  "type": "object",
+  "required": ["schemaVersion", "segment", "lang", "duration", "cues"],
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "segment": { "type": "string" },
+    "lang": { "const": "en" },
+    "duration": { "type": "number", "exclusiveMinimum": 0 },
+    "cues": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "start", "end", "speaker", "text", "words"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string" },
+          "start": { "type": "number", "minimum": 0 },
+          "end": { "type": "number", "minimum": 0 },
+          "speaker": { "type": "string" },
+          "text": { "type": "string", "minLength": 1 },
+          "tr": { "type": ["string", "null"] },
+          "words": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["w", "start", "end"],
+              "additionalProperties": false,
+              "properties": {
+                "w": { "type": "string" },
+                "start": { "type": "number", "minimum": 0 },
+                "end": { "type": "number", "minimum": 0 }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,161 @@
+{
+  "kurguVersion": 1,
+  "contentId": "A1-002",
+  "source": "Ön izleme kurgusu b2_kurgu.py (H-032) düğümlere bölündü; karar kartları ve altyazı artık uygulamada (K-03).",
+  "start": "s01",
+  "gate": {
+    "comprehension": ["t-gorev"],
+    "targetPhrase": ["k1", "k2"],
+    "activeTask": ["t-kanit"]
+  },
+  "nodes": [
+    {
+      "id": "s01", "type": "segment", "scene": "Soğuk açılış", "checkpoint": true,
+      "shots": [
+        {"image": "../A1-001-a-strange-message/images/T2-pov.png", "audio": [{"id": "b2_01_voice", "radio": true}], "move": [1.15, 1.22, 0.5, 0.5, 0.45, 0.45]},
+        {"image": "images/B2-01-dukkan-dis.png", "len": 3.0, "move": [1.0, 1.07, 0.4, 0.5, 0.6, 0.5]}
+      ],
+      "next": "c-title"
+    },
+    {
+      "id": "c-title", "type": "card", "kind": "title", "advance": "auto", "duration": 2.5,
+      "background": "images/B2-01-dukkan-dis.png",
+      "lines": [{"text": "SEZON 1 · BÖLÜM 2", "lang": "tr", "style": "caption"},
+                {"text": "The New Neighbour", "lang": "en", "style": "heading"}],
+      "next": "c-mission"
+    },
+    {
+      "id": "c-mission", "type": "card", "kind": "mission", "advance": "tap",
+      "background": "images/B2-01-dukkan-dis.png",
+      "lines": [{"text": "Komşunla tanış ve Old Station hakkında 3 bilgi öğren.", "lang": "tr", "style": "heading"},
+                {"text": "Nice to meet you. · This is my… · Excuse me, where is…? · Is it far? · Thank you.", "lang": "en", "style": "highlight"}],
+      "next": "s02"
+    },
+    {
+      "id": "s02", "type": "segment", "scene": "Sahne 1: Tide & Pages", "checkpoint": true,
+      "shots": [{"image": "images/B2-02-maya-tezgah.png", "audio": ["b2_02_maya"], "move": [1.0, 1.06, 0.5, 0.5, 0.4, 0.42]}],
+      "next": "k1"
+    },
+    {
+      "id": "k1", "type": "decision", "skill": "pragmatics", "cefr": "A1",
+      "prompt": {"tr": "Kendini tanıt. Nasıl söylersin?"},
+      "cue": {"speaker": "MAYA", "text": "Good morning! Can I help you?"},
+      "pov": "POV: Maya tezgâhta.",
+      "background": "images/B2-03-maya-pov.png",
+      "options": [
+        {"id": "a", "text": "Nice to meet you. I'm Alex.", "correct": true, "setFlag": {"flag": "greet_tone", "value": "formal"}, "audio": "b2_03_alex", "next": "k1-a"},
+        {"id": "b", "text": "Hi! I'm Alex.", "correct": true, "setFlag": {"flag": "greet_tone", "value": "friendly"}, "audio": "b2_04_alex", "next": "k1-b"}
+      ],
+      "hints": [
+        {"level": 1, "kind": "keyword", "tr": "Kendini tanıtırken: *I'm …*"},
+        {"level": 2, "kind": "explanation", "tr": "İki cevap da doğru: biri daha resmî, biri daha samimi."}
+      ]
+    },
+    {
+      "id": "k1-a", "type": "segment",
+      "shots": [{"image": "images/B2-03-maya-pov.png", "audio": ["b2_03_alex"], "aoff": 0.4, "move": [1.0, 1.04, 0.5, 0.5, 0.45, 0.45]}],
+      "next": "s03"
+    },
+    {
+      "id": "k1-b", "type": "segment",
+      "shots": [{"image": "images/B2-03-maya-pov.png", "audio": ["b2_04_alex"], "aoff": 0.4, "move": [1.0, 1.04, 0.5, 0.5, 0.45, 0.45]}],
+      "next": "s03"
+    },
+    {
+      "id": "s03", "type": "segment",
+      "shots": [
+        {"image": "images/B2-03-maya-pov.png", "audio": ["b2_05_maya", "b2_06_alex", "b2_07_maya", "b2_08_alex"], "move": [1.04, 1.12, 0.5, 0.5, 0.45, 0.42]},
+        {"image": "images/B2-02-maya-tezgah.png", "audio": ["b2_09_maya", "b2_10_alex"], "move": [1.06, 1.0, 0.5, 0.5, 0.42, 0.4]}
+      ],
+      "next": "s04"
+    },
+    {
+      "id": "s04", "type": "segment", "scene": "Sahne 2: Aile", "checkpoint": true,
+      "shots": [{"image": "images/B2-04-anne-foto.png", "audio": ["b2_11_maya", "b2_12_mrs", "b2_13_maya"], "move": [1.0, 1.1, 0.4, 0.6, 0.5, 0.3]}],
+      "next": "k2"
+    },
+    {
+      "id": "k2", "type": "decision", "skill": "spoken_interaction", "cefr": "A1",
+      "prompt": {"tr": "Old Station'ı kibarca sor."},
+      "background": "images/B2-05-maya-sasirma.png",
+      "targetPhrase": "Excuse me, where is…?",
+      "options": [
+        {"id": "a", "text": "Excuse me, where is the old station?", "correct": true, "audio": "b2_14_alex", "next": "k2-ok"},
+        {"id": "b", "text": "Where station?", "correct": false, "next": "r-k2-b"}
+      ],
+      "hints": [
+        {"level": 1, "kind": "keyword", "tr": "Kibar başlangıç: *Excuse me*"},
+        {"level": 2, "kind": "pattern", "tr": "Excuse me, where is the …?"},
+        {"level": 3, "kind": "explanation", "tr": "Böyle de söyleyebilirsin: \"Excuse me, where is the old station?\" Excuse me kibar bir başlangıçtır."}
+      ]
+    },
+    {
+      "id": "r-k2-b", "type": "reaction",
+      "shots": [{"image": "images/B2-05-maya-sasirma.png", "audio": ["b2_15_alex", "b2_16_maya"], "move": [1.0, 1.05, 0.5, 0.5, 0.45, 0.45]}],
+      "bubble": {"speaker": "HI", "lang": "tr", "text": "Böyle de söyleyebilirsin: \"Excuse me, where is the old station?\" Excuse me kibar bir başlangıçtır.", "audio": "b2_17_hi"},
+      "next": "k2"
+    },
+    {
+      "id": "k2-ok", "type": "segment",
+      "shots": [
+        {"image": "images/B2-05-maya-sasirma.png", "audio": ["b2_14_alex"], "aoff": 0.4, "move": [1.0, 1.04, 0.5, 0.5, 0.45, 0.45]},
+        {"image": "images/B2-05-maya-sasirma.png", "audio": ["b2_18_maya", "b2_19_alex", "b2_20_maya"], "move": [1.04, 1.12, 0.5, 0.5, 0.45, 0.42]}
+      ],
+      "next": "t-gorev"
+    },
+    {
+      "id": "t-gorev", "type": "task", "kind": "multiSelect", "role": "comprehension", "skill": "listening", "cefr": "A1",
+      "scene": "Görev: 3 bilgi",
+      "prompt": {"tr": "Maya'nın cümlelerinden doğru üçünü seç."},
+      "background": "images/B2-01-dukkan-dis.png",
+      "items": [{"id": "i1", "options": [
+        {"id": "a", "text": "It's near the harbour.", "correct": true, "audio": "b2_21_alex"},
+        {"id": "b", "text": "It's closed.", "correct": true, "audio": "b2_22_alex"},
+        {"id": "c", "text": "It's very old.", "correct": true, "audio": "b2_23_alex"},
+        {"id": "d", "text": "It's in İzmir.", "correct": false, "audio": "b2_24_alex"},
+        {"id": "e", "text": "It's a big shop.", "correct": false, "audio": "b2_25_alex"}
+      ]}],
+      "next": "s05"
+    },
+    {
+      "id": "s05", "type": "segment", "scene": "Sahne 3: Harita", "checkpoint": true,
+      "shots": [{"image": "images/B2-06-maya-harita.png", "audio": ["b2_26_alex", "b2_27_maya", "b2_28_maya", "b2_29_alex"], "move": [1.0, 1.1, 0.5, 0.5, 0.5, 0.6]}],
+      "next": "t-kanit"
+    },
+    {
+      "id": "t-kanit", "type": "task", "kind": "fillBlank", "role": "evidence", "skill": "spoken_interaction", "cefr": "A1",
+      "prompt": {"tr": "Kafede biri seninle tanışıyor. Kendini tanıt."},
+      "context": "Yeni bağlam: kafedeki bir müşteri",
+      "background": "images/B2-07-oda-harita.png",
+      "items": [{"id": "i1", "stem": "Hello! My name is ___. I'm from ___.", "blanks": [{"id": "name", "accept": "any"}, {"id": "from", "accept": "any"}]}],
+      "next": "s06"
+    },
+    {
+      "id": "s06", "type": "segment",
+      "shots": [{"image": "images/B2-07-oda-harita.png", "len": 3.5, "move": [1.0, 1.06, 0.5, 0.5, 0.5, 0.5]}],
+      "next": "c-alex"
+    },
+    {
+      "id": "c-alex", "type": "card", "kind": "line", "advance": "tap",
+      "background": "images/B2-07-oda-harita.png",
+      "lines": [{"speaker": "ALEX", "text": "Kapalıysa… neden orada buluşmak istiyor?", "lang": "tr"}],
+      "why": "Alex'in Türkçe iç sesi için ses üretilmedi",
+      "next": "c-clues"
+    },
+    {
+      "id": "c-clues", "type": "card", "kind": "clue", "advance": "tap", "clueIds": ["C3"], "answers": ["Q1:partial"],
+      "lines": [{"text": "İpucu panosu", "lang": "tr", "style": "heading"},
+                {"text": "C3 · Maya'nın haritası (liman bölgesi açıldı)", "lang": "tr"},
+                {"text": "Q1 kısmen cevaplandı: limanda.", "lang": "tr"}],
+      "next": "c-oq"
+    },
+    {
+      "id": "c-oq", "type": "card", "kind": "openQuestion", "advance": "tap", "questionId": "Q2",
+      "background": "images/B2-07-oda-harita.png",
+      "lines": [{"text": "AÇIK SORU", "lang": "tr", "style": "caption"},
+                {"text": "İstasyon kapalıysa, çağrı neden oraya çağırıyor?", "lang": "tr", "style": "heading"},
+                {"text": "Bölüm 3: Find the Station", "lang": "en", "style": "caption"}],
+      "next": null
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "contentId": "A1-901", "slug": "test-episode", "title": "Test Episode", "level": "A1", "season": 1,
+  "episode": 901, "version": 1, "status": "DRAFT", "aiGenerated": true,
+  "prev": "A1-900", "next": null,
+  "targetPhrases": ["Are you new here?"],
+  "glossary": ["harbour"],
+  "previously": "Önceki bölümde bir mesaj geldi.",
+  "payoff": "Komşuyla tanışılır.",
+  "openQuestion": "Q9",
+  "answers": [],
+  "cluesUnlocked": ["C9"],
+  "callbackPhrases": ["Hello."],
+  "flags": [],
+  "decisionPoints": 1
+}

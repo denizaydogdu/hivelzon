@@ -1,0 +1,194 @@
+{
+  "kurguVersion": 1,
+  "contentId": "A1-003",
+  "source": "Ön izleme kurgusu b3_kurgu.py (H-032) düğümlere bölündü; karar kartları ve altyazı artık uygulamada (K-03).",
+  "start": "s01",
+  "externalFlags": [
+    {"episode": "A1-002", "id": "greet_tone", "values": ["formal", "friendly"], "default": "friendly"}
+  ],
+  "gate": {
+    "comprehension": ["t-gorev"],
+    "targetPhrase": ["k1"],
+    "activeTask": ["t-kanit"]
+  },
+  "nodes": [
+    {
+      "id": "s01", "type": "segment", "scene": "Soğuk açılış", "checkpoint": true,
+      "shots": [{"image": "../A1-002-the-new-neighbour/images/B2-06-maya-harita.png", "audio": [{"path": "../A1-002-the-new-neighbour/audio/b2_28_maya"}], "move": [1.08, 1.14, 0.5, 0.5, 0.5, 0.55]}],
+      "next": "c-title"
+    },
+    {
+      "id": "c-title", "type": "card", "kind": "title", "advance": "auto", "duration": 2.5,
+      "background": "images/B3-01-mesaj.png",
+      "lines": [{"text": "SEZON 1 · BÖLÜM 3", "lang": "tr", "style": "caption"},
+                {"text": "Find the Station", "lang": "en", "style": "heading"}],
+      "next": "c-mission"
+    },
+    {
+      "id": "c-mission", "type": "card", "kind": "mission", "advance": "tap",
+      "background": "images/B3-01-mesaj.png",
+      "lines": [{"text": "Haritayı ve yol tarifini kullanarak Old Station'ı bul.", "lang": "tr", "style": "heading"},
+                {"text": "Go straight. · Turn left / right. · It's near… · It's between… · It's behind…", "lang": "en", "style": "highlight"}],
+      "next": "c-msg"
+    },
+    {
+      "id": "c-msg", "type": "card", "kind": "message", "advance": "tap",
+      "background": "images/B3-01-mesaj.png",
+      "title": "Maya",
+      "lines": [{"text": "Sorry, Alex! I can't come today.", "lang": "en"}, {"text": "Here is the map. Good luck!", "lang": "en"}],
+      "variants": [
+        {"when": {"episode": "A1-002", "flag": "greet_tone", "value": "friendly"},
+         "lines": [{"text": "Sorry, Alex! I can't come today.", "lang": "en"}, {"text": "Here is the map. Good luck!", "lang": "en"}]},
+        {"when": {"episode": "A1-002", "flag": "greet_tone", "value": "formal"},
+         "lines": [{"text": "Hello Alex, I'm sorry. I can't come today.", "lang": "en"}, {"text": "Here is the map.", "lang": "en"}]}
+      ],
+      "next": "s02"
+    },
+    {
+      "id": "s02", "type": "segment",
+      "shots": [{"image": "images/B3-01-mesaj.png", "audio": ["b3_01_alex"], "move": [1.1, 1.14, 0.5, 0.5, 0.45, 0.45]}],
+      "next": "k1"
+    },
+    {
+      "id": "k1", "type": "decision", "scene": "Sahne 1: Sokakta", "checkpoint": true, "skill": "spoken_interaction", "cefr": "A1",
+      "prompt": {"tr": "Köpekli adama limanı sor."},
+      "pov": "POV: yokuşlu sokak, köpeğini gezdiren adam.",
+      "background": "images/B3-02-kopekli-adam-pov.png",
+      "targetPhrase": "Excuse me, where is…?",
+      "options": [
+        {"id": "a", "text": "Excuse me, where is the harbour?", "correct": true, "audio": "b3_02_alex", "next": "k1-ok"},
+        {"id": "b", "text": "Harbour where?", "correct": false, "next": "r-k1-b"}
+      ],
+      "hints": [
+        {"level": 1, "kind": "keyword", "tr": "Kibar başlangıç: *Excuse me*"},
+        {"level": 2, "kind": "pattern", "tr": "Excuse me, where is the …?"},
+        {"level": 3, "kind": "explanation", "tr": "Dün kullandığın kalıbı hatırla: \"Excuse me, where is…?\""}
+      ]
+    },
+    {
+      "id": "r-k1-b", "type": "reaction",
+      "shots": [{"image": "images/B3-02-kopekli-adam-pov.png", "audio": ["b3_03_alex", "b3_04_man"], "move": [1.0, 1.05, 0.5, 0.5, 0.45, 0.45]}],
+      "bubble": {"speaker": "HI", "lang": "tr", "text": "Dün kullandığın kalıbı hatırla: \"Excuse me, where is…?\"", "audio": "b3_05_hi"},
+      "next": "k1"
+    },
+    {
+      "id": "k1-ok", "type": "segment",
+      "shots": [
+        {"image": "images/B3-02-kopekli-adam-pov.png", "audio": ["b3_02_alex"], "aoff": 0.4, "move": [1.0, 1.04, 0.5, 0.5, 0.45, 0.45]},
+        {"image": "images/B3-02-kopekli-adam-pov.png", "audio": ["b3_06_man", "b3_07_alex", "b3_08_man", "b3_09_alex"], "move": [1.04, 1.12, 0.5, 0.5, 0.45, 0.42]}
+      ],
+      "next": "k2"
+    },
+    {
+      "id": "k2", "type": "decision", "skill": "listening", "cefr": "A1",
+      "prompt": {"tr": "Hangi yol? Okları seç."},
+      "cue": {"speaker": "MAN", "text": "Go straight. Turn left. It's near."},
+      "pov": "POV: kavşak. Oklar seçilir; yazı yok.",
+      "background": "images/B3-03-kavsak-pov.png",
+      "options": [
+        {"id": "a", "text": "Düz, sonra sol", "lang": "tr", "icon": "arrows:up,left", "correct": true, "next": "s03"},
+        {"id": "b", "text": "Sağ", "lang": "tr", "icon": "arrows:right", "correct": false, "next": "r-k2-b"}
+      ],
+      "hints": [
+        {"level": 1, "kind": "keyword", "tr": "*straight* = düz"},
+        {"level": 2, "kind": "pattern", "tr": "Go straight. Then turn left."},
+        {"level": 3, "kind": "explanation", "tr": "left = sol, right = sağ. Tekrar dene!"}
+      ]
+    },
+    {
+      "id": "r-k2-b", "type": "reaction",
+      "shots": [{"image": "images/B3-04-cikmaz-kedi.png", "len": 3.0, "move": [1.0, 1.06, 0.5, 0.5, 0.5, 0.5]}],
+      "bubble": {"speaker": "HI", "lang": "tr", "text": "left = sol, right = sağ. Tekrar dene!", "why": "Bu Hi repliği için ses üretilmedi"},
+      "next": "k2"
+    },
+    {
+      "id": "s03", "type": "segment", "scene": "Sahne 2: Limanda", "checkpoint": true,
+      "shots": [{"image": "images/B3-05-liman.png", "len": 3.0, "move": [1.0, 1.06, 0.5, 0.55, 0.4, 0.45]}],
+      "next": "c-note"
+    },
+    {
+      "id": "c-note", "type": "card", "kind": "note", "advance": "tap",
+      "background": "images/B3-05-liman.png",
+      "title": "Maya'nın haritasındaki not",
+      "lines": [{"text": "The station is near the fish shop.", "lang": "en"}, {"text": "It's between the bus stop and the café.", "lang": "en"}],
+      "next": "k3"
+    },
+    {
+      "id": "k3", "type": "decision", "skill": "reading", "cefr": "A1",
+      "prompt": {"tr": "Nota göre Old Station hangisi?"},
+      "pov": "Resimde doğru binaya dokun.",
+      "background": "images/B3-05-liman.png",
+      "options": [
+        {"id": "a", "text": "Otobüs durağı ile kafenin arasındaki eski bina", "lang": "tr", "correct": true, "next": "s04"},
+        {"id": "b", "text": "Balıkçı dükkânının arkasındaki bina", "lang": "tr", "correct": false, "next": "r-k3-b"}
+      ],
+      "hints": [
+        {"level": 1, "kind": "keyword", "tr": "*between* = arasında"},
+        {"level": 2, "kind": "pattern", "tr": "between the bus stop and the café"},
+        {"level": 3, "kind": "explanation", "tr": "between = ikisinin arasında. Otobüs durağına ve kafeye bak."}
+      ]
+    },
+    {
+      "id": "r-k3-b", "type": "reaction",
+      "bubble": {"speaker": "HI", "lang": "tr", "text": "between = ikisinin arasında. Otobüs durağına ve kafeye bak.", "audio": "b3_10_hi"},
+      "why": "Tepki yalnızca Hi balonu (story.en.md'de görsel tepki yok)",
+      "next": "k3"
+    },
+    {
+      "id": "s04", "type": "segment", "scene": "Sahne 3: Old Station", "checkpoint": true,
+      "shots": [
+        {"image": "images/B3-06-old-station.png", "audio": ["b3_11_alex"], "move": [1.0, 1.08, 0.5, 0.5, 0.6, 0.45]},
+        {"image": "images/B3-07-yarim-not.png", "audio": ["b3_12_alex"], "aoff": 2.0, "move": [1.0, 1.08, 0.5, 0.5, 0.4, 0.45],
+         "signs": [{"style": "note", "lines": [{"text": "Fri…    …pm"}, {"text": "Pier …        — E."}], "start": 0.35, "end": 1.95}]}
+      ],
+      "next": "t-gorev"
+    },
+    {
+      "id": "t-gorev", "type": "task", "kind": "choice", "role": "comprehension", "skill": "reading", "cefr": "A1",
+      "scene": "Görev: Rotayı seç",
+      "prompt": {"tr": "Tarife göre doğru yolu seç.", "en": "Go straight. Turn left. It's near the fish shop."},
+      "background": "images/B3-05-liman.png",
+      "items": [{"id": "i1", "stem": "Go straight. Turn left. It's near the fish shop.", "options": [
+        {"id": "a", "text": "Düz git → sola dön → balıkçı dükkânının yanı", "lang": "tr", "correct": true},
+        {"id": "b", "text": "Düz git → sağa dön → balıkçı dükkânının yanı", "lang": "tr", "correct": false},
+        {"id": "c", "text": "Sola dön → düz git → otobüs durağının arkası", "lang": "tr", "correct": false}
+      ]}],
+      "noMediaReason": "Rota çizimi için harita görseli yok; seçenekler metin olarak (editör onayı bekler)",
+      "next": "t-kanit"
+    },
+    {
+      "id": "t-kanit", "type": "task", "kind": "choice", "role": "evidence", "skill": "reading", "cefr": "A1",
+      "prompt": {"tr": "Yeni harita: doğru kafeyi seç."},
+      "context": "Yeni harita, yeni yer",
+      "items": [{"id": "i1", "stem": "The café is near the park. It's behind the school.", "options": [
+        {"id": "a", "text": "Parkın yakınında, okulun arkasındaki kafe", "lang": "tr", "correct": true},
+        {"id": "b", "text": "Parkın yakınında, okulun önündeki kafe", "lang": "tr", "correct": false},
+        {"id": "c", "text": "Okulun yakınında, parkın arkasındaki kafe", "lang": "tr", "correct": false}
+      ]}],
+      "noMediaReason": "Yeni harita görseli üretilmedi; seçenekler metin olarak (editör onayı bekler)",
+      "next": "h-13"
+    },
+    {
+      "id": "h-13", "type": "card", "kind": "hi", "advance": "tap",
+      "background": "images/B3-07-yarim-not.png",
+      "lines": [{"speaker": "HI", "text": "Bazı harfler silinmiş. Yarın birlikte bakalım mı?", "lang": "tr"}],
+      "audio": "b3_13_hi",
+      "next": "c-clues"
+    },
+    {
+      "id": "c-clues", "type": "card", "kind": "clue", "advance": "tap", "clueIds": ["C4"], "answers": ["Q1"],
+      "lines": [{"text": "İpucu panosu", "lang": "tr", "style": "heading"},
+                {"text": "C4 · Kapıdaki yarım not (fotoğraf)", "lang": "tr"},
+                {"text": "Q1 kapandı: İstasyon bulundu.", "lang": "tr"}],
+      "next": "c-oq"
+    },
+    {
+      "id": "c-oq", "type": "card", "kind": "openQuestion", "advance": "tap", "questionId": "Q3",
+      "background": "images/B3-07-yarim-not.png",
+      "lines": [{"text": "AÇIK SORU", "lang": "tr", "style": "caption"},
+                {"text": "Kapıdaki yarım notta ne yazıyor?", "lang": "tr", "style": "heading"},
+                {"text": "Bölüm 4: The Note", "lang": "en", "style": "caption"}],
+      "next": null
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "episode": {
+    "id": "A1-901", "slug": "test-episode", "level": "A1", "season": 1, "number": 901,
+    "title": "Test Episode", "contentVersion": 1, "status": "DRAFT", "aiGenerated": true,
+    "mission": {"tr": "Test görevi"}, "targetPhrases": ["Yes, I can."],
+    "links": {"previously": "Önceki", "payoff": "Çözülen", "openQuestion": "Q9",
+              "answers": [], "cluesUnlocked": ["C9"], "callbackPhrases": ["Hello."]}
+  },
+  "flags": [{"id": "tone", "values": ["formal", "friendly"]}],
+  "gate": {"rule": "all", "comprehension": ["t1"], "targetPhrase": ["k1"], "activeTask": ["t1"]},
+  "start": "s1",
+  "nodes": [
+    {"id": "s1", "type": "segment", "checkpoint": true, "video": "segments/s1.mp4", "duration": 4.2,
+     "subtitles": "subs/s1.en.json", "next": "k1"},
+    {"id": "k1", "type": "decision", "prompt": {"tr": "Alex ne desin?"},
+     "cue": {"speaker": "VOICE", "text": "Can you hear me?"},
+     "options": [
+       {"id": "a", "text": "Yes, I can.", "correct": true, "setFlag": {"flag": "tone", "value": "formal"}, "next": "s2"},
+       {"id": "b", "text": "Yes, I can!", "correct": true, "setFlag": {"flag": "tone", "value": "friendly"}, "next": "s2"},
+       {"id": "c", "text": "Yes, I am.", "correct": false, "next": "r1"}
+     ],
+     "hints": [{"level": 1, "kind": "keyword", "tr": "*can*"}]},
+    {"id": "r1", "type": "reaction", "bubble": {"speaker": "HI", "lang": "tr", "text": "Cevap: Yes, I can."}, "next": "k1"},
+    {"id": "s2", "type": "segment", "video": "segments/s2.mp4", "duration": 3.0, "subtitles": null, "next": "t1"},
+    {"id": "t1", "type": "task", "kind": "choice", "role": "evidence", "prompt": {"tr": "Seç"},
+     "items": [{"id": "i1", "stem": "This is ___.", "options": [
+       {"id": "a", "text": "E", "correct": true}, {"id": "b", "text": "A", "correct": false}]}],
+     "next": "c1"},
+    {"id": "c1", "type": "card", "kind": "openQuestion", "questionId": "Q9",
+     "lines": [{"text": "Açık soru", "lang": "tr"}], "next": null}
+  ]
+}

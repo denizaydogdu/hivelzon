@@ -62,3 +62,11 @@ icerik/**/*.mp3
 icerik/**/*.wav
 .DS_Store
 icerik/**/_build/
+
+# İçerik boru hattı (tools/content-pipeline)
+tools/content-pipeline/.venv/
+__pycache__/
+.pytest_cache/
+
+# Arayüz taslaklarının tam boy PNG'leri (önizlemeler tasarim/onizleme/ altında izlenir)
+tasarim/*.png

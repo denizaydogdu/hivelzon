@@ -1,0 +1,23 @@
+[
+  {
+    "created_at": "2026-10-11T17:30:01.75801Z",
+    "display_name": "GPT Image 2.5",
+    "id": "3af15d6c-cb2b-4033-a0f8-7866e6d734d8",
+    "job_type": "gpt_image_2_5",
+    "min_result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261011_173001_3af15d6c-cb2b-4033-a0f8-7866e6d734d8_min.webp",
+    "params": {
+      "aspect_ratio": "9:16",
+      "height": 2688,
+      "medias": [],
+      "model": "flare",
+      "prompt": "Notebook screen ('Profil' area, titled 'Defter'). Segmented control at top: 'İfadeler' (active) and 'İpucu panosu'. A review card in the centre: English phrase 'How much is it?' with a speaker icon, Turkish meaning 'Ne kadar?' revealed below, two large buttons 'Bilmedim' and 'Bildim'. Below, a list of collected phrases with small episode tags like 'B2', 'B3' and audio icons. High-fidelity mobile app UI mockup, single iPhone screen, portrait, flat front view, no device frame, for 'hiVelzon', an English-learning app built around an animated mystery story set in a small coastal harbour town. Design system: 8px grid, generous whitespace, 12px rounded corners, soft subtle shadows, Inter-like sans-serif with max 3 weights, palette: deep sea blue primary (#1F4E79), lighthouse yellow accent (#F2B33D), warm sand neutrals (#F7F1E6 background, #2B2B2B text), evening orange for highlights. Story artwork inside the UI is warm animated-series graphic-novel illustration with clean ink lines and soft cel shading, mature, not childish. Calm, friendly, uncluttered; no ads, no hearts/lives, no timers, no leaderboards. Bottom navigation bar with 5 tabs labelled 'Ana Sayfa', 'Keşfet', 'Hikâye', 'Konuş', 'Profil'. Legible text only, minimal text, no real brand logos.",
+      "quality": "medium",
+      "reference_elements": [],
+      "remove_bg": false,
+      "resolution": "2k",
+      "width": 1520
+    },
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261011_173001_3af15d6c-cb2b-4033-a0f8-7866e6d734d8.png",
+    "status": "completed"
+  }
+]

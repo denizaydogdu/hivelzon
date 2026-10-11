@@ -1,0 +1,4 @@
+# Çalışma zamanı yalnızca standart kütüphane (Python 3.11+). Testler için:
+pytest==8.4.2
+# İsteğe bağlı: scenes.schema.json'ın resmî draft 2020-12 doğrulayıcısıyla çapraz denetimi
+jsonschema==4.25.1

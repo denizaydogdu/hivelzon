@@ -1,0 +1,383 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hi.velzon.tr/schema/scenes.v1.schema.json",
+  "title": "hiVelzon bölüm paketi: scenes.json (schemaVersion 1)",
+  "description": "Oynatıcının (H-031) okuduğu bölüm grafiği. Düğümler: segment, decision, reaction, card, task. Dosya yolları paket köküne göredir. Ayrıntı: docs/BOLUM-PAKETI.md.",
+  "type": "object",
+  "required": ["schemaVersion", "episode", "flags", "gate", "start", "nodes"],
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "episode": { "$ref": "#/$defs/episode" },
+    "flags": {
+      "description": "Bu bölümde yazılan kalıcı bayraklar. K-28: bölüm başına en fazla 3.",
+      "type": "array",
+      "maxItems": 3,
+      "items": { "$ref": "#/$defs/flag" }
+    },
+    "externalFlags": {
+      "description": "Önceki bölümlerde yazılıp bu bölümde okunan bayraklar (geri dönüş satırları için).",
+      "type": "array",
+      "items": { "$ref": "#/$defs/externalFlag" }
+    },
+    "gate": { "$ref": "#/$defs/gate" },
+    "start": { "$ref": "#/$defs/nodeId" },
+    "nodes": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/node" }
+    }
+  },
+  "$defs": {
+    "nodeId": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
+    "next": {
+      "description": "Sonraki düğüm. null = bölüm sonu.",
+      "type": ["string", "null"],
+      "pattern": "^[a-z0-9][a-z0-9-]*$"
+    },
+    "lang": { "enum": ["en", "tr"] },
+    "segmentPath": { "type": "string", "pattern": "^segments/[A-Za-z0-9._-]+\\.mp4$" },
+    "subsPath": { "type": "string", "pattern": "^subs/[A-Za-z0-9._-]+\\.en\\.json$" },
+    "audioPath": { "type": "string", "pattern": "^audio/[A-Za-z0-9._-]+\\.m4a$" },
+    "stillPath": { "type": "string", "pattern": "^stills/[A-Za-z0-9._-]+\\.jpg$" },
+    "skill": { "enum": ["listening", "reading", "spoken_interaction", "grammar", "vocabulary", "pragmatics"] },
+    "cefr": { "enum": ["A1", "A2", "B1", "B2", "C1"] },
+    "textTr": {
+      "type": "object",
+      "required": ["tr"],
+      "additionalProperties": false,
+      "properties": { "tr": { "type": "string", "minLength": 1 }, "en": { "type": "string" } }
+    },
+    "line": {
+      "type": "object",
+      "required": ["text", "lang"],
+      "additionalProperties": false,
+      "properties": {
+        "text": { "type": "string", "minLength": 1 },
+        "lang": { "$ref": "#/$defs/lang" },
+        "speaker": { "type": "string" },
+        "style": { "enum": ["heading", "body", "highlight", "caption"] }
+      }
+    },
+    "bubble": {
+      "description": "Hi'nin (ya da bir karakterin) konuşma balonu. Ses yoksa yalnızca metin gösterilir.",
+      "type": "object",
+      "required": ["speaker", "lang", "text"],
+      "additionalProperties": false,
+      "properties": {
+        "speaker": { "type": "string" },
+        "lang": { "$ref": "#/$defs/lang" },
+        "text": { "type": "string", "minLength": 1 },
+        "audio": { "$ref": "#/$defs/audioPath" }
+      }
+    },
+    "flagRef": {
+      "type": "object",
+      "required": ["flag", "value"],
+      "additionalProperties": false,
+      "properties": {
+        "flag": { "type": "string" },
+        "value": { "type": "string" },
+        "episode": { "type": "string", "pattern": "^[A-C][12]-\\d{3}$" }
+      }
+    },
+    "episode": {
+      "type": "object",
+      "required": ["id", "slug", "level", "season", "number", "title", "contentVersion", "status", "aiGenerated", "mission", "targetPhrases", "links"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "pattern": "^[A-C][12]-\\d{3}$" },
+        "slug": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+        "level": { "$ref": "#/$defs/cefr" },
+        "season": { "type": "integer", "minimum": 1 },
+        "number": { "type": "integer", "minimum": 0 },
+        "title": { "type": "string", "minLength": 1 },
+        "contentVersion": { "type": "integer", "minimum": 1 },
+        "status": { "enum": ["DRAFT", "IN_REVIEW", "APPROVED", "SCHEDULED", "PUBLISHED", "ARCHIVED", "WITHDRAWN"] },
+        "aiGenerated": { "type": "boolean" },
+        "aiLabel": { "type": "string" },
+        "estimatedMinutes": { "type": "number" },
+        "mission": { "$ref": "#/$defs/textTr" },
+        "targetPhrases": { "type": "array", "items": { "type": "string" } },
+        "prev": { "type": ["string", "null"] },
+        "next": { "type": ["string", "null"] },
+        "links": {
+          "description": "Bölümler arası bağ alanları (OYUN-TASARIMI §4.3), content.json'dan kopyalanır.",
+          "type": "object",
+          "required": ["previously", "payoff", "openQuestion", "answers", "cluesUnlocked", "callbackPhrases"],
+          "additionalProperties": false,
+          "properties": {
+            "previously": { "type": ["string", "null"] },
+            "payoff": { "type": "string" },
+            "openQuestion": { "type": "string" },
+            "answers": { "type": "array", "items": { "type": "string" } },
+            "cluesUnlocked": { "type": "array", "items": { "type": "string" } },
+            "callbackPhrases": { "type": "array", "items": { "type": "string" } }
+          }
+        }
+      }
+    },
+    "flag": {
+      "type": "object",
+      "required": ["id", "values"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z][a-z0-9_]*$" },
+        "values": { "type": "array", "minItems": 2, "uniqueItems": true, "items": { "type": "string" } },
+        "callbackIn": { "type": "string" }
+      }
+    },
+    "externalFlag": {
+      "type": "object",
+      "required": ["episode", "id", "values"],
+      "additionalProperties": false,
+      "properties": {
+        "episode": { "type": "string", "pattern": "^[A-C][12]-\\d{3}$" },
+        "id": { "type": "string" },
+        "values": { "type": "array", "items": { "type": "string" } },
+        "default": { "type": "string" }
+      }
+    },
+    "gate": {
+      "description": "K-29 bölüm kapısı: üç ölçütün hepsi gerekir. Listeler düğüm kimliğidir; ölçüt, listedeki herhangi bir düğüm doğru tamamlanınca karşılanır (deneme sayısı sınırsız).",
+      "type": "object",
+      "required": ["rule", "comprehension", "targetPhrase", "activeTask"],
+      "additionalProperties": false,
+      "properties": {
+        "rule": { "const": "all" },
+        "comprehension": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/nodeId" } },
+        "targetPhrase": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/nodeId" } },
+        "activeTask": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/nodeId" } }
+      }
+    },
+    "node": {
+      "oneOf": [
+        { "$ref": "#/$defs/segment" },
+        { "$ref": "#/$defs/decision" },
+        { "$ref": "#/$defs/reaction" },
+        { "$ref": "#/$defs/card" },
+        { "$ref": "#/$defs/task" }
+      ]
+    },
+    "segment": {
+      "description": "Kesintisiz video parçası. Karar anlarında bölünür. Altyazı videoya gömülmez (K-03).",
+      "type": "object",
+      "required": ["id", "type", "video", "duration", "next"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "$ref": "#/$defs/nodeId" },
+        "type": { "const": "segment" },
+        "scene": { "type": "string" },
+        "checkpoint": { "type": "boolean" },
+        "video": { "$ref": "#/$defs/segmentPath" },
+        "duration": { "type": "number", "exclusiveMinimum": 0 },
+        "subtitles": { "oneOf": [{ "$ref": "#/$defs/subsPath" }, { "type": "null" }] },
+        "poster": { "$ref": "#/$defs/stillPath" },
+        "next": { "$ref": "#/$defs/next" }
+      }
+    },
+    "option": {
+      "type": "object",
+      "required": ["id", "text", "correct", "next"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9]+$" },
+        "text": { "type": "string", "minLength": 1 },
+        "lang": { "$ref": "#/$defs/lang" },
+        "icon": { "type": "string" },
+        "correct": { "type": "boolean" },
+        "setFlag": { "$ref": "#/$defs/flagRef" },
+        "audio": { "$ref": "#/$defs/audioPath" },
+        "next": { "$ref": "#/$defs/nodeId" }
+      }
+    },
+    "hint": {
+      "type": "object",
+      "required": ["level", "kind", "tr"],
+      "additionalProperties": false,
+      "properties": {
+        "level": { "type": "integer", "minimum": 1, "maximum": 3 },
+        "kind": { "enum": ["keyword", "pattern", "explanation"] },
+        "tr": { "type": "string", "minLength": 1 },
+        "audio": { "$ref": "#/$defs/audioPath" }
+      }
+    },
+    "decision": {
+      "description": "Karar anı: video durur, seçenekler yerel arayüz kartıdır. Yanlış seçenek → reaction → aynı karar (K-28).",
+      "type": "object",
+      "required": ["id", "type", "prompt", "options"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "$ref": "#/$defs/nodeId" },
+        "type": { "const": "decision" },
+        "scene": { "type": "string" },
+        "checkpoint": { "type": "boolean" },
+        "prompt": { "$ref": "#/$defs/textTr" },
+        "cue": {
+          "description": "Kararı tetikleyen replik (ekranda soru olarak gösterilir).",
+          "type": "object",
+          "required": ["speaker", "text"],
+          "additionalProperties": false,
+          "properties": { "speaker": { "type": "string" }, "text": { "type": "string" }, "audio": { "$ref": "#/$defs/audioPath" } }
+        },
+        "pov": { "type": "string" },
+        "background": { "$ref": "#/$defs/stillPath" },
+        "skill": { "$ref": "#/$defs/skill" },
+        "cefr": { "$ref": "#/$defs/cefr" },
+        "targetPhrase": { "type": "string" },
+        "options": { "type": "array", "minItems": 2, "maxItems": 4, "items": { "$ref": "#/$defs/option" } },
+        "hints": { "type": "array", "maxItems": 3, "items": { "$ref": "#/$defs/hint" } }
+      }
+    },
+    "reaction": {
+      "description": "Yanlış seçimin kısa, nazik tepkisi (3-8 sn video) ve/veya Hi balonu; ardından next ile aynı karara dönülür.",
+      "type": "object",
+      "required": ["id", "type", "next"],
+      "additionalProperties": false,
+      "anyOf": [{ "required": ["video"] }, { "required": ["bubble"] }],
+      "properties": {
+        "id": { "$ref": "#/$defs/nodeId" },
+        "type": { "const": "reaction" },
+        "video": { "$ref": "#/$defs/segmentPath" },
+        "duration": { "type": "number", "exclusiveMinimum": 0 },
+        "subtitles": { "oneOf": [{ "$ref": "#/$defs/subsPath" }, { "type": "null" }] },
+        "bubble": { "$ref": "#/$defs/bubble" },
+        "next": { "$ref": "#/$defs/nodeId" }
+      }
+    },
+    "card": {
+      "description": "Ekranda yerel arayüzle çizilen kart: başlık, görev, Hi balonu, replik, not/mesaj (dünya içi yazı), ipucu, açık soru.",
+      "type": "object",
+      "required": ["id", "type", "kind", "lines", "next"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "$ref": "#/$defs/nodeId" },
+        "type": { "const": "card" },
+        "kind": { "enum": ["title", "mission", "hi", "line", "note", "message", "clue", "openQuestion"] },
+        "scene": { "type": "string" },
+        "checkpoint": { "type": "boolean" },
+        "title": { "type": "string" },
+        "lines": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/line" } },
+        "variants": {
+          "description": "Bayrağa göre farklı satırlar. Hiçbiri uymazsa lines gösterilir.",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["when", "lines"],
+            "additionalProperties": false,
+            "properties": {
+              "when": { "$ref": "#/$defs/flagRef" },
+              "lines": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/line" } }
+            }
+          }
+        },
+        "audio": { "$ref": "#/$defs/audioPath" },
+        "background": { "$ref": "#/$defs/stillPath" },
+        "advance": { "enum": ["tap", "auto"] },
+        "duration": { "type": "number", "exclusiveMinimum": 0 },
+        "clueIds": { "type": "array", "items": { "type": "string" } },
+        "questionId": { "type": "string" },
+        "answers": { "type": "array", "items": { "type": "string" } },
+        "next": { "$ref": "#/$defs/next" }
+      }
+    },
+    "taskOption": {
+      "type": "object",
+      "required": ["id", "text", "correct"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9]+$" },
+        "text": { "type": "string", "minLength": 1 },
+        "lang": { "$ref": "#/$defs/lang" },
+        "correct": { "type": "boolean" },
+        "audio": { "$ref": "#/$defs/audioPath" }
+      }
+    },
+    "taskItem": {
+      "type": "object",
+      "required": ["id"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9]+$" },
+        "stem": { "type": "string" },
+        "options": { "type": "array", "minItems": 2, "items": { "$ref": "#/$defs/taskOption" } },
+        "tokens": { "type": "array", "minItems": 2, "items": { "type": "string" } },
+        "answer": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+        "pairs": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "object",
+            "required": ["left", "right"],
+            "additionalProperties": false,
+            "properties": { "left": { "type": "string" }, "right": { "type": "string" } }
+          }
+        },
+        "blanks": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": ["id", "accept"],
+            "additionalProperties": false,
+            "properties": {
+              "id": { "type": "string" },
+              "accept": {
+                "oneOf": [
+                  { "const": "any" },
+                  { "type": "array", "minItems": 1, "items": { "type": "string" } }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "task": {
+      "description": "Görev, anlama ya da kanıt etkileşimi. Yanlışta feedback gösterilir ve aynı öğe tekrar denenir.",
+      "type": "object",
+      "required": ["id", "type", "kind", "role", "prompt", "items", "next"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "$ref": "#/$defs/nodeId" },
+        "type": { "const": "task" },
+        "kind": { "enum": ["choice", "multiSelect", "order", "match", "fillBlank"] },
+        "role": { "enum": ["comprehension", "mission", "evidence"] },
+        "scene": { "type": "string" },
+        "checkpoint": { "type": "boolean" },
+        "skill": { "$ref": "#/$defs/skill" },
+        "cefr": { "$ref": "#/$defs/cefr" },
+        "prompt": { "$ref": "#/$defs/textTr" },
+        "context": { "type": "string" },
+        "audio": { "$ref": "#/$defs/audioPath" },
+        "background": { "$ref": "#/$defs/stillPath" },
+        "items": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/taskItem" } },
+        "result": { "type": "array", "items": { "$ref": "#/$defs/line" } },
+        "feedback": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": { "wrong": { "$ref": "#/$defs/bubble" } }
+        },
+        "next": { "$ref": "#/$defs/next" }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "kind": { "enum": ["choice", "multiSelect"] } } },
+          "then": { "properties": { "items": { "items": { "required": ["options"] } } } }
+        },
+        {
+          "if": { "properties": { "kind": { "const": "order" } } },
+          "then": { "properties": { "items": { "items": { "required": ["tokens", "answer"] } } } }
+        },
+        {
+          "if": { "properties": { "kind": { "const": "match" } } },
+          "then": { "properties": { "items": { "items": { "required": ["pairs"] } } } }
+        },
+        {
+          "if": { "properties": { "kind": { "const": "fillBlank" } } },
+          "then": { "properties": { "items": { "items": { "required": ["stem", "blanks"] } } } }
+        }
+      ]
+    }
+  }
+}

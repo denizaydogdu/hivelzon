@@ -1,0 +1,23 @@
+[
+  {
+    "created_at": "2026-10-11T17:30:02.89614Z",
+    "display_name": "GPT Image 2.5",
+    "id": "87378f4e-7acb-4f7d-a7c6-fd8126cabdc6",
+    "job_type": "gpt_image_2_5",
+    "min_result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261011_173002_87378f4e-7acb-4f7d-a7c6-fd8126cabdc6_min.webp",
+    "params": {
+      "aspect_ratio": "9:16",
+      "height": 2688,
+      "medias": [],
+      "model": "flare",
+      "prompt": "Story map screen ('Hikâye' tab active). Header 'Sezon 1 · The Missing Signal' with progress '4 / 12'. The main area is an illustrated top-down map of a coastal town with a winding path connecting 12 round episode nodes from the harbour up to a lighthouse on a hill; first 4 nodes are bright and completed with small check marks, node 5 glows as next, remaining nodes are dimmed with small lock icons. A small bottom sheet shows 'Bölüm 5 · yakında' and a spoiler-free hint line. High-fidelity mobile app UI mockup, single iPhone screen, portrait, flat front view, no device frame, for 'hiVelzon', an English-learning app built around an animated mystery story set in a small coastal harbour town. Design system: 8px grid, generous whitespace, 12px rounded corners, soft subtle shadows, Inter-like sans-serif with max 3 weights, palette: deep sea blue primary (#1F4E79), lighthouse yellow accent (#F2B33D), warm sand neutrals (#F7F1E6 background, #2B2B2B text), evening orange for highlights. Story artwork inside the UI is warm animated-series graphic-novel illustration with clean ink lines and soft cel shading, mature, not childish. Calm, friendly, uncluttered; no ads, no hearts/lives, no timers, no leaderboards. Bottom navigation bar with 5 tabs labelled 'Ana Sayfa', 'Keşfet', 'Hikâye', 'Konuş', 'Profil'. Legible text only, minimal text, no real brand logos.",
+      "quality": "medium",
+      "reference_elements": [],
+      "remove_bg": false,
+      "resolution": "2k",
+      "width": 1520
+    },
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261011_173002_87378f4e-7acb-4f7d-a7c6-fd8126cabdc6.png",
+    "status": "completed"
+  }
+]

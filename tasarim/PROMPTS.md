@@ -1,0 +1,50 @@
+# Uygulama ekran taslakları: üretim kaydı (H-045)
+
+- **Tarih:** 2026-10-11
+- **Model:** GPT Image 2.5 (`gpt_image_2_5`), 9:16, quality medium, 2k
+- **Kullanıcı onayı:** 2026-10-11, soru-cevap: "Ekran taslakları", "Hikâyeyle uyumlu" ton, "2k · toplam 6 kr"
+- **Maliyet:** tahmin 6 kr, gerçek 6 kr (98,25 → 92,25)
+- **Kullanım:** Yalnızca iç tasarım referansı. Yayınlanmaz, mağaza görseli değildir. Görsellerdeki örnek İngilizce cümleler A1 denetiminden geçmemiş yer tutuculardır.
+- **Telif / AI:** Gerçek kişi, marka ya da telifli karakter yok. Referanslar hiVelzon'un kendi karakterleri (Alex, Maya, Hi).
+
+### T1-ana-sayfa
+- **Job:** `87ea376a-eb6d-4b0a-9f9e-25c965114fc5` · **Kredi:** 1 (tahmin 1) · **Referans:** `663ea0fe-3df5-4cea-ba8c-e08c80e48a96`
+- **Dosya:** `tasarim/T1-ana-sayfa.png` (git dışı) · önizleme `tasarim/onizleme/T1-ana-sayfa.jpg`
+- **Prompt:**
+
+> Home screen ('Ana Sayfa' tab active). Top: greeting 'Merhaba!' and a small daily goal ring showing '10 dk'. Hero card with an illustration of a young woman holding an old radio at a harbour at dusk, title 'Bölüm 3: The Old Station', button 'Hikâyeye devam'. Below: a smaller card 'Hızlı pratik · 5 kelime' and a card 'Yeni klipler' with three small thumbnails. High-fidelity mobile app UI mockup, single iPhone screen, portrait, flat front view, no device frame, for 'hiVelzon', an English-learning app built around an animated mystery story set in a small coastal harbour town. Design system: 8px grid, generous whitespace, 12px rounded corners, soft subtle shadows, Inter-like sans-serif with max 3 weights, palette: deep sea blue primary (#1F4E79), lighthouse yellow accent (#F2B33D), warm sand neutrals (#F7F1E6 background, #2B2B2B text), evening orange for highlights. Story artwork inside the UI is warm animated-series graphic-novel illustration with clean ink lines and soft cel shading, mature, not childish. Calm, friendly, uncluttered; no ads, no hearts/lives, no timers, no leaderboards. Bottom navigation bar with 5 tabs labelled 'Ana Sayfa', 'Keşfet', 'Hikâye', 'Konuş', 'Profil'. Legible text only, minimal text, no real brand logos.
+
+### T2-hikaye-haritasi
+- **Job:** `87378f4e-7acb-4f7d-a7c6-fd8126cabdc6` · **Kredi:** 1 (tahmin 1) · **Referans:** yok
+- **Dosya:** `tasarim/T2-hikaye-haritasi.png` (git dışı) · önizleme `tasarim/onizleme/T2-hikaye-haritasi.jpg`
+- **Prompt:**
+
+> Story map screen ('Hikâye' tab active). Header 'Sezon 1 · The Missing Signal' with progress '4 / 12'. The main area is an illustrated top-down map of a coastal town with a winding path connecting 12 round episode nodes from the harbour up to a lighthouse on a hill; first 4 nodes are bright and completed with small check marks, node 5 glows as next, remaining nodes are dimmed with small lock icons. A small bottom sheet shows 'Bölüm 5 · yakında' and a spoiler-free hint line. High-fidelity mobile app UI mockup, single iPhone screen, portrait, flat front view, no device frame, for 'hiVelzon', an English-learning app built around an animated mystery story set in a small coastal harbour town. Design system: 8px grid, generous whitespace, 12px rounded corners, soft subtle shadows, Inter-like sans-serif with max 3 weights, palette: deep sea blue primary (#1F4E79), lighthouse yellow accent (#F2B33D), warm sand neutrals (#F7F1E6 background, #2B2B2B text), evening orange for highlights. Story artwork inside the UI is warm animated-series graphic-novel illustration with clean ink lines and soft cel shading, mature, not childish. Calm, friendly, uncluttered; no ads, no hearts/lives, no timers, no leaderboards. Bottom navigation bar with 5 tabs labelled 'Ana Sayfa', 'Keşfet', 'Hikâye', 'Konuş', 'Profil'. Legible text only, minimal text, no real brand logos.
+
+### T3-oynatici-karar
+- **Job:** `5a5c2633-525f-4e5f-b480-72015e22b01c` · **Kredi:** 1 (tahmin 1) · **Referans:** yok
+- **Dosya:** `tasarim/T3-oynatici-karar.png` (git dışı) · önizleme `tasarim/onizleme/T3-oynatici-karar.jpg`
+- **Prompt:**
+
+> Interactive episode player, full-screen 9:16 video frame paused and slightly dimmed: illustrated café counter seen from first-person view, a friendly café owner woman with an apron behind the counter. A single English subtitle line near the middle: 'Hello! Are you new here?'. At the bottom a decision card slides up titled 'Ne dersin?' with three large rounded option buttons: 'Can I have a tea, please?', 'Can I have a hot chocolate, please?', 'I want tea.'. Small top bar: close button, episode progress dots, '0.75x' speed chip and subtitle 'EN' toggle. No bottom navigation on this screen. High-fidelity mobile app UI mockup, single iPhone screen, portrait, flat front view, no device frame, for 'hiVelzon', an English-learning app built around an animated mystery story set in a small coastal harbour town. Design system: 8px grid, generous whitespace, 12px rounded corners, soft subtle shadows, Inter-like sans-serif with max 3 weights, palette: deep sea blue primary (#1F4E79), lighthouse yellow accent (#F2B33D), warm sand neutrals (#F7F1E6 background, #2B2B2B text), evening orange for highlights. Story artwork inside the UI is warm animated-series graphic-novel illustration with clean ink lines and soft cel shading, mature, not childish. Calm, friendly, uncluttered; no ads, no hearts/lives, no timers, no leaderboards. Bottom navigation bar with 5 tabs labelled 'Ana Sayfa', 'Keşfet', 'Hikâye', 'Konuş', 'Profil'. Legible text only, minimal text, no real brand logos.
+
+### T4-hi-ipucu
+- **Job:** `3c977be6-2fd3-4e14-9a90-b4598a308aa8` · **Kredi:** 1 (tahmin 1) · **Referans:** `48e01750-864a-4c0e-bdd3-e9bc989684cb`
+- **Dosya:** `tasarim/T4-hi-ipucu.png` (git dışı) · önizleme `tasarim/onizleme/T4-hi-ipucu.jpg`
+- **Prompt:**
+
+> Interactive episode player, video paused and dimmed (illustrated harbour scene). The companion 'Hi' — a round, softly glowing speech-bubble character with two friendly eyes, matching the attached reference — floats above a hint panel. Hint panel text in Turkish: 'Kafede daha kibar: "Can I have …, please?"' with a small speaker icon, and two buttons 'Bir ipucu daha' and 'Tekrar dene'. Gentle, encouraging, never punishing. No bottom navigation on this screen. High-fidelity mobile app UI mockup, single iPhone screen, portrait, flat front view, no device frame, for 'hiVelzon', an English-learning app built around an animated mystery story set in a small coastal harbour town. Design system: 8px grid, generous whitespace, 12px rounded corners, soft subtle shadows, Inter-like sans-serif with max 3 weights, palette: deep sea blue primary (#1F4E79), lighthouse yellow accent (#F2B33D), warm sand neutrals (#F7F1E6 background, #2B2B2B text), evening orange for highlights. Story artwork inside the UI is warm animated-series graphic-novel illustration with clean ink lines and soft cel shading, mature, not childish. Calm, friendly, uncluttered; no ads, no hearts/lives, no timers, no leaderboards. Bottom navigation bar with 5 tabs labelled 'Ana Sayfa', 'Keşfet', 'Hikâye', 'Konuş', 'Profil'. Legible text only, minimal text, no real brand logos.
+
+### T5-defter
+- **Job:** `3af15d6c-cb2b-4033-a0f8-7866e6d734d8` · **Kredi:** 1 (tahmin 1) · **Referans:** yok
+- **Dosya:** `tasarim/T5-defter.png` (git dışı) · önizleme `tasarim/onizleme/T5-defter.jpg`
+- **Prompt:**
+
+> Notebook screen ('Profil' area, titled 'Defter'). Segmented control at top: 'İfadeler' (active) and 'İpucu panosu'. A review card in the centre: English phrase 'How much is it?' with a speaker icon, Turkish meaning 'Ne kadar?' revealed below, two large buttons 'Bilmedim' and 'Bildim'. Below, a list of collected phrases with small episode tags like 'B2', 'B3' and audio icons. High-fidelity mobile app UI mockup, single iPhone screen, portrait, flat front view, no device frame, for 'hiVelzon', an English-learning app built around an animated mystery story set in a small coastal harbour town. Design system: 8px grid, generous whitespace, 12px rounded corners, soft subtle shadows, Inter-like sans-serif with max 3 weights, palette: deep sea blue primary (#1F4E79), lighthouse yellow accent (#F2B33D), warm sand neutrals (#F7F1E6 background, #2B2B2B text), evening orange for highlights. Story artwork inside the UI is warm animated-series graphic-novel illustration with clean ink lines and soft cel shading, mature, not childish. Calm, friendly, uncluttered; no ads, no hearts/lives, no timers, no leaderboards. Bottom navigation bar with 5 tabs labelled 'Ana Sayfa', 'Keşfet', 'Hikâye', 'Konuş', 'Profil'. Legible text only, minimal text, no real brand logos.
+
+### T6-kesfet
+- **Job:** `959acf73-b805-4a00-9040-8e37b93a328c` · **Kredi:** 1 (tahmin 1) · **Referans:** `663ea0fe-3df5-4cea-ba8c-e08c80e48a96`, `6db4fa91-a3ff-4587-9b02-43a480ecb45a`
+- **Dosya:** `tasarim/T6-kesfet.png` (git dışı) · önizleme `tasarim/onizleme/T6-kesfet.jpg`
+- **Prompt:**
+
+> Short clip feed ('Keşfet' tab active), vertical full-bleed video frame: illustrated teenage girl and a young woman talking on a harbour pier at sunset. English subtitle with one highlighted word 'neighbour' and a tiny Turkish gloss 'komşu' under it. Right side vertical action buttons labelled 'Kaydet', 'Anlam', 'Tam hikâye'. Top shows 'Keşfet'. No like counts, no comments. High-fidelity mobile app UI mockup, single iPhone screen, portrait, flat front view, no device frame, for 'hiVelzon', an English-learning app built around an animated mystery story set in a small coastal harbour town. Design system: 8px grid, generous whitespace, 12px rounded corners, soft subtle shadows, Inter-like sans-serif with max 3 weights, palette: deep sea blue primary (#1F4E79), lighthouse yellow accent (#F2B33D), warm sand neutrals (#F7F1E6 background, #2B2B2B text), evening orange for highlights. Story artwork inside the UI is warm animated-series graphic-novel illustration with clean ink lines and soft cel shading, mature, not childish. Calm, friendly, uncluttered; no ads, no hearts/lives, no timers, no leaderboards. Bottom navigation bar with 5 tabs labelled 'Ana Sayfa', 'Keşfet', 'Hikâye', 'Konuş', 'Profil'. Legible text only, minimal text, no real brand logos.
