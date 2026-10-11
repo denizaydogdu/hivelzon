@@ -4,4 +4,6 @@
          to allow setting breakpoints, to provide hot reload, etc.
     -->
     <uses-permission android:name="android.permission.INTERNET"/>
+    <!-- H-031: yerel içerik sunucusu için düz HTTP (yalnızca debug). -->
+    <application android:networkSecurityConfig="@xml/network_security_config"/>
 </manifest>

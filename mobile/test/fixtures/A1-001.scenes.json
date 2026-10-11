@@ -1,0 +1,478 @@
+{
+  "schemaVersion": 1,
+  "episode": {
+    "id": "A1-001",
+    "slug": "a-strange-message",
+    "level": "A1",
+    "season": 1,
+    "number": 1,
+    "title": "A Strange Message",
+    "contentVersion": 1,
+    "status": "DRAFT",
+    "aiGenerated": true,
+    "aiLabel": "Yapay zekâ ile üretilmiştir",
+    "mission": {
+      "tr": "Mesajdaki kişiyi ve yeri bul."
+    },
+    "targetPhrases": [
+      "Can you hear me?",
+      "Yes, I can.",
+      "Again, please.",
+      "Where is…?",
+      "Listen."
+    ],
+    "prev": "A1-000",
+    "next": "A1-002",
+    "links": {
+      "previously": "Prolog: bavuldaki telsiz ve Türkçe not.",
+      "payoff": "Mesajdaki kişi (E.) ve yer (the old station) çözülür.",
+      "openQuestion": "Q1",
+      "answers": [],
+      "cluesUnlocked": [
+        "C1",
+        "C2"
+      ],
+      "callbackPhrases": [
+        "Hello.",
+        "My name is…"
+      ]
+    },
+    "estimatedMinutes": 6
+  },
+  "flags": [],
+  "gate": {
+    "rule": "all",
+    "comprehension": [
+      "t-gorev"
+    ],
+    "targetPhrase": [
+      "k1",
+      "k2"
+    ],
+    "activeTask": [
+      "t-kanit"
+    ]
+  },
+  "start": "s01",
+  "nodes": [
+    {
+      "id": "s01",
+      "type": "segment",
+      "scene": "Soğuk açılış",
+      "checkpoint": true,
+      "video": "segments/s01.mp4",
+      "duration": 3.8,
+      "subtitles": null,
+      "next": "c-title"
+    },
+    {
+      "id": "c-title",
+      "type": "card",
+      "kind": "title",
+      "lines": [
+        {
+          "text": "SEZON 1 · BÖLÜM 1",
+          "lang": "tr",
+          "style": "caption"
+        },
+        {
+          "text": "A Strange Message",
+          "lang": "en",
+          "style": "heading"
+        }
+      ],
+      "advance": "auto",
+      "duration": 2.5,
+      "background": "stills/I1-not.jpg",
+      "next": "c-mission"
+    },
+    {
+      "id": "c-mission",
+      "type": "card",
+      "kind": "mission",
+      "lines": [
+        {
+          "text": "Mesajdaki kişiyi ve yeri bul.",
+          "lang": "tr",
+          "style": "heading"
+        },
+        {
+          "text": "Can you hear me? · Yes, I can. · Again, please. · Where is…? · Listen.",
+          "lang": "en",
+          "style": "highlight"
+        }
+      ],
+      "advance": "tap",
+      "background": "stills/T1-oda.jpg",
+      "next": "s02"
+    },
+    {
+      "id": "s02",
+      "type": "segment",
+      "scene": "Sahne 1: Cuma akşamı",
+      "checkpoint": true,
+      "video": "segments/s02.mp4",
+      "duration": 13.167,
+      "subtitles": "subs/s02.en.json",
+      "next": "k1"
+    },
+    {
+      "id": "k1",
+      "type": "decision",
+      "prompt": {
+        "tr": "Alex ne desin?"
+      },
+      "cue": {
+        "speaker": "VOICE",
+        "text": "Hello? Hello? Can you hear me?"
+      },
+      "pov": "POV: telsize eğilme. Müzik kısılır.",
+      "skill": "spoken_interaction",
+      "cefr": "A1",
+      "targetPhrase": "Yes, I can.",
+      "background": "stills/T2-pov.jpg",
+      "options": [
+        {
+          "id": "a",
+          "text": "Yes, I can hear you.",
+          "correct": true,
+          "audio": "audio/A1-001_alex_k1_a.m4a",
+          "next": "k1-ok"
+        },
+        {
+          "id": "b",
+          "text": "Yes, I am.",
+          "correct": false,
+          "next": "r-k1-b"
+        }
+      ],
+      "hints": [
+        {
+          "level": 1,
+          "kind": "keyword",
+          "tr": "Soruda hangi fiil var? *can*"
+        },
+        {
+          "level": 2,
+          "kind": "pattern",
+          "tr": "Can you…? → Yes, I can."
+        },
+        {
+          "level": 3,
+          "kind": "explanation",
+          "tr": "Soru Can you…? ile başlıyorsa cevap \"Yes, I can.\" olur."
+        }
+      ]
+    },
+    {
+      "id": "r-k1-b",
+      "type": "reaction",
+      "video": "segments/r-k1-b.mp4",
+      "duration": 2.533,
+      "subtitles": "subs/r-k1-b.en.json",
+      "bubble": {
+        "speaker": "HI",
+        "lang": "tr",
+        "text": "Soru Can you…? ile başlıyorsa cevap \"Yes, I can.\" olur.",
+        "audio": "audio/A1-001_hi_01.m4a"
+      },
+      "next": "k1"
+    },
+    {
+      "id": "k1-ok",
+      "type": "segment",
+      "video": "segments/k1-ok.mp4",
+      "duration": 2.4,
+      "subtitles": "subs/k1-ok.en.json",
+      "next": "s03"
+    },
+    {
+      "id": "s03",
+      "type": "segment",
+      "video": "segments/s03.mp4",
+      "duration": 12.067,
+      "subtitles": "subs/s03.en.json",
+      "next": "h-02"
+    },
+    {
+      "id": "h-02",
+      "type": "card",
+      "kind": "hi",
+      "scene": "Sahne 2: Tekrar dinleme",
+      "checkpoint": true,
+      "lines": [
+        {
+          "speaker": "HI",
+          "text": "Sesi telefonuna kaydetmişsin. Tekrar dinlemek için İngilizce iste!",
+          "lang": "tr"
+        }
+      ],
+      "advance": "tap",
+      "audio": "audio/A1-001_hi_02.m4a",
+      "background": "stills/I2-telefon-hi.jpg",
+      "next": "k2"
+    },
+    {
+      "id": "k2",
+      "type": "decision",
+      "prompt": {
+        "tr": "Kaydı tekrar dinlemek için ne dersin?"
+      },
+      "skill": "spoken_interaction",
+      "cefr": "A1",
+      "targetPhrase": "Again, please.",
+      "background": "stills/I2-telefon-hi.jpg",
+      "options": [
+        {
+          "id": "a",
+          "text": "Again, please.",
+          "correct": true,
+          "audio": "audio/A1-001_alex_k2_a.m4a",
+          "next": "k2-ok"
+        },
+        {
+          "id": "b",
+          "text": "What?",
+          "correct": false,
+          "next": "r-k2-b"
+        }
+      ],
+      "hints": [
+        {
+          "level": 1,
+          "kind": "keyword",
+          "tr": "Anahtar sözcük: *again* (tekrar)"
+        },
+        {
+          "level": 2,
+          "kind": "pattern",
+          "tr": "… , please. (kibar istek)"
+        },
+        {
+          "level": 3,
+          "kind": "explanation",
+          "tr": "\"What?\" bazen sert duyulur. Böyle de söyleyebilirsin: \"Again, please.\""
+        }
+      ]
+    },
+    {
+      "id": "r-k2-b",
+      "type": "reaction",
+      "video": "segments/r-k2-b.mp4",
+      "duration": 1.933,
+      "subtitles": "subs/r-k2-b.en.json",
+      "bubble": {
+        "speaker": "HI",
+        "lang": "tr",
+        "text": "\"What?\" bazen sert duyulur. Böyle de söyleyebilirsin: \"Again, please.\"",
+        "audio": "audio/A1-001_hi_03.m4a"
+      },
+      "next": "k2"
+    },
+    {
+      "id": "k2-ok",
+      "type": "segment",
+      "video": "segments/k2-ok.mp4",
+      "duration": 2.333,
+      "subtitles": "subs/k2-ok.en.json",
+      "next": "s04"
+    },
+    {
+      "id": "s04",
+      "type": "segment",
+      "video": "segments/s04.mp4",
+      "duration": 7.767,
+      "subtitles": "subs/s04.en.json",
+      "next": "t-gorev"
+    },
+    {
+      "id": "t-gorev",
+      "type": "task",
+      "kind": "choice",
+      "role": "comprehension",
+      "scene": "Görev: Kişiyi ve yeri bul",
+      "skill": "listening",
+      "cefr": "A1",
+      "prompt": {
+        "tr": "Mesajı dinle. Kişiyi ve yeri seç."
+      },
+      "result": [
+        {
+          "text": "This is E.",
+          "lang": "en"
+        },
+        {
+          "text": "Meet me at the old station.",
+          "lang": "en"
+        }
+      ],
+      "audio": "audio/A1-001_voice_02_telsiz.m4a",
+      "background": "stills/I1-not.jpg",
+      "items": [
+        {
+          "id": "i1",
+          "stem": "This is ___.",
+          "options": [
+            {
+              "id": "a",
+              "text": "E",
+              "correct": true
+            },
+            {
+              "id": "b",
+              "text": "A",
+              "correct": false
+            },
+            {
+              "id": "c",
+              "text": "D",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "id": "i2",
+          "stem": "Meet me at the ___.",
+          "options": [
+            {
+              "id": "a",
+              "text": "old station",
+              "correct": true
+            },
+            {
+              "id": "b",
+              "text": "old school",
+              "correct": false
+            },
+            {
+              "id": "c",
+              "text": "bus stop",
+              "correct": false
+            }
+          ]
+        }
+      ],
+      "next": "s05"
+    },
+    {
+      "id": "s05",
+      "type": "segment",
+      "scene": "Sahne 3: Harita",
+      "checkpoint": true,
+      "video": "segments/s05.mp4",
+      "duration": 2.7,
+      "subtitles": "subs/s05.en.json",
+      "next": "t-kanit"
+    },
+    {
+      "id": "t-kanit",
+      "type": "task",
+      "kind": "order",
+      "role": "evidence",
+      "skill": "grammar",
+      "cefr": "A1",
+      "prompt": {
+        "tr": "Kelimeleri sırala: Alex ne soruyor?"
+      },
+      "background": "stills/I5-harita.jpg",
+      "items": [
+        {
+          "id": "i1",
+          "tokens": [
+            "is",
+            "the",
+            "Where",
+            "station",
+            "?",
+            "old"
+          ],
+          "answer": [
+            "Where",
+            "is",
+            "the",
+            "old",
+            "station",
+            "?"
+          ]
+        }
+      ],
+      "next": "h-04"
+    },
+    {
+      "id": "h-04",
+      "type": "card",
+      "kind": "hi",
+      "lines": [
+        {
+          "speaker": "HI",
+          "text": "Bu haritada yok. Belki bir komşuna sorabilirsin?",
+          "lang": "tr"
+        }
+      ],
+      "advance": "tap",
+      "audio": "audio/A1-001_hi_04.m4a",
+      "background": "stills/I5-harita.jpg",
+      "next": "s06"
+    },
+    {
+      "id": "s06",
+      "type": "segment",
+      "video": "segments/s06.mp4",
+      "duration": 3.5,
+      "subtitles": null,
+      "next": "c-clues"
+    },
+    {
+      "id": "c-clues",
+      "type": "card",
+      "kind": "clue",
+      "lines": [
+        {
+          "text": "İpucu panosu",
+          "lang": "tr",
+          "style": "heading"
+        },
+        {
+          "text": "C1 · Telsiz mesajı (ses + metin)",
+          "lang": "tr"
+        },
+        {
+          "text": "C2 · Not: E. / old station / Friday / 7",
+          "lang": "tr"
+        }
+      ],
+      "advance": "tap",
+      "clueIds": [
+        "C1",
+        "C2"
+      ],
+      "next": "c-oq"
+    },
+    {
+      "id": "c-oq",
+      "type": "card",
+      "kind": "openQuestion",
+      "lines": [
+        {
+          "text": "AÇIK SORU",
+          "lang": "tr",
+          "style": "caption"
+        },
+        {
+          "text": "Old Station nerede?",
+          "lang": "tr",
+          "style": "heading"
+        },
+        {
+          "text": "Bölüm 2: The New Neighbour",
+          "lang": "en",
+          "style": "caption"
+        }
+      ],
+      "advance": "tap",
+      "questionId": "Q1",
+      "background": "stills/I4-pencere.jpg",
+      "next": null
+    }
+  ]
+}

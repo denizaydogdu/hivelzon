@@ -3,6 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../features/discover/presentation/discover_screen.dart';
+import '../features/player/application/autoplay_driver.dart';
+import '../features/player/presentation/player_screen.dart';
 import '../features/home/presentation/home_screen.dart';
 import '../features/profile/presentation/profile_screen.dart';
 import '../features/story/presentation/story_screen.dart';
@@ -16,12 +18,23 @@ abstract final class AppRoutes {
   static const story = '/hikaye';
   static const talk = '/konus';
   static const profile = '/profil';
+
+  /// Bölüm oynatıcısı (sekme iskeletinin dışında, tam ekran).
+  static String play(String contentId) => '/play/$contentId';
 }
 
 final routerProvider = Provider<GoRouter>((ref) {
   final router = GoRouter(
-    initialLocation: AppRoutes.home,
+    initialLocation: autoplayEnabled ? AppRoutes.story : AppRoutes.home,
     routes: [
+      GoRoute(
+        path: '/play/:contentId',
+        pageBuilder: (context, state) => MaterialPage(
+          key: state.pageKey,
+          fullscreenDialog: true,
+          child: PlayerScreen(contentId: state.pathParameters['contentId']!),
+        ),
+      ),
       StatefulShellRoute.indexedStack(
         builder: (context, state, navigationShell) =>
             ShellScaffold(navigationShell: navigationShell),

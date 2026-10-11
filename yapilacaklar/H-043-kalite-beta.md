@@ -10,6 +10,8 @@
 - Çökme raporlama (veri minimizasyonuyla).
 - Simülatör ve yerel cihazda uçtan uca deneme. Mağaza ve TestFlight H-044'te.
 
+- **H-031'den taşındı (kullanıcı kararı 2026-10-11):** düşük uçlu Android'de oynatıcı bellek/ısı ölçümü ve gerçek telefonda ses–yazı farkı ≤ 0,2 sn kontrolü.
+
 ## Kabul kriterleri
 - Beta kontrol listesi tamam (mağaza maddeleri hariç).
 

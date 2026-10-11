@@ -1,0 +1,448 @@
+{
+  "schemaVersion": 1,
+  "episode": {
+    "id": "A1-002",
+    "slug": "the-new-neighbour",
+    "level": "A1",
+    "season": 1,
+    "number": 2,
+    "title": "The New Neighbour",
+    "contentVersion": 1,
+    "status": "DRAFT",
+    "aiGenerated": true,
+    "aiLabel": "Yapay zekâ ile üretilmiştir",
+    "mission": {
+      "tr": "Komşunla tanış ve Old Station hakkında 3 bilgi öğren."
+    },
+    "targetPhrases": [
+      "Nice to meet you.",
+      "This is my…",
+      "Excuse me, where is…?",
+      "Is it far?",
+      "Thank you."
+    ],
+    "prev": "A1-001",
+    "next": "A1-003",
+    "links": {
+      "previously": "B1: 'Meet me at the old station.'",
+      "payoff": "İstasyonun limanda olduğu ve kapalı olduğu öğrenilir.",
+      "openQuestion": "Q2",
+      "answers": [
+        "Q1:partial"
+      ],
+      "cluesUnlocked": [
+        "C3"
+      ],
+      "callbackPhrases": [
+        "Where is…?",
+        "Again, please."
+      ]
+    },
+    "estimatedMinutes": 7
+  },
+  "flags": [
+    {
+      "id": "greet_tone",
+      "values": [
+        "formal",
+        "friendly"
+      ],
+      "callbackIn": "A1-003"
+    }
+  ],
+  "gate": {
+    "rule": "all",
+    "comprehension": [
+      "t-gorev"
+    ],
+    "targetPhrase": [
+      "k1",
+      "k2"
+    ],
+    "activeTask": [
+      "t-kanit"
+    ]
+  },
+  "start": "s01",
+  "nodes": [
+    {
+      "id": "s01",
+      "type": "segment",
+      "scene": "Soğuk açılış",
+      "checkpoint": true,
+      "video": "segments/s01.mp4",
+      "duration": 5.2,
+      "subtitles": "subs/s01.en.json",
+      "next": "c-title"
+    },
+    {
+      "id": "c-title",
+      "type": "card",
+      "kind": "title",
+      "lines": [
+        {
+          "text": "SEZON 1 · BÖLÜM 2",
+          "lang": "tr",
+          "style": "caption"
+        },
+        {
+          "text": "The New Neighbour",
+          "lang": "en",
+          "style": "heading"
+        }
+      ],
+      "advance": "auto",
+      "duration": 2.5,
+      "background": "stills/B2-01-dukkan-dis.jpg",
+      "next": "c-mission"
+    },
+    {
+      "id": "c-mission",
+      "type": "card",
+      "kind": "mission",
+      "lines": [
+        {
+          "text": "Komşunla tanış ve Old Station hakkında 3 bilgi öğren.",
+          "lang": "tr",
+          "style": "heading"
+        },
+        {
+          "text": "Nice to meet you. · This is my… · Excuse me, where is…? · Is it far? · Thank you.",
+          "lang": "en",
+          "style": "highlight"
+        }
+      ],
+      "advance": "tap",
+      "background": "stills/B2-01-dukkan-dis.jpg",
+      "next": "s02"
+    },
+    {
+      "id": "s02",
+      "type": "segment",
+      "scene": "Sahne 1: Tide & Pages",
+      "checkpoint": true,
+      "video": "segments/s02.mp4",
+      "duration": 2.667,
+      "subtitles": "subs/s02.en.json",
+      "next": "k1"
+    },
+    {
+      "id": "k1",
+      "type": "decision",
+      "prompt": {
+        "tr": "Kendini tanıt. Nasıl söylersin?"
+      },
+      "cue": {
+        "speaker": "MAYA",
+        "text": "Good morning! Can I help you?"
+      },
+      "pov": "POV: Maya tezgâhta.",
+      "skill": "pragmatics",
+      "cefr": "A1",
+      "background": "stills/B2-03-maya-pov.jpg",
+      "options": [
+        {
+          "id": "a",
+          "text": "Nice to meet you. I'm Alex.",
+          "correct": true,
+          "setFlag": {
+            "flag": "greet_tone",
+            "value": "formal"
+          },
+          "audio": "audio/A1-002_b2_03_alex.m4a",
+          "next": "k1-a"
+        },
+        {
+          "id": "b",
+          "text": "Hi! I'm Alex.",
+          "correct": true,
+          "setFlag": {
+            "flag": "greet_tone",
+            "value": "friendly"
+          },
+          "audio": "audio/A1-002_b2_04_alex.m4a",
+          "next": "k1-b"
+        }
+      ],
+      "hints": [
+        {
+          "level": 1,
+          "kind": "keyword",
+          "tr": "Kendini tanıtırken: *I'm …*"
+        },
+        {
+          "level": 2,
+          "kind": "explanation",
+          "tr": "İki cevap da doğru: biri daha resmî, biri daha samimi."
+        }
+      ]
+    },
+    {
+      "id": "k1-a",
+      "type": "segment",
+      "video": "segments/k1-a.mp4",
+      "duration": 3.033,
+      "subtitles": "subs/k1-a.en.json",
+      "next": "s03"
+    },
+    {
+      "id": "k1-b",
+      "type": "segment",
+      "video": "segments/k1-b.mp4",
+      "duration": 2.533,
+      "subtitles": "subs/k1-b.en.json",
+      "next": "s03"
+    },
+    {
+      "id": "s03",
+      "type": "segment",
+      "video": "segments/s03.mp4",
+      "duration": 16.4,
+      "subtitles": "subs/s03.en.json",
+      "next": "s04"
+    },
+    {
+      "id": "s04",
+      "type": "segment",
+      "scene": "Sahne 2: Aile",
+      "checkpoint": true,
+      "video": "segments/s04.mp4",
+      "duration": 8.667,
+      "subtitles": "subs/s04.en.json",
+      "next": "k2"
+    },
+    {
+      "id": "k2",
+      "type": "decision",
+      "prompt": {
+        "tr": "Old Station'ı kibarca sor."
+      },
+      "skill": "spoken_interaction",
+      "cefr": "A1",
+      "targetPhrase": "Excuse me, where is…?",
+      "background": "stills/B2-05-maya-sasirma.jpg",
+      "options": [
+        {
+          "id": "a",
+          "text": "Excuse me, where is the old station?",
+          "correct": true,
+          "audio": "audio/A1-002_b2_14_alex.m4a",
+          "next": "k2-ok"
+        },
+        {
+          "id": "b",
+          "text": "Where station?",
+          "correct": false,
+          "next": "r-k2-b"
+        }
+      ],
+      "hints": [
+        {
+          "level": 1,
+          "kind": "keyword",
+          "tr": "Kibar başlangıç: *Excuse me*"
+        },
+        {
+          "level": 2,
+          "kind": "pattern",
+          "tr": "Excuse me, where is the …?"
+        },
+        {
+          "level": 3,
+          "kind": "explanation",
+          "tr": "Böyle de söyleyebilirsin: \"Excuse me, where is the old station?\" Excuse me kibar bir başlangıçtır."
+        }
+      ]
+    },
+    {
+      "id": "r-k2-b",
+      "type": "reaction",
+      "video": "segments/r-k2-b.mp4",
+      "duration": 4.933,
+      "subtitles": "subs/r-k2-b.en.json",
+      "bubble": {
+        "speaker": "HI",
+        "lang": "tr",
+        "text": "Böyle de söyleyebilirsin: \"Excuse me, where is the old station?\" Excuse me kibar bir başlangıçtır.",
+        "audio": "audio/A1-002_b2_17_hi.m4a"
+      },
+      "next": "k2"
+    },
+    {
+      "id": "k2-ok",
+      "type": "segment",
+      "video": "segments/k2-ok.mp4",
+      "duration": 14.833,
+      "subtitles": "subs/k2-ok.en.json",
+      "next": "t-gorev"
+    },
+    {
+      "id": "t-gorev",
+      "type": "task",
+      "kind": "multiSelect",
+      "role": "comprehension",
+      "scene": "Görev: 3 bilgi",
+      "skill": "listening",
+      "cefr": "A1",
+      "prompt": {
+        "tr": "Maya'nın cümlelerinden doğru üçünü seç."
+      },
+      "background": "stills/B2-01-dukkan-dis.jpg",
+      "items": [
+        {
+          "id": "i1",
+          "options": [
+            {
+              "id": "a",
+              "text": "It's near the harbour.",
+              "correct": true,
+              "audio": "audio/A1-002_b2_21_alex.m4a"
+            },
+            {
+              "id": "b",
+              "text": "It's closed.",
+              "correct": true,
+              "audio": "audio/A1-002_b2_22_alex.m4a"
+            },
+            {
+              "id": "c",
+              "text": "It's very old.",
+              "correct": true,
+              "audio": "audio/A1-002_b2_23_alex.m4a"
+            },
+            {
+              "id": "d",
+              "text": "It's in İzmir.",
+              "correct": false,
+              "audio": "audio/A1-002_b2_24_alex.m4a"
+            },
+            {
+              "id": "e",
+              "text": "It's a big shop.",
+              "correct": false,
+              "audio": "audio/A1-002_b2_25_alex.m4a"
+            }
+          ]
+        }
+      ],
+      "next": "s05"
+    },
+    {
+      "id": "s05",
+      "type": "segment",
+      "scene": "Sahne 3: Harita",
+      "checkpoint": true,
+      "video": "segments/s05.mp4",
+      "duration": 9.4,
+      "subtitles": "subs/s05.en.json",
+      "next": "t-kanit"
+    },
+    {
+      "id": "t-kanit",
+      "type": "task",
+      "kind": "fillBlank",
+      "role": "evidence",
+      "skill": "spoken_interaction",
+      "cefr": "A1",
+      "prompt": {
+        "tr": "Kafede biri seninle tanışıyor. Kendini tanıt."
+      },
+      "context": "Yeni bağlam: kafedeki bir müşteri",
+      "background": "stills/B2-07-oda-harita.jpg",
+      "items": [
+        {
+          "id": "i1",
+          "stem": "Hello! My name is ___. I'm from ___.",
+          "blanks": [
+            {
+              "id": "name",
+              "accept": "any"
+            },
+            {
+              "id": "from",
+              "accept": "any"
+            }
+          ]
+        }
+      ],
+      "next": "s06"
+    },
+    {
+      "id": "s06",
+      "type": "segment",
+      "video": "segments/s06.mp4",
+      "duration": 3.5,
+      "subtitles": null,
+      "next": "c-alex"
+    },
+    {
+      "id": "c-alex",
+      "type": "card",
+      "kind": "line",
+      "lines": [
+        {
+          "speaker": "ALEX",
+          "text": "Kapalıysa… neden orada buluşmak istiyor?",
+          "lang": "tr"
+        }
+      ],
+      "advance": "tap",
+      "background": "stills/B2-07-oda-harita.jpg",
+      "next": "c-clues"
+    },
+    {
+      "id": "c-clues",
+      "type": "card",
+      "kind": "clue",
+      "lines": [
+        {
+          "text": "İpucu panosu",
+          "lang": "tr",
+          "style": "heading"
+        },
+        {
+          "text": "C3 · Maya'nın haritası (liman bölgesi açıldı)",
+          "lang": "tr"
+        },
+        {
+          "text": "Q1 kısmen cevaplandı: limanda.",
+          "lang": "tr"
+        }
+      ],
+      "advance": "tap",
+      "clueIds": [
+        "C3"
+      ],
+      "answers": [
+        "Q1:partial"
+      ],
+      "next": "c-oq"
+    },
+    {
+      "id": "c-oq",
+      "type": "card",
+      "kind": "openQuestion",
+      "lines": [
+        {
+          "text": "AÇIK SORU",
+          "lang": "tr",
+          "style": "caption"
+        },
+        {
+          "text": "İstasyon kapalıysa, çağrı neden oraya çağırıyor?",
+          "lang": "tr",
+          "style": "heading"
+        },
+        {
+          "text": "Bölüm 3: Find the Station",
+          "lang": "en",
+          "style": "caption"
+        }
+      ],
+      "advance": "tap",
+      "questionId": "Q2",
+      "background": "stills/B2-07-oda-harita.jpg",
+      "next": null
+    }
+  ]
+}

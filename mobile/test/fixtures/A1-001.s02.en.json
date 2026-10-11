@@ -1,0 +1,98 @@
+{
+ "schemaVersion": 1,
+ "segment": "s02",
+ "lang": "en",
+ "duration": 13.167,
+ "cues": [
+  {
+   "id": "s02-01",
+   "tr": null,
+   "start": 0.59,
+   "end": 1.87,
+   "speaker": "ALEX",
+   "text": "OK. Friday.",
+   "words": [
+    {
+     "w": "OK.",
+     "start": 0.59,
+     "end": 1.3
+    },
+    {
+     "w": "Friday.",
+     "start": 1.357,
+     "end": 1.78
+    }
+   ]
+  },
+  {
+   "id": "s02-02",
+   "tr": null,
+   "start": 1.87,
+   "end": 3.37,
+   "speaker": "ALEX",
+   "text": "Channel seven.",
+   "words": [
+    {
+     "w": "Channel",
+     "start": 1.87,
+     "end": 2.5
+    },
+    {
+     "w": "seven.",
+     "start": 2.567,
+     "end": 3.22
+    }
+   ]
+  },
+  {
+   "id": "s02-03",
+   "tr": null,
+   "start": 8.747,
+   "end": 10.897,
+   "speaker": "VOICE",
+   "text": "Hello? Hello?",
+   "words": [
+    {
+     "w": "Hello?",
+     "start": 8.747,
+     "end": 9.147
+    },
+    {
+     "w": "Hello?",
+     "start": 9.4,
+     "end": 10.747
+    }
+   ]
+  },
+  {
+   "id": "s02-04",
+   "tr": null,
+   "start": 11.027,
+   "end": 12.737,
+   "speaker": "VOICE",
+   "text": "Can you hear me?",
+   "words": [
+    {
+     "w": "Can",
+     "start": 11.027,
+     "end": 11.867
+    },
+    {
+     "w": "you",
+     "start": 11.907,
+     "end": 12.027
+    },
+    {
+     "w": "hear",
+     "start": 12.075,
+     "end": 12.267
+    },
+    {
+     "w": "me?",
+     "start": 12.347,
+     "end": 12.587
+    }
+   ]
+  }
+ ]
+}
