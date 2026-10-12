@@ -1,6 +1,6 @@
 {
   "contentId": "A1-001",
-  "status": "DRAFT",
+  "status": "APPROVED",
   "author": "Claude taslak",
   "date": "2026-10-11",
   "lines": [
@@ -377,5 +377,6 @@
     "'Where is the old station?' Türkçede 'İstasyon nerede?' cümlesinde fiil yok; İngilizcede 'is' atlanmaz (B2'deki 'Where station?' hatasıyla bağlantılı).",
     "'What?' kaba olmasa da sert duyulabilir; kibar karşılık 'Again, please.' ya da 'Sorry?'.",
     "Görev seçeneklerindeki tek harfler (E / A / D) çevrilmedi; karar kartı seçenekleri (K1, K2) kullanıcı kararı gereği çevrilmedi."
-  ]
+  ],
+  "approvedBy": "kullanıcı (soru-cevap, 2026-10-12)"
 }

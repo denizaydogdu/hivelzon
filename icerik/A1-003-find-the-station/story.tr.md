@@ -1,6 +1,6 @@
 # A1-003: *Find the Station* (İstasyonu Bul) (S1 · B3) · Türkçe çeviri
 
-> **Durum:** TASLAK (Claude, 2026-10-11) — kullanıcı onayı bekliyor (H-046)
+> **Durum:** ONAYLI (kullanıcı, 2026-10-12; taslak Claude, 2026-10-11) (H-046)
 > **Kaynak:** `story.en.md` (taslak 0.1). Satır satır veri: `ceviri.tr.json`.
 > **Görev kartı:** Haritayı ve yol tarifini kullanarak Old Station'ı bul.
 > **Hedef ifadeler:** *Go straight.* (Düz git.) · *Turn left / right.* (Sola / sağa dön.) · *It's near…* (…-in yakınında.) · *It's between…* (…-in arasında.) · *It's behind…* (…-in arkasında.)

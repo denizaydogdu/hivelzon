@@ -8,9 +8,22 @@ import 'fixtures.dart';
 
 /// Fixture JSON'larından okuyan kaynak; medya adresleri sahte.
 class FakeContentSource implements ContentSource {
-  FakeContentSource({this.fail = false, this.seasonFails = false});
+  FakeContentSource({
+    this.fail = false,
+    this.seasonFails = false,
+    this.packageIds = const ['A1-001', 'A1-002'],
+    this.withCatalogue = true,
+    this.mapImage,
+  });
 
   bool fail;
+
+  /// Sunucuda paketi olan bölümler (fixture'lar: A1-001…A1-004).
+  List<String> packageIds;
+
+  /// Sezon paketinde 12 bölümlük harita kataloğu olsun mu (H-035).
+  bool withCatalogue;
+  String? mapImage;
 
   /// Sezon paketi yoksa Hikâye sekmesi sezon başlığını gizler.
   bool seasonFails;
@@ -21,7 +34,7 @@ class FakeContentSource implements ContentSource {
     listCalls++;
     if (fail) throw ContentUnavailableException('kapalı');
     return [
-      for (final id in ['A1-001', 'A1-002'])
+      for (final id in packageIds)
         PackageSummary(
           id: id,
           title: loadFixture(id).info.title,
@@ -56,6 +69,11 @@ class FakeContentSource implements ContentSource {
       introVideo: 'jenerik-tam.mp4',
       introDuration: 10.3,
       titleBackground: 'jenerik-baslik.mp4',
+      titlePoster: 'jenerik-baslik.jpg',
+      mapImage: mapImage,
+      mapWidth: mapImage == null ? null : 1520,
+      mapHeight: mapImage == null ? null : 2688,
+      episodes: withCatalogue ? catalogue(packageIds) : const [],
     );
   }
 
@@ -63,3 +81,31 @@ class FakeContentSource implements ContentSource {
   Uri seasonMediaUri(int season, String path) =>
       Uri.parse('http://test.invalid/_season/S$season/$path');
 }
+
+/// Sezon 1 kataloğu: 12 bölüm (başlıklar kanondan), paketi olanlar `available`.
+List<SeasonEpisode> catalogue(List<String> built) => [
+  for (final (i, t) in const [
+    'A Strange Message',
+    'The New Neighbour',
+    'Find the Station',
+    'The Note',
+    'Too Late?',
+    'The Recording',
+    'Who Knows What?',
+    'The First Reveal',
+    'The Café on the Hill',
+    'Spare Parts',
+    'Storm Warning',
+    'The Lighthouse',
+  ].indexed)
+    SeasonEpisode(
+      number: i + 1,
+      contentId: 'A1-${(i + 1).toString().padLeft(3, '0')}',
+      title: t,
+      teaserTr: 'İpucu ${i + 1}.',
+      teaserStatus: 'DRAFT',
+      available: built.contains('A1-${(i + 1).toString().padLeft(3, '0')}'),
+      mapX: 0.3 + 0.03 * i,
+      mapY: 0.9 - 0.07 * i,
+    ),
+];

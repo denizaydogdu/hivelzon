@@ -4,6 +4,7 @@
 Kullanım:
     python3 tools/content-pipeline/export_package.py icerik/A1-001-a-strange-message [icerik/A1-002-…]
     python3 tools/content-pipeline/export_package.py icerik/A1-00[1-4]-* --report rapor.json
+    python3 tools/content-pipeline/export_package.py --season 1          # yalnızca sezon paketi (H-035)
 
 Yalnızca yerel ffmpeg ve ImageMagick kullanır; ücretli servis çağrısı yapmaz. Var olmayan ses için
 düğüm yalnızca metin (Hi balonu) olarak kalır ve manifest'teki textOnly listesine yazılır.
@@ -29,7 +30,10 @@ AV_LIMIT = 0.05
 
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description="hiVelzon bölüm paketi dışa aktarma")
-    ap.add_argument("episodes", nargs="+")
+    ap.add_argument("episodes", nargs="*")
+    ap.add_argument("--season", type=int, help="yalnızca bu sezonun paketini üret (bölümlere dokunmaz)")
+    ap.add_argument("--root", default=str(Path(__file__).resolve().parents[2] / "icerik"),
+                    help="--season için içerik kökü")
     # Uygulama içi paketlerde etiket gömülmez; uygulama bölüm başında kısa bir not gösterir
     # (kullanıcı kararı 2026-10-12). Sosyal medya kesitleri için --ai-label ile gömülür (K-14).
     ap.add_argument("--ai-label", action="store_true", help="'Yapay zekâ ile üretilmiştir' yazısını videoya göm (sosyal medya)")
@@ -37,17 +41,14 @@ def main(argv: list[str] | None = None) -> int:
     a = ap.parse_args(argv)
     summary, failed = [], False
     # Sezon paketi (H-050): bölümlerin başlık ekranı ve sezon jeneriği /packages/_season/S<n>/ altında.
+    if not a.episodes and a.season is None:
+        ap.error("bölüm klasörü ya da --season gerekli")
     seasons = {}
+    if a.season is not None:
+        seasons[(Path(a.root).resolve(), a.season)] = True
     for d in a.episodes:
         c = json.loads((Path(d) / "content.json").read_text(encoding="utf-8"))
         seasons.setdefault((Path(d).resolve().parent, int(c.get("season", 1))), True)
-    for (root, n) in seasons:
-        sr = export_season(root, n, probe=media.probe_duration, digest=file_digest, poster=media.still)
-        sd = sr["doc"]
-        print(f"== Sezon {n} paketi → {sr['dir']}")
-        print("   " + ", ".join(f"{k} {sd[k]['video']} {sd[k].get('duration')} sn"
-                                for k in ("intro", "short", "titleBackground") if k in sd)
-              + f"; boyut {sd['totalBytes'] / 1e6:.1f} MB")
     for d in a.episodes:
         r = export_episode(Path(d), label=a.ai_label)
         m, doc = r["manifest"], r["doc"]
@@ -93,6 +94,18 @@ def main(argv: list[str] | None = None) -> int:
             print(f"   - {e}")
         for k, v in sub_errs.items():
             print(f"   - {k}: {v[:3]}")
+    # Sezon paketi bölümlerden sonra: harita kataloğundaki `available` yeni paketleri de görür (H-035).
+    for (root, n) in seasons:
+        sr = export_season(root, n, probe=media.probe_duration, digest=file_digest, poster=media.still)
+        sd = sr["doc"]
+        print(f"== Sezon {n} paketi → {sr['dir']}")
+        print("   " + ", ".join(f"{k} {sd[k]['video']} {sd[k].get('duration')} sn"
+                                for k in ("intro", "short", "titleBackground") if k in sd)
+              + f"; boyut {sd['totalBytes'] / 1e6:.1f} MB")
+        if "episodes" in sd:
+            avail = [e["number"] for e in sd["episodes"] if e["available"]]
+            print(f"   harita: {len(sd['episodes'])} bölüm, oynanabilir {avail}; "
+                  f"görsel {sd.get('map', {}).get('image', 'yok (kodla çizilir)')}")
     if a.report:
         Path(a.report).write_text(json.dumps(summary, ensure_ascii=False, indent=2, default=str), encoding="utf-8")
     return 1 if failed else 0

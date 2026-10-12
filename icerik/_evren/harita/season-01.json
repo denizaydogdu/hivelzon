@@ -1,0 +1,20 @@
+{
+  "season": 1,
+  "source": "H-035 sezon haritası kataloğu. Başlık content.json'dan, 'available' paket varlığından gelir (hvpipeline/season.py). mapPos: map.jpg üzerinde ölçülen normalize (x, y); 0,0 sol üst. teaserTr: spoiler'sız tek cümle, editör onayı bekliyor.",
+  "map": "map.jpg",
+  "teaserStatus": "APPROVED",
+  "episodes": [
+    {"number": 1, "contentId": "A1-001", "mapPos": [0.42, 0.772], "teaserTr": "Babaannenin eski telsizi bir cuma akşamı sessizliğini bozuyor."},
+    {"number": 2, "contentId": "A1-002", "mapPos": [0.24, 0.762], "teaserTr": "Yan kapıdaki dükkânda yeni biriyle tanış; belki yolu o biliyordur."},
+    {"number": 3, "contentId": "A1-003", "mapPos": [0.47, 0.539], "teaserTr": "Elinde bir harita, sokaklar yabancı: yolu sorarak bulacaksın."},
+    {"number": 4, "contentId": "A1-004", "mapPos": [0.60, 0.455], "teaserTr": "Eksik harfleri tamamla; bazı parçalar sandığından tanıdık."},
+    {"number": 5, "contentId": "A1-005", "mapPos": [0.51, 0.400], "teaserTr": "Doğru yerde olmak yetmez; doğru saatte de orada olmalısın."},
+    {"number": 6, "contentId": "A1-006", "mapPos": [0.44, 0.338], "teaserTr": "Küçük bir cihaz, birkaç kelime ve yeni bir yardımcı."},
+    {"number": 7, "contentId": "A1-007", "mapPos": [0.555, 0.298], "teaserTr": "Herkes bir şey hatırlıyor, ama aynı şeyi değil."},
+    {"number": 8, "contentId": "A1-008", "mapPos": [0.67, 0.255], "teaserTr": "Bir anten, bir cuma akşamı ve beklenmedik bir keşif."},
+    {"number": 9, "contentId": "A1-009", "mapPos": [0.61, 0.215], "teaserTr": "Tepedeki ışıklı pencerenin ardında eski bir hikâye var."},
+    {"number": 10, "contentId": "A1-010", "mapPos": [0.565, 0.124], "teaserTr": "Liste kısa, ama sayılar sandığından karışık."},
+    {"number": 11, "contentId": "A1-011", "mapPos": [0.466, 0.102], "teaserTr": "Hava bozuyor; hazırlıklı olmak her şeyden önemli."},
+    {"number": 12, "contentId": "A1-012", "mapPos": [0.445, 0.040], "teaserTr": "Fenerde bir gece. Sezonun büyük sorusu seni bekliyor."}
+  ]
+}

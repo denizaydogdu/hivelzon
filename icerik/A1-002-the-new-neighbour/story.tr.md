@@ -1,6 +1,6 @@
 # A1-002: *The New Neighbour* (Yeni Komşu) (S1 · B2) · Türkçe çeviri
 
-> **Durum:** TASLAK (Claude, 2026-10-11) — kullanıcı onayı bekliyor (H-046)
+> **Durum:** ONAYLI (kullanıcı, 2026-10-12; taslak Claude, 2026-10-11) (H-046)
 > **Kaynak:** `story.en.md` (taslak 0.1). Satır satır veri: `ceviri.tr.json`.
 > **Görev kartı:** Komşunla tanış ve Old Station hakkında **3 bilgi** öğren.
 > **Hedef ifadeler:** *Nice to meet you.* (Tanıştığımıza memnun oldum.) · *This is my…* (Bu benim…) · *Excuse me, where is…?* (Affedersiniz, … nerede?) · *Is it far?* (Uzak mı?) · *Thank you.* (Teşekkür ederim.)

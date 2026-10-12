@@ -178,3 +178,86 @@ def test_season_package_export(tmp_path):
     (src / "_build" / "jenerik-baslik.mp4").unlink()
     with pytest.raises(FileNotFoundError):
         export_season(tmp_path, 1)
+
+
+def _season_src(tmp_path):
+    src = tmp_path / "_evren" / "jenerik"
+    (src / "_build").mkdir(parents=True)
+    (src / "season.json").write_text(json.dumps({
+        "season": 1, "title": "The Missing Signal", "titleBackground": "jenerik-baslik.mp4"}), encoding="utf-8")
+    (src / "_build" / "jenerik-baslik.mp4").write_bytes(b"x" * 10)
+    return src
+
+
+def _tiny_jpeg(w, h):
+    # SOI + APP0 (boş) + SOF0 + EOI: boyut okuyucusu için yeterli.
+    app0 = b"\xff\xe0" + (4).to_bytes(2, "big") + b"\x00\x00"
+    sof = b"\xff\xc0" + (11).to_bytes(2, "big") + b"\x08" + h.to_bytes(2, "big") + w.to_bytes(2, "big") + b"\x01\x01\x11\x00"
+    return b"\xff\xd8" + app0 + sof + b"\xff\xd9"
+
+
+def test_season_catalogue_episodes_and_map(tmp_path):
+    """Harita kataloğu (H-035): başlık content.json'dan, available paketten, map.jpg kopyalanır."""
+    from hvpipeline.season import build_catalogue, export_season, jpeg_size
+    _season_src(tmp_path)
+    for n, slug, built in ((1, "a-strange-message", True), (2, "the-new-neighbour", False)):
+        d = tmp_path / f"A1-00{n}-{slug}"
+        d.mkdir()
+        (d / "content.json").write_text(json.dumps({"contentId": f"A1-00{n}", "title": slug.title()}), encoding="utf-8")
+        if built:
+            (d / "_build" / "package").mkdir(parents=True)
+            (d / "_build" / "package" / "scenes.json").write_text("{}", encoding="utf-8")
+    harita = tmp_path / "_evren" / "harita"
+    harita.mkdir(parents=True)
+    cat = {"season": 1, "map": "map.jpg", "teaserStatus": "DRAFT", "episodes": [
+        {"number": 2, "contentId": "A1-002", "mapPos": [0.2, 0.7], "teaserTr": "İkinci."},
+        {"number": 1, "contentId": "A1-001", "mapPos": [0.4, 0.8], "teaserTr": "Birinci."},
+        {"number": 3, "contentId": "A1-003", "mapPos": [0.5, 0.5], "teaserTr": "Üçüncü."}]}
+    (harita / "season-01.json").write_text(json.dumps(cat), encoding="utf-8")
+
+    # Görsel yok: episodes yazılır, map alanı yok.
+    doc = export_season(tmp_path, 1, poster=lambda s, o: o.write_bytes(b"j"))["doc"]
+    assert [e["number"] for e in doc["episodes"]] == [1, 2, 3]
+    e1, e2, e3 = doc["episodes"]
+    assert e1 == {"number": 1, "contentId": "A1-001", "title": "A-Strange-Message", "teaserTr": "Birinci.",
+                  "teaserStatus": "DRAFT", "available": True, "mapPos": [0.4, 0.8]}
+    assert e2["available"] is False and e3["title"] == "A1-003" and e3["available"] is False
+    assert "map" not in doc
+
+    # Görsel var: kopyalanır, boyutu yazılır, files listesine girer.
+    (harita / "map.jpg").write_bytes(_tiny_jpeg(1520, 2688))
+    assert jpeg_size(harita / "map.jpg") == (1520, 2688)
+    doc = export_season(tmp_path, 1, poster=lambda s, o: o.write_bytes(b"j"))["doc"]
+    assert doc["map"] == {"image": "map.jpg", "width": 1520, "height": 2688}
+    assert "map.jpg" in [f["path"] for f in doc["files"]]
+
+    # Görsel kaldırılınca paketteki eski kopya da silinir.
+    (harita / "map.jpg").unlink()
+    doc = export_season(tmp_path, 1, poster=lambda s, o: o.write_bytes(b"j"))["doc"]
+    assert "map" not in doc and "map.jpg" not in [f["path"] for f in doc["files"]]
+
+    # Hatalı kayıtlar reddedilir.
+    cat["episodes"][0]["mapPos"] = [1.2, 0.5]
+    (harita / "season-01.json").write_text(json.dumps(cat), encoding="utf-8")
+    with pytest.raises(ValueError):
+        build_catalogue(tmp_path, 1)
+    cat["episodes"][0]["mapPos"] = [0.2, 0.5]
+    cat["episodes"][0]["teaserTr"] = " "
+    (harita / "season-01.json").write_text(json.dumps(cat), encoding="utf-8")
+    with pytest.raises(ValueError):
+        build_catalogue(tmp_path, 1)
+    assert build_catalogue(tmp_path, 2) is None
+
+
+def test_real_season_catalogue_is_complete():
+    """Depodaki Sezon 1 kataloğu: 12 bölüm, sıralı, yol aşağıdan yukarı, ipuçları dolu."""
+    from pathlib import Path
+    from hvpipeline.season import build_catalogue
+    root = Path(__file__).resolve().parents[3] / "icerik"
+    cat = build_catalogue(root, 1)
+    eps = cat["episodes"]
+    assert [e["number"] for e in eps] == list(range(1, 13))
+    assert [e["contentId"] for e in eps] == [f"A1-{n:03d}" for n in range(1, 13)]
+    assert all(e["title"] != e["contentId"] for e in eps)
+    assert eps[0]["mapPos"][1] > eps[-1]["mapPos"][1]   # liman altta, fener üstte
+    assert all(len(e["teaserTr"]) <= 90 for e in eps)

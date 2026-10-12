@@ -18,6 +18,19 @@ import 'transition_metrics.dart';
 
 enum PlayerPhase { loading, resumePrompt, playing, finished, error }
 
+/// Haritadan açılış (H-035): kaydı varsa sor, kaldığı yerden devam et ya da baştan başla.
+enum PlayerStartMode {
+  ask,
+  resume,
+  restart;
+
+  static PlayerStartMode parse(String? v) => switch (v) {
+    'resume' => PlayerStartMode.resume,
+    'restart' => PlayerStartMode.restart,
+    _ => PlayerStartMode.ask,
+  };
+}
+
 /// Altyazı: yalnızca İngilizce, İngilizce + küçük Türkçe satır (K-03), kapalı.
 enum SubtitleMode { en, enTr, off }
 
@@ -169,7 +182,7 @@ class PlayerSession extends ChangeNotifier {
 
   // ------------------------------------------------------------ başlangıç
 
-  Future<void> start() async {
+  Future<void> start({PlayerStartMode mode = PlayerStartMode.ask}) async {
     _setPhase(PlayerPhase.loading);
     try {
       final ep = await _source.loadEpisode(contentId);
@@ -192,7 +205,14 @@ class PlayerSession extends ChangeNotifier {
           snap.checkpointNodeId != ep.start &&
           ep.nodes[snap.checkpointNodeId]?.checkpoint == true) {
         _savedSnapshot = snap;
-        _setPhase(PlayerPhase.resumePrompt);
+        switch (mode) {
+          case PlayerStartMode.ask:
+            _setPhase(PlayerPhase.resumePrompt);
+          case PlayerStartMode.resume:
+            resume(fromCheckpoint: true);
+          case PlayerStartMode.restart:
+            resume(fromCheckpoint: false);
+        }
       } else {
         _begin(null);
       }
@@ -774,6 +794,7 @@ class PlayerSession extends ChangeNotifier {
     _active?.removeListener(_onActiveTick);
     await audio.stop();
     await _progress.saveEpisodeFlags(e.episode.info.id, e.flags);
+    await _progress.markCompleted(contentId, gate: e.gatePassedNodes);
     await _progress.clearCheckpoint(contentId);
     _setPhase(PlayerPhase.finished);
     _log('bölüm bitti; kapı=${e.gateStatus.open}');

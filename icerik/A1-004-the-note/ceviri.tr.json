@@ -1,6 +1,6 @@
 {
   "contentId": "A1-004",
-  "status": "DRAFT",
+  "status": "APPROVED",
   "author": "Claude taslak",
   "date": "2026-10-11",
   "lines": [
@@ -761,5 +761,6 @@
     "'Art: Friday, 2:00.' öğleden sonra 2 olarak (14.00) çevrildi; okul programı bağlamında 02.00 olamaz.",
     "t-kanit sorusu kullanıcı kararıyla (H-046) 'I have Art on Friday. What time?' olarak düzeltildi; anlamı 'Saat kaçta?'. Ses yeniden üretildi (b4_30_maya).",
     "Karar ve kanıt seçenekleri (ör. 'At two o'clock.' / 'In two o'clock.') kullanıcı kararı gereği çevrilmedi; 'Friday.', 'Free.', 'Fried.' Alex'in seslendirilmiş tepki altyazıları olduğu için dahil edildi."
-  ]
+  ],
+  "approvedBy": "kullanıcı (soru-cevap, 2026-10-12)"
 }

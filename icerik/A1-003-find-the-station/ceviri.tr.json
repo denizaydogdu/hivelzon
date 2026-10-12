@@ -1,6 +1,6 @@
 {
   "contentId": "A1-003",
-  "status": "DRAFT",
+  "status": "APPROVED",
   "author": "Claude taslak",
   "date": "2026-10-11",
   "lines": [
@@ -529,5 +529,6 @@
     "'left' = sol, 'right' = sağ; 'right' ayrıca 'doğru' anlamına gelir, bu bölümde yalnızca yön anlamı var.",
     "Maya'nın mesaj kartının iki değişkeni (greet_tone friendly / formal) ayrı satır olarak çevrildi.",
     "K2 ve K3 karar seçenekleri zaten Türkçe ya da ok simgesi; çevrilecek İngilizce seçenek yok."
-  ]
+  ],
+  "approvedBy": "kullanıcı (soru-cevap, 2026-10-12)"
 }

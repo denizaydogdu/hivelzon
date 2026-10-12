@@ -9,6 +9,12 @@ Geliştirme sunucusu bu klasörü /packages/_season/S<n>/ adresinde sunar.
 - jenerik-baslik.jpg: başlık arka planının ilk karesi; video ilk karesi gelene dek başlık ekranında görünür
   (bölüm açılışında boş/siyah kare olmaz).
 - jenerik-kisa.mp4: yazılı 2 sn kısa sürüm (bilgi için; bölüm başında kullanılmaz).
+
+Sezon haritası (H-035): `_evren/harita/season-<nn>.json` kataloğu varsa season.json'a `episodes`
+(12 bölüm: number, contentId, title, teaserTr, teaserStatus, available, mapPos) eklenir. Başlık
+bölümün content.json'ından, `available` paketin (`<bölüm>/_build/package/scenes.json`) varlığından
+gelir. `_evren/harita/map.jpg` varsa pakete kopyalanır ve `map` alanı (image, width, height) yazılır;
+yoksa uygulama haritayı kodla çizer.
 """
 
 from __future__ import annotations
@@ -21,6 +27,7 @@ from pathlib import Path
 SEASON_SOURCE = Path("_evren") / "jenerik" / "season.json"
 SEASON_BUILD = Path("_evren") / "_build" / "season"
 SEASON_PACKAGE_PREFIX = "_season"
+MAP_DIR = Path("_evren") / "harita"
 
 
 @dataclass
@@ -58,6 +65,67 @@ def title_caption(season: int, number: int) -> str:
     return f"SEZON {season} · BÖLÜM {number}"
 
 
+def catalogue_path(icerik_root: Path, season: int) -> Path:
+    return Path(icerik_root) / MAP_DIR / f"season-{season:02d}.json"
+
+
+def jpeg_size(path: Path) -> tuple[int, int]:
+    """JPEG genişlik ve yüksekliği (SOF işaretinden; dış araç gerekmez)."""
+    data = Path(path).read_bytes()
+    if data[:2] != b"\xff\xd8":
+        raise ValueError(f"{path} JPEG değil")
+    i = 2
+    while i + 9 < len(data):
+        if data[i] != 0xFF:
+            i += 1
+            continue
+        marker = data[i + 1]
+        if marker in (0xD8, 0x01) or 0xD0 <= marker <= 0xD7 or marker == 0xFF:
+            i += 1 if marker == 0xFF else 2
+            continue
+        length = int.from_bytes(data[i + 2:i + 4], "big")
+        if 0xC0 <= marker <= 0xCF and marker not in (0xC4, 0xC8, 0xCC):
+            h = int.from_bytes(data[i + 5:i + 7], "big")
+            w = int.from_bytes(data[i + 7:i + 9], "big")
+            return w, h
+        i += 2 + length
+    raise ValueError(f"{path}: boyut bulunamadı")
+
+
+def build_catalogue(icerik_root: Path, season: int) -> dict | None:
+    """Harita kataloğu: kaynak yoksa None. Hatalı kayıtlar ValueError verir."""
+    root = Path(icerik_root)
+    p = catalogue_path(root, season)
+    if not p.exists():
+        return None
+    d = json.loads(p.read_text(encoding="utf-8"))
+    status = d.get("teaserStatus", "DRAFT")
+    episodes, seen = [], set()
+    for e in d.get("episodes", []):
+        n, cid = int(e["number"]), e["contentId"]
+        if n in seen:
+            raise ValueError(f"{p}: bölüm {n} iki kez")
+        seen.add(n)
+        x, y = (float(v) for v in e["mapPos"])
+        if not (0 <= x <= 1 and 0 <= y <= 1):
+            raise ValueError(f"{p}: bölüm {n} mapPos 0–1 dışında")
+        teaser = (e.get("teaserTr") or "").strip()
+        if not teaser:
+            raise ValueError(f"{p}: bölüm {n} teaserTr boş")
+        dirs = sorted(q for q in root.glob(f"{cid}-*") if (q / "content.json").exists())
+        title = cid
+        available = False
+        if dirs:
+            c = json.loads((dirs[0] / "content.json").read_text(encoding="utf-8"))
+            title = c.get("title", cid)
+            available = (dirs[0] / "_build" / "package" / "scenes.json").exists()
+        episodes.append({"number": n, "contentId": cid, "title": title, "teaserTr": teaser,
+                         "teaserStatus": e.get("teaserStatus", status), "available": available,
+                         "mapPos": [round(x, 4), round(y, 4)]})
+    episodes.sort(key=lambda e: e["number"])
+    return {"episodes": episodes, "map": d.get("map")}
+
+
 def export_season(icerik_root: Path, season: int, probe=None, digest=None, poster=None) -> dict:
     """Sezon paketini kopyalar ve season.json yazar. Video yoksa hata verir (kurgu.py çalıştırılmalı)."""
     src = SeasonSource.load(icerik_root, season)
@@ -89,6 +157,19 @@ def export_season(icerik_root: Path, season: int, probe=None, digest=None, poste
         entries[key] = e
     doc = {"schemaVersion": 1, "season": season, "title": src.title, "level": src.level,
            "aiLabel": "Yapay zekâ ile üretilmiştir", **entries}
+    cat = build_catalogue(icerik_root, season)
+    if cat is not None:
+        doc["episodes"] = cat["episodes"]
+        name = cat.get("map")
+        art = Path(icerik_root) / MAP_DIR / name if name else None
+        if art is not None and art.exists():
+            tmp = out / f".{name}.tmp"
+            shutil.copyfile(art, tmp)
+            tmp.replace(out / name)
+            w, h = jpeg_size(out / name)
+            doc["map"] = {"image": name, "width": w, "height": h}
+        elif name:
+            (out / name).unlink(missing_ok=True)   # eski kopya kalmasın: uygulama kodla çizer
     files = sorted(p for p in out.iterdir() if p.is_file() and p.suffix in (".mp4", ".jpg")
                    and not p.name.startswith("."))
     doc["files"] = [{"path": p.name, "bytes": p.stat().st_size,

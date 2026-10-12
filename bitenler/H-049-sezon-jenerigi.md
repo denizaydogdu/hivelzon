@@ -1,6 +1,6 @@
 # H-049: Sezon 1 jeneriği (bir kez üretilir)
 
-- **Durum:** Devam ediyor (maliyet onayı bekliyor)
+- **Durum:** Bittinayı bekliyor)
 - **Tür:** İçerik üretimi (kredi harcar)
 - **Bağımlılık:** —
 - **Senaryo ve prompt'lar:** `icerik/_evren/jenerik/PROMPTS.md`
@@ -18,3 +18,4 @@
 ## Notlar
 2026-10-12: Kullanıcı önerisi: "Her konu başında animasyonlu bir video ile başlasak?" Kararlar (soru-cevap): hem bölüm başı hem konu başı; 4 katmanlı açılış; jenerik bir kez üretilir; önce senaryo ve kareler gösterilir.
 2026-10-12: Kareler (1 kr), klip (5 kr) ve müzik (Seed Audio başarısız, kredi düşülmedi; Sonilo 0,69 kr) üretildi. Toplam 6,69 kr; kalan 85,56. Kullanıcı "aksiyon yok, düz fotoğraf" dedi: telsiz bölümüne ve son kareye yavaş yaklaşma eklendi, freezedetect ile 0 durağan bölüm. -16,0 LUFS. Kullanıcı kararı: AI etiketi uygulama içi videolara gömülmez (sosyal sürüm `--etiket` ile). Kullanıcının son izlemesi ve onayı bekleniyor.
+2026-10-12: Kullanıcı onayladı (soru-cevap: "İkisini de onaylıyorum").

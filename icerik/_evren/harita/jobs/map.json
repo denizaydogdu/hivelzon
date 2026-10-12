@@ -1,0 +1,23 @@
+[
+  {
+    "created_at": "2026-10-12T08:10:58.921731Z",
+    "display_name": "GPT Image 2.5",
+    "id": "9fae25f1-ffef-4ba1-99e2-143a40aa11a6",
+    "job_type": "gpt_image_2_5",
+    "min_result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261012_081058_9fae25f1-ffef-4ba1-99e2-143a40aa11a6_min.webp",
+    "params": {
+      "aspect_ratio": "9:16",
+      "height": 2688,
+      "medias": [],
+      "model": "flare",
+      "prompt": "Illustrated vertical adventure map of a small coastal harbour town for a mobile story game, seen from a high three-quarter bird's-eye view, golden-hour light. At the bottom: a harbour with fishing boats, stone piers (one long pier at the right), a quay street with small shops including a cosy book-and-tea shop with an awning, and a bus stop. In the middle: winding cobbled streets, a crossroads, a quiet dead-end alley with a cat, and an old abandoned harbour radio station building with a tall rusty antenna. Higher up: a green hill with a small café on top with big windows. At the very top: a rocky point with a white lighthouse. One clear continuous winding footpath (light sand colour, easy to follow) runs from the harbour at the bottom, through the streets, past the old station and the café, up to the lighthouse at the top; leave small open spaces along the path where game markers can be placed. Sea on the left side, hills on the right. Clean, readable, uncluttered, no people in focus, no characters. Warm animated-series illustration, graphic-novel style, clean ink lines, soft cel shading, coastal palette of sea blue, sand, lighthouse yellow and evening orange, mature tone suitable for teens and adults, not childish, no text, no letters, no numbers, no logos.",
+      "quality": "medium",
+      "reference_elements": [],
+      "remove_bg": false,
+      "resolution": "2k",
+      "width": 1520
+    },
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261012_081058_9fae25f1-ffef-4ba1-99e2-143a40aa11a6.png",
+    "status": "completed"
+  }
+]

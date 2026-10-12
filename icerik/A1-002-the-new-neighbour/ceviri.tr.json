@@ -1,6 +1,6 @@
 {
   "contentId": "A1-002",
-  "status": "DRAFT",
+  "status": "APPROVED",
   "author": "Claude taslak",
   "date": "2026-10-11",
   "lines": [
@@ -741,5 +741,6 @@
     "'No people.' Maya'nın A1'e sadeleştirilmiş cümlesi; doğal İngilizcede 'Nobody is there.' olurdu. Türkçesi 'Kimse yok.'",
     "'neighbour', 'harbour': İngiliz yazımı (Amerikan: neighbor, harbor).",
     "t-kanit boşluk metni 'I'm from ___.' Türkçede '___'denim' ek uyumu kişiye göre değişir (…'dan / …'den)."
-  ]
+  ],
+  "approvedBy": "kullanıcı (soru-cevap, 2026-10-12)"
 }

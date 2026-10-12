@@ -1,10 +1,14 @@
+import 'package:drift/drift.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+
+import '../../../shared/storage/app_database.dart';
+import '../../../shared/storage/storage_providers.dart';
 
 /// Sezon jeneriğinin (tam sürüm) izlenip izlenmediği (H-050).
 ///
 /// Tam jenerik sezonun ilk açılışında bir kez kendiliğinden oynar; sonra
-/// yalnızca "Jeneriği izle" ile açılır. Bilgi cihazda tutulur.
+/// yalnızca "Jeneriği izle" ile açılır. Bilgi cihazda tutulur
+/// (`season_state`, H-035; eski `shared_preferences` kaydı bir kez taşınır).
 abstract interface class SeasonIntroRepository {
   Future<bool> seen(int season);
 
@@ -14,23 +18,43 @@ abstract interface class SeasonIntroRepository {
   Future<void> forget(int season);
 }
 
-class SharedPrefsSeasonIntroRepository implements SeasonIntroRepository {
-  SharedPrefsSeasonIntroRepository({SharedPreferencesAsync? prefs})
-    : _prefs = prefs ?? SharedPreferencesAsync();
+class DriftSeasonIntroRepository implements SeasonIntroRepository {
+  DriftSeasonIntroRepository(this._db, {Future<void>? ready})
+    : _ready = ready ?? Future<void>.value();
 
-  final SharedPreferencesAsync _prefs;
-
-  static String _key(int season) => 'story.seasonIntroSeen.$season';
-
-  @override
-  Future<bool> seen(int season) async =>
-      await _prefs.getBool(_key(season)) ?? false;
+  final AppDatabase _db;
+  final Future<void> _ready;
 
   @override
-  Future<void> markSeen(int season) => _prefs.setBool(_key(season), true);
+  Future<bool> seen(int season) async {
+    await _ready;
+    final row = await (_db.select(
+      _db.seasonState,
+    )..where((t) => t.seasonId.equals(season))).getSingleOrNull();
+    return row?.introSeen ?? false;
+  }
 
   @override
-  Future<void> forget(int season) => _prefs.remove(_key(season));
+  Future<void> markSeen(int season) async {
+    await _ready;
+    await _db
+        .into(_db.seasonState)
+        .insertOnConflictUpdate(
+          SeasonStateCompanion.insert(
+            seasonId: Value(season),
+            introSeen: const Value(true),
+            introSeenAt: Value(DateTime.now().toUtc()),
+          ),
+        );
+  }
+
+  @override
+  Future<void> forget(int season) async {
+    await _ready;
+    await (_db.delete(
+      _db.seasonState,
+    )..where((t) => t.seasonId.equals(season))).go();
+  }
 }
 
 /// Testler için bellek içi uygulama.
@@ -48,5 +72,8 @@ class InMemorySeasonIntroRepository implements SeasonIntroRepository {
 }
 
 final seasonIntroRepositoryProvider = Provider<SeasonIntroRepository>(
-  (ref) => SharedPrefsSeasonIntroRepository(),
+  (ref) => DriftSeasonIntroRepository(
+    ref.watch(appDatabaseProvider),
+    ready: ref.watch(legacyImportProvider),
+  ),
 );

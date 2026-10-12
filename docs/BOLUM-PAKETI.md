@@ -109,6 +109,37 @@ Yanlışta `feedback.wrong` gösterilir ve aynı öğe tekrar denenir. Süre sı
 - "Yapay zekâ ile üretilmiştir" notu başlık ekranında sol üstte 4 sn görünür; başlık yazısıyla çakışmaz.
 - Hi'nin konu tanıtımı (yeni dilbilgisi konusu ilk geçtiğinde) bu sürümde yok; H-048'e taşındı.
 
+### 2.7 Sezon paketi ve harita kataloğu (H-050, H-035)
+
+Sezon paketi `icerik/_evren/_build/season/S<n>/` altında üretilir (git dışı), geliştirme sunucusu `/packages/_season/S<n>/` adresinde sunar.
+
+| Dosya / alan | Kaynak | Açıklama |
+|---|---|---|
+| `jenerik-tam.mp4`, `jenerik-kisa.mp4`, `jenerik-baslik.mp4` + `.jpg` | `_evren/jenerik/` (H-049/H-050) | Sezon jeneriği ve bölüm başlık arka planı |
+| `map.jpg` | `_evren/harita/map.jpg` (git dışı; üretim kaydı `_evren/harita/PROMPTS.md`) | Hikâye haritasının arka planı. **Yoksa** uygulama haritayı kodla çizer. Numara ve düğümler görselde değil, uygulamada çizilir. |
+| `season.json` → `map` | | `image`, `width`, `height` (piksel). Uygulama haritayı bu en-boy oranıyla çizer, gerekirse dikey kaydırır. |
+| `season.json` → `episodes[]` | `_evren/harita/season-<nn>.json` (depoda) | Sezonun bütün bölüm yerleri (S1: 12). Alanlar aşağıda. |
+
+`episodes[]` alanları:
+
+| Alan | Kaynak | Açıklama |
+|---|---|---|
+| `number` | katalog | Bölüm numarası (1–12) |
+| `contentId` | katalog | `A1-001` … |
+| `title` | bölümün `content.json`'ı | Klasör yoksa `contentId` |
+| `teaserTr` | katalog | Spoiler'sız tek cümle (kilitli ve yakında olan bölümde de gösterilir). Açık soruların cevabını ve bölüm sonunu **vermez**. |
+| `teaserStatus` | katalog | `DRAFT` → editör onayından sonra `APPROVED` |
+| `available` | paket | `<bölüm>/_build/package/scenes.json` varsa `true`. Uygulama ayrıca canlı `index.json` listesine bakar; ikisinden biri yoksa bölüm "Yakında" görünür. |
+| `mapPos` | katalog | `[x, y]`, 0–1 arası, sol üst köşe `0,0`. `map.jpg` üzerinde ölçülür; düğümler yol üstündeki açık noktalara gelir (liman altta → fener üstte). |
+
+Yalnızca sezon paketini yeniden üretmek (bölüm medyasına dokunmaz):
+
+```bash
+python3 tools/content-pipeline/export_package.py --season 1
+```
+
+**Kilit kuralı (uygulama, K-26/K-29):** Bölüm N oynanabilir ⇔ `available` **ve** (N = 1 **ya da** Bölüm N−1'in kapısı tamam **ya da** bölüm daha önce başlatılmış/bitirilmiş). Paket yoksa "Yakında" (tarih ve geri sayım yok). Tekrar oynama her zaman serbesttir; zaman kilidi yoktur.
+
 ## 3. Altyazı JSON (`subs/<düğüm>.en.json`)
 
 ```json
@@ -188,7 +219,7 @@ python3 tools/content-pipeline/export_package.py icerik/A1-00[1-4]-*   # paket (
 - `export_package.py` ara dosyaları `_build/cache/` altında saklar. Aynı girdiyle tekrar çalıştırma yalnızca değişen çekimleri yeniden üretir.
 - Önbellek dosyaları önce geçici adla yazılır.
 - Çıktıda her segment ve özet için senkron ölçümü yapılır: ilk ipucu ile gerçek ses başlangıcı arasındaki fark ≤ 0,2 sn olmalı.
-- Sezon paketi de aynı komutla üretilir (bölümlerin sezonları için).
+- Sezon paketi de aynı komutla üretilir (bölümlerin sezonları için). Yalnızca sezon paketi: `--season 1` (§2.7).
 
 ### content-lint kuralları
 

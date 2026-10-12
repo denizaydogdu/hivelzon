@@ -8,6 +8,7 @@
 // - H-050: bölüm her zaman başlık ekranıyla açılır; kaldığı yerden devamda da
 //   önce başlık gelir, sonra kontrol noktasına geçilir (özet atlanır).
 
+import '../../../shared/progress/story_progress.dart';
 import 'episode.dart';
 
 /// Kaydedilip geri yüklenebilen motor durumu.
@@ -140,6 +141,18 @@ class EpisodeEngine {
       targetPhrase: any(g.targetPhrase),
       activeTask: any(g.activeTask),
     );
+  }
+
+  /// Kapı ölçütlerini karşılayan düğümler (yerel kayıt, H-035). Boş küme:
+  /// ölçüt henüz karşılanmadı.
+  Map<GateItem, Set<String>> get gatePassedNodes {
+    final g = episode.gate;
+    Set<String> passed(List<String> ids) => {...ids.where(_passed.contains)};
+    return {
+      GateItem.comprehension: passed(g.comprehension),
+      GateItem.targetPhrase: passed(g.targetPhrase),
+      GateItem.activeTask: passed(g.activeTask),
+    };
   }
 
   /// Bayrak değeri. [fromEpisode] verilir ve bu bölüm değilse dış bayrağa bakılır.

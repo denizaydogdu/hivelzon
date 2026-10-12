@@ -34,9 +34,16 @@ final videoControllerFactoryProvider = Provider<VideoControllerFactory?>(
 
 /// Etkileşimli bölüm oynatıcısı (H-031). Tam ekran; alt sekme çubuğu yok.
 class PlayerScreen extends ConsumerStatefulWidget {
-  const PlayerScreen({super.key, required this.contentId});
+  const PlayerScreen({
+    super.key,
+    required this.contentId,
+    this.startMode = PlayerStartMode.ask,
+  });
 
   final String contentId;
+
+  /// Haritadaki "Devam et" / "Tekrar oyna" (H-035); varsayılan: kayıt varsa sor.
+  final PlayerStartMode startMode;
 
   @override
   ConsumerState<PlayerScreen> createState() => _PlayerScreenState();
@@ -67,7 +74,7 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen>
     if (autoplayEnabled) {
       _driver = AutoplayDriver(_session, onExit: _exit);
     }
-    unawaited(_session.start());
+    unawaited(_session.start(mode: widget.startMode));
   }
 
   @override

@@ -6,7 +6,7 @@ Bu dosya tek takip noktasıdır. Hangi işin hangi sırada yapıldığını, şu
 
 ## Nerede kaldık
 - **Şu an:** Planlama, Faz 0. Kod yok.
-- **Şimdi yapılan (ara verildi 2026-10-11 gece):** `h-046-altyazi-anlam` dalında H-046 kodu bitti ve testli (flutter 63/63, pytest 53/53), **commit edilmedi**. Kaldığımız yer: (1) kullanıcı simülatörde çevirilere bakıp onay/düzeltme verecek; (2) panelde "Deftere ekle" kelimeye dokununca ekran altına düşüyor, düzeltilecek; (3) onaydan sonra `ceviri.tr.json` durumları APPROVED, tek commit: H-046 + H-047/H-048 belgeleri (CLAUDE.md, HI-ASISTAN-VE-KOC.md, UYGULAMA-PLANI.md). Sonra sırada H-035 (harita). Yerel içerik sunucusu: `python3 tools/dev-content-server/serve.py` (127.0.0.1:8787).
+- **Önceki not (2026-10-11 gece, kapandı):** `h-046-altyazi-anlam` dalında H-046 kodu bitti ve testli (flutter 63/63, pytest 53/53), **commit edilmedi**. Kaldığımız yer: (1) kullanıcı simülatörde çevirilere bakıp onay/düzeltme verecek; (2) panelde "Deftere ekle" kelimeye dokununca ekran altına düşüyor, düzeltilecek; (3) onaydan sonra `ceviri.tr.json` durumları APPROVED, tek commit: H-046 + H-047/H-048 belgeleri (CLAUDE.md, HI-ASISTAN-VE-KOC.md, UYGULAMA-PLANI.md). Sonra sırada H-035 (harita). Yerel içerik sunucusu: `python3 tools/dev-content-server/serve.py` (127.0.0.1:8787).
 - **Sıradaki adım:**
   1. Kullanıcı 1. adımda kalan kararları verir. En kritikleri:
      - H-001 ve H-007: konuşma pratiği MVP'de mi, faz yapısı ne olacak?
@@ -79,13 +79,7 @@ Bu dosya tek takip noktasıdır. Hangi işin hangi sırada yapıldığını, şu
 ### Adım 4 — Uygulama planı
 | # | İş | Başlık | Öncelik | Bağımlılık | Durum |
 |---|---|---|---|---|---|
-| 25 | H-050 | Bölüm açılışı: doğrudan başlık | 2026-10-12 | flutter test 86/86, pytest 62/62; B1–B4 başlıkla açılıyor; başlık→hikâye ~39 ms; schemaVersion 2 |
-| H-047 | Hi asistanı ve koç kararları | 2026-10-11 | Kullanıcı soru-cevap kararı; `docs/HI-ASISTAN-VE-KOC.md` v0.2; CLAUDE.md'ye işlendi |
-| H-031 | Etkileşimli bölüm oynatıcısı | 2026-10-11 | flutter test 51/51; B1–B4 simülatörde baştan sona; geçiş 35–131 ms, siyah kare yok; kaldığın yerden devam. Android ölçümü H-043'e taşındı (kullanıcı kararı) |
-| H-034 | Bölüm paketi ve content-lint | 2026-10-11 | pytest 43/43; lint 13 bölüm temiz (7 uyarı); B1–B4 paketleri, senkron ≤ 0,01 sn, -16 LUFS, 29–48 MB |
-| H-045 | Arayüz tasarım yönü | 2026-10-11 | Kullanıcı onayı ("devam"). 6 taslak, 6 kr; tema belirteçleri Flutter'a işlendi, testler yeşil |
-| H-033 | Repo iskeleti | 2026-10-11 | `flutter analyze` temiz, `flutter test` 1/1; `mvn test` 2/2 (Testcontainers); iOS simülatöründe 5 sekme; `/actuator/health` UP |
-| H-025 | Faz 1 (MVP) uygulama planı | Yüksek | H-001, H-007, H-023, H-029 | ✅ |
+| 25 | H-025 | Faz 1 (MVP) uygulama planı | Yüksek | H-001, H-007, H-023, H-029 | ✅ |
 
 Plan: `docs/UYGULAMA-PLANI.md`. Kod yazımı H-025 onaylandıktan sonra başlar.
 
@@ -95,10 +89,10 @@ Plan: `docs/UYGULAMA-PLANI.md`. Kod yazımı H-025 onaylandıktan sonra başlar.
 | 1.0 | H-033 | Repo iskeleti (mobil + backend) | Yüksek | H-025 | ✅ |
 | 1.1 | H-034 | Bölüm paketi formatı, dışa aktarma, content-lint | Yüksek | H-033 | ✅ |
 | 1.2 | H-031 | Etkileşimli bölüm oynatıcısı | Yüksek | H-033, H-034 | ✅ |
-| 1.2b | H-046 | Altyazıya dokun → Türkçe anlam (kademeli panel) | Yüksek | H-031 | 🔄 |
+| 1.2b | H-046 | Altyazıya dokun → Türkçe anlam (kademeli panel) | Yüksek | H-031 | ✅ |
 | 1.2c | H-050 | Bölüm açılışı: doğrudan başlık | Orta | H-049, H-046 | ✅ |
-| — | H-049 | Sezon 1 jeneriği (bir kez, ~6,4 kr) | Orta | — | 🔄 |
-| 1.3 | H-035 | Hikâye haritası, bölüm kapısı, yerel ilerleme | Yüksek | H-031 | ⏳ |
+| — | H-049 | Sezon 1 jeneriği (6,69 kr) | Orta | — | ✅ |
+| 1.3 | H-035 | Hikâye haritası, bölüm kapısı, yerel ilerleme | Yüksek | H-031 | ✅ |
 | 1.4 | H-036 | Defter, ipucu panosu, FSRS | Yüksek | H-035 | ⏳ |
 | 1.4b | H-048 | Hi-A: yönlendiren Hi (balon + kural tabanlı koç) | Yüksek | H-036, H-046 | ⏳ |
 | 1.5 | H-037 | Backend çekirdek | Yüksek | H-033 | ⏳ |
@@ -118,6 +112,15 @@ Plan: `docs/UYGULAMA-PLANI.md`. Kod yazımı H-025 onaylandıktan sonra başlar.
 ## Biten işler
 | İş | Başlık | Bitiş | Doğrulama |
 |---|---|---|---|
+| H-035 | Hikâye haritası ve kalıcı ilerleme | 2026-10-12 | flutter test 129/129, pytest 64/64; simülatörde temiz kurulum → B1 bitir → B2 açıldı → yeniden açılışta korundu; Drift; harita görseli 1 kr |
+| H-046 | Altyazıya dokun → Türkçe anlam | 2026-10-12 | Kullanıcı çevirileri onayladı; B1–B4 `ceviri.tr.json` APPROVED; flutter test 63→86 |
+| H-049 | Sezon 1 jeneriği | 2026-10-12 | Kullanıcı onayı; 6,69 kr; -16 LUFS; donmuş kare yok |
+| H-050 | Bölüm açılışı: doğrudan başlık | 2026-10-12 | flutter test 86/86, pytest 62/62; B1–B4 başlıkla açılıyor; başlık→hikâye ~39 ms; schemaVersion 2 |
+| H-047 | Hi asistanı ve koç kararları | 2026-10-11 | Kullanıcı soru-cevap kararı; `docs/HI-ASISTAN-VE-KOC.md` v0.2; CLAUDE.md'ye işlendi |
+| H-031 | Etkileşimli bölüm oynatıcısı | 2026-10-11 | flutter test 51/51; B1–B4 simülatörde baştan sona; geçiş 35–131 ms, siyah kare yok; kaldığın yerden devam. Android ölçümü H-043'e taşındı (kullanıcı kararı) |
+| H-034 | Bölüm paketi ve content-lint | 2026-10-11 | pytest 43/43; lint 13 bölüm temiz (7 uyarı); B1–B4 paketleri, senkron ≤ 0,01 sn, -16 LUFS, 29–48 MB |
+| H-045 | Arayüz tasarım yönü | 2026-10-11 | Kullanıcı onayı ("devam"). 6 taslak, 6 kr; tema belirteçleri Flutter'a işlendi, testler yeşil |
+| H-033 | Repo iskeleti | 2026-10-11 | `flutter analyze` temiz, `flutter test` 1/1; `mvn test` 2/2 (Testcontainers); iOS simülatöründe 5 sekme; `/actuator/health` UP |
 | — | İş planı ve proje iskeleti | 2026-10-11 | 13 bölüm, 22 kaynak; GitHub'a gönderildi |
 | — | Ürün/teknik şartname kaydı ve CLAUDE.md güncellemesi | 2026-10-11 | `docs/SARTNAME.md` eklendi; commit `15198a2`, GitHub'a gönderildi |
 | — | İçerik mimarisi web araştırması ve sentez | 2026-10-11 | 5 araştırma kolu + kullanıcının içerik stratejisi → `docs/ICERIK-MIMARISI.md` (20 karar, kaynaklı) |
@@ -247,3 +250,5 @@ Plan: `docs/UYGULAMA-PLANI.md`. Kod yazımı H-025 onaylandıktan sonra başlar.
   - Kullanıcı: B1 başındaki "Friday." yazısı gereksiz. Soğuk açılıştaki yazı kaldırıldı (Alex hemen ardından "OK. Friday." diyor), çekim 3,8 → 2,5 sn. B1 yeniden paketlendi; senkron 0,003 sn; testler 63/63.
   - Kullanıcı kararı: her bölüm doğrudan bölüm başlığıyla açılır; öncesinde video/yazı/kart yok; görev kartı açılıştan kalktı (🎯 + bölüm sonu); tam jenerik sezon ilk açılışında. H-050 güncellendi, CLAUDE.md'ye işlendi.
   - H-050 bitti ve commit edildi. Sıradaki: H-035 (hikâye haritası; sezon jeneriği oraya taşınacak). Bekleyen kullanıcı onayları: H-046 çeviriler, H-049 jenerik.
+  - Kullanıcı H-046 (çeviriler) ve H-049'u (jenerik) onayladı. H-035 başladı. Sezon haritası görseli üretildi (1 kr onaylı; kredi 84,56).
+  - H-035 bitti: harita (map.jpg + 12 nokta), kilit kuralı, Drift ilerleme, Ana Sayfa kartı. Kullanıcı merak cümlelerini onayladı; eski bitirmeler kapı tamam sayılır. Sıradaki: H-036 (defter, ipucu panosu, FSRS).

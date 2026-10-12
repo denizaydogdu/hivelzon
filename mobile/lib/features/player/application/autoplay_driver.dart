@@ -13,6 +13,8 @@ import 'transition_metrics.dart';
 /// - `resume2`: B1'i açar, "Kaldığın yerden devam"ı seçer ve sona dek oynatır.
 /// - `meaning`: `true` gibi; B1 s02'de anlam panelini açar, kelime ve
 ///   "Türkçesini göster" adımlarını, ardından EN+TR altyazıyı gösterir (H-046).
+/// - `h035`: Hikâye haritası (H-035): kilitli B2 paneli, B1 baştan sona, dönüşte harita.
+/// - `h035view`: yalnızca haritayı açar ve durumunu yazar (kalıcılık denetimi).
 /// - `h050`: sezon jeneriği (ilk açılış), B1 başlık ekranı ve 🎯 paneli, B2
 ///   başlık → "Önceki bölümde" + "Atla" (H-050). Yalnızca B1 ve B2 oynar.
 const String kAutoplayMode = String.fromEnvironment('AUTOPLAY_TEST');

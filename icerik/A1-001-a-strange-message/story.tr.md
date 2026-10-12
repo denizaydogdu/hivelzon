@@ -1,6 +1,6 @@
 # A1-001: *A Strange Message* (Garip Bir Mesaj) (S1 · B1) · Türkçe çeviri
 
-> **Durum:** TASLAK (Claude, 2026-10-11) — kullanıcı onayı bekliyor (H-046)
+> **Durum:** ONAYLI (kullanıcı, 2026-10-12; taslak Claude, 2026-10-11) (H-046)
 > **Kaynak:** `story.en.md` (taslak 0.1). Satır satır veri: `ceviri.tr.json`.
 > **Görev kartı:** Mesajdaki **kişiyi** ve **yeri** bul.
 > **Hedef ifadeler:** *Can you hear me?* (Beni duyabiliyor musun?) · *Yes, I can.* (Evet, duyabiliyorum.) · *Again, please.* (Bir daha, lütfen.) · *Where is…?* (… nerede?) · *Listen.* (Dinle.)

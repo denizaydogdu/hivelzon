@@ -1,6 +1,6 @@
 # H-046: Altyazıya dokun → Türkçe anlam (kademeli panel)
 
-- **Durum:** Devam ediyor
+- **Durum:** Bitti
 - **Tür:** Uygulama + içerik (çeviri)
 - **Faz:** 1.2b (`docs/UYGULAMA-PLANI.md`)
 - **Bağımlılık:** H-031
@@ -40,3 +40,4 @@
 - **flutter analyze:** sorun yok. **flutter test:** 63 geçti (12'si yeni).
 - **Simülatör (hiVelzon iPhone 17):** `AUTOPLAY_TEST=meaning` ile B1 s02'de panel açıldı, "hear" → duymak + KALIP "Can you hear me? = Beni duyabiliyor musun?", Türkçesini göster, kapanınca video sürdü, EN+TR altyazı. Ekran görüntüleri oturum geçici klasöründe (`h046-*.png`). Uygulama normal debug derlemesi olarak kuruldu; içerik sunucusu 127.0.0.1:8787'de çalışıyor.
 - **Bekleyen:** çevirinin kullanıcı onayı (status DRAFT → APPROVED, H-028).
+2026-10-12: Kullanıcı onayladı (soru-cevap: "İkisini de onaylıyorum").

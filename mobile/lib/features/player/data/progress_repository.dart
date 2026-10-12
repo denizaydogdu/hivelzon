@@ -1,17 +1,20 @@
-import 'dart:convert';
-
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../../shared/progress/story_progress.dart';
+import '../../../shared/storage/storage_providers.dart';
 import '../domain/episode_engine.dart';
+import 'drift_progress_repository.dart';
 
 /// Bölüm ilerlemesinin saklandığı yer.
 ///
-/// Şimdilik `shared_preferences`; H-035'te Drift (SQLite) uygulaması bu
-/// arayüzün yerine geçer.
+/// Uygulamada Drift (SQLite, H-035): `DriftProgressRepository`. Eski
+/// `shared_preferences` kayıtları ilk açılışta bir kez taşınır
+/// (`LegacyPrefsImport`). Testler bellek içi uygulamayı kullanır.
 abstract interface class ProgressRepository {
   Future<EngineSnapshot?> loadCheckpoint(String contentId);
 
+  /// Kontrol noktası: bölüm `IN_PROGRESS` olur (bitmişse `COMPLETED` kalır),
+  /// `startedAt` ilk kez yazılır.
   Future<void> saveCheckpoint(String contentId, EngineSnapshot snapshot);
 
   Future<void> clearCheckpoint(String contentId);
@@ -20,52 +23,24 @@ abstract interface class ProgressRepository {
   Future<Map<String, String>> loadEpisodeFlags(String episodeId);
 
   Future<void> saveEpisodeFlags(String episodeId, Map<String, String> flags);
+
+  /// Bölüm sonu: `COMPLETED` + `completedAt`; kapı ölçütleri öncekilerle
+  /// birleştirilir (tekrar oynamak hiçbir ölçütü geri almaz).
+  Future<void> markCompleted(
+    String contentId, {
+    required Map<GateItem, Set<String>> gate,
+  });
+
+  /// Bütün bölümlerin ilerlemesi (kaydı olmayan bölüm listede yoktur).
+  Future<Map<String, StoryProgress>> loadAll();
 }
 
-class SharedPrefsProgressRepository implements ProgressRepository {
-  SharedPrefsProgressRepository({SharedPreferencesAsync? prefs})
-    : _prefs = prefs ?? SharedPreferencesAsync();
-
-  final SharedPreferencesAsync _prefs;
-
-  static String _cpKey(String id) => 'player.checkpoint.$id';
-  static String _flagsKey(String id) => 'player.flags.$id';
-
-  @override
-  Future<EngineSnapshot?> loadCheckpoint(String contentId) async {
-    final raw = await _prefs.getString(_cpKey(contentId));
-    if (raw == null) return null;
-    try {
-      return EngineSnapshot.fromJson(jsonDecode(raw) as Map<String, dynamic>);
-    } on Object {
-      // Bozuk kayıt: baştan başlanır, kayıt silinir.
-      await _prefs.remove(_cpKey(contentId));
-      return null;
-    }
-  }
-
-  @override
-  Future<void> saveCheckpoint(String contentId, EngineSnapshot snapshot) =>
-      _prefs.setString(_cpKey(contentId), jsonEncode(snapshot.toJson()));
-
-  @override
-  Future<void> clearCheckpoint(String contentId) =>
-      _prefs.remove(_cpKey(contentId));
-
-  @override
-  Future<Map<String, String>> loadEpisodeFlags(String episodeId) async {
-    final raw = await _prefs.getString(_flagsKey(episodeId));
-    if (raw == null) return const {};
-    try {
-      return Map<String, String>.from(jsonDecode(raw) as Map);
-    } on Object {
-      return const {};
-    }
-  }
-
-  @override
-  Future<void> saveEpisodeFlags(String episodeId, Map<String, String> flags) =>
-      _prefs.setString(_flagsKey(episodeId), jsonEncode(flags));
+/// Bellek içi ilerleme kaydı (Drift'siz testler ve [InMemoryProgressRepository]).
+class _ProgressRow {
+  StoryStatus status = StoryStatus.notStarted;
+  DateTime? startedAt;
+  DateTime? completedAt;
+  final Map<GateItem, Set<String>> gate = {};
 }
 
 /// Testler için bellek içi uygulama.
@@ -73,15 +48,54 @@ class InMemoryProgressRepository implements ProgressRepository {
   final Map<String, EngineSnapshot> checkpoints = {};
   final Map<String, Map<String, String>> episodeFlags = {};
 
+  final Map<String, _ProgressRow> _rows = {};
+
+  /// Sabit saat (testler); yoksa gerçek UTC saat.
+  DateTime Function() clock = () => DateTime.now().toUtc();
+
   @override
   Future<EngineSnapshot?> loadCheckpoint(String contentId) async =>
       checkpoints[contentId];
 
   @override
-  Future<void> saveCheckpoint(
-    String contentId,
-    EngineSnapshot snapshot,
-  ) async => checkpoints[contentId] = snapshot;
+  Future<void> saveCheckpoint(String contentId, EngineSnapshot snapshot) async {
+    checkpoints[contentId] = snapshot;
+    final r = _rows.putIfAbsent(contentId, _ProgressRow.new);
+    r.startedAt ??= clock();
+    if (r.status != StoryStatus.completed) r.status = StoryStatus.inProgress;
+  }
+
+  @override
+  Future<void> markCompleted(
+    String contentId, {
+    required Map<GateItem, Set<String>> gate,
+  }) async {
+    final r = _rows.putIfAbsent(contentId, _ProgressRow.new);
+    r.startedAt ??= clock();
+    r.status = StoryStatus.completed;
+    r.completedAt = clock();
+    for (final e in gate.entries) {
+      if (e.value.isEmpty) continue;
+      r.gate.putIfAbsent(e.key, () => {}).addAll(e.value);
+    }
+  }
+
+  @override
+  Future<Map<String, StoryProgress>> loadAll() async => {
+    for (final id in {..._rows.keys, ...checkpoints.keys})
+      id: StoryProgress(
+        contentId: id,
+        status:
+            _rows[id]?.status ??
+            (checkpoints.containsKey(id)
+                ? StoryStatus.inProgress
+                : StoryStatus.notStarted),
+        lastCheckpointNodeId: checkpoints[id]?.checkpointNodeId,
+        startedAt: _rows[id]?.startedAt,
+        completedAt: _rows[id]?.completedAt,
+        gateItems: {...?_rows[id]?.gate.keys},
+      ),
+  };
 
   @override
   Future<void> clearCheckpoint(String contentId) async =>
@@ -99,5 +113,8 @@ class InMemoryProgressRepository implements ProgressRepository {
 }
 
 final progressRepositoryProvider = Provider<ProgressRepository>(
-  (ref) => SharedPrefsProgressRepository(),
+  (ref) => DriftProgressRepository(
+    ref.watch(appDatabaseProvider),
+    ready: ref.watch(legacyImportProvider),
+  ),
 );

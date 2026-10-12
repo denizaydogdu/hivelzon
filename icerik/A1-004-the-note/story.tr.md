@@ -1,6 +1,6 @@
 # A1-004: *The Note* (Not) (S1 · B4) · Türkçe çeviri
 
-> **Durum:** TASLAK (Claude, 2026-10-11) — kullanıcı onayı bekliyor (H-046)
+> **Durum:** ONAYLI (kullanıcı, 2026-10-12; taslak Claude, 2026-10-11) (H-046)
 > **Kaynak:** `story.en.md` (taslak 0.1). Satır satır veri: `ceviri.tr.json`.
 > **Görev kartı:** Yarım notun parçalarından **tam notu** kur: gün, saat, yer.
 > **Hedef ifadeler:** *What time is it?* (Saat kaç?) · *It's seven o'clock.* (Saat yedi.) · *on Friday* (cuma günü) · *at seven* (saat yedide) · *What day is it today?* (Bugün günlerden ne?)

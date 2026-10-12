@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 
 import '../features/discover/presentation/discover_screen.dart';
 import '../features/player/application/autoplay_driver.dart';
+import '../features/player/application/player_session.dart';
 import '../features/player/presentation/player_screen.dart';
 import '../features/home/presentation/home_screen.dart';
 import '../features/profile/presentation/profile_screen.dart';
@@ -21,7 +22,9 @@ abstract final class AppRoutes {
   static const profile = '/profil';
 
   /// Bölüm oynatıcısı (sekme iskeletinin dışında, tam ekran).
-  static String play(String contentId) => '/play/$contentId';
+  /// [mode]: `resume` (kaldığı yerden) ya da `restart` (baştan); yoksa kayıt varsa sorulur.
+  static String play(String contentId, {String? mode}) =>
+      mode == null ? '/play/$contentId' : '/play/$contentId?mode=$mode';
 
   /// Sezon jeneriği (tam ekran, H-050).
   static String seasonIntro(int season) => '/sezon/$season/jenerik';
@@ -36,7 +39,10 @@ final routerProvider = Provider<GoRouter>((ref) {
         pageBuilder: (context, state) => MaterialPage(
           key: state.pageKey,
           fullscreenDialog: true,
-          child: PlayerScreen(contentId: state.pathParameters['contentId']!),
+          child: PlayerScreen(
+            contentId: state.pathParameters['contentId']!,
+            startMode: PlayerStartMode.parse(state.uri.queryParameters['mode']),
+          ),
         ),
       ),
       GoRoute(

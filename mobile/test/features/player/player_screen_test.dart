@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hivelzon/app/theme.dart';
+import 'package:hivelzon/features/player/application/player_session.dart';
 import 'package:hivelzon/features/player/data/progress_repository.dart';
 import 'package:hivelzon/features/player/domain/episode_engine.dart';
 import 'package:hivelzon/features/player/presentation/player_screen.dart';
 import 'package:hivelzon/shared/content/content_providers.dart';
 import 'package:hivelzon/shared/meaning/learning_event_log.dart';
 import 'package:hivelzon/shared/meaning/notebook_repository.dart';
+import 'package:hivelzon/shared/progress/story_progress.dart';
 import 'package:video_player_platform_interface/video_player_platform_interface.dart';
 
 import '../../support/fake_content_source.dart';
@@ -37,6 +39,7 @@ void main() {
   Future<void> pumpPlayer(
     WidgetTester tester, {
     String contentId = 'A1-001',
+    PlayerStartMode startMode = PlayerStartMode.ask,
   }) async {
     tester.view.physicalSize = const Size(1179, 2556);
     tester.view.devicePixelRatio = 3;
@@ -53,7 +56,7 @@ void main() {
           theme: AppTheme.light(),
           home: MediaQuery(
             data: const MediaQueryData(disableAnimations: true),
-            child: PlayerScreen(contentId: contentId),
+            child: PlayerScreen(contentId: contentId, startMode: startMode),
           ),
         ),
       ),
@@ -155,6 +158,48 @@ void main() {
     expect(find.textContaining('C2 · Not'), findsOneWidget);
     expect(repo.checkpoints, isEmpty, reason: 'bitince kayıt silinir');
     expect(repo.episodeFlags['A1-001'], isEmpty);
+    // H-035: bölüm bitti, kapı ölçütleri kaydedildi (sonraki bölüm açılır).
+    final all = await repo.loadAll();
+    expect(all['A1-001']!.status, StoryStatus.completed);
+    expect(all['A1-001']!.gateComplete, isTrue);
+    expect(all['A1-001']!.completedAt!.isUtc, isTrue);
+    await tester.pumpWidget(const SizedBox());
+    await step(tester, 1200);
+  });
+
+  testWidgets('haritadan "Devam et": soru sorulmadan kaldığı yerden (H-035)', (
+    tester,
+  ) async {
+    repo.checkpoints['A1-001'] = const EngineSnapshot(
+      checkpointNodeId: 's05',
+      flags: {},
+      passedNodes: {'k1', 'k2', 't-gorev'},
+      contentVersion: 1,
+    );
+    await pumpPlayer(tester, startMode: PlayerStartMode.resume);
+    await step(tester, 300);
+    expect(find.text('Kaldığın yerden devam'), findsNothing);
+    expect(find.text('SEZON 1 · BÖLÜM 1'), findsOneWidget);
+    await step(tester, 3000);
+    expect(find.text('Kelimeleri sırala: Alex ne soruyor?'), findsOneWidget);
+    await tester.pumpWidget(const SizedBox());
+    await step(tester, 1200);
+  });
+
+  testWidgets('haritadan "Baştan başla": kayıt silinir, baştan (H-035)', (
+    tester,
+  ) async {
+    repo.checkpoints['A1-001'] = const EngineSnapshot(
+      checkpointNodeId: 's05',
+      flags: {},
+      passedNodes: {'k1'},
+      contentVersion: 1,
+    );
+    await pumpPlayer(tester, startMode: PlayerStartMode.restart);
+    await step(tester, 300);
+    expect(find.text('Kaldığın yerden devam'), findsNothing);
+    await step(tester, 1500); // başlık → s02
+    expect(repo.checkpoints['A1-001']!.checkpointNodeId, 's02');
     await tester.pumpWidget(const SizedBox());
     await step(tester, 1200);
   });
