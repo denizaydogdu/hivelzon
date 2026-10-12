@@ -2,7 +2,7 @@
 
 > **2026-10-11 güncellemesi:** Kullanıcı ana deneyimin **oyunlaştırılmış, bölümleri birbirine bağlı bir hikâye** olmasına karar verdi. Bu belgedeki müfredat, lisans, seviye takibi, yayın hattı ve teknik kararlar geçerliliğini korur. Değişen bölümler ve ayrıntılar: `docs/OYUN-TASARIMI.md` §16. Değişen bölümler: §3.5 ünite kalıbı, §4.3 seriler, §6.1–6.3 sekmeler, ana sayfa ve ünite yolu, §7.2 yerleştirme çerçevesi.
 
-**Sürüm:** 0.2 · **Tarih:** 2026-10-11 · **Durum:** §14 önerileri kullanıcı tarafından onaylandı (H-026, 2026-10-11). K-17, K-18 ve K-19 açık.
+**Sürüm:** 0.2 · **Tarih:** 2026-10-11 · **Durum:** §14 önerileri kullanıcı tarafından onaylandı (H-026, 2026-10-11). K-17, K-18 ve K-19 da sonradan kapandı: K-17 birleşik 4 faz (H-007), K-18 onay ve kapasite (H-028), K-19 lisans doğrulaması (H-027). **Güncelleme 2026-10-12:** uygulamada altyazı WebVTT değil, zaman damgalı JSON'dan uygulama tarafından çizilir (H-031, H-046; §4.6 notu). Sekmelerde "Öğren" yerine "Hikâye" (K-30).
 **Ne bu belge:** İçeriğin nasıl yapılandırılacağı, uygulamada nerede ne görüneceği, nasıl üretilip yayınlanacağı ve kullanıcının seviyesinin nasıl takip edileceği için tek başvuru noktası.
 **Ne değil:** Kod yazma onayı değil. Kod, migration, ücretli çağrı, Higgsfield üretimi ve yayın; plan onayından (H-001) önce yapılmaz.
 
@@ -265,6 +265,7 @@ Seviye (A1–C1)
   - Varsayılan: **EN altyazı + hedef kelimede küçük TR karşılık.**
   - TR satırı A1'de onboarding'de "açık" önerilir. A2 ve üstünde varsayılan kapalı; kullanıcı istediğinde açar.
   - Uygulamada altyazı **ayrı WebVTT dosyası** olarak verilir. Sosyal medyada videoya **gömülü** `.ass` altyazı kullanılır, çünkü videolar sessiz başlar.
+    - **Uygulamadaki hâli (2026-10-12, H-031, H-046):** WebVTT kullanılmadı. Altyazı, ElevenLabs hizalamasından üretilen zaman damgalı JSON'dan (`subs/*.en.json`, Türkçe satır ve kelime anlamlarıyla) uygulama tarafından çizilir. Satıra dokununca video durur, kademeli Türkçe anlam paneli açılır. Biçim: `docs/BOLUM-PAKETI.md`.
   - Karaoke tarzı kelime vurgusu WebVTT ile yapılmaz. ElevenLabs hizalamasından üretilen **kelime zamanlama JSON'u** ve kendi altyazı widget'ımız gerekir. Hizalaması doğrulanmayan içerikte yalnızca satır vurgusu yapılır.
 
 ---
@@ -850,7 +851,7 @@ Her yayının kaydı: içerik kimliği ve sürümü, zaman, seviye, kanal, hedef
 
 ## 14. Karar listesi
 
-> **2026-10-11:** Kullanıcı aşağıdaki önerileri onayladı. Onaylananlar K-01…K-16 ve K-20; bağlayıcı özetleri CLAUDE.md'de. K-17 (faz yapısı), K-18 (onay ve kapasite) ve K-19 (lisans doğrulaması) karar değil, açık iş olarak devam ediyor.
+> **2026-10-11:** Kullanıcı aşağıdaki önerileri onayladı. Onaylananlar K-01…K-16 ve K-20; bağlayıcı özetleri CLAUDE.md'de. K-17 (faz yapısı), K-18 (onay ve kapasite) ve K-19 (lisans doğrulaması) o gün açık iş olarak kaldı; üçü de aynı gün sonra kapandı: K-17 → birleşik 4 faz (H-007), K-18 → Claude üretir, kullanıcı onaylar, ünite sonunda öğretmen kontrolü (H-028), K-19 → `docs/LISANS-RAPORU.md` (H-027).
 
 Karar listesi H-026'ya bağlıdır. Bazı maddeler var olan işlere bağlanır.
 

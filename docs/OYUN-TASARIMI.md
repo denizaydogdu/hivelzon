@@ -1,6 +1,6 @@
 # hiVelzon — Oyun ve Hikâye Tasarımı
 
-**Sürüm:** 0.2 (web araştırması işlendi) · **Tarih:** 2026-10-11 · **Durum:** §17'deki K-21…K-35 kullanıcı tarafından onaylandı (H-029, 2026-10-11)
+**Sürüm:** 0.2 (web araştırması işlendi) · **Tarih:** 2026-10-11 (uygulama notları 2026-10-12) · **Durum:** §17'deki K-21…K-35 kullanıcı tarafından onaylandı (H-029, 2026-10-11). Sonraki değişiklikler: H-050 (bölüm açılışı, §7), H-046 (altyazıya dokun → Türkçe anlam), H-047 (Hi her yerde).
 
 ## 0. Durum ve girdiler
 
@@ -17,9 +17,9 @@
 
 **Bu belgede:**
 - Yön bağlayıcıdır.
-- Konsept, karakterler, bölüm zinciri, ekranlar ve teknik ayrıntılar **önerilerdir** (§17'deki K-21…K-35).
+- Konsept, karakterler, bölüm zinciri, ekranlar ve teknik ayrıntılar §17'deki K-21…K-35 olarak **onaylandı** (H-029). Kahraman Aleyna "Alex" Yıldız (H-030).
 
-**Kapsam:** Kod onayı değildir. Üretim ve yayın yoktur.
+**Kapsam:** Bu belge tasarımdır. Uygulama `docs/UYGULAMA-PLANI.md`'ye göre yapılıyor (H-025, onaylı); yayın H-044'e kadar yoktur.
 
 ---
 
@@ -297,12 +297,14 @@ Her satırda:
 
 **Süre:** Yaklaşık **5–8 dk**. Bu bir başlangıç varsayımıdır, pilotta ölçülür.
 
-Storyworld'deki 8 adım ile "karar anları" birleştirildi:
+Storyworld'deki 8 adım ile "karar anları" birleştirildi.
+
+> **Değişti (H-050, kullanıcı kararı 2026-10-12):** Her bölüm **doğrudan bölüm başlığıyla açılır** (kısa jenerik animasyonu üstünde "Sezon 1 · Bölüm N · Başlık"; başlıktan önce video, yazı ya da kart yok). **Başlıktan sonra** (B2 ve sonrası) atlanabilir "Önceki bölümde" özeti, ardından hikâye gelir. **Adım 2'deki ayrı görev kartı açılıştan kalktı:** görev cümlesi ve hedef ifadeler üst çubuktaki 🎯 panelinde isteğe bağlı açılır ve bölüm sonunda gösterilir. Tam sezon jeneriği sezonun ilk açılışında bir kez oynar. Hi'nin konu tanıtımı, yeni dilbilgisi konusu sahnede ilk geçtiği anda gösterilecek (H-048). Aşağıdaki tablo ilk tasarımdır; 1. ve 2. adımlar bu notla okunur.
 
 | # | Adım | Süre | İçerik |
 |---|---|---|---|
-| 1 | **Önceki bölümde** (soğuk açılış) | 10–20 sn | Son kare ve replik, yeni sorunun işareti |
-| 2 | **Görev kartı** | 5 sn | Hikâye hedefi + İngilizce hedefi + 3–5 hedef ifade |
+| 1 | **Önceki bölümde** (soğuk açılış) → **H-050:** önce başlık, sonra atlanabilir özet (≤ 15 sn) | 10–20 sn | Son kare ve replik, yeni sorunun işareti |
+| 2 | ~~**Görev kartı**~~ → **H-050:** açılışta yok; 🎯 paneli + bölüm sonu | 5 sn | Hikâye hedefi + İngilizce hedefi + 3–5 hedef ifade |
 | 3 | **Ara sahne ve karar anları** | 60–120 sn | Video segmentlere bölünür. A1–A2'de **sahne başına 1–2, bölüm başına en fazla 4 karar anı** vardır. Karar anında:<br>• video durur;<br>• **müzik ve hareket kısılır, arka plan sadeleşir, hedef ifade öne çıkar.**<br>Gerekçe: dikkat dağıtıcı süs öğeleri acemilerde öğrenmeyi düşürüyor (Sundararajan & Adesope 2020). |
 | 4 | **Anlama kontrolü** | 30–60 sn | Ana fikir ya da kritik ayrıntı |
 | 5 | **Dil laboratuvarı** (Hi) | 60–120 sn | Hedef ifadeler, kısa açıklama, "Böyle de söyleyebilirsin" |
@@ -319,6 +321,8 @@ Storyworld'deki 8 adım ile "karar anları" birleştirildi:
 | B2–C1 | Uzun sahneler; daha az ama daha zengin karar anı (ton, ima, güvenilirlik); uzun yanıt |
 
 ### 7.1 Örnek: Bölüm 1, "A Strange Message" (A1)
+
+> **Uygulamadaki hâli (H-050):** B1 başlık ekranıyla açılır; B1'de özet yoktur (ilk bölüm). Görev ve ifadeler 🎯 panelindedir. 1. ve 2. maddeler ilk tasarımdır.
 
 1. **Soğuk açılış:** Prolog'un son karesi. Bavulda telsiz.
 2. **Görev kartı:**
@@ -517,7 +521,7 @@ Sonraki bölümün açılması için üçü birden gerekir:
 
 ### 11.4 Oynatıcı ve karar anı
 
-- **Oynatıcı özellikleri:** ICERIK-MIMARISI §6.4'teki her şey: dokun-çevir, cümle tekrarı, 0,75 hız, EN / EN+TR altyazı (K-03).
+- **Oynatıcı özellikleri:** ICERIK-MIMARISI §6.4'teki her şey: dokun-çevir, cümle tekrarı, 0,75 hız, EN / EN+TR altyazı (K-03). **Uygulamada (H-031, H-046):** altyazı zaman damgalı JSON'dan uygulama tarafından çizilir; satıra dokununca video durur, kademeli Türkçe anlam paneli açılır (kelime, kalıp, "Türkçesini göster", "Tekrar dinle", "Deftere ekle"). Karar seçenekleri çevrilmez.
 - **Karar anı:** Video durur; seçenekler **yerel arayüz kartları** olarak gelir (videoya gömülmez).
 - **Üst şerit:** Görev çubuğu, Hi düğmesi (💡 ipucu).
 - **Ara sahne:** İlk izlemeden sonra atlanabilir.
@@ -594,7 +598,7 @@ icerik/
 6. **Medya:**
    - Karakter referanslarıyla görseller üretilir. Önce maliyet gösterilir, onay alınır.
    - Seslendirme: karakter başına sabit ses kimliği.
-   - **Segment başına** MP4/HLS + WebVTT + kelime zamanlama JSON'u.
+   - **Segment başına** MP4/HLS + WebVTT + kelime zamanlama JSON'u. **Uygulamada (H-034):** segment MP4 + zaman damgalı altyazı JSON'u (`subs/*.en.json`, Türkçe anlamlarla); WebVTT kullanılmıyor. Biçim: `docs/BOLUM-PAKETI.md`.
    - Tepki parçaları: durağan kare + TTS.
 
 ### 12.3 videoGenerator raporundan düzeltmeler (H-022)

@@ -5,7 +5,10 @@
 - Gelir modeli: tamamen ücretsiz.
 - Alan adı ileride `hi.velzon.tr`; şimdilik web yok.
 
-> **Durum:** Planlama. **Kullanıcı planı onaylamadan kod yazılmaz.** Plan: `docs/IS-PLANI.md`. Ayrıntılı gereksinimler: `docs/SARTNAME.md` (taslak 0.1, 2026-10-11). Plan onayına kadar migration, dış servis çağrısı, Higgsfield üretimi ve yayın da yapılmaz.
+> **Durum (2026-10-12):** **Faz 1 (MVP) uygulaması sürüyor.** Uygulama planı onaylandı (H-025, `docs/UYGULAMA-PLANI.md`); kod `mobile/` (Flutter), `backend/` (Spring Boot 4 iskeleti) ve `tools/` altında. Biten işler ve sıradaki iş: `yapilacaklar/IS-SIRASI.md`.
+> - **Her şey yerelde çalışır** (kullanıcı kararı): Docker PostgreSQL, yerel içerik sunucusu, iOS simülatörü. Sunucu, Bunny Stream, mağaza ve geliştirici hesapları en sonda (H-044); o zamana kadar dış barındırma ve yayın yapılmaz.
+> - **Planda olmayan yeni kapsam kullanıcı onayı olmadan eklenmez.** Her ücretli üretimden (Higgsfield vb.) önce maliyet gösterilir ve onay alınır.
+> - İş planı: `docs/IS-PLANI.md` (son onayı H-001'de). Ayrıntılı gereksinimler: `docs/SARTNAME.md` (taslak 0.1; güncel karar notları başında).
 
 **Karışmasın:** Velzon'un genel Higgsfield görsel/video atölyesi bu klasör değildir; `~/Dev/velzon-gorsel` altındadır (ayrı oturum). hiVelzon kendi içeriği için Higgsfield'ı **buradan doğrudan** kullanır (bkz. "Higgsfield ile görsel, video ve ses üretimi"). Hazır video boru hattı kodu `~/Dev/videoGenerator` altındadır (bkz. "videoGenerator projesinden yararlanma").
 
@@ -71,7 +74,7 @@
 - **Ses:** ElevenLabs zaman damgalı, -16 LUFS.
 - **Yazılar:** ImageMagick PNG ile eklenir.
 - **Explainer:** Kullanılmaz. Gemini Omni 10 sn = 30 kr; B1 ≈ 187 kr. Biçim de uymuyor (tek anlatıcı; karakter sesi ve karar anı yok). Kural 4 karşılaştırması bu gerekçeyle kapandı. |
-| H-004 | Higgsfield: mevcut lite plan, 110,25 kr ile devam (Sezon 1 ≈ 60–100 kr). Kredi 25'in altına inince bir kez hatırlatılır. |
+| H-004 | Higgsfield: mevcut lite plan ile devam (karar anında 110,25 kr; Sezon 1 ≈ 60–100 kr). **Güncel kredi 84,56 (2026-10-12).** Kredi 25'in altına inince bir kez hatırlatılır. |
 | H-006 (ek) | Yerel çalışmada videoGenerator'ın ElevenLabs hesabı kullanılır (ücretsiz, iç kullanım). Yayından önce ticari plan şart. |
 | H-047 | **Hi her yerde: asistan + öğrenme koçu** (`docs/HI-ASISTAN-VE-KOC.md`). Hikâye ve görev dışında sağ altta, menünün üstünde Hi balonu durur. **Hi-A (MVP):** kural tabanlı, AI yok, bütün yaşlar: günlük tek öneri + görünür gerekçe, haftalık özet, onaylı veriden "bu ne demek?". **Hi-B (v1):** metin sohbeti; `AiTutorPort` arkasında yerel Ollama + RAG (pgvector), üretim sağlayıcısı ölçümle H-044'te seçilir. 13–17 rehberli mod, serbest sohbet 18+. Kullanıcı konuşmaları otomatik olarak model eğitimine girmez. Farklılık önceliği: Türkçeye göre koçluk, utanmadan prova, her gün tek adım, gerçek hayat köprü görevleri. |
 | H-050 | **Her bölüm doğrudan bölüm başlığıyla açılır** (kullanıcı kararı 2026-10-12). Başlıktan önce video, yazı ya da kart yok. Başlık = kısa jenerik animasyonu üstünde "Sezon N · Bölüm N · Başlık". Ardından (B2+) atlanabilir "Önceki bölümde", sonra hikâye. Açılışta ayrı görev kartı yok (K-27 adım 2 değişti): görev ve hedef ifadeler 🎯 panelinde ve bölüm sonunda. Tam jenerik sezonun ilk açılışında bir kez oynar. |
@@ -98,17 +101,36 @@ Flutter + Spring Boot 4 + PostgreSQL. Aşağıdakiler hiVelzon'un **kendi tasar�
 
 Ayrıntı: `docs/IS-PLANI.md` §10.
 
+## Geliştirme ortamı (yerel; ayrıntı kök `README.md`)
+```bash
+colima start && docker compose up -d --wait            # PostgreSQL 17, 127.0.0.1:5434
+python3 tools/dev-content-server/serve.py              # içerik sunucusu, 127.0.0.1:8787 (ayrı terminal)
+xcrun simctl boot "hiVelzon iPhone 17"; open -a Simulator
+cd mobile && flutter run -d "hiVelzon iPhone 17"       # içerik adresi: --dart-define=CONTENT_BASE_URL=...
+```
+- Bölüm paketi üretme: `tools/content-pipeline/.venv/bin/python tools/content-pipeline/export_package.py icerik/A1-00[1-4]-*`; yalnızca sezon paketi: `… export_package.py --season 1`. Uygulama içi pakette AI etiketi gömülmez; sosyal medya için `--ai-label`.
+- İçerik denetimi: `tools/content-pipeline/.venv/bin/python tools/content-pipeline/content_lint.py icerik/A1-0*`; testler: `tools/content-pipeline/.venv/bin/python -m pytest tools/content-pipeline`.
+- Drift kodu yeniden üretme: `cd mobile && dart run build_runner build --force-jit` (`app_database.g.dart` depoda tutulur).
+- Mobil testler: `cd mobile && flutter analyze && flutter test`. Backend: `cd backend && mvn -B verify` (Colima için Testcontainers değişkenleri README'de).
+
 ## Belgeler ve öncelik sırası
 
 | Belge | Rolü |
 |---|---|
 | `CLAUDE.md` (bu dosya) | Bağlayıcı çalışma kuralları |
-| `docs/IS-PLANI.md` | İş ve ürün planı; kullanıcı onayı bekliyor (H-001) |
+| `docs/UYGULAMA-PLANI.md` | **Faz 1 (MVP) uygulama planı** (H-025, onaylandı): alt fazlar, işler ve durumları |
+| `docs/IS-PLANI.md` | İş ve ürün planı; kararlara göre güncellendi (H-023), son onayı H-001'de |
 | `docs/SARTNAME.md` | Ayrıntılı ürün, teknik mimari ve uygulama şartnamesi: ekranlar, veri modeli, API taslağı, test stratejisi, MVP kabul kriterleri |
-| `docs/ICERIK-MIMARISI.md` | İçerik mimarisi sentezi (web araştırması + içerik stratejisi): müfredat ve lisanslar, formatlar, ekranlar, seviye takibi, yayın hattı. Kararlar H-026'da bekliyor |
-| `docs/OYUN-TASARIMI.md` | **Oyunlaştırılmış hikâye tasarımı:** evren, kahraman, bölümler arası bağ, Sezon 1 zinciri, ekranlar, veri modeli. Kararlar H-029'da bekliyor. |
+| `docs/ICERIK-MIMARISI.md` | İçerik mimarisi sentezi (web araştırması + içerik stratejisi): müfredat ve lisanslar, formatlar, ekranlar, seviye takibi, yayın hattı. Kararlar H-026'da onaylandı (K-01…K-20) |
+| `docs/OYUN-TASARIMI.md` | **Oyunlaştırılmış hikâye tasarımı:** evren, kahraman, bölümler arası bağ, Sezon 1 zinciri, ekranlar, veri modeli. Kararlar H-029'da onaylandı (K-21…K-35). |
+| `docs/BOLUM-PAKETI.md` | Bölüm paketi biçimi (`scenes.json` schemaVersion 2, altyazı JSON, sezon paketi) ve content-lint kuralları (H-034, H-046, H-050) |
+| `docs/HI-ASISTAN-VE-KOC.md` | Hi asistanı ve öğrenme koçu kararları: Hi-A (MVP, kural tabanlı), Hi-B (v1, yerel LLM + RAG) (H-047) |
+| `docs/LISANS-RAPORU.md` | Kelime listesi ve içerik lisanslarının doğrulaması (H-027) |
+| `tasarim/README.md` | Arayüz tasarım yönü ve tema belirteçleri (H-045) |
 | `docs/HIKAYE-EVRENI.md` | Kullanıcının Storyworld belgesi (*The Missing Signal*), olduğu gibi |
 | `docs/VIDEOGENERATOR-RAPORU.md` | videoGenerator sınıf incelemesi ve taşıma planı (H-022) |
+| `docs/VIDEOGENERATOR-AI-SERVISLERI.md` | videoGenerator'ın kullandığı AI servisleri (OpenAI, ElevenLabs) |
+| `docs/VIDEOGENERATOR-GERCEK-MALIYET.md` | videoGenerator'ın gerçek maliyet kayıtları ve hiVelzon tahmini |
 | `docs/ICERIK-STRATEJISI.md` | Kullanıcının içerik stratejisi belgesi (olduğu gibi). Ünite listeleri ve beceri matrisi burada |
 | `yapilacaklar/IS-SIRASI.md` | Güncel durum ve sıra |
 
@@ -116,17 +138,17 @@ Ayrıntı: `docs/IS-PLANI.md` §10.
 - Şartnamedeki veri modeli (§10) ve API (§11) **taslaktır**. Kod başlarken kesinleştirilir.
 - Belgeler çeliştiğinde sessizce seçim yapılmaz. Çelişki "mevcut durum / rehber kararı / önerilen çözüm" biçiminde kullanıcıya sunulur.
 
-### Plan ile şartname arasındaki açık çelişkiler (H-007'de karara bağlanacak)
+### Plan ile şartname arasındaki çelişkiler (2026-10-12: telaffuz dışında hepsi çözüldü)
 
 | Konu | `IS-PLANI.md` | `SARTNAME.md` |
 |---|---|---|
-| Konuşma pratiğinin zamanı | Faz 2 (v1). MVP'de yok (§11). | P0/MVP içinde (§5.1). Yol haritasında ise Faz 4 (§16). |
-| Faz yapısı | Faz 0–3 (§11) | Faz 0–5 (§16) |
+| ~~Konuşma pratiğinin zamanı~~ | **Çözüldü (H-007):** MVP'de yok; v1'de (F2) Hi-B ile gelir (H-047) | ~~P0/MVP içinde (§5.1)~~ |
+| ~~Faz yapısı~~ | **Çözüldü (K-17, H-007):** birleşik 4 faz F0–F3 | ~~Faz 0–5 (§16)~~ |
 | ~~Seviye testi~~ | **Çözüldü (K-06, 2026-10-11):** kademeli, en fazla ~20 soru, atlanabilir; sonuç "önerilen başlangıç seviyesi" (`ICERIK-MIMARISI.md` §7.2) | |
-| Günlük hedef seçenekleri | 10 / 20 / 30 dk (§4.7) | 5 / 10 / 15 dk (§4.2) |
+| ~~Günlük hedef seçenekleri~~ | **Çözüldü (H-013):** 5 / 10 / 15 dk; günde en fazla 1 hatırlatma | |
 | ~~Seri (streak)~~ | **Çözüldü (K-16, 2026-10-11):** kırık seri vurgulanmaz; dondurma ve onarma var; kurtarma görevi yok; seri anlamlı etkinlikle korunur | |
-| Telaffuz puanı | v1'de "Söyle" alıştırmalarıyla birlikte (§11) | Yalnızca güvenilir biçimde ölçülebiliyorsa gösterilir; kesin skor iddiası yok (§6.5) |
-| Yaş | 13 altı alınmaz. 13–17 konuşma pratiği için karar H-002'de açık. | İçerik hedefi 13+. Kullanıcı yaş kapsamı hukukla doğrulanacak (§18/10). |
+| Telaffuz puanı (**açık, H-015**) | v1'de "Söyle" alıştırmalarıyla birlikte (§11) | Yalnızca güvenilir biçimde ölçülebiliyorsa gösterilir; kesin skor iddiası yok (§6.5) |
+| ~~Yaş~~ | **Çözüldü (H-002):** 13+; 13 altı kayıt yok; AI sohbeti 18+, 13–17 rehberli (H-047). Hukuk teyidi bekliyor. | |
 
 Şartnamedeki **açık kararlar listesi** (§18) H-002…H-020 işlerine dağıtıldı. Sıra ve durum: `yapilacaklar/IS-SIRASI.md`.
 
@@ -137,7 +159,7 @@ Kullanıcı `docs/ICERIK-MIMARISI.md` §14'teki önerileri onayladı. Ayrıntı 
 |---|---|
 | K-01 | İçerik kimliği `icerik/<SEVİYE>-<3 hane>-<kisa-baslik>/` olarak kalır. Konu `content.json`'da tutulur. `content.json` ve `rights-and-review.md` zorunludur. |
 | K-02 | ~~Sekmeler: Ana Sayfa · Keşfet · Öğren · Konuş · Profil~~ → **K-30 ile değişti:** Ana Sayfa · Keşfet · **Hikâye** · Konuş · Profil. Keşfet, kısa video akışıdır. |
-| K-03 | Altyazı: varsayılan İngilizce, hedef kelimede küçük Türkçe karşılıkla. A1'de onboarding'de Türkçe satır önerilir; A2 ve üstünde Türkçe satır varsayılan kapalıdır. Uygulamada ayrı WebVTT, sosyal medyada gömülü `.ass` kullanılır. |
+| K-03 | Altyazı: varsayılan İngilizce, hedef kelimede küçük Türkçe karşılıkla. A1'de onboarding'de Türkçe satır önerilir; A2 ve üstünde Türkçe satır varsayılan kapalıdır. Sosyal medyada gömülü `.ass` kullanılır. **Uygulamada (H-031, H-046):** altyazı ElevenLabs zaman damgalı JSON'dan uygulama tarafından çizilir (WebVTT kullanılmaz); satıra dokununca video durur ve Türkçe anlam paneli açılır. |
 | K-04 | Kelime tekrarı: **FSRS**, hedef hatırlama %90, hesaplama sunucuda (py-fsrs'ten Java'ya taşınır, kaynak belirtilir). |
 | K-05 | Durumlar: `DRAFT → IN_REVIEW → APPROVED → SCHEDULED → PUBLISHED → ARCHIVED`, ayrıca `WITHDRAWN`. İnceleme adımları onay kontrol listesinin maddeleridir. `APPROVED` kontrolü backend'de yapılır; AI'ın yayın yetkisi yoktur. |
 | K-06 | Seviye testi: kademeli, en fazla ~20 soru, atlanabilir. Sonuç "önerilen başlangıç seviyesi" olarak sunulur. |
@@ -153,14 +175,13 @@ Kullanıcı `docs/ICERIK-MIMARISI.md` §14'teki önerileri onayladı. Ayrıntı 
 | K-16 | Seri: kırık seri vurgulanmaz; dondurma ve onarma vardır. |
 | K-20 | A2–B1 içeriklerine MEB tema etiketi eklenir. |
 
-**Hâlâ açık olanlar:**
-- **K-17 Faz yapısı:** H-007 / H-023.
+**Sonradan kapananlar** (eskiden "hâlâ açık"):
+- **K-17 Faz yapısı:** birleşik 4 faz (H-007).
 - **K-18 Onay ve kapasite:** H-028.
-- **K-19 Lisans doğrulaması:** H-027.
+- **K-19 Lisans doğrulaması:** H-027 (`docs/LISANS-RAPORU.md`).
+- Günlük hedef 5/10/15 dk ve bildirim sıklığı: H-013.
 
-**Bu kararlarla kesinleşmeyenler:**
-- Günlük hedef seçenekleri (5/10/15 mi, 10/20/30 mu) ve bildirim sıklığı: H-013.
-- Telaffuz puanı: H-015.
+**Hâlâ açık:** Telaffuz puanı (H-015).
 
 ## Ürün ilkeleri (şartname §3.3, §6)
 - Kullanıcı uygulamayı açınca 3–10 dakikada bitirebileceği tek bir öğrenme eylemi görür. Ana sayfa sonsuz akış gibi davranmaz.
@@ -276,10 +297,10 @@ Kurallar:
 
 Bu klasörden Higgsfield CLI ve Claude Code skill'leriyle görsel, video, ses (TTS/müzik/efekt) ve 3B üretilebilir.
 
-### Kurulum durumu (2026-10-11 doğrulandı)
+### Kurulum durumu (2026-10-11 doğrulandı; kredi 2026-10-12)
 
 - CLI: `higgsfield` **1.1.26** kurulu (`~/.nvm/versions/node/v18.20.7/bin/higgsfield`; kısa adları `higgs`, `hf`).
-- Oturum: açık — `info@velzon.tr`, **lite** plan. Kredi 2026-10-11 akşamı **110,25** (pilot sonrası). Başka oturumlar da aynı hesabı kullanıyor; harcamadan önce her seferinde `higgsfield account status` ile kontrol edilir.
+- Oturum: açık — `info@velzon.tr`, **lite** plan. Kredi **84,56** (2026-10-12; pilot sonrası 110,25 idi, sonra B2–B4, 6 arayüz taslağı, jenerik ve harita görseli). Başka oturumlar da aynı hesabı kullanıyor; harcamadan önce her seferinde `higgsfield account status` ile kontrol edilir.
 - Skill'ler: `~/.claude/skills/higgsfield-*` altında kurulu (liste aşağıda).
 
 ### Yeni bir makinede kurulum (ya da kurulum bozulursa)

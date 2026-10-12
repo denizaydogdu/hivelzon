@@ -1,6 +1,6 @@
 # H-049: Sezon 1 jeneriği (bir kez üretilir)
 
-- **Durum:** Bittinayı bekliyor)
+- **Durum:** Bitti (2026-10-12; kullanıcı onayladı)
 - **Tür:** İçerik üretimi (kredi harcar)
 - **Bağımlılık:** —
 - **Senaryo ve prompt'lar:** `icerik/_evren/jenerik/PROMPTS.md`

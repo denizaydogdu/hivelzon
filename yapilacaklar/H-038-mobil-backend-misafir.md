@@ -1,6 +1,6 @@
 # H-038: Mobil ↔ backend bağlantısı ve misafir modu
 
-- **Durum:** Yapılacak (H-025 onayından sonra)
+- **Durum:** Yapılacak (sırada; H-025 onaylandı 2026-10-11, sıra `docs/UYGULAMA-PLANI.md`'de)
 - **Tür:** Uygulama (kod)
 - **Faz:** 1.6 (`docs/UYGULAMA-PLANI.md`)
 - **Bağımlılık:** H-035, H-037
@@ -25,3 +25,4 @@ Kendi dalında (`h-038-mobil-backend-misafir`) yapılır; `main`'e alınmadan ö
 
 ## Notlar
 2026-10-11: H-025 uygulama planıyla açıldı.
+2026-10-12: Mobil taraftaki yerel veri Drift'te (H-035; H-036 sonrası defter ve FSRS de). Misafirden hesaba taşıma bu tablolardan yapılır. Öğrenme olayları (H-046) `client_event_id` ile idempotent gönderilir. Misafir kapsamı: prolog + B1 (H-009).

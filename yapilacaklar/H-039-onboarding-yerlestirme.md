@@ -1,6 +1,6 @@
 # H-039: Onboarding ve yerleştirme
 
-- **Durum:** Yapılacak (H-025 onayından sonra)
+- **Durum:** Yapılacak (sırada; H-025 onaylandı 2026-10-11, sıra `docs/UYGULAMA-PLANI.md`'de)
 - **Tür:** Uygulama (kod)
 - **Faz:** 1.7 (`docs/UYGULAMA-PLANI.md`)
 - **Bağımlılık:** H-038

@@ -1,8 +1,34 @@
 # hiVelzon — İş ve Ürün Planı
 
-> **Sürüm:** 0.1 (taslak, kullanıcı onayı bekliyor) · **Tarih:** 2026-10-11
+> **Sürüm:** 0.2 (kararlara göre güncellendi, H-023; son onay H-001'de) · **İlk sürüm:** 2026-10-11 · **Güncelleme:** 2026-10-12
 > **Sahibi / veri sorumlusu:** Velzon Bilişim Teknolojileri Ltd. Şti. (Eskişehir · info@velzon.tr)
-> **Durum:** Bu belge onaylanana kadar **kod yazılmaz** (bkz. `CLAUDE.md`).
+> **Durum:** Faz 1 (MVP) uygulaması sürüyor; uygulama planı onaylı (`docs/UYGULAMA-PLANI.md`, H-025). Bağlayıcı kararlar `CLAUDE.md` tablolarındadır; bu belgeyle çelişirse onlar geçerlidir.
+
+## Güncel kararlar (v0.2, 2026-10-12)
+
+İlk taslaktan sonra kullanıcı aşağıdaki kararları verdi. Belgenin geri kalanında eski öneriler tarih için duruyor; eskimiş yerlere not düşüldü.
+
+| Konu | Karar | Kaynak |
+|---|---|---|
+| Ürün yönü | **Oyunlaştırılmış, sürekli hikâye:** *The Missing Signal*; kahraman Aleyna "Alex" Yıldız, yol arkadaşı AI asistan **Hi**. Hazır videolar = bölümler, kısa akış = bölüm klipleri, kişiselleştirme = tekrar ve yan görevler, konuşma = karakterlerle canlı sahne. | H-029, H-030, `OYUN-TASARIMI.md` |
+| Faz yapısı | **Birleşik 4 faz:** F0 kararlar + pilot · F1 MVP · F2 v1 · F3 v2 (§11) | K-17, H-007 |
+| MVP kapsamı | Hikâye modu (Sezon 1, A1, 12 bölüm + prolog; lansmanda 4 bölüm açık, sonra haftada 1), harita, defter, ipucu panosu, FSRS tekrarı, Keşfet (kısa klipler), Hi-A (kural tabanlı koç), editör onay ekranı, hesap + rıza + denetim kaydı + 30 gün geri alınabilir silme, misafir modu (prolog + B1) | H-025, K-26, K-31, H-009, H-047 |
+| Konuşma pratiği | **MVP'de yok.** v1'de (F2) Hi-B ile gelir: metin sohbeti, yerel LLM (Ollama) + RAG ile başlar; üretim sağlayıcısı ölçümle seçilir | H-007, H-047 |
+| Yaş | **13+.** 13 altı kayıt yok. AI sohbeti 18+; 13–17 rehberli mod. Hukuk teyidi bekliyor | H-002, H-047 |
+| Bölge, reklam | **Yalnızca Türkiye.** **Hiç reklam yok.** | H-018, H-020 |
+| AI bütçesi | **Aylık tavan 300 USD.** Tavan dolunca ücretli üretim ve AI özellikleri durur; günlük konuşma kotası v1 öncesi belirlenir | H-003 |
+| Günlük hedef ve bildirim | 5 / 10 / 15 dk; günde en fazla 1 hatırlatma, saati kullanıcı seçer; kırık seri vurgulanmaz, dondurma ve onarma var | H-013, K-16 |
+| Seviye testi | Kademeli, en fazla ~20 soru, atlanabilir; sonuç "önerilen başlangıç seviyesi" | K-06 |
+| Sekmeler | Ana Sayfa · Keşfet · Hikâye · Konuş (MVP'de "yakında") · Profil | K-30 |
+| Çevrimdışı | MVP'de yok (F3) | H-010 |
+| Sosyal medya | Ayrı ve onaylı faz; elle yükleme; AI etiketi gömülü | H-017, K-14 |
+| İçerik onayı | Claude üretir, kullanıcı onaylar; ünite sonunda öğretmen/editör toplu kontrolü | H-028 |
+| Altyazı | Uygulamada zaman damgalı JSON'dan uygulama çizer; satıra dokununca Türkçe anlam paneli | K-03, H-046 |
+| AI etiketi | Uygulama içi videolara gömülmez, bölüm başında ~4 sn not; sosyal medyada gömülü | CLAUDE.md Higgsfield kuralı 6 |
+| Çalışma ortamı | Her şey yerelde (Docker PostgreSQL, yerel içerik sunucusu, iOS simülatörü); sunucu, Bunny Stream, mağaza hesapları en sonda | H-044 |
+
+**Üretim yolu (pilotla doğrulandı, H-024):** GPT Image 2.5 sahne görselleri (9:16, low, 0,5 kr/görsel) → yerel Ken Burns hareket → kilit anlarda Seedance 2.0 Mini (5 kr / 5 sn) → ElevenLabs zaman damgalı ses (-16 LUFS) → yerel kurgu ve paket (`tools/content-pipeline/`). **Bölüm başına ~8,5 kr.** Sezon 1'in B1–B4'ü üretildi; B5–B12 diyalogları onaylı, üretimi kaldı (≈ 8 × 8,5 kr). Kalan Higgsfield kredisi 84,56 (2026-10-12, lite plan).
+
 
 ## Özet (1 dakikada)
 
@@ -19,7 +45,7 @@
 - **Öneri:** "Ücretsiz" kararı korunur. Ama:
   - konuşma pratiği **günlük ücretsiz kota** ve **Velzon'un belirlediği aylık bütçe tavanı** arkasında açılır;
   - kullanıcıya özel video üretilmez; kişiselleştirme ucuz yollarla yapılır (etkinlik, tekrar, şablon video).
-- **İlk yapılacak:** hazır dersler + kısa video akışı + quizler (MVP). Yapay zekâ konuşması v1'de, kotalı gelir.
+- **İlk yapılacak:** hikâye modu (Sezon 1, A1) + Keşfet kısa akışı + defter ve tekrar (MVP). Yapay zekâ konuşması v1'de, kotalı ve tavanlı gelir (güncel kararlar yukarıda).
 - **Teknoloji:** Flutter + Spring Boot 4 + PostgreSQL. KVKK, denetim kaydı, rıza ve hesap silme baştan tasarlanır.
 
 ---
@@ -106,6 +132,8 @@ Kitle: **herkes, A1–C1**. Ancak ürün ve hukuk kararları yaşa göre çok de
 
 Alt menü (öneri): **Bugün** · **Akış** (kısa videolar) · **Dersler** · **Konuş** · **Profil**.
 
+> **Güncel (K-30, H-009, K-06):** Sekmeler Ana Sayfa · Keşfet · Hikâye · Konuş · Profil. Misafir prolog + B1'i kayıtsız oynar; hesap ilerleme için istenir. Seviye testi en fazla ~20 soru ve atlanabilir. Ana ekran tek öğrenme eylemi gösterir (çoğunlukla "Hikâyeye devam").
+
 ### 4.1 Ayak 1 — Hazır ders videoları
 
 **Bir ders nasıl işler (8–12 dakika):**
@@ -117,6 +145,8 @@ Alt menü (öneri): **Bugün** · **Akış** (kısa videolar) · **Dersler** · 
 6. **Özet:** Kazanılan puan, seri, sonraki ders.
 
 **Müfredat:** CEFR'e göre A1 → C1. Her seviyede ~8–10 ünite, her ünitede 4–6 ders. Toplam hedef 250–300 ders, **ama kademeli** (§11). MVP: A1–A2'de 20 ders.
+
+> **Güncel (H-029, K-25…K-27, H-050):** Ders yerine **etkileşimli hikâye bölümü** (5–8 dk, karar anları, yanlışta kibar tepki ve aynı karar anına dönüş). Sezon = seviye; MVP'de Sezon 1 (A1) = prolog + 12 bölüm. Bölüm doğrudan başlıkla açılır; görev ve hedef ifadeler 🎯 panelinde ve bölüm sonunda. Telaffuz puanı açık karar (H-015).
 
 ### 4.2 Ayak 2 — Yapay zekâ konuşma pratiği
 
@@ -162,6 +192,8 @@ Ayrıntı §7'de. Kısaca:
 
 ### 4.5 Seviye testi
 
+> **Güncel (K-06):** kademeli, en fazla ~20 soru, atlanabilir; sonuç "önerilen başlangıç seviyesi". Aşağıdaki ilk öneri bu kararla daraltıldı.
+
 - **Uyarlamalı, 15–25 soru:**
   - kelime;
   - dilbilgisi;
@@ -185,7 +217,7 @@ Ayrıntı §7'de. Kısaca:
   - günde en az 1 "anlamlı etkinlik" seriyi sürdürür (1 ders, 3 kısa video + quiz ya da 1 konuşma oturumu);
   - **seri dondurma:** haftada 1 ücretsiz;
   - seri kaybında 24 saat içinde "kurtarma" görevi verilir (Duolingo bunun DAU'ya etkisini raporladı [1]).
-- **XP ve günlük hedef:** 10 / 20 / 30 dakika seçilir.
+- **XP ve günlük hedef:** 10 / 20 / 30 dakika seçilir. **Güncel (H-013, K-16, K-32):** 5 / 10 / 15 dk; kırık seri vurgulanmaz, kurtarma görevi yok; can/enerji, lig, zaman kilidi ve süreli soru yok.
 - **Rozetler:** "İlk konuşma", "7 gün seri", "100 kelime" gibi.
 - **Lig / sıralama:** MVP'de yoktur, v2'de değerlendirilir. Sıralama sosyal baskı ve çocuk güvenliği riski getirir; isteğe bağlı olmalıdır.
 - **Bildirimler:** Kullanıcının seçtiği saatte, günde en fazla 1 hatırlatma. Bildirim izni sonradan istenir.
@@ -195,6 +227,8 @@ Ayrıntı §7'de. Kısaca:
 ## 5. İçerik üretim hattı (Higgsfield)
 
 ### 5.1 Öğretmen karakteri
+
+> **Güncel (H-005, K-23, H-047):** Öğretmen karakteri hikâyenin içindeki **Hi**'dir: Alex'in telefonundaki AI asistan; yuvarlak, yumuşak ışıklı konuşma balonu ve gözler; fotogerçekçi değil, Soul ID gerekmez. Uygulamada sekmelerde sağ alttaki Hi balonu da aynı karakterdir. Aşağıdaki ilk öneri tarih için duruyor.
 
 - **Kurgusal** bir öğretmen karakteri (ör. çalışma adı "Miss Hi" / "Mr. Velzon"). Higgsfield **Soul ID** ile eğitilir. Soul ID, aynı yüzün tüm görsel ve videolarda tutarlı kalmasını sağlar.
   - Karakterin "kaynak yüzü" de yapay zekâ ile üretilir (Soul 2.0 görsel ≈ 0,12 kredi).
@@ -223,6 +257,8 @@ Ayrıntı §7'de. Kısaca:
 
 Her video için `icerik/<id>/` altında şunlar saklanır: senaryo, prompt'lar, kullanılan model, kredi harcaması ve altyazı dosyaları.
 
+> **Güncel (H-024, H-034):** Gerçek hat şöyle çalışıyor: onaylı diyalog (`story.en.md`, CEFR-J denetimli) → GPT Image 2.5 sahne görselleri → ElevenLabs zaman damgalı ses → yerel Ken Burns + kilit anda Seedance 2.0 Mini → `kurgu.json` ile yerel kurgu → `export_package.py` ile bölüm paketi (segment MP4 + altyazı JSON + `scenes.json`) → `content_lint.py` → editör onayı. Altyazı videoya gömülmez; uygulama çizer. Konuşan kafa çekimi ve Soul ID kullanılmıyor.
+
 ### 5.3 Kredi maliyetleri (ölçülen)
 
 `higgsfield generate cost` ile 2026-10-11'de ölçüldü. Bu ölçüm kredi harcamaz.
@@ -244,7 +280,8 @@ Her video için `icerik/<id>/` altında şunlar saklanır: senaryo, prompt'lar, 
 **Kredinin dolar karşılığı:**
 - Plana göre değişir. Bir 2026 kaynağına göre Starter planında ~0,075 USD/kredi, üst planda ~0,028 USD/kredi [15].
 - Başka bir kaynak farklı plan adları ve fiyatlar veriyor [16].
-- Hesabımız **"lite" planda, 244,25 kredi** kaldı. Lite planın aylık ücreti ve kredi miktarı **doğrulanmadı**.
+- Hesabımız **"lite" planda**; 2026-10-11'de 244,25 kredi vardı, 2026-10-12'de **84,56** kaldı (pilot, B2–B4, arayüz taslakları, jenerik, harita). Lite planın aylık ücreti ve kredi miktarı **doğrulanmadı**.
+- **Güncel (H-024):** Ölçülen gerçek maliyet bölüm başına ~8,5 kr (görsel 0,5 kr/adet + bir kilit klip 5 kr). Aşağıdaki tahmin tablosu ilk taslağa aittir ve gerçek yoldan çok daha pahalıdır.
 
 **Tahmini üretim maliyeti:**
 - Varsayım: 1,5 kat yeniden çekim payı. Ders videolarında üçte biri slayt (kredisiz).
@@ -256,7 +293,11 @@ Her video için `icerik/<id>/` altında şunlar saklanır: senaryo, prompt'lar, 
 
 **Mevcut 244 kredi ancak bir pilot için yeter:** 1 kısa ders + 2–3 kısa video ya da sadece maliyet ve kalite denemesi. Üretime geçmek için plan yükseltmesi gerekir (§13, H-004).
 
+> **Güncel (H-004):** Ucuz yol sayesinde plan yükseltmesi gerekmedi; Sezon 1 ≈ 60–100 kr. Kredi 25'in altına inince kullanıcıya bir kez hatırlatılır.
+
 ### 5.4 Haftalık üretim hızı (öneri)
+
+> **Güncel (K-09, K-26, H-028):** Lansmanda 4 bölüm açık, sonra haftada 1 bölüm. Yazımı Claude yapar, kullanıcı onaylar, ünite sonunda öğretmen/editör toplu kontrol eder. Aşağıdaki kredi tablosu ilk taslağın pahalı video karışımına göredir.
 
 | Dönem | Haftalık hedef | Aylık kredi (ucuz karışım) | Gereken plan |
 |---|---|---|---|
@@ -510,7 +551,7 @@ Bu kurallarla 10 bin MAU'da yapay zekâ maliyeti yaklaşık **1.500–2.600 USD/
 | Konu | Öneri |
 |---|---|
 | 13 yaş altı | **MVP'de alınmaz.** Yaş beyanı ekranında 13 altı seçilirse kayıt tamamlanmaz; nazik bir mesaj gösterilir. Apple Kids ve Google Families kategorilerine girilmez. |
-| 13–17 | Hazır içerik serbesttir. **Konuşma pratiği** için ya veli onayı akışı kurulur ya da 18+ sınırı konur (karar: H-002). Sohbetin sistem talimatı bu yaş grubunda daha sıkıdır; kişisel bilgi (adres, okul, telefon) istemez ve paylaşılırsa uyarır. |
+| 13–17 | Hazır içerik serbesttir. **Karar (H-002, H-047):** serbest AI sohbeti 18+; 13–17 için rehberli mod, veli onayı akışı yok. Sohbetin sistem talimatı bu yaş grubunda daha sıkıdır; kişisel bilgi (adres, okul, telefon) istemez ve paylaşılırsa uyarır. |
 | İçerik | Tüm hazır içerik 13+ uygun yazılır (§5.5). |
 | Üçüncü taraf SDK | Reklam SDK'sı yoktur. Analitik, kendi sunucumuzda ve kimliksiz tutulur. Çökme raporlayıcı dikkatle seçilir. Apple, Kids kategorisinde cihaz kimliği gönderen SDK'ları da sorguluyor [22]. |
 | Mağaza yaş derecesi | Yapay zekâ sohbeti nedeniyle derece 13+ ya da üstü olabilir. Apple'ın 2025'te değişen yaş derecesi sistemi (4+/9+/13+/16+/18+) **doğrulanmalı.** |
@@ -520,7 +561,7 @@ Bu kurallarla 10 bin MAU'da yapay zekâ maliyeti yaklaşık **1.500–2.600 USD/
 
 - Hedef pazar Türkiye. Ancak AB'deki Türk kullanıcılar uygulamayı indirebilir. GDPR m.3/2 kapsamına girme ihtimali vardır.
 - Yaş sınırı m.8'e göre ülkeden ülkeye 13–16 arasındadır.
-- **Öneri:** Başlangıçta mağaza yayınını **Türkiye ile sınırla**. AB'ye açılmak ayrı bir karardır (§13).
+- **Karar (H-018):** Mağaza yayını **yalnızca Türkiye**. AB'ye açılmak ayrı bir karardır (GDPR, AB Yapay Zekâ Yasası).
 
 ### 9.4 Temel kalıplar (hiVelzon'un kendi tasarımı)
 
@@ -587,6 +628,17 @@ Senaryo → Higgsfield CLI (Soul ID, video, ses) → kurgu → altyazı → QC �
 
 ## 11. Yol haritası
 
+> **Güncel (K-17, 2026-10-11): birleşik 4 faz.** Aşağıdaki tablo bu karara göre yazıldı; ilk taslaktaki ders/akış odaklı faz içerikleri hikâye yönüyle değişti.
+
+| Faz | Kapsam | Durum (2026-10-12) |
+|---|---|---|
+| **F0: Kararlar + pilot** | Açık kararlar, Story Bible ve Sezon 1 planı, pilot bölüm (B1) + 3 klip, gerçek maliyet ölçümü | ✅ Bitti (H-024, H-029, H-030) |
+| **F1: MVP** | Hikâye modu (S1, A1), etkileşimli oynatıcı, harita, defter, ipucu panosu, FSRS, Keşfet, Hi-A, onboarding, hesap ve KVKK kalıpları, editör onayı; her şey yerelde, dış hesaplar en sonda (H-044) | 🔄 Sürüyor (`UYGULAMA-PLANI.md`) |
+| **F2: v1** | AI konuşma pratiği (Hi-B; metin, kotalı, 300 USD tavanlı), Sezon 2 (A2), ses rızası ve saklama kuralları (H-008), telaffuz kararı (H-015) | ⏳ |
+| **F3: v2** | Sezon 3 ve sonrası, çevrimdışı, gelişmiş seviye modeli | ⏳ |
+
+**İlk taslaktaki tablo (tarih için):**
+
 > Efor tahminleri, Claude destekli tek geliştirici varsayımıyla kabadır. İçerik üretimi ayrı bir iş koludur ve **paralel** yürür.
 
 | Faz | Kapsam | Kaba efor | Çıkış ölçütü |
@@ -640,8 +692,21 @@ Senaryo → Higgsfield CLI (Soul ID, video, ses) → kurgu → altyazı → QC �
 | Higgsfield fiyat ya da koşul değişikliği | Orta | Orta | Prompt ve kaynak dosyalarını sakla, modelden bağımsız hat, alternatif araç listesi |
 | Duolingo ve benzerlerinin konuşma özelliğini ücretsize çekmesi | Düşük–Orta | Orta | Türkçeye özel içerik ve öğretmen karakteriyle farklılaş |
 | Tek kişilik ekip ve diğer Velzon işleriyle kaynak çakışması | Yüksek | Orta | Net faz sırası, küçük ve doğrulanabilir işler |
+| **Güvenlik:** sırların sızması, hesap ele geçirme, API kötüye kullanımı | Orta | Yüksek | Sırlar repo dışında (`~/.config/hivelzon/`), mobilde sağlayıcı anahtarı yok, giriş hız sınırı, denetim kaydı, bağımlılık güncellemesi (H-037) |
+| **KVKK:** aydınlatma, rıza ve yurt dışı aktarım eksikliği | Orta | Yüksek | Yalnızca ekleme rıza kaydı, 30 gün geri alınabilir silme, veri minimizasyonu, hukukçu teyidi (H-042, H-044) |
+| **Çocuk kullanıcılar** (13–17 ve yaşını yanlış beyan eden 13 altı) | Yüksek | Yüksek | 13 altı kayıt yok, AI sohbeti 18+ ve 13–17 rehberli, reklam ve sosyal akış yok, Keşfet'te 20 dk sınır (K-15), suçlayıcı ya da bağımlılık yaratan dil yok |
+| **AI maliyeti** (v1 sohbet, içerik üretimi) | Orta | Yüksek | 300 USD/ay tavan, her ücretli çağrıdan önce kota ve bütçe kontrolü, tavan yoksa üretim kapalı, Higgsfield'da önce maliyet onayı |
+| **İçerik moderasyonu ve doğruluk** (LLM taslağı, çeviri, AI sohbet yanıtları) | Orta | Yüksek | Deterministik `content-lint`, kullanıcı onayı + dönemsel öğretmen kontrolü (H-028), AI'ın yayın yetkisi yok (K-05), v1'de bildir düğmesi |
+| **Medya saklama** (video barındırma, ham ses, transkript) | Orta | Orta | Medya nesne depolama/CDN'de (Bunny Stream adaptör arkasında), PostgreSQL'de blob yok, ham ses varsayılan saklanmaz (H-008), dış hesap kararı H-044 |
+| **Yerel LLM kalite riski** (Hi-B, Ollama + RAG) | Orta | Orta | v1 öncesi Türk öğrenci örnekleriyle ölçüm; yetersizse barındırılan modele geçiş (`AiTutorPort` adaptörü, H-044); 13–17 rehberli mod |
+| **Ticari lisans** (ElevenLabs ücretsiz plan, kelime listeleri) | Orta | Yüksek | Yayından önce ticari ElevenLabs hesabı (H-006); CEFR-J atıfla, EVP/EGP ve Oxford listeleri kullanılmaz (H-027) |
 
 ### 13.2 Kullanıcıya açık sorular (karar bekleyenler)
+
+> **Güncel (2026-10-12):** 1, 3, 4, 6, 8'in ad kısmı ve 9 karara bağlandı (H-002, H-004, H-005, H-018, H-016 ad yazımı, H-020). 2'nin tavanı kararlaştı (300 USD), kota ayrıntısı açık (H-003). Hâlâ açık: H-003 kota ayrıntısı, H-006 ticari ElevenLabs ve v1 sohbet sağlayıcısı, H-008 ses ve transkript saklama, H-015 telaffuz puanı, H-016 logo/palet/mağaza adı, H-037 öncesi giriş yöntemi, H-001 bu planın son onayı.
+
+**İlk taslaktaki sorular (tarih için):**
+
 
 1. **Yaş politikası (H-002):** MVP 13+ mı? 13–17 yaş için konuşma pratiğinde veli onayı mı, yoksa 18+ sınırı mı? 13 yaş altı (çocuk modu) ileride hedef mi?
 2. **Yapay zekâ bütçesi ve kota (H-003):** Velzon ayda en fazla ne harcamaya hazır (öneri 300 USD ile başlamak)? Tavan dolunca ne olsun (sadece metin modu mu, kapanma mı)? İleride isteğe bağlı premium veya sponsorluk konuşulabilir mi, yoksa kesinlikle hayır mı?

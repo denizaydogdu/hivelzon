@@ -9,7 +9,21 @@
 
 > **Önemli çalışma kuralı:** Bu belge kod yazma izni değildir. İlk adım mevcut depoyu ve iş takip belgelerini inceleyip planı güncellemektir. Kullanıcı `docs/IS-PLANI.md` planını açıkça onaylamadan uygulama kodu, veritabanı migration'ı, harici servis çağrısı veya içerik üretimi başlatılmamalıdır.
 
-> **Depo notu (2026-10-11):** Bu belge kullanıcı tarafından sohbete yapıştırıldı ve olduğu gibi kaydedildi. `docs/IS-PLANI.md` ile çelişen noktalar CLAUDE.md'deki "Plan ile şartname arasındaki açık çelişkiler" bölümünde listelenir; H-001 onayında karara bağlanır.
+> **Depo notu (2026-10-11):** Bu belge kullanıcı tarafından sohbete yapıştırıldı ve olduğu gibi kaydedildi. `docs/IS-PLANI.md` ile çelişen noktalar CLAUDE.md'deki "Plan ile şartname arasındaki çelişkiler" bölümünde listelenir; telaffuz puanı (H-015) dışındakiler karara bağlandı.
+
+> **Güncel karar notları (2026-10-12):** Bu belgenin gövdesi kullanıcının taslağı olarak değiştirilmeden duruyor. Aşağıdaki bölümler sonradan verilen kararlarla **geçersiz kaldı ya da daraldı**; çelişkide `CLAUDE.md` karar tabloları geçerlidir.
+> - **Çalışma kuralı (üstteki not) ve "Durum":** Uygulama planı onaylandı (H-025, `docs/UYGULAMA-PLANI.md`); Faz 1 (MVP) kodlaması sürüyor. İş planının son onayı H-001'de.
+> - **§5.1 P0 "AI konuşma pratiği" ve "konuşma sonrası geri bildirim":** MVP'de yok; v1'de (F2) Hi-B ile gelir (H-007, H-047). Hi-A (kural tabanlı koç, AI yok) MVP'de (H-048).
+> - **§16 Faz 0–5:** Birleşik 4 faza bağlandı: F0 kararlar + pilot · F1 MVP · F2 v1 · F3 v2 (K-17).
+> - **§4.2 günlük hedef 5/10/15 dk:** Bu belgedeki seçenek kabul edildi (H-013); günde en fazla 1 hatırlatma.
+> - **Yaş (§12, §18/10):** 13+; 13 altı kayıt yok; AI sohbeti 18+, 13–17 rehberli (H-002, H-047). Hukuk teyidi bekliyor.
+> - **Ürün yönü:** Ders kataloğu yerine oyunlaştırılmış, sürekli hikâye (*The Missing Signal*; H-029, `docs/OYUN-TASARIMI.md`). Sekmeler: Ana Sayfa · Keşfet · Hikâye · Konuş · Profil (K-30).
+> - **Altyazı biçimi:** Uygulamada WebVTT değil, zaman damgalı JSON'dan uygulamanın çizdiği altyazı; satıra dokununca Türkçe anlam paneli (K-03, H-046). Sosyal medyada gömülü `.ass`.
+> - **Bölüm açılışı:** Her bölüm doğrudan başlıkla açılır; açılışta görev kartı yok, görev 🎯 panelinde (H-050).
+> - **AI etiketi (§8, §12):** Uygulama içi videolara gömülmez, bölüm başında ~4 sn not; sosyal medya ve uygulama dışı videolarda gömülü (CLAUDE.md Higgsfield kuralı 6, K-14).
+> - **Yerel geliştirme:** Sunucu, Bunny Stream ve mağaza hesapları en sona bırakıldı (H-044); o zamana kadar her şey yerelde.
+> - **§10 veri modeli:** Taslaktır, H-037'de kesinleşir. Bilinen eksikler: `refresh_tokens` tablosu ve roller (kullanıcı / editör / yönetici) tanımlı değil; hesap silme durumu burada `DELETION_PENDING`, `docs/IS-PLANI.md` §9.4'te `PENDING_DELETION` yazıyor; tek ad H-037'de seçilecek.
+> - Diğer kararlar: yalnızca Türkiye (H-018), reklam yok (H-020), misafir prolog + B1 (H-009), çevrimdışı F3 (H-010), AI tavanı 300 USD/ay (H-003), içerik onayı Claude üretir + kullanıcı onaylar (H-028).
 
 ---
 
@@ -509,10 +523,12 @@ Aşağıdaki model başlangıç taslağıdır; mevcut repo incelendikten ve kull
 
 ### 10.1 Temel tablolar
 
+> *Not (2026-10-12, H-023): Bu listede `refresh_tokens` (oturum yenileme) tablosu ve kullanıcı rolleri (kullanıcı / editör / yönetici) yok. H-037'de (backend çekirdek) tanımlanacak.*
+
 **`users`**
 - `id` UUID
 - `email` veya mevcut kimlik doğrulama yönteminin gerekli alanı
-- `status` (ACTIVE, DELETION_PENDING, DELETED, SUSPENDED)
+- `status` (ACTIVE, DELETION_PENDING, DELETED, SUSPENDED) — *Not (2026-10-12): `docs/IS-PLANI.md` §9.4'te `PENDING_DELETION` yazıyor; tek ad H-037'de seçilecek.*
 - `created_at`, `updated_at`, `last_login_at`
 - gerekli olmayan kişisel alanları ekleme
 

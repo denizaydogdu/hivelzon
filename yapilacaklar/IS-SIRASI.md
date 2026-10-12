@@ -1,19 +1,25 @@
 # İş Sırası — hiVelzon
 
-> Son güncelleme: 2026-10-11 · Güncelleyen: Claude
+> Son güncelleme: 2026-10-12 · Güncelleyen: Claude
 
 Bu dosya tek takip noktasıdır. Hangi işin hangi sırada yapıldığını, şu an ne üzerinde çalışıldığını ve neyin bittiğini gösterir. Her işin ayrıntısı kendi `H-<numara>-<başlık>.md` dosyasındadır.
 
 ## Nerede kaldık
-- **Şu an:** Planlama, Faz 0. Kod yok.
-- **Önceki not (2026-10-11 gece, kapandı):** `h-046-altyazi-anlam` dalında H-046 kodu bitti ve testli (flutter 63/63, pytest 53/53), **commit edilmedi**. Kaldığımız yer: (1) kullanıcı simülatörde çevirilere bakıp onay/düzeltme verecek; (2) panelde "Deftere ekle" kelimeye dokununca ekran altına düşüyor, düzeltilecek; (3) onaydan sonra `ceviri.tr.json` durumları APPROVED, tek commit: H-046 + H-047/H-048 belgeleri (CLAUDE.md, HI-ASISTAN-VE-KOC.md, UYGULAMA-PLANI.md). Sonra sırada H-035 (harita). Yerel içerik sunucusu: `python3 tools/dev-content-server/serve.py` (127.0.0.1:8787).
-- **Sıradaki adım:**
-  1. Kullanıcı 1. adımda kalan kararları verir. En kritikleri:
-     - H-001 ve H-007: konuşma pratiği MVP'de mi, faz yapısı ne olacak?
-     - H-028: içeriği kim onaylayacak, ilk 3 ayın kapasitesi ne?
-     - İçerik mimarisi kararları (H-026) verildi.
-  2. H-029 ve H-030 onaylandı. Sıradaki yazım işi H-032 (Claude, kodsuz).
-- **Engel:** Kullanıcı kararları.
+- **Şu an:** **Faz 1 (MVP) uygulaması sürüyor** (`docs/UYGULAMA-PLANI.md`, H-025 onaylı). Kod var: `mobile/` (Flutter), `backend/` (Spring Boot 4 iskeleti), `tools/content-pipeline/`, `tools/dev-content-server/`. Son commit `035f890` (H-035); `main` GitHub'da, CI yeşil.
+- **Her şey yerelde** (kullanıcı kararı): Docker PostgreSQL (5434), yerel içerik sunucusu (`python3 tools/dev-content-server/serve.py`, 127.0.0.1:8787), iOS simülatörü "hiVelzon iPhone 17". Sunucu, Bunny Stream, mağaza ve geliştirici hesapları en sonda (H-044).
+- **Biten uygulama işleri:** H-033 repo iskeleti · H-034 bölüm paketi + content-lint · H-045 tasarım yönü (6 taslak, 6 kr) · H-031 etkileşimli oynatıcı · H-046 altyazıya dokun → Türkçe anlam (B1–B4 çevirileri APPROVED) · H-047 Hi kararları · H-049 sezon jeneriği (6,69 kr) · H-050 başlıkla açılış (schemaVersion 2) · H-035 hikâye haritası + Drift ilerleme + kilit kuralı.
+- **İçerik:** B1–B4 üretildi (pilot + B2–B4), jenerik, 6 arayüz taslağı, harita görseli. B5–B12 diyalogları onaylı (H-032) ama üretilmedi; kalan Sezon 1 üretimi ≈ 8 × ~8,5 kr. Higgsfield kredisi **84,56** (lite plan).
+- **Sıradaki adım:** H-036 (defter, ipucu panosu, FSRS; Drift ve H-046'nın "Deftere ekle" + öğrenme olaylarının üzerine). Sonra H-048 (Hi-A), H-037 (backend çekirdek), H-038 … H-044 (`UYGULAMA-PLANI.md` sırası).
+- **Kullanıcı kararı bekleyenler** (kodlamayı durdurmuyor):
+  - H-001: güncellenen iş planının (`docs/IS-PLANI.md`, H-023) son onayı.
+  - H-003: günlük konuşma kotasının ölçüsü, uyarı eşikleri, bütçe sorumlusu (tavan 300 USD/ay kararlaştı; v1 öncesi).
+  - H-006: yayından önce ticari ElevenLabs hesabı; AI sohbet sağlayıcısı (v1).
+  - H-008: ham ses ve transkript saklama (v1 öncesi).
+  - H-015: telaffuz puanı gösterilecek mi.
+  - H-016: logo, palet, tipografi, mağaza adı, "Port Lumen" ad kontrolü.
+  - H-037 öncesi: giriş yöntemi (e-posta + parola mı, Apple / Google mı).
+  - H-023: iş planı güncellemesi yapıldı (2026-10-12), kullanıcının gözden geçirmesini bekliyor.
+- **Engel:** Yok. Dış hesaplar bilerek en sona bırakıldı.
 
 ## Nasıl takip ediyoruz
 - **İş dosyası nerede durur:** Durum değişince dosya klasör değiştirir:
@@ -39,13 +45,13 @@ Bu dosya tek takip noktasıdır. Hangi işin hangi sırada yapıldığını, şu
 ### Adım 1 — Kararlar (kullanıcı)
 | # | İş | Başlık | Öncelik | Bağımlılık | Durum |
 |---|---|---|---|---|---|
-| 1 | H-001 | İş planını gözden geçir ve onayla | Yüksek | H-007 ile birlikte | ⛔ |
+| 1 | H-001 | İş planını gözden geçir ve onayla (uygulama planı H-025 onaylı; güncel `IS-PLANI.md` onayı kaldı) | Yüksek | H-023 | ⛔ |
 | 2 | H-007 | Plan ile şartname arasındaki çelişkileri uzlaştır (konuşma pratiği MVP'de mi?) | Yüksek | H-001 ile birlikte | ✅ |
 | 1a | H-029 | **Oyun ve hikâye tasarımı kararları** (`OYUN-TASARIMI.md` §17) | Yüksek | — | ✅ |
 | 2a | H-026 | İçerik mimarisi kararları (`ICERIK-MIMARISI.md` §14) | Yüksek | H-007 ile birlikte | ✅ |
 | 2b | H-028 | İçerik onayı, roller ve kapasite | Yüksek | H-004 | ✅ |
 | 3 | H-002 | Yaş politikası | Yüksek | — | ✅ |
-| 4 | H-003 | Yapay zekâ aylık bütçe tavanı ve kotalar | Yüksek | — | ⛔ |
+| 4 | H-003 | Yapay zekâ aylık bütçe tavanı ve kotalar (tavan 300 USD/ay kararlaştı; kota ayrıntısı v1 öncesi) | Yüksek | — | ⛔ |
 | 5 | H-006 | Yapay zekâ sağlayıcıları ve yurt dışı aktarım | Yüksek | — | ⛔ |
 | 6 | H-008 | Ham ses ve transkript saklama politikası | Yüksek | H-006 | ⛔ |
 | 7 | H-004 | Higgsfield planı ve video üretim emeği | Yüksek | — | ✅ |
@@ -73,7 +79,7 @@ Bu dosya tek takip noktasıdır. Hangi işin hangi sırada yapıldığını, şu
 |---|---|---|---|---|---|
 | 22b | H-030 | Story Bible, karakter kitabı ve Sezon 1 bölüm planı (Claude yazar; kredisiz) | Yüksek | H-029 | ✅ |
 | 22c | H-032 | Sezon 1 diyalog taslakları B4–B12 (A1 denetimli; kodsuz) | Yüksek | H-030 | ✅ |
-| 23 | H-023 | İş planını şartnameyle ve oyun yönüyle güncelle | Yüksek | H-007, H-026, H-029 | ⏳ |
+| 23 | H-023 | İş planını şartnameyle ve oyun yönüyle güncelle (belge güncellendi; kullanıcı onayı H-001'de) | Yüksek | H-007, H-026, H-029 | 🔄 |
 | 24 | H-024 | Pilot: S1·B1 "A Strange Message" etkileşimli bölüm + 3 klip (kredi harcar, onaylı) | Yüksek | H-004, H-005, H-026, H-027, H-028 | ✅ |
 
 ### Adım 4 — Uygulama planı
@@ -81,7 +87,7 @@ Bu dosya tek takip noktasıdır. Hangi işin hangi sırada yapıldığını, şu
 |---|---|---|---|---|---|
 | 25 | H-025 | Faz 1 (MVP) uygulama planı | Yüksek | H-001, H-007, H-023, H-029 | ✅ |
 
-Plan: `docs/UYGULAMA-PLANI.md`. Kod yazımı H-025 onaylandıktan sonra başlar.
+Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başladı (Adım 5).
 
 ### Adım 5 — Faz 1 (MVP) uygulaması (kod)
 | # | İş | Başlık | Öncelik | Bağımlılık | Durum |
@@ -92,6 +98,7 @@ Plan: `docs/UYGULAMA-PLANI.md`. Kod yazımı H-025 onaylandıktan sonra başlar.
 | 1.2b | H-046 | Altyazıya dokun → Türkçe anlam (kademeli panel) | Yüksek | H-031 | ✅ |
 | 1.2c | H-050 | Bölüm açılışı: doğrudan başlık | Orta | H-049, H-046 | ✅ |
 | — | H-049 | Sezon 1 jeneriği (6,69 kr) | Orta | — | ✅ |
+| — | H-047 | Hi asistanı ve koç kararları (`docs/HI-ASISTAN-VE-KOC.md`) | Yüksek | — | ✅ |
 | 1.3 | H-035 | Hikâye haritası, bölüm kapısı, yerel ilerleme | Yüksek | H-031 | ✅ |
 | 1.4 | H-036 | Defter, ipucu panosu, FSRS | Yüksek | H-035 | ⏳ |
 | 1.4b | H-048 | Hi-A: yönlendiren Hi (balon + kural tabanlı koç) | Yüksek | H-036, H-046 | ⏳ |
@@ -108,6 +115,7 @@ Plan: `docs/UYGULAMA-PLANI.md`. Kod yazımı H-025 onaylandıktan sonra başlar.
 ## Devam eden işler
 | İş | Başlık | Başlangıç | Not |
 |---|---|---|---|
+| H-023 | İş planını kararlarla güncelle | 2026-10-12 | `docs/IS-PLANI.md` v0.2 ve `docs/SARTNAME.md` karar notları yazıldı; kullanıcının gözden geçirmesi ve H-001 onayı bekleniyor |
 
 ## Biten işler
 | İş | Başlık | Bitiş | Doğrulama |
@@ -135,6 +143,17 @@ Plan: `docs/UYGULAMA-PLANI.md`. Kod yazımı H-025 onaylandıktan sonra başlar.
 | H-029 | Oyun ve hikâye tasarımı kararları | 2026-10-11 | Kullanıcı onayı; K-21…K-35 CLAUDE.md'ye işlendi |
 | H-025 | Faz 1 (MVP) uygulama planı | 2026-10-11 | Kullanıcı onayı. `docs/UYGULAMA-PLANI.md`; H-033…H-043 açıldı |
 | H-027 | Lisans doğrulaması | 2026-10-11 | `docs/LISANS-RAPORU.md`. CEFR-J v1.6 omurga; EVP/EGP kullanılmaz; hukukçuya 12 soru |
+| H-028 | İçerik onayı, roller ve kapasite | 2026-10-11 | Kullanıcı kararı: Claude üretir, kullanıcı onaylar; ünite sonunda öğretmen/editör toplu kontrolü. Kalan: öğretmenin kim olacağı |
+| H-007 | Plan–şartname uzlaştırma | 2026-10-11 | Kullanıcı kararı: konuşma pratiği MVP'de yok; birleşik 4 faz (K-17) |
+| H-002 | Yaş politikası | 2026-10-11 | Kullanıcı kararı: 13+, AI sohbeti 18+. Hukukçu teyidi bekliyor |
+| H-004 | Higgsfield planı | 2026-10-11 | Kullanıcı kararı: lite plan ile devam; bölüm başı ~8,5 kr |
+| H-005 | Öğretmen karakteri | 2026-10-11 | Kullanıcı kararı: Hi = ışıklı konuşma balonu ve gözler; Soul ID gerekmez |
+| H-009 | Misafir kullanım | 2026-10-11 | Kullanıcı kararı: prolog + B1 kayıtsız; ilerleme için hesap |
+| H-010 | Çevrimdışı kullanım | 2026-10-11 | Kullanıcı kararı: MVP'de yok (F3) |
+| H-013 | Günlük hedef, seri, bildirim | 2026-10-11 | Kullanıcı kararı: 5/10/15 dk; günde en fazla 1 hatırlatma; seri K-16 |
+| H-017 | Sosyal medya yayın kapsamı | 2026-10-11 | Kullanıcı kararı: ayrı ve onaylı faz; elle yükleme |
+| H-018 | Yayın bölgesi | 2026-10-11 | Kullanıcı kararı: yalnızca Türkiye |
+| H-020 | Reklam yok | 2026-10-11 | Kullanıcı kararı: reklam SDK'sı eklenmez |
 
 ## Günlük
 - **2026-10-11:**
@@ -252,3 +271,4 @@ Plan: `docs/UYGULAMA-PLANI.md`. Kod yazımı H-025 onaylandıktan sonra başlar.
   - H-050 bitti ve commit edildi. Sıradaki: H-035 (hikâye haritası; sezon jeneriği oraya taşınacak). Bekleyen kullanıcı onayları: H-046 çeviriler, H-049 jenerik.
   - Kullanıcı H-046 (çeviriler) ve H-049'u (jenerik) onayladı. H-035 başladı. Sezon haritası görseli üretildi (1 kr onaylı; kredi 84,56).
   - H-035 bitti: harita (map.jpg + 12 nokta), kilit kuralı, Drift ilerleme, Ana Sayfa kartı. Kullanıcı merak cümlelerini onayladı; eski bitirmeler kapı tamam sayılır. Sıradaki: H-036 (defter, ipucu panosu, FSRS).
+  - Belgeler gerçek duruma göre güncellendi (H-023 başladı → `devam-edenler/`): CLAUDE.md (durum satırı, Geliştirme ortamı bölümü, çözülen çelişkiler, kredi 84,56, belge tablosu), IS-SIRASI, H dosyalarının durum satırları, `UYGULAMA-PLANI.md` (durum sütunu), `IS-PLANI.md` v0.2, `SARTNAME.md` başına karar notları, `OYUN-TASARIMI.md`, `ICERIK-MIMARISI.md`, `HI-ASISTAN-VE-KOC.md`, README. Kod ve içerik dosyalarına dokunulmadı.

@@ -1,6 +1,6 @@
 # Hi: her yerde yanında olan asistan ve öğrenme koçu (tasarım taslağı)
 
-**Sürüm:** 0.2 · **Tarih:** 2026-10-11 · **Durum:** Kararlar verildi (H-047, kullanıcı onayı)
+**Sürüm:** 0.2 · **Tarih:** 2026-10-11 · **Durum:** Kararlar verildi (H-047, kullanıcı onayı) · **Ek (2026-10-12):** Hi'nin konu tanıtımı H-048'e taşındı (H-050)
 **Kaynak:** Kullanıcı önerisi (2026-10-11):
 - Hi uygulamanın her yerinde, sağ altta bir balon olarak görünür; basınca yapay zekâ sohbeti açılır.
 - Kullanıcının gelişimini sürekli takip eden bir ajan olur.
@@ -120,7 +120,7 @@ Her aday model bu setle puanlanır: doğruluk, Türkçe açıklama kalitesi, gec
 
 | Faz | Ne gelir | AI / maliyet | Ne zaman |
 |---|---|---|---|
-| **Hi-A: Yönlendiren Hi** | Balon (sağ alt, menünün üstü; hikâye ve görevde gizli); Hi paneli: bugünkü tek öneri + gerekçe, hızlı eylemler, "bu ne demek?" (çeviri ve sözlük verisinden, deterministik); haftalık özet; Türkçeye göre hata ipuçları (hata kataloğu) | **Yok**, kural tabanlı; bütün yaşlar | F1 (MVP); H-036'dan (defter/FSRS) sonra |
+| **Hi-A: Yönlendiren Hi** | Balon (sağ alt, menünün üstü; hikâye ve görevde gizli); Hi paneli: bugünkü tek öneri + gerekçe, hızlı eylemler, "bu ne demek?" (çeviri ve sözlük verisinden, deterministik); haftalık özet; Türkçeye göre hata ipuçları (hata kataloğu); **konu tanıtımı** (yeni dilbilgisi konusu sahnede ilk geçtiğinde kısa, atlanabilir Hi kartı; H-050'den taşındı) | **Yok**, kural tabanlı; bütün yaşlar | F1 (MVP); H-036'dan (defter/FSRS) sonra |
 | **Hi-B: Metin sohbeti** | `AiTutorPort` + Ollama (yerel), RAG (pgvector), güvenlik filtresi, kota; 18+ serbest sohbet, 13–17 rehberli mod; değerlendirme seti ve model karşılaştırması | Yerelde 0; üretim kararı ölçümle | F2 (v1) başı (H-007 ile uyumlu) |
 | **Hi-C: Sesli Hi ve prova** | Yerel STT/TTS adayları, "önce Hi'ye fısılda" provası, sonra karakter sahnesi; telaffuz yalnızca güvenilirse (H-015) | Değerlendirmeyle | F2 (v1) |
 | **Hi-D: Koç ajanı** | Haftalık plan, gerçek hayat köprü görevleri, kişiye göre yan görevler, karakterlerle senaryolu konuşma | — | F3 (v2) |
@@ -139,3 +139,8 @@ Her aday model bu setle puanlanır: doğruluk, Türkçe açıklama kalitesi, gec
 2. AI altyapı yönü: port arkasında yerel Ollama ile başlayıp üretim kararını ölçüme mi bırakalım, yoksa "kesinlikle kendi sunucumuz" kararını şimdiden mi verelim?
 3. 13–17 yaş: rehberli mod mu?
 4. Farklılık ilkelerinden (F1–F5) hangileri önceliklidir?
+
+## 9. Sonradan eklenen (2026-10-12)
+
+- **Hi'nin konu tanıtımı H-048'e (Hi-A) taşındı.** H-050 kararıyla bölümler doğrudan başlıkla açılır; Hi'nin konu tanıtımı başlıktan önce değil, yeni bir dilbilgisi konusu (ör. saatler, fiyatlar) sahnede ilk geçtiği anda kısa ve atlanabilir bir kart olarak gösterilir. `content.json`'daki dilbilgisi hedefinden beslenir, konu başına bir kez gösterilir, defterden yeniden açılabilir. AI kullanmaz.
+- "Bu ne demek?" için veri hazır: H-046'nın onaylı `ceviri.tr.json` dosyaları (B1–B4) ve anlam paneli bileşeni (`mobile/lib/shared/meaning/`).
