@@ -141,9 +141,25 @@ def check_graph(ep_dir: Path, c: dict, source: str = "auto") -> tuple[list[Issue
     return issues, rep
 
 
-def check_translation(ep_dir: Path) -> tuple[list[Issue], dict | None]:
+def check_meanings(tr: Translation, c: dict) -> list[Issue]:
+    """H-052: her hedef ifadenin Türkçe anlamı olmalı (hata; defter kartı ve 🎯 paneli bunu kullanır).
+    Bölüm sözlüğündeki kelimenin anlamı yoksa uyarı (kart yine altyazıdaki anlamı kullanır)."""
+    issues = []
+    for p in c.get("targetPhrases", []) or []:
+        if tr.gloss_phrase(p) is None:
+            issues.append(Issue("error", "target-meaning",
+                                f"hedef ifadenin anlamı yok: \"{p}\" (ceviri.tr.json → phrases)"))
+    for w in c.get("glossary", []) or []:
+        if tr.glossary_meaning(w) is None:
+            issues.append(Issue("warning", "glossary-meaning",
+                                f"sözlük kelimesinin anlamı yok: \"{w}\" (ceviri.tr.json → phrases)"))
+    return issues
+
+
+def check_translation(ep_dir: Path, c: dict | None = None) -> tuple[list[Issue], dict | None]:
     """ceviri.tr.json denetimi (H-046): her altyazı ipucunun Türkçesi ve her kelimenin (özel ad hariç)
-    anlamı olmalı. Kart, karar repliği ve görev kökü için eksikler uyarıdır."""
+    anlamı olmalı. Kart, karar repliği ve görev kökü için eksikler uyarıdır. Hedef ifade ve sözlük
+    anlamları: `check_meanings` (H-052)."""
     if not (ep_dir / TRANSLATION_FILE).exists():
         return [Issue("warning", "translation", f"çeviri yok ({TRANSLATION_FILE})")], None
     try:
@@ -155,6 +171,8 @@ def check_translation(ep_dir: Path) -> tuple[list[Issue], dict | None]:
         issues.append(Issue("warning", "translation", f"çeviri durumu {tr.status} (editör onayı bekliyor, H-028)"))
     for k in tr.duplicates:
         issues.append(Issue("warning", "translation", f"aynı İngilizce metne iki farklı Türkçe: \"{k}\""))
+    if c is not None:
+        issues += check_meanings(tr, c)
     if not (ep_dir / KURGU_FILE).exists():
         return issues, {"lines": len(tr.lines), "status": tr.status}
     try:
@@ -235,7 +253,7 @@ def lint_episode(ep_dir: Path, graph_source: str = "auto") -> EpisodeReport:
     rep.issues += li
     gi, rep.graph = check_graph(ep_dir, c, graph_source)
     rep.issues += gi
-    ti, rep.translation = check_translation(ep_dir)
+    ti, rep.translation = check_translation(ep_dir, c)
     rep.issues += ti
     return rep
 

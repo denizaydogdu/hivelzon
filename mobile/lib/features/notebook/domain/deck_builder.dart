@@ -10,59 +10,9 @@ import 'notebook_item.dart';
 /// Ana yoldaki (ve yan daldaki) segmentlerin altyazıları: düğüm kimliği → iz.
 typedef SubtitleIndex = Map<String, SubtitleTrack>;
 
-/// Bakılan kelime karta dönüşmez: dilbilgisi sözcükleri ve çok kısa kelimeler.
-/// (Seviye üstü sözlük listesi pakete eklenince ona göre süzülecek.)
-const Set<String> kLookupStopWords = {
-  'a',
-  'an',
-  'the',
-  'i',
-  'you',
-  'he',
-  'she',
-  'it',
-  'we',
-  'they',
-  'me',
-  'him',
-  'her',
-  'us',
-  'them',
-  'my',
-  'your',
-  'his',
-  'its',
-  'our',
-  'their',
-  'is',
-  'am',
-  'are',
-  'was',
-  'were',
-  'be',
-  'to',
-  'of',
-  'in',
-  'on',
-  'at',
-  'and',
-  'or',
-  'but',
-  'this',
-  'that',
-  'yes',
-  'no',
-  'not',
-  'ok',
-  'oh',
-  'hi',
-  'hello',
-  "it's",
-  "i'm",
-  'do',
-  'does',
-  'can',
-};
+/// Bakılan kelimenin sözlük anahtarı: küçük harf, düz kesme işareti, baştaki
+/// ve sondaki noktalama atılır.
+String glossaryKey(String w) => _bare(w.trim());
 
 class DeckBuildResult {
   const DeckBuildResult(this.items, {this.skipped = const []});
@@ -106,6 +56,10 @@ class StoryLinkDraft {
 /// - Örnek cümle: ifadenin geçtiği altyazı satırı (+ onaylı Türkçesi).
 /// - Görsel: satırın segmentine en yakın sahne görseli (`stills/`).
 /// - Türkçe anlam: `targetPhraseGloss`, yoksa satırın kalıp/kelime anlamı.
+/// - Altyazıda ve karar anında geçmeyen hedef ifade (ör. B1 *Listen.*):
+///   görsel + anlam, ses yok (H-052).
+/// - Bakılan kelime yalnızca bölüm sözlüğündeyse (`episode.glossary`) karta
+///   dönüşür (H-052).
 DeckBuildResult buildEpisodeDeck(
   Episode episode, {
   required SubtitleIndex subtitles,
@@ -169,8 +123,23 @@ DeckBuildResult buildEpisodeDeck(
         .firstOrNull;
     final option = decision?.options.where((o) => o.correct).firstOrNull;
     final tr = gloss?.tr;
-    if (decision == null || option == null || tr == null) {
+    if (tr == null) {
       skipped.add(phrase);
+      continue;
+    }
+    if (decision == null || option == null) {
+      // Ne altyazıda ne karar anında: görsel + anlam; ses sonra (H-052).
+      add(
+        NotebookItem(
+          kind: kind,
+          textEn: phrase,
+          textTr: tr,
+          contentId: info.id,
+          imagePath: imageNear(episode, episode.start),
+          source: NotebookSource.autoTargetPhrase,
+          createdAt: at,
+        ),
+      );
       continue;
     }
     add(
@@ -190,22 +159,25 @@ DeckBuildResult buildEpisodeDeck(
     );
   }
 
+  final glossary = {for (final g in info.glossary) glossaryKey(g.word): g};
   for (final e in lookups) {
     if (e.contentId != info.id || e.target == LearningEvent.sentence) continue;
-    final word = e.target.toLowerCase().replaceAll('’', "'");
-    if (word.length < 3 || kLookupStopWords.contains(word)) continue;
+    final word = glossaryKey(e.target);
+    final entry = glossary[word];
+    if (entry == null) continue;
     final found = _findCueById(order, subtitles, e.sourceId);
     if (found == null) continue;
     final (node, cue) = found;
     final i = cue.words.indexWhere((w) => _bare(w.w) == word);
     if (i < 0) continue;
     final w = cue.words[i];
-    if (w.gloss == null) continue;
+    final tr = w.gloss ?? entry.tr;
+    if (tr == null) continue;
     add(
       NotebookItem(
         kind: NotebookKind.word,
         textEn: _bareDisplay(w.w, sentenceStart: i == 0),
-        textTr: w.gloss,
+        textTr: tr,
         exampleEn: cue.text,
         exampleTr: cue.tr,
         contentId: info.id,

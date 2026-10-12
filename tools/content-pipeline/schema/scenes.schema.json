@@ -136,6 +136,19 @@
             }
           }
         },
+        "glossary": {
+          "description": "Bölüm sözlüğü (H-052): content.json `glossary` (seviye üstü kelimeler) ve Türkçesi (ceviri.tr.json). Altyazıda bakılan kelimelerden yalnızca bunlar defter kartı olur.",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["w"],
+            "additionalProperties": false,
+            "properties": {
+              "w": { "type": "string", "minLength": 1 },
+              "tr": { "type": "string", "minLength": 1 }
+            }
+          }
+        },
         "prev": { "type": ["string", "null"] },
         "next": { "type": ["string", "null"] },
         "links": {

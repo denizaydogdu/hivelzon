@@ -64,7 +64,9 @@ void main() {
   testWidgets('yeni kullanıcı: tek kart, B1 "Başla"', (tester) async {
     await pump(tester, FakeContentSource(packageIds: _four));
     expect(find.byKey(const ValueKey('home-continue')), findsOneWidget);
-    expect(find.text('HİKÂYEYE DEVAM'), findsOneWidget);
+    expect(find.text('Merhaba!'), findsOneWidget);
+    expect(find.text('Hikâyen'), findsOneWidget);
+    expect(find.text('Bu sezonda 12 bölüm var.'), findsOneWidget);
     expect(find.text('A Strange Message'), findsOneWidget);
     expect(find.text('İpucu 1.'), findsOneWidget);
     expect(find.text('SEZON 1 · BÖLÜM 1'), findsOneWidget);
@@ -84,6 +86,7 @@ void main() {
     expect(find.text('The New Neighbour'), findsOneWidget);
     expect(find.text('SEZON 1 · BÖLÜM 2'), findsOneWidget);
     expect(find.text('Başla'), findsOneWidget);
+    expect(find.text("Bu sezonda 12 bölümden 1'i bitti."), findsOneWidget);
   });
 
   testWidgets('yarım bölüm: "Devam et" kaldığı yerden açar', (tester) async {
@@ -127,7 +130,8 @@ void main() {
   testWidgets('sunucu kapalı: hata ve tekrar dene', (tester) async {
     final source = FakeContentSource(fail: true);
     await pump(tester, source);
-    expect(find.text('Sunucu çalışmıyor'), findsOneWidget);
+    expect(find.text('Bağlantı kurulamadı'), findsOneWidget);
+    expect(find.text('Hikâye yüklenemedi.'), findsOneWidget);
     source.fail = false;
     await tester.tap(find.byKey(const ValueKey('home-retry')));
     await tester.pump();

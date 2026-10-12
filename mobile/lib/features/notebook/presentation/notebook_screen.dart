@@ -4,7 +4,9 @@ import 'package:go_router/go_router.dart';
 
 import '../../../app/router.dart';
 import '../../../app/theme.dart';
+import '../../../l10n/tr_strings.dart';
 import '../../../shared/content/content_providers.dart';
+import '../../../shared/text/turkish.dart';
 import '../../player/presentation/player_screen.dart';
 import '../application/card_audio_player.dart';
 import '../application/notebook_providers.dart';
@@ -63,7 +65,15 @@ class _NotebookScreenState extends ConsumerState<NotebookScreen> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: theme.colorScheme.surface,
+        title: const Text(
+          NotebookTexts.title,
+          style: TextStyle(fontWeight: FontWeight.w700),
+        ),
+      ),
       body: SafeArea(
+        top: false,
         child: CustomScrollView(
           slivers: [
             SliverPadding(
@@ -75,45 +85,6 @@ class _NotebookScreenState extends ConsumerState<NotebookScreen> {
               ),
               sliver: SliverList.list(
                 children: [
-                  Row(
-                    children: [
-                      if (context.canPop())
-                        IconButton(
-                          tooltip: 'Geri',
-                          constraints: const BoxConstraints(
-                            minWidth: 48,
-                            minHeight: 48,
-                          ),
-                          onPressed: () => context.pop(),
-                          icon: const Icon(Icons.arrow_back_rounded),
-                        ),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'PROFİL',
-                              style: theme.textTheme.labelMedium?.copyWith(
-                                letterSpacing: 1.4,
-                                fontWeight: FontWeight.w700,
-                                color: AppColors.ink.withValues(alpha: 0.7),
-                              ),
-                            ),
-                            Semantics(
-                              header: true,
-                              child: Text(
-                                'Defter',
-                                style: theme.textTheme.headlineMedium?.copyWith(
-                                  fontWeight: FontWeight.w700,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: AppSpacing.sm),
                   SegmentedButton<int>(
                     key: const ValueKey('notebook-tabs'),
                     showSelectedIcon: false,
@@ -123,11 +94,25 @@ class _NotebookScreenState extends ConsumerState<NotebookScreen> {
                       selectedForegroundColor: Colors.white,
                     ),
                     segments: const [
-                      ButtonSegment(value: 0, label: Text('İfadeler')),
-                      ButtonSegment(value: 1, label: Text('İpucu panosu')),
+                      ButtonSegment(
+                        value: 0,
+                        label: Text(NotebookTexts.tabPhrases),
+                      ),
+                      ButtonSegment(
+                        value: 1,
+                        label: Text(NotebookTexts.tabClues),
+                      ),
                     ],
                     selected: {_tab},
                     onSelectionChanged: (s) => setState(() => _tab = s.first),
+                  ),
+                  const SizedBox(height: AppSpacing.xs),
+                  Text(
+                    _tab == 0
+                        ? NotebookTexts.phrasesIntro
+                        : NotebookTexts.cluesIntro,
+                    key: const ValueKey('notebook-intro'),
+                    style: theme.textTheme.bodyMedium,
                   ),
                   const SizedBox(height: AppSpacing.sm),
                 ],
@@ -156,7 +141,8 @@ class _NotebookScreenState extends ConsumerState<NotebookScreen> {
         padding: pad.copyWith(top: AppSpacing.md),
         sliver: SliverToBoxAdapter(
           child: Text(
-            'Topladığım ifadeler',
+            NotebookTexts.listHeading(entries.value?.length ?? 0),
+            key: const ValueKey('notebook-list-heading'),
             style: theme.textTheme.titleMedium?.copyWith(
               fontWeight: FontWeight.w700,
             ),
@@ -170,7 +156,7 @@ class _NotebookScreenState extends ConsumerState<NotebookScreen> {
             key: const ValueKey('notebook-search'),
             decoration: InputDecoration(
               prefixIcon: const Icon(Icons.search_rounded),
-              hintText: 'İfade ya da Türkçesi ara',
+              hintText: NotebookTexts.search,
               filled: true,
               fillColor: Colors.white.withValues(alpha: 0.7),
               border: OutlineInputBorder(
@@ -178,7 +164,7 @@ class _NotebookScreenState extends ConsumerState<NotebookScreen> {
                 borderSide: BorderSide.none,
               ),
             ),
-            onChanged: (v) => setState(() => _query = v.trim().toLowerCase()),
+            onChanged: (v) => setState(() => _query = lowerTr(v.trim())),
           ),
         ),
       ),
@@ -187,7 +173,7 @@ class _NotebookScreenState extends ConsumerState<NotebookScreen> {
         AsyncError() => const SliverToBoxAdapter(
           child: _Message(
             icon: Icons.error_outline_rounded,
-            text: 'Defter açılamadı. Uygulamayı yeniden başlatmayı dene.',
+            text: NotebookTexts.loadError,
           ),
         ),
         _ => const SliverToBoxAdapter(
@@ -206,10 +192,7 @@ class _NotebookScreenState extends ConsumerState<NotebookScreen> {
       return const SliverToBoxAdapter(
         child: _Message(
           icon: Icons.menu_book_outlined,
-          text:
-              'Defterin henüz boş. Bir bölümü bitirince hedef ifadeler buraya '
-              'gelir. Altyazıda bir kelimeye dokunup "Deftere ekle" de '
-              'diyebilirsin.',
+          text: NotebookTexts.empty,
         ),
       );
     }
@@ -218,15 +201,16 @@ class _NotebookScreenState extends ConsumerState<NotebookScreen> {
         ? all
         : [
             for (final e in all)
-              if (e.item.textEn.toLowerCase().contains(q) ||
-                  (e.item.textTr?.toLowerCase().contains(q) ?? false))
+              if (lowerTr(e.item.textEn).contains(q) ||
+                  (e.item.textTr != null &&
+                      lowerTr(e.item.textTr!).contains(q)))
                 e,
           ];
     if (list.isEmpty) {
       return const SliverToBoxAdapter(
         child: _Message(
           icon: Icons.search_off_rounded,
-          text: 'Eşleşen ifade yok.',
+          text: NotebookTexts.noMatch,
         ),
       );
     }
@@ -276,7 +260,7 @@ class _NotebookScreenState extends ConsumerState<NotebookScreen> {
             Align(
               alignment: Alignment.centerRight,
               child: IconButton(
-                tooltip: 'Kapat',
+                tooltip: CommonTexts.close,
                 constraints: const BoxConstraints(minWidth: 48, minHeight: 48),
                 onPressed: () => Navigator.of(context).maybePop(),
                 icon: const Icon(Icons.close_rounded),
@@ -305,7 +289,7 @@ class _NotebookScreenState extends ConsumerState<NotebookScreen> {
     refreshNotebook(ref);
     if (removed) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('"${e.item.textEn}" defterden çıkarıldı.')),
+        SnackBar(content: Text(NotebookTexts.removed(e.item.textEn))),
       );
     }
   }
@@ -320,7 +304,7 @@ class _NotebookScreenState extends ConsumerState<NotebookScreen> {
             AsyncData(:final value) => _ClueBoard(data: value),
             AsyncError() => const _Message(
               icon: Icons.error_outline_rounded,
-              text: 'İpucu panosu açılamadı.',
+              text: NotebookTexts.cluesError,
             ),
             _ => const Padding(
               padding: EdgeInsets.all(AppSpacing.md),
@@ -335,9 +319,9 @@ class _NotebookScreenState extends ConsumerState<NotebookScreen> {
 }
 
 String _dueText(ReviewCardState c) {
-  if (c.isNew) return 'Yeni kart: ilk tekrarını bekliyor.';
+  if (c.isNew) return NotebookTexts.dueNew;
   final now = DateTime.now().toUtc();
-  if (!c.fsrs.due.isAfter(now)) return 'Tekrar zamanı geldi.';
+  if (!c.fsrs.due.isAfter(now)) return NotebookTexts.dueNow;
   final local = c.fsrs.due.toLocal();
   final today = DateTime.now();
   final days = DateTime(
@@ -345,12 +329,12 @@ String _dueText(ReviewCardState c) {
     local.month,
     local.day,
   ).difference(DateTime(today.year, today.month, today.day)).inDays;
-  if (days <= 0) return 'Bugün yeniden gelecek.';
-  if (days == 1) return 'Yarın yeniden gelecek.';
-  return '$days gün sonra yeniden gelecek.';
+  if (days <= 0) return NotebookTexts.dueToday;
+  if (days == 1) return NotebookTexts.dueTomorrow;
+  return NotebookTexts.dueInDays(days);
 }
 
-/// Tekrar girişi (T5 üst kart).
+/// "Kelime tekrarı" kartı (T5 üst kart): sayı cümle içinde, tahmini süreyle.
 class _ReviewCard extends ConsumerWidget {
   const _ReviewCard({required this.overview});
 
@@ -371,7 +355,7 @@ class _ReviewCard extends ConsumerWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Text(
-              'TEKRAR',
+              upperTr(NotebookTexts.reviewHeading),
               style: theme.textTheme.labelLarge?.copyWith(
                 color: AppColors.seaBlue,
                 fontWeight: FontWeight.w700,
@@ -381,21 +365,21 @@ class _ReviewCard extends ConsumerWidget {
             const SizedBox(height: 4),
             Text(
               o == null
-                  ? 'Kartlar hazırlanıyor…'
+                  ? NotebookTexts.reviewPreparing
                   : n > 0
-                  ? '$n kart seni bekliyor.'
+                  ? NotebookTexts.reviewDue(n, HomeTexts.reviewMinutes(n))
                   : o.totalItems == 0
-                  ? 'Bölüm bitirdikçe kartların burada birikir.'
-                  : 'Bugünlük tekrar bitti. Kartlar zamanı gelince geri gelir.',
+                  ? NotebookTexts.reviewEmpty
+                  : NotebookTexts.reviewDoneToday,
+              key: const ValueKey('notebook-review-text'),
               style: theme.textTheme.titleMedium?.copyWith(
-                fontWeight: FontWeight.w600,
+                fontWeight: FontWeight.w500,
               ),
             ),
             if (o != null && n > 0) ...[
               const SizedBox(height: 4),
               Text(
-                'Resme bak, dinle, seç. Bilmediğin kart sorun değil: '
-                'oturumun sonunda yeniden gelir.',
+                NotebookTexts.reviewHowTo,
                 style: theme.textTheme.bodyMedium,
               ),
               const SizedBox(height: AppSpacing.sm),
@@ -404,7 +388,7 @@ class _ReviewCard extends ConsumerWidget {
                 onPressed: () => openReview(context, ref),
                 style: FilledButton.styleFrom(minimumSize: const Size(48, 48)),
                 icon: const Icon(Icons.play_arrow_rounded),
-                label: const Text('Tekrara başla'),
+                label: const Text(NotebookTexts.reviewStart),
               ),
             ],
           ],
@@ -457,7 +441,7 @@ class _EntryTile extends StatelessWidget {
                       Text(
                         item.textEn,
                         style: theme.textTheme.titleMedium?.copyWith(
-                          fontWeight: FontWeight.w600,
+                          fontWeight: FontWeight.w500,
                         ),
                       ),
                       if (item.textTr != null)
@@ -474,12 +458,12 @@ class _EntryTile extends StatelessWidget {
                 if (onRemove != null)
                   PopupMenuButton<String>(
                     key: ValueKey('entry-menu-${item.key}'),
-                    tooltip: 'Seçenekler',
+                    tooltip: NotebookTexts.options,
                     onSelected: (_) => onRemove!(),
                     itemBuilder: (_) => const [
                       PopupMenuItem(
                         value: 'remove',
-                        child: Text('Defterden çıkar'),
+                        child: Text(NotebookTexts.remove),
                       ),
                     ],
                   )
@@ -487,7 +471,7 @@ class _EntryTile extends StatelessWidget {
                   const Icon(
                     Icons.chevron_right_rounded,
                     color: AppColors.ink,
-                    semanticLabel: 'Kartı aç',
+                    semanticLabel: NotebookTexts.openCard,
                   ),
               ],
             ),
@@ -509,9 +493,7 @@ class _ClueBoard extends StatelessWidget {
     if (data.isEmpty) {
       return const _Message(
         icon: Icons.push_pin_outlined,
-        text:
-            'Henüz ipucu yok. Bölüm sonunda bulduğun ipuçları ve açık sorular '
-            'burada toplanır.',
+        text: NotebookTexts.cluesEmpty,
       );
     }
     final heading = theme.textTheme.titleMedium?.copyWith(
@@ -522,7 +504,7 @@ class _ClueBoard extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         if (data.openQuestions.isNotEmpty) ...[
-          Text('Açık sorular', style: heading),
+          Text(NotebookTexts.openQuestions, style: heading),
           const SizedBox(height: AppSpacing.xs),
           for (final q in data.openQuestions) ...[
             Card(
@@ -535,7 +517,7 @@ class _ClueBoard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'AÇIK SORU · BÖLÜM ${q.openedNumber}',
+                      NotebookTexts.openQuestionLabel(q.openedNumber),
                       style: theme.textTheme.labelMedium?.copyWith(
                         color: AppColors.lighthouseYellow,
                         fontWeight: FontWeight.w700,
@@ -547,13 +529,13 @@ class _ClueBoard extends StatelessWidget {
                       q.textTr,
                       style: theme.textTheme.titleMedium?.copyWith(
                         color: Colors.white,
-                        fontWeight: FontWeight.w600,
+                        fontWeight: FontWeight.w500,
                       ),
                     ),
                     if (q.partialNote != null) ...[
                       const SizedBox(height: 4),
                       Text(
-                        'Şimdilik bildiğin: ${q.partialNote}',
+                        NotebookTexts.partialNote(q.partialNote!),
                         style: theme.textTheme.bodyMedium?.copyWith(
                           color: Colors.white.withValues(alpha: 0.9),
                         ),
@@ -568,7 +550,7 @@ class _ClueBoard extends StatelessWidget {
           const SizedBox(height: AppSpacing.sm),
         ],
         if (data.clues.isNotEmpty) ...[
-          Text('Bulduğun ipuçları', style: heading),
+          Text(NotebookTexts.foundClues, style: heading),
           const SizedBox(height: AppSpacing.xs),
           for (final e in data.clues.entries) ...[
             Text(
@@ -617,7 +599,9 @@ class _ClueBoard extends StatelessWidget {
 
   static String _episodeLabel(String contentId) {
     final m = RegExp(r'-(\d{3})$').firstMatch(contentId);
-    return m == null ? contentId : 'BÖLÜM ${int.parse(m.group(1)!)}';
+    return m == null
+        ? contentId
+        : NotebookTexts.clueEpisode(int.parse(m.group(1)!));
   }
 }
 

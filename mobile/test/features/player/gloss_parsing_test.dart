@@ -90,8 +90,13 @@ void main() {
       'Beni duyabiliyor musun?',
     );
     expect(b1.targetPhraseGloss['Where is…?']!.tr, '… nerede?');
-    // Anlamı olmayan ifade listede yok (dokunulmaz).
-    expect(b1.targetPhraseGloss.containsKey('Listen.'), isFalse);
+    // Altyazıda geçmeyen ifade de anlamını `phrases`tan alır (H-052).
+    expect(b1.targetPhraseGloss['Listen.']!.tr, 'Dinle.');
+    // Bölüm sözlüğü (H-052).
+    expect(
+      [for (final g in b1.glossary) '${g.word}=${g.tr}'],
+      ['channel=kanal'],
+    );
     final b4 = loadFixture('A1-004').info;
     expect(b4.targetPhraseGloss['on Friday']!.words.last.gloss, 'cuma');
   });

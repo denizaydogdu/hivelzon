@@ -4,42 +4,48 @@ import 'package:go_router/go_router.dart';
 
 import '../../../app/router.dart';
 import '../../../app/theme.dart';
+import '../../../l10n/tr_strings.dart';
 import '../../../shared/content/content_providers.dart';
+import '../../../shared/widgets/page_header.dart';
 import '../../notebook/application/notebook_providers.dart';
 import '../../notebook/presentation/notebook_screen.dart';
+import '../../profile/application/profile_providers.dart';
 import '../../story/application/story_providers.dart';
 import '../../story/domain/season_map.dart';
 
-/// Ana Sayfa: tek öğrenme eylemi — "Hikâyeye devam" kartı (H-035, §11.2).
+/// Ana Sayfa (H-035, H-036, H-053): selam + iki başlıklı bölüm.
 ///
-/// Yarım kalan bölüm varsa "Devam et" (kaldığı yerden), yoksa sıradaki bölüm
-/// için "Başla". Oynanacak bölüm kalmadıysa sıradaki bölümün "yakında" olduğu
-/// sakin bir dille söylenir (tarih ve geri sayım yok).
+/// - **Hikâyen** (birincil, tek öğrenme eylemi): yarım kalan bölüm varsa
+///   "Devam et" (kaldığı yerden), yoksa sıradaki bölüm için "Başla".
+///   Oynanacak bölüm kalmadıysa sıradakinin "hazırlandığı" sakin bir dille
+///   söylenir (tarih ve geri sayım yok).
+/// - **Kelime tekrarı** (ikincil): tekrar zamanı gelen ifade sayısı ve tahmini
+///   süre; yoksa sakin bir durum cümlesi.
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final map = ref.watch(seasonMapProvider);
-    final theme = Theme.of(context);
+    final name = ref.watch(displayNameProvider).value;
     return Scaffold(
       body: SafeArea(
         child: ListView(
           padding: const EdgeInsets.all(AppSpacing.sm),
           children: [
-            Text(
-              'Merhaba',
-              style: theme.textTheme.headlineSmall?.copyWith(
-                fontWeight: FontWeight.w700,
-              ),
+            PageHeader(
+              title: HomeTexts.greeting(name),
+              subtitle: HomeTexts.subtitle,
             ),
-            const SizedBox(height: AppSpacing.sm),
+            const SizedBox(height: AppSpacing.md),
+            const SectionHeading(HomeTexts.storySection),
+            const SizedBox(height: AppSpacing.xs),
             switch (map) {
               AsyncData(:final value) => _ContinueCard(map: value),
               AsyncError() => _InfoCard(
                 icon: Icons.cloud_off_rounded,
-                title: 'Sunucu çalışmıyor',
-                body: 'Hikâye yüklenemedi.',
+                title: CommonTexts.serverDownTitle,
+                body: HomeTexts.storyError,
                 action: OutlinedButton.icon(
                   key: const ValueKey('home-retry'),
                   onPressed: () => retrySeasonMap(ref),
@@ -47,17 +53,21 @@ class HomeScreen extends ConsumerWidget {
                     minimumSize: const Size(48, 48),
                   ),
                   icon: const Icon(Icons.refresh_rounded),
-                  label: const Text('Tekrar dene'),
+                  label: const Text(CommonTexts.retry),
                 ),
               ),
               _ => const _InfoCard(
                 icon: Icons.hourglass_empty_rounded,
-                title: 'Hikâye yükleniyor…',
+                title: HomeTexts.storyLoading,
                 body: '',
                 loading: true,
               ),
             },
-            // İkincil eylem: yalnızca bekleyen kart varsa (tek öğrenme eylemi ilkesi).
+            const SizedBox(height: AppSpacing.md),
+            const SectionHeading(HomeTexts.reviewSection),
+            const SizedBox(height: AppSpacing.xs),
+            // İkincil eylem: hikâye kartından sonra, daha sade (tek öğrenme
+            // eylemi ilkesi).
             const _ReviewEntry(),
           ],
         ),
@@ -81,13 +91,13 @@ class _ContinueCard extends ConsumerWidget {
         key: const ValueKey('home-continue'),
         icon: Icons.auto_stories_outlined,
         title: soon == null
-            ? 'Sezonu bitirdin'
-            : 'Bölüm ${soon.number} hazırlanıyor',
-        body: soon?.teaser ?? 'Bölümleri haritadan yeniden oynayabilirsin.',
+            ? HomeTexts.seasonDone
+            : HomeTexts.comingSoon(soon.number),
+        body: soon?.teaser ?? HomeTexts.seasonDoneBody,
         action: OutlinedButton(
           onPressed: () => context.go(AppRoutes.story),
           style: OutlinedButton.styleFrom(minimumSize: const Size(48, 48)),
-          child: const Text('Haritaya git'),
+          child: const Text(HomeTexts.goToMap),
         ),
       );
     }
@@ -103,7 +113,7 @@ class _ContinueCard extends ConsumerWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           AspectRatio(
-            aspectRatio: 16 / 9,
+            aspectRatio: 2 / 1,
             child: Stack(
               fit: StackFit.expand,
               children: [
@@ -135,7 +145,7 @@ class _ContinueCard extends ConsumerWidget {
                   bottom: AppSpacing.sm,
                   right: AppSpacing.sm,
                   child: Text(
-                    'SEZON ${map.season} · BÖLÜM ${focus.number}',
+                    HomeTexts.episodeLabel(map.season, focus.number),
                     style: theme.textTheme.labelLarge?.copyWith(
                       color: AppColors.lighthouseYellow,
                       fontWeight: FontWeight.w700,
@@ -154,14 +164,6 @@ class _ContinueCard extends ConsumerWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                Text(
-                  'HİKÂYEYE DEVAM',
-                  style: theme.textTheme.labelLarge?.copyWith(
-                    color: theme.colorScheme.primary,
-                    fontWeight: FontWeight.w700,
-                    letterSpacing: 1.2,
-                  ),
-                ),
                 const SizedBox(height: 4),
                 Semantics(
                   header: true,
@@ -176,6 +178,14 @@ class _ContinueCard extends ConsumerWidget {
                   const SizedBox(height: 4),
                   Text(focus.teaser!, style: theme.textTheme.bodyLarge),
                 ],
+                const SizedBox(height: AppSpacing.xs),
+                Text(
+                  HomeTexts.seasonProgress(map.completedCount, map.total),
+                  key: const ValueKey('home-season-progress'),
+                  style: theme.textTheme.bodyMedium?.copyWith(
+                    color: theme.colorScheme.onSurface.withValues(alpha: 0.75),
+                  ),
+                ),
                 const SizedBox(height: AppSpacing.sm),
                 FilledButton.icon(
                   key: const ValueKey('home-continue-play'),
@@ -189,7 +199,7 @@ class _ContinueCard extends ConsumerWidget {
                     minimumSize: const Size(48, 48),
                   ),
                   icon: const Icon(Icons.play_arrow_rounded),
-                  label: Text(resume ? 'Devam et' : 'Başla'),
+                  label: Text(resume ? HomeTexts.resume : HomeTexts.play),
                 ),
               ],
             ),
@@ -200,37 +210,72 @@ class _ContinueCard extends ConsumerWidget {
   }
 }
 
-/// "Tekrar (n)" (H-036): hikâye kartının altında, sade ve ikincil.
+/// "Kelime tekrarı" kartı (H-036, H-053): sayı cümle içinde, tahmini süreyle.
+/// Tekrar zamanı gelen ifade yoksa sakin bir durum cümlesi; düğme yok.
 class _ReviewEntry extends ConsumerWidget {
   const _ReviewEntry();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final n = ref.watch(reviewOverviewProvider).value?.sessionCount ?? 0;
-    if (n <= 0) return const SizedBox.shrink();
+    final overview = ref.watch(reviewOverviewProvider);
     final theme = Theme.of(context);
-    return Padding(
-      padding: const EdgeInsets.only(top: AppSpacing.sm),
-      child: Material(
-        color: Colors.transparent,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(AppTheme.radius),
-          side: BorderSide(color: AppColors.seaBlue.withValues(alpha: 0.35)),
-        ),
-        clipBehavior: Clip.antiAlias,
-        child: ListTile(
-          key: const ValueKey('home-review'),
-          minTileHeight: 56,
-          leading: const Icon(Icons.style_rounded, color: AppColors.seaBlue),
-          title: Text(
-            'Tekrar ($n)',
-            style: theme.textTheme.titleMedium?.copyWith(
-              fontWeight: FontWeight.w600,
+    final o = overview.value;
+    final n = o?.sessionCount ?? 0;
+    final String text;
+    if (o == null) {
+      text = HomeTexts.reviewLoading;
+    } else if (n > 0) {
+      text = HomeTexts.reviewDue(n, HomeTexts.reviewMinutes(n));
+    } else if (o.totalItems == 0) {
+      text = HomeTexts.reviewEmpty;
+    } else {
+      text = HomeTexts.reviewNone;
+    }
+    return Card(
+      key: const ValueKey('home-review'),
+      margin: EdgeInsets.zero,
+      elevation: 0,
+      color: Colors.transparent,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(AppTheme.radius),
+        side: BorderSide(color: AppColors.seaBlue.withValues(alpha: 0.35)),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(AppSpacing.sm),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Icon(Icons.style_rounded, color: AppColors.seaBlue),
+                const SizedBox(width: AppSpacing.sm),
+                Expanded(
+                  child: Text(
+                    text,
+                    key: const ValueKey('home-review-text'),
+                    style: n > 0
+                        ? theme.textTheme.titleMedium?.copyWith(
+                            fontWeight: FontWeight.w500,
+                          )
+                        : theme.textTheme.bodyLarge,
+                  ),
+                ),
+              ],
             ),
-          ),
-          subtitle: const Text('Defterindeki ifadeler'),
-          trailing: const Icon(Icons.chevron_right_rounded),
-          onTap: () => openReview(context, ref),
+            if (n > 0) ...[
+              const SizedBox(height: AppSpacing.sm),
+              OutlinedButton.icon(
+                key: const ValueKey('home-review-start'),
+                onPressed: () => openReview(context, ref),
+                style: OutlinedButton.styleFrom(
+                  minimumSize: const Size(48, 48),
+                ),
+                icon: const Icon(Icons.play_arrow_rounded),
+                label: const Text(HomeTexts.reviewStart),
+              ),
+            ],
+          ],
         ),
       ),
     );

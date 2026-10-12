@@ -127,6 +127,16 @@
         ]
       }
     ],
+    "glossary": [
+      {
+        "w": "harbour",
+        "tr": "liman"
+      },
+      {
+        "w": "next to",
+        "tr": "…-in yanında"
+      }
+    ],
     "estimatedMinutes": 7
   },
   "flags": [],

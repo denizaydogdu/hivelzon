@@ -207,12 +207,25 @@ void main() {
           'Yes, I can.',
           'Again, please.',
           'Where is…?',
+          'Listen.',
           'channel',
         });
         expect((await store.clues()).map((c) => c.clueId), ['C1', 'C2']);
         final links = await store.storyLinks();
         expect(links.single.openQuestionTr, 'Old Station nerede?');
         expect(await store.meta(DeckSync.markerKey('A1-001')), startsWith('v'));
+        expect(
+          DeckSync.isCurrentMarker(
+            await store.meta(DeckSync.markerKey('A1-001')),
+          ),
+          isTrue,
+        );
+        // Eski biçim işareti (H-052 öncesi): bir kez yeniden aktarılır,
+        // var olan kartlar çoğalmaz.
+        await store.setMeta(DeckSync.markerKey('A1-001'), 'v1 items=4');
+        expect(await sync.syncCompleted(), 1);
+        expect((await store.entries()).length, entries.length);
+        expect(await sync.syncCompleted(), 0);
       },
     );
 

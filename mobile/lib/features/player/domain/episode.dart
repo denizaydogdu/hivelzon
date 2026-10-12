@@ -221,6 +221,7 @@ class EpisodeInfo {
     required this.targetPhrases,
     required this.links,
     this.targetPhraseGloss = const {},
+    this.glossary = const [],
     this.prev,
     this.next,
     this.estimatedMinutes,
@@ -248,6 +249,11 @@ class EpisodeInfo {
               g['chunks'],
             ),
       },
+      glossary: [
+        for (final g in _list(j['glossary']))
+          if (g is Map && g['w'] is String)
+            GlossaryEntry(g['w'] as String, tr: g['tr'] as String?),
+      ],
       links: EpisodeLinks.fromJson(j['links']),
       prev: j['prev'] as String?,
       next: j['next'] as String?,
@@ -268,10 +274,22 @@ class EpisodeInfo {
 
   /// Hedef ifadenin Türkçe anlamı (🎯 paneli, H-050). Anlamı olmayan ifade yoktur.
   final Map<String, Gloss> targetPhraseGloss;
+
+  /// Bölüm sözlüğü (seviye üstü kelimeler, H-052). Altyazıda bakılan
+  /// kelimelerden yalnızca bunlar defter kartı olur.
+  final List<GlossaryEntry> glossary;
   final EpisodeLinks links;
   final String? prev;
   final String? next;
   final double? estimatedMinutes;
+}
+
+/// Bölüm sözlüğündeki kelime ve Türkçesi (`episode.glossary`, H-052).
+class GlossaryEntry {
+  const GlossaryEntry(this.word, {this.tr});
+
+  final String word;
+  final String? tr;
 }
 
 class FlagDecl {

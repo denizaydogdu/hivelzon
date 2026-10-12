@@ -31,7 +31,7 @@ Bu dosya tek takip noktasıdır. Hangi işin hangi sırada yapıldığını, şu
   - H dosyasının `Durum` satırı güncellenir;
   - **Günlük** bölümüne bir satır eklenir.
 - **Biten işler:** "Biten işler" tablosuna doğrulama kanıtıyla birlikte yazılır.
-- **Numaralar:** Tek sayaçla verilir. Sıradaki boş numara: **H-053**.
+- **Numaralar:** Tek sayaçla verilir. Sıradaki boş numara: **H-054**.
 
 **Durum simgeleri:**
 - ⛔ Kullanıcı kararı bekliyor
@@ -101,7 +101,8 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 | — | H-047 | Hi asistanı ve koç kararları (`docs/HI-ASISTAN-VE-KOC.md`) | Yüksek | — | ✅ |
 | 1.3 | H-035 | Hikâye haritası, bölüm kapısı, yerel ilerleme | Yüksek | H-031 | ✅ |
 | 1.4 | H-036 | Defter, ipucu panosu, FSRS | Yüksek | H-035 | ✅ |
-| 1.4' | H-052 | Defter ince ayarı ("Listen.", sözlük filtresi) | Orta | H-036 | ⏳ |
+| 1.4' | H-052 | Defter ince ayarı ("Listen.", sözlük filtresi) | Orta | H-036 | ✅ |
+| 1.4' | H-053 | Arayüz metinleri ve sayfa netliği | Yüksek | H-036 | ✅ |
 | 1.4a | H-051 | Hikâye mekânlarına bağlı konu setleri + sahne avı | Yüksek | H-036 | ⏳ |
 | 1.4b | H-048 | Hi-A: yönlendiren Hi (balon + kural tabanlı koç) | Yüksek | H-036, H-046 | ⏳ |
 | 1.5 | H-037 | Backend çekirdek | Yüksek | H-033 | ⏳ |
@@ -122,6 +123,8 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 ## Biten işler
 | İş | Başlık | Bitiş | Doğrulama |
 |---|---|---|---|
+| H-053 | Arayüz metinleri ve sayfa netliği | 2026-10-12 | `docs/ARAYUZ-METINLERI.md`; "Merhaba Deniz!", Hikâyen / Kelime tekrarı bölümleri; Profil'de isteğe bağlı ad; flutter test 193/193 |
+| H-052 | Defter ince ayarı | 2026-10-12 | "Listen." ve 2 eksik anlam eklendi (kullanıcı onayı); sözlük filtresi; pytest 70/70 |
 | H-036 | Defter, ipucu panosu, FSRS tekrarı | 2026-10-12 | flutter test 180/180; FSRS-6 py-fsrs 6.3.2 portu, 159 adım birebir; simülatörde taşıma, Bilmiyorum akışı, 10 dk yeniden öğrenme, ses doğrulandı |
 | H-035 | Hikâye haritası ve kalıcı ilerleme | 2026-10-12 | flutter test 129/129, pytest 64/64; simülatörde temiz kurulum → B1 bitir → B2 açıldı → yeniden açılışta korundu; Drift; harita görseli 1 kr |
 | H-046 | Altyazıya dokun → Türkçe anlam | 2026-10-12 | Kullanıcı çevirileri onayladı; B1–B4 `ceviri.tr.json` APPROVED; flutter test 63→86 |
@@ -278,3 +281,5 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
   - Kullanıcı EnglishPractice reposunu sordu. İnceleme: kod MIT, içerik CC BY-SA 4.0. Kullanıcı kararı: kod desen olarak, içerik yalnızca referans. `docs/ENGLISHPRACTICE-INCELEME.md`; CLAUDE.md, LISANS-RAPORU, HI-ASISTAN-VE-KOC, H-036, H-048 notları.
   - Kullanıcı sosyal medyadaki görsel kelime şablonlarını sordu. Kararlar: kart = görsel + kelime + cümle + ses; tekrar hatırlama sorularıyla + FSRS + "Bilmiyorum" (bilinemeyen sonra tekrar sorulur); konu setleri hikâye mekânlarına bağlı + sahne avı (H-051, H-036'dan hemen sonra).
   - H-036 bitti (180 test). Kararlar: "Listen." anlamı + sözlük filtresi → H-052; tekrar ayarları onaylı. Sıradaki: H-052 (küçük), H-051 (konu setleri + sahne avı), H-048 (Hi-A).
+  - Kullanıcı isteği: arayüz metinleri ve sayfa netliği ("Merhaba Deniz", Ana Sayfa başlıkları, net sayılar). Kararlar: Profil'de isteğe bağlı ad; H-052 ile birlikte. H-053 açıldı.
+  - H-052 ve H-053 bitti. Sıradaki: H-051 (konu setleri + sahne avı).

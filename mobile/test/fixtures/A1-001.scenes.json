@@ -123,6 +123,23 @@
             "gloss": "(olmak; Türkçede karşılığı yok)"
           }
         ]
+      },
+      {
+        "text": "Listen.",
+        "tr": "Dinle.",
+        "chunks": [],
+        "words": [
+          {
+            "w": "Listen.",
+            "gloss": "dinlemek"
+          }
+        ]
+      }
+    ],
+    "glossary": [
+      {
+        "w": "channel",
+        "tr": "kanal"
       }
     ],
     "estimatedMinutes": 6

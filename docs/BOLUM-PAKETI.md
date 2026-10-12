@@ -30,8 +30,9 @@ icerik/A1-001-a-strange-message/_build/package/
 | Alan | Açıklama |
 |---|---|
 | `schemaVersion` | `2` (H-050: `title` ve `recap` düğümleri; başlık ve görev kartı yok). Uyumsuz değişiklikte artar. Uygulama 1 ve 2'yi okur. |
-| `episode` | `id`, `slug`, `level`, `season`, `number`, `title`, `contentVersion`, `status`, `aiGenerated`, `aiLabel`, `mission.tr` (🎯 panelindeki görev cümlesi), `targetPhrases`, `targetPhraseGloss`, `prev`, `next`, `links`. |
-| `episode.targetPhraseGloss` | 🎯 paneli için hedef ifadenin Türkçe anlamı: `text`, `tr`, `words` (`w`, `gloss`), `chunks`. `ceviri.tr.json`'dan gelir: önce birebir satır, yoksa herhangi bir satırdaki aynı kalıp (`chunks[].en`). Anlamı bulunamayan ifade listede yoktur ve panelde dokunulamaz (ör. B1 *Listen.*). |
+| `episode` | `id`, `slug`, `level`, `season`, `number`, `title`, `contentVersion`, `status`, `aiGenerated`, `aiLabel`, `mission.tr` (🎯 panelindeki görev cümlesi), `targetPhrases`, `targetPhraseGloss`, `glossary`, `prev`, `next`, `links`. |
+| `episode.targetPhraseGloss` | 🎯 paneli için hedef ifadenin Türkçe anlamı: `text`, `tr`, `words` (`w`, `gloss`), `chunks`. `ceviri.tr.json`'dan gelir: önce birebir satır, yoksa herhangi bir satırdaki aynı kalıp (`chunks[].en`). Sonra `ceviri.tr.json` → `phrases` (H-052; altyazıda geçmeyen ifadeler, ör. B1 *Listen.* → "Dinle."). content-lint, anlamı olmayan hedef ifadeyi hata sayar (`target-meaning`). |
+| `episode.glossary` | Bölüm sözlüğü (H-052): `content.json` → `glossary` (seviye üstü kelimeler) ve Türkçesi: `[{"w": "channel", "tr": "kanal"}]`. Türkçe `phrases` → satır kalıbı (çok kelimeli giriş) → herhangi bir satırın `words` anlamından gelir; bulunamazsa `tr` yoktur. Uygulama, altyazıda bakılan kelimelerden **yalnızca bu listedekileri** defter kartına çevirir (hedef ifadeler ve "Deftere ekle" bundan etkilenmez). |
 | `episode.links` | `content.json`'daki bağ alanları: `previously`, `payoff`, `openQuestion`, `answers`, `cluesUnlocked`, `callbackPhrases` (OYUN-TASARIMI §4.3). |
 | `flags` | Bu bölümde yazılan kalıcı bayraklar (`id`, `values`). **En fazla 3 (K-28).** |
 | `externalFlags` | Önceki bölümde yazılıp bu bölümde okunan bayraklar (`episode`, `id`, `values`, `default`). |
@@ -168,9 +169,12 @@ python3 tools/content-pipeline/export_package.py --season 1
             "chunks": [{"en": "between … and …", "tr": "… ile …-in arasında"}],
             "words": {"it's": "o … -dır (orası)", "between": "arasında", "pier": "iskele", "2": "iki"},
             "source": "subs/s04"}],
+ "phrases": [{"en": "Listen.", "tr": "Dinle.", "words": {"listen": "dinlemek"},
+              "source": "content:targetPhrases", "note": "altyazıda geçmiyor"}],
  "notes": ["…"]}
 ```
 
+- `phrases` (H-052): altyazıda ya da kartta birebir geçmeyen hedef ifadelerin ve sözlük kelimelerinin anlamı. Altyazı eşlemesine girmez; yalnızca 🎯 paneli, defter kartı ve `episode.glossary` kullanır. Hedef ifadede önce satır, sonra kalıp, en son `phrases` aranır.
 - Satır, İngilizce metnin **birebir aynısıyla** eşlenir; yalnızca boşluklar normalleştirilir. Konuşmacı eşlemeye girmez (aynı cümle iki karakterde tek kayıtla çevrilir).
 - `words` anahtarı küçük harfli kelimedir; baştaki ve sondaki noktalama atılır, içteki `'` ve `:` kalır (`it's`, `o'clock`, `2:00`).
 - `source` yalnızca bilgi içindir. `status`: `DRAFT` → editör onayı → `APPROVED` (H-028).
@@ -225,6 +229,8 @@ python3 tools/content-pipeline/export_package.py icerik/A1-00[1-4]-*   # paket (
 
 | Kod | Kural | Düzey |
 |---|---|---|
+| `target-meaning` | Her hedef ifadenin Türkçe anlamı var (satır, kalıp ya da `phrases`). Yalnızca `ceviri.tr.json` olan bölümlerde. | Hata |
+| `glossary-meaning` | Sözlükteki (`content.json` → `glossary`) her kelimenin Türkçesi bulunuyor | Uyarı |
 | `links` | `content.json`'da `previously`, `payoff`, `openQuestion`, `answers`, `cluesUnlocked`, `callbackPhrases` var. `previously` yalnızca ilk bölümde boş olabilir. | Hata |
 | `coverage` | CEFR-J kümülatif kapsama ≥ %98. %95–98 arası yalnızca seviye üstü sözcükler sözlükte (`content.json` → `glossary`) açıklanıyorsa kabul edilir (sözlükle ≥ %98). Bu durumda uyarı verilir; görsel desteği editör doğrular. | Hata / uyarı |
 | `off-list` | Sözlükte olmayan liste dışı sözcükler | Uyarı |

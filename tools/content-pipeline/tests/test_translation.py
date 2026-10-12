@@ -155,6 +155,56 @@ def test_target_phrase_gloss_from_line_or_chunk(tmp_path):
     assert tr.gloss_phrase("Listen.") is None
 
 
+def test_phrases_give_meaning_to_target_phrase_and_glossary(tmp_path):
+    """H-052: altyazıda geçmeyen hedef ifade (`phrases`) ve bölüm sözlüğü anlamı."""
+    from hvpipeline.translation import Translation
+    doc = {"status": "DRAFT", "lines": LINES,
+           "phrases": [{"en": "Listen.", "tr": "Dinle.", "words": {"listen": "dinlemek"}},
+                       {"en": "next to", "tr": "…-in yanında"}]}
+    (tmp_path / "ceviri.tr.json").write_text(json.dumps(doc), encoding="utf-8")
+    tr = Translation.load(tmp_path)
+    g = tr.gloss_phrase("Listen.")
+    assert g["tr"] == "Dinle." and g["words"] == [{"w": "Listen.", "gloss": "dinlemek"}]
+    # Satır önce gelir: phrases altyazı eşlemesine girmez.
+    assert tr.find("Listen.") is None
+    assert tr.glossary_meaning("neighbour") == "komşu"
+    assert tr.glossary_meaning("next to") == "…-in yanında"
+    assert tr.glossary_meaning("your new neighbour") == "yeni komşun"
+    assert tr.glossary_meaning("harbour") is None
+
+
+def test_export_has_glossary_and_lint_requires_target_meaning(tmp_path):
+    ep = make_episode(tmp_path, status="APPROVED")
+    c = json.loads((ep / "content.json").read_text(encoding="utf-8"))
+    c["targetPhrases"] = ["Are you new here?", "Listen."]
+    c["glossary"] = ["neighbour", "harbour"]
+    (ep / "content.json").write_text(json.dumps(c, ensure_ascii=False), encoding="utf-8")
+    doc, _ = build_dry(ep)
+    assert doc["episode"]["glossary"] == [{"w": "neighbour", "tr": "komşu"}, {"w": "harbour"}]
+    assert schema_errors(doc) == []
+    rep = lint_episode(ep, "kurgu")
+    errs = [i for i in rep.errors if i.code == "target-meaning"]
+    assert len(errs) == 1 and "Listen." in errs[0].message
+    assert [i.code for i in rep.warnings if "harbour" in i.message] == ["glossary-meaning"]
+    # phrases ile anlam verilince hata kalkar.
+    t = json.loads((ep / "ceviri.tr.json").read_text(encoding="utf-8"))
+    t["phrases"] = [{"en": "Listen.", "tr": "Dinle."}, {"en": "harbour", "tr": "liman"}]
+    (ep / "ceviri.tr.json").write_text(json.dumps(t, ensure_ascii=False), encoding="utf-8")
+    rep = lint_episode(ep, "kurgu")
+    assert [i for i in rep.issues if i.code in ("target-meaning", "glossary-meaning")] == []
+    doc, _ = build_dry(ep)
+    assert {"text": "Listen.", "tr": "Dinle.", "chunks": [], "words": [{"w": "Listen.", "gloss": None}]} \
+        in doc["episode"]["targetPhraseGloss"]
+
+
+@pytest.mark.parametrize("ep", ["A1-001-a-strange-message", "A1-002-the-new-neighbour",
+                                "A1-003-find-the-station", "A1-004-the-note"])
+def test_real_episodes_target_phrases_have_meaning(ep):
+    repo = Path(__file__).resolve().parents[3]
+    rep = lint_episode(repo / "icerik" / ep)
+    assert [i for i in rep.issues if i.code in ("target-meaning", "glossary-meaning")] == []
+
+
 def test_season_package_export(tmp_path):
     """Sezon paketi (H-050): jenerik videoları kopyalanır, season.json yazılır."""
     from hvpipeline.season import SeasonSource, export_season, title_caption

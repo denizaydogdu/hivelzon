@@ -732,6 +732,21 @@
       "source": "scenes:c-oq"
     }
   ],
+  "phrases": [
+    {
+      "en": "Excuse me, where is…?",
+      "tr": "Affedersiniz, … nerede?",
+      "words": {
+        "excuse": "affetmek (excuse me: affedersiniz)",
+        "me": "(excuse me kalıbının parçası)",
+        "where": "nerede",
+        "is": "(olmak; Türkçede karşılığı yok)"
+      },
+      "source": "content:targetPhrases",
+      "note": "Görev kartındaki çeviriyle aynı (H-052).",
+      "approved": "kullanıcı (soru-cevap, 2026-10-12)"
+    }
+  ],
   "notes": [
     "Türk öğrenci tuzağı: 'Where station?' — Türkçede 'İstasyon nerede?' cümlesinde 'olmak' fiili görünmez; İngilizcede 'is' zorunludur: 'Where is the station?'.",
     "'Nice to meet you.' kelime kelime çevrilmez; kalıp olarak 'Tanıştığımıza memnun oldum.' verilir.",

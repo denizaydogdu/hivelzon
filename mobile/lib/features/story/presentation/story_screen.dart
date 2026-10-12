@@ -1,12 +1,15 @@
 import 'dart:async';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../app/router.dart';
 import '../../../app/theme.dart';
+import '../../../l10n/tr_strings.dart';
 import '../../../shared/content/content_providers.dart';
+import '../../../shared/widgets/page_header.dart';
 import '../../player/application/autoplay_driver.dart';
 import '../../player/data/progress_repository.dart';
 import '../application/story_providers.dart';
@@ -17,7 +20,8 @@ import 'widgets/season_map_view.dart';
 
 /// Hikâye sekmesi: Sezon 1 haritası (H-035).
 ///
-/// Üstte sezon başlığı, ilerleme ("n / 12") ve "Jeneriği izle"; ortada resimli
+/// Üstte sayfa başlığı ve tek cümle açıklama (H-053), sezon başlığı, ilerleme
+/// ("n / 12") ve "Jeneriği izle"; ortada resimli
 /// harita ve 12 bölüm noktası; altta odaktaki bölümün kartı. Tam jenerik sezon
 /// ilk kez açılınca bir kez kendiliğinden oynar (H-050).
 class StoryScreen extends ConsumerStatefulWidget {
@@ -49,8 +53,8 @@ class _StoryScreenState extends ConsumerState<StoryScreen> {
         child: switch (map) {
           AsyncData(:final value) when value.episodes.isEmpty => const _Message(
             icon: Icons.auto_stories_outlined,
-            title: 'Henüz bölüm yok',
-            body: 'Yeni bölümler hazır olunca burada görünecek.',
+            title: StoryTexts.noEpisodesTitle,
+            body: StoryTexts.noEpisodesBody,
           ),
           AsyncData(:final value) => _MapBody(
             map: value,
@@ -58,16 +62,17 @@ class _StoryScreenState extends ConsumerState<StoryScreen> {
           ),
           AsyncError() => _Message(
             icon: Icons.cloud_off_rounded,
-            title: 'Sunucu çalışmıyor',
-            body:
-                'Bölümler yüklenemedi. Yerel içerik sunucusunu başlatıp '
-                'tekrar dene:\npython3 tools/dev-content-server/serve.py',
+            title: CommonTexts.serverDownTitle,
+            body: kDebugMode
+                ? '${StoryTexts.mapError} ${CommonTexts.serverDownBody}\n\n'
+                      '${CommonTexts.devServerHint}'
+                : '${StoryTexts.mapError} ${CommonTexts.serverDownBody}',
             action: FilledButton.icon(
               key: const ValueKey('story-retry'),
               onPressed: () => retrySeasonMap(ref),
               style: FilledButton.styleFrom(minimumSize: const Size(48, 48)),
               icon: const Icon(Icons.refresh_rounded),
-              label: const Text('Tekrar dene'),
+              label: const Text(CommonTexts.retry),
             ),
           ),
           _ => const Center(
@@ -76,7 +81,7 @@ class _StoryScreenState extends ConsumerState<StoryScreen> {
               children: [
                 CircularProgressIndicator(),
                 SizedBox(height: AppSpacing.sm),
-                Text('Harita yükleniyor…'),
+                Text(StoryTexts.mapLoading),
               ],
             ),
           ),
@@ -193,6 +198,8 @@ class _MapBody extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
+          const PageHeader(title: StoryTexts.title, subtitle: StoryTexts.intro),
+          const SizedBox(height: AppSpacing.sm),
           _MapHeader(map: map),
           const SizedBox(height: AppSpacing.xs),
           Expanded(
@@ -211,7 +218,7 @@ class _MapBody extends StatelessWidget {
   }
 }
 
-/// Sezon başlığı: "SEZON 1 · The Missing Signal", ilerleme ve "Jeneriği izle".
+/// Sezon başlığı: "Sezon 1 · The Missing Signal", ilerleme ve "Jeneriği izle".
 class _MapHeader extends ConsumerStatefulWidget {
   const _MapHeader({required this.map});
 
@@ -300,10 +307,9 @@ class _MapHeaderState extends ConsumerState<_MapHeader> {
                     TextSpan(
                       children: [
                         TextSpan(
-                          text: 'SEZON ${map.season}',
+                          text: 'Sezon ${map.season}',
                           style: const TextStyle(
                             color: AppColors.lighthouseYellow,
-                            letterSpacing: 1.5,
                           ),
                         ),
                         const TextSpan(text: ' · '),
@@ -329,15 +335,17 @@ class _MapHeaderState extends ConsumerState<_MapHeader> {
                           minHeight: 8,
                           backgroundColor: Colors.white24,
                           color: AppColors.lighthouseYellow,
-                          semanticsLabel: 'Sezon ilerlemesi',
-                          semanticsValue:
-                              '${map.total} bölümden $done tamamlandı',
+                          semanticsLabel: StoryTexts.progressLabel,
+                          semanticsValue: StoryTexts.progressSemantics(
+                            done,
+                            map.total,
+                          ),
                         ),
                       ),
                     ),
                     const SizedBox(width: AppSpacing.xs),
                     Text(
-                      '$done / ${map.total}',
+                      StoryTexts.progress(done, map.total),
                       key: const ValueKey('season-progress'),
                       style: theme.textTheme.titleSmall?.copyWith(
                         color: Colors.white,
@@ -361,7 +369,7 @@ class _MapHeaderState extends ConsumerState<_MapHeader> {
                               ),
                             ),
                             icon: const Icon(Icons.play_circle_outline_rounded),
-                            label: const Text('Jeneriği izle'),
+                            label: const Text(StoryTexts.watchIntro),
                           ),
                         ),
                       ),
@@ -405,7 +413,7 @@ class _FocusCard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Bölüm ${e.number} · ${e.state.labelTr}',
+                        StoryTexts.focusLabel(e.number, e.state.labelTr),
                         style: theme.textTheme.labelLarge?.copyWith(
                           color: theme.colorScheme.primary,
                           fontWeight: FontWeight.w700,

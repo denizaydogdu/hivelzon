@@ -35,6 +35,14 @@ class DeckSync {
 
   static String markerKey(String contentId) => 'deck.ingested.$contentId';
 
+  /// Deste kuralları değişince (ör. H-052: altyazıda geçmeyen hedef ifade,
+  /// sözlük filtresi) biten bölümler bir kez yeniden aktarılır. Aktarım
+  /// idempotenttir: var olan kart ve tekrar durumu korunur.
+  static const deckFormat = 2;
+
+  static bool isCurrentMarker(String? marker) =>
+      marker != null && marker.contains(' d$deckFormat ');
+
   final NotebookStore _store;
   final ContentSource _source;
   final ProgressRepository _progress;
@@ -68,7 +76,7 @@ class DeckSync {
     var n = 0;
     for (final e in all.entries) {
       if (e.value.status != StoryStatus.completed) continue;
-      if (await _store.meta(markerKey(e.key)) != null) continue;
+      if (isCurrentMarker(await _store.meta(markerKey(e.key)))) continue;
       try {
         await _ingest(await _source.loadEpisode(e.key));
         n++;
@@ -96,7 +104,7 @@ class DeckSync {
     await _enrichFor(episode, subs);
     await _store.setMeta(
       markerKey(id),
-      'v${episode.info.contentVersion} items=${deck.items.length} '
+      'v${episode.info.contentVersion} d$deckFormat items=${deck.items.length} '
       'added=$added skipped=${deck.skipped.join('|')}',
     );
     debugPrint(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../app/theme.dart';
+import '../../../../l10n/tr_strings.dart';
 import '../../domain/episode.dart';
 import 'player_ui.dart';
 
@@ -83,7 +84,7 @@ class CardView extends StatelessWidget {
 
   Widget _continue() => PrimaryAction(
     key: const ValueKey('card-continue'),
-    label: isLast ? 'Bölümü bitir' : 'Devam',
+    label: isLast ? 'Bölümü bitir' : PlayerTexts.continueAction,
     icon: Icons.arrow_forward_rounded,
     onPressed: onContinue,
   );

@@ -129,7 +129,19 @@ void main() {
     for (var n = 1; n <= 12; n++) {
       expect(node(n), findsOneWidget);
     }
-    expect(find.text('SEZON 1 · The Missing Signal'), findsOneWidget);
+    // Sayfa başlığı ve tek cümle açıklama (H-053); sezon başlığı.
+    expect(find.text('Hikâye'), findsOneWidget);
+    expect(
+      find.text(
+        'Bölümleri sırayla aç; bitirdiğin bölümü istediğin zaman yeniden '
+        'oynayabilirsin.',
+      ),
+      findsOneWidget,
+    );
+    expect(
+      find.text('Sezon 1 · The Missing Signal', findRichText: true),
+      findsOneWidget,
+    );
     expect(find.text('0 / 12'), findsOneWidget);
     expect(find.text('Jeneriği izle'), findsOneWidget);
     expect(label(tester, 1), 'Bölüm 1, A Strange Message, sıradaki');
@@ -229,7 +241,9 @@ void main() {
       findsOneWidget,
     );
     expect(
-      find.text('Acele yok; istediğin kadar tekrar deneyebilirsin.'),
+      find.text(
+        'Acele yok; önceki bölümü istediğin kadar tekrar oynayabilirsin.',
+      ),
       findsOneWidget,
     );
   });
@@ -277,7 +291,7 @@ void main() {
     final source = FakeContentSource(fail: true);
     await pump(tester, source);
     await step(tester, 600);
-    expect(find.text('Sunucu çalışmıyor'), findsOneWidget);
+    expect(find.text('Bağlantı kurulamadı'), findsOneWidget);
     source.fail = false;
     await tester.tap(find.byKey(const ValueKey('story-retry')));
     await step(tester, 600);

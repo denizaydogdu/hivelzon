@@ -150,7 +150,7 @@ void main() {
     await tapKey(tester, 'task-option-b');
     expect(find.text('Bir daha bakalım.'), findsOneWidget);
     await tapKey(tester, 'task-option-a');
-    expect(find.text('2 / 2'), findsOneWidget);
+    expect(find.text('Soru 2 / 2'), findsOneWidget);
     await tapKey(tester, 'task-option-a');
     expect(find.text('Meet me at the old station.'), findsOneWidget);
     await tapKey(tester, 'task-continue');
@@ -298,9 +298,9 @@ void main() {
         expect(find.text('Can you hear me?'), findsOneWidget);
         expect(find.text('Listen.'), findsOneWidget);
         expect(platform.isPlaying('segments/s02.mp4'), isFalse);
-        // Anlamı olan ifade dokunulabilir; "Listen." için anlam yok.
+        // Anlamı olan ifade dokunulabilir; "Listen." anlamı H-052 ile geldi.
         expect(find.byKey(const ValueKey('mission-phrase-0')), findsOneWidget);
-        expect(find.byKey(const ValueKey('mission-phrase-4')), findsNothing);
+        expect(find.byKey(const ValueKey('mission-phrase-4')), findsOneWidget);
         await tapKey(tester, 'mission-phrase-0');
         await step(tester, 400);
         await tapKey(tester, 'meaning-reveal');

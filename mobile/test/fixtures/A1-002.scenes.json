@@ -89,6 +89,29 @@
         ]
       },
       {
+        "text": "Excuse me, where is…?",
+        "tr": "Affedersiniz, … nerede?",
+        "chunks": [],
+        "words": [
+          {
+            "w": "Excuse",
+            "gloss": "affetmek (excuse me: affedersiniz)"
+          },
+          {
+            "w": "me,",
+            "gloss": "(excuse me kalıbının parçası)"
+          },
+          {
+            "w": "where",
+            "gloss": "nerede"
+          },
+          {
+            "w": "is…?",
+            "gloss": "(olmak; Türkçede karşılığı yok)"
+          }
+        ]
+      },
+      {
         "text": "Is it far?",
         "tr": "Uzak mı?",
         "words": [
@@ -135,6 +158,16 @@
             "endWord": 1
           }
         ]
+      }
+    ],
+    "glossary": [
+      {
+        "w": "harbour",
+        "tr": "liman"
+      },
+      {
+        "w": "far",
+        "tr": "uzak"
       }
     ],
     "estimatedMinutes": 7

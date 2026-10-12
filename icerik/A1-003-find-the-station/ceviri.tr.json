@@ -522,6 +522,19 @@
       "source": "scenes:c-oq"
     }
   ],
+  "phrases": [
+    {
+      "en": "next to",
+      "tr": "…-in yanında",
+      "words": {
+        "next": "yan, bitişik",
+        "to": "(kalıbın parçası)"
+      },
+      "source": "content:glossary",
+      "note": "Sözlük kelimesi; B3 altyazısında geçmiyor (H-052).",
+      "approved": "kullanıcı (soru-cevap, 2026-10-12)"
+    }
+  ],
   "notes": [
     "Türk öğrenci tuzağı: 'Harbour where?' — Türkçe söz dizimi (Liman nerede?) İngilizceye aktarılmış. İngilizcede soru sözcüğü başa gelir: 'Where is the harbour?'.",
     "'Excuse me' burada yabancı bir adama söylendiği için 'Affedersiniz' olarak çevrildi.",

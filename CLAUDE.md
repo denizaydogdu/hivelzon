@@ -133,6 +133,7 @@ cd mobile && flutter run -d "hiVelzon iPhone 17"       # içerik adresi: --dart-
 | `docs/VIDEOGENERATOR-AI-SERVISLERI.md` | videoGenerator'ın kullandığı AI servisleri (OpenAI, ElevenLabs) |
 | `docs/VIDEOGENERATOR-GERCEK-MALIYET.md` | videoGenerator'ın gerçek maliyet kayıtları ve hiVelzon tahmini |
 | `docs/ICERIK-STRATEJISI.md` | Kullanıcının içerik stratejisi belgesi (olduğu gibi). Ünite listeleri ve beceri matrisi burada |
+| `docs/ARAYUZ-METINLERI.md` | Arayüz metin kılavuzu (H-053): ilkeler, terimler (ifade / kart / Kelime tekrarı), ekran ekran metinler. Yeni metin buna uyar. |
 | `yapilacaklar/IS-SIRASI.md` | Güncel durum ve sıra |
 
 - Şartnamedeki etiketler: **[KARAR]** onaysız değişmez. **[ARAŞTIRMA]** rakiplerin kamuya açık iddiasıdır ve doğrulanmadan ürün kararı sayılmaz. **[ÖNERİ]** plan onayında karara bağlanır.

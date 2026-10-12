@@ -370,6 +370,18 @@
       "source": "scenes:c-oq"
     }
   ],
+  "phrases": [
+    {
+      "en": "Listen.",
+      "tr": "Dinle.",
+      "words": {
+        "listen": "dinlemek"
+      },
+      "source": "content:targetPhrases",
+      "note": "Hedef ifade altyazıda geçmiyor (H-052); kartta görsel + anlam, ses sonra.",
+      "approved": "kullanıcı (soru-cevap, 2026-10-12)"
+    }
+  ],
   "notes": [
     "\"Hello? Hello?\" hem VOICE (s02) hem ALEX (s03) satırında aynı metinle geçer; tek kayıt tutuldu. Telsizde/telefonda 'Alo?' olarak çevrildi.",
     "Türk öğrenci tuzağı: 'Can you…?' sorusuna 'Yes, I am.' cevabı. Soru hangi yardımcı fiille başlıyorsa kısa cevap da onunla verilir: Can you…? → Yes, I can.",

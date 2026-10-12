@@ -6,6 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../app/theme.dart';
+import '../../../l10n/tr_strings.dart';
 import '../../../shared/fsrs/fsrs.dart';
 import '../../../shared/meaning/error_taxonomy.dart';
 import '../../../shared/meaning/learning_event_log.dart';
@@ -177,15 +178,15 @@ class _ReviewScreenState extends ConsumerState<ReviewScreen> {
         backgroundColor: AppColors.sand,
         leading: IconButton(
           key: const ValueKey('review-close'),
-          tooltip: 'Kapat',
+          tooltip: CommonTexts.close,
           constraints: const BoxConstraints(minWidth: 48, minHeight: 48),
           onPressed: () => context.pop(),
           icon: const Icon(Icons.close_rounded),
         ),
         title: Text(
           s == null || _phase == _Phase.done
-              ? 'Tekrar'
-              : 'Tekrar · ${math.min(s.position, s.total)} / ${s.total}',
+              ? ReviewTexts.title
+              : ReviewTexts.progress(math.min(s.position, s.total), s.total),
         ),
       ),
       body: SafeArea(
@@ -193,14 +194,14 @@ class _ReviewScreenState extends ConsumerState<ReviewScreen> {
           _Phase.loading => const Center(child: CircularProgressIndicator()),
           _Phase.empty => _CenteredMessage(
             icon: Icons.check_circle_outline_rounded,
-            title: 'Şu an tekrar edilecek kart yok',
-            body: 'Kartlar zamanı gelince geri gelir.',
+            title: ReviewTexts.emptyTitle,
+            body: ReviewTexts.emptyBody,
             onBack: () => context.pop(),
           ),
           _Phase.error => _CenteredMessage(
             icon: Icons.error_outline_rounded,
-            title: 'Tekrar açılamadı',
-            body: 'Defterin yerinde; birazdan yeniden dene.',
+            title: ReviewTexts.errorTitle,
+            body: ReviewTexts.errorBody,
             onBack: () => context.pop(),
           ),
           _Phase.asking => _taskView(context),
@@ -218,11 +219,11 @@ class _ReviewScreenState extends ConsumerState<ReviewScreen> {
     final theme = Theme.of(context);
     final item = task.item;
     final prompt = switch (task.type) {
-      TaskType.pictureChoice => 'Resme ve anlama bak: doğru ifadeyi seç.',
-      TaskType.listenChoice => 'Dinle ve duyduğun ifadeyi seç.',
-      TaskType.arrange => 'Kelimeleri doğru sıraya diz.',
-      TaskType.type => 'İngilizcesini yaz.',
-      TaskType.selfCheck => 'İngilizcesini aklından söyle, sonra kartı aç.',
+      TaskType.pictureChoice => ReviewTexts.pictureChoice,
+      TaskType.listenChoice => ReviewTexts.listenChoice,
+      TaskType.arrange => ReviewTexts.arrange,
+      TaskType.type => ReviewTexts.type,
+      TaskType.selfCheck => ReviewTexts.selfCheck,
     };
     final children = <Widget>[
       Text(
@@ -249,7 +250,7 @@ class _ReviewScreenState extends ConsumerState<ReviewScreen> {
                     : Icons.volume_up_rounded,
                 size: 32,
               ),
-              label: const Text('Dinle'),
+              label: const Text(ReviewTexts.listen),
             ),
           ),
         ),
@@ -263,7 +264,7 @@ class _ReviewScreenState extends ConsumerState<ReviewScreen> {
             item.textTr!,
             key: const ValueKey('task-meaning'),
             style: theme.textTheme.titleLarge?.copyWith(
-              fontWeight: FontWeight.w600,
+              fontWeight: FontWeight.w500,
             ),
           ),
       ]);
@@ -308,7 +309,7 @@ class _ReviewScreenState extends ConsumerState<ReviewScreen> {
             decoration: InputDecoration(
               filled: true,
               fillColor: Colors.white,
-              hintText: 'İngilizce yaz',
+              hintText: ReviewTexts.typeHint,
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(AppTheme.radius),
               ),
@@ -319,7 +320,7 @@ class _ReviewScreenState extends ConsumerState<ReviewScreen> {
             key: const ValueKey('task-check'),
             onPressed: () => _checkTyped(task),
             style: FilledButton.styleFrom(minimumSize: const Size(48, 48)),
-            child: const Text('Kontrol et'),
+            child: const Text(ReviewTexts.check),
           ),
         ]);
       case TaskType.selfCheck:
@@ -329,7 +330,7 @@ class _ReviewScreenState extends ConsumerState<ReviewScreen> {
               key: const ValueKey('task-reveal'),
               onPressed: () => setState(() => _revealed = true),
               style: FilledButton.styleFrom(minimumSize: const Size(48, 48)),
-              child: const Text('Kartı aç'),
+              child: const Text(ReviewTexts.openCard),
             ),
           );
         } else {
@@ -345,7 +346,7 @@ class _ReviewScreenState extends ConsumerState<ReviewScreen> {
               key: const ValueKey('task-knew'),
               onPressed: () => _answer(correct: true),
               style: FilledButton.styleFrom(minimumSize: const Size(48, 48)),
-              child: const Text('Bildim'),
+              child: const Text(ReviewTexts.knewIt),
             ),
           ]);
         }
@@ -369,7 +370,7 @@ class _ReviewScreenState extends ConsumerState<ReviewScreen> {
             ),
           ),
           icon: const Icon(Icons.help_outline_rounded),
-          label: const Text('Bilmiyorum'),
+          label: const Text(ReviewTexts.dontKnow),
         ),
       ),
     ]);
@@ -432,7 +433,7 @@ class _ReviewScreenState extends ConsumerState<ReviewScreen> {
             ? () => _answer(correct: task.isCorrectOrder(_picked))
             : null,
         style: FilledButton.styleFrom(minimumSize: const Size(48, 48)),
-        child: const Text('Kontrol et'),
+        child: const Text(ReviewTexts.check),
       ),
     ];
   }
@@ -450,14 +451,12 @@ class _ReviewScreenState extends ConsumerState<ReviewScreen> {
     if (o == null) return const Center(child: CircularProgressIndicator());
     final again = o.rating == FsrsRating.again;
     final title = o.correct
-        ? 'Doğru!'
+        ? ReviewTexts.correct
         : o.dontKnow
-        ? 'Sorun değil, birlikte bakalım.'
-        : 'Doğrusu bu.';
+        ? ReviewTexts.dontKnowFeedback
+        : ReviewTexts.wrongFeedback;
     final body = again
-        ? (o.requeued
-              ? 'Bu kart oturumun sonunda yeniden gelecek.'
-              : 'Bu kartı yakında yeniden göreceksin.')
+        ? (o.requeued ? ReviewTexts.requeued : ReviewTexts.soon)
         : null;
     final chosen = _chosen;
     final task = _session?.task;
@@ -491,7 +490,7 @@ class _ReviewScreenState extends ConsumerState<ReviewScreen> {
             chosen < task.options.length) ...[
           const SizedBox(height: 4),
           Text(
-            'Seçtiğin: ${task.options[chosen]}',
+            ReviewTexts.chosen(task.options[chosen]),
             style: theme.textTheme.bodyMedium,
           ),
         ],
@@ -513,7 +512,7 @@ class _ReviewScreenState extends ConsumerState<ReviewScreen> {
           key: const ValueKey('review-continue'),
           onPressed: _continue,
           style: FilledButton.styleFrom(minimumSize: const Size(48, 48)),
-          child: const Text('Devam'),
+          child: const Text(ReviewTexts.continueAction),
         ),
       ],
     );
@@ -525,9 +524,8 @@ class _ReviewScreenState extends ConsumerState<ReviewScreen> {
     final s = _summary!;
     final theme = Theme.of(context);
     final lines = <String>[
-      if (s.comeBackTomorrow > 0)
-        '${s.comeBackTomorrow} kart yarın yeniden gelecek.',
-      if (s.comeBackLater > 0) '${s.comeBackLater} kart daha sonra gelecek.',
+      if (s.comeBackTomorrow > 0) ReviewTexts.tomorrow(s.comeBackTomorrow),
+      if (s.comeBackLater > 0) ReviewTexts.later(s.comeBackLater),
     ];
     return ListView(
       key: const ValueKey('review-summary'),
@@ -540,7 +538,7 @@ class _ReviewScreenState extends ConsumerState<ReviewScreen> {
         ),
         const SizedBox(height: AppSpacing.sm),
         Text(
-          'Tekrar tamam',
+          ReviewTexts.doneTitle,
           textAlign: TextAlign.center,
           style: theme.textTheme.headlineSmall?.copyWith(
             fontWeight: FontWeight.w700,
@@ -548,7 +546,7 @@ class _ReviewScreenState extends ConsumerState<ReviewScreen> {
         ),
         const SizedBox(height: AppSpacing.xs),
         Text(
-          '${s.reviewedCards} kartı tekrar ettin.',
+          ReviewTexts.reviewed(s.reviewedCards),
           key: const ValueKey('summary-count'),
           textAlign: TextAlign.center,
           style: theme.textTheme.titleMedium,
@@ -564,7 +562,7 @@ class _ReviewScreenState extends ConsumerState<ReviewScreen> {
           key: const ValueKey('review-done'),
           onPressed: () => context.pop(),
           style: FilledButton.styleFrom(minimumSize: const Size(48, 48)),
-          child: const Text('Tamam'),
+          child: const Text(ReviewTexts.done),
         ),
       ],
     );
@@ -608,7 +606,7 @@ class _CenteredMessage extends StatelessWidget {
             OutlinedButton(
               onPressed: onBack,
               style: OutlinedButton.styleFrom(minimumSize: const Size(48, 48)),
-              child: const Text('Geri dön'),
+              child: const Text(CommonTexts.goBack),
             ),
           ],
         ),

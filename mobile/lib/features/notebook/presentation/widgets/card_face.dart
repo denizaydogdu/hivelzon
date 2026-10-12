@@ -182,7 +182,7 @@ class CardFace extends StatelessWidget {
                     Text(
                       item.exampleEn!,
                       style: theme.textTheme.bodyLarge?.copyWith(
-                        fontWeight: FontWeight.w600,
+                        fontWeight: FontWeight.w500,
                         color: AppColors.ink,
                       ),
                     ),

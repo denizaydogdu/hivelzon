@@ -2,7 +2,12 @@
 
 Kaynak dosya: icerik/<id>/ceviri.tr.json
     {"status": "DRAFT", "lines": [{"en", "speaker", "tr", "chunks": [{"en", "tr"}], "words": {anahtar: anlam},
-                                   "source"}], "notes": [...]}
+                                   "source"}],
+     "phrases": [{"en", "tr", "words": {anahtar: anlam}, "source", "note"}], "notes": [...]}
+
+- `phrases` (H-052): altyazıda ya da kartta birebir geçmeyen hedef ifadelerin ve sözlük kelimelerinin
+  anlamı (ör. B1 *Listen.* → "Dinle."). Altyazı eşlemesine girmez; yalnızca 🎯 paneli, defter kartı
+  ve bölüm sözlüğü kullanır.
 
 - Eşleme, İngilizce metnin birebir aynısıyla yapılır; yalnızca boşluklar normalleştirilir.
 - Kelime anlamı (`gloss`), kelimenin anahtarıyla (küçük harf, baştaki/sondaki noktalama atılmış) bulunur.
@@ -86,6 +91,7 @@ class Translation:
     status: str
     lines: dict[str, dict]
     duplicates: list[str] = field(default_factory=list)
+    phrases: list[dict] = field(default_factory=list)
     proper: frozenset = field(default_factory=load_proper_nouns)
 
     @classmethod
@@ -103,7 +109,8 @@ class Translation:
             if k in lines and lines[k].get("tr") != ln.get("tr"):
                 dups.append(k)
             lines.setdefault(k, ln)
-        return cls(p, d.get("status", "DRAFT"), lines, dups)
+        phrases = [ph for ph in d.get("phrases", []) if norm_text(ph.get("en", "")) and ph.get("tr")]
+        return cls(p, d.get("status", "DRAFT"), lines, dups, phrases)
 
     def find(self, text: str) -> dict | None:
         return self.lines.get(norm_text(text))
@@ -162,8 +169,8 @@ class Translation:
 
     # --- hedef ifade (🎯 paneli, H-050) ---
     def gloss_phrase(self, phrase: str) -> dict | None:
-        """Önce birebir satır, sonra herhangi bir satırdaki kalıp (`chunks[].en`). Bulunamazsa None;
-        eksik sayılmaz (lint'e girmez)."""
+        """Önce birebir satır, sonra herhangi bir satırdaki kalıp (`chunks[].en`), en son `phrases`
+        (H-052). Bulunamazsa None; content-lint bunu hata sayar (`target-meaning`)."""
         g = self.gloss_text(phrase, "targetPhrase", [])
         if g is not None:
             return g
@@ -174,6 +181,37 @@ class Translation:
                     glossmap = {word_key(k): v for k, v in (line.get("words") or {}).items()}
                     return {"tr": ch["tr"], "chunks": [],
                             "words": [{"w": w, "gloss": glossmap.get(word_key(w))} for w in split_words(phrase)]}
+        ph = self._phrase(phrase)
+        if ph is not None:
+            glossmap = {word_key(k): v for k, v in (ph.get("words") or {}).items()}
+            return {"tr": ph["tr"], "chunks": [],
+                    "words": [{"w": w, "gloss": glossmap.get(word_key(w))} for w in split_words(phrase)]}
+        return None
+
+    def _phrase(self, text: str) -> dict | None:
+        key = _phrase_key(text)
+        return next((ph for ph in self.phrases if _phrase_key(ph["en"]) == key), None)
+
+    # --- bölüm sözlüğü (H-052) ---
+    def glossary_meaning(self, word: str) -> str | None:
+        """Sözlük kelimesinin Türkçesi: `phrases` → satır kalıbı (`chunks[].en`, çok kelimeli girişler
+        için) → herhangi bir satırın `words` anlamı (ilk geçtiği satır). Bulunamazsa None."""
+        ph = self._phrase(word)
+        if ph is not None:
+            return ph["tr"]
+        key = _phrase_key(word)
+        multi = len(split_words(word)) > 1
+        if multi:
+            for line in self.lines.values():
+                for ch in line.get("chunks") or []:
+                    if _phrase_key(ch.get("en", "")) == key:
+                        return ch["tr"]
+            return None
+        wk = word_key(word)
+        for line in self.lines.values():
+            for k, v in (line.get("words") or {}).items():
+                if word_key(k) == wk and v:
+                    return v
         return None
 
 

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../app/theme.dart';
+import '../../../../l10n/tr_strings.dart';
 import '../../domain/episode.dart';
 import '../../domain/episode_engine.dart';
 import 'hi_avatar.dart';
@@ -139,8 +140,7 @@ class EndView extends StatelessWidget {
               ),
               const SizedBox(height: AppSpacing.xs),
               Text(
-                'Bu ifadeler defterine eklendi; tekrar kartı olarak gelecek '
-                '(Profil → Defter).',
+                PlayerTexts.endNotebookNote,
                 key: const ValueKey('end-notebook-note'),
                 style: theme.textTheme.bodyMedium,
               ),
@@ -148,7 +148,7 @@ class EndView extends StatelessWidget {
             const SizedBox(height: AppSpacing.md),
             PrimaryAction(
               key: const ValueKey('end-back'),
-              label: 'Hikâye\'ye dön',
+              label: PlayerTexts.backToMap,
               icon: Icons.map_rounded,
               onPressed: onBack,
             ),

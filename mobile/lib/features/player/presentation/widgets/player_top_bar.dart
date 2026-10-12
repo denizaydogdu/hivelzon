@@ -172,10 +172,16 @@ class _SubtitleMenu extends StatelessWidget {
       SubtitleMode.enTr => 'EN+TR',
       SubtitleMode.off => 'Kapalı',
     };
+    // Ekran okuyucu için kısaltma açılır ("EN" değil "İngilizce").
+    final spoken = switch (mode) {
+      SubtitleMode.en => 'İngilizce',
+      SubtitleMode.enTr => 'İngilizce ve Türkçe',
+      SubtitleMode.off => 'kapalı',
+    };
     final on = mode != SubtitleMode.off;
     return PopupMenuButton<SubtitleMode>(
       key: const ValueKey('subtitle-menu'),
-      tooltip: 'Altyazı: $label',
+      tooltip: 'Altyazı: $spoken',
       onSelected: onChanged,
       position: PopupMenuPosition.under,
       itemBuilder: (context) => [

@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 import '../../../../app/theme.dart';
+import '../../../../l10n/tr_strings.dart';
 import '../../domain/episode.dart';
 import '../../domain/task_check.dart';
 import 'player_ui.dart';
@@ -162,7 +163,7 @@ class _TaskViewState extends State<TaskView> {
             Padding(
               padding: const EdgeInsets.only(top: 4),
               child: Text(
-                '${_index + 1} / ${task.items.length}',
+                PlayerTexts.taskProgress(_index + 1, task.items.length),
                 style: theme.textTheme.labelLarge,
               ),
             ),
@@ -204,7 +205,7 @@ class _TaskViewState extends State<TaskView> {
     const SizedBox(height: AppSpacing.sm),
     PrimaryAction(
       key: const ValueKey('task-continue'),
-      label: 'Devam',
+      label: PlayerTexts.continueAction,
       icon: Icons.arrow_forward_rounded,
       onPressed: widget.onComplete,
     ),

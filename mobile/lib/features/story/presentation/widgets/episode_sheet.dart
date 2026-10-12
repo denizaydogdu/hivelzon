@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 
 import '../../../../app/theme.dart';
+import '../../../../l10n/tr_strings.dart';
 import '../../domain/season_map.dart';
 import '../../domain/unlock_rule.dart';
 
 /// Bölüm noktasına dokununca açılan alt panel (H-035).
 ///
-/// Oynanabilir: "Oyna" / "Devam et" (+ "Baştan başla") / "Tekrar oyna".
+/// Oynanabilir: "Başla" / "Devam et" (+ "Baştan başla") / "Tekrar oyna".
 /// Kilitli: nazik kilit nedeni (zaman yok, suçlama yok). Yakında: tarih yok.
 class EpisodeSheet extends StatelessWidget {
   const EpisodeSheet({super.key, required this.episode, required this.onPlay});
@@ -46,14 +47,14 @@ class EpisodeSheet extends StatelessWidget {
           onPressed: () => _play(context, 'resume'),
           style: FilledButton.styleFrom(minimumSize: buttonSize),
           icon: const Icon(Icons.play_arrow_rounded),
-          label: const Text('Devam et'),
+          label: const Text(StoryTexts.resume),
         ),
         const SizedBox(height: AppSpacing.xs),
         OutlinedButton(
           key: const ValueKey('sheet-restart'),
           onPressed: () => _play(context, 'restart'),
           style: OutlinedButton.styleFrom(minimumSize: buttonSize),
-          child: const Text('Baştan başla'),
+          child: const Text(StoryTexts.restart),
         ),
       ] else if (e.playable && e.state == MapNodeState.completed)
         FilledButton.icon(
@@ -61,7 +62,7 @@ class EpisodeSheet extends StatelessWidget {
           onPressed: () => _play(context, 'restart'),
           style: FilledButton.styleFrom(minimumSize: buttonSize),
           icon: const Icon(Icons.replay_rounded),
-          label: const Text('Tekrar oyna'),
+          label: const Text(StoryTexts.replay),
         )
       else if (e.playable)
         FilledButton.icon(
@@ -69,7 +70,7 @@ class EpisodeSheet extends StatelessWidget {
           onPressed: () => _play(context, null),
           style: FilledButton.styleFrom(minimumSize: buttonSize),
           icon: const Icon(Icons.play_arrow_rounded),
-          label: const Text('Oyna'),
+          label: const Text(StoryTexts.play),
         ),
     ];
     return SafeArea(
@@ -86,7 +87,7 @@ class EpisodeSheet extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Text(
-              'BÖLÜM ${e.number} · ${upperTr(e.state.labelTr)}',
+              StoryTexts.sheetLabel(e.number, e.state.labelTr),
               style: theme.textTheme.labelLarge?.copyWith(
                 color: theme.colorScheme.primary,
                 fontWeight: FontWeight.w700,
@@ -113,7 +114,7 @@ class EpisodeSheet extends StatelessWidget {
                 key: const ValueKey('sheet-lock-reason'),
                 icon: Icons.lock_outline_rounded,
                 text: reason,
-                detail: 'Acele yok; istediğin kadar tekrar deneyebilirsin.',
+                detail: StoryTexts.lockDetail,
               ),
             ],
             if (e.state == MapNodeState.comingSoon) ...[
@@ -121,8 +122,8 @@ class EpisodeSheet extends StatelessWidget {
               const _Note(
                 key: ValueKey('sheet-coming-soon'),
                 icon: Icons.auto_stories_outlined,
-                text: 'Yakında',
-                detail: 'Bu bölüm hazırlanıyor.',
+                text: StoryTexts.comingSoon,
+                detail: StoryTexts.comingSoonDetail,
               ),
             ],
             if (actions.isNotEmpty) ...[
@@ -135,10 +136,6 @@ class EpisodeSheet extends StatelessWidget {
     );
   }
 }
-
-/// Türkçe büyük harf: i → İ, ı → I ("kilitli" → "KİLİTLİ").
-String upperTr(String s) =>
-    s.replaceAll('i', 'İ').replaceAll('ı', 'I').toUpperCase();
 
 class _Note extends StatelessWidget {
   const _Note({

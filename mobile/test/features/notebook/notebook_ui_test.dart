@@ -11,6 +11,7 @@ import 'package:hivelzon/features/home/presentation/home_screen.dart';
 import 'package:hivelzon/features/notebook/presentation/notebook_screen.dart';
 import 'package:hivelzon/features/notebook/presentation/review_screen.dart';
 import 'package:hivelzon/features/player/data/progress_repository.dart';
+import 'package:hivelzon/features/profile/data/user_profile_store.dart';
 import 'package:hivelzon/shared/content/content_providers.dart';
 import 'package:hivelzon/shared/meaning/learning_event_log.dart';
 import 'package:hivelzon/shared/storage/app_database.dart';
@@ -37,8 +38,12 @@ void main() {
   });
   tearDown(() => db.close());
 
-  Future<void> pump(WidgetTester tester, String initial) async {
-    tester.view.physicalSize = const Size(1179, 2556);
+  Future<void> pump(
+    WidgetTester tester,
+    String initial, {
+    double height = 2556,
+  }) async {
+    tester.view.physicalSize = Size(1179, height);
     tester.view.devicePixelRatio = 3;
     addTearDown(tester.view.reset);
     final router = GoRouter(
@@ -96,20 +101,34 @@ void main() {
     'Defter: B1 ifadeleri bölüm etiketiyle; arama; kart; ipucu panosu',
     (tester) async {
       await progress.markCompleted('A1-001', gate: const {});
-      await pump(tester, '/defter');
+      // Uzun ekran: listenin hepsi bir kerede çizilsin.
+      await pump(tester, '/defter', height: 3600);
       await settle(tester);
 
       expect(find.text('Defter'), findsOneWidget);
-      expect(find.text('4 kart seni bekliyor.'), findsOneWidget);
+      expect(
+        find.text('5 ifadenin tekrar zamanı geldi · yaklaşık 2 dk'),
+        findsOneWidget,
+      );
+      expect(find.text('Topladığın ifadeler (5)'), findsOneWidget);
+      expect(
+        find.text(
+          'Bölümlerde öğrendiğin ifadeler burada. Birine dokununca kartı açılır.',
+        ),
+        findsOneWidget,
+      );
       for (final p in [
         'Can you hear me?',
         'Yes, I can.',
         'Again, please.',
         'Where is…?',
+        'Listen.',
       ]) {
         expect(find.text(p), findsOneWidget);
       }
-      expect(find.text('B1'), findsNWidgets(4));
+      // H-052: altyazıda geçmeyen hedef ifade anlamıyla defterde.
+      expect(find.text('Dinle.'), findsOneWidget);
+      expect(find.text('B1'), findsNWidgets(5));
 
       await tester.enterText(
         find.byKey(const ValueKey('notebook-search')),
@@ -145,6 +164,12 @@ void main() {
       // İpucu panosu: B1 ipuçları ve açık soru (spoiler'sız).
       await tester.tap(find.text('İpucu panosu'));
       await settle(tester);
+      expect(
+        find.text(
+          'Hikâyede bulduğun ipuçları ve henüz cevabı olmayan sorular.',
+        ),
+        findsOneWidget,
+      );
       expect(find.text('Old Station nerede?'), findsOneWidget);
       expect(find.text('AÇIK SORU · BÖLÜM 1'), findsOneWidget);
       expect(find.text('Telsiz mesajı (ses + metin)'), findsOneWidget);
@@ -185,7 +210,7 @@ void main() {
       )).data!;
 
       // 1) Doğru seçim.
-      expect(find.text('Tekrar · 1 / 4'), findsOneWidget);
+      expect(find.text('Kelime tekrarı · 1 / 5'), findsOneWidget);
       expect(find.byKey(const ValueKey('task-picture_choice')), findsOneWidget);
       expect(await currentMeaning(), 'Beni duyabiliyor musun?');
       expect(
@@ -217,11 +242,11 @@ void main() {
       expect(find.text('Doğrusu bu.'), findsOneWidget);
       expect(find.text('Seçtiğin: Again, please.'), findsOneWidget);
       expect(
-        find.text('Bu kart oturumun sonunda yeniden gelecek.'),
+        find.text('Bu ifade oturumun sonunda yeniden gelecek.'),
         findsOneWidget,
       );
       await tapKey(tester, 'review-continue');
-      expect(find.text('Tekrar · 3 / 5'), findsOneWidget);
+      expect(find.text('Kelime tekrarı · 3 / 6'), findsOneWidget);
 
       // 3) Bilmiyorum → nazik dil, kart oturum sonuna.
       await tapKey(tester, 'task-dont-know');
@@ -233,8 +258,15 @@ void main() {
       await choose('Where is…?');
       await tapKey(tester, 'review-continue');
 
-      // 5–6) Oturum sonu: bilinemeyen iki kart yeniden.
-      expect(find.text('Tekrar · 5 / 6'), findsOneWidget);
+      // 5) Altyazıda geçmeyen hedef ifade (H-052): görsel + anlam.
+      expect(find.text('Kelime tekrarı · 5 / 7'), findsOneWidget);
+      expect(await currentMeaning(), 'Dinle.');
+      await choose('Listen.');
+      expect(find.text('Doğru!'), findsOneWidget);
+      await tapKey(tester, 'review-continue');
+
+      // 6–7) Oturum sonu: bilinemeyen iki kart yeniden.
+      expect(find.text('Kelime tekrarı · 6 / 7'), findsOneWidget);
       expect(await currentMeaning(), 'Evet, (yapabiliyorum).');
       await choose('Yes, I can.');
       expect(find.text('Doğru!'), findsOneWidget);
@@ -244,12 +276,12 @@ void main() {
       await tapKey(tester, 'review-continue');
 
       expect(find.text('Tekrar tamam'), findsOneWidget);
-      expect(find.text('4 kartı tekrar ettin.'), findsOneWidget);
-      expect(find.text('2 kart yarın yeniden gelecek.'), findsOneWidget);
+      expect(find.text('5 ifadeyi tekrar ettin.'), findsOneWidget);
+      expect(find.text('2 ifade yarın yeniden gelecek.'), findsOneWidget);
       expect(find.textContaining('seri'), findsNothing);
 
       final logs = await tester.runAsync(() => db.select(db.reviewLogs).get());
-      expect(logs!.map((l) => l.rating), [3, 1, 1, 3, 3, 3]);
+      expect(logs!.map((l) => l.rating), [3, 1, 1, 3, 3, 3, 3]);
       expect(logs.map((l) => l.taskType).toSet(), {'picture_choice'});
       expect(logs[2].dontKnow, isTrue);
       // Yanlış cevaplar sürümlü hata türüyle olay olarak kaydedilir.
@@ -282,6 +314,15 @@ void main() {
               ),
             ),
       );
+      // "Listen." sesi yok (H-052): dinle-seç olamaz; bu testte sıraya girmesin.
+      await tester.runAsync(() async {
+        final listen = await (db.select(
+          db.notebookItems,
+        )..where((t) => t.textEn.equals('Listen.'))).getSingle();
+        await (db.update(db.reviewCards)
+              ..where((t) => t.itemId.equals(listen.id)))
+            .write(ReviewCardsCompanion(due: Value(DateTime.utc(2099))));
+      });
       await tester.pumpWidget(const SizedBox());
       await settle(tester);
       await pump(tester, AppRoutes.review);
@@ -307,22 +348,85 @@ void main() {
     },
   );
 
-  testWidgets('Ana Sayfa: "Tekrar (n)" yalnızca bekleyen kart varken', (
+  testWidgets('Ana Sayfa: "Kelime tekrarı" sayısı cümle içinde (H-053)', (
     tester,
   ) async {
     await pump(tester, '/');
     await settle(tester);
-    expect(find.text('HİKÂYEYE DEVAM'), findsOneWidget);
-    expect(find.byKey(const ValueKey('home-review')), findsNothing);
+    expect(find.text('Merhaba!'), findsOneWidget);
+    expect(find.text('Hikâyen'), findsOneWidget);
+    expect(find.text('Kelime tekrarı'), findsOneWidget);
+    // Defter boş: sakin durum cümlesi, düğme yok.
+    expect(
+      find.text(
+        'Bir bölümü bitirince ifadeler defterine eklenir; tekrar zamanları '
+        'burada görünür.',
+      ),
+      findsOneWidget,
+    );
+    expect(find.byKey(const ValueKey('home-review-start')), findsNothing);
     await tester.pumpWidget(const SizedBox());
     await settle(tester);
 
     await progress.markCompleted('A1-001', gate: const {});
     await pump(tester, '/');
     await settle(tester);
-    expect(find.text('Tekrar (4)'), findsOneWidget);
-    await tapKey(tester, 'home-review');
+    expect(
+      find.text('5 ifadenin tekrar zamanı geldi · yaklaşık 2 dk'),
+      findsOneWidget,
+    );
+    await tapKey(tester, 'home-review-start');
     expect(find.byKey(const ValueKey('task-picture_choice')), findsOneWidget);
+    await tester.pumpWidget(const SizedBox());
+    await settle(tester);
+  });
+
+  testWidgets('Ana Sayfa: tekrar zamanı gelmemişse sakin cümle', (
+    tester,
+  ) async {
+    await progress.markCompleted('A1-001', gate: const {});
+    await pump(tester, '/');
+    await settle(tester);
+    // Bütün kartlar yarına ertelenmiş gibi.
+    await tester.runAsync(
+      () => db
+          .update(db.reviewCards)
+          .write(
+            ReviewCardsCompanion(
+              state: const Value(2),
+              step: const Value(null),
+              stability: const Value(3),
+              difficulty: const Value(5),
+              reps: const Value(2),
+              due: Value(DateTime.now().toUtc().add(const Duration(days: 1))),
+              lastReview: Value(DateTime.now().toUtc()),
+            ),
+          ),
+    );
+    await tester.pumpWidget(const SizedBox());
+    await settle(tester);
+    await pump(tester, '/');
+    await settle(tester);
+    expect(
+      find.text(
+        'Şu an tekrar edilecek ifade yok. Yeni ifadeler bölüm bitince '
+        'defterine eklenir.',
+      ),
+      findsOneWidget,
+    );
+    expect(find.byKey(const ValueKey('home-review-start')), findsNothing);
+    await tester.pumpWidget(const SizedBox());
+    await settle(tester);
+  });
+
+  testWidgets('Ana Sayfa: Profil\'de kaydedilen adla selam', (tester) async {
+    await tester.runAsync(
+      () => UserProfileStore(db).setDisplayName('  Deniz '),
+    );
+    await pump(tester, '/');
+    await settle(tester);
+    expect(find.text('Merhaba Deniz!'), findsOneWidget);
+    expect(find.text('Bugün için önerimiz:'), findsOneWidget);
     await tester.pumpWidget(const SizedBox());
     await settle(tester);
   });

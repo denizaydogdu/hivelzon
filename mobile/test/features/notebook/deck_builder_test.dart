@@ -33,15 +33,15 @@ void main() {
     NotebookItem item(String en) =>
         deck.items.firstWhere((i) => i.textEn == en);
 
-    test('hedef ifadeler kart olur; Türkçesi bulunamayan atlanır', () {
+    test('5 hedef ifadenin hepsi kart olur (H-052)', () {
       expect(deck.items.map((i) => i.textEn), [
         'Can you hear me?',
         'Yes, I can.',
         'Again, please.',
         'Where is…?',
+        'Listen.',
       ]);
-      // "Listen." B1 altyazısında yok ve targetPhraseGloss'ta da yok.
-      expect(deck.skipped, ['Listen.']);
+      expect(deck.skipped, isEmpty);
       expect(
         deck.items.every((i) => i.source == NotebookSource.autoTargetPhrase),
         isTrue,
@@ -78,7 +78,35 @@ void main() {
       expect(imageNear(b1, 's03'), 'stills/I2-telefon-hi.jpg');
     });
 
-    test('bakılan kelime: dilbilgisi sözcüğü değilse kart olur', () {
+    test('altyazıda geçmeyen "Listen.": görsel + anlam, ses yok', () {
+      final listen = item('Listen.');
+      expect(listen.textTr, 'Dinle.');
+      expect(listen.imagePath, isNotNull);
+      expect(listen.audio, isNull);
+      expect(listen.exampleAudio, isNull);
+      expect(listen.kind, NotebookKind.word);
+    });
+
+    test('Türkçesi bulunamayan hedef ifade atlanır', () {
+      final bare = buildEpisodeDeck(
+        Episode.fromJson(
+          (jsonDecode(fixtureText('A1-001.scenes.json')) as Map)
+            ..update('episode', (e) {
+              (e as Map)['targetPhraseGloss'] = (e['targetPhraseGloss'] as List)
+                  .where((g) => (g as Map)['text'] != 'Listen.')
+                  .toList();
+              return e;
+            }),
+        ),
+        subtitles: subsFor(b1),
+        now: at,
+      );
+      expect(bare.skipped, ['Listen.']);
+      expect(bare.items, hasLength(4));
+    });
+
+    test('bakılan kelime: yalnızca bölüm sözlüğündeyse kart olur (H-052)', () {
+      expect(b1.info.glossary.map((g) => g.word), ['channel']);
       final withLookups = buildEpisodeDeck(
         b1,
         subtitles: subsFor(b1),
@@ -108,7 +136,8 @@ void main() {
       final lookups = withLookups.items
           .where((i) => i.source == NotebookSource.lookup)
           .toList();
-      expect(lookups.map((i) => i.textEn), ['channel', 'hear']);
+      // "hear" ve "you" sözlükte yok: karta dönüşmez.
+      expect(lookups.map((i) => i.textEn), ['channel']);
       expect(lookups.first.textTr, 'kanal');
       expect(lookups.first.kind, NotebookKind.word);
       expect(lookups.first.audio!.start, 1.87);

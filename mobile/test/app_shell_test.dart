@@ -9,7 +9,7 @@ import 'package:hivelzon/shared/content/content_providers.dart';
 import 'support/fake_content_source.dart';
 
 void main() {
-  testWidgets('5 sekme görünür ve Konuş sekmesi "Yakında" gösterir', (
+  testWidgets('5 sekme görünür ve Konuş sekmesi "yakında" gösterir', (
     tester,
   ) async {
     await tester.pumpWidget(
@@ -37,13 +37,16 @@ void main() {
       );
     }
     expect(find.byType(NavigationDestination), findsNWidgets(5));
-    expect(find.textContaining('Yakında'), findsNothing);
-    // Ana Sayfa: tek "Hikâyeye devam" kartı (H-035).
-    expect(find.text('HİKÂYEYE DEVAM'), findsOneWidget);
+    expect(find.textContaining('yakında'), findsNothing);
+    // Ana Sayfa: selam + "Hikâyen" bölümü (H-035, H-053).
+    expect(find.text('Merhaba!'), findsOneWidget);
+    expect(find.text('Hikâyen'), findsOneWidget);
+    expect(find.byKey(const ValueKey('home-continue')), findsOneWidget);
 
     await tester.tap(find.descendant(of: nav, matching: find.text('Konuş')));
     await tester.pumpAndSettle();
 
-    expect(find.textContaining('Yakında'), findsOneWidget);
+    expect(find.text('Konuşma pratiği yakında'), findsOneWidget);
+    expect(find.byKey(const ValueKey('page-title')), findsOneWidget);
   });
 }

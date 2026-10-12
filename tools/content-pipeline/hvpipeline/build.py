@@ -177,6 +177,12 @@ def episode_meta(ep: Episode, translation: Translation | None = None) -> dict:
                 glosses.append({"text": phrase, **g})
         if glosses:
             meta["targetPhraseGloss"] = glosses
+    # Bölüm sözlüğü (H-052): altyazıda bakılan kelimelerden yalnızca bunlar defter kartı olur.
+    glossary = []
+    for w in c.get("glossary", []) or []:
+        tr = translation.glossary_meaning(w) if translation is not None else None
+        glossary.append({"w": w, "tr": tr} if tr else {"w": w})
+    meta["glossary"] = glossary
     if "estimatedMinutes" in c:
         meta["estimatedMinutes"] = c["estimatedMinutes"]
     return meta
