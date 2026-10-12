@@ -1,0 +1,22 @@
+[
+  {
+    "created_at": "2026-10-12T07:09:31.62509Z",
+    "display_name": "Seed Audio 1.0",
+    "id": "465f0245-2890-4283-b533-1d7f7ac80c8e",
+    "job_type": "seed_audio",
+    "min_result_url": null,
+    "params": {
+      "batch_size": 1,
+      "expression_intensity": 5,
+      "format": "wav",
+      "loudness_rate": 0,
+      "mood": 0,
+      "pitch_rate": 0,
+      "prompt": "Short warm cinematic opening theme for an animated mystery series, 10 seconds: soft plucked guitar and light strings, a subtle radio-static texture at the start, gentle build to a hopeful resolved chord at the end; no vocals.",
+      "sample_rate": 24000,
+      "speech_rate": 0
+    },
+    "result_url": null,
+    "status": "failed"
+  }
+]

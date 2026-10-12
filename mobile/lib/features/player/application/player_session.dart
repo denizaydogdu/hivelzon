@@ -4,6 +4,10 @@ import 'package:flutter/foundation.dart';
 import 'package:video_player/video_player.dart';
 
 import '../../../shared/content/content_source.dart';
+import '../../../shared/meaning/learning_event_log.dart';
+import '../../../shared/meaning/meaning_controller.dart';
+import '../../../shared/meaning/meaning_text.dart';
+import '../../../shared/meaning/notebook_repository.dart';
 import '../data/progress_repository.dart';
 import '../domain/episode.dart';
 import '../domain/episode_engine.dart';
@@ -14,7 +18,8 @@ import 'transition_metrics.dart';
 
 enum PlayerPhase { loading, resumePrompt, playing, finished, error }
 
-enum SubtitleMode { en, off }
+/// Altyazı: yalnızca İngilizce, İngilizce + küçük Türkçe satır (K-03), kapalı.
+enum SubtitleMode { en, enTr, off }
 
 /// Bir bölüm oynatma oturumu: motor + video havuzu + ses + kayıt.
 ///
@@ -25,16 +30,22 @@ class PlayerSession extends ChangeNotifier {
     required ContentSource source,
     required ProgressRepository progress,
     VideoControllerFactory? videoFactory,
+    LearningEventLog? events,
+    NotebookRepository? notebook,
     this.logTransitions = kDebugMode,
   }) : _source = source,
        _progress = progress,
        _videoFactory = videoFactory,
+       _events = events ?? InMemoryLearningEventLog(),
+       _notebook = notebook ?? InMemoryNotebookRepository(),
        audio = ClipAudioPlayer(factory: videoFactory);
 
   final String contentId;
   final ContentSource _source;
   final ProgressRepository _progress;
   final VideoControllerFactory? _videoFactory;
+  final LearningEventLog _events;
+  final NotebookRepository _notebook;
   final bool logTransitions;
 
   /// Hi balonu, seçenek ve görev sesleri.
@@ -74,6 +85,13 @@ class PlayerSession extends ChangeNotifier {
   String? _lastSavedCheckpoint;
   bool _disposed = false;
 
+  // Anlam paneli (H-046).
+  MeaningController? _meaning;
+  bool _meaningOnVideo = false;
+  bool _meaningWasPlaying = false;
+  Duration _meaningResumeAt = Duration.zero;
+  Timer? _rangeTimer;
+
   // Konum tahmini (altyazı eşlemesi için; video_player konumu 100 ms'de bir günceller).
   Duration _anchorPos = Duration.zero;
   final Stopwatch _anchorClock = Stopwatch();
@@ -103,6 +121,9 @@ class PlayerSession extends ChangeNotifier {
   bool get reactionBubbleVisible => _reactionBubbleVisible;
   bool get userPaused => _userPaused;
   int get liveVideoControllers => _pool.liveCount;
+
+  /// Açık anlam paneli (yoksa null). Ekran bunu görünce paneli açar.
+  MeaningController? get meaning => _meaning;
 
   /// Altyazı saatinin bildirilen konumdan en büyük sapması (ms).
   double get maxClockDriftMs => _maxDriftMs;
@@ -251,24 +272,95 @@ class PlayerSession extends ChangeNotifier {
     notifyListeners();
   }
 
-  /// Altyazı satırına dokununca o satırı yeniden oynat.
-  Future<void> replayCue(SubtitleCue cue) async {
+  // ------------------------------------------------------------ anlam paneli
+
+  /// Altyazı satırına dokunuldu: video (ve kısa ses) durur, panel açılır.
+  /// Panel kapanınca video aynı yerden sürer ([closeMeaning]).
+  Future<void> openMeaningForCue(SubtitleCue cue) async {
     final c = _active;
-    if (c == null || !isVideoNode) return;
-    await _cancelPrestart();
-    await c.seekTo(Duration(microseconds: (cue.start * 1e6).round()));
-    _anchorPos = Duration(microseconds: (cue.start * 1e6).round());
-    _anchorClock
-      ..reset()
-      ..start();
-    _userPaused = false;
-    if (!c.value.isPlaying) await c.play();
+    if (_meaning != null || c == null || !isVideoNode) return;
+    _meaningOnVideo = true;
+    _meaningWasPlaying = c.value.isPlaying && !_userPaused;
+    _meaningResumeAt = Duration(microseconds: (positionSeconds * 1e6).round());
+    _meaning = _newMeaning(cue.toMeaning(contentId), _CueAudio(this, cue));
     notifyListeners();
+    _log('anlam paneli: ${cue.id}');
+    await c.pause();
+    await _cancelPrestart();
+    await audio.stop();
+    _reanchor(position: _meaningResumeAt);
+  }
+
+  /// Kart satırı ya da karar repliği: ses varsa kart sesi çalınır.
+  void openMeaningForText(MeaningText text, {String? audioPath}) {
+    if (_meaning != null) return;
+    _meaningOnVideo = false;
+    _autoCardTimer?.cancel();
+    unawaited(audio.stop());
+    _meaning = _newMeaning(
+      text,
+      audioPath == null
+          ? const SilentMeaningAudio()
+          : _ClipAudio(this, audioPath),
+    );
+    _log('anlam paneli: ${text.sourceId}');
+    notifyListeners();
+  }
+
+  MeaningController _newMeaning(MeaningText text, MeaningAudio a) =>
+      MeaningController(
+        text: text,
+        audio: a,
+        events: _events,
+        notebook: _notebook,
+        speed: _speed,
+      );
+
+  /// Panel kapandı: video kaldığı yerden (kullanıcı duraklatmadıysa) sürer.
+  Future<void> closeMeaning() async {
+    final m = _meaning;
+    if (m == null) return;
+    _meaning = null;
+    _rangeTimer?.cancel();
+    notifyListeners();
+    await audio.stop();
+    final c = _active;
+    if (_meaningOnVideo && c != null && isVideoNode && !_disposed) {
+      await c.pause();
+      if (c.value.playbackSpeed != _speed) await c.setPlaybackSpeed(_speed);
+      await c.seekTo(_meaningResumeAt);
+      _reanchor(position: _meaningResumeAt);
+      if (_meaningWasPlaying) {
+        _userPaused = false;
+        await c.play();
+      }
+    }
+    _meaningOnVideo = false;
+    // Kontrolcü bir kare sonra atılır (panel o sırada sökülür).
+    Timer(const Duration(milliseconds: 500), m.dispose);
+    notifyListeners();
+  }
+
+  /// Segmentin bir aralığını çalar (kelime ya da satır); sonunda duraklar.
+  Future<void> _playRange(double start, double end, double speed) async {
+    final c = _active;
+    if (c == null || _meaning == null || !isVideoNode) return;
+    _rangeTimer?.cancel();
+    final from = Duration(microseconds: (start * 1e6).round());
+    await c.pause();
+    if (c.value.playbackSpeed != speed) await c.setPlaybackSpeed(speed);
+    await c.seekTo(from);
+    _reanchor(position: from);
+    await c.play();
+    final ms = ((end - start) / speed * 1000).round() + 60;
+    _rangeTimer = Timer(Duration(milliseconds: ms), () {
+      if (identical(_active, c) && _meaning != null) unawaited(c.pause());
+    });
   }
 
   Future<void> togglePause() async {
     final c = _active;
-    if (c == null || !isVideoNode) return;
+    if (c == null || !isVideoNode || _meaning != null) return;
     if (c.value.isPlaying) {
       _userPaused = true;
       await c.pause();
@@ -318,6 +410,8 @@ class PlayerSession extends ChangeNotifier {
     final e = _engine!;
     final token = ++_token;
     _autoCardTimer?.cancel();
+    _rangeTimer?.cancel();
+    _meaning = null;
     _hintPanelOpen = false;
     _reactionBubbleVisible = false;
     _videoError = null;
@@ -522,6 +616,8 @@ class PlayerSession extends ChangeNotifier {
       }
       _reanchor(position: value.position);
     }
+    // Anlam paneli açıkken segment parça parça çalınır: geçiş yapılmaz.
+    if (_meaning != null) return;
     _maybePrestart(value);
     // Yeniden oynatılan denetleyicide eski `isCompleted` bayrağı bir süre
     // kalabilir; yalnızca oynatma başı sona yakınsa bitiş sayılır.
@@ -638,9 +734,65 @@ class PlayerSession extends ChangeNotifier {
     _disposed = true;
     _token++;
     _autoCardTimer?.cancel();
+    _rangeTimer?.cancel();
     _active?.removeListener(_onActiveTick);
     audio.dispose();
     unawaited(_pool.dispose());
     super.dispose();
   }
+}
+
+/// Altyazı satırının sesi: segmentten kelime/satır aralığı (ek üretim yok).
+class _CueAudio implements MeaningAudio {
+  _CueAudio(this._s, this._cue);
+
+  final PlayerSession _s;
+  final SubtitleCue _cue;
+
+  @override
+  bool get canPlayWords => true;
+
+  @override
+  bool get canPlaySentence => true;
+
+  @override
+  Future<void> playWord(MeaningWord word, {required double speed}) =>
+      _s._playRange(word.start!, word.end!, speed);
+
+  @override
+  Future<void> playSentence({required double speed}) {
+    final last = _cue.words.isEmpty ? _cue.end : _cue.words.last.end;
+    final first = _cue.words.isEmpty ? _cue.start : _cue.words.first.start;
+    return _s._playRange(first, last, speed);
+  }
+
+  @override
+  Future<void> stop() async {
+    _s._rangeTimer?.cancel();
+    await _s._active?.pause();
+  }
+}
+
+/// Kart ya da karar repliğinin kayıtlı sesi (kelime zamanı yok).
+class _ClipAudio implements MeaningAudio {
+  _ClipAudio(this._s, this._path);
+
+  final PlayerSession _s;
+  final String _path;
+
+  @override
+  bool get canPlayWords => false;
+
+  @override
+  bool get canPlaySentence => true;
+
+  @override
+  Future<void> playWord(MeaningWord word, {required double speed}) async {}
+
+  @override
+  Future<void> playSentence({required double speed}) =>
+      _s.audio.play(_s.media(_path), speed: speed);
+
+  @override
+  Future<void> stop() => _s.audio.stop();
 }

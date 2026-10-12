@@ -59,6 +59,7 @@ icerik/**/*.webp
 icerik/**/*.mp4
 icerik/**/*.mov
 icerik/**/*.mp3
+icerik/**/*.m4a
 icerik/**/*.wav
 .DS_Store
 icerik/**/_build/

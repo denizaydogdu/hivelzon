@@ -64,6 +64,11 @@ def main(argv: list[str] | None = None) -> int:
                   f"{g['reactions']} tepki, {g['cards']} kart, {g['tasks']} görev, {g['flags']} bayrak")
         else:
             print("   grafik: scenes.json / kurgu.json yok, atlandı")
+        if r.translation and "cues" in r.translation:
+            t = r.translation
+            print(f"   çeviri [{t['status']}]: {t['cuesTranslated']}/{t['cues']} altyazı satırı, "
+                  f"{t['wordsGlossed']}/{t['wordsNeedingGloss']} kelime anlamlı (özel adlar hariç; toplam {t['words']}), "
+                  f"{t['chunks']} kalıp")
         for i in r.errors + r.warnings:
             print(f"   - {i}")
     if chain:

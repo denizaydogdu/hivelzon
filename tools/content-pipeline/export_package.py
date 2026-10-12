@@ -27,12 +27,14 @@ AV_LIMIT = 0.05
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description="hiVelzon bölüm paketi dışa aktarma")
     ap.add_argument("episodes", nargs="+")
-    ap.add_argument("--no-ai-label", action="store_true", help="'Yapay zekâ ile üretilmiştir' yazısını gömme")
+    # Uygulama içi paketlerde etiket gömülmez; uygulama bölüm başında kısa bir not gösterir
+    # (kullanıcı kararı 2026-10-12). Sosyal medya kesitleri için --ai-label ile gömülür (K-14).
+    ap.add_argument("--ai-label", action="store_true", help="'Yapay zekâ ile üretilmiştir' yazısını videoya göm (sosyal medya)")
     ap.add_argument("--report", help="özet raporu JSON olarak yaz")
     a = ap.parse_args(argv)
     summary, failed = [], False
     for d in a.episodes:
-        r = export_episode(Path(d), label=not a.no_ai_label)
+        r = export_episode(Path(d), label=a.ai_label)
         m, doc = r["manifest"], r["doc"]
         deltas = [abs(s["delta"]) for s in r["sync"] if s["delta"] is not None]
         unmeasured = [s for s in r["sync"] if s["delta"] is None]

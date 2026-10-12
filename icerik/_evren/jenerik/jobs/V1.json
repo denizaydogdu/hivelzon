@@ -1,0 +1,46 @@
+[
+  {
+    "created_at": "2026-10-12T07:09:42.429472Z",
+    "display_name": "Seedance 2.0 Mini",
+    "id": "603ee7d8-a638-426f-89f7-928f9a2985d3",
+    "job_type": "seedance_2_0_mini",
+    "min_result_url": null,
+    "params": {
+      "aspect_ratio": "9:16",
+      "duration": 5,
+      "generate_audio": false,
+      "genre": "auto",
+      "height": 1280,
+      "medias": [
+        {
+          "data": {
+            "id": "50c9fc6e-c383-4e78-9c40-dd62db6fd0d1",
+            "type": "media_input",
+            "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/50c9fc6e-c383-4e78-9c40-dd62db6fd0d1_resize.jpg"
+          },
+          "role": "start_image"
+        },
+        {
+          "data": {
+            "id": "960a9428-54cf-42d8-837b-4cb0cc8b642d",
+            "type": "media_input",
+            "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/960a9428-54cf-42d8-837b-4cb0cc8b642d_resize.jpg"
+          },
+          "role": "end_image"
+        }
+      ],
+      "multi_prompt": [],
+      "multi_shot_mode": "custom",
+      "multi_shots": false,
+      "prompt": "Smooth cinematic crane shot: the camera slowly rises from behind the young woman on the pier and glides up over the harbour toward the lighthouse on the hill; town windows twinkle, gentle waves, the glowing bubble companion bobs softly; at the end the lighthouse lamp switches on and its beam begins to sweep. Consistent illustrated graphic-novel style, no text, no new characters, no morphing.",
+      "prompt_language": "en",
+      "reference_elements": [],
+      "resolution": "720p",
+      "speedramp": "auto",
+      "width": 720
+    },
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261012_070942_603ee7d8-a638-426f-89f7-928f9a2985d3.mp4",
+    "status": "completed",
+    "thumbnail_url": "https://cdn.higgsfield.ai/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261012_070942_603ee7d8-a638-426f-89f7-928f9a2985d3_thumbnail.webp"
+  }
+]

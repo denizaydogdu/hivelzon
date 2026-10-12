@@ -11,6 +11,8 @@ import 'transition_metrics.dart';
 /// - `true`: Hikâye sekmesi bütün bölümleri sırayla oynatır.
 /// - `resume1`: B1'i `s05` kontrol noktasına dek oynatır ve bekler (süreç dışarıdan öldürülür).
 /// - `resume2`: B1'i açar, "Kaldığın yerden devam"ı seçer ve sona dek oynatır.
+/// - `meaning`: `true` gibi; B1 s02'de anlam panelini açar, kelime ve
+///   "Türkçesini göster" adımlarını, ardından EN+TR altyazıyı gösterir (H-046).
 const String kAutoplayMode = String.fromEnvironment('AUTOPLAY_TEST');
 
 bool get autoplayEnabled =>
@@ -151,7 +153,11 @@ class AutoplayDriver {
     }
     switch (node) {
       case SegmentNode():
-        _armSubtitleShot(node);
+        if (kAutoplayMode == 'meaning') {
+          _armMeaningShots(node);
+        } else {
+          _armSubtitleShot(node);
+        }
       case ReactionNode(:final bubble):
         if (s.reactionBubbleVisible) {
           _after(1200 + _shot('reaction', holdMs: 2500), s.advance);
@@ -210,6 +216,47 @@ class AutoplayDriver {
           if (!_disposed) session.togglePause();
         });
       }
+    });
+  }
+
+  /// B1 s02 "Can you hear me?" satırında anlam panelinin adımları (H-046).
+  void _armMeaningShots(SegmentNode node) {
+    if (!_isB1 || node.id != 's02' || !_subtitleShotArmed) return;
+    _subtitleShotArmed = false;
+    _poll?.cancel();
+    _poll = Timer.periodic(const Duration(milliseconds: 50), (t) async {
+      if (_disposed || session.node?.id != 's02') {
+        t.cancel();
+        return;
+      }
+      final cue = session.currentCue;
+      if (cue == null || !cue.text.startsWith('Can you hear')) return;
+      t.cancel();
+      await session.openMeaningForCue(cue);
+      _log('[SHOT] meaning-open');
+      await Future<void>.delayed(const Duration(milliseconds: 3500));
+      final m = session.meaning;
+      if (_disposed || m == null) return;
+      final i = m.text.words.indexWhere((w) => w.bare == 'hear');
+      m.selectWord(i < 0 ? 0 : i);
+      await Future<void>.delayed(const Duration(milliseconds: 1200));
+      _log('[SHOT] meaning-word');
+      await Future<void>.delayed(const Duration(milliseconds: 3500));
+      if (_disposed || session.meaning == null) return;
+      m.reveal();
+      await Future<void>.delayed(const Duration(milliseconds: 800));
+      _log('[SHOT] meaning-tr');
+      await Future<void>.delayed(const Duration(milliseconds: 3500));
+      if (_disposed) return;
+      session.setSubtitleMode(SubtitleMode.enTr);
+      await session.closeMeaning();
+      _log('anlam paneli kapandı; video sürüyor');
+      await Future<void>.delayed(const Duration(milliseconds: 500));
+      if (_disposed || session.node?.id != 's02') return;
+      await session.togglePause();
+      _log('[SHOT] subtitle-entr');
+      await Future<void>.delayed(const Duration(milliseconds: 3500));
+      if (!_disposed && session.userPaused) await session.togglePause();
     });
   }
 

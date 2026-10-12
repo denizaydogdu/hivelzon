@@ -88,7 +88,23 @@
         {
           "text": "The New Neighbour",
           "lang": "en",
-          "style": "heading"
+          "style": "heading",
+          "tr": "Yeni Komşu",
+          "words": [
+            {
+              "w": "The",
+              "gloss": "(belirli tanımlık)"
+            },
+            {
+              "w": "New",
+              "gloss": "yeni"
+            },
+            {
+              "w": "Neighbour",
+              "gloss": "komşu"
+            }
+          ],
+          "chunks": []
         }
       ],
       "advance": "auto",
@@ -109,7 +125,112 @@
         {
           "text": "Nice to meet you. · This is my… · Excuse me, where is…? · Is it far? · Thank you.",
           "lang": "en",
-          "style": "highlight"
+          "style": "highlight",
+          "tr": "Tanıştığımıza memnun oldum. · Bu benim… · Affedersiniz, … nerede? · Uzak mı? · Teşekkür ederim.",
+          "words": [
+            {
+              "w": "Nice",
+              "gloss": "hoş, güzel"
+            },
+            {
+              "w": "to",
+              "gloss": "(mastar: -mek)"
+            },
+            {
+              "w": "meet",
+              "gloss": "tanışmak"
+            },
+            {
+              "w": "you.",
+              "gloss": "seninle / sizinle"
+            },
+            {
+              "w": "This",
+              "gloss": "bu"
+            },
+            {
+              "w": "is",
+              "gloss": "-dır (olmak)"
+            },
+            {
+              "w": "my…",
+              "gloss": "benim"
+            },
+            {
+              "w": "Excuse",
+              "gloss": "affetmek (excuse me: affedersiniz)"
+            },
+            {
+              "w": "me,",
+              "gloss": "(excuse me kalıbının parçası)"
+            },
+            {
+              "w": "where",
+              "gloss": "nerede"
+            },
+            {
+              "w": "is…?",
+              "gloss": "-dır (olmak)"
+            },
+            {
+              "w": "Is",
+              "gloss": "-dır (olmak)"
+            },
+            {
+              "w": "it",
+              "gloss": "o (orası)"
+            },
+            {
+              "w": "far?",
+              "gloss": "uzak"
+            },
+            {
+              "w": "Thank",
+              "gloss": "teşekkür etmek"
+            },
+            {
+              "w": "you.",
+              "gloss": "seninle / sizinle"
+            }
+          ],
+          "chunks": [
+            {
+              "en": "Nice to meet you.",
+              "tr": "Tanıştığımıza memnun oldum.",
+              "startWord": 0,
+              "endWord": 3
+            },
+            {
+              "en": "This is my…",
+              "tr": "Bu benim… (birini tanıtırken)",
+              "startWord": 4,
+              "endWord": 15
+            },
+            {
+              "en": "Excuse me",
+              "tr": "Affedersiniz / Pardon",
+              "startWord": 7,
+              "endWord": 8
+            },
+            {
+              "en": "Where is…?",
+              "tr": "… nerede?",
+              "startWord": 9,
+              "endWord": 15
+            },
+            {
+              "en": "Is it far?",
+              "tr": "Uzak mı?",
+              "startWord": 11,
+              "endWord": 13
+            },
+            {
+              "en": "Thank you.",
+              "tr": "Teşekkür ederim.",
+              "startWord": 14,
+              "endWord": 15
+            }
+          ]
         }
       ],
       "advance": "tap",
@@ -134,7 +255,48 @@
       },
       "cue": {
         "speaker": "MAYA",
-        "text": "Good morning! Can I help you?"
+        "text": "Good morning! Can I help you?",
+        "tr": "Günaydın! Yardımcı olabilir miyim?",
+        "words": [
+          {
+            "w": "Good",
+            "gloss": "iyi (good morning: günaydın)"
+          },
+          {
+            "w": "morning!",
+            "gloss": "sabah"
+          },
+          {
+            "w": "Can",
+            "gloss": "-ebilir miyim (soru)"
+          },
+          {
+            "w": "I",
+            "gloss": "ben"
+          },
+          {
+            "w": "help",
+            "gloss": "yardım etmek"
+          },
+          {
+            "w": "you?",
+            "gloss": "size / sana"
+          }
+        ],
+        "chunks": [
+          {
+            "en": "Good morning!",
+            "tr": "Günaydın!",
+            "startWord": 0,
+            "endWord": 1
+          },
+          {
+            "en": "Can I help you?",
+            "tr": "Yardımcı olabilir miyim? (dükkânda)",
+            "startWord": 2,
+            "endWord": 5
+          }
+        ]
       },
       "pov": "POV: Maya tezgâhta.",
       "skill": "pragmatics",
@@ -362,6 +524,55 @@
               "id": "from",
               "accept": "any"
             }
+          ],
+          "stemTr": "Merhaba! Benim adım ___. ___'denim.",
+          "stemWords": [
+            {
+              "w": "Hello!",
+              "gloss": "merhaba"
+            },
+            {
+              "w": "My",
+              "gloss": "benim"
+            },
+            {
+              "w": "name",
+              "gloss": "ad, isim"
+            },
+            {
+              "w": "is",
+              "gloss": "-dır / -dir (olmak)"
+            },
+            {
+              "w": "___.",
+              "gloss": null
+            },
+            {
+              "w": "I'm",
+              "gloss": "ben …-im"
+            },
+            {
+              "w": "from",
+              "gloss": "-den / -dan"
+            },
+            {
+              "w": "___.",
+              "gloss": null
+            }
+          ],
+          "stemChunks": [
+            {
+              "en": "My name is …",
+              "tr": "Benim adım …",
+              "startWord": 1,
+              "endWord": 7
+            },
+            {
+              "en": "I'm from …",
+              "tr": "…-denim / …-liyim",
+              "startWord": 5,
+              "endWord": 7
+            }
           ]
         }
       ],
@@ -436,7 +647,23 @@
         {
           "text": "Bölüm 3: Find the Station",
           "lang": "en",
-          "style": "caption"
+          "style": "caption",
+          "tr": "İstasyonu Bul",
+          "words": [
+            {
+              "w": "Find",
+              "gloss": "bul"
+            },
+            {
+              "w": "the",
+              "gloss": "(belirli tanımlık)"
+            },
+            {
+              "w": "Station",
+              "gloss": "istasyon"
+            }
+          ],
+          "chunks": []
         }
       ],
       "advance": "tap",

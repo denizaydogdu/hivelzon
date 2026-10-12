@@ -16,6 +16,7 @@ from pathlib import Path
 from . import __version__
 from .align import Alignment, Cue, merge_parts, round_cue, shot_cues
 from .story import header_field
+from .translation import Miss, Translation
 
 KURGU_FILE = "kurgu.json"
 SPEAKER_TOKENS = {"alex": "ALEX", "maya": "MAYA", "voice": "VOICE", "hi": "HI", "man": "MAN",
@@ -176,6 +177,8 @@ class Builder:
         self.subs: dict[str, dict] = {}
         self.text_only: list[TextOnly] = []
         self.segments: dict[str, list[ShotPlan]] = {}
+        self.translation = Translation.load(ep.dir)
+        self.tr_misses: list[Miss] = []
 
     # --- yardımcılar ---
     def _shot(self, spec: dict) -> ShotPlan:
@@ -226,9 +229,15 @@ class Builder:
         out = {"video": path, "duration": round(duration, 3)}
         if cues:
             rel = f"subs/{node_id}.en.json"
+            sub_cues = []
+            for k, c in enumerate(cues):
+                cue = dict(id=f"{node_id}-{k + 1:02d}", tr=None, **round_cue(c))
+                if self.translation is not None:
+                    self.translation.annotate_cue(cue, f"{rel}#{cue['id']}", self.tr_misses)
+                sub_cues.append(cue)
             self.subs[rel] = {
                 "schemaVersion": 1, "segment": node_id, "lang": "en", "duration": round(duration, 3),
-                "cues": [dict(id=f"{node_id}-{k + 1:02d}", tr=None, **round_cue(c)) for k, c in enumerate(cues)],
+                "cues": sub_cues,
             }
             out["subtitles"] = rel
         else:
@@ -240,6 +249,23 @@ class Builder:
 
     def _still(self, rel: str) -> str:
         return self.media.still(self.ep, self.ep.image(rel))
+
+    def _gloss(self, text: str, where: str) -> dict | None:
+        if self.translation is None:
+            return None
+        return self.translation.gloss_text(text, where, self.tr_misses)
+
+    def _gloss_lines(self, lines: list[dict], where: str) -> list[dict]:
+        """Kart satırlarına (lang en) Türkçe cümle, kelime anlamları ve kalıplar eklenir."""
+        out = []
+        for ln in lines:
+            ln = dict(ln)
+            if ln.get("lang", "en") == "en":
+                g = self._gloss(ln["text"], where)
+                if g:
+                    ln.update(g)
+            out.append(ln)
+        return out
 
     def _bubble(self, node_id: str, spec: dict, what: str) -> dict:
         b = {"speaker": spec.get("speaker", "HI"), "lang": spec.get("lang", "tr"), "text": spec["text"]}
@@ -271,6 +297,10 @@ class Builder:
             for k in ("title", "lines", "variants", "advance", "duration", "clueIds", "questionId", "answers"):
                 if k in spec:
                     out[k] = spec[k]
+            out["lines"] = self._gloss_lines(out["lines"], f"card {nid}")
+            if "variants" in out:
+                out["variants"] = [{**v, "lines": self._gloss_lines(v["lines"], f"card {nid} (varyant)")}
+                                   for v in out["variants"]]
             if spec.get("audio"):
                 out["audio"] = self._audio(spec["audio"])
             elif spec["kind"] in ("hi", "line"):
@@ -285,6 +315,9 @@ class Builder:
                 cue = {"speaker": spec["cue"]["speaker"], "text": spec["cue"]["text"]}
                 if spec["cue"].get("audio"):
                     cue["audio"] = self._audio(spec["cue"]["audio"])
+                g = self._gloss(cue["text"], f"decision {nid} cue")
+                if g:
+                    cue.update(g)
                 out["cue"] = cue
             for k in ("pov", "skill", "cefr", "targetPhrase"):
                 if k in spec:
@@ -314,6 +347,10 @@ class Builder:
             items = []
             for it in spec["items"]:
                 ii = {k: v for k, v in it.items() if k != "options"}
+                if it.get("stem"):
+                    g = self._gloss(it["stem"], f"task {nid}.{it.get('id')} stem")
+                    if g:
+                        ii["stemTr"], ii["stemWords"], ii["stemChunks"] = g["tr"], g["words"], g["chunks"]
                 if "options" in it:
                     ii["options"] = []
                     for o in it["options"]:

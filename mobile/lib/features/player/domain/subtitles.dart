@@ -2,14 +2,18 @@
 //
 // Saf Dart. Zamanlar saniyedir ve segmentin başına görelidir.
 
+import '../../../shared/meaning/meaning_text.dart';
 import 'episode.dart';
 
 class SubtitleWord {
-  const SubtitleWord(this.w, this.start, this.end);
+  const SubtitleWord(this.w, this.start, this.end, {this.gloss});
 
   final String w;
   final double start;
   final double end;
+
+  /// Bu cümledeki Türkçe anlamı (H-046). Özel adda ya da çeviri yoksa null.
+  final String? gloss;
 }
 
 class SubtitleCue {
@@ -21,6 +25,7 @@ class SubtitleCue {
     required this.text,
     required this.words,
     this.tr,
+    this.chunks = const [],
   });
 
   final String id;
@@ -31,7 +36,26 @@ class SubtitleCue {
   final String? tr;
   final List<SubtitleWord> words;
 
+  /// Kalıp ifadeler (kelime aralığı, H-046).
+  final List<PhraseChunk> chunks;
+
   bool covers(double t) => t >= start && t < end;
+
+  bool get hasTurkish => tr != null && tr!.trim().isNotEmpty;
+
+  /// Anlam paneli için metin (kelime zamanlarıyla).
+  MeaningText toMeaning(String contentId) => MeaningText(
+    contentId: contentId,
+    sourceId: id,
+    en: text,
+    tr: tr,
+    speaker: speaker,
+    words: [
+      for (final w in words)
+        MeaningWord(w.w, gloss: w.gloss, start: w.start, end: w.end),
+    ],
+    chunks: chunks,
+  );
 }
 
 class SubtitleTrack {
@@ -63,8 +87,10 @@ class SubtitleTrack {
                 (w as Map)['w'] as String,
                 (w['start'] as num).toDouble(),
                 (w['end'] as num).toDouble(),
+                gloss: w['gloss'] as String?,
               ),
           ],
+          chunks: PhraseChunk.listFromJson(m['chunks']),
         ),
       );
     }
@@ -89,8 +115,8 @@ class SubtitleTrack {
     return null;
   }
 
-  /// Türkçe satır var mı? (`tr` henüz null; EN+TR modu bunu bekler.)
-  bool get hasTurkish => cues.any((c) => c.tr != null && c.tr!.isNotEmpty);
+  /// Türkçe satır var mı? (EN+TR modu ve anlam paneli kullanır.)
+  bool get hasTurkish => cues.any((c) => c.hasTurkish);
 }
 
 /// Hedef ifadelerin sözcüklerini ipucu sözcüklerinde bulur.

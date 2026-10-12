@@ -151,29 +151,32 @@ class _SubtitleMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final label = mode == SubtitleMode.en ? 'EN' : 'Kapalı';
+    final label = switch (mode) {
+      SubtitleMode.en => 'EN',
+      SubtitleMode.enTr => 'EN+TR',
+      SubtitleMode.off => 'Kapalı',
+    };
+    final on = mode != SubtitleMode.off;
     return PopupMenuButton<SubtitleMode>(
+      key: const ValueKey('subtitle-menu'),
       tooltip: 'Altyazı: $label',
       onSelected: onChanged,
       position: PopupMenuPosition.under,
       itemBuilder: (context) => [
         CheckedPopupMenuItem(
+          key: const ValueKey('subtitle-mode-en'),
           value: SubtitleMode.en,
           checked: mode == SubtitleMode.en,
           child: const Text('EN (İngilizce)'),
         ),
-        const PopupMenuItem<SubtitleMode>(
-          enabled: false,
-          child: Tooltip(
-            message: 'Türkçe satır yakında',
-            child: ListTile(
-              contentPadding: EdgeInsets.zero,
-              title: Text('EN + TR'),
-              subtitle: Text('Türkçe satır yakında'),
-            ),
-          ),
+        CheckedPopupMenuItem(
+          key: const ValueKey('subtitle-mode-entr'),
+          value: SubtitleMode.enTr,
+          checked: mode == SubtitleMode.enTr,
+          child: const Text('EN + TR (Türkçe satırla)'),
         ),
         CheckedPopupMenuItem(
+          key: const ValueKey('subtitle-mode-off'),
           value: SubtitleMode.off,
           checked: mode == SubtitleMode.off,
           child: const Text('Kapalı'),
@@ -185,7 +188,7 @@ class _SubtitleMenu extends StatelessWidget {
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
             decoration: BoxDecoration(
-              color: mode == SubtitleMode.en ? AppColors.seaBlue : Colors.white,
+              color: on ? AppColors.seaBlue : Colors.white,
               borderRadius: BorderRadius.circular(24),
               border: Border.all(
                 color: AppColors.seaBlue.withValues(alpha: 0.3),
@@ -197,9 +200,7 @@ class _SubtitleMenu extends StatelessWidget {
                 Icon(
                   Icons.closed_caption_rounded,
                   size: 18,
-                  color: mode == SubtitleMode.en
-                      ? Colors.white
-                      : AppColors.seaBlue,
+                  color: on ? Colors.white : AppColors.seaBlue,
                 ),
                 const SizedBox(width: 4),
                 Text(
@@ -207,9 +208,7 @@ class _SubtitleMenu extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.w700,
-                    color: mode == SubtitleMode.en
-                        ? Colors.white
-                        : AppColors.seaBlue,
+                    color: on ? Colors.white : AppColors.seaBlue,
                   ),
                 ),
               ],

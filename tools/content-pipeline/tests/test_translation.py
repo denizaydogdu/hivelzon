@@ -1,0 +1,142 @@
+"""ceviri.tr.json birleştirme ve content-lint çeviri denetimi (H-046)."""
+import json
+import shutil
+from pathlib import Path
+
+import pytest
+
+from hvpipeline.build import build_dry
+from hvpipeline.graph import schema_errors
+from hvpipeline.lint import lint_episode
+from hvpipeline.translation import chunk_pattern, split_words, word_key, _find_span, GAP
+
+FX = Path(__file__).parent / "fixtures"
+
+LINES = [
+    {"en": "Hi, Alex!", "speaker": "MAYA", "tr": "Merhaba Alex!", "chunks": [], "words": {"hi": "merhaba"}},
+    {"en": "I'm Maya.", "speaker": "MAYA", "tr": "Ben Maya.", "chunks": [{"en": "I'm", "tr": "Ben …-im"}],
+     "words": {"i'm": "ben …-im"}},
+    {"en": "Are you new here?", "speaker": "MAYA", "tr": "Burada yeni misin?",
+     "chunks": [{"en": "Are you new", "tr": "Yeni misin"}],
+     "words": {"are": "-sin (olmak)", "you": "sen", "new": "yeni", "here": "burada"}},
+    {"en": "Yes.  I'm your new neighbour.", "speaker": "ALEX", "tr": "Evet. Yeni komşunum.",
+     "chunks": [{"en": "your new neighbour", "tr": "yeni komşun"}],
+     "words": {"yes": "evet", "i'm": "ben …-im", "your": "senin", "new": "yeni", "neighbour": "komşu"},
+     "source": "subs/s01"},
+    {"en": "The station is between the shop and the café.", "speaker": "NOTE",
+     "tr": "İstasyon dükkânla kafenin arasında.",
+     "chunks": [{"en": "between … and …", "tr": "… ile … arasında"}],
+     "words": {"the": "(belirli)", "station": "istasyon", "is": "-dır", "between": "arasında", "shop": "dükkân",
+               "and": "ve", "café": "kafe"}},
+    {"en": "Meet me at the ___.", "speaker": "TASK", "tr": "Benimle ___ buluş.", "chunks": [],
+     "words": {"meet": "buluşmak", "me": "benimle", "at": "-de", "the": "(belirli)"}},
+]
+
+
+def make_episode(tmp_path: Path, lines=LINES, status="DRAFT", translation=True) -> Path:
+    for f in ("b2_05_maya.align.json", "b2_06_alex.align.json"):
+        shutil.copy(FX / f, tmp_path / f)
+    ep = tmp_path / "ep"
+    shutil.copytree(FX / "ep-good", ep)
+    k = json.loads((ep / "kurgu.json").read_text(encoding="utf-8"))
+    k["nodes"][-1]["next"] = "c2"
+    k["nodes"] += [
+        {"id": "c2", "type": "card", "kind": "note", "advance": "tap",
+         "lines": [{"text": "The station is between the shop and the café.", "lang": "en"},
+                   {"text": "Bölüm 2: Hi, Alex!", "lang": "en"},
+                   {"text": "Türkçe satır", "lang": "tr"}],
+         "next": "t2"},
+        {"id": "t2", "type": "task", "kind": "fillBlank", "role": "comprehension", "prompt": {"tr": "Tamamla"},
+         "items": [{"id": "i1", "stem": "Meet me at the ___.", "blanks": [{"id": "b1", "accept": "any"}]}],
+         "next": None},
+    ]
+    (ep / "kurgu.json").write_text(json.dumps(k, ensure_ascii=False), encoding="utf-8")
+    if translation:
+        (ep / "ceviri.tr.json").write_text(json.dumps({"status": status, "lines": lines}, ensure_ascii=False),
+                                           encoding="utf-8")
+    return ep
+
+
+def test_word_key_and_split():
+    assert word_key("“Fri…”") == "fri"
+    assert word_key("o'clock.") == "o'clock"
+    assert word_key("2:00.") == "2:00"
+    assert word_key("It’s") == "it's"
+    assert word_key("·") == "" and word_key("___.") == ""
+    assert split_words("Turn left / right. · Go") == ["Turn", "left", "right.", "Go"]
+    assert split_words("This is ___.") == ["This", "is", "___."]
+
+
+def test_chunk_patterns_with_gaps():
+    keys = ["it's", "between", "pier", "2", "and", "pier", "4"]
+    assert chunk_pattern("between … and …") == ["between", GAP, "and", GAP]
+    assert _find_span(keys, chunk_pattern("between … and …")) == (1, 6)
+    assert _find_span(["it's", "monday"], chunk_pattern("It's + gün")) == (0, 1)
+    assert _find_span(["where", "is"], chunk_pattern("Where is…?")) == (0, 1)
+    assert _find_span(["go", "straight"], chunk_pattern("turn left")) is None
+
+
+def test_merge_fills_cues_cards_and_stems(tmp_path):
+    doc, b = build_dry(make_episode(tmp_path))
+    sub = b.subs["subs/s01.en.json"]
+    assert schema_errors(sub, "subs.schema.json") == []
+    assert schema_errors(doc) == []
+    cues = {c["text"]: c for c in sub["cues"]}
+    hi = cues["Hi, Alex!"]
+    assert hi["tr"] == "Merhaba Alex!"
+    assert [w["gloss"] for w in hi["words"]] == ["merhaba", None]  # özel ad: anlam yok
+    last = cues["Yes. I'm your new neighbour."]  # boşluk normalleştirmesi
+    assert last["chunks"] == [{"en": "your new neighbour", "tr": "yeni komşun", "startWord": 2, "endWord": 4}]
+    assert last["words"][4]["gloss"] == "komşu"
+    card = next(n for n in doc["nodes"] if n["id"] == "c2")
+    note = card["lines"][0]
+    assert note["tr"].startswith("İstasyon")
+    assert note["chunks"][0]["startWord"] == 3 and note["chunks"][0]["endWord"] == 8
+    assert card["lines"][1]["words"] == [{"w": "Hi,", "gloss": "merhaba"}, {"w": "Alex!", "gloss": None}]
+    assert "tr" not in card["lines"][2]  # Türkçe satır çevrilmez
+    item = next(n for n in doc["nodes"] if n["id"] == "t2")["items"][0]
+    assert item["stemTr"] == "Benimle ___ buluş."
+    assert [w["w"] for w in item["stemWords"]] == ["Meet", "me", "at", "the", "___."]
+    # karar seçenekleri çevrilmez (kullanıcı kararı)
+    k1 = next(n for n in doc["nodes"] if n["id"] == "k1")
+    assert all(set(o) <= {"id", "text", "lang", "icon", "correct", "setFlag", "audio", "next"} for o in k1["options"])
+    assert b.tr_misses == []
+
+
+def test_without_translation_cues_keep_null_and_lint_warns(tmp_path):
+    ep = make_episode(tmp_path, translation=False)
+    _, b = build_dry(ep)
+    cue = b.subs["subs/s01.en.json"]["cues"][0]
+    assert cue["tr"] is None and "chunks" not in cue
+    rep = lint_episode(ep, "kurgu")
+    assert not [i for i in rep.errors if i.code == "translation"]
+    assert any(i.code == "translation" and "çeviri yok" in i.message for i in rep.warnings)
+
+
+def test_lint_errors_for_missing_line_and_missing_gloss(tmp_path):
+    lines = [dict(ln) for ln in LINES if ln["en"] != "Are you new here?"]
+    lines[0] = {**lines[0], "words": {}}  # "Hi" anlamsız
+    rep = lint_episode(make_episode(tmp_path, lines), "kurgu")
+    errs = [i.message for i in rep.errors if i.code == "translation"]
+    assert any("çeviri satırı yok" in m and "Are you new here?" in m for m in errs)
+    assert any('"Hi," kelimesinin anlamı yok' in m for m in errs)
+    assert not any("\"Alex!\" kelimesinin" in m for m in errs)  # özel ad
+    assert any("DRAFT" in i.message for i in rep.warnings)
+
+
+def test_lint_clean_when_approved(tmp_path):
+    rep = lint_episode(make_episode(tmp_path, status="APPROVED"), "kurgu")
+    assert [i for i in rep.issues if i.code == "translation"] == []
+    assert rep.translation["cuesTranslated"] == rep.translation["cues"] == 4
+    assert rep.translation["wordsGlossed"] == rep.translation["wordsNeedingGloss"]
+
+
+@pytest.mark.parametrize("ep", ["A1-001-a-strange-message", "A1-002-the-new-neighbour",
+                                "A1-003-find-the-station", "A1-004-the-note"])
+def test_real_episodes_have_full_translation(ep):
+    repo = Path(__file__).resolve().parents[3]
+    d = repo / "icerik" / ep
+    if not (d / "ceviri.tr.json").exists():
+        pytest.skip("çeviri yok")
+    _, b = build_dry(d)
+    assert [m for m in b.tr_misses if m.required] == []

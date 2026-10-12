@@ -2,6 +2,8 @@
 //
 // Saf Dart: Flutter içe aktarımı yoktur; motor ve testler bu modeli kullanır.
 
+import '../../../shared/meaning/meaning_text.dart';
+
 /// `scenes.json` beklenmeyen biçimdeyse fırlatılır.
 class EpisodeFormatException implements Exception {
   EpisodeFormatException(this.message);
@@ -31,6 +33,44 @@ double? _num(Object? v) => v is num ? v.toDouble() : null;
 List<String> _strings(Object? v) =>
     _list(v).whereType<String>().toList(growable: false);
 
+/// Zamansız İngilizce metnin Türkçe anlamları (H-046): `tr`, `words`, `chunks`.
+class Gloss {
+  const Gloss({this.tr, this.words = const [], this.chunks = const []});
+
+  static Gloss? fromJson(Object? tr, Object? words, Object? chunks) {
+    final list = <MeaningWord>[
+      for (final w in _list(words))
+        if (w is Map && w['w'] is String)
+          MeaningWord(w['w'] as String, gloss: w['gloss'] as String?),
+    ];
+    if (tr is! String && list.isEmpty) return null;
+    return Gloss(
+      tr: tr is String ? tr : null,
+      words: list,
+      chunks: PhraseChunk.listFromJson(chunks),
+    );
+  }
+
+  final String? tr;
+  final List<MeaningWord> words;
+  final List<PhraseChunk> chunks;
+
+  MeaningText toMeaning({
+    required String contentId,
+    required String sourceId,
+    required String en,
+    String? speaker,
+  }) => MeaningText(
+    contentId: contentId,
+    sourceId: sourceId,
+    en: en,
+    tr: tr,
+    speaker: speaker,
+    words: words,
+    chunks: chunks,
+  );
+}
+
 /// Türkçe metin (isteğe bağlı İngilizce karşılığıyla).
 class TextTr {
   const TextTr({required this.tr, this.en});
@@ -57,6 +97,7 @@ class CardLine {
     required this.lang,
     this.speaker,
     this.style,
+    this.gloss,
   });
 
   factory CardLine.fromJson(Object? json) {
@@ -66,12 +107,16 @@ class CardLine {
       lang: Lang.parse(j['lang']),
       speaker: j['speaker'] as String?,
       style: j['style'] as String?,
+      gloss: Gloss.fromJson(j['tr'], j['words'], j['chunks']),
     );
   }
 
   final String text;
   final Lang lang;
   final String? speaker;
+
+  /// İngilizce satırın Türkçe anlamları (yoksa null; panel açılmaz).
+  final Gloss? gloss;
 
   /// `heading`, `body`, `highlight`, `caption` ya da null.
   final String? style;
@@ -370,7 +415,12 @@ class SegmentNode extends EpisodeNode implements VideoBearing {
 }
 
 class DecisionCue {
-  const DecisionCue({required this.speaker, required this.text, this.audio});
+  const DecisionCue({
+    required this.speaker,
+    required this.text,
+    this.audio,
+    this.gloss,
+  });
 
   factory DecisionCue.fromJson(Object? json) {
     final j = _map(json, 'cue');
@@ -378,12 +428,16 @@ class DecisionCue {
       speaker: (j['speaker'] as String?) ?? '',
       text: (j['text'] as String?) ?? '',
       audio: j['audio'] as String?,
+      gloss: Gloss.fromJson(j['tr'], j['words'], j['chunks']),
     );
   }
 
   final String speaker;
   final String text;
   final String? audio;
+
+  /// Karşı karakterin repliği dokunulabilir (H-046); seçenekler çevrilmez.
+  final Gloss? gloss;
 }
 
 class DecisionOption {
@@ -631,6 +685,7 @@ class TaskItem {
     this.answer = const [],
     this.pairs = const [],
     this.blanks = const [],
+    this.stemGloss,
   });
 
   factory TaskItem.fromJson(Object? json) {
@@ -638,6 +693,7 @@ class TaskItem {
     return TaskItem(
       id: _str(j, 'id', 'taskItem'),
       stem: j['stem'] as String?,
+      stemGloss: Gloss.fromJson(j['stemTr'], j['stemWords'], j['stemChunks']),
       options: _list(j['options']).map(TaskOption.fromJson).toList(),
       tokens: _strings(j['tokens']),
       answer: _strings(j['answer']),
@@ -664,6 +720,9 @@ class TaskItem {
   final List<String> answer;
   final List<MatchPair> pairs;
   final List<Blank> blanks;
+
+  /// Görev kökünün Türkçe anlamları (H-046).
+  final Gloss? stemGloss;
 }
 
 class TaskNode extends EpisodeNode {

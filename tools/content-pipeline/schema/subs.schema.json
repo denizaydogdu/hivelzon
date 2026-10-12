@@ -23,7 +23,7 @@
           "end": { "type": "number", "minimum": 0 },
           "speaker": { "type": "string" },
           "text": { "type": "string", "minLength": 1 },
-          "tr": { "type": ["string", "null"] },
+          "tr": { "description": "Türkçe cümle (ceviri.tr.json, H-046). Çeviri yoksa null.", "type": ["string", "null"] },
           "words": {
             "type": "array",
             "items": {
@@ -33,7 +33,23 @@
               "properties": {
                 "w": { "type": "string" },
                 "start": { "type": "number", "minimum": 0 },
-                "end": { "type": "number", "minimum": 0 }
+                "end": { "type": "number", "minimum": 0 },
+                "gloss": { "description": "Kelimenin bu cümledeki Türkçe anlamı. Özel adda ya da çeviri yoksa null.", "type": ["string", "null"] }
+              }
+            }
+          },
+          "chunks": {
+            "description": "Kalıp ifadeler: bu ipucunun words dizisinde startWord..endWord (ikisi de dahil, 0 tabanlı).",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["en", "tr", "startWord", "endWord"],
+              "additionalProperties": false,
+              "properties": {
+                "en": { "type": "string", "minLength": 1 },
+                "tr": { "type": "string", "minLength": 1 },
+                "startWord": { "type": "integer", "minimum": 0 },
+                "endWord": { "type": "integer", "minimum": 0 }
               }
             }
           }

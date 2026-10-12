@@ -18,12 +18,16 @@ class TaskView extends StatefulWidget {
     required this.onAttempt,
     required this.onComplete,
     required this.onListen,
+    this.onStemTap,
   });
 
   final TaskNode task;
   final void Function(String itemId, bool correct) onAttempt;
   final VoidCallback onComplete;
   final ValueChanged<String> onListen;
+
+  /// Görev köküne dokunuldu (anlamı varsa; H-046). Seçenekler panel açmaz.
+  final ValueChanged<TaskItem>? onStemTap;
 
   @override
   State<TaskView> createState() => _TaskViewState();
@@ -206,6 +210,36 @@ class _TaskViewState extends State<TaskView> {
     ),
   ];
 
+  Widget _stem(TaskItem item, TextStyle? style) {
+    final text = Text(item.stem!, style: style);
+    final tap = widget.onStemTap;
+    if (tap == null || item.stemGloss == null) return text;
+    return Semantics(
+      button: true,
+      label: '${item.stem}. Anlamını görmek için dokun.',
+      excludeSemantics: true,
+      child: InkWell(
+        key: ValueKey('task-stem-${item.id}'),
+        borderRadius: BorderRadius.circular(AppTheme.radius),
+        onTap: () => tap(item),
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(minHeight: 48),
+          child: Align(
+            alignment: Alignment.centerLeft,
+            child: Text(
+              item.stem!,
+              style: style?.copyWith(
+                decoration: TextDecoration.underline,
+                decorationStyle: TextDecorationStyle.dotted,
+                decorationColor: AppColors.seaBlue.withValues(alpha: 0.5),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
   List<Widget> _itemUi(ThemeData theme) {
     final item = _item;
     final stemStyle = theme.textTheme.titleMedium?.copyWith(
@@ -214,7 +248,7 @@ class _TaskViewState extends State<TaskView> {
     switch (widget.task.kind) {
       case TaskKind.choice:
         return [
-          if (item.stem != null) Text(item.stem!, style: stemStyle),
+          if (item.stem != null) _stem(item, stemStyle),
           const SizedBox(height: AppSpacing.xs),
           for (final o in item.options)
             _OptionTile(
@@ -234,7 +268,7 @@ class _TaskViewState extends State<TaskView> {
         ];
       case TaskKind.multiSelect:
         return [
-          if (item.stem != null) Text(item.stem!, style: stemStyle),
+          if (item.stem != null) _stem(item, stemStyle),
           for (final o in item.options)
             _OptionTile(
               key: ValueKey('task-option-${o.id}'),

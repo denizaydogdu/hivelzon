@@ -45,7 +45,7 @@ Her düğümde `id` ve `type` vardır. `scene` (sahne adı) ve `checkpoint` (sah
 | `segment` | Kesintisiz video. Karar anlarında bölünür. | `video`, `duration` (sn), `subtitles` (yol ya da `null`), `next` |
 | `decision` | Karar anı. Video durur; müzik ve hareket kısılır (K-27). | `prompt.tr`, `cue` (soruyu soran replik), `pov`, `background`, `targetPhrase`, `skill`, `cefr`, `options[]`, `hints[]` |
 | `reaction` | Yanlış seçimin kısa, nazik tepkisi; sonra aynı karara dönülür (K-28). | `video` + `duration` + `subtitles` ve/veya `bubble` (Hi balonu: `text`, `lang`, isteğe bağlı `audio`), `next` = karar |
-| `card` | Yerel arayüz kartı. | `kind`: `title`, `mission`, `hi`, `line`, `note`, `message`, `clue`, `openQuestion`; `lines[]` (`text`, `lang`, `speaker`, `style`); `audio`; `background`; `advance` (`tap`/`auto`) + `duration`; `variants[]` (bayrağa göre satırlar); `clueIds`, `questionId`, `answers` |
+| `card` | Yerel arayüz kartı. | `kind`: `title`, `mission`, `hi`, `line`, `note`, `message`, `clue`, `openQuestion`; `lines[]` (`text`, `lang`, `speaker`, `style`; İngilizce satırda `tr`, `words`, `chunks`, §3.1); `audio`; `background`; `advance` (`tap`/`auto`) + `duration`; `variants[]` (bayrağa göre satırlar); `clueIds`, `questionId`, `answers` |
 | `task` | Görev, anlama ya da kanıt etkileşimi. | `kind`: `choice`, `multiSelect`, `order`, `match`, `fillBlank`; `role`: `comprehension`, `mission`, `evidence`; `prompt.tr`; `items[]`; `audio` (dinleme); `feedback.wrong` (Hi balonu); `result[]` |
 
 **Seçenek (`options[]`):** `id`, `text`, `lang` (varsayılan `en`), `icon` (ör. `arrows:up,left`), `correct`, `setFlag` (`flag`, `value`), `audio` (Alex'in o repliği), `next`.
@@ -93,16 +93,40 @@ Yanlışta `feedback.wrong` gösterilir ve aynı öğe tekrar denenir. Süre sı
 ## 3. Altyazı JSON (`subs/<düğüm>.en.json`)
 
 ```json
-{"schemaVersion": 1, "segment": "s02", "lang": "en", "duration": 13.167,
- "cues": [{"id": "s02-01", "start": 0.59, "end": 1.87, "speaker": "ALEX", "text": "OK. Friday.", "tr": null,
-           "words": [{"w": "OK.", "start": 0.59, "end": 1.3}, {"w": "Friday.", "start": 1.357, "end": 1.78}]}]}
+{"schemaVersion": 1, "segment": "s04", "lang": "en", "duration": 12.1,
+ "cues": [{"id": "s04-05", "start": 9.033, "end": 11.663, "speaker": "MAYA",
+           "text": "It's between Pier 2 and Pier 4.", "tr": "2 ve 4 numaralı iskelelerin arasında.",
+           "words": [{"w": "It's", "start": 9.033, "end": 9.313, "gloss": "o … -dır (orası)"},
+                     {"w": "between", "start": 9.338, "end": 9.513, "gloss": "arasında"}, "…"],
+           "chunks": [{"en": "between … and …", "tr": "… ile …-in arasında", "startWord": 1, "endWord": 6}]}]}
 ```
 
 - Zamanlar saniyedir ve segmentin başına görelidir. ElevenLabs karakter hizalamasından hesaplanır.
 - Cümle parçası düzeyinde zamanlanır. İki sözcükten kısa parça sonrakiyle birleşir.
 - İpucu, söz bittikten 0,15 sn sonra ya da sonraki ipucu başlayınca kalkar.
 - Her çekimin ilk ipucu, ölçülen ses başlangıcından önce başlamaz (D-001).
-- `tr`: Türkçe satır. `story.tr.md` henüz yazılmadığı için şimdilik `null` (EN+TR modu için gerekli).
+- `tr`: Türkçe cümle. `ceviri.tr.json`'dan gelir; çeviri yoksa `null`. EN+TR altyazı modu ve anlam paneli bunu kullanır.
+- `words[].gloss`: kelimenin **bu cümledeki** Türkçe anlamı. Özel adlarda (`data/proper_nouns.txt`) ve çeviri yoksa `null`.
+- `chunks[]`: kalıp ifadeler (*How much is it?* = "Ne kadar?"). `startWord`..`endWord` bu ipucunun `words` dizisindeki aralıktır (0 tabanlı, ikisi de dahil). `…` ve `+ <yer tutucu>` içeren kalıplar (*between … and …*, *It's + gün*) aradaki kelimeleri de kapsar.
+- Anlam panelinde kelimenin sesi, `words[].start`/`end` zamanlarıyla segmentten kesilir; ek ses üretilmez (H-046).
+
+### 3.1 Çeviri kaynağı: `ceviri.tr.json` (H-046)
+
+```json
+{"contentId": "A1-004", "status": "DRAFT", "author": "Claude taslak", "date": "2026-10-11",
+ "lines": [{"en": "It's between Pier 2 and Pier 4.", "speaker": "MAYA", "tr": "2 ve 4 numaralı iskelelerin arasında.",
+            "chunks": [{"en": "between … and …", "tr": "… ile …-in arasında"}],
+            "words": {"it's": "o … -dır (orası)", "between": "arasında", "pier": "iskele", "2": "iki"},
+            "source": "subs/s04"}],
+ "notes": ["…"]}
+```
+
+- Satır, İngilizce metnin **birebir aynısıyla** eşlenir; yalnızca boşluklar normalleştirilir. Konuşmacı eşlemeye girmez (aynı cümle iki karakterde tek kayıtla çevrilir).
+- `words` anahtarı küçük harfli kelimedir; baştaki ve sondaki noktalama atılır, içteki `'` ve `:` kalır (`it's`, `o'clock`, `2:00`).
+- `source` yalnızca bilgi içindir. `status`: `DRAFT` → editör onayı → `APPROVED` (H-028).
+- Çeviriyi Claude taslak olarak yazar, kullanıcı onaylar. `story.tr.md` aynı çevirinin okunur sürümüdür.
+- **Karar seçenekleri çevrilmez** (kullanıcı kararı); destek Hi ipuçlarıyla verilir. Görev seçenekleri de cevabı ele vermemek için çevrilmez.
+- Dışa aktarıcı aynı çeviriyi zamansız metinlere de ekler: kart satırları (`lines[]`, `lang: en`) ve karar repliği (`cue`) `tr`, `words` (`w`, `gloss`) ve `chunks` alır; görev kökü (`items[].stem`) `stemTr`, `stemWords`, `stemChunks` alır. "Bölüm 2: The New Neighbour" gibi önekli satırda iki noktadan sonraki kısım eşlenir.
 - Hi'nin Türkçe repliği segmente girmez. Hi her zaman `card` (kind `hi`) ya da `bubble` olarak gelir.
 
 ## 4. `manifest.json`
@@ -163,6 +187,7 @@ python3 tools/content-pipeline/export_package.py icerik/A1-00[1-4]-*   # paket (
 | `gate` | Kapı ölçütlerindeki düğümler var ve ulaşılabilir | Hata |
 | `chain` | Açılan bölüm sorusu en geç 3 bölümde kapanır; aynı anda en fazla 2 bölüm sorusu açık (sezon ve seri soruları hariç) | Hata |
 | `missing-file` | Pakette `scenes.json`'ın andığı dosya var | Hata |
+| `translation` | `ceviri.tr.json` varsa: her altyazı ipucunun çeviri satırı ve her kelimenin (özel ad hariç) anlamı var. Kart, karar repliği ve görev kökünde eksik çeviri ya da cümlede bulunamayan kalıp uyarıdır. Dosya yoksa "çeviri yok", durum `APPROVED` değilse durum uyarısı. | Hata / uyarı |
 
 **Kapsama hesabı:**
 - Özel adlar sayılmaz (`data/proper_nouns.txt`).

@@ -12,8 +12,7 @@
     {
       "id": "s01", "type": "segment", "scene": "Soğuk açılış", "checkpoint": true,
       "shots": [
-        {"image": "images/I1-not.png", "len": 3.8, "move": [1.08, 1.02, 0.5, 0.5, 0.2, 0.6],
-         "signs": [{"style": "caption", "lines": [{"text": "Friday."}], "start": 2.3, "end": 3.6}]}
+        {"image": "images/I1-not.png", "len": 2.5, "move": [1.08, 1.02, 0.5, 0.5, 0.2, 0.6]}
       ],
       "next": "c-title"
     },

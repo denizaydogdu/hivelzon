@@ -7,17 +7,20 @@ import '../../domain/subtitles.dart';
 
 /// Uygulamanın çizdiği altyazı (K-03): video konumuna her karede eşlenir.
 ///
-/// Hedef ifadenin sözcükleri fener sarısıyla vurgulanır. Satıra dokununca o
-/// satır yeniden oynar.
+/// Hedef ifadenin sözcükleri fener sarısıyla vurgulanır. EN+TR modunda
+/// Türkçe satır altta, küçük yazılır. Satıra dokununca video durur ve anlam
+/// paneli açılır (H-046); tekrar dinleme paneldedir.
 class SubtitleOverlay extends StatefulWidget {
   const SubtitleOverlay({
     super.key,
     required this.session,
     required this.targetPhrases,
+    required this.onTapCue,
   });
 
   final PlayerSession session;
   final List<String> targetPhrases;
+  final ValueChanged<SubtitleCue> onTapCue;
 
   @override
   State<SubtitleOverlay> createState() => _SubtitleOverlayState();
@@ -70,15 +73,19 @@ class _SubtitleOverlayState extends State<SubtitleOverlay>
       );
     }
     if (spans.isEmpty) spans.add(TextSpan(text: cue.text));
+    final showTr =
+        widget.session.subtitleMode == SubtitleMode.enTr && cue.hasTurkish;
 
     return Semantics(
       button: true,
-      label: '${cue.text}. Satırı tekrar dinlemek için dokun.',
+      label:
+          '${cue.text}.${showTr ? ' ${cue.tr}.' : ''} '
+          'Anlamını görmek için dokun.',
       excludeSemantics: true,
       child: GestureDetector(
         key: const ValueKey('subtitle-line'),
         behavior: HitTestBehavior.opaque,
-        onTap: () => widget.session.replayCue(cue),
+        onTap: () => widget.onTapCue(cue),
         child: Container(
           constraints: const BoxConstraints(minHeight: 48),
           padding: const EdgeInsets.symmetric(
@@ -89,9 +96,28 @@ class _SubtitleOverlayState extends State<SubtitleOverlay>
             color: const Color(0xCC1B1B1B),
             borderRadius: BorderRadius.circular(AppTheme.radius),
           ),
-          child: Text.rich(
-            TextSpan(style: base, children: spans),
-            textAlign: TextAlign.center,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text.rich(
+                TextSpan(style: base, children: spans),
+                textAlign: TextAlign.center,
+              ),
+              if (showTr) ...[
+                const SizedBox(height: 4),
+                Text(
+                  cue.tr!,
+                  key: const ValueKey('subtitle-tr'),
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(
+                    color: Color(0xE6FFFFFF),
+                    fontSize: 15,
+                    fontWeight: FontWeight.w400,
+                    height: 1.3,
+                  ),
+                ),
+              ],
+            ],
           ),
         ),
       ),

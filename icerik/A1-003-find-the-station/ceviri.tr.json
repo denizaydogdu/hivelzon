@@ -1,0 +1,533 @@
+{
+  "contentId": "A1-003",
+  "status": "DRAFT",
+  "author": "Claude taslak",
+  "date": "2026-10-11",
+  "lines": [
+    {
+      "en": "Find the Station",
+      "speaker": "TITLE",
+      "tr": "İstasyonu Bul",
+      "chunks": [],
+      "words": {
+        "find": "bul",
+        "the": "(belirli tanımlık)",
+        "station": "istasyon"
+      },
+      "source": "scenes:c-title"
+    },
+    {
+      "en": "Go straight. · Turn left / right. · It's near… · It's between… · It's behind…",
+      "speaker": "CARD",
+      "tr": "Düz git. · Sola / sağa dön. · …-in yakınında. · …-in arasında. · …-in arkasında.",
+      "chunks": [
+        {
+          "en": "Go straight.",
+          "tr": "Düz git."
+        },
+        {
+          "en": "Turn left / right.",
+          "tr": "Sola / sağa dön."
+        },
+        {
+          "en": "It's near…",
+          "tr": "…-in yakınında."
+        },
+        {
+          "en": "It's between…",
+          "tr": "… ile …-in arasında."
+        },
+        {
+          "en": "It's behind…",
+          "tr": "…-in arkasında."
+        }
+      ],
+      "words": {
+        "go": "git",
+        "straight": "düz",
+        "turn": "dön",
+        "left": "sola",
+        "right": "sağa",
+        "it's": "o … -dır (orası)",
+        "near": "yakınında",
+        "between": "arasında",
+        "behind": "arkasında"
+      },
+      "source": "scenes:c-mission"
+    },
+    {
+      "en": "Sorry, Alex! I can't come today.",
+      "speaker": "MAYA",
+      "tr": "Kusura bakma Alex! Bugün gelemiyorum.",
+      "chunks": [
+        {
+          "en": "I can't come",
+          "tr": "Gelemiyorum"
+        }
+      ],
+      "words": {
+        "sorry": "kusura bakma",
+        "i": "ben",
+        "can't": "-emem (gelemem)",
+        "come": "gelmek",
+        "today": "bugün"
+      },
+      "source": "scenes:c-msg"
+    },
+    {
+      "en": "Here is the map. Good luck!",
+      "speaker": "MAYA",
+      "tr": "Harita burada. Bol şans!",
+      "chunks": [
+        {
+          "en": "Here is …",
+          "tr": "İşte … / … burada"
+        },
+        {
+          "en": "Good luck!",
+          "tr": "Bol şans!"
+        }
+      ],
+      "words": {
+        "here": "işte, burada",
+        "is": "-dır / -dir (olmak)",
+        "the": "(belirli tanımlık)",
+        "map": "harita",
+        "good": "iyi (good luck: bol şans)",
+        "luck": "şans"
+      },
+      "source": "scenes:c-msg"
+    },
+    {
+      "en": "Hello Alex, I'm sorry. I can't come today.",
+      "speaker": "MAYA",
+      "tr": "Merhaba Alex, üzgünüm. Bugün gelemiyorum.",
+      "chunks": [
+        {
+          "en": "I'm sorry.",
+          "tr": "Üzgünüm. / Kusura bakma."
+        },
+        {
+          "en": "I can't come",
+          "tr": "Gelemiyorum"
+        }
+      ],
+      "words": {
+        "hello": "merhaba",
+        "i'm": "ben …-im",
+        "sorry": "üzgün",
+        "i": "ben",
+        "can't": "-emem (gelemem)",
+        "come": "gelmek",
+        "today": "bugün"
+      },
+      "source": "scenes:c-msg.formal"
+    },
+    {
+      "en": "Here is the map.",
+      "speaker": "MAYA",
+      "tr": "İşte harita.",
+      "chunks": [
+        {
+          "en": "Here is …",
+          "tr": "İşte … / … burada"
+        }
+      ],
+      "words": {
+        "here": "işte, burada",
+        "is": "-dır / -dir (olmak)",
+        "the": "(belirli tanımlık)",
+        "map": "harita"
+      },
+      "source": "scenes:c-msg.formal"
+    },
+    {
+      "en": "OK. The harbour.",
+      "speaker": "ALEX",
+      "tr": "Tamam. Liman.",
+      "chunks": [],
+      "words": {
+        "ok": "tamam",
+        "the": "(belirli tanımlık)",
+        "harbour": "liman"
+      },
+      "source": "subs/s02"
+    },
+    {
+      "en": "Excuse me, where is the harbour?",
+      "speaker": "ALEX",
+      "tr": "Affedersiniz, liman nerede?",
+      "chunks": [
+        {
+          "en": "Excuse me",
+          "tr": "Affedersiniz / Pardon (kibar başlangıç)"
+        },
+        {
+          "en": "Where is …?",
+          "tr": "… nerede?"
+        }
+      ],
+      "words": {
+        "excuse": "affetmek (excuse me: affedersiniz)",
+        "me": "(excuse me kalıbının parçası)",
+        "where": "nerede",
+        "is": "(olmak; Türkçede karşılığı yok)",
+        "the": "(belirli tanımlık)",
+        "harbour": "liman"
+      },
+      "source": "subs/k1-ok"
+    },
+    {
+      "en": "Harbour where?",
+      "speaker": "ALEX",
+      "tr": "Liman nerede? (eksik cümle)",
+      "chunks": [],
+      "words": {
+        "harbour": "liman",
+        "where": "nerede"
+      },
+      "source": "subs/r-k1-b"
+    },
+    {
+      "en": "Sorry?",
+      "speaker": "MAN",
+      "tr": "Efendim?",
+      "chunks": [
+        {
+          "en": "Sorry?",
+          "tr": "Efendim? / Pardon? (anlamadım)"
+        }
+      ],
+      "words": {
+        "sorry": "efendim?, pardon?"
+      },
+      "source": "subs/r-k1-b"
+    },
+    {
+      "en": "The harbour?",
+      "speaker": "MAN",
+      "tr": "Liman mı?",
+      "chunks": [],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "harbour": "liman"
+      },
+      "source": "subs/k1-ok"
+    },
+    {
+      "en": "Go straight.",
+      "speaker": "MAN",
+      "tr": "Düz git.",
+      "chunks": [
+        {
+          "en": "Go straight.",
+          "tr": "Düz git."
+        }
+      ],
+      "words": {
+        "go": "git",
+        "straight": "düz"
+      },
+      "source": "subs/k1-ok"
+    },
+    {
+      "en": "Then turn left.",
+      "speaker": "MAN",
+      "tr": "Sonra sola dön.",
+      "chunks": [
+        {
+          "en": "turn left",
+          "tr": "sola dön"
+        }
+      ],
+      "words": {
+        "then": "sonra",
+        "turn": "dön",
+        "left": "sola"
+      },
+      "source": "subs/k1-ok"
+    },
+    {
+      "en": "Again, please.",
+      "speaker": "ALEX",
+      "tr": "Bir daha, lütfen.",
+      "chunks": [
+        {
+          "en": "Again, please.",
+          "tr": "Bir daha, lütfen. (kibar tekrar isteği)"
+        }
+      ],
+      "words": {
+        "again": "tekrar, bir daha",
+        "please": "lütfen"
+      },
+      "source": "subs/k1-ok"
+    },
+    {
+      "en": "Turn left.",
+      "speaker": "MAN",
+      "tr": "Sola dön.",
+      "chunks": [
+        {
+          "en": "Turn left.",
+          "tr": "Sola dön."
+        }
+      ],
+      "words": {
+        "turn": "dön",
+        "left": "sola"
+      },
+      "source": "subs/k1-ok"
+    },
+    {
+      "en": "It's near.",
+      "speaker": "MAN",
+      "tr": "Yakında.",
+      "chunks": [],
+      "words": {
+        "it's": "o … -dır (orası)",
+        "near": "yakın(da)"
+      },
+      "source": "subs/k1-ok"
+    },
+    {
+      "en": "Go straight. Turn left. It's near.",
+      "speaker": "MAN",
+      "tr": "Düz git. Sola dön. Yakında.",
+      "chunks": [
+        {
+          "en": "Go straight.",
+          "tr": "Düz git."
+        },
+        {
+          "en": "Turn left.",
+          "tr": "Sola dön."
+        }
+      ],
+      "words": {
+        "go": "git",
+        "straight": "düz",
+        "turn": "dön",
+        "left": "sola",
+        "it's": "o … -dır (orası)",
+        "near": "yakın(da)"
+      },
+      "source": "scenes:k2.cue"
+    },
+    {
+      "en": "Thank you!",
+      "speaker": "ALEX",
+      "tr": "Teşekkürler!",
+      "chunks": [
+        {
+          "en": "Thank you!",
+          "tr": "Teşekkürler! / Teşekkür ederim!"
+        }
+      ],
+      "words": {
+        "thank": "teşekkür etmek",
+        "you": "size / sana"
+      },
+      "source": "subs/k1-ok"
+    },
+    {
+      "en": "The station is near the fish shop.",
+      "speaker": "NOTE",
+      "tr": "İstasyon balıkçı dükkânının yakınında.",
+      "chunks": [
+        {
+          "en": "fish shop",
+          "tr": "balıkçı (dükkânı)"
+        },
+        {
+          "en": "is near …",
+          "tr": "…-in yakınında"
+        }
+      ],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "station": "istasyon",
+        "is": "-dır (olmak)",
+        "near": "yakınında",
+        "fish": "balık (fish shop: balıkçı)",
+        "shop": "dükkân"
+      },
+      "source": "scenes:c-note"
+    },
+    {
+      "en": "It's between the bus stop and the café.",
+      "speaker": "NOTE",
+      "tr": "Otobüs durağıyla kafenin arasında.",
+      "chunks": [
+        {
+          "en": "between … and …",
+          "tr": "… ile …-in arasında"
+        },
+        {
+          "en": "bus stop",
+          "tr": "otobüs durağı"
+        }
+      ],
+      "words": {
+        "it's": "o … -dır (orası)",
+        "between": "arasında",
+        "the": "(belirli tanımlık)",
+        "bus": "otobüs",
+        "stop": "durak",
+        "and": "ve (… ile)",
+        "café": "kafe"
+      },
+      "source": "scenes:c-note"
+    },
+    {
+      "en": "Go straight. Turn left. It's near the fish shop.",
+      "speaker": "TASK",
+      "tr": "Düz git. Sola dön. Balıkçı dükkânının yakınında.",
+      "chunks": [
+        {
+          "en": "Go straight.",
+          "tr": "Düz git."
+        },
+        {
+          "en": "Turn left.",
+          "tr": "Sola dön."
+        },
+        {
+          "en": "fish shop",
+          "tr": "balıkçı (dükkânı)"
+        }
+      ],
+      "words": {
+        "go": "git",
+        "straight": "düz",
+        "turn": "dön",
+        "left": "sola",
+        "it's": "o … -dır (orası)",
+        "near": "yakınında",
+        "the": "(belirli tanımlık)",
+        "fish": "balık (fish shop: balıkçı)",
+        "shop": "dükkân"
+      },
+      "source": "scenes:t-gorev"
+    },
+    {
+      "en": "The café is near the park. It's behind the school.",
+      "speaker": "TASK",
+      "tr": "Kafe parkın yakınında. Okulun arkasında.",
+      "chunks": [
+        {
+          "en": "is near …",
+          "tr": "…-in yakınında"
+        },
+        {
+          "en": "It's behind …",
+          "tr": "…-in arkasında"
+        }
+      ],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "café": "kafe",
+        "is": "-dır / -dir (olmak)",
+        "near": "yakınında",
+        "park": "park",
+        "it's": "o … -dır (orası)",
+        "behind": "arkasında",
+        "school": "okul"
+      },
+      "source": "scenes:t-kanit"
+    },
+    {
+      "en": "This is the old station!",
+      "speaker": "ALEX",
+      "tr": "Burası eski istasyon!",
+      "chunks": [
+        {
+          "en": "This is …",
+          "tr": "Burası … / Bu …"
+        }
+      ],
+      "words": {
+        "this": "bu (burası)",
+        "is": "-dır / -dir (olmak)",
+        "the": "(belirli tanımlık)",
+        "old": "eski",
+        "station": "istasyon"
+      },
+      "source": "subs/s04"
+    },
+    {
+      "en": "Hello? Is anybody here?",
+      "speaker": "ALEX",
+      "tr": "Merhaba? Kimse var mı?",
+      "chunks": [
+        {
+          "en": "Is anybody here?",
+          "tr": "Kimse var mı?"
+        }
+      ],
+      "words": {
+        "hello": "merhaba",
+        "is": "(soru) var mı (olmak)",
+        "anybody": "kimse, biri",
+        "here": "burada"
+      },
+      "source": "subs/s04"
+    },
+    {
+      "en": "E! The message on the radio!",
+      "speaker": "ALEX",
+      "tr": "E! Telsizdeki mesaj!",
+      "chunks": [
+        {
+          "en": "on the radio",
+          "tr": "telsizde, telsizdeki"
+        }
+      ],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "message": "mesaj",
+        "on": "-de (on the radio: telsizde)",
+        "radio": "telsiz"
+      },
+      "source": "subs/s04"
+    },
+    {
+      "en": "I can show you. Tomorrow?",
+      "speaker": "MAYA",
+      "tr": "Sana gösterebilirim. Yarın olur mu?",
+      "chunks": [
+        {
+          "en": "I can show you.",
+          "tr": "Sana gösterebilirim."
+        }
+      ],
+      "words": {
+        "i": "ben",
+        "can": "-ebilmek",
+        "show": "göstermek",
+        "you": "sana",
+        "tomorrow": "yarın"
+      },
+      "source": "subs/s01"
+    },
+    {
+      "en": "The Note",
+      "speaker": "TITLE",
+      "tr": "Not",
+      "chunks": [],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "note": "not"
+      },
+      "source": "scenes:c-oq"
+    }
+  ],
+  "notes": [
+    "Türk öğrenci tuzağı: 'Harbour where?' — Türkçe söz dizimi (Liman nerede?) İngilizceye aktarılmış. İngilizcede soru sözcüğü başa gelir: 'Where is the harbour?'.",
+    "'Excuse me' burada yabancı bir adama söylendiği için 'Affedersiniz' olarak çevrildi.",
+    "'It's near.' tek başına 'Yakında / Yakın' demektir; 'near the fish shop' = 'balıkçının yakınında'. Türkçedeki '-in yakınında' eki İngilizcede 'near + isim' ile karşılanır.",
+    "'left' = sol, 'right' = sağ; 'right' ayrıca 'doğru' anlamına gelir, bu bölümde yalnızca yön anlamı var.",
+    "Maya'nın mesaj kartının iki değişkeni (greet_tone friendly / formal) ayrı satır olarak çevrildi.",
+    "K2 ve K3 karar seçenekleri zaten Türkçe ya da ok simgesi; çevrilecek İngilizce seçenek yok."
+  ]
+}

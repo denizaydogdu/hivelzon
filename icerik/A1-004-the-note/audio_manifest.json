@@ -28,7 +28,7 @@
  "MAYA|Alex? Are you OK?": "b4_27_maya",
  "ALEX|Yes. I'm OK. Thank you.": "b4_28_alex",
  "HI (TR)|Saat için at, gün için on: at seven, on Friday. Türkçede yedide deriz; İngilizcede in seven değil, at seven.": "b4_29_hi",
- "MAYA|I have Art on Friday. What time is it?": "b4_30_maya",
+ "MAYA|I have Art on Friday. What time?": "b4_30_maya",
  "ALEX|At two o'clock.": "b4_31_alex",
  "ALEX|In two o'clock.": "b4_32_alex",
  "HI (TR)|Saatten önce at: at two o'clock.": "b4_33_hi"

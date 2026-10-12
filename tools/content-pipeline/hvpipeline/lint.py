@@ -14,6 +14,7 @@ from .build import KURGU_FILE, BuildError, build_dry
 from .cefr import LEVELS, coverage
 from .graph import Issue, check_scenes
 from .story import read_story
+from .translation import TRANSLATION_FILE, Translation, word_key
 
 LINK_FIELDS = ("previously", "payoff", "openQuestion", "answers", "cluesUnlocked", "callbackPhrases")
 COVERAGE_TARGET = 98.0
@@ -31,6 +32,7 @@ class EpisodeReport:
     issues: list[Issue] = field(default_factory=list)
     coverage: dict | None = None
     graph: dict | None = None
+    translation: dict | None = None
 
     @property
     def errors(self) -> list[Issue]:
@@ -42,7 +44,7 @@ class EpisodeReport:
 
     def to_dict(self) -> dict:
         return {"path": str(self.path), "contentId": self.content_id, "level": self.level,
-                "coverage": self.coverage, "graph": self.graph,
+                "coverage": self.coverage, "graph": self.graph, "translation": self.translation,
                 "errors": [str(i) for i in self.errors], "warnings": [str(i) for i in self.warnings]}
 
 
@@ -136,6 +138,46 @@ def check_graph(ep_dir: Path, c: dict, source: str = "auto") -> tuple[list[Issue
     return issues, rep
 
 
+def check_translation(ep_dir: Path) -> tuple[list[Issue], dict | None]:
+    """ceviri.tr.json denetimi (H-046): her altyazı ipucunun Türkçesi ve her kelimenin (özel ad hariç)
+    anlamı olmalı. Kart, karar repliği ve görev kökü için eksikler uyarıdır."""
+    if not (ep_dir / TRANSLATION_FILE).exists():
+        return [Issue("warning", "translation", f"çeviri yok ({TRANSLATION_FILE})")], None
+    try:
+        tr = Translation.load(ep_dir)
+    except (json.JSONDecodeError, OSError) as e:
+        return [Issue("error", "translation", f"{TRANSLATION_FILE} okunamadı: {e}")], None
+    issues = []
+    if tr.status != "APPROVED":
+        issues.append(Issue("warning", "translation", f"çeviri durumu {tr.status} (editör onayı bekliyor, H-028)"))
+    for k in tr.duplicates:
+        issues.append(Issue("warning", "translation", f"aynı İngilizce metne iki farklı Türkçe: \"{k}\""))
+    if not (ep_dir / KURGU_FILE).exists():
+        return issues, {"lines": len(tr.lines), "status": tr.status}
+    try:
+        _, b = build_dry(ep_dir)
+    except (BuildError, FileNotFoundError, KeyError) as e:
+        issues.append(Issue("error", "translation", f"çeviri denetimi için kuru derleme yapılamadı: {e}"))
+        return issues, None
+    cues = [c for s in b.subs.values() for c in s["cues"]]
+    for m in b.tr_misses:
+        if m.kind == "line":
+            msg = f"{m.where}: çeviri satırı yok: \"{m.text}\""
+        elif m.kind == "word":
+            msg = f"{m.where}: \"{m.detail}\" kelimesinin anlamı yok (\"{m.text}\")"
+        else:
+            msg = f"{m.where}: kalıp cümlede bulunamadı: \"{m.detail}\""
+        issues.append(Issue("error" if m.required and m.kind != "chunk" else "warning", "translation", msg))
+    rep = {"lines": len(tr.lines), "status": tr.status, "cues": len(cues),
+           "cuesTranslated": sum(1 for c in cues if c.get("tr")),
+           "words": sum(len(c["words"]) for c in cues),
+           "wordsNeedingGloss": len(need := [w for c in cues for w in c["words"]
+                                             if tr.needs_gloss(word_key(w["w"]))]),
+           "wordsGlossed": sum(1 for w in need if w.get("gloss")),
+           "chunks": sum(len(c.get("chunks", [])) for c in cues)}
+    return issues, rep
+
+
 def _check_package_files(pkg: Path, doc: dict) -> list[Issue]:
     refs = set()
     for n in doc.get("nodes", []):
@@ -173,6 +215,8 @@ def lint_episode(ep_dir: Path, graph_source: str = "auto") -> EpisodeReport:
     rep.issues += li
     gi, rep.graph = check_graph(ep_dir, c, graph_source)
     rep.issues += gi
+    ti, rep.translation = check_translation(ep_dir)
+    rep.issues += ti
     return rep
 
 

@@ -1,0 +1,745 @@
+{
+  "contentId": "A1-002",
+  "status": "DRAFT",
+  "author": "Claude taslak",
+  "date": "2026-10-11",
+  "lines": [
+    {
+      "en": "The New Neighbour",
+      "speaker": "TITLE",
+      "tr": "Yeni Komşu",
+      "chunks": [],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "new": "yeni",
+        "neighbour": "komşu"
+      },
+      "source": "scenes:c-title"
+    },
+    {
+      "en": "Nice to meet you. · This is my… · Excuse me, where is…? · Is it far? · Thank you.",
+      "speaker": "CARD",
+      "tr": "Tanıştığımıza memnun oldum. · Bu benim… · Affedersiniz, … nerede? · Uzak mı? · Teşekkür ederim.",
+      "chunks": [
+        {
+          "en": "Nice to meet you.",
+          "tr": "Tanıştığımıza memnun oldum."
+        },
+        {
+          "en": "This is my…",
+          "tr": "Bu benim… (birini tanıtırken)"
+        },
+        {
+          "en": "Excuse me",
+          "tr": "Affedersiniz / Pardon"
+        },
+        {
+          "en": "Where is…?",
+          "tr": "… nerede?"
+        },
+        {
+          "en": "Is it far?",
+          "tr": "Uzak mı?"
+        },
+        {
+          "en": "Thank you.",
+          "tr": "Teşekkür ederim."
+        }
+      ],
+      "words": {
+        "nice": "hoş, güzel",
+        "to": "(mastar: -mek)",
+        "meet": "tanışmak",
+        "you": "seninle / sizinle",
+        "this": "bu",
+        "is": "-dır (olmak)",
+        "my": "benim",
+        "excuse": "affetmek (excuse me: affedersiniz)",
+        "me": "(excuse me kalıbının parçası)",
+        "where": "nerede",
+        "it": "o (orası)",
+        "far": "uzak",
+        "thank": "teşekkür etmek"
+      },
+      "source": "scenes:c-mission"
+    },
+    {
+      "en": "Meet me at the old station.",
+      "speaker": "VOICE",
+      "tr": "Benimle eski istasyonda buluş.",
+      "chunks": [
+        {
+          "en": "Meet me at …",
+          "tr": "Benimle …-de buluş"
+        },
+        {
+          "en": "the old station",
+          "tr": "eski istasyon"
+        }
+      ],
+      "words": {
+        "meet": "buluş",
+        "me": "benimle (beni)",
+        "at": "-de / -da (yer)",
+        "the": "(belirli tanımlık)",
+        "old": "eski",
+        "station": "istasyon"
+      },
+      "source": "subs/s01"
+    },
+    {
+      "en": "Good morning!",
+      "speaker": "MAYA",
+      "tr": "Günaydın!",
+      "chunks": [
+        {
+          "en": "Good morning!",
+          "tr": "Günaydın!"
+        }
+      ],
+      "words": {
+        "good": "iyi (good morning: günaydın)",
+        "morning": "sabah"
+      },
+      "source": "subs/s02"
+    },
+    {
+      "en": "Can I help you?",
+      "speaker": "MAYA",
+      "tr": "Yardımcı olabilir miyim?",
+      "chunks": [
+        {
+          "en": "Can I help you?",
+          "tr": "Yardımcı olabilir miyim? (dükkânda)"
+        }
+      ],
+      "words": {
+        "can": "-ebilir miyim (soru)",
+        "i": "ben",
+        "help": "yardım etmek",
+        "you": "size / sana"
+      },
+      "source": "subs/s02"
+    },
+    {
+      "en": "Good morning! Can I help you?",
+      "speaker": "MAYA",
+      "tr": "Günaydın! Yardımcı olabilir miyim?",
+      "chunks": [
+        {
+          "en": "Good morning!",
+          "tr": "Günaydın!"
+        },
+        {
+          "en": "Can I help you?",
+          "tr": "Yardımcı olabilir miyim? (dükkânda)"
+        }
+      ],
+      "words": {
+        "good": "iyi (good morning: günaydın)",
+        "morning": "sabah",
+        "can": "-ebilir miyim (soru)",
+        "i": "ben",
+        "help": "yardım etmek",
+        "you": "size / sana"
+      },
+      "source": "scenes:k1.cue"
+    },
+    {
+      "en": "Nice to meet you.",
+      "speaker": "ALEX",
+      "tr": "Tanıştığımıza memnun oldum.",
+      "chunks": [
+        {
+          "en": "Nice to meet you.",
+          "tr": "Tanıştığımıza memnun oldum."
+        }
+      ],
+      "words": {
+        "nice": "hoş, güzel",
+        "to": "(mastar: -mek)",
+        "meet": "tanışmak",
+        "you": "seninle / sizinle"
+      },
+      "source": "subs/k1-a, subs/s04 (MRS BROOKS)"
+    },
+    {
+      "en": "I'm Alex.",
+      "speaker": "ALEX",
+      "tr": "Ben Alex.",
+      "chunks": [
+        {
+          "en": "I'm …",
+          "tr": "Ben … (kendini tanıtma)"
+        }
+      ],
+      "words": {
+        "i'm": "ben …-im"
+      },
+      "source": "subs/k1-a"
+    },
+    {
+      "en": "Hi! I'm Alex.",
+      "speaker": "ALEX",
+      "tr": "Selam! Ben Alex.",
+      "chunks": [
+        {
+          "en": "I'm …",
+          "tr": "Ben … (kendini tanıtma)"
+        }
+      ],
+      "words": {
+        "hi": "selam",
+        "i'm": "ben …-im"
+      },
+      "source": "subs/k1-b"
+    },
+    {
+      "en": "Hi, Alex!",
+      "speaker": "MAYA",
+      "tr": "Selam Alex!",
+      "chunks": [],
+      "words": {
+        "hi": "selam"
+      },
+      "source": "subs/s03"
+    },
+    {
+      "en": "I'm Maya.",
+      "speaker": "MAYA",
+      "tr": "Ben Maya.",
+      "chunks": [
+        {
+          "en": "I'm …",
+          "tr": "Ben … (kendini tanıtma)"
+        }
+      ],
+      "words": {
+        "i'm": "ben …-im"
+      },
+      "source": "subs/s03"
+    },
+    {
+      "en": "Are you new here?",
+      "speaker": "MAYA",
+      "tr": "Buralarda yeni misin?",
+      "chunks": [
+        {
+          "en": "Are you new here?",
+          "tr": "Buralarda yeni misin?"
+        }
+      ],
+      "words": {
+        "are": "(soru) -misin (olmak)",
+        "you": "sen",
+        "new": "yeni",
+        "here": "burada"
+      },
+      "source": "subs/s03"
+    },
+    {
+      "en": "Yes. I'm your new neighbour.",
+      "speaker": "ALEX",
+      "tr": "Evet. Yeni komşunum.",
+      "chunks": [],
+      "words": {
+        "yes": "evet",
+        "i'm": "ben …-im",
+        "your": "senin",
+        "new": "yeni",
+        "neighbour": "komşu"
+      },
+      "source": "subs/s03"
+    },
+    {
+      "en": "Oh, welcome!",
+      "speaker": "MAYA",
+      "tr": "Aa, hoş geldin!",
+      "chunks": [],
+      "words": {
+        "oh": "aa, oh",
+        "welcome": "hoş geldin"
+      },
+      "source": "subs/s03"
+    },
+    {
+      "en": "Where are you from?",
+      "speaker": "MAYA",
+      "tr": "Nerelisin?",
+      "chunks": [
+        {
+          "en": "Where are you from?",
+          "tr": "Nerelisin? / Nereden geliyorsun?"
+        }
+      ],
+      "words": {
+        "where": "nere(li)",
+        "are": "-sin (olmak)",
+        "you": "sen",
+        "from": "-den / -dan (-li)"
+      },
+      "source": "subs/s03"
+    },
+    {
+      "en": "I'm from Türkiye.",
+      "speaker": "ALEX",
+      "tr": "Türkiye'denim.",
+      "chunks": [
+        {
+          "en": "I'm from …",
+          "tr": "…-denim / …-liyim"
+        }
+      ],
+      "words": {
+        "i'm": "ben …-im",
+        "from": "-den / -dan"
+      },
+      "source": "subs/s03"
+    },
+    {
+      "en": "From İzmir.",
+      "speaker": "ALEX",
+      "tr": "İzmir'den.",
+      "chunks": [],
+      "words": {
+        "from": "-den / -dan"
+      },
+      "source": "subs/s03"
+    },
+    {
+      "en": "İzmir? Is it by the sea?",
+      "speaker": "MAYA",
+      "tr": "İzmir mi? Deniz kenarında mı?",
+      "chunks": [
+        {
+          "en": "by the sea",
+          "tr": "deniz kenarında"
+        }
+      ],
+      "words": {
+        "is": "(soru) mı (olmak)",
+        "it": "o (orası)",
+        "by": "kenarında",
+        "the": "(belirli tanımlık)",
+        "sea": "deniz"
+      },
+      "source": "subs/s03"
+    },
+    {
+      "en": "Yes! Like Port Lumen.",
+      "speaker": "ALEX",
+      "tr": "Evet! Port Lumen gibi.",
+      "chunks": [],
+      "words": {
+        "yes": "evet",
+        "like": "gibi"
+      },
+      "source": "subs/s03"
+    },
+    {
+      "en": "This is my mother.",
+      "speaker": "MAYA",
+      "tr": "Bu annem.",
+      "chunks": [
+        {
+          "en": "This is my …",
+          "tr": "Bu benim … (birini tanıtırken)"
+        }
+      ],
+      "words": {
+        "this": "bu",
+        "is": "-dır / -dir (olmak)",
+        "my": "benim",
+        "mother": "anne"
+      },
+      "source": "subs/s04"
+    },
+    {
+      "en": "Hello, Alex.",
+      "speaker": "MRS BROOKS",
+      "tr": "Merhaba Alex.",
+      "chunks": [],
+      "words": {
+        "hello": "merhaba"
+      },
+      "source": "subs/s04"
+    },
+    {
+      "en": "And this is my cousin, Sam.",
+      "speaker": "MAYA",
+      "tr": "Bu da kuzenim Sam.",
+      "chunks": [
+        {
+          "en": "This is my …",
+          "tr": "Bu benim … (birini tanıtırken)"
+        }
+      ],
+      "words": {
+        "and": "ve (… da)",
+        "this": "bu",
+        "is": "-dır / -dir (olmak)",
+        "my": "benim",
+        "cousin": "kuzen"
+      },
+      "source": "subs/s04"
+    },
+    {
+      "en": "He loves radios!",
+      "speaker": "MAYA",
+      "tr": "Telsizlere bayılır!",
+      "chunks": [],
+      "words": {
+        "he": "o (erkek)",
+        "loves": "çok seviyor, bayılıyor",
+        "radios": "telsizler, radyolar"
+      },
+      "source": "subs/s04"
+    },
+    {
+      "en": "Excuse me, where is the old station?",
+      "speaker": "ALEX",
+      "tr": "Pardon, eski istasyon nerede?",
+      "chunks": [
+        {
+          "en": "Excuse me",
+          "tr": "Affedersiniz / Pardon (kibar başlangıç)"
+        },
+        {
+          "en": "Where is …?",
+          "tr": "… nerede?"
+        },
+        {
+          "en": "the old station",
+          "tr": "eski istasyon"
+        }
+      ],
+      "words": {
+        "excuse": "affetmek (excuse me: affedersiniz)",
+        "me": "(excuse me kalıbının parçası)",
+        "where": "nerede",
+        "is": "(olmak; Türkçede karşılığı yok)",
+        "the": "(belirli tanımlık)",
+        "old": "eski",
+        "station": "istasyon"
+      },
+      "source": "subs/k2-ok"
+    },
+    {
+      "en": "Where station?",
+      "speaker": "ALEX",
+      "tr": "İstasyon nerede? (eksik cümle)",
+      "chunks": [],
+      "words": {
+        "where": "nerede",
+        "station": "istasyon"
+      },
+      "source": "subs/r-k2-b"
+    },
+    {
+      "en": "Sorry? The… station?",
+      "speaker": "MAYA",
+      "tr": "Efendim? Şey… istasyon mu?",
+      "chunks": [
+        {
+          "en": "Sorry?",
+          "tr": "Efendim? / Pardon? (anlamadım)"
+        }
+      ],
+      "words": {
+        "sorry": "efendim?, pardon?",
+        "the": "(belirli tanımlık)",
+        "station": "istasyon"
+      },
+      "source": "subs/r-k2-b"
+    },
+    {
+      "en": "The old station?",
+      "speaker": "MAYA",
+      "tr": "Eski istasyon mu?",
+      "chunks": [
+        {
+          "en": "the old station",
+          "tr": "eski istasyon"
+        }
+      ],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "old": "eski",
+        "station": "istasyon"
+      },
+      "source": "subs/k2-ok"
+    },
+    {
+      "en": "It's near the harbour.",
+      "speaker": "MAYA",
+      "tr": "Limanın yakınında.",
+      "chunks": [
+        {
+          "en": "It's near …",
+          "tr": "…-in yakınında"
+        }
+      ],
+      "words": {
+        "it's": "o … -dır (orası)",
+        "near": "yakınında",
+        "the": "(belirli tanımlık)",
+        "harbour": "liman"
+      },
+      "source": "subs/k2-ok, scenes:t-gorev"
+    },
+    {
+      "en": "But it's closed.",
+      "speaker": "MAYA",
+      "tr": "Ama kapalı.",
+      "chunks": [],
+      "words": {
+        "but": "ama",
+        "it's": "o … -dır (orası)",
+        "closed": "kapalı"
+      },
+      "source": "subs/k2-ok"
+    },
+    {
+      "en": "It's very old.",
+      "speaker": "MAYA",
+      "tr": "Çok eski.",
+      "chunks": [],
+      "words": {
+        "it's": "o … -dır (orası)",
+        "very": "çok",
+        "old": "eski"
+      },
+      "source": "subs/k2-ok, scenes:t-gorev"
+    },
+    {
+      "en": "Closed? Again, please.",
+      "speaker": "ALEX",
+      "tr": "Kapalı mı? Bir daha, lütfen.",
+      "chunks": [
+        {
+          "en": "Again, please.",
+          "tr": "Bir daha, lütfen. (kibar tekrar isteği)"
+        }
+      ],
+      "words": {
+        "closed": "kapalı",
+        "again": "tekrar, bir daha",
+        "please": "lütfen"
+      },
+      "source": "subs/k2-ok"
+    },
+    {
+      "en": "It is closed.",
+      "speaker": "MAYA",
+      "tr": "Kapalı.",
+      "chunks": [],
+      "words": {
+        "it": "o (orası)",
+        "is": "-dır (olmak)",
+        "closed": "kapalı"
+      },
+      "source": "subs/k2-ok"
+    },
+    {
+      "en": "No people.",
+      "speaker": "MAYA",
+      "tr": "Kimse yok.",
+      "chunks": [
+        {
+          "en": "No people.",
+          "tr": "Kimse yok."
+        }
+      ],
+      "words": {
+        "no": "hiç (yok)",
+        "people": "insanlar"
+      },
+      "source": "subs/k2-ok"
+    },
+    {
+      "en": "It's closed.",
+      "speaker": "TASK",
+      "tr": "Kapalı.",
+      "chunks": [],
+      "words": {
+        "it's": "o … -dır (orası)",
+        "closed": "kapalı"
+      },
+      "source": "scenes:t-gorev"
+    },
+    {
+      "en": "It's in İzmir.",
+      "speaker": "TASK",
+      "tr": "İzmir'de.",
+      "chunks": [],
+      "words": {
+        "it's": "o … -dır (orası)",
+        "in": "-de / -da (içinde)"
+      },
+      "source": "scenes:t-gorev"
+    },
+    {
+      "en": "It's a big shop.",
+      "speaker": "TASK",
+      "tr": "Büyük bir dükkân.",
+      "chunks": [],
+      "words": {
+        "it's": "o … -dır (orası)",
+        "a": "bir",
+        "big": "büyük",
+        "shop": "dükkân"
+      },
+      "source": "scenes:t-gorev"
+    },
+    {
+      "en": "Is it far?",
+      "speaker": "ALEX",
+      "tr": "Uzak mı?",
+      "chunks": [
+        {
+          "en": "Is it far?",
+          "tr": "Uzak mı?"
+        }
+      ],
+      "words": {
+        "is": "(soru) mı (olmak)",
+        "it": "o (orası)",
+        "far": "uzak"
+      },
+      "source": "subs/s05"
+    },
+    {
+      "en": "No, it isn't.",
+      "speaker": "MAYA",
+      "tr": "Hayır, değil.",
+      "chunks": [
+        {
+          "en": "No, it isn't.",
+          "tr": "Hayır, değil. (kısa cevap)"
+        }
+      ],
+      "words": {
+        "no": "hayır",
+        "it": "o (orası)",
+        "isn't": "değil"
+      },
+      "source": "subs/s05"
+    },
+    {
+      "en": "Look, here is a map.",
+      "speaker": "MAYA",
+      "tr": "Bak, işte bir harita.",
+      "chunks": [
+        {
+          "en": "here is …",
+          "tr": "işte …"
+        }
+      ],
+      "words": {
+        "look": "bak",
+        "here": "işte (here is)",
+        "is": "-dır / -dir (olmak)",
+        "a": "bir",
+        "map": "harita"
+      },
+      "source": "subs/s05"
+    },
+    {
+      "en": "I can show you. Tomorrow?",
+      "speaker": "MAYA",
+      "tr": "Sana gösterebilirim. Yarın olur mu?",
+      "chunks": [
+        {
+          "en": "I can show you.",
+          "tr": "Sana gösterebilirim."
+        }
+      ],
+      "words": {
+        "i": "ben",
+        "can": "-ebilmek",
+        "show": "göstermek",
+        "you": "sana",
+        "tomorrow": "yarın"
+      },
+      "source": "subs/s05"
+    },
+    {
+      "en": "Yes, please!",
+      "speaker": "ALEX",
+      "tr": "Evet, lütfen!",
+      "chunks": [
+        {
+          "en": "Yes, please!",
+          "tr": "Evet, lütfen! (bir teklifi kabul ederken)"
+        }
+      ],
+      "words": {
+        "yes": "evet",
+        "please": "lütfen"
+      },
+      "source": "subs/s05"
+    },
+    {
+      "en": "Thank you.",
+      "speaker": "ALEX",
+      "tr": "Teşekkür ederim.",
+      "chunks": [
+        {
+          "en": "Thank you.",
+          "tr": "Teşekkür ederim."
+        }
+      ],
+      "words": {
+        "thank": "teşekkür etmek",
+        "you": "sana / size"
+      },
+      "source": "subs/s05"
+    },
+    {
+      "en": "Hello! My name is ___. I'm from ___.",
+      "speaker": "TASK",
+      "tr": "Merhaba! Benim adım ___. ___'denim.",
+      "chunks": [
+        {
+          "en": "My name is …",
+          "tr": "Benim adım …"
+        },
+        {
+          "en": "I'm from …",
+          "tr": "…-denim / …-liyim"
+        }
+      ],
+      "words": {
+        "hello": "merhaba",
+        "my": "benim",
+        "name": "ad, isim",
+        "is": "-dır / -dir (olmak)",
+        "i'm": "ben …-im",
+        "from": "-den / -dan"
+      },
+      "source": "scenes:t-kanit"
+    },
+    {
+      "en": "Find the Station",
+      "speaker": "TITLE",
+      "tr": "İstasyonu Bul",
+      "chunks": [],
+      "words": {
+        "find": "bul",
+        "the": "(belirli tanımlık)",
+        "station": "istasyon"
+      },
+      "source": "scenes:c-oq"
+    }
+  ],
+  "notes": [
+    "Türk öğrenci tuzağı: 'Where station?' — Türkçede 'İstasyon nerede?' cümlesinde 'olmak' fiili görünmez; İngilizcede 'is' zorunludur: 'Where is the station?'.",
+    "'Nice to meet you.' kelime kelime çevrilmez; kalıp olarak 'Tanıştığımıza memnun oldum.' verilir.",
+    "'Where are you from?' = 'Nerelisin?'. Cevapta 'I am from…' (to be + from); 'I from Türkiye' yanlışı yaygındır.",
+    "'Nice to meet you.' hem ALEX (k1-a) hem MRS BROOKS (s04) satırında aynı metin; tek kayıt.",
+    "'Excuse me' yabancıya 'Affedersiniz', Maya'ya (akran, yeni tanışılmış) 'Pardon' olarak verildi; editör tek biçimde birleştirmek isteyebilir.",
+    "'No people.' Maya'nın A1'e sadeleştirilmiş cümlesi; doğal İngilizcede 'Nobody is there.' olurdu. Türkçesi 'Kimse yok.'",
+    "'neighbour', 'harbour': İngiliz yazımı (Amerikan: neighbor, harbor).",
+    "t-kanit boşluk metni 'I'm from ___.' Türkçede '___'denim' ek uyumu kişiye göre değişir (…'dan / …'den)."
+  ]
+}

@@ -61,7 +61,7 @@
       "scene": "Soğuk açılış",
       "checkpoint": true,
       "video": "segments/s01.mp4",
-      "duration": 3.8,
+      "duration": 2.5,
       "subtitles": null,
       "next": "c-title"
     },
@@ -78,7 +78,23 @@
         {
           "text": "A Strange Message",
           "lang": "en",
-          "style": "heading"
+          "style": "heading",
+          "tr": "Garip Bir Mesaj",
+          "words": [
+            {
+              "w": "A",
+              "gloss": "bir"
+            },
+            {
+              "w": "Strange",
+              "gloss": "garip, tuhaf"
+            },
+            {
+              "w": "Message",
+              "gloss": "mesaj"
+            }
+          ],
+          "chunks": []
         }
       ],
       "advance": "auto",
@@ -99,7 +115,84 @@
         {
           "text": "Can you hear me? · Yes, I can. · Again, please. · Where is…? · Listen.",
           "lang": "en",
-          "style": "highlight"
+          "style": "highlight",
+          "tr": "Beni duyabiliyor musun? · Evet, duyabiliyorum. · Bir daha, lütfen. · … nerede? · Dinle.",
+          "words": [
+            {
+              "w": "Can",
+              "gloss": "-ebilmek"
+            },
+            {
+              "w": "you",
+              "gloss": "sen"
+            },
+            {
+              "w": "hear",
+              "gloss": "duymak"
+            },
+            {
+              "w": "me?",
+              "gloss": "beni"
+            },
+            {
+              "w": "Yes,",
+              "gloss": "evet"
+            },
+            {
+              "w": "I",
+              "gloss": "ben"
+            },
+            {
+              "w": "can.",
+              "gloss": "-ebilmek"
+            },
+            {
+              "w": "Again,",
+              "gloss": "tekrar, bir daha"
+            },
+            {
+              "w": "please.",
+              "gloss": "lütfen"
+            },
+            {
+              "w": "Where",
+              "gloss": "nerede"
+            },
+            {
+              "w": "is…?",
+              "gloss": "(olmak; Türkçede karşılığı yok)"
+            },
+            {
+              "w": "Listen.",
+              "gloss": "dinle"
+            }
+          ],
+          "chunks": [
+            {
+              "en": "Can you hear me?",
+              "tr": "Beni duyabiliyor musun?",
+              "startWord": 0,
+              "endWord": 3
+            },
+            {
+              "en": "Yes, I can.",
+              "tr": "Evet, (yapabiliyorum).",
+              "startWord": 4,
+              "endWord": 6
+            },
+            {
+              "en": "Again, please.",
+              "tr": "Bir daha, lütfen.",
+              "startWord": 7,
+              "endWord": 8
+            },
+            {
+              "en": "Where is…?",
+              "tr": "… nerede?",
+              "startWord": 9,
+              "endWord": 11
+            }
+          ]
         }
       ],
       "advance": "tap",
@@ -124,7 +217,42 @@
       },
       "cue": {
         "speaker": "VOICE",
-        "text": "Hello? Hello? Can you hear me?"
+        "text": "Hello? Hello? Can you hear me?",
+        "tr": "Alo? Alo? Beni duyabiliyor musun?",
+        "words": [
+          {
+            "w": "Hello?",
+            "gloss": "alo (telsizde/telefonda), merhaba"
+          },
+          {
+            "w": "Hello?",
+            "gloss": "alo (telsizde/telefonda), merhaba"
+          },
+          {
+            "w": "Can",
+            "gloss": "-ebilir mi (soru)"
+          },
+          {
+            "w": "you",
+            "gloss": "sen"
+          },
+          {
+            "w": "hear",
+            "gloss": "duymak"
+          },
+          {
+            "w": "me?",
+            "gloss": "beni"
+          }
+        ],
+        "chunks": [
+          {
+            "en": "Can you hear me?",
+            "tr": "Beni duyabiliyor musun?",
+            "startWord": 2,
+            "endWord": 5
+          }
+        ]
       },
       "pov": "POV: telsize eğilme. Müzik kısılır.",
       "skill": "spoken_interaction",
@@ -312,6 +440,29 @@
         {
           "id": "i1",
           "stem": "This is ___.",
+          "stemTr": "Ben ___.",
+          "stemWords": [
+            {
+              "w": "This",
+              "gloss": "bu (burada: ben)"
+            },
+            {
+              "w": "is",
+              "gloss": "-dır / -dir (olmak)"
+            },
+            {
+              "w": "___.",
+              "gloss": null
+            }
+          ],
+          "stemChunks": [
+            {
+              "en": "This is …",
+              "tr": "Ben … (telsizde/telefonda kendini tanıtırken)",
+              "startWord": 0,
+              "endWord": 2
+            }
+          ],
           "options": [
             {
               "id": "a",
@@ -333,6 +484,37 @@
         {
           "id": "i2",
           "stem": "Meet me at the ___.",
+          "stemTr": "Benimle ___ buluş.",
+          "stemWords": [
+            {
+              "w": "Meet",
+              "gloss": "buluş"
+            },
+            {
+              "w": "me",
+              "gloss": "benimle (beni)"
+            },
+            {
+              "w": "at",
+              "gloss": "-de / -da (yer)"
+            },
+            {
+              "w": "the",
+              "gloss": "(belirli tanımlık)"
+            },
+            {
+              "w": "___.",
+              "gloss": null
+            }
+          ],
+          "stemChunks": [
+            {
+              "en": "Meet me at …",
+              "tr": "Benimle …-de buluş",
+              "startWord": 0,
+              "endWord": 4
+            }
+          ],
           "options": [
             {
               "id": "a",
@@ -466,7 +648,23 @@
         {
           "text": "Bölüm 2: The New Neighbour",
           "lang": "en",
-          "style": "caption"
+          "style": "caption",
+          "tr": "Yeni Komşu",
+          "words": [
+            {
+              "w": "The",
+              "gloss": "(belirli tanımlık)"
+            },
+            {
+              "w": "New",
+              "gloss": "yeni"
+            },
+            {
+              "w": "Neighbour",
+              "gloss": "komşu"
+            }
+          ],
+          "chunks": []
         }
       ],
       "advance": "tap",

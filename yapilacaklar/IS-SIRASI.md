@@ -6,7 +6,7 @@ Bu dosya tek takip noktasıdır. Hangi işin hangi sırada yapıldığını, şu
 
 ## Nerede kaldık
 - **Şu an:** Planlama, Faz 0. Kod yok.
-- **Şimdi yapılan:** B1–B4 önizlemeleri hazır; içerik üretimi durduruldu. Mobil uygulama planı (H-025, `docs/UYGULAMA-PLANI.md`) onaylandı. H-033, H-034, H-045, H-031 bitti. Sıradaki: H-046 (altyazıya dokun → Türkçe anlam; çeviri taslağı onay bekliyor), sonra H-035 (harita); ilk test cihazı iOS simülatörü. Uygulama bitene kadar her şey yerelde.
+- **Şimdi yapılan (ara verildi 2026-10-11 gece):** `h-046-altyazi-anlam` dalında H-046 kodu bitti ve testli (flutter 63/63, pytest 53/53), **commit edilmedi**. Kaldığımız yer: (1) kullanıcı simülatörde çevirilere bakıp onay/düzeltme verecek; (2) panelde "Deftere ekle" kelimeye dokununca ekran altına düşüyor, düzeltilecek; (3) onaydan sonra `ceviri.tr.json` durumları APPROVED, tek commit: H-046 + H-047/H-048 belgeleri (CLAUDE.md, HI-ASISTAN-VE-KOC.md, UYGULAMA-PLANI.md). Sonra sırada H-035 (harita). Yerel içerik sunucusu: `python3 tools/dev-content-server/serve.py` (127.0.0.1:8787).
 - **Sıradaki adım:**
   1. Kullanıcı 1. adımda kalan kararları verir. En kritikleri:
      - H-001 ve H-007: konuşma pratiği MVP'de mi, faz yapısı ne olacak?
@@ -25,7 +25,7 @@ Bu dosya tek takip noktasıdır. Hangi işin hangi sırada yapıldığını, şu
   - H dosyasının `Durum` satırı güncellenir;
   - **Günlük** bölümüne bir satır eklenir.
 - **Biten işler:** "Biten işler" tablosuna doğrulama kanıtıyla birlikte yazılır.
-- **Numaralar:** Tek sayaçla verilir. Sıradaki boş numara: **H-047**.
+- **Numaralar:** Tek sayaçla verilir. Sıradaki boş numara: **H-051**.
 
 **Durum simgeleri:**
 - ⛔ Kullanıcı kararı bekliyor
@@ -79,7 +79,8 @@ Bu dosya tek takip noktasıdır. Hangi işin hangi sırada yapıldığını, şu
 ### Adım 4 — Uygulama planı
 | # | İş | Başlık | Öncelik | Bağımlılık | Durum |
 |---|---|---|---|---|---|
-| 25 | H-031 | Etkileşimli bölüm oynatıcısı | 2026-10-11 | flutter test 51/51; B1–B4 simülatörde baştan sona; geçiş 35–131 ms, siyah kare yok; kaldığın yerden devam. Android ölçümü H-043'e taşındı (kullanıcı kararı) |
+| 25 | H-047 | Hi asistanı ve koç kararları | 2026-10-11 | Kullanıcı soru-cevap kararı; `docs/HI-ASISTAN-VE-KOC.md` v0.2; CLAUDE.md'ye işlendi |
+| H-031 | Etkileşimli bölüm oynatıcısı | 2026-10-11 | flutter test 51/51; B1–B4 simülatörde baştan sona; geçiş 35–131 ms, siyah kare yok; kaldığın yerden devam. Android ölçümü H-043'e taşındı (kullanıcı kararı) |
 | H-034 | Bölüm paketi ve content-lint | 2026-10-11 | pytest 43/43; lint 13 bölüm temiz (7 uyarı); B1–B4 paketleri, senkron ≤ 0,01 sn, -16 LUFS, 29–48 MB |
 | H-045 | Arayüz tasarım yönü | 2026-10-11 | Kullanıcı onayı ("devam"). 6 taslak, 6 kr; tema belirteçleri Flutter'a işlendi, testler yeşil |
 | H-033 | Repo iskeleti | 2026-10-11 | `flutter analyze` temiz, `flutter test` 1/1; `mvn test` 2/2 (Testcontainers); iOS simülatöründe 5 sekme; `/actuator/health` UP |
@@ -93,9 +94,12 @@ Plan: `docs/UYGULAMA-PLANI.md`. Kod yazımı H-025 onaylandıktan sonra başlar.
 | 1.0 | H-033 | Repo iskeleti (mobil + backend) | Yüksek | H-025 | ✅ |
 | 1.1 | H-034 | Bölüm paketi formatı, dışa aktarma, content-lint | Yüksek | H-033 | ✅ |
 | 1.2 | H-031 | Etkileşimli bölüm oynatıcısı | Yüksek | H-033, H-034 | ✅ |
-| 1.2b | H-046 | Altyazıya dokun → Türkçe anlam (kademeli panel) | Yüksek | H-031 | ⏳ |
+| 1.2b | H-046 | Altyazıya dokun → Türkçe anlam (kademeli panel) | Yüksek | H-031 | 🔄 |
+| 1.2c | H-050 | Bölüm açılışı (4 katman) ve Hi'nin konu tanıtımı | Orta | H-049, H-046 | ⏳ |
+| — | H-049 | Sezon 1 jeneriği (bir kez, ~6,4 kr) | Orta | — | 🔄 |
 | 1.3 | H-035 | Hikâye haritası, bölüm kapısı, yerel ilerleme | Yüksek | H-031 | ⏳ |
 | 1.4 | H-036 | Defter, ipucu panosu, FSRS | Yüksek | H-035 | ⏳ |
+| 1.4b | H-048 | Hi-A: yönlendiren Hi (balon + kural tabanlı koç) | Yüksek | H-036, H-046 | ⏳ |
 | 1.5 | H-037 | Backend çekirdek | Yüksek | H-033 | ⏳ |
 | 1.6 | H-038 | Mobil ↔ backend, misafir modu | Yüksek | H-035, H-037 | ⏳ |
 | 1.7 | H-039 | Onboarding ve yerleştirme | Orta | H-038 | ⏳ |
@@ -233,3 +237,11 @@ Plan: `docs/UYGULAMA-PLANI.md`. Kod yazımı H-025 onaylandıktan sonra başlar.
   - H-034 bitti: `tools/content-pipeline/` (dışa aktarma + content-lint), `docs/BOLUM-PAKETI.md`, bölüm başına `kurgu.json`. Editör onayı bekleyenler: Hi ipucu seviye 1–2 metinleri, A1-003 görev seçenekleri; sözlükte eksik: *yeah* (B5), *voice* (B7), *far* (B9).
   - Kullanıcı önerisi: altyazıya dokununca Türkçe anlam. Kararlar: kademeli panel, karar seçenekleri çevrilmez, çeviri Claude taslak + kullanıcı onayı, H-031'den hemen sonra. H-046 açıldı.
   - H-031 bitti (simülatör). Android bellek ve gerçek telefon ses–yazı kontrolü H-043'e taşındı. H-046 çeviri taslağı (B1–B4 `story.tr.md` + `ceviri.tr.json`) yazıldı, kullanıcı onayı bekliyor.
+  - Kullanıcı önerisi: Hi her yerde (sağ alt balon) + AI sohbet + gelişimi izleyen ajan; yerel LLM/RAG mimarisi paylaşıldı. H-047 kararları: Hi-A MVP (AI yok), AI sohbeti v1 (yerel Ollama + RAG, üretim kararı H-044), 13–17 rehberli, öncelikler F1–F4. H-048 açıldı.
+  - Kullanıcı ara verdi ("yarın devam ederiz"). H-046 commit'siz bekliyor; dal `h-046-altyazi-anlam`.
+- **2026-10-12:**
+  - Ortam yeniden açıldı (Colima, içerik sunucusu, simülatör). H-046 paneli düzeltildi: eylem düğmeleri altta sabit; flutter test 63/63.
+  - Kullanıcı önerisi: konu başında animasyonlu video. Kararlar: bölüm başı + konu başı; 4 katmanlı açılış (önceki bölümde, kanca, jenerik bir kez, Hi tanıtımı; ≤ 30 sn, atlanabilir); önce senaryo ve kareler. H-049 (jenerik) ve H-050 (uygulama) açıldı. Jenerik, var olan telsiz klibini yeniden kullanıyor: tahmin 6,4 kr.
+  - Jenerik üretildi (6,69 kr; kalan 85,56). Kullanıcı kararı: "Yapay zekâ ile üretilmiştir" uygulama içi videolara gömülmez; bölüm başında ~4 sn not. Sosyal medyada gömülü kalır (K-14). B1–B4 etiketsiz yeniden paketlendi; CLAUDE.md kural 6 güncellendi.
+  - Kullanıcı: B1 başındaki "Friday." yazısı gereksiz. Soğuk açılıştaki yazı kaldırıldı (Alex hemen ardından "OK. Friday." diyor), çekim 3,8 → 2,5 sn. B1 yeniden paketlendi; senkron 0,003 sn; testler 63/63.
+  - Kullanıcı kararı: her bölüm doğrudan bölüm başlığıyla açılır; öncesinde video/yazı/kart yok; görev kartı açılıştan kalktı (🎯 + bölüm sonu); tam jenerik sezon ilk açılışında. H-050 güncellendi, CLAUDE.md'ye işlendi.

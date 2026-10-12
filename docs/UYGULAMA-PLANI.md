@@ -2,7 +2,7 @@
 
 **Sürüm:** 0.1 · **Tarih:** 2026-10-11 · **Durum:** Onaylandı (2026-10-11). İlk dilim: önce oynatıcı; ilk test cihazı iOS simülatörü.
 **Dayanak:** CLAUDE.md "Onaylı içerik mimarisi kararları" ve "Onaylı oyun tasarımı kararları"; `docs/OYUN-TASARIMI.md`; `docs/ICERIK-MIMARISI.md`.
-**Kural:** Bu plan onaylanmadan kod yazılmaz. Oynatıcı işi var olan H-031 numarasını korur; yeni işler H-033'ten başlar, sıradaki boş numara H-045. Her alt faz ayrı bir H işidir: küçük, test edilebilir ve geri alınabilir.
+**Kural:** Bu plan onaylanmadan kod yazılmaz. Oynatıcı işi var olan H-031 numarasını korur; yeni işler H-033'ten başlar, sıradaki boş numara H-049. Her alt faz ayrı bir H işidir: küçük, test edilebilir ve geri alınabilir.
 
 ---
 
@@ -21,7 +21,7 @@
 - İnce editör onay ekranı.
 
 **MVP'de yok:**
-- AI konuşma pratiği (v1, 18 yaş ve üstü);
+- AI konuşma pratiği ve Hi sohbeti (v1: yerel LLM + RAG, `docs/HI-ASISTAN-VE-KOC.md`; serbest sohbet 18+, 13–17 rehberli);
 - çevrimdışı indirme;
 - reklam, satın alma, lig.
 
@@ -53,6 +53,7 @@
 | **1.2** | **H-031** Etkileşimli bölüm oynatıcısı (prototipten MVP sürümüne) | Segment sıralama ve ön ısıtma; karar kartları (yerel arayüz); yanlışta tepki dalı → aynı karar anına dönüş; Hi'nin kademeli ipucu; zaman damgalı altyazı (EN, EN+TR, kapalı); 0,75 hız; cümle tekrarı; kontrol noktası; bölüm sonu ekranı | B1–B4 telefonda baştan sona oynanıyor; segment geçişinde siyah kare yok, geçiş ≤ 150 ms; ses–yazı farkı ≤ 0,2 sn; düşük uçlu Android'de bellek ölçümü raporlandı |
 | **1.3** | **H-035** Hikâye haritası, bölüm kapısı, yerel ilerleme | Sezon haritası; kilit nedeni; spoiler içermeyen ipucu; bölüm kapısı (K-29); `user_story_progress` yerel kaydı; "Hikâyeye devam" | Kapı kuralı testli; uygulama kapatılıp açılınca kalınan yerden devam ediyor |
 | **1.4** | **H-036** Defter, ipucu panosu, FSRS tekrarı | Toplanan ifadeler; ipucu panosu ve açık sorular; FSRS (Bildim / Bilmedim); Ana Sayfa'da "Hızlı pratik" | FSRS birim testleri; eşdeğerlik testi verisi hazır |
+| **1.4b** | **H-048** Hi-A: yönlendiren Hi | Sağ alt Hi balonu; günlük tek öneri + gerekçe, haftalık özet, "bu ne demek?", Türkçeye göre hata ipuçları; AI yok (H-047) | Öneri kuralları testli; balon doğru ekranlarda |
 | **1.5** | **H-037** Backend çekirdek | Kimlik doğrulama, kullanıcı, rızalar (yalnızca ekleme), `audit_log`, hesap silme (30 gün), içerik kataloğu API'si, ilerleme ve olay (`learning_events`) API'si; Flyway; ProblemDetail hata modeli | Entegrasyon testleri (Testcontainers) yeşil; silme ve geri alma testli; giriş hız sınırı var |
 | **1.6** | **H-038** Mobil ↔ backend, misafir modu | Kayıt ve giriş; misafir verisinin hesaba taşınması; ilerleme ve olay eşitleme (idempotent `client_event_id`) | Misafir → kayıt akışı veri kaybetmeden çalışıyor |
 | **1.7** | **H-039** Onboarding ve yerleştirme | Dil, yaş beyanı (13+), rızalar, prolog, atlanabilir kademeli test (K-06), bildirim izni sonra | Yaş altı kayıt engelleniyor; test atlanabiliyor |

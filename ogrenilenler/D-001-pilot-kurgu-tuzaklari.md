@@ -27,3 +27,7 @@
 
 ## Birden çok karakterli sahne
 - İki referanslı sahnede (Maya + Alex) model kıyafetleri karıştırabilir; B4-01'de Maya, Alex'in ceketiyle çıktı. **Kural:** Her karakterin ayırt edici kıyafeti prompt'a açıkça yazılır ve "NO <öteki karakterin kıyafeti>" eklenir.
+
+## 2026-10-12: alimiter kendiliğinden ses yükseltir (H-049)
+- `alimiter` varsayılan olarak `level=1` ile çıkışı sınıra göre **yükseltir**. Ölçüp `volume` ile kazanç verip ardından `alimiter` koyunca hedef -16 yerine -14,6 LUFS çıktı.
+- Çözüm: `alimiter=limit=0.84:level=0`. Kısa (≤ 3 sn) dosyalarda ebur128 integrated değeri güvenilir değildir; uzun sürümü normalize edip kısayı ondan kesmek daha doğru.

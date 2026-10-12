@@ -73,6 +73,8 @@
 - **Explainer:** Kullanılmaz. Gemini Omni 10 sn = 30 kr; B1 ≈ 187 kr. Biçim de uymuyor (tek anlatıcı; karakter sesi ve karar anı yok). Kural 4 karşılaştırması bu gerekçeyle kapandı. |
 | H-004 | Higgsfield: mevcut lite plan, 110,25 kr ile devam (Sezon 1 ≈ 60–100 kr). Kredi 25'in altına inince bir kez hatırlatılır. |
 | H-006 (ek) | Yerel çalışmada videoGenerator'ın ElevenLabs hesabı kullanılır (ücretsiz, iç kullanım). Yayından önce ticari plan şart. |
+| H-047 | **Hi her yerde: asistan + öğrenme koçu** (`docs/HI-ASISTAN-VE-KOC.md`). Hikâye ve görev dışında sağ altta, menünün üstünde Hi balonu durur. **Hi-A (MVP):** kural tabanlı, AI yok, bütün yaşlar: günlük tek öneri + görünür gerekçe, haftalık özet, onaylı veriden "bu ne demek?". **Hi-B (v1):** metin sohbeti; `AiTutorPort` arkasında yerel Ollama + RAG (pgvector), üretim sağlayıcısı ölçümle H-044'te seçilir. 13–17 rehberli mod, serbest sohbet 18+. Kullanıcı konuşmaları otomatik olarak model eğitimine girmez. Farklılık önceliği: Türkçeye göre koçluk, utanmadan prova, her gün tek adım, gerçek hayat köprü görevleri. |
+| H-050 | **Her bölüm doğrudan bölüm başlığıyla açılır** (kullanıcı kararı 2026-10-12). Başlıktan önce video, yazı ya da kart yok. Başlık = kısa jenerik animasyonu üstünde "Sezon N · Bölüm N · Başlık". Ardından (B2+) atlanabilir "Önceki bölümde", sonra hikâye. Açılışta ayrı görev kartı yok (K-27 adım 2 değişti): görev ve hedef ifadeler 🎯 panelinde ve bölüm sonunda. Tam jenerik sezonun ilk açılışında bir kez oynar. |
 | H-030 | Kahraman **Aleyna "Alex" Yıldız** (kadın, 19, İzmir). Story Bible ve Sezon 1 planı onaylandı; kanon `icerik/_evren/`'de kilitli. S1'de fiyatlar birimsiz söylenir ("It's thirteen."). |
 
 **Bölümler arası bağ kuralları** (`OYUN-TASARIMI.md` §4.3, bağlayıcı):
@@ -336,7 +338,7 @@ higgsfield workflow list                           # hazır iş akışları
 3. **Bütçe:** Aylık tavan aşılmaz (§8). Kalan kredi `higgsfield account status` ile kontrol edilir; kredi bitmeye yaklaşınca kullanıcıya **bir kez** hatırlatılır, plan önerisi tekrar tekrar yapılmaz (karar H-004'te).
 4. **Ucuz yol önce:** Kredi/sn farkı büyük (§5.3: görsel ~0,12 kredi; video 1–7 kredi/sn). Hikâyelerde varsayılan yol: **Higgsfield görselleri + yerel Ken Burns kurgu (videoGenerator `KenBurnsRenderer` deseni) + TTS + altyazı.** Gerçek video klip yalnızca kanca (ilk 3 sn) ve kilit sahnelerde kullanılır. `higgsfield-video-explainer` daha pahalı ama daha canlı seçenektir; ilk denemede ikisi aynı hikâyeyle karşılaştırılır.
 5. **Karakter ve stil tutarlılığı:** Öğretmen için Soul ID; hikâye karakterleri için hikâye başına sabit stil öneki ve karakter tanımı (`PROMPTS.md` başında).
-6. **Güvenlik ve telif:** Gerçek kişi yüzü/sesi, ünlü benzerliği, gerçek marka ve telifli karakter yok; videolarda "yapay zekâ ile üretilmiştir" ibaresi var (§5.6).
+6. **Güvenlik ve telif:** Gerçek kişi yüzü/sesi, ünlü benzerliği, gerçek marka ve telifli karakter yok. "Yapay zekâ ile üretilmiştir" ibaresi (§5.6): **sosyal medya ve uygulama dışına çıkan videolarda gömülü** (K-14); **uygulama içi videolarda gömülmez**, uygulama bölüm başında ~4 sn küçük bir not gösterir ve kaybolur (kullanıcı kararı 2026-10-12: "kullanıcı az görsün").
 7. **Metin görselde değil, kurguda:** Görsel modellerin ürettiği yazılar bozulabilir; ekrandaki İngilizce kelimeler, altyazı ve kelime kartları yerel kurguda (ffmpeg/slayt) eklenir.
 
 ## İş takibi (H-numaraları)

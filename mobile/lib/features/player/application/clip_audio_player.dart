@@ -21,7 +21,7 @@ class ClipAudioPlayer extends ChangeNotifier {
   /// Şu an çalan sesin adresi (çalmıyorsa null).
   Uri? get playingUri => (_controller?.value.isPlaying ?? false) ? _uri : null;
 
-  Future<void> play(Uri uri) async {
+  Future<void> play(Uri uri, {double speed = 1.0}) async {
     await stop();
     if (_disposed) return;
     final c = _factory(uri);
@@ -31,6 +31,7 @@ class ClipAudioPlayer extends ChangeNotifier {
     try {
       await c.initialize().timeout(const Duration(seconds: 10));
       if (!identical(_controller, c) || _disposed) return;
+      if (speed != 1.0) await c.setPlaybackSpeed(speed);
       await c.play();
     } catch (e) {
       // Ses çalınamazsa metin zaten ekranda; oynatıcı durmaz.

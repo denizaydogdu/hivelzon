@@ -177,11 +177,11 @@
     },
     {
       "id": "t-kanit", "type": "task", "kind": "choice", "role": "evidence", "skill": "spoken_interaction", "cefr": "A1",
-      "prompt": {"tr": "Maya soruyor. Doğru cevabı seç.", "en": "I have Art on Friday. What time is it?"},
+      "prompt": {"tr": "Maya soruyor. Doğru cevabı seç.", "en": "I have Art on Friday. What time?"},
       "context": "Yeni bağlam: Maya'nın ders programı",
       "audio": "b4_30_maya",
       "background": "images/B4-01-dukkan-sabah.png",
-      "items": [{"id": "i1", "stem": "I have Art on Friday. What time is it?", "options": [
+      "items": [{"id": "i1", "stem": "I have Art on Friday. What time?", "options": [
         {"id": "a", "text": "At two o'clock.", "correct": true, "audio": "b4_31_alex"},
         {"id": "b", "text": "In two o'clock.", "correct": false, "audio": "b4_32_alex"}
       ]}],

@@ -97,7 +97,7 @@ Parçaları doğru yere sürükle:
 
 [KANIT · yeni bağlam: Maya'nın ders programı]
 [YAZI] "History: Monday, 9:00. Art: Friday, 2:00."
-**MAYA:** I have Art on Friday. What time is it?
+**MAYA:** I have Art on Friday. What time?
 - ✓ "At two o'clock."
 - ✗ "In two o'clock."
   - [TEPKİ] **HI (TR):** Saatten önce **at**: *at two o'clock*.

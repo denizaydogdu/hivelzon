@@ -6,6 +6,8 @@ import 'package:hivelzon/features/player/data/progress_repository.dart';
 import 'package:hivelzon/features/player/domain/episode_engine.dart';
 import 'package:hivelzon/features/player/presentation/player_screen.dart';
 import 'package:hivelzon/shared/content/content_providers.dart';
+import 'package:hivelzon/shared/meaning/learning_event_log.dart';
+import 'package:hivelzon/shared/meaning/notebook_repository.dart';
 import 'package:video_player_platform_interface/video_player_platform_interface.dart';
 
 import '../../support/fake_content_source.dart';
@@ -15,8 +17,12 @@ void main() {
   late FakeVideoPlatform platform;
   late InMemoryProgressRepository repo;
   late FakeContentSource source;
+  late InMemoryLearningEventLog events;
+  late InMemoryNotebookRepository notebook;
 
   setUp(() {
+    events = InMemoryLearningEventLog();
+    notebook = InMemoryNotebookRepository();
     platform = FakeVideoPlatform(
       // Segment süreleri kısaltılır: test zamanı ilerletmeyi kolaylaştırır.
       durationFor: (uri) => uri.endsWith('.m4a')
@@ -37,6 +43,8 @@ void main() {
         overrides: [
           contentSourceProvider.overrideWithValue(source),
           progressRepositoryProvider.overrideWithValue(repo),
+          learningEventLogProvider.overrideWithValue(events),
+          notebookRepositoryProvider.overrideWithValue(notebook),
         ],
         child: MaterialApp(
           theme: AppTheme.light(),
@@ -191,5 +199,132 @@ void main() {
     expect(repo.checkpoints['A1-001']!.checkpointNodeId, 's01');
     await tester.pumpWidget(const SizedBox());
     await step(tester, 300);
+  });
+
+  group('anlam paneli (H-046)', () {
+    /// s01 (5 sn) → başlık kartı → görev kartı → s02.
+    Future<void> toS02(WidgetTester tester) async {
+      await step(tester, 5600);
+      await step(tester, 2800);
+      await tapKey(tester, 'card-continue');
+      await step(tester, 600);
+    }
+
+    testWidgets('görev kartındaki İngilizce satır paneli açar (sessiz kart)', (
+      tester,
+    ) async {
+      await pumpPlayer(tester);
+      await step(tester, 5600);
+      await step(tester, 2800);
+      await tapKey(tester, 'card-line-1');
+      await step(tester, 400);
+      expect(find.byType(BottomSheet), findsOneWidget);
+      // "Can you hear me?" kalıbı: kelimeye dokununca kalıbın anlamı da çıkar.
+      await tapKey(tester, 'meaning-word-2');
+      final sheetScroll = find
+          .descendant(
+            of: find.byType(BottomSheet),
+            matching: find.byType(Scrollable),
+          )
+          .first;
+      await tester.scrollUntilVisible(
+        find.byKey(const ValueKey('meaning-reveal')),
+        120,
+        scrollable: sheetScroll,
+      );
+      expect(find.text('Türkçesini göster'), findsOneWidget);
+      expect(find.text('duymak'), findsOneWidget);
+      expect(find.byKey(const ValueKey('meaning-chunk-panel')), findsOneWidget);
+      expect(
+        find.text('Can you hear me? = Beni duyabiliyor musun?'),
+        findsOneWidget,
+      );
+      await tapKey(tester, 'meaning-close');
+      await step(tester, 400);
+      expect(find.text('Mesajdaki kişiyi ve yeri bul.'), findsOneWidget);
+      await tester.pumpWidget(const SizedBox());
+      await step(tester, 6000);
+    });
+
+    setUp(() {
+      // Segment 5 sn sürer ve oynarken 0,7. saniyede görünür:
+      // sahte altyazıda "OK. Friday." (0,59–1,87) ekranda olur.
+      platform = FakeVideoPlatform(
+        durationFor: (uri) => uri.endsWith('.m4a')
+            ? const Duration(milliseconds: 500)
+            : const Duration(seconds: 5),
+        positionFor: (_) => const Duration(milliseconds: 700),
+      );
+      VideoPlayerPlatform.instance = platform;
+    });
+
+    testWidgets(
+      'altyazıya dokun: video durur, kelime anlamı, Türkçesi, defter, kapatınca sürer',
+      (tester) async {
+        await pumpPlayer(tester);
+        await toS02(tester);
+        expect(find.text('OK. Friday.'), findsOneWidget);
+        expect(platform.isPlaying('segments/s02.mp4'), isTrue);
+
+        await tester.tap(find.byKey(const ValueKey('subtitle-line')));
+        await step(tester, 600);
+        expect(find.byKey(const ValueKey('meaning-word-1')), findsOneWidget);
+        expect(platform.isPlaying('segments/s02.mp4'), isFalse);
+        expect(find.text('Türkçesini göster'), findsOneWidget);
+        expect(find.text('Tamam. Cuma.'), findsNothing, reason: '2. adım');
+
+        // Kelimeye dokun: bağlama göre anlam + sesi segmentten çalınır.
+        await tapKey(tester, 'meaning-word-1');
+        expect(find.byKey(const ValueKey('meaning-gloss')), findsOneWidget);
+        expect(find.text('cuma'), findsOneWidget);
+        final seek = platform.seeks.last;
+        expect(seek.$1, endsWith('segments/s02.mp4'));
+        expect(seek.$2, const Duration(microseconds: 1357000));
+        expect(events.events.single.target, 'Friday');
+        expect(events.events.single.sourceId, 's02-01');
+
+        // Türkçesini göster.
+        await tapKey(tester, 'meaning-reveal');
+        expect(find.text('Tamam. Cuma.'), findsOneWidget);
+        expect(events.events.last.target, 'sentence');
+
+        // Deftere ekle: nazik onay.
+        await tapKey(tester, 'meaning-save');
+        expect(find.text('"Friday" deftere eklendi.'), findsOneWidget);
+        expect(notebook.items.single.tr, 'cuma');
+        expect(notebook.items.single.kind, SavedKind.word);
+
+        // Kapat: video aynı yerden sürer.
+        await tapKey(tester, 'meaning-close');
+        await step(tester, 600);
+        expect(find.byKey(const ValueKey('meaning-word-1')), findsNothing);
+        expect(platform.isPlaying('segments/s02.mp4'), isTrue);
+        expect(platform.seeks.last.$2.inMilliseconds, closeTo(700, 60));
+        await tester.pumpWidget(const SizedBox());
+        await step(tester, 6000);
+      },
+    );
+
+    testWidgets('EN+TR altyazı modu Türkçe satırı altta gösterir', (
+      tester,
+    ) async {
+      await pumpPlayer(tester);
+      await toS02(tester);
+      expect(find.byKey(const ValueKey('subtitle-tr')), findsNothing);
+      await tester.tap(find.byKey(const ValueKey('subtitle-menu')));
+      await step(tester, 400);
+      await tester.tap(find.byKey(const ValueKey('subtitle-mode-entr')));
+      await step(tester, 400);
+      expect(find.text('EN+TR'), findsOneWidget);
+      expect(find.byKey(const ValueKey('subtitle-tr')), findsOneWidget);
+      expect(find.text('Tamam. Cuma.'), findsOneWidget);
+      await tester.tap(find.byKey(const ValueKey('subtitle-menu')));
+      await step(tester, 400);
+      await tester.tap(find.byKey(const ValueKey('subtitle-mode-off')));
+      await step(tester, 400);
+      expect(find.text('OK. Friday.'), findsNothing);
+      await tester.pumpWidget(const SizedBox());
+      await step(tester, 6000);
+    });
   });
 }

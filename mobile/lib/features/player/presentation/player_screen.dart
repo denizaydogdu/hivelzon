@@ -7,6 +7,11 @@ import 'package:video_player/video_player.dart';
 
 import '../../../app/theme.dart';
 import '../../../shared/content/content_providers.dart';
+import '../../../shared/meaning/learning_event_log.dart';
+import '../../../shared/meaning/meaning_controller.dart';
+import '../../../shared/meaning/meaning_sheet.dart';
+import '../../../shared/meaning/meaning_text.dart';
+import '../../../shared/meaning/notebook_repository.dart';
 import '../application/autoplay_driver.dart';
 import '../application/player_session.dart';
 import '../application/segment_player_pool.dart';
@@ -41,6 +46,7 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen>
   AutoplayDriver? _driver;
   String? _still;
   String? _lastNodeId;
+  MeaningController? _shownMeaning;
 
   @override
   void initState() {
@@ -51,6 +57,8 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen>
       source: ref.read(contentSourceProvider),
       progress: ref.read(progressRepositoryProvider),
       videoFactory: ref.read(videoControllerFactoryProvider),
+      events: ref.read(learningEventLogProvider),
+      notebook: ref.read(notebookRepositoryProvider),
       logTransitions: true,
     )..addListener(_onSession);
     if (autoplayEnabled) {
@@ -92,7 +100,34 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen>
     }
     // Durağan görsel, yeni videonun ilk karesi gelene dek kalır.
     if (_session.isVideoNode && _session.activeReady) _still = null;
+    _syncMeaningSheet();
     if (mounted) setState(() {});
+  }
+
+  /// Oturumdaki anlam paneli ile ekrandaki alt paneli eşler.
+  void _syncMeaningSheet() {
+    if (!mounted) return;
+    final m = _session.meaning;
+    if (m != null && !identical(m, _shownMeaning)) {
+      _shownMeaning = m;
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (!mounted || !identical(_session.meaning, m)) return;
+        showMeaningSheet(context, m).whenComplete(() {
+          if (identical(_shownMeaning, m)) _shownMeaning = null;
+          unawaited(_session.closeMeaning());
+        });
+      });
+    } else if (m == null && _shownMeaning != null) {
+      // Oturum paneli kapattı (ör. otomatik doğrulama): alt paneli indir.
+      _shownMeaning = null;
+      final nav = Navigator.of(context);
+      if (nav.canPop()) nav.pop();
+    }
+  }
+
+  void _openText(MeaningText? text, {String? audio}) {
+    if (text == null) return;
+    _session.openMeaningForText(text, audioPath: audio);
   }
 
   void _precacheUpcoming() {
@@ -265,21 +300,18 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen>
               child: SubtitleOverlay(
                 session: s,
                 targetPhrases: e.episode.info.targetPhrases,
+                onTapCue: (cue) => unawaited(s.openMeaningForCue(cue)),
               ),
             ),
           ),
-        // 5) Yapay zekâ etiketi (§5.6). Videolarda etiket zaten gömülü.
-        if (!isVideo)
-          Positioned(
-            right: AppSpacing.sm,
-            bottom: media.padding.bottom + AppSpacing.xs,
-            child: IgnorePointer(
-              child: Text(
-                e.episode.info.aiLabel,
-                style: const TextStyle(color: Colors.white70, fontSize: 12),
-              ),
-            ),
-          ),
+        // 5) Yapay zekâ etiketi (§5.6): bölüm açılınca birkaç saniye görünür, sonra
+        // kaybolur (kullanıcı kararı 2026-10-12: "kullanıcı az görsün"). Uygulama içi
+        // videolarda gömülü etiket yok; sosyal medya kesitlerinde gömülü kalır (K-14).
+        Positioned(
+          left: AppSpacing.sm,
+          top: media.padding.top + 72, // üst çubuğun altında
+          child: IgnorePointer(child: AiNotice(text: e.episode.info.aiLabel)),
+        ),
         // 6) Düğüm arayüzü.
         if (s.videoError != null)
           _Centered(
@@ -391,7 +423,20 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen>
                 if (node.cue != null && node.cue!.text.isNotEmpty)
                   Padding(
                     padding: const EdgeInsets.only(bottom: AppSpacing.sm),
-                    child: _CuePill(cue: node.cue!),
+                    child: _CuePill(
+                      cue: node.cue!,
+                      onTap: node.cue!.gloss == null
+                          ? null
+                          : () => _openText(
+                              node.cue!.gloss!.toMeaning(
+                                contentId: s.contentId,
+                                sourceId: '${node.id}#cue',
+                                en: node.cue!.text,
+                                speaker: node.cue!.speaker,
+                              ),
+                              audio: node.cue!.audio,
+                            ),
+                    ),
                   ),
                 DecisionSheet(
                   node: node,
@@ -435,6 +480,17 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen>
           onContinue: s.advance,
           onListen: node.audio == null ? null : () => s.playAudio(node.audio!),
           isLast: node.next == null,
+          // Başlık gibi kendiliğinden geçen kartlar panel açmaz.
+          onLineTap: node.autoAdvance
+              ? null
+              : (i, line) => _openText(
+                  line.gloss?.toMeaning(
+                    contentId: s.contentId,
+                    sourceId: '${node.id}#$i',
+                    en: line.text,
+                    speaker: line.speaker ?? _cardSpeaker(node),
+                  ),
+                ),
         );
         if (node.kind == CardKind.title) {
           return [
@@ -458,6 +514,14 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen>
               onAttempt: (item, ok) => s.recordTaskAttempt(item, correct: ok),
               onComplete: s.completeTask,
               onListen: s.playAudio,
+              onStemTap: (item) => _openText(
+                item.stemGloss?.toMeaning(
+                  contentId: s.contentId,
+                  sourceId: '${node.id}.${item.id}#stem',
+                  en: item.stem ?? '',
+                ),
+                audio: node.audio,
+              ),
             ),
           ),
         ];
@@ -516,14 +580,24 @@ class _CoverVideo extends StatelessWidget {
   }
 }
 
+String? _cardSpeaker(CardNode card) => switch (card.kind) {
+  CardKind.note => 'NOTE',
+  CardKind.message => card.title,
+  _ => null,
+};
+
+/// Kararı tetikleyen replik. Karşı karakterin repliği dokunulabilir (H-046);
+/// seçenek düğmeleri panel açmaz.
 class _CuePill extends StatelessWidget {
-  const _CuePill({required this.cue});
+  const _CuePill({required this.cue, this.onTap});
 
   final DecisionCue cue;
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    final pill = Container(
+      constraints: const BoxConstraints(minHeight: 48),
       padding: const EdgeInsets.symmetric(
         horizontal: AppSpacing.sm,
         vertical: AppSpacing.xs,
@@ -540,6 +614,18 @@ class _CuePill extends StatelessWidget {
           fontSize: 18,
           fontWeight: FontWeight.w500,
         ),
+      ),
+    );
+    if (onTap == null) return pill;
+    return Semantics(
+      button: true,
+      label: '${cue.text}. Anlamını görmek için dokun.',
+      excludeSemantics: true,
+      child: GestureDetector(
+        key: const ValueKey('decision-cue'),
+        behavior: HitTestBehavior.opaque,
+        onTap: onTap,
+        child: pill,
       ),
     );
   }
@@ -656,6 +742,60 @@ class _ResumePanel extends StatelessWidget {
             child: const Text('Baştan başla'),
           ),
         ],
+      ),
+    );
+  }
+}
+
+
+/// Bölüm başında kısa süre görünen yapay zekâ bilgisi.
+class AiNotice extends StatefulWidget {
+  const AiNotice({super.key, required this.text, this.visibleFor = const Duration(seconds: 4)});
+
+  final String text;
+  final Duration visibleFor;
+
+  @override
+  State<AiNotice> createState() => _AiNoticeState();
+}
+
+class _AiNoticeState extends State<AiNotice> {
+  bool _visible = true;
+  Timer? _timer;
+
+  @override
+  void initState() {
+    super.initState();
+    _timer = Timer(widget.visibleFor, () {
+      if (mounted) setState(() => _visible = false);
+    });
+  }
+
+  @override
+  void dispose() {
+    _timer?.cancel();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedOpacity(
+      opacity: _visible ? 1 : 0,
+      duration: const Duration(milliseconds: 600),
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+        decoration: BoxDecoration(
+          color: Colors.black.withValues(alpha: 0.45),
+          borderRadius: BorderRadius.circular(AppTheme.radius),
+        ),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const Icon(Icons.auto_awesome, size: 14, color: Colors.white70),
+            const SizedBox(width: 6),
+            Text(widget.text, style: const TextStyle(color: Colors.white, fontSize: 12)),
+          ],
+        ),
       ),
     );
   }

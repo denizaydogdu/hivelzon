@@ -1,0 +1,765 @@
+{
+  "contentId": "A1-004",
+  "status": "DRAFT",
+  "author": "Claude taslak",
+  "date": "2026-10-11",
+  "lines": [
+    {
+      "en": "The Note",
+      "speaker": "TITLE",
+      "tr": "Not",
+      "chunks": [],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "note": "not"
+      },
+      "source": "scenes:c-title"
+    },
+    {
+      "en": "What time is it? · It's seven o'clock. · on Friday · at seven · What day is it today?",
+      "speaker": "CARD",
+      "tr": "Saat kaç? · Saat yedi. · cuma günü · saat yedide · Bugün günlerden ne?",
+      "chunks": [
+        {
+          "en": "What time is it?",
+          "tr": "Saat kaç?"
+        },
+        {
+          "en": "It's seven o'clock.",
+          "tr": "Saat yedi."
+        },
+        {
+          "en": "on Friday",
+          "tr": "cuma günü (gün için on)"
+        },
+        {
+          "en": "at seven",
+          "tr": "saat yedide (saat için at)"
+        },
+        {
+          "en": "What day is it today?",
+          "tr": "Bugün günlerden ne?"
+        }
+      ],
+      "words": {
+        "what": "ne / kaç",
+        "time": "saat",
+        "is": "-dır / -dir (olmak)",
+        "it": "(saat/gün cümlesinde boş özne)",
+        "it's": "(saat/gün) … -dır",
+        "seven": "yedi",
+        "o'clock": "saat (tam saat)",
+        "on": "-de (gün için)",
+        "friday": "cuma",
+        "at": "-de (saat için)",
+        "day": "gün",
+        "today": "bugün"
+      },
+      "source": "scenes:c-mission"
+    },
+    {
+      "en": "Hi, Alex!",
+      "speaker": "MAYA",
+      "tr": "Selam Alex!",
+      "chunks": [],
+      "words": {
+        "hi": "selam"
+      },
+      "source": "subs/s02"
+    },
+    {
+      "en": "What day is it today?",
+      "speaker": "MAYA",
+      "tr": "Bugün günlerden ne?",
+      "chunks": [
+        {
+          "en": "What day is it today?",
+          "tr": "Bugün günlerden ne?"
+        }
+      ],
+      "words": {
+        "what": "hangi, ne",
+        "day": "gün",
+        "is": "-dır / -dir (olmak)",
+        "it": "(gün cümlesinde boş özne)",
+        "today": "bugün"
+      },
+      "source": "subs/s02"
+    },
+    {
+      "en": "It's Monday.",
+      "speaker": "ALEX",
+      "tr": "Pazartesi.",
+      "chunks": [
+        {
+          "en": "It's + gün",
+          "tr": "Bugün …"
+        }
+      ],
+      "words": {
+        "it's": "(bugün) … -dır",
+        "monday": "pazartesi"
+      },
+      "source": "subs/s02"
+    },
+    {
+      "en": "Monday! I have History at nine.",
+      "speaker": "MAYA",
+      "tr": "Pazartesi! Dokuzda tarih dersim var.",
+      "chunks": [
+        {
+          "en": "I have History",
+          "tr": "Tarih dersim var"
+        },
+        {
+          "en": "at nine",
+          "tr": "saat dokuzda"
+        }
+      ],
+      "words": {
+        "monday": "pazartesi",
+        "i": "ben",
+        "have": "var (sahip olmak)",
+        "history": "tarih (dersi)",
+        "at": "-de (saat için)",
+        "nine": "dokuz"
+      },
+      "source": "subs/s02"
+    },
+    {
+      "en": "Maya, look.",
+      "speaker": "ALEX",
+      "tr": "Maya, bak.",
+      "chunks": [],
+      "words": {
+        "look": "bak"
+      },
+      "source": "subs/s02"
+    },
+    {
+      "en": "A note.",
+      "speaker": "ALEX",
+      "tr": "Bir not.",
+      "chunks": [],
+      "words": {
+        "a": "bir",
+        "note": "not"
+      },
+      "source": "subs/s02"
+    },
+    {
+      "en": "From the old station.",
+      "speaker": "ALEX",
+      "tr": "Eski istasyondan.",
+      "chunks": [
+        {
+          "en": "the old station",
+          "tr": "eski istasyon"
+        }
+      ],
+      "words": {
+        "from": "-den / -dan",
+        "the": "(belirli tanımlık)",
+        "old": "eski",
+        "station": "istasyon"
+      },
+      "source": "subs/s02"
+    },
+    {
+      "en": "Some letters are not here.",
+      "speaker": "MAYA",
+      "tr": "Bazı harfler eksik.",
+      "chunks": [
+        {
+          "en": "are not here",
+          "tr": "burada değil, eksik"
+        }
+      ],
+      "words": {
+        "some": "bazı",
+        "letters": "harfler",
+        "are": "-dır (olmak, çoğul)",
+        "not": "değil",
+        "here": "burada"
+      },
+      "source": "subs/s02"
+    },
+    {
+      "en": "Let's look.",
+      "speaker": "MAYA",
+      "tr": "Hadi bakalım.",
+      "chunks": [
+        {
+          "en": "Let's look.",
+          "tr": "Hadi bakalım."
+        }
+      ],
+      "words": {
+        "let's": "hadi …-elim",
+        "look": "bak"
+      },
+      "source": "subs/s02"
+    },
+    {
+      "en": "Fri… What is it?",
+      "speaker": "MAYA",
+      "tr": "Fri… Bu ne?",
+      "chunks": [
+        {
+          "en": "What is it?",
+          "tr": "Bu ne?"
+        }
+      ],
+      "words": {
+        "fri": "Fri… (Friday'in başı)",
+        "what": "ne",
+        "is": "-dır / -dir (olmak)",
+        "it": "o, bu"
+      },
+      "source": "subs/s03"
+    },
+    {
+      "en": "\"Fri…\" What is it?",
+      "speaker": "MAYA",
+      "tr": "\"Fri…\" Bu ne?",
+      "chunks": [
+        {
+          "en": "What is it?",
+          "tr": "Bu ne?"
+        }
+      ],
+      "words": {
+        "fri": "Fri… (Friday'in başı)",
+        "what": "ne",
+        "is": "-dır / -dir (olmak)",
+        "it": "o, bu"
+      },
+      "source": "scenes:k1.cue"
+    },
+    {
+      "en": "Friday.",
+      "speaker": "ALEX",
+      "tr": "Cuma.",
+      "chunks": [],
+      "words": {
+        "friday": "cuma"
+      },
+      "source": "subs/k1-ok"
+    },
+    {
+      "en": "Free.",
+      "speaker": "ALEX",
+      "tr": "Free. (boş, serbest; yanlış tahmin)",
+      "chunks": [],
+      "words": {
+        "free": "boş, serbest, bedava"
+      },
+      "source": "subs/r-k1-b"
+    },
+    {
+      "en": "Free? No.",
+      "speaker": "MAYA",
+      "tr": "Free mi? Hayır.",
+      "chunks": [],
+      "words": {
+        "free": "boş, serbest, bedava",
+        "no": "hayır"
+      },
+      "source": "subs/r-k1-b"
+    },
+    {
+      "en": "Look, it's a day.",
+      "speaker": "MAYA",
+      "tr": "Bak, bu bir gün adı.",
+      "chunks": [],
+      "words": {
+        "look": "bak",
+        "it's": "bu … -dır",
+        "a": "bir",
+        "day": "gün"
+      },
+      "source": "subs/r-k1-b"
+    },
+    {
+      "en": "Fried.",
+      "speaker": "ALEX",
+      "tr": "Fried. (kızarmış; yanlış tahmin)",
+      "chunks": [],
+      "words": {
+        "fried": "kızarmış"
+      },
+      "source": "subs/r-k1-c"
+    },
+    {
+      "en": "Fried fish?",
+      "speaker": "MAYA",
+      "tr": "Kızarmış balık mı?",
+      "chunks": [
+        {
+          "en": "fried fish",
+          "tr": "kızarmış balık"
+        }
+      ],
+      "words": {
+        "fried": "kızarmış",
+        "fish": "balık"
+      },
+      "source": "subs/r-k1-c"
+    },
+    {
+      "en": "No, it's a day.",
+      "speaker": "MAYA",
+      "tr": "Hayır, bu bir gün adı.",
+      "chunks": [],
+      "words": {
+        "no": "hayır",
+        "it's": "bu … -dır",
+        "a": "bir",
+        "day": "gün"
+      },
+      "source": "subs/r-k1-c"
+    },
+    {
+      "en": "Friday! Listen.",
+      "speaker": "ALEX",
+      "tr": "Cuma! Dinle.",
+      "chunks": [
+        {
+          "en": "Listen.",
+          "tr": "Dinle."
+        }
+      ],
+      "words": {
+        "friday": "cuma",
+        "listen": "dinle"
+      },
+      "source": "subs/k1-ok"
+    },
+    {
+      "en": "Friday. Seven o'clock.",
+      "speaker": "VOICE",
+      "tr": "Cuma. Saat yedi.",
+      "chunks": [
+        {
+          "en": "seven o'clock",
+          "tr": "saat yedi"
+        }
+      ],
+      "words": {
+        "friday": "cuma",
+        "seven": "yedi",
+        "o'clock": "saat (tam saat)"
+      },
+      "source": "subs/k1-ok"
+    },
+    {
+      "en": "Look, a clock.",
+      "speaker": "MAYA",
+      "tr": "Bak, bir saat.",
+      "chunks": [],
+      "words": {
+        "look": "bak",
+        "a": "bir",
+        "clock": "saat (duvar saati)"
+      },
+      "source": "subs/k1-ok"
+    },
+    {
+      "en": "What time is it?",
+      "speaker": "MAYA",
+      "tr": "Saat kaç?",
+      "chunks": [
+        {
+          "en": "What time is it?",
+          "tr": "Saat kaç?"
+        }
+      ],
+      "words": {
+        "what": "ne / kaç",
+        "time": "saat",
+        "is": "-dır / -dir (olmak)",
+        "it": "(saat cümlesinde boş özne)"
+      },
+      "source": "subs/k1-ok"
+    },
+    {
+      "en": "Look, a clock. What time is it?",
+      "speaker": "MAYA",
+      "tr": "Bak, bir saat. Saat kaç?",
+      "chunks": [
+        {
+          "en": "What time is it?",
+          "tr": "Saat kaç?"
+        }
+      ],
+      "words": {
+        "look": "bak",
+        "a": "bir",
+        "clock": "saat (duvar saati)",
+        "what": "ne / kaç",
+        "time": "saat",
+        "is": "-dır / -dir (olmak)",
+        "it": "(saat cümlesinde boş özne)"
+      },
+      "source": "scenes:k2.cue"
+    },
+    {
+      "en": "It's seven o'clock.",
+      "speaker": "ALEX",
+      "tr": "Saat yedi.",
+      "chunks": [
+        {
+          "en": "It's seven o'clock.",
+          "tr": "Saat yedi."
+        }
+      ],
+      "words": {
+        "it's": "(saat) … -dır",
+        "seven": "yedi",
+        "o'clock": "saat (tam saat)"
+      },
+      "source": "subs/k2-ok"
+    },
+    {
+      "en": "It's in seven o'clock.",
+      "speaker": "ALEX",
+      "tr": "Saat yedide. (yanlış kalıp: saatten önce in olmaz)",
+      "chunks": [
+        {
+          "en": "seven o'clock",
+          "tr": "saat yedi"
+        }
+      ],
+      "words": {
+        "it's": "(saat) … -dır",
+        "in": "-de (burada yanlış; saat için at)",
+        "seven": "yedi",
+        "o'clock": "saat (tam saat)"
+      },
+      "source": "subs/r-k2-b"
+    },
+    {
+      "en": "Seven? Yes!",
+      "speaker": "MAYA",
+      "tr": "Yedi mi? Evet!",
+      "chunks": [],
+      "words": {
+        "seven": "yedi",
+        "yes": "evet"
+      },
+      "source": "subs/r-k2-b"
+    },
+    {
+      "en": "Seven o'clock.",
+      "speaker": "MAYA",
+      "tr": "Saat yedi.",
+      "chunks": [
+        {
+          "en": "seven o'clock",
+          "tr": "saat yedi"
+        }
+      ],
+      "words": {
+        "seven": "yedi",
+        "o'clock": "saat (tam saat)"
+      },
+      "source": "subs/k2-ok"
+    },
+    {
+      "en": "On Friday at seven.",
+      "speaker": "MAYA",
+      "tr": "Cuma günü saat yedide.",
+      "chunks": [
+        {
+          "en": "on Friday",
+          "tr": "cuma günü (gün için on)"
+        },
+        {
+          "en": "at seven",
+          "tr": "saat yedide (saat için at)"
+        }
+      ],
+      "words": {
+        "on": "-de / -da (gün için)",
+        "friday": "cuma",
+        "at": "-de (saat için)",
+        "seven": "yedi"
+      },
+      "source": "subs/k2-ok"
+    },
+    {
+      "en": "Look! A little three.",
+      "speaker": "MAYA",
+      "tr": "Bak! Küçük bir üç.",
+      "chunks": [],
+      "words": {
+        "look": "bak",
+        "a": "bir",
+        "little": "küçük",
+        "three": "üç"
+      },
+      "source": "subs/s04"
+    },
+    {
+      "en": "Pier 3!",
+      "speaker": "MAYA",
+      "tr": "3 numaralı iskele!",
+      "chunks": [
+        {
+          "en": "Pier 3",
+          "tr": "3 numaralı iskele"
+        }
+      ],
+      "words": {
+        "pier": "iskele",
+        "3": "üç"
+      },
+      "source": "subs/s04"
+    },
+    {
+      "en": "Where is Pier 3?",
+      "speaker": "ALEX",
+      "tr": "3 numaralı iskele nerede?",
+      "chunks": [
+        {
+          "en": "Where is …?",
+          "tr": "… nerede?"
+        },
+        {
+          "en": "Pier 3",
+          "tr": "3 numaralı iskele"
+        }
+      ],
+      "words": {
+        "where": "nerede",
+        "is": "(olmak; Türkçede karşılığı yok)",
+        "pier": "iskele",
+        "3": "üç"
+      },
+      "source": "subs/s04"
+    },
+    {
+      "en": "It's near the harbour. Here.",
+      "speaker": "MAYA",
+      "tr": "Limanın yakınında. İşte burada.",
+      "chunks": [
+        {
+          "en": "It's near …",
+          "tr": "…-in yakınında"
+        }
+      ],
+      "words": {
+        "it's": "o … -dır (orası)",
+        "near": "yakınında",
+        "the": "(belirli tanımlık)",
+        "harbour": "liman",
+        "here": "işte burada"
+      },
+      "source": "subs/s04"
+    },
+    {
+      "en": "It's between Pier 2 and Pier 4.",
+      "speaker": "MAYA",
+      "tr": "2 ve 4 numaralı iskelelerin arasında.",
+      "chunks": [
+        {
+          "en": "between … and …",
+          "tr": "… ile …-in arasında"
+        }
+      ],
+      "words": {
+        "it's": "o … -dır (orası)",
+        "between": "arasında",
+        "pier": "iskele",
+        "2": "iki",
+        "and": "ve (… ile)",
+        "4": "dört"
+      },
+      "source": "subs/s04"
+    },
+    {
+      "en": "Friday. 7 pm. Pier 3. — E.",
+      "speaker": "NOTE",
+      "tr": "Cuma. Akşam 7. 3 numaralı iskele. — E.",
+      "chunks": [
+        {
+          "en": "7 pm",
+          "tr": "akşam 7 (19.00)"
+        },
+        {
+          "en": "Pier 3",
+          "tr": "3 numaralı iskele"
+        }
+      ],
+      "words": {
+        "friday": "cuma",
+        "7": "yedi",
+        "pm": "öğleden sonra / akşam",
+        "pier": "iskele",
+        "3": "üç"
+      },
+      "source": "scenes:t-gorev.result"
+    },
+    {
+      "en": "7 pm.",
+      "speaker": "TASK",
+      "tr": "Akşam 7.",
+      "chunks": [
+        {
+          "en": "7 pm",
+          "tr": "akşam 7 (19.00)"
+        }
+      ],
+      "words": {
+        "7": "yedi",
+        "pm": "öğleden sonra / akşam"
+      },
+      "source": "scenes:t-gorev.pairs"
+    },
+    {
+      "en": "Pier 3.",
+      "speaker": "TASK",
+      "tr": "3 numaralı iskele.",
+      "chunks": [
+        {
+          "en": "Pier 3",
+          "tr": "3 numaralı iskele"
+        }
+      ],
+      "words": {
+        "pier": "iskele",
+        "3": "üç"
+      },
+      "source": "scenes:t-gorev.pairs"
+    },
+    {
+      "en": "Alex? Are you OK?",
+      "speaker": "MAYA",
+      "tr": "Alex? İyi misin?",
+      "chunks": [
+        {
+          "en": "Are you OK?",
+          "tr": "İyi misin?"
+        }
+      ],
+      "words": {
+        "are": "(soru) -misin (olmak)",
+        "you": "sen",
+        "ok": "iyi"
+      },
+      "source": "subs/s06"
+    },
+    {
+      "en": "Yes. I'm OK.",
+      "speaker": "ALEX",
+      "tr": "Evet. İyiyim.",
+      "chunks": [
+        {
+          "en": "I'm OK.",
+          "tr": "İyiyim."
+        }
+      ],
+      "words": {
+        "yes": "evet",
+        "i'm": "ben …-im",
+        "ok": "iyi"
+      },
+      "source": "subs/s06"
+    },
+    {
+      "en": "Thank you.",
+      "speaker": "ALEX",
+      "tr": "Teşekkürler.",
+      "chunks": [
+        {
+          "en": "Thank you.",
+          "tr": "Teşekkür ederim."
+        }
+      ],
+      "words": {
+        "thank": "teşekkür etmek",
+        "you": "sana / size"
+      },
+      "source": "subs/s06"
+    },
+    {
+      "en": "History: Monday, 9:00.",
+      "speaker": "NOTE",
+      "tr": "Tarih: Pazartesi, 9.00.",
+      "chunks": [],
+      "words": {
+        "history": "tarih (dersi)",
+        "monday": "pazartesi",
+        "9:00": "saat dokuz"
+      },
+      "source": "scenes:c-schedule"
+    },
+    {
+      "en": "Art: Friday, 2:00.",
+      "speaker": "NOTE",
+      "tr": "Resim: Cuma, 14.00.",
+      "chunks": [],
+      "words": {
+        "art": "resim (dersi)",
+        "friday": "cuma",
+        "2:00": "saat iki (14.00)"
+      },
+      "source": "scenes:c-schedule"
+    },
+    {
+      "en": "I have Art on Friday. What time?",
+      "speaker": "MAYA",
+      "tr": "Cuma günü resim dersim var. Saat kaçta?",
+      "chunks": [
+        {
+          "en": "I have Art",
+          "tr": "Resim dersim var"
+        },
+        {
+          "en": "on Friday",
+          "tr": "cuma günü (gün için on)"
+        },
+        {
+          "en": "What time?",
+          "tr": "Saat kaçta? (burada: ders saat kaçta)"
+        }
+      ],
+      "words": {
+        "i": "ben",
+        "have": "var (sahip olmak)",
+        "art": "resim (dersi)",
+        "on": "-de / -da (gün için)",
+        "friday": "cuma",
+        "what": "ne / kaç",
+        "time": "saat"
+      },
+      "source": "scenes:t-kanit"
+    },
+    {
+      "en": "Too Late?",
+      "speaker": "TITLE",
+      "tr": "Çok mu Geç?",
+      "chunks": [
+        {
+          "en": "Too late",
+          "tr": "Çok geç"
+        }
+      ],
+      "words": {
+        "too": "fazla, çok",
+        "late": "geç"
+      },
+      "source": "scenes:c-oq"
+    }
+  ],
+  "notes": [
+    "Türk öğrenci tuzağı: 'It's in seven o'clock.' — Türkçedeki '-de' (yedide) eki 'in' ile karşılanıyor. Saat için 'at' (at seven), gün için 'on' (on Friday) kullanılır; 'It's seven o'clock.' cümlesinde ise edat yoktur.",
+    "Günler İngilizcede büyük harfle yazılır (Friday, Monday); Türkçede küçük (cuma, pazartesi). words içinde Türkçe karşılıklar küçük harfle verildi.",
+    "'It's Monday.' / 'What time is it?' cümlelerindeki 'it' boş öznedir; Türkçeye karşılığı yoktur ('Saat kaç?', 'Pazartesi.').",
+    "'Free.' ve 'Fried.' yanlış tahmin satırları; Türkçe satırda İngilizce kelime korunup anlamı parantezde verildi, çünkü şaka kelimenin sesine dayanıyor.",
+    "'History', 'Art' ders adı olduğu için İngilizcede büyük harfle yazılmış; özel isim sayılmadı, anlamı verildi.",
+    "'Art: Friday, 2:00.' öğleden sonra 2 olarak (14.00) çevrildi; okul programı bağlamında 02.00 olamaz.",
+    "t-kanit sorusu kullanıcı kararıyla (H-046) 'I have Art on Friday. What time?' olarak düzeltildi; anlamı 'Saat kaçta?'. Ses yeniden üretildi (b4_30_maya).",
+    "Karar ve kanıt seçenekleri (ör. 'At two o'clock.' / 'In two o'clock.') kullanıcı kararı gereği çevrilmedi; 'Friday.', 'Free.', 'Fried.' Alex'in seslendirilmiş tepki altyazıları olduğu için dahil edildi."
+  ]
+}

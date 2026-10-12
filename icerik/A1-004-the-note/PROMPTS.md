@@ -36,3 +36,12 @@
 - **Yeni job:** 684f0cd3-2d34-4306-aa7c-e92e53bb67b9. Tahmin 0,5 / gerçek 0,5.
 - **Kullanıcı onayı:** soru-cevap. ✅ Sonuç doğru. **Kredi: 98,25.**
 - **Ders:** Birden çok referanslı sahnede karakterlerin ayırt edici kıyafeti prompt'ta açıkça yazılmalı.
+
+## b4_30_maya yeniden seslendirme (H-046, 2026-10-11)
+
+- **Neden:** t-kanit görevindeki Maya repliği "I have Art on Friday. What time is it?" bağlamda belirsizdi ("Şu an saat kaç?" gibi okunuyordu). Kullanıcı kararıyla "I have Art on Friday. What time?" olarak düzeltildi; anlamı "Saat kaçta?". `story.en.md`, `kurgu.json` (prompt.en, item stem), `audio_manifest.json`, `ceviri.tr.json` birlikte güncellendi.
+- **Sağlayıcı:** ElevenLabs `eleven_v3` with-timestamps, speed 0.9, `language_code` en; ses Sarah (Maya, `EXAVITQu4vr4xnSDxMaL`), önceki kayıtla aynı ayarlar.
+- **Hesap:** videoGenerator hesabı (yerel, iç kullanım; H-006 ek).
+- **Çağrı:** 1 TTS çağrısı, **32 karakter**. Metin: `I have Art on Friday. What time?`
+- **Çıktı:** `audio/b4_30_maya.mp3` (2,32 sn) + `audio/b4_30_maya.align.json`. Eski dosyalar oturum geçici klasörüne yedeklendi.
+- **Kullanıcı onayı:** H-046 soru-cevap.

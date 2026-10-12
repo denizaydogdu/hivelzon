@@ -98,7 +98,19 @@
         {
           "text": "The Note",
           "lang": "en",
-          "style": "heading"
+          "style": "heading",
+          "tr": "Not",
+          "words": [
+            {
+              "w": "The",
+              "gloss": "(belirli tanımlık)"
+            },
+            {
+              "w": "Note",
+              "gloss": "not"
+            }
+          ],
+          "chunks": []
         }
       ],
       "advance": "auto",
@@ -119,7 +131,106 @@
         {
           "text": "What time is it? · It's seven o'clock. · on Friday · at seven · What day is it today?",
           "lang": "en",
-          "style": "highlight"
+          "style": "highlight",
+          "tr": "Saat kaç? · Saat yedi. · cuma günü · saat yedide · Bugün günlerden ne?",
+          "words": [
+            {
+              "w": "What",
+              "gloss": "ne / kaç"
+            },
+            {
+              "w": "time",
+              "gloss": "saat"
+            },
+            {
+              "w": "is",
+              "gloss": "-dır / -dir (olmak)"
+            },
+            {
+              "w": "it?",
+              "gloss": "(saat/gün cümlesinde boş özne)"
+            },
+            {
+              "w": "It's",
+              "gloss": "(saat/gün) … -dır"
+            },
+            {
+              "w": "seven",
+              "gloss": "yedi"
+            },
+            {
+              "w": "o'clock.",
+              "gloss": "saat (tam saat)"
+            },
+            {
+              "w": "on",
+              "gloss": "-de (gün için)"
+            },
+            {
+              "w": "Friday",
+              "gloss": "cuma"
+            },
+            {
+              "w": "at",
+              "gloss": "-de (saat için)"
+            },
+            {
+              "w": "seven",
+              "gloss": "yedi"
+            },
+            {
+              "w": "What",
+              "gloss": "ne / kaç"
+            },
+            {
+              "w": "day",
+              "gloss": "gün"
+            },
+            {
+              "w": "is",
+              "gloss": "-dır / -dir (olmak)"
+            },
+            {
+              "w": "it",
+              "gloss": "(saat/gün cümlesinde boş özne)"
+            },
+            {
+              "w": "today?",
+              "gloss": "bugün"
+            }
+          ],
+          "chunks": [
+            {
+              "en": "What time is it?",
+              "tr": "Saat kaç?",
+              "startWord": 0,
+              "endWord": 3
+            },
+            {
+              "en": "It's seven o'clock.",
+              "tr": "Saat yedi.",
+              "startWord": 4,
+              "endWord": 6
+            },
+            {
+              "en": "on Friday",
+              "tr": "cuma günü (gün için on)",
+              "startWord": 7,
+              "endWord": 8
+            },
+            {
+              "en": "at seven",
+              "tr": "saat yedide (saat için at)",
+              "startWord": 9,
+              "endWord": 10
+            },
+            {
+              "en": "What day is it today?",
+              "tr": "Bugün günlerden ne?",
+              "startWord": 11,
+              "endWord": 15
+            }
+          ]
         }
       ],
       "advance": "tap",
@@ -154,7 +265,34 @@
       },
       "cue": {
         "speaker": "MAYA",
-        "text": "\"Fri…\" What is it?"
+        "text": "\"Fri…\" What is it?",
+        "tr": "\"Fri…\" Bu ne?",
+        "words": [
+          {
+            "w": "\"Fri…\"",
+            "gloss": "Fri… (Friday'in başı)"
+          },
+          {
+            "w": "What",
+            "gloss": "ne"
+          },
+          {
+            "w": "is",
+            "gloss": "-dır / -dir (olmak)"
+          },
+          {
+            "w": "it?",
+            "gloss": "o, bu"
+          }
+        ],
+        "chunks": [
+          {
+            "en": "What is it?",
+            "tr": "Bu ne?",
+            "startWord": 1,
+            "endWord": 3
+          }
+        ]
       },
       "pov": "POV: telefon ekranı; yanında üç kart.",
       "skill": "vocabulary",
@@ -243,7 +381,46 @@
       },
       "cue": {
         "speaker": "MAYA",
-        "text": "Look, a clock. What time is it?"
+        "text": "Look, a clock. What time is it?",
+        "tr": "Bak, bir saat. Saat kaç?",
+        "words": [
+          {
+            "w": "Look,",
+            "gloss": "bak"
+          },
+          {
+            "w": "a",
+            "gloss": "bir"
+          },
+          {
+            "w": "clock.",
+            "gloss": "saat (duvar saati)"
+          },
+          {
+            "w": "What",
+            "gloss": "ne / kaç"
+          },
+          {
+            "w": "time",
+            "gloss": "saat"
+          },
+          {
+            "w": "is",
+            "gloss": "-dır / -dir (olmak)"
+          },
+          {
+            "w": "it?",
+            "gloss": "(saat cümlesinde boş özne)"
+          }
+        ],
+        "chunks": [
+          {
+            "en": "What time is it?",
+            "tr": "Saat kaç?",
+            "startWord": 3,
+            "endWord": 6
+          }
+        ]
       },
       "pov": "POV: saat çizimi.",
       "skill": "spoken_interaction",
@@ -433,11 +610,43 @@
       "lines": [
         {
           "text": "History: Monday, 9:00.",
-          "lang": "en"
+          "lang": "en",
+          "tr": "Tarih: Pazartesi, 9.00.",
+          "words": [
+            {
+              "w": "History:",
+              "gloss": "tarih (dersi)"
+            },
+            {
+              "w": "Monday,",
+              "gloss": "pazartesi"
+            },
+            {
+              "w": "9:00.",
+              "gloss": "saat dokuz"
+            }
+          ],
+          "chunks": []
         },
         {
           "text": "Art: Friday, 2:00.",
-          "lang": "en"
+          "lang": "en",
+          "tr": "Resim: Cuma, 14.00.",
+          "words": [
+            {
+              "w": "Art:",
+              "gloss": "resim (dersi)"
+            },
+            {
+              "w": "Friday,",
+              "gloss": "cuma"
+            },
+            {
+              "w": "2:00.",
+              "gloss": "saat iki (14.00)"
+            }
+          ],
+          "chunks": []
         }
       ],
       "advance": "tap",
@@ -453,7 +662,7 @@
       "cefr": "A1",
       "prompt": {
         "tr": "Maya soruyor. Doğru cevabı seç.",
-        "en": "I have Art on Friday. What time is it?"
+        "en": "I have Art on Friday. What time?"
       },
       "context": "Yeni bağlam: Maya'nın ders programı",
       "audio": "audio/A1-004_b4_30_maya.m4a",
@@ -461,7 +670,58 @@
       "items": [
         {
           "id": "i1",
-          "stem": "I have Art on Friday. What time is it?",
+          "stem": "I have Art on Friday. What time?",
+          "stemTr": "Cuma günü resim dersim var. Saat kaçta?",
+          "stemWords": [
+            {
+              "w": "I",
+              "gloss": "ben"
+            },
+            {
+              "w": "have",
+              "gloss": "var (sahip olmak)"
+            },
+            {
+              "w": "Art",
+              "gloss": "resim (dersi)"
+            },
+            {
+              "w": "on",
+              "gloss": "-de / -da (gün için)"
+            },
+            {
+              "w": "Friday.",
+              "gloss": "cuma"
+            },
+            {
+              "w": "What",
+              "gloss": "ne / kaç"
+            },
+            {
+              "w": "time?",
+              "gloss": "saat"
+            }
+          ],
+          "stemChunks": [
+            {
+              "en": "I have Art",
+              "tr": "Resim dersim var",
+              "startWord": 0,
+              "endWord": 2
+            },
+            {
+              "en": "on Friday",
+              "tr": "cuma günü (gün için on)",
+              "startWord": 3,
+              "endWord": 4
+            },
+            {
+              "en": "What time?",
+              "tr": "Saat kaçta? (burada: ders saat kaçta)",
+              "startWord": 5,
+              "endWord": 6
+            }
+          ],
           "options": [
             {
               "id": "a",
@@ -548,7 +808,26 @@
         {
           "text": "Bölüm 5: Too Late?",
           "lang": "en",
-          "style": "caption"
+          "style": "caption",
+          "tr": "Çok mu Geç?",
+          "words": [
+            {
+              "w": "Too",
+              "gloss": "fazla, çok"
+            },
+            {
+              "w": "Late?",
+              "gloss": "geç"
+            }
+          ],
+          "chunks": [
+            {
+              "en": "Too late",
+              "tr": "Çok geç",
+              "startWord": 0,
+              "endWord": 1
+            }
+          ]
         }
       ],
       "advance": "tap",

@@ -1,0 +1,381 @@
+{
+  "contentId": "A1-001",
+  "status": "DRAFT",
+  "author": "Claude taslak",
+  "date": "2026-10-11",
+  "lines": [
+    {
+      "en": "A Strange Message",
+      "speaker": "TITLE",
+      "tr": "Garip Bir Mesaj",
+      "chunks": [],
+      "words": {
+        "a": "bir",
+        "strange": "garip, tuhaf",
+        "message": "mesaj"
+      },
+      "source": "scenes:c-title"
+    },
+    {
+      "en": "Can you hear me? · Yes, I can. · Again, please. · Where is…? · Listen.",
+      "speaker": "CARD",
+      "tr": "Beni duyabiliyor musun? · Evet, duyabiliyorum. · Bir daha, lütfen. · … nerede? · Dinle.",
+      "chunks": [
+        {
+          "en": "Can you hear me?",
+          "tr": "Beni duyabiliyor musun?"
+        },
+        {
+          "en": "Yes, I can.",
+          "tr": "Evet, (yapabiliyorum)."
+        },
+        {
+          "en": "Again, please.",
+          "tr": "Bir daha, lütfen."
+        },
+        {
+          "en": "Where is…?",
+          "tr": "… nerede?"
+        }
+      ],
+      "words": {
+        "can": "-ebilmek",
+        "you": "sen",
+        "hear": "duymak",
+        "me": "beni",
+        "yes": "evet",
+        "i": "ben",
+        "again": "tekrar, bir daha",
+        "please": "lütfen",
+        "where": "nerede",
+        "is": "(olmak; Türkçede karşılığı yok)",
+        "listen": "dinle"
+      },
+      "source": "scenes:c-mission"
+    },
+    {
+      "en": "OK. Friday.",
+      "speaker": "ALEX",
+      "tr": "Tamam. Cuma.",
+      "chunks": [],
+      "words": {
+        "ok": "tamam",
+        "friday": "cuma"
+      },
+      "source": "subs/s02"
+    },
+    {
+      "en": "Channel seven.",
+      "speaker": "ALEX",
+      "tr": "Yedinci kanal.",
+      "chunks": [
+        {
+          "en": "Channel seven",
+          "tr": "7. kanal, yedinci kanal"
+        }
+      ],
+      "words": {
+        "channel": "kanal",
+        "seven": "yedi"
+      },
+      "source": "subs/s02"
+    },
+    {
+      "en": "Hello? Hello?",
+      "speaker": "VOICE",
+      "tr": "Alo? Alo?",
+      "chunks": [],
+      "words": {
+        "hello": "alo (telsizde/telefonda), merhaba"
+      },
+      "source": "subs/s02, subs/s03 (ALEX)"
+    },
+    {
+      "en": "Can you hear me?",
+      "speaker": "VOICE",
+      "tr": "Beni duyabiliyor musun?",
+      "chunks": [
+        {
+          "en": "Can you hear me?",
+          "tr": "Beni duyabiliyor musun?"
+        }
+      ],
+      "words": {
+        "can": "-ebilir mi (soru)",
+        "you": "sen",
+        "hear": "duymak",
+        "me": "beni"
+      },
+      "source": "subs/s02"
+    },
+    {
+      "en": "Hello? Hello? Can you hear me?",
+      "speaker": "VOICE",
+      "tr": "Alo? Alo? Beni duyabiliyor musun?",
+      "chunks": [
+        {
+          "en": "Can you hear me?",
+          "tr": "Beni duyabiliyor musun?"
+        }
+      ],
+      "words": {
+        "hello": "alo (telsizde/telefonda), merhaba",
+        "can": "-ebilir mi (soru)",
+        "you": "sen",
+        "hear": "duymak",
+        "me": "beni"
+      },
+      "source": "scenes:k1.cue"
+    },
+    {
+      "en": "Yes, I can hear you.",
+      "speaker": "ALEX",
+      "tr": "Evet, seni duyabiliyorum.",
+      "chunks": [
+        {
+          "en": "Yes, I can.",
+          "tr": "Evet, (yapabiliyorum)."
+        },
+        {
+          "en": "I can hear you",
+          "tr": "Seni duyabiliyorum"
+        }
+      ],
+      "words": {
+        "yes": "evet",
+        "i": "ben",
+        "can": "-ebilmek",
+        "hear": "duymak",
+        "you": "seni"
+      },
+      "source": "subs/k1-ok"
+    },
+    {
+      "en": "Yes, I am.",
+      "speaker": "ALEX",
+      "tr": "Evet, öyleyim.",
+      "chunks": [],
+      "words": {
+        "yes": "evet",
+        "i": "ben",
+        "am": "-im (olmak)"
+      },
+      "source": "subs/r-k1-b"
+    },
+    {
+      "en": "This is E.",
+      "speaker": "VOICE",
+      "tr": "Ben E.",
+      "chunks": [
+        {
+          "en": "This is …",
+          "tr": "Ben … (telsizde/telefonda kendini tanıtırken)"
+        }
+      ],
+      "words": {
+        "this": "bu (burada: ben)",
+        "is": "-dır / -dir (olmak)"
+      },
+      "source": "subs/s03, subs/s04"
+    },
+    {
+      "en": "Meet me at the old station.",
+      "speaker": "VOICE",
+      "tr": "Benimle eski istasyonda buluş.",
+      "chunks": [
+        {
+          "en": "Meet me at …",
+          "tr": "Benimle …-de buluş"
+        },
+        {
+          "en": "the old station",
+          "tr": "eski istasyon"
+        }
+      ],
+      "words": {
+        "meet": "buluş",
+        "me": "benimle (beni)",
+        "at": "-de / -da (yer)",
+        "the": "(belirli tanımlık)",
+        "old": "eski",
+        "station": "istasyon"
+      },
+      "source": "subs/s03, subs/s04"
+    },
+    {
+      "en": "Friday. Seven o'clock.",
+      "speaker": "VOICE",
+      "tr": "Cuma. Saat yedi.",
+      "chunks": [
+        {
+          "en": "seven o'clock",
+          "tr": "saat yedi"
+        }
+      ],
+      "words": {
+        "friday": "cuma",
+        "seven": "yedi",
+        "o'clock": "saat (tam saat)"
+      },
+      "source": "subs/s03, subs/s04"
+    },
+    {
+      "en": "Who are you?",
+      "speaker": "ALEX",
+      "tr": "Sen kimsin?",
+      "chunks": [
+        {
+          "en": "Who are you?",
+          "tr": "Kimsin?"
+        }
+      ],
+      "words": {
+        "who": "kim",
+        "are": "-sin (olmak)",
+        "you": "sen"
+      },
+      "source": "subs/s03"
+    },
+    {
+      "en": "Again, please.",
+      "speaker": "ALEX",
+      "tr": "Bir daha, lütfen.",
+      "chunks": [
+        {
+          "en": "Again, please.",
+          "tr": "Bir daha, lütfen. (kibar tekrar isteği)"
+        }
+      ],
+      "words": {
+        "again": "tekrar, bir daha",
+        "please": "lütfen"
+      },
+      "source": "subs/k2-ok"
+    },
+    {
+      "en": "What?",
+      "speaker": "ALEX",
+      "tr": "Ne?",
+      "chunks": [],
+      "words": {
+        "what": "ne"
+      },
+      "source": "subs/r-k2-b"
+    },
+    {
+      "en": "This is ___.",
+      "speaker": "TASK",
+      "tr": "Ben ___.",
+      "chunks": [
+        {
+          "en": "This is …",
+          "tr": "Ben … (telsizde/telefonda kendini tanıtırken)"
+        }
+      ],
+      "words": {
+        "this": "bu (burada: ben)",
+        "is": "-dır / -dir (olmak)"
+      },
+      "source": "scenes:t-gorev.i1"
+    },
+    {
+      "en": "Meet me at the ___.",
+      "speaker": "TASK",
+      "tr": "Benimle ___ buluş.",
+      "chunks": [
+        {
+          "en": "Meet me at …",
+          "tr": "Benimle …-de buluş"
+        }
+      ],
+      "words": {
+        "meet": "buluş",
+        "me": "benimle (beni)",
+        "at": "-de / -da (yer)",
+        "the": "(belirli tanımlık)"
+      },
+      "source": "scenes:t-gorev.i2"
+    },
+    {
+      "en": "old station",
+      "speaker": "TASK",
+      "tr": "eski istasyon",
+      "chunks": [],
+      "words": {
+        "old": "eski",
+        "station": "istasyon"
+      },
+      "source": "scenes:t-gorev.i2"
+    },
+    {
+      "en": "old school",
+      "speaker": "TASK",
+      "tr": "eski okul",
+      "chunks": [],
+      "words": {
+        "old": "eski",
+        "school": "okul"
+      },
+      "source": "scenes:t-gorev.i2"
+    },
+    {
+      "en": "bus stop",
+      "speaker": "TASK",
+      "tr": "otobüs durağı",
+      "chunks": [
+        {
+          "en": "bus stop",
+          "tr": "otobüs durağı"
+        }
+      ],
+      "words": {
+        "bus": "otobüs",
+        "stop": "durak"
+      },
+      "source": "scenes:t-gorev.i2"
+    },
+    {
+      "en": "Where is the old station?",
+      "speaker": "ALEX",
+      "tr": "Eski istasyon nerede?",
+      "chunks": [
+        {
+          "en": "Where is …?",
+          "tr": "… nerede?"
+        },
+        {
+          "en": "the old station",
+          "tr": "eski istasyon"
+        }
+      ],
+      "words": {
+        "where": "nerede",
+        "is": "(olmak; Türkçede karşılığı yok)",
+        "the": "(belirli tanımlık)",
+        "old": "eski",
+        "station": "istasyon"
+      },
+      "source": "subs/s05, scenes:t-kanit"
+    },
+    {
+      "en": "The New Neighbour",
+      "speaker": "TITLE",
+      "tr": "Yeni Komşu",
+      "chunks": [],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "new": "yeni",
+        "neighbour": "komşu"
+      },
+      "source": "scenes:c-oq"
+    }
+  ],
+  "notes": [
+    "\"Hello? Hello?\" hem VOICE (s02) hem ALEX (s03) satırında aynı metinle geçer; tek kayıt tutuldu. Telsizde/telefonda 'Alo?' olarak çevrildi.",
+    "Türk öğrenci tuzağı: 'Can you…?' sorusuna 'Yes, I am.' cevabı. Soru hangi yardımcı fiille başlıyorsa kısa cevap da onunla verilir: Can you…? → Yes, I can.",
+    "'This is E.' telsizde/telefonda kendini tanıtma kalıbıdır; 'Ben E.' diye çevrildi. Türk öğrenciler burada 'I am E.' der; telefonda doğal olan 'This is …'.",
+    "'Where is the old station?' Türkçede 'İstasyon nerede?' cümlesinde fiil yok; İngilizcede 'is' atlanmaz (B2'deki 'Where station?' hatasıyla bağlantılı).",
+    "'What?' kaba olmasa da sert duyulabilir; kibar karşılık 'Again, please.' ya da 'Sorry?'.",
+    "Görev seçeneklerindeki tek harfler (E / A / D) çevrilmedi; karar kartı seçenekleri (K1, K2) kullanıcı kararı gereği çevrilmedi."
+  ]
+}

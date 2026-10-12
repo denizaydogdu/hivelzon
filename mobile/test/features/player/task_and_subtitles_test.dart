@@ -73,7 +73,7 @@ void main() {
       expect(track.cueAt(5.0), isNull);
       expect(track.cueAt(11.5)!.text, 'Can you hear me?');
       expect(track.cueAt(13.0), isNull);
-      expect(track.hasTurkish, isFalse, reason: 'tr henüz null');
+      expect(track.hasTurkish, isTrue, reason: 'ceviri.tr.json birleştirildi');
     });
 
     test('hedef ifade sözcükleri vurgulanır', () {

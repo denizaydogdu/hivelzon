@@ -6,9 +6,18 @@ import 'package:video_player_platform_interface/video_player_platform_interface.
 /// Test için sahte video platformu. Her kaynak [durationFor] süresinde biter
 /// (bitiş sahte zamanlayıcıyla gelir; `tester.pump(süre)` ilerletir).
 class FakeVideoPlatform extends VideoPlayerPlatform {
-  FakeVideoPlatform({this.durationFor});
+  FakeVideoPlatform({this.durationFor, this.positionFor});
 
   final Duration Function(String uri)? durationFor;
+
+  /// Oynarken bildirilen konum (varsayılan 40 ms).
+  final Duration Function(String uri)? positionFor;
+
+  /// `seekTo` çağrıları (adres, konum).
+  final List<(String, Duration)> seeks = [];
+
+  /// `setPlaybackSpeed` çağrıları (adres, hız).
+  final List<(String, double)> speeds = [];
   final Map<int, StreamController<VideoEvent>> _streams = {};
   final Map<int, String> uris = {};
   final Map<int, Duration> _durations = {};
@@ -18,6 +27,14 @@ class FakeVideoPlatform extends VideoPlayerPlatform {
   int _next = 0;
 
   int get liveCount => uris.length - disposed.length;
+
+  /// Adresi [suffix] ile biten canlı oynatıcı şu an oynuyor mu?
+  bool isPlaying(String suffix) => uris.entries.any(
+    (e) =>
+        e.value.endsWith(suffix) &&
+        !disposed.contains(e.key) &&
+        (_playing[e.key] ?? false),
+  );
 
   List<String> get liveUris => [
     for (final e in uris.entries)
@@ -75,11 +92,12 @@ class FakeVideoPlatform extends VideoPlayerPlatform {
   @override
   Future<Duration> getPosition(int playerId) async =>
       (_playing[playerId] ?? false)
-      ? const Duration(milliseconds: 40)
+      ? (positionFor?.call(uris[playerId]!) ?? const Duration(milliseconds: 40))
       : Duration.zero;
 
   @override
-  Future<void> seekTo(int playerId, Duration position) async {}
+  Future<void> seekTo(int playerId, Duration position) async =>
+      seeks.add((uris[playerId]!, position));
 
   @override
   Future<void> setLooping(int playerId, bool looping) async {}
@@ -88,7 +106,8 @@ class FakeVideoPlatform extends VideoPlayerPlatform {
   Future<void> setVolume(int playerId, double volume) async {}
 
   @override
-  Future<void> setPlaybackSpeed(int playerId, double speed) async {}
+  Future<void> setPlaybackSpeed(int playerId, double speed) async =>
+      speeds.add((uris[playerId]!, speed));
 
   @override
   Future<void> setMixWithOthers(bool mixWithOthers) async {}

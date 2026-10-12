@@ -90,7 +90,23 @@
         {
           "text": "Find the Station",
           "lang": "en",
-          "style": "heading"
+          "style": "heading",
+          "tr": "İstasyonu Bul",
+          "words": [
+            {
+              "w": "Find",
+              "gloss": "bul"
+            },
+            {
+              "w": "the",
+              "gloss": "(belirli tanımlık)"
+            },
+            {
+              "w": "Station",
+              "gloss": "istasyon"
+            }
+          ],
+          "chunks": []
         }
       ],
       "advance": "auto",
@@ -111,7 +127,86 @@
         {
           "text": "Go straight. · Turn left / right. · It's near… · It's between… · It's behind…",
           "lang": "en",
-          "style": "highlight"
+          "style": "highlight",
+          "tr": "Düz git. · Sola / sağa dön. · …-in yakınında. · …-in arasında. · …-in arkasında.",
+          "words": [
+            {
+              "w": "Go",
+              "gloss": "git"
+            },
+            {
+              "w": "straight.",
+              "gloss": "düz"
+            },
+            {
+              "w": "Turn",
+              "gloss": "dön"
+            },
+            {
+              "w": "left",
+              "gloss": "sola"
+            },
+            {
+              "w": "right.",
+              "gloss": "sağa"
+            },
+            {
+              "w": "It's",
+              "gloss": "o … -dır (orası)"
+            },
+            {
+              "w": "near…",
+              "gloss": "yakınında"
+            },
+            {
+              "w": "It's",
+              "gloss": "o … -dır (orası)"
+            },
+            {
+              "w": "between…",
+              "gloss": "arasında"
+            },
+            {
+              "w": "It's",
+              "gloss": "o … -dır (orası)"
+            },
+            {
+              "w": "behind…",
+              "gloss": "arkasında"
+            }
+          ],
+          "chunks": [
+            {
+              "en": "Go straight.",
+              "tr": "Düz git.",
+              "startWord": 0,
+              "endWord": 1
+            },
+            {
+              "en": "Turn left / right.",
+              "tr": "Sola / sağa dön.",
+              "startWord": 2,
+              "endWord": 4
+            },
+            {
+              "en": "It's near…",
+              "tr": "…-in yakınında.",
+              "startWord": 5,
+              "endWord": 10
+            },
+            {
+              "en": "It's between…",
+              "tr": "… ile …-in arasında.",
+              "startWord": 7,
+              "endWord": 10
+            },
+            {
+              "en": "It's behind…",
+              "tr": "…-in arkasında.",
+              "startWord": 9,
+              "endWord": 10
+            }
+          ]
         }
       ],
       "advance": "tap",
@@ -126,11 +221,87 @@
       "lines": [
         {
           "text": "Sorry, Alex! I can't come today.",
-          "lang": "en"
+          "lang": "en",
+          "tr": "Kusura bakma Alex! Bugün gelemiyorum.",
+          "words": [
+            {
+              "w": "Sorry,",
+              "gloss": "kusura bakma"
+            },
+            {
+              "w": "Alex!",
+              "gloss": null
+            },
+            {
+              "w": "I",
+              "gloss": "ben"
+            },
+            {
+              "w": "can't",
+              "gloss": "-emem (gelemem)"
+            },
+            {
+              "w": "come",
+              "gloss": "gelmek"
+            },
+            {
+              "w": "today.",
+              "gloss": "bugün"
+            }
+          ],
+          "chunks": [
+            {
+              "en": "I can't come",
+              "tr": "Gelemiyorum",
+              "startWord": 2,
+              "endWord": 4
+            }
+          ]
         },
         {
           "text": "Here is the map. Good luck!",
-          "lang": "en"
+          "lang": "en",
+          "tr": "Harita burada. Bol şans!",
+          "words": [
+            {
+              "w": "Here",
+              "gloss": "işte, burada"
+            },
+            {
+              "w": "is",
+              "gloss": "-dır / -dir (olmak)"
+            },
+            {
+              "w": "the",
+              "gloss": "(belirli tanımlık)"
+            },
+            {
+              "w": "map.",
+              "gloss": "harita"
+            },
+            {
+              "w": "Good",
+              "gloss": "iyi (good luck: bol şans)"
+            },
+            {
+              "w": "luck!",
+              "gloss": "şans"
+            }
+          ],
+          "chunks": [
+            {
+              "en": "Here is …",
+              "tr": "İşte … / … burada",
+              "startWord": 0,
+              "endWord": 5
+            },
+            {
+              "en": "Good luck!",
+              "tr": "Bol şans!",
+              "startWord": 4,
+              "endWord": 5
+            }
+          ]
         }
       ],
       "variants": [
@@ -143,11 +314,87 @@
           "lines": [
             {
               "text": "Sorry, Alex! I can't come today.",
-              "lang": "en"
+              "lang": "en",
+              "tr": "Kusura bakma Alex! Bugün gelemiyorum.",
+              "words": [
+                {
+                  "w": "Sorry,",
+                  "gloss": "kusura bakma"
+                },
+                {
+                  "w": "Alex!",
+                  "gloss": null
+                },
+                {
+                  "w": "I",
+                  "gloss": "ben"
+                },
+                {
+                  "w": "can't",
+                  "gloss": "-emem (gelemem)"
+                },
+                {
+                  "w": "come",
+                  "gloss": "gelmek"
+                },
+                {
+                  "w": "today.",
+                  "gloss": "bugün"
+                }
+              ],
+              "chunks": [
+                {
+                  "en": "I can't come",
+                  "tr": "Gelemiyorum",
+                  "startWord": 2,
+                  "endWord": 4
+                }
+              ]
             },
             {
               "text": "Here is the map. Good luck!",
-              "lang": "en"
+              "lang": "en",
+              "tr": "Harita burada. Bol şans!",
+              "words": [
+                {
+                  "w": "Here",
+                  "gloss": "işte, burada"
+                },
+                {
+                  "w": "is",
+                  "gloss": "-dır / -dir (olmak)"
+                },
+                {
+                  "w": "the",
+                  "gloss": "(belirli tanımlık)"
+                },
+                {
+                  "w": "map.",
+                  "gloss": "harita"
+                },
+                {
+                  "w": "Good",
+                  "gloss": "iyi (good luck: bol şans)"
+                },
+                {
+                  "w": "luck!",
+                  "gloss": "şans"
+                }
+              ],
+              "chunks": [
+                {
+                  "en": "Here is …",
+                  "tr": "İşte … / … burada",
+                  "startWord": 0,
+                  "endWord": 5
+                },
+                {
+                  "en": "Good luck!",
+                  "tr": "Bol şans!",
+                  "startWord": 4,
+                  "endWord": 5
+                }
+              ]
             }
           ]
         },
@@ -160,11 +407,87 @@
           "lines": [
             {
               "text": "Hello Alex, I'm sorry. I can't come today.",
-              "lang": "en"
+              "lang": "en",
+              "tr": "Merhaba Alex, üzgünüm. Bugün gelemiyorum.",
+              "words": [
+                {
+                  "w": "Hello",
+                  "gloss": "merhaba"
+                },
+                {
+                  "w": "Alex,",
+                  "gloss": null
+                },
+                {
+                  "w": "I'm",
+                  "gloss": "ben …-im"
+                },
+                {
+                  "w": "sorry.",
+                  "gloss": "üzgün"
+                },
+                {
+                  "w": "I",
+                  "gloss": "ben"
+                },
+                {
+                  "w": "can't",
+                  "gloss": "-emem (gelemem)"
+                },
+                {
+                  "w": "come",
+                  "gloss": "gelmek"
+                },
+                {
+                  "w": "today.",
+                  "gloss": "bugün"
+                }
+              ],
+              "chunks": [
+                {
+                  "en": "I'm sorry.",
+                  "tr": "Üzgünüm. / Kusura bakma.",
+                  "startWord": 2,
+                  "endWord": 3
+                },
+                {
+                  "en": "I can't come",
+                  "tr": "Gelemiyorum",
+                  "startWord": 4,
+                  "endWord": 6
+                }
+              ]
             },
             {
               "text": "Here is the map.",
-              "lang": "en"
+              "lang": "en",
+              "tr": "İşte harita.",
+              "words": [
+                {
+                  "w": "Here",
+                  "gloss": "işte, burada"
+                },
+                {
+                  "w": "is",
+                  "gloss": "-dır / -dir (olmak)"
+                },
+                {
+                  "w": "the",
+                  "gloss": "(belirli tanımlık)"
+                },
+                {
+                  "w": "map.",
+                  "gloss": "harita"
+                }
+              ],
+              "chunks": [
+                {
+                  "en": "Here is …",
+                  "tr": "İşte … / … burada",
+                  "startWord": 0,
+                  "endWord": 3
+                }
+              ]
             }
           ]
         }
@@ -257,7 +580,48 @@
       },
       "cue": {
         "speaker": "MAN",
-        "text": "Go straight. Turn left. It's near."
+        "text": "Go straight. Turn left. It's near.",
+        "tr": "Düz git. Sola dön. Yakında.",
+        "words": [
+          {
+            "w": "Go",
+            "gloss": "git"
+          },
+          {
+            "w": "straight.",
+            "gloss": "düz"
+          },
+          {
+            "w": "Turn",
+            "gloss": "dön"
+          },
+          {
+            "w": "left.",
+            "gloss": "sola"
+          },
+          {
+            "w": "It's",
+            "gloss": "o … -dır (orası)"
+          },
+          {
+            "w": "near.",
+            "gloss": "yakın(da)"
+          }
+        ],
+        "chunks": [
+          {
+            "en": "Go straight.",
+            "tr": "Düz git.",
+            "startWord": 0,
+            "endWord": 1
+          },
+          {
+            "en": "Turn left.",
+            "tr": "Sola dön.",
+            "startWord": 2,
+            "endWord": 3
+          }
+        ]
       },
       "pov": "POV: kavşak. Oklar seçilir; yazı yok.",
       "skill": "listening",
@@ -330,11 +694,105 @@
       "lines": [
         {
           "text": "The station is near the fish shop.",
-          "lang": "en"
+          "lang": "en",
+          "tr": "İstasyon balıkçı dükkânının yakınında.",
+          "words": [
+            {
+              "w": "The",
+              "gloss": "(belirli tanımlık)"
+            },
+            {
+              "w": "station",
+              "gloss": "istasyon"
+            },
+            {
+              "w": "is",
+              "gloss": "-dır (olmak)"
+            },
+            {
+              "w": "near",
+              "gloss": "yakınında"
+            },
+            {
+              "w": "the",
+              "gloss": "(belirli tanımlık)"
+            },
+            {
+              "w": "fish",
+              "gloss": "balık (fish shop: balıkçı)"
+            },
+            {
+              "w": "shop.",
+              "gloss": "dükkân"
+            }
+          ],
+          "chunks": [
+            {
+              "en": "fish shop",
+              "tr": "balıkçı (dükkânı)",
+              "startWord": 5,
+              "endWord": 6
+            },
+            {
+              "en": "is near …",
+              "tr": "…-in yakınında",
+              "startWord": 2,
+              "endWord": 6
+            }
+          ]
         },
         {
           "text": "It's between the bus stop and the café.",
-          "lang": "en"
+          "lang": "en",
+          "tr": "Otobüs durağıyla kafenin arasında.",
+          "words": [
+            {
+              "w": "It's",
+              "gloss": "o … -dır (orası)"
+            },
+            {
+              "w": "between",
+              "gloss": "arasında"
+            },
+            {
+              "w": "the",
+              "gloss": "(belirli tanımlık)"
+            },
+            {
+              "w": "bus",
+              "gloss": "otobüs"
+            },
+            {
+              "w": "stop",
+              "gloss": "durak"
+            },
+            {
+              "w": "and",
+              "gloss": "ve (… ile)"
+            },
+            {
+              "w": "the",
+              "gloss": "(belirli tanımlık)"
+            },
+            {
+              "w": "café.",
+              "gloss": "kafe"
+            }
+          ],
+          "chunks": [
+            {
+              "en": "between … and …",
+              "tr": "… ile …-in arasında",
+              "startWord": 1,
+              "endWord": 7
+            },
+            {
+              "en": "bus stop",
+              "tr": "otobüs durağı",
+              "startWord": 3,
+              "endWord": 4
+            }
+          ]
         }
       ],
       "advance": "tap",
@@ -423,6 +881,65 @@
         {
           "id": "i1",
           "stem": "Go straight. Turn left. It's near the fish shop.",
+          "stemTr": "Düz git. Sola dön. Balıkçı dükkânının yakınında.",
+          "stemWords": [
+            {
+              "w": "Go",
+              "gloss": "git"
+            },
+            {
+              "w": "straight.",
+              "gloss": "düz"
+            },
+            {
+              "w": "Turn",
+              "gloss": "dön"
+            },
+            {
+              "w": "left.",
+              "gloss": "sola"
+            },
+            {
+              "w": "It's",
+              "gloss": "o … -dır (orası)"
+            },
+            {
+              "w": "near",
+              "gloss": "yakınında"
+            },
+            {
+              "w": "the",
+              "gloss": "(belirli tanımlık)"
+            },
+            {
+              "w": "fish",
+              "gloss": "balık (fish shop: balıkçı)"
+            },
+            {
+              "w": "shop.",
+              "gloss": "dükkân"
+            }
+          ],
+          "stemChunks": [
+            {
+              "en": "Go straight.",
+              "tr": "Düz git.",
+              "startWord": 0,
+              "endWord": 1
+            },
+            {
+              "en": "Turn left.",
+              "tr": "Sola dön.",
+              "startWord": 2,
+              "endWord": 3
+            },
+            {
+              "en": "fish shop",
+              "tr": "balıkçı (dükkânı)",
+              "startWord": 7,
+              "endWord": 8
+            }
+          ],
           "options": [
             {
               "id": "a",
@@ -462,6 +979,63 @@
         {
           "id": "i1",
           "stem": "The café is near the park. It's behind the school.",
+          "stemTr": "Kafe parkın yakınında. Okulun arkasında.",
+          "stemWords": [
+            {
+              "w": "The",
+              "gloss": "(belirli tanımlık)"
+            },
+            {
+              "w": "café",
+              "gloss": "kafe"
+            },
+            {
+              "w": "is",
+              "gloss": "-dır / -dir (olmak)"
+            },
+            {
+              "w": "near",
+              "gloss": "yakınında"
+            },
+            {
+              "w": "the",
+              "gloss": "(belirli tanımlık)"
+            },
+            {
+              "w": "park.",
+              "gloss": "park"
+            },
+            {
+              "w": "It's",
+              "gloss": "o … -dır (orası)"
+            },
+            {
+              "w": "behind",
+              "gloss": "arkasında"
+            },
+            {
+              "w": "the",
+              "gloss": "(belirli tanımlık)"
+            },
+            {
+              "w": "school.",
+              "gloss": "okul"
+            }
+          ],
+          "stemChunks": [
+            {
+              "en": "is near …",
+              "tr": "…-in yakınında",
+              "startWord": 2,
+              "endWord": 9
+            },
+            {
+              "en": "It's behind …",
+              "tr": "…-in arkasında",
+              "startWord": 6,
+              "endWord": 9
+            }
+          ],
           "options": [
             {
               "id": "a",
@@ -548,7 +1122,19 @@
         {
           "text": "Bölüm 4: The Note",
           "lang": "en",
-          "style": "caption"
+          "style": "caption",
+          "tr": "Not",
+          "words": [
+            {
+              "w": "The",
+              "gloss": "(belirli tanımlık)"
+            },
+            {
+              "w": "Note",
+              "gloss": "not"
+            }
+          ],
+          "chunks": []
         }
       ],
       "advance": "tap",
