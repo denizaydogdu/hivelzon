@@ -502,3 +502,7 @@ Bunlar hukuki görüş gerektiren sorulardır; rapor bu sorulara cevap vermez.
 - Pearson GSE satırı: "Yalnızca referans" → "**Kullanılmaz** (izin alınmadıkça)".
 - §3.4 MEB satırı: "[doğrulanmadı]" kaldırılır. "A1 için 6 tema, 5–12. sınıflar için 8 tema" notu eklenir.
 - §7.2: VST/VLT notu "ticari lisansları belirsiz" yerine "**yalnızca araştırma izni var; ticari hüküm yok**" olur.
+
+
+## EnglishPractice reposu (2026-10-12)
+https://github.com/recepyagmur/EnglishPractice — kod **MIT** (desen olarak uyarlanabilir, kaynak belirtilerek), içerik **CC BY-SA 4.0** (kopyalanmaz, yalnızca referans). Kullanıcı kararı ve ayrıntı: `docs/ENGLISHPRACTICE-INCELEME.md`.

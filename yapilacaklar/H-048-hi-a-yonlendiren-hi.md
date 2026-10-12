@@ -26,3 +26,4 @@
 ## Notlar
 2026-10-11: H-047 kararıyla açıldı.
 2026-10-12: H-050 kararıyla "Hi'nin konu tanıtımı" bu işe taşındı (bölüm açılışı artık doğrudan başlıkla). Kişisel öneri verisi H-036'nın Drift tablolarından (FSRS vadesi, defter) ve H-035'in ilerleme kayıtlarından okunur.
+2026-10-12: Hata kategorileri için EnglishPractice `errors.py` (MIT) desen olarak alınır; Türkçe metinler bizim. Bkz. `docs/ENGLISHPRACTICE-INCELEME.md`.

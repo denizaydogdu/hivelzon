@@ -77,6 +77,7 @@
 | H-004 | Higgsfield: mevcut lite plan ile devam (karar anında 110,25 kr; Sezon 1 ≈ 60–100 kr). **Güncel kredi 84,56 (2026-10-12).** Kredi 25'in altına inince bir kez hatırlatılır. |
 | H-006 (ek) | Yerel çalışmada videoGenerator'ın ElevenLabs hesabı kullanılır (ücretsiz, iç kullanım). Yayından önce ticari plan şart. |
 | H-047 | **Hi her yerde: asistan + öğrenme koçu** (`docs/HI-ASISTAN-VE-KOC.md`). Hikâye ve görev dışında sağ altta, menünün üstünde Hi balonu durur. **Hi-A (MVP):** kural tabanlı, AI yok, bütün yaşlar: günlük tek öneri + görünür gerekçe, haftalık özet, onaylı veriden "bu ne demek?". **Hi-B (v1):** metin sohbeti; `AiTutorPort` arkasında yerel Ollama + RAG (pgvector), üretim sağlayıcısı ölçümle H-044'te seçilir. 13–17 rehberli mod, serbest sohbet 18+. Kullanıcı konuşmaları otomatik olarak model eğitimine girmez. Farklılık önceliği: Türkçeye göre koçluk, utanmadan prova, her gün tek adım, gerçek hayat köprü görevleri. |
+| H-036/H-051 | **Kelime kartları ve konu setleri** (kullanıcı kararı 2026-10-12): Kart = görsel + kelime + örnek cümle + ses + Türkçesi. Tekrar hatırlama sorularıyla (resimden seç → dinle-seç → yaz/söyle) ve FSRS ile. "Bilmiyorum" utandırmaz; bilinemeyen kart oturum sonunda ve ertesi gün yeniden sorulur. Konu setleri genel değil, **hikâye mekânlarına bağlı** (Alex'in odası, Maya'nın dükkânı, Liman, Kafe) + sahne avı. Görselde yazı yok; başkasının şablonu kopyalanmaz. |
 | H-050 | **Her bölüm doğrudan bölüm başlığıyla açılır** (kullanıcı kararı 2026-10-12). Başlıktan önce video, yazı ya da kart yok. Başlık = kısa jenerik animasyonu üstünde "Sezon N · Bölüm N · Başlık". Ardından (B2+) atlanabilir "Önceki bölümde", sonra hikâye. Açılışta ayrı görev kartı yok (K-27 adım 2 değişti): görev ve hedef ifadeler 🎯 panelinde ve bölüm sonunda. Tam jenerik sezonun ilk açılışında bir kez oynar. |
 | H-030 | Kahraman **Aleyna "Alex" Yıldız** (kadın, 19, İzmir). Story Bible ve Sezon 1 planı onaylandı; kanon `icerik/_evren/`'de kilitli. S1'de fiyatlar birimsiz söylenir ("It's thirteen."). |
 
@@ -292,6 +293,10 @@ Kurallar:
 - videoGenerator'ın hattı çalışırken orada `mvn package` **çalıştırılmaz** (çalışan JVM'in jar'ı altından değişir).
 - videoGenerator'ı hiVelzon içeriği üretmek için doğrudan kullanmak (yeni `channels/hivelzon-*.json` profili + yayın) kullanıcı onayı ister; yayın dışa dönük ve geri alınamaz bir işlemdir.
 - Ayrıntı için videoGenerator'ın kendi `CLAUDE.md`, `README.md` ve `thoughts/` belgelerine bak.
+
+## Dış referans: EnglishPractice
+
+https://github.com/recepyagmur/EnglishPractice (Türk öğrenciye yönelik yerel AI İngilizce uygulaması). Kullanıcı kararı (2026-10-12): **kod MIT, desen olarak uyarlanır** (kaynak belirtilerek; iki repo bağlanmaz); **içerik CC BY-SA 4.0, kopyalanmaz ve uyarlanmaz**, yalnızca referans alınır. Ayrıntı: `docs/ENGLISHPRACTICE-INCELEME.md`.
 
 ## Higgsfield ile görsel, video ve ses üretimi
 

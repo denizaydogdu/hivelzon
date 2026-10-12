@@ -31,7 +31,7 @@ Bu dosya tek takip noktasıdır. Hangi işin hangi sırada yapıldığını, şu
   - H dosyasının `Durum` satırı güncellenir;
   - **Günlük** bölümüne bir satır eklenir.
 - **Biten işler:** "Biten işler" tablosuna doğrulama kanıtıyla birlikte yazılır.
-- **Numaralar:** Tek sayaçla verilir. Sıradaki boş numara: **H-051**.
+- **Numaralar:** Tek sayaçla verilir. Sıradaki boş numara: **H-052**.
 
 **Durum simgeleri:**
 - ⛔ Kullanıcı kararı bekliyor
@@ -101,6 +101,7 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 | — | H-047 | Hi asistanı ve koç kararları (`docs/HI-ASISTAN-VE-KOC.md`) | Yüksek | — | ✅ |
 | 1.3 | H-035 | Hikâye haritası, bölüm kapısı, yerel ilerleme | Yüksek | H-031 | ✅ |
 | 1.4 | H-036 | Defter, ipucu panosu, FSRS | Yüksek | H-035 | ⏳ |
+| 1.4a | H-051 | Hikâye mekânlarına bağlı konu setleri + sahne avı | Yüksek | H-036 | ⏳ |
 | 1.4b | H-048 | Hi-A: yönlendiren Hi (balon + kural tabanlı koç) | Yüksek | H-036, H-046 | ⏳ |
 | 1.5 | H-037 | Backend çekirdek | Yüksek | H-033 | ⏳ |
 | 1.6 | H-038 | Mobil ↔ backend, misafir modu | Yüksek | H-035, H-037 | ⏳ |
@@ -272,3 +273,5 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
   - Kullanıcı H-046 (çeviriler) ve H-049'u (jenerik) onayladı. H-035 başladı. Sezon haritası görseli üretildi (1 kr onaylı; kredi 84,56).
   - H-035 bitti: harita (map.jpg + 12 nokta), kilit kuralı, Drift ilerleme, Ana Sayfa kartı. Kullanıcı merak cümlelerini onayladı; eski bitirmeler kapı tamam sayılır. Sıradaki: H-036 (defter, ipucu panosu, FSRS).
   - Belgeler gerçek duruma göre güncellendi (H-023 başladı → `devam-edenler/`): CLAUDE.md (durum satırı, Geliştirme ortamı bölümü, çözülen çelişkiler, kredi 84,56, belge tablosu), IS-SIRASI, H dosyalarının durum satırları, `UYGULAMA-PLANI.md` (durum sütunu), `IS-PLANI.md` v0.2, `SARTNAME.md` başına karar notları, `OYUN-TASARIMI.md`, `ICERIK-MIMARISI.md`, `HI-ASISTAN-VE-KOC.md`, README. Kod ve içerik dosyalarına dokunulmadı.
+  - Kullanıcı EnglishPractice reposunu sordu. İnceleme: kod MIT, içerik CC BY-SA 4.0. Kullanıcı kararı: kod desen olarak, içerik yalnızca referans. `docs/ENGLISHPRACTICE-INCELEME.md`; CLAUDE.md, LISANS-RAPORU, HI-ASISTAN-VE-KOC, H-036, H-048 notları.
+  - Kullanıcı sosyal medyadaki görsel kelime şablonlarını sordu. Kararlar: kart = görsel + kelime + cümle + ses; tekrar hatırlama sorularıyla + FSRS + "Bilmiyorum" (bilinemeyen sonra tekrar sorulur); konu setleri hikâye mekânlarına bağlı + sahne avı (H-051, H-036'dan hemen sonra).

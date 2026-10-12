@@ -144,3 +144,6 @@ Her aday model bu setle puanlanır: doğruluk, Türkçe açıklama kalitesi, gec
 
 - **Hi'nin konu tanıtımı H-048'e (Hi-A) taşındı.** H-050 kararıyla bölümler doğrudan başlıkla açılır; Hi'nin konu tanıtımı başlıktan önce değil, yeni bir dilbilgisi konusu (ör. saatler, fiyatlar) sahnede ilk geçtiği anda kısa ve atlanabilir bir kart olarak gösterilir. `content.json`'daki dilbilgisi hedefinden beslenir, konu başına bir kez gösterilir, defterden yeniden açılabilir. AI kullanmaz.
 - "Bu ne demek?" için veri hazır: H-046'nın onaylı `ceviri.tr.json` dosyaları (B1–B4) ve anlam paneli bileşeni (`mobile/lib/shared/meaning/`).
+
+## 10. Dış referans: EnglishPractice (2026-10-12)
+Yerel Ollama + Whisper + Kokoro ile çalışan, Türk öğrenciye yönelik açık kaynak bir uygulama. Hata sınıflandırması (Hi-A), LLM düzeltme + deterministik denetim (Hi-B) ve yerel ses (Hi-C) için MIT kod desen olarak uyarlanır; içerik yalnızca referanstır. Bkz. `docs/ENGLISHPRACTICE-INCELEME.md`.
