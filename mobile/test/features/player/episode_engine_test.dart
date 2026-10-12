@@ -280,10 +280,130 @@ void main() {
       });
     }
 
-    test('B1 ilerleme noktaları sahne başlarıdır', () {
+    test('B1 ilerleme noktaları sahne başlarıdır (başlık sayılmaz)', () {
       final e = EpisodeEngine(loadFixture('A1-001'));
-      expect(e.progressCheckpoints, ['s01', 's02', 'h-02', 's05']);
+      expect(e.progressCheckpoints, ['s02', 'h-02', 's05']);
       expect(e.progressIndex, 0);
+    });
+
+    group('açılış (H-050)', () {
+      for (final id in episodeIds) {
+        test('$id başlık ekranıyla açılır; önünde düğüm yok', () {
+          final ep = loadFixture(id);
+          expect(ep.schemaVersion, 2);
+          final title = ep.titleNode!;
+          expect(ep.start, title.id);
+          expect(title.caption, 'SEZON 1 · BÖLÜM ${ep.info.number}');
+          expect(title.title, ep.info.title);
+          expect(title.video, 'season:jenerik-baslik.mp4');
+          expect(title.posterPath, 'season:jenerik-baslik.jpg');
+          expect(title.duration, inInclusiveRange(2.0, 3.0));
+          expect(title.checkpoint, isFalse);
+          // Başlığa giden hiçbir yol yok.
+          for (final n in ep.nodes.values) {
+            final next = switch (n) {
+              SegmentNode(:final next) => [next],
+              CardNode(:final next) => [next],
+              ReactionNode(:final next) => [next],
+              TaskNode(:final next) => [next],
+              DecisionNode(:final options) => [for (final o in options) o.next],
+            };
+            expect(next, isNot(contains(title.id)), reason: n.id);
+          }
+          final e = EpisodeEngine(ep);
+          expect(e.current, isA<TitleNode>());
+          expect(e.history, [title.id]);
+        });
+
+        test('$id açılışta başlık ve görev kartı yok; görev 🎯 için meta', () {
+          final ep = loadFixture(id);
+          expect(
+            ep.nodes.values.whereType<CardNode>().where(
+              (c) => c.kind == CardKind.title || c.kind == CardKind.mission,
+            ),
+            isEmpty,
+          );
+          expect(ep.info.mission.tr, isNotEmpty);
+          expect(ep.info.targetPhrases, hasLength(5));
+          expect(ep.info.targetPhraseGloss, isNotEmpty);
+        });
+      }
+
+      test('B1: başlık → doğrudan hikâye (özet yok)', () {
+        final e = EpisodeEngine(loadFixture('A1-001'));
+        expect(e.canSkip, isFalse);
+        expect(e.upcomingVideoNodes(limit: 1).map((n) => n.id), ['s02']);
+        e.advance();
+        expect(e.current!.id, 's02');
+        expect(e.lastCheckpoint, 's02');
+      });
+
+      for (final (id, after) in [
+        ('A1-002', 's02'),
+        ('A1-003', 'c-msg'),
+        ('A1-004', 'h-01'),
+      ]) {
+        test('$id: başlık → atlanabilir özet → $after', () {
+          final ep = loadFixture(id);
+          final e = EpisodeEngine(ep);
+          expect(e.upcomingVideoNodes(limit: 1).single, isA<RecapNode>());
+          e.advance();
+          final recap = e.current! as RecapNode;
+          expect(recap.skippable, isTrue);
+          expect(recap.duration, lessThanOrEqualTo(15));
+          expect(recap.checkpoint, isFalse);
+          expect(e.canSkip, isTrue);
+          // "Atla": özetin sonrasına geçilir; ilerleme kaydı değişmez.
+          e.advance();
+          expect(e.current!.id, after);
+          expect(e.canSkip, isFalse);
+          expect(e.current!.checkpoint, isTrue, reason: 'Sahne 1 başlar');
+        });
+      }
+
+      test('B3 Maya mesajı ve B4 Hi kartı başlıktan sonra, sahne içinde', () {
+        for (final (id, card, scene) in [
+          ('A1-003', 'c-msg', 'Sahne 1: Sokakta'),
+          ('A1-004', 'h-01', 'Sahne 1: Tide & Pages'),
+        ]) {
+          final ep = loadFixture(id);
+          final e = EpisodeEngine(ep)
+            ..advance()
+            ..advance();
+          expect(e.current!.id, card);
+          expect(e.current!.scene, scene);
+          expect(e.progressCheckpoints.first, card);
+        }
+      });
+
+      test('kaldığı yerden devam: önce başlık, sonra kontrol noktası', () {
+        final ep = loadFixture('A1-002');
+        final snap = EngineSnapshot(
+          checkpointNodeId: 's04',
+          flags: const {'greet_tone': 'formal'},
+          passedNodes: const {'k1'},
+          contentVersion: 1,
+        );
+        final e = EpisodeEngine(ep, resumeFrom: snap);
+        expect(e.current, isA<TitleNode>());
+        // Başlık sırasında çıkılırsa kayıt kaybolmaz.
+        expect(e.snapshot().checkpointNodeId, 's04');
+        expect(e.upcomingVideoNodes(limit: 1).single.id, 's04');
+        e.advance(); // özet atlanır
+        expect(e.current!.id, 's04');
+        expect(e.flags['greet_tone'], 'formal');
+      });
+
+      test('schemaVersion 2: başlangıç başlık değilse reddedilir', () {
+        final j =
+            jsonDecode(fixtureText('A1-001.scenes.json'))
+                as Map<String, dynamic>;
+        j['start'] = 's02';
+        expect(
+          () => Episode.fromJson(j),
+          throwsA(isA<EpisodeFormatException>()),
+        );
+      });
     });
 
     test('B2 karar bayrağı yazılır (greet_tone)', () {
@@ -367,8 +487,10 @@ void main() {
       expect(snap.passedNodes, containsAll(['k1', 'k2', 't-gorev']));
 
       final resumed = EpisodeEngine(ep, resumeFrom: snap);
+      expect(resumed.current!.id, 'title', reason: 'H-050: önce başlık');
+      expect(resumed.progressIndex, 2);
+      resumed.advance();
       expect(resumed.current!.id, 's05');
-      expect(resumed.progressIndex, 3);
       playThrough(resumed);
       expect(resumed.gateStatus.open, isTrue);
     });
@@ -394,10 +516,7 @@ void main() {
 
     test('B1 ön ısıtma: s02 karar öncesi doğru ve tepki videoları', () {
       final e = EpisodeEngine(loadFixture('A1-001'));
-      e
-        ..advance() // s01 → c-title
-        ..advance() // → c-mission
-        ..advance(); // → s02
+      e.advance(); // başlık → s02
       expect(e.current!.id, 's02');
       expect(e.upcomingVideoNodes().map((n) => n.id), ['k1-ok', 'r-k1-b']);
       // k1-ok → s03 doğrudan segment.
@@ -497,9 +616,15 @@ void main() {
 
     test('desteklenmeyen şema sürümü reddedilir', () {
       expect(
-        () => Episode.fromJson({'schemaVersion': 2}),
+        () => Episode.fromJson({'schemaVersion': 3}),
         throwsA(isA<EpisodeFormatException>()),
       );
+    });
+
+    test('schemaVersion 1 (başlıksız) paket hâlâ okunur', () {
+      final ep = synthetic();
+      expect(ep.schemaVersion, 1);
+      expect(ep.titleNode, isNull);
     });
   });
 }

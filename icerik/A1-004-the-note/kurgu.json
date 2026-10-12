@@ -1,8 +1,8 @@
 {
-  "kurguVersion": 1,
+  "kurguVersion": 2,
   "contentId": "A1-004",
   "source": "Ön izleme kurgusu b4_kurgu.py (H-032) düğümlere bölündü; karar kartları ve altyazı artık uygulamada (K-03).",
-  "start": "s01",
+  "start": "title",
   "gate": {
     "comprehension": ["t-gorev"],
     "targetPhrase": ["k2", "t-kanit"],
@@ -10,34 +10,24 @@
   },
   "nodes": [
     {
-      "id": "s01", "type": "segment", "scene": "Soğuk açılış", "checkpoint": true,
+      "id": "title", "type": "title",
+      "next": "recap"
+    },
+    {
+      "id": "recap", "type": "recap",
       "shots": [{"image": "../A1-003-find-the-station/images/B3-07-yarim-not.png", "len": 3.2, "move": [1.12, 1.18, 0.5, 0.5, 0.45, 0.45],
                  "signs": [{"style": "note", "lines": [{"text": "Fri…    …pm"}, {"text": "Pier …        — E."}], "start": 0.35, "end": 3.2}]}],
       "next": "h-01"
     },
     {
-      "id": "h-01", "type": "card", "kind": "hi", "advance": "tap",
+      "id": "h-01", "type": "card", "kind": "hi", "scene": "Sahne 1: Tide & Pages", "checkpoint": true, "advance": "tap",
       "background": "images/B4-02-telefon-not.png",
       "lines": [{"speaker": "HI", "text": "Bugün birlikte bakalım. Ama önce bir arkadaşa gösterebilirsin.", "lang": "tr"}],
       "audio": "b4_01_hi",
-      "next": "c-title"
-    },
-    {
-      "id": "c-title", "type": "card", "kind": "title", "advance": "auto", "duration": 2.5,
-      "background": "images/B4-01-dukkan-sabah.png",
-      "lines": [{"text": "SEZON 1 · BÖLÜM 4", "lang": "tr", "style": "caption"},
-                {"text": "The Note", "lang": "en", "style": "heading"}],
-      "next": "c-mission"
-    },
-    {
-      "id": "c-mission", "type": "card", "kind": "mission", "advance": "tap",
-      "background": "images/B4-01-dukkan-sabah.png",
-      "lines": [{"text": "Yarım notun parçalarından tam notu kur: gün, saat, yer.", "lang": "tr", "style": "heading"},
-                {"text": "What time is it? · It's seven o'clock. · on Friday · at seven · What day is it today?", "lang": "en", "style": "highlight"}],
       "next": "s02"
     },
     {
-      "id": "s02", "type": "segment", "scene": "Sahne 1: Tide & Pages", "checkpoint": true,
+      "id": "s02", "type": "segment",
       "shots": [{"image": "images/B4-01-dukkan-sabah.png", "audio": ["b4_02_maya", "b4_03_alex", "b4_04_maya", "b4_05_alex", "b4_06_maya"], "move": [1.06, 1.14, 0.5, 0.5, 0.45, 0.42]}],
       "next": "s03"
     },

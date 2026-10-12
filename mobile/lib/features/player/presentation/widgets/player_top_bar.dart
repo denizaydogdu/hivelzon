@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../app/theme.dart';
 import '../../application/player_session.dart';
 
-/// Üst çubuk (T3): kapat · ilerleme noktaları · hız · altyazı.
+/// Üst çubuk (T3): kapat · ilerleme noktaları · 🎯 görev · hız · altyazı.
 class PlayerTopBar extends StatelessWidget {
   const PlayerTopBar({
     super.key,
@@ -14,6 +14,7 @@ class PlayerTopBar extends StatelessWidget {
     required this.onClose,
     required this.onSpeed,
     required this.onSubtitleMode,
+    this.onMission,
   });
 
   final int dotCount;
@@ -23,6 +24,9 @@ class PlayerTopBar extends StatelessWidget {
   final VoidCallback onClose;
   final ValueChanged<double> onSpeed;
   final ValueChanged<SubtitleMode> onSubtitleMode;
+
+  /// 🎯 paneli: görev cümlesi ve hedef ifadeler (H-050). Null ise gizli.
+  final VoidCallback? onMission;
 
   @override
   Widget build(BuildContext context) {
@@ -77,6 +81,18 @@ class PlayerTopBar extends StatelessWidget {
               ),
             ),
           ),
+          if (onMission != null)
+            IconButton(
+              key: const ValueKey('mission-button'),
+              onPressed: onMission,
+              tooltip: 'Görev ve hedef ifadeler',
+              constraints: const BoxConstraints(minWidth: 48, minHeight: 48),
+              color: AppColors.seaBlue,
+              icon: const Icon(
+                Icons.track_changes_rounded,
+                semanticLabel: 'Görev ve hedef ifadeler',
+              ),
+            ),
           _Chip(
             label: speed == 1.0 ? '1x' : '0,75x',
             semantics: speed == 1.0

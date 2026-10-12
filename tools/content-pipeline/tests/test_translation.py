@@ -140,3 +140,41 @@ def test_real_episodes_have_full_translation(ep):
         pytest.skip("çeviri yok")
     _, b = build_dry(d)
     assert [m for m in b.tr_misses if m.required] == []
+
+
+def test_target_phrase_gloss_from_line_or_chunk(tmp_path):
+    """🎯 paneli (H-050): hedef ifadenin anlamı birebir satırdan ya da kalıptan gelir."""
+    from hvpipeline.translation import Translation
+    (tmp_path / "ceviri.tr.json").write_text(json.dumps({"status": "DRAFT", "lines": LINES}), encoding="utf-8")
+    tr = Translation.load(tmp_path)
+    exact = tr.gloss_phrase("Are you new here?")
+    assert exact["tr"] == "Burada yeni misin?" and exact["words"][3] == {"w": "here?", "gloss": "burada"}
+    chunk = tr.gloss_phrase("your new neighbour")
+    assert chunk["tr"] == "yeni komşun" and [w["gloss"] for w in chunk["words"]] == ["senin", "yeni", "komşu"]
+    assert tr.gloss_phrase("between ... and ...")["tr"] == "… ile … arasında"
+    assert tr.gloss_phrase("Listen.") is None
+
+
+def test_season_package_export(tmp_path):
+    """Sezon paketi (H-050): jenerik videoları kopyalanır, season.json yazılır."""
+    from hvpipeline.season import SeasonSource, export_season, title_caption
+    src = tmp_path / "_evren" / "jenerik"
+    (src / "_build").mkdir(parents=True)
+    (src / "season.json").write_text(json.dumps({
+        "season": 1, "title": "The Missing Signal", "intro": "jenerik-tam.mp4", "short": "jenerik-kisa.mp4",
+        "titleBackground": "jenerik-baslik.mp4", "titleDuration": 2.5}), encoding="utf-8")
+    for name in ("jenerik-tam.mp4", "jenerik-kisa.mp4", "jenerik-baslik.mp4"):
+        (src / "_build" / name).write_bytes(b"x" * 10)
+    r = export_season(tmp_path, 1, probe=lambda p: 2.533, poster=lambda src, out: out.write_bytes(b"j" * 5))
+    out = tmp_path / "_evren" / "_build" / "season" / "S1"
+    assert r["dir"] == out and (out / "jenerik-baslik.mp4").exists()
+    doc = json.loads((out / "season.json").read_text(encoding="utf-8"))
+    assert doc["title"] == "The Missing Signal"
+    assert doc["titleBackground"] == {"video": "jenerik-baslik.mp4", "duration": 2.533, "poster": "jenerik-baslik.jpg"}
+    assert (out / "jenerik-baslik.jpg").read_bytes() == b"jjjjj"
+    assert doc["intro"]["video"] == "jenerik-tam.mp4" and doc["totalBytes"] == 35
+    assert SeasonSource.load(tmp_path, 2).title == "Sezon 2"  # kaynak yoksa varsayılan
+    assert title_caption(1, 3) == "SEZON 1 · BÖLÜM 3"
+    (src / "_build" / "jenerik-baslik.mp4").unlink()
+    with pytest.raises(FileNotFoundError):
+        export_season(tmp_path, 1)

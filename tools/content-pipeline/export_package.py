@@ -18,7 +18,10 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
+from hvpipeline import media  # noqa: E402
+from hvpipeline.build import file_digest  # noqa: E402
 from hvpipeline.export import export_episode  # noqa: E402
+from hvpipeline.season import export_season  # noqa: E402
 
 SYNC_LIMIT = 0.2
 AV_LIMIT = 0.05
@@ -33,6 +36,18 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--report", help="özet raporu JSON olarak yaz")
     a = ap.parse_args(argv)
     summary, failed = [], False
+    # Sezon paketi (H-050): bölümlerin başlık ekranı ve sezon jeneriği /packages/_season/S<n>/ altında.
+    seasons = {}
+    for d in a.episodes:
+        c = json.loads((Path(d) / "content.json").read_text(encoding="utf-8"))
+        seasons.setdefault((Path(d).resolve().parent, int(c.get("season", 1))), True)
+    for (root, n) in seasons:
+        sr = export_season(root, n, probe=media.probe_duration, digest=file_digest, poster=media.still)
+        sd = sr["doc"]
+        print(f"== Sezon {n} paketi → {sr['dir']}")
+        print("   " + ", ".join(f"{k} {sd[k]['video']} {sd[k].get('duration')} sn"
+                                for k in ("intro", "short", "titleBackground") if k in sd)
+              + f"; boyut {sd['totalBytes'] / 1e6:.1f} MB")
     for d in a.episodes:
         r = export_episode(Path(d), label=a.ai_label)
         m, doc = r["manifest"], r["doc"]
@@ -46,6 +61,8 @@ def main(argv: list[str] | None = None) -> int:
         row = {
             "episode": r["episode"], "package": str(r["package"]),
             "segments": sum(1 for n in nodes if n["type"] == "segment"),
+            "recaps": [{"id": n["id"], "duration": n["duration"]} for n in nodes if n["type"] == "recap"],
+            "title": next(({"duration": n["duration"], "next": n["next"]} for n in nodes if n["type"] == "title"), None),
             "videoFiles": len(r["probes"]),
             "decisions": sum(1 for n in nodes if n["type"] == "decision"),
             "reactions": sum(1 for n in nodes if n["type"] == "reaction"),
@@ -61,8 +78,9 @@ def main(argv: list[str] | None = None) -> int:
         ok = not errs and not sub_errs and (maxd is None or maxd <= SYNC_LIMIT) and not unmeasured
         failed |= not ok
         print(f"== {r['episode']}: {'TAMAM' if ok else 'SORUN'}  → {r['package']}")
-        print(f"   video dosyası {row['videoFiles']} (segment {row['segments']} + tepki videosu), karar {row['decisions']}, "
-              f"kart {row['cards']}, görev {row['tasks']}, yalnızca metin {len(m['textOnly'])}")
+        print(f"   video dosyası {row['videoFiles']} (segment {row['segments']} + özet {len(row['recaps'])} + tepki videosu), "
+              f"karar {row['decisions']}, kart {row['cards']}, görev {row['tasks']}, yalnızca metin {len(m['textOnly'])}")
+        print(f"   açılış: başlık {row['title']}; özet {row['recaps'] or 'yok'}")
         strict = [abs(s["deltaStrict"]) for s in r["sync"] if s.get("deltaStrict") is not None]
         row["syncMaxStrict"] = max(strict) if strict else None
         print(f"   senkron: en büyük fark {maxd} sn (%10 eşik; bilgi: %35 eşikle {row['syncMaxStrict']} sn), "

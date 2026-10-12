@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "episode": {
     "id": "A1-902", "slug": "broken", "level": "A1", "season": 1, "number": 902,
     "title": "Broken", "contentVersion": 1, "status": "DRAFT", "aiGenerated": true,

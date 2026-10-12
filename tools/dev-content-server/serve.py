@@ -5,6 +5,7 @@ Her bölüm paketini (`icerik/<id>/_build/package/`) şu adreste sunar:
 
     http://127.0.0.1:8787/packages/index.json          -> paket listesi
     http://127.0.0.1:8787/packages/<contentId>/<yol>   -> scenes.json, segments/*.mp4 ...
+    http://127.0.0.1:8787/packages/_season/S1/<yol>    -> sezon paketi: season.json, jenerik-*.mp4 (H-050)
 
 - Yalnızca 127.0.0.1'e bağlanır (dışarıya açık değildir).
 - HTTP Range isteklerini destekler (AVPlayer mp4 için bayt aralığı ister).
@@ -40,6 +41,21 @@ CONTENT_TYPES = {
     ".png": "image/png",
 }
 RANGE_RE = re.compile(r"^bytes=(\d*)-(\d*)$")
+SEASON_PREFIX = "_season"
+SEASON_DIR = Path("_evren") / "_build" / "season"   # export_package.py üretir
+SEASON_RE = re.compile(r"^S\d+$")
+
+
+def discover_seasons(root: Path) -> list[dict]:
+    """Sezon paketleri: `_evren/_build/season/S<n>/season.json`."""
+    out = []
+    for sj in sorted((root / SEASON_DIR).glob("S*/season.json")):
+        try:
+            d = json.loads(sj.read_text(encoding="utf-8"))
+            out.append({"season": d["season"], "title": d.get("title"), "path": f"{SEASON_PREFIX}/{sj.parent.name}"})
+        except (OSError, ValueError, KeyError) as exc:
+            print(f"uyarı: {sj} okunamadı: {exc}", file=sys.stderr)
+    return out
 
 
 def discover_packages(root: Path) -> dict[str, dict]:
@@ -86,6 +102,8 @@ class Handler(BaseHTTPRequestHandler):
         parts = [p for p in path.split("/") if p]
         if parts == ["packages", "index.json"]:
             return self._send_index(send_body)
+        if len(parts) >= 4 and parts[0] == "packages" and parts[1] == SEASON_PREFIX:
+            return self._send_season_file(parts[2], parts[3:], send_body)
         if len(parts) >= 3 and parts[0] == "packages":
             return self._send_package_file(parts[1], parts[2:], send_body)
         # http.server durum satırını latin-1 yazar: iletiler ASCII olmalı.
@@ -101,6 +119,7 @@ class Handler(BaseHTTPRequestHandler):
                     {k: v for k, v in p.items() if k != "dir"}
                     for p in sorted(packages.values(), key=lambda p: p["id"])
                 ],
+                "seasons": discover_seasons(self.root),
             },
             ensure_ascii=False,
         ).encode("utf-8")
@@ -112,11 +131,19 @@ class Handler(BaseHTTPRequestHandler):
         if send_body:
             self.wfile.write(body)
 
+    def _send_season_file(self, season: str, rel: list[str], send_body: bool) -> None:
+        base = (self.root / SEASON_DIR / season).resolve()
+        if not SEASON_RE.match(season) or not base.is_dir():
+            return self.send_error(HTTPStatus.NOT_FOUND, "Unknown season")
+        return self._send_file(base, rel, send_body)
+
     def _send_package_file(self, content_id: str, rel: list[str], send_body: bool) -> None:
         package = discover_packages(self.root).get(content_id)
         if package is None:
             return self.send_error(HTTPStatus.NOT_FOUND, "Unknown package")
-        base: Path = package["dir"].resolve()
+        return self._send_file(package["dir"].resolve(), rel, send_body)
+
+    def _send_file(self, base: Path, rel: list[str], send_body: bool) -> None:
         if any(p in ("..", ".") or p.startswith(".") for p in rel):
             return self.send_error(HTTPStatus.BAD_REQUEST, "Invalid path")
         target = (base / Path(*rel)).resolve()
@@ -195,6 +222,8 @@ def main(argv: list[str] | None = None) -> int:
     print(f"hiVelzon içerik sunucusu: http://127.0.0.1:{args.port}/packages/index.json")
     for p in sorted(packages):
         print(f"  {p}  {packages[p]['title']}  ({packages[p]['dir']})")
+    for s in discover_seasons(Handler.root):
+        print(f"  {s['path']}  Sezon {s['season']}: {s['title']}")
     try:
         server.serve_forever()
     except KeyboardInterrupt:

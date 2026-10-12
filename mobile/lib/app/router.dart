@@ -7,6 +7,7 @@ import '../features/player/application/autoplay_driver.dart';
 import '../features/player/presentation/player_screen.dart';
 import '../features/home/presentation/home_screen.dart';
 import '../features/profile/presentation/profile_screen.dart';
+import '../features/story/presentation/season_intro_screen.dart';
 import '../features/story/presentation/story_screen.dart';
 import '../features/talk/presentation/talk_screen.dart';
 import 'shell_scaffold.dart';
@@ -21,6 +22,9 @@ abstract final class AppRoutes {
 
   /// Bölüm oynatıcısı (sekme iskeletinin dışında, tam ekran).
   static String play(String contentId) => '/play/$contentId';
+
+  /// Sezon jeneriği (tam ekran, H-050).
+  static String seasonIntro(int season) => '/sezon/$season/jenerik';
 }
 
 final routerProvider = Provider<GoRouter>((ref) {
@@ -33,6 +37,16 @@ final routerProvider = Provider<GoRouter>((ref) {
           key: state.pageKey,
           fullscreenDialog: true,
           child: PlayerScreen(contentId: state.pathParameters['contentId']!),
+        ),
+      ),
+      GoRoute(
+        path: '/sezon/:season/jenerik',
+        pageBuilder: (context, state) => MaterialPage(
+          key: state.pageKey,
+          fullscreenDialog: true,
+          child: SeasonIntroScreen(
+            season: int.tryParse(state.pathParameters['season']!) ?? 1,
+          ),
         ),
       ),
       StatefulShellRoute.indexedStack(

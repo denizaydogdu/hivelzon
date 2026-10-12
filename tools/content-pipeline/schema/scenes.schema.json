@@ -1,13 +1,13 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://hi.velzon.tr/schema/scenes.v1.schema.json",
-  "title": "hiVelzon bölüm paketi: scenes.json (schemaVersion 1)",
-  "description": "Oynatıcının (H-031) okuduğu bölüm grafiği. Düğümler: segment, decision, reaction, card, task. Dosya yolları paket köküne göredir. Ayrıntı: docs/BOLUM-PAKETI.md.",
+  "$id": "https://hi.velzon.tr/schema/scenes.v2.schema.json",
+  "title": "hiVelzon bölüm paketi: scenes.json (schemaVersion 2)",
+  "description": "Oynatıcının (H-031) okuduğu bölüm grafiği. Düğümler: title (zorunlu başlangıç, H-050), recap, segment, decision, reaction, card, task. Dosya yolları paket köküne göredir; title düğümünün seasonVideo alanı sezon paketine (_season/S<n>/) göredir. Ayrıntı: docs/BOLUM-PAKETI.md.",
   "type": "object",
   "required": ["schemaVersion", "episode", "flags", "gate", "start", "nodes"],
   "additionalProperties": false,
   "properties": {
-    "schemaVersion": { "const": 1 },
+    "schemaVersion": { "const": 2 },
     "episode": { "$ref": "#/$defs/episode" },
     "flags": {
       "description": "Bu bölümde yazılan kalıcı bayraklar. K-28: bölüm başına en fazla 3.",
@@ -121,6 +121,21 @@
         "estimatedMinutes": { "type": "number" },
         "mission": { "$ref": "#/$defs/textTr" },
         "targetPhrases": { "type": "array", "items": { "type": "string" } },
+        "targetPhraseGloss": {
+          "description": "🎯 paneli (H-050): hedef ifadenin Türkçe anlamı (ceviri.tr.json'dan). Anlamı bulunmayan ifade listede yoktur.",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["text", "tr"],
+            "additionalProperties": false,
+            "properties": {
+              "text": { "type": "string", "minLength": 1 },
+              "tr": { "type": "string", "minLength": 1 },
+              "words": { "type": "array", "items": { "$ref": "#/$defs/glossWord" } },
+              "chunks": { "type": "array", "items": { "$ref": "#/$defs/chunk" } }
+            }
+          }
+        },
         "prev": { "type": ["string", "null"] },
         "next": { "type": ["string", "null"] },
         "links": {
@@ -174,12 +189,54 @@
     },
     "node": {
       "oneOf": [
+        { "$ref": "#/$defs/title" },
+        { "$ref": "#/$defs/recap" },
         { "$ref": "#/$defs/segment" },
         { "$ref": "#/$defs/decision" },
         { "$ref": "#/$defs/reaction" },
         { "$ref": "#/$defs/card" },
         { "$ref": "#/$defs/task" }
       ]
+    },
+    "title": {
+      "description": "Bölüm başlık ekranı (H-050): her bölümün ilk düğümü. Sezonun yazısız kısa animasyonu (seasonVideo, sezon paketinde) üstünde uygulama caption + title çizer. Dokunma gerekmez; video bitince next'e geçilir.",
+      "type": "object",
+      "required": ["id", "type", "season", "episode", "caption", "title", "seasonVideo", "duration", "next"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "$ref": "#/$defs/nodeId" },
+        "type": { "const": "title" },
+        "scene": { "type": "string" },
+        "checkpoint": { "type": "boolean" },
+        "season": { "type": "integer", "minimum": 1 },
+        "episode": { "type": "integer", "minimum": 0 },
+        "caption": { "type": "string", "minLength": 1 },
+        "title": { "type": "string", "minLength": 1 },
+        "seasonVideo": { "type": "string", "pattern": "^[A-Za-z0-9._-]+\\.mp4$" },
+        "seasonPoster": {
+          "description": "Sezon paketindeki ilk kare (jpg): video ilk karesi gelene dek gösterilir.",
+          "type": "string", "pattern": "^[A-Za-z0-9._-]+\\.jpg$"
+        },
+        "duration": { "type": "number", "exclusiveMinimum": 0 },
+        "next": { "$ref": "#/$defs/next" }
+      }
+    },
+    "recap": {
+      "description": "\"Önceki bölümde\" (H-050): başlıktan sonra gelen, atlanabilir kısa video. Segment gibi oynar.",
+      "type": "object",
+      "required": ["id", "type", "video", "duration", "next"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "$ref": "#/$defs/nodeId" },
+        "type": { "const": "recap" },
+        "scene": { "type": "string" },
+        "checkpoint": { "type": "boolean" },
+        "video": { "$ref": "#/$defs/segmentPath" },
+        "duration": { "type": "number", "exclusiveMinimum": 0 },
+        "subtitles": { "oneOf": [{ "$ref": "#/$defs/subsPath" }, { "type": "null" }] },
+        "skippable": { "type": "boolean" },
+        "next": { "$ref": "#/$defs/next" }
+      }
     },
     "segment": {
       "description": "Kesintisiz video parçası. Karar anlarında bölünür. Altyazı videoya gömülmez (K-03).",
@@ -275,14 +332,14 @@
       }
     },
     "card": {
-      "description": "Ekranda yerel arayüzle çizilen kart: başlık, görev, Hi balonu, replik, not/mesaj (dünya içi yazı), ipucu, açık soru.",
+      "description": "Ekranda yerel arayüzle çizilen kart: Hi balonu, replik, not/mesaj (dünya içi yazı), ipucu, açık soru. Başlık ve görev kartı schemaVersion 2'de yoktur (H-050: başlık = title düğümü; görev 🎯 panelinde).",
       "type": "object",
       "required": ["id", "type", "kind", "lines", "next"],
       "additionalProperties": false,
       "properties": {
         "id": { "$ref": "#/$defs/nodeId" },
         "type": { "const": "card" },
-        "kind": { "enum": ["title", "mission", "hi", "line", "note", "message", "clue", "openQuestion"] },
+        "kind": { "enum": ["hi", "line", "note", "message", "clue", "openQuestion"] },
         "scene": { "type": "string" },
         "checkpoint": { "type": "boolean" },
         "title": { "type": "string" },

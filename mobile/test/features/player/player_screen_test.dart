@@ -34,7 +34,10 @@ void main() {
     source = FakeContentSource();
   });
 
-  Future<void> pumpPlayer(WidgetTester tester) async {
+  Future<void> pumpPlayer(
+    WidgetTester tester, {
+    String contentId = 'A1-001',
+  }) async {
     tester.view.physicalSize = const Size(1179, 2556);
     tester.view.devicePixelRatio = 3;
     addTearDown(tester.view.reset);
@@ -48,9 +51,9 @@ void main() {
         ],
         child: MaterialApp(
           theme: AppTheme.light(),
-          home: const MediaQuery(
-            data: MediaQueryData(disableAnimations: true),
-            child: PlayerScreen(contentId: 'A1-001'),
+          home: MediaQuery(
+            data: const MediaQueryData(disableAnimations: true),
+            child: PlayerScreen(contentId: contentId),
           ),
         ),
       ),
@@ -75,11 +78,13 @@ void main() {
     tester,
   ) async {
     await pumpPlayer(tester);
-    await step(tester, 1500); // s01 oynar ve biter
-    await step(tester, 2800); // başlık kartı kendiliğinden geçer
-    expect(find.text('Mesajdaki kişiyi ve yeri bul.'), findsOneWidget);
-    expect(repo.checkpoints['A1-001']!.checkpointNodeId, 's01');
-    await tapKey(tester, 'card-continue');
+    await step(tester, 300);
+    // H-050: ilk ekran başlık; görev kartı yok.
+    expect(find.text('SEZON 1 · BÖLÜM 1'), findsOneWidget);
+    expect(find.text('Mesajdaki kişiyi ve yeri bul.'), findsNothing);
+    await step(tester, 1500); // başlık kendiliğinden geçer, s02 başlar
+    expect(find.text('SEZON 1 · BÖLÜM 1'), findsNothing);
+    expect(repo.checkpoints['A1-001']!.checkpointNodeId, 's02');
     await step(tester, 1500); // s02
 
     // Karar anı (T3).
@@ -151,7 +156,7 @@ void main() {
     expect(repo.checkpoints, isEmpty, reason: 'bitince kayıt silinir');
     expect(repo.episodeFlags['A1-001'], isEmpty);
     await tester.pumpWidget(const SizedBox());
-    await step(tester, 300);
+    await step(tester, 1200);
   });
 
   testWidgets('kayıt varsa "Kaldığın yerden devam" sorulur', (tester) async {
@@ -166,10 +171,17 @@ void main() {
     expect(find.text('Kaldığın yerden devam'), findsOneWidget);
     expect(find.text('Baştan başla'), findsOneWidget);
     await tapKey(tester, 'resume-continue');
+    await step(tester, 300);
+    expect(
+      find.text('SEZON 1 · BÖLÜM 1'),
+      findsOneWidget,
+      reason: 'önce başlık',
+    );
+    await step(tester, 1500); // başlık → s05 (özet ve s02 atlanır)
     await step(tester, 1500); // s05 oynar
     expect(find.text('Kelimeleri sırala: Alex ne soruyor?'), findsOneWidget);
     await tester.pumpWidget(const SizedBox());
-    await step(tester, 300);
+    await step(tester, 1200);
   });
 
   testWidgets('sunucu kapalıysa hata ve tekrar dene', (tester) async {
@@ -182,69 +194,63 @@ void main() {
     await step(tester, 1500);
     expect(find.text('İçerik sunucusuna ulaşılamadı.'), findsNothing);
     await tester.pumpWidget(const SizedBox());
-    await step(tester, 300);
+    await step(tester, 1200);
   });
 
   testWidgets('kapatınca onay sorulur ve kontrol noktası kaydedilir', (
     tester,
   ) async {
     await pumpPlayer(tester);
-    await step(tester, 300);
+    await step(tester, 1500); // başlık → s02 (Sahne 1 kontrol noktası)
     await tester.tap(find.byTooltip('Bölümden çık'));
     await step(tester, 300);
     expect(find.text('Bölümden çıkılsın mı?'), findsOneWidget);
     await tester.tap(find.text('Kal'));
     await step(tester, 300);
     expect(find.text('Bölümden çıkılsın mı?'), findsNothing);
-    expect(repo.checkpoints['A1-001']!.checkpointNodeId, 's01');
+    expect(repo.checkpoints['A1-001']!.checkpointNodeId, 's02');
     await tester.pumpWidget(const SizedBox());
-    await step(tester, 300);
+    await step(tester, 1200);
   });
 
   group('anlam paneli (H-046)', () {
-    /// s01 (5 sn) → başlık kartı → görev kartı → s02.
+    /// Başlık (5 sn) kendiliğinden geçer → s02.
     Future<void> toS02(WidgetTester tester) async {
       await step(tester, 5600);
-      await step(tester, 2800);
-      await tapKey(tester, 'card-continue');
-      await step(tester, 600);
     }
 
-    testWidgets('görev kartındaki İngilizce satır paneli açar (sessiz kart)', (
-      tester,
-    ) async {
-      await pumpPlayer(tester);
-      await step(tester, 5600);
-      await step(tester, 2800);
-      await tapKey(tester, 'card-line-1');
-      await step(tester, 400);
-      expect(find.byType(BottomSheet), findsOneWidget);
-      // "Can you hear me?" kalıbı: kelimeye dokununca kalıbın anlamı da çıkar.
-      await tapKey(tester, 'meaning-word-2');
-      final sheetScroll = find
-          .descendant(
-            of: find.byType(BottomSheet),
-            matching: find.byType(Scrollable),
-          )
-          .first;
-      await tester.scrollUntilVisible(
-        find.byKey(const ValueKey('meaning-reveal')),
-        120,
-        scrollable: sheetScroll,
-      );
-      expect(find.text('Türkçesini göster'), findsOneWidget);
-      expect(find.text('duymak'), findsOneWidget);
-      expect(find.byKey(const ValueKey('meaning-chunk-panel')), findsOneWidget);
-      expect(
-        find.text('Can you hear me? = Beni duyabiliyor musun?'),
-        findsOneWidget,
-      );
-      await tapKey(tester, 'meaning-close');
-      await step(tester, 400);
-      expect(find.text('Mesajdaki kişiyi ve yeri bul.'), findsOneWidget);
-      await tester.pumpWidget(const SizedBox());
-      await step(tester, 6000);
-    });
+    testWidgets(
+      '🎯 paneli: görev ve hedef ifadeler; ifadeye dokununca anlam, video durur ve sürer',
+      (tester) async {
+        await pumpPlayer(tester);
+        await toS02(tester);
+        expect(platform.isPlaying('segments/s02.mp4'), isTrue);
+        await tapKey(tester, 'mission-button');
+        await step(tester, 400);
+        expect(find.byKey(const ValueKey('mission-sheet')), findsOneWidget);
+        expect(find.text('Mesajdaki kişiyi ve yeri bul.'), findsOneWidget);
+        expect(find.text('Can you hear me?'), findsOneWidget);
+        expect(find.text('Listen.'), findsOneWidget);
+        expect(platform.isPlaying('segments/s02.mp4'), isFalse);
+        // Anlamı olan ifade dokunulabilir; "Listen." için anlam yok.
+        expect(find.byKey(const ValueKey('mission-phrase-0')), findsOneWidget);
+        expect(find.byKey(const ValueKey('mission-phrase-4')), findsNothing);
+        await tapKey(tester, 'mission-phrase-0');
+        await step(tester, 400);
+        await tapKey(tester, 'meaning-reveal');
+        expect(find.text('Beni duyabiliyor musun?'), findsWidgets);
+        await tapKey(tester, 'meaning-close');
+        await step(tester, 400);
+        expect(find.byKey(const ValueKey('mission-sheet')), findsOneWidget);
+        expect(platform.isPlaying('segments/s02.mp4'), isFalse);
+        await tapKey(tester, 'mission-close');
+        await step(tester, 400);
+        expect(find.byKey(const ValueKey('mission-sheet')), findsNothing);
+        expect(platform.isPlaying('segments/s02.mp4'), isTrue);
+        await tester.pumpWidget(const SizedBox());
+        await step(tester, 6000);
+      },
+    );
 
     setUp(() {
       // Segment 5 sn sürer ve oynarken 0,7. saniyede görünür:
@@ -325,6 +331,86 @@ void main() {
       expect(find.text('OK. Friday.'), findsNothing);
       await tester.pumpWidget(const SizedBox());
       await step(tester, 6000);
+    });
+  });
+
+  group('açılış (H-050)', () {
+    testWidgets('başlık ekranı: yazı, AI notu, dokunmadan geçiş', (
+      tester,
+    ) async {
+      await pumpPlayer(tester);
+      await step(tester, 300);
+      expect(find.text('SEZON 1 · BÖLÜM 1'), findsOneWidget);
+      expect(find.text('A Strange Message'), findsOneWidget);
+      expect(
+        find.bySemanticsLabel('Sezon 1, Bölüm 1: A Strange Message'),
+        findsOneWidget,
+      );
+      expect(find.text('Yapay zekâ ile üretilmiştir'), findsOneWidget);
+      expect(find.byKey(const ValueKey('recap-skip')), findsNothing);
+      // Başlık arka planı sezon paketinden gelir; ilk kare afişi altta durur.
+      expect(platform.isPlaying('_season/S1/jenerik-baslik.mp4'), isTrue);
+      expect(find.byKey(const ValueKey('title-poster')), findsOneWidget);
+      // Başlıkta oynatma denetimi (duraklat simgesi) yok.
+      expect(find.byIcon(Icons.pause_rounded), findsNothing);
+      // Dokunmak başlığı durdurmaz.
+      await tester.tapAt(const Offset(200, 600));
+      await step(tester, 200);
+      expect(platform.isPlaying('_season/S1/jenerik-baslik.mp4'), isTrue);
+      await step(tester, 1000); // 1 sn'lik başlık biter
+      expect(find.text('A Strange Message'), findsNothing);
+      expect(platform.isPlaying('segments/s02.mp4'), isTrue);
+      await tester.pumpWidget(const SizedBox());
+      await step(tester, 1200);
+    });
+
+    testWidgets('B2: başlık → "Önceki bölümde" → Atla → hikâye', (
+      tester,
+    ) async {
+      await pumpPlayer(tester, contentId: 'A1-002');
+      await step(tester, 300);
+      expect(find.text('SEZON 1 · BÖLÜM 2'), findsOneWidget);
+      expect(find.text('Önceki bölümde'), findsNothing);
+      await step(tester, 900); // başlık biter → özet
+      expect(find.text('Önceki bölümde'), findsOneWidget);
+      expect(find.text('Atla'), findsOneWidget);
+      expect(platform.isPlaying('segments/recap.mp4'), isTrue);
+      final skip = tester.getSize(find.byKey(const ValueKey('recap-skip')));
+      expect(skip.height, greaterThanOrEqualTo(48));
+      await tapKey(tester, 'recap-skip');
+      await step(tester, 200);
+      expect(find.text('Önceki bölümde'), findsNothing);
+      expect(platform.isPlaying('segments/recap.mp4'), isFalse);
+      expect(platform.isPlaying('segments/s02.mp4'), isTrue);
+      expect(repo.checkpoints['A1-002']!.checkpointNodeId, 's02');
+      await tester.pumpWidget(const SizedBox());
+      await step(tester, 1200);
+    });
+
+    testWidgets('B2: özet atlanmazsa kendiliğinden hikâyeye geçer', (
+      tester,
+    ) async {
+      await pumpPlayer(tester, contentId: 'A1-002');
+      await step(tester, 1200); // başlık
+      expect(find.text('Önceki bölümde'), findsOneWidget);
+      await step(tester, 1200); // özet biter
+      expect(find.text('Önceki bölümde'), findsNothing);
+      expect(platform.isPlaying('segments/s02.mp4'), isTrue);
+      await tester.pumpWidget(const SizedBox());
+      await step(tester, 1200);
+    });
+
+    testWidgets('B3: özetten sonra Maya mesajı (Sahne 1 içinde)', (
+      tester,
+    ) async {
+      await pumpPlayer(tester, contentId: 'A1-003');
+      await step(tester, 1200); // başlık
+      await step(tester, 1200); // özet
+      expect(find.text('Maya'), findsOneWidget);
+      expect(find.text('Here is the map. Good luck!'), findsOneWidget);
+      expect(repo.checkpoints['A1-003']!.checkpointNodeId, 'c-msg');
+      await tester.pumpWidget(const SizedBox());
+      await step(tester, 1200);
     });
   });
 }

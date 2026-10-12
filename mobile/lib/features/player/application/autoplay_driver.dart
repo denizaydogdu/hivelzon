@@ -13,6 +13,8 @@ import 'transition_metrics.dart';
 /// - `resume2`: B1'i açar, "Kaldığın yerden devam"ı seçer ve sona dek oynatır.
 /// - `meaning`: `true` gibi; B1 s02'de anlam panelini açar, kelime ve
 ///   "Türkçesini göster" adımlarını, ardından EN+TR altyazıyı gösterir (H-046).
+/// - `h050`: sezon jeneriği (ilk açılış), B1 başlık ekranı ve 🎯 paneli, B2
+///   başlık → "Önceki bölümde" + "Atla" (H-050). Yalnızca B1 ve B2 oynar.
 const String kAutoplayMode = String.fromEnvironment('AUTOPLAY_TEST');
 
 bool get autoplayEnabled =>
@@ -79,6 +81,10 @@ class AutoplayDriver {
   bool _exited = false;
 
   bool get _isB1 => session.contentId == 'A1-001';
+  bool get _h050 => kAutoplayMode == 'h050';
+  bool _missionDone = false;
+  bool _titleShotArmed = true;
+  bool _recapShotArmed = true;
 
   void dispose() {
     _disposed = true;
@@ -96,7 +102,7 @@ class AutoplayDriver {
 
   /// Ekran görüntüsü için bekleme (yalnızca ilk kez).
   int _shot(String name, {int holdMs = 3500}) {
-    if (!_isB1 || !_shots.add(name)) return 0;
+    if (!(_isB1 || _h050) || !_shots.add(name)) return 0;
     _log('[SHOT] $name');
     return holdMs;
   }
@@ -152,6 +158,10 @@ class AutoplayDriver {
       return;
     }
     switch (node) {
+      case TitleNode():
+        if (_h050 && _isB1) _pauseForShot(node.id, 'title', at: 0.9);
+      case RecapNode():
+        if (_h050) _recapShot(node);
       case SegmentNode():
         if (kAutoplayMode == 'meaning') {
           _armMeaningShots(node);
@@ -172,6 +182,11 @@ class AutoplayDriver {
           } else {
             _after(1200 + hold, s.closeHint);
           }
+          return;
+        }
+        if (_h050 && _isB1 && !_missionDone) {
+          _missionDone = true;
+          unawaited(_missionShots(node));
           return;
         }
         if (!_hintDone && hints.isNotEmpty) {
@@ -195,6 +210,79 @@ class AutoplayDriver {
           s.completeTask();
         });
     }
+  }
+
+  /// Video düğümünün [at]. saniyesinde ekran görüntüsü işareti (durdurmadan).
+  void _pauseForShot(String nodeId, String name, {required double at}) {
+    if (!_titleShotArmed) return;
+    _titleShotArmed = false;
+    _poll?.cancel();
+    _poll = Timer.periodic(const Duration(milliseconds: 20), (t) {
+      if (_disposed || session.node?.id != nodeId) {
+        t.cancel();
+        return;
+      }
+      if (session.activeReady && session.positionSeconds >= at) {
+        t.cancel();
+        _log('[SHOT] $name');
+      }
+    });
+  }
+
+  /// B2 özeti: "Önceki bölümde" + "Atla" görüntüsü (durdurmadan), ardından
+  /// "Atla" ile geçilir.
+  void _recapShot(RecapNode node) {
+    if (!_recapShotArmed || session.contentId != 'A1-002') return;
+    _recapShotArmed = false;
+    _poll?.cancel();
+    _poll = Timer.periodic(const Duration(milliseconds: 20), (t) async {
+      if (_disposed || session.node?.id != node.id) {
+        t.cancel();
+        return;
+      }
+      if (session.activeReady && session.positionSeconds >= 0.6) {
+        t.cancel();
+        _log('[SHOT] recap');
+        await Future<void>.delayed(const Duration(milliseconds: 1100));
+        if (_disposed || session.node?.id != node.id) return;
+        _log('özet "Atla" ile geçiliyor');
+        await session.skipRecap();
+      }
+    });
+  }
+
+  /// B1 ilk kararda 🎯 paneli ve hedef ifadenin anlam paneli (H-050).
+  Future<void> _missionShots(DecisionNode node) async {
+    final s = session;
+    await s.openMissionPanel();
+    await Future<void>.delayed(const Duration(milliseconds: 1200));
+    _log('[SHOT] mission');
+    await Future<void>.delayed(const Duration(milliseconds: 3500));
+    if (_disposed) return;
+    final info = s.episode!.info;
+    final phrase = info.targetPhrases.firstWhere(
+      (p) => info.targetPhraseGloss.containsKey(p),
+      orElse: () => '',
+    );
+    final gloss = info.targetPhraseGloss[phrase];
+    if (gloss != null) {
+      s.openMeaningForText(
+        gloss.toMeaning(
+          contentId: s.contentId,
+          sourceId: '${info.id}#target-0',
+          en: phrase,
+        ),
+      );
+      await Future<void>.delayed(const Duration(milliseconds: 1200));
+      _log('[SHOT] mission-phrase');
+      await Future<void>.delayed(const Duration(milliseconds: 3500));
+      if (_disposed) return;
+      await s.closeMeaning();
+      await Future<void>.delayed(const Duration(milliseconds: 500));
+    }
+    await s.closeMissionPanel();
+    await Future<void>.delayed(const Duration(milliseconds: 600));
+    if (!_disposed && s.node?.id == node.id) _drive(node);
   }
 
   /// B1 s02'deki "Can you hear me?" satırında ekran görüntüsü için duraklat.

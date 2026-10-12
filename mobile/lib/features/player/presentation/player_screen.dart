@@ -20,6 +20,8 @@ import '../domain/episode.dart';
 import 'widgets/card_view.dart';
 import 'widgets/decision_sheet.dart';
 import 'widgets/end_view.dart';
+import 'widgets/mission_sheet.dart';
+import 'widgets/opening_overlays.dart';
 import 'widgets/player_top_bar.dart';
 import 'widgets/player_ui.dart';
 import 'widgets/subtitle_overlay.dart';
@@ -47,6 +49,7 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen>
   String? _still;
   String? _lastNodeId;
   MeaningController? _shownMeaning;
+  bool _missionShown = false;
 
   @override
   void initState() {
@@ -85,7 +88,19 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen>
     }
   }
 
+  bool _posterCached = false;
+
   void _onSession() {
+    // Başlık afişi bölüm yüklenir yüklenmez önbelleğe alınır (H-050).
+    final poster = _session.episode?.titleNode?.posterPath;
+    if (!_posterCached && poster != null && mounted) {
+      _posterCached = true;
+      precacheImage(
+        NetworkImage(_session.media(poster).toString()),
+        context,
+        onError: (_, _) {},
+      );
+    }
     final node = _session.node;
     if (node?.id != _lastNodeId) {
       _lastNodeId = node?.id;
@@ -101,7 +116,43 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen>
     // Durağan görsel, yeni videonun ilk karesi gelene dek kalır.
     if (_session.isVideoNode && _session.activeReady) _still = null;
     _syncMeaningSheet();
+    _syncMissionSheet();
     if (mounted) setState(() {});
+  }
+
+  /// Oturumdaki 🎯 paneli ile ekrandaki alt paneli eşler (H-050).
+  void _syncMissionSheet() {
+    if (!mounted) return;
+    final open = _session.missionPanelOpen;
+    if (open && !_missionShown) {
+      _missionShown = true;
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        final info = _session.episode?.info;
+        if (!mounted || info == null || !_session.missionPanelOpen) {
+          _missionShown = false;
+          unawaited(_session.closeMissionPanel());
+          return;
+        }
+        showMissionSheet(
+          context,
+          info: info,
+          onPhraseTap: (i, phrase, gloss) => _openText(
+            gloss.toMeaning(
+              contentId: _session.contentId,
+              sourceId: '${info.id}#target-$i',
+              en: phrase,
+            ),
+          ),
+        ).whenComplete(() {
+          _missionShown = false;
+          unawaited(_session.closeMissionPanel());
+        });
+      });
+    } else if (!open && _missionShown && _shownMeaning == null) {
+      // Oturum paneli kapattı (doğrulama modu): alt paneli indir.
+      final nav = Navigator.of(context);
+      if (nav.canPop()) nav.pop();
+    }
   }
 
   /// Oturumdaki anlam paneli ile ekrandaki alt paneli eşler.
@@ -157,6 +208,7 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen>
 
   void _exit() {
     if (!mounted) return;
+    debugPrint('[H031] oynatıcıdan çıkış ${widget.contentId}');
     if (context.canPop()) {
       context.pop();
     } else {
@@ -240,6 +292,7 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen>
     final e = s.engine!;
     final node = s.node;
     final isVideo = s.isVideoNode;
+    final isTitle = node is TitleNode;
     final dim = !isVideo || s.reactionBubbleVisible;
     final media = MediaQuery.of(context);
 
@@ -249,7 +302,8 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen>
         // 1) Video katmanı: eski son kare altta, yenisi ilk karesi gelince üstte.
         GestureDetector(
           behavior: HitTestBehavior.opaque,
-          onTap: isVideo ? () => unawaited(s.togglePause()) : null,
+          // Başlık ekranı dokunmayla durmaz (kendiliğinden geçer, H-050).
+          onTap: isVideo && !isTitle ? () => unawaited(s.togglePause()) : null,
           child: _VideoLayer(session: s),
         ),
         // 2) Karar/kart arka planı (durağan görsel).
@@ -261,6 +315,24 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen>
               fit: BoxFit.cover,
               gaplessPlayback: true,
               errorBuilder: (_, _, _) => const SizedBox.shrink(),
+            ),
+          ),
+        // 2b) Başlık afişi (H-050): video ilk karesi gelene dek görünür, sonra
+        // videoya yumuşakça bırakır. Bölüm açılışında boş/siyah kare olmaz.
+        if (node is TitleNode && node.posterPath != null)
+          Positioned.fill(
+            child: IgnorePointer(
+              child: AnimatedOpacity(
+                key: const ValueKey('title-poster'),
+                opacity: s.activeReady ? 0 : 1,
+                duration: const Duration(milliseconds: 200),
+                child: Image.network(
+                  s.media(node.posterPath!).toString(),
+                  fit: BoxFit.cover,
+                  gaplessPlayback: true,
+                  errorBuilder: (_, _, _) => const SizedBox.shrink(),
+                ),
+              ),
             ),
           ),
         // 3) Karar anında kararma (K-27).
@@ -276,11 +348,11 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen>
             ),
           ),
         ),
-        if (s.videoLoading && isVideo)
+        if (s.videoLoading && isVideo && !isTitle)
           const Center(
             child: CircularProgressIndicator(color: AppColors.lighthouseYellow),
           ),
-        if (s.userPaused && isVideo)
+        if (s.userPaused && isVideo && !isTitle)
           const IgnorePointer(
             child: Center(
               child: CircleAvatar(
@@ -295,7 +367,11 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen>
           Positioned(
             left: AppSpacing.sm,
             right: AppSpacing.sm,
-            bottom: media.padding.bottom + AppSpacing.lg + AppSpacing.md,
+            bottom:
+                media.padding.bottom +
+                AppSpacing.lg +
+                AppSpacing.md +
+                (node is RecapNode ? RecapBar.height : 0),
             child: Center(
               child: SubtitleOverlay(
                 session: s,
@@ -304,7 +380,7 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen>
               ),
             ),
           ),
-        // 5) Yapay zekâ etiketi (§5.6): bölüm açılınca birkaç saniye görünür, sonra
+        // 5) Yapay zekâ etiketi (§5.6): bölüm açılınca (başlık ekranında) birkaç saniye görünür, sonra
         // kaybolur (kullanıcı kararı 2026-10-12: "kullanıcı az görsün"). Uygulama içi
         // videolarda gömülü etiket yok; sosyal medya kesitlerinde gömülü kalır (K-14).
         Positioned(
@@ -338,6 +414,7 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen>
               onClose: () => unawaited(_confirmClose()),
               onSpeed: s.setSpeed,
               onSubtitleMode: s.setSubtitleMode,
+              onMission: () => unawaited(s.openMissionPanel()),
             ),
           ),
         ),
@@ -522,6 +599,28 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen>
                 ),
                 audio: node.audio,
               ),
+            ),
+          ),
+        ];
+      case TitleNode():
+        return [
+          Positioned.fill(
+            key: ValueKey('title-${node.id}'),
+            child: EpisodeTitleOverlay(
+              node: node,
+              positionSeconds: () => s.activeReady ? s.positionSeconds : 0,
+            ),
+          ),
+        ];
+      case RecapNode():
+        return [
+          Positioned(
+            key: ValueKey('recap-${node.id}'),
+            left: AppSpacing.sm,
+            right: AppSpacing.sm,
+            bottom: MediaQuery.of(context).padding.bottom + AppSpacing.sm,
+            child: RecapBar(
+              onSkip: e.canSkip ? () => unawaited(s.skipRecap()) : null,
             ),
           ),
         ];
@@ -747,10 +846,13 @@ class _ResumePanel extends StatelessWidget {
   }
 }
 
-
 /// Bölüm başında kısa süre görünen yapay zekâ bilgisi.
 class AiNotice extends StatefulWidget {
-  const AiNotice({super.key, required this.text, this.visibleFor = const Duration(seconds: 4)});
+  const AiNotice({
+    super.key,
+    required this.text,
+    this.visibleFor = const Duration(seconds: 4),
+  });
 
   final String text;
   final Duration visibleFor;
@@ -793,7 +895,10 @@ class _AiNoticeState extends State<AiNotice> {
           children: [
             const Icon(Icons.auto_awesome, size: 14, color: Colors.white70),
             const SizedBox(width: 6),
-            Text(widget.text, style: const TextStyle(color: Colors.white, fontSize: 12)),
+            Text(
+              widget.text,
+              style: const TextStyle(color: Colors.white, fontSize: 12),
+            ),
           ],
         ),
       ),

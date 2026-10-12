@@ -8,9 +8,12 @@ import 'fixtures.dart';
 
 /// Fixture JSON'larından okuyan kaynak; medya adresleri sahte.
 class FakeContentSource implements ContentSource {
-  FakeContentSource({this.fail = false});
+  FakeContentSource({this.fail = false, this.seasonFails = false});
 
   bool fail;
+
+  /// Sezon paketi yoksa Hikâye sekmesi sezon başlığını gizler.
+  bool seasonFails;
   int listCalls = 0;
 
   @override
@@ -43,4 +46,20 @@ class FakeContentSource implements ContentSource {
   @override
   Uri mediaUri(String contentId, String path) =>
       Uri.parse('http://test.invalid/$contentId/$path');
+
+  @override
+  Future<SeasonInfo> loadSeason(int season) async {
+    if (fail || seasonFails) throw ContentUnavailableException('kapalı');
+    return SeasonInfo(
+      season: season,
+      title: 'The Missing Signal',
+      introVideo: 'jenerik-tam.mp4',
+      introDuration: 10.3,
+      titleBackground: 'jenerik-baslik.mp4',
+    );
+  }
+
+  @override
+  Uri seasonMediaUri(int season, String path) =>
+      Uri.parse('http://test.invalid/_season/S$season/$path');
 }

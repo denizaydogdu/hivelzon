@@ -29,6 +29,43 @@ class PackageSummary {
   final double? estimatedMinutes;
 }
 
+/// Sezon paketi (`/packages/_season/S<n>/season.json`, H-050).
+class SeasonInfo {
+  const SeasonInfo({
+    required this.season,
+    required this.title,
+    this.introVideo,
+    this.introDuration,
+    this.titleBackground,
+    this.aiLabel = 'Yapay zekâ ile üretilmiştir',
+  });
+
+  factory SeasonInfo.fromJson(Map<String, dynamic> j) {
+    String? video(Object? e) => e is Map ? e['video'] as String? : null;
+    return SeasonInfo(
+      season: (j['season'] as num).toInt(),
+      title: (j['title'] as String?) ?? 'Sezon ${j['season']}',
+      introVideo: video(j['intro']),
+      introDuration: j['intro'] is Map
+          ? ((j['intro'] as Map)['duration'] as num?)?.toDouble()
+          : null,
+      titleBackground: video(j['titleBackground']),
+      aiLabel: (j['aiLabel'] as String?) ?? 'Yapay zekâ ile üretilmiştir',
+    );
+  }
+
+  final int season;
+  final String title;
+
+  /// Tam jenerik (~10 sn): sezonun ilk açılışında bir kez oynar.
+  final String? introVideo;
+  final double? introDuration;
+
+  /// Bölüm başlık ekranının yazısız arka planı.
+  final String? titleBackground;
+  final String aiLabel;
+}
+
 /// İçeriğe erişilemedi (sunucu kapalı, ağ yok, dosya bozuk).
 class ContentUnavailableException implements Exception {
   ContentUnavailableException(this.message, {this.cause});
@@ -51,4 +88,10 @@ abstract interface class ContentSource {
 
   /// Paket içindeki bir dosyanın (video, ses, görsel) oynatılabilir adresi.
   Uri mediaUri(String contentId, String path);
+
+  /// Sezon paketi bilgisi (jenerik ve başlık arka planı, H-050).
+  Future<SeasonInfo> loadSeason(int season);
+
+  /// Sezon paketindeki bir dosyanın adresi (`/packages/_season/S<n>/<yol>`).
+  Uri seasonMediaUri(int season, String path);
 }

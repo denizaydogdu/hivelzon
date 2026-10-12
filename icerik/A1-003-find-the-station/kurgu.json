@@ -1,8 +1,8 @@
 {
-  "kurguVersion": 1,
+  "kurguVersion": 2,
   "contentId": "A1-003",
   "source": "Ön izleme kurgusu b3_kurgu.py (H-032) düğümlere bölündü; karar kartları ve altyazı artık uygulamada (K-03).",
-  "start": "s01",
+  "start": "title",
   "externalFlags": [
     {"episode": "A1-002", "id": "greet_tone", "values": ["formal", "friendly"], "default": "friendly"}
   ],
@@ -13,26 +13,16 @@
   },
   "nodes": [
     {
-      "id": "s01", "type": "segment", "scene": "Soğuk açılış", "checkpoint": true,
+      "id": "title", "type": "title",
+      "next": "recap"
+    },
+    {
+      "id": "recap", "type": "recap",
       "shots": [{"image": "../A1-002-the-new-neighbour/images/B2-06-maya-harita.png", "audio": [{"path": "../A1-002-the-new-neighbour/audio/b2_28_maya"}], "move": [1.08, 1.14, 0.5, 0.5, 0.5, 0.55]}],
-      "next": "c-title"
-    },
-    {
-      "id": "c-title", "type": "card", "kind": "title", "advance": "auto", "duration": 2.5,
-      "background": "images/B3-01-mesaj.png",
-      "lines": [{"text": "SEZON 1 · BÖLÜM 3", "lang": "tr", "style": "caption"},
-                {"text": "Find the Station", "lang": "en", "style": "heading"}],
-      "next": "c-mission"
-    },
-    {
-      "id": "c-mission", "type": "card", "kind": "mission", "advance": "tap",
-      "background": "images/B3-01-mesaj.png",
-      "lines": [{"text": "Haritayı ve yol tarifini kullanarak Old Station'ı bul.", "lang": "tr", "style": "heading"},
-                {"text": "Go straight. · Turn left / right. · It's near… · It's between… · It's behind…", "lang": "en", "style": "highlight"}],
       "next": "c-msg"
     },
     {
-      "id": "c-msg", "type": "card", "kind": "message", "advance": "tap",
+      "id": "c-msg", "type": "card", "kind": "message", "scene": "Sahne 1: Sokakta", "checkpoint": true, "advance": "tap",
       "background": "images/B3-01-mesaj.png",
       "title": "Maya",
       "lines": [{"text": "Sorry, Alex! I can't come today.", "lang": "en"}, {"text": "Here is the map. Good luck!", "lang": "en"}],
@@ -50,7 +40,7 @@
       "next": "k1"
     },
     {
-      "id": "k1", "type": "decision", "scene": "Sahne 1: Sokakta", "checkpoint": true, "skill": "spoken_interaction", "cefr": "A1",
+      "id": "k1", "type": "decision", "skill": "spoken_interaction", "cefr": "A1",
       "prompt": {"tr": "Köpekli adama limanı sor."},
       "pov": "POV: yokuşlu sokak, köpeğini gezdiren adam.",
       "background": "images/B3-02-kopekli-adam-pov.png",

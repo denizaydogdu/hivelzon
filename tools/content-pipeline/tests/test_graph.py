@@ -23,7 +23,7 @@ def test_broken_graph_reports_every_rule():
     issues = check_scenes(load("scenes-broken.json"))
     got = {i.code for i in issues if i.level == "error"}
     for expected in ("schema", "unreachable", "dangling", "no-correct", "wrong-no-return",
-                     "flags", "decisions", "flag-undeclared", "dead-end", "gate"):
+                     "flags", "decisions", "flag-undeclared", "dead-end", "gate", "title-start"):
         assert expected in got, (expected, sorted(got))
     msgs = "\n".join(map(str, issues))
     assert "ulaşılamayan düğüm: orphan" in msgs
@@ -72,3 +72,37 @@ def test_order_task_answer_must_use_tokens():
     t1 = next(n for n in doc["nodes"] if n["id"] == "t1")
     t1.update(kind="order", items=[{"id": "i1", "tokens": ["a", "b"], "answer": ["a", "c"]}])
     assert ("error", "task") in codes(doc)
+
+
+def test_start_must_be_title():
+    doc = load("scenes-good.json")
+    doc["start"] = "s1"
+    msgs = [str(i) for i in check_scenes(doc) if i.code == "title-start"]
+    assert msgs and "başlık" in msgs[0]
+
+
+def test_nothing_may_precede_title():
+    doc = load("scenes-good.json")
+    s2 = next(n for n in doc["nodes"] if n["id"] == "s2")
+    s2["next"] = "title"  # başlığa geri dönen yol
+    assert ("error", "title-first") in codes(doc)
+
+
+def test_long_recap_is_warning():
+    doc = load("scenes-good.json")
+    rc = next(n for n in doc["nodes"] if n["type"] == "recap")
+    assert ("warning", "recap-length") not in codes(doc)
+    rc["duration"] = 15.5
+    got = codes(doc)
+    assert ("warning", "recap-length") in got
+    assert not any(lvl == "error" for lvl, _ in got)
+
+
+def test_recap_must_follow_title():
+    doc = load("scenes-good.json")
+    title = doc["nodes"][0]
+    title["next"] = "s1"
+    s1 = next(n for n in doc["nodes"] if n["id"] == "s1")
+    rc = next(n for n in doc["nodes"] if n["type"] == "recap")
+    rc["next"], s1["next"] = "k1", "rc"
+    assert ("warning", "recap-position") in codes(doc)

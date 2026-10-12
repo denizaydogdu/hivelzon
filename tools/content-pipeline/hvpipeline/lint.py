@@ -13,6 +13,7 @@ from pathlib import Path
 from .build import KURGU_FILE, BuildError, build_dry
 from .cefr import LEVELS, coverage
 from .graph import Issue, check_scenes
+from .season import SeasonSource
 from .story import read_story
 from .translation import TRANSLATION_FILE, Translation, word_key
 
@@ -117,6 +118,7 @@ def check_graph(ep_dir: Path, c: dict, source: str = "auto") -> tuple[list[Issue
         origin = "package"
         issues = check_scenes(doc)
         issues += _check_package_files(pkg.parent, doc)
+        issues += _check_season_files(ep_dir, doc)
     elif has_kurgu and source in ("auto", "kurgu"):
         try:
             doc, _ = build_dry(ep_dir)
@@ -130,6 +132,7 @@ def check_graph(ep_dir: Path, c: dict, source: str = "auto") -> tuple[list[Issue
     count = lambda t: sum(1 for n in nodes if n.get("type") == t)  # noqa: E731
     rep = {"source": origin, "nodes": len(nodes), "segments": count("segment"), "decisions": count("decision"),
            "reactions": count("reaction"), "cards": count("card"), "tasks": count("task"),
+           "titles": count("title"), "recaps": count("recap"),
            "flags": len(doc.get("flags", []))}
     dp = c.get("decisionPoints")
     if isinstance(dp, int) and dp != rep["decisions"]:
@@ -195,6 +198,23 @@ def _check_package_files(pkg: Path, doc: dict) -> list[Issue]:
             if b and b.get("audio"):
                 refs.add(b["audio"])
     return [Issue("error", "missing-file", f"pakette dosya yok: {r}") for r in sorted(refs) if not (pkg / r).exists()]
+
+
+def _check_season_files(ep_dir: Path, doc: dict) -> list[Issue]:
+    """Başlık ekranının arka planı sezon paketinde (/packages/_season/S<n>/) var mı (H-050)."""
+    out = []
+    for n in doc.get("nodes", []):
+        if n.get("type") != "title":
+            continue
+        src = SeasonSource.load(ep_dir.parent, int(n.get("season", 1)))
+        for key in ("seasonVideo", "seasonPoster"):
+            if not n.get(key):
+                continue
+            f = src.package_dir(ep_dir.parent) / str(n[key])
+            if not f.exists():
+                out.append(Issue("warning", "season-missing",
+                                 f"sezon paketinde başlık dosyası yok: {f} (export_package.py sezon paketini üretir)"))
+    return out
 
 
 def lint_episode(ep_dir: Path, graph_source: str = "auto") -> EpisodeReport:

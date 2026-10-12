@@ -84,6 +84,13 @@ class FfmpegMedia:
         self.clips[rel] = self._src(item)
         return rel
 
+    def season_duration(self, src) -> float:
+        """Başlık ekranı süresi: sezonun yazısız kısa animasyonunun gerçek süresi (H-050)."""
+        f = (src.media_dir / src.title_background) if src.media_dir else None
+        if f is None or not f.exists():
+            raise media.MediaError(f"başlık arka planı yok: {f} (kurgu.py --baslik-arka)")
+        return media.probe_duration(f)
+
 
 def export_episode(ep_dir: Path, label: bool = True, clean: bool = True) -> dict:
     ep = Episode(ep_dir)

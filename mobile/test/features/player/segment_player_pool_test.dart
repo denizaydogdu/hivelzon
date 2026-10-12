@@ -40,7 +40,7 @@ void main() {
   });
 
   Future<void> settle() =>
-      Future<void>.delayed(const Duration(milliseconds: 200));
+      Future<void>.delayed(const Duration(milliseconds: 700));
 
   test('aynı yol aynı denetleyiciyi döndürür', () async {
     final a = await pool.acquire('a.mp4');

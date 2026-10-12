@@ -160,6 +160,26 @@ class Translation:
             return None
         return {"tr": tr, "words": [{"w": w, "gloss": g} for w, g in zip(words, glosses)], "chunks": chunks}
 
+    # --- hedef ifade (🎯 paneli, H-050) ---
+    def gloss_phrase(self, phrase: str) -> dict | None:
+        """Önce birebir satır, sonra herhangi bir satırdaki kalıp (`chunks[].en`). Bulunamazsa None;
+        eksik sayılmaz (lint'e girmez)."""
+        g = self.gloss_text(phrase, "targetPhrase", [])
+        if g is not None:
+            return g
+        key = _phrase_key(phrase)
+        for line in self.lines.values():
+            for ch in line.get("chunks") or []:
+                if _phrase_key(ch.get("en", "")) == key:
+                    glossmap = {word_key(k): v for k, v in (line.get("words") or {}).items()}
+                    return {"tr": ch["tr"], "chunks": [],
+                            "words": [{"w": w, "gloss": glossmap.get(word_key(w))} for w in split_words(phrase)]}
+        return None
+
+
+def _phrase_key(s: str) -> str:
+    return norm_text(s).replace("...", "…").lower()
+
 
 def _find_span(keys: list[str], pat: list[str | None]) -> tuple[int, int] | None:
     """Kalıbın ilk eşleşmesi (startWord, endWord). Boşluk 0+ kelime tutar; sondaki boşluk ise

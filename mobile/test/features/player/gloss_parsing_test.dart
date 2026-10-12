@@ -76,9 +76,23 @@ void main() {
     expect(item.stem, 'I have Art on Friday. What time?');
     expect(item.stemGloss!.tr, 'Cuma günü resim dersim var. Saat kaçta?');
 
-    // Türkçe satırda anlam yok.
-    final mission = b1.node('c-mission') as CardNode;
-    expect(mission.lines.first.lang, Lang.tr);
-    expect(mission.lines.first.gloss, isNull);
+    // Türkçe satırda anlam yok (Hi kartı).
+    final hi = b1.node('h-02') as CardNode;
+    expect(hi.lines.first.lang, Lang.tr);
+    expect(hi.lines.first.gloss, isNull);
+  });
+
+  test('🎯 hedef ifadelerin anlamları (H-050)', () {
+    final b1 = loadFixture('A1-001').info;
+    expect(b1.targetPhrases, contains('Can you hear me?'));
+    expect(
+      b1.targetPhraseGloss['Can you hear me?']!.tr,
+      'Beni duyabiliyor musun?',
+    );
+    expect(b1.targetPhraseGloss['Where is…?']!.tr, '… nerede?');
+    // Anlamı olmayan ifade listede yok (dokunulmaz).
+    expect(b1.targetPhraseGloss.containsKey('Listen.'), isFalse);
+    final b4 = loadFixture('A1-004').info;
+    expect(b4.targetPhraseGloss['on Friday']!.words.last.gloss, 'cuma');
   });
 }

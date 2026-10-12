@@ -5,6 +5,8 @@
 // - K-29: kapı = anlama + hedef ifade + aktif görev; deneme sınırsız.
 // - K-32: süre, can, ceza yok. Puanlamaya yalnızca ilk deneme girer.
 // - §2.5: kontrol noktası sahne başıdır; devam etme kontrol noktasından olur.
+// - H-050: bölüm her zaman başlık ekranıyla açılır; kaldığı yerden devamda da
+//   önce başlık gelir, sonra kontrol noktasına geçilir (özet atlanır).
 
 import 'episode.dart';
 
@@ -83,7 +85,15 @@ class EpisodeEngine {
     final resumeId = resumeFrom?.checkpointNodeId;
     final canResume =
         resumeId != null && episode.nodes[resumeId]?.checkpoint == true;
-    _enter(canResume ? resumeId : episode.start);
+    if (canResume && episode.titleNode != null && resumeId != episode.start) {
+      // Önce başlık; başlık bitince doğrudan kontrol noktası. Kayıt, başlık
+      // sırasında çıkılırsa da aynı kontrol noktasını korur.
+      _resumeTarget = resumeId;
+      _lastCheckpoint = resumeId;
+      _enter(episode.start);
+    } else {
+      _enter(canResume ? resumeId : episode.start);
+    }
   }
 
   final Episode episode;
@@ -97,6 +107,7 @@ class EpisodeEngine {
   final List<String> _questionIds = [];
   String? _currentId;
   String? _lastCheckpoint;
+  String? _resumeTarget;
 
   // ------------------------------------------------------------ okuma
 
@@ -165,10 +176,24 @@ class EpisodeEngine {
 
   // ------------------------------------------------------------ yürütme
 
-  /// Segment, kart ve tepki düğümlerinden sonrakine geçer.
+  /// Şu an atlanabilir bir "Önceki bölümde" özeti mi oynuyor?
+  bool get canSkip => switch (current) {
+    RecapNode(:final skippable) => skippable,
+    _ => false,
+  };
+
+  /// Kaldığı yerden devamda başlıktan sonra gidilecek kontrol noktası.
+  String? get resumeTarget => _resumeTarget;
+
+  /// Segment, kart ve tepki düğümlerinden sonrakine geçer. Özet atlanınca da
+  /// bu çağrılır (özetin `next`'i).
   void advance() {
     final node = _requireCurrent();
     switch (node) {
+      case TitleNode(:final next):
+        final target = _resumeTarget;
+        _resumeTarget = null;
+        _enter(target ?? next);
       case SegmentNode(:final next):
         _enter(next);
       case CardNode(:final next):
@@ -320,6 +345,7 @@ class EpisodeEngine {
     }
 
     final String? start = switch (node) {
+      TitleNode(:final next) => _resumeTarget ?? next,
       SegmentNode(:final next) => next,
       ReactionNode(:final next) => next,
       CardNode(:final next) => next,

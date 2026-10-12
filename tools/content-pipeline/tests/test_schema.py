@@ -17,10 +17,34 @@ def test_good_fixture_is_schema_valid():
     assert schema_errors(load("scenes-good.json")) == []
 
 
-def test_schema_version_is_1():
+def test_schema_version_is_2():
     doc = load("scenes-good.json")
-    doc["schemaVersion"] = 2
+    doc["schemaVersion"] = 1
     assert any("schemaVersion" in e for e in schema_errors(doc))
+
+
+def test_title_node_requires_season_video_and_caption():
+    doc = load("scenes-good.json")
+    t = doc["nodes"][0]
+    assert t["type"] == "title"
+    del t["seasonVideo"]
+    t["caption"] = ""
+    errs = schema_errors(doc)
+    assert errs
+
+
+def test_title_and_mission_cards_are_gone_in_v2():
+    doc = load("scenes-good.json")
+    doc["nodes"].append({"id": "c-mission", "type": "card", "kind": "mission",
+                         "lines": [{"text": "x", "lang": "tr"}], "next": None})
+    assert schema_errors(doc)
+
+
+def test_recap_node_is_segment_like():
+    doc = load("scenes-good.json")
+    rc = next(n for n in doc["nodes"] if n["type"] == "recap")
+    rc["video"] = "videos/rc.mov"
+    assert any("kalıba uymuyor" in e for e in schema_errors(doc))
 
 
 def test_unknown_field_rejected():
@@ -31,7 +55,7 @@ def test_unknown_field_rejected():
 
 def test_segment_requires_mp4_and_duration():
     doc = load("scenes-good.json")
-    seg = doc["nodes"][0]
+    seg = next(n for n in doc["nodes"] if n["type"] == "segment")
     seg["video"] = "videos/x.mov"
     del seg["duration"]
     errs = schema_errors(doc)
@@ -83,8 +107,9 @@ def test_cross_check_with_reference_validator():
     assert list(v.iter_errors(broken)) and schema_errors(broken)
     # Aynı bozulmalarda iki doğrulayıcı da hata vermeli
     for mutate in (lambda d: d.update(schemaVersion=3),
-                   lambda d: d["nodes"][0].pop("video"),
-                   lambda d: d["nodes"][1]["options"].pop() and d["nodes"][1]["options"].pop()):
+                   lambda d: d["nodes"][2].pop("video"),
+                   lambda d: d["nodes"][0].pop("seasonVideo"),
+                   lambda d: d["nodes"][3]["options"].pop() and d["nodes"][3]["options"].pop()):
         d = copy.deepcopy(good)
         mutate(d)
         assert bool(list(v.iter_errors(d))) == bool(schema_errors(d))

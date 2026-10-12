@@ -15,10 +15,12 @@ from pathlib import Path
 
 from . import __version__
 from .align import Alignment, Cue, merge_parts, round_cue, shot_cues
+from .season import SeasonSource, title_caption
 from .story import header_field
 from .translation import Miss, Translation
 
 KURGU_FILE = "kurgu.json"
+SCHEMA_VERSION = 2  # 2: title (zorunlu başlangıç) ve recap düğümleri (H-050)
 SPEAKER_TOKENS = {"alex": "ALEX", "maya": "MAYA", "voice": "VOICE", "hi": "HI", "man": "MAN",
                   "mrs": "MRS BROOKS", "sam": "SAM", "officer": "OFFICER", "tom": "TOM", "rosa": "ROSA",
                   "jordan": "JORDAN", "grant": "MR GRANT"}
@@ -142,12 +144,15 @@ class DryMedia:
     def audio_clip(self, ep: Episode, item: AudioItem) -> str:
         return f"audio/{slug_name(item.key)}.m4a"
 
+    def season_duration(self, src: SeasonSource) -> float:
+        return src.title_duration
+
 
 def _frames(x: float) -> float:
     return round(x * 30) / 30
 
 
-def episode_meta(ep: Episode) -> dict:
+def episode_meta(ep: Episode, translation: Translation | None = None) -> dict:
     c = ep.content
     missing = [f for f in LINK_FIELDS if f not in c]
     if missing:
@@ -163,6 +168,15 @@ def episode_meta(ep: Episode) -> dict:
         "prev": c.get("prev"), "next": c.get("next"),
         "links": {f: c.get(f) for f in LINK_FIELDS},
     }
+    if translation is not None:
+        # 🎯 paneli (H-050): hedef ifadeye dokununca anlam paneli açılır.
+        glosses = []
+        for phrase in meta["targetPhrases"]:
+            g = translation.gloss_phrase(phrase)
+            if g:
+                glosses.append({"text": phrase, **g})
+        if glosses:
+            meta["targetPhraseGloss"] = glosses
     if "estimatedMinutes" in c:
         meta["estimatedMinutes"] = c["estimatedMinutes"]
     return meta
@@ -179,6 +193,7 @@ class Builder:
         self.segments: dict[str, list[ShotPlan]] = {}
         self.translation = Translation.load(ep.dir)
         self.tr_misses: list[Miss] = []
+        self.season = SeasonSource.load(ep.dir.parent, int(ep.content.get("season", 1)))
 
     # --- yardımcılar ---
     def _shot(self, spec: dict) -> ShotPlan:
@@ -282,6 +297,18 @@ class Builder:
         nid = spec["id"]
         if t == "segment":
             return {"id": nid, "type": t, **common, **self._video_node(nid, spec["shots"]), "next": spec.get("next")}
+        if t == "title":
+            # Bölüm başlık ekranı (H-050): sezonun yazısız kısa animasyonu + uygulamanın çizdiği başlık.
+            c = self.ep.content
+            src = self.season
+            return {"id": nid, "type": t, **common, "season": c["season"], "episode": c["episode"],
+                    "caption": title_caption(c["season"], c["episode"]), "title": c["title"],
+                    "seasonVideo": src.title_background, "seasonPoster": src.title_poster,
+                    "duration": round(self.media.season_duration(src), 3), "next": spec.get("next")}
+        if t == "recap":
+            # "Önceki bölümde" (H-050): başlıktan sonra, atlanabilir kısa video.
+            return {"id": nid, "type": t, **common, **self._video_node(nid, spec["shots"]),
+                    "skippable": True, "next": spec.get("next")}
         if t == "reaction":
             out = {"id": nid, "type": t}
             if spec.get("shots"):
@@ -373,8 +400,8 @@ class Builder:
         flags = [{kk: f[kk] for kk in ("id", "values", "callbackIn") if kk in f}
                  for f in self.ep.content.get("flags", [])]
         doc = {
-            "schemaVersion": 1,
-            "episode": episode_meta(self.ep),
+            "schemaVersion": SCHEMA_VERSION,
+            "episode": episode_meta(self.ep, self.translation),
             "flags": flags,
         }
         if k.get("externalFlags"):

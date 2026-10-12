@@ -1,8 +1,19 @@
-// Bölüm paketi `scenes.json` modeli (schemaVersion 1, docs/BOLUM-PAKETI.md).
+// Bölüm paketi `scenes.json` modeli (schemaVersion 2, docs/BOLUM-PAKETI.md).
+//
+// schemaVersion 2 (H-050): her bölüm `title` düğümüyle açılır; B2+ ardından
+// atlanabilir `recap` gelir. Başlık ve görev kartı yoktur (görev 🎯 panelinde).
+// schemaVersion 1 paketleri de okunur (başlıksız eski açılış).
 //
 // Saf Dart: Flutter içe aktarımı yoktur; motor ve testler bu modeli kullanır.
 
 import '../../../shared/meaning/meaning_text.dart';
+
+/// Okunabilen `scenes.json` sürümleri.
+const Set<int> kSupportedSchemaVersions = {1, 2};
+
+/// Sezon paketindeki dosyaların düğüm `video` yolundaki öneki (H-050).
+/// Ör. `season:jenerik-baslik.mp4` → `/packages/_season/S1/jenerik-baslik.mp4`.
+const String kSeasonPathPrefix = 'season:';
 
 /// `scenes.json` beklenmeyen biçimdeyse fırlatılır.
 class EpisodeFormatException implements Exception {
@@ -209,6 +220,7 @@ class EpisodeInfo {
     required this.mission,
     required this.targetPhrases,
     required this.links,
+    this.targetPhraseGloss = const {},
     this.prev,
     this.next,
     this.estimatedMinutes,
@@ -227,6 +239,15 @@ class EpisodeInfo {
       aiLabel: (j['aiLabel'] as String?) ?? 'Yapay zekâ ile üretilmiştir',
       mission: TextTr.fromJson(j['mission'], 'episode.mission'),
       targetPhrases: _strings(j['targetPhrases']),
+      targetPhraseGloss: {
+        for (final g in _list(j['targetPhraseGloss']))
+          if (g is Map && g['text'] is String)
+            g['text'] as String: ?Gloss.fromJson(
+              g['tr'],
+              g['words'],
+              g['chunks'],
+            ),
+      },
       links: EpisodeLinks.fromJson(j['links']),
       prev: j['prev'] as String?,
       next: j['next'] as String?,
@@ -244,6 +265,9 @@ class EpisodeInfo {
   final String aiLabel;
   final TextTr mission;
   final List<String> targetPhrases;
+
+  /// Hedef ifadenin Türkçe anlamı (🎯 paneli, H-050). Anlamı olmayan ifade yoktur.
+  final Map<String, Gloss> targetPhraseGloss;
   final EpisodeLinks links;
   final String? prev;
   final String? next;
@@ -309,6 +333,31 @@ sealed class EpisodeNode {
     final scene = j['scene'] as String?;
     final checkpoint = j['checkpoint'] == true;
     switch (j['type']) {
+      case 'title':
+        return TitleNode(
+          id: id,
+          scene: scene,
+          checkpoint: checkpoint,
+          season: (j['season'] as num?)?.toInt() ?? 1,
+          episode: (j['episode'] as num?)?.toInt() ?? 0,
+          caption: _str(j, 'caption', where),
+          title: _str(j, 'title', where),
+          seasonVideo: _str(j, 'seasonVideo', where),
+          seasonPoster: j['seasonPoster'] as String?,
+          duration: _num(j['duration']) ?? 2.5,
+          next: j['next'] as String?,
+        );
+      case 'recap':
+        return RecapNode(
+          id: id,
+          scene: scene,
+          checkpoint: checkpoint,
+          video: _str(j, 'video', where),
+          duration: _num(j['duration']) ?? 0,
+          subtitles: j['subtitles'] as String?,
+          skippable: j['skippable'] != false,
+          next: j['next'] as String?,
+        );
       case 'segment':
         return SegmentNode(
           id: id,
@@ -412,6 +461,60 @@ class SegmentNode extends EpisodeNode implements VideoBearing {
   final String? subtitles;
   final String? poster;
   final String? next;
+}
+
+/// Bölüm başlık ekranı (H-050): her bölümün ilk düğümü.
+///
+/// Segment gibi oynar (ön ısıtma, ön başlatma ve bitince geçiş aynıdır); video
+/// sezon paketindeki yazısız kısa animasyondur. Başlığı uygulama çizer.
+class TitleNode extends SegmentNode {
+  TitleNode({
+    required super.id,
+    super.scene,
+    super.checkpoint,
+    required this.season,
+    required this.episode,
+    required this.caption,
+    required this.title,
+    required this.seasonVideo,
+    this.seasonPoster,
+    required super.duration,
+    super.next,
+  }) : super(video: '$kSeasonPathPrefix$seasonVideo');
+
+  final int season;
+  final int episode;
+
+  /// Ör. "SEZON 1 · BÖLÜM 2".
+  final String caption;
+  final String title;
+
+  /// Sezon paketindeki dosya adı (ör. `jenerik-baslik.mp4`).
+  final String seasonVideo;
+
+  /// Videonun ilk karesi (sezon paketinde jpg). Video ilk karesi gelene dek
+  /// gösterilir: bölüm açılışında boş ya da siyah kare olmaz.
+  final String? seasonPoster;
+
+  /// Afişin oynatıcı yolu (`season:` önekli) ya da null.
+  String? get posterPath =>
+      seasonPoster == null ? null : '$kSeasonPathPrefix$seasonPoster';
+}
+
+/// "Önceki bölümde" (H-050): başlıktan sonra gelen, atlanabilir kısa video.
+class RecapNode extends SegmentNode {
+  const RecapNode({
+    required super.id,
+    super.scene,
+    super.checkpoint,
+    required super.video,
+    required super.duration,
+    super.subtitles,
+    super.next,
+    this.skippable = true,
+  });
+
+  final bool skippable;
 }
 
 class DecisionCue {
@@ -760,6 +863,7 @@ class TaskNode extends EpisodeNode {
 
 class Episode {
   Episode({
+    this.schemaVersion = 2,
     required this.info,
     required this.flags,
     required this.externalFlags,
@@ -772,12 +876,13 @@ class Episode {
   factory Episode.fromJson(Object? json) {
     final j = _map(json, 'scenes.json');
     final version = j['schemaVersion'];
-    if (version != 1) {
+    if (!kSupportedSchemaVersions.contains(version)) {
       throw EpisodeFormatException('Desteklenmeyen schemaVersion: $version');
     }
     final nodes = _list(j['nodes']).map(EpisodeNode.fromJson).toList();
     if (nodes.isEmpty) throw EpisodeFormatException('nodes boş');
     final episode = Episode(
+      schemaVersion: version as int,
       info: EpisodeInfo.fromJson(j['episode']),
       flags: _list(j['flags']).map((f) {
         final m = _map(f, 'flag');
@@ -802,9 +907,15 @@ class Episode {
     if (!episode.nodes.containsKey(episode.start)) {
       throw EpisodeFormatException('start düğümü yok: ${episode.start}');
     }
+    if (version == 2 && episode.nodes[episode.start] is! TitleNode) {
+      throw EpisodeFormatException(
+        'schemaVersion 2: başlangıç düğümü başlık değil: ${episode.start}',
+      );
+    }
     return episode;
   }
 
+  final int schemaVersion;
   final EpisodeInfo info;
   final List<FlagDecl> flags;
   final List<ExternalFlagDecl> externalFlags;
@@ -814,6 +925,12 @@ class Episode {
 
   /// Dosyadaki sıra (yalnızca okunabilirlik için).
   final List<String> nodeOrder;
+
+  /// Başlık ekranı (schemaVersion 2'de her zaman başlangıç düğümü).
+  TitleNode? get titleNode => switch (nodes[start]) {
+    final TitleNode t => t,
+    _ => null,
+  };
 
   EpisodeNode node(String id) {
     final n = nodes[id];

@@ -1,8 +1,8 @@
 {
-  "kurguVersion": 1,
+  "kurguVersion": 2,
   "contentId": "A1-001",
   "source": "Pilot kurgusu b1_v3.py (H-024) düğümlere bölündü; karar kartları ve altyazı artık uygulamada (K-03).",
-  "start": "s01",
+  "start": "title",
   "gate": {
     "comprehension": ["t-gorev"],
     "targetPhrase": ["k1", "k2"],
@@ -10,24 +10,7 @@
   },
   "nodes": [
     {
-      "id": "s01", "type": "segment", "scene": "Soğuk açılış", "checkpoint": true,
-      "shots": [
-        {"image": "images/I1-not.png", "len": 2.5, "move": [1.08, 1.02, 0.5, 0.5, 0.2, 0.6]}
-      ],
-      "next": "c-title"
-    },
-    {
-      "id": "c-title", "type": "card", "kind": "title", "advance": "auto", "duration": 2.5,
-      "background": "images/I1-not.png",
-      "lines": [{"text": "SEZON 1 · BÖLÜM 1", "lang": "tr", "style": "caption"},
-                {"text": "A Strange Message", "lang": "en", "style": "heading"}],
-      "next": "c-mission"
-    },
-    {
-      "id": "c-mission", "type": "card", "kind": "mission", "advance": "tap",
-      "background": "images/T1-oda.png",
-      "lines": [{"text": "Mesajdaki kişiyi ve yeri bul.", "lang": "tr", "style": "heading"},
-                {"text": "Can you hear me? · Yes, I can. · Again, please. · Where is…? · Listen.", "lang": "en", "style": "highlight"}],
+      "id": "title", "type": "title",
       "next": "s02"
     },
     {

@@ -18,7 +18,13 @@ def test_dry_build_produces_valid_scenes_and_subs():
     assert [i for i in check_scenes(doc) if i.level == "error"] == []
     assert doc["episode"]["links"]["openQuestion"] == "Q9"
     assert doc["episode"]["mission"]["tr"] == "Komşunla tanış."
-    seg = doc["nodes"][0]
+    assert doc["schemaVersion"] == 2 and doc["start"] == "title"
+    title = doc["nodes"][0]
+    assert title == {"id": "title", "type": "title", "season": 1, "episode": 901,
+                     "caption": "SEZON 1 · BÖLÜM 901", "title": "Test Episode",
+                     "seasonVideo": "jenerik-baslik.mp4", "seasonPoster": "jenerik-baslik.jpg",
+                     "duration": 2.5, "next": "s01"}
+    seg = doc["nodes"][1]
     assert seg["video"] == "segments/s01.mp4" and seg["subtitles"] == "subs/s01.en.json"
     sub = b.subs["subs/s01.en.json"]
     assert schema_errors(sub, "subs.schema.json") == []
@@ -40,7 +46,7 @@ def test_hi_line_inside_segment_is_rejected(tmp_path):
     ep.mkdir()
     (ep / "content.json").write_text((FX / "ep-good" / "content.json").read_text(encoding="utf-8"), encoding="utf-8")
     k = json.loads((FX / "ep-good" / "kurgu.json").read_text(encoding="utf-8"))
-    k["nodes"][0]["shots"][0]["audio"] = [{"path": str(FX / "b2_05_maya"), "speaker": "HI (TR)"}]
+    k["nodes"][1]["shots"][0]["audio"] = [{"path": str(FX / "b2_05_maya"), "speaker": "HI (TR)"}]
     (ep / "kurgu.json").write_text(json.dumps(k), encoding="utf-8")
     with pytest.raises(BuildError):
         build_dry(ep)
@@ -71,6 +77,18 @@ def test_real_episode_dry_build(ep):
     doc, b = build_dry(REPO / "icerik" / ep)
     assert schema_errors(doc) == []
     assert [str(i) for i in check_scenes(doc) if i.level == "error"] == []
+    # H-050: her bölüm başlıkla açılır; açılışta görev ve başlık kartı yok; B2+ özetle sürer.
+    by_id = {n["id"]: n for n in doc["nodes"]}
+    title = by_id[doc["start"]]
+    assert title["type"] == "title" and title["seasonVideo"] == "jenerik-baslik.mp4"
+    assert title["caption"] == f"SEZON 1 · BÖLÜM {doc['episode']['number']}"
+    assert not any(n["type"] == "card" and n.get("kind") in ("title", "mission") for n in doc["nodes"])
+    first = by_id[title["next"]]
+    if doc["episode"]["number"] == 1:
+        assert first["type"] == "segment" and first.get("checkpoint")
+    else:
+        assert first["type"] == "recap" and first["skippable"] and first["duration"] <= 15
+    assert {g["text"] for g in doc["episode"].get("targetPhraseGloss", [])} <= set(doc["episode"]["targetPhrases"])
     for rel, sub in b.subs.items():
         assert schema_errors(sub, "subs.schema.json") == [], rel
         starts = [c["start"] for c in sub["cues"]]

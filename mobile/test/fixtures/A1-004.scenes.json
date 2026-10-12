@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "episode": {
     "id": "A1-004",
     "slug": "the-note",
@@ -41,6 +41,128 @@
         "between"
       ]
     },
+    "targetPhraseGloss": [
+      {
+        "text": "What time is it?",
+        "tr": "Saat kaç?",
+        "words": [
+          {
+            "w": "What",
+            "gloss": "ne / kaç"
+          },
+          {
+            "w": "time",
+            "gloss": "saat"
+          },
+          {
+            "w": "is",
+            "gloss": "-dır / -dir (olmak)"
+          },
+          {
+            "w": "it?",
+            "gloss": "(saat cümlesinde boş özne)"
+          }
+        ],
+        "chunks": [
+          {
+            "en": "What time is it?",
+            "tr": "Saat kaç?",
+            "startWord": 0,
+            "endWord": 3
+          }
+        ]
+      },
+      {
+        "text": "It's seven o'clock.",
+        "tr": "Saat yedi.",
+        "words": [
+          {
+            "w": "It's",
+            "gloss": "(saat) … -dır"
+          },
+          {
+            "w": "seven",
+            "gloss": "yedi"
+          },
+          {
+            "w": "o'clock.",
+            "gloss": "saat (tam saat)"
+          }
+        ],
+        "chunks": [
+          {
+            "en": "It's seven o'clock.",
+            "tr": "Saat yedi.",
+            "startWord": 0,
+            "endWord": 2
+          }
+        ]
+      },
+      {
+        "text": "on Friday",
+        "tr": "cuma günü (gün için on)",
+        "chunks": [],
+        "words": [
+          {
+            "w": "on",
+            "gloss": "-de (gün için)"
+          },
+          {
+            "w": "Friday",
+            "gloss": "cuma"
+          }
+        ]
+      },
+      {
+        "text": "at seven",
+        "tr": "saat yedide (saat için at)",
+        "chunks": [],
+        "words": [
+          {
+            "w": "at",
+            "gloss": "-de (saat için)"
+          },
+          {
+            "w": "seven",
+            "gloss": "yedi"
+          }
+        ]
+      },
+      {
+        "text": "What day is it today?",
+        "tr": "Bugün günlerden ne?",
+        "words": [
+          {
+            "w": "What",
+            "gloss": "hangi, ne"
+          },
+          {
+            "w": "day",
+            "gloss": "gün"
+          },
+          {
+            "w": "is",
+            "gloss": "-dır / -dir (olmak)"
+          },
+          {
+            "w": "it",
+            "gloss": "(gün cümlesinde boş özne)"
+          },
+          {
+            "w": "today?",
+            "gloss": "bugün"
+          }
+        ],
+        "chunks": [
+          {
+            "en": "What day is it today?",
+            "tr": "Bugün günlerden ne?",
+            "startWord": 0,
+            "endWord": 4
+          }
+        ]
+      }
+    ],
     "estimatedMinutes": 6
   },
   "flags": [],
@@ -57,22 +179,35 @@
       "t-kanit"
     ]
   },
-  "start": "s01",
+  "start": "title",
   "nodes": [
     {
-      "id": "s01",
-      "type": "segment",
-      "scene": "Soğuk açılış",
-      "checkpoint": true,
-      "video": "segments/s01.mp4",
+      "id": "title",
+      "type": "title",
+      "season": 1,
+      "episode": 4,
+      "caption": "SEZON 1 · BÖLÜM 4",
+      "title": "The Note",
+      "seasonVideo": "jenerik-baslik.mp4",
+      "seasonPoster": "jenerik-baslik.jpg",
+      "duration": 2.533,
+      "next": "recap"
+    },
+    {
+      "id": "recap",
+      "type": "recap",
+      "video": "segments/recap.mp4",
       "duration": 3.2,
       "subtitles": null,
+      "skippable": true,
       "next": "h-01"
     },
     {
       "id": "h-01",
       "type": "card",
       "kind": "hi",
+      "scene": "Sahne 1: Tide & Pages",
+      "checkpoint": true,
       "lines": [
         {
           "speaker": "HI",
@@ -83,165 +218,11 @@
       "advance": "tap",
       "audio": "audio/A1-004_b4_01_hi.m4a",
       "background": "stills/B4-02-telefon-not.jpg",
-      "next": "c-title"
-    },
-    {
-      "id": "c-title",
-      "type": "card",
-      "kind": "title",
-      "lines": [
-        {
-          "text": "SEZON 1 · BÖLÜM 4",
-          "lang": "tr",
-          "style": "caption"
-        },
-        {
-          "text": "The Note",
-          "lang": "en",
-          "style": "heading",
-          "tr": "Not",
-          "words": [
-            {
-              "w": "The",
-              "gloss": "(belirli tanımlık)"
-            },
-            {
-              "w": "Note",
-              "gloss": "not"
-            }
-          ],
-          "chunks": []
-        }
-      ],
-      "advance": "auto",
-      "duration": 2.5,
-      "background": "stills/B4-01-dukkan-sabah.jpg",
-      "next": "c-mission"
-    },
-    {
-      "id": "c-mission",
-      "type": "card",
-      "kind": "mission",
-      "lines": [
-        {
-          "text": "Yarım notun parçalarından tam notu kur: gün, saat, yer.",
-          "lang": "tr",
-          "style": "heading"
-        },
-        {
-          "text": "What time is it? · It's seven o'clock. · on Friday · at seven · What day is it today?",
-          "lang": "en",
-          "style": "highlight",
-          "tr": "Saat kaç? · Saat yedi. · cuma günü · saat yedide · Bugün günlerden ne?",
-          "words": [
-            {
-              "w": "What",
-              "gloss": "ne / kaç"
-            },
-            {
-              "w": "time",
-              "gloss": "saat"
-            },
-            {
-              "w": "is",
-              "gloss": "-dır / -dir (olmak)"
-            },
-            {
-              "w": "it?",
-              "gloss": "(saat/gün cümlesinde boş özne)"
-            },
-            {
-              "w": "It's",
-              "gloss": "(saat/gün) … -dır"
-            },
-            {
-              "w": "seven",
-              "gloss": "yedi"
-            },
-            {
-              "w": "o'clock.",
-              "gloss": "saat (tam saat)"
-            },
-            {
-              "w": "on",
-              "gloss": "-de (gün için)"
-            },
-            {
-              "w": "Friday",
-              "gloss": "cuma"
-            },
-            {
-              "w": "at",
-              "gloss": "-de (saat için)"
-            },
-            {
-              "w": "seven",
-              "gloss": "yedi"
-            },
-            {
-              "w": "What",
-              "gloss": "ne / kaç"
-            },
-            {
-              "w": "day",
-              "gloss": "gün"
-            },
-            {
-              "w": "is",
-              "gloss": "-dır / -dir (olmak)"
-            },
-            {
-              "w": "it",
-              "gloss": "(saat/gün cümlesinde boş özne)"
-            },
-            {
-              "w": "today?",
-              "gloss": "bugün"
-            }
-          ],
-          "chunks": [
-            {
-              "en": "What time is it?",
-              "tr": "Saat kaç?",
-              "startWord": 0,
-              "endWord": 3
-            },
-            {
-              "en": "It's seven o'clock.",
-              "tr": "Saat yedi.",
-              "startWord": 4,
-              "endWord": 6
-            },
-            {
-              "en": "on Friday",
-              "tr": "cuma günü (gün için on)",
-              "startWord": 7,
-              "endWord": 8
-            },
-            {
-              "en": "at seven",
-              "tr": "saat yedide (saat için at)",
-              "startWord": 9,
-              "endWord": 10
-            },
-            {
-              "en": "What day is it today?",
-              "tr": "Bugün günlerden ne?",
-              "startWord": 11,
-              "endWord": 15
-            }
-          ]
-        }
-      ],
-      "advance": "tap",
-      "background": "stills/B4-01-dukkan-sabah.jpg",
       "next": "s02"
     },
     {
       "id": "s02",
       "type": "segment",
-      "scene": "Sahne 1: Tide & Pages",
-      "checkpoint": true,
       "video": "segments/s02.mp4",
       "duration": 14.233,
       "subtitles": "subs/s02.en.json",

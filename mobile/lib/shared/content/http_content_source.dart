@@ -70,6 +70,17 @@ class HttpContentSource implements ContentSource {
   }
 
   @override
+  Uri seasonMediaUri(int season, String path) =>
+      _packagesUri(['_season', 'S$season', ...path.split('/')]);
+
+  @override
+  Future<SeasonInfo> loadSeason(int season) async {
+    final json = await _getJson(seasonMediaUri(season, 'season.json'));
+    if (json is! Map) throw ContentUnavailableException('Bozuk season.json');
+    return SeasonInfo.fromJson(json.cast<String, dynamic>());
+  }
+
+  @override
   Future<SubtitleTrack> loadSubtitles(String contentId, String path) {
     final key = '$contentId/$path';
     return _subsCache.putIfAbsent(key, () async {

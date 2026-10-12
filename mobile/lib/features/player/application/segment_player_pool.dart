@@ -95,8 +95,9 @@ class SegmentPlayerPool {
   void _drop(String path) {
     final e = _entries.remove(path);
     if (e == null) return;
-    // Bir kare sonra at: ekrandaki VideoPlayer o sırada sökülmüş olur.
-    Future<void>.delayed(const Duration(milliseconds: 120), () async {
+    // Biraz sonra at: ekrandaki VideoPlayer o sırada sökülmüş olur; bitişte
+    // eklentinin pause().then(seekTo) zinciri de tamamlanır.
+    Future<void>.delayed(const Duration(milliseconds: 600), () async {
       try {
         await e.controller.dispose();
       } catch (_) {}

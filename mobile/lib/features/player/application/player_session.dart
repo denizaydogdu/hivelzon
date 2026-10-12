@@ -52,7 +52,7 @@ class PlayerSession extends ChangeNotifier {
   final ClipAudioPlayer audio;
 
   late final SegmentPlayerPool _pool = SegmentPlayerPool(
-    uriFor: (path) => _source.mediaUri(contentId, path),
+    uriFor: media,
     factory: _videoFactory,
   );
 
@@ -84,6 +84,10 @@ class PlayerSession extends ChangeNotifier {
   int _token = 0;
   String? _lastSavedCheckpoint;
   bool _disposed = false;
+
+  // 🎯 paneli (H-050).
+  bool _missionOpen = false;
+  bool _missionWasPlaying = false;
 
   // Anlam paneli (H-046).
   MeaningController? _meaning;
@@ -120,6 +124,10 @@ class PlayerSession extends ChangeNotifier {
   bool get hintPanelOpen => _hintPanelOpen;
   bool get reactionBubbleVisible => _reactionBubbleVisible;
   bool get userPaused => _userPaused;
+
+  /// 🎯 paneli (görev + hedef ifadeler, H-050) açık mı? Ekran bunu görünce
+  /// alt paneli açar.
+  bool get missionPanelOpen => _missionOpen;
   int get liveVideoControllers => _pool.liveCount;
 
   /// Açık anlam paneli (yoksa null). Ekran bunu görünce paneli açar.
@@ -134,7 +142,13 @@ class PlayerSession extends ChangeNotifier {
     return n is VideoBearing && (n as VideoBearing).video != null;
   }
 
-  Uri media(String path) => _source.mediaUri(contentId, path);
+  /// Paket dosyasının adresi. `season:` önekli yol sezon paketindedir (H-050).
+  Uri media(String path) => path.startsWith(kSeasonPathPrefix)
+      ? _source.seasonMediaUri(
+          _episode?.info.season ?? 1,
+          path.substring(kSeasonPathPrefix.length),
+        )
+      : _source.mediaUri(contentId, path);
 
   /// Oynayan videonun tahmini konumu (saniye).
   double get positionSeconds {
@@ -159,6 +173,10 @@ class PlayerSession extends ChangeNotifier {
     _setPhase(PlayerPhase.loading);
     try {
       final ep = await _source.loadEpisode(contentId);
+      _episode = ep;
+      // Başlık videosu, kayıt ve bayraklar okunurken ısınır (H-050).
+      final title = ep.titleNode;
+      if (title != null) _pool.preload([title.video]);
       final external = <String, Map<String, String>>{};
       for (final f in ep.externalFlags) {
         external.putIfAbsent(f.episode, () => {});
@@ -259,6 +277,53 @@ class PlayerSession extends ChangeNotifier {
   }
 
   void playAudio(String path) => unawaited(audio.play(media(path)));
+
+  /// "Önceki bölümde" özetini atla (H-050): özet durur (son karesi altta
+  /// kalır), sıradaki düğüme geçilir.
+  Future<void> skipRecap() async {
+    final e = _engine;
+    if (e == null || !e.canSkip || _meaning != null) return;
+    final id = e.current!.id;
+    _completionHandled = true; // atlarken özetin bitişi ikinci kez ilerletmesin
+    final c = _active;
+    if (c != null && _activeNodeId == id) await c.pause();
+    if (_disposed || e.current?.id != id) return;
+    _log('özet atlandı: $id');
+    e.advance();
+    _onNodeEntered(kind: TransitionKind.ui);
+  }
+
+  /// 🎯 paneli: video (oynuyorsa) durur; panel kapanınca sürer.
+  Future<void> openMissionPanel() async {
+    if (_missionOpen || _meaning != null || _phase != PlayerPhase.playing) {
+      return;
+    }
+    _missionOpen = true;
+    _autoCardTimer?.cancel();
+    final c = _active;
+    _missionWasPlaying =
+        isVideoNode && c != null && c.value.isPlaying && !_userPaused;
+    notifyListeners();
+    _log('🎯 paneli açıldı');
+    if (_missionWasPlaying && c != null) {
+      await c.pause();
+      await _cancelPrestart();
+      final pos = await c.position;
+      if (pos != null) _reanchor(position: pos);
+    }
+  }
+
+  Future<void> closeMissionPanel() async {
+    if (!_missionOpen) return;
+    _missionOpen = false;
+    notifyListeners();
+    final c = _active;
+    if (_missionWasPlaying && c != null && isVideoNode && !_disposed) {
+      _reanchor();
+      await c.play();
+    }
+    _missionWasPlaying = false;
+  }
 
   void setSpeed(double value) {
     _speed = value;
@@ -638,9 +703,11 @@ class PlayerSession extends ChangeNotifier {
 
   void _maybePrestart(VideoPlayerValue value) {
     if (_prestartedPath != null || _prestarting || !value.isPlaying) return;
+    if (_missionOpen) return;
     final n = node;
     if (n is! SegmentNode || n.id != _activeNodeId) return;
-    final next = n.next == null ? null : _engine!.episode.nodes[n.next];
+    final nextId = n is TitleNode ? (_engine!.resumeTarget ?? n.next) : n.next;
+    final next = nextId == null ? null : _engine!.episode.nodes[nextId];
     if (next is! VideoBearing) return;
     final path = (next as VideoBearing).video;
     if (path == null || !_pool.isReady(path) || path == _activePath) return;

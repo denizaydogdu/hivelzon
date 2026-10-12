@@ -1,9 +1,10 @@
 {
   "kurguVersion": 1,
   "contentId": "A1-901",
-  "start": "s01",
+  "start": "title",
   "gate": {"comprehension": ["t1"], "targetPhrase": ["k1"], "activeTask": ["t1"]},
   "nodes": [
+    {"id": "title", "type": "title", "next": "s01"},
     {"id": "s01", "type": "segment", "checkpoint": true,
      "shots": [{"image": "images/none.png", "audio": [{"path": "../b2_05_maya", "speaker": "MAYA"}, {"path": "../b2_06_alex", "speaker": "ALEX"}]},
                {"image": "images/none.png", "len": 2.0}],

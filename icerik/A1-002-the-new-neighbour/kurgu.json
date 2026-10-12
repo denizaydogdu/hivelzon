@@ -1,8 +1,8 @@
 {
-  "kurguVersion": 1,
+  "kurguVersion": 2,
   "contentId": "A1-002",
   "source": "Ön izleme kurgusu b2_kurgu.py (H-032) düğümlere bölündü; karar kartları ve altyazı artık uygulamada (K-03).",
-  "start": "s01",
+  "start": "title",
   "gate": {
     "comprehension": ["t-gorev"],
     "targetPhrase": ["k1", "k2"],
@@ -10,30 +10,22 @@
   },
   "nodes": [
     {
-      "id": "s01", "type": "segment", "scene": "Soğuk açılış", "checkpoint": true,
+      "id": "title", "type": "title",
+      "next": "recap"
+    },
+    {
+      "id": "recap", "type": "recap",
       "shots": [
-        {"image": "../A1-001-a-strange-message/images/T2-pov.png", "audio": [{"id": "b2_01_voice", "radio": true}], "move": [1.15, 1.22, 0.5, 0.5, 0.45, 0.45]},
-        {"image": "images/B2-01-dukkan-dis.png", "len": 3.0, "move": [1.0, 1.07, 0.4, 0.5, 0.6, 0.5]}
+        {"image": "../A1-001-a-strange-message/images/T2-pov.png", "audio": [{"id": "b2_01_voice", "radio": true}], "move": [1.15, 1.22, 0.5, 0.5, 0.45, 0.45]}
       ],
-      "next": "c-title"
-    },
-    {
-      "id": "c-title", "type": "card", "kind": "title", "advance": "auto", "duration": 2.5,
-      "background": "images/B2-01-dukkan-dis.png",
-      "lines": [{"text": "SEZON 1 · BÖLÜM 2", "lang": "tr", "style": "caption"},
-                {"text": "The New Neighbour", "lang": "en", "style": "heading"}],
-      "next": "c-mission"
-    },
-    {
-      "id": "c-mission", "type": "card", "kind": "mission", "advance": "tap",
-      "background": "images/B2-01-dukkan-dis.png",
-      "lines": [{"text": "Komşunla tanış ve Old Station hakkında 3 bilgi öğren.", "lang": "tr", "style": "heading"},
-                {"text": "Nice to meet you. · This is my… · Excuse me, where is…? · Is it far? · Thank you.", "lang": "en", "style": "highlight"}],
       "next": "s02"
     },
     {
       "id": "s02", "type": "segment", "scene": "Sahne 1: Tide & Pages", "checkpoint": true,
-      "shots": [{"image": "images/B2-02-maya-tezgah.png", "audio": ["b2_02_maya"], "move": [1.0, 1.06, 0.5, 0.5, 0.4, 0.42]}],
+      "shots": [
+        {"image": "images/B2-01-dukkan-dis.png", "len": 3.0, "move": [1.0, 1.07, 0.4, 0.5, 0.6, 0.5]},
+        {"image": "images/B2-02-maya-tezgah.png", "audio": ["b2_02_maya"], "move": [1.0, 1.06, 0.5, 0.5, 0.4, 0.42]}
+      ],
       "next": "k1"
     },
     {

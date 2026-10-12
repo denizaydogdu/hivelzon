@@ -1,6 +1,8 @@
 # Bölüm paketi (H-034)
 
-**Sürüm:** `schemaVersion: 1` · **Tarih:** 2026-10-11 · **Araçlar:** `tools/content-pipeline/`
+**Sürüm:** `schemaVersion: 2` · **Tarih:** 2026-10-12 (H-050) · **Araçlar:** `tools/content-pipeline/`
+
+> **schemaVersion 2 (H-050, kullanıcı kararı 2026-10-12):** Her bölüm doğrudan **başlık ekranıyla** açılır (`title` düğümü, zorunlu başlangıç). Başlıktan önce video, yazı ya da kart yoktur. B2 ve sonrasında başlıktan sonra atlanabilir **"Önceki bölümde"** özeti (`recap`) gelir, sonra hikâye. Açılıştaki başlık kartı ve görev kartı kalktı: görev cümlesi ve hedef ifadeler oynatıcının üst çubuğundaki 🎯 panelinde ve bölüm sonunda gösterilir. Uygulama sürüm 1 paketlerini de okur.
 
 Bölüm paketi, etkileşimli oynatıcının (H-031) bir bölümü oynatmak için ihtiyaç duyduğu her şeydir: düğüm grafiği (`scenes.json`), segment videoları, altyazı JSON'ları, Hi sesleri ve karar arka planları. Paket her bölüm için `icerik/<id>/_build/package/` altında üretilir. Bu klasör git dışındadır. Kaynak dosyalar (`content.json`, `story.en.md`, `kurgu.json`, `audio/*.align.json`) depodadır.
 
@@ -27,13 +29,14 @@ icerik/A1-001-a-strange-message/_build/package/
 
 | Alan | Açıklama |
 |---|---|
-| `schemaVersion` | Her zaman `1`. Uyumsuz değişiklikte artar. |
-| `episode` | `id`, `slug`, `level`, `season`, `number`, `title`, `contentVersion`, `status`, `aiGenerated`, `aiLabel`, `mission.tr` (görev kartı), `targetPhrases`, `prev`, `next`, `links`. |
+| `schemaVersion` | `2` (H-050: `title` ve `recap` düğümleri; başlık ve görev kartı yok). Uyumsuz değişiklikte artar. Uygulama 1 ve 2'yi okur. |
+| `episode` | `id`, `slug`, `level`, `season`, `number`, `title`, `contentVersion`, `status`, `aiGenerated`, `aiLabel`, `mission.tr` (🎯 panelindeki görev cümlesi), `targetPhrases`, `targetPhraseGloss`, `prev`, `next`, `links`. |
+| `episode.targetPhraseGloss` | 🎯 paneli için hedef ifadenin Türkçe anlamı: `text`, `tr`, `words` (`w`, `gloss`), `chunks`. `ceviri.tr.json`'dan gelir: önce birebir satır, yoksa herhangi bir satırdaki aynı kalıp (`chunks[].en`). Anlamı bulunamayan ifade listede yoktur ve panelde dokunulamaz (ör. B1 *Listen.*). |
 | `episode.links` | `content.json`'daki bağ alanları: `previously`, `payoff`, `openQuestion`, `answers`, `cluesUnlocked`, `callbackPhrases` (OYUN-TASARIMI §4.3). |
 | `flags` | Bu bölümde yazılan kalıcı bayraklar (`id`, `values`). **En fazla 3 (K-28).** |
 | `externalFlags` | Önceki bölümde yazılıp bu bölümde okunan bayraklar (`episode`, `id`, `values`, `default`). |
 | `gate` | Bölüm kapısı (K-29). Üç ölçütün hepsi gerekir. |
-| `start` | İlk düğümün kimliği. |
+| `start` | İlk düğümün kimliği. schemaVersion 2'de her zaman `title` düğümüdür. |
 | `nodes` | Düğüm listesi. Sıra yalnızca okunabilirlik içindir; akışı `next` belirler. |
 
 ### 2.2 Düğüm türleri
@@ -42,10 +45,12 @@ Her düğümde `id` ve `type` vardır. `scene` (sahne adı) ve `checkpoint` (sah
 
 | `type` | Ne zaman | Önemli alanlar |
 |---|---|---|
+| `title` | **Bölümün ilk düğümü (zorunlu).** Sezonun yazısız kısa animasyonu üstünde uygulama "SEZON 1 · BÖLÜM N" (fener sarısı, küçük büyük harf) ve bölüm adını (büyük, beyaz) çizer. Dokunma gerekmez; video bitince `next`'e geçilir. Kontrol noktası değildir. | `season`, `episode`, `caption`, `title`, `seasonVideo` (sezon paketindeki dosya), `seasonPoster` (ilk kare, jpg), `duration`, `next` |
+| `recap` | "Önceki bölümde" (B2+): başlıktan hemen sonra, segment gibi oynayan kısa video. Altta "Önceki bölümde" etiketi ve "Atla" düğmesi (≥ 48 px). Kontrol noktası değildir. | `video`, `duration`, `subtitles`, `skippable`, `next` |
 | `segment` | Kesintisiz video. Karar anlarında bölünür. | `video`, `duration` (sn), `subtitles` (yol ya da `null`), `next` |
 | `decision` | Karar anı. Video durur; müzik ve hareket kısılır (K-27). | `prompt.tr`, `cue` (soruyu soran replik), `pov`, `background`, `targetPhrase`, `skill`, `cefr`, `options[]`, `hints[]` |
 | `reaction` | Yanlış seçimin kısa, nazik tepkisi; sonra aynı karara dönülür (K-28). | `video` + `duration` + `subtitles` ve/veya `bubble` (Hi balonu: `text`, `lang`, isteğe bağlı `audio`), `next` = karar |
-| `card` | Yerel arayüz kartı. | `kind`: `title`, `mission`, `hi`, `line`, `note`, `message`, `clue`, `openQuestion`; `lines[]` (`text`, `lang`, `speaker`, `style`; İngilizce satırda `tr`, `words`, `chunks`, §3.1); `audio`; `background`; `advance` (`tap`/`auto`) + `duration`; `variants[]` (bayrağa göre satırlar); `clueIds`, `questionId`, `answers` |
+| `card` | Yerel arayüz kartı. | `kind`: `hi`, `line`, `note`, `message`, `clue`, `openQuestion` (`title` ve `mission` sürüm 2'de yok); `lines[]` (`text`, `lang`, `speaker`, `style`; İngilizce satırda `tr`, `words`, `chunks`, §3.1); `audio`; `background`; `advance` (`tap`/`auto`) + `duration`; `variants[]` (bayrağa göre satırlar); `clueIds`, `questionId`, `answers` |
 | `task` | Görev, anlama ya da kanıt etkileşimi. | `kind`: `choice`, `multiSelect`, `order`, `match`, `fillBlank`; `role`: `comprehension`, `mission`, `evidence`; `prompt.tr`; `items[]`; `audio` (dinleme); `feedback.wrong` (Hi balonu); `result[]` |
 
 **Seçenek (`options[]`):** `id`, `text`, `lang` (varsayılan `en`), `icon` (ör. `arrows:up,left`), `correct`, `setFlag` (`flag`, `value`), `audio` (Alex'in o repliği), `next`.
@@ -86,9 +91,23 @@ Yanlışta `feedback.wrong` gösterilir ve aynı öğe tekrar denenir. Süre sı
 
 ### 2.5 Kontrol noktası
 
-- `checkpoint: true` sahne başlarını işaretler.
+- `checkpoint: true` sahne başlarını işaretler. Başlık ve özet kontrol noktası değildir.
+- Kaldığı yerden devamda da önce başlık ekranı oynar, sonra doğrudan kaydedilen kontrol noktasına geçilir (özet atlanır). Başlık sırasında çıkılırsa kayıt korunur.
 - Uygulama kapatılıp açılınca ya da bölümün yeni sürümünde düğüm silinince kullanıcı en yakın kontrol noktasına döner (OYUN-TASARIMI §14).
 - Düğüm kimlikleri sürümler arasında sabit tutulur.
+
+### 2.6 Açılış (H-050)
+
+| Bölüm | Açılış | Eski soğuk açılış (`s01`) ne oldu |
+|---|---|---|
+| B1 | başlık → `s02` (Sahne 1) | Sessiz not görseli (2,5 sn) kaldırıldı; aynı görsel `s03`'te zaten var. B1'de özet yok. |
+| B2 | başlık → `recap` (2,5 sn) → `s02` | 1. çekim (B1'in telsiz anı + "Meet me at the old station.") özet oldu. 2. çekim (dükkânın dış cephesi, 3 sn) `s02`'nin açılış çekimi oldu. |
+| B3 | başlık → `recap` (2,8 sn) → `c-msg` → `s02` → `k1` | B2'nin sonu (Maya haritada: "I can show you. Tomorrow?") özet oldu. Maya'nın mesajı Sahne 1'in ilk düğümü (kontrol noktası). |
+| B4 | başlık → `recap` (3,2 sn) → `h-01` → `s02` | B3'ün son karesi (kapıdaki yarım not) sessiz özet oldu. Hi kartı Sahne 1'in ilk düğümü (kontrol noktası). |
+
+- Tam jenerik bölüm başında oynamaz. Hikâye sekmesinde sezon ilk kez açılınca bir kez kendiliğinden oynar (cihazda saklanır), sezon başlığındaki "Jeneriği izle" ile yeniden açılır. "Geç" ile her an atlanır.
+- "Yapay zekâ ile üretilmiştir" notu başlık ekranında sol üstte 4 sn görünür; başlık yazısıyla çakışmaz.
+- Hi'nin konu tanıtımı (yeni dilbilgisi konusu ilk geçtiğinde) bu sürümde yok; H-048'e taşındı.
 
 ## 3. Altyazı JSON (`subs/<düğüm>.en.json`)
 
@@ -168,7 +187,8 @@ python3 tools/content-pipeline/export_package.py icerik/A1-00[1-4]-*   # paket (
 
 - `export_package.py` ara dosyaları `_build/cache/` altında saklar. Aynı girdiyle tekrar çalıştırma yalnızca değişen çekimleri yeniden üretir.
 - Önbellek dosyaları önce geçici adla yazılır.
-- Çıktıda her segment için senkron ölçümü yapılır: ilk ipucu ile gerçek ses başlangıcı arasındaki fark ≤ 0,2 sn olmalı.
+- Çıktıda her segment ve özet için senkron ölçümü yapılır: ilk ipucu ile gerçek ses başlangıcı arasındaki fark ≤ 0,2 sn olmalı.
+- Sezon paketi de aynı komutla üretilir (bölümlerin sezonları için).
 
 ### content-lint kuralları
 
@@ -179,6 +199,11 @@ python3 tools/content-pipeline/export_package.py icerik/A1-00[1-4]-*   # paket (
 | `off-list` | Sözlükte olmayan liste dışı sözcükler | Uyarı |
 | `sentence-length` | A1'de cümle en çok 8, A2'de en çok 12 sözcük | Hata |
 | `schema` | `scenes.json` şemaya uygun | Hata |
+| `title-start` | Başlangıç düğümü `title` değil ya da birden çok başlık var | Hata |
+| `title-first` | Başlığa giden bir düğüm var (başlıktan önce hiçbir şey olamaz) | Hata |
+| `recap-length` | "Önceki bölümde" 15 sn'den uzun | Uyarı |
+| `recap-position` | Özet doğrudan başlıktan sonra gelmiyor | Uyarı |
+| `season-missing` | Paket denetiminde sezon paketinde başlık arka planı yok | Uyarı |
 | `unreachable`, `dangling`, `dead-end`, `no-end` | Ulaşılamayan düğüm, var olmayan hedef, bölüm sonuna çıkmayan yol | Hata |
 | `no-correct`, `wrong-no-reaction`, `wrong-no-return` | Kararda doğru seçenek var; yanlış seçenek tepkiye, tepki aynı karara gider | Hata |
 | `flags`, `flag-undeclared`, `flag-value` | En fazla 3 bayrak; yazılan ve okunan bayrak tanımlı | Hata |

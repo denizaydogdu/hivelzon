@@ -60,7 +60,7 @@ def main(argv: list[str] | None = None) -> int:
                   f"en uzun cümle {cv['maxSentenceWords']} sözcük")
         if r.graph:
             g = r.graph
-            print(f"   grafik [{g['source']}]: {g['nodes']} düğüm, {g['segments']} segment, {g['decisions']} karar, "
+            print(f"   grafik [{g['source']}]: {g['nodes']} düğüm, {g['titles']} başlık, {g['recaps']} özet, {g['segments']} segment, {g['decisions']} karar, "
                   f"{g['reactions']} tepki, {g['cards']} kart, {g['tasks']} görev, {g['flags']} bayrak")
         else:
             print("   grafik: scenes.json / kurgu.json yok, atlandı")

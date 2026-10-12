@@ -14,6 +14,7 @@ MAX_FLAGS = 3
 MAX_DECISIONS = {"A1": 4, "A2": 4}
 MAX_OPTIONS = {"A1": 3, "A2": 3}
 RETURN_HOPS = 4
+MAX_RECAP_SECONDS = 15.0
 
 
 @dataclass(frozen=True)
@@ -105,7 +106,26 @@ def check_scenes(doc: dict) -> list[Issue]:
         if nid not in can_end:
             E("dead-end", f"{nid}: bu düğümden bölüm sonuna yol yok (çıkışsız döngü ya da çıkmaz)")
 
-    if by_id[start].get("checkpoint") is not True:
+    # Açılış (H-050): her bölüm başlık ekranıyla açılır; başlıktan önce hiçbir şey yoktur.
+    titles = [n.get("id") for n in nodes if n.get("type") == "title"]
+    if by_id[start].get("type") != "title":
+        E("title-start", f"başlangıç düğümü ({start}) başlık ekranı (type: title) değil; her bölüm başlıkla açılır")
+    if len(titles) > 1:
+        E("title-start", f"birden çok başlık düğümü: {', '.join(titles)}")
+    for t in titles:
+        preds = sorted(rev.get(t, ()))
+        if preds:
+            E("title-first", f"başlıktan ({t}) önce gelen düğüm var: {', '.join(preds)}")
+    for n in nodes:
+        if n.get("type") != "recap":
+            continue
+        rid, dur = n.get("id"), n.get("duration") or 0
+        if dur > MAX_RECAP_SECONDS:
+            W("recap-length", f"{rid}: \"Önceki bölümde\" {dur:.1f} sn (en çok {MAX_RECAP_SECONDS:.0f} sn önerilir)")
+        preds = rev.get(rid, set())
+        if not preds or any(by_id[p].get("type") != "title" for p in preds):
+            W("recap-position", f"{rid}: özet doğrudan başlık ekranından sonra gelmiyor")
+    if by_id[start].get("type") != "title" and by_id[start].get("checkpoint") is not True:
         W("checkpoint", f"başlangıç düğümü ({start}) kontrol noktası değil")
 
     # Bayraklar (K-28)
