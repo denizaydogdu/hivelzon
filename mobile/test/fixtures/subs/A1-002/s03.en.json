@@ -1,0 +1,357 @@
+{
+ "schemaVersion": 1,
+ "segment": "s03",
+ "lang": "en",
+ "duration": 16.4,
+ "cues": [
+  {
+   "id": "s03-01",
+   "tr": "Selam Alex!",
+   "start": 0.57,
+   "end": 1.38,
+   "speaker": "MAYA",
+   "text": "Hi, Alex!",
+   "words": [
+    {
+     "w": "Hi,",
+     "start": 0.57,
+     "end": 0.94,
+     "gloss": "selam"
+    },
+    {
+     "w": "Alex!",
+     "start": 0.996,
+     "end": 1.3,
+     "gloss": null
+    }
+   ],
+   "chunks": []
+  },
+  {
+   "id": "s03-02",
+   "tr": "Ben Maya.",
+   "start": 1.38,
+   "end": 2.22,
+   "speaker": "MAYA",
+   "text": "I'm Maya.",
+   "words": [
+    {
+     "w": "I'm",
+     "start": 1.38,
+     "end": 1.54,
+     "gloss": "ben …-im"
+    },
+    {
+     "w": "Maya.",
+     "start": 1.636,
+     "end": 2.1,
+     "gloss": null
+    }
+   ],
+   "chunks": [
+    {
+     "en": "I'm …",
+     "tr": "Ben … (kendini tanıtma)",
+     "startWord": 0,
+     "endWord": 1
+    }
+   ]
+  },
+  {
+   "id": "s03-03",
+   "tr": "Buralarda yeni misin?",
+   "start": 2.22,
+   "end": 3.37,
+   "speaker": "MAYA",
+   "text": "Are you new here?",
+   "words": [
+    {
+     "w": "Are",
+     "start": 2.22,
+     "end": 2.58,
+     "gloss": "(soru) -misin (olmak)"
+    },
+    {
+     "w": "you",
+     "start": 2.6,
+     "end": 2.66,
+     "gloss": "sen"
+    },
+    {
+     "w": "new",
+     "start": 2.72,
+     "end": 2.9,
+     "gloss": "yeni"
+    },
+    {
+     "w": "here?",
+     "start": 2.948,
+     "end": 3.22,
+     "gloss": "burada"
+    }
+   ],
+   "chunks": [
+    {
+     "en": "Are you new here?",
+     "tr": "Buralarda yeni misin?",
+     "startWord": 0,
+     "endWord": 3
+    }
+   ]
+  },
+  {
+   "id": "s03-04",
+   "tr": "Evet. Yeni komşunum.",
+   "start": 3.57,
+   "end": 5.24,
+   "speaker": "ALEX",
+   "text": "Yes. I'm your new neighbour.",
+   "words": [
+    {
+     "w": "Yes.",
+     "start": 3.57,
+     "end": 4.13,
+     "gloss": "evet"
+    },
+    {
+     "w": "I'm",
+     "start": 4.17,
+     "end": 4.29,
+     "gloss": "ben …-im"
+    },
+    {
+     "w": "your",
+     "start": 4.306,
+     "end": 4.37,
+     "gloss": "senin"
+    },
+    {
+     "w": "new",
+     "start": 4.43,
+     "end": 4.61,
+     "gloss": "yeni"
+    },
+    {
+     "w": "neighbour.",
+     "start": 4.642,
+     "end": 5.09,
+     "gloss": "komşu"
+    }
+   ],
+   "chunks": []
+  },
+  {
+   "id": "s03-05",
+   "tr": "Aa, hoş geldin!",
+   "start": 5.44,
+   "end": 6.393,
+   "speaker": "MAYA",
+   "text": "Oh, welcome!",
+   "words": [
+    {
+     "w": "Oh,",
+     "start": 5.44,
+     "end": 5.6,
+     "gloss": "aa, oh"
+    },
+    {
+     "w": "welcome!",
+     "start": 5.67,
+     "end": 6.36,
+     "gloss": "hoş geldin"
+    }
+   ],
+   "chunks": []
+  },
+  {
+   "id": "s03-06",
+   "tr": "Nerelisin?",
+   "start": 6.393,
+   "end": 7.67,
+   "speaker": "MAYA",
+   "text": "Where are you from?",
+   "words": [
+    {
+     "w": "Where",
+     "start": 6.393,
+     "end": 6.56,
+     "gloss": "nere(li)"
+    },
+    {
+     "w": "are",
+     "start": 6.58,
+     "end": 6.64,
+     "gloss": "-sin (olmak)"
+    },
+    {
+     "w": "you",
+     "start": 6.68,
+     "end": 6.8,
+     "gloss": "sen"
+    },
+    {
+     "w": "from?",
+     "start": 6.864,
+     "end": 7.52,
+     "gloss": "-den / -dan (-li)"
+    }
+   ],
+   "chunks": [
+    {
+     "en": "Where are you from?",
+     "tr": "Nerelisin? / Nereden geliyorsun?",
+     "startWord": 0,
+     "endWord": 3
+    }
+   ]
+  },
+  {
+   "id": "s03-07",
+   "tr": "Türkiye'denim.",
+   "start": 7.87,
+   "end": 8.99,
+   "speaker": "ALEX",
+   "text": "I'm from Türkiye.",
+   "words": [
+    {
+     "w": "I'm",
+     "start": 7.87,
+     "end": 8.03,
+     "gloss": "ben …-im"
+    },
+    {
+     "w": "from",
+     "start": 8.062,
+     "end": 8.19,
+     "gloss": "-den / -dan"
+    },
+    {
+     "w": "Türkiye.",
+     "start": 8.26,
+     "end": 8.95,
+     "gloss": null
+    }
+   ],
+   "chunks": [
+    {
+     "en": "I'm from …",
+     "tr": "…-denim / …-liyim",
+     "startWord": 0,
+     "endWord": 2
+    }
+   ]
+  },
+  {
+   "id": "s03-08",
+   "tr": "İzmir'den.",
+   "start": 8.99,
+   "end": 9.94,
+   "speaker": "ALEX",
+   "text": "From İzmir.",
+   "words": [
+    {
+     "w": "From",
+     "start": 8.99,
+     "end": 9.15,
+     "gloss": "-den / -dan"
+    },
+    {
+     "w": "İzmir.",
+     "start": 9.23,
+     "end": 9.79,
+     "gloss": null
+    }
+   ],
+   "chunks": []
+  },
+  {
+   "id": "s03-09",
+   "tr": "İzmir mi? Deniz kenarında mı?",
+   "start": 10.97,
+   "end": 13.21,
+   "speaker": "MAYA",
+   "text": "İzmir? Is it by the sea?",
+   "words": [
+    {
+     "w": "İzmir?",
+     "start": 10.97,
+     "end": 11.78,
+     "gloss": null
+    },
+    {
+     "w": "Is",
+     "start": 11.913,
+     "end": 12.18,
+     "gloss": "(soru) mı (olmak)"
+    },
+    {
+     "w": "it",
+     "start": 12.207,
+     "end": 12.26,
+     "gloss": "o (orası)"
+    },
+    {
+     "w": "by",
+     "start": 12.313,
+     "end": 12.42,
+     "gloss": "kenarında"
+    },
+    {
+     "w": "the",
+     "start": 12.46,
+     "end": 12.58,
+     "gloss": "(belirli tanımlık)"
+    },
+    {
+     "w": "sea?",
+     "start": 12.66,
+     "end": 13.06,
+     "gloss": "deniz"
+    }
+   ],
+   "chunks": [
+    {
+     "en": "by the sea",
+     "tr": "deniz kenarında",
+     "startWord": 3,
+     "endWord": 5
+    }
+   ]
+  },
+  {
+   "id": "s03-10",
+   "tr": "Evet! Port Lumen gibi.",
+   "start": 13.41,
+   "end": 15.64,
+   "speaker": "ALEX",
+   "text": "Yes! Like Port Lumen.",
+   "words": [
+    {
+     "w": "Yes!",
+     "start": 13.41,
+     "end": 13.97,
+     "gloss": "evet"
+    },
+    {
+     "w": "Like",
+     "start": 14.082,
+     "end": 14.53,
+     "gloss": "gibi"
+    },
+    {
+     "w": "Port",
+     "start": 14.594,
+     "end": 14.85,
+     "gloss": null
+    },
+    {
+     "w": "Lumen.",
+     "start": 14.93,
+     "end": 15.49,
+     "gloss": null
+    }
+   ],
+   "chunks": []
+  }
+ ]
+}

@@ -1,0 +1,38 @@
+{
+ "schemaVersion": 1,
+ "segment": "k2-ok",
+ "lang": "en",
+ "duration": 2.333,
+ "cues": [
+  {
+   "id": "k2-ok-01",
+   "tr": "Bir daha, lütfen.",
+   "start": 0.46,
+   "end": 1.962,
+   "speaker": "ALEX",
+   "text": "Again, please.",
+   "words": [
+    {
+     "w": "Again,",
+     "start": 0.46,
+     "end": 0.965,
+     "gloss": "tekrar, bir daha"
+    },
+    {
+     "w": "please.",
+     "start": 1.046,
+     "end": 1.812,
+     "gloss": "lütfen"
+    }
+   ],
+   "chunks": [
+    {
+     "en": "Again, please.",
+     "tr": "Bir daha, lütfen. (kibar tekrar isteği)",
+     "startWord": 0,
+     "endWord": 1
+    }
+   ]
+  }
+ ]
+}

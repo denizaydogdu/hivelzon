@@ -1,0 +1,62 @@
+{
+ "schemaVersion": 1,
+ "segment": "s05",
+ "lang": "en",
+ "duration": 2.7,
+ "cues": [
+  {
+   "id": "s05-01",
+   "tr": "Eski istasyon nerede?",
+   "start": 0.58,
+   "end": 2.309,
+   "speaker": "ALEX",
+   "text": "Where is the old station?",
+   "words": [
+    {
+     "w": "Where",
+     "start": 0.58,
+     "end": 0.695,
+     "gloss": "nerede"
+    },
+    {
+     "w": "is",
+     "start": 0.76,
+     "end": 0.89,
+     "gloss": "(olmak; Türkçede karşılığı yok)"
+    },
+    {
+     "w": "the",
+     "start": 0.915,
+     "end": 0.988,
+     "gloss": "(belirli tanımlık)"
+    },
+    {
+     "w": "old",
+     "start": 1.085,
+     "end": 1.378,
+     "gloss": "eski"
+    },
+    {
+     "w": "station?",
+     "start": 1.451,
+     "end": 2.159,
+     "gloss": "istasyon"
+    }
+   ],
+   "chunks": [
+    {
+     "en": "Where is …?",
+     "tr": "… nerede?",
+     "startWord": 0,
+     "endWord": 4
+    },
+    {
+     "en": "the old station",
+     "tr": "eski istasyon",
+     "startWord": 2,
+     "endWord": 4
+    }
+   ]
+  }
+ ]
+}

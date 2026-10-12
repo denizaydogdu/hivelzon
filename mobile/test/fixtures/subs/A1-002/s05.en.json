@@ -1,0 +1,236 @@
+{
+ "schemaVersion": 1,
+ "segment": "s05",
+ "lang": "en",
+ "duration": 9.4,
+ "cues": [
+  {
+   "id": "s05-01",
+   "tr": "Uzak mı?",
+   "start": 0.62,
+   "end": 1.45,
+   "speaker": "ALEX",
+   "text": "Is it far?",
+   "words": [
+    {
+     "w": "Is",
+     "start": 0.62,
+     "end": 0.66,
+     "gloss": "(soru) mı (olmak)"
+    },
+    {
+     "w": "it",
+     "start": 0.687,
+     "end": 0.74,
+     "gloss": "o (orası)"
+    },
+    {
+     "w": "far?",
+     "start": 0.84,
+     "end": 1.3,
+     "gloss": "uzak"
+    }
+   ],
+   "chunks": [
+    {
+     "en": "Is it far?",
+     "tr": "Uzak mı?",
+     "startWord": 0,
+     "endWord": 2
+    }
+   ]
+  },
+  {
+   "id": "s05-02",
+   "tr": "Hayır, değil.",
+   "start": 1.49,
+   "end": 2.93,
+   "speaker": "MAYA",
+   "text": "No, it isn't.",
+   "words": [
+    {
+     "w": "No,",
+     "start": 1.49,
+     "end": 1.89,
+     "gloss": "hayır"
+    },
+    {
+     "w": "it",
+     "start": 1.943,
+     "end": 2.05,
+     "gloss": "o (orası)"
+    },
+    {
+     "w": "isn't.",
+     "start": 2.11,
+     "end": 2.85,
+     "gloss": "değil"
+    }
+   ],
+   "chunks": [
+    {
+     "en": "No, it isn't.",
+     "tr": "Hayır, değil. (kısa cevap)",
+     "startWord": 0,
+     "endWord": 2
+    }
+   ]
+  },
+  {
+   "id": "s05-03",
+   "tr": "Bak, işte bir harita.",
+   "start": 2.93,
+   "end": 4.6,
+   "speaker": "MAYA",
+   "text": "Look, here is a map.",
+   "words": [
+    {
+     "w": "Look,",
+     "start": 2.93,
+     "end": 3.49,
+     "gloss": "bak"
+    },
+    {
+     "w": "here",
+     "start": 3.538,
+     "end": 3.73,
+     "gloss": "işte (here is)"
+    },
+    {
+     "w": "is",
+     "start": 3.757,
+     "end": 3.81,
+     "gloss": "-dır / -dir (olmak)"
+    },
+    {
+     "w": "a",
+     "start": 3.85,
+     "end": 3.89,
+     "gloss": "bir"
+    },
+    {
+     "w": "map.",
+     "start": 3.99,
+     "end": 4.45,
+     "gloss": "harita"
+    }
+   ],
+   "chunks": [
+    {
+     "en": "here is …",
+     "tr": "işte …",
+     "startWord": 1,
+     "endWord": 4
+    }
+   ]
+  },
+  {
+   "id": "s05-04",
+   "tr": "Sana gösterebilirim. Yarın olur mu?",
+   "start": 4.8,
+   "end": 6.71,
+   "speaker": "MAYA",
+   "text": "I can show you. Tomorrow?",
+   "words": [
+    {
+     "w": "I",
+     "start": 4.8,
+     "end": 4.96,
+     "gloss": "ben"
+    },
+    {
+     "w": "can",
+     "start": 5.0,
+     "end": 5.12,
+     "gloss": "-ebilmek"
+    },
+    {
+     "w": "show",
+     "start": 5.168,
+     "end": 5.36,
+     "gloss": "göstermek"
+    },
+    {
+     "w": "you.",
+     "start": 5.4,
+     "end": 5.6,
+     "gloss": "sana"
+    },
+    {
+     "w": "Tomorrow?",
+     "start": 5.689,
+     "end": 6.56,
+     "gloss": "yarın"
+    }
+   ],
+   "chunks": [
+    {
+     "en": "I can show you.",
+     "tr": "Sana gösterebilirim.",
+     "startWord": 0,
+     "endWord": 3
+    }
+   ]
+  },
+  {
+   "id": "s05-05",
+   "tr": "Evet, lütfen!",
+   "start": 6.91,
+   "end": 7.83,
+   "speaker": "ALEX",
+   "text": "Yes, please!",
+   "words": [
+    {
+     "w": "Yes,",
+     "start": 6.91,
+     "end": 7.43,
+     "gloss": "evet"
+    },
+    {
+     "w": "please!",
+     "start": 7.47,
+     "end": 7.79,
+     "gloss": "lütfen"
+    }
+   ],
+   "chunks": [
+    {
+     "en": "Yes, please!",
+     "tr": "Evet, lütfen! (bir teklifi kabul ederken)",
+     "startWord": 0,
+     "endWord": 1
+    }
+   ]
+  },
+  {
+   "id": "s05-06",
+   "tr": "Teşekkür ederim.",
+   "start": 7.83,
+   "end": 8.66,
+   "speaker": "ALEX",
+   "text": "Thank you.",
+   "words": [
+    {
+     "w": "Thank",
+     "start": 7.83,
+     "end": 8.03,
+     "gloss": "teşekkür etmek"
+    },
+    {
+     "w": "you.",
+     "start": 8.11,
+     "end": 8.51,
+     "gloss": "sana / size"
+    }
+   ],
+   "chunks": [
+    {
+     "en": "Thank you.",
+     "tr": "Teşekkür ederim.",
+     "startWord": 0,
+     "endWord": 1
+    }
+   ]
+  }
+ ]
+}

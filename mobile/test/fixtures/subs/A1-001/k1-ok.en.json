@@ -1,0 +1,62 @@
+{
+ "schemaVersion": 1,
+ "segment": "k1-ok",
+ "lang": "en",
+ "duration": 2.4,
+ "cues": [
+  {
+   "id": "k1-ok-01",
+   "tr": "Evet, seni duyabiliyorum.",
+   "start": 0.46,
+   "end": 2.013,
+   "speaker": "ALEX",
+   "text": "Yes, I can hear you.",
+   "words": [
+    {
+     "w": "Yes,",
+     "start": 0.46,
+     "end": 0.79,
+     "gloss": "evet"
+    },
+    {
+     "w": "I",
+     "start": 0.888,
+     "end": 0.985,
+     "gloss": "ben"
+    },
+    {
+     "w": "can",
+     "start": 1.034,
+     "end": 1.18,
+     "gloss": "-ebilmek"
+    },
+    {
+     "w": "hear",
+     "start": 1.22,
+     "end": 1.376,
+     "gloss": "duymak"
+    },
+    {
+     "w": "you.",
+     "start": 1.424,
+     "end": 1.863,
+     "gloss": "seni"
+    }
+   ],
+   "chunks": [
+    {
+     "en": "Yes, I can.",
+     "tr": "Evet, (yapabiliyorum).",
+     "startWord": 0,
+     "endWord": 2
+    },
+    {
+     "en": "I can hear you",
+     "tr": "Seni duyabiliyorum",
+     "startWord": 1,
+     "endWord": 4
+    }
+   ]
+  }
+ ]
+}

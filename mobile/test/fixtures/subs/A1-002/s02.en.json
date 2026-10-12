@@ -1,0 +1,80 @@
+{
+ "schemaVersion": 1,
+ "segment": "s02",
+ "lang": "en",
+ "duration": 5.367,
+ "cues": [
+  {
+   "id": "s02-01",
+   "tr": "Günaydın!",
+   "start": 3.26,
+   "end": 3.82,
+   "speaker": "MAYA",
+   "text": "Good morning!",
+   "words": [
+    {
+     "w": "Good",
+     "start": 3.26,
+     "end": 3.28,
+     "gloss": "iyi (good morning: günaydın)"
+    },
+    {
+     "w": "morning!",
+     "start": 3.33,
+     "end": 3.76,
+     "gloss": "sabah"
+    }
+   ],
+   "chunks": [
+    {
+     "en": "Good morning!",
+     "tr": "Günaydın!",
+     "startWord": 0,
+     "endWord": 1
+    }
+   ]
+  },
+  {
+   "id": "s02-02",
+   "tr": "Yardımcı olabilir miyim?",
+   "start": 3.82,
+   "end": 4.95,
+   "speaker": "MAYA",
+   "text": "Can I help you?",
+   "words": [
+    {
+     "w": "Can",
+     "start": 3.82,
+     "end": 4.0,
+     "gloss": "-ebilir miyim (soru)"
+    },
+    {
+     "w": "I",
+     "start": 4.04,
+     "end": 4.08,
+     "gloss": "ben"
+    },
+    {
+     "w": "help",
+     "start": 4.128,
+     "end": 4.32,
+     "gloss": "yardım etmek"
+    },
+    {
+     "w": "you?",
+     "start": 4.36,
+     "end": 4.8,
+     "gloss": "size / sana"
+    }
+   ],
+   "chunks": [
+    {
+     "en": "Can I help you?",
+     "tr": "Yardımcı olabilir miyim? (dükkânda)",
+     "startWord": 0,
+     "endWord": 3
+    }
+   ]
+  }
+ ]
+}

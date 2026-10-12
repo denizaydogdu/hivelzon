@@ -1,0 +1,198 @@
+{
+ "schemaVersion": 1,
+ "segment": "s04",
+ "lang": "en",
+ "duration": 8.667,
+ "cues": [
+  {
+   "id": "s04-01",
+   "tr": "Bu annem.",
+   "start": 0.54,
+   "end": 1.85,
+   "speaker": "MAYA",
+   "text": "This is my mother.",
+   "words": [
+    {
+     "w": "This",
+     "start": 0.54,
+     "end": 0.66,
+     "gloss": "bu"
+    },
+    {
+     "w": "is",
+     "start": 0.687,
+     "end": 0.74,
+     "gloss": "-dır / -dir (olmak)"
+    },
+    {
+     "w": "my",
+     "start": 0.82,
+     "end": 0.98,
+     "gloss": "benim"
+    },
+    {
+     "w": "mother.",
+     "start": 1.037,
+     "end": 1.7,
+     "gloss": "anne"
+    }
+   ],
+   "chunks": [
+    {
+     "en": "This is my …",
+     "tr": "Bu benim … (birini tanıtırken)",
+     "startWord": 0,
+     "endWord": 3
+    }
+   ]
+  },
+  {
+   "id": "s04-02",
+   "tr": "Merhaba Alex.",
+   "start": 2.05,
+   "end": 3.09,
+   "speaker": "MRS BROOKS",
+   "text": "Hello, Alex.",
+   "words": [
+    {
+     "w": "Hello,",
+     "start": 2.05,
+     "end": 2.37,
+     "gloss": "merhaba"
+    },
+    {
+     "w": "Alex.",
+     "start": 2.482,
+     "end": 3.01,
+     "gloss": null
+    }
+   ],
+   "chunks": []
+  },
+  {
+   "id": "s04-03",
+   "tr": "Tanıştığımıza memnun oldum.",
+   "start": 3.09,
+   "end": 4.36,
+   "speaker": "MRS BROOKS",
+   "text": "Nice to meet you.",
+   "words": [
+    {
+     "w": "Nice",
+     "start": 3.09,
+     "end": 3.41,
+     "gloss": "hoş, güzel"
+    },
+    {
+     "w": "to",
+     "start": 3.463,
+     "end": 3.57,
+     "gloss": "(mastar: -mek)"
+    },
+    {
+     "w": "meet",
+     "start": 3.618,
+     "end": 3.81,
+     "gloss": "tanışmak"
+    },
+    {
+     "w": "you.",
+     "start": 3.87,
+     "end": 4.21,
+     "gloss": "seninle / sizinle"
+    }
+   ],
+   "chunks": [
+    {
+     "en": "Nice to meet you.",
+     "tr": "Tanıştığımıza memnun oldum.",
+     "startWord": 0,
+     "endWord": 3
+    }
+   ]
+  },
+  {
+   "id": "s04-04",
+   "tr": "Bu da kuzenim Sam.",
+   "start": 4.56,
+   "end": 6.027,
+   "speaker": "MAYA",
+   "text": "And this is my cousin, Sam.",
+   "words": [
+    {
+     "w": "And",
+     "start": 4.56,
+     "end": 4.64,
+     "gloss": "ve (… da)"
+    },
+    {
+     "w": "this",
+     "start": 4.672,
+     "end": 4.8,
+     "gloss": "bu"
+    },
+    {
+     "w": "is",
+     "start": 4.827,
+     "end": 4.88,
+     "gloss": "-dır / -dir (olmak)"
+    },
+    {
+     "w": "my",
+     "start": 4.96,
+     "end": 5.12,
+     "gloss": "benim"
+    },
+    {
+     "w": "cousin,",
+     "start": 5.154,
+     "end": 5.44,
+     "gloss": "kuzen"
+    },
+    {
+     "w": "Sam.",
+     "start": 5.54,
+     "end": 5.92,
+     "gloss": null
+    }
+   ],
+   "chunks": [
+    {
+     "en": "This is my …",
+     "tr": "Bu benim … (birini tanıtırken)",
+     "startWord": 1,
+     "endWord": 5
+    }
+   ]
+  },
+  {
+   "id": "s04-05",
+   "tr": "Telsizlere bayılır!",
+   "start": 6.027,
+   "end": 7.91,
+   "speaker": "MAYA",
+   "text": "He loves radios!",
+   "words": [
+    {
+     "w": "He",
+     "start": 6.027,
+     "end": 6.24,
+     "gloss": "o (erkek)"
+    },
+    {
+     "w": "loves",
+     "start": 6.307,
+     "end": 6.64,
+     "gloss": "çok seviyor, bayılıyor"
+    },
+    {
+     "w": "radios!",
+     "start": 6.754,
+     "end": 7.76,
+     "gloss": "telsizler, radyolar"
+    }
+   ],
+   "chunks": []
+  }
+ ]
+}

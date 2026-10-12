@@ -1,0 +1,311 @@
+{
+ "schemaVersion": 1,
+ "segment": "k2-ok",
+ "lang": "en",
+ "duration": 14.833,
+ "cues": [
+  {
+   "id": "k2-ok-01",
+   "tr": "Pardon, eski istasyon nerede?",
+   "start": 0.52,
+   "end": 2.79,
+   "speaker": "ALEX",
+   "text": "Excuse me, where is the old station?",
+   "words": [
+    {
+     "w": "Excuse",
+     "start": 0.52,
+     "end": 0.8,
+     "gloss": "affetmek (excuse me: affedersiniz)"
+    },
+    {
+     "w": "me,",
+     "start": 0.88,
+     "end": 1.28,
+     "gloss": "(excuse me kalıbının parçası)"
+    },
+    {
+     "w": "where",
+     "start": 1.307,
+     "end": 1.44,
+     "gloss": "nerede"
+    },
+    {
+     "w": "is",
+     "start": 1.493,
+     "end": 1.6,
+     "gloss": "(olmak; Türkçede karşılığı yok)"
+    },
+    {
+     "w": "the",
+     "start": 1.64,
+     "end": 1.76,
+     "gloss": "(belirli tanımlık)"
+    },
+    {
+     "w": "old",
+     "start": 1.82,
+     "end": 2.0,
+     "gloss": "eski"
+    },
+    {
+     "w": "station?",
+     "start": 2.07,
+     "end": 2.64,
+     "gloss": "istasyon"
+    }
+   ],
+   "chunks": [
+    {
+     "en": "Excuse me",
+     "tr": "Affedersiniz / Pardon (kibar başlangıç)",
+     "startWord": 0,
+     "endWord": 1
+    },
+    {
+     "en": "Where is …?",
+     "tr": "… nerede?",
+     "startWord": 2,
+     "endWord": 6
+    },
+    {
+     "en": "the old station",
+     "tr": "eski istasyon",
+     "startWord": 4,
+     "endWord": 6
+    }
+   ]
+  },
+  {
+   "id": "k2-ok-02",
+   "tr": "Eski istasyon mu?",
+   "start": 3.45,
+   "end": 4.35,
+   "speaker": "MAYA",
+   "text": "The old station?",
+   "words": [
+    {
+     "w": "The",
+     "start": 3.45,
+     "end": 3.48,
+     "gloss": "(belirli tanımlık)"
+    },
+    {
+     "w": "old",
+     "start": 3.52,
+     "end": 3.64,
+     "gloss": "eski"
+    },
+    {
+     "w": "station?",
+     "start": 3.7,
+     "end": 4.2,
+     "gloss": "istasyon"
+    }
+   ],
+   "chunks": [
+    {
+     "en": "the old station",
+     "tr": "eski istasyon",
+     "startWord": 0,
+     "endWord": 2
+    }
+   ]
+  },
+  {
+   "id": "k2-ok-03",
+   "tr": "Limanın yakınında.",
+   "start": 4.413,
+   "end": 6.06,
+   "speaker": "MAYA",
+   "text": "It's near the harbour.",
+   "words": [
+    {
+     "w": "It's",
+     "start": 4.413,
+     "end": 4.92,
+     "gloss": "o … -dır (orası)"
+    },
+    {
+     "w": "near",
+     "start": 4.936,
+     "end": 5.0,
+     "gloss": "yakınında"
+    },
+    {
+     "w": "the",
+     "start": 5.04,
+     "end": 5.16,
+     "gloss": "(belirli tanımlık)"
+    },
+    {
+     "w": "harbour.",
+     "start": 5.22,
+     "end": 5.96,
+     "gloss": "liman"
+    }
+   ],
+   "chunks": [
+    {
+     "en": "It's near …",
+     "tr": "…-in yakınında",
+     "startWord": 0,
+     "endWord": 3
+    }
+   ]
+  },
+  {
+   "id": "k2-ok-04",
+   "tr": "Ama kapalı.",
+   "start": 6.06,
+   "end": 7.293,
+   "speaker": "MAYA",
+   "text": "But it's closed.",
+   "words": [
+    {
+     "w": "But",
+     "start": 6.06,
+     "end": 6.36,
+     "gloss": "ama"
+    },
+    {
+     "w": "it's",
+     "start": 6.387,
+     "end": 6.52,
+     "gloss": "o … -dır (orası)"
+    },
+    {
+     "w": "closed.",
+     "start": 6.6,
+     "end": 7.16,
+     "gloss": "kapalı"
+    }
+   ],
+   "chunks": []
+  },
+  {
+   "id": "k2-ok-05",
+   "tr": "Çok eski.",
+   "start": 7.293,
+   "end": 8.99,
+   "speaker": "MAYA",
+   "text": "It's very old.",
+   "words": [
+    {
+     "w": "It's",
+     "start": 7.293,
+     "end": 7.64,
+     "gloss": "o … -dır (orası)"
+    },
+    {
+     "w": "very",
+     "start": 7.72,
+     "end": 8.04,
+     "gloss": "çok"
+    },
+    {
+     "w": "old.",
+     "start": 8.14,
+     "end": 8.84,
+     "gloss": "eski"
+    }
+   ],
+   "chunks": []
+  },
+  {
+   "id": "k2-ok-06",
+   "tr": "Kapalı mı? Bir daha, lütfen.",
+   "start": 9.19,
+   "end": 11.74,
+   "speaker": "ALEX",
+   "text": "Closed? Again, please.",
+   "words": [
+    {
+     "w": "Closed?",
+     "start": 9.19,
+     "end": 9.75,
+     "gloss": "kapalı"
+    },
+    {
+     "w": "Again,",
+     "start": 9.91,
+     "end": 10.79,
+     "gloss": "tekrar, bir daha"
+    },
+    {
+     "w": "please.",
+     "start": 10.87,
+     "end": 11.59,
+     "gloss": "lütfen"
+    }
+   ],
+   "chunks": [
+    {
+     "en": "Again, please.",
+     "tr": "Bir daha, lütfen. (kibar tekrar isteği)",
+     "startWord": 1,
+     "endWord": 2
+    }
+   ]
+  },
+  {
+   "id": "k2-ok-07",
+   "tr": "Kapalı.",
+   "start": 11.94,
+   "end": 12.89,
+   "speaker": "MAYA",
+   "text": "It is closed.",
+   "words": [
+    {
+     "w": "It",
+     "start": 11.94,
+     "end": 12.02,
+     "gloss": "o (orası)"
+    },
+    {
+     "w": "is",
+     "start": 12.047,
+     "end": 12.1,
+     "gloss": "-dır (olmak)"
+    },
+    {
+     "w": "closed.",
+     "start": 12.18,
+     "end": 12.74,
+     "gloss": "kapalı"
+    }
+   ],
+   "chunks": []
+  },
+  {
+   "id": "k2-ok-08",
+   "tr": "Kimse yok.",
+   "start": 12.953,
+   "end": 14.09,
+   "speaker": "MAYA",
+   "text": "No people.",
+   "words": [
+    {
+     "w": "No",
+     "start": 12.953,
+     "end": 13.38,
+     "gloss": "hiç (yok)"
+    },
+    {
+     "w": "people.",
+     "start": 13.449,
+     "end": 13.94,
+     "gloss": "insanlar"
+    }
+   ],
+   "chunks": [
+    {
+     "en": "No people.",
+     "tr": "Kimse yok.",
+     "startWord": 0,
+     "endWord": 1
+    }
+   ]
+  }
+ ]
+}

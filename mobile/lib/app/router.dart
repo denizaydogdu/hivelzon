@@ -7,6 +7,8 @@ import '../features/player/application/autoplay_driver.dart';
 import '../features/player/application/player_session.dart';
 import '../features/player/presentation/player_screen.dart';
 import '../features/home/presentation/home_screen.dart';
+import '../features/notebook/presentation/notebook_screen.dart';
+import '../features/notebook/presentation/review_screen.dart';
 import '../features/profile/presentation/profile_screen.dart';
 import '../features/story/presentation/season_intro_screen.dart';
 import '../features/story/presentation/story_screen.dart';
@@ -25,6 +27,12 @@ abstract final class AppRoutes {
   /// [mode]: `resume` (kaldığı yerden) ya da `restart` (baştan); yoksa kayıt varsa sorulur.
   static String play(String contentId, {String? mode}) =>
       mode == null ? '/play/$contentId' : '/play/$contentId?mode=$mode';
+
+  /// Profil → Defter (H-036).
+  static const notebook = '/profil/defter';
+
+  /// Tekrar oturumu (tam ekran, H-036).
+  static const review = '/tekrar';
 
   /// Sezon jeneriği (tam ekran, H-050).
   static String seasonIntro(int season) => '/sezon/$season/jenerik';
@@ -55,6 +63,14 @@ final routerProvider = Provider<GoRouter>((ref) {
           ),
         ),
       ),
+      GoRoute(
+        path: AppRoutes.review,
+        pageBuilder: (context, state) => MaterialPage(
+          key: state.pageKey,
+          fullscreenDialog: true,
+          child: const ReviewScreen(),
+        ),
+      ),
       StatefulShellRoute.indexedStack(
         builder: (context, state, navigationShell) =>
             ShellScaffold(navigationShell: navigationShell),
@@ -63,7 +79,16 @@ final routerProvider = Provider<GoRouter>((ref) {
           _branch(AppRoutes.discover, const DiscoverScreen()),
           _branch(AppRoutes.story, const StoryScreen()),
           _branch(AppRoutes.talk, const TalkScreen()),
-          _branch(AppRoutes.profile, const ProfileScreen()),
+          _branch(
+            AppRoutes.profile,
+            const ProfileScreen(),
+            routes: [
+              GoRoute(
+                path: 'defter',
+                builder: (context, state) => const NotebookScreen(),
+              ),
+            ],
+          ),
         ],
       ),
     ],
@@ -72,12 +97,17 @@ final routerProvider = Provider<GoRouter>((ref) {
   return router;
 });
 
-StatefulShellBranch _branch(String path, Widget screen) {
+StatefulShellBranch _branch(
+  String path,
+  Widget screen, {
+  List<RouteBase> routes = const [],
+}) {
   return StatefulShellBranch(
     routes: [
       GoRoute(
         path: path,
         pageBuilder: (context, state) => NoTransitionPage(child: screen),
+        routes: routes,
       ),
     ],
   );

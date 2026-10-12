@@ -1,0 +1,2217 @@
+{
+ "description": "FSRS eşdeğerlik verisi (H-036). Dart ve Java portları bu çıktıyı üretmelidir.",
+ "source": "py-fsrs (MIT) — https://github.com/open-spaced-repetition/py-fsrs",
+ "pyFsrsVersion": "6.3.2",
+ "parameters": [
+  0.212,
+  1.2931,
+  2.3065,
+  8.2956,
+  6.4133,
+  0.8334,
+  3.0194,
+  0.001,
+  1.8722,
+  0.1666,
+  0.796,
+  1.4835,
+  0.0614,
+  0.2629,
+  1.6483,
+  0.6014,
+  1.8729,
+  0.5425,
+  0.0912,
+  0.0658,
+  0.1542
+ ],
+ "fuzzing": false,
+ "tolerance": {
+  "relative": 1e-09
+ },
+ "notes": "Tarih alanları UTC. 'step' öğrenme/yeniden öğrenme adımıdır (review'da null).",
+ "cases": [
+  {
+   "name": "py-fsrs test_review_card (varsayılan adımlar)",
+   "config": {
+    "desiredRetention": 0.9,
+    "learningStepsSeconds": [
+     60,
+     600
+    ],
+    "relearningStepsSeconds": [
+     600
+    ],
+    "maximumInterval": 36500
+   },
+   "start": "2022-11-29T12:30:00.000000Z",
+   "reviews": [
+    {
+     "rating": "good",
+     "reviewAt": "2022-11-29T12:30:00.000000Z",
+     "retrievabilityBefore": 0,
+     "expected": {
+      "state": "learning",
+      "step": 1,
+      "stability": 2.3065,
+      "difficulty": 2.118103970459016,
+      "due": "2022-11-29T12:40:00.000000Z"
+     }
+    },
+    {
+     "rating": "good",
+     "reviewAt": "2022-11-29T12:40:00.000000Z",
+     "retrievabilityBefore": 1.0,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 2.3065,
+      "difficulty": 2.111214235785395,
+      "due": "2022-12-01T12:40:00.000000Z"
+     }
+    },
+    {
+     "rating": "good",
+     "reviewAt": "2022-12-01T12:40:00.000000Z",
+     "retrievabilityBefore": 0.9094932559773545,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 10.971048263078135,
+      "difficulty": 2.1043313908464483,
+      "due": "2022-12-12T12:40:00.000000Z"
+     }
+    },
+    {
+     "rating": "good",
+     "reviewAt": "2022-12-12T12:40:00.000000Z",
+     "retrievabilityBefore": 0.8998188390602377,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 46.316858440073425,
+      "difficulty": 2.0974554287524403,
+      "due": "2023-01-27T12:40:00.000000Z"
+     }
+    },
+    {
+     "rating": "good",
+     "reviewAt": "2023-01-27T12:40:00.000000Z",
+     "retrievabilityBefore": 0.9004709139017502,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 162.99981577472244,
+      "difficulty": 2.0905863426205262,
+      "due": "2023-07-09T12:40:00.000000Z"
+     }
+    },
+    {
+     "rating": "good",
+     "reviewAt": "2023-07-09T12:40:00.000000Z",
+     "retrievabilityBefore": 0.899999922352538,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 497.8765551245907,
+      "difficulty": 2.083724125574744,
+      "due": "2024-11-18T12:40:00.000000Z"
+     }
+    },
+    {
+     "rating": "again",
+     "reviewAt": "2024-11-18T12:40:00.000000Z",
+     "retrievabilityBefore": 0.8999829672046629,
+     "expected": {
+      "state": "relearning",
+      "step": 0,
+      "stability": 6.890412507565338,
+      "difficulty": 7.383202320049203,
+      "due": "2024-11-18T12:50:00.000000Z"
+     }
+    },
+    {
+     "rating": "again",
+     "reviewAt": "2024-11-18T12:50:00.000000Z",
+     "retrievabilityBefore": 1.0,
+     "expected": {
+      "state": "relearning",
+      "step": 0,
+      "stability": 2.154598374301973,
+      "difficulty": 9.125104766121234,
+      "due": "2024-11-18T13:00:00.000000Z"
+     }
+    },
+    {
+     "rating": "good",
+     "reviewAt": "2024-11-18T13:00:00.000000Z",
+     "retrievabilityBefore": 1.0,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 2.154598374301973,
+      "difficulty": 9.11120803065195,
+      "due": "2024-11-20T13:00:00.000000Z"
+     }
+    },
+    {
+     "rating": "good",
+     "reviewAt": "2024-11-20T13:00:00.000000Z",
+     "retrievabilityBefore": 0.9050332123469057,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 3.9831233795187773,
+      "difficulty": 9.097325191918136,
+      "due": "2024-11-24T13:00:00.000000Z"
+     }
+    },
+    {
+     "rating": "good",
+     "reviewAt": "2024-11-24T13:00:00.000000Z",
+     "retrievabilityBefore": 0.8997092619987734,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 7.236254476883319,
+      "difficulty": 9.083456236023055,
+      "due": "2024-12-01T13:00:00.000000Z"
+     }
+    },
+    {
+     "rating": "good",
+     "reviewAt": "2024-12-01T13:00:00.000000Z",
+     "retrievabilityBefore": 0.902264178747978,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 12.483043578674472,
+      "difficulty": 9.06960114908387,
+      "due": "2024-12-13T13:00:00.000000Z"
+     }
+    },
+    {
+     "rating": "good",
+     "reviewAt": "2024-12-13T13:00:00.000000Z",
+     "retrievabilityBefore": 0.902688265666607,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 20.77035728499242,
+      "difficulty": 9.055759917231622,
+      "due": "2025-01-03T13:00:00.000000Z"
+     }
+    }
+   ]
+  },
+  {
+   "name": "py-fsrs test_memo_state",
+   "config": {
+    "desiredRetention": 0.9,
+    "learningStepsSeconds": [
+     60,
+     600
+    ],
+    "relearningStepsSeconds": [
+     600
+    ],
+    "maximumInterval": 36500
+   },
+   "start": "2022-11-29T12:30:00.000000Z",
+   "reviews": [
+    {
+     "rating": "again",
+     "reviewAt": "2022-11-29T12:30:00.000000Z",
+     "retrievabilityBefore": 0,
+     "expected": {
+      "state": "learning",
+      "step": 0,
+      "stability": 0.212,
+      "difficulty": 6.4133,
+      "due": "2022-11-29T12:31:00.000000Z"
+     }
+    },
+    {
+     "rating": "good",
+     "reviewAt": "2022-11-29T12:30:00.000000Z",
+     "retrievabilityBefore": 1.0,
+     "expected": {
+      "state": "learning",
+      "step": 1,
+      "stability": 0.24668918777567272,
+      "difficulty": 6.402115069296838,
+      "due": "2022-11-29T12:40:00.000000Z"
+     }
+    },
+    {
+     "rating": "good",
+     "reviewAt": "2022-11-30T12:30:00.000000Z",
+     "retrievabilityBefore": 0.7808502770196439,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 2.021477251638192,
+      "difficulty": 6.3909413235243795,
+      "due": "2022-12-02T12:30:00.000000Z"
+     }
+    },
+    {
+     "rating": "good",
+     "reviewAt": "2022-12-03T12:30:00.000000Z",
+     "retrievabilityBefore": 0.8706766387290052,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 7.863698841006282,
+      "difficulty": 6.379778751497693,
+      "due": "2022-12-11T12:30:00.000000Z"
+     }
+    },
+    {
+     "rating": "good",
+     "reviewAt": "2022-12-11T12:30:00.000000Z",
+     "retrievabilityBefore": 0.8988150628247803,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 21.917713153152434,
+      "difficulty": 6.368627342043034,
+      "due": "2023-01-02T12:30:00.000000Z"
+     }
+    },
+    {
+     "rating": "good",
+     "reviewAt": "2023-01-01T12:30:00.000000Z",
+     "retrievabilityBefore": 0.902911513863123,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 53.626902917141365,
+      "difficulty": 6.357487083997829,
+      "due": "2023-02-24T12:30:00.000000Z"
+     }
+    },
+    {
+     "rating": "good",
+     "reviewAt": "2023-01-01T12:30:00.000000Z",
+     "retrievabilityBefore": 1.0,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 53.626902917141365,
+      "difficulty": 6.34635796621067,
+      "due": "2023-02-24T12:30:00.000000Z"
+     }
+    }
+   ]
+  },
+  {
+   "name": "app: Bilmiyorum → oturum sonunda doğru → ertesi gün",
+   "config": {
+    "desiredRetention": 0.9,
+    "learningStepsSeconds": [
+     600
+    ],
+    "relearningStepsSeconds": [
+     600
+    ],
+    "maximumInterval": 36500
+   },
+   "start": "2026-10-12T09:00:00.000000Z",
+   "reviews": [
+    {
+     "rating": "again",
+     "reviewAt": "2026-10-12T09:00:00.000000Z",
+     "retrievabilityBefore": 0,
+     "expected": {
+      "state": "learning",
+      "step": 0,
+      "stability": 0.212,
+      "difficulty": 6.4133,
+      "due": "2026-10-12T09:10:00.000000Z"
+     }
+    },
+    {
+     "rating": "good",
+     "reviewAt": "2026-10-12T09:03:00.000000Z",
+     "retrievabilityBefore": 1.0,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 0.24668918777567272,
+      "difficulty": 6.402115069296838,
+      "due": "2026-10-13T09:03:00.000000Z"
+     }
+    },
+    {
+     "rating": "good",
+     "reviewAt": "2026-10-13T09:03:00.000000Z",
+     "retrievabilityBefore": 0.7808502770196439,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 2.021477251638192,
+      "difficulty": 6.3909413235243795,
+      "due": "2026-10-15T09:03:00.000000Z"
+     }
+    },
+    {
+     "rating": "good",
+     "reviewAt": "2026-10-15T09:03:00.000000Z",
+     "retrievabilityBefore": 0.9007321437194427,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 6.451804956995953,
+      "difficulty": 6.379778751497693,
+      "due": "2026-10-21T09:03:00.000000Z"
+     }
+    }
+   ]
+  },
+  {
+   "name": "app: oturumda iki kez yanlış",
+   "config": {
+    "desiredRetention": 0.9,
+    "learningStepsSeconds": [
+     600
+    ],
+    "relearningStepsSeconds": [
+     600
+    ],
+    "maximumInterval": 36500
+   },
+   "start": "2026-10-12T09:00:00.000000Z",
+   "reviews": [
+    {
+     "rating": "again",
+     "reviewAt": "2026-10-12T09:00:00.000000Z",
+     "retrievabilityBefore": 0,
+     "expected": {
+      "state": "learning",
+      "step": 0,
+      "stability": 0.212,
+      "difficulty": 6.4133,
+      "due": "2026-10-12T09:10:00.000000Z"
+     }
+    },
+    {
+     "rating": "again",
+     "reviewAt": "2026-10-12T09:02:00.000000Z",
+     "retrievabilityBefore": 1.0,
+     "expected": {
+      "state": "learning",
+      "step": 0,
+      "stability": 0.08335671711031604,
+      "difficulty": 8.806304468856837,
+      "due": "2026-10-12T09:12:00.000000Z"
+     }
+    },
+    {
+     "rating": "good",
+     "reviewAt": "2026-10-12T09:12:00.000000Z",
+     "retrievabilityBefore": 1.0,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 0.10314065007785231,
+      "difficulty": 8.792726533684817,
+      "due": "2026-10-13T09:12:00.000000Z"
+     }
+    },
+    {
+     "rating": "good",
+     "reviewAt": "2026-10-13T09:12:00.000000Z",
+     "retrievabilityBefore": 0.6958266544079361,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 0.6952546986897922,
+      "difficulty": 8.77916217644797,
+      "due": "2026-10-14T09:12:00.000000Z"
+     }
+    }
+   ]
+  },
+  {
+   "name": "app: yeni kart Good → Good → Easy",
+   "config": {
+    "desiredRetention": 0.9,
+    "learningStepsSeconds": [
+     600
+    ],
+    "relearningStepsSeconds": [
+     600
+    ],
+    "maximumInterval": 36500
+   },
+   "start": "2026-10-12T09:00:00.000000Z",
+   "reviews": [
+    {
+     "rating": "good",
+     "reviewAt": "2026-10-12T09:00:00.000000Z",
+     "retrievabilityBefore": 0,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 2.3065,
+      "difficulty": 2.118103970459016,
+      "due": "2026-10-14T09:00:00.000000Z"
+     }
+    },
+    {
+     "rating": "good",
+     "reviewAt": "2026-10-14T09:00:00.000000Z",
+     "retrievabilityBefore": 0.9094932559773545,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 10.964332335820698,
+      "difficulty": 2.111214235785395,
+      "due": "2026-10-25T09:00:00.000000Z"
+     }
+    },
+    {
+     "rating": "easy",
+     "reviewAt": "2026-10-25T09:00:00.000000Z",
+     "retrievabilityBefore": 0.8997767176252718,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 77.10745326192749,
+      "difficulty": 1.0,
+      "due": "2027-01-10T09:00:00.000000Z"
+     }
+    },
+    {
+     "rating": "good",
+     "reviewAt": "2027-01-10T09:00:00.000000Z",
+     "retrievabilityBefore": 0.900095777058743,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 278.3278242029053,
+      "difficulty": 1.0,
+      "due": "2027-10-15T09:00:00.000000Z"
+     }
+    }
+   ]
+  },
+  {
+   "name": "app: yeni kart Hard (tek adım ×1,5)",
+   "config": {
+    "desiredRetention": 0.9,
+    "learningStepsSeconds": [
+     600
+    ],
+    "relearningStepsSeconds": [
+     600
+    ],
+    "maximumInterval": 36500
+   },
+   "start": "2026-10-12T09:00:00.000000Z",
+   "reviews": [
+    {
+     "rating": "hard",
+     "reviewAt": "2026-10-12T09:00:00.000000Z",
+     "retrievabilityBefore": 0,
+     "expected": {
+      "state": "learning",
+      "step": 0,
+      "stability": 1.2931,
+      "difficulty": 5.112170705601056,
+      "due": "2026-10-12T09:15:00.000000Z"
+     }
+    },
+    {
+     "rating": "hard",
+     "reviewAt": "2026-10-12T09:15:00.000000Z",
+     "retrievabilityBefore": 1.0,
+     "expected": {
+      "state": "learning",
+      "step": 0,
+      "stability": 1.2931,
+      "difficulty": 6.7404595108297,
+      "due": "2026-10-12T09:30:00.000000Z"
+     }
+    },
+    {
+     "rating": "good",
+     "reviewAt": "2026-10-12T09:30:00.000000Z",
+     "retrievabilityBefore": 1.0,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 1.3358997622047517,
+      "difficulty": 6.728947420615708,
+      "due": "2026-10-13T09:30:00.000000Z"
+     }
+    }
+   ]
+  },
+  {
+   "name": "app: yeni kart Easy",
+   "config": {
+    "desiredRetention": 0.9,
+    "learningStepsSeconds": [
+     600
+    ],
+    "relearningStepsSeconds": [
+     600
+    ],
+    "maximumInterval": 36500
+   },
+   "start": "2026-10-12T09:00:00.000000Z",
+   "reviews": [
+    {
+     "rating": "easy",
+     "reviewAt": "2026-10-12T09:00:00.000000Z",
+     "retrievabilityBefore": 0,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 8.2956,
+      "difficulty": 1.0,
+      "due": "2026-10-20T09:00:00.000000Z"
+     }
+    },
+    {
+     "rating": "good",
+     "reviewAt": "2026-10-20T09:00:00.000000Z",
+     "retrievabilityBefore": 0.9024733005284542,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 38.90514998232684,
+      "difficulty": 1.0,
+      "due": "2026-11-28T09:00:00.000000Z"
+     }
+    }
+   ]
+  },
+  {
+   "name": "app: unutma (lapse) ve yeniden öğrenme",
+   "config": {
+    "desiredRetention": 0.9,
+    "learningStepsSeconds": [
+     600
+    ],
+    "relearningStepsSeconds": [
+     600
+    ],
+    "maximumInterval": 36500
+   },
+   "start": "2026-10-12T09:00:00.000000Z",
+   "reviews": [
+    {
+     "rating": "good",
+     "reviewAt": "2026-10-12T09:00:00.000000Z",
+     "retrievabilityBefore": 0,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 2.3065,
+      "difficulty": 2.118103970459016,
+      "due": "2026-10-14T09:00:00.000000Z"
+     }
+    },
+    {
+     "rating": "good",
+     "reviewAt": "2026-10-14T09:00:00.000000Z",
+     "retrievabilityBefore": 0.9094932559773545,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 10.964332335820698,
+      "difficulty": 2.111214235785395,
+      "due": "2026-10-25T09:00:00.000000Z"
+     }
+    },
+    {
+     "rating": "good",
+     "reviewAt": "2026-10-25T09:00:00.000000Z",
+     "retrievabilityBefore": 0.8997767176252718,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 46.28021728755693,
+      "difficulty": 2.1043313908464483,
+      "due": "2026-12-10T09:00:00.000000Z"
+     }
+    },
+    {
+     "rating": "again",
+     "reviewAt": "2026-12-10T09:00:00.000000Z",
+     "retrievabilityBefore": 0.9004166937961716,
+     "expected": {
+      "state": "relearning",
+      "step": 0,
+      "stability": 2.9325804541638116,
+      "difficulty": 7.389975788014609,
+      "due": "2026-12-10T09:10:00.000000Z"
+     }
+    },
+    {
+     "rating": "good",
+     "reviewAt": "2026-12-10T09:05:00.000000Z",
+     "retrievabilityBefore": 1.0,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 2.9325804541638116,
+      "difficulty": 7.377814181523433,
+      "due": "2026-12-13T09:05:00.000000Z"
+     }
+    },
+    {
+     "rating": "good",
+     "reviewAt": "2026-12-13T09:05:00.000000Z",
+     "retrievabilityBefore": 0.8984308565865844,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 7.794549965290449,
+      "difficulty": 7.365664736638748,
+      "due": "2026-12-21T09:05:00.000000Z"
+     }
+    }
+   ]
+  },
+  {
+   "name": "app: geç tekrar (30 gün)",
+   "config": {
+    "desiredRetention": 0.9,
+    "learningStepsSeconds": [
+     600
+    ],
+    "relearningStepsSeconds": [
+     600
+    ],
+    "maximumInterval": 36500
+   },
+   "start": "2026-10-12T09:00:00.000000Z",
+   "reviews": [
+    {
+     "rating": "good",
+     "reviewAt": "2026-10-12T09:00:00.000000Z",
+     "retrievabilityBefore": 0,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 2.3065,
+      "difficulty": 2.118103970459016,
+      "due": "2026-10-14T09:00:00.000000Z"
+     }
+    },
+    {
+     "rating": "good",
+     "reviewAt": "2026-10-14T09:00:00.000000Z",
+     "retrievabilityBefore": 0.9094932559773545,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 10.964332335820698,
+      "difficulty": 2.111214235785395,
+      "due": "2026-10-25T09:00:00.000000Z"
+     }
+    },
+    {
+     "rating": "good",
+     "reviewAt": "2026-11-13T09:00:00.000000Z",
+     "retrievabilityBefore": 0.8179055467009831,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 77.29502132804201,
+      "difficulty": 2.1043313908464483,
+      "due": "2027-01-29T09:00:00.000000Z"
+     }
+    },
+    {
+     "rating": "hard",
+     "reviewAt": "2026-12-28T09:00:00.000000Z",
+     "retrievabilityBefore": 0.9327399719392373,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 148.96898942207244,
+      "difficulty": 4.743715608383524,
+      "due": "2027-05-26T09:00:00.000000Z"
+     }
+    }
+   ]
+  },
+  {
+   "name": "app: belirlenimci dizi 1",
+   "config": {
+    "desiredRetention": 0.9,
+    "learningStepsSeconds": [
+     600
+    ],
+    "relearningStepsSeconds": [
+     600
+    ],
+    "maximumInterval": 36500
+   },
+   "start": "2026-10-12T09:00:00.000000Z",
+   "reviews": [
+    {
+     "rating": "again",
+     "reviewAt": "2026-10-12T09:00:00.000000Z",
+     "retrievabilityBefore": 0,
+     "expected": {
+      "state": "learning",
+      "step": 0,
+      "stability": 0.212,
+      "difficulty": 6.4133,
+      "due": "2026-10-12T09:10:00.000000Z"
+     }
+    },
+    {
+     "rating": "good",
+     "reviewAt": "2026-10-12T09:10:00.000000Z",
+     "retrievabilityBefore": 1.0,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 0.24668918777567272,
+      "difficulty": 6.402115069296838,
+      "due": "2026-10-13T09:10:00.000000Z"
+     }
+    },
+    {
+     "rating": "good",
+     "reviewAt": "2026-10-12T09:12:00.000000Z",
+     "retrievabilityBefore": 1.0,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 0.2842063592758949,
+      "difficulty": 6.3909413235243795,
+      "due": "2026-10-13T09:12:00.000000Z"
+     }
+    },
+    {
+     "rating": "hard",
+     "reviewAt": "2026-10-12T09:14:00.000000Z",
+     "retrievabilityBefore": 1.0,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 0.2842063592758949,
+      "difficulty": 7.589367037717998,
+      "due": "2026-10-13T09:14:00.000000Z"
+     }
+    },
+    {
+     "rating": "good",
+     "reviewAt": "2026-10-13T09:14:00.000000Z",
+     "retrievabilityBefore": 0.7943861201504139,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 1.6664030010036799,
+      "difficulty": 7.577006039977118,
+      "due": "2026-10-15T09:14:00.000000Z"
+     }
+    },
+    {
+     "rating": "good",
+     "reviewAt": "2026-11-02T09:14:00.000000Z",
+     "retrievabilityBefore": 0.675221468868499,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 11.71650746180886,
+      "difficulty": 7.56465740323398,
+      "due": "2026-11-14T09:14:00.000000Z"
+     }
+    },
+    {
+     "rating": "good",
+     "reviewAt": "2026-11-22T09:14:00.000000Z",
+     "retrievabilityBefore": 0.8593015885611608,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 32.301058655416604,
+      "difficulty": 7.552321115127584,
+      "due": "2026-12-24T09:14:00.000000Z"
+     }
+    },
+    {
+     "rating": "good",
+     "reviewAt": "2026-12-12T09:14:00.000000Z",
+     "retrievabilityBefore": 0.9294630087619854,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 55.74191588676497,
+      "difficulty": 7.539997163309295,
+      "due": "2027-02-06T09:14:00.000000Z"
+     }
+    },
+    {
+     "rating": "good",
+     "reviewAt": "2027-02-06T09:14:00.000000Z",
+     "retrievabilityBefore": 0.8996823339572144,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 109.09705644681276,
+      "difficulty": 7.527685535442823,
+      "due": "2027-05-26T09:14:00.000000Z"
+     }
+    },
+    {
+     "rating": "hard",
+     "reviewAt": "2027-02-06T09:16:00.000000Z",
+     "retrievabilityBefore": 1.0,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 109.09705644681276,
+      "difficulty": 8.343990817869736,
+      "due": "2027-05-26T09:16:00.000000Z"
+     }
+    },
+    {
+     "rating": "hard",
+     "reviewAt": "2027-02-26T09:16:00.000000Z",
+     "retrievabilityBefore": 0.9748362795327382,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 119.58854752696476,
+      "difficulty": 8.88589230417088,
+      "due": "2027-06-26T09:16:00.000000Z"
+     }
+    },
+    {
+     "rating": "hard",
+     "reviewAt": "2027-03-18T09:16:00.000000Z",
+     "retrievabilityBefore": 0.9768609312471948,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 127.87155051329239,
+      "difficulty": 9.245631763386843,
+      "due": "2027-07-24T09:16:00.000000Z"
+     }
+    },
+    {
+     "rating": "good",
+     "reviewAt": "2027-07-24T09:16:00.000000Z",
+     "retrievabilityBefore": 0.8999310079364072,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 181.7749960772853,
+      "difficulty": 9.231614500920294,
+      "due": "2028-01-22T09:16:00.000000Z"
+     }
+    },
+    {
+     "rating": "good",
+     "reviewAt": "2027-07-24T09:18:00.000000Z",
+     "retrievabilityBefore": 1.0,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 181.7749960772853,
+      "difficulty": 9.21761125571621,
+      "due": "2028-01-22T09:18:00.000000Z"
+     }
+    }
+   ]
+  },
+  {
+   "name": "app: belirlenimci dizi 2",
+   "config": {
+    "desiredRetention": 0.9,
+    "learningStepsSeconds": [
+     600
+    ],
+    "relearningStepsSeconds": [
+     600
+    ],
+    "maximumInterval": 36500
+   },
+   "start": "2026-10-12T09:00:00.000000Z",
+   "reviews": [
+    {
+     "rating": "good",
+     "reviewAt": "2026-10-12T09:00:00.000000Z",
+     "retrievabilityBefore": 0,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 2.3065,
+      "difficulty": 2.118103970459016,
+      "due": "2026-10-14T09:00:00.000000Z"
+     }
+    },
+    {
+     "rating": "hard",
+     "reviewAt": "2026-10-15T09:00:00.000000Z",
+     "retrievabilityBefore": 0.8809479557659419,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 9.234870781784839,
+      "difficulty": 4.752858488532557,
+      "due": "2026-10-24T09:00:00.000000Z"
+     }
+    },
+    {
+     "rating": "good",
+     "reviewAt": "2026-10-24T09:00:00.000000Z",
+     "retrievabilityBefore": 0.9017600953448311,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 30.304158819449867,
+      "difficulty": 4.743333999340863,
+      "due": "2026-11-23T09:00:00.000000Z"
+     }
+    },
+    {
+     "rating": "good",
+     "reviewAt": "2026-10-27T09:00:00.000000Z",
+     "retrievabilityBefore": 0.9858186811432083,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 38.23275478617292,
+      "difficulty": 4.733819034638361,
+      "due": "2026-12-04T09:00:00.000000Z"
+     }
+    },
+    {
+     "rating": "easy",
+     "reviewAt": "2026-12-04T09:00:00.000000Z",
+     "retrievabilityBefore": 0.9004189716508012,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 169.39877498434572,
+      "difficulty": 2.9593351293443257,
+      "due": "2027-05-22T09:00:00.000000Z"
+     }
+    },
+    {
+     "rating": "good",
+     "reviewAt": "2027-05-22T09:00:00.000000Z",
+     "retrievabilityBefore": 0.900161836009061,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 480.95238374065127,
+      "difficulty": 2.9516041635118198,
+      "due": "2028-09-14T09:00:00.000000Z"
+     }
+    },
+    {
+     "rating": "good",
+     "reviewAt": "2028-09-14T09:00:00.000000Z",
+     "retrievabilityBefore": 0.8999931984763977,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 1226.3752298285685,
+      "difficulty": 2.943880928645146,
+      "due": "2032-01-23T09:00:00.000000Z"
+     }
+    },
+    {
+     "rating": "good",
+     "reviewAt": "2028-09-17T09:00:00.000000Z",
+     "retrievabilityBefore": 0.9996307152073035,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 1232.1509885917594,
+      "difficulty": 2.9361654170133393,
+      "due": "2032-02-01T09:00:00.000000Z"
+     }
+    },
+    {
+     "rating": "good",
+     "reviewAt": "2032-02-01T09:00:00.000000Z",
+     "retrievabilityBefore": 0.900008419003856,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 2867.692825625326,
+      "difficulty": 2.9284576208931643,
+      "due": "2039-12-09T09:00:00.000000Z"
+     }
+    },
+    {
+     "rating": "easy",
+     "reviewAt": "2032-02-04T09:00:00.000000Z",
+     "retrievabilityBefore": 0.9998419495741777,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 2877.1074067240856,
+      "difficulty": 1.0,
+      "due": "2039-12-21T09:00:00.000000Z"
+     }
+    },
+    {
+     "rating": "good",
+     "reviewAt": "2039-12-21T09:00:00.000000Z",
+     "retrievabilityBefore": 0.9000025647517037,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 6989.373157962564,
+      "difficulty": 1.0,
+      "due": "2059-02-08T09:00:00.000000Z"
+     }
+    },
+    {
+     "rating": "easy",
+     "reviewAt": "2059-02-08T09:00:00.000000Z",
+     "retrievabilityBefore": 0.9000036679753551,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 23127.443491214453,
+      "difficulty": 1.0,
+      "due": "2122-06-05T09:00:00.000000Z"
+     }
+    },
+    {
+     "rating": "again",
+     "reviewAt": "2122-06-05T09:00:00.000000Z",
+     "retrievabilityBefore": 0.9000013174224838,
+     "expected": {
+      "state": "relearning",
+      "step": 0,
+      "stability": 22.80937623009864,
+      "difficulty": 7.0269895692968385,
+      "due": "2122-06-05T09:10:00.000000Z"
+     }
+    },
+    {
+     "rating": "again",
+     "reviewAt": "2122-06-05T09:10:00.000000Z",
+     "retrievabilityBefore": 1.0,
+     "expected": {
+      "state": "relearning",
+      "step": 0,
+      "stability": 6.592151616460491,
+      "difficulty": 9.008020057195637,
+      "due": "2122-06-05T09:20:00.000000Z"
+     }
+    }
+   ]
+  },
+  {
+   "name": "app: belirlenimci dizi 3",
+   "config": {
+    "desiredRetention": 0.9,
+    "learningStepsSeconds": [
+     600
+    ],
+    "relearningStepsSeconds": [
+     600
+    ],
+    "maximumInterval": 36500
+   },
+   "start": "2026-10-12T09:00:00.000000Z",
+   "reviews": [
+    {
+     "rating": "hard",
+     "reviewAt": "2026-10-12T09:00:00.000000Z",
+     "retrievabilityBefore": 0,
+     "expected": {
+      "state": "learning",
+      "step": 0,
+      "stability": 1.2931,
+      "difficulty": 5.112170705601056,
+      "due": "2026-10-12T09:15:00.000000Z"
+     }
+    },
+    {
+     "rating": "hard",
+     "reviewAt": "2026-10-12T09:15:00.000000Z",
+     "retrievabilityBefore": 1.0,
+     "expected": {
+      "state": "learning",
+      "step": 0,
+      "stability": 1.2931,
+      "difficulty": 6.7404595108297,
+      "due": "2026-10-12T09:30:00.000000Z"
+     }
+    },
+    {
+     "rating": "again",
+     "reviewAt": "2026-10-12T09:30:00.000000Z",
+     "retrievabilityBefore": 1.0,
+     "expected": {
+      "state": "learning",
+      "step": 0,
+      "stability": 0.4514029154253082,
+      "difficulty": 8.913839575381886,
+      "due": "2026-10-12T09:40:00.000000Z"
+     }
+    },
+    {
+     "rating": "again",
+     "reviewAt": "2026-10-12T09:32:00.000000Z",
+     "retrievabilityBefore": 1.0,
+     "expected": {
+      "state": "learning",
+      "step": 0,
+      "stability": 0.1688774512073012,
+      "difficulty": 9.628214823615751,
+      "due": "2026-10-12T09:42:00.000000Z"
+     }
+    },
+    {
+     "rating": "hard",
+     "reviewAt": "2026-10-12T09:42:00.000000Z",
+     "retrievabilityBefore": 1.0,
+     "expected": {
+      "state": "learning",
+      "step": 0,
+      "stability": 0.1688774512073012,
+      "difficulty": 9.738420044023753,
+      "due": "2026-10-12T09:57:00.000000Z"
+     }
+    },
+    {
+     "rating": "good",
+     "reviewAt": "2026-11-01T09:42:00.000000Z",
+     "retrievabilityBefore": 0.4797639966986944,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 1.1247361451966311,
+      "difficulty": 9.723909993276568,
+      "due": "2026-11-02T09:42:00.000000Z"
+     }
+    },
+    {
+     "rating": "good",
+     "reviewAt": "2026-11-02T09:42:00.000000Z",
+     "retrievabilityBefore": 0.9078705065796996,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 1.8211166828867524,
+      "difficulty": 9.709414452580129,
+      "due": "2026-11-04T09:42:00.000000Z"
+     }
+    },
+    {
+     "rating": "good",
+     "reviewAt": "2026-11-02T09:44:00.000000Z",
+     "retrievabilityBefore": 1.0,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 1.8394784368211932,
+      "difficulty": 9.694933407424386,
+      "due": "2026-11-04T09:44:00.000000Z"
+     }
+    },
+    {
+     "rating": "good",
+     "reviewAt": "2026-11-22T09:44:00.000000Z",
+     "retrievabilityBefore": 0.6847326679936289,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 5.862386680131506,
+      "difficulty": 9.6804668433138,
+      "due": "2026-11-28T09:44:00.000000Z"
+     }
+    },
+    {
+     "rating": "good",
+     "reviewAt": "2026-11-28T09:44:00.000000Z",
+     "retrievabilityBefore": 0.8983980340315433,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 9.018227166812636,
+      "difficulty": 9.666014745767324,
+      "due": "2026-12-07T09:44:00.000000Z"
+     }
+    },
+    {
+     "rating": "good",
+     "reviewAt": "2026-11-28T09:46:00.000000Z",
+     "retrievabilityBefore": 1.0,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 9.018227166812636,
+      "difficulty": 9.651577100318395,
+      "due": "2026-12-07T09:46:00.000000Z"
+     }
+    },
+    {
+     "rating": "good",
+     "reviewAt": "2026-12-18T09:46:00.000000Z",
+     "retrievabilityBefore": 0.8368529699078762,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 16.619869728101744,
+      "difficulty": 9.637153892514915,
+      "due": "2027-01-04T09:46:00.000000Z"
+     }
+    },
+    {
+     "rating": "good",
+     "reviewAt": "2026-12-18T09:48:00.000000Z",
+     "retrievabilityBefore": 1.0,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 16.619869728101744,
+      "difficulty": 9.622745107919238,
+      "due": "2027-01-04T09:48:00.000000Z"
+     }
+    },
+    {
+     "rating": "good",
+     "reviewAt": "2026-12-18T09:50:00.000000Z",
+     "retrievabilityBefore": 1.0,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 16.619869728101744,
+      "difficulty": 9.608350732108157,
+      "due": "2027-01-04T09:50:00.000000Z"
+     }
+    }
+   ]
+  },
+  {
+   "name": "app: belirlenimci dizi 4",
+   "config": {
+    "desiredRetention": 0.9,
+    "learningStepsSeconds": [
+     600
+    ],
+    "relearningStepsSeconds": [
+     600
+    ],
+    "maximumInterval": 36500
+   },
+   "start": "2026-10-12T09:00:00.000000Z",
+   "reviews": [
+    {
+     "rating": "easy",
+     "reviewAt": "2026-10-12T09:00:00.000000Z",
+     "retrievabilityBefore": 0,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 8.2956,
+      "difficulty": 1.0,
+      "due": "2026-10-20T09:00:00.000000Z"
+     }
+    },
+    {
+     "rating": "again",
+     "reviewAt": "2026-10-15T09:00:00.000000Z",
+     "retrievabilityBefore": 0.9542852058192565,
+     "expected": {
+      "state": "relearning",
+      "step": 0,
+      "stability": 1.2749638921696915,
+      "difficulty": 7.0269895692968385,
+      "due": "2026-10-15T09:10:00.000000Z"
+     }
+    },
+    {
+     "rating": "hard",
+     "reviewAt": "2026-10-15T09:10:00.000000Z",
+     "retrievabilityBefore": 1.0,
+     "expected": {
+      "state": "relearning",
+      "step": 0,
+      "stability": 1.2749638921696915,
+      "difficulty": 8.011605503110008,
+      "due": "2026-10-15T09:25:00.000000Z"
+     }
+    },
+    {
+     "rating": "hard",
+     "reviewAt": "2026-10-15T09:25:00.000000Z",
+     "retrievabilityBefore": 1.0,
+     "expected": {
+      "state": "relearning",
+      "step": 0,
+      "stability": 1.2749638921696915,
+      "difficulty": 8.665239443077706,
+      "due": "2026-10-15T09:40:00.000000Z"
+     }
+    },
+    {
+     "rating": "good",
+     "reviewAt": "2026-10-15T09:40:00.000000Z",
+     "retrievabilityBefore": 1.0,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 1.31838811216006,
+      "difficulty": 8.651802572931466,
+      "due": "2026-10-16T09:40:00.000000Z"
+     }
+    },
+    {
+     "rating": "easy",
+     "reviewAt": "2026-10-18T09:40:00.000000Z",
+     "retrievabilityBefore": 0.8345737339245008,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 6.386012882572689,
+      "difficulty": 8.1865261881021,
+      "due": "2026-10-24T09:40:00.000000Z"
+     }
+    },
+    {
+     "rating": "hard",
+     "reviewAt": "2026-10-24T09:40:00.000000Z",
+     "retrievabilityBefore": 0.9042260558807638,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 10.472884478028293,
+      "difficulty": 8.781359945079377,
+      "due": "2026-11-03T09:40:00.000000Z"
+     }
+    },
+    {
+     "rating": "hard",
+     "reviewAt": "2026-10-27T09:40:00.000000Z",
+     "retrievabilityBefore": 0.9625540261751854,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 12.33182908324121,
+      "difficulty": 9.176238312213968,
+      "due": "2026-11-08T09:40:00.000000Z"
+     }
+    },
+    {
+     "rating": "easy",
+     "reviewAt": "2026-10-30T09:40:00.000000Z",
+     "retrievabilityBefore": 0.9675554894987548,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 17.047087442735194,
+      "difficulty": 8.886203912747364,
+      "due": "2026-11-16T09:40:00.000000Z"
+     }
+    },
+    {
+     "rating": "easy",
+     "reviewAt": "2026-11-02T09:40:00.000000Z",
+     "retrievabilityBefore": 0.975756384308313,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 22.378333938884385,
+      "difficulty": 8.499253532582037,
+      "due": "2026-11-24T09:40:00.000000Z"
+     }
+    },
+    {
+     "rating": "good",
+     "reviewAt": "2026-11-05T09:40:00.000000Z",
+     "retrievabilityBefore": 0.9811400266661485,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 25.657930269826764,
+      "difficulty": 8.485982648346292,
+      "due": "2026-12-01T09:40:00.000000Z"
+     }
+    },
+    {
+     "rating": "hard",
+     "reviewAt": "2026-11-08T09:40:00.000000Z",
+     "retrievabilityBefore": 0.9834057515785403,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 27.61139348291512,
+      "difficulty": 8.98015309806052,
+      "due": "2026-12-06T09:40:00.000000Z"
+     }
+    },
+    {
+     "rating": "easy",
+     "reviewAt": "2026-12-06T09:40:00.000000Z",
+     "retrievabilityBefore": 0.8990369561745268,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 60.31276256483762,
+      "difficulty": 8.624596157594812,
+      "due": "2027-02-04T09:40:00.000000Z"
+     }
+    },
+    {
+     "rating": "good",
+     "reviewAt": "2027-02-04T09:40:00.000000Z",
+     "retrievabilityBefore": 0.900356791871825,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 99.15591608677974,
+      "difficulty": 8.611199930734054,
+      "due": "2027-05-14T09:40:00.000000Z"
+     }
+    }
+   ]
+  },
+  {
+   "name": "app: belirlenimci dizi 5",
+   "config": {
+    "desiredRetention": 0.9,
+    "learningStepsSeconds": [
+     600
+    ],
+    "relearningStepsSeconds": [
+     600
+    ],
+    "maximumInterval": 36500
+   },
+   "start": "2026-10-12T09:00:00.000000Z",
+   "reviews": [
+    {
+     "rating": "good",
+     "reviewAt": "2026-10-12T09:00:00.000000Z",
+     "retrievabilityBefore": 0,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 2.3065,
+      "difficulty": 2.118103970459016,
+      "due": "2026-10-14T09:00:00.000000Z"
+     }
+    },
+    {
+     "rating": "again",
+     "reviewAt": "2026-10-12T09:02:00.000000Z",
+     "retrievabilityBefore": 1.0,
+     "expected": {
+      "state": "relearning",
+      "step": 0,
+      "stability": 0.7750839828558984,
+      "difficulty": 7.394502741279718,
+      "due": "2026-10-12T09:12:00.000000Z"
+     }
+    },
+    {
+     "rating": "good",
+     "reviewAt": "2026-11-01T09:02:00.000000Z",
+     "retrievabilityBefore": 0.6040204985133989,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 7.800327750383563,
+      "difficulty": 7.382336607835277,
+      "due": "2026-11-09T09:02:00.000000Z"
+     }
+    },
+    {
+     "rating": "good",
+     "reviewAt": "2026-11-01T09:04:00.000000Z",
+     "retrievabilityBefore": 1.0,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 7.800327750383563,
+      "difficulty": 7.37018264052428,
+      "due": "2026-11-09T09:04:00.000000Z"
+     }
+    },
+    {
+     "rating": "good",
+     "reviewAt": "2026-11-21T09:04:00.000000Z",
+     "retrievabilityBefore": 0.8238438970334094,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 27.4824846121456,
+      "difficulty": 7.358040827180594,
+      "due": "2026-12-18T09:04:00.000000Z"
+     }
+    },
+    {
+     "rating": "good",
+     "reviewAt": "2026-12-11T09:04:00.000000Z",
+     "retrievabilityBefore": 0.9203174629133748,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 52.021240929882474,
+      "difficulty": 7.345911155650252,
+      "due": "2027-02-01T09:04:00.000000Z"
+     }
+    },
+    {
+     "rating": "hard",
+     "reviewAt": "2026-12-11T09:06:00.000000Z",
+     "retrievabilityBefore": 1.0,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 52.021240929882474,
+      "difficulty": 8.223320513877328,
+      "due": "2027-02-01T09:06:00.000000Z"
+     }
+    },
+    {
+     "rating": "again",
+     "reviewAt": "2026-12-11T09:08:00.000000Z",
+     "retrievabilityBefore": 1.0,
+     "expected": {
+      "state": "relearning",
+      "step": 0,
+      "stability": 14.240776093642392,
+      "difficulty": 9.40124590362882,
+      "due": "2026-12-11T09:18:00.000000Z"
+     }
+    },
+    {
+     "rating": "good",
+     "reviewAt": "2026-12-11T09:10:00.000000Z",
+     "retrievabilityBefore": 1.0,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 14.240776093642392,
+      "difficulty": 9.387073027022028,
+      "due": "2026-12-25T09:10:00.000000Z"
+     }
+    },
+    {
+     "rating": "good",
+     "reviewAt": "2026-12-25T09:10:00.000000Z",
+     "retrievabilityBefore": 0.9011672135878652,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 22.094308681287167,
+      "difficulty": 9.372914323291843,
+      "due": "2027-01-16T09:10:00.000000Z"
+     }
+    },
+    {
+     "rating": "good",
+     "reviewAt": "2027-01-14T09:10:00.000000Z",
+     "retrievabilityBefore": 0.906694688525596,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 32.85566095779054,
+      "difficulty": 9.358769778265389,
+      "due": "2027-02-16T09:10:00.000000Z"
+     }
+    },
+    {
+     "rating": "again",
+     "reviewAt": "2027-02-03T09:10:00.000000Z",
+     "retrievabilityBefore": 0.9303802123671159,
+     "expected": {
+      "state": "relearning",
+      "step": 0,
+      "stability": 2.210857933421887,
+      "difficulty": 9.774460355778178,
+      "due": "2027-02-03T09:20:00.000000Z"
+     }
+    },
+    {
+     "rating": "hard",
+     "reviewAt": "2027-02-03T09:20:00.000000Z",
+     "retrievabilityBefore": 1.0,
+     "expected": {
+      "state": "relearning",
+      "step": 0,
+      "stability": 2.210857933421887,
+      "difficulty": 9.835504643314971,
+      "due": "2027-02-03T09:35:00.000000Z"
+     }
+    },
+    {
+     "rating": "hard",
+     "reviewAt": "2027-02-03T09:35:00.000000Z",
+     "retrievabilityBefore": 1.0,
+     "expected": {
+      "state": "relearning",
+      "step": 0,
+      "stability": 2.210857933421887,
+      "difficulty": 9.876028686045695,
+      "due": "2027-02-03T09:50:00.000000Z"
+     }
+    }
+   ]
+  },
+  {
+   "name": "app: belirlenimci dizi 6",
+   "config": {
+    "desiredRetention": 0.9,
+    "learningStepsSeconds": [
+     600
+    ],
+    "relearningStepsSeconds": [
+     600
+    ],
+    "maximumInterval": 36500
+   },
+   "start": "2026-10-12T09:00:00.000000Z",
+   "reviews": [
+    {
+     "rating": "again",
+     "reviewAt": "2026-10-12T09:00:00.000000Z",
+     "retrievabilityBefore": 0,
+     "expected": {
+      "state": "learning",
+      "step": 0,
+      "stability": 0.212,
+      "difficulty": 6.4133,
+      "due": "2026-10-12T09:10:00.000000Z"
+     }
+    },
+    {
+     "rating": "easy",
+     "reviewAt": "2026-10-12T09:10:00.000000Z",
+     "retrievabilityBefore": 1.0,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 0.42437996387663374,
+      "difficulty": 5.200020369516838,
+      "due": "2026-10-13T09:10:00.000000Z"
+     }
+    },
+    {
+     "rating": "easy",
+     "reviewAt": "2026-10-13T09:10:00.000000Z",
+     "retrievabilityBefore": 0.8314595988143026,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 5.388850133217119,
+      "difficulty": 3.5813192253569843,
+      "due": "2026-10-18T09:10:00.000000Z"
+     }
+    },
+    {
+     "rating": "easy",
+     "reviewAt": "2026-10-18T09:10:00.000000Z",
+     "retrievabilityBefore": 0.9050622630635466,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 34.25716604522804,
+      "difficulty": 1.4217235902922252,
+      "due": "2026-11-21T09:10:00.000000Z"
+     }
+    },
+    {
+     "rating": "hard",
+     "reviewAt": "2026-10-21T09:10:00.000000Z",
+     "retrievabilityBefore": 0.987379668182387,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 41.44777786717897,
+      "difficulty": 4.290568740852125,
+      "due": "2026-12-01T09:10:00.000000Z"
+     }
+    },
+    {
+     "rating": "easy",
+     "reviewAt": "2026-10-24T09:10:00.000000Z",
+     "retrievabilityBefore": 0.9894847560248857,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 56.75383077886154,
+      "difficulty": 2.3679712428384194,
+      "due": "2026-12-20T09:10:00.000000Z"
+     }
+    },
+    {
+     "rating": "again",
+     "reviewAt": "2026-10-27T09:10:00.000000Z",
+     "retrievabilityBefore": 0.9922396318307719,
+     "expected": {
+      "state": "relearning",
+      "step": 0,
+      "stability": 2.7146295882725946,
+      "difficulty": 7.476632414613376,
+      "due": "2026-10-27T09:20:00.000000Z"
+     }
+    },
+    {
+     "rating": "good",
+     "reviewAt": "2026-10-27T09:20:00.000000Z",
+     "retrievabilityBefore": 1.0,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 2.7146295882725946,
+      "difficulty": 7.464384151495601,
+      "due": "2026-10-30T09:20:00.000000Z"
+     }
+    },
+    {
+     "rating": "easy",
+     "reviewAt": "2026-10-30T09:20:00.000000Z",
+     "retrievabilityBefore": 0.8929870070688625,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 11.514943621158123,
+      "difficulty": 6.602327863920809,
+      "due": "2026-11-11T09:20:00.000000Z"
+     }
+    },
+    {
+     "rating": "again",
+     "reviewAt": "2026-11-02T09:20:00.000000Z",
+     "retrievabilityBefore": 0.9655332344974611,
+     "expected": {
+      "state": "relearning",
+      "step": 0,
+      "stability": 1.3189483715354158,
+      "difficulty": 8.868436642338132,
+      "due": "2026-11-02T09:30:00.000000Z"
+     }
+    },
+    {
+     "rating": "easy",
+     "reviewAt": "2026-11-02T09:30:00.000000Z",
+     "retrievabilityBefore": 1.0,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 2.3410393690323916,
+      "difficulty": 8.47554926835684,
+      "due": "2026-11-04T09:30:00.000000Z"
+     }
+    },
+    {
+     "rating": "good",
+     "reviewAt": "2026-11-05T09:30:00.000000Z",
+     "retrievabilityBefore": 0.8820766214124323,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 5.623304246323039,
+      "difficulty": 8.46230208838532,
+      "due": "2026-11-11T09:30:00.000000Z"
+     }
+    },
+    {
+     "rating": "good",
+     "reviewAt": "2026-11-08T09:30:00.000000Z",
+     "retrievabilityBefore": 0.9371891958089917,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 9.191252012172749,
+      "difficulty": 8.449068155593771,
+      "due": "2026-11-17T09:30:00.000000Z"
+     }
+    },
+    {
+     "rating": "easy",
+     "reviewAt": "2026-11-17T09:30:00.000000Z",
+     "retrievabilityBefore": 0.9014381024612534,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 25.29570112837206,
+      "difficulty": 7.916047375913997,
+      "due": "2026-12-12T09:30:00.000000Z"
+     }
+    }
+   ]
+  },
+  {
+   "name": "app: belirlenimci dizi 7",
+   "config": {
+    "desiredRetention": 0.9,
+    "learningStepsSeconds": [
+     600
+    ],
+    "relearningStepsSeconds": [
+     600
+    ],
+    "maximumInterval": 36500
+   },
+   "start": "2026-10-12T09:00:00.000000Z",
+   "reviews": [
+    {
+     "rating": "good",
+     "reviewAt": "2026-10-12T09:00:00.000000Z",
+     "retrievabilityBefore": 0,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 2.3065,
+      "difficulty": 2.118103970459016,
+      "due": "2026-10-14T09:00:00.000000Z"
+     }
+    },
+    {
+     "rating": "good",
+     "reviewAt": "2026-10-12T09:02:00.000000Z",
+     "retrievabilityBefore": 1.0,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 2.3065,
+      "difficulty": 2.111214235785395,
+      "due": "2026-10-14T09:02:00.000000Z"
+     }
+    },
+    {
+     "rating": "again",
+     "reviewAt": "2026-10-14T09:02:00.000000Z",
+     "retrievabilityBefore": 0.9094932559773545,
+     "expected": {
+      "state": "relearning",
+      "step": 0,
+      "stability": 0.6077016626638644,
+      "difficulty": 7.392238132342694,
+      "due": "2026-10-14T09:12:00.000000Z"
+     }
+    },
+    {
+     "rating": "hard",
+     "reviewAt": "2026-10-14T09:04:00.000000Z",
+     "retrievabilityBefore": 1.0,
+     "expected": {
+      "state": "relearning",
+      "step": 0,
+      "stability": 0.6077016626638644,
+      "difficulty": 8.254074519842886,
+      "due": "2026-10-14T09:19:00.000000Z"
+     }
+    },
+    {
+     "rating": "good",
+     "reviewAt": "2026-10-14T09:06:00.000000Z",
+     "retrievabilityBefore": 1.0,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 0.6597976257475758,
+      "difficulty": 8.24104881461988,
+      "due": "2026-10-15T09:06:00.000000Z"
+     }
+    },
+    {
+     "rating": "again",
+     "reviewAt": "2026-11-03T09:06:00.000000Z",
+     "retrievabilityBefore": 0.589721690611886,
+     "expected": {
+      "state": "relearning",
+      "step": 0,
+      "stability": 0.3651977251367113,
+      "difficulty": 9.407073075530453,
+      "due": "2026-11-03T09:16:00.000000Z"
+     }
+    },
+    {
+     "rating": "again",
+     "reviewAt": "2026-11-23T09:06:00.000000Z",
+     "retrievabilityBefore": 0.5395309903466152,
+     "expected": {
+      "state": "relearning",
+      "step": 0,
+      "stability": 0.23550732425983834,
+      "difficulty": 9.790337321126785,
+      "due": "2026-11-23T09:16:00.000000Z"
+     }
+    },
+    {
+     "rating": "good",
+     "reviewAt": "2026-11-23T09:16:00.000000Z",
+     "retrievabilityBefore": 1.0,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 0.27215334796320706,
+      "difficulty": 9.775775353102496,
+      "due": "2026-11-24T09:16:00.000000Z"
+     }
+    },
+    {
+     "rating": "again",
+     "reviewAt": "2026-11-23T09:18:00.000000Z",
+     "retrievabilityBefore": 1.0,
+     "expected": {
+      "state": "relearning",
+      "step": 0,
+      "stability": 0.10526417279485226,
+      "difficulty": 9.911527252589226,
+      "due": "2026-11-23T09:28:00.000000Z"
+     }
+    },
+    {
+     "rating": "good",
+     "reviewAt": "2026-12-13T09:18:00.000000Z",
+     "retrievabilityBefore": 0.4462595611113475,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 0.7057672713174313,
+      "difficulty": 9.896844094633474,
+      "due": "2026-12-14T09:18:00.000000Z"
+     }
+    },
+    {
+     "rating": "hard",
+     "reviewAt": "2026-12-14T09:18:00.000000Z",
+     "retrievabilityBefore": 0.8743345689353945,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 1.045229973996136,
+      "difficulty": 9.916748672249348,
+      "due": "2026-12-15T09:18:00.000000Z"
+     }
+    },
+    {
+     "rating": "good",
+     "reviewAt": "2027-01-03T09:18:00.000000Z",
+     "retrievabilityBefore": 0.6312404073036404,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 3.5385655883418763,
+      "difficulty": 9.902060292873935,
+      "due": "2027-01-07T09:18:00.000000Z"
+     }
+    },
+    {
+     "rating": "again",
+     "reviewAt": "2027-01-23T09:18:00.000000Z",
+     "retrievabilityBefore": 0.7485631264811885,
+     "expected": {
+      "state": "relearning",
+      "step": 0,
+      "stability": 0.9525068668887896,
+      "difficulty": 9.953036253554508,
+      "due": "2027-01-23T09:28:00.000000Z"
+     }
+    },
+    {
+     "rating": "good",
+     "reviewAt": "2027-01-23T09:28:00.000000Z",
+     "retrievabilityBefore": 1.0,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 1.0040278212247438,
+      "difficulty": 9.938311586597791,
+      "due": "2027-01-24T09:28:00.000000Z"
+     }
+    }
+   ]
+  },
+  {
+   "name": "app: belirlenimci dizi 8",
+   "config": {
+    "desiredRetention": 0.9,
+    "learningStepsSeconds": [
+     600
+    ],
+    "relearningStepsSeconds": [
+     600
+    ],
+    "maximumInterval": 36500
+   },
+   "start": "2026-10-12T09:00:00.000000Z",
+   "reviews": [
+    {
+     "rating": "hard",
+     "reviewAt": "2026-10-12T09:00:00.000000Z",
+     "retrievabilityBefore": 0,
+     "expected": {
+      "state": "learning",
+      "step": 0,
+      "stability": 1.2931,
+      "difficulty": 5.112170705601056,
+      "due": "2026-10-12T09:15:00.000000Z"
+     }
+    },
+    {
+     "rating": "good",
+     "reviewAt": "2026-10-12T09:15:00.000000Z",
+     "retrievabilityBefore": 1.0,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 1.3358997622047517,
+      "difficulty": 5.102286904192293,
+      "due": "2026-10-13T09:15:00.000000Z"
+     }
+    },
+    {
+     "rating": "hard",
+     "reviewAt": "2026-10-15T09:15:00.000000Z",
+     "retrievabilityBefore": 0.835744659421588,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 5.436868031435469,
+      "difficulty": 6.733898182869418,
+      "due": "2026-10-20T09:15:00.000000Z"
+     }
+    },
+    {
+     "rating": "good",
+     "reviewAt": "2026-10-20T09:15:00.000000Z",
+     "retrievabilityBefore": 0.9056508127368103,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 14.308806093828123,
+      "difficulty": 6.722392653983388,
+      "due": "2026-11-03T09:15:00.000000Z"
+     }
+    },
+    {
+     "rating": "easy",
+     "reviewAt": "2026-11-03T09:15:00.000000Z",
+     "retrievabilityBefore": 0.9014918934127233,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 53.339372188956865,
+      "difficulty": 5.612397384743798,
+      "due": "2026-12-26T09:15:00.000000Z"
+     }
+    },
+    {
+     "rating": "again",
+     "reviewAt": "2026-11-06T09:15:00.000000Z",
+     "retrievabilityBefore": 0.9917579620981483,
+     "expected": {
+      "state": "relearning",
+      "step": 0,
+      "stability": 2.5141344112843202,
+      "difficulty": 8.543053225359909,
+      "due": "2026-11-06T09:25:00.000000Z"
+     }
+    },
+    {
+     "rating": "again",
+     "reviewAt": "2026-11-06T09:25:00.000000Z",
+     "retrievabilityBefore": 1.0,
+     "expected": {
+      "state": "relearning",
+      "step": 0,
+      "stability": 0.8400798548956555,
+      "difficulty": 9.506339871710708,
+      "due": "2026-11-06T09:35:00.000000Z"
+     }
+    },
+    {
+     "rating": "hard",
+     "reviewAt": "2026-11-06T09:35:00.000000Z",
+     "retrievabilityBefore": 1.0,
+     "expected": {
+      "state": "relearning",
+      "step": 0,
+      "stability": 0.8400798548956555,
+      "difficulty": 9.657513771576427,
+      "due": "2026-11-06T09:50:00.000000Z"
+     }
+    },
+    {
+     "rating": "again",
+     "reviewAt": "2026-11-06T09:50:00.000000Z",
+     "retrievabilityBefore": 1.0,
+     "expected": {
+      "state": "relearning",
+      "step": 0,
+      "stability": 0.3017018115260307,
+      "difficulty": 9.872655474920363,
+      "due": "2026-11-06T10:00:00.000000Z"
+     }
+    },
+    {
+     "rating": "again",
+     "reviewAt": "2026-11-06T10:00:00.000000Z",
+     "retrievabilityBefore": 1.0,
+     "expected": {
+      "state": "relearning",
+      "step": 0,
+      "stability": 0.1159042421854379,
+      "difficulty": 9.943371089845932,
+      "due": "2026-11-06T10:10:00.000000Z"
+     }
+    },
+    {
+     "rating": "hard",
+     "reviewAt": "2026-11-06T10:10:00.000000Z",
+     "retrievabilityBefore": 1.0,
+     "expected": {
+      "state": "relearning",
+      "step": 0,
+      "stability": 0.1159042421854379,
+      "difficulty": 9.947635459829353,
+      "due": "2026-11-06T10:25:00.000000Z"
+     }
+    },
+    {
+     "rating": "again",
+     "reviewAt": "2026-11-09T10:10:00.000000Z",
+     "retrievabilityBefore": 0.6037439518032067,
+     "expected": {
+      "state": "relearning",
+      "step": 0,
+      "stability": 0.07241373380270327,
+      "difficulty": 9.96801650102162,
+      "due": "2026-11-09T10:20:00.000000Z"
+     }
+    },
+    {
+     "rating": "hard",
+     "reviewAt": "2026-11-09T10:20:00.000000Z",
+     "retrievabilityBefore": 1.0,
+     "expected": {
+      "state": "relearning",
+      "step": 0,
+      "stability": 0.07241373380270327,
+      "difficulty": 9.963996232243936,
+      "due": "2026-11-09T10:35:00.000000Z"
+     }
+    },
+    {
+     "rating": "good",
+     "reviewAt": "2026-11-09T10:35:00.000000Z",
+     "retrievabilityBefore": 1.0,
+     "expected": {
+      "state": "review",
+      "step": null,
+      "stability": 0.09043402840908492,
+      "difficulty": 9.94926060530853,
+      "due": "2026-11-10T10:35:00.000000Z"
+     }
+    }
+   ]
+  }
+ ]
+}

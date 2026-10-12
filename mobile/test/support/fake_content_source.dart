@@ -14,7 +14,12 @@ class FakeContentSource implements ContentSource {
     this.packageIds = const ['A1-001', 'A1-002'],
     this.withCatalogue = true,
     this.mapImage,
+    this.realSubtitles = false,
   });
+
+  /// `true`: altyazı `test/fixtures/subs/<id>/<dosya>`'dan okunur (yoksa hata);
+  /// `false`: her segment için B1 s02 altyazısı (oynatıcı testleri).
+  bool realSubtitles;
 
   bool fail;
 
@@ -53,8 +58,17 @@ class FakeContentSource implements ContentSource {
   }
 
   @override
-  Future<SubtitleTrack> loadSubtitles(String contentId, String path) async =>
-      SubtitleTrack.fromJson(jsonDecode(fixtureText('A1-001.s02.en.json')));
+  Future<SubtitleTrack> loadSubtitles(String contentId, String path) async {
+    if (realSubtitles) {
+      final name = path.split('/').last;
+      return SubtitleTrack.fromJson(
+        jsonDecode(fixtureText('subs/$contentId/$name')),
+      );
+    }
+    return SubtitleTrack.fromJson(
+      jsonDecode(fixtureText('A1-001.s02.en.json')),
+    );
+  }
 
   @override
   Uri mediaUri(String contentId, String path) =>

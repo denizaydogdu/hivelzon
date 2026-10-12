@@ -1,0 +1,44 @@
+{
+ "schemaVersion": 1,
+ "segment": "k1-b",
+ "lang": "en",
+ "duration": 2.533,
+ "cues": [
+  {
+   "id": "k1-b-01",
+   "tr": "Selam! Ben Alex.",
+   "start": 0.5,
+   "end": 2.15,
+   "speaker": "ALEX",
+   "text": "Hi! I'm Alex.",
+   "words": [
+    {
+     "w": "Hi!",
+     "start": 0.5,
+     "end": 0.72,
+     "gloss": "selam"
+    },
+    {
+     "w": "I'm",
+     "start": 0.88,
+     "end": 1.12,
+     "gloss": "ben …-im"
+    },
+    {
+     "w": "Alex.",
+     "start": 1.232,
+     "end": 2.0,
+     "gloss": null
+    }
+   ],
+   "chunks": [
+    {
+     "en": "I'm …",
+     "tr": "Ben … (kendini tanıtma)",
+     "startWord": 1,
+     "endWord": 2
+    }
+   ]
+  }
+ ]
+}

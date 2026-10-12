@@ -12,6 +12,8 @@ import '../../../shared/meaning/meaning_controller.dart';
 import '../../../shared/meaning/meaning_sheet.dart';
 import '../../../shared/meaning/meaning_text.dart';
 import '../../../shared/meaning/notebook_repository.dart';
+import '../../notebook/application/deck_sync.dart';
+import '../../notebook/application/notebook_providers.dart';
 import '../application/autoplay_driver.dart';
 import '../application/player_session.dart';
 import '../application/segment_player_pool.dart';
@@ -26,6 +28,11 @@ import 'widgets/player_top_bar.dart';
 import 'widgets/player_ui.dart';
 import 'widgets/subtitle_overlay.dart';
 import 'widgets/task_view.dart';
+
+/// Defter ve ipucu panosu kayıtları (H-036). Testlerde `null` verilebilir.
+final playerHooksProvider = Provider<PlayerHooks?>(
+  (ref) => NotebookPlayerHooks(ref.watch(deckSyncProvider)),
+);
 
 /// Testlerde sahte video denetleyicisi vermek için.
 final videoControllerFactoryProvider = Provider<VideoControllerFactory?>(
@@ -69,6 +76,7 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen>
       videoFactory: ref.read(videoControllerFactoryProvider),
       events: ref.read(learningEventLogProvider),
       notebook: ref.read(notebookRepositoryProvider),
+      hooks: ref.read(playerHooksProvider),
       logTransitions: true,
     )..addListener(_onSession);
     if (autoplayEnabled) {

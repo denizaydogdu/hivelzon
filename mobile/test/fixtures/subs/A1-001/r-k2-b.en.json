@@ -1,0 +1,25 @@
+{
+ "schemaVersion": 1,
+ "segment": "r-k2-b",
+ "lang": "en",
+ "duration": 1.933,
+ "cues": [
+  {
+   "id": "r-k2-b-01",
+   "tr": "Ne?",
+   "start": 0.56,
+   "end": 1.53,
+   "speaker": "ALEX",
+   "text": "What?",
+   "words": [
+    {
+     "w": "What?",
+     "start": 0.56,
+     "end": 1.38,
+     "gloss": "ne"
+    }
+   ],
+   "chunks": []
+  }
+ ]
+}

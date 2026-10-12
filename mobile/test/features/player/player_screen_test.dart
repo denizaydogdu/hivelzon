@@ -4,6 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:hivelzon/app/theme.dart';
 import 'package:hivelzon/features/player/application/player_session.dart';
 import 'package:hivelzon/features/player/data/progress_repository.dart';
+import 'package:hivelzon/features/player/domain/episode.dart';
 import 'package:hivelzon/features/player/domain/episode_engine.dart';
 import 'package:hivelzon/features/player/presentation/player_screen.dart';
 import 'package:hivelzon/shared/content/content_providers.dart';
@@ -15,8 +16,23 @@ import 'package:video_player_platform_interface/video_player_platform_interface.
 import '../../support/fake_content_source.dart';
 import '../../support/fake_video_platform.dart';
 
+/// Defter kancalarını kaydeder (H-036).
+class _RecordingHooks implements PlayerHooks {
+  final List<String> clueCards = [];
+  final List<String> completed = [];
+
+  @override
+  Future<void> onClueCard(Episode episode, CardNode card) async =>
+      clueCards.add('${episode.info.id}/${card.id}');
+
+  @override
+  Future<void> onEpisodeCompleted(Episode episode) async =>
+      completed.add(episode.info.id);
+}
+
 void main() {
   late FakeVideoPlatform platform;
+  late _RecordingHooks hooks;
   late InMemoryProgressRepository repo;
   late FakeContentSource source;
   late InMemoryLearningEventLog events;
@@ -25,6 +41,7 @@ void main() {
   setUp(() {
     events = InMemoryLearningEventLog();
     notebook = InMemoryNotebookRepository();
+    hooks = _RecordingHooks();
     platform = FakeVideoPlatform(
       // Segment süreleri kısaltılır: test zamanı ilerletmeyi kolaylaştırır.
       durationFor: (uri) => uri.endsWith('.m4a')
@@ -51,6 +68,7 @@ void main() {
           progressRepositoryProvider.overrideWithValue(repo),
           learningEventLogProvider.overrideWithValue(events),
           notebookRepositoryProvider.overrideWithValue(notebook),
+          playerHooksProvider.overrideWithValue(hooks),
         ],
         child: MaterialApp(
           theme: AppTheme.light(),
@@ -163,6 +181,9 @@ void main() {
     expect(all['A1-001']!.status, StoryStatus.completed);
     expect(all['A1-001']!.gateComplete, isTrue);
     expect(all['A1-001']!.completedAt!.isUtc, isTrue);
+    // H-036: ipucu kartı ve bölüm sonu deftere bildirildi (birer kez).
+    expect(hooks.clueCards, ['A1-001/c-clues']);
+    expect(hooks.completed, ['A1-001']);
     await tester.pumpWidget(const SizedBox());
     await step(tester, 1200);
   });

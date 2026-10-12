@@ -1,0 +1,80 @@
+{
+ "schemaVersion": 1,
+ "segment": "k1-a",
+ "lang": "en",
+ "duration": 3.033,
+ "cues": [
+  {
+   "id": "k1-a-01",
+   "tr": "Tanıştığımıza memnun oldum.",
+   "start": 0.47,
+   "end": 1.43,
+   "speaker": "ALEX",
+   "text": "Nice to meet you.",
+   "words": [
+    {
+     "w": "Nice",
+     "start": 0.47,
+     "end": 0.64,
+     "gloss": "hoş, güzel"
+    },
+    {
+     "w": "to",
+     "start": 0.667,
+     "end": 0.72,
+     "gloss": "(mastar: -mek)"
+    },
+    {
+     "w": "meet",
+     "start": 0.768,
+     "end": 0.96,
+     "gloss": "tanışmak"
+    },
+    {
+     "w": "you.",
+     "start": 1.02,
+     "end": 1.28,
+     "gloss": "seninle / sizinle"
+    }
+   ],
+   "chunks": [
+    {
+     "en": "Nice to meet you.",
+     "tr": "Tanıştığımıza memnun oldum.",
+     "startWord": 0,
+     "endWord": 3
+    }
+   ]
+  },
+  {
+   "id": "k1-a-02",
+   "tr": "Ben Alex.",
+   "start": 1.52,
+   "end": 2.63,
+   "speaker": "ALEX",
+   "text": "I'm Alex.",
+   "words": [
+    {
+     "w": "I'm",
+     "start": 1.52,
+     "end": 1.84,
+     "gloss": "ben …-im"
+    },
+    {
+     "w": "Alex.",
+     "start": 1.936,
+     "end": 2.48,
+     "gloss": null
+    }
+   ],
+   "chunks": [
+    {
+     "en": "I'm …",
+     "tr": "Ben … (kendini tanıtma)",
+     "startWord": 0,
+     "endWord": 1
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,67 @@
+{
+ "schemaVersion": 1,
+ "segment": "r-k2-b",
+ "lang": "en",
+ "duration": 4.933,
+ "cues": [
+  {
+   "id": "r-k2-b-01",
+   "tr": "İstasyon nerede? (eksik cümle)",
+   "start": 0.56,
+   "end": 1.45,
+   "speaker": "ALEX",
+   "text": "Where station?",
+   "words": [
+    {
+     "w": "Where",
+     "start": 0.56,
+     "end": 0.66,
+     "gloss": "nerede"
+    },
+    {
+     "w": "station?",
+     "start": 0.72,
+     "end": 1.3,
+     "gloss": "istasyon"
+    }
+   ],
+   "chunks": []
+  },
+  {
+   "id": "r-k2-b-02",
+   "tr": "Efendim? Şey… istasyon mu?",
+   "start": 1.49,
+   "end": 4.2,
+   "speaker": "MAYA",
+   "text": "Sorry? The… station?",
+   "words": [
+    {
+     "w": "Sorry?",
+     "start": 1.49,
+     "end": 1.89,
+     "gloss": "efendim?, pardon?"
+    },
+    {
+     "w": "The…",
+     "start": 2.09,
+     "end": 3.25,
+     "gloss": "(belirli tanımlık)"
+    },
+    {
+     "w": "station?",
+     "start": 3.32,
+     "end": 4.05,
+     "gloss": "istasyon"
+    }
+   ],
+   "chunks": [
+    {
+     "en": "Sorry?",
+     "tr": "Efendim? / Pardon? (anlamadım)",
+     "startWord": 0,
+     "endWord": 0
+    }
+   ]
+  }
+ ]
+}

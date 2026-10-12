@@ -1,0 +1,140 @@
+{
+ "schemaVersion": 1,
+ "segment": "s04",
+ "lang": "en",
+ "duration": 7.767,
+ "cues": [
+  {
+   "id": "s04-01",
+   "tr": "Ben E.",
+   "start": 0.53,
+   "end": 2.73,
+   "speaker": "VOICE",
+   "text": "This is E.",
+   "words": [
+    {
+     "w": "This",
+     "start": 0.53,
+     "end": 0.98,
+     "gloss": "bu (burada: ben)"
+    },
+    {
+     "w": "is",
+     "start": 1.247,
+     "end": 1.78,
+     "gloss": "-dır / -dir (olmak)"
+    },
+    {
+     "w": "E.",
+     "start": 2.14,
+     "end": 2.58,
+     "gloss": null
+    }
+   ],
+   "chunks": [
+    {
+     "en": "This is …",
+     "tr": "Ben … (telsizde/telefonda kendini tanıtırken)",
+     "startWord": 0,
+     "endWord": 2
+    }
+   ]
+  },
+  {
+   "id": "s04-02",
+   "tr": "Benimle eski istasyonda buluş.",
+   "start": 2.788,
+   "end": 4.957,
+   "speaker": "VOICE",
+   "text": "Meet me at the old station.",
+   "words": [
+    {
+     "w": "Meet",
+     "start": 2.788,
+     "end": 3.62,
+     "gloss": "buluş"
+    },
+    {
+     "w": "me",
+     "start": 3.673,
+     "end": 3.78,
+     "gloss": "benimle (beni)"
+    },
+    {
+     "w": "at",
+     "start": 3.807,
+     "end": 3.86,
+     "gloss": "-de / -da (yer)"
+    },
+    {
+     "w": "the",
+     "start": 3.88,
+     "end": 3.94,
+     "gloss": "(belirli tanımlık)"
+    },
+    {
+     "w": "old",
+     "start": 4.02,
+     "end": 4.26,
+     "gloss": "eski"
+    },
+    {
+     "w": "station.",
+     "start": 4.33,
+     "end": 4.82,
+     "gloss": "istasyon"
+    }
+   ],
+   "chunks": [
+    {
+     "en": "Meet me at …",
+     "tr": "Benimle …-de buluş",
+     "startWord": 0,
+     "endWord": 5
+    },
+    {
+     "en": "the old station",
+     "tr": "eski istasyon",
+     "startWord": 3,
+     "endWord": 5
+    }
+   ]
+  },
+  {
+   "id": "s04-03",
+   "tr": "Cuma. Saat yedi.",
+   "start": 4.957,
+   "end": 7.37,
+   "speaker": "VOICE",
+   "text": "Friday. Seven o'clock.",
+   "words": [
+    {
+     "w": "Friday.",
+     "start": 4.957,
+     "end": 6.18,
+     "gloss": "cuma"
+    },
+    {
+     "w": "Seven",
+     "start": 6.247,
+     "end": 6.58,
+     "gloss": "yedi"
+    },
+    {
+     "w": "o'clock.",
+     "start": 6.62,
+     "end": 7.22,
+     "gloss": "saat (tam saat)"
+    }
+   ],
+   "chunks": [
+    {
+     "en": "seven o'clock",
+     "tr": "saat yedi",
+     "startWord": 1,
+     "endWord": 2
+    }
+   ]
+  }
+ ]
+}

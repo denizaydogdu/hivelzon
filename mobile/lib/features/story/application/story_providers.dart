@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import '../../../app/router.dart';
 import '../../../shared/content/content_providers.dart';
 import '../../../shared/progress/story_progress.dart';
+import '../../notebook/application/notebook_providers.dart';
 import '../../player/data/progress_repository.dart';
 import '../domain/season_map.dart';
 
@@ -80,5 +81,8 @@ Future<void> refreshWhenVisible(BuildContext context, WidgetRef ref) async {
     if (TickerMode.getNotifier(context).value) break;
     await WidgetsBinding.instance.endOfFrame;
   }
-  if (context.mounted) ref.invalidate(storyProgressProvider);
+  if (!context.mounted) return;
+  ref.invalidate(storyProgressProvider);
+  // Biten bölümün ifadeleri deftere geçmiş olabilir (H-036).
+  ref.invalidate(reviewOverviewProvider);
 }

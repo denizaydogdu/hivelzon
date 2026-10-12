@@ -137,6 +137,13 @@ class EndView extends StatelessWidget {
                     ),
                 ],
               ),
+              const SizedBox(height: AppSpacing.xs),
+              Text(
+                'Bu ifadeler defterine eklendi; tekrar kartı olarak gelecek '
+                '(Profil → Defter).',
+                key: const ValueKey('end-notebook-note'),
+                style: theme.textTheme.bodyMedium,
+              ),
             ]),
             const SizedBox(height: AppSpacing.md),
             PrimaryAction(

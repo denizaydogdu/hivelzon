@@ -1,0 +1,68 @@
+{
+ "schemaVersion": 1,
+ "segment": "recap",
+ "lang": "en",
+ "duration": 2.5,
+ "cues": [
+  {
+   "id": "recap-01",
+   "tr": "Benimle eski istasyonda buluş.",
+   "start": 0.58,
+   "end": 2.09,
+   "speaker": "VOICE",
+   "text": "Meet me at the old station.",
+   "words": [
+    {
+     "w": "Meet",
+     "start": 0.58,
+     "end": 0.66,
+     "gloss": "buluş"
+    },
+    {
+     "w": "me",
+     "start": 0.687,
+     "end": 0.74,
+     "gloss": "benimle (beni)"
+    },
+    {
+     "w": "at",
+     "start": 0.767,
+     "end": 0.82,
+     "gloss": "-de / -da (yer)"
+    },
+    {
+     "w": "the",
+     "start": 0.84,
+     "end": 0.9,
+     "gloss": "(belirli tanımlık)"
+    },
+    {
+     "w": "old",
+     "start": 0.98,
+     "end": 1.22,
+     "gloss": "eski"
+    },
+    {
+     "w": "station.",
+     "start": 1.29,
+     "end": 1.94,
+     "gloss": "istasyon"
+    }
+   ],
+   "chunks": [
+    {
+     "en": "Meet me at …",
+     "tr": "Benimle …-de buluş",
+     "startWord": 0,
+     "endWord": 5
+    },
+    {
+     "en": "the old station",
+     "tr": "eski istasyon",
+     "startWord": 3,
+     "endWord": 5
+    }
+   ]
+  }
+ ]
+}

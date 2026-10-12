@@ -34,6 +34,17 @@ enum PlayerStartMode {
 /// Altyazı: yalnızca İngilizce, İngilizce + küçük Türkçe satır (K-03), kapalı.
 enum SubtitleMode { en, enTr, off }
 
+/// Oynatıcı dışındaki kayıtlar (H-036: defter ve ipucu panosu).
+///
+/// Hata oynatıcıyı durdurmaz; bitmemiş aktarım sonradan geriye dönük yapılır.
+abstract interface class PlayerHooks {
+  /// İpucu kartı ekrana geldi.
+  Future<void> onClueCard(Episode episode, CardNode card);
+
+  /// Bölüm bitti (ilerleme `COMPLETED` yazıldıktan sonra).
+  Future<void> onEpisodeCompleted(Episode episode);
+}
+
 /// Bir bölüm oynatma oturumu: motor + video havuzu + ses + kayıt.
 ///
 /// Ekran bu nesneyi dinler; iş kuralı motorda (saf Dart), medya burada.
@@ -45,6 +56,7 @@ class PlayerSession extends ChangeNotifier {
     VideoControllerFactory? videoFactory,
     LearningEventLog? events,
     NotebookRepository? notebook,
+    this.hooks,
     this.logTransitions = kDebugMode,
   }) : _source = source,
        _progress = progress,
@@ -59,7 +71,11 @@ class PlayerSession extends ChangeNotifier {
   final VideoControllerFactory? _videoFactory;
   final LearningEventLog _events;
   final NotebookRepository _notebook;
+  final PlayerHooks? hooks;
   final bool logTransitions;
+
+  /// Bekleyen kayıt işleri (testler bekleyebilsin diye).
+  Future<void> pendingHooks = Future<void>.value();
 
   /// Hi balonu, seçenek ve görev sesleri.
   final ClipAudioPlayer audio;
@@ -518,6 +534,9 @@ class PlayerSession extends ChangeNotifier {
         if (bubble?.audio != null) playAudio(bubble!.audio!);
       case CardNode(:final autoAdvance, :final duration, :final audio):
         if (audio != null) playAudio(audio);
+        if (n.kind == CardKind.clue) {
+          _runHook('ipucu', (h) => h.onClueCard(e.episode, n));
+        }
         if (autoAdvance) {
           final ms = ((duration ?? 2.5) * 1000).round();
           _autoCardTimer = Timer(Duration(milliseconds: ms), () {
@@ -798,6 +817,19 @@ class PlayerSession extends ChangeNotifier {
     await _progress.clearCheckpoint(contentId);
     _setPhase(PlayerPhase.finished);
     _log('bölüm bitti; kapı=${e.gateStatus.open}');
+    _runHook('bölüm sonu', (h) => h.onEpisodeCompleted(e.episode));
+  }
+
+  void _runHook(String what, Future<void> Function(PlayerHooks h) run) {
+    final h = hooks;
+    if (h == null) return;
+    pendingHooks = pendingHooks.then((_) async {
+      try {
+        await run(h);
+      } on Object catch (err) {
+        debugPrint('[H036] $contentId $what kaydı yapılamadı: $err');
+      }
+    });
   }
 
   void _setPhase(PlayerPhase p) {

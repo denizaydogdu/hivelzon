@@ -5,6 +5,8 @@ import 'package:go_router/go_router.dart';
 import '../../../app/router.dart';
 import '../../../app/theme.dart';
 import '../../../shared/content/content_providers.dart';
+import '../../notebook/application/notebook_providers.dart';
+import '../../notebook/presentation/notebook_screen.dart';
 import '../../story/application/story_providers.dart';
 import '../../story/domain/season_map.dart';
 
@@ -55,6 +57,8 @@ class HomeScreen extends ConsumerWidget {
                 loading: true,
               ),
             },
+            // İkincil eylem: yalnızca bekleyen kart varsa (tek öğrenme eylemi ilkesi).
+            const _ReviewEntry(),
           ],
         ),
       ),
@@ -191,6 +195,43 @@ class _ContinueCard extends ConsumerWidget {
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+/// "Tekrar (n)" (H-036): hikâye kartının altında, sade ve ikincil.
+class _ReviewEntry extends ConsumerWidget {
+  const _ReviewEntry();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final n = ref.watch(reviewOverviewProvider).value?.sessionCount ?? 0;
+    if (n <= 0) return const SizedBox.shrink();
+    final theme = Theme.of(context);
+    return Padding(
+      padding: const EdgeInsets.only(top: AppSpacing.sm),
+      child: Material(
+        color: Colors.transparent,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(AppTheme.radius),
+          side: BorderSide(color: AppColors.seaBlue.withValues(alpha: 0.35)),
+        ),
+        clipBehavior: Clip.antiAlias,
+        child: ListTile(
+          key: const ValueKey('home-review'),
+          minTileHeight: 56,
+          leading: const Icon(Icons.style_rounded, color: AppColors.seaBlue),
+          title: Text(
+            'Tekrar ($n)',
+            style: theme.textTheme.titleMedium?.copyWith(
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+          subtitle: const Text('Defterindeki ifadeler'),
+          trailing: const Icon(Icons.chevron_right_rounded),
+          onTap: () => openReview(context, ref),
+        ),
       ),
     );
   }

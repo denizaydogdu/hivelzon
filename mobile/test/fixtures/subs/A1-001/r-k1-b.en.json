@@ -1,0 +1,37 @@
+{
+ "schemaVersion": 1,
+ "segment": "r-k1-b",
+ "lang": "en",
+ "duration": 2.533,
+ "cues": [
+  {
+   "id": "r-k1-b-01",
+   "tr": "Evet, öyleyim.",
+   "start": 0.66,
+   "end": 2.156,
+   "speaker": "ALEX",
+   "text": "Yes, I am.",
+   "words": [
+    {
+     "w": "Yes,",
+     "start": 0.66,
+     "end": 1.253,
+     "gloss": "evet"
+    },
+    {
+     "w": "I",
+     "start": 1.347,
+     "end": 1.441,
+     "gloss": "ben"
+    },
+    {
+     "w": "am.",
+     "start": 1.567,
+     "end": 2.006,
+     "gloss": "-im (olmak)"
+    }
+   ],
+   "chunks": []
+  }
+ ]
+}
