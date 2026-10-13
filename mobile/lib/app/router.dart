@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../features/account/application/account_providers.dart';
+import '../features/account/presentation/account_screen.dart';
+import '../features/account/presentation/account_widgets.dart';
+import '../features/account/presentation/sign_in_screen.dart';
 import '../features/discover/presentation/discover_screen.dart';
 import '../features/hi/presentation/hi_privacy_screen.dart';
 import '../features/player/application/autoplay_driver.dart';
@@ -39,6 +43,15 @@ abstract final class AppRoutes {
 
   /// Profil → "Hi benim hakkımda ne biliyor?" (H-048).
   static const hiPrivacy = '/profil/hi';
+
+  /// Profil → Hesap (H-038): isteğe bağlı hesap ve eşitleme.
+  static const account = '/profil/hesap';
+
+  /// Hesap aç / giriş yap (e-posta kodu).
+  static const signIn = '/profil/hesap/giris';
+
+  /// Hukuk metinleri (yer tutucu; H-042): `kosullar` | `aydinlatma`.
+  static String legal(String kind) => '/profil/hesap/metin/$kind';
 
   /// Tekrar oturumu (tam ekran, H-036).
   static const review = '/tekrar';
@@ -107,7 +120,14 @@ final routerProvider = Provider<GoRouter>((ref) {
           location: state.uri.path,
         ),
         branches: [
-          _branch(AppRoutes.home, const HomeScreen()),
+          // H-038: başka cihazdan veri gelince Ana Sayfa görünür olunca
+          // ilerleme yeniden okunur. Yalnızca burada: görünmeyen sekmede
+          // geçersiz kılınan türetilmiş sağlayıcı (sezon haritası), sekme
+          // yeniden görünürken build sırasında yenilenip hata veriyor.
+          _branch(
+            AppRoutes.home,
+            const RemoteDataRefresher(child: HomeScreen()),
+          ),
           _branch(AppRoutes.discover, const DiscoverScreen()),
           _branch(AppRoutes.story, const StoryScreen()),
           _branch(AppRoutes.talk, const TalkScreen()),
@@ -128,6 +148,21 @@ final routerProvider = Provider<GoRouter>((ref) {
               GoRoute(
                 path: 'hi',
                 builder: (context, state) => const HiPrivacyScreen(),
+              ),
+              GoRoute(
+                path: 'hesap',
+                builder: (context, state) => const AccountScreen(),
+                routes: [
+                  GoRoute(
+                    path: 'giris',
+                    builder: (context, state) => const SignInScreen(),
+                  ),
+                  GoRoute(
+                    path: 'metin/:kind',
+                    builder: (context, state) =>
+                        LegalTextScreen(kind: state.pathParameters['kind']!),
+                  ),
+                ],
               ),
             ],
           ),

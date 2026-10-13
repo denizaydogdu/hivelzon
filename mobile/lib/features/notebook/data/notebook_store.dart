@@ -4,6 +4,7 @@ import 'package:drift/drift.dart';
 
 import '../../../shared/fsrs/fsrs.dart';
 import '../../../shared/storage/app_database.dart';
+import '../../../shared/sync/sync_ids.dart';
 import '../domain/clue_board.dart';
 import '../domain/deck_builder.dart';
 import '../domain/notebook_item.dart';
@@ -58,7 +59,11 @@ class NotebookStore {
     await _db
         .into(_db.reviewCards)
         .insert(
-          ReviewCardsCompanion.insert(itemId: id, due: at),
+          ReviewCardsCompanion.insert(
+            itemId: id,
+            due: at,
+            updatedAt: Value(at),
+          ),
           mode: InsertMode.insertOrIgnore,
         );
     return true;
@@ -68,21 +73,17 @@ class NotebookStore {
   Future<void> _fillMissing(NotebookItemRow row, NotebookItem item) async {
     final merged = _toItem(row).fillFrom(item);
     final audioMissing = row.audioPath == null && merged.audio != null;
+    // Yalnızca boş alan dolarsa yazılır (H-038: değişmeyen satır eşitleme
+    // kuyruğuna girmesin, LWW zamanı boşuna ilerlemesin).
+    Value<T> fill<T>(Object? current, T? value) =>
+        current == null && value != null ? Value(value) : const Value.absent();
     final c = NotebookItemsCompanion(
-      textTr: row.textTr == null ? Value(merged.textTr) : const Value.absent(),
-      exampleEn: row.exampleEn == null
-          ? Value(merged.exampleEn)
-          : const Value.absent(),
-      exampleTr: row.exampleTr == null
-          ? Value(merged.exampleTr)
-          : const Value.absent(),
-      contentId: row.contentId == null
-          ? Value(merged.contentId)
-          : const Value.absent(),
-      cueId: row.cueId == null ? Value(merged.cueId) : const Value.absent(),
-      imagePath: row.imagePath == null
-          ? Value(merged.imagePath)
-          : const Value.absent(),
+      textTr: fill(row.textTr, merged.textTr),
+      exampleEn: fill(row.exampleEn, merged.exampleEn),
+      exampleTr: fill(row.exampleTr, merged.exampleTr),
+      contentId: fill(row.contentId, merged.contentId),
+      cueId: fill(row.cueId, merged.cueId),
+      imagePath: fill(row.imagePath, merged.imagePath),
       audioPath: audioMissing
           ? Value(merged.audio!.path)
           : const Value.absent(),
@@ -97,9 +98,9 @@ class NotebookStore {
           ? Value(merged.exampleAudio?.end)
           : const Value.absent(),
     );
-    await (_db.update(
-      _db.notebookItems,
-    )..where((t) => t.id.equals(row.id))).write(c);
+    if (c.toColumns(false).isEmpty) return;
+    await (_db.update(_db.notebookItems)..where((t) => t.id.equals(row.id)))
+        .write(c.copyWith(updatedAt: Value(now())));
   }
 
   /// Görseli ya da sesi eksik kartlar (zenginleştirme için).
@@ -142,12 +143,14 @@ class NotebookStore {
     if (row.imagePath != null && row.imagePath!.startsWith('_season/')) {
       return 0;
     }
+    if (row.imagePath == path && row.imageCrop == setItem.imageCrop) return 0;
     return (_db.update(
       _db.notebookItems,
     )..where((t) => t.id.equals(row.id))).write(
       NotebookItemsCompanion(
         imagePath: Value(path),
         imageCrop: Value(setItem.imageCrop),
+        updatedAt: Value(now()),
       ),
     );
   }
@@ -192,6 +195,9 @@ class NotebookStore {
     await _ready;
     final c = o.after;
     await _db.transaction(() async {
+      final itemKey = (await (_db.select(
+        _db.notebookItems,
+      )..where((t) => t.id.equals(c.itemId))).getSingleOrNull())?.itemKey;
       await (_db.update(
         _db.reviewCards,
       )..where((t) => t.id.equals(c.id))).write(
@@ -204,6 +210,7 @@ class NotebookStore {
           reps: Value(c.reps),
           lapses: Value(c.lapses),
           lastReview: Value(c.fsrs.lastReview?.toUtc()),
+          updatedAt: Value(now()),
         ),
       );
       await _db
@@ -218,6 +225,16 @@ class NotebookStore {
               dontKnow: Value(o.dontKnow),
               durationMs: o.elapsed.inMilliseconds,
               wasNew: Value(o.wasNew),
+              // H-038: kart + zaman + nottan UUIDv5 (backend kuralı).
+              clientId: itemKey == null
+                  ? const Value.absent()
+                  : Value(
+                      SyncIds.reviewLog(
+                        SyncIds.card(itemKey),
+                        o.reviewedAt,
+                        o.rating.value,
+                      ),
+                    ),
             ),
           );
     });
@@ -379,6 +396,7 @@ class NotebookStore {
         exampleEnd: Value(i.exampleAudio?.end),
         source: i.source.code,
         createdAt: at,
+        updatedAt: Value(at),
       );
 
   static NotebookItem _toItem(NotebookItemRow r) {

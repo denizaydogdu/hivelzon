@@ -541,6 +541,8 @@ void main() {
       'missing_count',
       'error_note_id',
       'at',
+      // H-038: eşitleme kimliği (UUID); ses ya da yazı değil.
+      'client_id',
     });
   });
 }

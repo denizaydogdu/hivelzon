@@ -267,3 +267,26 @@ Kod: `SpeakTexts` (`mobile/lib/l10n/tr_strings.dart`). Puan, yüzde, dalga biçi
 | Profil | **Söyle alıştırmaları** · anahtar "Söyle alıştırmalarını göster" + açıklama · gizlilik satırı · desteklenmiyorsa / izin kapalıysa nedeni | |
 | Hi benim hakkımda ne biliyor? | "3 kez söyledin; 2 tanesinde ifadenin tamamı duyuldu. Yalnızca bu sonuç saklanır; sesin ve söylediklerinin yazısı saklanmaz." | "Hi'nin kayıtlarını sil" bunları da siler. |
 | iOS izin metinleri (Info.plist) | Mikrofon: "Söyle alıştırmalarında İngilizceyi sesli söylediğinde mikrofon kullanılır. …" · Konuşma tanıma: "Söylediğin İngilizce yalnızca bu telefonda yazıya çevrilir …" | |
+
+## 12. Hesap ve eşitleme (H-038)
+
+Kod: `AccountTexts` (`mobile/lib/l10n/tr_strings.dart`). Hesap isteğe bağlıdır; hesapsız her şey çalışır. Metin sıkıştırmaz, korkutmaz, engellemez. "Sunucu", "senkron", "token" gibi teknik kelimeler geçmez; özelliğin adı **Eşitleme**'dir.
+
+| Yer | Metin | Not |
+|---|---|---|
+| Profil → **Hesap** (hesap yok) | **Hesap aç ya da giriş yap** · "İlerlemen yalnızca bu telefonda. Kaybolmasın istersen hesap aç." | Kullanıcı kararı. |
+| Profil → Hesap (hesap var) | "Hesabın: d•••@example.com" · "Eşitleme: son 2 dk önce" / "Eşitleme: az önce" / "Eşitleme: henüz yapılmadı" | E-posta cihazda yalnızca maskeli durur. |
+| Ana Sayfa kartı | **İlerlemen yalnızca bu telefonda** · "Kaybolmasın istersen hesap aç. İstemezsen hesapsız devam edebilirsin." · **Hesap aç** / **Şimdi değil** | Yalnızca hesap yokken ve biraz ilerleme varken (1 bölüm ya da 3 ifade). Kapatılınca 30 gün görünmez, en fazla 3 kez. |
+| Hesap ekranı (hesap yok) | "Hesap isteğe bağlı. Hesapsız da her şey çalışır." · yedek / başka telefon / "Hesap açmazsan hiçbir bilgin bu telefondan çıkmaz." · **Nasıl devam etmek istersin?** · **E-postayla devam et** · "Şifre yok: e-postana tek kullanımlık bir kod göndeririz." | Apple ve Google (H-044) aynı listeye eklenir. |
+| E-posta | **E-posta adresin** · "Hesabın varsa giriş yaparsın, yoksa yeni hesap açılır." · **Kod gönder** · hata: "Geçerli bir e-posta adresi yaz." | |
+| Kod | **Kodu yaz** · "… adresine 6 haneli bir kod gönderdik. Kod 10 dakika geçerli." · **Doğrula** · "Yeni kodu 42 sn sonra isteyebilirsin." → **Yeni kod gönder** · **E-postayı değiştir** | Otomatik doldurma (tek kullanımlık kod); 6 rakam girilince kendiliğinden doğrular. |
+| Kod hataları | "Bu kod eşleşmedi. E-postandaki kodu bir daha kontrol et." · "Bu kodun süresi doldu. Yeni bir kod isteyebilirsin." · "Bu kod için deneme hakkın bitti. Yeni bir kod isteyebilirsin." · "Kısa sürede çok istek geldi. Biraz sonra tekrar dene." | "Yanlış" denmez. |
+| Yeni hesap | **Hesabını aç** · "Son birkaç bilgi kaldı." · Doğum yılın ("Yalnızca yılı soruyoruz.") · "Sana nasıl seslenelim? (isteğe bağlı)" · ☐ "Kullanım koşullarını okudum, kabul ediyorum." · ☐ "KVKK aydınlatma metnini okudum." · **Metni aç** · anahtar "hiVelzon'daki yenilikleri e-postayla almak istiyorum." (varsayılan kapalı) · **Hesabımı aç** | Hukuk metinleri yer tutucu (H-042); sürüm `TERMS_VERSION` / `PRIVACY_NOTICE_VERSION`. |
+| 13 yaş altı | **Hesap için en az 13 yaş** · "Hesap açmak için en az 13 yaşında olmalısın; uygulamanın tamamını hesapsız kullanabilirsin." · "Yazdığın bilgiler kaydedilmedi." · **Uygulamaya dön** | Doğum yılı gönderilmez ve saklanmaz; cihaz yalnızca hesabın açılabileceği yılı hatırlar, Profil satırı o yıla kadar kapalı kalır. |
+| İlk eşitleme | "Verilerin eşitleniyor…" → **Verilerin eşitlendi** · "Bu telefondaki ilerlemen artık hesabında da." / bağlantı yoksa "Şu an eşitlenemedi. Verilerin bu telefonda duruyor; bağlantı gelince kendiliğinden eşitlenir." | |
+| Hesap ekranı (hesap var) | **Şimdi eşitle** ("Eşitlendi.") · **Çıkış yap** ("Verilerin bu telefonda kalır; eşitleme durur…") · **Bu telefondaki verileri de sil** (ayrı onay; "Hesabındaki kopya durur; yeniden giriş yapınca geri gelir.") · **Hesabımı sil** ("30 gün içinde aynı e-postayla giriş yapıp hesabını geri alabilirsin…") | |
+| Silinmek üzere hesap | **Hesabın silinmek üzere** · "… tarihine kadar geri alabilirsin; o gün hesabın ve hesabındaki veriler kalıcı olarak silinir." · **Hesabımı geri al** / **Geri alma, çıkış yap** | |
+| Oturum kapandıysa | "Güvenliğin için bu telefondaki oturumu kapattık. Verilerin bu telefonda duruyor; istersen yeniden giriş yapabilirsin." | Kullanılmış yenileme belirteci (`TOKEN_REUSED`). |
+| Hi benim hakkımda ne biliyor? (hesap var) | "… Hesabın açık olduğu için bu kayıtlar yedek olarak hesabına da eşitlenir. Reklam için kullanılmaz." · silme onayı: "… Hesabına bağlı öteki cihazlardan da silinir. …" | Hesap yokken eski metin ("sunucuya gönderilmez") kalır. |
+
+Testler: `test/features/account/account_ui_test.dart`, `test/shared/api/api_client_test.dart` (hata metinleri suçlamasız).

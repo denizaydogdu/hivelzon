@@ -9,6 +9,7 @@ import '../../../shared/content/content_providers.dart';
 import '../../../shared/perf/perf_log.dart';
 import '../../../shared/widgets/page_header.dart';
 import '../../../shared/widgets/skeleton.dart';
+import '../../account/presentation/account_widgets.dart';
 import '../../notebook/application/notebook_providers.dart';
 import '../../notebook/presentation/notebook_screen.dart';
 import '../../profile/application/profile_providers.dart';
@@ -68,6 +69,8 @@ class HomeScreen extends ConsumerWidget {
             // İkincil eylem: hikâye kartından sonra, daha sade (tek öğrenme
             // eylemi ilkesi).
             const _ReviewEntry(),
+            // H-038: hesap yoksa ara sıra, kapatılabilir; hiçbir şeyi engellemez.
+            const AccountNudgeCard(),
           ],
         ),
       ),

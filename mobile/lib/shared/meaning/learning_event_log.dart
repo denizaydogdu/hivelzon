@@ -7,6 +7,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../storage/app_database.dart';
 import '../storage/storage_providers.dart';
+import '../sync/sync_ids.dart';
 import 'error_taxonomy.dart';
 
 /// Kullanıcının bir kelimeye ya da cümlenin Türkçesine baktığı an (H-046).
@@ -88,11 +89,14 @@ class DriftLearningEventLog implements LearningEventLog {
   @override
   Future<void> record(LearningEvent event) async {
     await _ready;
+    final eventId = event.clientEventId ?? newClientEventId();
     await _db
         .into(_db.learningEvents)
         .insert(
           LearningEventsCompanion.insert(
-            clientEventId: event.clientEventId ?? newClientEventId(),
+            clientEventId: eventId,
+            // H-038: eşitleme kimliği = olay kimliğinin UUID biçimi.
+            clientId: Value(SyncIds.fromLegacyEventId(eventId)),
             contentId: event.contentId,
             sourceId: event.sourceId,
             target: event.target,

@@ -506,6 +506,17 @@ abstract final class HiTexts {
   static const privacyDeleted =
       "Hi'nin kayıtları silindi. İlerlemen ve defterin yerinde.";
   static const privacyError = 'Kayıtlar okunamadı. Biraz sonra tekrar dene.';
+
+  // Hesap açıkken (H-038): kayıtlar hesaba da eşitlenir; silme her yerde.
+  static const privacyIntroAccount =
+      'Hi önerilerini bu cihazdaki kayıtlara bakarak seçer. Hesabın açık '
+      'olduğu için bu kayıtlar yedek olarak hesabına da eşitlenir. Reklam '
+      'için kullanılmaz.';
+  static const privacyConfirmBodyAccount =
+      'Anlamına baktığın kelimeler, yeniden denediğin seçimler, Söyle '
+      'sonuçları ve yan görev durumları silinir. Hesabına bağlı öteki '
+      'cihazlardan da silinir. Bu geri alınamaz. Hikâye ilerlemen ve defterin '
+      'yerinde kalır.';
 }
 
 /// "Söyle" alıştırmaları (H-055). Puan, yüzde ve "yanlış" yok; utandırmaz.
@@ -583,4 +594,205 @@ abstract final class SpeakTexts {
       : '$attempts kez söyledin; $full tanesinde ifadenin tamamı duyuldu. '
             'Yalnızca bu sonuç saklanır; sesin ve söylediklerinin yazısı '
             'saklanmaz.';
+}
+
+/// Hesap ve eşitleme (H-038). Hesap isteğe bağlıdır; hesapsız her şey
+/// çalışır. Sıkıştırmayan, suçlamayan, sakin dil; teknik terim yok.
+abstract final class AccountTexts {
+  static const section = 'Hesap';
+
+  // Profil satırı ve Ana Sayfa kartı
+  static const tileSignedOut = 'Hesap aç ya da giriş yap';
+  static const localOnly =
+      'İlerlemen yalnızca bu telefonda. Kaybolmasın istersen hesap aç.';
+  static const nudgeTitle = 'İlerlemen yalnızca bu telefonda';
+  static const nudgeBody =
+      'Kaybolmasın istersen hesap aç. İstemezsen hesapsız devam edebilirsin.';
+  static const nudgeOpen = 'Hesap aç';
+  static const nudgeLater = 'Şimdi değil';
+  static String tileSignedIn(String email) => 'Hesabın: $email';
+
+  // Yaş (H-002): 13 yaş altı hesap açamaz; uygulamanın tamamı çalışır.
+  static const ageBlockedTitle = 'Hesap için en az 13 yaş';
+  static const ageBlocked =
+      'Hesap açmak için en az 13 yaşında olmalısın; uygulamanın tamamını '
+      'hesapsız kullanabilirsin.';
+  static const ageBlockedNothingSaved = 'Yazdığın bilgiler kaydedilmedi.';
+  static const backToApp = 'Uygulamaya dön';
+
+  // Hesap ekranı (oturum kapalı)
+  static const title = 'Hesap';
+  static const intro = 'Hesap isteğe bağlı. Hesapsız da her şey çalışır.';
+  static const benefitBackup =
+      'Hesap açarsan ilerlemen, defterin ve Hi\'nin kayıtları hesabına '
+      'yedeklenir.';
+  static const benefitDevices =
+      'Başka bir telefonda aynı hesapla giriş yapınca kaldığın yerden devam '
+      'edersin.';
+  static const benefitLocal =
+      'Hesap açmazsan hiçbir bilgin bu telefondan çıkmaz.';
+  static const methodsHeading = 'Nasıl devam etmek istersin?';
+  static const methodEmail = 'E-postayla devam et';
+  static const methodEmailNote =
+      'Şifre yok: e-postana tek kullanımlık bir kod göndeririz.';
+
+  // Giriş: e-posta
+  static const signInTitle = 'Hesap aç ya da giriş yap';
+  static const emailHeading = 'E-posta adresin';
+  static const emailLabel = 'E-posta';
+  static const emailHelper =
+      'Hesabın varsa giriş yaparsın, yoksa yeni hesap açılır.';
+  static const emailInvalid = 'Geçerli bir e-posta adresi yaz.';
+  static const sendCode = 'Kod gönder';
+
+  // Giriş: kod
+  static const codeHeading = 'Kodu yaz';
+  static String codeSent(String email, int minutes) =>
+      '$email adresine 6 haneli bir kod gönderdik. Kod $minutes dakika '
+      'geçerli.';
+  static const codeLabel = '6 haneli kod';
+  static const codeInvalidFormat = 'Kod 6 rakamdan oluşur.';
+  static const verify = 'Doğrula';
+  static String resendIn(int seconds) =>
+      'Yeni kodu $seconds sn sonra isteyebilirsin.';
+  static const resend = 'Yeni kod gönder';
+  static const codeResent = 'Yeni kod gönderildi.';
+  static const changeEmail = 'E-postayı değiştir';
+  static const checking = 'Kontrol ediliyor…';
+
+  // Kayıt bilgileri (yeni hesap)
+  static const signupHeading = 'Hesabını aç';
+  static const signupIntro = 'Son birkaç bilgi kaldı.';
+  static const birthYearLabel = 'Doğum yılın';
+  static const birthYearHelper = 'Yalnızca yılı soruyoruz.';
+  static const birthYearInvalid = 'Doğum yılını dört haneli yaz (ör. 2008).';
+  static const displayNameLabel = 'Sana nasıl seslenelim? (isteğe bağlı)';
+  static const displayNameInvalid =
+      'Yalnızca harf, boşluk, kesme işareti ve tire kullanabilirsin.';
+  static const termsCheck = 'Kullanım koşullarını okudum, kabul ediyorum.';
+  static const privacyCheck = 'KVKK aydınlatma metnini okudum.';
+  static const readText = 'Metni aç';
+  static const marketing =
+      'hiVelzon\'daki yenilikleri e-postayla almak istiyorum.';
+  static const marketingNote = 'İsteğe bağlı. İstediğin zaman vazgeçebilirsin.';
+  static const consentMissing = 'Devam etmek için iki metni de onayla.';
+  static const createAccount = 'Hesabımı aç';
+
+  // Silinmek üzere olan hesap
+  static const restoreHeading = 'Hesabın silinmek üzere';
+  static String restoreBody(String date) =>
+      'Hesabını silme isteğin var. $date tarihine kadar geri alabilirsin; o '
+      'gün hesabın ve hesabındaki veriler kalıcı olarak silinir.';
+  static const restore = 'Hesabımı geri al';
+  static const restoreDecline = 'Geri alma, çıkış yap';
+  static const restored = 'Hesabın geri alındı.';
+  static String pendingDeletion(String date) =>
+      'Hesabın silinmek üzere. $date tarihine kadar e-postanla yeniden giriş '
+      'yapıp geri alabilirsin.';
+
+  // İlk eşitleme
+  static const syncing = 'Verilerin eşitleniyor…';
+  static const synced = 'Verilerin eşitlendi';
+  static const syncedBody = 'Bu telefondaki ilerlemen artık hesabında da.';
+  static const syncLater =
+      'Şu an eşitlenemedi. Verilerin bu telefonda duruyor; bağlantı gelince '
+      'kendiliğinden eşitlenir.';
+  static const done = 'Tamam';
+
+  // Oturum açıkken
+  static const signedInHeading = 'Giriş yaptığın hesap';
+  static String syncLine(DateTime? last, DateTime now) {
+    if (last == null) return 'Eşitleme: henüz yapılmadı';
+    final d = now.difference(last);
+    if (d.inMinutes < 1) return 'Eşitleme: az önce';
+    if (d.inHours < 1) return 'Eşitleme: son ${d.inMinutes} dk önce';
+    if (d.inDays < 1) return 'Eşitleme: son ${d.inHours} sa önce';
+    return 'Eşitleme: son ${d.inDays} gün önce';
+  }
+
+  static const syncWaiting = 'Bağlantı gelince kendiliğinden eşitlenecek.';
+  static const syncNow = 'Şimdi eşitle';
+  static const syncNowDone = 'Eşitlendi.';
+  static const signOut = 'Çıkış yap';
+  static const signOutTitle = 'Çıkış yapılsın mı?';
+  static const signOutBody =
+      'Verilerin bu telefonda kalır; eşitleme durur. İstediğin zaman yeniden '
+      'giriş yapabilirsin.';
+  static const wipeAlso = 'Bu telefondaki verileri de sil';
+  static const wipeTitle = 'Bu telefondaki veriler de silinsin mi?';
+  static const wipeBody =
+      'İlerlemen, defterin ve Hi\'nin kayıtları bu telefondan silinir. '
+      'Hesabındaki kopya durur; yeniden giriş yapınca geri gelir.';
+  static const wipeConfirm = 'Sil ve çıkış yap';
+  static const cancel = 'Vazgeç';
+  static const signedOut = 'Çıkış yaptın. Verilerin bu telefonda.';
+  static const signedOutWiped = 'Çıkış yaptın; bu telefondaki veriler silindi.';
+  static const deleteAccount = 'Hesabımı sil';
+  static const deleteTitle = 'Hesabın silinsin mi?';
+  static const deleteBody =
+      '30 gün içinde aynı e-postayla giriş yapıp hesabını geri alabilirsin. '
+      '30 gün sonra hesabın ve hesabındaki veriler kalıcı olarak silinir. Bu '
+      'telefondaki verilerin silinmez.';
+  static String deleted(String date) =>
+      'Silme isteğin alındı. $date tarihine kadar geri alabilirsin.';
+
+  // Oturum cihazda kapandıysa (sakin açıklama)
+  static String? signedOutReason(String? code) => switch (code) {
+    'TOKEN_REUSED' =>
+      'Güvenliğin için bu telefondaki oturumu kapattık. Verilerin bu telefonda '
+          'duruyor; istersen yeniden giriş yapabilirsin.',
+    'REFRESH_TOKEN_INVALID' =>
+      'Oturumun sona erdi. Verilerin bu telefonda duruyor; istersen yeniden '
+          'giriş yapabilirsin.',
+    _ => null,
+  };
+
+  // Hukuk metinleri (yer tutucu; kesin metinler H-042)
+  static const termsTitle = 'Kullanım koşulları';
+  static const privacyTitle = 'KVKK aydınlatma metni';
+  static String legalVersion(String v) => 'Sürüm: $v';
+  static const legalDraft =
+      'Bu bir taslak. Kesin metin yayından önce buraya eklenecek.';
+  static const termsDraftBody =
+      'hiVelzon ücretsiz bir İngilizce öğrenme uygulamasıdır. Hesap isteğe '
+      'bağlıdır. Hesabını istediğin zaman silebilirsin; silme isteğinden '
+      'sonra 30 gün içinde geri alabilirsin.';
+  static const privacyDraftBody =
+      'Hesap açarsan e-posta adresin, doğum yılın, isteğe bağlı adın ve '
+      'öğrenme ilerlemen saklanır. Sesin ve söylediklerinin yazısı hiçbir '
+      'zaman saklanmaz. Hesap açmazsan hiçbir bilgin bu telefondan çıkmaz.';
+
+  /// Hata kodunun Türkçe açıklaması (sunucu metni yedek).
+  static String errorFor(String code, {String? fallback}) => switch (code) {
+    'NETWORK' =>
+      'Bağlantı kurulamadı. İnternet bağlantını kontrol edip tekrar dene.',
+    'OTP_INVALID' => 'Bu kod eşleşmedi. E-postandaki kodu bir daha kontrol et.',
+    'OTP_EXPIRED' => 'Bu kodun süresi doldu. Yeni bir kod isteyebilirsin.',
+    'OTP_TOO_MANY_ATTEMPTS' =>
+      'Bu kod için deneme hakkın bitti. Yeni bir kod isteyebilirsin.',
+    'RATE_LIMITED' => 'Kısa sürede çok istek geldi. Biraz sonra tekrar dene.',
+    'AGE_NOT_ALLOWED' => ageBlocked,
+    'CONSENT_VERSION_OUTDATED' =>
+      'Metnin yeni bir sürümü var. Uygulamayı güncelleyip yeniden dene.',
+    'TOKEN_REUSED' || 'REFRESH_TOKEN_INVALID' => signedOutReason(code)!,
+    'ACCOUNT_PENDING_DELETION' =>
+      'Hesabın silinmek üzere. Devam etmek için önce hesabını geri '
+          'alabilirsin.',
+    'MAIL_UNAVAILABLE' =>
+      'Şu an e-posta gönderemedik. Biraz sonra tekrar dene.',
+    'VALIDATION_FAILED' =>
+      'Bilgilerde bir eksik var. Kontrol edip tekrar dene.',
+    _ => fallback ?? 'Beklenmeyen bir sorun oldu. Biraz sonra tekrar dene.',
+  };
+
+  static const _months = [
+    'Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', //
+    'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık',
+  ];
+
+  /// `12 Kasım 2026` (yerel saat).
+  static String date(DateTime t) {
+    final l = t.toLocal();
+    return '${l.day} ${_months[l.month - 1]} ${l.year}';
+  }
 }

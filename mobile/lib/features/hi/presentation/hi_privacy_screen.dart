@@ -6,6 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../app/theme.dart';
 import '../../../l10n/tr_strings.dart';
 import '../../../shared/meaning/error_taxonomy.dart';
+import '../../account/application/account_providers.dart';
 import '../../profile/application/profile_providers.dart';
 import '../application/hi_providers.dart';
 import '../domain/weekly_summary.dart';
@@ -19,11 +20,16 @@ class HiPrivacyScreen extends ConsumerWidget {
   const HiPrivacyScreen({super.key});
 
   Future<void> _delete(BuildContext context, WidgetRef ref) async {
+    final account = accountViewOf(ref.read).signedIn;
     final ok = await showDialog<bool>(
       context: context,
       builder: (context) => AlertDialog(
         title: const Text(HiTexts.privacyConfirmTitle),
-        content: const Text(HiTexts.privacyConfirmBody),
+        content: Text(
+          account
+              ? HiTexts.privacyConfirmBodyAccount
+              : HiTexts.privacyConfirmBody,
+        ),
         actions: [
           TextButton(
             key: const ValueKey('hi-privacy-cancel'),
@@ -41,6 +47,8 @@ class HiPrivacyScreen extends ConsumerWidget {
     if (ok != true) return;
     await ref.read(hiStoreProvider).deleteLearningData();
     refreshHi(ref);
+    // H-038: hesap açıksa silme işareti hemen gönderilsin (öteki cihazlar).
+    if (account) unawaited(ref.read(syncControllerProvider.notifier).syncNow());
     if (!context.mounted) return;
     ScaffoldMessenger.of(
       context,
@@ -53,6 +61,7 @@ class HiPrivacyScreen extends ConsumerWidget {
     final k = ref.watch(hiKnowledgeProvider);
     final name = ref.watch(displayNameProvider).value;
     final week = ref.watch(weeklySummaryProvider).value;
+    final account = accountViewOf(ref.watch).signedIn;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: theme.colorScheme.surface,
@@ -68,7 +77,10 @@ class HiPrivacyScreen extends ConsumerWidget {
             key: const ValueKey('hi-privacy'),
             padding: const EdgeInsets.all(AppSpacing.sm),
             children: [
-              Text(HiTexts.privacyIntro, style: theme.textTheme.bodyLarge),
+              Text(
+                account ? HiTexts.privacyIntroAccount : HiTexts.privacyIntro,
+                style: theme.textTheme.bodyLarge,
+              ),
               const SizedBox(height: AppSpacing.sm),
               _Row(
                 icon: Icons.badge_outlined,

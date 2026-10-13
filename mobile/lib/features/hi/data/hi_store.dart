@@ -12,6 +12,12 @@ abstract final class HiRecordKind {
 
   /// Sahne avı tamamlanan konu seti (ilerleme gibi; silmede kalır).
   static const huntDone = 'hunt_done';
+
+  /// "Hi'nin kayıtlarını sil" işareti (H-038): hesap açıkken yazılır,
+  /// eşitlemeyle öteki cihazlara gider; o ana kadarki Hi kayıtları orada da
+  /// silinir. `refId` = [hiResetRef], `status` = `cleared`.
+  static const hiReset = 'hi_reset';
+  static const hiResetRef = 'all';
 }
 
 enum BridgeState { done, dismissed }
@@ -243,9 +249,32 @@ class HiStore {
   /// "Hi'nin kayıtlarını sil": öğrenme olayları, "Söyle" sonuçları (H-055),
   /// yan görev durumları, açılan notlar ve panel işareti. İlerleme, defter, tekrar geçmişi, ad ve görülen
   /// konu tanıtımları **silinmez**.
+  ///
+  /// Hesap açıksa (H-038) silme bütün cihazlarda geçerlidir: silme işareti
+  /// ([HiRecordKind.hiReset]) yazılır, eşitlemede sunucuya gider ve sunucudaki
+  /// "Söyle" sonuçlarının silinmesi kuyruğa alınır. Hesap yoksa yalnızca bu
+  /// cihazdaki kayıtlar silinir; hiçbir şey dışarı gitmez.
   Future<int> deleteLearningData() async {
     await _ready;
     return _db.transaction(() async {
+      final account = await (_db.select(
+        _db.syncState,
+      )..where((t) => t.id.equals(1))).getSingleOrNull();
+      if (account?.accountUserId != null) {
+        await _db
+            .into(_db.hiRecords)
+            .insertOnConflictUpdate(
+              HiRecordsCompanion.insert(
+                kind: HiRecordKind.hiReset,
+                refId: HiRecordKind.hiResetRef,
+                status: 'cleared',
+                updatedAt: now(),
+              ),
+            );
+        await (_db.update(_db.syncState)..where((t) => t.id.equals(1))).write(
+          const SyncStateCompanion(pendingSpeechDelete: Value(true)),
+        );
+      }
       final events = await _db.delete(_db.learningEvents).go();
       final speech = await _db.delete(_db.speechAttempts).go();
       final records =

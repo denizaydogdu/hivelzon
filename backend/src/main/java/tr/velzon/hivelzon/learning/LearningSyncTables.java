@@ -28,6 +28,16 @@ public class LearningSyncTables implements SyncTableProvider {
     public static final String NOTEBOOK_ITEMS = "notebook_items";
     public static final String REVIEW_CARDS = "review_cards";
     public static final String REVIEW_LOGS = "review_logs";
+    public static final String HI_RECORDS = "hi_records";
+
+    /** Sahne avı tamamlanan konu seti (mobil H-051). */
+    public static final String HUNT_DONE = "hunt_done";
+
+    /**
+     * "Hi'nin kayıtlarını sil" işareti (H-038): {@code kind = hi_reset}, {@code refId = all}, {@code status =
+     * cleared}, {@code updatedAt} = silme anı. Bkz. {@link HiResetHook}.
+     */
+    public static final String HI_RESET = "hi_reset";
 
     /** Mobil {@code TaskType.code} değerleri. */
     public static final String[] TASK_TYPES = {"picture_choice", "listen_choice", "arrange", "type", "self_check",
@@ -54,7 +64,7 @@ public class LearningSyncTables implements SyncTableProvider {
                         decimal("audioEnd", "audio_end", false),
                         decimal("exampleStart", "example_start", false),
                         decimal("exampleEnd", "example_end", false),
-                        oneOf("source", "source", true, "auto_target_phrase", "user_saved", "lookup"),
+                        oneOf("source", "source", true, "auto_target_phrase", "user_saved", "lookup", "topic_set"),
                         instant("createdAt", "created_at", true))),
                 new SyncTable(REVIEW_CARDS, 110, Kind.MUTABLE, List.of(ITEM_KEY), UPDATED_AT, List.of(
                         integer("state", "state", true, 1, 3),
@@ -81,10 +91,12 @@ public class LearningSyncTables implements SyncTableProvider {
                         instant("at", "at", true),
                         string("errorType", "error_type", false, 64),
                         integer("errorTaxonomyVersion", "error_taxonomy_version", false, 1, 1000))),
-                new SyncTable("hi_records", 140, Kind.MUTABLE,
-                        List.of(oneOf("kind", "kind", true, "topic_intro", "bridge_task", "note_read"),
+                new SyncTable(HI_RECORDS, 140, Kind.MUTABLE,
+                        List.of(oneOf("kind", "kind", true, "topic_intro", "bridge_task", "note_read", HUNT_DONE,
+                                HI_RESET),
                                 string("refId", "ref_id", true, 64)),
-                        UPDATED_AT, List.of(oneOf("status", "status", true, "seen", "done", "dismissed", "read"))),
+                        UPDATED_AT,
+                        List.of(oneOf("status", "status", true, "seen", "done", "dismissed", "read", "cleared"))),
                 // H-055: yalnızca sonuç. Ses ve tanıma yazısı alanı yoktur; gönderilirse reddedilir.
                 new SyncTable("speech_attempts", 150, Kind.APPEND_ONLY, List.of(), null, List.of(
                         oneOf("place", "place", true, "review", "meaning", "decision", "episode_end"),

@@ -6,6 +6,7 @@ import '../../../app/router.dart';
 import '../../../app/theme.dart';
 import '../../../l10n/tr_strings.dart';
 import '../../../shared/widgets/page_header.dart';
+import '../../account/presentation/account_widgets.dart';
 import '../../hi/application/hi_providers.dart';
 import '../../hi/presentation/hi_privacy_screen.dart';
 import '../../notebook/application/notebook_providers.dart';
@@ -110,6 +111,9 @@ class ProfileScreen extends ConsumerWidget {
             ),
             // H-055: aç/kapat ve gizlilik (destek yoksa nedeni).
             const SpeechSettingsSection(),
+            // H-038: isteğe bağlı hesap ve eşitleme.
+            const SizedBox(height: AppSpacing.md),
+            const AccountSection(),
           ],
         ),
       ),

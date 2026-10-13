@@ -5,6 +5,9 @@ import 'package:drift/native.dart';
 import 'package:path/path.dart' as p;
 import 'package:path_provider/path_provider.dart';
 
+import '../sync/sync_ids.dart';
+import '../sync/sync_schema.dart';
+
 part 'app_database.g.dart';
 
 /// Yerel veritabanı (Drift/SQLite, H-035; `docs/UYGULAMA-PLANI.md` §2).
@@ -39,6 +42,9 @@ class UserStoryFlags extends Table {
   TextColumn get flag => text()();
   TextColumn get value => text()();
 
+  /// Son yazan kazanır zamanı (H-038, şema 5).
+  DateTimeColumn get updatedAt => dateTime().nullable()();
+
   @override
   Set<Column<Object>> get primaryKey => {contentId, flag};
 }
@@ -61,6 +67,9 @@ class SeasonState extends Table {
   IntColumn get seasonId => integer()();
   BoolColumn get introSeen => boolean().withDefault(const Constant(false))();
   DateTimeColumn get introSeenAt => dateTime().nullable()();
+
+  /// Son yazan kazanır zamanı (H-038, şema 5).
+  DateTimeColumn get updatedAt => dateTime().nullable()();
 
   @override
   Set<Column<Object>> get primaryKey => {seasonId};
@@ -115,6 +124,9 @@ class NotebookItems extends Table {
   /// `auto_target_phrase` | `user_saved` | `lookup`
   TextColumn get source => text()();
   DateTimeColumn get createdAt => dateTime()();
+
+  /// Son yazan kazanır zamanı (H-038, şema 5).
+  DateTimeColumn get updatedAt => dateTime().nullable()();
 }
 
 /// FSRS kartı (K-04). Yeni kart: `reps = 0`, `lastReview = null`.
@@ -136,6 +148,9 @@ class ReviewCards extends Table {
   IntColumn get reps => integer().withDefault(const Constant(0))();
   IntColumn get lapses => integer().withDefault(const Constant(0))();
   DateTimeColumn get lastReview => dateTime().nullable()();
+
+  /// Son yazan kazanır zamanı (H-038, şema 5).
+  DateTimeColumn get updatedAt => dateTime().nullable()();
 }
 
 /// Her cevap (FSRS optimizasyonu ve H-038 eşitlemesi için).
@@ -159,6 +174,10 @@ class ReviewLogs extends Table {
 
   /// İnceleme öncesi kart yeni miydi (günlük yeni kart sınırı için).
   BoolColumn get wasNew => boolean().withDefault(const Constant(false))();
+
+  /// Eşitleme kimliği (H-038, şema 5): kart + zaman + nottan UUIDv5
+  /// ([SyncIds.reviewLog]); verilmezse rastgele UUIDv4. Tekil (dizin).
+  TextColumn get clientId => text().nullable().clientDefault(SyncIds.v4)();
 }
 
 /// Öğrenme olayları (H-046'dan taşındı). Sunucuya eşitlenecek (H-038).
@@ -177,6 +196,10 @@ class LearningEvents extends Table {
   /// (`shared/meaning/error_taxonomy.dart`). Bakmak hata değildir: null.
   TextColumn get errorType => text().nullable()();
   IntColumn get errorTaxonomyVersion => integer().nullable()();
+
+  /// Eşitleme kimliği (H-038, şema 5; UUID). Eski kayıtlarda
+  /// [clientEventId]'nin tireli biçimi. Tekil (dizin).
+  TextColumn get clientId => text().nullable().clientDefault(SyncIds.v4)();
 }
 
 /// Açılan ipuçları (bölüm sonu ipucu kartı).
@@ -258,6 +281,83 @@ class SpeechAttempts extends Table {
   /// Hata kataloğu kimliği (`can-short-answer` vb.).
   TextColumn get errorNoteId => text().nullable()();
   DateTimeColumn get at => dateTime()();
+
+  /// Eşitleme kimliği (H-038, şema 5; UUIDv4). Tekil (dizin).
+  TextColumn get clientId => text().nullable().clientDefault(SyncIds.v4)();
+}
+
+// ---------------------------------------------------------------- eşitleme (H-038, şema 5)
+
+/// Hesap ve eşitleme durumu (tek satır, `id = 1`). Hesap yoksa
+/// [accountUserId] boştur ve hiçbir değişiklik kuyruğa yazılmaz.
+@DataClassName('SyncStateRow')
+class SyncState extends Table {
+  IntColumn get id => integer().withDefault(const Constant(1))();
+
+  /// Hesabın kimliği (`/me` → `id`); yalnızca oturum açıkken dolu.
+  TextColumn get accountUserId => text().nullable()();
+
+  /// Gösterim için maskeli e-posta (`d•••@example.com`); açık e-posta
+  /// cihazda saklanmaz.
+  TextColumn get emailMasked => text().nullable()();
+
+  /// `ACTIVE` | `PENDING_DELETION`
+  TextColumn get accountStatus => text().nullable()();
+  DateTimeColumn get scheduledPurgeAt => dateTime().nullable()();
+
+  /// Bu kurulumun rastgele kimliği (itmede `deviceId`; sunucu saklamaz).
+  TextColumn get deviceId => text().nullable()();
+
+  /// Çekme imleci (`/sync/pull?since=`).
+  IntColumn get lastPullCursor => integer().withDefault(const Constant(0))();
+  DateTimeColumn get lastSyncAt => dateTime().nullable()();
+  DateTimeColumn get lastPushAt => dateTime().nullable()();
+
+  /// Cihazdaki verinin hesaba ilk yüklemesi bitti mi.
+  BoolColumn get initialUploadDone =>
+      boolean().withDefault(const Constant(false))();
+
+  /// Sunucudan gelen satırlar yazılırken 1: tetikleyiciler kuyruğa yazmaz.
+  BoolColumn get applying => boolean().withDefault(const Constant(false))();
+
+  /// "Hi'nin kayıtlarını sil" sonrası `DELETE /sync/speech-attempts` bekliyor.
+  BoolColumn get pendingSpeechDelete =>
+      boolean().withDefault(const Constant(false))();
+
+  /// Son eşitleme hatasının kodu (`NETWORK`, `RATE_LIMITED` …); başarıda boş.
+  TextColumn get lastErrorCode => text().nullable()();
+
+  /// Oturum cihazda kapatıldıysa nedeni (`TOKEN_REUSED` …); gösterilince silinir.
+  TextColumn get signedOutReason => text().nullable()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {id};
+}
+
+/// Gönderilecek değişiklikler (H-038). SQLite tetikleyicileri doldurur
+/// (yalnızca oturum açıkken; `sync_schema.dart`): satırın tablo adı ve doğal
+/// anahtarı (ya da UUID'si). İtmede satırın güncel hâli okunur; satır yoksa
+/// silme işareti (tombstone) gönderilir.
+@DataClassName('SyncOutboxRow')
+class SyncOutbox extends Table {
+  TextColumn get tbl => text()();
+  TextColumn get k1 => text()();
+  TextColumn get k2 => text().withDefault(const Constant(''))();
+  TextColumn get k3 => text().withDefault(const Constant(''))();
+
+  /// Değişiklik silme miydi (bilgi; satırın varlığı esastır).
+  BoolColumn get deleted => boolean().withDefault(const Constant(false))();
+
+  /// Her değişiklikte artar: itme sırasında yeniden değişen satır kuyrukta kalır.
+  IntColumn get rev => integer().withDefault(const Constant(1))();
+  DateTimeColumn get changedAt => dateTime()();
+
+  /// Sunucu bu satırı reddettiyse 1: satır yeniden değişene kadar atlanır
+  /// (eşitlemenin tamamı takılmasın).
+  BoolColumn get blocked => boolean().withDefault(const Constant(false))();
+
+  @override
+  Set<Column<Object>> get primaryKey => {tbl, k1, k2, k3};
 }
 
 @DriftDatabase(
@@ -275,6 +375,8 @@ class SpeechAttempts extends Table {
     StoryLinks,
     HiRecords,
     SpeechAttempts,
+    SyncState,
+    SyncOutbox,
   ],
 )
 class AppDatabase extends _$AppDatabase {
@@ -295,7 +397,7 @@ class AppDatabase extends _$AppDatabase {
   );
 
   @override
-  int get schemaVersion => 4;
+  int get schemaVersion => 5;
 
   @override
   MigrationStrategy get migration => MigrationStrategy(
@@ -318,6 +420,25 @@ class AppDatabase extends _$AppDatabase {
       if (from < 4) {
         await m.createTable(speechAttempts);
       }
+      // 4 → 5 (H-038): eşitleme. LWW zamanı, UUID kimlikler, durum ve kuyruk.
+      if (from < 5) {
+        await m.addColumn(userStoryFlags, userStoryFlags.updatedAt);
+        await m.addColumn(seasonState, seasonState.updatedAt);
+        // Önceki adımda bu sürümün tanımıyla oluşturulan tablolarda kolon
+        // zaten vardır (1 → 2 defter, 3 → 4 "Söyle").
+        if (from >= 2) {
+          await m.addColumn(notebookItems, notebookItems.updatedAt);
+          await m.addColumn(reviewCards, reviewCards.updatedAt);
+          await m.addColumn(reviewLogs, reviewLogs.clientId);
+          await m.addColumn(learningEvents, learningEvents.clientId);
+        }
+        if (from >= 4) {
+          await m.addColumn(speechAttempts, speechAttempts.clientId);
+        }
+        await m.createTable(syncState);
+        await m.createTable(syncOutbox);
+        await backfillSchema5(this);
+      }
     },
     beforeOpen: (details) async {
       await customStatement('PRAGMA foreign_keys = ON');
@@ -325,6 +446,8 @@ class AppDatabase extends _$AppDatabase {
       await customStatement(
         'CREATE INDEX IF NOT EXISTS review_cards_due ON review_cards (due)',
       );
+      // H-038: eşitleme kimlik dizinleri ve değişiklik tetikleyicileri.
+      await installSyncSchema(this);
     },
   );
 }

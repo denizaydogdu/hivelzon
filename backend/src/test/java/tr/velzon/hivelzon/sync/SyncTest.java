@@ -384,6 +384,63 @@ class SyncTest extends IntegrationTest {
     }
 
     @Test
+    void hiResetMarkerClearsHiRecordsOnServerAndPropagates() {
+        String a = login("a@example.com").text("accessToken");
+        UUID before = UUID.randomUUID();
+        UUID after = UUID.randomUUID();
+        Map<String, Object> laterEvent = event(after, "Later.");
+        laterEvent.put("at", "2026-10-13T09:40:00Z");
+        Map<String, Object> changes = new LinkedHashMap<>();
+        changes.put("learning_events", List.of(event(before, "Can you hear me?"), laterEvent));
+        changes.put("speech_attempts", List.of(speech(UUID.randomUUID())));
+        changes.put("hi_records", List.of(
+                row("kind", "bridge_task", "refId", "order-coffee", "status", "done", "updatedAt",
+                        "2026-10-13T09:00:00Z"),
+                row("kind", "topic_intro", "refId", "can_questions", "status", "seen", "updatedAt",
+                        "2026-10-13T09:00:00Z"),
+                row("kind", "hunt_done", "refId", "maya-shop", "status", "done", "updatedAt",
+                        "2026-10-13T09:00:00Z")));
+        assertThat(call("POST", PUSH, Map.of("changes", changes), a).status()).isEqualTo(200);
+        long cursor = get("/api/v1/sync/pull?since=0&limit=500", a).body().path("nextSince").asLong();
+
+        UUID marker = Uuids.v5(Uuids.SYNC_NAMESPACE, "hi_records:hi_reset|all");
+        Response reset = call("POST", PUSH, push("hi_records", row("kind", "hi_reset", "refId", "all",
+                "status", "cleared", "updatedAt", "2026-10-13T09:30:00Z")), a);
+        assertThat(reset.status()).as(reset.raw()).isEqualTo(200);
+        assertThat(reset.body().path("accepted").get(0).path("clientId").asString()).isEqualTo(marker.toString());
+        // T'ye kadarki olay ve "Söyle" sonucu silindi; sonraki olay kaldı. Konu tanıtımı ve sahne avı kalır.
+        assertThat(count("SELECT count(*) FROM learning_events")).isEqualTo(1);
+        assertThat(count("SELECT count(*) FROM learning_events WHERE client_id = ?::uuid", after.toString()))
+                .isEqualTo(1);
+        assertThat(count("SELECT count(*) FROM speech_attempts")).isZero();
+        assertThat(count("SELECT count(*) FROM hi_records WHERE kind = 'bridge_task' AND deleted")).isEqualTo(1);
+        assertThat(count("SELECT count(*) FROM hi_records WHERE kind IN ('topic_intro', 'hunt_done') AND NOT deleted"))
+                .isEqualTo(2);
+
+        // Öteki cihaz: çekme işareti ve yan görevin silme işaretini getirir.
+        JsonNode pulled = get("/api/v1/sync/pull?since=" + cursor, a).body().path("changes").path("hi_records");
+        Set<String> kinds = new HashSet<>();
+        pulled.forEach(r -> kinds.add(r.path("kind").asString() + ":" + r.path("deleted").asBoolean()));
+        assertThat(kinds).containsExactlyInAnyOrder("hi_reset:false", "bridge_task:true");
+
+        // İdempotent: aynı işaret yeniden gelirse değişiklik yok.
+        Response again = call("POST", PUSH, push("hi_records", row("kind", "hi_reset", "refId", "all",
+                "status", "cleared", "updatedAt", "2026-10-13T09:30:00Z")), a);
+        assertThat(again.body().path("accepted").get(0).path("result").asString()).isEqualTo("UNCHANGED");
+        assertThat(count("SELECT count(*) FROM learning_events")).isEqualTo(1);
+    }
+
+    @Test
+    void mobileTopicSetSourceIsAccepted() {
+        String a = login("a@example.com").text("accessToken");
+        Response r = call("POST", PUSH, push("notebook_items", row("itemKey", "word|lamp", "kind", "word",
+                "textEn", "lamp", "source", "topic_set", "createdAt", "2026-10-13T09:00:00Z",
+                "updatedAt", "2026-10-13T09:00:00Z")), a);
+        assertThat(r.status()).as(r.raw()).isEqualTo(200);
+        assertThat(count("SELECT count(*) FROM notebook_items WHERE source = 'topic_set'")).isEqualTo(1);
+    }
+
+    @Test
     void pullUsesConstantStatementCount() {
         String a = login("a@example.com").text("accessToken");
         call("POST", PUSH, fullPush(), a);
@@ -404,8 +461,8 @@ class SyncTest extends IntegrationTest {
 
     @Test
     void migrationsAndSyncIndexesExist() {
-        assertThat(count("SELECT count(*) FROM flyway_schema_history WHERE version IN ('3', '4') AND success"))
-                .isEqualTo(2);
+        assertThat(count("SELECT count(*) FROM flyway_schema_history WHERE version IN ('3', '4', '5') AND success"))
+                .isEqualTo(3);
         for (String index : new String[] {"usp_user_seq_ix", "rl_user_card_ix", "sa_user_seq_ix",
                 "content_items_id_version_uk", "content_items_visible_ix", "le_user_seq_ix"}) {
             assertThat(count("SELECT count(*) FROM pg_indexes WHERE indexname = ?", index)).as(index).isEqualTo(1);

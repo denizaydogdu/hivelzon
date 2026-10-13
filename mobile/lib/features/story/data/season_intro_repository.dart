@@ -37,13 +37,15 @@ class DriftSeasonIntroRepository implements SeasonIntroRepository {
   @override
   Future<void> markSeen(int season) async {
     await _ready;
+    final now = DateTime.now().toUtc();
     await _db
         .into(_db.seasonState)
         .insertOnConflictUpdate(
           SeasonStateCompanion.insert(
             seasonId: Value(season),
             introSeen: const Value(true),
-            introSeenAt: Value(DateTime.now().toUtc()),
+            introSeenAt: Value(now),
+            updatedAt: Value(now),
           ),
         );
   }

@@ -101,18 +101,33 @@ class DriftProgressRepository implements ProgressRepository {
     Map<String, String> flags,
   ) async {
     await _ready;
+    final now = _now();
     await _db.transaction(() async {
-      await (_db.delete(
-        _db.userStoryFlags,
-      )..where((t) => t.contentId.equals(episodeId))).go();
+      // Yalnızca değişen bayraklar yazılır (eşitlemede gereksiz değişiklik
+      // ve silme işareti oluşmasın, H-038).
+      final old = {
+        for (final r in await (_db.select(
+          _db.userStoryFlags,
+        )..where((t) => t.contentId.equals(episodeId))).get())
+          r.flag: r.value,
+      };
+      final removed = old.keys.where((k) => !flags.containsKey(k)).toList();
+      if (removed.isNotEmpty) {
+        await (_db.delete(_db.userStoryFlags)..where(
+              (t) => t.contentId.equals(episodeId) & t.flag.isIn(removed),
+            ))
+            .go();
+      }
       await _db.batch(
-        (b) => b.insertAll(_db.userStoryFlags, [
+        (b) => b.insertAllOnConflictUpdate(_db.userStoryFlags, [
           for (final e in flags.entries)
-            UserStoryFlagsCompanion.insert(
-              contentId: episodeId,
-              flag: e.key,
-              value: e.value,
-            ),
+            if (old[e.key] != e.value)
+              UserStoryFlagsCompanion.insert(
+                contentId: episodeId,
+                flag: e.key,
+                value: e.value,
+                updatedAt: Value(now),
+              ),
         ]),
       );
     });

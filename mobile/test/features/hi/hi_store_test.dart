@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:drift/drift.dart' hide isNull, isNotNull;
@@ -9,6 +10,8 @@ import 'package:hivelzon/features/notebook/domain/notebook_item.dart';
 import 'package:hivelzon/shared/meaning/error_taxonomy.dart';
 import 'package:hivelzon/shared/meaning/learning_event_log.dart';
 import 'package:hivelzon/shared/storage/app_database.dart';
+
+import '../../support/fixtures.dart';
 
 final _now = DateTime.utc(2026, 10, 13, 9);
 
@@ -167,19 +170,48 @@ void main() {
     expect(await store.reviewsSince(since), isEmpty);
   });
 
-  test('şema 2 → 3: Hi tablosu oluşur, eski veriler korunur', () async {
-    final dir = Directory.systemTemp.createTempSync('h048');
+  /// Şema 4 dosyası (fixture), [drop] tabloları kaldırılıp [version]'a
+  /// indirilmiş; içinde bir defter ifadesi + kartı (ve varsa konu tanıtımı).
+  AppDatabase oldDatabase(String tag, int version, List<String> drop) {
+    final dir = Directory.systemTemp.createTempSync(tag);
     addTearDown(() => dir.deleteSync(recursive: true));
-    final file = File('${dir.path}/v2.sqlite');
-    // Bugünkü şemayla kur, sonra Hi tablosunu kaldırıp sürümü 2'ye indir.
-    final v3 = AppDatabase(NativeDatabase(file));
-    await NotebookStore(v3, clock: () => _now).addItems([_item('Hello.')]);
-    await v3.customStatement('DROP TABLE hi_records');
-    await v3.customStatement('DROP TABLE speech_attempts');
-    await v3.customStatement('PRAGMA user_version = 2');
-    await v3.close();
+    final file = File('${dir.path}/v$version.sqlite');
+    final v4 =
+        (jsonDecode(fixtureText('schema_v4.json')) as Map)['statements']
+            as List;
+    return AppDatabase(
+      NativeDatabase(
+        file,
+        setup: (raw) {
+          for (final s in v4) {
+            raw.execute(s as String);
+          }
+          raw.execute(
+            "INSERT INTO notebook_items (id, item_key, kind, text_en, text_tr, "
+            "content_id, source, created_at) VALUES (1, 'phrase|hello.', 'phrase', "
+            "'Hello.', 'x', 'A1-001', 'user_saved', '2026-10-13T09:00:00.000Z')",
+          );
+          raw.execute(
+            "INSERT INTO review_cards (id, item_id, due) "
+            "VALUES (1, 1, '2026-10-13T09:00:00.000Z')",
+          );
+          if (!drop.contains('hi_records')) {
+            raw.execute(
+              "INSERT INTO hi_records (kind, ref_id, status, updated_at) VALUES "
+              "('topic_intro', 'time', 'seen', '2026-10-13T09:00:00.000Z')",
+            );
+          }
+          for (final t in drop) {
+            raw.execute('DROP TABLE $t');
+          }
+          raw.execute('PRAGMA user_version = $version');
+        },
+      ),
+    );
+  }
 
-    final migrated = AppDatabase(NativeDatabase(file));
+  test('şema 2 → 3: Hi tablosu oluşur, eski veriler korunur', () async {
+    final migrated = oldDatabase('h048', 2, ['hi_records', 'speech_attempts']);
     final tables = await migrated
         .customSelect("SELECT name FROM sqlite_master WHERE type='table'")
         .get();
@@ -187,7 +219,7 @@ void main() {
     final version = await migrated
         .customSelect('PRAGMA user_version')
         .getSingle();
-    expect(version.data.values.first, 4);
+    expect(version.data.values.first, migrated.schemaVersion);
     expect(await NotebookStore(migrated).entries(), hasLength(1));
     final s = HiStore(migrated, clock: () => _now);
     await s.markTopicIntroSeen('time');
@@ -196,17 +228,7 @@ void main() {
   });
 
   test('şema 3 → 4: "Söyle" tablosu oluşur, eski veriler korunur', () async {
-    final dir = Directory.systemTemp.createTempSync('h055');
-    addTearDown(() => dir.deleteSync(recursive: true));
-    final file = File('${dir.path}/v3.sqlite');
-    final v4 = AppDatabase(NativeDatabase(file));
-    await NotebookStore(v4, clock: () => _now).addItems([_item('Hello.')]);
-    await HiStore(v4, clock: () => _now).markTopicIntroSeen('time');
-    await v4.customStatement('DROP TABLE speech_attempts');
-    await v4.customStatement('PRAGMA user_version = 3');
-    await v4.close();
-
-    final migrated = AppDatabase(NativeDatabase(file));
+    final migrated = oldDatabase('h055', 3, ['speech_attempts']);
     final tables = await migrated
         .customSelect("SELECT name FROM sqlite_master WHERE type='table'")
         .get();
@@ -217,7 +239,7 @@ void main() {
     final version = await migrated
         .customSelect('PRAGMA user_version')
         .getSingle();
-    expect(version.data.values.first, 4);
+    expect(version.data.values.first, migrated.schemaVersion);
     expect(await NotebookStore(migrated).entries(), hasLength(1));
     expect(await HiStore(migrated).seenTopicIntros(), {'time'});
     await migrated.close();
