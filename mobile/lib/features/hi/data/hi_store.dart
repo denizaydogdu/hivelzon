@@ -2,6 +2,7 @@ import 'package:drift/drift.dart';
 
 import '../../../shared/meaning/error_taxonomy.dart';
 import '../../../shared/storage/app_database.dart';
+import '../../../shared/sync/sync_store.dart';
 import '../domain/coach_rules.dart';
 
 /// Hi kayıt türleri (`hi_records.kind`).
@@ -253,7 +254,9 @@ class HiStore {
   /// Hesap açıksa (H-038) silme bütün cihazlarda geçerlidir: silme işareti
   /// ([HiRecordKind.hiReset]) yazılır, eşitlemede sunucuya gider ve sunucudaki
   /// "Söyle" sonuçlarının silinmesi kuyruğa alınır. Hesap yoksa yalnızca bu
-  /// cihazdaki kayıtlar silinir; hiçbir şey dışarı gitmez.
+  /// cihazdaki kayıtlar silinir; hiçbir şey dışarı gitmez. Bu cihazda daha
+  /// önce hesap açılmışsa silme anı saklanır ve aynı hesapla yeniden girişte
+  /// işaret olarak gider (H-056; başka hesapla girişte gitmez).
   Future<int> deleteLearningData() async {
     await _ready;
     return _db.transaction(() async {
@@ -274,6 +277,10 @@ class HiStore {
         await (_db.update(_db.syncState)..where((t) => t.id.equals(1))).write(
           const SyncStateCompanion(pendingSpeechDelete: Value(true)),
         );
+      } else {
+        // Çıkışlıyken (H-056): silme anı saklanır; aynı hesapla yeniden
+        // girişte bütün cihazlara işlenir.
+        await SyncStore(_db, clock: now).recordSignedOutHiReset(now());
       }
       final events = await _db.delete(_db.learningEvents).go();
       final speech = await _db.delete(_db.speechAttempts).go();

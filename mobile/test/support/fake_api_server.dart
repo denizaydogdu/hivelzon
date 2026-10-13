@@ -43,6 +43,13 @@ class FakeApiServer {
   String? lastCode;
   final _refresh = <String, String>{}; // belirteç → e-posta
   final _usedRefresh = <String>{};
+  final _successor = <String, (DateTime, Map<String, dynamic>)>{};
+
+  /// Yenileme anahtarı hoşgörüsü (backend varsayılanı 30 sn; H-056).
+  Duration refreshGrace = const Duration(seconds: 30);
+
+  /// Bir sonraki yenilemede sunucu döndürür ama cevap istemciye ulaşmaz.
+  bool dropNextRefreshResponse = false;
   final _access = <String, String>{}; // belirteç → e-posta
   var _n = 0;
   int refreshCalls = 0;
@@ -73,6 +80,16 @@ class FakeApiServer {
       case ('POST', '/api/v1/auth/refresh'):
         refreshCalls++;
         final t = (body as Map)['refreshToken'] as String;
+        // H-056: az önce yenilenmiş anahtar hoşgörü süresinde yeniden gelirse
+        // aynı yeni anahtar döner (backend `REFRESH_GRACE_REPLAY`).
+        final grace = _successor[t];
+        if (grace != null &&
+            _clock().difference(grace.$1) <= refreshGrace &&
+            _refresh.containsKey(grace.$2['refreshToken'])) {
+          final a = 'acc-${_n++}';
+          _access[a] = _refresh[grace.$2['refreshToken']]!;
+          return _json(200, {...grace.$2, 'accessToken': a});
+        }
         if (_usedRefresh.contains(t)) {
           final email = _refresh.remove(t) ?? _owner(t);
           _refresh.removeWhere((_, e) => e == email);
@@ -82,7 +99,13 @@ class FakeApiServer {
         final email = _refresh[t];
         if (email == null) return _problem(401, 'REFRESH_TOKEN_INVALID');
         _usedRefresh.add(t);
-        return _json(200, _tokens(email, newUser: false));
+        final fresh = _tokens(email, newUser: false);
+        _successor[t] = (_clock(), fresh);
+        if (dropNextRefreshResponse) {
+          dropNextRefreshResponse = false;
+          throw http.ClientException('cevap yolda kayboldu', r.url);
+        }
+        return _json(200, fresh);
       case ('POST', '/api/v1/auth/logout'):
         _refresh.remove((body as Map)['refreshToken']);
         return http.Response('', 204);
@@ -251,6 +274,22 @@ class FakeApiServer {
           if (deleted)
             for (final c in spec.data) c.json: null,
         };
+        if (spec.name == 'user_story_progress' &&
+            stored != null &&
+            !deleted &&
+            stored['deleted'] != true) {
+          final merged = _mergeProgress(stored, clean);
+          if (merged != null) {
+            table[id] = {...merged, '_seq': ++_seq};
+            conflicts.add({
+              'table': spec.name,
+              'clientId': id,
+              'reason': 'MERGED',
+              'serverRow': merged,
+            });
+            continue;
+          }
+        }
         if (stored != null) {
           final old = DateTime.parse(stored[spec.lww!.json] as String);
           if (old.isAfter(incoming)) {
@@ -306,6 +345,55 @@ class FakeApiServer {
       'conflicts': conflicts,
       'serverTime': _clock().toIso8601String(),
     });
+  }
+
+  static int _rank(Object? s) => switch (s) {
+    'COMPLETED' => 2,
+    'IN_PROGRESS' => 1,
+    _ => 0,
+  };
+
+  /// "Bitti her zaman kazanır" (backend `ProgressMerger` aynası): LWW bölüm
+  /// durumunu düşürecekse birleştirilmiş satır, değilse `null`.
+  static Map<String, dynamic>? _mergeProgress(
+    Map<String, dynamic> stored,
+    Map<String, dynamic> incoming,
+  ) {
+    final so = DateTime.parse(stored['updatedAt'] as String);
+    final inc = DateTime.parse(incoming['updatedAt'] as String);
+    final sr = _rank(stored['status']);
+    final ir = _rank(incoming['status']);
+    final incomingWins = inc.isAfter(so);
+    // Aynı zaman, düşük durum: sunucudaki kalır.
+    if (!incomingWins && !inc.isBefore(so) && ir < sr) {
+      return Map<String, dynamic>.of(stored)..remove('_seq');
+    }
+    if (incomingWins ? ir >= sr : ir <= sr) return null;
+    final base = Map<String, dynamic>.of(incomingWins ? incoming : stored)
+      ..remove('_seq');
+    final high = incomingWins ? stored : incoming;
+    base
+      ..['status'] = high['status']
+      ..['completedAt'] = high['completedAt'];
+    if (high['status'] == 'COMPLETED') {
+      base
+        ..['lastCheckpointNodeId'] = high['lastCheckpointNodeId']
+        ..['checkpointSnapshot'] = high['checkpointSnapshot'];
+    }
+    final starts = [
+      stored['startedAt'],
+      incoming['startedAt'],
+    ].whereType<String>().map(DateTime.parse).toList()..sort();
+    base['startedAt'] = starts.isEmpty
+        ? null
+        : starts.first.toUtc().toIso8601String();
+    // Yükseltmede zaman 1 ms ileri alınır: satırı iten cihaz onu "kendi
+    // itmesi" sanmasın, öteki cihazlar yeni sırayla çeksin (backend aynısı).
+    base['updatedAt'] =
+        (incomingWins ? inc : so.add(const Duration(milliseconds: 1)))
+            .toUtc()
+            .toIso8601String();
+    return base;
   }
 
   void _hiReset(

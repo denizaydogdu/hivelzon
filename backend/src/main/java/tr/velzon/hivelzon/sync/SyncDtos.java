@@ -18,8 +18,9 @@ public final class SyncDtos {
     }
 
     /**
-     * Sunucudaki satır kazandı. {@code reason}: STALE (sunucudaki updatedAt daha yeni) ya da SERVER_RECOMPUTED
-     * (FSRS kartı cevaplardan yeniden hesaplandı). İstemci {@code serverRow}'u almalıdır.
+     * Sunucudaki satır kazandı. {@code reason}: STALE (sunucudaki updatedAt daha yeni), SERVER_RECOMPUTED
+     * (FSRS kartı cevaplardan yeniden hesaplandı) ya da MERGED (alan bazlı birleştirme; ör. bölüm ilerlemesinde
+     * "bitti her zaman kazanır", H-056). Her durumda istemci {@code serverRow}'u olduğu gibi almalıdır.
      */
     public record Conflict(String table, UUID clientId, String reason, ObjectNode serverRow) {
     }

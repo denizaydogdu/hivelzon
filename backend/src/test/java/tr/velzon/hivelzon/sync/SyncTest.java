@@ -117,35 +117,41 @@ class SyncTest extends IntegrationTest {
 
     @Test
     void lastWriterWinsWithServerArrivalTieBreak() {
+        // Düz LWW kuralı (birleştirme kuralı olmayan tablo). Bölüm ilerlemesindeki "bitti her zaman kazanır"
+        // birleştirmesi ProgressMergeTest'te.
         String token = login("a@example.com").text("accessToken");
-        call("POST", PUSH, push("user_story_progress", progress("A1-001", "IN_PROGRESS", "2026-10-13T09:30:00Z")), token);
+        call("POST", PUSH, push("user_story_flags", flag("formal", "2026-10-13T09:30:00Z")), token);
 
         // Daha eski yazma: sunucudaki kalır, çatışma ve sunucu satırı döner.
-        Response stale = call("POST", PUSH,
-                push("user_story_progress", progress("A1-001", "COMPLETED", "2026-10-13T09:10:00Z")), token);
+        Response stale = call("POST", PUSH, push("user_story_flags", flag("casual", "2026-10-13T09:10:00Z")), token);
         assertThat(stale.body().path("accepted").size()).isZero();
         JsonNode conflict = stale.body().path("conflicts").get(0);
         assertThat(conflict.path("reason").asString()).isEqualTo("STALE");
-        assertThat(conflict.path("serverRow").path("status").asString()).isEqualTo("IN_PROGRESS");
-        assertThat(conflict.path("serverRow").path("checkpointSnapshot").path("visited").size()).isEqualTo(2);
-        assertThat(statusA1()).isEqualTo("IN_PROGRESS");
+        assertThat(conflict.path("serverRow").path("value").asString()).isEqualTo("formal");
+        assertThat(flagValue()).isEqualTo("formal");
 
         // Aynı zaman, farklı veri: sonra gelen kazanır.
-        Response tie = call("POST", PUSH,
-                push("user_story_progress", progress("A1-001", "COMPLETED", "2026-10-13T09:30:00Z")), token);
+        Response tie = call("POST", PUSH, push("user_story_flags", flag("casual", "2026-10-13T09:30:00Z")), token);
         assertThat(tie.body().path("accepted").get(0).path("result").asString()).isEqualTo("UPDATED");
-        assertThat(statusA1()).isEqualTo("COMPLETED");
+        assertThat(flagValue()).isEqualTo("casual");
 
         // Daha yeni yazma kazanır.
-        Response newer = call("POST", PUSH,
-                push("user_story_progress", progress("A1-001", "IN_PROGRESS", "2026-10-13T09:45:00Z")), token);
+        Response newer = call("POST", PUSH, push("user_story_flags", flag("rude", "2026-10-13T09:45:00Z")), token);
         assertThat(newer.body().path("accepted").get(0).path("result").asString()).isEqualTo("UPDATED");
-        assertThat(statusA1()).isEqualTo("IN_PROGRESS");
+        assertThat(flagValue()).isEqualTo("rude");
 
         // İleri tarihli istemci saati sunucu saatine çekilir (sonsuza kadar kazanamaz).
-        call("POST", PUSH, push("user_story_progress", progress("A1-001", "COMPLETED", "2099-01-01T00:00:00Z")), token);
-        assertThat(jdbc.queryForObject("SELECT updated_at = ?::timestamptz FROM user_story_progress", Boolean.class,
+        call("POST", PUSH, push("user_story_flags", flag("formal", "2099-01-01T00:00:00Z")), token);
+        assertThat(jdbc.queryForObject("SELECT updated_at = ?::timestamptz FROM user_story_flags", Boolean.class,
                 "2026-10-13T10:00:00Z")).isTrue();
+    }
+
+    static Map<String, Object> flag(String value, String updatedAt) {
+        return row("contentId", "A1-002", "flag", "greet_tone", "value", value, "updatedAt", updatedAt);
+    }
+
+    String flagValue() {
+        return jdbc.queryForObject("SELECT value FROM user_story_flags", String.class);
     }
 
     @Test

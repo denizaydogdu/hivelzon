@@ -241,10 +241,14 @@ class AuthService {
         if (current != null && current.refreshToken != old.refreshToken) {
           return current;
         }
+        // Bağlantı koptuysa aynı anahtarla yeniden denenir: sunucu, az önce
+        // yenilenmiş anahtar 30 sn içinde tekrar gelirse aynı yeni anahtarı
+        // döner (H-056); cevap yolda kaybolsa da oturum düşmez.
         final r = await api.send(
           'POST',
           '/api/v1/auth/refresh',
           body: {'refreshToken': old.refreshToken},
+          retryNetwork: true,
         );
         final fresh = AuthTokens.fromResponse(r.map, now());
         await tokens.write(fresh);

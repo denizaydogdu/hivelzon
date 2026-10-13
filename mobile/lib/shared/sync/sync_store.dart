@@ -80,9 +80,52 @@ class SyncStore {
     _changed();
   }
 
+  /// Bu cihazda en son oturum açan hesabın kimliği (`app_meta`; çıkıştan
+  /// sonra da kalır). Çıkışlıyken yapılan Hi silmesinin hangi hesaba
+  /// işleneceğini belirler (H-056).
+  static const lastAccountKey = 'sync.lastAccountUserId';
+
+  /// Çıkışlıyken "Hi'nin kayıtlarını sil" anı (UTC, ISO-8601): aynı hesapla
+  /// yeniden girişte `hi_reset` işareti olarak sunucuya gider (H-056).
+  static const pendingHiResetKey = 'sync.pendingHiResetAt';
+
+  Future<String?> _meta(String key) async => (await (db.select(
+    db.appMeta,
+  )..where((t) => t.key.equals(key))).getSingleOrNull())?.value;
+
+  Future<void> _setMeta(String key, String value) => db
+      .into(db.appMeta)
+      .insertOnConflictUpdate(AppMetaCompanion.insert(key: key, value: value));
+
+  Future<void> _deleteMeta(String key) =>
+      (db.delete(db.appMeta)..where((t) => t.key.equals(key))).go();
+
+  /// Bekleyen (çıkışlıyken yapılmış) Hi silmesinin anı; yoksa `null`.
+  Future<DateTime?> pendingHiReset() async =>
+      DateTime.tryParse(await _meta(pendingHiResetKey) ?? '')?.toUtc();
+
+  /// Çıkışlıyken Hi kayıtları silindi (H-056). Bu cihazda daha önce bir
+  /// hesap açılmışsa silme anı saklanır; o hesapla yeniden girişte bütün
+  /// cihazlara işlenir. Hiç hesap açılmamışsa saklanmaz (gidecek yer yok).
+  /// Art arda silmelerde en geç an kalır. Çağıran işlem içinde çalışabilir.
+  Future<void> recordSignedOutHiReset(DateTime at) async {
+    if (await _meta(lastAccountKey) == null) return;
+    final old = await pendingHiReset();
+    final t = at.toUtc();
+    if (old != null && !t.isAfter(old)) return;
+    await _setMeta(pendingHiResetKey, t.toIso8601String());
+  }
+
   /// Giriş: hesap yazılır, imleç sıfırlanır ve cihazdaki bütün satırlar
   /// kuyruğa alınır (ilk yükleme). Aynı hesaba yeniden girişte de güvenlidir:
   /// sunucu aynı satırı `UNCHANGED`/`DUPLICATE` sayar.
+  ///
+  /// Çıkışlıyken yapılmış bir Hi silmesi bekliyorsa (H-056):
+  /// - **aynı hesap** ([lastAccountKey]): silme anıyla `hi_reset` işareti
+  ///   yazılır ve ilk yüklemeyle sunucuya gider; sunucu o ana kadarki
+  ///   kayıtları siler, öteki cihazlar çekmeyle aynısını yapar;
+  /// - **başka hesap**: silme yalnızca bu cihazda kalır; bekleyen silme
+  ///   atılır (başka hesabın verisine dokunulmaz).
   Future<void> signIn({
     required String userId,
     required String emailMasked,
@@ -108,12 +151,46 @@ class SyncStore {
           signedOutReason: const Value(null),
         ),
       );
+      final pending = await pendingHiReset();
+      if (pending != null) {
+        if (await _meta(lastAccountKey) == userId) {
+          await _writeHiResetMarker(pending);
+        }
+        await _deleteMeta(pendingHiResetKey);
+      }
+      await _setMeta(lastAccountKey, userId);
       for (final sql in SyncSql.enqueueAll()) {
         await db.customStatement(sql);
       }
     });
     _notifyOutbox();
     _changed();
+  }
+
+  /// `hi_reset` işareti (daha geç bir işaret varsa o kalır).
+  Future<void> _writeHiResetMarker(DateTime at) async {
+    final existing = await _localHiReset();
+    if (existing != null && !at.isAfter(existing)) return;
+    await db.customInsert(
+      'INSERT INTO hi_records (kind, ref_id, status, updated_at) '
+      "VALUES ('hi_reset', 'all', 'cleared', ?) "
+      'ON CONFLICT (kind, ref_id) DO UPDATE SET status = excluded.status, '
+      'updated_at = excluded.updated_at',
+      variables: [Variable<DateTime>(at.toUtc())],
+      updates: {db.hiRecords},
+    );
+  }
+
+  /// Yereldeki `hi_reset` işaretinin anı.
+  Future<DateTime?> _localHiReset() async {
+    final r = await db
+        .customSelect(
+          "SELECT updated_at AS t FROM hi_records WHERE kind = 'hi_reset' "
+          "AND ref_id = 'all'",
+        )
+        .getSingleOrNull();
+    final v = r?.data['t'];
+    return v is String ? DateTime.tryParse(v)?.toUtc() : null;
   }
 
   /// Bu cihazda oturumu kapatır: eşitleme durur, kuyruk boşalır. Cihazdaki
@@ -361,6 +438,14 @@ class SyncStore {
           if (await _applyRow(spec, row, force, cardIds)) applied++;
         }
       }
+      // Yerelde bir Hi silme işareti varsa, o ana kadarki kayıtlar çekmeyle
+      // geri gelmesin (ör. girişteki ilk çekme, işaret henüz itilmeden; H-056).
+      if (changes.containsKey('learning_events') ||
+          changes.containsKey('speech_attempts') ||
+          changes.containsKey('hi_records')) {
+        final reset = await _localHiReset();
+        if (reset != null) await applyHiReset(reset);
+      }
       if (cursor != null) {
         await (db.update(db.syncState)..where((t) => t.id.equals(1))).write(
           SyncStateCompanion(lastPullCursor: Value(cursor)),
@@ -421,14 +506,31 @@ class SyncStore {
     // değil) yazılmaz: ekranlar boşuna yenilenmesin.
     if (!force && outbox == null && !deleted && serverTime != null) {
       final local = await _localLww(spec, keys);
-      if (local != null && local.isAtSameMomentAs(serverTime)) return false;
+      if (local != null &&
+          local.isAtSameMomentAs(serverTime) &&
+          !await _raisesProgress(spec, row)) {
+        return false;
+      }
+    }
+    // "Bitti" her zaman kazanır (H-056): gelen satır yereldeki bölüm
+    // durumunu düşürecekse yereldeki durum korunur ve sunucuya da gider.
+    var data = row;
+    var raised = false;
+    if (spec.name == 'user_story_progress' && !deleted) {
+      final merged = await _keepHigherProgress(row);
+      if (merged != null) {
+        data = merged;
+        raised = true;
+      }
     }
     if (deleted) {
       await _deleteLocal(spec, keys);
-    } else if (!await _upsert(spec, row)) {
+    } else if (!await _upsert(spec, data)) {
       return false;
     }
-    if (outbox != null) {
+    if (raised) {
+      await _enqueueProgress(keys[0]);
+    } else if (outbox != null) {
       await (db.delete(db.syncOutbox)..where(
             (t) =>
                 t.tbl.equals(spec.name) &
@@ -446,6 +548,82 @@ class SyncStore {
     }
     return true;
   }
+
+  /// Bölüm durumunun sırası: başlamadı < devam ediyor < bitti.
+  static int progressRank(Object? status) => switch (status) {
+    'COMPLETED' => 2,
+    'IN_PROGRESS' => 1,
+    _ => 0,
+  };
+
+  /// Gelen ilerleme satırı yereldeki durumu yükseltiyor mu? (Sunucu
+  /// birleştirmesi zamanı değiştirmeden durumu yükseltebilir: aynı zamanlı
+  /// satır "kendi itmemiz" sayılıp atlanmasın.)
+  Future<bool> _raisesProgress(
+    SyncTableSpec spec,
+    Map<String, dynamic> row,
+  ) async {
+    if (spec.name != 'user_story_progress') return false;
+    final local = await db
+        .customSelect(
+          'SELECT status FROM user_story_progress WHERE content_id = ?',
+          variables: [Variable.withString('${row['contentId']}')],
+        )
+        .getSingleOrNull();
+    return progressRank(row['status']) > progressRank(local?.data['status']);
+  }
+
+  /// Gelen ilerleme satırı yereldekinden düşük durumdaysa birleştirilmiş
+  /// satır (durum ve bitiş zamanı yereldeki; yerel bitmişse kaldığı yer de
+  /// yereldeki; başlama zamanı en erken; zaman en geç); değilse `null`.
+  /// Sunucu da aynı kuralı uygular (backend `ProgressMerge`).
+  Future<Map<String, dynamic>?> _keepHigherProgress(
+    Map<String, dynamic> row,
+  ) async {
+    final local = await db
+        .customSelect(
+          'SELECT status, last_checkpoint_node_id, checkpoint_snapshot, '
+          'started_at, completed_at, updated_at FROM user_story_progress '
+          'WHERE content_id = ?',
+          variables: [Variable.withString('${row['contentId']}')],
+        )
+        .getSingleOrNull();
+    if (local == null) return null;
+    final status = local.data['status'] as String?;
+    if (progressRank(status) <= progressRank(row['status'])) return null;
+    DateTime? t(Object? v) =>
+        v is String ? DateTime.tryParse(v)?.toUtc() : null;
+    String? iso(DateTime? v) => v?.toUtc().toIso8601String();
+    DateTime? earliest(DateTime? a, DateTime? b) =>
+        a == null ? b : (b == null || a.isBefore(b) ? a : b);
+    DateTime? latest(DateTime? a, DateTime? b) =>
+        a == null ? b : (b == null || a.isAfter(b) ? a : b);
+    final merged = Map<String, dynamic>.of(row)
+      ..['status'] = status
+      ..['completedAt'] = iso(t(local.data['completed_at']))
+      ..['startedAt'] = iso(
+        earliest(t(local.data['started_at']), t(row['startedAt'])),
+      )
+      ..['updatedAt'] = iso(
+        latest(t(local.data['updated_at']), t(row['updatedAt'])),
+      );
+    if (status == 'COMPLETED') {
+      merged
+        ..['lastCheckpointNodeId'] = local.data['last_checkpoint_node_id']
+        ..['checkpointSnapshot'] = local.data['checkpoint_snapshot'];
+    }
+    return merged;
+  }
+
+  /// Yereldeki (daha ileri) ilerleme sunucuya gitsin: kuyruğa yazılır
+  /// (sunucudan gelen satır yazılırken tetikleyiciler sustuğu için elle).
+  Future<void> _enqueueProgress(String contentId) => db.customStatement(
+    'INSERT INTO sync_outbox (tbl, k1, k2, k3, deleted, rev, changed_at, '
+    "blocked) VALUES ('user_story_progress', ?, '', '', 0, 1, ?, 0) "
+    'ON CONFLICT (tbl, k1, k2, k3) DO UPDATE SET deleted = 0, '
+    'rev = sync_outbox.rev + 1, changed_at = excluded.changed_at, blocked = 0',
+    [contentId, now().toIso8601String()],
+  );
 
   Future<DateTime?> _localLww(SyncTableSpec spec, List<String> keys) async {
     final col = spec.lww!.column;

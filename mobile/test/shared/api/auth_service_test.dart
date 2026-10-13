@@ -105,7 +105,9 @@ void main() {
       final stolen = d.tokens.tokens!;
       clock.advance(const Duration(minutes: 20));
       await me(); // rotasyon: eski yenileme belirteci kullanıldı
-      // Eski belirteç yeniden kullanılırsa (ör. kopyalanmış) aile iptal edilir.
+      // Eski belirteç hoşgörü süresinden (30 sn, H-056) sonra yeniden
+      // kullanılırsa (ör. kopyalanmış) aile iptal edilir.
+      clock.advance(const Duration(seconds: 31));
       await d.tokens.write(stolen);
       final reasons = <String>[];
       final sub = d.auth.forcedSignOuts.listen(reasons.add);
@@ -123,6 +125,47 @@ void main() {
       expect(await NotebookStore(d.db).entries(), hasLength(1));
     },
   );
+
+  test('H-056: yenileme cevabı yolda kaybolursa yeniden denenir; aynı yeni '
+      'anahtar gelir, oturum düşmez', () async {
+    await d.signIn('deniz@example.com');
+    final first = d.tokens.tokens!;
+    clock.advance(const Duration(minutes: 20));
+    server.dropNextRefreshResponse = true;
+    expect(await me(), isNotNull);
+    expect(server.refreshCalls, 2);
+    expect(await d.store.signedIn(), isTrue);
+    final second = d.tokens.tokens!;
+    expect(second.refreshToken, isNot(first.refreshToken));
+    // Yeni anahtar çalışır (aile iptal edilmedi).
+    clock.advance(const Duration(minutes: 20));
+    expect(await me(), isNotNull);
+    expect(d.tokens.tokens!.refreshToken, isNot(second.refreshToken));
+  });
+
+  test('H-056: 30 sn içinde aynı eski anahtar → aynı yeni anahtar; '
+      'sonra çalıntı koruması', () async {
+    await d.signIn('deniz@example.com');
+    final old = d.tokens.tokens!;
+    clock.advance(const Duration(minutes: 20));
+    expect(await me(), isNotNull);
+    final successor = d.tokens.tokens!.refreshToken;
+    // Aynı eski anahtar 10 sn sonra (ör. ikinci istek): aynı yeni anahtar.
+    clock.advance(const Duration(seconds: 10));
+    await d.tokens.write(old);
+    expect(await me(), isNotNull);
+    expect(d.tokens.tokens!.refreshToken, successor);
+    expect(await d.store.signedIn(), isTrue);
+    // 30 sn geçtikten sonra: TOKEN_REUSED, oturum kapanır.
+    clock.advance(const Duration(seconds: 25));
+    await d.tokens.write(old);
+    final e = await me().then<ApiException?>(
+      (_) => null,
+      onError: (Object e) => e as ApiException,
+    );
+    expect(e!.code, 'TOKEN_REUSED');
+    expect(await d.store.signedIn(), isFalse);
+  });
 
   test('hesap silme ve kodla girişte geri alma', () async {
     await d.signIn('deniz@example.com');

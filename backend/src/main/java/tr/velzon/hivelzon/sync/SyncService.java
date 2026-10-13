@@ -38,7 +38,9 @@ import tr.velzon.hivelzon.user.UserService;
  * sonra tablolar {@link SyncTable#order()} sırasıyla uygulanır.</li>
  * <li><b>Değişebilir</b> tablo: (user_id, client_id) ile ekle-ya-da-güncelle. Gelen zaman sunucudakinden yeniyse
  * yazılır; eşitse ve veri farklıysa sonra gelen (sunucu varış sırası) kazanır; eskiyse {@code STALE} çatışması
- * ve sunucudaki satır döner. Aynı veri tekrar gelirse hiçbir şey değişmez ({@code UNCHANGED}).</li>
+ * ve sunucudaki satır döner. Aynı veri tekrar gelirse hiçbir şey değişmez ({@code UNCHANGED}). Tablonun
+ * birleştirme kuralı varsa ({@link SyncMerger}; bölüm ilerlemesinde "bitti her zaman kazanır", H-056) önce o
+ * uygulanır; sonuç gönderilenden farklıysa {@code MERGED} çatışması ve sunucudaki satır döner.</li>
  * <li><b>Yalnız eklenen</b> tablo: yoksa eklenir, varsa {@code DUPLICATE} (ilk yazılan kalır).</li>
  * <li>Her yazma {@code sync_seq}'ten yeni sıra alır. Kullanıcının bütün yazmaları aynı kilit altında olduğundan
  * kullanıcının satırlarında sıra = işleme (commit) sırası; çekme imleci satır kaçırmaz.</li>
@@ -162,33 +164,17 @@ public class SyncService implements UserDataPurger {
 
     private void applyMutable(UUID userId, SyncTable table, SyncRow row, OffsetDateTime serverNow,
             List<Accepted> accepted, List<Conflict> conflicts) {
-        List<SyncField> fields = table.allFields();
-        List<String> cols = new ArrayList<>();
-        List<String> placeholders = new ArrayList<>();
-        List<Object> args = new ArrayList<>(List.of(userId, row.clientId(), serverNow));
-        for (SyncField f : fields) {
-            cols.add(f.column());
-            placeholders.add(f.isJson() ? "?::jsonb" : "?");
-            args.add(row.values().get(f.column()));
+        if (table.merger() != null && applyMerged(userId, table, row, serverNow, accepted, conflicts)) {
+            return;
         }
-        cols.add("deleted");
-        placeholders.add("?");
-        args.add(row.deleted());
         String lww = table.lwwField().column();
-        List<String> compared = new ArrayList<>(List.of("deleted"));
-        table.dataFields().forEach(f -> compared.add(f.column()));
-        String sql = "INSERT INTO " + table.name() + " (user_id, client_id, seq, server_updated_at, "
-                + String.join(", ", cols) + ") VALUES (?, ?, nextval('sync_seq'), ?, "
-                + String.join(", ", placeholders) + ") ON CONFLICT (user_id, client_id) DO UPDATE SET "
-                + "seq = EXCLUDED.seq, server_updated_at = EXCLUDED.server_updated_at, " + lww + " = EXCLUDED." + lww
-                + ", " + compared.stream().map(c -> c + " = EXCLUDED." + c).collect(Collectors.joining(", "))
-                + " WHERE EXCLUDED." + lww + " > " + table.name() + "." + lww + " OR (EXCLUDED." + lww + " = "
+        List<String> compared = comparedColumns(table);
+        String where = "EXCLUDED." + lww + " > " + table.name() + "." + lww + " OR (EXCLUDED." + lww + " = "
                 + table.name() + "." + lww + " AND ("
                 + compared.stream().map(c -> table.name() + "." + c).collect(Collectors.joining(", "))
                 + ") IS DISTINCT FROM ("
-                + compared.stream().map(c -> "EXCLUDED." + c).collect(Collectors.joining(", "))
-                + ")) RETURNING (xmax = 0)";
-        List<Boolean> result = jdbc.query(sql, (rs, i) -> rs.getBoolean(1), args.toArray());
+                + compared.stream().map(c -> "EXCLUDED." + c).collect(Collectors.joining(", ")) + "))";
+        List<Boolean> result = upsert(userId, table, row, serverNow, where);
         if (!result.isEmpty()) {
             accepted.add(new Accepted(table.name(), row.clientId(), result.get(0) ? "CREATED" : "UPDATED"));
             return;
@@ -203,6 +189,86 @@ public class SyncService implements UserDataPurger {
         } else {
             accepted.add(new Accepted(table.name(), row.clientId(), "UNCHANGED"));
         }
+    }
+
+    private static List<String> comparedColumns(SyncTable table) {
+        List<String> compared = new ArrayList<>(List.of("deleted"));
+        table.dataFields().forEach(f -> compared.add(f.column()));
+        return compared;
+    }
+
+    /** Ekle ya da (koşul sağlanırsa) güncelle; yazıldıysa [eklendi mi], yazılmadıysa boş liste. */
+    private List<Boolean> upsert(UUID userId, SyncTable table, SyncRow row, OffsetDateTime serverNow,
+            String where) {
+        List<SyncField> fields = table.allFields();
+        List<String> cols = new ArrayList<>();
+        List<String> placeholders = new ArrayList<>();
+        List<Object> args = new ArrayList<>(List.of(userId, row.clientId(), serverNow));
+        for (SyncField f : fields) {
+            cols.add(f.column());
+            placeholders.add(f.isJson() ? "?::jsonb" : "?");
+            args.add(row.values().get(f.column()));
+        }
+        cols.add("deleted");
+        placeholders.add("?");
+        args.add(row.deleted());
+        String lww = table.lwwField().column();
+        String sql = "INSERT INTO " + table.name() + " (user_id, client_id, seq, server_updated_at, "
+                + String.join(", ", cols) + ") VALUES (?, ?, nextval('sync_seq'), ?, "
+                + String.join(", ", placeholders) + ") ON CONFLICT (user_id, client_id) DO UPDATE SET "
+                + "seq = EXCLUDED.seq, server_updated_at = EXCLUDED.server_updated_at, " + lww + " = EXCLUDED." + lww
+                + ", " + comparedColumns(table).stream().map(c -> c + " = EXCLUDED." + c)
+                        .collect(Collectors.joining(", "))
+                + " WHERE " + where + " RETURNING (xmax = 0)";
+        return jdbc.query(sql, (rs, i) -> rs.getBoolean(1), args.toArray());
+    }
+
+    /**
+     * Birleştirme kuralı olan tablo (H-056, ör. "bitti her zaman kazanır"). Kural uygulanmadıysa {@code false}
+     * (düz LWW). Uygulandıysa birleşik satır yazılır; gönderilenden farklıysa {@code MERGED} çatışması ve
+     * sunucudaki satır döner (istemci onu almalıdır).
+     */
+    private boolean applyMerged(UUID userId, SyncTable table, SyncRow row, OffsetDateTime serverNow,
+            List<Accepted> accepted, List<Conflict> conflicts) {
+        List<ObjectNode> current = selectRows(userId, table, List.of(row.clientId()));
+        if (current.isEmpty()) {
+            return false;
+        }
+        // Sunucudaki satır zaten doğrulanmıştır; saat kayması sınırı burada uygulanmaz.
+        SyncRow stored = SyncRowCodec.decode(table, current.get(0), 0, clock.instant(), java.time.Duration
+                .ofDays(36_500));
+        SyncRow merged = table.merger().merge(stored, row, table.lwwField().column());
+        if (merged == null) {
+            return false;
+        }
+        if (!sameRow(table, merged, stored)) {
+            upsert(userId, table, merged, serverNow, "true");
+        }
+        if (sameRow(table, merged, row)) {
+            accepted.add(new Accepted(table.name(), row.clientId(), "UPDATED"));
+        } else {
+            conflicts.add(new Conflict(table.name(), row.clientId(), "MERGED",
+                    selectRows(userId, table, List.of(row.clientId())).get(0)));
+        }
+        return true;
+    }
+
+    private static boolean sameRow(SyncTable table, SyncRow a, SyncRow b) {
+        if (a.deleted() != b.deleted()) {
+            return false;
+        }
+        for (SyncField f : table.allFields()) {
+            Object x = a.values().get(f.column());
+            Object y = b.values().get(f.column());
+            if (x instanceof OffsetDateTime tx && y instanceof OffsetDateTime ty) {
+                if (!tx.isEqual(ty)) {
+                    return false;
+                }
+            } else if (!java.util.Objects.equals(x, y)) {
+                return false;
+            }
+        }
+        return true;
     }
 
     private boolean insertAppendOnly(UUID userId, SyncTable table, SyncRow row, OffsetDateTime serverNow) {

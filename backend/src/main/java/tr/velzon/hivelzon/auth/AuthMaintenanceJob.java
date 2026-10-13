@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 import tr.velzon.hivelzon.common.config.HivelzonProperties;
 
-/** Süresi geçmiş kodları, eski hız sayaçlarını ve süresi dolmuş yenileme belirteçlerini temizler (idempotent). */
+/** Süresi geçmiş kodları, eski hız sayaçlarını ve süresi dolmuş yenileme belirteçlerini ve penceresi geçmiş hoşgörü sırlarını (H-056) temizler (idempotent). */
 @Component
 public class AuthMaintenanceJob {
 
@@ -34,5 +34,6 @@ public class AuthMaintenanceJob {
         otp.deleteExpiredChallenges(now);
         rateLimiter.deleteOlderThan(now.minus(properties.getRateLimit().getWindow().multipliedBy(2)));
         tokens.deleteExpired(now.minus(Duration.ofDays(7)));
+        tokens.purgeGraceSecrets(now);
     }
 }

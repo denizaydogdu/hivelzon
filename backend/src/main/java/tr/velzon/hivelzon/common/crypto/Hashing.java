@@ -35,6 +35,20 @@ public class Hashing {
         }
     }
 
+    /**
+     * Alan ayrımlı türetilmiş anahtar (32 bayt): {@code HMAC(pepper, "key:" + domain)}. Aynı sır başka amaçla
+     * kullanılan anahtarla çakışmaz.
+     */
+    public byte[] deriveKey(String domain) {
+        try {
+            Mac mac = Mac.getInstance("HmacSHA256");
+            mac.init(pepperKey);
+            return mac.doFinal(("key:" + domain).getBytes(StandardCharsets.UTF_8));
+        } catch (GeneralSecurityException e) {
+            throw new IllegalStateException("Anahtar türetilemedi", e);
+        }
+    }
+
     public static String sha256(String value) {
         try {
             return HexFormat.of().formatHex(

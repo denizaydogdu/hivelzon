@@ -15,9 +15,10 @@ import java.util.Set;
  *                   anahtardan türetilir (UUIDv5), gönderilirse eşleşmesi gerekir.
  * @param lwwField   son yazan kazanır zamanı (yalnızca değişebilir tablolarda)
  * @param dataFields diğer alanlar
+ * @param merger     isteğe bağlı birleştirme kuralı (ör. "bitti her zaman kazanır", H-056); yoksa düz LWW
  */
 public record SyncTable(String name, int order, Kind kind, List<SyncField> keyFields, SyncField lwwField,
-        List<SyncField> dataFields) {
+        List<SyncField> dataFields, SyncMerger merger) {
 
     public enum Kind {
         /** Son yazan kazanır ({@code lwwField}); silme işareti ({@code deleted}) desteklenir. */
@@ -32,6 +33,14 @@ public record SyncTable(String name, int order, Kind kind, List<SyncField> keyFi
         if (kind == Kind.MUTABLE && lwwField == null) {
             throw new IllegalArgumentException(name + ": mutable table needs lwwField");
         }
+        if (merger != null && kind != Kind.MUTABLE) {
+            throw new IllegalArgumentException(name + ": merger only for mutable tables");
+        }
+    }
+
+    public SyncTable(String name, int order, Kind kind, List<SyncField> keyFields, SyncField lwwField,
+            List<SyncField> dataFields) {
+        this(name, order, kind, keyFields, lwwField, dataFields, null);
     }
 
     public boolean mutable() {

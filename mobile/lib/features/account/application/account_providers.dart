@@ -12,7 +12,6 @@ import '../../../shared/storage/app_database.dart';
 import '../../../shared/storage/storage_providers.dart';
 import '../../../shared/sync/sync_engine.dart';
 import '../../../shared/sync/sync_store.dart';
-import '../../story/application/story_providers.dart';
 
 // ------------------------------------------------------------ bağımlılıklar
 
@@ -205,8 +204,8 @@ class SyncUiState {
   final bool syncing;
   final SyncOutcome? last;
 
-  /// Başka cihazdan veri geldikçe artar; ekranlar görünür olunca yeniden
-  /// okur ([RemoteDataRefresher]).
+  /// Başka cihazdan veri geldikçe artar; uygulama kökü bütün sekmeleri
+  /// güvenle yeniler (H-056, `refreshLocalData`).
   final int dataVersion;
 }
 
@@ -286,7 +285,7 @@ class SyncController extends Notifier<SyncUiState> {
   }
 
   /// Yerel veri toplu değişti (ör. "Bu telefondaki verileri de sil"):
-  /// ekranlar görünür olunca yeniden okusun.
+  /// bütün sekmeler yeniden okusun.
   void notifyDataChanged() => state = SyncUiState(
     syncing: state.syncing,
     last: state.last,
@@ -304,9 +303,8 @@ class SyncController extends Notifier<SyncUiState> {
     try {
       final outcome = await ref.read(syncEngineProvider).sync();
       if (!ref.mounted) return outcome;
-      // Başka cihazdan veri geldiyse ekranlar (görünür olunca) yeniden okur.
-      // Doğrudan geçersiz kılma yapılmaz: duraklatılmış (görünmeyen) ekranın
-      // aboneliği build sırasında yenilenip hata veriyordu (Riverpod 3).
+      // Başka cihazdan veri geldiyse sürüm artar; uygulama kökü bütün
+      // sekmeleri güvenle yeniler (H-056, `refreshLocalData`).
       state = SyncUiState(
         last: outcome,
         dataVersion: state.dataVersion + (outcome.pulled > 0 ? 1 : 0),
@@ -325,32 +323,3 @@ class SyncController extends Notifier<SyncUiState> {
 final syncControllerProvider = NotifierProvider<SyncController, SyncUiState>(
   SyncController.new,
 );
-
-/// Hesap açıkken başka cihazdan veri gelince (H-038) bulunduğu ekran
-/// görünür olduğunda ilerleme, defter ve Hi sayıları yeniden okunur
-/// ([refreshWhenVisible] ile aynı güvenli yol).
-class RemoteDataRefresher extends ConsumerStatefulWidget {
-  const RemoteDataRefresher({super.key, required this.child});
-
-  final Widget child;
-
-  @override
-  ConsumerState<RemoteDataRefresher> createState() =>
-      _RemoteDataRefresherState();
-}
-
-class _RemoteDataRefresherState extends ConsumerState<RemoteDataRefresher> {
-  int? _seen;
-
-  @override
-  Widget build(BuildContext context) {
-    final v = ref.watch(syncControllerProvider.select((s) => s.dataVersion));
-    if (_seen != null && v != _seen) {
-      WidgetsBinding.instance.addPostFrameCallback((_) {
-        if (mounted) unawaited(refreshWhenVisible(context, ref));
-      });
-    }
-    _seen = v;
-    return widget.child;
-  }
-}

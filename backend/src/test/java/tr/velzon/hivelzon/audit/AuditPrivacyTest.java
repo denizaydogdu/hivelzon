@@ -71,7 +71,9 @@ class AuditPrivacyTest extends IntegrationTest {
         Response rotated = refresh(refresh1);
         secrets.add(rotated.text("refreshToken"));
         secrets.add(rotated.text("accessToken"));
-        refresh(refresh1); // yeniden kullanım: aile iptal
+        refresh(refresh1); // hoşgörü penceresinde: aynı halef (H-056)
+        clock.advance(Duration.ofSeconds(31));
+        refresh(refresh1); // pencere sonrası yeniden kullanım: aile iptal
 
         Response second = login(EMAIL);
         secrets.add(mail.lastCodeFor(EMAIL));
@@ -94,7 +96,7 @@ class AuditPrivacyTest extends IntegrationTest {
 
         List<String> actions = jdbc.queryForList("SELECT DISTINCT action FROM audit_log", String.class);
         assertThat(actions).contains("OTP_START", "OTP_VERIFY_FAIL", "OTP_VERIFY_SUCCESS", "SIGNUP", "LOGIN",
-                "TOKEN_REUSE_DETECTED", "CONSENT_CHANGE", "LOGOUT", "ACCOUNT_DELETION_REQUESTED",
+                "TOKEN_REUSE_DETECTED", "REFRESH_GRACE_REPLAY", "CONSENT_CHANGE", "LOGOUT", "ACCOUNT_DELETION_REQUESTED",
                 "ACCOUNT_RESTORED", "ACCOUNT_PURGED");
 
         String auditDump = jdbc.queryForList("SELECT * FROM audit_log").toString();

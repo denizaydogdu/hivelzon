@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../shared/content/content_providers.dart';
 import '../../../shared/meaning/learning_event_log.dart';
+import '../../../shared/state/safe_refresh.dart';
 import '../../../shared/storage/storage_providers.dart';
 import '../../hi/application/hi_providers.dart';
 import '../../player/data/progress_repository.dart';
@@ -103,11 +104,12 @@ final dailyGoalProvider = FutureProvider.autoDispose<int>(
 );
 
 /// Tekrar ya da defter değişince sayıları yeniler.
-void refreshNotebook(WidgetRef ref) {
-  ref.invalidate(reviewOverviewProvider);
-  ref.invalidate(notebookEntriesProvider);
-  ref.invalidate(clueBoardProvider);
+/// Görünmeyen sekmelerde de güvenli (H-056, [invalidateAndFlush]).
+void refreshNotebook(WidgetRef ref) => invalidateAndFlush(ref, [
+  reviewOverviewProvider,
+  notebookEntriesProvider,
+  clueBoardProvider,
   // Hi'nin önerisi tekrar sayısına bakar (H-048).
-  ref.invalidate(coachInputProvider);
-  ref.invalidate(hiBadgeProvider);
-}
+  coachInputProvider,
+  hiBadgeProvider,
+]);

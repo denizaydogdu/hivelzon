@@ -39,6 +39,11 @@ public class HivelzonProperties {
         private String issuer = "hivelzon";
         private Duration accessTokenTtl = Duration.ofMinutes(15);
         private Duration refreshTokenTtl = Duration.ofDays(30);
+        /**
+         * Hoşgörü penceresi (H-056): dönen yenileme belirteci bu süre içinde yeniden gelirse aynı halef döner
+         * (ağ kopması, çift istek). Sonrası yeniden kullanım sayılır. 0: kapalı.
+         */
+        private Duration refreshGrace = Duration.ofSeconds(30);
 
         public String getJwtSecret() { return jwtSecret; }
         public void setJwtSecret(String v) { jwtSecret = v; }
@@ -50,6 +55,8 @@ public class HivelzonProperties {
         public void setAccessTokenTtl(Duration v) { accessTokenTtl = v; }
         public Duration getRefreshTokenTtl() { return refreshTokenTtl; }
         public void setRefreshTokenTtl(Duration v) { refreshTokenTtl = v; }
+        public Duration getRefreshGrace() { return refreshGrace; }
+        public void setRefreshGrace(Duration v) { refreshGrace = v; }
     }
 
     public static class Otp {

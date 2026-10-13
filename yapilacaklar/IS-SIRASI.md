@@ -9,7 +9,7 @@ Bu dosya tek takip noktasıdır. Hangi işin hangi sırada yapıldığını, şu
 - **Her şey yerelde** (kullanıcı kararı): Docker PostgreSQL (5434), yerel içerik sunucusu (`python3 tools/dev-content-server/serve.py`, 127.0.0.1:8787), iOS simülatörü "hiVelzon iPhone 17". Sunucu, Bunny Stream, mağaza ve geliştirici hesapları en sonda (H-044).
 - **Biten uygulama işleri:** H-033 repo iskeleti · H-034 bölüm paketi + content-lint · H-045 tasarım yönü (6 taslak, 6 kr) · H-031 etkileşimli oynatıcı · H-046 altyazıya dokun → Türkçe anlam (B1–B4 çevirileri APPROVED) · H-047 Hi kararları · H-049 sezon jeneriği (6,69 kr) · H-050 başlıkla açılış (schemaVersion 2) · H-035 hikâye haritası + Drift ilerleme + kilit kuralı.
 - **İçerik:** B1–B4 üretildi (pilot + B2–B4), jenerik, 6 arayüz taslağı, harita görseli. B5–B12 diyalogları onaylı (H-032) ama üretilmedi; kalan Sezon 1 üretimi ≈ 8 × ~8,5 kr. Higgsfield kredisi **84,56** (lite plan).
-- **Sıradaki adım:** H-036 (defter, ipucu panosu, FSRS; Drift ve H-046'nın "Deftere ekle" + öğrenme olaylarının üzerine). Sonra H-048 (Hi-A), H-037 (backend çekirdek), H-038 … H-044 (`UYGULAMA-PLANI.md` sırası).
+- **Sıradaki adım (ara verildi 2026-10-14):** H-039 (açılış: doğum yılı + isteğe bağlı ad, hesap istenmez, 13 altı hesap seçeneği gizli), sonra H-040 (Keşfet), H-041 (editör onay ekranı; onay durumu veritabanında), H-042 (profil + hukuk metinleri), H-043 (kalite, gerçek cihaz), H-044 (dış hesaplar, en son).
 - **Kullanıcı kararı bekleyenler** (kodlamayı durdurmuyor):
   - H-001: güncellenen iş planının (`docs/IS-PLANI.md`, H-023) son onayı.
   - H-003: günlük konuşma kotasının ölçüsü, uyarı eşikleri, bütçe sorumlusu (tavan 300 USD/ay kararlaştı; v1 öncesi).
@@ -109,7 +109,7 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 | 1.4c | H-055 | "Söyle" alıştırmaları (S1, cihazda tanıma) | Yüksek | H-048 | ✅ |
 | 1.5 | H-037 | Backend çekirdek | Yüksek | H-033 | ✅ |
 | 1.6 | H-038 | Mobil ↔ backend, isteğe bağlı hesap | Yüksek | H-035, H-037 | ✅ |
-| 1.6' | H-056 | Eşitleme ince ayarı (bitti kazanır, 30 sn hoşgörü, çıkışlı silme, sekme yenileme) | Yüksek | H-038 | ⏳ |
+| 1.6' | H-056 | Eşitleme ince ayarı (bitti kazanır, 30 sn hoşgörü, çıkışlı silme, sekme yenileme) | Yüksek | H-038 | ✅ |
 | 1.7 | H-039 | Onboarding ve yerleştirme | Orta | H-038 | ⏳ |
 | 1.8 | H-040 | Keşfet akışı | Orta | H-038 | ⏳ |
 | 1.9 | H-041 | Editör onay ekranı, içerik içe aktarma | Orta | H-038 | ⏳ |
@@ -126,6 +126,7 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 ## Biten işler
 | İş | Başlık | Bitiş | Doğrulama |
 |---|---|---|---|
+| H-056 | Eşitleme ince ayarı | 2026-10-14 | "Bitti" kazanır (sunucu + telefon), yenilemede 30 sn hoşgörü, çıkışlı Hi silme girişte işlenir, sekme yenileme hatası giderildi; flutter test 404/404, mvn verify 110/110 |
 | H-038 | Telefon ↔ sunucu, isteğe bağlı hesap | 2026-10-13 | E-posta koduyla hesap, ilk aktarım, iki yönlü eşitleme, Hi silme her cihazda; hesapsız trafik yok; simülatörde iki cihaz denemesi; flutter test 389/389, mvn verify 97/97 |
 | H-037 | Backend çekirdeği | 2026-10-13 | Kimlik (e-posta kodu, oturum, rıza, denetim, 30 gün silme) + katalog (ETag) + eşitleme (idempotent, LWW, transkript reddi) + FSRS Java (159/159); mvn verify 94/94; uçtan uca curl denemeleri |
 | H-055 | "Söyle" alıştırmaları (S1) | 2026-10-13 | Cihazda tanıma (speech_to_text 7.4.0), 4 yer, puan yok, ses/metin saklanmıyor (testli); 2. denemede tam → Hard; flutter test 356/356. Simülatörde gerçek tanıma çalışmadı → gerçek cihaz H-043 |
@@ -305,3 +306,5 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
   - Kullanıcı ilkesi: "Ne kadar az bilgi alırsak kullanıcılar o kadar rahat eder." Karar: hesap herkes için isteğe bağlı, uygulamanın tamamı hesapsız (H-009 güncellendi); veri minimizasyonu CLAUDE.md mühendislik ilkelerine eklendi; H-038/H-039 notları.
   - H-037 bitti. Kararlar: Hi kayıtları silme her cihazda; onay durumu veritabanında. Sıradaki: H-038 (telefon ↔ sunucu, isteğe bağlı hesap).
   - H-038 bitti. Kararlar → H-056 (bitti kazanır, 30 sn hoşgörü, çıkışlı silme girişte işlenir, sekme yenileme).
+- **2026-10-14:**
+  - H-056 bitti ve gönderildi. Kullanıcı ara verdi; sıradaki H-039.

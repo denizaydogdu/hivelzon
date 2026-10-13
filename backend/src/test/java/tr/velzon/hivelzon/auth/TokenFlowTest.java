@@ -5,8 +5,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.time.Duration;
 import java.util.Map;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
+import tr.velzon.hivelzon.common.config.HivelzonProperties;
 import tr.velzon.hivelzon.support.IntegrationTest;
 
 /** Erişim ve yenileme belirteçleri: dönme, yeniden kullanım tespiti, çıkış, süre. */
@@ -112,5 +115,98 @@ class TokenFlowTest extends IntegrationTest {
         Response limited = refresh("yok-son");
         assertThat(limited.status()).isEqualTo(429);
         assertThat(problemCode(limited)).isEqualTo("RATE_LIMITED");
+    }
+    // ------------------------------------------------------------ hoşgörü penceresi (H-056)
+
+    @Autowired
+    HivelzonProperties properties;
+
+    @Autowired
+    AuthMaintenanceJob maintenance;
+
+    @AfterEach
+    void restoreGrace() {
+        properties.getSecurity().setRefreshGrace(Duration.ofSeconds(30));
+    }
+
+    @Test
+    void replayWithinGraceReturnsSameSuccessor() {
+        String r1 = login(EMAIL).text("refreshToken");
+        Response first = refresh(r1);
+        String r2 = first.text("refreshToken");
+        clock.advance(Duration.ofSeconds(20));
+
+        Response replay = refresh(r1);
+        assertThat(replay.status()).as(replay.raw()).isEqualTo(200);
+        assertThat(replay.text("refreshToken")).isEqualTo(r2);
+        assertThat(get("/api/v1/me", replay.text("accessToken")).status()).isEqualTo(200);
+        assertThat(count("SELECT count(*) FROM audit_log WHERE action = 'REFRESH_GRACE_REPLAY'")).isEqualTo(1);
+        assertThat(count("SELECT count(*) FROM audit_log WHERE action = 'TOKEN_REUSE_DETECTED'")).isZero();
+        // Şifreli halef düz metin değildir.
+        assertThat(jdbc.queryForList("SELECT successor_token_enc FROM refresh_tokens "
+                + "WHERE successor_token_enc IS NOT NULL", String.class)).hasSize(1).doesNotContain(r2);
+        // Halef normal çalışır ve döner.
+        Response next = refresh(r2);
+        assertThat(next.status()).isEqualTo(200);
+        assertThat(next.text("refreshToken")).isNotEqualTo(r2);
+    }
+
+    @Test
+    void replayAfterGraceIsReuse() {
+        String r1 = login(EMAIL).text("refreshToken");
+        String r2 = refresh(r1).text("refreshToken");
+        clock.advance(Duration.ofSeconds(31));
+
+        Response reuse = refresh(r1);
+        assertThat(reuse.status()).isEqualTo(401);
+        assertThat(problemCode(reuse)).isEqualTo("TOKEN_REUSED");
+        assertThat(problemCode(refresh(r2))).isEqualTo("REFRESH_TOKEN_INVALID");
+        assertThat(count("SELECT count(*) FROM refresh_tokens WHERE successor_token_enc IS NOT NULL")).isZero();
+    }
+
+    @Test
+    void graceDoesNotSurviveLogout() {
+        String r1 = login(EMAIL).text("refreshToken");
+        String r2 = refresh(r1).text("refreshToken");
+        assertThat(post("/api/v1/auth/logout", Map.of("refreshToken", r2)).status()).isEqualTo(204);
+        assertThat(count("SELECT count(*) FROM refresh_tokens WHERE successor_token_enc IS NOT NULL")).isZero();
+
+        Response replay = refresh(r1);
+        assertThat(replay.status()).isEqualTo(401);
+        assertThat(problemCode(refresh(r2))).isEqualTo("REFRESH_TOKEN_INVALID");
+        assertThat(count("SELECT count(*) FROM audit_log WHERE action = 'REFRESH_GRACE_REPLAY'")).isZero();
+    }
+
+    @Test
+    void replayAfterSuccessorRotatedIsReuse() {
+        String r1 = login(EMAIL).text("refreshToken");
+        String r2 = refresh(r1).text("refreshToken");
+        String r3 = refresh(r2).text("refreshToken");
+
+        Response reuse = refresh(r1);
+        assertThat(problemCode(reuse)).isEqualTo("TOKEN_REUSED");
+        assertThat(problemCode(refresh(r3))).isEqualTo("REFRESH_TOKEN_INVALID");
+    }
+
+    @Test
+    void zeroWindowKeepsStrictReuseDetection() {
+        properties.getSecurity().setRefreshGrace(Duration.ZERO);
+        String r1 = login(EMAIL).text("refreshToken");
+        String r2 = refresh(r1).text("refreshToken");
+        assertThat(count("SELECT count(*) FROM refresh_tokens WHERE successor_token_enc IS NOT NULL")).isZero();
+
+        assertThat(problemCode(refresh(r1))).isEqualTo("TOKEN_REUSED");
+        assertThat(problemCode(refresh(r2))).isEqualTo("REFRESH_TOKEN_INVALID");
+    }
+
+    @Test
+    void maintenancePurgesExpiredGraceSecrets() {
+        String r1 = login(EMAIL).text("refreshToken");
+        refresh(r1);
+        maintenance.run();
+        assertThat(count("SELECT count(*) FROM refresh_tokens WHERE successor_token_enc IS NOT NULL")).isEqualTo(1);
+        clock.advance(Duration.ofSeconds(31));
+        maintenance.run();
+        assertThat(count("SELECT count(*) FROM refresh_tokens WHERE successor_token_enc IS NOT NULL")).isZero();
     }
 }

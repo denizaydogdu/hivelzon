@@ -65,6 +65,8 @@ hivelzon:
     issuer: hivelzon
     access-token-ttl: 15m
     refresh-token-ttl: 30d
+    # H-056: dönen yenileme belirteci bu süre içinde yeniden gelirse aynı halef döner; 0s: kapalı.
+    refresh-grace: ${HIVELZON_REFRESH_GRACE:30s}
   otp:
     ttl: 10m
     max-attempts: 5

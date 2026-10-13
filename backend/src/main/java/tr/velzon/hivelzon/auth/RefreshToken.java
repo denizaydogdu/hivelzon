@@ -43,6 +43,14 @@ public class RefreshToken {
     @Column(name = "revoked_at")
     private Instant revokedAt;
 
+    /** Dönmede üretilen halefin kimliği (H-056 hoşgörü penceresi). */
+    @Column(name = "successor_id")
+    private UUID successorId;
+
+    /** Halef belirtecin şifreli değeri (AES-GCM, Base64); yalnızca hoşgörü penceresi boyunca dolu. */
+    @Column(name = "successor_token_enc", length = 256)
+    private String successorTokenEnc;
+
     protected RefreshToken() {
     }
 
@@ -62,12 +70,26 @@ public class RefreshToken {
         this.usedAt = now;
     }
 
+    /** Döndü: halef kaydedilir (hoşgörü penceresinde aynı halef yeniden verilebilsin). */
+    public void markRotated(Instant now, UUID successorId, String successorTokenEnc) {
+        this.usedAt = now;
+        this.successorId = successorId;
+        this.successorTokenEnc = successorTokenEnc;
+    }
+
+    public void clearSuccessorSecret() {
+        this.successorTokenEnc = null;
+    }
+
     public UUID getId() { return id; }
     public UUID getUserId() { return userId; }
     public UUID getFamilyId() { return familyId; }
     public String getDeviceName() { return deviceName; }
+    public String getTokenHash() { return tokenHash; }
     public Instant getAuthTime() { return authTime; }
     public Instant getExpiresAt() { return expiresAt; }
     public Instant getUsedAt() { return usedAt; }
     public Instant getRevokedAt() { return revokedAt; }
+    public UUID getSuccessorId() { return successorId; }
+    public String getSuccessorTokenEnc() { return successorTokenEnc; }
 }

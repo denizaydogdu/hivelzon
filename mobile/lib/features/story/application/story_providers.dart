@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import '../../../app/router.dart';
 import '../../../shared/content/content_providers.dart';
 import '../../../shared/progress/story_progress.dart';
+import '../../../shared/state/safe_refresh.dart';
 import '../../hi/application/hi_providers.dart';
 import '../../notebook/application/notebook_providers.dart';
 import '../../player/data/progress_repository.dart';
@@ -70,12 +71,14 @@ Future<void> openEpisode(
   await refreshWhenVisible(context, ref);
 }
 
-/// İlerlemeyi yeniler; ekran görünür olana dek (TickerMode açık) bekler.
+/// Oynatıcıdan dönünce ilerlemeyi yeniler; önce ekranın görünmesi beklenir
+/// (TickerMode açık, en çok ~1 sn) ki değişiklik bu ekranda hemen çizilsin.
 ///
-/// Riverpod 3, görünmeyen ekrandaki dinleyicileri duraklatır. Duraklatılmış
-/// dinleyici varken geçersiz kılınan sağlayıcı, ekran yeniden görünürken
-/// build sırasında yenilenir ve hata verir; bu yüzden önce ekranın
-/// görünmesi beklenir (en çok ~1 sn).
+/// Riverpod 3 görünmeyen ekrandaki (ör. öteki sekmeler) dinleyicileri
+/// duraklatır; orada kirli kalan türetilmiş sağlayıcı, sekme yeniden
+/// görünürken build sırasında hesaplanıp hata veriyordu. Yenileme bu yüzden
+/// [invalidateAndFlush] ile yapılır: zincir hemen, build dışında hesaplanır
+/// (H-056).
 Future<void> refreshWhenVisible(BuildContext context, WidgetRef ref) async {
   for (var i = 0; i < 60; i++) {
     if (!context.mounted) return;
@@ -83,10 +86,14 @@ Future<void> refreshWhenVisible(BuildContext context, WidgetRef ref) async {
     await WidgetsBinding.instance.endOfFrame;
   }
   if (!context.mounted) return;
-  ref.invalidate(storyProgressProvider);
-  // Biten bölümün ifadeleri deftere geçmiş olabilir (H-036).
-  ref.invalidate(reviewOverviewProvider);
-  // Hi balonundaki nokta ve öneri (H-048).
-  ref.invalidate(coachInputProvider);
-  ref.invalidate(hiBadgeProvider);
+  invalidateAndFlush(ref, [
+    storyProgressProvider,
+    seasonMapProvider,
+    // Biten bölümün ifadeleri deftere geçmiş olabilir (H-036).
+    reviewOverviewProvider,
+    // Hi balonundaki nokta ve öneri (H-048).
+    coachInputProvider,
+    hiSuggestionProvider,
+    hiBadgeProvider,
+  ]);
 }

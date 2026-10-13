@@ -19,7 +19,8 @@ import tr.velzon.hivelzon.sync.SyncTableProvider;
 
 /**
  * Hikâye ilerlemesi tabloları (mobil Drift şema 4 aynası): bölüm ilerlemesi, kalıcı bayraklar, bölüm kapısı,
- * sezon durumu, ipuçları ve bölüm bağları. Hepsi doğal anahtarlıdır.
+ * sezon durumu, ipuçları ve bölüm bağları. Hepsi doğal anahtarlıdır. Bölüm ilerlemesinde "bitti her zaman
+ * kazanır" ({@link ProgressMerger}, H-056); bölüm kapısı yalnız eklenir (silinmez, üzerine yazılmaz).
  */
 @Component
 public class ProgressSyncTables implements SyncTableProvider {
@@ -35,7 +36,7 @@ public class ProgressSyncTables implements SyncTableProvider {
                         string("lastCheckpointNodeId", "last_checkpoint_node_id", false, 64),
                         jsonObject("checkpointSnapshot", "checkpoint_snapshot", false, 32_768),
                         instant("startedAt", "started_at", false),
-                        instant("completedAt", "completed_at", false))),
+                        instant("completedAt", "completed_at", false)), new ProgressMerger()),
                 new SyncTable("user_story_flags", 20, Kind.MUTABLE,
                         List.of(CONTENT_ID, string("flag", "flag", true, 64)), UPDATED_AT,
                         List.of(string("value", "value", true, 64))),

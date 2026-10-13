@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-import '../features/account/application/account_providers.dart';
 import '../features/account/presentation/account_screen.dart';
 import '../features/account/presentation/account_widgets.dart';
 import '../features/account/presentation/sign_in_screen.dart';
@@ -120,14 +119,9 @@ final routerProvider = Provider<GoRouter>((ref) {
           location: state.uri.path,
         ),
         branches: [
-          // H-038: başka cihazdan veri gelince Ana Sayfa görünür olunca
-          // ilerleme yeniden okunur. Yalnızca burada: görünmeyen sekmede
-          // geçersiz kılınan türetilmiş sağlayıcı (sezon haritası), sekme
-          // yeniden görünürken build sırasında yenilenip hata veriyor.
-          _branch(
-            AppRoutes.home,
-            const RemoteDataRefresher(child: HomeScreen()),
-          ),
+          // Başka cihazdan veri gelince bütün sekmeler uygulama kökünden
+          // yenilenir (H-056, `local_data_refresh.dart`).
+          _branch(AppRoutes.home, const HomeScreen()),
           _branch(AppRoutes.discover, const DiscoverScreen()),
           _branch(AppRoutes.story, const StoryScreen()),
           _branch(AppRoutes.talk, const TalkScreen()),

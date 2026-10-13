@@ -5,6 +5,7 @@ import '../../../shared/content/content_providers.dart';
 import '../../../shared/content/content_source.dart';
 import '../../../shared/meaning/error_taxonomy.dart';
 import '../../../shared/progress/story_progress.dart';
+import '../../../shared/state/safe_refresh.dart';
 import '../../../shared/storage/storage_providers.dart';
 import '../../notebook/application/notebook_providers.dart';
 import '../../player/application/player_session.dart';
@@ -235,15 +236,17 @@ final seenTopicIntrosProvider = FutureProvider.autoDispose<List<TopicIntro>>((
 }, retry: (_, _) => null);
 
 /// Panel ve balon sayılarını yeniler (ilerleme ya da defter değişince).
-void refreshHi(WidgetRef ref) {
-  ref.invalidate(coachInputProvider);
-  ref.invalidate(hiBadgeProvider);
-  ref.invalidate(weeklySummaryProvider);
-  ref.invalidate(lookupCandidatesProvider);
-  ref.invalidate(bridgeTaskProvider);
-  ref.invalidate(hiKnowledgeProvider);
-  ref.invalidate(seenTopicIntrosProvider);
-}
+/// Görünmeyen sekmelerde de güvenli (H-056, [invalidateAndFlush]).
+void refreshHi(WidgetRef ref) => invalidateAndFlush(ref, [
+  coachInputProvider,
+  hiSuggestionProvider,
+  hiBadgeProvider,
+  weeklySummaryProvider,
+  lookupCandidatesProvider,
+  bridgeTaskProvider,
+  hiKnowledgeProvider,
+  seenTopicIntrosProvider,
+]);
 
 /// Oynatıcı için Hi (konu kartı + yanlış seçimin hata türü).
 final playerCoachProvider = Provider<PlayerCoach?>(
