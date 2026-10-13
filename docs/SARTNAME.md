@@ -23,6 +23,7 @@
 > - **AI etiketi (§8, §12):** Uygulama içi videolara gömülmez, bölüm başında ~4 sn not; sosyal medya ve uygulama dışı videolarda gömülü (CLAUDE.md Higgsfield kuralı 6, K-14).
 > - **Yerel geliştirme:** Sunucu, Bunny Stream ve mağaza hesapları en sona bırakıldı (H-044); o zamana kadar her şey yerelde.
 > - **§10 veri modeli:** Taslaktır, H-037'de kesinleşir. Bilinen eksikler: `refresh_tokens` tablosu ve roller (kullanıcı / editör / yönetici) tanımlı değil; hesap silme durumu burada `DELETION_PENDING`, `docs/IS-PLANI.md` §9.4'te `PENDING_DELETION` yazıyor; tek ad H-037'de seçilecek.
+> - **§10/§11 kimlik ve hesap kısmı (2026-10-13):** H-037 Bölüm 1 ile geçersiz kaldı: parolasız e-posta kodu, `refresh_tokens`, roller USER/EDITOR/ADMIN, `PENDING_DELETION`, rızalar ve `audit_log`; güncel şema `backend/src/main/resources/db/migration/V2__identity_core.sql`, güncel API `backend/README.md`.
 > - Diğer kararlar: yalnızca Türkiye (H-018), reklam yok (H-020), misafir prolog + B1 (H-009), çevrimdışı F3 (H-010), AI tavanı 300 USD/ay (H-003), içerik onayı Claude üretir + kullanıcı onaylar (H-028).
 
 ---

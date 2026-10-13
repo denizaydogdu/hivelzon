@@ -1,25 +1,90 @@
-# Veritabanı ayarları ortam değişkenlerinden okunur.
+# Ayarlar ortam değişkenlerinden okunur.
 # Varsayılanlar yalnızca yerel geliştirme içindir (docker-compose.yml); sır içermez.
 spring:
   application:
     name: hivelzon-backend
   datasource:
-    url: ${HIVELZON_DB_URL:jdbc:postgresql://localhost:5434/hivelzon}
+    url: ${HIVELZON_DB_URL:jdbc:postgresql://localhost:5435/hivelzon}
     username: ${HIVELZON_DB_USER:hivelzon}
     password: ${HIVELZON_DB_PASSWORD:hivelzon}
   jpa:
     open-in-view: false
     hibernate:
       ddl-auto: validate
+    properties:
+      hibernate:
+        jdbc:
+          time_zone: UTC
   flyway:
     enabled: true
     locations: classpath:db/migration
+  jackson:
+    time-zone: UTC
+  mail:
+    # Yerelde projeye ait Mailpit (docker-compose.yml, SMTP 127.0.0.1:1027, arayüz http://127.0.0.1:8027).
+    host: ${HIVELZON_SMTP_HOST:localhost}
+    port: ${HIVELZON_SMTP_PORT:1027}
+    username: ${HIVELZON_SMTP_USER:}
+    password: ${HIVELZON_SMTP_PASSWORD:}
+    default-encoding: UTF-8
+    properties:
+      mail.smtp.connectiontimeout: 5000
+      mail.smtp.timeout: 5000
+      mail.smtp.writetimeout: 5000
+      mail.smtp.auth: ${HIVELZON_SMTP_AUTH:false}
+      mail.smtp.starttls.enable: ${HIVELZON_SMTP_STARTTLS:false}
 
 server:
   port: ${HIVELZON_PORT:8080}
+  error:
+    include-stacktrace: never
+    include-message: never
+    include-binding-errors: never
+    include-exception: false
 
 management:
   endpoints:
     web:
       exposure:
         include: health
+  endpoint:
+    health:
+      show-details: never
+
+hivelzon:
+  security:
+    # Base64, en az 32 bayt. Tanımlı değilse: prod profilinde uygulama başlamaz; diğer profillerde
+    # her açılışta geçici rastgele anahtar üretilir (yalnızca geliştirme).
+    jwt-secret: ${HIVELZON_JWT_SECRET:}
+    otp-pepper: ${HIVELZON_OTP_PEPPER:}
+    issuer: hivelzon
+    access-token-ttl: 15m
+    refresh-token-ttl: 30d
+  otp:
+    ttl: 10m
+    max-attempts: 5
+  rate-limit:
+    window: 1h
+    otp-start-per-email: ${HIVELZON_RL_OTP_START_PER_EMAIL:5}
+    otp-start-per-ip: ${HIVELZON_RL_OTP_START_PER_IP:20}
+    otp-verify-per-ip: ${HIVELZON_RL_OTP_VERIFY_PER_IP:60}
+    refresh-per-ip: ${HIVELZON_RL_REFRESH_PER_IP:120}
+  account:
+    deletion-grace-period: 30d
+    minimum-age: 13
+    adult-age: 18
+  consent:
+    # Hukuk metinleri yazılınca sürümler güncellenir (açık soru, H-037 notları).
+    terms-version: ${HIVELZON_TERMS_VERSION:taslak-1}
+    privacy-notice-version: ${HIVELZON_PRIVACY_NOTICE_VERSION:taslak-1}
+    marketing-version: ${HIVELZON_MARKETING_VERSION:taslak-1}
+  mail:
+    from: ${HIVELZON_MAIL_FROM:hiVelzon <no-reply@hi.velzon.tr>}
+  jobs:
+    enabled: ${HIVELZON_JOBS_ENABLED:true}
+    purge-cron: "0 17 * * * *"
+    cleanup-cron: "0 */15 * * * *"
+
+logging:
+  pattern:
+    correlation: "[%X{requestId:-}] "

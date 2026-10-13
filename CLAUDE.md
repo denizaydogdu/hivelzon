@@ -78,6 +78,7 @@
 | H-006 (ek) | Yerel çalışmada videoGenerator'ın ElevenLabs hesabı kullanılır (ücretsiz, iç kullanım). Yayından önce ticari plan şart. |
 | H-047 | **Hi her yerde: asistan + öğrenme koçu** (`docs/HI-ASISTAN-VE-KOC.md`). Hikâye ve görev dışında sağ altta, menünün üstünde Hi balonu durur. **Hi-A (MVP):** kural tabanlı, AI yok, bütün yaşlar: günlük tek öneri + görünür gerekçe, haftalık özet, onaylı veriden "bu ne demek?". **Hi-B (v1):** metin sohbeti; `AiTutorPort` arkasında yerel Ollama + RAG (pgvector), üretim sağlayıcısı ölçümle H-044'te seçilir. 13–17 rehberli mod, serbest sohbet 18+. Kullanıcı konuşmaları otomatik olarak model eğitimine girmez. Farklılık önceliği: Türkçeye göre koçluk, utanmadan prova, her gün tek adım, gerçek hayat köprü görevleri. |
 | H-036/H-051 | **Kelime kartları ve konu setleri** (kullanıcı kararı 2026-10-12): Kart = görsel + kelime + örnek cümle + ses + Türkçesi. Tekrar hatırlama sorularıyla (resimden seç → dinle-seç → yaz/söyle) ve FSRS ile. "Bilmiyorum" utandırmaz; bilinemeyen kart oturum sonunda ve ertesi gün yeniden sorulur. Konu setleri genel değil, **hikâye mekânlarına bağlı** (Alex'in odası, Maya'nın dükkânı, Liman, Kafe) + sahne avı. Görselde yazı yok; başkasının şablonu kopyalanmaz. |
+| H-037 | **Giriş: e-postaya tek kullanımlık kod (parolasız)** (kullanıcı kararı 2026-10-13). Parola tutulmaz. Apple/Google ile giriş H-044'te (geliştirici hesaplarıyla). Hesap silme durumu `PENDING_DELETION`. |
 | H-055 | **"Söyle" alıştırmaları MVP'de (S1)** (kullanıcı kararı 2026-10-13): telefonun **cihazda** konuşma tanımasıyla "beklenen ifade söylendi mi" kontrolü; puan yok, utandırma yok, 2 deneme + "Geç", hikâyeyi kilitlemez. Yerler: kelime tekrarı "Dinle ve söyle", anlam paneli "Sen de söyle", karar anı "Söyleyerek seç", bölüm sonu hedef ifadeler. **Ses cihazdan çıkmaz, kaydedilmez;** cihaz desteklemiyorsa özellik görünmez. Bütün yaşlar (serbest AI sohbet 18+ kuralı ayrı). S2 serbest prova/karakter konuşması v1; S3 telaffuz puanı yalnız doğrulanırsa (H-015). `docs/KONUSMA-ALISTIRMASI.md`. |
 | H-050 | **Her bölüm doğrudan bölüm başlığıyla açılır** (kullanıcı kararı 2026-10-12). Başlıktan önce video, yazı ya da kart yok. Başlık = kısa jenerik animasyonu üstünde "Sezon N · Bölüm N · Başlık". Ardından (B2+) atlanabilir "Önceki bölümde", sonra hikâye. Açılışta ayrı görev kartı yok (K-27 adım 2 değişti): görev ve hedef ifadeler 🎯 panelinde ve bölüm sonunda. Tam jenerik sezonun ilk açılışında bir kez oynar. |
 | H-030 | Kahraman **Aleyna "Alex" Yıldız** (kadın, 19, İzmir). Story Bible ve Sezon 1 planı onaylandı; kanon `icerik/_evren/`'de kilitli. S1'de fiyatlar birimsiz söylenir ("It's thirteen."). |
@@ -105,7 +106,7 @@ Ayrıntı: `docs/IS-PLANI.md` §10.
 
 ## Geliştirme ortamı (yerel; ayrıntı kök `README.md`)
 ```bash
-colima start && docker compose up -d --wait            # PostgreSQL 17, 127.0.0.1:5434
+colima start && docker compose up -d --wait            # PostgreSQL 17, 127.0.0.1:5435
 python3 tools/dev-content-server/serve.py              # içerik sunucusu, 127.0.0.1:8787 (ayrı terminal)
 xcrun simctl boot "hiVelzon iPhone 17"; open -a Simulator
 cd mobile && flutter run -d "hiVelzon iPhone 17"       # içerik adresi: --dart-define=CONTENT_BASE_URL=...

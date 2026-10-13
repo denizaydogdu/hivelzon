@@ -53,12 +53,14 @@ flutter run -d <cihaz-id>
 
 ### Backend
 ```bash
-docker compose up -d --wait                # PostgreSQL 17, localhost:5434
+docker compose up -d --wait                # PostgreSQL 17 (localhost:5435) + Mailpit (SMTP 1027, arayüz 8027)
 cd backend
 mvn spring-boot:run
 curl localhost:8080/actuator/health        # {"status":"UP"} beklenir
 ```
-Veritabanı ayarları ortam değişkenlerinden okunur: `HIVELZON_DB_URL`, `HIVELZON_DB_USER`, `HIVELZON_DB_PASSWORD`, `HIVELZON_PORT`. Varsayılanlar yalnızca yerel `docker-compose.yml` içindir; gerçek sırlar repoya girmez (`~/.config/hivelzon/`).
+Ayarlar ortam değişkenlerinden okunur (`HIVELZON_DB_URL`, `HIVELZON_PORT`, `HIVELZON_JWT_SECRET`, `HIVELZON_OTP_PEPPER`, SMTP ve hız sınırları). Varsayılanlar yalnızca yerel geliştirme içindir; gerçek sırlar repoya girmez (`~/.config/hivelzon/`). `prod` profilinde `HIVELZON_JWT_SECRET` ve `HIVELZON_OTP_PEPPER` tanımlı değilse uygulama başlamaz. Port başka bir projede doluysa `HIVELZON_PG_PORT=<port>` ve `HIVELZON_DB_URL` ile değiştirilir.
+
+Giriş parolasızdır: e-postaya 6 haneli kod (H-037). Yerelde kodlar projeye ait Mailpit'e düşer: <http://127.0.0.1:8027>. Bütün ayarlar, API listesi ve hata kodları: [`backend/README.md`](backend/README.md).
 
 ### Backend testleri (Testcontainers)
 `mvn -B verify` testleri gerçek bir PostgreSQL konteynerinde çalıştırır. Colima kullanıyorsanız Testcontainers Docker soketini kendiliğinden bulamaz; şu değişkenleri tanımlayın:

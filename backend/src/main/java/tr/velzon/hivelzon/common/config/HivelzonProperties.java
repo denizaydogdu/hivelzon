@@ -1,0 +1,113 @@
+package tr.velzon.hivelzon.common.config;
+
+import java.time.Duration;
+
+import org.springframework.boot.context.properties.ConfigurationProperties;
+
+/**
+ * hiVelzon ayarları ({@code hivelzon.*}). Sırlar ({@code jwt-secret}, {@code otp-pepper}) yalnızca ortam
+ * değişkeninden gelir; repoda değerleri yoktur. Bkz. {@link SecretsValidator}.
+ */
+@ConfigurationProperties(prefix = "hivelzon")
+public class HivelzonProperties {
+
+    private final Security security = new Security();
+    private final Otp otp = new Otp();
+    private final RateLimit rateLimit = new RateLimit();
+    private final Account account = new Account();
+    private final Consent consent = new Consent();
+    private final Mail mail = new Mail();
+
+    public Security getSecurity() { return security; }
+    public Otp getOtp() { return otp; }
+    public RateLimit getRateLimit() { return rateLimit; }
+    public Account getAccount() { return account; }
+    public Consent getConsent() { return consent; }
+    public Mail getMail() { return mail; }
+
+    public static class Security {
+        /** HS256 anahtarı, Base64; en az 32 bayt. Ortam: HIVELZON_JWT_SECRET. */
+        private String jwtSecret = "";
+        /** E-posta, IP ve kod özetleri için HMAC anahtarı, Base64; en az 32 bayt. Ortam: HIVELZON_OTP_PEPPER. */
+        private String otpPepper = "";
+        private String issuer = "hivelzon";
+        private Duration accessTokenTtl = Duration.ofMinutes(15);
+        private Duration refreshTokenTtl = Duration.ofDays(30);
+
+        public String getJwtSecret() { return jwtSecret; }
+        public void setJwtSecret(String v) { jwtSecret = v; }
+        public String getOtpPepper() { return otpPepper; }
+        public void setOtpPepper(String v) { otpPepper = v; }
+        public String getIssuer() { return issuer; }
+        public void setIssuer(String v) { issuer = v; }
+        public Duration getAccessTokenTtl() { return accessTokenTtl; }
+        public void setAccessTokenTtl(Duration v) { accessTokenTtl = v; }
+        public Duration getRefreshTokenTtl() { return refreshTokenTtl; }
+        public void setRefreshTokenTtl(Duration v) { refreshTokenTtl = v; }
+    }
+
+    public static class Otp {
+        private Duration ttl = Duration.ofMinutes(10);
+        private int maxAttempts = 5;
+
+        public Duration getTtl() { return ttl; }
+        public void setTtl(Duration v) { ttl = v; }
+        public int getMaxAttempts() { return maxAttempts; }
+        public void setMaxAttempts(int v) { maxAttempts = v; }
+    }
+
+    public static class RateLimit {
+        private Duration window = Duration.ofHours(1);
+        private int otpStartPerEmail = 5;
+        private int otpStartPerIp = 20;
+        private int otpVerifyPerIp = 60;
+        private int refreshPerIp = 120;
+
+        public Duration getWindow() { return window; }
+        public void setWindow(Duration v) { window = v; }
+        public int getOtpStartPerEmail() { return otpStartPerEmail; }
+        public void setOtpStartPerEmail(int v) { otpStartPerEmail = v; }
+        public int getOtpStartPerIp() { return otpStartPerIp; }
+        public void setOtpStartPerIp(int v) { otpStartPerIp = v; }
+        public int getOtpVerifyPerIp() { return otpVerifyPerIp; }
+        public void setOtpVerifyPerIp(int v) { otpVerifyPerIp = v; }
+        public int getRefreshPerIp() { return refreshPerIp; }
+        public void setRefreshPerIp(int v) { refreshPerIp = v; }
+    }
+
+    public static class Account {
+        private Duration deletionGracePeriod = Duration.ofDays(30);
+        private int minimumAge = 13;
+        private int adultAge = 18;
+
+        public Duration getDeletionGracePeriod() { return deletionGracePeriod; }
+        public void setDeletionGracePeriod(Duration v) { deletionGracePeriod = v; }
+        public int getMinimumAge() { return minimumAge; }
+        public void setMinimumAge(int v) { minimumAge = v; }
+        public int getAdultAge() { return adultAge; }
+        public void setAdultAge(int v) { adultAge = v; }
+    }
+
+    public static class Consent {
+        /** Kullanım koşullarının güncel sürümü. Kayıtta istemci bu sürümü onaylamış olmalı. */
+        private String termsVersion = "taslak-1";
+        /** KVKK aydınlatma metninin güncel sürümü. */
+        private String privacyNoticeVersion = "taslak-1";
+        /** Ticari ileti izni metninin güncel sürümü. */
+        private String marketingVersion = "taslak-1";
+
+        public String getTermsVersion() { return termsVersion; }
+        public void setTermsVersion(String v) { termsVersion = v; }
+        public String getPrivacyNoticeVersion() { return privacyNoticeVersion; }
+        public void setPrivacyNoticeVersion(String v) { privacyNoticeVersion = v; }
+        public String getMarketingVersion() { return marketingVersion; }
+        public void setMarketingVersion(String v) { marketingVersion = v; }
+    }
+
+    public static class Mail {
+        private String from = "hiVelzon <no-reply@hi.velzon.tr>";
+
+        public String getFrom() { return from; }
+        public void setFrom(String v) { from = v; }
+    }
+}

@@ -107,7 +107,7 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 | 1.4a | H-051 | Hikâye mekânlarına bağlı konu setleri + sahne avı | Yüksek | H-036 | ✅ |
 | 1.4b | H-048 | Hi-A: yönlendiren Hi (balon + kural tabanlı koç) | Yüksek | H-036, H-046 | ✅ |
 | 1.4c | H-055 | "Söyle" alıştırmaları (S1, cihazda tanıma) | Yüksek | H-048 | ✅ |
-| 1.5 | H-037 | Backend çekirdek | Yüksek | H-033 | ⏳ |
+| 1.5 | H-037 | Backend çekirdek | Yüksek | H-033 | 🔄 |
 | 1.6 | H-038 | Mobil ↔ backend, misafir modu | Yüksek | H-035, H-037 | ⏳ |
 | 1.7 | H-039 | Onboarding ve yerleştirme | Orta | H-038 | ⏳ |
 | 1.8 | H-040 | Keşfet akışı | Orta | H-038 | ⏳ |
@@ -296,3 +296,5 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
   - Kullanıcı önerisi: tekrar yerlerinde mikrofonla konuşma ve doğruluk kontrolü. Kararlar: S1 MVP (H-055; 4 yer; cihazda tanıma, ses çıkmaz/saklanmaz, puan yok; desteklenmiyorsa gizli; bütün yaşlar), S2 v1, S3 sonra (H-015). `docs/KONUSMA-ALISTIRMASI.md`.
   - H-048 bitti ve commit edildi. Sıradaki: H-055 ("Söyle" alıştırmaları) + balon örtme ve haftalık özet düzeltmeleri.
   - H-055 bitti (simülatör + sahte tanıyıcı). Gerçek cihaz ve iOS izin metni H-043/H-042'ye eklendi. Sıradaki: H-037 (backend çekirdeği; önce giriş yöntemi sorulacak).
+  - Kullanıcı kararı: giriş yöntemi e-postaya tek kullanımlık kod (parolasız); Apple/Google H-044. H-037 başladı (Bölüm 1: kimlik, Bölüm 2: veri).
+  - H-037 Bölüm 1 (kimlik: e-posta kodu, oturum, rıza, denetim, 30 gün silme) bitti, mvn verify 44/44; yerel PostgreSQL portu 5435'e taşındı. Kullanıcı 13 yaş sınırının kaldırılmasını istedi (H-002 değişikliği; sonuçları soruldu).

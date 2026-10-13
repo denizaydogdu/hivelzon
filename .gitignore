@@ -71,3 +71,6 @@ __pycache__/
 
 # Arayüz taslaklarının tam boy PNG'leri (önizlemeler tasarim/onizleme/ altında izlenir)
 tasarim/*.png
+
+# Yerel çalışma dosyaları (ekran görüntüleri, loglar, geçici araçlar)
+/.yerel/

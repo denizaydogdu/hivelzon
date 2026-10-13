@@ -1,0 +1,13 @@
+# Üretim profili (H-044'te kullanılacak). Varsayılan yok: eksik ayar uygulamayı başlatmaz.
+spring:
+  datasource:
+    url: ${HIVELZON_DB_URL}
+    username: ${HIVELZON_DB_USER}
+    password: ${HIVELZON_DB_PASSWORD}
+  mail:
+    host: ${HIVELZON_SMTP_HOST}
+    port: ${HIVELZON_SMTP_PORT}
+hivelzon:
+  security:
+    jwt-secret: ${HIVELZON_JWT_SECRET}
+    otp-pepper: ${HIVELZON_OTP_PEPPER}

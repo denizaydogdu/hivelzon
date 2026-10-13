@@ -1,5 +1,7 @@
-# Yerel geliştirme veritabanı. Değerler yalnızca geliştirme içindir, sır değildir.
-# Başlat: docker compose up -d   ·   Durdur: docker compose down
+# Yerel geliştirme servisleri. Değerler yalnızca geliştirme içindir, sır değildir.
+# Başlat: docker compose up -d --wait   ·   Durdur: docker compose down
+# Port başka bir projede doluysa: HIVELZON_PG_PORT=<port> docker compose up -d --wait
+#   (o zaman backend için HIVELZON_DB_URL=jdbc:postgresql://localhost:<port>/hivelzon).
 name: hivelzon
 
 services:
@@ -11,11 +13,29 @@ services:
       POSTGRES_USER: hivelzon
       POSTGRES_PASSWORD: hivelzon
     ports:
-      - "127.0.0.1:5434:5432"   # 5432/5433 makinedeki başka projelerce kullanılıyor
+      - "127.0.0.1:${HIVELZON_PG_PORT:-5435}:5432"   # 5432–5434 makinedeki başka projelerce kullanılıyor
     volumes:
       - hivelzon-pgdata:/var/lib/postgresql/data
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U hivelzon -d hivelzon"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  # Yerel test posta kutusu (H-037): giriş kodu e-postaları buraya düşer, dışarı gitmez.
+  # SMTP 127.0.0.1:1027 · arayüz ve API http://127.0.0.1:8027 (1025/1026 ve 8025/8026 başka projelerde).
+  mailpit:
+    image: axllent/mailpit:v1.27
+    container_name: hivelzon-mailpit
+    environment:
+      MP_MAX_MESSAGES: 500
+      MP_SMTP_AUTH_ACCEPT_ANY: 1
+      MP_SMTP_AUTH_ALLOW_INSECURE: 1
+    ports:
+      - "127.0.0.1:1027:1025"
+      - "127.0.0.1:8027:8025"
+    healthcheck:
+      test: ["CMD", "/mailpit", "readyz"]
       interval: 5s
       timeout: 3s
       retries: 10
