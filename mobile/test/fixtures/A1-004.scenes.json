@@ -199,7 +199,11 @@
       "caption": "SEZON 1 · BÖLÜM 4",
       "title": "The Note",
       "seasonVideo": "jenerik-baslik.mp4",
-      "seasonPoster": "jenerik-baslik.jpg",
+      "seasonRenditions": {
+        "720p": "jenerik-baslik.720p.mp4",
+        "1080p": "jenerik-baslik.mp4"
+      },
+      "seasonPoster": "jenerik-baslik.webp",
       "duration": 2.533,
       "next": "recap"
     },
@@ -207,6 +211,10 @@
       "id": "recap",
       "type": "recap",
       "video": "segments/recap.mp4",
+      "renditions": {
+        "720p": "segments/recap.720p.mp4",
+        "1080p": "segments/recap.mp4"
+      },
       "duration": 3.2,
       "subtitles": null,
       "skippable": true,
@@ -227,13 +235,17 @@
       ],
       "advance": "tap",
       "audio": "audio/A1-004_b4_01_hi.m4a",
-      "background": "stills/B4-02-telefon-not.jpg",
+      "background": "stills/B4-02-telefon-not.webp",
       "next": "s02"
     },
     {
       "id": "s02",
       "type": "segment",
       "video": "segments/s02.mp4",
+      "renditions": {
+        "720p": "segments/s02.720p.mp4",
+        "1080p": "segments/s02.mp4"
+      },
       "duration": 14.233,
       "subtitles": "subs/s02.en.json",
       "next": "s03"
@@ -244,6 +256,10 @@
       "scene": "Sahne 2: Gün ve saat",
       "checkpoint": true,
       "video": "segments/s03.mp4",
+      "renditions": {
+        "720p": "segments/s03.720p.mp4",
+        "1080p": "segments/s03.mp4"
+      },
       "duration": 4.2,
       "subtitles": "subs/s03.en.json",
       "next": "k1"
@@ -288,7 +304,7 @@
       "pov": "POV: telefon ekranı; yanında üç kart.",
       "skill": "vocabulary",
       "cefr": "A1",
-      "background": "stills/B4-03-uc-kart.jpg",
+      "background": "stills/B4-03-uc-kart.webp",
       "options": [
         {
           "id": "a",
@@ -332,6 +348,10 @@
       "id": "r-k1-b",
       "type": "reaction",
       "video": "segments/r-k1-b.mp4",
+      "renditions": {
+        "720p": "segments/r-k1-b.720p.mp4",
+        "1080p": "segments/r-k1-b.mp4"
+      },
       "duration": 5.433,
       "subtitles": "subs/r-k1-b.en.json",
       "bubble": {
@@ -346,6 +366,10 @@
       "id": "r-k1-c",
       "type": "reaction",
       "video": "segments/r-k1-c.mp4",
+      "renditions": {
+        "720p": "segments/r-k1-c.720p.mp4",
+        "1080p": "segments/r-k1-c.mp4"
+      },
       "duration": 4.8,
       "subtitles": "subs/r-k1-c.en.json",
       "bubble": {
@@ -360,6 +384,10 @@
       "id": "k1-ok",
       "type": "segment",
       "video": "segments/k1-ok.mp4",
+      "renditions": {
+        "720p": "segments/k1-ok.720p.mp4",
+        "1080p": "segments/k1-ok.mp4"
+      },
       "duration": 11.1,
       "subtitles": "subs/k1-ok.en.json",
       "next": "k2"
@@ -417,7 +445,7 @@
       "skill": "spoken_interaction",
       "cefr": "A1",
       "targetPhrase": "It's seven o'clock.",
-      "background": "stills/B4-04-saat-cizimi.jpg",
+      "background": "stills/B4-04-saat-cizimi.webp",
       "options": [
         {
           "id": "a",
@@ -455,6 +483,10 @@
       "id": "r-k2-b",
       "type": "reaction",
       "video": "segments/r-k2-b.mp4",
+      "renditions": {
+        "720p": "segments/r-k2-b.720p.mp4",
+        "1080p": "segments/r-k2-b.mp4"
+      },
       "duration": 4.867,
       "subtitles": "subs/r-k2-b.en.json",
       "bubble": {
@@ -469,6 +501,10 @@
       "id": "k2-ok",
       "type": "segment",
       "video": "segments/k2-ok.mp4",
+      "renditions": {
+        "720p": "segments/k2-ok.720p.mp4",
+        "1080p": "segments/k2-ok.mp4"
+      },
       "duration": 5.4,
       "subtitles": "subs/k2-ok.en.json",
       "next": "s04"
@@ -479,6 +515,10 @@
       "scene": "Sahne 3: Yer",
       "checkpoint": true,
       "video": "segments/s04.mp4",
+      "renditions": {
+        "720p": "segments/s04.720p.mp4",
+        "1080p": "segments/s04.mp4"
+      },
       "duration": 11.667,
       "subtitles": "subs/s04.en.json",
       "next": "t-gorev"
@@ -501,7 +541,7 @@
           "style": "highlight"
         }
       ],
-      "background": "stills/B4-06-iskele-harita.jpg",
+      "background": "stills/B4-06-iskele-harita.webp",
       "items": [
         {
           "id": "i1",
@@ -529,6 +569,10 @@
       "scene": "Sahne 4: İki not",
       "checkpoint": true,
       "video": "segments/s05.mp4",
+      "renditions": {
+        "720p": "segments/s05.720p.mp4",
+        "1080p": "segments/s05.mp4"
+      },
       "duration": 3.0,
       "subtitles": null,
       "next": "c-nermin"
@@ -549,7 +593,7 @@
         }
       ],
       "advance": "tap",
-      "background": "stills/B4-07-telsiz-not.jpg",
+      "background": "stills/B4-07-telsiz-not.webp",
       "next": "c-alex"
     },
     {
@@ -564,13 +608,17 @@
         }
       ],
       "advance": "tap",
-      "background": "stills/B4-08-iki-not.jpg",
+      "background": "stills/B4-08-iki-not.webp",
       "next": "s06"
     },
     {
       "id": "s06",
       "type": "segment",
       "video": "segments/s06.mp4",
+      "renditions": {
+        "720p": "segments/s06.720p.mp4",
+        "1080p": "segments/s06.mp4"
+      },
       "duration": 5.5,
       "subtitles": "subs/s06.en.json",
       "next": "h-29"
@@ -590,7 +638,7 @@
       ],
       "advance": "tap",
       "audio": "audio/A1-004_b4_29_hi.m4a",
-      "background": "stills/B4-08-iki-not.jpg",
+      "background": "stills/B4-08-iki-not.webp",
       "next": "c-schedule"
     },
     {
@@ -641,7 +689,7 @@
         }
       ],
       "advance": "tap",
-      "background": "stills/B4-01-dukkan-sabah.jpg",
+      "background": "stills/B4-01-dukkan-sabah.webp",
       "next": "t-kanit"
     },
     {
@@ -657,7 +705,7 @@
       },
       "context": "Yeni bağlam: Maya'nın ders programı",
       "audio": "audio/A1-004_b4_30_maya.m4a",
-      "background": "stills/B4-01-dukkan-sabah.jpg",
+      "background": "stills/B4-01-dukkan-sabah.webp",
       "items": [
         {
           "id": "i1",
@@ -744,6 +792,10 @@
       "type": "segment",
       "scene": "Son kare",
       "video": "segments/s07.mp4",
+      "renditions": {
+        "720p": "segments/s07.720p.mp4",
+        "1080p": "segments/s07.mp4"
+      },
       "duration": 4.0,
       "subtitles": null,
       "next": "c-clues"
@@ -823,7 +875,7 @@
       ],
       "advance": "tap",
       "questionId": "Q4",
-      "background": "stills/B4-08-iki-not.jpg",
+      "background": "stills/B4-08-iki-not.webp",
       "next": null
     }
   ]

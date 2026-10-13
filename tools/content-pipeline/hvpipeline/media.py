@@ -28,6 +28,17 @@ FONT_BOLD = "/System/Library/Fonts/Supplemental/Arial Bold.ttf"
 FONT_REG = "/System/Library/Fonts/Supplemental/Arial.ttf"
 AI_LABEL = "Yapay zekâ ile üretilmiştir"
 
+# H-054: uygulamanın varsayılan oynattığı hafif sürüm. 1080p dosyadan yeniden kodlanır (Ken Burns yeniden
+# çizilmez); ses kopyalanır, böylece ses, süre ve senkron 1080p ile birebir aynı kalır.
+RENDITION_720 = "720p"
+RENDITION_1080 = "1080p"
+R720_W, R720_H = 720, 1280
+R720_CRF = 21            # çizim tarzı Ken Burns'te ~1,5–1,8 Mbps (2026-10-12 ölçümü, s02: 1,73 Mbps)
+R720_MAXRATE = "2M"
+R720_BUFSIZE = "4M"
+R720_VERSION = "1"       # kodlama ayarı değişince önbellek anahtarı değişir
+WEBP_QUALITY = 80
+
 
 class MediaError(RuntimeError):
     pass
@@ -208,12 +219,55 @@ def label_png(out: Path) -> Path:
     return out
 
 
+def to_webp(src: Path, out: Path, quality: int = WEBP_QUALITY) -> Path:
+    """Görseli WebP'ye çevirir (ImageMagick; H-054). Önce geçici adla yazılır."""
+    out.parent.mkdir(parents=True, exist_ok=True)
+    tmp = _tmp(out)
+    run(["magick", str(src), "-strip", "-quality", str(quality), "-define", "webp:method=6", str(tmp)])
+    tmp.replace(out)
+    return out
+
+
 def still(image: Path, out: Path) -> Path:
+    """9:16 durağan görsel (karar/kart/görev arka planı ya da videonun ilk karesi).
+
+    Çıktı biçimi uzantıdan: `.webp` (H-054, varsayılan) ya da `.jpg`.
+    """
     if not out.exists():
         out.parent.mkdir(parents=True, exist_ok=True)
+        webp = out.suffix.lower() == ".webp"
+        frame = out.with_name(out.stem + ".frame.png") if webp else _tmp(out)
         run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(image), "-vf",
              f"crop='min(iw,ih*9/16)':'min(ih,iw*16/9)',scale={W}:{H}:flags=lanczos,setsar=1",
-             "-frames:v", "1", "-q:v", "3", str(out)])
+             "-frames:v", "1"] + ([] if webp else ["-q:v", "3"]) + [str(frame)])
+        if webp:
+            to_webp(frame, out)
+            frame.unlink(missing_ok=True)
+        else:
+            frame.replace(out)
+    return out
+
+
+def rendition_name(path: str, rendition: str = RENDITION_720) -> str:
+    """`segments/s02.mp4` → `segments/s02.720p.mp4` (aynı klasör; şema deseni değişmez)."""
+    stem, dot, ext = path.rpartition(".")
+    return f"{stem}.{rendition}.{ext}" if dot else f"{path}.{rendition}"
+
+
+def rendition_720(src: Path, out: Path) -> Path:
+    """1080p son çıktıdan 720×1280 H.264 High yuv420p sürüm; ses kopyalanır, faststart (H-054).
+
+    Kare sayısı ve zaman damgaları korunur (fps süzgeci yok): süre ve ses 1080p ile aynıdır.
+    `-tune animation`: çizim tarzı düz alanlarda bantlaşmayı azaltır.
+    """
+    out.parent.mkdir(parents=True, exist_ok=True)
+    tmp = _tmp(out)
+    run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(src), "-map", "0:v:0", "-map", "0:a?",
+         "-vf", f"scale={R720_W}:{R720_H}:flags=lanczos,setsar=1",
+         "-c:v", "libx264", "-preset", "slow", "-tune", "animation", "-profile:v", "high",
+         "-pix_fmt", "yuv420p", "-crf", str(R720_CRF), "-maxrate", R720_MAXRATE, "-bufsize", R720_BUFSIZE,
+         "-g", "60", "-c:a", "copy", "-movflags", "+faststart", str(tmp)])
+    tmp.replace(out)
     return out
 
 

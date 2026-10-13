@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -7,6 +9,8 @@ import 'package:hivelzon/features/home/presentation/home_screen.dart';
 import 'package:hivelzon/features/player/data/progress_repository.dart';
 import 'package:hivelzon/features/player/domain/episode_engine.dart';
 import 'package:hivelzon/shared/content/content_providers.dart';
+import 'package:hivelzon/shared/content/content_source.dart';
+import 'package:hivelzon/shared/widgets/skeleton.dart';
 import 'package:hivelzon/shared/progress/story_progress.dart';
 
 import '../../support/fake_content_source.dart';
@@ -138,4 +142,35 @@ void main() {
     await tester.pump(const Duration(milliseconds: 100));
     expect(find.text('A Strange Message'), findsOneWidget);
   });
+
+  testWidgets('yüklenirken: spinner yok, kart iskeleti (H-054)', (
+    tester,
+  ) async {
+    final handle = tester.ensureSemantics();
+    final source = _SlowSeasonSource(packageIds: _four);
+    await pump(tester, source);
+    expect(find.byKey(const ValueKey('skeleton-home')), findsOneWidget);
+    expect(find.byType(ContinueCardSkeleton), findsOneWidget);
+    expect(find.byType(CircularProgressIndicator), findsNothing);
+    expect(find.bySemanticsLabel('Hikâyen yükleniyor…'), findsOneWidget);
+    source.gate.complete();
+    await tester.pump();
+    await tester.pump(const Duration(milliseconds: 100));
+    expect(find.byType(ContinueCardSkeleton), findsNothing);
+    expect(find.text('A Strange Message'), findsOneWidget);
+    handle.dispose();
+  });
+}
+
+/// Sezon paketi [gate] tamamlanana dek gelmez (yükleniyor durumu).
+class _SlowSeasonSource extends FakeContentSource {
+  _SlowSeasonSource({super.packageIds});
+
+  final Completer<void> gate = Completer<void>();
+
+  @override
+  Future<SeasonInfo> loadSeason(int season) async {
+    await gate.future;
+    return super.loadSeason(season);
+  }
 }

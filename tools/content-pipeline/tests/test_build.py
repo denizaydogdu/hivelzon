@@ -22,10 +22,14 @@ def test_dry_build_produces_valid_scenes_and_subs():
     title = doc["nodes"][0]
     assert title == {"id": "title", "type": "title", "season": 1, "episode": 901,
                      "caption": "SEZON 1 · BÖLÜM 901", "title": "Test Episode",
-                     "seasonVideo": "jenerik-baslik.mp4", "seasonPoster": "jenerik-baslik.jpg",
+                     "seasonVideo": "jenerik-baslik.mp4",
+                     "seasonRenditions": {"720p": "jenerik-baslik.720p.mp4", "1080p": "jenerik-baslik.mp4"},
+                     "seasonPoster": "jenerik-baslik.webp",
                      "duration": 2.5, "next": "s01"}
     seg = doc["nodes"][1]
     assert seg["video"] == "segments/s01.mp4" and seg["subtitles"] == "subs/s01.en.json"
+    # H-054: video alanı 1080p kalır; 720p sürüm yanında.
+    assert seg["renditions"] == {"720p": "segments/s01.720p.mp4", "1080p": "segments/s01.mp4"}
     sub = b.subs["subs/s01.en.json"]
     assert schema_errors(sub, "subs.schema.json") == []
     assert [c["speaker"] for c in sub["cues"]][0] == "MAYA"

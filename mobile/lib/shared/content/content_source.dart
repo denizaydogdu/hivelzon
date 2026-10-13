@@ -1,5 +1,6 @@
 import '../../features/player/domain/episode.dart';
 import '../../features/player/domain/subtitles.dart';
+import '../../features/player/domain/video_rendition.dart';
 
 /// Sunucudaki bir bölüm paketinin özeti (`/packages/index.json`).
 class PackageSummary {
@@ -90,8 +91,14 @@ class SeasonInfo {
     this.mapHeight,
   });
 
-  factory SeasonInfo.fromJson(Map<String, dynamic> j) {
-    String? video(Object? e) => e is Map ? e['video'] as String? : null;
+  /// [rendition]: jenerik videolarının oynatılacak sürümü (H-054).
+  factory SeasonInfo.fromJson(
+    Map<String, dynamic> j, {
+    String rendition = kPreferredRendition,
+  }) {
+    String? video(Object? e) => e is Map && e['video'] is String
+        ? pickRendition(e['video'] as String, e['renditions'], rendition)
+        : null;
     final map = j['map'] is Map
         ? (j['map'] as Map).cast<String, dynamic>()
         : null;
@@ -127,14 +134,16 @@ class SeasonInfo {
   /// Bölüm başlık ekranının yazısız arka planı.
   final String? titleBackground;
 
-  /// Başlık arka planının ilk karesi (jpg); Ana Sayfa kartında da kullanılır.
+  /// Başlık arka planının ilk karesi (webp; H-054 öncesi jpg); Ana Sayfa
+  /// kartında da kullanılır.
   final String? titlePoster;
   final String aiLabel;
 
   /// Sezonun bütün bölüm yerleri (harita kataloğu; yoksa boş).
   final List<SeasonEpisode> episodes;
 
-  /// Harita görseli (`map.jpg`) ve piksel boyutu; yoksa harita kodla çizilir.
+  /// Harita görseli (`map.webp`; H-054 öncesi jpg) ve piksel boyutu; yoksa
+  /// harita kodla çizilir.
   final String? mapImage;
   final int? mapWidth;
   final int? mapHeight;

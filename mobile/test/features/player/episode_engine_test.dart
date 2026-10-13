@@ -295,8 +295,8 @@ void main() {
           expect(ep.start, title.id);
           expect(title.caption, 'SEZON 1 · BÖLÜM ${ep.info.number}');
           expect(title.title, ep.info.title);
-          expect(title.video, 'season:jenerik-baslik.mp4');
-          expect(title.posterPath, 'season:jenerik-baslik.jpg');
+          expect(title.video, 'season:jenerik-baslik.720p.mp4');
+          expect(title.posterPath, 'season:jenerik-baslik.webp');
           expect(title.duration, inInclusiveRange(2.0, 3.0));
           expect(title.checkpoint, isFalse);
           // Başlığa giden hiçbir yol yok.

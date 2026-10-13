@@ -8,6 +8,7 @@ import '../../../shared/meaning/learning_event_log.dart';
 import '../../../shared/meaning/meaning_controller.dart';
 import '../../../shared/meaning/meaning_text.dart';
 import '../../../shared/meaning/notebook_repository.dart';
+import '../../../shared/perf/perf_log.dart';
 import '../data/progress_repository.dart';
 import '../domain/episode.dart';
 import '../domain/episode_engine.dart';
@@ -128,6 +129,9 @@ class PlayerSession extends ChangeNotifier {
   // Konum tahmini (altyazı eşlemesi için; video_player konumu 100 ms'de bir günceller).
   Duration _anchorPos = Duration.zero;
   final Stopwatch _anchorClock = Stopwatch();
+
+  /// Oturum (oynatıcı ekranı) açılışı → ilk videonun ilk karesi (H-054).
+  final Stopwatch _openClock = Stopwatch()..start();
   double _maxDriftMs = 0;
 
   final List<TransitionRecord> transitions = [];
@@ -690,6 +694,12 @@ class PlayerSession extends ChangeNotifier {
       prestarted: prestarted,
     );
     transitions.add(rec);
+    if (transitions.length == 1 && logTransitions) {
+      PerfLog.duration(
+        'bölüm açılışı → ilk kare $contentId ${v.id}',
+        _openClock.elapsed,
+      );
+    }
     if (!moved) errors.add('first-frame timeout ${v.id}');
     _log(
       'geçiş $rec (play() ${playCallMs.toStringAsFixed(1)}ms, '

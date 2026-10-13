@@ -1,6 +1,8 @@
 # Bölüm paketi (H-034)
 
-**Sürüm:** `schemaVersion: 2` · **Tarih:** 2026-10-12 (H-050) · **Araçlar:** `tools/content-pipeline/`
+**Sürüm:** `schemaVersion: 2` · **Tarih:** 2026-10-12 (H-050, H-054) · **Araçlar:** `tools/content-pipeline/`
+
+> **H-054 (2026-10-12, schemaVersion 2 içinde, geriye uyumlu):** Her video düğümünde `renditions` (`720p`, `1080p`) alanı var; `video` alanı 1080p kalır, eski uygulamalar onu oynatır. Uygulama varsayılan olarak 720p oynatır. Durağan görseller, başlık afişi ve harita WebP'dir (kalite 80).
 
 > **schemaVersion 2 (H-050, kullanıcı kararı 2026-10-12):** Her bölüm doğrudan **başlık ekranıyla** açılır (`title` düğümü, zorunlu başlangıç). Başlıktan önce video, yazı ya da kart yoktur. B2 ve sonrasında başlıktan sonra atlanabilir **"Önceki bölümde"** özeti (`recap`) gelir, sonra hikâye. Açılıştaki başlık kartı ve görev kartı kalktı: görev cümlesi ve hedef ifadeler oynatıcının üst çubuğundaki 🎯 panelinde ve bölüm sonunda gösterilir. Uygulama sürüm 1 paketlerini de okur.
 
@@ -12,15 +14,18 @@ Bölüm paketi, etkileşimli oynatıcının (H-031) bir bölümü oynatmak için
 icerik/A1-001-a-strange-message/_build/package/
 ├── scenes.json            # düğüm grafiği (şema: tools/content-pipeline/schema/scenes.schema.json)
 ├── manifest.json          # dosya listesi, boyut, sha256, ses düzeyi, yalnızca metin kalan düğümler
-├── segments/<düğüm>.mp4   # 1080×1920 (9:16), H.264 High, yuv420p, 30 fps, AAC 44,1 kHz stereo, faststart
+├── segments/<düğüm>.mp4   # 1080×1920 (9:16), H.264 High, yuv420p, 30 fps, AAC 44,1 kHz stereo, faststart (~4–5,6 Mbps)
+├── segments/<düğüm>.720p.mp4  # 720×1280, H.264 High yuv420p, CRF 21 + maxrate 2M/bufsize 4M, -tune animation;
+│                          #   ses 1080p'den kopya (AAC 128k), faststart; ~1,7–1,9 Mbps (H-054, uygulamanın varsayılanı)
 ├── subs/<düğüm>.en.json   # İngilizce altyazı: ipucu (cue) ve kelime zamanları (şema: subs.schema.json)
 ├── audio/<kimlik>.m4a     # Hi balonu, seçenek ve görev sesleri (AAC)
-└── stills/<görsel>.jpg    # karar, kart ve görev arka planları (1080×1920)
+└── stills/<görsel>.webp   # karar, kart ve görev arka planları (1080×1920, WebP q80; H-054 öncesi .jpg)
 ```
 
 - **Altyazı videoya gömülmez (K-03).** Oynatıcı `subs/*.en.json` dosyasından çizer. Videoda yalnızca **dünya içi yazılar** (saat, takvim, kapıdaki yarım not) ve küçük "Yapay zekâ ile üretilmiştir" etiketi gömülüdür.
 - **Karar kartları videoya gömülmez.** Karar anı yerel arayüzdür (OYUN-TASARIMI §11.4).
 - Ses düzeyi: bölümdeki bütün segmentler birlikte ölçülür, tek kazanç uygulanır, hedef **-16 LUFS** ve sınırlayıcı ≈ -1,5 dBFS.
+- **720p sürüm (H-054):** 1080p son çıktıdan yeniden kodlanır (Ken Burns yeniden çizilmez). Ses kopyalanır; süre 1080p ile aynıdır (ölçülen fark 0,000 sn) ve senkron 720p dosyada da ayrıca ölçülür (≤ 0,2 sn). Önbellek: `_build/cache/r720/`.
 - Segment geçişlerinde video içi geçiş (xfade) yoktur. Segment içindeki çekimler 0,3 sn geçişle birleşir. Segmentler arası geçişi oynatıcı yapar.
 
 ## 2. `scenes.json`
@@ -46,9 +51,9 @@ Her düğümde `id` ve `type` vardır. `scene` (sahne adı) ve `checkpoint` (sah
 
 | `type` | Ne zaman | Önemli alanlar |
 |---|---|---|
-| `title` | **Bölümün ilk düğümü (zorunlu).** Sezonun yazısız kısa animasyonu üstünde uygulama "SEZON 1 · BÖLÜM N" (fener sarısı, küçük büyük harf) ve bölüm adını (büyük, beyaz) çizer. Dokunma gerekmez; video bitince `next`'e geçilir. Kontrol noktası değildir. | `season`, `episode`, `caption`, `title`, `seasonVideo` (sezon paketindeki dosya), `seasonPoster` (ilk kare, jpg), `duration`, `next` |
+| `title` | **Bölümün ilk düğümü (zorunlu).** Sezonun yazısız kısa animasyonu üstünde uygulama "SEZON 1 · BÖLÜM N" (fener sarısı, küçük büyük harf) ve bölüm adını (büyük, beyaz) çizer. Dokunma gerekmez; video bitince `next`'e geçilir. Kontrol noktası değildir. | `season`, `episode`, `caption`, `title`, `seasonVideo` (sezon paketindeki dosya, 1080p), `seasonRenditions` (`720p`, `1080p`; H-054), `seasonPoster` (ilk kare, webp), `duration`, `next` |
 | `recap` | "Önceki bölümde" (B2+): başlıktan hemen sonra, segment gibi oynayan kısa video. Altta "Önceki bölümde" etiketi ve "Atla" düğmesi (≥ 48 px). Kontrol noktası değildir. | `video`, `duration`, `subtitles`, `skippable`, `next` |
-| `segment` | Kesintisiz video. Karar anlarında bölünür. | `video`, `duration` (sn), `subtitles` (yol ya da `null`), `next` |
+| `segment` | Kesintisiz video. Karar anlarında bölünür. | `video` (1080p), `renditions` (`720p`, `1080p`; H-054), `duration` (sn), `subtitles` (yol ya da `null`), `next` |
 | `decision` | Karar anı. Video durur; müzik ve hareket kısılır (K-27). | `prompt.tr`, `cue` (soruyu soran replik), `pov`, `background`, `targetPhrase`, `skill`, `cefr`, `options[]`, `hints[]` |
 | `reaction` | Yanlış seçimin kısa, nazik tepkisi; sonra aynı karara dönülür (K-28). | `video` + `duration` + `subtitles` ve/veya `bubble` (Hi balonu: `text`, `lang`, isteğe bağlı `audio`), `next` = karar |
 | `card` | Yerel arayüz kartı. | `kind`: `hi`, `line`, `note`, `message`, `clue`, `openQuestion` (`title` ve `mission` sürüm 2'de yok); `lines[]` (`text`, `lang`, `speaker`, `style`; İngilizce satırda `tr`, `words`, `chunks`, §3.1); `audio`; `background`; `advance` (`tap`/`auto`) + `duration`; `variants[]` (bayrağa göre satırlar); `clueIds`, `questionId`, `answers` |
@@ -116,8 +121,8 @@ Sezon paketi `icerik/_evren/_build/season/S<n>/` altında üretilir (git dışı
 
 | Dosya / alan | Kaynak | Açıklama |
 |---|---|---|
-| `jenerik-tam.mp4`, `jenerik-kisa.mp4`, `jenerik-baslik.mp4` + `.jpg` | `_evren/jenerik/` (H-049/H-050) | Sezon jeneriği ve bölüm başlık arka planı |
-| `map.jpg` | `_evren/harita/map.jpg` (git dışı; üretim kaydı `_evren/harita/PROMPTS.md`) | Hikâye haritasının arka planı. **Yoksa** uygulama haritayı kodla çizer. Numara ve düğümler görselde değil, uygulamada çizilir. |
+| `jenerik-tam.mp4`, `jenerik-kisa.mp4`, `jenerik-baslik.mp4` + `.720p.mp4` sürümleri + `jenerik-baslik.webp` | `_evren/jenerik/` (H-049/H-050) | Sezon jeneriği ve bölüm başlık arka planı. `season.json`'daki her video girdisinde `renditions` (H-054). |
+| `map.webp` | `_evren/harita/map.jpg` (kayıpsız `map.png` varsa ondan; git dışı; üretim kaydı `_evren/harita/PROMPTS.md`) | Hikâye haritasının arka planı (WebP q80, H-054). **Yoksa** uygulama haritayı kodla çizer. Numara ve düğümler görselde değil, uygulamada çizilir. |
 | `season.json` → `map` | | `image`, `width`, `height` (piksel). Uygulama haritayı bu en-boy oranıyla çizer, gerekirse dikey kaydırır. |
 | `season.json` → `episodes[]` | `_evren/harita/season-<nn>.json` (depoda) | Sezonun bütün bölüm yerleri (S1: 12). Alanlar aşağıda. |
 
@@ -185,7 +190,7 @@ python3 tools/content-pipeline/export_package.py --season 1
 
 ## 4. `manifest.json`
 
-`contentId`, `contentVersion`, `tool`, `loudness` (`gainDb`, önce/sonra ölçüm), `textOnly[]` (videosu ya da sesi olmayan düğümler ve nedeni), `files[]` (`path`, `bytes`, `sha256`), `totalBytes`. Oynatıcı ve içe aktarma (H-041) bütünlüğü sha256 ile denetler.
+`contentId`, `contentVersion`, `renditions` (`["720p", "1080p"]`), `tool`, `loudness` (`gainDb`, önce/sonra ölçüm), `textOnly[]` (videosu ya da sesi olmayan düğümler ve nedeni), `files[]` (`path`, `bytes`, `sha256`), `totalBytes`, `renditionBytes` (H-054: uygulamanın bir sürüm için indirdiği toplam = ortak dosyalar + o sürümün videoları). Oynatıcı ve içe aktarma (H-041) bütünlüğü sha256 ile denetler.
 
 ## 5. Kaynak: `kurgu.json`
 
@@ -222,7 +227,7 @@ python3 tools/content-pipeline/export_package.py icerik/A1-00[1-4]-*   # paket (
 
 - `export_package.py` ara dosyaları `_build/cache/` altında saklar. Aynı girdiyle tekrar çalıştırma yalnızca değişen çekimleri yeniden üretir.
 - Önbellek dosyaları önce geçici adla yazılır.
-- Çıktıda her segment ve özet için senkron ölçümü yapılır: ilk ipucu ile gerçek ses başlangıcı arasındaki fark ≤ 0,2 sn olmalı.
+- Çıktıda her segment ve özet için senkron ölçümü yapılır: ilk ipucu ile gerçek ses başlangıcı arasındaki fark ≤ 0,2 sn olmalı. H-054'ten beri 720p dosyalarda da ölçülür; ayrıca 720p süresi 1080p'den en çok 1 kare farklı, biçimi H.264 High 720×1280 yuv420p ve faststart olmalı.
 - Sezon paketi de aynı komutla üretilir (bölümlerin sezonları için). Yalnızca sezon paketi: `--season 1` (§2.7).
 
 ### content-lint kuralları

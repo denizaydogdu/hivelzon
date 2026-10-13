@@ -69,7 +69,7 @@ class NotebookItem {
   final String? contentId;
   final String? cueId;
 
-  /// `stills/…jpg` (bölüm paketinde).
+  /// `stills/…webp` (bölüm paketinde; H-054 öncesi kayıtlarda `.jpg`).
   final String? imagePath;
 
   /// Normalleştirilmiş kırpma `x,y,w,h` (0–1); yoksa görselin tamamı.

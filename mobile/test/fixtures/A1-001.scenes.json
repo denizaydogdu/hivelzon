@@ -168,7 +168,11 @@
       "caption": "SEZON 1 · BÖLÜM 1",
       "title": "A Strange Message",
       "seasonVideo": "jenerik-baslik.mp4",
-      "seasonPoster": "jenerik-baslik.jpg",
+      "seasonRenditions": {
+        "720p": "jenerik-baslik.720p.mp4",
+        "1080p": "jenerik-baslik.mp4"
+      },
+      "seasonPoster": "jenerik-baslik.webp",
       "duration": 2.533,
       "next": "s02"
     },
@@ -178,6 +182,10 @@
       "scene": "Sahne 1: Cuma akşamı",
       "checkpoint": true,
       "video": "segments/s02.mp4",
+      "renditions": {
+        "720p": "segments/s02.720p.mp4",
+        "1080p": "segments/s02.mp4"
+      },
       "duration": 13.167,
       "subtitles": "subs/s02.en.json",
       "next": "k1"
@@ -231,7 +239,7 @@
       "skill": "spoken_interaction",
       "cefr": "A1",
       "targetPhrase": "Yes, I can.",
-      "background": "stills/T2-pov.jpg",
+      "background": "stills/T2-pov.webp",
       "options": [
         {
           "id": "a",
@@ -269,6 +277,10 @@
       "id": "r-k1-b",
       "type": "reaction",
       "video": "segments/r-k1-b.mp4",
+      "renditions": {
+        "720p": "segments/r-k1-b.720p.mp4",
+        "1080p": "segments/r-k1-b.mp4"
+      },
       "duration": 2.533,
       "subtitles": "subs/r-k1-b.en.json",
       "bubble": {
@@ -283,6 +295,10 @@
       "id": "k1-ok",
       "type": "segment",
       "video": "segments/k1-ok.mp4",
+      "renditions": {
+        "720p": "segments/k1-ok.720p.mp4",
+        "1080p": "segments/k1-ok.mp4"
+      },
       "duration": 2.4,
       "subtitles": "subs/k1-ok.en.json",
       "next": "s03"
@@ -291,6 +307,10 @@
       "id": "s03",
       "type": "segment",
       "video": "segments/s03.mp4",
+      "renditions": {
+        "720p": "segments/s03.720p.mp4",
+        "1080p": "segments/s03.mp4"
+      },
       "duration": 12.067,
       "subtitles": "subs/s03.en.json",
       "next": "h-02"
@@ -310,7 +330,7 @@
       ],
       "advance": "tap",
       "audio": "audio/A1-001_hi_02.m4a",
-      "background": "stills/I2-telefon-hi.jpg",
+      "background": "stills/I2-telefon-hi.webp",
       "next": "k2"
     },
     {
@@ -322,7 +342,7 @@
       "skill": "spoken_interaction",
       "cefr": "A1",
       "targetPhrase": "Again, please.",
-      "background": "stills/I2-telefon-hi.jpg",
+      "background": "stills/I2-telefon-hi.webp",
       "options": [
         {
           "id": "a",
@@ -360,6 +380,10 @@
       "id": "r-k2-b",
       "type": "reaction",
       "video": "segments/r-k2-b.mp4",
+      "renditions": {
+        "720p": "segments/r-k2-b.720p.mp4",
+        "1080p": "segments/r-k2-b.mp4"
+      },
       "duration": 1.933,
       "subtitles": "subs/r-k2-b.en.json",
       "bubble": {
@@ -374,6 +398,10 @@
       "id": "k2-ok",
       "type": "segment",
       "video": "segments/k2-ok.mp4",
+      "renditions": {
+        "720p": "segments/k2-ok.720p.mp4",
+        "1080p": "segments/k2-ok.mp4"
+      },
       "duration": 2.333,
       "subtitles": "subs/k2-ok.en.json",
       "next": "s04"
@@ -382,6 +410,10 @@
       "id": "s04",
       "type": "segment",
       "video": "segments/s04.mp4",
+      "renditions": {
+        "720p": "segments/s04.720p.mp4",
+        "1080p": "segments/s04.mp4"
+      },
       "duration": 7.767,
       "subtitles": "subs/s04.en.json",
       "next": "t-gorev"
@@ -408,7 +440,7 @@
         }
       ],
       "audio": "audio/A1-001_voice_02_telsiz.m4a",
-      "background": "stills/I1-not.jpg",
+      "background": "stills/I1-not.webp",
       "items": [
         {
           "id": "i1",
@@ -515,6 +547,10 @@
       "scene": "Sahne 3: Harita",
       "checkpoint": true,
       "video": "segments/s05.mp4",
+      "renditions": {
+        "720p": "segments/s05.720p.mp4",
+        "1080p": "segments/s05.mp4"
+      },
       "duration": 2.7,
       "subtitles": "subs/s05.en.json",
       "next": "t-kanit"
@@ -529,7 +565,7 @@
       "prompt": {
         "tr": "Kelimeleri sırala: Alex ne soruyor?"
       },
-      "background": "stills/I5-harita.jpg",
+      "background": "stills/I5-harita.webp",
       "items": [
         {
           "id": "i1",
@@ -566,13 +602,17 @@
       ],
       "advance": "tap",
       "audio": "audio/A1-001_hi_04.m4a",
-      "background": "stills/I5-harita.jpg",
+      "background": "stills/I5-harita.webp",
       "next": "s06"
     },
     {
       "id": "s06",
       "type": "segment",
       "video": "segments/s06.mp4",
+      "renditions": {
+        "720p": "segments/s06.720p.mp4",
+        "1080p": "segments/s06.mp4"
+      },
       "duration": 3.5,
       "subtitles": null,
       "next": "c-clues"
@@ -642,7 +682,7 @@
       ],
       "advance": "tap",
       "questionId": "Q1",
-      "background": "stills/I4-pencere.jpg",
+      "background": "stills/I4-pencere.webp",
       "next": null
     }
   ]

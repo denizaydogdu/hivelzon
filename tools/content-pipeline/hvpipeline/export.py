@@ -75,7 +75,7 @@ class FfmpegMedia:
         return f"segments/{seg_id}.mp4", media.probe_duration(joined)
 
     def still(self, ep: Episode, image: Path) -> str:
-        rel = f"stills/{slug_name(image.stem)}.jpg"
+        rel = f"stills/{slug_name(image.stem)}.webp"
         self.stills[rel] = image
         return rel
 
@@ -109,6 +109,12 @@ def export_episode(ep_dir: Path, label: bool = True, clean: bool = True) -> dict
     gain = media.TARGET_LUFS - before["I"]
     for sid in ids:
         media.finalize(fm.joined[sid], gain, pkg / "segments" / f"{sid}.mp4")
+        # H-054: 720p sürüm 1080p son çıktıdan (ses kopyası); aynı girdi için önbellekten.
+        final = pkg / "segments" / f"{sid}.mp4"
+        cached = fm.cache / "r720" / f"{media.R720_VERSION}-{file_digest(final)[:20]}.mp4"
+        if not cached.exists():
+            media.rendition_720(final, cached)
+        shutil.copyfile(cached, pkg / media.rendition_name(f"segments/{sid}.mp4"))
     for rel, src in fm.clips.items():
         media.audio_clip(src, gain, pkg / rel)
     for rel, img in fm.stills.items():
@@ -127,7 +133,9 @@ def export_episode(ep_dir: Path, label: bool = True, clean: bool = True) -> dict
 
     after = media.loudness([pkg / "segments" / f"{i}.mp4" for i in ids])
     sync = verify_sync(pkg, b)
+    sync720 = verify_sync(pkg, b, rendition=media.RENDITION_720)
     probes = probe_segments(pkg, ids)
+    probes720 = probe_segments(pkg, ids, rendition=media.RENDITION_720)
     issues = check_scenes(doc)
     sub_errors = {rel: schema_errors(sub, "subs.schema.json") for rel, sub in b.subs.items()}
 
@@ -135,6 +143,7 @@ def export_episode(ep_dir: Path, label: bool = True, clean: bool = True) -> dict
     manifest = {
         "schemaVersion": 1,
         "contentId": ep.id,
+        "renditions": [media.RENDITION_720, media.RENDITION_1080],
         "contentVersion": doc["episode"]["contentVersion"],
         "tool": TOOL_ID,
         "loudness": {"targetLUFS": media.TARGET_LUFS, "gainDb": round(gain, 2),
@@ -144,16 +153,31 @@ def export_episode(ep_dir: Path, label: bool = True, clean: bool = True) -> dict
                   for p in files],
     }
     manifest["totalBytes"] = sum(f["bytes"] for f in manifest["files"])
+    manifest["renditionBytes"] = rendition_bytes(manifest["files"])
     (pkg / "manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     return {"episode": ep.id, "package": pkg, "doc": doc, "manifest": manifest, "sync": sync,
-            "probes": probes, "issues": issues, "subErrors": sub_errors, "textOnly": b.text_only}
+            "sync720": sync720, "probes720": probes720, "probes": probes, "issues": issues, "subErrors": sub_errors, "textOnly": b.text_only}
 
 
-def verify_sync(pkg: Path, b: Builder) -> list[dict]:
+def _video_path(pkg: Path, sid: str, rendition: str | None) -> Path:
+    rel = f"segments/{sid}.mp4"
+    return pkg / (media.rendition_name(rel, rendition) if rendition and rendition != media.RENDITION_1080 else rel)
+
+
+def rendition_bytes(files: list[dict]) -> dict:
+    """Uygulamanın bir sürüm için indirdiği toplam: ortak dosyalar + o sürümün videoları (H-054)."""
+    tag = f".{media.RENDITION_720}."
+    shared = sum(f["bytes"] for f in files if not f["path"].endswith(".mp4"))
+    v720 = sum(f["bytes"] for f in files if f["path"].endswith(".mp4") and tag in f["path"])
+    v1080 = sum(f["bytes"] for f in files if f["path"].endswith(".mp4") and tag not in f["path"])
+    return {media.RENDITION_720: shared + v720, media.RENDITION_1080: shared + v1080}
+
+
+def verify_sync(pkg: Path, b: Builder, rendition: str | None = None) -> list[dict]:
     """Her çekimin ilk ipucu başlangıcı ile çıktıdaki gerçek ses başlangıcını karşılaştırır (D-001)."""
     rows = []
     for sid, shots in b.segments.items():
-        env = media.envelope(pkg / "segments" / f"{sid}.mp4")
+        env = media.envelope(_video_path(pkg, sid, rendition))
         for k, sh in enumerate(shots):
             if not sh.cues:
                 continue
@@ -168,17 +192,19 @@ def verify_sync(pkg: Path, b: Builder) -> list[dict]:
     return rows
 
 
-def probe_segments(pkg: Path, ids: list[str]) -> list[dict]:
+def probe_segments(pkg: Path, ids: list[str], rendition: str | None = None) -> list[dict]:
     out = []
     for sid in ids:
-        p = pkg / "segments" / f"{sid}.mp4"
+        p = _video_path(pkg, sid, rendition)
         st = media.probe_streams(p)
         v = next(s for s in st if s["codec_type"] == "video")
         a = next(s for s in st if s["codec_type"] == "audio")
         with open(p, "rb") as f:
             head = f.read(64 * 1024)
         faststart = 0 <= head.find(b"moov") < head.find(b"mdat") if b"mdat" in head else b"moov" in head
-        out.append({"segment": sid, "duration": round(media.probe_duration(p), 3),
+        dur = media.probe_duration(p)
+        out.append({"segment": sid, "duration": round(dur, 3),
+                    "kbps": round(p.stat().st_size * 8 / dur / 1000) if dur > 0 else None,
                     "v": f"{v['codec_name']} {v.get('profile', '')} {v['width']}x{v['height']} {v.get('pix_fmt', '')}",
                     "a": f"{a['codec_name']} {a.get('sample_rate')} Hz {a.get('channels')}ch",
                     "vdur": float(v.get("duration", 0)), "adur": float(a.get("duration", 0)),

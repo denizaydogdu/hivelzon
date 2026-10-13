@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../app/theme.dart';
 import '../../../../shared/content/content_providers.dart';
+import '../../../../shared/perf/perf_log.dart';
 import '../../../../shared/progress/story_progress.dart';
 import '../../domain/season_map.dart';
 import 'map_painters.dart';
@@ -86,10 +87,14 @@ class _SeasonMapViewState extends ConsumerState<SeasonMapView> {
         _scroll ??= ScrollController(
           initialScrollOffset: _initialOffset(map, h, c.maxHeight),
         );
-        return SingleChildScrollView(
-          key: const ValueKey('season-map-scroll'),
-          controller: _scroll,
-          child: canvas,
+        PerfLog.markAfterFrame('Hikâye haritası hazır');
+        return PerfScope(
+          tag: 'harita',
+          child: SingleChildScrollView(
+            key: const ValueKey('season-map-scroll'),
+            controller: _scroll,
+            child: canvas,
+          ),
         );
       },
     );

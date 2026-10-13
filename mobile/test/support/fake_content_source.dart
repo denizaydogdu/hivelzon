@@ -83,7 +83,7 @@ class FakeContentSource implements ContentSource {
       introVideo: 'jenerik-tam.mp4',
       introDuration: 10.3,
       titleBackground: 'jenerik-baslik.mp4',
-      titlePoster: 'jenerik-baslik.jpg',
+      titlePoster: 'jenerik-baslik.webp',
       mapImage: mapImage,
       mapWidth: mapImage == null ? null : 1520,
       mapHeight: mapImage == null ? null : 2688,

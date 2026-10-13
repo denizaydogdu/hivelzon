@@ -220,8 +220,8 @@ def test_season_package_export(tmp_path):
     assert r["dir"] == out and (out / "jenerik-baslik.mp4").exists()
     doc = json.loads((out / "season.json").read_text(encoding="utf-8"))
     assert doc["title"] == "The Missing Signal"
-    assert doc["titleBackground"] == {"video": "jenerik-baslik.mp4", "duration": 2.533, "poster": "jenerik-baslik.jpg"}
-    assert (out / "jenerik-baslik.jpg").read_bytes() == b"jjjjj"
+    assert doc["titleBackground"] == {"video": "jenerik-baslik.mp4", "duration": 2.533, "poster": "jenerik-baslik.webp"}
+    assert (out / "jenerik-baslik.webp").read_bytes() == b"jjjjj"
     assert doc["intro"]["video"] == "jenerik-tam.mp4" and doc["totalBytes"] == 35
     assert SeasonSource.load(tmp_path, 2).title == "Sezon 2"  # kaynak yoksa varsayılan
     assert title_caption(1, 3) == "SEZON 1 · BÖLÜM 3"

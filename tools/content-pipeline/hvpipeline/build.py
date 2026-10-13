@@ -139,13 +139,19 @@ class DryMedia:
         return f"segments/{seg_id}.mp4", sum(s.len for s in shots) - XFADE * (len(shots) - 1)
 
     def still(self, ep: Episode, image: Path) -> str:
-        return f"stills/{slug_name(image.stem)}.jpg"
+        return f"stills/{slug_name(image.stem)}.webp"
 
     def audio_clip(self, ep: Episode, item: AudioItem) -> str:
         return f"audio/{slug_name(item.key)}.m4a"
 
     def season_duration(self, src: SeasonSource) -> float:
         return src.title_duration
+
+
+def renditions_for(path: str) -> dict:
+    """Video düğümünün sürümleri (H-054): `video` alanı 1080p kalır (eski uygulamalar), 720p yanına eklenir."""
+    from .media import RENDITION_720, RENDITION_1080, rendition_name
+    return {RENDITION_720: rendition_name(path, RENDITION_720), RENDITION_1080: path}
 
 
 def _frames(x: float) -> float:
@@ -247,7 +253,7 @@ class Builder:
         path, duration = self.media.render_segment(self.ep, node_id, shots)
         self.segments[node_id] = shots
         cues = [c for s in shots for c in s.cues]
-        out = {"video": path, "duration": round(duration, 3)}
+        out = {"video": path, "renditions": renditions_for(path), "duration": round(duration, 3)}
         if cues:
             rel = f"subs/{node_id}.en.json"
             sub_cues = []
@@ -309,7 +315,8 @@ class Builder:
             src = self.season
             return {"id": nid, "type": t, **common, "season": c["season"], "episode": c["episode"],
                     "caption": title_caption(c["season"], c["episode"]), "title": c["title"],
-                    "seasonVideo": src.title_background, "seasonPoster": src.title_poster,
+                    "seasonVideo": src.title_background, "seasonRenditions": renditions_for(src.title_background),
+                    "seasonPoster": src.title_poster,
                     "duration": round(self.media.season_duration(src), 3), "next": spec.get("next")}
         if t == "recap":
             # "Önceki bölümde" (H-050): başlıktan sonra, atlanabilir kısa video.

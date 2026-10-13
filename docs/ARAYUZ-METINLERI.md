@@ -52,7 +52,7 @@ Düzen: selam ve tek cümle, ardından **Hikâyen** (birincil, sarı düğme), a
 | Düğme | Başla / Devam et | Başla / Devam et | Aynı kalır. |
 | Bölüm yok | Bölüm 5 hazırlanıyor · Haritaya git | aynı | Tarih ve geri sayım yok. |
 | Sezon bitti | Sezonu bitirdin · "Bölümleri haritadan yeniden oynayabilirsin." | aynı | |
-| Yükleniyor | Hikâye yükleniyor… | Hikâyen yükleniyor… | Bölüm adıyla uyumlu. |
+| Yükleniyor | Hikâye yükleniyor… | Hikâyen yükleniyor… | Bölüm adıyla uyumlu. H-054: ekranda spinner yerine kartın iskeleti; metin ekran okuyucuya duyurulur. |
 | Hata | Sunucu çalışmıyor · Hikâye yüklenemedi. | **Bağlantı kurulamadı** · Hikâye yüklenemedi. · Tekrar dene | "Sunucu" teknik terim. |
 | Bölüm başlığı | — | **Kelime tekrarı** | "Tekrar (4)" kutusunun ne olduğu anlaşılmıyordu (kullanıcı geri bildirimi). |
 | Tekrar var | Tekrar (4) · Defterindeki ifadeler | "4 ifadenin tekrar zamanı geldi · yaklaşık 2 dk" + **Tekrara başla** | Sayı cümle içinde. Süre tahmini: ifade başına ~20 sn, yukarı yuvarlanır, en az 1 dk. |
@@ -71,7 +71,7 @@ Düzen: selam ve tek cümle, ardından **Hikâyen** (birincil, sarı düğme), a
 | İlerleme | 0 / 12 (erişilebilirlik: "12 bölümden 0 tamamlandı") | 0 / 12 (erişilebilirlik: "12 bölümden 0'ı tamamlandı") | Ek doğru. |
 | Jenerik | Jeneriği izle | aynı | |
 | Odak kartı | Bölüm 1 · sıradaki | aynı | |
-| Yükleniyor | Harita yükleniyor… | aynı | |
+| Yükleniyor | Harita yükleniyor… | aynı | H-054: ekranda harita iskeleti (bölüm yerleri); metin ekran okuyucuya duyurulur. |
 | Boş | Henüz bölüm yok · Yeni bölümler hazır olunca burada görünecek. | … burada görünür. | Kısa, şimdiki zaman. |
 | Hata | Sunucu çalışmıyor · "Bölümler yüklenemedi. Yerel içerik sunucusunu başlatıp tekrar dene: python3 …" | **Bağlantı kurulamadı** · Bölümler yüklenemedi. İnternet bağlantını kontrol edip tekrar dene. | Komut satırı kullanıcıya gösterilmez. Yalnızca debug derlemede altına "Geliştirici notu: …" eklenir. |
 
@@ -131,6 +131,8 @@ Sonraki adım: oynatıcı metinleri de `tr_strings.dart` dosyasına taşınabili
 | Tekrar yok | Bugünlük tekrar bitti. Kartlar zamanı gelince geri gelir. | Bugünlük tekrar bitti. İfadeler zamanı gelince yeniden gelir. | Terim. |
 | Defter boş | Bölüm bitirdikçe kartların burada birikir. | Bölüm bitirdikçe ifadelerin burada birikir. | Terim. |
 | Hazırlanıyor | Kartlar hazırlanıyor… | İfadelerin hazırlanıyor… | Terim. |
+| Liste yükleniyor | (spinner) | İskelet satırlar; ekran okuyucu: "Defterin hazırlanıyor…" | H-054. Ana Sayfa'daki metinle aynı. |
+| İpucu panosu yükleniyor | (spinner) | İskelet satırlar; ekran okuyucu: "İpucu panosu hazırlanıyor…" | H-054. |
 | Nasıl | Resme bak, dinle, seç. Bilmediğin kart sorun değil: … | Bilmediğin ifade sorun değil: … | Terim. |
 | Liste başlığı | Topladığım ifadeler | Topladığın ifadeler (5) | "Sen" dili; kaç ifade olduğu yazar. |
 | Arama | İfade ya da Türkçesi ara | İngilizce ya da Türkçe ara | Neyle arandığı açık. Arama `lowerTr` ile yapılır ("İ" doğru eşleşir). |

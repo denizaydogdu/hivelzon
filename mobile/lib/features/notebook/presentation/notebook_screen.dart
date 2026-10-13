@@ -6,7 +6,9 @@ import '../../../app/router.dart';
 import '../../../app/theme.dart';
 import '../../../l10n/tr_strings.dart';
 import '../../../shared/content/content_providers.dart';
+import '../../../shared/perf/perf_log.dart';
 import '../../../shared/text/turkish.dart';
+import '../../../shared/widgets/skeleton.dart';
 import '../../player/presentation/player_screen.dart';
 import '../application/card_audio_player.dart';
 import '../application/notebook_providers.dart';
@@ -74,52 +76,55 @@ class _NotebookScreenState extends ConsumerState<NotebookScreen> {
       ),
       body: SafeArea(
         top: false,
-        child: CustomScrollView(
-          slivers: [
-            SliverPadding(
-              padding: const EdgeInsets.fromLTRB(
-                AppSpacing.sm,
-                AppSpacing.xs,
-                AppSpacing.sm,
-                0,
-              ),
-              sliver: SliverList.list(
-                children: [
-                  SegmentedButton<int>(
-                    key: const ValueKey('notebook-tabs'),
-                    showSelectedIcon: false,
-                    style: SegmentedButton.styleFrom(
-                      minimumSize: const Size(48, 48),
-                      selectedBackgroundColor: AppColors.seaBlue,
-                      selectedForegroundColor: Colors.white,
+        child: PerfScope(
+          tag: 'defter',
+          child: CustomScrollView(
+            slivers: [
+              SliverPadding(
+                padding: const EdgeInsets.fromLTRB(
+                  AppSpacing.sm,
+                  AppSpacing.xs,
+                  AppSpacing.sm,
+                  0,
+                ),
+                sliver: SliverList.list(
+                  children: [
+                    SegmentedButton<int>(
+                      key: const ValueKey('notebook-tabs'),
+                      showSelectedIcon: false,
+                      style: SegmentedButton.styleFrom(
+                        minimumSize: const Size(48, 48),
+                        selectedBackgroundColor: AppColors.seaBlue,
+                        selectedForegroundColor: Colors.white,
+                      ),
+                      segments: const [
+                        ButtonSegment(
+                          value: 0,
+                          label: Text(NotebookTexts.tabPhrases),
+                        ),
+                        ButtonSegment(
+                          value: 1,
+                          label: Text(NotebookTexts.tabClues),
+                        ),
+                      ],
+                      selected: {_tab},
+                      onSelectionChanged: (s) => setState(() => _tab = s.first),
                     ),
-                    segments: const [
-                      ButtonSegment(
-                        value: 0,
-                        label: Text(NotebookTexts.tabPhrases),
-                      ),
-                      ButtonSegment(
-                        value: 1,
-                        label: Text(NotebookTexts.tabClues),
-                      ),
-                    ],
-                    selected: {_tab},
-                    onSelectionChanged: (s) => setState(() => _tab = s.first),
-                  ),
-                  const SizedBox(height: AppSpacing.xs),
-                  Text(
-                    _tab == 0
-                        ? NotebookTexts.phrasesIntro
-                        : NotebookTexts.cluesIntro,
-                    key: const ValueKey('notebook-intro'),
-                    style: theme.textTheme.bodyMedium,
-                  ),
-                  const SizedBox(height: AppSpacing.sm),
-                ],
+                    const SizedBox(height: AppSpacing.xs),
+                    Text(
+                      _tab == 0
+                          ? NotebookTexts.phrasesIntro
+                          : NotebookTexts.cluesIntro,
+                      key: const ValueKey('notebook-intro'),
+                      style: theme.textTheme.bodyMedium,
+                    ),
+                    const SizedBox(height: AppSpacing.sm),
+                  ],
+                ),
               ),
-            ),
-            if (_tab == 0) ..._phrases(context) else ..._clues(context),
-          ],
+              if (_tab == 0) ..._phrases(context) else ..._clues(context),
+            ],
+          ),
         ),
       ),
     );
@@ -176,10 +181,11 @@ class _NotebookScreenState extends ConsumerState<NotebookScreen> {
             text: NotebookTexts.loadError,
           ),
         ),
+        // H-054: spinner yerine liste iskeleti.
         _ => const SliverToBoxAdapter(
-          child: Padding(
-            padding: EdgeInsets.all(AppSpacing.md),
-            child: Center(child: CircularProgressIndicator()),
+          child: ListSkeleton(
+            key: ValueKey('skeleton-notebook'),
+            label: NotebookTexts.listLoading,
           ),
         ),
       },
@@ -188,6 +194,7 @@ class _NotebookScreenState extends ConsumerState<NotebookScreen> {
   }
 
   Widget _list(List<NotebookEntry> all) {
+    PerfLog.markAfterFrame('Defter listesi hazır');
     if (all.isEmpty) {
       return const SliverToBoxAdapter(
         child: _Message(
@@ -306,9 +313,11 @@ class _NotebookScreenState extends ConsumerState<NotebookScreen> {
               icon: Icons.error_outline_rounded,
               text: NotebookTexts.cluesError,
             ),
-            _ => const Padding(
-              padding: EdgeInsets.all(AppSpacing.md),
-              child: Center(child: CircularProgressIndicator()),
+            _ => const ListSkeleton(
+              key: ValueKey('skeleton-clues'),
+              label: NotebookTexts.cluesLoading,
+              rows: 3,
+              padding: EdgeInsets.only(top: AppSpacing.xs),
             ),
           },
         ),

@@ -247,7 +247,7 @@ void main() {
         (e) => e.item.textEn == 'the old station',
       );
       expect(saved.item.source, NotebookSource.userSaved);
-      expect(saved.item.audio!.path, 'segments/s03.mp4');
+      expect(saved.item.audio!.path, 'segments/s03.720p.mp4');
       expect(saved.item.imagePath, isNotNull);
       expect(saved.item.exampleTr, 'Benimle eski istasyonda buluş.');
       // İpucu kartı kancası tekil yazar.

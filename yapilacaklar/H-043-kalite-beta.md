@@ -26,3 +26,4 @@ Kendi dalında (`h-043-kalite-beta`) yapılır; `main`'e alınmadan önce testle
 ## Notlar
 2026-10-11: H-025 uygulama planıyla açıldı.
 2026-10-12: Gerçek cihaz denetimleri bu işte toplanır (kullanıcı kararı): düşük uçlu Android'de bellek/ısı ölçümü, gerçek telefonda ses–yazı farkı ≤ 0,2 sn, Android'de oynatıcı ve Drift veritabanının çalışması. Şimdiye kadarki doğrulamalar yalnızca iOS simülatöründe yapıldı.
+2026-10-12 (H-054'ten): Ucuz Android telefonda 4G ağ koşuluyla test; hedefler: soğuk açılış, bölüm açılışı, harita kaydırma kare hızı (H-054 ölçümleri temel alınır).

@@ -205,6 +205,8 @@ def _check_package_files(pkg: Path, doc: dict) -> list[Issue]:
         for k in ("video", "subtitles", "audio", "background", "poster"):
             if isinstance(n.get(k), str):
                 refs.add(n[k])
+        for r in (n.get("renditions") or {}).values():   # H-054: 720p ve 1080p
+            refs.add(r)
         for o in n.get("options", []):
             if o.get("audio"):
                 refs.add(o["audio"])
@@ -225,10 +227,11 @@ def _check_season_files(ep_dir: Path, doc: dict) -> list[Issue]:
         if n.get("type") != "title":
             continue
         src = SeasonSource.load(ep_dir.parent, int(n.get("season", 1)))
-        for key in ("seasonVideo", "seasonPoster"):
-            if not n.get(key):
+        names = [n.get("seasonVideo"), n.get("seasonPoster"), *(n.get("seasonRenditions") or {}).values()]
+        for name in names:
+            if not name:
                 continue
-            f = src.package_dir(ep_dir.parent) / str(n[key])
+            f = src.package_dir(ep_dir.parent) / str(name)
             if not f.exists():
                 out.append(Issue("warning", "season-missing",
                                  f"sezon paketinde başlık dosyası yok: {f} (export_package.py sezon paketini üretir)"))

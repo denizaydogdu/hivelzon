@@ -123,6 +123,10 @@ abstract final class NotebookTexts {
 
   static const reviewHeading = 'Kelime tekrarı';
   static const reviewPreparing = 'İfadelerin hazırlanıyor…';
+
+  /// İskelet görünümünün ekran okuyucu duyurusu (H-054).
+  static const listLoading = 'Defterin hazırlanıyor…';
+  static const cluesLoading = 'İpucu panosu hazırlanıyor…';
   static String reviewDue(int n, int minutes) =>
       HomeTexts.reviewDue(n, minutes);
   static const reviewEmpty = 'Bölüm bitirdikçe ifadelerin burada birikir.';

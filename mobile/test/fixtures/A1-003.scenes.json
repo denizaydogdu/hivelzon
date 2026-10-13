@@ -173,7 +173,11 @@
       "caption": "SEZON 1 · BÖLÜM 3",
       "title": "Find the Station",
       "seasonVideo": "jenerik-baslik.mp4",
-      "seasonPoster": "jenerik-baslik.jpg",
+      "seasonRenditions": {
+        "720p": "jenerik-baslik.720p.mp4",
+        "1080p": "jenerik-baslik.mp4"
+      },
+      "seasonPoster": "jenerik-baslik.webp",
       "duration": 2.533,
       "next": "recap"
     },
@@ -181,6 +185,10 @@
       "id": "recap",
       "type": "recap",
       "video": "segments/recap.mp4",
+      "renditions": {
+        "720p": "segments/recap.720p.mp4",
+        "1080p": "segments/recap.mp4"
+      },
       "duration": 2.8,
       "subtitles": "subs/recap.en.json",
       "skippable": true,
@@ -468,13 +476,17 @@
         }
       ],
       "advance": "tap",
-      "background": "stills/B3-01-mesaj.jpg",
+      "background": "stills/B3-01-mesaj.webp",
       "next": "s02"
     },
     {
       "id": "s02",
       "type": "segment",
       "video": "segments/s02.mp4",
+      "renditions": {
+        "720p": "segments/s02.720p.mp4",
+        "1080p": "segments/s02.mp4"
+      },
       "duration": 3.067,
       "subtitles": "subs/s02.en.json",
       "next": "k1"
@@ -489,7 +501,7 @@
       "skill": "spoken_interaction",
       "cefr": "A1",
       "targetPhrase": "Excuse me, where is…?",
-      "background": "stills/B3-02-kopekli-adam-pov.jpg",
+      "background": "stills/B3-02-kopekli-adam-pov.webp",
       "options": [
         {
           "id": "a",
@@ -527,6 +539,10 @@
       "id": "r-k1-b",
       "type": "reaction",
       "video": "segments/r-k1-b.mp4",
+      "renditions": {
+        "720p": "segments/r-k1-b.720p.mp4",
+        "1080p": "segments/r-k1-b.mp4"
+      },
       "duration": 3.833,
       "subtitles": "subs/r-k1-b.en.json",
       "bubble": {
@@ -541,6 +557,10 @@
       "id": "k1-ok",
       "type": "segment",
       "video": "segments/k1-ok.mp4",
+      "renditions": {
+        "720p": "segments/k1-ok.720p.mp4",
+        "1080p": "segments/k1-ok.mp4"
+      },
       "duration": 14.267,
       "subtitles": "subs/k1-ok.en.json",
       "next": "k2"
@@ -599,7 +619,7 @@
       "pov": "POV: kavşak. Oklar seçilir; yazı yok.",
       "skill": "listening",
       "cefr": "A1",
-      "background": "stills/B3-03-kavsak-pov.jpg",
+      "background": "stills/B3-03-kavsak-pov.webp",
       "options": [
         {
           "id": "a",
@@ -640,6 +660,10 @@
       "id": "r-k2-b",
       "type": "reaction",
       "video": "segments/r-k2-b.mp4",
+      "renditions": {
+        "720p": "segments/r-k2-b.720p.mp4",
+        "1080p": "segments/r-k2-b.mp4"
+      },
       "duration": 3.0,
       "subtitles": null,
       "bubble": {
@@ -655,6 +679,10 @@
       "scene": "Sahne 2: Limanda",
       "checkpoint": true,
       "video": "segments/s03.mp4",
+      "renditions": {
+        "720p": "segments/s03.720p.mp4",
+        "1080p": "segments/s03.mp4"
+      },
       "duration": 3.0,
       "subtitles": null,
       "next": "c-note"
@@ -769,7 +797,7 @@
         }
       ],
       "advance": "tap",
-      "background": "stills/B3-05-liman.jpg",
+      "background": "stills/B3-05-liman.webp",
       "next": "k3"
     },
     {
@@ -781,7 +809,7 @@
       "pov": "Resimde doğru binaya dokun.",
       "skill": "reading",
       "cefr": "A1",
-      "background": "stills/B3-05-liman.jpg",
+      "background": "stills/B3-05-liman.webp",
       "options": [
         {
           "id": "a",
@@ -833,6 +861,10 @@
       "scene": "Sahne 3: Old Station",
       "checkpoint": true,
       "video": "segments/s04.mp4",
+      "renditions": {
+        "720p": "segments/s04.720p.mp4",
+        "1080p": "segments/s04.mp4"
+      },
       "duration": 9.867,
       "subtitles": "subs/s04.en.json",
       "next": "t-gorev"
@@ -849,7 +881,7 @@
         "tr": "Tarife göre doğru yolu seç.",
         "en": "Go straight. Turn left. It's near the fish shop."
       },
-      "background": "stills/B3-05-liman.jpg",
+      "background": "stills/B3-05-liman.webp",
       "items": [
         {
           "id": "i1",
@@ -1046,7 +1078,7 @@
       ],
       "advance": "tap",
       "audio": "audio/A1-003_b3_13_hi.m4a",
-      "background": "stills/B3-07-yarim-not.jpg",
+      "background": "stills/B3-07-yarim-not.webp",
       "next": "c-clues"
     },
     {
@@ -1112,7 +1144,7 @@
       ],
       "advance": "tap",
       "questionId": "Q3",
-      "background": "stills/B3-07-yarim-not.jpg",
+      "background": "stills/B3-07-yarim-not.webp",
       "next": null
     }
   ]

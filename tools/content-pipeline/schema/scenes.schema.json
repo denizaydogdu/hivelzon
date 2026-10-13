@@ -39,7 +39,17 @@
     "segmentPath": { "type": "string", "pattern": "^segments/[A-Za-z0-9._-]+\\.mp4$" },
     "subsPath": { "type": "string", "pattern": "^subs/[A-Za-z0-9._-]+\\.en\\.json$" },
     "audioPath": { "type": "string", "pattern": "^audio/[A-Za-z0-9._-]+\\.m4a$" },
-    "stillPath": { "type": "string", "pattern": "^stills/[A-Za-z0-9._-]+\\.jpg$" },
+    "stillPath": { "type": "string", "pattern": "^stills/[A-Za-z0-9._-]+\\.(webp|jpg)$" },
+    "renditions": {
+      "description": "Video sürümleri (H-054): 720p uygulamanın varsayılanı, 1080p = video alanı. Yollar video alanıyla aynı köke göredir.",
+      "type": "object",
+      "required": ["720p", "1080p"],
+      "additionalProperties": false,
+      "properties": {
+        "720p": { "type": "string", "pattern": "^([a-z]+/)?[A-Za-z0-9._-]+\\.mp4$" },
+        "1080p": { "type": "string", "pattern": "^([a-z]+/)?[A-Za-z0-9._-]+\\.mp4$" }
+      }
+    },
     "skill": { "enum": ["listening", "reading", "spoken_interaction", "grammar", "vocabulary", "pragmatics"] },
     "cefr": { "enum": ["A1", "A2", "B1", "B2", "C1"] },
     "textTr": {
@@ -226,9 +236,10 @@
         "caption": { "type": "string", "minLength": 1 },
         "title": { "type": "string", "minLength": 1 },
         "seasonVideo": { "type": "string", "pattern": "^[A-Za-z0-9._-]+\\.mp4$" },
+        "seasonRenditions": { "$ref": "#/$defs/renditions" },
         "seasonPoster": {
-          "description": "Sezon paketindeki ilk kare (jpg): video ilk karesi gelene dek gösterilir.",
-          "type": "string", "pattern": "^[A-Za-z0-9._-]+\\.jpg$"
+          "description": "Sezon paketindeki ilk kare (webp; H-054 öncesi jpg): video ilk karesi gelene dek gösterilir.",
+          "type": "string", "pattern": "^[A-Za-z0-9._-]+\\.(webp|jpg)$"
         },
         "duration": { "type": "number", "exclusiveMinimum": 0 },
         "next": { "$ref": "#/$defs/next" }
@@ -245,6 +256,7 @@
         "scene": { "type": "string" },
         "checkpoint": { "type": "boolean" },
         "video": { "$ref": "#/$defs/segmentPath" },
+        "renditions": { "$ref": "#/$defs/renditions" },
         "duration": { "type": "number", "exclusiveMinimum": 0 },
         "subtitles": { "oneOf": [{ "$ref": "#/$defs/subsPath" }, { "type": "null" }] },
         "skippable": { "type": "boolean" },
@@ -262,6 +274,7 @@
         "scene": { "type": "string" },
         "checkpoint": { "type": "boolean" },
         "video": { "$ref": "#/$defs/segmentPath" },
+        "renditions": { "$ref": "#/$defs/renditions" },
         "duration": { "type": "number", "exclusiveMinimum": 0 },
         "subtitles": { "oneOf": [{ "$ref": "#/$defs/subsPath" }, { "type": "null" }] },
         "poster": { "$ref": "#/$defs/stillPath" },
@@ -338,6 +351,7 @@
         "id": { "$ref": "#/$defs/nodeId" },
         "type": { "const": "reaction" },
         "video": { "$ref": "#/$defs/segmentPath" },
+        "renditions": { "$ref": "#/$defs/renditions" },
         "duration": { "type": "number", "exclusiveMinimum": 0 },
         "subtitles": { "oneOf": [{ "$ref": "#/$defs/subsPath" }, { "type": "null" }] },
         "bubble": { "$ref": "#/$defs/bubble" },

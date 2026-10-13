@@ -6,15 +6,18 @@ Geliştirme sunucusu bu klasörü /packages/_season/S<n>/ adresinde sunar.
 
 - jenerik-tam.mp4: sezonun ilk açılışında Hikâye sekmesinde bir kez oynar ("Jeneriği izle" ile yeniden).
 - jenerik-baslik.mp4: yazısız kısa animasyon; her bölümün başlık ekranının arka planı (title düğümü).
-- jenerik-baslik.jpg: başlık arka planının ilk karesi; video ilk karesi gelene dek başlık ekranında görünür
+- jenerik-baslik.webp: başlık arka planının ilk karesi (H-054: WebP, önceden jpg); video ilk karesi gelene dek başlık ekranında görünür
   (bölüm açılışında boş/siyah kare olmaz).
 - jenerik-kisa.mp4: yazılı 2 sn kısa sürüm (bilgi için; bölüm başında kullanılmaz).
 
 Sezon haritası (H-035): `_evren/harita/season-<nn>.json` kataloğu varsa season.json'a `episodes`
 (12 bölüm: number, contentId, title, teaserTr, teaserStatus, available, mapPos) eklenir. Başlık
 bölümün content.json'ından, `available` paketin (`<bölüm>/_build/package/scenes.json`) varlığından
-gelir. `_evren/harita/map.jpg` varsa pakete kopyalanır ve `map` alanı (image, width, height) yazılır;
-yoksa uygulama haritayı kodla çizer.
+gelir. `_evren/harita/map.jpg` varsa pakete WebP olarak (`map.webp`, H-054) yazılır ve `map` alanı
+(image, width, height) eklenir; yoksa uygulama haritayı kodla çizer.
+
+H-054: her jenerik videosunun yanında 720p sürümü (`<ad>.720p.mp4`) bulunur; `renditions` alanı ikisini
+listeler. `video` alanı 1080p kalır (eski uygulamalar onu oynatır).
 """
 
 from __future__ import annotations
@@ -36,7 +39,7 @@ class SeasonSource:
     title: str
     title_background: str = "jenerik-baslik.mp4"
     title_duration: float = 2.5
-    title_poster: str = "jenerik-baslik.jpg"
+    title_poster: str = "jenerik-baslik.webp"
     intro: str | None = None
     short: str | None = None
     level: str | None = None
@@ -52,7 +55,8 @@ class SeasonSource:
                 return cls(season=season, title=d.get("title", f"Sezon {season}"),
                            title_background=d.get("titleBackground", "jenerik-baslik.mp4"),
                            title_duration=float(d.get("titleDuration", 2.5)),
-                           title_poster=d.get("titlePoster", "jenerik-baslik.jpg"),
+                           # Afiş her zaman WebP (H-054); kaynakta eski .jpg adı yazılıysa uzantı değişir.
+                           title_poster=Path(d.get("titlePoster", "jenerik-baslik.webp")).with_suffix(".webp").name,
                            intro=d.get("intro"), short=d.get("short"), level=d.get("level"),
                            media_dir=p.parent / "_build")
         return cls(season=season, title=f"Sezon {season}")
@@ -126,8 +130,19 @@ def build_catalogue(icerik_root: Path, season: int) -> dict | None:
     return {"episodes": episodes, "map": d.get("map")}
 
 
-def export_season(icerik_root: Path, season: int, probe=None, digest=None, poster=None) -> dict:
-    """Sezon paketini kopyalar ve season.json yazar. Video yoksa hata verir (kurgu.py çalıştırılmalı)."""
+def rendition_file(name: str, rendition: str = "720p") -> str:
+    """`jenerik-baslik.mp4` → `jenerik-baslik.720p.mp4` (media.rendition_name ile aynı kural)."""
+    p = Path(name)
+    return f"{p.stem}.{rendition}{p.suffix}"
+
+
+def export_season(icerik_root: Path, season: int, probe=None, digest=None, poster=None,
+                  rendition=None, image=None) -> dict:
+    """Sezon paketini kopyalar ve season.json yazar. Video yoksa hata verir (kurgu.py çalıştırılmalı).
+
+    rendition(src, out): 720p sürümü üretir (H-054); verilmezse yalnızca 1080p kopyalanır.
+    image(src, out): haritayı WebP'ye çevirir (H-054); verilmezse görsel olduğu gibi kopyalanır.
+    """
     src = SeasonSource.load(icerik_root, season)
     if src.media_dir is None:
         raise FileNotFoundError(f"{SEASON_SOURCE} yok (sezon {season})")
@@ -145,6 +160,13 @@ def export_season(icerik_root: Path, season: int, probe=None, digest=None, poste
         shutil.copyfile(f, tmp)
         tmp.replace(out / name)
         e = {"video": name}
+        if rendition is not None:
+            r720 = rendition_file(name)
+            tmpr = out / f".tmp-{r720}"
+            tmpr.unlink(missing_ok=True)
+            rendition(out / name, tmpr)
+            tmpr.replace(out / r720)
+            e["renditions"] = {"720p": r720, "1080p": name}
         if probe is not None:
             e["duration"] = round(probe(out / name), 3)
         if key == "titleBackground" and poster is not None and src.title_poster:
@@ -162,19 +184,37 @@ def export_season(icerik_root: Path, season: int, probe=None, digest=None, poste
         doc["episodes"] = cat["episodes"]
         name = cat.get("map")
         art = Path(icerik_root) / MAP_DIR / name if name else None
+        packed = Path(name).with_suffix(".webp").name if (name and image is not None) else name
+        stale = {name, Path(name).with_suffix(".webp").name} if name else set()
         if art is not None and art.exists():
-            tmp = out / f".{name}.tmp"
-            shutil.copyfile(art, tmp)
-            tmp.replace(out / name)
-            w, h = jpeg_size(out / name)
-            doc["map"] = {"image": name, "width": w, "height": h}
-        elif name:
-            (out / name).unlink(missing_ok=True)   # eski kopya kalmasın: uygulama kodla çizer
-    files = sorted(p for p in out.iterdir() if p.is_file() and p.suffix in (".mp4", ".jpg")
+            w, h = jpeg_size(art)
+            tmp = out / f".tmp-{packed}"
+            tmp.unlink(missing_ok=True)
+            if image is not None:
+                # Kayıpsız kaynak (map.png) varsa ondan: iki kez kayıplı sıkıştırma olmaz.
+                lossless = art.with_suffix(".png")
+                image(lossless if lossless.exists() else art, tmp)
+            else:
+                shutil.copyfile(art, tmp)
+            tmp.replace(out / packed)
+            doc["map"] = {"image": packed, "width": w, "height": h}
+            stale.discard(packed)
+        for old in stale:
+            (out / old).unlink(missing_ok=True)   # eski kopya kalmasın: uygulama kodla çizer
+    # Eski biçimler (H-054 öncesi jpg afiş) temizlenir; yalnızca güncel dosyalar listelenir.
+    if poster is not None:
+        (out / Path(src.title_poster).with_suffix(".jpg").name).unlink(missing_ok=True)
+    files = sorted(p for p in out.iterdir() if p.is_file() and p.suffix in (".mp4", ".jpg", ".webp")
                    and not p.name.startswith("."))
     doc["files"] = [{"path": p.name, "bytes": p.stat().st_size,
                      **({"sha256": digest(p)} if digest else {})} for p in files]
     doc["totalBytes"] = sum(f["bytes"] for f in doc["files"])
+    if rendition is not None:
+        shared = sum(f["bytes"] for f in doc["files"] if not f["path"].endswith(".mp4"))
+        r720 = sum(f["bytes"] for f in doc["files"] if f["path"].endswith(".720p.mp4"))
+        r1080 = sum(f["bytes"] for f in doc["files"] if f["path"].endswith(".mp4")
+                    and not f["path"].endswith(".720p.mp4"))
+        doc["renditionBytes"] = {"720p": shared + r720, "1080p": shared + r1080}
     tmp = out / ".season.json.tmp"
     tmp.write_text(json.dumps(doc, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     tmp.replace(out / "season.json")

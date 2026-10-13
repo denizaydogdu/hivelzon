@@ -7,6 +7,7 @@
 // Saf Dart: Flutter içe aktarımı yoktur; motor ve testler bu modeli kullanır.
 
 import '../../../shared/meaning/meaning_text.dart';
+import 'video_rendition.dart';
 
 /// Okunabilen `scenes.json` sürümleri.
 const Set<int> kSupportedSchemaVersions = {1, 2};
@@ -344,8 +345,13 @@ sealed class EpisodeNode {
   final String? scene;
   final bool checkpoint;
 
-  static EpisodeNode fromJson(Object? json) {
+  /// [rendition]: oynatılacak video sürümü (H-054, `renditions` alanından).
+  static EpisodeNode fromJson(
+    Object? json, [
+    String rendition = kPreferredRendition,
+  ]) {
     final j = _map(json, 'node');
+    String video(String v, Object? r) => pickRendition(v, r, rendition);
     final id = _str(j, 'id', 'node');
     final where = 'node[$id]';
     final scene = j['scene'] as String?;
@@ -360,7 +366,10 @@ sealed class EpisodeNode {
           episode: (j['episode'] as num?)?.toInt() ?? 0,
           caption: _str(j, 'caption', where),
           title: _str(j, 'title', where),
-          seasonVideo: _str(j, 'seasonVideo', where),
+          seasonVideo: video(
+            _str(j, 'seasonVideo', where),
+            j['seasonRenditions'],
+          ),
           seasonPoster: j['seasonPoster'] as String?,
           duration: _num(j['duration']) ?? 2.5,
           next: j['next'] as String?,
@@ -370,7 +379,7 @@ sealed class EpisodeNode {
           id: id,
           scene: scene,
           checkpoint: checkpoint,
-          video: _str(j, 'video', where),
+          video: video(_str(j, 'video', where), j['renditions']),
           duration: _num(j['duration']) ?? 0,
           subtitles: j['subtitles'] as String?,
           skippable: j['skippable'] != false,
@@ -381,7 +390,7 @@ sealed class EpisodeNode {
           id: id,
           scene: scene,
           checkpoint: checkpoint,
-          video: _str(j, 'video', where),
+          video: video(_str(j, 'video', where), j['renditions']),
           duration: _num(j['duration']) ?? 0,
           subtitles: j['subtitles'] as String?,
           poster: j['poster'] as String?,
@@ -405,7 +414,9 @@ sealed class EpisodeNode {
           id: id,
           scene: scene,
           checkpoint: checkpoint,
-          video: j['video'] as String?,
+          video: j['video'] is String
+              ? video(j['video'] as String, j['renditions'])
+              : null,
           duration: _num(j['duration']),
           subtitles: j['subtitles'] as String?,
           bubble: j['bubble'] == null ? null : Bubble.fromJson(j['bubble']),
@@ -507,7 +518,7 @@ class TitleNode extends SegmentNode {
   final String caption;
   final String title;
 
-  /// Sezon paketindeki dosya adı (ör. `jenerik-baslik.mp4`).
+  /// Sezon paketindeki dosya adı (ör. `jenerik-baslik.720p.mp4`; seçilen sürüm).
   final String seasonVideo;
 
   /// Videonun ilk karesi (sezon paketinde jpg). Video ilk karesi gelene dek
@@ -891,13 +902,20 @@ class Episode {
   }) : nodes = {for (final n in nodes) n.id: n},
        nodeOrder = [for (final n in nodes) n.id];
 
-  factory Episode.fromJson(Object? json) {
+  /// [rendition]: video düğümlerinin oynatılacak sürümü (H-054; varsayılan
+  /// 720p). Paket sürüm listesi taşımıyorsa `video` alanı kullanılır.
+  factory Episode.fromJson(
+    Object? json, {
+    String rendition = kPreferredRendition,
+  }) {
     final j = _map(json, 'scenes.json');
     final version = j['schemaVersion'];
     if (!kSupportedSchemaVersions.contains(version)) {
       throw EpisodeFormatException('Desteklenmeyen schemaVersion: $version');
     }
-    final nodes = _list(j['nodes']).map(EpisodeNode.fromJson).toList();
+    final nodes = [
+      for (final n in _list(j['nodes'])) EpisodeNode.fromJson(n, rendition),
+    ];
     if (nodes.isEmpty) throw EpisodeFormatException('nodes boş');
     final episode = Episode(
       schemaVersion: version as int,

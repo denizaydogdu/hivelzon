@@ -39,6 +39,7 @@ CONTENT_TYPES = {
     ".jpg": "image/jpeg",
     ".jpeg": "image/jpeg",
     ".png": "image/png",
+    ".webp": "image/webp",
 }
 RANGE_RE = re.compile(r"^bytes=(\d*)-(\d*)$")
 SEASON_PREFIX = "_season"

@@ -50,7 +50,7 @@ void main() {
 
     test('ses: karakterin sesi, kelime zamanlarıyla segmentten', () {
       final can = item('Can you hear me?');
-      expect(can.audio!.path, 'segments/s02.mp4');
+      expect(can.audio!.path, 'segments/s02.720p.mp4');
       expect(can.audio!.start, 11.027);
       expect(can.audio!.end, 12.587);
       expect(can.exampleEn, 'Can you hear me?');
@@ -59,23 +59,23 @@ void main() {
       expect(can.cueId, 's02-04');
       // "Yes, I can." → "Yes, I can hear you." satırının ilk üç kelimesi.
       final yes = item('Yes, I can.');
-      expect(yes.audio!.path, 'segments/k1-ok.mp4');
+      expect(yes.audio!.path, 'segments/k1-ok.720p.mp4');
       expect(yes.exampleEn, 'Yes, I can hear you.');
       expect(yes.exampleAudio!.end, greaterThan(yes.audio!.end!));
       // "Where is…?" → "Where is the old station?" (s05).
       final where = item('Where is…?');
-      expect(where.audio!.path, 'segments/s05.mp4');
+      expect(where.audio!.path, 'segments/s05.720p.mp4');
       expect(where.exampleEn, 'Where is the old station?');
       expect(where.kind, NotebookKind.phrase);
     });
 
     test('görsel: satırın segmentine en yakın sahne görseli', () {
-      expect(item('Can you hear me?').imagePath, 'stills/T2-pov.jpg');
+      expect(item('Can you hear me?').imagePath, 'stills/T2-pov.webp');
       // Karar anının sonucu (k2 → k2-ok): karar anının görseli.
-      expect(item('Again, please.').imagePath, 'stills/I2-telefon-hi.jpg');
-      expect(item('Yes, I can.').imagePath, 'stills/T2-pov.jpg');
-      expect(item('Where is…?').imagePath, 'stills/I5-harita.jpg');
-      expect(imageNear(b1, 's03'), 'stills/I2-telefon-hi.jpg');
+      expect(item('Again, please.').imagePath, 'stills/I2-telefon-hi.webp');
+      expect(item('Yes, I can.').imagePath, 'stills/T2-pov.webp');
+      expect(item('Where is…?').imagePath, 'stills/I5-harita.webp');
+      expect(imageNear(b1, 's03'), 'stills/I2-telefon-hi.webp');
     });
 
     test('altyazıda geçmeyen "Listen.": görsel + anlam, ses yok', () {

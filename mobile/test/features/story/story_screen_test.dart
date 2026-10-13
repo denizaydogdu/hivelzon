@@ -122,7 +122,10 @@ void main() {
   ) async {
     final handle = tester.ensureSemantics();
     await pump(tester, FakeContentSource(packageIds: _all4));
-    expect(find.text('Harita yükleniyor…'), findsOneWidget);
+    // H-054: yüklenirken spinner değil harita iskeleti; ekran okuyucu duyurur.
+    expect(find.byKey(const ValueKey('skeleton-map')), findsOneWidget);
+    expect(find.bySemanticsLabel('Harita yükleniyor…'), findsOneWidget);
+    expect(find.byType(CircularProgressIndicator), findsNothing);
     await step(tester, 600);
     expect(find.byKey(const ValueKey('season-map')), findsOneWidget);
     expect(find.byKey(const ValueKey('season-map-fallback')), findsOneWidget);

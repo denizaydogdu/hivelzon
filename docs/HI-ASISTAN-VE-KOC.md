@@ -147,3 +147,6 @@ Her aday model bu setle puanlanır: doğruluk, Türkçe açıklama kalitesi, gec
 
 ## 10. Dış referans: EnglishPractice (2026-10-12)
 Yerel Ollama + Whisper + Kokoro ile çalışan, Türk öğrenciye yönelik açık kaynak bir uygulama. Hata sınıflandırması (Hi-A), LLM düzeltme + deterministik denetim (Hi-B) ve yerel ses (Hi-C) için MIT kod desen olarak uyarlanır; içerik yalnızca referanstır. Bkz. `docs/ENGLISHPRACTICE-INCELEME.md`.
+
+## 11. Performans notu (2026-10-12)
+Hi-B'de yapay zekâ cevabı akıtarak (streaming) gösterilir; kullanıcı tam cevabı beklemez. Uzun işler arka planda.

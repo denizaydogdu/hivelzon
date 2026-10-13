@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../app/theme.dart';
 import '../../../../shared/content/content_providers.dart';
+import '../../../player/domain/video_rendition.dart';
 import '../../application/card_audio_player.dart';
 import '../../domain/notebook_item.dart';
 
@@ -41,19 +42,37 @@ class NotebookImage extends ConsumerWidget {
         aspectRatio: aspectRatio,
         child: path == null || contentId == null
             ? placeholder
-            : Image.network(
-                ref
-                    .watch(contentSourceProvider)
-                    .mediaUri(contentId, path)
-                    .toString(),
-                key: ValueKey('card-image-${item.key}'),
-                fit: BoxFit.cover,
-                alignment: _alignment(item.imageCrop),
-                cacheWidth: 720,
-                excludeFromSemantics: true,
-                errorBuilder: (_, _, _) => placeholder,
-              ),
+            : _image(ref, contentId, currentStillPath(path), path, placeholder),
       ),
+    );
+  }
+
+  /// Kart görseli (H-054: WebP). Eski kayıtlardaki `.jpg` yolu önce `.webp`
+  /// olarak denenir; açılamazsa asıl yol, o da olmazsa yer tutucu. Yüklenirken
+  /// görselin yerinde aynı renkte sakin bir kutu durur (boş alan zıplamaz).
+  Widget _image(
+    WidgetRef ref,
+    String contentId,
+    String path,
+    String original,
+    Widget placeholder,
+  ) {
+    final source = ref.watch(contentSourceProvider);
+    final loading = ColoredBox(
+      color: AppColors.seaBlue.withValues(alpha: 0.12),
+    );
+    return Image.network(
+      source.mediaUri(contentId, path).toString(),
+      key: ValueKey('card-image-${item.key}'),
+      fit: BoxFit.cover,
+      alignment: _alignment(item.imageCrop),
+      cacheWidth: 720,
+      excludeFromSemantics: true,
+      frameBuilder: (context, child, frame, sync) =>
+          frame == null && !sync ? loading : child,
+      errorBuilder: (_, _, _) => path == original
+          ? placeholder
+          : _image(ref, contentId, original, original, placeholder),
     );
   }
 

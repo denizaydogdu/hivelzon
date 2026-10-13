@@ -10,6 +10,7 @@ import '../../../app/theme.dart';
 import '../../../l10n/tr_strings.dart';
 import '../../../shared/content/content_providers.dart';
 import '../../../shared/widgets/page_header.dart';
+import '../../../shared/widgets/skeleton.dart';
 import '../../player/application/autoplay_driver.dart';
 import '../../player/data/progress_repository.dart';
 import '../application/story_providers.dart';
@@ -75,16 +76,8 @@ class _StoryScreenState extends ConsumerState<StoryScreen> {
               label: const Text(CommonTexts.retry),
             ),
           ),
-          _ => const Center(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                CircularProgressIndicator(),
-                SizedBox(height: AppSpacing.sm),
-                Text(StoryTexts.mapLoading),
-              ],
-            ),
-          ),
+          // H-054: spinner yerine haritanın iskeleti.
+          _ => const MapSkeleton(label: StoryTexts.mapLoading),
         },
       ),
     );

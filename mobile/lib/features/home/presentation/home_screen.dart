@@ -6,7 +6,9 @@ import '../../../app/router.dart';
 import '../../../app/theme.dart';
 import '../../../l10n/tr_strings.dart';
 import '../../../shared/content/content_providers.dart';
+import '../../../shared/perf/perf_log.dart';
 import '../../../shared/widgets/page_header.dart';
+import '../../../shared/widgets/skeleton.dart';
 import '../../notebook/application/notebook_providers.dart';
 import '../../notebook/presentation/notebook_screen.dart';
 import '../../profile/application/profile_providers.dart';
@@ -56,12 +58,8 @@ class HomeScreen extends ConsumerWidget {
                   label: const Text(CommonTexts.retry),
                 ),
               ),
-              _ => const _InfoCard(
-                icon: Icons.hourglass_empty_rounded,
-                title: HomeTexts.storyLoading,
-                body: '',
-                loading: true,
-              ),
+              // H-054: spinner yerine kartın iskeleti (yerleşim zıplamaz).
+              _ => const ContinueCardSkeleton(label: HomeTexts.storyLoading),
             },
             const SizedBox(height: AppSpacing.md),
             const SectionHeading(HomeTexts.reviewSection),
@@ -101,6 +99,7 @@ class _ContinueCard extends ConsumerWidget {
         ),
       );
     }
+    PerfLog.markAfterFrame('Ana Sayfa hazır');
     final resume = focus.progress.hasCheckpoint;
     final info = map.info;
     final poster = info?.titlePoster;
@@ -289,14 +288,12 @@ class _InfoCard extends StatelessWidget {
     required this.title,
     required this.body,
     this.action,
-    this.loading = false,
   });
 
   final IconData icon;
   final String title;
   final String body;
   final Widget? action;
-  final bool loading;
 
   @override
   Widget build(BuildContext context) {
@@ -310,14 +307,7 @@ class _InfoCard extends StatelessWidget {
           children: [
             Row(
               children: [
-                if (loading)
-                  const SizedBox(
-                    width: 24,
-                    height: 24,
-                    child: CircularProgressIndicator(strokeWidth: 3),
-                  )
-                else
-                  Icon(icon, color: theme.colorScheme.primary),
+                Icon(icon, color: theme.colorScheme.primary),
                 const SizedBox(width: AppSpacing.sm),
                 Expanded(
                   child: Text(

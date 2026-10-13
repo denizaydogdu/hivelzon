@@ -155,7 +155,9 @@ void main() {
       await settle(tester);
       // "Yes, I can" k1-ok segmentinde 0,0 sn'de başlar (kelime zamanı).
       expect(
-        platform.seeks.where((s) => s.$1.endsWith('A1-001/segments/k1-ok.mp4')),
+        platform.seeks.where(
+          (s) => s.$1.endsWith('A1-001/segments/k1-ok.720p.mp4'),
+        ),
         isNotEmpty,
       );
       await tester.tap(find.byTooltip('Kapat').last);
@@ -228,7 +230,7 @@ void main() {
       expect(
         platform.seeks.where(
           (s) =>
-              s.$1.endsWith('segments/s02.mp4') &&
+              s.$1.endsWith('segments/s02.720p.mp4') &&
               s.$2 == const Duration(microseconds: 11027000),
         ),
         isNotEmpty,
@@ -333,10 +335,10 @@ void main() {
       await tapKey(tester, 'task-listen');
       final playing = platform.seeks.last.$1;
       final phrase = {
-        's02.mp4': 'Can you hear me?',
-        'k1-ok.mp4': 'Yes, I can.',
-        'k2-ok.mp4': 'Again, please.',
-        's05.mp4': 'Where is…?',
+        's02.720p.mp4': 'Can you hear me?',
+        'k1-ok.720p.mp4': 'Yes, I can.',
+        'k2-ok.720p.mp4': 'Again, please.',
+        's05.720p.mp4': 'Where is…?',
       }.entries.firstWhere((e) => playing.endsWith(e.key)).value;
       final f = find.widgetWithText(OutlinedButton, phrase);
       await tester.ensureVisible(f);

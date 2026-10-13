@@ -290,14 +290,14 @@ void main() {
       (tester) async {
         await pumpPlayer(tester);
         await toS02(tester);
-        expect(platform.isPlaying('segments/s02.mp4'), isTrue);
+        expect(platform.isPlaying('segments/s02.720p.mp4'), isTrue);
         await tapKey(tester, 'mission-button');
         await step(tester, 400);
         expect(find.byKey(const ValueKey('mission-sheet')), findsOneWidget);
         expect(find.text('Mesajdaki kişiyi ve yeri bul.'), findsOneWidget);
         expect(find.text('Can you hear me?'), findsOneWidget);
         expect(find.text('Listen.'), findsOneWidget);
-        expect(platform.isPlaying('segments/s02.mp4'), isFalse);
+        expect(platform.isPlaying('segments/s02.720p.mp4'), isFalse);
         // Anlamı olan ifade dokunulabilir; "Listen." anlamı H-052 ile geldi.
         expect(find.byKey(const ValueKey('mission-phrase-0')), findsOneWidget);
         expect(find.byKey(const ValueKey('mission-phrase-4')), findsOneWidget);
@@ -308,11 +308,11 @@ void main() {
         await tapKey(tester, 'meaning-close');
         await step(tester, 400);
         expect(find.byKey(const ValueKey('mission-sheet')), findsOneWidget);
-        expect(platform.isPlaying('segments/s02.mp4'), isFalse);
+        expect(platform.isPlaying('segments/s02.720p.mp4'), isFalse);
         await tapKey(tester, 'mission-close');
         await step(tester, 400);
         expect(find.byKey(const ValueKey('mission-sheet')), findsNothing);
-        expect(platform.isPlaying('segments/s02.mp4'), isTrue);
+        expect(platform.isPlaying('segments/s02.720p.mp4'), isTrue);
         await tester.pumpWidget(const SizedBox());
         await step(tester, 6000);
       },
@@ -336,12 +336,12 @@ void main() {
         await pumpPlayer(tester);
         await toS02(tester);
         expect(find.text('OK. Friday.'), findsOneWidget);
-        expect(platform.isPlaying('segments/s02.mp4'), isTrue);
+        expect(platform.isPlaying('segments/s02.720p.mp4'), isTrue);
 
         await tester.tap(find.byKey(const ValueKey('subtitle-line')));
         await step(tester, 600);
         expect(find.byKey(const ValueKey('meaning-word-1')), findsOneWidget);
-        expect(platform.isPlaying('segments/s02.mp4'), isFalse);
+        expect(platform.isPlaying('segments/s02.720p.mp4'), isFalse);
         expect(find.text('Türkçesini göster'), findsOneWidget);
         expect(find.text('Tamam. Cuma.'), findsNothing, reason: '2. adım');
 
@@ -350,7 +350,7 @@ void main() {
         expect(find.byKey(const ValueKey('meaning-gloss')), findsOneWidget);
         expect(find.text('cuma'), findsOneWidget);
         final seek = platform.seeks.last;
-        expect(seek.$1, endsWith('segments/s02.mp4'));
+        expect(seek.$1, endsWith('segments/s02.720p.mp4'));
         expect(seek.$2, const Duration(microseconds: 1357000));
         expect(events.events.single.target, 'Friday');
         expect(events.events.single.sourceId, 's02-01');
@@ -370,7 +370,7 @@ void main() {
         await tapKey(tester, 'meaning-close');
         await step(tester, 600);
         expect(find.byKey(const ValueKey('meaning-word-1')), findsNothing);
-        expect(platform.isPlaying('segments/s02.mp4'), isTrue);
+        expect(platform.isPlaying('segments/s02.720p.mp4'), isTrue);
         expect(platform.seeks.last.$2.inMilliseconds, closeTo(700, 60));
         await tester.pumpWidget(const SizedBox());
         await step(tester, 6000);
@@ -415,17 +415,17 @@ void main() {
       expect(find.text('Yapay zekâ ile üretilmiştir'), findsOneWidget);
       expect(find.byKey(const ValueKey('recap-skip')), findsNothing);
       // Başlık arka planı sezon paketinden gelir; ilk kare afişi altta durur.
-      expect(platform.isPlaying('_season/S1/jenerik-baslik.mp4'), isTrue);
+      expect(platform.isPlaying('_season/S1/jenerik-baslik.720p.mp4'), isTrue);
       expect(find.byKey(const ValueKey('title-poster')), findsOneWidget);
       // Başlıkta oynatma denetimi (duraklat simgesi) yok.
       expect(find.byIcon(Icons.pause_rounded), findsNothing);
       // Dokunmak başlığı durdurmaz.
       await tester.tapAt(const Offset(200, 600));
       await step(tester, 200);
-      expect(platform.isPlaying('_season/S1/jenerik-baslik.mp4'), isTrue);
+      expect(platform.isPlaying('_season/S1/jenerik-baslik.720p.mp4'), isTrue);
       await step(tester, 1000); // 1 sn'lik başlık biter
       expect(find.text('A Strange Message'), findsNothing);
-      expect(platform.isPlaying('segments/s02.mp4'), isTrue);
+      expect(platform.isPlaying('segments/s02.720p.mp4'), isTrue);
       await tester.pumpWidget(const SizedBox());
       await step(tester, 1200);
     });
@@ -440,14 +440,14 @@ void main() {
       await step(tester, 900); // başlık biter → özet
       expect(find.text('Önceki bölümde'), findsOneWidget);
       expect(find.text('Atla'), findsOneWidget);
-      expect(platform.isPlaying('segments/recap.mp4'), isTrue);
+      expect(platform.isPlaying('segments/recap.720p.mp4'), isTrue);
       final skip = tester.getSize(find.byKey(const ValueKey('recap-skip')));
       expect(skip.height, greaterThanOrEqualTo(48));
       await tapKey(tester, 'recap-skip');
       await step(tester, 200);
       expect(find.text('Önceki bölümde'), findsNothing);
-      expect(platform.isPlaying('segments/recap.mp4'), isFalse);
-      expect(platform.isPlaying('segments/s02.mp4'), isTrue);
+      expect(platform.isPlaying('segments/recap.720p.mp4'), isFalse);
+      expect(platform.isPlaying('segments/s02.720p.mp4'), isTrue);
       expect(repo.checkpoints['A1-002']!.checkpointNodeId, 's02');
       await tester.pumpWidget(const SizedBox());
       await step(tester, 1200);
@@ -461,7 +461,7 @@ void main() {
       expect(find.text('Önceki bölümde'), findsOneWidget);
       await step(tester, 1200); // özet biter
       expect(find.text('Önceki bölümde'), findsNothing);
-      expect(platform.isPlaying('segments/s02.mp4'), isTrue);
+      expect(platform.isPlaying('segments/s02.720p.mp4'), isTrue);
       await tester.pumpWidget(const SizedBox());
       await step(tester, 1200);
     });
