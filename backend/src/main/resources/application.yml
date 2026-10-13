@@ -50,6 +50,11 @@ management:
   endpoint:
     health:
       show-details: never
+  health:
+    # E-posta sunucusuna ulaşılamaması uygulamayı "DOWN" göstermesin (giriş kodu gönderimi
+    # MailPort'ta hatayla ele alınır). CI'da SMTP yok; yerelde Mailpit kapalı olabilir.
+    mail:
+      enabled: false
 
 hivelzon:
   security:
