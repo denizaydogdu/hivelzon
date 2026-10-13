@@ -18,6 +18,9 @@ gelir. `_evren/harita/map.jpg` varsa pakete WebP olarak (`map.webp`, H-054) yaz�
 
 H-054: her jenerik videosunun yanında 720p sürümü (`<ad>.720p.mp4`) bulunur; `renditions` alanı ikisini
 listeler. `video` alanı 1080p kalır (eski uygulamalar onu oynatır).
+
+Konu setleri (H-051): `_evren/setler/*.json` varsa `sets/` altına set verisi, sahne ve öğe görselleri
+(WebP) ve ses kesitleri yazılır; season.json'a `topicSets` özeti eklenir (bkz. sets.py).
 """
 
 from __future__ import annotations
@@ -26,6 +29,8 @@ import json
 import shutil
 from dataclasses import dataclass
 from pathlib import Path
+
+from .sets import export_sets, sets_dir
 
 SEASON_SOURCE = Path("_evren") / "jenerik" / "season.json"
 SEASON_BUILD = Path("_evren") / "_build" / "season"
@@ -137,11 +142,14 @@ def rendition_file(name: str, rendition: str = "720p") -> str:
 
 
 def export_season(icerik_root: Path, season: int, probe=None, digest=None, poster=None,
-                  rendition=None, image=None) -> dict:
+                  rendition=None, image=None, set_media: dict | None = None) -> dict:
     """Sezon paketini kopyalar ve season.json yazar. Video yoksa hata verir (kurgu.py çalıştırılmalı).
 
     rendition(src, out): 720p sürümü üretir (H-054); verilmezse yalnızca 1080p kopyalanır.
     image(src, out): haritayı WebP'ye çevirir (H-054); verilmezse görsel olduğu gibi kopyalanır.
+    set_media: konu setlerinin medya adımları (H-051; `sets.export_sets` anahtar sözcükleri: crop, scene,
+    cut, gain, probe, size). `_evren/setler/` varsa setler her durumda yazılır; medya adımı verilmezse
+    yalnızca JSON üretilir (testler).
     """
     src = SeasonSource.load(icerik_root, season)
     if src.media_dir is None:
@@ -201,6 +209,8 @@ def export_season(icerik_root: Path, season: int, probe=None, digest=None, poste
             stale.discard(packed)
         for old in stale:
             (out / old).unlink(missing_ok=True)   # eski kopya kalmasın: uygulama kodla çizer
+    if sets_dir(icerik_root).is_dir():
+        doc["topicSets"] = export_sets(icerik_root, season, out, **(set_media or {}))
     # Eski biçimler (H-054 öncesi jpg afiş) temizlenir; yalnızca güncel dosyalar listelenir.
     if poster is not None:
         (out / Path(src.title_poster).with_suffix(".jpg").name).unlink(missing_ok=True)

@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:hivelzon/features/player/domain/episode.dart';
 import 'package:hivelzon/features/player/domain/subtitles.dart';
+import 'package:hivelzon/features/topic_sets/domain/topic_set.dart';
 import 'package:hivelzon/shared/content/content_source.dart';
 
 import 'fixtures.dart';
@@ -15,7 +16,12 @@ class FakeContentSource implements ContentSource {
     this.withCatalogue = true,
     this.mapImage,
     this.realSubtitles = false,
+    this.withTopicSets = true,
   });
+
+  /// Sezon paketinde konu setleri olsun mu (H-051; gerçek paket kopyaları).
+  bool withTopicSets;
+  int topicSetLoads = 0;
 
   /// `true`: altyazı `test/fixtures/subs/<id>/<dosya>`'dan okunur (yoksa hata);
   /// `false`: her segment için B1 s02 altyazısı (oynatıcı testleri).
@@ -88,7 +94,15 @@ class FakeContentSource implements ContentSource {
       mapWidth: mapImage == null ? null : 1520,
       mapHeight: mapImage == null ? null : 2688,
       episodes: withCatalogue ? catalogue(packageIds) : const [],
+      topicSets: withTopicSets ? topicSetSummaries() : const [],
     );
+  }
+
+  @override
+  Future<TopicSet> loadTopicSet(int season, String path) async {
+    topicSetLoads++;
+    if (fail) throw ContentUnavailableException('kapalı');
+    return loadTopicSetFixture(path.split('/').last.replaceAll('.json', ''));
   }
 
   @override
@@ -123,3 +137,14 @@ List<SeasonEpisode> catalogue(List<String> built) => [
       mapY: 0.9 - 0.07 * i,
     ),
 ];
+
+/// Sezon paketindeki konu seti özetleri (gerçek dışa aktarım kopyası).
+List<TopicSetSummary> topicSetSummaries() => [
+  for (final t
+      in (jsonDecode(fixtureText('sets/topic_sets.json'))['topicSets'] as List))
+    TopicSetSummary.fromJson((t as Map).cast<String, dynamic>()),
+];
+
+TopicSet loadTopicSetFixture(String id) => TopicSet.fromJson(
+  (jsonDecode(fixtureText('sets/$id.json')) as Map).cast<String, dynamic>(),
+);

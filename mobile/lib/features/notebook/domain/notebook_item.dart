@@ -14,7 +14,10 @@ enum NotebookSource {
   userSaved('user_saved'),
 
   /// Bölümde anlamına bakılan kelime (öğrenme olayı).
-  lookup('lookup');
+  lookup('lookup'),
+
+  /// Konu setinden eklenen kelime (H-051: "Hepsini defterime ekle" ya da tek tek).
+  topicSet('topic_set');
 
   const NotebookSource(this.code);
 

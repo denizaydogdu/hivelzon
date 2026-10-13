@@ -174,6 +174,22 @@ void main() {
     expect(find.text('Görev tamam!'), findsOneWidget);
     expect(find.text('Old Station nerede?'), findsOneWidget);
     expect(find.textContaining('C2 · Not'), findsOneWidget);
+    // H-051: bölüm bir konu setini açar; bölüm sonunda tek satır ve düğme.
+    final setLine = find.byKey(const ValueKey('end-topic-set'));
+    await tester.scrollUntilVisible(
+      setLine,
+      200,
+      scrollable: find.descendant(
+        of: find.byKey(const ValueKey('end-view')),
+        matching: find.byType(Scrollable),
+      ),
+    );
+    expect(
+      tester.widget<Text>(setLine).data,
+      "Yeni konu seti açıldı: Alex'in odası",
+    );
+    expect(find.byKey(const ValueKey('end-open-topic-set')), findsOneWidget);
+    expect(find.text('YENİ KONU SETİ'), findsOneWidget);
     expect(repo.checkpoints, isEmpty, reason: 'bitince kayıt silinir');
     expect(repo.episodeFlags['A1-001'], isEmpty);
     // H-035: bölüm bitti, kapı ölçütleri kaydedildi (sonraki bölüm açılır).

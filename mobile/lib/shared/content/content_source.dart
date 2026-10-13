@@ -1,6 +1,7 @@
 import '../../features/player/domain/episode.dart';
 import '../../features/player/domain/subtitles.dart';
 import '../../features/player/domain/video_rendition.dart';
+import '../../features/topic_sets/domain/topic_set.dart';
 
 /// Sunucudaki bir bölüm paketinin özeti (`/packages/index.json`).
 class PackageSummary {
@@ -89,6 +90,7 @@ class SeasonInfo {
     this.mapImage,
     this.mapWidth,
     this.mapHeight,
+    this.topicSets = const [],
   });
 
   /// [rendition]: jenerik videolarının oynatılacak sürümü (H-054).
@@ -121,6 +123,10 @@ class SeasonInfo {
       mapImage: map?['image'] as String?,
       mapWidth: (map?['width'] as num?)?.toInt(),
       mapHeight: (map?['height'] as num?)?.toInt(),
+      topicSets: [
+        for (final t in (j['topicSets'] as List? ?? const []))
+          TopicSetSummary.fromJson((t as Map).cast<String, dynamic>()),
+      ]..sort((a, b) => a.order.compareTo(b.order)),
     );
   }
 
@@ -147,6 +153,9 @@ class SeasonInfo {
   final String? mapImage;
   final int? mapWidth;
   final int? mapHeight;
+
+  /// Konu setleri (H-051; yoksa boş): `sets/<id>.json` özetleri.
+  final List<TopicSetSummary> topicSets;
 
   /// Harita yüksekliği / genişliği.
   double? get mapAspect =>
@@ -183,4 +192,16 @@ abstract interface class ContentSource {
 
   /// Sezon paketindeki bir dosyanın adresi (`/packages/_season/S<n>/<yol>`).
   Uri seasonMediaUri(int season, String path);
+
+  /// Konu seti verisi (H-051): sezon paketindeki `sets/<id>.json`.
+  Future<TopicSet> loadTopicSet(int season, String path);
+}
+
+/// Defter kartındaki görsel ya da ses yolu: bölüm paketinde (`stills/x.webp`)
+/// ya da sezon paketinde (`_season/S1/sets/…`, konu setleri, H-051).
+Uri resolveMediaUri(ContentSource source, String contentId, String path) {
+  final season = parseSeasonMediaPath(path);
+  return season == null
+      ? source.mediaUri(contentId, path)
+      : source.seasonMediaUri(season.$1, season.$2);
 }

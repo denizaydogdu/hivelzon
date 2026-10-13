@@ -6,10 +6,12 @@ import '../../../app/router.dart';
 import '../../../app/theme.dart';
 import '../../../l10n/tr_strings.dart';
 import '../../../shared/content/content_providers.dart';
+import '../../../shared/content/content_source.dart';
 import '../../../shared/perf/perf_log.dart';
 import '../../../shared/text/turkish.dart';
 import '../../../shared/widgets/skeleton.dart';
 import '../../player/presentation/player_screen.dart';
+import '../../topic_sets/presentation/topic_set_widgets.dart';
 import '../application/card_audio_player.dart';
 import '../application/notebook_providers.dart';
 import '../domain/notebook_item.dart';
@@ -20,10 +22,16 @@ import 'widgets/card_face.dart';
 CardAudioPlayer createCardAudio(WidgetRef ref) {
   final source = ref.read(contentSourceProvider);
   return CardAudioPlayer(
-    uriFor: source.mediaUri,
+    uriFor: (contentId, path) => resolveMediaUri(source, contentId, path),
     factory: ref.read(videoControllerFactoryProvider),
   );
 }
+
+/// Defterden çıkarılabilen kart: kullanıcının eklediği ya da konu setinden
+/// gelen (H-051). Bölümün hedef ifadeleri ve bakılan kelimeler kalır.
+bool isRemovable(NotebookItem item) =>
+    item.source == NotebookSource.userSaved ||
+    item.source == NotebookSource.topicSet;
 
 /// Tekrar oturumunu açar; dönünce sayılar yenilenir.
 Future<void> openReview(BuildContext context, WidgetRef ref) async {
@@ -106,15 +114,21 @@ class _NotebookScreenState extends ConsumerState<NotebookScreen> {
                           value: 1,
                           label: Text(NotebookTexts.tabClues),
                         ),
+                        ButtonSegment(
+                          value: 2,
+                          label: Text(NotebookTexts.tabSets),
+                        ),
                       ],
                       selected: {_tab},
                       onSelectionChanged: (s) => setState(() => _tab = s.first),
                     ),
                     const SizedBox(height: AppSpacing.xs),
                     Text(
-                      _tab == 0
-                          ? NotebookTexts.phrasesIntro
-                          : NotebookTexts.cluesIntro,
+                      switch (_tab) {
+                        0 => NotebookTexts.phrasesIntro,
+                        1 => NotebookTexts.cluesIntro,
+                        _ => NotebookTexts.setsIntro,
+                      },
                       key: const ValueKey('notebook-intro'),
                       style: theme.textTheme.bodyMedium,
                     ),
@@ -122,7 +136,11 @@ class _NotebookScreenState extends ConsumerState<NotebookScreen> {
                   ],
                 ),
               ),
-              if (_tab == 0) ..._phrases(context) else ..._clues(context),
+              ...switch (_tab) {
+                0 => _phrases(context),
+                1 => _clues(context),
+                _ => _sets(),
+              },
             ],
           ),
         ),
@@ -235,9 +253,7 @@ class _NotebookScreenState extends ConsumerState<NotebookScreen> {
           entry: list[i],
           audio: _audio,
           onOpen: () => _openDetail(list[i]),
-          onRemove: list[i].item.source == NotebookSource.userSaved
-              ? () => _remove(list[i])
-              : null,
+          onRemove: isRemovable(list[i].item) ? () => _remove(list[i]) : null,
         ),
       ),
     );
@@ -300,6 +316,15 @@ class _NotebookScreenState extends ConsumerState<NotebookScreen> {
       );
     }
   }
+
+  /// H-051: hikâye mekânlarına bağlı konu setleri.
+  List<Widget> _sets() => const [
+    SliverPadding(
+      padding: EdgeInsets.symmetric(horizontal: AppSpacing.sm),
+      sliver: SliverToBoxAdapter(child: TopicSetsSection()),
+    ),
+    SliverToBoxAdapter(child: SizedBox(height: AppSpacing.lg)),
+  ];
 
   List<Widget> _clues(BuildContext context) {
     final board = ref.watch(clueBoardProvider);

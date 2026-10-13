@@ -1,0 +1,48 @@
+{
+  "topicSets": [
+    {
+      "id": "alex-room",
+      "order": 1,
+      "titleTr": "Alex'in odası",
+      "unlockAfter": "A1-001",
+      "unlockEpisode": 1,
+      "itemCount": 10,
+      "cover": "alex-room/scene.webp",
+      "path": "sets/alex-room.json",
+      "bytes": 550458
+    },
+    {
+      "id": "maya-shop",
+      "order": 2,
+      "titleTr": "Maya'nın dükkânı",
+      "unlockAfter": "A1-002",
+      "unlockEpisode": 2,
+      "itemCount": 8,
+      "cover": "maya-shop/scene.webp",
+      "path": "sets/maya-shop.json",
+      "bytes": 490767
+    },
+    {
+      "id": "harbour",
+      "order": 3,
+      "titleTr": "Liman",
+      "unlockAfter": "A1-003",
+      "unlockEpisode": 3,
+      "itemCount": 8,
+      "cover": "harbour/scene.webp",
+      "path": "sets/harbour.json",
+      "bytes": 704412
+    },
+    {
+      "id": "two-notes",
+      "order": 4,
+      "titleTr": "Masadaki iki not",
+      "unlockAfter": "A1-004",
+      "unlockEpisode": 4,
+      "itemCount": 4,
+      "cover": "two-notes/scene.webp",
+      "path": "sets/two-notes.json",
+      "bytes": 274355
+    }
+  ]
+}

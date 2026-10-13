@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../app/theme.dart';
 import '../../../../l10n/tr_strings.dart';
+import '../../../../shared/text/turkish.dart';
 import '../../domain/episode.dart';
 import '../../domain/episode_engine.dart';
 import 'hi_avatar.dart';
@@ -9,10 +10,24 @@ import 'player_ui.dart';
 
 /// Bölüm sonu: görev tamam, toplanan ipuçları, açık soru, hedef ifadeler.
 class EndView extends StatelessWidget {
-  const EndView({super.key, required this.engine, required this.onBack});
+  const EndView({
+    super.key,
+    required this.engine,
+    required this.onBack,
+    this.topicSetTitle,
+    this.topicSetIsNew = true,
+    this.onOpenTopicSet,
+  });
 
   final EpisodeEngine engine;
   final VoidCallback onBack;
+
+  /// Bu bölüm bitince açılan konu seti (H-051); yoksa satır gösterilmez.
+  final String? topicSetTitle;
+
+  /// İlk bitirişte "açıldı"; tekrar oynayışta yalnızca setin adı.
+  final bool topicSetIsNew;
+  final VoidCallback? onOpenTopicSet;
 
   @override
   Widget build(BuildContext context) {
@@ -145,6 +160,49 @@ class EndView extends StatelessWidget {
                 style: theme.textTheme.bodyMedium,
               ),
             ]),
+            if (topicSetTitle != null) ...[
+              const SizedBox(height: AppSpacing.sm),
+              section(
+                upperTr(
+                  topicSetIsNew
+                      ? PlayerTexts.newTopicSetLabel
+                      : PlayerTexts.topicSetLabel,
+                ),
+                Icons.photo_library_rounded,
+                [
+                  Text(
+                    topicSetIsNew
+                        ? PlayerTexts.newTopicSet(topicSetTitle!)
+                        : PlayerTexts.topicSet(topicSetTitle!),
+                    key: const ValueKey('end-topic-set'),
+                    style: theme.textTheme.titleMedium?.copyWith(
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                  if (onOpenTopicSet != null) ...[
+                    const SizedBox(height: AppSpacing.xs),
+                    OutlinedButton.icon(
+                      key: const ValueKey('end-open-topic-set'),
+                      onPressed: onOpenTopicSet,
+                      style: OutlinedButton.styleFrom(
+                        minimumSize: const Size.fromHeight(48),
+                        foregroundColor: AppColors.seaBlue,
+                        side: const BorderSide(
+                          color: AppColors.seaBlue,
+                          width: 1.5,
+                        ),
+                        textStyle: const TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                      icon: const Icon(Icons.grid_view_rounded),
+                      label: const Text(PlayerTexts.openTopicSet),
+                    ),
+                  ],
+                ],
+              ),
+            ],
             const SizedBox(height: AppSpacing.md),
             PrimaryAction(
               key: const ValueKey('end-back'),

@@ -35,7 +35,10 @@
 | **Hedef ifade** | Bölümde öğretilen ifade. | |
 | **İpucu panosu / ipucu** | Hikâyede bulunan gizem ipuçları ve açık sorular. | |
 | **Hi'nin ipucu** | Karar anında Hi'nin verdiği dil yardımı. Bağlamdan ayrılır ("Hi'den ipucu al"). | |
-| **Defter** | İfadeler ve İpucu panosu. | "Kelime listesi" |
+| **Defter** | İfadeler, İpucu panosu ve Konu setleri. | "Kelime listesi" |
+| **Konu seti** | Hikâyedeki bir yerin nesneleri (H-051): "Alex'in odası". | "Kelime paketi", "Tema" |
+| **nesne** | Konu setindeki ve sahnedeki öğe. Sette sayarken "nesne" denir ("10 nesne"); deftere girince "ifade" olarak sayılır. | Sette "kelime" ya da "kart" saymak |
+| **Sahne avı** | Sahne görselinde nesneyi bulma oyunu. Süre ve puan yok. | "Oyun", "Test" |
 
 ## 3. Ana Sayfa
 
@@ -164,6 +167,33 @@ Sonraki adım: oynatıcı metinleri de `tr_strings.dart` dosyasına taşınabili
 | Geri bildirim | "Doğru!", "Sorun değil, birlikte bakalım.", "Doğrusu bu.", "Seçtiğin: …" | aynı | Suçlamasız. |
 | Kartın yüzü | "TÜRKÇE ANLAMI", "BÖLÜMDEKİ CÜMLE", "Cümleyi dinle", "İfadeyi dinle", "Görsel yok" | aynı | |
 
+### 5.4 Konu setleri ve sahne avı (H-051)
+
+| Yer | Metin | Not |
+|---|---|---|
+| Defter sekmesi | **Konu setleri** | Üçüncü sekme. |
+| Açıklama | Hikâyedeki yerlerin nesneleri. Bir bölümü bitirince o bölümün yeri açılır. | Tek cümle. |
+| Set satırı | "Alex'in odası" · "10 nesne" | Sayı cümle içinde değil ama ne sayıldığı yazar. |
+| Kilitli set | "Liman" · "Bölüm 3'ü bitirince açılır." | `accusativeNumber`; zaman ya da geri sayım yok. Ekran okuyucu: "Liman. Bölüm 3'ü bitirince açılır." |
+| Yükleniyor / hata / boş | "Konu setleri hazırlanıyor…" (iskelet) · "Konu setleri açılamadı. Bağlantını kontrol edip tekrar dene." + **Tekrar dene** · "Henüz konu seti yok. Yeni setler bölümlerle birlikte gelir." | |
+| Set sayfası | Üst çubukta setin adı. **Sahne avı** · "Nesnenin İngilizce adını oku, sonra resimde ona dokun. Süre yok." · **Sahne avına başla** | |
+| Izgara | **Nesneler** · "Bu sette 10 nesne var. Birine dokununca kartı açılır." / "Bu sette 10 nesne var; 3'ü defterinde." | `possessiveNumber`. |
+| Ekleme | **Hepsini defterime ekle** → **Hepsi defterinde** · kartta **Defterime ekle** → **Defterinde** | Fiil; ekledikten sonra durum. |
+| Bildirim | "10 ifade defterine eklendi. Tekrar zamanı gelince "Kelime tekrarı" bölümünde karşına çıkar." / ""radio" defterine eklendi." / "Bu setteki ifadeler zaten defterindeydi." / "Şu an deftere eklenemedi. Biraz sonra tekrar dene." | Deftere girince "ifade". |
+| Kart | "ÖRNEK CÜMLE" | Set örneği bölüm cümlesi olmayabilir; bölüm kartında "BÖLÜMDEKİ CÜMLE" kalır. |
+| Ekran okuyucu (ızgara) | "radio, telsiz, defterinde. Kartı aç." | |
+| Sahne avı üst çubuk | "Sahne avı · Alex'in odası" · "Nesne 2 / 10" · kapat: "Sahne avından çık" | |
+| Soru | **Find the radio!** (+ kelimenin sesi, varsa; 🔊 "Dinle") | Başta yalnızca İngilizce (kullanıcı kararı 2026-10-13). |
+| Yanlış dokunuş | "Bir daha bakalım." + Türkçe yardım satırı ("Telsizi bul") | İlk yanlıştan sonra gelir; yeri baştan ayrılmıştır (resim kaymaz). Kırmızı ya da çarpı yok; dokunulan yerde nötr halka. Ekran okuyucu açıkken yardım satırı ipucuna kadar gizli. |
+| Büyütme | İki parmakla büyütme ve kaydırma; alt çubukta **Yakınlaştır** (2 kat, en çok 4) ve **Resmin tamamını göster** | Dokunma denetimi büyütmede de doğru. |
+| İki kaçırmadan sonra | "İpucu: parlayan yere bak." | Bölge nazikçe parlar ("Hareketi azalt" açıkken durağan). |
+| Buldu | "Buldun!" · kelime · Türkçesi · ses (varsa) · **Devam et** / sonda **Sonucu gör** | |
+| Bilmiyorum | **Bilmiyorum** (Kelime tekrarındaki biçim) → "Burada. Sorun değil, birlikte bakalım." | |
+| Ekran okuyucu seçenekleri | "Doğru nesneyi seç:" + Türkçe adlar | Bölgeler de Türkçe adıyla düğmedir. |
+| Özet | **Sahne avı tamam** · "10 nesnenin hepsini kendin buldun." / "10 nesneden 8 tanesini kendin buldun." / "Bu sefer nesnelere birlikte baktık." · "2 nesneye birlikte baktık." · "Defterindeki 10 ifadenin tekrar zamanı güncellendi." · "Bu nesneleri defterine eklersen kelime tekrarında da karşına çıkar." · **Tekrar oyna** · **Sete dön** | Puan, yüzde ya da "yanlış" sayısı yok. |
+| Defterden çıkarma | Konu setinden gelen ifade, "Deftere ekle" ile eklenen gibi "Defterden çıkar" menüsüyle çıkarılır. Set etkilenmez; "Hepsini defterime ekle" yeniden ekler. | |
+| Bölüm sonu | **YENİ KONU SETİ** · "Yeni konu seti açıldı: Alex'in odası" · **Konu setini aç**. Tekrar oynayışta **KONU SETİ** · "Bu bölümün yerindeki nesneler: Alex'in odası". | |
+
 ## 6. Profil
 
 Düzen: başlık ve tek cümle, ardından **Sana nasıl seslenelim?**, **Defter** ve **Günlük hedef** bölümleri.
@@ -197,3 +227,4 @@ Neden: Sekmelerin başlık düzeni öteki sekmelerle aynı olur. Ne geleceği ve
 - `test/features/profile/profile_test.dart`: ad kuralı, kalıcılık (`app_meta`) ve Profil ekranı.
 - `test/features/notebook/notebook_ui_test.dart`: Ana Sayfa'da adlı ve adsız selam; tekrar zamanı gelmiş ve gelmemiş durum; Defter açıklamaları.
 - `test/features/home/home_screen_test.dart` ve `test/features/story/story_screen_test.dart`: sezon ilerleme cümlesi, harita başlığı ve açıklaması.
+- `test/features/topic_sets/`: konu seti listesi ve kilit nedeni, ızgara ve ekleme metinleri, sahne avı geri bildirimleri ve özeti, bölüm sonu satırı (H-051).

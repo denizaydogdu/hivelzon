@@ -91,7 +91,7 @@ RetrievalTask buildTask({
         tokens: shuffled,
         answerTokens: tokens,
       );
-    case TaskType.type || TaskType.selfCheck:
+    case TaskType.type || TaskType.selfCheck || TaskType.sceneHunt:
       return RetrievalTask(type: type, item: item);
   }
 }

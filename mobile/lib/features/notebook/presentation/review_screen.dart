@@ -223,7 +223,7 @@ class _ReviewScreenState extends ConsumerState<ReviewScreen> {
       TaskType.listenChoice => ReviewTexts.listenChoice,
       TaskType.arrange => ReviewTexts.arrange,
       TaskType.type => ReviewTexts.type,
-      TaskType.selfCheck => ReviewTexts.selfCheck,
+      TaskType.selfCheck || TaskType.sceneHunt => ReviewTexts.selfCheck,
     };
     final children = <Widget>[
       Text(
@@ -323,7 +323,7 @@ class _ReviewScreenState extends ConsumerState<ReviewScreen> {
             child: const Text(ReviewTexts.check),
           ),
         ]);
-      case TaskType.selfCheck:
+      case TaskType.selfCheck || TaskType.sceneHunt:
         if (!_revealed) {
           children.add(
             FilledButton(

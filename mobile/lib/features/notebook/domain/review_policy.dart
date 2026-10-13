@@ -19,7 +19,11 @@ enum TaskType {
   type('type'),
 
   /// Seçenek üretilemiyorsa: kartı düşün, sonra "Bildim / Bilmiyorum".
-  selfCheck('self_check');
+  selfCheck('self_check'),
+
+  /// Konu setinin sahne avı (H-051): kelimeyi sahne görselinde bul. Tekrar
+  /// oturumu bu görevi seçmez; sonuç yalnızca sahne avından yazılır.
+  sceneHunt('scene_hunt');
 
   const TaskType(this.code);
 
@@ -141,6 +145,10 @@ abstract final class ReviewPolicy {
     TaskType.type => (const Duration(seconds: 8), const Duration(seconds: 30)),
     TaskType.selfCheck => (
       const Duration(seconds: 3),
+      const Duration(seconds: 20),
+    ),
+    TaskType.sceneHunt => (
+      const Duration(seconds: 5),
       const Duration(seconds: 20),
     ),
   };

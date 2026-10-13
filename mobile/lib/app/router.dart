@@ -13,6 +13,8 @@ import '../features/profile/presentation/profile_screen.dart';
 import '../features/story/presentation/season_intro_screen.dart';
 import '../features/story/presentation/story_screen.dart';
 import '../features/talk/presentation/talk_screen.dart';
+import '../features/topic_sets/presentation/scene_hunt_screen.dart';
+import '../features/topic_sets/presentation/topic_set_screen.dart';
 import 'shell_scaffold.dart';
 
 /// Sekme yolları (K-30): Ana Sayfa · Keşfet · Hikâye · Konuş · Profil.
@@ -36,6 +38,12 @@ abstract final class AppRoutes {
 
   /// Sezon jeneriği (tam ekran, H-050).
   static String seasonIntro(int season) => '/sezon/$season/jenerik';
+
+  /// Konu seti (H-051): Defter'den ve bölüm sonundan açılır.
+  static String topicSet(String id) => '/konu-seti/$id';
+
+  /// Sahne avı (tam ekran, H-051).
+  static String sceneHunt(String id) => '/konu-seti/$id/sahne-avi';
 }
 
 final routerProvider = Provider<GoRouter>((ref) {
@@ -62,6 +70,21 @@ final routerProvider = Provider<GoRouter>((ref) {
             season: int.tryParse(state.pathParameters['season']!) ?? 1,
           ),
         ),
+      ),
+      GoRoute(
+        path: '/konu-seti/:id',
+        builder: (context, state) =>
+            TopicSetScreen(setId: state.pathParameters['id']!),
+        routes: [
+          GoRoute(
+            path: 'sahne-avi',
+            pageBuilder: (context, state) => MaterialPage(
+              key: state.pageKey,
+              fullscreenDialog: true,
+              child: SceneHuntScreen(setId: state.pathParameters['id']!),
+            ),
+          ),
+        ],
       ),
       GoRoute(
         path: AppRoutes.review,

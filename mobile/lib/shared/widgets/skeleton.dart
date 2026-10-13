@@ -269,3 +269,55 @@ class ListSkeleton extends StatelessWidget {
     );
   }
 }
+
+/// Izgara iskeleti (H-051, konu seti nesneleri): kare görsel ve iki satır yazı.
+class GridSkeleton extends StatelessWidget {
+  const GridSkeleton({
+    super.key,
+    required this.label,
+    this.count = 6,
+    this.columns = 2,
+  });
+
+  final String label;
+  final int count;
+  final int columns;
+
+  @override
+  Widget build(BuildContext context) {
+    return Skeleton(
+      label: label,
+      child: GridView.count(
+        crossAxisCount: columns,
+        shrinkWrap: true,
+        physics: const NeverScrollableScrollPhysics(),
+        padding: const EdgeInsets.all(AppSpacing.sm),
+        mainAxisSpacing: AppSpacing.sm,
+        crossAxisSpacing: AppSpacing.sm,
+        childAspectRatio: 0.78,
+        children: [
+          for (var i = 0; i < count; i++)
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const AspectRatio(
+                  aspectRatio: 1,
+                  child: SkeletonBox(radius: AppTheme.radius),
+                ),
+                const SizedBox(height: AppSpacing.xs),
+                FractionallySizedBox(
+                  widthFactor: i.isEven ? 0.6 : 0.5,
+                  child: const SkeletonBox(height: 16),
+                ),
+                const SizedBox(height: 8),
+                const FractionallySizedBox(
+                  widthFactor: 0.4,
+                  child: SkeletonBox(height: 12),
+                ),
+              ],
+            ),
+        ],
+      ),
+    );
+  }
+}

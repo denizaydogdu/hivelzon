@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../app/theme.dart';
+import '../../../../l10n/tr_strings.dart';
 import '../../../../shared/content/content_providers.dart';
+import '../../../../shared/content/content_source.dart';
 import '../../../player/domain/video_rendition.dart';
 import '../../application/card_audio_player.dart';
 import '../../domain/notebook_item.dart';
@@ -62,7 +64,7 @@ class NotebookImage extends ConsumerWidget {
       color: AppColors.seaBlue.withValues(alpha: 0.12),
     );
     return Image.network(
-      source.mediaUri(contentId, path).toString(),
+      resolveMediaUri(source, contentId, path).toString(),
       key: ValueKey('card-image-${item.key}'),
       fit: BoxFit.cover,
       alignment: _alignment(item.imageCrop),
@@ -189,7 +191,12 @@ class CardFace extends StatelessWidget {
         ],
         if (item.exampleEn != null && item.exampleEn != item.textEn) ...[
           const Divider(height: AppSpacing.md),
-          Text('BÖLÜMDEKİ CÜMLE', style: label),
+          Text(
+            item.source == NotebookSource.topicSet
+                ? TopicSetTexts.exampleLabel
+                : 'BÖLÜMDEKİ CÜMLE',
+            style: label,
+          ),
           const SizedBox(height: 4),
           Row(
             crossAxisAlignment: CrossAxisAlignment.center,

@@ -19,6 +19,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from hvpipeline.lint import check_chain, lint_episode  # noqa: E402
+from hvpipeline.sets import lint_sets, sets_dir  # noqa: E402
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -28,6 +29,7 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--graph-source", choices=["auto", "package", "kurgu"], default="auto",
                     help="grafik kaynağı: _build/package/scenes.json ya da kurgu.json (varsayılan: varsa paket)")
     ap.add_argument("--no-chain", action="store_true", help="bölümler arası zincir denetimini atla")
+    ap.add_argument("--no-sets", action="store_true", help="konu seti denetimini atla (H-051)")
     a = ap.parse_args(argv)
 
     dirs = [Path(p) for p in a.episodes if Path(p).is_dir() and not Path(p).name.startswith("_")]
@@ -45,9 +47,20 @@ def main(argv: list[str] | None = None) -> int:
                 pass
         chain = check_chain(contents)
 
-    n_err = sum(len(r.errors) for r in reports) + sum(1 for i in chain if i.level == "error")
+    # Konu setleri (H-051): bölümlerle aynı içerik kökündeki _evren/setler/.
+    sets = []
+    roots = {d.resolve().parent for d in dirs}
+    if not a.no_sets:
+        for root in sorted(roots):
+            if sets_dir(root).is_dir():
+                sets += lint_sets(root)
+    n_err = (sum(len(r.errors) for r in reports) + sum(1 for i in chain if i.level == "error")
+             + sum(1 for _, iss, _ in sets for i in iss if i.level == "error"))
     if a.json:
         print(json.dumps({"episodes": [r.to_dict() for r in reports], "chain": [str(i) for i in chain],
+                          "sets": [{"id": sid, **rep, "errors": [str(i) for i in iss if i.level == "error"],
+                                    "warnings": [str(i) for i in iss if i.level == "warning"]}
+                                   for sid, iss, rep in sets],
                           "errors": n_err}, ensure_ascii=False, indent=2))
         return 1 if n_err else 0
 
@@ -75,8 +88,16 @@ def main(argv: list[str] | None = None) -> int:
         print("== Zincir (bölümler arası)")
         for i in chain:
             print(f"   - {i}")
-    print(f"Sonuç: {len(reports)} bölüm, {n_err} hata, "
-          f"{sum(len(r.warnings) for r in reports)} uyarı")
+    for sid, iss, rep in sets:
+        errs = [i for i in iss if i.level == "error"]
+        print(f"== Konu seti {sid}: {'HATA' if errs else ('UYARI' if iss else 'TAMAM')}")
+        if rep.get("tokens"):
+            print(f"   {rep['items']} öğe ({rep['audio']} sesli); örnek cümle kapsaması %{rep['pct']} "
+                  f"(sözlükle %{rep['pctWithGlossary']}), en uzun cümle {rep['maxSentenceWords']} sözcük")
+        for i in iss:
+            print(f"   - {i}")
+    warns = sum(len(r.warnings) for r in reports) + sum(1 for _, iss, _ in sets for i in iss if i.level == "warning")
+    print(f"Sonuç: {len(reports)} bölüm, {len(sets)} konu seti, {n_err} hata, {warns} uyarı")
     return 1 if n_err else 0
 
 

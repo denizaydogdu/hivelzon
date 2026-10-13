@@ -5,6 +5,7 @@ import 'package:http/http.dart' as http;
 
 import '../../features/player/domain/episode.dart';
 import '../../features/player/domain/subtitles.dart';
+import '../../features/topic_sets/domain/topic_set.dart';
 import 'content_source.dart';
 
 /// `--dart-define=CONTENT_BASE_URL=...` (varsayılan: yerel geliştirme sunucusu).
@@ -78,6 +79,17 @@ class HttpContentSource implements ContentSource {
     final json = await _getJson(seasonMediaUri(season, 'season.json'));
     if (json is! Map) throw ContentUnavailableException('Bozuk season.json');
     return SeasonInfo.fromJson(json.cast<String, dynamic>());
+  }
+
+  @override
+  Future<TopicSet> loadTopicSet(int season, String path) async {
+    final json = await _getJson(seasonMediaUri(season, path));
+    if (json is! Map) throw ContentUnavailableException('Bozuk konu seti');
+    try {
+      return TopicSet.fromJson(json.cast<String, dynamic>());
+    } on Object catch (e) {
+      throw ContentUnavailableException('Bozuk konu seti', cause: e);
+    }
   }
 
   @override

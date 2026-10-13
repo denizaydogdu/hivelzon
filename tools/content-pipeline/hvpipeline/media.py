@@ -228,6 +228,53 @@ def to_webp(src: Path, out: Path, quality: int = WEBP_QUALITY) -> Path:
     return out
 
 
+def image_size(src: Path) -> tuple[int, int]:
+    """Görselin piksel boyutu (ImageMagick)."""
+    out = subprocess.check_output(["magick", "identify", "-format", "%w %h", str(src)]).decode().split()
+    return int(out[0]), int(out[1])
+
+
+def crop_webp(src: Path, box: tuple[int, int, int, int], out: Path, size: int = 512,
+              quality: int = WEBP_QUALITY) -> Path:
+    """Konu seti öğe görseli (H-051): `box` (x, y, w, h piksel) kırpılır, `size`×`size` WebP. Yazı eklenmez."""
+    x, y, w, h = box
+    out.parent.mkdir(parents=True, exist_ok=True)
+    tmp = _tmp(out)
+    run(["magick", str(src), "-crop", f"{w}x{h}+{x}+{y}", "+repage", "-resize", f"{size}x{size}!",
+         "-strip", "-quality", str(quality), "-define", "webp:method=6", str(tmp)])
+    tmp.replace(out)
+    return out
+
+
+def scene_webp(src: Path, out: Path, width: int = 1080, quality: int = WEBP_QUALITY) -> Path:
+    """Sahne avı görseli (H-051): oran korunur, genişlik `width`, WebP. Yazı eklenmez."""
+    out.parent.mkdir(parents=True, exist_ok=True)
+    tmp = _tmp(out)
+    run(["magick", str(src), "-resize", f"{width}x", "-strip", "-quality", str(quality),
+         "-define", "webp:method=6", str(tmp)])
+    tmp.replace(out)
+    return out
+
+
+def gain_to_target(src: Path) -> float:
+    """Kaynağı -16 LUFS'a getiren kazanç (dB); konu seti ses kesitleri tam replikten ölçülür (kısa
+    kesitte tümleşik ölçüm güvenilmez)."""
+    return round(TARGET_LUFS - loudness([src])["I"], 2)
+
+
+def cut_audio(src: Path, start: float, end: float | None, gain_db: float, out: Path) -> Path:
+    """Kayıttan kelime ya da cümle kesiti (H-051): kazanç + sınırlayıcı, 15/30 ms yumuşak giriş/çıkış, AAC."""
+    out.parent.mkdir(parents=True, exist_ok=True)
+    tmp = _tmp(out)
+    trim = ["-ss", f"{start:.3f}"] + (["-to", f"{end:.3f}"] if end is not None else [])
+    length = (end - start) if end is not None else None
+    fade = "afade=t=in:d=0.015" + (f",afade=t=out:st={max(0.0, length - 0.03):.3f}:d=0.03" if length else "")
+    run(["ffmpeg", "-y", "-loglevel", "error"] + trim + ["-i", str(src), "-af", f"{gain_filter(gain_db)},{fade}",
+         "-c:a", "aac", "-b:a", "96k", "-f", "mp4", "-movflags", "+faststart", str(tmp)])
+    tmp.replace(out)
+    return out
+
+
 def still(image: Path, out: Path) -> Path:
     """9:16 durağan görsel (karar/kart/görev arka planı ya da videonun ilk karesi).
 

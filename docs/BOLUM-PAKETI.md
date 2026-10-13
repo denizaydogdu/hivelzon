@@ -256,6 +256,20 @@ python3 tools/content-pipeline/export_package.py icerik/A1-00[1-4]-*   # paket (
 | `missing-file` | Pakette `scenes.json`'ın andığı dosya var | Hata |
 | `translation` | `ceviri.tr.json` varsa: her altyazı ipucunun çeviri satırı ve her kelimenin (özel ad hariç) anlamı var. Kart, karar repliği ve görev kökünde eksik çeviri ya da cümlede bulunamayan kalıp uyarıdır. Dosya yoksa "çeviri yok", durum `APPROVED` değilse durum uyarısı. | Hata / uyarı |
 
+**Konu seti kuralları (H-051, §7):** content-lint bölümlerle aynı içerik kökündeki `_evren/setler/*.json` dosyalarını da denetler (`--no-sets` ile atlanır). Hatalı set dışa aktarılmaz.
+
+| Kod | Kural | Düzey |
+|---|---|---|
+| `set-schema` | `schema/topic-set.schema.json`'a uygun; dosya adı = set kimliği; öğe kimliği ve kelime tekil | Hata |
+| `set-meaning` | Her öğenin Türkçesi (`tr`) ve sahne avı yardım satırı (`findTr`) dolu | Hata |
+| `set-level` | Kelime set seviyesinde (CEFR-J); üstündeyse `aboveLevel: true` zorunlu (Türkçesi kartta sözlük işlevi görür) | Hata (gereksiz işaret: uyarı) |
+| `set-coverage`, `set-off-list` | Örnek cümleler bölümlerle aynı kapsama kuralına uyar (≥ %98; %95–98 yalnızca sözlükle). Sözlük = `aboveLevel` kelimeler + setin `glossary` listesi | Hata / uyarı |
+| `set-sentence-length` | A1'de örnek cümle en çok 8 sözcük | Hata |
+| `set-crop`, `set-hotspot` | Kırpma ve dokunma bölgeleri görselin içinde; çokgenin alanı var; kırpma en az bir bölgeyle kesişiyor | Hata |
+| `set-audio` | Ses kaynağı (`.mp3` + `.align.json`) var; kelime hizalamada bulunuyor; örnek cümle sesi örnek cümleyle aynı replik | Hata |
+| `set-unlock`, `set-image` | `unlockAfter` bölümü ve sahne görseli var | Hata |
+| `set-status` | Durum `APPROVED` değil (Türkçe ve örnekler editör onayı bekliyor) | Uyarı |
+
 **Kapsama hesabı:**
 - Özel adlar sayılmaz (`data/proper_nouns.txt`).
 - Ünlemler de sayılmaz (*oh, ah, ha, hmm, wow*).
@@ -263,7 +277,42 @@ python3 tools/content-pipeline/export_package.py icerik/A1-00[1-4]-*   # paket (
 - Çekim ekleri liste sözcüğüne indirgenir (*-s, -ed, -ing*, düzensiz fiiller).
 - Denetime giren satırlar: İngilizce replikler, ✓/✗ seçenekleri, `[TEPKİ]` replikleri ve `[YAZI]` metinleri. `(TR)` replikleri ve `>` ile başlayan notlar girmez.
 
-## 7. Atıf
+## 7. Konu setleri ve sahne avı (H-051)
+
+Hikâye mekânlarına bağlı kelime setleri. Kaynak `icerik/_evren/setler/<set-id>.json` (şema `tools/content-pipeline/schema/topic-set.schema.json`), paket sezon paketinin içindedir. Ücretli üretim yoktur: görseller bölümün mevcut çiziminden kırpılır, ses yalnızca karakter kelimeyi bölümde gerçekten söylüyorsa kayıttan kesilir.
+
+**Kaynak alanları:** `id`, `season`, `level`, `order`, `titleTr` ("Alex'in odası"), `unlockAfter` (seti açan bölüm, `A1-001`), `sceneImage` (bölümün kendi görseli, `A1-001-…/images/T1-oda.png`), `glossary` (örneklerde geçen seviye üstü kelimeler), `status` (`DRAFT` → `APPROVED`), `items[]`:
+
+| Alan | Açıklama |
+|---|---|
+| `w` | İngilizce kelime ya da kısa ifade (`radio`, `bus stop`); A1 CEFR-J. Üstündeyse `aboveLevel: true`. |
+| `tr`, `findTr` | Türkçesi; sahne avının Türkçe yardım satırı ("Telsizi bul"). `findEn` verilmezse "Find the {w}!". |
+| `exampleEn`, `exampleTr` | A1, en çok 8 sözcük; bölümde geçen bir replik varsa o kullanılır. |
+| `crop` | Kart görseli için normalleştirilmiş `[x, y, w, h]`. Paket, kısa kenarı merkezden uzatıp görsel içinde kalan bir kareye çevirir (512×512 WebP). |
+| `hotspots` | Dokunma bölgeleri: `{"rect": [x, y, w, h]}` ya da `{"polygon": [[x, y], …]}` (normalleştirilmiş). Nesne sahnede birden çok yerdeyse birden çok bölge. |
+| `audioRef` | `{"source": "<bölüm>/audio/<ad>", "word": "radio"}`: kelime `.align.json` zamanlarıyla kesilir (önce 0,04 sn, sonra 0,10 sn pay); sesi olmayan öğe `null` (kartta ses düğmesi görünmez). |
+| `exampleAudioRef` | Örnek cümle bir replikse o kaydın tamamı (`{"source": …}`). |
+
+**Paket** (`/packages/_season/S<n>/`):
+
+```
+season.json            → topicSets[]: id, order, titleTr, unlockAfter, unlockEpisode, itemCount, cover, path, bytes
+sets/<id>.json         → set verisi: scene {image, width, height}, items[] (kaynak alanları + kind, image,
+                         audio/audioSource {source, start, end}, exampleAudio/exampleAudioSource)
+sets/<id>/scene.webp   → sahne avı görseli (1080 px genişlik, oran korunur, yazısız)
+sets/<id>/<öğe>.webp   → öğe kartı (512×512)
+sets/<id>/<öğe>.m4a, <öğe>.example.m4a → kelime ve örnek cümle sesi (AAC, kayıt -16 LUFS'a getirilir)
+```
+
+**Uygulama:**
+- Set, `unlockAfter` bölümü bitince açılır (zaman kilidi yok). Kilitli set sakin bir nedenle görünür: "Bölüm 3'ü bitirince açılır."
+- Konu setinden eklenen ifade Defter'den çıkarılabilir; set etkilenmez.
+- Defter → "Konu setleri" sekmesi ve bölüm sonu ("Yeni konu seti açıldı: …"). Izgarada nesne görseli, kelime ve Türkçesi; karta dokununca anlam, örnek cümle ve (varsa) ses. "Hepsini defterime ekle" ya da tek tek ekleme kelime tekrarına (FSRS) yeni ifade ekler.
+- Defter kartının görsel ve ses yolu `_season/S1/sets/…` önekiyle sezon paketinden okunur. Aynı kelime bölümden de geldiyse kart, açık bir setteki kırpılmış görsele geçer (bölümdeki ses korunur).
+- **Sahne avı:** önce yalnızca "Find the radio!" (+ kelimenin sesi, varsa); ilk yanlış dokunuşta "Bir daha bakalım." ve Türkçe yardım satırı ("Telsizi bul"), ikinci yanlıştan sonra bölge parlar. Görsel ekranı olabildiğince doldurur; iki parmakla ya da düğmeyle büyütülür ve kaydırılır (`InteractiveViewer`). Dokunuş görselin kendi koordinatlarında değerlendirilir, büyütme isabeti bozmaz (küçük nesnelere 14 pt pay). "Bilmiyorum" yeri gösterir. Süre ve puan yok. Defterdeki ifadeler için sonuç kelime tekrarına yazılır: kendi bulduysa Good; "Bilmiyorum" ya da 2+ kaçırma Again (`review_logs.task_type = scene_hunt`). Aynı gün zaten tekrar edilmiş kart atlanır.
+- Ekran okuyucu: her bölge Türkçe adıyla düğmedir; ekran okuyucu açıkken resim yerine seçenek listesi sunulur ve Türkçe yardım satırı ipucuna kadar gizlenir.
+
+## 8. Atıf
 
 > The CEFR-J Wordlist Version 1.6. Compiled by Yukio Tono, Tokyo University of Foreign Studies. Retrieved from https://www.cefr-j.org/download.html on 11/10/26.
 

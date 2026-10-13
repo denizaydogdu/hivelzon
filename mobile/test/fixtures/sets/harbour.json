@@ -1,0 +1,312 @@
+{
+  "schemaVersion": 1,
+  "id": "harbour",
+  "season": 1,
+  "level": "A1",
+  "order": 3,
+  "titleTr": "Liman",
+  "unlockAfter": "A1-003",
+  "unlockEpisode": 3,
+  "status": "APPROVED",
+  "scene": {
+    "image": "harbour/scene.webp",
+    "width": 1520,
+    "height": 2688
+  },
+  "items": [
+    {
+      "id": "map",
+      "w": "map",
+      "kind": "word",
+      "tr": "harita",
+      "findEn": "Find the map!",
+      "findTr": "Haritayı bul",
+      "exampleEn": "No, it isn't. Look, here is a map.",
+      "exampleTr": "Hayır, değil. Bak, işte bir harita.",
+      "aboveLevel": false,
+      "image": "harbour/map.webp",
+      "crop": [
+        0.27,
+        0.62,
+        0.42,
+        0.19
+      ],
+      "hotspots": [
+        {
+          "polygon": [
+            [
+              0.29,
+              0.745
+            ],
+            [
+              0.66,
+              0.64
+            ],
+            [
+              0.63,
+              0.71
+            ],
+            [
+              0.55,
+              0.76
+            ],
+            [
+              0.31,
+              0.79
+            ]
+          ]
+        }
+      ],
+      "audio": "harbour/map.m4a",
+      "audioSource": {
+        "source": "A1-002-the-new-neighbour/audio/b2_27_maya",
+        "start": 2.46,
+        "end": 2.9
+      },
+      "exampleAudio": "harbour/map.example.m4a",
+      "exampleAudioSource": {
+        "source": "A1-002-the-new-neighbour/audio/b2_27_maya",
+        "start": 0.0,
+        "end": 2.96
+      }
+    },
+    {
+      "id": "boat",
+      "w": "boat",
+      "kind": "word",
+      "tr": "tekne",
+      "findEn": "Find the boat!",
+      "findTr": "Tekneyi bul",
+      "exampleEn": "Two boats are on the water.",
+      "exampleTr": "Suda iki tekne var.",
+      "aboveLevel": false,
+      "image": "harbour/boat.webp",
+      "crop": [
+        0.74,
+        0.5,
+        0.26,
+        0.28
+      ],
+      "hotspots": [
+        {
+          "rect": [
+            0.76,
+            0.52,
+            0.24,
+            0.26
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fish",
+      "w": "fish",
+      "kind": "word",
+      "tr": "balık",
+      "findEn": "Find the fish!",
+      "findTr": "Balığı bul",
+      "exampleEn": "The station is near the fish shop.",
+      "exampleTr": "İstasyon balıkçı dükkânının yakınında.",
+      "aboveLevel": false,
+      "image": "harbour/fish.webp",
+      "crop": [
+        0.0,
+        0.44,
+        0.16,
+        0.15
+      ],
+      "hotspots": [
+        {
+          "rect": [
+            0.0,
+            0.465,
+            0.13,
+            0.11
+          ]
+        }
+      ],
+      "audio": "harbour/fish.m4a",
+      "audioSource": {
+        "source": "A1-004-the-note/audio/b4_13_maya",
+        "start": 0.28,
+        "end": 0.74
+      }
+    },
+    {
+      "id": "bus-stop",
+      "w": "bus stop",
+      "kind": "phrase",
+      "tr": "otobüs durağı",
+      "findEn": "Find the bus stop!",
+      "findTr": "Otobüs durağını bul",
+      "exampleEn": "It's between the bus stop and the café.",
+      "exampleTr": "Otobüs durağı ile kafenin arasında.",
+      "aboveLevel": false,
+      "image": "harbour/bus-stop.webp",
+      "crop": [
+        0.52,
+        0.37,
+        0.27,
+        0.18
+      ],
+      "hotspots": [
+        {
+          "rect": [
+            0.55,
+            0.39,
+            0.22,
+            0.15
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cafe",
+      "w": "café",
+      "kind": "word",
+      "tr": "kafe",
+      "findEn": "Find the café!",
+      "findTr": "Kafeyi bul",
+      "exampleEn": "The café is near the park.",
+      "exampleTr": "Kafe parkın yakınında.",
+      "aboveLevel": false,
+      "image": "harbour/cafe.webp",
+      "crop": [
+        0.64,
+        0.36,
+        0.32,
+        0.17
+      ],
+      "hotspots": [
+        {
+          "rect": [
+            0.66,
+            0.37,
+            0.27,
+            0.14
+          ]
+        }
+      ]
+    },
+    {
+      "id": "lighthouse",
+      "w": "lighthouse",
+      "kind": "word",
+      "tr": "deniz feneri",
+      "findEn": "Find the lighthouse!",
+      "findTr": "Deniz fenerini bul",
+      "exampleEn": "I can see the lighthouse.",
+      "exampleTr": "Deniz fenerini görebiliyorum.",
+      "aboveLevel": true,
+      "image": "harbour/lighthouse.webp",
+      "crop": [
+        0.82,
+        0.25,
+        0.18,
+        0.14
+      ],
+      "hotspots": [
+        {
+          "rect": [
+            0.88,
+            0.265,
+            0.08,
+            0.1
+          ]
+        }
+      ]
+    },
+    {
+      "id": "building",
+      "w": "building",
+      "kind": "word",
+      "tr": "bina",
+      "findEn": "Find the building!",
+      "findTr": "Binayı bul",
+      "exampleEn": "The building is old and grey.",
+      "exampleTr": "Bina eski ve gri.",
+      "aboveLevel": false,
+      "image": "harbour/building.webp",
+      "crop": [
+        0.08,
+        0.08,
+        0.62,
+        0.44
+      ],
+      "hotspots": [
+        {
+          "rect": [
+            0.11,
+            0.11,
+            0.56,
+            0.28
+          ]
+        },
+        {
+          "rect": [
+            0.11,
+            0.39,
+            0.43,
+            0.11
+          ]
+        }
+      ]
+    },
+    {
+      "id": "water",
+      "w": "water",
+      "kind": "word",
+      "tr": "su",
+      "findEn": "Find the water!",
+      "findTr": "Suyu bul",
+      "exampleEn": "The water is blue.",
+      "exampleTr": "Su mavi.",
+      "aboveLevel": false,
+      "image": "harbour/water.webp",
+      "crop": [
+        0.5,
+        0.72,
+        0.5,
+        0.25
+      ],
+      "hotspots": [
+        {
+          "polygon": [
+            [
+              0.5,
+              0.63
+            ],
+            [
+              0.77,
+              0.6
+            ],
+            [
+              0.77,
+              0.77
+            ],
+            [
+              1.0,
+              0.79
+            ],
+            [
+              1.0,
+              0.95
+            ],
+            [
+              0.82,
+              0.92
+            ],
+            [
+              0.62,
+              0.82
+            ],
+            [
+              0.52,
+              0.76
+            ]
+          ]
+        }
+      ]
+    }
+  ]
+}

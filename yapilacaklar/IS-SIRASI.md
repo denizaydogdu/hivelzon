@@ -102,10 +102,11 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 | 1.3 | H-035 | Hikâye haritası, bölüm kapısı, yerel ilerleme | Yüksek | H-031 | ✅ |
 | 1.4 | H-036 | Defter, ipucu panosu, FSRS | Yüksek | H-035 | ✅ |
 | 1.4' | H-052 | Defter ince ayarı ("Listen.", sözlük filtresi) | Orta | H-036 | ✅ |
-| 1.4' | H-054 | Performans temeli | 2026-10-13 | İndirilen boyut −%60 (151,9 → 60,4 MB); senkron ≤ 0,01 sn; SSIM 0,98; iskelet görünümler; flutter test 205/205, pytest 77/77 |
+| 1.4' | H-051 | Konu setleri ve sahne avı | 2026-10-13 | 4 set onaylı (Alex'in odası, Maya'nın dükkânı, Liman, Masadaki iki not); sahne avı (ipucu ilk yanlıştan sonra, yakınlaştırma); kredisiz; flutter test 232/232, pytest 106/106 |
+| H-054 | Performans temeli | 2026-10-13 | İndirilen boyut −%60 (151,9 → 60,4 MB); senkron ≤ 0,01 sn; SSIM 0,98; iskelet görünümler; flutter test 205/205, pytest 77/77 |
 | H-053 | Arayüz metinleri ve sayfa netliği | Yüksek | H-036 | ✅ |
 | 1.4'' | H-054 | Performans temeli (720p video, WebP, ölçüm) | Yüksek | H-053 | ✅ |
-| 1.4a | H-051 | Hikâye mekânlarına bağlı konu setleri + sahne avı | Yüksek | H-036 | ⏳ |
+| 1.4a | H-051 | Hikâye mekânlarına bağlı konu setleri + sahne avı | Yüksek | H-036 | ✅ |
 | 1.4b | H-048 | Hi-A: yönlendiren Hi (balon + kural tabanlı koç) | Yüksek | H-036, H-046 | ⏳ |
 | 1.5 | H-037 | Backend çekirdek | Yüksek | H-033 | ⏳ |
 | 1.6 | H-038 | Mobil ↔ backend, misafir modu | Yüksek | H-035, H-037 | ⏳ |
@@ -288,3 +289,4 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
   - Kullanıcı bir performans kontrol listesi paylaştı. Ölçüm: paketler 26–46 MB, video ~4,6 Mbps. Karar: H-054 (720p video, WebP, ölçüm, temizlik) H-051'den önce; kalan maddeler H-037, Hi-B, H-043, H-044'e eklendi.
 - **2026-10-13:**
   - H-054 bitti ve commit edildi. H-051 (konu setleri + sahne avı) başladı.
+  - H-051 bitti. Sıradaki: H-048 (Hi-A: yönlendiren Hi + konu tanıtımı).

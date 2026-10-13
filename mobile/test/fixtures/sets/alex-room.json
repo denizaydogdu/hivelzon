@@ -1,0 +1,370 @@
+{
+  "schemaVersion": 1,
+  "id": "alex-room",
+  "season": 1,
+  "level": "A1",
+  "order": 1,
+  "titleTr": "Alex'in odası",
+  "unlockAfter": "A1-001",
+  "unlockEpisode": 1,
+  "status": "APPROVED",
+  "scene": {
+    "image": "alex-room/scene.webp",
+    "width": 1520,
+    "height": 2688
+  },
+  "items": [
+    {
+      "id": "radio",
+      "w": "radio",
+      "kind": "word",
+      "tr": "telsiz",
+      "findEn": "Find the radio!",
+      "findTr": "Telsizi bul",
+      "exampleEn": "E! The message on the radio!",
+      "exampleTr": "E! Telsizdeki mesaj!",
+      "aboveLevel": false,
+      "image": "alex-room/radio.webp",
+      "crop": [
+        0.52,
+        0.53,
+        0.32,
+        0.3
+      ],
+      "hotspots": [
+        {
+          "rect": [
+            0.55,
+            0.555,
+            0.26,
+            0.255
+          ]
+        },
+        {
+          "rect": [
+            0.755,
+            0.355,
+            0.03,
+            0.21
+          ]
+        }
+      ],
+      "audio": "alex-room/radio.m4a",
+      "audioSource": {
+        "source": "A1-003-find-the-station/audio/b3_12_alex",
+        "start": 1.08,
+        "end": 1.62
+      },
+      "exampleAudio": "alex-room/radio.example.m4a",
+      "exampleAudioSource": {
+        "source": "A1-003-find-the-station/audio/b3_12_alex",
+        "start": 0.0,
+        "end": 2.08
+      }
+    },
+    {
+      "id": "clock",
+      "w": "clock",
+      "kind": "word",
+      "tr": "saat (duvar saati)",
+      "findEn": "Find the clock!",
+      "findTr": "Saati bul",
+      "exampleEn": "Look, a clock. What time is it?",
+      "exampleTr": "Bak, bir saat. Saat kaç?",
+      "aboveLevel": false,
+      "image": "alex-room/clock.webp",
+      "crop": [
+        0.16,
+        0.0,
+        0.23,
+        0.17
+      ],
+      "hotspots": [
+        {
+          "rect": [
+            0.19,
+            0.02,
+            0.17,
+            0.13
+          ]
+        }
+      ],
+      "audio": "alex-room/clock.m4a",
+      "audioSource": {
+        "source": "A1-004-the-note/audio/b4_17_maya",
+        "start": 0.44,
+        "end": 0.98
+      },
+      "exampleAudio": "alex-room/clock.example.m4a",
+      "exampleAudioSource": {
+        "source": "A1-004-the-note/audio/b4_17_maya",
+        "start": 0.0,
+        "end": 2.4
+      }
+    },
+    {
+      "id": "window",
+      "w": "window",
+      "kind": "word",
+      "tr": "pencere",
+      "findEn": "Find the window!",
+      "findTr": "Pencereyi bul",
+      "exampleEn": "Alex looks out of the window.",
+      "exampleTr": "Alex pencereden dışarı bakıyor.",
+      "aboveLevel": false,
+      "image": "alex-room/window.webp",
+      "crop": [
+        0.62,
+        0.02,
+        0.32,
+        0.3
+      ],
+      "hotspots": [
+        {
+          "rect": [
+            0.6,
+            0.0,
+            0.34,
+            0.42
+          ]
+        }
+      ]
+    },
+    {
+      "id": "lighthouse",
+      "w": "lighthouse",
+      "kind": "word",
+      "tr": "deniz feneri",
+      "findEn": "Find the lighthouse!",
+      "findTr": "Deniz fenerini bul",
+      "exampleEn": "The lighthouse is near the sea.",
+      "exampleTr": "Deniz feneri denizin yakınında.",
+      "aboveLevel": true,
+      "image": "alex-room/lighthouse.webp",
+      "crop": [
+        0.78,
+        0.17,
+        0.2,
+        0.14
+      ],
+      "hotspots": [
+        {
+          "rect": [
+            0.855,
+            0.2,
+            0.065,
+            0.09
+          ]
+        }
+      ]
+    },
+    {
+      "id": "boat",
+      "w": "boat",
+      "kind": "word",
+      "tr": "tekne",
+      "findEn": "Find the boat!",
+      "findTr": "Tekneyi bul",
+      "exampleEn": "There is a small boat on the sea.",
+      "exampleTr": "Denizde küçük bir tekne var.",
+      "aboveLevel": false,
+      "image": "alex-room/boat.webp",
+      "crop": [
+        0.6,
+        0.19,
+        0.18,
+        0.16
+      ],
+      "hotspots": [
+        {
+          "rect": [
+            0.635,
+            0.21,
+            0.095,
+            0.13
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sea",
+      "w": "sea",
+      "kind": "word",
+      "tr": "deniz",
+      "findEn": "Find the sea!",
+      "findTr": "Denizi bul",
+      "exampleEn": "İzmir? Is it by the sea?",
+      "exampleTr": "İzmir mi? Deniz kenarında mı?",
+      "aboveLevel": false,
+      "image": "alex-room/sea.webp",
+      "crop": [
+        0.62,
+        0.24,
+        0.34,
+        0.17
+      ],
+      "hotspots": [
+        {
+          "rect": [
+            0.64,
+            0.29,
+            0.3,
+            0.11
+          ]
+        }
+      ],
+      "audio": "alex-room/sea.m4a",
+      "audioSource": {
+        "source": "A1-002-the-new-neighbour/audio/b2_09_maya",
+        "start": 1.72,
+        "end": 2.1
+      },
+      "exampleAudio": "alex-room/sea.example.m4a",
+      "exampleAudioSource": {
+        "source": "A1-002-the-new-neighbour/audio/b2_09_maya",
+        "start": 0.0,
+        "end": 2.16
+      }
+    },
+    {
+      "id": "cup",
+      "w": "cup",
+      "kind": "word",
+      "tr": "kupa, fincan",
+      "findEn": "Find the cup!",
+      "findTr": "Kupayı bul",
+      "exampleEn": "My cup is on the desk.",
+      "exampleTr": "Kupam masanın üstünde.",
+      "aboveLevel": false,
+      "image": "alex-room/cup.webp",
+      "crop": [
+        0.03,
+        0.68,
+        0.22,
+        0.17
+      ],
+      "hotspots": [
+        {
+          "rect": [
+            0.06,
+            0.7,
+            0.15,
+            0.13
+          ]
+        }
+      ]
+    },
+    {
+      "id": "book",
+      "w": "book",
+      "kind": "word",
+      "tr": "kitap",
+      "findEn": "Find the book!",
+      "findTr": "Kitabı bul",
+      "exampleEn": "Alex has three books on the desk.",
+      "exampleTr": "Alex'in masasında üç kitap var.",
+      "aboveLevel": false,
+      "image": "alex-room/book.webp",
+      "crop": [
+        0.0,
+        0.81,
+        0.27,
+        0.19
+      ],
+      "hotspots": [
+        {
+          "rect": [
+            0.0,
+            0.82,
+            0.24,
+            0.18
+          ]
+        },
+        {
+          "rect": [
+            0.75,
+            0.87,
+            0.25,
+            0.11
+          ]
+        }
+      ]
+    },
+    {
+      "id": "desk",
+      "w": "desk",
+      "kind": "word",
+      "tr": "çalışma masası",
+      "findEn": "Find the desk!",
+      "findTr": "Masayı bul",
+      "exampleEn": "The radio is on the desk.",
+      "exampleTr": "Telsiz masanın üstünde.",
+      "aboveLevel": false,
+      "image": "alex-room/desk.webp",
+      "crop": [
+        0.1,
+        0.62,
+        0.8,
+        0.38
+      ],
+      "hotspots": [
+        {
+          "polygon": [
+            [
+              0.0,
+              0.73
+            ],
+            [
+              0.2,
+              0.7
+            ],
+            [
+              0.55,
+              0.71
+            ],
+            [
+              1.0,
+              0.69
+            ],
+            [
+              1.0,
+              1.0
+            ],
+            [
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "shelf",
+      "w": "shelf",
+      "kind": "word",
+      "tr": "raf",
+      "findEn": "Find the shelf!",
+      "findTr": "Rafı bul",
+      "exampleEn": "The shelf is on the wall.",
+      "exampleTr": "Raf duvarda.",
+      "aboveLevel": false,
+      "image": "alex-room/shelf.webp",
+      "crop": [
+        0.0,
+        0.03,
+        0.18,
+        0.2
+      ],
+      "hotspots": [
+        {
+          "rect": [
+            0.0,
+            0.1,
+            0.14,
+            0.12
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -116,13 +116,19 @@ def main(argv: list[str] | None = None) -> int:
     # Sezon paketi bölümlerden sonra: harita kataloğundaki `available` yeni paketleri de görür (H-035).
     for (root, n) in seasons:
         sr = export_season(root, n, probe=media.probe_duration, digest=file_digest, poster=media.still,
-                           rendition=media.rendition_720, image=media.to_webp)
+                           rendition=media.rendition_720, image=media.to_webp,
+                           set_media={"crop": media.crop_webp, "scene": media.scene_webp, "cut": media.cut_audio,
+                                      "gain": media.gain_to_target, "probe": media.probe_duration,
+                                      "size": media.image_size})
         sd = sr["doc"]
         print(f"== Sezon {n} paketi → {sr['dir']}")
         print("   " + ", ".join(f"{k} {sd[k]['video']} {sd[k].get('duration')} sn"
                                 for k in ("intro", "short", "titleBackground") if k in sd)
               + f"; boyut {sd['totalBytes'] / 1e6:.1f} MB"
               + (f" (uygulama 720p: {sd['renditionBytes']['720p'] / 1e6:.1f} MB)" if "renditionBytes" in sd else ""))
+        if "topicSets" in sd:
+            print("   konu setleri: " + ", ".join(f"{t['id']} ({t['itemCount']} öğe, B{t['unlockEpisode']} sonrası, "
+                                                   f"{t['bytes'] / 1e3:.0f} kB)" for t in sd["topicSets"]))
         if "episodes" in sd:
             avail = [e["number"] for e in sd["episodes"] if e["available"]]
             print(f"   harita: {len(sd['episodes'])} bölüm, oynanabilir {avail}; "

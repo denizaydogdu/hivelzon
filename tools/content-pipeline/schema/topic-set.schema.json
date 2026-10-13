@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hi.velzon.tr/schema/topic-set.schema.json",
+  "title": "hiVelzon konu seti kaynağı (H-051): icerik/_evren/setler/<id>.json",
+  "type": "object",
+  "required": ["schemaVersion", "id", "season", "level", "order", "titleTr", "unlockAfter", "sceneImage", "status", "items"],
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": {"const": 1},
+    "id": {"type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"},
+    "season": {"type": "integer", "minimum": 1},
+    "level": {"enum": ["A1", "A2", "B1", "B2", "C1"]},
+    "order": {"type": "integer", "minimum": 1},
+    "titleTr": {"type": "string", "minLength": 1},
+    "unlockAfter": {"type": "string", "pattern": "^[A-C][12]-\\d{3}$"},
+    "sceneImage": {"type": "string", "pattern": "^[A-C][12]-\\d{3}-[^/]+/images/[^/]+\\.png$"},
+    "glossary": {"type": "array", "items": {"type": "string", "minLength": 1}},
+    "status": {"enum": ["DRAFT", "IN_REVIEW", "APPROVED"]},
+    "author": {"type": "string"},
+    "date": {"type": "string"},
+    "approvedBy": {"type": "string"},
+    "items": {"type": "array", "minItems": 1, "maxItems": 12, "items": {"$ref": "#/$defs/item"}}
+  },
+  "$defs": {
+    "box": {"type": "array", "minItems": 4, "maxItems": 4, "items": {"type": "number", "minimum": 0, "maximum": 1}},
+    "point": {"type": "array", "minItems": 2, "maxItems": 2, "items": {"type": "number", "minimum": 0, "maximum": 1}},
+    "shape": {
+      "oneOf": [
+        {"type": "object", "required": ["rect"], "additionalProperties": false, "properties": {"rect": {"$ref": "#/$defs/box"}}},
+        {"type": "object", "required": ["polygon"], "additionalProperties": false,
+         "properties": {"polygon": {"type": "array", "minItems": 3, "items": {"$ref": "#/$defs/point"}}}}
+      ]
+    },
+    "audioRef": {
+      "oneOf": [
+        {"type": "null"},
+        {"type": "object", "required": ["source"], "additionalProperties": false,
+         "properties": {
+           "source": {"type": "string", "pattern": "^[A-C][12]-\\d{3}-[^/]+/audio/[^/]+$"},
+           "word": {"type": "string", "minLength": 1}
+         }}
+      ]
+    },
+    "item": {
+      "type": "object",
+      "required": ["id", "w", "tr", "findTr", "exampleEn", "exampleTr", "crop", "hotspots", "audioRef"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {"type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"},
+        "w": {"type": "string", "minLength": 1},
+        "tr": {"type": "string", "minLength": 1},
+        "findEn": {"type": "string", "minLength": 1},
+        "findTr": {"type": "string", "minLength": 1},
+        "exampleEn": {"type": "string", "minLength": 1},
+        "exampleTr": {"type": "string", "minLength": 1},
+        "aboveLevel": {"type": "boolean"},
+        "crop": {"$ref": "#/$defs/box"},
+        "hotspots": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/shape"}},
+        "audioRef": {"$ref": "#/$defs/audioRef"},
+        "exampleAudioRef": {"$ref": "#/$defs/audioRef"}
+      }
+    }
+  }
+}

@@ -124,14 +124,47 @@ class NotebookStore {
     if (row != null) await _fillMissing(row, item);
   }
 
-  /// Yalnızca kullanıcının eklediği kart silinebilir (kartı ve geçmişiyle).
+  /// Konu seti görseli (H-051): aynı ifadenin kartı sahne görseli yerine
+  /// setteki kırpılmış nesne görselini kullanır. Yalnızca görseli sahne
+  /// görseli olan (ya da hiç olmayan) kart güncellenir; eksik ses de doldurulur.
+  /// İdempotent: ikinci çağrı bir şey değiştirmez. Güncellenen satır sayısı.
+  Future<int> applySetImage(NotebookItem setItem) async {
+    await _ready;
+    final path = setItem.imagePath;
+    if (path == null) return 0;
+    final row = await (_db.select(
+      _db.notebookItems,
+    )..where((t) => t.itemKey.equals(setItem.key))).getSingleOrNull();
+    if (row == null) return 0;
+    if (row.audioPath == null && setItem.audio != null) {
+      await _fillMissing(row, setItem);
+    }
+    if (row.imagePath != null && row.imagePath!.startsWith('_season/')) {
+      return 0;
+    }
+    return (_db.update(
+      _db.notebookItems,
+    )..where((t) => t.id.equals(row.id))).write(
+      NotebookItemsCompanion(
+        imagePath: Value(path),
+        imageCrop: Value(setItem.imageCrop),
+      ),
+    );
+  }
+
+  /// Kullanıcının eklediği kart silinebilir (kartı ve geçmişiyle): "Deftere
+  /// ekle" ile ya da konu setinden (H-051) eklenenler. Set kendisi etkilenmez;
+  /// "Hepsini defterime ekle" yeniden ekleyebilir.
   Future<bool> removeUserItem(int itemId) async {
     await _ready;
     final n =
         await (_db.delete(_db.notebookItems)..where(
               (t) =>
                   t.id.equals(itemId) &
-                  t.source.equals(NotebookSource.userSaved.code),
+                  t.source.isIn([
+                    NotebookSource.userSaved.code,
+                    NotebookSource.topicSet.code,
+                  ]),
             ))
             .go();
     return n > 0;

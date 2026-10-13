@@ -1,0 +1,198 @@
+{
+  "schemaVersion": 1,
+  "id": "two-notes",
+  "season": 1,
+  "level": "A1",
+  "order": 4,
+  "titleTr": "Masadaki iki not",
+  "unlockAfter": "A1-004",
+  "unlockEpisode": 4,
+  "status": "APPROVED",
+  "scene": {
+    "image": "two-notes/scene.webp",
+    "width": 1520,
+    "height": 2688
+  },
+  "items": [
+    {
+      "id": "note",
+      "w": "note",
+      "kind": "word",
+      "tr": "not",
+      "findEn": "Find the note!",
+      "findTr": "Notu bul",
+      "exampleEn": "Maya, look. A note. From the old station.",
+      "exampleTr": "Maya, bak. Bir not. Eski istasyondan.",
+      "aboveLevel": false,
+      "image": "two-notes/note.webp",
+      "crop": [
+        0.0,
+        0.64,
+        0.62,
+        0.26
+      ],
+      "hotspots": [
+        {
+          "polygon": [
+            [
+              0.02,
+              0.685
+            ],
+            [
+              0.43,
+              0.653
+            ],
+            [
+              0.585,
+              0.833
+            ],
+            [
+              0.125,
+              0.885
+            ]
+          ]
+        },
+        {
+          "polygon": [
+            [
+              0.516,
+              0.676
+            ],
+            [
+              0.855,
+              0.65
+            ],
+            [
+              1.0,
+              0.82
+            ],
+            [
+              1.0,
+              0.84
+            ],
+            [
+              0.65,
+              0.863
+            ]
+          ]
+        }
+      ],
+      "audio": "two-notes/note.m4a",
+      "audioSource": {
+        "source": "A1-004-the-note/audio/b4_05_alex",
+        "start": 1.336,
+        "end": 1.86
+      },
+      "exampleAudio": "two-notes/note.example.m4a",
+      "exampleAudioSource": {
+        "source": "A1-004-the-note/audio/b4_05_alex",
+        "start": 0.0,
+        "end": 3.52
+      }
+    },
+    {
+      "id": "picture",
+      "w": "picture",
+      "kind": "word",
+      "tr": "resim, tablo",
+      "findEn": "Find the picture!",
+      "findTr": "Resmi bul",
+      "exampleEn": "There is a picture on the wall.",
+      "exampleTr": "Duvarda bir resim var.",
+      "aboveLevel": false,
+      "image": "two-notes/picture.webp",
+      "crop": [
+        0.66,
+        0.0,
+        0.3,
+        0.18
+      ],
+      "hotspots": [
+        {
+          "rect": [
+            0.69,
+            0.015,
+            0.235,
+            0.15
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pencil",
+      "w": "pencil",
+      "kind": "word",
+      "tr": "kurşun kalem",
+      "findEn": "Find the pencil!",
+      "findTr": "Kalemi bul",
+      "exampleEn": "The pencils are in a cup.",
+      "exampleTr": "Kalemler bir kupada.",
+      "aboveLevel": false,
+      "image": "two-notes/pencil.webp",
+      "crop": [
+        0.86,
+        0.28,
+        0.14,
+        0.1
+      ],
+      "hotspots": [
+        {
+          "rect": [
+            0.91,
+            0.3,
+            0.09,
+            0.06
+          ]
+        }
+      ]
+    },
+    {
+      "id": "lamp",
+      "w": "lamp",
+      "kind": "word",
+      "tr": "lamba",
+      "findEn": "Find the lamp!",
+      "findTr": "Lambayı bul",
+      "exampleEn": "The lamp is on.",
+      "exampleTr": "Lamba açık.",
+      "aboveLevel": true,
+      "image": "two-notes/lamp.webp",
+      "crop": [
+        0.78,
+        0.03,
+        0.22,
+        0.22
+      ],
+      "hotspots": [
+        {
+          "polygon": [
+            [
+              0.93,
+              0.04
+            ],
+            [
+              1.0,
+              0.04
+            ],
+            [
+              1.0,
+              0.24
+            ],
+            [
+              0.8,
+              0.24
+            ],
+            [
+              0.82,
+              0.17
+            ],
+            [
+              0.92,
+              0.12
+            ]
+          ]
+        }
+      ]
+    }
+  ]
+}

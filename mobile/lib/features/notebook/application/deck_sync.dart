@@ -9,6 +9,7 @@ import '../../player/application/player_session.dart';
 import '../../player/data/progress_repository.dart';
 import '../../player/domain/episode.dart';
 import '../../player/domain/subtitles.dart';
+import '../../topic_sets/domain/topic_set.dart';
 import '../data/notebook_store.dart';
 import '../domain/deck_builder.dart';
 
@@ -51,6 +52,9 @@ class DeckSync {
   Future<void> _lock = Future<void>.value();
   final Set<String> _enrichTried = {};
 
+  /// Konu setleri (H-051): oturum boyunca bir kez yüklenir.
+  List<TopicSet>? _sets;
+
   /// Aynı anda tek aktarım (Ana Sayfa ve Defter aynı anda isteyebilir).
   Future<T> _serial<T>(Future<T> Function() body) {
     final prev = _lock;
@@ -85,8 +89,39 @@ class DeckSync {
       }
     }
     await _enrichSaved();
+    await _applySetImages();
     return n;
   });
+
+  /// H-051: açık konu setlerinde aynı kelime varsa kartın görseli sahne
+  /// görselinden setteki kırpılmış nesne görseline geçer. Kilitli setin
+  /// görseli kullanılmaz (sonraki bölümün çizimi önceden görünmesin). Setler
+  /// yüklenemezse kartlar sahne görseliyle kalır.
+  Future<void> _applySetImages() async {
+    try {
+      _sets ??= await _loadSets();
+      if (_sets!.isEmpty) return;
+      final progress = await _progress.loadAll();
+      var changed = 0;
+      for (final set in _sets!) {
+        if (!isTopicSetUnlocked(set.unlockAfter, progress)) continue;
+        for (final it in set.items) {
+          changed += await _store.applySetImage(set.toNotebookItem(it));
+        }
+      }
+      if (changed > 0) debugPrint('[H051] $changed kart set görseli aldı');
+    } on Object catch (err) {
+      debugPrint('[H051] konu seti görselleri uygulanamadı: $err');
+    }
+  }
+
+  Future<List<TopicSet>> _loadSets() async {
+    final season = await _source.loadSeason(1);
+    return [
+      for (final s in season.topicSets)
+        await _source.loadTopicSet(season.season, s.path),
+    ];
+  }
 
   Future<void> _ingest(Episode episode) async {
     final id = episode.info.id;

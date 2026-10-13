@@ -1,0 +1,265 @@
+{
+  "schemaVersion": 1,
+  "id": "maya-shop",
+  "season": 1,
+  "level": "A1",
+  "order": 2,
+  "titleTr": "Maya'nın dükkânı",
+  "unlockAfter": "A1-002",
+  "sceneImage": "A1-002-the-new-neighbour/images/B2-02-maya-tezgah.png",
+  "glossary": [],
+  "status": "APPROVED",
+  "author": "Claude taslak",
+  "date": "2026-10-13",
+  "approvedBy": "kullanıcı (2026-10-13)",
+  "items": [
+    {
+      "id": "book",
+      "w": "book",
+      "tr": "kitap",
+      "findTr": "Kitabı bul",
+      "exampleEn": "Maya's shop has a lot of books.",
+      "exampleTr": "Maya'nın dükkânında çok kitap var.",
+      "crop": [
+        0.0,
+        0.75,
+        0.26,
+        0.17
+      ],
+      "hotspots": [
+        {
+          "rect": [
+            0.0,
+            0.775,
+            0.24,
+            0.135
+          ]
+        },
+        {
+          "rect": [
+            0.76,
+            0.24,
+            0.13,
+            0.3
+          ]
+        },
+        {
+          "rect": [
+            0.0,
+            0.0,
+            0.63,
+            0.12
+          ]
+        }
+      ],
+      "audioRef": null,
+      "exampleAudioRef": null
+    },
+    {
+      "id": "tea",
+      "w": "tea",
+      "tr": "çay",
+      "findTr": "Çayı bul",
+      "exampleEn": "Maya likes tea and books.",
+      "exampleTr": "Maya çayı ve kitapları sever.",
+      "crop": [
+        0.0,
+        0.16,
+        0.26,
+        0.25
+      ],
+      "hotspots": [
+        {
+          "rect": [
+            0.0,
+            0.17,
+            0.24,
+            0.1
+          ]
+        },
+        {
+          "rect": [
+            0.0,
+            0.315,
+            0.2,
+            0.085
+          ]
+        }
+      ],
+      "audioRef": null,
+      "exampleAudioRef": null
+    },
+    {
+      "id": "cup",
+      "w": "cup",
+      "tr": "fincan, kupa",
+      "findTr": "Fincanı bul",
+      "exampleEn": "A cup of tea, please.",
+      "exampleTr": "Bir fincan çay, lütfen.",
+      "crop": [
+        0.84,
+        0.78,
+        0.16,
+        0.18
+      ],
+      "hotspots": [
+        {
+          "rect": [
+            0.87,
+            0.8,
+            0.13,
+            0.155
+          ]
+        },
+        {
+          "rect": [
+            0.0,
+            0.455,
+            0.155,
+            0.05
+          ]
+        },
+        {
+          "rect": [
+            0.0,
+            0.555,
+            0.16,
+            0.04
+          ]
+        }
+      ],
+      "audioRef": null,
+      "exampleAudioRef": null
+    },
+    {
+      "id": "cake",
+      "w": "cake",
+      "tr": "kek, pasta",
+      "findTr": "Keki bul",
+      "exampleEn": "The cake is on the table.",
+      "exampleTr": "Kek masanın üstünde.",
+      "crop": [
+        0.8,
+        0.6,
+        0.2,
+        0.2
+      ],
+      "hotspots": [
+        {
+          "rect": [
+            0.84,
+            0.62,
+            0.16,
+            0.18
+          ]
+        }
+      ],
+      "audioRef": null,
+      "exampleAudioRef": null
+    },
+    {
+      "id": "picture",
+      "w": "picture",
+      "tr": "resim, tablo",
+      "findTr": "Resmi bul",
+      "exampleEn": "The picture is on the wall.",
+      "exampleTr": "Resim duvarda.",
+      "crop": [
+        0.66,
+        0.04,
+        0.25,
+        0.19
+      ],
+      "hotspots": [
+        {
+          "rect": [
+            0.685,
+            0.05,
+            0.195,
+            0.17
+          ]
+        }
+      ],
+      "audioRef": null,
+      "exampleAudioRef": null
+    },
+    {
+      "id": "flower",
+      "w": "flower",
+      "tr": "çiçek",
+      "findTr": "Çiçeği bul",
+      "exampleEn": "The flowers are by the window.",
+      "exampleTr": "Çiçekler pencerenin yanında.",
+      "crop": [
+        0.84,
+        0.41,
+        0.16,
+        0.15
+      ],
+      "hotspots": [
+        {
+          "rect": [
+            0.88,
+            0.42,
+            0.12,
+            0.135
+          ]
+        }
+      ],
+      "audioRef": null,
+      "exampleAudioRef": null
+    },
+    {
+      "id": "pencil",
+      "w": "pencil",
+      "tr": "kurşun kalem",
+      "findTr": "Kalemi bul",
+      "exampleEn": "Maya's pencils are in a cup.",
+      "exampleTr": "Maya'nın kalemleri bir kupada.",
+      "crop": [
+        0.06,
+        0.67,
+        0.18,
+        0.12
+      ],
+      "hotspots": [
+        {
+          "rect": [
+            0.09,
+            0.685,
+            0.105,
+            0.09
+          ]
+        }
+      ],
+      "audioRef": null,
+      "exampleAudioRef": null
+    },
+    {
+      "id": "table",
+      "w": "table",
+      "tr": "masa (burada: tezgâh)",
+      "findTr": "Masayı bul",
+      "exampleEn": "Maya is behind the table.",
+      "exampleTr": "Maya masanın arkasında.",
+      "crop": [
+        0.15,
+        0.76,
+        0.7,
+        0.24
+      ],
+      "hotspots": [
+        {
+          "rect": [
+            0.2,
+            0.775,
+            0.65,
+            0.225
+          ]
+        }
+      ],
+      "audioRef": null,
+      "exampleAudioRef": null
+    }
+  ]
+}

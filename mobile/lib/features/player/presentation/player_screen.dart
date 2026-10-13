@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:video_player/video_player.dart';
 
+import '../../../app/router.dart';
 import '../../../app/theme.dart';
 import '../../../shared/content/content_providers.dart';
 import '../../../shared/meaning/learning_event_log.dart';
@@ -14,11 +15,14 @@ import '../../../shared/meaning/meaning_text.dart';
 import '../../../shared/meaning/notebook_repository.dart';
 import '../../notebook/application/deck_sync.dart';
 import '../../notebook/application/notebook_providers.dart';
+import '../../topic_sets/application/topic_set_providers.dart';
 import '../application/autoplay_driver.dart';
 import '../application/player_session.dart';
 import '../application/segment_player_pool.dart';
+import '../../../shared/progress/story_progress.dart';
 import '../data/progress_repository.dart';
 import '../domain/episode.dart';
+import '../domain/episode_engine.dart';
 import 'widgets/card_view.dart';
 import 'widgets/decision_sheet.dart';
 import 'widgets/end_view.dart';
@@ -65,10 +69,26 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen>
   MeaningController? _shownMeaning;
   bool _missionShown = false;
 
+  /// Bölüm bu oynanıştan önce bitmiş miydi (H-051: konu seti satırı yeni
+  /// açılan set için "açıldı", tekrar oynayışta yalnızca "Konu seti" der).
+  bool? _completedBefore;
+
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance.addObserver(this);
+    unawaited(
+      ref
+          .read(progressRepositoryProvider)
+          .loadAll()
+          .then((all) {
+            if (mounted) {
+              _completedBefore =
+                  all[widget.contentId]?.status == StoryStatus.completed;
+            }
+          })
+          .catchError((Object _) {}),
+    );
     _session = PlayerSession(
       contentId: widget.contentId,
       source: ref.read(contentSourceProvider),
@@ -221,6 +241,24 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen>
     }
   }
 
+  /// Bölüm sonu; bölüm bir konu setini açıyorsa satırı ve "Konu setini aç"
+  /// düğmesi (H-051). Set bilgisi gelmezse ekran setsiz görünür.
+  Widget _endView(EpisodeEngine engine) {
+    final set = ref.watch(topicSetUnlockedByProvider(widget.contentId)).value;
+    return EndView(
+      engine: engine,
+      onBack: _exit,
+      topicSetTitle: set?.titleTr,
+      topicSetIsNew: _completedBefore != true,
+      onOpenTopicSet: set == null
+          ? null
+          : () {
+              debugPrint('[H051] bölüm sonundan konu seti: ${set.id}');
+              context.pushReplacement(AppRoutes.topicSet(set.id));
+            },
+    );
+  }
+
   void _exit() {
     if (!mounted) return;
     debugPrint('[H031] oynatıcıdan çıkış ${widget.contentId}');
@@ -295,7 +333,7 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen>
           PlayerPhase.resumePrompt => _Centered(
             child: _ResumePanel(session: s),
           ),
-          PlayerPhase.finished => EndView(engine: s.engine!, onBack: _exit),
+          PlayerPhase.finished => _endView(s.engine!),
           PlayerPhase.playing => _playing(context),
         },
       ),
