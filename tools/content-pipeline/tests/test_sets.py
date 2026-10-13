@@ -131,12 +131,21 @@ def test_fixture_set_is_clean(root):
     (lambda d: d["items"][0].update(exampleAudioRef={"source": "A1-001-test/audio/voice_02"}), "set-audio"),
     (lambda d: d["items"].append(copy.deepcopy(d["items"][0])), "set-item"),
     (lambda d: d.update(unlockAfter="A1-009"), "set-unlock"),
-    (lambda d: d.update(sceneImage="A1-001-test/images/yok.png"), "set-image"),
     (lambda d: d.update(id="other-room"), "set-schema"),
 ])
 def test_lint_catches_set_errors(root, mutate, code):
     errs = _lint(root, mutate)
     assert any(e.code == code for e in errs), [str(e) for e in errs]
+
+
+def test_missing_git_ignored_media_is_a_warning_not_an_error(root):
+    # Görsel/ses git dışında; CI'da bulunmaz. Denetim uyarı verir, hata vermez.
+    p = root / "_evren" / "setler" / "test-room.json"
+    doc = json.loads(p.read_text(encoding="utf-8"))
+    doc.update(sceneImage="A1-001-test/images/yok.png")
+    issues, _ = lint_set(p, doc, root)
+    assert not [i for i in issues if i.level == "error" and i.code in ("set-image", "set-media")]
+    assert any(i.level == "warning" and i.code == "set-media" for i in issues)
 
 
 def test_above_level_word_is_allowed_when_marked(root):
@@ -196,6 +205,8 @@ def test_export_removes_stale_sets(root, tmp_path):
 
 
 @pytest.mark.skipif(not HAS_MEDIA, reason="ffmpeg/ImageMagick yok")
+@pytest.mark.skipif(not (ICERIK / "A1-001-a-strange-message" / "images" / "T1-oda.png").is_file(),
+                    reason="git dışı bölüm görselleri bu ortamda yok")
 def test_export_real_set_media(tmp_path):
     """Gerçek bir set (alex-room): 512 px WebP öğe görselleri, 1080 px sahne, kelime sesi kesiti."""
     root = tmp_path / "icerik"

@@ -187,7 +187,8 @@ def lint_set(path: Path, doc: dict, icerik_root: Path) -> tuple[list[Issue], dic
         issues.append(Issue("error", "set-unlock", f"{sid}: unlockAfter bölümü yok: {doc.get('unlockAfter')}"))
     img = root / str(doc.get("sceneImage", ""))
     if not img.is_file():
-        issues.append(Issue("error", "set-image", f"{sid}: sahne görseli yok: {doc.get('sceneImage')}"))
+        # Medya git dışında (CI'da yok): denetim uyarıya düşer; dışa aktarım yine görselsiz çalışmaz.
+        issues.append(Issue("warning", "set-media", f"{sid}: sahne görseli bu ortamda yok (git dışı medya): {doc.get('sceneImage')}"))
     seen_ids, seen_w = set(), set()
     gloss = list(doc.get("glossary") or [])
     for it in items:
@@ -249,9 +250,12 @@ def lint_set(path: Path, doc: dict, icerik_root: Path) -> tuple[list[Issue], dic
             if not isinstance(ref, dict):
                 continue
             ap, al = audio_path(root, ref.get("source", "")), align_path(root, ref.get("source", ""))
-            if not ap.is_file() or not al.is_file():
-                issues.append(Issue("error", "set-audio", f"{where}: ses kaynağı yok: {ref.get('source')} (.mp3 ve .align.json)"))
+            if not al.is_file():
+                issues.append(Issue("error", "set-audio", f"{where}: hizalama dosyası yok: {ref.get('source')} (.align.json)"))
                 continue
+            if not ap.is_file():
+                # .mp3 git dışında (CI'da yok); hizalama denetimi yine yapılır.
+                issues.append(Issue("warning", "set-media", f"{where}: ses dosyası bu ortamda yok (git dışı medya): {ref.get('source')}"))
             word = ref.get("word")
             if word:
                 span = word_span(json.loads(al.read_text(encoding="utf-8")), word)

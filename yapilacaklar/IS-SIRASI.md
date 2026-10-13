@@ -102,9 +102,7 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 | 1.3 | H-035 | Hikâye haritası, bölüm kapısı, yerel ilerleme | Yüksek | H-031 | ✅ |
 | 1.4 | H-036 | Defter, ipucu panosu, FSRS | Yüksek | H-035 | ✅ |
 | 1.4' | H-052 | Defter ince ayarı ("Listen.", sözlük filtresi) | Orta | H-036 | ✅ |
-| 1.4' | H-051 | Konu setleri ve sahne avı | 2026-10-13 | 4 set onaylı (Alex'in odası, Maya'nın dükkânı, Liman, Masadaki iki not); sahne avı (ipucu ilk yanlıştan sonra, yakınlaştırma); kredisiz; flutter test 232/232, pytest 106/106 |
-| H-054 | Performans temeli | 2026-10-13 | İndirilen boyut −%60 (151,9 → 60,4 MB); senkron ≤ 0,01 sn; SSIM 0,98; iskelet görünümler; flutter test 205/205, pytest 77/77 |
-| H-053 | Arayüz metinleri ve sayfa netliği | Yüksek | H-036 | ✅ |
+| 1.4' | H-053 | Arayüz metinleri ve sayfa netliği | Yüksek | H-036 | ✅ |
 | 1.4'' | H-054 | Performans temeli (720p video, WebP, ölçüm) | Yüksek | H-053 | ✅ |
 | 1.4a | H-051 | Hikâye mekânlarına bağlı konu setleri + sahne avı | Yüksek | H-036 | ✅ |
 | 1.4b | H-048 | Hi-A: yönlendiren Hi (balon + kural tabanlı koç) | Yüksek | H-036, H-046 | ⏳ |
@@ -126,6 +124,8 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 ## Biten işler
 | İş | Başlık | Bitiş | Doğrulama |
 |---|---|---|---|
+| H-051 | Konu setleri ve sahne avı | 2026-10-13 | 4 set onaylı (Alex'in odası, Maya'nın dükkânı, Liman, Masadaki iki not); sahne avı (ipucu ilk yanlıştan sonra, yakınlaştırma); kredisiz; flutter test 232/232, pytest 106/106 |
+| H-054 | Performans temeli | 2026-10-13 | İndirilen boyut −%60 (151,9 → 60,4 MB); senkron ≤ 0,01 sn; SSIM 0,98; iskelet görünümler; flutter test 205/205, pytest 77/77 |
 | H-053 | Arayüz metinleri ve sayfa netliği | 2026-10-12 | `docs/ARAYUZ-METINLERI.md`; "Merhaba Deniz!", Hikâyen / Kelime tekrarı bölümleri; Profil'de isteğe bağlı ad; flutter test 193/193 |
 | H-052 | Defter ince ayarı | 2026-10-12 | "Listen." ve 2 eksik anlam eklendi (kullanıcı onayı); sözlük filtresi; pytest 70/70 |
 | H-036 | Defter, ipucu panosu, FSRS tekrarı | 2026-10-12 | flutter test 180/180; FSRS-6 py-fsrs 6.3.2 portu, 159 adım birebir; simülatörde taşıma, Bilmiyorum akışı, 10 dk yeniden öğrenme, ses doğrulandı |
