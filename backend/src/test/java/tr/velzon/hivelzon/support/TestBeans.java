@@ -14,6 +14,11 @@ public class TestBeans {
     }
 
     @Bean
+    static QueryCounter queryCounter() {
+        return new QueryCounter();
+    }
+
+    @Bean
     @Primary
     FakeMailPort fakeMailPort() {
         return new FakeMailPort();

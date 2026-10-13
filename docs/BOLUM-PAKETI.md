@@ -192,6 +192,15 @@ python3 tools/content-pipeline/export_package.py --season 1
 
 `contentId`, `contentVersion`, `renditions` (`["720p", "1080p"]`), `tool`, `loudness` (`gainDb`, önce/sonra ölçüm), `textOnly[]` (videosu ya da sesi olmayan düğümler ve nedeni), `files[]` (`path`, `bytes`, `sha256`), `totalBytes`, `renditionBytes` (H-054: uygulamanın bir sürüm için indirdiği toplam = ortak dosyalar + o sürümün videoları). Oynatıcı ve içe aktarma (H-041) bütünlüğü sha256 ile denetler.
 
+### 4.1 Katalog içe aktarma (H-037)
+
+Backend kataloğu (`content_items`, `catalog_seasons`) paket dosyalarından doldurulur; medya veritabanına girmez. Geliştirmede `POST /api/v1/admin/catalog/import` (EDITOR/ADMIN, prod'da yok) şunları okur: `manifest.json` (`contentId`, `contentVersion`, `totalBytes`, `renditionBytes`; dosyanın SHA-256'sı saklanır), `scenes.json → episode` (`id`, `slug`, `level`, `season`, `number`, `title`, `contentVersion`, `estimatedMinutes`), bölüm klasöründeki `content.json` (`status`, `publishAt`, `humanReviewed`) ve `ceviri.tr.json → status`; sezon için `season.json`.
+
+- Klasör adının ilk 6 karakteri, `manifest.contentId`, `episode.id` ve iki `contentVersion` birbirini tutmalı; tutmazsa bölüm atlanır.
+- **Durum:** `APPROVED` / `SCHEDULED` / `PUBLISHED` yalnızca `humanReviewed: true` ve (varsa) `ceviri.tr.json` `APPROVED` ise kabul edilir; yoksa `DRAFT`. `SCHEDULED` `publishAt` ister (ISO-8601, saat dilimli). Açık katalogda yalnızca `PUBLISHED` ya da zamanı gelmiş `APPROVED`/`SCHEDULED` bölüm görünür. Onay ekranı H-041'de.
+- Aynı (`contentId`, `contentVersion`) ikinci kez içe aktarılınca değişmez; paket yeniden üretilip manifest değişirse satır güncellenir. Yeni içerik sürümü yeni satırdır; katalog görünür en yeni sürümü verir.
+- `season.json → episodes[].teaserTr` yalnızca `teaserStatus: APPROVED` ise uygulamaya döner.
+
 ## 5. Kaynak: `kurgu.json`
 
 Her bölüm klasöründe, paketin kaynağı olan kurgu tanımı vardır. `scenes.json` ile aynı düğümleri içerir; fark, video düğümlerinde dosya yolu yerine **çekim listesi** (`shots[]`) bulunmasıdır:

@@ -23,3 +23,5 @@ Katalog ve kısa akış misafire açık olsun. İlerleme, kelime kaydetme ve kon
 - İlerlemeyi, defteri ve sonraki bölümleri saklamak için hesap istenir.
 - Misafir verisi cihazda tutulur, kayıtta hesaba taşınır.
 - Yaş beyanı ve rızalar veri toplanmadan önce alınır (H-002: 13+).
+
+2026-10-13: **Karar güncellendi (kullanıcı):** Hesap herkes için isteğe bağlı; uygulamanın tamamı hesapsız. Hesap yalnızca yedek/çoklu cihaz için (13+). Gerekçe: veri minimizasyonu.

@@ -60,6 +60,9 @@ public class SecurityConfig {
                 .authorizeHttpRequests(a -> a
                         .requestMatchers(HttpMethod.GET, "/actuator/health", "/actuator/health/**").permitAll()
                         .requestMatchers(HttpMethod.POST, "/api/v1/auth/**").permitAll()
+                        // Katalog açık: misafir ve hesapsız (13 yaş altı) kullanıcılar da içerik görür (H-009, H-002).
+                        .requestMatchers(HttpMethod.GET, "/api/v1/catalog/**").permitAll()
+                        .requestMatchers("/api/v1/admin/**").hasAnyRole("EDITOR", "ADMIN")
                         .requestMatchers("/error").permitAll()
                         .requestMatchers("/api/**").authenticated()
                         .anyRequest().denyAll())
@@ -73,14 +76,15 @@ public class SecurityConfig {
     }
 
     /**
-     * Açık uçlarda ({@code /api/v1/auth/**}, sağlık) Authorization başlığı yok sayılır: süresi dolmuş erişim
+     * Açık uçlarda ({@code /api/v1/auth/**}, katalog, sağlık) Authorization başlığı yok sayılır: süresi dolmuş erişim
      * belirteciyle {@code /auth/refresh} çağıran istemci 401 almamalı.
      */
     static BearerTokenResolver bearerTokenResolver() {
         DefaultBearerTokenResolver delegate = new DefaultBearerTokenResolver();
         return request -> {
             String path = request.getRequestURI().substring(request.getContextPath().length());
-            if (path.startsWith("/api/v1/auth/") || path.startsWith("/actuator/health")) {
+            if (path.startsWith("/api/v1/auth/") || path.startsWith("/actuator/health")
+                    || path.startsWith("/api/v1/catalog/")) {
                 return null;
             }
             return delegate.resolve(request);

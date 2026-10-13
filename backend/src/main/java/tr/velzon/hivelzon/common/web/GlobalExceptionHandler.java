@@ -52,6 +52,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(ApiException.class)
     ResponseEntity<ProblemDetail> api(ApiException ex, HttpServletRequest request) {
         ResponseEntity<ProblemDetail> response = problem(ex.code(), request);
+        ex.properties().forEach(response.getBody()::setProperty);
         if (ex.retryAfter() != null) {
             return ResponseEntity.status(response.getStatusCode())
                     .header(HttpHeaders.RETRY_AFTER, Long.toString(Math.max(1, ex.retryAfter().toSeconds())))
@@ -60,8 +61,19 @@ public class GlobalExceptionHandler {
         return response;
     }
 
+    /** Gövde sınırı okurken aşıldıysa (parçalı aktarım) 413; diğer okuma hataları 400. */
+    @ExceptionHandler(HttpMessageNotReadableException.class)
+    ResponseEntity<ProblemDetail> unreadable(HttpMessageNotReadableException ex, HttpServletRequest request) {
+        for (Throwable t = ex; t != null; t = t.getCause()) {
+            if (t instanceof BodySizeLimitFilter.BodyTooLargeException) {
+                return problem(ErrorCode.PAYLOAD_TOO_LARGE, request);
+            }
+        }
+        return problem(ErrorCode.VALIDATION_FAILED, request);
+    }
+
     @ExceptionHandler({MethodArgumentNotValidException.class, HandlerMethodValidationException.class,
-            HttpMessageNotReadableException.class, MissingServletRequestParameterException.class,
+            MissingServletRequestParameterException.class,
             MethodArgumentTypeMismatchException.class, HttpMediaTypeNotSupportedException.class})
     ResponseEntity<ProblemDetail> validation(Exception ex, HttpServletRequest request) {
         return problem(ErrorCode.VALIDATION_FAILED, request);

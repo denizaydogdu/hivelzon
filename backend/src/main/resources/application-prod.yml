@@ -11,3 +11,6 @@ hivelzon:
   security:
     jwt-secret: ${HIVELZON_JWT_SECRET}
     otp-pepper: ${HIVELZON_OTP_PEPPER}
+  catalog:
+    # Geliştirme içe aktarması üretimde kapalı; içerik yayını H-041 onay ekranı ve H-044 ile.
+    dev-import-enabled: false

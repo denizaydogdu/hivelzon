@@ -107,7 +107,7 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 | 1.4a | H-051 | Hikâye mekânlarına bağlı konu setleri + sahne avı | Yüksek | H-036 | ✅ |
 | 1.4b | H-048 | Hi-A: yönlendiren Hi (balon + kural tabanlı koç) | Yüksek | H-036, H-046 | ✅ |
 | 1.4c | H-055 | "Söyle" alıştırmaları (S1, cihazda tanıma) | Yüksek | H-048 | ✅ |
-| 1.5 | H-037 | Backend çekirdek | Yüksek | H-033 | 🔄 |
+| 1.5 | H-037 | Backend çekirdek | Yüksek | H-033 | ✅ |
 | 1.6 | H-038 | Mobil ↔ backend, misafir modu | Yüksek | H-035, H-037 | ⏳ |
 | 1.7 | H-039 | Onboarding ve yerleştirme | Orta | H-038 | ⏳ |
 | 1.8 | H-040 | Keşfet akışı | Orta | H-038 | ⏳ |
@@ -125,6 +125,7 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 ## Biten işler
 | İş | Başlık | Bitiş | Doğrulama |
 |---|---|---|---|
+| H-037 | Backend çekirdeği | 2026-10-13 | Kimlik (e-posta kodu, oturum, rıza, denetim, 30 gün silme) + katalog (ETag) + eşitleme (idempotent, LWW, transkript reddi) + FSRS Java (159/159); mvn verify 94/94; uçtan uca curl denemeleri |
 | H-055 | "Söyle" alıştırmaları (S1) | 2026-10-13 | Cihazda tanıma (speech_to_text 7.4.0), 4 yer, puan yok, ses/metin saklanmıyor (testli); 2. denemede tam → Hard; flutter test 356/356. Simülatörde gerçek tanıma çalışmadı → gerçek cihaz H-043 |
 | H-048 | Hi-A: yönlendiren Hi | 2026-10-13 | Balon + panel (tek öneri + gerekçe), "Bu ne demek?", haftalık özet, hata kataloğu (9), konu tanıtımı (5), yan görev (4), gizlilik ekranı; kullanıcı onayı; flutter test 281/281, pytest 120/120 |
 | H-051 | Konu setleri ve sahne avı | 2026-10-13 | 4 set onaylı (Alex'in odası, Maya'nın dükkânı, Liman, Masadaki iki not); sahne avı (ipucu ilk yanlıştan sonra, yakınlaştırma); kredisiz; flutter test 232/232, pytest 106/106 |
@@ -299,3 +300,5 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
   - Kullanıcı kararı: giriş yöntemi e-postaya tek kullanımlık kod (parolasız); Apple/Google H-044. H-037 başladı (Bölüm 1: kimlik, Bölüm 2: veri).
   - H-037 Bölüm 1 (kimlik: e-posta kodu, oturum, rıza, denetim, 30 gün silme) bitti, mvn verify 44/44; yerel PostgreSQL portu 5435'e taşındı. Kullanıcı 13 yaş sınırının kaldırılmasını istedi (H-002 değişikliği; sonuçları soruldu).
   - Kullanıcı kararı (H-002 güncellendi): her yaş kullanır; hesap 13+; 13 altı hesapsız tam kullanım (cihazda); AI sohbeti 18+. H-039 ve H-042'ye not düşüldü. Backend 13 altı kaydı reddetmeye devam eder (değişiklik yok).
+  - Kullanıcı ilkesi: "Ne kadar az bilgi alırsak kullanıcılar o kadar rahat eder." Karar: hesap herkes için isteğe bağlı, uygulamanın tamamı hesapsız (H-009 güncellendi); veri minimizasyonu CLAUDE.md mühendislik ilkelerine eklendi; H-038/H-039 notları.
+  - H-037 bitti. Kararlar: Hi kayıtları silme her cihazda; onay durumu veritabanında. Sıradaki: H-038 (telefon ↔ sunucu, isteğe bağlı hesap).

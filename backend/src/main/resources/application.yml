@@ -85,6 +85,25 @@ hivelzon:
     marketing-version: ${HIVELZON_MARKETING_VERSION:taslak-1}
   mail:
     from: ${HIVELZON_MAIL_FROM:hiVelzon <no-reply@hi.velzon.tr>}
+  catalog:
+    # Geliştirme içe aktarması (POST /api/v1/admin/catalog/import, EDITOR/ADMIN). prod'da kapalı.
+    import-root: ${HIVELZON_CATALOG_IMPORT_ROOT:../icerik}
+    dev-import-enabled: ${HIVELZON_CATALOG_DEV_IMPORT:true}
+    cache-max-age: 60s
+  media:
+    # VideoHostingPort (K-13): yerelde içerik sunucusu (tools/dev-content-server/serve.py); Bunny H-044'te.
+    provider: local
+    local-base-url: ${HIVELZON_MEDIA_LOCAL_BASE_URL:http://127.0.0.1:8787/packages/}
+  sync:
+    max-rows-per-push: 500
+    max-push-bytes: 1048576
+    max-default-body-bytes: 65536
+    pull-default-limit: 200
+    pull-max-limit: 500
+    max-clock-skew: 5m
+    push-per-hour: ${HIVELZON_RL_SYNC_PUSH_PER_USER:240}
+    pull-per-hour: ${HIVELZON_RL_SYNC_PULL_PER_USER:1200}
+    rate-per-hour: ${HIVELZON_RL_REVIEW_RATE_PER_USER:2000}
   jobs:
     enabled: ${HIVELZON_JOBS_ENABLED:true}
     purge-cron: "0 17 * * * *"

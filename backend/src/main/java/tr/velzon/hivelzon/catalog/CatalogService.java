@@ -1,0 +1,141 @@
+package tr.velzon.hivelzon.catalog;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.time.Clock;
+import java.time.Instant;
+import java.time.OffsetDateTime;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import tools.jackson.databind.JsonNode;
+import tools.jackson.databind.json.JsonMapper;
+import tools.jackson.databind.node.ArrayNode;
+import tools.jackson.databind.node.ObjectNode;
+import tr.velzon.hivelzon.common.web.ApiException;
+import tr.velzon.hivelzon.common.web.ErrorCode;
+import tr.velzon.hivelzon.common.web.PageParams;
+import tr.velzon.hivelzon.common.web.PageResponse;
+
+/**
+ * Açık katalog. Yalnızca görünür içerik döner: {@code PUBLISHED} ya da ({@code APPROVED}/{@code SCHEDULED} ve
+ * {@code publish_at <= şimdi}). Aynı bölümün birden çok görünür sürümü varsa en yenisi. Her liste sabit sayıda
+ * SQL ifadesiyle (N+1 yok) okunur.
+ */
+@Service
+public class CatalogService {
+
+    /** Görünür sürümler (bölüm başına en yeni); {@code ?} = şimdi. */
+    private static final String VISIBLE = """
+            SELECT DISTINCT ON (content_id) content_id, content_version, slug, season, number, level, title,
+                   publish_at, package_base_path, manifest_sha256, total_bytes, rendition_bytes::text AS rendition_bytes,
+                   estimated_minutes, updated_at
+              FROM content_items
+             WHERE (status = 'PUBLISHED' OR (status IN ('APPROVED', 'SCHEDULED') AND publish_at <= ?))
+            """;
+
+    public record CatalogItem(String contentId, int contentVersion, String slug, int season, int number, String level,
+            String title, Integer estimatedMinutes, Instant publishAt, String packageBaseUrl, String scenesUrl,
+            String manifestUrl, String manifestSha256, Long totalBytes, JsonNode renditionBytes, Instant updatedAt) {
+    }
+
+    private final JdbcTemplate jdbc;
+    private final VideoHostingPort hosting;
+    private final JsonMapper json = JsonMapper.builder().build();
+    private final Clock clock;
+
+    public CatalogService(JdbcTemplate jdbc, VideoHostingPort hosting, Clock clock) {
+        this.jdbc = jdbc;
+        this.hosting = hosting;
+        this.clock = clock;
+    }
+
+    @Transactional(readOnly = true)
+    public PageResponse<CatalogItem> items(Integer season, Integer page, Integer size) {
+        var pageable = PageParams.of(page, size, org.springframework.data.domain.Sort.unsorted());
+        OffsetDateTime now = CatalogImportService.utc(clock.instant());
+        String filter = season == null ? "" : " AND season = ?";
+        Object[] args = season == null ? new Object[] {now} : new Object[] {now, season};
+        Long total = jdbc.queryForObject("SELECT count(*) FROM (" + VISIBLE + filter
+                + " ORDER BY content_id, content_version DESC) v", Long.class, args);
+        Object[] pageArgs = season == null
+                ? new Object[] {now, pageable.getPageSize(), pageable.getOffset()}
+                : new Object[] {now, season, pageable.getPageSize(), pageable.getOffset()};
+        List<CatalogItem> items = jdbc.query("SELECT * FROM (" + VISIBLE + filter
+                + " ORDER BY content_id, content_version DESC) v ORDER BY season, number, content_id LIMIT ? OFFSET ?",
+                this::mapItem, pageArgs);
+        long t = total == null ? 0 : total;
+        int pages = (int) ((t + pageable.getPageSize() - 1) / pageable.getPageSize());
+        return new PageResponse<>(items, pageable.getPageNumber(), pageable.getPageSize(), t, pages);
+    }
+
+    /**
+     * Sezon: season.json'un uygulamaya dönen hâli. {@code episodes[]} sezonun bütün bölüm yerleridir (harita);
+     * {@code available} yalnızca görünür bölümde {@code true} ve bölümün paket bilgisi eklenir. Onaylanmamış
+     * ({@code teaserStatus != APPROVED}) tanıtım cümlesi gösterilmez.
+     */
+    @Transactional(readOnly = true)
+    public ObjectNode season(int season) {
+        List<Map<String, Object>> rows = jdbc.queryForList(
+                "SELECT descriptor::text AS descriptor, package_base_path, updated_at FROM catalog_seasons WHERE season = ?",
+                season);
+        if (rows.isEmpty()) {
+            throw new ApiException(ErrorCode.NOT_FOUND);
+        }
+        Map<String, Object> row = rows.get(0);
+        ObjectNode doc = (ObjectNode) json.readTree((String) row.get("descriptor"));
+        OffsetDateTime now = CatalogImportService.utc(clock.instant());
+        Map<String, CatalogItem> visible = new HashMap<>();
+        for (CatalogItem item : jdbc.query(VISIBLE + " AND season = ? ORDER BY content_id, content_version DESC",
+                this::mapItem, now, season)) {
+            visible.put(item.contentId(), item);
+        }
+        String seasonPath = (String) row.get("package_base_path");
+        doc.put("packageBaseUrl", hosting.packageBaseUrl(seasonPath));
+        if (doc.get("episodes") instanceof ArrayNode episodes) {
+            for (JsonNode e : episodes) {
+                ObjectNode ep = (ObjectNode) e;
+                if (!"APPROVED".equals(ep.path("teaserStatus").asString(""))) {
+                    ep.remove("teaserTr");
+                }
+                CatalogItem item = visible.remove(ep.path("contentId").asString(""));
+                ep.put("available", item != null);
+                if (item != null) {
+                    ep.set("item", json.valueToTree(item));
+                }
+            }
+            // Görünür olup harita listesinde yer almayan bölüm (ör. prolog) de dönsün.
+            visible.values().stream()
+                    .sorted(java.util.Comparator.comparingInt(CatalogItem::number))
+                    .forEach(item -> {
+                        ObjectNode ep = episodes.addObject();
+                        ep.put("number", item.number());
+                        ep.put("contentId", item.contentId());
+                        ep.put("title", item.title());
+                        ep.put("available", true);
+                        ep.set("item", json.valueToTree(item));
+                    });
+        }
+        return doc;
+    }
+
+    private CatalogItem mapItem(ResultSet rs, int i) throws SQLException {
+        String base = rs.getString("package_base_path");
+        String packageUrl = hosting.packageBaseUrl(base);
+        String rendition = rs.getString("rendition_bytes");
+        OffsetDateTime publishAt = rs.getObject("publish_at", OffsetDateTime.class);
+        Integer minutes = (Integer) rs.getObject("estimated_minutes");
+        Long totalBytes = (Long) rs.getObject("total_bytes");
+        return new CatalogItem(rs.getString("content_id"), rs.getInt("content_version"), rs.getString("slug"),
+                rs.getInt("season"), rs.getInt("number"), rs.getString("level"), rs.getString("title"), minutes,
+                publishAt == null ? null : publishAt.toInstant(), packageUrl, packageUrl + "scenes.json",
+                packageUrl + "manifest.json", rs.getString("manifest_sha256"), totalBytes,
+                rendition == null ? null : json.readTree(rendition),
+                rs.getObject("updated_at", OffsetDateTime.class).toInstant());
+    }
+}

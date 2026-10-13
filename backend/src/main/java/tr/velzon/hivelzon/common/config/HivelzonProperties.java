@@ -17,6 +17,9 @@ public class HivelzonProperties {
     private final Account account = new Account();
     private final Consent consent = new Consent();
     private final Mail mail = new Mail();
+    private final Catalog catalog = new Catalog();
+    private final Media media = new Media();
+    private final Sync sync = new Sync();
 
     public Security getSecurity() { return security; }
     public Otp getOtp() { return otp; }
@@ -24,6 +27,9 @@ public class HivelzonProperties {
     public Account getAccount() { return account; }
     public Consent getConsent() { return consent; }
     public Mail getMail() { return mail; }
+    public Catalog getCatalog() { return catalog; }
+    public Media getMedia() { return media; }
+    public Sync getSync() { return sync; }
 
     public static class Security {
         /** HS256 anahtarı, Base64; en az 32 bayt. Ortam: HIVELZON_JWT_SECRET. */
@@ -109,5 +115,73 @@ public class HivelzonProperties {
 
         public String getFrom() { return from; }
         public void setFrom(String v) { from = v; }
+    }
+
+    public static class Catalog {
+        /**
+         * Geliştirme içe aktarmasının okuduğu içerik kökü ({@code icerik/}): bölüm paketleri
+         * {@code <kök>/<id>/_build/package/}, sezon paketleri {@code <kök>/_evren/_build/season/S<n>/}.
+         */
+        private String importRoot = "../icerik";
+        /** {@code POST /api/v1/admin/catalog/import} açık mı (prod'da kapalı). */
+        private boolean devImportEnabled = true;
+        /** Katalog cevaplarının istemcide önbellekte kalma süresi (sonra ETag ile yeniden doğrulanır). */
+        private Duration cacheMaxAge = Duration.ofSeconds(60);
+
+        public String getImportRoot() { return importRoot; }
+        public void setImportRoot(String v) { importRoot = v; }
+        public boolean isDevImportEnabled() { return devImportEnabled; }
+        public void setDevImportEnabled(boolean v) { devImportEnabled = v; }
+        public Duration getCacheMaxAge() { return cacheMaxAge; }
+        public void setCacheMaxAge(Duration v) { cacheMaxAge = v; }
+    }
+
+    public static class Media {
+        /** VideoHostingPort adaptörü: {@code local} (geliştirme içerik sunucusu). Bunny H-044'te eklenir. */
+        private String provider = "local";
+        /** Yerel içerik sunucusunun paket kökü (tools/dev-content-server/serve.py). */
+        private String localBaseUrl = "http://127.0.0.1:8787/packages/";
+
+        public String getProvider() { return provider; }
+        public void setProvider(String v) { provider = v; }
+        public String getLocalBaseUrl() { return localBaseUrl; }
+        public void setLocalBaseUrl(String v) { localBaseUrl = v; }
+    }
+
+    public static class Sync {
+        /** Bir eşitleme isteğinde en çok satır (bütün tablolar toplamı). */
+        private int maxRowsPerPush = 500;
+        /** {@code /api/v1/sync/push} gövde sınırı (bayt). */
+        private long maxPushBytes = 1024 * 1024;
+        /** Diğer {@code /api/**} uçlarının gövde sınırı (bayt). */
+        private long maxDefaultBodyBytes = 64 * 1024;
+        /** Çekmede sayfa başına varsayılan ve en çok satır. */
+        private int pullDefaultLimit = 200;
+        private int pullMaxLimit = 500;
+        /** İstemci saatinin sunucudan en çok ne kadar ileride olabileceği; ötesi sunucu saatine çekilir. */
+        private Duration maxClockSkew = Duration.ofMinutes(5);
+        /** Saatte kullanıcı başına istek sınırları. */
+        private int pushPerHour = 240;
+        private int pullPerHour = 1200;
+        private int ratePerHour = 2000;
+
+        public int getMaxRowsPerPush() { return maxRowsPerPush; }
+        public void setMaxRowsPerPush(int v) { maxRowsPerPush = v; }
+        public long getMaxPushBytes() { return maxPushBytes; }
+        public void setMaxPushBytes(long v) { maxPushBytes = v; }
+        public long getMaxDefaultBodyBytes() { return maxDefaultBodyBytes; }
+        public void setMaxDefaultBodyBytes(long v) { maxDefaultBodyBytes = v; }
+        public int getPullDefaultLimit() { return pullDefaultLimit; }
+        public void setPullDefaultLimit(int v) { pullDefaultLimit = v; }
+        public int getPullMaxLimit() { return pullMaxLimit; }
+        public void setPullMaxLimit(int v) { pullMaxLimit = v; }
+        public Duration getMaxClockSkew() { return maxClockSkew; }
+        public void setMaxClockSkew(Duration v) { maxClockSkew = v; }
+        public int getPushPerHour() { return pushPerHour; }
+        public void setPushPerHour(int v) { pushPerHour = v; }
+        public int getPullPerHour() { return pullPerHour; }
+        public void setPullPerHour(int v) { pullPerHour = v; }
+        public int getRatePerHour() { return ratePerHour; }
+        public void setRatePerHour(int v) { ratePerHour = v; }
     }
 }

@@ -24,6 +24,13 @@ public enum ErrorCode {
             "Hesabın silinmek üzere. Devam etmek için önce hesabını geri alabilirsin."),
     REAUTH_REQUIRED(HttpStatus.FORBIDDEN, "Hesabını geri almak için e-postana gelen kodla yeniden giriş yap."),
     NOT_FOUND(HttpStatus.NOT_FOUND, "Aradığın şey bulunamadı."),
+    PAYLOAD_TOO_LARGE(HttpStatus.CONTENT_TOO_LARGE,
+            "Gönderilen veri çok büyük. Daha küçük parçalar hâlinde tekrar gönder."),
+    SYNC_ROW_INVALID(HttpStatus.BAD_REQUEST, "Eşitlenen kayıtlardan biri geçersiz."),
+    SYNC_FIELD_NOT_ALLOWED(HttpStatus.BAD_REQUEST, "Eşitlenen kayıtta izin verilmeyen bir alan var."),
+    TRANSCRIPT_NOT_ALLOWED(HttpStatus.BAD_REQUEST,
+            "Konuşmanın sesi ya da yazısı sunucuya gönderilmez; yalnızca sonucu eşitlenir."),
+    CATALOG_IMPORT_FAILED(HttpStatus.UNPROCESSABLE_CONTENT, "İçerik paketi okunamadı. Paket dosyalarını kontrol et."),
     METHOD_NOT_ALLOWED(HttpStatus.METHOD_NOT_ALLOWED, "Bu işlem desteklenmiyor."),
     MAIL_UNAVAILABLE(HttpStatus.SERVICE_UNAVAILABLE, "Şu an e-posta gönderemedik. Biraz sonra tekrar dene."),
     INTERNAL_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "Beklenmeyen bir sorun oldu. Biraz sonra tekrar dene.");

@@ -59,7 +59,7 @@
 | K-17 | **Birleşik 4 faz:** F0 kararlar + pilot · F1 MVP (hikâye modu, S1 A1, harita, defter, kısa akış, editör onayı) · F2 v1 (AI konuşma, S2 A2) · F3 v2 (S3+, çevrimdışı, gelişmiş seviye modeli) |
 | H-016 | Ad yazımı **hiVelzon** |
 | H-013 | Günlük hedef 5 / 10 / 15 dk; günde en fazla 1 hatırlatma, saati kullanıcı seçer |
-| H-009 | Misafir: prolog + B1 kayıtsız; ilerleme için hesap. **13 yaş altı için istisna (H-002, 2026-10-13):** hesap açamadıkları için tam içerik hesapsız ve cihazda. |
+| H-009 | **Hesap herkes için isteğe bağlı** (kullanıcı kararı 2026-10-13: "ne kadar az bilgi alırsak kullanıcılar o kadar rahat eder"). Uygulamanın tamamı hesapsız kullanılır; veriler cihazda. Hesap (13+) yalnızca yedek ve çoklu cihaz için; sakin uyarı: "İlerlemen yalnızca bu telefonda. Kaybolmasın istersen hesap aç." v1 AI sohbeti kota için hesap isteyebilir. Eski karar (misafir: prolog + B1) kaldırıldı. |
 | H-018 | Yayın bölgesi: yalnızca Türkiye |
 | H-020 | Hiç reklam yok |
 | H-017 | Sosyal medya: ayrı ve onaylı faz; hesaplar lansmana yakın açılır; elle yükleme, her yayın onaylı |
@@ -202,6 +202,7 @@ Kullanıcı `docs/ICERIK-MIMARISI.md` §14'teki önerileri onayladı. Ayrıntı 
 - Medya PostgreSQL'de blob olarak tutulmaz; nesne depolama ya da CDN kullanılır. Uzun AI işleri arka plan işi olarak çalışır, API isteği içinde beklenmez.
 - Her ücretli çağrıdan **önce** kota ve bütçe kontrolü yapılır. Çağrılar idempotent olmalıdır: tekrar çağrı çift ücret ya da çift yayın üretmez. Kota sayacı eşzamanlı isteklerde atomik güncellenir.
 - Aylık tavan konfigürasyondan okunur, koda gömülmez. **Tavan tanımlı değilse ücretli üretim varsayılan olarak kapalıdır.**
+- **Veri minimizasyonu (kullanıcı ilkesi, 2026-10-13):** Gerekenden fazla bilgi istenmez. Hesap isteğe bağlıdır; hesapta yalnızca e-posta ve doğum yılı; ad isteğe bağlı ve cihazda. Reklam, izleme ve üçüncü taraf analitik yok. Öğrenme verisi hesap yoksa cihazdan çıkmaz.
 - Ham ses varsayılan olarak saklanmaz. Transkriptlerin erişimi kısıtlıdır ve saklama süresi vardır. Loglara ve telemetriye token, parola, ses, tam transkript ve e-posta yazılmaz.
 - Zaman UTC saklanır, kullanıcıya yerel saatle gösterilir. Hatalar makinece okunabilir kodla döner (`QUOTA_EXCEEDED` vb.). İstemciye stack trace ve prompt dönmez.
 - Mikrofon izni yalnızca konuşma özelliği ilk kez kullanılınca istenir. Mikrofon izni olmadan da hikâye ve video özellikleri tam çalışır. MVP'deki "Söyle" alıştırmaları yalnızca cihazda tanıma kullanır; ses gönderilmez ve saklanmaz (H-055).

@@ -25,3 +25,4 @@ Kendi dalında (`h-041-editor-onay-icerik-aktarma`) yapılır; `main`'e alınmad
 ## Notlar
 2026-10-11: H-025 uygulama planıyla açıldı.
 2026-10-12: Yerel adaptörün bugünkü karşılığı `tools/dev-content-server/serve.py` (127.0.0.1:8787; bölüm paketleri ve `/packages/_season/S1/`). Bu işte backend'deki `VideoHostingPort` için yerel dosya sistemi adaptörü yazılır; mobil `CONTENT_BASE_URL` ile ona yönelir. Bunny Stream adaptörü H-044'te. İçe aktarılan paket biçimi: `docs/BOLUM-PAKETI.md` (schemaVersion 2).
+2026-10-13 (H-037'den): Kullanıcı kararı: onay durumu **veritabanında** tutulur; yeniden içe aktarma onaylanmış durumu bozmaz; onay geçmişi denetim kaydında. İçe aktarma şu an `humanReviewed` + çeviri APPROVED değilse DRAFT yazıyor.

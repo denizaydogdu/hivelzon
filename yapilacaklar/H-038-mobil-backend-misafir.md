@@ -26,3 +26,5 @@ Kendi dalında (`h-038-mobil-backend-misafir`) yapılır; `main`'e alınmadan ö
 ## Notlar
 2026-10-11: H-025 uygulama planıyla açıldı.
 2026-10-12: Mobil taraftaki yerel veri Drift'te (H-035; H-036 sonrası defter ve FSRS de). Misafirden hesaba taşıma bu tablolardan yapılır. Öğrenme olayları (H-046) `client_event_id` ile idempotent gönderilir. Misafir kapsamı: prolog + B1 (H-009).
+2026-10-13: Kapsam değişti (H-009 güncellendi): misafir sınırı yok; hesap isteğe bağlı. Bu işte: isteğe bağlı "Hesap aç / giriş yap" (e-posta kodu), cihazdaki verinin hesaba ilk eşitlenmesi, sonra çift yönlü eşitleme; hesap yoksa hiçbir veri sunucuya gitmez. Sakin uyarı metni ("İlerlemen yalnızca bu telefonda…").
+2026-10-13 (H-037'den): Kullanıcı kararı: "Hi'nin kayıtlarını sil" bütün cihazlarda geçerli → sunucu silme işareti (tombstone) eşitlemeyle diğer cihazlara gider. Mobil Drift şema 5: `user_story_flags` ve `season_state`'e `updatedAt`, `review_logs` ve `speech_attempts`'e UUID; kimlikler UUIDv5 kuralıyla (backend README).

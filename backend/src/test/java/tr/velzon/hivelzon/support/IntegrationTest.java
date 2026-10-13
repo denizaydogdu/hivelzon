@@ -56,7 +56,10 @@ public abstract class IntegrationTest {
     void resetState() {
         tx.executeWithoutResult(s -> {
             jdbc.queryForObject("SELECT set_config('hivelzon.allow_consent_purge', 'on', true)", String.class);
-            jdbc.execute("TRUNCATE consents, refresh_tokens, users, otp_challenges, rate_limit_buckets, audit_log");
+            jdbc.execute("TRUNCATE consents, refresh_tokens, users, otp_challenges, rate_limit_buckets, audit_log, "
+                    + "content_items, catalog_seasons, user_story_progress, user_story_flags, gate_progress, "
+                    + "season_state, clues, story_links, notebook_items, review_cards, review_logs, learning_events, "
+                    + "hi_records, speech_attempts");
         });
         clock.reset();
         mail.clear();
@@ -92,6 +95,40 @@ public abstract class IntegrationTest {
         } catch (Exception e) {
             throw new IllegalStateException(e);
         }
+    }
+
+    /** İstek başlıklarıyla çağrı (ör. If-None-Match). */
+    protected Response call(String method, String path, Object body, String bearer, Map<String, String> extra) {
+        try {
+            HttpRequest.Builder builder = HttpRequest.newBuilder(URI.create("http://localhost:" + port + path))
+                    .header("Accept", "application/json");
+            if (bearer != null) {
+                builder.header("Authorization", "Bearer " + bearer);
+            }
+            extra.forEach(builder::header);
+            if (body != null) {
+                builder.header("Content-Type", "application/json")
+                        .method(method, HttpRequest.BodyPublishers.ofString(
+                                body instanceof String s ? s : JSON.writeValueAsString(body)));
+            } else {
+                builder.method(method, HttpRequest.BodyPublishers.noBody());
+            }
+            HttpResponse<String> response = HTTP.send(builder.build(), HttpResponse.BodyHandlers.ofString());
+            Map<String, String> headers = new LinkedHashMap<>();
+            response.headers().map().forEach((k, v) -> headers.put(k.toLowerCase(), String.join(",", v)));
+            String raw = response.body();
+            JsonNode json = raw == null || raw.isBlank() ? JSON.createObjectNode() : JSON.readTree(raw);
+            return new Response(response.statusCode(), json, headers, raw);
+        } catch (Exception e) {
+            throw new IllegalStateException(e);
+        }
+    }
+
+    /** Hesap açar, rolünü verir ve rolü taşıyan yeni belirteci döner. */
+    protected String loginWithRole(String email, String role) {
+        login(email);
+        jdbc.update("UPDATE users SET role = ? WHERE email = ?", role, email);
+        return login(email).text("accessToken");
     }
 
     protected Response post(String path, Object body) {
