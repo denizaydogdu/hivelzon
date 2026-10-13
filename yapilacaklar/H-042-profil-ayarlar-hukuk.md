@@ -26,3 +26,4 @@ Kendi dalında (`h-042-profil-ayarlar-hukuk`) yapılır; `main`'e alınmadan ön
 2026-10-11: H-025 uygulama planıyla açıldı.
 2026-10-12: Profil'deki "Hi benim hakkımda ne biliyor?" görünümü H-048 kapsamındadır; bu iş yalnızca yerini ayırır. Hukuk metinleri ve lisans atıfları için kaynak: `docs/LISANS-RAPORU.md`; hukukçu soruları henüz gönderilmedi.
 2026-10-13 (H-055'ten): Hukukçu sorusu: 13–17 yaş için cihazda konuşma tanıma (ses saklanmaz, gönderilmez) ve iOS izin penceresindeki Apple metni; KVKK aydınlatmasına "Söyle alıştırmaları" bölümü.
+2026-10-13: Hukukçu sorusu: 13 yaş altının hesapsız, cihazda veriyle kullanımı (KVKK), mağaza aile politikaları ve ebeveyn kapısı gereksinimi.

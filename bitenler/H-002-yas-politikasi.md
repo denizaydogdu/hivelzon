@@ -23,3 +23,5 @@ Kullanıcı soru-cevapla karar verdi:
 - 13 yaş altı kayıt tamamlanamaz.
 
 **Kalan:** Hukukçu teyidi (KVKK, mağaza yaş derecesi, Türkiye'deki yeni yaş doğrulama düzenlemesi).
+
+2026-10-13: **Karar güncellendi (kullanıcı):** "13 yaş sınırı kaldırılsın; İngilizce öğrenme uygulaması." Sonuçlar (KVKK veli rızası, mağaza aile politikaları) anlatıldı; seçilen yol: her yaş kullanır, hesap 13+; 13 altı hesapsız tam kullanım, veriler cihazda. AI sohbeti 18+ korunur. Uygulama: H-039 (açılışta doğum yılı → 13 altı tam misafir modu).

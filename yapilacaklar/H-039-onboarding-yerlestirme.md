@@ -25,3 +25,4 @@ Kendi dalında (`h-039-onboarding-yerlestirme`) yapılır; `main`'e alınmadan �
 
 ## Notlar
 2026-10-11: H-025 uygulama planıyla açıldı.
+2026-10-13: H-002 güncellendi: açılışta doğum yılı sorulur. 13 altı → hesap açma gösterilmez, uygulamanın tamamı hesapsız (cihazda) açılır; 13+ → misafir (prolog + B1) ya da hesap. AI sohbeti 18+. Ebeveyn kapısı (mağaza kuralı) H-043/H-044'te değerlendirilir.

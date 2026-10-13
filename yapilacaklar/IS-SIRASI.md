@@ -298,3 +298,4 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
   - H-055 bitti (simülatör + sahte tanıyıcı). Gerçek cihaz ve iOS izin metni H-043/H-042'ye eklendi. Sıradaki: H-037 (backend çekirdeği; önce giriş yöntemi sorulacak).
   - Kullanıcı kararı: giriş yöntemi e-postaya tek kullanımlık kod (parolasız); Apple/Google H-044. H-037 başladı (Bölüm 1: kimlik, Bölüm 2: veri).
   - H-037 Bölüm 1 (kimlik: e-posta kodu, oturum, rıza, denetim, 30 gün silme) bitti, mvn verify 44/44; yerel PostgreSQL portu 5435'e taşındı. Kullanıcı 13 yaş sınırının kaldırılmasını istedi (H-002 değişikliği; sonuçları soruldu).
+  - Kullanıcı kararı (H-002 güncellendi): her yaş kullanır; hesap 13+; 13 altı hesapsız tam kullanım (cihazda); AI sohbeti 18+. H-039 ve H-042'ye not düşüldü. Backend 13 altı kaydı reddetmeye devam eder (değişiklik yok).
