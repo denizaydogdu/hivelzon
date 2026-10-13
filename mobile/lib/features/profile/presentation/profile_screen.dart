@@ -6,6 +6,8 @@ import '../../../app/router.dart';
 import '../../../app/theme.dart';
 import '../../../l10n/tr_strings.dart';
 import '../../../shared/widgets/page_header.dart';
+import '../../hi/application/hi_providers.dart';
+import '../../hi/presentation/hi_privacy_screen.dart';
 import '../../notebook/application/notebook_providers.dart';
 import '../../notebook/domain/review_policy.dart';
 import '../application/profile_providers.dart';
@@ -32,7 +34,13 @@ class ProfileScreen extends ConsumerWidget {
     return Scaffold(
       body: SafeArea(
         child: ListView(
-          padding: const EdgeInsets.all(AppSpacing.sm),
+          // Alt boşluk: sağ alttaki Hi balonu son öğeyi örtmesin (H-048).
+          padding: const EdgeInsets.fromLTRB(
+            AppSpacing.sm,
+            AppSpacing.sm,
+            AppSpacing.sm,
+            AppSpacing.sm + 80,
+          ),
           children: [
             const PageHeader(
               title: ProfileTexts.title,
@@ -66,6 +74,13 @@ class ProfileScreen extends ConsumerWidget {
                 },
               ),
             ),
+            const SizedBox(height: AppSpacing.xs),
+            HiPrivacyTile(
+              onTap: () async {
+                await context.push(AppRoutes.hiPrivacy);
+                if (context.mounted) refreshHi(ref);
+              },
+            ),
             const SizedBox(height: AppSpacing.md),
             const SectionHeading(ProfileTexts.goalSection),
             const SizedBox(height: 4),
@@ -89,6 +104,7 @@ class ProfileScreen extends ConsumerWidget {
                     .setDailyGoalMinutes(s.first);
                 ref.invalidate(dailyGoalProvider);
                 refreshNotebook(ref);
+                refreshHi(ref);
               },
             ),
             const SizedBox(height: AppSpacing.xs),

@@ -10,6 +10,8 @@ import '../../../l10n/tr_strings.dart';
 import '../../../shared/fsrs/fsrs.dart';
 import '../../../shared/meaning/error_taxonomy.dart';
 import '../../../shared/meaning/learning_event_log.dart';
+import '../../hi/application/hi_providers.dart';
+import '../../hi/presentation/hi_cards.dart';
 import '../application/card_audio_player.dart';
 import '../application/notebook_providers.dart';
 import '../domain/retrieval_task.dart';
@@ -497,6 +499,28 @@ class _ReviewScreenState extends ConsumerState<ReviewScreen> {
         if (body != null) ...[
           const SizedBox(height: 4),
           Text(body, key: const ValueKey('feedback-body')),
+        ],
+        // Hi'nin notu (H-048): ifadeyle ilgili Türkçeye göre açıklama varsa.
+        if (!o.correct) ...[
+          Builder(
+            builder: (context) {
+              final note = ref
+                  .watch(hiContentProvider)
+                  .value
+                  ?.noteForPhrase(o.item.textEn);
+              if (note == null) return const SizedBox.shrink();
+              return Align(
+                alignment: Alignment.centerLeft,
+                child: TextButton.icon(
+                  key: const ValueKey('review-why-wrong'),
+                  onPressed: () => unawaited(showHiNote(context, note)),
+                  style: TextButton.styleFrom(minimumSize: const Size(48, 48)),
+                  icon: const Icon(Icons.lightbulb_outline_rounded),
+                  label: const Text(HiTexts.whyWrong),
+                ),
+              );
+            },
+          ),
         ],
         const SizedBox(height: AppSpacing.sm),
         Card(

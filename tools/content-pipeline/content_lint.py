@@ -19,6 +19,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from hvpipeline.lint import check_chain, lint_episode  # noqa: E402
+from hvpipeline.hi import has_hi_sources, lint_hi  # noqa: E402
 from hvpipeline.sets import lint_sets, sets_dir  # noqa: E402
 
 
@@ -30,6 +31,7 @@ def main(argv: list[str] | None = None) -> int:
                     help="grafik kaynağı: _build/package/scenes.json ya da kurgu.json (varsayılan: varsa paket)")
     ap.add_argument("--no-chain", action="store_true", help="bölümler arası zincir denetimini atla")
     ap.add_argument("--no-sets", action="store_true", help="konu seti denetimini atla (H-051)")
+    ap.add_argument("--no-hi", action="store_true", help="Hi-A verisi denetimini atla (H-048)")
     a = ap.parse_args(argv)
 
     dirs = [Path(p) for p in a.episodes if Path(p).is_dir() and not Path(p).name.startswith("_")]
@@ -54,13 +56,22 @@ def main(argv: list[str] | None = None) -> int:
         for root in sorted(roots):
             if sets_dir(root).is_dir():
                 sets += lint_sets(root)
+    # Hi-A verisi (H-048): hata kataloğu, konu tanıtımları, köprü görevleri.
+    hi = []
+    if not a.no_hi:
+        for root in sorted(roots):
+            if has_hi_sources(root):
+                hi += lint_hi(root)
     n_err = (sum(len(r.errors) for r in reports) + sum(1 for i in chain if i.level == "error")
-             + sum(1 for _, iss, _ in sets for i in iss if i.level == "error"))
+             + sum(1 for _, iss, _ in sets for i in iss if i.level == "error")
+             + sum(1 for _, iss in hi for i in iss if i.level == "error"))
     if a.json:
         print(json.dumps({"episodes": [r.to_dict() for r in reports], "chain": [str(i) for i in chain],
                           "sets": [{"id": sid, **rep, "errors": [str(i) for i in iss if i.level == "error"],
                                     "warnings": [str(i) for i in iss if i.level == "warning"]}
                                    for sid, iss, rep in sets],
+                          "hi": [{"file": name, "errors": [str(i) for i in iss if i.level == "error"],
+                                  "warnings": [str(i) for i in iss if i.level == "warning"]} for name, iss in hi],
                           "errors": n_err}, ensure_ascii=False, indent=2))
         return 1 if n_err else 0
 
@@ -96,8 +107,14 @@ def main(argv: list[str] | None = None) -> int:
                   f"(sözlükle %{rep['pctWithGlossary']}), en uzun cümle {rep['maxSentenceWords']} sözcük")
         for i in iss:
             print(f"   - {i}")
-    warns = sum(len(r.warnings) for r in reports) + sum(1 for _, iss, _ in sets for i in iss if i.level == "warning")
-    print(f"Sonuç: {len(reports)} bölüm, {len(sets)} konu seti, {n_err} hata, {warns} uyarı")
+    for name, iss in hi:
+        errs = [i for i in iss if i.level == "error"]
+        print(f"== Hi verisi {name}: {'HATA' if errs else ('UYARI' if iss else 'TAMAM')}")
+        for i in iss:
+            print(f"   - {i}")
+    warns = (sum(len(r.warnings) for r in reports) + sum(1 for _, iss, _ in sets for i in iss if i.level == "warning")
+             + sum(1 for _, iss in hi for i in iss if i.level == "warning"))
+    print(f"Sonuç: {len(reports)} bölüm, {len(sets)} konu seti, {len(hi)} Hi dosyası, {n_err} hata, {warns} uyarı")
     return 1 if n_err else 0
 
 

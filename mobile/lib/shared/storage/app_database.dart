@@ -213,6 +213,27 @@ class StoryLinks extends Table {
   Set<Column<Object>> get primaryKey => {contentId};
 }
 
+// ---------------------------------------------------------------- Hi-A (H-048, şema 3)
+
+/// Hi'nin cihazdaki küçük kayıtları: görülen konu tanıtımı, yan görev durumu,
+/// açılan not. Gizlilik ekranından görülür; "Hi'nin kayıtlarını sil" yan görev
+/// ve not kayıtlarını siler (konu tanıtımı ilerleme sayılır, kalır).
+@DataClassName('HiRecordRow')
+class HiRecords extends Table {
+  /// `topic_intro` | `bridge_task` | `note_read`
+  TextColumn get kind => text()();
+
+  /// Konu ya da görev kimliği; `note_read` için hata türü kodu.
+  TextColumn get refId => text()();
+
+  /// `seen` | `done` | `dismissed` | `read`
+  TextColumn get status => text()();
+  DateTimeColumn get updatedAt => dateTime()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {kind, refId};
+}
+
 @DriftDatabase(
   tables: [
     UserStoryProgress,
@@ -226,6 +247,7 @@ class StoryLinks extends Table {
     LearningEvents,
     Clues,
     StoryLinks,
+    HiRecords,
   ],
 )
 class AppDatabase extends _$AppDatabase {
@@ -246,7 +268,7 @@ class AppDatabase extends _$AppDatabase {
   );
 
   @override
-  int get schemaVersion => 2;
+  int get schemaVersion => 3;
 
   @override
   MigrationStrategy get migration => MigrationStrategy(
@@ -260,6 +282,10 @@ class AppDatabase extends _$AppDatabase {
         await m.createTable(learningEvents);
         await m.createTable(clues);
         await m.createTable(storyLinks);
+      }
+      // 2 → 3 (H-048): Hi-A kayıtları.
+      if (from < 3) {
+        await m.createTable(hiRecords);
       }
     },
     beforeOpen: (details) async {

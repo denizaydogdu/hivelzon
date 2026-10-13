@@ -10,6 +10,7 @@
 // tekrar özelliğinin adı. **Bölüm**, **Sezon**, **Görev**, **Hedef ifade**,
 // **İpucu panosu** (hikâyede bulunan ipuçları ve açık sorular).
 
+import '../features/story/domain/unlock_rule.dart' show accusativeNumber;
 import '../shared/text/turkish.dart';
 
 /// Ortak düğmeler ve durumlar.
@@ -331,4 +332,178 @@ abstract final class PlayerTexts {
       'Bu bölümün yerindeki nesneler: $title';
   static const openTopicSet = 'Konu setini aç';
   static const continueAction = 'Devam et';
+}
+
+/// Hi-A (H-048): balon, panel, öneri gerekçeleri, notlar, konu kartı, yan
+/// görev ve "Hi benim hakkımda ne biliyor?". Kılavuz: ARAYUZ-METINLERI §10.
+/// Hi suçlamaz, acele ettirmez, romantik ya da bağımlılık yaratan dil
+/// kullanmaz; yapay zekâ olduğunu söyler (K-23, K-32).
+abstract final class HiTexts {
+  // Balon ve panel
+  static const bubbleLabel = "Hi'yi aç";
+  static const bubbleLabelNew = "Hi'yi aç. Bugün için yeni bir önerisi var.";
+  static const intro = 'Ben Hi, yapay zekâ asistanınım.';
+  static const introSub =
+      'Önerilerimi bu cihazdaki ilerlemene bakarak, kurallarla seçiyorum.';
+  static const todayHeading = 'Bugünkü öneri';
+  static const why = 'Neden?';
+  static const quickHeading = 'Hızlı eylemler';
+  static const quickStory = 'Hikâyeye devam';
+  static const quickReview = 'Kelime tekrarı';
+  static const quickNotebook = 'Defter';
+  static const quickSets = 'Konu setleri';
+  static const loading = 'Hi hazırlanıyor…';
+
+  static String _minutes(int? est, int goal) {
+    if (est == null || est <= 0) return '';
+    if (est <= goal) {
+      return ' Yaklaşık $est dk sürer; günlük hedefine ($goal dk) sığar.';
+    }
+    return ' Yaklaşık $est dk sürer. Günlük hedefin $goal dk; istediğin yerde '
+        'bırakıp sonra devam edebilirsin.';
+  }
+
+  // a) yarım bölüm
+  static String continueTitle(String title) => 'Hikâyeye devam: $title';
+  static String continueReason(int number, int? est, int goal) =>
+      'Bölüm ${accusativeNumber(number)} yarıda bırakmıştın; kaldığın '
+      'sahneden devam edersin.${_minutes(est, goal)}';
+  static const continueAction = 'Devam et';
+
+  // b) kelime tekrarı
+  static const reviewTitle = 'Kelime tekrarı';
+  static String reviewReason(int n, int minutes, int goal) =>
+      '$n ifadenin tekrar zamanı geldi. Zamanında tekrar edilen ifade daha '
+      'kolay hatırlanır.${_minutes(minutes, goal)}';
+  static const reviewAction = 'Tekrara başla';
+
+  // c) tekrarlayan hata türü
+  static String noteTitle(String label) => "Hi'nin notu: $label";
+  static String noteReason(String typeLabel, int n) =>
+      'Son 7 günde "$typeLabel" konusunda $n kez takıldın. Bu çok olağan; '
+      'Türkçeyle karşılaştıran kısa bir not var, 1 dk sürer.';
+  static const noteAction = 'Notu aç';
+  static const notebookTitle = 'Defterine göz at';
+  static String notebookReason(String typeLabel, int n) =>
+      'Son 7 günde "$typeLabel" konusunda $n kez yeniden denedin. '
+      'Kartlarına bir kez bakmak hatırlamayı kolaylaştırır; 2 dk sürer.';
+  static const notebookAction = 'Defteri aç';
+
+  // d) sıradaki bölüm
+  static String startTitle(String title) => 'Sıradaki bölüm: $title';
+  static String startReason(int number, int done, int? est, int goal) =>
+      (done == 0 || number <= 1
+          ? 'Hikâye buradan başlıyor.'
+          : 'Bölüm ${accusativeNumber(number - 1)} bitirdin; Bölüm $number '
+                'seni bekliyor.') +
+      _minutes(est, goal);
+  static const startAction = 'Başla';
+
+  // e) sahne avı
+  static String huntTitle(String set) => 'Sahne avı: $set';
+  static String huntReason(String set, int? episode) =>
+      '${episode == null ? 'Bölümü' : 'Bölüm ${accusativeNumber(episode)}'} '
+      'bitirince "$set" seti açıldı. Nesneleri resimde bul; süre yok, '
+      'yaklaşık 3 dk.';
+  static const huntAction = 'Sahne avına başla';
+
+  // f) dinlenme
+  static const restTitle = 'Bugünlük bu kadar yeter';
+  static const restReason =
+      'Tekrar zamanı gelen ifade yok, sıradaki bölüm de hazırlanıyor. '
+      'İstersen aşağıdan bir kelimenin anlamına bakabilirsin.';
+
+  // Bu ne demek?
+  static const lookupHeading = 'Bu ne demek?';
+  static const lookupHint = 'İngilizce ya da Türkçe yaz';
+  static const lookupIntro =
+      'Bölümlerde geçen kelime ve kalıpların anlamını bulurum.';
+  static const lookupNoMatch =
+      'Bunu henüz bilmiyorum; bölümlerde geçen kelimeleri arayabilirim.';
+  static const lookupExample = 'ÖRNEK';
+  static const lookupListen = 'Dinle';
+  static const lookupListenExample = 'Örneği dinle';
+  static String lookupSource(String tag) => 'Geçtiği yer: $tag';
+  static const lookupFromNotebook = 'Defterinde';
+  static const lookupFromSet = 'Konu setinde';
+
+  // Haftalık özet
+  static const weekHeading = 'Haftalık özet';
+  static const weekSub = 'Son 7 gün, yalnızca bu cihazda.';
+  static String weekPhrases(int n) => '$n yeni ifade topladın.';
+  static String weekReviews(int n) => '$n ifadeyi tekrar ettin.';
+  static String weekEpisodes(int n) => '$n bölüm bitirdin.';
+  static String weekFocus(String label) =>
+      'En çok üzerinde çalıştığın konu: $label.';
+  static const weekEmpty =
+      'Bu hafta henüz kayıt yok. İlk adım için bugünkü öneriye bakabilirsin.';
+
+  // Hi'nin notu
+  static const noteLabel = "Hi'nin notu";
+  static const noteTurkish = 'Türkçeden aklına gelen';
+  static const noteEnglish = 'İngilizcede';
+
+  /// Kelime tekrarında yanlış cevaptan sonra ("yanlış" sözcüğü kullanılmaz).
+  static const whyWrong = 'Neden böyle?';
+
+  // Konu tanıtımı
+  static const topicLabel = 'Yeni konu';
+  static const topicContinue = 'Devam et';
+  static const topicSkip = 'Geç';
+  static const topicNotesHeading = "Hi'nin konu notları";
+  static String topicNotesCount(int n) =>
+      'Hikâyede tanıştığın $n konu. Birine dokununca kartı açılır.';
+  static const topicNotesEmpty =
+      'Bölümlerde yeni bir konu geçince Hi kısa bir not bırakır; '
+      'notlar burada toplanır.';
+
+  // Yan görev (köprü)
+  static const bridgeLabel = 'Yan görev';
+  static const bridgeNote = 'İsteğe bağlı. Yalnızca sen bilirsin.';
+  static const bridgeDone = 'Yaptım';
+  static const bridgeDismiss = 'Şimdi değil';
+  static const bridgeThanks =
+      'Harika! Hikâyedeki ifade gerçek hayatta da işe yaradı.';
+
+  // Gizlilik
+  static const privacyTile = 'Hi benim hakkımda ne biliyor?';
+  static const privacyTileSub = 'Bu cihazda saklananları gör, istersen sil.';
+  static const privacyTitle = 'Hi benim hakkımda ne biliyor?';
+  static const privacyIntro =
+      'Hi önerilerini yalnızca bu cihazdaki kayıtlara bakarak seçer. '
+      'Bu bilgiler sunucuya gönderilmez ve reklam için kullanılmaz.';
+  static const privacyName = 'Adın';
+  static const privacyNoName = 'Kaydetmedin.';
+  static const privacyProgress = 'Hikâye ilerlemen';
+  static String privacyProgressValue(int done, int inProgress) =>
+      inProgress == 0
+      ? '$done bölüm bitti.'
+      : '$done bölüm bitti, $inProgress bölüm yarım.';
+  static const privacyNotebook = 'Defterin';
+  static String privacyNotebookValue(int items, int reviews) =>
+      'Defterinde $items ifade var; $reviews tekrar cevabı kayıtlı.';
+  static const privacyEvents = 'Hi\'nin öğrenme kayıtları';
+  static String privacyEventsValue(int lookups, int errors) =>
+      '$lookups kez bir kelimenin anlamına baktın; $errors kez bir seçimi '
+      'yeniden denedin.';
+  static const privacyErrors = 'Konulara göre yeniden denemeler';
+  static const privacyErrorsNone = 'Kayıt yok.';
+  static const privacyWeek = 'Son 7 gün';
+  static const privacyBridge = 'Yan görevler';
+  static String privacyBridgeValue(int done, int dismissed) =>
+      '$done yan görevi yaptın, $dismissed tanesini geçtin.';
+  static const privacyDelete = "Hi'nin kayıtlarını sil";
+  static const privacyDeleteNote =
+      'Öğrenme kayıtları ve yan görev durumları silinir. Hikâye ilerlemen, '
+      'defterin ve adın silinmez.';
+  static const privacyConfirmTitle = "Hi'nin kayıtları silinsin mi?";
+  static const privacyConfirmBody =
+      'Anlamına baktığın kelimeler, yeniden denediğin seçimler ve yan görev '
+      'durumları silinir. Bu geri alınamaz. Hikâye ilerlemen ve defterin '
+      'yerinde kalır.';
+  static const privacyConfirmCancel = 'Vazgeç';
+  static const privacyConfirmDelete = 'Sil';
+  static const privacyDeleted =
+      "Hi'nin kayıtları silindi. İlerlemen ve defterin yerinde.";
+  static const privacyError = 'Kayıtlar okunamadı. Biraz sonra tekrar dene.';
 }

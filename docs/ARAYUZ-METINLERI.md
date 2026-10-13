@@ -228,3 +228,25 @@ Neden: Sekmelerin başlık düzeni öteki sekmelerle aynı olur. Ne geleceği ve
 - `test/features/notebook/notebook_ui_test.dart`: Ana Sayfa'da adlı ve adsız selam; tekrar zamanı gelmiş ve gelmemiş durum; Defter açıklamaları.
 - `test/features/home/home_screen_test.dart` ve `test/features/story/story_screen_test.dart`: sezon ilerleme cümlesi, harita başlığı ve açıklaması.
 - `test/features/topic_sets/`: konu seti listesi ve kilit nedeni, ızgara ve ekleme metinleri, sahne avı geri bildirimleri ve özeti, bölüm sonu satırı (H-051).
+
+## 10. Hi-A: balon, panel ve koç (H-048)
+
+Kod: `HiTexts` (`mobile/lib/l10n/tr_strings.dart`). Hi kendini yapay zekâ asistanı olarak tanıtır (K-23); suçlamaz, acele ettirmez, romantik ya da bağımlılık yaratan dil kullanmaz (K-32). "Yanlış" sözcüğü kullanılmaz.
+
+| Yer | Metin | Not |
+|---|---|---|
+| Balon (ekran okuyucu) | "Hi'yi aç" / "Hi'yi aç. Bugün için yeni bir önerisi var." | Yalnızca beş sekmenin kök sayfasında; 64 px. Yeni öneri varsa küçük turuncu nokta (sayı yok); panel o gün açılınca kalkar. Nabız iki kez atar, sonra durur; "Hareketi azalt" açıksa hiç atmaz. |
+| Panel başı | **Ben Hi, yapay zekâ asistanınım.** · "Önerilerimi bu cihazdaki ilerlemene bakarak, kurallarla seçiyorum." | Açıklama her açılışta görünür. |
+| Bugünkü öneri | Başlık + **Neden?** + gerekçe + fiil düğmesi | Tek öneri. Örnekler: "Hikâyeye devam: Find the Station" · "Bölüm 3'ü yarıda bırakmıştın; kaldığın sahneden devam edersin. Yaklaşık 7 dk sürer; günlük hedefine (15 dk) sığar." · "Kelime tekrarı" · "6 ifadenin tekrar zamanı geldi. Zamanında tekrar edilen ifade daha kolay hatırlanır. …" · "Hi'nin notu: Soru sözcüğü başa gelir" · "Son 7 günde "Kelime sırası" konusunda 2 kez takıldın. Bu çok olağan; Türkçeyle karşılaştıran kısa bir not var, 1 dk sürer." · "Sıradaki bölüm: …" · "Sahne avı: Liman" · **Bugünlük bu kadar yeter**. Süre günlük hedefi aşarsa: "… istediğin yerde bırakıp sonra devam edebilirsin." |
+| Düğmeler | Devam et · Tekrara başla · Notu aç · Defteri aç · Başla · Sahne avına başla | Fiil. |
+| Hızlı eylemler | Hikâyeye devam · Kelime tekrarı · Defter · Konu setleri | |
+| Bu ne demek? | "Bölümlerde geçen kelime ve kalıpların anlamını bulurum." · alan: "İngilizce ya da Türkçe yaz" · sonuç: ifade, anlam, **ÖRNEK**, "Geçtiği yer: B1" / "Defterinde" / "Konu setinde" · eşleşme yoksa: "Bunu henüz bilmiyorum; bölümlerde geçen kelimeleri arayabilirim." | Arama `foldForSearch`: Türkçe İ/ı, ç/ş/ğ/ö/ü katlanır ("İSTASYON", "statıon", "isik" bulunur). Yalnızca açılmış bölümler, defter ve açılmış konu setleri. |
+| Haftalık özet | "Son 7 gün, yalnızca bu cihazda." · "10 yeni ifade topladın." · "4 ifadeyi tekrar ettin." · "2 bölüm bitirdin." · "En çok üzerinde çalıştığın konu: Edat." · boşsa: "Bu hafta henüz kayıt yok. İlk adım için bugünkü öneriye bakabilirsin." | Yapılmayan söylenmez; seri ve kıyas yok. |
+| Hi'nin notu | "Hi'nin notu" · başlık · Türkçe açıklama · "Türkçeden aklına gelen" → "İngilizcede" | Kırmızı ya da çarpı yok. Kelime tekrarında yanlış cevaptan sonra ilgili not varsa: **Neden böyle?** |
+| Konu kartı (oynatıcı) | "Yeni konu" · İngilizce başlık · 2–3 Türkçe satır · örnek · **Devam et** / **Geç** | Konunun ilk satırı geçtiği segment bitince, konu başına bir kez; sıradaki kararın cevabını vermez. Geri sayım yok. |
+| Defter | **Hi'nin konu notları** · "Hikâyede tanıştığın 2 konu. Birine dokununca kartı açılır." / boşsa: "Bölümlerde yeni bir konu geçince Hi kısa bir not bırakır; notlar burada toplanır." | Yalnızca görülen kartlar (spoiler yok). |
+| Yan görev | **YAN GÖREV** · başlık · metin · "İsteğe bağlı. Yalnızca sen bilirsin." · **Yaptım** / **Şimdi değil** · "Harika! Hikâyedeki ifade gerçek hayatta da işe yaradı." | Fotoğraf, yükleme ve konum istenmez. |
+| Profil satırı | **Hi benim hakkımda ne biliyor?** · "Bu cihazda saklananları gör, istersen sil." | |
+| Gizlilik ekranı | Giriş: "Hi önerilerini yalnızca bu cihazdaki kayıtlara bakarak seçer. Bu bilgiler sunucuya gönderilmez ve reklam için kullanılmaz." · Adın · Hikâye ilerlemen · Defterin · Hi'nin öğrenme kayıtları ("6 kez bir kelimenin anlamına baktın; 4 kez bir seçimi yeniden denedin.") · Konulara göre yeniden denemeler · Son 7 gün · Yan görevler · **Hi'nin kayıtlarını sil** | Onay: "Hi'nin kayıtları silinsin mi?" · **Vazgeç** / **Sil** · sonra "Hi'nin kayıtları silindi. İlerlemen ve defterin yerinde." Silinen: öğrenme olayları, yan görev durumları, açılan notlar. Kalan: ilerleme, defter, tekrar geçmişi, ad, görülen konu kartları. |
+
+Testler: `test/features/hi/` (öneri öncelik tablosu ve gerekçeler, metin denetim listesi, arama, haftalık özet, Drift kayıtları ve silme kapsamı, balon görünürlüğü, panel, konu kartı).

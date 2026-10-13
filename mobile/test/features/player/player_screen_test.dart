@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hivelzon/app/theme.dart';
+import 'package:hivelzon/features/hi/application/hi_providers.dart';
 import 'package:hivelzon/features/player/application/player_session.dart';
 import 'package:hivelzon/features/player/data/progress_repository.dart';
 import 'package:hivelzon/features/player/domain/episode.dart';
@@ -69,6 +70,8 @@ void main() {
           learningEventLogProvider.overrideWithValue(events),
           notebookRepositoryProvider.overrideWithValue(notebook),
           playerHooksProvider.overrideWithValue(hooks),
+          // Hi-A'nın konu kartı ayrı testte (test/features/hi).
+          playerCoachProvider.overrideWithValue(null),
         ],
         child: MaterialApp(
           theme: AppTheme.light(),

@@ -19,6 +19,9 @@ gelir. `_evren/harita/map.jpg` varsa pakete WebP olarak (`map.webp`, H-054) yaz�
 H-054: her jenerik videosunun yanında 720p sürümü (`<ad>.720p.mp4`) bulunur; `renditions` alanı ikisini
 listeler. `video` alanı 1080p kalır (eski uygulamalar onu oynatır).
 
+Hi-A (H-048): `_evren/hata-katalogu.json`, `konu-tanitimlari.json`, `kopru-gorevleri.json` varsa `hi.json`
+yazılır (bkz. hi.py); season.json'a `hi` özeti eklenir.
+
 Konu setleri (H-051): `_evren/setler/*.json` varsa `sets/` altına set verisi, sahne ve öğe görselleri
 (WebP) ve ses kesitleri yazılır; season.json'a `topicSets` özeti eklenir (bkz. sets.py).
 """
@@ -30,6 +33,7 @@ import shutil
 from dataclasses import dataclass
 from pathlib import Path
 
+from .hi import export_hi
 from .sets import export_sets, sets_dir
 
 SEASON_SOURCE = Path("_evren") / "jenerik" / "season.json"
@@ -211,6 +215,10 @@ def export_season(icerik_root: Path, season: int, probe=None, digest=None, poste
             (out / old).unlink(missing_ok=True)   # eski kopya kalmasın: uygulama kodla çizer
     if sets_dir(icerik_root).is_dir():
         doc["topicSets"] = export_sets(icerik_root, season, out, **(set_media or {}))
+    # Hi-A (H-048): hata kataloğu, konu tanıtımları, köprü görevleri, "Bu ne demek?" dizini → hi.json.
+    hi = export_hi(icerik_root, season, out)
+    if hi is not None:
+        doc["hi"] = hi
     # Eski biçimler (H-054 öncesi jpg afiş) temizlenir; yalnızca güncel dosyalar listelenir.
     if poster is not None:
         (out / Path(src.title_poster).with_suffix(".jpg").name).unlink(missing_ok=True)

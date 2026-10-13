@@ -10,6 +10,8 @@ import '../../../shared/content/content_source.dart';
 import '../../../shared/perf/perf_log.dart';
 import '../../../shared/text/turkish.dart';
 import '../../../shared/widgets/skeleton.dart';
+import '../../hi/application/hi_providers.dart';
+import '../../hi/presentation/hi_cards.dart';
 import '../../player/presentation/player_screen.dart';
 import '../../topic_sets/presentation/topic_set_widgets.dart';
 import '../application/card_audio_player.dart';
@@ -159,6 +161,16 @@ class _NotebookScreenState extends ConsumerState<NotebookScreen> {
         sliver: SliverToBoxAdapter(
           child: _ReviewCard(overview: overview.value),
         ),
+      ),
+      // Hi'nin konu notları (H-048): görülen konu kartları yeniden açılır.
+      const SliverPadding(
+        padding: EdgeInsets.fromLTRB(
+          AppSpacing.sm,
+          AppSpacing.sm,
+          AppSpacing.sm,
+          0,
+        ),
+        sliver: SliverToBoxAdapter(child: _TopicNotes()),
       ),
       SliverPadding(
         padding: pad.copyWith(top: AppSpacing.md),
@@ -659,4 +671,60 @@ class _Message extends StatelessWidget {
       ],
     ),
   );
+}
+
+/// Hi'nin konu notları: bölümde görülen konu kartları (H-048).
+class _TopicNotes extends ConsumerWidget {
+  const _TopicNotes();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final theme = Theme.of(context);
+    final intros = ref.watch(seenTopicIntrosProvider).value;
+    if (intros == null) return const SizedBox.shrink();
+    return Card(
+      key: const ValueKey('notebook-topic-notes'),
+      margin: EdgeInsets.zero,
+      color: Colors.white,
+      child: Padding(
+        padding: const EdgeInsets.all(AppSpacing.sm),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Text(
+              HiTexts.topicNotesHeading,
+              style: theme.textTheme.labelLarge?.copyWith(
+                color: AppColors.seaBlue,
+                fontWeight: FontWeight.w700,
+                letterSpacing: 0.3,
+              ),
+            ),
+            const SizedBox(height: 4),
+            Text(
+              intros.isEmpty
+                  ? HiTexts.topicNotesEmpty
+                  : HiTexts.topicNotesCount(intros.length),
+              style: theme.textTheme.bodyMedium,
+            ),
+            if (intros.isNotEmpty) ...[
+              const SizedBox(height: AppSpacing.xs),
+              Wrap(
+                spacing: AppSpacing.xs,
+                runSpacing: AppSpacing.xs,
+                children: [
+                  for (final t in intros)
+                    ActionChip(
+                      key: ValueKey('topic-note-${t.id}'),
+                      label: Text(t.titleEn),
+                      materialTapTargetSize: MaterialTapTargetSize.padded,
+                      onPressed: () => showTopicIntro(context, t),
+                    ),
+                ],
+              ),
+            ],
+          ],
+        ),
+      ),
+    );
+  }
 }

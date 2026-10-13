@@ -359,7 +359,7 @@ void main() {
         final version = await migrated
             .customSelect('PRAGMA user_version')
             .getSingle();
-        expect(version.data.values.first, 2);
+        expect(version.data.values.first, migrated.schemaVersion);
         final row = await migrated
             .select(migrated.userStoryProgress)
             .getSingle();

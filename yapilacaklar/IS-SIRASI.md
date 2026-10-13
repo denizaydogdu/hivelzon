@@ -31,7 +31,7 @@ Bu dosya tek takip noktasıdır. Hangi işin hangi sırada yapıldığını, şu
   - H dosyasının `Durum` satırı güncellenir;
   - **Günlük** bölümüne bir satır eklenir.
 - **Biten işler:** "Biten işler" tablosuna doğrulama kanıtıyla birlikte yazılır.
-- **Numaralar:** Tek sayaçla verilir. Sıradaki boş numara: **H-055**.
+- **Numaralar:** Tek sayaçla verilir. Sıradaki boş numara: **H-056**.
 
 **Durum simgeleri:**
 - ⛔ Kullanıcı kararı bekliyor
@@ -105,7 +105,8 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 | 1.4' | H-053 | Arayüz metinleri ve sayfa netliği | Yüksek | H-036 | ✅ |
 | 1.4'' | H-054 | Performans temeli (720p video, WebP, ölçüm) | Yüksek | H-053 | ✅ |
 | 1.4a | H-051 | Hikâye mekânlarına bağlı konu setleri + sahne avı | Yüksek | H-036 | ✅ |
-| 1.4b | H-048 | Hi-A: yönlendiren Hi (balon + kural tabanlı koç) | Yüksek | H-036, H-046 | ⏳ |
+| 1.4b | H-048 | Hi-A: yönlendiren Hi (balon + kural tabanlı koç) | Yüksek | H-036, H-046 | ✅ |
+| 1.4c | H-055 | "Söyle" alıştırmaları (S1, cihazda tanıma) | Yüksek | H-048 | ⏳ |
 | 1.5 | H-037 | Backend çekirdek | Yüksek | H-033 | ⏳ |
 | 1.6 | H-038 | Mobil ↔ backend, misafir modu | Yüksek | H-035, H-037 | ⏳ |
 | 1.7 | H-039 | Onboarding ve yerleştirme | Orta | H-038 | ⏳ |
@@ -124,6 +125,7 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 ## Biten işler
 | İş | Başlık | Bitiş | Doğrulama |
 |---|---|---|---|
+| H-048 | Hi-A: yönlendiren Hi | 2026-10-13 | Balon + panel (tek öneri + gerekçe), "Bu ne demek?", haftalık özet, hata kataloğu (9), konu tanıtımı (5), yan görev (4), gizlilik ekranı; kullanıcı onayı; flutter test 281/281, pytest 120/120 |
 | H-051 | Konu setleri ve sahne avı | 2026-10-13 | 4 set onaylı (Alex'in odası, Maya'nın dükkânı, Liman, Masadaki iki not); sahne avı (ipucu ilk yanlıştan sonra, yakınlaştırma); kredisiz; flutter test 232/232, pytest 106/106 |
 | H-054 | Performans temeli | 2026-10-13 | İndirilen boyut −%60 (151,9 → 60,4 MB); senkron ≤ 0,01 sn; SSIM 0,98; iskelet görünümler; flutter test 205/205, pytest 77/77 |
 | H-053 | Arayüz metinleri ve sayfa netliği | 2026-10-12 | `docs/ARAYUZ-METINLERI.md`; "Merhaba Deniz!", Hikâyen / Kelime tekrarı bölümleri; Profil'de isteğe bağlı ad; flutter test 193/193 |
@@ -290,3 +292,5 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 - **2026-10-13:**
   - H-054 bitti ve commit edildi. H-051 (konu setleri + sahne avı) başladı.
   - H-051 bitti. Sıradaki: H-048 (Hi-A: yönlendiren Hi + konu tanıtımı).
+  - Kullanıcı önerisi: tekrar yerlerinde mikrofonla konuşma ve doğruluk kontrolü. Kararlar: S1 MVP (H-055; 4 yer; cihazda tanıma, ses çıkmaz/saklanmaz, puan yok; desteklenmiyorsa gizli; bütün yaşlar), S2 v1, S3 sonra (H-015). `docs/KONUSMA-ALISTIRMASI.md`.
+  - H-048 bitti ve commit edildi. Sıradaki: H-055 ("Söyle" alıştırmaları) + balon örtme ve haftalık özet düzeltmeleri.

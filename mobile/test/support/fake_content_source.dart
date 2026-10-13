@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:hivelzon/features/hi/domain/hi_content.dart';
 import 'package:hivelzon/features/player/domain/episode.dart';
 import 'package:hivelzon/features/player/domain/subtitles.dart';
 import 'package:hivelzon/features/topic_sets/domain/topic_set.dart';
@@ -17,7 +18,19 @@ class FakeContentSource implements ContentSource {
     this.mapImage,
     this.realSubtitles = false,
     this.withTopicSets = true,
+    this.withHi = true,
   });
+
+  /// Sezon paketinde `hi.json` olsun mu (H-048; gerçek dışa aktarım kopyası).
+  bool withHi;
+  int hiLoads = 0;
+
+  @override
+  Future<HiContent> loadHiContent(int season) async {
+    hiLoads++;
+    if (fail || !withHi) throw ContentUnavailableException('hi.json yok');
+    return loadHiFixture();
+  }
 
   /// Sezon paketinde konu setleri olsun mu (H-051; gerçek paket kopyaları).
   bool withTopicSets;
@@ -147,4 +160,9 @@ List<TopicSetSummary> topicSetSummaries() => [
 
 TopicSet loadTopicSetFixture(String id) => TopicSet.fromJson(
   (jsonDecode(fixtureText('sets/$id.json')) as Map).cast<String, dynamic>(),
+);
+
+/// Sezon paketindeki Hi verisi (gerçek dışa aktarım kopyası, H-048).
+HiContent loadHiFixture() => HiContent.fromJson(
+  (jsonDecode(fixtureText('hi.json')) as Map).cast<String, dynamic>(),
 );

@@ -1,0 +1,3168 @@
+{
+ "schemaVersion": 1,
+ "season": 1,
+ "taxonomyVersion": 1,
+ "status": {
+  "errorCatalog": "APPROVED",
+  "topicIntros": "APPROVED",
+  "bridgeTasks": "APPROVED"
+ },
+ "errorCatalog": [
+  {
+   "id": "be-dropped",
+   "errorType": "missing_extra",
+   "labelTr": "Eksik \"be\" (am / is / are)",
+   "explanationTr": "Türkçede \"olmak\" çoğu zaman düşer: \"Ben öğrenciyim\", \"İstasyon nerede?\". İngilizcede düşmez: am, is ya da are cümlede durur.",
+   "examples": [
+    {
+     "wrong": "Where station?",
+     "right": "Where is the station?"
+    },
+    {
+     "wrong": "I student.",
+     "right": "I am a student."
+    }
+   ],
+   "relatedPhrases": [
+    "Excuse me, where is…?",
+    "Where is…?"
+   ]
+  },
+  {
+   "id": "can-short-answer",
+   "errorType": "verb_form",
+   "labelTr": "Kısa cevap: Yes, I can.",
+   "explanationTr": "Türkçede \"Duyabiliyor musun?\" sorusuna \"Evet, duyuyorum\" deriz. İngilizcede kısa cevap sorudaki yardımcı fiille kurulur: \"Can you…?\" sorusuna \"Yes, I can.\", \"Are you…?\" sorusuna \"Yes, I am.\"",
+   "examples": [
+    {
+     "wrong": "Can you hear me? — Yes, I am.",
+     "right": "Can you hear me? — Yes, I can."
+    }
+   ],
+   "relatedPhrases": [
+    "Yes, I can.",
+    "Can you hear me?"
+   ]
+  },
+  {
+   "id": "question-word-order",
+   "errorType": "word_order",
+   "labelTr": "Soru sözcüğü başa gelir",
+   "explanationTr": "Türkçede soru sözcüğü sona yakın gelir: \"Liman nerede?\". İngilizcede soru sözcüğü başa gelir, ardından is gelir: \"Where is the harbour?\"",
+   "examples": [
+    {
+     "wrong": "Harbour where?",
+     "right": "Where is the harbour?"
+    },
+    {
+     "wrong": "The station where is?",
+     "right": "Where is the station?"
+    }
+   ],
+   "relatedPhrases": [
+    "Excuse me, where is…?",
+    "Where is…?"
+   ]
+  },
+  {
+   "id": "time-preposition",
+   "errorType": "preposition",
+   "labelTr": "Saat ve gün: at / on",
+   "explanationTr": "Türkçede saat ve gün ekle söylenir: \"yedide\", \"cuma günü\". İngilizcede saat için at, gün için on kullanılır: at seven, on Friday. \"It's seven o'clock.\" cümlesinde ise edat yoktur.",
+   "examples": [
+    {
+     "wrong": "It's in seven o'clock.",
+     "right": "It's seven o'clock."
+    },
+    {
+     "wrong": "in Friday",
+     "right": "on Friday"
+    }
+   ],
+   "relatedPhrases": [
+    "It's seven o'clock.",
+    "at seven",
+    "on Friday",
+    "What time is it?"
+   ]
+  },
+  {
+   "id": "place-preposition",
+   "errorType": "preposition",
+   "labelTr": "Yer bildiren sözcükler: near / between / behind",
+   "explanationTr": "Türkçede yer, ismin sonundaki ekle söylenir: \"okulun arkasında\". İngilizcede yer sözcüğü ismin önüne gelir: behind the school, between the bus stop and the café.",
+   "examples": [
+    {
+     "wrong": "the school behind",
+     "right": "behind the school"
+    },
+    {
+     "wrong": "the park near",
+     "right": "near the park"
+    }
+   ],
+   "relatedPhrases": [
+    "It's near…",
+    "It's between…",
+    "It's behind…"
+   ]
+  },
+  {
+   "id": "agree-no-be",
+   "errorType": "verb_form",
+   "labelTr": "I agree (am yok)",
+   "explanationTr": "Türkçede \"Katılıyorum\" deriz ama aklımıza \"ben … -im\" kalıbı gelir. İngilizcede agree zaten bir fiildir; önüne am gelmez: \"I agree.\"",
+   "examples": [
+    {
+     "wrong": "I am agree.",
+     "right": "I agree."
+    }
+   ],
+   "relatedPhrases": []
+  },
+  {
+   "id": "third-person-s",
+   "errorType": "agreement",
+   "labelTr": "He / She / It ile fiile -s",
+   "explanationTr": "Türkçede fiil her kişide ek alır: seviyorum, seviyor. İngilizcede geniş zamanda yalnızca he, she ve it ile fiile -s eklenir: \"He loves radios.\"",
+   "examples": [
+    {
+     "wrong": "He love radios.",
+     "right": "He loves radios."
+    },
+    {
+     "wrong": "She have History.",
+     "right": "She has History."
+    }
+   ],
+   "relatedPhrases": []
+  },
+  {
+   "id": "articles",
+   "errorType": "article",
+   "labelTr": "a / an / the",
+   "explanationTr": "Türkçede \"bir\" çoğu zaman söylenmez, \"the\" karşılığı da yoktur. İngilizcede tekil bir ismin önüne a, an ya da the gelir: a note, an old radio, the old station.",
+   "examples": [
+    {
+     "wrong": "This is note.",
+     "right": "This is a note."
+    },
+    {
+     "wrong": "Meet me at old station.",
+     "right": "Meet me at the old station."
+    }
+   ],
+   "relatedPhrases": []
+  },
+  {
+   "id": "polite-repeat",
+   "errorType": "word_choice",
+   "labelTr": "Kibarca tekrar istemek",
+   "explanationTr": "Türkçede yakın biriyle \"Ne?\" demek olağandır. İngilizcede tek başına \"What?\" sert duyulabilir. Kibar biçimi: \"Again, please.\" ya da \"Sorry?\"",
+   "examples": [
+    {
+     "wrong": "What?",
+     "right": "Again, please."
+    }
+   ],
+   "relatedPhrases": [
+    "Again, please."
+   ]
+  }
+ ],
+ "decisionErrors": [
+  {
+   "contentId": "A1-001",
+   "node": "k1",
+   "option": "b",
+   "errorType": "verb_form",
+   "entry": "can-short-answer"
+  },
+  {
+   "contentId": "A1-001",
+   "node": "k2",
+   "option": "b",
+   "errorType": "word_choice",
+   "entry": "polite-repeat"
+  },
+  {
+   "contentId": "A1-002",
+   "node": "k2",
+   "option": "b",
+   "errorType": "missing_extra",
+   "entry": "be-dropped"
+  },
+  {
+   "contentId": "A1-003",
+   "node": "k1",
+   "option": "b",
+   "errorType": "word_order",
+   "entry": "question-word-order"
+  },
+  {
+   "contentId": "A1-003",
+   "node": "k2",
+   "option": "b",
+   "errorType": "word_choice"
+  },
+  {
+   "contentId": "A1-003",
+   "node": "k3",
+   "option": "b",
+   "errorType": "preposition",
+   "entry": "place-preposition"
+  },
+  {
+   "contentId": "A1-004",
+   "node": "k1",
+   "option": "b",
+   "errorType": "word_choice"
+  },
+  {
+   "contentId": "A1-004",
+   "node": "k1",
+   "option": "c",
+   "errorType": "word_choice"
+  },
+  {
+   "contentId": "A1-004",
+   "node": "k2",
+   "option": "b",
+   "errorType": "preposition",
+   "entry": "time-preposition"
+  }
+ ],
+ "topicIntros": [
+  {
+   "id": "can-questions",
+   "contentId": "A1-001",
+   "grammarTarget": "can_questions_short_answers",
+   "trigger": {
+    "node": "s02",
+    "cue": "s02-04",
+    "match": "Can you hear me?"
+   },
+   "titleEn": "Can you…?",
+   "linesTr": [
+    "\"Can you…?\" bir şeyi yapıp yapamayacağını sorar: \"…-ebilir misin?\"",
+    "Türkçedeki \"mi\" eki yerine sözcüklerin sırası değişir: soru can ile başlar."
+   ],
+   "exampleEn": "Can you hear me?",
+   "exampleTr": "Beni duyabiliyor musun?"
+  },
+  {
+   "id": "where-is",
+   "contentId": "A1-001",
+   "targetPhrase": "Where is…?",
+   "trigger": {
+    "node": "s05",
+    "cue": "s05-01",
+    "match": "Where is the old station?"
+   },
+   "titleEn": "Where is…?",
+   "linesTr": [
+    "Bir yeri sormak için: Where is + yer?",
+    "Türkçede \"nerede\" sona gelir; İngilizcede where başa gelir, ardından is gelir."
+   ],
+   "exampleEn": "Where is the old station?",
+   "exampleTr": "Eski istasyon nerede?"
+  },
+  {
+   "id": "this-is-to-be",
+   "contentId": "A1-002",
+   "grammarTarget": "this_is",
+   "trigger": {
+    "node": "s04",
+    "cue": "s04-01",
+    "match": "This is my mother."
+   },
+   "titleEn": "This is… / I'm…",
+   "linesTr": [
+    "Birini tanıtırken: This is my… (Bu benim …)",
+    "Türkçede \"-dir\" eki çoğu zaman söylenmez; İngilizcede am, is, are söylenir: I'm = I am."
+   ],
+   "exampleEn": "This is my cousin, Sam.",
+   "exampleTr": "Bu kuzenim Sam."
+  },
+  {
+   "id": "directions",
+   "contentId": "A1-003",
+   "grammarTarget": "imperatives_go_turn",
+   "trigger": {
+    "node": "k1-ok",
+    "cue": "k1-ok-03",
+    "match": "Go straight."
+   },
+   "titleEn": "Go… / Turn…",
+   "linesTr": [
+    "Yol tarif ederken cümle doğrudan fiille başlar; \"you\" söylenmez.",
+    "go = git, turn = dön. Yön, fiilden sonra gelir."
+   ],
+   "exampleEn": "Go straight.",
+   "exampleTr": "Düz git."
+  },
+  {
+   "id": "time",
+   "contentId": "A1-004",
+   "grammarTarget": "its_oclock",
+   "trigger": {
+    "node": "k1-ok",
+    "cue": "k1-ok-05",
+    "match": "What time is it?"
+   },
+   "titleEn": "What time is it?",
+   "linesTr": [
+    "Saati sormak için: What time is it? (Saat kaç?)",
+    "Cevap \"It's\" ile başlar; tam saatlerde sona o'clock gelir."
+   ],
+   "exampleEn": "What time is it?",
+   "exampleTr": "Saat kaç?"
+  }
+ ],
+ "bridgeTasks": [
+  {
+   "id": "bt-a1-001",
+   "contentId": "A1-001",
+   "titleTr": "Sorulara kulak ver",
+   "textTr": "Bu hafta İngilizce bir şarkıda ya da videoda \"Can you…?\" ile başlayan bir soru yakala. Duyunca içinden \"Yes, I can.\" de.",
+   "phraseEn": "Yes, I can."
+  },
+  {
+   "id": "bt-a1-002",
+   "contentId": "A1-002",
+   "titleTr": "Kendini tanıt",
+   "textTr": "Aynanın karşısında kendini İngilizce tanıt: \"Hello! My name is … I'm from …\" İkinci seferde daha yavaş söyle.",
+   "phraseEn": "Nice to meet you."
+  },
+  {
+   "id": "bt-a1-003",
+   "contentId": "A1-003",
+   "titleTr": "Yolunu İngilizce düşün",
+   "textTr": "Bir yere yürürken dönüşleri içinden İngilizce söyle: \"Go straight. Turn left.\" Üç dönüş yeter.",
+   "phraseEn": "Turn left / right."
+  },
+  {
+   "id": "bt-a1-004",
+   "contentId": "A1-004",
+   "titleTr": "Saati İngilizce söyle",
+   "textTr": "Bugün saate üç kez bak ve İngilizce söyle: \"It's seven o'clock.\" gibi. Tam saat değilse yalnızca saati söylemen yeter.",
+   "phraseEn": "It's seven o'clock."
+  }
+ ],
+ "lookupEpisodes": [
+  "A1-001",
+  "A1-002",
+  "A1-003",
+  "A1-004"
+ ],
+ "lookup": [
+  {
+   "en": "Can you hear me?",
+   "tr": "Beni duyabiliyor musun?",
+   "kind": "phrase",
+   "contentId": "A1-001",
+   "audio": {
+    "path": "segments/s02.mp4",
+    "start": 10.987,
+    "end": 12.687
+   },
+   "exampleEn": "Can you hear me?",
+   "exampleTr": "Beni duyabiliyor musun?"
+  },
+  {
+   "en": "Yes, I can.",
+   "tr": "Evet, (yapabiliyorum).",
+   "kind": "phrase",
+   "contentId": "A1-001",
+   "audio": {
+    "path": "segments/k1-ok.mp4",
+    "start": 0.42,
+    "end": 1.28
+   },
+   "exampleEn": "Yes, I can hear you.",
+   "exampleTr": "Evet, seni duyabiliyorum."
+  },
+  {
+   "en": "Again, please.",
+   "tr": "Bir daha, lütfen.",
+   "kind": "phrase",
+   "contentId": "A1-001",
+   "alt": [
+    "Bir daha, lütfen. (kibar tekrar isteği)"
+   ],
+   "audio": {
+    "path": "segments/k2-ok.mp4",
+    "start": 0.42,
+    "end": 1.912
+   },
+   "exampleEn": "Again, please.",
+   "exampleTr": "Bir daha, lütfen."
+  },
+  {
+   "en": "Where is…?",
+   "tr": "… nerede?",
+   "kind": "phrase",
+   "contentId": "A1-001"
+  },
+  {
+   "en": "Listen.",
+   "tr": "Dinle.",
+   "kind": "phrase",
+   "contentId": "A1-001",
+   "alt": [
+    "dinle"
+   ],
+   "exampleEn": "Friday! Listen.",
+   "exampleTr": "Cuma! Dinle."
+  },
+  {
+   "en": "ok",
+   "tr": "tamam",
+   "kind": "word",
+   "contentId": "A1-001",
+   "exampleEn": "OK. Friday.",
+   "exampleTr": "Tamam. Cuma.",
+   "audio": {
+    "path": "segments/s02.mp4",
+    "start": 0.55,
+    "end": 1.4
+   },
+   "exampleAudio": {
+    "path": "segments/s02.mp4",
+    "start": 0.55,
+    "end": 1.97
+   },
+   "alt": [
+    "iyi"
+   ]
+  },
+  {
+   "en": "friday",
+   "tr": "cuma",
+   "kind": "word",
+   "contentId": "A1-001",
+   "exampleEn": "OK. Friday.",
+   "exampleTr": "Tamam. Cuma.",
+   "audio": {
+    "path": "segments/s02.mp4",
+    "start": 1.317,
+    "end": 1.88
+   },
+   "exampleAudio": {
+    "path": "segments/s02.mp4",
+    "start": 0.55,
+    "end": 1.97
+   }
+  },
+  {
+   "en": "channel",
+   "tr": "kanal",
+   "kind": "word",
+   "contentId": "A1-001",
+   "exampleEn": "Channel seven.",
+   "exampleTr": "Yedinci kanal.",
+   "audio": {
+    "path": "segments/s02.mp4",
+    "start": 1.83,
+    "end": 2.6
+   },
+   "exampleAudio": {
+    "path": "segments/s02.mp4",
+    "start": 1.83,
+    "end": 3.47
+   }
+  },
+  {
+   "en": "seven",
+   "tr": "yedi",
+   "kind": "word",
+   "contentId": "A1-001",
+   "exampleEn": "Channel seven.",
+   "exampleTr": "Yedinci kanal.",
+   "audio": {
+    "path": "segments/s02.mp4",
+    "start": 2.527,
+    "end": 3.32
+   },
+   "exampleAudio": {
+    "path": "segments/s02.mp4",
+    "start": 1.83,
+    "end": 3.47
+   }
+  },
+  {
+   "en": "Channel seven",
+   "tr": "7. kanal, yedinci kanal",
+   "kind": "phrase",
+   "contentId": "A1-001",
+   "audio": {
+    "path": "segments/s02.mp4",
+    "start": 1.83,
+    "end": 3.32
+   }
+  },
+  {
+   "en": "hello",
+   "tr": "alo (telsizde/telefonda), merhaba",
+   "kind": "word",
+   "contentId": "A1-001",
+   "exampleEn": "Hello? Hello?",
+   "exampleTr": "Alo? Alo?",
+   "audio": {
+    "path": "segments/s02.mp4",
+    "start": 8.707,
+    "end": 9.247
+   },
+   "exampleAudio": {
+    "path": "segments/s02.mp4",
+    "start": 8.707,
+    "end": 10.997
+   },
+   "alt": [
+    "merhaba"
+   ]
+  },
+  {
+   "en": "can",
+   "tr": "-ebilir mi (soru)",
+   "kind": "word",
+   "contentId": "A1-001",
+   "exampleEn": "Can you hear me?",
+   "exampleTr": "Beni duyabiliyor musun?",
+   "audio": {
+    "path": "segments/s02.mp4",
+    "start": 10.987,
+    "end": 11.967
+   },
+   "exampleAudio": {
+    "path": "segments/s02.mp4",
+    "start": 10.987,
+    "end": 12.837
+   },
+   "alt": [
+    "-ebilmek",
+    "-ebilir miyim (soru)"
+   ]
+  },
+  {
+   "en": "you",
+   "tr": "sen",
+   "kind": "word",
+   "contentId": "A1-001",
+   "exampleEn": "Can you hear me?",
+   "exampleTr": "Beni duyabiliyor musun?",
+   "audio": {
+    "path": "segments/s02.mp4",
+    "start": 11.867,
+    "end": 12.127
+   },
+   "exampleAudio": {
+    "path": "segments/s02.mp4",
+    "start": 10.987,
+    "end": 12.837
+   },
+   "alt": [
+    "seni",
+    "size / sana",
+    "seninle / sizinle"
+   ]
+  },
+  {
+   "en": "hear",
+   "tr": "duymak",
+   "kind": "word",
+   "contentId": "A1-001",
+   "exampleEn": "Can you hear me?",
+   "exampleTr": "Beni duyabiliyor musun?",
+   "audio": {
+    "path": "segments/s02.mp4",
+    "start": 12.035,
+    "end": 12.367
+   },
+   "exampleAudio": {
+    "path": "segments/s02.mp4",
+    "start": 10.987,
+    "end": 12.837
+   }
+  },
+  {
+   "en": "me",
+   "tr": "beni",
+   "kind": "word",
+   "contentId": "A1-001",
+   "exampleEn": "Can you hear me?",
+   "exampleTr": "Beni duyabiliyor musun?",
+   "audio": {
+    "path": "segments/s02.mp4",
+    "start": 12.307,
+    "end": 12.687
+   },
+   "exampleAudio": {
+    "path": "segments/s02.mp4",
+    "start": 10.987,
+    "end": 12.837
+   },
+   "alt": [
+    "benimle (beni)",
+    "(excuse me kalıbının parçası)"
+   ]
+  },
+  {
+   "en": "yes",
+   "tr": "evet",
+   "kind": "word",
+   "contentId": "A1-001",
+   "exampleEn": "Yes, I can hear you.",
+   "exampleTr": "Evet, seni duyabiliyorum.",
+   "audio": {
+    "path": "segments/k1-ok.mp4",
+    "start": 0.42,
+    "end": 0.89
+   },
+   "exampleAudio": {
+    "path": "segments/k1-ok.mp4",
+    "start": 0.42,
+    "end": 2.113
+   }
+  },
+  {
+   "en": "I",
+   "tr": "ben",
+   "kind": "word",
+   "contentId": "A1-001",
+   "exampleEn": "Yes, I can hear you.",
+   "exampleTr": "Evet, seni duyabiliyorum.",
+   "audio": {
+    "path": "segments/k1-ok.mp4",
+    "start": 0.848,
+    "end": 1.085
+   },
+   "exampleAudio": {
+    "path": "segments/k1-ok.mp4",
+    "start": 0.42,
+    "end": 2.113
+   }
+  },
+  {
+   "en": "I can hear you",
+   "tr": "Seni duyabiliyorum",
+   "kind": "phrase",
+   "contentId": "A1-001",
+   "exampleEn": "Yes, I can hear you.",
+   "exampleTr": "Evet, seni duyabiliyorum.",
+   "audio": {
+    "path": "segments/k1-ok.mp4",
+    "start": 0.848,
+    "end": 1.963
+   },
+   "exampleAudio": {
+    "path": "segments/k1-ok.mp4",
+    "start": 0.42,
+    "end": 2.113
+   }
+  },
+  {
+   "en": "this",
+   "tr": "bu (burada: ben)",
+   "kind": "word",
+   "contentId": "A1-001",
+   "exampleEn": "This is E.",
+   "exampleTr": "Ben E.",
+   "audio": {
+    "path": "segments/s03.mp4",
+    "start": 0.49,
+    "end": 1.08
+   },
+   "exampleAudio": {
+    "path": "segments/s03.mp4",
+    "start": 0.49,
+    "end": 2.83
+   },
+   "alt": [
+    "bu",
+    "bu (burası)"
+   ]
+  },
+  {
+   "en": "is",
+   "tr": "-dır / -dir (olmak)",
+   "kind": "word",
+   "contentId": "A1-001",
+   "exampleEn": "This is E.",
+   "exampleTr": "Ben E.",
+   "audio": {
+    "path": "segments/s03.mp4",
+    "start": 1.207,
+    "end": 1.88
+   },
+   "exampleAudio": {
+    "path": "segments/s03.mp4",
+    "start": 0.49,
+    "end": 2.83
+   },
+   "alt": [
+    "(olmak; Türkçede karşılığı yok)",
+    "(soru) mı (olmak)",
+    "-dır (olmak)"
+   ]
+  },
+  {
+   "en": "This is …",
+   "tr": "Ben … (telsizde/telefonda kendini tanıtırken)",
+   "kind": "phrase",
+   "contentId": "A1-001",
+   "exampleEn": "This is E.",
+   "exampleTr": "Ben E.",
+   "audio": {
+    "path": "segments/s03.mp4",
+    "start": 0.49,
+    "end": 2.68
+   },
+   "exampleAudio": {
+    "path": "segments/s03.mp4",
+    "start": 0.49,
+    "end": 2.83
+   },
+   "alt": [
+    "Burası … / Bu …"
+   ]
+  },
+  {
+   "en": "meet",
+   "tr": "buluş",
+   "kind": "word",
+   "contentId": "A1-001",
+   "exampleEn": "Meet me at the old station.",
+   "exampleTr": "Benimle eski istasyonda buluş.",
+   "audio": {
+    "path": "segments/s03.mp4",
+    "start": 2.748,
+    "end": 3.72
+   },
+   "exampleAudio": {
+    "path": "segments/s03.mp4",
+    "start": 2.748,
+    "end": 5.057
+   },
+   "alt": [
+    "tanışmak"
+   ]
+  },
+  {
+   "en": "at",
+   "tr": "-de / -da (yer)",
+   "kind": "word",
+   "contentId": "A1-001",
+   "exampleEn": "Meet me at the old station.",
+   "exampleTr": "Benimle eski istasyonda buluş.",
+   "audio": {
+    "path": "segments/s03.mp4",
+    "start": 3.767,
+    "end": 3.96
+   },
+   "exampleAudio": {
+    "path": "segments/s03.mp4",
+    "start": 2.748,
+    "end": 5.057
+   },
+   "alt": [
+    "-de (saat için)"
+   ]
+  },
+  {
+   "en": "the",
+   "tr": "(belirli tanımlık)",
+   "kind": "word",
+   "contentId": "A1-001",
+   "exampleEn": "Meet me at the old station.",
+   "exampleTr": "Benimle eski istasyonda buluş.",
+   "audio": {
+    "path": "segments/s03.mp4",
+    "start": 3.84,
+    "end": 4.04
+   },
+   "exampleAudio": {
+    "path": "segments/s03.mp4",
+    "start": 2.748,
+    "end": 5.057
+   }
+  },
+  {
+   "en": "old",
+   "tr": "eski",
+   "kind": "word",
+   "contentId": "A1-001",
+   "exampleEn": "Meet me at the old station.",
+   "exampleTr": "Benimle eski istasyonda buluş.",
+   "audio": {
+    "path": "segments/s03.mp4",
+    "start": 3.98,
+    "end": 4.36
+   },
+   "exampleAudio": {
+    "path": "segments/s03.mp4",
+    "start": 2.748,
+    "end": 5.057
+   }
+  },
+  {
+   "en": "station",
+   "tr": "istasyon",
+   "kind": "word",
+   "contentId": "A1-001",
+   "exampleEn": "Meet me at the old station.",
+   "exampleTr": "Benimle eski istasyonda buluş.",
+   "audio": {
+    "path": "segments/s03.mp4",
+    "start": 4.29,
+    "end": 4.92
+   },
+   "exampleAudio": {
+    "path": "segments/s03.mp4",
+    "start": 2.748,
+    "end": 5.057
+   }
+  },
+  {
+   "en": "Meet me at …",
+   "tr": "Benimle …-de buluş",
+   "kind": "phrase",
+   "contentId": "A1-001",
+   "exampleEn": "Meet me at the old station.",
+   "exampleTr": "Benimle eski istasyonda buluş.",
+   "audio": {
+    "path": "segments/s03.mp4",
+    "start": 2.748,
+    "end": 4.92
+   },
+   "exampleAudio": {
+    "path": "segments/s03.mp4",
+    "start": 2.748,
+    "end": 5.057
+   }
+  },
+  {
+   "en": "the old station",
+   "tr": "eski istasyon",
+   "kind": "phrase",
+   "contentId": "A1-001",
+   "exampleEn": "Meet me at the old station.",
+   "exampleTr": "Benimle eski istasyonda buluş.",
+   "audio": {
+    "path": "segments/s03.mp4",
+    "start": 3.84,
+    "end": 4.92
+   },
+   "exampleAudio": {
+    "path": "segments/s03.mp4",
+    "start": 2.748,
+    "end": 5.057
+   }
+  },
+  {
+   "en": "o'clock",
+   "tr": "saat (tam saat)",
+   "kind": "word",
+   "contentId": "A1-001",
+   "exampleEn": "Friday. Seven o'clock.",
+   "exampleTr": "Cuma. Saat yedi.",
+   "audio": {
+    "path": "segments/s03.mp4",
+    "start": 6.58,
+    "end": 7.32
+   },
+   "exampleAudio": {
+    "path": "segments/s03.mp4",
+    "start": 4.917,
+    "end": 7.47
+   }
+  },
+  {
+   "en": "seven o'clock",
+   "tr": "saat yedi",
+   "kind": "phrase",
+   "contentId": "A1-001",
+   "exampleEn": "Friday. Seven o'clock.",
+   "exampleTr": "Cuma. Saat yedi.",
+   "audio": {
+    "path": "segments/s03.mp4",
+    "start": 6.207,
+    "end": 7.32
+   },
+   "exampleAudio": {
+    "path": "segments/s03.mp4",
+    "start": 4.917,
+    "end": 7.47
+   }
+  },
+  {
+   "en": "who",
+   "tr": "kim",
+   "kind": "word",
+   "contentId": "A1-001",
+   "exampleEn": "Who are you?",
+   "exampleTr": "Sen kimsin?",
+   "audio": {
+    "path": "segments/s03.mp4",
+    "start": 10.467,
+    "end": 11.027
+   },
+   "exampleAudio": {
+    "path": "segments/s03.mp4",
+    "start": 10.467,
+    "end": 11.737
+   }
+  },
+  {
+   "en": "are",
+   "tr": "-sin (olmak)",
+   "kind": "word",
+   "contentId": "A1-001",
+   "exampleEn": "Who are you?",
+   "exampleTr": "Sen kimsin?",
+   "audio": {
+    "path": "segments/s03.mp4",
+    "start": 10.927,
+    "end": 11.187
+   },
+   "exampleAudio": {
+    "path": "segments/s03.mp4",
+    "start": 10.467,
+    "end": 11.737
+   },
+   "alt": [
+    "(soru) -misin (olmak)",
+    "-dır (olmak, çoğul)"
+   ]
+  },
+  {
+   "en": "Who are you?",
+   "tr": "Kimsin?",
+   "kind": "phrase",
+   "contentId": "A1-001",
+   "audio": {
+    "path": "segments/s03.mp4",
+    "start": 10.467,
+    "end": 11.587
+   }
+  },
+  {
+   "en": "again",
+   "tr": "tekrar, bir daha",
+   "kind": "word",
+   "contentId": "A1-001",
+   "exampleEn": "Again, please.",
+   "exampleTr": "Bir daha, lütfen.",
+   "audio": {
+    "path": "segments/k2-ok.mp4",
+    "start": 0.42,
+    "end": 1.065
+   },
+   "exampleAudio": {
+    "path": "segments/k2-ok.mp4",
+    "start": 0.42,
+    "end": 2.062
+   }
+  },
+  {
+   "en": "please",
+   "tr": "lütfen",
+   "kind": "word",
+   "contentId": "A1-001",
+   "exampleEn": "Again, please.",
+   "exampleTr": "Bir daha, lütfen.",
+   "audio": {
+    "path": "segments/k2-ok.mp4",
+    "start": 1.006,
+    "end": 1.912
+   },
+   "exampleAudio": {
+    "path": "segments/k2-ok.mp4",
+    "start": 0.42,
+    "end": 2.062
+   }
+  },
+  {
+   "en": "where",
+   "tr": "nerede",
+   "kind": "word",
+   "contentId": "A1-001",
+   "exampleEn": "Where is the old station?",
+   "exampleTr": "Eski istasyon nerede?",
+   "audio": {
+    "path": "segments/s05.mp4",
+    "start": 0.54,
+    "end": 0.795
+   },
+   "exampleAudio": {
+    "path": "segments/s05.mp4",
+    "start": 0.54,
+    "end": 2.409
+   },
+   "alt": [
+    "nere(li)"
+   ]
+  },
+  {
+   "en": "Where is …?",
+   "tr": "… nerede?",
+   "kind": "phrase",
+   "contentId": "A1-001",
+   "exampleEn": "Where is the old station?",
+   "exampleTr": "Eski istasyon nerede?",
+   "audio": {
+    "path": "segments/s05.mp4",
+    "start": 0.54,
+    "end": 2.259
+   },
+   "exampleAudio": {
+    "path": "segments/s05.mp4",
+    "start": 0.54,
+    "end": 2.409
+   }
+  },
+  {
+   "en": "new",
+   "tr": "yeni",
+   "kind": "word",
+   "contentId": "A1-001",
+   "exampleEn": "Bölüm 2: The New Neighbour",
+   "exampleTr": "Yeni Komşu"
+  },
+  {
+   "en": "neighbour",
+   "tr": "komşu",
+   "kind": "word",
+   "contentId": "A1-001",
+   "exampleEn": "Bölüm 2: The New Neighbour",
+   "exampleTr": "Yeni Komşu"
+  },
+  {
+   "en": "Nice to meet you.",
+   "tr": "Tanıştığımıza memnun oldum.",
+   "kind": "phrase",
+   "contentId": "A1-002",
+   "audio": {
+    "path": "segments/k1-a.mp4",
+    "start": 0.43,
+    "end": 1.38
+   },
+   "exampleEn": "Nice to meet you.",
+   "exampleTr": "Tanıştığımıza memnun oldum."
+  },
+  {
+   "en": "This is my…",
+   "tr": "Bu benim… (birini tanıtırken)",
+   "kind": "phrase",
+   "contentId": "A1-002"
+  },
+  {
+   "en": "Excuse me, where is…?",
+   "tr": "Affedersiniz, … nerede?",
+   "kind": "phrase",
+   "contentId": "A1-002"
+  },
+  {
+   "en": "Is it far?",
+   "tr": "Uzak mı?",
+   "kind": "phrase",
+   "contentId": "A1-002",
+   "audio": {
+    "path": "segments/s05.mp4",
+    "start": 0.58,
+    "end": 1.4
+   },
+   "exampleEn": "Is it far?",
+   "exampleTr": "Uzak mı?"
+  },
+  {
+   "en": "Thank you.",
+   "tr": "Teşekkür ederim.",
+   "kind": "phrase",
+   "contentId": "A1-002",
+   "audio": {
+    "path": "segments/s05.mp4",
+    "start": 7.79,
+    "end": 8.61
+   },
+   "exampleEn": "Thank you.",
+   "exampleTr": "Teşekkür ederim.",
+   "alt": [
+    "Teşekkürler! / Teşekkür ederim!"
+   ]
+  },
+  {
+   "en": "good",
+   "tr": "iyi (good morning: günaydın)",
+   "kind": "word",
+   "contentId": "A1-002",
+   "exampleEn": "Good morning!",
+   "exampleTr": "Günaydın!",
+   "audio": {
+    "path": "segments/s02.mp4",
+    "start": 3.22,
+    "end": 3.38
+   },
+   "exampleAudio": {
+    "path": "segments/s02.mp4",
+    "start": 3.22,
+    "end": 3.92
+   },
+   "alt": [
+    "iyi (good luck: bol şans)"
+   ]
+  },
+  {
+   "en": "morning",
+   "tr": "sabah",
+   "kind": "word",
+   "contentId": "A1-002",
+   "exampleEn": "Good morning!",
+   "exampleTr": "Günaydın!",
+   "audio": {
+    "path": "segments/s02.mp4",
+    "start": 3.29,
+    "end": 3.86
+   },
+   "exampleAudio": {
+    "path": "segments/s02.mp4",
+    "start": 3.22,
+    "end": 3.92
+   }
+  },
+  {
+   "en": "Good morning!",
+   "tr": "Günaydın!",
+   "kind": "phrase",
+   "contentId": "A1-002",
+   "audio": {
+    "path": "segments/s02.mp4",
+    "start": 3.22,
+    "end": 3.86
+   },
+   "exampleEn": "Good morning! Can I help you?",
+   "exampleTr": "Günaydın! Yardımcı olabilir miyim?"
+  },
+  {
+   "en": "help",
+   "tr": "yardım etmek",
+   "kind": "word",
+   "contentId": "A1-002",
+   "exampleEn": "Can I help you?",
+   "exampleTr": "Yardımcı olabilir miyim?",
+   "audio": {
+    "path": "segments/s02.mp4",
+    "start": 4.088,
+    "end": 4.42
+   },
+   "exampleAudio": {
+    "path": "segments/s02.mp4",
+    "start": 3.78,
+    "end": 5.05
+   }
+  },
+  {
+   "en": "Can I help you?",
+   "tr": "Yardımcı olabilir miyim? (dükkânda)",
+   "kind": "phrase",
+   "contentId": "A1-002",
+   "audio": {
+    "path": "segments/s02.mp4",
+    "start": 3.78,
+    "end": 4.9
+   },
+   "exampleEn": "Good morning! Can I help you?",
+   "exampleTr": "Günaydın! Yardımcı olabilir miyim?"
+  },
+  {
+   "en": "nice",
+   "tr": "hoş, güzel",
+   "kind": "word",
+   "contentId": "A1-002",
+   "exampleEn": "Nice to meet you.",
+   "exampleTr": "Tanıştığımıza memnun oldum.",
+   "audio": {
+    "path": "segments/k1-a.mp4",
+    "start": 0.43,
+    "end": 0.74
+   },
+   "exampleAudio": {
+    "path": "segments/k1-a.mp4",
+    "start": 0.43,
+    "end": 1.53
+   }
+  },
+  {
+   "en": "to",
+   "tr": "(mastar: -mek)",
+   "kind": "word",
+   "contentId": "A1-002",
+   "exampleEn": "Nice to meet you.",
+   "exampleTr": "Tanıştığımıza memnun oldum.",
+   "audio": {
+    "path": "segments/k1-a.mp4",
+    "start": 0.627,
+    "end": 0.82
+   },
+   "exampleAudio": {
+    "path": "segments/k1-a.mp4",
+    "start": 0.43,
+    "end": 1.53
+   }
+  },
+  {
+   "en": "i'm",
+   "tr": "ben …-im",
+   "kind": "word",
+   "contentId": "A1-002",
+   "exampleEn": "I'm Alex.",
+   "exampleTr": "Ben Alex.",
+   "audio": {
+    "path": "segments/k1-a.mp4",
+    "start": 1.48,
+    "end": 1.94
+   },
+   "exampleAudio": {
+    "path": "segments/k1-a.mp4",
+    "start": 1.48,
+    "end": 2.73
+   }
+  },
+  {
+   "en": "I'm …",
+   "tr": "Ben … (kendini tanıtma)",
+   "kind": "phrase",
+   "contentId": "A1-002",
+   "exampleEn": "I'm Alex.",
+   "exampleTr": "Ben Alex.",
+   "audio": {
+    "path": "segments/k1-a.mp4",
+    "start": 1.48,
+    "end": 2.58
+   },
+   "exampleAudio": {
+    "path": "segments/k1-a.mp4",
+    "start": 1.48,
+    "end": 2.73
+   }
+  },
+  {
+   "en": "hi",
+   "tr": "selam",
+   "kind": "word",
+   "contentId": "A1-002",
+   "exampleEn": "Hi! I'm Alex.",
+   "exampleTr": "Selam! Ben Alex.",
+   "audio": {
+    "path": "segments/k1-b.mp4",
+    "start": 0.46,
+    "end": 0.82
+   },
+   "exampleAudio": {
+    "path": "segments/k1-b.mp4",
+    "start": 0.46,
+    "end": 2.25
+   }
+  },
+  {
+   "en": "here",
+   "tr": "burada",
+   "kind": "word",
+   "contentId": "A1-002",
+   "exampleEn": "Are you new here?",
+   "exampleTr": "Buralarda yeni misin?",
+   "audio": {
+    "path": "segments/s03.mp4",
+    "start": 2.908,
+    "end": 3.32
+   },
+   "exampleAudio": {
+    "path": "segments/s03.mp4",
+    "start": 2.18,
+    "end": 3.47
+   },
+   "alt": [
+    "işte (here is)",
+    "işte, burada",
+    "işte burada"
+   ]
+  },
+  {
+   "en": "Are you new here?",
+   "tr": "Buralarda yeni misin?",
+   "kind": "phrase",
+   "contentId": "A1-002",
+   "audio": {
+    "path": "segments/s03.mp4",
+    "start": 2.18,
+    "end": 3.32
+   }
+  },
+  {
+   "en": "your",
+   "tr": "senin",
+   "kind": "word",
+   "contentId": "A1-002",
+   "exampleEn": "Yes. I'm your new neighbour.",
+   "exampleTr": "Evet. Yeni komşunum.",
+   "audio": {
+    "path": "segments/s03.mp4",
+    "start": 4.266,
+    "end": 4.47
+   },
+   "exampleAudio": {
+    "path": "segments/s03.mp4",
+    "start": 3.53,
+    "end": 5.34
+   }
+  },
+  {
+   "en": "oh",
+   "tr": "aa, oh",
+   "kind": "word",
+   "contentId": "A1-002",
+   "exampleEn": "Oh, welcome!",
+   "exampleTr": "Aa, hoş geldin!",
+   "audio": {
+    "path": "segments/s03.mp4",
+    "start": 5.4,
+    "end": 5.7
+   },
+   "exampleAudio": {
+    "path": "segments/s03.mp4",
+    "start": 5.4,
+    "end": 6.493
+   }
+  },
+  {
+   "en": "welcome",
+   "tr": "hoş geldin",
+   "kind": "word",
+   "contentId": "A1-002",
+   "exampleEn": "Oh, welcome!",
+   "exampleTr": "Aa, hoş geldin!",
+   "audio": {
+    "path": "segments/s03.mp4",
+    "start": 5.63,
+    "end": 6.46
+   },
+   "exampleAudio": {
+    "path": "segments/s03.mp4",
+    "start": 5.4,
+    "end": 6.493
+   }
+  },
+  {
+   "en": "from",
+   "tr": "-den / -dan (-li)",
+   "kind": "word",
+   "contentId": "A1-002",
+   "exampleEn": "Where are you from?",
+   "exampleTr": "Nerelisin?",
+   "audio": {
+    "path": "segments/s03.mp4",
+    "start": 6.824,
+    "end": 7.62
+   },
+   "exampleAudio": {
+    "path": "segments/s03.mp4",
+    "start": 6.353,
+    "end": 7.77
+   },
+   "alt": [
+    "-den / -dan"
+   ]
+  },
+  {
+   "en": "Where are you from?",
+   "tr": "Nerelisin? / Nereden geliyorsun?",
+   "kind": "phrase",
+   "contentId": "A1-002",
+   "audio": {
+    "path": "segments/s03.mp4",
+    "start": 6.353,
+    "end": 7.62
+   }
+  },
+  {
+   "en": "I'm from …",
+   "tr": "…-denim / …-liyim",
+   "kind": "phrase",
+   "contentId": "A1-002",
+   "exampleEn": "I'm from Türkiye.",
+   "exampleTr": "Türkiye'denim.",
+   "audio": {
+    "path": "segments/s03.mp4",
+    "start": 7.83,
+    "end": 9.05
+   },
+   "exampleAudio": {
+    "path": "segments/s03.mp4",
+    "start": 7.83,
+    "end": 9.09
+   }
+  },
+  {
+   "en": "it",
+   "tr": "o (orası)",
+   "kind": "word",
+   "contentId": "A1-002",
+   "exampleEn": "İzmir? Is it by the sea?",
+   "exampleTr": "İzmir mi? Deniz kenarında mı?",
+   "audio": {
+    "path": "segments/s03.mp4",
+    "start": 12.167,
+    "end": 12.36
+   },
+   "exampleAudio": {
+    "path": "segments/s03.mp4",
+    "start": 10.93,
+    "end": 13.31
+   },
+   "alt": [
+    "(gün cümlesinde boş özne)",
+    "o, bu",
+    "(saat cümlesinde boş özne)"
+   ]
+  },
+  {
+   "en": "by",
+   "tr": "kenarında",
+   "kind": "word",
+   "contentId": "A1-002",
+   "exampleEn": "İzmir? Is it by the sea?",
+   "exampleTr": "İzmir mi? Deniz kenarında mı?",
+   "audio": {
+    "path": "segments/s03.mp4",
+    "start": 12.273,
+    "end": 12.52
+   },
+   "exampleAudio": {
+    "path": "segments/s03.mp4",
+    "start": 10.93,
+    "end": 13.31
+   }
+  },
+  {
+   "en": "sea",
+   "tr": "deniz",
+   "kind": "word",
+   "contentId": "A1-002",
+   "exampleEn": "İzmir? Is it by the sea?",
+   "exampleTr": "İzmir mi? Deniz kenarında mı?",
+   "audio": {
+    "path": "segments/s03.mp4",
+    "start": 12.62,
+    "end": 13.16
+   },
+   "exampleAudio": {
+    "path": "segments/s03.mp4",
+    "start": 10.93,
+    "end": 13.31
+   }
+  },
+  {
+   "en": "by the sea",
+   "tr": "deniz kenarında",
+   "kind": "phrase",
+   "contentId": "A1-002",
+   "exampleEn": "İzmir? Is it by the sea?",
+   "exampleTr": "İzmir mi? Deniz kenarında mı?",
+   "audio": {
+    "path": "segments/s03.mp4",
+    "start": 12.273,
+    "end": 13.16
+   },
+   "exampleAudio": {
+    "path": "segments/s03.mp4",
+    "start": 10.93,
+    "end": 13.31
+   }
+  },
+  {
+   "en": "like",
+   "tr": "gibi",
+   "kind": "word",
+   "contentId": "A1-002",
+   "exampleEn": "Yes! Like Port Lumen.",
+   "exampleTr": "Evet! Port Lumen gibi.",
+   "audio": {
+    "path": "segments/s03.mp4",
+    "start": 14.042,
+    "end": 14.63
+   },
+   "exampleAudio": {
+    "path": "segments/s03.mp4",
+    "start": 13.37,
+    "end": 15.74
+   }
+  },
+  {
+   "en": "my",
+   "tr": "benim",
+   "kind": "word",
+   "contentId": "A1-002",
+   "exampleEn": "This is my mother.",
+   "exampleTr": "Bu annem.",
+   "audio": {
+    "path": "segments/s04.mp4",
+    "start": 0.78,
+    "end": 1.08
+   },
+   "exampleAudio": {
+    "path": "segments/s04.mp4",
+    "start": 0.5,
+    "end": 1.95
+   }
+  },
+  {
+   "en": "mother",
+   "tr": "anne",
+   "kind": "word",
+   "contentId": "A1-002",
+   "exampleEn": "This is my mother.",
+   "exampleTr": "Bu annem.",
+   "audio": {
+    "path": "segments/s04.mp4",
+    "start": 0.997,
+    "end": 1.8
+   },
+   "exampleAudio": {
+    "path": "segments/s04.mp4",
+    "start": 0.5,
+    "end": 1.95
+   }
+  },
+  {
+   "en": "This is my …",
+   "tr": "Bu benim … (birini tanıtırken)",
+   "kind": "phrase",
+   "contentId": "A1-002",
+   "exampleEn": "This is my mother.",
+   "exampleTr": "Bu annem.",
+   "audio": {
+    "path": "segments/s04.mp4",
+    "start": 0.5,
+    "end": 1.8
+   },
+   "exampleAudio": {
+    "path": "segments/s04.mp4",
+    "start": 0.5,
+    "end": 1.95
+   }
+  },
+  {
+   "en": "and",
+   "tr": "ve (… da)",
+   "kind": "word",
+   "contentId": "A1-002",
+   "exampleEn": "And this is my cousin, Sam.",
+   "exampleTr": "Bu da kuzenim Sam.",
+   "audio": {
+    "path": "segments/s04.mp4",
+    "start": 4.52,
+    "end": 4.74
+   },
+   "exampleAudio": {
+    "path": "segments/s04.mp4",
+    "start": 4.52,
+    "end": 6.127
+   },
+   "alt": [
+    "ve (… ile)"
+   ]
+  },
+  {
+   "en": "cousin",
+   "tr": "kuzen",
+   "kind": "word",
+   "contentId": "A1-002",
+   "exampleEn": "And this is my cousin, Sam.",
+   "exampleTr": "Bu da kuzenim Sam.",
+   "audio": {
+    "path": "segments/s04.mp4",
+    "start": 5.114,
+    "end": 5.54
+   },
+   "exampleAudio": {
+    "path": "segments/s04.mp4",
+    "start": 4.52,
+    "end": 6.127
+   }
+  },
+  {
+   "en": "he",
+   "tr": "o (erkek)",
+   "kind": "word",
+   "contentId": "A1-002",
+   "exampleEn": "He loves radios!",
+   "exampleTr": "Telsizlere bayılır!",
+   "audio": {
+    "path": "segments/s04.mp4",
+    "start": 5.987,
+    "end": 6.34
+   },
+   "exampleAudio": {
+    "path": "segments/s04.mp4",
+    "start": 5.987,
+    "end": 8.01
+   }
+  },
+  {
+   "en": "loves",
+   "tr": "çok seviyor, bayılıyor",
+   "kind": "word",
+   "contentId": "A1-002",
+   "exampleEn": "He loves radios!",
+   "exampleTr": "Telsizlere bayılır!",
+   "audio": {
+    "path": "segments/s04.mp4",
+    "start": 6.267,
+    "end": 6.74
+   },
+   "exampleAudio": {
+    "path": "segments/s04.mp4",
+    "start": 5.987,
+    "end": 8.01
+   }
+  },
+  {
+   "en": "radios",
+   "tr": "telsizler, radyolar",
+   "kind": "word",
+   "contentId": "A1-002",
+   "exampleEn": "He loves radios!",
+   "exampleTr": "Telsizlere bayılır!",
+   "audio": {
+    "path": "segments/s04.mp4",
+    "start": 6.714,
+    "end": 7.86
+   },
+   "exampleAudio": {
+    "path": "segments/s04.mp4",
+    "start": 5.987,
+    "end": 8.01
+   }
+  },
+  {
+   "en": "excuse",
+   "tr": "affetmek (excuse me: affedersiniz)",
+   "kind": "word",
+   "contentId": "A1-002",
+   "exampleEn": "Excuse me, where is the old station?",
+   "exampleTr": "Pardon, eski istasyon nerede?",
+   "audio": {
+    "path": "segments/k2-ok.mp4",
+    "start": 0.48,
+    "end": 0.9
+   },
+   "exampleAudio": {
+    "path": "segments/k2-ok.mp4",
+    "start": 0.48,
+    "end": 2.89
+   }
+  },
+  {
+   "en": "Excuse me",
+   "tr": "Affedersiniz / Pardon (kibar başlangıç)",
+   "kind": "phrase",
+   "contentId": "A1-002",
+   "exampleEn": "Excuse me, where is the old station?",
+   "exampleTr": "Pardon, eski istasyon nerede?",
+   "audio": {
+    "path": "segments/k2-ok.mp4",
+    "start": 0.48,
+    "end": 1.38
+   },
+   "exampleAudio": {
+    "path": "segments/k2-ok.mp4",
+    "start": 0.48,
+    "end": 2.89
+   }
+  },
+  {
+   "en": "it's",
+   "tr": "o … -dır (orası)",
+   "kind": "word",
+   "contentId": "A1-002",
+   "exampleEn": "It's near the harbour.",
+   "exampleTr": "Limanın yakınında.",
+   "audio": {
+    "path": "segments/k2-ok.mp4",
+    "start": 4.373,
+    "end": 5.02
+   },
+   "exampleAudio": {
+    "path": "segments/k2-ok.mp4",
+    "start": 4.373,
+    "end": 6.16
+   },
+   "alt": [
+    "(bugün) … -dır",
+    "(saat) … -dır"
+   ]
+  },
+  {
+   "en": "near",
+   "tr": "yakınında",
+   "kind": "word",
+   "contentId": "A1-002",
+   "exampleEn": "It's near the harbour.",
+   "exampleTr": "Limanın yakınında.",
+   "audio": {
+    "path": "segments/k2-ok.mp4",
+    "start": 4.896,
+    "end": 5.1
+   },
+   "exampleAudio": {
+    "path": "segments/k2-ok.mp4",
+    "start": 4.373,
+    "end": 6.16
+   },
+   "alt": [
+    "yakın(da)"
+   ]
+  },
+  {
+   "en": "harbour",
+   "tr": "liman",
+   "kind": "word",
+   "contentId": "A1-002",
+   "exampleEn": "It's near the harbour.",
+   "exampleTr": "Limanın yakınında.",
+   "audio": {
+    "path": "segments/k2-ok.mp4",
+    "start": 5.18,
+    "end": 6.06
+   },
+   "exampleAudio": {
+    "path": "segments/k2-ok.mp4",
+    "start": 4.373,
+    "end": 6.16
+   }
+  },
+  {
+   "en": "It's near …",
+   "tr": "…-in yakınında",
+   "kind": "phrase",
+   "contentId": "A1-002",
+   "exampleEn": "It's near the harbour.",
+   "exampleTr": "Limanın yakınında.",
+   "audio": {
+    "path": "segments/k2-ok.mp4",
+    "start": 4.373,
+    "end": 6.06
+   },
+   "exampleAudio": {
+    "path": "segments/k2-ok.mp4",
+    "start": 4.373,
+    "end": 6.16
+   }
+  },
+  {
+   "en": "but",
+   "tr": "ama",
+   "kind": "word",
+   "contentId": "A1-002",
+   "exampleEn": "But it's closed.",
+   "exampleTr": "Ama kapalı.",
+   "audio": {
+    "path": "segments/k2-ok.mp4",
+    "start": 6.02,
+    "end": 6.46
+   },
+   "exampleAudio": {
+    "path": "segments/k2-ok.mp4",
+    "start": 6.02,
+    "end": 7.393
+   }
+  },
+  {
+   "en": "closed",
+   "tr": "kapalı",
+   "kind": "word",
+   "contentId": "A1-002",
+   "exampleEn": "But it's closed.",
+   "exampleTr": "Ama kapalı.",
+   "audio": {
+    "path": "segments/k2-ok.mp4",
+    "start": 6.56,
+    "end": 7.26
+   },
+   "exampleAudio": {
+    "path": "segments/k2-ok.mp4",
+    "start": 6.02,
+    "end": 7.393
+   }
+  },
+  {
+   "en": "very",
+   "tr": "çok",
+   "kind": "word",
+   "contentId": "A1-002",
+   "exampleEn": "It's very old.",
+   "exampleTr": "Çok eski.",
+   "audio": {
+    "path": "segments/k2-ok.mp4",
+    "start": 7.68,
+    "end": 8.14
+   },
+   "exampleAudio": {
+    "path": "segments/k2-ok.mp4",
+    "start": 7.253,
+    "end": 9.09
+   }
+  },
+  {
+   "en": "no",
+   "tr": "hiç (yok)",
+   "kind": "word",
+   "contentId": "A1-002",
+   "exampleEn": "No people.",
+   "exampleTr": "Kimse yok.",
+   "audio": {
+    "path": "segments/k2-ok.mp4",
+    "start": 12.913,
+    "end": 13.48
+   },
+   "exampleAudio": {
+    "path": "segments/k2-ok.mp4",
+    "start": 12.913,
+    "end": 14.19
+   },
+   "alt": [
+    "hayır"
+   ]
+  },
+  {
+   "en": "people",
+   "tr": "insanlar",
+   "kind": "word",
+   "contentId": "A1-002",
+   "exampleEn": "No people.",
+   "exampleTr": "Kimse yok.",
+   "audio": {
+    "path": "segments/k2-ok.mp4",
+    "start": 13.409,
+    "end": 14.04
+   },
+   "exampleAudio": {
+    "path": "segments/k2-ok.mp4",
+    "start": 12.913,
+    "end": 14.19
+   }
+  },
+  {
+   "en": "No people.",
+   "tr": "Kimse yok.",
+   "kind": "phrase",
+   "contentId": "A1-002",
+   "audio": {
+    "path": "segments/k2-ok.mp4",
+    "start": 12.913,
+    "end": 14.04
+   }
+  },
+  {
+   "en": "far",
+   "tr": "uzak",
+   "kind": "word",
+   "contentId": "A1-002",
+   "exampleEn": "Is it far?",
+   "exampleTr": "Uzak mı?",
+   "audio": {
+    "path": "segments/s05.mp4",
+    "start": 0.8,
+    "end": 1.4
+   },
+   "exampleAudio": {
+    "path": "segments/s05.mp4",
+    "start": 0.58,
+    "end": 1.55
+   }
+  },
+  {
+   "en": "isn't",
+   "tr": "değil",
+   "kind": "word",
+   "contentId": "A1-002",
+   "exampleEn": "No, it isn't.",
+   "exampleTr": "Hayır, değil.",
+   "audio": {
+    "path": "segments/s05.mp4",
+    "start": 2.07,
+    "end": 2.95
+   },
+   "exampleAudio": {
+    "path": "segments/s05.mp4",
+    "start": 1.45,
+    "end": 3.03
+   }
+  },
+  {
+   "en": "No, it isn't.",
+   "tr": "Hayır, değil. (kısa cevap)",
+   "kind": "phrase",
+   "contentId": "A1-002",
+   "audio": {
+    "path": "segments/s05.mp4",
+    "start": 1.45,
+    "end": 2.95
+   }
+  },
+  {
+   "en": "look",
+   "tr": "bak",
+   "kind": "word",
+   "contentId": "A1-002",
+   "exampleEn": "Look, here is a map.",
+   "exampleTr": "Bak, işte bir harita.",
+   "audio": {
+    "path": "segments/s05.mp4",
+    "start": 2.89,
+    "end": 3.59
+   },
+   "exampleAudio": {
+    "path": "segments/s05.mp4",
+    "start": 2.89,
+    "end": 4.7
+   }
+  },
+  {
+   "en": "a",
+   "tr": "bir",
+   "kind": "word",
+   "contentId": "A1-002",
+   "exampleEn": "Look, here is a map.",
+   "exampleTr": "Bak, işte bir harita.",
+   "audio": {
+    "path": "segments/s05.mp4",
+    "start": 3.81,
+    "end": 3.99
+   },
+   "exampleAudio": {
+    "path": "segments/s05.mp4",
+    "start": 2.89,
+    "end": 4.7
+   }
+  },
+  {
+   "en": "map",
+   "tr": "harita",
+   "kind": "word",
+   "contentId": "A1-002",
+   "exampleEn": "Look, here is a map.",
+   "exampleTr": "Bak, işte bir harita.",
+   "audio": {
+    "path": "segments/s05.mp4",
+    "start": 3.95,
+    "end": 4.55
+   },
+   "exampleAudio": {
+    "path": "segments/s05.mp4",
+    "start": 2.89,
+    "end": 4.7
+   }
+  },
+  {
+   "en": "here is …",
+   "tr": "işte …",
+   "kind": "phrase",
+   "contentId": "A1-002",
+   "exampleEn": "Look, here is a map.",
+   "exampleTr": "Bak, işte bir harita.",
+   "audio": {
+    "path": "segments/s05.mp4",
+    "start": 3.498,
+    "end": 4.55
+   },
+   "exampleAudio": {
+    "path": "segments/s05.mp4",
+    "start": 2.89,
+    "end": 4.7
+   },
+   "alt": [
+    "İşte … / … burada"
+   ]
+  },
+  {
+   "en": "show",
+   "tr": "göstermek",
+   "kind": "word",
+   "contentId": "A1-002",
+   "exampleEn": "I can show you. Tomorrow?",
+   "exampleTr": "Sana gösterebilirim. Yarın olur mu?",
+   "audio": {
+    "path": "segments/s05.mp4",
+    "start": 5.128,
+    "end": 5.46
+   },
+   "exampleAudio": {
+    "path": "segments/s05.mp4",
+    "start": 4.76,
+    "end": 6.81
+   }
+  },
+  {
+   "en": "tomorrow",
+   "tr": "yarın",
+   "kind": "word",
+   "contentId": "A1-002",
+   "exampleEn": "I can show you. Tomorrow?",
+   "exampleTr": "Sana gösterebilirim. Yarın olur mu?",
+   "audio": {
+    "path": "segments/s05.mp4",
+    "start": 5.649,
+    "end": 6.66
+   },
+   "exampleAudio": {
+    "path": "segments/s05.mp4",
+    "start": 4.76,
+    "end": 6.81
+   }
+  },
+  {
+   "en": "I can show you.",
+   "tr": "Sana gösterebilirim.",
+   "kind": "phrase",
+   "contentId": "A1-002",
+   "exampleEn": "I can show you. Tomorrow?",
+   "exampleTr": "Sana gösterebilirim. Yarın olur mu?",
+   "audio": {
+    "path": "segments/s05.mp4",
+    "start": 4.76,
+    "end": 5.7
+   },
+   "exampleAudio": {
+    "path": "segments/s05.mp4",
+    "start": 4.76,
+    "end": 6.81
+   }
+  },
+  {
+   "en": "Yes, please!",
+   "tr": "Evet, lütfen! (bir teklifi kabul ederken)",
+   "kind": "phrase",
+   "contentId": "A1-002",
+   "audio": {
+    "path": "segments/s05.mp4",
+    "start": 6.87,
+    "end": 7.89
+   }
+  },
+  {
+   "en": "thank",
+   "tr": "teşekkür etmek",
+   "kind": "word",
+   "contentId": "A1-002",
+   "exampleEn": "Thank you.",
+   "exampleTr": "Teşekkür ederim.",
+   "audio": {
+    "path": "segments/s05.mp4",
+    "start": 7.79,
+    "end": 8.13
+   },
+   "exampleAudio": {
+    "path": "segments/s05.mp4",
+    "start": 7.79,
+    "end": 8.76
+   }
+  },
+  {
+   "en": "name",
+   "tr": "ad, isim",
+   "kind": "word",
+   "contentId": "A1-002",
+   "exampleEn": "Hello! My name is ___. I'm from ___.",
+   "exampleTr": "Merhaba! Benim adım ___. ___'denim."
+  },
+  {
+   "en": "My name is …",
+   "tr": "Benim adım …",
+   "kind": "phrase",
+   "contentId": "A1-002",
+   "exampleEn": "Hello! My name is ___. I'm from ___.",
+   "exampleTr": "Merhaba! Benim adım ___. ___'denim."
+  },
+  {
+   "en": "find",
+   "tr": "bul",
+   "kind": "word",
+   "contentId": "A1-002",
+   "exampleEn": "Bölüm 3: Find the Station",
+   "exampleTr": "İstasyonu Bul"
+  },
+  {
+   "en": "Go straight.",
+   "tr": "Düz git.",
+   "kind": "phrase",
+   "contentId": "A1-003",
+   "audio": {
+    "path": "segments/k1-ok.mp4",
+    "start": 4.68,
+    "end": 5.887
+   },
+   "exampleEn": "Go straight.",
+   "exampleTr": "Düz git."
+  },
+  {
+   "en": "Turn left / right.",
+   "tr": "Sola / sağa dön.",
+   "kind": "phrase",
+   "contentId": "A1-003"
+  },
+  {
+   "en": "It's near…",
+   "tr": "…-in yakınında.",
+   "kind": "phrase",
+   "contentId": "A1-003"
+  },
+  {
+   "en": "It's between…",
+   "tr": "… ile …-in arasında.",
+   "kind": "phrase",
+   "contentId": "A1-003"
+  },
+  {
+   "en": "It's behind…",
+   "tr": "…-in arkasında.",
+   "kind": "phrase",
+   "contentId": "A1-003"
+  },
+  {
+   "en": "sorry",
+   "tr": "kusura bakma",
+   "kind": "word",
+   "contentId": "A1-003",
+   "exampleEn": "Sorry, Alex! I can't come today.",
+   "exampleTr": "Kusura bakma Alex! Bugün gelemiyorum."
+  },
+  {
+   "en": "can't",
+   "tr": "-emem (gelemem)",
+   "kind": "word",
+   "contentId": "A1-003",
+   "exampleEn": "Sorry, Alex! I can't come today.",
+   "exampleTr": "Kusura bakma Alex! Bugün gelemiyorum."
+  },
+  {
+   "en": "come",
+   "tr": "gelmek",
+   "kind": "word",
+   "contentId": "A1-003",
+   "exampleEn": "Sorry, Alex! I can't come today.",
+   "exampleTr": "Kusura bakma Alex! Bugün gelemiyorum."
+  },
+  {
+   "en": "today",
+   "tr": "bugün",
+   "kind": "word",
+   "contentId": "A1-003",
+   "exampleEn": "Sorry, Alex! I can't come today.",
+   "exampleTr": "Kusura bakma Alex! Bugün gelemiyorum."
+  },
+  {
+   "en": "I can't come",
+   "tr": "Gelemiyorum",
+   "kind": "phrase",
+   "contentId": "A1-003",
+   "exampleEn": "Sorry, Alex! I can't come today.",
+   "exampleTr": "Kusura bakma Alex! Bugün gelemiyorum."
+  },
+  {
+   "en": "luck",
+   "tr": "şans",
+   "kind": "word",
+   "contentId": "A1-003",
+   "exampleEn": "Here is the map. Good luck!",
+   "exampleTr": "Harita burada. Bol şans!"
+  },
+  {
+   "en": "Good luck!",
+   "tr": "Bol şans!",
+   "kind": "phrase",
+   "contentId": "A1-003",
+   "exampleEn": "Here is the map. Good luck!",
+   "exampleTr": "Harita burada. Bol şans!"
+  },
+  {
+   "en": "go",
+   "tr": "git",
+   "kind": "word",
+   "contentId": "A1-003",
+   "exampleEn": "Go straight.",
+   "exampleTr": "Düz git.",
+   "audio": {
+    "path": "segments/k1-ok.mp4",
+    "start": 4.68,
+    "end": 5.167
+   },
+   "exampleAudio": {
+    "path": "segments/k1-ok.mp4",
+    "start": 4.68,
+    "end": 5.919
+   }
+  },
+  {
+   "en": "straight",
+   "tr": "düz",
+   "kind": "word",
+   "contentId": "A1-003",
+   "exampleEn": "Go straight.",
+   "exampleTr": "Düz git.",
+   "audio": {
+    "path": "segments/k1-ok.mp4",
+    "start": 5.089,
+    "end": 5.887
+   },
+   "exampleAudio": {
+    "path": "segments/k1-ok.mp4",
+    "start": 4.68,
+    "end": 5.919
+   }
+  },
+  {
+   "en": "then",
+   "tr": "sonra",
+   "kind": "word",
+   "contentId": "A1-003",
+   "exampleEn": "Then turn left.",
+   "exampleTr": "Sonra sola dön.",
+   "audio": {
+    "path": "segments/k1-ok.mp4",
+    "start": 5.779,
+    "end": 6.047
+   },
+   "exampleAudio": {
+    "path": "segments/k1-ok.mp4",
+    "start": 5.779,
+    "end": 7.077
+   }
+  },
+  {
+   "en": "turn",
+   "tr": "dön",
+   "kind": "word",
+   "contentId": "A1-003",
+   "exampleEn": "Then turn left.",
+   "exampleTr": "Sonra sola dön.",
+   "audio": {
+    "path": "segments/k1-ok.mp4",
+    "start": 5.971,
+    "end": 6.367
+   },
+   "exampleAudio": {
+    "path": "segments/k1-ok.mp4",
+    "start": 5.779,
+    "end": 7.077
+   }
+  },
+  {
+   "en": "left",
+   "tr": "sola",
+   "kind": "word",
+   "contentId": "A1-003",
+   "exampleEn": "Then turn left.",
+   "exampleTr": "Sonra sola dön.",
+   "audio": {
+    "path": "segments/k1-ok.mp4",
+    "start": 6.307,
+    "end": 6.927
+   },
+   "exampleAudio": {
+    "path": "segments/k1-ok.mp4",
+    "start": 5.779,
+    "end": 7.077
+   }
+  },
+  {
+   "en": "turn left",
+   "tr": "sola dön",
+   "kind": "phrase",
+   "contentId": "A1-003",
+   "exampleEn": "Then turn left.",
+   "exampleTr": "Sonra sola dön.",
+   "audio": {
+    "path": "segments/k1-ok.mp4",
+    "start": 5.971,
+    "end": 6.927
+   },
+   "exampleAudio": {
+    "path": "segments/k1-ok.mp4",
+    "start": 5.779,
+    "end": 7.077
+   },
+   "alt": [
+    "Sola dön."
+   ]
+  },
+  {
+   "en": "fish",
+   "tr": "balık (fish shop: balıkçı)",
+   "kind": "word",
+   "contentId": "A1-003",
+   "exampleEn": "The station is near the fish shop.",
+   "exampleTr": "İstasyon balıkçı dükkânının yakınında."
+  },
+  {
+   "en": "shop",
+   "tr": "dükkân",
+   "kind": "word",
+   "contentId": "A1-003",
+   "exampleEn": "The station is near the fish shop.",
+   "exampleTr": "İstasyon balıkçı dükkânının yakınında."
+  },
+  {
+   "en": "fish shop",
+   "tr": "balıkçı (dükkânı)",
+   "kind": "phrase",
+   "contentId": "A1-003",
+   "exampleEn": "The station is near the fish shop.",
+   "exampleTr": "İstasyon balıkçı dükkânının yakınında."
+  },
+  {
+   "en": "is near …",
+   "tr": "…-in yakınında",
+   "kind": "phrase",
+   "contentId": "A1-003",
+   "exampleEn": "The station is near the fish shop.",
+   "exampleTr": "İstasyon balıkçı dükkânının yakınında."
+  },
+  {
+   "en": "between",
+   "tr": "arasında",
+   "kind": "word",
+   "contentId": "A1-003",
+   "exampleEn": "It's between the bus stop and the café.",
+   "exampleTr": "Otobüs durağıyla kafenin arasında."
+  },
+  {
+   "en": "bus",
+   "tr": "otobüs",
+   "kind": "word",
+   "contentId": "A1-003",
+   "exampleEn": "It's between the bus stop and the café.",
+   "exampleTr": "Otobüs durağıyla kafenin arasında."
+  },
+  {
+   "en": "stop",
+   "tr": "durak",
+   "kind": "word",
+   "contentId": "A1-003",
+   "exampleEn": "It's between the bus stop and the café.",
+   "exampleTr": "Otobüs durağıyla kafenin arasında."
+  },
+  {
+   "en": "café",
+   "tr": "kafe",
+   "kind": "word",
+   "contentId": "A1-003",
+   "exampleEn": "It's between the bus stop and the café.",
+   "exampleTr": "Otobüs durağıyla kafenin arasında."
+  },
+  {
+   "en": "between … and …",
+   "tr": "… ile …-in arasında",
+   "kind": "phrase",
+   "contentId": "A1-003",
+   "exampleEn": "It's between the bus stop and the café.",
+   "exampleTr": "Otobüs durağıyla kafenin arasında."
+  },
+  {
+   "en": "bus stop",
+   "tr": "otobüs durağı",
+   "kind": "phrase",
+   "contentId": "A1-003",
+   "exampleEn": "It's between the bus stop and the café.",
+   "exampleTr": "Otobüs durağıyla kafenin arasında."
+  },
+  {
+   "en": "anybody",
+   "tr": "kimse, biri",
+   "kind": "word",
+   "contentId": "A1-003",
+   "exampleEn": "Hello? Is anybody here?",
+   "exampleTr": "Merhaba? Kimse var mı?",
+   "audio": {
+    "path": "segments/s04.mp4",
+    "start": 3.95,
+    "end": 4.44
+   },
+   "exampleAudio": {
+    "path": "segments/s04.mp4",
+    "start": 2.06,
+    "end": 5.23
+   }
+  },
+  {
+   "en": "Is anybody here?",
+   "tr": "Kimse var mı?",
+   "kind": "phrase",
+   "contentId": "A1-003",
+   "exampleEn": "Hello? Is anybody here?",
+   "exampleTr": "Merhaba? Kimse var mı?",
+   "audio": {
+    "path": "segments/s04.mp4",
+    "start": 3.527,
+    "end": 5.08
+   },
+   "exampleAudio": {
+    "path": "segments/s04.mp4",
+    "start": 2.06,
+    "end": 5.23
+   }
+  },
+  {
+   "en": "message",
+   "tr": "mesaj",
+   "kind": "word",
+   "contentId": "A1-003",
+   "exampleEn": "E! The message on the radio!",
+   "exampleTr": "E! Telsizdeki mesaj!",
+   "audio": {
+    "path": "segments/s04.mp4",
+    "start": 7.793,
+    "end": 8.213
+   },
+   "exampleAudio": {
+    "path": "segments/s04.mp4",
+    "start": 7.273,
+    "end": 9.083
+   }
+  },
+  {
+   "en": "on",
+   "tr": "-de (on the radio: telsizde)",
+   "kind": "word",
+   "contentId": "A1-003",
+   "exampleEn": "E! The message on the radio!",
+   "exampleTr": "E! Telsizdeki mesaj!",
+   "audio": {
+    "path": "segments/s04.mp4",
+    "start": 8.1,
+    "end": 8.293
+   },
+   "exampleAudio": {
+    "path": "segments/s04.mp4",
+    "start": 7.273,
+    "end": 9.083
+   },
+   "alt": [
+    "-de / -da (gün için)"
+   ]
+  },
+  {
+   "en": "radio",
+   "tr": "telsiz",
+   "kind": "word",
+   "contentId": "A1-003",
+   "exampleEn": "E! The message on the radio!",
+   "exampleTr": "E! Telsizdeki mesaj!",
+   "audio": {
+    "path": "segments/s04.mp4",
+    "start": 8.313,
+    "end": 8.933
+   },
+   "exampleAudio": {
+    "path": "segments/s04.mp4",
+    "start": 7.273,
+    "end": 9.083
+   }
+  },
+  {
+   "en": "on the radio",
+   "tr": "telsizde, telsizdeki",
+   "kind": "phrase",
+   "contentId": "A1-003",
+   "exampleEn": "E! The message on the radio!",
+   "exampleTr": "E! Telsizdeki mesaj!",
+   "audio": {
+    "path": "segments/s04.mp4",
+    "start": 8.1,
+    "end": 8.933
+   },
+   "exampleAudio": {
+    "path": "segments/s04.mp4",
+    "start": 7.273,
+    "end": 9.083
+   }
+  },
+  {
+   "en": "park",
+   "tr": "park",
+   "kind": "word",
+   "contentId": "A1-003",
+   "exampleEn": "The café is near the park. It's behind the school.",
+   "exampleTr": "Kafe parkın yakınında. Okulun arkasında."
+  },
+  {
+   "en": "behind",
+   "tr": "arkasında",
+   "kind": "word",
+   "contentId": "A1-003",
+   "exampleEn": "The café is near the park. It's behind the school.",
+   "exampleTr": "Kafe parkın yakınında. Okulun arkasında."
+  },
+  {
+   "en": "school",
+   "tr": "okul",
+   "kind": "word",
+   "contentId": "A1-003",
+   "exampleEn": "The café is near the park. It's behind the school.",
+   "exampleTr": "Kafe parkın yakınında. Okulun arkasında."
+  },
+  {
+   "en": "It's behind …",
+   "tr": "…-in arkasında",
+   "kind": "phrase",
+   "contentId": "A1-003",
+   "exampleEn": "The café is near the park. It's behind the school.",
+   "exampleTr": "Kafe parkın yakınında. Okulun arkasında."
+  },
+  {
+   "en": "note",
+   "tr": "not",
+   "kind": "word",
+   "contentId": "A1-003",
+   "exampleEn": "Bölüm 4: The Note",
+   "exampleTr": "Not"
+  },
+  {
+   "en": "next to",
+   "tr": "…-in yanında",
+   "kind": "word",
+   "contentId": "A1-003"
+  },
+  {
+   "en": "What time is it?",
+   "tr": "Saat kaç?",
+   "kind": "phrase",
+   "contentId": "A1-004",
+   "audio": {
+    "path": "segments/k1-ok.mp4",
+    "start": 9.165,
+    "end": 10.633
+   },
+   "exampleEn": "What time is it?",
+   "exampleTr": "Saat kaç?"
+  },
+  {
+   "en": "It's seven o'clock.",
+   "tr": "Saat yedi.",
+   "kind": "phrase",
+   "contentId": "A1-004",
+   "audio": {
+    "path": "segments/k2-ok.mp4",
+    "start": 0.46,
+    "end": 1.62
+   },
+   "exampleEn": "It's seven o'clock.",
+   "exampleTr": "Saat yedi."
+  },
+  {
+   "en": "on Friday",
+   "tr": "cuma günü (gün için on)",
+   "kind": "phrase",
+   "contentId": "A1-004",
+   "audio": {
+    "path": "segments/k2-ok.mp4",
+    "start": 3.134,
+    "end": 4.047
+   },
+   "exampleEn": "On Friday at seven.",
+   "exampleTr": "Cuma günü saat yedide."
+  },
+  {
+   "en": "at seven",
+   "tr": "saat yedide (saat için at)",
+   "kind": "phrase",
+   "contentId": "A1-004",
+   "audio": {
+    "path": "segments/k2-ok.mp4",
+    "start": 3.934,
+    "end": 4.927
+   },
+   "exampleEn": "On Friday at seven.",
+   "exampleTr": "Cuma günü saat yedide."
+  },
+  {
+   "en": "What day is it today?",
+   "tr": "Bugün günlerden ne?",
+   "kind": "phrase",
+   "contentId": "A1-004",
+   "audio": {
+    "path": "segments/s02.mp4",
+    "start": 1.436,
+    "end": 3.24
+   },
+   "exampleEn": "What day is it today?",
+   "exampleTr": "Bugün günlerden ne?"
+  },
+  {
+   "en": "what",
+   "tr": "hangi, ne",
+   "kind": "word",
+   "contentId": "A1-004",
+   "exampleEn": "What day is it today?",
+   "exampleTr": "Bugün günlerden ne?",
+   "audio": {
+    "path": "segments/s02.mp4",
+    "start": 1.436,
+    "end": 1.96
+   },
+   "exampleAudio": {
+    "path": "segments/s02.mp4",
+    "start": 1.436,
+    "end": 3.39
+   },
+   "alt": [
+    "ne",
+    "ne / kaç"
+   ]
+  },
+  {
+   "en": "day",
+   "tr": "gün",
+   "kind": "word",
+   "contentId": "A1-004",
+   "exampleEn": "What day is it today?",
+   "exampleTr": "Bugün günlerden ne?",
+   "audio": {
+    "path": "segments/s02.mp4",
+    "start": 1.88,
+    "end": 2.2
+   },
+   "exampleAudio": {
+    "path": "segments/s02.mp4",
+    "start": 1.436,
+    "end": 3.39
+   }
+  },
+  {
+   "en": "monday",
+   "tr": "pazartesi",
+   "kind": "word",
+   "contentId": "A1-004",
+   "exampleEn": "It's Monday.",
+   "exampleTr": "Pazartesi.",
+   "audio": {
+    "path": "segments/s02.mp4",
+    "start": 3.93,
+    "end": 4.63
+   },
+   "exampleAudio": {
+    "path": "segments/s02.mp4",
+    "start": 3.45,
+    "end": 4.78
+   }
+  },
+  {
+   "en": "It's + gün",
+   "tr": "Bugün …",
+   "kind": "phrase",
+   "contentId": "A1-004",
+   "exampleEn": "It's Monday.",
+   "exampleTr": "Pazartesi.",
+   "audio": {
+    "path": "segments/s02.mp4",
+    "start": 3.45,
+    "end": 4.63
+   },
+   "exampleAudio": {
+    "path": "segments/s02.mp4",
+    "start": 3.45,
+    "end": 4.78
+   }
+  },
+  {
+   "en": "have",
+   "tr": "var (sahip olmak)",
+   "kind": "word",
+   "contentId": "A1-004",
+   "exampleEn": "Monday! I have History at nine.",
+   "exampleTr": "Pazartesi! Dokuzda tarih dersim var.",
+   "audio": {
+    "path": "segments/s02.mp4",
+    "start": 5.592,
+    "end": 5.86
+   },
+   "exampleAudio": {
+    "path": "segments/s02.mp4",
+    "start": 4.84,
+    "end": 7.13
+   }
+  },
+  {
+   "en": "history",
+   "tr": "tarih (dersi)",
+   "kind": "word",
+   "contentId": "A1-004",
+   "exampleEn": "Monday! I have History at nine.",
+   "exampleTr": "Pazartesi! Dokuzda tarih dersim var.",
+   "audio": {
+    "path": "segments/s02.mp4",
+    "start": 5.77,
+    "end": 6.26
+   },
+   "exampleAudio": {
+    "path": "segments/s02.mp4",
+    "start": 4.84,
+    "end": 7.13
+   }
+  },
+  {
+   "en": "nine",
+   "tr": "dokuz",
+   "kind": "word",
+   "contentId": "A1-004",
+   "exampleEn": "Monday! I have History at nine.",
+   "exampleTr": "Pazartesi! Dokuzda tarih dersim var.",
+   "audio": {
+    "path": "segments/s02.mp4",
+    "start": 6.296,
+    "end": 6.98
+   },
+   "exampleAudio": {
+    "path": "segments/s02.mp4",
+    "start": 4.84,
+    "end": 7.13
+   }
+  },
+  {
+   "en": "I have History",
+   "tr": "Tarih dersim var",
+   "kind": "phrase",
+   "contentId": "A1-004",
+   "exampleEn": "Monday! I have History at nine.",
+   "exampleTr": "Pazartesi! Dokuzda tarih dersim var.",
+   "audio": {
+    "path": "segments/s02.mp4",
+    "start": 5.44,
+    "end": 6.26
+   },
+   "exampleAudio": {
+    "path": "segments/s02.mp4",
+    "start": 4.84,
+    "end": 7.13
+   }
+  },
+  {
+   "en": "at nine",
+   "tr": "saat dokuzda",
+   "kind": "phrase",
+   "contentId": "A1-004",
+   "exampleEn": "Monday! I have History at nine.",
+   "exampleTr": "Pazartesi! Dokuzda tarih dersim var.",
+   "audio": {
+    "path": "segments/s02.mp4",
+    "start": 6.147,
+    "end": 6.98
+   },
+   "exampleAudio": {
+    "path": "segments/s02.mp4",
+    "start": 4.84,
+    "end": 7.13
+   }
+  },
+  {
+   "en": "some",
+   "tr": "bazı",
+   "kind": "word",
+   "contentId": "A1-004",
+   "exampleEn": "Some letters are not here.",
+   "exampleTr": "Bazı harfler eksik.",
+   "audio": {
+    "path": "segments/s02.mp4",
+    "start": 11.06,
+    "end": 11.36
+   },
+   "exampleAudio": {
+    "path": "segments/s02.mp4",
+    "start": 11.06,
+    "end": 12.6
+   }
+  },
+  {
+   "en": "letters",
+   "tr": "harfler",
+   "kind": "word",
+   "contentId": "A1-004",
+   "exampleEn": "Some letters are not here.",
+   "exampleTr": "Bazı harfler eksik.",
+   "audio": {
+    "path": "segments/s02.mp4",
+    "start": 11.26,
+    "end": 11.68
+   },
+   "exampleAudio": {
+    "path": "segments/s02.mp4",
+    "start": 11.06,
+    "end": 12.6
+   }
+  },
+  {
+   "en": "not",
+   "tr": "değil",
+   "kind": "word",
+   "contentId": "A1-004",
+   "exampleEn": "Some letters are not here.",
+   "exampleTr": "Bazı harfler eksik.",
+   "audio": {
+    "path": "segments/s02.mp4",
+    "start": 11.76,
+    "end": 12.08
+   },
+   "exampleAudio": {
+    "path": "segments/s02.mp4",
+    "start": 11.06,
+    "end": 12.6
+   }
+  },
+  {
+   "en": "are not here",
+   "tr": "burada değil, eksik",
+   "kind": "phrase",
+   "contentId": "A1-004",
+   "exampleEn": "Some letters are not here.",
+   "exampleTr": "Bazı harfler eksik.",
+   "audio": {
+    "path": "segments/s02.mp4",
+    "start": 11.58,
+    "end": 12.48
+   },
+   "exampleAudio": {
+    "path": "segments/s02.mp4",
+    "start": 11.06,
+    "end": 12.6
+   }
+  },
+  {
+   "en": "let's",
+   "tr": "hadi …-elim",
+   "kind": "word",
+   "contentId": "A1-004",
+   "exampleEn": "Let's look.",
+   "exampleTr": "Hadi bakalım.",
+   "audio": {
+    "path": "segments/s02.mp4",
+    "start": 12.46,
+    "end": 13.04
+   },
+   "exampleAudio": {
+    "path": "segments/s02.mp4",
+    "start": 12.46,
+    "end": 13.59
+   }
+  },
+  {
+   "en": "Let's look.",
+   "tr": "Hadi bakalım.",
+   "kind": "phrase",
+   "contentId": "A1-004",
+   "audio": {
+    "path": "segments/s02.mp4",
+    "start": 12.46,
+    "end": 13.44
+   }
+  },
+  {
+   "en": "fri",
+   "tr": "Fri… (Friday'in başı)",
+   "kind": "word",
+   "contentId": "A1-004",
+   "exampleEn": "Fri… What is it?",
+   "exampleTr": "Fri… Bu ne?",
+   "audio": {
+    "path": "segments/s03.mp4",
+    "start": 1.6,
+    "end": 2.86
+   },
+   "exampleAudio": {
+    "path": "segments/s03.mp4",
+    "start": 1.6,
+    "end": 3.89
+   }
+  },
+  {
+   "en": "What is it?",
+   "tr": "Bu ne?",
+   "kind": "phrase",
+   "contentId": "A1-004",
+   "exampleEn": "Fri… What is it?",
+   "exampleTr": "Fri… Bu ne?",
+   "audio": {
+    "path": "segments/s03.mp4",
+    "start": 2.752,
+    "end": 3.74
+   },
+   "exampleAudio": {
+    "path": "segments/s03.mp4",
+    "start": 1.6,
+    "end": 3.89
+   }
+  },
+  {
+   "en": "clock",
+   "tr": "saat (duvar saati)",
+   "kind": "word",
+   "contentId": "A1-004",
+   "exampleEn": "Look, a clock.",
+   "exampleTr": "Bak, bir saat.",
+   "audio": {
+    "path": "segments/k1-ok.mp4",
+    "start": 8.573,
+    "end": 9.193
+   },
+   "exampleAudio": {
+    "path": "segments/k1-ok.mp4",
+    "start": 8.143,
+    "end": 9.305
+   }
+  },
+  {
+   "en": "time",
+   "tr": "saat",
+   "kind": "word",
+   "contentId": "A1-004",
+   "exampleEn": "What time is it?",
+   "exampleTr": "Saat kaç?",
+   "audio": {
+    "path": "segments/k1-ok.mp4",
+    "start": 9.661,
+    "end": 9.993
+   },
+   "exampleAudio": {
+    "path": "segments/k1-ok.mp4",
+    "start": 9.165,
+    "end": 10.783
+   }
+  },
+  {
+   "en": "little",
+   "tr": "küçük",
+   "kind": "word",
+   "contentId": "A1-004",
+   "exampleEn": "Look! A little three.",
+   "exampleTr": "Bak! Küçük bir üç.",
+   "audio": {
+    "path": "segments/s04.mp4",
+    "start": 1.283,
+    "end": 1.56
+   },
+   "exampleAudio": {
+    "path": "segments/s04.mp4",
+    "start": 0.54,
+    "end": 2.27
+   }
+  },
+  {
+   "en": "three",
+   "tr": "üç",
+   "kind": "word",
+   "contentId": "A1-004",
+   "exampleEn": "Look! A little three.",
+   "exampleTr": "Bak! Küçük bir üç.",
+   "audio": {
+    "path": "segments/s04.mp4",
+    "start": 1.5,
+    "end": 2.12
+   },
+   "exampleAudio": {
+    "path": "segments/s04.mp4",
+    "start": 0.54,
+    "end": 2.27
+   }
+  },
+  {
+   "en": "pier",
+   "tr": "iskele",
+   "kind": "word",
+   "contentId": "A1-004",
+   "exampleEn": "Pier 3!",
+   "exampleTr": "3 numaralı iskele!",
+   "audio": {
+    "path": "segments/s04.mp4",
+    "start": 2.14,
+    "end": 2.92
+   },
+   "exampleAudio": {
+    "path": "segments/s04.mp4",
+    "start": 2.14,
+    "end": 3.87
+   }
+  },
+  {
+   "en": "3",
+   "tr": "üç",
+   "kind": "word",
+   "contentId": "A1-004",
+   "exampleEn": "Pier 3!",
+   "exampleTr": "3 numaralı iskele!",
+   "audio": {
+    "path": "segments/s04.mp4",
+    "start": 2.86,
+    "end": 3.72
+   },
+   "exampleAudio": {
+    "path": "segments/s04.mp4",
+    "start": 2.14,
+    "end": 3.87
+   }
+  },
+  {
+   "en": "Pier 3",
+   "tr": "3 numaralı iskele",
+   "kind": "phrase",
+   "contentId": "A1-004",
+   "audio": {
+    "path": "segments/s04.mp4",
+    "start": 2.14,
+    "end": 3.72
+   },
+   "exampleEn": "Where is Pier 3?",
+   "exampleTr": "3 numaralı iskele nerede?"
+  },
+  {
+   "en": "2",
+   "tr": "iki",
+   "kind": "word",
+   "contentId": "A1-004",
+   "exampleEn": "It's between Pier 2 and Pier 4.",
+   "exampleTr": "2 ve 4 numaralı iskelelerin arasında.",
+   "audio": {
+    "path": "segments/s04.mp4",
+    "start": 9.187,
+    "end": 9.567
+   },
+   "exampleAudio": {
+    "path": "segments/s04.mp4",
+    "start": 8.227,
+    "end": 10.997
+   }
+  },
+  {
+   "en": "4",
+   "tr": "dört",
+   "kind": "word",
+   "contentId": "A1-004",
+   "exampleEn": "It's between Pier 2 and Pier 4.",
+   "exampleTr": "2 ve 4 numaralı iskelelerin arasında.",
+   "audio": {
+    "path": "segments/s04.mp4",
+    "start": 10.067,
+    "end": 10.847
+   },
+   "exampleAudio": {
+    "path": "segments/s04.mp4",
+    "start": 8.227,
+    "end": 10.997
+   }
+  },
+  {
+   "en": "Are you OK?",
+   "tr": "İyi misin?",
+   "kind": "phrase",
+   "contentId": "A1-004",
+   "exampleEn": "Alex? Are you OK?",
+   "exampleTr": "Alex? İyi misin?",
+   "audio": {
+    "path": "segments/s06.mp4",
+    "start": 1.16,
+    "end": 2.52
+   },
+   "exampleAudio": {
+    "path": "segments/s06.mp4",
+    "start": 0.52,
+    "end": 2.67
+   }
+  },
+  {
+   "en": "I'm OK.",
+   "tr": "İyiyim.",
+   "kind": "phrase",
+   "contentId": "A1-004",
+   "exampleEn": "Yes. I'm OK.",
+   "exampleTr": "Evet. İyiyim.",
+   "audio": {
+    "path": "segments/s06.mp4",
+    "start": 3.39,
+    "end": 4.07
+   },
+   "exampleAudio": {
+    "path": "segments/s06.mp4",
+    "start": 2.73,
+    "end": 4.11
+   }
+  },
+  {
+   "en": "9:00",
+   "tr": "saat dokuz",
+   "kind": "word",
+   "contentId": "A1-004",
+   "exampleEn": "History: Monday, 9:00.",
+   "exampleTr": "Tarih: Pazartesi, 9.00."
+  },
+  {
+   "en": "art",
+   "tr": "resim (dersi)",
+   "kind": "word",
+   "contentId": "A1-004",
+   "exampleEn": "Art: Friday, 2:00.",
+   "exampleTr": "Resim: Cuma, 14.00."
+  },
+  {
+   "en": "2:00",
+   "tr": "saat iki (14.00)",
+   "kind": "word",
+   "contentId": "A1-004",
+   "exampleEn": "Art: Friday, 2:00.",
+   "exampleTr": "Resim: Cuma, 14.00."
+  },
+  {
+   "en": "I have Art",
+   "tr": "Resim dersim var",
+   "kind": "phrase",
+   "contentId": "A1-004",
+   "exampleEn": "I have Art on Friday. What time?",
+   "exampleTr": "Cuma günü resim dersim var. Saat kaçta?"
+  },
+  {
+   "en": "What time?",
+   "tr": "Saat kaçta? (burada: ders saat kaçta)",
+   "kind": "phrase",
+   "contentId": "A1-004",
+   "exampleEn": "I have Art on Friday. What time?",
+   "exampleTr": "Cuma günü resim dersim var. Saat kaçta?"
+  },
+  {
+   "en": "too",
+   "tr": "fazla, çok",
+   "kind": "word",
+   "contentId": "A1-004",
+   "exampleEn": "Bölüm 5: Too Late?",
+   "exampleTr": "Çok mu Geç?"
+  },
+  {
+   "en": "late",
+   "tr": "geç",
+   "kind": "word",
+   "contentId": "A1-004",
+   "exampleEn": "Bölüm 5: Too Late?",
+   "exampleTr": "Çok mu Geç?"
+  },
+  {
+   "en": "Too late",
+   "tr": "Çok geç",
+   "kind": "phrase",
+   "contentId": "A1-004",
+   "exampleEn": "Bölüm 5: Too Late?",
+   "exampleTr": "Çok mu Geç?"
+  },
+  {
+   "en": "fried",
+   "tr": "kızarmış",
+   "kind": "word",
+   "contentId": "A1-004"
+  }
+ ]
+}

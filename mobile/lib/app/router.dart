@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../features/discover/presentation/discover_screen.dart';
+import '../features/hi/presentation/hi_privacy_screen.dart';
 import '../features/player/application/autoplay_driver.dart';
 import '../features/player/application/player_session.dart';
 import '../features/player/presentation/player_screen.dart';
@@ -32,6 +33,12 @@ abstract final class AppRoutes {
 
   /// Profil → Defter (H-036).
   static const notebook = '/profil/defter';
+
+  /// Defter → Konu setleri sekmesi (H-048: Hi'nin hızlı eylemi).
+  static const notebookSets = '/profil/defter?sekme=setler';
+
+  /// Profil → "Hi benim hakkımda ne biliyor?" (H-048).
+  static const hiPrivacy = '/profil/hi';
 
   /// Tekrar oturumu (tam ekran, H-036).
   static const review = '/tekrar';
@@ -95,8 +102,10 @@ final routerProvider = Provider<GoRouter>((ref) {
         ),
       ),
       StatefulShellRoute.indexedStack(
-        builder: (context, state, navigationShell) =>
-            ShellScaffold(navigationShell: navigationShell),
+        builder: (context, state, navigationShell) => ShellScaffold(
+          navigationShell: navigationShell,
+          location: state.uri.path,
+        ),
         branches: [
           _branch(AppRoutes.home, const HomeScreen()),
           _branch(AppRoutes.discover, const DiscoverScreen()),
@@ -108,7 +117,17 @@ final routerProvider = Provider<GoRouter>((ref) {
             routes: [
               GoRoute(
                 path: 'defter',
-                builder: (context, state) => const NotebookScreen(),
+                builder: (context, state) => NotebookScreen(
+                  initialTab: switch (state.uri.queryParameters['sekme']) {
+                    'ipuclari' => 1,
+                    'setler' => 2,
+                    _ => 0,
+                  },
+                ),
+              ),
+              GoRoute(
+                path: 'hi',
+                builder: (context, state) => const HiPrivacyScreen(),
               ),
             ],
           ),

@@ -129,6 +129,10 @@ def main(argv: list[str] | None = None) -> int:
         if "topicSets" in sd:
             print("   konu setleri: " + ", ".join(f"{t['id']} ({t['itemCount']} öğe, B{t['unlockEpisode']} sonrası, "
                                                    f"{t['bytes'] / 1e3:.0f} kB)" for t in sd["topicSets"]))
+        if "hi" in sd:
+            h = sd["hi"]
+            print(f"   Hi verisi: {h['errorCatalog']} hata notu, {h['topicIntros']} konu tanıtımı, "
+                  f"{h['bridgeTasks']} köprü görevi, {h['lookup']} sözlük girdisi ({h['bytes'] / 1e3:.0f} kB)")
         if "episodes" in sd:
             avail = [e["number"] for e in sd["episodes"] if e["available"]]
             print(f"   harita: {len(sd['episodes'])} bölüm, oynanabilir {avail}; "

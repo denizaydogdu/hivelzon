@@ -5099,6 +5099,320 @@ class StoryLinksCompanion extends UpdateCompanion<StoryLinkRow> {
   }
 }
 
+class $HiRecordsTable extends HiRecords
+    with TableInfo<$HiRecordsTable, HiRecordRow> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $HiRecordsTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _kindMeta = const VerificationMeta('kind');
+  @override
+  late final GeneratedColumn<String> kind = GeneratedColumn<String>(
+    'kind',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _refIdMeta = const VerificationMeta('refId');
+  @override
+  late final GeneratedColumn<String> refId = GeneratedColumn<String>(
+    'ref_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _statusMeta = const VerificationMeta('status');
+  @override
+  late final GeneratedColumn<String> status = GeneratedColumn<String>(
+    'status',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _updatedAtMeta = const VerificationMeta(
+    'updatedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> updatedAt = GeneratedColumn<DateTime>(
+    'updated_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: true,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [kind, refId, status, updatedAt];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'hi_records';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<HiRecordRow> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('kind')) {
+      context.handle(
+        _kindMeta,
+        kind.isAcceptableOrUnknown(data['kind']!, _kindMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_kindMeta);
+    }
+    if (data.containsKey('ref_id')) {
+      context.handle(
+        _refIdMeta,
+        refId.isAcceptableOrUnknown(data['ref_id']!, _refIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_refIdMeta);
+    }
+    if (data.containsKey('status')) {
+      context.handle(
+        _statusMeta,
+        status.isAcceptableOrUnknown(data['status']!, _statusMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_statusMeta);
+    }
+    if (data.containsKey('updated_at')) {
+      context.handle(
+        _updatedAtMeta,
+        updatedAt.isAcceptableOrUnknown(data['updated_at']!, _updatedAtMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_updatedAtMeta);
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {kind, refId};
+  @override
+  HiRecordRow map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return HiRecordRow(
+      kind: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}kind'],
+      )!,
+      refId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}ref_id'],
+      )!,
+      status: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}status'],
+      )!,
+      updatedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}updated_at'],
+      )!,
+    );
+  }
+
+  @override
+  $HiRecordsTable createAlias(String alias) {
+    return $HiRecordsTable(attachedDatabase, alias);
+  }
+}
+
+class HiRecordRow extends DataClass implements Insertable<HiRecordRow> {
+  /// `topic_intro` | `bridge_task` | `note_read`
+  final String kind;
+
+  /// Konu ya da görev kimliği; `note_read` için hata türü kodu.
+  final String refId;
+
+  /// `seen` | `done` | `dismissed` | `read`
+  final String status;
+  final DateTime updatedAt;
+  const HiRecordRow({
+    required this.kind,
+    required this.refId,
+    required this.status,
+    required this.updatedAt,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['kind'] = Variable<String>(kind);
+    map['ref_id'] = Variable<String>(refId);
+    map['status'] = Variable<String>(status);
+    map['updated_at'] = Variable<DateTime>(updatedAt);
+    return map;
+  }
+
+  HiRecordsCompanion toCompanion(bool nullToAbsent) {
+    return HiRecordsCompanion(
+      kind: Value(kind),
+      refId: Value(refId),
+      status: Value(status),
+      updatedAt: Value(updatedAt),
+    );
+  }
+
+  factory HiRecordRow.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return HiRecordRow(
+      kind: serializer.fromJson<String>(json['kind']),
+      refId: serializer.fromJson<String>(json['refId']),
+      status: serializer.fromJson<String>(json['status']),
+      updatedAt: serializer.fromJson<DateTime>(json['updatedAt']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'kind': serializer.toJson<String>(kind),
+      'refId': serializer.toJson<String>(refId),
+      'status': serializer.toJson<String>(status),
+      'updatedAt': serializer.toJson<DateTime>(updatedAt),
+    };
+  }
+
+  HiRecordRow copyWith({
+    String? kind,
+    String? refId,
+    String? status,
+    DateTime? updatedAt,
+  }) => HiRecordRow(
+    kind: kind ?? this.kind,
+    refId: refId ?? this.refId,
+    status: status ?? this.status,
+    updatedAt: updatedAt ?? this.updatedAt,
+  );
+  HiRecordRow copyWithCompanion(HiRecordsCompanion data) {
+    return HiRecordRow(
+      kind: data.kind.present ? data.kind.value : this.kind,
+      refId: data.refId.present ? data.refId.value : this.refId,
+      status: data.status.present ? data.status.value : this.status,
+      updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('HiRecordRow(')
+          ..write('kind: $kind, ')
+          ..write('refId: $refId, ')
+          ..write('status: $status, ')
+          ..write('updatedAt: $updatedAt')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(kind, refId, status, updatedAt);
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is HiRecordRow &&
+          other.kind == this.kind &&
+          other.refId == this.refId &&
+          other.status == this.status &&
+          other.updatedAt == this.updatedAt);
+}
+
+class HiRecordsCompanion extends UpdateCompanion<HiRecordRow> {
+  final Value<String> kind;
+  final Value<String> refId;
+  final Value<String> status;
+  final Value<DateTime> updatedAt;
+  final Value<int> rowid;
+  const HiRecordsCompanion({
+    this.kind = const Value.absent(),
+    this.refId = const Value.absent(),
+    this.status = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  HiRecordsCompanion.insert({
+    required String kind,
+    required String refId,
+    required String status,
+    required DateTime updatedAt,
+    this.rowid = const Value.absent(),
+  }) : kind = Value(kind),
+       refId = Value(refId),
+       status = Value(status),
+       updatedAt = Value(updatedAt);
+  static Insertable<HiRecordRow> custom({
+    Expression<String>? kind,
+    Expression<String>? refId,
+    Expression<String>? status,
+    Expression<DateTime>? updatedAt,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (kind != null) 'kind': kind,
+      if (refId != null) 'ref_id': refId,
+      if (status != null) 'status': status,
+      if (updatedAt != null) 'updated_at': updatedAt,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  HiRecordsCompanion copyWith({
+    Value<String>? kind,
+    Value<String>? refId,
+    Value<String>? status,
+    Value<DateTime>? updatedAt,
+    Value<int>? rowid,
+  }) {
+    return HiRecordsCompanion(
+      kind: kind ?? this.kind,
+      refId: refId ?? this.refId,
+      status: status ?? this.status,
+      updatedAt: updatedAt ?? this.updatedAt,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (kind.present) {
+      map['kind'] = Variable<String>(kind.value);
+    }
+    if (refId.present) {
+      map['ref_id'] = Variable<String>(refId.value);
+    }
+    if (status.present) {
+      map['status'] = Variable<String>(status.value);
+    }
+    if (updatedAt.present) {
+      map['updated_at'] = Variable<DateTime>(updatedAt.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('HiRecordsCompanion(')
+          ..write('kind: $kind, ')
+          ..write('refId: $refId, ')
+          ..write('status: $status, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
 abstract class _$AppDatabase extends GeneratedDatabase {
   _$AppDatabase(QueryExecutor e) : super(e);
   $AppDatabaseManager get managers => $AppDatabaseManager(this);
@@ -5114,6 +5428,7 @@ abstract class _$AppDatabase extends GeneratedDatabase {
   late final $LearningEventsTable learningEvents = $LearningEventsTable(this);
   late final $CluesTable clues = $CluesTable(this);
   late final $StoryLinksTable storyLinks = $StoryLinksTable(this);
+  late final $HiRecordsTable hiRecords = $HiRecordsTable(this);
   @override
   Iterable<TableInfo<Table, Object?>> get allTables =>
       allSchemaEntities.whereType<TableInfo<Table, Object?>>();
@@ -5130,6 +5445,7 @@ abstract class _$AppDatabase extends GeneratedDatabase {
     learningEvents,
     clues,
     storyLinks,
+    hiRecords,
   ];
   @override
   StreamQueryUpdateRules get streamUpdateRules => const StreamQueryUpdateRules([
@@ -8196,6 +8512,187 @@ typedef $$StoryLinksTableProcessedTableManager =
       StoryLinkRow,
       PrefetchHooks Function()
     >;
+typedef $$HiRecordsTableCreateCompanionBuilder =
+    HiRecordsCompanion Function({
+      required String kind,
+      required String refId,
+      required String status,
+      required DateTime updatedAt,
+      Value<int> rowid,
+    });
+typedef $$HiRecordsTableUpdateCompanionBuilder =
+    HiRecordsCompanion Function({
+      Value<String> kind,
+      Value<String> refId,
+      Value<String> status,
+      Value<DateTime> updatedAt,
+      Value<int> rowid,
+    });
+
+class $$HiRecordsTableFilterComposer
+    extends Composer<_$AppDatabase, $HiRecordsTable> {
+  $$HiRecordsTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get kind => $composableBuilder(
+    column: $table.kind,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get refId => $composableBuilder(
+    column: $table.refId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get status => $composableBuilder(
+    column: $table.status,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$HiRecordsTableOrderingComposer
+    extends Composer<_$AppDatabase, $HiRecordsTable> {
+  $$HiRecordsTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get kind => $composableBuilder(
+    column: $table.kind,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get refId => $composableBuilder(
+    column: $table.refId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get status => $composableBuilder(
+    column: $table.status,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$HiRecordsTableAnnotationComposer
+    extends Composer<_$AppDatabase, $HiRecordsTable> {
+  $$HiRecordsTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get kind =>
+      $composableBuilder(column: $table.kind, builder: (column) => column);
+
+  GeneratedColumn<String> get refId =>
+      $composableBuilder(column: $table.refId, builder: (column) => column);
+
+  GeneratedColumn<String> get status =>
+      $composableBuilder(column: $table.status, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get updatedAt =>
+      $composableBuilder(column: $table.updatedAt, builder: (column) => column);
+}
+
+class $$HiRecordsTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $HiRecordsTable,
+          HiRecordRow,
+          $$HiRecordsTableFilterComposer,
+          $$HiRecordsTableOrderingComposer,
+          $$HiRecordsTableAnnotationComposer,
+          $$HiRecordsTableCreateCompanionBuilder,
+          $$HiRecordsTableUpdateCompanionBuilder,
+          (
+            HiRecordRow,
+            BaseReferences<_$AppDatabase, $HiRecordsTable, HiRecordRow>,
+          ),
+          HiRecordRow,
+          PrefetchHooks Function()
+        > {
+  $$HiRecordsTableTableManager(_$AppDatabase db, $HiRecordsTable table)
+    : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$HiRecordsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$HiRecordsTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$HiRecordsTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<String> kind = const Value.absent(),
+                Value<String> refId = const Value.absent(),
+                Value<String> status = const Value.absent(),
+                Value<DateTime> updatedAt = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => HiRecordsCompanion(
+                kind: kind,
+                refId: refId,
+                status: status,
+                updatedAt: updatedAt,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                required String kind,
+                required String refId,
+                required String status,
+                required DateTime updatedAt,
+                Value<int> rowid = const Value.absent(),
+              }) => HiRecordsCompanion.insert(
+                kind: kind,
+                refId: refId,
+                status: status,
+                updatedAt: updatedAt,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$HiRecordsTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $HiRecordsTable,
+      HiRecordRow,
+      $$HiRecordsTableFilterComposer,
+      $$HiRecordsTableOrderingComposer,
+      $$HiRecordsTableAnnotationComposer,
+      $$HiRecordsTableCreateCompanionBuilder,
+      $$HiRecordsTableUpdateCompanionBuilder,
+      (
+        HiRecordRow,
+        BaseReferences<_$AppDatabase, $HiRecordsTable, HiRecordRow>,
+      ),
+      HiRecordRow,
+      PrefetchHooks Function()
+    >;
 
 class $AppDatabaseManager {
   final _$AppDatabase _db;
@@ -8222,4 +8719,6 @@ class $AppDatabaseManager {
       $$CluesTableTableManager(_db, _db.clues);
   $$StoryLinksTableTableManager get storyLinks =>
       $$StoryLinksTableTableManager(_db, _db.storyLinks);
+  $$HiRecordsTableTableManager get hiRecords =>
+      $$HiRecordsTableTableManager(_db, _db.hiRecords);
 }

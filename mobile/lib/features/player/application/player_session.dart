@@ -4,6 +4,8 @@ import 'package:flutter/foundation.dart';
 import 'package:video_player/video_player.dart';
 
 import '../../../shared/content/content_source.dart';
+import '../../../shared/meaning/error_taxonomy.dart';
+import '../../hi/domain/hi_content.dart';
 import '../../../shared/meaning/learning_event_log.dart';
 import '../../../shared/meaning/meaning_controller.dart';
 import '../../../shared/meaning/meaning_text.dart';
@@ -46,6 +48,31 @@ abstract interface class PlayerHooks {
   Future<void> onEpisodeCompleted(Episode episode);
 }
 
+/// Hi-A'nın oynatıcıdaki işleri (H-048): konu tanıtımı ve yanlış seçimin
+/// hata türü. Yüklenemezse oynatıcı Hi'siz sürer.
+abstract interface class PlayerCoach {
+  /// Bölümün henüz görülmemiş konu tanıtımları ve karar hata eşlemesi.
+  Future<EpisodeCoaching> forEpisode(String contentId);
+
+  /// Konu kartı kapandı (konu başına bir kez gösterilir).
+  Future<void> markTopicSeen(String topicId);
+}
+
+class EpisodeCoaching {
+  const EpisodeCoaching({
+    this.introsByNode = const {},
+    this.decisionErrors = const {},
+  });
+
+  static const none = EpisodeCoaching();
+
+  /// Segment kimliği → o segment bitince gösterilecek konu kartı.
+  final Map<String, TopicIntro> introsByNode;
+
+  /// `k2#b` → hata türü.
+  final Map<String, ErrorType> decisionErrors;
+}
+
 /// Bir bölüm oynatma oturumu: motor + video havuzu + ses + kayıt.
 ///
 /// Ekran bu nesneyi dinler; iş kuralı motorda (saf Dart), medya burada.
@@ -58,6 +85,7 @@ class PlayerSession extends ChangeNotifier {
     LearningEventLog? events,
     NotebookRepository? notebook,
     this.hooks,
+    this.coach,
     this.logTransitions = kDebugMode,
   }) : _source = source,
        _progress = progress,
@@ -73,7 +101,14 @@ class PlayerSession extends ChangeNotifier {
   final LearningEventLog _events;
   final NotebookRepository _notebook;
   final PlayerHooks? hooks;
+  final PlayerCoach? coach;
   final bool logTransitions;
+
+  // Hi-A (H-048).
+  EpisodeCoaching _coaching = EpisodeCoaching.none;
+  Future<void> _coachingLoad = Future<void>.value();
+  TopicIntro? _topicIntro;
+  final Set<String> _introsShown = {};
 
   /// Bekleyen kayıt işleri (testler bekleyebilsin diye).
   Future<void> pendingHooks = Future<void>.value();
@@ -158,6 +193,12 @@ class PlayerSession extends ChangeNotifier {
   bool get reactionBubbleVisible => _reactionBubbleVisible;
   bool get userPaused => _userPaused;
 
+  /// Ekrandaki Hi konu kartı (H-048); kapanınca bölüm sürer.
+  TopicIntro? get topicIntro => _topicIntro;
+
+  /// Hi verisinin yüklenmesi (testler bekleyebilsin diye).
+  Future<void> get coachingReady => _coachingLoad;
+
   /// 🎯 paneli (görev + hedef ifadeler, H-050) açık mı? Ekran bunu görünce
   /// alt paneli açar.
   bool get missionPanelOpen => _missionOpen;
@@ -207,6 +248,7 @@ class PlayerSession extends ChangeNotifier {
     try {
       final ep = await _source.loadEpisode(contentId);
       _episode = ep;
+      _coachingLoad = _loadCoaching();
       // Başlık videosu, kayıt ve bayraklar okunurken ısınır (H-050).
       final title = ep.titleNode;
       if (title != null) _pool.preload([title.video]);
@@ -246,6 +288,64 @@ class PlayerSession extends ChangeNotifier {
     }
   }
 
+  /// Hi verisi bölümle paralel yüklenir; gelmezse oynatıcı Hi'siz sürer.
+  Future<void> _loadCoaching() async {
+    final c = coach;
+    if (c == null) return;
+    try {
+      _coaching = await c.forEpisode(contentId);
+    } on Object catch (e) {
+      _log('Hi verisi yüklenemedi: $e');
+    }
+  }
+
+  /// Konu kartı kapandı ("Devam et" ya da "Geç"): bölüm sürer.
+  void dismissTopicIntro() {
+    final t = _topicIntro;
+    final e = _engine;
+    if (t == null || e == null) return;
+    _topicIntro = null;
+    final c = coach;
+    if (c != null) {
+      unawaited(
+        c.markTopicSeen(t.id).catchError((Object err) {
+          _log('konu kartı kaydedilemedi: $err');
+        }),
+      );
+    }
+    _log('konu kartı kapandı: ${t.id}');
+    if (e.current?.id == t.node) e.advance();
+    _onNodeEntered(kind: TransitionKind.ui);
+  }
+
+  /// Yanlış seçimin hata türü öğrenme olayı olarak yazılır (H-048; eşlemesi
+  /// olmayan seçenek yazılmaz). Suçlama yok: yalnızca koçluk sinyali.
+  void _recordDecisionError(DecisionNode node, DecisionOption option) {
+    final type = _coaching.decisionErrors['${node.id}#${option.id}'];
+    if (type == null) return;
+    unawaited(
+      _events
+          .record(
+            LearningEvent(
+              contentId: contentId,
+              sourceId: '${node.id}#${option.id}',
+              target: option.text,
+              at: DateTime.now().toUtc(),
+              errorType: type,
+            ),
+          )
+          .catchError((Object err) => _log('hata olayı yazılamadı: $err')),
+    );
+  }
+
+  /// Bu segment bitince gösterilecek (henüz görülmemiş) konu kartı.
+  TopicIntro? _introAfter(EpisodeNode n) {
+    if (n is! SegmentNode || n is TitleNode || n is RecapNode) return null;
+    final t = _coaching.introsByNode[n.id];
+    if (t == null || _introsShown.contains(t.id)) return null;
+    return t;
+  }
+
   /// Kayıt sorusunun cevabı: kaldığı yerden mi, baştan mı?
   void resume({required bool fromCheckpoint}) {
     final snap = fromCheckpoint ? _savedSnapshot : null;
@@ -283,7 +383,9 @@ class PlayerSession extends ChangeNotifier {
   DecisionResult? choose(String optionId) {
     final e = _engine;
     if (e == null || e.current is! DecisionNode) return null;
+    final node = e.current as DecisionNode;
     final result = e.choose(optionId);
+    if (!result.correct) _recordDecisionError(node, result.option);
     _hintPanelOpen = false;
     _log('karar ${result.option.id} doğru=${result.correct}');
     _onNodeEntered(kind: TransitionKind.choice);
@@ -520,6 +622,7 @@ class PlayerSession extends ChangeNotifier {
     _hintPanelOpen = false;
     _reactionBubbleVisible = false;
     _videoError = null;
+    _topicIntro = null;
     unawaited(audio.stop());
 
     if (e.isFinished) {
@@ -755,6 +858,7 @@ class PlayerSession extends ChangeNotifier {
     if (_missionOpen) return;
     final n = node;
     if (n is! SegmentNode || n.id != _activeNodeId) return;
+    if (_introAfter(n) != null) return; // konu kartı gelecek: sıradaki beklesin
     final nextId = n is TitleNode ? (_engine!.resumeTarget ?? n.next) : n.next;
     final next = nextId == null ? null : _engine!.episode.nodes[nextId];
     if (next is! VideoBearing) return;
@@ -796,6 +900,15 @@ class PlayerSession extends ChangeNotifier {
   void _onVideoCompleted(EpisodeNode n) {
     final e = _engine!;
     if (n is SegmentNode) {
+      // Hi'nin konu kartı (H-048): konunun ilk satırı bu segmentte geçti.
+      final intro = _introAfter(n);
+      if (intro != null) {
+        _introsShown.add(intro.id);
+        _topicIntro = intro;
+        _log('konu kartı: ${intro.id}');
+        notifyListeners();
+        return;
+      }
       e.advance();
       _onNodeEntered(kind: TransitionKind.auto);
     } else if (n is ReactionNode) {

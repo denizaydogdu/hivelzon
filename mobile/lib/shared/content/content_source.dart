@@ -1,3 +1,4 @@
+import '../../features/hi/domain/hi_content.dart';
 import '../../features/player/domain/episode.dart';
 import '../../features/player/domain/subtitles.dart';
 import '../../features/player/domain/video_rendition.dart';
@@ -195,6 +196,10 @@ abstract interface class ContentSource {
 
   /// Konu seti verisi (H-051): sezon paketindeki `sets/<id>.json`.
   Future<TopicSet> loadTopicSet(int season, String path);
+
+  /// Hi-A verisi (H-048): sezon paketindeki `hi.json` (hata kataloğu, konu
+  /// tanıtımları, köprü görevleri, "Bu ne demek?" dizini).
+  Future<HiContent> loadHiContent(int season);
 }
 
 /// Defter kartındaki görsel ya da ses yolu: bölüm paketinde (`stills/x.webp`)

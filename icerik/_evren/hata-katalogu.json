@@ -1,0 +1,234 @@
+{
+  "schemaVersion": 1,
+  "taxonomyVersion": 1,
+  "status": "APPROVED",
+  "author": "Claude taslak (H-048)",
+  "date": "2026-10-13",
+  "note": "Türkçeye göre koçluk (F1). Kimlikler kalıcıdır; errorType, mobile/lib/shared/meaning/error_taxonomy.dart sürüm 1 kodlarıdır. Desen: EnglishPractice errors.py (MIT); metinler bizimdir. decisionErrors: B1–B4'teki yanlış karar seçeneklerinin hata türü (uygulama yanlış seçimde öğrenme olayı yazar).",
+  "entries": [
+    {
+      "id": "be-dropped",
+      "errorType": "missing_extra",
+      "labelTr": "Eksik \"be\" (am / is / are)",
+      "explanationTr": "Türkçede \"olmak\" çoğu zaman düşer: \"Ben öğrenciyim\", \"İstasyon nerede?\". İngilizcede düşmez: am, is ya da are cümlede durur.",
+      "examples": [
+        {
+          "wrong": "Where station?",
+          "right": "Where is the station?"
+        },
+        {
+          "wrong": "I student.",
+          "right": "I am a student."
+        }
+      ],
+      "relatedPhrases": [
+        "Excuse me, where is…?",
+        "Where is…?"
+      ]
+    },
+    {
+      "id": "can-short-answer",
+      "errorType": "verb_form",
+      "labelTr": "Kısa cevap: Yes, I can.",
+      "explanationTr": "Türkçede \"Duyabiliyor musun?\" sorusuna \"Evet, duyuyorum\" deriz. İngilizcede kısa cevap sorudaki yardımcı fiille kurulur: \"Can you…?\" sorusuna \"Yes, I can.\", \"Are you…?\" sorusuna \"Yes, I am.\"",
+      "examples": [
+        {
+          "wrong": "Can you hear me? — Yes, I am.",
+          "right": "Can you hear me? — Yes, I can."
+        }
+      ],
+      "relatedPhrases": [
+        "Yes, I can.",
+        "Can you hear me?"
+      ]
+    },
+    {
+      "id": "question-word-order",
+      "errorType": "word_order",
+      "labelTr": "Soru sözcüğü başa gelir",
+      "explanationTr": "Türkçede soru sözcüğü sona yakın gelir: \"Liman nerede?\". İngilizcede soru sözcüğü başa gelir, ardından is gelir: \"Where is the harbour?\"",
+      "examples": [
+        {
+          "wrong": "Harbour where?",
+          "right": "Where is the harbour?"
+        },
+        {
+          "wrong": "The station where is?",
+          "right": "Where is the station?"
+        }
+      ],
+      "relatedPhrases": [
+        "Excuse me, where is…?",
+        "Where is…?"
+      ]
+    },
+    {
+      "id": "time-preposition",
+      "errorType": "preposition",
+      "labelTr": "Saat ve gün: at / on",
+      "explanationTr": "Türkçede saat ve gün ekle söylenir: \"yedide\", \"cuma günü\". İngilizcede saat için at, gün için on kullanılır: at seven, on Friday. \"It's seven o'clock.\" cümlesinde ise edat yoktur.",
+      "examples": [
+        {
+          "wrong": "It's in seven o'clock.",
+          "right": "It's seven o'clock."
+        },
+        {
+          "wrong": "in Friday",
+          "right": "on Friday"
+        }
+      ],
+      "relatedPhrases": [
+        "It's seven o'clock.",
+        "at seven",
+        "on Friday",
+        "What time is it?"
+      ]
+    },
+    {
+      "id": "place-preposition",
+      "errorType": "preposition",
+      "labelTr": "Yer bildiren sözcükler: near / between / behind",
+      "explanationTr": "Türkçede yer, ismin sonundaki ekle söylenir: \"okulun arkasında\". İngilizcede yer sözcüğü ismin önüne gelir: behind the school, between the bus stop and the café.",
+      "examples": [
+        {
+          "wrong": "the school behind",
+          "right": "behind the school"
+        },
+        {
+          "wrong": "the park near",
+          "right": "near the park"
+        }
+      ],
+      "relatedPhrases": [
+        "It's near…",
+        "It's between…",
+        "It's behind…"
+      ]
+    },
+    {
+      "id": "agree-no-be",
+      "errorType": "verb_form",
+      "labelTr": "I agree (am yok)",
+      "explanationTr": "Türkçede \"Katılıyorum\" deriz ama aklımıza \"ben … -im\" kalıbı gelir. İngilizcede agree zaten bir fiildir; önüne am gelmez: \"I agree.\"",
+      "examples": [
+        {
+          "wrong": "I am agree.",
+          "right": "I agree."
+        }
+      ],
+      "relatedPhrases": []
+    },
+    {
+      "id": "third-person-s",
+      "errorType": "agreement",
+      "labelTr": "He / She / It ile fiile -s",
+      "explanationTr": "Türkçede fiil her kişide ek alır: seviyorum, seviyor. İngilizcede geniş zamanda yalnızca he, she ve it ile fiile -s eklenir: \"He loves radios.\"",
+      "examples": [
+        {
+          "wrong": "He love radios.",
+          "right": "He loves radios."
+        },
+        {
+          "wrong": "She have History.",
+          "right": "She has History."
+        }
+      ],
+      "relatedPhrases": []
+    },
+    {
+      "id": "articles",
+      "errorType": "article",
+      "labelTr": "a / an / the",
+      "explanationTr": "Türkçede \"bir\" çoğu zaman söylenmez, \"the\" karşılığı da yoktur. İngilizcede tekil bir ismin önüne a, an ya da the gelir: a note, an old radio, the old station.",
+      "examples": [
+        {
+          "wrong": "This is note.",
+          "right": "This is a note."
+        },
+        {
+          "wrong": "Meet me at old station.",
+          "right": "Meet me at the old station."
+        }
+      ],
+      "relatedPhrases": []
+    },
+    {
+      "id": "polite-repeat",
+      "errorType": "word_choice",
+      "labelTr": "Kibarca tekrar istemek",
+      "explanationTr": "Türkçede yakın biriyle \"Ne?\" demek olağandır. İngilizcede tek başına \"What?\" sert duyulabilir. Kibar biçimi: \"Again, please.\" ya da \"Sorry?\"",
+      "examples": [
+        {
+          "wrong": "What?",
+          "right": "Again, please."
+        }
+      ],
+      "relatedPhrases": [
+        "Again, please."
+      ]
+    }
+  ],
+  "decisionErrors": [
+    {
+      "contentId": "A1-001",
+      "node": "k1",
+      "option": "b",
+      "errorType": "verb_form",
+      "entry": "can-short-answer"
+    },
+    {
+      "contentId": "A1-001",
+      "node": "k2",
+      "option": "b",
+      "errorType": "word_choice",
+      "entry": "polite-repeat"
+    },
+    {
+      "contentId": "A1-002",
+      "node": "k2",
+      "option": "b",
+      "errorType": "missing_extra",
+      "entry": "be-dropped"
+    },
+    {
+      "contentId": "A1-003",
+      "node": "k1",
+      "option": "b",
+      "errorType": "word_order",
+      "entry": "question-word-order"
+    },
+    {
+      "contentId": "A1-003",
+      "node": "k2",
+      "option": "b",
+      "errorType": "word_choice"
+    },
+    {
+      "contentId": "A1-003",
+      "node": "k3",
+      "option": "b",
+      "errorType": "preposition",
+      "entry": "place-preposition"
+    },
+    {
+      "contentId": "A1-004",
+      "node": "k1",
+      "option": "b",
+      "errorType": "word_choice"
+    },
+    {
+      "contentId": "A1-004",
+      "node": "k1",
+      "option": "c",
+      "errorType": "word_choice"
+    },
+    {
+      "contentId": "A1-004",
+      "node": "k2",
+      "option": "b",
+      "errorType": "preposition",
+      "entry": "time-preposition"
+    }
+  ],
+  "approvedBy": "kullanıcı (önceden onay, 2026-10-13: \"onayladım şimdiden\"); içerik ana oturumda okundu"
+}

@@ -3,6 +3,7 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 
+import '../../features/hi/domain/hi_content.dart';
 import '../../features/player/domain/episode.dart';
 import '../../features/player/domain/subtitles.dart';
 import '../../features/topic_sets/domain/topic_set.dart';
@@ -89,6 +90,17 @@ class HttpContentSource implements ContentSource {
       return TopicSet.fromJson(json.cast<String, dynamic>());
     } on Object catch (e) {
       throw ContentUnavailableException('Bozuk konu seti', cause: e);
+    }
+  }
+
+  @override
+  Future<HiContent> loadHiContent(int season) async {
+    final json = await _getJson(seasonMediaUri(season, 'hi.json'));
+    if (json is! Map) throw ContentUnavailableException('Bozuk hi.json');
+    try {
+      return HiContent.fromJson(json.cast<String, dynamic>());
+    } on Object catch (e) {
+      throw ContentUnavailableException('Bozuk hi.json', cause: e);
     }
   }
 

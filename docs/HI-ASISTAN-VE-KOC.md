@@ -150,3 +150,6 @@ Yerel Ollama + Whisper + Kokoro ile çalışan, Türk öğrenciye yönelik açı
 
 ## 11. Performans notu (2026-10-12)
 Hi-B'de yapay zekâ cevabı akıtarak (streaming) gösterilir; kullanıcı tam cevabı beklemez. Uzun işler arka planda.
+
+## 12. Konuşma (2026-10-13)
+Hi-C'nin ilk adımı MVP'ye çekildi: "Söyle" alıştırmaları (S1, H-055), cihazda tanıma, puan yok. Serbest prova ve karakterlerle konuşma S2 (v1). Ayrıntı: `docs/KONUSMA-ALISTIRMASI.md`.

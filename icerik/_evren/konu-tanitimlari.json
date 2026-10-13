@@ -1,0 +1,95 @@
+{
+  "schemaVersion": 1,
+  "status": "APPROVED",
+  "author": "Claude taslak (H-048)",
+  "date": "2026-10-13",
+  "note": "Hi'nin konu tanıtımı (H-050'den H-048'e taşındı). Kart, konunun ilk hedef satırının geçtiği segment bitince bir kez gösterilir (başlıktan önce değil), atlanabilir; geri sayım yok (K-32). Kartlar sıradaki karar anının cevabını vermez. Kaynak: content.json grammarTargets ya da targetPhrases (yalnızca B1–B4'te gerçekten geçen konular).",
+  "intros": [
+    {
+      "id": "can-questions",
+      "contentId": "A1-001",
+      "grammarTarget": "can_questions_short_answers",
+      "trigger": {
+        "node": "s02",
+        "cue": "s02-04",
+        "match": "Can you hear me?"
+      },
+      "titleEn": "Can you…?",
+      "linesTr": [
+        "\"Can you…?\" bir şeyi yapıp yapamayacağını sorar: \"…-ebilir misin?\"",
+        "Türkçedeki \"mi\" eki yerine sözcüklerin sırası değişir: soru can ile başlar."
+      ],
+      "exampleEn": "Can you hear me?",
+      "exampleTr": "Beni duyabiliyor musun?"
+    },
+    {
+      "id": "where-is",
+      "contentId": "A1-001",
+      "targetPhrase": "Where is…?",
+      "trigger": {
+        "node": "s05",
+        "cue": "s05-01",
+        "match": "Where is the old station?"
+      },
+      "titleEn": "Where is…?",
+      "linesTr": [
+        "Bir yeri sormak için: Where is + yer?",
+        "Türkçede \"nerede\" sona gelir; İngilizcede where başa gelir, ardından is gelir."
+      ],
+      "exampleEn": "Where is the old station?",
+      "exampleTr": "Eski istasyon nerede?"
+    },
+    {
+      "id": "this-is-to-be",
+      "contentId": "A1-002",
+      "grammarTarget": "this_is",
+      "trigger": {
+        "node": "s04",
+        "cue": "s04-01",
+        "match": "This is my mother."
+      },
+      "titleEn": "This is… / I'm…",
+      "linesTr": [
+        "Birini tanıtırken: This is my… (Bu benim …)",
+        "Türkçede \"-dir\" eki çoğu zaman söylenmez; İngilizcede am, is, are söylenir: I'm = I am."
+      ],
+      "exampleEn": "This is my cousin, Sam.",
+      "exampleTr": "Bu kuzenim Sam."
+    },
+    {
+      "id": "directions",
+      "contentId": "A1-003",
+      "grammarTarget": "imperatives_go_turn",
+      "trigger": {
+        "node": "k1-ok",
+        "cue": "k1-ok-03",
+        "match": "Go straight."
+      },
+      "titleEn": "Go… / Turn…",
+      "linesTr": [
+        "Yol tarif ederken cümle doğrudan fiille başlar; \"you\" söylenmez.",
+        "go = git, turn = dön. Yön, fiilden sonra gelir."
+      ],
+      "exampleEn": "Go straight.",
+      "exampleTr": "Düz git."
+    },
+    {
+      "id": "time",
+      "contentId": "A1-004",
+      "grammarTarget": "its_oclock",
+      "trigger": {
+        "node": "k1-ok",
+        "cue": "k1-ok-05",
+        "match": "What time is it?"
+      },
+      "titleEn": "What time is it?",
+      "linesTr": [
+        "Saati sormak için: What time is it? (Saat kaç?)",
+        "Cevap \"It's\" ile başlar; tam saatlerde sona o'clock gelir."
+      ],
+      "exampleEn": "What time is it?",
+      "exampleTr": "Saat kaç?"
+    }
+  ],
+  "approvedBy": "kullanıcı (önceden onay, 2026-10-13: \"onayladım şimdiden\"); içerik ana oturumda okundu"
+}

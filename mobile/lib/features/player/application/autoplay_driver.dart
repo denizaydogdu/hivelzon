@@ -120,6 +120,7 @@ class AutoplayDriver {
       s.engine?.hintLevel(node?.id ?? ''),
       s.reactionBubbleVisible,
       s.videoError,
+      s.topicIntro?.id,
     ].join('|');
     if (key == _lastKey) return;
     _lastKey = key;
@@ -152,6 +153,11 @@ class AutoplayDriver {
     if (node == null) return;
     if (s.videoError != null) {
       _after(1500, s.retryVideo);
+      return;
+    }
+    // Hi'nin konu kartı (H-048): okunur gibi bekle, sonra devam et.
+    if (s.topicIntro != null) {
+      _after(1500 + _shot('topic-intro'), s.dismissTopicIntro);
       return;
     }
     if (kAutoplayMode == 'resume1' && node.id == 's05') {

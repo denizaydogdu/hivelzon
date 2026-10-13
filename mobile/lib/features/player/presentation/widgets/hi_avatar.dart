@@ -6,10 +6,19 @@ import 'package:flutter/material.dart';
 ///
 /// Görsel üretimi yok; tamamen çizimle. Hareket azaltma açıksa nabız durur.
 class HiAvatar extends StatefulWidget {
-  const HiAvatar({super.key, this.size = 96, this.glow = true});
+  const HiAvatar({
+    super.key,
+    this.size = 96,
+    this.glow = true,
+    this.pulseCycles,
+  });
 
   final double size;
   final bool glow;
+
+  /// Nabız sayısı (H-048 balonu: birkaç nabızdan sonra durur, dikkat
+  /// dağıtmaz); `null` ise sürekli.
+  final int? pulseCycles;
 
   @override
   State<HiAvatar> createState() => _HiAvatarState();
@@ -22,14 +31,23 @@ class _HiAvatarState extends State<HiAvatar>
     duration: const Duration(milliseconds: 2400),
   );
 
+  bool _started = false;
+
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
     final reduce = MediaQuery.maybeDisableAnimationsOf(context) ?? false;
     if (reduce || !widget.glow) {
       _pulse.stop();
-    } else if (!_pulse.isAnimating) {
-      _pulse.repeat(reverse: true);
+    } else if (!_pulse.isAnimating &&
+        !(widget.pulseCycles != null && _started)) {
+      _started = true;
+      final n = widget.pulseCycles;
+      if (n == null) {
+        _pulse.repeat(reverse: true);
+      } else {
+        _pulse.repeat(reverse: true, count: n * 2);
+      }
     }
   }
 

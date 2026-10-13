@@ -33,7 +33,13 @@ class HomeScreen extends ConsumerWidget {
     return Scaffold(
       body: SafeArea(
         child: ListView(
-          padding: const EdgeInsets.all(AppSpacing.sm),
+          // Alt boşluk: sağ alttaki Hi balonu son öğeyi örtmesin (H-048).
+          padding: const EdgeInsets.fromLTRB(
+            AppSpacing.sm,
+            AppSpacing.sm,
+            AppSpacing.sm,
+            AppSpacing.sm + 80,
+          ),
           children: [
             PageHeader(
               title: HomeTexts.greeting(name),

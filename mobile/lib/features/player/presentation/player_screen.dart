@@ -13,6 +13,8 @@ import '../../../shared/meaning/meaning_controller.dart';
 import '../../../shared/meaning/meaning_sheet.dart';
 import '../../../shared/meaning/meaning_text.dart';
 import '../../../shared/meaning/notebook_repository.dart';
+import '../../hi/application/hi_providers.dart';
+import '../../hi/presentation/hi_cards.dart';
 import '../../notebook/application/deck_sync.dart';
 import '../../notebook/application/notebook_providers.dart';
 import '../../topic_sets/application/topic_set_providers.dart';
@@ -97,6 +99,7 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen>
       events: ref.read(learningEventLogProvider),
       notebook: ref.read(notebookRepositoryProvider),
       hooks: ref.read(playerHooksProvider),
+      coach: ref.read(playerCoachProvider),
       logTransitions: true,
     )..addListener(_onSession);
     if (autoplayEnabled) {
@@ -441,8 +444,32 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen>
           top: media.padding.top + 72, // üst çubuğun altında
           child: IgnorePointer(child: AiNotice(text: e.episode.info.aiLabel)),
         ),
-        // 6) Düğüm arayüzü.
-        if (s.videoError != null)
+        // 6) Düğüm arayüzü. Hi'nin konu kartı (H-048) segment bitince gelir.
+        if (s.topicIntro != null)
+          Positioned.fill(
+            child: ColoredBox(
+              color: Colors.black.withValues(alpha: 0.55),
+              child: SafeArea(
+                child: Align(
+                  alignment: Alignment.bottomCenter,
+                  child: SingleChildScrollView(
+                    padding: const EdgeInsets.fromLTRB(
+                      AppSpacing.sm,
+                      96,
+                      AppSpacing.sm,
+                      AppSpacing.md,
+                    ),
+                    child: HiTopicCard(
+                      intro: s.topicIntro!,
+                      onContinue: s.dismissTopicIntro,
+                      onSkip: s.dismissTopicIntro,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          )
+        else if (s.videoError != null)
           _Centered(
             child: _ErrorPanel(
               message: s.videoError!,

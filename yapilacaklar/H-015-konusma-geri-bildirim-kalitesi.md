@@ -17,3 +17,4 @@ Doğrulama yapılana kadar sayısal puan gösterilmesin; geri bildirim nitel ols
 ## Notlar
 2026-10-11: `docs/SARTNAME.md` ve `docs/IS-PLANI.md` karşılaştırmasından açıldı.
 2026-10-11 (`ICERIK-MIMARISI.md` §7.5): Azure telaffuz değerlendirmesinin insan puanlarıyla korelasyonu yalnızca ">0,5" olarak veriliyor. İnsan puanlayıcıların kendi aralarındaki tutarlılık 0,76–0,87. Puan, yalnızca kendi Türk L1 örneklemimizde doğrulandıktan sonra gösterilsin ve sayı yerine bant olarak verilsin.
+2026-10-13: Konuşma alıştırması fazlandı (`docs/KONUSMA-ALISTIRMASI.md`): S1 (MVP, H-055) yalnızca 'beklenen ifade söylendi mi' kontrolü, puan yok. Telaffuz geri bildirimi S3 olarak bu işte; yalnız doğrulanırsa.

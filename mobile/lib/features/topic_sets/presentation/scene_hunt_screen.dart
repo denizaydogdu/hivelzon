@@ -9,6 +9,7 @@ import 'package:go_router/go_router.dart';
 import '../../../app/theme.dart';
 import '../../../l10n/tr_strings.dart';
 import '../../../shared/widgets/skeleton.dart';
+import '../../hi/application/hi_providers.dart';
 import '../../notebook/application/card_audio_player.dart';
 import '../../notebook/application/notebook_providers.dart';
 import '../../notebook/presentation/notebook_screen.dart' show createCardAudio;
@@ -231,6 +232,15 @@ class _HuntState extends ConsumerState<_Hunt>
     _syncPulse();
     if (!_session.finished) _playWord();
     if (_session.finished) {
+      // Hi-A (H-048): bu set için sahne avı önerisi artık gelmez.
+      unawaited(
+        ref
+            .read(hiStoreProvider)
+            .markHuntDone(widget.set.id)
+            .catchError(
+              (Object e) => debugPrint('[H048] sahne avı işareti: $e'),
+            ),
+      );
       _recorded = ref
           .read(topicSetActionsProvider)
           .recordHunt(_session.results)
