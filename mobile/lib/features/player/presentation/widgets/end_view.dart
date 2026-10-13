@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../../../../app/theme.dart';
 import '../../../../l10n/tr_strings.dart';
+import '../../../../shared/speech/speak_widgets.dart';
+import '../../../../shared/speech/speech_store.dart';
 import '../../../../shared/text/turkish.dart';
 import '../../domain/episode.dart';
 import '../../domain/episode_engine.dart';
@@ -17,7 +19,15 @@ class EndView extends StatelessWidget {
     this.topicSetTitle,
     this.topicSetIsNew = true,
     this.onOpenTopicSet,
+    this.speak,
+    this.onSpokenTarget,
   });
+
+  /// "Hedef ifadeleri söyle" (H-055): yalnızca cihazda tanıma varsa. İsteğe
+  /// bağlı; en az birini tam söylemek kapının "hedef ifade" ölçütünü de
+  /// karşılar ([onSpokenTarget]).
+  final SpeakEnv? speak;
+  final VoidCallback? onSpokenTarget;
 
   final EpisodeEngine engine;
   final VoidCallback onBack;
@@ -160,6 +170,35 @@ class EndView extends StatelessWidget {
                 style: theme.textTheme.bodyMedium,
               ),
             ]),
+            if (speak != null && ep.info.targetPhrases.isNotEmpty) ...[
+              const SizedBox(height: AppSpacing.sm),
+              section(upperTr(SpeakTexts.endSection), Icons.mic_rounded, [
+                Text(SpeakTexts.endIntro, style: theme.textTheme.bodyMedium),
+                for (final (i, p) in ep.info.targetPhrases.indexed) ...[
+                  const SizedBox(height: AppSpacing.sm),
+                  Text(
+                    p,
+                    style: theme.textTheme.titleMedium?.copyWith(
+                      fontWeight: FontWeight.w700,
+                      color: AppColors.ink,
+                    ),
+                  ),
+                  const SizedBox(height: 4),
+                  SpeakPractice(
+                    key: ValueKey('end-speak-$i'),
+                    expected: p,
+                    env: speak!,
+                    place: SpeechPlace.episodeEnd,
+                    contentId: ep.info.id,
+                    keyPrefix: 'end-speak-$i',
+                    dense: true,
+                    onAttempt: (c) {
+                      if (c.succeeded) onSpokenTarget?.call();
+                    },
+                  ),
+                ],
+              ]),
+            ],
             if (topicSetTitle != null) ...[
               const SizedBox(height: AppSpacing.sm),
               section(

@@ -494,16 +494,93 @@ abstract final class HiTexts {
       '$done yan görevi yaptın, $dismissed tanesini geçtin.';
   static const privacyDelete = "Hi'nin kayıtlarını sil";
   static const privacyDeleteNote =
-      'Öğrenme kayıtları ve yan görev durumları silinir. Hikâye ilerlemen, '
-      'defterin ve adın silinmez.';
+      'Öğrenme kayıtları, Söyle sonuçları ve yan görev durumları silinir. '
+      'Hikâye ilerlemen, defterin ve adın silinmez.';
   static const privacyConfirmTitle = "Hi'nin kayıtları silinsin mi?";
   static const privacyConfirmBody =
-      'Anlamına baktığın kelimeler, yeniden denediğin seçimler ve yan görev '
-      'durumları silinir. Bu geri alınamaz. Hikâye ilerlemen ve defterin '
+      'Anlamına baktığın kelimeler, yeniden denediğin seçimler, Söyle '
+      'sonuçları ve yan görev durumları silinir. Bu geri alınamaz. Hikâye ilerlemen ve defterin '
       'yerinde kalır.';
   static const privacyConfirmCancel = 'Vazgeç';
   static const privacyConfirmDelete = 'Sil';
   static const privacyDeleted =
       "Hi'nin kayıtları silindi. İlerlemen ve defterin yerinde.";
   static const privacyError = 'Kayıtlar okunamadı. Biraz sonra tekrar dene.';
+}
+
+/// "Söyle" alıştırmaları (H-055). Puan, yüzde ve "yanlış" yok; utandırmaz.
+abstract final class SpeakTexts {
+  // Düğmeler
+  static const say = 'Söyle';
+  static const sayAgain = 'Bir daha söyle';
+  static const meaningSay = 'Sen de söyle';
+  static const decisionSay = 'Söyleyerek seç';
+  static const skip = 'Geç';
+  static const stop = 'Bitirdim';
+  static const listening = 'Dinliyorum… Söyleyince biraz bekle.';
+
+  // Geri bildirim
+  static const full = 'Söyledin!';
+  static const closeTitle = 'Neredeyse!';
+  static String close(String word) => 'Neredeyse! Şu kelimeyi duyamadım: $word';
+  static String missing(List<String> words) => words.length == 1
+      ? 'Şu kelimeyi duyamadım: ${words.single}'
+      : 'Şu kelimeleri duyamadım: ${words.join(', ')}';
+  static const tryAgain = 'Bir daha dene.';
+  static const silence = 'Seni duyamadım. Bir daha dene.';
+  static const reveal = 'Sorun değil. İfade şöyle:';
+  static const why = 'Neden böyle?';
+
+  // Kelime tekrarı
+  static const reviewTask = 'Dinle ve söyle.';
+  static const reviewHint =
+      'Dinle, sonra mikrofona dokunup İngilizcesini söyle.';
+  static const reviewAccept = 'Devam et';
+
+  // Karar anı
+  static const decisionUnclear = 'Seni tam duyamadım. İstersen dokunarak seç.';
+  static const decisionTapOnly = 'Dokunarak seçebilirsin.';
+
+  // Bölüm sonu
+  static const endSection = 'Hedef ifadeleri söyle';
+  static const endIntro =
+      'İstersen bu bölümün ifadelerini bir kez de sen söyle. İsteğe bağlı.';
+
+  // İzin öncesi açıklama
+  static const permissionTitle = 'Söyle alıştırmaları';
+  static const permissionBody =
+      'Sesin bu telefonda yazıya çevrilir; kaydedilmez, hiçbir yere '
+      'gönderilmez. Söylediğinin yazısı da saklanmaz; yalnızca '
+      '"söyledin" ya da "bir daha dene" sonucu bu cihazda kalır.';
+  static const permissionNext =
+      'Şimdi telefonun mikrofon ve konuşma tanıma iznini soracak.';
+  static const permissionContinue = 'Devam et';
+  static const permissionLater = 'Şimdi değil';
+  static const permissionDenied =
+      'İzin verilmedi. Her şey dokunarak çalışmaya devam eder.';
+
+  // Profil
+  static const profileSection = 'Söyle alıştırmaları';
+  static const profileToggle = 'Söyle alıştırmalarını göster';
+  static const profileToggleSub =
+      'Kelime tekrarında, anlam panelinde, karar anında ve bölüm sonunda '
+      'İngilizceyi sesli söyleyebilirsin. İsteğe bağlıdır.';
+  static const profilePrivacy =
+      'Sesin bu telefonda yazıya çevrilir; kaydedilmez, hiçbir yere '
+      'gönderilmez.';
+  static const profileUnsupported =
+      'Bu telefon İngilizce konuşmayı kendi içinde yazıya çeviremiyor. '
+      'Sesin dışarı gönderilmesin diye Söyle alıştırmaları kapalı; her şey '
+      'dokunarak çalışır.';
+  static const profileDenied =
+      'Mikrofon ya da konuşma tanıma izni kapalı. İstersen telefonun '
+      'Ayarlar bölümünden açabilirsin; her şey dokunarak da çalışır.';
+
+  // "Hi benim hakkımda ne biliyor?"
+  static const privacyRow = 'Söyle alıştırmaları';
+  static String privacyValue(int attempts, int full) => attempts == 0
+      ? 'Henüz söylemedin. Sesin ve söylediklerinin yazısı hiç saklanmaz.'
+      : '$attempts kez söyledin; $full tanesinde ifadenin tamamı duyuldu. '
+            'Yalnızca bu sonuç saklanır; sesin ve söylediklerinin yazısı '
+            'saklanmaz.';
 }

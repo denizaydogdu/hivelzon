@@ -27,3 +27,4 @@ Kendi dalında (`h-043-kalite-beta`) yapılır; `main`'e alınmadan önce testle
 2026-10-11: H-025 uygulama planıyla açıldı.
 2026-10-12: Gerçek cihaz denetimleri bu işte toplanır (kullanıcı kararı): düşük uçlu Android'de bellek/ısı ölçümü, gerçek telefonda ses–yazı farkı ≤ 0,2 sn, Android'de oynatıcı ve Drift veritabanının çalışması. Şimdiye kadarki doğrulamalar yalnızca iOS simülatöründe yapıldı.
 2026-10-12 (H-054'ten): Ucuz Android telefonda 4G ağ koşuluyla test; hedefler: soğuk açılış, bölüm açılışı, harita kaydırma kare hızı (H-054 ölçümleri temel alınır).
+2026-10-13 (H-055'ten): Gerçek iPhone ve Android'de "Söyle" alıştırmaları: cihazda tanıma, izin akışı (mikrofon izni sorulmadan dinleme başlarsa), Android İngilizce dil paketi yoksa davranış; iOS izin penceresinde Apple'ın sabit "ses Apple'a gönderilir" cümlesi (biz cihazda tanımayı zorunlu tutuyoruz) → metin ve hukuk incelemesi, gerekirse Türkçe InfoPlist.strings.

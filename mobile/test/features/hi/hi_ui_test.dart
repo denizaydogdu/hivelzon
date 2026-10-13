@@ -10,6 +10,8 @@ import 'package:hivelzon/features/story/data/season_intro_repository.dart';
 import 'package:hivelzon/shared/content/content_providers.dart';
 import 'package:hivelzon/shared/meaning/error_taxonomy.dart';
 import 'package:hivelzon/shared/meaning/learning_event_log.dart';
+import 'package:hivelzon/shared/speech/speech_match.dart';
+import 'package:hivelzon/shared/speech/speech_store.dart';
 import 'package:hivelzon/shared/storage/app_database.dart';
 import 'package:hivelzon/shared/storage/storage_providers.dart';
 import 'package:video_player_platform_interface/video_player_platform_interface.dart';
@@ -96,6 +98,36 @@ void main() {
       expect(hiBubbleVisibleFor(p), isFalse, reason: p);
     }
   });
+
+  testWidgets(
+    'balon kart içeriğini örtmez: Ana Sayfa, Hikâye, Profil (H-055)',
+    (tester) async {
+      await pumpApp(tester);
+      final bubble = find.byKey(const ValueKey('hi-bubble'));
+      // Ana Sayfa ve Profil: kaydırılan alan balonun üstünde biter.
+      for (final route in [AppRoutes.home, AppRoutes.profile]) {
+        go(route);
+        await settle(tester, 30);
+        final top = tester.getTopLeft(bubble).dy;
+        final list = find.byType(Scrollable).hitTestable().first;
+        expect(
+          tester.getBottomLeft(list).dy,
+          lessThanOrEqualTo(top),
+          reason: route,
+        );
+      }
+      // Hikâye: odak kartı balonun üstünde (jenerik izlenmiş sayılır).
+      await container.read(seasonIntroRepositoryProvider).markSeen(1);
+      go(AppRoutes.story);
+      await settle(tester, 40);
+      final card = find.byKey(const ValueKey('story-focus-card'));
+      expect(card, findsOneWidget);
+      expect(
+        tester.getBottomLeft(card).dy,
+        lessThanOrEqualTo(tester.getTopLeft(bubble).dy),
+      );
+    },
+  );
 
   testWidgets('balon sekmelerde görünür; Defter ve tekrarda gizlenir', (
     tester,
@@ -282,8 +314,17 @@ void main() {
           ),
         );
         await store.setBridgeState('bt-a1-001', BridgeState.dismissed);
+        // H-055: "Söyle" sonucu da Hi'nin kayıtlarındandır.
+        await SpeechStore(db).record(
+          SpeechAttempt(
+            place: SpeechPlace.review,
+            itemRef: 'Yes, I can.',
+            level: SpeechMatchLevel.full,
+            at: DateTime.now().toUtc(),
+          ),
+        );
       });
-      await pumpApp(tester, height: 3600);
+      await pumpApp(tester, height: 4400);
       go(AppRoutes.profile);
       await settle(tester, 30);
       await tester.tap(find.byKey(const ValueKey('profile-hi-privacy')));
@@ -295,6 +336,10 @@ void main() {
       expect(find.text('Fiil yapısı: 1'), findsOneWidget);
       expect(
         find.text('0 yan görevi yaptın, 1 tanesini geçtin.'),
+        findsOneWidget,
+      );
+      expect(
+        find.textContaining('1 kez söyledin; 1 tanesinde ifadenin tamamı'),
         findsOneWidget,
       );
       expect(find.byKey(const ValueKey('hi-bubble')), findsNothing);
@@ -332,6 +377,10 @@ void main() {
         isEmpty,
       );
       expect(await tester.runAsync(store.bridgeStates), isEmpty);
+      expect(
+        await tester.runAsync(() => db.select(db.speechAttempts).get()),
+        isEmpty,
+      );
       expect(
         await tester.runAsync(() => db.select(db.notebookItems).get()),
         hasLength(itemsBefore!.length),

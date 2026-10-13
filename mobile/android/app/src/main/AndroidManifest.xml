@@ -1,4 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- H-055: "Söyle" alıştırmaları; yalnızca cihazda tanıma, ses kaydedilmez. -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
     <application
         android:label="hiVelzon"
         android:name="${applicationName}"
@@ -40,6 +42,10 @@
         <intent>
             <action android:name="android.intent.action.PROCESS_TEXT"/>
             <data android:mimeType="text/plain"/>
+        </intent>
+        <!-- H-055: cihazdaki konuşma tanıma hizmetini görmek için. -->
+        <intent>
+            <action android:name="android.speech.RecognitionService"/>
         </intent>
     </queries>
 </manifest>

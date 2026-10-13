@@ -134,7 +134,7 @@ class _StoryScreenState extends ConsumerState<StoryScreen> {
       await Future<void>.delayed(const Duration(milliseconds: 1500));
     }
     final ids = switch (kAutoplayMode) {
-      'resume1' || 'resume2' || 'h035' => ['A1-001'],
+      'resume1' || 'resume2' || 'h035' || 'h055' => ['A1-001'],
       'h050' => ['A1-001', 'A1-002'],
       _ => [
         for (final e in initial.episodes)
@@ -181,12 +181,14 @@ class _MapBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final focus = map.focus ?? map.firstComingSoon;
+    // Alt güvenli alan Hi balonunun payını da içerir (ShellScaffold, H-055):
+    // odak kartı balonun altında kalmaz.
     return Padding(
-      padding: const EdgeInsets.fromLTRB(
+      padding: EdgeInsets.fromLTRB(
         AppSpacing.sm,
         AppSpacing.xs,
         AppSpacing.sm,
-        AppSpacing.xs,
+        AppSpacing.xs + MediaQuery.paddingOf(context).bottom,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,

@@ -79,6 +79,7 @@ class ReviewSession {
     DateTime Function()? clock,
     math.Random? random,
     this.level = 'A1',
+    this.canSpeak = false,
   }) : _queue = List.of(queue),
        _clock = clock ?? (() => DateTime.now().toUtc()),
        _random = random ?? math.Random();
@@ -89,6 +90,9 @@ class ReviewSession {
   /// Kart ve günlük kaydı yazar (ör. Drift işlemi).
   final Future<void> Function(ReviewOutcome outcome) persist;
   final String level;
+
+  /// Cihazda tanıma var ve açık: "Dinle ve söyle" görevi karışabilir (H-055).
+  final bool canSpeak;
 
   final List<SessionCard> _queue;
   final DateTime Function() _clock;
@@ -118,24 +122,64 @@ class ReviewSession {
   ///
   /// "Bilmiyorum" ([dontKnow]) yanlış cevap gibi Again sayılır; kart en çok
   /// [ReviewPolicy.maxRequeuesPerCard] kez oturumun sonuna yeniden eklenir.
+  ///
+  /// [rating]: görev kendi notunu verdiyse ("Dinle ve söyle",
+  /// [ReviewPolicy.rateSpeech]); yoksa doğruluk ve süreden hesaplanır.
   Future<ReviewOutcome> answer({
     required bool correct,
     bool dontKnow = false,
     required Duration elapsed,
+    FsrsRating? rating,
   }) async {
     final sc = current;
     final task = _task;
     if (sc == null || task == null) throw StateError('oturumda kart yok');
     final ok = correct && !dontKnow;
-    final rating = ReviewPolicy.rate(
-      type: task.type,
-      correct: ok,
+    final listens =
+        task.type == TaskType.listenChoice || task.type == TaskType.speak;
+    final rated = dontKnow
+        ? FsrsRating.again
+        : rating ??
+              ReviewPolicy.rate(
+                type: task.type,
+                correct: ok,
+                elapsed: elapsed,
+                stage: sc.card.stage,
+                audioLength: listens
+                    ? (sc.item.audio?.length ?? Duration.zero)
+                    : Duration.zero,
+              );
+    return _apply(
+      sc,
+      task,
+      rated,
+      ok: ok,
+      dontKnow: dontKnow,
       elapsed: elapsed,
-      stage: sc.card.stage,
-      audioLength: task.type == TaskType.listenChoice
-          ? (sc.item.audio?.length ?? Duration.zero)
-          : Duration.zero,
     );
+  }
+
+  /// "Geç" (H-055): not verilmez, kaydedilmez, oturum içinde yeniden
+  /// sorulmaz; kart vadesinde kalır ve sonraki oturumda gelir.
+  void skip() {
+    final sc = current;
+    if (sc == null) throw StateError('oturumda kart yok');
+    _skipped++;
+  }
+
+  int _skipped = 0;
+
+  /// Geçilen kart sayısı.
+  int get skipped => _skipped;
+
+  Future<ReviewOutcome> _apply(
+    SessionCard sc,
+    RetrievalTask task,
+    FsrsRating rating, {
+    required bool ok,
+    required bool dontKnow,
+    required Duration elapsed,
+  }) async {
     final at = _clock().toUtc();
     final before = sc.card;
     final fsrs = scheduler.review(before.fsrs, rating, at);
@@ -190,6 +234,7 @@ class ReviewSession {
       pool: pool,
       random: _random,
       level: level,
+      canSpeak: canSpeak,
     );
     return _task;
   }

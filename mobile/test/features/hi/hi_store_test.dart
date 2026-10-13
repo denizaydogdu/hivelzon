@@ -175,6 +175,7 @@ void main() {
     final v3 = AppDatabase(NativeDatabase(file));
     await NotebookStore(v3, clock: () => _now).addItems([_item('Hello.')]);
     await v3.customStatement('DROP TABLE hi_records');
+    await v3.customStatement('DROP TABLE speech_attempts');
     await v3.customStatement('PRAGMA user_version = 2');
     await v3.close();
 
@@ -186,11 +187,39 @@ void main() {
     final version = await migrated
         .customSelect('PRAGMA user_version')
         .getSingle();
-    expect(version.data.values.first, 3);
+    expect(version.data.values.first, 4);
     expect(await NotebookStore(migrated).entries(), hasLength(1));
     final s = HiStore(migrated, clock: () => _now);
     await s.markTopicIntroSeen('time');
     expect(await s.seenTopicIntros(), {'time'});
+    await migrated.close();
+  });
+
+  test('şema 3 → 4: "Söyle" tablosu oluşur, eski veriler korunur', () async {
+    final dir = Directory.systemTemp.createTempSync('h055');
+    addTearDown(() => dir.deleteSync(recursive: true));
+    final file = File('${dir.path}/v3.sqlite');
+    final v4 = AppDatabase(NativeDatabase(file));
+    await NotebookStore(v4, clock: () => _now).addItems([_item('Hello.')]);
+    await HiStore(v4, clock: () => _now).markTopicIntroSeen('time');
+    await v4.customStatement('DROP TABLE speech_attempts');
+    await v4.customStatement('PRAGMA user_version = 3');
+    await v4.close();
+
+    final migrated = AppDatabase(NativeDatabase(file));
+    final tables = await migrated
+        .customSelect("SELECT name FROM sqlite_master WHERE type='table'")
+        .get();
+    expect(
+      tables.map((r) => r.read<String>('name')),
+      contains('speech_attempts'),
+    );
+    final version = await migrated
+        .customSelect('PRAGMA user_version')
+        .getSingle();
+    expect(version.data.values.first, 4);
+    expect(await NotebookStore(migrated).entries(), hasLength(1));
+    expect(await HiStore(migrated).seenTopicIntros(), {'time'});
     await migrated.close();
   });
 }

@@ -35,6 +35,11 @@ class RetrievalTask {
         for (var i = 0; i < picked.length; i++) picked[i] == answerTokens[i],
       ].every((ok) => ok);
 
+  /// "Dinle ve söyle"de beklenen ifade: `…` içeriyorsa örnek cümle.
+  String get spokenText => item.textEn.contains('…') && item.exampleEn != null
+      ? item.exampleEn!
+      : item.textEn;
+
   /// Yazma görevi: büyük/küçük harf, noktalama ve `…` önemsiz.
   bool isCorrectTyped(String input) {
     String n(String s) => normalizeEn(s).replaceAll('…', '').trim();
@@ -58,6 +63,7 @@ RetrievalTask buildTask({
   required List<NotebookItem> pool,
   required math.Random random,
   String level = 'A1',
+  bool canSpeak = false,
 }) {
   final distractors = _distractors(item, pool, random, 3);
   final tokens = arrangeTokens(item);
@@ -67,6 +73,7 @@ RetrievalTask buildTask({
     multiWord: tokens.length >= 2,
     optionCount: distractors.length + 1,
     level: level,
+    canSpeak: canSpeak,
   );
   switch (type) {
     case TaskType.pictureChoice || TaskType.listenChoice:
@@ -91,7 +98,10 @@ RetrievalTask buildTask({
         tokens: shuffled,
         answerTokens: tokens,
       );
-    case TaskType.type || TaskType.selfCheck || TaskType.sceneHunt:
+    case TaskType.type ||
+        TaskType.selfCheck ||
+        TaskType.sceneHunt ||
+        TaskType.speak:
       return RetrievalTask(type: type, item: item);
   }
 }

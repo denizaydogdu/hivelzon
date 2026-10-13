@@ -15,6 +15,9 @@ import 'transition_metrics.dart';
 ///   "Türkçesini göster" adımlarını, ardından EN+TR altyazıyı gösterir (H-046).
 /// - `h035`: Hikâye haritası (H-035): kilitli B2 paneli, B1 baştan sona, dönüşte harita.
 /// - `h035view`: yalnızca haritayı açar ve durumunu yazar (kalıcılık denetimi).
+/// - `h055`: B1'i oynatır; ilk kararda (k1) durur ("Söyleyerek seç" ve
+///   anlam panelindeki "Sen de söyle" elle denenir), bölüm sonunda kalır
+///   ("Hedef ifadeleri söyle"). `HV_FAKE_SPEECH` ile birlikte kullanılır.
 /// - `h050`: sezon jeneriği (ilk açılış), B1 başlık ekranı ve 🎯 paneli, B2
 ///   başlık → "Önceki bölümde" + "Atla" (H-050). Yalnızca B1 ve B2 oynar.
 const String kAutoplayMode = String.fromEnvironment('AUTOPLAY_TEST');
@@ -84,6 +87,8 @@ class AutoplayDriver {
 
   bool get _isB1 => session.contentId == 'A1-001';
   bool get _h050 => kAutoplayMode == 'h050';
+  bool get _h055 => kAutoplayMode == 'h055';
+  final Set<String> _h055Waited = {};
   bool _missionDone = false;
   bool _titleShotArmed = true;
   bool _recapShotArmed = true;
@@ -142,6 +147,10 @@ class AutoplayDriver {
           if (fromCp) _log('RESUME2 devam düğümü=${s.node?.id}');
         });
       case PlayerPhase.finished:
+        if (_h055) {
+          _log('[SHOT] h055-end (bekliyor)');
+          return;
+        }
         _after(_shot('end') + 1500, _exit);
       case PlayerPhase.playing:
         _drive(node);
@@ -190,6 +199,10 @@ class AutoplayDriver {
           } else {
             _after(1200 + hold, s.closeHint);
           }
+          return;
+        }
+        if (_h055 && _h055Waited.add(node.id) && node.id == 'k1') {
+          _log('[SHOT] h055-decision (elle seçilmesi bekleniyor)');
           return;
         }
         if (_h050 && _isB1 && !_missionDone) {

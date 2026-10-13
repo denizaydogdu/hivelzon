@@ -234,6 +234,32 @@ class HiRecords extends Table {
   Set<Column<Object>> get primaryKey => {kind, refId};
 }
 
+// ---------------------------------------------------------------- Söyle (H-055, şema 4)
+
+/// "Söyle" alıştırmasının **yalnızca sonucu** (H-055). Ses ve tanıma yazısı
+/// (transkript) hiçbir zaman saklanmaz: burada yalnızca yer, içerik, beklenen
+/// ifade (içerikten), eşleşme düzeyi, duyulmayan kelime sayısı ve varsa hata
+/// kataloğu kimliği durur. "Hi'nin kayıtlarını sil" bunları da siler.
+@DataClassName('SpeechAttemptRow')
+class SpeechAttempts extends Table {
+  IntColumn get id => integer().autoIncrement()();
+
+  /// `review` | `meaning` | `decision` | `episode_end`
+  TextColumn get place => text()();
+  TextColumn get contentId => text().nullable()();
+
+  /// Beklenen ifade (içerikteki metin) ya da karar seçeneği (`k1#a`).
+  TextColumn get itemRef => text()();
+
+  /// `full` | `close` | `no` (karar anında seçilemediyse `no`).
+  TextColumn get matchLevel => text()();
+  IntColumn get missingCount => integer().withDefault(const Constant(0))();
+
+  /// Hata kataloğu kimliği (`can-short-answer` vb.).
+  TextColumn get errorNoteId => text().nullable()();
+  DateTimeColumn get at => dateTime()();
+}
+
 @DriftDatabase(
   tables: [
     UserStoryProgress,
@@ -248,6 +274,7 @@ class HiRecords extends Table {
     Clues,
     StoryLinks,
     HiRecords,
+    SpeechAttempts,
   ],
 )
 class AppDatabase extends _$AppDatabase {
@@ -268,7 +295,7 @@ class AppDatabase extends _$AppDatabase {
   );
 
   @override
-  int get schemaVersion => 3;
+  int get schemaVersion => 4;
 
   @override
   MigrationStrategy get migration => MigrationStrategy(
@@ -286,6 +313,10 @@ class AppDatabase extends _$AppDatabase {
       // 2 → 3 (H-048): Hi-A kayıtları.
       if (from < 3) {
         await m.createTable(hiRecords);
+      }
+      // 3 → 4 (H-055): "Söyle" sonuçları (yalnızca sonuç; ses/yazı yok).
+      if (from < 4) {
+        await m.createTable(speechAttempts);
       }
     },
     beforeOpen: (details) async {

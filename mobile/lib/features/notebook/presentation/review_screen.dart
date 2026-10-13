@@ -10,6 +10,12 @@ import '../../../l10n/tr_strings.dart';
 import '../../../shared/fsrs/fsrs.dart';
 import '../../../shared/meaning/error_taxonomy.dart';
 import '../../../shared/meaning/learning_event_log.dart';
+import '../../../shared/speech/speak_controller.dart';
+import '../../../shared/speech/speak_widgets.dart';
+import '../../../shared/speech/speech_match.dart';
+import '../../../shared/speech/speech_providers.dart';
+import '../../../shared/speech/speech_store.dart';
+import '../../speak/speak_env.dart';
 import '../../hi/application/hi_providers.dart';
 import '../../hi/presentation/hi_cards.dart';
 import '../application/card_audio_player.dart';
@@ -48,6 +54,11 @@ class _ReviewScreenState extends ConsumerState<ReviewScreen> {
   final List<String> _picked = [];
   final TextEditingController _typed = TextEditingController();
 
+  /// "Dinle ve söyle" (H-055): son denemenin durumu (yalnızca sonuç).
+  SpeakController? _speak;
+  String? _speakNoteId;
+  SpeechMatchLevel? _speakLevel;
+
   @override
   void initState() {
     super.initState();
@@ -72,6 +83,10 @@ class _ReviewScreenState extends ConsumerState<ReviewScreen> {
         now: store.now(),
         newAllowed: overview.newAvailable,
       );
+      // H-055: cihazda tanıma yoksa ya da kapalıysa "Dinle ve söyle" gelmez.
+      final canSpeak = (await ref.read(
+        speechStatusProvider.future,
+      )).showsPractice;
       if (!mounted) return;
       if (picked.isEmpty) {
         setState(() => _phase = _Phase.empty);
@@ -84,6 +99,7 @@ class _ReviewScreenState extends ConsumerState<ReviewScreen> {
         persist: store.saveOutcome,
         clock: store.now,
         random: ref.read(reviewRandomProvider),
+        canSpeak: canSpeak,
       );
       _session = session;
       session.start();
@@ -100,17 +116,59 @@ class _ReviewScreenState extends ConsumerState<ReviewScreen> {
     _picked.clear();
     _typed.clear();
     _outcome = null;
+    _speak = null;
+    _speakNoteId = null;
+    _speakLevel = null;
     _watch
       ..reset()
       ..start();
     setState(() => _phase = _Phase.asking);
     final task = _session?.task;
-    if (task?.type == TaskType.listenChoice) {
+    if (task?.type == TaskType.listenChoice || task?.type == TaskType.speak) {
       unawaited(_audio.play(task!.item));
     }
   }
 
-  Future<void> _answer({required bool correct, bool dontKnow = false}) async {
+  /// "Dinle ve söyle" denemesi bitti (H-055). Tam → hemen; denemeler dolunca
+  /// en iyi sonuç; yakın sonuçta kullanıcı "Devam et" ile de geçebilir.
+  void _onSpeakAttempt(SpeakController c) {
+    _speak = c;
+    _speakNoteId = c.errorNoteId ?? _speakNoteId;
+    if (c.finished) {
+      unawaited(_answerSpeech(c.bestLevel ?? SpeechMatchLevel.no, c.attempts));
+    } else if (mounted) {
+      setState(() {});
+    }
+  }
+
+  Future<void> _answerSpeech(SpeechMatchLevel level, int attempts) async {
+    final s = _session;
+    final sc = s?.current;
+    if (s == null || sc == null) return;
+    _speakLevel = level;
+    final rating = ReviewPolicy.rateSpeech(
+      level: level,
+      elapsed: _watch.elapsed,
+      stage: sc.card.stage,
+      attempts: attempts,
+      audioLength: sc.item.audio?.length ?? Duration.zero,
+    );
+    await _answer(correct: level != SpeechMatchLevel.no, rating: rating);
+  }
+
+  /// "Geç": not yok, kayıt yok; kart sonraki oturumda yine gelir.
+  void _skip() {
+    final s = _session;
+    if (s == null || _phase != _Phase.asking) return;
+    s.skip();
+    _continue();
+  }
+
+  Future<void> _answer({
+    required bool correct,
+    bool dontKnow = false,
+    FsrsRating? rating,
+  }) async {
     final s = _session;
     final task = s?.task;
     if (s == null || task == null || _phase != _Phase.asking) return;
@@ -122,13 +180,18 @@ class _ReviewScreenState extends ConsumerState<ReviewScreen> {
         correct: correct,
         dontKnow: dontKnow,
         elapsed: _watch.elapsed,
+        rating: rating,
       );
     } on Object catch (e) {
       debugPrint('[H036] cevap kaydedilemedi: $e');
       if (mounted) setState(() => _phase = _Phase.error);
       return;
     }
-    if (!outcome.correct) _recordMiss(task);
+    // Söyleme denemesi `speech_attempts`'e yazıldı; tanıma gürültüsü hata
+    // sayılmaz. "Bilmiyorum" her görevde hatırlama sinyalidir.
+    if (!outcome.correct && (task.type != TaskType.speak || dontKnow)) {
+      _recordMiss(task);
+    }
     if (!mounted) return;
     setState(() => _outcome = outcome);
     unawaited(_audio.play(outcome.item));
@@ -226,6 +289,7 @@ class _ReviewScreenState extends ConsumerState<ReviewScreen> {
       TaskType.arrange => ReviewTexts.arrange,
       TaskType.type => ReviewTexts.type,
       TaskType.selfCheck || TaskType.sceneHunt => ReviewTexts.selfCheck,
+      TaskType.speak => SpeakTexts.reviewTask,
     };
     final children = <Widget>[
       Text(
@@ -237,7 +301,24 @@ class _ReviewScreenState extends ConsumerState<ReviewScreen> {
       ),
       const SizedBox(height: AppSpacing.sm),
     ];
-    if (task.type == TaskType.listenChoice) {
+    if (task.type == TaskType.speak) {
+      children.addAll([
+        NotebookImage(item: item, aspectRatio: 16 / 10),
+        const SizedBox(height: AppSpacing.sm),
+        if (item.textTr != null)
+          Text(
+            item.textTr!,
+            key: const ValueKey('task-meaning'),
+            style: theme.textTheme.titleLarge?.copyWith(
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+        const SizedBox(height: AppSpacing.xs),
+        Text(SpeakTexts.reviewHint, style: theme.textTheme.bodyMedium),
+        const SizedBox(height: AppSpacing.xs),
+      ]);
+    }
+    if (task.type == TaskType.listenChoice || task.type == TaskType.speak) {
       children.add(
         Center(
           child: ListenableBuilder(
@@ -257,7 +338,7 @@ class _ReviewScreenState extends ConsumerState<ReviewScreen> {
           ),
         ),
       );
-    } else {
+    } else if (task.type != TaskType.speak) {
       children.addAll([
         NotebookImage(item: item, aspectRatio: 16 / 10),
         const SizedBox(height: AppSpacing.sm),
@@ -325,6 +406,37 @@ class _ReviewScreenState extends ConsumerState<ReviewScreen> {
             child: const Text(ReviewTexts.check),
           ),
         ]);
+      case TaskType.speak:
+        final c = _speak;
+        children.add(
+          SpeakPractice(
+            key: ValueKey('speak-${item.key}-${_session!.position}'),
+            expected: task.spokenText,
+            env: speakEnvOf(context),
+            place: SpeechPlace.review,
+            contentId: item.contentId,
+            onAttempt: _onSpeakAttempt,
+            keyPrefix: 'review-speak',
+          ),
+        );
+        // Yakın sonuçta denemeyi bitirip geçmek de olur (→ Hard).
+        if (c != null &&
+            !c.finished &&
+            c.last?.level == SpeechMatchLevel.close) {
+          children.add(
+            Padding(
+              padding: const EdgeInsets.only(top: AppSpacing.xs),
+              child: FilledButton(
+                key: const ValueKey('review-speak-accept'),
+                onPressed: () => unawaited(
+                  _answerSpeech(SpeechMatchLevel.close, c.attempts),
+                ),
+                style: FilledButton.styleFrom(minimumSize: const Size(48, 48)),
+                child: const Text(SpeakTexts.reviewAccept),
+              ),
+            ),
+          );
+        }
       case TaskType.selfCheck || TaskType.sceneHunt:
         if (!_revealed) {
           children.add(
@@ -375,6 +487,15 @@ class _ReviewScreenState extends ConsumerState<ReviewScreen> {
           label: const Text(ReviewTexts.dontKnow),
         ),
       ),
+      if (task.type == TaskType.speak)
+        Center(
+          child: TextButton(
+            key: const ValueKey('task-skip'),
+            onPressed: _skip,
+            style: TextButton.styleFrom(minimumSize: const Size(120, 48)),
+            child: const Text(SpeakTexts.skip),
+          ),
+        ),
     ]);
     return ListView(
       padding: const EdgeInsets.all(AppSpacing.sm),
@@ -452,8 +573,15 @@ class _ReviewScreenState extends ConsumerState<ReviewScreen> {
     final theme = Theme.of(context);
     if (o == null) return const Center(child: CircularProgressIndicator());
     final again = o.rating == FsrsRating.again;
+    final speak = o.taskType == TaskType.speak;
     final title = o.correct
-        ? ReviewTexts.correct
+        ? (speak
+              ? (_speakLevel == SpeechMatchLevel.close
+                    ? SpeakTexts.closeTitle
+                    : SpeakTexts.full)
+              : ReviewTexts.correct)
+        : speak && !o.dontKnow
+        ? SpeakTexts.reveal
         : o.dontKnow
         ? ReviewTexts.dontKnowFeedback
         : ReviewTexts.wrongFeedback;
@@ -500,14 +628,14 @@ class _ReviewScreenState extends ConsumerState<ReviewScreen> {
           const SizedBox(height: 4),
           Text(body, key: const ValueKey('feedback-body')),
         ],
-        // Hi'nin notu (H-048): ifadeyle ilgili Türkçeye göre açıklama varsa.
-        if (!o.correct) ...[
+        // Hi'nin notu (H-048): ifadeyle ilgili Türkçeye göre açıklama varsa;
+        // söylemede tanınan tipik hata (H-055) da not açar.
+        if (!o.correct || _speakNoteId != null) ...[
           Builder(
             builder: (context) {
-              final note = ref
-                  .watch(hiContentProvider)
-                  .value
-                  ?.noteForPhrase(o.item.textEn);
+              final hi = ref.watch(hiContentProvider).value;
+              final note =
+                  hi?.note(_speakNoteId) ?? hi?.noteForPhrase(o.item.textEn);
               if (note == null) return const SizedBox.shrink();
               return Align(
                 alignment: Alignment.centerLeft,

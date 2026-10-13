@@ -13,6 +13,8 @@ import '../../../shared/meaning/meaning_controller.dart';
 import '../../../shared/meaning/meaning_sheet.dart';
 import '../../../shared/meaning/meaning_text.dart';
 import '../../../shared/meaning/notebook_repository.dart';
+import '../../../shared/speech/speech_providers.dart';
+import '../../speak/speak_env.dart';
 import '../../hi/application/hi_providers.dart';
 import '../../hi/presentation/hi_cards.dart';
 import '../../notebook/application/deck_sync.dart';
@@ -201,7 +203,11 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen>
       _shownMeaning = m;
       WidgetsBinding.instance.addPostFrameCallback((_) {
         if (!mounted || !identical(_session.meaning, m)) return;
-        showMeaningSheet(context, m).whenComplete(() {
+        showMeaningSheet(
+          context,
+          m,
+          speak: ref.read(speechVisibleProvider) ? speakEnvOf(context) : null,
+        ).whenComplete(() {
           if (identical(_shownMeaning, m)) _shownMeaning = null;
           unawaited(_session.closeMeaning());
         });
@@ -253,6 +259,8 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen>
       onBack: _exit,
       topicSetTitle: set?.titleTr,
       topicSetIsNew: _completedBefore != true,
+      speak: ref.watch(speechVisibleProvider) ? speakEnvOf(context) : null,
+      onSpokenTarget: () => unawaited(_session.recordSpokenTargetPhrase()),
       onOpenTopicSet: set == null
           ? null
           : () {
@@ -305,6 +313,8 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen>
   @override
   Widget build(BuildContext context) {
     final s = _session;
+    // "Söyle" durumu erkenden yüklensin (anlam paneli açılırken hazır olsun).
+    ref.watch(speechVisibleProvider);
     return PopScope(
       canPop: s.phase != PlayerPhase.playing,
       onPopInvokedWithResult: (didPop, _) {
@@ -597,6 +607,10 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen>
                   ),
                 DecisionSheet(
                   node: node,
+                  speak: ref.watch(speechVisibleProvider)
+                      ? speakEnvOf(context)
+                      : null,
+                  contentId: s.contentId,
                   onChoose: (o) => s.choose(o.id),
                   onListen: s.playAudio,
                   onHint: node.hints.isEmpty ? null : () => s.requestHint(),

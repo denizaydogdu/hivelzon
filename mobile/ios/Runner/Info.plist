@@ -26,6 +26,10 @@
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Söyle alıştırmalarında İngilizceyi sesli söylediğinde mikrofon kullanılır. Sesin bu telefonda yazıya çevrilir; kaydedilmez, hiçbir yere gönderilmez.</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>Söylediğin İngilizce yalnızca bu telefonda yazıya çevrilir ve beklenen ifadeyle karşılaştırılır. Ses ve yazı saklanmaz, hiçbir yere gönderilmez.</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsLocalNetworking</key>

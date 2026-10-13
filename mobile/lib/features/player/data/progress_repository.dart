@@ -33,6 +33,11 @@ abstract interface class ProgressRepository {
 
   /// Bütün bölümlerin ilerlemesi (kaydı olmayan bölüm listede yoktur).
   Future<Map<String, StoryProgress>> loadAll();
+
+  /// Tek bir kapı ölçütünü ekler (H-055: bölüm sonunda hedef ifadeyi
+  /// söylemek `targetPhrase`'i karşılar). Var olan kaydı değiştirmez; bölüm
+  /// durumuna ve bitiş anına dokunmaz. Tekrar çağrı bir şey değiştirmez.
+  Future<void> addGateItem(String contentId, GateItem item, String nodeId);
 }
 
 /// Bellek içi ilerleme kaydı (Drift'siz testler ve [InMemoryProgressRepository]).
@@ -96,6 +101,19 @@ class InMemoryProgressRepository implements ProgressRepository {
         gateItems: {...?_rows[id]?.gate.keys},
       ),
   };
+
+  @override
+  Future<void> addGateItem(
+    String contentId,
+    GateItem item,
+    String nodeId,
+  ) async {
+    _rows
+        .putIfAbsent(contentId, _ProgressRow.new)
+        .gate
+        .putIfAbsent(item, () => {})
+        .add(nodeId);
+  }
 
   @override
   Future<void> clearCheckpoint(String contentId) async =>

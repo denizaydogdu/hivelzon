@@ -11,6 +11,7 @@ import '../../../shared/meaning/meaning_controller.dart';
 import '../../../shared/meaning/meaning_text.dart';
 import '../../../shared/meaning/notebook_repository.dart';
 import '../../../shared/perf/perf_log.dart';
+import '../../../shared/progress/story_progress.dart';
 import '../data/progress_repository.dart';
 import '../domain/episode.dart';
 import '../domain/episode_engine.dart';
@@ -941,6 +942,24 @@ class PlayerSession extends ChangeNotifier {
     _setPhase(PlayerPhase.finished);
     _log('bölüm bitti; kapı=${e.gateStatus.open}');
     _runHook('bölüm sonu', (h) => h.onEpisodeCompleted(e.episode));
+  }
+
+  /// Bölüm sonunda bir hedef ifade tam söylendi (H-055): kapının "hedef
+  /// ifade" ölçütü de karşılanır. Dokunarak yol aynen geçerlidir; söylemek
+  /// hiçbir zaman zorunlu değildir.
+  static const spokenTargetNode = 'speak#end';
+
+  Future<void> recordSpokenTargetPhrase() async {
+    try {
+      await _progress.addGateItem(
+        contentId,
+        GateItem.targetPhrase,
+        spokenTargetNode,
+      );
+      _log('hedef ifade söylendi: kapı ölçütü kaydedildi');
+    } on Object catch (e) {
+      _log('söylenen hedef ifade kaydedilemedi: $e');
+    }
   }
 
   void _runHook(String what, Future<void> Function(PlayerHooks h) run) {

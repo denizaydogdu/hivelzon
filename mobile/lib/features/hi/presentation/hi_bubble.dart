@@ -26,6 +26,10 @@ class HiBubble extends ConsumerWidget {
 
   static const double size = 64;
 
+  /// Sayfaların alttan bırakması gereken boşluk: balon (64) + alt pay (16) +
+  /// aralık (8). Bkz. `ShellScaffold`.
+  static const double clearance = size + AppSpacing.sm + AppSpacing.xs;
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final badge = ref.watch(hiBadgeProvider).value ?? false;

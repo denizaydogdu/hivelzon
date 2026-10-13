@@ -5413,6 +5413,522 @@ class HiRecordsCompanion extends UpdateCompanion<HiRecordRow> {
   }
 }
 
+class $SpeechAttemptsTable extends SpeechAttempts
+    with TableInfo<$SpeechAttemptsTable, SpeechAttemptRow> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $SpeechAttemptsTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<int> id = GeneratedColumn<int>(
+    'id',
+    aliasedName,
+    false,
+    hasAutoIncrement: true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'PRIMARY KEY AUTOINCREMENT',
+    ),
+  );
+  static const VerificationMeta _placeMeta = const VerificationMeta('place');
+  @override
+  late final GeneratedColumn<String> place = GeneratedColumn<String>(
+    'place',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _contentIdMeta = const VerificationMeta(
+    'contentId',
+  );
+  @override
+  late final GeneratedColumn<String> contentId = GeneratedColumn<String>(
+    'content_id',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _itemRefMeta = const VerificationMeta(
+    'itemRef',
+  );
+  @override
+  late final GeneratedColumn<String> itemRef = GeneratedColumn<String>(
+    'item_ref',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _matchLevelMeta = const VerificationMeta(
+    'matchLevel',
+  );
+  @override
+  late final GeneratedColumn<String> matchLevel = GeneratedColumn<String>(
+    'match_level',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _missingCountMeta = const VerificationMeta(
+    'missingCount',
+  );
+  @override
+  late final GeneratedColumn<int> missingCount = GeneratedColumn<int>(
+    'missing_count',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(0),
+  );
+  static const VerificationMeta _errorNoteIdMeta = const VerificationMeta(
+    'errorNoteId',
+  );
+  @override
+  late final GeneratedColumn<String> errorNoteId = GeneratedColumn<String>(
+    'error_note_id',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _atMeta = const VerificationMeta('at');
+  @override
+  late final GeneratedColumn<DateTime> at = GeneratedColumn<DateTime>(
+    'at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: true,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    id,
+    place,
+    contentId,
+    itemRef,
+    matchLevel,
+    missingCount,
+    errorNoteId,
+    at,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'speech_attempts';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<SpeechAttemptRow> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    }
+    if (data.containsKey('place')) {
+      context.handle(
+        _placeMeta,
+        place.isAcceptableOrUnknown(data['place']!, _placeMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_placeMeta);
+    }
+    if (data.containsKey('content_id')) {
+      context.handle(
+        _contentIdMeta,
+        contentId.isAcceptableOrUnknown(data['content_id']!, _contentIdMeta),
+      );
+    }
+    if (data.containsKey('item_ref')) {
+      context.handle(
+        _itemRefMeta,
+        itemRef.isAcceptableOrUnknown(data['item_ref']!, _itemRefMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_itemRefMeta);
+    }
+    if (data.containsKey('match_level')) {
+      context.handle(
+        _matchLevelMeta,
+        matchLevel.isAcceptableOrUnknown(data['match_level']!, _matchLevelMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_matchLevelMeta);
+    }
+    if (data.containsKey('missing_count')) {
+      context.handle(
+        _missingCountMeta,
+        missingCount.isAcceptableOrUnknown(
+          data['missing_count']!,
+          _missingCountMeta,
+        ),
+      );
+    }
+    if (data.containsKey('error_note_id')) {
+      context.handle(
+        _errorNoteIdMeta,
+        errorNoteId.isAcceptableOrUnknown(
+          data['error_note_id']!,
+          _errorNoteIdMeta,
+        ),
+      );
+    }
+    if (data.containsKey('at')) {
+      context.handle(_atMeta, at.isAcceptableOrUnknown(data['at']!, _atMeta));
+    } else if (isInserting) {
+      context.missing(_atMeta);
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  SpeechAttemptRow map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return SpeechAttemptRow(
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}id'],
+      )!,
+      place: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}place'],
+      )!,
+      contentId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}content_id'],
+      ),
+      itemRef: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}item_ref'],
+      )!,
+      matchLevel: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}match_level'],
+      )!,
+      missingCount: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}missing_count'],
+      )!,
+      errorNoteId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}error_note_id'],
+      ),
+      at: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}at'],
+      )!,
+    );
+  }
+
+  @override
+  $SpeechAttemptsTable createAlias(String alias) {
+    return $SpeechAttemptsTable(attachedDatabase, alias);
+  }
+}
+
+class SpeechAttemptRow extends DataClass
+    implements Insertable<SpeechAttemptRow> {
+  final int id;
+
+  /// `review` | `meaning` | `decision` | `episode_end`
+  final String place;
+  final String? contentId;
+
+  /// Beklenen ifade (içerikteki metin) ya da karar seçeneği (`k1#a`).
+  final String itemRef;
+
+  /// `full` | `close` | `no` (karar anında seçilemediyse `no`).
+  final String matchLevel;
+  final int missingCount;
+
+  /// Hata kataloğu kimliği (`can-short-answer` vb.).
+  final String? errorNoteId;
+  final DateTime at;
+  const SpeechAttemptRow({
+    required this.id,
+    required this.place,
+    this.contentId,
+    required this.itemRef,
+    required this.matchLevel,
+    required this.missingCount,
+    this.errorNoteId,
+    required this.at,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<int>(id);
+    map['place'] = Variable<String>(place);
+    if (!nullToAbsent || contentId != null) {
+      map['content_id'] = Variable<String>(contentId);
+    }
+    map['item_ref'] = Variable<String>(itemRef);
+    map['match_level'] = Variable<String>(matchLevel);
+    map['missing_count'] = Variable<int>(missingCount);
+    if (!nullToAbsent || errorNoteId != null) {
+      map['error_note_id'] = Variable<String>(errorNoteId);
+    }
+    map['at'] = Variable<DateTime>(at);
+    return map;
+  }
+
+  SpeechAttemptsCompanion toCompanion(bool nullToAbsent) {
+    return SpeechAttemptsCompanion(
+      id: Value(id),
+      place: Value(place),
+      contentId: contentId == null && nullToAbsent
+          ? const Value.absent()
+          : Value(contentId),
+      itemRef: Value(itemRef),
+      matchLevel: Value(matchLevel),
+      missingCount: Value(missingCount),
+      errorNoteId: errorNoteId == null && nullToAbsent
+          ? const Value.absent()
+          : Value(errorNoteId),
+      at: Value(at),
+    );
+  }
+
+  factory SpeechAttemptRow.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return SpeechAttemptRow(
+      id: serializer.fromJson<int>(json['id']),
+      place: serializer.fromJson<String>(json['place']),
+      contentId: serializer.fromJson<String?>(json['contentId']),
+      itemRef: serializer.fromJson<String>(json['itemRef']),
+      matchLevel: serializer.fromJson<String>(json['matchLevel']),
+      missingCount: serializer.fromJson<int>(json['missingCount']),
+      errorNoteId: serializer.fromJson<String?>(json['errorNoteId']),
+      at: serializer.fromJson<DateTime>(json['at']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<int>(id),
+      'place': serializer.toJson<String>(place),
+      'contentId': serializer.toJson<String?>(contentId),
+      'itemRef': serializer.toJson<String>(itemRef),
+      'matchLevel': serializer.toJson<String>(matchLevel),
+      'missingCount': serializer.toJson<int>(missingCount),
+      'errorNoteId': serializer.toJson<String?>(errorNoteId),
+      'at': serializer.toJson<DateTime>(at),
+    };
+  }
+
+  SpeechAttemptRow copyWith({
+    int? id,
+    String? place,
+    Value<String?> contentId = const Value.absent(),
+    String? itemRef,
+    String? matchLevel,
+    int? missingCount,
+    Value<String?> errorNoteId = const Value.absent(),
+    DateTime? at,
+  }) => SpeechAttemptRow(
+    id: id ?? this.id,
+    place: place ?? this.place,
+    contentId: contentId.present ? contentId.value : this.contentId,
+    itemRef: itemRef ?? this.itemRef,
+    matchLevel: matchLevel ?? this.matchLevel,
+    missingCount: missingCount ?? this.missingCount,
+    errorNoteId: errorNoteId.present ? errorNoteId.value : this.errorNoteId,
+    at: at ?? this.at,
+  );
+  SpeechAttemptRow copyWithCompanion(SpeechAttemptsCompanion data) {
+    return SpeechAttemptRow(
+      id: data.id.present ? data.id.value : this.id,
+      place: data.place.present ? data.place.value : this.place,
+      contentId: data.contentId.present ? data.contentId.value : this.contentId,
+      itemRef: data.itemRef.present ? data.itemRef.value : this.itemRef,
+      matchLevel: data.matchLevel.present
+          ? data.matchLevel.value
+          : this.matchLevel,
+      missingCount: data.missingCount.present
+          ? data.missingCount.value
+          : this.missingCount,
+      errorNoteId: data.errorNoteId.present
+          ? data.errorNoteId.value
+          : this.errorNoteId,
+      at: data.at.present ? data.at.value : this.at,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('SpeechAttemptRow(')
+          ..write('id: $id, ')
+          ..write('place: $place, ')
+          ..write('contentId: $contentId, ')
+          ..write('itemRef: $itemRef, ')
+          ..write('matchLevel: $matchLevel, ')
+          ..write('missingCount: $missingCount, ')
+          ..write('errorNoteId: $errorNoteId, ')
+          ..write('at: $at')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+    id,
+    place,
+    contentId,
+    itemRef,
+    matchLevel,
+    missingCount,
+    errorNoteId,
+    at,
+  );
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is SpeechAttemptRow &&
+          other.id == this.id &&
+          other.place == this.place &&
+          other.contentId == this.contentId &&
+          other.itemRef == this.itemRef &&
+          other.matchLevel == this.matchLevel &&
+          other.missingCount == this.missingCount &&
+          other.errorNoteId == this.errorNoteId &&
+          other.at == this.at);
+}
+
+class SpeechAttemptsCompanion extends UpdateCompanion<SpeechAttemptRow> {
+  final Value<int> id;
+  final Value<String> place;
+  final Value<String?> contentId;
+  final Value<String> itemRef;
+  final Value<String> matchLevel;
+  final Value<int> missingCount;
+  final Value<String?> errorNoteId;
+  final Value<DateTime> at;
+  const SpeechAttemptsCompanion({
+    this.id = const Value.absent(),
+    this.place = const Value.absent(),
+    this.contentId = const Value.absent(),
+    this.itemRef = const Value.absent(),
+    this.matchLevel = const Value.absent(),
+    this.missingCount = const Value.absent(),
+    this.errorNoteId = const Value.absent(),
+    this.at = const Value.absent(),
+  });
+  SpeechAttemptsCompanion.insert({
+    this.id = const Value.absent(),
+    required String place,
+    this.contentId = const Value.absent(),
+    required String itemRef,
+    required String matchLevel,
+    this.missingCount = const Value.absent(),
+    this.errorNoteId = const Value.absent(),
+    required DateTime at,
+  }) : place = Value(place),
+       itemRef = Value(itemRef),
+       matchLevel = Value(matchLevel),
+       at = Value(at);
+  static Insertable<SpeechAttemptRow> custom({
+    Expression<int>? id,
+    Expression<String>? place,
+    Expression<String>? contentId,
+    Expression<String>? itemRef,
+    Expression<String>? matchLevel,
+    Expression<int>? missingCount,
+    Expression<String>? errorNoteId,
+    Expression<DateTime>? at,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (place != null) 'place': place,
+      if (contentId != null) 'content_id': contentId,
+      if (itemRef != null) 'item_ref': itemRef,
+      if (matchLevel != null) 'match_level': matchLevel,
+      if (missingCount != null) 'missing_count': missingCount,
+      if (errorNoteId != null) 'error_note_id': errorNoteId,
+      if (at != null) 'at': at,
+    });
+  }
+
+  SpeechAttemptsCompanion copyWith({
+    Value<int>? id,
+    Value<String>? place,
+    Value<String?>? contentId,
+    Value<String>? itemRef,
+    Value<String>? matchLevel,
+    Value<int>? missingCount,
+    Value<String?>? errorNoteId,
+    Value<DateTime>? at,
+  }) {
+    return SpeechAttemptsCompanion(
+      id: id ?? this.id,
+      place: place ?? this.place,
+      contentId: contentId ?? this.contentId,
+      itemRef: itemRef ?? this.itemRef,
+      matchLevel: matchLevel ?? this.matchLevel,
+      missingCount: missingCount ?? this.missingCount,
+      errorNoteId: errorNoteId ?? this.errorNoteId,
+      at: at ?? this.at,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<int>(id.value);
+    }
+    if (place.present) {
+      map['place'] = Variable<String>(place.value);
+    }
+    if (contentId.present) {
+      map['content_id'] = Variable<String>(contentId.value);
+    }
+    if (itemRef.present) {
+      map['item_ref'] = Variable<String>(itemRef.value);
+    }
+    if (matchLevel.present) {
+      map['match_level'] = Variable<String>(matchLevel.value);
+    }
+    if (missingCount.present) {
+      map['missing_count'] = Variable<int>(missingCount.value);
+    }
+    if (errorNoteId.present) {
+      map['error_note_id'] = Variable<String>(errorNoteId.value);
+    }
+    if (at.present) {
+      map['at'] = Variable<DateTime>(at.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('SpeechAttemptsCompanion(')
+          ..write('id: $id, ')
+          ..write('place: $place, ')
+          ..write('contentId: $contentId, ')
+          ..write('itemRef: $itemRef, ')
+          ..write('matchLevel: $matchLevel, ')
+          ..write('missingCount: $missingCount, ')
+          ..write('errorNoteId: $errorNoteId, ')
+          ..write('at: $at')
+          ..write(')'))
+        .toString();
+  }
+}
+
 abstract class _$AppDatabase extends GeneratedDatabase {
   _$AppDatabase(QueryExecutor e) : super(e);
   $AppDatabaseManager get managers => $AppDatabaseManager(this);
@@ -5429,6 +5945,7 @@ abstract class _$AppDatabase extends GeneratedDatabase {
   late final $CluesTable clues = $CluesTable(this);
   late final $StoryLinksTable storyLinks = $StoryLinksTable(this);
   late final $HiRecordsTable hiRecords = $HiRecordsTable(this);
+  late final $SpeechAttemptsTable speechAttempts = $SpeechAttemptsTable(this);
   @override
   Iterable<TableInfo<Table, Object?>> get allTables =>
       allSchemaEntities.whereType<TableInfo<Table, Object?>>();
@@ -5446,6 +5963,7 @@ abstract class _$AppDatabase extends GeneratedDatabase {
     clues,
     storyLinks,
     hiRecords,
+    speechAttempts,
   ];
   @override
   StreamQueryUpdateRules get streamUpdateRules => const StreamQueryUpdateRules([
@@ -8693,6 +9211,269 @@ typedef $$HiRecordsTableProcessedTableManager =
       HiRecordRow,
       PrefetchHooks Function()
     >;
+typedef $$SpeechAttemptsTableCreateCompanionBuilder =
+    SpeechAttemptsCompanion Function({
+      Value<int> id,
+      required String place,
+      Value<String?> contentId,
+      required String itemRef,
+      required String matchLevel,
+      Value<int> missingCount,
+      Value<String?> errorNoteId,
+      required DateTime at,
+    });
+typedef $$SpeechAttemptsTableUpdateCompanionBuilder =
+    SpeechAttemptsCompanion Function({
+      Value<int> id,
+      Value<String> place,
+      Value<String?> contentId,
+      Value<String> itemRef,
+      Value<String> matchLevel,
+      Value<int> missingCount,
+      Value<String?> errorNoteId,
+      Value<DateTime> at,
+    });
+
+class $$SpeechAttemptsTableFilterComposer
+    extends Composer<_$AppDatabase, $SpeechAttemptsTable> {
+  $$SpeechAttemptsTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<int> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get place => $composableBuilder(
+    column: $table.place,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get contentId => $composableBuilder(
+    column: $table.contentId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get itemRef => $composableBuilder(
+    column: $table.itemRef,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get matchLevel => $composableBuilder(
+    column: $table.matchLevel,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get missingCount => $composableBuilder(
+    column: $table.missingCount,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get errorNoteId => $composableBuilder(
+    column: $table.errorNoteId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get at => $composableBuilder(
+    column: $table.at,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$SpeechAttemptsTableOrderingComposer
+    extends Composer<_$AppDatabase, $SpeechAttemptsTable> {
+  $$SpeechAttemptsTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<int> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get place => $composableBuilder(
+    column: $table.place,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get contentId => $composableBuilder(
+    column: $table.contentId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get itemRef => $composableBuilder(
+    column: $table.itemRef,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get matchLevel => $composableBuilder(
+    column: $table.matchLevel,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get missingCount => $composableBuilder(
+    column: $table.missingCount,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get errorNoteId => $composableBuilder(
+    column: $table.errorNoteId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get at => $composableBuilder(
+    column: $table.at,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$SpeechAttemptsTableAnnotationComposer
+    extends Composer<_$AppDatabase, $SpeechAttemptsTable> {
+  $$SpeechAttemptsTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<int> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get place =>
+      $composableBuilder(column: $table.place, builder: (column) => column);
+
+  GeneratedColumn<String> get contentId =>
+      $composableBuilder(column: $table.contentId, builder: (column) => column);
+
+  GeneratedColumn<String> get itemRef =>
+      $composableBuilder(column: $table.itemRef, builder: (column) => column);
+
+  GeneratedColumn<String> get matchLevel => $composableBuilder(
+    column: $table.matchLevel,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get missingCount => $composableBuilder(
+    column: $table.missingCount,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get errorNoteId => $composableBuilder(
+    column: $table.errorNoteId,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<DateTime> get at =>
+      $composableBuilder(column: $table.at, builder: (column) => column);
+}
+
+class $$SpeechAttemptsTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $SpeechAttemptsTable,
+          SpeechAttemptRow,
+          $$SpeechAttemptsTableFilterComposer,
+          $$SpeechAttemptsTableOrderingComposer,
+          $$SpeechAttemptsTableAnnotationComposer,
+          $$SpeechAttemptsTableCreateCompanionBuilder,
+          $$SpeechAttemptsTableUpdateCompanionBuilder,
+          (
+            SpeechAttemptRow,
+            BaseReferences<
+              _$AppDatabase,
+              $SpeechAttemptsTable,
+              SpeechAttemptRow
+            >,
+          ),
+          SpeechAttemptRow,
+          PrefetchHooks Function()
+        > {
+  $$SpeechAttemptsTableTableManager(
+    _$AppDatabase db,
+    $SpeechAttemptsTable table,
+  ) : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$SpeechAttemptsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$SpeechAttemptsTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$SpeechAttemptsTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<int> id = const Value.absent(),
+                Value<String> place = const Value.absent(),
+                Value<String?> contentId = const Value.absent(),
+                Value<String> itemRef = const Value.absent(),
+                Value<String> matchLevel = const Value.absent(),
+                Value<int> missingCount = const Value.absent(),
+                Value<String?> errorNoteId = const Value.absent(),
+                Value<DateTime> at = const Value.absent(),
+              }) => SpeechAttemptsCompanion(
+                id: id,
+                place: place,
+                contentId: contentId,
+                itemRef: itemRef,
+                matchLevel: matchLevel,
+                missingCount: missingCount,
+                errorNoteId: errorNoteId,
+                at: at,
+              ),
+          createCompanionCallback:
+              ({
+                Value<int> id = const Value.absent(),
+                required String place,
+                Value<String?> contentId = const Value.absent(),
+                required String itemRef,
+                required String matchLevel,
+                Value<int> missingCount = const Value.absent(),
+                Value<String?> errorNoteId = const Value.absent(),
+                required DateTime at,
+              }) => SpeechAttemptsCompanion.insert(
+                id: id,
+                place: place,
+                contentId: contentId,
+                itemRef: itemRef,
+                matchLevel: matchLevel,
+                missingCount: missingCount,
+                errorNoteId: errorNoteId,
+                at: at,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$SpeechAttemptsTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $SpeechAttemptsTable,
+      SpeechAttemptRow,
+      $$SpeechAttemptsTableFilterComposer,
+      $$SpeechAttemptsTableOrderingComposer,
+      $$SpeechAttemptsTableAnnotationComposer,
+      $$SpeechAttemptsTableCreateCompanionBuilder,
+      $$SpeechAttemptsTableUpdateCompanionBuilder,
+      (
+        SpeechAttemptRow,
+        BaseReferences<_$AppDatabase, $SpeechAttemptsTable, SpeechAttemptRow>,
+      ),
+      SpeechAttemptRow,
+      PrefetchHooks Function()
+    >;
 
 class $AppDatabaseManager {
   final _$AppDatabase _db;
@@ -8721,4 +9502,6 @@ class $AppDatabaseManager {
       $$StoryLinksTableTableManager(_db, _db.storyLinks);
   $$HiRecordsTableTableManager get hiRecords =>
       $$HiRecordsTableTableManager(_db, _db.hiRecords);
+  $$SpeechAttemptsTableTableManager get speechAttempts =>
+      $$SpeechAttemptsTableTableManager(_db, _db.speechAttempts);
 }

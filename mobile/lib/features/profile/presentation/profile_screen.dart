@@ -10,6 +10,7 @@ import '../../hi/application/hi_providers.dart';
 import '../../hi/presentation/hi_privacy_screen.dart';
 import '../../notebook/application/notebook_providers.dart';
 import '../../notebook/domain/review_policy.dart';
+import '../../speak/speech_settings_section.dart';
 import '../application/profile_providers.dart';
 import '../data/user_profile_store.dart';
 
@@ -34,13 +35,8 @@ class ProfileScreen extends ConsumerWidget {
     return Scaffold(
       body: SafeArea(
         child: ListView(
-          // Alt boşluk: sağ alttaki Hi balonu son öğeyi örtmesin (H-048).
-          padding: const EdgeInsets.fromLTRB(
-            AppSpacing.sm,
-            AppSpacing.sm,
-            AppSpacing.sm,
-            AppSpacing.sm + 80,
-          ),
+          // Hi balonunun payı alt güvenli alanda (ShellScaffold, H-055).
+          padding: const EdgeInsets.all(AppSpacing.sm),
           children: [
             const PageHeader(
               title: ProfileTexts.title,
@@ -112,6 +108,8 @@ class ProfileScreen extends ConsumerWidget {
               ProfileTexts.goalNote(ReviewPolicy.newCardsPerDay(minutes)),
               style: theme.textTheme.bodyMedium,
             ),
+            // H-055: aç/kapat ve gizlilik (destek yoksa nedeni).
+            const SpeechSettingsSection(),
           ],
         ),
       ),

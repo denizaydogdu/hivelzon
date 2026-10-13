@@ -20,7 +20,8 @@ class WeeklySummary {
   final int phrasesReviewed;
   final int episodesCompleted;
 
-  /// En çok yeniden denenen hata türü (yoksa null).
+  /// En çok yeniden denenen **dil konusu** (yoksa null). "Hatırlama" ve
+  /// "Diğer" konu değildir; sayılmaz ([kNonTopicErrorTypes]).
   final ErrorType? focus;
 
   bool get isEmpty =>
@@ -29,6 +30,11 @@ class WeeklySummary {
       episodesCompleted == 0 &&
       focus == null;
 }
+
+/// Haftalık özette "en çok çalışılan konu" sayılmayan türler (H-055 ile
+/// düzeltildi): tekrar kartını hatırlayamamak ve sınıflanmamış hata bir dil
+/// konusu değildir.
+const Set<ErrorType> kNonTopicErrorTypes = {ErrorType.recall, ErrorType.other};
 
 /// [itemCreatedAt]: defter ifadelerinin eklenme anı; [reviews]: (kart, an);
 /// [completedAt]: bölüm bitiş anları. Hepsi UTC; pencere `[now-7g, now]`.
@@ -44,7 +50,7 @@ WeeklySummary computeWeeklySummary({
   final counts = <ErrorType, int>{};
   final last = <ErrorType, DateTime>{};
   for (final e in errors) {
-    if (!inWindow(e.at) || e.type == ErrorType.other) continue;
+    if (!inWindow(e.at) || kNonTopicErrorTypes.contains(e.type)) continue;
     counts[e.type] = (counts[e.type] ?? 0) + 1;
     final l = last[e.type];
     if (l == null || e.at.isAfter(l)) last[e.type] = e.at;

@@ -3,15 +3,21 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 import '../../app/theme.dart';
+import '../../l10n/tr_strings.dart';
+import '../speech/speak_widgets.dart';
+import '../speech/speech_store.dart';
 import 'meaning_controller.dart';
 import 'meaning_text.dart';
 
 /// Anlam panelini alttan açar. Panel kapanınca (sürükleyerek, dışına dokunarak
 /// ya da "Kapat" ile) dönen Future tamamlanır.
+///
+/// [speak]: cihazda tanıma varsa "Sen de söyle" (H-055); yoksa düğme yok.
 Future<void> showMeaningSheet(
   BuildContext context,
-  MeaningController controller,
-) {
+  MeaningController controller, {
+  SpeakEnv? speak,
+}) {
   return showModalBottomSheet<void>(
     context: context,
     isScrollControlled: true,
@@ -33,7 +39,11 @@ Future<void> showMeaningSheet(
         // Onay mesajı panelin içinde görünür (alttaki oynatıcıda değil).
         child: Scaffold(
           backgroundColor: AppColors.sand,
-          body: MeaningSheet(controller: controller, scrollController: scroll),
+          body: MeaningSheet(
+            controller: controller,
+            scrollController: scroll,
+            speak: speak,
+          ),
         ),
       ),
     ),
@@ -46,10 +56,14 @@ class MeaningSheet extends StatelessWidget {
     super.key,
     required this.controller,
     this.scrollController,
+    this.speak,
   });
 
   final MeaningController controller;
   final ScrollController? scrollController;
+
+  /// "Sen de söyle" (H-055); null: gösterilmez.
+  final SpeakEnv? speak;
 
   @override
   Widget build(BuildContext context) {
@@ -136,7 +150,7 @@ class MeaningSheet extends StatelessWidget {
                   AppSpacing.sm,
                   AppSpacing.sm,
                 ),
-                child: _Actions(controller: c),
+                child: _Actions(controller: c, speak: speak),
               ),
             ),
           ],
@@ -447,9 +461,10 @@ class _TurkishStep extends StatelessWidget {
 }
 
 class _Actions extends StatelessWidget {
-  const _Actions({required this.controller});
+  const _Actions({required this.controller, this.speak});
 
   final MeaningController controller;
+  final SpeakEnv? speak;
 
   @override
   Widget build(BuildContext context) {
@@ -504,6 +519,20 @@ class _Actions extends StatelessWidget {
             ),
           ],
         ),
+        // "Sen de söyle" (H-055): dinlediğini söyle; puan yok, tekrar
+        // takvimine işlenmez (yalnızca sonuç kaydı).
+        if (speak != null) ...[
+          const SizedBox(height: AppSpacing.xs),
+          SpeakPractice(
+            key: ValueKey('meaning-speak-${c.text.sourceId}'),
+            expected: c.text.en,
+            env: speak!,
+            place: SpeechPlace.meaning,
+            contentId: c.text.contentId,
+            label: SpeakTexts.meaningSay,
+            keyPrefix: 'meaning-speak',
+          ),
+        ],
         const SizedBox(height: AppSpacing.xs),
         OutlinedButton.icon(
           key: const ValueKey('meaning-save'),

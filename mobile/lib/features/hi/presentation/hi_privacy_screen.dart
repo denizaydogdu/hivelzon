@@ -104,6 +104,15 @@ class HiPrivacyScreen extends ConsumerWidget {
                 value: _errorLines(value.errorCounts),
               ),
               _Row(
+                key: const ValueKey('hi-privacy-speech'),
+                icon: Icons.mic_none_rounded,
+                title: SpeakTexts.privacyRow,
+                value: SpeakTexts.privacyValue(
+                  value.speechAttempts,
+                  value.speechFull,
+                ),
+              ),
+              _Row(
                 icon: Icons.calendar_today_outlined,
                 title: HiTexts.privacyWeek,
                 value: _weekText(week),

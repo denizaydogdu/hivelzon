@@ -250,3 +250,20 @@ Kod: `HiTexts` (`mobile/lib/l10n/tr_strings.dart`). Hi kendini yapay zekâ asist
 | Gizlilik ekranı | Giriş: "Hi önerilerini yalnızca bu cihazdaki kayıtlara bakarak seçer. Bu bilgiler sunucuya gönderilmez ve reklam için kullanılmaz." · Adın · Hikâye ilerlemen · Defterin · Hi'nin öğrenme kayıtları ("6 kez bir kelimenin anlamına baktın; 4 kez bir seçimi yeniden denedin.") · Konulara göre yeniden denemeler · Son 7 gün · Yan görevler · **Hi'nin kayıtlarını sil** | Onay: "Hi'nin kayıtları silinsin mi?" · **Vazgeç** / **Sil** · sonra "Hi'nin kayıtları silindi. İlerlemen ve defterin yerinde." Silinen: öğrenme olayları, yan görev durumları, açılan notlar. Kalan: ilerleme, defter, tekrar geçmişi, ad, görülen konu kartları. |
 
 Testler: `test/features/hi/` (öneri öncelik tablosu ve gerekçeler, metin denetim listesi, arama, haftalık özet, Drift kayıtları ve silme kapsamı, balon görünürlüğü, panel, konu kartı).
+
+## 11. "Söyle" alıştırmaları (H-055)
+
+Kod: `SpeakTexts` (`mobile/lib/l10n/tr_strings.dart`). Puan, yüzde, dalga biçimi ve "yanlış" yok; en çok 2 deneme, sonra metin gösterilir; "Geç" hep var. Cihazda tanıma yoksa ya da izin kapalıysa hiçbir "Söyle" düğmesi görünmez.
+
+| Yer | Metin | Not |
+|---|---|---|
+| Düğmeler | **Söyle** → **Bir daha söyle**; dinlerken **Bitirdim** + "Dinliyorum… Söyleyince biraz bekle." | Fiil. |
+| Geri bildirim | "Söyledin!" · "Neredeyse! Şu kelimeyi duyamadım: hear" · "Şu kelimeleri duyamadım: excuse, me. Bir daha dene." · "Seni duyamadım. Bir daha dene." · 2 denemeden sonra "Sorun değil. İfade şöyle:" + ifade · tipik hata tanınırsa **Neden böyle?** (Hi'nin notu) | Duyulmayan kelime asıl yazımıyla. |
+| Kelime tekrarı | Görev: "Dinle ve söyle." · "Dinle, sonra mikrofona dokunup İngilizcesini söyle." · yakın sonuçta **Devam et** · **Bilmiyorum** · **Geç** · başlık "Söyledin!" / "Neredeyse!" | İngilizce metin önce gizli. |
+| Anlam paneli | **Sen de söyle** | "Tekrar dinle"nin altında. |
+| Karar anı | **Söyleyerek seç** · "Seni tam duyamadım. İstersen dokunarak seç." · iki denemeden sonra "Dokunarak seçebilirsin." | Yalnızca seçenekler İngilizceyse. |
+| Bölüm sonu | **HEDEF İFADELERİ SÖYLE** · "İstersen bu bölümün ifadelerini bir kez de sen söyle. İsteğe bağlı." | |
+| İzin öncesi | **Söyle alıştırmaları** · "Sesin bu telefonda yazıya çevrilir; kaydedilmez, hiçbir yere gönderilmez. Söylediğinin yazısı da saklanmaz; yalnızca "söyledin" ya da "bir daha dene" sonucu bu cihazda kalır." · "Şimdi telefonun mikrofon ve konuşma tanıma iznini soracak." · **Devam et** / **Şimdi değil** · reddedilirse "İzin verilmedi. Her şey dokunarak çalışmaya devam eder." | |
+| Profil | **Söyle alıştırmaları** · anahtar "Söyle alıştırmalarını göster" + açıklama · gizlilik satırı · desteklenmiyorsa / izin kapalıysa nedeni | |
+| Hi benim hakkımda ne biliyor? | "3 kez söyledin; 2 tanesinde ifadenin tamamı duyuldu. Yalnızca bu sonuç saklanır; sesin ve söylediklerinin yazısı saklanmaz." | "Hi'nin kayıtlarını sil" bunları da siler. |
+| iOS izin metinleri (Info.plist) | Mikrofon: "Söyle alıştırmalarında İngilizceyi sesli söylediğinde mikrofon kullanılır. …" · Konuşma tanıma: "Söylediğin İngilizce yalnızca bu telefonda yazıya çevrilir …" | |

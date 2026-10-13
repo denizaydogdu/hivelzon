@@ -28,6 +28,8 @@ class HiKnowledge {
     required this.reviewAnswers,
     required this.completedEpisodes,
     required this.inProgressEpisodes,
+    this.speechAttempts = 0,
+    this.speechFull = 0,
   });
 
   /// Anlamına bakılan kelime sayısı (hata olmayan olaylar).
@@ -42,6 +44,10 @@ class HiKnowledge {
   final int reviewAnswers;
   final int completedEpisodes;
   final int inProgressEpisodes;
+
+  /// "Söyle" denemeleri (H-055; yalnızca sonuç saklanır) ve tam eşleşenler.
+  final int speechAttempts;
+  final int speechFull;
 }
 
 /// Hi-A'nın yerel kayıtları (H-048; Drift `hi_records`, `app_meta`) ve
@@ -212,7 +218,10 @@ class HiStore {
     final progress = await _db.select(_db.userStoryProgress).get();
     final items = await _db.select(_db.notebookItems).get();
     final logs = await _db.select(_db.reviewLogs).get();
+    final speech = await _db.select(_db.speechAttempts).get();
     return HiKnowledge(
+      speechAttempts: speech.length,
+      speechFull: speech.where((r) => r.matchLevel == 'full').length,
       lookups: lookups,
       errors: events.length - lookups,
       errorCounts: counts,
@@ -231,13 +240,14 @@ class HiStore {
 
   // ------------------------------------------------------------ silme
 
-  /// "Hi'nin kayıtlarını sil": öğrenme olayları, yan görev durumları, açılan
-  /// notlar ve panel işareti. İlerleme, defter, tekrar geçmişi, ad ve görülen
+  /// "Hi'nin kayıtlarını sil": öğrenme olayları, "Söyle" sonuçları (H-055),
+  /// yan görev durumları, açılan notlar ve panel işareti. İlerleme, defter, tekrar geçmişi, ad ve görülen
   /// konu tanıtımları **silinmez**.
   Future<int> deleteLearningData() async {
     await _ready;
     return _db.transaction(() async {
       final events = await _db.delete(_db.learningEvents).go();
+      final speech = await _db.delete(_db.speechAttempts).go();
       final records =
           await (_db.delete(_db.hiRecords)..where(
                 (t) => t.kind.isIn([
@@ -249,7 +259,7 @@ class HiStore {
       await (_db.delete(
         _db.appMeta,
       )..where((t) => t.key.equals(panelOpenedKey))).go();
-      return events + records;
+      return events + speech + records;
     });
   }
 }

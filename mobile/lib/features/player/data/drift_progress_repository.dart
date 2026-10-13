@@ -156,6 +156,26 @@ class DriftProgressRepository implements ProgressRepository {
   }
 
   @override
+  Future<void> addGateItem(
+    String contentId,
+    GateItem item,
+    String nodeId,
+  ) async {
+    await _ready;
+    await _db
+        .into(_db.gateProgress)
+        .insert(
+          GateProgressCompanion.insert(
+            contentId: contentId,
+            itemKind: item.code,
+            nodeId: nodeId,
+            recordedAt: _now(),
+          ),
+          mode: InsertMode.insertOrIgnore,
+        );
+  }
+
+  @override
   Future<Map<String, StoryProgress>> loadAll() async {
     await _ready;
     final rows = await _db.select(_db.userStoryProgress).get();

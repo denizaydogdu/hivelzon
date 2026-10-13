@@ -21,11 +21,31 @@ class ShellScaffold extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bubble = hiBubbleVisibleFor(location);
     return Scaffold(
       body: Stack(
         children: [
-          Positioned.fill(child: navigationShell),
-          if (hiBubbleVisibleFor(location))
+          // H-055 (H-048 düzeltmesi): balon kart içeriğini örtmesin. Balon
+          // görünürken sayfaların alt güvenli alanı balonun yüksekliği kadar
+          // büyür; SafeArea kullanan sayfalarda (Ana Sayfa, Hikâye, Profil,
+          // yer tutucular) son kart ve odak kartı balonun üstünde biter.
+          Positioned.fill(
+            child: Builder(
+              builder: (context) {
+                if (!bubble) return navigationShell;
+                final mq = MediaQuery.of(context);
+                return MediaQuery(
+                  data: mq.copyWith(
+                    padding: mq.padding.copyWith(
+                      bottom: mq.padding.bottom + HiBubble.clearance,
+                    ),
+                  ),
+                  child: navigationShell,
+                );
+              },
+            ),
+          ),
+          if (bubble)
             const Positioned(
               right: AppSpacing.sm,
               bottom: AppSpacing.sm,
