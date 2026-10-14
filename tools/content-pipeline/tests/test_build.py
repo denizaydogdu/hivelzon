@@ -68,6 +68,27 @@ def test_speaker_from_manifest_and_filename(tmp_path):
         e.speaker_for(ep / "audio", "zzz_01")
 
 
+def test_missing_audio_estimated_from_manifest(tmp_path):
+    """H-085: İngilizce ses henüz yokken kuru derleme, audio_manifest.json metninden tahmini hizalama kullanır."""
+    import shutil
+    ep = tmp_path / "ep-good"
+    shutil.copytree(FX / "ep-good", ep)
+    for f in ("b2_05_maya.align.json", "b2_06_alex.align.json"):
+        shutil.copy(FX / f, tmp_path / f)
+    k = json.loads((ep / "kurgu.json").read_text(encoding="utf-8"))
+    k["nodes"][1]["shots"][1] = {"image": "images/none.png", "audio": ["x_07_jordan"]}
+    (ep / "kurgu.json").write_text(json.dumps(k), encoding="utf-8")
+    (ep / "audio_manifest.json").write_text('{"JORDAN|Hello! Is that a radio?": "x_07_jordan"}', encoding="utf-8")
+    doc, b = build_dry(ep)
+    assert b.ep.estimated == ["x_07_jordan"]
+    cues = b.subs["subs/s01.en.json"]["cues"]
+    assert cues[-1]["speaker"] == "JORDAN" and cues[-1]["text"] == "Hello! Is that a radio?"
+    # Manifestte de yoksa eskisi gibi hata
+    (ep / "audio_manifest.json").write_text("{}", encoding="utf-8")
+    with pytest.raises(FileNotFoundError):
+        build_dry(ep)
+
+
 def test_measure_onset_finds_rise_near_expected():
     env = [0.0] * 300 + [1000.0] * 50 + [0.0] * 100
     assert measure_onset(env, 3.1) == pytest.approx(3.0)

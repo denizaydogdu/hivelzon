@@ -276,6 +276,11 @@ $P tools/content-pipeline/tts_episode_tr.py icerik/A1-002-* --only b2_17_hi --co
 - `b` kipi: Türkçe parçalar ve İngilizce ifadeler ayrı üretilir; baş/son sessizlikleri kırpılır, İngilizce parçalar Türkçe parçaların ses düzeyine getirilir, 0,15 sn boşlukla birleştirilir, bütün -16 LUFS'a getirilir. Yalnız noktalama olan parça (`{at}: {at seven.}` → `:`) seslendirilmez, hizalamada sıfır sürelidir.
 - İdempotent: anahtar = parçaların (metin + ses + model + üslup + söyleniş) anahtarları + boşluk + birleştirme sürümü. Ödenmiş ham çıktı `audio/_raw/` (git dışı); aynı İngilizce ifade bir kez ücretlenir. Eski ElevenLabs Türkçe sesleri silinmez, `audio/_raw/elevenlabs/`e kopyalanır.
 - Her çağrı bölümün `PROMPTS.md`'sine yazılır (Hi verisi: `_evren/hi-ses/PROMPTS.md`).
+- `--tr-only` (H-085): ElevenLabs çağrılmaz. Saf Türkçe sesler kurulur; `{…}` içeren satırların Türkçe parçaları ödenip `_raw/`'a alınır, satır İngilizce parçası gelince (bayraksız çalıştırma) yeniden Alania ücreti olmadan birleşir.
+
+**İngilizce replikler (H-085):** `tts_episode_en.py <bölüm>` (kuru çalışma varsayılan) `audio_manifest.json`'daki İngilizce satırları `_evren/sesler.json` → `episodeEnglish.voices` eşlemesiyle ElevenLabs'e (eleven_v3, hız 0.9) gönderir; `--execute` için `--cap` ve `--ledger` zorunlu, sesi tanımsız konuşmacı varsa çağrı yapılmaz. Çıktı `audio/<kimlik>.mp3` + `.align.json`; kayıt `PROMPTS.md`. Adım adım üretim: `docs/BOLUM-URETIM-REHBERI.md`.
+
+**Ses yokken kuru derleme (H-085):** `kurgu.json`'daki bir sesin hizalaması yoksa ama `audio_manifest.json`'da metni varsa, kuru derleme (lint) süreyi metinden tahmin eder (≈ 12 karakter/sn) ve `missing-audio` uyarısı verir. Altyazı ipucu metinleri gerçek sesle aynıdır, böylece `ceviri.tr.json` ses gelmeden yazılabilir. Paket üretimi tahmini sesi kullanmaz.
 
 ### content-lint kuralları
 
@@ -301,6 +306,7 @@ $P tools/content-pipeline/tts_episode_tr.py icerik/A1-002-* --only b2_17_hi --co
 | `gate` | Kapı ölçütlerindeki düğümler var ve ulaşılabilir | Hata |
 | `chain` | Açılan bölüm sorusu en geç 3 bölümde kapanır; aynı anda en fazla 2 bölüm sorusu açık (sezon ve seri soruları hariç) | Hata |
 | `missing-file` | Pakette `scenes.json`'ın andığı dosya var | Hata |
+| `missing-audio` | (H-085) Kurgudaki replik sesi henüz yok; süre `audio_manifest.json` metninden tahmin edildi | Uyarı |
 | `tr-voice` | (H-083, `_evren/sesler.json` varsa) Türkçe ses metni güncel değil ya da `{…}` işareti bozuk: hata. Türkçe ses yok, Alania dışı ses (ör. eski ElevenLabs), Duyu hizalaması zayıf, ses var ama `kurgu.json`'da `audio` yok, işaretlenmemiş İngilizce şüphesi: uyarı. Hi verisinde `audio` var ama hizalama yok: hata. | Hata / uyarı |
 | `translation` | `ceviri.tr.json` varsa: her altyazı ipucunun çeviri satırı ve her kelimenin (özel ad hariç) anlamı var. Kart, karar repliği ve görev kökünde eksik çeviri ya da cümlede bulunamayan kalıp uyarıdır. Dosya yoksa "çeviri yok", durum `APPROVED` değilse durum uyarısı. | Hata / uyarı |
 

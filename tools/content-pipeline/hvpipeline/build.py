@@ -43,6 +43,13 @@ class AudioItem:
     align: Path
     speaker: str
     radio: bool = False
+    # Ses henüz üretilmediyse (H-085) kuru derleme için metinden tahmini hizalama; paket üretimi bunu kullanmaz.
+    estimated: Alignment | None = None
+
+    def alignment(self) -> Alignment:
+        if self.estimated is not None and not self.align.exists():
+            return self.estimated
+        return Alignment.load(self.align)
 
 
 @dataclass
@@ -79,6 +86,8 @@ class Episode:
         kp = self.dir / KURGU_FILE
         self.kurgu = json.loads(kp.read_text(encoding="utf-8")) if kp.exists() else None
         self._manifests: dict[Path, dict[str, str]] = {}
+        self._texts: dict[Path, dict[str, str]] = {}
+        self.estimated: list[str] = []   # sesi olmayıp tahmini hizalamayla planlanan kimlikler (H-085)
 
     @property
     def id(self) -> str:
@@ -100,6 +109,17 @@ class Episode:
                 return SPEAKER_TOKENS[tok]
         raise BuildError(f"{stem}: konuşmacı bulunamadı (audio_manifest.json ya da dosya adı)")
 
+    def text_for(self, audio_dir: Path, stem: str) -> str | None:
+        """audio_manifest.json'daki replik metni (ses kimliğinden)."""
+        if audio_dir not in self._texts:
+            mp = audio_dir.parent / "audio_manifest.json"
+            rev = {}
+            if mp.exists():
+                for k, v in json.loads(mp.read_text(encoding="utf-8")).items():
+                    rev[v] = k.split("|", 1)[1].strip() if "|" in k else k
+            self._texts[audio_dir] = rev
+        return self._texts[audio_dir].get(stem)
+
     def audio_item(self, ref) -> AudioItem:
         if isinstance(ref, str):
             ref = {"id": ref}
@@ -112,10 +132,30 @@ class Episode:
         align = base.with_suffix(".align.json")
         speaker = ref.get("speaker") or self.speaker_for(base.parent, base.name)
         key = f"{base.parent.parent.name[:6]}_{base.name}" + ("_telsiz" if radio else "")
-        return AudioItem(key, mp3, align, speaker, radio)
+        estimated = None
+        if not align.exists():
+            text = self.text_for(base.parent, base.name)
+            if text:
+                estimated = estimate_alignment(text)
+                if base.name not in self.estimated:
+                    self.estimated.append(base.name)
+        return AudioItem(key, mp3, align, speaker, radio, estimated)
 
     def image(self, rel: str) -> Path:
         return (self.dir / rel).resolve()
+
+
+EST_CHARS_PER_SEC = 12.0   # A1 replikleri, eleven_v3 hız 0.9: B1–B4 ölçümü ≈ 11,7–12,2 karakter/sn
+
+
+def estimate_alignment(text: str) -> Alignment:
+    """Ses yokken (ör. İngilizce TTS kotası bitti) kuru derleme için eşit aralıklı tahmini hizalama.
+    Altyazı ipucu metinleri gerçek sesle aynı çıkar (bölme yalnızca karakterlere bağlı); süreler tahminidir."""
+    step = 1.0 / EST_CHARS_PER_SEC
+    chars = list(text)
+    starts = [round(i * step, 4) for i in range(len(chars))]
+    ends = [round((i + 1) * step, 4) for i in range(len(chars))]
+    return Alignment(chars, starts, ends)
 
 
 class DryMedia:
@@ -123,7 +163,7 @@ class DryMedia:
     dry = True
 
     def item_duration(self, item: AudioItem) -> float:
-        return Alignment.load(item.align).end + 0.25
+        return item.alignment().end + 0.25
 
     def shot_audio(self, ep: Episode, shot: ShotPlan, seg_id: str, k: int) -> tuple[Path | None, float, float]:
         if not shot.items:
@@ -240,7 +280,7 @@ class Builder:
             if sh.items and sh.subtitles:
                 durs = [self._item_dur(i) for i in sh.items]
                 atempo = sh.atempo or 1.0
-                parts = merge_parts([(i.speaker, Alignment.load(i.align), d) for i, d in zip(sh.items, durs)], sh.gap)
+                parts = merge_parts([(i.speaker, i.alignment(), d) for i, d in zip(sh.items, durs)], sh.gap)
                 for p in parts:
                     p.align = p.align.scaled(atempo)
                 cues = shot_cues(parts, lead=sh.lead)

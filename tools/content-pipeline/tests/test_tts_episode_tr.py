@@ -242,6 +242,27 @@ def test_en_cap_blocks_before_any_call(root, tmp_path, monkeypatch, capsys):
     assert fc.speech_calls == [] and "tavan" in capsys.readouterr().err
 
 
+def test_tr_only_never_calls_elevenlabs_and_caches_turkish_parts(root, tmp_path, monkeypatch, capsys):
+    """H-085: İngilizce kota bitince --tr-only; saf Türkçe sesler kurulur, karışık satır bekler."""
+    monkeypatch.setenv(tr.ENV_CAP, "100000")
+    monkeypatch.setenv(tr.ENV_LEDGER, str(tmp_path / "tr-ledger.json"))
+    epd = root / "A1-901-test"
+    fc = FakeClient()
+
+    def boom_en(*a):
+        raise AssertionError("--tr-only ile ElevenLabs çağrılmamalı")
+    assert run(root, epd, fc, boom_en, "--execute", "--tr-only", "--en-cap", "1") == 0
+    out = capsys.readouterr().out
+    assert "İngilizce parça bekleniyor" in out
+    assert (epd / "audio" / "tr_c-alex.mp3").exists() and not (epd / "audio" / "tr_r-k1-b.mp3").exists()
+    # karışık satırın Türkçe parçası ödendi ve önbellekte; sonraki tam çalıştırmada yeniden istenmez
+    n_tr = len(fc.speech_calls)
+    fc2 = FakeClient()
+    assert run(root, epd, fc2, FakeEn(tmp_path), "--execute") == 0
+    assert (epd / "audio" / "tr_r-k1-b.mp3").exists()
+    assert n_tr > 0 and all(p["input"] != "Böyle de söyleyebilirsin:" for p in fc2.speech_calls)
+
+
 def test_stale_text_is_lint_error(root, tmp_path, monkeypatch):
     monkeypatch.setenv(tr.ENV_CAP, "100000")
     monkeypatch.setenv(tr.ENV_LEDGER, str(tmp_path / "tr-ledger.json"))

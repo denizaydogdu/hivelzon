@@ -1,0 +1,230 @@
+{
+  "kurguVersion": 2,
+  "contentId": "A1-005",
+  "source": "H-085: story.en.md (H-032 onaylı diyalog) düğümlere bölündü; görseller B5-01…B5-14. K2'de iki soru da doğru: seçilen önce sorulur, Alex öteki soruyu da sorar (iki cevap B6 için gerekli: 'Helen', 'the hill café').",
+  "start": "title",
+  "gate": {
+    "comprehension": ["t-gorev"],
+    "targetPhrase": ["k1", "k2"],
+    "activeTask": ["t-kanit"]
+  },
+  "nodes": [
+    {
+      "id": "title", "type": "title",
+      "next": "recap"
+    },
+    {
+      "id": "recap", "type": "recap",
+      "shots": [{"image": "../A1-004-the-note/images/B4-08-iki-not.png", "len": 3.0, "move": [1.0, 1.06, 0.5, 0.5, 0.55, 0.5],
+                 "signs": [{"style": "caption", "lines": [{"text": "Pier 3. Friday. 7."}], "start": 0.3, "end": 3.0}]}],
+      "next": "s01"
+    },
+    {
+      "id": "s01", "type": "segment", "scene": "Cuma akşamı", "checkpoint": true,
+      "shots": [{"image": "images/B5-01-oda-cuma.png", "audio": ["b5_01_alex"], "aoff": 1.2, "move": [1.04, 1.12, 0.5, 0.5, 0.45, 0.42],
+                 "signs": [{"style": "caption", "lines": [{"text": "Friday · 6:30 pm"}], "start": 0.2, "end": 1.6}]}],
+      "next": "s02"
+    },
+    {
+      "id": "s02", "type": "segment", "scene": "Sahne 1: Otobüs durağı", "checkpoint": true,
+      "shots": [
+        {"image": "images/B5-02-durak-bekleme.png", "len": 2.4, "move": [1.0, 1.06, 0.5, 0.5, 0.5, 0.45],
+         "signs": [{"style": "note", "lines": [{"text": "Bus 4: 6:40 pm"}], "start": 0.2, "end": 2.4}]},
+        {"image": "images/B5-02-durak-bekleme.png", "audio": ["b5_02_alex"], "aoff": 1.2, "move": [1.08, 1.14, 0.5, 0.5, 0.45, 0.42],
+         "signs": [{"style": "caption", "lines": [{"text": "6:45 pm … 6:55 pm"}], "start": 0.1, "end": 1.4}]},
+        {"image": "images/B5-03-otobus-geliyor.png", "len": 2.6, "move": [1.0, 1.08, 0.5, 0.45, 0.5, 0.5],
+         "signs": [{"style": "caption", "lines": [{"text": "7:05 pm"}], "start": 0.2, "end": 2.6}]}
+      ],
+      "next": "h-02"
+    },
+    {
+      "id": "h-02", "type": "card", "kind": "hi", "advance": "tap",
+      "background": "images/B5-03-otobus-geliyor.png",
+      "lines": [{"speaker": "HI", "text": "Otobüs gecikti. Senin hatan değil!", "lang": "tr"}],
+      "next": "s03", "audio": {"id": "tr_h-02", "speaker": "HI"}
+    },
+    {
+      "id": "s03", "type": "segment", "scene": "Sahne 2: Pier 3", "checkpoint": true,
+      "shots": [
+        {"image": "images/B5-04-pier3-bos.png", "audio": ["b5_03_alex"], "aoff": 1.4, "move": [1.0, 1.08, 0.5, 0.5, 0.55, 0.45],
+         "signs": [{"style": "caption", "lines": [{"text": "7:20 pm"}], "start": 0.2, "end": 1.6}]},
+        {"image": "images/B5-05-jordan-telsiz.png", "audio": ["b5_04_jordan", "b5_05_alex"], "move": [1.04, 1.1, 0.5, 0.5, 0.45, 0.45]},
+        {"image": "images/B5-06-k1-pov.png", "audio": ["b5_06_jordan"], "move": [1.0, 1.06, 0.5, 0.5, 0.45, 0.42]}
+      ],
+      "next": "k1"
+    },
+    {
+      "id": "k1", "type": "decision", "skill": "spoken_interaction", "cefr": "A1",
+      "prompt": {"tr": "Geç kaldın. Jordan'a ne dersin?"},
+      "cue": {"speaker": "JORDAN", "text": "Are you the radio friend? You're late!"},
+      "pov": "POV: Jordan'a bakış; müzik kısılır.",
+      "background": "images/B5-06-k1-pov.png",
+      "targetPhrase": "Sorry, I'm late.",
+      "options": [
+        {"id": "a", "text": "Sorry, I'm late.", "correct": true, "audio": "b5_07_alex", "next": "k1-ok"},
+        {"id": "b", "text": "I am late, sorry me.", "correct": false, "audio": "b5_08_alex", "next": "r-k1-b"}
+      ],
+      "hints": [
+        {"level": 1, "kind": "keyword", "tr": "Önce özür: Sorry."},
+        {"level": 2, "kind": "pattern", "tr": "Sorry, I'm …"},
+        {"level": 3, "kind": "explanation", "tr": "Böyle de söyleyebilirsin: \"Sorry, I'm late.\" Önce Sorry, sonra I'm late."}
+      ]
+    },
+    {
+      "id": "r-k1-b", "type": "reaction",
+      "shots": [{"image": "images/B5-06-k1-pov.png", "audio": ["b5_08_alex", "b5_09_jordan"], "move": [1.06, 1.0, 0.5, 0.5, 0.45, 0.45]}],
+      "bubble": {"speaker": "HI", "lang": "tr", "text": "Böyle de söyleyebilirsin: \"Sorry, I'm late.\" Önce Sorry, sonra I'm late.", "speechTr": "Böyle de söyleyebilirsin: {Sorry, I'm late.} Önce {Sorry}, sonra {I'm late.}"},
+      "next": "k1"
+    },
+    {
+      "id": "k1-ok", "type": "segment",
+      "shots": [
+        {"image": "images/B5-06-k1-pov.png", "audio": ["b5_07_alex"], "aoff": 0.4, "move": [1.0, 1.05, 0.5, 0.5, 0.45, 0.45]},
+        {"image": "images/B5-07-tanisma.png", "audio": ["b5_10_jordan", "b5_11_alex", "b5_12_jordan"], "move": [1.04, 1.12, 0.5, 0.5, 0.45, 0.42]}
+      ],
+      "next": "s04"
+    },
+    {
+      "id": "s04", "type": "segment", "scene": "Sahne 3: Jordan anlatıyor", "checkpoint": true,
+      "shots": [
+        {"image": "images/B5-08-jordan-bisiklet.png", "audio": ["b5_13_jordan", "b5_14_jordan"], "move": [1.0, 1.08, 0.5, 0.55, 0.5, 0.45]},
+        {"image": "images/B5-09-kirmizi-palto-ani.png", "audio": ["b5_15_jordan", "b5_16_jordan", "b5_17_jordan"], "move": [1.0, 1.1, 0.5, 0.5, 0.55, 0.45]}
+      ],
+      "next": "k2"
+    },
+    {
+      "id": "k2", "type": "decision", "skill": "spoken_interaction", "cefr": "A1",
+      "prompt": {"tr": "Jordan'a bir soru sor. İkisi de doğru."},
+      "cue": {"speaker": "JORDAN", "text": "She waits, then she goes."},
+      "pov": "POV: Jordan bisikletine yaslanmış.",
+      "background": "images/B5-08-jordan-bisiklet.png",
+      "targetPhrase": "Who is she?",
+      "options": [
+        {"id": "a", "text": "Who is she?", "correct": true, "audio": "b5_18_alex", "next": "k2-who"},
+        {"id": "b", "text": "Where is she now?", "correct": true, "audio": "b5_19_alex", "next": "k2-where"}
+      ],
+      "hints": [
+        {"level": 1, "kind": "keyword", "tr": "Kim? → Who. Nerede? → Where."},
+        {"level": 2, "kind": "pattern", "tr": "Who is …? · Where is … now?"},
+        {"level": 3, "kind": "explanation", "tr": "İki soru da doğru! Who = kim, Where = nerede."}
+      ]
+    },
+    {
+      "id": "k2-who", "type": "segment",
+      "shots": [
+        {"image": "images/B5-08-jordan-bisiklet.png", "audio": ["b5_18_alex", "b5_20_jordan"], "aoff": 0.4, "move": [1.08, 1.14, 0.5, 0.55, 0.45, 0.42]},
+        {"image": "images/B5-10-jordan-tepe.png", "audio": ["b5_19_alex", "b5_21_jordan"], "move": [1.0, 1.08, 0.5, 0.6, 0.5, 0.4]}
+      ],
+      "next": "h-k2"
+    },
+    {
+      "id": "k2-where", "type": "segment",
+      "shots": [
+        {"image": "images/B5-10-jordan-tepe.png", "audio": ["b5_19_alex", "b5_21_jordan"], "aoff": 0.4, "move": [1.0, 1.08, 0.5, 0.6, 0.5, 0.4]},
+        {"image": "images/B5-08-jordan-bisiklet.png", "audio": ["b5_18_alex", "b5_20_jordan"], "move": [1.08, 1.14, 0.5, 0.55, 0.45, 0.42]}
+      ],
+      "next": "h-k2"
+    },
+    {
+      "id": "h-k2", "type": "card", "kind": "hi", "advance": "tap",
+      "background": "images/B5-10-jordan-tepe.png",
+      "lines": [{"speaker": "HI", "text": "İki soru da doğru! Who = kim, Where = nerede.", "lang": "tr"}],
+      "speechTr": "İki soru da doğru! {Who} kim, {Where} nerede.",
+      "next": "s05"
+    },
+    {
+      "id": "s05", "type": "segment", "scene": "Sahne 4: Kaydedici", "checkpoint": true,
+      "shots": [
+        {"image": "images/B5-11-kaydedici-uzatma.png", "audio": ["b5_22_jordan", "b5_23_jordan", "b5_24_alex", "b5_25_jordan"], "move": [1.0, 1.1, 0.5, 0.5, 0.5, 0.45]},
+        {"image": "images/B5-12-kaydedici-yakin.png", "len": 2.5, "move": [1.0, 1.06, 0.5, 0.5, 0.5, 0.5]}
+      ],
+      "next": "c-alex"
+    },
+    {
+      "id": "c-alex", "type": "card", "kind": "line", "advance": "tap",
+      "background": "images/B5-12-kaydedici-yakin.png",
+      "lines": [{"speaker": "ALEX", "text": "Not istasyonda kalmış… ama buluşma burada. Biri hâlâ eski yerlere not bırakıyor.", "lang": "tr"}],
+      "next": "t-gorev", "audio": {"id": "tr_c-alex", "speaker": "ALEX (TR)"}
+    },
+    {
+      "id": "t-gorev", "type": "task", "kind": "choice", "role": "comprehension", "skill": "listening", "cefr": "A1",
+      "scene": "Görev: Jordan'ı anla",
+      "prompt": {"tr": "Jordan ne anlattı? Doğru cevabı seç."},
+      "background": "images/B5-09-kirmizi-palto-ani.png",
+      "items": [
+        {"id": "i1", "stem": "What does she wear?", "options": [
+          {"id": "a", "text": "A red coat.", "correct": true},
+          {"id": "b", "text": "A yellow raincoat.", "correct": false},
+          {"id": "c", "text": "A blue jacket.", "correct": false}]},
+        {"id": "i2", "stem": "What does she do?", "options": [
+          {"id": "a", "text": "She waits, then she goes.", "correct": true},
+          {"id": "b", "text": "She talks on the radio.", "correct": false}]},
+        {"id": "i3", "stem": "What does she give Jordan?", "options": [
+          {"id": "a", "text": "Küçük bir ses kaydedici", "lang": "tr", "correct": true},
+          {"id": "b", "text": "Bir harita", "lang": "tr", "correct": false},
+          {"id": "c", "text": "Bir not", "lang": "tr", "correct": false}]}
+      ],
+      "feedback": {"wrong": {"speaker": "HI", "lang": "tr", "text": "Jordan'ın cümlelerini bir daha düşün. Acele yok.", "audio": {"id": "tr_t-gorev", "speaker": "HI"}}},
+      "result": [{"text": "She waits, then she goes.", "lang": "en", "style": "highlight"}],
+      "next": "h-lab1"
+    },
+    {
+      "id": "h-lab1", "type": "card", "kind": "hi", "scene": "Dil laboratuvarı", "checkpoint": true, "advance": "tap",
+      "background": "images/B5-08-jordan-bisiklet.png",
+      "lines": [{"speaker": "HI", "text": "He, she, it ile fiile -s gelir: Jordan works, She waits. Türkçede böyle bir ek yok; He work every day değil, He works every day.", "lang": "tr"}],
+      "speechTr": "{He, she, it} ile fiile {s} gelir: {Jordan works. She waits.} Türkçede böyle bir ek yok; {He work every day} değil, {He works every day.}",
+      "next": "h-lab2"
+    },
+    {
+      "id": "h-lab2", "type": "card", "kind": "hi", "advance": "tap",
+      "background": "images/B5-09-kirmizi-palto-ani.png",
+      "lines": [{"speaker": "HI", "text": "Jordan \"A woman was here\" dedi. was = \"-di, idi\". Şimdilik yalnızca tanı, yeter.", "lang": "tr"}],
+      "speechTr": "Jordan {A woman was here} dedi. {was}: -di, idi. Şimdilik yalnızca tanı, yeter.",
+      "next": "t-kanit"
+    },
+    {
+      "id": "t-kanit", "type": "task", "kind": "order", "role": "evidence", "skill": "reading", "cefr": "A1",
+      "prompt": {"tr": "Jordan'ın günü: kartları sırala."},
+      "context": "Yeni bağlam: resimli rutin kartları",
+      "background": "images/B5-13-rutin-kartlar.png",
+      "items": [{"id": "i1",
+        "tokens": ["He goes home at nine.", "He gets up at six.", "He works every day."],
+        "answer": ["He gets up at six.", "He works every day.", "He goes home at nine."]}],
+      "feedback": {"wrong": {"speaker": "HI", "lang": "tr", "text": "Önce sabah kalkar, sonra çalışır, akşam eve gider. Bir daha dene.", "audio": {"id": "tr_t-kanit", "speaker": "HI"}}},
+      "next": "s06"
+    },
+    {
+      "id": "s06", "type": "segment",
+      "shots": [{"image": "images/B5-13-rutin-kartlar.png", "audio": ["b5_26_alex"], "move": [1.0, 1.06, 0.5, 0.5, 0.45, 0.55]}],
+      "next": "s07"
+    },
+    {
+      "id": "s07", "type": "segment", "scene": "Son kare", "checkpoint": true,
+      "shots": [
+        {"image": "images/B5-12-kaydedici-yakin.png", "audio": ["b5_27_jordan", "b5_28_alex"], "move": [1.06, 1.14, 0.5, 0.5, 0.5, 0.5]},
+        {"image": "images/B5-14-harita-maya.png", "audio": ["b5_29_jordan", "b5_30_alex", "b5_31_jordan", "b5_32_jordan"], "move": [1.0, 1.08, 0.5, 0.55, 0.5, 0.5],
+         "signs": [{"style": "note", "lines": [{"text": "Maya", "size": 64}], "start": 0.3, "end": 2.2}]}
+      ],
+      "next": "c-clues"
+    },
+    {
+      "id": "c-clues", "type": "card", "kind": "clue", "advance": "tap", "clueIds": ["C7", "C8"], "answers": ["Q4", "Q2"],
+      "lines": [{"text": "İpucu panosu", "lang": "tr", "style": "heading"},
+                {"text": "C7 · Ses kaydedici", "lang": "tr"},
+                {"text": "C8 · Jordan'ın anlattıkları: red coat, for the radio friend (Jordan'ın tahmini: Helen, the hill café)", "lang": "tr"},
+                {"text": "Q4 kapandı: Kırmızı paltolu bir kadın; buluşma kaçırıldı.", "lang": "tr"},
+                {"text": "Q2 kapandı: Biri eski yerlere not bırakıyor; buluşma Pier 3'e taşınmış.", "lang": "tr"}],
+      "speechTr": "İpucu panosu. Ses kaydedici. Jordan'ın anlattıkları: {red coat, for the radio friend.} Dördüncü soru kapandı: kırmızı paltolu bir kadın; buluşma kaçırıldı. İkinci soru kapandı: biri eski yerlere not bırakıyor; buluşma yeri değişmiş.",
+      "next": "c-oq"
+    },
+    {
+      "id": "c-oq", "type": "card", "kind": "openQuestion", "advance": "tap", "questionId": "Q5",
+      "background": "images/B5-12-kaydedici-yakin.png",
+      "lines": [{"text": "AÇIK SORU", "lang": "tr", "style": "caption"},
+                {"text": "Kayıtta ne var?", "lang": "tr", "style": "heading"},
+                {"text": "Bölüm 6: The Recording", "lang": "en", "style": "caption"}],
+      "speechTr": "Açık soru: Kayıtta ne var?",
+      "next": null, "audio": {"id": "tr_c-oq", "speaker": "ANLATICI (TR)"}
+    }
+  ]
+}
