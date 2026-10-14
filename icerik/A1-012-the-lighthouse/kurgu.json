@@ -58,7 +58,7 @@
     {
       "id": "r-k1-b", "type": "reaction",
       "shots": [{"image": "images/B12-04-k-pov-tom.png", "audio": ["b12_09_alex", "b12_10_tom"], "move": [1.06, 1.0, 0.5, 0.5, 0.45, 0.45]}],
-      "bubble": {"speaker": "HI", "lang": "tr", "text": "\"Help me!\" acil bir durumda \"İmdat!\" gibi duyulur. Kibar bir istek için: \"Can you help me, please?\"", "speechTr": "{Help me!} acil bir durumda imdat gibi duyulur. Kibar bir istek için: {Can you help me, please?}"},
+      "bubble": {"speaker": "HI", "lang": "tr", "text": "\"Help me!\" acil bir durumda \"İmdat!\" gibi duyulur. Kibar bir istek için: \"Can you help me, please?\"", "speechTr": "{Help me!} acil bir durumda imdat gibi duyulur. Kibar bir istek için: {Can you help me, please?}", "audio": {"id": "tr_r-k1-b", "speaker": "HI"}},
       "next": "k1"
     },
     {
@@ -86,7 +86,7 @@
     {
       "id": "r-k2-b", "type": "reaction",
       "shots": [{"image": "images/B12-04-k-pov-tom.png", "audio": ["b12_13_alex", "b12_14_tom"], "move": [1.06, 1.0, 0.5, 0.5, 0.45, 0.45]}],
-      "bubble": {"speaker": "HI", "lang": "tr", "text": "Böyle de söyleyebilirsin: \"I'm looking for…\" Şu an yaptığın bir şey için am + -ing: I'm looking for.", "speechTr": "Böyle de söyleyebilirsin: {I'm looking for.} Şu an yaptığın bir şey için {am} ve {ing}: {I'm looking for.}"},
+      "bubble": {"speaker": "HI", "lang": "tr", "text": "Böyle de söyleyebilirsin: \"I'm looking for…\" Şu an yaptığın bir şey için am + -ing: I'm looking for.", "speechTr": "Böyle de söyleyebilirsin: {I'm looking for.} Şu an yaptığın bir şey için {am} ve {ing}: {I'm looking for.}", "audio": {"id": "tr_r-k2-b", "speaker": "HI"}},
       "next": "k2"
     },
     {
@@ -187,7 +187,7 @@
       "background": "images/B12-13-termos.png",
       "lines": [{"speaker": "HI", "text": "Thank you very much = çok teşekkür ederim. Thank you'dan daha sıcak.", "lang": "tr"}],
       "speechTr": "{Thank you very much:} çok teşekkür ederim. {Thank you} demekten daha sıcak.",
-      "next": "t-gorev"
+      "next": "t-gorev", "audio": {"id": "tr_h-lab", "speaker": "HI"}
     },
     {
       "id": "t-gorev", "type": "task", "kind": "choice", "role": "comprehension", "skill": "spoken_interaction", "cefr": "A1",
@@ -279,7 +279,7 @@
                 {"text": "Q11 kapandı: Çağrının kaynağı bulundu: kulübün eski telsizi, zamanlayıcı ve 1979 fotoğrafı.", "lang": "tr"},
                 {"text": "Sezon sorusu kapandı: Çağrıyı fenerdeki eski kulüp telsizi gönderiyor; zamanlayıcıyı Ellen Hart kurmuş.", "lang": "tr"}],
       "speechTr": "İpucu panosu. Kulübün eski fotoğrafı. Masadaki not: {Still waiting for N.} Zamanlayıcı etiketi: {Every Friday, 7 pm.} On birinci soru kapandı: çağrının kaynağı bulundu. Sezon sorusu kapandı: çağrıyı fenerdeki eski kulüp telsizi gönderiyor; zamanlayıcıyı Ellen Hart kurmuş.",
-      "next": "c-oq"
+      "next": "c-oq", "audio": {"id": "tr_c-clues", "speaker": "ANLATICI (TR)"}
     },
     {
       "id": "c-oq", "type": "card", "kind": "openQuestion", "advance": "tap", "questionId": "Q12",

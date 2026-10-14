@@ -82,6 +82,31 @@
         "name": "Liam",
         "voiceId": "TX3LPaxmHKxFdv7VOQHJ",
         "note": "2026-10-14: ana oturum seçimi (kullanıcının genel onayı): genç, enerjik, Amerikan; CHARACTER_PROFILES 'genç, enerjik, hızlı'; Chris (Jordan) ve George'tan ayrışır. /v1/voices ile doğrulandı."
+      },
+      "ROSA": {
+        "name": "Matilda",
+        "voiceId": "XrExE9yKIg1WjnnlVkGX",
+        "note": "2026-10-14: ana oturum seçimi (kullanıcının genel onayı), CHARACTER_PROFILES'a göre; /v1/voices ile doğrulandı. 58, sıcak, olgun."
+      },
+      "MR GRANT": {
+        "name": "Bill",
+        "voiceId": "pqHfZKP75CvOlQylNhV4",
+        "note": "2026-10-14: ana oturum seçimi (kullanıcının genel onayı), CHARACTER_PROFILES'a göre; /v1/voices ile doğrulandı. 70, yaşlı, bilge; George'tan ayrışır."
+      },
+      "TOM": {
+        "name": "Will",
+        "voiceId": "bIHbv24MWmeRgasZH58o",
+        "note": "2026-10-14: ana oturum seçimi (kullanıcının genel onayı), CHARACTER_PROFILES'a göre; /v1/voices ile doğrulandı. 24, genç, samimi."
+      },
+      "PRESENTER": {
+        "name": "Daniel",
+        "voiceId": "onwK4e9ZLuTAKqWW03F9",
+        "note": "2026-10-14: ana oturum seçimi (kullanıcının genel onayı), CHARACTER_PROFILES'a göre; /v1/voices ile doğrulandı. Radyo spikeri tonu."
+      },
+      "SELLER": {
+        "name": "Laura",
+        "voiceId": "FGY2WhTYpPnrIDTdsKH5",
+        "note": "2026-10-14: ana oturum seçimi (kullanıcının genel onayı), CHARACTER_PROFILES'a göre; /v1/voices ile doğrulandı. Fiyat dinleme görevinde çeşitlilik."
       }
     }
   },

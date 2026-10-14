@@ -48,7 +48,7 @@
     {
       "id": "r-k1-b", "type": "reaction",
       "shots": [{"image": "images/B11-02-k1-pov.png", "audio": ["b11_07_alex", "b11_08_maya"], "move": [1.06, 1.0, 0.5, 0.5, 0.45, 0.45]}],
-      "bubble": {"speaker": "HI", "lang": "tr", "text": "Böyle de söyleyebilirsin: \"It's raining.\" (şu an yağıyor) ya da \"It's rainy.\" (yağmurlu bir gün). rain tek başına \"yağmur\" demek.", "speechTr": "Böyle de söyleyebilirsin: {It's raining.} Şu an yağıyor. Ya da {It's rainy.} Yağmurlu bir gün. {rain} tek başına yağmur demek."},
+      "bubble": {"speaker": "HI", "lang": "tr", "text": "Böyle de söyleyebilirsin: \"It's raining.\" (şu an yağıyor) ya da \"It's rainy.\" (yağmurlu bir gün). rain tek başına \"yağmur\" demek.", "speechTr": "Böyle de söyleyebilirsin: {It's raining.} Şu an yağıyor. Ya da {It's rainy.} Yağmurlu bir gün. {rain} tek başına yağmur demek.", "audio": {"id": "tr_r-k1-b", "speaker": "HI"}},
       "next": "k1"
     },
     {
@@ -97,7 +97,7 @@
     {
       "id": "r-k2-b", "type": "reaction",
       "shots": [{"image": "images/B11-07-sam-titrer.png", "audio": ["b11_27_alex", "b11_28_sam"], "move": [1.0, 1.08, 0.5, 0.5, 0.5, 0.45]}],
-      "bubble": {"speaker": "HI", "lang": "tr", "text": "Hava rüzgârlı ve yağmurlu. Öneri vermek için fiille başla: \"Wear a raincoat.\"", "speechTr": "Hava rüzgârlı ve yağmurlu. Öneri vermek için fiille başla: {Wear a raincoat.}"},
+      "bubble": {"speaker": "HI", "lang": "tr", "text": "Hava rüzgârlı ve yağmurlu. Öneri vermek için fiille başla: \"Wear a raincoat.\"", "speechTr": "Hava rüzgârlı ve yağmurlu. Öneri vermek için fiille başla: {Wear a raincoat.}", "audio": {"id": "tr_r-k2-b", "speaker": "HI"}},
       "next": "k2"
     },
     {
@@ -157,7 +157,7 @@
       "background": "images/B11-10-canta.png",
       "lines": [{"speaker": "HI", "text": "Öneri ve talimat için fiille başla: Wear a raincoat. Take an umbrella. Türkçedeki gibi özne yok.", "lang": "tr"}],
       "speechTr": "Öneri ve talimat için fiille başla: {Wear a raincoat. Take an umbrella.} Türkçedeki gibi özne yok.",
-      "next": "s04"
+      "next": "s04", "audio": {"id": "tr_h-lab", "speaker": "HI"}
     },
     {
       "id": "s04", "type": "segment", "scene": "Sahne 4: Cuma, saat yedi", "checkpoint": true,
@@ -194,7 +194,7 @@
                 {"text": "C18 · Otobüs saatleri: 6:30 · 7:30 · 8:30", "lang": "tr"},
                 {"text": "Q10 kapandı: \"The light test\" müzenin Light Night etkinliği. Etkinlik açık; otobüsle gidip birlikte kalmak güvenli.", "lang": "tr"}],
       "speechTr": "İpucu panosu. Etkinlik afişi: {Light Night at Lumen Point.} Otobüs saatleri. Onuncu soru kapandı: {the light test,} müzenin {Light Night} etkinliği. Etkinlik açık; otobüsle gidip birlikte kalmak güvenli.",
-      "next": "c-oq"
+      "next": "c-oq", "audio": {"id": "tr_c-clues", "speaker": "ANLATICI (TR)"}
     },
     {
       "id": "c-oq", "type": "card", "kind": "openQuestion", "advance": "tap", "questionId": "Q11",

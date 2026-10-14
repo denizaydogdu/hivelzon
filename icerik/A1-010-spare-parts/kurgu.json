@@ -32,7 +32,7 @@
       "background": "images/B10-03-piller.png",
       "lines": [{"speaker": "HI", "text": "İki pil, yani çoğul: \"How much are they?\" Tek şey için \"How much is it?\" Türkçede ikisi de \"Ne kadar?\", İngilizcede is ve are ayrı.", "lang": "tr"}],
       "speechTr": "İki pil, yani çoğul: {How much are they?} Tek şey için {How much is it?} Türkçede ikisi de ne kadar, İngilizcede {is} ve {are} ayrı.",
-      "next": "s02"
+      "next": "s02", "audio": {"id": "tr_h-01", "speaker": "HI"}
     },
     {
       "id": "s02", "type": "segment",
@@ -59,7 +59,7 @@
     {
       "id": "r-k1-b", "type": "reaction",
       "shots": [{"image": "images/B10-04-k1-pov.png", "audio": ["b10_10_grant"], "move": [1.06, 1.0, 0.5, 0.5, 0.5, 0.5]}],
-      "bubble": {"speaker": "HI", "lang": "tr", "text": "Böyle de söyleyebilirsin: thir-TEEN. -teen sayılarında vurgu sonda, -ty sayılarında başta (THIR-ty). Bir daha dinle!", "speechTr": "Böyle de söyleyebilirsin: {thirteen.} {teen} sayılarında vurgu sonda, {ty} sayılarında başta: {thirty.} Bir daha dinle!"},
+      "bubble": {"speaker": "HI", "lang": "tr", "text": "Böyle de söyleyebilirsin: thir-TEEN. -teen sayılarında vurgu sonda, -ty sayılarında başta (THIR-ty). Bir daha dinle!", "speechTr": "Böyle de söyleyebilirsin: {thirteen.} {teen} sayılarında vurgu sonda, {ty} sayılarında başta: {thirty.} Bir daha dinle!", "audio": {"id": "tr_r-k1-b", "speaker": "HI"}},
       "next": "k1"
     },
     {
@@ -93,7 +93,7 @@
     {
       "id": "r-k2-b", "type": "reaction",
       "shots": [{"image": "images/B10-05-iki-anten.png", "audio": ["b10_17_alex", "b10_18_sam"], "move": [1.06, 1.0, 0.5, 0.5, 0.5, 0.5]}],
-      "bubble": {"speaker": "HI", "lang": "tr", "text": "this = yakındaki, that = uzaktaki. Sam'in istediği uzun anten rafta, uzakta.", "speechTr": "{this} yakındaki, {that} uzaktaki. Sam'in istediği uzun anten rafta, uzakta."},
+      "bubble": {"speaker": "HI", "lang": "tr", "text": "this = yakındaki, that = uzaktaki. Sam'in istediği uzun anten rafta, uzakta.", "speechTr": "{this} yakındaki, {that} uzaktaki. Sam'in istediği uzun anten rafta, uzakta.", "audio": {"id": "tr_r-k2-b", "speaker": "HI"}},
       "next": "k2"
     },
     {
@@ -178,7 +178,7 @@
     {
       "id": "r-k3-b", "type": "reaction",
       "shots": [{"image": "images/B10-10-yesil-isik.png", "audio": ["b10_33_alex"], "move": [1.06, 1.0, 0.5, 0.5, 0.5, 0.5]}],
-      "bubble": {"speaker": "HI", "lang": "tr", "text": "B1'i hatırla: Can you hear me? sorusuna cevap \"I can hear you.\" Şimdi sen söyle!", "speechTr": "Birinci bölümü hatırla: {Can you hear me?} sorusuna cevap {I can hear you.} Şimdi sen söyle!"},
+      "bubble": {"speaker": "HI", "lang": "tr", "text": "B1'i hatırla: Can you hear me? sorusuna cevap \"I can hear you.\" Şimdi sen söyle!", "speechTr": "Birinci bölümü hatırla: {Can you hear me?} sorusuna cevap {I can hear you.} Şimdi sen söyle!", "audio": {"id": "tr_r-k3-b", "speaker": "HI"}},
       "next": "k3"
     },
     {
@@ -211,7 +211,7 @@
                 {"text": "C16 · Canlı mesaj: …next Saturday… the light test… eight o'clock… come…", "lang": "tr"},
                 {"text": "Q9 kapandı: Yeni antenle canlı ikinci bir mesaj yakalandı.", "lang": "tr"}],
       "speechTr": "İpucu panosu. Canlı mesaj: {next Saturday, the light test, eight o'clock, come.} Dokuzuncu soru kapandı: yeni antenle canlı ikinci bir mesaj yakalandı.",
-      "next": "c-oq"
+      "next": "c-oq", "audio": {"id": "tr_c-clues", "speaker": "ANLATICI (TR)"}
     },
     {
       "id": "c-oq", "type": "card", "kind": "openQuestion", "advance": "tap", "questionId": "Q10",
@@ -220,7 +220,7 @@
                 {"text": "Cumartesi saat sekizdeki \"light test\" ne? Gidebilir miyiz?", "lang": "tr", "style": "heading"},
                 {"text": "Bölüm 11: Storm Warning", "lang": "en", "style": "caption"}],
       "speechTr": "Açık soru: Cumartesi saat sekizdeki {light test} ne? Gidebilir miyiz?",
-      "next": null
+      "next": null, "audio": {"id": "tr_c-oq", "speaker": "ANLATICI (TR)"}
     }
   ]
 }

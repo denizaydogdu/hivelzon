@@ -98,3 +98,66 @@ Sezon planında B12'de iki ★ an var (kapıda Tom; fenerin ışığı döner). 
 | 2026-10-14T17:27:48Z | tr_t-kanit2.p7 | duyu-1 | - | - | - | 1.28 | - | 67314901516c28ac |
 | 2026-10-14T17:27:49Z | tr_c-clues.p1 | alania-v2 | alania2-m1 | alania-v2.1 | 51 | 4.32 | d56c1b0be73b4db982a77612cf22f85d | aef02515cbf426ca |
 | 2026-10-14T17:27:51Z | tr_c-clues.p1 | duyu-1 | - | - | - | 4.32 | - | aef02515cbf426ca |
+
+## İngilizce replik seslendirme kayıtları (tts_episode_en.py)
+
+| Tarih (UTC) | Kimlik | Konuşmacı | Ses | Model | Hız | Karakter | Metin sha256 |
+|---|---|---|---|---|---|---|---|
+| 2026-10-14T17:52:31Z | b12_01_maya | MAYA | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 25 | a8ddb36602c114bb |
+| 2026-10-14T17:52:32Z | b12_02_sam | SAM | Liam TX3LPaxmHKxFdv7VOQHJ | eleven_v3 | 0.9 | 29 | d7e71a5dcc986c85 |
+| 2026-10-14T17:52:34Z | b12_03_alex | ALEX | Jessica cgSgspJ2msm6clMCkdW9 | eleven_v3 | 0.9 | 13 | 28597de31c81bbe3 |
+| 2026-10-14T17:52:35Z | b12_04_tom | TOM | Will bIHbv24MWmeRgasZH58o | eleven_v3 | 0.9 | 39 | d7d6e38b76df1b7c |
+| 2026-10-14T17:52:37Z | b12_05_alex | ALEX | Jessica cgSgspJ2msm6clMCkdW9 | eleven_v3 | 0.9 | 19 | e245c7c8aaa72f5a |
+| 2026-10-14T17:52:39Z | b12_06_tom | TOM | Will bIHbv24MWmeRgasZH58o | eleven_v3 | 0.9 | 36 | 39de062920b2928b |
+| 2026-10-14T17:52:40Z | b12_07_alex | ALEX | Jessica cgSgspJ2msm6clMCkdW9 | eleven_v3 | 0.9 | 22 | 69d0e83442194562 |
+| 2026-10-14T17:55:53Z | b12_08_alex | ALEX | Jessica cgSgspJ2msm6clMCkdW9 | eleven_v3 | 0.9 | 24 | 8266f9d07e530dee |
+| 2026-10-14T17:55:54Z | b12_09_alex | ALEX | Jessica cgSgspJ2msm6clMCkdW9 | eleven_v3 | 0.9 | 8 | 979e3ac5de4822ae |
+| 2026-10-14T17:55:55Z | b12_10_tom | TOM | Will bIHbv24MWmeRgasZH58o | eleven_v3 | 0.9 | 15 | a169b81ff96bed8e |
+| 2026-10-14T17:55:56Z | b12_11_tom | TOM | Will bIHbv24MWmeRgasZH58o | eleven_v3 | 0.9 | 36 | d1828697cb7b0e57 |
+| 2026-10-14T17:55:57Z | b12_12_alex | ALEX | Jessica cgSgspJ2msm6clMCkdW9 | eleven_v3 | 0.9 | 30 | 7b3f28ef94752f40 |
+| 2026-10-14T17:55:58Z | b12_13_alex | ALEX | Jessica cgSgspJ2msm6clMCkdW9 | eleven_v3 | 0.9 | 28 | 9e4e0baf7361257f |
+| 2026-10-14T17:56:00Z | b12_14_tom | TOM | Will bIHbv24MWmeRgasZH58o | eleven_v3 | 0.9 | 17 | f7c49436415b9ae8 |
+| 2026-10-14T17:56:01Z | b12_15_alex | ALEX | Jessica cgSgspJ2msm6clMCkdW9 | eleven_v3 | 0.9 | 25 | dfc40d6454f0553a |
+| 2026-10-14T17:56:03Z | b12_16_tom | TOM | Will bIHbv24MWmeRgasZH58o | eleven_v3 | 0.9 | 46 | bacf1ce7588fd8a0 |
+| 2026-10-14T17:56:04Z | b12_17_alex | ALEX | Jessica cgSgspJ2msm6clMCkdW9 | eleven_v3 | 0.9 | 12 | ddfd032cce17828b |
+| 2026-10-14T17:56:06Z | b12_18_tom | TOM | Will bIHbv24MWmeRgasZH58o | eleven_v3 | 0.9 | 35 | 20e16eced68350cf |
+| 2026-10-14T17:56:07Z | b12_19_sam | SAM | Liam TX3LPaxmHKxFdv7VOQHJ | eleven_v3 | 0.9 | 43 | 0f844eb00049d475 |
+| 2026-10-14T17:56:08Z | b12_20_sam | SAM | Liam TX3LPaxmHKxFdv7VOQHJ | eleven_v3 | 0.9 | 25 | 70ae9ee0dc4ce5c7 |
+| 2026-10-14T17:56:10Z | b12_21_maya | MAYA | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 39 | 45c8b9e33500ae0c |
+| 2026-10-14T17:56:11Z | b12_22_alex | ALEX | Jessica cgSgspJ2msm6clMCkdW9 | eleven_v3 | 0.9 | 23 | 8dcbc8ff436e9e5f |
+| 2026-10-14T17:56:12Z | b12_23_sam | SAM | Liam TX3LPaxmHKxFdv7VOQHJ | eleven_v3 | 0.9 | 19 | 9a2ca25ac3f81745 |
+| 2026-10-14T17:56:13Z | b12_24_maya | MAYA | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 24 | d7c85832fb906feb |
+| 2026-10-14T17:56:15Z | b12_25_alex | ALEX | Jessica cgSgspJ2msm6clMCkdW9 | eleven_v3 | 0.9 | 26 | c51b9488f13c7310 |
+| 2026-10-14T17:56:17Z | b12_26_maya | MAYA | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 17 | 28dd89bb62e39242 |
+| 2026-10-14T17:56:18Z | b12_27_alex | ALEX | Jessica cgSgspJ2msm6clMCkdW9 | eleven_v3 | 0.9 | 31 | b8280540f1bf642f |
+| 2026-10-14T17:56:20Z | b12_28_alex | ALEX | Jessica cgSgspJ2msm6clMCkdW9 | eleven_v3 | 0.9 | 23 | d35e6bb7a276f279 |
+| 2026-10-14T17:56:21Z | b12_29_sam | SAM | Liam TX3LPaxmHKxFdv7VOQHJ | eleven_v3 | 0.9 | 19 | 9c01320ff788c471 |
+| 2026-10-14T17:56:22Z | b12_30_alex | ALEX | Jessica cgSgspJ2msm6clMCkdW9 | eleven_v3 | 0.9 | 22 | b065520ab2052458 |
+| 2026-10-14T17:56:24Z | b12_31_tom | TOM | Will bIHbv24MWmeRgasZH58o | eleven_v3 | 0.9 | 41 | c32a1a275dddecc8 |
+| 2026-10-14T17:56:25Z | b12_32_tom | TOM | Will bIHbv24MWmeRgasZH58o | eleven_v3 | 0.9 | 30 | 84e462849712c2ef |
+| 2026-10-14T17:56:27Z | b12_33_tom | TOM | Will bIHbv24MWmeRgasZH58o | eleven_v3 | 0.9 | 30 | 7bbdd2ef7deab4f6 |
+| 2026-10-14T17:56:28Z | b12_34_alex | ALEX | Jessica cgSgspJ2msm6clMCkdW9 | eleven_v3 | 0.9 | 38 | 1c1500af035d4bb5 |
+| 2026-10-14T17:56:29Z | b12_35_tom | TOM | Will bIHbv24MWmeRgasZH58o | eleven_v3 | 0.9 | 21 | 1d14e0884573c3d2 |
+| 2026-10-14T17:56:30Z | b12_36_alex | ALEX | Jessica cgSgspJ2msm6clMCkdW9 | eleven_v3 | 0.9 | 12 | 4c4d7138df411b6e |
+| 2026-10-14T17:56:32Z | b12_37_alex | ALEX | Jessica cgSgspJ2msm6clMCkdW9 | eleven_v3 | 0.9 | 20 | 3a478b7097881964 |
+| 2026-10-14T17:56:33Z | b12_38_tom | TOM | Will bIHbv24MWmeRgasZH58o | eleven_v3 | 0.9 | 39 | 3e50cba84e623e02 |
+| 2026-10-14T17:56:35Z | b12_39_maya | MAYA | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 31 | eb83ba8474289317 |
+| 2026-10-14T17:56:36Z | b12_40_maya | MAYA | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 41 | b5e9b813bc0b7ed7 |
+
+## İngilizce ifade seslendirme kayıtları (tts_episode_tr.py)
+
+| Tarih (UTC) | Parça | Ses | Model | Hız | Karakter | Metin sha256 |
+|---|---|---|---|---|---|---|
+| 2026-10-14T17:57:42Z | tr_r-k1-b.p1 | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 8 | 979e3ac5de4822ae |
+| 2026-10-14T17:57:43Z | tr_r-k1-b.p3 | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 24 | 8266f9d07e530dee |
+| 2026-10-14T17:57:44Z | tr_r-k2-b.p2 | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 16 | a636453ae6581337 |
+| 2026-10-14T17:57:45Z | tr_r-k2-b.p4 | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 2 | ab6db599234d2636 |
+| 2026-10-14T17:57:46Z | tr_r-k2-b.p6 | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 3 | 91af7d847f80f22c |
+| 2026-10-14T17:57:47Z | tr_h-lab.p1 | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 20 | 9d831ab5491c8cf1 |
+| 2026-10-14T17:57:48Z | tr_h-lab.p3 | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 9 | 268bc1833e83306f |
+| 2026-10-14T17:57:49Z | tr_t-kanit2.p2 | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 3 | 2cda85e504e155f3 |
+| 2026-10-14T17:57:51Z | tr_t-kanit2.p4 | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 1 | 043a718774c572bd |
+| 2026-10-14T17:57:52Z | tr_t-kanit2.p6 | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 2 | fa51fd49abf67705 |
+| 2026-10-14T17:57:53Z | tr_c-clues.p2 | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 20 | e20cf4e661bb1d54 |
+| 2026-10-14T17:57:54Z | tr_c-clues.p4 | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 19 | cb9ca26230209226 |
+| 2026-10-14T17:58:09Z | tr_r-k2-b.p6 | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 3 | 91af7d847f80f22c |

@@ -50,7 +50,7 @@
     {
       "id": "r-k1-c", "type": "reaction",
       "shots": [{"image": "images/B9-04-k1-pov.png", "audio": ["b9_10_alex", "b9_11_rosa"], "move": [1.06, 1.0, 0.5, 0.5, 0.45, 0.45]}],
-      "bubble": {"speaker": "HI", "lang": "tr", "text": "I want… yanlış değil, ama kafede çok doğrudan duyulur. Böyle de söyleyebilirsin: \"Can I have a tea, please?\"", "speechTr": "{I want} yanlış değil, ama kafede çok doğrudan duyulur. Böyle de söyleyebilirsin: {Can I have a tea, please?}"},
+      "bubble": {"speaker": "HI", "lang": "tr", "text": "I want… yanlış değil, ama kafede çok doğrudan duyulur. Böyle de söyleyebilirsin: \"Can I have a tea, please?\"", "speechTr": "{I want} yanlış değil, ama kafede çok doğrudan duyulur. Böyle de söyleyebilirsin: {Can I have a tea, please?}", "audio": {"id": "tr_r-k1-c", "speaker": "HI"}},
       "next": "k1"
     },
     {
@@ -100,7 +100,7 @@
     {
       "id": "r-k2-b", "type": "reaction",
       "shots": [{"image": "images/B9-08-rosa-dinler.png", "audio": ["b9_25_alex", "b9_26_rosa"], "move": [1.06, 1.0, 0.5, 0.5, 0.45, 0.45]}],
-      "bubble": {"speaker": "HI", "lang": "tr", "text": "Soru için başa Do gelir: \"Do you know this voice?\"", "speechTr": "Soru için başa {Do} gelir: {Do you know this voice?}"},
+      "bubble": {"speaker": "HI", "lang": "tr", "text": "Soru için başa Do gelir: \"Do you know this voice?\"", "speechTr": "Soru için başa {Do} gelir: {Do you know this voice?}", "audio": {"id": "tr_r-k2-b", "speaker": "HI"}},
       "next": "k2"
     },
     {
@@ -135,7 +135,7 @@
       "background": "images/B9-06-tepsi.png",
       "lines": [{"speaker": "HI", "text": "a sessiz harften önce, an sesli harften önce: a tea, a cake, ama an orange juice.", "lang": "tr"}],
       "speechTr": "{a} sessiz harften önce, {an} sesli harften önce: {a tea, a cake,} ama {an orange juice.}",
-      "next": "t-kanit"
+      "next": "t-kanit", "audio": {"id": "tr_h-lab", "speaker": "HI"}
     },
     {
       "id": "t-kanit", "type": "task", "kind": "choice", "role": "evidence", "skill": "grammar", "cefr": "A1",
@@ -173,7 +173,7 @@
                 {"text": "C15 · Rosa'nın sözü: lighthouse on Saturdays", "lang": "tr"},
                 {"text": "Q8 kapandı: Hilltop Café eski radyo kulübünün buluşma yeriydi; bir üye cumartesileri fenere gidiyor.", "lang": "tr"}],
       "speechTr": "İpucu panosu. Kafedeki anten fotoğrafı. Rosa'nın sözü: {lighthouse on Saturdays.} Sekizinci soru kapandı: tepedeki kafe eski radyo kulübünün buluşma yeriydi; bir üye cumartesileri fenere gidiyor.",
-      "next": "c-oq"
+      "next": "c-oq", "audio": {"id": "tr_c-clues", "speaker": "ANLATICI (TR)"}
     },
     {
       "id": "c-oq", "type": "card", "kind": "openQuestion", "advance": "tap", "questionId": "Q9",

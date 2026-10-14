@@ -1,6 +1,6 @@
 # H-085: Sezon 1 Bölüm 5–12 üretimi
 
-- **Durum:** Devam ediyor (B5 tamam: paket, senkron 0,01 sn, -16,06 LUFS, lint 0 hata; B6–B12 sırada; İngilizce kota bekliyor)
+- **Durum:** Üretim bitti (2026-10-14): B5–B12 paketlendi, 12 bölümün hepsi haritada oynanabilir; content-lint 0 hata. **Bekleyen:** kullanıcının simülatörde denemesi ve editör onayı (H-028).
 - **Tür:** İçerik üretimi
 - **Faz:** F1 içerik (Sezon 1)
 - **Bağımlılık:** H-032 (diyaloglar onaylı), H-083 (Türkçe sesler Alania)
@@ -19,7 +19,7 @@
 - Kullanıcı simülatörde dener.
 
 ## Engel
-- İngilizce seslendirme: bölüm başı ~1.100 karakter, toplam ~9.000. Elimizde ElevenLabs 914 karakter; kullanıcıdan hesap ya da plan bekleniyor.
+- ~~İngilizce seslendirme kotası~~ çözüldü: arkadaş hesapları (hesap3, hesap4).
 
 ## Notlar
 2026-10-14: Kullanıcı 500 Higgsfield kredisi yükledi, yarım kalan işler için onay verdi. B5 bütçesi 20 kr.
@@ -57,3 +57,5 @@
 ## Geri alma
 Bölüm klasörü ve araç değişiklikleri tek commit'te; medya git dışı.
 2026-10-14: B5 tamamlandı. Jordan'ın sesi Chris (ElevenLabs hazır ses; samimi, Amerikan aksanı; Charlie Avustralya aksanlı olduğu için seçilmedi) — kullanıcı değiştirebilir. İngilizce: diyalog 804 karakter (hesap3), Hi ifadeleri 160 karakter (hesap1/videoGenerator). Editör onayı (H-028) bekliyor: görseller, ceviri.tr.json, story.tr.md, ipucu metinleri.
+2026-10-14: B6–B8 tamamlandı (hesap4; Sam = Liam). Senkron 0,02 / 0,1 / 0,053 sn; -15,97 / -16,1 / -16,08 LUFS.
+2026-10-14: B9–B12 tamamlandı. Yeni İngilizce sesler (`sesler.json`): Rosa = Matilda, Mr Grant = Bill, Tom = Will, Sunucu = Daniel, Satıcı = Laura (kullanıcı değiştirebilir). İngilizce 4.175 karakter replik + Sarah ifadeleri, hepsi hesap4 (defter 7.524/10.000). Senkron: segment başına en büyük fark 0,0007 sn; bölüm bütünü -16,0 LUFS (B9–B12). Uyarı: B11 `tr_c-clues` Türkçe zaman eşleşmesi %80 ("Onuncu → 10.") — editör kulakla kontrol etsin. Higgsfield kalan kredi 385,06.

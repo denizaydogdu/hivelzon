@@ -147,7 +147,7 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 | K8 | H-073 | Kitap dalgası 3: C1 + C2 (10) | Orta | H-072 | ⏳ |
 | K7' | H-084 | B2-K01 eksik bölüm başı görseli (p13), kredi yüklenince | Düşük | kredi | ✅ |
 | K2' | H-086 | Kitap okuyucuda "Sayfanın Türkçesi" (panel + satır altı ayarı) | Orta | H-067 | 🔄 |
-| S1 | H-085 | Sezon 1 Bölüm 5–12 üretimi | Yüksek | H-032, H-083 | 🔄 |
+| S1 | H-085 | Sezon 1 Bölüm 5–12 üretimi (üretim bitti; simülatör denemesi + editör onayı bekliyor) | Yüksek | H-032, H-083 | 🔄 |
 
 **Sıra:** H-065 hemen (belge + katalog) → H-066 ve H-067, tasarım fazlarıyla paralel, ayrı dallarda → H-069 pilot → resim yoğunluğu ve ses planı kararı → H-068, H-070 → H-071 → H-072 → H-073.
 
@@ -426,3 +426,4 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
   - C1–C2'nin 80 görseli üretildi (40 kr). 30 kitabın hepsi yazıldı ve tam resimli; sesli kitap 5/30. H-086 "Sayfanın Türkçesi" main'de (940 test).
   - H-085 (dal `h-085-bolum-5`): B5 "Too Late?" İngilizce ses hariç üretildi: 14 görsel + Jordan ve kaydedici referansları (8 kr), kurgu ve çeviri (lint 0 hata), Türkçe sesler 615 karakter (5 tam, 5 Sarah parçası bekliyor). Bekleyen: Jordan'ın sesi (öneri Charlie) ve 964 İngilizce karakter (replik 804 + Sarah 160). Yeni: `tts_episode_en.py`, `--tr-only`, `docs/BOLUM-URETIM-REHBERI.md`.
   - **B5 "Too Late?" tamamlandı** (14 görsel 8 kr, Türkçe Alania, İngilizce 964 karakter: hesap3 + hesap1; senkron 0,01 sn; lint 0 hata). Jordan = Chris. B6–B12 için ~7.700 İngilizce karakter gerekiyor.
+  - **Sezon 1'in 12 bölümü de üretildi** (H-085): B6–B12 görsel, ★ klipler, Türkçe (Alania) ve İngilizce (hesap4) sesler, paketler; haritada 12/12 oynanabilir, lint 0 hata, -16,0 LUFS. Yeni sesler: Rosa Matilda, Mr Grant Bill, Tom Will, Sunucu Daniel, Satıcı Laura. Bekleyen: simülatör denemesi ve editör onayı (H-028). Higgsfield 385,06 kr.
