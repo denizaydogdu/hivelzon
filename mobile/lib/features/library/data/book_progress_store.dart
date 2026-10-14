@@ -20,6 +20,7 @@ class BookProgressStore {
 
   static const textSizeKey = 'reader.textSize';
   static const wordHighlightKey = 'reader.wordHighlight';
+  static const interlinearKey = 'reader.interlinear';
 
   DateTime now() => _clock().toUtc();
 
@@ -135,6 +136,17 @@ class BookProgressStore {
   Future<void> setWordHighlight(bool on) async {
     await _ready;
     await _setMeta(wordHighlightKey, on ? '1' : '0');
+  }
+
+  /// Satır altı Türkçe (H-086; varsayılan kapalı, K-03).
+  Future<bool> interlinear() async {
+    await _ready;
+    return await _meta(interlinearKey) == '1';
+  }
+
+  Future<void> setInterlinear(bool on) async {
+    await _ready;
+    await _setMeta(interlinearKey, on ? '1' : '0');
   }
 
   static BookProgress _toModel(UserBookProgressData r) => BookProgress(

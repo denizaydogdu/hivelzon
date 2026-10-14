@@ -541,6 +541,40 @@ class ReaderController extends ChangeNotifier {
     }
   }
 
+  /// "Sayfanın Türkçesi" panelinde bir cümle seçildi (H-086): sesli modda
+  /// okunan yer o cümleye geçer (vurgu oraya taşınır); panel açılmadan
+  /// çalıyorduysa o cümlenin başından sürer. Sessiz modda ses oynamaz
+  /// (vurguyu ekran gösterir).
+  Future<void> resumeAfterSheetAt(ReaderPlace p, bool wasPlaying) async {
+    if (_mode != ReaderMode.listen ||
+        !canListen ||
+        !book.chapterCanListen(book.pages[p.pageIndex].chapterId)) {
+      await resumeAfterSheet(false);
+      return;
+    }
+    await pause();
+    _stopAt = null;
+    _tracking = true;
+    if (_resumeSpeed != null && _resumeSpeed != _speed) {
+      await setSpeed(_resumeSpeed!);
+    }
+    _resumeAt = null;
+    _resumeSpeed = null;
+    _place = p;
+    _pageIndex = p.pageIndex;
+    _word = null;
+    final s = book.sentenceAt(p.pageIndex, p.sentenceIndex);
+    _report(sec: s.start);
+    if (await _ensureChapter(_chapterIndexOf(p))) {
+      await _seek(s.start ?? 0);
+      if (wasPlaying) {
+        await _startPlayback();
+        return;
+      }
+    }
+    _notify();
+  }
+
   /// Panel için ses: kelime ve cümle kitap sesinden kesilir.
   MeaningAudio meaningAudio(ReaderPlace p) => _BookMeaningAudio(this, p);
 

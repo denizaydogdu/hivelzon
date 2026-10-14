@@ -26,6 +26,7 @@ import '../domain/book_notebook.dart';
 import '../domain/book_progress.dart';
 import 'widgets/book_page_view.dart';
 import 'widgets/end_of_book_view.dart';
+import 'widgets/page_turkish_sheet.dart';
 
 /// Kitap okuyucu (H-067; tam ekran, `/kitap/:bookId`).
 ///
@@ -67,6 +68,16 @@ class _ReaderScreenState extends ConsumerState<ReaderScreen>
   bool _showEnd = false;
   bool _audioNoticeShown = false;
 
+  /// Satır altı Türkçe (okuma ayarı, H-086).
+  bool _interlinear = false;
+
+  /// Sessiz modda Türkçe panelinden seçilen cümle (sayfa çevrilince söner).
+  ReaderPlace? _focus;
+
+  /// Seçilen cümleyi görünür kılma isteği (her artışta bir kez).
+  ReaderPlace? _reveal;
+  int _revealRequest = 0;
+
   /// Okunan yeri izleme (sesli mod): kullanıcı kaydırınca durur, kaydırma
   /// bittikten [followResumeAfter] sonra ya da Dinle / sayfa düğmesi /
   /// cümleye dokunma / "Okunan yere dön" ile sürer.
@@ -105,6 +116,7 @@ class _ReaderScreenState extends ConsumerState<ReaderScreen>
       final progress = await store.get(book.id);
       final size = await store.textSize();
       final word = await store.wordHighlight();
+      final interlinear = await store.interlinear();
       if (!mounted) return;
       ReaderPlace? start;
       final p = progress;
@@ -136,6 +148,7 @@ class _ReaderScreenState extends ConsumerState<ReaderScreen>
       _c = c;
       _book = book;
       _textSize = size;
+      _interlinear = interlinear;
       _colors = BookColors.fromPalette(
         background: book.palette.background,
         text: book.palette.text,
@@ -229,6 +242,11 @@ class _ReaderScreenState extends ConsumerState<ReaderScreen>
       c.clearChapterAudioNotice();
       _snack(ReaderTexts.chapterNoAudio);
     }
+    final f = _focus;
+    if (f != null &&
+        (c.pageIndex != f.pageIndex || c.mode == ReaderMode.listen)) {
+      _focus = null;
+    }
     setState(() {});
   }
 
@@ -313,6 +331,40 @@ class _ReaderScreenState extends ConsumerState<ReaderScreen>
       return;
     }
     await c.resumeAfterSheet(wasPlaying);
+  }
+
+  /// "Sayfanın Türkçesi" (H-086): ekrandaki sayfanın Türkçesi alttan
+  /// panelde. Ses panel açıkken durur, kapanınca kaldığı yerden sürer.
+  /// Paneldeki cümleye dokununca panel kapanır, İngilizcesi vurgulanır ve
+  /// görünür kılınır (sesli modda okuma o cümleden sürer).
+  Future<void> _openPageTurkish() async {
+    final c = _c;
+    final book = _book;
+    if (c == null || book == null) return;
+    final pageIndex = c.pageIndex;
+    if (book.turkishOf(pageIndex).isEmpty) return;
+    if (_followPaused) _resumeFollow();
+    final wasPlaying = await c.pauseForSheet();
+    if (!mounted) return;
+    final picked = await showPageTurkishSheet(
+      context,
+      book: book,
+      pageIndex: pageIndex,
+      current: c.highlighted ?? _focus,
+    );
+    if (!mounted) return;
+    if (picked == null || c.pageIndex != pageIndex) {
+      await c.resumeAfterSheet(wasPlaying);
+      return;
+    }
+    final place = ReaderPlace(pageIndex, picked);
+    await c.resumeAfterSheetAt(place, wasPlaying);
+    if (!mounted) return;
+    setState(() {
+      _focus = c.mode == ReaderMode.listen ? null : place;
+      _reveal = place;
+      _revealRequest++;
+    });
   }
 
   /// Uzun basma: sesli modda kelimeyi tek dokunuşla Defter'e ekler (ses
@@ -418,6 +470,18 @@ class _ReaderScreenState extends ConsumerState<ReaderScreen>
               ),
               const SizedBox(height: AppSpace.s16),
               SwitchListTile(
+                key: const ValueKey('reader-interlinear'),
+                contentPadding: EdgeInsets.zero,
+                title: const Text(ReaderTexts.interlinear),
+                subtitle: const Text(ReaderTexts.interlinearHint),
+                value: _interlinear,
+                onChanged: (v) {
+                  setState(() => _interlinear = v);
+                  setSheet(() {});
+                  unawaited(_store.setInterlinear(v));
+                },
+              ),
+              SwitchListTile(
                 key: const ValueKey('reader-word-highlight'),
                 contentPadding: EdgeInsets.zero,
                 title: const Text(ReaderTexts.wordHighlight),
@@ -516,6 +580,7 @@ class _ReaderScreenState extends ConsumerState<ReaderScreen>
       );
     }
     final page = book.pages[c.pageIndex];
+    final hasTurkish = book.turkishOf(c.pageIndex).isNotEmpty;
     return Scaffold(
       backgroundColor: colors.background,
       body: SafeArea(
@@ -529,6 +594,7 @@ class _ReaderScreenState extends ConsumerState<ReaderScreen>
               onClose: () => Navigator.of(context).maybePop(),
               onChapters: _showEnd ? null : _chapters,
               onSettings: _showEnd ? null : _settings,
+              onPageTurkish: _showEnd || !hasTurkish ? null : _openPageTurkish,
             ),
             Expanded(
               child: _showEnd
@@ -555,6 +621,9 @@ class _ReaderScreenState extends ConsumerState<ReaderScreen>
                       controller: _pages,
                       itemCount: book.pages.length,
                       onPageChanged: (i) {
+                        if (_focus != null && _focus!.pageIndex != i) {
+                          setState(() => _focus = null);
+                        }
                         if (_programmaticPage) return;
                         unawaited(c.goToPage(i));
                       },
@@ -565,6 +634,8 @@ class _ReaderScreenState extends ConsumerState<ReaderScreen>
                         textSize: _textSize,
                         highlighted: c.highlighted?.pageIndex == i
                             ? c.highlighted
+                            : c.highlighted == null && _focus?.pageIndex == i
+                            ? _focus
                             : null,
                         highlightedWord: c.highlightedWord,
                         onWordTap: _openMeaning,
@@ -574,6 +645,12 @@ class _ReaderScreenState extends ConsumerState<ReaderScreen>
                         followRequest: _followRequest,
                         onUserScroll: _onUserScroll,
                         onUserScrollEnd: _onUserScrollEnd,
+                        interlinear: _interlinear,
+                        reveal: _reveal,
+                        revealRequest: _revealRequest,
+                        onPageTurkish: book.turkishOf(i).isNotEmpty
+                            ? _openPageTurkish
+                            : null,
                       ),
                     ),
             ),
@@ -639,6 +716,7 @@ class _TopBar extends StatelessWidget {
     required this.onClose,
     required this.onChapters,
     required this.onSettings,
+    required this.onPageTurkish,
   });
 
   final Book book;
@@ -647,6 +725,9 @@ class _TopBar extends StatelessWidget {
   final VoidCallback onClose;
   final VoidCallback? onChapters;
   final VoidCallback? onSettings;
+
+  /// Null ise (sayfanın Türkçesi yok) düğme gizli.
+  final VoidCallback? onPageTurkish;
 
   @override
   Widget build(BuildContext context) {
@@ -686,6 +767,14 @@ class _TopBar extends StatelessWidget {
               ],
             ),
           ),
+          if (onPageTurkish != null)
+            IconButton(
+              key: const ValueKey('reader-page-turkish'),
+              onPressed: onPageTurkish,
+              tooltip: ReaderTexts.pageTurkish,
+              color: colors.text,
+              icon: const Icon(Icons.translate_rounded),
+            ),
           IconButton(
             key: const ValueKey('reader-chapters-button'),
             onPressed: onChapters,

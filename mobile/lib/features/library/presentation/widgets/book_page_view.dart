@@ -29,6 +29,13 @@ typedef WordAction = void Function(ReaderPlace place, int? wordIndex);
 /// azalt" açıksa atlanır. Metin alanı alt denetimlerin üstünde biter;
 /// cümle denetimlerin altında kalmaz. Kullanıcı kaydırınca [onUserScroll],
 /// kaydırma bitince [onUserScrollEnd].
+///
+/// **Sayfanın Türkçesi (H-086):** [interlinear] açıkken her İngilizce
+/// cümlenin altında Türkçesi küçük ve soluk görünür (Türkçesi olmayan cümlede
+/// bir şey çizilmez). [revealRequest] her arttığında [reveal] cümlesi
+/// izlemeden bağımsız görünür kılınır (Türkçe panelinden seçilen cümle).
+/// Sayfanın Türkçesi varsa metnin sonunda "Sayfanın Türkçesi" düğmesi
+/// ([onPageTurkish]) durur.
 class BookPageView extends ConsumerStatefulWidget {
   const BookPageView({
     super.key,
@@ -45,6 +52,10 @@ class BookPageView extends ConsumerStatefulWidget {
     this.followRequest = 0,
     this.onUserScroll,
     this.onUserScrollEnd,
+    this.interlinear = false,
+    this.reveal,
+    this.revealRequest = 0,
+    this.onPageTurkish,
   });
 
   /// Cümlenin üstünün durduğu yer (görünür alan yüksekliğine oranla).
@@ -74,6 +85,16 @@ class BookPageView extends ConsumerStatefulWidget {
   final VoidCallback? onUserScroll;
   final VoidCallback? onUserScrollEnd;
 
+  /// Satır altı Türkçe (okuma ayarı; varsayılan kapalı).
+  final bool interlinear;
+
+  /// Görünür kılınacak cümle ve isteği (her artışta bir kez).
+  final ReaderPlace? reveal;
+  final int revealRequest;
+
+  /// "Sayfanın Türkçesi" düğmesi; null ise (sayfanın Türkçesi yok) gizli.
+  final VoidCallback? onPageTurkish;
+
   @override
   ConsumerState<BookPageView> createState() => _BookPageViewState();
 }
@@ -86,6 +107,9 @@ class _BookPageViewState extends ConsumerState<BookPageView> {
   final _keys = <(int, int), GlobalKey>{};
 
   bool _userScrolling = false;
+
+  /// Satır altı Türkçe satırının çapası (kelime sırası yerine).
+  static const _trLine = -1;
 
   GlobalKey _key(int sentence, int word) =>
       _keys.putIfAbsent((sentence, word), GlobalKey.new);
@@ -103,8 +127,17 @@ class _BookPageViewState extends ConsumerState<BookPageView> {
         widget.followWord != old.followWord ||
         widget.followRequest != old.followRequest ||
         widget.textSize != old.textSize ||
+        widget.interlinear != old.interlinear ||
         (widget.follow && !old.follow)) {
       _scheduleFollow();
+    }
+    if (widget.revealRequest != old.revealRequest) {
+      final r = widget.reveal;
+      if (r != null && r.pageIndex == widget.pageIndex) {
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          if (mounted) _bringIntoView(r.sentenceIndex);
+        });
+      }
     }
   }
 
@@ -131,12 +164,20 @@ class _BookPageViewState extends ConsumerState<BookPageView> {
     if (!mounted || !widget.follow || _userScrolling) return;
     final h = widget.highlighted;
     if (h == null || h.pageIndex != widget.pageIndex) return;
+    _bringIntoView(h.sentenceIndex, word: widget.followWord);
+  }
+
+  /// [si] cümlesi (satır altı Türkçesiyle) konforlu bandın dışındaysa
+  /// kaydırır; görünür alandan uzunsa [word] kelimesi izlenir.
+  void _bringIntoView(int si, {int? word}) {
     if (!_scroll.hasClients) return;
-    final si = h.sentenceIndex;
     final n = widget.book.sentenceAt(widget.pageIndex, si).words.length;
     final first = _box(si, 0);
     if (first == null) return;
-    final last = _box(si, n - 1) ?? first;
+    final last =
+        (widget.interlinear ? _box(si, _trLine) : null) ??
+        _box(si, n - 1) ??
+        first;
     final viewport = RenderAbstractViewport.maybeOf(first);
     if (viewport == null) return;
     final pos = _scroll.position;
@@ -150,11 +191,10 @@ class _BookPageViewState extends ConsumerState<BookPageView> {
     const band = BookPageView.followBandBottom - BookPageView.followAnchor;
     if (bottom - top > view * band) {
       // Görünür alandan uzun cümle (büyük yazı): okunan kelime izlenir.
-      final w = widget.followWord;
-      final word = w == null ? null : _box(si, w);
-      if (word != null) {
-        top = topOf(word);
-        bottom = bottomOf(word);
+      final wordBox = word == null ? null : _box(si, word);
+      if (wordBox != null) {
+        top = topOf(wordBox);
+        bottom = bottomOf(wordBox);
       } else {
         bottom = top + view * band;
       }
@@ -216,6 +256,9 @@ class _BookPageViewState extends ConsumerState<BookPageView> {
     final heading = AppTypography.readingHeading(
       textSize,
     ).copyWith(color: colors.text);
+    final gloss = AppTypography.readingGloss(
+      textSize,
+    ).copyWith(color: colors.muted);
     Widget sentences(List<(BookSentence, int)> list, TextStyle style) =>
         accessible
         ? _AccessibleParagraph(
@@ -238,6 +281,32 @@ class _BookPageViewState extends ConsumerState<BookPageView> {
             onWordLongPress: onWordLongPress,
             anchor: _key,
           );
+    // Satır altı Türkçe: her cümle ayrı satır bloğu, altında Türkçesi.
+    Widget interlinear(List<(BookSentence, int)> list, TextStyle style) =>
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            for (final (k, e) in list.indexed) ...[
+              if (k > 0) const SizedBox(height: AppSpace.s8),
+              sentences([e], style),
+              if (e.$1.tr?.trim() case final tr? when tr.isNotEmpty)
+                KeyedSubtree(
+                  key: _key(e.$2, _trLine),
+                  child: Semantics(
+                    label: ReaderTexts.interlinearSemantics(tr),
+                    excludeSemantics: true,
+                    child: Text(
+                      tr,
+                      key: ValueKey('tr-${e.$1.id}'),
+                      style: gloss,
+                    ),
+                  ),
+                ),
+            ],
+          ],
+        );
+    Widget block(List<(BookSentence, int)> list, TextStyle style) =>
+        widget.interlinear ? interlinear(list, style) : sentences(list, style);
     final paragraphs = <List<(BookSentence, int)>>[];
     int? last;
     for (final (i, s) in page.sentences.indexed) {
@@ -305,13 +374,29 @@ class _BookPageViewState extends ConsumerState<BookPageView> {
                 const SizedBox(height: AppSpace.s4),
                 Semantics(
                   header: true,
-                  child: sentences([(chapter.heading, -1)], heading),
+                  child: block([(chapter.heading, -1)], heading),
                 ),
                 const SizedBox(height: AppSpace.s16),
               ],
               for (final (i, p) in paragraphs.indexed) ...[
                 if (i > 0) const SizedBox(height: AppSpace.s16),
-                sentences(p, body),
+                block(p, body),
+              ],
+              if (widget.onPageTurkish != null) ...[
+                const SizedBox(height: AppSpace.s16),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: TextButton.icon(
+                    key: const ValueKey('reader-page-turkish-footer'),
+                    onPressed: widget.onPageTurkish,
+                    style: TextButton.styleFrom(
+                      foregroundColor: colors.text,
+                      minimumSize: const Size(AppTouch.min, AppTouch.min),
+                    ),
+                    icon: const Icon(Icons.translate_rounded),
+                    label: const Text(ReaderTexts.pageTurkish),
+                  ),
+                ),
               ],
             ],
           ),

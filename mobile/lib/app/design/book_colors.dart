@@ -14,6 +14,7 @@ class BookColors {
     required this.surface,
     required this.highlight,
     required this.onAccent,
+    required this.muted,
   });
 
   /// Paletten ([background] … `0xFFRRGGBB`) okunur renkler.
@@ -42,6 +43,16 @@ class BookColors {
     final onAc = contrast(AppPalette.white, ac) >= 4.5
         ? AppPalette.white
         : AppPalette.ink;
+    // Soluk yazı (satır altı Türkçe, H-086): yazı zemine doğru açılır, yine
+    // de zemine karşı en az 4,5:1 kalır.
+    var mu = fg;
+    for (final t in const [0.4, 0.3, 0.2, 0.1]) {
+      final c = Color.lerp(fg, bg, t)!;
+      if (contrast(c, bg) >= 4.5) {
+        mu = c;
+        break;
+      }
+    }
     return BookColors(
       background: bg,
       text: fg,
@@ -49,6 +60,7 @@ class BookColors {
       surface: contrast(fg, sf) >= 4.5 ? sf : AppPalette.white,
       highlight: hl,
       onAccent: onAc,
+      muted: mu,
     );
   }
 
@@ -64,6 +76,9 @@ class BookColors {
 
   /// Vurgu renginin üstündeki yazı/ikon.
   final Color onAccent;
+
+  /// Soluk yazı (satır altı Türkçe); zemine karşı en az 4,5:1.
+  final Color muted;
 
   /// WCAG kontrast oranı.
   static double contrast(Color a, Color b) {

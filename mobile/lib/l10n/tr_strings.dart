@@ -243,6 +243,17 @@ abstract final class ReaderTexts {
   static const textSizes = ['Küçük', 'Orta', 'Büyük'];
   static const wordHighlight = 'Okunan kelimeyi de vurgula';
   static const wordHighlightHint = 'Kapalıyken yalnız okunan cümle vurgulanır.';
+  static const interlinear = 'Satır altı Türkçe';
+  static const interlinearHint =
+      'Her İngilizce cümlenin altında Türkçesi küçük yazıyla görünür.';
+  static String interlinearSemantics(String tr) => 'Türkçesi: $tr';
+
+  // Sayfanın Türkçesi (H-086)
+  static const pageTurkish = 'Sayfanın Türkçesi';
+  static const pageTurkishHint =
+      'Bir cümleye dokun, İngilizcesi sayfada vurgulansın.';
+  static const pageTurkishItemHint =
+      'İngilizcesini sayfada göstermek için dokun';
 
   // Bölümler
   static const chapters = 'Bölümler';

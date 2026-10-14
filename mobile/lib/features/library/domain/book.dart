@@ -510,6 +510,24 @@ class Book {
     return p.sentences[index.clamp(0, p.sentences.length - 1)];
   }
 
+  /// Sayfanın onaylı Türkçesi, sırasıyla (H-086): (cümle sırası, Türkçe).
+  /// Bölümün ilk sayfasında başlık (−1) önce gelir. Türkçesi olmayan cümle
+  /// atlanır; liste boşsa sayfanın Türkçesi yoktur.
+  List<(int, String)> turkishOf(int pageIndex) {
+    final p = pages[pageIndex];
+    String? clean(String? tr) {
+      final t = tr?.trim();
+      return t == null || t.isEmpty ? null : t;
+    }
+
+    return [
+      if (isChapterStart(pageIndex))
+        if (clean(chapterOf(p).heading.tr) case final t?) (-1, t),
+      for (final (i, s) in p.sentences.indexed)
+        if (clean(s.tr) case final t?) (i, t),
+    ];
+  }
+
   /// Sayfa kimliğinden sayfa numarası (`p03-s01` → 3).
   static int? pageNumberOf(String? sentenceId) {
     final m = RegExp(r'^p(\d{2,3})').firstMatch(sentenceId ?? '');

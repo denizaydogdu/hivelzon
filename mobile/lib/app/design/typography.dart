@@ -112,6 +112,17 @@ abstract final class AppTypography {
     );
   }
 
+  /// Satır altı Türkçe (H-086): okuma boyutunun 0,8 katı, daha sık satır.
+  static TextStyle readingGloss(int step) {
+    final size = readingSizes[step.clamp(0, readingSizes.length - 1)] * 0.8;
+    return TextStyle(
+      fontFamily: AppFonts.body,
+      fontSize: size,
+      height: 1.4,
+      fontWeight: AppFonts.regular,
+    );
+  }
+
   /// Kitap sayfasındaki bölüm başlığı (okuma boyutunun 1,2 katı).
   static TextStyle readingHeading(int step) {
     final size = readingSizes[step.clamp(0, readingSizes.length - 1)] * 1.2;
