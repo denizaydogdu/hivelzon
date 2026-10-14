@@ -1,6 +1,6 @@
 # H-086: Kitap okuyucuda "Sayfanın Türkçesi"
 
-- **Durum:** Yapılacak
+- **Durum:** Devam ediyor (kod main'de: flutter 940; kullanıcı denemesi bekleniyor)
 - **Tür:** Uygulama (mobil)
 - **Faz:** Kitaplık (H-067 devamı)
 - **Bağımlılık:** H-067

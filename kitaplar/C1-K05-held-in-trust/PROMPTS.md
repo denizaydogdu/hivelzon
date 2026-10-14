@@ -28,9 +28,9 @@ Kurallar: her ücretli üretimden **önce** `higgsfield generate cost` ile maliy
 - Yukarıdaki kepenk bir el genişliği kadar aralık: Hatice dinliyor (p22).
 - Kapı açılınca: eski, yamalı, boğazına kadar iliklenmiş yeşil hırka; en üstteki düğme pirinç (p23).
 
-## Görsel planı (üretilmedi)
+## Görsel planı ve üretim kaydı (2026-10-14)
 
-> **Henüz üretilmedi.** Kullanıcı kararı (2026-10-14, H-071/H-072): kalan kitaplarda resim yoğunluğu **kapak + bölüm başı**. Bu kitapta 7 görsel: `images/cover.png`, `images/p01.png`, `images/p06.png`, `images/p10.png`, `images/p15.png`, `images/p19.png`, `images/p24.png` (git dışı; dosya adları `book.json` ile aynı, diğer sayfalar resimsiz ve palet renkli). Model: GPT Image 2.5, 3:4, ≈ 0,5 kr/görsel; tahmini toplam ≈ 3,5 kr. **Her üretimden önce `higgsfield generate cost` ile maliyet gösterilir ve kullanıcı onayı alınır.** Bölüm başı görselleri kapak işi referans verilerek üretilir (karakter tutarlılığı).
+> **Üretildi (2026-10-14).** Kullanıcı onayı: 500 kredi yüklendi, "tüm yarım kalan işlerimizi yap … onay verdim". GPT Image 2.5, 3:4, medium, 1k = 0,5 kr; bölüm başları kapak işi referans verilerek. Eski plan notu: Kullanıcı kararı (2026-10-14, H-071/H-072): kalan kitaplarda resim yoğunluğu **kapak + bölüm başı**. Bu kitapta 7 görsel: `images/cover.png`, `images/p01.png`, `images/p06.png`, `images/p10.png`, `images/p15.png`, `images/p19.png`, `images/p24.png` (git dışı; dosya adları `book.json` ile aynı, diğer sayfalar resimsiz ve palet renkli). Model: GPT Image 2.5, 3:4, ≈ 0,5 kr/görsel; tahmini toplam ≈ 3,5 kr. **Her üretimden önce `higgsfield generate cost` ile maliyet gösterilir ve kullanıcı onayı alınır.** Bölüm başı görselleri kapak işi referans verilerek üretilir (karakter tutarlılığı).
 
 **Sabit stil öneki (her istemin başına):**
 `Gouache and watercolour illustration, non-photorealistic, soft opaque gouache shapes over transparent watercolour washes on textured paper, elegant and nostalgic. Mediterranean autumn light. Palette: olive-leaf silver, warm terracotta, chalky whitewash, sea blue, pine green, with one small accent of clear summer-sea blue for the little box. Mood: quiet, warm, wistful, a little dry humour. Absolutely no text, letters, numbers, signs, logos or writing anywhere in the image; shop signs, brochures, books, dictionary pages, phone screens and notes are blank or drawn as soft abstract lines. Consistent characters as described. Vertical 3:4.`
@@ -60,6 +60,21 @@ Kurallar: her ücretli üretimden **önce** `higgsfield generate cost` ile maliy
 | p24.png | p24 (Bölüm 6, Emanet) | The small shady yard under the enormous fig tree, seen from a distance as if from the gate: two old women stand face to face, Margaret holding the little blue box against her chest; the second woman is small, in soft shadow, her clothes drawn only as muted indistinct shapes; Emre and Nur stand quietly at the edge of the yard. |
 
 **Sürpriz kontrolü:** Sonun sürprizi, Hatice'nin elli sekiz yıl boyunca Margaret'in 1968'de bıraktığı yeşil hırkayı emanet olarak saklamış olmasıdır (ve kimseyi görmemesinin nedeninin kırgınlık değil utangaçlık olması). Hiçbir görselde yeşil hırka, örgü bir giysi ya da pirinç düğme yer almaz; Margaret hep gri palto ya da lacivert elbiseyle çizilir, Nur lacivert kazakla (p03'teki yeşil kazak çizilmez). 1968 sahnesi (telgraf gecesi, sobanın yanındaki sandalye) hiç çizilmez. Hatice yalnız p24'te, olay metinde açıldıktan sonra, uzaktan ve gölgede, kıyafeti belirsiz biçimde görünür. Kapakta ve p19'da Hatice yoktur; p19'daki kepenkler kapalıdır.
+
+
+### Üretim kaydı
+
+| Dosya | Job id | Referans | Tarih (UTC) | Parametre | Kredi |
+|---|---|---|---|---|---|
+| cover.png | 07957614-b022-4cd0-94a5-8d3c65493008 | — | 2026-10-14T16:41:36+00:00 | 3:4, medium, 1k | 0.5 |
+| p15.png | acc6cd41-99ca-4b9a-884a-05575185a0d6 | 07957614-b022-4cd0-94a5-8d3c65493008 | 2026-10-14T16:47:23+00:00 | 3:4, medium, 1k | 0.5 |
+| p01.png | 5bce21c0-ee5b-40bf-aee2-08efadcd2d31 | 07957614-b022-4cd0-94a5-8d3c65493008 | 2026-10-14T16:47:25+00:00 | 3:4, medium, 1k | 0.5 |
+| p10.png | c7d9c15c-c466-4cb5-ba2f-4e87cfe837f8 | 07957614-b022-4cd0-94a5-8d3c65493008 | 2026-10-14T16:47:27+00:00 | 3:4, medium, 1k | 0.5 |
+| p06.png | d93fc51e-b7a0-45e0-ae49-e39374f19f25 | 07957614-b022-4cd0-94a5-8d3c65493008 | 2026-10-14T16:47:30+00:00 | 3:4, medium, 1k | 0.5 |
+| p24.png | 3a5be368-8beb-43a3-a4f7-6beb0f1e1130 | 07957614-b022-4cd0-94a5-8d3c65493008 | 2026-10-14T16:47:51+00:00 | 3:4, medium, 1k | 0.5 |
+| p19.png | 19630d0f-47c7-4166-be5c-a3701d060794 | 07957614-b022-4cd0-94a5-8d3c65493008 | 2026-10-14T16:47:52+00:00 | 3:4, medium, 1k | 0.5 |
+
+**Toplam:** 3.5 kr. Tam istemler yerel `images/_jobs.json`'da (git dışı). **Editör değerlendirmesi:** karakter ve üslup tutarlı; görselde yazı yok; sürpriz ele verilmiyor.
 
 ## Seslendirme kayıtları (tts_book.py)
 

@@ -30,9 +30,9 @@ Kurallar: her ücretli üretimden **önce** `higgsfield generate cost` ile maliy
 - 1994 broşürünün provasını Albert gözlüksüz imzaladı (p22).
 - Günlük: Salı Howard doğdu, cuma kâğıtlar imzalandı; 10 Haziran 1976 perşembe, 1977 cuma (p24).
 
-## Görsel planı (üretilmedi)
+## Görsel planı ve üretim kaydı (2026-10-14)
 
-> **Henüz üretilmedi.** Kullanıcı kararı (2026-10-14, H-071/H-072): kalan kitaplarda resim yoğunluğu **kapak + bölüm başı**. Bu kitapta 7 görsel: `images/cover.png`, `images/p01.png`, `images/p06.png`, `images/p10.png`, `images/p15.png`, `images/p19.png`, `images/p24.png` (git dışı; dosya adları `book.json` ile aynı, diğer sayfalar resimsiz ve palet renkli). Model: GPT Image 2.5, 3:4, ≈ 0,5 kr/görsel; tahmini toplam ≈ 3,5 kr. **Her üretimden önce `higgsfield generate cost` ile maliyet gösterilir ve kullanıcı onayı alınır.** Bölüm başı görselleri kapak işi referans verilerek üretilir (karakter tutarlılığı).
+> **Üretildi (2026-10-14).** Kullanıcı onayı: 500 kredi yüklendi, "tüm yarım kalan işlerimizi yap … onay verdim". GPT Image 2.5, 3:4, medium, 1k = 0,5 kr; bölüm başları kapak işi referans verilerek. Eski plan notu: Kullanıcı kararı (2026-10-14, H-071/H-072): kalan kitaplarda resim yoğunluğu **kapak + bölüm başı**. Bu kitapta 7 görsel: `images/cover.png`, `images/p01.png`, `images/p06.png`, `images/p10.png`, `images/p15.png`, `images/p19.png`, `images/p24.png` (git dışı; dosya adları `book.json` ile aynı, diğer sayfalar resimsiz ve palet renkli). Model: GPT Image 2.5, 3:4, ≈ 0,5 kr/görsel; tahmini toplam ≈ 3,5 kr. **Her üretimden önce `higgsfield generate cost` ile maliyet gösterilir ve kullanıcı onayı alınır.** Bölüm başı görselleri kapak işi referans verilerek üretilir (karakter tutarlılığı).
 
 **Sabit stil öneki (her istemin başına):**
 `Flat-colour editorial illustration, non-photorealistic, clean shapes, subtle paper grain, dry and slightly absurd office comedy, deadpan expressions. Palette: plum purple, mustard yellow, office grey and warm cream, with a single bright red umbrella as the only strong accent. Mood: dry, witty, gently absurd, never cruel. Absolutely no text, letters, numbers, signs, logos or writing anywhere in the image; banners, slides, documents, plaques, calendars, clock faces and screens are drawn blank or with abstract lines only. Consistent characters as described. Vertical 3:4.`
@@ -60,6 +60,21 @@ Kurallar: her ücretli üretimden **önce** `higgsfield generate cost` ile maliy
 | p24.png | p24 (Bölüm 6, The Speech) | Early morning in the basement: Mr Penrose wraps a small black book in a white handkerchief and hands it to Gwen with both hands, like a precious object; the lamp makes a circle of warm light; the old cardboard boxes around them. The book is closed and has no visible writing. |
 
 **Sürpriz kontrolü:** Sonun sürprizi şirketin 50 değil 49 yaşında olması, kanıtın Albert'in şapka kutusundaki günlükte çıkması ve gecenin "Fiftieth Anniversary Rehearsal" olarak yeniden adlandırılmasıdır. Hiçbir görselde rakam, yıl, tarih ya da yazı yoktur (tabela, plaket, takvim, saat kadranı ve belgeler boş çizilir). Çay lekeli belge ve 1994 broşürü hiçbir görselde gösterilmez. p24'teki günlük kapalı ve yazısızdır; görselin ne anlattığı (yıl) gösterilmez. Dev şemsiye ve kutlama gecesi hiçbir görselde yoktur; p15'te yalnız Jasper'ın kollarını açtığı fikir anı vardır. Kapakta Gwen'in başkanlığa "yakalandığı" an gösterilir; bu kanca cümlesidir, son değildir.
+
+
+### Üretim kaydı
+
+| Dosya | Job id | Referans | Tarih (UTC) | Parametre | Kredi |
+|---|---|---|---|---|---|
+| cover.png | 7dccc59f-6b81-4122-955e-ad3d985081c7 | — | 2026-10-14T16:40:57+00:00 | 3:4, medium, 1k | 0.5 |
+| p15.png | caa248af-ad39-436d-a8d0-5db512c2745f | 7dccc59f-6b81-4122-955e-ad3d985081c7 | 2026-10-14T16:45:36+00:00 | 3:4, medium, 1k | 0.5 |
+| p06.png | 9faa5629-0dd1-4d15-b9cf-6fc15f3a302b | 7dccc59f-6b81-4122-955e-ad3d985081c7 | 2026-10-14T16:45:39+00:00 | 3:4, medium, 1k | 0.5 |
+| p01.png | c31fd069-588a-48ff-992a-f0e52f0411b7 | 7dccc59f-6b81-4122-955e-ad3d985081c7 | 2026-10-14T16:45:39+00:00 | 3:4, medium, 1k | 0.5 |
+| p10.png | 9d7cc2df-434d-4033-8e3b-76ba16a16606 | 7dccc59f-6b81-4122-955e-ad3d985081c7 | 2026-10-14T16:45:40+00:00 | 3:4, medium, 1k | 0.5 |
+| p19.png | b6377072-d78c-4932-bd71-84048a1a43d2 | 7dccc59f-6b81-4122-955e-ad3d985081c7 | 2026-10-14T16:45:59+00:00 | 3:4, medium, 1k | 0.5 |
+| p24.png | 5c92ae89-5df1-4758-af5e-d9bc6dd4d002 | 7dccc59f-6b81-4122-955e-ad3d985081c7 | 2026-10-14T16:46:04+00:00 | 3:4, medium, 1k | 0.5 |
+
+**Toplam:** 3.5 kr. Tam istemler yerel `images/_jobs.json`'da (git dışı). **Editör değerlendirmesi:** karakter ve üslup tutarlı; görselde yazı yok; sürpriz ele verilmiyor.
 
 ## Seslendirme kayıtları (tts_book.py)
 

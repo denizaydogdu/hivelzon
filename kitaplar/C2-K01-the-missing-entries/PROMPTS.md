@@ -31,9 +31,9 @@ Kurallar: her ücretli üretimden **önce** `higgsfield generate cost` ile maliy
 - Kart, kütüphanenin "Free, Please Take" kutusundaki eski katalog kartı; kırağıda ince bir bisiklet tekerleği izi (p16); çocuk yapıştırıcısı, çilek kokusu (p17).
 - Callum'un gazete turu ve "small person with a bicycle basket" (p23); Alf: Zofia yürürken defterine gömülü okur (p24).
 
-## Görsel planı (üretilmedi)
+## Görsel planı ve üretim kaydı (2026-10-14)
 
-> **Henüz üretilmedi.** Kullanıcı kararı (2026-10-14, H-071/H-072): kalan kitaplarda resim yoğunluğu **kapak + bölüm başı**. Bu kitapta 9 görsel: `images/cover.png`, `images/p01.png`, `images/p05.png`, `images/p09.png`, `images/p13.png`, `images/p17.png`, `images/p21.png`, `images/p24.png`, `images/p28.png` (git dışı; dosya adları `book.json` ile aynı, diğer sayfalar resimsiz ve palet renkli). Model: GPT Image 2.5, 3:4, ≈ 0,5 kr/görsel; tahmini toplam ≈ 4,5 kr. **Her üretimden önce `higgsfield generate cost` ile maliyet gösterilir ve kullanıcı onayı alınır.** Bölüm başı görselleri kapak işi referans verilerek üretilir (karakter tutarlılığı).
+> **Üretildi (2026-10-14).** Kullanıcı onayı: 500 kredi yüklendi, "tüm yarım kalan işlerimizi yap … onay verdim". GPT Image 2.5, 3:4, medium, 1k = 0,5 kr; bölüm başları kapak işi referans verilerek. Eski plan notu: Kullanıcı kararı (2026-10-14, H-071/H-072): kalan kitaplarda resim yoğunluğu **kapak + bölüm başı**. Bu kitapta 9 görsel: `images/cover.png`, `images/p01.png`, `images/p05.png`, `images/p09.png`, `images/p13.png`, `images/p17.png`, `images/p21.png`, `images/p24.png`, `images/p28.png` (git dışı; dosya adları `book.json` ile aynı, diğer sayfalar resimsiz ve palet renkli). Model: GPT Image 2.5, 3:4, ≈ 0,5 kr/görsel; tahmini toplam ≈ 4,5 kr. **Her üretimden önce `higgsfield generate cost` ile maliyet gösterilir ve kullanıcı onayı alınır.** Bölüm başı görselleri kapak işi referans verilerek üretilir (karakter tutarlılığı).
 
 **Sabit stil öneki (her istemin başına):**
 `Fine pen-and-ink line drawing with soft sepia washes on warm cream paper, non-photorealistic, delicate cross-hatching, witty and warm, like the illustrations of a classic English village novel. Palette: sepia, umber, cream, faded grey; the only accent colour in the whole series is the bright yellow of a child's bicycle basket, used only where the basket appears. Paper cut-outs and collages are drawn as blank pale strips and rectangles, never as readable words. Absolutely no text, letters, numbers, signs, logos or writing anywhere in the image; book pages, dictionary columns, cards, notebooks and noticeboards show only abstract thin grey lines. Consistent characters as described. Vertical 3:4.`
@@ -64,6 +64,23 @@ Kurallar: her ücretli üretimden **önce** `higgsfield generate cost` ile maliy
 | p28.png | p28 (Bölüm 8, Definitions) | Saturday morning at the library door: Zofia in a red coat pushes a small bicycle with a bright yellow basket inside, her mother in a blue tunic behind her; Edmund by the noticeboard turns towards them, surprised and very formal; Janet smiles. No cards or messages are visible. |
 
 **Sürpriz kontrolü:** Sonun sürprizi, sözlükten maddeleri kesenin İngilizce öğrenmeye çalışan on yaşındaki Zofia olması, yalnızca Edmund'un maddelerini en açık tanımlar oldukları için seçmesi, mesajın "Are you lonely too? Will you teach me?" olması ve teach'i kesmeye kıyamamasıdır. Zofia ve annesi yalnız 8. bölüm başında (p28), metinde kapıdan girdikleri anda görünür; daha önceki hiçbir görselde çocuk yüzü ya da çocuk figürü yoktur. Sarı sepetli bisiklet yalnız kapakta uzakta ve bulanık görünür (metinde p04'te zaten anlatılan ipucu). Hiçbir görselde okunur kelime, kartlardaki mesajın sırası, boşluklu ikinci satır ya da teach maddesi yer almaz; kartlar ve şeritler boş çizilir. p13'te uyuyan Edmund ve katlanmış atkı gösterilmez.
+
+
+### Üretim kaydı
+
+| Dosya | Job id | Referans | Tarih (UTC) | Parametre | Kredi |
+|---|---|---|---|---|---|
+| cover.png | f5165a73-844e-48da-b09b-911578e99ee8 | — | 2026-10-14T16:41:56+00:00 | 3:4, medium, 1k | 0.5 |
+| p09.png | 9979202e-f4b2-4f3e-85aa-fd605c1d83c5 | f5165a73-844e-48da-b09b-911578e99ee8 | 2026-10-14T16:48:15+00:00 | 3:4, medium, 1k | 0.5 |
+| p05.png | ce961d17-d426-437e-b41e-bf151ebe2988 | f5165a73-844e-48da-b09b-911578e99ee8 | 2026-10-14T16:48:16+00:00 | 3:4, medium, 1k | 0.5 |
+| p01.png | a3952cff-87c6-4edd-b9c1-c2c8dcfa3400 | f5165a73-844e-48da-b09b-911578e99ee8 | 2026-10-14T16:48:19+00:00 | 3:4, medium, 1k | 0.5 |
+| p13.png | 4bae6f0e-c4cd-4460-a0bf-e1ae40a2aa2c | f5165a73-844e-48da-b09b-911578e99ee8 | 2026-10-14T16:48:22+00:00 | 3:4, medium, 1k | 0.5 |
+| p17.png | ee193855-5d2f-4830-a465-96cb9644fbc0 | f5165a73-844e-48da-b09b-911578e99ee8 | 2026-10-14T16:48:41+00:00 | 3:4, medium, 1k | 0.5 |
+| p24.png | 92339538-daae-494e-b675-f5212ee7f4e9 | f5165a73-844e-48da-b09b-911578e99ee8 | 2026-10-14T16:48:43+00:00 | 3:4, medium, 1k | 0.5 |
+| p21.png | 62bb9084-940f-4291-a3f9-6a5fb7a25131 | f5165a73-844e-48da-b09b-911578e99ee8 | 2026-10-14T16:48:45+00:00 | 3:4, medium, 1k | 0.5 |
+| p28.png | 59dd52de-d6d2-44af-8ec2-0704357c5074 | f5165a73-844e-48da-b09b-911578e99ee8 | 2026-10-14T16:48:45+00:00 | 3:4, medium, 1k | 0.5 |
+
+**Toplam:** 4.5 kr. Tam istemler yerel `images/_jobs.json`'da (git dışı). **Editör değerlendirmesi:** karakter ve üslup tutarlı; görselde yazı yok; sürpriz ele verilmiyor.
 
 ## Seslendirme kayıtları (tts_book.py)
 

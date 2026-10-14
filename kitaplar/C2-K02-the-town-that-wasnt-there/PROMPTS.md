@@ -30,9 +30,9 @@ Kurallar: her ücretli üretimden **önce** `higgsfield generate cost` ile maliy
 - Kilerde düzinelerce aynı yeşil boya tenekesi, uzun saplı fırçalar, çatıya yetecek iki merdiven (p23).
 - Nell bu yaz ilk kez "çatıya çıkacak"; Kit sözünü keser (p24). Kit: "I don't suppose there has." (p24); uydu haberine sakin tepki: "Clear skies. How lovely." (p25).
 
-## Görsel planı (üretilmedi)
+## Görsel planı ve üretim kaydı (2026-10-14)
 
-> **Henüz üretilmedi.** Kullanıcı kararı (2026-10-14, H-071/H-072): kalan kitaplarda resim yoğunluğu **kapak + bölüm başı**. Bu kitapta 8 görsel: `images/cover.png`, `images/p01.png`, `images/p05.png`, `images/p09.png`, `images/p13.png`, `images/p18.png`, `images/p22.png`, `images/p26.png` (git dışı; dosya adları `book.json` ile aynı, diğer sayfalar resimsiz ve palet renkli). Model: GPT Image 2.5, 3:4, ≈ 0,5 kr/görsel; tahmini toplam ≈ 4 kr. **Her üretimden önce `higgsfield generate cost` ile maliyet gösterilir ve kullanıcı onayı alınır.** Bölüm başı görselleri kapak işi referans verilerek üretilir (karakter tutarlılığı).
+> **Üretildi (2026-10-14).** Kullanıcı onayı: 500 kredi yüklendi, "tüm yarım kalan işlerimizi yap … onay verdim". GPT Image 2.5, 3:4, medium, 1k = 0,5 kr; bölüm başları kapak işi referans verilerek. Eski plan notu: Kullanıcı kararı (2026-10-14, H-071/H-072): kalan kitaplarda resim yoğunluğu **kapak + bölüm başı**. Bu kitapta 8 görsel: `images/cover.png`, `images/p01.png`, `images/p05.png`, `images/p09.png`, `images/p13.png`, `images/p18.png`, `images/p22.png`, `images/p26.png` (git dışı; dosya adları `book.json` ile aynı, diğer sayfalar resimsiz ve palet renkli). Model: GPT Image 2.5, 3:4, ≈ 0,5 kr/görsel; tahmini toplam ≈ 4 kr. **Her üretimden önce `higgsfield generate cost` ile maliyet gösterilir ve kullanıcı onayı alınır.** Bölüm başı görselleri kapak işi referans verilerek üretilir (karakter tutarlılığı).
 
 **Sabit stil öneki (her istemin başına):**
 `Illustration in the style of an old hand-drawn survey map brought to life, non-photorealistic: fine ink linework, delicate contour-line patterns flowing through skies, hills and water, soft sepia paper texture, muted watercolour washes. Palette: sepia and parchment cream, deep fir green, moss green, slate grey, a little rust. Mood: adventurous, nostalgic, quietly witty. Absolutely no text, letters, numbers, place names, labels, signs, logos or writing anywhere in the image; maps, screens, postcards and papers show only abstract contour lines and shapes, phone and laptop screens are blank or show abstract green texture. Consistent characters as described. Vertical 3:4.`
@@ -62,6 +62,22 @@ Kurallar: her ücretli üretimden **önce** `higgsfield generate cost` ile maliy
 | p26.png | p26 (Bölüm 7, Green Roofs) | A bright, perfectly clear blue morning on the village green, seen from ground level under the edge of the fir branches: Nell waving both arms at the sky, Amira beside her shading her eyes and looking up, Kit in his apron with his hands in his pockets, calm; white sheets and a red jumper on a washing line. Only the sky and the branches are seen above them. |
 
 **Sürpriz kontrolü:** Sonun sürprizi, kasabanın uydu görüntülerinde bilerek görünmemesidir: sakinler onlarca yıldır çatıları yosun yeşiline boyar ve evlerin arasındaki ağaçları korur; fırıncı Kit, kasabayı 1931'de uyduran haritacı Arthur Lisle'ın torunudur ve kartpostalı o yazmıştır. Hiçbir görselde boya tenekesi, fırça, merdiven, çatıda çalışan biri ya da boya izi gösterilmez. Kasaba hiçbir görselde yukarıdan (kuş bakışı ya da uydu açısından) gösterilmez; çatılar yalnız p13'te yerden ve ağaçların arasında, kitaptaki "yosun" açıklamasıyla uyumlu biçimde görünür. Kapakta vadi yalnız ağaçla doludur. Kit'in çizim aleti kutusu, kara tahta, kartpostal ve haritanın kenarındaki not hiçbir görselde yer almaz; p18'deki harita yalnız soluk bir dikdörtgen olarak çizilir. p26'da gökyüzüne bakan üç kişi gösterilir ama sonuç (boş uydu görüntüsü) gösterilmez.
+
+
+### Üretim kaydı
+
+| Dosya | Job id | Referans | Tarih (UTC) | Parametre | Kredi |
+|---|---|---|---|---|---|
+| cover.png | ca5a9bd6-a82f-4f6d-a826-e68df192dc68 | — | 2026-10-14T16:42:15+00:00 | 3:4, medium, 1k | 0.5 |
+| p13.png | d68a7d40-ddf4-44d8-95ac-a2be886ef0ed | ca5a9bd6-a82f-4f6d-a826-e68df192dc68 | 2026-10-14T16:49:11+00:00 | 3:4, medium, 1k | 0.5 |
+| p01.png | 3babae9b-290f-4c2a-84eb-061e09c0d950 | ca5a9bd6-a82f-4f6d-a826-e68df192dc68 | 2026-10-14T16:49:11+00:00 | 3:4, medium, 1k | 0.5 |
+| p09.png | 44d97826-1750-4987-964e-416e76df8f49 | ca5a9bd6-a82f-4f6d-a826-e68df192dc68 | 2026-10-14T16:49:14+00:00 | 3:4, medium, 1k | 0.5 |
+| p05.png | b779915a-2809-4a99-9052-af3f7703abfe | ca5a9bd6-a82f-4f6d-a826-e68df192dc68 | 2026-10-14T16:49:27+00:00 | 3:4, medium, 1k | 0.5 |
+| p18.png | dec1f81c-5eb6-4734-8f5f-7f949d55a480 | ca5a9bd6-a82f-4f6d-a826-e68df192dc68 | 2026-10-14T16:49:34+00:00 | 3:4, medium, 1k | 0.5 |
+| p22.png | 422cdd28-d7d5-41fd-9d3f-ac5b9a8619f3 | ca5a9bd6-a82f-4f6d-a826-e68df192dc68 | 2026-10-14T16:49:34+00:00 | 3:4, medium, 1k | 0.5 |
+| p26.png | 73e7a93c-7d9b-4999-a9da-75f7b9749a11 | ca5a9bd6-a82f-4f6d-a826-e68df192dc68 | 2026-10-14T16:49:38+00:00 | 3:4, medium, 1k | 0.5 |
+
+**Toplam:** 4 kr. Tam istemler yerel `images/_jobs.json`'da (git dışı). **Editör değerlendirmesi:** karakter ve üslup tutarlı; görselde yazı yok; sürpriz ele verilmiyor.
 
 ## Seslendirme kayıtları (tts_book.py)
 

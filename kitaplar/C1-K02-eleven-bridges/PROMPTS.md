@@ -27,9 +27,9 @@ Kurallar: her ücretli üretimden **önce** `higgsfield generate cost` ile maliy
 - Hedda telefonda: "You needn't have come all this way for me." ve "Take a good look." (p18).
 - Kanal kapağı bekçisi (Mardle): koordinat nehrin ortası, "nothing there but water" (p16); cezirde ortaya çıkan çakıl tümseği, "The Bank" (p21); Bayan Dunmore: "A bridge would need to stand on the Bank, and nobody has ever come up with a design that could." (p22).
 
-## Görsel planı (üretilmedi)
+## Görsel planı ve üretim kaydı (2026-10-14)
 
-> **Henüz üretilmedi.** Kullanıcı kararı (2026-10-14, H-071/H-072): kalan kitaplarda resim yoğunluğu **kapak + bölüm başı**. Bu kitapta 8 görsel: `images/cover.png`, `images/p01.png`, `images/p05.png`, `images/p09.png`, `images/p13.png`, `images/p17.png`, `images/p21.png`, `images/p25.png` (git dışı; dosya adları `book.json` ile aynı, diğer sayfalar resimsiz ve palet renkli). Model: GPT Image 2.5, 3:4, ≈ 0,5 kr/görsel; tahmini toplam ≈ 4 kr. **Her üretimden önce `higgsfield generate cost` ile maliyet gösterilir ve kullanıcı onayı alınır.** Bölüm başı görselleri kapak işi referans verilerek üretilir (karakter tutarlılığı).
+> **Üretildi (2026-10-14).** Kullanıcı onayı: 500 kredi yüklendi, "tüm yarım kalan işlerimizi yap … onay verdim". GPT Image 2.5, 3:4, medium, 1k = 0,5 kr; bölüm başları kapak işi referans verilerek. Eski plan notu: Kullanıcı kararı (2026-10-14, H-071/H-072): kalan kitaplarda resim yoğunluğu **kapak + bölüm başı**. Bu kitapta 8 görsel: `images/cover.png`, `images/p01.png`, `images/p05.png`, `images/p09.png`, `images/p13.png`, `images/p17.png`, `images/p21.png`, `images/p25.png` (git dışı; dosya adları `book.json` ile aynı, diğer sayfalar resimsiz ve palet renkli). Model: GPT Image 2.5, 3:4, ≈ 0,5 kr/görsel; tahmini toplam ≈ 4 kr. **Her üretimden önce `higgsfield generate cost` ile maliyet gösterilir ve kullanıcı onayı alınır.** Bölüm başı görselleri kapak işi referans verilerek üretilir (karakter tutarlılığı).
 
 **Sabit stil öneki (her istemin başına):**
 `Travel-journal sketch illustration, non-photorealistic: loose graphite pencil lines with soft watercolour washes on cream textured paper, like a page from an engineer's sketchbook, airy and thoughtful. Palette: river green, stone grey, summer yellow, cream paper, a little sky blue. Mood: calm, spacious, quietly curious, gentle dry humour. Absolutely no text, letters, numbers, signs, logos or writing anywhere in the image; diary and sketchbook pages show only drawings and soft abstract pencil marks, maps are blank shapes and lines, phone screens are blank. Consistent characters as described. Vertical 3:4.`
@@ -58,6 +58,22 @@ Kurallar: her ücretli üretimden **önce** `higgsfield generate cost` ile maliy
 | p25.png | p25 (Bölüm 7, The Eleventh Bridge) | Night in a small room above a café: Lena sits on the bed under a warm lamp, leaning over the open diary with a ruler and a pencil, a laptop beside her with a blank glowing screen; the diary page shows only soft faint abstract pencil lines, seen at an angle and not readable; through the window, dark water and a few harbour lights. |
 
 **Sürpriz kontrolü:** Sonun sürprizi, on birinci köprünün hiç yapılmamış olması, Hedda'nın onu 1962'de bitirme projesi olarak tasarlaması ve projenin reddedilmesidir; Lena çizimin tam bir mühendislik projesi olduğunu anlar ve meclis onu incelemeye karar verir. Hiçbir görselde on birinci köprünün çizimi okunur biçimde gösterilmez (p01'de defter sayfasında yalnız taş kemer; p25'te sayfa açılı ve soyut çizgiler). Wrenmouth'taki görsel (p21) bilinçli olarak köprüsüz ve boştur. Genç Hedda, Tomasz'la fotoğraf, karton çizim tüpü, red mektubu, meclis toplantısı ve doğum günü hiçbir görselde yer almaz. Kapaktaki köprüler yalnız yol boyunca var olan köprülerdir; nehrin sonu sise karışır.
+
+
+### Üretim kaydı
+
+| Dosya | Job id | Referans | Tarih (UTC) | Parametre | Kredi |
+|---|---|---|---|---|---|
+| cover.png | 66532274-fa1f-4dd6-81b9-69ebcec76615 | — | 2026-10-14T16:40:34+00:00 | 3:4, medium, 1k | 0.5 |
+| p09.png | 54f70b8b-843d-4b33-82e3-8202bed75c8f | 66532274-fa1f-4dd6-81b9-69ebcec76615 | 2026-10-14T16:44:43+00:00 | 3:4, medium, 1k | 0.5 |
+| p01.png | 37682392-fc35-4bec-b01e-999166f15966 | 66532274-fa1f-4dd6-81b9-69ebcec76615 | 2026-10-14T16:44:43+00:00 | 3:4, medium, 1k | 0.5 |
+| p05.png | e768c0cc-3225-4b68-a305-54061dd15b0a | 66532274-fa1f-4dd6-81b9-69ebcec76615 | 2026-10-14T16:44:44+00:00 | 3:4, medium, 1k | 0.5 |
+| p13.png | b080aae7-404a-4e09-94c3-a49a8983adc1 | 66532274-fa1f-4dd6-81b9-69ebcec76615 | 2026-10-14T16:44:48+00:00 | 3:4, medium, 1k | 0.5 |
+| p25.png | bb12c30a-f175-44f3-87bc-68d5849a10d4 | 66532274-fa1f-4dd6-81b9-69ebcec76615 | 2026-10-14T16:45:10+00:00 | 3:4, medium, 1k | 0.5 |
+| p17.png | 27fe2725-9a5c-4555-a9ad-ba8549a1400f | 66532274-fa1f-4dd6-81b9-69ebcec76615 | 2026-10-14T16:45:12+00:00 | 3:4, medium, 1k | 0.5 |
+| p21.png | 64f56db7-44d0-4ddc-baee-7b23491140a7 | 66532274-fa1f-4dd6-81b9-69ebcec76615 | 2026-10-14T16:45:12+00:00 | 3:4, medium, 1k | 0.5 |
+
+**Toplam:** 4 kr. Tam istemler yerel `images/_jobs.json`'da (git dışı). **Editör değerlendirmesi:** karakter ve üslup tutarlı; görselde yazı yok; sürpriz ele verilmiyor.
 
 ## Seslendirme kayıtları (tts_book.py)
 

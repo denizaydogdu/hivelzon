@@ -29,9 +29,9 @@ Kurallar: her ücretli üretimden **önce** `higgsfield generate cost` ile maliy
 - Dürüst raporu bilinçli olarak gönderdiği sabah ve sonrasında su boş (p21); "He had not decided anything at all since the night of the report." (p26).
 - Oriana otuz bir yıldır, defteri tutmaya karar verdiği geceden beri yalnızca gökyüzünü görür (p28).
 
-## Görsel planı (üretilmedi)
+## Görsel planı ve üretim kaydı (2026-10-14)
 
-> **Henüz üretilmedi.** Kullanıcı kararı (2026-10-14, H-071/H-072): kalan kitaplarda resim yoğunluğu **kapak + bölüm başı**. Bu kitapta 8 görsel: `images/cover.png`, `images/p01.png`, `images/p06.png`, `images/p10.png`, `images/p14.png`, `images/p18.png`, `images/p22.png`, `images/p26.png` (git dışı; dosya adları `book.json` ile aynı, diğer sayfalar resimsiz ve palet renkli). Model: GPT Image 2.5, 3:4, ≈ 0,5 kr/görsel; tahmini toplam ≈ 4 kr. **Her üretimden önce `higgsfield generate cost` ile maliyet gösterilir ve kullanıcı onayı alınır.** Bölüm başı görselleri kapak işi referans verilerek üretilir (karakter tutarlılığı).
+> **Üretildi (2026-10-14).** Kullanıcı onayı: 500 kredi yüklendi, "tüm yarım kalan işlerimizi yap … onay verdim". GPT Image 2.5, 3:4, medium, 1k = 0,5 kr; bölüm başları kapak işi referans verilerek. Eski plan notu: Kullanıcı kararı (2026-10-14, H-071/H-072): kalan kitaplarda resim yoğunluğu **kapak + bölüm başı**. Bu kitapta 8 görsel: `images/cover.png`, `images/p01.png`, `images/p06.png`, `images/p10.png`, `images/p14.png`, `images/p18.png`, `images/p22.png`, `images/p26.png` (git dışı; dosya adları `book.json` ile aynı, diğer sayfalar resimsiz ve palet renkli). Model: GPT Image 2.5, 3:4, ≈ 0,5 kr/görsel; tahmini toplam ≈ 4 kr. **Her üretimden önce `higgsfield generate cost` ile maliyet gösterilir ve kullanıcı onayı alınır.** Bölüm başı görselleri kapak işi referans verilerek üretilir (karakter tutarlılığı).
 
 **Sabit stil öneki (her istemin başına):**
 `Magical realism illustration, non-photorealistic, painterly with soft gouache textures, calm symmetrical compositions with a strong central axis. Palette: mirror-like steel-grey lake water, misty violet and purple mountains, pale morning gold light, cool mist white, small touches of warm wood and stone. Mood: silent, mysterious, contemplative, slightly melancholic, never frightening. Absolutely no text, letters, numbers, signs, logos or writing anywhere in the image; book pages, papers, screens and notebooks show only abstract soft lines; no clock faces. Reflections in the water are soft and calm. Consistent characters as described. Vertical 3:4.`
@@ -59,6 +59,22 @@ Kurallar: her ücretli üretimden **önce** `higgsfield generate cost` ile maliy
 | p26.png | p26 (Bölüm 7, Blank Water) | Early morning after the storm, wet pine and shining stones: Tomás, seen from behind and at a distance, runs along the curving shore towards the last stone house of the village, where a single window is lit; the calm lake reflects the violet mountains and the pale gold sky. |
 
 **Sürpriz kontrolü:** Sonun sürprizi, gölün geleceği ya da istekleri değil, insanın karar vermeyip sürüklenirse varacağı yeri göstermesi; bilinçli bir karar verildiğinde yansımanın kaybolup suda yalnızca gökyüzünün görünmesidir. Hiçbir görsel, birinin suya baktığında yüzü yerine boş gökyüzü gördüğü anı göstermez. Kapaktaki yansıma belirsiz bir ışık pırıltısıdır; ne bir eylem ne de boşluk gösterir. p14'teki yansıma sıradan, kendi yüzüdür (metindeki o anla aynı). Defter sayfaları yalnız soyut çizgilerdir; yüzde altmış bir sayısı ya da "blank" kelimesi görünmez. p26'da Tomás uzaktan ve arkadan görünür, suya bakmaz; göl yalnızca manzarayı yansıtır. Böylece hiçbir görsel kararla boş su arasındaki bağı ele vermez.
+
+
+### Üretim kaydı
+
+| Dosya | Job id | Referans | Tarih (UTC) | Parametre | Kredi |
+|---|---|---|---|---|---|
+| cover.png | c2ae771a-703c-41a4-9df1-b97d81129581 | — | 2026-10-14T16:41:16+00:00 | 3:4, medium, 1k | 0.5 |
+| p01.png | 5fce350d-2d2f-4ead-aca2-c0b1aeb2ea57 | c2ae771a-703c-41a4-9df1-b97d81129581 | 2026-10-14T16:46:27+00:00 | 3:4, medium, 1k | 0.5 |
+| p14.png | 2db33b36-5b4d-46af-950a-7478ae3cb0ce | c2ae771a-703c-41a4-9df1-b97d81129581 | 2026-10-14T16:46:31+00:00 | 3:4, medium, 1k | 0.5 |
+| p10.png | adc305f2-f8d5-45e8-ae86-e9e08c39e3c9 | c2ae771a-703c-41a4-9df1-b97d81129581 | 2026-10-14T16:46:31+00:00 | 3:4, medium, 1k | 0.5 |
+| p06.png | b4d87a08-b3ee-4d49-9875-3eedbb6a6466 | c2ae771a-703c-41a4-9df1-b97d81129581 | 2026-10-14T16:46:32+00:00 | 3:4, medium, 1k | 0.5 |
+| p18.png | 89aa2c06-cce0-4446-bee7-bd438eace610 | c2ae771a-703c-41a4-9df1-b97d81129581 | 2026-10-14T16:46:53+00:00 | 3:4, medium, 1k | 0.5 |
+| p26.png | ee753f67-850e-46fd-a918-9e9ecc8daeb9 | c2ae771a-703c-41a4-9df1-b97d81129581 | 2026-10-14T16:46:55+00:00 | 3:4, medium, 1k | 0.5 |
+| p22.png | f3b61d60-4b96-4550-a8b2-7c63be8aaf3f | c2ae771a-703c-41a4-9df1-b97d81129581 | 2026-10-14T16:46:57+00:00 | 3:4, medium, 1k | 0.5 |
+
+**Toplam:** 4 kr. Tam istemler yerel `images/_jobs.json`'da (git dışı). **Editör değerlendirmesi:** karakter ve üslup tutarlı; görselde yazı yok; sürpriz ele verilmiyor.
 
 ## Seslendirme kayıtları (tts_book.py)
 

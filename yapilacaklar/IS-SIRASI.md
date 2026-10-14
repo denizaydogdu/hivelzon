@@ -423,3 +423,4 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
   - Üçüncü ücretsiz ElevenLabs hesabı (kullanıcının arkadaşının; anahtar repo dışında `~/.config/hivelzon/elevenlabs-3.env`, defter `elevenlabs-hesap3-karakter.json`): A1-K04 ve A1-K05 seslendirildi; A1 dilbilgisinin 16 dersinin hepsi İngilizce örnekleriyle sesli. Sesli kitap: 5/20.
   - Kullanıcı Higgsfield'a 500 kredi yükledi ve yarım kalan işler için onay verdi. H-084 bitti (p13). Kitaplık: 20 kitabın hepsi tam resimli.
   - H-085 (Bölüm 5–12 üretimi; B5 başladı) ve H-086 (kitapta "Sayfanın Türkçesi", kullanıcı isteği) açıldı. C1–C2 kitapları main'de (30 kitap yazıldı); 80 görsel üretiliyor.
+  - C1–C2'nin 80 görseli üretildi (40 kr). 30 kitabın hepsi yazıldı ve tam resimli; sesli kitap 5/30. H-086 "Sayfanın Türkçesi" main'de (940 test).

@@ -1,6 +1,6 @@
 # H-073: Kitap dalgası 3: C1 + C2 (10 kitap)
 
-- **Durum:** Yapılacak
+- **Durum:** Devam ediyor (10 kitap metni + çevirisi onaylı, 80 görsel üretildi (40 kr); ses ElevenLabs kotası bekliyor)
 - **Tür:** İçerik üretimi
 - **Faz:** Kitaplık K8 (`docs/KITAPLIK.md` §9)
 - **Bağımlılık:** H-072

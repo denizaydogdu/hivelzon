@@ -28,9 +28,9 @@ Kurallar: her ücretli üretimden **önce** `higgsfield generate cost` ile maliy
 - Romanın dokuzuncu bölümü: Nevzat kızının dilinin sözlüğünü alır, ikinci yarıyı ilk kez anlar, "to arrive at the right door" (p20–p21); adı konmayan nesnenin bir okul defteri olduğu; son satır "The rest he would tell her in her own language." (p22).
 - Kart: "For translator. Please, no correct." (p24); "For translator. Not for Aylin." (p25).
 
-## Görsel planı (üretilmedi)
+## Görsel planı ve üretim kaydı (2026-10-14)
 
-> **Henüz üretilmedi.** Kullanıcı kararı (2026-10-14, H-071/H-072): kalan kitaplarda resim yoğunluğu **kapak + bölüm başı**. Bu kitapta 9 görsel: `images/cover.png`, `images/p01.png`, `images/p05.png`, `images/p09.png`, `images/p13.png`, `images/p16.png`, `images/p20.png`, `images/p23.png`, `images/p27.png` (git dışı; dosya adları `book.json` ile aynı, diğer sayfalar resimsiz ve palet renkli). Model: GPT Image 2.5, 3:4, ≈ 0,5 kr/görsel; tahmini toplam ≈ 4,5 kr. **Her üretimden önce `higgsfield generate cost` ile maliyet gösterilir ve kullanıcı onayı alınır.** Bölüm başı görselleri kapak işi referans verilerek üretilir (karakter tutarlılığı).
+> **Üretildi (2026-10-14).** Kullanıcı onayı: 500 kredi yüklendi, "tüm yarım kalan işlerimizi yap … onay verdim". GPT Image 2.5, 3:4, medium, 1k = 0,5 kr; bölüm başları kapak işi referans verilerek. Eski plan notu: Kullanıcı kararı (2026-10-14, H-071/H-072): kalan kitaplarda resim yoğunluğu **kapak + bölüm başı**. Bu kitapta 9 görsel: `images/cover.png`, `images/p01.png`, `images/p05.png`, `images/p09.png`, `images/p13.png`, `images/p16.png`, `images/p20.png`, `images/p23.png`, `images/p27.png` (git dışı; dosya adları `book.json` ile aynı, diğer sayfalar resimsiz ve palet renkli). Model: GPT Image 2.5, 3:4, ≈ 0,5 kr/görsel; tahmini toplam ≈ 4,5 kr. **Her üretimden önce `higgsfield generate cost` ile maliyet gösterilir ve kullanıcı onayı alınır.** Bölüm başı görselleri kapak işi referans verilerek üretilir (karakter tutarlılığı).
 
 **Sabit stil öneki (her istemin başına):**
 `Watercolour and ink illustration, non-photorealistic, loose ink lines and soft watercolour washes on textured paper, elegant, melancholic but warm. Palette: seagull white, tea red, brick red, fog grey, deep grey-blue sea, small touches of green ink. Mood: quiet grief softened by warmth and gentle humour. Absolutely no text, letters, numbers, signs, logos or writing anywhere in the image; handwriting and typed pages are drawn only as abstract wavy lines, book covers, spines and envelopes are blank, the ferries have no names or numbers. Consistent characters as described. Vertical 3:4.`
@@ -60,6 +60,23 @@ Kurallar: her ücretli üretimden **önce** `higgsfield generate cost` ile maliy
 | p27.png | p27 (Bölüm 8, The Other Half) | The same kitchen, a little later: Judith rests her head on Aylin's shoulder; Aylin holds lined pages torn from school exercise books, covered in small green abstract wavy lines; croissants going cold; through the window, the rain is easing and a pale light comes in. |
 
 **Sürpriz kontrolü:** Sonun sürprizi, onuncu bölümün kayıp olmadığı, babanın onu üç yıllık derslerin kırık İngilizcesiyle Aylin'in dilinde yazıp çevirmene bıraktığıdır. Hiçbir görselde okunur yazı yoktur; sayfalar, kenar notları ve kart yalnızca soyut çizgilerdir, bu yüzden hiçbir görsel yazının hangi dilde olduğunu göstermez. Sözlük ve kitaplar yazısız ve renksiz sırtlarla çizilir (İngilizce sözlük olduğu anlaşılmaz). Babanın ders aldığı, Dilek Hanım'la çalıştığı ya da yazı yazdığı hiçbir sahne görselleştirilmez; baba yalnızca p13'teki çocukluk anısında, yüzü yarı dönük görünür. Zarf p20 ve p23'te kapalıdır; p27'deki sayfalar yalnızca okul defteri yaprağı olarak görünür. Kapakta iki şehir arasında süzülen yaprak bir sembol olarak kalır.
+
+
+### Üretim kaydı
+
+| Dosya | Job id | Referans | Tarih (UTC) | Parametre | Kredi |
+|---|---|---|---|---|---|
+| cover.png | 14e39983-f730-46ef-ad0d-c085fc583f62 | — | 2026-10-14T16:43:20+00:00 | 3:4, medium, 1k | 0.5 |
+| p01.png | c7035bb6-1d18-43cc-ace1-c0ffeb2b9f88 | 14e39983-f730-46ef-ad0d-c085fc583f62 | 2026-10-14T16:51:53+00:00 | 3:4, medium, 1k | 0.5 |
+| p05.png | a73eda01-391f-4895-b67c-6ab1277cb25f | 14e39983-f730-46ef-ad0d-c085fc583f62 | 2026-10-14T16:51:53+00:00 | 3:4, medium, 1k | 0.5 |
+| p13.png | 3d6285d8-2911-4586-8486-94e049dab31c | 14e39983-f730-46ef-ad0d-c085fc583f62 | 2026-10-14T16:52:04+00:00 | 3:4, medium, 1k | 0.5 |
+| p20.png | 51706246-6aa6-46e5-af74-68a8ddd6fa00 | 14e39983-f730-46ef-ad0d-c085fc583f62 | 2026-10-14T16:52:16+00:00 | 3:4, medium, 1k | 0.5 |
+| p16.png | add557eb-487c-44a4-bd63-8450f28dbe8a | 14e39983-f730-46ef-ad0d-c085fc583f62 | 2026-10-14T16:52:18+00:00 | 3:4, medium, 1k | 0.5 |
+| p09.png | be5c6fde-9310-47e8-8789-cdf02f3fc223 | 14e39983-f730-46ef-ad0d-c085fc583f62 | 2026-10-14T16:52:20+00:00 | 3:4, medium, 1k | 0.5 |
+| p23.png | 2fc1859b-ba2e-400e-a214-b31dfbcf871d | 14e39983-f730-46ef-ad0d-c085fc583f62 | 2026-10-14T16:52:24+00:00 | 3:4, medium, 1k | 0.5 |
+| p27.png | 98ec3a57-2b7f-4ed2-a67f-907247c8c148 | 14e39983-f730-46ef-ad0d-c085fc583f62 | 2026-10-14T16:52:36+00:00 | 3:4, medium, 1k | 0.5 |
+
+**Toplam:** 4.5 kr. Tam istemler yerel `images/_jobs.json`'da (git dışı). **Editör değerlendirmesi:** karakter ve üslup tutarlı; görselde yazı yok; sürpriz ele verilmiyor.
 
 ## Seslendirme kayıtları (tts_book.py)
 

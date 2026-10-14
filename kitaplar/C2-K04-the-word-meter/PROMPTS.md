@@ -33,9 +33,9 @@ Kurallar: her ücretli üretimden **önce** `higgsfield generate cost` ile maliy
 - Babanın penceresinde, tezgâhta düzgün sıralanmış küçük gri parçalar (p21); babanın sayacı Joaquim'inkiyle aynı eski model ve karanlık; gözlüğü de Joaquim gibi saçına itilmiş (p22).
 - Mutfakta on bir yıldır iki sandalye (p23).
 
-## Görsel planı (üretilmedi)
+## Görsel planı ve üretim kaydı (2026-10-14)
 
-> **Henüz üretilmedi.** Kullanıcı kararı (2026-10-14, H-071/H-072): kalan kitaplarda resim yoğunluğu **kapak + bölüm başı**. Bu kitapta 8 görsel: `images/cover.png`, `images/p01.png`, `images/p06.png`, `images/p10.png`, `images/p14.png`, `images/p18.png`, `images/p23.png`, `images/p27.png` (git dışı; dosya adları `book.json` ile aynı, diğer sayfalar resimsiz ve palet renkli). Model: GPT Image 2.5, 3:4, ≈ 0,5 kr/görsel; tahmini toplam ≈ 4 kr. **Her üretimden önce `higgsfield generate cost` ile maliyet gösterilir ve kullanıcı onayı alınır.** Bölüm başı görselleri kapak işi referans verilerek üretilir (karakter tutarlılığı).
+> **Üretildi (2026-10-14).** Kullanıcı onayı: 500 kredi yüklendi, "tüm yarım kalan işlerimizi yap … onay verdim". GPT Image 2.5, 3:4, medium, 1k = 0,5 kr; bölüm başları kapak işi referans verilerek. Eski plan notu: Kullanıcı kararı (2026-10-14, H-071/H-072): kalan kitaplarda resim yoğunluğu **kapak + bölüm başı**. Bu kitapta 8 görsel: `images/cover.png`, `images/p01.png`, `images/p06.png`, `images/p10.png`, `images/p14.png`, `images/p18.png`, `images/p23.png`, `images/p27.png` (git dışı; dosya adları `book.json` ile aynı, diğer sayfalar resimsiz ve palet renkli). Model: GPT Image 2.5, 3:4, ≈ 0,5 kr/görsel; tahmini toplam ≈ 4 kr. **Her üretimden önce `higgsfield generate cost` ile maliyet gösterilir ve kullanıcı onayı alınır.** Bölüm başı görselleri kapak işi referans verilerek üretilir (karakter tutarlılığı).
 
 **Sabit stil öneki (her istemin başına):**
 `Retro-futurist illustration, non-photorealistic, flat shapes with soft grain, clean geometric lines, mid-century poster feeling, calm and quiet. Strictly limited palette: concrete grey, pale stone, warm meter amber, and one single red accent (Petra's scarf only). A silent city with wide empty spaces, long shadows, very few people, nobody shouting. Word meters are slim grey metal collars with a thin glowing amber light bar at the throat, no numbers, no dials. Absolutely no text, letters, numbers, signs, logos or writing anywhere in the image; notices, slips, books, reports and screens are drawn blank or with soft abstract lines only. Consistent characters as described. Vertical 3:4.`
@@ -66,6 +66,22 @@ Kurallar: her ücretli üretimden **önce** `higgsfield generate cost` ile maliy
 | p27.png | p27 (Bölüm 7, Zero) | Midnight in the same small kitchen, absolute stillness: Petra sits frozen at the table, lips slightly parted, one hand at her dark collar; across the table her father sits with folded hands, watching her, his collar dark too; the round wall clock (plain face, no numerals) with both hands pointing straight up; a single drop falling from the tap into the sink. |
 
 **Sürpriz kontrolü:** Sonun sürprizi, sayaçların yirmi beş yıldır hiçbir şeyi denetlemediği, sistemi babanın kapattığı ve babanın susmasının nedenidir. Hiçbir görselde Çan, sayacın "öttüğü" bir an, bir yeraltı odası, tornavida ya da kablo bağlantısı yoktur; raporlar ve fiş boş çizilir. Kapakta ve p01'de Petra'nın sayaç ışığı doludur, karanlık sayaç yalnız Joaquim'de (p10) görünür, ki metin bunu bölüm sonunda zaten soru olarak açar. Baba yalnız p23'te sırtı dönük, p27'de sessizce otururken görünür; hiçbir görselde babanın konuştuğu ya da ikisinin sohbet ettiği gösterilmez. p27, c6 sonundaki kancayı (gece yarısı, sıfır) tekrarlar; neyin olmadığını ve nedenini göstermez. Babanın tezgâhındaki parçalar hiçbir görselde yoktur.
+
+
+### Üretim kaydı
+
+| Dosya | Job id | Referans | Tarih (UTC) | Parametre | Kredi |
+|---|---|---|---|---|---|
+| cover.png | 83fc7a40-8729-4a80-bf00-b4e35694d079 | — | 2026-10-14T16:42:55+00:00 | 3:4, medium, 1k | 0.5 |
+| p10.png | 79b12583-c957-4e9b-bfcd-b0947a73f441 | 83fc7a40-8729-4a80-bf00-b4e35694d079 | 2026-10-14T16:51:00+00:00 | 3:4, medium, 1k | 0.5 |
+| p06.png | d866fe4d-88cb-4446-9d28-4798dcf40f63 | 83fc7a40-8729-4a80-bf00-b4e35694d079 | 2026-10-14T16:51:01+00:00 | 3:4, medium, 1k | 0.5 |
+| p01.png | 4c328141-0374-4d93-bb5a-e54c59419f20 | 83fc7a40-8729-4a80-bf00-b4e35694d079 | 2026-10-14T16:51:03+00:00 | 3:4, medium, 1k | 0.5 |
+| p14.png | c805eb23-d714-479b-8041-c45152381402 | 83fc7a40-8729-4a80-bf00-b4e35694d079 | 2026-10-14T16:51:03+00:00 | 3:4, medium, 1k | 0.5 |
+| p23.png | e0e7334f-9976-4a6b-80ee-5851c7a5028f | 83fc7a40-8729-4a80-bf00-b4e35694d079 | 2026-10-14T16:51:20+00:00 | 3:4, medium, 1k | 0.5 |
+| p27.png | b5b71c23-3cbe-4a8b-8b11-3a8a15d91cfb | 83fc7a40-8729-4a80-bf00-b4e35694d079 | 2026-10-14T16:51:25+00:00 | 3:4, medium, 1k | 0.5 |
+| p18.png | db1295df-ba55-4b09-a63c-0096fb7223c1 | 83fc7a40-8729-4a80-bf00-b4e35694d079 | 2026-10-14T16:51:27+00:00 | 3:4, medium, 1k | 0.5 |
+
+**Toplam:** 4 kr. Tam istemler yerel `images/_jobs.json`'da (git dışı). **Editör değerlendirmesi:** karakter ve üslup tutarlı; görselde yazı yok; sürpriz ele verilmiyor.
 
 ## Seslendirme kayıtları (tts_book.py)
 

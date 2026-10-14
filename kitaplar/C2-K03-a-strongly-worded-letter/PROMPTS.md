@@ -29,9 +29,9 @@ Kurallar: her ücretli üretimden **önce** `higgsfield generate cost` ile maliy
 - Beatrice: emlakçı 1983'te "Tabii, çit de evle birlikte geliyor." demişti (p14).
 - Arşivdeki asıl plan kopyadan çok daha nettir; Josh "T'nin hangi tarafa konduğuyla ilgili bir kural" olduğunu hatırlar (p23).
 
-## Görsel planı (üretilmedi)
+## Görsel planı ve üretim kaydı (2026-10-14)
 
-> **Henüz üretilmedi.** Kullanıcı kararı (2026-10-14, H-071/H-072): kalan kitaplarda resim yoğunluğu **kapak + bölüm başı**. Bu kitapta 8 görsel: `images/cover.png`, `images/p01.png`, `images/p05.png`, `images/p09.png`, `images/p13.png`, `images/p17.png`, `images/p21.png`, `images/p25.png` (git dışı; dosya adları `book.json` ile aynı, diğer sayfalar resimsiz ve palet renkli). Model: GPT Image 2.5, 3:4, ≈ 0,5 kr/görsel; tahmini toplam ≈ 4 kr. **Her üretimden önce `higgsfield generate cost` ile maliyet gösterilir ve kullanıcı onayı alınır.** Bölüm başı görselleri kapak işi referans verilerek üretilir (karakter tutarlılığı).
+> **Üretildi (2026-10-14).** Kullanıcı onayı: 500 kredi yüklendi, "tüm yarım kalan işlerimizi yap … onay verdim". GPT Image 2.5, 3:4, medium, 1k = 0,5 kr; bölüm başları kapak işi referans verilerek. Eski plan notu: Kullanıcı kararı (2026-10-14, H-071/H-072): kalan kitaplarda resim yoğunluğu **kapak + bölüm başı**. Bu kitapta 8 görsel: `images/cover.png`, `images/p01.png`, `images/p05.png`, `images/p09.png`, `images/p13.png`, `images/p17.png`, `images/p21.png`, `images/p25.png` (git dışı; dosya adları `book.json` ile aynı, diğer sayfalar resimsiz ve palet renkli). Model: GPT Image 2.5, 3:4, ≈ 0,5 kr/görsel; tahmini toplam ≈ 4 kr. **Her üretimden önce `higgsfield generate cost` ile maliyet gösterilir ve kullanıcı onayı alınır.** Bölüm başı görselleri kapak işi referans verilerek üretilir (karakter tutarlılığı).
 
 **Sabit stil öneki (her istemin başına):**
 `Elegant caricature illustration in the tradition of classic English magazine cartoons, non-photorealistic, fine confident ink lines with soft watercolour washes on cream paper, gently comic and warm. Palette: deep hedge green, rose pink, ink navy, cream, soft brick red. Letters and envelopes are drawn only as blank pages with neat empty lines, never with readable writing. Absolutely no text, letters, numbers, signs, logos or writing anywhere in the image; plans and maps are drawn only as abstract lines, chalkboards and labels are blank. Consistent characters as described. Vertical 3:4.`
@@ -59,6 +59,22 @@ Kurallar: her ücretli üretimden **önce** `higgsfield generate cost` ile maliy
 | p25.png | p25 (Bölüm 7, Tea?) | The kitchen table: a large unopened brown envelope, a teapot and a single cup of tea; Constance sitting very straight, hands folded, looking at the envelope; through the window, the grey cat sitting on top of a low stretch of hedge in afternoon sunlight. |
 
 **Sürpriz kontrolü:** Sonun sürprizi, çitin tümüyle Constance'ın arazisinde olması ve Desmond'ın aylardır onun çitini budamasıdır. Hiçbir görselde demir kazıklar, porsuk gövdelerinin sınıra göre yeri, plan ya da T işareti gösterilmez (plan yalnız soyut çizgi olarak bile çizilmez). Kapakta çit iki bahçenin tam ortasında, sınırı belirsiz durur. p05'te Desmond "kendi" tarafını budar ama görüntü sahipliği ima etmez; p21'de Constance yalnız yerden budar, merdiven kullanılmaz. p25'te rapor zarfı açılmamıştır. Desmond'ın kazası ve "Tea?" kartı hiçbir görselde yoktur. Böylece hiçbir görsel sonu ele vermez.
+
+
+### Üretim kaydı
+
+| Dosya | Job id | Referans | Tarih (UTC) | Parametre | Kredi |
+|---|---|---|---|---|---|
+| cover.png | 3694cf12-9b3f-4e62-86e1-64e3158b1b1b | — | 2026-10-14T16:42:35+00:00 | 3:4, medium, 1k | 0.5 |
+| p05.png | ef1e88d5-530d-4fc1-a0a8-1f9cb1768090 | 3694cf12-9b3f-4e62-86e1-64e3158b1b1b | 2026-10-14T16:50:04+00:00 | 3:4, medium, 1k | 0.5 |
+| p13.png | 6e158e58-3e97-4146-837b-de2f294d61b8 | 3694cf12-9b3f-4e62-86e1-64e3158b1b1b | 2026-10-14T16:50:05+00:00 | 3:4, medium, 1k | 0.5 |
+| p09.png | f3d62128-cc51-490e-9bd6-e9db1a9c9183 | 3694cf12-9b3f-4e62-86e1-64e3158b1b1b | 2026-10-14T16:50:06+00:00 | 3:4, medium, 1k | 0.5 |
+| p01.png | 68e989d5-5988-4236-8a7c-8625b021328d | 3694cf12-9b3f-4e62-86e1-64e3158b1b1b | 2026-10-14T16:50:07+00:00 | 3:4, medium, 1k | 0.5 |
+| p25.png | 720a10fb-61f5-454d-82eb-1a8f0f84a095 | 3694cf12-9b3f-4e62-86e1-64e3158b1b1b | 2026-10-14T16:50:32+00:00 | 3:4, medium, 1k | 0.5 |
+| p17.png | 661fab82-3e30-4975-a747-9348af3f56a8 | 3694cf12-9b3f-4e62-86e1-64e3158b1b1b | 2026-10-14T16:50:33+00:00 | 3:4, medium, 1k | 0.5 |
+| p21.png | c2a2ee6a-3a55-4177-96de-4c081763c33e | 3694cf12-9b3f-4e62-86e1-64e3158b1b1b | 2026-10-14T16:50:34+00:00 | 3:4, medium, 1k | 0.5 |
+
+**Toplam:** 4 kr. Tam istemler yerel `images/_jobs.json`'da (git dışı). **Editör değerlendirmesi:** karakter ve üslup tutarlı; görselde yazı yok; sürpriz ele verilmiyor.
 
 ## Seslendirme kayıtları (tts_book.py)
 

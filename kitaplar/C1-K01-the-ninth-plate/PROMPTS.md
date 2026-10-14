@@ -32,9 +32,9 @@ Kurallar: her ücretli üretimden **önce** `higgsfield generate cost` ile maliy
 - Yanıltıcı ipucu Bay Crane: tırmalanmış eller, kilitli ofisten gelen ince ses, yeleğindeki gri tüyler ve Felix'in hapşırması (p10) → ofiste saklanan anne kedi ve yavruları (p19).
 - Ruth kıza gece yarısı "I'm a night owl… it's a secret." demişti (p23, Ruth'un hatırladığı an; çözüm p22–p23'te).
 
-## Görsel planı (üretilmedi)
+## Görsel planı ve üretim kaydı (2026-10-14)
 
-> **Henüz üretilmedi.** Kullanıcı kararı (2026-10-14, H-071/H-072): kalan kitaplarda resim yoğunluğu **kapak + bölüm başı**. Bu kitapta 8 görsel: `images/cover.png`, `images/p01.png`, `images/p05.png`, `images/p09.png`, `images/p13.png`, `images/p17.png`, `images/p21.png`, `images/p25.png` (git dışı; dosya adları `book.json` ile aynı, diğer sayfalar resimsiz ve palet renkli). Model: GPT Image 2.5, 3:4, ≈ 0,5 kr/görsel; tahmini toplam ≈ 4 kr. **Her üretimden önce `higgsfield generate cost` ile maliyet gösterilir ve kullanıcı onayı alınır.** Bölüm başı görselleri kapak işi referans verilerek üretilir (karakter ve mekân tutarlılığı).
+> **Üretildi (2026-10-14).** Kullanıcı onayı: 500 kredi yüklendi, "tüm yarım kalan işlerimizi yap … onay verdim". GPT Image 2.5, 3:4, medium, 1k = 0,5 kr; bölüm başları kapak işi referans verilerek. Eski plan notu: Kullanıcı kararı (2026-10-14, H-071/H-072): kalan kitaplarda resim yoğunluğu **kapak + bölüm başı**. Bu kitapta 8 görsel: `images/cover.png`, `images/p01.png`, `images/p05.png`, `images/p09.png`, `images/p13.png`, `images/p17.png`, `images/p21.png`, `images/p25.png` (git dışı; dosya adları `book.json` ile aynı, diğer sayfalar resimsiz ve palet renkli). Model: GPT Image 2.5, 3:4, ≈ 0,5 kr/görsel; tahmini toplam ≈ 4 kr. **Her üretimden önce `higgsfield generate cost` ile maliyet gösterilir ve kullanıcı onayı alınır.** Bölüm başı görselleri kapak işi referans verilerek üretilir (karakter ve mekân tutarlılığı).
 
 **Sabit stil öneki (her istemin başına):**
 `Elegant Art Deco inspired illustration, non-photorealistic, clean ink lines with flat and softly graded colour, geometric fan and sunburst motifs, warm candlelit night interiors. Palette: deep emerald green, candle gold, snow white, warm cream, touches of dark wood. Mood: elegant, warm, quietly mysterious, never frightening, with a hint of dry humour. Absolutely no text, letters, numbers, signs, logos or writing anywhere in the image; invitations, place cards, labels, parcels, newspapers and crossword grids are drawn blank or with abstract lines only, clock faces have no numbers. Consistent characters as described. Vertical 3:4.`
@@ -67,6 +67,22 @@ Kurallar: her ücretli üretimden **önce** `higgsfield generate cost` ile maliy
 | p25.png | p25 (Bölüm 7, The Ninth Guest) | Late at night, the guests sit quietly around the long table, listening, seen from behind Ruth's shoulder; at the far end, in the ninth chair, Maren in her white cook's jacket speaks softly, her hands folded; snow against the dark windows. |
 
 **Sürpriz kontrolü:** Sonun sürprizi, ev sahibinin genç aşçı Maren olması, onun on dört yıl önceki kaybolmuş kız olması, imzanın "Early Bird" anagramı olması ve son ipucunun cevabının "Hungry" çıkmasıdır. Hiçbir görselde kırmızı yün bere, istasyon, otobüs bileti, eldiven, karton bardak çorba ya da peynirli sandviç yoktur; davetiye, kartlar ve bulmaca ızgaraları yazısız ve okunamaz soyut çizgilerle çizilir (p21'deki işaretler harf değildir). Maren yalnızca p13'te (metnin kendisini tanıttığı sahne) ve p25'te (metnin onu dokuzuncu sandalyeye oturttuğu p24'ten sonra) görünür; hiçbir görsel onun geçmişini ya da konuklarla bağını göstermez. Kapakta kimse yoktur ve dokuzuncu sandalyede yalnızca paket durur.
+
+
+### Üretim kaydı
+
+| Dosya | Job id | Referans | Tarih (UTC) | Parametre | Kredi |
+|---|---|---|---|---|---|
+| cover.png | 0239c954-066b-47b8-992e-c499689e982d | — | 2026-10-14T16:40:12+00:00 | 3:4, medium, 1k | 0.5 |
+| p13.png | 6507554a-8b42-4097-a2e1-0747d0a42595 | 0239c954-066b-47b8-992e-c499689e982d | 2026-10-14T16:43:44+00:00 | 3:4, medium, 1k | 0.5 |
+| p01.png | da6ce41a-780c-4840-a72c-48f1c1857c9c | 0239c954-066b-47b8-992e-c499689e982d | 2026-10-14T16:43:47+00:00 | 3:4, medium, 1k | 0.5 |
+| p09.png | e888e9bf-bca7-484d-ac2d-ee77e2c570d4 | 0239c954-066b-47b8-992e-c499689e982d | 2026-10-14T16:43:47+00:00 | 3:4, medium, 1k | 0.5 |
+| p05.png | 412b4c1d-e7d7-4b87-aaf9-b62cb9eb8075 | 0239c954-066b-47b8-992e-c499689e982d | 2026-10-14T16:43:49+00:00 | 3:4, medium, 1k | 0.5 |
+| p17.png | 61194ae6-6141-4092-9f9c-e83bad14358d | 0239c954-066b-47b8-992e-c499689e982d | 2026-10-14T16:44:12+00:00 | 3:4, medium, 1k | 0.5 |
+| p21.png | c8a3df2a-71c8-4726-b79e-013b5617d765 | 0239c954-066b-47b8-992e-c499689e982d | 2026-10-14T16:44:12+00:00 | 3:4, medium, 1k | 0.5 |
+| p25.png | 4ea3a6dc-947c-41ed-8124-91247ce397fb | 0239c954-066b-47b8-992e-c499689e982d | 2026-10-14T16:44:16+00:00 | 3:4, medium, 1k | 0.5 |
+
+**Toplam:** 4 kr. Tam istemler yerel `images/_jobs.json`'da (git dışı). **Editör değerlendirmesi:** karakter ve üslup tutarlı; görselde yazı yok; sürpriz ele verilmiyor.
 
 ## Seslendirme kayıtları (tts_book.py)
 
