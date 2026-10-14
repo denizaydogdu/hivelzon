@@ -11,6 +11,7 @@ Kitaplık paketleri (`kitaplar/<id>/_build/package/`, H-066):
 
     http://127.0.0.1:8787/books/index.json             -> kitap listesi
     http://127.0.0.1:8787/books/<kitapId>/<yol>        -> book.json, pages.json, audio/*.m4a, images/*.webp
+    http://127.0.0.1:8787/packages/_books/<kitapId>/<yol> -> aynısı; backend kataloğunun paket yeri (H-070)
 
 Dilbilgisi dersleri (`dilbilgisi/<G-ID>/_build/package/`, H-077):
 
@@ -56,6 +57,7 @@ CONTENT_TYPES = {
 }
 RANGE_RE = re.compile(r"^bytes=(\d*)-(\d*)$")
 SEASON_PREFIX = "_season"
+BOOKS_PREFIX = "_books"
 SEASON_DIR = Path("_evren") / "_build" / "season"   # export_package.py üretir
 SEASON_RE = re.compile(r"^S\d+$")
 
@@ -184,6 +186,8 @@ class Handler(BaseHTTPRequestHandler):
         parts = [p for p in path.split("/") if p]
         if parts == ["packages", "index.json"]:
             return self._send_index(send_body)
+        if len(parts) >= 4 and parts[0] == "packages" and parts[1] == BOOKS_PREFIX:
+            parts = ["books", *parts[2:]]  # backend VideoHostingPort yolu: _books/<kitapId> (H-070)
         if len(parts) >= 4 and parts[0] == "packages" and parts[1] == SEASON_PREFIX:
             return self._send_season_file(parts[2], parts[3:], send_body)
         if len(parts) >= 3 and parts[0] == "packages":

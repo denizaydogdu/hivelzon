@@ -40,7 +40,7 @@
     <section id="list-view" hidden aria-labelledby="list-title">
       <div class="bar">
         <h2 id="list-title">İçerikler</h2>
-        <label for="season">Sezon</label>
+        <label for="season">Göster</label>
         <select id="season">
           <option value="">Tümü</option>
           <option value="1">Sezon 1</option>
@@ -48,6 +48,7 @@
           <option value="3">Sezon 3</option>
           <option value="4">Sezon 4</option>
           <option value="5">Sezon 5</option>
+          <option value="books">Kitaplık</option>
         </select>
         <button type="button" id="reload">Yenile</button>
         <button type="button" id="import" class="secondary">İçe aktar</button>
@@ -57,7 +58,7 @@
         <table>
           <thead>
             <tr>
-              <th scope="col">Bölüm</th>
+              <th scope="col">Yer</th>
               <th scope="col">Kimlik</th>
               <th scope="col">Sürüm</th>
               <th scope="col">Başlık</th>
@@ -90,7 +91,7 @@
           <p class="hint">Onay bu sürüme ve bu pakete bağlanır. Lint hatasız olmalı, bütün maddeler işaretlenmeli.</p>
           <fieldset>
             <legend>Kontrol ettim</legend>
-            <label><input type="checkbox" name="canonChecked"> Kanon: bağ alanları, açık sorular ve hikâye kanonuyla uyumlu (K-34)</label>
+            <label id="canon-item"><input type="checkbox" name="canonChecked"> Kanon: bağ alanları, açık sorular ve hikâye kanonuyla uyumlu (K-34)</label>
             <label><input type="checkbox" name="levelChecked"> Seviye: CEFR, kapsama, cümle uzunluğu, dilbilgisi ve quiz cevapları uygun</label>
             <label><input type="checkbox" name="translationApproved"> Çeviri: Türkçe çeviri ve sözlük anlamları insan tarafından onaylandı</label>
             <label><input type="checkbox" name="mediaChecked"> Medya: ses, hız, altyazı eşlemesi, görsel–sahne uyumu ve güvenli alanlar kontrol edildi</label>

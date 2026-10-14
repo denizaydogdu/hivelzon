@@ -41,9 +41,9 @@ class AdminContentController {
 
     @GetMapping("/items")
     List<EditorialService.AdminItem> items(@AuthenticationPrincipal Jwt jwt,
-            @RequestParam(required = false) Integer season) {
+            @RequestParam(required = false) Integer season, @RequestParam(required = false) String type) {
         requireEditor(jwt);
-        return editorial.list(season);
+        return editorial.list(season, type);
     }
 
     @GetMapping("/items/{contentId}/versions/{version}")

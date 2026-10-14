@@ -49,6 +49,14 @@ class CatalogController {
         return cached(json.writeValueAsString(catalog.items(season, page, size)), request);
     }
 
+    /** Kitaplık kataloğu (H-070); {@code level} = A1…C2 (isteğe bağlı). */
+    @GetMapping("/books")
+    ResponseEntity<String> books(@RequestParam(required = false) String level,
+            @RequestParam(required = false) Integer page, @RequestParam(required = false) Integer size,
+            HttpServletRequest request) {
+        return cached(json.writeValueAsString(catalog.books(level, page, size)), request);
+    }
+
     private ResponseEntity<String> cached(String body, HttpServletRequest request) {
         String etag = "\"" + sha256(body).substring(0, 32) + "\"";
         CacheControl cache = CacheControl.maxAge(properties.getCatalog().getCacheMaxAge()).cachePublic()

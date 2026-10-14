@@ -21,7 +21,6 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
-import java.util.regex.Pattern;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
@@ -53,7 +52,6 @@ public class EditorialService implements UserDataPurger {
 
     /** Editör ekranında zamanlar bu bölgede gösterilir ve girilir; veritabanında UTC. */
     public static final ZoneId EDITOR_ZONE = ZoneId.of("Europe/Istanbul");
-    private static final Pattern CONTENT_ID = Pattern.compile("^(A1|A2|B1|B2|C1)-[0-9]{3}$");
     private static final DateTimeFormatter AUDIT_TIME = DateTimeFormatter.ofPattern("yyyyMMdd'T'HHmmss'Z'")
             .withZone(ZoneOffset.UTC);
 
@@ -67,14 +65,15 @@ public class EditorialService implements UserDataPurger {
 
     /**
      * Onay kontrol listesi (şartname §7.2'nin maddeleri gruplanmış; K-34 kanon kontrolü dahil). Hepsi
-     * {@code true} olmalı. Yalnızca sabit anahtarlar ve true/false saklanır.
+     * {@code true} olmalı. Yalnızca sabit anahtarlar ve true/false saklanır. Kitaplar (H-070) hikâye kanonuna
+     * bağlı değildir ({@code docs/KITAPLIK.md} §2): kitapta {@code canonChecked} istenmez ve saklanmaz.
      */
     public record Checklist(Boolean canonChecked, Boolean levelChecked, Boolean translationApproved,
             Boolean mediaChecked, Boolean rightsAndAiDisclosureChecked) {
 
-        List<String> missing() {
+        List<String> missing(ContentType type) {
             List<String> out = new ArrayList<>();
-            if (!Boolean.TRUE.equals(canonChecked)) {
+            if (type != ContentType.BOOK && !Boolean.TRUE.equals(canonChecked)) {
                 out.add("canonChecked");
             }
             if (!Boolean.TRUE.equals(levelChecked)) {
@@ -93,8 +92,9 @@ public class EditorialService implements UserDataPurger {
         }
 
         /** Kanonik JSON (sabit sıra): saklanır ve özeti onay kaydına bağlanır. */
-        String canonicalJson() {
-            return "{\"canonChecked\":true,\"levelChecked\":true,\"translationApproved\":true,"
+        String canonicalJson(ContentType type) {
+            return "{" + (type == ContentType.BOOK ? "" : "\"canonChecked\":true,")
+                    + "\"levelChecked\":true,\"translationApproved\":true,"
                     + "\"mediaChecked\":true,\"rightsAndAiDisclosureChecked\":true}";
         }
     }
@@ -107,8 +107,8 @@ public class EditorialService implements UserDataPurger {
             String publishAtLocal, String reason) {
     }
 
-    public record AdminItem(String contentId, int contentVersion, String slug, int season, int number, String level,
-            String title, String status, boolean visible, Instant publishAt, Integer lintErrors,
+    public record AdminItem(String contentType, String contentId, int contentVersion, String slug, Integer season,
+            int number, String level, String title, String genre, String status, boolean visible, Instant publishAt, Integer lintErrors,
             Integer lintWarnings, Instant lintCheckedAt, String translationStatus, Instant importedAt,
             Instant statusChangedAt, Instant approvedAt, String checklistSha256, String withdrawReason,
             String manifestSha256, long lockVersion, List<String> allowedActions) {
@@ -121,7 +121,7 @@ public class EditorialService implements UserDataPurger {
     }
 
     private static final String COLUMNS = """
-            content_id, content_version, slug, season, number, level, title, status, publish_at, lint_errors,
+            content_type, content_id, content_version, slug, season, number, level, title, genre, status, publish_at, lint_errors,
             lint_warnings, lint_checked_at, translation_status, imported_at, status_changed_at, approved_at,
             checklist_sha256, withdraw_reason, manifest_sha256, lock_version
             """;
@@ -137,13 +137,29 @@ public class EditorialService implements UserDataPurger {
     }
 
     @Transactional(readOnly = true)
-    public List<AdminItem> list(Integer season) {
+    public List<AdminItem> list(Integer season, String type) {
         Instant now = clock.instant();
+        List<String> where = new ArrayList<>();
+        List<Object> args = new ArrayList<>();
+        if (type != null && !type.isBlank()) {
+            ContentType t;
+            try {
+                t = ContentType.valueOf(type.trim().toUpperCase(Locale.ROOT));
+            } catch (IllegalArgumentException e) {
+                throw new ApiException(ErrorCode.VALIDATION_FAILED, Map.of("field", "type"));
+            }
+            where.add("content_type = ?");
+            args.add(t.name());
+        }
+        if (season != null) {
+            where.add("season = ?");
+            args.add(season);
+        }
+        // Bölümler sezon + sıra; kitaplar (sezonsuz) sonra, seviye + K numarası.
         String sql = "SELECT " + COLUMNS + " FROM content_items"
-                + (season == null ? "" : " WHERE season = ?")
-                + " ORDER BY season, number, content_id, content_version DESC";
-        Object[] args = season == null ? new Object[0] : new Object[] {season};
-        return jdbc.query(sql, (rs, i) -> map(rs, now), args);
+                + (where.isEmpty() ? "" : " WHERE " + String.join(" AND ", where))
+                + " ORDER BY content_type DESC, season, level, number, content_id, content_version DESC";
+        return jdbc.query(sql, (rs, i) -> map(rs, now), args.toArray());
     }
 
     @Transactional(readOnly = true)
@@ -200,12 +216,13 @@ public class EditorialService implements UserDataPurger {
                     missing.add("translationFileApproved");
                 }
                 Checklist checklist = request.checklist();
-                missing.addAll(checklist == null ? new Checklist(null, null, null, null, null).missing()
-                        : checklist.missing());
+                ContentType type = ContentType.valueOf(item.contentType());
+                missing.addAll(checklist == null ? new Checklist(null, null, null, null, null).missing(type)
+                        : checklist.missing(type));
                 if (!missing.isEmpty()) {
                     throw new ApiException(ErrorCode.APPROVAL_REQUIREMENTS_NOT_MET, Map.of("missing", missing));
                 }
-                String json = checklist.canonicalJson();
+                String json = checklist.canonicalJson(type);
                 String sha = sha256(json);
                 to = ContentStatus.APPROVED;
                 auditAction = AuditAction.CONTENT_APPROVED;
@@ -309,7 +326,7 @@ public class EditorialService implements UserDataPurger {
     // ------------------------------------------------------------------ yardımcılar
 
     private AdminItem load(String contentId, int version, boolean forUpdate) {
-        if (contentId == null || !CONTENT_ID.matcher(contentId).matches() || version < 1) {
+        if (ContentType.ofId(contentId) == null || version < 1) {
             throw new ApiException(ErrorCode.NOT_FOUND);
         }
         Instant now = clock.instant();
@@ -353,8 +370,9 @@ public class EditorialService implements UserDataPurger {
         ContentStatus status = ContentStatus.valueOf(rs.getString("status"));
         Instant publishAt = instant(rs, "publish_at");
         List<String> actions = allowed(status, publishAt, now).stream().map(Enum::name).toList();
-        return new AdminItem(rs.getString("content_id"), rs.getInt("content_version"), rs.getString("slug"),
-                rs.getInt("season"), rs.getInt("number"), rs.getString("level"), rs.getString("title"),
+        return new AdminItem(rs.getString("content_type"), rs.getString("content_id"), rs.getInt("content_version"),
+                rs.getString("slug"), (Integer) rs.getObject("season"), rs.getInt("number"), rs.getString("level"),
+                rs.getString("title"), rs.getString("genre"),
                 status.name(), status.isVisible(publishAt, now), publishAt, (Integer) rs.getObject("lint_errors"),
                 (Integer) rs.getObject("lint_warnings"), instant(rs, "lint_checked_at"),
                 rs.getString("translation_status"), instant(rs, "imported_at"), instant(rs, "status_changed_at"),
