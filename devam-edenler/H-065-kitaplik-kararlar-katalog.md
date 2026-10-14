@@ -1,6 +1,6 @@
 # H-065: Kitaplık kararları ve 30 kitaplık katalog
 
-- **Durum:** Yapılacak
+- **Durum:** Devam ediyor (katalog taslağı `kitaplar/KATALOG.md`; kullanıcı onayı bekleniyor)
 - **Tür:** Karar ve içerik planı
 - **Faz:** Kitaplık K0 (`docs/KITAPLIK.md` §9)
 - **Bağımlılık:** —

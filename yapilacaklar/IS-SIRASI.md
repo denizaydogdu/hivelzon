@@ -136,7 +136,7 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 ### Adım 7 — Kitaplık: seviyeli, resimli, sesli kitaplar (2026-10-14, kullanıcı isteği; `docs/KITAPLIK.md`)
 | # | İş | Başlık | Öncelik | Bağımlılık | Durum |
 |---|---|---|---|---|---|
-| K0 | H-065 | Kitaplık kararları ve 30 kitaplık katalog | Yüksek | — | ⏳ |
+| K0 | H-065 | Kitaplık kararları ve 30 kitaplık katalog | Yüksek | — | 🔄 |
 | K1 | H-066 | Kitap paketi ve içerik boru hattı (book-lint, C1/C2 listesi, TTS betiği) | Yüksek | H-065 | ⏳ |
 | K2 | H-067 | Kitaplık ve okuyucu (sesli/sessiz, cümle vurgusu, Defter'e ekle) | Yüksek | H-066 | ⏳ |
 | K3 | H-068 | Arka planda dinleme ve kilit ekranı | Orta | H-067 | ⏳ |
