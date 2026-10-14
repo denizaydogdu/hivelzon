@@ -1,0 +1,40 @@
+[
+  {
+    "created_at": "2026-10-14T17:19:24.67929Z",
+    "display_name": "GPT Image 2.5",
+    "id": "fb84b0d3-e241-4418-a427-a2257edaaa1f",
+    "job_type": "gpt_image_2_5",
+    "min_result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261014_171924_fb84b0d3-e241-4418-a427-a2257edaaa1f_min.webp",
+    "params": {
+      "aspect_ratio": "9:16",
+      "height": 2688,
+      "medias": [
+        {
+          "data": {
+            "id": "663ea0fe-3df5-4cea-ba8c-e08c80e48a96",
+            "type": "media_input",
+            "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/663ea0fe-3df5-4cea-ba8c-e08c80e48a96.png"
+          },
+          "role": "image"
+        },
+        {
+          "data": {
+            "id": "acc2c480-f375-4f25-a23c-b82fb0948396",
+            "type": "image_job",
+            "url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261011_163655_acc2c480-f375-4f25-a23c-b82fb0948396.png"
+          },
+          "role": "image"
+        }
+      ],
+      "model": "flare",
+      "prompt": "Use the reference images for Alex and the small harbour. Scene: daytime at the small harbour bus stop shelter; Alex (olive jacket, cream sweater, jeans, canvas backpack) talks politely with a tall passenger, a young man with short dark hair, a light-grey coat and a blue shoulder bag, who points down the road to the left; a small café across the street. Blank timetable board, no text on any sign. Vertical composition. Warm animated-series illustration, graphic-novel style, clean ink lines, soft cel shading, coastal palette of sea blue, sand, lighthouse yellow and evening orange, mature tone suitable for teens and adults, not childish, no text, no letters, no numbers, no logos.",
+      "quality": "low",
+      "reference_elements": [],
+      "remove_bg": false,
+      "resolution": "2k",
+      "width": 1520
+    },
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261014_171924_fb84b0d3-e241-4418-a427-a2257edaaa1f.png",
+    "status": "completed"
+  }
+]

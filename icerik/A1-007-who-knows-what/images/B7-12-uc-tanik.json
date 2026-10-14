@@ -1,0 +1,48 @@
+[
+  {
+    "created_at": "2026-10-14T17:19:41.753096Z",
+    "display_name": "GPT Image 2.5",
+    "id": "77cf5e2b-5722-4634-86b5-990212ab9ef4",
+    "job_type": "gpt_image_2_5",
+    "min_result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261014_171941_77cf5e2b-5722-4634-86b5-990212ab9ef4_min.webp",
+    "params": {
+      "aspect_ratio": "9:16",
+      "height": 2688,
+      "medias": [
+        {
+          "data": {
+            "id": "185195f6-f42d-4cbe-a013-7151a26d759a",
+            "type": "image_job",
+            "url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261014_164725_185195f6-f42d-4cbe-a013-7151a26d759a.png"
+          },
+          "role": "image"
+        },
+        {
+          "data": {
+            "id": "57542708-ccdc-4b07-a8e7-a1f5ab17f965",
+            "type": "image_job",
+            "url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261014_171133_57542708-ccdc-4b07-a8e7-a1f5ab17f965.png"
+          },
+          "role": "image"
+        },
+        {
+          "data": {
+            "id": "d83596f7-7f31-4914-ae9e-5e4134e086b6",
+            "type": "image_job",
+            "url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261014_171106_d83596f7-7f31-4914-ae9e-5e4134e086b6.png"
+          },
+          "role": "image"
+        }
+      ],
+      "model": "flare",
+      "prompt": "Use the reference images for Jordan, Mrs Brooks and Sam. Top-down view of a wooden table with three illustrated portrait cards in a vertical column, like detective witness cards: top card, Jordan in his bright orange courier jacket and helmet; middle card, Mrs Brooks in her cream sweater and dark-blue apron; bottom card, Sam in his navy-blue hoodie with round glasses and headphones. A cup of tea and a pencil at the side. No text, no names, no numbers on the cards. Vertical composition. Warm animated-series illustration, graphic-novel style, clean ink lines, soft cel shading, coastal palette of sea blue, sand, lighthouse yellow and evening orange, mature tone suitable for teens and adults, not childish, no text, no letters, no numbers, no logos.",
+      "quality": "low",
+      "reference_elements": [],
+      "remove_bg": false,
+      "resolution": "2k",
+      "width": 1520
+    },
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261014_171941_77cf5e2b-5722-4634-86b5-990212ab9ef4.png",
+    "status": "completed"
+  }
+]

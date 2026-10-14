@@ -1,0 +1,40 @@
+[
+  {
+    "created_at": "2026-10-14T17:16:15.229055Z",
+    "display_name": "GPT Image 2.5",
+    "id": "13a92bc8-c2f6-4de7-aa59-7148e92e2320",
+    "job_type": "gpt_image_2_5",
+    "min_result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261014_171615_13a92bc8-c2f6-4de7-aa59-7148e92e2320_min.webp",
+    "params": {
+      "aspect_ratio": "9:16",
+      "height": 2688,
+      "medias": [
+        {
+          "data": {
+            "id": "d83596f7-7f31-4914-ae9e-5e4134e086b6",
+            "type": "image_job",
+            "url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261014_171106_d83596f7-7f31-4914-ae9e-5e4134e086b6.png"
+          },
+          "role": "image"
+        },
+        {
+          "data": {
+            "id": "72e65920-4ec7-4946-ae36-502810c61948",
+            "type": "image_job",
+            "url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261014_164747_72e65920-4ec7-4946-ae36-502810c61948.png"
+          },
+          "role": "image"
+        }
+      ],
+      "model": "flare",
+      "prompt": "Use the reference images for Sam and the small old red voice recorder. Scene: at his desk, Sam (navy-blue hoodie, round glasses) has opened the small battery cover on the back of the red voice recorder with a tiny screwdriver and pushes a new small battery into it, smiling, focused; a desk lamp lights his hands; cables around. Vertical composition. Warm animated-series illustration, graphic-novel style, clean ink lines, soft cel shading, coastal palette of sea blue, sand, lighthouse yellow and evening orange, mature tone suitable for teens and adults, not childish, no text, no letters, no numbers, no logos.",
+      "quality": "low",
+      "reference_elements": [],
+      "remove_bg": false,
+      "resolution": "2k",
+      "width": 1520
+    },
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261014_171615_13a92bc8-c2f6-4de7-aa59-7148e92e2320.png",
+    "status": "completed"
+  }
+]

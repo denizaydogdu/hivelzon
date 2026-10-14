@@ -1,0 +1,32 @@
+[
+  {
+    "created_at": "2026-10-14T17:17:10.908752Z",
+    "display_name": "GPT Image 2.5",
+    "id": "d67db7d8-4d37-49dc-9e89-e49adf8ac684",
+    "job_type": "gpt_image_2_5",
+    "min_result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261014_171710_d67db7d8-4d37-49dc-9e89-e49adf8ac684_min.webp",
+    "params": {
+      "aspect_ratio": "9:16",
+      "height": 2688,
+      "medias": [
+        {
+          "data": {
+            "id": "57542708-ccdc-4b07-a8e7-a1f5ab17f965",
+            "type": "image_job",
+            "url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261014_171133_57542708-ccdc-4b07-a8e7-a1f5ab17f965.png"
+          },
+          "role": "image"
+        }
+      ],
+      "model": "flare",
+      "prompt": "Use the reference image for Mrs Brooks. Scene: inside the cozy book-and-tea shop, Mrs Brooks (cream knitted sweater, dark-blue denim apron, curly hair with grey streaks) holds a teacup and looks up to one side, remembering, one finger on her chin, a warm smile; bookshelves and warm light behind her. Vertical composition. Warm animated-series illustration, graphic-novel style, clean ink lines, soft cel shading, coastal palette of sea blue, sand, lighthouse yellow and evening orange, mature tone suitable for teens and adults, not childish, no text, no letters, no numbers, no logos.",
+      "quality": "low",
+      "reference_elements": [],
+      "remove_bg": false,
+      "resolution": "2k",
+      "width": 1520
+    },
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261014_171710_d67db7d8-4d37-49dc-9e89-e49adf8ac684.png",
+    "status": "completed"
+  }
+]

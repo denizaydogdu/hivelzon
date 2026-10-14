@@ -1,0 +1,40 @@
+[
+  {
+    "created_at": "2026-10-14T17:18:04.430607Z",
+    "display_name": "GPT Image 2.5",
+    "id": "f6f865e3-6153-4fb6-9e52-a05b2946eb81",
+    "job_type": "gpt_image_2_5",
+    "min_result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261014_171804_f6f865e3-6153-4fb6-9e52-a05b2946eb81_min.webp",
+    "params": {
+      "aspect_ratio": "9:16",
+      "height": 2688,
+      "medias": [
+        {
+          "data": {
+            "id": "d83596f7-7f31-4914-ae9e-5e4134e086b6",
+            "type": "image_job",
+            "url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261014_171106_d83596f7-7f31-4914-ae9e-5e4134e086b6.png"
+          },
+          "role": "image"
+        },
+        {
+          "data": {
+            "id": "51fc6157-b427-457f-ac8d-8e6c2b44dd12",
+            "type": "image_job",
+            "url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261011_163601_51fc6157-b427-457f-ac8d-8e6c2b44dd12.png"
+          },
+          "role": "image"
+        }
+      ],
+      "model": "flare",
+      "prompt": "Use the reference images for Sam and the cozy book-and-tea shop interior. Scene: first-person point of view: Sam (navy-blue hoodie, round dark-rimmed glasses, headphones around his neck) leans on the shop counter facing the viewer, eyebrows raised, waiting curiously to hear something; bookshelves softly blurred behind. Calm, slightly muted mood. Vertical composition. Warm animated-series illustration, graphic-novel style, clean ink lines, soft cel shading, coastal palette of sea blue, sand, lighthouse yellow and evening orange, mature tone suitable for teens and adults, not childish, no text, no letters, no numbers, no logos.",
+      "quality": "low",
+      "reference_elements": [],
+      "remove_bg": false,
+      "resolution": "2k",
+      "width": 1520
+    },
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261014_171804_f6f865e3-6153-4fb6-9e52-a05b2946eb81.png",
+    "status": "completed"
+  }
+]

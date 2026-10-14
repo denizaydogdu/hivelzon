@@ -22,6 +22,8 @@ Dosyalar yerelde ve git dışında; Higgsfield'e yüklendi.
 | Maya | refs/R4-maya-gpt.png | 6db4fa91-a3ff-4587-9b02-43a480ecb45a | (R4-maya-gpt.json) |
 | Jordan (H-085) | refs/R5-jordan-gpt.png | — (job kimliği kullanılır) | 185195f6-f42d-4cbe-a013-7151a26d759a |
 | Ses kaydedici (H-085) | refs/R6-kaydedici-gpt.png | — (job kimliği kullanılır) | 72e65920-4ec7-4946-ae36-502810c61948 |
+| Sam Brooks (H-085, B6) | refs/R7-sam-gpt.png | — (job kimliği kullanılır) | d83596f7-7f31-4914-ae9e-5e4134e086b6 |
+| Mrs Brooks (H-085, B7) | refs/R8-mrs-brooks-gpt.png | — (job kimliği kullanılır) | 57542708-ccdc-4b07-a8e7-a1f5ab17f965 |
 
 ## Format
 

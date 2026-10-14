@@ -1,0 +1,32 @@
+[
+  {
+    "created_at": "2026-10-14T17:16:36.854827Z",
+    "display_name": "GPT Image 2.5",
+    "id": "cae054fd-5477-4343-81bb-1a5beae2ab48",
+    "job_type": "gpt_image_2_5",
+    "min_result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261014_171636_cae054fd-5477-4343-81bb-1a5beae2ab48_min.webp",
+    "params": {
+      "aspect_ratio": "9:16",
+      "height": 2688,
+      "medias": [
+        {
+          "data": {
+            "id": "d83596f7-7f31-4914-ae9e-5e4134e086b6",
+            "type": "image_job",
+            "url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261014_171106_d83596f7-7f31-4914-ae9e-5e4134e086b6.png"
+          },
+          "role": "image"
+        }
+      ],
+      "model": "flare",
+      "prompt": "Use the reference image for Sam. Scene: evening on the hill road; Sam (navy-blue hoodie, round dark-rimmed glasses, headphones on his ears now) slowly turns a small handmade directional antenna (thin metal rods on a short wooden handle) in one hand; in the other hand he holds a small handheld box with a row of five little lights, only two of them lit; intense concentration. No numbers, no text on the box. Vertical composition. Warm animated-series illustration, graphic-novel style, clean ink lines, soft cel shading, coastal palette of sea blue, sand, lighthouse yellow and evening orange, mature tone suitable for teens and adults, not childish, no text, no letters, no numbers, no logos.",
+      "quality": "low",
+      "reference_elements": [],
+      "remove_bg": false,
+      "resolution": "2k",
+      "width": 1520
+    },
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261014_171636_cae054fd-5477-4343-81bb-1a5beae2ab48.png",
+    "status": "completed"
+  }
+]

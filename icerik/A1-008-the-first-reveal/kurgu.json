@@ -1,0 +1,240 @@
+{
+  "kurguVersion": 2,
+  "contentId": "A1-008",
+  "source": "H-085: story.en.md (H-032 onaylı diyalog) düğümlere bölündü; görseller B8-01…B8-14 (B8-02 = B8-03'ün yerelde ışığı söndürülmüş hâli, klibin başlangıç karesi). ★ kilit klip: telsizin ışığı yanar, anten titrer (Seedance 2.0 Mini, clips/K-anten-isik-seedance-mini.mp4). Çağrı B1'deki sesin aynısıdır (voice_01, voice_02 yeniden kullanılır): 'It's the same. Every word!' Kanıt görevi (B1–B7 karışık tekrar, 6 ifade) ve Hi'nin 'I think…' kartı Claude yazdı; editör onayı bekler.",
+  "start": "title",
+  "gate": {
+    "comprehension": ["t-gorev"],
+    "targetPhrase": ["k1"],
+    "activeTask": ["t-kanit"]
+  },
+  "nodes": [
+    {
+      "id": "title", "type": "title",
+      "next": "recap"
+    },
+    {
+      "id": "recap", "type": "recap",
+      "shots": [{"image": "../A1-007-who-knows-what/images/B7-14-maya-masa.png", "len": 3.0, "move": [1.0, 1.06, 0.5, 0.4, 0.5, 0.35],
+                 "signs": [{"style": "caption", "lines": [{"text": "Friday. Seven o'clock. We find it."}], "start": 0.3, "end": 3.0}]}],
+      "next": "s01"
+    },
+    {
+      "id": "s01", "type": "segment", "scene": "Sahne 1: Tepe yolunda", "checkpoint": true,
+      "shots": [
+        {"image": "images/B8-01-tepe-yolu.png", "len": 2.6, "move": [1.0, 1.08, 0.5, 0.5, 0.5, 0.45],
+         "signs": [{"style": "caption", "lines": [{"text": "Friday · 6:58 pm"}], "start": 0.2, "end": 2.4}]},
+        {"image": "images/B8-01-tepe-yolu.png", "audio": ["b8_01_maya", "b8_02_alex"], "move": [1.08, 1.14, 0.5, 0.45, 0.45, 0.45]},
+        {"clip": "clips/K-anten-isik-seedance-mini.mp4", "len": 5.0,
+         "signs": [{"style": "caption", "lines": [{"text": "7:00 pm"}], "start": 0.2, "end": 1.8}]},
+        {"image": "images/B8-03-telsiz-acik.png", "audio": [{"id": "voice_01", "path": "../A1-001-a-strange-message/audio/voice_01", "radio": true}, "b8_03_alex"], "move": [1.06, 1.12, 0.5, 0.5, 0.45, 0.45]},
+        {"image": "images/B8-03-telsiz-acik.png", "audio": [{"id": "voice_02", "path": "../A1-001-a-strange-message/audio/voice_02", "radio": true}], "move": [1.12, 1.18, 0.45, 0.5, 0.4, 0.5]},
+        {"image": "images/B8-04-iki-kayit.png", "audio": [{"id": "voice_02", "path": "../A1-001-a-strange-message/audio/voice_02", "radio": true}], "aoff": 1.0, "move": [1.0, 1.08, 0.5, 0.55, 0.5, 0.6]}
+      ],
+      "next": "k1"
+    },
+    {
+      "id": "k1", "type": "decision", "skill": "listening", "cefr": "A1",
+      "prompt": {"tr": "İki kaydı karşılaştır. Ne fark ediyorsun?"},
+      "cue": {"speaker": "VOICE", "text": "This is E. Meet me at the old station. Friday. Seven o'clock."},
+      "pov": "POV: telefon ve telsiz yan yana; müzik kısılır.",
+      "background": "images/B8-04-iki-kayit.png",
+      "targetPhrase": "It's the same.",
+      "options": [
+        {"id": "a", "text": "It's the same!", "correct": true, "next": "k1-ok"},
+        {"id": "b", "text": "It's a new message.", "correct": false, "audio": "b8_04_alex", "next": "r-k1-b"}
+      ],
+      "hints": [
+        {"level": 1, "kind": "keyword", "tr": "Aynı → the same. Yeni → new."},
+        {"level": 2, "kind": "pattern", "tr": "It's the …!"},
+        {"level": 3, "kind": "explanation", "tr": "İki kaydı bir kez daha yan yana dinle. Kelimeler değişiyor mu?"}
+      ]
+    },
+    {
+      "id": "r-k1-b", "type": "reaction",
+      "shots": [{"image": "images/B8-04-iki-kayit.png", "audio": ["b8_04_alex"], "move": [1.06, 1.0, 0.5, 0.55, 0.5, 0.55]}],
+      "bubble": {"speaker": "HI", "lang": "tr", "text": "İki kaydı bir kez daha yan yana dinle. Kelimeler değişiyor mu?", "audio": {"id": "tr_r-k1-b", "speaker": "HI"}},
+      "next": "k1"
+    },
+    {
+      "id": "k1-ok", "type": "segment",
+      "shots": [
+        {"image": "images/B8-04-iki-kayit.png", "audio": ["b8_05_alex", "b8_06_maya"], "aoff": 0.4, "move": [1.0, 1.06, 0.5, 0.5, 0.45, 0.45]},
+        {"image": "images/B8-05-alex-farkinda.png", "audio": ["b8_07_alex", "b8_08_sam"], "move": [1.0, 1.08, 0.5, 0.45, 0.5, 0.42]}
+      ],
+      "next": "c-alex1"
+    },
+    {
+      "id": "c-alex1", "type": "card", "kind": "line", "advance": "tap",
+      "background": "images/B8-05-alex-farkinda.png",
+      "lines": [{"speaker": "ALEX", "text": "O yüzden kimse cevap vermiyordu…", "lang": "tr"}],
+      "next": "s02", "audio": {"id": "tr_c-alex1", "speaker": "ALEX (TR)"}
+    },
+    {
+      "id": "s02", "type": "segment", "scene": "Sahne 2: Yön bulma", "checkpoint": true,
+      "shots": [
+        {"image": "images/B8-06-anten-cevirme.png", "len": 2.2, "move": [1.0, 1.06, 0.5, 0.5, 0.5, 0.45]},
+        {"image": "images/B8-06-anten-cevirme.png", "audio": ["b8_09_sam"], "move": [1.06, 1.12, 0.5, 0.45, 0.6, 0.55]}
+      ],
+      "next": "k2"
+    },
+    {
+      "id": "k2", "type": "decision", "skill": "listening", "cefr": "A1",
+      "prompt": {"tr": "Sam: \"Turn left.\" Anteni hangi yöne çevirirsin?"},
+      "cue": {"speaker": "SAM", "text": "Now turn left. Listen."},
+      "pov": "POV: tepe yolundan bakış; solda tepe ve uzakta fener, önde deniz, sağda liman.",
+      "background": "images/B8-07-k2-yon-pov.png",
+      "targetPhrase": "Turn left.",
+      "options": [
+        {"id": "a", "text": "Sol: tepe ve Lumen Point", "lang": "tr", "icon": "arrows:left", "correct": true, "next": "k2-ok"},
+        {"id": "b", "text": "Sağ: liman", "lang": "tr", "icon": "arrows:right", "correct": false, "next": "r-k2-b"},
+        {"id": "c", "text": "Önde: deniz", "lang": "tr", "icon": "arrows:up", "correct": false, "next": "r-k2-c"}
+      ],
+      "hints": [
+        {"level": 1, "kind": "keyword", "tr": "Left → sol."},
+        {"level": 2, "kind": "pattern", "tr": "Turn left = sola dön."},
+        {"level": 3, "kind": "explanation", "tr": "Sam \"Turn left\" diyor: anteni sola, tepeye doğru çevir."}
+      ]
+    },
+    {
+      "id": "r-k2-b", "type": "reaction",
+      "shots": [{"image": "images/B8-06-anten-cevirme.png", "audio": ["b8_10_sam"], "move": [1.06, 1.0, 0.5, 0.45, 0.5, 0.45]}],
+      "next": "k2"
+    },
+    {
+      "id": "r-k2-c", "type": "reaction",
+      "shots": [{"image": "images/B8-06-anten-cevirme.png", "audio": ["b8_11_sam"], "move": [1.06, 1.0, 0.5, 0.45, 0.5, 0.45]}],
+      "next": "k2"
+    },
+    {
+      "id": "k2-ok", "type": "segment",
+      "shots": [
+        {"image": "images/B8-08-sinyal-guclu.png", "audio": ["b8_12_sam", "b8_13_alex"], "aoff": 0.4, "move": [1.0, 1.08, 0.5, 0.45, 0.5, 0.4]},
+        {"image": "images/B8-09-harita-cizgi.png", "audio": ["b8_14_maya"], "move": [1.0, 1.08, 0.5, 0.6, 0.5, 0.55]},
+        {"image": "images/B8-09-harita-cizgi.png", "audio": ["b8_15_sam", "b8_16_maya", "b8_17_alex"], "move": [1.08, 1.14, 0.5, 0.55, 0.55, 0.55]}
+      ],
+      "next": "s03"
+    },
+    {
+      "id": "s03", "type": "segment", "scene": "Sahne 3: Babaannenin notu", "checkpoint": true,
+      "shots": [
+        {"image": "images/B8-10-babaanne-notu.png", "len": 3.4, "move": [1.0, 1.08, 0.5, 0.5, 0.45, 0.55],
+         "signs": [{"style": "note", "lines": [{"text": "Cuma. Saat yedi."}, {"text": "Yedinci kanal. Unutma."}, {"text": "— N."}], "start": 0.3, "end": 3.4}]},
+        {"image": "images/B8-10-babaanne-notu.png", "audio": ["b8_18_maya", "b8_19_alex"], "move": [1.08, 1.14, 0.5, 0.55, 0.5, 0.5]}
+      ],
+      "next": "k3"
+    },
+    {
+      "id": "k3", "type": "decision", "skill": "reading", "cefr": "A1",
+      "prompt": {"tr": "Notu Maya'ya İngilizce oku. Doğru sırayı seç."},
+      "cue": {"speaker": "MAYA", "text": "What's this? Is it from Türkiye?"},
+      "pov": "POV: babaannenin notu Alex'in elinde.",
+      "background": "images/B8-10-babaanne-notu.png",
+      "targetPhrase": "Channel seven.",
+      "options": [
+        {"id": "a", "text": "Friday. Seven o'clock. Channel seven. Don't forget.", "correct": true, "audio": "b8_20_alex", "next": "k3-ok"},
+        {"id": "b", "text": "Seven Friday. O'clock seven. Forget don't.", "correct": false, "audio": "b8_21_alex", "next": "r-k3-b"}
+      ],
+      "hints": [
+        {"level": 1, "kind": "keyword", "tr": "Cuma → Friday. Kanal → channel."},
+        {"level": 2, "kind": "pattern", "tr": "… o'clock. Channel … Don't …"},
+        {"level": 3, "kind": "explanation", "tr": "Türkçedeki sırayla git: Cuma → Friday, saat yedi → seven o'clock, yedinci kanal → channel seven, unutma → don't forget."}
+      ]
+    },
+    {
+      "id": "r-k3-b", "type": "reaction",
+      "shots": [{"image": "images/B8-10-babaanne-notu.png", "audio": ["b8_21_alex", "b8_22_maya"], "move": [1.06, 1.0, 0.5, 0.5, 0.5, 0.5]}],
+      "bubble": {"speaker": "HI", "lang": "tr", "text": "Türkçedeki sırayla git: Cuma → Friday, saat yedi → seven o'clock, yedinci kanal → channel seven, unutma → don't forget.", "speechTr": "Türkçedeki sırayla git: Cuma, {Friday}. Saat yedi, {seven o'clock}. Yedinci kanal, {channel seven}. Unutma, {don't forget.}", "audio": {"id": "tr_r-k3-b", "speaker": "HI"}},
+      "next": "k3"
+    },
+    {
+      "id": "k3-ok", "type": "segment",
+      "shots": [
+        {"image": "images/B8-10-babaanne-notu.png", "audio": ["b8_20_alex"], "aoff": 0.4, "move": [1.0, 1.06, 0.5, 0.5, 0.45, 0.5]},
+        {"image": "images/B8-10-babaanne-notu.png", "audio": ["b8_23_maya", "b8_24_sam"], "move": [1.06, 1.12, 0.5, 0.5, 0.55, 0.45]},
+        {"image": "images/B8-11-kanal-dugmesi.png", "audio": ["b8_25_sam", "b8_26_alex"], "aoff": 1.0, "move": [1.0, 1.1, 0.45, 0.5, 0.55, 0.45],
+         "signs": [{"style": "note", "lines": [{"text": "7", "size": 96}], "start": 0.3, "end": 2.8}]}
+      ],
+      "next": "c-alex2"
+    },
+    {
+      "id": "c-alex2", "type": "card", "kind": "line", "advance": "tap",
+      "background": "images/B8-11-kanal-dugmesi.png",
+      "lines": [{"speaker": "ALEX", "text": "Babaanne… bu kanalı biliyor muydu?", "lang": "tr"}],
+      "next": "c-kartlar", "audio": {"id": "tr_c-alex2", "speaker": "ALEX (TR)"}
+    },
+    {
+      "id": "c-kartlar", "type": "card", "kind": "note", "scene": "Görev: Kaynağı işaretle", "checkpoint": true, "advance": "tap",
+      "background": "images/B8-09-harita-cizgi.png",
+      "lines": [{"text": "It's the same every Friday.", "lang": "en"},
+                {"text": "It comes from the hill.", "lang": "en"},
+                {"text": "Friday. Seven o'clock. Don't forget.", "lang": "en"}],
+      "next": "t-gorev"
+    },
+    {
+      "id": "t-gorev", "type": "task", "kind": "choice", "role": "comprehension", "skill": "reading", "cefr": "A1",
+      "prompt": {"tr": "Üç kartı birleştir. Çağrı nereden geliyor? Haritada seç."},
+      "background": "images/B8-09-harita-cizgi.png",
+      "items": [
+        {"id": "i1", "stem": "It comes from…", "options": [
+          {"id": "a", "text": "the hill and Lumen Point", "correct": true},
+          {"id": "b", "text": "the old station", "correct": false},
+          {"id": "c", "text": "Pier 3", "correct": false}]}
+      ],
+      "feedback": {"wrong": {"speaker": "HI", "lang": "tr", "text": "Sam'in anteni nerede güçlü sinyal buldu? Maya'nın çizgisine bak.", "audio": {"id": "tr_t-gorev", "speaker": "HI"}}},
+      "result": [{"text": "It's a recording. It comes from the hill.", "lang": "en", "style": "highlight"}],
+      "next": "h-lab1"
+    },
+    {
+      "id": "h-lab1", "type": "card", "kind": "hi", "scene": "Dil laboratuvarı", "checkpoint": true, "advance": "tap",
+      "background": "images/B8-05-alex-farkinda.png",
+      "lines": [{"speaker": "HI", "text": "Fikrini söylemek için cümleye \"I think…\" ile başlayabilirsin: I think it's a recording.", "lang": "tr"}],
+      "speechTr": "Fikrini söylemek için cümleye şöyle başlayabilirsin: {I think.} Örnek: {I think it's a recording.}",
+      "next": "t-kanit", "audio": {"id": "tr_h-lab1", "speaker": "HI"}
+    },
+    {
+      "id": "t-kanit", "type": "task", "kind": "match", "role": "evidence", "skill": "spoken_interaction", "cefr": "A1",
+      "prompt": {"tr": "Alex otobüs durağında bir yolcuyla konuşuyor. Her duruma uygun cümleyi eşleştir."},
+      "context": "Yeni bağlam: otobüs durağında bir yolcu (B1–B7 karışık tekrar)",
+      "background": "images/B8-12-durak-yolcu.png",
+      "items": [{"id": "i1", "pairs": [
+        {"left": "Durağı sor.", "right": "Excuse me, where is the bus stop?"},
+        {"left": "Anlamadın; tekrar iste.", "right": "Again, please."},
+        {"left": "Yol tarif et.", "right": "Go straight. Turn left."},
+        {"left": "Saati sor ve cevapla.", "right": "What time is it? It's eight o'clock."},
+        {"left": "Parkın yanındaki kafeyi anlat.", "right": "There is a café near the park."},
+        {"left": "Yolcuyu tarif et.", "right": "He is tall. He has a blue bag."}
+      ]}],
+      "feedback": {"wrong": {"speaker": "HI", "lang": "tr", "text": "Bu cümleleri önceki bölümlerde kullandın. Durumu bir daha oku, acele yok.", "audio": {"id": "tr_t-kanit", "speaker": "HI"}}},
+      "next": "s04"
+    },
+    {
+      "id": "s04", "type": "segment", "scene": "Sahne 4: Işık", "checkpoint": true,
+      "shots": [
+        {"image": "images/B8-13-tepe-kafe-isik.png", "audio": ["b8_27_maya"], "aoff": 1.2, "move": [1.0, 1.1, 0.5, 0.5, 0.45, 0.45],
+         "signs": [{"style": "note", "lines": [{"text": "Hilltop Café"}], "start": 0.3, "end": 3.0}]},
+        {"image": "images/B8-14-iyi-geceler.png", "audio": ["b8_28_alex", "b8_29_sam"], "move": [1.0, 1.08, 0.5, 0.5, 0.55, 0.4]}
+      ],
+      "next": "c-clues"
+    },
+    {
+      "id": "c-clues", "type": "card", "kind": "clue", "advance": "tap", "clueIds": ["C12", "C13"], "answers": ["Q7"],
+      "lines": [{"text": "İpucu panosu", "lang": "tr", "style": "heading"},
+                {"text": "C12 · Yön çizgisi: tepe → Lumen Point", "lang": "tr"},
+                {"text": "C13 · Notun İngilizcesi: \"Friday. Seven o'clock. Channel seven. Don't forget.\"", "lang": "tr"},
+                {"text": "Q7 kapandı: Çağrı her cuma aynı, yani bir kayıt. Sinyal tepe ve Lumen Point yönünden geliyor.", "lang": "tr"},
+                {"text": "Sezon sorusu (kısmen): Çağrı bir kayıt; tepe yönünden geliyor. Not: Kanal Yedi.", "lang": "tr"}],
+      "speechTr": "İpucu panosu. Yön çizgisi: tepeden Lumen Point'e. Notun İngilizcesi: {Friday. Seven o'clock. Channel seven. Don't forget.} Yedinci soru kapandı: çağrı her cuma aynı, yani bir kayıt. Sinyal tepe yönünden geliyor.",
+      "next": "c-oq", "audio": {"id": "tr_c-clues", "speaker": "ANLATICI (TR)"}
+    },
+    {
+      "id": "c-oq", "type": "card", "kind": "openQuestion", "advance": "tap", "questionId": "Q8",
+      "background": "images/B8-13-tepe-kafe-isik.png",
+      "lines": [{"text": "AÇIK SORU", "lang": "tr", "style": "caption"},
+                {"text": "Tepede çağrıyla ilgili ne var?", "lang": "tr", "style": "heading"},
+                {"text": "Bölüm 9: The Café on the Hill", "lang": "en", "style": "caption"}],
+      "speechTr": "Açık soru: Tepede çağrıyla ilgili ne var?",
+      "next": null, "audio": {"id": "tr_c-oq", "speaker": "ANLATICI (TR)"}
+    }
+  ]
+}

@@ -1,0 +1,982 @@
+{
+  "contentId": "A1-007",
+  "status": "DRAFT",
+  "author": "Claude taslak",
+  "date": "2026-10-14",
+  "lines": [
+    {
+      "en": "Who Knows What?",
+      "speaker": "TITLE",
+      "tr": "Kim ne biliyor?",
+      "chunks": [
+        {
+          "en": "Who knows what?",
+          "tr": "Kim ne biliyor?"
+        }
+      ],
+      "words": {
+        "who": "kim",
+        "knows": "biliyor (know: bilmek)",
+        "what": "ne"
+      },
+      "source": "content:title"
+    },
+    {
+      "en": "The First Reveal",
+      "speaker": "TITLE",
+      "tr": "İlk keşif",
+      "chunks": [],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "first": "ilk",
+        "reveal": "açığa çıkan şey, keşif"
+      },
+      "source": "scenes:c-oq"
+    },
+    {
+      "en": "\"Slowly, please.\" Yes, yes. I know!",
+      "speaker": "SAM",
+      "tr": "\"Yavaş lütfen.\" Evet, evet. Biliyorum!",
+      "chunks": [
+        {
+          "en": "Slowly, please.",
+          "tr": "Yavaş lütfen."
+        }
+      ],
+      "words": {
+        "slowly": "yavaşça",
+        "please": "lütfen",
+        "yes": "evet",
+        "i": "ben",
+        "know": "bilmek"
+      },
+      "source": "scenes:c-sam"
+    },
+    {
+      "en": "\"Again, please.\" OK, OK. I know!",
+      "speaker": "SAM",
+      "tr": "\"Tekrar lütfen.\" Tamam, tamam. Biliyorum!",
+      "chunks": [
+        {
+          "en": "Again, please.",
+          "tr": "Bir daha, lütfen."
+        }
+      ],
+      "words": {
+        "again": "tekrar",
+        "please": "lütfen",
+        "ok": "tamam",
+        "i": "ben",
+        "know": "bilmek"
+      },
+      "source": "scenes:c-sam (varyant)"
+    },
+    {
+      "en": "Hi, Alex!",
+      "speaker": "JORDAN",
+      "tr": "Selam Alex!",
+      "chunks": [],
+      "words": {
+        "hi": "merhaba"
+      },
+      "source": "subs/s02"
+    },
+    {
+      "en": "And Maya!",
+      "speaker": "JORDAN",
+      "tr": "Maya da!",
+      "chunks": [],
+      "words": {
+        "and": "ve, … da"
+      },
+      "source": "subs/s02"
+    },
+    {
+      "en": "Who is this?",
+      "speaker": "JORDAN",
+      "tr": "Bu kim?",
+      "chunks": [
+        {
+          "en": "Who is this?",
+          "tr": "Bu kim?"
+        }
+      ],
+      "words": {
+        "who": "kim",
+        "is": "-dır",
+        "this": "bu"
+      },
+      "source": "subs/s02"
+    },
+    {
+      "en": "This is my cousin, Sam.",
+      "speaker": "MAYA",
+      "tr": "Bu benim kuzenim Sam.",
+      "chunks": [
+        {
+          "en": "This is …",
+          "tr": "Bu …"
+        }
+      ],
+      "words": {
+        "this": "bu",
+        "is": "-dır",
+        "my": "benim",
+        "cousin": "kuzen"
+      },
+      "source": "subs/s02"
+    },
+    {
+      "en": "Hi! Jordan, the woman from Friday.",
+      "speaker": "SAM",
+      "tr": "Selam! Jordan, cumadaki kadın.",
+      "chunks": [
+        {
+          "en": "the woman from Friday",
+          "tr": "cumadaki kadın"
+        }
+      ],
+      "words": {
+        "hi": "merhaba",
+        "the": "(belirli tanımlık)",
+        "woman": "kadın",
+        "from": "-den",
+        "friday": "cuma"
+      },
+      "source": "subs/s02"
+    },
+    {
+      "en": "Who is she?",
+      "speaker": "SAM",
+      "tr": "O kim?",
+      "chunks": [
+        {
+          "en": "Who is she?",
+          "tr": "O kim?"
+        }
+      ],
+      "words": {
+        "who": "kim",
+        "is": "-dır",
+        "she": "o (kadın)"
+      },
+      "source": "subs/s02"
+    },
+    {
+      "en": "I don't know her name.",
+      "speaker": "JORDAN",
+      "tr": "Adını bilmiyorum.",
+      "chunks": [
+        {
+          "en": "I don't know",
+          "tr": "bilmiyorum"
+        }
+      ],
+      "words": {
+        "i": "ben",
+        "don't": "(olumsuz: -me)",
+        "know": "bilmek",
+        "her": "onun (kadın)",
+        "name": "ad, isim"
+      },
+      "source": "subs/s02"
+    },
+    {
+      "en": "Helen, I think.",
+      "speaker": "JORDAN",
+      "tr": "Helen sanırım.",
+      "chunks": [
+        {
+          "en": "I think",
+          "tr": "sanırım"
+        }
+      ],
+      "words": {
+        "i": "ben",
+        "think": "düşünmek, sanmak"
+      },
+      "source": "subs/s02"
+    },
+    {
+      "en": "I don't know her name. Helen, I think.",
+      "speaker": "JORDAN",
+      "tr": "Adını bilmiyorum. Helen sanırım.",
+      "chunks": [
+        {
+          "en": "I don't know",
+          "tr": "bilmiyorum"
+        },
+        {
+          "en": "I think",
+          "tr": "sanırım"
+        }
+      ],
+      "words": {
+        "i": "ben",
+        "don't": "(olumsuz: -me)",
+        "know": "bilmek",
+        "her": "onun (kadın)",
+        "name": "ad, isim",
+        "think": "düşünmek, sanmak"
+      },
+      "source": "scenes:k1.cue"
+    },
+    {
+      "en": "How is she?",
+      "speaker": "ALEX",
+      "tr": "O nasıl? (iyi mi?)",
+      "chunks": [
+        {
+          "en": "How is she?",
+          "tr": "O nasıl, iyi mi?"
+        }
+      ],
+      "words": {
+        "how": "nasıl",
+        "is": "-dır",
+        "she": "o (kadın)"
+      },
+      "source": "subs/r-k1-b"
+    },
+    {
+      "en": "She's fine, I think!",
+      "speaker": "JORDAN",
+      "tr": "İyidir sanırım!",
+      "chunks": [
+        {
+          "en": "I think",
+          "tr": "sanırım"
+        }
+      ],
+      "words": {
+        "she's": "o … -dır (kadın)",
+        "fine": "iyi",
+        "i": "ben",
+        "think": "düşünmek, sanmak"
+      },
+      "source": "subs/r-k1-b"
+    },
+    {
+      "en": "What does she look like?",
+      "speaker": "ALEX",
+      "tr": "Nasıl biri? (Görünüşü nasıl?)",
+      "chunks": [
+        {
+          "en": "What does she look like?",
+          "tr": "Görünüşü nasıl? / Nasıl biri?"
+        }
+      ],
+      "words": {
+        "what": "ne",
+        "does": "(soru yardımcısı)",
+        "she": "o (kadın)",
+        "look": "görünmek (look like: … gibi görünmek)",
+        "like": "gibi"
+      },
+      "source": "subs/k1-ok"
+    },
+    {
+      "en": "She is tall.",
+      "speaker": "JORDAN",
+      "tr": "Uzun boylu.",
+      "chunks": [],
+      "words": {
+        "she": "o (kadın)",
+        "is": "-dır",
+        "tall": "uzun boylu"
+      },
+      "source": "subs/k1-ok"
+    },
+    {
+      "en": "She has short hair.",
+      "speaker": "JORDAN",
+      "tr": "Saçları kısa.",
+      "chunks": [
+        {
+          "en": "She has … hair.",
+          "tr": "Saçları …"
+        }
+      ],
+      "words": {
+        "she": "o (kadın)",
+        "has": "-si var (have: sahip olmak)",
+        "short": "kısa",
+        "hair": "saç"
+      },
+      "source": "subs/k1-ok"
+    },
+    {
+      "en": "She has a blue coat.",
+      "speaker": "JORDAN",
+      "tr": "Mavi bir paltosu var.",
+      "chunks": [
+        {
+          "en": "She has a …",
+          "tr": "Bir …-si var."
+        }
+      ],
+      "words": {
+        "she": "o (kadın)",
+        "has": "-si var (have: sahip olmak)",
+        "a": "bir",
+        "blue": "mavi",
+        "coat": "palto"
+      },
+      "source": "subs/k1-ok"
+    },
+    {
+      "en": "Blue? On Friday, you say red!",
+      "speaker": "MAYA",
+      "tr": "Mavi mi? Cuma günü kırmızı diyorsun!",
+      "chunks": [],
+      "words": {
+        "blue": "mavi",
+        "on": "(gün önünde)",
+        "friday": "cuma",
+        "you": "sen",
+        "say": "demek",
+        "red": "kırmızı"
+      },
+      "source": "subs/k1-ok"
+    },
+    {
+      "en": "Red? Yes, yes.",
+      "speaker": "JORDAN",
+      "tr": "Kırmızı mı? Evet, evet.",
+      "chunks": [],
+      "words": {
+        "red": "kırmızı",
+        "yes": "evet"
+      },
+      "source": "subs/k1-ok"
+    },
+    {
+      "en": "Red. Maybe.",
+      "speaker": "JORDAN",
+      "tr": "Kırmızı. Belki.",
+      "chunks": [],
+      "words": {
+        "red": "kırmızı",
+        "maybe": "belki"
+      },
+      "source": "subs/k1-ok"
+    },
+    {
+      "en": "Slowly, please.",
+      "speaker": "ALEX",
+      "tr": "Yavaş lütfen.",
+      "chunks": [
+        {
+          "en": "Slowly, please.",
+          "tr": "Yavaş lütfen."
+        }
+      ],
+      "words": {
+        "slowly": "yavaşça",
+        "please": "lütfen"
+      },
+      "source": "subs/k1-ok"
+    },
+    {
+      "en": "Is she old?",
+      "speaker": "ALEX",
+      "tr": "Yaşlı mı?",
+      "chunks": [],
+      "words": {
+        "is": "-dır",
+        "she": "o (kadın)",
+        "old": "yaşlı"
+      },
+      "source": "subs/k1-ok"
+    },
+    {
+      "en": "Old? No… yes?",
+      "speaker": "JORDAN",
+      "tr": "Yaşlı mı? Hayır… evet?",
+      "chunks": [],
+      "words": {
+        "old": "yaşlı",
+        "no": "hayır",
+        "yes": "evet"
+      },
+      "source": "subs/k1-ok"
+    },
+    {
+      "en": "I don't know!",
+      "speaker": "JORDAN",
+      "tr": "Bilmiyorum!",
+      "chunks": [
+        {
+          "en": "I don't know",
+          "tr": "bilmiyorum"
+        }
+      ],
+      "words": {
+        "i": "ben",
+        "don't": "(olumsuz: -me)",
+        "know": "bilmek"
+      },
+      "source": "subs/k1-ok"
+    },
+    {
+      "en": "A woman with a red coat?",
+      "speaker": "MRS BROOKS",
+      "tr": "Kırmızı paltolu bir kadın mı?",
+      "chunks": [
+        {
+          "en": "a red coat",
+          "tr": "kırmızı bir palto"
+        },
+        {
+          "en": "with a …",
+          "tr": "…-li"
+        }
+      ],
+      "words": {
+        "a": "bir",
+        "woman": "kadın",
+        "with": "ile, -li",
+        "red": "kırmızı",
+        "coat": "palto"
+      },
+      "source": "subs/s03"
+    },
+    {
+      "en": "Yes! I remember her.",
+      "speaker": "MRS BROOKS",
+      "tr": "Evet! Onu hatırlıyorum.",
+      "chunks": [],
+      "words": {
+        "yes": "evet",
+        "i": "ben",
+        "remember": "hatırlamak",
+        "her": "onu (kadın)"
+      },
+      "source": "subs/s03"
+    },
+    {
+      "en": "An old lady with a red coat.",
+      "speaker": "MRS BROOKS",
+      "tr": "Kırmızı paltolu yaşlı bir hanım.",
+      "chunks": [
+        {
+          "en": "a red coat",
+          "tr": "kırmızı bir palto"
+        }
+      ],
+      "words": {
+        "an": "bir",
+        "old": "yaşlı",
+        "lady": "hanım, kadın",
+        "with": "ile, -li",
+        "a": "bir",
+        "red": "kırmızı",
+        "coat": "palto"
+      },
+      "source": "subs/s03"
+    },
+    {
+      "en": "She has white hair.",
+      "speaker": "MRS BROOKS",
+      "tr": "Saçları beyaz.",
+      "chunks": [
+        {
+          "en": "She has … hair.",
+          "tr": "Saçları …"
+        }
+      ],
+      "words": {
+        "she": "o (kadın)",
+        "has": "-si var (have: sahip olmak)",
+        "white": "beyaz",
+        "hair": "saç"
+      },
+      "source": "subs/s03"
+    },
+    {
+      "en": "She can't walk fast.",
+      "speaker": "MRS BROOKS",
+      "tr": "Hızlı yürüyemiyor.",
+      "chunks": [
+        {
+          "en": "can't walk fast",
+          "tr": "hızlı yürüyemez"
+        }
+      ],
+      "words": {
+        "she": "o (kadın)",
+        "can't": "-emez",
+        "walk": "yürümek",
+        "fast": "hızlı"
+      },
+      "source": "subs/s03"
+    },
+    {
+      "en": "Her name?",
+      "speaker": "MRS BROOKS",
+      "tr": "Adı mı?",
+      "chunks": [],
+      "words": {
+        "her": "onun (kadın)",
+        "name": "ad, isim"
+      },
+      "source": "subs/s03"
+    },
+    {
+      "en": "Sorry, I don't know.",
+      "speaker": "MRS BROOKS",
+      "tr": "Kusura bakma, bilmiyorum.",
+      "chunks": [
+        {
+          "en": "I don't know",
+          "tr": "bilmiyorum"
+        }
+      ],
+      "words": {
+        "sorry": "pardon, kusura bakma",
+        "i": "ben",
+        "don't": "(olumsuz: -me)",
+        "know": "bilmek"
+      },
+      "source": "subs/s03"
+    },
+    {
+      "en": "He has white hair.",
+      "speaker": "ALEX",
+      "tr": "(Hatalı: O [erkek] beyaz saçlı.)",
+      "chunks": [],
+      "words": {
+        "he": "o (erkek)",
+        "has": "-si var (have: sahip olmak)",
+        "white": "beyaz",
+        "hair": "saç"
+      },
+      "source": "subs/r-k2-b"
+    },
+    {
+      "en": "He? A man?",
+      "speaker": "SAM",
+      "tr": "He mi? Bir erkek mi?",
+      "chunks": [],
+      "words": {
+        "he": "o (erkek)",
+        "a": "bir",
+        "man": "adam, erkek"
+      },
+      "source": "subs/r-k2-b"
+    },
+    {
+      "en": "White hair?",
+      "speaker": "SAM",
+      "tr": "Beyaz saç mı?",
+      "chunks": [],
+      "words": {
+        "white": "beyaz",
+        "hair": "saç"
+      },
+      "source": "subs/k2-ok"
+    },
+    {
+      "en": "Jordan says short hair.",
+      "speaker": "SAM",
+      "tr": "Jordan kısa saç diyor.",
+      "chunks": [],
+      "words": {
+        "says": "diyor (say: demek)",
+        "short": "kısa",
+        "hair": "saç"
+      },
+      "source": "subs/k2-ok"
+    },
+    {
+      "en": "I'm at Lumen Point on Saturdays.",
+      "speaker": "VOICE",
+      "tr": "Cumartesileri Lumen Point'teyim.",
+      "chunks": [
+        {
+          "en": "on Saturdays",
+          "tr": "cumartesileri"
+        }
+      ],
+      "words": {
+        "i'm": "ben … -im",
+        "at": "-de",
+        "on": "(gün önünde)",
+        "saturdays": "cumartesileri"
+      },
+      "source": "subs/s04"
+    },
+    {
+      "en": "The light.",
+      "speaker": "VOICE",
+      "tr": "Işık.",
+      "chunks": [],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "light": "ışık"
+      },
+      "source": "subs/s04"
+    },
+    {
+      "en": "— E.",
+      "speaker": "VOICE",
+      "tr": "— E.",
+      "chunks": [],
+      "words": {},
+      "source": "subs/s04"
+    },
+    {
+      "en": "Jordan, she says \"E.\" Not Helen.",
+      "speaker": "ALEX",
+      "tr": "Jordan, kadın \"E.\" diyor. Helen değil.",
+      "chunks": [],
+      "words": {
+        "she": "o (kadın)",
+        "says": "diyor (say: demek)",
+        "not": "değil"
+      },
+      "source": "subs/k3-ok"
+    },
+    {
+      "en": "OK, OK… it was dark.",
+      "speaker": "JORDAN",
+      "tr": "Tamam, tamam… karanlıktı.",
+      "chunks": [],
+      "words": {
+        "ok": "tamam",
+        "it": "(hava, ortam)",
+        "was": "idi (-di)",
+        "dark": "karanlık"
+      },
+      "source": "subs/k3-ok"
+    },
+    {
+      "en": "I can't see well at night!",
+      "speaker": "JORDAN",
+      "tr": "Geceleri iyi göremiyorum!",
+      "chunks": [
+        {
+          "en": "at night",
+          "tr": "geceleri, gece"
+        }
+      ],
+      "words": {
+        "i": "ben",
+        "can't": "-emez",
+        "see": "görmek",
+        "well": "iyi",
+        "at": "-de",
+        "night": "gece"
+      },
+      "source": "subs/k3-ok"
+    },
+    {
+      "en": "And the pier is very dark at night.",
+      "speaker": "MAYA",
+      "tr": "Bir de iskele gece çok karanlık.",
+      "chunks": [
+        {
+          "en": "at night",
+          "tr": "geceleri, gece"
+        }
+      ],
+      "words": {
+        "and": "ve",
+        "the": "(belirli tanımlık)",
+        "is": "-dır",
+        "very": "çok",
+        "dark": "karanlık",
+        "at": "-de",
+        "night": "gece"
+      },
+      "source": "subs/k3-ok"
+    },
+    {
+      "en": "Yes. Sorry, friends!",
+      "speaker": "JORDAN",
+      "tr": "Evet. Kusura bakmayın, arkadaşlar!",
+      "chunks": [],
+      "words": {
+        "yes": "evet",
+        "sorry": "pardon, kusura bakma",
+        "friends": "arkadaşlar"
+      },
+      "source": "subs/k3-ok"
+    },
+    {
+      "en": "The radio call… where is it from?",
+      "speaker": "ALEX",
+      "tr": "Telsizdeki çağrı… nereden geliyor?",
+      "chunks": [
+        {
+          "en": "where is it from?",
+          "tr": "nereden (geliyor)?"
+        }
+      ],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "radio": "telsiz",
+        "call": "çağrı",
+        "where": "nerede",
+        "is": "-dır",
+        "it": "o",
+        "from": "-den"
+      },
+      "source": "subs/s05"
+    },
+    {
+      "en": "The pier?",
+      "speaker": "MAYA",
+      "tr": "İskeleden mi?",
+      "chunks": [],
+      "words": {
+        "the": "(belirli tanımlık)"
+      },
+      "source": "subs/s05"
+    },
+    {
+      "en": "The hill?",
+      "speaker": "MAYA",
+      "tr": "Tepeden mi?",
+      "chunks": [],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "hill": "tepe"
+      },
+      "source": "subs/s05"
+    },
+    {
+      "en": "I don't know.",
+      "speaker": "MAYA",
+      "tr": "Bilmiyorum.",
+      "chunks": [
+        {
+          "en": "I don't know.",
+          "tr": "Bilmiyorum."
+        }
+      ],
+      "words": {
+        "i": "ben",
+        "don't": "(olumsuz: -me)",
+        "know": "bilmek"
+      },
+      "source": "subs/s05"
+    },
+    {
+      "en": "We can find it.",
+      "speaker": "SAM",
+      "tr": "Onu bulabiliriz.",
+      "chunks": [],
+      "words": {
+        "we": "biz",
+        "can": "-ebilmek",
+        "find": "bulmak",
+        "it": "o"
+      },
+      "source": "subs/s05"
+    },
+    {
+      "en": "Friday. With an antenna.",
+      "speaker": "SAM",
+      "tr": "Cuma. Bir antenle.",
+      "chunks": [],
+      "words": {
+        "friday": "cuma",
+        "with": "ile",
+        "an": "bir",
+        "antenna": "anten"
+      },
+      "source": "subs/s05"
+    },
+    {
+      "en": "Friday. Seven o'clock.",
+      "speaker": "SAM",
+      "tr": "Cuma. Saat yedi.",
+      "chunks": [],
+      "words": {
+        "friday": "cuma",
+        "seven": "yedi",
+        "o'clock": "saat (tam saat)"
+      },
+      "source": "subs/s05"
+    },
+    {
+      "en": "We find it.",
+      "speaker": "SAM",
+      "tr": "Onu buluruz.",
+      "chunks": [],
+      "words": {
+        "we": "biz",
+        "find": "bulmak",
+        "it": "o"
+      },
+      "source": "subs/s05"
+    },
+    {
+      "en": "She is tall. She has short hair. She has a blue coat.",
+      "speaker": "JORDAN",
+      "tr": "Uzun boylu. Saçları kısa. Mavi bir paltosu var.",
+      "chunks": [
+        {
+          "en": "She has … hair.",
+          "tr": "Saçları …"
+        }
+      ],
+      "words": {
+        "she": "o (kadın)",
+        "is": "-dır",
+        "tall": "uzun boylu",
+        "has": "-si var (have: sahip olmak)",
+        "short": "kısa",
+        "hair": "saç",
+        "a": "bir",
+        "blue": "mavi",
+        "coat": "palto"
+      },
+      "source": "scenes:c-taniklar"
+    },
+    {
+      "en": "She has white hair. She can't walk fast.",
+      "speaker": "MRS BROOKS",
+      "tr": "Saçları beyaz. Hızlı yürüyemiyor.",
+      "chunks": [
+        {
+          "en": "can't walk fast",
+          "tr": "hızlı yürüyemez"
+        }
+      ],
+      "words": {
+        "she": "o (kadın)",
+        "has": "-si var (have: sahip olmak)",
+        "white": "beyaz",
+        "hair": "saç",
+        "can't": "-emez",
+        "walk": "yürümek",
+        "fast": "hızlı"
+      },
+      "source": "scenes:c-taniklar"
+    },
+    {
+      "en": "Listen. Her voice is old.",
+      "speaker": "SAM",
+      "tr": "Dinle. Sesi yaşlı.",
+      "chunks": [],
+      "words": {
+        "listen": "dinle",
+        "her": "onun (kadın)",
+        "voice": "ses",
+        "is": "-dır",
+        "old": "yaşlı"
+      },
+      "source": "scenes:c-taniklar"
+    },
+    {
+      "en": "She is ___.",
+      "speaker": "TASK",
+      "tr": "O ___.",
+      "chunks": [],
+      "words": {
+        "she": "o (kadın)",
+        "is": "-dır"
+      },
+      "source": "scenes:t-gorev.i1"
+    },
+    {
+      "en": "She has ___ hair.",
+      "speaker": "TASK",
+      "tr": "Saçları ___.",
+      "chunks": [],
+      "words": {
+        "she": "o (kadın)",
+        "has": "-si var (have: sahip olmak)",
+        "hair": "saç"
+      },
+      "source": "scenes:t-gorev.i2"
+    },
+    {
+      "en": "She has a ___ coat.",
+      "speaker": "TASK",
+      "tr": "___ bir paltosu var.",
+      "chunks": [],
+      "words": {
+        "she": "o (kadın)",
+        "has": "-si var (have: sahip olmak)",
+        "a": "bir",
+        "coat": "palto"
+      },
+      "source": "scenes:t-gorev.i3"
+    },
+    {
+      "en": "Look at the picture.",
+      "speaker": "TASK",
+      "tr": "Resme bak.",
+      "chunks": [
+        {
+          "en": "look at …",
+          "tr": "…-e bak"
+        }
+      ],
+      "words": {
+        "look": "bak (görmek için)",
+        "at": "-de",
+        "the": "(belirli tanımlık)",
+        "picture": "resim"
+      },
+      "source": "scenes:t-kanit.i1"
+    }
+  ],
+  "phrases": [
+    {
+      "en": "He is tall.",
+      "tr": "O (erkek) uzun boylu.",
+      "source": "content:targetPhrases",
+      "note": "altyazıda 'She is tall.' ve kanıt görevinde 'He is tall. He has short black hair.'",
+      "words": {
+        "he": "o (erkek)",
+        "is": "-dır",
+        "tall": "uzun boylu"
+      }
+    },
+    {
+      "en": "a red coat",
+      "tr": "kırmızı bir palto",
+      "source": "content:targetPhrases",
+      "words": {
+        "a": "bir",
+        "red": "kırmızı",
+        "coat": "palto"
+      }
+    },
+    {
+      "en": "lighthouse",
+      "tr": "deniz feneri",
+      "words": {
+        "lighthouse": "deniz feneri"
+      },
+      "source": "content:glossary"
+    },
+    {
+      "en": "antenna",
+      "tr": "anten",
+      "source": "content:glossary",
+      "words": {
+        "antenna": "anten"
+      }
+    },
+    {
+      "en": "slowly",
+      "tr": "yavaşça",
+      "source": "content:glossary",
+      "words": {
+        "slowly": "yavaşça"
+      }
+    }
+  ],
+  "notes": [
+    "Türk öğrenci tuzağı: Türkçede 'o' cinsiyetsiz; İngilizcede kadın için she, erkek için he. Tepki satırı 'He has white hair.' bilerek (Hatalı) diye işaretlendi.",
+    "'What does she look like?' görünüş sorar ('Nasıl biri?'); 'How is she?' hâl hatır sorar ('O nasıl, iyi mi?').",
+    "'She has white hair.' → 'Saçları beyaz.' Türkçede 'beyaz saçı var' yerine doğal biçim seçildi.",
+    "Sam'in açılış kartı B6 bayrağına (ask_style) göre iki varyanttır; ikisi de çevrildi.",
+    "Görev seçenekleri kullanıcı kararı gereği çevrilmedi."
+  ]
+}

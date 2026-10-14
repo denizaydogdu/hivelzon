@@ -1,0 +1,48 @@
+[
+  {
+    "created_at": "2026-10-14T17:18:33.974339Z",
+    "display_name": "GPT Image 2.5",
+    "id": "77a5a3fa-5786-402c-893b-22130933636f",
+    "job_type": "gpt_image_2_5",
+    "min_result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261014_171833_77a5a3fa-5786-402c-893b-22130933636f_min.webp",
+    "params": {
+      "aspect_ratio": "9:16",
+      "height": 2688,
+      "medias": [
+        {
+          "data": {
+            "id": "185195f6-f42d-4cbe-a013-7151a26d759a",
+            "type": "image_job",
+            "url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261014_164725_185195f6-f42d-4cbe-a013-7151a26d759a.png"
+          },
+          "role": "image"
+        },
+        {
+          "data": {
+            "id": "663ea0fe-3df5-4cea-ba8c-e08c80e48a96",
+            "type": "media_input",
+            "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/663ea0fe-3df5-4cea-ba8c-e08c80e48a96.png"
+          },
+          "role": "image"
+        },
+        {
+          "data": {
+            "id": "57542708-ccdc-4b07-a8e7-a1f5ab17f965",
+            "type": "image_job",
+            "url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261014_171133_57542708-ccdc-4b07-a8e7-a1f5ab17f965.png"
+          },
+          "role": "image"
+        }
+      ],
+      "model": "flare",
+      "prompt": "Use the reference images for Jordan, Alex and Mrs Brooks. Scene: at the open door of the small book-and-tea shop; Jordan (bright orange courier jacket with grey reflective stripes, dark grey helmet) has stopped his bicycle outside; Alex (olive jacket, cream sweater) steps out holding up her phone toward him to play a recording; Mrs Brooks (cream sweater, dark-blue apron) watches from behind the door. The phone screen shows only a simple sound wave, no text. Vertical composition. Warm animated-series illustration, graphic-novel style, clean ink lines, soft cel shading, coastal palette of sea blue, sand, lighthouse yellow and evening orange, mature tone suitable for teens and adults, not childish, no text, no letters, no numbers, no logos.",
+      "quality": "low",
+      "reference_elements": [],
+      "remove_bg": false,
+      "resolution": "2k",
+      "width": 1520
+    },
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261014_171833_77a5a3fa-5786-402c-893b-22130933636f.png",
+    "status": "completed"
+  }
+]

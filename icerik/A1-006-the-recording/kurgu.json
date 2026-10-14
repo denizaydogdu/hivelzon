@@ -1,0 +1,217 @@
+{
+  "kurguVersion": 2,
+  "contentId": "A1-006",
+  "source": "H-085: story.en.md (H-032 onaylı diyalog) düğümlere bölündü; görseller B6-01…B6-13 (+ B5-09 kırmızı palto anısı yeniden kullanıldı). K1'de iki seçenek de doğru (bayrak ask_style → B7). K2 düğme seçimi (seçenekler Türkçe, yazı görselde yok). Kayıt iki kez çalar; ikinci çalışta aynı sesler yeniden kullanılır.",
+  "start": "title",
+  "flags": [
+    {"id": "ask_style", "values": ["slowly", "again"]}
+  ],
+  "gate": {
+    "comprehension": ["t-gorev"],
+    "targetPhrase": ["k1"],
+    "activeTask": ["t-kanit"]
+  },
+  "nodes": [
+    {
+      "id": "title", "type": "title",
+      "next": "recap"
+    },
+    {
+      "id": "recap", "type": "recap",
+      "shots": [{"image": "../A1-005-too-late/images/B5-12-kaydedici-yakin.png", "len": 3.0, "move": [1.0, 1.06, 0.5, 0.5, 0.5, 0.5],
+                 "signs": [{"style": "caption", "lines": [{"text": "Maya's cousin Sam! He can fix it!"}], "start": 0.3, "end": 3.0}]}],
+      "next": "s01"
+    },
+    {
+      "id": "s01", "type": "segment", "scene": "Cumartesi sabahı", "checkpoint": true,
+      "shots": [{"image": "images/B6-01-dukkan-kapi.png", "len": 2.6, "move": [1.0, 1.08, 0.5, 0.5, 0.5, 0.45],
+                 "signs": [{"style": "caption", "lines": [{"text": "Saturday"}], "start": 0.2, "end": 2.2}]}],
+      "next": "s02"
+    },
+    {
+      "id": "s02", "type": "segment", "scene": "Sahne 1: Sam'in odası", "checkpoint": true,
+      "shots": [
+        {"image": "images/B6-02-sam-oda.png", "audio": ["b6_01_maya", "b6_02_alex"], "aoff": 0.8, "move": [1.0, 1.08, 0.5, 0.5, 0.5, 0.45]},
+        {"image": "images/B6-02-sam-oda.png", "audio": ["b6_03_alex"], "aoff": 1.0, "move": [1.1, 1.16, 0.5, 0.45, 0.55, 0.45]},
+        {"image": "images/B6-03-sam-merhaba.png", "audio": ["b6_04_sam"], "move": [1.0, 1.06, 0.5, 0.45, 0.5, 0.42]},
+        {"image": "images/B6-04-oda-detay.png", "audio": ["b6_05_maya", "b6_06_maya", "b6_07_maya", "b6_08_sam"], "move": [1.0, 1.1, 0.5, 0.4, 0.5, 0.6]}
+      ],
+      "next": "s03"
+    },
+    {
+      "id": "s03", "type": "segment", "scene": "Sahne 2: Sam hızlı konuşur", "checkpoint": true,
+      "shots": [
+        {"image": "images/B6-05-sam-kaydedici.png", "audio": ["b6_09_sam"], "atempo": 1.25, "move": [1.0, 1.08, 0.5, 0.5, 0.5, 0.45]},
+        {"image": "images/B6-06-k1-pov.png", "audio": ["b6_10_maya"], "move": [1.04, 1.1, 0.5, 0.5, 0.45, 0.45]}
+      ],
+      "next": "k1"
+    },
+    {
+      "id": "k1", "type": "decision", "skill": "spoken_interaction", "cefr": "A1",
+      "prompt": {"tr": "Sam çok hızlı konuşuyor. Ne dersin?"},
+      "cue": {"speaker": "SAM", "text": "Oh, cool! It's old. I can open it. Easy!"},
+      "pov": "POV: Sam hızlı hızlı anlatıyor; müzik kısılır.",
+      "background": "images/B6-06-k1-pov.png",
+      "targetPhrase": "Slowly, please.",
+      "options": [
+        {"id": "a", "text": "Slowly, please.", "correct": true, "setFlag": {"flag": "ask_style", "value": "slowly"}, "audio": "b6_11_alex", "next": "k1-a"},
+        {"id": "b", "text": "Again, please.", "correct": true, "setFlag": {"flag": "ask_style", "value": "again"}, "audio": "b6_12_alex", "next": "k1-b"}
+      ],
+      "hints": [
+        {"level": 1, "kind": "keyword", "tr": "Yavaş → slowly. Tekrar → again."},
+        {"level": 2, "kind": "pattern", "tr": "… , please."},
+        {"level": 3, "kind": "explanation", "tr": "İki cevap da doğru! Slowly, please hızı, Again, please tekrarı ister."}
+      ]
+    },
+    {
+      "id": "k1-a", "type": "segment",
+      "shots": [
+        {"image": "images/B6-06-k1-pov.png", "audio": ["b6_11_alex"], "aoff": 0.4, "move": [1.0, 1.05, 0.5, 0.5, 0.45, 0.45]},
+        {"image": "images/B6-05-sam-kaydedici.png", "audio": ["b6_13_sam", "b6_14_sam"], "move": [1.06, 1.12, 0.5, 0.5, 0.45, 0.42]}
+      ],
+      "next": "h-k1"
+    },
+    {
+      "id": "k1-b", "type": "segment",
+      "shots": [
+        {"image": "images/B6-06-k1-pov.png", "audio": ["b6_12_alex"], "aoff": 0.4, "move": [1.0, 1.05, 0.5, 0.5, 0.45, 0.45]},
+        {"image": "images/B6-05-sam-kaydedici.png", "audio": ["b6_13_sam", "b6_14_sam"], "move": [1.06, 1.12, 0.5, 0.5, 0.45, 0.42]}
+      ],
+      "next": "h-k1"
+    },
+    {
+      "id": "h-k1", "type": "card", "kind": "hi", "advance": "tap",
+      "background": "images/B6-05-sam-kaydedici.png",
+      "lines": [{"speaker": "HI", "text": "İki cevap da doğru! Slowly, please hızı, Again, please tekrarı ister.", "lang": "tr"}],
+      "speechTr": "İki cevap da doğru! {Slowly, please} hızı, {Again, please} tekrarı ister.",
+      "next": "s04", "audio": {"id": "tr_h-k1", "speaker": "HI"}
+    },
+    {
+      "id": "s04", "type": "segment", "scene": "Sahne 3: Kayıt", "checkpoint": true,
+      "shots": [
+        {"image": "images/B6-07-pil.png", "len": 2.4, "move": [1.0, 1.08, 0.5, 0.5, 0.5, 0.55]},
+        {"image": "images/B6-07-pil.png", "audio": ["b6_15_alex", "b6_16_sam"], "move": [1.08, 1.14, 0.5, 0.55, 0.45, 0.5]}
+      ],
+      "next": "k2"
+    },
+    {
+      "id": "k2", "type": "decision", "skill": "listening", "cefr": "A1",
+      "prompt": {"tr": "Sam: \"Turn it on.\" Kaydediciyi açmak için nereye basarsın?"},
+      "cue": {"speaker": "SAM", "text": "You can. Turn it on."},
+      "pov": "POV: Alex'in elinde kaydedici; düğmeler görünür, yazı yok.",
+      "background": "images/B6-08-k2-pov.png",
+      "targetPhrase": "Turn it on.",
+      "options": [
+        {"id": "a", "text": "Kenardaki küçük düğme", "lang": "tr", "correct": true, "next": "k2-ok"},
+        {"id": "b", "text": "Pil kapağı", "lang": "tr", "correct": false, "next": "r-k2-b"}
+      ],
+      "hints": [
+        {"level": 1, "kind": "keyword", "tr": "Turn on → aç, çalıştır."},
+        {"level": 2, "kind": "pattern", "tr": "Turn it on: onu aç. Açma düğmesi nerede?"},
+        {"level": 3, "kind": "explanation", "tr": "Turn it on = aç, çalıştır. Kenardaki küçük düğmeye bak."}
+      ]
+    },
+    {
+      "id": "r-k2-b", "type": "reaction",
+      "shots": [{"image": "images/B6-07-pil.png", "audio": ["b6_17_sam"], "move": [1.06, 1.0, 0.5, 0.5, 0.45, 0.45]}],
+      "bubble": {"speaker": "HI", "lang": "tr", "text": "Turn it on = aç, çalıştır. Kenardaki küçük düğmeye bak.", "speechTr": "{Turn it on}: aç, çalıştır. Kenardaki küçük düğmeye bak.", "audio": {"id": "tr_r-k2-b", "speaker": "HI"}},
+      "next": "k2"
+    },
+    {
+      "id": "k2-ok", "type": "segment",
+      "shots": [
+        {"image": "images/B6-09-isik-yandi.png", "len": 2.2, "move": [1.0, 1.06, 0.5, 0.6, 0.5, 0.65]},
+        {"image": "images/B6-09-isik-yandi.png", "audio": [{"id": "b6_18_voice", "radio": true}, {"id": "b6_19_voice", "radio": true}], "move": [1.06, 1.12, 0.5, 0.65, 0.5, 0.65]},
+        {"image": "../A1-005-too-late/images/B5-09-kirmizi-palto-ani.png", "audio": [{"id": "b6_20_voice", "radio": true}, {"id": "b6_21_voice", "radio": true}], "move": [1.0, 1.1, 0.5, 0.5, 0.55, 0.45]},
+        {"image": "images/B6-10-uc-bakis.png", "len": 2.0, "move": [1.0, 1.05, 0.5, 0.45, 0.5, 0.45]},
+        {"image": "images/B6-10-uc-bakis.png", "audio": ["b6_22_sam"], "move": [1.05, 1.1, 0.5, 0.45, 0.5, 0.45]},
+        {"image": "images/B6-09-isik-yandi.png", "audio": [{"id": "b6_20_voice", "radio": true}, {"id": "b6_21_voice", "radio": true}], "move": [1.1, 1.18, 0.5, 0.65, 0.5, 0.7]}
+      ],
+      "next": "t-gorev"
+    },
+    {
+      "id": "t-gorev", "type": "task", "kind": "choice", "role": "comprehension", "skill": "listening", "cefr": "A1",
+      "scene": "Görev: Üç ipucunu bul",
+      "prompt": {"tr": "Kayıtta ne var? Boşlukları doldur."},
+      "background": "images/B6-09-isik-yandi.png",
+      "items": [
+        {"id": "i1", "stem": "I'm at ___ on Saturdays.", "options": [
+          {"id": "a", "text": "Lumen Point", "correct": true},
+          {"id": "b", "text": "Pier 3", "correct": false},
+          {"id": "c", "text": "the old station", "correct": false}]},
+        {"id": "i2", "stem": "I'm at Lumen Point on ___.", "options": [
+          {"id": "a", "text": "Saturdays", "correct": true},
+          {"id": "b", "text": "Fridays", "correct": false},
+          {"id": "c", "text": "Mondays", "correct": false}]},
+        {"id": "i3", "stem": "The ___.", "options": [
+          {"id": "a", "text": "light", "correct": true},
+          {"id": "b", "text": "sea", "correct": false},
+          {"id": "c", "text": "hill", "correct": false}]}
+      ],
+      "feedback": {"wrong": {"speaker": "HI", "lang": "tr", "text": "Kaydı bir daha düşün: yer, gün ve son kelime. Acele yok.", "audio": {"id": "tr_t-gorev", "speaker": "HI"}}},
+      "result": [{"text": "I'm at Lumen Point on Saturdays. The light. — E.", "lang": "en", "style": "highlight"}],
+      "next": "s05"
+    },
+    {
+      "id": "s05", "type": "segment", "scene": "Sahne 4: Hangisi doğru?", "checkpoint": true,
+      "shots": [
+        {"image": "images/B6-11-defter.png", "audio": ["b6_23_alex", "b6_24_alex"], "move": [1.0, 1.08, 0.5, 0.55, 0.5, 0.5],
+         "signs": [{"style": "note", "lines": [{"text": "red coat"}, {"text": "Helen?"}, {"text": "the hill café?"}], "start": 0.3, "end": 4.5}]},
+        {"image": "images/B6-11-defter.png", "audio": ["b6_25_maya", "b6_26_sam"], "move": [1.08, 1.14, 0.5, 0.5, 0.45, 0.45]},
+        {"image": "images/B6-12-telsiz-etiket.png", "audio": ["b6_27_sam"], "aoff": 1.4, "move": [1.0, 1.08, 0.5, 0.5, 0.5, 0.45],
+         "signs": [{"style": "note", "lines": [{"text": "PLRC 1979"}], "start": 0.2, "end": 2.6}]},
+        {"image": "images/B6-12-telsiz-etiket.png", "len": 2.6, "move": [1.08, 1.14, 0.5, 0.45, 0.6, 0.6],
+         "signs": [{"style": "note", "lines": [{"text": "old club radio?"}], "start": 0.3, "end": 2.6}]}
+      ],
+      "next": "h-lab1"
+    },
+    {
+      "id": "h-lab1", "type": "card", "kind": "hi", "scene": "Dil laboratuvarı", "checkpoint": true, "advance": "tap",
+      "background": "images/B6-04-oda-detay.png",
+      "lines": [{"speaker": "HI", "text": "Türkçede tek kelime var: \"var\". İngilizcede tekil için There is, çoğul için There are. There is two radios değil, There are two radios.", "lang": "tr"}],
+      "speechTr": "Türkçede tek kelime var: var. İngilizcede tekil için {There is}, çoğul için {There are}. {There is two radios} değil, {There are two radios.}",
+      "next": "t-kanit", "audio": {"id": "tr_h-lab1", "speaker": "HI"}
+    },
+    {
+      "id": "t-kanit", "type": "task", "kind": "match", "role": "evidence", "skill": "reading", "cefr": "A1",
+      "prompt": {"tr": "Sam'in odasına bak. Cümleleri tamamla."},
+      "context": "Yeni bağlam: Sam'in odasının resmi",
+      "background": "images/B6-04-oda-detay.png",
+      "items": [{"id": "i1", "pairs": [
+        {"left": "There is a radio", "right": "on the desk."},
+        {"left": "There are", "right": "two chairs."},
+        {"left": "There is a box", "right": "under the bed."}
+      ]}],
+      "feedback": {"wrong": {"speaker": "HI", "lang": "tr", "text": "Resme bak: radyo masada, kutu yatağın altında. İki sandalye için There are.", "speechTr": "Resme bak: radyo masada, kutu yatağın altında. İki sandalye için {There are.}", "audio": {"id": "tr_t-kanit", "speaker": "HI"}}},
+      "result": [{"text": "There is a radio on the desk. There are two chairs. There is a box under the bed.", "lang": "en", "style": "highlight"}],
+      "next": "s06"
+    },
+    {
+      "id": "s06", "type": "segment", "scene": "Son kare", "checkpoint": true,
+      "shots": [
+        {"image": "images/B6-13-harita-fener.png", "audio": ["b6_28_maya"], "aoff": 0.8, "move": [1.0, 1.1, 0.5, 0.5, 0.45, 0.6],
+         "signs": [{"style": "note", "lines": [{"text": "Lumen Point", "size": 56}], "start": 0.4, "end": 3.2}]}
+      ],
+      "next": "c-clues"
+    },
+    {
+      "id": "c-clues", "type": "card", "kind": "clue", "advance": "tap", "clueIds": ["C9", "C10"], "answers": ["Q5"],
+      "lines": [{"text": "İpucu panosu", "lang": "tr", "style": "heading"},
+                {"text": "C9 · Kayıt: \"If you have the radio, you are a friend. I'm at Lumen Point on Saturdays. The light. — E.\"", "lang": "tr"},
+                {"text": "C10 · Sam'in notu: \"old club radio?\"", "lang": "tr"},
+                {"text": "Q5 kapandı: Kayıt dinlendi: Lumen Point, Saturdays, the light, E.", "lang": "tr"}],
+      "speechTr": "İpucu panosu. Kayıt: {I'm at Lumen Point on Saturdays. The light.} Sam'in notu: {old club radio?} Beşinci soru kapandı: kayıt dinlendi; üç ipucu bulundu.",
+      "next": "c-oq", "audio": {"id": "tr_c-clues", "speaker": "ANLATICI (TR)"}
+    },
+    {
+      "id": "c-oq", "type": "card", "kind": "openQuestion", "advance": "tap", "questionId": "Q6",
+      "background": "images/B6-11-defter.png",
+      "lines": [{"text": "AÇIK SORU", "lang": "tr", "style": "caption"},
+                {"text": "Kayıt mı doğru, Jordan mı?", "lang": "tr", "style": "heading"},
+                {"text": "Kayıt \"Lumen Point\" ve \"E.\" diyor; Jordan \"Helen\" ve \"the hill café\" demişti.", "lang": "tr", "style": "caption"},
+                {"text": "Bölüm 7: Who Knows What?", "lang": "en", "style": "caption"}],
+      "speechTr": "Açık soru: Hangisi doğru? Kayıt mı, kurye mi?",
+      "next": null, "audio": {"id": "tr_c-oq", "speaker": "ANLATICI (TR)"}
+    }
+  ]
+}
