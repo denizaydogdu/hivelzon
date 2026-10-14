@@ -1,6 +1,6 @@
 # H-064: Tasarım kalite turu (erişilebilirlik, golden, temizlik)
 
-- **Durum:** Yapılacak
+- **Durum:** Bitti (2026-10-14; flutter 924/924; sabit renk ve yazı boyutu sayısı 0; önce/sonra `.yerel/h-064/`)
 - **Tür:** Uygulama (tasarım)
 - **Faz:** Tasarım yenilemesi T7 (`docs/UYGULAMA-PLANI.md`)
 - **Bağımlılık:** H-059 … H-063, H-040
@@ -48,3 +48,4 @@ Kendi dalında (`h-064-tasarim-kalite-turu`); sorun olursa birleştirme commit'i
 - **Golden:** yalnız `h059_profil` ve `h059_profil_adsiz` değişti (yeni Titreşim satırı; yükseklik 1240 → 1340). Görsel olarak kontrol edildi. Öteki golden'lar değişmedi.
 - **Simülatör önce/sonra:** `.yerel/h-064/before|after/` (`profil-ust`, `profil-kaydirilmis`, `profil-buyuk-yazi`). Geçici "h064-temp-17pro" simülatöründe çekildi, sonra silindi. Paylaşılan simülatöre dokunulmadı. Önce: kaydırınca avatar saatin üstüne biniyor. Sonra: kum şerit var.
 - Testler: 887 → 924, hepsi yeşil; `flutter analyze` temiz.
+2026-10-14: `main`'e birleştirildi ve kapandı (kullanıcının genel onayı). Açık kalan küçükler: 320 pt alt menü yalnız widget testinde doğrulandı (iOS 26'da 320 pt simülatör yok).

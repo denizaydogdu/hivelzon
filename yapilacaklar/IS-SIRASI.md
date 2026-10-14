@@ -129,7 +129,7 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 | T4 | H-061 | Defter, Kelime tekrarı, Konu seti, Sahne avı tasarımı | Orta | H-057, H-058 | ✅ |
 | T5 | H-062 | Oynatıcı katmanlarının tasarımı | Orta | H-057 | ✅ |
 | T6 | H-063 | Hi'nin canlılığı (ifadeler, animasyonlar) | Orta | H-057 | ✅ |
-| T7 | H-064 | Tasarım kalite turu (erişilebilirlik, golden, temizlik) | Orta | H-059 … H-063, H-040 | ⏳ |
+| T7 | H-064 | Tasarım kalite turu (erişilebilirlik, golden, temizlik) | Orta | H-059 … H-063, H-040 | ✅ |
 
 **Sıra:** H-057 → H-058 → H-059 → H-039 → H-060 → H-061 → H-062 → H-063 → H-040 → H-064 → H-041, H-042, H-043, H-044.
 
@@ -173,6 +173,7 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 ## Biten işler
 | İş | Başlık | Bitiş | Doğrulama |
 |---|---|---|---|
+| H-064 | Tasarım kalite turu | 2026-10-14 | Profil ve açılışta durum çubuğu şeridi, dar ekranda tek satır alt menü, Titreşim ayarı (tek yardımcıdan), bütün ekranlarda dokunma/etiket/kontrast + 320×568 1,3× testleri, sabit renk/yazı boyutu 0, Hi balonu katman olarak yüzer; flutter 924 |
 | H-083 | Türkçe seslerin Alania'ya geçişi | 2026-10-14 | 44 klip (Hi f1, Alex nisa, babaanne selin, anlatıcı m1; İngilizce ifadeler Sarah), Hi panelinde "Hi'yi dinle", Türkçe klipler kendi -16 LUFS'u; kullanıcı onayladı |
 | H-040 | Keşfet akışı | 2026-10-14 | 17 klip (B1–B4, ücretsiz kesim), quiz/mola kartları, günlük 20 dk sınırı (13–17 ve 13 altı), sonsuz kaydırma yok, bellek ölçümü sızıntısız; kullanıcı onayladı |
 | H-079 | Dilbilgisi pilotu (3 A1 konusu) | 2026-10-14 | to be, a/an, -s; Türkçe Alania + İngilizce Sarah; lint 0 hata; simülatörde denendi; kullanıcı onayladı (öğretmen kontrolü yayından önce) |
@@ -416,3 +417,4 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
   - H-072: 5 B2 kitabının metni de main'de. Kitaplıkta 20 kitap (A1 5, A2 5, B1 5, B2 5), hepsi lint 0 hata. Görseller: B1+B2 59 görsel ≈ 29,5 kr (kredi 29,06; yükleme gerekir).
   - Kullanıcı onayları: Keşfet (13 altı da 20 dk), H-083 (b) yolu, B1+B2 kitap metinleri ve çevirileri. B1 görselleri (28, ~14 kr) üretime alındı; B2 görselleri (31, ~15,5 kr) kredi yüklemesi bekliyor.
   - H-084 açıldı: B2 görselleri 15,06 krediye sığsın diye 30/31 üretiliyor; B2-K01 p13 (4. bölüm başı) kredi yüklenince tamamlanacak.
+  - H-064 tasarım kalite turu bitti (924 test). Tasarım yenilemesi (Adım 6) H-057…H-064 tamamlandı.
