@@ -13,6 +13,7 @@ from pathlib import Path
 from .build import KURGU_FILE, BuildError, build_dry
 from .cefr import LEVELS, NO_LIST_MSG, coverage, has_extra_list
 from .graph import Issue, check_scenes
+from .lesson import check_grammar_topics
 from .season import SeasonSource
 from .story import read_story
 from .translation import TRANSLATION_FILE, Translation, word_key
@@ -248,7 +249,7 @@ def _check_season_files(ep_dir: Path, doc: dict) -> list[Issue]:
     return out
 
 
-def lint_episode(ep_dir: Path, graph_source: str = "auto") -> EpisodeReport:
+def lint_episode(ep_dir: Path, graph_source: str = "auto", grammar_root: Path | None = None) -> EpisodeReport:
     ep_dir = Path(ep_dir)
     rep = EpisodeReport(ep_dir)
     cp = ep_dir / "content.json"
@@ -262,6 +263,9 @@ def lint_episode(ep_dir: Path, graph_source: str = "auto") -> EpisodeReport:
         return rep
     rep.content_id, rep.level = c.get("contentId", "?"), c.get("level", "?")
     rep.issues += check_links(c)
+    # H-077: isteğe bağlı `grammarTopics` (dilbilgisi dersi kimlikleri)
+    rep.issues += [Issue(lv, "grammar-topics", msg)
+                   for lv, msg in check_grammar_topics(c.get("grammarTopics"), grammar_root)]
     li, rep.coverage = check_language(ep_dir, c)
     rep.issues += li
     gi, rep.graph = check_graph(ep_dir, c, graph_source)

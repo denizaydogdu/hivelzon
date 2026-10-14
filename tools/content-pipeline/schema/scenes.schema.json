@@ -131,6 +131,11 @@
         "estimatedMinutes": { "type": "number" },
         "mission": { "$ref": "#/$defs/textTr" },
         "targetPhrases": { "type": "array", "items": { "type": "string" } },
+        "grammarTopics": {
+          "description": "Bu bölümde geçen dilbilgisi konuları (H-077): content.json `grammarTopics` (dilbilgisi/<G-ID> kimlikleri). Bölüm panelindeki \"Bu bölümdeki dilbilgisi\" düğmesi bunu kullanır.",
+          "type": "array", "uniqueItems": true,
+          "items": { "type": "string", "pattern": "^G-(A1|A2|B1|B2|C1|C2)-[0-9]{2}-[a-z0-9]+(-[a-z0-9]+)*$" }
+        },
         "targetPhraseGloss": {
           "description": "🎯 paneli (H-050): hedef ifadenin Türkçe anlamı (ceviri.tr.json'dan). Anlamı bulunmayan ifade listede yoktur.",
           "type": "array",

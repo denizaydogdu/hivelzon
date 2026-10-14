@@ -12,6 +12,8 @@ Denetimler:
 - Ses: hizalama metinle uyuşuyor mu (hata), ses/hizalama var mı ve anlatım hızı (uyarı; git dışı medya).
   Hız, dışa aktarmadaki anlatım temposundan (pacing.py, H-069) SONRAKİ etkin hızdır; ham hız da raporlanır.
 - Görsel: `book.json`'da adı geçen görsel bu ortamda var mı (uyarı; git dışı medya).
+- `grammarTopics` (isteğe bağlı, H-077): dilbilgisi dersi kimlikleri; ders klasöründe ders varsa bulunmalı
+  (hata), hiç ders yoksa uyarı.
 """
 
 from __future__ import annotations
@@ -26,6 +28,7 @@ from .book import (BOOK_FILE, BOOK_LEVELS, DIR_RE, PROMPTS_FILE, RIGHTS_FILE, TE
                    WORD_TOLERANCE, Book, BookError, text_sha256)
 from .cefr import LEVELS, NO_LIST_MSG, coverage, has_extra_list, sentences
 from .graph import Issue, schema_errors
+from .lesson import check_grammar_topics
 from .lint import MAX_SENTENCE_WORDS, coverage_issues
 from .translation import TRANSLATION_FILE, Miss, Translation, norm_text, word_key
 
@@ -270,7 +273,7 @@ def _check_media(book: Book) -> tuple[list[Issue], dict]:
     return issues, audio
 
 
-def lint_book(book_dir: Path, word_targets: dict | None = None) -> BookReport:
+def lint_book(book_dir: Path, word_targets: dict | None = None, grammar_root: Path | None = None) -> BookReport:
     rep = BookReport(Path(book_dir))
     try:
         book = Book.load(book_dir)
@@ -286,4 +289,6 @@ def lint_book(book_dir: Path, word_targets: dict | None = None) -> BookReport:
     rep.issues += ti
     mi, rep.stats["media"] = _check_media(book)
     rep.issues += mi
+    rep.issues += [Issue(lv, "grammar-topics", msg)
+                   for lv, msg in check_grammar_topics(book.meta.get("grammarTopics"), grammar_root)]
     return rep

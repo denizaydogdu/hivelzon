@@ -1,0 +1,189 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hi.velzon.tr/schema/cards.v1.schema.json",
+  "title": "hiVelzon dilbilgisi dersi kartları (paket: cards.json)",
+  "description": "export_grammar.py üretir (dilbilgisi/<G-ID>/_build/package/cards.json). Zamanlar saniyedir ve ilgili ses parçasının başına göredir; ses yoksa null. H-077, docs/DILBILGISI.md §4 ve §9.",
+  "type": "object",
+  "required": ["schemaVersion", "lessonId", "contentVersion", "level", "cards"],
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "lessonId": { "type": "string", "minLength": 1 },
+    "contentVersion": { "type": "integer", "minimum": 1 },
+    "level": { "enum": ["A1", "A2", "B1", "B2", "C1", "C2"] },
+    "cards": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "type", "narration", "examples", "wrong", "diagrams", "practice", "links"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string", "pattern": "^c[0-9]{2}$" },
+          "type": { "enum": ["hook", "explain", "examples", "contrast", "practice", "seeInStory", "rule"] },
+          "title": { "type": "string", "minLength": 1 },
+          "narration": {
+            "description": "Hi'nin Türkçe anlatımı (Alania). Okunan kelime `words` zamanlarıyla vurgulanır.",
+            "oneOf": [
+              { "type": "null" },
+              {
+                "type": "object",
+                "required": ["lang", "text", "audio", "duration", "sentences"],
+                "additionalProperties": false,
+                "properties": {
+                  "lang": { "const": "tr" },
+                  "text": { "type": "string", "minLength": 1 },
+                  "audio": { "type": ["string", "null"] },
+                  "duration": { "type": ["number", "null"], "minimum": 0 },
+                  "sentences": { "type": "array", "items": { "$ref": "#/$defs/timedText" } }
+                }
+              }
+            ]
+          },
+          "examples": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["id", "en", "tr", "targets", "audio", "duration", "start", "end", "words"],
+              "additionalProperties": false,
+              "properties": {
+                "id": { "type": "string", "minLength": 1 },
+                "en": { "type": "string", "minLength": 1 },
+                "tr": { "type": "string" },
+                "targets": { "type": "array", "items": { "$ref": "#/$defs/span" } },
+                "audio": { "type": ["string", "null"] },
+                "duration": { "type": ["number", "null"], "minimum": 0 },
+                "start": { "type": ["number", "null"] },
+                "end": { "type": ["number", "null"] },
+                "words": { "type": "array", "items": { "$ref": "#/$defs/word" } }
+              }
+            }
+          },
+          "wrong": {
+            "description": "\"Türkçede nasıl?\" kartındaki yanlış biçimler (sessiz, utandırmadan gösterilir).",
+            "type": "array",
+            "items": {
+              "type": "object", "required": ["id", "en"], "additionalProperties": false,
+              "properties": { "id": { "type": "string" }, "en": { "type": "string", "minLength": 1 }, "tr": { "type": "string" } }
+            }
+          },
+          "diagrams": { "type": "array", "items": { "$ref": "#/$defs/diagram" } },
+          "practice": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["id", "kind"],
+              "additionalProperties": false,
+              "properties": {
+                "id": { "type": "string", "minLength": 1 },
+                "kind": { "enum": ["choose", "fill", "order", "say"] },
+                "stem": { "type": "string" },
+                "options": {
+                  "type": "array",
+                  "items": { "type": "object", "required": ["text", "correct"], "additionalProperties": false,
+                             "properties": { "text": { "type": "string", "minLength": 1 }, "correct": { "type": "boolean" } } }
+                },
+                "answers": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+                "tokens": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+                "answer": { "type": "string" },
+                "text": { "type": "string" },
+                "tr": { "type": "string" },
+                "feedbackTr": { "type": "string" },
+                "audio": { "type": ["string", "null"] },
+                "duration": { "type": ["number", "null"] },
+                "words": { "type": "array", "items": { "$ref": "#/$defs/word" } }
+              }
+            }
+          },
+          "links": {
+            "description": "\"Hikâyede gör\" derin bağları (bölüm + düğüm + altyazı satırı ya da kitap + sayfa + cümle).",
+            "type": "array",
+            "items": {
+              "oneOf": [
+                {
+                  "type": "object",
+                  "required": ["kind", "episodeId", "node", "cueId", "text"],
+                  "additionalProperties": false,
+                  "properties": {
+                    "kind": { "const": "episode" },
+                    "episodeId": { "type": "string" },
+                    "node": { "type": ["string", "null"] },
+                    "cueId": { "type": ["string", "null"] },
+                    "storyLine": { "type": "integer" },
+                    "text": { "type": "string" },
+                    "cueText": { "type": "string" },
+                    "start": { "type": ["number", "null"] },
+                    "end": { "type": ["number", "null"] }
+                  }
+                },
+                {
+                  "type": "object",
+                  "required": ["kind", "bookId", "chapter", "page", "sentenceId", "text"],
+                  "additionalProperties": false,
+                  "properties": {
+                    "kind": { "const": "book" },
+                    "bookId": { "type": "string" },
+                    "chapter": { "type": "string" },
+                    "page": { "type": "string" },
+                    "sentenceId": { "type": "string" },
+                    "text": { "type": "string" },
+                    "start": { "type": ["number", "null"] },
+                    "end": { "type": ["number", "null"] }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "word": {
+      "type": "object", "required": ["w", "start", "end"], "additionalProperties": false,
+      "properties": { "w": { "type": "string" }, "start": { "type": ["number", "null"] }, "end": { "type": ["number", "null"] } }
+    },
+    "timedText": {
+      "type": "object", "required": ["text", "start", "end", "words"], "additionalProperties": false,
+      "properties": {
+        "text": { "type": "string", "minLength": 1 },
+        "start": { "type": ["number", "null"] },
+        "end": { "type": ["number", "null"] },
+        "words": { "type": "array", "items": { "$ref": "#/$defs/word" } }
+      }
+    },
+    "span": {
+      "type": "object", "required": ["start", "end", "text"], "additionalProperties": false,
+      "properties": { "start": { "type": "integer", "minimum": 0 }, "end": { "type": "integer", "minimum": 0 }, "text": { "type": "string" } }
+    },
+    "diagram": {
+      "oneOf": [
+        {
+          "type": "object", "required": ["kind", "points"], "additionalProperties": false,
+          "properties": {
+            "kind": { "const": "timeline" },
+            "points": { "type": "array", "minItems": 1, "items": { "type": "object", "required": ["at", "text"], "additionalProperties": false,
+              "properties": { "at": { "enum": ["past", "now", "future"] }, "text": { "type": "string", "minLength": 1 } } } }
+          }
+        },
+        {
+          "type": "object", "required": ["kind", "boxes", "arrows"], "additionalProperties": false,
+          "properties": {
+            "kind": { "const": "boxes" },
+            "arrows": { "type": "boolean" },
+            "boxes": { "type": "array", "minItems": 2, "items": { "type": "object", "required": ["text"], "additionalProperties": false,
+              "properties": { "text": { "type": "string", "minLength": 1 }, "caption": { "type": "string" } } } }
+          }
+        },
+        {
+          "type": "object", "required": ["kind", "words"], "additionalProperties": false,
+          "properties": {
+            "kind": { "const": "suffix" },
+            "words": { "type": "array", "minItems": 1, "items": { "type": "object", "required": ["base", "suffix", "word"], "additionalProperties": false,
+              "properties": { "base": { "type": "string" }, "suffix": { "type": "string" }, "word": { "type": "string" } } } }
+          }
+        }
+      ]
+    }
+  }
+}

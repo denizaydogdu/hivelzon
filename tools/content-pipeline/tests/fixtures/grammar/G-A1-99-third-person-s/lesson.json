@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "id": "G-A1-99-third-person-s",
+  "level": "A1",
+  "titleTr": "Üçüncü tekil -s",
+  "titleEn": "Third person -s",
+  "goalTr": "Tek kişiden söz ederken fiile ek getirebilirsin.",
+  "prerequisites": [],
+  "contentVersion": 1,
+  "status": "DRAFT",
+  "aiGenerated": true,
+  "teacherReview": null,
+  "linksTo": { "episodes": ["A1-901"], "books": ["A1-K99"] },
+  "properNouns": ["Ece"],
+  "pronunciations": [{ "term": "-s", "say_as": "se" }],
+  "narration": { "tr": { "instructions": "sıcak, sakin, yavaş" } }
+}
