@@ -67,6 +67,7 @@ Düzen: selam ve tek cümle, ardından **Hikâyen** (birincil, sarı düğme), a
 | Tekrar yok, defter dolu | (kutu gizliydi) | Şu an tekrar edilecek ifade yok. Yeni ifadeler bölüm bitince defterine eklenir. | Sakin durum cümlesi; düğme yok. |
 | Defter boş | (kutu gizliydi) | Bir bölümü bitirince ifadeler defterine eklenir; tekrar zamanları burada görünür. | Yeni kullanıcıya özelliği tanıtır. |
 | Defter yükleniyor | — | Defterin hazırlanıyor… | Boş durumla karışmaz. |
+| Günlük hedef halkası (H-060) | — | Selamın sağında halka: "6/10" + "dk"; ekran okuyucu: "Günlük hedef: bugün yaklaşık 6 dakika, hedefin 10 dakika" | Bugünkü süre mevcut kayıtlardan **tahmindir** (bugün biten bölümlerin süresi + tekrarda geçen süre). Hedefin altında kalmak vurgulanmaz; utandırıcı metin yok. |
 
 ## 4. Hikâye sekmesi
 
@@ -95,7 +96,7 @@ Düzen: selam ve tek cümle, ardından **Hikâyen** (birincil, sarı düğme), a
 | Yakında | Yakında · Bu bölüm hazırlanıyor. | aynı | Tarih yok. |
 
 ### 4.3 Sezon jeneriği
-"Sezon 1 jeneriği: The Missing Signal", "Geç" (ekran okuyucu: "Jeneriği geç"), "Jenerik açılamadı." ve "Geri dön" metinleri aynı kalır. Kısa süreli "Yapay zekâ ile üretilmiştir" notu da aynı kalır.
+"Sezon 1 jeneriği: The Missing Signal", "Geç" (ekran okuyucu: "Jeneriği geç"), "Jenerik açılamadı." ve "Geri dön" metinleri aynı kalır. (H-060: bu metinler artık `tr_strings.dart` → `SeasonIntroTexts`'te.) Yeni açılan bölüm haritada ilk kez görününce ekran okuyucu bir kez "Bölüm 3 açıldı" der. Kısa süreli "Yapay zekâ ile üretilmiştir" notu da aynı kalır.
 
 ### 4.4 Oynatıcı: değişenler
 | Yer | Eski | Yeni | Neden |

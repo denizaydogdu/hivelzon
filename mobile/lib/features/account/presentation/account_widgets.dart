@@ -66,63 +66,28 @@ class AccountNudgeCard extends ConsumerWidget {
     }
     final show = ref.watch(accountNudgeProvider).value ?? false;
     if (!show) return const SizedBox.shrink();
-    final theme = Theme.of(context);
-    return Padding(
-      padding: const EdgeInsets.only(top: AppSpacing.md),
-      child: Card(
-        key: const ValueKey('home-account-nudge'),
-        margin: EdgeInsets.zero,
-        elevation: 0,
-        color: theme.colorScheme.surfaceContainerHighest.withValues(alpha: 0.6),
-        child: Padding(
-          padding: const EdgeInsets.all(AppSpacing.sm),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                children: [
-                  const Icon(
-                    Icons.phone_iphone_rounded,
-                    color: AppColors.seaBlue,
-                  ),
-                  const SizedBox(width: AppSpacing.xs),
-                  Expanded(
-                    child: Text(
-                      AccountTexts.nudgeTitle,
-                      style: theme.textTheme.titleMedium?.copyWith(
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: AppSpacing.xs),
-              Text(AccountTexts.nudgeBody, style: theme.textTheme.bodyMedium),
-              const SizedBox(height: AppSpacing.xs),
-              Wrap(
-                spacing: AppSpacing.xs,
-                children: [
-                  OutlinedButton(
-                    key: const ValueKey('home-account-nudge-open'),
-                    style: OutlinedButton.styleFrom(
-                      minimumSize: const Size(48, 48),
-                    ),
-                    onPressed: () => context.push(AppRoutes.account),
-                    child: const Text(AccountTexts.nudgeOpen),
-                  ),
-                  TextButton(
-                    key: const ValueKey('home-account-nudge-later'),
-                    style: TextButton.styleFrom(
-                      minimumSize: const Size(48, 48),
-                    ),
-                    onPressed: () => unawaited(_dismiss(ref)),
-                    child: const Text(AccountTexts.nudgeLater),
-                  ),
-                ],
-              ),
-            ],
+    // Tasarım H-060: ortak bilgi kartı, sakin bilgi tonu.
+    return InfoCard(
+      key: const ValueKey('home-account-nudge'),
+      icon: Icons.phone_iphone_rounded,
+      tone: InfoTone.info,
+      title: AccountTexts.nudgeTitle,
+      body: AccountTexts.nudgeBody,
+      action: Wrap(
+        spacing: AppSpace.s8,
+        runSpacing: AppSpace.s4,
+        children: [
+          OutlinedButton(
+            key: const ValueKey('home-account-nudge-open'),
+            onPressed: () => context.push(AppRoutes.account),
+            child: const Text(AccountTexts.nudgeOpen),
           ),
-        ),
+          TextButton(
+            key: const ValueKey('home-account-nudge-later'),
+            onPressed: () => unawaited(_dismiss(ref)),
+            child: const Text(AccountTexts.nudgeLater),
+          ),
+        ],
       ),
     );
   }

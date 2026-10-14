@@ -92,6 +92,24 @@ class SeasonMap {
     return null;
   }
 
+  /// Açılmış (oynanabilir) bölümlerin kimlikleri (H-060, "görüldü" işareti).
+  List<String> get unlockedIds => [
+    for (final e in episodes)
+      if (e.playable) e.contentId,
+  ];
+
+  /// Önceki bölüm bitince açılan en yeni bölüm (bitmemiş; Bölüm 1 hariç,
+  /// o baştan açıktır). Haritada ilk kez görününce ışığı yanar (H-060).
+  MapEpisode? get newestUnlocked {
+    MapEpisode? out;
+    for (final (i, e) in episodes.indexed) {
+      if (i == 0 || !e.playable) continue;
+      if (e.state == MapNodeState.completed) continue;
+      out = e;
+    }
+    return out;
+  }
+
   /// Oynanacak bölüm kalmadıysa: ilk "yakında" bölüm.
   MapEpisode? get firstComingSoon {
     for (final e in episodes) {

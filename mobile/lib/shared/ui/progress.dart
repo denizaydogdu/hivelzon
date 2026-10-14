@@ -147,6 +147,8 @@ class ProgressRing extends StatelessWidget {
   Widget build(BuildContext context) {
     final target = value.clamp(0.0, 1.0);
     return Semantics(
+      // Kendi düğümü: çevredeki metinle birleşip okunmaz (H-060).
+      container: true,
       label: semanticLabel,
       value: '%${(target * 100).round()}',
       excludeSemantics: true,

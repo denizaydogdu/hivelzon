@@ -150,7 +150,7 @@ class ShapedHeader extends StatelessWidget {
     final theme = Theme.of(context);
     const onColor = AppPalette.white;
     return ClipPath(
-      clipper: _HeaderClipper(shape),
+      clipper: ShapedEdgeClipper(shape),
       // En az [height]; büyük yazıda (1,3×) içerik kadar uzar, taşmaz.
       child: ConstrainedBox(
         constraints: BoxConstraints(minHeight: height),
@@ -268,8 +268,10 @@ class _HeaderDecor extends StatelessWidget {
   );
 }
 
-class _HeaderClipper extends CustomClipper<Path> {
-  const _HeaderClipper(this.shape);
+/// [ShapedHeader]'ın alt kenar kesimi; başka yüzeylerde de kullanılır (ör.
+/// Ana Sayfa'daki bölüm kartının görseli, H-060).
+class ShapedEdgeClipper extends CustomClipper<Path> {
+  const ShapedEdgeClipper(this.shape);
 
   final HeaderShape shape;
 
@@ -292,7 +294,7 @@ class _HeaderClipper extends CustomClipper<Path> {
   }
 
   @override
-  bool shouldReclip(_HeaderClipper old) => old.shape != shape;
+  bool shouldReclip(ShapedEdgeClipper old) => old.shape != shape;
 }
 
 /// Boş durum (H-057): illüstrasyon ya da ikon + başlık + açıklama + eylem.
