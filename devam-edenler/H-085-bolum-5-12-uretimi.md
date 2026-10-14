@@ -1,6 +1,6 @@
 # H-085: Sezon 1 Bölüm 5–12 üretimi
 
-- **Durum:** Devam ediyor (B5 görsel + Türkçe ses ayrı dalda; İngilizce TTS kota bekliyor)
+- **Durum:** Devam ediyor (B5 tamam: paket, senkron 0,01 sn, -16,06 LUFS, lint 0 hata; B6–B12 sırada; İngilizce kota bekliyor)
 - **Tür:** İçerik üretimi
 - **Faz:** F1 içerik (Sezon 1)
 - **Bağımlılık:** H-032 (diyaloglar onaylı), H-083 (Türkçe sesler Alania)
@@ -56,3 +56,4 @@
 
 ## Geri alma
 Bölüm klasörü ve araç değişiklikleri tek commit'te; medya git dışı.
+2026-10-14: B5 tamamlandı. Jordan'ın sesi Chris (ElevenLabs hazır ses; samimi, Amerikan aksanı; Charlie Avustralya aksanlı olduğu için seçilmedi) — kullanıcı değiştirebilir. İngilizce: diyalog 804 karakter (hesap3), Hi ifadeleri 160 karakter (hesap1/videoGenerator). Editör onayı (H-028) bekliyor: görseller, ceviri.tr.json, story.tr.md, ipucu metinleri.

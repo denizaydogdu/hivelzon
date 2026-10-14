@@ -41,10 +41,11 @@
     "name": "Sarah",
     "modelId": "eleven_v3",
     "speed": 0.9,
-    "keyFile": "~/.config/hivelzon/elevenlabs.env",
-    "ledger": "kitaplar/_maliyet/elevenlabs-hesap2-karakter.json",
+    "keyFile": "~/.config/hivelzon/elevenlabs-1.env",
+    "ledger": "kitaplar/_maliyet/elevenlabs-hesap1-karakter.json",
     "monthlyCharCap": 10000,
-    "reason": "Kitaplardaki ve dilbilgisi derslerindeki İngilizce ses (DILBILGISI §2). Yalnız kısa İngilizce ifadeler okunur."
+    "reason": "Kitaplardaki ve dilbilgisi derslerindeki İngilizce ses (DILBILGISI §2). Yalnız kısa İngilizce ifadeler okunur.",
+    "note": "2026-10-14: hesap2 doldu; kısa İngilizce ifadeler için hesap1 (videoGenerator, kullanıcı onaylı) kullanılıyor. Kota yenilenince tekrar değerlendirilir."
   },
   "episodeEnglish": {
     "note": "Bölüm replikleri (H-085, tts_episode_en.py): audio_manifest.json'daki İngilizce satırlar. Sesler ve ayarlar B1–B4 ile aynı (bölümlerin PROMPTS.md'si). Yeni karakterin sesi kullanıcı onayıyla eklenir.",
@@ -52,13 +53,31 @@
     "modelId": "eleven_v3",
     "speed": 0.9,
     "voices": {
-      "ALEX": {"name": "Jessica", "voiceId": "cgSgspJ2msm6clMCkdW9"},
-      "MAYA": {"name": "Sarah", "voiceId": "EXAVITQu4vr4xnSDxMaL"},
-      "VOICE": {"name": "Lily", "voiceId": "pFZP5JQG7iQjIQuC4Bku"},
-      "MRS BROOKS": {"name": "Alice", "voiceId": "Xb7hH8MSUJpSbSDYk0k2"},
-      "MAN": {"name": "George", "voiceId": "JBFqnCBsd6RMkjVDRZzb"},
-      "JORDAN": {"name": null, "voiceId": null, "status": "ONAY BEKLİYOR",
-                 "proposal": "Charlie (ElevenLabs hazır ses; genç-orta yaş erkek, sıcak, konuşkan; kimlik kullanmadan önce /v1/voices ile doğrulanmalı). CHARACTER_PROFILES: sıcak, gürültülü, hızlı ama S1'de net; George (B3 köpekli adam) ile karışmasın."}
+      "ALEX": {
+        "name": "Jessica",
+        "voiceId": "cgSgspJ2msm6clMCkdW9"
+      },
+      "MAYA": {
+        "name": "Sarah",
+        "voiceId": "EXAVITQu4vr4xnSDxMaL"
+      },
+      "VOICE": {
+        "name": "Lily",
+        "voiceId": "pFZP5JQG7iQjIQuC4Bku"
+      },
+      "MRS BROOKS": {
+        "name": "Alice",
+        "voiceId": "Xb7hH8MSUJpSbSDYk0k2"
+      },
+      "MAN": {
+        "name": "George",
+        "voiceId": "JBFqnCBsd6RMkjVDRZzb"
+      },
+      "JORDAN": {
+        "name": "Chris",
+        "voiceId": "iP95p4xoKVk53GoZ742B",
+        "note": "2026-10-14: ana oturum seçimi (kullanıcının genel onayı): samimi, gündelik, Amerikan aksanı; A1 için net; George (İngiliz) ile karışmaz. Charlie (Avustralya aksanı) yerine."
+      }
     }
   },
   "mixed": {
@@ -67,11 +86,29 @@
     "note": "Türkçe satırdaki İngilizce ifade {süslü parantez} ile işaretlenir (speechTr). b: Türkçe parçalar Alania, İngilizce ifadeler Sarah; arka arkaya kısa boşlukla, tek hizalama. a: tümü Alania, İngilizce kelimeler aşağıdaki söyleniş sözlüğüyle (karşılaştırma ve Türkçe ek alan özel adlar için)."
   },
   "pronunciations": [
-    {"term": "Excuse me", "say_as": "İkskyuz mi"},
-    {"term": "where is the old station", "say_as": "ver iz dı old steyşın"},
-    {"term": "It's seven o'clock", "say_as": "İts sevın ıklak"},
-    {"term": "at seven", "say_as": "et sevın"},
-    {"term": "at", "say_as": "et"},
-    {"term": "Pier", "say_as": "Pir"}
+    {
+      "term": "Excuse me",
+      "say_as": "İkskyuz mi"
+    },
+    {
+      "term": "where is the old station",
+      "say_as": "ver iz dı old steyşın"
+    },
+    {
+      "term": "It's seven o'clock",
+      "say_as": "İts sevın ıklak"
+    },
+    {
+      "term": "at seven",
+      "say_as": "et sevın"
+    },
+    {
+      "term": "at",
+      "say_as": "et"
+    },
+    {
+      "term": "Pier",
+      "say_as": "Pir"
+    }
   ]
 }

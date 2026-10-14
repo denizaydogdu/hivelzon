@@ -73,7 +73,7 @@
     {
       "id": "r-k1-b", "type": "reaction",
       "shots": [{"image": "images/B5-06-k1-pov.png", "audio": ["b5_08_alex", "b5_09_jordan"], "move": [1.06, 1.0, 0.5, 0.5, 0.45, 0.45]}],
-      "bubble": {"speaker": "HI", "lang": "tr", "text": "Böyle de söyleyebilirsin: \"Sorry, I'm late.\" Önce Sorry, sonra I'm late.", "speechTr": "Böyle de söyleyebilirsin: {Sorry, I'm late.} Önce {Sorry}, sonra {I'm late.}"},
+      "bubble": {"speaker": "HI", "lang": "tr", "text": "Böyle de söyleyebilirsin: \"Sorry, I'm late.\" Önce Sorry, sonra I'm late.", "speechTr": "Böyle de söyleyebilirsin: {Sorry, I'm late.} Önce {Sorry}, sonra {I'm late.}", "audio": {"id": "tr_r-k1-b", "speaker": "HI"}},
       "next": "k1"
     },
     {
@@ -130,7 +130,7 @@
       "background": "images/B5-10-jordan-tepe.png",
       "lines": [{"speaker": "HI", "text": "İki soru da doğru! Who = kim, Where = nerede.", "lang": "tr"}],
       "speechTr": "İki soru da doğru! {Who} kim, {Where} nerede.",
-      "next": "s05"
+      "next": "s05", "audio": {"id": "tr_h-k2", "speaker": "HI"}
     },
     {
       "id": "s05", "type": "segment", "scene": "Sahne 4: Kaydedici", "checkpoint": true,
@@ -173,14 +173,14 @@
       "background": "images/B5-08-jordan-bisiklet.png",
       "lines": [{"speaker": "HI", "text": "He, she, it ile fiile -s gelir: Jordan works, She waits. Türkçede böyle bir ek yok; He work every day değil, He works every day.", "lang": "tr"}],
       "speechTr": "{He, she, it} ile fiile {s} gelir: {Jordan works. She waits.} Türkçede böyle bir ek yok; {He work every day} değil, {He works every day.}",
-      "next": "h-lab2"
+      "next": "h-lab2", "audio": {"id": "tr_h-lab1", "speaker": "HI"}
     },
     {
       "id": "h-lab2", "type": "card", "kind": "hi", "advance": "tap",
       "background": "images/B5-09-kirmizi-palto-ani.png",
       "lines": [{"speaker": "HI", "text": "Jordan \"A woman was here\" dedi. was = \"-di, idi\". Şimdilik yalnızca tanı, yeter.", "lang": "tr"}],
       "speechTr": "Jordan {A woman was here} dedi. {was}: -di, idi. Şimdilik yalnızca tanı, yeter.",
-      "next": "t-kanit"
+      "next": "t-kanit", "audio": {"id": "tr_h-lab2", "speaker": "HI"}
     },
     {
       "id": "t-kanit", "type": "task", "kind": "order", "role": "evidence", "skill": "reading", "cefr": "A1",
@@ -215,7 +215,7 @@
                 {"text": "Q4 kapandı: Kırmızı paltolu bir kadın; buluşma kaçırıldı.", "lang": "tr"},
                 {"text": "Q2 kapandı: Biri eski yerlere not bırakıyor; buluşma Pier 3'e taşınmış.", "lang": "tr"}],
       "speechTr": "İpucu panosu. Ses kaydedici. Jordan'ın anlattıkları: {red coat, for the radio friend.} Dördüncü soru kapandı: kırmızı paltolu bir kadın; buluşma kaçırıldı. İkinci soru kapandı: biri eski yerlere not bırakıyor; buluşma yeri değişmiş.",
-      "next": "c-oq"
+      "next": "c-oq", "audio": {"id": "tr_c-clues", "speaker": "ANLATICI (TR)"}
     },
     {
       "id": "c-oq", "type": "card", "kind": "openQuestion", "advance": "tap", "questionId": "Q5",
