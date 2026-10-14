@@ -36,10 +36,22 @@
       "title": "The Flower",
       "titleTr": "Çiçek",
       "pages": [
-        {"id": "p01", "image": "p01.png"},
-        {"id": "p02", "image": null},
-        {"id": "p03", "image": null},
-        {"id": "p04", "image": null}
+        {
+          "id": "p01",
+          "image": "p01.png"
+        },
+        {
+          "id": "p02",
+          "image": null
+        },
+        {
+          "id": "p03",
+          "image": null
+        },
+        {
+          "id": "p04",
+          "image": null
+        }
       ]
     },
     {
@@ -47,10 +59,22 @@
       "title": "Shelter",
       "titleTr": "Sığınak",
       "pages": [
-        {"id": "p05", "image": "p05.png"},
-        {"id": "p06", "image": null},
-        {"id": "p07", "image": null},
-        {"id": "p08", "image": null}
+        {
+          "id": "p05",
+          "image": "p05.png"
+        },
+        {
+          "id": "p06",
+          "image": null
+        },
+        {
+          "id": "p07",
+          "image": null
+        },
+        {
+          "id": "p08",
+          "image": null
+        }
       ]
     },
     {
@@ -58,9 +82,18 @@
       "title": "The Bells",
       "titleTr": "Çanlar",
       "pages": [
-        {"id": "p09", "image": "p09.png"},
-        {"id": "p10", "image": null},
-        {"id": "p11", "image": null}
+        {
+          "id": "p09",
+          "image": "p09.png"
+        },
+        {
+          "id": "p10",
+          "image": null
+        },
+        {
+          "id": "p11",
+          "image": null
+        }
       ]
     },
     {
@@ -68,11 +101,28 @@
       "title": "Home Before Dark",
       "titleTr": "Karanlıktan Önce Evde",
       "pages": [
-        {"id": "p12", "image": "p12.png"},
-        {"id": "p13", "image": null},
-        {"id": "p14", "image": null},
-        {"id": "p15", "image": null}
+        {
+          "id": "p12",
+          "image": "p12.png"
+        },
+        {
+          "id": "p13",
+          "image": null
+        },
+        {
+          "id": "p14",
+          "image": null
+        },
+        {
+          "id": "p15",
+          "image": null
+        }
       ]
     }
+  ],
+  "grammarTopics": [
+    "G-A2-10-going-to",
+    "G-A2-01-present-continuous",
+    "G-A2-05-past-simple-irregular"
   ]
 }

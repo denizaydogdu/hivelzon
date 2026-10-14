@@ -12,7 +12,9 @@
   "status": "DRAFT",
   "aiGenerated": true,
   "grammarTopics": [
-    "G-A1-13-third-person-s"
+    "G-A1-13-third-person-s",
+    "G-A1-06-this-that-plurals",
+    "G-A1-10-prepositions-time"
   ],
   "palette": {
     "background": "#FFF6E9",
@@ -40,10 +42,22 @@
       "title": "Monday to Wednesday",
       "titleTr": "Pazartesiden Çarşambaya",
       "pages": [
-        { "id": "p01", "image": "p01.png" },
-        { "id": "p02", "image": null },
-        { "id": "p03", "image": null },
-        { "id": "p04", "image": null }
+        {
+          "id": "p01",
+          "image": "p01.png"
+        },
+        {
+          "id": "p02",
+          "image": null
+        },
+        {
+          "id": "p03",
+          "image": null
+        },
+        {
+          "id": "p04",
+          "image": null
+        }
       ]
     },
     {
@@ -51,10 +65,22 @@
       "title": "Thursday and Friday",
       "titleTr": "Perşembe ve Cuma",
       "pages": [
-        { "id": "p05", "image": "p05.png" },
-        { "id": "p06", "image": null },
-        { "id": "p07", "image": null },
-        { "id": "p08", "image": null }
+        {
+          "id": "p05",
+          "image": "p05.png"
+        },
+        {
+          "id": "p06",
+          "image": null
+        },
+        {
+          "id": "p07",
+          "image": null
+        },
+        {
+          "id": "p08",
+          "image": null
+        }
       ]
     },
     {
@@ -62,9 +88,18 @@
       "title": "Saturday",
       "titleTr": "Cumartesi",
       "pages": [
-        { "id": "p09", "image": "p09.png" },
-        { "id": "p10", "image": null },
-        { "id": "p11", "image": null }
+        {
+          "id": "p09",
+          "image": "p09.png"
+        },
+        {
+          "id": "p10",
+          "image": null
+        },
+        {
+          "id": "p11",
+          "image": null
+        }
       ]
     }
   ]

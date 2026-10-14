@@ -1,6 +1,6 @@
 # H-083: Türkçe seslerin Alania'ya geçişi
 
-- **Durum:** Yapılacak
+- **Durum:** Devam ediyor (44 klip Alania; main'de; kullanıcının (a)/(b) seçimi ve ses eşlemesi onayı bekleniyor)
 - **Tür:** İçerik üretimi + uygulama (araç ve mobil)
 - **Faz:** Dilbilgisi D0 devamı (`docs/DILBILGISI.md` §2, Türkçe ses)
 - **Bağımlılık:** H-075

@@ -77,5 +77,9 @@
     "sentencesOver8": 0,
     "date": "2026-10-11",
     "note": "Hedef ≥98, alt sınır 95 (K-07)"
-  }
+  },
+  "grammarTopics": [
+    "G-A1-15-there-is-are",
+    "G-A1-09-prepositions-place"
+  ]
 }

@@ -37,11 +37,26 @@
       "title": "Cold Mornings",
       "titleTr": "Soğuk Sabahlar",
       "pages": [
-        { "id": "p01", "image": "p01.png" },
-        { "id": "p02", "image": null },
-        { "id": "p03", "image": null },
-        { "id": "p04", "image": null },
-        { "id": "p05", "image": null }
+        {
+          "id": "p01",
+          "image": "p01.png"
+        },
+        {
+          "id": "p02",
+          "image": null
+        },
+        {
+          "id": "p03",
+          "image": null
+        },
+        {
+          "id": "p04",
+          "image": null
+        },
+        {
+          "id": "p05",
+          "image": null
+        }
       ]
     },
     {
@@ -49,12 +64,32 @@
       "title": "The Cat",
       "titleTr": "Kedi",
       "pages": [
-        { "id": "p06", "image": "p06.png" },
-        { "id": "p07", "image": null },
-        { "id": "p08", "image": null },
-        { "id": "p09", "image": null },
-        { "id": "p10", "image": null }
+        {
+          "id": "p06",
+          "image": "p06.png"
+        },
+        {
+          "id": "p07",
+          "image": null
+        },
+        {
+          "id": "p08",
+          "image": null
+        },
+        {
+          "id": "p09",
+          "image": null
+        },
+        {
+          "id": "p10",
+          "image": null
+        }
       ]
     }
+  ],
+  "grammarTopics": [
+    "G-A1-09-prepositions-place",
+    "G-A1-11-present-simple",
+    "G-A1-12-word-order-svo"
   ]
 }

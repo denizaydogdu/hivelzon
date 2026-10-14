@@ -159,7 +159,7 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 | D4 | H-080 | Dalga 1: A1 + A2 | Orta | H-079 | 🔄 |
 | D5 | H-081 | Dalga 2: B1 + B2 | Orta | H-080 | ⏳ |
 | D6 | H-082 | Dalga 3: C1 + C2 | Orta | H-081 | ⏳ |
-| D0' | H-083 | Türkçe seslerin Alania'ya geçişi (Hi, Alex, babaanne, ipucu kartları, Hi paneli) | Yüksek | H-075 | ⏳ |
+| D0' | H-083 | Türkçe seslerin Alania'ya geçişi (Hi, Alex, babaanne, ipucu kartları, Hi paneli) | Yüksek | H-075 | 🔄 |
 
 **Sıra:** H-075 ve H-076 hemen ve paralel (Alania'nın ücretsiz ayı sınırlı) → H-077 → H-078 → H-079 → dalgalar.
 
@@ -403,3 +403,5 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
   - H-078 dilbilgisi ekranı `main`'e birleştirildi (flutter 785, mvn 132; Drift v7, V9). Birleşmede Hi ifade eşlemesine dilbilgisi önerisi (düşünen) eklendi. Simülatör denemesi bekleniyor.
   - Kullanıcı kararı: uygulamada Türkçe konuşan her yer Alania ile (mevcut 14 Hi repliği + sessiz Hi replikleri, Hi paneli, Alex'in Türkçe cümleleri, babaannenin notu, ipucu ve açık soru kartları). H-083 açıldı.
   - Kullanıcı H-078 ve H-079'u onayladı. H-080 (dilbilgisi dalga 1: kalan 28 A1–A2 konusu) başladı; Türkçe sesler kampanyada ücretsiz.
+  - H-083: 44 Türkçe klip Alania'ya geçti (Hi f1, Alex nisa, babaanne selin, anlatıcı m1; İngilizce ifadeler Sarah); Hi paneline "Hi'yi dinle". (a)/(b) örnekleri `.yerel/h083/`. flutter 799, pytest 223.
+  - H-080: A1 13 + A2 15 ders yazıldı ve Türkçe sesleri üretildi; toplam 31 ders lint 0 hata. Bölüm/kitap `grammarTopics` dolduruldu (en fazla 3, aynı/alt seviye). İngilizce örnek sesleri ~9.250 karakter bekliyor.

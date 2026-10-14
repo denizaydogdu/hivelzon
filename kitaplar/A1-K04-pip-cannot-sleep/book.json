@@ -12,7 +12,9 @@
   "status": "DRAFT",
   "aiGenerated": true,
   "grammarTopics": [
-    "G-A1-13-third-person-s"
+    "G-A1-13-third-person-s",
+    "G-A1-02-to-be-questions-negatives",
+    "G-A1-16-have-has"
   ],
   "palette": {
     "background": "#F6F2FC",
@@ -37,11 +39,26 @@
       "title": "Night",
       "titleTr": "Gece",
       "pages": [
-        {"id": "p01", "image": "p01.png"},
-        {"id": "p02", "image": null},
-        {"id": "p03", "image": null},
-        {"id": "p04", "image": null},
-        {"id": "p05", "image": null}
+        {
+          "id": "p01",
+          "image": "p01.png"
+        },
+        {
+          "id": "p02",
+          "image": null
+        },
+        {
+          "id": "p03",
+          "image": null
+        },
+        {
+          "id": "p04",
+          "image": null
+        },
+        {
+          "id": "p05",
+          "image": null
+        }
       ]
     },
     {
@@ -49,11 +66,26 @@
       "title": "A Story",
       "titleTr": "Bir Hikâye",
       "pages": [
-        {"id": "p06", "image": "p06.png"},
-        {"id": "p07", "image": null},
-        {"id": "p08", "image": null},
-        {"id": "p09", "image": null},
-        {"id": "p10", "image": null}
+        {
+          "id": "p06",
+          "image": "p06.png"
+        },
+        {
+          "id": "p07",
+          "image": null
+        },
+        {
+          "id": "p08",
+          "image": null
+        },
+        {
+          "id": "p09",
+          "image": null
+        },
+        {
+          "id": "p10",
+          "image": null
+        }
       ]
     }
   ]

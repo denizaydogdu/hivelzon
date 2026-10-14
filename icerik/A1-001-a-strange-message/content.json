@@ -61,5 +61,10 @@
     "sentencesOver8": 0,
     "date": "2026-10-11",
     "note": "Hedef ≥98, alt sınır 95 (K-07)"
-  }
+  },
+  "grammarTopics": [
+    "G-A1-07-can",
+    "G-A1-01-to-be",
+    "G-A1-02-to-be-questions-negatives"
+  ]
 }

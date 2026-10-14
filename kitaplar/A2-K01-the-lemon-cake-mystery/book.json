@@ -42,10 +42,22 @@
       "title": "The Empty Box",
       "titleTr": "Boş Kutu",
       "pages": [
-        { "id": "p01", "image": "p01.png" },
-        { "id": "p02", "image": null },
-        { "id": "p03", "image": null },
-        { "id": "p04", "image": null }
+        {
+          "id": "p01",
+          "image": "p01.png"
+        },
+        {
+          "id": "p02",
+          "image": null
+        },
+        {
+          "id": "p03",
+          "image": null
+        },
+        {
+          "id": "p04",
+          "image": null
+        }
       ]
     },
     {
@@ -53,10 +65,22 @@
       "title": "Three Suspects",
       "titleTr": "Üç Şüpheli",
       "pages": [
-        { "id": "p05", "image": "p05.png" },
-        { "id": "p06", "image": null },
-        { "id": "p07", "image": null },
-        { "id": "p08", "image": null }
+        {
+          "id": "p05",
+          "image": "p05.png"
+        },
+        {
+          "id": "p06",
+          "image": null
+        },
+        {
+          "id": "p07",
+          "image": null
+        },
+        {
+          "id": "p08",
+          "image": null
+        }
       ]
     },
     {
@@ -64,10 +88,22 @@
       "title": "Three Bad Cakes",
       "titleTr": "Üç Kötü Kek",
       "pages": [
-        { "id": "p09", "image": "p09.png" },
-        { "id": "p10", "image": null },
-        { "id": "p11", "image": null },
-        { "id": "p12", "image": null }
+        {
+          "id": "p09",
+          "image": "p09.png"
+        },
+        {
+          "id": "p10",
+          "image": null
+        },
+        {
+          "id": "p11",
+          "image": null
+        },
+        {
+          "id": "p12",
+          "image": null
+        }
       ]
     },
     {
@@ -75,11 +111,28 @@
       "title": "The Real Recipe",
       "titleTr": "Gerçek Tarif",
       "pages": [
-        { "id": "p13", "image": "p13.png" },
-        { "id": "p14", "image": null },
-        { "id": "p15", "image": null },
-        { "id": "p16", "image": null }
+        {
+          "id": "p13",
+          "image": "p13.png"
+        },
+        {
+          "id": "p14",
+          "image": null
+        },
+        {
+          "id": "p15",
+          "image": null
+        },
+        {
+          "id": "p16",
+          "image": null
+        }
       ]
     }
+  ],
+  "grammarTopics": [
+    "G-A2-04-past-simple-regular",
+    "G-A2-05-past-simple-irregular",
+    "G-A2-06-past-questions-negatives"
   ]
 }

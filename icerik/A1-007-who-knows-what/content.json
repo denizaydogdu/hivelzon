@@ -69,5 +69,10 @@
     "sentencesOver8": 0,
     "date": "2026-10-11",
     "note": "Hedef ≥98, alt sınır 95 (K-07)"
-  }
+  },
+  "grammarTopics": [
+    "G-A1-14-do-does",
+    "G-A1-05-pronouns-possessives",
+    "G-A1-07-can"
+  ]
 }

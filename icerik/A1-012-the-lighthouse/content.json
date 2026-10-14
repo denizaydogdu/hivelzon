@@ -72,5 +72,9 @@
     "sentencesOver8": 0,
     "date": "2026-10-11",
     "note": "Hedef ≥98, alt sınır 95 (K-07)"
-  }
+  },
+  "grammarTopics": [
+    "G-A1-13-third-person-s",
+    "G-A1-16-have-has"
+  ]
 }

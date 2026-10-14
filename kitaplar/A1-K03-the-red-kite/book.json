@@ -34,10 +34,22 @@
       "title": "The Wind",
       "titleTr": "Rüzgâr",
       "pages": [
-        {"id": "p01", "image": "p01.png"},
-        {"id": "p02", "image": null},
-        {"id": "p03", "image": null},
-        {"id": "p04", "image": null}
+        {
+          "id": "p01",
+          "image": "p01.png"
+        },
+        {
+          "id": "p02",
+          "image": null
+        },
+        {
+          "id": "p03",
+          "image": null
+        },
+        {
+          "id": "p04",
+          "image": null
+        }
       ]
     },
     {
@@ -45,10 +57,22 @@
       "title": "The River",
       "titleTr": "Nehir",
       "pages": [
-        {"id": "p05", "image": "p05.png"},
-        {"id": "p06", "image": null},
-        {"id": "p07", "image": null},
-        {"id": "p08", "image": null}
+        {
+          "id": "p05",
+          "image": "p05.png"
+        },
+        {
+          "id": "p06",
+          "image": null
+        },
+        {
+          "id": "p07",
+          "image": null
+        },
+        {
+          "id": "p08",
+          "image": null
+        }
       ]
     },
     {
@@ -56,11 +80,28 @@
       "title": "Home",
       "titleTr": "Ev",
       "pages": [
-        {"id": "p09", "image": "p09.png"},
-        {"id": "p10", "image": null},
-        {"id": "p11", "image": null},
-        {"id": "p12", "image": null}
+        {
+          "id": "p09",
+          "image": "p09.png"
+        },
+        {
+          "id": "p10",
+          "image": null
+        },
+        {
+          "id": "p11",
+          "image": null
+        },
+        {
+          "id": "p12",
+          "image": null
+        }
       ]
     }
+  ],
+  "grammarTopics": [
+    "G-A1-05-pronouns-possessives",
+    "G-A1-14-do-does",
+    "G-A1-15-there-is-are"
   ]
 }
