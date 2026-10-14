@@ -304,3 +304,20 @@ Giriş adımlarında hata metni ana düğmenin **hemen üstünde**, kırmızı b
 **Hukuk metni ekranı (H-059):** sürüm etiketi (**SÜRÜM: …**), **Taslak metin** bilgi kartı, başlıklı bölümler (Koşullar: Uygulama · Hesap · Hesabını silmek; Aydınlatma: Hesap açarsan · Sesin · Hesap açmazsan), satır genişliği en fazla 600 px. Kesin metinler H-042.
 
 Testler: `test/features/account/account_ui_test.dart`, `test/shared/api/api_client_test.dart` (hata metinleri suçlamasız), `test/goldens/h059_screens_golden_test.dart` (H-059 golden'ları, erişilebilirlik, 1,3× yazı).
+
+## 13. Açılış ve yerleştirme (H-039)
+
+Kod: `OnboardingTexts` (`mobile/lib/l10n/tr_strings.dart`); ekran `mobile/lib/features/onboarding/`. Taslak: `tasarim/v2/onizleme/S09-acilis.jpg`. Açılış bir kez gösterilir; sekme çubuğu ve Hi balonu yoktur. Hesap istenmez (H-009); geri sayım, süre ve puan yoktur (K-32).
+
+| Adım | Metin | Not |
+|---|---|---|
+| Karşılama | İllüstrasyonlu dalga başlık · **hiVelzon'a hoş geldin!** · "Bir hikâye oyna, İngilizceyi oynarken öğren." · bilgi kartı "Hesap gerekmez. Her şey bu telefonda kalır." · **Başla** | Taslaktaki "kendiliğinden öğren" vaat gibi okunduğu için yumuşatıldı (K-08). |
+| Seni tanıyalım | **Seni biraz tanıyalım** · "İki kısa soru. Cevapların yalnızca bu telefonda kalır." · Doğum yılın ("Yalnızca yılı soruyoruz. Bazı özellikler yaşa göre açılır.") · **Sana nasıl seslenelim?** · Adın ya da takma adın ("İsteğe bağlı. Yalnızca bu cihazda saklanır.") · **Devam et** | Doğum yılı zorunlu; hatalar: "Doğum yılını yaz (ör. 2008)." · "Doğum yılını dört haneli yaz (ör. 2008)." · "Bu yılı bir daha kontrol eder misin?" |
+| Bilmen gerekenler | Dört kart: **Her şey bu telefonda** · **Sesin kaydedilmez** · **Reklam yok** · **Yapay zekâ** ("Hikâye videoları yapay zekâ ile üretilir. Hi de bir yapay zekâ yardımcısıdır.") · 13 yaş altında: "13 yaşından küçüksen bu sayfayı bir büyüğünle birlikte oku." · **Taslak metin** kartı + **Kullanım koşulları** / **KVKK aydınlatma metni** bağlantıları · **Anladım, devam et** | Onay kutusu yok: hesapsız kullanımda veri telefondan çıkmaz. Hesap açılırken mevcut onaylar (§12) aynen istenir. Hukuk metinleri taslak (H-042). |
+| Sana uygun ayarlar | "İkisini de sonra değiştirebilirsin." · **Günlük hedef** 5 / 10 / 15 dk · **Altyazıda Türkçe satır** (varsayılan açık) "… 1. Sezon (A1) için önerimiz: açık. Oynatıcıdan da değiştirebilirsin." | K-03. Tercih oynatıcıda uygulanır; oynatıcı menüsü de aynı tercihi kaydeder. |
+| Seviye | **Seviyeni merak ediyor musun?** · "Kısa bir test sana bir başlangıç seviyesi önerir. Süre yok, en fazla 20 soru. İstediğin an bırakabilirsin." · **Kendi tahminin**: Bilmiyorum · A1 … C1 · **Teste başla** / **Testi atla** | K-06. |
+| Soru | **SORU 3 · EN FAZLA 20** · Türkçe yönerge ("Boşluğa uygun kelimeyi seç." · "Boşluğa uygun olanı seç." · "Metni oku, soruyu cevapla.") · İngilizce madde · seçenekler · **Bilmiyorum** · üstte **Testi bırak** | Doğru/yanlış gösterilmez; "Bilmiyorum" utandırmaz. |
+| Sonuç | **ÖNERİLEN BAŞLANGIÇ SEVİYESİ** · büyük seviye kodu · A1: "Hikâyenin 1. Sezonu A1 seviyesinde; tam senin için." · üstü: "Şimdilik hikâyenin yalnızca 1. Sezonu (A1) hazır. Bölümler sana kolay gelebilir; hikâyenin ve ifadelerin tadını çıkar." · **Bu yalnızca bir öneri** "Kısa bir tahmin; sınav ya da sertifika sonucu değil." | Vaat yok (K-08). |
+| Hazır | İllüstrasyon · **Her şey hazır** · "Alex şehre yeni geldi. Hikâyesine birlikte başlayalım." · **İlerlemen bu telefonda**: 13+ "İstersen sonra Profil'den hesap açıp ilerlemeni yedekleyebilirsin." / 13 altı "Hesap gerekmez; her şey bu telefonda kalır." · **Hikâyeye başla** → Ana Sayfa | 13 altına hesaptan söz edilmez (H-002). Bildirim izni burada istenmez. |
+
+Testler: `test/features/onboarding/` (13 altı yolu, atlanabilir test, kalıcı bitiş, eski kullanıcı, 1,3× yazı, erişilebilirlik), `test/goldens/h039_onboarding_golden_test.dart`.

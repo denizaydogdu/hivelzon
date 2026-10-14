@@ -18,6 +18,7 @@ import 'package:video_player_platform_interface/video_player_platform_interface.
 
 import '../../support/fake_content_source.dart';
 import '../../support/fake_video_platform.dart';
+import '../../support/onboarding.dart';
 
 void main() {
   late AppDatabase db;
@@ -47,6 +48,7 @@ void main() {
     await tester.pumpWidget(
       ProviderScope(
         overrides: [
+          onboardingDoneOverride,
           appDatabaseProvider.overrideWithValue(db),
           legacyImportProvider.overrideWithValue(Future<void>.value()),
           contentSourceProvider.overrideWithValue(

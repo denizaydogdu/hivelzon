@@ -90,6 +90,8 @@ flutter:
     - assets/fonts/nunito/OFL.txt
     # H-058 illüstrasyonları (WebP; görselde yazı yok).
     - assets/illustrations/
+    # H-039 yerleştirme testi soru havuzu (TASLAK; H-028 onayı bekliyor).
+    - assets/placement/
   fonts:
     - family: Inter
       fonts:

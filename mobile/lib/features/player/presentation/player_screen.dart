@@ -27,6 +27,7 @@ import '../../../shared/progress/story_progress.dart';
 import '../data/progress_repository.dart';
 import '../domain/episode.dart';
 import '../domain/episode_engine.dart';
+import '../data/subtitle_preference_store.dart';
 import 'widgets/card_view.dart';
 import 'widgets/decision_sheet.dart';
 import 'widgets/end_view.dart';
@@ -73,6 +74,10 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen>
   MeaningController? _shownMeaning;
   bool _missionShown = false;
 
+  /// Kullanıcı bu oynanışta altyazıyı değiştirdi mi (kayıtlı tercih geç
+  /// gelirse üzerine yazmasın diye; K-03, H-039).
+  bool _subtitleTouched = false;
+
   /// Bölüm bu oynanıştan önce bitmiş miydi (H-051: konu seti satırı yeni
   /// açılan set için "açıldı", tekrar oynayışta yalnızca "Konu seti" der).
   bool? _completedBefore;
@@ -106,8 +111,32 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen>
     )..addListener(_onSession);
     if (autoplayEnabled) {
       _driver = AutoplayDriver(_session, onExit: _exit);
+    } else {
+      // Kayıtlı altyazı tercihi (açılışta seçilen Türkçe satır, K-03).
+      unawaited(
+        readSubtitlePreference(ref.read(subtitlePreferenceStoreProvider)).then((
+          mode,
+        ) {
+          if (mounted && mode != null && !_subtitleTouched) {
+            _session.setSubtitleMode(mode);
+          }
+        }),
+      );
     }
     unawaited(_session.start(mode: widget.startMode));
+  }
+
+  void _setSubtitleMode(SubtitleMode mode) {
+    _subtitleTouched = true;
+    _session.setSubtitleMode(mode);
+    unawaited(
+      ref
+          .read(subtitlePreferenceStoreProvider)
+          .setMode(mode)
+          .catchError(
+            (Object e) => debugPrint('[H039] altyazı kaydedilemedi: $e'),
+          ),
+    );
   }
 
   @override
@@ -503,7 +532,7 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen>
               subtitleMode: s.subtitleMode,
               onClose: () => unawaited(_confirmClose()),
               onSpeed: s.setSpeed,
-              onSubtitleMode: s.setSubtitleMode,
+              onSubtitleMode: _setSubtitleMode,
               onMission: () => unawaited(s.openMissionPanel()),
             ),
           ),

@@ -13,6 +13,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hivelzon/app/app.dart';
+import 'package:hivelzon/features/onboarding/application/onboarding_providers.dart';
 import 'package:integration_test/integration_test.dart';
 
 const prefix = String.fromEnvironment('SHOT_PREFIX', defaultValue: 'sonra');
@@ -50,7 +51,14 @@ void main() {
       await wait(const Duration(milliseconds: 1500));
     }
 
-    await t.pumpWidget(const ProviderScope(child: HiVelzonApp()));
+    await t.pumpWidget(
+      ProviderScope(
+        overrides: [
+          onboardingGateProvider.overrideWith(_DoneOnboardingGate.new),
+        ],
+        child: const HiVelzonApp(),
+      ),
+    );
     await waitFor(find.byType(NavigationBar), seconds: 60);
     await wait(const Duration(seconds: 3));
 
@@ -96,4 +104,10 @@ void main() {
     await shot('hukuk');
     await go('/profil');
   });
+}
+
+/// Bu test açılışı (H-039) sınamaz: kapı bitmiş sayılır.
+class _DoneOnboardingGate extends OnboardingGateNotifier {
+  @override
+  OnboardingGate build() => OnboardingGate.done;
 }
