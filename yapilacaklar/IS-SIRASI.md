@@ -153,7 +153,7 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 |---|---|---|---|---|---|
 | D0 | H-075 | Türkçe ses: Alania + Duyu hizalama | Yüksek | — | ✅ |
 | D0 | H-076 | Dilbilgisi müfredatı (~70 konu) | Yüksek | — | ✅ |
-| D1 | H-077 | Ders paketi ve grammar-lint | Yüksek | H-075, H-076 | ⏳ |
+| D1 | H-077 | Ders paketi ve grammar-lint | Yüksek | H-075, H-076 | ✅ |
 | D2 | H-078 | Dilbilgisi ekranı (Hikâye'de 3. bölüm, bölüm panelinde teklif) | Yüksek | H-077 | ⏳ |
 | D3 | H-079 | Pilot: 3 A1 konusu | Yüksek | H-076…H-078 | ⏳ |
 | D4 | H-080 | Dalga 1: A1 + A2 | Orta | H-079 | ⏳ |
@@ -171,6 +171,7 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 ## Biten işler
 | İş | Başlık | Bitiş | Doğrulama |
 |---|---|---|---|
+| H-077 | Ders paketi ve grammar-lint | 2026-10-14 | `lesson.json` + `lesson.md` biçimi, `grammar_lint.py`, `tts_lesson.py` (TR Alania+Duyu, EN ElevenLabs), `export_grammar.py`, dev sunucuda `/grammar/`, bölüm ve kitapta `grammarTopics`; pytest 212/212 |
 | H-076 | Dilbilgisi müfredatı | 2026-10-14 | 71 konu, önkoşullar, Türkçeyle karşılaştırma, tipik hata, doğrulanmış hikâye bağları, bölüm → konu eşlemesi; kullanıcının genel onayı |
 | H-075 | Türkçe ses: Alania + Duyu | 2026-10-14 | `tts_tr.py`: Alania TTS → Duyu kelime zamanları → `align.py` biçimi, -16 LUFS; varsayılan kuru çalışma, tavansız çalışmaz, idempotent, 429 bekleme, anahtar repo dışında; gerçek deneme 154 karakter; pytest 184/184 |
 | H-062 | Oynatıcı katmanlarının tasarımı | 2026-10-14 | Oynatıcı ve anlam paneli yalnız belirteçlerle; ~45 metin l10n'de; karar kartı ve Hi paneli giriş animasyonları; sakin bölüm sonu; geçiş ve senkron testleri; flutter 691/691; kullanıcı onayladı |

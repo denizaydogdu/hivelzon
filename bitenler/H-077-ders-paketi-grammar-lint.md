@@ -1,6 +1,6 @@
 # H-077: Ders paketi ve grammar-lint
 
-- **Durum:** Yapılacak
+- **Durum:** Bitti (2026-10-14; pytest 212/212; bölüm ve kitap lint değişmedi)
 - **Tür:** Uygulama (araç)
 - **Faz:** Dilbilgisi D1 (`docs/DILBILGISI.md` §8)
 - **Bağımlılık:** H-075, H-076
@@ -38,3 +38,4 @@ Kendi dalında; `git revert`.
   - Gerçek ders ses üretiminde Duyu kalitesi ve İngilizce kelime uyarıları dinlenerek doğrulanır.
   - Türkçe anlatımda İngilizce kelimeyi bulan kural sezgiseldir (CEFR-J listesi + Türkçe istisna listesi); yanlış alarm görülürse `TR_COMMON` genişletilir.
 2026-10-14: Kullanıcı isteğiyle açıldı: "Türk öğrenciler bazen konuları anlamıyor; A1'den C2'ye Türkçe anlatacağımız dilbilgisi konuları olsun." Ek istek: "Her hikâyeden önce dilbilgisi konusunu anlatayım mı diye sorulsun; ayrıca ayrı bir dilbilgisi alanı olsun." Kararlar: anlatıcı Hi (Türkçe Alania, İngilizce örnekler Sarah); biçim canlı ders kartları; yer Hikâye'de üçüncü bölüm ve bağlamdan; teklif bölüm panelinde ikincil düğme (H-050 korunur); önce müfredat, pilot 3 A1 konusu, sonra dalgalar. Ayrıntı: `docs/DILBILGISI.md`.
+2026-10-14: `main`'e birleştirildi ve kapandı.
