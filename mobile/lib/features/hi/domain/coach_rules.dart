@@ -6,9 +6,11 @@
 //   a) yarım kalan bölüm → kaldığı yerden devam
 //   b) tekrar zamanı gelen ifade ≥ [kReviewThreshold] → Kelime tekrarı
 //   c) son 7 günde aynı hata türü ≥ [kRepeatedErrors] → Hi'nin notu / defter
+//   g) yarıda kalan kitap → kaldığı cümleden devam (H-067)
 //   d) sıradaki açık bölüm → başla
 //   e) açılmış ama sahne avı yapılmamış konu seti → Sahne avı
 //   b') birkaç ifadenin tekrar zamanı geldiyse (eşiğin altında) → Kelime tekrarı
+//   h) seviyede okunmamış kitap → dinlemeye başla (H-067)
 //   f) hiçbiri → "Bugünlük bu kadar yeter"
 //
 // Dil: suçlama, geri sayım, aciliyet yok (K-32). Süreler günlük hedefe göre
@@ -29,6 +31,8 @@ enum HiSuggestionKind {
   notebook,
   startEpisode,
   sceneHunt,
+  continueBook,
+  startBook,
   rest,
 }
 
@@ -87,6 +91,25 @@ class CoachTopicSet {
   final int? unlockEpisode;
 }
 
+/// Kitaplık kitabı (H-067).
+class CoachBook {
+  const CoachBook({
+    required this.bookId,
+    required this.title,
+    required this.level,
+    this.percent = 0,
+    this.estimatedMinutes,
+  });
+
+  final String bookId;
+  final String title;
+  final String level;
+
+  /// Okunan kısım (yarım kitapta).
+  final int percent;
+  final int? estimatedMinutes;
+}
+
 /// Öğrenme olayındaki hata (yalnızca `errorType` dolu olanlar).
 class ErrorObservation {
   const ErrorObservation({
@@ -116,6 +139,8 @@ class CoachInput {
     this.notesReadAt = const {},
     this.unhuntedSets = const [],
     this.content = HiContent.empty,
+    this.bookInProgress,
+    this.bookToStart,
   });
 
   /// UTC.
@@ -135,6 +160,10 @@ class CoachInput {
   final Map<String, DateTime> notesReadAt;
   final List<CoachTopicSet> unhuntedSets;
   final HiContent content;
+
+  /// Yarıda kalan kitap (son okunan) ve seviyede okunmamış bir kitap.
+  final CoachBook? bookInProgress;
+  final CoachBook? bookToStart;
 }
 
 /// Kurallar sırayla denenir; ilk tutan öneri döner (her zaman bir öneri var).
@@ -160,6 +189,22 @@ HiSuggestion suggestToday(CoachInput i) {
   // c) Son 7 günde tekrarlayan hata türü.
   final c = _repeatedError(i);
   if (c != null) return c;
+
+  // g) Yarıda kalan kitap (bölüm ve tekrardan sonra; H-067).
+  final ib = i.bookInProgress;
+  if (ib != null) {
+    final est = ib.estimatedMinutes == null
+        ? null
+        : (ib.estimatedMinutes! * (100 - ib.percent) / 100).ceil();
+    return HiSuggestion(
+      kind: HiSuggestionKind.continueBook,
+      title: HiTexts.continueBookTitle(ib.title),
+      reasonTr: HiTexts.continueBookReason(ib.title, ib.percent, est, goal),
+      actionLabel: HiTexts.continueBookAction,
+      actionRoute: '/kitap/${ib.bookId}',
+      minutes: est,
+    );
+  }
 
   // d) Sıradaki bölüm.
   final nx = i.next;
@@ -194,6 +239,19 @@ HiSuggestion suggestToday(CoachInput i) {
 
   // b') Eşiğin altında da olsa tekrar zamanı gelen ifade.
   if (i.reviewDue > 0) return _review(i.reviewDue, goal);
+
+  // h) Okunmamış kitap (H-067).
+  final sb = i.bookToStart;
+  if (sb != null) {
+    return HiSuggestion(
+      kind: HiSuggestionKind.startBook,
+      title: HiTexts.startBookTitle(sb.title),
+      reasonTr: HiTexts.startBookReason(sb.level, sb.estimatedMinutes, goal),
+      actionLabel: HiTexts.startBookAction,
+      actionRoute: '/kitap/${sb.bookId}?mod=dinle',
+      minutes: sb.estimatedMinutes,
+    );
+  }
 
   // f) Bugünlük bu kadar.
   return const HiSuggestion(

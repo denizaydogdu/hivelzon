@@ -36,7 +36,8 @@ CardAudioPlayer createCardAudio(WidgetRef ref) {
 /// gelen (H-051). Bölümün hedef ifadeleri ve bakılan kelimeler kalır.
 bool isRemovable(NotebookItem item) =>
     item.source == NotebookSource.userSaved ||
-    item.source == NotebookSource.topicSet;
+    item.source == NotebookSource.topicSet ||
+    item.source == NotebookSource.book;
 
 /// Tekrar oturumunu açar; dönünce sayılar yenilenir.
 Future<void> openReview(BuildContext context, WidgetRef ref) async {
@@ -69,6 +70,9 @@ class _NotebookScreenState extends ConsumerState<NotebookScreen> {
   late int _tab = widget.initialTab;
   late final CardAudioPlayer _audio;
   String _query = '';
+
+  /// Kaynak süzgeci (H-067): null hepsi, `story` hikâyeden, `book:<kimlik>`.
+  String? _filter;
 
   /// Belirme animasyonu oynamış satırlar (kaydırınca yeniden oynamaz).
   final Set<Object> _seen = {};
@@ -216,6 +220,17 @@ class _NotebookScreenState extends ConsumerState<NotebookScreen> {
             ),
           ),
         ),
+      if (_bookSources(entries.value ?? const []).isNotEmpty)
+        SliverPadding(
+          padding: pad.copyWith(top: AppSpace.s8),
+          sliver: SliverToBoxAdapter(
+            child: _SourceFilter(
+              books: _bookSources(entries.value!),
+              selected: _filter,
+              onChanged: (v) => setState(() => _filter = v),
+            ),
+          ),
+        ),
       switch (entries) {
         AsyncData(:final value) => _list(value),
         AsyncError() => const SliverToBoxAdapter(
@@ -252,15 +267,20 @@ class _NotebookScreenState extends ConsumerState<NotebookScreen> {
       );
     }
     final q = _query;
-    final list = q.isEmpty
-        ? all
-        : [
-            for (final e in all)
-              if (lowerTr(e.item.textEn).contains(q) ||
-                  (e.item.textTr != null &&
-                      lowerTr(e.item.textTr!).contains(q)))
-                e,
-          ];
+    final f = _filter;
+    bool source(NotebookItem i) => switch (f) {
+      null => true,
+      'story' => i.source != NotebookSource.book,
+      _ => i.source == NotebookSource.book && 'book:${i.contentId}' == f,
+    };
+    final list = [
+      for (final e in all)
+        if (source(e.item) &&
+            (q.isEmpty ||
+                lowerTr(e.item.textEn).contains(q) ||
+                (e.item.textTr != null && lowerTr(e.item.textTr!).contains(q))))
+          e,
+    ];
     if (list.isEmpty) {
       return const SliverToBoxAdapter(
         child: EmptyState(
@@ -332,6 +352,13 @@ class _NotebookScreenState extends ConsumerState<NotebookScreen> {
       );
     }
   }
+
+  /// Defterdeki kitaplar (kimlik → başlık), ilk görülme sırasıyla.
+  static Map<String, String> _bookSources(List<NotebookEntry> all) => {
+    for (final e in all)
+      if (e.item.source == NotebookSource.book && e.item.contentId != null)
+        e.item.contentId!: e.item.sourceTitle ?? e.item.contentId!,
+  };
 
   /// H-051: hikâye mekânlarına bağlı konu setleri.
   List<Widget> _sets() => const [
@@ -470,6 +497,54 @@ class _ReviewCard extends ConsumerWidget {
             ),
           ],
         ],
+      ),
+    );
+  }
+}
+
+/// Kaynağa göre süzme çipleri (H-067): Hepsi · Hikâyeden · kitaplar.
+class _SourceFilter extends StatelessWidget {
+  const _SourceFilter({
+    required this.books,
+    required this.selected,
+    required this.onChanged,
+  });
+
+  final Map<String, String> books;
+  final String? selected;
+  final ValueChanged<String?> onChanged;
+
+  @override
+  Widget build(BuildContext context) {
+    Widget chip(String? value, String label, {IconData? icon}) => Padding(
+      padding: const EdgeInsets.only(right: AppSpace.s8),
+      child: ChoiceChip(
+        key: ValueKey('notebook-filter-${value ?? 'all'}'),
+        avatar: icon == null ? null : Icon(icon, size: AppIconSize.sm),
+        label: Text(label),
+        selected: selected == value,
+        showCheckmark: false,
+        onSelected: (_) => onChanged(value),
+        materialTapTargetSize: MaterialTapTargetSize.padded,
+      ),
+    );
+    return Semantics(
+      container: true,
+      label: NotebookTexts.filterLabel,
+      child: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Row(
+          children: [
+            chip(null, NotebookTexts.filterAll),
+            chip('story', NotebookTexts.filterStory),
+            for (final b in books.entries)
+              chip(
+                'book:${b.key}',
+                NotebookTexts.filterBook(b.value),
+                icon: Icons.menu_book_rounded,
+              ),
+          ],
+        ),
       ),
     );
   }

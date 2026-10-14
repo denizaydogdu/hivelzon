@@ -516,8 +516,9 @@ class SyncStore {
     // durumunu düşürecekse yereldeki durum korunur ve sunucuya da gider.
     var data = row;
     var raised = false;
-    if (spec.name == 'user_story_progress' && !deleted) {
-      final merged = await _keepHigherProgress(row);
+    final progressTable = _progressTables[spec.name];
+    if (progressTable != null && !deleted) {
+      final merged = await _keepHigherProgress(progressTable, row);
       if (merged != null) {
         data = merged;
         raised = true;
@@ -529,7 +530,7 @@ class SyncStore {
       return false;
     }
     if (raised) {
-      await _enqueueProgress(keys[0]);
+      await _enqueueProgress(spec.name, keys[0]);
     } else if (outbox != null) {
       await (db.delete(db.syncOutbox)..where(
             (t) =>
@@ -556,6 +557,24 @@ class SyncStore {
     _ => 0,
   };
 
+  /// Durumu "bitti kazanır" kuralıyla birleşen tablolar (H-056; kitap
+  /// ilerlemesi H-067): anahtar ve "kalınan yer" alanları (yerel bitmişse
+  /// yereldeki kalır).
+  static const _progressTables = <String, _ProgressTable>{
+    'user_story_progress':
+        _ProgressTable('user_story_progress', 'contentId', 'content_id', [
+          ('lastCheckpointNodeId', 'last_checkpoint_node_id'),
+          ('checkpointSnapshot', 'checkpoint_snapshot'),
+        ]),
+    'user_book_progress':
+        _ProgressTable('user_book_progress', 'bookId', 'book_id', [
+          ('chapterId', 'chapter_id'),
+          ('pageNumber', 'page_number'),
+          ('sentenceIndex', 'sentence_index'),
+          ('positionSec', 'position_sec'),
+        ]),
+  };
+
   /// Gelen ilerleme satırı yereldeki durumu yükseltiyor mu? (Sunucu
   /// birleştirmesi zamanı değiştirmeden durumu yükseltebilir: aynı zamanlı
   /// satır "kendi itmemiz" sayılıp atlanmasın.)
@@ -563,11 +582,12 @@ class SyncStore {
     SyncTableSpec spec,
     Map<String, dynamic> row,
   ) async {
-    if (spec.name != 'user_story_progress') return false;
+    final p = _progressTables[spec.name];
+    if (p == null) return false;
     final local = await db
         .customSelect(
-          'SELECT status FROM user_story_progress WHERE content_id = ?',
-          variables: [Variable.withString('${row['contentId']}')],
+          'SELECT status FROM ${p.table} WHERE ${p.keyColumn} = ?',
+          variables: [Variable.withString('${row[p.keyJson]}')],
         )
         .getSingleOrNull();
     return progressRank(row['status']) > progressRank(local?.data['status']);
@@ -576,16 +596,17 @@ class SyncStore {
   /// Gelen ilerleme satırı yereldekinden düşük durumdaysa birleştirilmiş
   /// satır (durum ve bitiş zamanı yereldeki; yerel bitmişse kaldığı yer de
   /// yereldeki; başlama zamanı en erken; zaman en geç); değilse `null`.
-  /// Sunucu da aynı kuralı uygular (backend `ProgressMerge`).
+  /// Sunucu da aynı kuralı uygular (backend `ProgressMerger`).
   Future<Map<String, dynamic>?> _keepHigherProgress(
+    _ProgressTable p,
     Map<String, dynamic> row,
   ) async {
     final local = await db
         .customSelect(
-          'SELECT status, last_checkpoint_node_id, checkpoint_snapshot, '
-          'started_at, completed_at, updated_at FROM user_story_progress '
-          'WHERE content_id = ?',
-          variables: [Variable.withString('${row['contentId']}')],
+          'SELECT status, ${p.place.map((c) => c.$2).join(', ')}, '
+          'started_at, completed_at, updated_at FROM ${p.table} '
+          'WHERE ${p.keyColumn} = ?',
+          variables: [Variable.withString('${row[p.keyJson]}')],
         )
         .getSingleOrNull();
     if (local == null) return null;
@@ -608,21 +629,21 @@ class SyncStore {
         latest(t(local.data['updated_at']), t(row['updatedAt'])),
       );
     if (status == 'COMPLETED') {
-      merged
-        ..['lastCheckpointNodeId'] = local.data['last_checkpoint_node_id']
-        ..['checkpointSnapshot'] = local.data['checkpoint_snapshot'];
+      for (final (json, column) in p.place) {
+        merged[json] = local.data[column];
+      }
     }
     return merged;
   }
 
   /// Yereldeki (daha ileri) ilerleme sunucuya gitsin: kuyruğa yazılır
   /// (sunucudan gelen satır yazılırken tetikleyiciler sustuğu için elle).
-  Future<void> _enqueueProgress(String contentId) => db.customStatement(
+  Future<void> _enqueueProgress(String table, String key) => db.customStatement(
     'INSERT INTO sync_outbox (tbl, k1, k2, k3, deleted, rev, changed_at, '
-    "blocked) VALUES ('user_story_progress', ?, '', '', 0, 1, ?, 0) "
+    "blocked) VALUES (?, ?, '', '', 0, 1, ?, 0) "
     'ON CONFLICT (tbl, k1, k2, k3) DO UPDATE SET deleted = 0, '
     'rev = sync_outbox.rev + 1, changed_at = excluded.changed_at, blocked = 0',
-    [contentId, now().toIso8601String()],
+    [table, key, now().toIso8601String()],
   );
 
   Future<DateTime?> _localLww(SyncTableSpec spec, List<String> keys) async {
@@ -805,6 +826,7 @@ class SyncStore {
         'gate_progress',
         'user_story_flags',
         'user_story_progress',
+        'user_book_progress',
         'season_state',
       ]) {
         await db.customUpdate(
@@ -821,4 +843,16 @@ class SyncStore {
       );
     });
   }
+}
+
+/// "Bitti kazanır" tablosunun tanımı ([SyncStore._progressTables]).
+class _ProgressTable {
+  const _ProgressTable(this.table, this.keyJson, this.keyColumn, this.place);
+
+  final String table;
+  final String keyJson;
+  final String keyColumn;
+
+  /// Kalınan yer: (JSON adı, kolon).
+  final List<(String, String)> place;
 }

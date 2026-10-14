@@ -121,8 +121,12 @@ class NotebookItems extends Table {
   RealColumn get exampleStart => real().nullable()();
   RealColumn get exampleEnd => real().nullable()();
 
-  /// `auto_target_phrase` | `user_saved` | `lookup`
+  /// `auto_target_phrase` | `user_saved` | `lookup` | `topic_set` | `book`
   TextColumn get source => text()();
+
+  /// Kaynağın adı (şema 6, H-067): kitaptan eklenende kitabın başlığı
+  /// (`Kitap: <başlık>, s. N` satırı için; sayfa `cueId`'den).
+  TextColumn get sourceTitle => text().nullable()();
   DateTimeColumn get createdAt => dateTime()();
 
   /// Son yazan kazanır zamanı (H-038, şema 5).
@@ -286,6 +290,31 @@ class SpeechAttempts extends Table {
   TextColumn get clientId => text().nullable().clientDefault(SyncIds.v4)();
 }
 
+// ---------------------------------------------------------------- Kitaplık (H-067, şema 6)
+
+/// Kitap başına ilerleme (`docs/KITAPLIK.md` §7). Hesap varsa eşitlenir;
+/// "bitti" kazanır (H-056 kuralı), öteki alanlarda son yazan kazanır.
+class UserBookProgress extends Table {
+  TextColumn get bookId => text()();
+
+  /// `NOT_STARTED` | `IN_PROGRESS` | `COMPLETED`
+  TextColumn get status => text().withDefault(const Constant('NOT_STARTED'))();
+
+  /// Kalınan yer: bölüm (`c1`), sayfa numarası, sayfadaki cümle sırası
+  /// (−1: bölüm başlığı) ve bölüm sesindeki konum (sn).
+  TextColumn get chapterId => text().nullable()();
+  IntColumn get pageNumber => integer().nullable()();
+  IntColumn get sentenceIndex => integer().nullable()();
+  RealColumn get positionSec => real().nullable()();
+
+  DateTimeColumn get startedAt => dateTime().nullable()();
+  DateTimeColumn get completedAt => dateTime().nullable()();
+  DateTimeColumn get updatedAt => dateTime()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {bookId};
+}
+
 // ---------------------------------------------------------------- eşitleme (H-038, şema 5)
 
 /// Hesap ve eşitleme durumu (tek satır, `id = 1`). Hesap yoksa
@@ -377,6 +406,7 @@ class SyncOutbox extends Table {
     SpeechAttempts,
     SyncState,
     SyncOutbox,
+    UserBookProgress,
   ],
 )
 class AppDatabase extends _$AppDatabase {
@@ -397,7 +427,7 @@ class AppDatabase extends _$AppDatabase {
   );
 
   @override
-  int get schemaVersion => 5;
+  int get schemaVersion => 6;
 
   @override
   MigrationStrategy get migration => MigrationStrategy(
@@ -438,6 +468,13 @@ class AppDatabase extends _$AppDatabase {
         await m.createTable(syncState);
         await m.createTable(syncOutbox);
         await backfillSchema5(this);
+      }
+      // 5 → 6 (H-067): Kitaplık ilerlemesi; defterde kaynağın adı (kitap).
+      if (from < 6) {
+        if (from >= 2) {
+          await m.addColumn(notebookItems, notebookItems.sourceTitle);
+        }
+        await m.createTable(userBookProgress);
       }
     },
     beforeOpen: (details) async {

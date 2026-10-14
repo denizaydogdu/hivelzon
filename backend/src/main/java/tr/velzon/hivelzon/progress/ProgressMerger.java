@@ -2,6 +2,7 @@ package tr.velzon.hivelzon.progress;
 
 import java.time.OffsetDateTime;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 import tr.velzon.hivelzon.sync.SyncMerger;
@@ -22,6 +23,8 @@ import tr.velzon.hivelzon.sync.SyncRow;
  * <li>Aynı durum ya da silme işareti: düz son yazan kazanır (mobil ilerlemeyi silmez; yalnızca hesapsızken yerel
  * silme yapar, o da gönderilmez).</li>
  * </ul>
+ * Aynı kural kitap ilerlemesine de uygulanır (H-067, {@link #forBooks()}): kayıt noktası orada kalınan bölüm, sayfa,
+ * cümle ve ses konumudur.
  */
 final class ProgressMerger implements SyncMerger {
 
@@ -30,6 +33,34 @@ final class ProgressMerger implements SyncMerger {
     static final String STARTED_AT = "started_at";
     static final String CHECKPOINT_NODE = "last_checkpoint_node_id";
     static final String CHECKPOINT_SNAPSHOT = "checkpoint_snapshot";
+
+    /** Kalınan yer kolonları; ilki boşsa "kayıt noktası yok" sayılır. */
+    private final List<String> place;
+
+    ProgressMerger() {
+        this(List.of(CHECKPOINT_NODE, CHECKPOINT_SNAPSHOT));
+    }
+
+    ProgressMerger(List<String> place) {
+        this.place = List.copyOf(place);
+    }
+
+    /** Kitap ilerlemesi (H-067). */
+    static ProgressMerger forBooks() {
+        return new ProgressMerger(List.of("chapter_id", "page_number", "sentence_index", "position_sec"));
+    }
+
+    private boolean hasPlace(Map<String, Object> row) {
+        // Hikâyede kayıt noktasının özü anlık görüntüdür; kitapta bölüm.
+        String key = place.contains(CHECKPOINT_SNAPSHOT) ? CHECKPOINT_SNAPSHOT : place.get(0);
+        return row.get(key) != null;
+    }
+
+    private void copyPlace(Map<String, Object> from, Map<String, Object> to) {
+        for (String c : place) {
+            to.put(c, from.get(c));
+        }
+    }
 
     static int rank(Object status) {
         if (status == null) {
@@ -67,16 +98,14 @@ final class ProgressMerger implements SyncMerger {
             out.put(STATUS, s.get(STATUS));
             out.put(COMPLETED_AT, s.get(COMPLETED_AT));
             if (rs == 2) {
-                out.put(CHECKPOINT_NODE, s.get(CHECKPOINT_NODE));
-                out.put(CHECKPOINT_SNAPSHOT, s.get(CHECKPOINT_SNAPSHOT));
+                copyPlace(s, out);
             }
         } else if (!incomingWins && ri > rs) {
             out = new LinkedHashMap<>(s);
             out.put(STATUS, in.get(STATUS));
             out.put(COMPLETED_AT, in.get(COMPLETED_AT));
-            if (ri == 2 || s.get(CHECKPOINT_SNAPSHOT) == null) {
-                out.put(CHECKPOINT_NODE, in.get(CHECKPOINT_NODE));
-                out.put(CHECKPOINT_SNAPSHOT, in.get(CHECKPOINT_SNAPSHOT));
+            if (ri == 2 || !hasPlace(s)) {
+                copyPlace(in, out);
             }
             out.put(lww, ts.plusNanos(1_000_000));
         } else {

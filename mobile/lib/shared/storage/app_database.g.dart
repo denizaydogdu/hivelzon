@@ -1853,6 +1853,17 @@ class $NotebookItemsTable extends NotebookItems
     type: DriftSqlType.string,
     requiredDuringInsert: true,
   );
+  static const VerificationMeta _sourceTitleMeta = const VerificationMeta(
+    'sourceTitle',
+  );
+  @override
+  late final GeneratedColumn<String> sourceTitle = GeneratedColumn<String>(
+    'source_title',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
   static const VerificationMeta _createdAtMeta = const VerificationMeta(
     'createdAt',
   );
@@ -1894,6 +1905,7 @@ class $NotebookItemsTable extends NotebookItems
     exampleStart,
     exampleEnd,
     source,
+    sourceTitle,
     createdAt,
     updatedAt,
   ];
@@ -2019,6 +2031,15 @@ class $NotebookItemsTable extends NotebookItems
     } else if (isInserting) {
       context.missing(_sourceMeta);
     }
+    if (data.containsKey('source_title')) {
+      context.handle(
+        _sourceTitleMeta,
+        sourceTitle.isAcceptableOrUnknown(
+          data['source_title']!,
+          _sourceTitleMeta,
+        ),
+      );
+    }
     if (data.containsKey('created_at')) {
       context.handle(
         _createdAtMeta,
@@ -2110,6 +2131,10 @@ class $NotebookItemsTable extends NotebookItems
         DriftSqlType.string,
         data['${effectivePrefix}source'],
       )!,
+      sourceTitle: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}source_title'],
+      ),
       createdAt: attachedDatabase.typeMapping.read(
         DriftSqlType.dateTime,
         data['${effectivePrefix}created_at'],
@@ -2159,8 +2184,12 @@ class NotebookItemRow extends DataClass implements Insertable<NotebookItemRow> {
   final double? exampleStart;
   final double? exampleEnd;
 
-  /// `auto_target_phrase` | `user_saved` | `lookup`
+  /// `auto_target_phrase` | `user_saved` | `lookup` | `topic_set` | `book`
   final String source;
+
+  /// Kaynağın adı (şema 6, H-067): kitaptan eklenende kitabın başlığı
+  /// ("Kitap: <başlık>, s. N" satırı için; sayfa `cueId`'den).
+  final String? sourceTitle;
   final DateTime createdAt;
 
   /// Son yazan kazanır zamanı (H-038, şema 5).
@@ -2183,6 +2212,7 @@ class NotebookItemRow extends DataClass implements Insertable<NotebookItemRow> {
     this.exampleStart,
     this.exampleEnd,
     required this.source,
+    this.sourceTitle,
     required this.createdAt,
     this.updatedAt,
   });
@@ -2230,6 +2260,9 @@ class NotebookItemRow extends DataClass implements Insertable<NotebookItemRow> {
       map['example_end'] = Variable<double>(exampleEnd);
     }
     map['source'] = Variable<String>(source);
+    if (!nullToAbsent || sourceTitle != null) {
+      map['source_title'] = Variable<String>(sourceTitle);
+    }
     map['created_at'] = Variable<DateTime>(createdAt);
     if (!nullToAbsent || updatedAt != null) {
       map['updated_at'] = Variable<DateTime>(updatedAt);
@@ -2280,6 +2313,9 @@ class NotebookItemRow extends DataClass implements Insertable<NotebookItemRow> {
           ? const Value.absent()
           : Value(exampleEnd),
       source: Value(source),
+      sourceTitle: sourceTitle == null && nullToAbsent
+          ? const Value.absent()
+          : Value(sourceTitle),
       createdAt: Value(createdAt),
       updatedAt: updatedAt == null && nullToAbsent
           ? const Value.absent()
@@ -2310,6 +2346,7 @@ class NotebookItemRow extends DataClass implements Insertable<NotebookItemRow> {
       exampleStart: serializer.fromJson<double?>(json['exampleStart']),
       exampleEnd: serializer.fromJson<double?>(json['exampleEnd']),
       source: serializer.fromJson<String>(json['source']),
+      sourceTitle: serializer.fromJson<String?>(json['sourceTitle']),
       createdAt: serializer.fromJson<DateTime>(json['createdAt']),
       updatedAt: serializer.fromJson<DateTime?>(json['updatedAt']),
     );
@@ -2335,6 +2372,7 @@ class NotebookItemRow extends DataClass implements Insertable<NotebookItemRow> {
       'exampleStart': serializer.toJson<double?>(exampleStart),
       'exampleEnd': serializer.toJson<double?>(exampleEnd),
       'source': serializer.toJson<String>(source),
+      'sourceTitle': serializer.toJson<String?>(sourceTitle),
       'createdAt': serializer.toJson<DateTime>(createdAt),
       'updatedAt': serializer.toJson<DateTime?>(updatedAt),
     };
@@ -2358,6 +2396,7 @@ class NotebookItemRow extends DataClass implements Insertable<NotebookItemRow> {
     Value<double?> exampleStart = const Value.absent(),
     Value<double?> exampleEnd = const Value.absent(),
     String? source,
+    Value<String?> sourceTitle = const Value.absent(),
     DateTime? createdAt,
     Value<DateTime?> updatedAt = const Value.absent(),
   }) => NotebookItemRow(
@@ -2378,6 +2417,7 @@ class NotebookItemRow extends DataClass implements Insertable<NotebookItemRow> {
     exampleStart: exampleStart.present ? exampleStart.value : this.exampleStart,
     exampleEnd: exampleEnd.present ? exampleEnd.value : this.exampleEnd,
     source: source ?? this.source,
+    sourceTitle: sourceTitle.present ? sourceTitle.value : this.sourceTitle,
     createdAt: createdAt ?? this.createdAt,
     updatedAt: updatedAt.present ? updatedAt.value : this.updatedAt,
   );
@@ -2406,6 +2446,9 @@ class NotebookItemRow extends DataClass implements Insertable<NotebookItemRow> {
           ? data.exampleEnd.value
           : this.exampleEnd,
       source: data.source.present ? data.source.value : this.source,
+      sourceTitle: data.sourceTitle.present
+          ? data.sourceTitle.value
+          : this.sourceTitle,
       createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
       updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
     );
@@ -2431,6 +2474,7 @@ class NotebookItemRow extends DataClass implements Insertable<NotebookItemRow> {
           ..write('exampleStart: $exampleStart, ')
           ..write('exampleEnd: $exampleEnd, ')
           ..write('source: $source, ')
+          ..write('sourceTitle: $sourceTitle, ')
           ..write('createdAt: $createdAt, ')
           ..write('updatedAt: $updatedAt')
           ..write(')'))
@@ -2456,6 +2500,7 @@ class NotebookItemRow extends DataClass implements Insertable<NotebookItemRow> {
     exampleStart,
     exampleEnd,
     source,
+    sourceTitle,
     createdAt,
     updatedAt,
   );
@@ -2480,6 +2525,7 @@ class NotebookItemRow extends DataClass implements Insertable<NotebookItemRow> {
           other.exampleStart == this.exampleStart &&
           other.exampleEnd == this.exampleEnd &&
           other.source == this.source &&
+          other.sourceTitle == this.sourceTitle &&
           other.createdAt == this.createdAt &&
           other.updatedAt == this.updatedAt);
 }
@@ -2502,6 +2548,7 @@ class NotebookItemsCompanion extends UpdateCompanion<NotebookItemRow> {
   final Value<double?> exampleStart;
   final Value<double?> exampleEnd;
   final Value<String> source;
+  final Value<String?> sourceTitle;
   final Value<DateTime> createdAt;
   final Value<DateTime?> updatedAt;
   const NotebookItemsCompanion({
@@ -2522,6 +2569,7 @@ class NotebookItemsCompanion extends UpdateCompanion<NotebookItemRow> {
     this.exampleStart = const Value.absent(),
     this.exampleEnd = const Value.absent(),
     this.source = const Value.absent(),
+    this.sourceTitle = const Value.absent(),
     this.createdAt = const Value.absent(),
     this.updatedAt = const Value.absent(),
   });
@@ -2543,6 +2591,7 @@ class NotebookItemsCompanion extends UpdateCompanion<NotebookItemRow> {
     this.exampleStart = const Value.absent(),
     this.exampleEnd = const Value.absent(),
     required String source,
+    this.sourceTitle = const Value.absent(),
     required DateTime createdAt,
     this.updatedAt = const Value.absent(),
   }) : itemKey = Value(itemKey),
@@ -2568,6 +2617,7 @@ class NotebookItemsCompanion extends UpdateCompanion<NotebookItemRow> {
     Expression<double>? exampleStart,
     Expression<double>? exampleEnd,
     Expression<String>? source,
+    Expression<String>? sourceTitle,
     Expression<DateTime>? createdAt,
     Expression<DateTime>? updatedAt,
   }) {
@@ -2589,6 +2639,7 @@ class NotebookItemsCompanion extends UpdateCompanion<NotebookItemRow> {
       if (exampleStart != null) 'example_start': exampleStart,
       if (exampleEnd != null) 'example_end': exampleEnd,
       if (source != null) 'source': source,
+      if (sourceTitle != null) 'source_title': sourceTitle,
       if (createdAt != null) 'created_at': createdAt,
       if (updatedAt != null) 'updated_at': updatedAt,
     });
@@ -2612,6 +2663,7 @@ class NotebookItemsCompanion extends UpdateCompanion<NotebookItemRow> {
     Value<double?>? exampleStart,
     Value<double?>? exampleEnd,
     Value<String>? source,
+    Value<String?>? sourceTitle,
     Value<DateTime>? createdAt,
     Value<DateTime?>? updatedAt,
   }) {
@@ -2633,6 +2685,7 @@ class NotebookItemsCompanion extends UpdateCompanion<NotebookItemRow> {
       exampleStart: exampleStart ?? this.exampleStart,
       exampleEnd: exampleEnd ?? this.exampleEnd,
       source: source ?? this.source,
+      sourceTitle: sourceTitle ?? this.sourceTitle,
       createdAt: createdAt ?? this.createdAt,
       updatedAt: updatedAt ?? this.updatedAt,
     );
@@ -2692,6 +2745,9 @@ class NotebookItemsCompanion extends UpdateCompanion<NotebookItemRow> {
     if (source.present) {
       map['source'] = Variable<String>(source.value);
     }
+    if (sourceTitle.present) {
+      map['source_title'] = Variable<String>(sourceTitle.value);
+    }
     if (createdAt.present) {
       map['created_at'] = Variable<DateTime>(createdAt.value);
     }
@@ -2721,6 +2777,7 @@ class NotebookItemsCompanion extends UpdateCompanion<NotebookItemRow> {
           ..write('exampleStart: $exampleStart, ')
           ..write('exampleEnd: $exampleEnd, ')
           ..write('source: $source, ')
+          ..write('sourceTitle: $sourceTitle, ')
           ..write('createdAt: $createdAt, ')
           ..write('updatedAt: $updatedAt')
           ..write(')'))
@@ -7677,6 +7734,596 @@ class SyncOutboxCompanion extends UpdateCompanion<SyncOutboxRow> {
   }
 }
 
+class $UserBookProgressTable extends UserBookProgress
+    with TableInfo<$UserBookProgressTable, UserBookProgressData> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $UserBookProgressTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _bookIdMeta = const VerificationMeta('bookId');
+  @override
+  late final GeneratedColumn<String> bookId = GeneratedColumn<String>(
+    'book_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _statusMeta = const VerificationMeta('status');
+  @override
+  late final GeneratedColumn<String> status = GeneratedColumn<String>(
+    'status',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    defaultValue: const Constant('NOT_STARTED'),
+  );
+  static const VerificationMeta _chapterIdMeta = const VerificationMeta(
+    'chapterId',
+  );
+  @override
+  late final GeneratedColumn<String> chapterId = GeneratedColumn<String>(
+    'chapter_id',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _pageNumberMeta = const VerificationMeta(
+    'pageNumber',
+  );
+  @override
+  late final GeneratedColumn<int> pageNumber = GeneratedColumn<int>(
+    'page_number',
+    aliasedName,
+    true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _sentenceIndexMeta = const VerificationMeta(
+    'sentenceIndex',
+  );
+  @override
+  late final GeneratedColumn<int> sentenceIndex = GeneratedColumn<int>(
+    'sentence_index',
+    aliasedName,
+    true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _positionSecMeta = const VerificationMeta(
+    'positionSec',
+  );
+  @override
+  late final GeneratedColumn<double> positionSec = GeneratedColumn<double>(
+    'position_sec',
+    aliasedName,
+    true,
+    type: DriftSqlType.double,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _startedAtMeta = const VerificationMeta(
+    'startedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> startedAt = GeneratedColumn<DateTime>(
+    'started_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _completedAtMeta = const VerificationMeta(
+    'completedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> completedAt = GeneratedColumn<DateTime>(
+    'completed_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _updatedAtMeta = const VerificationMeta(
+    'updatedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> updatedAt = GeneratedColumn<DateTime>(
+    'updated_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: true,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    bookId,
+    status,
+    chapterId,
+    pageNumber,
+    sentenceIndex,
+    positionSec,
+    startedAt,
+    completedAt,
+    updatedAt,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'user_book_progress';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<UserBookProgressData> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('book_id')) {
+      context.handle(
+        _bookIdMeta,
+        bookId.isAcceptableOrUnknown(data['book_id']!, _bookIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_bookIdMeta);
+    }
+    if (data.containsKey('status')) {
+      context.handle(
+        _statusMeta,
+        status.isAcceptableOrUnknown(data['status']!, _statusMeta),
+      );
+    }
+    if (data.containsKey('chapter_id')) {
+      context.handle(
+        _chapterIdMeta,
+        chapterId.isAcceptableOrUnknown(data['chapter_id']!, _chapterIdMeta),
+      );
+    }
+    if (data.containsKey('page_number')) {
+      context.handle(
+        _pageNumberMeta,
+        pageNumber.isAcceptableOrUnknown(data['page_number']!, _pageNumberMeta),
+      );
+    }
+    if (data.containsKey('sentence_index')) {
+      context.handle(
+        _sentenceIndexMeta,
+        sentenceIndex.isAcceptableOrUnknown(
+          data['sentence_index']!,
+          _sentenceIndexMeta,
+        ),
+      );
+    }
+    if (data.containsKey('position_sec')) {
+      context.handle(
+        _positionSecMeta,
+        positionSec.isAcceptableOrUnknown(
+          data['position_sec']!,
+          _positionSecMeta,
+        ),
+      );
+    }
+    if (data.containsKey('started_at')) {
+      context.handle(
+        _startedAtMeta,
+        startedAt.isAcceptableOrUnknown(data['started_at']!, _startedAtMeta),
+      );
+    }
+    if (data.containsKey('completed_at')) {
+      context.handle(
+        _completedAtMeta,
+        completedAt.isAcceptableOrUnknown(
+          data['completed_at']!,
+          _completedAtMeta,
+        ),
+      );
+    }
+    if (data.containsKey('updated_at')) {
+      context.handle(
+        _updatedAtMeta,
+        updatedAt.isAcceptableOrUnknown(data['updated_at']!, _updatedAtMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_updatedAtMeta);
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {bookId};
+  @override
+  UserBookProgressData map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return UserBookProgressData(
+      bookId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}book_id'],
+      )!,
+      status: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}status'],
+      )!,
+      chapterId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}chapter_id'],
+      ),
+      pageNumber: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}page_number'],
+      ),
+      sentenceIndex: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}sentence_index'],
+      ),
+      positionSec: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}position_sec'],
+      ),
+      startedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}started_at'],
+      ),
+      completedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}completed_at'],
+      ),
+      updatedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}updated_at'],
+      )!,
+    );
+  }
+
+  @override
+  $UserBookProgressTable createAlias(String alias) {
+    return $UserBookProgressTable(attachedDatabase, alias);
+  }
+}
+
+class UserBookProgressData extends DataClass
+    implements Insertable<UserBookProgressData> {
+  final String bookId;
+
+  /// `NOT_STARTED` | `IN_PROGRESS` | `COMPLETED`
+  final String status;
+
+  /// Kalınan yer: bölüm (`c1`), sayfa numarası, sayfadaki cümle sırası
+  /// (−1: bölüm başlığı) ve bölüm sesindeki konum (sn).
+  final String? chapterId;
+  final int? pageNumber;
+  final int? sentenceIndex;
+  final double? positionSec;
+  final DateTime? startedAt;
+  final DateTime? completedAt;
+  final DateTime updatedAt;
+  const UserBookProgressData({
+    required this.bookId,
+    required this.status,
+    this.chapterId,
+    this.pageNumber,
+    this.sentenceIndex,
+    this.positionSec,
+    this.startedAt,
+    this.completedAt,
+    required this.updatedAt,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['book_id'] = Variable<String>(bookId);
+    map['status'] = Variable<String>(status);
+    if (!nullToAbsent || chapterId != null) {
+      map['chapter_id'] = Variable<String>(chapterId);
+    }
+    if (!nullToAbsent || pageNumber != null) {
+      map['page_number'] = Variable<int>(pageNumber);
+    }
+    if (!nullToAbsent || sentenceIndex != null) {
+      map['sentence_index'] = Variable<int>(sentenceIndex);
+    }
+    if (!nullToAbsent || positionSec != null) {
+      map['position_sec'] = Variable<double>(positionSec);
+    }
+    if (!nullToAbsent || startedAt != null) {
+      map['started_at'] = Variable<DateTime>(startedAt);
+    }
+    if (!nullToAbsent || completedAt != null) {
+      map['completed_at'] = Variable<DateTime>(completedAt);
+    }
+    map['updated_at'] = Variable<DateTime>(updatedAt);
+    return map;
+  }
+
+  UserBookProgressCompanion toCompanion(bool nullToAbsent) {
+    return UserBookProgressCompanion(
+      bookId: Value(bookId),
+      status: Value(status),
+      chapterId: chapterId == null && nullToAbsent
+          ? const Value.absent()
+          : Value(chapterId),
+      pageNumber: pageNumber == null && nullToAbsent
+          ? const Value.absent()
+          : Value(pageNumber),
+      sentenceIndex: sentenceIndex == null && nullToAbsent
+          ? const Value.absent()
+          : Value(sentenceIndex),
+      positionSec: positionSec == null && nullToAbsent
+          ? const Value.absent()
+          : Value(positionSec),
+      startedAt: startedAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(startedAt),
+      completedAt: completedAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(completedAt),
+      updatedAt: Value(updatedAt),
+    );
+  }
+
+  factory UserBookProgressData.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return UserBookProgressData(
+      bookId: serializer.fromJson<String>(json['bookId']),
+      status: serializer.fromJson<String>(json['status']),
+      chapterId: serializer.fromJson<String?>(json['chapterId']),
+      pageNumber: serializer.fromJson<int?>(json['pageNumber']),
+      sentenceIndex: serializer.fromJson<int?>(json['sentenceIndex']),
+      positionSec: serializer.fromJson<double?>(json['positionSec']),
+      startedAt: serializer.fromJson<DateTime?>(json['startedAt']),
+      completedAt: serializer.fromJson<DateTime?>(json['completedAt']),
+      updatedAt: serializer.fromJson<DateTime>(json['updatedAt']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'bookId': serializer.toJson<String>(bookId),
+      'status': serializer.toJson<String>(status),
+      'chapterId': serializer.toJson<String?>(chapterId),
+      'pageNumber': serializer.toJson<int?>(pageNumber),
+      'sentenceIndex': serializer.toJson<int?>(sentenceIndex),
+      'positionSec': serializer.toJson<double?>(positionSec),
+      'startedAt': serializer.toJson<DateTime?>(startedAt),
+      'completedAt': serializer.toJson<DateTime?>(completedAt),
+      'updatedAt': serializer.toJson<DateTime>(updatedAt),
+    };
+  }
+
+  UserBookProgressData copyWith({
+    String? bookId,
+    String? status,
+    Value<String?> chapterId = const Value.absent(),
+    Value<int?> pageNumber = const Value.absent(),
+    Value<int?> sentenceIndex = const Value.absent(),
+    Value<double?> positionSec = const Value.absent(),
+    Value<DateTime?> startedAt = const Value.absent(),
+    Value<DateTime?> completedAt = const Value.absent(),
+    DateTime? updatedAt,
+  }) => UserBookProgressData(
+    bookId: bookId ?? this.bookId,
+    status: status ?? this.status,
+    chapterId: chapterId.present ? chapterId.value : this.chapterId,
+    pageNumber: pageNumber.present ? pageNumber.value : this.pageNumber,
+    sentenceIndex: sentenceIndex.present
+        ? sentenceIndex.value
+        : this.sentenceIndex,
+    positionSec: positionSec.present ? positionSec.value : this.positionSec,
+    startedAt: startedAt.present ? startedAt.value : this.startedAt,
+    completedAt: completedAt.present ? completedAt.value : this.completedAt,
+    updatedAt: updatedAt ?? this.updatedAt,
+  );
+  UserBookProgressData copyWithCompanion(UserBookProgressCompanion data) {
+    return UserBookProgressData(
+      bookId: data.bookId.present ? data.bookId.value : this.bookId,
+      status: data.status.present ? data.status.value : this.status,
+      chapterId: data.chapterId.present ? data.chapterId.value : this.chapterId,
+      pageNumber: data.pageNumber.present
+          ? data.pageNumber.value
+          : this.pageNumber,
+      sentenceIndex: data.sentenceIndex.present
+          ? data.sentenceIndex.value
+          : this.sentenceIndex,
+      positionSec: data.positionSec.present
+          ? data.positionSec.value
+          : this.positionSec,
+      startedAt: data.startedAt.present ? data.startedAt.value : this.startedAt,
+      completedAt: data.completedAt.present
+          ? data.completedAt.value
+          : this.completedAt,
+      updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('UserBookProgressData(')
+          ..write('bookId: $bookId, ')
+          ..write('status: $status, ')
+          ..write('chapterId: $chapterId, ')
+          ..write('pageNumber: $pageNumber, ')
+          ..write('sentenceIndex: $sentenceIndex, ')
+          ..write('positionSec: $positionSec, ')
+          ..write('startedAt: $startedAt, ')
+          ..write('completedAt: $completedAt, ')
+          ..write('updatedAt: $updatedAt')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+    bookId,
+    status,
+    chapterId,
+    pageNumber,
+    sentenceIndex,
+    positionSec,
+    startedAt,
+    completedAt,
+    updatedAt,
+  );
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is UserBookProgressData &&
+          other.bookId == this.bookId &&
+          other.status == this.status &&
+          other.chapterId == this.chapterId &&
+          other.pageNumber == this.pageNumber &&
+          other.sentenceIndex == this.sentenceIndex &&
+          other.positionSec == this.positionSec &&
+          other.startedAt == this.startedAt &&
+          other.completedAt == this.completedAt &&
+          other.updatedAt == this.updatedAt);
+}
+
+class UserBookProgressCompanion extends UpdateCompanion<UserBookProgressData> {
+  final Value<String> bookId;
+  final Value<String> status;
+  final Value<String?> chapterId;
+  final Value<int?> pageNumber;
+  final Value<int?> sentenceIndex;
+  final Value<double?> positionSec;
+  final Value<DateTime?> startedAt;
+  final Value<DateTime?> completedAt;
+  final Value<DateTime> updatedAt;
+  final Value<int> rowid;
+  const UserBookProgressCompanion({
+    this.bookId = const Value.absent(),
+    this.status = const Value.absent(),
+    this.chapterId = const Value.absent(),
+    this.pageNumber = const Value.absent(),
+    this.sentenceIndex = const Value.absent(),
+    this.positionSec = const Value.absent(),
+    this.startedAt = const Value.absent(),
+    this.completedAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  UserBookProgressCompanion.insert({
+    required String bookId,
+    this.status = const Value.absent(),
+    this.chapterId = const Value.absent(),
+    this.pageNumber = const Value.absent(),
+    this.sentenceIndex = const Value.absent(),
+    this.positionSec = const Value.absent(),
+    this.startedAt = const Value.absent(),
+    this.completedAt = const Value.absent(),
+    required DateTime updatedAt,
+    this.rowid = const Value.absent(),
+  }) : bookId = Value(bookId),
+       updatedAt = Value(updatedAt);
+  static Insertable<UserBookProgressData> custom({
+    Expression<String>? bookId,
+    Expression<String>? status,
+    Expression<String>? chapterId,
+    Expression<int>? pageNumber,
+    Expression<int>? sentenceIndex,
+    Expression<double>? positionSec,
+    Expression<DateTime>? startedAt,
+    Expression<DateTime>? completedAt,
+    Expression<DateTime>? updatedAt,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (bookId != null) 'book_id': bookId,
+      if (status != null) 'status': status,
+      if (chapterId != null) 'chapter_id': chapterId,
+      if (pageNumber != null) 'page_number': pageNumber,
+      if (sentenceIndex != null) 'sentence_index': sentenceIndex,
+      if (positionSec != null) 'position_sec': positionSec,
+      if (startedAt != null) 'started_at': startedAt,
+      if (completedAt != null) 'completed_at': completedAt,
+      if (updatedAt != null) 'updated_at': updatedAt,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  UserBookProgressCompanion copyWith({
+    Value<String>? bookId,
+    Value<String>? status,
+    Value<String?>? chapterId,
+    Value<int?>? pageNumber,
+    Value<int?>? sentenceIndex,
+    Value<double?>? positionSec,
+    Value<DateTime?>? startedAt,
+    Value<DateTime?>? completedAt,
+    Value<DateTime>? updatedAt,
+    Value<int>? rowid,
+  }) {
+    return UserBookProgressCompanion(
+      bookId: bookId ?? this.bookId,
+      status: status ?? this.status,
+      chapterId: chapterId ?? this.chapterId,
+      pageNumber: pageNumber ?? this.pageNumber,
+      sentenceIndex: sentenceIndex ?? this.sentenceIndex,
+      positionSec: positionSec ?? this.positionSec,
+      startedAt: startedAt ?? this.startedAt,
+      completedAt: completedAt ?? this.completedAt,
+      updatedAt: updatedAt ?? this.updatedAt,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (bookId.present) {
+      map['book_id'] = Variable<String>(bookId.value);
+    }
+    if (status.present) {
+      map['status'] = Variable<String>(status.value);
+    }
+    if (chapterId.present) {
+      map['chapter_id'] = Variable<String>(chapterId.value);
+    }
+    if (pageNumber.present) {
+      map['page_number'] = Variable<int>(pageNumber.value);
+    }
+    if (sentenceIndex.present) {
+      map['sentence_index'] = Variable<int>(sentenceIndex.value);
+    }
+    if (positionSec.present) {
+      map['position_sec'] = Variable<double>(positionSec.value);
+    }
+    if (startedAt.present) {
+      map['started_at'] = Variable<DateTime>(startedAt.value);
+    }
+    if (completedAt.present) {
+      map['completed_at'] = Variable<DateTime>(completedAt.value);
+    }
+    if (updatedAt.present) {
+      map['updated_at'] = Variable<DateTime>(updatedAt.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('UserBookProgressCompanion(')
+          ..write('bookId: $bookId, ')
+          ..write('status: $status, ')
+          ..write('chapterId: $chapterId, ')
+          ..write('pageNumber: $pageNumber, ')
+          ..write('sentenceIndex: $sentenceIndex, ')
+          ..write('positionSec: $positionSec, ')
+          ..write('startedAt: $startedAt, ')
+          ..write('completedAt: $completedAt, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
 abstract class _$AppDatabase extends GeneratedDatabase {
   _$AppDatabase(QueryExecutor e) : super(e);
   $AppDatabaseManager get managers => $AppDatabaseManager(this);
@@ -7696,6 +8343,9 @@ abstract class _$AppDatabase extends GeneratedDatabase {
   late final $SpeechAttemptsTable speechAttempts = $SpeechAttemptsTable(this);
   late final $SyncStateTable syncState = $SyncStateTable(this);
   late final $SyncOutboxTable syncOutbox = $SyncOutboxTable(this);
+  late final $UserBookProgressTable userBookProgress = $UserBookProgressTable(
+    this,
+  );
   @override
   Iterable<TableInfo<Table, Object?>> get allTables =>
       allSchemaEntities.whereType<TableInfo<Table, Object?>>();
@@ -7716,6 +8366,7 @@ abstract class _$AppDatabase extends GeneratedDatabase {
     speechAttempts,
     syncState,
     syncOutbox,
+    userBookProgress,
   ];
   @override
   StreamQueryUpdateRules get streamUpdateRules => const StreamQueryUpdateRules([
@@ -8691,6 +9342,7 @@ typedef $$NotebookItemsTableCreateCompanionBuilder =
       Value<double?> exampleStart,
       Value<double?> exampleEnd,
       required String source,
+      Value<String?> sourceTitle,
       required DateTime createdAt,
       Value<DateTime?> updatedAt,
     });
@@ -8713,6 +9365,7 @@ typedef $$NotebookItemsTableUpdateCompanionBuilder =
       Value<double?> exampleStart,
       Value<double?> exampleEnd,
       Value<String> source,
+      Value<String?> sourceTitle,
       Value<DateTime> createdAt,
       Value<DateTime?> updatedAt,
     });
@@ -8836,6 +9489,11 @@ class $$NotebookItemsTableFilterComposer
 
   ColumnFilters<String> get source => $composableBuilder(
     column: $table.source,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get sourceTitle => $composableBuilder(
+    column: $table.sourceTitle,
     builder: (column) => ColumnFilters(column),
   );
 
@@ -8969,6 +9627,11 @@ class $$NotebookItemsTableOrderingComposer
     builder: (column) => ColumnOrderings(column),
   );
 
+  ColumnOrderings<String> get sourceTitle => $composableBuilder(
+    column: $table.sourceTitle,
+    builder: (column) => ColumnOrderings(column),
+  );
+
   ColumnOrderings<DateTime> get createdAt => $composableBuilder(
     column: $table.createdAt,
     builder: (column) => ColumnOrderings(column),
@@ -9045,6 +9708,11 @@ class $$NotebookItemsTableAnnotationComposer
 
   GeneratedColumn<String> get source =>
       $composableBuilder(column: $table.source, builder: (column) => column);
+
+  GeneratedColumn<String> get sourceTitle => $composableBuilder(
+    column: $table.sourceTitle,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<DateTime> get createdAt =>
       $composableBuilder(column: $table.createdAt, builder: (column) => column);
@@ -9123,6 +9791,7 @@ class $$NotebookItemsTableTableManager
                 Value<double?> exampleStart = const Value.absent(),
                 Value<double?> exampleEnd = const Value.absent(),
                 Value<String> source = const Value.absent(),
+                Value<String?> sourceTitle = const Value.absent(),
                 Value<DateTime> createdAt = const Value.absent(),
                 Value<DateTime?> updatedAt = const Value.absent(),
               }) => NotebookItemsCompanion(
@@ -9143,6 +9812,7 @@ class $$NotebookItemsTableTableManager
                 exampleStart: exampleStart,
                 exampleEnd: exampleEnd,
                 source: source,
+                sourceTitle: sourceTitle,
                 createdAt: createdAt,
                 updatedAt: updatedAt,
               ),
@@ -9165,6 +9835,7 @@ class $$NotebookItemsTableTableManager
                 Value<double?> exampleStart = const Value.absent(),
                 Value<double?> exampleEnd = const Value.absent(),
                 required String source,
+                Value<String?> sourceTitle = const Value.absent(),
                 required DateTime createdAt,
                 Value<DateTime?> updatedAt = const Value.absent(),
               }) => NotebookItemsCompanion.insert(
@@ -9185,6 +9856,7 @@ class $$NotebookItemsTableTableManager
                 exampleStart: exampleStart,
                 exampleEnd: exampleEnd,
                 source: source,
+                sourceTitle: sourceTitle,
                 createdAt: createdAt,
                 updatedAt: updatedAt,
               ),
@@ -12003,6 +12675,300 @@ typedef $$SyncOutboxTableProcessedTableManager =
       SyncOutboxRow,
       PrefetchHooks Function()
     >;
+typedef $$UserBookProgressTableCreateCompanionBuilder =
+    UserBookProgressCompanion Function({
+      required String bookId,
+      Value<String> status,
+      Value<String?> chapterId,
+      Value<int?> pageNumber,
+      Value<int?> sentenceIndex,
+      Value<double?> positionSec,
+      Value<DateTime?> startedAt,
+      Value<DateTime?> completedAt,
+      required DateTime updatedAt,
+      Value<int> rowid,
+    });
+typedef $$UserBookProgressTableUpdateCompanionBuilder =
+    UserBookProgressCompanion Function({
+      Value<String> bookId,
+      Value<String> status,
+      Value<String?> chapterId,
+      Value<int?> pageNumber,
+      Value<int?> sentenceIndex,
+      Value<double?> positionSec,
+      Value<DateTime?> startedAt,
+      Value<DateTime?> completedAt,
+      Value<DateTime> updatedAt,
+      Value<int> rowid,
+    });
+
+class $$UserBookProgressTableFilterComposer
+    extends Composer<_$AppDatabase, $UserBookProgressTable> {
+  $$UserBookProgressTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get bookId => $composableBuilder(
+    column: $table.bookId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get status => $composableBuilder(
+    column: $table.status,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get chapterId => $composableBuilder(
+    column: $table.chapterId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get pageNumber => $composableBuilder(
+    column: $table.pageNumber,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get sentenceIndex => $composableBuilder(
+    column: $table.sentenceIndex,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<double> get positionSec => $composableBuilder(
+    column: $table.positionSec,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get startedAt => $composableBuilder(
+    column: $table.startedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get completedAt => $composableBuilder(
+    column: $table.completedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$UserBookProgressTableOrderingComposer
+    extends Composer<_$AppDatabase, $UserBookProgressTable> {
+  $$UserBookProgressTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get bookId => $composableBuilder(
+    column: $table.bookId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get status => $composableBuilder(
+    column: $table.status,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get chapterId => $composableBuilder(
+    column: $table.chapterId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get pageNumber => $composableBuilder(
+    column: $table.pageNumber,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get sentenceIndex => $composableBuilder(
+    column: $table.sentenceIndex,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<double> get positionSec => $composableBuilder(
+    column: $table.positionSec,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get startedAt => $composableBuilder(
+    column: $table.startedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get completedAt => $composableBuilder(
+    column: $table.completedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$UserBookProgressTableAnnotationComposer
+    extends Composer<_$AppDatabase, $UserBookProgressTable> {
+  $$UserBookProgressTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get bookId =>
+      $composableBuilder(column: $table.bookId, builder: (column) => column);
+
+  GeneratedColumn<String> get status =>
+      $composableBuilder(column: $table.status, builder: (column) => column);
+
+  GeneratedColumn<String> get chapterId =>
+      $composableBuilder(column: $table.chapterId, builder: (column) => column);
+
+  GeneratedColumn<int> get pageNumber => $composableBuilder(
+    column: $table.pageNumber,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get sentenceIndex => $composableBuilder(
+    column: $table.sentenceIndex,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<double> get positionSec => $composableBuilder(
+    column: $table.positionSec,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<DateTime> get startedAt =>
+      $composableBuilder(column: $table.startedAt, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get completedAt => $composableBuilder(
+    column: $table.completedAt,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<DateTime> get updatedAt =>
+      $composableBuilder(column: $table.updatedAt, builder: (column) => column);
+}
+
+class $$UserBookProgressTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $UserBookProgressTable,
+          UserBookProgressData,
+          $$UserBookProgressTableFilterComposer,
+          $$UserBookProgressTableOrderingComposer,
+          $$UserBookProgressTableAnnotationComposer,
+          $$UserBookProgressTableCreateCompanionBuilder,
+          $$UserBookProgressTableUpdateCompanionBuilder,
+          (
+            UserBookProgressData,
+            BaseReferences<
+              _$AppDatabase,
+              $UserBookProgressTable,
+              UserBookProgressData
+            >,
+          ),
+          UserBookProgressData,
+          PrefetchHooks Function()
+        > {
+  $$UserBookProgressTableTableManager(
+    _$AppDatabase db,
+    $UserBookProgressTable table,
+  ) : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$UserBookProgressTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$UserBookProgressTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$UserBookProgressTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<String> bookId = const Value.absent(),
+                Value<String> status = const Value.absent(),
+                Value<String?> chapterId = const Value.absent(),
+                Value<int?> pageNumber = const Value.absent(),
+                Value<int?> sentenceIndex = const Value.absent(),
+                Value<double?> positionSec = const Value.absent(),
+                Value<DateTime?> startedAt = const Value.absent(),
+                Value<DateTime?> completedAt = const Value.absent(),
+                Value<DateTime> updatedAt = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => UserBookProgressCompanion(
+                bookId: bookId,
+                status: status,
+                chapterId: chapterId,
+                pageNumber: pageNumber,
+                sentenceIndex: sentenceIndex,
+                positionSec: positionSec,
+                startedAt: startedAt,
+                completedAt: completedAt,
+                updatedAt: updatedAt,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                required String bookId,
+                Value<String> status = const Value.absent(),
+                Value<String?> chapterId = const Value.absent(),
+                Value<int?> pageNumber = const Value.absent(),
+                Value<int?> sentenceIndex = const Value.absent(),
+                Value<double?> positionSec = const Value.absent(),
+                Value<DateTime?> startedAt = const Value.absent(),
+                Value<DateTime?> completedAt = const Value.absent(),
+                required DateTime updatedAt,
+                Value<int> rowid = const Value.absent(),
+              }) => UserBookProgressCompanion.insert(
+                bookId: bookId,
+                status: status,
+                chapterId: chapterId,
+                pageNumber: pageNumber,
+                sentenceIndex: sentenceIndex,
+                positionSec: positionSec,
+                startedAt: startedAt,
+                completedAt: completedAt,
+                updatedAt: updatedAt,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$UserBookProgressTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $UserBookProgressTable,
+      UserBookProgressData,
+      $$UserBookProgressTableFilterComposer,
+      $$UserBookProgressTableOrderingComposer,
+      $$UserBookProgressTableAnnotationComposer,
+      $$UserBookProgressTableCreateCompanionBuilder,
+      $$UserBookProgressTableUpdateCompanionBuilder,
+      (
+        UserBookProgressData,
+        BaseReferences<
+          _$AppDatabase,
+          $UserBookProgressTable,
+          UserBookProgressData
+        >,
+      ),
+      UserBookProgressData,
+      PrefetchHooks Function()
+    >;
 
 class $AppDatabaseManager {
   final _$AppDatabase _db;
@@ -12037,4 +13003,6 @@ class $AppDatabaseManager {
       $$SyncStateTableTableManager(_db, _db.syncState);
   $$SyncOutboxTableTableManager get syncOutbox =>
       $$SyncOutboxTableTableManager(_db, _db.syncOutbox);
+  $$UserBookProgressTableTableManager get userBookProgress =>
+      $$UserBookProgressTableTableManager(_db, _db.userBookProgress);
 }

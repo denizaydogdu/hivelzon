@@ -19,6 +19,12 @@ class SavedPhrase {
     required this.savedAt,
     this.tr,
     this.context,
+    this.contextTr,
+    this.source = NotebookSource.userSaved,
+    this.sourceTitle,
+    this.imagePath,
+    this.audio,
+    this.contextAudio,
   });
 
   factory SavedPhrase.fromJson(Map<String, dynamic> j) => SavedPhrase(
@@ -40,6 +46,21 @@ class SavedPhrase {
   /// Kelime ya da kalıbın geçtiği cümle.
   final String? context;
 
+  /// Cümlenin Türkçesi (kitaptan eklenende, H-067).
+  final String? contextTr;
+
+  /// Nereden eklendi (varsayılan: anlam panelinde "Deftere ekle").
+  final NotebookSource source;
+
+  /// Kitabın başlığı (H-067: `Kitap: <başlık>, s. N`).
+  final String? sourceTitle;
+
+  /// Kart görseli ve sesi (kitapta eklenirken bilinir; bölümde sonradan
+  /// bölüm verisinden doldurulur).
+  final String? imagePath;
+  final MediaClip? audio;
+  final MediaClip? contextAudio;
+
   /// UTC.
   final DateTime savedAt;
 
@@ -52,10 +73,38 @@ class SavedPhrase {
     textEn: en,
     textTr: tr,
     exampleEn: context,
+    exampleTr: contextTr,
     contentId: contentId,
     cueId: sourceId,
-    source: NotebookSource.userSaved,
+    source: source,
+    sourceTitle: sourceTitle,
+    imagePath: imagePath,
+    audio: audio,
+    exampleAudio: contextAudio,
     createdAt: savedAt.toUtc(),
+  );
+
+  SavedPhrase copyWith({
+    String? contextTr,
+    NotebookSource? source,
+    String? sourceTitle,
+    String? imagePath,
+    MediaClip? audio,
+    MediaClip? contextAudio,
+  }) => SavedPhrase(
+    contentId: contentId,
+    sourceId: sourceId,
+    kind: kind,
+    en: en,
+    tr: tr,
+    context: context,
+    savedAt: savedAt,
+    contextTr: contextTr ?? this.contextTr,
+    source: source ?? this.source,
+    sourceTitle: sourceTitle ?? this.sourceTitle,
+    imagePath: imagePath ?? this.imagePath,
+    audio: audio ?? this.audio,
+    contextAudio: contextAudio ?? this.contextAudio,
   );
 
   static NotebookKind toNotebookKind(SavedKind k) => switch (k) {
@@ -122,6 +171,12 @@ class DriftNotebookRepository implements NotebookRepository {
         en: e.item.textEn,
         tr: e.item.textTr,
         context: e.item.exampleEn,
+        contextTr: e.item.exampleTr,
+        source: e.item.source,
+        sourceTitle: e.item.sourceTitle,
+        imagePath: e.item.imagePath,
+        audio: e.item.audio,
+        contextAudio: e.item.exampleAudio,
         savedAt: e.item.createdAt ?? DateTime.now().toUtc(),
       ),
   ];

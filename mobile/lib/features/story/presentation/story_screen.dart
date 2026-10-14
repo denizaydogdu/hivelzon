@@ -12,6 +12,7 @@ import '../../../shared/content/content_providers.dart';
 import '../../../shared/widgets/page_header.dart';
 import '../../../shared/ui/ui.dart';
 import '../../../shared/widgets/skeleton.dart';
+import '../../library/presentation/library_view.dart';
 import '../../player/application/autoplay_driver.dart';
 import '../../player/data/progress_repository.dart';
 import '../application/story_providers.dart';
@@ -41,6 +42,9 @@ class StoryScreen extends ConsumerStatefulWidget {
 class _StoryScreenState extends ConsumerState<StoryScreen> {
   bool _autoplayStarted = false;
 
+  /// "Macera" (harita) ya da "Kitaplık" (H-067).
+  StorySection _section = StorySection.adventure;
+
   void _openSheet(MapEpisode e) => EpisodeSheet.show(
     context,
     e,
@@ -54,38 +58,84 @@ class _StoryScreenState extends ConsumerState<StoryScreen> {
       _autoplayStarted = true;
       unawaited(_runAutoplay(map.requireValue));
     }
+    final header = _StoryHeader(
+      section: _section,
+      onChanged: (s) => setState(() => _section = s),
+    );
+    if (_section == StorySection.library) {
+      return Scaffold(
+        body: SafeArea(bottom: false, child: LibraryView(header: header)),
+      );
+    }
+    final top = Padding(
+      padding: const EdgeInsets.fromLTRB(
+        AppSpace.page,
+        AppSpace.s8,
+        AppSpace.page,
+        0,
+      ),
+      child: header,
+    );
     return Scaffold(
       body: SafeArea(
         bottom: false,
-        child: switch (map) {
-          AsyncData(:final value) when value.episodes.isEmpty => const _Message(
-            icon: Icons.auto_stories_outlined,
-            title: StoryTexts.noEpisodesTitle,
-            body: StoryTexts.noEpisodesBody,
-          ),
-          AsyncData(:final value) => _MapBody(
-            map: value,
-            onNodeTap: _openSheet,
-          ),
-          AsyncError() => _Message(
-            illustration: StoryScreen.errorImage,
-            title: CommonTexts.serverDownTitle,
-            body: kDebugMode
-                ? '${StoryTexts.mapError} ${CommonTexts.serverDownBody}\n\n'
-                      '${CommonTexts.devServerHint}'
-                : '${StoryTexts.mapError} ${CommonTexts.serverDownBody}',
-            action: FilledButton.icon(
-              key: const ValueKey('story-retry'),
-              onPressed: () => retrySeasonMap(ref),
-              icon: const Icon(Icons.refresh_rounded),
-              label: const Text(CommonTexts.retry),
-            ),
-          ),
-          // H-054: spinner yerine haritanın iskeleti.
-          _ => const MapSkeleton(label: StoryTexts.mapLoading),
-        },
+        child: LayoutBuilder(
+          builder: (context, c) {
+            // Kısa ekranda (ya da büyük yazıda) başlık ve bölüm seçici
+            // haritayla birlikte kayar; harita yine ekran boyu yer alır.
+            if (c.maxHeight >= _scrollBelow) {
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  top,
+                  Expanded(child: _adventure(map)),
+                ],
+              );
+            }
+            return SingleChildScrollView(
+              key: const ValueKey('story-scroll'),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  top,
+                  SizedBox(height: c.maxHeight, child: _adventure(map)),
+                ],
+              ),
+            );
+          },
+        ),
       ),
     );
+  }
+
+  /// Bu yükseklikten kısa ekranda Hikâye sayfası kayar.
+  static const double _scrollBelow = 600;
+
+  Widget _adventure(AsyncValue<SeasonMap> map) {
+    return switch (map) {
+      AsyncData(:final value) when value.episodes.isEmpty => const _Message(
+        icon: Icons.auto_stories_outlined,
+        title: StoryTexts.noEpisodesTitle,
+        body: StoryTexts.noEpisodesBody,
+      ),
+      AsyncData(:final value) => _MapBody(map: value, onNodeTap: _openSheet),
+      AsyncError() => _Message(
+        illustration: StoryScreen.errorImage,
+        title: CommonTexts.serverDownTitle,
+        body: kDebugMode
+            ? '${StoryTexts.mapError} ${CommonTexts.serverDownBody}\n\n'
+                  '${CommonTexts.devServerHint}'
+            : '${StoryTexts.mapError} ${CommonTexts.serverDownBody}',
+        action: FilledButton.icon(
+          key: const ValueKey('story-retry'),
+          onPressed: () => retrySeasonMap(ref),
+          icon: const Icon(Icons.refresh_rounded),
+          label: const Text(CommonTexts.retry),
+        ),
+      ),
+      // H-054: spinner yerine haritanın iskeleti.
+      _ => const MapSkeleton(label: StoryTexts.mapLoading),
+    };
   }
 
   void _logMap(String tag, SeasonMap m) {
@@ -191,15 +241,13 @@ class _MapBody extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.fromLTRB(
         AppSpace.page,
-        AppSpace.s8,
+        AppSpace.s12,
         AppSpace.page,
         AppSpace.s8 + MediaQuery.paddingOf(context).bottom,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          const PageHeader(title: StoryTexts.title, subtitle: StoryTexts.intro),
-          const SizedBox(height: AppSpace.s12),
           FadeSlideIn(child: _MapHeader(map: map)),
           const SizedBox(height: AppSpace.s12),
           Expanded(
@@ -223,6 +271,57 @@ class _MapBody extends StatelessWidget {
           ],
         ],
       ),
+    );
+  }
+}
+
+enum StorySection { adventure, library }
+
+/// Sayfa başlığı ve "Macera · Kitaplık" seçici (H-067; sekme sayısı
+/// değişmez, K-30).
+class _StoryHeader extends StatelessWidget {
+  const _StoryHeader({required this.section, required this.onChanged});
+
+  final StorySection section;
+  final ValueChanged<StorySection> onChanged;
+
+  @override
+  Widget build(BuildContext context) {
+    Widget label(String text) =>
+        Text(text, maxLines: 1, overflow: TextOverflow.ellipsis);
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        PageHeader(
+          title: StoryTexts.title,
+          subtitle: section == StorySection.adventure
+              ? StoryTexts.intro
+              : LibraryTexts.intro,
+        ),
+        const SizedBox(height: AppSpace.s12),
+        Semantics(
+          container: true,
+          label: LibraryTexts.segmentsLabel,
+          child: SegmentedButton<StorySection>(
+            key: const ValueKey('story-sections'),
+            showSelectedIcon: false,
+            segments: [
+              ButtonSegment(
+                value: StorySection.adventure,
+                icon: const Icon(Icons.map_outlined),
+                label: label(LibraryTexts.segmentAdventure),
+              ),
+              ButtonSegment(
+                value: StorySection.library,
+                icon: const Icon(Icons.auto_stories_outlined),
+                label: label(LibraryTexts.segmentLibrary),
+              ),
+            ],
+            selected: {section},
+            onSelectionChanged: (s) => onChanged(s.first),
+          ),
+        ),
+      ],
     );
   }
 }

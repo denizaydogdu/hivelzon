@@ -126,6 +126,34 @@ Düzen: selam ve tek cümle, ardından **Hikâyen** (birincil, sarı düğme), a
 
 Sonraki adım: oynatıcı metinleri de `tr_strings.dart` dosyasına taşınabilir. Bu iş, bu kılavuzla davranış değiştirmeden yapılır.
 
+### 4.6 Kitaplık (H-067)
+Hikâye sekmesinin üstünde **Macera · Kitaplık** seçici (sekme sayısı değişmez, K-30). Açıklama satırı seçime göre değişir.
+
+| Yer | Metin | Not |
+|---|---|---|
+| Seçici | **Macera** (harita ikonu) · **Kitaplık** (kitap ikonu) | Ekran okuyucu grubu: "Hikâye bölümü". |
+| Açıklama (Kitaplık) | Seviyene göre kısa, resimli kitaplar. İstersen dinle, istersen kendin oku. | Tek cümle. |
+| Dinleme kartı | "Seviyeni seç; okumadığın bir kitabı senin için sesli açalım." + **Bana bir kitap oku** | Sarı ana düğme. |
+| Seviye seçici | **Hangi seviyede olsun?** · "Önerilen seviye: A2" · seviye çipleri · **Kitabı aç** | Önerilen seviye yerleştirme sonucundan, yoksa A1. |
+| Okunmamış kalmadı | **Bu seviyede açmadığın kitap kalmadı** · "Başka bir seviye seçebilir ya da sevdiğin bir kitabı yeniden dinleyebilirsin." | Suçlamasız. |
+| Raflar | **Okumaya devam et** · **Senin seviyen · A2** · **A1 kitapları** · **Okuduklarım** | Yarım kitapta halka içinde "%33"; biten kitapta onay işareti. |
+| Kitap kartı | Kapak, seviye rozeti, başlık, "Gizem · ~7 dk" | Türler: Gizem · Macera · Mizah · Bilimkurgu · Günlük hayat. Ekran okuyucu: "The Blue Door, A1 seviyesi, Gizem, yaklaşık 7 dakika, yüzde 33 okundu". |
+| Yükleniyor / boş / hata | "Kitaplık hazırlanıyor…" (iskelet) · **Kitaplar hazırlanıyor** "İlk kitaplar hazır olunca burada görünür. O zamana kadar maceraya devam edebilirsin." · **Bağlantı kurulamadı** "Kitaplar yüklenemedi. …" + **Tekrar dene** | |
+
+### 4.7 Kitap okuyucu (H-067)
+| Yer | Metin | Not |
+|---|---|---|
+| Üst çubuk | Kitap adı · "Bölüm 1 · A Small Box"; düğmeler "Kitabı kapat", "Bölümler", "Okuma ayarları" | Bölüm adı kitabın kendi (İngilizce) adıdır. |
+| Biçim | **Sesli** · **Sessiz** (grup: "Okuma biçimi") · "s. 2 / 12" (ekran okuyucu: "12 sayfadan 2. sayfa") | Ses açılamazsa: "Bu kitabın sesi şu an açılamıyor. Sessiz okuyabilirsin." |
+| Ses denetimleri | "Dinle" / "Duraklat", "10 saniye geri", "1x / 1,25x / 0,75x" (ekran okuyucu: "Hız normal. Değiştirmek için dokun."), "Uyku zamanlayıcısı" | |
+| Uyku zamanlayıcısı | Kapalı · Bölüm sonunda · 10 / 20 / 30 dakika sonra; seçince "Uyku zamanlayıcısı: 20 dakika sonra"; dolunca "Uyku zamanlayıcısı sesi durdurdu. İyi uykular!" | **Geri sayım gösterilmez** (K-32). |
+| Sessiz mod | "Önceki sayfa", "Sonraki sayfa", son sayfada **Kitabı bitir** | |
+| Ayarlar | **Yazı boyutu**: Küçük · Orta · Büyük; **Okunan kelimeyi de vurgula** "Kapalıyken yalnız okunan cümle vurgulanır." | Yalnız bu cihazda. |
+| Uzun basma | Sesli modda kelimeye uzun basınca **Deftere eklendi** (ikinci kez: ""box" zaten defterinde.") | Sessiz modda uzun basma o cümleyi seslendirir. |
+| Ekran okuyucu | Cümle düğmesi ipucu: "Anlamını göstermek için dokun" | |
+| Kitap sonu | **Kitabı bitirdin** · ""The Blue Door" bitti. Dinlediğin ve okuduğun her sayfa kulağını güçlendirir." · **Bu kitapta kaydettiklerin** (yoksa: "Bu kitaptan defterine ifade eklemedin. Bir dahakine bilmediğin kelimeye dokunup "Deftere ekle" diyebilirsin.") · "Bu ifadeler Kelime tekrarında karşına çıkar." · **Sıradaki kitabı aç** (aynı seviyede açılmamış kitap varsa) · **Kitaplığa dön** · **Baştan oku** | Puan, lig, geri sayım yok (K-32). |
+| Hata | **Bağlantı kurulamadı** · "Kitap açılamadı. …" · **Tekrar dene** | |
+
 ## 5. Defter, İpucu panosu ve kelime tekrarı
 
 ### 5.1 Defter
@@ -146,7 +174,8 @@ Sonraki adım: oynatıcı metinleri de `tr_strings.dart` dosyasına taşınabili
 | Liste başlığı | Topladığım ifadeler | Topladığın ifadeler (5) | "Sen" dili; kaç ifade olduğu yazar. |
 | Arama | İfade ya da Türkçesi ara | İngilizce ya da Türkçe ara | Neyle arandığı açık. Arama `lowerTr` ile yapılır ("İ" doğru eşleşir). |
 | Boş | Defterin henüz boş. … "Deftere ekle" de diyebilirsin. | Başlık **Defterin henüz boş** + "Bir bölümü bitirince hedef ifadeler buraya gelir. Altyazıda bir kelimeye dokunup "Deftere ekle" de diyebilirsin." (illüstrasyonlu; boşken arama alanı yok) | H-061: `EmptyState` başlık + açıklama. |
-| Kaynak satırı | — | Konu setinden gelen ifadede satırın altında "Konu setinden" | H-061: tek satır biçimi. Bölümden gelenlerde kaynak soldaki "B1" etiketidir. Kitaplık (H-067) buraya "Kitap: başlık, s. N" ekleyecek. |
+| Kaynak satırı | — | Satırın altında küçük turuncu satır: konu setinden gelende **"Konu setinden"**; kullanıcının bölümde kendi eklediğinde (altyazı, anlam paneli) **"Bölüm 3'ten ekledin"** (`ablativeNumber`: 1'den, 3'ten, 6'dan, 10'dan); kitaptan eklenende **"Kitap: The Blue Door, s. 4"** (başlık yoksa "Kitaptan"). Bölümün kendi eklediklerinde (hedef ifade, bakılan kelime) satır yok; kaynak soldaki "B1" etiketidir. | H-061 tek satır biçimi; H-067 (kullanıcı kararı 2026-10-14). Kitaptan gelenin sol rozeti kitap ikonudur. |
+| Kaynağa göre süz | — | Kitaptan eklenen ifade varsa arama alanının altında çipler: **Hepsi · Hikâyeden · <kitap başlığı>** | H-067: "Defter'de kitaba göre süzme". Ekran okuyucu grubu "Kaynağa göre süz" diye okur. |
 | Eşleşme yok | Eşleşen ifade yok. | Aradığın ifade defterinde yok. | Sade. |
 | Hata | Defter açılamadı. Uygulamayı yeniden başlatmayı dene. | Defter açılamadı. Uygulamayı yeniden başlatıp dene. | Kısa. |
 | Çıkarıldı | "…" defterden çıkarıldı. | "…" defterinden çıkarıldı. | "Sen" dili. |
@@ -263,6 +292,8 @@ Kod: `HiTexts` (`mobile/lib/l10n/tr_strings.dart`). Hi kendini yapay zekâ asist
 | Gizlilik ekranı (tasarım H-059) | Hi + "Hi önerilerini bu cihazdaki kayıtlara bakarak seçer. Reklam için kullanılmaz." · bilgi kartı: hesapsız **Yalnızca bu telefonda** · "Bu bilgiler telefonundan dışarı gönderilmez." / hesapla **Hesabına da eşitlenir** · "Hesabın açık olduğu için bu kayıtlar yedek olarak hesabına da eşitlenir. Silersen hesabına bağlı öteki cihazlardan da silinir." · **SAYILARLA**: 12 kez anlamına baktın · 4 kez yeniden denedin · 7 kez söyledin · **Bu cihazda saklananlar**: Adın · Hikâye ilerlemen · Defterin · Hi'nin öğrenme kayıtları ("6 kez bir kelimenin anlamına baktın; 4 kez bir seçimi yeniden denedin.") · Söyle alıştırmaları · Yan görevler · **Konulara göre yeniden denemeler**: çipler "Fiil yapısı · 3" (yoksa "Kayıt yok.") · **Son 7 gün**: yeni ifade · ifade tekrar · bölüm bitti (+ "En çok üzerinde çalıştığın konu: …") · **Hi'nin kayıtlarını sil** (kırmızı kenarlı) | "Sunucu" kelimesi kaldırıldı (§1.1). Onay: "Hi'nin kayıtları silinsin mi?" · **Vazgeç** / **Sil** · sonra "Hi'nin kayıtları silindi. İlerlemen ve defterin yerinde." Silinen: öğrenme olayları, yan görev durumları, açılan notlar. Kalan: ilerleme, defter, tekrar geçmişi, ad, görülen konu kartları. |
 
 Testler: `test/features/hi/` (öneri öncelik tablosu ve gerekçeler, metin denetim listesi, arama, haftalık özet, Drift kayıtları ve silme kapsamı, balon görünürlüğü, panel, konu kartı).
+
+Kitaplık önerileri (H-067): yarım bölüm, tekrar (≥ 5) ve Hi'nin notundan sonra **"Kitaba devam: The Blue Door"** · ""The Blue Door" kitabının %40 kadarını okudun; kaldığın cümleden devam edersin. …" · **Kitaba devam et**; bütün öteki önerilerden sonra (dinlenmeden önce) **"Bir kitap dinle: …"** · "Bugünkü işlerin bitti. İstersen A1 seviyesinde kısa bir kitabı dinleyerek kulağını çalıştır. …" · **Dinlemeye başla**.
 
 ## 11. "Söyle" alıştırmaları (H-055)
 

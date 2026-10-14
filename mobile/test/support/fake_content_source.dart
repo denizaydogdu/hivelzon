@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:hivelzon/features/hi/domain/hi_content.dart';
+import 'package:hivelzon/features/library/domain/book.dart';
 import 'package:hivelzon/features/player/domain/episode.dart';
 import 'package:hivelzon/features/player/domain/subtitles.dart';
 import 'package:hivelzon/features/topic_sets/domain/topic_set.dart';
@@ -121,7 +122,70 @@ class FakeContentSource implements ContentSource {
   @override
   Uri seasonMediaUri(int season, String path) =>
       Uri.parse('http://test.invalid/_season/S$season/$path');
+
+  /// Kitaplık (H-067): sunucudaki kitaplar. Varsayılan boş (eski testler
+  /// kitaplığı görmez); [testBookSummaries] ile doldurulur.
+  List<BookSummary> books = const [];
+  bool booksFail = false;
+  int bookListCalls = 0;
+
+  @override
+  Future<List<BookSummary>> listBooks() async {
+    bookListCalls++;
+    if (fail || booksFail) throw ContentUnavailableException('kapalı');
+    return books;
+  }
+
+  /// Her kimlik için deneme kitabı A1-K99'un kopyası (kimlik, başlık ve
+  /// seviye değişir).
+  @override
+  Future<Book> loadBook(String bookId) async {
+    if (fail || booksFail) throw ContentUnavailableException('kapalı');
+    return loadTestBook(id: bookId);
+  }
+
+  @override
+  Uri bookMediaUri(String bookId, String path) =>
+      Uri.parse('http://test.invalid/books/$bookId/$path');
 }
+
+/// Deneme kitabı (H-066 `A1-K99-the-test-box` dışa aktarımı; testte ses ve
+/// görsel varmış gibi bölüm süreleri ve görsel yolları eklendi).
+Book loadTestBook({
+  String id = 'A1-K99',
+  String? title,
+  String? level,
+  double? chapterDuration,
+}) {
+  final book = (jsonDecode(fixtureText('books/A1-K99/book.json')) as Map)
+      .cast<String, dynamic>();
+  final pages = (jsonDecode(fixtureText('books/A1-K99/pages.json')) as Map)
+      .cast<String, dynamic>();
+  book['id'] = id;
+  if (title != null) book['title'] = title;
+  if (level != null) book['level'] = level;
+  if (id != 'A1-K99' && title == null) book['title'] = 'The Test Box $id';
+  if (chapterDuration != null) {
+    for (final c in pages['chapters'] as List) {
+      (c as Map)['duration'] = chapterDuration;
+    }
+  }
+  return Book.fromJson(book, pages);
+}
+
+/// Kitap listesi: [ids] kimlikli deneme kitapları.
+List<BookSummary> testBookSummaries(List<String> ids) => [
+  for (final id in ids)
+    BookSummary(
+      id: id,
+      title: id == 'A1-K99' ? 'The Test Box' : 'The Test Box $id',
+      level: BookSummary.levelOf(id),
+      genre: BookGenre.values[ids.indexOf(id) % BookGenre.values.length],
+      estimatedMinutes: 7,
+      pageCount: 3,
+      chapterCount: 2,
+    ),
+];
 
 /// Sezon 1 kataloğu: 12 bölüm (başlıklar kanondan), paketi olanlar `available`.
 List<SeasonEpisode> catalogue(List<String> built) => [
