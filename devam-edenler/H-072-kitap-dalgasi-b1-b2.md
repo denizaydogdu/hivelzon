@@ -1,6 +1,6 @@
 # H-072: Kitap dalgası 2: B1 + B2 (10 kitap)
 
-- **Durum:** Yapılacak
+- **Durum:** Devam ediyor (5 B1 kitabının metni + taslak çevirisi main'de, lint 0 hata; kullanıcı onayı, 28 görsel (~14 kr, maliyet onayı) ve ses bekleniyor; B2 metinleri sırada)
 - **Tür:** İçerik üretimi
 - **Faz:** Kitaplık K7 (`docs/KITAPLIK.md` §9)
 - **Bağımlılık:** H-071

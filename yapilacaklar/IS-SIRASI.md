@@ -143,7 +143,7 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 | K4 | H-069 | Pilot kitaplar A1 + A2 (≈ 15 kr görsel, maliyet onayı önce) | Yüksek | H-065, H-066, H-067 | ✅ |
 | K5 | H-070 | Kitaplık arka ucu (BOOK, C2, onay) | Orta | H-066 | ⏳ |
 | K6 | H-071 | Kitap dalgası 1: A1 + A2 (kalan 8) | Orta | H-069 | 🔄 |
-| K7 | H-072 | Kitap dalgası 2: B1 + B2 (10) | Orta | H-071 | ⏳ |
+| K7 | H-072 | Kitap dalgası 2: B1 + B2 (10) | Orta | H-071 | 🔄 |
 | K8 | H-073 | Kitap dalgası 3: C1 + C2 (10) | Orta | H-072 | ⏳ |
 
 **Sıra:** H-065 hemen (belge + katalog) → H-066 ve H-067, tasarım fazlarıyla paralel, ayrı dallarda → H-069 pilot → resim yoğunluğu ve ses planı kararı → H-068, H-070 → H-071 → H-072 → H-073.
@@ -408,3 +408,4 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
   - H-081: B1 14 + B2 12 ders yazıldı, Türkçe sesleri üretildi; toplam 57 ders lint 0 hata. Kalan: C1–C2 (14 ders, H-082). İngilizce örnek sesleri toplam ~20.300 karakter bekliyor.
   - H-040 Keşfet `main`'e birleştirildi: 17 klip (B1–B4, ücretsiz kesim, -16 LUFS), quiz ve mola kartları, günlük 20 dk sınırı (13–17 ve 13 altı), sonsuz kaydırma yok, bellek ölçümü sızıntısız (RSS tepe +60 MB, en fazla 2 canlı oynatıcı). Onay bekliyor.
   - H-082: C1 8 + C2 6 ders yazıldı ve Türkçe sesleri üretildi. **71 konunun tamamı yazıldı, Türkçe sesli (toplam ~69.000 karakter, ücretsiz kampanya), lint 0 hata.** İngilizce örnek sesleri toplam ~27.800 karakter bekliyor. Hi balonu katman olarak yüzer (H-064 notu).
+  - H-072: 5 B1 kitabının metni (2.974–3.265 kelime, kapsama %98,7–99,4, B1 yapıları doğal biçimde) main'de; onay ve görsel (28 görsel ≈ 14 kr) bekleniyor. Dilbilgisi listesinde ilerleme yüzdesi ve İngilizce örnekler için cihaz sesi eklendi (main'de, 871 test).
