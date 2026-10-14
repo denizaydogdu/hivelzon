@@ -1,0 +1,406 @@
+{
+ "schemaVersion": 1,
+ "lessonId": "G-A2-03-was-were",
+ "voices": {
+  "tr": {
+   "model": "alania-v2",
+   "voice": "alania2-f1",
+   "timing": "duyu-1",
+   "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+  },
+  "en": {
+   "model": "eleven_v3",
+   "voice": "EXAVITQu4vr4xnSDxMaL",
+   "speed": 0.95
+  }
+ },
+ "cards": [
+  {
+   "card": "c01",
+   "type": "hook",
+   "segments": [
+    {
+     "id": "c01-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Sisli dağ hikâyesi güzel bir sabahla başlıyor. Gökyüzü nasılmış, dinle. Bu cümlede geçmişi gösteren küçük bir kelime var.",
+     "textSha256": "200596b5206acfdb71ec435297d2b1f639ace24524e38d5acf14a8798b5801ca",
+     "chars": 121,
+     "audio": "tr/c01-tr.mp3",
+     "align": "tr/c01-tr.align.json",
+     "present": true,
+     "duration": 7.68,
+     "quality": {
+      "words": 18,
+      "exact": 17,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c01-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "In the morning, the sky was blue and clear.",
+     "textSha256": "f62aa5244fb400abaf11ddb7a7e4e65e2ef4ef60115878970b6fa27824f1cb68",
+     "chars": 43,
+     "audio": "en/c01-ex1.mp3",
+     "align": "en/c01-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c02",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c02-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Olmak fiilinin geçmiş hâlinin iki biçimi var. Ben, o ve tek bir şey için bir biçim gelir. Sen, biz, siz ve onlar için öbür biçim gelir.",
+     "textSha256": "3a7078f97f242d769388fca2bccd5e6924243307218562bfb8f57d86a88fe0da",
+     "chars": 135,
+     "audio": "tr/c02-tr.mp3",
+     "align": "tr/c02-tr.align.json",
+     "present": true,
+     "duration": 10.4,
+     "quality": {
+      "words": 26,
+      "exact": 25,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c02-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I was at home.",
+     "textSha256": "5ed3b02fd5b9d3c977f9e1d4c23e4d46a4ba06173011ac37817aed9e2365c2d6",
+     "chars": 14,
+     "audio": "en/c02-ex1.mp3",
+     "align": "en/c02-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c02-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "She was tired.",
+     "textSha256": "423bb55c323a4a619a8d1d8edea8d17bbad86170acb9f82974436557cf219117",
+     "chars": 14,
+     "audio": "en/c02-ex2.mp3",
+     "align": "en/c02-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c02-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "We were at the beach.",
+     "textSha256": "6be88a3d2e4cd3a791f5c8f8decd42ddcf0035ec44b6be04f034aff701cbfae3",
+     "chars": 21,
+     "audio": "en/c02-ex3.mp3",
+     "align": "en/c02-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c03",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c03-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Olumsuz cümlede bu kelimeye değil anlamı eklenir ve çoğu zaman kısalır. Soru cümlesinde bu kelime kişinin önüne geçer. Şimdiki hâlde de böyleydi.",
+     "textSha256": "8e1ce71a1b98debbcd4c1fa5ebdb95a5ad1220496548b9ea996e4971891e39ab",
+     "chars": 145,
+     "audio": "tr/c03-tr.mp3",
+     "align": "tr/c03-tr.align.json",
+     "present": true,
+     "duration": 10.43,
+     "quality": {
+      "words": 22,
+      "exact": 21,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "It wasn't cold.",
+     "textSha256": "c7b9add5096f57733f4b37ad435f148f60d3c18dcae212265f6ca358cef0d55b",
+     "chars": 15,
+     "audio": "en/c03-ex1.mp3",
+     "align": "en/c03-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c03-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "Were you tired?",
+     "textSha256": "dcba0bcb1de8fdb2ea1889f1eb6c47f2b4bfa714bdfbb19743c3abb9b4f8495b",
+     "chars": 15,
+     "audio": "en/c03-ex2.mp3",
+     "align": "en/c03-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c04",
+   "type": "examples",
+   "segments": [
+    {
+     "id": "c04-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I was at home yesterday.",
+     "textSha256": "cafa15f3d1398426e0259a6ce5e4da58524179324396175bbe8708f06551ed6f",
+     "chars": 24,
+     "audio": "en/c04-ex1.mp3",
+     "align": "en/c04-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "The shop was closed on Sunday.",
+     "textSha256": "22b94e0557da73b0a1748bd8367fc3f8c2572c7e166fc9a28667f78560815c20",
+     "chars": 30,
+     "audio": "en/c04-ex2.mp3",
+     "align": "en/c04-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "My friends were at the café.",
+     "textSha256": "7875fc15b91adca4ab0e80523c890f1afc6ddbecbdb8c45496ee100ad0c5410e",
+     "chars": 28,
+     "audio": "en/c04-ex3.mp3",
+     "align": "en/c04-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex4",
+     "lang": "en",
+     "role": "example",
+     "text": "Were you tired after the trip?",
+     "textSha256": "6d4f687df607a5f8ca4a6317ea3cc96f5b01307d770ad777226c94cd1cfd5afd",
+     "chars": 30,
+     "audio": "en/c04-ex4.mp3",
+     "align": "en/c04-ex4.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex5",
+     "lang": "en",
+     "role": "example",
+     "text": "We weren't late.",
+     "textSha256": "39d0f87cd67cd0b2de55bca5ef098558641959836e025b617eb2108e7d67b190",
+     "chars": 16,
+     "audio": "en/c04-ex5.mp3",
+     "align": "en/c04-ex5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c05",
+   "type": "contrast",
+   "segments": [
+    {
+     "id": "c05-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Türkçede geçmiş bir ektir: evdeydim, yorgundu. İngilizcede ayrı bir kelimedir ve cümleden düşmez. Bir de kişiye dikkat et: onlar için öbür biçim gelir.",
+     "textSha256": "c6d8025bcb14a9fc43b7baa0b837c039fa746a608b20a4ec983fd9637daeb6b7",
+     "chars": 151,
+     "audio": "tr/c05-tr.mp3",
+     "align": "tr/c05-tr.align.json",
+     "present": true,
+     "duration": 11.8,
+     "quality": {
+      "words": 23,
+      "exact": 23,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "She was here yesterday.",
+     "textSha256": "bc104e83314edc3401960cb80dd363e012eae6ab0439afc4227c189e58865008",
+     "chars": 23,
+     "audio": "en/c05-ex1.mp3",
+     "align": "en/c05-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "They were at school.",
+     "textSha256": "18530d3eb5b14c413e8d23d50da4b7989afc42e90e76d810b6d6ff2f413acc90",
+     "chars": 20,
+     "audio": "en/c05-ex2.mp3",
+     "align": "en/c05-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c06",
+   "type": "practice",
+   "segments": [
+    {
+     "id": "c06-q5",
+     "lang": "en",
+     "role": "say",
+     "text": "She was here yesterday.",
+     "textSha256": "bc104e83314edc3401960cb80dd363e012eae6ab0439afc4227c189e58865008",
+     "chars": 23,
+     "audio": "en/c06-q5.mp3",
+     "align": "en/c06-q5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c07",
+   "type": "seeInStory",
+   "segments": [
+    {
+     "id": "c07-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Bu iki kelime hikâyede ve kitaplarda çok geçiyor. Şu cümlelere bir daha bak.",
+     "textSha256": "6c4eb41663beb98e7343a6b1e80b2bee9a997d088a25fff0ef2891eca896174f",
+     "chars": 76,
+     "audio": "tr/c07-tr.mp3",
+     "align": "tr/c07-tr.align.json",
+     "present": true,
+     "duration": 4.64,
+     "quality": {
+      "words": 13,
+      "exact": 12,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    }
+   ]
+  },
+  {
+   "card": "c08",
+   "type": "rule",
+   "segments": [
+    {
+     "id": "c08-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Olmak fiilinin geçmişinde ben, o ve tek bir şey için bir biçim gelir. Sen, biz, siz ve onlar için öbür biçim gelir.",
+     "textSha256": "2fd54b00e8ab4fc7c136b63324d2fc5751f201c451ec6b314bec2e0edee6907b",
+     "chars": 115,
+     "audio": "tr/c08-tr.mp3",
+     "align": "tr/c08-tr.align.json",
+     "present": true,
+     "duration": 7.52,
+     "quality": {
+      "words": 22,
+      "exact": 22,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c08-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "We were at the beach yesterday.",
+     "textSha256": "0913319c6a2c55316e12845e7f9b9cb6ed372cf1f0a87fd84271ca0354f215b9",
+     "chars": 31,
+     "audio": "en/c08-ex1.mp3",
+     "align": "en/c08-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  }
+ ]
+}

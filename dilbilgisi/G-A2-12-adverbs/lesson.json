@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "id": "G-A2-12-adverbs",
+  "level": "A2",
+  "titleTr": "Zarflar: always / usually / never ve -ly",
+  "titleEn": "Adverbs of frequency and manner",
+  "goalTr": "Sıklık zarflarını ana fiilden önce, be'den sonra yerleştirir; sıfattan -ly ile tarz zarfı yaparsın.",
+  "prerequisites": [
+    "G-A1-11-present-simple",
+    "G-A1-12-word-order-svo"
+  ],
+  "contentVersion": 1,
+  "status": "DRAFT",
+  "aiGenerated": true,
+  "teacherReview": null,
+  "linksTo": {
+    "episodes": [
+      "A1-006"
+    ],
+    "books": [
+      "A1-K05",
+      "A2-K05",
+      "A2-K03",
+      "A2-K02"
+    ]
+  },
+  "properNouns": [
+    "Jonas",
+    "Paloma",
+    "Mateo",
+    "Elif",
+    "English",
+    "Max"
+  ],
+  "glossary": [
+    "sometimes"
+  ],
+  "pronunciations": [
+    {
+      "term": "-ly",
+      "say_as": "li"
+    }
+  ],
+  "narration": {
+    "tr": {
+      "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+    }
+  }
+}

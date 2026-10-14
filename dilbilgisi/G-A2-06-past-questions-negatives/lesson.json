@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "id": "G-A2-06-past-questions-negatives",
+  "level": "A2",
+  "titleTr": "did / didn't ile geçmişte soru ve olumsuz",
+  "titleEn": "Past simple questions and negatives",
+  "goalTr": "Geçmişte soru ve olumsuzu did ve didn't ile kurar, ardından fiili yalın bırakırsın.",
+  "prerequisites": [
+    "G-A1-14-do-does",
+    "G-A2-05-past-simple-irregular"
+  ],
+  "contentVersion": 1,
+  "status": "DRAFT",
+  "aiGenerated": true,
+  "teacherReview": null,
+  "linksTo": {
+    "episodes": [],
+    "books": [
+      "A2-K05",
+      "A2-K01",
+      "A2-K03"
+    ]
+  },
+  "properNouns": [
+    "Mateo",
+    "Limon",
+    "Elif"
+  ],
+  "narration": {
+    "tr": {
+      "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+    }
+  }
+}

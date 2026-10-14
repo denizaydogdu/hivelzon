@@ -1,0 +1,436 @@
+{
+ "schemaVersion": 1,
+ "lessonId": "G-A2-04-past-simple-regular",
+ "voices": {
+  "tr": {
+   "model": "alania-v2",
+   "voice": "alania2-f1",
+   "timing": "duyu-1",
+   "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+  },
+  "en": {
+   "model": "eleven_v3",
+   "voice": "EXAVITQu4vr4xnSDxMaL",
+   "speed": 0.95
+  }
+ },
+ "cards": [
+  {
+   "card": "c01",
+   "type": "hook",
+   "segments": [
+    {
+     "id": "c01-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Nia, Ay'da doğmuş bir kız. Hikâye onun nerede yaşadığını geçmiş zamanla anlatıyor. Fiilin sonundaki eki dinle.",
+     "textSha256": "e2ba6e76263d8d3dcd45fac4f84c715a402af39e0c562ffe4fd704472f68b537",
+     "chars": 110,
+     "audio": "tr/c01-tr.mp3",
+     "align": "tr/c01-tr.align.json",
+     "present": true,
+     "duration": 8.0,
+     "quality": {
+      "words": 16,
+      "exact": 15,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c01-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "She lived in Lunaria.",
+     "textSha256": "a9d11973b2e06d815a106b96dd79c2264d6c30424548e0a7f47265b3dba88e74",
+     "chars": 21,
+     "audio": "en/c01-ex1.mp3",
+     "align": "en/c01-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c02",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c02-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Düzenli fiillerin geçmişi için fiile -ed eklenir. Bu ek ben, sen, o, biz, siz ve onlar için hep aynıdır. Türkçedeki gibi kişiye göre değişmez.",
+     "textSha256": "caa91ec6a241770e63c28f32d6a4c6fbe29cb03f75502a6de538c6a8d7e316ca",
+     "chars": 142,
+     "audio": "tr/c02-tr.mp3",
+     "align": "tr/c02-tr.align.json",
+     "present": true,
+     "duration": 9.95,
+     "quality": {
+      "words": 24,
+      "exact": 22,
+      "fuzzy": 2,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    }
+   ]
+  },
+  {
+   "card": "c03",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c03-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Fiil e harfiyle bitiyorsa yalnız bir harf eklenir. Ünsüzden sonra gelen y harfi i olur. Tek heceli bir fiil bir ünlü ve bir ünsüzle bitiyorsa son harf iki kez yazılır.",
+     "textSha256": "5968a8e8053b714911d29a42894fd833d7c0c65b7f027f01e2d457164d7a64ad",
+     "chars": 167,
+     "audio": "tr/c03-tr.mp3",
+     "align": "tr/c03-tr.align.json",
+     "present": true,
+     "duration": 13.95,
+     "quality": {
+      "words": 30,
+      "exact": 25,
+      "fuzzy": 4,
+      "weak": 1,
+      "missing": 0,
+      "extraHeard": 2,
+      "worstRun": 1,
+      "score": 0.967,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I studied English.",
+     "textSha256": "582295d46de5a4c3c8b3074289083ce5f55c5bb0b1ec27593afdc7fa3a85a788",
+     "chars": 18,
+     "audio": "en/c03-ex1.mp3",
+     "align": "en/c03-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c03-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "The bus stopped.",
+     "textSha256": "1e58c40ec2585aaff81a0bc3c92eb7b0ff5b1a2609f3f386f51235df42deac37",
+     "chars": 16,
+     "audio": "en/c03-ex2.mp3",
+     "align": "en/c03-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c04",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c04-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Bu ek her zaman aynı okunmaz. Çoğu fiilde yalnız bir ses gibi duyulur, ayrı hece olmaz. Fiil t ya da d sesiyle bitiyorsa ek ayrı bir hece olur.",
+     "textSha256": "f62f4d4e1fd2235345ef1421af49514a72c9a4b7343a6e35e47f8c4fd2e5c93a",
+     "chars": 143,
+     "audio": "tr/c04-tr.mp3",
+     "align": "tr/c04-tr.align.json",
+     "present": true,
+     "duration": 10.43,
+     "quality": {
+      "words": 28,
+      "exact": 27,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c04-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "We worked late.",
+     "textSha256": "aeb833e0b2a9622d9f6f9429a2edf20226447117adb05ad2ff6645cf42176e40",
+     "chars": 15,
+     "audio": "en/c04-ex1.mp3",
+     "align": "en/c04-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "They played football.",
+     "textSha256": "b2cffc0b613cd31c17e5462f3668377d9057a7e90d5bc7aa4d5c9d1543a7f075",
+     "chars": 21,
+     "audio": "en/c04-ex2.mp3",
+     "align": "en/c04-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "She waited for the bus.",
+     "textSha256": "f8a303f8622f88f1189a9148fde210cf72964bfdc2afff00c6c228383a5b9998",
+     "chars": 23,
+     "audio": "en/c04-ex3.mp3",
+     "align": "en/c04-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c05",
+   "type": "examples",
+   "segments": [
+    {
+     "id": "c05-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "We watched a film last night.",
+     "textSha256": "633479460f937431054e7e0b548197970c27d03272213a3b69093fff22c688ff",
+     "chars": 29,
+     "audio": "en/c05-ex1.mp3",
+     "align": "en/c05-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "She opened the window and smiled.",
+     "textSha256": "fb62824e734bed578cf140f2e73f5d3a072350a26d16e8fcc29ecc1d8bfc88af",
+     "chars": 33,
+     "audio": "en/c05-ex2.mp3",
+     "align": "en/c05-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "My grandmother called me yesterday.",
+     "textSha256": "7ddc24a54f9c9f660bbd8e6117709219a07afb0e4fa84f1b78b0bfa2fd0f160b",
+     "chars": 35,
+     "audio": "en/c05-ex3.mp3",
+     "align": "en/c05-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex4",
+     "lang": "en",
+     "role": "example",
+     "text": "I cleaned my room on Saturday.",
+     "textSha256": "73c2babf86774943cb7ae370ae90e9ba6e445102669861945cbb333f4d14651c",
+     "chars": 30,
+     "audio": "en/c05-ex4.mp3",
+     "align": "en/c05-ex4.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex5",
+     "lang": "en",
+     "role": "example",
+     "text": "They arrived at the station at nine.",
+     "textSha256": "1e50e723470b7b1602d82fdf2d7d0f713cab242357de764301b945ca63b88af1",
+     "chars": 36,
+     "audio": "en/c05-ex5.mp3",
+     "align": "en/c05-ex5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c06",
+   "type": "contrast",
+   "segments": [
+    {
+     "id": "c06-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Türkçede geçmiş eki kişi ekiyle birlikte gelir: çalıştım, çalıştılar. İngilizcede ek herkes için aynıdır, ama geçmişi anlatırken kolayca unutulur. Yazıya bakıp eki hep ayrı hece okumak da çok olağan.",
+     "textSha256": "53514539b9f768e330291a3056208220a874597e65c156d57f72cd22219e4626",
+     "chars": 199,
+     "audio": "tr/c06-tr.mp3",
+     "align": "tr/c06-tr.align.json",
+     "present": true,
+     "duration": 13.31,
+     "quality": {
+      "words": 29,
+      "exact": 29,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c06-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "Yesterday I walked to school.",
+     "textSha256": "c9bfd3b5cc254929ed95f5ee64ee9b5135fff5173c4d3ab0daf1b5008fbaea51",
+     "chars": 29,
+     "audio": "en/c06-ex1.mp3",
+     "align": "en/c06-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c06-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "She studied at home.",
+     "textSha256": "6044cdd9d65ea7acf205907d09551ae270f7ab86d3acab12712479989a6df715",
+     "chars": 20,
+     "audio": "en/c06-ex2.mp3",
+     "align": "en/c06-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c07",
+   "type": "practice",
+   "segments": [
+    {
+     "id": "c07-q5",
+     "lang": "en",
+     "role": "say",
+     "text": "We watched a film last night.",
+     "textSha256": "633479460f937431054e7e0b548197970c27d03272213a3b69093fff22c688ff",
+     "chars": 29,
+     "audio": "en/c07-q5.mp3",
+     "align": "en/c07-q5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c08",
+   "type": "seeInStory",
+   "segments": [
+    {
+     "id": "c08-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Kitaplardaki hikâyeler bu ekle dolu. Şu cümlelere bir daha bak.",
+     "textSha256": "d58758c9cd52c27612909cf309460ab1c91750697e76b2ea23ed38a5115c2156",
+     "chars": 63,
+     "audio": "tr/c08-tr.mp3",
+     "align": "tr/c08-tr.align.json",
+     "present": true,
+     "duration": 4.0,
+     "quality": {
+      "words": 10,
+      "exact": 9,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    }
+   ]
+  },
+  {
+   "card": "c09",
+   "type": "rule",
+   "segments": [
+    {
+     "id": "c09-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Düzenli fiillerin geçmişi için fiile -ed eklenir. Ek bütün kişiler için aynıdır.",
+     "textSha256": "353af048ad4d20f3f29699e205ac45f9f8c0ea156ce8671a6ba2d51fb968b0b4",
+     "chars": 80,
+     "audio": "tr/c09-tr.mp3",
+     "align": "tr/c09-tr.align.json",
+     "present": true,
+     "duration": 5.92,
+     "quality": {
+      "words": 12,
+      "exact": 11,
+      "fuzzy": 0,
+      "weak": 1,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 1,
+      "score": 0.917,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c09-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "She opened the door.",
+     "textSha256": "6f4a63f9ace5e7df0f37d2ecdc33f7dbce85bb5573d45388d1244ea5cc79a7fb",
+     "chars": 20,
+     "audio": "en/c09-ex1.mp3",
+     "align": "en/c09-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  }
+ ]
+}

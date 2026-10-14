@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "id": "G-A2-13-conjunctions",
+  "level": "A2",
+  "titleTr": "Bağlaçlar: and / but / because / so ve when",
+  "titleEn": "Linking words",
+  "goalTr": "Cümleleri and, but, because ve so ile bağlar; when, before ve after ile zaman bildiren yan cümle kurarsın.",
+  "prerequisites": [
+    "G-A2-04-past-simple-regular"
+  ],
+  "contentVersion": 1,
+  "status": "DRAFT",
+  "aiGenerated": true,
+  "teacherReview": null,
+  "linksTo": {
+    "episodes": [],
+    "books": [
+      "A2-K02",
+      "A2-K03",
+      "A2-K04",
+      "A1-K05"
+    ]
+  },
+  "properNouns": [
+    "Elif"
+  ],
+  "narration": {
+    "tr": {
+      "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+    }
+  }
+}

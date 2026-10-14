@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "id": "G-A2-10-going-to",
+  "level": "A2",
+  "titleTr": "going to: plan ve kanıta dayalı tahmin",
+  "titleEn": "be going to",
+  "goalTr": "Önceden verdiğin kararları ve gördüğüne dayanan tahminleri be going to ile söylersin.",
+  "prerequisites": [
+    "G-A2-01-present-continuous"
+  ],
+  "contentVersion": 1,
+  "status": "DRAFT",
+  "aiGenerated": true,
+  "teacherReview": null,
+  "linksTo": {
+    "episodes": [],
+    "books": [
+      "A2-K02",
+      "A2-K04"
+    ]
+  },
+  "properNouns": [
+    "Mrs Berg",
+    "Leo"
+  ],
+  "narration": {
+    "tr": {
+      "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+    }
+  }
+}

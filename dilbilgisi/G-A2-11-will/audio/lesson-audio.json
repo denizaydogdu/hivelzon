@@ -1,0 +1,406 @@
+{
+ "schemaVersion": 1,
+ "lessonId": "G-A2-11-will",
+ "voices": {
+  "tr": {
+   "model": "alania-v2",
+   "voice": "alania2-f1",
+   "timing": "duyu-1",
+   "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+  },
+  "en": {
+   "model": "eleven_v3",
+   "voice": "EXAVITQu4vr4xnSDxMaL",
+   "speed": 0.95
+  }
+ },
+ "cards": [
+  {
+   "card": "c01",
+   "type": "hook",
+   "segments": [
+    {
+     "id": "c01-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Alex dükkânda anteni beğeniyor ve hemen karar veriyor. Bu karar o anda veriliyor, önceden plan yok. Cümlenin başındaki kısalmış kelimeyi dinle.",
+     "textSha256": "023a70ef67ea9e5a1fa3b1daaf700e553d60e9f6a8ff7517d6072b3d1ed32810",
+     "chars": 143,
+     "audio": "tr/c01-tr.mp3",
+     "align": "tr/c01-tr.align.json",
+     "present": true,
+     "duration": 9.13,
+     "quality": {
+      "words": 21,
+      "exact": 20,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c01-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "OK. I'll take it.",
+     "textSha256": "9f8fa68320600394802d5d7c88f244816a079a415165547d689ebe4150cdf58e",
+     "chars": 17,
+     "audio": "en/c01-ex1.mp3",
+     "align": "en/c01-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c02",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c02-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Konuşurken o anda verdiğin bir karar için bu kelime kullanılır. Ardından fiil yalın gelir. Kelime kişiye göre değişmez ve çoğu zaman kısalır.",
+     "textSha256": "4e9d2b9da58fc09014f1d7eba61638a4c7c848660ada862d4a20a5cf5fa24737",
+     "chars": 141,
+     "audio": "tr/c02-tr.mp3",
+     "align": "tr/c02-tr.align.json",
+     "present": true,
+     "duration": 10.43,
+     "quality": {
+      "words": 22,
+      "exact": 21,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    }
+   ]
+  },
+  {
+   "card": "c03",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c03-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Bir söz verirken ya da yardım teklif ederken de aynı kelime gelir. Kendi düşüncene dayanan tahminlerde de kullanılır. Olumsuzu kısalmış tek bir kelimedir.",
+     "textSha256": "2d4924f831216933af5cf83d0d2007e05573ef7c71fe1e5e8056f203451c1a91",
+     "chars": 154,
+     "audio": "tr/c03-tr.mp3",
+     "align": "tr/c03-tr.align.json",
+     "present": true,
+     "duration": 9.79,
+     "quality": {
+      "words": 23,
+      "exact": 23,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I'll help you.",
+     "textSha256": "e79701d1f2cec0562a62e849448bb0943af2811d0499eed76457155606f7c941",
+     "chars": 14,
+     "audio": "en/c03-ex1.mp3",
+     "align": "en/c03-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c03-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "I won't be late.",
+     "textSha256": "5983282ec909870c33d67c93c9800bb16115cf0e8a98e24bfd3484373642d836",
+     "chars": 16,
+     "audio": "en/c03-ex2.mp3",
+     "align": "en/c03-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c03-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "I think it'll be sunny tomorrow.",
+     "textSha256": "e8a2f9029b97b5d1a9c98c1cdc0a80d206d49a5e0e5c5114c491b2947e24b763",
+     "chars": 32,
+     "audio": "en/c03-ex3.mp3",
+     "align": "en/c03-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c04",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c04-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Önceden verilmiş bir plan için önceki dersteki kalıp gelir. Karar tam konuşurken veriliyorsa bu kelime gelir. Kanıtı gözünün önünde olan tahmin için de önceki kalıp daha doğaldır.",
+     "textSha256": "6db05e4149fc77fb0b4675f719769eeb74b42a59e17f06de7bb929f2809b3700",
+     "chars": 179,
+     "audio": "tr/c04-tr.mp3",
+     "align": "tr/c04-tr.align.json",
+     "present": true,
+     "duration": 12.34,
+     "quality": {
+      "words": 27,
+      "exact": 27,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c04-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I'm going to buy a radio this weekend.",
+     "textSha256": "02d39ad5b93abf3f0d6bf4d58eb762748c651662fad0d65c8f4782981b54bd9e",
+     "chars": 38,
+     "audio": "en/c04-ex1.mp3",
+     "align": "en/c04-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "Oh, this one is nice. I'll buy it.",
+     "textSha256": "a9ee6e385962a9710a633153918b3643eed39c64bb09a23011bc9807e0447e8d",
+     "chars": 34,
+     "audio": "en/c04-ex2.mp3",
+     "align": "en/c04-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c05",
+   "type": "examples",
+   "segments": [
+    {
+     "id": "c05-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "It's cold. I'll close the window.",
+     "textSha256": "da35d43e3fc0a08a93db58ac638ddc1e5df1328d7c2b70795d5ec83e25178287",
+     "chars": 33,
+     "audio": "en/c05-ex1.mp3",
+     "align": "en/c05-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "Don't worry, I won't be late.",
+     "textSha256": "0eb51ecbf0160bd41d07cee4525eed2339ea80a822f94f494573423969099aca",
+     "chars": 29,
+     "audio": "en/c05-ex2.mp3",
+     "align": "en/c05-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "The phone is ringing. I'll answer it.",
+     "textSha256": "376bf3024c7ea9e5dfa9f05d88db4770a8467e09b8855b0af4292ee01daaad57",
+     "chars": 37,
+     "audio": "en/c05-ex3.mp3",
+     "align": "en/c05-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex4",
+     "lang": "en",
+     "role": "example",
+     "text": "I think you'll like this book.",
+     "textSha256": "f699911dfa44599aad4d3f48be06c1b7392f6d3e53aad9b8050dc0a8fa1ef3f1",
+     "chars": 30,
+     "audio": "en/c05-ex4.mp3",
+     "align": "en/c05-ex4.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex5",
+     "lang": "en",
+     "role": "example",
+     "text": "Will you help me, please?",
+     "textSha256": "cde2db62cd4171019a4fde4ee5f23763571b04d133750060224d30e60b628411",
+     "chars": 25,
+     "audio": "en/c05-ex5.mp3",
+     "align": "en/c05-ex5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c06",
+   "type": "contrast",
+   "segments": [
+    {
+     "id": "c06-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Türkçede anlık kararı çoğu zaman geniş zamanla söyleriz: ben alırım, ben bakarım. İngilizcede bu durumda geniş zaman değil, bu kelime gelir. Ardından da hiç ek almadan yalın fiil gelir.",
+     "textSha256": "280ab95967032e62828123a93e94ced2250faf9b765af3e8ce1764d65b8a0291",
+     "chars": 185,
+     "audio": "tr/c06-tr.mp3",
+     "align": "tr/c06-tr.align.json",
+     "present": true,
+     "duration": 11.87,
+     "quality": {
+      "words": 29,
+      "exact": 29,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c06-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I'll take it.",
+     "textSha256": "15051c9769aec10111e8dbee51b3f11972babbadbde1c6f859994a445f021956",
+     "chars": 13,
+     "audio": "en/c06-ex1.mp3",
+     "align": "en/c06-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c06-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "I'll call you.",
+     "textSha256": "082ade7e6ab15640df8d3a906c4bfaedb2ca1ad26574c7fcaea712f381e613ba",
+     "chars": 14,
+     "audio": "en/c06-ex2.mp3",
+     "align": "en/c06-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c07",
+   "type": "practice",
+   "segments": [
+    {
+     "id": "c07-q5",
+     "lang": "en",
+     "role": "say",
+     "text": "It's cold. I'll close the window.",
+     "textSha256": "da35d43e3fc0a08a93db58ac638ddc1e5df1328d7c2b70795d5ec83e25178287",
+     "chars": 33,
+     "audio": "en/c07-q5.mp3",
+     "align": "en/c07-q5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c08",
+   "type": "rule",
+   "segments": [
+    {
+     "id": "c08-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Konuşurken o anda verilen karar, söz ve teklif için bu kelime kullanılır. Ardından fiil yalın gelir.",
+     "textSha256": "d6bfc4401e9928c50090dbe5cc43da64a03edb06fe9cb8fbab12135e7f4abe8a",
+     "chars": 100,
+     "audio": "tr/c08-tr.mp3",
+     "align": "tr/c08-tr.align.json",
+     "present": true,
+     "duration": 7.04,
+     "quality": {
+      "words": 16,
+      "exact": 16,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c08-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "It's cold. I'll close the window.",
+     "textSha256": "da35d43e3fc0a08a93db58ac638ddc1e5df1328d7c2b70795d5ec83e25178287",
+     "chars": 33,
+     "audio": "en/c08-ex1.mp3",
+     "align": "en/c08-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  }
+ ]
+}

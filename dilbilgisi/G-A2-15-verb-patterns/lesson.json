@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "id": "G-A2-15-verb-patterns",
+  "level": "A2",
+  "titleTr": "Fiilden sonra fiil: want to, like + -ing",
+  "titleEn": "Verb + to / verb + -ing",
+  "goalTr": "want, need ve try'dan sonra to + fiil, like ve love'dan sonra -ing kullanır; would like to ile kibarca istersin.",
+  "prerequisites": [
+    "G-A1-11-present-simple"
+  ],
+  "contentVersion": 1,
+  "status": "DRAFT",
+  "aiGenerated": true,
+  "teacherReview": null,
+  "linksTo": {
+    "episodes": [],
+    "books": [
+      "A2-K04",
+      "A2-K01",
+      "A2-K02",
+      "A1-K04"
+    ]
+  },
+  "properNouns": [
+    "Nia",
+    "Paloma",
+    "English"
+  ],
+  "pronunciations": [
+    {
+      "term": "-ing",
+      "say_as": "ing"
+    }
+  ],
+  "narration": {
+    "tr": {
+      "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+    }
+  }
+}

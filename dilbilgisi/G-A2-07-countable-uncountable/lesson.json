@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "id": "G-A2-07-countable-uncountable",
+  "level": "A2",
+  "titleTr": "Sayılabilen ve sayılamayan: some / any / much / many / a lot of",
+  "titleEn": "Countable and uncountable nouns",
+  "goalTr": "İsmin sayılıp sayılamadığını ayırır; some, any, much, many ve a lot of'u doğru kullanırsın.",
+  "prerequisites": [
+    "G-A1-03-a-an",
+    "G-A1-06-this-that-plurals"
+  ],
+  "contentVersion": 1,
+  "status": "DRAFT",
+  "aiGenerated": true,
+  "teacherReview": null,
+  "linksTo": {
+    "episodes": [
+      "A1-000",
+      "A1-009"
+    ],
+    "books": [
+      "A1-K01",
+      "A2-K05"
+    ]
+  },
+  "properNouns": [
+    "Sam"
+  ],
+  "narration": {
+    "tr": {
+      "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+    }
+  }
+}

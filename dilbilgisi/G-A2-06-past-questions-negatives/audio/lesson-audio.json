@@ -1,0 +1,367 @@
+{
+ "schemaVersion": 1,
+ "lessonId": "G-A2-06-past-questions-negatives",
+ "voices": {
+  "tr": {
+   "model": "alania-v2",
+   "voice": "alania2-f1",
+   "timing": "duyu-1",
+   "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+  },
+  "en": {
+   "model": "eleven_v3",
+   "voice": "EXAVITQu4vr4xnSDxMaL",
+   "speed": 0.95
+  }
+ },
+ "cards": [
+  {
+   "card": "c01",
+   "type": "hook",
+   "segments": [
+    {
+     "id": "c01-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Mateo'ya her sabah bir deniz fotoğrafı geliyordu. Bir gün hiç gelmedi. Bu soruda geçmişi küçük bir yardımcı kelime taşıyor, fiil ise yalın kalıyor.",
+     "textSha256": "cd53c0a3a02b087ddfa513a5a57c01ca4f04104cb3f1ed9407a6a07812ebf2b7",
+     "chars": 147,
+     "audio": "tr/c01-tr.mp3",
+     "align": "tr/c01-tr.align.json",
+     "present": true,
+     "duration": 8.96,
+     "quality": {
+      "words": 23,
+      "exact": 22,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c01-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "Why did the photos stop?",
+     "textSha256": "e0a4e8c884c1bed97115b128e654f7253ccae8c80a28f73d52eec8ba7cd9b5ba",
+     "chars": 24,
+     "audio": "en/c01-ex1.mp3",
+     "align": "en/c01-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c02",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c02-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Geniş zamanda soru ve olumsuz için yardımcı bir kelime kullanmıştık. Geçmişte de aynısı var, yalnız biçimi değişir. Bu biçim bütün kişiler için aynıdır.",
+     "textSha256": "9ad521db728c72d543b9577d80a8ba66a8d4ef4e9578b9f1197f556dbe7a85a3",
+     "chars": 152,
+     "audio": "tr/c02-tr.mp3",
+     "align": "tr/c02-tr.align.json",
+     "present": true,
+     "duration": 10.43,
+     "quality": {
+      "words": 23,
+      "exact": 23,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    }
+   ]
+  },
+  {
+   "card": "c03",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c03-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Geçmiş anlamını yardımcı kelime taşır. Bu yüzden ardından gelen fiil yalın kalır, ek almaz ve değişmez. Geçmişi iki kez göstermeye gerek yok.",
+     "textSha256": "d984919ef3b94de0775eb84f8229f4a5d8e9bc005eccefcc99ed1bf4804e6a7e",
+     "chars": 141,
+     "audio": "tr/c03-tr.mp3",
+     "align": "tr/c03-tr.align.json",
+     "present": true,
+     "duration": 10.22,
+     "quality": {
+      "words": 22,
+      "exact": 22,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 1,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I didn't go.",
+     "textSha256": "12a747edc8e1734239696b10350065ca866dd50de9496ae7a7e374cdd6e40bed",
+     "chars": 12,
+     "audio": "en/c03-ex1.mp3",
+     "align": "en/c03-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c03-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "Did you see it?",
+     "textSha256": "8126d6d01af1dd19ffe9a5b74e387ba0ea07f27294dc11b4f3cebed1e9b2c465",
+     "chars": 15,
+     "audio": "en/c03-ex2.mp3",
+     "align": "en/c03-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c04",
+   "type": "examples",
+   "segments": [
+    {
+     "id": "c04-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "Did you call your mum?",
+     "textSha256": "7bf041d339ed32ee659fc061d2741a428202757de1c94e1588e9fe3486bde37c",
+     "chars": 22,
+     "audio": "en/c04-ex1.mp3",
+     "align": "en/c04-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "I didn't see the message.",
+     "textSha256": "c52acc17dfb2dd512392de56cea4253dcd0073b4e471ca66b6cdac97b34ffd69",
+     "chars": 25,
+     "audio": "en/c04-ex2.mp3",
+     "align": "en/c04-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "She didn't like the cake.",
+     "textSha256": "8accb07502c3ea07b170ba6494b182bacfdf1724224f055520a4a8a5d65a95ad",
+     "chars": 25,
+     "audio": "en/c04-ex3.mp3",
+     "align": "en/c04-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex4",
+     "lang": "en",
+     "role": "example",
+     "text": "Where did you go on Saturday?",
+     "textSha256": "50709d693593f23d87924f137a3312f58ec1da4285fd2ed4201bac06839984eb",
+     "chars": 29,
+     "audio": "en/c04-ex4.mp3",
+     "align": "en/c04-ex4.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex5",
+     "lang": "en",
+     "role": "example",
+     "text": "We didn't have time.",
+     "textSha256": "da4651c015ed0712f75a36f3ca450f31c7a84c393934b734823b2577c5f1bc96",
+     "chars": 20,
+     "audio": "en/c04-ex5.mp3",
+     "align": "en/c04-ex5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c05",
+   "type": "contrast",
+   "segments": [
+    {
+     "id": "c05-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Türkçede olumsuz ve soru eklerle kurulur: gitmedim, gittin mi? İngilizcede geçmiş yardımcı kelimeye geçer ve fiil yalın kalır. Geçmişi iki kez göstermek çok sık yapılan, çok doğal bir hata.",
+     "textSha256": "0b8358f5bb3f01dc3f18efda94703162db7aebba64e7775cdc1ec2bd3ff99905",
+     "chars": 189,
+     "audio": "tr/c05-tr.mp3",
+     "align": "tr/c05-tr.align.json",
+     "present": true,
+     "duration": 12.67,
+     "quality": {
+      "words": 29,
+      "exact": 29,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I didn't go.",
+     "textSha256": "12a747edc8e1734239696b10350065ca866dd50de9496ae7a7e374cdd6e40bed",
+     "chars": 12,
+     "audio": "en/c05-ex1.mp3",
+     "align": "en/c05-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "Did you see the bird?",
+     "textSha256": "547b01203bb4fc855fc98ab5d36c551791ec3d02c9bc151d9dccbe0bcae0ae2e",
+     "chars": 21,
+     "audio": "en/c05-ex2.mp3",
+     "align": "en/c05-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c06",
+   "type": "practice",
+   "segments": [
+    {
+     "id": "c06-q5",
+     "lang": "en",
+     "role": "say",
+     "text": "I didn't see the message.",
+     "textSha256": "c52acc17dfb2dd512392de56cea4253dcd0073b4e471ca66b6cdac97b34ffd69",
+     "chars": 25,
+     "audio": "en/c06-q5.mp3",
+     "align": "en/c06-q5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c07",
+   "type": "seeInStory",
+   "segments": [
+    {
+     "id": "c07-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Kitaplarda bu yardımcı kelimeyi çok duydun. Şu cümlelere bir daha bak.",
+     "textSha256": "0d75670b2a4beeb951bb8e66b16b2da56d2f6186f2acedb45db2d6fcff5c36d8",
+     "chars": 70,
+     "audio": "tr/c07-tr.mp3",
+     "align": "tr/c07-tr.align.json",
+     "present": true,
+     "duration": 4.64,
+     "quality": {
+      "words": 11,
+      "exact": 11,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    }
+   ]
+  },
+  {
+   "card": "c08",
+   "type": "rule",
+   "segments": [
+    {
+     "id": "c08-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Geçmişte soru ve olumsuz cümle yardımcı kelimeyle kurulur. Ardından gelen fiil yalın kalır.",
+     "textSha256": "045280cab932391a7d892f324d390a62a5f891bd2efa2a4a82f75f1c03dae448",
+     "chars": 91,
+     "audio": "tr/c08-tr.mp3",
+     "align": "tr/c08-tr.align.json",
+     "present": true,
+     "duration": 5.6,
+     "quality": {
+      "words": 13,
+      "exact": 11,
+      "fuzzy": 2,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c08-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I didn't see the message.",
+     "textSha256": "c52acc17dfb2dd512392de56cea4253dcd0073b4e471ca66b6cdac97b34ffd69",
+     "chars": 25,
+     "audio": "en/c08-ex1.mp3",
+     "align": "en/c08-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  }
+ ]
+}

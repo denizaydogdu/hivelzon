@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "id": "G-A2-05-past-simple-irregular",
+  "level": "A2",
+  "titleTr": "Geçmiş zaman: düzensiz fiiller",
+  "titleEn": "Past simple: irregular verbs",
+  "goalTr": "Sık düzensiz fiillerin geçmiş biçimlerini (went, saw, took, came, said) tanır ve kullanırsın.",
+  "prerequisites": [
+    "G-A2-04-past-simple-regular"
+  ],
+  "contentVersion": 1,
+  "status": "DRAFT",
+  "aiGenerated": true,
+  "teacherReview": null,
+  "linksTo": {
+    "episodes": [],
+    "books": [
+      "A2-K01",
+      "A2-K02",
+      "A2-K05"
+    ]
+  },
+  "properNouns": [
+    "Elif"
+  ],
+  "narration": {
+    "tr": {
+      "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+    }
+  }
+}

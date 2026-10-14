@@ -1,0 +1,354 @@
+{
+ "schemaVersion": 1,
+ "lessonId": "G-A2-10-going-to",
+ "voices": {
+  "tr": {
+   "model": "alania-v2",
+   "voice": "alania2-f1",
+   "timing": "duyu-1",
+   "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+  },
+  "en": {
+   "model": "eleven_v3",
+   "voice": "EXAVITQu4vr4xnSDxMaL",
+   "speed": 0.95
+  }
+ },
+ "cards": [
+  {
+   "card": "c01",
+   "type": "hook",
+   "segments": [
+    {
+     "id": "c01-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Bayan Berg sınıfına günün planını anlatıyor. Bu karar önceden verilmiş, bugün uygulanacak. Gelecek için kullanılan bu kalıbı dinle.",
+     "textSha256": "5d53855e1f711edf377c04b5c0ee0acdd7e4825557a58c6904a31be969d192d2",
+     "chars": 131,
+     "audio": "tr/c01-tr.mp3",
+     "align": "tr/c01-tr.align.json",
+     "present": true,
+     "duration": 8.32,
+     "quality": {
+      "words": 18,
+      "exact": 18,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c01-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "Today we're going to walk to the lake.",
+     "textSha256": "67ba80ea3b094968dbe5bb7a8f089ff2b88fe19b46f416f8e32c428896c8e51a",
+     "chars": 38,
+     "audio": "en/c01-ex1.mp3",
+     "align": "en/c01-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c02",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c02-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Önceden karar verdiğin bir plan için bu kalıp kullanılır. Önce olmak fiili gelir, sonra iki kelimelik sabit bir parça, en sonda yalın fiil. Kalıp uzun görünür, ama konuşurken hızlı söylenir.",
+     "textSha256": "6b41d8ba4e76de9c0155511c92a41c9cb16cb7498c834f05890290bee23963a3",
+     "chars": 190,
+     "audio": "tr/c02-tr.mp3",
+     "align": "tr/c02-tr.align.json",
+     "present": true,
+     "duration": 13.79,
+     "quality": {
+      "words": 30,
+      "exact": 29,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    }
+   ]
+  },
+  {
+   "card": "c03",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c03-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Şu an gördüğün bir şeye bakarak tahmin yaparken de aynı kalıp kullanılır. Bulutlar kararıyorsa yağmur yağacak dersin. Kanıt gözünün önündedir.",
+     "textSha256": "ccae0d87dcf7984010261c77ac7dc72cae112f511d38b18464865676782d73a8",
+     "chars": 142,
+     "audio": "tr/c03-tr.mp3",
+     "align": "tr/c03-tr.align.json",
+     "present": true,
+     "duration": 10.2,
+     "quality": {
+      "words": 20,
+      "exact": 19,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "Look at those clouds. It's going to rain.",
+     "textSha256": "0c5a9d8de8c2aa6d9065e5d04d7433a3e37f2d7a7d18c01036804a1afb30d7e7",
+     "chars": 41,
+     "audio": "en/c03-ex1.mp3",
+     "align": "en/c03-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c04",
+   "type": "examples",
+   "segments": [
+    {
+     "id": "c04-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I'm going to visit my grandmother this weekend.",
+     "textSha256": "a902f6e00cfc4f86d98910e73d069d10f0997214207a226fecb047d23fee4186",
+     "chars": 47,
+     "audio": "en/c04-ex1.mp3",
+     "align": "en/c04-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "We're going to cook together.",
+     "textSha256": "6f85ad9c380cfa5c704aa25c1bdc9d9091df817c9887f02018e7be3df9720a78",
+     "chars": 29,
+     "audio": "en/c04-ex2.mp3",
+     "align": "en/c04-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "Are you going to play football today?",
+     "textSha256": "24a102486e7308191dc56ea68cc1fcc306b527af7ebff32cc16b0b319db60a17",
+     "chars": 37,
+     "audio": "en/c04-ex3.mp3",
+     "align": "en/c04-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex4",
+     "lang": "en",
+     "role": "example",
+     "text": "She isn't going to come to the party.",
+     "textSha256": "db9ca0a69cbbf6cc60fe7aab92f0fde2fd14f6e260319de31ad04d5ee26fcb42",
+     "chars": 37,
+     "audio": "en/c04-ex4.mp3",
+     "align": "en/c04-ex4.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex5",
+     "lang": "en",
+     "role": "example",
+     "text": "Be careful! You're going to fall!",
+     "textSha256": "db8b46031a68c3b0eadc4253fd27f65250ea23c6a85b2f2e25ff19086c218265",
+     "chars": 33,
+     "audio": "en/c04-ex5.mp3",
+     "align": "en/c04-ex5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c05",
+   "type": "contrast",
+   "segments": [
+    {
+     "id": "c05-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Türkçede gelecek tek bir ekle söylenir: gideceğim, yağacak. İngilizcede plan ve kanıt için bu kalıp seçilir, ama olmak fiili kolayca düşer. Sondaki fiil de yalın kalır, geçmiş biçim almaz.",
+     "textSha256": "f1a77aaa4efd8762e12d38b875bf0134c52f31f35159659ec898fe5c7b5b0335",
+     "chars": 188,
+     "audio": "tr/c05-tr.mp3",
+     "align": "tr/c05-tr.align.json",
+     "present": true,
+     "duration": 12.99,
+     "quality": {
+      "words": 29,
+      "exact": 29,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 4,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I'm going to visit my aunt.",
+     "textSha256": "8e79632bde114d2a8fa611e9837f31804a227fe50532fe7e96fe4e0576f4c333",
+     "chars": 27,
+     "audio": "en/c05-ex1.mp3",
+     "align": "en/c05-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "We're going to go home.",
+     "textSha256": "29e095f9aa1556d903127695bedc47f02eaf49b61c5b0c68a6fe616b6c23028e",
+     "chars": 23,
+     "audio": "en/c05-ex2.mp3",
+     "align": "en/c05-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c06",
+   "type": "practice",
+   "segments": [
+    {
+     "id": "c06-q5",
+     "lang": "en",
+     "role": "say",
+     "text": "Look at those clouds. It's going to rain.",
+     "textSha256": "0c5a9d8de8c2aa6d9065e5d04d7433a3e37f2d7a7d18c01036804a1afb30d7e7",
+     "chars": 41,
+     "audio": "en/c06-q5.mp3",
+     "align": "en/c06-q5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c07",
+   "type": "seeInStory",
+   "segments": [
+    {
+     "id": "c07-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Kitaplardaki karakterler planlarını hep bu kalıpla anlatıyor. Şu cümlelere bir daha bak.",
+     "textSha256": "a42858af37c6f967bbab8ed85d1b52b4e82274341e0f72b711770904dbedd5b4",
+     "chars": 88,
+     "audio": "tr/c07-tr.mp3",
+     "align": "tr/c07-tr.align.json",
+     "present": true,
+     "duration": 5.28,
+     "quality": {
+      "words": 12,
+      "exact": 12,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    }
+   ]
+  },
+  {
+   "card": "c08",
+   "type": "rule",
+   "segments": [
+    {
+     "id": "c08-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Önceden verilmiş bir plan ve gözle görülen bir kanıt için bu kalıp kullanılır. Olmak fiili, sabit parça ve yalın fiil birlikte gelir.",
+     "textSha256": "8f7b9482c1f1696d92cbe47bc3c3fe639afa579fd30b83bb6305f706a23544a4",
+     "chars": 133,
+     "audio": "tr/c08-tr.mp3",
+     "align": "tr/c08-tr.align.json",
+     "present": true,
+     "duration": 9.44,
+     "quality": {
+      "words": 22,
+      "exact": 22,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c08-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I'm going to visit my grandmother.",
+     "textSha256": "c25238803ed6e82394d23d31e3d02affed6fbfd6751f26321c5abb95cadcc4f5",
+     "chars": 34,
+     "audio": "en/c08-ex1.mp3",
+     "align": "en/c08-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  }
+ ]
+}

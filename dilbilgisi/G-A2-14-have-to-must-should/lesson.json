@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "id": "G-A2-14-have-to-must-should",
+  "level": "A2",
+  "titleTr": "have to / must / should: zorunluluk ve öneri",
+  "titleEn": "have to, must, should",
+  "goalTr": "Zorunluluğu have to ve must, yasağı mustn't, gereksizliği don't have to, öneriyi should ile söylersin.",
+  "prerequisites": [
+    "G-A1-08-imperatives",
+    "G-A1-14-do-does"
+  ],
+  "contentVersion": 1,
+  "status": "DRAFT",
+  "aiGenerated": true,
+  "teacherReview": null,
+  "linksTo": {
+    "episodes": [],
+    "books": [
+      "A2-K02",
+      "A2-K03",
+      "A2-K05"
+    ]
+  },
+  "properNouns": [
+    "Paloma",
+    "Jonas"
+  ],
+  "narration": {
+    "tr": {
+      "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+    }
+  }
+}

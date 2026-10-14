@@ -1,0 +1,406 @@
+{
+ "schemaVersion": 1,
+ "lessonId": "G-A2-02-simple-vs-continuous",
+ "voices": {
+  "tr": {
+   "model": "alania-v2",
+   "voice": "alania2-f1",
+   "timing": "duyu-1",
+   "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+  },
+  "en": {
+   "model": "eleven_v3",
+   "voice": "EXAVITQu4vr4xnSDxMaL",
+   "speed": 0.95
+  }
+ },
+ "cards": [
+  {
+   "card": "c01",
+   "type": "hook",
+   "segments": [
+    {
+     "id": "c01-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "İkizler mutfağı una bulamış. Finn, tam şu anda ne yaptıklarını söylüyor. Peki bunu her pazar yapsalar cümle nasıl olurdu?",
+     "textSha256": "721fddd6ee261592c451912a7509151a719734b6ec3ea56cec0ec40229228abe",
+     "chars": 121,
+     "audio": "tr/c01-tr.mp3",
+     "align": "tr/c01-tr.align.json",
+     "present": true,
+     "duration": 8.32,
+     "quality": {
+      "words": 19,
+      "exact": 17,
+      "fuzzy": 2,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c01-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "We're making pancakes.",
+     "textSha256": "13890dff6b7d87c6fe6845623fef92cac4b5d219209bd52f590ed91954b43c59",
+     "chars": 22,
+     "audio": "en/c01-ex1.mp3",
+     "align": "en/c01-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c02",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c02-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Her gün, her zaman ya da genel olarak olan şeyler için geniş zaman kullanılır. Şu anda ya da bu günlerde olan şeyler için olmak fiili ve -ing gelir. Cümledeki zaman kelimeleri sana yol gösterir.",
+     "textSha256": "e1f474273c99f45da6fe8d695a8d698b8dbf3104c7aa53bbab8cf3004a1724bd",
+     "chars": 194,
+     "audio": "tr/c02-tr.mp3",
+     "align": "tr/c02-tr.align.json",
+     "present": true,
+     "duration": 12.34,
+     "quality": {
+      "words": 34,
+      "exact": 32,
+      "fuzzy": 2,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c02-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I walk to school every day.",
+     "textSha256": "573b5abffed4836f1218cbabe775eca2819dd21c41f8d8ed67643cd5f7159460",
+     "chars": 27,
+     "audio": "en/c02-ex1.mp3",
+     "align": "en/c02-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c02-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "Today I'm taking the bus.",
+     "textSha256": "26d810c2bfe52574175baffa91419253c9b72243715abbd5628de691e8660df5",
+     "chars": 25,
+     "audio": "en/c02-ex2.mp3",
+     "align": "en/c02-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c03",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c03-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Bazı fiiller bir hareket değil, bir durum anlatır: bilmek, sevmek, istemek, anlamak. Bu fiiller şu an için bile çoğu zaman -ing almaz. Türkçede biliyorum desek de İngilizcede geniş zaman kullanılır.",
+     "textSha256": "cb2f0f2e08c5c9dc8cda9ceac60d5937faae317c451c4bad1ba51e114671ece6",
+     "chars": 198,
+     "audio": "tr/c03-tr.mp3",
+     "align": "tr/c03-tr.align.json",
+     "present": true,
+     "duration": 14.42,
+     "quality": {
+      "words": 30,
+      "exact": 29,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I know the answer.",
+     "textSha256": "9bae03a5d7e34a8d5b5c1e6e4e740e9cff2b16b43d705e2f3194d90dde993cf8",
+     "chars": 18,
+     "audio": "en/c03-ex1.mp3",
+     "align": "en/c03-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c03-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "She likes music.",
+     "textSha256": "bcb4769577393de4a2f09d4d575a2256cd4d35326074bd5a1fc1e99ea625ec1c",
+     "chars": 16,
+     "audio": "en/c03-ex2.mp3",
+     "align": "en/c03-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c03-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "I understand you.",
+     "textSha256": "84f98eecf61d667df05098065cb5126cfab11f4103f7d91826a2826d3be9e8fb",
+     "chars": 17,
+     "audio": "en/c03-ex3.mp3",
+     "align": "en/c03-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c04",
+   "type": "examples",
+   "segments": [
+    {
+     "id": "c04-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I usually walk to school, but today I'm taking the bus.",
+     "textSha256": "3400d768df1b8650730b3e6b74d23bf2e888390e1eac243f3c7d8d01c82fbcb3",
+     "chars": 55,
+     "audio": "en/c04-ex1.mp3",
+     "align": "en/c04-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "She likes music. She's listening to it now.",
+     "textSha256": "053f0af4ec9f660669e7b94568359a8c6406785839c7f4c3f85fd784cdd5f7d2",
+     "chars": 43,
+     "audio": "en/c04-ex2.mp3",
+     "align": "en/c04-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "My dad works in a bank.",
+     "textSha256": "ec5d4c3c6bf04282b39527e708aace52649c48c87a84110c11d4864cd479ebdc",
+     "chars": 23,
+     "audio": "en/c04-ex3.mp3",
+     "align": "en/c04-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex4",
+     "lang": "en",
+     "role": "example",
+     "text": "Be quiet! The baby is sleeping.",
+     "textSha256": "bb183619336b4e0b215deaf9573db1fb2645f60f4920a8a1c73d87a65baf394e",
+     "chars": 31,
+     "audio": "en/c04-ex4.mp3",
+     "align": "en/c04-ex4.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex5",
+     "lang": "en",
+     "role": "example",
+     "text": "I know her name.",
+     "textSha256": "ce213a0ec33cdc1d5ef5299fe825e34193bc0d3133d15cac76a04cc75517765e",
+     "chars": 16,
+     "audio": "en/c04-ex5.mp3",
+     "align": "en/c04-ex5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c05",
+   "type": "contrast",
+   "segments": [
+    {
+     "id": "c05-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Türkçede biliyorum da her sabah çay içiyorum da aynı ekle söylenir. İngilizcede birincisi durum, ikincisi alışkanlıktır ve ikisi de -ing almaz. Bu fark ilk başta herkesi şaşırtır, zamanla oturur.",
+     "textSha256": "b0bb43967dcd36efc62af30ee2245876a21d51a666e75a67dbd97d3f03dfac3c",
+     "chars": 195,
+     "audio": "tr/c05-tr.mp3",
+     "align": "tr/c05-tr.align.json",
+     "present": true,
+     "duration": 13.95,
+     "quality": {
+      "words": 29,
+      "exact": 29,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 1,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I know the answer.",
+     "textSha256": "9bae03a5d7e34a8d5b5c1e6e4e740e9cff2b16b43d705e2f3194d90dde993cf8",
+     "chars": 18,
+     "audio": "en/c05-ex1.mp3",
+     "align": "en/c05-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "I drink tea every morning.",
+     "textSha256": "34beee44f15ad9bb287fbf01f8776c87f9fd94cb34608f009a5b502b8e5646a7",
+     "chars": 26,
+     "audio": "en/c05-ex2.mp3",
+     "align": "en/c05-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c06",
+   "type": "practice",
+   "segments": [
+    {
+     "id": "c06-q5",
+     "lang": "en",
+     "role": "say",
+     "text": "I usually walk to school, but today I'm taking the bus.",
+     "textSha256": "3400d768df1b8650730b3e6b74d23bf2e888390e1eac243f3c7d8d01c82fbcb3",
+     "chars": 55,
+     "audio": "en/c06-q5.mp3",
+     "align": "en/c06-q5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c07",
+   "type": "seeInStory",
+   "segments": [
+    {
+     "id": "c07-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "İki zaman da hikâyede ve kitaplarda geçiyor. Şu cümlelere bir daha bak.",
+     "textSha256": "0f174e20340b77f4777dcc246d455b84f7059ea5ac67d43531dfee6de3d90751",
+     "chars": 71,
+     "audio": "tr/c07-tr.mp3",
+     "align": "tr/c07-tr.align.json",
+     "present": true,
+     "duration": 4.96,
+     "quality": {
+      "words": 12,
+      "exact": 11,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    }
+   ]
+  },
+  {
+   "card": "c08",
+   "type": "rule",
+   "segments": [
+    {
+     "id": "c08-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Her zaman olan şey için geniş zaman gelir. Şu an olan şey için olmak fiili ve -ing gelir. Bilmek, sevmek ve istemek gibi durum fiilleri çoğu zaman -ing almaz.",
+     "textSha256": "5cd58fa936d1b54a716c8bee365a4d73166f107cd4a36c21ddd2e91ac3b1692e",
+     "chars": 158,
+     "audio": "tr/c08-tr.mp3",
+     "align": "tr/c08-tr.align.json",
+     "present": true,
+     "duration": 11.39,
+     "quality": {
+      "words": 29,
+      "exact": 29,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c08-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I usually walk, but today I'm taking the bus.",
+     "textSha256": "c2b14cc6d13836ff794d3bbf5bc2849ae16578489da2f3f1fcfe980d1012df6f",
+     "chars": 45,
+     "audio": "en/c08-ex1.mp3",
+     "align": "en/c08-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  }
+ ]
+}

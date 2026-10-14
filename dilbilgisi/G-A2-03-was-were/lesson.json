@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "id": "G-A2-03-was-were",
+  "level": "A2",
+  "titleTr": "was / were: geçmişte \"idi\"",
+  "titleEn": "was and were",
+  "goalTr": "Geçmişteki durumları, yerleri ve özellikleri was ve were ile söyler; soru ve olumsuzunu kurarsın.",
+  "prerequisites": [
+    "G-A1-02-to-be-questions-negatives"
+  ],
+  "contentVersion": 1,
+  "status": "DRAFT",
+  "aiGenerated": true,
+  "teacherReview": null,
+  "linksTo": {
+    "episodes": [
+      "A1-006",
+      "A1-009"
+    ],
+    "books": [
+      "A2-K02",
+      "A2-K03"
+    ]
+  },
+  "properNouns": [
+    "Paloma",
+    "Jonas",
+    "Max",
+    "Finn",
+    "Nora"
+  ],
+  "narration": {
+    "tr": {
+      "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+    }
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "id": "G-A2-09-superlatives",
+  "level": "A2",
+  "titleTr": "En üstünlük: the -est / the most",
+  "titleEn": "Superlatives",
+  "goalTr": "Bir grubun en'ini the -est ya da the most ile söyler, grubu in ya da of ile belirtirsin.",
+  "prerequisites": [
+    "G-A2-08-comparatives",
+    "G-A1-04-the"
+  ],
+  "contentVersion": 1,
+  "status": "DRAFT",
+  "aiGenerated": true,
+  "teacherReview": null,
+  "linksTo": {
+    "episodes": [],
+    "books": [
+      "A2-K01",
+      "A2-K03",
+      "A1-K05",
+      "A2-K02"
+    ]
+  },
+  "properNouns": [
+    "Elif",
+    "Bora"
+  ],
+  "glossary": [
+    "pancake"
+  ],
+  "pronunciations": [
+    {
+      "term": "-est",
+      "say_as": "est"
+    }
+  ],
+  "narration": {
+    "tr": {
+      "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+    }
+  }
+}
