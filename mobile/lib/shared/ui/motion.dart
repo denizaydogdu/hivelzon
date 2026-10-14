@@ -135,23 +135,70 @@ class _StaggerOnceState extends State<StaggerOnce> {
 /// Sakin belirme (H-061): geri bildirim ve özet ikonları hafifçe büyüyerek
 /// gelir (0,85 → 1, 400 ms); zıplama, titreme ya da tekrar yok (K-32).
 /// "Hareketi azalt" açıksa doğrudan son hâli.
+///
+/// H-062: örtük animasyonla (`TweenAnimationBuilder`) çizilir; zamanlayıcı
+/// bırakmaz (oynatıcı ve bölüm sonu tek karede de test edilebilir).
 class CalmPop extends StatelessWidget {
   const CalmPop({super.key, required this.child});
 
   final Widget child;
 
+  static const _fadeEnd = 0.625; // base / slow
+
   @override
   Widget build(BuildContext context) {
     if (AppMotion.reduced(context)) return child;
-    return child
-        .animate()
-        .fadeIn(duration: AppMotion.base, curve: AppMotion.enter)
-        .scaleXY(
-          begin: 0.85,
-          end: 1,
-          duration: AppMotion.slow,
-          curve: Curves.easeOutBack,
-        );
+    return TweenAnimationBuilder<double>(
+      tween: Tween(begin: 0, end: 1),
+      duration: AppMotion.slow,
+      child: child,
+      builder: (context, t, child) => Opacity(
+        opacity: const Interval(
+          0,
+          _fadeEnd,
+          curve: AppMotion.enter,
+        ).transform(t),
+        child: Transform.scale(
+          scale: 0.85 + 0.15 * Curves.easeOutBack.transform(t),
+          child: child,
+        ),
+      ),
+    );
+  }
+}
+
+/// Tek öğenin yumuşak girişi (H-062): solarak ve hafifçe yukarı kayarak
+/// gelir; [index] ile sırayla (öğe başına [AppMotion.stagger], en çok
+/// [AppMotion.staggerMaxItems]). Örtük animasyon: zamanlayıcı yok, ilk
+/// karede de dokunulabilir. "Hareketi azalt" açıksa doğrudan görünür.
+class SoftEntrance extends StatelessWidget {
+  const SoftEntrance({super.key, required this.child, this.index = 0});
+
+  final Widget child;
+  final int index;
+
+  @override
+  Widget build(BuildContext context) {
+    if (AppMotion.reduced(context)) return child;
+    final steps = index < AppMotion.staggerMaxItems
+        ? index
+        : AppMotion.staggerMaxItems;
+    final delay = AppMotion.stagger * steps;
+    final total = AppMotion.base + delay;
+    final start = delay.inMicroseconds / total.inMicroseconds;
+    return TweenAnimationBuilder<double>(
+      tween: Tween(begin: 0, end: 1),
+      duration: total,
+      curve: Interval(start, 1, curve: AppMotion.enter),
+      child: child,
+      builder: (context, t, child) => Opacity(
+        opacity: t,
+        child: FractionalTranslation(
+          translation: Offset(0, (1 - t) * AppMotion.slideOffset),
+          child: child,
+        ),
+      ),
+    );
   }
 }
 
@@ -177,15 +224,19 @@ class CalmCelebration extends StatelessWidget {
       ),
     );
     if (!still) {
-      halo = halo
-          .animate()
-          .fadeIn(duration: AppMotion.slow, curve: AppMotion.enter)
-          .scaleXY(
-            begin: 0.6,
-            end: 1,
-            duration: AppMotion.slow * 2,
-            curve: AppMotion.enter,
-          );
+      // Örtük animasyon (H-062): zamanlayıcı bırakmaz.
+      halo = TweenAnimationBuilder<double>(
+        tween: Tween(begin: 0, end: 1),
+        duration: AppMotion.slow * 2,
+        child: halo,
+        builder: (context, t, child) => Opacity(
+          opacity: const Interval(0, 0.5, curve: AppMotion.enter).transform(t),
+          child: Transform.scale(
+            scale: 0.6 + 0.4 * AppMotion.enter.transform(t),
+            child: child,
+          ),
+        ),
+      );
     }
     return ExcludeSemantics(
       child: SizedBox.square(

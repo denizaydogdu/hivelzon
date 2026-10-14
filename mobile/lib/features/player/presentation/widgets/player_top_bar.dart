@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../../app/theme.dart';
+import '../../../../app/design/design.dart';
+import '../../../../l10n/tr_strings.dart';
 import '../../application/player_session.dart';
 
 /// Üst çubuk (T3): kapat · ilerleme noktaları · 🎯 görev · hız · altyazı.
@@ -32,51 +33,57 @@ class PlayerTopBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.fromLTRB(
-        AppSpacing.xs,
-        AppSpacing.xs,
-        AppSpacing.xs,
+        AppSpace.s8,
+        AppSpace.s8,
+        AppSpace.s8,
         0,
       ),
-      padding: const EdgeInsets.symmetric(horizontal: AppSpacing.xs),
+      padding: const EdgeInsets.symmetric(horizontal: AppSpace.s8),
       decoration: BoxDecoration(
-        color: AppColors.sand.withValues(alpha: 0.94),
-        borderRadius: BorderRadius.circular(AppTheme.radius),
+        color: AppPalette.sand.withValues(alpha: 0.94),
+        borderRadius: AppRadius.lgAll,
+        boxShadow: AppShadows.level1,
       ),
       child: Row(
         children: [
           IconButton(
             onPressed: onClose,
-            tooltip: 'Bölümden çık',
-            constraints: const BoxConstraints(minWidth: 48, minHeight: 48),
+            tooltip: PlayerTexts.exitEpisode,
             style: IconButton.styleFrom(
-              backgroundColor: AppColors.seaBlue,
-              foregroundColor: Colors.white,
+              backgroundColor: AppPalette.seaBlue,
+              foregroundColor: AppPalette.white,
             ),
             icon: const Icon(
               Icons.close_rounded,
-              semanticLabel: 'Bölümden çık',
+              semanticLabel: PlayerTexts.exitEpisode,
             ),
           ),
           Expanded(
             child: Semantics(
-              label: 'Sahne ${dotIndex + 1} / $dotCount',
+              label: PlayerTexts.sceneProgress(dotIndex + 1, dotCount),
               child: ExcludeSemantics(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    for (var i = 0; i < dotCount; i++)
-                      Container(
-                        width: 10,
-                        height: 10,
-                        margin: const EdgeInsets.symmetric(horizontal: 4),
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: i <= dotIndex
-                              ? AppColors.seaBlue
-                              : AppColors.seaBlue.withValues(alpha: 0.2),
+                // Dar ekranda (320 px, büyük yazı) noktalar sığmazsa küçülür.
+                child: FittedBox(
+                  fit: BoxFit.scaleDown,
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      for (var i = 0; i < dotCount; i++)
+                        Container(
+                          width: 10,
+                          height: 10,
+                          margin: const EdgeInsets.symmetric(
+                            horizontal: AppSpace.s4,
+                          ),
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: i <= dotIndex
+                                ? AppPalette.seaBlue
+                                : AppPalette.seaBlue200,
+                          ),
                         ),
-                      ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -85,23 +92,20 @@ class PlayerTopBar extends StatelessWidget {
             IconButton(
               key: const ValueKey('mission-button'),
               onPressed: onMission,
-              tooltip: 'Görev ve hedef ifadeler',
-              constraints: const BoxConstraints(minWidth: 48, minHeight: 48),
-              color: AppColors.seaBlue,
+              tooltip: PlayerTexts.missionButton,
+              color: AppPalette.seaBlue,
               icon: const Icon(
                 Icons.track_changes_rounded,
-                semanticLabel: 'Görev ve hedef ifadeler',
+                semanticLabel: PlayerTexts.missionButton,
               ),
             ),
           _Chip(
-            label: speed == 1.0 ? '1x' : '0,75x',
-            semantics: speed == 1.0
-                ? 'Hız normal. Yavaşlatmak için dokun.'
-                : 'Hız 0,75. Normale dönmek için dokun.',
+            label: PlayerTexts.speed(speed),
+            semantics: PlayerTexts.speedSemantics(speed),
             selected: speed != 1.0,
             onTap: () => onSpeed(speed == 1.0 ? 0.75 : 1.0),
           ),
-          const SizedBox(width: AppSpacing.xs),
+          const SizedBox(width: AppSpace.s8),
           _SubtitleMenu(mode: subtitleMode, onChanged: onSubtitleMode),
         ],
       ),
@@ -130,27 +134,16 @@ class _Chip extends StatelessWidget {
       excludeSemantics: true,
       child: InkWell(
         onTap: onTap,
-        borderRadius: BorderRadius.circular(24),
+        borderRadius: BorderRadius.circular(AppRadius.full),
         child: ConstrainedBox(
-          constraints: const BoxConstraints(minWidth: 56, minHeight: 48),
+          constraints: const BoxConstraints(
+            minWidth: AppTouch.primary,
+            minHeight: AppTouch.min,
+          ),
           child: Center(
-            child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-              decoration: BoxDecoration(
-                color: selected ? AppColors.seaBlue : Colors.white,
-                borderRadius: BorderRadius.circular(24),
-                border: Border.all(
-                  color: AppColors.seaBlue.withValues(alpha: 0.3),
-                ),
-              ),
-              child: Text(
-                label,
-                style: TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w700,
-                  color: selected ? Colors.white : AppColors.seaBlue,
-                ),
-              ),
+            child: _Pill(
+              selected: selected,
+              child: _PillText(label, selected: selected),
             ),
           ),
         ),
@@ -168,20 +161,20 @@ class _SubtitleMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final label = switch (mode) {
-      SubtitleMode.en => 'EN',
-      SubtitleMode.enTr => 'EN+TR',
-      SubtitleMode.off => 'Kapalı',
+      SubtitleMode.en => PlayerTexts.subtitleEn,
+      SubtitleMode.enTr => PlayerTexts.subtitleEnTr,
+      SubtitleMode.off => PlayerTexts.subtitleOff,
     };
     // Ekran okuyucu için kısaltma açılır ("EN" değil "İngilizce").
     final spoken = switch (mode) {
-      SubtitleMode.en => 'İngilizce',
-      SubtitleMode.enTr => 'İngilizce ve Türkçe',
-      SubtitleMode.off => 'kapalı',
+      SubtitleMode.en => PlayerTexts.subtitleEnSpoken,
+      SubtitleMode.enTr => PlayerTexts.subtitleEnTrSpoken,
+      SubtitleMode.off => PlayerTexts.subtitleOffSpoken,
     };
     final on = mode != SubtitleMode.off;
     return PopupMenuButton<SubtitleMode>(
       key: const ValueKey('subtitle-menu'),
-      tooltip: 'Altyazı: $spoken',
+      tooltip: PlayerTexts.subtitleTooltip(spoken),
       onSelected: onChanged,
       position: PopupMenuPosition.under,
       itemBuilder: (context) => [
@@ -189,50 +182,39 @@ class _SubtitleMenu extends StatelessWidget {
           key: const ValueKey('subtitle-mode-en'),
           value: SubtitleMode.en,
           checked: mode == SubtitleMode.en,
-          child: const Text('EN (İngilizce)'),
+          child: const Text(PlayerTexts.subtitleMenuEn),
         ),
         CheckedPopupMenuItem(
           key: const ValueKey('subtitle-mode-entr'),
           value: SubtitleMode.enTr,
           checked: mode == SubtitleMode.enTr,
-          child: const Text('EN + TR (Türkçe satırla)'),
+          child: const Text(PlayerTexts.subtitleMenuEnTr),
         ),
         CheckedPopupMenuItem(
           key: const ValueKey('subtitle-mode-off'),
           value: SubtitleMode.off,
           checked: mode == SubtitleMode.off,
-          child: const Text('Kapalı'),
+          child: const Text(PlayerTexts.subtitleMenuOff),
         ),
       ],
       child: ConstrainedBox(
-        constraints: const BoxConstraints(minWidth: 56, minHeight: 48),
+        constraints: const BoxConstraints(
+          minWidth: AppTouch.primary,
+          minHeight: AppTouch.min,
+        ),
         child: Center(
-          child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-            decoration: BoxDecoration(
-              color: on ? AppColors.seaBlue : Colors.white,
-              borderRadius: BorderRadius.circular(24),
-              border: Border.all(
-                color: AppColors.seaBlue.withValues(alpha: 0.3),
-              ),
-            ),
+          child: _Pill(
+            selected: on,
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
                 Icon(
                   Icons.closed_caption_rounded,
-                  size: 18,
-                  color: on ? Colors.white : AppColors.seaBlue,
+                  size: AppIconSize.sm,
+                  color: on ? AppPalette.white : AppPalette.seaBlue,
                 ),
-                const SizedBox(width: 4),
-                Text(
-                  label,
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w700,
-                    color: on ? Colors.white : AppColors.seaBlue,
-                  ),
-                ),
+                const SizedBox(width: AppSpace.s4),
+                _PillText(label, selected: on),
               ],
             ),
           ),
@@ -240,4 +222,44 @@ class _SubtitleMenu extends StatelessWidget {
       ),
     );
   }
+}
+
+/// Üst çubuktaki hap (hız, altyazı): seçiliyken deniz mavisi dolgu.
+class _Pill extends StatelessWidget {
+  const _Pill({required this.selected, required this.child});
+
+  final bool selected;
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) => AnimatedContainer(
+    duration: AppMotion.of(context, AppMotion.fast),
+    curve: AppMotion.standard,
+    padding: const EdgeInsets.symmetric(
+      horizontal: AppSpace.s12,
+      vertical: AppSpace.s4,
+    ),
+    decoration: BoxDecoration(
+      color: selected ? AppPalette.seaBlue : AppPalette.white,
+      borderRadius: BorderRadius.circular(AppRadius.full),
+      border: Border.all(color: AppPalette.seaBlue200),
+    ),
+    child: child,
+  );
+}
+
+class _PillText extends StatelessWidget {
+  const _PillText(this.label, {required this.selected});
+
+  final String label;
+  final bool selected;
+
+  @override
+  Widget build(BuildContext context) => Text(
+    label,
+    style: Theme.of(context).textTheme.labelLarge?.copyWith(
+      fontWeight: AppFonts.bold,
+      color: selected ? AppPalette.white : AppPalette.seaBlue,
+    ),
+  );
 }

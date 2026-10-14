@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 import '../../../../app/theme.dart';
+import '../../../../shared/ui/ui.dart';
 import '../../../../l10n/tr_strings.dart';
 import '../../../../shared/speech/speak_widgets.dart';
 import '../../../../shared/speech/speech_match.dart';
@@ -44,87 +45,91 @@ class DecisionSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return PlayerPanel(
-      padding: const EdgeInsets.fromLTRB(
-        AppSpacing.md,
-        AppSpacing.sm,
-        AppSpacing.md,
-        AppSpacing.sm,
-      ),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Row(
-            children: [
-              Expanded(
-                child: Divider(
-                  color: AppColors.lighthouseYellow.withValues(alpha: 0.7),
+    // Giriş (H-062): kart alttan yumuşakça gelir, seçenekler sırayla belirir.
+    // Dokunma ilk karede de çalışır; "Hareketi azalt" açıksa durağan.
+    return PlayerEntrance(
+      child: PlayerPanel(
+        padding: const EdgeInsets.fromLTRB(
+          AppSpace.s24,
+          AppSpace.s16,
+          AppSpace.s24,
+          AppSpace.s16,
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            const _LighthouseRule(),
+            Semantics(
+              header: true,
+              child: Text(
+                PlayerTexts.decisionHeading,
+                textAlign: TextAlign.center,
+                style: theme.textTheme.headlineSmall?.copyWith(
+                  color: AppPalette.seaBlue,
                 ),
               ),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: AppSpacing.xs),
-                child: Icon(
-                  Icons.flare_rounded,
-                  color: AppColors.lighthouseYellow,
-                ),
-              ),
-              Expanded(
-                child: Divider(
-                  color: AppColors.lighthouseYellow.withValues(alpha: 0.7),
-                ),
-              ),
-            ],
-          ),
-          Semantics(
-            header: true,
-            child: Text(
-              'Ne dersin?',
+            ),
+            const SizedBox(height: AppSpace.s4),
+            Text(
+              node.prompt.tr,
               textAlign: TextAlign.center,
-              style: theme.textTheme.headlineSmall?.copyWith(
-                color: AppColors.seaBlue,
-                fontWeight: FontWeight.w700,
+              style: theme.textTheme.bodyLarge?.copyWith(color: AppPalette.ink),
+            ),
+            const SizedBox(height: AppSpace.s16),
+            for (final (i, o) in node.options.indexed) ...[
+              PlayerEntrance(
+                index: i + 1,
+                child: _OptionButton(
+                  option: o,
+                  onTap: () => onChoose(o),
+                  onListen: o.audio == null ? null : () => onListen(o.audio!),
+                ),
               ),
-            ),
-          ),
-          const SizedBox(height: 4),
-          Text(
-            node.prompt.tr,
-            textAlign: TextAlign.center,
-            style: theme.textTheme.bodyLarge?.copyWith(color: AppColors.ink),
-          ),
-          const SizedBox(height: AppSpacing.sm),
-          for (final o in node.options) ...[
-            _OptionButton(
-              option: o,
-              onTap: () => onChoose(o),
-              onListen: o.audio == null ? null : () => onListen(o.audio!),
-            ),
-            const SizedBox(height: AppSpacing.xs),
+              const SizedBox(height: AppSpace.s8),
+            ],
+            if (_canSpeak)
+              SpeakToChoose(
+                key: ValueKey('speak-choose-${node.id}'),
+                node: node,
+                env: speak!,
+                contentId: contentId,
+                onChoose: onChoose,
+              ),
+            if (onHint != null)
+              Align(
+                child: TextButton.icon(
+                  onPressed: onHint,
+                  icon: const HiAvatar(size: AppIconSize.lg, glow: false),
+                  label: const Text(PlayerTexts.askHint),
+                ),
+              ),
           ],
-          if (_canSpeak)
-            SpeakToChoose(
-              key: ValueKey('speak-choose-${node.id}'),
-              node: node,
-              env: speak!,
-              contentId: contentId,
-              onChoose: onChoose,
+        ),
+      ),
+    );
+  }
+}
+
+/// Kartın üstündeki fener çizgisi: iki ince sarı çizgi ve ortada ışık.
+class _LighthouseRule extends StatelessWidget {
+  const _LighthouseRule();
+
+  @override
+  Widget build(BuildContext context) {
+    const line = Expanded(child: Divider(color: AppPalette.yellow200));
+    return const ExcludeSemantics(
+      child: Row(
+        children: [
+          line,
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: AppSpace.s8),
+            child: Icon(
+              Icons.flare_rounded,
+              color: AppPalette.lighthouseYellow,
             ),
-          if (onHint != null)
-            Align(
-              child: TextButton.icon(
-                onPressed: onHint,
-                style: TextButton.styleFrom(
-                  minimumSize: const Size(48, 48),
-                  foregroundColor: AppColors.seaBlue,
-                ),
-                icon: const HiAvatar(size: 32, glow: false),
-                label: const Text(
-                  'Hi\'den ipucu al',
-                  style: TextStyle(fontWeight: FontWeight.w500),
-                ),
-              ),
-            ),
+          ),
+          line,
         ],
       ),
     );
@@ -216,17 +221,17 @@ class _SpeakToChooseState extends State<SpeakToChoose> {
     final theme = Theme.of(context);
     if (_unclear >= widget.maxUnclear) {
       return Padding(
-        padding: const EdgeInsets.only(bottom: AppSpacing.xs),
+        padding: const EdgeInsets.only(bottom: AppSpace.s8),
         child: Text(
           SpeakTexts.decisionTapOnly,
           key: const ValueKey('speak-choose-tap-only'),
           textAlign: TextAlign.center,
-          style: theme.textTheme.bodyMedium?.copyWith(color: AppColors.ink),
+          style: theme.textTheme.bodyMedium?.copyWith(color: AppPalette.ink),
         ),
       );
     }
     return Padding(
-      padding: const EdgeInsets.only(bottom: AppSpacing.xs),
+      padding: const EdgeInsets.only(bottom: AppSpace.s8),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         mainAxisSize: MainAxisSize.min,
@@ -235,13 +240,7 @@ class _SpeakToChooseState extends State<SpeakToChoose> {
             key: const ValueKey('speak-choose-mic'),
             onPressed: _go,
             style: OutlinedButton.styleFrom(
-              minimumSize: const Size.fromHeight(48),
-              foregroundColor: AppColors.seaBlue,
-              side: BorderSide(color: AppColors.seaBlue.withValues(alpha: 0.4)),
-              textStyle: const TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w700,
-              ),
+              minimumSize: const Size.fromHeight(AppTouch.min),
             ),
             icon: Icon(
               _listening ? Icons.graphic_eq_rounded : Icons.mic_rounded,
@@ -250,7 +249,7 @@ class _SpeakToChooseState extends State<SpeakToChoose> {
           ),
           if (_listening || _unclear > 0)
             Padding(
-              padding: const EdgeInsets.only(top: 4),
+              padding: const EdgeInsets.only(top: AppSpace.s4),
               child: Semantics(
                 liveRegion: true,
                 child: Text(
@@ -260,7 +259,7 @@ class _SpeakToChooseState extends State<SpeakToChoose> {
                   key: const ValueKey('speak-choose-message'),
                   textAlign: TextAlign.center,
                   style: theme.textTheme.bodyMedium?.copyWith(
-                    color: AppColors.ink,
+                    color: AppPalette.ink,
                   ),
                 ),
               ),
@@ -285,51 +284,51 @@ class _OptionButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final icons = _arrowIcons(option.icon);
-    return Material(
-      color: AppPalette.seaBlue50,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(AppTheme.radius),
-        side: BorderSide(color: AppColors.seaBlue.withValues(alpha: 0.25)),
-      ),
-      child: InkWell(
-        key: ValueKey('option-${option.id}'),
-        borderRadius: BorderRadius.circular(AppTheme.radius),
-        onTap: onTap,
-        child: ConstrainedBox(
-          constraints: const BoxConstraints(minHeight: 56),
-          child: Padding(
-            padding: const EdgeInsets.only(left: AppSpacing.sm),
-            child: Row(
-              children: [
-                for (final i in icons)
-                  Padding(
-                    padding: const EdgeInsets.only(right: 4),
-                    child: Icon(i, color: AppColors.seaBlue),
-                  ),
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                      vertical: AppSpacing.sm,
+    return PressScale(
+      child: Material(
+        color: AppPalette.seaBlue50,
+        shape: const RoundedRectangleBorder(
+          borderRadius: AppRadius.mdAll,
+          side: BorderSide(color: AppPalette.seaBlue200),
+        ),
+        child: InkWell(
+          key: ValueKey('option-${option.id}'),
+          borderRadius: AppRadius.mdAll,
+          onTap: onTap,
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(minHeight: AppTouch.primary),
+            child: Padding(
+              padding: const EdgeInsets.only(left: AppSpace.s16),
+              child: Row(
+                children: [
+                  for (final i in icons)
+                    Padding(
+                      padding: const EdgeInsets.only(right: AppSpace.s4),
+                      child: Icon(i, color: AppPalette.seaBlue),
                     ),
-                    child: Text(
-                      option.text,
-                      style: const TextStyle(
-                        fontSize: 18,
-                        color: AppColors.seaBlue,
-                        fontWeight: FontWeight.w500,
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                        vertical: AppSpace.s12,
+                      ),
+                      child: Text(
+                        option.text,
+                        style: AppTypography.lead.copyWith(
+                          color: AppPalette.seaBlue,
+                        ),
                       ),
                     ),
                   ),
-                ),
-                if (onListen != null)
-                  ListenButton(
-                    onPressed: onListen!,
-                    semanticLabel: 'Dinle: ${option.text}',
-                    filled: false,
-                  )
-                else
-                  const SizedBox(width: AppSpacing.sm),
-              ],
+                  if (onListen != null)
+                    ListenButton(
+                      onPressed: onListen!,
+                      semanticLabel: PlayerTexts.listenTo(option.text),
+                      filled: false,
+                    )
+                  else
+                    const SizedBox(width: AppSpace.s16),
+                ],
+              ),
             ),
           ),
         ),

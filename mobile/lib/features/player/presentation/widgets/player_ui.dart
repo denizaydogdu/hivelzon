@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 
-import '../../../../app/theme.dart';
+import '../../../../app/design/design.dart';
+import '../../../../l10n/tr_strings.dart';
+import '../../../../shared/ui/ui.dart';
 import 'hi_avatar.dart';
 
-/// Oynatıcı katmanlarında ortak panel: kum zemin, 12 px köşe.
+/// Oynatıcı katmanlarında ortak panel (H-062): kum zemin, 20 px köşe,
+/// video üstünde belirgin gölge.
 class PlayerPanel extends StatelessWidget {
   const PlayerPanel({
     super.key,
     required this.child,
-    this.padding = const EdgeInsets.all(AppSpacing.md),
+    this.padding = const EdgeInsets.all(AppSpace.s24),
   });
 
   final Widget child;
@@ -19,10 +22,10 @@ class PlayerPanel extends StatelessWidget {
     return Container(
       width: double.infinity,
       padding: padding,
-      decoration: BoxDecoration(
-        color: AppColors.sand,
-        borderRadius: BorderRadius.circular(AppTheme.radius),
-        boxShadow: const [
+      decoration: const BoxDecoration(
+        color: AppPalette.sand,
+        borderRadius: AppRadius.lgAll,
+        boxShadow: [
           BoxShadow(
             color: AppScrim.panelShadow,
             blurRadius: 16,
@@ -31,11 +34,27 @@ class PlayerPanel extends StatelessWidget {
         ],
       ),
       child: DefaultTextStyle.merge(
-        style: const TextStyle(color: AppColors.ink),
+        style: const TextStyle(color: AppPalette.ink),
         child: child,
       ),
     );
   }
+}
+
+/// Oynatıcı katmanının girişi (H-062): solarak ve hafifçe yukarı kayarak
+/// belirir ([index] sırayla gecikme). "Hareketi azalt" açıksa durağan.
+///
+/// Yalnız görünüm: dokunma ilk karede de çalışır, oynatma ve geçiş
+/// zamanlamasına dokunmaz (H-031: geçiş ≤ 150 ms; altyazı ≤ 0,2 sn).
+class PlayerEntrance extends StatelessWidget {
+  const PlayerEntrance({super.key, required this.child, this.index = 0});
+
+  final Widget child;
+  final int index;
+
+  @override
+  Widget build(BuildContext context) =>
+      SoftEntrance(index: index, child: child);
 }
 
 /// Büyük, en az 56 px yüksek birincil eylem düğmesi (fener sarısı).
@@ -54,17 +73,20 @@ class PrimaryAction extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final style = FilledButton.styleFrom(
-      minimumSize: const Size.fromHeight(56),
+      minimumSize: const Size.fromHeight(AppTouch.primary),
       textStyle: AppTypography.buttonLarge,
     );
-    return icon == null
-        ? FilledButton(onPressed: onPressed, style: style, child: Text(label))
-        : FilledButton.icon(
-            onPressed: onPressed,
-            style: style,
-            icon: Icon(icon),
-            label: Text(label),
-          );
+    return PressScale(
+      enabled: onPressed != null,
+      child: icon == null
+          ? FilledButton(onPressed: onPressed, style: style, child: Text(label))
+          : FilledButton.icon(
+              onPressed: onPressed,
+              style: style,
+              icon: Icon(icon),
+              label: Text(label),
+            ),
+    );
   }
 }
 
@@ -88,8 +110,8 @@ class EmphasisText extends StatelessWidget {
           text: parts[i],
           style: i.isOdd
               ? const TextStyle(
-                  fontWeight: FontWeight.w700,
-                  color: AppColors.seaBlue,
+                  fontWeight: AppFonts.bold,
+                  color: AppPalette.seaBlue,
                 )
               : null,
         ),
@@ -120,11 +142,14 @@ class ListenButton extends StatelessWidget {
     return IconButton(
       onPressed: onPressed,
       tooltip: semanticLabel,
-      constraints: const BoxConstraints(minWidth: 48, minHeight: 48),
+      constraints: const BoxConstraints(
+        minWidth: AppTouch.min,
+        minHeight: AppTouch.min,
+      ),
       style: filled
           ? IconButton.styleFrom(
-              backgroundColor: AppColors.lighthouseYellow,
-              foregroundColor: AppColors.ink,
+              backgroundColor: AppPalette.lighthouseYellow,
+              foregroundColor: AppPalette.ink,
             )
           : null,
       icon: Icon(Icons.volume_up_rounded, semanticLabel: semanticLabel),
@@ -133,6 +158,9 @@ class ListenButton extends StatelessWidget {
 }
 
 /// Hi paneli (T4): ışıklı balon, Türkçe metin, isteğe bağlı ses ve eylemler.
+///
+/// Giriş (H-062): Hi sakin belirir, ardından panel ve eylemler sırayla
+/// yukarı kayarak gelir. "Hareketi azalt" açıksa durağan.
 class HiPanel extends StatelessWidget {
   const HiPanel({
     super.key,
@@ -153,54 +181,59 @@ class HiPanel extends StatelessWidget {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        const HiAvatar(size: 120),
-        const SizedBox(height: AppSpacing.sm),
-        PlayerPanel(
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              if (onListen != null) ...[
-                ListenButton(
-                  onPressed: onListen!,
-                  semanticLabel: 'Hi\'yi dinle',
-                ),
-                const SizedBox(width: AppSpacing.sm),
-              ],
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    if (title != null)
-                      Padding(
-                        padding: const EdgeInsets.only(bottom: AppSpacing.xs),
-                        child: Text(
-                          title!,
-                          style: theme.textTheme.labelLarge?.copyWith(
-                            color: AppColors.seaBlue,
-                            fontWeight: FontWeight.w500,
+        const CalmPop(child: HiAvatar(size: 120)),
+        const SizedBox(height: AppSpace.s16),
+        PlayerEntrance(
+          index: 1,
+          child: PlayerPanel(
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                if (onListen != null) ...[
+                  ListenButton(
+                    onPressed: onListen!,
+                    semanticLabel: PlayerTexts.listenHi,
+                  ),
+                  const SizedBox(width: AppSpace.s16),
+                ],
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      if (title != null)
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: AppSpace.s8),
+                          child: Text(
+                            title!,
+                            style: theme.textTheme.labelLarge?.copyWith(
+                              color: AppPalette.seaBlue,
+                            ),
                           ),
                         ),
+                      EmphasisText(
+                        text,
+                        style: theme.textTheme.bodyLarge?.copyWith(
+                          color: AppPalette.ink,
+                          fontWeight: AppFonts.medium,
+                          height: 1.35,
+                        ),
                       ),
-                    EmphasisText(
-                      text,
-                      style: theme.textTheme.titleMedium?.copyWith(
-                        color: AppColors.ink,
-                        fontWeight: FontWeight.w500,
-                        height: 1.35,
-                      ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
-        const SizedBox(height: AppSpacing.sm),
-        Wrap(
-          spacing: AppSpacing.sm,
-          runSpacing: AppSpacing.xs,
-          alignment: WrapAlignment.center,
-          children: actions,
+        const SizedBox(height: AppSpace.s16),
+        PlayerEntrance(
+          index: 2,
+          child: Wrap(
+            spacing: AppSpace.s16,
+            runSpacing: AppSpace.s8,
+            alignment: WrapAlignment.center,
+            children: actions,
+          ),
         ),
       ],
     );
@@ -208,8 +241,4 @@ class HiPanel extends StatelessWidget {
 }
 
 /// Nazik, cezalandırmayan genel geri bildirimler (K-32; ürün ilkeleri).
-const List<String> kGentleRetryMessages = [
-  'Bir daha bakalım.',
-  'Neredeyse! Bir kez daha dene.',
-  'Acele yok, tekrar dene.',
-];
+const List<String> kGentleRetryMessages = PlayerTexts.gentleRetry;

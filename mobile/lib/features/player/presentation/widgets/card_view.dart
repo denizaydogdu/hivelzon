@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../../../app/theme.dart';
+import '../../../../app/design/design.dart';
 import '../../../../l10n/tr_strings.dart';
+import '../../../../shared/ui/ui.dart';
 import '../../domain/episode.dart';
 import 'player_ui.dart';
 
@@ -46,13 +47,13 @@ class CardView extends StatelessWidget {
       CardKind.note => _NoteCard(card: card, lines: lines, onTap: onLineTap),
       CardKind.line => _LineCard(lines: lines, onTap: onLineTap),
       CardKind.mission => _LinesPanel(
-        caption: 'GÖREV',
+        caption: PlayerTexts.missionLabel,
         icon: Icons.flag_rounded,
         lines: lines,
         onTap: onLineTap,
       ),
       CardKind.clue => _LinesPanel(
-        caption: 'YENİ İPUCU',
+        caption: PlayerTexts.newClueLabel,
         icon: Icons.push_pin_rounded,
         lines: lines,
         onTap: onLineTap,
@@ -65,18 +66,24 @@ class CardView extends StatelessWidget {
       ),
     };
     final showButton = !card.autoAdvance && card.kind != CardKind.hi;
+    // Giriş (H-062): kart ve düğmesi sırayla gelir. Hi kartı kendi girişini
+    // yapar (HiPanel); kendiliğinden geçen başlık kartı durağan kalır.
+    final animate = card.kind != CardKind.hi && card.kind != CardKind.title;
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        body,
+        if (animate) PlayerEntrance(child: body) else body,
         if (showButton) ...[
-          const SizedBox(height: AppSpacing.sm),
+          const SizedBox(height: AppSpace.s16),
           if (onListen != null && card.kind != CardKind.hi)
             Padding(
-              padding: const EdgeInsets.only(bottom: AppSpacing.xs),
-              child: ListenButton(onPressed: onListen!, semanticLabel: 'Dinle'),
+              padding: const EdgeInsets.only(bottom: AppSpace.s8),
+              child: ListenButton(
+                onPressed: onListen!,
+                semanticLabel: PlayerTexts.listen,
+              ),
             ),
-          _continue(),
+          PlayerEntrance(index: 1, child: _continue()),
         ],
       ],
     );
@@ -84,7 +91,7 @@ class CardView extends StatelessWidget {
 
   Widget _continue() => PrimaryAction(
     key: const ValueKey('card-continue'),
-    label: isLast ? 'Bölümü bitir' : PlayerTexts.continueAction,
+    label: isLast ? PlayerTexts.finishEpisode : PlayerTexts.continueAction,
     icon: Icons.arrow_forward_rounded,
     onPressed: onContinue,
   );
@@ -97,14 +104,14 @@ Widget _tappable(int index, CardLine l, LineTap? onTap, Widget child) {
   if (onTap == null || l.lang != Lang.en || l.gloss == null) return child;
   return Semantics(
     button: true,
-    label: '${l.text}. Anlamını görmek için dokun.',
+    label: PlayerTexts.tapForMeaning(l.text),
     excludeSemantics: true,
     child: InkWell(
       key: ValueKey('card-line-$index'),
-      borderRadius: BorderRadius.circular(AppTheme.radius),
+      borderRadius: AppRadius.mdAll,
       onTap: () => onTap(index, l),
       child: ConstrainedBox(
-        constraints: const BoxConstraints(minHeight: 48),
+        constraints: const BoxConstraints(minHeight: AppTouch.min),
         child: Align(alignment: Alignment.centerLeft, child: child),
       ),
     ),
@@ -117,26 +124,20 @@ TextStyle? _tapStyle(TextStyle? base, CardLine l, LineTap? onTap) =>
     : base?.copyWith(
         decoration: TextDecoration.underline,
         decorationStyle: TextDecorationStyle.dotted,
-        decorationColor: AppColors.seaBlue.withValues(alpha: 0.5),
+        decorationColor: AppPalette.seaBlue300,
       );
 
 TextStyle? _styleFor(BuildContext context, CardLine l) {
   final t = Theme.of(context).textTheme;
   return switch (l.style) {
-    'heading' => t.headlineSmall?.copyWith(
-      color: AppColors.seaBlue,
-      fontWeight: FontWeight.w700,
+    'heading' => t.headlineSmall?.copyWith(color: AppPalette.seaBlue),
+    'highlight' => t.titleMedium?.copyWith(color: AppPalette.seaBlue),
+    'caption' => AppTypography.caps.copyWith(color: AppPalette.orange700),
+    _ => t.bodyLarge?.copyWith(
+      color: AppPalette.ink,
+      fontWeight: AppFonts.medium,
+      height: 1.35,
     ),
-    'highlight' => t.titleMedium?.copyWith(
-      color: AppColors.seaBlue,
-      fontWeight: FontWeight.w700,
-    ),
-    'caption' => t.labelLarge?.copyWith(
-      color: AppColors.eveningOrange,
-      fontWeight: FontWeight.w700,
-      letterSpacing: 1.2,
-    ),
-    _ => t.titleMedium?.copyWith(color: AppColors.ink, height: 1.35),
   };
 }
 
@@ -155,18 +156,14 @@ class _TitleCard extends StatelessWidget {
         children: [
           for (final l in lines)
             Padding(
-              padding: const EdgeInsets.only(bottom: AppSpacing.xs),
+              padding: const EdgeInsets.only(bottom: AppSpace.s8),
               child: Text(
                 l.text,
                 textAlign: TextAlign.center,
                 style: l.style == 'heading'
-                    ? t.displaySmall?.copyWith(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w700,
-                      )
+                    ? t.displaySmall?.copyWith(color: AppPalette.white)
                     : t.titleMedium?.copyWith(
-                        color: AppColors.lighthouseYellow,
-                        fontWeight: FontWeight.w700,
+                        color: AppPalette.lighthouseYellow,
                         letterSpacing: 2,
                       ),
               ),
@@ -199,24 +196,17 @@ class _LinesPanel extends StatelessWidget {
         children: [
           Row(
             children: [
-              Icon(icon, color: AppColors.eveningOrange),
+              Icon(icon, color: AppPalette.orange700),
               if (caption != null) ...[
-                const SizedBox(width: AppSpacing.xs),
-                Text(
-                  caption!,
-                  style: const TextStyle(
-                    color: AppColors.eveningOrange,
-                    fontWeight: FontWeight.w700,
-                    letterSpacing: 1.2,
-                  ),
-                ),
+                const SizedBox(width: AppSpace.s8),
+                Flexible(child: CapsLabel(caption!)),
               ],
             ],
           ),
-          const SizedBox(height: AppSpacing.xs),
+          const SizedBox(height: AppSpace.s8),
           for (final (i, l) in lines.indexed)
             Padding(
-              padding: const EdgeInsets.only(bottom: AppSpacing.xs),
+              padding: const EdgeInsets.only(bottom: AppSpace.s8),
               child: _tappable(
                 i,
                 l,
@@ -243,10 +233,10 @@ class _NoteCard extends StatelessWidget {
     final t = Theme.of(context).textTheme;
     return Container(
       width: double.infinity,
-      padding: const EdgeInsets.all(AppSpacing.md),
+      padding: const EdgeInsets.all(AppSpace.s24),
       decoration: BoxDecoration(
         color: AppPalette.yellow50,
-        borderRadius: BorderRadius.circular(AppTheme.radius),
+        borderRadius: AppRadius.lgAll,
         border: Border.all(color: AppPalette.sand300),
         boxShadow: const [
           BoxShadow(
@@ -262,18 +252,18 @@ class _NoteCard extends StatelessWidget {
         children: [
           if (card.title != null)
             Padding(
-              padding: const EdgeInsets.only(bottom: AppSpacing.sm),
+              padding: const EdgeInsets.only(bottom: AppSpace.s16),
               child: Text(
                 card.title!,
                 style: t.labelLarge?.copyWith(
-                  color: AppColors.eveningOrange,
-                  fontWeight: FontWeight.w700,
+                  color: AppPalette.orange700,
+                  fontWeight: AppFonts.bold,
                 ),
               ),
             ),
           for (final (i, l) in lines.indexed)
             Padding(
-              padding: const EdgeInsets.only(bottom: AppSpacing.xs),
+              padding: const EdgeInsets.only(bottom: AppSpace.s8),
               child: _tappable(
                 i,
                 l,
@@ -282,8 +272,8 @@ class _NoteCard extends StatelessWidget {
                   l.text,
                   style: _tapStyle(
                     t.titleLarge?.copyWith(
-                      color: AppColors.ink,
-                      fontWeight: FontWeight.w500,
+                      color: AppPalette.ink,
+                      fontWeight: AppFonts.medium,
                       height: 1.35,
                     ),
                     l,
@@ -316,28 +306,33 @@ class _MessageCard extends StatelessWidget {
           Row(
             children: [
               const CircleAvatar(
-                radius: 16,
-                backgroundColor: AppColors.seaBlue,
-                child: Icon(Icons.sms_rounded, size: 18, color: Colors.white),
+                radius: AppIconSize.sm,
+                backgroundColor: AppPalette.seaBlue,
+                child: Icon(
+                  Icons.sms_rounded,
+                  size: AppIconSize.sm,
+                  color: AppPalette.white,
+                ),
               ),
-              const SizedBox(width: AppSpacing.xs),
-              Text(
-                card.title ?? 'Mesaj',
-                style: const TextStyle(
-                  fontWeight: FontWeight.w700,
-                  color: AppColors.seaBlue,
-                  fontSize: 16,
+              const SizedBox(width: AppSpace.s8),
+              Flexible(
+                child: Text(
+                  card.title ?? PlayerTexts.messageFallback,
+                  style: Theme.of(
+                    context,
+                  ).textTheme.titleMedium?.copyWith(color: AppPalette.seaBlue),
                 ),
               ),
             ],
           ),
-          const SizedBox(height: AppSpacing.sm),
+          const SizedBox(height: AppSpace.s16),
           for (final (i, l) in lines.indexed)
             Container(
-              margin: const EdgeInsets.only(bottom: AppSpacing.xs),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(AppTheme.radius),
+              margin: const EdgeInsets.only(bottom: AppSpace.s8),
+              decoration: const BoxDecoration(
+                color: AppPalette.white,
+                borderRadius: AppRadius.mdAll,
+                boxShadow: AppShadows.level1,
               ),
               child: _tappable(
                 i,
@@ -345,12 +340,19 @@ class _MessageCard extends StatelessWidget {
                 onTap,
                 Padding(
                   padding: const EdgeInsets.symmetric(
-                    horizontal: AppSpacing.sm,
-                    vertical: 12,
+                    horizontal: AppSpace.s16,
+                    vertical: AppSpace.s12,
                   ),
                   child: Text(
                     l.text,
-                    style: _tapStyle(const TextStyle(fontSize: 18), l, onTap),
+                    style: _tapStyle(
+                      AppTypography.lead.copyWith(
+                        color: AppPalette.ink,
+                        fontWeight: AppFonts.regular,
+                      ),
+                      l,
+                      onTap,
+                    ),
                   ),
                 ),
               ),
@@ -382,12 +384,12 @@ class _LineCard extends StatelessWidget {
                 if (l.speaker != null)
                   Text(
                     _speakerName(l.speaker!),
-                    style: const TextStyle(
-                      color: AppColors.eveningOrange,
-                      fontWeight: FontWeight.w700,
+                    style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                      color: AppPalette.orange700,
+                      fontWeight: AppFonts.bold,
                     ),
                   ),
-                const SizedBox(height: 4),
+                const SizedBox(height: AppSpace.s4),
                 _tappable(
                   i,
                   l,
@@ -395,11 +397,7 @@ class _LineCard extends StatelessWidget {
                   Text(
                     l.text,
                     style: _tapStyle(
-                      const TextStyle(
-                        fontSize: 20,
-                        fontStyle: FontStyle.italic,
-                        height: 1.35,
-                      ),
+                      AppTypography.spoken.copyWith(color: AppPalette.ink),
                       l,
                       onTap,
                     ),

@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
 
-import '../../../../app/theme.dart';
+import '../../../../app/design/design.dart';
 import '../../../../l10n/tr_strings.dart';
 import '../../../../shared/speech/speak_widgets.dart';
 import '../../../../shared/speech/speech_store.dart';
-import '../../../../shared/text/turkish.dart';
+import '../../../../shared/ui/ui.dart';
 import '../../domain/episode.dart';
 import '../../domain/episode_engine.dart';
-import 'hi_avatar.dart';
 import 'player_ui.dart';
 
 /// Bölüm sonu: görev tamam, toplanan ipuçları, açık soru, hedef ifadeler.
+///
+/// H-062: sakin kutlama (`CalmCelebration`: bir kez beliren iki yumuşak
+/// halka; konfeti, ses, puan yok; K-32) ve bölümler sırayla belirir.
+/// "Hareketi azalt" açıksa durağan.
 class EndView extends StatelessWidget {
   const EndView({
     super.key,
@@ -62,187 +65,165 @@ class EndView extends StatelessWidget {
             if (l.style == 'caption' && l.lang == Lang.en) l.text,
     ];
 
-    Widget section(String title, IconData icon, List<Widget> children) =>
-        PlayerPanel(
-          padding: const EdgeInsets.all(AppSpacing.sm),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                children: [
-                  Icon(icon, color: AppColors.eveningOrange),
-                  const SizedBox(width: AppSpacing.xs),
-                  Flexible(
-                    child: Text(
-                      title,
-                      style: const TextStyle(
-                        color: AppColors.eveningOrange,
-                        fontWeight: FontWeight.w700,
-                        letterSpacing: 1.1,
-                      ),
-                    ),
-                  ),
-                ],
+    final sections = <Widget>[
+      if (clueLines.isNotEmpty)
+        _EndSection(
+          title: PlayerTexts.cluesLabel,
+          icon: Icons.push_pin_rounded,
+          children: [
+            for (final c in clueLines)
+              Padding(
+                padding: const EdgeInsets.only(bottom: AppSpace.s4),
+                child: Text(c, style: theme.textTheme.bodyLarge),
               ),
-              const SizedBox(height: AppSpacing.xs),
-              ...children,
+          ],
+        ),
+      if (questionLines.isNotEmpty)
+        _EndSection(
+          title: PlayerTexts.openQuestionLabel,
+          icon: Icons.help_outline_rounded,
+          children: [
+            for (final q in questionLines)
+              Text(
+                q.text,
+                style: theme.textTheme.titleLarge?.copyWith(
+                  color: AppPalette.seaBlue,
+                ),
+              ),
+            for (final t in nextTeaser)
+              Padding(
+                padding: const EdgeInsets.only(top: AppSpace.s4),
+                child: Text(
+                  PlayerTexts.nextTeaser(t),
+                  style: theme.textTheme.bodyMedium,
+                ),
+              ),
+          ],
+        ),
+      _EndSection(
+        title: PlayerTexts.phrasesLabel,
+        icon: Icons.record_voice_over_rounded,
+        children: [
+          Wrap(
+            spacing: AppSpace.s8,
+            runSpacing: AppSpace.s8,
+            children: [
+              for (final p in ep.info.targetPhrases) Chip(label: Text(p)),
             ],
           ),
-        );
+          const SizedBox(height: AppSpace.s8),
+          Text(
+            PlayerTexts.endNotebookNote,
+            key: const ValueKey('end-notebook-note'),
+            style: theme.textTheme.bodyMedium,
+          ),
+        ],
+      ),
+      if (speak != null && ep.info.targetPhrases.isNotEmpty)
+        _EndSection(
+          title: SpeakTexts.endSection,
+          icon: Icons.mic_rounded,
+          children: [
+            Text(SpeakTexts.endIntro, style: theme.textTheme.bodyMedium),
+            for (final (i, p) in ep.info.targetPhrases.indexed) ...[
+              const SizedBox(height: AppSpace.s16),
+              Text(
+                p,
+                style: theme.textTheme.titleMedium?.copyWith(
+                  color: AppPalette.ink,
+                ),
+              ),
+              const SizedBox(height: AppSpace.s4),
+              SpeakPractice(
+                key: ValueKey('end-speak-$i'),
+                expected: p,
+                env: speak!,
+                place: SpeechPlace.episodeEnd,
+                contentId: ep.info.id,
+                keyPrefix: 'end-speak-$i',
+                dense: true,
+                onAttempt: (c) {
+                  if (c.succeeded) onSpokenTarget?.call();
+                },
+              ),
+            ],
+          ],
+        ),
+      if (topicSetTitle != null)
+        _EndSection(
+          title: topicSetIsNew
+              ? PlayerTexts.newTopicSetLabel
+              : PlayerTexts.topicSetLabel,
+          icon: Icons.photo_library_rounded,
+          children: [
+            Text(
+              topicSetIsNew
+                  ? PlayerTexts.newTopicSet(topicSetTitle!)
+                  : PlayerTexts.topicSet(topicSetTitle!),
+              key: const ValueKey('end-topic-set'),
+              style: theme.textTheme.bodyLarge?.copyWith(
+                fontWeight: AppFonts.medium,
+              ),
+            ),
+            if (onOpenTopicSet != null) ...[
+              const SizedBox(height: AppSpace.s8),
+              OutlinedButton.icon(
+                key: const ValueKey('end-open-topic-set'),
+                onPressed: onOpenTopicSet,
+                style: OutlinedButton.styleFrom(
+                  minimumSize: const Size.fromHeight(AppTouch.min),
+                ),
+                icon: const Icon(Icons.grid_view_rounded),
+                label: const Text(PlayerTexts.openTopicSet),
+              ),
+            ],
+          ],
+        ),
+    ];
 
     return ColoredBox(
-      color: AppColors.sand,
+      color: AppPalette.sand,
       child: SafeArea(
         child: ListView(
           key: const ValueKey('end-view'),
-          padding: const EdgeInsets.all(AppSpacing.md),
+          padding: const EdgeInsets.all(AppSpace.s24),
           children: [
-            const Center(child: HiAvatar(size: 96)),
-            const SizedBox(height: AppSpacing.sm),
-            Semantics(
-              header: true,
+            const Center(
+              child: CalmCelebration(
+                key: ValueKey('end-celebration'),
+                icon: Icons.flag_rounded,
+              ),
+            ),
+            const SizedBox(height: AppSpace.s16),
+            SoftEntrance(
+              child: Semantics(
+                header: true,
+                child: Text(
+                  PlayerTexts.endTitle,
+                  textAlign: TextAlign.center,
+                  style: theme.textTheme.headlineMedium?.copyWith(
+                    color: AppPalette.seaBlue,
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(height: AppSpace.s8),
+            SoftEntrance(
+              index: 1,
               child: Text(
-                'Görev tamam!',
+                ep.info.mission.tr,
                 textAlign: TextAlign.center,
-                style: theme.textTheme.headlineMedium?.copyWith(
-                  color: AppColors.seaBlue,
-                  fontWeight: FontWeight.w700,
+                style: theme.textTheme.bodyLarge?.copyWith(
+                  fontWeight: AppFonts.medium,
                 ),
               ),
             ),
-            const SizedBox(height: AppSpacing.xs),
-            Text(
-              ep.info.mission.tr,
-              textAlign: TextAlign.center,
-              style: theme.textTheme.titleMedium,
-            ),
-            const SizedBox(height: AppSpacing.md),
-            if (clueLines.isNotEmpty) ...[
-              section('TOPLANAN İPUÇLARI', Icons.push_pin_rounded, [
-                for (final c in clueLines)
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 4),
-                    child: Text(c, style: theme.textTheme.bodyLarge),
-                  ),
-              ]),
-              const SizedBox(height: AppSpacing.sm),
+            const SizedBox(height: AppSpace.s24),
+            for (final (i, s) in sections.indexed) ...[
+              if (i > 0) const SizedBox(height: AppSpace.s16),
+              SoftEntrance(index: i + 2, child: s),
             ],
-            if (questionLines.isNotEmpty) ...[
-              section('AÇIK SORU', Icons.help_outline_rounded, [
-                for (final q in questionLines)
-                  Text(
-                    q.text,
-                    style: theme.textTheme.titleLarge?.copyWith(
-                      color: AppColors.seaBlue,
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
-                for (final t in nextTeaser)
-                  Padding(
-                    padding: const EdgeInsets.only(top: 4),
-                    child: Text(
-                      'Sıradaki: $t',
-                      style: theme.textTheme.bodyMedium,
-                    ),
-                  ),
-              ]),
-              const SizedBox(height: AppSpacing.sm),
-            ],
-            section('BU BÖLÜMÜN İFADELERİ', Icons.record_voice_over_rounded, [
-              Wrap(
-                spacing: AppSpacing.xs,
-                runSpacing: AppSpacing.xs,
-                children: [
-                  for (final p in ep.info.targetPhrases)
-                    Chip(
-                      label: Text(p),
-                      backgroundColor: Colors.white,
-                      side: BorderSide(
-                        color: AppColors.seaBlue.withValues(alpha: 0.3),
-                      ),
-                    ),
-                ],
-              ),
-              const SizedBox(height: AppSpacing.xs),
-              Text(
-                PlayerTexts.endNotebookNote,
-                key: const ValueKey('end-notebook-note'),
-                style: theme.textTheme.bodyMedium,
-              ),
-            ]),
-            if (speak != null && ep.info.targetPhrases.isNotEmpty) ...[
-              const SizedBox(height: AppSpacing.sm),
-              section(upperTr(SpeakTexts.endSection), Icons.mic_rounded, [
-                Text(SpeakTexts.endIntro, style: theme.textTheme.bodyMedium),
-                for (final (i, p) in ep.info.targetPhrases.indexed) ...[
-                  const SizedBox(height: AppSpacing.sm),
-                  Text(
-                    p,
-                    style: theme.textTheme.titleMedium?.copyWith(
-                      fontWeight: FontWeight.w700,
-                      color: AppColors.ink,
-                    ),
-                  ),
-                  const SizedBox(height: 4),
-                  SpeakPractice(
-                    key: ValueKey('end-speak-$i'),
-                    expected: p,
-                    env: speak!,
-                    place: SpeechPlace.episodeEnd,
-                    contentId: ep.info.id,
-                    keyPrefix: 'end-speak-$i',
-                    dense: true,
-                    onAttempt: (c) {
-                      if (c.succeeded) onSpokenTarget?.call();
-                    },
-                  ),
-                ],
-              ]),
-            ],
-            if (topicSetTitle != null) ...[
-              const SizedBox(height: AppSpacing.sm),
-              section(
-                upperTr(
-                  topicSetIsNew
-                      ? PlayerTexts.newTopicSetLabel
-                      : PlayerTexts.topicSetLabel,
-                ),
-                Icons.photo_library_rounded,
-                [
-                  Text(
-                    topicSetIsNew
-                        ? PlayerTexts.newTopicSet(topicSetTitle!)
-                        : PlayerTexts.topicSet(topicSetTitle!),
-                    key: const ValueKey('end-topic-set'),
-                    style: theme.textTheme.titleMedium?.copyWith(
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                  if (onOpenTopicSet != null) ...[
-                    const SizedBox(height: AppSpacing.xs),
-                    OutlinedButton.icon(
-                      key: const ValueKey('end-open-topic-set'),
-                      onPressed: onOpenTopicSet,
-                      style: OutlinedButton.styleFrom(
-                        minimumSize: const Size.fromHeight(48),
-                        foregroundColor: AppColors.seaBlue,
-                        side: const BorderSide(
-                          color: AppColors.seaBlue,
-                          width: 1.5,
-                        ),
-                        textStyle: const TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                      icon: const Icon(Icons.grid_view_rounded),
-                      label: const Text(PlayerTexts.openTopicSet),
-                    ),
-                  ],
-                ],
-              ),
-            ],
-            const SizedBox(height: AppSpacing.md),
+            const SizedBox(height: AppSpace.s24),
             PrimaryAction(
               key: const ValueKey('end-back'),
               label: PlayerTexts.backToMap,
@@ -251,6 +232,46 @@ class EndView extends StatelessWidget {
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+/// Bölüm sonundaki bölüm kartı: turuncu ikon + büyük harfli etiket + içerik.
+class _EndSection extends StatelessWidget {
+  const _EndSection({
+    required this.title,
+    required this.icon,
+    required this.children,
+  });
+
+  final String title;
+  final IconData icon;
+  final List<Widget> children;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(AppSpace.s16),
+      decoration: const BoxDecoration(
+        color: AppPalette.white,
+        borderRadius: AppRadius.lgAll,
+        boxShadow: AppShadows.level1,
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Icon(icon, color: AppPalette.orange700),
+              const SizedBox(width: AppSpace.s8),
+              Flexible(child: CapsLabel(title)),
+            ],
+          ),
+          const SizedBox(height: AppSpace.s8),
+          ...children,
+        ],
       ),
     );
   }

@@ -3,6 +3,7 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 
 import '../../../../app/design/tokens.dart';
+import '../../../../l10n/tr_strings.dart';
 
 /// Hi: yuvarlak, yumuşak ışıklı konuşma balonu ve iki göz (H-005).
 ///
@@ -62,7 +63,7 @@ class _HiAvatarState extends State<HiAvatar>
   @override
   Widget build(BuildContext context) {
     return Semantics(
-      label: 'Hi, yapay zekâ yardımcın',
+      label: PlayerTexts.hiSemantics,
       image: true,
       child: SizedBox.square(
         dimension: widget.size,
@@ -128,7 +129,7 @@ class _HiPainter extends CustomPainter {
         ..shader = RadialGradient(
           center: const Alignment(-0.25, -0.35),
           radius: 0.95,
-          colors: const [Colors.white, _core, _rim],
+          colors: const [AppPalette.white, _core, _rim],
           stops: const [0, 0.55, 1],
         ).createShader(Rect.fromCircle(center: c, radius: r * 1.1)),
     );
@@ -150,7 +151,7 @@ class _HiPainter extends CustomPainter {
       canvas.drawCircle(
         e.translate(-r * 0.04, -r * 0.07),
         r * 0.055,
-        Paint()..color = Colors.white,
+        Paint()..color = AppPalette.white,
       );
     }
 

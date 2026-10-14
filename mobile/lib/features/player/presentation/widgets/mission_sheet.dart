@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../../../app/theme.dart';
+import '../../../../app/design/design.dart';
+import '../../../../l10n/tr_strings.dart';
+import '../../../../shared/ui/ui.dart';
 import '../../domain/episode.dart';
 import 'player_ui.dart';
 
@@ -11,6 +13,7 @@ typedef PhraseTap = void Function(int index, String phrase, Gloss gloss);
 ///
 /// Açılışta ayrı görev kartı yoktur; kullanıcı isterse üst çubuktaki 🎯
 /// düğmesiyle açar. Anlamı olan ifadeye dokununca anlam paneli açılır.
+/// Zemin, köşe ve tutamaç temadan (`bottomSheetTheme`, H-062).
 Future<void> showMissionSheet(
   BuildContext context, {
   required EpisodeInfo info,
@@ -20,12 +23,6 @@ Future<void> showMissionSheet(
     context: context,
     isScrollControlled: true,
     showDragHandle: true,
-    backgroundColor: AppColors.sand,
-    shape: const RoundedRectangleBorder(
-      borderRadius: BorderRadius.vertical(
-        top: Radius.circular(AppTheme.radius),
-      ),
-    ),
     builder: (context) => MissionSheet(info: info, onPhraseTap: onPhraseTap),
   );
 }
@@ -41,16 +38,9 @@ class MissionSheet extends StatelessWidget {
     final t = Theme.of(context).textTheme;
     Widget caption(String text, IconData icon) => Row(
       children: [
-        Icon(icon, color: AppColors.eveningOrange, size: 20),
-        const SizedBox(width: AppSpacing.xs),
-        Text(
-          text,
-          style: const TextStyle(
-            color: AppColors.eveningOrange,
-            fontWeight: FontWeight.w700,
-            letterSpacing: 1.2,
-          ),
-        ),
+        Icon(icon, color: AppPalette.orange700, size: AppIconSize.sm),
+        const SizedBox(width: AppSpace.s8),
+        Flexible(child: CapsLabel(text)),
       ],
     );
     return SafeArea(
@@ -58,41 +48,57 @@ class MissionSheet extends StatelessWidget {
       child: SingleChildScrollView(
         key: const ValueKey('mission-sheet'),
         padding: const EdgeInsets.fromLTRB(
-          AppSpacing.md,
+          AppSpace.s24,
           0,
-          AppSpacing.md,
-          AppSpacing.md,
+          AppSpace.s24,
+          AppSpace.s24,
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: [
-            caption('GÖREV', Icons.track_changes_rounded),
-            const SizedBox(height: AppSpacing.xs),
+            caption(PlayerTexts.missionLabel, Icons.track_changes_rounded),
+            const SizedBox(height: AppSpace.s8),
             Text(
               info.mission.tr,
               style: t.titleLarge?.copyWith(
-                color: AppColors.seaBlue,
-                fontWeight: FontWeight.w700,
+                color: AppPalette.seaBlue,
                 height: 1.3,
               ),
             ),
             if (info.targetPhrases.isNotEmpty) ...[
-              const SizedBox(height: AppSpacing.md),
-              caption('HEDEF İFADELER', Icons.record_voice_over_rounded),
-              const SizedBox(height: AppSpacing.xs),
-              for (final (i, p) in info.targetPhrases.indexed)
-                _PhraseRow(
-                  index: i,
-                  phrase: p,
-                  gloss: info.targetPhraseGloss[p],
-                  onTap: onPhraseTap,
+              const SizedBox(height: AppSpace.s24),
+              caption(
+                PlayerTexts.targetPhrasesLabel,
+                Icons.record_voice_over_rounded,
+              ),
+              const SizedBox(height: AppSpace.s8),
+              Container(
+                decoration: const BoxDecoration(
+                  color: AppPalette.white,
+                  borderRadius: AppRadius.mdAll,
+                  boxShadow: AppShadows.level1,
                 ),
+                padding: const EdgeInsets.symmetric(horizontal: AppSpace.s16),
+                child: Column(
+                  children: [
+                    for (final (i, p) in info.targetPhrases.indexed) ...[
+                      if (i > 0) const Divider(),
+                      _PhraseRow(
+                        index: i,
+                        phrase: p,
+                        gloss: info.targetPhraseGloss[p],
+                        onTap: onPhraseTap,
+                      ),
+                    ],
+                  ],
+                ),
+              ),
             ],
-            const SizedBox(height: AppSpacing.md),
+            const SizedBox(height: AppSpace.s24),
             PrimaryAction(
               key: const ValueKey('mission-close'),
-              label: 'Devam et',
+              label: PlayerTexts.continueAction,
               icon: Icons.play_arrow_rounded,
               onPressed: () => Navigator.of(context).pop(),
             ),
@@ -122,25 +128,24 @@ class _PhraseRow extends StatelessWidget {
     final tappable = g != null && onTap != null;
     final text = Text(
       phrase,
-      style: TextStyle(
-        fontSize: 18,
-        fontWeight: FontWeight.w700,
-        color: AppColors.ink,
+      style: AppTypography.lead.copyWith(
+        fontWeight: AppFonts.bold,
+        color: AppPalette.ink,
         decoration: tappable ? TextDecoration.underline : null,
         decorationStyle: TextDecorationStyle.dotted,
-        decorationColor: AppColors.seaBlue.withValues(alpha: 0.5),
+        decorationColor: AppPalette.seaBlue300,
       ),
     );
     final row = ConstrainedBox(
-      constraints: const BoxConstraints(minHeight: 48),
+      constraints: const BoxConstraints(minHeight: AppTouch.primary),
       child: Row(
         children: [
           Expanded(child: text),
           if (tappable)
             const Icon(
               Icons.translate_rounded,
-              size: 20,
-              color: AppColors.seaBlue,
+              size: AppIconSize.sm,
+              color: AppPalette.seaBlue,
             ),
         ],
       ),
@@ -148,11 +153,11 @@ class _PhraseRow extends StatelessWidget {
     if (!tappable) return row;
     return Semantics(
       button: true,
-      label: '$phrase. Anlamını görmek için dokun.',
+      label: PlayerTexts.tapForMeaning(phrase),
       excludeSemantics: true,
       child: InkWell(
         key: ValueKey('mission-phrase-$index'),
-        borderRadius: BorderRadius.circular(AppTheme.radius),
+        borderRadius: AppRadius.mdAll,
         onTap: () => onTap!(index, phrase, g),
         child: row,
       ),

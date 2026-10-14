@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 
-import '../../../../app/theme.dart';
+import '../../../../app/design/design.dart';
+import '../../../../l10n/tr_strings.dart';
 import '../../application/player_session.dart';
 import '../../domain/subtitles.dart';
 
@@ -51,12 +52,7 @@ class _SubtitleOverlayState extends State<SubtitleOverlay>
     final cue = _cue;
     if (cue == null) return const SizedBox.shrink();
     final hits = targetWordIndexes(cue, widget.targetPhrases);
-    const base = TextStyle(
-      color: Colors.white,
-      fontSize: 20,
-      fontWeight: FontWeight.w500,
-      height: 1.3,
-    );
+    final base = AppTypography.subtitle.copyWith(color: AppPalette.white);
     final spans = <InlineSpan>[];
     for (var i = 0; i < cue.words.length; i++) {
       if (i > 0) spans.add(const TextSpan(text: ' '));
@@ -65,8 +61,8 @@ class _SubtitleOverlayState extends State<SubtitleOverlay>
           text: cue.words[i].w,
           style: hits.contains(i)
               ? const TextStyle(
-                  color: AppColors.lighthouseYellow,
-                  fontWeight: FontWeight.w700,
+                  color: AppPalette.lighthouseYellow,
+                  fontWeight: AppFonts.bold,
                 )
               : null,
         ),
@@ -78,23 +74,21 @@ class _SubtitleOverlayState extends State<SubtitleOverlay>
 
     return Semantics(
       button: true,
-      label:
-          '${cue.text}.${showTr ? ' ${cue.tr}.' : ''} '
-          'Anlamını görmek için dokun.',
+      label: PlayerTexts.subtitleSemantics(cue.text, showTr ? cue.tr : null),
       excludeSemantics: true,
       child: GestureDetector(
         key: const ValueKey('subtitle-line'),
         behavior: HitTestBehavior.opaque,
         onTap: () => widget.onTapCue(cue),
         child: Container(
-          constraints: const BoxConstraints(minHeight: 48),
+          constraints: const BoxConstraints(minHeight: AppTouch.min),
           padding: const EdgeInsets.symmetric(
-            horizontal: AppSpacing.sm,
-            vertical: AppSpacing.xs,
+            horizontal: AppSpace.s16,
+            vertical: AppSpace.s8,
           ),
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             color: AppScrim.captionBox,
-            borderRadius: BorderRadius.circular(AppTheme.radius),
+            borderRadius: AppRadius.mdAll,
           ),
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -104,16 +98,13 @@ class _SubtitleOverlayState extends State<SubtitleOverlay>
                 textAlign: TextAlign.center,
               ),
               if (showTr) ...[
-                const SizedBox(height: 4),
+                const SizedBox(height: AppSpace.s4),
                 Text(
                   cue.tr!,
                   key: const ValueKey('subtitle-tr'),
                   textAlign: TextAlign.center,
-                  style: const TextStyle(
+                  style: AppTypography.subtitleTr.copyWith(
                     color: AppScrim.captionText,
-                    fontSize: 15,
-                    fontWeight: FontWeight.w400,
-                    height: 1.3,
                   ),
                 ),
               ],

@@ -2,10 +2,11 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-import '../../app/theme.dart';
+import '../../app/design/design.dart';
 import '../../l10n/tr_strings.dart';
 import '../speech/speak_widgets.dart';
 import '../speech/speech_store.dart';
+import '../ui/ui.dart';
 import 'meaning_controller.dart';
 import 'meaning_text.dart';
 
@@ -13,6 +14,7 @@ import 'meaning_text.dart';
 /// ya da "Kapat" ile) dönen Future tamamlanır.
 ///
 /// [speak]: cihazda tanıma varsa "Sen de söyle" (H-055); yoksa düğme yok.
+/// Oynatıcı, Keşfet ve kitap okuyucu (H-067) ortak kullanır.
 Future<void> showMeaningSheet(
   BuildContext context,
   MeaningController controller, {
@@ -22,14 +24,10 @@ Future<void> showMeaningSheet(
     context: context,
     isScrollControlled: true,
     useSafeArea: true,
-    backgroundColor: AppColors.sand,
-    barrierColor: Colors.black.withValues(alpha: 0.35),
+    backgroundColor: AppPalette.sand,
+    barrierColor: AppScrim.dimLight,
     clipBehavior: Clip.antiAlias,
-    shape: const RoundedRectangleBorder(
-      borderRadius: BorderRadius.vertical(
-        top: Radius.circular(AppTheme.radius),
-      ),
-    ),
+    shape: const RoundedRectangleBorder(borderRadius: AppRadius.sheetTop),
     builder: (context) => DraggableScrollableSheet(
       expand: false,
       initialChildSize: 0.66,
@@ -38,7 +36,7 @@ Future<void> showMeaningSheet(
       builder: (context, scroll) => ScaffoldMessenger(
         // Onay mesajı panelin içinde görünür (alttaki oynatıcıda değil).
         child: Scaffold(
-          backgroundColor: AppColors.sand,
+          backgroundColor: AppPalette.sand,
           body: MeaningSheet(
             controller: controller,
             scrollController: scroll,
@@ -51,6 +49,9 @@ Future<void> showMeaningSheet(
 }
 
 /// Kademeli anlam paneli (H-046). Keşfet'teki "Anlam" düğmesi de bunu kullanır.
+///
+/// H-062: renk, yazı ve boşluklar tasarım belirteçlerinden; seçili kelimenin
+/// anlamı yumuşakça değişir ("Hareketi azalt" açıksa anında).
 class MeaningSheet extends StatelessWidget {
   const MeaningSheet({
     super.key,
@@ -67,6 +68,7 @@ class MeaningSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return ListenableBuilder(
       listenable: controller,
       builder: (context, _) {
@@ -77,9 +79,9 @@ class MeaningSheet extends StatelessWidget {
             // Başlık ve "Kapat" sabit; içerik kayar.
             Padding(
               padding: const EdgeInsets.fromLTRB(
-                AppSpacing.sm,
-                AppSpacing.xs,
-                AppSpacing.xs,
+                AppSpace.s16,
+                AppSpace.s8,
+                AppSpace.s8,
                 0,
               ),
               child: Column(
@@ -88,30 +90,26 @@ class MeaningSheet extends StatelessWidget {
                   Row(
                     children: [
                       Expanded(
-                        child: Text(
-                          t.speaker == null
-                              ? 'Anlam'
-                              : _speakerName(t.speaker!),
-                          style: const TextStyle(
-                            color: AppColors.seaBlue,
-                            fontSize: 14,
-                            fontWeight: FontWeight.w700,
-                            letterSpacing: 0.4,
+                        child: Semantics(
+                          header: true,
+                          child: Text(
+                            t.speaker == null
+                                ? MeaningTexts.title
+                                : _speakerName(t.speaker!),
+                            style: theme.textTheme.titleMedium?.copyWith(
+                              color: AppPalette.seaBlue,
+                            ),
                           ),
                         ),
                       ),
                       IconButton(
                         key: const ValueKey('meaning-close'),
-                        tooltip: 'Kapat',
-                        constraints: const BoxConstraints(
-                          minWidth: 48,
-                          minHeight: 48,
-                        ),
+                        tooltip: MeaningTexts.close,
                         onPressed: () => Navigator.of(context).maybePop(),
                         icon: const Icon(
                           Icons.close_rounded,
-                          color: AppColors.ink,
-                          semanticLabel: 'Paneli kapat',
+                          color: AppPalette.ink,
+                          semanticLabel: MeaningTexts.closeSemantics,
                         ),
                       ),
                     ],
@@ -123,18 +121,18 @@ class MeaningSheet extends StatelessWidget {
               child: ListView(
                 controller: scrollController,
                 padding: const EdgeInsets.fromLTRB(
-                  AppSpacing.sm,
+                  AppSpace.s16,
                   0,
-                  AppSpacing.sm,
-                  AppSpacing.md,
+                  AppSpace.s16,
+                  AppSpace.s24,
                 ),
                 children: [
-                  const SizedBox(height: AppSpacing.xs),
+                  const SizedBox(height: AppSpace.s8),
                   _WordWrap(controller: c),
-                  const SizedBox(height: AppSpacing.sm),
+                  const SizedBox(height: AppSpace.s16),
                   _MeaningPanel(controller: c),
                   if (t.hasTurkish) ...[
-                    const SizedBox(height: AppSpacing.sm),
+                    const SizedBox(height: AppSpace.s16),
                     _TurkishStep(controller: c),
                   ],
                 ],
@@ -145,10 +143,10 @@ class MeaningSheet extends StatelessWidget {
               top: false,
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(
-                  AppSpacing.sm,
-                  AppSpacing.xs,
-                  AppSpacing.sm,
-                  AppSpacing.sm,
+                  AppSpace.s16,
+                  AppSpace.s8,
+                  AppSpace.s16,
+                  AppSpace.s16,
                 ),
                 child: _Actions(controller: c, speak: speak),
               ),
@@ -166,12 +164,12 @@ class _Handle extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Center(
     child: Container(
-      width: 40,
-      height: 4,
-      margin: const EdgeInsets.only(bottom: AppSpacing.xs),
+      width: AppSpace.s32,
+      height: AppSpace.s4,
+      margin: const EdgeInsets.only(bottom: AppSpace.s8),
       decoration: BoxDecoration(
-        color: AppColors.ink.withValues(alpha: 0.2),
-        borderRadius: BorderRadius.circular(2),
+        color: Theme.of(context).colorScheme.outline,
+        borderRadius: BorderRadius.circular(AppRadius.full),
       ),
     ),
   );
@@ -198,14 +196,14 @@ class _WordWrap extends StatelessWidget {
         groups.add(
           Container(
             key: ValueKey('meaning-chunk-${chunk.startWord}'),
-            padding: const EdgeInsets.all(4),
-            decoration: BoxDecoration(
-              color: AppColors.lighthouseYellow.withValues(alpha: 0.28),
-              borderRadius: BorderRadius.circular(AppTheme.radius),
+            padding: const EdgeInsets.all(AppSpace.s4),
+            decoration: const BoxDecoration(
+              color: AppPalette.yellow200,
+              borderRadius: AppRadius.mdAll,
             ),
             child: Wrap(
-              spacing: 4,
-              runSpacing: 4,
+              spacing: AppSpace.s4,
+              runSpacing: AppSpace.s4,
               children: [
                 for (var j = chunk.startWord; j <= chunk.endWord; j++)
                   _chip(j, inChunk: true),
@@ -221,8 +219,8 @@ class _WordWrap extends StatelessWidget {
       }
     }
     return Wrap(
-      spacing: AppSpacing.xs,
-      runSpacing: AppSpacing.xs,
+      spacing: AppSpace.s8,
+      runSpacing: AppSpace.s8,
       crossAxisAlignment: WrapCrossAlignment.center,
       children: groups,
     );
@@ -255,43 +253,49 @@ class _WordChip extends StatelessWidget {
   Widget build(BuildContext context) {
     final blank = word.isBlank;
     final bg = selected
-        ? AppColors.seaBlue
+        ? AppPalette.seaBlue
         : blank
         ? Colors.transparent
-        : Colors.white;
-    final fg = selected ? Colors.white : AppColors.ink;
+        : AppPalette.white;
+    final fg = selected
+        ? AppPalette.white
+        : blank
+        ? AppPalette.ink500
+        : AppPalette.ink;
     return Semantics(
       button: !blank,
       selected: selected,
-      label: blank ? 'boşluk' : '${word.bare}. Anlamı için dokun.',
+      label: blank ? MeaningTexts.blank : MeaningTexts.wordSemantics(word.bare),
       excludeSemantics: true,
-      child: Material(
-        color: bg,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(AppTheme.radius),
-          side: selected || blank
-              ? BorderSide.none
-              : BorderSide(
-                  color: AppColors.seaBlue.withValues(
-                    alpha: inChunk ? 0.08 : 0.18,
+      child: PressScale(
+        enabled: !blank,
+        child: Material(
+          color: bg,
+          shape: RoundedRectangleBorder(
+            borderRadius: AppRadius.mdAll,
+            side: selected || blank
+                ? BorderSide.none
+                : BorderSide(
+                    color: inChunk
+                        ? AppPalette.seaBlue100
+                        : AppPalette.seaBlue200,
                   ),
-                ),
-        ),
-        child: InkWell(
-          onTap: blank ? null : onTap,
-          borderRadius: BorderRadius.circular(AppTheme.radius),
-          child: ConstrainedBox(
-            constraints: const BoxConstraints(minHeight: 48, minWidth: 48),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 12),
-              child: Center(
-                widthFactor: 1,
-                child: Text(
-                  word.w,
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w500,
-                    color: blank ? AppColors.ink.withValues(alpha: 0.5) : fg,
+          ),
+          child: InkWell(
+            onTap: blank ? null : onTap,
+            borderRadius: AppRadius.mdAll,
+            child: ConstrainedBox(
+              constraints: const BoxConstraints(
+                minHeight: AppTouch.min,
+                minWidth: AppTouch.min,
+              ),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: AppSpace.s12),
+                child: Center(
+                  widthFactor: 1,
+                  child: Text(
+                    word.w,
+                    style: AppTypography.subtitle.copyWith(color: fg),
                   ),
                 ),
               ),
@@ -311,19 +315,17 @@ class _MeaningPanel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     final w = controller.selectedWord;
     final chunk = controller.selectedChunk;
     final Widget child;
     if (w == null) {
       child = Text(
         controller.audio.canPlayWords
-            ? 'Bir kelimeye dokun: anlamını gör ve sesini dinle.'
-            : 'Bir kelimeye dokun: anlamını gör.',
+            ? MeaningTexts.hintWithAudio
+            : MeaningTexts.hint,
         key: const ValueKey('meaning-hint'),
-        style: TextStyle(
-          fontSize: 16,
-          color: AppColors.ink.withValues(alpha: 0.7),
-        ),
+        style: theme.textTheme.bodyLarge?.copyWith(color: AppPalette.ink500),
       );
     } else {
       child = Column(
@@ -333,48 +335,37 @@ class _MeaningPanel extends StatelessWidget {
         children: [
           Text(
             w.bare,
-            style: const TextStyle(
-              fontSize: 22,
-              fontWeight: FontWeight.w700,
-              color: AppColors.seaBlue,
+            style: theme.textTheme.titleLarge?.copyWith(
+              color: AppPalette.seaBlue,
             ),
           ),
-          const SizedBox(height: 4),
+          const SizedBox(height: AppSpace.s4),
           Text(
-            w.gloss ?? 'Özel ad: Türkçesi aynı kalır.',
+            w.gloss ?? MeaningTexts.properNoun,
             key: const ValueKey('meaning-gloss'),
-            style: const TextStyle(fontSize: 18, color: AppColors.ink),
+            style: AppTypography.lead.copyWith(
+              color: AppPalette.ink,
+              fontWeight: AppFonts.regular,
+            ),
           ),
           if (chunk != null) ...[
-            const SizedBox(height: AppSpacing.sm),
+            const SizedBox(height: AppSpace.s16),
             Container(
               key: const ValueKey('meaning-chunk-panel'),
               width: double.infinity,
-              padding: const EdgeInsets.all(12),
-              decoration: BoxDecoration(
-                color: AppColors.lighthouseYellow.withValues(alpha: 0.28),
-                borderRadius: BorderRadius.circular(AppTheme.radius),
+              padding: const EdgeInsets.all(AppSpace.s12),
+              decoration: const BoxDecoration(
+                color: AppPalette.yellow100,
+                borderRadius: AppRadius.mdAll,
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
-                    'KALIP',
-                    style: TextStyle(
-                      fontSize: 12,
-                      fontWeight: FontWeight.w700,
-                      letterSpacing: 1.2,
-                      color: AppColors.ink,
-                    ),
-                  ),
-                  const SizedBox(height: 4),
+                  const CapsLabel(MeaningTexts.chunkLabel),
+                  const SizedBox(height: AppSpace.s4),
                   Text(
                     '${chunk.en} = ${chunk.tr}',
-                    style: const TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w500,
-                      color: AppColors.ink,
-                    ),
+                    style: AppTypography.lead.copyWith(color: AppPalette.ink),
                   ),
                 ],
               ),
@@ -386,13 +377,16 @@ class _MeaningPanel extends StatelessWidget {
     return Container(
       width: double.infinity,
       constraints: const BoxConstraints(minHeight: 72),
-      padding: const EdgeInsets.all(AppSpacing.sm),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(AppTheme.radius),
+      padding: const EdgeInsets.all(AppSpace.s16),
+      decoration: const BoxDecoration(
+        color: AppPalette.white,
+        borderRadius: AppRadius.mdAll,
+        boxShadow: AppShadows.level1,
       ),
       child: AnimatedSwitcher(
-        duration: const Duration(milliseconds: 150),
+        duration: AppMotion.of(context, AppMotion.fast),
+        switchInCurve: AppMotion.enter,
+        switchOutCurve: AppMotion.exit,
         layoutBuilder: (current, previous) => Stack(
           alignment: Alignment.topLeft,
           children: [...previous, ?current],
@@ -416,47 +410,33 @@ class _TurkishStep extends StatelessWidget {
         key: const ValueKey('meaning-reveal'),
         onPressed: controller.reveal,
         style: OutlinedButton.styleFrom(
-          minimumSize: const Size.fromHeight(48),
-          foregroundColor: AppColors.seaBlue,
-          side: BorderSide(color: AppColors.seaBlue.withValues(alpha: 0.4)),
-          textStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+          minimumSize: const Size.fromHeight(AppTouch.min),
         ),
         icon: const Icon(Icons.translate_rounded),
-        label: const Text('Türkçesini göster'),
+        label: const Text(MeaningTexts.reveal),
       );
     }
-    return Container(
+    final panel = Container(
       key: const ValueKey('meaning-tr'),
       width: double.infinity,
-      padding: const EdgeInsets.all(AppSpacing.sm),
-      decoration: BoxDecoration(
-        color: AppColors.seaBlue.withValues(alpha: 0.08),
-        borderRadius: BorderRadius.circular(AppTheme.radius),
+      padding: const EdgeInsets.all(AppSpace.s16),
+      decoration: const BoxDecoration(
+        color: AppPalette.seaBlue50,
+        borderRadius: AppRadius.mdAll,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
-            'TÜRKÇESİ',
-            style: TextStyle(
-              fontSize: 12,
-              fontWeight: FontWeight.w700,
-              letterSpacing: 1.2,
-              color: AppColors.seaBlue,
-            ),
-          ),
-          const SizedBox(height: 4),
+          const CapsLabel(MeaningTexts.turkishLabel, tone: CapsTone.blue),
+          const SizedBox(height: AppSpace.s4),
           Text(
             controller.text.tr!,
-            style: const TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.w500,
-              color: AppColors.ink,
-            ),
+            style: AppTypography.lead.copyWith(color: AppPalette.ink),
           ),
         ],
       ),
     );
+    return SoftEntrance(child: panel);
   }
 }
 
@@ -481,40 +461,32 @@ class _Actions extends StatelessWidget {
                     ? () => unawaited(c.replay())
                     : null,
                 style: FilledButton.styleFrom(
-                  minimumSize: const Size.fromHeight(48),
-                  textStyle: const TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w700,
-                  ),
+                  minimumSize: const Size.fromHeight(AppTouch.min),
                 ),
                 icon: const Icon(Icons.replay_rounded),
-                label: const Text('Tekrar dinle'),
+                label: const Text(MeaningTexts.replay),
               ),
             ),
-            const SizedBox(width: AppSpacing.xs),
+            const SizedBox(width: AppSpace.s8),
             Semantics(
               button: true,
               toggled: c.slow,
-              label: c.slow
-                  ? 'Yavaş dinleme açık (0,75). Normale dönmek için dokun.'
-                  : 'Yavaş dinle (0,75)',
+              label: c.slow ? MeaningTexts.slowOn : MeaningTexts.slowOff,
               excludeSemantics: true,
               child: OutlinedButton(
                 key: const ValueKey('meaning-slow'),
                 onPressed: c.toggleSlow,
                 style: OutlinedButton.styleFrom(
-                  minimumSize: const Size(72, 48),
-                  backgroundColor: c.slow ? AppColors.seaBlue : Colors.white,
-                  foregroundColor: c.slow ? Colors.white : AppColors.seaBlue,
-                  side: BorderSide(
-                    color: AppColors.seaBlue.withValues(alpha: 0.4),
-                  ),
-                  textStyle: const TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w700,
-                  ),
+                  minimumSize: const Size(72, AppTouch.min),
+                  padding: const EdgeInsets.symmetric(horizontal: AppSpace.s16),
+                  backgroundColor: c.slow
+                      ? AppPalette.seaBlue
+                      : AppPalette.white,
+                  foregroundColor: c.slow
+                      ? AppPalette.white
+                      : AppPalette.seaBlue,
                 ),
-                child: const Text('0,75x'),
+                child: const Text(MeaningTexts.slow),
               ),
             ),
           ],
@@ -522,7 +494,7 @@ class _Actions extends StatelessWidget {
         // "Sen de söyle" (H-055): dinlediğini söyle; puan yok, tekrar
         // takvimine işlenmez (yalnızca sonuç kaydı).
         if (speak != null) ...[
-          const SizedBox(height: AppSpacing.xs),
+          const SizedBox(height: AppSpace.s8),
           SpeakPractice(
             key: ValueKey('meaning-speak-${c.text.sourceId}'),
             expected: c.text.en,
@@ -533,22 +505,16 @@ class _Actions extends StatelessWidget {
             keyPrefix: 'meaning-speak',
           ),
         ],
-        const SizedBox(height: AppSpacing.xs),
+        const SizedBox(height: AppSpace.s8),
         OutlinedButton.icon(
           key: const ValueKey('meaning-save'),
           onPressed: () => unawaited(_save(context)),
           style: OutlinedButton.styleFrom(
-            minimumSize: const Size.fromHeight(48),
-            backgroundColor: Colors.white,
-            foregroundColor: AppColors.seaBlue,
-            side: BorderSide(color: AppColors.seaBlue.withValues(alpha: 0.4)),
-            textStyle: const TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.w500,
-            ),
+            minimumSize: const Size.fromHeight(AppTouch.min),
+            backgroundColor: AppPalette.white,
           ),
           icon: const Icon(Icons.bookmark_add_outlined),
-          label: const Text('Deftere ekle'),
+          label: const Text(MeaningTexts.save),
         ),
       ],
     );
@@ -563,17 +529,13 @@ class _Actions extends StatelessWidget {
         ..showSnackBar(
           SnackBar(
             content: Text(r.message),
-            behavior: SnackBarBehavior.floating,
             duration: const Duration(seconds: 2),
           ),
         );
     } on Object catch (e) {
       debugPrint('[H046] deftere eklenemedi: $e');
       messenger?.showSnackBar(
-        const SnackBar(
-          content: Text('Şu an deftere eklenemedi. Biraz sonra tekrar dene.'),
-          behavior: SnackBarBehavior.floating,
-        ),
+        const SnackBar(content: Text(MeaningTexts.saveFailed)),
       );
     }
   }
@@ -585,8 +547,8 @@ String _speakerName(String s) => switch (s) {
   'MAYA' => 'Maya',
   'MRS BROOKS' => 'Mrs Brooks',
   'MR GRANT' => 'Mr Grant',
-  'VOICE' => 'Telsizdeki ses',
-  'NOTE' => 'Not',
-  'CARD' || 'TASK' || 'TITLE' => 'Anlam',
-  _ => s.isEmpty ? 'Anlam' : s[0] + s.substring(1).toLowerCase(),
+  'VOICE' => MeaningTexts.speakerRadio,
+  'NOTE' => MeaningTexts.speakerNote,
+  'CARD' || 'TASK' || 'TITLE' => MeaningTexts.title,
+  _ => s.isEmpty ? MeaningTexts.title : s[0] + s.substring(1).toLowerCase(),
 };
