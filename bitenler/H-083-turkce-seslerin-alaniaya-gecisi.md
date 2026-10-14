@@ -1,6 +1,6 @@
 # H-083: Türkçe seslerin Alania'ya geçişi
 
-- **Durum:** Devam ediyor (44 klip Alania; main'de; kullanıcının (a)/(b) seçimi ve ses eşlemesi onayı bekleniyor)
+- **Durum:** Bitti (2026-10-14; 44 klip Alania; kullanıcı onayladı)
 - **Tür:** İçerik üretimi + uygulama (araç ve mobil)
 - **Faz:** Dilbilgisi D0 devamı (`docs/DILBILGISI.md` §2, Türkçe ses)
 - **Bağımlılık:** H-075
@@ -45,3 +45,4 @@ Kendi dalında; eski ElevenLabs sesleri `_raw`/yedekte kalır; `git revert`.
 - **Uygulama:** ipucu, açık soru, Alex ve not kartları zaten `audio`yu kendiliğinden çalıyor ve "Dinle" gösteriyordu (testler eklendi). Hi panelinde hata notu, konu tanıtımı ve köprü görevi kartlarına "Dinle" düğmesi (kapanınca durur). Uygulamada sessiz kipi yok.
 - **Kapsam dışı kaldı (sonra sorulacak):** karar ipuçları (`hints[].tr`), karar ve görev yönergeleri (`prompt.tr`) Türkçe ama seslendirilmedi.
 - **Bekleyen:** kullanıcının a/b seçimi ve ses eşlemesi onayı.
+2026-10-14: Kullanıcı onayladı; karışık dilli satırlarda (b) yolu (Türkçe Alania + İngilizce Sarah) kesinleşti; ses eşlemesi onaylı.

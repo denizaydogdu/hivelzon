@@ -25,3 +25,5 @@
 | — | Görsel maliyet onayı ve üretim (kapak + bölüm başı, 5 görsel ≈ 2,5 kr) | Kullanıcı | Bekliyor (henüz üretilmedi) |
 | — | Seslendirme (ElevenLabs Creator, ticari; anlatıcı Sarah) | Kullanıcı | Bekliyor (henüz üretilmedi) |
 | — | Editör toplu kontrolü (doğa bilgisi dahil) | Editör | Bekliyor |
+
+- 2026-10-14: Kullanıcı metni ve Türkçe çeviriyi onayladı (H-028). Görseller kapak + bölüm başı.

@@ -1,6 +1,6 @@
 {
   "contentId": "B1-K01",
-  "status": "DRAFT",
+  "status": "APPROVED",
   "author": "Claude taslak (H-072); kullanıcı onayı bekliyor",
   "date": "2026-10-14",
   "notes": [
@@ -7772,5 +7772,7 @@
       },
       "source": "p20-s16"
     }
-  ]
+  ],
+  "approvedBy": "kullanıcı (ürün sahibi)",
+  "approvedAt": "2026-10-14"
 }

@@ -1,6 +1,6 @@
 # H-040: Keşfet akışı (kısa klipler)
 
-- **Durum:** Devam ediyor (kod main'de: flutter 839, pytest 256; bellek ölçümü sızıntısız; kullanıcı onayı ve açık sorular bekleniyor)
+- **Durum:** Bitti (2026-10-14; flutter 887; kullanıcı onayladı)
 - **Tür:** Uygulama (kod)
 - **Faz:** 1.8 (`docs/UYGULAMA-PLANI.md`)
 - **Bağımlılık:** H-038
@@ -52,3 +52,4 @@ Kendi dalında (`h-040-kesfet-akisi`) yapılır; `main`'e alınmadan önce testl
 - Defter kaynağı için ayrı bir `discover` kaynak türü backend'de (V9 `CHECK`) yok; şimdilik `user_saved` + `sourceTitle` "Keşfet: …". Ayrı tür istenirse backend göçü gerekir.
 - Bölümler ve klip dosyası `DRAFT`: yayından önce editör onayı (H-028) ve `content_lint.py --require-approved`.
 - "Bu içeriği önerme" düğmesi (ICERIK-MIMARISI §6.5) ve Ana Sayfa'dan sessiz başlayan geçiş bu işte yok.
+2026-10-14: Kullanıcı onayladı. 13 yaş altına da günlük 20 dk sınırı uygulanır (kullanıcı onayı). Açık: sınırın ayarlardan değiştirilmesi, "Bu içeriği önerme", klip metinlerinin editör kontrolü.

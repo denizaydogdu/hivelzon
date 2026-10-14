@@ -111,7 +111,7 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 | 1.6 | H-038 | Mobil ↔ backend, isteğe bağlı hesap | Yüksek | H-035, H-037 | ✅ |
 | 1.6' | H-056 | Eşitleme ince ayarı (bitti kazanır, 30 sn hoşgörü, çıkışlı silme, sekme yenileme) | Yüksek | H-038 | ✅ |
 | 1.7 | H-039 | Onboarding ve yerleştirme | Orta | H-038 | ✅ |
-| 1.8 | H-040 | Keşfet akışı | Orta | H-038 | 🔄 |
+| 1.8 | H-040 | Keşfet akışı | Orta | H-038 | ✅ |
 | 1.9 | H-041 | Editör onay ekranı, içerik içe aktarma | Orta | H-038 | ✅ |
 | 1.10 | H-042 | Profil, ayarlar, hukuki metinler | Orta | H-038 | ⏳ |
 | 1.11 | H-043 | Kalite ve iç beta hazırlığı | Orta | H-039 … H-042 | ⏳ |
@@ -159,7 +159,7 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 | D4 | H-080 | Dalga 1: A1 + A2 | Orta | H-079 | 🔄 |
 | D5 | H-081 | Dalga 2: B1 + B2 | Orta | H-080 | 🔄 |
 | D6 | H-082 | Dalga 3: C1 + C2 | Orta | H-081 | 🔄 |
-| D0' | H-083 | Türkçe seslerin Alania'ya geçişi (Hi, Alex, babaanne, ipucu kartları, Hi paneli) | Yüksek | H-075 | 🔄 |
+| D0' | H-083 | Türkçe seslerin Alania'ya geçişi (Hi, Alex, babaanne, ipucu kartları, Hi paneli) | Yüksek | H-075 | ✅ |
 
 **Sıra:** H-075 ve H-076 hemen ve paralel (Alania'nın ücretsiz ayı sınırlı) → H-077 → H-078 → H-079 → dalgalar.
 
@@ -172,6 +172,8 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 ## Biten işler
 | İş | Başlık | Bitiş | Doğrulama |
 |---|---|---|---|
+| H-083 | Türkçe seslerin Alania'ya geçişi | 2026-10-14 | 44 klip (Hi f1, Alex nisa, babaanne selin, anlatıcı m1; İngilizce ifadeler Sarah), Hi panelinde "Hi'yi dinle", Türkçe klipler kendi -16 LUFS'u; kullanıcı onayladı |
+| H-040 | Keşfet akışı | 2026-10-14 | 17 klip (B1–B4, ücretsiz kesim), quiz/mola kartları, günlük 20 dk sınırı (13–17 ve 13 altı), sonsuz kaydırma yok, bellek ölçümü sızıntısız; kullanıcı onayladı |
 | H-079 | Dilbilgisi pilotu (3 A1 konusu) | 2026-10-14 | to be, a/an, -s; Türkçe Alania + İngilizce Sarah; lint 0 hata; simülatörde denendi; kullanıcı onayladı (öğretmen kontrolü yayından önce) |
 | H-078 | Dilbilgisi ekranı | 2026-10-14 | Macera · Kitaplık · Dilbilgisi, ders kartları, puansız alıştırma, kural kartı → Defter/FSRS, bölüm/kitap panelinde teklif, "Bu yapı ne?", Hi önerisi, Drift v7 + V9; flutter 785, mvn 132; kullanıcı onayladı |
 | H-063 | Hi'nin canlılığı | 2026-10-14 | 7 kodla çizilen ifade ve geçişler, sakin 3 nefes, bağlama göre ifade, bölüm sonunda mutlu Hi, Hi paneli bölündü (703 → 248 satır), renkler belirteçte; flutter 716/716; kullanıcı onayladı |
@@ -411,3 +413,4 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
   - H-072: 5 B1 kitabının metni (2.974–3.265 kelime, kapsama %98,7–99,4, B1 yapıları doğal biçimde) main'de; onay ve görsel (28 görsel ≈ 14 kr) bekleniyor. Dilbilgisi listesinde ilerleme yüzdesi ve İngilizce örnekler için cihaz sesi eklendi (main'de, 871 test).
   - H-068 (just_audio + audio_service, MIT): kitaplar ekran kapalıyken çalar, kilit ekranında oynat/duraklat, 10 sn geri, sonraki bölüm, kapak; main'de (887 test). Kilit ekranı görünümü gerçek iPhone'da denenecek.
   - H-072: 5 B2 kitabının metni de main'de. Kitaplıkta 20 kitap (A1 5, A2 5, B1 5, B2 5), hepsi lint 0 hata. Görseller: B1+B2 59 görsel ≈ 29,5 kr (kredi 29,06; yükleme gerekir).
+  - Kullanıcı onayları: Keşfet (13 altı da 20 dk), H-083 (b) yolu, B1+B2 kitap metinleri ve çevirileri. B1 görselleri (28, ~14 kr) üretime alındı; B2 görselleri (31, ~15,5 kr) kredi yüklemesi bekliyor.
