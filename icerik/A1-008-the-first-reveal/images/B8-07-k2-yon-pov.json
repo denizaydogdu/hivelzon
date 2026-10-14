@@ -1,0 +1,23 @@
+[
+  {
+    "created_at": "2026-10-14T17:17:05.975262Z",
+    "display_name": "GPT Image 2.5",
+    "id": "afedd89d-9dc3-4c36-b1ac-adb449f68631",
+    "job_type": "gpt_image_2_5",
+    "min_result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261014_171705_afedd89d-9dc3-4c36-b1ac-adb449f68631_min.webp",
+    "params": {
+      "aspect_ratio": "9:16",
+      "height": 2688,
+      "medias": [],
+      "model": "flare",
+      "prompt": "First-person point of view from a bend of a hill road at dusk, looking out over a small coastal town: three clear directions are visible at once: on the LEFT, the road climbs further up the green hill toward a small lit window among trees, and far beyond it a rocky headland with a lighthouse; STRAIGHT AHEAD, the wide open sea under the evening sky; on the RIGHT and below, the small harbour with boats and lights. A hand in a navy-blue hoodie sleeve holds a small handmade antenna in the foreground. No text, no signs. Vertical composition. Warm animated-series illustration, graphic-novel style, clean ink lines, soft cel shading, coastal palette of sea blue, sand, lighthouse yellow and evening orange, mature tone suitable for teens and adults, not childish, no text, no letters, no numbers, no logos.",
+      "quality": "low",
+      "reference_elements": [],
+      "remove_bg": false,
+      "resolution": "2k",
+      "width": 1520
+    },
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261014_171705_afedd89d-9dc3-4c36-b1ac-adb449f68631.png",
+    "status": "completed"
+  }
+]

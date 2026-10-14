@@ -1,0 +1,891 @@
+{
+  "contentId": "A1-008",
+  "status": "DRAFT",
+  "author": "Claude taslak",
+  "date": "2026-10-14",
+  "lines": [
+    {
+      "en": "The First Reveal",
+      "speaker": "TITLE",
+      "tr": "İlk keşif",
+      "chunks": [],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "first": "ilk",
+        "reveal": "açığa çıkan şey, keşif"
+      },
+      "source": "content:title"
+    },
+    {
+      "en": "The Café on the Hill",
+      "speaker": "TITLE",
+      "tr": "Tepedeki kafe",
+      "chunks": [
+        {
+          "en": "on the hill",
+          "tr": "tepedeki"
+        }
+      ],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "café": "kafe",
+        "on": "üstünde, -deki",
+        "hill": "tepe"
+      },
+      "source": "scenes:c-oq"
+    },
+    {
+      "en": "What time is it?",
+      "speaker": "MAYA",
+      "tr": "Saat kaç?",
+      "chunks": [
+        {
+          "en": "What time is it?",
+          "tr": "Saat kaç?"
+        }
+      ],
+      "words": {
+        "what": "ne",
+        "time": "saat, zaman",
+        "is": "-dır (olmak)",
+        "it": "o"
+      },
+      "source": "subs/s01"
+    },
+    {
+      "en": "It's seven o'clock. Listen!",
+      "speaker": "ALEX",
+      "tr": "Saat yedi. Dinle!",
+      "chunks": [
+        {
+          "en": "It's seven o'clock.",
+          "tr": "Saat yedi."
+        }
+      ],
+      "words": {
+        "it's": "o … -dır",
+        "seven": "yedi",
+        "o'clock": "saat (tam saat)",
+        "listen": "dinle"
+      },
+      "source": "subs/s01"
+    },
+    {
+      "en": "Hello? Hello?",
+      "speaker": "VOICE",
+      "tr": "Alo? Alo?",
+      "chunks": [],
+      "words": {
+        "hello": "alo, merhaba"
+      },
+      "source": "subs/s01"
+    },
+    {
+      "en": "Can you hear me?",
+      "speaker": "VOICE",
+      "tr": "Beni duyabiliyor musun?",
+      "chunks": [
+        {
+          "en": "Can you hear me?",
+          "tr": "Beni duyabiliyor musun?"
+        }
+      ],
+      "words": {
+        "can": "-ebilmek",
+        "you": "sen",
+        "hear": "duymak",
+        "me": "beni"
+      },
+      "source": "subs/s01"
+    },
+    {
+      "en": "Yes, I can hear you! Hello?",
+      "speaker": "ALEX",
+      "tr": "Evet, seni duyabiliyorum! Alo?",
+      "chunks": [
+        {
+          "en": "I can hear you",
+          "tr": "seni duyabiliyorum"
+        }
+      ],
+      "words": {
+        "yes": "evet",
+        "i": "ben",
+        "can": "-ebilmek",
+        "hear": "duymak",
+        "you": "seni",
+        "hello": "alo, merhaba"
+      },
+      "source": "subs/s01"
+    },
+    {
+      "en": "This is E.",
+      "speaker": "VOICE",
+      "tr": "Ben E.",
+      "chunks": [
+        {
+          "en": "This is …",
+          "tr": "Ben … (telefonda, telsizde)"
+        }
+      ],
+      "words": {
+        "this": "bu",
+        "is": "-dır (olmak)"
+      },
+      "source": "subs/s01"
+    },
+    {
+      "en": "Meet me at the old station.",
+      "speaker": "VOICE",
+      "tr": "Benimle eski istasyonda buluş.",
+      "chunks": [
+        {
+          "en": "Meet me",
+          "tr": "Benimle buluş"
+        }
+      ],
+      "words": {
+        "meet": "buluşmak",
+        "me": "beni",
+        "at": "-de",
+        "the": "(belirli tanımlık)",
+        "old": "eski",
+        "station": "istasyon"
+      },
+      "source": "subs/s01"
+    },
+    {
+      "en": "Friday. Seven o'clock.",
+      "speaker": "VOICE",
+      "tr": "Cuma. Saat yedi.",
+      "chunks": [],
+      "words": {
+        "friday": "cuma",
+        "seven": "yedi",
+        "o'clock": "saat (tam saat)"
+      },
+      "source": "subs/s01"
+    },
+    {
+      "en": "This is E. Meet me at the old station. Friday. Seven o'clock.",
+      "speaker": "VOICE",
+      "tr": "Ben E. Benimle eski istasyonda buluş. Cuma. Saat yedi.",
+      "chunks": [
+        {
+          "en": "Meet me",
+          "tr": "Benimle buluş"
+        }
+      ],
+      "words": {
+        "this": "bu",
+        "is": "-dır (olmak)",
+        "meet": "buluşmak",
+        "me": "beni",
+        "at": "-de",
+        "the": "(belirli tanımlık)",
+        "old": "eski",
+        "station": "istasyon",
+        "friday": "cuma",
+        "seven": "yedi",
+        "o'clock": "saat (tam saat)"
+      },
+      "source": "scenes:k1.cue"
+    },
+    {
+      "en": "It's a new message.",
+      "speaker": "ALEX",
+      "tr": "Yeni bir mesaj.",
+      "chunks": [],
+      "words": {
+        "it's": "o … -dır",
+        "a": "bir",
+        "new": "yeni",
+        "message": "mesaj"
+      },
+      "source": "subs/r-k1-b"
+    },
+    {
+      "en": "It's the same.",
+      "speaker": "ALEX",
+      "tr": "Aynısı.",
+      "chunks": [
+        {
+          "en": "It's the same.",
+          "tr": "Aynısı."
+        }
+      ],
+      "words": {
+        "it's": "o … -dır",
+        "the": "(belirli tanımlık)",
+        "same": "aynı"
+      },
+      "source": "subs/k1-ok"
+    },
+    {
+      "en": "Every word!",
+      "speaker": "ALEX",
+      "tr": "Kelimesi kelimesine!",
+      "chunks": [],
+      "words": {
+        "every": "her",
+        "word": "kelime"
+      },
+      "source": "subs/k1-ok"
+    },
+    {
+      "en": "The same words every Friday?",
+      "speaker": "MAYA",
+      "tr": "Her cuma aynı kelimeler mi?",
+      "chunks": [
+        {
+          "en": "every Friday",
+          "tr": "her cuma"
+        }
+      ],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "same": "aynı",
+        "words": "kelimeler",
+        "every": "her",
+        "friday": "cuma"
+      },
+      "source": "subs/k1-ok"
+    },
+    {
+      "en": "I think it's a recording.",
+      "speaker": "ALEX",
+      "tr": "Bence bu bir kayıt.",
+      "chunks": [
+        {
+          "en": "I think …",
+          "tr": "Bence … / Sanırım …"
+        }
+      ],
+      "words": {
+        "i": "ben",
+        "think": "düşünmek, sanmak",
+        "it's": "o … -dır",
+        "a": "bir",
+        "recording": "kayıt"
+      },
+      "source": "subs/k1-ok"
+    },
+    {
+      "en": "Yes! So E.",
+      "speaker": "SAM",
+      "tr": "Evet! Yani E.",
+      "chunks": [],
+      "words": {
+        "yes": "evet",
+        "so": "yani, bu yüzden"
+      },
+      "source": "subs/k1-ok"
+    },
+    {
+      "en": "can't hear you.",
+      "speaker": "SAM",
+      "tr": "seni duyamıyor.",
+      "chunks": [],
+      "words": {
+        "can't": "-emez",
+        "hear": "duymak",
+        "you": "seni"
+      },
+      "source": "subs/k1-ok"
+    },
+    {
+      "en": "Now turn left. Listen.",
+      "speaker": "SAM",
+      "tr": "Şimdi sola çevir. Dinle.",
+      "chunks": [
+        {
+          "en": "turn left",
+          "tr": "sola dön / sola çevir"
+        }
+      ],
+      "words": {
+        "now": "şimdi",
+        "turn": "dönmek, çevirmek",
+        "left": "sol, sola",
+        "listen": "dinle"
+      },
+      "source": "subs/s02"
+    },
+    {
+      "en": "No, the signal is weak there.",
+      "speaker": "SAM",
+      "tr": "Hayır, orada sinyal zayıf.",
+      "chunks": [],
+      "words": {
+        "no": "hayır",
+        "the": "(belirli tanımlık)",
+        "signal": "sinyal",
+        "is": "-dır (olmak)",
+        "weak": "zayıf",
+        "there": "orada"
+      },
+      "source": "subs/r-k2-b"
+    },
+    {
+      "en": "Turn left.",
+      "speaker": "SAM",
+      "tr": "Sola çevir.",
+      "chunks": [
+        {
+          "en": "Turn left.",
+          "tr": "Sola dön. / Sola çevir."
+        }
+      ],
+      "words": {
+        "turn": "dönmek, çevirmek",
+        "left": "sol, sola"
+      },
+      "source": "subs/r-k2-b"
+    },
+    {
+      "en": "The sea?",
+      "speaker": "SAM",
+      "tr": "Deniz mi?",
+      "chunks": [],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "sea": "deniz"
+      },
+      "source": "subs/r-k2-c"
+    },
+    {
+      "en": "No. It's weak.",
+      "speaker": "SAM",
+      "tr": "Hayır. Zayıf.",
+      "chunks": [],
+      "words": {
+        "no": "hayır",
+        "it's": "o … -dır",
+        "weak": "zayıf"
+      },
+      "source": "subs/r-k2-c"
+    },
+    {
+      "en": "Look! It's strong here.",
+      "speaker": "SAM",
+      "tr": "Bak! Burada güçlü.",
+      "chunks": [
+        {
+          "en": "Look!",
+          "tr": "Bak!"
+        }
+      ],
+      "words": {
+        "look": "bak",
+        "it's": "o … -dır",
+        "strong": "güçlü",
+        "here": "burada"
+      },
+      "source": "subs/k2-ok"
+    },
+    {
+      "en": "It comes from the hill.",
+      "speaker": "ALEX",
+      "tr": "Tepeden geliyor.",
+      "chunks": [
+        {
+          "en": "It comes from …",
+          "tr": "…-den geliyor"
+        }
+      ],
+      "words": {
+        "it": "o",
+        "comes": "geliyor (come: gelmek)",
+        "from": "-den",
+        "the": "(belirli tanımlık)",
+        "hill": "tepe"
+      },
+      "source": "subs/k2-ok"
+    },
+    {
+      "en": "The hill… and Lumen Point.",
+      "speaker": "MAYA",
+      "tr": "Tepe… ve Lumen Point.",
+      "chunks": [],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "hill": "tepe",
+        "and": "ve"
+      },
+      "source": "subs/k2-ok"
+    },
+    {
+      "en": "Look at the map!",
+      "speaker": "MAYA",
+      "tr": "Haritaya bak!",
+      "chunks": [
+        {
+          "en": "look at …",
+          "tr": "…-e bak"
+        }
+      ],
+      "words": {
+        "look": "bak",
+        "at": "-de",
+        "the": "(belirli tanımlık)",
+        "map": "harita"
+      },
+      "source": "subs/k2-ok"
+    },
+    {
+      "en": "Not the pier.",
+      "speaker": "SAM",
+      "tr": "İskele değil.",
+      "chunks": [],
+      "words": {
+        "not": "değil",
+        "the": "(belirli tanımlık)"
+      },
+      "source": "subs/k2-ok"
+    },
+    {
+      "en": "Not the old station.",
+      "speaker": "SAM",
+      "tr": "Eski istasyon değil.",
+      "chunks": [],
+      "words": {
+        "not": "değil",
+        "the": "(belirli tanımlık)",
+        "old": "eski",
+        "station": "istasyon"
+      },
+      "source": "subs/k2-ok"
+    },
+    {
+      "en": "But who is it?",
+      "speaker": "MAYA",
+      "tr": "Ama kim o?",
+      "chunks": [],
+      "words": {
+        "but": "ama",
+        "who": "kim",
+        "is": "-dır (olmak)",
+        "it": "o"
+      },
+      "source": "subs/k2-ok"
+    },
+    {
+      "en": "I don't know.",
+      "speaker": "ALEX",
+      "tr": "Bilmiyorum.",
+      "chunks": [
+        {
+          "en": "I don't know.",
+          "tr": "Bilmiyorum."
+        }
+      ],
+      "words": {
+        "i": "ben",
+        "don't": "(olumsuz: -me)",
+        "know": "bilmek"
+      },
+      "source": "subs/k2-ok"
+    },
+    {
+      "en": "What's this?",
+      "speaker": "MAYA",
+      "tr": "Bu ne?",
+      "chunks": [],
+      "words": {
+        "what's": "… ne?",
+        "this": "bu"
+      },
+      "source": "subs/s03"
+    },
+    {
+      "en": "Is it from Türkiye?",
+      "speaker": "MAYA",
+      "tr": "Türkiye'den mi?",
+      "chunks": [],
+      "words": {
+        "is": "-dır (olmak)",
+        "it": "o",
+        "from": "-den"
+      },
+      "source": "subs/s03"
+    },
+    {
+      "en": "What's this? Is it from Türkiye?",
+      "speaker": "MAYA",
+      "tr": "Bu ne? Türkiye'den mi?",
+      "chunks": [],
+      "words": {
+        "what's": "… ne?",
+        "this": "bu",
+        "is": "-dır (olmak)",
+        "it": "o",
+        "from": "-den"
+      },
+      "source": "scenes:k3.cue"
+    },
+    {
+      "en": "Yes. My grandmother's note.",
+      "speaker": "ALEX",
+      "tr": "Evet. Babaannemin notu.",
+      "chunks": [],
+      "words": {
+        "yes": "evet",
+        "my": "benim",
+        "grandmother's": "büyükannemin, babaannemin",
+        "note": "not"
+      },
+      "source": "subs/s03"
+    },
+    {
+      "en": "Seven Friday.",
+      "speaker": "ALEX",
+      "tr": "(Hatalı sıra: Yedi cuma.)",
+      "chunks": [],
+      "words": {
+        "seven": "yedi",
+        "friday": "cuma"
+      },
+      "source": "subs/r-k3-b"
+    },
+    {
+      "en": "O'clock seven.",
+      "speaker": "ALEX",
+      "tr": "(Hatalı sıra: Saat yedi.)",
+      "chunks": [],
+      "words": {
+        "o'clock": "saat (tam saat)",
+        "seven": "yedi"
+      },
+      "source": "subs/r-k3-b"
+    },
+    {
+      "en": "Forget don't.",
+      "speaker": "ALEX",
+      "tr": "(Hatalı sıra: Unut -ma.)",
+      "chunks": [],
+      "words": {
+        "forget": "unutmak",
+        "don't": "(olumsuz: -me)"
+      },
+      "source": "subs/r-k3-b"
+    },
+    {
+      "en": "Sorry? Again, please.",
+      "speaker": "MAYA",
+      "tr": "Efendim? Tekrar lütfen.",
+      "chunks": [
+        {
+          "en": "Again, please.",
+          "tr": "Bir daha, lütfen."
+        }
+      ],
+      "words": {
+        "sorry": "efendim? (anlamadım)",
+        "again": "tekrar",
+        "please": "lütfen"
+      },
+      "source": "subs/r-k3-b"
+    },
+    {
+      "en": "Channel seven.",
+      "speaker": "ALEX",
+      "tr": "Yedinci kanal.",
+      "chunks": [
+        {
+          "en": "Channel seven.",
+          "tr": "Yedinci kanal. (7. kanal)"
+        }
+      ],
+      "words": {
+        "channel": "kanal",
+        "seven": "yedi"
+      },
+      "source": "subs/k3-ok"
+    },
+    {
+      "en": "Don't forget.",
+      "speaker": "ALEX",
+      "tr": "Unutma.",
+      "chunks": [
+        {
+          "en": "Don't forget.",
+          "tr": "Unutma."
+        }
+      ],
+      "words": {
+        "don't": "(olumsuz: -me)",
+        "forget": "unutmak"
+      },
+      "source": "subs/k3-ok"
+    },
+    {
+      "en": "Friday? Seven o'clock?",
+      "speaker": "MAYA",
+      "tr": "Cuma mı? Saat yedi mi?",
+      "chunks": [],
+      "words": {
+        "friday": "cuma",
+        "seven": "yedi",
+        "o'clock": "saat (tam saat)"
+      },
+      "source": "subs/k3-ok"
+    },
+    {
+      "en": "Like the call!",
+      "speaker": "MAYA",
+      "tr": "Çağrıdaki gibi!",
+      "chunks": [],
+      "words": {
+        "like": "gibi",
+        "the": "(belirli tanımlık)",
+        "call": "çağrı"
+      },
+      "source": "subs/k3-ok"
+    },
+    {
+      "en": "Look at the radio!",
+      "speaker": "SAM",
+      "tr": "Telsize bak!",
+      "chunks": [
+        {
+          "en": "look at …",
+          "tr": "…-e bak"
+        }
+      ],
+      "words": {
+        "look": "bak",
+        "at": "-de",
+        "the": "(belirli tanımlık)",
+        "radio": "telsiz"
+      },
+      "source": "subs/k3-ok"
+    },
+    {
+      "en": "It's my grandmother's radio…",
+      "speaker": "ALEX",
+      "tr": "Bu babaannemin telsizi…",
+      "chunks": [],
+      "words": {
+        "it's": "o … -dır",
+        "my": "benim",
+        "grandmother's": "büyükannemin, babaannemin",
+        "radio": "telsiz"
+      },
+      "source": "subs/k3-ok"
+    },
+    {
+      "en": "The café is open late. Tomorrow?",
+      "speaker": "MAYA",
+      "tr": "Kafe geç saate kadar açık. Yarın?",
+      "chunks": [
+        {
+          "en": "open late",
+          "tr": "geç saate kadar açık"
+        }
+      ],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "café": "kafe",
+        "is": "-dır (olmak)",
+        "open": "açık",
+        "late": "geç (saate kadar)",
+        "tomorrow": "yarın"
+      },
+      "source": "subs/s04"
+    },
+    {
+      "en": "Yes. Tomorrow.",
+      "speaker": "ALEX",
+      "tr": "Evet. Yarın.",
+      "chunks": [],
+      "words": {
+        "yes": "evet",
+        "tomorrow": "yarın"
+      },
+      "source": "subs/s04"
+    },
+    {
+      "en": "Good night, Sam!",
+      "speaker": "ALEX",
+      "tr": "İyi geceler, Sam!",
+      "chunks": [
+        {
+          "en": "Good night",
+          "tr": "İyi geceler"
+        }
+      ],
+      "words": {
+        "good": "iyi",
+        "night": "gece"
+      },
+      "source": "subs/s04"
+    },
+    {
+      "en": "Good night!",
+      "speaker": "SAM",
+      "tr": "İyi geceler!",
+      "chunks": [
+        {
+          "en": "Good night",
+          "tr": "İyi geceler"
+        }
+      ],
+      "words": {
+        "good": "iyi",
+        "night": "gece"
+      },
+      "source": "subs/s04"
+    },
+    {
+      "en": "See you at the café.",
+      "speaker": "SAM",
+      "tr": "Kafede görüşürüz.",
+      "chunks": [
+        {
+          "en": "See you",
+          "tr": "Görüşürüz"
+        }
+      ],
+      "words": {
+        "see": "görmek",
+        "you": "sen",
+        "at": "-de",
+        "the": "(belirli tanımlık)",
+        "café": "kafe"
+      },
+      "source": "subs/s04"
+    },
+    {
+      "en": "It's the same every Friday.",
+      "speaker": "CARD",
+      "tr": "Her cuma aynı.",
+      "chunks": [
+        {
+          "en": "every Friday",
+          "tr": "her cuma"
+        }
+      ],
+      "words": {
+        "it's": "o … -dır",
+        "the": "(belirli tanımlık)",
+        "same": "aynı",
+        "every": "her",
+        "friday": "cuma"
+      },
+      "source": "scenes:c-kartlar"
+    },
+    {
+      "en": "Friday. Seven o'clock. Don't forget.",
+      "speaker": "CARD",
+      "tr": "Cuma. Saat yedi. Unutma.",
+      "chunks": [],
+      "words": {
+        "friday": "cuma",
+        "seven": "yedi",
+        "o'clock": "saat (tam saat)",
+        "don't": "(olumsuz: -me)",
+        "forget": "unutmak"
+      },
+      "source": "scenes:c-kartlar"
+    },
+    {
+      "en": "It comes from…",
+      "speaker": "TASK",
+      "tr": "…-den geliyor.",
+      "chunks": [],
+      "words": {
+        "it": "o",
+        "comes": "geliyor (come: gelmek)",
+        "from": "-den"
+      },
+      "source": "scenes:t-gorev.i1"
+    }
+  ],
+  "phrases": [
+    {
+      "en": "It's the same.",
+      "tr": "Aynısı.",
+      "source": "content:targetPhrases",
+      "words": {
+        "it's": "o … -dır",
+        "the": "(belirli tanımlık)",
+        "same": "aynı"
+      }
+    },
+    {
+      "en": "It comes from…",
+      "tr": "…-den geliyor.",
+      "words": {
+        "comes": "geliyor (come: gelmek)",
+        "from": "-den",
+        "it": "o"
+      },
+      "source": "content:targetPhrases"
+    },
+    {
+      "en": "Look!",
+      "tr": "Bak!",
+      "source": "content:targetPhrases",
+      "words": {
+        "look": "bak"
+      }
+    },
+    {
+      "en": "I think…",
+      "tr": "Bence… / Sanırım…",
+      "source": "content:targetPhrases",
+      "words": {
+        "i": "ben",
+        "think": "düşünmek, sanmak"
+      }
+    },
+    {
+      "en": "Channel seven.",
+      "tr": "Yedinci kanal.",
+      "source": "content:targetPhrases",
+      "words": {
+        "channel": "kanal",
+        "seven": "yedi"
+      }
+    },
+    {
+      "en": "channel",
+      "tr": "kanal",
+      "source": "content:glossary",
+      "words": {
+        "channel": "kanal"
+      }
+    },
+    {
+      "en": "recording",
+      "tr": "kayıt",
+      "source": "content:glossary",
+      "words": {
+        "recording": "kayıt"
+      }
+    },
+    {
+      "en": "signal",
+      "tr": "sinyal",
+      "source": "content:glossary",
+      "words": {
+        "signal": "sinyal"
+      }
+    },
+    {
+      "en": "weak",
+      "tr": "zayıf",
+      "source": "content:glossary",
+      "words": {
+        "weak": "zayıf"
+      }
+    }
+  ],
+  "notes": [
+    "Çağrı B1'deki sesin aynısıdır (voice_01, voice_02); çevirisi B1 ile tutarlı tutuldu ('This is E.' → 'Ben E.').",
+    "'Yes! So E. can't hear you.' altyazı bölücüsü 'E.' noktasında böldüğü için iki ipucu oldu ('Yes! So E.' / 'can't hear you.'); çeviri de iki parçalı.",
+    "K3 yanlış seçeneği ('Seven Friday. O'clock seven. Forget don't.') bilerek bozuk; Türkçesi (Hatalı sıra) diye işaretlendi.",
+    "'grandmother' bağlamda babaanne (Alex'in babasının annesi, Nermin); Türkçede 'babaanne' kullanıldı.",
+    "Karar ve görev seçenekleri çevrilmedi (kullanıcı kararı)."
+  ]
+}
