@@ -4,7 +4,9 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:hivelzon/app/theme.dart';
 import 'package:hivelzon/features/hi/application/hi_providers.dart';
 import 'package:hivelzon/features/hi/data/hi_store.dart';
+import 'package:hivelzon/features/hi/domain/hi_content.dart';
 import 'package:hivelzon/features/player/application/player_session.dart';
+import 'package:hivelzon/features/player/application/segment_player_pool.dart';
 import 'package:hivelzon/features/player/data/progress_repository.dart';
 import 'package:hivelzon/features/player/presentation/player_screen.dart';
 import 'package:hivelzon/shared/content/content_providers.dart';
@@ -12,6 +14,7 @@ import 'package:hivelzon/shared/meaning/error_taxonomy.dart';
 import 'package:hivelzon/shared/meaning/learning_event_log.dart';
 import 'package:hivelzon/shared/meaning/notebook_repository.dart';
 import 'package:hivelzon/shared/storage/app_database.dart';
+import 'package:video_player/video_player.dart';
 import 'package:video_player_platform_interface/video_player_platform_interface.dart';
 
 import '../../support/fake_content_source.dart';
@@ -21,13 +24,31 @@ import '../../support/fake_video_platform.dart';
 class _MemoryCoach implements PlayerCoach {
   final Set<String> seen = {};
 
+  /// Konu kartlarına verilecek Hi sesi (H-083; fixture'da ses yok).
+  String? introAudio;
+
+  TopicIntro _withAudio(TopicIntro t) => introAudio == null
+      ? t
+      : TopicIntro(
+          id: t.id,
+          contentId: t.contentId,
+          node: t.node,
+          cue: t.cue,
+          titleEn: t.titleEn,
+          linesTr: t.linesTr,
+          exampleEn: t.exampleEn,
+          exampleTr: t.exampleTr,
+          audio: introAudio,
+        );
+
   @override
   Future<EpisodeCoaching> forEpisode(String contentId) async {
     final hi = loadHiFixture();
     return EpisodeCoaching(
       introsByNode: {
         for (final t in hi.topicIntros)
-          if (t.contentId == contentId && !seen.contains(t.id)) t.node: t,
+          if (t.contentId == contentId && !seen.contains(t.id))
+            t.node: _withAudio(t),
       },
       decisionErrors: {
         for (final d in hi.decisionErrors)
@@ -38,6 +59,26 @@ class _MemoryCoach implements PlayerCoach {
 
   @override
   Future<void> markTopicSeen(String topicId) async => seen.add(topicId);
+}
+
+/// Hi sesi için kayıtlı denetleyici (platforma gitmez).
+class _ClipController extends VideoPlayerController {
+  _ClipController(super.uri) : super.networkUrl();
+
+  bool played = false;
+  bool disposed = false;
+
+  @override
+  Future<void> initialize() async {}
+
+  @override
+  Future<void> play() async => played = true;
+
+  @override
+  Future<void> dispose() async {
+    disposed = true;
+    await super.dispose();
+  }
 }
 
 void main() {
@@ -65,7 +106,10 @@ void main() {
     }
   }
 
-  Future<void> pumpPlayer(WidgetTester tester) async {
+  Future<void> pumpPlayer(
+    WidgetTester tester, {
+    VideoControllerFactory? factory,
+  }) async {
     tester.view.physicalSize = const Size(1179, 2556);
     tester.view.devicePixelRatio = 3;
     addTearDown(tester.view.reset);
@@ -82,6 +126,8 @@ void main() {
           ),
           playerHooksProvider.overrideWithValue(null),
           playerCoachProvider.overrideWithValue(coach),
+          if (factory != null)
+            videoControllerFactoryProvider.overrideWithValue(factory),
         ],
         child: MaterialApp(
           theme: AppTheme.light(),
@@ -138,6 +184,45 @@ void main() {
       await step(tester, 1500);
     },
   );
+
+  testWidgets('konu kartının Hi sesi oturumun çalarıyla çalar; kart kapanınca '
+      'durur (H-083)', (tester) async {
+    coach.introAudio = 'hi/intro-can-questions.m4a';
+    final clips = <_ClipController>[];
+    await pumpPlayer(
+      tester,
+      // Videolar sahte platformda; Hi sesi kayıtlı denetleyicide.
+      factory: (uri) {
+        if (!uri.path.endsWith('.m4a')) {
+          return VideoPlayerController.networkUrl(uri);
+        }
+        final c = _ClipController(uri);
+        clips.add(c);
+        return c;
+      },
+    );
+    await step(tester, 300);
+    await step(tester, 1500);
+    await step(tester, 1500);
+    expect(
+      find.byKey(const ValueKey('topic-intro-can-questions')),
+      findsOneWidget,
+    );
+    expect(clips, isEmpty, reason: 'kendiliğinden çalmaz');
+    await tester.tap(find.byKey(const ValueKey('hi-listen')));
+    await step(tester, 200);
+    expect(
+      clips.single.dataSource,
+      'http://test.invalid/_season/S1/hi/intro-can-questions.m4a',
+    );
+    expect(clips.single.played, isTrue);
+
+    await tester.tap(find.byKey(const ValueKey('topic-intro-continue')));
+    await step(tester, 100);
+    expect(clips.single.disposed, isTrue);
+    await tester.pumpWidget(const SizedBox());
+    await step(tester, 1500);
+  });
 
   testWidgets('görülmüş konu kartı yeniden gösterilmez', (tester) async {
     coach.seen.add('can-questions');

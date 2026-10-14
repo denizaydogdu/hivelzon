@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "note": "Karakter–ses eşlemesi (H-083). Uygulamadaki Türkçe konuşan her yer PatientDesk Alania ile seslendirilir. Bir rolün sesi değişirse tts_episode_tr.py o rolün bütün seslerini yeniden üretir (anahtar = metin + model + ses + üslup). Seçim gerekçeleri docs/DILBILGISI.md §2.1'de.",
+  "date": "2026-10-14",
+  "turkish": {
+    "provider": "PatientDesk Alania + Duyu",
+    "model": "alania-v2",
+    "timing": "duyu-1",
+    "roles": {
+      "hi": {
+        "voice": "alania2-f1",
+        "speaker": "HI",
+        "name": "Hi",
+        "reason": "Dilbilgisi anlatıcısıyla aynı ses (H-075): Hi her yerde tek sesle konuşur. Alania'nın varsayılan kadın sesi; orta perde (f0 ≈ 200–239 Hz), sakin ve net."
+      },
+      "alex": {
+        "voice": "alania2-nisa",
+        "speaker": "ALEX (TR)",
+        "name": "Alex (Aleyna Yıldız, 19)",
+        "reason": "Genç kadın sesi. Kadın sesleri içinde en yüksek perde (f0 ≈ 218–280 Hz); Hi'den (f1) ayırt edilir. Deneme: 13/13 kelime eşleşti, doğal hız (91 karakter 6,6 sn)."
+      },
+      "nermin": {
+        "voice": "alania2-selin",
+        "speaker": "NERMIN (TR)",
+        "name": "Babaanne Nermin (not)",
+        "instructions": "Yaşlı, sıcak ve şefkatli bir büyükanne; yavaş, sakin ve yumuşak oku. Cümleler arasında kısa duraklar ver.",
+        "reason": "Olgun, sıcak kadın sesi: kadın sesleri içinde en pes perde (f0 ≈ 180–213 Hz). Üslup ipucu yavaş ve sıcak okutur."
+      },
+      "narrator": {
+        "voice": "alania2-m1",
+        "speaker": "ANLATICI (TR)",
+        "name": "Anlatıcı (ipucu panosu, açık soru)",
+        "instructions": "Sakin, tarafsız bir anlatıcı; acele etmeden, net oku.",
+        "reason": "Sakin, tarafsız erkek sesi: üç kadın karakterden (Hi, Alex, Nermin) açıkça ayrılır; kartların 'oyun anlatıcısı' sesi. Alania'nın temel erkek sesi (f1'in eşi)."
+      }
+    }
+  },
+  "english": {
+    "provider": "ElevenLabs",
+    "voiceId": "EXAVITQu4vr4xnSDxMaL",
+    "name": "Sarah",
+    "modelId": "eleven_v3",
+    "speed": 0.9,
+    "keyFile": "~/.config/hivelzon/elevenlabs.env",
+    "ledger": "kitaplar/_maliyet/elevenlabs-hesap2-karakter.json",
+    "monthlyCharCap": 10000,
+    "reason": "Kitaplardaki ve dilbilgisi derslerindeki İngilizce ses (DILBILGISI §2). Yalnız kısa İngilizce ifadeler okunur."
+  },
+  "mixed": {
+    "default": "b",
+    "gap": 0.15,
+    "note": "Türkçe satırdaki İngilizce ifade {süslü parantez} ile işaretlenir (speechTr). b: Türkçe parçalar Alania, İngilizce ifadeler Sarah; arka arkaya kısa boşlukla, tek hizalama. a: tümü Alania, İngilizce kelimeler aşağıdaki söyleniş sözlüğüyle (karşılaştırma ve Türkçe ek alan özel adlar için)."
+  },
+  "pronunciations": [
+    {"term": "Excuse me", "say_as": "İkskyuz mi"},
+    {"term": "where is the old station", "say_as": "ver iz dı old steyşın"},
+    {"term": "It's seven o'clock", "say_as": "İts sevın ıklak"},
+    {"term": "at seven", "say_as": "et sevın"},
+    {"term": "at", "say_as": "et"},
+    {"term": "Pier", "say_as": "Pir"}
+  ]
+}

@@ -24,7 +24,9 @@
       "relatedPhrases": [
         "Excuse me, where is…?",
         "Where is…?"
-      ]
+      ],
+      "speechTr": "Türkçede olmak çoğu zaman düşer: Ben öğrenciyim, İstasyon nerede? İngilizcede düşmez: {am, is} ya da {are} cümlede durur.",
+      "audio": "hi-ses/note-be-dropped.mp3"
     },
     {
       "id": "can-short-answer",
@@ -40,7 +42,9 @@
       "relatedPhrases": [
         "Yes, I can.",
         "Can you hear me?"
-      ]
+      ],
+      "speechTr": "Türkçede Duyabiliyor musun? sorusuna Evet, duyuyorum deriz. İngilizcede kısa cevap sorudaki yardımcı fiille kurulur: {Can you…?} sorusuna {Yes, I can.} {Are you…?} sorusuna {Yes, I am.}",
+      "audio": "hi-ses/note-can-short-answer.mp3"
     },
     {
       "id": "question-word-order",
@@ -60,7 +64,9 @@
       "relatedPhrases": [
         "Excuse me, where is…?",
         "Where is…?"
-      ]
+      ],
+      "speechTr": "Türkçede soru sözcüğü sona yakın gelir: Liman nerede? İngilizcede soru sözcüğü başa gelir, ardından {is} gelir: {Where is the harbour?}",
+      "audio": "hi-ses/note-question-word-order.mp3"
     },
     {
       "id": "time-preposition",
@@ -82,7 +88,9 @@
         "at seven",
         "on Friday",
         "What time is it?"
-      ]
+      ],
+      "speechTr": "Türkçede saat ve gün ekle söylenir: yedide, cuma günü. İngilizcede saat için {at}, gün için {on} kullanılır: {at seven, on Friday.} {It's seven o'clock.} cümlesinde ise edat yoktur.",
+      "audio": "hi-ses/note-time-preposition.mp3"
     },
     {
       "id": "place-preposition",
@@ -103,7 +111,9 @@
         "It's near…",
         "It's between…",
         "It's behind…"
-      ]
+      ],
+      "speechTr": "Türkçede yer, ismin sonundaki ekle söylenir: okulun arkasında. İngilizcede yer sözcüğü ismin önüne gelir: {behind the school, between the bus stop and the café.}",
+      "audio": "hi-ses/note-place-preposition.mp3"
     },
     {
       "id": "agree-no-be",
@@ -116,7 +126,9 @@
           "right": "I agree."
         }
       ],
-      "relatedPhrases": []
+      "relatedPhrases": [],
+      "speechTr": "Türkçede Katılıyorum deriz ama aklımıza ben ve im eki gelir. İngilizcede {agree} zaten bir fiildir; önüne {am} gelmez: {I agree.}",
+      "audio": "hi-ses/note-agree-no-be.mp3"
     },
     {
       "id": "third-person-s",
@@ -133,7 +145,9 @@
           "right": "She has History."
         }
       ],
-      "relatedPhrases": []
+      "relatedPhrases": [],
+      "speechTr": "Türkçede fiil her kişide ek alır: seviyorum, seviyor. İngilizcede geniş zamanda yalnızca {he, she} ve {it} ile fiile s harfi eklenir: {He loves radios.}",
+      "audio": "hi-ses/note-third-person-s.mp3"
     },
     {
       "id": "articles",
@@ -150,7 +164,9 @@
           "right": "Meet me at the old station."
         }
       ],
-      "relatedPhrases": []
+      "relatedPhrases": [],
+      "speechTr": "Türkçede bir çoğu zaman söylenmez, {the} karşılığı da yoktur. İngilizcede tekil bir ismin önüne {a, an} ya da {the} gelir: {a note, an old radio, the old station.}",
+      "audio": "hi-ses/note-articles.mp3"
     },
     {
       "id": "polite-repeat",
@@ -165,7 +181,9 @@
       ],
       "relatedPhrases": [
         "Again, please."
-      ]
+      ],
+      "speechTr": "Türkçede yakın biriyle Ne? demek olağandır. İngilizcede tek başına {What?} sert duyulabilir. Kibar biçimi: {Again, please.} ya da {Sorry?}",
+      "audio": "hi-ses/note-polite-repeat.mp3"
     }
   ],
   "decisionErrors": [

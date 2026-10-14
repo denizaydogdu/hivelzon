@@ -20,7 +20,9 @@
         "Türkçedeki \"mi\" eki yerine sözcüklerin sırası değişir: soru can ile başlar."
       ],
       "exampleEn": "Can you hear me?",
-      "exampleTr": "Beni duyabiliyor musun?"
+      "exampleTr": "Beni duyabiliyor musun?",
+      "speechTr": "{Can you…?} bir şeyi yapıp yapamayacağını sorar: yapabilir misin? Türkçedeki mi eki yerine sözcüklerin sırası değişir: soru {can} ile başlar.",
+      "audio": "hi-ses/intro-can-questions.mp3"
     },
     {
       "id": "where-is",
@@ -37,7 +39,9 @@
         "Türkçede \"nerede\" sona gelir; İngilizcede where başa gelir, ardından is gelir."
       ],
       "exampleEn": "Where is the old station?",
-      "exampleTr": "Eski istasyon nerede?"
+      "exampleTr": "Eski istasyon nerede?",
+      "speechTr": "Bir yeri sormak için önce {Where is}, sonra yerin adı söylenir. Türkçede nerede sona gelir; İngilizcede {where} başa gelir, ardından {is} gelir.",
+      "audio": "hi-ses/intro-where-is.mp3"
     },
     {
       "id": "this-is-to-be",
@@ -54,7 +58,9 @@
         "Türkçede \"-dir\" eki çoğu zaman söylenmez; İngilizcede am, is, are söylenir: I'm = I am."
       ],
       "exampleEn": "This is my cousin, Sam.",
-      "exampleTr": "Bu kuzenim Sam."
+      "exampleTr": "Bu kuzenim Sam.",
+      "speechTr": "Birini tanıtırken: {This is my…} Bu benim… Türkçede dir eki çoğu zaman söylenmez; İngilizcede {am, is, are} söylenir: {I'm} demek {I am.}",
+      "audio": "hi-ses/intro-this-is-to-be.mp3"
     },
     {
       "id": "directions",
@@ -71,7 +77,9 @@
         "go = git, turn = dön. Yön, fiilden sonra gelir."
       ],
       "exampleEn": "Go straight.",
-      "exampleTr": "Düz git."
+      "exampleTr": "Düz git.",
+      "speechTr": "Yol tarif ederken cümle doğrudan fiille başlar; {you} söylenmez. {Go}: git. {Turn}: dön. Yön, fiilden sonra gelir.",
+      "audio": "hi-ses/intro-directions.mp3"
     },
     {
       "id": "time",
@@ -88,7 +96,9 @@
         "Cevap \"It's\" ile başlar; tam saatlerde sona o'clock gelir."
       ],
       "exampleEn": "What time is it?",
-      "exampleTr": "Saat kaç?"
+      "exampleTr": "Saat kaç?",
+      "speechTr": "Saati sormak için: {What time is it?} Saat kaç? Cevap {It's} ile başlar; tam saatlerde sona {o'clock} gelir.",
+      "audio": "hi-ses/intro-time.mp3"
     }
   ],
   "approvedBy": "kullanıcı (önceden onay, 2026-10-13: \"onayladım şimdiden\"); içerik ana oturumda okundu"

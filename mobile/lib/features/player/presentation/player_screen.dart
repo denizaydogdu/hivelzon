@@ -525,6 +525,13 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen>
                       intro: s.topicIntro!,
                       onContinue: s.dismissTopicIntro,
                       onSkip: s.dismissTopicIntro,
+                      // Hi'nin sesi oturumun tek çalarından (H-083); kart
+                      // kapanınca sonraki düğüm sesi durdurur.
+                      onListen: s.topicIntro!.audio == null
+                          ? null
+                          : () => s.playAudio(
+                              '$kSeasonPathPrefix${s.topicIntro!.audio}',
+                            ),
                     ),
                   ),
                 ),

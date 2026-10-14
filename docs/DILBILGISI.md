@@ -23,7 +23,24 @@ Bu iş, ürünün ilk ayağının ("hazır ders videoları, sabit yapay zekâ ö
 | Yer | **Hikâye sekmesinde üçüncü bölüm:** "Macera · Kitaplık · Dilbilgisi". Ayrıca bağlamdan da açılır: anlam panelinde "Bu yapı ne?", Hi'nin hata notu, bölüm ya da kitap sonu. Sekme sayısı değişmez (K-30). |
 | Kapsam | **Pilot 3 A1 konusu, sonra dalgalar.** Önce müfredat listesi (~70 konu) onaylanır, sonra 3 A1 konusu uçtan uca hazırlanır. A1–A2 Türkçe sesleri ücretsiz ayda üretilir. Ardından B1–B2 ve C1–C2. |
 | Hikâyeden önce | **Bölüm panelinde ikincil düğme** (kullanıcı kararı 2026-10-14). Haritada bölüme dokununca açılan panelde "Başla"nın yanında "Bu bölümdeki dilbilgisi (~2 dk)" düğmesi ve o bölümde geçen konuların adları bulunur. Kitapta aynı teklif kitap açma ekranında yer alır. Kullanıcı kabul ederse o hikâyede geçen konular sırayla anlatılır, sonra hikâye başlar. Kabul etmezse hiçbir şey görmez. H-050 bozulmaz: bölüm yine doğrudan başlıkla açılır. Ayrı Dilbilgisi alanı da vardır. |
-| Türkçe ses | PatientDesk Alania: **lansman kampanyasıyla 14 Kasım 2026'ya kadar ücretsiz ve sınırsız** (kullanıcı bildirimi 2026-10-14); bu yüzden 70 konunun Türkçe sesleri bu tarihten önce üretilir. Önceki bilgi: ilk ay ücretsiz, sonra 1.000 karakter 0,75 TL. Kelime zamanlaması **Duyu** ile çıkarılır; 2026-10-14'te denendi ve kelime kelime doğru çıktı. Anahtar sunucu ayarında (`hivelzon.tts.patientdesk`), değer repo dışında. Yalnız Türkçe cümleler için kullanılır. |
+| Türkçe ses | PatientDesk Alania: **lansman kampanyasıyla 14 Kasım 2026'ya kadar ücretsiz ve sınırsız** (kullanıcı bildirimi 2026-10-14); bu yüzden 70 konunun Türkçe sesleri bu tarihten önce üretilir. Önceki bilgi: ilk ay ücretsiz, sonra 1.000 karakter 0,75 TL. Kelime zamanlaması **Duyu** ile çıkarılır; 2026-10-14'te denendi ve kelime kelime doğru çıktı. Anahtar sunucu ayarında (`hivelzon.tts.patientdesk`), değer repo dışında. Yalnız Türkçe cümleler için kullanılır. || Her yer Alania (H-083) | "Uygulamadaki Türkçe konuşan her yer Alania ile" (kullanıcı kararı 2026-10-14): bölümlerdeki Hi replikleri, Alex'in Türkçe cümleleri, babaannenin notu, ipucu panosu ve açık soru kartları, Hi panelinin metinleri (hata notu, konu tanıtımı, köprü görevi). Ses eşlemesi §2.1. |
+
+### 2.1 Karakter–ses eşlemesi (H-083)
+
+Kaynak: `icerik/_evren/sesler.json` (sabit; değişirse o rolün bütün sesleri yeniden üretilir). Sesler PatientDesk `/v1/voices` listesinden seçildi (2026-10-14; Alania v2, 48 kHz): kadın `alania2-f1`, `-nisa`, `-selin`, `-lina`, `-melisa`, `-nil`; erkek `alania2-m1`, `-oncel`, `-emre`, `-fikri`, `-sezgin`. Ses yaşı ve tınısı API'de yazmıyor; seçim perde aralığına (f0) ve deneme kayıtlarına göre yapıldı. Deneme kayıtları (8 aday × 3 cümle): `.yerel/h083/ses-secimi/<ses>/` (git dışı).
+
+| Rol | Ses | Neden |
+|---|---|---|
+| Hi | `alania2-f1` | Dilbilgisi anlatıcısıyla aynı; Hi her yerde tek sesle konuşur. |
+| Alex (19, genç kadın) | `alania2-nisa` | Kadın sesleri içinde en yüksek perde (≈ 218–280 Hz); Hi'den ayırt edilir. |
+| Babaanne Nermin (not) | `alania2-selin` + `instructions` (yavaş, sıcak, şefkatli) | Kadın sesleri içinde en pes perde (≈ 180–213 Hz): olgun ve sıcak. |
+| Anlatıcı (ipucu panosu, açık soru) | `alania2-m1` + `instructions` (sakin, tarafsız) | Üç kadın karakterden ayrılan sakin erkek sesi. |
+| İngilizce ifadeler (karışık satırda) | ElevenLabs Sarah `EXAVITQu4vr4xnSDxMaL` (`eleven_v3`, hız 0,9) | Kitap ve derslerdeki İngilizce ses. Yalnız kısa ifadeler. |
+
+**Karışık dil satırları** (Türkçe + İngilizce ifade; ör. "Böyle de söyleyebilirsin: Excuse me, where is the old station?"):
+- **b (varsayılan, gönderilen):** Türkçe parçalar Alania, İngilizce ifade Sarah; kırpılır, ses düzeyi eşitlenir, 0,15 sn boşlukla birleştirilir, tek hizalama.
+- **a:** Tümü Alania, İngilizce kelimeler söyleniş sözlüğüyle (`sesler.json` → `pronunciations`). Yalnız Türkçe ek alan özel adda kullanılır (A1-004 `c-oq`: "Pier 3'te" → "Pir 3'te").
+- Karşılaştırma örnekleri (2 satır, a ve b): `.yerel/h083/b2_17_hi-*.mp3`, `.yerel/h083/b4_21_hi-*.mp3`. Kullanıcı seçimi bekliyor (H-083).
 
 ## 3. Müfredat (H-076'da kesinleşir)
 - **Dağılım:** Yaklaşık 70 konu: A1 15, A2 15, B1 14, B2 12, C1 8, C2 6.

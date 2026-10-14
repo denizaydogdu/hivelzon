@@ -43,7 +43,7 @@
     {
       "id": "r-k1-b", "type": "reaction",
       "shots": [{"image": "images/I3-tepki.png", "audio": ["alex_k1_b"], "atempo": 0.85, "move": [1.0, 1.05, 0.45, 0.45, 0.35, 0.35]}],
-      "bubble": {"speaker": "HI", "lang": "tr", "text": "Soru Can you…? ile başlıyorsa cevap \"Yes, I can.\" olur.", "audio": "hi_01"},
+      "bubble": {"speaker": "HI", "lang": "tr", "text": "Soru Can you…? ile başlıyorsa cevap \"Yes, I can.\" olur.", "audio": "hi_01", "speechTr": "Soru {Can you…?} ile başlıyorsa cevap {Yes, I can.} olur."},
       "next": "k1"
     },
     {
@@ -84,7 +84,7 @@
     {
       "id": "r-k2-b", "type": "reaction",
       "shots": [{"image": "images/I2-telefon-hi.png", "audio": ["alex_k2_b"], "move": [1.0, 1.04, 0.55, 0.55, 0.55, 0.55]}],
-      "bubble": {"speaker": "HI", "lang": "tr", "text": "\"What?\" bazen sert duyulur. Böyle de söyleyebilirsin: \"Again, please.\"", "audio": "hi_03"},
+      "bubble": {"speaker": "HI", "lang": "tr", "text": "\"What?\" bazen sert duyulur. Böyle de söyleyebilirsin: \"Again, please.\"", "audio": "hi_03", "speechTr": "{What?} bazen sert duyulur. Böyle de söyleyebilirsin: {Again, please.}"},
       "next": "k2"
     },
     {
@@ -141,7 +141,7 @@
       "lines": [{"text": "İpucu panosu", "lang": "tr", "style": "heading"},
                 {"text": "C1 · Telsiz mesajı (ses + metin)", "lang": "tr"},
                 {"text": "C2 · Not: E. / old station / Friday / 7", "lang": "tr"}],
-      "next": "c-oq"
+      "next": "c-oq", "speechTr": "İpucu panosu. Telsiz mesajı: ses ve metin. Not: {E. Old station. Friday. Seven.}", "audio": {"id": "tr_c-clues", "speaker": "ANLATICI (TR)"}
     },
     {
       "id": "c-oq", "type": "card", "kind": "openQuestion", "advance": "tap", "questionId": "Q1",
@@ -149,7 +149,7 @@
       "lines": [{"text": "AÇIK SORU", "lang": "tr", "style": "caption"},
                 {"text": "Old Station nerede?", "lang": "tr", "style": "heading"},
                 {"text": "Bölüm 2: The New Neighbour", "lang": "en", "style": "caption"}],
-      "next": null
+      "next": null, "speechTr": "Açık soru: {Old Station} nerede?", "audio": {"id": "tr_c-oq", "speaker": "ANLATICI (TR)"}
     }
   ]
 }

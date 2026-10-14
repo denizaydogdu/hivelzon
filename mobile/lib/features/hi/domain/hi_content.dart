@@ -16,6 +16,7 @@ class ErrorNote {
     required this.explanationTr,
     this.examples = const [],
     this.relatedPhrases = const [],
+    this.audio,
   });
 
   factory ErrorNote.fromJson(Map<String, dynamic> j) => ErrorNote(
@@ -30,6 +31,7 @@ class ErrorNote {
     relatedPhrases: [
       for (final p in (j['relatedPhrases'] as List? ?? const [])) p as String,
     ],
+    audio: j['audio'] as String?,
   );
 
   final String id;
@@ -40,6 +42,10 @@ class ErrorNote {
 
   /// Bu notun ilgili olduğu hedef ifadeler (kelime tekrarında "Neden yanlış?").
   final List<String> relatedPhrases;
+
+  /// Hi'nin Türkçe sesi (H-083): sezon paketine göre yol, ör.
+  /// `hi/note-be-dropped.m4a`. Yoksa yalnız metin.
+  final String? audio;
 }
 
 /// Yanlış karar seçeneğinin hata türü (ve varsa notu).
@@ -81,6 +87,7 @@ class TopicIntro {
     required this.exampleEn,
     required this.exampleTr,
     this.cue,
+    this.audio,
   });
 
   factory TopicIntro.fromJson(Map<String, dynamic> j) {
@@ -94,6 +101,7 @@ class TopicIntro {
       linesTr: [for (final l in j['linesTr'] as List) l as String],
       exampleEn: j['exampleEn'] as String,
       exampleTr: j['exampleTr'] as String,
+      audio: j['audio'] as String?,
     );
   }
 
@@ -107,6 +115,10 @@ class TopicIntro {
   final List<String> linesTr;
   final String exampleEn;
   final String exampleTr;
+
+  /// Hi'nin Türkçe sesi (H-083): sezon paketine göre yol, ör.
+  /// `hi/intro-can-questions.m4a`.
+  final String? audio;
 }
 
 /// Gerçek hayat köprü görevi (F4): isteğe bağlı yan görev.
@@ -117,6 +129,7 @@ class BridgeTask {
     required this.titleTr,
     required this.textTr,
     this.phraseEn,
+    this.audio,
   });
 
   factory BridgeTask.fromJson(Map<String, dynamic> j) => BridgeTask(
@@ -125,6 +138,7 @@ class BridgeTask {
     titleTr: j['titleTr'] as String,
     textTr: j['textTr'] as String,
     phraseEn: j['phraseEn'] as String?,
+    audio: j['audio'] as String?,
   );
 
   final String id;
@@ -132,6 +146,10 @@ class BridgeTask {
   final String titleTr;
   final String textTr;
   final String? phraseEn;
+
+  /// Hi'nin Türkçe sesi (H-083): sezon paketine göre yol, ör.
+  /// `hi/bridge-bt-a1-001.m4a`.
+  final String? audio;
 }
 
 /// "Bu ne demek?" dizinindeki bir ifade (onaylı çeviriden).

@@ -119,7 +119,8 @@ def main(argv: list[str] | None = None) -> int:
                            rendition=media.rendition_720, image=media.to_webp,
                            set_media={"crop": media.crop_webp, "scene": media.scene_webp, "cut": media.cut_audio,
                                       "gain": media.gain_to_target, "probe": media.probe_duration,
-                                      "size": media.image_size})
+                                      "size": media.image_size},
+                           hi_audio=lambda s, o: media.audio_clip(s, media.gain_to_target(s), o))
         sd = sr["doc"]
         print(f"== Sezon {n} paketi → {sr['dir']}")
         print("   " + ", ".join(f"{k} {sd[k]['video']} {sd[k].get('duration')} sn"
@@ -132,7 +133,7 @@ def main(argv: list[str] | None = None) -> int:
         if "hi" in sd:
             h = sd["hi"]
             print(f"   Hi verisi: {h['errorCatalog']} hata notu, {h['topicIntros']} konu tanıtımı, "
-                  f"{h['bridgeTasks']} köprü görevi, {h['lookup']} sözlük girdisi ({h['bytes'] / 1e3:.0f} kB)")
+                  f"{h['bridgeTasks']} köprü görevi, {h.get('audio', 0)} Türkçe ses (eksik {len(h.get('audioMissing', []))}), {h['lookup']} sözlük girdisi ({h['bytes'] / 1e3:.0f} kB)")
         if "episodes" in sd:
             avail = [e["number"] for e in sd["episodes"] if e["available"]]
             print(f"   harita: {len(sd['episodes'])} bölüm, oynanabilir {avail}; "

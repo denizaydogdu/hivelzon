@@ -967,6 +967,10 @@ abstract final class HiTexts {
   static const weekEmpty =
       'Bu hafta henüz kayıt yok. İlk adım için bugünkü öneriye bakabilirsin.';
 
+  // Hi'nin sesi (H-083): not, konu kartı ve yan görevde "Dinle".
+  static const listen = "Hi'yi dinle";
+  static const listenStop = 'Durdur';
+
   // Hi'nin notu
   static const noteLabel = "Hi'nin notu";
   static const noteTurkish = 'Türkçeden aklına gelen';

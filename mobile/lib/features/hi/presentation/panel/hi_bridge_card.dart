@@ -10,6 +10,7 @@ import '../../../../shared/text/turkish.dart';
 import '../../application/hi_providers.dart';
 import '../../data/hi_store.dart';
 import '../../domain/hi_content.dart';
+import '../hi_listen_button.dart';
 
 /// Gerçek hayat köprü görevi (yan görev): "Yaptım" ya da "Geç".
 class HiBridgeCard extends ConsumerStatefulWidget {
@@ -54,19 +55,31 @@ class _HiBridgeCardState extends ConsumerState<HiBridgeCard> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Text(
-              upperTr(HiTexts.bridgeLabel),
-              style: theme.textTheme.labelLarge?.copyWith(
-                color: AppColors.seaBlue,
-                fontWeight: FontWeight.w700,
-                letterSpacing: 1.2,
-              ),
-            ),
-            Text(
-              t.titleTr,
-              style: theme.textTheme.titleMedium?.copyWith(
-                fontWeight: FontWeight.w700,
-              ),
+            Row(
+              children: [
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        upperTr(HiTexts.bridgeLabel),
+                        style: theme.textTheme.labelLarge?.copyWith(
+                          color: AppColors.seaBlue,
+                          fontWeight: FontWeight.w700,
+                          letterSpacing: 1.2,
+                        ),
+                      ),
+                      Text(
+                        t.titleTr,
+                        style: theme.textTheme.titleMedium?.copyWith(
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                if (t.audio != null) HiListenButton(path: t.audio!),
+              ],
             ),
             const SizedBox(height: 4),
             Text(t.textTr, style: theme.textTheme.bodyLarge),

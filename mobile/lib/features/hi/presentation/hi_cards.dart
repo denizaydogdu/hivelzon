@@ -4,7 +4,9 @@ import '../../../app/theme.dart';
 import '../../../l10n/tr_strings.dart';
 import '../../../shared/text/turkish.dart';
 import '../../player/presentation/widgets/hi_avatar.dart';
+import '../../player/presentation/widgets/player_ui.dart';
 import '../domain/hi_content.dart';
+import 'hi_listen_button.dart';
 
 /// Hi'nin notu (hata kataloğu, F1): Türkçeyle karşılaştıran kısa açıklama ve
 /// "Türkçeden aklına gelen → İngilizcede" örnekleri. Kırmızı ya da çarpı yok.
@@ -49,6 +51,7 @@ class HiNoteCard extends StatelessWidget {
                 ],
               ),
             ),
+            if (note.audio != null) HiListenButton(path: note.audio!),
           ],
         ),
         const SizedBox(height: AppSpacing.sm),
@@ -108,11 +111,16 @@ class HiTopicCard extends StatelessWidget {
     required this.intro,
     this.onContinue,
     this.onSkip,
+    this.onListen,
   });
 
   final TopicIntro intro;
   final VoidCallback? onContinue;
   final VoidCallback? onSkip;
+
+  /// Oynatıcı sesi kendi çalarıyla çalar (oturum sesiyle üst üste binmez).
+  /// Verilmezse ve kartın sesi varsa kart kendi düğmesiyle çalar (Defter).
+  final VoidCallback? onListen;
 
   @override
   Widget build(BuildContext context) {
@@ -156,6 +164,14 @@ class HiTopicCard extends StatelessWidget {
                     ],
                   ),
                 ),
+                if (intro.audio != null)
+                  onListen != null
+                      ? ListenButton(
+                          key: const ValueKey('hi-listen'),
+                          onPressed: onListen!,
+                          semanticLabel: HiTexts.listen,
+                        )
+                      : HiListenButton(path: intro.audio!),
                 if (onSkip != null)
                   TextButton(
                     key: const ValueKey('topic-intro-skip'),

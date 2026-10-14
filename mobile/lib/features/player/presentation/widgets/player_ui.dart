@@ -131,11 +131,15 @@ class ListenButton extends StatelessWidget {
     required this.onPressed,
     required this.semanticLabel,
     this.filled = true,
+    this.playing = false,
   });
 
   final VoidCallback onPressed;
   final String semanticLabel;
   final bool filled;
+
+  /// Ses çalıyorsa durdurma simgesi gösterilir (etiketi çağıran verir).
+  final bool playing;
 
   @override
   Widget build(BuildContext context) {
@@ -152,7 +156,10 @@ class ListenButton extends StatelessWidget {
               foregroundColor: AppPalette.ink,
             )
           : null,
-      icon: Icon(Icons.volume_up_rounded, semanticLabel: semanticLabel),
+      icon: Icon(
+        playing ? Icons.stop_rounded : Icons.volume_up_rounded,
+        semanticLabel: semanticLabel,
+      ),
     );
   }
 }

@@ -179,3 +179,37 @@ Kalan kredi 110,25 olduğu için tutar karşılanamıyor. Biçim de uymuyor: tek
 **Kısa klip şablonu** (ICERIK-MIMARISI §4.5): kanca → söz → öğretim (Hi) → tekrar (yavaş) → test kartı → çağrı. Sosyal medya için -14 LUFS'lik ayrı bir çıktı gerekecek (K-14; yayın ayrıca onaylı).
 
 **Görüntü ve yazı uyumu düzeltmesi:** Kısa 1'de "Yes, I can hear you." yazısı Alex'in şaşkın olduğu karedeydi (I3); telsiz yakın planına (T2) taşındı.
+
+## Türkçe seslendirme kayıtları (tts_tr.py)
+
+| Tarih (UTC) | Parça | Model | Ses | Sürüm | Karakter | Ses (sn) | İstek kimliği | Metin sha256 |
+|---|---|---|---|---|---|---|---|---|
+| 2026-10-14T13:04:28Z | hi_01.p1 | alania-v2 | alania2-f1 | alania-v2.1 | 4 | 0.8 | 4ce6cfe807d7408dafd6a47ebd285e9b | 30fca02f28122b20 |
+| 2026-10-14T13:04:29Z | hi_01.p1 | duyu-1 | - | - | - | 0.8 | - | 30fca02f28122b20 |
+| 2026-10-14T13:04:30Z | hi_01.p3 | alania-v2 | alania2-f1 | alania-v2.1 | 20 | 1.76 | 8fd438bbbbf54497ade8cf8568a88077 | ad01741b5e51394f |
+| 2026-10-14T13:04:31Z | hi_01.p3 | duyu-1 | - | - | - | 1.76 | - | ad01741b5e51394f |
+| 2026-10-14T13:04:32Z | hi_01.p5 | alania-v2 | alania2-f1 | alania-v2.1 | 5 | 0.96 | f45c87863dd54c9da43863e8a854c7b4 | 2dae499d6d82aca5 |
+| 2026-10-14T13:04:32Z | hi_01.p5 | duyu-1 | - | - | - | 0.96 | - | 2dae499d6d82aca5 |
+| 2026-10-14T13:04:34Z | hi_03.p2 | alania-v2 | alania2-f1 | alania-v2.1 | 45 | 3.04 | 4ee4f759382149ecae22e3d1384553e7 | 204eb48518780018 |
+| 2026-10-14T13:04:35Z | hi_03.p2 | duyu-1 | - | - | - | 3.04 | - | 204eb48518780018 |
+| 2026-10-14T13:04:36Z | hi_02 | alania-v2 | alania2-f1 | alania-v2.1 | 66 | 4.64 | 60cf949cee0143d090873d6cb2ff9182 | dbad234b45d4a721 |
+| 2026-10-14T13:04:37Z | hi_02 | duyu-1 | - | - | - | 4.64 | - | dbad234b45d4a721 |
+| 2026-10-14T13:04:38Z | hi_04 | alania-v2 | alania2-f1 | alania-v2.1 | 48 | 3.52 | 6ca84a2a6533429b8bb1e9263b6cf7fc | d757ebec97bd89b6 |
+| 2026-10-14T13:04:39Z | hi_04 | duyu-1 | - | - | - | 3.52 | - | d757ebec97bd89b6 |
+| 2026-10-14T13:04:41Z | tr_c-clues.p1 | alania-v2 | alania2-m1 | alania-v2.1 | 47 | 5.6 | 0fd7ac39814d467d80f8f1115a7b314c | 13f195c41553908e |
+| 2026-10-14T13:04:42Z | tr_c-clues.p1 | duyu-1 | - | - | - | 5.6 | - | 13f195c41553908e |
+| 2026-10-14T13:04:43Z | tr_c-oq.p1 | alania-v2 | alania2-m1 | alania-v2.1 | 10 | 2.24 | 48da9c74cba14edb88b27e3f12d2e167 | a7fe607ecbde54b1 |
+| 2026-10-14T13:04:44Z | tr_c-oq.p1 | duyu-1 | - | - | - | 2.24 | - | a7fe607ecbde54b1 |
+| 2026-10-14T13:04:45Z | tr_c-oq.p3 | alania-v2 | alania2-m1 | alania-v2.1 | 7 | 0.8 | 6fcb11a1c1654539bd1cf529e541bbd3 | 5b6e182f3f76b4b2 |
+| 2026-10-14T13:04:45Z | tr_c-oq.p3 | duyu-1 | - | - | - | 0.8 | - | 5b6e182f3f76b4b2 |
+
+## İngilizce ifade seslendirme kayıtları (tts_episode_tr.py)
+
+| Tarih (UTC) | Parça | Ses | Model | Hız | Karakter | Metin sha256 |
+|---|---|---|---|---|---|---|
+| 2026-10-14T13:06:57Z | hi_01.p2 | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 9 | d449035f176c0bcc |
+| 2026-10-14T13:06:59Z | hi_01.p4 | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 11 | 044feecf91a29253 |
+| 2026-10-14T13:07:00Z | hi_03.p1 | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 5 | a4949e2c96de2668 |
+| 2026-10-14T13:07:01Z | hi_03.p3 | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 14 | 308c8f3227d091b7 |
+| 2026-10-14T13:07:02Z | tr_c-clues.p2 | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 30 | a4acd7d16224f757 |
+| 2026-10-14T13:07:03Z | tr_c-oq.p2 | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 11 | 71b2f4da8bfabde3 |
