@@ -1,0 +1,2685 @@
+{
+  "contentId": "A1-K02",
+  "status": "DRAFT",
+  "author": "Claude taslak (H-071); kullanıcı onayı bekliyor",
+  "date": "2026-10-14",
+  "notes": [
+    "Anlatım İngilizcede geniş zamanda (present simple); Türkçede doğal anlatım için çoğunlukla şimdiki zaman (-iyor) kullanıldı.",
+    "\"Grandpa\" Türkçede \"Dede\" olarak çevrildi (Kemal Dede). Emir kipleri (Touch here. Smile.) Türkçede de emir: \"Buraya dokun. Gülümse.\"",
+    "Kelime anlamları cümledeki kullanıma göre verildi; -s takısı olan fiillerde (lives, has, touches) not düşüldü."
+  ],
+  "lines": [
+    {
+      "en": "Monday to Wednesday",
+      "tr": "Pazartesiden Çarşambaya",
+      "chunks": [],
+      "words": {
+        "monday": "pazartesi",
+        "to": "-e (-den -e)",
+        "wednesday": "çarşamba"
+      },
+      "source": "c1"
+    },
+    {
+      "en": "Grandpa Kemal is seventy-two.",
+      "tr": "Kemal Dede yetmiş iki yaşında.",
+      "chunks": [],
+      "words": {
+        "grandpa": "dede",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "seventy-two": "yetmiş iki"
+      },
+      "source": "p01-s01"
+    },
+    {
+      "en": "He lives in Ankara.",
+      "tr": "Ankara'da yaşıyor.",
+      "chunks": [],
+      "words": {
+        "he": "o (erkek)",
+        "lives": "yaşıyor, oturuyor (live + -s)",
+        "in": "içinde; -de"
+      },
+      "source": "p01-s02"
+    },
+    {
+      "en": "He has a small flat.",
+      "tr": "Küçük bir dairesi var.",
+      "chunks": [],
+      "words": {
+        "he": "o (erkek)",
+        "has": "-si var (have → has)",
+        "a": "bir",
+        "small": "küçük",
+        "flat": "daire, ev"
+      },
+      "source": "p01-s03"
+    },
+    {
+      "en": "He has a big laugh.",
+      "tr": "Kocaman bir kahkahası var.",
+      "chunks": [],
+      "words": {
+        "he": "o (erkek)",
+        "has": "-si var (have → has)",
+        "a": "bir",
+        "big": "büyük",
+        "laugh": "kahkaha; gülmek"
+      },
+      "source": "p01-s04"
+    },
+    {
+      "en": "And he has a new phone.",
+      "tr": "Bir de yeni bir telefonu var.",
+      "chunks": [],
+      "words": {
+        "and": "ve",
+        "he": "o (erkek)",
+        "has": "-si var (have → has)",
+        "a": "bir",
+        "new": "yeni",
+        "phone": "telefon"
+      },
+      "source": "p01-s05"
+    },
+    {
+      "en": "It is black and thin.",
+      "tr": "Siyah ve ince.",
+      "chunks": [],
+      "words": {
+        "it": "o; bu",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "black": "siyah",
+        "and": "ve",
+        "thin": "ince"
+      },
+      "source": "p01-s06"
+    },
+    {
+      "en": "This week, Grandpa has one job.",
+      "tr": "Bu hafta Dede'nin tek bir görevi var.",
+      "chunks": [
+        {
+          "en": "one job",
+          "tr": "tek görev"
+        }
+      ],
+      "words": {
+        "this": "bu",
+        "week": "hafta",
+        "grandpa": "dede",
+        "has": "-si var (have → has)",
+        "one": "bir; tek",
+        "job": "iş, görev"
+      },
+      "source": "p01-s07"
+    },
+    {
+      "en": "On Saturday, it is Ece's birthday.",
+      "tr": "Cumartesi günü Ece'nin doğum günü.",
+      "chunks": [],
+      "words": {
+        "on": "-de, üstünde",
+        "saturday": "cumartesi",
+        "it": "(boş özne; Türkçede karşılığı yok)",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "ece's": "Ece'nin",
+        "birthday": "doğum günü"
+      },
+      "source": "p01-s08"
+    },
+    {
+      "en": "Ece is his granddaughter.",
+      "tr": "Ece onun kız torunu.",
+      "chunks": [],
+      "words": {
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "his": "onun",
+        "granddaughter": "kız torun"
+      },
+      "source": "p01-s09"
+    },
+    {
+      "en": "Grandpa wants to send her one nice photo.",
+      "tr": "Dede ona güzel bir fotoğraf göndermek istiyor.",
+      "chunks": [
+        {
+          "en": "wants to send",
+          "tr": "göndermek istiyor"
+        }
+      ],
+      "words": {
+        "grandpa": "dede",
+        "wants": "istiyor (want + -s)",
+        "to": "-e",
+        "send": "göndermek; Gönder (düğme)",
+        "her": "ona",
+        "one": "bir",
+        "nice": "güzel, hoş",
+        "photo": "fotoğraf"
+      },
+      "source": "p01-s10"
+    },
+    {
+      "en": "It is easy, right?",
+      "tr": "Kolay, değil mi?",
+      "chunks": [
+        {
+          "en": "It is easy",
+          "tr": "kolay"
+        },
+        {
+          "en": "right",
+          "tr": "değil mi"
+        }
+      ],
+      "words": {
+        "it": "o; bu",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "easy": "kolay",
+        "right": "değil mi (soru eki gibi)"
+      },
+      "source": "p01-s11"
+    },
+    {
+      "en": "But the new phone does everything wrong.",
+      "tr": "Ama yeni telefon her şeyi yanlış yapıyor.",
+      "chunks": [
+        {
+          "en": "does everything wrong",
+          "tr": "her şeyi yanlış yapıyor"
+        }
+      ],
+      "words": {
+        "but": "ama",
+        "the": "(belirli tanımlık)",
+        "new": "yeni",
+        "phone": "telefon",
+        "does": "yapıyor (do + -es); (yardımcı fiil)",
+        "everything": "her şey",
+        "wrong": "yanlış"
+      },
+      "source": "p01-s12"
+    },
+    {
+      "en": "Today is Monday.",
+      "tr": "Bugün pazartesi.",
+      "chunks": [],
+      "words": {
+        "today": "bugün",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "monday": "pazartesi"
+      },
+      "source": "p01-s13"
+    },
+    {
+      "en": "Saturday is five days away.",
+      "tr": "Cumartesiye beş gün var.",
+      "chunks": [
+        {
+          "en": "five days away",
+          "tr": "beş gün uzakta"
+        }
+      ],
+      "words": {
+        "saturday": "cumartesi",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "five": "beş",
+        "days": "günler",
+        "away": "uzakta"
+      },
+      "source": "p01-s14"
+    },
+    {
+      "en": "On Monday morning, Grandpa sits on his sofa.",
+      "tr": "Pazartesi sabahı Dede kanepesinde oturuyor.",
+      "chunks": [
+        {
+          "en": "On Monday morning",
+          "tr": "pazartesi sabahı"
+        }
+      ],
+      "words": {
+        "on": "-de (günle)",
+        "monday": "pazartesi",
+        "morning": "sabah",
+        "grandpa": "dede",
+        "sits": "oturuyor (sit + -s)",
+        "his": "onun (kendi)",
+        "sofa": "kanepe"
+      },
+      "source": "p02-s01"
+    },
+    {
+      "en": "He looks at the phone.",
+      "tr": "Telefona bakıyor.",
+      "chunks": [
+        {
+          "en": "looks at",
+          "tr": "-e bakıyor"
+        }
+      ],
+      "words": {
+        "he": "o (erkek)",
+        "looks": "bakıyor (look + -s)",
+        "at": "-e, -de",
+        "the": "(belirli tanımlık)",
+        "phone": "telefon"
+      },
+      "source": "p02-s02"
+    },
+    {
+      "en": "The phone looks at him.",
+      "tr": "Telefon da ona bakıyor.",
+      "chunks": [
+        {
+          "en": "looks at",
+          "tr": "-e bakıyor"
+        }
+      ],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "phone": "telefon",
+        "looks": "bakıyor (look + -s)",
+        "at": "-e, -de",
+        "him": "onu, ona"
+      },
+      "source": "p02-s03"
+    },
+    {
+      "en": "\"Call Ece,\" he says to the phone.",
+      "tr": "\"Ece'yi ara,\" diyor telefona.",
+      "chunks": [],
+      "words": {
+        "call": "ara (emir)",
+        "he": "o (erkek)",
+        "says": "diyor (say + -s)",
+        "to": "-e",
+        "the": "(belirli tanımlık)",
+        "phone": "telefon"
+      },
+      "source": "p02-s04"
+    },
+    {
+      "en": "The phone rings.",
+      "tr": "Telefon çalıyor.",
+      "chunks": [],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "phone": "telefon",
+        "rings": "çalıyor (ring + -s)"
+      },
+      "source": "p02-s05"
+    },
+    {
+      "en": "Then a man answers.",
+      "tr": "Sonra bir adam açıyor.",
+      "chunks": [],
+      "words": {
+        "then": "sonra; o anda",
+        "a": "bir",
+        "man": "adam",
+        "answers": "telefonu açıyor (answer + -s)"
+      },
+      "source": "p02-s06"
+    },
+    {
+      "en": "\"Good morning!",
+      "tr": "\"Günaydın!",
+      "chunks": [
+        {
+          "en": "Good morning",
+          "tr": "günaydın"
+        }
+      ],
+      "words": {
+        "good": "iyi; güzel",
+        "morning": "sabah"
+      },
+      "source": "p02-s07"
+    },
+    {
+      "en": "This is the bread shop!\"",
+      "tr": "Burası fırın!\"",
+      "chunks": [
+        {
+          "en": "bread shop",
+          "tr": "fırın"
+        }
+      ],
+      "words": {
+        "this": "burası",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "the": "(belirli tanımlık)",
+        "bread": "ekmek",
+        "shop": "dükkân (bread shop: fırın)"
+      },
+      "source": "p02-s08"
+    },
+    {
+      "en": "\"The bread shop?\" says Grandpa.",
+      "tr": "\"Fırın mı?\" diyor Dede.",
+      "chunks": [
+        {
+          "en": "bread shop",
+          "tr": "fırın"
+        }
+      ],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "bread": "ekmek",
+        "shop": "dükkân (bread shop: fırın)",
+        "says": "diyor (say + -s)",
+        "grandpa": "dede"
+      },
+      "source": "p02-s09"
+    },
+    {
+      "en": "\"No, no.",
+      "tr": "\"Yok, yok.",
+      "chunks": [],
+      "words": {
+        "no": "hayır, yok"
+      },
+      "source": "p02-s10"
+    },
+    {
+      "en": "Sorry!\"",
+      "tr": "Pardon!\"",
+      "chunks": [],
+      "words": {
+        "sorry": "özür dilerim, pardon"
+      },
+      "source": "p02-s11"
+    },
+    {
+      "en": "The man laughs.",
+      "tr": "Adam gülüyor.",
+      "chunks": [],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "man": "adam",
+        "laughs": "gülüyor (laugh + -s)"
+      },
+      "source": "p02-s12"
+    },
+    {
+      "en": "\"Kemal, is that you?",
+      "tr": "\"Kemal, sen misin?",
+      "chunks": [
+        {
+          "en": "is that you",
+          "tr": "sen misin"
+        }
+      ],
+      "words": {
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "that": "o, şu (is that you: sen misin)",
+        "you": "sen; seni"
+      },
+      "source": "p02-s13"
+    },
+    {
+      "en": "Your big cake is ready!\"",
+      "tr": "Büyük pastan hazır!\"",
+      "chunks": [],
+      "words": {
+        "your": "senin (pastan)",
+        "big": "büyük",
+        "cake": "pasta",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "ready": "hazır"
+      },
+      "source": "p02-s14"
+    },
+    {
+      "en": "\"What cake?\" asks Grandpa.",
+      "tr": "\"Ne pastası?\" diye soruyor Dede.",
+      "chunks": [
+        {
+          "en": "What cake",
+          "tr": "ne pastası"
+        }
+      ],
+      "words": {
+        "what": "ne",
+        "cake": "pasta",
+        "asks": "soruyor (ask + -s)",
+        "grandpa": "dede"
+      },
+      "source": "p02-s15"
+    },
+    {
+      "en": "But the call ends.",
+      "tr": "Ama arama kapanıyor.",
+      "chunks": [],
+      "words": {
+        "but": "ama",
+        "the": "(belirli tanımlık)",
+        "call": "arama (telefon)",
+        "ends": "bitiyor, kapanıyor (end + -s)"
+      },
+      "source": "p02-s16"
+    },
+    {
+      "en": "\"Oh no,\" he says.",
+      "tr": "\"Eyvah,\" diyor.",
+      "chunks": [
+        {
+          "en": "Oh no",
+          "tr": "eyvah"
+        }
+      ],
+      "words": {
+        "oh": "ah, eyvah (ünlem)",
+        "no": "(oh no: eyvah)",
+        "he": "o (erkek)",
+        "says": "diyor (say + -s)"
+      },
+      "source": "p02-s17"
+    },
+    {
+      "en": "On Tuesday, Grandpa opens his window.",
+      "tr": "Salı günü Dede penceresini açıyor.",
+      "chunks": [],
+      "words": {
+        "on": "-de (günle)",
+        "tuesday": "salı",
+        "grandpa": "dede",
+        "opens": "açıyor (open + -s)",
+        "his": "onun (kendi)",
+        "window": "pencere"
+      },
+      "source": "p03-s01"
+    },
+    {
+      "en": "The city is beautiful today.",
+      "tr": "Şehir bugün çok güzel.",
+      "chunks": [],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "city": "şehir",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "beautiful": "güzel",
+        "today": "bugün"
+      },
+      "source": "p03-s02"
+    },
+    {
+      "en": "He can see Mert's window.",
+      "tr": "Mert'in penceresini görebiliyor.",
+      "chunks": [
+        {
+          "en": "can see",
+          "tr": "görebiliyor"
+        }
+      ],
+      "words": {
+        "he": "o (erkek)",
+        "can": "-ebilir (can)",
+        "see": "görmek",
+        "mert's": "Mert'in",
+        "window": "pencere"
+      },
+      "source": "p03-s03"
+    },
+    {
+      "en": "Mert is fourteen.",
+      "tr": "Mert on dört yaşında.",
+      "chunks": [],
+      "words": {
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "fourteen": "on dört"
+      },
+      "source": "p03-s04"
+    },
+    {
+      "en": "He lives on the same floor.",
+      "tr": "Aynı katta oturuyor.",
+      "chunks": [
+        {
+          "en": "on the same floor",
+          "tr": "aynı katta"
+        }
+      ],
+      "words": {
+        "he": "o (erkek)",
+        "lives": "yaşıyor, oturuyor (live + -s)",
+        "on": "-de, üstünde",
+        "the": "(belirli tanımlık)",
+        "same": "aynı",
+        "floor": "kat"
+      },
+      "source": "p03-s05"
+    },
+    {
+      "en": "His window has a blue curtain.",
+      "tr": "Penceresinde mavi bir perde var.",
+      "chunks": [],
+      "words": {
+        "his": "onun",
+        "window": "pencere",
+        "has": "-si var (have → has)",
+        "a": "bir",
+        "blue": "mavi",
+        "curtain": "perde"
+      },
+      "source": "p03-s06"
+    },
+    {
+      "en": "Today Mert's flat is full of noise.",
+      "tr": "Bugün Mert'in evi gürültüyle dolu.",
+      "chunks": [
+        {
+          "en": "full of noise",
+          "tr": "gürültüyle dolu"
+        }
+      ],
+      "words": {
+        "today": "bugün",
+        "mert's": "Mert'in",
+        "flat": "daire, ev",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "full": "dolu",
+        "of": "-in",
+        "noise": "ses, gürültü"
+      },
+      "source": "p03-s07"
+    },
+    {
+      "en": "Many people laugh in there.",
+      "tr": "Orada bir sürü insan gülüyor.",
+      "chunks": [
+        {
+          "en": "in there",
+          "tr": "orada, içeride"
+        }
+      ],
+      "words": {
+        "many": "birçok, çok",
+        "people": "insanlar",
+        "laugh": "gülmek",
+        "in": "içinde; -de",
+        "there": "orada (there is/are: var)"
+      },
+      "source": "p03-s08"
+    },
+    {
+      "en": "Grandpa wants a photo of the city.",
+      "tr": "Dede şehrin fotoğrafını çekmek istiyor.",
+      "chunks": [
+        {
+          "en": "a photo of the city",
+          "tr": "şehrin fotoğrafı"
+        }
+      ],
+      "words": {
+        "grandpa": "dede",
+        "wants": "istiyor (want + -s)",
+        "a": "bir",
+        "photo": "fotoğraf",
+        "of": "-in",
+        "the": "(belirli tanımlık)",
+        "city": "şehir"
+      },
+      "source": "p03-s09"
+    },
+    {
+      "en": "He touches the phone.",
+      "tr": "Telefona dokunuyor.",
+      "chunks": [],
+      "words": {
+        "he": "o (erkek)",
+        "touches": "dokunuyor (touch + -es)",
+        "the": "(belirli tanımlık)",
+        "phone": "telefon"
+      },
+      "source": "p03-s10"
+    },
+    {
+      "en": "But the photo is not the city.",
+      "tr": "Ama fotoğrafta şehir yok.",
+      "chunks": [
+        {
+          "en": "is not the city",
+          "tr": "şehir değil"
+        }
+      ],
+      "words": {
+        "but": "ama",
+        "the": "(belirli tanımlık)",
+        "photo": "fotoğraf",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "not": "değil",
+        "city": "şehir"
+      },
+      "source": "p03-s11"
+    },
+    {
+      "en": "It is his foot!",
+      "tr": "Fotoğrafta ayağı var!",
+      "chunks": [
+        {
+          "en": "It is his foot",
+          "tr": "bu onun ayağı"
+        }
+      ],
+      "words": {
+        "it": "o, bu",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "his": "onun",
+        "foot": "ayak"
+      },
+      "source": "p03-s12"
+    },
+    {
+      "en": "\"Oh no!\" says Grandpa.",
+      "tr": "\"Eyvah!\" diyor Dede.",
+      "chunks": [
+        {
+          "en": "Oh no",
+          "tr": "eyvah"
+        }
+      ],
+      "words": {
+        "oh": "ah, eyvah (ünlem)",
+        "no": "(oh no: eyvah)",
+        "says": "diyor (say + -s)",
+        "grandpa": "dede"
+      },
+      "source": "p03-s13"
+    },
+    {
+      "en": "Then the phone makes a happy noise.",
+      "tr": "Sonra telefon neşeli bir ses çıkarıyor.",
+      "chunks": [
+        {
+          "en": "makes a happy noise",
+          "tr": "neşeli bir ses çıkarıyor"
+        }
+      ],
+      "words": {
+        "then": "sonra; o anda",
+        "the": "(belirli tanımlık)",
+        "phone": "telefon",
+        "makes": "çıkarıyor, yapıyor (make + -s)",
+        "a": "bir",
+        "happy": "neşeli",
+        "noise": "ses, gürültü"
+      },
+      "source": "p03-s14"
+    },
+    {
+      "en": "Where is the photo now?",
+      "tr": "Fotoğraf şimdi nerede?",
+      "chunks": [],
+      "words": {
+        "where": "nerede",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "the": "(belirli tanımlık)",
+        "photo": "fotoğraf",
+        "now": "şimdi, artık"
+      },
+      "source": "p03-s15"
+    },
+    {
+      "en": "Grandpa does not know.",
+      "tr": "Dede bilmiyor.",
+      "chunks": [
+        {
+          "en": "does not know",
+          "tr": "bilmiyor"
+        }
+      ],
+      "words": {
+        "grandpa": "dede",
+        "does": "yapıyor (do + -es); (yardımcı fiil)",
+        "not": "değil",
+        "know": "bilmek"
+      },
+      "source": "p03-s16"
+    },
+    {
+      "en": "On Wednesday, Grandpa goes to the park.",
+      "tr": "Çarşamba günü Dede parka gidiyor.",
+      "chunks": [],
+      "words": {
+        "on": "-de (günle)",
+        "wednesday": "çarşamba",
+        "grandpa": "dede",
+        "goes": "gidiyor (go + -es)",
+        "to": "-e",
+        "the": "(belirli tanımlık)",
+        "park": "park"
+      },
+      "source": "p04-s01"
+    },
+    {
+      "en": "He sits with his friends.",
+      "tr": "Arkadaşlarıyla oturuyor.",
+      "chunks": [
+        {
+          "en": "sits with",
+          "tr": "ile oturuyor"
+        }
+      ],
+      "words": {
+        "he": "o (erkek)",
+        "sits": "oturuyor (sit + -s)",
+        "with": "ile",
+        "his": "onun",
+        "friends": "arkadaşlar"
+      },
+      "source": "p04-s02"
+    },
+    {
+      "en": "They drink tea and play a game.",
+      "tr": "Çay içip oyun oynuyorlar.",
+      "chunks": [
+        {
+          "en": "play a game",
+          "tr": "oyun oynamak"
+        }
+      ],
+      "words": {
+        "they": "onlar",
+        "drink": "içmek",
+        "tea": "çay",
+        "and": "ve",
+        "play": "oynamak",
+        "a": "bir",
+        "game": "oyun"
+      },
+      "source": "p04-s03"
+    },
+    {
+      "en": "Then music comes from his pocket.",
+      "tr": "Sonra cebinden müzik geliyor.",
+      "chunks": [
+        {
+          "en": "comes from",
+          "tr": "-den geliyor"
+        }
+      ],
+      "words": {
+        "then": "sonra; o anda",
+        "music": "müzik",
+        "comes": "geliyor (come + -s)",
+        "from": "-den",
+        "his": "onun",
+        "pocket": "cep"
+      },
+      "source": "p04-s04"
+    },
+    {
+      "en": "Dance music!",
+      "tr": "Dans müziği!",
+      "chunks": [],
+      "words": {
+        "dance": "dans",
+        "music": "müzik"
+      },
+      "source": "p04-s05"
+    },
+    {
+      "en": "Birds fly up.",
+      "tr": "Kuşlar havalanıyor.",
+      "chunks": [
+        {
+          "en": "fly up",
+          "tr": "havalanmak, uçup gitmek"
+        }
+      ],
+      "words": {
+        "birds": "kuşlar",
+        "fly": "uçmak",
+        "up": "yukarı"
+      },
+      "source": "p04-s06"
+    },
+    {
+      "en": "Everyone looks at Grandpa.",
+      "tr": "Herkes Dede'ye bakıyor.",
+      "chunks": [
+        {
+          "en": "looks at",
+          "tr": "-e bakıyor"
+        }
+      ],
+      "words": {
+        "everyone": "herkes",
+        "looks": "bakıyor (look + -s)",
+        "at": "-e, -de",
+        "grandpa": "dede"
+      },
+      "source": "p04-s07"
+    },
+    {
+      "en": "He touches everything.",
+      "tr": "Her şeye dokunuyor.",
+      "chunks": [],
+      "words": {
+        "he": "o (erkek)",
+        "touches": "dokunuyor (touch + -es)",
+        "everything": "her şey"
+      },
+      "source": "p04-s08"
+    },
+    {
+      "en": "The music does not stop.",
+      "tr": "Müzik durmuyor.",
+      "chunks": [
+        {
+          "en": "does not stop",
+          "tr": "durmuyor"
+        }
+      ],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "music": "müzik",
+        "does": "yapıyor (do + -es); (yardımcı fiil)",
+        "not": "değil",
+        "stop": "durmak"
+      },
+      "source": "p04-s09"
+    },
+    {
+      "en": "Now he has photos of his ear.",
+      "tr": "Artık kulağının fotoğrafları var.",
+      "chunks": [],
+      "words": {
+        "now": "artık",
+        "he": "o (erkek)",
+        "has": "-si var (have → has)",
+        "photos": "fotoğraflar",
+        "of": "-in",
+        "his": "onun",
+        "ear": "kulak"
+      },
+      "source": "p04-s10"
+    },
+    {
+      "en": "And the sky.",
+      "tr": "Bir de gökyüzünün.",
+      "chunks": [],
+      "words": {
+        "and": "bir de",
+        "the": "(belirli tanımlık)",
+        "sky": "gökyüzü"
+      },
+      "source": "p04-s11"
+    },
+    {
+      "en": "His friends laugh.",
+      "tr": "Arkadaşları gülüyor.",
+      "chunks": [],
+      "words": {
+        "his": "onun",
+        "friends": "arkadaşlar",
+        "laugh": "kahkaha; gülmek"
+      },
+      "source": "p04-s12"
+    },
+    {
+      "en": "\"Kemal, is that your new phone?\"",
+      "tr": "\"Kemal, yeni telefonun bu mu?\"",
+      "chunks": [
+        {
+          "en": "is that your new phone",
+          "tr": "yeni telefonun bu mu"
+        }
+      ],
+      "words": {
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "that": "o, şu",
+        "your": "senin",
+        "new": "yeni",
+        "phone": "telefon"
+      },
+      "source": "p04-s13"
+    },
+    {
+      "en": "\"Yes,\" says Grandpa.",
+      "tr": "\"Evet,\" diyor Dede.",
+      "chunks": [],
+      "words": {
+        "yes": "evet",
+        "says": "diyor (say + -s)",
+        "grandpa": "dede"
+      },
+      "source": "p04-s14"
+    },
+    {
+      "en": "\"My new phone hates me.\"",
+      "tr": "\"Yeni telefonum benden nefret ediyor.\"",
+      "chunks": [
+        {
+          "en": "hates me",
+          "tr": "benden nefret ediyor"
+        }
+      ],
+      "words": {
+        "my": "benim",
+        "new": "yeni",
+        "phone": "telefon",
+        "hates": "nefret ediyor (hate + -s)",
+        "me": "beni, bana"
+      },
+      "source": "p04-s15"
+    },
+    {
+      "en": "In the evening, the phone rings.",
+      "tr": "Akşam telefon çalıyor.",
+      "chunks": [
+        {
+          "en": "In the evening",
+          "tr": "akşam"
+        }
+      ],
+      "words": {
+        "in": "içinde; -de",
+        "the": "(belirli tanımlık)",
+        "evening": "akşam",
+        "phone": "telefon",
+        "rings": "çalıyor (ring + -s)"
+      },
+      "source": "p04-s16"
+    },
+    {
+      "en": "It is Ece!",
+      "tr": "Arayan Ece!",
+      "chunks": [],
+      "words": {
+        "it": "o (burada: arayan)",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)"
+      },
+      "source": "p04-s17"
+    },
+    {
+      "en": "He touches the red button.",
+      "tr": "Kırmızı düğmeye dokunuyor.",
+      "chunks": [],
+      "words": {
+        "he": "o (erkek)",
+        "touches": "dokunuyor (touch + -es)",
+        "the": "(belirli tanımlık)",
+        "red": "kırmızı",
+        "button": "düğme, tuş"
+      },
+      "source": "p04-s18"
+    },
+    {
+      "en": "The call ends.",
+      "tr": "Arama kapanıyor.",
+      "chunks": [],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "call": "arama (telefon)",
+        "ends": "bitiyor, kapanıyor (end + -s)"
+      },
+      "source": "p04-s19"
+    },
+    {
+      "en": "\"Oh no!",
+      "tr": "\"Eyvah!",
+      "chunks": [
+        {
+          "en": "Oh no",
+          "tr": "eyvah"
+        }
+      ],
+      "words": {
+        "oh": "ah, eyvah (ünlem)",
+        "no": "(oh no: eyvah)"
+      },
+      "source": "p04-s20"
+    },
+    {
+      "en": "Ece!\"",
+      "tr": "Ece!\"",
+      "chunks": [],
+      "words": {},
+      "source": "p04-s21"
+    },
+    {
+      "en": "Thursday and Friday",
+      "tr": "Perşembe ve Cuma",
+      "chunks": [],
+      "words": {
+        "thursday": "perşembe",
+        "and": "ve",
+        "friday": "cuma"
+      },
+      "source": "c2"
+    },
+    {
+      "en": "On Thursday morning, the bell rings.",
+      "tr": "Perşembe sabahı zil çalıyor.",
+      "chunks": [
+        {
+          "en": "the bell rings",
+          "tr": "zil çalıyor"
+        }
+      ],
+      "words": {
+        "on": "-de (günle)",
+        "thursday": "perşembe",
+        "morning": "sabah",
+        "the": "(belirli tanımlık)",
+        "bell": "zil",
+        "rings": "çalıyor (ring + -s)"
+      },
+      "source": "p05-s01"
+    },
+    {
+      "en": "It is Mert.",
+      "tr": "Gelen Mert.",
+      "chunks": [],
+      "words": {
+        "it": "o (burada: gelen)",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)"
+      },
+      "source": "p05-s02"
+    },
+    {
+      "en": "\"Good morning, Grandpa Kemal!",
+      "tr": "\"Günaydın, Kemal Dede!",
+      "chunks": [
+        {
+          "en": "Good morning",
+          "tr": "günaydın"
+        }
+      ],
+      "words": {
+        "good": "iyi; güzel",
+        "morning": "sabah",
+        "grandpa": "dede"
+      },
+      "source": "p05-s03"
+    },
+    {
+      "en": "Can I help with your phone?\"",
+      "tr": "Telefonuna yardım edebilir miyim?\"",
+      "chunks": [
+        {
+          "en": "Can I help",
+          "tr": "yardım edebilir miyim"
+        }
+      ],
+      "words": {
+        "can": "-ebilir (can)",
+        "i": "ben",
+        "help": "yardım etmek",
+        "with": "-e (help with: -e yardım etmek)",
+        "your": "senin",
+        "phone": "telefon"
+      },
+      "source": "p05-s04"
+    },
+    {
+      "en": "Grandpa is surprised.",
+      "tr": "Dede şaşırıyor.",
+      "chunks": [],
+      "words": {
+        "grandpa": "dede",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "surprised": "şaşırmış (is surprised: şaşırıyor)"
+      },
+      "source": "p05-s05"
+    },
+    {
+      "en": "\"My phone?",
+      "tr": "\"Telefonum mu?",
+      "chunks": [],
+      "words": {
+        "my": "benim",
+        "phone": "telefon"
+      },
+      "source": "p05-s06"
+    },
+    {
+      "en": "How do you know?\"",
+      "tr": "Nereden biliyorsun?\"",
+      "chunks": [
+        {
+          "en": "How do you know",
+          "tr": "nereden biliyorsun"
+        }
+      ],
+      "words": {
+        "how": "nasıl (burada: nereden)",
+        "do": "yapmak; (soru yardımcı fiili)",
+        "you": "sen; seni",
+        "know": "bilmek"
+      },
+      "source": "p05-s07"
+    },
+    {
+      "en": "Mert's face is red.",
+      "tr": "Mert'in yüzü kıpkırmızı.",
+      "chunks": [],
+      "words": {
+        "mert's": "Mert'in",
+        "face": "yüz",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "red": "kırmızı"
+      },
+      "source": "p05-s08"
+    },
+    {
+      "en": "\"I hear the music.",
+      "tr": "\"Müziği duyuyorum.",
+      "chunks": [],
+      "words": {
+        "i": "ben",
+        "hear": "duymak",
+        "the": "(belirli tanımlık)",
+        "music": "müzik"
+      },
+      "source": "p05-s09"
+    },
+    {
+      "en": "In the park.\"",
+      "tr": "Parkta.\"",
+      "chunks": [],
+      "words": {
+        "in": "-de",
+        "the": "(belirli tanımlık)",
+        "park": "park"
+      },
+      "source": "p05-s10"
+    },
+    {
+      "en": "Grandpa thinks.",
+      "tr": "Dede düşünüyor.",
+      "chunks": [],
+      "words": {
+        "grandpa": "dede",
+        "thinks": "düşünüyor (think + -s)"
+      },
+      "source": "p05-s11"
+    },
+    {
+      "en": "Mert is not in the park on Wednesday.",
+      "tr": "Mert çarşamba günü parkta değil ki.",
+      "chunks": [],
+      "words": {
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "not": "değil",
+        "in": "içinde; -de",
+        "the": "(belirli tanımlık)",
+        "park": "park",
+        "on": "-de (günle)",
+        "wednesday": "çarşamba"
+      },
+      "source": "p05-s12"
+    },
+    {
+      "en": "\"Come in,\" says Grandpa.",
+      "tr": "\"Gel içeri,\" diyor Dede.",
+      "chunks": [
+        {
+          "en": "Come in",
+          "tr": "içeri gel"
+        }
+      ],
+      "words": {
+        "come": "gel (come in: içeri gel)",
+        "in": "içinde; -de",
+        "says": "diyor (say + -s)",
+        "grandpa": "dede"
+      },
+      "source": "p05-s13"
+    },
+    {
+      "en": "\"Do you want tea?\"",
+      "tr": "\"Çay ister misin?\"",
+      "chunks": [
+        {
+          "en": "Do you want",
+          "tr": "ister misin"
+        }
+      ],
+      "words": {
+        "do": "yapmak; (soru yardımcı fiili)",
+        "you": "sen; seni",
+        "want": "istemek",
+        "tea": "çay"
+      },
+      "source": "p05-s14"
+    },
+    {
+      "en": "They sit at the kitchen table.",
+      "tr": "Mutfak masasına oturuyorlar.",
+      "chunks": [
+        {
+          "en": "sit at",
+          "tr": "-e oturmak"
+        }
+      ],
+      "words": {
+        "they": "onlar",
+        "sit": "oturmak",
+        "at": "-e, -de",
+        "the": "(belirli tanımlık)",
+        "kitchen": "mutfak",
+        "table": "masa"
+      },
+      "source": "p06-s01"
+    },
+    {
+      "en": "Mert takes the phone.",
+      "tr": "Mert telefonu alıyor.",
+      "chunks": [],
+      "words": {
+        "takes": "alıyor (take + -s)",
+        "the": "(belirli tanımlık)",
+        "phone": "telefon"
+      },
+      "source": "p06-s02"
+    },
+    {
+      "en": "\"Look, Grandpa.",
+      "tr": "\"Bak, Dede.",
+      "chunks": [],
+      "words": {
+        "look": "bak",
+        "grandpa": "dede"
+      },
+      "source": "p06-s03"
+    },
+    {
+      "en": "This is the camera.",
+      "tr": "Bu kamera.",
+      "chunks": [],
+      "words": {
+        "this": "bu",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "the": "(belirli tanımlık)",
+        "camera": "kamera, fotoğraf makinesi"
+      },
+      "source": "p06-s04"
+    },
+    {
+      "en": "Touch here.",
+      "tr": "Buraya dokun.",
+      "chunks": [
+        {
+          "en": "Touch here",
+          "tr": "buraya dokun"
+        }
+      ],
+      "words": {
+        "touch": "dokun; dokunmak",
+        "here": "burada; buraya"
+      },
+      "source": "p06-s05"
+    },
+    {
+      "en": "Smile.",
+      "tr": "Gülümse.",
+      "chunks": [],
+      "words": {
+        "smile": "gülümse; gülümsemek"
+      },
+      "source": "p06-s06"
+    },
+    {
+      "en": "Then touch Send.\"",
+      "tr": "Sonra Gönder'e dokun.\"",
+      "chunks": [
+        {
+          "en": "touch Send",
+          "tr": "Gönder'e dokun"
+        }
+      ],
+      "words": {
+        "then": "sonra; o anda",
+        "touch": "dokun; dokunmak",
+        "send": "göndermek; Gönder (düğme)"
+      },
+      "source": "p06-s07"
+    },
+    {
+      "en": "Grandpa tries.",
+      "tr": "Dede deniyor.",
+      "chunks": [],
+      "words": {
+        "grandpa": "dede",
+        "tries": "deniyor (try + -ies)"
+      },
+      "source": "p06-s08"
+    },
+    {
+      "en": "It is a good photo of Mert.",
+      "tr": "Mert'in güzel bir fotoğrafı oluyor.",
+      "chunks": [
+        {
+          "en": "a good photo of Mert",
+          "tr": "Mert'in güzel bir fotoğrafı"
+        }
+      ],
+      "words": {
+        "it": "o, bu (burada: sonuç)",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "a": "bir",
+        "good": "güzel, iyi",
+        "photo": "fotoğraf",
+        "of": "-in"
+      },
+      "source": "p06-s09"
+    },
+    {
+      "en": "\"I can do it!\" says Grandpa.",
+      "tr": "\"Yapabiliyorum!\" diyor Dede.",
+      "chunks": [
+        {
+          "en": "I can do it",
+          "tr": "yapabiliyorum"
+        }
+      ],
+      "words": {
+        "i": "ben",
+        "can": "-ebilir (can)",
+        "do": "yapmak",
+        "it": "onu",
+        "says": "diyor (say + -s)",
+        "grandpa": "dede"
+      },
+      "source": "p06-s10"
+    },
+    {
+      "en": "\"Now, Ece calls you,\" says Mert.",
+      "tr": "\"Şimdi Ece seni arıyor,\" diyor Mert.",
+      "chunks": [],
+      "words": {
+        "now": "şimdi, artık",
+        "calls": "arıyor (call + -s)",
+        "you": "sen; seni",
+        "says": "diyor (say + -s)"
+      },
+      "source": "p06-s11"
+    },
+    {
+      "en": "\"What do you do?\"",
+      "tr": "\"Ne yaparsın?\"",
+      "chunks": [
+        {
+          "en": "What do you do",
+          "tr": "ne yaparsın"
+        }
+      ],
+      "words": {
+        "what": "ne",
+        "do": "yapmak; (soru yardımcı fiili)",
+        "you": "sen; seni"
+      },
+      "source": "p06-s12"
+    },
+    {
+      "en": "\"I open the phone?\" asks Grandpa.",
+      "tr": "\"Telefonu açarım?\" diye soruyor Dede.",
+      "chunks": [
+        {
+          "en": "open the phone",
+          "tr": "(yanlış) telefonu açmak"
+        }
+      ],
+      "words": {
+        "i": "ben",
+        "open": "açmak (telefon için İngilizcede answer)",
+        "the": "(belirli tanımlık)",
+        "phone": "telefon",
+        "asks": "soruyor (ask + -s)",
+        "grandpa": "dede"
+      },
+      "source": "p06-s13"
+    },
+    {
+      "en": "Mert laughs.",
+      "tr": "Mert gülüyor.",
+      "chunks": [],
+      "words": {
+        "laughs": "gülüyor (laugh + -s)"
+      },
+      "source": "p06-s14"
+    },
+    {
+      "en": "\"No, Grandpa.",
+      "tr": "\"Hayır, Dede.",
+      "chunks": [],
+      "words": {
+        "no": "hayır",
+        "grandpa": "dede"
+      },
+      "source": "p06-s15"
+    },
+    {
+      "en": "You answer the phone.",
+      "tr": "Telefona cevap verirsin.\"",
+      "chunks": [
+        {
+          "en": "answer the phone",
+          "tr": "telefonu açmak, telefona cevap vermek"
+        }
+      ],
+      "words": {
+        "you": "sen; seni",
+        "answer": "cevap vermek (telefonu açmak)",
+        "the": "(belirli tanımlık)",
+        "phone": "telefon"
+      },
+      "source": "p06-s16"
+    },
+    {
+      "en": "Touch the green button, not the red one.\"",
+      "tr": "Yeşil düğmeye dokun, kırmızıya değil.\"",
+      "chunks": [
+        {
+          "en": "not the red one",
+          "tr": "kırmızıya değil"
+        }
+      ],
+      "words": {
+        "touch": "dokun; dokunmak",
+        "the": "(belirli tanımlık)",
+        "green": "yeşil",
+        "button": "düğme, tuş",
+        "not": "değil",
+        "red": "kırmızı",
+        "one": "(the red one: kırmızı olan)"
+      },
+      "source": "p06-s17"
+    },
+    {
+      "en": "On Friday, Grandpa tries again alone.",
+      "tr": "Cuma günü Dede tek başına yeniden deniyor.",
+      "chunks": [
+        {
+          "en": "tries again alone",
+          "tr": "tek başına yeniden deniyor"
+        }
+      ],
+      "words": {
+        "on": "-de (günle)",
+        "friday": "cuma",
+        "grandpa": "dede",
+        "tries": "deniyor (try + -ies)",
+        "again": "yine, tekrar",
+        "alone": "yalnız, tek başına"
+      },
+      "source": "p07-s01"
+    },
+    {
+      "en": "Touch here.",
+      "tr": "Buraya dokun.",
+      "chunks": [
+        {
+          "en": "Touch here",
+          "tr": "buraya dokun"
+        }
+      ],
+      "words": {
+        "touch": "dokun; dokunmak",
+        "here": "burada; buraya"
+      },
+      "source": "p07-s02"
+    },
+    {
+      "en": "Smile.",
+      "tr": "Gülümse.",
+      "chunks": [],
+      "words": {
+        "smile": "gülümse; gülümsemek"
+      },
+      "source": "p07-s03"
+    },
+    {
+      "en": "But then he touches something new.",
+      "tr": "Ama sonra yeni bir şeye dokunuyor.",
+      "chunks": [
+        {
+          "en": "something new",
+          "tr": "yeni bir şey"
+        }
+      ],
+      "words": {
+        "but": "ama",
+        "then": "sonra; o anda",
+        "he": "o (erkek)",
+        "touches": "dokunuyor (touch + -es)",
+        "something": "bir şey",
+        "new": "yeni"
+      },
+      "source": "p07-s04"
+    },
+    {
+      "en": "There are many faces on the phone.",
+      "tr": "Telefonda bir sürü yüz var.",
+      "chunks": [
+        {
+          "en": "There are",
+          "tr": "var"
+        }
+      ],
+      "words": {
+        "there": "orada (there is/are: var)",
+        "are": "(olmak; çoğul)",
+        "many": "birçok, çok",
+        "faces": "yüzler",
+        "on": "-de (telefonda)",
+        "the": "(belirli tanımlık)",
+        "phone": "telefon"
+      },
+      "source": "p07-s05"
+    },
+    {
+      "en": "Ece, her mum, her dad and Uncle Murat!",
+      "tr": "Ece, annesi, babası ve Murat Amca!",
+      "chunks": [],
+      "words": {
+        "her": "onun; onu, ona",
+        "mum": "anne",
+        "dad": "baba",
+        "and": "ve",
+        "uncle": "amca"
+      },
+      "source": "p07-s06"
+    },
+    {
+      "en": "\"Grandpa!\" they say.",
+      "tr": "\"Dede!\" diyorlar.",
+      "chunks": [],
+      "words": {
+        "grandpa": "dede",
+        "they": "onlar",
+        "say": "diyorlar"
+      },
+      "source": "p07-s07"
+    },
+    {
+      "en": "They look very surprised.",
+      "tr": "Çok şaşırmış görünüyorlar.",
+      "chunks": [
+        {
+          "en": "look very surprised",
+          "tr": "çok şaşırmış görünüyorlar"
+        }
+      ],
+      "words": {
+        "they": "onlar",
+        "look": "görünmek",
+        "very": "çok",
+        "surprised": "şaşırmış"
+      },
+      "source": "p07-s08"
+    },
+    {
+      "en": "Grandpa looks at the faces.",
+      "tr": "Dede yüzlere bakıyor.",
+      "chunks": [
+        {
+          "en": "looks at",
+          "tr": "-e bakıyor"
+        }
+      ],
+      "words": {
+        "grandpa": "dede",
+        "looks": "bakıyor (look + -s)",
+        "at": "-e, -de",
+        "the": "(belirli tanımlık)",
+        "faces": "yüzler"
+      },
+      "source": "p07-s09"
+    },
+    {
+      "en": "Every face has a blue curtain behind it.",
+      "tr": "Her yüzün arkasında mavi bir perde var.",
+      "chunks": [
+        {
+          "en": "behind it",
+          "tr": "arkasında"
+        }
+      ],
+      "words": {
+        "every": "her",
+        "face": "yüz",
+        "has": "-si var (have → has)",
+        "a": "bir",
+        "blue": "mavi",
+        "curtain": "perde",
+        "behind": "arkasında",
+        "it": "onun (yüzün)"
+      },
+      "source": "p07-s10"
+    },
+    {
+      "en": "\"Why is everything blue?\" asks Grandpa.",
+      "tr": "\"Neden her şey mavi?\" diye soruyor Dede.",
+      "chunks": [],
+      "words": {
+        "why": "neden",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "everything": "her şey",
+        "blue": "mavi",
+        "asks": "soruyor (ask + -s)",
+        "grandpa": "dede"
+      },
+      "source": "p07-s11"
+    },
+    {
+      "en": "Ece laughs.",
+      "tr": "Ece gülüyor.",
+      "chunks": [],
+      "words": {
+        "laughs": "gülüyor (laugh + -s)"
+      },
+      "source": "p07-s12"
+    },
+    {
+      "en": "\"Blue is a nice colour, Grandpa!",
+      "tr": "\"Mavi güzel bir renk, Dede!",
+      "chunks": [],
+      "words": {
+        "blue": "mavi",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "a": "bir",
+        "nice": "güzel, hoş",
+        "colour": "renk",
+        "grandpa": "dede"
+      },
+      "source": "p07-s13"
+    },
+    {
+      "en": "Bye!\"",
+      "tr": "Hoşça kal!\"",
+      "chunks": [],
+      "words": {
+        "bye": "hoşça kal"
+      },
+      "source": "p07-s14"
+    },
+    {
+      "en": "The faces go away.",
+      "tr": "Yüzler kayboluyor.",
+      "chunks": [
+        {
+          "en": "go away",
+          "tr": "kaybolmak, gitmek"
+        }
+      ],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "faces": "yüzler",
+        "go": "gitmek (go away: gitmek, kaybolmak)",
+        "away": "uzakta"
+      },
+      "source": "p07-s15"
+    },
+    {
+      "en": "In the evening, Grandpa sits at his window.",
+      "tr": "Akşam Dede penceresinin önünde oturuyor.",
+      "chunks": [
+        {
+          "en": "In the evening",
+          "tr": "akşam"
+        },
+        {
+          "en": "at his window",
+          "tr": "penceresinin önünde"
+        }
+      ],
+      "words": {
+        "in": "içinde; -de",
+        "the": "(belirli tanımlık)",
+        "evening": "akşam",
+        "grandpa": "dede",
+        "sits": "oturuyor (sit + -s)",
+        "at": "önünde (pencerenin)",
+        "his": "onun",
+        "window": "pencere"
+      },
+      "source": "p08-s01"
+    },
+    {
+      "en": "Mert's flat is quiet now.",
+      "tr": "Mert'in evi artık sessiz.",
+      "chunks": [],
+      "words": {
+        "mert's": "Mert'in",
+        "flat": "daire, ev",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "quiet": "sessiz",
+        "now": "artık"
+      },
+      "source": "p08-s02"
+    },
+    {
+      "en": "Grandpa thinks about the week.",
+      "tr": "Dede haftayı düşünüyor.",
+      "chunks": [
+        {
+          "en": "thinks about",
+          "tr": "-i düşünmek"
+        }
+      ],
+      "words": {
+        "grandpa": "dede",
+        "thinks": "düşünüyor (think + -s)",
+        "about": "hakkında",
+        "the": "(belirli tanımlık)",
+        "week": "hafta"
+      },
+      "source": "p08-s03"
+    },
+    {
+      "en": "A big cake.",
+      "tr": "Büyük bir pasta.",
+      "chunks": [],
+      "words": {
+        "a": "bir",
+        "big": "büyük",
+        "cake": "pasta"
+      },
+      "source": "p08-s04"
+    },
+    {
+      "en": "A lot of noise.",
+      "tr": "Bir sürü gürültü.",
+      "chunks": [
+        {
+          "en": "A lot of",
+          "tr": "bir sürü"
+        }
+      ],
+      "words": {
+        "a": "bir",
+        "lot": "çok (a lot of: çok, bir sürü)",
+        "of": "-in",
+        "noise": "ses, gürültü"
+      },
+      "source": "p08-s05"
+    },
+    {
+      "en": "Mert and the music.",
+      "tr": "Mert ve müzik.",
+      "chunks": [],
+      "words": {
+        "and": "ve",
+        "the": "(belirli tanımlık)",
+        "music": "müzik"
+      },
+      "source": "p08-s06"
+    },
+    {
+      "en": "And blue, blue, blue.",
+      "tr": "Bir de mavi, mavi, mavi.",
+      "chunks": [],
+      "words": {
+        "and": "bir de",
+        "blue": "mavi"
+      },
+      "source": "p08-s07"
+    },
+    {
+      "en": "He goes to bed early.",
+      "tr": "Erken yatıyor.",
+      "chunks": [
+        {
+          "en": "goes to bed",
+          "tr": "yatağa gitmek, yatmak"
+        }
+      ],
+      "words": {
+        "he": "o (erkek)",
+        "goes": "gidiyor (go + -es)",
+        "to": "-e",
+        "bed": "yatak",
+        "early": "erken"
+      },
+      "source": "p08-s08"
+    },
+    {
+      "en": "Tomorrow is the big day.",
+      "tr": "Yarın büyük gün.",
+      "chunks": [],
+      "words": {
+        "tomorrow": "yarın",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "the": "(belirli tanımlık)",
+        "big": "büyük",
+        "day": "gün"
+      },
+      "source": "p08-s09"
+    },
+    {
+      "en": "He can do it!",
+      "tr": "Yapabilir!",
+      "chunks": [
+        {
+          "en": "He can do it",
+          "tr": "yapabilir"
+        }
+      ],
+      "words": {
+        "he": "o (erkek)",
+        "can": "-ebilir (can)",
+        "do": "yapmak",
+        "it": "onu"
+      },
+      "source": "p08-s10"
+    },
+    {
+      "en": "On Saturday morning, Grandpa wears his best shirt.",
+      "tr": "Cumartesi sabahı Dede en güzel gömleğini giyiyor.",
+      "chunks": [
+        {
+          "en": "his best shirt",
+          "tr": "en güzel gömleği"
+        }
+      ],
+      "words": {
+        "on": "-de, üstünde",
+        "saturday": "cumartesi",
+        "morning": "sabah",
+        "grandpa": "dede",
+        "wears": "giyiyor (wear + -s)",
+        "his": "onun",
+        "best": "en iyi, en güzel",
+        "shirt": "gömlek"
+      },
+      "source": "p08-s11"
+    },
+    {
+      "en": "He has yellow flowers for the photo.",
+      "tr": "Fotoğraf için sarı çiçekleri var.",
+      "chunks": [],
+      "words": {
+        "he": "o (erkek)",
+        "has": "-si var (have → has)",
+        "yellow": "sarı",
+        "flowers": "çiçekler",
+        "for": "için",
+        "the": "(belirli tanımlık)",
+        "photo": "fotoğraf"
+      },
+      "source": "p08-s12"
+    },
+    {
+      "en": "Then the bell rings.",
+      "tr": "Sonra zil çalıyor.",
+      "chunks": [
+        {
+          "en": "the bell rings",
+          "tr": "zil çalıyor"
+        }
+      ],
+      "words": {
+        "then": "sonra; o anda",
+        "the": "(belirli tanımlık)",
+        "bell": "zil",
+        "rings": "çalıyor (ring + -s)"
+      },
+      "source": "p08-s13"
+    },
+    {
+      "en": "Saturday",
+      "tr": "Cumartesi",
+      "chunks": [],
+      "words": {
+        "saturday": "cumartesi"
+      },
+      "source": "c3"
+    },
+    {
+      "en": "\"One minute!\" says Grandpa.",
+      "tr": "\"Bir dakika!\" diyor Dede.",
+      "chunks": [
+        {
+          "en": "One minute",
+          "tr": "bir dakika"
+        }
+      ],
+      "words": {
+        "one": "bir; tek",
+        "minute": "dakika",
+        "says": "diyor (say + -s)",
+        "grandpa": "dede"
+      },
+      "source": "p09-s01"
+    },
+    {
+      "en": "First, the photo.",
+      "tr": "Önce fotoğraf.",
+      "chunks": [],
+      "words": {
+        "first": "önce, ilk",
+        "the": "(belirli tanımlık)",
+        "photo": "fotoğraf"
+      },
+      "source": "p09-s02"
+    },
+    {
+      "en": "He holds the flowers and the phone.",
+      "tr": "Çiçekleri ve telefonu tutuyor.",
+      "chunks": [],
+      "words": {
+        "he": "o (erkek)",
+        "holds": "tutuyor (hold + -s)",
+        "the": "(belirli tanımlık)",
+        "flowers": "çiçekler",
+        "and": "ve",
+        "phone": "telefon"
+      },
+      "source": "p09-s03"
+    },
+    {
+      "en": "Touch here.",
+      "tr": "Buraya dokun.",
+      "chunks": [
+        {
+          "en": "Touch here",
+          "tr": "buraya dokun"
+        }
+      ],
+      "words": {
+        "touch": "dokun; dokunmak",
+        "here": "burada; buraya"
+      },
+      "source": "p09-s04"
+    },
+    {
+      "en": "Smile.",
+      "tr": "Gülümse.",
+      "chunks": [],
+      "words": {
+        "smile": "gülümse; gülümsemek"
+      },
+      "source": "p09-s05"
+    },
+    {
+      "en": "It is Grandpa with the flowers.",
+      "tr": "Çiçekleriyle Dede.",
+      "chunks": [
+        {
+          "en": "Grandpa with the flowers",
+          "tr": "çiçekleriyle Dede"
+        }
+      ],
+      "words": {
+        "it": "o, bu",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "grandpa": "dede",
+        "with": "ile",
+        "the": "(belirli tanımlık)",
+        "flowers": "çiçekler"
+      },
+      "source": "p09-s06"
+    },
+    {
+      "en": "It is a nice photo!",
+      "tr": "Güzel bir fotoğraf!",
+      "chunks": [],
+      "words": {
+        "it": "o; bu",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "a": "bir",
+        "nice": "güzel, hoş",
+        "photo": "fotoğraf"
+      },
+      "source": "p09-s07"
+    },
+    {
+      "en": "He touches Send.",
+      "tr": "Gönder'e dokunuyor.",
+      "chunks": [
+        {
+          "en": "touches Send",
+          "tr": "Gönder'e dokunuyor"
+        }
+      ],
+      "words": {
+        "he": "o (erkek)",
+        "touches": "dokunuyor (touch + -es)",
+        "send": "göndermek; Gönder (düğme)"
+      },
+      "source": "p09-s08"
+    },
+    {
+      "en": "Behind the door, there are many happy noises.",
+      "tr": "Kapının arkasından bir sürü neşeli ses geliyor.",
+      "chunks": [
+        {
+          "en": "Behind the door",
+          "tr": "kapının arkasında"
+        },
+        {
+          "en": "there are",
+          "tr": "var"
+        }
+      ],
+      "words": {
+        "behind": "arkasında",
+        "the": "(belirli tanımlık)",
+        "door": "kapı",
+        "there": "orada (there is/are: var)",
+        "are": "(olmak; çoğul)",
+        "many": "bir sürü",
+        "happy": "mutlu, neşeli",
+        "noises": "sesler"
+      },
+      "source": "p09-s09"
+    },
+    {
+      "en": "Phones!",
+      "tr": "Telefonlar!",
+      "chunks": [],
+      "words": {
+        "phones": "telefonlar"
+      },
+      "source": "p09-s10"
+    },
+    {
+      "en": "Grandpa stops.",
+      "tr": "Dede duruyor.",
+      "chunks": [],
+      "words": {
+        "grandpa": "dede",
+        "stops": "duruyor (stop + -s)"
+      },
+      "source": "p09-s11"
+    },
+    {
+      "en": "What is that?",
+      "tr": "Bu ne?",
+      "chunks": [
+        {
+          "en": "What is that",
+          "tr": "bu ne"
+        }
+      ],
+      "words": {
+        "what": "ne",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "that": "o, şu (burada: bu)"
+      },
+      "source": "p09-s12"
+    },
+    {
+      "en": "Grandpa opens the door.",
+      "tr": "Dede kapıyı açıyor.",
+      "chunks": [],
+      "words": {
+        "grandpa": "dede",
+        "opens": "açıyor (open + -s)",
+        "the": "(belirli tanımlık)",
+        "door": "kapı"
+      },
+      "source": "p10-s01"
+    },
+    {
+      "en": "Ece is there with her mum and dad.",
+      "tr": "Ece annesi ve babasıyla orada.",
+      "chunks": [],
+      "words": {
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "there": "orada (there is/are: var)",
+        "with": "ile",
+        "her": "onun; onu, ona",
+        "mum": "anne",
+        "and": "ve",
+        "dad": "baba"
+      },
+      "source": "p10-s02"
+    },
+    {
+      "en": "Uncle Murat and the cousins are there.",
+      "tr": "Murat Amca ve kuzenler de orada.",
+      "chunks": [],
+      "words": {
+        "uncle": "amca",
+        "and": "ve",
+        "the": "(belirli tanımlık)",
+        "cousins": "kuzenler",
+        "are": "(olmak; çoğul)",
+        "there": "orada (there is/are: var)"
+      },
+      "source": "p10-s03"
+    },
+    {
+      "en": "Mert is there, too.",
+      "tr": "Mert de orada.",
+      "chunks": [],
+      "words": {
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "there": "orada (there is/are: var)",
+        "too": "de, da"
+      },
+      "source": "p10-s04"
+    },
+    {
+      "en": "The man from the bread shop is there.",
+      "tr": "Fırındaki adam da orada.",
+      "chunks": [
+        {
+          "en": "the bread shop",
+          "tr": "fırın"
+        }
+      ],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "man": "adam",
+        "from": "-deki",
+        "bread": "ekmek",
+        "shop": "dükkân (bread shop: fırın)",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "there": "orada (there is/are: var)"
+      },
+      "source": "p10-s05"
+    },
+    {
+      "en": "He has a very big cake.",
+      "tr": "Kocaman bir pastası var.",
+      "chunks": [],
+      "words": {
+        "he": "o (erkek)",
+        "has": "-si var (have → has)",
+        "a": "bir",
+        "very": "çok",
+        "big": "büyük (very big: kocaman)",
+        "cake": "pasta"
+      },
+      "source": "p10-s06"
+    },
+    {
+      "en": "\"Surprise!\" they say.",
+      "tr": "\"Sürpriz!\" diyorlar.",
+      "chunks": [],
+      "words": {
+        "surprise": "sürpriz",
+        "they": "onlar",
+        "say": "diyorlar"
+      },
+      "source": "p10-s07"
+    },
+    {
+      "en": "\"But it is your birthday, Ece,\" says Grandpa.",
+      "tr": "\"Ama doğum günü senin, Ece,\" diyor Dede.",
+      "chunks": [],
+      "words": {
+        "but": "ama",
+        "it": "o; bu",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "your": "senin",
+        "birthday": "doğum günü",
+        "says": "diyor (say + -s)",
+        "grandpa": "dede"
+      },
+      "source": "p10-s08"
+    },
+    {
+      "en": "Ece kisses him.",
+      "tr": "Ece onu öpüyor.",
+      "chunks": [],
+      "words": {
+        "kisses": "öpüyor (kiss + -es)",
+        "him": "onu, ona"
+      },
+      "source": "p10-s09"
+    },
+    {
+      "en": "\"Yes, Grandpa.",
+      "tr": "\"Evet, Dede.",
+      "chunks": [],
+      "words": {
+        "yes": "evet",
+        "grandpa": "dede"
+      },
+      "source": "p10-s10"
+    },
+    {
+      "en": "And I want my birthday here.",
+      "tr": "Ve doğum günümü burada istiyorum.",
+      "chunks": [
+        {
+          "en": "my birthday",
+          "tr": "doğum günüm"
+        }
+      ],
+      "words": {
+        "and": "ve",
+        "i": "ben",
+        "want": "istemek",
+        "my": "benim",
+        "birthday": "doğum günü",
+        "here": "burada; buraya"
+      },
+      "source": "p10-s11"
+    },
+    {
+      "en": "With you.\"",
+      "tr": "Seninle.\"",
+      "chunks": [],
+      "words": {
+        "with": "ile",
+        "you": "sen (with you: seninle)"
+      },
+      "source": "p10-s12"
+    },
+    {
+      "en": "\"We are in Mert's flat all week!\"",
+      "tr": "\"Bütün hafta Mert'in evindeyiz!\"",
+      "chunks": [
+        {
+          "en": "all week",
+          "tr": "bütün hafta"
+        }
+      ],
+      "words": {
+        "we": "biz",
+        "are": "(olmak; çoğul)",
+        "in": "-de",
+        "mert's": "Mert'in",
+        "flat": "daire, ev",
+        "all": "bütün",
+        "week": "hafta"
+      },
+      "source": "p10-s13"
+    },
+    {
+      "en": "Grandpa looks at Mert.",
+      "tr": "Dede Mert'e bakıyor.",
+      "chunks": [
+        {
+          "en": "looks at",
+          "tr": "-e bakıyor"
+        }
+      ],
+      "words": {
+        "grandpa": "dede",
+        "looks": "bakıyor (look + -s)",
+        "at": "-e, -de"
+      },
+      "source": "p10-s14"
+    },
+    {
+      "en": "\"The blue curtain!\"",
+      "tr": "\"Mavi perde!\"",
+      "chunks": [],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "blue": "mavi",
+        "curtain": "perde"
+      },
+      "source": "p10-s15"
+    },
+    {
+      "en": "Mert smiles.",
+      "tr": "Mert gülümsüyor.",
+      "chunks": [],
+      "words": {
+        "smiles": "gülümsüyor (smile + -s)"
+      },
+      "source": "p10-s16"
+    },
+    {
+      "en": "\"Yes.",
+      "tr": "\"Evet.",
+      "chunks": [],
+      "words": {
+        "yes": "evet"
+      },
+      "source": "p10-s17"
+    },
+    {
+      "en": "My curtain.",
+      "tr": "Benim perdem.",
+      "chunks": [],
+      "words": {
+        "my": "benim",
+        "curtain": "perde"
+      },
+      "source": "p10-s18"
+    },
+    {
+      "en": "And your phone is my job.\"",
+      "tr": "Senin telefonun da benim işim.\"",
+      "chunks": [
+        {
+          "en": "your phone",
+          "tr": "senin telefonun"
+        }
+      ],
+      "words": {
+        "and": "ve; de",
+        "your": "senin",
+        "phone": "telefon",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "my": "benim",
+        "job": "iş, görev"
+      },
+      "source": "p10-s19"
+    },
+    {
+      "en": "The family carries the party into the flat.",
+      "tr": "Aile partiyi Dede'nin evine taşıyor.",
+      "chunks": [
+        {
+          "en": "into the flat",
+          "tr": "eve, içeri"
+        }
+      ],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "family": "aile",
+        "carries": "taşıyor (carry + -ies)",
+        "party": "parti",
+        "into": "-e, içine",
+        "flat": "daire, ev"
+      },
+      "source": "p11-s01"
+    },
+    {
+      "en": "On the wall, there are many photos.",
+      "tr": "Duvarda bir sürü fotoğraf var.",
+      "chunks": [
+        {
+          "en": "On the wall",
+          "tr": "duvarda"
+        },
+        {
+          "en": "there are",
+          "tr": "var"
+        }
+      ],
+      "words": {
+        "on": "-de, üstünde",
+        "the": "(belirli tanımlık)",
+        "wall": "duvar",
+        "there": "orada (there is/are: var)",
+        "are": "(olmak; çoğul)",
+        "many": "birçok, çok",
+        "photos": "fotoğraflar"
+      },
+      "source": "p11-s02"
+    },
+    {
+      "en": "His ear.",
+      "tr": "Kulağı.",
+      "chunks": [],
+      "words": {
+        "his": "onun",
+        "ear": "kulak"
+      },
+      "source": "p11-s03"
+    },
+    {
+      "en": "The sky.",
+      "tr": "Gökyüzü.",
+      "chunks": [],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "sky": "gökyüzü"
+      },
+      "source": "p11-s04"
+    },
+    {
+      "en": "And his foot!",
+      "tr": "Ve ayağı!",
+      "chunks": [],
+      "words": {
+        "and": "ve",
+        "his": "onun",
+        "foot": "ayak"
+      },
+      "source": "p11-s05"
+    },
+    {
+      "en": "\"Your phone sends us every photo,\" says Ece.",
+      "tr": "\"Telefonun bize bütün fotoğrafları gönderiyor,\" diyor Ece.",
+      "chunks": [
+        {
+          "en": "sends us every photo",
+          "tr": "bize her fotoğrafı gönderiyor"
+        }
+      ],
+      "words": {
+        "your": "senin",
+        "phone": "telefon",
+        "sends": "gönderiyor (send + -s)",
+        "us": "bize",
+        "every": "her",
+        "photo": "fotoğraf",
+        "says": "diyor (say + -s)"
+      },
+      "source": "p11-s06"
+    },
+    {
+      "en": "\"Oh no,\" says Grandpa.",
+      "tr": "\"Eyvah,\" diyor Dede.",
+      "chunks": [
+        {
+          "en": "Oh no",
+          "tr": "eyvah"
+        }
+      ],
+      "words": {
+        "oh": "ah, eyvah (ünlem)",
+        "no": "(oh no: eyvah)",
+        "says": "diyor (say + -s)",
+        "grandpa": "dede"
+      },
+      "source": "p11-s07"
+    },
+    {
+      "en": "But the family loves the photos.",
+      "tr": "Ama aile fotoğraflara bayılıyor.",
+      "chunks": [],
+      "words": {
+        "but": "ama",
+        "the": "(belirli tanımlık)",
+        "family": "aile",
+        "loves": "çok seviyor, bayılıyor (love + -s)",
+        "photos": "fotoğraflar"
+      },
+      "source": "p11-s08"
+    },
+    {
+      "en": "Uncle Murat likes the sky.",
+      "tr": "Murat Amca gökyüzünü beğeniyor.",
+      "chunks": [],
+      "words": {
+        "uncle": "amca",
+        "likes": "seviyor, beğeniyor (like + -s)",
+        "the": "(belirli tanımlık)",
+        "sky": "gökyüzü"
+      },
+      "source": "p11-s09"
+    },
+    {
+      "en": "Mert likes the ear.",
+      "tr": "Mert kulağı beğeniyor.",
+      "chunks": [],
+      "words": {
+        "likes": "seviyor, beğeniyor (like + -s)",
+        "the": "(belirli tanımlık)",
+        "ear": "kulak"
+      },
+      "source": "p11-s10"
+    },
+    {
+      "en": "Everyone loves the foot!",
+      "tr": "Herkes ayağa bayılıyor!",
+      "chunks": [
+        {
+          "en": "loves the foot",
+          "tr": "ayağa bayılıyor"
+        }
+      ],
+      "words": {
+        "everyone": "herkes",
+        "loves": "çok seviyor, bayılıyor (love + -s)",
+        "the": "(belirli tanımlık)",
+        "foot": "ayak"
+      },
+      "source": "p11-s11"
+    },
+    {
+      "en": "Grandpa shows them his nice photo.",
+      "tr": "Dede onlara güzel fotoğrafını gösteriyor.",
+      "chunks": [],
+      "words": {
+        "grandpa": "dede",
+        "shows": "gösteriyor (show + -s)",
+        "them": "onlara",
+        "his": "onun (kendi)",
+        "nice": "güzel, hoş",
+        "photo": "fotoğraf"
+      },
+      "source": "p11-s12"
+    },
+    {
+      "en": "\"It is nice, Grandpa,\" says Ece.",
+      "tr": "\"Güzel, Dede,\" diyor Ece.",
+      "chunks": [],
+      "words": {
+        "it": "o",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "nice": "güzel, hoş",
+        "grandpa": "dede",
+        "says": "diyor (say + -s)"
+      },
+      "source": "p11-s13"
+    },
+    {
+      "en": "\"But I love the foot.\"",
+      "tr": "\"Ama ben ayağa bayılıyorum.\"",
+      "chunks": [
+        {
+          "en": "I love the foot",
+          "tr": "ayağa bayılıyorum"
+        }
+      ],
+      "words": {
+        "but": "ama",
+        "i": "ben",
+        "love": "çok sevmek, bayılmak",
+        "the": "(belirli tanımlık)",
+        "foot": "ayak"
+      },
+      "source": "p11-s14"
+    },
+    {
+      "en": "Grandpa laughs.",
+      "tr": "Dede gülüyor.",
+      "chunks": [],
+      "words": {
+        "grandpa": "dede",
+        "laughs": "gülüyor (laugh + -s)"
+      },
+      "source": "p11-s15"
+    },
+    {
+      "en": "His new phone does everything wrong.",
+      "tr": "Yeni telefonu her şeyi yanlış yapıyor.",
+      "chunks": [
+        {
+          "en": "does everything wrong",
+          "tr": "her şeyi yanlış yapıyor"
+        }
+      ],
+      "words": {
+        "his": "onun",
+        "new": "yeni",
+        "phone": "telefon",
+        "does": "yapıyor (do + -es); (yardımcı fiil)",
+        "everything": "her şey",
+        "wrong": "yanlış"
+      },
+      "source": "p11-s16"
+    },
+    {
+      "en": "But today, wrong is right.",
+      "tr": "Ama bugün yanlış, doğru.",
+      "chunks": [
+        {
+          "en": "wrong is right",
+          "tr": "yanlış doğrudur"
+        }
+      ],
+      "words": {
+        "but": "ama",
+        "today": "bugün",
+        "wrong": "yanlış",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "right": "doğru"
+      },
+      "source": "p11-s17"
+    }
+  ],
+  "phrases": [
+    {
+      "en": "answer the phone",
+      "tr": "telefonu açmak, telefona cevap vermek",
+      "note": "Türk öğrenciye not: \"telefonu açmak\" İngilizcede \"open the phone\" değil, \"answer the phone\"dur.",
+      "words": {
+        "answer": "açmak (telefonu), cevap vermek",
+        "the": "(belirli tanımlık)",
+        "phone": "telefon"
+      },
+      "source": "dil odağı"
+    },
+    {
+      "en": "Touch here",
+      "tr": "buraya dokun",
+      "note": "Emir kipi: fiilin yalın hâli (Touch, Smile, Look, Come in).",
+      "words": {
+        "touch": "dokun; dokunmak",
+        "here": "burada; buraya"
+      },
+      "source": "dil odağı"
+    },
+    {
+      "en": "Smile",
+      "tr": "gülümse",
+      "note": "Emir kipi.",
+      "words": {
+        "smile": "gülümse; gülümsemek"
+      },
+      "source": "dil odağı"
+    },
+    {
+      "en": "Can I help?",
+      "tr": "yardım edebilir miyim?",
+      "note": "can ile soru: Can + özne + fiil.",
+      "words": {
+        "can": "-ebilir (can)",
+        "i": "ben",
+        "help": "yardım etmek"
+      },
+      "source": "dil odağı"
+    },
+    {
+      "en": "I can do it",
+      "tr": "yapabilirim",
+      "note": "can + fiil (yalın): yapabilmek.",
+      "words": {
+        "i": "ben",
+        "can": "-ebilir (can)",
+        "do": "yapmak; (soru yardımcı fiili)",
+        "it": "o; bu"
+      },
+      "source": "dil odağı"
+    },
+    {
+      "en": "Oh no",
+      "tr": "eyvah",
+      "note": "Dede'nin her gün söylediği ünlem.",
+      "words": {
+        "oh": "ah, eyvah (ünlem)",
+        "no": "hayır; yok"
+      },
+      "source": "dil odağı"
+    }
+  ]
+}

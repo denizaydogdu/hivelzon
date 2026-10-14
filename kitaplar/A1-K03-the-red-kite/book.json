@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "id": "A1-K03",
+  "slug": "A1-K03-the-red-kite",
+  "level": "A1",
+  "genre": "adventure",
+  "title": "The Red Kite",
+  "titleTr": "Kırmızı Uçurtma",
+  "blurbTr": "Pazar sabahı rüzgâr Ravi'nin kırmızı uçurtmasını alıp götürüyor. Ravi parkı, pazarı ve merdivenli sokakları koşarak geçiyor. Ama uçurtma nehrin öbür yakasına gidiyor ve Ravi'nin karşıya geçmesi gerek.",
+  "hookEn": "Ravi's red kite flies away over the town.",
+  "contentVersion": 1,
+  "status": "DRAFT",
+  "aiGenerated": true,
+  "palette": {
+    "background": "#F3F8FC",
+    "surface": "#DCEBF5",
+    "text": "#1E3247",
+    "accent": "#D93A2B",
+    "highlight": "#F7D6A8"
+  },
+  "cover": "cover.png",
+  "properNouns": [
+    "Ravi",
+    "Das"
+  ],
+  "narration": {
+    "modelId": "eleven_v3",
+    "speed": 0.9,
+    "voiceId": "EXAVITQu4vr4xnSDxMaL"
+  },
+  "chapters": [
+    {
+      "id": "c1",
+      "title": "The Wind",
+      "titleTr": "Rüzgâr",
+      "pages": [
+        {"id": "p01", "image": "p01.png"},
+        {"id": "p02", "image": null},
+        {"id": "p03", "image": null},
+        {"id": "p04", "image": null}
+      ]
+    },
+    {
+      "id": "c2",
+      "title": "The River",
+      "titleTr": "Nehir",
+      "pages": [
+        {"id": "p05", "image": "p05.png"},
+        {"id": "p06", "image": null},
+        {"id": "p07", "image": null},
+        {"id": "p08", "image": null}
+      ]
+    },
+    {
+      "id": "c3",
+      "title": "Home",
+      "titleTr": "Ev",
+      "pages": [
+        {"id": "p09", "image": "p09.png"},
+        {"id": "p10", "image": null},
+        {"id": "p11", "image": null},
+        {"id": "p12", "image": null}
+      ]
+    }
+  ]
+}

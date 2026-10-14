@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "id": "A2-K02",
+  "slug": "A2-K02-into-the-fog",
+  "level": "A2",
+  "genre": "adventure",
+  "title": "Into the Fog",
+  "titleTr": "Sisin İçine",
+  "blurbTr": "Paloma ve Jonas bir çiçeğin fotoğrafını çekmek için yoldan yalnızca birkaç adım ayrıldılar. Sonra sis indi ve yol kayboldu. Uzaktan çan sesleri geliyor; ama bu dağda kilise de köy de yok.",
+  "hookEn": "When the fog came down, the path disappeared.",
+  "contentVersion": 1,
+  "status": "DRAFT",
+  "aiGenerated": true,
+  "palette": {
+    "background": "#F1F3EE",
+    "surface": "#E1E6DE",
+    "text": "#24312C",
+    "accent": "#E8742A",
+    "highlight": "#F6CF8E"
+  },
+  "cover": "cover.png",
+  "properNouns": [
+    "Paloma",
+    "Ruiz",
+    "Jonas",
+    "Berg"
+  ],
+  "narration": {
+    "modelId": "eleven_v3",
+    "speed": 0.95,
+    "voiceId": "EXAVITQu4vr4xnSDxMaL"
+  },
+  "chapters": [
+    {
+      "id": "c1",
+      "title": "The Flower",
+      "titleTr": "Çiçek",
+      "pages": [
+        {"id": "p01", "image": "p01.png"},
+        {"id": "p02", "image": null},
+        {"id": "p03", "image": null},
+        {"id": "p04", "image": null}
+      ]
+    },
+    {
+      "id": "c2",
+      "title": "Shelter",
+      "titleTr": "Sığınak",
+      "pages": [
+        {"id": "p05", "image": "p05.png"},
+        {"id": "p06", "image": null},
+        {"id": "p07", "image": null},
+        {"id": "p08", "image": null}
+      ]
+    },
+    {
+      "id": "c3",
+      "title": "The Bells",
+      "titleTr": "Çanlar",
+      "pages": [
+        {"id": "p09", "image": "p09.png"},
+        {"id": "p10", "image": null},
+        {"id": "p11", "image": null}
+      ]
+    },
+    {
+      "id": "c4",
+      "title": "Home Before Dark",
+      "titleTr": "Karanlıktan Önce Evde",
+      "pages": [
+        {"id": "p12", "image": "p12.png"},
+        {"id": "p13", "image": null},
+        {"id": "p14", "image": null},
+        {"id": "p15", "image": null}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2568 @@
+{
+  "contentId": "A1-K04",
+  "status": "DRAFT",
+  "author": "Claude taslak (H-071); kullanıcı onayı bekliyor",
+  "date": "2026-10-14",
+  "notes": [
+    "Anlatım İngilizcede geniş zamanda (present simple); Türkçede doğal anlatım için çoğunlukla şimdiki zaman (-iyor) kullanıldı.",
+    "Anlatıcı \"I\" kitabın sonunda Pip çıkar; Türkçede de birinci tekil kişi korundu (\"Size bu gece bir hikâye anlatıyorum\" değil, dinleyiciye \"sana\" diye seslenilir).",
+    "Kelime anlamları cümledeki kullanıma göre verildi; -s takısı olan fiillerde (lives, has, counts) not düşüldü."
+  ],
+  "lines": [
+    {
+      "en": "Night",
+      "tr": "Gece",
+      "chunks": [],
+      "words": {
+        "night": "gece"
+      },
+      "source": "c1"
+    },
+    {
+      "en": "I tell you a story tonight.",
+      "tr": "Bu gece sana bir hikâye anlatıyorum.",
+      "chunks": [],
+      "words": {
+        "i": "ben",
+        "tell": "anlatmak",
+        "you": "sen; sana, seni",
+        "a": "bir",
+        "story": "hikâye",
+        "tonight": "bu gece"
+      },
+      "source": "p01-s01"
+    },
+    {
+      "en": "It is about a robot.",
+      "tr": "Hikâye bir robot hakkında.",
+      "chunks": [],
+      "words": {
+        "it": "o (hikâye)",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "about": "hakkında",
+        "a": "bir",
+        "robot": "robot"
+      },
+      "source": "p01-s02"
+    },
+    {
+      "en": "I know this robot very well.",
+      "tr": "Bu robotu çok iyi tanıyorum.",
+      "chunks": [
+        {
+          "en": "very well",
+          "tr": "çok iyi"
+        }
+      ],
+      "words": {
+        "i": "ben",
+        "know": "tanımak",
+        "this": "bu",
+        "robot": "robot",
+        "very": "çok",
+        "well": "iyi"
+      },
+      "source": "p01-s03"
+    },
+    {
+      "en": "He is small.",
+      "tr": "Küçük bir robot.",
+      "chunks": [],
+      "words": {
+        "he": "o (robot)",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "small": "küçük"
+      },
+      "source": "p01-s04"
+    },
+    {
+      "en": "He has two arms and one wheel.",
+      "tr": "İki kolu ve bir tekerleği var.",
+      "chunks": [],
+      "words": {
+        "he": "o (erkek; burada robot Pip)",
+        "has": "-si var (have → has)",
+        "two": "iki",
+        "arms": "kollar",
+        "and": "ve",
+        "one": "bir",
+        "wheel": "tekerlek"
+      },
+      "source": "p01-s05"
+    },
+    {
+      "en": "His eyes are little blue lights.",
+      "tr": "Gözleri küçük mavi ışıklar.",
+      "chunks": [],
+      "words": {
+        "his": "onun",
+        "eyes": "gözler",
+        "are": "(olmak; çoğul)",
+        "little": "küçük",
+        "blue": "mavi",
+        "lights": "ışıklar"
+      },
+      "source": "p01-s06"
+    },
+    {
+      "en": "His name is Pip.",
+      "tr": "Adı Pip.",
+      "chunks": [],
+      "words": {
+        "his": "onun",
+        "name": "ad, isim",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)"
+      },
+      "source": "p01-s07"
+    },
+    {
+      "en": "Pip lives in a yellow house.",
+      "tr": "Pip sarı bir evde yaşıyor.",
+      "chunks": [],
+      "words": {
+        "lives": "yaşıyor (live + -s)",
+        "in": "içinde, -de",
+        "a": "bir",
+        "yellow": "sarı",
+        "house": "ev"
+      },
+      "source": "p01-s08"
+    },
+    {
+      "en": "He lives with a family.",
+      "tr": "Bir aileyle birlikte yaşıyor.",
+      "chunks": [
+        {
+          "en": "lives with",
+          "tr": "ile birlikte yaşıyor"
+        }
+      ],
+      "words": {
+        "he": "o (erkek; burada robot Pip)",
+        "lives": "yaşıyor (live + -s)",
+        "with": "ile, birlikte",
+        "a": "bir",
+        "family": "aile"
+      },
+      "source": "p01-s09"
+    },
+    {
+      "en": "There is a mum and a dad.",
+      "tr": "Bir anne ve bir baba var.",
+      "chunks": [
+        {
+          "en": "There is",
+          "tr": "var"
+        }
+      ],
+      "words": {
+        "there": "orada (there is/are: var)",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "a": "bir",
+        "mum": "anne",
+        "and": "ve",
+        "dad": "baba"
+      },
+      "source": "p01-s10"
+    },
+    {
+      "en": "There is a girl, too.",
+      "tr": "Bir de kız var.",
+      "chunks": [
+        {
+          "en": "There is",
+          "tr": "var"
+        },
+        {
+          "en": "too",
+          "tr": "de, da"
+        }
+      ],
+      "words": {
+        "there": "orada (there is/are: var)",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "a": "bir",
+        "girl": "kız",
+        "too": "de, da; ayrıca"
+      },
+      "source": "p01-s11"
+    },
+    {
+      "en": "Her name is Zara.",
+      "tr": "Kızın adı Zara.",
+      "chunks": [],
+      "words": {
+        "her": "onun; ona, onu",
+        "name": "ad, isim",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)"
+      },
+      "source": "p01-s12"
+    },
+    {
+      "en": "She is eight.",
+      "tr": "Sekiz yaşında.",
+      "chunks": [],
+      "words": {
+        "she": "o (kadın, kız)",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "eight": "sekiz (yaşında)"
+      },
+      "source": "p01-s13"
+    },
+    {
+      "en": "Pip can do many things.",
+      "tr": "Pip birçok şey yapabilir.",
+      "chunks": [],
+      "words": {
+        "can": "-ebilir",
+        "do": "yapmak",
+        "many": "çok, birçok",
+        "things": "şeyler"
+      },
+      "source": "p01-s14"
+    },
+    {
+      "en": "But he can't do one thing.",
+      "tr": "Ama bir şeyi yapamaz.",
+      "chunks": [],
+      "words": {
+        "but": "ama",
+        "he": "o (erkek; burada robot Pip)",
+        "can't": "-emez (can + not)",
+        "do": "yapmak",
+        "one": "bir",
+        "thing": "şey"
+      },
+      "source": "p01-s15"
+    },
+    {
+      "en": "What can't Pip do?",
+      "tr": "Pip neyi yapamaz?",
+      "chunks": [],
+      "words": {
+        "what": "ne",
+        "can't": "-emez (can + not)",
+        "do": "yapmak"
+      },
+      "source": "p01-s16"
+    },
+    {
+      "en": "Every evening, Pip works in the house.",
+      "tr": "Her akşam Pip evde çalışıyor.",
+      "chunks": [
+        {
+          "en": "Every evening",
+          "tr": "her akşam"
+        }
+      ],
+      "words": {
+        "every": "her",
+        "evening": "akşam",
+        "works": "çalışıyor (work + -s)",
+        "in": "içinde, -de",
+        "the": "(belirli tanımlık)",
+        "house": "ev"
+      },
+      "source": "p02-s01"
+    },
+    {
+      "en": "He washes the cups.",
+      "tr": "Fincanları yıkıyor.",
+      "chunks": [],
+      "words": {
+        "he": "o (erkek; burada robot Pip)",
+        "washes": "yıkıyor (wash + -es)",
+        "the": "(belirli tanımlık)",
+        "cups": "fincanlar, bardaklar"
+      },
+      "source": "p02-s02"
+    },
+    {
+      "en": "He cleans the kitchen floor.",
+      "tr": "Mutfağın yerini temizliyor.",
+      "chunks": [
+        {
+          "en": "kitchen floor",
+          "tr": "mutfağın yeri"
+        }
+      ],
+      "words": {
+        "he": "o (erkek; burada robot Pip)",
+        "cleans": "temizliyor (clean + -s)",
+        "the": "(belirli tanımlık)",
+        "kitchen": "mutfak",
+        "floor": "yer, zemin"
+      },
+      "source": "p02-s03"
+    },
+    {
+      "en": "He puts the toys in the box.",
+      "tr": "Oyuncakları kutuya koyuyor.",
+      "chunks": [],
+      "words": {
+        "he": "o (erkek; burada robot Pip)",
+        "puts": "koyuyor (put + -s)",
+        "the": "(belirli tanımlık)",
+        "toys": "oyuncaklar",
+        "in": "içine",
+        "box": "kutu"
+      },
+      "source": "p02-s04"
+    },
+    {
+      "en": "At eight o'clock, Zara goes to bed.",
+      "tr": "Saat sekizde Zara yatmaya gidiyor.",
+      "chunks": [
+        {
+          "en": "At eight o'clock",
+          "tr": "saat sekizde"
+        },
+        {
+          "en": "goes to bed",
+          "tr": "yatmaya gidiyor"
+        }
+      ],
+      "words": {
+        "at": "-de (saat)",
+        "eight": "sekiz",
+        "o'clock": "saat (tam)",
+        "goes": "gidiyor (go + -es)",
+        "to": "-e, -a",
+        "bed": "yatak"
+      },
+      "source": "p02-s05"
+    },
+    {
+      "en": "Mum reads her a story.",
+      "tr": "Annesi ona bir hikâye okuyor.",
+      "chunks": [
+        {
+          "en": "reads her a story",
+          "tr": "ona bir hikâye okuyor"
+        }
+      ],
+      "words": {
+        "mum": "anne",
+        "reads": "okuyor (read + -s)",
+        "her": "ona",
+        "a": "bir",
+        "story": "hikâye"
+      },
+      "source": "p02-s06"
+    },
+    {
+      "en": "Dad says, \"Good night, Zara.\"",
+      "tr": "Babası \"İyi geceler, Zara\" diyor.",
+      "chunks": [
+        {
+          "en": "Good night",
+          "tr": "iyi geceler"
+        }
+      ],
+      "words": {
+        "dad": "baba",
+        "says": "diyor (say + -s)",
+        "good": "iyi",
+        "night": "gece"
+      },
+      "source": "p02-s07"
+    },
+    {
+      "en": "At ten, Mum and Dad go to bed.",
+      "tr": "Saat onda annesiyle babası da yatıyor.",
+      "chunks": [
+        {
+          "en": "At ten",
+          "tr": "saat onda"
+        },
+        {
+          "en": "go to bed",
+          "tr": "yatmak, yatmaya gitmek"
+        }
+      ],
+      "words": {
+        "at": "-de (saat)",
+        "ten": "on (saat on)",
+        "mum": "anne",
+        "and": "ve",
+        "dad": "baba",
+        "go": "gitmek",
+        "to": "-e, -a",
+        "bed": "yatak"
+      },
+      "source": "p02-s08"
+    },
+    {
+      "en": "Pip turns off the lights.",
+      "tr": "Pip ışıkları kapatıyor.",
+      "chunks": [
+        {
+          "en": "turns off",
+          "tr": "kapatıyor"
+        }
+      ],
+      "words": {
+        "turns": "(turn off: kapatmak; turn + -s)",
+        "off": "kapalı; sönük",
+        "the": "(belirli tanımlık)",
+        "lights": "ışıklar"
+      },
+      "source": "p02-s09"
+    },
+    {
+      "en": "One, two, three, four.",
+      "tr": "Bir, iki, üç, dört.",
+      "chunks": [],
+      "words": {
+        "one": "bir",
+        "two": "iki",
+        "three": "üç",
+        "four": "dört"
+      },
+      "source": "p02-s10"
+    },
+    {
+      "en": "Now the house is dark and quiet.",
+      "tr": "Artık ev karanlık ve sessiz.",
+      "chunks": [],
+      "words": {
+        "now": "şimdi",
+        "the": "(belirli tanımlık)",
+        "house": "ev",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "dark": "karanlık",
+        "and": "ve",
+        "quiet": "sessiz"
+      },
+      "source": "p02-s11"
+    },
+    {
+      "en": "Everyone sleeps.",
+      "tr": "Herkes uyuyor.",
+      "chunks": [],
+      "words": {
+        "everyone": "herkes",
+        "sleeps": "uyuyor (sleep + -s)"
+      },
+      "source": "p02-s12"
+    },
+    {
+      "en": "Everyone, but not Pip.",
+      "tr": "Herkes, ama Pip değil.",
+      "chunks": [],
+      "words": {
+        "everyone": "herkes",
+        "but": "ama, -den başka",
+        "not": "değil"
+      },
+      "source": "p02-s13"
+    },
+    {
+      "en": "Pip stands in the kitchen.",
+      "tr": "Pip mutfakta duruyor.",
+      "chunks": [],
+      "words": {
+        "stands": "duruyor (stand + -s)",
+        "in": "içinde, -de",
+        "the": "(belirli tanımlık)",
+        "kitchen": "mutfak"
+      },
+      "source": "p03-s01"
+    },
+    {
+      "en": "There is a big moon in the window.",
+      "tr": "Pencerede kocaman bir ay var.",
+      "chunks": [
+        {
+          "en": "There is",
+          "tr": "var"
+        }
+      ],
+      "words": {
+        "there": "orada (there is/are: var)",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "a": "bir",
+        "big": "büyük",
+        "moon": "ay (gökteki)",
+        "in": "içinde, -de",
+        "the": "(belirli tanımlık)",
+        "window": "pencere"
+      },
+      "source": "p03-s02"
+    },
+    {
+      "en": "\"Robots don't sleep,\" says Pip.",
+      "tr": "\"Robotlar uyumaz,\" diyor Pip.",
+      "chunks": [
+        {
+          "en": "don't sleep",
+          "tr": "uyumaz"
+        }
+      ],
+      "words": {
+        "robots": "robotlar",
+        "don't": "-mez (do + not)",
+        "sleep": "uyumak; uyku",
+        "says": "diyor (say + -s)"
+      },
+      "source": "p03-s03"
+    },
+    {
+      "en": "\"I know that.\"",
+      "tr": "\"Bunu biliyorum.\"",
+      "chunks": [],
+      "words": {
+        "i": "ben",
+        "know": "bilmek",
+        "that": "bunu, şunu"
+      },
+      "source": "p03-s04"
+    },
+    {
+      "en": "But Pip wants to sleep.",
+      "tr": "Ama Pip uyumak istiyor.",
+      "chunks": [
+        {
+          "en": "wants to sleep",
+          "tr": "uyumak istiyor"
+        }
+      ],
+      "words": {
+        "but": "ama",
+        "wants": "istiyor (want + -s)",
+        "to": "-e, -a",
+        "sleep": "uyumak; uyku"
+      },
+      "source": "p03-s05"
+    },
+    {
+      "en": "He wants to close his eyes.",
+      "tr": "Gözlerini kapamak istiyor.",
+      "chunks": [
+        {
+          "en": "close his eyes",
+          "tr": "gözlerini kapamak"
+        }
+      ],
+      "words": {
+        "he": "o (erkek; burada robot Pip)",
+        "wants": "istiyor (want + -s)",
+        "to": "-e, -a",
+        "close": "kapanmak; kapamak",
+        "his": "onun (kendi)",
+        "eyes": "gözler"
+      },
+      "source": "p03-s06"
+    },
+    {
+      "en": "He wants to dream.",
+      "tr": "Rüya görmek istiyor.",
+      "chunks": [
+        {
+          "en": "wants to dream",
+          "tr": "rüya görmek istiyor"
+        }
+      ],
+      "words": {
+        "he": "o (erkek; burada robot Pip)",
+        "wants": "istiyor (want + -s)",
+        "to": "-e, -a",
+        "dream": "rüya görmek; rüya"
+      },
+      "source": "p03-s07"
+    },
+    {
+      "en": "Zara dreams every night.",
+      "tr": "Zara her gece rüya görüyor.",
+      "chunks": [],
+      "words": {
+        "dreams": "rüya görüyor (dream + -s)",
+        "every": "her",
+        "night": "gece"
+      },
+      "source": "p03-s08"
+    },
+    {
+      "en": "In the morning, she tells Pip her dreams.",
+      "tr": "Sabahları Pip'e rüyalarını anlatıyor.",
+      "chunks": [
+        {
+          "en": "In the morning",
+          "tr": "sabahları, sabah"
+        }
+      ],
+      "words": {
+        "in": "içinde, -de",
+        "the": "(belirli tanımlık)",
+        "morning": "sabah",
+        "she": "o (kadın, kız)",
+        "tells": "anlatıyor (tell + -s)",
+        "her": "onun (kendi)",
+        "dreams": "rüyalar; rüya görüyor (dream + -s)"
+      },
+      "source": "p03-s09"
+    },
+    {
+      "en": "She dreams about cats, the sea and cake.",
+      "tr": "Rüyasında kedileri, denizi ve keki görüyor.",
+      "chunks": [
+        {
+          "en": "dreams about",
+          "tr": "rüyasında görüyor"
+        }
+      ],
+      "words": {
+        "she": "o (kadın, kız)",
+        "dreams": "rüyasında görüyor (dream + -s)",
+        "about": "hakkında",
+        "cats": "kediler",
+        "the": "(belirli tanımlık)",
+        "sea": "deniz",
+        "and": "ve",
+        "cake": "kek, pasta"
+      },
+      "source": "p03-s10"
+    },
+    {
+      "en": "\"What is a dream like?\" asks Pip.",
+      "tr": "\"Rüya nasıl bir şey?\" diye soruyor Pip.",
+      "chunks": [
+        {
+          "en": "What is … like",
+          "tr": "nasıl bir şey"
+        }
+      ],
+      "words": {
+        "what": "ne",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "a": "bir",
+        "dream": "rüya görmek; rüya",
+        "like": "gibi",
+        "asks": "soruyor (ask + -s)"
+      },
+      "source": "p03-s11"
+    },
+    {
+      "en": "Pip has no dreams.",
+      "tr": "Pip'in hiç rüyası yok.",
+      "chunks": [],
+      "words": {
+        "has": "-si var (have → has)",
+        "no": "hiç; yok",
+        "dreams": "rüyalar"
+      },
+      "source": "p03-s12"
+    },
+    {
+      "en": "He only has long, quiet nights.",
+      "tr": "Yalnızca uzun, sessiz geceleri var.",
+      "chunks": [],
+      "words": {
+        "he": "o (erkek; burada robot Pip)",
+        "only": "sadece, yalnızca",
+        "has": "-si var (have → has)",
+        "long": "uzun",
+        "quiet": "sessiz",
+        "nights": "geceler"
+      },
+      "source": "p03-s13"
+    },
+    {
+      "en": "Pip has a plan.",
+      "tr": "Pip'in bir planı var.",
+      "chunks": [],
+      "words": {
+        "has": "-si var (have → has)",
+        "a": "bir",
+        "plan": "plan"
+      },
+      "source": "p04-s01"
+    },
+    {
+      "en": "Zara has a book about sleep.",
+      "tr": "Zara'nın uyku hakkında bir kitabı var.",
+      "chunks": [],
+      "words": {
+        "has": "-si var (have → has)",
+        "a": "bir",
+        "book": "kitap",
+        "about": "hakkında",
+        "sleep": "uyku"
+      },
+      "source": "p04-s02"
+    },
+    {
+      "en": "The book says, \"Count sheep.\"",
+      "tr": "Kitap \"Koyun say\" diyor.",
+      "chunks": [
+        {
+          "en": "Count sheep",
+          "tr": "koyun say"
+        }
+      ],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "book": "kitap",
+        "says": "diyor (say + -s)",
+        "count": "saymak (emir: say)",
+        "sheep": "koyun; koyunlar (tekili ve çoğulu aynı)"
+      },
+      "source": "p04-s03"
+    },
+    {
+      "en": "So Pip counts sheep.",
+      "tr": "Pip de koyun sayıyor.",
+      "chunks": [],
+      "words": {
+        "so": "bu yüzden",
+        "counts": "sayıyor (count + -s)",
+        "sheep": "koyun; koyunlar (tekili ve çoğulu aynı)"
+      },
+      "source": "p04-s04"
+    },
+    {
+      "en": "One sheep, two sheep, three sheep.",
+      "tr": "Bir koyun, iki koyun, üç koyun.",
+      "chunks": [],
+      "words": {
+        "one": "bir",
+        "sheep": "koyun; koyunlar (tekili ve çoğulu aynı)",
+        "two": "iki",
+        "three": "üç"
+      },
+      "source": "p04-s05"
+    },
+    {
+      "en": "But Pip is very fast.",
+      "tr": "Ama Pip çok hızlı.",
+      "chunks": [],
+      "words": {
+        "but": "ama",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "very": "çok",
+        "fast": "hızlı"
+      },
+      "source": "p04-s06"
+    },
+    {
+      "en": "Ten, twenty, thirty, forty, fifty!",
+      "tr": "On, yirmi, otuz, kırk, elli!",
+      "chunks": [],
+      "words": {
+        "ten": "on",
+        "twenty": "yirmi",
+        "thirty": "otuz",
+        "forty": "kırk",
+        "fifty": "elli"
+      },
+      "source": "p04-s07"
+    },
+    {
+      "en": "Fifty sheep in one second!",
+      "tr": "Bir saniyede elli koyun!",
+      "chunks": [
+        {
+          "en": "in one second",
+          "tr": "bir saniyede"
+        }
+      ],
+      "words": {
+        "fifty": "elli",
+        "sheep": "koyun; koyunlar (tekili ve çoğulu aynı)",
+        "in": "içinde, -de",
+        "one": "bir",
+        "second": "saniye"
+      },
+      "source": "p04-s08"
+    },
+    {
+      "en": "Pip is not tired.",
+      "tr": "Pip yorgun değil.",
+      "chunks": [],
+      "words": {
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "not": "değil",
+        "tired": "yorgun"
+      },
+      "source": "p04-s09"
+    },
+    {
+      "en": "He is the same.",
+      "tr": "Hiç değişmiyor.",
+      "chunks": [
+        {
+          "en": "the same",
+          "tr": "aynı"
+        }
+      ],
+      "words": {
+        "he": "o (erkek; burada robot Pip)",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "the": "(belirli tanımlık)",
+        "same": "aynı (değişmeden)"
+      },
+      "source": "p04-s10"
+    },
+    {
+      "en": "\"Sheep are no good,\" says Pip.",
+      "tr": "\"Koyunlar işe yaramıyor,\" diyor Pip.",
+      "chunks": [
+        {
+          "en": "no good",
+          "tr": "işe yaramaz"
+        }
+      ],
+      "words": {
+        "sheep": "koyun; koyunlar (tekili ve çoğulu aynı)",
+        "are": "(olmak; çoğul)",
+        "no": "hiç; yok",
+        "good": "iyi",
+        "says": "diyor (say + -s)"
+      },
+      "source": "p04-s11"
+    },
+    {
+      "en": "Then he tries warm milk.",
+      "tr": "Sonra ılık süt deniyor.",
+      "chunks": [],
+      "words": {
+        "then": "sonra",
+        "he": "o (erkek; burada robot Pip)",
+        "tries": "deniyor (try + -ies)",
+        "warm": "ılık, sıcak",
+        "milk": "süt"
+      },
+      "source": "p04-s12"
+    },
+    {
+      "en": "Dad drinks warm milk at night.",
+      "tr": "Babası geceleri ılık süt içiyor.",
+      "chunks": [
+        {
+          "en": "at night",
+          "tr": "geceleri"
+        }
+      ],
+      "words": {
+        "dad": "baba",
+        "drinks": "içiyor (drink + -s)",
+        "warm": "ılık, sıcak",
+        "milk": "süt",
+        "at": "-de (saat)",
+        "night": "gece"
+      },
+      "source": "p04-s13"
+    },
+    {
+      "en": "Pip puts milk in a cup.",
+      "tr": "Pip bir fincana süt koyuyor.",
+      "chunks": [],
+      "words": {
+        "puts": "koyuyor (put + -s)",
+        "milk": "süt",
+        "in": "içinde, -de",
+        "a": "bir",
+        "cup": "fincan, bardak"
+      },
+      "source": "p04-s14"
+    },
+    {
+      "en": "But Pip can't drink.",
+      "tr": "Ama Pip içemez.",
+      "chunks": [
+        {
+          "en": "can't drink",
+          "tr": "içemez"
+        }
+      ],
+      "words": {
+        "but": "ama",
+        "can't": "-emez (can + not)",
+        "drink": "içmek"
+      },
+      "source": "p04-s15"
+    },
+    {
+      "en": "The milk goes on the floor.",
+      "tr": "Süt yere dökülüyor.",
+      "chunks": [
+        {
+          "en": "goes on the floor",
+          "tr": "yere dökülüyor"
+        }
+      ],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "milk": "süt",
+        "goes": "gidiyor (burada: dökülüyor)",
+        "on": "üstüne (yere)",
+        "floor": "yer, zemin"
+      },
+      "source": "p04-s16"
+    },
+    {
+      "en": "Now Pip cleans the floor again.",
+      "tr": "Pip şimdi yine yeri temizliyor.",
+      "chunks": [],
+      "words": {
+        "now": "şimdi",
+        "cleans": "temizliyor (clean + -s)",
+        "the": "(belirli tanımlık)",
+        "floor": "yer, zemin",
+        "again": "yine, tekrar"
+      },
+      "source": "p04-s17"
+    },
+    {
+      "en": "Then Pip finds a blanket.",
+      "tr": "Sonra Pip bir battaniye buluyor.",
+      "chunks": [],
+      "words": {
+        "then": "sonra",
+        "finds": "buluyor (find + -s)",
+        "a": "bir",
+        "blanket": "battaniye"
+      },
+      "source": "p05-s01"
+    },
+    {
+      "en": "It is green.",
+      "tr": "Battaniye yeşil.",
+      "chunks": [],
+      "words": {
+        "it": "o; onu",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "green": "yeşil"
+      },
+      "source": "p05-s02"
+    },
+    {
+      "en": "It is Zara's old blanket.",
+      "tr": "Zara'nın eski battaniyesi.",
+      "chunks": [],
+      "words": {
+        "it": "o; onu",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "zara's": "Zara'nın",
+        "old": "eski",
+        "blanket": "battaniye"
+      },
+      "source": "p05-s03"
+    },
+    {
+      "en": "Pip puts it on his head.",
+      "tr": "Pip onu kafasına koyuyor.",
+      "chunks": [
+        {
+          "en": "puts it on",
+          "tr": "üstüne koyuyor"
+        }
+      ],
+      "words": {
+        "puts": "koyuyor (put + -s)",
+        "it": "o; onu",
+        "on": "üstüne, üstünde",
+        "his": "onun",
+        "head": "kafa, baş"
+      },
+      "source": "p05-s04"
+    },
+    {
+      "en": "It is too small.",
+      "tr": "Çok küçük.",
+      "chunks": [
+        {
+          "en": "too small",
+          "tr": "çok küçük, fazla küçük"
+        }
+      ],
+      "words": {
+        "it": "o; onu",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "too": "fazla, çok",
+        "small": "küçük"
+      },
+      "source": "p05-s05"
+    },
+    {
+      "en": "He puts it on his wheel.",
+      "tr": "Onu tekerleğine koyuyor.",
+      "chunks": [],
+      "words": {
+        "he": "o (erkek; burada robot Pip)",
+        "puts": "koyuyor (put + -s)",
+        "it": "o; onu",
+        "on": "üstüne, üstünde",
+        "his": "onun",
+        "wheel": "tekerlek"
+      },
+      "source": "p05-s06"
+    },
+    {
+      "en": "It is too small again.",
+      "tr": "Yine çok küçük.",
+      "chunks": [],
+      "words": {
+        "it": "o; onu",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "too": "fazla, çok",
+        "small": "küçük",
+        "again": "yine, tekrar"
+      },
+      "source": "p05-s07"
+    },
+    {
+      "en": "Pip sits under the window.",
+      "tr": "Pip pencerenin altında oturuyor.",
+      "chunks": [],
+      "words": {
+        "sits": "oturuyor (sit + -s)",
+        "under": "altında",
+        "the": "(belirli tanımlık)",
+        "window": "pencere"
+      },
+      "source": "p05-s08"
+    },
+    {
+      "en": "He is sad.",
+      "tr": "Üzgün.",
+      "chunks": [],
+      "words": {
+        "he": "o (erkek; burada robot Pip)",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "sad": "üzgün"
+      },
+      "source": "p05-s09"
+    },
+    {
+      "en": "His blue lights are sad, too.",
+      "tr": "Mavi ışıkları da üzgün.",
+      "chunks": [],
+      "words": {
+        "his": "onun",
+        "blue": "mavi",
+        "lights": "ışıklar",
+        "are": "(olmak; çoğul)",
+        "sad": "üzgün",
+        "too": "de, da"
+      },
+      "source": "p05-s10"
+    },
+    {
+      "en": "\"I can't sleep,\" says Pip.",
+      "tr": "\"Uyuyamıyorum,\" diyor Pip.",
+      "chunks": [
+        {
+          "en": "can't sleep",
+          "tr": "uyuyamıyorum"
+        }
+      ],
+      "words": {
+        "i": "ben",
+        "can't": "-emez (can + not)",
+        "sleep": "uyumak; uyku",
+        "says": "diyor (say + -s)"
+      },
+      "source": "p05-s11"
+    },
+    {
+      "en": "It is two o'clock.",
+      "tr": "Saat iki.",
+      "chunks": [
+        {
+          "en": "two o'clock",
+          "tr": "saat iki"
+        }
+      ],
+      "words": {
+        "it": "o; onu",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "two": "iki",
+        "o'clock": "saat (tam)"
+      },
+      "source": "p05-s12"
+    },
+    {
+      "en": "Then a door opens.",
+      "tr": "Sonra bir kapı açılıyor.",
+      "chunks": [],
+      "words": {
+        "then": "sonra",
+        "a": "bir",
+        "door": "kapı",
+        "opens": "açılıyor; açıyor (open + -s)"
+      },
+      "source": "p05-s13"
+    },
+    {
+      "en": "It is Zara.",
+      "tr": "Gelen Zara.",
+      "chunks": [],
+      "words": {
+        "it": "o (gelen)",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)"
+      },
+      "source": "p05-s14"
+    },
+    {
+      "en": "She has her toy bear in her arms.",
+      "tr": "Kucağında oyuncak ayısı var.",
+      "chunks": [
+        {
+          "en": "in her arms",
+          "tr": "kucağında"
+        }
+      ],
+      "words": {
+        "she": "o (kadın, kız)",
+        "has": "-si var (have → has)",
+        "her": "onun; ona, onu",
+        "toy": "oyuncak",
+        "bear": "ayı",
+        "in": "içinde, -de",
+        "arms": "kollar"
+      },
+      "source": "p05-s15"
+    },
+    {
+      "en": "\"Pip,\" says Zara.",
+      "tr": "\"Pip,\" diyor Zara.",
+      "chunks": [],
+      "words": {
+        "says": "diyor (say + -s)"
+      },
+      "source": "p05-s16"
+    },
+    {
+      "en": "\"I can't sleep.\"",
+      "tr": "\"Uyuyamıyorum.\"",
+      "chunks": [
+        {
+          "en": "can't sleep",
+          "tr": "uyuyamıyorum"
+        }
+      ],
+      "words": {
+        "i": "ben",
+        "can't": "-emez (can + not)",
+        "sleep": "uyumak; uyku"
+      },
+      "source": "p05-s17"
+    },
+    {
+      "en": "Pip looks at her.",
+      "tr": "Pip ona bakıyor.",
+      "chunks": [
+        {
+          "en": "looks at",
+          "tr": "bakıyor"
+        }
+      ],
+      "words": {
+        "looks": "bakıyor (look + -s)",
+        "at": "-de (saat)",
+        "her": "ona"
+      },
+      "source": "p05-s18"
+    },
+    {
+      "en": "His lights go on and off.",
+      "tr": "Işıkları yanıp sönüyor.",
+      "chunks": [
+        {
+          "en": "go on and off",
+          "tr": "yanıp sönüyor"
+        }
+      ],
+      "words": {
+        "his": "onun",
+        "lights": "ışıklar",
+        "go": "gitmek (go on and off: yanıp sönmek)",
+        "on": "açık, yanık",
+        "and": "ve",
+        "off": "kapalı, sönük"
+      },
+      "source": "p05-s19"
+    },
+    {
+      "en": "\"Me too,\" says Pip.",
+      "tr": "\"Ben de,\" diyor Pip.",
+      "chunks": [
+        {
+          "en": "Me too",
+          "tr": "ben de"
+        }
+      ],
+      "words": {
+        "me": "beni, bana; ben (me too: ben de)",
+        "too": "de, da; ayrıca",
+        "says": "diyor (say + -s)"
+      },
+      "source": "p05-s20"
+    },
+    {
+      "en": "A Story",
+      "tr": "Bir Hikâye",
+      "chunks": [],
+      "words": {
+        "a": "bir",
+        "story": "hikâye"
+      },
+      "source": "c2"
+    },
+    {
+      "en": "Zara sits on the floor with Pip.",
+      "tr": "Zara yere, Pip'in yanına oturuyor.",
+      "chunks": [
+        {
+          "en": "on the floor",
+          "tr": "yere"
+        }
+      ],
+      "words": {
+        "sits": "oturuyor (sit + -s)",
+        "on": "üstüne, üstünde",
+        "the": "(belirli tanımlık)",
+        "floor": "yer, zemin",
+        "with": "yanına, ile"
+      },
+      "source": "p06-s01"
+    },
+    {
+      "en": "\"Why can't you sleep?\" asks Pip.",
+      "tr": "\"Sen neden uyuyamıyorsun?\" diye soruyor Pip.",
+      "chunks": [
+        {
+          "en": "can't you sleep",
+          "tr": "uyuyamıyorsun"
+        }
+      ],
+      "words": {
+        "why": "neden",
+        "can't": "-emez (can + not)",
+        "you": "sen; sana, seni",
+        "sleep": "uyumak; uyku",
+        "asks": "soruyor (ask + -s)"
+      },
+      "source": "p06-s02"
+    },
+    {
+      "en": "\"My head is busy,\" says Zara.",
+      "tr": "\"Kafam çok dolu,\" diyor Zara.",
+      "chunks": [],
+      "words": {
+        "my": "benim",
+        "head": "kafa, baş",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "busy": "meşgul, dolu (kafa)",
+        "says": "diyor (say + -s)"
+      },
+      "source": "p06-s03"
+    },
+    {
+      "en": "\"I think and think.\"",
+      "tr": "\"Düşünüp duruyorum.\"",
+      "chunks": [
+        {
+          "en": "think and think",
+          "tr": "düşünüp duruyorum"
+        }
+      ],
+      "words": {
+        "i": "ben",
+        "think": "düşünmek",
+        "and": "ve"
+      },
+      "source": "p06-s04"
+    },
+    {
+      "en": "\"I try sheep,\" says Pip.",
+      "tr": "\"Koyunları deniyorum,\" diyor Pip.",
+      "chunks": [],
+      "words": {
+        "i": "ben",
+        "try": "denemek",
+        "sheep": "koyun; koyunlar (tekili ve çoğulu aynı)",
+        "says": "diyor (say + -s)"
+      },
+      "source": "p06-s05"
+    },
+    {
+      "en": "\"Fifty sheep in one second.",
+      "tr": "\"Bir saniyede elli koyun.",
+      "chunks": [
+        {
+          "en": "in one second",
+          "tr": "bir saniyede"
+        }
+      ],
+      "words": {
+        "fifty": "elli",
+        "sheep": "koyun; koyunlar (tekili ve çoğulu aynı)",
+        "in": "içinde, -de",
+        "one": "bir",
+        "second": "saniye"
+      },
+      "source": "p06-s06"
+    },
+    {
+      "en": "It is no good.\"",
+      "tr": "İşe yaramıyor.\"",
+      "chunks": [
+        {
+          "en": "no good",
+          "tr": "işe yaramaz"
+        }
+      ],
+      "words": {
+        "it": "o; onu",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "no": "hiç; yok",
+        "good": "iyi"
+      },
+      "source": "p06-s07"
+    },
+    {
+      "en": "Zara laughs.",
+      "tr": "Zara gülüyor.",
+      "chunks": [],
+      "words": {
+        "laughs": "gülüyor (laugh + -s)"
+      },
+      "source": "p06-s08"
+    },
+    {
+      "en": "\"Fifty?",
+      "tr": "\"Elli mi?",
+      "chunks": [],
+      "words": {
+        "fifty": "elli"
+      },
+      "source": "p06-s09"
+    },
+    {
+      "en": "Pip, that is very fast!\"",
+      "tr": "Pip, bu çok hızlı!\"",
+      "chunks": [],
+      "words": {
+        "that": "bu",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "very": "çok",
+        "fast": "hızlı"
+      },
+      "source": "p06-s10"
+    },
+    {
+      "en": "Then she looks at Pip.",
+      "tr": "Sonra Pip'e bakıyor.",
+      "chunks": [
+        {
+          "en": "looks at",
+          "tr": "bakıyor"
+        }
+      ],
+      "words": {
+        "then": "sonra",
+        "she": "o (kadın, kız)",
+        "looks": "bakıyor (look + -s)",
+        "at": "-de (saat)"
+      },
+      "source": "p06-s11"
+    },
+    {
+      "en": "\"Do you want to sleep, too?\"",
+      "tr": "\"Sen de uyumak istiyor musun?\"",
+      "chunks": [
+        {
+          "en": "want to sleep",
+          "tr": "uyumak istemek"
+        }
+      ],
+      "words": {
+        "do": "yapmak",
+        "you": "sen; sana, seni",
+        "want": "istemek",
+        "to": "-e, -a",
+        "sleep": "uyumak; uyku",
+        "too": "de, da; ayrıca"
+      },
+      "source": "p06-s12"
+    },
+    {
+      "en": "\"Yes,\" says Pip.",
+      "tr": "\"Evet,\" diyor Pip.",
+      "chunks": [],
+      "words": {
+        "yes": "evet",
+        "says": "diyor (say + -s)"
+      },
+      "source": "p06-s13"
+    },
+    {
+      "en": "\"Very much.",
+      "tr": "\"Hem de çok.",
+      "chunks": [
+        {
+          "en": "Very much",
+          "tr": "çok, hem de çok"
+        }
+      ],
+      "words": {
+        "very": "çok",
+        "much": "çok"
+      },
+      "source": "p06-s14"
+    },
+    {
+      "en": "Every night.\"",
+      "tr": "Her gece.\"",
+      "chunks": [
+        {
+          "en": "Every night",
+          "tr": "her gece"
+        }
+      ],
+      "words": {
+        "every": "her",
+        "night": "gece"
+      },
+      "source": "p06-s15"
+    },
+    {
+      "en": "Zara thinks.",
+      "tr": "Zara düşünüyor.",
+      "chunks": [],
+      "words": {
+        "thinks": "düşünüyor (think + -s)"
+      },
+      "source": "p07-s01"
+    },
+    {
+      "en": "Then she smiles.",
+      "tr": "Sonra gülümsüyor.",
+      "chunks": [],
+      "words": {
+        "then": "sonra",
+        "she": "o (kadın, kız)",
+        "smiles": "gülümsüyor (smile + -s)"
+      },
+      "source": "p07-s02"
+    },
+    {
+      "en": "\"Mum reads me a story.",
+      "tr": "\"Annem bana hikâye okuyor.",
+      "chunks": [
+        {
+          "en": "reads me a story",
+          "tr": "bana hikâye okuyor"
+        }
+      ],
+      "words": {
+        "mum": "anne",
+        "reads": "okuyor (read + -s)",
+        "me": "beni, bana; ben (me too: ben de)",
+        "a": "bir",
+        "story": "hikâye"
+      },
+      "source": "p07-s03"
+    },
+    {
+      "en": "Then I sleep.\"",
+      "tr": "Sonra uyuyorum.\"",
+      "chunks": [],
+      "words": {
+        "then": "sonra",
+        "i": "ben",
+        "sleep": "uyumak"
+      },
+      "source": "p07-s04"
+    },
+    {
+      "en": "\"Can I read you a story?\" asks Pip.",
+      "tr": "\"Sana bir hikâye okuyabilir miyim?\" diye soruyor Pip.",
+      "chunks": [
+        {
+          "en": "Can I",
+          "tr": "-ebilir miyim"
+        }
+      ],
+      "words": {
+        "can": "-ebilir",
+        "i": "ben",
+        "read": "okumak",
+        "you": "sen; sana, seni",
+        "a": "bir",
+        "story": "hikâye",
+        "asks": "soruyor (ask + -s)"
+      },
+      "source": "p07-s05"
+    },
+    {
+      "en": "\"Yes, please!\"",
+      "tr": "\"Evet, lütfen!\"",
+      "chunks": [],
+      "words": {
+        "yes": "evet",
+        "please": "lütfen"
+      },
+      "source": "p07-s06"
+    },
+    {
+      "en": "They go to Zara's room.",
+      "tr": "Zara'nın odasına gidiyorlar.",
+      "chunks": [],
+      "words": {
+        "they": "onlar",
+        "go": "gitmek",
+        "to": "-e, -a",
+        "zara's": "Zara'nın",
+        "room": "oda"
+      },
+      "source": "p07-s07"
+    },
+    {
+      "en": "Zara gets into bed.",
+      "tr": "Zara yatağa giriyor.",
+      "chunks": [
+        {
+          "en": "gets into bed",
+          "tr": "yatağa giriyor"
+        }
+      ],
+      "words": {
+        "gets": "giriyor (get + -s; get into: -e girmek)",
+        "into": "içine",
+        "bed": "yatak"
+      },
+      "source": "p07-s08"
+    },
+    {
+      "en": "Pip puts the green blanket on her.",
+      "tr": "Pip yeşil battaniyeyi onun üstüne örtüyor.",
+      "chunks": [
+        {
+          "en": "puts … on her",
+          "tr": "onun üstüne örtüyor"
+        }
+      ],
+      "words": {
+        "puts": "koyuyor (put + -s)",
+        "the": "(belirli tanımlık)",
+        "green": "yeşil",
+        "blanket": "battaniye",
+        "on": "üstüne, üstünde",
+        "her": "onu, onun"
+      },
+      "source": "p07-s09"
+    },
+    {
+      "en": "It is the right size for Zara.",
+      "tr": "Battaniye Zara'ya tam göre.",
+      "chunks": [
+        {
+          "en": "the right size",
+          "tr": "tam boy, tam göre"
+        }
+      ],
+      "words": {
+        "it": "o; onu",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "the": "(belirli tanımlık)",
+        "right": "doğru, uygun",
+        "size": "boy, beden",
+        "for": "için"
+      },
+      "source": "p07-s10"
+    },
+    {
+      "en": "On the table, there are many books.",
+      "tr": "Masada bir sürü kitap var.",
+      "chunks": [
+        {
+          "en": "there are",
+          "tr": "var"
+        }
+      ],
+      "words": {
+        "on": "üstüne, üstünde",
+        "the": "(belirli tanımlık)",
+        "table": "masa",
+        "there": "orada (there is/are: var)",
+        "are": "(olmak; çoğul)",
+        "many": "çok, birçok",
+        "books": "kitaplar"
+      },
+      "source": "p07-s11"
+    },
+    {
+      "en": "Zara gives Pip a small blue book.",
+      "tr": "Zara Pip'e küçük, mavi bir kitap veriyor.",
+      "chunks": [],
+      "words": {
+        "gives": "veriyor (give + -s)",
+        "a": "bir",
+        "small": "küçük",
+        "blue": "mavi",
+        "book": "kitap"
+      },
+      "source": "p07-s12"
+    },
+    {
+      "en": "It is new.",
+      "tr": "Kitap yeni.",
+      "chunks": [],
+      "words": {
+        "it": "o; onu",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "new": "yeni"
+      },
+      "source": "p07-s13"
+    },
+    {
+      "en": "\"This one, please,\" she says.",
+      "tr": "\"Bunu, lütfen,\" diyor.",
+      "chunks": [
+        {
+          "en": "This one",
+          "tr": "bunu, bu"
+        }
+      ],
+      "words": {
+        "this": "bu",
+        "one": "bir",
+        "please": "lütfen",
+        "she": "o (kadın, kız)",
+        "says": "diyor (say + -s)"
+      },
+      "source": "p07-s14"
+    },
+    {
+      "en": "\"It is about a robot.\"",
+      "tr": "\"Bir robot hakkında.\"",
+      "chunks": [],
+      "words": {
+        "it": "o; onu",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "about": "hakkında",
+        "a": "bir",
+        "robot": "robot"
+      },
+      "source": "p07-s15"
+    },
+    {
+      "en": "Pip opens the book.",
+      "tr": "Pip kitabı açıyor.",
+      "chunks": [],
+      "words": {
+        "opens": "açılıyor; açıyor (open + -s)",
+        "the": "(belirli tanımlık)",
+        "book": "kitap"
+      },
+      "source": "p08-s01"
+    },
+    {
+      "en": "He reads the first line.",
+      "tr": "İlk satırı okuyor.",
+      "chunks": [
+        {
+          "en": "first line",
+          "tr": "ilk satır"
+        }
+      ],
+      "words": {
+        "he": "o (erkek; burada robot Pip)",
+        "reads": "okuyor (read + -s)",
+        "the": "(belirli tanımlık)",
+        "first": "ilk",
+        "line": "satır"
+      },
+      "source": "p08-s02"
+    },
+    {
+      "en": "\"I tell you a story tonight.\"",
+      "tr": "\"Bu gece sana bir hikâye anlatıyorum.\"",
+      "chunks": [],
+      "words": {
+        "i": "ben",
+        "tell": "anlatmak",
+        "you": "sen; sana, seni",
+        "a": "bir",
+        "story": "hikâye",
+        "tonight": "bu gece"
+      },
+      "source": "p08-s03"
+    },
+    {
+      "en": "Pip reads.",
+      "tr": "Pip okuyor.",
+      "chunks": [],
+      "words": {
+        "reads": "okuyor (read + -s)"
+      },
+      "source": "p08-s04"
+    },
+    {
+      "en": "He is slow and quiet.",
+      "tr": "Yavaş ve sessiz okuyor.",
+      "chunks": [],
+      "words": {
+        "he": "o (Pip)",
+        "is": "(olmak; burada: okuyor)",
+        "slow": "yavaş",
+        "and": "ve",
+        "quiet": "sessiz"
+      },
+      "source": "p08-s05"
+    },
+    {
+      "en": "The story is about a little robot.",
+      "tr": "Hikâye küçük bir robot hakkında.",
+      "chunks": [],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "story": "hikâye",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "about": "hakkında",
+        "a": "bir",
+        "little": "küçük",
+        "robot": "robot"
+      },
+      "source": "p08-s06"
+    },
+    {
+      "en": "He lives in a yellow house.",
+      "tr": "Sarı bir evde yaşıyor.",
+      "chunks": [],
+      "words": {
+        "he": "o (robot)",
+        "lives": "yaşıyor (live + -s)",
+        "in": "içinde, -de",
+        "a": "bir",
+        "yellow": "sarı",
+        "house": "ev"
+      },
+      "source": "p08-s07"
+    },
+    {
+      "en": "He tries sheep.",
+      "tr": "Koyunları deniyor.",
+      "chunks": [],
+      "words": {
+        "he": "o (erkek; burada robot Pip)",
+        "tries": "deniyor (try + -ies)",
+        "sheep": "koyun; koyunlar (tekili ve çoğulu aynı)"
+      },
+      "source": "p08-s08"
+    },
+    {
+      "en": "He tries milk.",
+      "tr": "Sütü deniyor.",
+      "chunks": [],
+      "words": {
+        "he": "o (erkek; burada robot Pip)",
+        "tries": "deniyor (try + -ies)",
+        "milk": "süt"
+      },
+      "source": "p08-s09"
+    },
+    {
+      "en": "His blanket is too small.",
+      "tr": "Battaniyesi çok küçük.",
+      "chunks": [
+        {
+          "en": "too small",
+          "tr": "çok küçük, fazla küçük"
+        }
+      ],
+      "words": {
+        "his": "onun",
+        "blanket": "battaniye",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "too": "fazla, çok",
+        "small": "küçük"
+      },
+      "source": "p08-s10"
+    },
+    {
+      "en": "Zara laughs.",
+      "tr": "Zara gülüyor.",
+      "chunks": [],
+      "words": {
+        "laughs": "gülüyor (laugh + -s)"
+      },
+      "source": "p08-s11"
+    },
+    {
+      "en": "\"He is like you, Pip!\"",
+      "tr": "\"Tıpkı sana benziyor, Pip!\"",
+      "chunks": [
+        {
+          "en": "like you",
+          "tr": "sana benziyor, senin gibi"
+        }
+      ],
+      "words": {
+        "he": "o (erkek; burada robot Pip)",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "like": "gibi",
+        "you": "sen; sana, seni"
+      },
+      "source": "p08-s12"
+    },
+    {
+      "en": "Pip reads on.",
+      "tr": "Pip okumaya devam ediyor.",
+      "chunks": [
+        {
+          "en": "reads on",
+          "tr": "okumaya devam ediyor"
+        }
+      ],
+      "words": {
+        "reads": "okuyor (read + -s)",
+        "on": "devam (reads on)"
+      },
+      "source": "p08-s13"
+    },
+    {
+      "en": "Page one, page two, page three.",
+      "tr": "Birinci sayfa, ikinci sayfa, üçüncü sayfa.",
+      "chunks": [],
+      "words": {
+        "page": "sayfa",
+        "one": "bir",
+        "two": "iki",
+        "three": "üç"
+      },
+      "source": "p08-s14"
+    },
+    {
+      "en": "At page ten, Zara's eyes close.",
+      "tr": "Onuncu sayfada Zara'nın gözleri kapanıyor.",
+      "chunks": [
+        {
+          "en": "At page ten",
+          "tr": "onuncu sayfada"
+        }
+      ],
+      "words": {
+        "at": "-de (saat)",
+        "page": "sayfa",
+        "ten": "on",
+        "zara's": "Zara'nın",
+        "eyes": "gözler",
+        "close": "kapanmak"
+      },
+      "source": "p09-s01"
+    },
+    {
+      "en": "She sleeps.",
+      "tr": "Uyuyor.",
+      "chunks": [],
+      "words": {
+        "she": "o (kadın, kız)",
+        "sleeps": "uyuyor (sleep + -s)"
+      },
+      "source": "p09-s02"
+    },
+    {
+      "en": "She smiles in her sleep.",
+      "tr": "Uykusunda gülümsüyor.",
+      "chunks": [
+        {
+          "en": "in her sleep",
+          "tr": "uykusunda"
+        }
+      ],
+      "words": {
+        "she": "o (kadın, kız)",
+        "smiles": "gülümsüyor (smile + -s)",
+        "in": "içinde, -de",
+        "her": "onun; ona, onu",
+        "sleep": "uyku"
+      },
+      "source": "p09-s03"
+    },
+    {
+      "en": "Pip stops.",
+      "tr": "Pip duruyor.",
+      "chunks": [],
+      "words": {
+        "stops": "duruyor (stop + -s)"
+      },
+      "source": "p09-s04"
+    },
+    {
+      "en": "The room is warm and dark.",
+      "tr": "Oda sıcak ve karanlık.",
+      "chunks": [],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "room": "oda",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "warm": "ılık, sıcak",
+        "and": "ve",
+        "dark": "karanlık"
+      },
+      "source": "p09-s05"
+    },
+    {
+      "en": "The house is quiet.",
+      "tr": "Ev sessiz.",
+      "chunks": [],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "house": "ev",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "quiet": "sessiz"
+      },
+      "source": "p09-s06"
+    },
+    {
+      "en": "Pip feels heavy.",
+      "tr": "Pip ağırlaştığını hissediyor.",
+      "chunks": [
+        {
+          "en": "feels heavy",
+          "tr": "ağırlaştığını hissediyor"
+        }
+      ],
+      "words": {
+        "feels": "hissediyor (feel + -s)",
+        "heavy": "ağır"
+      },
+      "source": "p09-s07"
+    },
+    {
+      "en": "His lights go down.",
+      "tr": "Işıkları azalıyor.",
+      "chunks": [
+        {
+          "en": "go down",
+          "tr": "azalıyor, kısılıyor"
+        }
+      ],
+      "words": {
+        "his": "onun",
+        "lights": "ışıklar",
+        "go": "gitmek",
+        "down": "aşağı"
+      },
+      "source": "p09-s08"
+    },
+    {
+      "en": "Blue, then grey, then dark.",
+      "tr": "Önce mavi, sonra gri, sonra karanlık.",
+      "chunks": [],
+      "words": {
+        "blue": "mavi",
+        "then": "sonra",
+        "grey": "gri",
+        "dark": "karanlık"
+      },
+      "source": "p09-s09"
+    },
+    {
+      "en": "Then something new happens.",
+      "tr": "Sonra yeni bir şey oluyor.",
+      "chunks": [
+        {
+          "en": "something new",
+          "tr": "yeni bir şey"
+        }
+      ],
+      "words": {
+        "then": "sonra",
+        "something": "bir şey",
+        "new": "yeni",
+        "happens": "oluyor (happen + -s)"
+      },
+      "source": "p09-s10"
+    },
+    {
+      "en": "Pip sees a green hill.",
+      "tr": "Pip yeşil bir tepe görüyor.",
+      "chunks": [],
+      "words": {
+        "sees": "görüyor (see + -s)",
+        "a": "bir",
+        "green": "yeşil",
+        "hill": "tepe"
+      },
+      "source": "p09-s11"
+    },
+    {
+      "en": "There are white sheep on the hill.",
+      "tr": "Tepede beyaz koyunlar var.",
+      "chunks": [
+        {
+          "en": "There are",
+          "tr": "var"
+        }
+      ],
+      "words": {
+        "there": "orada (there is/are: var)",
+        "are": "(olmak; çoğul)",
+        "white": "beyaz",
+        "sheep": "koyun; koyunlar (tekili ve çoğulu aynı)",
+        "on": "üstüne, üstünde",
+        "the": "(belirli tanımlık)",
+        "hill": "tepe"
+      },
+      "source": "p09-s12"
+    },
+    {
+      "en": "One, two, three.",
+      "tr": "Bir, iki, üç.",
+      "chunks": [],
+      "words": {
+        "one": "bir",
+        "two": "iki",
+        "three": "üç"
+      },
+      "source": "p09-s13"
+    },
+    {
+      "en": "They are very slow.",
+      "tr": "Çok yavaşlar.",
+      "chunks": [],
+      "words": {
+        "they": "onlar",
+        "are": "(olmak; çoğul)",
+        "very": "çok",
+        "slow": "yavaş"
+      },
+      "source": "p09-s14"
+    },
+    {
+      "en": "One sheep looks at Pip.",
+      "tr": "Koyunlardan biri Pip'e bakıyor.",
+      "chunks": [
+        {
+          "en": "looks at",
+          "tr": "bakıyor"
+        }
+      ],
+      "words": {
+        "one": "bir (biri)",
+        "sheep": "koyun; koyunlar (tekili ve çoğulu aynı)",
+        "looks": "bakıyor (look + -s)",
+        "at": "-de (saat)"
+      },
+      "source": "p09-s15"
+    },
+    {
+      "en": "\"Hello, Pip,\" it says.",
+      "tr": "\"Merhaba, Pip,\" diyor.",
+      "chunks": [],
+      "words": {
+        "hello": "merhaba",
+        "it": "o (koyun)",
+        "says": "diyor (say + -s)"
+      },
+      "source": "p09-s16"
+    },
+    {
+      "en": "Pip is not in Zara's room.",
+      "tr": "Pip, Zara'nın odasında değil.",
+      "chunks": [],
+      "words": {
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "not": "değil",
+        "in": "içinde, -de",
+        "zara's": "Zara'nın",
+        "room": "oda"
+      },
+      "source": "p09-s17"
+    },
+    {
+      "en": "He is in a dream!",
+      "tr": "Bir rüyanın içinde!",
+      "chunks": [],
+      "words": {
+        "he": "o (erkek; burada robot Pip)",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "in": "içinde, -de",
+        "a": "bir",
+        "dream": "rüya"
+      },
+      "source": "p09-s18"
+    },
+    {
+      "en": "In the morning, Zara opens her eyes.",
+      "tr": "Sabah Zara gözlerini açıyor.",
+      "chunks": [
+        {
+          "en": "In the morning",
+          "tr": "sabah"
+        }
+      ],
+      "words": {
+        "in": "içinde, -de",
+        "the": "(belirli tanımlık)",
+        "morning": "sabah",
+        "opens": "açıyor (open + -s)",
+        "her": "onun; ona, onu",
+        "eyes": "gözler"
+      },
+      "source": "p10-s01"
+    },
+    {
+      "en": "Pip is on the floor by her bed.",
+      "tr": "Pip yatağının yanında, yerde.",
+      "chunks": [
+        {
+          "en": "by her bed",
+          "tr": "yatağının yanında"
+        }
+      ],
+      "words": {
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "on": "üstüne, üstünde",
+        "the": "(belirli tanımlık)",
+        "floor": "yer, zemin",
+        "by": "yanında",
+        "her": "onun; ona, onu",
+        "bed": "yatak"
+      },
+      "source": "p10-s02"
+    },
+    {
+      "en": "His blue lights are on again.",
+      "tr": "Mavi ışıkları yine yanıyor.",
+      "chunks": [],
+      "words": {
+        "his": "onun",
+        "blue": "mavi",
+        "lights": "ışıklar",
+        "are": "(olmak; çoğul)",
+        "on": "açık, yanık",
+        "again": "yine, tekrar"
+      },
+      "source": "p10-s03"
+    },
+    {
+      "en": "\"Pip!",
+      "tr": "\"Pip!",
+      "chunks": [],
+      "words": {},
+      "source": "p10-s04"
+    },
+    {
+      "en": "Do you sleep now?\"",
+      "tr": "Artık uyuyor musun?\"",
+      "chunks": [],
+      "words": {
+        "do": "(soru yardımcısı)",
+        "you": "sen; sana, seni",
+        "sleep": "uyumak",
+        "now": "şimdi"
+      },
+      "source": "p10-s05"
+    },
+    {
+      "en": "\"Yes,\" says Pip.",
+      "tr": "\"Evet,\" diyor Pip.",
+      "chunks": [],
+      "words": {
+        "yes": "evet",
+        "says": "diyor (say + -s)"
+      },
+      "source": "p10-s06"
+    },
+    {
+      "en": "\"And I dream.",
+      "tr": "\"Rüya da görüyorum.",
+      "chunks": [],
+      "words": {
+        "and": "ve",
+        "i": "ben",
+        "dream": "rüya görmek"
+      },
+      "source": "p10-s07"
+    },
+    {
+      "en": "I dream about sheep.\"",
+      "tr": "Rüyamda koyunlar görüyorum.\"",
+      "chunks": [
+        {
+          "en": "dream about",
+          "tr": "rüyamda görüyorum"
+        }
+      ],
+      "words": {
+        "i": "ben",
+        "dream": "rüya görmek",
+        "about": "hakkında",
+        "sheep": "koyun; koyunlar (tekili ve çoğulu aynı)"
+      },
+      "source": "p10-s08"
+    },
+    {
+      "en": "Zara laughs.",
+      "tr": "Zara gülüyor.",
+      "chunks": [],
+      "words": {
+        "laughs": "gülüyor (laugh + -s)"
+      },
+      "source": "p10-s09"
+    },
+    {
+      "en": "\"Fifty sheep?\"",
+      "tr": "\"Elli koyun mu?\"",
+      "chunks": [],
+      "words": {
+        "fifty": "elli",
+        "sheep": "koyun; koyunlar (tekili ve çoğulu aynı)"
+      },
+      "source": "p10-s10"
+    },
+    {
+      "en": "\"No.",
+      "tr": "\"Hayır.",
+      "chunks": [],
+      "words": {
+        "no": "hayır"
+      },
+      "source": "p10-s11"
+    },
+    {
+      "en": "Only three.",
+      "tr": "Sadece üç.",
+      "chunks": [],
+      "words": {
+        "only": "sadece, yalnızca",
+        "three": "üç"
+      },
+      "source": "p10-s12"
+    },
+    {
+      "en": "They are my friends.\"",
+      "tr": "Onlar benim arkadaşlarım.\"",
+      "chunks": [],
+      "words": {
+        "they": "onlar",
+        "are": "(olmak; çoğul)",
+        "my": "benim",
+        "friends": "arkadaşlar"
+      },
+      "source": "p10-s13"
+    },
+    {
+      "en": "Zara looks at the blue book.",
+      "tr": "Zara mavi kitaba bakıyor.",
+      "chunks": [
+        {
+          "en": "looks at",
+          "tr": "bakıyor"
+        }
+      ],
+      "words": {
+        "looks": "bakıyor (look + -s)",
+        "at": "-de (saat)",
+        "the": "(belirli tanımlık)",
+        "blue": "mavi",
+        "book": "kitap"
+      },
+      "source": "p10-s14"
+    },
+    {
+      "en": "\"Pip, look at the name!\"",
+      "tr": "\"Pip, kitabın adına bak!\"",
+      "chunks": [
+        {
+          "en": "look at",
+          "tr": "bak"
+        }
+      ],
+      "words": {
+        "look": "bakmak",
+        "at": "-de (saat)",
+        "the": "(belirli tanımlık)",
+        "name": "ad, isim"
+      },
+      "source": "p10-s15"
+    },
+    {
+      "en": "Its name is Pip Cannot Sleep.",
+      "tr": "Kitabın adı Pip Uyuyamıyor.",
+      "chunks": [],
+      "words": {
+        "its": "onun (cansız şey için)",
+        "name": "ad, isim",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "cannot": "-emez (can not; can't ile aynı)",
+        "sleep": "uyumak; uyku"
+      },
+      "source": "p10-s16"
+    },
+    {
+      "en": "Pip looks at the book.",
+      "tr": "Pip kitaba bakıyor.",
+      "chunks": [
+        {
+          "en": "looks at",
+          "tr": "bakıyor"
+        }
+      ],
+      "words": {
+        "looks": "bakıyor (look + -s)",
+        "at": "-de (saat)",
+        "the": "(belirli tanımlık)",
+        "book": "kitap"
+      },
+      "source": "p10-s17"
+    },
+    {
+      "en": "Then he looks at you.",
+      "tr": "Sonra sana bakıyor.",
+      "chunks": [
+        {
+          "en": "looks at you",
+          "tr": "sana bakıyor"
+        }
+      ],
+      "words": {
+        "then": "sonra",
+        "he": "o (erkek; burada robot Pip)",
+        "looks": "bakıyor (look + -s)",
+        "at": "-de (saat)",
+        "you": "sen; sana, seni"
+      },
+      "source": "p10-s18"
+    },
+    {
+      "en": "Yes, you.",
+      "tr": "Evet, sana.",
+      "chunks": [],
+      "words": {
+        "yes": "evet",
+        "you": "sana"
+      },
+      "source": "p10-s19"
+    },
+    {
+      "en": "Do you know me now?",
+      "tr": "Beni şimdi tanıdın mı?",
+      "chunks": [],
+      "words": {
+        "do": "(soru yardımcısı)",
+        "you": "sen; sana, seni",
+        "know": "tanımak",
+        "me": "beni, bana; ben (me too: ben de)",
+        "now": "şimdi"
+      },
+      "source": "p10-s20"
+    },
+    {
+      "en": "I am Pip.",
+      "tr": "Ben Pip'im.",
+      "chunks": [],
+      "words": {
+        "i": "ben",
+        "am": "(olmak; ben ile)"
+      },
+      "source": "p10-s21"
+    },
+    {
+      "en": "This is my story.",
+      "tr": "Bu benim hikâyem.",
+      "chunks": [],
+      "words": {
+        "this": "bu",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "my": "benim",
+        "story": "hikâye"
+      },
+      "source": "p10-s22"
+    },
+    {
+      "en": "I tell it to you tonight.",
+      "tr": "Bu gece onu sana anlatıyorum.",
+      "chunks": [
+        {
+          "en": "tell it to you",
+          "tr": "onu sana anlatmak"
+        }
+      ],
+      "words": {
+        "i": "ben",
+        "tell": "anlatmak",
+        "it": "onu (hikâyeyi)",
+        "to": "-e, -a",
+        "you": "sen; sana, seni",
+        "tonight": "bu gece"
+      },
+      "source": "p10-s23"
+    },
+    {
+      "en": "Are you in bed?",
+      "tr": "Yatakta mısın?",
+      "chunks": [
+        {
+          "en": "in bed",
+          "tr": "yatakta"
+        }
+      ],
+      "words": {
+        "are": "(olmak; çoğul)",
+        "you": "sen; sana, seni",
+        "in": "içinde, -de",
+        "bed": "yatak"
+      },
+      "source": "p10-s24"
+    },
+    {
+      "en": "Is your blanket warm?",
+      "tr": "Battaniyen sıcak mı?",
+      "chunks": [],
+      "words": {
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "your": "senin",
+        "blanket": "battaniye",
+        "warm": "ılık, sıcak"
+      },
+      "source": "p10-s25"
+    },
+    {
+      "en": "Are your eyes tired?",
+      "tr": "Gözlerin yorgun mu?",
+      "chunks": [],
+      "words": {
+        "are": "(olmak; çoğul)",
+        "your": "senin",
+        "eyes": "gözler",
+        "tired": "yorgun"
+      },
+      "source": "p10-s26"
+    },
+    {
+      "en": "Me too.",
+      "tr": "Ben de.",
+      "chunks": [
+        {
+          "en": "Me too",
+          "tr": "ben de"
+        }
+      ],
+      "words": {
+        "me": "beni, bana; ben (me too: ben de)",
+        "too": "de, da; ayrıca"
+      },
+      "source": "p10-s27"
+    },
+    {
+      "en": "Close your eyes.",
+      "tr": "Gözlerini kapat.",
+      "chunks": [
+        {
+          "en": "Close your eyes",
+          "tr": "gözlerini kapat"
+        }
+      ],
+      "words": {
+        "close": "kapamak (emir: kapat)",
+        "your": "senin",
+        "eyes": "gözler"
+      },
+      "source": "p10-s28"
+    },
+    {
+      "en": "Count the sheep.",
+      "tr": "Koyunları say.",
+      "chunks": [],
+      "words": {
+        "count": "saymak (emir: say)",
+        "the": "(belirli tanımlık)",
+        "sheep": "koyun; koyunlar (tekili ve çoğulu aynı)"
+      },
+      "source": "p10-s29"
+    },
+    {
+      "en": "One, two, three.",
+      "tr": "Bir, iki, üç.",
+      "chunks": [],
+      "words": {
+        "one": "bir",
+        "two": "iki",
+        "three": "üç"
+      },
+      "source": "p10-s30"
+    },
+    {
+      "en": "Good night.",
+      "tr": "İyi geceler.",
+      "chunks": [
+        {
+          "en": "Good night",
+          "tr": "iyi geceler"
+        }
+      ],
+      "words": {
+        "good": "iyi",
+        "night": "gece"
+      },
+      "source": "p10-s31"
+    }
+  ],
+  "phrases": [
+    {
+      "en": "I can't sleep.",
+      "tr": "Uyuyamıyorum.",
+      "note": "can't = cannot = can not: -emez. Kitabın adındaki Cannot da aynı anlamda.",
+      "words": {
+        "i": "ben",
+        "can't": "-emez (can + not)",
+        "sleep": "uyumak; uyku"
+      },
+      "source": "dil odağı"
+    },
+    {
+      "en": "Me too.",
+      "tr": "Ben de.",
+      "note": "Kısa onay cevabı. \"I too\" denmez.",
+      "words": {
+        "me": "beni, bana; ben (me too: ben de)",
+        "too": "de, da; ayrıca"
+      },
+      "source": "dil odağı"
+    },
+    {
+      "en": "Good night.",
+      "tr": "İyi geceler.",
+      "note": "Yatmadan önce söylenir. Akşam selamı \"Good evening\"dir.",
+      "words": {
+        "good": "iyi",
+        "night": "gece"
+      },
+      "source": "dil odağı"
+    },
+    {
+      "en": "There is a big moon in the window.",
+      "tr": "Pencerede kocaman bir ay var.",
+      "note": "There is + tekil, There are + çoğul: \"var\".",
+      "words": {
+        "there": "orada (there is/are: var)",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "a": "bir",
+        "big": "büyük",
+        "moon": "ay (gökteki)",
+        "in": "içinde, -de",
+        "the": "(belirli tanımlık)",
+        "window": "pencere"
+      },
+      "source": "dil odağı"
+    },
+    {
+      "en": "He counts sheep.",
+      "tr": "Koyun sayıyor.",
+      "note": "-s takısı: he / she / it ile fiile -s eklenir (He count değil, He counts).",
+      "words": {
+        "he": "o (erkek; burada robot Pip)",
+        "counts": "sayıyor (count + -s)",
+        "sheep": "koyun; koyunlar (tekili ve çoğulu aynı)"
+      },
+      "source": "dil odağı"
+    }
+  ]
+}

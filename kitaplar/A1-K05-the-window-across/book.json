@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "id": "A1-K05",
+  "slug": "A1-K05-the-window-across",
+  "level": "A1",
+  "genre": "everyday",
+  "title": "The Window Across",
+  "titleTr": "Karşıdaki Pencere",
+  "blurbTr": "Omar yeni şehirde kimseyi tanımıyor. Her sabah karşı penceredeki küçük kız ona el sallıyor ve gülüyor. Omar da el sallıyor. Ama kız neden hep onun penceresinin altına bakıyor?",
+  "hookEn": "Every morning, the girl across the street waves.",
+  "contentVersion": 1,
+  "status": "DRAFT",
+  "aiGenerated": true,
+  "palette": {
+    "background": "#F4F1EA",
+    "surface": "#E3E8EE",
+    "text": "#25303D",
+    "accent": "#C8641E",
+    "highlight": "#F5C784"
+  },
+  "cover": "cover.png",
+  "properNouns": [
+    "Omar",
+    "Morocco",
+    "Freya",
+    "Anna",
+    "Mimi"
+  ],
+  "narration": {
+    "modelId": "eleven_v3",
+    "speed": 0.9,
+    "voiceId": "EXAVITQu4vr4xnSDxMaL"
+  },
+  "chapters": [
+    {
+      "id": "c1",
+      "title": "Cold Mornings",
+      "titleTr": "Soğuk Sabahlar",
+      "pages": [
+        { "id": "p01", "image": "p01.png" },
+        { "id": "p02", "image": null },
+        { "id": "p03", "image": null },
+        { "id": "p04", "image": null },
+        { "id": "p05", "image": null }
+      ]
+    },
+    {
+      "id": "c2",
+      "title": "The Cat",
+      "titleTr": "Kedi",
+      "pages": [
+        { "id": "p06", "image": "p06.png" },
+        { "id": "p07", "image": null },
+        { "id": "p08", "image": null },
+        { "id": "p09", "image": null },
+        { "id": "p10", "image": null }
+      ]
+    }
+  ]
+}

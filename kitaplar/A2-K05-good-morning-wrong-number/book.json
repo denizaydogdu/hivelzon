@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "id": "A2-K05",
+  "slug": "A2-K05-good-morning-wrong-number",
+  "level": "A2",
+  "genre": "everyday",
+  "title": "Good Morning, Wrong Number",
+  "titleTr": "Günaydın, Yanlış Numara",
+  "blurbTr": "Mateo bütün yazı evde geçirecek. Bir sabah bilmediği bir numaradan bir fotoğraf geliyor: deniz. Ertesi sabah yine. Mesajlar \"Günaydın, kardeşim!\" diye başlıyor. Ama Mateo'nun kız kardeşi yok.",
+  "hookEn": "Every morning at seven, a stranger sent Mateo a photo of the sea.",
+  "contentVersion": 1,
+  "status": "DRAFT",
+  "aiGenerated": true,
+  "palette": {
+    "background": "#F2FAF9",
+    "surface": "#D9EFEC",
+    "text": "#163746",
+    "accent": "#C9433A",
+    "highlight": "#F5D25A"
+  },
+  "cover": "cover.png",
+  "properNouns": [
+    "Mateo",
+    "Ines",
+    "Rui",
+    "Leo",
+    "Atlantic"
+  ],
+  "narration": {
+    "modelId": "eleven_v3",
+    "speed": 0.95,
+    "voiceId": "EXAVITQu4vr4xnSDxMaL"
+  },
+  "chapters": [
+    {
+      "id": "c1",
+      "title": "Seven O'Clock",
+      "titleTr": "Saat Yedi",
+      "pages": [
+        {"id": "p01", "image": "p01.png"},
+        {"id": "p02", "image": null},
+        {"id": "p03", "image": null},
+        {"id": "p04", "image": null}
+      ]
+    },
+    {
+      "id": "c2",
+      "title": "Wrong Number",
+      "titleTr": "Yanlış Numara",
+      "pages": [
+        {"id": "p05", "image": "p05.png"},
+        {"id": "p06", "image": null},
+        {"id": "p07", "image": null},
+        {"id": "p08", "image": null}
+      ]
+    },
+    {
+      "id": "c3",
+      "title": "The Photos",
+      "titleTr": "Fotoğraflar",
+      "pages": [
+        {"id": "p09", "image": "p09.png"},
+        {"id": "p10", "image": null},
+        {"id": "p11", "image": null},
+        {"id": "p12", "image": null}
+      ]
+    },
+    {
+      "id": "c4",
+      "title": "The Tower",
+      "titleTr": "Kule",
+      "pages": [
+        {"id": "p13", "image": "p13.png"},
+        {"id": "p14", "image": null},
+        {"id": "p15", "image": null}
+      ]
+    }
+  ]
+}
