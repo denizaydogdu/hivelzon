@@ -1,6 +1,6 @@
 # H-062: Oynatıcı katmanlarının tasarımı
 
-- **Durum:** Yapılacak
+- **Durum:** Devam ediyor (kod `main`'de, flutter 691/691; kullanıcının tasarım onayı bekleniyor)
 - **Tür:** Uygulama (tasarım)
 - **Faz:** Tasarım yenilemesi T5 (`docs/UYGULAMA-PLANI.md`)
 - **Bağımlılık:** H-057

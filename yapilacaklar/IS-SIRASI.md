@@ -127,7 +127,7 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 | T3 | H-060 | Ana Sayfa, harita, bölüm paneli, jenerik tasarımı | Orta | H-057, H-058, H-039 | ✅ |
 | T3' | H-074 | Günlük hedef için gerçek süre ölçümü | Orta | H-060 | ⏳ |
 | T4 | H-061 | Defter, Kelime tekrarı, Konu seti, Sahne avı tasarımı | Orta | H-057, H-058 | ✅ |
-| T5 | H-062 | Oynatıcı katmanlarının tasarımı | Orta | H-057 | ⏳ |
+| T5 | H-062 | Oynatıcı katmanlarının tasarımı | Orta | H-057 | 🔄 |
 | T6 | H-063 | Hi'nin canlılığı (ifadeler, animasyonlar) | Orta | H-057 | ⏳ |
 | T7 | H-064 | Tasarım kalite turu (erişilebilirlik, golden, temizlik) | Orta | H-059 … H-063, H-040 | ⏳ |
 
@@ -368,3 +368,5 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
   - Pilot kitaplar: metin + çeviri onaylı; 27 görsel üretildi (14 kr; kredi 46,06); A1 sesi Sarah ile (3.880 karakter, ücretsiz kota). A1 hızı 144–168 k/dk → cümle arası duraklarla düzeltme ayrı dalda.
   - H-067 ayrı dalda yapıldı ve `main`'e birleştirildi (flutter 649, mvn 126, pytest 153): Macera · Kitaplık, okuyucu, Defter'e ekleme, kitap ilerlemesi eşitlemesi, Hi önerisi. Pilotla simülatör denemesi bekleniyor.
   - Pilot simülatörde denendi (vurgu, otomatik sayfa, anlam paneli çalışıyor). Kullanıcı H-067 ve pilotu onayladı. Kararlar: uzun basma sesli/sessiz moda göre; kalan kitaplarda kapak + bölüm başı resim (~90 kr, kredi yüklemesi gerekir); ses ElevenLabs Creator (kullanıcı hesabı açacak). Sıradaki: H-062 oynatıcı tasarımı; kitap dalgası 1 (H-071) metinleri paralel.
+  - H-062 (oynatıcı katmanları: belirteçler, ~45 metin l10n'e, giriş animasyonları, sakin bölüm sonu) `main`'e birleştirildi; onay bekleniyor. Okuyucuya bölüm bazlı ses ve okunan cümleyi takip eden kaydırma eklendi (kullanıcının bildirdiği hata). A2-K03 bölüm 1–2 seslendirildi (ücretsiz kota bitti). Dalga 1 metinleri (8 kitap) `main`'de, onay bekliyor.
+  - Kullanıcı kararı: Türkçe cümleler PatientDesk Alania ile seslendirilir (ilk ay ücretsiz); Duyu ile kelime zamanlaması alınır (denendi, çalışıyor). Anahtar sunucu ayarında (`hivelzon.tts.patientdesk`), değer repo dışında `~/.config/hivelzon/backend.yml`.
