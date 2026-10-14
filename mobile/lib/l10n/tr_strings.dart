@@ -283,17 +283,35 @@ abstract final class GrammarTexts {
   static String shelfLevel(String level) => '$level konuları';
   static const shelfCompleted = 'Tamamladıkların';
   static String minutes(int m) => '~$m dk';
-  static const done = 'Tamamlandı';
+  static const done = 'Tamamladın';
+
+  // Ders kartında ilerleme (H-064 ek): başlanmamışta yazı yok (sakin).
+  static String progressPercent(int p) => '%$p ilerledin';
+  static const progressStarted = 'Başladın';
+
+  /// Seviye rafının özeti: "A1 · 3/16 tamamlandı".
+  static String levelSummary(String level, int completed, int total) =>
+      '$level · $completed/$total tamamlandı';
+  static String levelSummarySemantics(String level, int completed, int total) =>
+      '$level seviyesinde $total konudan $completed tanesi tamamlandı';
+
   static String cardSemantics({
     required String title,
     required String level,
     int? minutes,
     bool done = false,
+    bool started = false,
+    int? percent,
   }) => [
     title,
     '$level seviyesi',
     if (minutes != null) 'yaklaşık $minutes dakika',
-    if (done) 'tamamlandı',
+    if (done)
+      'tamamladın'
+    else if (started && percent != null)
+      'yüzde $percent ilerledin'
+    else if (started)
+      'başladın',
   ].join(', ');
   static const loading = 'Dersler hazırlanıyor…';
   static const emptyTitle = 'Dersler hazırlanıyor';

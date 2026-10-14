@@ -39,6 +39,117 @@ class GrammarProgress {
   bool get isCompleted => status == GrammarStatus.completed;
 }
 
+/// Kalınan kartın sırası (`c03` → 3). Kart kimlikleri `c01`, `c02`… sırayla
+/// verilir (`grammarexport.py`); başka biçimde null.
+int? grammarCardNumber(String? cardId) {
+  final m = RegExp(r'^c(\d+)$').firstMatch(cardId ?? '');
+  return m == null ? null : int.parse(m.group(1)!);
+}
+
+/// Listedeki ders kartının ilerlemesi (Dilbilgisi listesi, H-064 ek).
+class GrammarLessonProgress {
+  const GrammarLessonProgress(this.status, [this.percent]);
+
+  static const notStarted = GrammarLessonProgress(GrammarStatus.notStarted, 0);
+  static const completed = GrammarLessonProgress(GrammarStatus.completed, 100);
+
+  final GrammarStatus status;
+
+  /// 0–100. Sürüyor ama kart sayısı ya da kart sırası bilinmiyorsa null
+  /// (yalnız "Başladın" yazar).
+  final int? percent;
+
+  bool get isCompleted => status == GrammarStatus.completed;
+  bool get isStarted => status != GrammarStatus.notStarted;
+
+  @override
+  bool operator ==(Object other) =>
+      other is GrammarLessonProgress &&
+      other.status == status &&
+      other.percent == percent;
+
+  @override
+  int get hashCode => Object.hash(status, percent);
+
+  @override
+  String toString() => 'GrammarLessonProgress(${status.code}, $percent)';
+}
+
+/// Dersin ilerlemesi: bitti → %100; başlanmadı → %0; sürüyorsa görülen kart
+/// / kart sayısı. Kalınan kart (`lastCard`) sayılır: `c03` → 3 kart görüldü.
+/// Bitmemiş ders %100 göstermez (en çok %99), başlanmış ders en az %1.
+/// Kullanıcı geri dönerse yüzde de geri gider (kalınan yer).
+GrammarLessonProgress grammarLessonProgress(
+  GrammarLessonSummary lesson,
+  GrammarProgress? progress,
+) {
+  if (progress == null) return GrammarLessonProgress.notStarted;
+  switch (progress.status) {
+    case GrammarStatus.completed:
+      return GrammarLessonProgress.completed;
+    case GrammarStatus.notStarted:
+      return GrammarLessonProgress.notStarted;
+    case GrammarStatus.inProgress:
+      final total = lesson.cardCount;
+      final seen = grammarCardNumber(progress.lastCard);
+      if (total == null || total <= 0 || seen == null) {
+        return const GrammarLessonProgress(GrammarStatus.inProgress);
+      }
+      final p = (seen.clamp(0, total) * 100 / total).round().clamp(1, 99);
+      return GrammarLessonProgress(GrammarStatus.inProgress, p);
+  }
+}
+
+/// Bir seviyenin özeti: tamamlanan / toplam ders ("A1 · 3/16 tamamlandı").
+class GrammarLevelSummary {
+  const GrammarLevelSummary({
+    required this.level,
+    required this.completed,
+    required this.total,
+  });
+
+  final String level;
+  final int completed;
+  final int total;
+
+  @override
+  bool operator ==(Object other) =>
+      other is GrammarLevelSummary &&
+      other.level == level &&
+      other.completed == completed &&
+      other.total == total;
+
+  @override
+  int get hashCode => Object.hash(level, completed, total);
+
+  @override
+  String toString() => 'GrammarLevelSummary($level, $completed/$total)';
+}
+
+/// Seviye başına özet (bütün dersler; raftan bağımsız: biten ders
+/// "Tamamladıkların"da görünse de seviyesinde sayılır).
+Map<String, GrammarLevelSummary> grammarLevelSummaries(
+  List<GrammarLessonSummary> lessons,
+  Map<String, GrammarProgress> progress,
+) {
+  final done = <String, int>{};
+  final total = <String, int>{};
+  for (final l in lessons) {
+    total[l.level] = (total[l.level] ?? 0) + 1;
+    if (progress[l.id]?.isCompleted ?? false) {
+      done[l.level] = (done[l.level] ?? 0) + 1;
+    }
+  }
+  return {
+    for (final e in total.entries)
+      e.key: GrammarLevelSummary(
+        level: e.key,
+        completed: done[e.key] ?? 0,
+        total: e.value,
+      ),
+  };
+}
+
 /// Dilbilgisi raflarının kuruluşu: "Hikâyende geçenler" (oynanan bölümde ya
 /// da okunan kitapta geçen, bitmemiş konular) · "Senin seviyen" · öteki
 /// seviyeler · "Tamamladıkların". Her ders tek rafta görünür.

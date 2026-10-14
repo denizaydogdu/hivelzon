@@ -97,6 +97,7 @@ class _Shelves extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final s = data.shelves;
     final p = data.progress;
+    final levels = grammarLevelSummaries(data.lessons, p);
     void open(GrammarLessonSummary l) =>
         playGrammarLessons(context, ref, [l.id]);
     return StaggeredList(
@@ -114,6 +115,7 @@ class _Shelves extends ConsumerWidget {
           _Shelf(
             id: 'mine',
             title: GrammarTexts.shelfMine(s.userLevel),
+            summary: levels[s.userLevel],
             lessons: s.userLevelLessons,
             progress: p,
             onOpen: open,
@@ -122,6 +124,7 @@ class _Shelves extends ConsumerWidget {
           _Shelf(
             id: 'level-$level',
             title: GrammarTexts.shelfLevel(level),
+            summary: levels[level],
             lessons: lessons,
             progress: p,
             onOpen: open,
@@ -146,10 +149,14 @@ class _Shelf extends StatelessWidget {
     required this.lessons,
     required this.progress,
     required this.onOpen,
+    this.summary,
   });
 
   final String id;
   final String title;
+
+  /// Seviye raflarında: "A1 · 3/16 tamamlandı".
+  final GrammarLevelSummary? summary;
   final List<GrammarLessonSummary> lessons;
   final Map<String, GrammarProgress> progress;
   final ValueChanged<GrammarLessonSummary> onOpen;
@@ -161,12 +168,16 @@ class _Shelf extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         SectionHeading(title),
+        if (summary case final sum?) ...[
+          const SizedBox(height: AppSpace.s4),
+          _LevelSummaryLine(key: ValueKey('grammar-level-$id'), summary: sum),
+        ],
         const SizedBox(height: AppSpace.s8),
         for (final (i, l) in lessons.indexed) ...[
           if (i > 0) const SizedBox(height: AppSpace.s8),
           LessonTile(
             lesson: l,
-            done: progress[l.id]?.isCompleted ?? false,
+            progress: grammarLessonProgress(l, progress[l.id]),
             onTap: () => onOpen(l),
           ),
         ],
@@ -175,25 +186,69 @@ class _Shelf extends StatelessWidget {
   }
 }
 
-/// Ders kartı: seviye rozeti, Türkçe başlık, tek cümle hedef, süre ve
-/// (bittiyse) onay işareti.
+/// Seviye rafının özeti (tamamlanan / toplam ders); ekran okuyucuya tam
+/// cümle.
+class _LevelSummaryLine extends StatelessWidget {
+  const _LevelSummaryLine({super.key, required this.summary});
+
+  final GrammarLevelSummary summary;
+
+  @override
+  Widget build(BuildContext context) {
+    final s = summary;
+    return Semantics(
+      container: true,
+      label: GrammarTexts.levelSummarySemantics(s.level, s.completed, s.total),
+      child: ExcludeSemantics(
+        child: Row(
+          children: [
+            Icon(
+              s.completed > 0
+                  ? Icons.check_circle_rounded
+                  : Icons.radio_button_unchecked_rounded,
+              size: AppSpace.s16,
+              color: s.completed > 0 ? AppPalette.success : AppPalette.ink500,
+            ),
+            const SizedBox(width: AppSpace.s4),
+            Flexible(
+              child: Text(
+                GrammarTexts.levelSummary(s.level, s.completed, s.total),
+                style: Theme.of(
+                  context,
+                ).textTheme.labelMedium?.copyWith(color: AppPalette.ink500),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+/// Ders kartı: seviye rozeti, Türkçe başlık, tek cümle hedef, süre,
+/// ilerleme (yarımsa ince çubuk ve "%40 ilerledin"; başlanmamışta sakin,
+/// yazı yok) ve (bittiyse) onay işareti.
 class LessonTile extends StatelessWidget {
   const LessonTile({
     super.key,
     required this.lesson,
-    required this.done,
+    required this.progress,
     required this.onTap,
   });
 
   final GrammarLessonSummary lesson;
-  final bool done;
+  final GrammarLessonProgress progress;
   final VoidCallback onTap;
+
+  bool get done => progress.isCompleted;
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final l = lesson;
     final minutes = l.minutes;
+    final started = progress.isStarted && !done;
+    final percent = progress.percent;
     return TappableCard(
       key: ValueKey('lesson-tile-${l.id}'),
       onTap: onTap,
@@ -203,6 +258,8 @@ class LessonTile extends StatelessWidget {
         level: l.level,
         minutes: minutes,
         done: done,
+        started: started,
+        percent: percent,
       ),
       child: ExcludeSemantics(
         child: Row(
@@ -256,6 +313,13 @@ class LessonTile extends StatelessWidget {
                       fontWeight: AppFonts.bold,
                     ),
                   ),
+                  if (started) ...[
+                    const SizedBox(height: AppSpace.s8),
+                    _TileProgress(
+                      key: ValueKey('lesson-tile-progress-${l.id}'),
+                      percent: percent,
+                    ),
+                  ],
                 ],
               ),
             ),
@@ -263,6 +327,51 @@ class LessonTile extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+}
+
+/// Yarım dersin ince ilerleme çubuğu ve yazısı. Yüzde bilinmiyorsa yalnız
+/// "Başladın".
+class _TileProgress extends StatelessWidget {
+  const _TileProgress({super.key, required this.percent});
+
+  final int? percent;
+
+  @override
+  Widget build(BuildContext context) {
+    final p = percent;
+    final label = Text(
+      p == null
+          ? GrammarTexts.progressStarted
+          : GrammarTexts.progressPercent(p),
+      style: Theme.of(context).textTheme.labelMedium?.copyWith(
+        color: AppPalette.seaBlue,
+        fontWeight: AppFonts.bold,
+      ),
+    );
+    if (p == null) return label;
+    return Row(
+      children: [
+        Expanded(
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(AppRadius.full),
+            child: TweenAnimationBuilder<double>(
+              tween: Tween(end: p / 100),
+              duration: AppMotion.of(context, AppMotion.slow),
+              curve: AppMotion.enter,
+              builder: (_, v, _) => LinearProgressIndicator(
+                value: v,
+                minHeight: AppSpace.s4 + 2,
+                color: AppPalette.seaBlue,
+                backgroundColor: AppPalette.seaBlue50,
+              ),
+            ),
+          ),
+        ),
+        const SizedBox(width: AppSpace.s8),
+        Flexible(child: label),
+      ],
     );
   }
 }

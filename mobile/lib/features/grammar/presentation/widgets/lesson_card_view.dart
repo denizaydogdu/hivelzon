@@ -371,6 +371,7 @@ class ExampleView extends StatelessWidget {
                     ? c.stop()
                     : c.playExample(
                         id: e.id,
+                        text: e.en,
                         audio: e.audio,
                         words: e.words,
                         start: e.start,

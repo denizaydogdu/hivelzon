@@ -15,12 +15,14 @@ import 'package:hivelzon/features/player/data/progress_repository.dart';
 import 'package:hivelzon/features/story/presentation/story_screen.dart';
 import 'package:hivelzon/shared/content/content_providers.dart';
 import 'package:hivelzon/shared/meaning/learning_event_log.dart';
+import 'package:hivelzon/shared/speech/example_speech.dart';
 import 'package:hivelzon/shared/speech/speech_providers.dart';
 import 'package:hivelzon/shared/storage/app_database.dart';
 import 'package:hivelzon/shared/storage/storage_providers.dart';
 
 import 'fake_book_audio.dart';
 import 'fake_content_source.dart';
+import 'fake_example_speech.dart';
 
 /// Dilbilgisi testlerinin ortamı (H-078): bellekte veritabanı, sahte içerik
 /// (deneme dersi G-A1-99 kopyaları, deneme kitabı A1-K99, bölüm A1-001),
@@ -40,7 +42,9 @@ class GrammarHarness {
     bool grammarFails = false,
     String? episodeLink,
     this.suggestedLevel,
-  }) : db = AppDatabase.memory(),
+    bool deviceVoice = false,
+  }) : speech = FakeExampleSpeech(hasVoice: deviceVoice),
+       db = AppDatabase.memory(),
        source = FakeContentSource(packageIds: const ['A1-001'])
          ..books = testBookSummaries(bookIds, grammarTopics: topics)
          ..grammarTopics = topics
@@ -57,6 +61,9 @@ class GrammarHarness {
   }
 
   final AppDatabase db;
+
+  /// Cihaz sesi (H-064); varsayılan: cihazda İngilizce ses yok.
+  final FakeExampleSpeech speech;
   final FakeContentSource source;
   final clock = ReaderTestClock();
   final progress = InMemoryProgressRepository();
@@ -168,6 +175,7 @@ class GrammarHarness {
           readerClockProvider.overrideWithValue(clock.call),
           libraryRandomProvider.overrideWithValue(math.Random(3)),
           speechVisibleProvider.overrideWithValue(speech),
+          exampleSpeechProvider.overrideWithValue(this.speech as ExampleSpeech),
         ],
         child: RepaintBoundary(
           key: const ValueKey('golden'),

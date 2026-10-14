@@ -1,7 +1,8 @@
 // H-078 ekran golden'ları ve erişilebilirlik denetimi: Dilbilgisi rafları,
 // bölüm panelindeki "Bu bölümdeki dilbilgisi", ders anlatım kartı (şemalar),
 // alıştırma (yanlış → kısa açıklama), kural kartı (Defter'e eklendi) ve
-// dersin sonu (sakin kutlama).
+// dersin sonu (sakin kutlama). H-064 ek: ders kartlarında ilerleme
+// (yarım: çubuk ve "%43 ilerledin"; bitmiş: onay) ve seviye özeti.
 //
 // Ders: H-077 deneme dersi G-A1-99 (test kopyası; ses sahte, saat durur).
 // Bilinçli görsel değişiklikten sonra:
@@ -9,6 +10,7 @@
 //   cd mobile && flutter test --update-goldens test/goldens
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:hivelzon/features/grammar/data/grammar_progress_store.dart';
 import 'package:hivelzon/features/library/data/book_progress_store.dart';
 
 import '../support/app_fonts.dart';
@@ -19,9 +21,12 @@ import '../support/grammar_harness.dart';
 const _route = '/dilbilgisi/$kTestLessonId';
 
 class _Case {
-  const _Case(this.location, {this.prepare, this.act});
+  const _Case(this.location, {this.prepare, this.act, this.harness});
 
   final String location;
+
+  /// Varsayılan: tek deneme dersi, seviye A1.
+  final GrammarHarness Function()? harness;
   final Future<void> Function(GrammarHarness h)? prepare;
   final Future<void> Function(WidgetTester tester, GrammarHarness h)? act;
 }
@@ -40,6 +45,32 @@ final _cases = <String, _Case>{
     prepare: (h) => BookProgressStore(
       h.db,
     ).savePosition('A1-K99', chapterId: 'c1', pageNumber: 1, sentenceIndex: 0),
+    act: (tester, h) async {
+      await tester.tap(find.text('Dilbilgisi'));
+      await h.settle(tester);
+    },
+  ),
+  'dilbilgisi_ilerleme': _Case(
+    '/hikaye',
+    harness: () => GrammarHarness(
+      lessonIds: const [
+        kTestLessonId,
+        'G-A1-02-there-is',
+        'G-A1-03-a-an',
+        'G-A2-01-was-were',
+      ],
+      titles: const {
+        'G-A1-02-there-is': 'There is / there are',
+        'G-A1-03-a-an': 'a / an',
+        'G-A2-01-was-were': 'was / were',
+      },
+      suggestedLevel: 'A1',
+    ),
+    prepare: (h) async {
+      final store = GrammarProgressStore(h.db);
+      await store.markCard(kTestLessonId, 'c03');
+      await store.markCompleted('G-A1-02-there-is');
+    },
     act: (tester, h) async {
       await tester.tap(find.text('Dilbilgisi'));
       await h.settle(tester);
@@ -105,7 +136,7 @@ void main() {
     Size size = const Size(390, 844),
     double textScale = 1,
   }) async {
-    final h = GrammarHarness(suggestedLevel: 'A1');
+    final h = c.harness?.call() ?? GrammarHarness(suggestedLevel: 'A1');
     addTearDown(h.dispose);
     if (c.prepare != null) await tester.runAsync(() => c.prepare!(h));
     await h.pump(tester, c.location, size: size, textScale: textScale);

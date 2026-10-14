@@ -47,5 +47,9 @@
         <intent>
             <action android:name="android.speech.RecognitionService"/>
         </intent>
+        <!-- H-064: İngilizce örnekler için cihazdaki metin okuma motoru (flutter_tts). -->
+        <intent>
+            <action android:name="android.intent.action.TTS_SERVICE"/>
+        </intent>
     </queries>
 </manifest>

@@ -316,77 +316,82 @@ class _PracticeViewState extends State<PracticeView> {
     final theme = Theme.of(context);
     final c = widget.controller;
     final text = item.text ?? '';
-    final playing = c.playingId == item.id;
     return ListenableBuilder(
       listenable: c,
-      builder: (context, _) => Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Text(
-            widget.speak == null
-                ? GrammarTexts.sayNoSpeech
-                : GrammarTexts.sayHint,
-            style: theme.textTheme.bodyMedium?.copyWith(
-              color: AppPalette.ink500,
+      builder: (context, _) {
+        final playing = c.playingId == item.id;
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Text(
+              widget.speak == null
+                  ? GrammarTexts.sayNoSpeech
+                  : GrammarTexts.sayHint,
+              style: theme.textTheme.bodyMedium?.copyWith(
+                color: AppPalette.ink500,
+              ),
             ),
-          ),
-          const SizedBox(height: AppSpace.s4),
-          Row(
-            children: [
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      text,
-                      key: const ValueKey('say-text'),
-                      style: AppTypography.lead.copyWith(color: AppPalette.ink),
-                    ),
-                    if (item.tr != null)
+            const SizedBox(height: AppSpace.s4),
+            Row(
+              children: [
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
                       Text(
-                        item.tr!,
-                        style: theme.textTheme.bodyMedium?.copyWith(
-                          color: AppPalette.ink500,
+                        text,
+                        key: const ValueKey('say-text'),
+                        style: AppTypography.lead.copyWith(
+                          color: AppPalette.ink,
                         ),
                       ),
-                  ],
-                ),
-              ),
-              if (c.canPlay(item.audio))
-                IconButton(
-                  key: ValueKey('play-${item.id}'),
-                  tooltip: GrammarTexts.playExample(text),
-                  color: AppPalette.seaBlue,
-                  onPressed: () => unawaited(
-                    playing
-                        ? c.stop()
-                        : c.playExample(
-                            id: item.id,
-                            audio: item.audio,
-                            words: item.words,
+                      if (item.tr != null)
+                        Text(
+                          item.tr!,
+                          style: theme.textTheme.bodyMedium?.copyWith(
+                            color: AppPalette.ink500,
                           ),
-                  ),
-                  icon: Icon(
-                    playing
-                        ? Icons.stop_circle_outlined
-                        : Icons.volume_up_rounded,
+                        ),
+                    ],
                   ),
                 ),
-            ],
-          ),
-          if (widget.speak != null) ...[
-            const SizedBox(height: AppSpace.s8),
-            SpeakPractice(
-              key: ValueKey('grammar-speak-${item.id}'),
-              expected: text,
-              env: widget.speak!,
-              place: SpeechPlace.grammar,
-              contentId: widget.lessonId,
-              keyPrefix: 'grammar-speak',
+                if (c.canPlay(item.audio))
+                  IconButton(
+                    key: ValueKey('play-${item.id}'),
+                    tooltip: GrammarTexts.playExample(text),
+                    color: AppPalette.seaBlue,
+                    onPressed: () => unawaited(
+                      playing
+                          ? c.stop()
+                          : c.playExample(
+                              id: item.id,
+                              text: text,
+                              audio: item.audio,
+                              words: item.words,
+                            ),
+                    ),
+                    icon: Icon(
+                      playing
+                          ? Icons.stop_circle_outlined
+                          : Icons.volume_up_rounded,
+                    ),
+                  ),
+              ],
             ),
+            if (widget.speak != null) ...[
+              const SizedBox(height: AppSpace.s8),
+              SpeakPractice(
+                key: ValueKey('grammar-speak-${item.id}'),
+                expected: text,
+                env: widget.speak!,
+                place: SpeechPlace.grammar,
+                contentId: widget.lessonId,
+                keyPrefix: 'grammar-speak',
+              ),
+            ],
           ],
-        ],
-      ),
+        );
+      },
     );
   }
 
