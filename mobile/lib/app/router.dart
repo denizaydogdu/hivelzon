@@ -15,6 +15,8 @@ import '../features/player/presentation/player_screen.dart';
 import '../features/home/presentation/home_screen.dart';
 import '../features/notebook/presentation/notebook_screen.dart';
 import '../features/notebook/presentation/review_screen.dart';
+import '../features/onboarding/application/onboarding_providers.dart';
+import '../features/onboarding/presentation/onboarding_screen.dart';
 import '../features/profile/presentation/profile_screen.dart';
 import '../features/story/presentation/season_intro_screen.dart';
 import '../features/story/presentation/story_screen.dart';
@@ -69,6 +71,12 @@ abstract final class AppRoutes {
 
   /// Tasarım sistemi vitrini (H-057): yalnız debug derlemede.
   static const designShowcase = '/tasarim';
+
+  /// İlk açılış ve yerleştirme (H-039; tam ekran, sekmesiz).
+  static const onboarding = '/acilis';
+
+  /// Açılıştaki hukuk metinleri (`kosullar` | `aydinlatma`).
+  static String onboardingLegal(String kind) => '/acilis/metin/$kind';
 }
 
 /// Debug derlemede başlangıç yolu (`--dart-define=HV_START_ROUTE=/tasarim`);
@@ -76,7 +84,20 @@ abstract final class AppRoutes {
 const _debugStartRoute = String.fromEnvironment('HV_START_ROUTE');
 
 final routerProvider = Provider<GoRouter>((ref) {
+  // H-039: açılış kapısı. Durum değişince yönlendirme yeniden değerlendirilir.
+  // Otomatik oynatma (ölçüm) derlemesinde kapı yok.
+  final gate = ValueNotifier<OnboardingGate>(OnboardingGate.done);
+  if (!autoplayEnabled) {
+    ref.listen<OnboardingGate>(
+      onboardingGateProvider,
+      (_, next) => gate.value = next,
+      fireImmediately: true,
+    );
+  }
+  ref.onDispose(gate.dispose);
   final router = GoRouter(
+    refreshListenable: gate,
+    redirect: (context, state) => onboardingRedirect(gate.value, state.uri),
     initialLocation: kDebugMode && _debugStartRoute.isNotEmpty
         ? _debugStartRoute
         : autoplayEnabled
@@ -89,6 +110,22 @@ final routerProvider = Provider<GoRouter>((ref) {
           pageBuilder: (context, state) =>
               appPage(key: state.pageKey, child: const DesignShowcaseScreen()),
         ),
+      GoRoute(
+        path: AppRoutes.onboarding,
+        pageBuilder: (context, state) => NoTransitionPage(
+          key: state.pageKey,
+          child: OnboardingScreen(next: state.uri.queryParameters['sonra']),
+        ),
+        routes: [
+          GoRoute(
+            path: 'metin/:kind',
+            pageBuilder: (context, state) => appPage(
+              key: state.pageKey,
+              child: LegalTextScreen(kind: state.pathParameters['kind']!),
+            ),
+          ),
+        ],
+      ),
       GoRoute(
         path: '/play/:contentId',
         pageBuilder: (context, state) => MaterialPage(

@@ -14,6 +14,7 @@ import 'package:hivelzon/shared/content/content_providers.dart';
 import 'package:hivelzon/shared/progress/story_progress.dart';
 
 import '../support/fake_content_source.dart';
+import '../support/onboarding.dart';
 
 /// H-056: başka cihazdan veri gelince (ya da oynatıcıdan dönünce) bütün
 /// sekmeler güvenle yenilenir; görünmeyen sekme yeniden açılırken
@@ -41,6 +42,7 @@ void main() {
       // ignore: invalid_use_of_internal_member
       onError: (e, _) => errors.add(e),
       overrides: [
+        onboardingDoneOverride,
         contentSourceProvider.overrideWithValue(FakeContentSource()),
         progressRepositoryProvider.overrideWithValue(progress),
         seasonIntroRepositoryProvider.overrideWithValue(

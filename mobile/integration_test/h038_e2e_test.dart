@@ -19,6 +19,7 @@ import 'package:hivelzon/features/hi/application/hi_providers.dart';
 import 'package:hivelzon/features/hi/data/hi_store.dart';
 import 'package:hivelzon/features/notebook/application/notebook_providers.dart';
 import 'package:hivelzon/features/notebook/domain/notebook_item.dart';
+import 'package:hivelzon/features/onboarding/application/onboarding_providers.dart';
 import 'package:hivelzon/shared/meaning/learning_event_log.dart';
 import 'package:hivelzon/shared/storage/storage_providers.dart';
 import 'package:http/http.dart' as http;
@@ -214,7 +215,9 @@ void main() {
 
   testWidgets('H-038 uçtan uca, aşama $phase', (tester) async {
     t = tester;
-    container = ProviderContainer();
+    container = ProviderContainer(
+      overrides: [onboardingGateProvider.overrideWith(_DoneOnboardingGate.new)],
+    );
     await tester.pumpWidget(
       UncontrolledProviderScope(
         container: container,
@@ -339,4 +342,10 @@ void main() {
     }
     await wait(const Duration(seconds: 1));
   });
+}
+
+/// Bu test açılışı (H-039) sınamaz: kapı bitmiş sayılır.
+class _DoneOnboardingGate extends OnboardingGateNotifier {
+  @override
+  OnboardingGate build() => OnboardingGate.done;
 }

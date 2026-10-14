@@ -7,6 +7,7 @@ import 'package:hivelzon/features/story/data/season_intro_repository.dart';
 import 'package:hivelzon/shared/content/content_providers.dart';
 
 import 'support/fake_content_source.dart';
+import 'support/onboarding.dart';
 
 void main() {
   testWidgets('5 sekme görünür ve Konuş sekmesi "yakında" gösterir', (
@@ -15,6 +16,7 @@ void main() {
     await tester.pumpWidget(
       ProviderScope(
         overrides: [
+          onboardingDoneOverride,
           contentSourceProvider.overrideWithValue(FakeContentSource()),
           progressRepositoryProvider.overrideWithValue(
             InMemoryProgressRepository(),

@@ -885,3 +885,121 @@ abstract final class AccountTexts {
     return '${l.day} ${_months[l.month - 1]} ${l.year}';
   }
 }
+
+/// Açılış ve yerleştirme (H-039; ARAYUZ-METINLERI §13). Hesap istemez;
+/// yalnızca doğum yılı ve isteğe bağlı ad, ikisi de bu telefonda. Test
+/// atlanabilir, süresiz; sonuç yalnızca öneridir (K-06, K-08). Suçlamasız,
+/// geri sayımsız (K-32).
+abstract final class OnboardingTexts {
+  static const loading = 'hiVelzon açılıyor…';
+  static const back = CommonTexts.back;
+  static String stepLabel(int step, int total) => 'Adım $step / $total';
+
+  // Karşılama
+  static const welcomeTitle = 'hiVelzon\'a hoş geldin!';
+  static const welcomeBody = 'Bir hikâye oyna, İngilizceyi oynarken öğren.';
+  static const welcomeNoAccount = 'Hesap gerekmez. Her şey bu telefonda kalır.';
+  static const welcomeStart = CommonTexts.start;
+
+  // Seni tanıyalım
+  static const aboutTitle = 'Seni biraz tanıyalım';
+  static const aboutBody =
+      'İki kısa soru. Cevapların yalnızca bu telefonda kalır.';
+  static const birthYearLabel = AccountTexts.birthYearLabel;
+  static const birthYearHelper =
+      'Yalnızca yılı soruyoruz. Bazı özellikler yaşa göre açılır.';
+  static const birthYearEmpty = 'Doğum yılını yaz (ör. 2008).';
+  static const birthYearInvalid = AccountTexts.birthYearInvalid;
+  static const birthYearOutOfRange = 'Bu yılı bir daha kontrol eder misin?';
+  static const nameHeading = ProfileTexts.nameSection;
+  static const nameLabel = ProfileTexts.nameLabel;
+  static const nameHelper = ProfileTexts.nameHelper;
+  static const nameTooLong = ProfileTexts.nameTooLong;
+  static const nameInvalid = ProfileTexts.nameInvalid;
+
+  // Gizlilik ve bilgilendirme
+  static const privacyTitle = 'Bilmen gerekenler';
+  static const privacyBody = 'Kısaca, bilgilerinle ne yaptığımız:';
+  static const privacyPoints = <(String, String)>[
+    (
+      'Her şey bu telefonda',
+      'Hesap gerekmez. İlerlemen, defterin ve ayarların yalnızca bu telefonda '
+          'saklanır.',
+    ),
+    (
+      'Sesin kaydedilmez',
+      '"Söyle" alıştırmalarında sesin telefonda tanınır; kaydedilmez ve '
+          'hiçbir yere gönderilmez.',
+    ),
+    (
+      'Reklam yok',
+      'Uygulamada reklam yok; seni başka uygulamalarda izlemiyoruz.',
+    ),
+    (
+      'Yapay zekâ',
+      'Hikâye videoları yapay zekâ ile üretilir. Hi de bir yapay zekâ '
+          'yardımcısıdır.',
+    ),
+  ];
+  static const privacyUnder13 =
+      '13 yaşından küçüksen bu sayfayı bir büyüğünle birlikte oku.';
+  static const termsLink = AccountTexts.termsTitle;
+  static const privacyLink = AccountTexts.privacyTitle;
+  static const draftTitle = AccountTexts.legalDraftTitle;
+  static const draftBody =
+      'Kullanım koşulları ve aydınlatma metni taslak. Kesin metin yayından '
+      'önce eklenecek.';
+  static const privacyAccept = 'Anladım, devam et';
+
+  // Tercihler
+  static const prefsTitle = 'Sana uygun ayarlar';
+  static const prefsBody = 'İkisini de sonra değiştirebilirsin.';
+  static const goalHeading = ProfileTexts.goalSection;
+  static const goalIntro = ProfileTexts.goalIntro;
+  static String goalOption(int minutes) => ProfileTexts.goalOption(minutes);
+  static const turkishLineTitle = 'Altyazıda Türkçe satır';
+  static const turkishLineBody =
+      'İngilizce altyazının altında küçük bir Türkçe satır. 1. Sezon (A1) '
+      'için önerimiz: açık. Oynatıcıdan da değiştirebilirsin.';
+
+  // Seviye
+  static const levelTitle = 'Seviyeni merak ediyor musun?';
+  static const levelBody =
+      'Kısa bir test sana bir başlangıç seviyesi önerir. Süre yok, en fazla '
+      '20 soru. İstediğin an bırakabilirsin.';
+  static const levelGuessHeading = 'Kendi tahminin';
+  static const levelGuessUnknown = 'Bilmiyorum';
+  static const levelStart = 'Teste başla';
+  static const levelSkip = 'Testi atla';
+
+  // Soru
+  static String questionLabel(int n, int max) => 'Soru $n · en fazla $max';
+  static const instructionVocabulary = 'Boşluğa uygun kelimeyi seç.';
+  static const instructionGrammar = 'Boşluğa uygun olanı seç.';
+  static const instructionReading = 'Metni oku, soruyu cevapla.';
+  static const dontKnow = 'Bilmiyorum';
+  static const quitTest = 'Testi bırak';
+
+  // Sonuç
+  static const resultCaps = 'Önerilen başlangıç seviyesi';
+  static String resultSemantics(String code) =>
+      'Önerilen başlangıç seviyesi: $code';
+  static String resultBody(String code) => code == 'A1'
+      ? 'Hikâyenin 1. Sezonu A1 seviyesinde; tam senin için.'
+      : 'Şimdilik hikâyenin yalnızca 1. Sezonu (A1) hazır. Bölümler sana '
+            'kolay gelebilir; hikâyenin ve ifadelerin tadını çıkar.';
+  static const resultNoteTitle = 'Bu yalnızca bir öneri';
+  static const resultNote =
+      'Kısa bir tahmin; sınav ya da sertifika sonucu değil.';
+  static const resultContinue = CommonTexts.continueAction;
+
+  // Hazır
+  static const readyTitle = 'Her şey hazır';
+  static const readyBody =
+      'Alex şehre yeni geldi. Hikâyesine birlikte başlayalım.';
+  static const readyLocalTitle = 'İlerlemen bu telefonda';
+  static const readyLocalTeen =
+      'İstersen sonra Profil\'den hesap açıp ilerlemeni yedekleyebilirsin.';
+  static const readyLocalChild = 'Hesap gerekmez; her şey bu telefonda kalır.';
+  static const readyStart = 'Hikâyeye başla';
+}

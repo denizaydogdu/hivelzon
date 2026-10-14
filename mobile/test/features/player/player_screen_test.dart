@@ -5,6 +5,7 @@ import 'package:hivelzon/app/theme.dart';
 import 'package:hivelzon/features/hi/application/hi_providers.dart';
 import 'package:hivelzon/features/player/application/player_session.dart';
 import 'package:hivelzon/features/player/data/progress_repository.dart';
+import 'package:hivelzon/features/player/data/subtitle_preference_store.dart';
 import 'package:hivelzon/features/player/domain/episode.dart';
 import 'package:hivelzon/features/player/domain/episode_engine.dart';
 import 'package:hivelzon/features/player/presentation/player_screen.dart';
@@ -12,6 +13,8 @@ import 'package:hivelzon/shared/content/content_providers.dart';
 import 'package:hivelzon/shared/meaning/learning_event_log.dart';
 import 'package:hivelzon/shared/meaning/notebook_repository.dart';
 import 'package:hivelzon/shared/progress/story_progress.dart';
+import 'package:hivelzon/shared/storage/app_database.dart';
+import 'package:hivelzon/shared/storage/storage_providers.dart';
 import 'package:video_player_platform_interface/video_player_platform_interface.dart';
 
 import '../../support/fake_content_source.dart';
@@ -58,6 +61,7 @@ void main() {
     WidgetTester tester, {
     String contentId = 'A1-001',
     PlayerStartMode startMode = PlayerStartMode.ask,
+    AppDatabase? db,
   }) async {
     tester.view.physicalSize = const Size(1179, 2556);
     tester.view.devicePixelRatio = 3;
@@ -72,6 +76,10 @@ void main() {
           playerHooksProvider.overrideWithValue(hooks),
           // Hi-A'nın konu kartı ayrı testte (test/features/hi).
           playerCoachProvider.overrideWithValue(null),
+          if (db != null) ...[
+            appDatabaseProvider.overrideWithValue(db),
+            legacyImportProvider.overrideWithValue(Future<void>.value()),
+          ],
         ],
         child: MaterialApp(
           theme: AppTheme.light(),
@@ -414,6 +422,31 @@ void main() {
       await tester.tap(find.byKey(const ValueKey('subtitle-mode-off')));
       await step(tester, 400);
       expect(find.text('OK. Friday.'), findsNothing);
+      await tester.pumpWidget(const SizedBox());
+      await step(tester, 6000);
+    });
+    testWidgets('kayıtlı tercih (açılışta Türkçe satır, K-03, H-039) '
+        'oynatıcı açılınca uygulanır; menüden değişiklik kaydedilir', (
+      tester,
+    ) async {
+      final db = AppDatabase.memory();
+      addTearDown(db.close);
+      final prefs = SubtitlePreferenceStore(db);
+      await tester.runAsync(() => prefs.setMode(SubtitleMode.enTr));
+      await pumpPlayer(tester, db: db);
+      for (var i = 0; i < 5; i++) {
+        await tester.runAsync(() => Future<void>.delayed(Duration.zero));
+        await tester.pump();
+      }
+      await toS02(tester);
+      expect(find.text('EN+TR'), findsOneWidget);
+      expect(find.byKey(const ValueKey('subtitle-tr')), findsOneWidget);
+      await tester.tap(find.byKey(const ValueKey('subtitle-menu')));
+      await step(tester, 400);
+      await tester.tap(find.byKey(const ValueKey('subtitle-mode-off')));
+      await step(tester, 400);
+      await tester.runAsync(() => Future<void>.delayed(Duration.zero));
+      expect(await tester.runAsync(prefs.mode), SubtitleMode.off);
       await tester.pumpWidget(const SizedBox());
       await step(tester, 6000);
     });
