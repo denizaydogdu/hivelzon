@@ -7,6 +7,7 @@ import 'package:go_router/go_router.dart';
 import '../../../app/design/design.dart';
 import '../../../app/router.dart';
 import '../../../l10n/tr_strings.dart';
+import '../../../shared/haptics/haptics.dart';
 import '../../../shared/ui/ui.dart';
 import '../../account/presentation/account_widgets.dart';
 import '../../hi/application/hi_providers.dart';
@@ -58,108 +59,136 @@ class ProfileScreen extends ConsumerWidget {
     return Scaffold(
       // Üstte güvenli alan yok: illüstrasyon durum çubuğunun altına uzanır.
       // Hi balonunun payı yalnızca listenin sonunda (HiBubbleInset, H-064).
-      body: SafeArea(
-        top: false,
-        child: ListView(
-          key: const ValueKey('profile-list'),
-          padding: EdgeInsets.only(
-            bottom: AppSpace.s32 + HiBubbleInset.of(context),
-          ),
-          children: [
-            ShapedHeader(image: headerImage, height: 168 + topInset),
-            _Identity(
-              name: name,
-              status: week == null
-                  ? null
-                  : ProfileTexts.status(
-                      phrasesAdded: week.phrasesAdded,
-                      phrasesReviewed: week.phrasesReviewed,
-                      episodesCompleted: week.episodesCompleted,
-                    ),
+      // Kaydırınca avatar ve selam saatin altına girmesin: durum çubuğu
+      // perdesi (H-064).
+      body: StatusBarScrim(
+        child: SafeArea(
+          top: false,
+          child: ListView(
+            key: const ValueKey('profile-list'),
+            padding: EdgeInsets.only(
+              bottom: AppSpace.s32 + HiBubbleInset.of(context),
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: AppSpace.page),
-              child: StaggeredList(
-                spacing: AppSpace.s24,
-                children: [
-                  StatRow(
-                    key: const ValueKey('profile-stats'),
-                    tiles: [
-                      StatTile.count(
-                        count: overview?.totalItems ?? 0,
-                        label: ProfileTexts.statPhrases,
-                        icon: Icons.menu_book_rounded,
+            children: [
+              ShapedHeader(image: headerImage, height: 168 + topInset),
+              _Identity(
+                name: name,
+                status: week == null
+                    ? null
+                    : ProfileTexts.status(
+                        phrasesAdded: week.phrasesAdded,
+                        phrasesReviewed: week.phrasesReviewed,
+                        episodesCompleted: week.episodesCompleted,
                       ),
-                      StatTile.count(
-                        count: knowledge?.completedEpisodes ?? 0,
-                        label: ProfileTexts.statEpisodes,
-                        icon: Icons.auto_stories_rounded,
-                        color: AppPalette.orange700,
-                      ),
-                      StatTile.count(
-                        count: week?.phrasesReviewed ?? 0,
-                        label: ProfileTexts.statWeekReviews,
-                        icon: Icons.replay_rounded,
-                        color: AppPalette.success,
-                      ),
-                    ],
-                  ),
-                  SettingsGroup(
-                    title: ProfileTexts.learningGroup,
-                    children: [
-                      SettingsRow(
-                        key: const ValueKey('profile-notebook'),
-                        icon: Icons.menu_book_rounded,
-                        title: ProfileTexts.notebookTile,
-                        subtitle: notebookHint,
-                        onTap: () => unawaited(open(AppRoutes.notebook)),
-                      ),
-                      SettingsRow(
-                        key: const ValueKey('profile-goal'),
-                        icon: Icons.track_changes_rounded,
-                        title: ProfileTexts.goalSection,
-                        subtitle: ProfileTexts.goalNote(
-                          ReviewPolicy.newCardsPerDay(minutes),
-                        ),
-                        value: ProfileTexts.goalOption(minutes),
-                        onTap: () => unawaited(showDailyGoalSheet(context)),
-                      ),
-                      // H-055: aç/kapat; destek ya da izin yoksa nedeni.
-                      const SpeechSettingsRow(),
-                      SettingsRow(
-                        key: const ValueKey('profile-topic-sets'),
-                        icon: Icons.category_outlined,
-                        title: ProfileTexts.topicSetsTile,
-                        subtitle: ProfileTexts.topicSetsHint,
-                        onTap: () => unawaited(open(AppRoutes.notebookSets)),
-                      ),
-                    ],
-                  ),
-                  SettingsGroup(
-                    title: ProfileTexts.accountGroup,
-                    children: [
-                      // H-038: isteğe bağlı hesap ve eşitleme.
-                      const AccountRow(),
-                      HiPrivacyRow(
-                        onTap: () =>
-                            unawaited(open(AppRoutes.hiPrivacy, hi: true)),
-                      ),
-                      SettingsRow(
-                        key: const ValueKey('profile-name-row'),
-                        icon: Icons.badge_outlined,
-                        title: ProfileTexts.nameRow,
-                        subtitle: ProfileTexts.nameRowHint,
-                        value: name ?? ProfileTexts.nameRowEmpty,
-                        onTap: () => unawaited(showDisplayNameSheet(context)),
-                      ),
-                    ],
-                  ),
-                ],
               ),
-            ),
-          ],
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: AppSpace.page),
+                child: StaggeredList(
+                  spacing: AppSpace.s24,
+                  children: [
+                    StatRow(
+                      key: const ValueKey('profile-stats'),
+                      tiles: [
+                        StatTile.count(
+                          count: overview?.totalItems ?? 0,
+                          label: ProfileTexts.statPhrases,
+                          icon: Icons.menu_book_rounded,
+                        ),
+                        StatTile.count(
+                          count: knowledge?.completedEpisodes ?? 0,
+                          label: ProfileTexts.statEpisodes,
+                          icon: Icons.auto_stories_rounded,
+                          color: AppPalette.orange700,
+                        ),
+                        StatTile.count(
+                          count: week?.phrasesReviewed ?? 0,
+                          label: ProfileTexts.statWeekReviews,
+                          icon: Icons.replay_rounded,
+                          color: AppPalette.success,
+                        ),
+                      ],
+                    ),
+                    SettingsGroup(
+                      title: ProfileTexts.learningGroup,
+                      children: [
+                        SettingsRow(
+                          key: const ValueKey('profile-notebook'),
+                          icon: Icons.menu_book_rounded,
+                          title: ProfileTexts.notebookTile,
+                          subtitle: notebookHint,
+                          onTap: () => unawaited(open(AppRoutes.notebook)),
+                        ),
+                        SettingsRow(
+                          key: const ValueKey('profile-goal'),
+                          icon: Icons.track_changes_rounded,
+                          title: ProfileTexts.goalSection,
+                          subtitle: ProfileTexts.goalNote(
+                            ReviewPolicy.newCardsPerDay(minutes),
+                          ),
+                          value: ProfileTexts.goalOption(minutes),
+                          onTap: () => unawaited(showDailyGoalSheet(context)),
+                        ),
+                        // H-055: aç/kapat; destek ya da izin yoksa nedeni.
+                        const SpeechSettingsRow(),
+                        // H-064: bütün dokunsal onaylar bu ayara bağlı.
+                        const HapticsSettingsRow(),
+                        SettingsRow(
+                          key: const ValueKey('profile-topic-sets'),
+                          icon: Icons.category_outlined,
+                          title: ProfileTexts.topicSetsTile,
+                          subtitle: ProfileTexts.topicSetsHint,
+                          onTap: () => unawaited(open(AppRoutes.notebookSets)),
+                        ),
+                      ],
+                    ),
+                    SettingsGroup(
+                      title: ProfileTexts.accountGroup,
+                      children: [
+                        // H-038: isteğe bağlı hesap ve eşitleme.
+                        const AccountRow(),
+                        HiPrivacyRow(
+                          onTap: () =>
+                              unawaited(open(AppRoutes.hiPrivacy, hi: true)),
+                        ),
+                        SettingsRow(
+                          key: const ValueKey('profile-name-row'),
+                          icon: Icons.badge_outlined,
+                          title: ProfileTexts.nameRow,
+                          subtitle: ProfileTexts.nameRowHint,
+                          value: name ?? ProfileTexts.nameRowEmpty,
+                          onTap: () => unawaited(showDisplayNameSheet(context)),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
+    );
+  }
+}
+
+/// Profil → Öğrenme → "Titreşim" (H-064): varsayılan açık; kapalıyken
+/// uygulama hiç titreşmez ([Haptics]).
+class HapticsSettingsRow extends ConsumerWidget {
+  const HapticsSettingsRow({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final on = ref.watch(hapticsEnabledProvider).value ?? true;
+    return SettingsRow.toggle(
+      key: const ValueKey('profile-haptics-toggle'),
+      icon: Icons.vibration_rounded,
+      title: ProfileTexts.hapticsTile,
+      subtitle: ProfileTexts.hapticsHint,
+      value: on,
+      onChanged: (value) async {
+        await ref.read(hapticsStoreProvider).setEnabled(value);
+        ref.invalidate(hapticsEnabledProvider);
+      },
     );
   }
 }

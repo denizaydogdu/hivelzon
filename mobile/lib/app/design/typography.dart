@@ -164,4 +164,36 @@ abstract final class AppTypography {
     height: 16 / 12,
     fontWeight: AppFonts.medium,
   );
+
+  /// Sekme etiketinin iki yanında bırakılan pay.
+  static const double navLabelSidePadding = 4;
+
+  /// Material'in sekme etiketi için üst ölçek sınırı (`NavigationBar`).
+  static const double navLabelMaxScale = 1.3;
+
+  /// Sekme etiketi bundan küçük çizilmez (çok dar ekranda bile okunur).
+  static const double navLabelMinScale = 0.85;
+
+  /// Sekme etiketlerinin tek satıra sığdığı en büyük yazı ölçeği (H-064).
+  ///
+  /// Her sekmenin genişliği [slotWidth]; en geniş etiket (seçili, kalın)
+  /// ölçülür. Sonuç [navLabelMinScale] ile [navLabelMaxScale] arasındadır:
+  /// geniş ekranda kullanıcının ölçeği (en çok 1,3×) aynen kalır; 320 pt'de
+  /// "Ana Sayfa" iki satıra bölünmek yerine biraz küçülür, kesilmez.
+  static double navLabelFitScale(double slotWidth, Iterable<String> labels) {
+    final style = navLabel.copyWith(fontWeight: AppFonts.bold);
+    var widest = 0.0;
+    for (final label in labels) {
+      final painter = TextPainter(
+        text: TextSpan(text: label, style: style),
+        textDirection: TextDirection.ltr,
+        maxLines: 1,
+      )..layout();
+      if (painter.width > widest) widest = painter.width;
+      painter.dispose();
+    }
+    if (widest <= 0) return navLabelMaxScale;
+    final fit = (slotWidth - 2 * navLabelSidePadding) / widest;
+    return fit.clamp(navLabelMinScale, navLabelMaxScale);
+  }
 }

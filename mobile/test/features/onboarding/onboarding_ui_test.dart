@@ -18,6 +18,7 @@ import 'package:video_player_platform_interface/video_player_platform_interface.
 import '../../support/fake_api_server.dart';
 import '../../support/fake_content_source.dart';
 import '../../support/fake_video_platform.dart';
+import '../../support/golden.dart';
 import '../../support/placement.dart';
 
 /// H-039 açılış: uygulamanın tamamı bellek içi veritabanıyla açılır;
@@ -58,9 +59,11 @@ void main() {
     Size size = const Size(390, 844),
     double textScale = 1,
     bool reduceMotion = true,
+    double topInset = 0,
   }) async {
     tester.view.physicalSize = size * 3;
     tester.view.devicePixelRatio = 3;
+    tester.view.padding = FakeViewPadding(top: topInset * 3);
     addTearDown(tester.view.reset);
     tester.platformDispatcher.textScaleFactorTestValue = textScale;
     addTearDown(tester.platformDispatcher.clearTextScaleFactorTestValue);
@@ -401,10 +404,40 @@ void main() {
         await expectLater(tester, meetsGuideline(iOSTapTargetGuideline));
         await expectLater(tester, meetsGuideline(labeledTapTargetGuideline));
         // Karşılamada metin illüstrasyonun dışında; kontrast her adımda.
-        await expectLater(tester, meetsGuideline(textContrastGuideline));
+        // Piksel ölçümü yazı tipi çizimine bağlı; yalnız macOS'ta (H-064).
+        if (!skipGoldensOffMac) {
+          await expectLater(tester, meetsGuideline(textContrastGuideline));
+        }
       });
       await unmount(tester);
       semantics.dispose();
+    });
+
+    testWidgets('karşılama: kaydırınca saatin altına kum perdesi gelir '
+        '(H-064)', (tester) async {
+      await pumpApp(
+        tester,
+        size: const Size(320, 568),
+        textScale: 1.3,
+        topInset: 47,
+      );
+      double opacity() => tester
+          .widget<AnimatedOpacity>(
+            find.byKey(const ValueKey('status-bar-scrim')),
+          )
+          .opacity;
+      expect(opacity(), 0);
+      await tester.drag(
+        find.byKey(const ValueKey('onboarding-scroll')),
+        const Offset(0, -200),
+      );
+      await tester.pumpAndSettle();
+      expect(opacity(), 1);
+      expect(
+        tester.getRect(find.byKey(const ValueKey('status-bar-scrim'))).height,
+        47,
+      );
+      await unmount(tester);
     });
 
     testWidgets('hareket açıkken de akış çalışır (zamanlayıcı kalmaz)', (

@@ -3,11 +3,11 @@ import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/semantics.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../app/design/design.dart';
+import '../../../shared/haptics/haptics.dart';
 import '../../../shared/ui/ui.dart';
 import '../../../l10n/tr_strings.dart';
 import '../../../shared/widgets/skeleton.dart';
@@ -193,7 +193,7 @@ class _HuntState extends ConsumerState<_Hunt>
     final dir = Directionality.of(context);
     if (r == HuntTap.correct) {
       // Bulunca tek, hafif dokunsal onay (H-061); kaçırmada titreşim yok.
-      unawaited(HapticFeedback.lightImpact());
+      unawaited(ref.read(hapticsProvider).success());
       _playWord();
       SemanticsService.sendAnnouncement(
         View.of(context),

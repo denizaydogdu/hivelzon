@@ -670,6 +670,11 @@ abstract final class ProfileTexts {
   static const goalChangeNote =
       'İstediğin zaman değiştirebilirsin. Hedefin altında kalmak sorun değil.';
 
+  // Titreşim satırı (H-064): doğru cevaptaki hafif dokunsal onay.
+  static const hapticsTile = 'Titreşim';
+  static const hapticsHint =
+      'Doğru cevapta ve sahne avında bulunca telefon hafifçe titrer.';
+
   // Konu setleri satırı
   static const topicSetsTile = 'Konu setleri';
   static const topicSetsHint = 'Hikâyedeki yerlerin nesneleri.';

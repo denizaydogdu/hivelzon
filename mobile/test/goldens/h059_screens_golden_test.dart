@@ -81,12 +81,13 @@ void main() {
     WidgetTester tester,
     Widget screen, {
     required double height,
+    double width = _width,
     String? name = 'Deniz',
     SyncStateRow? account,
     double textScale = 1,
     ImageProvider? image,
   }) async {
-    tester.view.physicalSize = Size(_width * 2, height * 2);
+    tester.view.physicalSize = Size(width * 2, height * 2);
     tester.view.devicePixelRatio = 2;
     addTearDown(tester.view.reset);
     final db = AppDatabase.memory();
@@ -176,14 +177,14 @@ void main() {
       >{
         'profil': (
           const ProfileScreen(),
-          1240,
+          1340,
           name: 'Deniz',
           account: null,
           image: ProfileScreen.headerImage,
         ),
         'profil_adsiz': (
           const ProfileScreen(),
-          1240,
+          1340,
           name: null,
           account: null,
           image: ProfileScreen.headerImage,
@@ -250,7 +251,10 @@ void main() {
       await expectLater(tester, meetsGuideline(androidTapTargetGuideline));
       await expectLater(tester, meetsGuideline(iOSTapTargetGuideline));
       await expectLater(tester, meetsGuideline(labeledTapTargetGuideline));
-      await expectLater(tester, meetsGuideline(textContrastGuideline));
+      // Piksel ölçümü yazı tipi çizimine bağlı; yalnız macOS'ta (H-064).
+      if (!skipGoldensOffMac) {
+        await expectLater(tester, meetsGuideline(textContrastGuideline));
+      }
       handle.dispose();
       await unmount(tester);
     });
@@ -265,6 +269,66 @@ void main() {
         image: image,
         textScale: 1.3,
       );
+      expect(tester.takeException(), isNull);
+      await unmount(tester);
+    });
+
+    // H-064: en küçük hedef ekran.
+    testWidgets('$id: 320 × 568, metin 1,3× büyütülünce taşma yok', (
+      tester,
+    ) async {
+      await pumpScreen(
+        tester,
+        screen,
+        width: 320,
+        height: 568,
+        name: name,
+        account: account,
+        image: image,
+        textScale: 1.3,
+      );
+      expect(tester.takeException(), isNull);
+      await unmount(tester);
+    });
+  }
+
+  // H-064 kalite turu: giriş ekranı ve Profil'in alt panelleri (günlük
+  // hedef, ad) için de dokunma hedefi, etiket, kontrast ve küçük ekran.
+  final extras = <String, (Widget, String?)>{
+    'giris': (const SignInScreen(), null),
+    'hedef_paneli': (const ProfileScreen(), 'profile-goal'),
+    'ad_paneli': (const ProfileScreen(), 'profile-name-row'),
+  };
+  Future<void> openRow(WidgetTester tester, String? key) async {
+    if (key == null) return;
+    final row = find.byKey(ValueKey(key));
+    await tester.ensureVisible(row);
+    await tester.pumpAndSettle();
+    await tester.tap(row);
+    await tester.pumpAndSettle();
+    expect(find.byType(AppSheet), findsOneWidget);
+  }
+
+  for (final MapEntry(key: id, value: (screen, row)) in extras.entries) {
+    testWidgets('$id: erişilebilirlik yönergeleri', (tester) async {
+      final handle = tester.ensureSemantics();
+      await pumpScreen(tester, screen, height: 844);
+      await openRow(tester, row);
+      await expectLater(tester, meetsGuideline(androidTapTargetGuideline));
+      await expectLater(tester, meetsGuideline(iOSTapTargetGuideline));
+      await expectLater(tester, meetsGuideline(labeledTapTargetGuideline));
+      if (!skipGoldensOffMac) {
+        await expectLater(tester, meetsGuideline(textContrastGuideline));
+      }
+      handle.dispose();
+      await unmount(tester);
+    });
+
+    testWidgets('$id: 320 × 568, metin 1,3× büyütülünce taşma yok', (
+      tester,
+    ) async {
+      await pumpScreen(tester, screen, width: 320, height: 568, textScale: 1.3);
+      await openRow(tester, row);
       expect(tester.takeException(), isNull);
       await unmount(tester);
     });
