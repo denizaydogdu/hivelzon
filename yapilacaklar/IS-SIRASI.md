@@ -31,7 +31,7 @@ Bu dosya tek takip noktasıdır. Hangi işin hangi sırada yapıldığını, şu
   - H dosyasının `Durum` satırı güncellenir;
   - **Günlük** bölümüne bir satır eklenir.
 - **Biten işler:** "Biten işler" tablosuna doğrulama kanıtıyla birlikte yazılır.
-- **Numaralar:** Tek sayaçla verilir. Sıradaki boş numara: **H-083**.
+- **Numaralar:** Tek sayaçla verilir. Sıradaki boş numara: **H-084**.
 
 **Durum simgeleri:**
 - ⛔ Kullanıcı kararı bekliyor
@@ -159,6 +159,7 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 | D4 | H-080 | Dalga 1: A1 + A2 | Orta | H-079 | ⏳ |
 | D5 | H-081 | Dalga 2: B1 + B2 | Orta | H-080 | ⏳ |
 | D6 | H-082 | Dalga 3: C1 + C2 | Orta | H-081 | ⏳ |
+| D0' | H-083 | Türkçe seslerin Alania'ya geçişi (Hi, Alex, babaanne, ipucu kartları, Hi paneli) | Yüksek | H-075 | ⏳ |
 
 **Sıra:** H-075 ve H-076 hemen ve paralel (Alania'nın ücretsiz ayı sınırlı) → H-077 → H-078 → H-079 → dalgalar.
 
@@ -398,3 +399,4 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
   - Kullanıcı yeni ElevenLabs anahtarı verdi (repo dışında `~/.config/hivelzon/elevenlabs.env`); hesap **ücretsiz** (10.000 karakter/ay, ticari lisans yok → yayından önce ücretli planla yeniden üretim, H-006). Üretildi (6.559 karakter, ayrı defter `elevenlabs-hesap2-karakter.json`): A2-K03 bölüm 3 (pilot tamamen sesli), dilbilgisi pilotunun İngilizce örnekleri (3 ders tamamen sesli), A1-K03 The Red Kite. Sesli kitap sayısı: 3/10.
   - Kullanıcı kararı (hukukçu görüşü): ücretsiz ElevenLabs sesleri yayında kullanılabilir; yeniden üretim gerekmez (H-006 güncellendi).
   - H-078 dilbilgisi ekranı `main`'e birleştirildi (flutter 785, mvn 132; Drift v7, V9). Birleşmede Hi ifade eşlemesine dilbilgisi önerisi (düşünen) eklendi. Simülatör denemesi bekleniyor.
+  - Kullanıcı kararı: uygulamada Türkçe konuşan her yer Alania ile (mevcut 14 Hi repliği + sessiz Hi replikleri, Hi paneli, Alex'in Türkçe cümleleri, babaannenin notu, ipucu ve açık soru kartları). H-083 açıldı.
