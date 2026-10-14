@@ -1,6 +1,6 @@
 # H-078: Dilbilgisi ekranı (mobil)
 
-- **Durum:** Devam ediyor (kod main'de: flutter 785, mvn 132; simülatörde pilot derslerle deneme ve kullanıcı onayı bekleniyor)
+- **Durum:** Bitti (2026-10-14; flutter 785, mvn 132; simülatörde pilot derslerle denendi; kullanıcı onayladı)
 - **Tür:** Uygulama (kod)
 - **Faz:** Dilbilgisi D2 (`docs/DILBILGISI.md` §8)
 - **Bağımlılık:** H-077
@@ -35,3 +35,4 @@ Kendi dalında; `git revert`.
 - **İlerleme:** Drift şema 6 → 7 `user_grammar_progress` (`lessonId`, `status`, `lastCard`, `startedAt`, `completedAt`, `updatedAt`); eşitleme tablosu (sıra 80), "bitti kazanır" (mobil `SyncStore`, backend `ProgressMerger.forGrammar`). Backend Flyway `V9__grammar_progress.sql`: tablo; `notebook_items` `kind` `rule` ve `source` `grammar`; `speech_attempts.place` `grammar`; içerik kimliği kolonları 32 → 64 (ders kimlikleri 35 karaktere çıkıyor).
 - **Testler:** `flutter analyze` temiz; `flutter test` yeşil (yeni: `test/features/grammar/`, `test/features/hi/coach_grammar_test.dart`, `test/shared/content/http_grammar_test.dart`, `test/shared/storage/schema7_migration_test.dart`, `test/goldens/h078_screens_golden_test.dart`). Golden: `h078_dilbilgisi`, `h078_bolum_paneli`, `h078_ders_anlatim`, `h078_alistirma`, `h078_kural_karti`, `h078_ders_sonu`; seçici üç bölüm olduğu için `h060_harita`, `h060_bolum_paneli_kilitli`, `h060_bolum_paneli_yarim`, `h067_kitaplik` yenilendi. Backend `mvn -B verify` yeşil (yeni `GrammarProgressSyncTest`). Test dersi: `mobile/test/fixtures/grammar/G-A1-99-third-person-s/` (H-077 deneme dersinin `export_grammar.py` çıktısı; sahte sesle, ses dosyaları olmadan).
 - **Sapmalar ve açık konular:** (1) Oynatıcı düğümden açılamıyor; "Hikâyede gör" bölümü başından açar (düğüm ve satır pakette var, ileride kullanılabilir). (2) "Hi'nin hata notu"ndan derse bağ yapılmadı: hata kataloğu ile G-ID eşlemesi yok (veri gelince eklenir). (3) Bölüm ve kitap sonundaki giriş noktası yok (plan §7'de var; bu işin kabulünde istenmedi). (4) Tabloya `startedAt` da eklendi (eşitleme birleştiricisi ister). (5) Kural kartında kuralın Türkçesi `exampleTr` alanında tutulur (yeni kolon açılmadı); tekrarda örnek cümle sorulur.
+2026-10-14: Simülatörde bölüm paneli → "Bu bölümdeki dilbilgisi" → ders kartları (vurgulu Türkçe anlatım, şema, Türkçede nasıl?) denendi; kullanıcı onayladı. Açık kalanlar: Hi hata notundan derse geçiş (hata → konu eşlemesi), bölüm/kitap sonu girişleri, "Hikâyede gör"ün sahneden açılması.

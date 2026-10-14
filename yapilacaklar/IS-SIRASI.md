@@ -154,9 +154,9 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 | D0 | H-075 | Türkçe ses: Alania + Duyu hizalama | Yüksek | — | ✅ |
 | D0 | H-076 | Dilbilgisi müfredatı (~70 konu) | Yüksek | — | ✅ |
 | D1 | H-077 | Ders paketi ve grammar-lint | Yüksek | H-075, H-076 | ✅ |
-| D2 | H-078 | Dilbilgisi ekranı (Hikâye'de 3. bölüm, bölüm panelinde teklif) | Yüksek | H-077 | 🔄 |
-| D3 | H-079 | Pilot: 3 A1 konusu | Yüksek | H-076…H-078 | 🔄 |
-| D4 | H-080 | Dalga 1: A1 + A2 | Orta | H-079 | ⏳ |
+| D2 | H-078 | Dilbilgisi ekranı (Hikâye'de 3. bölüm, bölüm panelinde teklif) | Yüksek | H-077 | ✅ |
+| D3 | H-079 | Pilot: 3 A1 konusu | Yüksek | H-076…H-078 | ✅ |
+| D4 | H-080 | Dalga 1: A1 + A2 | Orta | H-079 | 🔄 |
 | D5 | H-081 | Dalga 2: B1 + B2 | Orta | H-080 | ⏳ |
 | D6 | H-082 | Dalga 3: C1 + C2 | Orta | H-081 | ⏳ |
 | D0' | H-083 | Türkçe seslerin Alania'ya geçişi (Hi, Alex, babaanne, ipucu kartları, Hi paneli) | Yüksek | H-075 | ⏳ |
@@ -172,6 +172,8 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 ## Biten işler
 | İş | Başlık | Bitiş | Doğrulama |
 |---|---|---|---|
+| H-079 | Dilbilgisi pilotu (3 A1 konusu) | 2026-10-14 | to be, a/an, -s; Türkçe Alania + İngilizce Sarah; lint 0 hata; simülatörde denendi; kullanıcı onayladı (öğretmen kontrolü yayından önce) |
+| H-078 | Dilbilgisi ekranı | 2026-10-14 | Macera · Kitaplık · Dilbilgisi, ders kartları, puansız alıştırma, kural kartı → Defter/FSRS, bölüm/kitap panelinde teklif, "Bu yapı ne?", Hi önerisi, Drift v7 + V9; flutter 785, mvn 132; kullanıcı onayladı |
 | H-063 | Hi'nin canlılığı | 2026-10-14 | 7 kodla çizilen ifade ve geçişler, sakin 3 nefes, bağlama göre ifade, bölüm sonunda mutlu Hi, Hi paneli bölündü (703 → 248 satır), renkler belirteçte; flutter 716/716; kullanıcı onayladı |
 | H-077 | Ders paketi ve grammar-lint | 2026-10-14 | `lesson.json` + `lesson.md` biçimi, `grammar_lint.py`, `tts_lesson.py` (TR Alania+Duyu, EN ElevenLabs), `export_grammar.py`, dev sunucuda `/grammar/`, bölüm ve kitapta `grammarTopics`; pytest 212/212 |
 | H-076 | Dilbilgisi müfredatı | 2026-10-14 | 71 konu, önkoşullar, Türkçeyle karşılaştırma, tipik hata, doğrulanmış hikâye bağları, bölüm → konu eşlemesi; kullanıcının genel onayı |
@@ -400,3 +402,4 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
   - Kullanıcı kararı (hukukçu görüşü): ücretsiz ElevenLabs sesleri yayında kullanılabilir; yeniden üretim gerekmez (H-006 güncellendi).
   - H-078 dilbilgisi ekranı `main`'e birleştirildi (flutter 785, mvn 132; Drift v7, V9). Birleşmede Hi ifade eşlemesine dilbilgisi önerisi (düşünen) eklendi. Simülatör denemesi bekleniyor.
   - Kullanıcı kararı: uygulamada Türkçe konuşan her yer Alania ile (mevcut 14 Hi repliği + sessiz Hi replikleri, Hi paneli, Alex'in Türkçe cümleleri, babaannenin notu, ipucu ve açık soru kartları). H-083 açıldı.
+  - Kullanıcı H-078 ve H-079'u onayladı. H-080 (dilbilgisi dalga 1: kalan 28 A1–A2 konusu) başladı; Türkçe sesler kampanyada ücretsiz.
