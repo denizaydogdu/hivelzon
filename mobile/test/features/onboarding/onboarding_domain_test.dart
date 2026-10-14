@@ -27,10 +27,14 @@ int run(PlacementEngine e, bool Function(CefrLevel level, int i) correct) {
 }
 
 void main() {
-  group('soru havuzu (TASLAK)', () {
+  group('soru havuzu (onaylı)', () {
     test('uygulama içindeki dosya okunur, her seviyede en az 4 madde', () {
       final bank = loadBank();
-      expect(bank.draft, isTrue, reason: 'H-028 onayı gelene kadar taslak');
+      expect(
+        bank.draft,
+        isFalse,
+        reason: 'Kullanıcı onayladı (H-039, 2026-10-14)',
+      );
       expect(bank.maxQuestions, 20);
       for (final l in CefrLevel.values) {
         expect(bank.stages[l]!.length, greaterThanOrEqualTo(4));

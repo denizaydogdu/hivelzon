@@ -62,7 +62,7 @@
 | **1.4c** | **H-055** "Söyle" alıştırmaları (S1) | Cihazda konuşma tanıma; kelime tekrarı, anlam paneli, karar anı, bölüm sonu; puan yok (`docs/KONUSMA-ALISTIRMASI.md`) | Karşılaştırma motoru testli; ses saklanmıyor | ✅ |
 | **1.5** | **H-037** Backend çekirdek | Kimlik doğrulama, kullanıcı, rızalar (yalnızca ekleme), `audit_log`, hesap silme (30 gün), içerik kataloğu API'si, ilerleme ve olay (`learning_events`) API'si; Flyway; ProblemDetail hata modeli | Entegrasyon testleri (Testcontainers) yeşil; silme ve geri alma testli; giriş hız sınırı var | ✅ |
 | **1.6** | **H-038** Mobil ↔ backend, misafir modu | Kayıt ve giriş; misafir verisinin hesaba taşınması; ilerleme ve olay eşitleme (idempotent `client_event_id`) | Misafir → kayıt akışı veri kaybetmeden çalışıyor | ✅ |
-| **1.7** | **H-039** Onboarding ve yerleştirme | Dil, yaş beyanı (13+), rızalar, prolog, atlanabilir kademeli test (K-06), bildirim izni sonra | Yaş altı kayıt engelleniyor; test atlanabiliyor | ⏳ |
+| **1.7** | **H-039** Onboarding ve yerleştirme | Dil, yaş beyanı (13+), rızalar, prolog, atlanabilir kademeli test (K-06), bildirim izni sonra | Yaş altı kayıt engelleniyor; test atlanabiliyor | ✅ |
 | **1.8** | **H-040** Keşfet akışı | Kısa klipler (B1–B4'ten); Kaydet / Anlam / Tam hikâye; her 4–5 klipte quiz kartı, ~10 klipte mola kartı; 13–17 yaş için 20 dk sınırı (K-15) | Akış bellek sınırında; mola ve sınır testli | ⏳ |
 | **1.9** | **H-041** Editör onay ekranı ve içerik içe aktarma | `content-lint` → içe aktarma → Onayla / Zamanla / Kaldır; sürümler; `publish_at` (K-05, K-12); medya yerel adaptörle | Onaysız içerik katalogda görünmüyor (backend testi) | ✅ |
 | **1.10** | **H-042** Profil, ayarlar, hukuki metinler, hesap silme arayüzü | Beceri ve ilerleme gösterimi; bildirim ayarları; gizlilik; lisans atıfları (CEFR-J vb.) | Hesap silme ve geri alma arayüzden çalışıyor | ⏳ |
@@ -77,7 +77,7 @@ Kullanıcı Profil'i beğenmedi ("her şey iç içe, düz yazı gibi"); bütün 
 | **T0** | **H-057** Tasarım sistemi v2 | Belirteçler (yazı, boşluk, köşe, gölge, anlamsal renk, hareket), tema bileşenleri, ortak bileşen kitaplığı (`shared/ui/`), `flutter_animate`, gömülü yazı tipleri, debug vitrin, golden altyapısı | Sabit stil yok testi; golden; testler yeşil | ⏳ |
 | **T1** | **H-058** Ekran taslakları v2 | ~10 ekran + ~6 illüstrasyon (Higgsfield, ~8 kr, maliyet önce) | Taslaklar kullanıcı onaylı | ✅ |
 | **T2** | **H-059** Profil + Hesap + Hi gizlilik + hukuk metni | Şekilli başlık, istatistik şeridi, gruplanmış ayarlar, tehlikeli bölge | Önce/sonra; golden; kullanıcı onayı | ✅ |
-| **—** | **H-039** Açılış (yeni tasarımla) | Kapsam aynı; H-057 bileşenleri | H-039 kriterleri | ⏳ |
+| **—** | **H-039** Açılış (yeni tasarımla) | Kapsam aynı; H-057 bileşenleri | H-039 kriterleri | ✅ |
 | **T3** | **H-060** Ana Sayfa + harita + bölüm paneli + jenerik | Hedef halkası, hero kartı, harita animasyonu | Önce/sonra; golden | ⏳ |
 | **T4** | **H-061** Defter + tekrar + konu seti + sahne avı | Tek satır biçimi, geri bildirim animasyonu, özet istatistikleri | Önce/sonra; golden | ⏳ |
 | **T5** | **H-062** Oynatıcı katmanları | Palet belirteçlere, ~42 sabit metin l10n'e, giriş animasyonları | H-031/H-054 ölçümleri bozulmaz | ⏳ |

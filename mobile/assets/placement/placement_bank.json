@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "status": "DRAFT",
+  "status": "APPROVED",
   "review": {
-    "approvedBy": null,
-    "approvedAt": null,
-    "note": "TASLAK (H-039): kullanıcı ve editör onayı bekliyor (H-028). Maddeler hiVelzon'un kendi cümleleridir; Cambridge (EVP/EGP), Oxford, GSE, CEFR Companion Volume, Vocabulary Size/Levels Test metni kullanılmadı. Dinleme maddesi yok (ses kesilmesi sonraki iş). Seviye başına 4 madde; ICERIK-MIMARISI §7.2'deki 30-40 maddelik havuz sonra genişletilir."
+    "approvedBy": "kullanıcı (ürün sahibi)",
+    "approvedAt": "2026-10-14",
+    "note": "Kullanıcı 22 maddeyi okuyup onayladı (H-039, H-028: Claude üretir, kullanıcı onaylar; ünite sonunda editör toplu kontrolü). Maddeler hiVelzon'un kendi cümleleridir; Cambridge (EVP/EGP), Oxford, GSE, CEFR Companion Volume, Vocabulary Size/Levels Test metni kullanılmadı. Dinleme maddesi yok. Seviye başına 4 madde; ICERIK-MIMARISI §7.2'deki 30-40 maddelik havuz sonra genişletilir."
   },
   "maxQuestions": 20,
   "warmup": [
@@ -12,7 +12,11 @@
       "id": "w-1",
       "kind": "grammar",
       "prompt": "Hello! My name ___ Alex.",
-      "options": ["are", "is", "am"],
+      "options": [
+        "are",
+        "is",
+        "am"
+      ],
       "answer": 1
     },
     {
@@ -20,7 +24,11 @@
       "kind": "vocabulary",
       "instructionTr": "Hangisi bir renk?",
       "prompt": "Which word is a colour?",
-      "options": ["bread", "bus", "blue"],
+      "options": [
+        "bread",
+        "bus",
+        "blue"
+      ],
       "answer": 2
     }
   ],
@@ -30,21 +38,33 @@
         "id": "a1-1",
         "kind": "vocabulary",
         "prompt": "I drink ___ in the morning.",
-        "options": ["coffee", "a chair", "a window"],
+        "options": [
+          "coffee",
+          "a chair",
+          "a window"
+        ],
         "answer": 0
       },
       {
         "id": "a1-2",
         "kind": "grammar",
         "prompt": "They ___ from Izmir.",
-        "options": ["is", "are", "am"],
+        "options": [
+          "is",
+          "are",
+          "am"
+        ],
         "answer": 1
       },
       {
         "id": "a1-3",
         "kind": "grammar",
         "prompt": "There ___ two cats in the garden.",
-        "options": ["is", "be", "are"],
+        "options": [
+          "is",
+          "be",
+          "are"
+        ],
         "answer": 2
       },
       {
@@ -52,7 +72,11 @@
         "kind": "reading",
         "text": "Tom has a small dog. The dog is black. Its name is Max.",
         "prompt": "What colour is the dog?",
-        "options": ["white", "black", "brown"],
+        "options": [
+          "white",
+          "black",
+          "brown"
+        ],
         "answer": 1
       }
     ],
@@ -61,21 +85,33 @@
         "id": "a2-1",
         "kind": "vocabulary",
         "prompt": "We need milk and eggs. Let's go to the ___.",
-        "options": ["library", "airport", "supermarket"],
+        "options": [
+          "library",
+          "airport",
+          "supermarket"
+        ],
         "answer": 2
       },
       {
         "id": "a2-2",
         "kind": "grammar",
         "prompt": "Yesterday I ___ my grandmother.",
-        "options": ["visited", "visit", "am visit"],
+        "options": [
+          "visited",
+          "visit",
+          "am visit"
+        ],
         "answer": 0
       },
       {
         "id": "a2-3",
         "kind": "grammar",
         "prompt": "This bag is ___ than that one.",
-        "options": ["more heavy", "heavier", "heavy"],
+        "options": [
+          "more heavy",
+          "heavier",
+          "heavy"
+        ],
         "answer": 1
       },
       {
@@ -83,7 +119,11 @@
         "kind": "reading",
         "text": "Sara usually takes the bus to school. Today it is raining hard, so her father is driving her.",
         "prompt": "How is Sara going to school today?",
-        "options": ["by bus", "on foot", "by car"],
+        "options": [
+          "by bus",
+          "on foot",
+          "by car"
+        ],
         "answer": 2
       }
     ],
@@ -92,21 +132,33 @@
         "id": "b1-1",
         "kind": "vocabulary",
         "prompt": "I can't ___ my keys. Have you seen them?",
-        "options": ["find", "keep", "lose"],
+        "options": [
+          "find",
+          "keep",
+          "lose"
+        ],
         "answer": 0
       },
       {
         "id": "b1-2",
         "kind": "grammar",
         "prompt": "I ___ in this city since 2019.",
-        "options": ["live", "have lived", "am living"],
+        "options": [
+          "live",
+          "have lived",
+          "am living"
+        ],
         "answer": 1
       },
       {
         "id": "b1-3",
         "kind": "grammar",
         "prompt": "If it rains tomorrow, we ___ at home.",
-        "options": ["stayed", "would stayed", "will stay"],
+        "options": [
+          "stayed",
+          "would stayed",
+          "will stay"
+        ],
         "answer": 2
       },
       {
@@ -127,21 +179,33 @@
         "id": "b2-1",
         "kind": "vocabulary",
         "prompt": "The meeting was ___ because the manager was ill.",
-        "options": ["postponed", "promoted", "persuaded"],
+        "options": [
+          "postponed",
+          "promoted",
+          "persuaded"
+        ],
         "answer": 0
       },
       {
         "id": "b2-2",
         "kind": "grammar",
         "prompt": "The new bridge ___ by the end of next year.",
-        "options": ["will build", "has built", "will have been built"],
+        "options": [
+          "will build",
+          "has built",
+          "will have been built"
+        ],
         "answer": 2
       },
       {
         "id": "b2-3",
         "kind": "grammar",
         "prompt": "If I had known about the traffic, I ___ earlier.",
-        "options": ["will leave", "would have left", "had left"],
+        "options": [
+          "will leave",
+          "would have left",
+          "had left"
+        ],
         "answer": 1
       },
       {
@@ -162,21 +226,33 @@
         "id": "c1-1",
         "kind": "vocabulary",
         "prompt": "Her explanation was so ___ that everyone understood it at once.",
-        "options": ["reluctant", "lucid", "tedious"],
+        "options": [
+          "reluctant",
+          "lucid",
+          "tedious"
+        ],
         "answer": 1
       },
       {
         "id": "c1-2",
         "kind": "grammar",
         "prompt": "Not only ___ the exam, but she also got the highest mark.",
-        "options": ["did she pass", "she passed", "she did pass"],
+        "options": [
+          "did she pass",
+          "she passed",
+          "she did pass"
+        ],
         "answer": 0
       },
       {
         "id": "c1-3",
         "kind": "grammar",
         "prompt": "It was the noise, not the heat, ___ kept me awake.",
-        "options": ["what", "that", "which it"],
+        "options": [
+          "what",
+          "that",
+          "which it"
+        ],
         "answer": 1
       },
       {

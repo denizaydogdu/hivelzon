@@ -9,7 +9,7 @@ Bu dosya tek takip noktasıdır. Hangi işin hangi sırada yapıldığını, şu
 - **Her şey yerelde** (kullanıcı kararı): Docker PostgreSQL (5434), yerel içerik sunucusu (`python3 tools/dev-content-server/serve.py`, 127.0.0.1:8787), iOS simülatörü "hiVelzon iPhone 17". Sunucu, Bunny Stream, mağaza ve geliştirici hesapları en sonda (H-044).
 - **Biten uygulama işleri:** H-033 repo iskeleti · H-034 bölüm paketi + content-lint · H-045 tasarım yönü (6 taslak, 6 kr) · H-031 etkileşimli oynatıcı · H-046 altyazıya dokun → Türkçe anlam (B1–B4 çevirileri APPROVED) · H-047 Hi kararları · H-049 sezon jeneriği (6,69 kr) · H-050 başlıkla açılış (schemaVersion 2) · H-035 hikâye haritası + Drift ilerleme + kilit kuralı.
 - **İçerik:** B1–B4 üretildi (pilot + B2–B4), jenerik, 6 arayüz taslağı, harita görseli. B5–B12 diyalogları onaylı (H-032) ama üretilmedi; kalan Sezon 1 üretimi ≈ 8 × ~8,5 kr. Higgsfield kredisi **84,56** (lite plan).
-- **Sıradaki adım:** Tasarım yenilemesi (Adım 6): H-057, H-058, H-059 ve H-041 bitti → **H-039** açılış (kod bitti, `main`'de; soru havuzu ve açık kararlar onay bekliyor) → H-060 … H-064, H-040; sonra H-042 … H-044.
+- **Sıradaki adım:** Tasarım yenilemesi (Adım 6): H-057, H-058, H-059, H-041 ve H-039 bitti → **H-060** Ana Sayfa ve harita → H-060 … H-064, H-040; sonra H-042 … H-044.
 - **Kullanıcı kararı bekleyenler** (kodlamayı durdurmuyor):
   - H-001: güncellenen iş planının (`docs/IS-PLANI.md`, H-023) son onayı.
   - H-003: günlük konuşma kotasının ölçüsü, uyarı eşikleri, bütçe sorumlusu (tavan 300 USD/ay kararlaştı; v1 öncesi).
@@ -110,7 +110,7 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 | 1.5 | H-037 | Backend çekirdek | Yüksek | H-033 | ✅ |
 | 1.6 | H-038 | Mobil ↔ backend, isteğe bağlı hesap | Yüksek | H-035, H-037 | ✅ |
 | 1.6' | H-056 | Eşitleme ince ayarı (bitti kazanır, 30 sn hoşgörü, çıkışlı silme, sekme yenileme) | Yüksek | H-038 | ✅ |
-| 1.7 | H-039 | Onboarding ve yerleştirme | Orta | H-038 | 🔄 |
+| 1.7 | H-039 | Onboarding ve yerleştirme | Orta | H-038 | ✅ |
 | 1.8 | H-040 | Keşfet akışı | Orta | H-038 | ⏳ |
 | 1.9 | H-041 | Editör onay ekranı, içerik içe aktarma | Orta | H-038 | ✅ |
 | 1.10 | H-042 | Profil, ayarlar, hukuki metinler | Orta | H-038 | ⏳ |
@@ -135,12 +135,12 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 ## Devam eden işler
 | İş | Başlık | Başlangıç | Not |
 |---|---|---|---|
-| H-039 | Açılış ve yerleştirme | 2026-10-14 | Kod `main`'de (494 test). Bekleyen: 22 soruluk taslak havuzun onayı (H-028), doğum yılı saklama biçimi, "Daha sonra" seçeneği, hesapta doğum yılının önceden dolması, bilgilendirme metni hukuk kontrolü (H-042) |
 | H-023 | İş planını kararlarla güncelle | 2026-10-12 | `docs/IS-PLANI.md` v0.2 ve `docs/SARTNAME.md` karar notları yazıldı; kullanıcının gözden geçirmesi ve H-001 onayı bekleniyor |
 
 ## Biten işler
 | İş | Başlık | Bitiş | Doğrulama |
 |---|---|---|---|
+| H-039 | Açılış ve yerleştirme | 2026-10-14 | Hoş geldin → doğum yılı (saklanmaz; yalnız geçmemiş yaş eşiği) ve isteğe bağlı ad → bilgilendirme → hedef + Türkçe altyazı → atlanabilir kademeli test (22 madde, kullanıcı onaylı) → hazır; 13 altına hesap yok; bir kez gösterim; flutter test geçti, CI yeşil |
 | H-059 | Profil, Hesap, Hi gizlilik, hukuk metni tasarımı | 2026-10-14 | Şekilli başlık, istatistik şeridi, gruplanmış ayarlar, tehlikeli bölge; golden testler (yalnız macOS) + belirteç kontrast testi; flutter test 464/464, CI yeşil; kullanıcı tasarımı onayladı |
 | H-058 | Ekran taslakları v2 ve illüstrasyonlar | 2026-10-14 | 16 görsel (8 kr, `tasarim/v2/PROMPTS.md`), 6 illüstrasyon WebP olarak uygulamada; kullanıcı onayladı |
 | H-057 | Tasarım sistemi v2 | 2026-10-14 | Nunito + Inter (gömülü, OFL, Türkçe glif testli), belirteçler, `shared/ui` bileşenleri, flutter_animate, /tasarim vitrini, golden + erişilebilirlik testleri; sabit renk 31 → 10; flutter test 439 → 463 (H-059 ile) |
@@ -334,3 +334,4 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
   - Mobil CI kontrast hatası giderildi (piksel denetimi yalnız macOS'ta, belirteç kontrastı her platformda; 5688a49, CI yeşil). H-039 ayrı dalda başladı.
   - Kullanıcı H-058 taslaklarını ve H-059 tasarımını onayladı; ikisi de bitti.
   - H-039 ayrı dalda yapıldı ve `main`'e birleştirildi (494 test): açılış akışı, 13 altına hesap yok, Türkçe altyazı tercihi, atlanabilir kademeli test (taslak 22 soru). Açık kararlar kullanıcıya soruldu.
+  - Kullanıcı kararları: doğum yılı saklanmaz (yalnız geçmemiş eşik), adım zorunlu, hesapta yıl yeniden sorulur. Soru havuzu onaylandı; H-039 bitti. Sıradaki H-060.

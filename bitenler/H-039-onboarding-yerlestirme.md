@@ -1,6 +1,6 @@
 # H-039: Onboarding ve yerleştirme
 
-- **Durum:** Devam ediyor (kod bitti ve `main`'de, flutter test 494/494; soru havuzu onayı ve açık kararlar bekleniyor)
+- **Durum:** Bitti (2026-10-14; flutter test geçti, CI yeşil; kararlar ve soru havuzu kullanıcı onaylı)
 - **Tür:** Uygulama (kod)
 - **Faz:** 1.7 (`docs/UYGULAMA-PLANI.md`)
 - **Bağımlılık:** H-038
@@ -55,4 +55,4 @@ Kendi dalında (`h-039-onboarding-yerlestirme`) yapılır; `main`'e alınmadan �
 - Doğum yılı adımı zorunlu kalır ("Daha sonra" yok).
 - Hesap açarken doğum yılı yeniden sorulur (önceden doldurulmaz).
 - Soru havuzu: kullanıcı okuyup onaylayacak; onaydan sonra `status: DRAFT` kaldırılır.
-
+2026-10-14: Kullanıcı 22 maddelik soru havuzunu onayladı ("onayladım"); `placement_bank.json` `status: APPROVED`. İş kapandı. Açık kalanlar başka işlerde: bilgilendirme metninin hukuk kontrolü (H-042), ebeveyn kapısı (H-043/H-044), havuzun büyütülmesi ve dinleme maddeleri (ileride ayrı iş), bildirim izni (H-013 ile ilk bölümden sonra).
