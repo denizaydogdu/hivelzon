@@ -95,6 +95,127 @@ class StaggeredList extends StatelessWidget {
   }
 }
 
+/// Tembel listede (`SliverList.builder`, ızgara) sırayla belirme, **yalnız
+/// öğenin ilk görünüşünde** (H-061). [seen] ekranın durumunda tutulur: liste
+/// kaydırılıp öğe yeniden kurulunca ya da arama süzünce yeniden oynamaz. İlk
+/// [AppMotion.staggerMaxItems] öğe dışındakiler beklemeden görünür.
+/// "Hareketi azalt" açıksa durağan.
+class StaggerOnce extends StatefulWidget {
+  const StaggerOnce({
+    super.key,
+    required this.id,
+    required this.index,
+    required this.seen,
+    required this.child,
+  });
+
+  /// Öğenin kalıcı kimliği (ör. ifade anahtarı).
+  final Object id;
+  final int index;
+  final Set<Object> seen;
+  final Widget child;
+
+  @override
+  State<StaggerOnce> createState() => _StaggerOnceState();
+}
+
+class _StaggerOnceState extends State<StaggerOnce> {
+  late final bool _play =
+      widget.index < AppMotion.staggerMaxItems && widget.seen.add(widget.id);
+
+  @override
+  Widget build(BuildContext context) {
+    // `_play` ilk kurulumda bir kez hesaplanır ve kimlik o anda işaretlenir.
+    final play = _play;
+    if (!play || AppMotion.reduced(context)) return widget.child;
+    return StaggeredList.staggerIn(widget.child, widget.index);
+  }
+}
+
+/// Sakin belirme (H-061): geri bildirim ve özet ikonları hafifçe büyüyerek
+/// gelir (0,85 → 1, 400 ms); zıplama, titreme ya da tekrar yok (K-32).
+/// "Hareketi azalt" açıksa doğrudan son hâli.
+class CalmPop extends StatelessWidget {
+  const CalmPop({super.key, required this.child});
+
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) {
+    if (AppMotion.reduced(context)) return child;
+    return child
+        .animate()
+        .fadeIn(duration: AppMotion.base, curve: AppMotion.enter)
+        .scaleXY(
+          begin: 0.85,
+          end: 1,
+          duration: AppMotion.slow,
+          curve: Curves.easeOutBack,
+        );
+  }
+}
+
+/// Sakin kutlama (H-061): fener ışığı gibi iki yumuşak sarı halka ve ortada
+/// ikon. Bir kez belirir; dış halka hafifçe genişleyip yerine oturur. Konfeti,
+/// ses, titreme ya da tekrar eden ışık yok (K-32). Hareket azaltılmışsa
+/// durağan. Ekran okuyucuya görünmez (süs).
+class CalmCelebration extends StatelessWidget {
+  const CalmCelebration({super.key, required this.icon, this.size = 112});
+
+  final IconData icon;
+  final double size;
+
+  @override
+  Widget build(BuildContext context) {
+    final still = AppMotion.reduced(context);
+    Widget halo = Container(
+      width: size,
+      height: size,
+      decoration: const BoxDecoration(
+        color: AppPalette.yellow100,
+        shape: BoxShape.circle,
+      ),
+    );
+    if (!still) {
+      halo = halo
+          .animate()
+          .fadeIn(duration: AppMotion.slow, curve: AppMotion.enter)
+          .scaleXY(
+            begin: 0.6,
+            end: 1,
+            duration: AppMotion.slow * 2,
+            curve: AppMotion.enter,
+          );
+    }
+    return ExcludeSemantics(
+      child: SizedBox.square(
+        dimension: size,
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            halo,
+            CalmPop(
+              child: Container(
+                width: size * 0.68,
+                height: size * 0.68,
+                decoration: const BoxDecoration(
+                  color: AppPalette.yellow200,
+                  shape: BoxShape.circle,
+                ),
+                child: Icon(
+                  icon,
+                  size: AppIconSize.xl,
+                  color: AppPalette.orange700,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
 /// Tek öğenin belirmesi (ör. bir panelin ilk açılışı). Hareket azaltılmışsa
 /// doğrudan görünür.
 class FadeSlideIn extends StatelessWidget {

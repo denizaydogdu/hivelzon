@@ -294,7 +294,8 @@ class GridSkeleton extends StatelessWidget {
         padding: const EdgeInsets.all(AppSpacing.sm),
         mainAxisSpacing: AppSpacing.sm,
         crossAxisSpacing: AppSpacing.sm,
-        childAspectRatio: 0.78,
+        // Dar ekranda (320 px) da kare + iki satır sığsın (H-061).
+        childAspectRatio: 0.7,
         children: [
           for (var i = 0; i < count; i++)
             Column(

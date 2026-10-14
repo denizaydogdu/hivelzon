@@ -173,10 +173,17 @@ abstract final class NotebookTexts {
   static String listHeading(int n) =>
       n == 0 ? 'Topladığın ifadeler' : 'Topladığın ifadeler ($n)';
   static const search = 'İngilizce ya da Türkçe ara';
-  static const empty =
-      'Defterin henüz boş. Bir bölümü bitirince hedef ifadeler buraya gelir. '
-      'Altyazıda bir kelimeye dokunup "Deftere ekle" de diyebilirsin.';
+  // Boş durum (H-061: illüstrasyonlu `EmptyState`; başlık + açıklama).
+  static const emptyTitle = 'Defterin henüz boş';
+  static const emptyBody =
+      'Bir bölümü bitirince hedef ifadeler buraya gelir. Altyazıda bir '
+      'kelimeye dokunup "Deftere ekle" de diyebilirsin.';
   static const noMatch = 'Aradığın ifade defterinde yok.';
+
+  /// Satırın kaynak satırı (H-061). Bölümden gelen ifadede kaynak, soldaki
+  /// bölüm etiketidir ("B1"); burada yalnız etiketi olmayanlar yazılır.
+  /// Kitaplık (H-067) buraya "Kitap: başlık, s. N" ekleyecek.
+  static const sourceTopicSet = 'Konu setinden';
   static const loadError =
       'Defter açılamadı. Uygulamayı yeniden başlatıp dene.';
   static String removed(String en) => '"$en" defterinden çıkarıldı.';
@@ -191,9 +198,9 @@ abstract final class NotebookTexts {
   static String dueInDays(int days) => '$days gün sonra yeniden gelecek.';
 
   // İpucu panosu
-  static const cluesEmpty =
-      'Henüz ipucu yok. Bölüm sonunda bulduğun ipuçları ve açık sorular '
-      'burada toplanır.';
+  static const cluesEmptyTitle = 'Henüz ipucu yok';
+  static const cluesEmptyBody =
+      'Bölüm sonunda bulduğun ipuçları ve açık sorular burada toplanır.';
   static const cluesError = 'İpucu panosu açılamadı.';
   static const openQuestions = 'Açık sorular';
   static String openQuestionLabel(int episode) =>
@@ -262,7 +269,11 @@ abstract final class HuntTexts {
       : n == 0
       ? 'Bu sefer nesnelere birlikte baktık.'
       : '$total nesneden $n tanesini kendin buldun.';
-  static String helped(int n) => '$n nesneye birlikte baktık.';
+  // Özetin istatistikleri (H-061, `StatRow`): sayı + kısa etiket; ekran
+  // okuyucu "10 nesneye baktın" diye okur. Puan, yüzde, "yanlış" yok.
+  static const statTotal = 'nesneye baktın';
+  static const statAlone = 'kendin buldun';
+  static const statHelped = 'birlikte baktık';
   static String deckUpdated(int n) =>
       'Defterindeki $n ifadenin tekrar zamanı güncellendi.';
   static const notInDeck =
@@ -300,8 +311,11 @@ abstract final class ReviewTexts {
   static const continueAction = 'Devam et';
   static const doneTitle = 'Tekrar tamam';
   static String reviewed(int n) => '$n ifadeyi tekrar ettin.';
-  static String tomorrow(int n) => '$n ifade yarın yeniden gelecek.';
-  static String later(int n) => '$n ifade daha sonra gelecek.';
+  // Özetin istatistikleri (H-061, `StatRow`; sıfır olanlar gösterilmez):
+  // ekran okuyucu "2 ifade yarın gelecek" diye okur.
+  static const statFirstTry = 'ilk seferde bildin';
+  static const statTomorrow = 'ifade yarın gelecek';
+  static const statLater = 'ifade sonra gelecek';
   static const done = 'Tamam';
 }
 

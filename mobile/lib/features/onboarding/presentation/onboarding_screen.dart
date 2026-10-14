@@ -795,12 +795,10 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
         const SizedBox(height: AppSpace.s4),
         Align(
           alignment: AlignmentDirectional.centerStart,
-          child: OutlinedButton.icon(
+          child: DontKnowButton(
             key: const ValueKey('placement-dont-know'),
-            style: AppButtonStyles.dontKnow(),
+            label: OnboardingTexts.dontKnow,
             onPressed: () => _answer(null),
-            icon: const Icon(AppButtonStyles.dontKnowIcon),
-            label: const Text(OnboardingTexts.dontKnow),
           ),
         ),
       ],

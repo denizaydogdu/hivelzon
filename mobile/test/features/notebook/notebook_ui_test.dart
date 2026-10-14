@@ -16,6 +16,7 @@ import 'package:hivelzon/shared/content/content_providers.dart';
 import 'package:hivelzon/shared/meaning/learning_event_log.dart';
 import 'package:hivelzon/shared/storage/app_database.dart';
 import 'package:hivelzon/shared/storage/storage_providers.dart';
+import 'package:hivelzon/shared/ui/ui.dart';
 import 'package:video_player_platform_interface/video_player_platform_interface.dart';
 
 import '../../support/fake_content_source.dart';
@@ -279,7 +280,13 @@ void main() {
 
       expect(find.text('Tekrar tamam'), findsOneWidget);
       expect(find.text('5 ifadeyi tekrar ettin.'), findsOneWidget);
-      expect(find.text('2 ifade yarın yeniden gelecek.'), findsOneWidget);
+      // H-061: yarın gelecekler özet istatistiğinde (`StatRow`).
+      expect(
+        tester
+            .widget<StatTile>(find.byKey(const ValueKey('summary-tomorrow')))
+            .count,
+        2,
+      );
       expect(find.textContaining('seri'), findsNothing);
 
       final logs = await tester.runAsync(() => db.select(db.reviewLogs).get());

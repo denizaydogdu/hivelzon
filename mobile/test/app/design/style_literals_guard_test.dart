@@ -8,7 +8,8 @@ import 'package:flutter_test/flutter_test.dart';
 ///
 /// Aşağıdaki taban çizgisi 2026-10-14'teki durumdur (H-057 sonrasında:
 /// `Color(0x` 31 → 10, `fontSize:` 40 → 37; H-060 sonrasında `Color(0x`
-/// 10 → 1, `fontSize:` 37 → 36). Sayılar yalnızca **azalabilir**:
+/// 10 → 1, `fontSize:` 37 → 36; H-061 sonrasında `fontSize:` 36 → 33).
+/// Sayılar yalnızca **azalabilir**:
 /// ekran fazları (H-059…H-064) bir dosyayı temizleyince o dosyanın satırını
 /// düşür ya da sil. Yeni dosyada (ör. `lib/shared/ui/`) sabit stil olmaz.
 const _colorBaseline = <String, int>{
@@ -16,9 +17,6 @@ const _colorBaseline = <String, int>{
 };
 
 const _fontSizeBaseline = <String, int>{
-  'lib/features/topic_sets/presentation/topic_set_screen.dart': 1,
-  'lib/features/topic_sets/presentation/scene_hunt_screen.dart': 1,
-  'lib/features/notebook/presentation/widgets/card_face.dart': 1,
   'lib/features/player/presentation/player_screen.dart': 3,
   'lib/features/player/presentation/widgets/opening_overlays.dart': 2,
   'lib/features/player/presentation/widgets/card_view.dart': 3,

@@ -314,8 +314,12 @@ void main() {
 
       // 2) Bilmiyorum → yeri gösterilir.
       expect(find.text('Nesne 2 / 10'), findsOneWidget);
+      // H-061: ortak `DontKnowButton` bileşeni; içindeki düğmenin biçimi.
       final dontKnow = tester.widget<ButtonStyleButton>(
-        find.byKey(const ValueKey('hunt-dont-know')),
+        find.descendant(
+          of: find.byKey(const ValueKey('hunt-dont-know')),
+          matching: find.byWidgetPredicate((w) => w is ButtonStyleButton),
+        ),
       );
       expect(dontKnow.style!.minimumSize!.resolve({})!.height, 48);
       await tapKey(tester, 'hunt-dont-know');

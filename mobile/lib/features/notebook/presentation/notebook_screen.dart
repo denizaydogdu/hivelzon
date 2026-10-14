@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../app/design/design.dart';
 import '../../../app/router.dart';
-import '../../../app/theme.dart';
 import '../../../l10n/tr_strings.dart';
 import '../../../shared/content/content_providers.dart';
 import '../../../shared/content/content_source.dart';
 import '../../../shared/perf/perf_log.dart';
 import '../../../shared/text/turkish.dart';
+import '../../../shared/ui/ui.dart';
 import '../../../shared/widgets/skeleton.dart';
 import '../../hi/application/hi_providers.dart';
 import '../../hi/presentation/hi_cards.dart';
@@ -16,9 +17,11 @@ import '../../player/presentation/player_screen.dart';
 import '../../topic_sets/presentation/topic_set_widgets.dart';
 import '../application/card_audio_player.dart';
 import '../application/notebook_providers.dart';
+import '../domain/clue_board.dart';
 import '../domain/notebook_item.dart';
 import '../domain/review_session.dart';
 import 'widgets/card_face.dart';
+import 'widgets/notebook_row.dart';
 
 /// Kart sesi çalar (ekran başına bir tane; testlerde sahte video platformu).
 CardAudioPlayer createCardAudio(WidgetRef ref) {
@@ -41,7 +44,18 @@ Future<void> openReview(BuildContext context, WidgetRef ref) async {
   if (context.mounted) refreshNotebook(ref);
 }
 
-/// Profil → Defter (H-036, tasarım T5): "İfadeler | İpucu panosu".
+/// Boş Defter ve boş İpucu panosu illüstrasyonları (H-058).
+abstract final class NotebookIllustrations {
+  static const emptyNotebook = AssetImage(
+    'assets/illustrations/bos-defter.webp',
+  );
+  static const emptyClues = AssetImage('assets/illustrations/bos-ipucu.webp');
+  static const nothingDue = AssetImage('assets/illustrations/tekrar-yok.webp');
+}
+
+/// Profil → Defter (H-036; tasarım H-061, taslak S04): "İfadeler | İpucu
+/// panosu | Konu setleri". Bütün öğeler tek satır biçimiyle ([NotebookRow])
+/// ve ilk açılışta sırayla belirir.
 class NotebookScreen extends ConsumerStatefulWidget {
   const NotebookScreen({super.key, this.initialTab = 0});
 
@@ -55,6 +69,9 @@ class _NotebookScreenState extends ConsumerState<NotebookScreen> {
   late int _tab = widget.initialTab;
   late final CardAudioPlayer _audio;
   String _query = '';
+
+  /// Belirme animasyonu oynamış satırlar (kaydırınca yeniden oynamaz).
+  final Set<Object> _seen = {};
 
   @override
   void initState() {
@@ -76,14 +93,14 @@ class _NotebookScreenState extends ConsumerState<NotebookScreen> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    Widget label(String text) => Text(
+      text,
+      textAlign: TextAlign.center,
+      maxLines: 2,
+      overflow: TextOverflow.ellipsis,
+    );
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: theme.colorScheme.surface,
-        title: const Text(
-          NotebookTexts.title,
-          style: TextStyle(fontWeight: FontWeight.w700),
-        ),
-      ),
+      appBar: AppBar(title: const Text(NotebookTexts.title)),
       body: SafeArea(
         top: false,
         child: PerfScope(
@@ -92,39 +109,35 @@ class _NotebookScreenState extends ConsumerState<NotebookScreen> {
             slivers: [
               SliverPadding(
                 padding: const EdgeInsets.fromLTRB(
-                  AppSpacing.sm,
-                  AppSpacing.xs,
-                  AppSpacing.sm,
+                  AppSpace.page,
+                  AppSpace.s8,
+                  AppSpace.page,
                   0,
                 ),
                 sliver: SliverList.list(
                   children: [
+                    // Sekme kontrolü temadan (H-057 `segmentedButtonTheme`).
                     SegmentedButton<int>(
                       key: const ValueKey('notebook-tabs'),
                       showSelectedIcon: false,
-                      style: SegmentedButton.styleFrom(
-                        minimumSize: const Size(48, 48),
-                        selectedBackgroundColor: AppColors.seaBlue,
-                        selectedForegroundColor: Colors.white,
-                      ),
-                      segments: const [
+                      segments: [
                         ButtonSegment(
                           value: 0,
-                          label: Text(NotebookTexts.tabPhrases),
+                          label: label(NotebookTexts.tabPhrases),
                         ),
                         ButtonSegment(
                           value: 1,
-                          label: Text(NotebookTexts.tabClues),
+                          label: label(NotebookTexts.tabClues),
                         ),
                         ButtonSegment(
                           value: 2,
-                          label: Text(NotebookTexts.tabSets),
+                          label: label(NotebookTexts.tabSets),
                         ),
                       ],
                       selected: {_tab},
                       onSelectionChanged: (s) => setState(() => _tab = s.first),
                     ),
-                    const SizedBox(height: AppSpacing.xs),
+                    const SizedBox(height: AppSpace.s12),
                     Text(
                       switch (_tab) {
                         0 => NotebookTexts.phrasesIntro,
@@ -132,9 +145,11 @@ class _NotebookScreenState extends ConsumerState<NotebookScreen> {
                         _ => NotebookTexts.setsIntro,
                       },
                       key: const ValueKey('notebook-intro'),
-                      style: theme.textTheme.bodyMedium,
+                      style: theme.textTheme.bodyMedium?.copyWith(
+                        color: AppPalette.ink500,
+                      ),
                     ),
-                    const SizedBox(height: AppSpacing.sm),
+                    const SizedBox(height: AppSpace.s16),
                   ],
                 ),
               ),
@@ -154,7 +169,8 @@ class _NotebookScreenState extends ConsumerState<NotebookScreen> {
     final overview = ref.watch(reviewOverviewProvider);
     final entries = ref.watch(notebookEntriesProvider);
     final theme = Theme.of(context);
-    final pad = const EdgeInsets.symmetric(horizontal: AppSpacing.sm);
+    const pad = EdgeInsets.symmetric(horizontal: AppSpace.page);
+    final empty = entries.value?.isEmpty ?? false;
     return [
       SliverPadding(
         padding: pad,
@@ -165,50 +181,47 @@ class _NotebookScreenState extends ConsumerState<NotebookScreen> {
       // Hi'nin konu notları (H-048): görülen konu kartları yeniden açılır.
       const SliverPadding(
         padding: EdgeInsets.fromLTRB(
-          AppSpacing.sm,
-          AppSpacing.sm,
-          AppSpacing.sm,
+          AppSpace.page,
+          AppSpace.s12,
+          AppSpace.page,
           0,
         ),
         sliver: SliverToBoxAdapter(child: _TopicNotes()),
       ),
       SliverPadding(
-        padding: pad.copyWith(top: AppSpacing.md),
+        padding: pad.copyWith(top: AppSpace.s24),
         sliver: SliverToBoxAdapter(
-          child: Text(
-            NotebookTexts.listHeading(entries.value?.length ?? 0),
-            key: const ValueKey('notebook-list-heading'),
-            style: theme.textTheme.titleMedium?.copyWith(
-              fontWeight: FontWeight.w700,
+          child: Semantics(
+            header: true,
+            child: Text(
+              NotebookTexts.listHeading(entries.value?.length ?? 0),
+              key: const ValueKey('notebook-list-heading'),
+              style: theme.textTheme.titleMedium,
             ),
           ),
         ),
       ),
-      SliverPadding(
-        padding: pad.copyWith(top: AppSpacing.xs),
-        sliver: SliverToBoxAdapter(
-          child: TextField(
-            key: const ValueKey('notebook-search'),
-            decoration: InputDecoration(
-              prefixIcon: const Icon(Icons.search_rounded),
-              hintText: NotebookTexts.search,
-              filled: true,
-              fillColor: Colors.white.withValues(alpha: 0.7),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(AppTheme.radius),
-                borderSide: BorderSide.none,
+      // Boş defterde arama alanı yok: yerine illüstrasyonlu davet.
+      if (!empty)
+        SliverPadding(
+          padding: pad.copyWith(top: AppSpace.s8),
+          sliver: SliverToBoxAdapter(
+            child: TextField(
+              key: const ValueKey('notebook-search'),
+              decoration: const InputDecoration(
+                prefixIcon: Icon(Icons.search_rounded),
+                hintText: NotebookTexts.search,
               ),
+              onChanged: (v) => setState(() => _query = lowerTr(v.trim())),
             ),
-            onChanged: (v) => setState(() => _query = lowerTr(v.trim())),
           ),
         ),
-      ),
       switch (entries) {
         AsyncData(:final value) => _list(value),
         AsyncError() => const SliverToBoxAdapter(
-          child: _Message(
+          child: EmptyState(
             icon: Icons.error_outline_rounded,
-            text: NotebookTexts.loadError,
+            title: NotebookTexts.loadError,
           ),
         ),
         // H-054: spinner yerine liste iskeleti.
@@ -219,7 +232,7 @@ class _NotebookScreenState extends ConsumerState<NotebookScreen> {
           ),
         ),
       },
-      const SliverToBoxAdapter(child: SizedBox(height: AppSpacing.lg)),
+      const SliverToBoxAdapter(child: SizedBox(height: AppSpace.s32)),
     ];
   }
 
@@ -227,9 +240,14 @@ class _NotebookScreenState extends ConsumerState<NotebookScreen> {
     PerfLog.markAfterFrame('Defter listesi hazır');
     if (all.isEmpty) {
       return const SliverToBoxAdapter(
-        child: _Message(
-          icon: Icons.menu_book_outlined,
-          text: NotebookTexts.empty,
+        child: EmptyState(
+          key: ValueKey('notebook-empty'),
+          illustration: Image(
+            image: NotebookIllustrations.emptyNotebook,
+            fit: BoxFit.contain,
+          ),
+          title: NotebookTexts.emptyTitle,
+          message: NotebookTexts.emptyBody,
         ),
       );
     }
@@ -245,69 +263,55 @@ class _NotebookScreenState extends ConsumerState<NotebookScreen> {
           ];
     if (list.isEmpty) {
       return const SliverToBoxAdapter(
-        child: _Message(
+        child: EmptyState(
+          key: ValueKey('notebook-no-match'),
           icon: Icons.search_off_rounded,
-          text: NotebookTexts.noMatch,
+          title: NotebookTexts.noMatch,
         ),
       );
     }
     return SliverPadding(
       padding: const EdgeInsets.fromLTRB(
-        AppSpacing.sm,
-        AppSpacing.xs,
-        AppSpacing.sm,
+        AppSpace.page,
+        AppSpace.s12,
+        AppSpace.page,
         0,
       ),
       sliver: SliverList.separated(
         itemCount: list.length,
-        separatorBuilder: (_, _) => const SizedBox(height: AppSpacing.xs),
-        itemBuilder: (context, i) => _EntryTile(
-          entry: list[i],
-          audio: _audio,
-          onOpen: () => _openDetail(list[i]),
-          onRemove: isRemovable(list[i].item) ? () => _remove(list[i]) : null,
-        ),
+        separatorBuilder: (_, _) => const SizedBox(height: AppSpace.s8),
+        itemBuilder: (context, i) {
+          final e = list[i];
+          return StaggerOnce(
+            id: e.item.key,
+            index: i,
+            seen: _seen,
+            child: _EntryRow(
+              entry: e,
+              audio: _audio,
+              onOpen: () => _openDetail(e),
+              onRemove: isRemovable(e.item) ? () => _remove(e) : null,
+            ),
+          );
+        },
       ),
     );
   }
 
   Future<void> _openDetail(NotebookEntry e) async {
-    await showModalBottomSheet<void>(
+    await showAppSheet<void>(
       context: context,
-      isScrollControlled: true,
-      useSafeArea: true,
-      useRootNavigator: true,
-      backgroundColor: AppColors.sand,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(
-          top: Radius.circular(AppTheme.radius),
-        ),
-      ),
-      builder: (context) => DraggableScrollableSheet(
-        expand: false,
-        initialChildSize: 0.8,
-        maxChildSize: 0.95,
-        builder: (context, scroll) => ListView(
-          key: const ValueKey('card-detail'),
-          controller: scroll,
-          padding: const EdgeInsets.all(AppSpacing.sm),
+      builder: (context) => SingleChildScrollView(
+        key: const ValueKey('card-detail'),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Align(
-              alignment: Alignment.centerRight,
-              child: IconButton(
-                tooltip: CommonTexts.close,
-                constraints: const BoxConstraints(minWidth: 48, minHeight: 48),
-                onPressed: () => Navigator.of(context).maybePop(),
-                icon: const Icon(Icons.close_rounded),
-              ),
-            ),
             CardFace(item: e.item, player: _audio),
-            const SizedBox(height: AppSpacing.sm),
-            Text(
-              _dueText(e.card),
-              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                color: AppColors.ink.withValues(alpha: 0.75),
-              ),
+            const SizedBox(height: AppSpace.s16),
+            InfoCard(
+              icon: Icons.schedule_rounded,
+              tone: InfoTone.info,
+              title: _dueText(e.card),
             ),
           ],
         ),
@@ -332,34 +336,34 @@ class _NotebookScreenState extends ConsumerState<NotebookScreen> {
   /// H-051: hikâye mekânlarına bağlı konu setleri.
   List<Widget> _sets() => const [
     SliverPadding(
-      padding: EdgeInsets.symmetric(horizontal: AppSpacing.sm),
+      padding: EdgeInsets.symmetric(horizontal: AppSpace.page),
       sliver: SliverToBoxAdapter(child: TopicSetsSection()),
     ),
-    SliverToBoxAdapter(child: SizedBox(height: AppSpacing.lg)),
+    SliverToBoxAdapter(child: SizedBox(height: AppSpace.s32)),
   ];
 
   List<Widget> _clues(BuildContext context) {
     final board = ref.watch(clueBoardProvider);
     return [
       SliverPadding(
-        padding: const EdgeInsets.symmetric(horizontal: AppSpacing.sm),
+        padding: const EdgeInsets.symmetric(horizontal: AppSpace.page),
         sliver: SliverToBoxAdapter(
           child: switch (board) {
-            AsyncData(:final value) => _ClueBoard(data: value),
-            AsyncError() => const _Message(
+            AsyncData(:final value) => _ClueBoard(data: value, seen: _seen),
+            AsyncError() => const EmptyState(
               icon: Icons.error_outline_rounded,
-              text: NotebookTexts.cluesError,
+              title: NotebookTexts.cluesError,
             ),
             _ => const ListSkeleton(
               key: ValueKey('skeleton-clues'),
               label: NotebookTexts.cluesLoading,
               rows: 3,
-              padding: EdgeInsets.only(top: AppSpacing.xs),
+              padding: EdgeInsets.only(top: AppSpace.s8),
             ),
           },
         ),
       ),
-      const SliverToBoxAdapter(child: SizedBox(height: AppSpacing.lg)),
+      const SliverToBoxAdapter(child: SizedBox(height: AppSpace.s32)),
     ];
   }
 }
@@ -380,7 +384,8 @@ String _dueText(ReviewCardState c) {
   return NotebookTexts.dueInDays(days);
 }
 
-/// "Kelime tekrarı" kartı (T5 üst kart): sayı cümle içinde, tahmini süreyle.
+/// "Kelime tekrarı" kartı (taslak S04 üst kart): ikon + etiket + sayı cümle
+/// içinde (tahmini süreyle) + tam genişlik "Tekrara başla".
 class _ReviewCard extends ConsumerWidget {
   const _ReviewCard({required this.overview});
 
@@ -391,61 +396,88 @@ class _ReviewCard extends ConsumerWidget {
     final theme = Theme.of(context);
     final o = overview;
     final n = o?.sessionCount ?? 0;
-    return Card(
+    final due = o != null && n > 0;
+    return TappableCard(
       key: const ValueKey('notebook-review-card'),
-      margin: EdgeInsets.zero,
-      color: Colors.white,
-      child: Padding(
-        padding: const EdgeInsets.all(AppSpacing.sm),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Text(
-              upperTr(NotebookTexts.reviewHeading),
-              style: theme.textTheme.labelLarge?.copyWith(
-                color: AppColors.seaBlue,
-                fontWeight: FontWeight.w700,
-                letterSpacing: 1.2,
+      elevated: due,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Row(
+            children: [
+              ExcludeSemantics(
+                child: Container(
+                  width: AppSpace.s48,
+                  height: AppSpace.s48,
+                  decoration: BoxDecoration(
+                    color: due ? AppPalette.yellow100 : AppPalette.seaBlue50,
+                    shape: BoxShape.circle,
+                  ),
+                  child: Icon(
+                    due ? Icons.replay_rounded : Icons.check_rounded,
+                    color: due ? AppPalette.orange700 : AppPalette.seaBlue,
+                  ),
+                ),
               ),
-            ),
-            const SizedBox(height: 4),
-            Text(
-              o == null
-                  ? NotebookTexts.reviewPreparing
-                  : n > 0
-                  ? NotebookTexts.reviewDue(n, HomeTexts.reviewMinutes(n))
-                  : o.totalItems == 0
-                  ? NotebookTexts.reviewEmpty
-                  : NotebookTexts.reviewDoneToday,
-              key: const ValueKey('notebook-review-text'),
-              style: theme.textTheme.titleMedium?.copyWith(
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-            if (o != null && n > 0) ...[
-              const SizedBox(height: 4),
-              Text(
-                NotebookTexts.reviewHowTo,
-                style: theme.textTheme.bodyMedium,
-              ),
-              const SizedBox(height: AppSpacing.sm),
-              FilledButton.icon(
-                key: const ValueKey('notebook-start-review'),
-                onPressed: () => openReview(context, ref),
-                style: FilledButton.styleFrom(minimumSize: const Size(48, 48)),
-                icon: const Icon(Icons.play_arrow_rounded),
-                label: const Text(NotebookTexts.reviewStart),
+              const SizedBox(width: AppSpace.s12),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const CapsLabel(
+                      NotebookTexts.reviewHeading,
+                      tone: CapsTone.blue,
+                    ),
+                    const SizedBox(height: AppSpace.s4),
+                    Text(
+                      o == null
+                          ? NotebookTexts.reviewPreparing
+                          : n > 0
+                          ? NotebookTexts.reviewDue(
+                              n,
+                              HomeTexts.reviewMinutes(n),
+                            )
+                          : o.totalItems == 0
+                          ? NotebookTexts.reviewEmpty
+                          : NotebookTexts.reviewDoneToday,
+                      key: const ValueKey('notebook-review-text'),
+                      style: theme.textTheme.titleMedium?.copyWith(
+                        color: AppPalette.ink,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ],
+          ),
+          if (due) ...[
+            const SizedBox(height: AppSpace.s8),
+            Text(
+              NotebookTexts.reviewHowTo,
+              style: theme.textTheme.bodyMedium?.copyWith(
+                color: AppPalette.ink500,
+              ),
+            ),
+            const SizedBox(height: AppSpace.s16),
+            FilledButton.icon(
+              key: const ValueKey('notebook-start-review'),
+              onPressed: () => openReview(context, ref),
+              style: FilledButton.styleFrom(
+                minimumSize: const Size.fromHeight(AppTouch.primary),
+              ),
+              icon: const Icon(Icons.play_arrow_rounded),
+              label: const Text(NotebookTexts.reviewStart),
+            ),
           ],
-        ),
+        ],
       ),
     );
   }
 }
 
-class _EntryTile extends StatelessWidget {
-  const _EntryTile({
+/// İfade satırı: [NotebookRow] + ses + (çıkarılabilirse) menü, değilse ok.
+class _EntryRow extends StatelessWidget {
+  const _EntryRow({
     required this.entry,
     required this.audio,
     required this.onOpen,
@@ -460,183 +492,109 @@ class _EntryTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final item = entry.item;
-    final theme = Theme.of(context);
-    final tag = item.episodeTag;
-    return Material(
-      color: Colors.white.withValues(alpha: 0.85),
-      borderRadius: BorderRadius.circular(AppTheme.radius),
-      child: InkWell(
-        key: ValueKey('entry-${item.key}'),
-        borderRadius: BorderRadius.circular(AppTheme.radius),
-        onTap: onOpen,
-        child: ConstrainedBox(
-          constraints: const BoxConstraints(minHeight: 64),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: AppSpacing.sm,
-              vertical: AppSpacing.xs,
-            ),
-            child: Row(
-              children: [
-                if (tag != null) EpisodeTag(tag: tag),
-                const SizedBox(width: AppSpacing.sm),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        item.textEn,
-                        style: theme.textTheme.titleMedium?.copyWith(
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                      if (item.textTr != null)
-                        Text(
-                          item.textTr!,
-                          style: theme.textTheme.bodyMedium?.copyWith(
-                            color: AppColors.ink.withValues(alpha: 0.7),
-                          ),
-                        ),
-                    ],
-                  ),
-                ),
-                AudioButton(player: audio, item: item, size: 24),
-                if (onRemove != null)
-                  PopupMenuButton<String>(
-                    key: ValueKey('entry-menu-${item.key}'),
-                    tooltip: NotebookTexts.options,
-                    onSelected: (_) => onRemove!(),
-                    itemBuilder: (_) => const [
-                      PopupMenuItem(
-                        value: 'remove',
-                        child: Text(NotebookTexts.remove),
-                      ),
-                    ],
-                  )
-                else
-                  const Icon(
-                    Icons.chevron_right_rounded,
-                    color: AppColors.ink,
-                    semanticLabel: NotebookTexts.openCard,
-                  ),
-              ],
+    return NotebookRow(
+      tapKey: ValueKey('entry-${item.key}'),
+      onTap: onOpen,
+      leading: notebookLeading(item),
+      title: item.textEn,
+      subtitle: item.textTr,
+      source: notebookSourceLine(item),
+      trailing: [
+        AudioButton(player: audio, item: item, size: AppIconSize.md),
+        if (onRemove != null)
+          PopupMenuButton<String>(
+            key: ValueKey('entry-menu-${item.key}'),
+            tooltip: NotebookTexts.options,
+            onSelected: (_) => onRemove!(),
+            itemBuilder: (_) => const [
+              PopupMenuItem(value: 'remove', child: Text(NotebookTexts.remove)),
+            ],
+          )
+        else
+          const Padding(
+            padding: EdgeInsets.only(right: AppSpace.s8),
+            child: Icon(
+              Icons.chevron_right_rounded,
+              color: AppPalette.ink300,
+              semanticLabel: NotebookTexts.openCard,
             ),
           ),
-        ),
-      ),
+      ],
     );
   }
 }
 
 class _ClueBoard extends StatelessWidget {
-  const _ClueBoard({required this.data});
+  const _ClueBoard({required this.data, required this.seen});
 
   final ClueBoardData data;
+  final Set<Object> seen;
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     if (data.isEmpty) {
-      return const _Message(
-        icon: Icons.push_pin_outlined,
-        text: NotebookTexts.cluesEmpty,
+      return const EmptyState(
+        key: ValueKey('clues-empty'),
+        illustration: Image(
+          image: NotebookIllustrations.emptyClues,
+          fit: BoxFit.contain,
+        ),
+        title: NotebookTexts.cluesEmptyTitle,
+        message: NotebookTexts.cluesEmptyBody,
       );
     }
-    final heading = theme.textTheme.titleMedium?.copyWith(
-      fontWeight: FontWeight.w700,
-    );
+    final heading = theme.textTheme.titleMedium;
+    var index = 0;
+    Widget enter(Object id, Widget child) =>
+        StaggerOnce(id: id, index: index++, seen: seen, child: child);
     return Column(
       key: const ValueKey('clue-board'),
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         if (data.openQuestions.isNotEmpty) ...[
-          Text(NotebookTexts.openQuestions, style: heading),
-          const SizedBox(height: AppSpacing.xs),
+          Semantics(
+            header: true,
+            child: Text(NotebookTexts.openQuestions, style: heading),
+          ),
+          const SizedBox(height: AppSpace.s8),
           for (final q in data.openQuestions) ...[
-            Card(
-              key: ValueKey('open-question-${q.id}'),
-              margin: EdgeInsets.zero,
-              color: AppColors.seaBlue,
-              child: Padding(
-                padding: const EdgeInsets.all(AppSpacing.sm),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      NotebookTexts.openQuestionLabel(q.openedNumber),
-                      style: theme.textTheme.labelMedium?.copyWith(
-                        color: AppColors.lighthouseYellow,
-                        fontWeight: FontWeight.w700,
-                        letterSpacing: 1.2,
-                      ),
-                    ),
-                    const SizedBox(height: 4),
-                    Text(
-                      q.textTr,
-                      style: theme.textTheme.titleMedium?.copyWith(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                    if (q.partialNote != null) ...[
-                      const SizedBox(height: 4),
-                      Text(
-                        NotebookTexts.partialNote(q.partialNote!),
-                        style: theme.textTheme.bodyMedium?.copyWith(
-                          color: Colors.white.withValues(alpha: 0.9),
-                        ),
-                      ),
-                    ],
-                  ],
-                ),
-              ),
-            ),
-            const SizedBox(height: AppSpacing.xs),
+            enter('q-${q.id}', _OpenQuestionCard(question: q)),
+            const SizedBox(height: AppSpace.s8),
           ],
-          const SizedBox(height: AppSpacing.sm),
+          const SizedBox(height: AppSpace.s16),
         ],
         if (data.clues.isNotEmpty) ...[
-          Text(NotebookTexts.foundClues, style: heading),
-          const SizedBox(height: AppSpacing.xs),
+          Semantics(
+            header: true,
+            child: Text(NotebookTexts.foundClues, style: heading),
+          ),
+          const SizedBox(height: AppSpace.s8),
           for (final e in data.clues.entries) ...[
-            Text(
-              _episodeLabel(e.key),
-              style: theme.textTheme.labelLarge?.copyWith(
-                color: AppColors.seaBlue,
-                fontWeight: FontWeight.w700,
-                letterSpacing: 1.1,
+            Padding(
+              padding: const EdgeInsets.only(
+                left: AppSpace.s4,
+                bottom: AppSpace.s8,
               ),
+              child: CapsLabel(_episodeLabel(e.key), tone: CapsTone.blue),
             ),
-            const SizedBox(height: 4),
             for (final c in e.value)
               Padding(
-                padding: const EdgeInsets.only(bottom: AppSpacing.xs),
-                child: Material(
-                  key: ValueKey('clue-${c.contentId}-${c.clueId}'),
-                  color: Colors.white.withValues(alpha: 0.85),
-                  borderRadius: BorderRadius.circular(AppTheme.radius),
-                  child: Padding(
-                    padding: const EdgeInsets.all(AppSpacing.sm),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Icon(
-                          Icons.push_pin_rounded,
-                          color: AppColors.eveningOrange,
-                        ),
-                        const SizedBox(width: AppSpacing.xs),
-                        Expanded(
-                          child: Text(
-                            c.textTr,
-                            style: theme.textTheme.bodyLarge,
-                          ),
-                        ),
-                      ],
+                padding: const EdgeInsets.only(bottom: AppSpace.s8),
+                child: enter(
+                  'c-${c.contentId}-${c.clueId}',
+                  NotebookRow(
+                    tapKey: ValueKey('clue-${c.contentId}-${c.clueId}'),
+                    leading: const KindBadge(
+                      icon: Icons.push_pin_rounded,
+                      background: AppPalette.orange50,
+                      color: AppPalette.orange700,
                     ),
+                    title: c.textTr,
                   ),
                 ),
               ),
-            const SizedBox(height: AppSpacing.xs),
+            const SizedBox(height: AppSpace.s8),
           ],
         ],
       ],
@@ -651,26 +609,67 @@ class _ClueBoard extends StatelessWidget {
   }
 }
 
-class _Message extends StatelessWidget {
-  const _Message({required this.icon, required this.text});
+/// Açık soru: deniz mavisi kart, sarı etiket.
+class _OpenQuestionCard extends StatelessWidget {
+  const _OpenQuestionCard({required this.question});
 
-  final IconData icon;
-  final String text;
+  final OpenQuestion question;
 
   @override
-  Widget build(BuildContext context) => Padding(
-    padding: const EdgeInsets.symmetric(vertical: AppSpacing.md),
-    child: Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Icon(icon, color: AppColors.seaBlue),
-        const SizedBox(width: AppSpacing.sm),
-        Expanded(
-          child: Text(text, style: Theme.of(context).textTheme.bodyLarge),
-        ),
-      ],
-    ),
-  );
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final q = question;
+    return Container(
+      key: ValueKey('open-question-${q.id}'),
+      padding: const EdgeInsets.all(AppSpace.s16),
+      decoration: const BoxDecoration(
+        color: AppPalette.seaBlue,
+        borderRadius: AppRadius.mdAll,
+        boxShadow: AppShadows.level1,
+      ),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const ExcludeSemantics(
+            child: Icon(
+              Icons.help_outline_rounded,
+              color: AppPalette.lighthouseYellow,
+            ),
+          ),
+          const SizedBox(width: AppSpace.s12),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  NotebookTexts.openQuestionLabel(q.openedNumber),
+                  style: AppTypography.caps.copyWith(
+                    color: AppPalette.lighthouseYellow,
+                  ),
+                ),
+                const SizedBox(height: AppSpace.s4),
+                Text(
+                  q.textTr,
+                  style: theme.textTheme.titleMedium?.copyWith(
+                    color: AppPalette.white,
+                  ),
+                ),
+                if (q.partialNote != null) ...[
+                  const SizedBox(height: AppSpace.s4),
+                  Text(
+                    NotebookTexts.partialNote(q.partialNote!),
+                    style: theme.textTheme.bodyMedium?.copyWith(
+                      color: AppPalette.seaBlue100,
+                    ),
+                  ),
+                ],
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 }
 
 /// Hi'nin konu notları: bölümde görülen konu kartları (H-048).
@@ -682,48 +681,55 @@ class _TopicNotes extends ConsumerWidget {
     final theme = Theme.of(context);
     final intros = ref.watch(seenTopicIntrosProvider).value;
     if (intros == null) return const SizedBox.shrink();
-    return Card(
+    return TappableCard(
       key: const ValueKey('notebook-topic-notes'),
-      margin: EdgeInsets.zero,
-      color: Colors.white,
-      child: Padding(
-        padding: const EdgeInsets.all(AppSpacing.sm),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Text(
-              HiTexts.topicNotesHeading,
-              style: theme.textTheme.labelLarge?.copyWith(
-                color: AppColors.seaBlue,
-                fontWeight: FontWeight.w700,
-                letterSpacing: 0.3,
-              ),
-            ),
-            const SizedBox(height: 4),
-            Text(
-              intros.isEmpty
-                  ? HiTexts.topicNotesEmpty
-                  : HiTexts.topicNotesCount(intros.length),
-              style: theme.textTheme.bodyMedium,
-            ),
-            if (intros.isNotEmpty) ...[
-              const SizedBox(height: AppSpacing.xs),
-              Wrap(
-                spacing: AppSpacing.xs,
-                runSpacing: AppSpacing.xs,
-                children: [
-                  for (final t in intros)
-                    ActionChip(
-                      key: ValueKey('topic-note-${t.id}'),
-                      label: Text(t.titleEn),
-                      materialTapTargetSize: MaterialTapTargetSize.padded,
-                      onPressed: () => showTopicIntro(context, t),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Row(
+            children: [
+              const KindBadge(icon: Icons.lightbulb_outline_rounded),
+              const SizedBox(width: AppSpace.s12),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      HiTexts.topicNotesHeading,
+                      style: theme.textTheme.titleSmall?.copyWith(
+                        color: AppPalette.seaBlue,
+                      ),
                     ),
-                ],
+                    Text(
+                      intros.isEmpty
+                          ? HiTexts.topicNotesEmpty
+                          : HiTexts.topicNotesCount(intros.length),
+                      style: theme.textTheme.bodyMedium?.copyWith(
+                        color: AppPalette.ink500,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ],
+          ),
+          if (intros.isNotEmpty) ...[
+            const SizedBox(height: AppSpace.s8),
+            Wrap(
+              spacing: AppSpace.s8,
+              runSpacing: AppSpace.s8,
+              children: [
+                for (final t in intros)
+                  ActionChip(
+                    key: ValueKey('topic-note-${t.id}'),
+                    label: Text(t.titleEn),
+                    materialTapTargetSize: MaterialTapTargetSize.padded,
+                    onPressed: () => showTopicIntro(context, t),
+                  ),
+              ],
+            ),
           ],
-        ),
+        ],
       ),
     );
   }

@@ -145,7 +145,8 @@ Sonraki adım: oynatıcı metinleri de `tr_strings.dart` dosyasına taşınabili
 | Nasıl | Resme bak, dinle, seç. Bilmediğin kart sorun değil: … | Bilmediğin ifade sorun değil: … | Terim. |
 | Liste başlığı | Topladığım ifadeler | Topladığın ifadeler (5) | "Sen" dili; kaç ifade olduğu yazar. |
 | Arama | İfade ya da Türkçesi ara | İngilizce ya da Türkçe ara | Neyle arandığı açık. Arama `lowerTr` ile yapılır ("İ" doğru eşleşir). |
-| Boş | Defterin henüz boş. … "Deftere ekle" de diyebilirsin. | aynı | |
+| Boş | Defterin henüz boş. … "Deftere ekle" de diyebilirsin. | Başlık **Defterin henüz boş** + "Bir bölümü bitirince hedef ifadeler buraya gelir. Altyazıda bir kelimeye dokunup "Deftere ekle" de diyebilirsin." (illüstrasyonlu; boşken arama alanı yok) | H-061: `EmptyState` başlık + açıklama. |
+| Kaynak satırı | — | Konu setinden gelen ifadede satırın altında "Konu setinden" | H-061: tek satır biçimi. Bölümden gelenlerde kaynak soldaki "B1" etiketidir. Kitaplık (H-067) buraya "Kitap: başlık, s. N" ekleyecek. |
 | Eşleşme yok | Eşleşen ifade yok. | Aradığın ifade defterinde yok. | Sade. |
 | Hata | Defter açılamadı. Uygulamayı yeniden başlatmayı dene. | Defter açılamadı. Uygulamayı yeniden başlatıp dene. | Kısa. |
 | Çıkarıldı | "…" defterden çıkarıldı. | "…" defterinden çıkarıldı. | "Sen" dili. |
@@ -157,7 +158,8 @@ Sonraki adım: oynatıcı metinleri de `tr_strings.dart` dosyasına taşınabili
 |---|---|---|
 | Açık soru etiketi | AÇIK SORU · BÖLÜM 1 | aynı (`upperTr`) |
 | Bölüm etiketi | BÖLÜM 1 | aynı (`upperTr`) |
-| Diğerleri | "Açık sorular", "Bulduğun ipuçları", "Şimdilik bildiğin: …", "Henüz ipucu yok. …", "İpucu panosu açılamadı." | aynı |
+| Diğerleri | "Açık sorular", "Bulduğun ipuçları", "Şimdilik bildiğin: …", "İpucu panosu açılamadı." | aynı |
+| Boş | Henüz ipucu yok. Bölüm sonunda … toplanır. | Başlık **Henüz ipucu yok** + "Bölüm sonunda bulduğun ipuçları ve açık sorular burada toplanır." (illüstrasyonlu, H-061) |
 
 ### 5.3 Kelime tekrarı oturumu
 | Yer | Eski | Yeni | Neden |
@@ -166,7 +168,7 @@ Sonraki adım: oynatıcı metinleri de `tr_strings.dart` dosyasına taşınabili
 | Boş | Şu an tekrar edilecek kart yok · Kartlar zamanı gelince geri gelir. | Şu an tekrar edilecek ifade yok · İfadeler zamanı gelince yeniden gelir. | Terim. |
 | Geri bildirim | Bu kart oturumun sonunda yeniden gelecek. / Bu kartı yakında yeniden göreceksin. | Bu ifade … / Bu ifadeyi … | Terim. |
 | Düğme | Devam | **Devam et** | Fiil. |
-| Özet | 4 kartı tekrar ettin. · 2 kart yarın yeniden gelecek. · n kart daha sonra gelecek. | 5 ifadeyi tekrar ettin. · 2 ifade yarın yeniden gelecek. · n ifade daha sonra gelecek. | Terim. |
+| Özet | 4 kartı tekrar ettin. · 2 kart yarın yeniden gelecek. · n kart daha sonra gelecek. | 5 ifadeyi tekrar ettin. + sayı kutuları (`StatRow`, H-061): "4 · ilk seferde bildin", "2 · ifade yarın gelecek", "3 · ifade sonra gelecek". Sıfır olan kutu gösterilmez. | Terim; sayı kutusunda ne sayıldığı yazar. |
 | Görevler | "Resme ve anlama bak: doğru ifadeyi seç.", "Dinle ve duyduğun ifadeyi seç.", "Kelimeleri doğru sıraya diz.", "İngilizcesini yaz.", "İngilizcesini aklından söyle, sonra kartı aç." | aynı | |
 | Düğmeler | "Dinle", "Kontrol et", "Kartı aç", "Bildim", "Bilmiyorum", "Tamam", "Geri dön" | aynı | |
 | Yazma alanı | İngilizce yaz | İngilizcesini yaz | Görev cümlesiyle aynı. |
@@ -196,7 +198,7 @@ Sonraki adım: oynatıcı metinleri de `tr_strings.dart` dosyasına taşınabili
 | Buldu | "Buldun!" · kelime · Türkçesi · ses (varsa) · **Devam et** / sonda **Sonucu gör** | |
 | Bilmiyorum | **Bilmiyorum** (Kelime tekrarındaki biçim) → "Burada. Sorun değil, birlikte bakalım." | |
 | Ekran okuyucu seçenekleri | "Doğru nesneyi seç:" + Türkçe adlar | Bölgeler de Türkçe adıyla düğmedir. |
-| Özet | **Sahne avı tamam** · "10 nesnenin hepsini kendin buldun." / "10 nesneden 8 tanesini kendin buldun." / "Bu sefer nesnelere birlikte baktık." · "2 nesneye birlikte baktık." · "Defterindeki 10 ifadenin tekrar zamanı güncellendi." · "Bu nesneleri defterine eklersen kelime tekrarında da karşına çıkar." · **Tekrar oyna** · **Sete dön** | Puan, yüzde ya da "yanlış" sayısı yok. |
+| Özet | **Sahne avı tamam** · "10 nesnenin hepsini kendin buldun." / "10 nesneden 8 tanesini kendin buldun." / "Bu sefer nesnelere birlikte baktık." · sayı kutuları (H-061): "10 · nesneye baktın", "8 · kendin buldun", "2 · birlikte baktık" (sıfır olan gösterilmez) · "Defterindeki 10 ifadenin tekrar zamanı güncellendi." · "Bu nesneleri defterine eklersen kelime tekrarında da karşına çıkar." · **Tekrar oyna** · **Sete dön** | Puan, yüzde ya da "yanlış" sayısı yok. |
 | Defterden çıkarma | Konu setinden gelen ifade, "Deftere ekle" ile eklenen gibi "Defterden çıkar" menüsüyle çıkarılır. Set etkilenmez; "Hepsini defterime ekle" yeniden ekler. | |
 | Bölüm sonu | **YENİ KONU SETİ** · "Yeni konu seti açıldı: Alex'in odası" · **Konu setini aç**. Tekrar oynayışta **KONU SETİ** · "Bu bölümün yerindeki nesneler: Alex'in odası". | |
 

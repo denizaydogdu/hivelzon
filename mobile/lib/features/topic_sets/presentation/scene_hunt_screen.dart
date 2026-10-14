@@ -3,10 +3,12 @@ import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/semantics.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../app/theme.dart';
+import '../../../app/design/design.dart';
+import '../../../shared/ui/ui.dart';
 import '../../../l10n/tr_strings.dart';
 import '../../../shared/widgets/skeleton.dart';
 import '../../hi/application/hi_providers.dart';
@@ -38,7 +40,7 @@ class SceneHuntScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final set = ref.watch(topicSetProvider(setId));
     return Scaffold(
-      backgroundColor: AppColors.sand,
+      backgroundColor: AppPalette.sand,
       body: SafeArea(
         child: switch (set) {
           AsyncData(:final value) => _Hunt(set: value, random: random),
@@ -48,14 +50,14 @@ class SceneHuntScreen extends ConsumerWidget {
           _ => const Skeleton(
             label: TopicSetTexts.setLoading,
             child: Padding(
-              padding: EdgeInsets.all(AppSpacing.sm),
+              padding: EdgeInsets.all(AppSpace.s16),
               child: Column(
                 children: [
                   SkeletonBox(height: 48),
-                  SizedBox(height: AppSpacing.sm),
-                  SkeletonBox(height: 72, radius: AppTheme.radius),
-                  SizedBox(height: AppSpacing.sm),
-                  Expanded(child: SkeletonBox(radius: AppTheme.radius)),
+                  SizedBox(height: AppSpace.s16),
+                  SkeletonBox(height: 72, radius: AppRadius.md),
+                  SizedBox(height: AppSpace.s16),
+                  Expanded(child: SkeletonBox(radius: AppRadius.md)),
                 ],
               ),
             ),
@@ -73,17 +75,17 @@ class _Failure extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Padding(
-    padding: const EdgeInsets.all(AppSpacing.sm),
+    padding: const EdgeInsets.all(AppSpace.s16),
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         _CloseButton(),
-        const SizedBox(height: AppSpacing.sm),
+        const SizedBox(height: AppSpace.s16),
         Text(
           TopicSetTexts.setError,
           style: Theme.of(context).textTheme.bodyLarge,
         ),
-        const SizedBox(height: AppSpacing.sm),
+        const SizedBox(height: AppSpace.s16),
         OutlinedButton(
           style: OutlinedButton.styleFrom(minimumSize: const Size(48, 48)),
           onPressed: onRetry,
@@ -101,7 +103,7 @@ class _CloseButton extends StatelessWidget {
     tooltip: HuntTexts.exit,
     constraints: const BoxConstraints(minWidth: 48, minHeight: 48),
     onPressed: () => context.canPop() ? context.pop() : null,
-    icon: const Icon(Icons.close_rounded, color: AppColors.ink),
+    icon: const Icon(Icons.close_rounded, color: AppPalette.ink),
   );
 }
 
@@ -190,6 +192,8 @@ class _HuntState extends ConsumerState<_Hunt>
     _syncPulse();
     final dir = Directionality.of(context);
     if (r == HuntTap.correct) {
+      // Bulunca tek, hafif dokunsal onay (H-061); kaçırmada titreşim yok.
+      unawaited(HapticFeedback.lightImpact());
       _playWord();
       SemanticsService.sendAnnouncement(
         View.of(context),
@@ -303,7 +307,12 @@ class _HuntState extends ConsumerState<_Hunt>
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         Padding(
-          padding: const EdgeInsets.fromLTRB(4, 0, AppSpacing.xs, 4),
+          padding: const EdgeInsets.fromLTRB(
+            AppSpace.s4,
+            0,
+            AppSpace.s8,
+            AppSpace.s4,
+          ),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
@@ -318,10 +327,22 @@ class _HuntState extends ConsumerState<_Hunt>
               ),
               Semantics(
                 label: '${HuntTexts.title} · ${widget.set.titleTr}',
-                child: Text(
-                  HuntTexts.progress(_session.position, _session.total),
-                  key: const ValueKey('hunt-progress'),
-                  style: theme.textTheme.bodyMedium,
+                child: Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: AppSpace.s8,
+                    vertical: AppSpace.s4,
+                  ),
+                  decoration: BoxDecoration(
+                    color: AppPalette.yellow100,
+                    borderRadius: BorderRadius.circular(AppRadius.full),
+                  ),
+                  child: Text(
+                    HuntTexts.progress(_session.position, _session.total),
+                    key: const ValueKey('hunt-progress'),
+                    style: theme.textTheme.labelLarge?.copyWith(
+                      color: AppPalette.ink,
+                    ),
+                  ),
                 ),
               ),
             ],
@@ -339,54 +360,78 @@ class _HuntState extends ConsumerState<_Hunt>
             onChoice: _onChoice,
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(
-            AppSpacing.sm,
-            AppSpacing.xs,
-            AppSpacing.sm,
-            AppSpacing.xs,
+        // Alt çubuk (H-061): beyaz, üst köşeleri yuvarlak, yumuşak gölgeli
+        // yüzey. Bulununca içerik yumuşakça değişir ("Hareketi azalt"
+        // açıkken anında).
+        DecoratedBox(
+          key: const ValueKey('hunt-bottom-bar'),
+          decoration: const BoxDecoration(
+            color: AppPalette.white,
+            borderRadius: AppRadius.sheetTop,
+            boxShadow: AppShadows.level3,
           ),
-          // Alt alan sabit yükseklikte: sonuç gelince resim zıplamaz.
-          child: a11y
-              ? (_session.resolved
-                    ? _Resolved(
-                        item: it,
-                        revealed: _feedback == _Feedback.revealed,
-                        last: _session.position == _session.total,
-                        hasAudio: hasAudio,
-                        onListen: _playWord,
-                        onNext: _next,
-                      )
-                    : _Pending(
-                        feedback: _feedback,
-                        hint: _session.showHint,
-                        choices: _session.choices(random: widget.random),
-                        onChoice: _onChoice,
-                        onDontKnow: _reveal,
-                      ))
-              : SizedBox(
-                  height: kHuntBottomBarHeight,
-                  child: _session.resolved
-                      ? _Resolved(
-                          item: it,
-                          revealed: _feedback == _Feedback.revealed,
-                          last: _session.position == _session.total,
-                          hasAudio: hasAudio,
-                          onListen: _playWord,
-                          onNext: _next,
-                        )
-                      : _Pending(
-                          feedback: _feedback,
-                          hint: _session.showHint,
-                          choices: null,
-                          onChoice: _onChoice,
-                          onDontKnow: _reveal,
-                          zoomControls: _ZoomButtons(
-                            zoom: _zoom,
-                            viewport: () => _viewport,
-                          ),
-                        ),
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(
+              AppSpace.s16,
+              AppSpace.s8,
+              AppSpace.s16,
+              AppSpace.s8,
+            ),
+            // Alt alan sabit yükseklikte: sonuç gelince resim zıplamaz.
+            child: AnimatedSwitcher(
+              duration: AppMotion.of(context, AppMotion.base),
+              switchInCurve: AppMotion.enter,
+              switchOutCurve: AppMotion.exit,
+              child: KeyedSubtree(
+                key: ValueKey(
+                  '${_session.resolved ? 'r' : 'p'}-${_session.position}',
                 ),
+                child: a11y
+                    ? (_session.resolved
+                          ? _Resolved(
+                              item: it,
+                              revealed: _feedback == _Feedback.revealed,
+                              last: _session.position == _session.total,
+                              hasAudio: hasAudio,
+                              onListen: _playWord,
+                              onNext: _next,
+                            )
+                          : _Pending(
+                              feedback: _feedback,
+                              hint: _session.showHint,
+                              choices: _session.choices(random: widget.random),
+                              onChoice: _onChoice,
+                              onDontKnow: _reveal,
+                            ))
+                    : SizedBox(
+                        // Büyük yazıda çubuk da büyür (yine sabit yükseklik).
+                        height: MediaQuery.textScalerOf(
+                          context,
+                        ).scale(kHuntBottomBarHeight),
+                        child: _session.resolved
+                            ? _Resolved(
+                                item: it,
+                                revealed: _feedback == _Feedback.revealed,
+                                last: _session.position == _session.total,
+                                hasAudio: hasAudio,
+                                onListen: _playWord,
+                                onNext: _next,
+                              )
+                            : _Pending(
+                                feedback: _feedback,
+                                hint: _session.showHint,
+                                choices: null,
+                                onChoice: _onChoice,
+                                onDontKnow: _reveal,
+                                zoomControls: _ZoomButtons(
+                                  zoom: _zoom,
+                                  viewport: () => _viewport,
+                                ),
+                              ),
+                      ),
+              ),
+            ),
+          ),
         ),
       ],
     );
@@ -427,8 +472,7 @@ class _Prompt extends StatelessWidget {
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: theme.textTheme.titleLarge?.copyWith(
-                    color: AppColors.seaBlue,
-                    fontWeight: FontWeight.w700,
+                    color: AppPalette.seaBlue,
                   ),
                 ),
               ),
@@ -438,8 +482,10 @@ class _Prompt extends StatelessWidget {
                     ? Text(
                         item.findTr,
                         key: const ValueKey('hunt-find-tr'),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
                         style: theme.textTheme.bodyMedium?.copyWith(
-                          color: AppColors.ink.withValues(alpha: 0.75),
+                          color: AppPalette.ink500,
                         ),
                       )
                     : null,
@@ -453,7 +499,10 @@ class _Prompt extends StatelessWidget {
             tooltip: HuntTexts.listen,
             constraints: const BoxConstraints(minWidth: 48, minHeight: 48),
             onPressed: onListen,
-            icon: const Icon(Icons.volume_up_rounded, color: AppColors.seaBlue),
+            icon: const Icon(
+              Icons.volume_up_rounded,
+              color: AppPalette.seaBlue,
+            ),
           ),
       ],
     );
@@ -603,14 +652,14 @@ class _ZoomButtons extends StatelessWidget {
   Widget build(BuildContext context) {
     Widget button(String key, String tip, IconData icon, VoidCallback onTap) =>
         Material(
-          color: Colors.white.withValues(alpha: 0.85),
+          color: AppPalette.seaBlue50,
           shape: const CircleBorder(),
           child: IconButton(
             key: ValueKey(key),
             tooltip: tip,
             constraints: const BoxConstraints(minWidth: 48, minHeight: 48),
             onPressed: onTap,
-            icon: Icon(icon, color: AppColors.seaBlue),
+            icon: Icon(icon, color: AppPalette.seaBlue),
           ),
         );
     return ValueListenableBuilder<Matrix4>(
@@ -628,7 +677,7 @@ class _ZoomButtons extends StatelessWidget {
                 _zoomIn,
               ),
             if (zoomed) ...[
-              const SizedBox(width: 4),
+              const SizedBox(width: AppSpace.s4),
               button(
                 'hunt-zoom-reset',
                 HuntTexts.zoomReset,
@@ -659,11 +708,21 @@ class _SemanticRegion extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final (l, t, r, b) = shape.bounds;
+    // Küçük nesnede de en az 48 × 48 dokunma alanı (H-061): bölge, ortası
+    // aynı kalacak biçimde büyütülür ve görselin içinde tutulur.
+    double grow(double from, double to, double extent) {
+      final w = math.min(math.max((to - from) * extent, AppTouch.min), extent);
+      final center = (from + to) / 2 * extent;
+      return (center - w / 2).clamp(0.0, extent - w);
+    }
+
+    double span(double from, double to, double extent) =>
+        math.min(math.max((to - from) * extent, AppTouch.min), extent);
     return Positioned(
-      left: l * size.width,
-      top: t * size.height,
-      width: (r - l) * size.width,
-      height: (b - t) * size.height,
+      left: grow(l, r, size.width),
+      top: grow(t, b, size.height),
+      width: span(l, r, size.width),
+      height: span(t, b, size.height),
       child: Semantics(
         button: true,
         label: label,
@@ -699,7 +758,7 @@ class _HotspotPainter extends CustomPainter {
       canvas.drawPath(
         path,
         Paint()
-          ..color = AppColors.lighthouseYellow.withValues(
+          ..color = AppPalette.lighthouseYellow.withValues(
             alpha: (strong ? 0.30 : 0.18) * a,
           ),
       );
@@ -709,7 +768,7 @@ class _HotspotPainter extends CustomPainter {
           ..style = PaintingStyle.stroke
           ..strokeWidth = strong ? 4 : 3
           ..strokeJoin = StrokeJoin.round
-          ..color = AppColors.lighthouseYellow.withValues(alpha: a),
+          ..color = AppPalette.lighthouseYellow.withValues(alpha: a),
       );
     }
     final m = miss;
@@ -721,7 +780,7 @@ class _HotspotPainter extends CustomPainter {
         Paint()
           ..style = PaintingStyle.stroke
           ..strokeWidth = 2.5
-          ..color = Colors.white.withValues(alpha: 0.9),
+          ..color = AppPalette.white.withValues(alpha: 0.9),
       );
     }
   }
@@ -765,24 +824,25 @@ class _Pending extends StatelessWidget {
         : Text(
             message,
             key: const ValueKey('hunt-feedback'),
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
             style: theme.textTheme.bodyLarge?.copyWith(
-              fontWeight: FontWeight.w500,
+              fontWeight: AppFonts.medium,
+              color: AppPalette.ink700,
             ),
           );
-    // İnceleme ekranındaki "Bilmiyorum" ile aynı biçim (H-057: ortak stil).
-    final dontKnow = OutlinedButton.icon(
+    // Kelime tekrarıyla aynı ortak "Bilmiyorum" düğmesi (H-061).
+    final dontKnow = DontKnowButton(
       key: const ValueKey('hunt-dont-know'),
+      label: HuntTexts.dontKnow,
       onPressed: onDontKnow,
-      style: AppButtonStyles.dontKnow(),
-      icon: const Icon(AppButtonStyles.dontKnowIcon),
-      label: const Text(HuntTexts.dontKnow),
     );
     if (choices == null) {
       return Row(
         children: [
           Expanded(child: feedbackText),
           ?zoomControls,
-          const SizedBox(width: AppSpacing.xs),
+          const SizedBox(width: AppSpace.s8),
           dontKnow,
         ],
       );
@@ -792,26 +852,25 @@ class _Pending extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         Text(HuntTexts.choicesHeading, style: theme.textTheme.bodyLarge),
-        const SizedBox(height: 4),
+        const SizedBox(height: AppSpace.s4),
         Wrap(
-          spacing: AppSpacing.xs,
-          runSpacing: AppSpacing.xs,
+          spacing: AppSpace.s8,
+          runSpacing: AppSpace.s8,
           children: [
             for (final c in choices!)
               OutlinedButton(
                 key: ValueKey('hunt-choice-${c.id}'),
                 style: OutlinedButton.styleFrom(
-                  minimumSize: const Size(48, 48),
-                  backgroundColor: Colors.white,
+                  backgroundColor: AppPalette.white,
                 ),
                 onPressed: () => onChoice(c),
                 child: Text(c.tr),
               ),
           ],
         ),
-        const SizedBox(height: AppSpacing.xs),
+        const SizedBox(height: AppSpace.s8),
         feedbackText,
-        const SizedBox(height: AppSpacing.xs),
+        const SizedBox(height: AppSpace.s8),
         Center(child: dontKnow),
       ],
     );
@@ -819,6 +878,7 @@ class _Pending extends StatelessWidget {
 }
 
 /// Bulundu ya da gösterildi: kelime, Türkçesi, ses, "Devam et" (tek satır).
+/// Bulununca yeşil onay ikonu sakin bir belirmeyle gelir.
 class _Resolved extends StatelessWidget {
   const _Resolved({
     required this.item,
@@ -839,9 +899,20 @@ class _Resolved extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final tone = revealed ? AppPalette.seaBlue : AppPalette.success;
     return Row(
       key: const ValueKey('hunt-resolved'),
       children: [
+        ExcludeSemantics(
+          child: CalmPop(
+            child: Icon(
+              revealed ? Icons.visibility_rounded : Icons.check_circle_rounded,
+              color: tone,
+              size: AppIconSize.lg,
+            ),
+          ),
+        ),
+        const SizedBox(width: AppSpace.s8),
         Expanded(
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -851,30 +922,29 @@ class _Resolved extends StatelessWidget {
                 revealed ? HuntTexts.revealed : HuntTexts.found,
                 key: const ValueKey('hunt-result-text'),
                 maxLines: 2,
+                overflow: TextOverflow.ellipsis,
                 style: theme.textTheme.bodyMedium?.copyWith(
-                  color: AppColors.seaBlue,
-                  fontWeight: FontWeight.w700,
+                  color: tone,
+                  fontWeight: AppFonts.bold,
                 ),
               ),
               Text.rich(
                 TextSpan(
                   children: [
-                    TextSpan(
-                      text: item.w,
-                      style: const TextStyle(fontWeight: FontWeight.w700),
-                    ),
+                    TextSpan(text: item.w),
                     TextSpan(
                       text: '  ${item.tr}',
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: AppColors.ink.withValues(alpha: 0.75),
+                      style: theme.textTheme.bodyLarge?.copyWith(
+                        color: AppPalette.ink500,
                       ),
                     ),
                   ],
                 ),
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
-                style: theme.textTheme.titleLarge,
+                style: theme.textTheme.titleLarge?.copyWith(
+                  color: AppPalette.ink,
+                ),
               ),
             ],
           ),
@@ -883,17 +953,18 @@ class _Resolved extends StatelessWidget {
           IconButton(
             key: const ValueKey('hunt-listen'),
             tooltip: HuntTexts.listen,
-            constraints: const BoxConstraints(minWidth: 48, minHeight: 48),
             onPressed: onListen,
-            icon: const Icon(Icons.volume_up_rounded, color: AppColors.seaBlue),
+            icon: const Icon(
+              Icons.volume_up_rounded,
+              color: AppPalette.seaBlue,
+            ),
           ),
-        const SizedBox(width: 4),
+        const SizedBox(width: AppSpace.s4),
         FilledButton(
           key: const ValueKey('hunt-next'),
           onPressed: onNext,
           style: FilledButton.styleFrom(
-            minimumSize: const Size(48, 48),
-            padding: const EdgeInsets.symmetric(horizontal: AppSpacing.sm),
+            padding: const EdgeInsets.symmetric(horizontal: AppSpace.s16),
           ),
           child: Text(last ? HuntTexts.finish : HuntTexts.next),
         ),
@@ -902,7 +973,7 @@ class _Resolved extends StatelessWidget {
   }
 }
 
-/// Sonuç: sakin özet, puan yok.
+/// Sonuç: sakin kutlama + `StatRow`; puan, yüzde ya da "yanlış" sayısı yok.
 class _Summary extends StatefulWidget {
   const _Summary({
     required this.session,
@@ -933,49 +1004,76 @@ class _SummaryState extends State<_Summary> {
     final s = widget.session;
     final alone = s.foundAlone;
     final helped = s.helped;
+    // Sıfır olan sayı gösterilmez ("0 kendin buldun" yok).
+    final tiles = <StatTile>[
+      StatTile.count(
+        key: const ValueKey('hunt-stat-total'),
+        count: s.total,
+        label: HuntTexts.statTotal,
+        icon: Icons.travel_explore_rounded,
+      ),
+      if (alone > 0)
+        StatTile.count(
+          key: const ValueKey('hunt-stat-alone'),
+          count: alone,
+          label: HuntTexts.statAlone,
+          icon: Icons.check_circle_outline_rounded,
+          color: AppPalette.success,
+        ),
+      if (helped > 0)
+        StatTile.count(
+          key: const ValueKey('hunt-stat-helped'),
+          count: helped,
+          label: HuntTexts.statHelped,
+          icon: Icons.lightbulb_outline_rounded,
+          color: AppPalette.orange700,
+        ),
+    ];
     return ListView(
       key: const ValueKey('hunt-summary'),
-      padding: const EdgeInsets.all(AppSpacing.md),
+      padding: const EdgeInsets.fromLTRB(
+        AppSpace.s24,
+        AppSpace.s8,
+        AppSpace.s24,
+        AppSpace.s24,
+      ),
       children: [
         Align(alignment: Alignment.centerLeft, child: _CloseButton()),
-        const Icon(
-          Icons.travel_explore_rounded,
-          size: 64,
-          color: AppColors.seaBlue,
+        const Center(
+          child: CalmCelebration(icon: Icons.travel_explore_rounded),
         ),
-        const SizedBox(height: AppSpacing.sm),
+        const SizedBox(height: AppSpace.s24),
         Semantics(
           header: true,
           child: Text(
             HuntTexts.doneTitle,
             textAlign: TextAlign.center,
             style: theme.textTheme.headlineMedium?.copyWith(
-              color: AppColors.seaBlue,
-              fontWeight: FontWeight.w700,
+              color: AppPalette.seaBlue,
             ),
           ),
         ),
-        const SizedBox(height: AppSpacing.sm),
+        const SizedBox(height: AppSpace.s8),
         Text(
           HuntTexts.foundAlone(alone, s.total),
           key: const ValueKey('hunt-summary-found'),
           textAlign: TextAlign.center,
-          style: theme.textTheme.titleMedium,
+          style: theme.textTheme.bodyLarge?.copyWith(color: AppPalette.ink700),
         ),
-        if (helped > 0 && alone > 0) ...[
-          const SizedBox(height: 4),
-          Text(
-            HuntTexts.helped(helped),
-            textAlign: TextAlign.center,
-            style: theme.textTheme.bodyLarge,
+        const SizedBox(height: AppSpace.s24),
+        FadeSlideIn(
+          index: 1,
+          child: StatRow(
+            key: const ValueKey('hunt-summary-stats'),
+            tiles: tiles,
           ),
-        ],
-        const SizedBox(height: AppSpacing.sm),
+        ),
+        const SizedBox(height: AppSpace.s16),
         FutureBuilder<int>(
           future: widget.recorded,
           builder: (context, snap) {
             final n = snap.data;
-            if (n == null) return const SizedBox(height: 24);
+            if (n == null) return const SizedBox(height: AppSpace.s24);
             return Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
@@ -984,39 +1082,32 @@ class _SummaryState extends State<_Summary> {
                     HuntTexts.deckUpdated(n),
                     key: const ValueKey('hunt-summary-deck'),
                     textAlign: TextAlign.center,
-                    style: theme.textTheme.bodyMedium,
+                    style: theme.textTheme.bodyMedium?.copyWith(
+                      color: AppPalette.ink500,
+                    ),
                   ),
                 if (!widget.allInDeck || _added) ...[
-                  if (n > 0) const SizedBox(height: AppSpacing.xs),
-                  Text(
-                    HuntTexts.notInDeck,
-                    textAlign: TextAlign.center,
-                    style: theme.textTheme.bodyMedium,
-                  ),
-                  const SizedBox(height: AppSpacing.xs),
-                  OutlinedButton.icon(
-                    key: const ValueKey('hunt-add-all'),
-                    onPressed: _added
-                        ? null
-                        : () async {
-                            await widget.onAddAll();
-                            if (mounted) setState(() => _added = true);
-                          },
-                    style: OutlinedButton.styleFrom(
-                      minimumSize: const Size.fromHeight(48),
-                      foregroundColor: AppColors.seaBlue,
-                      side: const BorderSide(
-                        color: AppColors.seaBlue,
-                        width: 1.5,
+                  if (n > 0) const SizedBox(height: AppSpace.s8),
+                  InfoCard(
+                    tone: InfoTone.info,
+                    icon: Icons.library_add_outlined,
+                    title: HuntTexts.notInDeck,
+                    action: OutlinedButton.icon(
+                      key: const ValueKey('hunt-add-all'),
+                      onPressed: _added
+                          ? null
+                          : () async {
+                              await widget.onAddAll();
+                              if (mounted) setState(() => _added = true);
+                            },
+                      icon: Icon(
+                        _added
+                            ? Icons.check_circle_rounded
+                            : Icons.library_add_rounded,
                       ),
-                    ),
-                    icon: Icon(
-                      _added
-                          ? Icons.check_circle_rounded
-                          : Icons.library_add_rounded,
-                    ),
-                    label: Text(
-                      _added ? TopicSetTexts.allInDeck : TopicSetTexts.addAll,
+                      label: Text(
+                        _added ? TopicSetTexts.allInDeck : TopicSetTexts.addAll,
+                      ),
                     ),
                   ),
                 ],
@@ -1024,19 +1115,21 @@ class _SummaryState extends State<_Summary> {
             );
           },
         ),
-        const SizedBox(height: AppSpacing.md),
+        const SizedBox(height: AppSpace.s24),
         FilledButton(
           key: const ValueKey('hunt-again'),
           onPressed: widget.onAgain,
-          style: FilledButton.styleFrom(minimumSize: const Size.fromHeight(48)),
+          style: FilledButton.styleFrom(
+            minimumSize: const Size.fromHeight(AppTouch.primary),
+          ),
           child: const Text(HuntTexts.playAgain),
         ),
-        const SizedBox(height: AppSpacing.xs),
+        const SizedBox(height: AppSpace.s8),
         OutlinedButton(
           key: const ValueKey('hunt-back'),
           onPressed: () => context.canPop() ? context.pop() : null,
           style: OutlinedButton.styleFrom(
-            minimumSize: const Size.fromHeight(48),
+            minimumSize: const Size.fromHeight(AppTouch.min),
           ),
           child: const Text(HuntTexts.backToSet),
         ),

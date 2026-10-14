@@ -63,7 +63,7 @@ Kurallar: Sekmeler arası geçiş anlık. İtilen sayfalarda (Defter, Hesap, Hi 
 | İkincil (`OutlinedButton`, tema) | Deniz mavisi kenar ve yazı | Yan eylem |
 | Sessiz (`TextButton`, tema) | Yalnız yazı | "Şimdi değil", "Geç" |
 | Tehlike `danger()` / `dangerFilled()` | Kırmızı kenar / kırmızı dolgu | Silme; dolu olan yalnız son onayda |
-| "Bilmiyorum" `dontKnow()` | Deniz mavisi kenar, 700, `help_outline` ikonu | Tekrar ve sahne avı (ortak) |
+| "Bilmiyorum" `dontKnow()` | Deniz mavisi kenar, 700, `help_outline` ikonu | Tekrar, sahne avı ve seviye soruları; ekranlarda ortak `DontKnowButton` bileşeni (H-061) |
 
 ### Ortak bileşenler (`mobile/lib/shared/ui/`)
 | Bileşen | Ne için |
