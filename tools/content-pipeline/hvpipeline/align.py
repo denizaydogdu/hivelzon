@@ -158,3 +158,95 @@ def round_cue(c: Cue, nd: int = 3) -> dict:
         "start": round(c.start, nd), "end": round(c.end, nd), "speaker": c.speaker, "text": c.text,
         "words": [{"w": w["w"], "start": round(w["start"], nd), "end": round(w["end"], nd)} for w in c.words],
     }
+
+
+# --- Kitaplık (H-066): cümle düzeyinde zamanlama ------------------------------------------------
+# Bölüm altyazısı cümle *parçası* düzeyindedir (kısa parça birleşir). Kitapta okunan cümle vurgulanır:
+# her cümle kendi aralığını alır. Ses metni (TTS girdisi) ile cümle listesi aynı sırada eşlenir;
+# boşluklar ve tırnak biçimleri (’ ‘ “ ”) karşılaştırmaya girmez.
+
+_QUOTES = str.maketrans({"’": "'", "‘": "'", "“": '"', "”": '"', "—": "-", "–": "-"})
+
+
+class AlignmentMismatch(ValueError):
+    """Hizalama metni kaynak metinle uyuşmuyor (metin TTS'ten sonra değişmiş)."""
+
+
+def _fold(c: str) -> str:
+    return c.translate(_QUOTES)
+
+
+def locate(al: Alignment, texts: list[str]) -> list[list[int]]:
+    """Her metnin hizalamadaki karakter indeksleri (boşluksuz karakterler sırayla eşlenir).
+
+    Metinler hizalamada verilen sırayla geçmelidir; aralarında yalnızca boşluk ya da noktalama
+    olabilir. Uyuşmazlıkta AlignmentMismatch.
+    """
+    pos = [i for i, c in enumerate(al.chars) if c.strip()]
+    k = 0
+    out: list[list[int]] = []
+    for t in texts:
+        want = [_fold(c) for c in t if c.strip()]
+        if not want:
+            out.append([])
+            continue
+        # Cümleler arasındaki fazladan noktalamayı (ör. başlıktan sonra eklenen ".") atla.
+        while k < len(pos) and _fold(al.chars[pos[k]]) != want[0] and not al.chars[pos[k]].isalnum():
+            k += 1
+        got = [_fold(al.chars[pos[j]]) for j in range(k, min(k + len(want), len(pos)))]
+        if got != want:
+            near = "".join(al.chars[pos[j]] for j in range(k, min(k + 40, len(pos))))
+            raise AlignmentMismatch(f"hizalama metinle uyuşmuyor: beklenen \"{t[:60]}\", seste \"{near}\"")
+        first, last = pos[k], pos[k + len(want) - 1]
+        out.append(list(range(first, last + 1)))
+        k += len(want)
+    return out
+
+
+def span_words(al: Alignment, idx: list[int]) -> list[dict]:
+    """Karakter aralığındaki kelimeler ve zamanları ({"w", "start", "end"}); boşlukla ayrılır."""
+    return _words(al, idx)
+
+
+def sentence_timings(al: Alignment, texts: list[str], nd: int = 3) -> list[dict]:
+    """Cümle başına {"start", "end", "words": [{"w", "start", "end"}]} (sn, sesin başına göre)."""
+    out = []
+    for idx in locate(al, texts):
+        if not idx:
+            out.append({"start": None, "end": None, "words": []})
+            continue
+        words = span_words(al, idx)
+        nz = [i for i in idx if al.chars[i].strip()]
+        out.append({"start": round(al.starts[nz[0]], nd), "end": round(al.ends[nz[-1]], nd),
+                    "words": [{"w": w["w"], "start": round(w["start"], nd), "end": round(w["end"], nd)}
+                              for w in words]})
+    return out
+
+
+def concat_alignments(parts: list[tuple[Alignment, float]], gap: float, sep: str = " ") -> Alignment:
+    """Parça parça üretilmiş sesin hizalamalarını tek dosyaya göre birleştirir.
+
+    parts: (hizalama, o parçanın ses süresi). Her parçadan sonra `gap` sn sessizlik vardır
+    (media.concat_audio ile aynı). Parçalar arasına zamanı sessizliğe düşen tek bir `sep` karakteri girer.
+    """
+    chars: list[str] = []
+    starts: list[float] = []
+    ends: list[float] = []
+    t0 = 0.0
+    for n, (al, dur) in enumerate(parts):
+        if n:
+            chars.append(sep)
+            starts.append(t0 - gap)
+            ends.append(t0)
+        sh = al.shifted(t0)
+        chars += sh.chars
+        starts += sh.starts
+        ends += sh.ends
+        t0 += dur + gap
+    return Alignment(chars, starts, ends)
+
+
+def alignment_json(al: Alignment) -> dict:
+    """ElevenLabs `alignment` biçimi (Alignment.load ile geri okunur)."""
+    return {"characters": al.chars, "character_start_times_seconds": [round(s, 4) for s in al.starts],
+            "character_end_times_seconds": [round(e, 4) for e in al.ends]}

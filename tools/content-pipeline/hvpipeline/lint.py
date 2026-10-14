@@ -11,7 +11,7 @@ from dataclasses import dataclass, field
 from pathlib import Path
 
 from .build import KURGU_FILE, BuildError, build_dry
-from .cefr import LEVELS, coverage
+from .cefr import LEVELS, NO_LIST_MSG, coverage, has_extra_list
 from .graph import Issue, check_scenes
 from .season import SeasonSource
 from .story import read_story
@@ -82,9 +82,19 @@ def check_language(ep_dir: Path, c: dict) -> tuple[list[Issue], dict | None]:
         return [Issue("error", "story", "story.en.md yok")], None
     lines = read_story(story)
     if level not in LEVELS:
-        return [Issue("warning", "coverage", f"{level}: CEFR-J listesi A1-B2 kapsıyor; kapsama denetlenmedi")], None
+        return [Issue("error", "coverage", f"bilinmeyen seviye: {level} (A1–C2)")], None
+    if not has_extra_list(level):
+        return [Issue("warning", "coverage", f"{level}: Octanove C1/C2 {NO_LIST_MSG}")], None
     max_words = MAX_SENTENCE_WORDS.get(level, 10_000)
     cov = coverage([ln.text for ln in lines], level, gloss=c.get("glossary", []), max_words=max_words)
+    issues, rep = coverage_issues(cov, level, max_words)
+    rep["lines"] = len(lines)
+    return issues, rep
+
+
+def coverage_issues(cov, level: str, max_words: int) -> tuple[list[Issue], dict]:
+    """Kapsama kuralı (K-07; bölüm, konu seti ve kitapta aynı): hedef ≥ %98; %95–%98 arası yalnızca
+    sözlükle %98'e tamamlanırsa uyarı, değilse hata. Uzun cümle hatadır."""
     issues = []
     pct, pctg = cov.pct, cov.pct_with_gloss
     ungl = cov.unglossed()
@@ -106,7 +116,7 @@ def check_language(ep_dir: Path, c: dict) -> tuple[list[Issue], dict | None]:
         issues.append(Issue("error", "sentence-length", f"{level} için cümle en çok {max_words} sözcük: \"{s}\""))
     rep = {"tokens": cov.tokens, "pct": round(pct, 1), "pctWithGlossary": round(pctg, 1),
            "maxSentenceWords": cov.max_sentence_words, "sentencesOver": len(cov.long_sentences),
-           "offList": {k: v for k, v in sorted(cov.off_list.items())}, "lines": len(lines)}
+           "offList": {k: v for k, v in sorted(cov.off_list.items())}}
     return issues, rep
 
 

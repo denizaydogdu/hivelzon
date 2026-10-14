@@ -7,12 +7,17 @@ Her bölüm paketini (`icerik/<id>/_build/package/`) şu adreste sunar:
     http://127.0.0.1:8787/packages/<contentId>/<yol>   -> scenes.json, segments/*.mp4 ...
     http://127.0.0.1:8787/packages/_season/S1/<yol>    -> sezon paketi: season.json, jenerik-*.mp4 (H-050)
 
+Kitaplık paketleri (`kitaplar/<id>/_build/package/`, H-066):
+
+    http://127.0.0.1:8787/books/index.json             -> kitap listesi
+    http://127.0.0.1:8787/books/<kitapId>/<yol>        -> book.json, pages.json, audio/*.m4a, images/*.webp
+
 - Yalnızca 127.0.0.1'e bağlanır (dışarıya açık değildir).
 - HTTP Range isteklerini destekler (AVPlayer mp4 için bayt aralığı ister).
 - Yalnızca standart kütüphane kullanılır; ücretli ya da dış servis çağrısı yoktur.
 
 Kullanım:
-    python3 tools/dev-content-server/serve.py [--port 8787] [--root icerik] [--quiet]
+    python3 tools/dev-content-server/serve.py [--port 8787] [--root icerik] [--books-root kitaplar] [--quiet]
 
 Bu sunucu ileride VideoHostingPort / CDN (K-13) adaptörünün yerini tutar.
 """
@@ -82,9 +87,40 @@ def discover_packages(root: Path) -> dict[str, dict]:
     return packages
 
 
+def discover_books(root: Path) -> dict[str, dict]:
+    """kitapId -> {dir, title, level, ...}. book.json'u olan her `<kitap>/_build/package` (H-066).
+    `_` ile başlayan klasörler (ör. `_maliyet`) atlanır."""
+    books: dict[str, dict] = {}
+    if not root.is_dir():
+        return books
+    for bj in sorted(root.glob("*/_build/package/book.json")):
+        if bj.parents[2].name.startswith("_"):
+            continue
+        try:
+            d = json.loads(bj.read_text(encoding="utf-8"))
+            books[d["id"]] = {
+                "dir": bj.parent,
+                "id": d["id"],
+                "title": d.get("title", d["id"]),
+                "titleTr": d.get("titleTr"),
+                "level": d.get("level"),
+                "genre": d.get("genre"),
+                "contentVersion": d.get("contentVersion"),
+                "status": d.get("status"),
+                "cover": d.get("cover"),
+                "estimatedMinutes": d.get("estimatedMinutes"),
+                "pageCount": d.get("pageCount"),
+                "chapters": len(d.get("chapters", [])),
+            }
+        except (OSError, ValueError, KeyError) as exc:
+            print(f"uyarı: {bj} okunamadı: {exc}", file=sys.stderr)
+    return books
+
+
 class Handler(BaseHTTPRequestHandler):
     server_version = "hiVelzonDevContent/0.1"
     root: Path = REPO_ROOT / "icerik"
+    books_root: Path = REPO_ROOT / "kitaplar"
     quiet = False
 
     def log_message(self, fmt: str, *args) -> None:  # noqa: D401
@@ -107,8 +143,31 @@ class Handler(BaseHTTPRequestHandler):
             return self._send_season_file(parts[2], parts[3:], send_body)
         if len(parts) >= 3 and parts[0] == "packages":
             return self._send_package_file(parts[1], parts[2:], send_body)
+        if parts == ["books", "index.json"]:
+            return self._send_books_index(send_body)
+        if len(parts) >= 3 and parts[0] == "books":
+            book = discover_books(self.books_root).get(parts[1])
+            if book is None:
+                return self.send_error(HTTPStatus.NOT_FOUND, "Unknown book")
+            return self._send_file(book["dir"].resolve(), parts[2:], send_body)
         # http.server durum satırını latin-1 yazar: iletiler ASCII olmalı.
         self.send_error(HTTPStatus.NOT_FOUND, "Not found")
+
+    def _send_books_index(self, send_body: bool) -> None:
+        # Her istekte yeniden taranır (bölüm paketleri gibi).
+        books = discover_books(self.books_root)
+        body = json.dumps(
+            {"schemaVersion": 1,
+             "books": [{k: v for k, v in b.items() if k != "dir"} for b in sorted(books.values(), key=lambda b: b["id"])]},
+            ensure_ascii=False,
+        ).encode("utf-8")
+        self.send_response(HTTPStatus.OK)
+        self.send_header("Content-Type", "application/json; charset=utf-8")
+        self.send_header("Content-Length", str(len(body)))
+        self.send_header("Cache-Control", "no-store")
+        self.end_headers()
+        if send_body:
+            self.wfile.write(body)
 
     def _send_index(self, send_body: bool) -> None:
         # Her istekte yeniden taranır: paket yeniden üretilince sunucu yeniden başlatılmaz.
@@ -212,10 +271,12 @@ def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     parser.add_argument("--port", type=int, default=int(os.environ.get("PORT", 8787)))
     parser.add_argument("--root", type=Path, default=REPO_ROOT / "icerik", help="icerik klasörü")
+    parser.add_argument("--books-root", type=Path, default=REPO_ROOT / "kitaplar", help="kitaplar klasörü (H-066)")
     parser.add_argument("--quiet", action="store_true", help="istek günlüğünü kapat")
     args = parser.parse_args(argv)
 
     Handler.root = args.root.resolve()
+    Handler.books_root = args.books_root.resolve()
     Handler.quiet = args.quiet
     packages = discover_packages(Handler.root)
     server = ThreadingHTTPServer(("127.0.0.1", args.port), Handler)
@@ -225,6 +286,11 @@ def main(argv: list[str] | None = None) -> int:
         print(f"  {p}  {packages[p]['title']}  ({packages[p]['dir']})")
     for s in discover_seasons(Handler.root):
         print(f"  {s['path']}  Sezon {s['season']}: {s['title']}")
+    books = discover_books(Handler.books_root)
+    if books:
+        print(f"Kitaplık: http://127.0.0.1:{args.port}/books/index.json")
+    for b in sorted(books):
+        print(f"  {b}  {books[b]['title']}  ({books[b]['dir']})")
     try:
         server.serve_forever()
     except KeyboardInterrupt:

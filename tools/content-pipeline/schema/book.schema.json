@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hi.velzon.tr/schema/book.v1.schema.json",
+  "title": "hiVelzon Kitaplık kitabı (book.json)",
+  "description": "Kaynak (kitaplar/<id>/book.json) ve paket (_build/package/book.json) aynı şemayı kullanır. Kaynakta sayfa `image` alanı images/ altındaki dosya adıdır; pakette images/<sayfa>.webp yoludur. Paket ek olarak bölüm `audio`/`duration`, `cover`, `wordCount`, `pageCount`, `estimatedMinutes` taşır. H-066, docs/KITAPLIK.md §6.",
+  "type": "object",
+  "required": ["schemaVersion", "id", "slug", "level", "genre", "title", "blurbTr", "contentVersion", "status", "aiGenerated", "palette", "chapters"],
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "id": { "type": "string", "pattern": "^(A1|A2|B1|B2|C1|C2)-K[0-9]{2}$" },
+    "slug": { "type": "string", "pattern": "^(A1|A2|B1|B2|C1|C2)-K[0-9]{2}-[a-z0-9]+(-[a-z0-9]+)*$" },
+    "level": { "enum": ["A1", "A2", "B1", "B2", "C1", "C2"] },
+    "genre": {
+      "description": "mystery = Gizem, adventure = Macera, humor = Mizah, scifi-fantasy = Bilimkurgu/fantastik, everyday = Günlük hayat/duygu",
+      "enum": ["mystery", "adventure", "humor", "scifi-fantasy", "everyday"]
+    },
+    "title": { "type": "string", "minLength": 1 },
+    "titleTr": { "type": "string", "minLength": 1 },
+    "blurbTr": { "description": "Türkçe tanıtım (kitap kartı).", "type": "string", "minLength": 1 },
+    "hookEn": { "description": "Tek cümlelik İngilizce kanca (katalog).", "type": "string" },
+    "contentVersion": { "type": "integer", "minimum": 1 },
+    "status": { "enum": ["DRAFT", "IN_REVIEW", "APPROVED", "SCHEDULED", "PUBLISHED", "ARCHIVED", "WITHDRAWN"] },
+    "aiGenerated": { "type": "boolean" },
+    "palette": {
+      "description": "Kitabın renk paleti (resimsiz sayfalar da renkli olur). #RRGGBB.",
+      "type": "object",
+      "required": ["background", "text", "accent"],
+      "additionalProperties": false,
+      "properties": {
+        "background": { "$ref": "#/$defs/color" },
+        "surface": { "$ref": "#/$defs/color" },
+        "text": { "$ref": "#/$defs/color" },
+        "accent": { "$ref": "#/$defs/color" },
+        "highlight": { "$ref": "#/$defs/color" }
+      }
+    },
+    "cover": { "description": "Kaynakta images/ altındaki dosya adı, pakette images/cover.webp. Yoksa null.", "type": ["string", "null"] },
+    "properNouns": {
+      "description": "Kitaptaki özel adlar (kapsamaya ve kelime anlamı zorunluluğuna girmez).",
+      "type": "array", "items": { "type": "string", "minLength": 1 }
+    },
+    "narration": {
+      "description": "Seslendirme (tts_book.py). Anahtar burada tutulmaz; yalnızca ses kimliği ve ayarlar.",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "voiceId": { "type": "string", "minLength": 1 },
+        "modelId": { "type": "string", "minLength": 1 },
+        "speed": { "type": "number", "minimum": 0.7, "maximum": 1.2 },
+        "stability": { "type": "number", "minimum": 0, "maximum": 1 },
+        "similarityBoost": { "type": "number", "minimum": 0, "maximum": 1 }
+      }
+    },
+    "wordCount": { "type": "integer", "minimum": 0 },
+    "pageCount": { "type": "integer", "minimum": 0 },
+    "estimatedMinutes": { "type": ["number", "null"], "minimum": 0 },
+    "chapters": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "title", "pages"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string", "pattern": "^c[0-9]{1,2}$" },
+          "title": { "type": "string", "minLength": 1 },
+          "titleTr": { "type": "string", "minLength": 1 },
+          "audio": { "description": "Yalnız pakette: audio/<bölüm>.m4a ya da ses yoksa null.", "type": ["string", "null"] },
+          "duration": { "description": "Yalnız pakette: bölüm sesinin süresi (sn) ya da null.", "type": ["number", "null"], "minimum": 0 },
+          "pages": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "required": ["id"],
+              "additionalProperties": false,
+              "properties": {
+                "id": { "type": "string", "pattern": "^p[0-9]{2,3}$" },
+                "image": { "type": ["string", "null"] }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "color": { "type": "string", "pattern": "^#[0-9A-Fa-f]{6}$" }
+  }
+}

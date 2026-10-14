@@ -64,6 +64,18 @@ icerik/**/*.wav
 .DS_Store
 icerik/**/_build/
 
+# Kitaplık (H-066): ses ve görsel kaynakları git dışında; hizalama (audio/*.align.json) depoda.
+# Aylık TTS karakter defteri (kitaplar/_maliyet/) depoda tutulur.
+kitaplar/**/images/
+kitaplar/**/*.png
+kitaplar/**/*.jpg
+kitaplar/**/*.jpeg
+kitaplar/**/*.webp
+kitaplar/**/*.mp3
+kitaplar/**/*.m4a
+kitaplar/**/audio/_parts/
+kitaplar/**/_build/
+
 # İçerik boru hattı (tools/content-pipeline)
 tools/content-pipeline/.venv/
 __pycache__/

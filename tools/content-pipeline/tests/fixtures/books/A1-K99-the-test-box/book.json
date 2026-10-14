@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "id": "A1-K99",
+  "slug": "A1-K99-the-test-box",
+  "level": "A1",
+  "genre": "mystery",
+  "title": "The Test Box",
+  "titleTr": "Deneme Kutusu",
+  "blurbTr": "Yalnızca testler için: Ece'nin açamadığı küçük kırmızı bir kutu.",
+  "hookEn": "Ece can't open the red box.",
+  "contentVersion": 1,
+  "status": "DRAFT",
+  "aiGenerated": true,
+  "palette": { "background": "#FFF4E0", "text": "#2B2B2B", "accent": "#D9534F", "highlight": "#FFE08A" },
+  "cover": "cover.png",
+  "properNouns": ["Ece"],
+  "narration": { "voiceId": "test-voice-id", "modelId": "eleven_v3" },
+  "chapters": [
+    { "id": "c1", "title": "A Small Box", "titleTr": "Küçük Bir Kutu",
+      "pages": [ { "id": "p01", "image": "p01.png" }, { "id": "p02", "image": null } ] },
+    { "id": "c2", "title": "The Key", "titleTr": "Anahtar",
+      "pages": [ { "id": "p03", "image": "p03.png" } ] }
+  ]
+}

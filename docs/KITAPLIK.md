@@ -86,25 +86,83 @@ Kaynaklar:
   - Her istem ve maliyet `kitaplar/<id>/PROMPTS.md`'ye yazılır.
   - Her üretimden önce maliyet gösterilir ve onay alınır.
 
-## 6. Kitap paketi (H-066'da kesinleşir)
-**Kaynak klasör:** `kitaplar/<SEVİYE>-K<2 hane>-<kisa-baslik>/`, örnek `kitaplar/A1-K01-the-blue-door/`. İçeriği:
-- `book.json`: meta veri (seviye, tür, başlık, Türkçe tanıtım, sürüm, durum, paletler, bölümler).
-- `text.en.md`: sayfa sayfa İngilizce metin.
-- `ceviri.tr.json`: onay durumlu Türkçe çeviri.
-- `glossary.md`, `rights-and-review.md`, `PROMPTS.md`.
-- `audio/`: bölüm başına `.mp3` (git dışı) ve `.align.json`.
-- `images/`: sayfa ve kapak görselleri (git dışı; WebP pakete girer).
+## 6. Kitap paketi (H-066'da kesinleşti, 2026-10-14)
+**Kimlik:** `<SEVİYE>-K<2 hane>`, klasör `kitaplar/<SEVİYE>-K<2 hane>-<kisa-baslik>/` (ör. `kitaplar/A1-K01-the-blue-door/`). Bölüm kimlikleriyle (`A1-001`) çakışmaz. `_` ile başlayan klasörler (`kitaplar/_maliyet/`) kitap değildir.
 
-**Paket:** `_build/package/`. İçeriği:
-- `book.json`
-- `pages.json`: sayfa → cümleler → kelimeler; her öğede `start`/`end` sn (bölüm sesi içinde), `tr`, `gloss`.
-- `audio/<bölüm>.m4a`
-- `images/<sayfa>.webp`
-- `manifest.json` (sha256)
+### 6.1 Kaynak klasör
+| Dosya | İçerik | Git |
+|---|---|---|
+| `book.json` | Meta veri; şema `tools/content-pipeline/schema/book.schema.json` (aşağıda) | depoda |
+| `text.en.md` | Sayfa sayfa İngilizce metin (işaretler §6.2) | depoda |
+| `ceviri.tr.json` | Bölümlerdeki biçimin aynısı: `status` (`DRAFT`/`APPROVED`), `lines[]` (`en` = cümlenin birebir metni, `tr`, `chunks[]`, `words{}`, `source` = cümle kimliği), `phrases[]`. Bölüm başlıklarının da satırı olur. | depoda |
+| `glossary.md` | Tablo: `\| Kelime \| Türkçe \| Örnek \| Not \|`. Türkçe zorunlu, örnek önerilir. Buradaki kelimeler kapsama hesabında "sözlükle açıklanmış" sayılır. | depoda |
+| `rights-and-review.md`, `PROMPTS.md` | Haklar, onay geçmişi; her görsel istemi ve **her TTS çağrısı** (`tts_book.py` satır ekler) | depoda |
+| `audio/<bölüm>.align.json` | ElevenLabs hizalaması + `text`, `textSha256`, `voice_id`, `model_id`, `speed` | depoda |
+| `audio/<bölüm>.mp3` | Bölüm sesi | **git dışı** |
+| `audio/_parts/` | Uzun bölümlerin ödenmiş parça önbelleği (yeniden ödeme olmasın diye) | **git dışı** |
+| `images/` | Sayfa ve kapak görselleri (PNG/JPG) | **git dışı** |
 
-Zamanlama mevcut `hvpipeline/align.py` ile ElevenLabs karakter hizalamasından üretilir. Bölümlerdeki altyazı biçiminin (`subs.schema.json`) kitap karşılığıdır.
+**`book.json` alanları:** `schemaVersion` (1), `id`, `slug` (= klasör adı), `level` (A1–C2), `genre` (`mystery` Gizem · `adventure` Macera · `humor` Mizah · `scifi-fantasy` Bilimkurgu/fantastik · `everyday` Günlük hayat/duygu), `title`, `titleTr`, `blurbTr` (Türkçe tanıtım), `hookEn`, `contentVersion`, `status` (K-05 durumları), `aiGenerated`, `palette` (`background`, `text`, `accent`, isteğe bağlı `surface`, `highlight`; `#RRGGBB`), `cover` (images/ altındaki dosya adı ya da `null`), `properNouns` (kapsamaya ve kelime anlamı zorunluluğuna girmez), `narration` (`voiceId`, `modelId`, `speed`; anahtar asla burada değil), `chapters[]` → `id` (`c1`…), `title`, `titleTr`, `pages[]` → `id` (`p01`…, kitap boyunca tekil ve sıralı), `image` (dosya adı ya da `null` = resimsiz, palet renkli sayfa).
 
-**Kimlik:** `<SEVİYE>-K<2 hane>`. Bölüm kimlikleriyle (`A1-001`) çakışmaz.
+### 6.2 `text.en.md` işaretleri
+```
+# The Blue Door                 ← isteğe bağlı; book.json title ile aynı
+> Yorum satırı                  ← sese ve denetime girmez
+## [c1] A New Home              ← bölüm başı; başlık seslendirilir (sesin ilk cümlesi)
+### [p01]                       ← sayfa başı
+Lina has a new home. It is old.
+                                ← boş satır = paragraf sonu
+She likes it.
+```
+- Gövde düz metindir; `* _ \` [ ]` kullanılmaz (lint hatası).
+- Cümleler `. ! ? …` (ve ardından gelen tırnak) ile biter. *Mr., Mrs., Dr., St.* gibi kısaltmalar bölünmez. Alıntıdan sonra **küçük harfle** devam eden konuşma eki aynı cümledir (`"Stop!" says Lina.`); büyük harfle devam ederse iki cümle olur (`"Stop!"` · `Lina says.`).
+- Bölümün ses metni: `Başlık.` + boş satır + paragraflar (boş satırla). `tts_book.py` bunu gönderir; `textSha256` bu metnin özetidir.
+
+### 6.3 Paket: `_build/package/`
+| Dosya | İçerik |
+|---|---|
+| `book.json` | Kaynak meta verinin yayın alanları (aynı şema) + `cover` (`images/cover.webp`), `wordCount`, `pageCount`, `estimatedMinutes`; bölümlerde `audio` (`audio/<bölüm>.m4a` ya da `null`) ve `duration` (sn); sayfalarda `image` = `images/<sayfa>.webp` ya da `null`. `narration` ve `properNouns` pakete girmez. |
+| `pages.json` | Şema `schema/pages.schema.json`. `chapters[]`: `id`, `title`, `audio`, `duration`, `heading` (seslendirilen başlık cümlesi), `pages[]` (kimlikler). `pages[]`: `id`, `number`, `chapter`, `image`, `sentences[]` → `id` (`p01-s01`; başlıkta `c1-h`), `paragraph`, `text`, `start`, `end`, `tr`, `words[]` (`w`, `start`, `end`, `gloss`), `chunks[]` (`en`, `tr`, `startWord`, `endWord`). Zamanlar sn, bölüm sesinin başına göre. Hizalama yoksa `start`/`end` `null` (sessiz okuma). |
+| `audio/<bölüm>.m4a` | AAC 96k; kitabın bütün bölümleri birlikte ölçülür, tek kazanç, hedef **-16 LUFS**, sınırlayıcı ≈ -1,5 dBFS (`media.audio_clip`). |
+| `images/<sayfa>.webp`, `images/cover.webp` | 1080 px genişlik, oran korunur, WebP q80, yazısız. |
+| `manifest.json` | `contentType: "BOOK"`, `contentVersion`, `tool`, `textSha256` (bölüm başına), `loudness`, `missing[]` (bu ortamda bulunmayan ses, hizalama, görsel), `files[]` (`path`, `bytes`, `sha256`), `totalBytes`. |
+
+- **Zamanlama** `hvpipeline/align.py` → `sentence_timings`: **cümle düzeyinde** (bölüm altyazısındaki gibi kısa parçaları birleştirmez). Hizalama ile metin boşluk ve tırnak biçimi dışında birebir eşleşmelidir; metin TTS'ten sonra değişirse lint ve dışa aktarma hata verir (sesi yeniden üret).
+- **Eksik medya:** ses ve görseller git dışında olduğundan CI'da yoktur. Paket yine üretilir, eksikler `manifest.missing`'e yazılır ve UYARI olarak gösterilir; `--require-media` ile hata olur.
+- **Geliştirme sunucusu:** `/books/index.json` ve `/books/<kitapId>/<yol>` (Range destekli), `tools/dev-content-server/serve.py --books-root kitaplar`.
+
+### 6.4 Araçlar
+```bash
+P=tools/content-pipeline/.venv/bin/python
+$P tools/content-pipeline/book_lint.py kitaplar/A1-K01-*          # denetim (ücretsiz)
+$P tools/content-pipeline/tts_book.py kitaplar/A1-K01-*           # KURU çalışma: karakter + tahmini kredi
+$P tools/content-pipeline/tts_book.py kitaplar/A1-K01-* --execute # ÜCRETLİ: maliyet onayından sonra
+$P tools/content-pipeline/export_book.py kitaplar/A1-K01-*        # paket (yerel ffmpeg + ImageMagick)
+```
+
+**book-lint kuralları**
+
+| Kod | Kural | Düzey |
+|---|---|---|
+| `book-schema`, `book-id`, `book-files` | `book.json` şeması; klasör adı = `slug`, kimlik seviyeyle başlar; `text.en.md`, `glossary.md`, `rights-and-review.md`, `PROMPTS.md` var | Hata |
+| `book-text`, `book-structure`, `book-page-empty` | İşaretler doğru; bölüm/sayfa kimlikleri, sırası ve bölüm başlıkları `book.json` ile birebir; her sayfada metin var | Hata |
+| `book-length` | Sayfa ve bölüm sayısı §4 aralığında | Uyarı |
+| `book-words` | Kelime sayısı seviye hedefi ± %20 (A1 560–840, A2 1.200–1.800, B1 2.400–3.600, B2 4.000–6.000, C1 6.400–9.600, C2 8.000–12.000) | Hata |
+| `coverage`, `off-list` | K-07: ≥ %98; %95–98 yalnızca `glossary.md` ile %98'e tamamlanırsa (uyarı). A1–B2 kümülatif CEFR-J; C1/C2 CEFR-J + Octanove C1/C2 (ayrı CC BY-SA dosyası). Octanove dosyası yoksa C1/C2 için **"liste yok; kapsama denetlenmedi"** uyarısı. Özel adlar (`properNouns`, `data/proper_nouns.txt`) ve ünlemler sayılmaz. | Hata / uyarı |
+| `sentence-length` | A1 ≤ 8, A2 ≤ 12 kelime | Hata |
+| `glossary-meaning`, `glossary-example`, `glossary-unused` | Türkçe zorunlu; örnek cümle ve metinde geçme önerilir | Hata / uyarı / uyarı |
+| `translation` | Her cümlenin (başlıklar dahil) çeviri satırı ve özel ad dışındaki her kelimenin anlamı; durum `APPROVED` değilse uyarı; bulunamayan kalıp uyarı | Hata / uyarı |
+| `book-align` | Hizalama metinle uyuşuyor (uyuşmazsa hata); `textSha256` farklıysa uyarı | Hata / uyarı |
+| `book-audio`, `book-media` | Hizalama henüz yok; ses ya da görsel bu ortamda yok (git dışı medya) | Uyarı |
+| `book-speed` | Hizalamadan ölçülen anlatım hızı seviye aralığının ± %10'u dışında (`narration.speed` ayarlanır) | Uyarı |
+
+**TTS betiği (`tts_book.py`)**
+- ElevenLabs `POST /v1/text-to-speech/{voice}/with-timestamps`, `mp3_44100_128`, `language_code: en`, model `eleven_v3`, `stability` 0.5, `similarity_boost` 0.75 (bölümlerle aynı). **Hız başlangıç değerleri:** A1 0.90 (bölümlerde ~107 k/dk ölçüldü), A2 0.95, B1 1.00, B2 1.00, C1 1.05, C2 1.05; `book.json → narration.speed` ile değişir, gerçek hız book-lint'te ölçülür.
+- **Anahtar** yalnızca `ELEVENLABS_API_KEY` ortam değişkeninden, yalnızca `--execute` ile okunur; hiçbir dosyaya ve loga yazılmaz.
+- **Varsayılan kuru çalışma:** API çağrılmaz; bölüm başına karakter, parça sayısı ve tahmini kredi yazılır (eleven_v3 ≈ 1 kredi/karakter, tahmin).
+- **Aylık karakter tavanı:** `HIVELZON_TTS_MONTHLY_CHAR_CAP` ya da `--monthly-char-cap`. **Tanımlı değilse `--execute` reddedilir.** Her parçadan önce `kitaplar/_maliyet/elevenlabs-karakter.json` defteriyle (ay → karakter, çağrı) denetlenir; aşılacaksa çağrı yapılmadan durur.
+- **İdempotent:** `.mp3` + `.align.json` var ve `textSha256` güncel metinle aynıysa bölüm atlanır. Uzun bölüm paragraf sınırında parçalara bölünür (eleven_v3 için istek başına 3.000 karakter varsayıldı); parçalar `audio/_parts/` önbelleğinden yeniden kullanılır, 0,4 sn arayla birleştirilir, hizalamalar kaydırılarak birleşir.
+- Her gerçek çağrı `PROMPTS.md` → "Seslendirme kayıtları" tablosuna (tarih, bölüm, parça, ses, model, hız, karakter, metin sha256, dosya) eklenir.
 
 **Backend:**
 - İçerik türü olarak `BOOK` eklenir.
