@@ -3,7 +3,7 @@ import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
 
-import '../../../../app/theme.dart';
+import '../../../../app/design/tokens.dart';
 
 /// Harita görseli yokken çizilen sade arka plan (H-035): gün batımı göğü,
 /// solda deniz, sağda tepe, altta liman rıhtımı, tepede fener.
@@ -15,11 +15,11 @@ class MapFallbackPainter extends CustomPainter {
   /// Fenerin normalize konumu (son bölüm noktası).
   final Offset lighthouse;
 
-  static const _sea = Color(0xFF2E6A9A);
-  static const _seaDeep = AppColors.seaBlue;
-  static const _land = Color(0xFFE9DCC2);
-  static const _hill = Color(0xFF8FA876);
-  static const _hillDark = Color(0xFF6F8C5C);
+  static const _sea = AppMapColors.sea;
+  static const _seaDeep = AppMapColors.seaDeep;
+  static const _land = AppMapColors.land;
+  static const _hill = AppMapColors.hill;
+  static const _hillDark = AppMapColors.hillDark;
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -39,8 +39,8 @@ class MapFallbackPainter extends CustomPainter {
       Rect.fromLTWH(0, 0, w, h * 0.09),
       Paint()
         ..shader = ui.Gradient.linear(Offset.zero, Offset(0, h * 0.09), [
-          AppColors.eveningOrange.withValues(alpha: 0.85),
-          AppColors.lighthouseYellow.withValues(alpha: 0.25),
+          AppPalette.eveningOrange.withValues(alpha: 0.85),
+          AppPalette.lighthouseYellow.withValues(alpha: 0.25),
         ]),
     );
 
@@ -90,7 +90,7 @@ class MapFallbackPainter extends CustomPainter {
 
     // Küçük evler (turuncu çatılar).
     final house = Paint()..color = AppPalette.sand;
-    final roof = Paint()..color = AppColors.eveningOrange;
+    final roof = Paint()..color = AppPalette.eveningOrange;
     for (final (x, y) in const [
       (0.14, 0.70),
       (0.30, 0.68),
@@ -120,7 +120,7 @@ class MapFallbackPainter extends CustomPainter {
       ..close();
     canvas.drawPath(
       beam,
-      Paint()..color = AppColors.lighthouseYellow.withValues(alpha: 0.35),
+      Paint()..color = AppPalette.lighthouseYellow.withValues(alpha: 0.35),
     );
     final tower = Path()
       ..moveTo(lx - 5, ly + 22)
@@ -128,15 +128,15 @@ class MapFallbackPainter extends CustomPainter {
       ..lineTo(lx + 3.5, ly)
       ..lineTo(lx + 5, ly + 22)
       ..close();
-    canvas.drawPath(tower, Paint()..color = Colors.white);
+    canvas.drawPath(tower, Paint()..color = AppPalette.white);
     canvas.drawRect(
       Rect.fromLTWH(lx - 4.5, ly + 9, 9, 4),
-      Paint()..color = const Color(0xFFC0392B),
+      Paint()..color = AppMapColors.lighthouseBand,
     );
     canvas.drawCircle(
       Offset(lx, ly - 2),
       3.5,
-      Paint()..color = AppColors.lighthouseYellow,
+      Paint()..color = AppPalette.lighthouseYellow,
     );
   }
 
@@ -161,17 +161,17 @@ class MapPathPainter extends CustomPainter {
       for (final p in points) Offset(p.dx * size.width, p.dy * size.height),
     ];
     final base = Paint()
-      ..color = Colors.white.withValues(alpha: 0.55)
+      ..color = AppPalette.white.withValues(alpha: 0.55)
       ..style = PaintingStyle.stroke
       ..strokeWidth = 4
       ..strokeCap = StrokeCap.round;
     final done = Paint()
-      ..color = Colors.white
+      ..color = AppPalette.white
       ..style = PaintingStyle.stroke
       ..strokeWidth = 5
       ..strokeCap = StrokeCap.round;
     for (var i = 0; i < pts.length - 1; i++) {
-      final seg = _segment(pts, i);
+      final seg = segment(pts, i);
       if (i < completedUpTo) {
         canvas.drawPath(seg, done);
       } else {
@@ -181,7 +181,7 @@ class MapPathPainter extends CustomPainter {
   }
 
   /// Catmull-Rom → kübik Bezier (i → i+1).
-  static Path _segment(List<Offset> p, int i) {
+  static Path segment(List<Offset> p, int i) {
     final p0 = p[math.max(i - 1, 0)];
     final p1 = p[i];
     final p2 = p[i + 1];
@@ -206,4 +206,67 @@ class MapPathPainter extends CustomPainter {
   @override
   bool shouldRepaint(MapPathPainter old) =>
       old.completedUpTo != completedUpTo || old.points != points;
+}
+
+/// Yeni açılan bölüme giden yolun "çizilmesi" (H-060): önceki bölümden yeni
+/// bölüme fener sarısı, yumuşak ışıklı bir iz. [progress] 0–1: iz uzar;
+/// [opacity] sonunda iz söner (harita görselindeki yolla çakışmasın diye
+/// kalıcı değildir).
+class UnlockTrailPainter extends CustomPainter {
+  const UnlockTrailPainter({
+    required this.points,
+    required this.toIndex,
+    required this.progress,
+    required this.opacity,
+  });
+
+  /// Normalize noktalar (bölüm sırasıyla).
+  final List<Offset> points;
+
+  /// Yeni açılan bölümün indeksi (iz `toIndex - 1` → `toIndex`).
+  final int toIndex;
+  final double progress;
+  final double opacity;
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    if (toIndex < 1 || toIndex >= points.length) return;
+    if (progress <= 0 || opacity <= 0) return;
+    final pts = [
+      for (final p in points) Offset(p.dx * size.width, p.dy * size.height),
+    ];
+    final seg = MapPathPainter.segment(pts, toIndex - 1);
+    final glow = Paint()
+      ..color = AppPalette.lighthouseYellow.withValues(alpha: 0.45 * opacity)
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 12
+      ..strokeCap = StrokeCap.round
+      ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 6);
+    final line = Paint()
+      ..color = AppPalette.lighthouseYellow.withValues(alpha: opacity)
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 5
+      ..strokeCap = StrokeCap.round;
+    for (final m in seg.computeMetrics()) {
+      final drawn = m.extractPath(0, m.length * progress.clamp(0.0, 1.0));
+      canvas
+        ..drawPath(drawn, glow)
+        ..drawPath(drawn, line);
+      final head = m.getTangentForOffset(m.length * progress.clamp(0.0, 1.0));
+      if (head != null && progress < 1) {
+        canvas.drawCircle(
+          head.position,
+          5,
+          Paint()..color = AppPalette.yellow100.withValues(alpha: opacity),
+        );
+      }
+    }
+  }
+
+  @override
+  bool shouldRepaint(UnlockTrailPainter old) =>
+      old.progress != progress ||
+      old.opacity != opacity ||
+      old.toIndex != toIndex ||
+      old.points != points;
 }

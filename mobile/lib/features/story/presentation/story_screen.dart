@@ -6,10 +6,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../app/router.dart';
-import '../../../app/theme.dart';
+import '../../../app/design/design.dart';
 import '../../../l10n/tr_strings.dart';
 import '../../../shared/content/content_providers.dart';
 import '../../../shared/widgets/page_header.dart';
+import '../../../shared/ui/ui.dart';
 import '../../../shared/widgets/skeleton.dart';
 import '../../player/application/autoplay_driver.dart';
 import '../../player/data/progress_repository.dart';
@@ -27,6 +28,11 @@ import 'widgets/season_map_view.dart';
 /// ilk kez açılınca bir kez kendiliğinden oynar (H-050).
 class StoryScreen extends ConsumerStatefulWidget {
   const StoryScreen({super.key});
+
+  /// Bağlantı kurulamadığında (H-058 illüstrasyonu).
+  static const errorImage = AssetImage(
+    'assets/illustrations/baglanti-yok.webp',
+  );
 
   @override
   ConsumerState<StoryScreen> createState() => _StoryScreenState();
@@ -62,7 +68,7 @@ class _StoryScreenState extends ConsumerState<StoryScreen> {
             onNodeTap: _openSheet,
           ),
           AsyncError() => _Message(
-            icon: Icons.cloud_off_rounded,
+            illustration: StoryScreen.errorImage,
             title: CommonTexts.serverDownTitle,
             body: kDebugMode
                 ? '${StoryTexts.mapError} ${CommonTexts.serverDownBody}\n\n'
@@ -71,7 +77,6 @@ class _StoryScreenState extends ConsumerState<StoryScreen> {
             action: FilledButton.icon(
               key: const ValueKey('story-retry'),
               onPressed: () => retrySeasonMap(ref),
-              style: FilledButton.styleFrom(minimumSize: const Size(48, 48)),
               icon: const Icon(Icons.refresh_rounded),
               label: const Text(CommonTexts.retry),
             ),
@@ -185,27 +190,36 @@ class _MapBody extends StatelessWidget {
     // odak kartı balonun altında kalmaz.
     return Padding(
       padding: EdgeInsets.fromLTRB(
-        AppSpacing.sm,
-        AppSpacing.xs,
-        AppSpacing.sm,
-        AppSpacing.xs + MediaQuery.paddingOf(context).bottom,
+        AppSpace.page,
+        AppSpace.s8,
+        AppSpace.page,
+        AppSpace.s8 + MediaQuery.paddingOf(context).bottom,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           const PageHeader(title: StoryTexts.title, subtitle: StoryTexts.intro),
-          const SizedBox(height: AppSpacing.sm),
-          _MapHeader(map: map),
-          const SizedBox(height: AppSpacing.xs),
+          const SizedBox(height: AppSpace.s12),
+          FadeSlideIn(child: _MapHeader(map: map)),
+          const SizedBox(height: AppSpace.s12),
           Expanded(
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(AppTheme.radius),
-              child: SeasonMapView(map: map, onNodeTap: onNodeTap),
+            child: DecoratedBox(
+              decoration: const BoxDecoration(
+                borderRadius: AppRadius.lgAll,
+                boxShadow: AppShadows.level1,
+              ),
+              child: ClipRRect(
+                borderRadius: AppRadius.lgAll,
+                child: SeasonMapView(map: map, onNodeTap: onNodeTap),
+              ),
             ),
           ),
           if (focus != null) ...[
-            const SizedBox(height: AppSpacing.xs),
-            _FocusCard(episode: focus, onTap: () => onNodeTap(focus)),
+            const SizedBox(height: AppSpace.s12),
+            FadeSlideIn(
+              index: 1,
+              child: _FocusCard(episode: focus, onTap: () => onNodeTap(focus)),
+            ),
           ],
         ],
       ),
@@ -213,7 +227,9 @@ class _MapBody extends StatelessWidget {
   }
 }
 
-/// Sezon başlığı: "Sezon 1 · The Missing Signal", ilerleme ve "Jeneriği izle".
+/// Sezon başlık kartı (H-060, taslak S08): deniz mavisi kart, fener
+/// küçük resmi, "Sezon 1 · The Missing Signal", sarı ilerleme çubuğu ve
+/// "Jeneriği izle".
 class _MapHeader extends ConsumerStatefulWidget {
   const _MapHeader({required this.map});
 
@@ -225,6 +241,8 @@ class _MapHeader extends ConsumerStatefulWidget {
 
 class _MapHeaderState extends ConsumerState<_MapHeader> {
   bool _checked = false;
+
+  static const double _thumb = 56;
 
   /// İzlenmediyse jeneriği açar ve izlendi olarak işaretler.
   static Future<void> autoIntro(
@@ -238,6 +256,19 @@ class _MapHeaderState extends ConsumerState<_MapHeader> {
     if (!context.mounted) return;
     if (log) debugPrint('[H031] sezon jeneriği (ilk açılış) $season');
     await context.push(AppRoutes.seasonIntro(season));
+  }
+
+  /// Tek satır metnin genişliği (yazı büyütme dahil).
+  static double _textWidth(BuildContext context, String text, TextStyle? st) {
+    final tp = TextPainter(
+      text: TextSpan(text: text, style: st),
+      textDirection: Directionality.of(context),
+      textScaler: MediaQuery.textScalerOf(context),
+      maxLines: 1,
+    )..layout();
+    final w = tp.width;
+    tp.dispose();
+    return w;
   }
 
   void _maybeAutoIntro() {
@@ -259,117 +290,206 @@ class _MapHeaderState extends ConsumerState<_MapHeader> {
     final info = map.info;
     final done = map.completedCount;
     final poster = info?.titlePoster;
+    final thumbFallback = Container(
+      width: _thumb,
+      height: _thumb,
+      color: AppPalette.seaBlue700,
+      alignment: Alignment.center,
+      child: const Icon(
+        Icons.flare_rounded,
+        color: AppPalette.lighthouseYellow,
+        size: AppIconSize.lg,
+      ),
+    );
     return Container(
       key: ValueKey('season-header-${map.season}'),
-      padding: const EdgeInsets.fromLTRB(
-        AppSpacing.sm,
-        AppSpacing.xs,
-        AppSpacing.xs,
-        0,
+      clipBehavior: Clip.antiAlias,
+      decoration: const BoxDecoration(
+        color: AppPalette.seaBlue,
+        borderRadius: AppRadius.lgAll,
+        boxShadow: AppShadows.level2,
       ),
-      decoration: BoxDecoration(
-        color: AppColors.seaBlue,
-        borderRadius: BorderRadius.circular(AppTheme.radius),
-      ),
-      child: Row(
+      child: Stack(
         children: [
-          if (poster != null) ...[
-            ClipRRect(
-              borderRadius: BorderRadius.circular(8),
-              child: Image.network(
-                ref
-                    .watch(contentSourceProvider)
-                    .seasonMediaUri(map.season, poster)
-                    .toString(),
-                width: 48,
-                height: 48,
-                fit: BoxFit.cover,
-                cacheWidth: 144,
-                excludeFromSemantics: true,
-                errorBuilder: (_, _, _) =>
-                    const SizedBox(width: 48, height: 48),
+          // Fener ışığı gibi sakin süs (sağ üst).
+          Positioned(
+            right: -AppSpace.s48,
+            top: -AppSpace.s64,
+            child: ExcludeSemantics(
+              child: Container(
+                width: 160,
+                height: 160,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: AppPalette.lighthouseYellow.withValues(alpha: 0.16),
+                ),
               ),
             ),
-            const SizedBox(width: AppSpacing.sm),
-          ],
-          Expanded(
+          ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(
+              AppSpace.s12,
+              AppSpace.s12,
+              AppSpace.s12,
+              AppSpace.s4,
+            ),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                Semantics(
-                  header: true,
-                  child: Text.rich(
-                    TextSpan(
-                      children: [
-                        TextSpan(
-                          text: 'Sezon ${map.season}',
-                          style: const TextStyle(
-                            color: AppColors.lighthouseYellow,
-                          ),
-                        ),
-                        const TextSpan(text: ' · '),
-                        TextSpan(text: map.title),
-                      ],
-                    ),
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                    style: theme.textTheme.titleMedium?.copyWith(
-                      color: Colors.white,
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
-                ),
-                const SizedBox(height: AppSpacing.xs),
                 Row(
                   children: [
+                    ClipRRect(
+                      borderRadius: AppRadius.mdAll,
+                      child: poster == null
+                          ? thumbFallback
+                          : Image.network(
+                              ref
+                                  .watch(contentSourceProvider)
+                                  .seasonMediaUri(map.season, poster)
+                                  .toString(),
+                              width: _thumb,
+                              height: _thumb,
+                              fit: BoxFit.cover,
+                              cacheWidth: 168,
+                              excludeFromSemantics: true,
+                              errorBuilder: (_, _, _) => thumbFallback,
+                            ),
+                    ),
+                    const SizedBox(width: AppSpace.s12),
                     Expanded(
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(4),
-                        child: LinearProgressIndicator(
-                          value: map.total == 0 ? 0 : done / map.total,
-                          minHeight: 8,
-                          backgroundColor: Colors.white24,
-                          color: AppColors.lighthouseYellow,
-                          semanticsLabel: StoryTexts.progressLabel,
-                          semanticsValue: StoryTexts.progressSemantics(
-                            done,
-                            map.total,
+                      child: Semantics(
+                        header: true,
+                        child: Text.rich(
+                          TextSpan(
+                            children: [
+                              TextSpan(
+                                text: 'Sezon ${map.season}',
+                                style: const TextStyle(
+                                  color: AppPalette.lighthouseYellow,
+                                ),
+                              ),
+                              const TextSpan(text: ' · '),
+                              TextSpan(text: map.title),
+                            ],
+                          ),
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          style: theme.textTheme.titleLarge?.copyWith(
+                            color: AppPalette.white,
                           ),
                         ),
                       ),
                     ),
-                    const SizedBox(width: AppSpacing.xs),
-                    Text(
-                      StoryTexts.progress(done, map.total),
-                      key: const ValueKey('season-progress'),
-                      style: theme.textTheme.titleSmall?.copyWith(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-                    if (info?.introVideo != null) ...[
-                      const SizedBox(width: AppSpacing.xs),
-                      Flexible(
-                        child: FittedBox(
-                          fit: BoxFit.scaleDown,
-                          child: TextButton.icon(
-                            key: ValueKey('season-intro-play-${map.season}'),
-                            onPressed: () =>
-                                context.push(AppRoutes.seasonIntro(map.season)),
-                            style: TextButton.styleFrom(
-                              minimumSize: const Size(48, 48),
-                              foregroundColor: Colors.white,
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: AppSpacing.xs,
+                  ],
+                ),
+                LayoutBuilder(
+                  builder: (context, c) {
+                    final progressRow = Row(
+                      children: [
+                        Expanded(
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(AppRadius.full),
+                            child: LinearProgressIndicator(
+                              value: map.total == 0 ? 0 : done / map.total,
+                              minHeight: AppSpace.s8,
+                              backgroundColor: AppPalette.white.withValues(
+                                alpha: 0.2,
+                              ),
+                              color: AppPalette.lighthouseYellow,
+                              semanticsLabel: StoryTexts.progressLabel,
+                              semanticsValue: StoryTexts.progressSemantics(
+                                done,
+                                map.total,
                               ),
                             ),
-                            icon: const Icon(Icons.play_circle_outline_rounded),
-                            label: const Text(StoryTexts.watchIntro),
                           ),
                         ),
+                        const SizedBox(width: AppSpace.s8),
+                        Text(
+                          StoryTexts.progress(done, map.total),
+                          key: const ValueKey('season-progress'),
+                          style: theme.textTheme.titleSmall?.copyWith(
+                            color: AppPalette.white,
+                            fontWeight: AppFonts.bold,
+                          ),
+                        ),
+                      ],
+                    );
+                    if (info?.introVideo == null) {
+                      return SizedBox(height: AppTouch.min, child: progressRow);
+                    }
+                    final intro = OutlinedButton.icon(
+                      key: ValueKey('season-intro-play-${map.season}'),
+                      onPressed: () =>
+                          context.push(AppRoutes.seasonIntro(map.season)),
+                      style: OutlinedButton.styleFrom(
+                        foregroundColor: AppPalette.white,
+                        side: BorderSide(
+                          color: AppPalette.white.withValues(alpha: 0.7),
+                        ),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: AppSpace.s12,
+                        ),
                       ),
-                    ],
-                  ],
+                      icon: const Icon(Icons.play_circle_outline_rounded),
+                      label: const Text(StoryTexts.watchIntro),
+                    );
+                    // Sığmazsa (dar ekran, büyük yazı) düğme alt satıra
+                    // iner; dokunma alanı küçülmez.
+                    final countStyle = theme.textTheme.titleSmall?.copyWith(
+                      fontWeight: AppFonts.bold,
+                    );
+                    final need =
+                        _textWidth(
+                          context,
+                          StoryTexts.progress(done, map.total),
+                          countStyle,
+                        ) +
+                        _textWidth(
+                          context,
+                          StoryTexts.watchIntro,
+                          AppTypography.button,
+                        ) +
+                        // Düğme: ikon + boşluklar; çubuk için en az 64 px.
+                        AppIconSize.md +
+                        AppSpace.s24 +
+                        AppSpace.s8 +
+                        AppSpace.s8 +
+                        AppSpace.s12 +
+                        AppSpace.s64;
+                    if (c.maxWidth >= need) {
+                      return Padding(
+                        padding: const EdgeInsets.only(
+                          top: AppSpace.s8,
+                          bottom: AppSpace.s8,
+                        ),
+                        child: Row(
+                          children: [
+                            Expanded(child: progressRow),
+                            const SizedBox(width: AppSpace.s12),
+                            intro,
+                          ],
+                        ),
+                      );
+                    }
+                    return Padding(
+                      padding: const EdgeInsets.only(
+                        top: AppSpace.s12,
+                        bottom: AppSpace.s8,
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          progressRow,
+                          const SizedBox(height: AppSpace.s8),
+                          Align(
+                            alignment: AlignmentDirectional.centerEnd,
+                            child: intro,
+                          ),
+                        ],
+                      ),
+                    );
+                  },
                 ),
               ],
             ),
@@ -391,94 +511,94 @@ class _FocusCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final e = episode;
-    return Card(
-      margin: EdgeInsets.zero,
-      child: InkWell(
-        key: const ValueKey('story-focus-card'),
-        borderRadius: BorderRadius.circular(AppTheme.radius),
-        onTap: onTap,
-        child: ConstrainedBox(
-          constraints: const BoxConstraints(minHeight: 64),
-          child: Padding(
-            padding: const EdgeInsets.all(AppSpacing.sm),
-            child: Row(
-              children: [
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        StoryTexts.focusLabel(e.number, e.state.labelTr),
-                        style: theme.textTheme.labelLarge?.copyWith(
-                          color: theme.colorScheme.primary,
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                      const SizedBox(height: 4),
-                      Text(
-                        e.title,
-                        style: theme.textTheme.titleMedium?.copyWith(
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                      if (e.teaser != null)
-                        Text(
-                          e.teaser!,
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
-                          style: theme.textTheme.bodyMedium,
-                        ),
-                    ],
-                  ),
+    final colors = mapNodeColors(e.state);
+    return TappableCard(
+      key: const ValueKey('story-focus-card'),
+      elevated: true,
+      onTap: onTap,
+      padding: const EdgeInsets.all(AppSpace.s12),
+      child: ConstrainedBox(
+        constraints: const BoxConstraints(minHeight: AppSpace.s48),
+        child: Row(
+          children: [
+            ExcludeSemantics(
+              child: Container(
+                width: AppSpace.s48,
+                height: AppSpace.s48,
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  color: colors.fill,
+                  shape: BoxShape.circle,
+                  border: Border.all(color: AppPalette.seaBlue100, width: 3),
                 ),
-                const Icon(Icons.chevron_right_rounded),
-              ],
+                child: Text(
+                  '${e.number}',
+                  style: theme.textTheme.titleLarge?.copyWith(color: colors.fg),
+                ),
+              ),
             ),
-          ),
+            const SizedBox(width: AppSpace.s12),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    StoryTexts.focusLabel(e.number, e.state.labelTr),
+                    style: theme.textTheme.labelLarge?.copyWith(
+                      color: AppPalette.orange700,
+                      fontWeight: AppFonts.bold,
+                    ),
+                  ),
+                  const SizedBox(height: AppSpace.s4),
+                  Text(e.title, style: theme.textTheme.titleMedium),
+                  if (e.teaser != null)
+                    Text(
+                      e.teaser!,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      style: theme.textTheme.bodyMedium?.copyWith(
+                        color: AppPalette.ink500,
+                      ),
+                    ),
+                ],
+              ),
+            ),
+            const Icon(Icons.chevron_right_rounded, color: AppPalette.seaBlue),
+          ],
         ),
       ),
     );
   }
 }
 
+/// Boş ve hata durumu (H-060: ortak [EmptyState]).
 class _Message extends StatelessWidget {
   const _Message({
-    required this.icon,
     required this.title,
     required this.body,
+    this.icon,
+    this.illustration,
     this.action,
   });
 
-  final IconData icon;
+  final IconData? icon;
+  final ImageProvider? illustration;
   final String title;
   final String body;
   final Widget? action;
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return Center(
       child: SingleChildScrollView(
-        padding: const EdgeInsets.all(AppSpacing.md),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Icon(icon, size: 64, color: theme.colorScheme.primary),
-            const SizedBox(height: AppSpacing.sm),
-            Text(
-              title,
-              style: theme.textTheme.titleLarge?.copyWith(
-                fontWeight: FontWeight.w700,
-              ),
-              textAlign: TextAlign.center,
-            ),
-            const SizedBox(height: AppSpacing.xs),
-            Text(body, textAlign: TextAlign.center),
-            if (action != null) ...[
-              const SizedBox(height: AppSpacing.md),
-              action!,
-            ],
-          ],
+        child: EmptyState(
+          icon: icon,
+          illustration: illustration == null
+              ? null
+              : Image(image: illustration!, fit: BoxFit.contain),
+          title: title,
+          message: body,
+          action: action,
         ),
       ),
     );

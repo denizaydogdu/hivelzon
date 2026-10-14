@@ -6,9 +6,12 @@ import 'package:hivelzon/app/theme.dart';
 import 'package:hivelzon/features/player/data/progress_repository.dart';
 import 'package:hivelzon/features/player/domain/episode_engine.dart';
 import 'package:hivelzon/features/story/data/season_intro_repository.dart';
+import 'package:hivelzon/features/story/data/unlock_seen_repository.dart';
 import 'package:hivelzon/features/story/presentation/season_intro_screen.dart';
 import 'package:hivelzon/features/story/presentation/story_screen.dart';
+import 'package:hivelzon/l10n/tr_strings.dart';
 import 'package:hivelzon/shared/content/content_providers.dart';
+import 'package:hivelzon/shared/ui/ui.dart';
 import 'package:hivelzon/shared/progress/story_progress.dart';
 import 'package:video_player_platform_interface/video_player_platform_interface.dart';
 
@@ -31,12 +34,14 @@ EngineSnapshot _snap(String node) => EngineSnapshot(
 
 void main() {
   late InMemorySeasonIntroRepository intro;
+  late InMemoryUnlockSeenRepository unlockSeen;
   late InMemoryProgressRepository progress;
   late FakeVideoPlatform platform;
   late List<String> pushed;
 
   setUp(() {
     intro = InMemorySeasonIntroRepository()..seenSeasons.add(1);
+    unlockSeen = InMemoryUnlockSeenRepository();
     progress = InMemoryProgressRepository();
     pushed = [];
     platform = FakeVideoPlatform(
@@ -89,6 +94,7 @@ void main() {
         overrides: [
           contentSourceProvider.overrideWithValue(source),
           seasonIntroRepositoryProvider.overrideWithValue(intro),
+          unlockSeenRepositoryProvider.overrideWithValue(unlockSeen),
           progressRepositoryProvider.overrideWithValue(progress),
         ],
         child: MaterialApp.router(
@@ -354,4 +360,121 @@ void main() {
       await step(tester, 4600);
     },
   );
+
+  // ------------------------------------------------------------ H-060
+
+  Finder trail() => find.byKey(const ValueKey('map-unlock-trail'));
+  Finder lightUp() => find.byKey(const ValueKey('map-node-light-up'));
+
+  testWidgets('H-060: yeni açılan bölüm ilk kez görülünce yol çizilir ve '
+      'ışığı yanar; bir kez oynar, sonra hiç', (tester) async {
+    await progress.markCompleted('A1-001', gate: _fullGate);
+    await pump(
+      tester,
+      FakeContentSource(packageIds: _all4),
+      reduceMotion: false,
+    );
+    await step(tester, 600);
+    expect(trail(), findsOneWidget);
+    expect(find.descendant(of: node(2), matching: lightUp()), findsOneWidget);
+    // Açık bölümlerin hepsi "görüldü" (cihazda, idempotent).
+    expect(unlockSeen.seen, {'A1-001', 'A1-002'});
+    // Animasyon sakin ve kısa: ~1,6 sn sonra iz söner, düğüm normal çizilir.
+    await step(tester, 1800);
+    expect(trail(), findsNothing);
+    expect(lightUp(), findsNothing);
+    expect(find.text('Bölüm 2 · sıradaki'), findsOneWidget);
+
+    // Haritayı yeniden açınca tekrar oynamaz.
+    await tester.pumpWidget(const SizedBox());
+    await pump(
+      tester,
+      FakeContentSource(packageIds: _all4),
+      reduceMotion: false,
+    );
+    await step(tester, 600);
+    expect(trail(), findsNothing);
+    expect(lightUp(), findsNothing);
+  });
+
+  testWidgets('H-060: Bölüm 1 baştan açıktır; ilk açılışta animasyon yok', (
+    tester,
+  ) async {
+    await pump(
+      tester,
+      FakeContentSource(packageIds: _all4),
+      reduceMotion: false,
+    );
+    await step(tester, 600);
+    expect(trail(), findsNothing);
+    expect(lightUp(), findsNothing);
+    expect(unlockSeen.seen, {'A1-001'});
+  });
+
+  testWidgets('H-060: "Hareketi azalt" açıkken yeni bölüm durağan görünür; '
+      'işaret yine yazılır', (tester) async {
+    await progress.markCompleted('A1-001', gate: _fullGate);
+    await pump(tester, FakeContentSource(packageIds: _all4));
+    await step(tester, 600);
+    expect(trail(), findsNothing);
+    expect(lightUp(), findsNothing);
+    expect(tester.hasRunningAnimations, isFalse);
+    expect(unlockSeen.seen, contains('A1-002'));
+  });
+
+  testWidgets('H-060: bölüm paneli ortak alt panelde (tutamaç ve "Kapat")', (
+    tester,
+  ) async {
+    await pump(tester, FakeContentSource(packageIds: _all4));
+    await step(tester, 600);
+    await tapNode(tester, 3);
+    expect(find.byType(AppSheet), findsOneWidget);
+    expect(find.byTooltip('Kapat'), findsOneWidget);
+    await tester.tap(find.byTooltip('Kapat'));
+    await step(tester, 600);
+    expect(find.byKey(const ValueKey('episode-sheet')), findsNothing);
+  });
+
+  testWidgets('H-060: jenerik açılamazsa metinler l10n\'den, "Geri dön" '
+      'haritaya döner', (tester) async {
+    final router = GoRouter(
+      initialLocation: '/sezon/1/jenerik',
+      routes: [
+        GoRoute(
+          path: '/hikaye',
+          builder: (_, _) => const Scaffold(body: Text('harita')),
+        ),
+        GoRoute(
+          path: '/sezon/:season/jenerik',
+          builder: (_, state) => SeasonIntroScreen(
+            season: int.parse(state.pathParameters['season']!),
+          ),
+        ),
+      ],
+    );
+    addTearDown(router.dispose);
+    await tester.pumpWidget(
+      ProviderScope(
+        overrides: [
+          contentSourceProvider.overrideWithValue(
+            FakeContentSource(seasonFails: true),
+          ),
+        ],
+        child: MaterialApp.router(
+          theme: AppTheme.light(),
+          routerConfig: router,
+        ),
+      ),
+    );
+    await step(tester, 600);
+    expect(find.text(SeasonIntroTexts.error), findsOneWidget);
+    expect(find.text(SeasonIntroTexts.goBack), findsOneWidget);
+    expect(find.text(SeasonIntroTexts.skip), findsOneWidget);
+    expect(find.text(SeasonIntroTexts.aiLabel), findsOneWidget);
+    await tester.tap(find.byKey(const ValueKey('season-intro-back')));
+    await step(tester, 600);
+    expect(find.text('harita'), findsOneWidget);
+    await tester.pumpWidget(const SizedBox());
+    await step(tester, 4600);
+  });
 }

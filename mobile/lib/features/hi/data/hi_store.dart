@@ -197,6 +197,19 @@ class HiStore {
     return [for (final r in rows) (r.cardId, r.reviewedAt.toUtc())];
   }
 
+  /// Tekrar cevaplarının anı ve kartta geçen süre (H-060, Ana Sayfa günlük
+  /// hedef halkası). Mevcut `review_logs` kaydından; yeni kayıt tutulmaz.
+  Future<List<(DateTime, Duration)>> reviewTimeSince(DateTime since) async {
+    await _ready;
+    final rows = await (_db.select(
+      _db.reviewLogs,
+    )..where((t) => t.reviewedAt.isBiggerOrEqualValue(since.toUtc()))).get();
+    return [
+      for (final r in rows)
+        (r.reviewedAt.toUtc(), Duration(milliseconds: r.durationMs)),
+    ];
+  }
+
   Future<List<DateTime>> completedSince(DateTime since) async {
     await _ready;
     final rows = await (_db.select(

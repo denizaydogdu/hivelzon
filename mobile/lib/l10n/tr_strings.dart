@@ -78,6 +78,13 @@ abstract final class HomeTexts {
   /// Kart başına ~20 sn; yukarı yuvarlanır, en az 1 dk.
   static int reviewMinutes(int cards) =>
       cards <= 0 ? 0 : ((cards * 20) / 60).ceil().clamp(1, 999);
+
+  // Günlük hedef halkası (H-060). Süre yaklaşıktır: biten bölümlerin tahmini
+  // süresi + bugün tekrar edilen ifadeler (ifade başına ~20 sn).
+  static String goalRing(int minutes, int goal) => '$minutes/$goal';
+  static const goalUnit = 'dk';
+  static String goalSemantics(int minutes, int goal) =>
+      'Günlük hedef: bugün yaklaşık $minutes dakika, hedefin $goal dakika';
 }
 
 /// Hikâye sekmesi: harita ve bölüm paneli.
@@ -110,6 +117,20 @@ abstract final class StoryTexts {
       'Acele yok; önceki bölümü istediğin kadar tekrar oynayabilirsin.';
   static const comingSoon = 'Yakında';
   static const comingSoonDetail = 'Bu bölüm hazırlanıyor.';
+
+  /// Yeni açılan bölümün ilk gösterimi (H-060): ekran okuyucuya bir kez.
+  static String unlockedAnnouncement(int number) => 'Bölüm $number açıldı';
+}
+
+/// Sezon jeneriği (H-049, H-050; metinler H-060'ta buraya taşındı).
+abstract final class SeasonIntroTexts {
+  static String semantics(int season, String? title) =>
+      'Sezon $season jeneriği${title == null ? '' : ': $title'}';
+  static const error = 'Jenerik açılamadı.';
+  static const goBack = CommonTexts.goBack;
+  static const skip = 'Geç';
+  static const skipSemantics = 'Jeneriği geç';
+  static const aiLabel = 'Yapay zekâ ile üretilmiştir';
 }
 
 /// Defter, İpucu panosu ve kelime tekrarı.

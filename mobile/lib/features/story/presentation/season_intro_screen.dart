@@ -5,7 +5,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:video_player/video_player.dart';
 
-import '../../../app/theme.dart';
+import '../../../app/design/tokens.dart';
+import '../../../l10n/tr_strings.dart';
 import '../../../shared/content/content_providers.dart';
 import '../../../shared/content/content_source.dart';
 import '../../player/application/segment_player_pool.dart';
@@ -60,7 +61,7 @@ class _SeasonIntroScreenState extends ConsumerState<SeasonIntroScreen> {
       debugPrint('[H050] jenerik oynuyor (sezon ${widget.season})');
     } on Object catch (e) {
       debugPrint('[H050] jenerik açılamadı: $e');
-      if (mounted) setState(() => _error = 'Jenerik açılamadı.');
+      if (mounted) setState(() => _error = SeasonIntroTexts.error);
     }
   }
 
@@ -107,7 +108,7 @@ class _SeasonIntroScreenState extends ConsumerState<SeasonIntroScreen> {
     final ready = c != null && c.value.isInitialized;
     final media = MediaQuery.of(context);
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: AppPalette.black,
       body: Stack(
         fit: StackFit.expand,
         children: [
@@ -126,42 +127,42 @@ class _SeasonIntroScreenState extends ConsumerState<SeasonIntroScreen> {
           else if (_error == null)
             const Center(
               child: CircularProgressIndicator(
-                color: AppColors.lighthouseYellow,
+                color: AppPalette.lighthouseYellow,
               ),
             ),
           // Ekran okuyucu için jeneriğin adı (videoda gömülü yazı var).
           Semantics(
             key: const ValueKey('season-intro'),
-            label:
-                'Sezon ${widget.season} jeneriği'
-                '${_info == null ? '' : ': ${_info!.title}'}',
+            label: SeasonIntroTexts.semantics(widget.season, _info?.title),
             liveRegion: true,
             child: const SizedBox.expand(),
           ),
           if (_error != null)
             Center(
               child: Padding(
-                padding: const EdgeInsets.all(AppSpacing.md),
+                padding: const EdgeInsets.all(AppSpace.s24),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     const Icon(
                       Icons.cloud_off_rounded,
-                      color: Colors.white,
-                      size: 48,
+                      color: AppPalette.white,
+                      size: AppIconSize.xl,
                     ),
-                    const SizedBox(height: AppSpacing.sm),
+                    const SizedBox(height: AppSpace.s16),
                     Text(
                       _error!,
-                      style: const TextStyle(color: Colors.white, fontSize: 18),
-                    ),
-                    const SizedBox(height: AppSpacing.sm),
-                    FilledButton(
-                      onPressed: _close,
-                      style: FilledButton.styleFrom(
-                        minimumSize: const Size(48, 48),
+                      key: const ValueKey('season-intro-error'),
+                      textAlign: TextAlign.center,
+                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                        color: AppPalette.white,
                       ),
-                      child: const Text('Geri dön'),
+                    ),
+                    const SizedBox(height: AppSpace.s16),
+                    FilledButton(
+                      key: const ValueKey('season-intro-back'),
+                      onPressed: _close,
+                      child: const Text(SeasonIntroTexts.goBack),
                     ),
                   ],
                 ),
@@ -169,35 +170,31 @@ class _SeasonIntroScreenState extends ConsumerState<SeasonIntroScreen> {
             ),
           // Yapay zekâ etiketi (§5.6): uygulama içi jenerikte gömülü değil.
           Positioned(
-            left: AppSpacing.sm,
-            top: media.padding.top + AppSpacing.sm,
+            left: AppSpace.s16,
+            top: media.padding.top + AppSpace.s16,
             child: IgnorePointer(
-              child: AiNotice(
-                text: _info?.aiLabel ?? 'Yapay zekâ ile üretilmiştir',
-              ),
+              child: AiNotice(text: _info?.aiLabel ?? SeasonIntroTexts.aiLabel),
             ),
           ),
           Positioned(
-            right: AppSpacing.sm,
-            top: media.padding.top + AppSpacing.xs,
+            right: AppSpace.s16,
+            top: media.padding.top + AppSpace.s8,
             child: Semantics(
               button: true,
-              label: 'Jeneriği geç',
+              label: SeasonIntroTexts.skipSemantics,
               excludeSemantics: true,
               child: FilledButton.icon(
                 key: const ValueKey('season-intro-skip'),
                 onPressed: _close,
                 style: FilledButton.styleFrom(
-                  minimumSize: const Size(88, 48),
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: AppSpacing.sm,
-                  ),
-                  backgroundColor: Colors.black.withValues(alpha: 0.45),
-                  foregroundColor: Colors.white,
+                  minimumSize: const Size(88, AppTouch.min),
+                  padding: const EdgeInsets.symmetric(horizontal: AppSpace.s16),
+                  backgroundColor: AppScrim.strong,
+                  foregroundColor: AppPalette.white,
                 ),
                 iconAlignment: IconAlignment.end,
                 icon: const Icon(Icons.skip_next_rounded),
-                label: const Text('Geç'),
+                label: const Text(SeasonIntroTexts.skip),
               ),
             ),
           ),

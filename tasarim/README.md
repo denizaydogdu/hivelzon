@@ -31,6 +31,7 @@ Lisanslar `mobile/assets/fonts/*/OFL.txt`; Lisanslar sayfasına `registerFontLic
 | `info` / `infoSurface` | `seaBlue` / `seaBlue50` | Bilgi, ipucu |
 | `danger` / `dangerSurface` | `#B3261E` / `#FBE9E7` | Geri alınması zor eylem (hesap silme) |
 | `AppScrim.*` | `playerBackground #101418`, `captionBox #CC1B1B1B`, `captionText #E6FFFFFF`, `strong #99000000`, `gradientEnd #B3000000`, `textShadow`, `panelShadow`, `cardShadow`, `badgeShadow` | Oynatıcı ve görsel üstü perdeler |
+| `AppMapColors.*` (H-060) | `sea #2E6A9A`, `land #E9DCC2`, `hill #8FA876`, `hillDark #6F8C5C`, `lighthouseBand #C0392B`, `nodeLocked #5B6470`, `badgeLocked #3A414A`, `badgeDone = success`, `badgeInProgress = eveningOrange` | Kodla çizilen yedek harita ve bölüm düğümleri (eskiden ekranda sabit renkti) |
 
 ### Ölçüler
 | Belirteç | Değerler |
@@ -50,6 +51,8 @@ Lisanslar `mobile/assets/fonts/*/OFL.txt`; Lisanslar sayfasına `registerFontLic
 | `slow` | 400 ms | Dolan halka, sakin kutlama |
 | `stagger` | 50 ms (en fazla 8 öğe) | Listede sırayla belirme |
 | Eğriler | `enter` easeOutCubic · `exit` easeInCubic · `standard` easeInOutCubic | |
+
+**Harita ışığı (H-060):** yeni açılan bölüm haritada ilk kez görününce bir kez (~1,6 sn) önceki bölümden ona sarı bir iz çizilir, düğümün ışığı yanar ve bir hale yayılır; iz sonra söner. İşaret cihazda (`app_meta`, `story.unlockSeen.<id>`); Bölüm 1 baştan açık olduğu için oynamaz. "Hareketi azalt" açıksa animasyon yok, işaret yine yazılır.
 
 Kurallar: Sekmeler arası geçiş anlık. İtilen sayfalarda (Defter, Hesap, Hi gizlilik, konu seti) Android'de solarak geçiş; **iOS'ta yerel kaydırma** kalır (kenardan kaydırarak geri dönme yalnız onda çalışır). Oynatıcı, jenerik ve tekrar oturumu tam ekran geçişini korur. "Hareketi azalt" açıksa (`MediaQuery.disableAnimations`) bütün bileşenler durağandır. K-32: geri sayım, titreşen uyarı, baskı yok.
 
@@ -75,6 +78,7 @@ Kurallar: Sekmeler arası geçiş anlık. İtilen sayfalarda (Defter, Hesap, Hi 
 | `EmptyState` | İllüstrasyon / ikon + başlık + açıklama + eylem |
 | `TappableCard`, `PressScale` | Dokunma tepkili kart / sarmalayıcı |
 | `StaggeredList`, `FadeSlideIn` | Sırayla belirme (`flutter_animate`, zamanlayıcısız) |
+| `ShapedEdgeClipper` | `ShapedHeader`'ın dalga / çapraz kesimi; başka yüzeylerde (Ana Sayfa bölüm kartının görseli, H-060) |
 
 Mevcutlar yeniden kullanılır: `PageHeader` / `SectionHeading`, `Skeleton` ailesi, oynatıcı kiti (`player_ui.dart`), `CardFace` / `AudioButton` / `EpisodeTag`, `HiAvatar`.
 

@@ -95,6 +95,33 @@ abstract final class AppScrim {
   static const Color badgeShadow = Color(0x55000000);
 }
 
+/// Hikâye haritasının renkleri (H-060): kodla çizilen yedek harita ve bölüm
+/// düğümleri. Harita görseli yokken ya da açılamazken kullanılır.
+abstract final class AppMapColors {
+  /// Deniz (yüzey) ve derin deniz.
+  static const Color sea = Color(0xFF2E6A9A);
+  static const Color seaDeep = AppPalette.seaBlue;
+
+  /// Kara, tepe ve tepe sırtı.
+  static const Color land = Color(0xFFE9DCC2);
+  static const Color hill = Color(0xFF8FA876);
+  static const Color hillDark = Color(0xFF6F8C5C);
+
+  /// Fenerin kırmızı bandı.
+  static const Color lighthouseBand = Color(0xFFC0392B);
+
+  /// Kilitli düğüm (soğuk gri; haritanın sıcak tonlarından ayrışır) ve
+  /// kilit rozeti.
+  static const Color nodeLocked = Color(0xFF5B6470);
+  static const Color badgeLocked = Color(0xFF3A414A);
+
+  /// Biten bölümün onay rozeti.
+  static const Color badgeDone = AppPalette.success;
+
+  /// Devam eden bölümün rozeti.
+  static const Color badgeInProgress = AppPalette.eveningOrange;
+}
+
 /// Boşluklar: 4 px temelli, 8 px ızgara.
 abstract final class AppSpace {
   static const double s4 = 4;
