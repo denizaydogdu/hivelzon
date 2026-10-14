@@ -1,0 +1,367 @@
+{
+ "schemaVersion": 1,
+ "lessonId": "G-A1-13-third-person-s",
+ "voices": {
+  "tr": {
+   "model": "alania-v2",
+   "voice": "alania2-f1",
+   "timing": "duyu-1",
+   "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+  },
+  "en": {
+   "model": "eleven_v3",
+   "voice": "EXAVITQu4vr4xnSDxMaL",
+   "speed": 0.9
+  }
+ },
+ "cards": [
+  {
+   "card": "c01",
+   "type": "hook",
+   "segments": [
+    {
+     "id": "c01-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Maya, kuzeni Sam'i anlatıyor. Bu cümlede ilginç bir şey var. Fiilin sonunda küçük bir ek duruyor, dinle.",
+     "textSha256": "aa16338c20e08c60c0b44f5af1adb5d0da7b166fac6177a3cbda5c92b9c30a79",
+     "chars": 104,
+     "audio": "tr/c01-tr.mp3",
+     "align": "tr/c01-tr.align.json",
+     "present": true,
+     "duration": 7.36,
+     "quality": {
+      "words": 17,
+      "exact": 17,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c01-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "He loves radios!",
+     "textSha256": "4d2f4d0dc86b0f4d0e575d3896a97bef7bd691dce9dfa67bd46bc269fbb10441",
+     "chars": 16,
+     "audio": "en/c01-ex1.mp3",
+     "align": "en/c01-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c02",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c02-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Geniş zamanda tek bir kişiden ya da şeyden söz ederken fiile -s eklenir. Ben, sen, biz ve onlar için ek gelmez. Yalnız o için gelir.",
+     "textSha256": "16546e6701c720fc2917c27087866af519b0babf8ae741e781a47e0a2b80c593",
+     "chars": 132,
+     "audio": "tr/c02-tr.mp3",
+     "align": "tr/c02-tr.align.json",
+     "present": true,
+     "duration": 9.44,
+     "quality": {
+      "words": 25,
+      "exact": 23,
+      "fuzzy": 2,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    }
+   ]
+  },
+  {
+   "card": "c03",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c03-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Bazı fiillere ekten önce bir harf daha gelir. Birkaçı da tamamen değişir. Bunları kulakla öğrenirsin, liste ezberlemen gerekmez.",
+     "textSha256": "0179f3742a425846d39eaec0f10c51b49bc35bc694bb4caaa9a89efbc535540b",
+     "chars": 128,
+     "audio": "tr/c03-tr.mp3",
+     "align": "tr/c03-tr.align.json",
+     "present": true,
+     "duration": 8.64,
+     "quality": {
+      "words": 18,
+      "exact": 18,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "She goes home.",
+     "textSha256": "0743ddf971aabd2ab4cf9024bdba24fb9387ab8a553dfa6d92ca1f00be1639ac",
+     "chars": 14,
+     "audio": "en/c03-ex1.mp3",
+     "align": "en/c03-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c03-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "He has a cat.",
+     "textSha256": "8cee90d8dec000605c160b42db71b116cb748dc9025c523a0cc03a950b2e947f",
+     "chars": 13,
+     "audio": "en/c03-ex2.mp3",
+     "align": "en/c03-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c04",
+   "type": "examples",
+   "segments": [
+    {
+     "id": "c04-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "My father works in a bank.",
+     "textSha256": "63d9a29af03e2b4eb4398fa4d7f5fcc6b70ba12bdf28fc103eb27b5aa999db0f",
+     "chars": 26,
+     "audio": "en/c04-ex1.mp3",
+     "align": "en/c04-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "She watches TV every evening.",
+     "textSha256": "4af8977fb1b18e67e32e41b917e83c9cf0179cc7dbe628f42c53e0e9b5be14fd",
+     "chars": 29,
+     "audio": "en/c04-ex2.mp3",
+     "align": "en/c04-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "The cat sleeps here.",
+     "textSha256": "bf55b29a62e2438c1e400413d6eaff850a778a29de16e3a0a39f09c12c76f5f4",
+     "chars": 20,
+     "audio": "en/c04-ex3.mp3",
+     "align": "en/c04-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex4",
+     "lang": "en",
+     "role": "example",
+     "text": "Maya lives in Port Lumen.",
+     "textSha256": "28e8659b6311023bacc71b2e68ba8bffdf7d6677a8b5b6600436ccd670ce41a4",
+     "chars": 25,
+     "audio": "en/c04-ex4.mp3",
+     "align": "en/c04-ex4.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex5",
+     "lang": "en",
+     "role": "example",
+     "text": "Sam likes radios.",
+     "textSha256": "d45d9d05be5e29f32bf74d1419280f33cbf2bbffd837801b613322d91366b3f8",
+     "chars": 17,
+     "audio": "en/c04-ex5.mp3",
+     "align": "en/c04-ex5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c05",
+   "type": "contrast",
+   "segments": [
+    {
+     "id": "c05-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Türkçede fiil her kişide ek alır, ama o için çoğu zaman eksizdir: çalışırım, çalışır. İngilizce tam tersi: ek yalnız o için gelir. Bu yüzden ek kolayca unutulur, hiç sorun değil.",
+     "textSha256": "35607c32db1a7498f6983f69559cc3330d1ac53334c10ed859a8388a8b7ea088",
+     "chars": 178,
+     "audio": "tr/c05-tr.mp3",
+     "align": "tr/c05-tr.align.json",
+     "present": true,
+     "duration": 12.83,
+     "quality": {
+      "words": 30,
+      "exact": 30,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "He works every day.",
+     "textSha256": "fd897b50dc1b721f7831a500f2c6442769ec007f8e22f004a870ad96d38503cc",
+     "chars": 19,
+     "audio": "en/c05-ex1.mp3",
+     "align": "en/c05-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "They work here.",
+     "textSha256": "54c93338773343d8ed1573deac7858b7bc652b98baeb9167b06b4910b79162d7",
+     "chars": 15,
+     "audio": "en/c05-ex2.mp3",
+     "align": "en/c05-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c06",
+   "type": "practice",
+   "segments": [
+    {
+     "id": "c06-q5",
+     "lang": "en",
+     "role": "say",
+     "text": "He works every day.",
+     "textSha256": "fd897b50dc1b721f7831a500f2c6442769ec007f8e22f004a870ad96d38503cc",
+     "chars": 19,
+     "audio": "en/c06-q5.mp3",
+     "align": "en/c06-q5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c07",
+   "type": "seeInStory",
+   "segments": [
+    {
+     "id": "c07-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Bu eki hikâyede ve kitaplarda çok gördün. Şu cümlelere bir daha bak.",
+     "textSha256": "42f013720d013aeadc90ce871403f0316404b37d6403c6ce18fae5410ac67f9d",
+     "chars": 68,
+     "audio": "tr/c07-tr.mp3",
+     "align": "tr/c07-tr.align.json",
+     "present": true,
+     "duration": 4.8,
+     "quality": {
+      "words": 12,
+      "exact": 12,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    }
+   ]
+  },
+  {
+   "card": "c08",
+   "type": "rule",
+   "segments": [
+    {
+     "id": "c08-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Geniş zamanda tek bir kişi ya da şey için fiile -s eklenir. Ben, sen, biz ve onlar için ek gelmez.",
+     "textSha256": "fcd019b770e29bc56db1b406186aa62bddc1b01284e3af43436203d224864c42",
+     "chars": 98,
+     "audio": "tr/c08-tr.mp3",
+     "align": "tr/c08-tr.align.json",
+     "present": true,
+     "duration": 6.56,
+     "quality": {
+      "words": 20,
+      "exact": 18,
+      "fuzzy": 2,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c08-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "He works every day.",
+     "textSha256": "fd897b50dc1b721f7831a500f2c6442769ec007f8e22f004a870ad96d38503cc",
+     "chars": 19,
+     "audio": "en/c08-ex1.mp3",
+     "align": "en/c08-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "id": "G-A1-01-to-be",
+  "level": "A1",
+  "titleTr": "am / is / are: \"olmak\" fiili",
+  "titleEn": "The verb to be",
+  "goalTr": "Kendini ve başkasını tanıtırken am, is ve are'ı doğru kişiyle kullanırsın.",
+  "prerequisites": [],
+  "contentVersion": 1,
+  "status": "DRAFT",
+  "aiGenerated": true,
+  "teacherReview": null,
+  "linksTo": { "episodes": ["A1-001", "A1-002"], "books": ["A1-K01"] },
+  "properNouns": ["Türkiye", "İzmir", "Maya", "Lina", "E"],
+  "pronunciations": [{ "term": "Alex", "say_as": "Aleks" }],
+  "narration": { "tr": { "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı" } }
+}

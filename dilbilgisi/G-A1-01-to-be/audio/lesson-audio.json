@@ -1,0 +1,423 @@
+{
+ "schemaVersion": 1,
+ "lessonId": "G-A1-01-to-be",
+ "voices": {
+  "tr": {
+   "model": "alania-v2",
+   "voice": "alania2-f1",
+   "timing": "duyu-1",
+   "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+  },
+  "en": {
+   "model": "eleven_v3",
+   "voice": "EXAVITQu4vr4xnSDxMaL",
+   "speed": 0.9
+  }
+ },
+ "cards": [
+  {
+   "card": "c01",
+   "type": "hook",
+   "segments": [
+    {
+     "id": "c01-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Alex, Maya'ya nereli olduğunu söylüyor. Bu cümlede ilginç bir şey var. Türkçede küçük bir ek yetiyor, İngilizcede ise ayrı bir kelime duruyor.",
+     "textSha256": "f9967aed37fde7f9b0127f747ffc213431ca973e33f1fb8b865454393d7551fd",
+     "chars": 142,
+     "audio": "tr/c01-tr.mp3",
+     "align": "tr/c01-tr.align.json",
+     "present": true,
+     "duration": 8.83,
+     "quality": {
+      "words": 22,
+      "exact": 22,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c01-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I'm from Türkiye.",
+     "textSha256": "d7b06372bc132bbb0d65fc8fb9259c138cd320527e4116028901e51417064f3e",
+     "chars": 17,
+     "audio": "en/c01-ex1.mp3",
+     "align": "en/c01-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c02",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c02-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Türkçede olmak çoğu zaman bir ektir: öğrenciyim, İzmirliyiz. İngilizcede bu ek ayrı bir kelimedir. Cümlede mutlaka durur, düşmez.",
+     "textSha256": "370ee5ce8c7cb1915e4d0ab97b537038344cc765473ef16908bc2c19f3661686",
+     "chars": 129,
+     "audio": "tr/c02-tr.mp3",
+     "align": "tr/c02-tr.align.json",
+     "present": true,
+     "duration": 9.92,
+     "quality": {
+      "words": 18,
+      "exact": 18,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    }
+   ]
+  },
+  {
+   "card": "c03",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c03-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Bu kelimenin üç biçimi var ve kişiye göre seçilir. Ben için bir biçim, o için başka bir biçim var. Sen, biz ve onlar için de üçüncü biçim gelir.",
+     "textSha256": "695f60c5354f4f0f517298814b88abeb709513ace837376e415e0e4a76435a3d",
+     "chars": 144,
+     "audio": "tr/c03-tr.mp3",
+     "align": "tr/c03-tr.align.json",
+     "present": true,
+     "duration": 10.75,
+     "quality": {
+      "words": 28,
+      "exact": 27,
+      "fuzzy": 0,
+      "weak": 1,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 1,
+      "score": 0.964,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I am a student.",
+     "textSha256": "0c00f6707d412bc9618460454a48fc3145313d7a1cef684a9d2f1127836963c2",
+     "chars": 15,
+     "audio": "en/c03-ex1.mp3",
+     "align": "en/c03-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c03-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "She is a student.",
+     "textSha256": "4b6499246f424672c3a80119953ee2ce0c3953ec7bcbe14713b3023b15aca3df",
+     "chars": 17,
+     "audio": "en/c03-ex2.mp3",
+     "align": "en/c03-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c03-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "We are students.",
+     "textSha256": "817f1f1b1d0bf57f4a5e15c4d2778f9fddfeb6aaa6163239678690e5818c8794",
+     "chars": 16,
+     "audio": "en/c03-ex3.mp3",
+     "align": "en/c03-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c04",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c04-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Konuşurken bu kelime çoğu zaman kısalır ve önceki kelimeye yapışır. Alex'in cümlesinde de böyleydi. Anlam hiç değişmez.",
+     "textSha256": "7b14320b75d52e7b32b635dd1b62a64a7db8e6695d5e007fc6df35cdbaeb6209",
+     "chars": 119,
+     "audio": "tr/c04-tr.mp3",
+     "align": "tr/c04-tr.align.json",
+     "present": true,
+     "duration": 8.64,
+     "quality": {
+      "words": 17,
+      "exact": 17,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c04-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I'm from İzmir.",
+     "textSha256": "57ee8b15fb9ffb9d2d062ee877641c3e309ba7ec12c87a8230e080a236fab1ba",
+     "chars": 15,
+     "audio": "en/c04-ex1.mp3",
+     "align": "en/c04-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c05",
+   "type": "examples",
+   "segments": [
+    {
+     "id": "c05-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "My mother is a teacher.",
+     "textSha256": "c5df970de4d42e93e4e6b3d32b7ebec5b0e1702825845ae5b4e11690da937a4f",
+     "chars": 23,
+     "audio": "en/c05-ex1.mp3",
+     "align": "en/c05-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "It is cold today.",
+     "textSha256": "5ab2682520e4f3fb8db6c803b04bc66b1b73d815dfcad756354cc0f8cb7d2da3",
+     "chars": 17,
+     "audio": "en/c05-ex2.mp3",
+     "align": "en/c05-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "We are friends.",
+     "textSha256": "acf7e8a43cd6c9c106273029849a85f362d016d6efb3adf6d0a5a18358406602",
+     "chars": 15,
+     "audio": "en/c05-ex3.mp3",
+     "align": "en/c05-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex4",
+     "lang": "en",
+     "role": "example",
+     "text": "Maya is my friend.",
+     "textSha256": "01d66c9cc0c0d79fa3e2b104ca7edcbc7013286bb50a0ac6e7efe6ed989d3e14",
+     "chars": 18,
+     "audio": "en/c05-ex4.mp3",
+     "align": "en/c05-ex4.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex5",
+     "lang": "en",
+     "role": "example",
+     "text": "You are late!",
+     "textSha256": "6357c54bdc617ded42dbca954ed5e6f04380fe8e5251d1c73f975f75001234be",
+     "chars": 13,
+     "audio": "en/c05-ex5.mp3",
+     "align": "en/c05-ex5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c06",
+   "type": "contrast",
+   "segments": [
+    {
+     "id": "c06-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Türkçede o için ek bile yok: o yorgun, hava soğuk. Bu yüzden İngilizcede bu kelimeyi atlamak çok kolay. Kural basit: İngilizce cümle bu kelimesiz kalmaz.",
+     "textSha256": "3102b5a2b78d297675ce315736e14a0833050c8d20626a1eb130476aaf503e3d",
+     "chars": 153,
+     "audio": "tr/c06-tr.mp3",
+     "align": "tr/c06-tr.align.json",
+     "present": true,
+     "duration": 10.68,
+     "quality": {
+      "words": 25,
+      "exact": 25,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 4,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c06-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I'm from Türkiye.",
+     "textSha256": "d7b06372bc132bbb0d65fc8fb9259c138cd320527e4116028901e51417064f3e",
+     "chars": 17,
+     "audio": "en/c06-ex1.mp3",
+     "align": "en/c06-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c06-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "She is very happy.",
+     "textSha256": "b399ac806ffd4ed0a14ebed7a5cf4c4a2f4fddb02908390e80a22a258d7e5e50",
+     "chars": 18,
+     "audio": "en/c06-ex2.mp3",
+     "align": "en/c06-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c07",
+   "type": "practice",
+   "segments": [
+    {
+     "id": "c07-q5",
+     "lang": "en",
+     "role": "say",
+     "text": "I'm from Türkiye.",
+     "textSha256": "d7b06372bc132bbb0d65fc8fb9259c138cd320527e4116028901e51417064f3e",
+     "chars": 17,
+     "audio": "en/c07-q5.mp3",
+     "align": "en/c07-q5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c08",
+   "type": "seeInStory",
+   "segments": [
+    {
+     "id": "c08-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Bu kelimeyi hikâyede çok duydun. Şu cümlelere bir daha bak.",
+     "textSha256": "e89a5c6a53f5df2f360dd4101fc83900fecde871c0fff9d9791c55e54d4be74b",
+     "chars": 59,
+     "audio": "tr/c08-tr.mp3",
+     "align": "tr/c08-tr.align.json",
+     "present": true,
+     "duration": 4.0,
+     "quality": {
+      "words": 10,
+      "exact": 9,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    }
+   ]
+  },
+  {
+   "card": "c09",
+   "type": "rule",
+   "segments": [
+    {
+     "id": "c09-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "İngilizce cümle olmak fiilsiz kalmaz. Ben için bir biçim, o için başka bir biçim var. Sen, biz ve onlar için de üçüncü biçim gelir.",
+     "textSha256": "18ae55abd2843daa39824d7d2e214f9a3c2e3753a8a84bb50f0f953748941334",
+     "chars": 131,
+     "audio": "tr/c09-tr.mp3",
+     "align": "tr/c09-tr.align.json",
+     "present": true,
+     "duration": 9.6,
+     "quality": {
+      "words": 24,
+      "exact": 24,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c09-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "She is my friend.",
+     "textSha256": "69da1a01cb3aaef7f578354b90c357abe635c4c8630f96cd58c7c30fc1af0ed4",
+     "chars": 17,
+     "audio": "en/c09-ex1.mp3",
+     "align": "en/c09-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  }
+ ]
+}

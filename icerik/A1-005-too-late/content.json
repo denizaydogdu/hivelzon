@@ -26,6 +26,9 @@
     "present_simple_third_person_s",
     "was_recognition_only"
   ],
+  "grammarTopics": [
+    "G-A1-13-third-person-s"
+  ],
   "targetPhrases": [
     "He works every day.",
     "She waits.",

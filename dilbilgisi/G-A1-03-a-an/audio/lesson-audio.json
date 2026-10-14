@@ -1,0 +1,423 @@
+{
+ "schemaVersion": 1,
+ "lessonId": "G-A1-03-a-an",
+ "voices": {
+  "tr": {
+   "model": "alania-v2",
+   "voice": "alania2-f1",
+   "timing": "duyu-1",
+   "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+  },
+  "en": {
+   "model": "eleven_v3",
+   "voice": "EXAVITQu4vr4xnSDxMaL",
+   "speed": 0.9
+  }
+ },
+ "cards": [
+  {
+   "card": "c01",
+   "type": "hook",
+   "segments": [
+    {
+     "id": "c01-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Maya, Alex'e bir şey gösteriyor. Bu cümlede küçücük bir kelime var. Türkçede onu çoğu zaman söylemeyiz bile.",
+     "textSha256": "be820bd15a82bcf5a6015defc2f1a7233b3a26d469dcfb9aa796d0c4469cadd4",
+     "chars": 108,
+     "audio": "tr/c01-tr.mp3",
+     "align": "tr/c01-tr.align.json",
+     "present": true,
+     "duration": 7.2,
+     "quality": {
+      "words": 17,
+      "exact": 17,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c01-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "Look, here is a map.",
+     "textSha256": "5bf49a4a8b257c253bd7cc4f242d220f7c8bc1a2e3069c70381f02342a85be1a",
+     "chars": 20,
+     "audio": "en/c01-ex1.mp3",
+     "align": "en/c01-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c02",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c02-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Tek bir şeyden söz ederken ismin önüne küçük bir kelime gelir. Anlamı aşağı yukarı bir demektir. Türkçede onu çoğu zaman atlarız, İngilizcede ise atlamayız.",
+     "textSha256": "2dca8d886a50fafa277b83caa24ab3ace21dc55071281f7794c408699a5782c5",
+     "chars": 156,
+     "audio": "tr/c02-tr.mp3",
+     "align": "tr/c02-tr.align.json",
+     "present": true,
+     "duration": 10.11,
+     "quality": {
+      "words": 24,
+      "exact": 23,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 4,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    }
+   ]
+  },
+  {
+   "card": "c03",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c03-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Meslek ya da rol söylerken de bu küçük kelime gerekir. Türkçede öğrenciyim deriz ve bir demeyiz. İngilizcede ise kelimenin önüne yine o küçük kelime gelir.",
+     "textSha256": "5caafbac5ff4865e5d3d72ae7a43ebf2e19485a404bc3f433e9d0f8cbf17c2eb",
+     "chars": 155,
+     "audio": "tr/c03-tr.mp3",
+     "align": "tr/c03-tr.align.json",
+     "present": true,
+     "duration": 9.95,
+     "quality": {
+      "words": 25,
+      "exact": 25,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I'm a student.",
+     "textSha256": "6b657556a0442c4ef21a8e732107d2a7a1a7ac1cb8dcb113c463c93d6e8f08c6",
+     "chars": 14,
+     "audio": "en/c03-ex1.mp3",
+     "align": "en/c03-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c03-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "She's a doctor.",
+     "textSha256": "f76fa81fd29ef5ea7e2061abd95a629f2d5bfecc336d15bfac77d648bf172c8f",
+     "chars": 15,
+     "audio": "en/c03-ex2.mp3",
+     "align": "en/c03-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c04",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c04-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Sonraki kelime ünlü bir sesle başlıyorsa bu küçük kelime bir harf daha alır. Böylece iki kelime kolayca birleşir. Harfe değil, sese bak.",
+     "textSha256": "325eb70c16a9399c7205f25f161ecb8014e1b8fc4ec3eb7fbea4c2b4794f3f5c",
+     "chars": 136,
+     "audio": "tr/c04-tr.mp3",
+     "align": "tr/c04-tr.align.json",
+     "present": true,
+     "duration": 8.32,
+     "quality": {
+      "words": 22,
+      "exact": 22,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c04-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "It's a big building.",
+     "textSha256": "2056aef5bdcd6322f8ab81c17b1de34471e10662380076732cc99ae4b9ecf6e1",
+     "chars": 20,
+     "audio": "en/c04-ex1.mp3",
+     "align": "en/c04-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "It's an old building.",
+     "textSha256": "16c5fc4f35e0a5c2f2b5bd24a6380b69c989b1ac7fa2764b82140eec220672c3",
+     "chars": 21,
+     "audio": "en/c04-ex2.mp3",
+     "align": "en/c04-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c05",
+   "type": "examples",
+   "segments": [
+    {
+     "id": "c05-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "This is a note.",
+     "textSha256": "afa550a35691cd14b9c764a9ba2cf2ffaecd522e47b19a723a319802ac4d3cf5",
+     "chars": 15,
+     "audio": "en/c05-ex1.mp3",
+     "align": "en/c05-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "I have a small radio.",
+     "textSha256": "a7c71d41446e6a218b0baa54dd507d9a15b23b32023b0bc1da0ce591f2c58c3f",
+     "chars": 21,
+     "audio": "en/c05-ex2.mp3",
+     "align": "en/c05-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "It's an old map.",
+     "textSha256": "6e94b1c1157490b9dce09e4b7aeb6408ad3479343d1b77da0ad5f84c83647dd6",
+     "chars": 16,
+     "audio": "en/c05-ex3.mp3",
+     "align": "en/c05-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex4",
+     "lang": "en",
+     "role": "example",
+     "text": "Can I have an apple, please?",
+     "textSha256": "a45304ab17cac49977f32c92436d179899b366d2478888777c1882926a5cfba0",
+     "chars": 28,
+     "audio": "en/c05-ex4.mp3",
+     "align": "en/c05-ex4.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex5",
+     "lang": "en",
+     "role": "example",
+     "text": "My father is a teacher.",
+     "textSha256": "3a213809c4903f0dd8e58ebd6f0095303d22f5f0fd9a25b5b0f8e81a46133c23",
+     "chars": 23,
+     "audio": "en/c05-ex5.mp3",
+     "align": "en/c05-ex5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c06",
+   "type": "contrast",
+   "segments": [
+    {
+     "id": "c06-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Türkçede bir kelimesi çoğu zaman düşer ve cümle yine doğru olur. İngilizcede tek bir şeyin önü boş kalmaz. Bunu unutmak çok olağan, zamanla oturur.",
+     "textSha256": "433218816681abf9f44a387b175dc2bfb6fcca2f5fa5d41984a62e5a6950231e",
+     "chars": 147,
+     "audio": "tr/c06-tr.mp3",
+     "align": "tr/c06-tr.align.json",
+     "present": true,
+     "duration": 10.11,
+     "quality": {
+      "words": 24,
+      "exact": 24,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c06-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I'm a student.",
+     "textSha256": "6b657556a0442c4ef21a8e732107d2a7a1a7ac1cb8dcb113c463c93d6e8f08c6",
+     "chars": 14,
+     "audio": "en/c06-ex1.mp3",
+     "align": "en/c06-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c06-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "It is an old building.",
+     "textSha256": "d09712b2f0cb1e087628baa9cf5911ee489ab81fb2a05036b7ef555ee1f28e41",
+     "chars": 22,
+     "audio": "en/c06-ex2.mp3",
+     "align": "en/c06-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c07",
+   "type": "practice",
+   "segments": [
+    {
+     "id": "c07-q5",
+     "lang": "en",
+     "role": "say",
+     "text": "I'm a student.",
+     "textSha256": "6b657556a0442c4ef21a8e732107d2a7a1a7ac1cb8dcb113c463c93d6e8f08c6",
+     "chars": 14,
+     "audio": "en/c07-q5.mp3",
+     "align": "en/c07-q5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c08",
+   "type": "seeInStory",
+   "segments": [
+    {
+     "id": "c08-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Bu küçük kelime hikâyede ve kitapta da var. Şu cümlelere bir daha bak.",
+     "textSha256": "61703e54eea8e3f22027422b9b44025f2092cbb225d36e7bd979254c939e60bb",
+     "chars": 70,
+     "audio": "tr/c08-tr.mp3",
+     "align": "tr/c08-tr.align.json",
+     "present": true,
+     "duration": 4.64,
+     "quality": {
+      "words": 13,
+      "exact": 12,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    }
+   ]
+  },
+  {
+   "card": "c09",
+   "type": "rule",
+   "segments": [
+    {
+     "id": "c09-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Tek bir şeyden söz ederken ismin önüne küçük bir kelime gelir. Sonraki kelime ünlü bir sesle başlıyorsa bu kelime bir harf daha alır.",
+     "textSha256": "841a18fdcd94545cef14f7f773e1b36936dc1921a6361e9e4e6ca37bd6672016",
+     "chars": 133,
+     "audio": "tr/c09-tr.mp3",
+     "align": "tr/c09-tr.align.json",
+     "present": true,
+     "duration": 8.16,
+     "quality": {
+      "words": 23,
+      "exact": 23,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c09-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "It's an old note.",
+     "textSha256": "697e2a388acad78bd9e49f35a938743025676871fce8713bac754946cb6bdc41",
+     "chars": 17,
+     "audio": "en/c09-ex1.mp3",
+     "align": "en/c09-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  }
+ ]
+}

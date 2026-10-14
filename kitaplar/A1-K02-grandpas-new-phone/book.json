@@ -11,6 +11,9 @@
   "contentVersion": 1,
   "status": "DRAFT",
   "aiGenerated": true,
+  "grammarTopics": [
+    "G-A1-13-third-person-s"
+  ],
   "palette": {
     "background": "#FFF6E9",
     "surface": "#E3F4EC",
