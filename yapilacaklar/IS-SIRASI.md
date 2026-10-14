@@ -125,7 +125,7 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 | T1 | H-058 | Ekran taslakları v2 ve illüstrasyonlar (Higgsfield, ~8 kr) | Yüksek | H-057 | ✅ |
 | T2 | H-059 | Profil, Hesap, "Hi benim hakkımda", hukuk metni tasarımı | Yüksek | H-057, H-058 | ✅ |
 | T3 | H-060 | Ana Sayfa, harita, bölüm paneli, jenerik tasarımı | Orta | H-057, H-058, H-039 | ✅ |
-| T3' | H-074 | Günlük hedef için gerçek süre ölçümü | Orta | H-060 | ⏳ |
+| T3' | H-074 | Günlük hedef için gerçek süre ölçümü | Orta | H-060 | ✅ |
 | T4 | H-061 | Defter, Kelime tekrarı, Konu seti, Sahne avı tasarımı | Orta | H-057, H-058 | ✅ |
 | T5 | H-062 | Oynatıcı katmanlarının tasarımı | Orta | H-057 | ✅ |
 | T6 | H-063 | Hi'nin canlılığı (ifadeler, animasyonlar) | Orta | H-057 | ✅ |
@@ -429,3 +429,4 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
   - **Sezon 1'in 12 bölümü de üretildi** (H-085): B6–B12 görsel, ★ klipler, Türkçe (Alania) ve İngilizce (hesap4) sesler, paketler; haritada 12/12 oynanabilir, lint 0 hata, -16,0 LUFS. Yeni sesler: Rosa Matilda, Mr Grant Bill, Tom Will, Sunucu Daniel, Satıcı Laura. Bekleyen: simülatör denemesi ve editör onayı (H-028). Higgsfield 385,06 kr.
   - Dilbilgisi A2: 7 dersin İngilizce örnekleri sesli (G-A2-01…07; 08 kısmen); hesap4 doldu. G-A1-15 hikâye bağı düzeltildi (0 hata). H-070 ve H-074 ayrı dallarda başladı.
   - **H-070 bitti:** kitaplar `content_items` içinde (BOOK türü, C2 yalnız kitap, V10), içe aktarma + K-05 onayı + `GET /api/v1/catalog/books`; yönetim ekranında Kitaplık süzgeci; `book_lint.py --write-reports` (export_book sonrası çalışmalı). Backend 137 test, araçlar 281 test geçti.
+  - **H-074 bitti:** günlük hedef halkası gerçek etkin süreyi gösterir (öğrenme ekranı açık + uygulama ön planda; dokunma/oynayan video/sesli okuma; boşta 2 dk sınırı); yalnız günlük toplam (Drift şema 8, backend V11, hesap varsa eşitlenir). Keşfet şimdilik ölçülmez. Mobil 956, backend 139 test geçti.

@@ -34,7 +34,7 @@ class SyncTest extends IntegrationTest {
     static final String PUSH = "/api/v1/sync/push";
     static final String[] TABLES = {"user_story_progress", "user_story_flags", "gate_progress", "season_state",
             "clues", "story_links", "notebook_items", "review_cards", "review_logs", "learning_events", "hi_records",
-            "speech_attempts", "user_book_progress", "user_grammar_progress"};
+            "speech_attempts", "user_book_progress", "user_grammar_progress", "daily_activity"};
 
     @Autowired
     HivelzonProperties properties;
@@ -513,6 +513,8 @@ class SyncTest extends IntegrationTest {
         changes.put("user_grammar_progress", List.of(row("lessonId", "G-A1-03-third-person-s", "status",
                 "IN_PROGRESS", "lastCard", "c03", "startedAt", "2026-10-13T08:00:00Z", "completedAt", null,
                 "updatedAt", "2026-10-13T09:00:00Z")));
+        changes.put("daily_activity", List.of(row("day", "2026-10-13", "sourceId",
+                "5b0e8f0e-5d1c-4a57-9a39-3f7f0f0c2b11", "activeSeconds", 430, "updatedAt", "2026-10-13T09:00:00Z")));
         // Bir de cevap (kartı yeniden hesaplatır).
         changes.put("review_logs", List.of(row("clientId", UUID.randomUUID().toString(), "cardClientId",
                 card.toString(), "rating", 3, "reviewedAt", "2026-10-13T09:05:00Z", "taskType", "picture_choice",

@@ -23,6 +23,8 @@ import tr.velzon.hivelzon.sync.SyncTableProvider;
  * sezon durumu, ipuçları ve bölüm bağları. Hepsi doğal anahtarlıdır. Bölüm ilerlemesinde "bitti her zaman
  * kazanır" ({@link ProgressMerger}, H-056); bölüm kapısı yalnız eklenir (silinmez, üzerine yazılmaz). Kitaplık
  * ilerlemesi (H-067, mobil şema 6) ve dilbilgisi dersi ilerlemesi (H-078, mobil şema 7) aynı kuralla birleşir.
+ * Günlük ölçülen süre (H-074, mobil şema 8) (gün, kaynak) başına toplamdır; her satırı yalnız kendi cihazı yazar,
+ * düz LWW.
  */
 @Component
 public class ProgressSyncTables implements SyncTableProvider {
@@ -75,6 +77,9 @@ public class ProgressSyncTables implements SyncTableProvider {
                         oneOf("status", "status", true, "NOT_STARTED", "IN_PROGRESS", "COMPLETED"),
                         string("lastCard", "last_card", false, 16),
                         instant("startedAt", "started_at", false),
-                        instant("completedAt", "completed_at", false)), ProgressMerger.forGrammar()));
+                        instant("completedAt", "completed_at", false)), ProgressMerger.forGrammar()),
+                new SyncTable("daily_activity", 90, Kind.MUTABLE,
+                        List.of(string("day", "day", true, 10), string("sourceId", "source_id", true, 36)),
+                        UPDATED_AT, List.of(integer("activeSeconds", "active_seconds", true, 0, 86_400))));
     }
 }

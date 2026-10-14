@@ -7,6 +7,7 @@ import 'package:go_router/go_router.dart';
 import '../../../app/design/design.dart';
 import '../../../app/router.dart';
 import '../../../l10n/tr_strings.dart';
+import '../../../shared/activity/study_clock.dart';
 import '../../../shared/content/content_providers.dart';
 import '../../../shared/meaning/learning_event_log.dart';
 import '../../../shared/meaning/meaning_controller.dart';
@@ -159,6 +160,8 @@ class _GrammarLessonScreenState extends ConsumerState<GrammarLessonScreen> {
     final c = _c;
     final pages = _pages;
     if (c == null || pages == null || !mounted) return;
+    // Hi'nin anlatımı öğrenme etkinliğidir (H-074: günlük süre).
+    if (c.isPlaying) ref.read(studyClockProvider).signal();
     if (pages.hasClients) {
       final shown = pages.page?.round() ?? c.index;
       if (shown != c.index && !_programmaticPage) {

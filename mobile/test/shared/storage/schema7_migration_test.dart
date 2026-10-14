@@ -50,7 +50,7 @@ void main() {
     addTearDown(db.close);
 
     final version = await db.customSelect('PRAGMA user_version').getSingle();
-    expect(version.data.values.first, 7);
+    expect(version.data.values.first, 8); // 6 → 7 → 8 (H-074)
     expect((await BookProgressStore(db).get('A1-K01'))!.pageNumber, 3);
 
     // Yeni tablo çalışır.

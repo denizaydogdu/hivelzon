@@ -338,6 +338,29 @@ class UserGrammarProgress extends Table {
   Set<Column<Object>> get primaryKey => {lessonId};
 }
 
+// ---------------------------------------------------------------- günlük süre (H-074, şema 8)
+
+/// Günlük hedef halkası için ölçülen öğrenme süresi (H-074). **Yalnızca
+/// günlük toplam** tutulur: hangi ekranda, ne zaman olduğu yazılmaz.
+///
+/// Satır, (yerel gün, kaynak) başınadır: [sourceId] bu kurulumun rastgele
+/// kimliğidir (`app_meta` → `activity.sourceId`). Hesap varsa eşitlenir;
+/// her satırı yalnız kendi cihazı yazar, günün toplamı bütün kaynakların
+/// toplamıdır (iki cihazda geçen süre üst üste yazılmaz, toplanır).
+@DataClassName('DailyActivityRow')
+class DailyActivity extends Table {
+  /// Yerel gün (`2026-10-14`).
+  TextColumn get day => text()();
+  TextColumn get sourceId => text()();
+
+  /// O gün bu kaynakta ölçülen etkin süre (sn).
+  IntColumn get activeSeconds => integer().withDefault(const Constant(0))();
+  DateTimeColumn get updatedAt => dateTime()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {day, sourceId};
+}
+
 // ---------------------------------------------------------------- eşitleme (H-038, şema 5)
 
 /// Hesap ve eşitleme durumu (tek satır, `id = 1`). Hesap yoksa
@@ -431,6 +454,7 @@ class SyncOutbox extends Table {
     SyncOutbox,
     UserBookProgress,
     UserGrammarProgress,
+    DailyActivity,
   ],
 )
 class AppDatabase extends _$AppDatabase {
@@ -451,7 +475,7 @@ class AppDatabase extends _$AppDatabase {
   );
 
   @override
-  int get schemaVersion => 7;
+  int get schemaVersion => 8;
 
   @override
   MigrationStrategy get migration => MigrationStrategy(
@@ -503,6 +527,10 @@ class AppDatabase extends _$AppDatabase {
       // 6 → 7 (H-078): dilbilgisi dersi ilerlemesi.
       if (from < 7) {
         await m.createTable(userGrammarProgress);
+      }
+      // 7 → 8 (H-074): günlük hedef için ölçülen süre (günlük toplam).
+      if (from < 8) {
+        await m.createTable(dailyActivity);
       }
     },
     beforeOpen: (details) async {

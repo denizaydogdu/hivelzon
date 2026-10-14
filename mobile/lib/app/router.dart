@@ -25,6 +25,7 @@ import '../features/story/presentation/story_screen.dart';
 import '../features/talk/presentation/talk_screen.dart';
 import '../features/topic_sets/presentation/scene_hunt_screen.dart';
 import '../features/topic_sets/presentation/topic_set_screen.dart';
+import '../shared/activity/study_clock.dart';
 import 'design/transitions.dart';
 import 'shell_scaffold.dart';
 
@@ -161,9 +162,13 @@ final routerProvider = Provider<GoRouter>((ref) {
         pageBuilder: (context, state) => MaterialPage(
           key: state.pageKey,
           fullscreenDialog: true,
-          child: PlayerScreen(
-            contentId: state.pathParameters['contentId']!,
-            startMode: PlayerStartMode.parse(state.uri.queryParameters['mode']),
+          child: StudyTimeScope(
+            child: PlayerScreen(
+              contentId: state.pathParameters['contentId']!,
+              startMode: PlayerStartMode.parse(
+                state.uri.queryParameters['mode'],
+              ),
+            ),
           ),
         ),
       ),
@@ -172,12 +177,14 @@ final routerProvider = Provider<GoRouter>((ref) {
         pageBuilder: (context, state) => MaterialPage(
           key: state.pageKey,
           fullscreenDialog: true,
-          child: ReaderScreen(
-            key: ValueKey(state.pathParameters['bookId']),
-            bookId: state.pathParameters['bookId']!,
-            listen: state.uri.queryParameters['mod'] != 'oku',
-            startPage: state.uri.queryParameters['sayfa'],
-            startSentence: state.uri.queryParameters['cumle'],
+          child: StudyTimeScope(
+            child: ReaderScreen(
+              key: ValueKey(state.pathParameters['bookId']),
+              bookId: state.pathParameters['bookId']!,
+              listen: state.uri.queryParameters['mod'] != 'oku',
+              startPage: state.uri.queryParameters['sayfa'],
+              startSentence: state.uri.queryParameters['cumle'],
+            ),
           ),
         ),
       ),
@@ -186,16 +193,17 @@ final routerProvider = Provider<GoRouter>((ref) {
         pageBuilder: (context, state) => MaterialPage(
           key: state.pageKey,
           fullscreenDialog: true,
-          child: GrammarLessonScreen(
-            lessonIds: [
-              state.pathParameters['id']!,
-              for (final x in (state.uri.queryParameters['sonra'] ?? '').split(
-                ',',
-              ))
-                if (x.isNotEmpty) x,
-            ],
-            continueKind: GrammarContinue.parse(
-              state.uri.queryParameters['devam'],
+          child: StudyTimeScope(
+            child: GrammarLessonScreen(
+              lessonIds: [
+                state.pathParameters['id']!,
+                for (final x
+                    in (state.uri.queryParameters['sonra'] ?? '').split(','))
+                  if (x.isNotEmpty) x,
+              ],
+              continueKind: GrammarContinue.parse(
+                state.uri.queryParameters['devam'],
+              ),
             ),
           ),
         ),
@@ -214,7 +222,9 @@ final routerProvider = Provider<GoRouter>((ref) {
         path: '/konu-seti/:id',
         pageBuilder: (context, state) => appPage(
           key: state.pageKey,
-          child: TopicSetScreen(setId: state.pathParameters['id']!),
+          child: StudyTimeScope(
+            child: TopicSetScreen(setId: state.pathParameters['id']!),
+          ),
         ),
         routes: [
           GoRoute(
@@ -222,7 +232,9 @@ final routerProvider = Provider<GoRouter>((ref) {
             pageBuilder: (context, state) => MaterialPage(
               key: state.pageKey,
               fullscreenDialog: true,
-              child: SceneHuntScreen(setId: state.pathParameters['id']!),
+              child: StudyTimeScope(
+                child: SceneHuntScreen(setId: state.pathParameters['id']!),
+              ),
             ),
           ),
         ],
@@ -232,7 +244,7 @@ final routerProvider = Provider<GoRouter>((ref) {
         pageBuilder: (context, state) => MaterialPage(
           key: state.pageKey,
           fullscreenDialog: true,
-          child: const ReviewScreen(),
+          child: const StudyTimeScope(child: ReviewScreen()),
         ),
       ),
       StatefulShellRoute.indexedStack(

@@ -31,3 +31,5 @@ Kendi dalında; `git revert`.
 
 ## Notlar
 2026-10-14: H-060 açık sorusu üzerine kullanıcı kararıyla açıldı: "Gerçek ölçüm ayrı iş olsun."
+
+2026-10-14 (uygulama, kendi dalında): Ölçüm `mobile/lib/shared/activity/`. Tek saat (`StudyClock`); öğrenme ekranları (oynatıcı, kelime tekrarı, konu seti, sahne avı, kitap okuyucu, dilbilgisi dersi) yönlendiricide `StudyTimeScope` ile sarılır. Süre yalnız ekran açık **ve** uygulama ön plandayken sayılır; dokunma, oynayan video ve sesli okuma etkinlik işaretidir; iki işaret arasında en çok 2 dk sayılır (boşta kalma). Yalnız günlük toplam saklanır: Drift şema 8 `daily_activity` (yerel gün, kaynak, saniye); kaynak kurulumun rastgele kimliği (eşitleme `deviceId`'si değil). Hesap varsa eşitlenir (backend V11 — H-070 V10 aldığı için birleştirmede yeniden numaralandı —, düz LWW; eski istemciler etkilenmez). Halka: ölçülen süre + ölçüm başlamadan önceki etkinlik için eski tahmin (aynı süre iki kez sayılmaz). Keşfet (H-040) sekme içinde durduğu için şimdilik ölçülmez.
