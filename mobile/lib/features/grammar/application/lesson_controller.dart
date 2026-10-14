@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 
 import '../../../shared/meaning/meaning_controller.dart';
 import '../../../shared/meaning/meaning_text.dart';
+import '../../../shared/speech/example_speech.dart';
 import '../../library/application/book_audio.dart';
 import '../domain/grammar_lesson.dart';
 
@@ -21,11 +22,17 @@ enum LessonClipKind { narration, example }
 ///
 /// **Sessiz mod** ([silent]): hiçbir ses çalmaz; ders tam okunur. Kartın
 /// sesi yoksa (ses henüz üretilmedi) o kart da sessiz okunur.
+///
+/// **Cihaz sesi** ([speech], H-064): İngilizce örneğin önceden üretilmiş ses
+/// dosyası yoksa (ya da açılamazsa) örnek telefonun kendi İngilizce sesiyle
+/// okunur; dosya varsa her zaman dosya çalar. Cihazda uygun ses yoksa düğme
+/// görünmez. Aynı anda tek ses: örnek başlayınca anlatım durur.
 class LessonController extends ChangeNotifier {
   LessonController({
     required this.lesson,
     required BookAudio audio,
     required this.mediaUri,
+    ExampleSpeech speech = const NoExampleSpeech(),
     this.onCard,
     double Function()? clock,
     bool silent = false,
@@ -33,6 +40,7 @@ class LessonController extends ChangeNotifier {
     this.tickInterval = const Duration(milliseconds: 50),
     this.sampleEvery = 4,
   }) : _audio = audio,
+       _speech = speech,
        _clock = clock ?? _stopwatchClock(),
        _silent = silent,
        _index = startCard.clamp(0, lesson.cards.length - 1);
@@ -51,12 +59,17 @@ class LessonController extends ChangeNotifier {
   final int sampleEvery;
 
   final BookAudio _audio;
+  final ExampleSpeech _speech;
   final double Function() _clock;
 
   bool _silent;
   int _index;
   bool _disposed = false;
   bool _audioFailed = false;
+  bool _deviceVoice = false;
+
+  /// Çalan parça cihaz sesiyle mi okunuyor.
+  bool _viaDevice = false;
 
   // Çalan parça.
   LessonClipKind? _clip;
@@ -108,8 +121,17 @@ class LessonController extends ChangeNotifier {
   bool get canPlayNarration =>
       !_silent && !_audioFailed && (card.narration?.hasAudio ?? false);
 
-  /// Örnek sesleri çalınabilir mi (sesi olan örnekte düğme görünür).
-  bool canPlay(String? audio) => !_silent && !_audioFailed && audio != null;
+  /// Cihazda örnekleri okuyacak İngilizce ses var.
+  bool get hasDeviceVoice => _deviceVoice;
+
+  /// Önceden üretilmiş ses dosyası çalınabilir mi.
+  bool _fileOk(String? audio) => !_audioFailed && audio != null;
+
+  /// Örnek dinlenebilir mi: dosyası var ya da cihaz sesi var (düğme görünür).
+  bool canPlay(String? audio) => !_silent && (_fileOk(audio) || _deviceVoice);
+
+  /// Örnek bu kez cihaz sesiyle mi okunur (dosya yok ya da açılamadı).
+  bool usesDeviceVoice(String? audio) => !_fileOk(audio) && _deviceVoice;
 
   double get _now => _sample + (_clock() - _sampleAt) * _speed;
 
@@ -137,7 +159,21 @@ class LessonController extends ChangeNotifier {
   /// İlk kart açılınca (ekran hazır): kayıt ve anlatım.
   Future<void> start() async {
     onCard?.call(card, _index);
+    unawaited(checkDeviceVoice());
     await playNarration();
+  }
+
+  /// Cihaz sesinin varlığına bakar (bir kez; hata → yok).
+  Future<void> checkDeviceVoice() async {
+    bool ok;
+    try {
+      ok = await _speech.available();
+    } on Object {
+      ok = false;
+    }
+    if (_disposed || ok == _deviceVoice) return;
+    _deviceVoice = ok;
+    _notify();
   }
 
   Future<void> setSilent(bool on) async {
@@ -166,9 +202,11 @@ class LessonController extends ChangeNotifier {
     );
   }
 
-  /// İngilizce örnek ya da "Söyle" cümlesi.
+  /// İngilizce örnek ya da "Söyle" cümlesi: dosyası varsa dosya, yoksa
+  /// (ya da açılamazsa) cihaz sesi [text]'i okur.
   Future<void> playExample({
     required String id,
+    required String text,
     required String? audio,
     required List<TimedWord> words,
     double? start,
@@ -177,16 +215,20 @@ class LessonController extends ChangeNotifier {
     double speed = 1,
   }) async {
     if (!canPlay(audio)) return;
-    final last = words.lastWhere((w) => w.end != null, orElse: () => _none);
-    await _play(
-      kind: LessonClipKind.example,
-      id: id,
-      path: audio!,
-      from: 0,
-      endAt: duration ?? (end ?? last.end ?? 0) + 0.3,
-      words: words,
-      speed: speed,
-    );
+    if (_fileOk(audio)) {
+      final last = words.lastWhere((w) => w.end != null, orElse: () => _none);
+      final ok = await _play(
+        kind: LessonClipKind.example,
+        id: id,
+        path: audio!,
+        from: 0,
+        endAt: duration ?? (end ?? last.end ?? 0) + 0.3,
+        words: words,
+        speed: speed,
+      );
+      if (ok || !_deviceVoice) return;
+    }
+    await _speakDevice(id: id, text: text, speed: speed);
   }
 
   /// Örnekte tek kelime ([start]–[end] aralığı; anlam paneli).
@@ -196,7 +238,7 @@ class LessonController extends ChangeNotifier {
     required double end,
     double speed = 1,
   }) async {
-    if (!canPlay(e.audio)) return;
+    if (_silent || !_fileOk(e.audio)) return;
     await _play(
       kind: LessonClipKind.example,
       id: e.id,
@@ -216,7 +258,46 @@ class LessonController extends ChangeNotifier {
 
   static const _none = TimedWord('');
 
-  Future<void> _play({
+  /// Cihaz sesiyle okur; okunan kelime vurgulanır (motor bildirirse).
+  Future<void> _speakDevice({
+    required String id,
+    required String text,
+    required double speed,
+  }) async {
+    if (_silent || !_deviceVoice || text.trim().isEmpty) return;
+    await stop();
+    final gen = ++_gen;
+    _clip = LessonClipKind.example;
+    _clipId = id;
+    _clipWords = const [];
+    _narrationPlace = null;
+    _exampleWord = null;
+    _viaDevice = true;
+    _playing = true;
+    _notify();
+    try {
+      await _speech.speak(
+        text,
+        speed: exampleSpeechSpeed(lesson.level) * speed,
+        onWord: (start, _) {
+          if (gen != _gen || !_playing) return;
+          final w = wordIndexAt(text, start);
+          if (w == _exampleWord) return;
+          _exampleWord = w;
+          _notify();
+        },
+        onDone: () {
+          if (gen == _gen) unawaited(stop());
+        },
+      );
+    } on Object catch (e) {
+      debugPrint('[H064] cihaz sesi okuyamadı: $e');
+      if (gen == _gen) await stop();
+    }
+  }
+
+  /// Dosya açıldıysa true.
+  Future<bool> _play({
     required LessonClipKind kind,
     required String id,
     required String path,
@@ -229,7 +310,7 @@ class LessonController extends ChangeNotifier {
     final gen = ++_gen;
     try {
       await _audio.open(mediaUri(path));
-      if (gen != _gen || _disposed) return;
+      if (gen != _gen || _disposed) return true;
       if (speed != _speed) await _audio.setSpeed(speed);
       _speed = speed;
       await _audio.seek(from);
@@ -238,9 +319,9 @@ class LessonController extends ChangeNotifier {
       _audioFailed = true;
       _playing = false;
       _notify();
-      return;
+      return false;
     }
-    if (gen != _gen || _disposed) return;
+    if (gen != _gen || _disposed) return true;
     _clip = kind;
     _clipId = id;
     _clipWords = words;
@@ -251,8 +332,10 @@ class LessonController extends ChangeNotifier {
     _exampleWord = null;
     _playing = true;
     _timer ??= Timer.periodic(tickInterval, (_) => tick());
+    _viaDevice = false;
     _notify();
     await _audio.play();
+    return true;
   }
 
   /// Ses durur, vurgu kalkar.
@@ -261,13 +344,19 @@ class LessonController extends ChangeNotifier {
     _timer?.cancel();
     _timer = null;
     final was = _playing;
+    final device = _viaDevice;
     _playing = false;
+    _viaDevice = false;
     _narrationPlace = null;
     _exampleWord = null;
     if (was) {
       _notify();
       try {
-        await _audio.pause();
+        if (device) {
+          await _speech.stop();
+        } else {
+          await _audio.pause();
+        }
       } on Object catch (e) {
         debugPrint('[H078] ses durdurulamadı: $e');
       }
@@ -276,7 +365,7 @@ class LessonController extends ChangeNotifier {
 
   @visibleForTesting
   void tick() {
-    if (!_playing || _disposed) return;
+    if (!_playing || _disposed || _viaDevice) return;
     _ticks++;
     if (_ticks % sampleEvery == 0) unawaited(_takeSample());
     final t = _now;
@@ -323,6 +412,7 @@ class LessonController extends ChangeNotifier {
     _disposed = true;
     _timer?.cancel();
     _timer = null;
+    if (_playing && _viaDevice) unawaited(_speech.stop());
     unawaited(_audio.dispose());
     super.dispose();
   }
@@ -334,9 +424,13 @@ class _ExampleMeaningAudio implements MeaningAudio {
   final LessonController _c;
   final GrammarExample _e;
 
+  // Kelime kelime dinleme yalnız dosyanın zaman damgalarıyla (cihaz sesinde
+  // panelde yalnız cümle okunur; kelime zamanı yok).
   @override
   bool get canPlayWords =>
-      _c.canPlay(_e.audio) && _e.words.any((w) => w.hasTiming);
+      _c.canPlay(_e.audio) &&
+      !_c.usesDeviceVoice(_e.audio) &&
+      _e.words.any((w) => w.hasTiming);
 
   @override
   bool get canPlaySentence => _c.canPlay(_e.audio);
@@ -355,6 +449,7 @@ class _ExampleMeaningAudio implements MeaningAudio {
   @override
   Future<void> playSentence({required double speed}) => _c.playExample(
     id: _e.id,
+    text: _e.en,
     audio: _e.audio,
     words: _e.words,
     start: _e.start,

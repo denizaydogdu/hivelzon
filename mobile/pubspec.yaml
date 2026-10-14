@@ -50,6 +50,9 @@ dependencies:
   flutter_secure_storage: ^11.1.1
   # H-057: mikro-animasyonlar (sırayla belirme, dokunma tepkisi). Lisans: BSD-3-Clause.
   flutter_animate: ^4.5.2
+  # H-064 ek: İngilizce örneklerin cihaz sesi (Sarah sesi yokken). Lisans: MIT.
+  # iOS AVSpeechSynthesizer / Android TextToSpeech (yalnız ağ istemeyen ses).
+  flutter_tts: ^4.2.5
 
 dev_dependencies:
   flutter_test:

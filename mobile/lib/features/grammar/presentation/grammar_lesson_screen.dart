@@ -101,6 +101,7 @@ class _GrammarLessonScreenState extends ConsumerState<GrammarLessonScreen> {
       final c = LessonController(
         lesson: lesson,
         audio: ref.read(grammarAudioFactoryProvider)(),
+        speech: ref.read(exampleSpeechProvider),
         mediaUri: (path) => source.grammarMediaUri(lesson.id, path),
         clock: ref.read(grammarClockProvider),
         silent: _silent,

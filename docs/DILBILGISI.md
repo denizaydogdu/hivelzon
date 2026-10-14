@@ -136,6 +136,14 @@ $P tools/content-pipeline/tts_tr.py <parcalar.json> --out-dir <klasör> --execut
   - Hi'nin hata notu (`errorNote`, aynı hata tekrarlanınca);
   - bölüm ve kitap sonu.
 - **İlerleme:** `user_grammar_progress` tablosu (görüldü / bitti), cihazda ve hesap varsa eşitlenir.
+  - **Listede yüzde (H-064 ek, 2026-10-14):** her ders kartında yarımsa ince çubuk ve "%43 ilerledin" (kalınan kartın sırası / dizindeki `cardCount`; `c03` → 3 kart görüldü), bittiyse onay ve "Tamamladın", başlanmamışsa sakin (yazı yok). Bitmemiş ders en çok %99. Kalınan kart sayıldığı için kullanıcı geri dönerse yüzde de geri gider (ayrı "en ileri kart" sütunu yok; şema değişmedi). Seviye raflarında "A1 · 3/16 tamamlandı". Kod: `grammarLessonProgress`, `grammarLevelSummaries` (`grammar_progress.dart`).
+- **İngilizce örneklerin sesi, cihaz yedeği (H-064 ek, 2026-10-14; kullanıcı kararı):** Örneğin ya da "Söyle" cümlesinin önceden üretilmiş Sarah sesi (`audio/en/…`) varsa her zaman o çalar. Yoksa (ya da açılamazsa) örnek **telefonun kendi metin okuma motoruyla** okunur; Sarah sesleri üretildikçe kendiliğinden onların yerini alır.
+  - Eklenti: `flutter_tts` 4.2.x (MIT), `ExampleSpeech` bağlantı noktasının arkasında (`mobile/lib/shared/speech/example_speech.dart`, adaptör `device_example_speech.dart`; testlerde sahtesi).
+  - iOS: AVSpeechSynthesizer, cihazda çalışır. Android: sistemin TextToSpeech motoru; yalnız cihazda kurulu ve ağ istemeyen ses seçilir (`network_required = 0`, `notInstalled` değil). Ağ sesi hiçbir koşulda seçilmez; uygun ses yoksa düğme görünmez. Android 11+ için manifestte `TTS_SERVICE` sorgusu var.
+  - Ses: önce en-GB, yoksa en-US; aynı dilde daha kaliteli ses; Apple'ın eğlence/eski sesleri (`speech.synthesis.voice.*`, Eloquence) seçilmez. Hız A1–A2'de biraz yavaş (0,85), üstünde normal.
+  - Kayıt yok, dosya yazılmaz, ağ yok; okunan yalnız ekrandaki İngilizce örnektir. Ücretli hizmet değildir.
+  - Aynı anda tek ses: örnek başlayınca Türkçe anlatım durur; kart değişince, anlam paneli açılınca ve ekrandan çıkınca okuma durur. Motor okunan kelimeyi bildirirse ekranda vurgulanır. Sessiz modda cihaz sesi de okumaz.
+  - Anlam panelinde cümle cihaz sesiyle dinlenebilir; kelime kelime dinleme yalnız Sarah sesinin zaman damgalarıyla (cihaz sesinde kelime düğmesi yok, ortak `MeaningAudio` arayüzü değişmedi).
 - **Hi önerisi:** Görünür gerekçeyle gelir; örnek: "Bu bölümde *there is* çok geçti, kısaca anlatayım mı?"
 
 ## 8. Fazlar ve işler

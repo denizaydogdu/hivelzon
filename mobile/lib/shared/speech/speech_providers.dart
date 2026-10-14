@@ -2,6 +2,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../storage/storage_providers.dart';
+import 'device_example_speech.dart';
+import 'example_speech.dart';
 import 'fake_speech_recognizer.dart';
 import 'on_device_speech_recognizer.dart';
 import 'speech_recognizer_port.dart';
@@ -17,6 +19,14 @@ final speechRecognizerProvider = Provider<SpeechRecognizerPort>((ref) {
     return FakeSpeechRecognizer.fromScenario(kFakeSpeechScenario);
   }
   return OnDeviceSpeechRecognizer();
+});
+
+/// İngilizce örneklerin cihaz sesi (önceden üretilmiş dosya yokken; H-064).
+/// Testlerde sahtesi verilir.
+final exampleSpeechProvider = Provider<ExampleSpeech>((ref) {
+  final speech = DeviceExampleSpeech();
+  ref.onDispose(() => speech.stop());
+  return speech;
 });
 
 final speechStoreProvider = Provider<SpeechStore>(
