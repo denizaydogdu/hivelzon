@@ -22,3 +22,5 @@
 | — | Görsel maliyet onayı ve üretim | Kullanıcı | Bekliyor (henüz üretilmedi) |
 | — | Seslendirme (ElevenLabs, iç kullanım) | Kullanıcı | Bekliyor (henüz üretilmedi) |
 | — | Editör toplu kontrolü | Editör | Bekliyor |
+
+- 2026-10-14: Kullanıcı metni ve Türkçe çeviriyi onayladı (H-028). Görseller üretildi (GPT Image 2.5, özgün istem; kayıt PROMPTS.md). Ses henüz üretilmedi.

@@ -16,9 +16,9 @@ Kurallar: her ücretli üretimden **önce** `higgsfield generate cost` ile maliy
 
 **Adil son için yerleştirilen ipuçları:** duvardaki tozlu eski gitar ve Bell Bey'in "Not anymore" demesi (p02); Kaptan'ın geceleri çocukların odasında uyuması (p03); Kaptan'ın odada sessiz ama gözlerinin açık olması, Max'in "You two are very brave" demesi ve ninniyi söylemesi (p10).
 
-## Görsel planı (üretilmedi)
+## Görsel planı ve üretim kaydı (2026-10-14)
 
-> **Henüz üretilmedi.** Üretimden önce `higgsfield generate cost` ile toplam maliyet gösterilir ve kullanıcı onayı alınır. Tahmin (doğrulanmadı): GPT Image 2.5, quality low, 3:4, ~0,5 kr/görsel × 15 (kapak + 14 sayfa) ≈ 7,5 kr.
+> **Üretildi (2026-10-14).** Kullanıcı onayı: pilot görselleri ≈ 15 kr (\"Görseller: Yaklaşık 15 kredi … ( onay )\", 2026-10-14). Kesin maliyet `generate cost` ile doğrulandı: GPT Image 2.5, 3:4, quality medium, 1k = 0,5 kr/görsel; sayfalar kapak işi referans verilerek üretildi (karakter tutarlılığı). Başarısız işler ücretlendirilmedi ve yeniden denendi.
 > Dosya adları `book.json` ile aynı: `images/cover.png`, `images/p01.png` … `images/p14.png` (git dışı).
 
 **Sabit stil öneki (her istemin başına):**
@@ -51,6 +51,31 @@ Kurallar: her ücretli üretimden **önce** `higgsfield generate cost` ile maliy
 | p12.png | Mr Bell looks up at the pancake on the ceiling; Mrs Bell looks at the half-white cat; Max's face is bright tomato red. |
 | p13.png | Captain sings with his eyes closed in his cage; Mr Bell's face softens; the twins in pyjamas peek from the top of the stairs. |
 | p14.png | Mr Bell gives the old brown guitar to an amazed Max; Mrs Bell smiles; Captain flaps his wings happily. |
+
+
+### Üretim kaydı
+
+| Dosya | Job id | Referans | Tarih (UTC) | Parametre | Kredi | Not |
+|---|---|---|---|---|---|---|
+| cover.png | 596443c8-257d-429b-960a-d17e27fe4f23 | — | 2026-10-14T10:00:31+00:00 | 3:4, medium, 1k | 0.5 |  |
+| p02.png | fa87c169-0fdb-49ea-aa7f-ac12d880f506 | 596443c8-257d-429b-960a-d17e27fe4f23 | 2026-10-14T10:01:11+00:00 | 3:4, medium, 1k | 0.5 |  |
+| p03.png | fb78700b-031d-4193-9cc7-c7e975fc03ed | 596443c8-257d-429b-960a-d17e27fe4f23 | 2026-10-14T10:01:17+00:00 | 3:4, medium, 1k | 0.5 |  |
+| p04.png | 4447e38f-6bb1-44cf-8ba1-afbb349daa4b | 596443c8-257d-429b-960a-d17e27fe4f23 | 2026-10-14T10:01:17+00:00 | 3:4, medium, 1k | 0.5 |  |
+| p01.png | a8315782-28ee-4ecd-81e8-e3b6d5d87f29 | 596443c8-257d-429b-960a-d17e27fe4f23 | 2026-10-14T10:01:29+00:00 | 3:4, medium, 1k | 0.5 |  |
+| p06.png | 85f8fdc9-4195-4104-9af3-6b5c9b12e271 | 596443c8-257d-429b-960a-d17e27fe4f23 | 2026-10-14T10:01:54+00:00 | 3:4, medium, 1k | 0.5 |  |
+| p07.png | 600a59fc-71cc-4366-89a5-dcdb278d56a3 | 596443c8-257d-429b-960a-d17e27fe4f23 | 2026-10-14T10:01:58+00:00 | 3:4, medium, 1k | 0.5 |  |
+| p08.png | d6988495-de8f-49e8-8ffa-8973df97543b | 596443c8-257d-429b-960a-d17e27fe4f23 | 2026-10-14T10:02:04+00:00 | 3:4, medium, 1k | 0.5 |  |
+| p09.png | d774f7a7-63a4-4337-b0af-445c4741e998 | 596443c8-257d-429b-960a-d17e27fe4f23 | 2026-10-14T10:02:14+00:00 | 3:4, medium, 1k | 0.5 |  |
+| p10.png | 98a5cb2c-ee99-4a17-b793-bab98f0897d3 | 596443c8-257d-429b-960a-d17e27fe4f23 | 2026-10-14T10:02:30+00:00 | 3:4, medium, 1k | 0.5 |  |
+| p12.png | 77ef47d1-8834-4b28-8401-2c5b3c7166d6 | 596443c8-257d-429b-960a-d17e27fe4f23 | 2026-10-14T10:02:36+00:00 | 3:4, medium, 1k | 0.5 |  |
+| p11.png | 962371ba-052e-4391-8420-55654d29590e | 596443c8-257d-429b-960a-d17e27fe4f23 | 2026-10-14T10:02:51+00:00 | 3:4, medium, 1k | 0.5 |  |
+| p13.png | 7a898dfc-9c0c-4226-ad35-aba2c1daf505 | 596443c8-257d-429b-960a-d17e27fe4f23 | 2026-10-14T10:02:52+00:00 | 3:4, medium, 1k | 0.5 |  |
+| p14.png | 197ca496-2c64-4006-a048-aa23ce08135e | 596443c8-257d-429b-960a-d17e27fe4f23 | 2026-10-14T10:03:11+00:00 | 3:4, medium, 1k | 0.5 |  |
+| p05.png | 10662875-c6d8-4648-858d-da9862458090 | 596443c8-257d-429b-960a-d17e27fe4f23 | 2026-10-14T10:04:32+00:00 | 3:4, medium, 1k | 0.5 |  |
+
+**Toplam:** 7.5 kr. İstem = sabit stil öneki + sahnede geçen karakter/mekân tanımları + sahne (yukarıdaki tablo). Tam istem metinleri yerel `images/_jobs.json`'da (git dışı).
+
+**Editör değerlendirmesi:** Karakter ve üslup tutarlı; görselde yazı yok. Küçük notlar: A1 p11 dört karelik kolaj olarak çizildi; A2 p10'da ikizler uyumuyor. Telif/AI: özgün istem, gerçek kişi/marka yok; uygulama içi AI notu bölüm başındaki gibi gösterilir.
 
 ## Seslendirme kayıtları (tts_book.py)
 

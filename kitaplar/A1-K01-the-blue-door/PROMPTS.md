@@ -16,9 +16,9 @@ Kurallar: her ücretli üretimden **önce** `higgsfield generate cost` ile maliy
 
 **Adil son için yerleştirilen ipuçları:** Ada Hanım'ın "No one lives there. That is true." demesi (p03), basamaklardaki toprak (p04–p05), domates kokusu ve yeşil eller (p06), Ada Hanım'ın dördüncü kattaki kırmızı saksıyı bilmesi (p06), "I sleep at eight" ve saat dokuzda gelen yavaş adımlar (p07–p08).
 
-## Görsel planı (üretilmedi)
+## Görsel planı ve üretim kaydı (2026-10-14)
 
-> **Henüz üretilmedi.** Üretimden önce `higgsfield generate cost` ile toplam maliyet gösterilir ve kullanıcı onayı alınır. Tahmin (doğrulanmadı): GPT Image 2.5, quality low, 3:4, ~0,5 kr/görsel × 12 (kapak + 11 sayfa) ≈ 6 kr.
+> **Üretildi (2026-10-14).** Kullanıcı onayı: pilot görselleri ≈ 15 kr (\"Görseller: Yaklaşık 15 kredi … ( onay )\", 2026-10-14). Kesin maliyet `generate cost` ile doğrulandı: GPT Image 2.5, 3:4, quality medium, 1k = 0,5 kr/görsel; sayfalar kapak işi referans verilerek üretildi (karakter tutarlılığı). Başarısız işler ücretlendirilmedi ve yeniden denendi.
 > Dosya adları `book.json` ile aynı: `images/cover.png`, `images/p01.png` … `images/p11.png` (git dışı).
 
 **Sabit stil öneki (her istemin başına):**
@@ -47,6 +47,29 @@ Kurallar: her ücretli üretimden **önce** `higgsfield generate cost` ile maliy
 | p09.png | Lina climbs a second, narrow dark staircase behind the open blue door towards a warm yellow glow and cool night air. |
 | p10.png | A magical roof garden under many small string lights at night: tomatoes, beans, flowers; Mrs Ada waters the tomatoes and smiles at Lina. |
 | p11.png | Mrs Ada holds out an open hand with two old brass keys to Lina; later, Lina's red pot stands next to the tomatoes with one new green leaf. |
+
+
+### Üretim kaydı
+
+| Dosya | Job id | Referans | Tarih (UTC) | Parametre | Kredi | Not |
+|---|---|---|---|---|---|---|
+| cover.v1-rejected | 531ea17c-3636-4242-9d2c-5785b4294ed0 | — | 2026-10-14T09:58:15Z | 3:4, medium, 1k | 0.5 | Reddedildi: istemde çatı bahçesi tanımı vardı, sonu ele veriyordu. |
+| cover.png | a2e42f2c-4c2b-43f0-8235-a862c7d75ecc | — | 2026-10-14T09:59:39+00:00 | 3:4, medium, 1k | 0.5 |  |
+| p04.png | fe93f09a-c974-4c6b-a402-399efbd6aa82 | a2e42f2c-4c2b-43f0-8235-a862c7d75ecc | 2026-10-14T10:00:25+00:00 | 3:4, medium, 1k | 0.5 |  |
+| p02.png | 29294672-6256-4050-828c-f4de6b36c459 | a2e42f2c-4c2b-43f0-8235-a862c7d75ecc | 2026-10-14T10:00:26+00:00 | 3:4, medium, 1k | 0.5 |  |
+| p03.png | d07f89dc-f6d3-48ed-bc54-5ad163583481 | a2e42f2c-4c2b-43f0-8235-a862c7d75ecc | 2026-10-14T10:00:30+00:00 | 3:4, medium, 1k | 0.5 |  |
+| p01.png | 8ab181e2-da52-4fb9-a439-f0b8e0771dd0 | a2e42f2c-4c2b-43f0-8235-a862c7d75ecc | 2026-10-14T10:00:33+00:00 | 3:4, medium, 1k | 0.5 |  |
+| p06.png | 76ebd8c9-7cb3-44aa-a4aa-ed9712e3978c | a2e42f2c-4c2b-43f0-8235-a862c7d75ecc | 2026-10-14T10:00:58+00:00 | 3:4, medium, 1k | 0.5 |  |
+| p05.png | 27046871-2c52-413a-94b8-3863f124b58b | a2e42f2c-4c2b-43f0-8235-a862c7d75ecc | 2026-10-14T10:01:06+00:00 | 3:4, medium, 1k | 0.5 |  |
+| p08.png | 8df76b6e-1d5c-4da2-90ef-114b6f8aa019 | a2e42f2c-4c2b-43f0-8235-a862c7d75ecc | 2026-10-14T10:01:08+00:00 | 3:4, medium, 1k | 0.5 |  |
+| p09.png | 1e477d76-2d1d-4c10-a5c5-c7b4a930b3ef | a2e42f2c-4c2b-43f0-8235-a862c7d75ecc | 2026-10-14T10:01:31+00:00 | 3:4, medium, 1k | 0.5 |  |
+| p10.png | 0bc492cf-e1a2-4710-875b-2cc93b53acad | a2e42f2c-4c2b-43f0-8235-a862c7d75ecc | 2026-10-14T10:01:42+00:00 | 3:4, medium, 1k | 0.5 |  |
+| p07.png | aba82761-a1a9-4017-8d5d-cf4b0f774ec9 | a2e42f2c-4c2b-43f0-8235-a862c7d75ecc | 2026-10-14T10:03:57+00:00 | 3:4, medium, 1k | 0.5 |  |
+| p11.png | 2b66cef8-bf38-4a01-a3ae-34dfee0363ff | a2e42f2c-4c2b-43f0-8235-a862c7d75ecc | 2026-10-14T10:03:58+00:00 | 3:4, medium, 1k | 0.5 |  |
+
+**Toplam:** 6.5 kr. İstem = sabit stil öneki + sahnede geçen karakter/mekân tanımları + sahne (yukarıdaki tablo). Tam istem metinleri yerel `images/_jobs.json`'da (git dışı).
+
+**Editör değerlendirmesi:** Karakter ve üslup tutarlı; görselde yazı yok. Küçük notlar: A1 p11 dört karelik kolaj olarak çizildi; A2 p10'da ikizler uyumuyor. Telif/AI: özgün istem, gerçek kişi/marka yok; uygulama içi AI notu bölüm başındaki gibi gösterilir.
 
 ## Seslendirme kayıtları (tts_book.py)
 
