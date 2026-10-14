@@ -6,10 +6,11 @@ import '../../../shared/content/content_providers.dart';
 import '../../../shared/state/safe_refresh.dart';
 import '../../../shared/storage/storage_providers.dart';
 import '../../onboarding/application/onboarding_providers.dart';
-import '../../player/presentation/player_screen.dart';
 import '../data/book_progress_store.dart';
 import '../domain/book.dart';
 import '../domain/book_progress.dart';
+import 'audio_service_host.dart';
+import 'background_book_audio.dart';
 import 'book_audio.dart';
 
 final bookProgressStoreProvider = Provider<BookProgressStore>(
@@ -66,11 +67,16 @@ final libraryProvider = FutureProvider.autoDispose<LibraryData>((ref) async {
   );
 }, retry: (_, _) => null);
 
-/// Kitap sesi çalar (testlerde sahtesi verilir).
-final bookAudioFactoryProvider = Provider<BookAudio Function()>((ref) {
-  final factory = ref.watch(videoControllerFactoryProvider);
-  return () => VideoPlayerBookAudio(factory: factory);
-});
+/// Kitap sesi çalar (testlerde sahtesi verilir). H-068: arka planda ve
+/// kilit ekranında çalan `just_audio` + `audio_service`; uygulamada arka
+/// plan sesini yalnız kitap okuyucusu kullanır.
+final bookAudioFactoryProvider = Provider<BookAudio Function()>(
+  (ref) =>
+      () => BackgroundBookAudio(
+        engine: JustAudioEngine(),
+        host: AudioServiceBookSessionHost.instance,
+      ),
+);
 
 /// Okuyucunun saati (sn, tekdüze). Testlerde elle ilerletilir.
 final readerClockProvider = Provider<double Function()?>((ref) => null);

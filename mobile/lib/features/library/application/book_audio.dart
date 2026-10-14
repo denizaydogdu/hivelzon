@@ -6,9 +6,9 @@ import 'package:video_player/video_player.dart';
 import '../../player/application/segment_player_pool.dart';
 
 /// Kitap sesi çalar (H-067). Okuyucu bu arayüzle konuşur; testlerde sahtesi
-/// verilir. Bugün `video_player` (AVPlayer / ExoPlayer, `m4a`); arka planda
-/// ve kilit ekranında dinleme ayrı iştir (H-068: `just_audio` +
-/// `audio_service` bu arayüzün arkasına gelir).
+/// verilir. Kitap okuyucusunda arka planda ve kilit ekranında çalan
+/// `BackgroundBookAudio` (H-068: `just_audio` + `audio_service`) bu arayüzün
+/// arkasındadır; dilbilgisi dersleri [VideoPlayerBookAudio] ile kalır.
 abstract interface class BookAudio {
   /// Bölüm sesini açar (öncekini kapatır). Açılamazsa hata fırlatır.
   Future<void> open(Uri uri);
@@ -37,7 +37,8 @@ abstract interface class BookAudio {
   Future<void> dispose();
 }
 
-/// `video_player` ile kitap sesi. Platformun bildirdiği konum ~500 ms'de bir
+/// `video_player` ile ses (dilbilgisi dersleri; uygulama arka plana geçince
+/// durur). Platformun bildirdiği konum ~500 ms'de bir
 /// güncellenir; okuyucu bu yüzden [position] ile sık örnek alır ve aradaki
 /// zamanı saatle tamamlar (vurgu kayması ≤ 0,2 sn).
 class VideoPlayerBookAudio implements BookAudio {

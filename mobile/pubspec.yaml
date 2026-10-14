@@ -53,6 +53,12 @@ dependencies:
   # H-064 ek: İngilizce örneklerin cihaz sesi (Sarah sesi yokken). Lisans: MIT.
   # iOS AVSpeechSynthesizer / Android TextToSpeech (yalnız ağ istemeyen ses).
   flutter_tts: ^4.2.5
+  # H-068: kitabı arka planda ve kilit ekranında dinleme. Lisanslar: just_audio,
+  # audio_service, audio_session MIT (yan bağımlılıklar MIT / BSD-2 /
+  # Apache-2.0; yapilacaklar/H-068 notu).
+  just_audio: ^0.10.6
+  audio_service: ^0.18.19
+  audio_session: ^0.2.4
 
 dev_dependencies:
   flutter_test:
@@ -68,6 +74,9 @@ dev_dependencies:
   # rules and activating additional ones.
   flutter_lints: ^6.0.0
   video_player_platform_interface: ^6.9.0
+  # H-068: bağdaştırıcı testlerinde sahte zaman (Apache-2.0; flutter_test zaten
+  # getiriyor, sürüm SDK'ya bağlı).
+  fake_async: any
   drift_dev: ^2.31.0
   build_runner: ^2.15.1
 

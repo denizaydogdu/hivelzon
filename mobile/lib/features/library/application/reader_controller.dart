@@ -6,6 +6,7 @@ import '../../../shared/meaning/meaning_controller.dart';
 import '../../../shared/meaning/meaning_text.dart';
 import '../domain/book.dart';
 import 'book_audio.dart';
+import 'book_media_session.dart';
 
 enum ReaderMode { listen, silent }
 
@@ -85,6 +86,11 @@ class ReaderController extends ChangeNotifier {
       _mode = ReaderMode.silent;
       _chapterAudioMissing = true;
     }
+    // H-068: arka planda çalan ses kilit ekranı komutlarını okuyucuya iletir.
+    final session = _audio;
+    if (session is BookMediaSession) {
+      _remote = (session as BookMediaSession).commands.listen(_onRemote);
+    }
   }
 
   static double Function() _stopwatchClock() {
@@ -106,6 +112,7 @@ class ReaderController extends ChangeNotifier {
 
   final BookAudio _audio;
   final double Function() _clock;
+  StreamSubscription<BookRemoteCommand>? _remote;
 
   ReaderMode _mode;
   late ReaderPlace _place;
@@ -231,6 +238,7 @@ class ReaderController extends ChangeNotifier {
       await _audio.open(mediaUri(path));
       await _audio.setSpeed(_speed);
       _loadedChapter = chapterIndex;
+      _publishMediaInfo(chapterIndex);
       return true;
     } on Object catch (e) {
       debugPrint('[H067] kitap sesi açılamadı: $path ($e)');
@@ -240,6 +248,74 @@ class ReaderController extends ChangeNotifier {
       _notify();
       return false;
     }
+  }
+
+  /// Kilit ekranı künyesi: kitap, bölüm, kapak; sıradaki bölümün sesi varsa
+  /// "Sonraki bölüm" düğmesi (H-068).
+  void _publishMediaInfo(int chapterIndex) {
+    final a = _audio;
+    if (a is! BookMediaSession) return;
+    final next = chapterIndex + 1 < book.chapters.length
+        ? book.chapters[chapterIndex + 1]
+        : null;
+    final cover = book.cover;
+    unawaited(
+      (a as BookMediaSession).setMediaInfo(
+        BookMediaInfo(
+          bookTitle: book.title,
+          chapterTitle: book.chapters[chapterIndex].title,
+          artUri: cover == null ? null : mediaUri(cover),
+          hasNextChapter: next != null && book.chapterCanListen(next.id),
+        ),
+      ),
+    );
+  }
+
+  /// Kilit ekranı / bildirim / kulaklık komutu ya da sistem kesintisi.
+  void _onRemote(BookRemoteCommand c) {
+    if (_disposed) return;
+    switch (c) {
+      case BookRemoteCommand.play:
+        unawaited(play());
+      case BookRemoteCommand.pause:
+      case BookRemoteCommand.stop:
+        unawaited(pause());
+      case BookRemoteCommand.back10:
+        unawaited(back10());
+      case BookRemoteCommand.nextChapter:
+        unawaited(nextChapter());
+    }
+  }
+
+  /// Sıradaki bölüm (kilit ekranındaki "Sonraki bölüm"); çalıyorsa sürer.
+  Future<void> nextChapter() async {
+    final ci = _chapterIndexOf(
+      _mode == ReaderMode.listen ? _place : ReaderPlace(_pageIndex, 0),
+    );
+    if (ci >= book.chapters.length - 1) return;
+    await goToChapter(ci + 1);
+  }
+
+  /// Uygulama öne döndü (H-068): ses arka planda sürmüş olabilir. Konum
+  /// duvar saatinden değil çalardan taze alınır; vurgu, sayfa, bölüm sonu ve
+  /// uyku zamanlayıcısı hemen eşlenir.
+  Future<void> resync() async {
+    if (_disposed) return;
+    if (!_playing || _busy > 0) {
+      _notify();
+      return;
+    }
+    final gen = _seekGen;
+    try {
+      final p = await _audio.position();
+      if (_disposed || !_playing || gen != _seekGen) return;
+      _sample = p;
+      _sampleAt = _clock();
+    } on Object catch (e) {
+      debugPrint('[H068] konum okunamadı: $e');
+    }
+    tick();
+    _notify();
   }
 
   Future<void> _seek(double sec) async {
@@ -626,6 +702,7 @@ class ReaderController extends ChangeNotifier {
   void dispose() {
     _disposed = true;
     _stopTimer();
+    unawaited(_remote?.cancel());
     unawaited(_audio.dispose());
     super.dispose();
   }
