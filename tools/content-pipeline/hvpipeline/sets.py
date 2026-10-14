@@ -22,7 +22,7 @@ import re
 from dataclasses import dataclass
 from pathlib import Path
 
-from .cefr import LEVELS, coverage, lemma, load_wordlist
+from .cefr import CEFRJ_LEVELS as LEVELS, coverage, lemma, load_wordlist  # setler A1–B2 (CEFR-J)
 from .graph import Issue, schema_errors
 
 SETS_DIR = Path("_evren") / "setler"

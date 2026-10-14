@@ -1,0 +1,33 @@
+{
+  "contentId": "A1-K99",
+  "status": "APPROVED",
+  "author": "Claude taslak (test verisi)",
+  "date": "2026-10-14",
+  "lines": [
+    { "en": "A Small Box", "tr": "Küçük Bir Kutu", "chunks": [],
+      "words": { "a": "bir", "small": "küçük", "box": "kutu" }, "source": "c1" },
+    { "en": "Ece has a small box.", "tr": "Ece'nin küçük bir kutusu var.", "chunks": [],
+      "words": { "has": "sahip olmak (-si var)", "a": "bir", "small": "küçük", "box": "kutu" }, "source": "p01-s01" },
+    { "en": "The box is red.", "tr": "Kutu kırmızı.", "chunks": [],
+      "words": { "the": "(belirli tanımlık)", "box": "kutu", "is": "(olmak)", "red": "kırmızı" }, "source": "p01-s02" },
+    { "en": "She can't open it.", "tr": "Onu açamıyor.", "chunks": [{ "en": "can't open", "tr": "açamıyor" }],
+      "words": { "she": "o (kız)", "can't": "-emez", "open": "açmak", "it": "onu" }, "source": "p01-s03" },
+    { "en": "\"What is in the box?\" asks her mum.", "tr": "\"Kutuda ne var?\" diye soruyor annesi.",
+      "chunks": [{ "en": "What is in the box?", "tr": "Kutuda ne var?" }],
+      "words": { "what": "ne", "is": "(olmak)", "in": "içinde", "the": "(belirli tanımlık)", "box": "kutu",
+                 "asks": "soruyor", "her": "onun", "mum": "anne" }, "source": "p02-s01" },
+    { "en": "Ece does not know.", "tr": "Ece bilmiyor.", "chunks": [],
+      "words": { "does": "(yardımcı fiil)", "not": "değil", "know": "bilmek" }, "source": "p02-s02" },
+    { "en": "The Key", "tr": "Anahtar", "chunks": [],
+      "words": { "the": "(belirli tanımlık)", "key": "anahtar" }, "source": "c2" },
+    { "en": "There is a key under the bed.", "tr": "Yatağın altında bir anahtar var.",
+      "chunks": [{ "en": "There is", "tr": "var" }],
+      "words": { "there": "orada (there is: var)", "is": "(olmak)", "a": "bir", "key": "anahtar",
+                 "under": "altında", "the": "(belirli tanımlık)", "bed": "yatak" }, "source": "p03-s01" },
+    { "en": "Ece opens the box.", "tr": "Ece kutuyu açıyor.", "chunks": [],
+      "words": { "opens": "açıyor", "the": "(belirli tanımlık)", "box": "kutu" }, "source": "p03-s02" },
+    { "en": "It is a little cat!", "tr": "Küçük bir kedi!", "chunks": [],
+      "words": { "it": "o", "is": "(olmak)", "a": "bir", "little": "küçük", "cat": "kedi" }, "source": "p03-s03" }
+  ],
+  "phrases": []
+}

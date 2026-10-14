@@ -1,4 +1,9 @@
-"""CEFR-J kapsama ve cümle uzunluğu denetimi (kaynak: geçici cefr_check.py v2)."""
+"""CEFR-J kapsama ve cümle uzunluğu denetimi (kaynak: geçici cefr_check.py v2).
+
+Seviyeler A1–C2 (C2: Kitaplık, H-066). CEFR-J listesi A1–B2'yi kapsar. C1 ve C2 için CEFR-J'ye
+Octanove C1/C2 eklenir; bu liste CC BY-SA 4.0'dır ve **ayrı veri seti** olarak ayrı dosyada durur
+(`data/lexicon_ccbysa/`, `docs/LISANS-RAPORU.md` §2.3). Dosya yoksa C1/C2 kapsaması denetlenmez.
+"""
 
 from __future__ import annotations
 
@@ -10,8 +15,13 @@ from pathlib import Path
 
 from . import DATA_DIR
 
-LEVELS = ["A1", "A2", "B1", "B2"]
+LEVELS = ["A1", "A2", "B1", "B2", "C1", "C2"]
+CEFRJ_LEVELS = ["A1", "A2", "B1", "B2"]          # CEFR-J v1.6'nın kapsadığı seviyeler
 WORDLIST = DATA_DIR / "cefrj-wordlist-v1.6.csv"
+# Octanove C1/C2 (CC BY-SA 4.0): ayrı veri seti, ayrı dosya. Depoda yoksa C1/C2 kapsaması denetlenmez.
+CCBYSA_DIR = DATA_DIR / "lexicon_ccbysa"
+OCTANOVE = CCBYSA_DIR / "octanove-vocabulary-profile-c1c2-1.0.csv"
+NO_LIST_MSG = "liste yok; kapsama denetlenmedi"
 PROPER_NOUNS = DATA_DIR / "proper_nouns.txt"
 
 # Ünlemler özel ad gibi sayılmaz (kapsama paydasına girmez). Belgelendi: docs/BOLUM-PAKETI.md.
@@ -43,27 +53,61 @@ class Wordlist:
     allowed: set[str]
     levels: dict[str, str]
     level: str
+    sources: dict[str, str] = field(default_factory=dict)   # başsözcük -> "cefrj" | "octanove" | ...
 
 
-@lru_cache(maxsize=8)
-def load_wordlist(level: str = "A1", path: str | None = None) -> Wordlist:
+def _csv_rows(p: Path) -> list[dict]:
+    rows = [ln for ln in p.read_text(encoding="utf-8").splitlines() if ln.strip() and not ln.startswith("#")]
+    out = []
+    for r in csv.DictReader(rows):
+        out.append({(k or "").strip(): (v or "").strip() for k, v in r.items()})
+    return out
+
+
+def has_extra_list(level: str, path: str | None = None) -> bool:
+    """C1/C2 için ek liste (Octanove) bu ortamda var mı? A1–B2 için her zaman True."""
+    if level in CEFRJ_LEVELS:
+        return True
+    return Path(path).exists() if path else OCTANOVE.exists()
+
+
+@lru_cache(maxsize=16)
+def load_wordlist(level: str = "A1", path: str | None = None, extra: str | None = None) -> Wordlist:
+    """Kümülatif liste: `level` ve altındaki başsözcükler.
+
+    A1–B2: yalnızca CEFR-J. C1/C2: CEFR-J'nin tamamı + ek listenin (`extra`, varsayılan Octanove)
+    `level`'e kadarki satırları. Ek dosyada `source` sütunu varsa kaynak oradan, yoksa "octanove".
+    Ek dosya yoksa yalnızca CEFR-J kullanılır (çağıran `has_extra_list` ile uyarı verir).
+    """
     p = Path(path) if path else WORDLIST
-    rows = [ln for ln in p.read_text(encoding="utf-8").splitlines() if not ln.startswith("#")]
     allowed: set[str] = set()
     lv: dict[str, str] = {}
-    max_i = LEVELS.index(level) if level in LEVELS else len(LEVELS) - 1
-    for r in csv.DictReader(rows):
-        for h in r["headword"].split("/"):
-            h = h.strip().lower()
-            if not h:
+    src: dict[str, str] = {}
+    max_i = LEVELS.index(level) if level in LEVELS else len(CEFRJ_LEVELS) - 1
+
+    def add(rows: list[dict], default_source: str) -> None:
+        for r in rows:
+            cefr = r.get("CEFR", "").upper()
+            if cefr not in LEVELS:
                 continue
-            cur = lv.get(h)
-            if cur is None or LEVELS.index(r["CEFR"]) < LEVELS.index(cur):
-                lv[h] = r["CEFR"]
-            if LEVELS.index(r["CEFR"]) <= max_i:
-                allowed.add(h)
+            for h in r.get("headword", "").split("/"):
+                h = h.strip().lower()
+                if not h:
+                    continue
+                cur = lv.get(h)
+                if cur is None or LEVELS.index(cefr) < LEVELS.index(cur):
+                    lv[h] = cefr
+                    src[h] = r.get("source") or default_source
+                if LEVELS.index(cefr) <= max_i:
+                    allowed.add(h)
+
+    add(_csv_rows(p), "cefrj")
+    if level not in CEFRJ_LEVELS:
+        ep = Path(extra) if extra else OCTANOVE
+        if ep.exists():
+            add(_csv_rows(ep), "octanove")
     allowed.update({"oclock", "not"})
-    return Wordlist(allowed, lv, level)
+    return Wordlist(allowed, lv, level, src)
 
 
 @lru_cache(maxsize=1)
@@ -164,8 +208,8 @@ class Coverage:
 
 
 def coverage(texts: list[str], level: str = "A1", gloss: list[str] = (), proper: set[str] = frozenset(),
-             max_words: int = 8) -> Coverage:
-    wl = load_wordlist(level)
+             max_words: int = 8, extra: str | None = None) -> Coverage:
+    wl = load_wordlist(level, None, extra)
     pn = set(load_proper_nouns()) | {p.lower() for p in proper}
     gl = set()
     for g in gloss:

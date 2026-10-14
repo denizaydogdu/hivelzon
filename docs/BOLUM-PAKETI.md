@@ -321,7 +321,11 @@ sets/<id>/<öğe>.m4a, <öğe>.example.m4a → kelime ve örnek cümle sesi (AAC
 - **Sahne avı:** önce yalnızca "Find the radio!" (+ kelimenin sesi, varsa); ilk yanlış dokunuşta "Bir daha bakalım." ve Türkçe yardım satırı ("Telsizi bul"), ikinci yanlıştan sonra bölge parlar. Görsel ekranı olabildiğince doldurur; iki parmakla ya da düğmeyle büyütülür ve kaydırılır (`InteractiveViewer`). Dokunuş görselin kendi koordinatlarında değerlendirilir, büyütme isabeti bozmaz (küçük nesnelere 14 pt pay). "Bilmiyorum" yeri gösterir. Süre ve puan yok. Defterdeki ifadeler için sonuç kelime tekrarına yazılır: kendi bulduysa Good; "Bilmiyorum" ya da 2+ kaçırma Again (`review_logs.task_type = scene_hunt`). Aynı gün zaten tekrar edilmiş kart atlanır.
 - Ekran okuyucu: her bölge Türkçe adıyla düğmedir; ekran okuyucu açıkken resim yerine seçenek listesi sunulur ve Türkçe yardım satırı ipucuna kadar gizlenir.
 
-## 8. Atıf
+## 8. Kitap paketi (Kitaplık, H-066)
+
+Seviyeli sesli kitaplar bölüm paketinden ayrı bir biçim kullanır: `kitaplar/<SEVİYE>-K<NN>-<kisa-baslik>/_build/package/` (`book.json`, `pages.json`, `audio/<bölüm>.m4a`, `images/<sayfa>.webp`, `manifest.json`). `pages.json`, bu belgedeki altyazı JSON'unun (§3) kitap karşılığıdır: cümle düzeyinde zamanlama, `tr`, kelime `gloss` ve `chunks` aynı kurallarla `ceviri.tr.json`'dan gelir. Kaynak biçimi, araçlar (`book_lint.py`, `export_book.py`, `tts_book.py`) ve kurallar: `docs/KITAPLIK.md` §6. Seviye listesi C2'yi de kapsar (`cefr.LEVELS`); C1/C2 kapsaması Octanove C1/C2 ayrı veri setiyle yapılır, dosya yoksa "liste yok; kapsama denetlenmedi" uyarısı verilir (bölümler için de geçerli).
+
+## 9. Atıf
 
 > The CEFR-J Wordlist Version 1.6. Compiled by Yukio Tono, Tokyo University of Foreign Studies. Retrieved from https://www.cefr-j.org/download.html on 11/10/26.
 
