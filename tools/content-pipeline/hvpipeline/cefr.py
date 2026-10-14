@@ -35,6 +35,18 @@ IRREGULAR = {
     "took": "take", "got": "get", "knew": "know", "found": "find",
     "heard": "hear", "told": "tell", "thought": "think", "gave": "give", "sat": "sit",
     "ran": "run", "wrote": "write", "ate": "eat", "drank": "drink", "bought": "buy",
+    # Düzensiz geçmiş zaman (A2 past simple; H-069 kitapları). Başsözcük listede yoksa yine liste dışı sayılır.
+    "began": "begin", "begun": "begin", "broke": "break", "broken": "break", "brought": "bring",
+    "built": "build", "caught": "catch", "chose": "choose", "cost": "cost", "cut": "cut",
+    "drew": "draw", "drove": "drive", "fell": "fall", "felt": "feel", "flew": "fly", "forgot": "forget",
+    "froze": "freeze", "grew": "grow", "held": "hold", "hid": "hide", "hit": "hit", "hung": "hang",
+    "kept": "keep", "lay": "lie", "led": "lead", "left": "leave", "lent": "lend", "let": "let",
+    "lost": "lose", "meant": "mean", "met": "meet", "paid": "pay", "put": "put", "rang": "ring",
+    "rode": "ride", "sang": "sing", "sent": "send", "shook": "shake", "shot": "shoot",
+    "shut": "shut", "slept": "sleep", "sold": "sell", "spent": "spend", "spoke": "speak",
+    "stood": "stand", "stole": "steal", "swam": "swim", "taught": "teach", "threw": "throw",
+    "understood": "understand", "woke": "wake", "wore": "wear", "won": "win",
+    "better": "good", "best": "good", "worse": "bad", "worst": "bad",
 }
 
 # "'s" yalnızca bu sözcüklerde "is"; diğerlerinde iyelik ekidir ve atılır.
@@ -45,7 +57,10 @@ NT_BASE = {"can": "can", "won": "will", "don": "do", "doesn": "does", "didn": "d
 OTHER_CONTR = {"m": "am", "re": "are", "ll": "will", "ve": "have", "d": "would"}
 
 SUFFIXES = (("ies", "y"), ("es", ""), ("s", ""), ("ied", "y"), ("ed", ""), ("ed", "e"),
-            ("ing", ""), ("ing", "e"), ("d", ""))
+            ("ing", ""), ("ing", "e"), ("d", ""),
+            # karşılaştırma ve üstünlük (A2: louder, happier, redder); en son denenir
+            ("ier", "y"), ("iest", "y"), ("er", ""), ("er", "e"), ("est", ""), ("est", "e"))
+DOUBLED_SUFFIXES = ("ing", "ed", "er", "est")   # çift ünsüz: running → run, redder → red, biggest → big
 
 
 @dataclass
@@ -170,7 +185,7 @@ def lemma(w: str, allowed: set[str], extra: set[str] = frozenset()) -> str:
             b = w[: -len(suf)] + rep
             if b in pool:
                 return b
-            if suf in ("ing", "ed") and len(b) > 2 and b[-1] == b[-2] and b[:-1] in pool:
+            if suf in DOUBLED_SUFFIXES and len(b) > 2 and b[-1] == b[-2] and b[:-1] in pool:
                 return b[:-1]
     return w
 
@@ -231,7 +246,10 @@ def coverage(texts: list[str], level: str = "A1", gloss: list[str] = (), proper:
             if w in pn or w in INTERJECTIONS:
                 continue
             cov.tokens += 1
-            lem = lemma(w, wl.allowed, gl)
+            # Önce yalnız listeye göre: sözlükteki bir öğrenci notu (ör. "going to", "sang") listedeki
+            # bir sözcüğü liste dışına itmesin.
+            base = lemma(w, wl.allowed)
+            lem = base if base in wl.allowed else lemma(w, wl.allowed, gl)
             if lem in wl.allowed:
                 cov.in_list += 1
             elif w in gl or lem in gl:

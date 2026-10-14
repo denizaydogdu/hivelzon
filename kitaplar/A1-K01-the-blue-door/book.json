@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "A1-K01",
+  "slug": "A1-K01-the-blue-door",
+  "level": "A1",
+  "genre": "mystery",
+  "title": "The Blue Door",
+  "titleTr": "Mavi Kapı",
+  "blurbTr": "Lina'nın yeni apartmanında, en üst katta numarası olmayan mavi bir kapı var. Herkes \"Orada kimse yaşamıyor\" diyor. Ama her gece saat dokuzda kapının altından sarı bir ışık sızıyor.",
+  "hookEn": "A light shines under the locked blue door.",
+  "contentVersion": 1,
+  "status": "DRAFT",
+  "aiGenerated": true,
+  "palette": {
+    "background": "#FFF8EC",
+    "surface": "#F6EBD3",
+    "text": "#1F2A48",
+    "accent": "#D94F3D",
+    "highlight": "#FFD45C"
+  },
+  "cover": "cover.png",
+  "properNouns": ["Lina", "Ada", "Tom"],
+  "narration": { "modelId": "eleven_v3", "speed": 0.9 },
+  "chapters": [
+    { "id": "c1", "title": "The New Home", "titleTr": "Yeni Ev",
+      "pages": [ { "id": "p01", "image": "p01.png" }, { "id": "p02", "image": "p02.png" },
+                 { "id": "p03", "image": "p03.png" }, { "id": "p04", "image": "p04.png" } ] },
+    { "id": "c2", "title": "Clues", "titleTr": "İpuçları",
+      "pages": [ { "id": "p05", "image": "p05.png" }, { "id": "p06", "image": "p06.png" },
+                 { "id": "p07", "image": "p07.png" }, { "id": "p08", "image": "p08.png" } ] },
+    { "id": "c3", "title": "The Light", "titleTr": "Işık",
+      "pages": [ { "id": "p09", "image": "p09.png" }, { "id": "p10", "image": "p10.png" },
+                 { "id": "p11", "image": "p11.png" } ] }
+  ]
+}

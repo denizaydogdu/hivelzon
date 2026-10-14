@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "id": "A2-K03",
+  "slug": "A2-K03-the-parrot-who-told-everything",
+  "level": "A2",
+  "genre": "humor",
+  "title": "The Parrot Who Told Everything",
+  "titleTr": "Her Şeyi Anlatan Papağan",
+  "blurbTr": "Max'in tek bir hedefi var: yeni bir gitar. Bunun için bir cumartesi ikizlere bakacak. Kolay olmalı. Ama evde bir papağan var ve o papağan her şeyi, ama her şeyi tekrarlıyor.",
+  "hookEn": "Max had one rule: never say anything near the parrot.",
+  "contentVersion": 1,
+  "status": "DRAFT",
+  "aiGenerated": true,
+  "palette": {
+    "background": "#FFF7E1",
+    "surface": "#F2E6C4",
+    "text": "#22303C",
+    "accent": "#2E9E5B",
+    "highlight": "#F4C430"
+  },
+  "cover": "cover.png",
+  "properNouns": ["Max", "Bell", "Bells", "Finn", "Nora", "Biscuit", "Captain"],
+  "narration": { "modelId": "eleven_v3", "speed": 0.95 },
+  "chapters": [
+    { "id": "c1", "title": "The Rules", "titleTr": "Kurallar",
+      "pages": [ { "id": "p01", "image": "p01.png" }, { "id": "p02", "image": "p02.png" },
+                 { "id": "p03", "image": "p03.png" }, { "id": "p04", "image": "p04.png" },
+                 { "id": "p05", "image": "p05.png" } ] },
+    { "id": "c2", "title": "Pancakes and Bubbles", "titleTr": "Krepler ve Köpükler",
+      "pages": [ { "id": "p06", "image": "p06.png" }, { "id": "p07", "image": "p07.png" },
+                 { "id": "p08", "image": "p08.png" }, { "id": "p09", "image": "p09.png" },
+                 { "id": "p10", "image": "p10.png" } ] },
+    { "id": "c3", "title": "Captain Speaks", "titleTr": "Kaptan Konuşuyor",
+      "pages": [ { "id": "p11", "image": "p11.png" }, { "id": "p12", "image": "p12.png" },
+                 { "id": "p13", "image": "p13.png" }, { "id": "p14", "image": "p14.png" } ] }
+  ]
+}
