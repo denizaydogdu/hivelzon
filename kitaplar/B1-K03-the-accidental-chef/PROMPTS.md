@@ -27,7 +27,7 @@ Kurallar: her ücretli üretimden **önce** `higgsfield generate cost` ile maliy
 - Priya dal'ı yapmaya karar verince Gus gülümseyip defterine yazıyor (p13); Bruno, Gus'un ona salı günü her şeyi anlattığını söylüyor ve Gus'un kaşığı kaybolmuş (p18).
 - Yaşlı hanım kırmızı ringa: Ellie onu Sessiz Çatal sanıyor (p13), ama o Priya'nın annesinin eski komşusu çıkıyor (p17).
 
-## Görsel planı (üretilmedi)
+## Görsel planı ve üretim kaydı (2026-10-14)
 
 > Kullanıcı kararı (2026-10-14, H-071): kalan kitaplarda resim yoğunluğu **kapak + bölüm başı**. Bu kitapta 6 görsel: `images/cover.png`, `images/p01.png`, `images/p05.png`, `images/p09.png`, `images/p13.png`, `images/p17.png` (git dışı; dosya adları `book.json` ile aynı, diğer sayfalar resimsiz ve palet renkli). Model: GPT Image 2.5, 3:4, ≈ 0,5 kr/görsel (dalga 1'de 1k medium ile doğrulandı); tahmini toplam ≈ 3 kr. **Her üretimden önce `higgsfield generate cost` ile maliyet gösterilir ve kullanıcı onayı alınır.** Bölüm başı görselleri kapak işi referans verilerek üretilir (karakter tutarlılığı).
 
@@ -54,6 +54,20 @@ Kurallar: her ücretli üretimden **önce** `higgsfield generate cost` ile maliy
 | p17.png | p17 (Bölüm 5, The Review) | In the hotel dining room by the big window, Kamala sits at a table with an empty bowl and holds Priya's hands across the table; Priya, still in her apron, is laughing and nearly crying; the sea is blue outside. |
 
 **Sürpriz kontrolü:** Sonun sürprizi, kimliği gizli yemek yazarının bulaşıkçı Gus olmasıdır. Hiçbir görselde Gus'un defterine yazdığı şey, gazete, eleştiri yazısı ya da Gus'un yazar olarak gösterilmesi yok. Kapakta Gus yok. Gus yalnızca p09'da arka planda, evyenin başında sakin bir bulaşıkçı olarak görünür; defter ya da kaşık vurgulanmaz. p17 Kamala ile Priya'nın sıcak anını gösterir; Kamala'nın annenin komşusu olduğu ayrıntısı metinde kalır. Gri şapkalı adam görsellerde gösterilmez.
+
+
+### Üretim kaydı
+
+| Dosya | Job id | Referans | Tarih (UTC) | Parametre | Kredi |
+|---|---|---|---|---|---|
+| cover.png | c216140b-1852-49af-8b12-76d9b722ff2e | — | 2026-10-14T15:53:58+00:00 | 3:4, medium, 1k | 0.5 |
+| p05.png | 43f73ff2-6b0e-468a-9945-6d3bddf26a2f | c216140b-1852-49af-8b12-76d9b722ff2e | 2026-10-14T15:56:23+00:00 | 3:4, medium, 1k | 0.5 |
+| p09.png | cbb06a33-8fe7-4113-8999-71eba7a6d5c0 | c216140b-1852-49af-8b12-76d9b722ff2e | 2026-10-14T15:56:23+00:00 | 3:4, medium, 1k | 0.5 |
+| p13.png | 04e67ab0-b17d-45e4-8d1c-b127882ffa34 | c216140b-1852-49af-8b12-76d9b722ff2e | 2026-10-14T15:56:25+00:00 | 3:4, medium, 1k | 0.5 |
+| p17.png | c4be0f2f-2527-45a5-98de-3d39c3e7faaf | c216140b-1852-49af-8b12-76d9b722ff2e | 2026-10-14T15:56:46+00:00 | 3:4, medium, 1k | 0.5 |
+| p01.png | 3fcee268-d973-452b-b80f-936a10018105 | c216140b-1852-49af-8b12-76d9b722ff2e | 2026-10-14T15:56:50+00:00 | 3:4, medium, 1k | 0.5 |
+
+**Toplam:** 3 kr. Tam istemler yerel `images/_jobs.json`'da (git dışı). **Editör değerlendirmesi:** karakter ve üslup tutarlı; görselde yazı yok; sürpriz ele verilmiyor.
 
 ## Seslendirme kayıtları (tts_book.py)
 

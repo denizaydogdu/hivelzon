@@ -25,9 +25,9 @@ Kurallar: her ücretli üretimden **önce** `higgsfield generate cost` ile maliy
 - Bayan Adeyemi yeşil notaları biliyor: "Have you practised the green music?" (p14); "that may depend on you", "bring your violin… and your best listening" (p15).
 - Hana'nın "I can't do it" cümlesi (p14) "tek başıma yapamam" anlamındadır; açıklama p17'de.
 
-## Görsel planı (üretilmedi)
+## Görsel planı ve üretim kaydı (2026-10-14)
 
-> **Henüz üretilmedi.** Kullanıcı kararı (2026-10-14, H-071/H-072): kalan kitaplarda resim yoğunluğu **kapak + bölüm başı**. Bu kitapta 5 görsel: `images/cover.png`, `images/p01.png`, `images/p06.png`, `images/p10.png`, `images/p15.png` (git dışı; dosya adları `book.json` ile aynı, diğer sayfalar resimsiz ve palet renkli). Model: GPT Image 2.5, 3:4, ≈ 0,5 kr/görsel (dalga 1'de 1k medium ile doğrulandı); tahmini toplam ≈ 2,5 kr. **Her üretimden önce `higgsfield generate cost` ile maliyet gösterilir ve kullanıcı onayı alınır.** Bölüm başı görselleri kapak işi referans verilerek üretilir (karakter tutarlılığı).
+> **Üretildi (2026-10-14).** Kullanıcı onayı: B1 metinleri ve görselleri ("sana onaylar verdim", 2026-10-14). GPT Image 2.5, 3:4, medium, 1k = 0,5 kr; bölüm başları kapak işi referans verilerek. Eski plan notu: Kullanıcı kararı (2026-10-14, H-071/H-072): kalan kitaplarda resim yoğunluğu **kapak + bölüm başı**. Bu kitapta 5 görsel: `images/cover.png`, `images/p01.png`, `images/p06.png`, `images/p10.png`, `images/p15.png` (git dışı; dosya adları `book.json` ile aynı, diğer sayfalar resimsiz ve palet renkli). Model: GPT Image 2.5, 3:4, ≈ 0,5 kr/görsel (dalga 1'de 1k medium ile doğrulandı); tahmini toplam ≈ 2,5 kr. **Her üretimden önce `higgsfield generate cost` ile maliyet gösterilir ve kullanıcı onayı alınır.** Bölüm başı görselleri kapak işi referans verilerek üretilir (karakter tutarlılığı).
 
 **Sabit stil öneki (her istemin başına):**
 `Soft pastel chalk illustration on warm toned paper, non-photorealistic, gentle smudged edges, visible chalk grain, quiet and intimate. Palette: burgundy velvet, warm violin brown, evening lilac, soft cream highlights, a little muted green. Mood: inward, warm, hopeful, a little nervous. Absolutely no text, letters, numbers, signs, logos or writing anywhere in the image; sheet music is drawn only as soft abstract lines without readable notes, phone screens and notebooks are blank or abstract. Consistent characters as described. Vertical 3:4.`
@@ -51,6 +51,19 @@ Kurallar: her ücretli üretimden **önce** `higgsfield generate cost` ile maliy
 | p15.png | p15 (Bölüm 4, Duet) | Concert evening: backstage near the stage door, Hana in a long dark blue dress stands very still, pale and holding her violin; through the half-open door the warm lights of the hall and the audience are visible as soft shapes. Noah is not in the picture. |
 
 **Sürpriz kontrolü:** Sonun sürprizi, solonun haftalar önce Bayan Adeyemi'nin onayıyla Noah'nın ikinci keman çizgisinden doğan bir düete çevrilmiş olması ve konserde Noah'nın öne çağrılmasıdır. Hiçbir görselde Noah ile Hana sahnede birlikte çalarken gösterilmez; kapakta Noah tek başınadır; p10'da Noah çalmaz, yalnızca dinler; p15'te Noah görünmez. İki renkli kalem notları ve yeşil nota kâğıdı hiçbir görselde yer almaz (yalnız metinde, resimsiz sayfalar p08, p13, p17).
+
+
+### Üretim kaydı
+
+| Dosya | Job id | Referans | Tarih (UTC) | Parametre | Kredi |
+|---|---|---|---|---|---|
+| cover.png | aeadca17-5b27-45f4-a0cb-d1f5e31e6a03 | — | 2026-10-14T15:54:38+00:00 | 3:4, medium, 1k | 0.5 |
+| p15.png | 20ee6fb6-a3dc-4773-8d94-62db2574f678 | aeadca17-5b27-45f4-a0cb-d1f5e31e6a03 | 2026-10-14T15:58:10+00:00 | 3:4, medium, 1k | 0.5 |
+| p10.png | 88d5da0b-c49e-46bd-b1f5-c35886788c36 | aeadca17-5b27-45f4-a0cb-d1f5e31e6a03 | 2026-10-14T15:58:10+00:00 | 3:4, medium, 1k | 0.5 |
+| p06.png | 917d98e6-f726-47ec-bd36-bf391ebe2ec9 | aeadca17-5b27-45f4-a0cb-d1f5e31e6a03 | 2026-10-14T15:58:11+00:00 | 3:4, medium, 1k | 0.5 |
+| p01.png | 92292597-58ac-4534-aed4-e4ad67c8e22e | aeadca17-5b27-45f4-a0cb-d1f5e31e6a03 | 2026-10-14T15:58:11+00:00 | 3:4, medium, 1k | 0.5 |
+
+**Toplam:** 2.5 kr. Tam istemler yerel `images/_jobs.json`'da (git dışı). **Editör değerlendirmesi:** karakter ve üslup tutarlı; görselde yazı yok; sürpriz ele verilmiyor.
 
 ## Seslendirme kayıtları (tts_book.py)
 

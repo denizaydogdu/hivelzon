@@ -28,9 +28,9 @@ Kurallar: her ücretli üretimden **önce** `higgsfield generate cost` ile maliy
 - Hasan Amca: "Eskiden bu kumsallar her yaz kaplumbağa izleriyle dolu olurdu"; kaplumbağaların neden sudan çıktığı sorusu cevapsız kalır (p07).
 - Sevgi Teyze kumsalda ışığı yasaklar: "If there are animals here, light might frighten them" (p12); izler sudan kumsalın yukarısına çıkar ve bir çukurda biter; çukurdan kum fışkırır (p12–p13).
 
-## Görsel planı (üretilmedi)
+## Görsel planı ve üretim kaydı (2026-10-14)
 
-> **Henüz üretilmedi.** Kullanıcı kararı (2026-10-14, H-071/H-072): kalan kitaplarda resim yoğunluğu **kapak + bölüm başı**. Bu kitapta 5 görsel: `images/cover.png`, `images/p01.png`, `images/p06.png`, `images/p10.png`, `images/p14.png` (git dışı; dosya adları `book.json` ile aynı, diğer sayfalar resimsiz ve palet renkli). Model: GPT Image 2.5, 3:4, ≈ 0,5 kr/görsel (dalga 1'de 1k medium ile doğrulandı); tahmini toplam ≈ 2,5 kr. **Her üretimden önce `higgsfield generate cost` ile maliyet gösterilir ve kullanıcı onayı alınır.** Bölüm başı görselleri kapak işi referans verilerek üretilir (karakter tutarlılığı).
+> **Üretildi (2026-10-14).** Kullanıcı onayı: B1 metinleri ve görselleri ("sana onaylar verdim", 2026-10-14). GPT Image 2.5, 3:4, medium, 1k = 0,5 kr; bölüm başları kapak işi referans verilerek. Eski plan notu: Kullanıcı kararı (2026-10-14, H-071/H-072): kalan kitaplarda resim yoğunluğu **kapak + bölüm başı**. Bu kitapta 5 görsel: `images/cover.png`, `images/p01.png`, `images/p06.png`, `images/p10.png`, `images/p14.png` (git dışı; dosya adları `book.json` ile aynı, diğer sayfalar resimsiz ve palet renkli). Model: GPT Image 2.5, 3:4, ≈ 0,5 kr/görsel (dalga 1'de 1k medium ile doğrulandı); tahmini toplam ≈ 2,5 kr. **Her üretimden önce `higgsfield generate cost` ile maliyet gösterilir ve kullanıcı onayı alınır.** Bölüm başı görselleri kapak işi referans verilerek üretilir (karakter tutarlılığı).
 
 **Sabit stil öneki (her istemin başına):**
 `Gouache adventure book illustration, non-photorealistic, soft opaque water-based paint with visible brush texture, wide open compositions with lots of sky and sea. Palette: Mediterranean turquoise, sand beige, pine green, warm sunset coral, deep evening blue. Mood: adventure, wonder and love of nature, warm and hopeful, never scary. South-west coast of Türkiye: small coves, red rocks, pine-covered hills, clear water. Absolutely no text, letters, numbers, signs, logos or writing anywhere in the image; computer screens and maps are drawn with abstract shapes and a simple dot only, notebooks are blank, the boat has no name painted on it. Consistent characters as described. Vertical 3:4.`
@@ -55,6 +55,19 @@ Kurallar: her ücretli üretimden **önce** `higgsfield generate cost` ile maliy
 | p14.png | p14 (Bölüm 4, Under the Sand) | Before dawn on the beach: Kerem, Aunt Sevgi and Uncle Hasan sit close together on the cool sand, seen from behind, wrapped in jackets, looking up the beach towards the dark grass at the foot of the hills; the sky over the hills just turning pink and orange; a big pale moon setting over the sea. No turtle, pit or tracks are visible. |
 
 **Sürpriz kontrolü:** Sonun sürprizi Pamuk'un dişi olması ve koyda yumurta bırakmasıdır; vericinin ilk yuvanın kumuna gömülmüş olması da sürprizin parçasıdır. Hiçbir görselde yumurta, yuva, kumdaki çukur, kaplumbağa izi ya da kumdan çıkan bir kaplumbağa gösterilmez; vericisiz bir kabuk da gösterilmez (p01'de verici kabuğun üstünde görünür). Kapak yalnızca yolculuğu ve gizemli koyu gösterir; Pamuk'u göstermez. p14 yalnızca bekleyen üç kişiyi ve şafağı gösterir; ne beklediklerini göstermez. Hiçbir görselde Pamuk'un cinsiyetine dair ipucu (kuyruk vurgusu) yoktur.
+
+
+### Üretim kaydı
+
+| Dosya | Job id | Referans | Tarih (UTC) | Parametre | Kredi |
+|---|---|---|---|---|---|
+| cover.png | 8b679030-c3a0-4bf0-ad3f-0466589b32a1 | — | 2026-10-14T15:53:39+00:00 | 3:4, medium, 1k | 0.5 |
+| p10.png | 30bbc856-2aa4-463b-84a7-823367f8794e | 8b679030-c3a0-4bf0-ad3f-0466589b32a1 | 2026-10-14T15:55:55+00:00 | 3:4, medium, 1k | 0.5 |
+| p01.png | ca0f6bfe-7f01-4b74-8207-fa9f07c0c578 | 8b679030-c3a0-4bf0-ad3f-0466589b32a1 | 2026-10-14T15:55:56+00:00 | 3:4, medium, 1k | 0.5 |
+| p14.png | 1d1b81ce-97dd-482e-97e8-d27063f17fbb | 8b679030-c3a0-4bf0-ad3f-0466589b32a1 | 2026-10-14T15:55:56+00:00 | 3:4, medium, 1k | 0.5 |
+| p06.png | 4cae2405-15a9-4514-a9e6-657c7407c1c0 | 8b679030-c3a0-4bf0-ad3f-0466589b32a1 | 2026-10-14T15:55:56+00:00 | 3:4, medium, 1k | 0.5 |
+
+**Toplam:** 2.5 kr. Tam istemler yerel `images/_jobs.json`'da (git dışı). **Editör değerlendirmesi:** karakter ve üslup tutarlı; görselde yazı yok; sürpriz ele verilmiyor.
 
 ## Seslendirme kayıtları (tts_book.py)
 

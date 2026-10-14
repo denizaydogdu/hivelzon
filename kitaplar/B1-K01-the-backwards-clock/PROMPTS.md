@@ -27,9 +27,9 @@ Kurallar: her ücretli üretimden **önce** `higgsfield generate cost` ile maliy
 - Kafedeki beş yaşlının hayaletten hiç endişe etmemesi, gri sakallı adamın kahvesine gülümsemesi (p03, p08); fotoğraftaki akordeon çalan genç adamın tanıdık yüzü (p10).
 - Marta'nın anlattığı dans, son otobüs ve yediyi çeyrek geçe (p06); her hafta bir saat daha erken duran saat (p08); fotoğraflarda hep 7.15'i gösteren saat ve "son dans, ağustosun son cumartesisi, bu yaz otuz yıl" yazısı (p09–p10).
 
-## Görsel planı (üretilmedi)
+## Görsel planı ve üretim kaydı (2026-10-14)
 
-> **Henüz üretilmedi.** Kullanıcı kararı (2026-10-14, H-071/H-072): kalan kitaplarda resim yoğunluğu **kapak + bölüm başı**. Bu kitapta 6 görsel: `images/cover.png`, `images/p01.png`, `images/p05.png`, `images/p09.png`, `images/p13.png`, `images/p17.png` (git dışı; dosya adları `book.json` ile aynı, diğer sayfalar resimsiz ve palet renkli). Model: GPT Image 2.5, 3:4, ≈ 0,5 kr/görsel (dalga 1'de 1k medium ile doğrulandı); tahmini toplam ≈ 3 kr. **Her üretimden önce `higgsfield generate cost` ile maliyet gösterilir ve kullanıcı onayı alınır.** Bölüm başı görselleri kapak işi referans verilerek üretilir (karakter tutarlılığı).
+> **Üretildi (2026-10-14).** Kullanıcı onayı: B1 metinleri ve görselleri ("sana onaylar verdim", 2026-10-14). GPT Image 2.5, 3:4, medium, 1k = 0,5 kr; bölüm başları kapak işi referans verilerek. Eski plan notu: Kullanıcı kararı (2026-10-14, H-071/H-072): kalan kitaplarda resim yoğunluğu **kapak + bölüm başı**. Bu kitapta 6 görsel: `images/cover.png`, `images/p01.png`, `images/p05.png`, `images/p09.png`, `images/p13.png`, `images/p17.png` (git dışı; dosya adları `book.json` ile aynı, diğer sayfalar resimsiz ve palet renkli). Model: GPT Image 2.5, 3:4, ≈ 0,5 kr/görsel (dalga 1'de 1k medium ile doğrulandı); tahmini toplam ≈ 3 kr. **Her üretimden önce `higgsfield generate cost` ile maliyet gösterilir ve kullanıcı onayı alınır.** Bölüm başı görselleri kapak işi referans verilerek üretilir (karakter tutarlılığı).
 
 **Sabit stil öneki (her istemin başına):**
 `Woodcut print combined with soft watercolour washes, non-photorealistic storybook illustration, visible carved lines and paper grain. Palette: brass yellow, fir green, deep night blue, warm cream paper; small brass gears and clock mechanisms as recurring details. Mood: curiosity, mystery and gentle nostalgia, never scary. A small fictional mountain town in summer. Clock faces have no numerals, only simple tick marks and two hands. Absolutely no text, letters, numbers, signs, logos or writing anywhere in the image; notebooks, photographs, posters and shop fronts are blank or drawn with abstract lines only. Consistent characters as described. Vertical 3:4.`
@@ -53,6 +53,20 @@ Kurallar: her ücretli üretimden **önce** `higgsfield generate cost` ile maliy
 | p17.png | p17 (Bölüm 5, Seven Fifteen) | The square at night full of townspeople under strings of warm lights and stars; everyone looks up at the tower clock, which shows a quarter past seven; Aziz stands at the tower door, smiling. |
 
 **Sürpriz kontrolü:** Sonun sürprizi, saati geri çevirenlerin Bayan Brandt ile kafedeki beş yaşlı (eski dans grubu) olmasıdır. Hiçbir görselde Bayan Brandt ya da yaşlılar kulede, merdivende, yağ kutusuyla, akordeon çantasıyla ya da dans ederken gösterilmez. p01'de Bayan Brandt yalnızca dükkânında çalışır; ayakları ve yeşil ayakkabıları kadraj dışındadır. p05'teki ayak izleri yalnızca küçük ve yıldız desenlidir; kimin olduğu belli değildir. p09'da fotoğrafın içeriği görünmez. p13'te kulenin içindeki gölgeler ve gelen kişiler gösterilmez. p17 yalnızca meydanın kalabalığını ve 7.15'i gösteren saati gösterir; dans, çalgılar ve yaşlılar görünmez. Kapak yalnızca gizemi (gece, kule, geri dönen kollar) gösterir.
+
+
+### Üretim kaydı
+
+| Dosya | Job id | Referans | Tarih (UTC) | Parametre | Kredi |
+|---|---|---|---|---|---|
+| cover.png | dbbf69f9-44dc-43fb-8426-69945716ea62 | — | 2026-10-14T15:53:19+00:00 | 3:4, medium, 1k | 0.5 |
+| p05.png | 952a016a-2376-4aea-86bb-bbc75644d5b4 | dbbf69f9-44dc-43fb-8426-69945716ea62 | 2026-10-14T15:55:01+00:00 | 3:4, medium, 1k | 0.5 |
+| p01.png | 55e2cd48-8d72-41de-ae27-a323b462d819 | dbbf69f9-44dc-43fb-8426-69945716ea62 | 2026-10-14T15:55:04+00:00 | 3:4, medium, 1k | 0.5 |
+| p13.png | 5e461056-61d9-409c-9331-e34e72dd82ef | dbbf69f9-44dc-43fb-8426-69945716ea62 | 2026-10-14T15:55:06+00:00 | 3:4, medium, 1k | 0.5 |
+| p09.png | 7b0be9c0-51ee-4704-991f-f0f4fac87c2a | dbbf69f9-44dc-43fb-8426-69945716ea62 | 2026-10-14T15:55:06+00:00 | 3:4, medium, 1k | 0.5 |
+| p17.png | d8c02e02-f566-4314-a31b-27e8aae11075 | dbbf69f9-44dc-43fb-8426-69945716ea62 | 2026-10-14T15:55:30+00:00 | 3:4, medium, 1k | 0.5 |
+
+**Toplam:** 3 kr. Tam istemler yerel `images/_jobs.json`'da (git dışı). **Editör değerlendirmesi:** karakter ve üslup tutarlı; görselde yazı yok; sürpriz ele verilmiyor.
 
 ## Seslendirme kayıtları (tts_book.py)
 

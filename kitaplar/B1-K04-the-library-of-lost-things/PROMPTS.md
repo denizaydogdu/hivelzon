@@ -27,9 +27,9 @@ Kurallar: her ücretli üretimden **önce** `higgsfield generate cost` ile maliy
 - Kütüphanenin kuralı: alan, yerine bir şey bırakır (p07, p12).
 - Defter iki kat kalınlaşmış; sayfalar arasından renkli kâğıtlar, kurumuş çiçek, tüy, yapıştırılmış fazladan sayfalar çıkıyor (p16).
 
-## Görsel planı (üretilmedi)
+## Görsel planı ve üretim kaydı (2026-10-14)
 
-> **Henüz üretilmedi.** Kullanıcı kararı (2026-10-14): kalan kitaplarda resim yoğunluğu **kapak + bölüm başı**. Bu kitapta 6 görsel: `images/cover.png`, `images/p01.png`, `images/p05.png`, `images/p09.png`, `images/p13.png`, `images/p17.png` (git dışı; dosya adları `book.json` ile aynı, diğer sayfalar resimsiz ve palet renkli). Model: GPT Image 2.5, 3:4, ≈ 0,5 kr/görsel (dalga 1'de 1k medium ile doğrulandı); tahmini toplam ≈ 3 kr. **Her üretimden önce `higgsfield generate cost` ile maliyet gösterilir ve kullanıcı onayı alınır.** Bölüm başı görselleri kapak işi referans verilerek üretilir (karakter tutarlılığı).
+> **Üretildi (2026-10-14).** Kullanıcı onayı: B1 metinleri ve görselleri ("sana onaylar verdim", 2026-10-14). GPT Image 2.5, 3:4, medium, 1k = 0,5 kr; bölüm başları kapak işi referans verilerek. Eski plan notu: Kullanıcı kararı (2026-10-14): kalan kitaplarda resim yoğunluğu **kapak + bölüm başı**. Bu kitapta 6 görsel: `images/cover.png`, `images/p01.png`, `images/p05.png`, `images/p09.png`, `images/p13.png`, `images/p17.png` (git dışı; dosya adları `book.json` ile aynı, diğer sayfalar resimsiz ve palet renkli). Model: GPT Image 2.5, 3:4, ≈ 0,5 kr/görsel (dalga 1'de 1k medium ile doğrulandı); tahmini toplam ≈ 3 kr. **Her üretimden önce `higgsfield generate cost` ile maliyet gösterilir ve kullanıcı onayı alınır.** Bölüm başı görselleri kapak işi referans verilerek üretilir (karakter tutarlılığı).
 
 **Sabit stil öneki (her istemin başına):**
 `Layered paper-cut illustration, non-photorealistic, several layers of cut paper with soft shadows between them, gentle depth, slightly dusty and magical. Palette: ink blue, old-paper yellow and cream, with bright touches of many-coloured umbrellas (red, yellow, teal) and a warm orange highlight. Mood: calm, magical, a little funny, never scary. Absolutely no text, letters, numbers, signs, logos or writing anywhere in the image; shelf labels and drawer cards are small symbols only (a key, a cup, a moon, a hand); clock faces have no numbers, only lines; notebook pages are blank or show simple abstract shapes. Consistent characters as described. Vertical 3:4.`
@@ -53,6 +53,20 @@ Kurallar: her ücretli üretimden **önce** `higgsfield generate cost` ile maliy
 | p17.png | p17 (Bölüm 5, The Most Borrowed Book) | Ines sits on the floor of the library holding the closed, very thick green notebook to her chest with both arms; small pieces of coloured paper and a feather stick out from between its pages; Mr Orrin smiles at her over his glasses. |
 
 **Sürpriz kontrolü:** Sonun sürprizi, defterin kütüphanenin en çok ödünç alınan eşyası olması ve her ödünç alanın Ines'in resimlerine bir cevap çizmesidir. Hiçbir görselde defterin açık sayfaları, eklenmiş çizimler, başka insanların defteri elinde tutması ya da kuyruk hâlinde ödünç alanlar gösterilmez. Kapak yalnız kapıyı ve kütüphanenin büyüsünü gösterir. p09'da Bay Pell'in elinde defter değil harita vardır. p17'de defter kapalıdır; yalnızca kalınlığı ve aradan çıkan kâğıtlar (metinde p16'da zaten anlatılan) görünür.
+
+
+### Üretim kaydı
+
+| Dosya | Job id | Referans | Tarih (UTC) | Parametre | Kredi |
+|---|---|---|---|---|---|
+| cover.png | 82e3e476-37a2-4a8b-8a5e-8e4a8f42e61b | — | 2026-10-14T15:54:21+00:00 | 3:4, medium, 1k | 0.5 |
+| p05.png | c24bf9e5-f6e7-4faa-8caa-cf1e41413ebd | 82e3e476-37a2-4a8b-8a5e-8e4a8f42e61b | 2026-10-14T15:57:16+00:00 | 3:4, medium, 1k | 0.5 |
+| p13.png | d0f646e6-316e-4eaa-8849-70b6f79d5c54 | 82e3e476-37a2-4a8b-8a5e-8e4a8f42e61b | 2026-10-14T15:57:17+00:00 | 3:4, medium, 1k | 0.5 |
+| p01.png | c746b2ff-d062-4356-b47b-4f390b2d7a71 | 82e3e476-37a2-4a8b-8a5e-8e4a8f42e61b | 2026-10-14T15:57:18+00:00 | 3:4, medium, 1k | 0.5 |
+| p09.png | ad10e8da-e6fc-4cd8-8c74-14ca95054bfd | 82e3e476-37a2-4a8b-8a5e-8e4a8f42e61b | 2026-10-14T15:57:34+00:00 | 3:4, medium, 1k | 0.5 |
+| p17.png | ba8fd5b7-d56a-4833-aec2-e90f68a934f3 | 82e3e476-37a2-4a8b-8a5e-8e4a8f42e61b | 2026-10-14T15:57:44+00:00 | 3:4, medium, 1k | 0.5 |
+
+**Toplam:** 3 kr. Tam istemler yerel `images/_jobs.json`'da (git dışı). **Editör değerlendirmesi:** karakter ve üslup tutarlı; görselde yazı yok; sürpriz ele verilmiyor.
 
 ## Seslendirme kayıtları (tts_book.py)
 
