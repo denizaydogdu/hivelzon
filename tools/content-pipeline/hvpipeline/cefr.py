@@ -14,6 +14,12 @@ from functools import lru_cache
 from pathlib import Path
 
 from . import DATA_DIR
+from .sentsplit import LETTER, no_break
+
+# Unicode harfler (aksanlı Latin ve Türkçe dahil: Lucía, Zoë, Şebnem); H-073.
+_TOKEN_RE = re.compile(rf"(?<!\d){LETTER}+(?:-{LETTER}+)*(?:'{LETTER}+)?")
+_WORD_RE = re.compile(rf"(?:{LETTER}|')+")
+_BREAK_RE = re.compile(r"[.!?…]+")
 
 LEVELS = ["A1", "A2", "B1", "B2", "C1", "C2"]
 CEFRJ_LEVELS = ["A1", "A2", "B1", "B2"]          # CEFR-J v1.6'nın kapsadığı seviyeler
@@ -158,7 +164,7 @@ def tokens(text: str) -> list[str]:
     t = re.sub(r"\b\w+…|…\w+\b", " ", t)
     low = t.replace("İ", "I").lower()
     out: list[str] = []
-    for w in re.findall(r"[a-zçğıöşüéè]+(?:-[a-zçğıöşüéè]+)*(?:'[a-z]+)?", low):
+    for w in _TOKEN_RE.findall(low):
         if w == "o'clock":
             out.append("oclock")
             continue
@@ -202,10 +208,20 @@ def lemma(w: str, allowed: set[str], extra: set[str] = frozenset()) -> str:
 
 
 def sentences(text: str) -> list[list[str]]:
+    """Cümle başına sözcükler (cümle uzunluğu ve kelime sayısı). Her `. ! ? …` cümleyi böler; yalnız
+    kısaltma, sayı kısaltması ve baş harf noktası (Mr. / No. 3 / A. Serra; sentsplit) bölmez (H-073)."""
     t = normalize(text)
     out = []
-    for sent in re.split(r"[.!?…]+", t):
-        words = re.findall(r"[A-Za-zÇĞİÖŞÜçğıöşüé']+", sent)
+    parts, start = [], 0
+    for m in _BREAK_RE.finditer(t):
+        after = t[m.end():]
+        if after[:1].isspace() and no_break(t[:m.start()], m.group(), after.lstrip(), load_proper_nouns()):
+            continue
+        parts.append(t[start:m.start()])
+        start = m.end()
+    parts.append(t[start:])
+    for sent in parts:
+        words = _WORD_RE.findall(sent)
         if words:
             out.append(words)
     return out

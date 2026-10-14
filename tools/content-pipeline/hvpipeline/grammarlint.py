@@ -24,6 +24,7 @@ from pathlib import Path
 
 from .align import Alignment, AlignmentMismatch, sentence_timings
 from .cefr import LEVELS, NO_LIST_MSG, coverage, has_extra_list
+from .sentsplit import name_keys
 from .graph import Issue, schema_errors
 from .lesson import (BLANK, CARD_TYPES, LESSON_FILE, CARDS_FILE, PROMPTS_FILE, REQUIRED_CARDS, REPEATABLE_CARDS,
                      REVIEW_REQUIRED, RIGHTS_FILE, ID_RE, Lesson, LessonError, english_in_turkish, known_lessons,
@@ -239,9 +240,7 @@ def _check_language(lesson: Lesson) -> tuple[list[Issue], dict | None]:
     if not has_extra_list(level):
         return [Issue("warning", "coverage", f"{level}: Octanove C1/C2 {NO_LIST_MSG}")], None
     max_words = MAX_SENTENCE_WORDS.get(level, 10_000)
-    proper = set()
-    for p in lesson.meta.get("properNouns", []) or []:
-        proper.update(w.lower() for w in re.findall(r"[A-Za-z']+", p))
+    proper = name_keys(lesson.meta.get("properNouns", []) or [])
     cov = coverage(texts, level, gloss=lesson.meta.get("glossary", []) or [], proper=proper, max_words=max_words)
     issues, rep = coverage_issues(cov, level, max_words)
     rep["texts"] = len(texts)
