@@ -1,0 +1,232 @@
+{
+  "kurguVersion": 2,
+  "contentId": "A1-007",
+  "source": "H-085: story.en.md (H-032 onaylı diyalog) düğümlere bölündü; görseller B7-01…B7-14. Sam'in açılış repliği B6 bayrağına (ask_style) göre kart varyantıdır (kart varyantı ses taşımaz; metin kartı). Yeniden kullanılan sesler: Alex 'Who is she?' = B5 b5_18_alex; kayıt = B6 b6_20_voice + b6_21_voice (aynı kayıt). Dil laboratuvarı kartı (he/she, has) Claude yazdı; editör onayı bekler.",
+  "start": "title",
+  "externalFlags": [
+    {"episode": "A1-006", "id": "ask_style", "values": ["slowly", "again"], "default": "slowly"}
+  ],
+  "gate": {
+    "comprehension": ["t-gorev"],
+    "targetPhrase": ["k1", "k2"],
+    "activeTask": ["t-kanit"]
+  },
+  "nodes": [
+    {
+      "id": "title", "type": "title",
+      "next": "recap"
+    },
+    {
+      "id": "recap", "type": "recap",
+      "shots": [{"image": "../A1-006-the-recording/images/B6-13-harita-fener.png", "len": 3.2, "move": [1.0, 1.06, 0.5, 0.5, 0.45, 0.6],
+                 "signs": [{"style": "caption", "lines": [{"text": "Lumen Point is the lighthouse. Not the hill."}], "start": 0.3, "end": 3.2}]}],
+      "next": "c-sam"
+    },
+    {
+      "id": "c-sam", "type": "card", "kind": "line", "scene": "Pazar sabahı", "checkpoint": true, "advance": "tap",
+      "background": "images/B7-01-limana-yuruyus.png",
+      "lines": [{"speaker": "SAM", "text": "\"Slowly, please.\" Yes, yes. I know!", "lang": "en"}],
+      "variants": [
+        {"when": {"episode": "A1-006", "flag": "ask_style", "value": "slowly"},
+         "lines": [{"speaker": "SAM", "text": "\"Slowly, please.\" Yes, yes. I know!", "lang": "en"}]},
+        {"when": {"episode": "A1-006", "flag": "ask_style", "value": "again"},
+         "lines": [{"speaker": "SAM", "text": "\"Again, please.\" OK, OK. I know!", "lang": "en"}]}
+      ],
+      "next": "s02"
+    },
+    {
+      "id": "s02", "type": "segment", "scene": "Sahne 1: Limanda Jordan", "checkpoint": true,
+      "shots": [
+        {"image": "images/B7-02-jordan-paket.png", "audio": ["b7_01_jordan", "b7_02_maya"], "aoff": 0.8, "move": [1.0, 1.08, 0.5, 0.5, 0.5, 0.45]},
+        {"image": "images/B7-02-jordan-paket.png", "audio": ["b7_03_sam"], "move": [1.08, 1.14, 0.5, 0.45, 0.6, 0.45]},
+        {"image": "images/B7-03-k1-pov-jordan.png", "audio": ["b7_04_jordan"], "move": [1.0, 1.06, 0.5, 0.5, 0.45, 0.42]}
+      ],
+      "next": "k1"
+    },
+    {
+      "id": "k1", "type": "decision", "skill": "spoken_interaction", "cefr": "A1",
+      "prompt": {"tr": "Kadının görünüşünü sor."},
+      "cue": {"speaker": "JORDAN", "text": "I don't know her name. Helen, I think."},
+      "pov": "POV: Jordan'a bakış; müzik kısılır.",
+      "background": "images/B7-03-k1-pov-jordan.png",
+      "targetPhrase": "What does she look like?",
+      "options": [
+        {"id": "a", "text": "What does she look like?", "correct": true, "audio": "b7_05_alex", "next": "k1-ok"},
+        {"id": "b", "text": "How is she?", "correct": false, "audio": "b7_06_alex", "next": "r-k1-b"}
+      ],
+      "hints": [
+        {"level": 1, "kind": "keyword", "tr": "Görünüş → look like."},
+        {"level": 2, "kind": "pattern", "tr": "What does she … like?"},
+        {"level": 3, "kind": "explanation", "tr": "How is she? \"O nasıl, iyi mi?\" demek. Görünüşü sormak için böyle de söyleyebilirsin: \"What does she look like?\""}
+      ]
+    },
+    {
+      "id": "r-k1-b", "type": "reaction",
+      "shots": [{"image": "images/B7-03-k1-pov-jordan.png", "audio": ["b7_06_alex", "b7_07_jordan"], "move": [1.06, 1.0, 0.5, 0.5, 0.45, 0.45]}],
+      "bubble": {"speaker": "HI", "lang": "tr", "text": "How is she? \"O nasıl, iyi mi?\" demek. Görünüşü sormak için böyle de söyleyebilirsin: \"What does she look like?\"", "speechTr": "{How is she?} O nasıl, iyi mi demek. Görünüşü sormak için böyle de söyleyebilirsin: {What does she look like?}", "audio": {"id": "tr_r-k1-b", "speaker": "HI"}},
+      "next": "k1"
+    },
+    {
+      "id": "k1-ok", "type": "segment",
+      "shots": [
+        {"image": "images/B7-03-k1-pov-jordan.png", "audio": ["b7_05_alex"], "aoff": 0.4, "move": [1.0, 1.05, 0.5, 0.5, 0.45, 0.45]},
+        {"image": "images/B7-04-jordan-tarif.png", "audio": ["b7_08_jordan", "b7_09_jordan"], "move": [1.0, 1.08, 0.5, 0.45, 0.5, 0.5]},
+        {"image": "images/B7-04-jordan-tarif.png", "audio": ["b7_10_maya", "b7_11_jordan"], "move": [1.08, 1.14, 0.5, 0.5, 0.6, 0.45]},
+        {"image": "images/B7-05-jordan-bilmiyorum.png", "audio": ["b7_12_alex", "b7_13_jordan"], "move": [1.0, 1.08, 0.5, 0.5, 0.45, 0.45]}
+      ],
+      "next": "s03"
+    },
+    {
+      "id": "s03", "type": "segment", "scene": "Sahne 2: Tide & Pages", "checkpoint": true,
+      "shots": [
+        {"image": "images/B7-06-brooks-raf.png", "audio": ["b7_14_mrs", "b7_15_mrs"], "aoff": 0.8, "move": [1.0, 1.08, 0.5, 0.5, 0.5, 0.45]},
+        {"image": "images/B7-07-brooks-hatirlar.png", "audio": ["b7_16_mrs"], "move": [1.0, 1.06, 0.5, 0.45, 0.5, 0.42]},
+        {"image": "images/B7-08-ani-yasli-kadin.png", "audio": ["b7_17_mrs", "b7_18_mrs"], "move": [1.0, 1.1, 0.5, 0.5, 0.5, 0.45]},
+        {"image": "images/B7-06-brooks-raf.png", "audio": [{"id": "b5_18_alex", "path": "../A1-005-too-late/audio/b5_18_alex"}, "b7_20_mrs"], "move": [1.08, 1.14, 0.5, 0.5, 0.45, 0.45]}
+      ],
+      "next": "k2"
+    },
+    {
+      "id": "k2", "type": "decision", "skill": "spoken_interaction", "cefr": "A1",
+      "prompt": {"tr": "Mrs Brooks ne dedi? Sam'e anlat."},
+      "cue": {"speaker": "MRS BROOKS", "text": "An old lady with a red coat."},
+      "pov": "POV: Sam tezgâha yaslanmış, merakla bekliyor.",
+      "background": "images/B7-09-k2-pov-sam.png",
+      "targetPhrase": "She has white hair.",
+      "options": [
+        {"id": "a", "text": "She has white hair.", "correct": true, "audio": "b7_21_alex", "next": "k2-ok"},
+        {"id": "b", "text": "He has white hair.", "correct": false, "audio": "b7_22_alex", "next": "r-k2-b"}
+      ],
+      "hints": [
+        {"level": 1, "kind": "keyword", "tr": "Kadın → she. Erkek → he."},
+        {"level": 2, "kind": "pattern", "tr": "She has … hair."},
+        {"level": 3, "kind": "explanation", "tr": "Türkçede \"o\" hem kadın hem erkek için. İngilizcede kadın için she, erkek için he. Böyle de söyleyebilirsin: \"She has white hair.\""}
+      ]
+    },
+    {
+      "id": "r-k2-b", "type": "reaction",
+      "shots": [{"image": "images/B7-09-k2-pov-sam.png", "audio": ["b7_22_alex", "b7_23_sam"], "move": [1.06, 1.0, 0.5, 0.5, 0.45, 0.45]}],
+      "bubble": {"speaker": "HI", "lang": "tr", "text": "Türkçede \"o\" hem kadın hem erkek için. İngilizcede kadın için she, erkek için he. Böyle de söyleyebilirsin: \"She has white hair.\"", "speechTr": "Türkçede o hem kadın hem erkek için. İngilizcede kadın için {she}, erkek için {he}. Böyle de söyleyebilirsin: {She has white hair.}", "audio": {"id": "tr_r-k2-b", "speaker": "HI"}},
+      "next": "k2"
+    },
+    {
+      "id": "k2-ok", "type": "segment",
+      "shots": [
+        {"image": "images/B7-09-k2-pov-sam.png", "audio": ["b7_21_alex"], "aoff": 0.4, "move": [1.0, 1.05, 0.5, 0.5, 0.45, 0.45]},
+        {"image": "images/B7-09-k2-pov-sam.png", "audio": ["b7_24_sam"], "move": [1.05, 1.1, 0.5, 0.45, 0.5, 0.42]}
+      ],
+      "next": "s04"
+    },
+    {
+      "id": "s04", "type": "segment", "scene": "Sahne 3: Kayıt ve itiraf", "checkpoint": true,
+      "shots": [
+        {"image": "images/B7-10-jordan-vitrin.png", "len": 2.2, "move": [1.0, 1.06, 0.5, 0.5, 0.5, 0.45]},
+        {"image": "images/B7-10-jordan-vitrin.png", "audio": [{"id": "b6_20_voice", "path": "../A1-006-the-recording/audio/b6_20_voice", "radio": true}, {"id": "b6_21_voice", "path": "../A1-006-the-recording/audio/b6_21_voice", "radio": true}], "move": [1.06, 1.12, 0.5, 0.55, 0.45, 0.55]}
+      ],
+      "next": "k3"
+    },
+    {
+      "id": "k3", "type": "decision", "skill": "listening", "cefr": "A1",
+      "prompt": {"tr": "Kayıtla uyumlu olanı seç."},
+      "cue": {"speaker": "VOICE", "text": "I'm at Lumen Point on Saturdays."},
+      "pov": "POV: Alex'in telefonunda kayıt; Jordan dinliyor.",
+      "background": "images/B7-10-jordan-vitrin.png",
+      "options": [
+        {"id": "a", "text": "E. Lumen Point. Saturdays.", "correct": true, "next": "k3-ok"},
+        {"id": "b", "text": "Helen. The hill café.", "correct": false, "next": "r-k3-b"}
+      ],
+      "hints": [
+        {"level": 1, "kind": "keyword", "tr": "Kayıttaki harf ve yer."},
+        {"level": 2, "kind": "pattern", "tr": "I'm at … on Saturdays. … E."},
+        {"level": 3, "kind": "explanation", "tr": "Kaydı bir kez daha dinle. Hangi harfi ve hangi yeri duyuyorsun?"}
+      ]
+    },
+    {
+      "id": "r-k3-b", "type": "reaction",
+      "shots": [{"image": "images/B7-10-jordan-vitrin.png", "audio": [{"id": "b6_20_voice", "path": "../A1-006-the-recording/audio/b6_20_voice", "radio": true}, {"id": "b6_21_voice", "path": "../A1-006-the-recording/audio/b6_21_voice", "radio": true}], "move": [1.06, 1.0, 0.5, 0.55, 0.45, 0.55]}],
+      "bubble": {"speaker": "HI", "lang": "tr", "text": "Kaydı bir kez daha dinle. Hangi harfi ve hangi yeri duyuyorsun?", "audio": {"id": "tr_r-k3-b", "speaker": "HI"}},
+      "next": "k3"
+    },
+    {
+      "id": "k3-ok", "type": "segment",
+      "shots": [
+        {"image": "images/B7-10-jordan-vitrin.png", "audio": ["b7_26_alex"], "aoff": 0.4, "move": [1.0, 1.06, 0.5, 0.5, 0.5, 0.45]},
+        {"image": "images/B7-11-jordan-itiraf.png", "audio": ["b7_27_jordan", "b7_28_jordan"], "move": [1.0, 1.08, 0.5, 0.45, 0.5, 0.42]},
+        {"image": "images/B7-11-jordan-itiraf.png", "audio": ["b7_29_maya", "b7_30_jordan"], "move": [1.08, 1.14, 0.5, 0.42, 0.5, 0.45]}
+      ],
+      "next": "c-taniklar"
+    },
+    {
+      "id": "c-taniklar", "type": "card", "kind": "note", "scene": "Görev: Çelişkileri ayır", "checkpoint": true, "advance": "tap",
+      "background": "images/B7-12-uc-tanik.png",
+      "lines": [{"speaker": "JORDAN", "text": "She is tall. She has short hair. She has a blue coat.", "lang": "en"},
+                {"speaker": "MRS BROOKS", "text": "She has white hair. She can't walk fast.", "lang": "en"},
+                {"speaker": "SAM", "text": "Listen. Her voice is old.", "lang": "en"}],
+      "next": "t-gorev"
+    },
+    {
+      "id": "t-gorev", "type": "task", "kind": "choice", "role": "comprehension", "skill": "reading", "cefr": "A1",
+      "prompt": {"tr": "Üç tanığı karşılaştır. Doğru tarifi kur."},
+      "background": "images/B7-12-uc-tanik.png",
+      "items": [
+        {"id": "i1", "stem": "She is ___.", "options": [
+          {"id": "a", "text": "old", "correct": true},
+          {"id": "b", "text": "young", "correct": false}]},
+        {"id": "i2", "stem": "She has ___ hair.", "options": [
+          {"id": "a", "text": "white", "correct": true},
+          {"id": "b", "text": "short", "correct": false}]},
+        {"id": "i3", "stem": "She has a ___ coat.", "options": [
+          {"id": "a", "text": "red", "correct": true},
+          {"id": "b", "text": "blue", "correct": false}]}
+      ],
+      "feedback": {"wrong": {"speaker": "HI", "lang": "tr", "text": "Jordan karanlıkta iyi göremedi. Maya'nın annesine, Sam'e ve kayda güven.", "audio": {"id": "tr_t-gorev", "speaker": "HI"}}},
+      "result": [{"text": "She is old. She has white hair. She has a red coat.", "lang": "en", "style": "highlight"}],
+      "next": "h-lab1"
+    },
+    {
+      "id": "h-lab1", "type": "card", "kind": "hi", "scene": "Dil laboratuvarı", "checkpoint": true, "advance": "tap",
+      "background": "images/B7-08-ani-yasli-kadin.png",
+      "lines": [{"speaker": "HI", "text": "Kadın için she, erkek için he. Bir de have: I have, you have, ama he has, she has. She has white hair.", "lang": "tr"}],
+      "speechTr": "Kadın için {she}, erkek için {he}. Bir de {have}: {I have, you have}, ama {he has, she has.} {She has white hair.}",
+      "next": "t-kanit", "audio": {"id": "tr_h-lab1", "speaker": "HI"}
+    },
+    {
+      "id": "t-kanit", "type": "task", "kind": "choice", "role": "evidence", "skill": "reading", "cefr": "A1",
+      "prompt": {"tr": "Hi sana bir resim gösteriyor. Doğru cümleyi seç."},
+      "context": "Yeni bağlam: yeni bir karakterin resmi",
+      "background": "images/B7-13-uzun-adam.png",
+      "items": [
+        {"id": "i1", "stem": "Look at the picture.", "options": [
+          {"id": "a", "text": "He is tall. He has short black hair.", "correct": true},
+          {"id": "b", "text": "She is tall. She has long hair.", "correct": false}]}
+      ],
+      "feedback": {"wrong": {"speaker": "HI", "lang": "tr", "text": "Resimde bir erkek var. Erkek için he.", "speechTr": "Resimde bir erkek var. Erkek için {he}.", "audio": {"id": "tr_t-kanit", "speaker": "HI"}}},
+      "next": "s05"
+    },
+    {
+      "id": "s05", "type": "segment", "scene": "Sahne 4: Yeni soru", "checkpoint": true,
+      "shots": [
+        {"image": "images/B7-14-maya-masa.png", "audio": ["b7_31_alex", "b7_32_maya"], "aoff": 0.8, "move": [1.0, 1.08, 0.5, 0.6, 0.5, 0.55]},
+        {"image": "images/B7-14-maya-masa.png", "audio": ["b7_33_sam", "b7_34_sam"], "move": [1.08, 1.16, 0.5, 0.4, 0.5, 0.35]}
+      ],
+      "next": "c-clues"
+    },
+    {
+      "id": "c-clues", "type": "card", "kind": "clue", "advance": "tap", "clueIds": ["C11"], "answers": ["Q6"],
+      "lines": [{"text": "İpucu panosu", "lang": "tr", "style": "heading"},
+                {"text": "C11 · Tarif kartı (E.): white hair, red coat; yaşlı, hızlı yürüyemiyor", "lang": "tr"},
+                {"text": "Q6 kapandı: Kayıt doğru (Lumen Point, E.). Jordan karanlıkta yanlış görmüş ve duymuş.", "lang": "tr"}],
+      "speechTr": "İpucu panosu. Tarif kartı: {white hair, red coat.} Yaşlı bir kadın, hızlı yürüyemiyor. Altıncı soru kapandı: kayıt doğru. Jordan karanlıkta yanlış görmüş ve duymuş.",
+      "next": "c-oq", "audio": {"id": "tr_c-clues", "speaker": "ANLATICI (TR)"}
+    },
+    {
+      "id": "c-oq", "type": "card", "kind": "openQuestion", "advance": "tap", "questionId": "Q7",
+      "background": "images/B7-14-maya-masa.png",
+      "lines": [{"text": "AÇIK SORU", "lang": "tr", "style": "caption"},
+                {"text": "Sinyal gerçekten nereden geliyor?", "lang": "tr", "style": "heading"},
+                {"text": "Bölüm 8: The First Reveal", "lang": "en", "style": "caption"}],
+      "speechTr": "Açık soru: Sinyal gerçekten nereden geliyor?",
+      "next": null, "audio": {"id": "tr_c-oq", "speaker": "ANLATICI (TR)"}
+    }
+  ]
+}

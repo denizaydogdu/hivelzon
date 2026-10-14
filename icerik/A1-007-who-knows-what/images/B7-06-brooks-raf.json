@@ -1,0 +1,56 @@
+[
+  {
+    "created_at": "2026-10-14T17:16:32.914554Z",
+    "display_name": "GPT Image 2.5",
+    "id": "0365e848-7bf2-430e-b3cd-05cfdef74e07",
+    "job_type": "gpt_image_2_5",
+    "min_result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261014_171632_0365e848-7bf2-430e-b3cd-05cfdef74e07_min.webp",
+    "params": {
+      "aspect_ratio": "9:16",
+      "height": 2688,
+      "medias": [
+        {
+          "data": {
+            "id": "57542708-ccdc-4b07-a8e7-a1f5ab17f965",
+            "type": "image_job",
+            "url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261014_171133_57542708-ccdc-4b07-a8e7-a1f5ab17f965.png"
+          },
+          "role": "image"
+        },
+        {
+          "data": {
+            "id": "663ea0fe-3df5-4cea-ba8c-e08c80e48a96",
+            "type": "media_input",
+            "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/663ea0fe-3df5-4cea-ba8c-e08c80e48a96.png"
+          },
+          "role": "image"
+        },
+        {
+          "data": {
+            "id": "6db4fa91-a3ff-4587-9b02-43a480ecb45a",
+            "type": "media_input",
+            "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/6db4fa91-a3ff-4587-9b02-43a480ecb45a.png"
+          },
+          "role": "image"
+        },
+        {
+          "data": {
+            "id": "51fc6157-b427-457f-ac8d-8e6c2b44dd12",
+            "type": "image_job",
+            "url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261011_163601_51fc6157-b427-457f-ac8d-8e6c2b44dd12.png"
+          },
+          "role": "image"
+        }
+      ],
+      "model": "flare",
+      "prompt": "Use the reference images for Mrs Brooks, Alex, Maya and the cozy book-and-tea shop interior. Scene: late morning inside the small harbour book-and-tea shop; Mrs Brooks puts books on a wooden shelf and turns around with interest; a teapot and cups stand on the counter; Alex and Maya stand at the counter asking her something. Distinct outfits: Mrs Brooks wears a cream knitted sweater and a dark-blue denim apron, curly hair with grey streaks; Alex wears an olive jacket over a cream sweater; Maya wears a bright yellow raincoat over a blue-and-white striped sweater. No readable book titles, no text. Vertical composition. Warm animated-series illustration, graphic-novel style, clean ink lines, soft cel shading, coastal palette of sea blue, sand, lighthouse yellow and evening orange, mature tone suitable for teens and adults, not childish, no text, no letters, no numbers, no logos.",
+      "quality": "low",
+      "reference_elements": [],
+      "remove_bg": false,
+      "resolution": "2k",
+      "width": 1520
+    },
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261014_171632_0365e848-7bf2-430e-b3cd-05cfdef74e07.png",
+    "status": "completed"
+  }
+]

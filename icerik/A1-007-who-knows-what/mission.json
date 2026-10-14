@@ -1,0 +1,63 @@
+{
+  "contentId": "A1-007",
+  "status": "DRAFT",
+  "source": "H-085: story.en.md 'Görev kartı' + kurgu.json → gate (K-29). Claude taslağı; editör onayı bekler (H-028).",
+  "mission": {
+    "tr": "Üç tanığın cümlelerini karşılaştır ve kadının doğru tarifini kur."
+  },
+  "success": {
+    "rule": "all",
+    "comprehension": [
+      {
+        "node": "t-gorev",
+        "type": "task",
+        "kind": "choice",
+        "prompt": "Üç tanığı karşılaştır. Doğru tarifi kur."
+      }
+    ],
+    "targetPhrase": [
+      {
+        "node": "k1",
+        "type": "decision",
+        "kind": null,
+        "prompt": "Kadının görünüşünü sor.",
+        "targetPhrase": "What does she look like?"
+      },
+      {
+        "node": "k2",
+        "type": "decision",
+        "kind": null,
+        "prompt": "Mrs Brooks ne dedi? Sam'e anlat.",
+        "targetPhrase": "She has white hair."
+      }
+    ],
+    "activeTask": [
+      {
+        "node": "t-kanit",
+        "type": "task",
+        "kind": "choice",
+        "prompt": "Hi sana bir resim gösteriyor. Doğru cümleyi seç."
+      }
+    ],
+    "note": "Her ölçütte listedeki herhangi bir düğüm doğru tamamlanınca ölçüt karşılanır. Deneme sınırsız, kilit kalıcı değil, süre yok (K-29, K-32). Puanlamaya yalnız ilk deneme girer."
+  },
+  "hintPolicy": {
+    "onRequestOnly": true,
+    "levels": [
+      {
+        "level": 1,
+        "kind": "keyword"
+      },
+      {
+        "level": 2,
+        "kind": "pattern"
+      },
+      {
+        "level": 3,
+        "kind": "explanation"
+      }
+    ],
+    "wrongAnswer": "Yanlış seçenek nazik bir tepkiye (reaction) gider, sonra aynı karara döner (K-28). Görevde Hi geri bildirimi gösterilir, aynı öğe yeniden denenir.",
+    "note": "1. ve 2. düzey ipuçlarını Claude yazdı; 3. düzey story.en.md'deki HI (TR) satırlarından (H-028 editör onayı bekler)."
+  }
+}
