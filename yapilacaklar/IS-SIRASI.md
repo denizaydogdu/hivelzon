@@ -31,7 +31,7 @@ Bu dosya tek takip noktasıdır. Hangi işin hangi sırada yapıldığını, şu
   - H dosyasının `Durum` satırı güncellenir;
   - **Günlük** bölümüne bir satır eklenir.
 - **Biten işler:** "Biten işler" tablosuna doğrulama kanıtıyla birlikte yazılır.
-- **Numaralar:** Tek sayaçla verilir. Sıradaki boş numara: **H-065**.
+- **Numaralar:** Tek sayaçla verilir. Sıradaki boş numara: **H-074**.
 
 **Durum simgeleri:**
 - ⛔ Kullanıcı kararı bekliyor
@@ -131,6 +131,21 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 | T7 | H-064 | Tasarım kalite turu (erişilebilirlik, golden, temizlik) | Orta | H-059 … H-063, H-040 | ⏳ |
 
 **Sıra:** H-057 → H-058 → H-059 → H-039 → H-060 → H-061 → H-062 → H-063 → H-040 → H-064 → H-041, H-042, H-043, H-044.
+
+### Adım 7 — Kitaplık: seviyeli, resimli, sesli kitaplar (2026-10-14, kullanıcı isteği; `docs/KITAPLIK.md`)
+| # | İş | Başlık | Öncelik | Bağımlılık | Durum |
+|---|---|---|---|---|---|
+| K0 | H-065 | Kitaplık kararları ve 30 kitaplık katalog | Yüksek | — | ⏳ |
+| K1 | H-066 | Kitap paketi ve içerik boru hattı (book-lint, C1/C2 listesi, TTS betiği) | Yüksek | H-065 | ⏳ |
+| K2 | H-067 | Kitaplık ve okuyucu (sesli/sessiz, cümle vurgusu, Defter'e ekle) | Yüksek | H-066 | ⏳ |
+| K3 | H-068 | Arka planda dinleme ve kilit ekranı | Orta | H-067 | ⏳ |
+| K4 | H-069 | Pilot kitaplar A1 + A2 (≈ 15 kr görsel, maliyet onayı önce) | Yüksek | H-065, H-066, H-067 | ⏳ |
+| K5 | H-070 | Kitaplık arka ucu (BOOK, C2, onay) | Orta | H-066 | ⏳ |
+| K6 | H-071 | Kitap dalgası 1: A1 + A2 (kalan 8) | Orta | H-069 | ⏳ |
+| K7 | H-072 | Kitap dalgası 2: B1 + B2 (10) | Orta | H-071 | ⏳ |
+| K8 | H-073 | Kitap dalgası 3: C1 + C2 (10) | Orta | H-072 | ⏳ |
+
+**Sıra:** H-065 hemen (belge + katalog) → H-066 ve H-067, tasarım fazlarıyla paralel, ayrı dallarda → H-069 pilot → resim yoğunluğu ve ses planı kararı → H-068, H-070 → H-071 → H-072 → H-073.
 
 ## Devam eden işler
 | İş | Başlık | Başlangıç | Not |
@@ -335,3 +350,4 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
   - Kullanıcı H-058 taslaklarını ve H-059 tasarımını onayladı; ikisi de bitti.
   - H-039 ayrı dalda yapıldı ve `main`'e birleştirildi (494 test): açılış akışı, 13 altına hesap yok, Türkçe altyazı tercihi, atlanabilir kademeli test (taslak 22 soru). Açık kararlar kullanıcıya soruldu.
   - Kullanıcı kararları: doğum yılı saklanmaz (yalnız geçmemiş eşik), adım zorunlu, hesapta yıl yeniden sorulur. Soru havuzu onaylandı; H-039 bitti. Sıradaki H-060.
+  - Kullanıcı isteği: Kitaplık (seviyeli, resimli, sesli kitaplar; okunan cümle vurgulu; dokun → Türkçe; Defter'e ekle; okuduklarım/yarıda kalanlar; 6 seviye × 5 = 30 kitap). Önerilen kararlar onaylandı (pilot önce, ElevenLabs, kısa kitap, bağımsız türler). `docs/KITAPLIK.md` ve H-065…H-073 açıldı. H-060 ayrı dalda sürüyor.

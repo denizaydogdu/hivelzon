@@ -2,7 +2,7 @@
 
 **Sürüm:** 0.2 · **Tarih:** 2026-10-11 (durum güncellemesi 2026-10-12) · **Durum:** Onaylandı (2026-10-11); uygulama sürüyor. İlk dilim: önce oynatıcı; ilk test cihazı iOS simülatörü.
 **Dayanak:** CLAUDE.md "Onaylı içerik mimarisi kararları" ve "Onaylı oyun tasarımı kararları"; `docs/OYUN-TASARIMI.md`; `docs/ICERIK-MIMARISI.md`.
-**Kural:** Plan onaylandı, kodlama bu plana göre sürüyor; plana yeni kapsam kullanıcı onayıyla eklenir. Oynatıcı işi var olan H-031 numarasını korur; yeni işler H-033'ten başlar. Sonradan eklenenler: H-045, H-046, H-048, H-049, H-050, H-051, H-052, H-053, H-054, H-055, H-056 ve tasarım yenilemesi H-057…H-064. **Sıradaki boş numara: H-065.** Her alt faz ayrı bir H işidir: küçük, test edilebilir ve geri alınabilir.
+**Kural:** Plan onaylandı, kodlama bu plana göre sürüyor; plana yeni kapsam kullanıcı onayıyla eklenir. Oynatıcı işi var olan H-031 numarasını korur; yeni işler H-033'ten başlar. Sonradan eklenenler: H-045, H-046, H-048, H-049, H-050, H-051, H-052, H-053, H-054, H-055, H-056 tasarım yenilemesi H-057…H-064 ve Kitaplık H-065…H-073. **Sıradaki boş numara: H-074.** Her alt faz ayrı bir H işidir: küçük, test edilebilir ve geri alınabilir.
 
 ---
 
@@ -86,6 +86,27 @@ Kullanıcı Profil'i beğenmedi ("her şey iç içe, düz yazı gibi"); bütün 
 | **T7** | **H-064** Tasarım kalite turu | Erişilebilirlik, metin büyütme, golden kapsamı, temizlik | Bütün testler yeşil | ⏳ |
 
 **Yeni sıra:** H-057 → H-058 → H-059 → H-039 → H-060 → H-061 → H-062 → H-063 → H-040 → H-064 → H-041, H-042 (profil kısmı H-059'a taşındı), H-043, H-044.
+
+### Kitaplık (2026-10-14, kullanıcı isteği; ayrıntı `docs/KITAPLIK.md`)
+Seviyeli, resimli, sesli kitaplar:
+- okunan cümle vurgulanır;
+- dokununca Türkçesi çıkar;
+- bilinmeyen kelime Defter'e eklenir ve Kelime tekrarına girer;
+- sesi kapatıp kendin okuyabilirsin;
+- okuduklarım ve yarıda kalanlar takip edilir;
+- "Bana bir kitap oku" okunmamış bir kitabı açar.
+
+A1–C2, seviye başına 5 kitap, toplam 30. Kararlar: önce 2 pilot kitap, ElevenLabs (önce pilot), kısa kitap, bağımsız ve karışık türler.
+
+| Faz | İş | Kapsam | Durum |
+|---|---|---|---|
+| **K0** | **H-065** Kararlar + 30 kitaplık katalog | Katalog, yerleşim, tel çerçeve | ⏳ |
+| **K1** | **H-066** Kitap paketi + boru hattı | `book.json`/`pages.json`, book-lint (A1–C2), Octanove C1/C2, TTS betiği | ⏳ |
+| **K2** | **H-067** Kitaplık + okuyucu | Sesli/sessiz, vurgu, anlam paneli, Defter'e ekle, ilerleme + eşitleme | ⏳ |
+| **K3** | **H-068** Arka planda dinleme | just_audio + audio_service, kilit ekranı | ⏳ |
+| **K4** | **H-069** Pilot A1 + A2 | ≈ 15 kr görsel, ücretsiz TTS kotası; sonra yoğunluk kararı | ⏳ |
+| **K5** | **H-070** Arka uç | BOOK türü, C2, içe aktarma, onay | ⏳ |
+| **K6–K8** | **H-071…H-073** Kitap dalgaları | A1–A2 (8), B1–B2 (10), C1–C2 (10) | ⏳ |
 
 **Durum simgeleri:** ✅ bitti · 🔄 sürüyor · ⏳ sırada. Ayrıntılı durum ve günlük: `yapilacaklar/IS-SIRASI.md`.
 
