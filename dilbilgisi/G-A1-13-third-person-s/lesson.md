@@ -8,7 +8,7 @@ Maya, kuzeni Sam'i anlatıyor. Bu cümlede ilginç bir şey var. Fiilin sonunda 
 + He [[loves]] radios! | Telsizlere bayılır!
 
 ## explain | Ek nereden geliyor?
-Geniş zamanda tek bir kişiden ya da şeyden söz ederken fiile -s eklenir. Ben, sen, biz ve onlar için ek gelmez. Yalnız o için gelir.
+Geniş zamanda tek bir kişiden ya da şeyden söz ederken fiile -s eklenir. Ben, sen, biz, siz ve onlar için ek gelmez. Yalnız o için gelir.
 @diagram suffix | love+s | work+s | wait+s
 @diagram boxes | He :: özne | loves :: fiil ve ek | radios
 
@@ -51,5 +51,5 @@ Bu eki hikâyede ve kitaplarda çok gördün. Şu cümlelere bir daha bak.
 - book A1-K02 p01 | He lives in Ankara.
 
 ## rule
-Geniş zamanda tek bir kişi ya da şey için fiile -s eklenir. Ben, sen, biz ve onlar için ek gelmez.
+Geniş zamanda tek bir kişi ya da şey için fiile -s eklenir. Ben, sen, biz, siz ve onlar için ek gelmez.
 + He [[works]] every day. | O her gün çalışır.

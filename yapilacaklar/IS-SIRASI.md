@@ -155,7 +155,7 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 | D0 | H-076 | Dilbilgisi müfredatı (~70 konu) | Yüksek | — | ✅ |
 | D1 | H-077 | Ders paketi ve grammar-lint | Yüksek | H-075, H-076 | ✅ |
 | D2 | H-078 | Dilbilgisi ekranı (Hikâye'de 3. bölüm, bölüm panelinde teklif) | Yüksek | H-077 | ⏳ |
-| D3 | H-079 | Pilot: 3 A1 konusu | Yüksek | H-076…H-078 | ⏳ |
+| D3 | H-079 | Pilot: 3 A1 konusu | Yüksek | H-076…H-078 | 🔄 |
 | D4 | H-080 | Dalga 1: A1 + A2 | Orta | H-079 | ⏳ |
 | D5 | H-081 | Dalga 2: B1 + B2 | Orta | H-080 | ⏳ |
 | D6 | H-082 | Dalga 3: C1 + C2 | Orta | H-081 | ⏳ |
@@ -393,3 +393,4 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
   - Dalga 1'in 34 görseli üretildi (17 kr, başarısız iş yok; kredi 29,06). 10 kitabın paketi hazır, dev sunucuda 10 kitap. Seslendirme ElevenLabs Creator anahtarı gelince. H-075 Türkçe ses aracı bitti.
   - H-076 müfredat (71 konu) onaylandı ve kaydedildi; pilot konular to be, a/an, -s. A2-K04 p09 dilbilgisi hatası düzeltildi.
   - H-063 (7 ifade, sakin nefes, panel bölünmesi, bölüm sonunda mutlu Hi) `main`'e birleştirildi (716 test). H-078 dilbilgisi ekranı ve H-079 pilot dersler sürüyor.
+  - H-079: 3 pilot ders (to be, a/an, -s) `main`'de; Türkçe sesler Alania ile (2.730 karakter, ücretsiz), İngilizce örnekler ElevenLabs anahtarını bekliyor (627 karakter). G-A1-13'te "siz" eksiği düzeltildi.
