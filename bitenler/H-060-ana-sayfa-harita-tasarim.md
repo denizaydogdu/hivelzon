@@ -1,6 +1,6 @@
 # H-060: Ana Sayfa, Hikâye haritası, bölüm paneli ve jenerik tasarımı
 
-- **Durum:** Devam ediyor (kod bitti ve `main`'de, flutter test 530/530; kullanıcının tasarım onayı ve 3 açık soru bekleniyor)
+- **Durum:** Bitti (2026-10-14; flutter test 531/531, CI yeşil, tasarım kullanıcı onaylı)
 - **Tür:** Uygulama (tasarım)
 - **Faz:** Tasarım yenilemesi T3 (`docs/UYGULAMA-PLANI.md`)
 - **Bağımlılık:** H-057, H-058, H-039
@@ -62,3 +62,5 @@ Kendi dalında (`h-060-ana-sayfa-harita-tasarim`); sorun olursa birleştirme com
 1. Günlük hedef halkası **tahmini** süre gösteriyor (biten bölüm + tekrar süresi). Yarım bırakılan bölümde ya da Keşfet'te geçen süre sayılmıyor. Böyle kalsın mı, yoksa oynatıcıda gerçek süre ölçümü ayrı bir iş olarak mı açılsın?
 2. Uygulamayı güncelleyen mevcut kullanıcıda, haritayı ilk açışta sıradaki bölüm için ışık animasyonu bir kez oynar (işaret henüz yok). Kabul mü?
 3. Halka hedefi aşınca "12/10" gösteriyor (dolu halka). "10/10 ✓" gibi bir gösterim mi istenir?
+2026-10-14 (kullanıcı kararları): Tasarım onaylandı. Hedef aşılınca halka "10/10" + onay ikonu gösterir (✓ glifi yazı tipinde olmadığı için ikon). Güncelleyen kullanıcılar ışık animasyonunu bir kez görür. Gerçek süre ölçümü ayrı iş: H-074. İş kapandı.
+

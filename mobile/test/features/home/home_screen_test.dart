@@ -342,6 +342,16 @@ void main() {
   });
 
   group('H-060: bugünkü süre tahmini', () {
+    test('hedef aşılınca halka "10/10" + onay gösterir', () {
+      expect(HomeTexts.goalRing(6, 10), '6/10');
+      expect(HomeTexts.goalReached(6, 10), isFalse);
+      expect(HomeTexts.goalRing(10, 10), '10/10');
+      expect(HomeTexts.goalRing(12, 10), '10/10');
+      expect(HomeTexts.goalReached(12, 10), isTrue);
+      expect(HomeTexts.goalSemantics(12, 10), contains('tamamlandı'));
+      expect(HomeTexts.goalSemantics(6, 10), isNot(contains('tamamlandı')));
+    });
+
     test('biten bölümler (bilinmeyen süre 6 dk) + tekrarda geçen süre '
         '(cevap başına en çok 2 dk, yukarı yuvarlanır)', () {
       expect(estimateTodayMinutes(episodeMinutes: const []), 0);

@@ -81,10 +81,17 @@ abstract final class HomeTexts {
 
   // Günlük hedef halkası (H-060). Süre yaklaşıktır: biten bölümlerin tahmini
   // süresi + bugün tekrar edilen ifadeler (ifade başına ~20 sn).
-  static String goalRing(int minutes, int goal) => '$minutes/$goal';
+  /// Hedef aşılınca abartılmaz: "10/10" + onay ikonu (kullanıcı kararı
+  /// 2026-10-14). İkon halkada çizilir; yazı tipinde ✓ glifi yok.
+  static bool goalReached(int minutes, int goal) => goal > 0 && minutes >= goal;
+  static String goalRing(int minutes, int goal) =>
+      goalReached(minutes, goal) ? '$goal/$goal' : '$minutes/$goal';
   static const goalUnit = 'dk';
   static String goalSemantics(int minutes, int goal) =>
-      'Günlük hedef: bugün yaklaşık $minutes dakika, hedefin $goal dakika';
+      goalReached(minutes, goal)
+      ? 'Günlük hedef tamamlandı: bugün yaklaşık $minutes dakika, '
+            'hedefin $goal dakika'
+      : 'Günlük hedef: bugün yaklaşık $minutes dakika, hedefin $goal dakika';
 }
 
 /// Hikâye sekmesi: harita ve bölüm paneli.

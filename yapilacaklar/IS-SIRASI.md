@@ -9,7 +9,7 @@ Bu dosya tek takip noktasıdır. Hangi işin hangi sırada yapıldığını, şu
 - **Her şey yerelde** (kullanıcı kararı): Docker PostgreSQL (5434), yerel içerik sunucusu (`python3 tools/dev-content-server/serve.py`, 127.0.0.1:8787), iOS simülatörü "hiVelzon iPhone 17". Sunucu, Bunny Stream, mağaza ve geliştirici hesapları en sonda (H-044).
 - **Biten uygulama işleri:** H-033 repo iskeleti · H-034 bölüm paketi + content-lint · H-045 tasarım yönü (6 taslak, 6 kr) · H-031 etkileşimli oynatıcı · H-046 altyazıya dokun → Türkçe anlam (B1–B4 çevirileri APPROVED) · H-047 Hi kararları · H-049 sezon jeneriği (6,69 kr) · H-050 başlıkla açılış (schemaVersion 2) · H-035 hikâye haritası + Drift ilerleme + kilit kuralı.
 - **İçerik:** B1–B4 üretildi (pilot + B2–B4), jenerik, 6 arayüz taslağı, harita görseli. B5–B12 diyalogları onaylı (H-032) ama üretilmedi; kalan Sezon 1 üretimi ≈ 8 × ~8,5 kr. Higgsfield kredisi **84,56** (lite plan).
-- **Sıradaki adım:** Tasarım yenilemesi (Adım 6): H-057, H-058, H-059, H-041 ve H-039 bitti → **H-060** Ana Sayfa ve harita → H-060 … H-064, H-040; sonra H-042 … H-044.
+- **Sıradaki adım:** Tasarım yenilemesi (Adım 6): H-057, H-058, H-059, H-041 ve H-039, H-060 bitti → **H-061** Defter ve tekrar → H-062 … H-064, H-040 (Kitaplık H-065… paralel); sonra H-042 … H-044.
 - **Kullanıcı kararı bekleyenler** (kodlamayı durdurmuyor):
   - H-001: güncellenen iş planının (`docs/IS-PLANI.md`, H-023) son onayı.
   - H-003: günlük konuşma kotasının ölçüsü, uyarı eşikleri, bütçe sorumlusu (tavan 300 USD/ay kararlaştı; v1 öncesi).
@@ -31,7 +31,7 @@ Bu dosya tek takip noktasıdır. Hangi işin hangi sırada yapıldığını, şu
   - H dosyasının `Durum` satırı güncellenir;
   - **Günlük** bölümüne bir satır eklenir.
 - **Biten işler:** "Biten işler" tablosuna doğrulama kanıtıyla birlikte yazılır.
-- **Numaralar:** Tek sayaçla verilir. Sıradaki boş numara: **H-074**.
+- **Numaralar:** Tek sayaçla verilir. Sıradaki boş numara: **H-075**.
 
 **Durum simgeleri:**
 - ⛔ Kullanıcı kararı bekliyor
@@ -124,7 +124,8 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 | T0 | H-057 | Tasarım sistemi v2 (belirteçler, bileşen kitaplığı, hareket, yazı tipleri) | Yüksek | H-053, H-054 | ✅ |
 | T1 | H-058 | Ekran taslakları v2 ve illüstrasyonlar (Higgsfield, ~8 kr) | Yüksek | H-057 | ✅ |
 | T2 | H-059 | Profil, Hesap, "Hi benim hakkımda", hukuk metni tasarımı | Yüksek | H-057, H-058 | ✅ |
-| T3 | H-060 | Ana Sayfa, harita, bölüm paneli, jenerik tasarımı | Orta | H-057, H-058, H-039 | 🔄 |
+| T3 | H-060 | Ana Sayfa, harita, bölüm paneli, jenerik tasarımı | Orta | H-057, H-058, H-039 | ✅ |
+| T3' | H-074 | Günlük hedef için gerçek süre ölçümü | Orta | H-060 | ⏳ |
 | T4 | H-061 | Defter, Kelime tekrarı, Konu seti, Sahne avı tasarımı | Orta | H-057, H-058 | ⏳ |
 | T5 | H-062 | Oynatıcı katmanlarının tasarımı | Orta | H-057 | ⏳ |
 | T6 | H-063 | Hi'nin canlılığı (ifadeler, animasyonlar) | Orta | H-057 | ⏳ |
@@ -155,6 +156,7 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 ## Biten işler
 | İş | Başlık | Bitiş | Doğrulama |
 |---|---|---|---|
+| H-060 | Ana Sayfa, harita, bölüm paneli, jenerik tasarımı | 2026-10-14 | Hedef halkalı selam (aşılınca 10/10 + onay), dalga kesimli bölüm kartı, yeni harita başlığı, bir kez oynayan açılış ışığı, AppSheet paneli, metinler l10n'de; flutter test 531/531, CI yeşil; kullanıcı onayladı |
 | H-039 | Açılış ve yerleştirme | 2026-10-14 | Hoş geldin → doğum yılı (saklanmaz; yalnız geçmemiş yaş eşiği) ve isteğe bağlı ad → bilgilendirme → hedef + Türkçe altyazı → atlanabilir kademeli test (22 madde, kullanıcı onaylı) → hazır; 13 altına hesap yok; bir kez gösterim; flutter test geçti, CI yeşil |
 | H-059 | Profil, Hesap, Hi gizlilik, hukuk metni tasarımı | 2026-10-14 | Şekilli başlık, istatistik şeridi, gruplanmış ayarlar, tehlikeli bölge; golden testler (yalnız macOS) + belirteç kontrast testi; flutter test 464/464, CI yeşil; kullanıcı tasarımı onayladı |
 | H-058 | Ekran taslakları v2 ve illüstrasyonlar | 2026-10-14 | 16 görsel (8 kr, `tasarim/v2/PROMPTS.md`), 6 illüstrasyon WebP olarak uygulamada; kullanıcı onayladı |
@@ -352,3 +354,4 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
   - Kullanıcı kararları: doğum yılı saklanmaz (yalnız geçmemiş eşik), adım zorunlu, hesapta yıl yeniden sorulur. Soru havuzu onaylandı; H-039 bitti. Sıradaki H-060.
   - Kullanıcı isteği: Kitaplık (seviyeli, resimli, sesli kitaplar; okunan cümle vurgulu; dokun → Türkçe; Defter'e ekle; okuduklarım/yarıda kalanlar; 6 seviye × 5 = 30 kitap). Önerilen kararlar onaylandı (pilot önce, ElevenLabs, kısa kitap, bağımsız türler). `docs/KITAPLIK.md` ve H-065…H-073 açıldı. H-060 ayrı dalda sürüyor.
   - H-060 ayrı dalda yapıldı ve `main`'e birleştirildi (530 test): hedef halkalı Ana Sayfa, yeni harita başlığı, bir kez oynayan bölüm açılış ışığı, AppSheet bölüm paneli. Kullanıcı onayı ve açık sorular bekleniyor.
+  - Kullanıcı H-060 tasarımını onayladı; hedef aşılınca "10/10" + onay ikonu; animasyon güncelleyenlere bir kez; gerçek süre ölçümü H-074 olarak açıldı. H-060 bitti; sıradaki H-061.

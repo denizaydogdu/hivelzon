@@ -148,11 +148,26 @@ class _Greeting extends StatelessWidget {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Text(
-                    HomeTexts.goalRing(today.minutes, today.goalMinutes),
-                    style: theme.textTheme.titleMedium?.copyWith(
-                      color: AppPalette.ink,
-                    ),
+                  Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        HomeTexts.goalRing(today.minutes, today.goalMinutes),
+                        style: theme.textTheme.titleMedium?.copyWith(
+                          color: AppPalette.ink,
+                        ),
+                      ),
+                      if (HomeTexts.goalReached(
+                        today.minutes,
+                        today.goalMinutes,
+                      ))
+                        const Icon(
+                          Icons.check_rounded,
+                          key: ValueKey('home-goal-done'),
+                          size: AppIconSize.sm,
+                          color: AppPalette.seaBlue,
+                        ),
+                    ],
                   ),
                   Text(
                     HomeTexts.goalUnit,
