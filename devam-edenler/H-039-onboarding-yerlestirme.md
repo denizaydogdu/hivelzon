@@ -1,6 +1,6 @@
 # H-039: Onboarding ve yerleştirme
 
-- **Durum:** Yapılacak (sırada; H-025 onaylandı 2026-10-11, sıra `docs/UYGULAMA-PLANI.md`'de)
+- **Durum:** Devam ediyor (kod bitti ve `main`'de, flutter test 494/494; soru havuzu onayı ve açık kararlar bekleniyor)
 - **Tür:** Uygulama (kod)
 - **Faz:** 1.7 (`docs/UYGULAMA-PLANI.md`)
 - **Bağımlılık:** H-038
