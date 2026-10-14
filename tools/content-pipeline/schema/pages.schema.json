@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://hi.velzon.tr/schema/pages.v1.schema.json",
   "title": "hiVelzon Kitaplık sayfa ve zamanlama dosyası (_build/package/pages.json)",
-  "description": "Sayfa → cümle → kelime. Zamanlar saniyedir ve cümlenin bölüm sesinin (chapters[].audio) başına görelidir; ElevenLabs karakter hizalamasından gelir (align.sentence_timings). Hizalama yoksa start/end null'dur (sessiz okuma). Bölüm altyazısı biçiminin (subs.schema.json) kitap karşılığı. H-066.",
+  "description": "Sayfa → cümle → kelime. Zamanlar saniyedir ve cümlenin bölüm sesinin (chapters[].audio) başına görelidir; ElevenLabs karakter hizalamasından gelir (align.sentence_timings) ve anlatım temposu uygulandıysa işlenmiş sese göre yeniden hesaplanır (pacing.py, H-069). Hizalama yoksa start/end null'dur (sessiz okuma). Bölüm altyazısı biçiminin (subs.schema.json) kitap karşılığı. H-066.",
   "type": "object",
   "required": ["schemaVersion", "bookId", "contentVersion", "level", "chapters", "pages"],
   "additionalProperties": false,

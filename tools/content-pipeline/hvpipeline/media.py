@@ -146,6 +146,46 @@ def tempo(src: Path, atempo: float, out: Path) -> Path:
     return out
 
 
+def pacing_filter(segments: list[dict], tempo: float) -> str:
+    """Kitap anlatım temposu (H-069, pacing.py): kaynak örnek aralıklarına bölünür, her parça (varsa
+    `atempo`) sonrası tam `out` örneğe doldurulur/kırpılır, ardına tam `pad` örnek sessizlik eklenir.
+    Kesimlerin iki yanında kısa yumuşak geçiş (yalnız sessizlik eklenen sınırlarda)."""
+    n = len(segments)
+    f = [f"[0:a]aresample=44100,asplit={n}" + "".join(f"[s{j}]" for j in range(n))] if n > 1 else \
+        ["[0:a]aresample=44100[s0]"]
+    for j, s in enumerate(segments):
+        trim = f"atrim=start_sample={s['start']}" + (f":end_sample={s['end']}" if s["end"] is not None else "")
+        chain = [trim, "asetpts=N/SR/TB"]
+        if s["fadeIn"]:
+            chain.append(f"afade=t=in:start_sample=0:nb_samples={s['fadeIn']}")
+        if s["fadeOut"] and s["end"] is not None:
+            length = s["end"] - s["start"]
+            chain.append(f"afade=t=out:start_sample={length - s['fadeOut']}:nb_samples={s['fadeOut']}")
+        if tempo != 1.0:
+            chain.append(f"atempo={tempo}")
+        total = s["out"] + s["pad"]
+        chain += [f"apad=whole_len={total}", f"atrim=end_sample={total}", "asetpts=N/SR/TB"]
+        f.append(f"[s{j}]" + ",".join(chain) + f"[o{j}]")
+    f.append("".join(f"[o{j}]" for j in range(n)) + f"concat=n={n}:v=0:a=1[a]")
+    return ";".join(f)
+
+
+def pace_audio(src: Path, segments: list[dict], tempo: float, out: Path) -> Path:
+    """Tempo planını uygular → PCM WAV (44,1 kHz, float; kazanç ve AAC sonra `audio_clip`te)."""
+    tmp = _tmp(out)
+    run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(src), "-filter_complex", pacing_filter(segments, tempo),
+         "-map", "[a]", "-c:a", "pcm_f32le", "-ar", "44100", str(tmp)])
+    tmp.replace(out)
+    return out
+
+
+def probe_samples(path: Path) -> int:
+    """Çözülmüş ses örnek sayısı (kanal başına, 44,1 kHz'e örneklenmiş)."""
+    raw = subprocess.check_output(["ffmpeg", "-loglevel", "error", "-i", str(path), "-ac", "1", "-ar", "44100",
+                                   "-f", "s16le", "-"])
+    return len(raw) // 2
+
+
 def loudness(paths: list[Path]) -> dict:
     """Birleştirilmiş sesin tümleşik ölçümü (loudnorm ölçüm geçişi)."""
     cmd = ["ffmpeg", "-hide_banner", "-nostats"]

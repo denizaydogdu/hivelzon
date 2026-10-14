@@ -53,7 +53,9 @@ def main(argv: list[str] | None = None) -> int:
                   f"{t['wordsGlossed']}/{t['wordsNeedingGloss']} kelime anlamlı")
         md = st.get("media") if st else None
         if md:
-            wpm = ", ".join(f"{k} {v} k/dk" for k, v in md["wpm"].items()) or "ölçülmedi"
+            raw = md.get("wpmRaw", {})
+            wpm = ", ".join(f"{k} {v} k/dk" + (f" (ham {raw[k]})" if raw.get(k) not in (None, v) else "")
+                            for k, v in md["wpm"].items()) or "ölçülmedi"
             print(f"   ses: {md['aligned']}/{md['chapters']} bölüm hizalı, {md['audio']} ses dosyası; hız {wpm}; "
                   f"görsel {md['imagesPresent']}/{md['images']}")
         for i in r.errors + r.warnings:
