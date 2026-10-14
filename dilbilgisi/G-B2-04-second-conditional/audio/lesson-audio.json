@@ -1,0 +1,393 @@
+{
+ "schemaVersion": 1,
+ "lessonId": "G-B2-04-second-conditional",
+ "voices": {
+  "tr": {
+   "model": "alania-v2",
+   "voice": "alania2-f1",
+   "timing": "duyu-1",
+   "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+  },
+  "en": {
+   "model": "eleven_v3",
+   "voice": "EXAVITQu4vr4xnSDxMaL",
+   "speed": 1.0
+  }
+ },
+ "cards": [
+  {
+   "card": "c01",
+   "type": "hook",
+   "segments": [
+    {
+     "id": "c01-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Bu cümleyi dinle. Konuşanın arabası yok, yalnızca olsaydı diye hayal ediyor. Fiil geçmiş biçimde duruyor, ama anlatılan şey şimdi.",
+     "textSha256": "2afa74b46d39cd74f35758476576379f916fa2a55af2632cea34a99a0598cdcf",
+     "chars": 130,
+     "audio": "tr/c01-tr.mp3",
+     "align": "tr/c01-tr.align.json",
+     "present": true,
+     "duration": 8.64,
+     "quality": {
+      "words": 19,
+      "exact": 19,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c01-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "If I had a car, I wouldn't wait for the bus.",
+     "textSha256": "e5c23d746145c4764d77138e76986f41bbdcb3869c86158a2e55be2d31cd0878",
+     "chars": 44,
+     "audio": "en/c01-ex1.mp3",
+     "align": "en/c01-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c02",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c02-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Şu an gerçek olmayan bir durumu hayal ederken koşul tarafında geçmiş biçim kullanılır. Sonuç tarafında olurdu anlamı veren bir kelime ve yalın fiil gelir. Buradaki geçmiş biçim zamanı değil, gerçekten uzaklığı gösterir.",
+     "textSha256": "a999e0f68d6c20cb46349e313b309ccdb1d6f47960482eb6ed9a49deabd929f5",
+     "chars": 219,
+     "audio": "tr/c02-tr.mp3",
+     "align": "tr/c02-tr.align.json",
+     "present": true,
+     "duration": 15.07,
+     "quality": {
+      "words": 32,
+      "exact": 32,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c02-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "If I had more time, I would learn the guitar.",
+     "textSha256": "68a82fc4831a80c1a337f2776777154917be0adc8e0af686c8fde551edb78f76",
+     "chars": 45,
+     "audio": "en/c02-ex1.mp3",
+     "align": "en/c02-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c03",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c03-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Olabilecek bir şey için önceki dersteki birinci tip kullanılır. Olasılığı çok düşük ya da imkânsız bir şey için bu yapı gelir. Hangisini seçeceğin, olaya ne kadar inandığına bağlıdır.",
+     "textSha256": "7a054eea9c97ef55b90e2c365f55ea9b2a09cca200791b81bbc44e0bdf706ce7",
+     "chars": 183,
+     "audio": "tr/c03-tr.mp3",
+     "align": "tr/c03-tr.align.json",
+     "present": true,
+     "duration": 11.07,
+     "quality": {
+      "words": 28,
+      "exact": 27,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "If it rains, we'll stay at home.",
+     "textSha256": "295c084e178c0fd27fb1732ed8703376c8da4a919ff728b2904bd96399dd1463",
+     "chars": 32,
+     "audio": "en/c03-ex1.mp3",
+     "align": "en/c03-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c03-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "If I won a lot of money, I'd buy a house.",
+     "textSha256": "c55028584e6ced0c869114f7543d85bdb3a5b0831f7bbc825122808c5fe53b65",
+     "chars": 41,
+     "audio": "en/c03-ex2.mp3",
+     "align": "en/c03-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c04",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c04-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Öğüt verirken çok kullanılan bir kalıp var: senin yerinde olsam. Bu kalıpta ben, o ve diğer bütün kişiler için olmak fiilinin aynı biçimi gelir. Konuşmada öbür biçim de duyulur, ama yazıda bu tercih edilir.",
+     "textSha256": "93f5e8132a59ddf9327c3ef9529acb7040b07724c97dceb270059bf7c720bce9",
+     "chars": 206,
+     "audio": "tr/c04-tr.mp3",
+     "align": "tr/c04-tr.align.json",
+     "present": true,
+     "duration": 13.49,
+     "quality": {
+      "words": 34,
+      "exact": 34,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c04-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "If I were you, I'd talk to her.",
+     "textSha256": "333064e53f3e19192df7f2b013e0e8320676e3b959c7e2d918aac6a79374d50a",
+     "chars": 31,
+     "audio": "en/c04-ex1.mp3",
+     "align": "en/c04-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c05",
+   "type": "examples",
+   "segments": [
+    {
+     "id": "c05-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "If I lived by the sea, I would swim every day.",
+     "textSha256": "d65468add7024d688f637cde1bc0f4b87a265d90c202cfa7a49f2628c4719c47",
+     "chars": 46,
+     "audio": "en/c05-ex1.mp3",
+     "align": "en/c05-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "If she knew the answer, she would tell us.",
+     "textSha256": "780dbaeff5c7360a716538e16f500b9a72f03f67dd91d05717c7c8c66622da2d",
+     "chars": 42,
+     "audio": "en/c05-ex2.mp3",
+     "align": "en/c05-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "What would you do if you found a wallet?",
+     "textSha256": "de3bb0f688397989a6590f1e71a0a36f5f62ea52e24825912aaac0cd54bb12f5",
+     "chars": 40,
+     "audio": "en/c05-ex3.mp3",
+     "align": "en/c05-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex4",
+     "lang": "en",
+     "role": "example",
+     "text": "If we didn't have phones, we would talk more.",
+     "textSha256": "d673bd65b45271bf5764e5eb60e958eaa275d4dfd79352838958674dc7fcafe6",
+     "chars": 45,
+     "audio": "en/c05-ex4.mp3",
+     "align": "en/c05-ex4.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex5",
+     "lang": "en",
+     "role": "example",
+     "text": "I'd help you if I could.",
+     "textSha256": "f465bc53df37dcdee57eafdd3600516e326a062c461ee7ca49c511b5d779eea1",
+     "chars": 24,
+     "audio": "en/c05-ex5.mp3",
+     "align": "en/c05-ex5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c06",
+   "type": "contrast",
+   "segments": [
+    {
+     "id": "c06-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Türkçe bu yapıyı güzel kurar: zengin olsam dünyayı gezerdim. İngilizcede olurdu anlamı yalnız sonuç tarafına gelir, koşul tarafına gelmez. Koşul tarafında geçmiş biçim kullanmak ilk başta tuhaf gelir, bu çok olağan.",
+     "textSha256": "6c042594a1b19ca45dfe737fde22f8757c988bbf0ed8d761ff8f0ef5cd91ecee",
+     "chars": 215,
+     "audio": "tr/c06-tr.mp3",
+     "align": "tr/c06-tr.align.json",
+     "present": true,
+     "duration": 15.55,
+     "quality": {
+      "words": 31,
+      "exact": 31,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 1,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c06-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "If I had money, I would travel.",
+     "textSha256": "e2dbf543ee76df0e24a286201310021286aac41ce8a5892f8611e4d071044512",
+     "chars": 31,
+     "audio": "en/c06-ex1.mp3",
+     "align": "en/c06-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c06-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "If I were you, I would go.",
+     "textSha256": "7056b213ef5f90152d0c1273ce652c3b890a755f9e6459c3cd5ef6c59c8063d2",
+     "chars": 26,
+     "audio": "en/c06-ex2.mp3",
+     "align": "en/c06-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c07",
+   "type": "practice",
+   "segments": [
+    {
+     "id": "c07-q5",
+     "lang": "en",
+     "role": "say",
+     "text": "If I were you, I'd talk to her.",
+     "textSha256": "333064e53f3e19192df7f2b013e0e8320676e3b959c7e2d918aac6a79374d50a",
+     "chars": 31,
+     "audio": "en/c07-q5.mp3",
+     "align": "en/c07-q5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c08",
+   "type": "rule",
+   "segments": [
+    {
+     "id": "c08-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Şu an gerçek olmayan bir durum için koşul tarafında geçmiş biçim gelir. Sonuç tarafında olurdu anlamı veren kelime ve yalın fiil gelir.",
+     "textSha256": "b9179aa14b166f550142391073a081c7b207fda832d268225fdff7e0f3797a12",
+     "chars": 135,
+     "audio": "tr/c08-tr.mp3",
+     "align": "tr/c08-tr.align.json",
+     "present": true,
+     "duration": 8.16,
+     "quality": {
+      "words": 22,
+      "exact": 22,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c08-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "If I had more time, I would learn the guitar.",
+     "textSha256": "68a82fc4831a80c1a337f2776777154917be0adc8e0af686c8fde551edb78f76",
+     "chars": 45,
+     "audio": "en/c08-ex1.mp3",
+     "align": "en/c08-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  }
+ ]
+}

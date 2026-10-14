@@ -1,0 +1,419 @@
+{
+ "schemaVersion": 1,
+ "lessonId": "G-B2-06-wish-if-only",
+ "voices": {
+  "tr": {
+   "model": "alania-v2",
+   "voice": "alania2-f1",
+   "timing": "duyu-1",
+   "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+  },
+  "en": {
+   "model": "eleven_v3",
+   "voice": "EXAVITQu4vr4xnSDxMaL",
+   "speed": 1.0
+  }
+ },
+ "cards": [
+  {
+   "card": "c01",
+   "type": "hook",
+   "segments": [
+    {
+     "id": "c01-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Bu cümlede bir dilek var. Konuşan kişi denizden uzakta yaşıyor ve keşke diyor. Fiile dikkat et: şimdiyi anlatıyor, ama geçmiş biçimde.",
+     "textSha256": "56758244e61c1301cf8c5a1b712a73aa121a911db22f0fb75f9570e0244c8ddf",
+     "chars": 134,
+     "audio": "tr/c01-tr.mp3",
+     "align": "tr/c01-tr.align.json",
+     "present": true,
+     "duration": 9.44,
+     "quality": {
+      "words": 21,
+      "exact": 21,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c01-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I wish I lived near the sea.",
+     "textSha256": "dbfaabbe9fb81ea9065efb51af8a9c03286e79641f4a81189ec1b2c93ba0b16f",
+     "chars": 28,
+     "audio": "en/c01-ex1.mp3",
+     "align": "en/c01-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c02",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c02-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Şimdiki bir durumun farklı olmasını istiyorsan, dilek fiilinden sonra geçmiş biçim gelir. Yapabilmek için de onun geçmiş biçimi kullanılır. Olmak fiilinde, ikinci tip koşuldaki gibi her kişiyle aynı biçim tercih edilir.",
+     "textSha256": "ff26b2497d9b9b91037ee6ab75076be4477f79281325a3c20a08dc69ba1eb07d",
+     "chars": 219,
+     "audio": "tr/c02-tr.mp3",
+     "align": "tr/c02-tr.align.json",
+     "present": true,
+     "duration": 13.86,
+     "quality": {
+      "words": 31,
+      "exact": 31,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c02-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I wish I could swim.",
+     "textSha256": "c320148ef027db7cfd9c0bca5cd26a78d2440b35cedeae3e488f20a97d5d14a4",
+     "chars": 20,
+     "audio": "en/c02-ex1.mp3",
+     "align": "en/c02-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c02-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "I wish I were taller.",
+     "textSha256": "badcb244c13fb02b62ffeb0e639aeab8246376802223573c1c9d577294a427cc",
+     "chars": 21,
+     "audio": "en/c02-ex2.mp3",
+     "align": "en/c02-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c03",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c03-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Geçmişte olan bir şeyden pişmansan, dilek fiilinden sonra önceki geçmiş zaman gelir. Türkçedeki keşke söylemeseydim sözü tam bunu anlatır. Zaman yine bir adım geri kayar.",
+     "textSha256": "3468b3253f035b35a22d66771fbe2236e0b9ccca329022bb2e8294d8c49c83d8",
+     "chars": 170,
+     "audio": "tr/c03-tr.mp3",
+     "align": "tr/c03-tr.align.json",
+     "present": true,
+     "duration": 10.63,
+     "quality": {
+      "words": 25,
+      "exact": 25,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I wish I hadn't said that.",
+     "textSha256": "bedd41637848540692b01175942e8b6276eebfd3349bed8f51b86de719a231a9",
+     "chars": 26,
+     "audio": "en/c03-ex1.mp3",
+     "align": "en/c03-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c04",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c04-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Başka birinin davranışı seni rahatsız ediyorsa ve değişmesini istiyorsan, olurdu anlamı veren kelime gelir. Bu biçim kendin için kullanılmaz. Daha güçlü bir keşke için iki kelimelik bir kalıp da var.",
+     "textSha256": "6881b36601af1bd2eed56bffa41f333e17c9c91904a81a244574f313ab5f7609",
+     "chars": 199,
+     "audio": "tr/c04-tr.mp3",
+     "align": "tr/c04-tr.align.json",
+     "present": true,
+     "duration": 13.15,
+     "quality": {
+      "words": 30,
+      "exact": 27,
+      "fuzzy": 3,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c04-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I wish you would stop talking.",
+     "textSha256": "70726734e62a5f56b86d1b33f6b462e420b63c8a7585f7d61114e41af5168fe8",
+     "chars": 30,
+     "audio": "en/c04-ex1.mp3",
+     "align": "en/c04-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "If only I had more time!",
+     "textSha256": "18e8b24970eb6deec88f22a0a47f236a52ac976d0c57becc4bb34e44f71e8890",
+     "chars": 24,
+     "audio": "en/c04-ex2.mp3",
+     "align": "en/c04-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c05",
+   "type": "examples",
+   "segments": [
+    {
+     "id": "c05-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I wish I knew her phone number.",
+     "textSha256": "51c6188c8e84827d0d28c424664c7dfa645fa8efcaff7f212ddd6185ab0d618b",
+     "chars": 31,
+     "audio": "en/c05-ex1.mp3",
+     "align": "en/c05-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "I wish I had a bigger room.",
+     "textSha256": "c170c2c3f7caeeac6473db4c1dc0817afb6346cd2fd32ac3ddc027857aef1f16",
+     "chars": 27,
+     "audio": "en/c05-ex2.mp3",
+     "align": "en/c05-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "She wishes she hadn't eaten so much cake.",
+     "textSha256": "1aeb69944a0461b6f4cd86a6fe69647f52a6d98f4441e8d6971113322802170d",
+     "chars": 41,
+     "audio": "en/c05-ex3.mp3",
+     "align": "en/c05-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex4",
+     "lang": "en",
+     "role": "example",
+     "text": "I wish it would stop raining.",
+     "textSha256": "9c07dea6f564145d469df36df2d264d5bf5e2f586ce34ba57fd0e16a45b94b05",
+     "chars": 29,
+     "audio": "en/c05-ex4.mp3",
+     "align": "en/c05-ex4.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex5",
+     "lang": "en",
+     "role": "example",
+     "text": "If only I had listened to you!",
+     "textSha256": "b7c564134db62fd34b9c930080411781db470f00e11fbe1365cea3b6d326536f",
+     "chars": 30,
+     "audio": "en/c05-ex5.mp3",
+     "align": "en/c05-ex5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c06",
+   "type": "contrast",
+   "segments": [
+    {
+     "id": "c06-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Türkçede keşke ile dilek-şart ekini kullanırız: keşke olsam, keşke gitseydim. İngilizcede böyle bir ek yoktur, onun yerine zaman bir adım geri kayar. Bu yüzden yapabilmenin şimdiki biçimi burada kullanılmaz.",
+     "textSha256": "eae416cebed4c8cd03ef1a98b9135392489cad19d0e6baece7993e448e337a7e",
+     "chars": 207,
+     "audio": "tr/c06-tr.mp3",
+     "align": "tr/c06-tr.align.json",
+     "present": true,
+     "duration": 13.15,
+     "quality": {
+      "words": 30,
+      "exact": 30,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 4,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c06-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I wish I could drive.",
+     "textSha256": "ef21bd786680eadcf38d0a4b98416e08e74386c287d4c0b6703df458cbc23a6c",
+     "chars": 21,
+     "audio": "en/c06-ex1.mp3",
+     "align": "en/c06-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c06-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "I wish I hadn't said that.",
+     "textSha256": "bedd41637848540692b01175942e8b6276eebfd3349bed8f51b86de719a231a9",
+     "chars": 26,
+     "audio": "en/c06-ex2.mp3",
+     "align": "en/c06-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c07",
+   "type": "practice",
+   "segments": [
+    {
+     "id": "c07-q5",
+     "lang": "en",
+     "role": "say",
+     "text": "I wish I could swim.",
+     "textSha256": "c320148ef027db7cfd9c0bca5cd26a78d2440b35cedeae3e488f20a97d5d14a4",
+     "chars": 20,
+     "audio": "en/c07-q5.mp3",
+     "align": "en/c07-q5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c08",
+   "type": "rule",
+   "segments": [
+    {
+     "id": "c08-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Şimdiki dilek için geçmiş biçim, geçmiş pişmanlık için önceki geçmiş zaman gelir. Başkasından yakınırken olurdu anlamı veren kelime kullanılır.",
+     "textSha256": "da0824049e83247a53138ec7b410425f5521e0bd0fae1f16dbed4940391564da",
+     "chars": 143,
+     "audio": "tr/c08-tr.mp3",
+     "align": "tr/c08-tr.align.json",
+     "present": true,
+     "duration": 9.47,
+     "quality": {
+      "words": 19,
+      "exact": 19,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c08-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I wish I knew her phone number.",
+     "textSha256": "51c6188c8e84827d0d28c424664c7dfa645fa8efcaff7f212ddd6185ab0d618b",
+     "chars": 31,
+     "audio": "en/c08-ex1.mp3",
+     "align": "en/c08-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c08-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "I wish I hadn't said that.",
+     "textSha256": "bedd41637848540692b01175942e8b6276eebfd3349bed8f51b86de719a231a9",
+     "chars": 26,
+     "audio": "en/c08-ex2.mp3",
+     "align": "en/c08-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  }
+ ]
+}

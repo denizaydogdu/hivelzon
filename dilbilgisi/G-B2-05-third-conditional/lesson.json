@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "id": "G-B2-05-third-conditional",
+  "level": "B2",
+  "titleTr": "3. tip koşul (third conditional): olmayan geçmiş",
+  "titleEn": "Third conditional",
+  "goalTr": "Geçmişte gerçekleşmemiş bir koşulu ve sonucunu if ile had ve V3, would have ve V3 ile anlatırsın.",
+  "prerequisites": [
+    "G-B2-04-second-conditional",
+    "G-B1-11-past-perfect"
+  ],
+  "contentVersion": 1,
+  "status": "DRAFT",
+  "aiGenerated": true,
+  "teacherReview": null,
+  "linksTo": {
+    "episodes": [
+      "A1-005"
+    ],
+    "books": []
+  },
+  "properNouns": [
+    "Alex"
+  ],
+  "pronunciations": [
+    {
+      "term": "Alex",
+      "say_as": "Aleks"
+    }
+  ],
+  "narration": {
+    "tr": {
+      "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+    }
+  }
+}

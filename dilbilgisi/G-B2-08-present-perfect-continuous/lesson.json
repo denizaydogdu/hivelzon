@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "G-B2-08-present-perfect-continuous",
+  "level": "B2",
+  "titleTr": "Present perfect continuous: have been + -ing",
+  "titleEn": "Present perfect continuous",
+  "goalTr": "Geçmişte başlayıp hâlâ süren ya da izi görünen eylemi have been ve -ing ile anlatır, durum fiillerinde bu yapıyı kullanmazsın.",
+  "prerequisites": [
+    "G-B1-02-present-perfect-since-for",
+    "G-A2-01-present-continuous"
+  ],
+  "contentVersion": 1,
+  "status": "DRAFT",
+  "aiGenerated": true,
+  "teacherReview": null,
+  "linksTo": {
+    "episodes": [],
+    "books": []
+  },
+  "properNouns": [
+    "English",
+    "Monday"
+  ],
+  "pronunciations": [
+    {
+      "term": "-ing",
+      "say_as": "ing"
+    }
+  ],
+  "narration": {
+    "tr": {
+      "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+    }
+  }
+}

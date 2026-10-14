@@ -1,0 +1,406 @@
+{
+ "schemaVersion": 1,
+ "lessonId": "G-B2-07-past-modals-deduction",
+ "voices": {
+  "tr": {
+   "model": "alania-v2",
+   "voice": "alania2-f1",
+   "timing": "duyu-1",
+   "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+  },
+  "en": {
+   "model": "eleven_v3",
+   "voice": "EXAVITQu4vr4xnSDxMaL",
+   "speed": 1.0
+  }
+ },
+ "cards": [
+  {
+   "card": "c01",
+   "type": "hook",
+   "segments": [
+    {
+     "id": "c01-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Alex ipuçlarını yan yana koyuyor ve bir sonuca varıyor. Kadını kendi gözüyle görmedi, ama ipuçları bunu söylüyor. Bu çıkarımı daha ileri bir yapıyla da söyleyebiliriz, dinle.",
+     "textSha256": "db8f7e8b650323af1ca436d8e955787684ef1ddab112dec6641d496af96a5a77",
+     "chars": 174,
+     "audio": "tr/c01-tr.mp3",
+     "align": "tr/c01-tr.align.json",
+     "present": true,
+     "duration": 10.43,
+     "quality": {
+      "words": 26,
+      "exact": 26,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c01-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "She must have been here.",
+     "textSha256": "e5a8966c1e12fe422fff235ab02175bf5c502d792a75ed7ceae827b19b47bd8b",
+     "chars": 24,
+     "audio": "en/c01-ex1.mp3",
+     "align": "en/c01-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c02",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c02-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Kanıta bakıp geçmiş hakkında neredeyse emin olduğun bir sonuca varabilirsin. Bunun için zorunluluk kelimesinden sonra yardımcı fiil ve üçüncü hâl gelir. Türkçedeki unutmuş olmalı sözü tam bunu anlatır.",
+     "textSha256": "148a74128fb39bd282d76b35412d29d71cc1694a790de09756fb34dcd0e79f74",
+     "chars": 201,
+     "audio": "tr/c02-tr.mp3",
+     "align": "tr/c02-tr.align.json",
+     "present": true,
+     "duration": 13.47,
+     "quality": {
+      "words": 28,
+      "exact": 27,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c02-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "The lights are off. They must have gone out.",
+     "textSha256": "14cc1aee4eecc4021c7d213ede7103187e653c8db4fc6c24638170bad2fe5408",
+     "chars": 44,
+     "audio": "en/c02-ex1.mp3",
+     "align": "en/c02-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c03",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c03-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Bir şeyin olmadığından eminsen olumsuz zorunluluk değil, olumsuz yapabilmek kelimesi gelir. Emin değilsen olasılık kelimeleri kullanılır. Hepsinin ardından aynı yardımcı fiil ve üçüncü hâl gelir.",
+     "textSha256": "c38aa00afc4b1eb9ce570c5104f6020be6599629e786e7c9ae6739def399f663",
+     "chars": 195,
+     "audio": "tr/c03-tr.mp3",
+     "align": "tr/c03-tr.align.json",
+     "present": true,
+     "duration": 12.35,
+     "quality": {
+      "words": 25,
+      "exact": 24,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "She can't have seen us. She didn't wave.",
+     "textSha256": "a88492b6ec65c173407e3d8ea5966b4aa7b03805da7dc67f2e63afde4c866833",
+     "chars": 40,
+     "audio": "en/c03-ex1.mp3",
+     "align": "en/c03-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c03-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "He might have missed the bus.",
+     "textSha256": "c56b7e1d713aa107b5fd5331cbce36af088d4bfa8091ecf3e8a6db07f98a618c",
+     "chars": 29,
+     "audio": "en/c03-ex2.mp3",
+     "align": "en/c03-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c04",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c04-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Benzer görünen bir yapı çıkarım değil, eleştiri ya da pişmanlık anlatır. Türkçedeki yapmalıydın sözüne karşılık gelir. Yani olması gereken şey olmamıştır.",
+     "textSha256": "c732fb844ca4dddddf50ec0c71a0cd65023421f4134b0dd28cf16bbeb72e5ce4",
+     "chars": 154,
+     "audio": "tr/c04-tr.mp3",
+     "align": "tr/c04-tr.align.json",
+     "present": true,
+     "duration": 10.11,
+     "quality": {
+      "words": 21,
+      "exact": 21,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c04-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "You should have told me.",
+     "textSha256": "0dcf8974915236ba9246d6c149a5dc3713a5c3a29fcd72e2d68e6754779aa806",
+     "chars": 24,
+     "audio": "en/c04-ex1.mp3",
+     "align": "en/c04-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c05",
+   "type": "examples",
+   "segments": [
+    {
+     "id": "c05-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "The ground is wet. It must have rained last night.",
+     "textSha256": "d69840928175d783b1c8525470999cba3b3fc2ff0a1ade8c01e7f10d3967d8ea",
+     "chars": 50,
+     "audio": "en/c05-ex1.mp3",
+     "align": "en/c05-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "He can't have finished already. He only started ten minutes ago.",
+     "textSha256": "9e3230e007f45c0ded0ad1ece3323e7921bfb7d388e6e9f6117c424b1fd92ab3",
+     "chars": 64,
+     "audio": "en/c05-ex2.mp3",
+     "align": "en/c05-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "I can't find my keys. I might have left them at school.",
+     "textSha256": "f3ce0171cf96599012d8fd3ca5450413693fd80bd2f288082ddfee716f0a2424",
+     "chars": 55,
+     "audio": "en/c05-ex3.mp3",
+     "align": "en/c05-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex4",
+     "lang": "en",
+     "role": "example",
+     "text": "She looks very happy. She must have passed the exam.",
+     "textSha256": "c431e942f2e10b8261aa21c3c707e4eddc5fd20fdaecaa647bc7dcc92c4c096d",
+     "chars": 52,
+     "audio": "en/c05-ex4.mp3",
+     "align": "en/c05-ex4.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex5",
+     "lang": "en",
+     "role": "example",
+     "text": "We should have left earlier.",
+     "textSha256": "968f5c45bd3b8913a8727ecb73037c5f6930f009cdcdb2a845226a9dd9ca42c9",
+     "chars": 28,
+     "audio": "en/c05-ex5.mp3",
+     "align": "en/c05-ex5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c06",
+   "type": "contrast",
+   "segments": [
+    {
+     "id": "c06-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Türkçede bu çıkarımı kolayca kurarız: unutmuş olmalı. İngilizcede yardımcı fiil kolayca unutulur ya da yalnız geçmiş biçim kullanılır. Olmamış olmalı demek için de olumsuz zorunluluk değil, olumsuz yapabilmek gelir.",
+     "textSha256": "55573d456d1500945778c382560d60e960c2c795076bfe23aa295d8ff7a30f0d",
+     "chars": 215,
+     "audio": "tr/c06-tr.mp3",
+     "align": "tr/c06-tr.align.json",
+     "present": true,
+     "duration": 15.39,
+     "quality": {
+      "words": 29,
+      "exact": 29,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c06-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "She must have forgotten.",
+     "textSha256": "46e9bf74cabb86299b72b8ef95440dc9842c09b09119cc0d6a92725559852b93",
+     "chars": 24,
+     "audio": "en/c06-ex1.mp3",
+     "align": "en/c06-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c06-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "He can't have seen me.",
+     "textSha256": "d702b55a854b3388e1f370c5bbd50e10aa47fa521c0ea1211837ba68dc90b944",
+     "chars": 22,
+     "audio": "en/c06-ex2.mp3",
+     "align": "en/c06-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c07",
+   "type": "practice",
+   "segments": [
+    {
+     "id": "c07-q5",
+     "lang": "en",
+     "role": "say",
+     "text": "She must have forgotten.",
+     "textSha256": "46e9bf74cabb86299b72b8ef95440dc9842c09b09119cc0d6a92725559852b93",
+     "chars": 24,
+     "audio": "en/c07-q5.mp3",
+     "align": "en/c07-q5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c08",
+   "type": "rule",
+   "segments": [
+    {
+     "id": "c08-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Geçmiş hakkında çıkarım yaparken kelimeden sonra yardımcı fiil ve üçüncü hâl gelir. Eminsen zorunluluk, olmadığına eminsen olumsuz yapabilmek, emin değilsen olasılık kelimesi seçilir.",
+     "textSha256": "900505a6c8d5c958394ec2fa56c30c5e53bfce7ce31e6155bbd99376a4f545d0",
+     "chars": 183,
+     "audio": "tr/c08-tr.mp3",
+     "align": "tr/c08-tr.align.json",
+     "present": true,
+     "duration": 12.49,
+     "quality": {
+      "words": 23,
+      "exact": 21,
+      "fuzzy": 2,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c08-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "She must have forgotten.",
+     "textSha256": "46e9bf74cabb86299b72b8ef95440dc9842c09b09119cc0d6a92725559852b93",
+     "chars": 24,
+     "audio": "en/c08-ex1.mp3",
+     "align": "en/c08-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c08-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "She can't have seen us.",
+     "textSha256": "e87adabd9137e07b5e13c71cdd8e5bff23c883f9c81b01b42c612dd69c05a95a",
+     "chars": 23,
+     "audio": "en/c08-ex2.mp3",
+     "align": "en/c08-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  }
+ ]
+}

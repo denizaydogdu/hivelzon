@@ -1,0 +1,350 @@
+{
+ "schemaVersion": 1,
+ "lessonId": "G-B2-05-third-conditional",
+ "voices": {
+  "tr": {
+   "model": "alania-v2",
+   "voice": "alania2-f1",
+   "timing": "duyu-1",
+   "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+  },
+  "en": {
+   "model": "eleven_v3",
+   "voice": "EXAVITQu4vr4xnSDxMaL",
+   "speed": 1.0
+  }
+ },
+ "cards": [
+  {
+   "card": "c01",
+   "type": "hook",
+   "segments": [
+    {
+     "id": "c01-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Alex'in otobüsü gecikti ve iskeleye geç kaldı. Bu artık değişmez, olan oldu. Ama olmasaydı ne olurdu diye konuşabiliriz, dinle.",
+     "textSha256": "ade3062c980af1b67d2b9f9d597433eea6792b3c85df5f2af3c993c2759d3ad8",
+     "chars": 127,
+     "audio": "tr/c01-tr.mp3",
+     "align": "tr/c01-tr.align.json",
+     "present": true,
+     "duration": 8.0,
+     "quality": {
+      "words": 19,
+      "exact": 19,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c01-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "If the bus had come on time, Alex wouldn't have been late.",
+     "textSha256": "9683f33e85030eedb623b5a661f9fd5f1bdf5346c81548204702bb705bbd9127",
+     "chars": 58,
+     "audio": "en/c01-ex1.mp3",
+     "align": "en/c01-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c02",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c02-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Bu yapı geçmişte olmamış bir şeyi hayal eder. Koşul tarafında önceki geçmiş zaman gelir. Sonuç tarafında olurdu anlamı veren kelime, yardımcı fiil ve fiilin üçüncü hâli gelir.",
+     "textSha256": "d53779fd5ccd2d43f90f32341b98ae30cc501a2ca4f84901cb786f4989c5096a",
+     "chars": 175,
+     "audio": "tr/c02-tr.mp3",
+     "align": "tr/c02-tr.align.json",
+     "present": true,
+     "duration": 11.82,
+     "quality": {
+      "words": 27,
+      "exact": 26,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c02-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "If I had left earlier, I wouldn't have missed the bus.",
+     "textSha256": "5ead0c85efa6f8ee42f300150cd8c684ff2eef631df7b45a602dfb975d936484",
+     "chars": 54,
+     "audio": "en/c02-ex1.mp3",
+     "align": "en/c02-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c03",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c03-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Bu cümleler aslında olanın tersini söyler. Erken çıksaydım diyen kişi erken çıkmamıştır. Cümleyi anlamak için gerçekte ne olduğunu düşün.",
+     "textSha256": "7660e38d251a562fd36e30556c34a560c642a224f0a618935bc64158e11027e0",
+     "chars": 137,
+     "audio": "tr/c03-tr.mp3",
+     "align": "tr/c03-tr.align.json",
+     "present": true,
+     "duration": 9.28,
+     "quality": {
+      "words": 19,
+      "exact": 18,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 1,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "If you had told me, I would have helped.",
+     "textSha256": "8711deef91b4bba7081a0b7576742007bdf3a0585f5c1e8abb8dcd0ba9bb94e8",
+     "chars": 40,
+     "audio": "en/c03-ex1.mp3",
+     "align": "en/c03-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c03-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "You didn't tell me, so I didn't help.",
+     "textSha256": "d9ae68cea12bb48345648eb1dfb8ae58b74c12f9ffce736e53911e2d0341d1eb",
+     "chars": 37,
+     "audio": "en/c03-ex2.mp3",
+     "align": "en/c03-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c04",
+   "type": "examples",
+   "segments": [
+    {
+     "id": "c04-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "If we had taken a taxi, we would have arrived on time.",
+     "textSha256": "395d02f56849223d89081fa0f3059d2b1c6c62ba093771581f0722e6000b1943",
+     "chars": 54,
+     "audio": "en/c04-ex1.mp3",
+     "align": "en/c04-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "She would have passed the exam if she had studied.",
+     "textSha256": "ac52c3573adc086776d93686a16454b54c85f0af2ca9a7865ef607bc84c76777",
+     "chars": 50,
+     "audio": "en/c04-ex2.mp3",
+     "align": "en/c04-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "If I had known about the party, I would have come.",
+     "textSha256": "973413d3259759e51608fab1a50380243197ebf01a20c9a9e839a19da23605f5",
+     "chars": 50,
+     "audio": "en/c04-ex3.mp3",
+     "align": "en/c04-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex4",
+     "lang": "en",
+     "role": "example",
+     "text": "If it hadn't rained, we would have gone to the beach.",
+     "textSha256": "9126ee027117dc37855a846af3840a6dd190b5b96784e8a2b2b08b8404042a06",
+     "chars": 53,
+     "audio": "en/c04-ex4.mp3",
+     "align": "en/c04-ex4.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex5",
+     "lang": "en",
+     "role": "example",
+     "text": "What would you have done if you had lost your passport?",
+     "textSha256": "fc0d7fd602417507725c260099f023b263bb1c6d23cecf226ebed53bea7c9ce8",
+     "chars": 55,
+     "audio": "en/c04-ex5.mp3",
+     "align": "en/c04-ex5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c05",
+   "type": "contrast",
+   "segments": [
+    {
+     "id": "c05-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Türkçede iki ek bu işi görür: çıksaydım, kaçırmazdım. İngilizcede iki tarafta da birkaç parçalı bir fiil zinciri gerekir. Koşul tarafına da olurdu anlamı veren kelimeyi koymak çok olağan bir hatadır.",
+     "textSha256": "807e4dd772063961d52593070edac7ffcf33d722470c2b4335a0c9fe90a08b05",
+     "chars": 199,
+     "audio": "tr/c05-tr.mp3",
+     "align": "tr/c05-tr.align.json",
+     "present": true,
+     "duration": 13.31,
+     "quality": {
+      "words": 30,
+      "exact": 30,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "If I had known, I would have come.",
+     "textSha256": "37ce7b6eb15f1451bee9c715468f995f385059c5f5274ffffdf6c2652b642783",
+     "chars": 34,
+     "audio": "en/c05-ex1.mp3",
+     "align": "en/c05-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "I would have helped you.",
+     "textSha256": "8e12cc0e286c5695ea51e4e13984673b1c2f0f4d72f1df743a9aafbc3651dc3d",
+     "chars": 24,
+     "audio": "en/c05-ex2.mp3",
+     "align": "en/c05-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c06",
+   "type": "practice",
+   "segments": [
+    {
+     "id": "c06-q5",
+     "lang": "en",
+     "role": "say",
+     "text": "If I had known, I would have come.",
+     "textSha256": "37ce7b6eb15f1451bee9c715468f995f385059c5f5274ffffdf6c2652b642783",
+     "chars": 34,
+     "audio": "en/c06-q5.mp3",
+     "align": "en/c06-q5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c07",
+   "type": "rule",
+   "segments": [
+    {
+     "id": "c07-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Geçmişte olmamış bir koşul için koşul tarafında önceki geçmiş zaman gelir. Sonuç tarafında olurdu anlamı veren kelime, yardımcı fiil ve üçüncü hâl gelir.",
+     "textSha256": "479144cb58a711317dfd2a1f069e9a05c9092ec8f907c196f93162d6dd622f7f",
+     "chars": 153,
+     "audio": "tr/c07-tr.mp3",
+     "align": "tr/c07-tr.align.json",
+     "present": true,
+     "duration": 9.62,
+     "quality": {
+      "words": 23,
+      "exact": 22,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 4,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c07-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "If I had left earlier, I wouldn't have missed the bus.",
+     "textSha256": "5ead0c85efa6f8ee42f300150cd8c684ff2eef631df7b45a602dfb975d936484",
+     "chars": 54,
+     "audio": "en/c07-ex1.mp3",
+     "align": "en/c07-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  }
+ ]
+}

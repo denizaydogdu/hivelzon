@@ -1,0 +1,462 @@
+{
+ "schemaVersion": 1,
+ "lessonId": "G-B2-02-reported-statements",
+ "voices": {
+  "tr": {
+   "model": "alania-v2",
+   "voice": "alania2-f1",
+   "timing": "duyu-1",
+   "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+  },
+  "en": {
+   "model": "eleven_v3",
+   "voice": "EXAVITQu4vr4xnSDxMaL",
+   "speed": 1.0
+  }
+ },
+ "cards": [
+  {
+   "card": "c01",
+   "type": "hook",
+   "segments": [
+    {
+     "id": "c01-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Nia'nın annesi ve babası yağmuru hatırlıyor, ama farklı anlatıyorlar. Kitap annenin sözünü tırnak içinde vermiyor, aktarıyor. Bu kısa cümleyi dinle.",
+     "textSha256": "0e4c720c5d89eb3cf989fad7166622d733630561dc238b58cd0fe40d6eda9dd1",
+     "chars": 148,
+     "audio": "tr/c01-tr.mp3",
+     "align": "tr/c01-tr.align.json",
+     "present": true,
+     "duration": 10.91,
+     "quality": {
+      "words": 20,
+      "exact": 20,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 3,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c01-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "Mum said it was cold.",
+     "textSha256": "4f63e06007fc8c6d267462efb6da2d6fcb00e7db19a4c07a71f291a317dfeb6a",
+     "chars": 21,
+     "audio": "en/c01-ex1.mp3",
+     "align": "en/c01-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c02",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c02-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Birinin sözünü tırnak içinde aynen verebilir ya da kendi cümlene katarak aktarabilirsin. Aktarırken tırnak kalkar. Ben, burası ve yarın gibi kelimeler de yeni duruma uyar.",
+     "textSha256": "ca3352d2e16e74180186cb76d343382675fc628038f64b5c1124423327454e74",
+     "chars": 171,
+     "audio": "tr/c02-tr.mp3",
+     "align": "tr/c02-tr.align.json",
+     "present": true,
+     "duration": 12.35,
+     "quality": {
+      "words": 25,
+      "exact": 25,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c02-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "\"I'm tired,\" she said.",
+     "textSha256": "143087f5fef809650f6e8415e074ebc0399683537b90e28450d639a422a47809",
+     "chars": 22,
+     "audio": "en/c02-ex1.mp3",
+     "align": "en/c02-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c02-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "She said she was tired.",
+     "textSha256": "5e8f240fa8b737f17ce7f222ad10dc48af5c7a15f533785ed9c654c59e1263e8",
+     "chars": 23,
+     "audio": "en/c02-ex2.mp3",
+     "align": "en/c02-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c02-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "He said he would come the next day.",
+     "textSha256": "9032c180a1e848f0af6a0c1a9811b70de81ff45eea2eaa2575f71645c33dd4c7",
+     "chars": 35,
+     "audio": "en/c02-ex3.mp3",
+     "align": "en/c02-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c03",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c03-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Aktaran fiil geçmişteyse, aktarılan söz de çoğu zaman bir adım geriye kayar. Geniş zaman geçmişe, geçmiş de daha önceki geçmişe geçer. Gelecek için kullanılan kelime de kendi geçmiş biçimine döner.",
+     "textSha256": "2d798db377d0d3dd7c88264333c4dac2ef4cdf35b5434bde95cbac795f6c24ac",
+     "chars": 197,
+     "audio": "tr/c03-tr.mp3",
+     "align": "tr/c03-tr.align.json",
+     "present": true,
+     "duration": 12.66,
+     "quality": {
+      "words": 30,
+      "exact": 29,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 4,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "He said he would call later.",
+     "textSha256": "a3aef6f12a0455b96d3eb6a46cde28351c096ed013a5a2fecd5167a7ae4eb81a",
+     "chars": 28,
+     "audio": "en/c03-ex1.mp3",
+     "align": "en/c03-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c03-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "She said she had lost her keys.",
+     "textSha256": "c5bc3b3ee82f973641f78fa90f3a3bc8c5ec3bd49178ccb80766e00961897e68",
+     "chars": 31,
+     "audio": "en/c03-ex2.mp3",
+     "align": "en/c03-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c04",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c04-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Sözü aktarmak için iki fiil var. Birinden sonra hemen söz gelir, öbürü önce sözün kime söylendiğini ister. Türkçedeki bana söyledi yapısı için ikinci fiili seç.",
+     "textSha256": "2cca151d7eb980827d9070e6adec57e16cd98ff44053750bb5f3c17090e886cf",
+     "chars": 160,
+     "audio": "tr/c04-tr.mp3",
+     "align": "tr/c04-tr.align.json",
+     "present": true,
+     "duration": 11.87,
+     "quality": {
+      "words": 25,
+      "exact": 24,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c04-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "She said that she was hungry.",
+     "textSha256": "222aef9498650eea45102a34e301c110edf019733796c2caa35332f5c564c391",
+     "chars": 29,
+     "audio": "en/c04-ex1.mp3",
+     "align": "en/c04-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "She told me that she was hungry.",
+     "textSha256": "0e835ec95b2c34a75fa5d1d90c50fb126e9578fdc9d29253774e760ebb07fd1d",
+     "chars": 32,
+     "audio": "en/c04-ex2.mp3",
+     "align": "en/c04-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c05",
+   "type": "examples",
+   "segments": [
+    {
+     "id": "c05-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "Ali said he lived in Ankara.",
+     "textSha256": "21e2cc45d159be20fda2ea7663ac05b3570dd2ca692107b02f8948b641aa8fff",
+     "chars": 28,
+     "audio": "en/c05-ex1.mp3",
+     "align": "en/c05-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "My teacher told me I was doing well.",
+     "textSha256": "91385eb99dcae0f70754e066c4c7962f86727aa8207abf36175d3338e071431b",
+     "chars": 36,
+     "audio": "en/c05-ex2.mp3",
+     "align": "en/c05-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "They said they would help us.",
+     "textSha256": "03934c4f9a4026f13b1873fde6b7eac9d863ff86850dcb8cc48e02ae7f7951e0",
+     "chars": 29,
+     "audio": "en/c05-ex3.mp3",
+     "align": "en/c05-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex4",
+     "lang": "en",
+     "role": "example",
+     "text": "He told us he had seen the film.",
+     "textSha256": "b540ba56308f627be7fbc46dcf1b3dcffe68b329cbad5a75baf144e50c6c5e94",
+     "chars": 32,
+     "audio": "en/c05-ex4.mp3",
+     "align": "en/c05-ex4.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex5",
+     "lang": "en",
+     "role": "example",
+     "text": "She said the shop was closed.",
+     "textSha256": "fdf6d671caecfda014f64505e5480b39ff89318d34bf89d4df65c893a286081a",
+     "chars": 29,
+     "audio": "en/c05-ex5.mp3",
+     "align": "en/c05-ex5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c06",
+   "type": "contrast",
+   "segments": [
+    {
+     "id": "c06-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Türkçede sözü dedi ki ile aynen veririz ya da miş ekiyle aktarırız: soğukmuş. Soğuk olduğunu söyledi dediğimizde de zaman değişmez. İngilizcede söz düz bir cümle olarak kalır, ama zaman geriye kayar. Kime söylendiğini belirtiyorsan da doğru fiili seçmen gerekir.",
+     "textSha256": "b8cb1e2990b96f11f4c0779c7076f691bfd5211e27c2cec123fe57290decefa7",
+     "chars": 262,
+     "audio": "tr/c06-tr.mp3",
+     "align": "tr/c06-tr.align.json",
+     "present": true,
+     "duration": 16.83,
+     "quality": {
+      "words": 39,
+      "exact": 37,
+      "fuzzy": 2,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c06-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "She told me she was tired.",
+     "textSha256": "a465290af6737ef228ee7de233747d3bfa831d5e041c40afcd9fdd7222fae997",
+     "chars": 26,
+     "audio": "en/c06-ex1.mp3",
+     "align": "en/c06-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c06-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "He said that he was busy.",
+     "textSha256": "47118fd62e3c6428c03808dce68468a264ee1597347e5032e00822df07ecddfc",
+     "chars": 25,
+     "audio": "en/c06-ex2.mp3",
+     "align": "en/c06-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c07",
+   "type": "practice",
+   "segments": [
+    {
+     "id": "c07-q5",
+     "lang": "en",
+     "role": "say",
+     "text": "She said she was tired.",
+     "textSha256": "5e8f240fa8b737f17ce7f222ad10dc48af5c7a15f533785ed9c654c59e1263e8",
+     "chars": 23,
+     "audio": "en/c07-q5.mp3",
+     "align": "en/c07-q5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c08",
+   "type": "seeInStory",
+   "segments": [
+    {
+     "id": "c08-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Kitaplarda aktarılan başka sözler de var. Şu cümlelere bir daha bak.",
+     "textSha256": "f1f494453a262d99742d13d7a17a029a0ea4762e7b87121ea13481a3cf132567",
+     "chars": 68,
+     "audio": "tr/c08-tr.mp3",
+     "align": "tr/c08-tr.align.json",
+     "present": true,
+     "duration": 4.0,
+     "quality": {
+      "words": 11,
+      "exact": 11,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    }
+   ]
+  },
+  {
+   "card": "c09",
+   "type": "rule",
+   "segments": [
+    {
+     "id": "c09-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Aktarılan söz düz bir cümle olur ve zaman çoğu zaman bir adım geri kayar. Kime söylendiğini belirtiyorsan ikinci fiil gelir.",
+     "textSha256": "711b6d28ba4dc5aeff142b10c8691b9abb549053ddbb7c076eee964ba2ff8046",
+     "chars": 124,
+     "audio": "tr/c09-tr.mp3",
+     "align": "tr/c09-tr.align.json",
+     "present": true,
+     "duration": 6.88,
+     "quality": {
+      "words": 20,
+      "exact": 20,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c09-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "She told me she was tired.",
+     "textSha256": "a465290af6737ef228ee7de233747d3bfa831d5e041c40afcd9fdd7222fae997",
+     "chars": 26,
+     "audio": "en/c09-ex1.mp3",
+     "align": "en/c09-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  }
+ ]
+}

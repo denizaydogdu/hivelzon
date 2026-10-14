@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "id": "G-B2-10-causative",
+  "level": "B2",
+  "titleTr": "Ettirgen yapı (causative): have ya da get something done",
+  "titleEn": "Causative have / get",
+  "goalTr": "Bir işi başkasına yaptırdığını have ya da get, nesne ve V3 ile söylersin.",
+  "prerequisites": [
+    "G-B2-01-passive"
+  ],
+  "contentVersion": 1,
+  "status": "DRAFT",
+  "aiGenerated": true,
+  "teacherReview": null,
+  "linksTo": {
+    "episodes": [],
+    "books": []
+  },
+  "narration": {
+    "tr": {
+      "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+    }
+  }
+}

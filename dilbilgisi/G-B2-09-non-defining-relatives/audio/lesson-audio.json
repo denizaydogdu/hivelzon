@@ -1,0 +1,406 @@
+{
+ "schemaVersion": 1,
+ "lessonId": "G-B2-09-non-defining-relatives",
+ "voices": {
+  "tr": {
+   "model": "alania-v2",
+   "voice": "alania2-f1",
+   "timing": "duyu-1",
+   "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+  },
+  "en": {
+   "model": "eleven_v3",
+   "voice": "EXAVITQu4vr4xnSDxMaL",
+   "speed": 1.0
+  }
+ },
+ "cards": [
+  {
+   "card": "c01",
+   "type": "hook",
+   "segments": [
+    {
+     "id": "c01-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Nia'nın yaşadığı yer bu cümlede tanıtılıyor. Kasabanın adından sonra virgül geliyor ve ek bir bilgi ekleniyor. Bu ek bilgiyi tam bir cümlecikle de verebiliriz, dinle.",
+     "textSha256": "019bb3bdf720a257417cbd146620ec975039113ca46985d56a3458caa05ff99f",
+     "chars": 166,
+     "audio": "tr/c01-tr.mp3",
+     "align": "tr/c01-tr.align.json",
+     "present": true,
+     "duration": 11.71,
+     "quality": {
+      "words": 25,
+      "exact": 25,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c01-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "She lived in Lunaria, which was a small town under a glass roof.",
+     "textSha256": "fe885d6eaf0b66242187bed0ac52de4427e5df9b96a8d51d92a4e586723c9564",
+     "chars": 64,
+     "audio": "en/c01-ex1.mp3",
+     "align": "en/c01-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c02",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c02-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Zaten bildiğimiz bir isme ek bilgi verirken bu cümlecik virgüllerle ayrılır. Bu bilgiyi çıkarsan da cümle anlamını kaybetmez. İnsan için bir kelime, şey ve hayvan için başka bir kelime kullanılır.",
+     "textSha256": "5c182e3b1ef66235b65b06e8fb07204b74293d5c9ed510bce44e26d926fa71c9",
+     "chars": 196,
+     "audio": "tr/c02-tr.mp3",
+     "align": "tr/c02-tr.align.json",
+     "present": true,
+     "duration": 12.51,
+     "quality": {
+      "words": 30,
+      "exact": 30,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c02-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "My aunt, who lives in İzmir, is a doctor.",
+     "textSha256": "50fd168434947439247711f49709e89465889eb1f61e44e319610fede486bbd0",
+     "chars": 41,
+     "audio": "en/c02-ex1.mp3",
+     "align": "en/c02-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c02-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "This phone, which I bought last year, is already broken.",
+     "textSha256": "48007749061c0226c4021492fcca226af4218547abb9e2065fa13deccd9750c0",
+     "chars": 56,
+     "audio": "en/c02-ex2.mp3",
+     "align": "en/c02-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c03",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c03-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Virgülsüz cümlecik, hangi kişiden söz ettiğimizi seçer. Virgüllü cümlecik ise yalnız ek bilgi verir. Bu yüzden virgüllü yapıda önceki derste gördüğün genel kelime kullanılmaz.",
+     "textSha256": "7a3d34fc4276739dc7a786bb5ded27162ddaa48c683e2884343b7e771823dccb",
+     "chars": 175,
+     "audio": "tr/c03-tr.mp3",
+     "align": "tr/c03-tr.align.json",
+     "present": true,
+     "duration": 11.55,
+     "quality": {
+      "words": 24,
+      "exact": 24,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "My brother who lives in Ankara is a teacher.",
+     "textSha256": "44ab144fc00c599692d145ab63b271318f1ab03531b0866dbeaa903c7770837d",
+     "chars": 44,
+     "audio": "en/c03-ex1.mp3",
+     "align": "en/c03-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c03-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "My brother, who lives in Ankara, is a teacher.",
+     "textSha256": "5c3b976ec52c87d1fe90a56c8719c226ba7870ecf0a4d9f6e276c9094c7363fb",
+     "chars": 46,
+     "audio": "en/c03-ex2.mp3",
+     "align": "en/c03-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c04",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c04-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Sahiplik için onun anlamına gelen ayrı bir kelime vardır. Bütün bir cümleye yorum eklemek için ise şeyler için kullanılan kelime gelir. Türkçedeki bu da tuhaftı sözüne benzer.",
+     "textSha256": "22e4221887450d4fd9ea80bff21cbd024d0148fb0d4b1d382c6b92edff40f03c",
+     "chars": 175,
+     "audio": "tr/c04-tr.mp3",
+     "align": "tr/c04-tr.align.json",
+     "present": true,
+     "duration": 11.23,
+     "quality": {
+      "words": 27,
+      "exact": 27,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c04-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "Mert, whose father is a pilot, loves planes.",
+     "textSha256": "4897816e80d979549a0b9d198b1b7e515ecf884bd4bc44471b664f27c762f059",
+     "chars": 44,
+     "audio": "en/c04-ex1.mp3",
+     "align": "en/c04-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "He didn't call, which was strange.",
+     "textSha256": "e8f636c546f569eff750da3d86b0fdba903d9cab0d0140bdce7e05f932f8d9c2",
+     "chars": 34,
+     "audio": "en/c04-ex2.mp3",
+     "align": "en/c04-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c05",
+   "type": "examples",
+   "segments": [
+    {
+     "id": "c05-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "Ankara, which is the capital of Türkiye, is in the middle of the country.",
+     "textSha256": "7b6e013f0c6613569c12d4dd8e40d4b6f9ac45e910c39e2c9e9e7efb701e8a32",
+     "chars": 73,
+     "audio": "en/c05-ex1.mp3",
+     "align": "en/c05-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "My grandmother, who is eighty, still swims every day.",
+     "textSha256": "8038a189b26e5f3e88b1f247e0ae59cecd444017a7cd2e91336b266bf25cf2de",
+     "chars": 53,
+     "audio": "en/c05-ex2.mp3",
+     "align": "en/c05-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "Ms Demir, whose lessons I love, is leaving the school.",
+     "textSha256": "10fb92f76d18070f8623721745d02845f27919d73d0956b72224d4aaecd07a6a",
+     "chars": 54,
+     "audio": "en/c05-ex3.mp3",
+     "align": "en/c05-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex4",
+     "lang": "en",
+     "role": "example",
+     "text": "We missed the bus, which made us late.",
+     "textSha256": "0e20e6ca8e8bb00e4be0f82c57ea3ed6683b341f0fda7d56558abf3c09dcebdf",
+     "chars": 38,
+     "audio": "en/c05-ex4.mp3",
+     "align": "en/c05-ex4.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c06",
+   "type": "contrast",
+   "segments": [
+    {
+     "id": "c06-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Türkçede ek bilgiyi çoğu zaman isimden önce veririz: İzmir'de yaşayan teyzem. Virgülün anlamı değiştirmesi Türkçede yoktur, bu yüzden ilk başta yabancı gelir. Bu yapıda genel kelimeyi kullanmak da çok olağan bir hatadır.",
+     "textSha256": "cf9dd4f59ee911b50ce30dc5288e3bd67a8ca7fa0e526d3f7bcb37fdbbfbf5d3",
+     "chars": 220,
+     "audio": "tr/c06-tr.mp3",
+     "align": "tr/c06-tr.align.json",
+     "present": true,
+     "duration": 16.37,
+     "quality": {
+      "words": 32,
+      "exact": 32,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 1,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c06-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "My brother, who lives in İzmir, is a doctor.",
+     "textSha256": "c59d8ce51033615e6279a189f755ce3bc474b2863acb3126f4574937d1484b68",
+     "chars": 44,
+     "audio": "en/c06-ex1.mp3",
+     "align": "en/c06-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c06-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "He didn't call, which was strange.",
+     "textSha256": "e8f636c546f569eff750da3d86b0fdba903d9cab0d0140bdce7e05f932f8d9c2",
+     "chars": 34,
+     "audio": "en/c06-ex2.mp3",
+     "align": "en/c06-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c07",
+   "type": "practice",
+   "segments": [
+    {
+     "id": "c07-q5",
+     "lang": "en",
+     "role": "say",
+     "text": "My aunt, who lives in İzmir, is a doctor.",
+     "textSha256": "50fd168434947439247711f49709e89465889eb1f61e44e319610fede486bbd0",
+     "chars": 41,
+     "audio": "en/c07-q5.mp3",
+     "align": "en/c07-q5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c08",
+   "type": "rule",
+   "segments": [
+    {
+     "id": "c08-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Bilinen bir isme ek bilgi verirken cümlecik virgüllerle ayrılır. İnsan için ayrı, şey için ayrı kelime gelir; genel kelime bu yapıda kullanılmaz.",
+     "textSha256": "c5c471a4a0b671c53be21621fc314464b8f61b1ebe5dffc19ab6419c122e4b1a",
+     "chars": 145,
+     "audio": "tr/c08-tr.mp3",
+     "align": "tr/c08-tr.align.json",
+     "present": true,
+     "duration": 10.65,
+     "quality": {
+      "words": 22,
+      "exact": 22,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c08-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "My aunt, who lives in İzmir, is a doctor.",
+     "textSha256": "50fd168434947439247711f49709e89465889eb1f61e44e319610fede486bbd0",
+     "chars": 41,
+     "audio": "en/c08-ex1.mp3",
+     "align": "en/c08-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  }
+ ]
+}

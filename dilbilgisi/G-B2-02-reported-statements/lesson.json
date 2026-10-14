@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "id": "G-B2-02-reported-statements",
+  "level": "B2",
+  "titleTr": "Dolaylı anlatım (1): say, tell ve zaman kaydırma",
+  "titleEn": "Reported statements",
+  "goalTr": "Başkasının sözünü said ya da told ile aktarır, gerektiğinde zamanı bir adım geriye kaydırır, kişi ve zaman kelimelerini uyarlarsın.",
+  "prerequisites": [
+    "G-B1-11-past-perfect"
+  ],
+  "contentVersion": 1,
+  "status": "DRAFT",
+  "aiGenerated": true,
+  "teacherReview": null,
+  "linksTo": {
+    "episodes": [],
+    "books": [
+      "A2-K03",
+      "A2-K04"
+    ]
+  },
+  "properNouns": [
+    "Nia",
+    "Ali",
+    "Ankara"
+  ],
+  "narration": {
+    "tr": {
+      "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+    }
+  }
+}

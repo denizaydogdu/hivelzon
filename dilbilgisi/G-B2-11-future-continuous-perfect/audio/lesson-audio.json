@@ -1,0 +1,406 @@
+{
+ "schemaVersion": 1,
+ "lessonId": "G-B2-11-future-continuous-perfect",
+ "voices": {
+  "tr": {
+   "model": "alania-v2",
+   "voice": "alania2-f1",
+   "timing": "duyu-1",
+   "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+  },
+  "en": {
+   "model": "eleven_v3",
+   "voice": "EXAVITQu4vr4xnSDxMaL",
+   "speed": 1.0
+  }
+ },
+ "cards": [
+  {
+   "card": "c01",
+   "type": "hook",
+   "segments": [
+    {
+     "id": "c01-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Bu cümleyi dinle. Yarın bu saatte konuşan kişi uçakta olacak ve uçuş sürüyor olacak. Türkçedeki uçuyor olacağım sözü burada çok iyi bir köprüdür.",
+     "textSha256": "f3c21623261d25940b31b9c8478a3475177fbb1bc446630c4aa6556fed70825b",
+     "chars": 145,
+     "audio": "tr/c01-tr.mp3",
+     "align": "tr/c01-tr.align.json",
+     "present": true,
+     "duration": 13.15,
+     "quality": {
+      "words": 23,
+      "exact": 23,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 4,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c01-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "This time tomorrow, I'll be flying to Berlin.",
+     "textSha256": "b4a22a5cc079c3b07c0b0c07f1c43dd065f50e94fec89a4ba3195dad05fec814",
+     "chars": 45,
+     "audio": "en/c01-ex1.mp3",
+     "align": "en/c01-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c02",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c02-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Gelecekteki belli bir anı düşün. O anda sürecek eylem için gelecek kelimesi, olmak fiili ve -ing ekli fiil gelir. Türkçedeki yapıyor olacağım sözü buna karşılık gelir.",
+     "textSha256": "c7e1abbfb8fb1ba80599eb3f1e08cffc0b191567408724d96e778e88ea0f04ef",
+     "chars": 167,
+     "audio": "tr/c02-tr.mp3",
+     "align": "tr/c02-tr.align.json",
+     "present": true,
+     "duration": 10.43,
+     "quality": {
+      "words": 26,
+      "exact": 26,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c02-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "At eight tonight, we'll be having dinner.",
+     "textSha256": "47cac6a3fd2a85c7588fd5e98c10c1f26c425027df2c0711857d136e39915617",
+     "chars": 41,
+     "audio": "en/c02-ex1.mp3",
+     "align": "en/c02-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c03",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c03-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Gelecekteki bir ana kadar bitmiş olacak bir eylem için yardımcı fiil ve üçüncü hâl gelir. Türkçedeki bitirmiş olacağım sözü buna karşılık gelir. Son an çoğu zaman e kadar anlamındaki küçük bir edatla verilir.",
+     "textSha256": "e43e2266b39a28d05cf0d9b5d6bb5edc4af3885b78f7ba6eaff32a25cbbcf576",
+     "chars": 208,
+     "audio": "tr/c03-tr.mp3",
+     "align": "tr/c03-tr.align.json",
+     "present": true,
+     "duration": 13.1,
+     "quality": {
+      "words": 33,
+      "exact": 32,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "By June, she will have finished school.",
+     "textSha256": "f792a4afda5dfdedda776b7d6dcad361d278d0ee08ab43c2ca1a23de5fcbb2ef",
+     "chars": 39,
+     "audio": "en/c03-ex1.mp3",
+     "align": "en/c03-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c04",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c04-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Türkçedeki e kadar sözü iki farklı edata karşılık gelir. Eylem o ana kadar bitecekse birini, o ana kadar sürecekse öbürünü seçersin. Bitirmek gibi bir anda olan işlerde ilki gelir.",
+     "textSha256": "9a03cd6ab3134e01034dbe9552794efa92766f95e395efd4c67050359d59c5b7",
+     "chars": 180,
+     "audio": "tr/c04-tr.mp3",
+     "align": "tr/c04-tr.align.json",
+     "present": true,
+     "duration": 14.09,
+     "quality": {
+      "words": 29,
+      "exact": 28,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 1,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c04-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I'll finish the report by Friday.",
+     "textSha256": "7513ac0e26f7480347f557cf329089b804a6e10de06ddc81693c56459c55fd5f",
+     "chars": 33,
+     "audio": "en/c04-ex1.mp3",
+     "align": "en/c04-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "I'll work here until Friday.",
+     "textSha256": "72665b5667c764eca119ece7dc59555473e55ec476710578aa39902f1baac508",
+     "chars": 28,
+     "audio": "en/c04-ex2.mp3",
+     "align": "en/c04-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c05",
+   "type": "examples",
+   "segments": [
+    {
+     "id": "c05-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "Don't call at nine. I'll be sleeping.",
+     "textSha256": "1c3246876ff8a2cf6d7022ef5dac289b2817d28edaf5dfe03f0b32eadec1b3f9",
+     "chars": 37,
+     "audio": "en/c05-ex1.mp3",
+     "align": "en/c05-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "Will you be using the car tonight?",
+     "textSha256": "103cbd161089b5d642e46acda22c76609e8f37d79e0a8d076565f454dbafb42d",
+     "chars": 34,
+     "audio": "en/c05-ex2.mp3",
+     "align": "en/c05-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "By the time you arrive, we'll have eaten.",
+     "textSha256": "e23d5ac3d180a064bc76d0351a4a28a92547b9b674fa94d8fd8a3d41690b7e3a",
+     "chars": 41,
+     "audio": "en/c05-ex3.mp3",
+     "align": "en/c05-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex4",
+     "lang": "en",
+     "role": "example",
+     "text": "By 2030, I will have finished university.",
+     "textSha256": "9a40373980b2056d1f4fce568800203b64d10da821234e1039b2df35369574ab",
+     "chars": 41,
+     "audio": "en/c05-ex4.mp3",
+     "align": "en/c05-ex4.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex5",
+     "lang": "en",
+     "role": "example",
+     "text": "This time next week, we'll be lying on the beach.",
+     "textSha256": "0413d0789aed95a03373eb12bc0a140f1a27df7a078309d4ed279da9f823092e",
+     "chars": 49,
+     "audio": "en/c05-ex5.mp3",
+     "align": "en/c05-ex5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c06",
+   "type": "contrast",
+   "segments": [
+    {
+     "id": "c06-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Bu yapıların Türkçede iyi karşılıkları var: uçuyor olacağım, bitirmiş olacağım. Asıl zorluk e kadar sözündedir, çünkü Türkçe tek bir söz kullanır. Bitiş için süre bildiren edatı seçmek çok olağan bir hatadır.",
+     "textSha256": "d22108ef867135a6d6b97f7395c46c3974b5a6fa7bb224fde219da258416782a",
+     "chars": 208,
+     "audio": "tr/c06-tr.mp3",
+     "align": "tr/c06-tr.align.json",
+     "present": true,
+     "duration": 13.31,
+     "quality": {
+      "words": 31,
+      "exact": 31,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c06-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I'll finish the report by Friday.",
+     "textSha256": "7513ac0e26f7480347f557cf329089b804a6e10de06ddc81693c56459c55fd5f",
+     "chars": 33,
+     "audio": "en/c06-ex1.mp3",
+     "align": "en/c06-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c06-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "By next year, I will have finished school.",
+     "textSha256": "8ca09d69b2a95c93656f2b7d43d9600bee0e41c8f472eab3ee2a8bdbe83fd4e8",
+     "chars": 42,
+     "audio": "en/c06-ex2.mp3",
+     "align": "en/c06-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c07",
+   "type": "practice",
+   "segments": [
+    {
+     "id": "c07-q5",
+     "lang": "en",
+     "role": "say",
+     "text": "This time tomorrow, I'll be flying to Berlin.",
+     "textSha256": "b4a22a5cc079c3b07c0b0c07f1c43dd065f50e94fec89a4ba3195dad05fec814",
+     "chars": 45,
+     "audio": "en/c07-q5.mp3",
+     "align": "en/c07-q5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c08",
+   "type": "rule",
+   "segments": [
+    {
+     "id": "c08-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Gelecekteki bir anda sürecek eylem için olmak fiili ve -ing ekli fiil gelir. O ana kadar bitecek eylem için yardımcı fiil ve üçüncü hâl gelir.",
+     "textSha256": "93c8f033d3049f26e2704b0ecddc5dbd01c90808d5f88ccd0672a074c3a6776c",
+     "chars": 142,
+     "audio": "tr/c08-tr.mp3",
+     "align": "tr/c08-tr.align.json",
+     "present": true,
+     "duration": 9.15,
+     "quality": {
+      "words": 25,
+      "exact": 23,
+      "fuzzy": 2,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c08-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "This time tomorrow, I'll be flying to Berlin.",
+     "textSha256": "b4a22a5cc079c3b07c0b0c07f1c43dd065f50e94fec89a4ba3195dad05fec814",
+     "chars": 45,
+     "audio": "en/c08-ex1.mp3",
+     "align": "en/c08-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c08-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "By June, she will have finished school.",
+     "textSha256": "f792a4afda5dfdedda776b7d6dcad361d278d0ee08ab43c2ca1a23de5fcbb2ef",
+     "chars": 39,
+     "audio": "en/c08-ex2.mp3",
+     "align": "en/c08-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  }
+ ]
+}

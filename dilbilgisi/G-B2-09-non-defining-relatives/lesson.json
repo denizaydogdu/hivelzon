@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "id": "G-B2-09-non-defining-relatives",
+  "level": "B2",
+  "titleTr": "Tanımlamayan sıfat cümlecikleri: virgüllü who, which, whose",
+  "titleEn": "Non-defining relative clauses",
+  "goalTr": "Zaten bilinen bir isme virgüllerle ek bilgi ekler, bu yapıda that kullanmaz, which ile bütün cümleye yorum yaparsın.",
+  "prerequisites": [
+    "G-B1-08-defining-relative-clauses"
+  ],
+  "contentVersion": 1,
+  "status": "DRAFT",
+  "aiGenerated": true,
+  "teacherReview": null,
+  "linksTo": {
+    "episodes": [],
+    "books": [
+      "A2-K04"
+    ]
+  },
+  "properNouns": [
+    "Nia",
+    "Lunaria",
+    "İzmir",
+    "Ankara",
+    "Türkiye",
+    "Mert",
+    "Ms Demir",
+    "Elif"
+  ],
+  "narration": {
+    "tr": {
+      "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+    }
+  }
+}

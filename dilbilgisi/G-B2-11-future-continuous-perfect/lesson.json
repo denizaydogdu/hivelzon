@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "id": "G-B2-11-future-continuous-perfect",
+  "level": "B2",
+  "titleTr": "Gelecekte süren ve bitmiş eylem: will be doing, will have done",
+  "titleEn": "Future continuous and future perfect",
+  "goalTr": "Gelecekte belli bir anda sürecek eylemi will be ve -ing ile, o ana kadar bitmiş olacak eylemi will have ve V3 ile anlatır; by ile until'i ayırırsın.",
+  "prerequisites": [
+    "G-B1-06-future-forms",
+    "G-B1-01-present-perfect-experience"
+  ],
+  "contentVersion": 1,
+  "status": "DRAFT",
+  "aiGenerated": true,
+  "teacherReview": null,
+  "linksTo": {
+    "episodes": [],
+    "books": []
+  },
+  "properNouns": [
+    "Berlin",
+    "June",
+    "Friday"
+  ],
+  "pronunciations": [
+    {
+      "term": "-ing",
+      "say_as": "ing"
+    }
+  ],
+  "narration": {
+    "tr": {
+      "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+    }
+  }
+}
