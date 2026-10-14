@@ -350,11 +350,10 @@ class ShowcaseButtonsSection extends StatelessWidget {
     ),
     const SizedBox(height: AppSpace.s12),
     Center(
-      child: OutlinedButton.icon(
+      child: DontKnowButton(
+        label: 'Bilmiyorum',
         onPressed: () {},
-        style: AppButtonStyles.dontKnow(minimumSize: const Size(220, 48)),
-        icon: const Icon(AppButtonStyles.dontKnowIcon),
-        label: const Text('Bilmiyorum'),
+        minimumSize: const Size(220, 48),
       ),
     ),
     const SizedBox(height: AppSpace.s12),

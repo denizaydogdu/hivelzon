@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../../app/theme.dart';
+import '../../../../app/design/design.dart';
 import '../../../../l10n/tr_strings.dart';
 import '../../../../shared/content/content_providers.dart';
 import '../../../../shared/content/content_source.dart';
@@ -16,7 +16,7 @@ class NotebookImage extends ConsumerWidget {
     super.key,
     required this.item,
     this.aspectRatio = 4 / 3,
-    this.borderRadius = AppTheme.radius,
+    this.borderRadius = AppRadius.md,
   });
 
   final NotebookItem item;
@@ -27,13 +27,13 @@ class NotebookImage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final path = item.imagePath;
     final contentId = item.contentId;
-    final placeholder = ColoredBox(
-      color: AppColors.seaBlue.withValues(alpha: 0.12),
-      child: const Center(
+    const placeholder = ColoredBox(
+      color: AppPalette.seaBlue100,
+      child: Center(
         child: Icon(
           Icons.image_outlined,
-          color: AppColors.seaBlue,
-          size: 40,
+          color: AppPalette.seaBlue,
+          size: AppIconSize.xl,
           semanticLabel: 'Görsel yok',
         ),
       ),
@@ -60,9 +60,7 @@ class NotebookImage extends ConsumerWidget {
     Widget placeholder,
   ) {
     final source = ref.watch(contentSourceProvider);
-    final loading = ColoredBox(
-      color: AppColors.seaBlue.withValues(alpha: 0.12),
-    );
+    const loading = ColoredBox(color: AppPalette.seaBlue100);
     return Image.network(
       resolveMediaUri(source, contentId, path).toString(),
       key: ValueKey('card-image-${item.key}'),
@@ -124,7 +122,7 @@ class AudioButton extends StatelessWidget {
           icon: Icon(
             playing ? Icons.graphic_eq_rounded : Icons.volume_up_rounded,
             size: size,
-            color: AppColors.seaBlue,
+            color: AppPalette.seaBlue,
             semanticLabel: example ? 'Cümleyi dinle' : 'İfadeyi dinle',
           ),
         );
@@ -150,8 +148,8 @@ class CardFace extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final label = theme.textTheme.labelMedium?.copyWith(
-      color: AppColors.ink.withValues(alpha: 0.7),
-      fontWeight: FontWeight.w700,
+      color: AppPalette.ink500,
+      fontWeight: AppFonts.bold,
       letterSpacing: 1.1,
     );
     return Column(
@@ -161,7 +159,7 @@ class CardFace extends StatelessWidget {
       children: [
         if (showImage) ...[
           NotebookImage(item: item),
-          const SizedBox(height: AppSpacing.sm),
+          const SizedBox(height: AppSpace.s16),
         ],
         Row(
           children: [
@@ -171,8 +169,7 @@ class CardFace extends StatelessWidget {
                 child: Text(
                   item.textEn,
                   style: theme.textTheme.headlineSmall?.copyWith(
-                    fontWeight: FontWeight.w700,
-                    color: AppColors.ink,
+                    color: AppPalette.ink,
                   ),
                 ),
               ),
@@ -181,23 +178,26 @@ class CardFace extends StatelessWidget {
           ],
         ),
         if (item.textTr != null) ...[
-          const SizedBox(height: AppSpacing.xs),
+          const SizedBox(height: AppSpace.s8),
           Text('TÜRKÇE ANLAMI', style: label),
-          const SizedBox(height: 4),
+          const SizedBox(height: AppSpace.s4),
           Text(
             item.textTr!,
-            style: theme.textTheme.titleMedium?.copyWith(color: AppColors.ink),
+            style: theme.textTheme.titleMedium?.copyWith(
+              color: AppPalette.ink,
+              fontWeight: AppFonts.medium,
+            ),
           ),
         ],
         if (item.exampleEn != null && item.exampleEn != item.textEn) ...[
-          const Divider(height: AppSpacing.md),
+          const Divider(height: AppSpace.s24),
           Text(
             item.source == NotebookSource.topicSet
                 ? TopicSetTexts.exampleLabel
                 : 'BÖLÜMDEKİ CÜMLE',
             style: label,
           ),
-          const SizedBox(height: 4),
+          const SizedBox(height: AppSpace.s4),
           Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
@@ -208,15 +208,15 @@ class CardFace extends StatelessWidget {
                     Text(
                       item.exampleEn!,
                       style: theme.textTheme.bodyLarge?.copyWith(
-                        fontWeight: FontWeight.w500,
-                        color: AppColors.ink,
+                        fontWeight: AppFonts.medium,
+                        color: AppPalette.ink,
                       ),
                     ),
                     if (item.exampleTr != null)
                       Text(
                         item.exampleTr!,
                         style: theme.textTheme.bodyMedium?.copyWith(
-                          color: AppColors.ink.withValues(alpha: 0.75),
+                          color: AppPalette.ink500,
                         ),
                       ),
                   ],
@@ -231,7 +231,7 @@ class CardFace extends StatelessWidget {
   }
 }
 
-/// Bölüm etiketi (`B1`).
+/// Bölüm etiketi (`B1`; H-061: fener sarısı zemin, mürekkep yazı).
 class EpisodeTag extends StatelessWidget {
   const EpisodeTag({super.key, required this.tag});
 
@@ -241,18 +241,17 @@ class EpisodeTag extends StatelessWidget {
   Widget build(BuildContext context) => Container(
     constraints: const BoxConstraints(minWidth: 40, minHeight: 32),
     alignment: Alignment.center,
-    padding: const EdgeInsets.symmetric(horizontal: AppSpacing.xs),
-    decoration: BoxDecoration(
-      color: AppColors.seaBlue,
-      borderRadius: BorderRadius.circular(8),
+    padding: const EdgeInsets.symmetric(horizontal: AppSpace.s8),
+    decoration: const BoxDecoration(
+      color: AppPalette.yellow200,
+      borderRadius: AppRadius.smAll,
     ),
     child: Text(
       tag,
       semanticsLabel: 'Bölüm ${tag.substring(1)}',
-      style: const TextStyle(
-        color: Colors.white,
-        fontWeight: FontWeight.w700,
-        fontSize: 14,
+      style: Theme.of(context).textTheme.labelLarge?.copyWith(
+        color: AppPalette.ink,
+        fontWeight: AppFonts.bold,
       ),
     ),
   );

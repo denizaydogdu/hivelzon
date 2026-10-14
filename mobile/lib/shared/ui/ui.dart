@@ -3,6 +3,7 @@
 library;
 
 export 'cards.dart';
+export 'dont_know_button.dart';
 export 'motion.dart';
 export 'progress.dart';
 export 'settings.dart';

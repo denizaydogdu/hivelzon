@@ -2,10 +2,11 @@ import 'dart:async';
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../app/theme.dart';
+import '../../../app/design/design.dart';
 import '../../../l10n/tr_strings.dart';
 import '../../../shared/fsrs/fsrs.dart';
 import '../../../shared/meaning/error_taxonomy.dart';
@@ -15,6 +16,7 @@ import '../../../shared/speech/speak_widgets.dart';
 import '../../../shared/speech/speech_match.dart';
 import '../../../shared/speech/speech_providers.dart';
 import '../../../shared/speech/speech_store.dart';
+import '../../../shared/ui/ui.dart';
 import '../../speak/speak_env.dart';
 import '../../hi/application/hi_providers.dart';
 import '../../hi/presentation/hi_cards.dart';
@@ -35,6 +37,11 @@ enum _Phase { loading, empty, asking, feedback, done, error }
 ///
 /// Süre ölçülür ama gösterilmez (K-32: geri sayım yok). "Bilmiyorum" her
 /// görevde var; utandırmaz, kart oturumun sonunda yeniden gelir.
+///
+/// Tasarım (H-061, taslak S05): üstte ince sarı ilerleme çubuğu; görev kartı
+/// (görsel + soru) her görevde yumuşakça belirir; seçenekler beyaz hap
+/// düğmeler; geri bildirim sakin bir panelle gelir (doğruda hafif titreşim);
+/// özet `StatRow` + sakin kutlama. "Hareketi azalt" açıksa hepsi durağan.
 class ReviewScreen extends ConsumerStatefulWidget {
   const ReviewScreen({super.key});
 
@@ -193,6 +200,9 @@ class _ReviewScreenState extends ConsumerState<ReviewScreen> {
       _recordMiss(task);
     }
     if (!mounted) return;
+    // Doğru cevapta tek, hafif dokunsal onay (H-061). Yanlış ve "Bilmiyorum"
+    // titreşimsiz: uyarı gibi hissettirmesin (K-32).
+    if (outcome.correct) unawaited(HapticFeedback.lightImpact());
     setState(() => _outcome = outcome);
     unawaited(_audio.play(outcome.item));
   }
@@ -238,13 +248,13 @@ class _ReviewScreenState extends ConsumerState<ReviewScreen> {
   @override
   Widget build(BuildContext context) {
     final s = _session;
+    final inSession =
+        s != null && (_phase == _Phase.asking || _phase == _Phase.feedback);
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: AppColors.sand,
         leading: IconButton(
           key: const ValueKey('review-close'),
           tooltip: CommonTexts.close,
-          constraints: const BoxConstraints(minWidth: 48, minHeight: 48),
           onPressed: () => context.pop(),
           icon: const Icon(Icons.close_rounded),
         ),
@@ -253,17 +263,34 @@ class _ReviewScreenState extends ConsumerState<ReviewScreen> {
               ? ReviewTexts.title
               : ReviewTexts.progress(math.min(s.position, s.total), s.total),
         ),
+        bottom: inSession
+            ? PreferredSize(
+                preferredSize: const Size.fromHeight(AppSpace.s12),
+                child: _SessionBar(
+                  value: s.total == 0
+                      ? 0
+                      : (math.min(s.position, s.total) -
+                                (_phase == _Phase.asking ? 1 : 0)) /
+                            s.total,
+                ),
+              )
+            : null,
       ),
       body: SafeArea(
         child: switch (_phase) {
           _Phase.loading => const Center(child: CircularProgressIndicator()),
           _Phase.empty => _CenteredMessage(
-            icon: Icons.check_circle_outline_rounded,
+            key: const ValueKey('review-empty'),
+            illustration: const Image(
+              image: NotebookIllustrations.nothingDue,
+              fit: BoxFit.contain,
+            ),
             title: ReviewTexts.emptyTitle,
             body: ReviewTexts.emptyBody,
             onBack: () => context.pop(),
           ),
           _Phase.error => _CenteredMessage(
+            key: const ValueKey('review-error'),
             icon: Icons.error_outline_rounded,
             title: ReviewTexts.errorTitle,
             body: ReviewTexts.errorBody,
@@ -279,8 +306,22 @@ class _ReviewScreenState extends ConsumerState<ReviewScreen> {
 
   // ------------------------------------------------------------ görev
 
+  /// Seçenek düğmesi: beyaz hap, ortalanmış yazı (taslak S05).
+  static final ButtonStyle _optionStyle = OutlinedButton.styleFrom(
+    minimumSize: const Size.fromHeight(AppTouch.primary),
+    backgroundColor: AppPalette.white,
+    foregroundColor: AppPalette.seaBlue,
+    side: const BorderSide(color: AppPalette.ink200),
+    shape: AppButtonStyles.pill,
+    padding: const EdgeInsets.symmetric(
+      horizontal: AppSpace.s16,
+      vertical: AppSpace.s12,
+    ),
+  );
+
   Widget _taskView(BuildContext context) {
-    final task = _session!.task!;
+    final session = _session!;
+    final task = session.task!;
     final theme = Theme.of(context);
     final item = task.item;
     final prompt = switch (task.type) {
@@ -291,89 +332,109 @@ class _ReviewScreenState extends ConsumerState<ReviewScreen> {
       TaskType.selfCheck || TaskType.sceneHunt => ReviewTexts.selfCheck,
       TaskType.speak => SpeakTexts.reviewTask,
     };
-    final children = <Widget>[
-      Text(
-        prompt,
-        key: ValueKey('task-${task.type.code}'),
-        style: theme.textTheme.titleMedium?.copyWith(
-          fontWeight: FontWeight.w700,
-        ),
+    final listen =
+        task.type == TaskType.listenChoice || task.type == TaskType.speak;
+    final showImage = task.type != TaskType.listenChoice;
+
+    // Görev kartı: görsel (dinle-seç dışında) + görev cümlesi + anlam.
+    final card = TappableCard(
+      padding: EdgeInsets.zero,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          if (showImage)
+            NotebookImage(item: item, aspectRatio: 16 / 10, borderRadius: 0),
+          Padding(
+            padding: const EdgeInsets.all(AppSpace.s16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Text(
+                  prompt,
+                  key: ValueKey('task-${task.type.code}'),
+                  style: theme.textTheme.bodyMedium?.copyWith(
+                    color: AppPalette.ink500,
+                  ),
+                ),
+                if (task.type != TaskType.listenChoice &&
+                    item.textTr != null) ...[
+                  const SizedBox(height: AppSpace.s4),
+                  Text(
+                    item.textTr!,
+                    key: const ValueKey('task-meaning'),
+                    style: theme.textTheme.titleLarge?.copyWith(
+                      color: AppPalette.seaBlue,
+                    ),
+                  ),
+                ],
+                if (task.type == TaskType.speak) ...[
+                  const SizedBox(height: AppSpace.s8),
+                  Text(
+                    SpeakTexts.reviewHint,
+                    style: theme.textTheme.bodyMedium?.copyWith(
+                      color: AppPalette.ink500,
+                    ),
+                  ),
+                ],
+                if (listen) ...[
+                  const SizedBox(height: AppSpace.s16),
+                  Center(
+                    child: ListenableBuilder(
+                      listenable: _audio,
+                      builder: (context, _) => FilledButton.icon(
+                        key: const ValueKey('task-listen'),
+                        onPressed: () => _audio.play(item),
+                        style: FilledButton.styleFrom(
+                          minimumSize: const Size(160, AppSpace.s64),
+                        ),
+                        icon: Icon(
+                          _audio.playingKey == CardAudioPlayer.keyFor(item)
+                              ? Icons.graphic_eq_rounded
+                              : Icons.volume_up_rounded,
+                          size: AppIconSize.lg,
+                        ),
+                        label: const Text(ReviewTexts.listen),
+                      ),
+                    ),
+                  ),
+                ],
+              ],
+            ),
+          ),
+        ],
       ),
-      const SizedBox(height: AppSpacing.sm),
+    );
+
+    final children = <Widget>[
+      // Her görevde yeni anahtar: kart yumuşakça belirir (azaltılmışsa yok).
+      KeyedSubtree(
+        key: ValueKey('task-card-${session.position}'),
+        child: FadeSlideIn(child: card),
+      ),
+      const SizedBox(height: AppSpace.s16),
     ];
-    if (task.type == TaskType.speak) {
-      children.addAll([
-        NotebookImage(item: item, aspectRatio: 16 / 10),
-        const SizedBox(height: AppSpacing.sm),
-        if (item.textTr != null)
-          Text(
-            item.textTr!,
-            key: const ValueKey('task-meaning'),
-            style: theme.textTheme.titleLarge?.copyWith(
-              fontWeight: FontWeight.w500,
-            ),
-          ),
-        const SizedBox(height: AppSpacing.xs),
-        Text(SpeakTexts.reviewHint, style: theme.textTheme.bodyMedium),
-        const SizedBox(height: AppSpacing.xs),
-      ]);
-    }
-    if (task.type == TaskType.listenChoice || task.type == TaskType.speak) {
-      children.add(
-        Center(
-          child: ListenableBuilder(
-            listenable: _audio,
-            builder: (context, _) => FilledButton.icon(
-              key: const ValueKey('task-listen'),
-              onPressed: () => _audio.play(item),
-              style: FilledButton.styleFrom(minimumSize: const Size(160, 64)),
-              icon: Icon(
-                _audio.playingKey == CardAudioPlayer.keyFor(item)
-                    ? Icons.graphic_eq_rounded
-                    : Icons.volume_up_rounded,
-                size: 32,
-              ),
-              label: const Text(ReviewTexts.listen),
-            ),
-          ),
-        ),
-      );
-    } else if (task.type != TaskType.speak) {
-      children.addAll([
-        NotebookImage(item: item, aspectRatio: 16 / 10),
-        const SizedBox(height: AppSpacing.sm),
-        if (item.textTr != null)
-          Text(
-            item.textTr!,
-            key: const ValueKey('task-meaning'),
-            style: theme.textTheme.titleLarge?.copyWith(
-              fontWeight: FontWeight.w500,
-            ),
-          ),
-      ]);
-    }
-    children.add(const SizedBox(height: AppSpacing.sm));
     switch (task.type) {
       case TaskType.pictureChoice || TaskType.listenChoice:
         for (final (i, o) in task.options.indexed) {
           children.add(
             Padding(
-              padding: const EdgeInsets.only(bottom: AppSpacing.xs),
-              child: OutlinedButton(
-                key: ValueKey('option-$i'),
-                onPressed: () {
-                  _chosen = i;
-                  _answer(correct: task.isCorrectChoice(i));
-                },
-                style: OutlinedButton.styleFrom(
-                  minimumSize: const Size.fromHeight(56),
-                  backgroundColor: Colors.white.withValues(alpha: 0.8),
-                  alignment: Alignment.centerLeft,
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: AppSpacing.sm,
+              padding: const EdgeInsets.only(bottom: AppSpace.s8),
+              child: PressScale(
+                child: OutlinedButton(
+                  key: ValueKey('option-$i'),
+                  onPressed: () {
+                    _chosen = i;
+                    _answer(correct: task.isCorrectChoice(i));
+                  },
+                  style: _optionStyle,
+                  child: Text(
+                    o,
+                    textAlign: TextAlign.center,
+                    style: theme.textTheme.titleMedium?.copyWith(
+                      color: AppPalette.seaBlue,
+                    ),
                   ),
                 ),
-                child: Text(o, style: theme.textTheme.titleMedium),
               ),
             ),
           );
@@ -389,20 +450,15 @@ class _ReviewScreenState extends ConsumerState<ReviewScreen> {
             enableSuggestions: false,
             textInputAction: TextInputAction.done,
             onSubmitted: (_) => _checkTyped(task),
-            decoration: InputDecoration(
-              filled: true,
-              fillColor: Colors.white,
-              hintText: ReviewTexts.typeHint,
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(AppTheme.radius),
-              ),
-            ),
+            decoration: const InputDecoration(hintText: ReviewTexts.typeHint),
           ),
-          const SizedBox(height: AppSpacing.sm),
+          const SizedBox(height: AppSpace.s16),
           FilledButton(
             key: const ValueKey('task-check'),
             onPressed: () => _checkTyped(task),
-            style: FilledButton.styleFrom(minimumSize: const Size(48, 48)),
+            style: FilledButton.styleFrom(
+              minimumSize: const Size.fromHeight(AppTouch.primary),
+            ),
             child: const Text(ReviewTexts.check),
           ),
         ]);
@@ -410,7 +466,7 @@ class _ReviewScreenState extends ConsumerState<ReviewScreen> {
         final c = _speak;
         children.add(
           SpeakPractice(
-            key: ValueKey('speak-${item.key}-${_session!.position}'),
+            key: ValueKey('speak-${item.key}-${session.position}'),
             expected: task.spokenText,
             env: speakEnvOf(context),
             place: SpeechPlace.review,
@@ -425,13 +481,12 @@ class _ReviewScreenState extends ConsumerState<ReviewScreen> {
             c.last?.level == SpeechMatchLevel.close) {
           children.add(
             Padding(
-              padding: const EdgeInsets.only(top: AppSpacing.xs),
+              padding: const EdgeInsets.only(top: AppSpace.s8),
               child: FilledButton(
                 key: const ValueKey('review-speak-accept'),
                 onPressed: () => unawaited(
                   _answerSpeech(SpeechMatchLevel.close, c.attempts),
                 ),
-                style: FilledButton.styleFrom(minimumSize: const Size(48, 48)),
                 child: const Text(SpeakTexts.reviewAccept),
               ),
             ),
@@ -443,40 +498,43 @@ class _ReviewScreenState extends ConsumerState<ReviewScreen> {
             FilledButton(
               key: const ValueKey('task-reveal'),
               onPressed: () => setState(() => _revealed = true),
-              style: FilledButton.styleFrom(minimumSize: const Size(48, 48)),
+              style: FilledButton.styleFrom(
+                minimumSize: const Size.fromHeight(AppTouch.primary),
+              ),
               child: const Text(ReviewTexts.openCard),
             ),
           );
         } else {
           children.addAll([
-            Text(
-              item.textEn,
-              style: theme.textTheme.headlineSmall?.copyWith(
-                fontWeight: FontWeight.w700,
+            FadeSlideIn(
+              child: Text(
+                item.textEn,
+                textAlign: TextAlign.center,
+                style: theme.textTheme.headlineSmall?.copyWith(
+                  color: AppPalette.ink,
+                ),
               ),
             ),
-            const SizedBox(height: AppSpacing.sm),
+            const SizedBox(height: AppSpace.s16),
             FilledButton(
               key: const ValueKey('task-knew'),
               onPressed: () => _answer(correct: true),
-              style: FilledButton.styleFrom(minimumSize: const Size(48, 48)),
+              style: FilledButton.styleFrom(
+                minimumSize: const Size.fromHeight(AppTouch.primary),
+              ),
               child: const Text(ReviewTexts.knewIt),
             ),
           ]);
         }
     }
     children.addAll([
-      const SizedBox(height: AppSpacing.sm),
-      // İkincil ama açıkça düğme (utandırmaz): seçeneklerden ayrışan
-      // kenarlıklı, dolgusuz biçim.
-      Center(
-        child: OutlinedButton.icon(
-          key: const ValueKey('task-dont-know'),
-          onPressed: () => _answer(correct: false, dontKnow: true),
-          style: AppButtonStyles.dontKnow(minimumSize: const Size(220, 48)),
-          icon: const Icon(AppButtonStyles.dontKnowIcon),
-          label: const Text(ReviewTexts.dontKnow),
-        ),
+      const SizedBox(height: AppSpace.s8),
+      // İkincil ama açıkça düğme (utandırmaz): ortak "Bilmiyorum" biçimi.
+      DontKnowButton(
+        key: const ValueKey('task-dont-know'),
+        label: ReviewTexts.dontKnow,
+        expand: true,
+        onPressed: () => _answer(correct: false, dontKnow: true),
       ),
       if (task.type == TaskType.speak)
         Center(
@@ -488,8 +546,13 @@ class _ReviewScreenState extends ConsumerState<ReviewScreen> {
           ),
         ),
     ]);
-    return ListView(
-      padding: const EdgeInsets.all(AppSpacing.sm),
+    return _ScrollColumn(
+      padding: const EdgeInsets.fromLTRB(
+        AppSpace.page,
+        AppSpace.s8,
+        AppSpace.page,
+        AppSpace.s24,
+      ),
       children: children,
     );
   }
@@ -504,19 +567,19 @@ class _ReviewScreenState extends ConsumerState<ReviewScreen> {
       label: Text(t, style: theme.textTheme.titleMedium),
       onPressed: onTap,
       materialTapTargetSize: MaterialTapTargetSize.padded,
-      backgroundColor: Colors.white,
     );
     return [
       Container(
-        constraints: const BoxConstraints(minHeight: 64),
-        padding: const EdgeInsets.all(AppSpacing.xs),
+        constraints: const BoxConstraints(minHeight: AppSpace.s64),
+        padding: const EdgeInsets.all(AppSpace.s8),
         decoration: BoxDecoration(
-          border: Border.all(color: AppColors.seaBlue.withValues(alpha: 0.4)),
-          borderRadius: BorderRadius.circular(AppTheme.radius),
+          color: AppPalette.sand50,
+          border: Border.all(color: AppPalette.seaBlue300),
+          borderRadius: AppRadius.mdAll,
         ),
         child: Wrap(
-          spacing: AppSpacing.xs,
-          runSpacing: AppSpacing.xs,
+          spacing: AppSpace.s8,
+          runSpacing: AppSpace.s8,
           children: [
             for (final (i, t) in _picked.indexed)
               chip(
@@ -527,10 +590,10 @@ class _ReviewScreenState extends ConsumerState<ReviewScreen> {
           ],
         ),
       ),
-      const SizedBox(height: AppSpacing.sm),
+      const SizedBox(height: AppSpace.s16),
       Wrap(
-        spacing: AppSpacing.xs,
-        runSpacing: AppSpacing.xs,
+        spacing: AppSpace.s8,
+        runSpacing: AppSpace.s8,
         children: [
           for (final (i, t) in remaining.indexed)
             chip(
@@ -540,13 +603,15 @@ class _ReviewScreenState extends ConsumerState<ReviewScreen> {
             ),
         ],
       ),
-      const SizedBox(height: AppSpacing.sm),
+      const SizedBox(height: AppSpace.s16),
       FilledButton(
         key: const ValueKey('task-check'),
         onPressed: remaining.isEmpty
             ? () => _answer(correct: task.isCorrectOrder(_picked))
             : null,
-        style: FilledButton.styleFrom(minimumSize: const Size(48, 48)),
+        style: FilledButton.styleFrom(
+          minimumSize: const Size.fromHeight(AppTouch.primary),
+        ),
         child: const Text(ReviewTexts.check),
       ),
     ];
@@ -581,44 +646,92 @@ class _ReviewScreenState extends ConsumerState<ReviewScreen> {
         : null;
     final chosen = _chosen;
     final task = _session?.task;
-    return ListView(
+    return _ScrollColumn(
       key: const ValueKey('review-feedback'),
-      padding: const EdgeInsets.all(AppSpacing.sm),
+      padding: const EdgeInsets.fromLTRB(
+        AppSpace.page,
+        AppSpace.s8,
+        AppSpace.page,
+        AppSpace.s24,
+      ),
       children: [
-        Row(
-          children: [
-            Icon(
-              o.correct ? Icons.check_circle_rounded : Icons.lightbulb_rounded,
-              color: o.correct ? AppColors.seaBlue : AppColors.eveningOrange,
-              size: 32,
+        // Sakin geri bildirim paneli: doğruda yeşil onay, değilse deniz mavisi
+        // zeminde ampul (kırmızı ve çarpı yok).
+        FadeSlideIn(
+          child: Container(
+            key: ValueKey(
+              o.correct ? 'feedback-panel-correct' : 'feedback-panel-calm',
             ),
-            const SizedBox(width: AppSpacing.xs),
-            Expanded(
-              child: Text(
-                title,
-                key: const ValueKey('feedback-title'),
-                style: theme.textTheme.titleLarge?.copyWith(
-                  fontWeight: FontWeight.w700,
+            padding: const EdgeInsets.all(AppSpace.s16),
+            decoration: BoxDecoration(
+              color: o.correct
+                  ? AppPalette.successSurface
+                  : AppPalette.seaBlue50,
+              borderRadius: AppRadius.mdAll,
+            ),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                ExcludeSemantics(
+                  child: CalmPop(
+                    child: Icon(
+                      o.correct
+                          ? Icons.check_circle_rounded
+                          : Icons.lightbulb_rounded,
+                      color: o.correct
+                          ? AppPalette.success
+                          : AppPalette.orange700,
+                      size: AppIconSize.lg,
+                    ),
+                  ),
                 ),
-              ),
+                const SizedBox(width: AppSpace.s12),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Semantics(
+                        liveRegion: true,
+                        child: Text(
+                          title,
+                          key: const ValueKey('feedback-title'),
+                          style: theme.textTheme.titleLarge?.copyWith(
+                            color: o.correct
+                                ? AppPalette.success
+                                : AppPalette.ink,
+                          ),
+                        ),
+                      ),
+                      if (!o.correct &&
+                          !o.dontKnow &&
+                          chosen != null &&
+                          task != null &&
+                          chosen < task.options.length) ...[
+                        const SizedBox(height: AppSpace.s4),
+                        Text(
+                          ReviewTexts.chosen(task.options[chosen]),
+                          style: theme.textTheme.bodyMedium?.copyWith(
+                            color: AppPalette.ink700,
+                          ),
+                        ),
+                      ],
+                      if (body != null) ...[
+                        const SizedBox(height: AppSpace.s4),
+                        Text(
+                          body,
+                          key: const ValueKey('feedback-body'),
+                          style: theme.textTheme.bodyMedium?.copyWith(
+                            color: AppPalette.ink700,
+                          ),
+                        ),
+                      ],
+                    ],
+                  ),
+                ),
+              ],
             ),
-          ],
-        ),
-        if (!o.correct &&
-            !o.dontKnow &&
-            chosen != null &&
-            task != null &&
-            chosen < task.options.length) ...[
-          const SizedBox(height: 4),
-          Text(
-            ReviewTexts.chosen(task.options[chosen]),
-            style: theme.textTheme.bodyMedium,
           ),
-        ],
-        if (body != null) ...[
-          const SizedBox(height: 4),
-          Text(body, key: const ValueKey('feedback-body')),
-        ],
+        ),
         // Hi'nin notu (H-048): ifadeyle ilgili Türkçeye göre açıklama varsa;
         // söylemede tanınan tipik hata (H-055) da not açar.
         if (!o.correct || _speakNoteId != null) ...[
@@ -633,7 +746,6 @@ class _ReviewScreenState extends ConsumerState<ReviewScreen> {
                 child: TextButton.icon(
                   key: const ValueKey('review-why-wrong'),
                   onPressed: () => unawaited(showHiNote(context, note)),
-                  style: TextButton.styleFrom(minimumSize: const Size(48, 48)),
                   icon: const Icon(Icons.lightbulb_outline_rounded),
                   label: const Text(HiTexts.whyWrong),
                 ),
@@ -641,20 +753,20 @@ class _ReviewScreenState extends ConsumerState<ReviewScreen> {
             },
           ),
         ],
-        const SizedBox(height: AppSpacing.sm),
-        Card(
-          margin: EdgeInsets.zero,
-          color: Colors.white,
-          child: Padding(
-            padding: const EdgeInsets.all(AppSpacing.sm),
+        const SizedBox(height: AppSpace.s16),
+        FadeSlideIn(
+          index: 1,
+          child: TappableCard(
             child: CardFace(item: o.item, player: _audio),
           ),
         ),
-        const SizedBox(height: AppSpacing.sm),
+        const SizedBox(height: AppSpace.s16),
         FilledButton(
           key: const ValueKey('review-continue'),
           onPressed: _continue,
-          style: FilledButton.styleFrom(minimumSize: const Size(48, 48)),
+          style: FilledButton.styleFrom(
+            minimumSize: const Size.fromHeight(AppTouch.primary),
+          ),
           child: const Text(ReviewTexts.continueAction),
         ),
       ],
@@ -666,45 +778,72 @@ class _ReviewScreenState extends ConsumerState<ReviewScreen> {
   Widget _summaryView(BuildContext context) {
     final s = _summary!;
     final theme = Theme.of(context);
-    final lines = <String>[
-      if (s.comeBackTomorrow > 0) ReviewTexts.tomorrow(s.comeBackTomorrow),
-      if (s.comeBackLater > 0) ReviewTexts.later(s.comeBackLater),
-    ];
-    return ListView(
-      key: const ValueKey('review-summary'),
-      padding: const EdgeInsets.all(AppSpacing.md),
-      children: [
-        const Icon(
-          Icons.auto_awesome_rounded,
-          size: 56,
-          color: AppColors.lighthouseYellow,
+    // Sıfır olan sayı gösterilmez (ör. "0 ilk seferde bildin" yok).
+    final tiles = <StatTile>[
+      if (s.firstTryCorrect > 0)
+        StatTile.count(
+          key: const ValueKey('summary-first-try'),
+          count: s.firstTryCorrect,
+          label: ReviewTexts.statFirstTry,
+          icon: Icons.check_circle_outline_rounded,
+          color: AppPalette.success,
         ),
-        const SizedBox(height: AppSpacing.sm),
-        Text(
-          ReviewTexts.doneTitle,
-          textAlign: TextAlign.center,
-          style: theme.textTheme.headlineSmall?.copyWith(
-            fontWeight: FontWeight.w700,
+      if (s.comeBackTomorrow > 0)
+        StatTile.count(
+          key: const ValueKey('summary-tomorrow'),
+          count: s.comeBackTomorrow,
+          label: ReviewTexts.statTomorrow,
+          icon: Icons.wb_sunny_outlined,
+          color: AppPalette.orange700,
+        ),
+      if (s.comeBackLater > 0)
+        StatTile.count(
+          key: const ValueKey('summary-later'),
+          count: s.comeBackLater,
+          label: ReviewTexts.statLater,
+          icon: Icons.event_outlined,
+        ),
+    ];
+    return _ScrollColumn(
+      key: const ValueKey('review-summary'),
+      padding: const EdgeInsets.all(AppSpace.s24),
+      children: [
+        const Center(child: CalmCelebration(icon: Icons.auto_awesome_rounded)),
+        const SizedBox(height: AppSpace.s24),
+        Semantics(
+          header: true,
+          child: Text(
+            ReviewTexts.doneTitle,
+            textAlign: TextAlign.center,
+            style: theme.textTheme.headlineSmall?.copyWith(
+              color: AppPalette.seaBlue,
+            ),
           ),
         ),
-        const SizedBox(height: AppSpacing.xs),
+        const SizedBox(height: AppSpace.s8),
         Text(
           ReviewTexts.reviewed(s.reviewedCards),
           key: const ValueKey('summary-count'),
           textAlign: TextAlign.center,
-          style: theme.textTheme.titleMedium,
+          style: theme.textTheme.bodyLarge?.copyWith(color: AppPalette.ink700),
         ),
-        for (final l in lines)
-          Text(
-            l,
-            textAlign: TextAlign.center,
-            style: theme.textTheme.bodyLarge,
+        if (tiles.isNotEmpty) ...[
+          const SizedBox(height: AppSpace.s24),
+          FadeSlideIn(
+            index: 1,
+            child: StatRow(
+              key: const ValueKey('review-summary-stats'),
+              tiles: tiles,
+            ),
           ),
-        const SizedBox(height: AppSpacing.md),
+        ],
+        const SizedBox(height: AppSpace.s32),
         FilledButton(
           key: const ValueKey('review-done'),
           onPressed: () => context.pop(),
-          style: FilledButton.styleFrom(minimumSize: const Size(48, 48)),
+          style: FilledButton.styleFrom(
+            minimumSize: const Size.fromHeight(AppTouch.primary),
+          ),
           child: const Text(ReviewTexts.done),
         ),
       ],
@@ -712,48 +851,92 @@ class _ReviewScreenState extends ConsumerState<ReviewScreen> {
   }
 }
 
+/// Oturumun ince sarı ilerleme çubuğu (taslak S05). Başlıktaki "3 / 8"
+/// ekran okuyucuya yeter; çubuk görsel tekrardır.
+class _SessionBar extends StatelessWidget {
+  const _SessionBar({required this.value});
+
+  final double value;
+
+  @override
+  Widget build(BuildContext context) => ExcludeSemantics(
+    child: Padding(
+      padding: const EdgeInsets.fromLTRB(
+        AppSpace.page,
+        0,
+        AppSpace.page,
+        AppSpace.s8,
+      ),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(AppRadius.full),
+        child: TweenAnimationBuilder<double>(
+          tween: Tween(end: value.clamp(0.0, 1.0)),
+          duration: AppMotion.of(context, AppMotion.slow),
+          curve: AppMotion.enter,
+          builder: (context, v, _) => LinearProgressIndicator(
+            key: const ValueKey('review-progress-bar'),
+            value: v,
+            minHeight: AppSpace.s4,
+            color: AppPalette.lighthouseYellow,
+            backgroundColor: AppPalette.sand200,
+          ),
+        ),
+      ),
+    ),
+  );
+}
+
+/// Kaydırılabilir sütun: görev, geri bildirim ve özet. Bütün öğeler hemen
+/// kurulur (tembel `ListView` alttaki düğmeyi kurmayabiliyordu).
+class _ScrollColumn extends StatelessWidget {
+  const _ScrollColumn({
+    super.key,
+    required this.padding,
+    required this.children,
+  });
+
+  final EdgeInsetsGeometry padding;
+  final List<Widget> children;
+
+  @override
+  Widget build(BuildContext context) => SingleChildScrollView(
+    padding: padding,
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: children,
+    ),
+  );
+}
+
 class _CenteredMessage extends StatelessWidget {
   const _CenteredMessage({
-    required this.icon,
+    super.key,
     required this.title,
     required this.body,
     required this.onBack,
+    this.icon,
+    this.illustration,
   });
 
-  final IconData icon;
+  final IconData? icon;
+  final Widget? illustration;
   final String title;
   final String body;
   final VoidCallback onBack;
 
   @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    return Center(
-      child: Padding(
-        padding: const EdgeInsets.all(AppSpacing.md),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Icon(icon, size: 48, color: AppColors.seaBlue),
-            const SizedBox(height: AppSpacing.sm),
-            Text(
-              title,
-              textAlign: TextAlign.center,
-              style: theme.textTheme.titleLarge?.copyWith(
-                fontWeight: FontWeight.w700,
-              ),
-            ),
-            const SizedBox(height: AppSpacing.xs),
-            Text(body, textAlign: TextAlign.center),
-            const SizedBox(height: AppSpacing.sm),
-            OutlinedButton(
-              onPressed: onBack,
-              style: OutlinedButton.styleFrom(minimumSize: const Size(48, 48)),
-              child: const Text(CommonTexts.goBack),
-            ),
-          ],
+  Widget build(BuildContext context) => Center(
+    child: SingleChildScrollView(
+      child: EmptyState(
+        icon: icon,
+        illustration: illustration,
+        title: title,
+        message: body,
+        action: OutlinedButton(
+          onPressed: onBack,
+          child: const Text(CommonTexts.goBack),
         ),
       ),
-    );
-  }
+    ),
+  );
 }
