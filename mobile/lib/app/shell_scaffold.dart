@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 
 import '../features/hi/presentation/hi_bubble.dart';
 import '../l10n/tr_strings.dart';
+import 'router.dart';
 import 'theme.dart';
 
 /// Alt sekme çubuklu ana iskelet. Beş sekmenin kök sayfasında sağ altta,
@@ -25,24 +26,31 @@ class ShellScaffold extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
-          // H-055 (H-048 düzeltmesi): balon kart içeriğini örtmesin. Balon
-          // görünürken sayfaların alt güvenli alanı balonun yüksekliği kadar
-          // büyür; SafeArea kullanan sayfalarda (Ana Sayfa, Hikâye, Profil,
-          // yer tutucular) son kart ve odak kartı balonun üstünde biter.
+          // H-064 (balon katmanı): balon içeriğin üstünde yüzer; sayfaların
+          // alt güvenli alanı büyümez, içerik balonun altından kayar.
+          // Kaydırılan listeler payı yalnızca son dolgu olarak ekler
+          // ([HiBubbleInset]). Keşfet tam ekran video: alt denetimler
+          // (Kaydet / Anlam / Tam hikâye) balonun altında kalmasın diye
+          // orada alt güvenli alan eskisi gibi balon kadar büyür (H-055).
           Positioned.fill(
-            child: Builder(
-              builder: (context) {
-                if (!bubble) return navigationShell;
-                final mq = MediaQuery.of(context);
-                return MediaQuery(
-                  data: mq.copyWith(
-                    padding: mq.padding.copyWith(
-                      bottom: mq.padding.bottom + HiBubble.clearance,
+            child: HiBubbleInset(
+              visible: bubble,
+              child: Builder(
+                builder: (context) {
+                  if (!bubble || location != AppRoutes.discover) {
+                    return navigationShell;
+                  }
+                  final mq = MediaQuery.of(context);
+                  return MediaQuery(
+                    data: mq.copyWith(
+                      padding: mq.padding.copyWith(
+                        bottom: mq.padding.bottom + HiBubble.clearance,
+                      ),
                     ),
-                  ),
-                  child: navigationShell,
-                );
-              },
+                    child: navigationShell,
+                  );
+                },
+              ),
             ),
           ),
           if (bubble)

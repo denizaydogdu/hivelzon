@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math' as math;
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -16,6 +17,7 @@ import '../../grammar/application/grammar_providers.dart';
 import '../../grammar/domain/grammar_progress.dart';
 import '../../grammar/presentation/grammar_lesson_screen.dart';
 import '../../grammar/presentation/grammar_view.dart';
+import '../../hi/presentation/hi_bubble.dart';
 import '../../library/presentation/library_view.dart';
 import '../../player/application/autoplay_driver.dart';
 import '../../player/data/progress_repository.dart';
@@ -128,7 +130,12 @@ class _StoryScreenState extends ConsumerState<StoryScreen> {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   top,
-                  SizedBox(height: c.maxHeight, child: _adventure(map)),
+                  // En az [_scrollBelow]: büyük yazıda başlık, harita ve
+                  // odak kartı (balonun yanında ya da üstünde) sığar.
+                  SizedBox(
+                    height: math.max(c.maxHeight, _scrollBelow),
+                    child: _adventure(map),
+                  ),
                 ],
               ),
             );
@@ -263,17 +270,41 @@ class _MapBody extends StatelessWidget {
   final SeasonMap map;
   final ValueChanged<MapEpisode> onNodeTap;
 
+  /// Odak kartının balon payı: yer varsa yalnız sağdan (kart balonun
+  /// solunda), yoksa yalnız alttan (kart balonun üstünde). Balon yoksa 0.
+  static EdgeInsets _focusInset(
+    BuildContext context,
+    double width,
+    double inset,
+  ) {
+    if (inset <= 0) return EdgeInsets.zero;
+    final right = inset - AppSpace.page;
+    final needed = _focusMinWidth * MediaQuery.textScalerOf(context).scale(1);
+    return width - right >= needed
+        ? EdgeInsets.only(right: right)
+        : EdgeInsets.only(bottom: inset - AppSpace.s8);
+  }
+
+  /// Odak kartının balon yanında rahat okunduğu en dar genişlik (1× yazı).
+  static const double _focusMinWidth = 240;
+
   @override
   Widget build(BuildContext context) {
     final focus = map.focus ?? map.firstComingSoon;
-    // Alt güvenli alan Hi balonunun payını da içerir (ShellScaffold, H-055):
-    // odak kartı balonun altında kalmaz.
+    // H-064 (balon katmanı): sayfa kaymaz; Hi balonu sağ altta yüzer. Tam
+    // genişlikte şerit bırakılmaz: odak kartı balonun solunda biter (yalnız
+    // sağ pay), dokunma alanı ve ok balonun altında kalmaz. Dar ekranda ya
+    // da büyük yazıda kart sığmazsa balonun üstünde biter. Odak kartı yoksa
+    // harita balonun üstünde biter.
+    final inset = HiBubbleInset.of(context);
     return Padding(
       padding: EdgeInsets.fromLTRB(
         AppSpace.page,
         AppSpace.s12,
         AppSpace.page,
-        AppSpace.s8 + MediaQuery.paddingOf(context).bottom,
+        AppSpace.s8 +
+            MediaQuery.paddingOf(context).bottom +
+            (focus == null ? inset : 0),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -296,7 +327,15 @@ class _MapBody extends StatelessWidget {
             const SizedBox(height: AppSpace.s12),
             FadeSlideIn(
               index: 1,
-              child: _FocusCard(episode: focus, onTap: () => onNodeTap(focus)),
+              child: LayoutBuilder(
+                builder: (context, c) => Padding(
+                  padding: _focusInset(context, c.maxWidth, inset),
+                  child: _FocusCard(
+                    episode: focus,
+                    onTap: () => onNodeTap(focus),
+                  ),
+                ),
+              ),
             ),
           ],
         ],

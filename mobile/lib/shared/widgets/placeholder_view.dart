@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../app/theme.dart';
 import 'page_header.dart';
+import '../../features/hi/presentation/hi_bubble.dart';
 
 /// Henüz gelmeyen sekmeler için yer tutucu (H-053): sekme başlığı, ne
 /// geleceğini söyleyen başlık ve tek paragraf açıklama.
@@ -25,7 +26,13 @@ class PlaceholderView extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: ListView(
-          padding: const EdgeInsets.all(AppSpacing.sm),
+          // Hi balonunun payı yalnızca listenin sonunda (H-064).
+          padding: EdgeInsets.fromLTRB(
+            AppSpacing.sm,
+            AppSpacing.sm,
+            AppSpacing.sm,
+            AppSpacing.sm + HiBubbleInset.of(context),
+          ),
           children: [
             PageHeader(title: title),
             const SizedBox(height: AppSpacing.lg),

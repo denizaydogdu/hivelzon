@@ -19,6 +19,31 @@ bool hiBubbleVisibleFor(String path) => const {
   AppRoutes.profile,
 }.contains(path);
 
+/// Hi balonu görünürken sekme köklerinin bilmesi gereken pay (H-064, balon
+/// katmanı). `ShellScaffold` sağlar; balon yokken ya da iskelet dışında 0.
+///
+/// Balon içeriğin üstünde yüzer (z sırası); sayfalar alt güvenli alanı
+/// büyütmez. Kaydırılan listeler [of] değerini yalnızca **son dolgu** olarak
+/// ekler: liste sonunda son kart balonun üstünde biter, arada içerik balonun
+/// altından kayar. Kaymayan düzenler (Hikâye haritasının odak kartı) yalnızca
+/// ilgili karta sağ pay verir.
+class HiBubbleInset extends InheritedWidget {
+  const HiBubbleInset({super.key, required this.visible, required super.child});
+
+  /// Balon şu an görünür mü.
+  final bool visible;
+
+  /// Balon görünürse [HiBubble.clearance], değilse 0.
+  static double of(BuildContext context) {
+    final w = context.dependOnInheritedWidgetOfExactType<HiBubbleInset>();
+    return (w?.visible ?? false) ? HiBubble.clearance : 0;
+  }
+
+  @override
+  bool updateShouldNotify(HiBubbleInset oldWidget) =>
+      visible != oldWidget.visible;
+}
+
 /// Sağ altta, menünün üstünde yuvarlak, ışıklı Hi. Bugün yeni öneri varsa
 /// küçük bir nokta (sayı yok, baskı yok).
 class HiBubble extends ConsumerWidget {
@@ -30,8 +55,10 @@ class HiBubble extends ConsumerWidget {
   /// [HiAvatar.idlePeriod]); sonra durağan kalır, dikkat dağıtmaz.
   static const int breathCycles = 3;
 
-  /// Sayfaların alttan bırakması gereken boşluk: balon (64) + alt pay (16) +
-  /// aralık (8). Bkz. `ShellScaffold`.
+  /// Balonun kapladığı köşe: balon (64) + kenar payı (16) + aralık (8).
+  /// Aynı değer hem alttan hem sağdan geçerlidir. Sayfalar bunu tam genişlikte
+  /// bir şerit olarak değil, yalnızca kaydırılan içeriğin sonuna ekler
+  /// ([HiBubbleInset]); içerik kayarken balonun altından geçer.
   static const double clearance = size + AppSpacing.sm + AppSpacing.xs;
 
   @override

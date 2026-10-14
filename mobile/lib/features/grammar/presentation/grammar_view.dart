@@ -11,6 +11,7 @@ import '../application/grammar_providers.dart';
 import '../domain/grammar_lesson.dart';
 import '../domain/grammar_progress.dart';
 import 'grammar_lesson_screen.dart';
+import '../../hi/presentation/hi_bubble.dart';
 
 /// Dilbilgisi (H-078; Hikâye sekmesinde "Dilbilgisi"): raflar
 /// ("Hikâyende geçenler" · "Senin seviyen" · öteki seviyeler ·
@@ -29,7 +30,9 @@ class GrammarView extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final data = ref.watch(grammarListProvider);
-    final bottom = MediaQuery.paddingOf(context).bottom;
+    // Hi balonunun payı yalnızca listenin sonunda (H-064).
+    final bottom =
+        MediaQuery.paddingOf(context).bottom + HiBubbleInset.of(context);
     return ListView(
       key: const ValueKey('grammar-view'),
       padding: EdgeInsets.fromLTRB(

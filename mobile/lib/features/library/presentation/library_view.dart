@@ -19,6 +19,7 @@ import '../application/library_providers.dart';
 import '../domain/book.dart';
 import '../domain/book_progress.dart';
 import 'widgets/book_card.dart';
+import '../../hi/presentation/hi_bubble.dart';
 
 /// Kitabı açar; dönünce Kitaplık, Hi ve Defter yenilenir.
 Future<void> openBook(
@@ -52,7 +53,9 @@ class LibraryView extends ConsumerWidget {
     final data = ref.watch(libraryProvider);
     // Kitap açma panelindeki dilbilgisi teklifi hazır olsun (H-078).
     ref.watch(bookGrammarOffersProvider);
-    final bottom = MediaQuery.paddingOf(context).bottom;
+    // Hi balonunun payı yalnızca listenin sonunda (H-064).
+    final bottom =
+        MediaQuery.paddingOf(context).bottom + HiBubbleInset.of(context);
     final children = <Widget>[
       ?header,
       // Yenilenirken eski veri kalır (iskelete dönüp zıplamaz).
