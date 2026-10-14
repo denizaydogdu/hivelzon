@@ -169,30 +169,36 @@ $P tools/content-pipeline/export_book.py kitaplar/A1-K01-*        # paket (yerel
 - Seviyeye C2 eklenir.
 - İçe aktarma ve `/admin` onayı genişletilir (K-05 durum makinesi aynen).
 
-## 7. Uygulama deneyimi (taslak; H-067'de tasarım taslağıyla kesinleşir)
+## 7. Uygulama deneyimi (H-067'de uygulandı, 2026-10-14)
+Kod: `mobile/lib/features/library/` (alan modeli `domain/`, okuyucu durumu `application/reader_controller.dart`, ekranlar `presentation/`). Metinler: `ARAYUZ-METINLERI.md` §4.6–4.7.
 **Yer:**
 - **Hikâye** sekmesinde iki bölüm: "Macera" (harita) ve "Kitaplık". Sekme sayısı değişmez (K-30).
-- Ana Sayfa'daki tek eylem ilkesi korunur. Kitap, Hi'nin önerisi olarak ya da yarıda kalan kitap varsa ikincil kartta görünür.
+- Ana Sayfa'daki tek eylem ilkesi korunur. Kitap, Hi'nin önerisi olarak görünür (H-067). Ana Sayfa'daki ikincil "yarım kitap" kartı henüz yok (sonraki iş).
+- Kısa ekranda (yükseklik < 600) Hikâye sayfasının başlığı ve seçici haritayla birlikte kayar; harita yine ekran boyu yer alır.
 - Yerleşim kullanıcı onaylı (2026-10-14, H-065).
 
 **Kitaplık ekranı:**
-- **Raflar:** "Okumaya devam et" (yarıda kalanlar, yüzdesiyle), "Senin seviyen", diğer seviyeler, "Okuduklarım".
+- **Raflar:** "Okumaya devam et" (yarıda kalanlar, yüzdesiyle; son okunan önce), "Senin seviyen" (yerleştirme sonucu, yoksa A1), diğer seviyeler ("A2 kitapları"), "Okuduklarım". Seviye raflarında o seviyenin bütün kitapları durur (yarım/biten kart halkası ya da onayla). Yüzde sayfaya göredir; başlanmış kitapta en az %1.
 - **Kitap kartı:** kapak, tür, süre, seviye, ilerleme halkası.
-- **Rastgele kitap:** "Bana bir kitap oku" düğmesi → seviye seç (varsayılan önerilen seviye) → okunmamış kitaplardan biri seçilir ve sesli açılır.
+- **Rastgele kitap:** "Bana bir kitap oku" düğmesi → seviye seç (varsayılan önerilen seviye; yalnız kitabı olan seviyeler) → **hiç açılmamış** kitaplardan biri seçilir ve sesli açılır. Yarım ya da biten kitap seçilmez; kalmadıysa sakin not ("Bu seviyede açmadığın kitap kalmadı") ve başka seviye seçilebilir.
+- Kitaplar `ContentSource.listBooks()` / `loadBook()` ile okunur (geliştirme sunucusu `/books/index.json`, `/books/<kitap>/book.json` + `pages.json`). Yükleniyor (iskelet), boş ve bağlantı hatası (Tekrar dene) durumları var.
 
 **Okuyucu:**
-- **Sayfa:** Renkli kitap sayfası; üstte resim, altta metin. Sayfa çevirme hareketi var; "Hareketi azalt" açıksa kayma.
+- **Sayfa:** Renkli kitap sayfası (zemin, yazı ve vurgu `palette`'ten; yazı/zemin ve yazı/vurgu en az 4,5:1, tutmayan renk belirteçle değişir); üstte resim (ekranın ~%38'i), altta metin; bölümün ilk sayfasında "Bölüm N" ve seslendirilen bölüm başlığı. Resimsiz sayfada küçük vurgu çizgisi. Sayfa kaydırarak ya da düğmeyle çevrilir (400 ms kayma); "Hareketi azalt" açıksa kaymadan.
 - **Sesli mod:**
-  - Okunan **cümle** vurgulanır. Kelime vurgusu ayarla açılıp kapanır.
+  - Okunan **cümle** vurgulanır (cümle zemini). Kelime vurgusu ayarla açılıp kapanır (okunan kelimenin altı çizilir; yerleşim kaymaz). Varsayılan: kapalı.
+  - **Eşleme:** her 50 ms'de ses konumu tahmin edilir (son örnek + geçen süre × hız), her 200 ms'de çalardan taze örnek alınır; vurgu sesin en fazla ~0,1 sn gerisinde kalır (kabul ≤ 0,2 sn, testle ölçülür). İki cümle arasındaki sessizlikte önceki cümle vurgulu kalır.
+  - Bölüm bitince sıradaki bölümün sesi açılır ve sürer; son bölüm bitince kitap biter.
   - Sayfa sonunda sayfa kendiliğinden çevrilir.
   - Oynat/duraklat, 10 sn geri, hız 0,75 / 1 / 1,25.
-  - **Uyku zamanlayıcısı:** bölüm sonunda ya da 10/20/30 dk.
-- **Sessiz mod:** Kullanıcı kendi okur ve sayfayı kendi çevirir. Bir cümleye uzun basınca yalnız o cümle seslendirilir.
+  - **Uyku zamanlayıcısı:** bölüm sonunda ya da 10/20/30 dk. Geri sayım gösterilmez (K-32); dolunca ses durur ve bir kez sakin not çıkar. "Bölüm sonunda" seçiliyse kalınan yer sıradaki bölümün başı olur.
+- **Sessiz mod:** Kullanıcı kendi okur ve sayfayı kendi çevirir; son sayfada "Kitabı bitir". Bir cümleye uzun basınca yalnız o cümle seslendirilir (çalarken vurgulu). Sesi olmayan ya da sesi açılamayan kitap sessiz açılır.
+- **Uzun basma (karar, H-067):** sesli modda kelimeye uzun basmak kelimeyi tek dokunuşla Defter'e ekler (ses durmaz); sessiz modda uzun basmak o cümleyi seslendirir. İki istek aynı hareketi istiyordu; sesli modda cümle zaten okunduğu için uzun basma eklemeye, sessiz modda dinlemeye ayrıldı. Sessiz modda ekleme anlam panelindeki "Deftere ekle" ile yapılır.
 - **Dokun:** Kelimeye ya da cümleye dokununca ses durur ve mevcut **anlam paneli** açılır (`shared/meaning/`): Türkçe, kelime sesi, "Sen de söyle" (H-055), "Deftere ekle". Panel kapanınca ses kaldığı yerden devam eder.
 - **Bilmediğin kelimeyi Defter'e ekle (kullanıcı isteği 2026-10-14):**
   - Her kelime ve cümle Defter'e eklenebilir.
     - Kelimeye dokununca açılan panelde "Deftere ekle".
-    - Kelimeye uzun basınca tek dokunuşla ekleme ve küçük bir onay ("Deftere eklendi").
+    - Kelimeye uzun basınca (sesli mod) tek dokunuşla ekleme ve küçük bir onay ("Deftere eklendi").
     - Panelde kelime, öbek ya da bütün cümle seçilebilir.
   - Kayıtta neler var:
     - Kelime;
@@ -205,10 +211,16 @@ $P tools/content-pipeline/export_book.py kitaplar/A1-K01-*        # paket (yerel
   - Kitap bitince "Bu kitapta kaydettiklerin" listesi gösterilir.
   - Aynı kelime ikinci kez eklenmez (idempotent).
   - Görsel yoksa kart kitap sayfasının resmini ya da kitap kapağını kullanır.
+  - Uygulamada (H-067): kayıt `notebook_items` satırıdır, `source = book`, `source_title` = kitabın başlığı (Drift şema 6, eşitlenir), `content_id` = kitap kimliği, `cue_id` = cümle kimliği (sayfa numarası buradan), ses ve görsel yolu `_books/<kitap>/…` (kitap paketinden çalınır). Aynı ifade (tür + metin) ikinci kez eklenmez; kart yeni FSRS kartı olarak Kelime tekrarına girer.
+  - Defter'de bütün satırların kaynağı yazılır: "Kitap: <başlık>, s. N", "Bölüm N'den ekledin" (kullanıcının bölümde eklediği), "Konu setinden". Kitaptan eklenen ifade varsa "Hepsi · Hikâyeden · <kitap>" çipleriyle süzülür.
 - **İlerleme:** Kitap, bölüm, sayfa ve son cümle cihazda saklanır, hesap varsa eşitlenir. "Bitti" kazanır (H-056 kuralı).
+  - Tablo `user_book_progress` (mobil Drift şema 6, backend Flyway V8): `book_id`, `status` (NOT_STARTED / IN_PROGRESS / COMPLETED), `chapter_id`, `page_number`, `sentence_index` (−1: bölüm başlığı), `position_sec`, `started_at`, `completed_at`, `updated_at`. Okunan cümle her değiştiğinde yazılır (aynı yer ikinci kez yazılmaz).
+  - Eşitleme: durum hiçbir zaman geri gitmez (mobil `SyncStore`, backend `ProgressMerger.forBooks()`); aynı durumda son yazan kazanır; biten kopyanın kalınan yeri korunur.
+  - Yarım kitap kaldığı cümleden açılır (sesli modda o cümlenin başından okunur). Biten kitap baştan açılır, durumu "bitti" kalır.
+- **Hi:** yarım kitap (`continueBook`) yarım bölüm, tekrar (≥ 5) ve Hi'nin notundan sonra; kitaba başlamak (`startBook`, önerilen seviyede açılmamış ilk kitap) bütün öneriler bittikten sonra, dinlenmeden önce. Gerekçe görünür ("…%40 kadarını okudun; kaldığın cümleden devam edersin.").
 - **Arka plan:** Ekran kilitliyken dinleme ve kilit ekranı denetimleri (H-068).
-- **Bitiş:** Sakin kutlama, "bu kitaptan 5 ifade" kartı ve "sıradaki kitap" önerisi. Puan, lig ve geri sayım yok (K-32).
-- **Erişilebilirlik:** Yazı boyutu ayarı (okuma için ayrı, 3 kademe), dokunma hedefi en az 48, ekran okuyucu metni okur.
+- **Bitiş:** Sakin kutlama, "Bu kitapta kaydettiklerin" listesi ve "sıradaki kitap" önerisi (aynı seviyede açılmamış kitap varsa "Sıradaki kitabı aç"); "Kitaplığa dön", "Baştan oku". Puan, lig ve geri sayım yok (K-32). "Bu kitaptan 5 ifade" kartı kitap içeriği gelince (H-069) ayrıca eklenebilir.
+- **Erişilebilirlik:** Yazı boyutu ayarı (okuma için ayrı, 3 kademe: 18 / 21 / 25 px, sistem büyütmesi üstüne), dokunma hedefi en az 48, ekran okuyucu paragrafı metin olarak okur; ekran okuyucu açıkken her cümle ayrı düğmedir (dokununca anlam paneli). 320 × 568 ekranda 1,3× yazıda taşma yok.
 
 ## 8. Mevcut koddan yeniden kullanılacaklar
 - **Zamanlama:** `tools/content-pipeline/hvpipeline/align.py` (ElevenLabs hizalama → cümle/kelime zamanı), `media.py` (-16 LUFS), `translation.py`, `cefr.py`, `lint.py` (kapsama kuralları).

@@ -11,9 +11,8 @@ import 'card_face.dart';
 /// İngilizce (ya da ipucunun Türkçesi) + Türkçesi + isteğe bağlı kaynak satırı,
 /// sağda eylemler (🔊, menü, ok).
 ///
-/// Kaynak satırı bugün yalnız konu setinden gelenlerde yazılır; Kitaplık
-/// (H-067) aynı satıra "Kitap: başlık, s. N" koyacak (bkz.
-/// [notebookSourceLine]).
+/// Kaynak satırı: "Konu setinden", "Bölüm N'den ekledin" ve Kitaplık'tan
+/// "Kitap: başlık, s. N" (H-067; bkz. [notebookSourceLine]).
 class NotebookRow extends StatelessWidget {
   const NotebookRow({
     super.key,
@@ -30,7 +29,7 @@ class NotebookRow extends StatelessWidget {
   final String title;
   final String? subtitle;
 
-  /// Küçük kaynak satırı ("Konu setinden"; ileride "Kitap: …, s. 4").
+  /// Küçük kaynak satırı ("Konu setinden", "Kitap: …, s. 4").
   final String? source;
   final List<Widget> trailing;
   final VoidCallback? onTap;
@@ -111,10 +110,17 @@ class NotebookRow extends StatelessWidget {
 /// eksiksiz): yeni bir kaynak (ör. kitap) eklenince derleyici burayı sorar.
 String? notebookSourceLine(NotebookItem item) => switch (item.source) {
   NotebookSource.topicSet => NotebookTexts.sourceTopicSet,
-  // Bölümden gelenlerin kaynağı soldaki bölüm etiketidir.
-  NotebookSource.autoTargetPhrase ||
-  NotebookSource.userSaved ||
-  NotebookSource.lookup => null,
+  // Kullanıcının bölümde kendi eklediği (altyazı, anlam paneli).
+  NotebookSource.userSaved =>
+    item.episodeNumber == null
+        ? null
+        : NotebookTexts.sourceEpisode(item.episodeNumber!),
+  NotebookSource.book =>
+    item.sourceTitle == null
+        ? NotebookTexts.sourceBookUnknown
+        : NotebookTexts.sourceBook(item.sourceTitle!, item.bookPage),
+  // Bölümün kendi eklediklerinin kaynağı soldaki bölüm etiketidir.
+  NotebookSource.autoTargetPhrase || NotebookSource.lookup => null,
 };
 
 /// Satırın sol etiketi: bölümden geliyorsa "B1", değilse tür rozeti.
@@ -122,9 +128,11 @@ Widget notebookLeading(NotebookItem item) {
   final tag = item.episodeTag;
   if (tag != null) return EpisodeTag(tag: tag);
   return KindBadge(
-    icon: item.source == NotebookSource.topicSet
-        ? Icons.category_outlined
-        : Icons.chat_bubble_outline_rounded,
+    icon: switch (item.source) {
+      NotebookSource.topicSet => Icons.category_outlined,
+      NotebookSource.book => Icons.menu_book_rounded,
+      _ => Icons.chat_bubble_outline_rounded,
+    },
   );
 }
 

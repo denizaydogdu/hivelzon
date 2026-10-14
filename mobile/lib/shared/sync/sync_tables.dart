@@ -131,6 +131,24 @@ const syncTables = <SyncTableSpec>[
       ),
     ],
   ),
+  // Kitap ilerlemesi (H-067): "bitti" kazanır (`SyncStore`, backend
+  // `ProgressMerger`).
+  SyncTableSpec(
+    name: 'user_book_progress',
+    order: 70,
+    mutable: true,
+    keys: [SyncCol('bookId', 'book_id', _t)],
+    lww: _updatedAt,
+    data: [
+      SyncCol('status', 'status', _t),
+      SyncCol('chapterId', 'chapter_id', _t),
+      SyncCol('pageNumber', 'page_number', _i),
+      SyncCol('sentenceIndex', 'sentence_index', _i),
+      SyncCol('positionSec', 'position_sec', _r),
+      SyncCol('startedAt', 'started_at', _d),
+      SyncCol('completedAt', 'completed_at', _d),
+    ],
+  ),
   SyncTableSpec(
     name: 'notebook_items',
     order: 100,
@@ -153,6 +171,7 @@ const syncTables = <SyncTableSpec>[
       SyncCol('exampleStart', 'example_start', _r),
       SyncCol('exampleEnd', 'example_end', _r),
       SyncCol('source', 'source', _t),
+      SyncCol('sourceTitle', 'source_title', _t),
       SyncCol('createdAt', 'created_at', _d),
     ],
   ),

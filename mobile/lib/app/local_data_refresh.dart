@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/misc.dart' show ProviderOrFamily;
 
 import '../features/account/application/account_providers.dart';
 import '../features/hi/application/hi_providers.dart';
+import '../features/library/application/library_providers.dart';
 import '../features/notebook/application/notebook_providers.dart';
 import '../features/profile/application/profile_providers.dart';
 import '../features/story/application/story_providers.dart';
@@ -31,6 +32,8 @@ final localDataProviders = <ProviderOrFamily>[
   deckKeysProvider,
   topicSetUnlockedByProvider,
   accountNudgeProvider,
+  bookProgressProvider,
+  libraryProvider,
 ];
 
 /// Başka cihazdan veri geldi ya da yerel veri toplu değişti (H-038, H-056):

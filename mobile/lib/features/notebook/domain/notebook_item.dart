@@ -17,7 +17,10 @@ enum NotebookSource {
   lookup('lookup'),
 
   /// Konu setinden eklenen kelime (H-051: "Hepsini defterime ekle" ya da tek tek).
-  topicSet('topic_set');
+  topicSet('topic_set'),
+
+  /// Kitaplık'ta okunan kitaptan eklenen ifade (H-067).
+  book('book');
 
   const NotebookSource(this.code);
 
@@ -61,6 +64,7 @@ class NotebookItem {
     this.audio,
     this.exampleAudio,
     this.createdAt,
+    this.sourceTitle,
   });
 
   final int? id;
@@ -85,6 +89,9 @@ class NotebookItem {
   final MediaClip? exampleAudio;
   final NotebookSource source;
 
+  /// Kaynağın adı: kitaptan eklenende kitabın başlığı (H-067).
+  final String? sourceTitle;
+
   /// UTC.
   final DateTime? createdAt;
 
@@ -94,9 +101,22 @@ class NotebookItem {
 
   /// Bölüm etiketi: `A1-004` → `B4`.
   String? get episodeTag {
+    final n = episodeNumber;
+    return n == null ? null : 'B$n';
+  }
+
+  /// Bölüm numarası (`A1-004` → 4); bölümden gelmiyorsa null.
+  int? get episodeNumber {
+    if (source == NotebookSource.book) return null;
     final m = RegExp(r'-(\d{3})$').firstMatch(contentId ?? '');
-    if (m == null) return null;
-    return 'B${int.parse(m.group(1)!)}';
+    return m == null ? null : int.parse(m.group(1)!);
+  }
+
+  /// Kitaptaki sayfa numarası (`cueId` `p03-s01` → 3); kitaptan değilse null.
+  int? get bookPage {
+    if (source != NotebookSource.book) return null;
+    final m = RegExp(r'^p(\d{2,3})').firstMatch(cueId ?? '');
+    return m == null ? null : int.parse(m.group(1)!);
   }
 
   /// Eksik görsel/ses bilgisini [other]'dan tamamlar (var olan alanlara dokunmaz).
@@ -114,6 +134,7 @@ class NotebookItem {
     imageCrop: imageCrop ?? other.imageCrop,
     audio: audio ?? other.audio,
     exampleAudio: exampleAudio ?? other.exampleAudio,
+    sourceTitle: sourceTitle ?? other.sourceTitle,
     createdAt: createdAt,
   );
 }

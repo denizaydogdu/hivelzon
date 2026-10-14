@@ -1,4 +1,5 @@
 import '../../features/hi/domain/hi_content.dart';
+import '../../features/library/domain/book.dart';
 import '../../features/player/domain/episode.dart';
 import '../../features/player/domain/subtitles.dart';
 import '../../features/player/domain/video_rendition.dart';
@@ -200,11 +201,31 @@ abstract interface class ContentSource {
   /// Hi-A verisi (H-048): sezon paketindeki `hi.json` (hata kataloğu, konu
   /// tanıtımları, köprü görevleri, "Bu ne demek?" dizini).
   Future<HiContent> loadHiContent(int season);
+
+  /// Kitaplık (H-067): `/books/index.json`.
+  Future<List<BookSummary>> listBooks();
+
+  /// Kitap paketi: `book.json` + `pages.json`.
+  Future<Book> loadBook(String bookId);
+
+  /// Kitap paketindeki bir dosyanın adresi (`/books/<kitap>/<yol>`).
+  Uri bookMediaUri(String bookId, String path);
+}
+
+/// Defter kartında kitap paketindeki dosya yolu (H-067): `_books/<kitap>/<yol>`.
+String bookMediaPath(String bookId, String path) => '_books/$bookId/$path';
+
+(String, String)? parseBookMediaPath(String path) {
+  final m = RegExp(r'^_books/([^/]+)/(.+)$').firstMatch(path);
+  return m == null ? null : (m.group(1)!, m.group(2)!);
 }
 
 /// Defter kartındaki görsel ya da ses yolu: bölüm paketinde (`stills/x.webp`)
-/// ya da sezon paketinde (`_season/S1/sets/…`, konu setleri, H-051).
+/// ya da sezon paketinde (`_season/S1/sets/…`, konu setleri, H-051) ya da
+/// kitap paketinde (`_books/A1-K01/audio/c1.m4a`, H-067).
 Uri resolveMediaUri(ContentSource source, String contentId, String path) {
+  final book = parseBookMediaPath(path);
+  if (book != null) return source.bookMediaUri(book.$1, book.$2);
   final season = parseSeasonMediaPath(path);
   return season == null
       ? source.mediaUri(contentId, path)

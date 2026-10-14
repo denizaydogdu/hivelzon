@@ -110,6 +110,8 @@ class NotebookStore {
         await (_db.select(_db.notebookItems)..where(
               (t) =>
                   t.contentId.isNotNull() &
+                  // Kitaptan eklenenler kaydedilirken doldurulur (H-067).
+                  t.source.equals(NotebookSource.book.code).not() &
                   (t.imagePath.isNull() | t.audioPath.isNull()),
             ))
             .get();
@@ -140,7 +142,9 @@ class NotebookStore {
     if (row.audioPath == null && setItem.audio != null) {
       await _fillMissing(row, setItem);
     }
-    if (row.imagePath != null && row.imagePath!.startsWith('_season/')) {
+    if (row.imagePath != null &&
+        (row.imagePath!.startsWith('_season/') ||
+            row.imagePath!.startsWith('_books/'))) {
       return 0;
     }
     if (row.imagePath == path && row.imageCrop == setItem.imageCrop) return 0;
@@ -167,6 +171,7 @@ class NotebookStore {
                   t.source.isIn([
                     NotebookSource.userSaved.code,
                     NotebookSource.topicSet.code,
+                    NotebookSource.book.code,
                   ]),
             ))
             .go();
@@ -395,6 +400,7 @@ class NotebookStore {
         exampleStart: Value(i.exampleAudio?.start),
         exampleEnd: Value(i.exampleAudio?.end),
         source: i.source.code,
+        sourceTitle: Value(i.sourceTitle),
         createdAt: at,
         updatedAt: Value(at),
       );
@@ -422,6 +428,7 @@ class NotebookStore {
           ? null
           : MediaClip(path, start: r.exampleStart, end: r.exampleEnd),
       source: NotebookSource.parse(r.source),
+      sourceTitle: r.sourceTitle,
       createdAt: r.createdAt.toUtc(),
     );
   }

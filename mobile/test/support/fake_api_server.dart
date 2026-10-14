@@ -274,7 +274,8 @@ class FakeApiServer {
           if (deleted)
             for (final c in spec.data) c.json: null,
         };
-        if (spec.name == 'user_story_progress' &&
+        if ((spec.name == 'user_story_progress' ||
+                spec.name == 'user_book_progress') &&
             stored != null &&
             !deleted &&
             stored['deleted'] != true) {
@@ -376,9 +377,17 @@ class FakeApiServer {
       ..['status'] = high['status']
       ..['completedAt'] = high['completedAt'];
     if (high['status'] == 'COMPLETED') {
-      base
-        ..['lastCheckpointNodeId'] = high['lastCheckpointNodeId']
-        ..['checkpointSnapshot'] = high['checkpointSnapshot'];
+      // Kalınan yer: bölümde kayıt noktası, kitapta bölüm/sayfa/cümle (H-067).
+      for (final k in const [
+        'lastCheckpointNodeId',
+        'checkpointSnapshot',
+        'chapterId',
+        'pageNumber',
+        'sentenceIndex',
+        'positionSec',
+      ]) {
+        if (high.containsKey(k)) base[k] = high[k];
+      }
     }
     final starts = [
       stored['startedAt'],

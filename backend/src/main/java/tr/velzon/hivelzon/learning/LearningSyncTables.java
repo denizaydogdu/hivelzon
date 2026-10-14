@@ -64,7 +64,9 @@ public class LearningSyncTables implements SyncTableProvider {
                         decimal("audioEnd", "audio_end", false),
                         decimal("exampleStart", "example_start", false),
                         decimal("exampleEnd", "example_end", false),
-                        oneOf("source", "source", true, "auto_target_phrase", "user_saved", "lookup", "topic_set"),
+                        oneOf("source", "source", true, "auto_target_phrase", "user_saved", "lookup", "topic_set",
+                                "book"),
+                        string("sourceTitle", "source_title", false, 200),
                         instant("createdAt", "created_at", true))),
                 new SyncTable(REVIEW_CARDS, 110, Kind.MUTABLE, List.of(ITEM_KEY), UPDATED_AT, List.of(
                         integer("state", "state", true, 1, 3),

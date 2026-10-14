@@ -53,6 +53,16 @@ class SaveOutcome {
       : '"${item.en}" zaten defterinde.';
 }
 
+/// Kaydedilecek ifadeyi tamamlar (ör. Kitaplık: kaynak, görsel, kitap
+/// sesinden kesilmiş telaffuz; H-067). [wordIndex] seçili kelime, [chunk]
+/// seçili kalıp; ikisi de yoksa cümle kaydedilir.
+typedef SaveDecorator =
+    SavedPhrase Function(
+      SavedPhrase draft, {
+      int? wordIndex,
+      PhraseChunk? chunk,
+    });
+
 /// Kademeli anlam paneli durumu (H-046):
 /// 1) kelimeye dokun → anlam + ses, kalıp varsa kalıbın anlamı;
 /// 2) "Türkçesini göster" → cümlenin tamamı;
@@ -65,6 +75,7 @@ class MeaningController extends ChangeNotifier {
     required NotebookRepository notebook,
     double speed = 1.0,
     DateTime Function()? now,
+    this.decorate,
   }) : _events = events,
        _notebook = notebook,
        _speed = speed,
@@ -72,6 +83,9 @@ class MeaningController extends ChangeNotifier {
 
   final MeaningText text;
   final MeaningAudio audio;
+
+  /// Kaydı tamamlayan isteğe bağlı işlev (Kitaplık).
+  final SaveDecorator? decorate;
   final LearningEventLog _events;
   final NotebookRepository _notebook;
   final DateTime Function() _now;
@@ -154,8 +168,12 @@ class MeaningController extends ChangeNotifier {
         savedAt: at,
       );
     }
-    final added = await _notebook.add(item);
-    return SaveOutcome(item, added: added);
+    final d = decorate;
+    final saved = d == null
+        ? item
+        : d(item, wordIndex: chunk == null ? _selected : null, chunk: chunk);
+    final added = await _notebook.add(saved);
+    return SaveOutcome(saved, added: added);
   }
 
   void _record(String target) {

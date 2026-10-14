@@ -98,6 +98,31 @@ abstract final class AppTypography {
     fontWeight: AppFonts.bold,
   );
 
+  /// Kitap okuma metni (H-067): 3 kademe (küçük / orta / büyük), geniş satır
+  /// aralığı. Sistemin yazı büyütmesi bunun üstüne uygulanır.
+  static const List<double> readingSizes = [18, 21, 25];
+
+  static TextStyle reading(int step) {
+    final size = readingSizes[step.clamp(0, readingSizes.length - 1)];
+    return TextStyle(
+      fontFamily: AppFonts.body,
+      fontSize: size,
+      height: 1.55,
+      fontWeight: AppFonts.regular,
+    );
+  }
+
+  /// Kitap sayfasındaki bölüm başlığı (okuma boyutunun 1,2 katı).
+  static TextStyle readingHeading(int step) {
+    final size = readingSizes[step.clamp(0, readingSizes.length - 1)] * 1.2;
+    return TextStyle(
+      fontFamily: AppFonts.heading,
+      fontSize: size,
+      height: 1.3,
+      fontWeight: AppFonts.bold,
+    );
+  }
+
   /// Alt sekme etiketi.
   static const TextStyle navLabel = TextStyle(
     fontFamily: AppFonts.body,

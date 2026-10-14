@@ -129,6 +129,142 @@ abstract final class StoryTexts {
   static String unlockedAnnouncement(int number) => 'Bölüm $number açıldı';
 }
 
+/// Kitaplık (H-067): Hikâye sekmesinde "Macera · Kitaplık".
+abstract final class LibraryTexts {
+  static const segmentAdventure = 'Macera';
+  static const segmentLibrary = 'Kitaplık';
+  static const segmentsLabel = 'Hikâye bölümü';
+  static const intro =
+      'Seviyene göre kısa, resimli kitaplar. İstersen dinle, istersen kendin '
+      'oku.';
+
+  static const readToMe = 'Bana bir kitap oku';
+  static const readToMeHint =
+      'Seviyeni seç; okumadığın bir kitabı senin için sesli açalım.';
+  static const pickLevel = 'Hangi seviyede olsun?';
+  static String suggested(String level) => 'Önerilen seviye: $level';
+  static const openRandom = 'Kitabı aç';
+  static const noUnreadTitle = 'Bu seviyede açmadığın kitap kalmadı';
+  static const noUnreadBody =
+      'Başka bir seviye seçebilir ya da sevdiğin bir kitabı yeniden '
+      'dinleyebilirsin.';
+
+  static const shelfContinue = 'Okumaya devam et';
+  static String shelfMine(String level) => 'Senin seviyen · $level';
+  static String shelfLevel(String level) => '$level kitapları';
+  static const shelfFinished = 'Okuduklarım';
+
+  static String genre(String code) => switch (code) {
+    'mystery' => 'Gizem',
+    'adventure' => 'Macera',
+    'humor' => 'Mizah',
+    'scifi-fantasy' => 'Bilimkurgu',
+    'everyday' => 'Günlük hayat',
+    _ => 'Kitap',
+  };
+  static String minutes(int m) => '~$m dk';
+  static String percent(int p) => '%$p';
+  static const done = 'Okundu';
+
+  /// Kartın ekran okuyucu metni.
+  static String cardSemantics({
+    required String title,
+    required String level,
+    String? genre,
+    int? minutes,
+    int? percent,
+    bool done = false,
+  }) => [
+    title,
+    '$level seviyesi',
+    ?genre,
+    if (minutes != null) 'yaklaşık $minutes dakika',
+    if (done) 'okundu' else if (percent != null) 'yüzde $percent okundu',
+  ].join(', ');
+
+  static const loading = 'Kitaplık hazırlanıyor…';
+  static const emptyTitle = 'Kitaplar hazırlanıyor';
+  static const emptyBody =
+      'İlk kitaplar hazır olunca burada görünür. O zamana kadar maceraya '
+      'devam edebilirsin.';
+  static const loadError = 'Kitaplar yüklenemedi.';
+}
+
+/// Kitap okuyucu (H-067).
+abstract final class ReaderTexts {
+  static const close = 'Kitabı kapat';
+  static const loading = 'Kitap açılıyor…';
+  static const loadError = 'Kitap açılamadı.';
+  static String pageOf(int n, int total) => 's. $n / $total';
+  static String pageSemantics(int n, int total) => '$total sayfadan $n. sayfa';
+  static String chapterLabel(int n) => 'Bölüm $n';
+
+  // Mod
+  static const listen = 'Sesli';
+  static const silent = 'Sessiz';
+  static const modeLabel = 'Okuma biçimi';
+  static const noAudio =
+      'Bu kitabın sesi şu an açılamıyor. Sessiz okuyabilirsin.';
+
+  // Ses denetimleri
+  static const play = 'Dinle';
+  static const pause = 'Duraklat';
+  static const back10 = '10 saniye geri';
+  static String speed(double s) => switch (s) {
+    0.75 => '0,75x',
+    1.25 => '1,25x',
+    _ => '1x',
+  };
+  static String speedSemantics(double s) => switch (s) {
+    0.75 => 'Hız yavaş. Değiştirmek için dokun.',
+    1.25 => 'Hız hızlı. Değiştirmek için dokun.',
+    _ => 'Hız normal. Değiştirmek için dokun.',
+  };
+  static const prevPage = 'Önceki sayfa';
+  static const nextPage = 'Sonraki sayfa';
+  static const finishBook = 'Kitabı bitir';
+
+  // Uyku zamanlayıcısı (geri sayım gösterilmez; K-32)
+  static const sleep = 'Uyku zamanlayıcısı';
+  static const sleepOff = 'Kapalı';
+  static const sleepChapter = 'Bölüm sonunda';
+  static String sleepMinutes(int m) => '$m dakika sonra';
+  static String sleepOn(String option) => 'Uyku zamanlayıcısı: $option';
+  static const sleepFired = 'Uyku zamanlayıcısı sesi durdurdu. İyi uykular!';
+
+  // Ayarlar
+  static const settings = 'Okuma ayarları';
+  static const textSize = 'Yazı boyutu';
+  static const textSizes = ['Küçük', 'Orta', 'Büyük'];
+  static const wordHighlight = 'Okunan kelimeyi de vurgula';
+  static const wordHighlightHint = 'Kapalıyken yalnız okunan cümle vurgulanır.';
+
+  // Bölümler
+  static const chapters = 'Bölümler';
+  static String chapterRow(int n, String title) => '$n. $title';
+  static String chapterPage(int page) => 's. $page';
+
+  // Anlam ve defter
+  static const sentenceHint = 'Anlamını göstermek için dokun';
+  static const quickAdded = 'Deftere eklendi';
+  static String alreadySaved(String en) => '"$en" zaten defterinde.';
+  static const saveFailed =
+      'Şu an deftere eklenemedi. Biraz sonra tekrar dene.';
+
+  // Bitiş (puan, lig, geri sayım yok; K-32)
+  static const endTitle = 'Kitabı bitirdin';
+  static String endBody(String title) =>
+      '"$title" bitti. Dinlediğin ve okuduğun her sayfa kulağını güçlendirir.';
+  static const savedHeading = 'Bu kitapta kaydettiklerin';
+  static const savedEmpty =
+      'Bu kitaptan defterine ifade eklemedin. Bir dahakine bilmediğin '
+      'kelimeye dokunup "Deftere ekle" diyebilirsin.';
+  static const savedReviewNote = 'Bu ifadeler Kelime tekrarında karşına çıkar.';
+  static const nextBook = 'Sıradaki kitabı aç';
+  static const backToLibrary = 'Kitaplığa dön';
+  static const readAgain = 'Baştan oku';
+}
+
 /// Sezon jeneriği (H-049, H-050; metinler H-060'ta buraya taşındı).
 abstract final class SeasonIntroTexts {
   static String semantics(int season, String? title) =>
@@ -180,10 +316,20 @@ abstract final class NotebookTexts {
       'kelimeye dokunup "Deftere ekle" de diyebilirsin.';
   static const noMatch = 'Aradığın ifade defterinde yok.';
 
-  /// Satırın kaynak satırı (H-061). Bölümden gelen ifadede kaynak, soldaki
-  /// bölüm etiketidir ("B1"); burada yalnız etiketi olmayanlar yazılır.
-  /// Kitaplık (H-067) buraya "Kitap: başlık, s. N" ekleyecek.
+  /// Satırın kaynak satırı (H-061, H-067). Bölümün kendi eklediği ifadelerde
+  /// (hedef ifade, bakılan kelime) kaynak yalnız soldaki bölüm etiketidir
+  /// ("B1"); kullanıcının kendi eklediğinde bölüm de yazılır.
   static const sourceTopicSet = 'Konu setinden';
+  static String sourceEpisode(int n) => "Bölüm ${ablativeNumber(n)} ekledin";
+  static String sourceBook(String title, int? page) =>
+      page == null ? 'Kitap: $title' : 'Kitap: $title, s. $page';
+  static const sourceBookUnknown = 'Kitaptan';
+
+  /// Kaynağa göre süzme (H-067; kitaptan eklenen ifade varsa görünür).
+  static const filterLabel = 'Kaynağa göre süz';
+  static const filterAll = 'Hepsi';
+  static const filterStory = 'Hikâyeden';
+  static String filterBook(String title) => title;
   static const loadError =
       'Defter açılamadı. Uygulamayı yeniden başlatıp dene.';
   static String removed(String en) => '"$en" defterinden çıkarıldı.';
@@ -495,6 +641,25 @@ abstract final class HiTexts {
       'bitirince "$set" seti açıldı. Nesneleri resimde bul; süre yok, '
       'yaklaşık 3 dk.';
   static const huntAction = 'Sahne avına başla';
+
+  // g) yarım kitap (H-067)
+  static String continueBookTitle(String title) => 'Kitaba devam: $title';
+  static String continueBookReason(
+    String title,
+    int percent,
+    int? est,
+    int goal,
+  ) =>
+      '"$title" kitabının %$percent kadarını okudun; kaldığın cümleden '
+      'devam edersin.${_minutes(est, goal)}';
+  static const continueBookAction = 'Kitaba devam et';
+
+  // h) kitap başla (H-067)
+  static String startBookTitle(String title) => 'Bir kitap dinle: $title';
+  static String startBookReason(String level, int? est, int goal) =>
+      'Bugünkü işlerin bitti. İstersen $level seviyesinde kısa bir kitabı '
+      'dinleyerek kulağını çalıştır.${_minutes(est, goal)}';
+  static const startBookAction = 'Dinlemeye başla';
 
   // f) dinlenme
   static const restTitle = 'Bugünlük bu kadar yeter';

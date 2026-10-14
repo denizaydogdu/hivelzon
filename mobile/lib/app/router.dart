@@ -13,6 +13,7 @@ import '../features/player/application/autoplay_driver.dart';
 import '../features/player/application/player_session.dart';
 import '../features/player/presentation/player_screen.dart';
 import '../features/home/presentation/home_screen.dart';
+import '../features/library/presentation/reader_screen.dart';
 import '../features/notebook/presentation/notebook_screen.dart';
 import '../features/notebook/presentation/review_screen.dart';
 import '../features/onboarding/application/onboarding_providers.dart';
@@ -68,6 +69,11 @@ abstract final class AppRoutes {
 
   /// Sahne avı (tam ekran, H-051).
   static String sceneHunt(String id) => '/konu-seti/$id/sahne-avi';
+
+  /// Kitap okuyucu (H-067; tam ekran). [listen]: sesli açılır ("Bana bir
+  /// kitap oku"); yoksa kitabın kalınan yerinden, son kullanılan biçimle.
+  static String book(String id, {bool listen = false}) =>
+      listen ? '/kitap/$id?mod=dinle' : '/kitap/$id';
 
   /// Tasarım sistemi vitrini (H-057): yalnız debug derlemede.
   static const designShowcase = '/tasarim';
@@ -134,6 +140,18 @@ final routerProvider = Provider<GoRouter>((ref) {
           child: PlayerScreen(
             contentId: state.pathParameters['contentId']!,
             startMode: PlayerStartMode.parse(state.uri.queryParameters['mode']),
+          ),
+        ),
+      ),
+      GoRoute(
+        path: '/kitap/:bookId',
+        pageBuilder: (context, state) => MaterialPage(
+          key: state.pageKey,
+          fullscreenDialog: true,
+          child: ReaderScreen(
+            key: ValueKey(state.pathParameters['bookId']),
+            bookId: state.pathParameters['bookId']!,
+            listen: state.uri.queryParameters['mod'] != 'oku',
           ),
         ),
       ),

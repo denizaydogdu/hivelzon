@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 import '../../features/hi/domain/hi_content.dart';
+import '../../features/library/domain/book.dart';
 import '../../features/player/domain/episode.dart';
 import '../../features/player/domain/subtitles.dart';
 import '../../features/topic_sets/domain/topic_set.dart';
@@ -101,6 +102,41 @@ class HttpContentSource implements ContentSource {
       return HiContent.fromJson(json.cast<String, dynamic>());
     } on Object catch (e) {
       throw ContentUnavailableException('Bozuk hi.json', cause: e);
+    }
+  }
+
+  Uri _booksUri(List<String> segments) =>
+      _base.resolveUri(Uri(pathSegments: ['books', ...segments]));
+
+  @override
+  Uri bookMediaUri(String bookId, String path) =>
+      _booksUri([bookId, ...path.split('/')]);
+
+  @override
+  Future<List<BookSummary>> listBooks() async {
+    final json = await _getJson(_booksUri(['index.json']));
+    final list = (json is Map ? json['books'] : null) as List? ?? const [];
+    try {
+      return [for (final b in list) BookSummary.fromJson((b as Map).cast())];
+    } on Object catch (e) {
+      throw ContentUnavailableException('Bozuk kitap listesi', cause: e);
+    }
+  }
+
+  @override
+  Future<Book> loadBook(String bookId) async {
+    final results = await Future.wait([
+      _getJson(bookMediaUri(bookId, 'book.json')),
+      _getJson(bookMediaUri(bookId, 'pages.json')),
+    ]);
+    final (book, pages) = (results[0], results[1]);
+    if (book is! Map || pages is! Map) {
+      throw ContentUnavailableException('Bozuk kitap paketi');
+    }
+    try {
+      return Book.fromJson(book.cast(), pages.cast());
+    } on Object catch (e) {
+      throw ContentUnavailableException('Bozuk kitap paketi', cause: e);
     }
   }
 

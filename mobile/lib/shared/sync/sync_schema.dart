@@ -41,6 +41,7 @@ abstract final class SyncSql {
     ('season_state', 'ss', ['CAST(season_id AS TEXT)']),
     ('story_links', 'sl', ['content_id']),
     ('hi_records', 'hr', ['kind', 'ref_id']),
+    ('user_book_progress', 'ubp', ['book_id']),
   ];
 
   /// Yalnız eklenen, doğal anahtarlı tablolar.

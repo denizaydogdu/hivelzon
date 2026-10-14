@@ -7,6 +7,10 @@ import '../../../shared/meaning/error_taxonomy.dart';
 import '../../../shared/progress/story_progress.dart';
 import '../../../shared/state/safe_refresh.dart';
 import '../../../shared/storage/storage_providers.dart';
+import '../../library/application/library_providers.dart';
+import '../../library/domain/book.dart';
+import '../../library/domain/book_progress.dart';
+import '../../onboarding/application/onboarding_providers.dart';
 import '../../notebook/application/notebook_providers.dart';
 import '../../player/application/player_session.dart';
 import '../../player/data/progress_repository.dart';
@@ -86,6 +90,7 @@ final coachInputProvider = FutureProvider.autoDispose<CoachInput>((ref) async {
   final overview = await ref.watch(reviewOverviewProvider.future);
   final goal = await ref.watch(notebookStoreProvider).dailyGoalMinutes();
   final hunted = await store.huntedSets();
+  final books = await _coachBooks(ref);
   final sets = info == null
       ? const <TopicSetView>[]
       : resolveTopicSets(info.topicSets, progress);
@@ -108,8 +113,43 @@ final coachInputProvider = FutureProvider.autoDispose<CoachInput>((ref) async {
           ),
     ],
     content: content,
+    bookInProgress: books.$1,
+    bookToStart: books.$2,
   );
 }, retry: (_, _) => null);
+
+/// Hi için kitaplar (H-067): son okunan yarım kitap ve önerilen seviyede
+/// açılmamış ilk kitap. Kitaplık yüklenemezse ikisi de yok.
+Future<(CoachBook?, CoachBook?)> _coachBooks(Ref ref) async {
+  try {
+    final books = await ref.watch(contentSourceProvider).listBooks();
+    final progress = await ref.watch(bookProgressStoreProvider).all();
+    final level = await ref.watch(onboardingStoreProvider).suggestedLevel();
+    final shelves = buildShelves(books, progress, suggestedLevel: level);
+    CoachBook of(BookSummary b) => CoachBook(
+      bookId: b.id,
+      title: b.title,
+      level: b.level,
+      percent: ((progress[b.id]?.fraction(b.pageCount) ?? 0) * 100).round(),
+      estimatedMinutes: b.estimatedMinutes,
+    );
+    final reading = shelves.continueReading.firstOrNull;
+    final unread = shelves.userLevelBooks
+        .where(
+          (b) =>
+              progress[b.id] == null ||
+              progress[b.id]!.status == BookStatus.notStarted,
+        )
+        .firstOrNull;
+    return (
+      reading == null ? null : of(reading),
+      unread == null ? null : of(unread),
+    );
+  } on Object catch (e) {
+    debugPrint('[H067] Hi için kitaplar okunamadı: $e');
+    return (null, null);
+  }
+}
 
 final hiSuggestionProvider = FutureProvider.autoDispose<HiSuggestion>(
   (ref) async => suggestToday(await ref.watch(coachInputProvider.future)),
