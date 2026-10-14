@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "id": "A2-K01",
+  "slug": "A2-K01-the-lemon-cake-mystery",
+  "level": "A2",
+  "genre": "mystery",
+  "title": "The Lemon Cake Mystery",
+  "titleTr": "Limonlu Kek Gizemi",
+  "blurbTr": "Lokantanın en ünlü tatlısı Füsun Teyze'nin limonlu keki. Yarışmaya iki gün kala tarif kartı kayboluyor. Şüpheliler: kuzen Bora, yeni garson Theo ve karşıdaki pastanenin sahibi. Elif bir dedektif defteri açıyor.",
+  "hookEn": "The day before the contest, the famous recipe disappeared.",
+  "contentVersion": 1,
+  "status": "DRAFT",
+  "aiGenerated": true,
+  "palette": {
+    "background": "#FFFBEA",
+    "surface": "#F4EFCF",
+    "text": "#1D3550",
+    "accent": "#1F6FA8",
+    "highlight": "#F7D84A"
+  },
+  "cover": "cover.png",
+  "properNouns": [
+    "Elif",
+    "Füsun",
+    "Bora",
+    "Theo",
+    "Selim",
+    "Limon",
+    "Ayvalık",
+    "England",
+    "Turkish",
+    "English"
+  ],
+  "narration": {
+    "modelId": "eleven_v3",
+    "speed": 0.95,
+    "voiceId": "EXAVITQu4vr4xnSDxMaL"
+  },
+  "chapters": [
+    {
+      "id": "c1",
+      "title": "The Empty Box",
+      "titleTr": "Boş Kutu",
+      "pages": [
+        { "id": "p01", "image": "p01.png" },
+        { "id": "p02", "image": null },
+        { "id": "p03", "image": null },
+        { "id": "p04", "image": null }
+      ]
+    },
+    {
+      "id": "c2",
+      "title": "Three Suspects",
+      "titleTr": "Üç Şüpheli",
+      "pages": [
+        { "id": "p05", "image": "p05.png" },
+        { "id": "p06", "image": null },
+        { "id": "p07", "image": null },
+        { "id": "p08", "image": null }
+      ]
+    },
+    {
+      "id": "c3",
+      "title": "Three Bad Cakes",
+      "titleTr": "Üç Kötü Kek",
+      "pages": [
+        { "id": "p09", "image": "p09.png" },
+        { "id": "p10", "image": null },
+        { "id": "p11", "image": null },
+        { "id": "p12", "image": null }
+      ]
+    },
+    {
+      "id": "c4",
+      "title": "The Real Recipe",
+      "titleTr": "Gerçek Tarif",
+      "pages": [
+        { "id": "p13", "image": "p13.png" },
+        { "id": "p14", "image": null },
+        { "id": "p15", "image": null },
+        { "id": "p16", "image": null }
+      ]
+    }
+  ]
+}

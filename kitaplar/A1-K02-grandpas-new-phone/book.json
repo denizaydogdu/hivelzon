@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "id": "A1-K02",
+  "slug": "A1-K02-grandpas-new-phone",
+  "level": "A1",
+  "genre": "humor",
+  "title": "Grandpa's New Phone",
+  "titleTr": "Dedemin Yeni Telefonu",
+  "blurbTr": "Kemal Dede'nin yeni bir telefonu ve tek bir görevi var: Cumartesi günü torunu Ece'ye doğum günü fotoğrafı göndermek. Ama telefon fırını arıyor, Dede'nin ayağının fotoğrafını çekiyor, parkın ortasında yüksek sesle müzik çalıyor. Cumartesiye beş gün var.",
+  "hookEn": "Grandpa's new phone does everything wrong.",
+  "contentVersion": 1,
+  "status": "DRAFT",
+  "aiGenerated": true,
+  "palette": {
+    "background": "#FFF6E9",
+    "surface": "#E3F4EC",
+    "text": "#2B2622",
+    "accent": "#E8742A",
+    "highlight": "#9BDDC4"
+  },
+  "cover": "cover.png",
+  "properNouns": [
+    "Kemal",
+    "Ece",
+    "Mert",
+    "Murat",
+    "Ankara"
+  ],
+  "narration": {
+    "modelId": "eleven_v3",
+    "speed": 0.9,
+    "voiceId": "EXAVITQu4vr4xnSDxMaL"
+  },
+  "chapters": [
+    {
+      "id": "c1",
+      "title": "Monday to Wednesday",
+      "titleTr": "Pazartesiden Çarşambaya",
+      "pages": [
+        { "id": "p01", "image": "p01.png" },
+        { "id": "p02", "image": null },
+        { "id": "p03", "image": null },
+        { "id": "p04", "image": null }
+      ]
+    },
+    {
+      "id": "c2",
+      "title": "Thursday and Friday",
+      "titleTr": "Perşembe ve Cuma",
+      "pages": [
+        { "id": "p05", "image": "p05.png" },
+        { "id": "p06", "image": null },
+        { "id": "p07", "image": null },
+        { "id": "p08", "image": null }
+      ]
+    },
+    {
+      "id": "c3",
+      "title": "Saturday",
+      "titleTr": "Cumartesi",
+      "pages": [
+        { "id": "p09", "image": "p09.png" },
+        { "id": "p10", "image": null },
+        { "id": "p11", "image": null }
+      ]
+    }
+  ]
+}

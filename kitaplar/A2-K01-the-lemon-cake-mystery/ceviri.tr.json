@@ -1,0 +1,3774 @@
+{
+  "contentId": "A2-K01",
+  "status": "DRAFT",
+  "author": "Claude taslak (H-071); kullanıcı onayı bekliyor",
+  "date": "2026-10-14",
+  "notes": [
+    "Anlatım İngilizcede geçmiş zamanda (past simple); Türkçede de -di'li geçmiş zaman kullanıldı, konuşmalar doğal günlük Türkçeyle çevrildi.",
+    "\"Aunt Füsun\" Türkçede \"Füsun Teyze\", \"Mr Selim\" \"Selim Bey\" olarak verildi.",
+    "Kelime anlamları cümledeki kullanıma göre verildi; düzensiz geçmiş zaman fiillerinde yalın hâli parantezde (took = aldı (take → took))."
+  ],
+  "lines": [
+    {
+      "en": "The Empty Box",
+      "tr": "Boş Kutu",
+      "chunks": [],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "empty": "boş",
+        "box": "kutu"
+      },
+      "source": "c1"
+    },
+    {
+      "en": "The day before the contest, the famous recipe disappeared.",
+      "tr": "Yarışmadan bir gün önce, ünlü tarif kayboldu.",
+      "chunks": [],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "day": "gün",
+        "before": "önce",
+        "contest": "yarışma",
+        "famous": "ünlü",
+        "recipe": "tarif",
+        "disappeared": "kayboldu (disappear + -ed)"
+      },
+      "source": "p01-s01"
+    },
+    {
+      "en": "Well, two days before.",
+      "tr": "Aslında iki gün önce.",
+      "chunks": [],
+      "words": {
+        "well": "aslında, şey",
+        "two": "iki",
+        "days": "günler",
+        "before": "önce"
+      },
+      "source": "p01-s02"
+    },
+    {
+      "en": "But it felt like one.",
+      "tr": "Ama bir gün gibi geldi.",
+      "chunks": [],
+      "words": {
+        "but": "ama",
+        "it": "o; onu",
+        "felt": "gibi geldi, hissettirdi (feel → felt)",
+        "like": "gibi",
+        "one": "bir; tek"
+      },
+      "source": "p01-s03"
+    },
+    {
+      "en": "Elif was fifteen.",
+      "tr": "Elif on beş yaşındaydı.",
+      "chunks": [],
+      "words": {
+        "was": "-di (be geçmiş)",
+        "fifteen": "on beş"
+      },
+      "source": "p01-s04"
+    },
+    {
+      "en": "Every summer, she worked in her family's small restaurant.",
+      "tr": "Her yaz ailesinin küçük lokantasında çalışırdı.",
+      "chunks": [],
+      "words": {
+        "every": "her",
+        "summer": "yaz",
+        "she": "o (kadın, kız)",
+        "worked": "çalışırdı (work + -ed)",
+        "in": "içinde, -de",
+        "her": "onun; onu (kadın)",
+        "family's": "ailesinin",
+        "small": "küçük",
+        "restaurant": "lokanta"
+      },
+      "source": "p01-s05"
+    },
+    {
+      "en": "It was in Ayvalık, on a street near the sea.",
+      "tr": "Lokanta Ayvalık'ta, denize yakın bir sokaktaydı.",
+      "chunks": [],
+      "words": {
+        "it": "o; onu",
+        "was": "-di (burada: -daydı)",
+        "in": "içinde, -de",
+        "on": "üstünde; -de",
+        "a": "bir",
+        "street": "sokak",
+        "near": "yakınında",
+        "the": "(belirli tanımlık)",
+        "sea": "deniz"
+      },
+      "source": "p01-s06"
+    },
+    {
+      "en": "In the mornings, Elif cut bread and carried plates.",
+      "tr": "Sabahları Elif ekmek keser, tabak taşırdı.",
+      "chunks": [],
+      "words": {
+        "in": "içinde, -de",
+        "the": "(belirli tanımlık)",
+        "mornings": "sabahlar",
+        "cut": "keserdi (cut → cut)",
+        "bread": "ekmek",
+        "and": "ve",
+        "carried": "taşırdı (carry → carried)",
+        "plates": "tabaklar"
+      },
+      "source": "p01-s07"
+    },
+    {
+      "en": "In the evenings, she did the dishes.",
+      "tr": "Akşamları da bulaşıkları yıkardı.",
+      "chunks": [
+        {
+          "en": "did the dishes",
+          "tr": "bulaşıkları yıkadı"
+        }
+      ],
+      "words": {
+        "in": "içinde, -de",
+        "the": "(belirli tanımlık)",
+        "evenings": "akşamlar",
+        "she": "o (kadın, kız)",
+        "did": "yaptı (do the dishes: bulaşık yıkamak)",
+        "dishes": "bulaşıklar (do the dishes: bulaşık yıkamak)"
+      },
+      "source": "p01-s08"
+    },
+    {
+      "en": "The most famous thing in the restaurant was a cake.",
+      "tr": "Lokantadaki en ünlü şey bir kekti.",
+      "chunks": [],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "most": "en",
+        "famous": "ünlü",
+        "thing": "şey",
+        "in": "içinde, -de",
+        "restaurant": "lokanta",
+        "was": "-di (be geçmiş)",
+        "a": "bir",
+        "cake": "kek"
+      },
+      "source": "p01-s09"
+    },
+    {
+      "en": "It was Aunt Füsun's lemon cake.",
+      "tr": "Füsun Teyze'nin limonlu kekiydi.",
+      "chunks": [],
+      "words": {
+        "it": "o; onu",
+        "was": "-di (be geçmiş)",
+        "aunt": "teyze, hala",
+        "füsun's": "Füsun'un",
+        "lemon": "limon",
+        "cake": "kek"
+      },
+      "source": "p01-s10"
+    },
+    {
+      "en": "People came from other towns for it.",
+      "tr": "İnsanlar onun için başka kasabalardan gelirdi.",
+      "chunks": [],
+      "words": {
+        "people": "insanlar",
+        "came": "gelirdi (come → came)",
+        "from": "-den",
+        "other": "başka",
+        "towns": "kasabalar",
+        "for": "için",
+        "it": "o; onu"
+      },
+      "source": "p01-s11"
+    },
+    {
+      "en": "They always ate one piece and asked for a second.",
+      "tr": "Hep bir dilim yer, ikinciyi isterlerdi.",
+      "chunks": [],
+      "words": {
+        "they": "onlar",
+        "always": "hep, her zaman",
+        "ate": "yerlerdi (eat → ate)",
+        "one": "bir; tek",
+        "piece": "dilim",
+        "and": "ve",
+        "asked": "isterlerdi (ask + -ed)",
+        "for": "için",
+        "a": "bir",
+        "second": "ikinci (dilim)"
+      },
+      "source": "p01-s12"
+    },
+    {
+      "en": "Nobody knew the recipe.",
+      "tr": "Tarifi kimse bilmiyordu.",
+      "chunks": [],
+      "words": {
+        "nobody": "hiç kimse",
+        "knew": "biliyordu (know → knew)",
+        "the": "(belirli tanımlık)",
+        "recipe": "tarif"
+      },
+      "source": "p01-s13"
+    },
+    {
+      "en": "Nobody except one old card.",
+      "tr": "Kimse, eski bir kart dışında.",
+      "chunks": [],
+      "words": {
+        "nobody": "hiç kimse",
+        "except": "dışında, hariç",
+        "one": "bir; tek",
+        "old": "eski; yaşlı",
+        "card": "kart"
+      },
+      "source": "p01-s14"
+    },
+    {
+      "en": "And now the card was missing.",
+      "tr": "Ve şimdi kart kayıptı.",
+      "chunks": [],
+      "words": {
+        "and": "ve",
+        "now": "şimdi",
+        "the": "(belirli tanımlık)",
+        "card": "kart",
+        "was": "-di (be geçmiş)",
+        "missing": "kayıp, eksik"
+      },
+      "source": "p01-s15"
+    },
+    {
+      "en": "Who took it?",
+      "tr": "Onu kim almıştı?",
+      "chunks": [],
+      "words": {
+        "who": "kim",
+        "took": "almıştı (take → took)",
+        "it": "o; onu"
+      },
+      "source": "p01-s16"
+    },
+    {
+      "en": "And why?",
+      "tr": "Peki neden?",
+      "chunks": [],
+      "words": {
+        "and": "ve",
+        "why": "neden"
+      },
+      "source": "p01-s17"
+    },
+    {
+      "en": "On Sunday, there was a summer cake contest in the town square.",
+      "tr": "Pazar günü kasaba meydanında bir yaz kek yarışması vardı.",
+      "chunks": [],
+      "words": {
+        "on": "üstünde; -de",
+        "sunday": "pazar",
+        "there": "orada (there was: vardı)",
+        "was": "-di (be geçmiş)",
+        "a": "bir",
+        "summer": "yaz",
+        "cake": "kek",
+        "contest": "yarışma",
+        "in": "içinde, -de",
+        "the": "(belirli tanımlık)",
+        "town": "kasaba",
+        "square": "meydan"
+      },
+      "source": "p02-s01"
+    },
+    {
+      "en": "Every restaurant brought its best cake.",
+      "tr": "Her lokanta en iyi kekini getirirdi.",
+      "chunks": [],
+      "words": {
+        "every": "her",
+        "restaurant": "lokanta",
+        "brought": "getirirdi (bring → brought)",
+        "its": "onun (şey)",
+        "best": "en iyi (good → best)",
+        "cake": "kek"
+      },
+      "source": "p02-s02"
+    },
+    {
+      "en": "This year, Elif wanted to enter with the lemon cake.",
+      "tr": "Bu yıl Elif yarışmaya limonlu kekle katılmak istiyordu.",
+      "chunks": [],
+      "words": {
+        "this": "bu",
+        "year": "yıl",
+        "wanted": "istiyordu (want + -ed)",
+        "to": "-e; (mastar)",
+        "enter": "katılmak (yarışmaya)",
+        "with": "ile",
+        "the": "(belirli tanımlık)",
+        "lemon": "limon",
+        "cake": "kek"
+      },
+      "source": "p02-s03"
+    },
+    {
+      "en": "\"I'm too old for contests,\" said Aunt Füsun.",
+      "tr": "\"Ben yarışmalar için fazla yaşlıyım,\" dedi Füsun Teyze.",
+      "chunks": [],
+      "words": {
+        "i'm": "ben ...-im (I am)",
+        "too": "fazla; de, da",
+        "old": "eski; yaşlı",
+        "for": "için",
+        "contests": "yarışmalar",
+        "said": "dedi (say → said)",
+        "aunt": "teyze, hala"
+      },
+      "source": "p02-s04"
+    },
+    {
+      "en": "She laughed.",
+      "tr": "Güldü.",
+      "chunks": [],
+      "words": {
+        "she": "o (kadın, kız)",
+        "laughed": "güldü (laugh + -ed)"
+      },
+      "source": "p02-s05"
+    },
+    {
+      "en": "\"You go, Elif.",
+      "tr": "\"Sen git, Elif.",
+      "chunks": [],
+      "words": {
+        "you": "sen; seni",
+        "go": "git"
+      },
+      "source": "p02-s06"
+    },
+    {
+      "en": "You can make it.\"",
+      "tr": "Sen yaparsın.\"",
+      "chunks": [
+        {
+          "en": "You can make it",
+          "tr": "Sen yaparsın, başarırsın"
+        }
+      ],
+      "words": {
+        "you": "sen; seni",
+        "can": "-ebilmek",
+        "make": "yapmak; başarmak (make it)",
+        "it": "o; onu"
+      },
+      "source": "p02-s07"
+    },
+    {
+      "en": "Aunt Füsun never wrote anything down.",
+      "tr": "Füsun Teyze hiçbir şeyi yazmazdı.",
+      "chunks": [
+        {
+          "en": "wrote anything down",
+          "tr": "bir şeyi not etti"
+        }
+      ],
+      "words": {
+        "aunt": "teyze, hala",
+        "never": "hiç, asla",
+        "wrote": "yazdı (write → wrote)",
+        "anything": "hiçbir şey (olumsuz cümlede)",
+        "down": "(write down: not etmek)"
+      },
+      "source": "p02-s08"
+    },
+    {
+      "en": "She cooked with her hands, not with paper.",
+      "tr": "Yemeği elleriyle yapardı, kâğıtla değil.",
+      "chunks": [],
+      "words": {
+        "she": "o (kadın, kız)",
+        "cooked": "yemek yapardı (cook + -ed)",
+        "with": "ile",
+        "her": "onun; onu (kadın)",
+        "hands": "eller",
+        "not": "değil",
+        "paper": "kâğıt"
+      },
+      "source": "p02-s09"
+    },
+    {
+      "en": "But there was one card in an old wooden box.",
+      "tr": "Ama eski, tahta bir kutuda tek bir kart vardı.",
+      "chunks": [],
+      "words": {
+        "but": "ama",
+        "there": "orada (there was: vardı)",
+        "was": "-di (be geçmiş)",
+        "one": "bir; tek",
+        "card": "kart",
+        "in": "içinde, -de",
+        "an": "bir",
+        "old": "eski; yaşlı",
+        "wooden": "tahta",
+        "box": "kutu"
+      },
+      "source": "p02-s10"
+    },
+    {
+      "en": "It was the recipe for the lemon cake.",
+      "tr": "Limonlu kekin tarifiydi.",
+      "chunks": [],
+      "words": {
+        "it": "o; onu",
+        "was": "-di (be geçmiş)",
+        "the": "(belirli tanımlık)",
+        "recipe": "tarif",
+        "for": "için",
+        "lemon": "limon",
+        "cake": "kek"
+      },
+      "source": "p02-s11"
+    },
+    {
+      "en": "Everyone in the kitchen knew about that card.",
+      "tr": "Mutfaktaki herkes o kartı bilirdi.",
+      "chunks": [],
+      "words": {
+        "everyone": "herkes",
+        "in": "içinde, -de",
+        "the": "(belirli tanımlık)",
+        "kitchen": "mutfak",
+        "knew": "bilirdi (know → knew)",
+        "about": "hakkında",
+        "that": "o; şu",
+        "card": "kart"
+      },
+      "source": "p02-s12"
+    },
+    {
+      "en": "On Friday morning, Elif opened the box.",
+      "tr": "Cuma sabahı Elif kutuyu açtı.",
+      "chunks": [],
+      "words": {
+        "on": "üstünde; -de",
+        "friday": "cuma",
+        "morning": "sabah",
+        "opened": "açtı; açıldı (open + -ed)",
+        "the": "(belirli tanımlık)",
+        "box": "kutu"
+      },
+      "source": "p02-s13"
+    },
+    {
+      "en": "She wanted to read the card again.",
+      "tr": "Kartı yeniden okumak istedi.",
+      "chunks": [],
+      "words": {
+        "she": "o (kadın, kız)",
+        "wanted": "istedi (want + -ed)",
+        "to": "-e; (mastar)",
+        "read": "okudu; okumak (read → read)",
+        "the": "(belirli tanımlık)",
+        "card": "kart",
+        "again": "yine, tekrar"
+      },
+      "source": "p02-s14"
+    },
+    {
+      "en": "The box was empty.",
+      "tr": "Kutu boştu.",
+      "chunks": [],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "box": "kutu",
+        "was": "-di (be geçmiş)",
+        "empty": "boş"
+      },
+      "source": "p02-s15"
+    },
+    {
+      "en": "Elif looked under the box.",
+      "tr": "Elif kutunun altına baktı.",
+      "chunks": [],
+      "words": {
+        "looked": "baktı; görünüyordu (look + -ed)",
+        "under": "altına",
+        "the": "(belirli tanımlık)",
+        "box": "kutu"
+      },
+      "source": "p03-s01"
+    },
+    {
+      "en": "She looked behind the oven and in every drawer.",
+      "tr": "Fırının arkasına ve bütün çekmecelere baktı.",
+      "chunks": [],
+      "words": {
+        "she": "o (kadın, kız)",
+        "looked": "baktı; görünüyordu (look + -ed)",
+        "behind": "arkasına",
+        "the": "(belirli tanımlık)",
+        "oven": "fırın",
+        "and": "ve",
+        "in": "içine",
+        "every": "her",
+        "drawer": "çekmece"
+      },
+      "source": "p03-s02"
+    },
+    {
+      "en": "Nothing.",
+      "tr": "Hiçbir şey yok.",
+      "chunks": [],
+      "words": {
+        "nothing": "hiçbir şey"
+      },
+      "source": "p03-s03"
+    },
+    {
+      "en": "Then she looked at the kitchen table.",
+      "tr": "Sonra mutfak masasına baktı.",
+      "chunks": [
+        {
+          "en": "looked at",
+          "tr": "baktı"
+        }
+      ],
+      "words": {
+        "then": "sonra",
+        "she": "o (kadın, kız)",
+        "looked": "baktı; görünüyordu (look + -ed)",
+        "at": "-e (look at: -e bakmak)",
+        "the": "(belirli tanımlık)",
+        "kitchen": "mutfak",
+        "table": "masa"
+      },
+      "source": "p03-s04"
+    },
+    {
+      "en": "There was white flour on it.",
+      "tr": "Üstünde beyaz un vardı.",
+      "chunks": [],
+      "words": {
+        "there": "orada (there was: vardı)",
+        "was": "-di (be geçmiş)",
+        "white": "beyaz",
+        "flour": "un",
+        "on": "üstünde",
+        "it": "o; onu"
+      },
+      "source": "p03-s05"
+    },
+    {
+      "en": "And in the flour, there were marks from a hand.",
+      "tr": "Ve unda bir elin izleri vardı.",
+      "chunks": [],
+      "words": {
+        "and": "ve",
+        "in": "içinde, -de",
+        "the": "(belirli tanımlık)",
+        "flour": "un",
+        "there": "orada (there was: vardı)",
+        "were": "-miydin; idiler (be geçmiş)",
+        "marks": "izler",
+        "from": "-den",
+        "a": "bir",
+        "hand": "el"
+      },
+      "source": "p03-s06"
+    },
+    {
+      "en": "Somebody touched the box with white hands.",
+      "tr": "Biri kutuya beyaz ellerle dokunmuştu.",
+      "chunks": [],
+      "words": {
+        "somebody": "birisi",
+        "touched": "dokunmuştu (touch + -ed)",
+        "the": "(belirli tanımlık)",
+        "box": "kutu",
+        "with": "ile",
+        "white": "beyaz",
+        "hands": "eller"
+      },
+      "source": "p03-s07"
+    },
+    {
+      "en": "\"Everyone here has white hands,\" Elif thought.",
+      "tr": "\"Burada herkesin elleri beyaz,\" diye düşündü Elif.",
+      "chunks": [
+        {
+          "en": "has white hands",
+          "tr": "elleri beyaz"
+        }
+      ],
+      "words": {
+        "everyone": "herkes",
+        "here": "burada; burası",
+        "has": "-si var (have → has)",
+        "white": "beyaz",
+        "hands": "eller",
+        "thought": "diye düşündü (think → thought)"
+      },
+      "source": "p03-s08"
+    },
+    {
+      "en": "She went to her room and found an old notebook.",
+      "tr": "Odasına gitti ve eski bir defter buldu.",
+      "chunks": [],
+      "words": {
+        "she": "o (kadın, kız)",
+        "went": "gitti (go → went)",
+        "to": "-e; (mastar)",
+        "her": "onun; onu (kadın)",
+        "room": "oda",
+        "and": "ve",
+        "found": "buldu (find → found)",
+        "an": "bir",
+        "old": "eski; yaşlı",
+        "notebook": "defter"
+      },
+      "source": "p03-s09"
+    },
+    {
+      "en": "On the first page, she wrote three words: \"Find the recipe.\"",
+      "tr": "İlk sayfaya üç kelime yazdı: \"Tarifi bul.\"",
+      "chunks": [],
+      "words": {
+        "on": "-e (sayfaya)",
+        "the": "(belirli tanımlık)",
+        "first": "ilk, birinci",
+        "page": "sayfa",
+        "she": "o (kadın, kız)",
+        "wrote": "yazdı (write → wrote)",
+        "three": "üç",
+        "words": "kelimeler",
+        "find": "bul",
+        "recipe": "tarif"
+      },
+      "source": "p03-s10"
+    },
+    {
+      "en": "Under them, she wrote: \"Clue one: flour on the table.\"",
+      "tr": "Altına şunu yazdı: \"Birinci ipucu: masada un.\"",
+      "chunks": [],
+      "words": {
+        "under": "altına",
+        "them": "onların (burada: o kelimelerin)",
+        "she": "o (kadın, kız)",
+        "wrote": "yazdı (write → wrote)",
+        "clue": "ipucu",
+        "one": "bir (clue one: birinci ipucu)",
+        "flour": "un",
+        "on": "üstünde; -de",
+        "the": "(belirli tanımlık)",
+        "table": "masa"
+      },
+      "source": "p03-s11"
+    },
+    {
+      "en": "A real detective needed clues.",
+      "tr": "Gerçek bir dedektifin ipuçlarına ihtiyacı vardı.",
+      "chunks": [],
+      "words": {
+        "a": "bir",
+        "real": "gerçek",
+        "detective": "dedektif",
+        "needed": "ihtiyacı vardı (need + -ed)",
+        "clues": "ipuçları"
+      },
+      "source": "p03-s12"
+    },
+    {
+      "en": "And a real detective needed suspects.",
+      "tr": "Ve gerçek bir dedektifin şüphelilere ihtiyacı vardı.",
+      "chunks": [],
+      "words": {
+        "and": "ve",
+        "a": "bir",
+        "real": "gerçek",
+        "detective": "dedektif",
+        "needed": "ihtiyacı vardı (need + -ed)",
+        "suspects": "şüpheliler"
+      },
+      "source": "p03-s13"
+    },
+    {
+      "en": "That evening, Elif gave Limon his dinner.",
+      "tr": "O akşam Elif, Limon'a akşam yemeğini verdi.",
+      "chunks": [],
+      "words": {
+        "that": "o; şu",
+        "evening": "akşam",
+        "gave": "verdi (give → gave)",
+        "his": "onun (Limon'un)",
+        "dinner": "akşam yemeği"
+      },
+      "source": "p04-s01"
+    },
+    {
+      "en": "Limon was the restaurant's cat.",
+      "tr": "Limon lokantanın kedisiydi.",
+      "chunks": [],
+      "words": {
+        "was": "-di (be geçmiş)",
+        "the": "(belirli tanımlık)",
+        "restaurant's": "lokantanın",
+        "cat": "kedi"
+      },
+      "source": "p04-s02"
+    },
+    {
+      "en": "He was fat and yellow, like a lemon.",
+      "tr": "Şişman ve sarıydı, tıpkı bir limon gibi.",
+      "chunks": [],
+      "words": {
+        "he": "o (erkek)",
+        "was": "-di (be geçmiş)",
+        "fat": "şişman, tombul",
+        "and": "ve",
+        "yellow": "sarı",
+        "like": "gibi",
+        "a": "bir",
+        "lemon": "limon"
+      },
+      "source": "p04-s03"
+    },
+    {
+      "en": "In the day, he slept in a basket behind the kitchen door.",
+      "tr": "Gündüzleri mutfak kapısının arkasındaki bir sepette uyurdu.",
+      "chunks": [
+        {
+          "en": "In the day",
+          "tr": "Gündüzleri"
+        }
+      ],
+      "words": {
+        "in": "-de",
+        "the": "(belirli tanımlık)",
+        "day": "gün (in the day: gündüz)",
+        "he": "o (erkek)",
+        "slept": "uyurdu, uyudu (sleep → slept)",
+        "a": "bir",
+        "basket": "sepet",
+        "behind": "arkasında",
+        "kitchen": "mutfak",
+        "door": "kapı"
+      },
+      "source": "p04-s04"
+    },
+    {
+      "en": "At night, he always slept on Aunt Füsun's bed.",
+      "tr": "Geceleri ise hep Füsun Teyze'nin yatağında uyurdu.",
+      "chunks": [
+        {
+          "en": "At night",
+          "tr": "Geceleri"
+        }
+      ],
+      "words": {
+        "at": "-de (at night: geceleyin)",
+        "night": "gece",
+        "he": "o (erkek)",
+        "always": "hep, her zaman",
+        "slept": "uyurdu, uyudu (sleep → slept)",
+        "on": "üstünde; -de",
+        "aunt": "teyze, hala",
+        "füsun's": "Füsun'un",
+        "bed": "yatak"
+      },
+      "source": "p04-s05"
+    },
+    {
+      "en": "Elif looked into his basket.",
+      "tr": "Elif sepetine baktı.",
+      "chunks": [
+        {
+          "en": "looked into",
+          "tr": "içine baktı"
+        }
+      ],
+      "words": {
+        "looked": "baktı; görünüyordu (look + -ed)",
+        "into": "içine",
+        "his": "onun (erkek)",
+        "basket": "sepet"
+      },
+      "source": "p04-s06"
+    },
+    {
+      "en": "There was something white under the cat.",
+      "tr": "Kedinin altında beyaz bir şey vardı.",
+      "chunks": [],
+      "words": {
+        "there": "orada (there was: vardı)",
+        "was": "-di (be geçmiş)",
+        "something": "bir şey",
+        "white": "beyaz",
+        "under": "altında",
+        "the": "(belirli tanımlık)",
+        "cat": "kedi"
+      },
+      "source": "p04-s07"
+    },
+    {
+      "en": "\"Move, Limon,\" she said.",
+      "tr": "\"Kalk, Limon,\" dedi.",
+      "chunks": [],
+      "words": {
+        "move": "kalk, kıpırda",
+        "she": "o (kadın, kız)",
+        "said": "dedi (say → said)"
+      },
+      "source": "p04-s08"
+    },
+    {
+      "en": "Limon didn't move.",
+      "tr": "Limon kıpırdamadı.",
+      "chunks": [],
+      "words": {
+        "didn't": "-medi (did not)",
+        "move": "kıpırdamak"
+      },
+      "source": "p04-s09"
+    },
+    {
+      "en": "Cats never move when you ask.",
+      "tr": "Kediler, sen istediğinde asla kıpırdamaz.",
+      "chunks": [],
+      "words": {
+        "cats": "kediler",
+        "never": "hiç, asla",
+        "move": "kıpırdamak, kalkmak",
+        "when": "-ince, -diğinde",
+        "you": "sen",
+        "ask": "istemek, söylemek"
+      },
+      "source": "p04-s10"
+    },
+    {
+      "en": "Elif picked him up slowly.",
+      "tr": "Elif onu yavaşça kucağına aldı.",
+      "chunks": [
+        {
+          "en": "picked him up",
+          "tr": "onu kucağına aldı"
+        }
+      ],
+      "words": {
+        "picked": "kaldırdı (pick up: kucağına almak)",
+        "him": "onu (erkek)",
+        "up": "yukarı (pick up: kaldırmak)",
+        "slowly": "yavaşça"
+      },
+      "source": "p04-s11"
+    },
+    {
+      "en": "Under him, there was a piece of card.",
+      "tr": "Altında bir kart parçası vardı.",
+      "chunks": [],
+      "words": {
+        "under": "altında",
+        "him": "onu (erkek)",
+        "there": "orada (there was: vardı)",
+        "was": "-di (be geçmiş)",
+        "a": "bir",
+        "piece": "parça",
+        "of": "-in; -den",
+        "card": "kart"
+      },
+      "source": "p04-s12"
+    },
+    {
+      "en": "It was half of a card, with old, careful writing.",
+      "tr": "Kartın yarısıydı, eski ve özenli bir yazıyla.",
+      "chunks": [],
+      "words": {
+        "it": "o; onu",
+        "was": "-di (be geçmiş)",
+        "half": "yarı",
+        "of": "-in; -den",
+        "a": "bir",
+        "card": "kart",
+        "with": "ile",
+        "old": "eski",
+        "careful": "dikkatli, özenli",
+        "writing": "yazı"
+      },
+      "source": "p04-s13"
+    },
+    {
+      "en": "She read the first line.",
+      "tr": "İlk satırı okudu.",
+      "chunks": [],
+      "words": {
+        "she": "o (kadın, kız)",
+        "read": "okudu; okumak (read → read)",
+        "the": "(belirli tanımlık)",
+        "first": "ilk, birinci",
+        "line": "satır"
+      },
+      "source": "p04-s14"
+    },
+    {
+      "en": "It said: \"Lemon Cake.\"",
+      "tr": "Şöyle yazıyordu: \"Limonlu Kek.\"",
+      "chunks": [
+        {
+          "en": "It said",
+          "tr": "Şöyle yazıyordu"
+        }
+      ],
+      "words": {
+        "it": "o; onu",
+        "said": "yazıyordu (say → said; yazıda \"der\")",
+        "lemon": "limon",
+        "cake": "kek"
+      },
+      "source": "p04-s15"
+    },
+    {
+      "en": "Three Suspects",
+      "tr": "Üç Şüpheli",
+      "chunks": [],
+      "words": {
+        "three": "üç",
+        "suspects": "şüpheliler"
+      },
+      "source": "c2"
+    },
+    {
+      "en": "Elif read the half card again and again.",
+      "tr": "Elif yarım kartı tekrar tekrar okudu.",
+      "chunks": [
+        {
+          "en": "again and again",
+          "tr": "tekrar tekrar"
+        }
+      ],
+      "words": {
+        "read": "okudu; okumak (read → read)",
+        "the": "(belirli tanımlık)",
+        "half": "yarım; yarı",
+        "card": "kart",
+        "again": "yine, tekrar",
+        "and": "ve"
+      },
+      "source": "p05-s01"
+    },
+    {
+      "en": "It said \"four eggs,\" \"one glass of sugar\" and \"two lemons.\"",
+      "tr": "Kartta \"dört yumurta\", \"bir bardak şeker\" ve \"iki limon\" yazıyordu.",
+      "chunks": [],
+      "words": {
+        "it": "o; onu",
+        "said": "yazıyordu (say → said; yazıda \"der\")",
+        "four": "dört",
+        "eggs": "yumurtalar",
+        "one": "bir; tek",
+        "glass": "bardak",
+        "of": "-in; -den",
+        "sugar": "şeker",
+        "and": "ve",
+        "two": "iki",
+        "lemons": "limonlar"
+      },
+      "source": "p05-s02"
+    },
+    {
+      "en": "The other half was missing.",
+      "tr": "Öbür yarısı kayıptı.",
+      "chunks": [],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "other": "diğer, öbür",
+        "half": "yarı",
+        "was": "-di (be geçmiş)",
+        "missing": "kayıp, eksik"
+      },
+      "source": "p05-s03"
+    },
+    {
+      "en": "Somebody broke the card in two.",
+      "tr": "Biri kartı ikiye ayırmıştı.",
+      "chunks": [
+        {
+          "en": "broke the card in two",
+          "tr": "kartı ikiye ayırdı"
+        }
+      ],
+      "words": {
+        "somebody": "birisi",
+        "broke": "kırdı, ayırdı (break → broke)",
+        "the": "(belirli tanımlık)",
+        "card": "kart",
+        "in": "-e (in two: ikiye)",
+        "two": "iki"
+      },
+      "source": "p05-s04"
+    },
+    {
+      "en": "Did they keep the other half?",
+      "tr": "Öbür yarısını saklıyor muydu?",
+      "chunks": [],
+      "words": {
+        "did": "(soru yardımcı fiili, geçmiş)",
+        "they": "o kişi (burada: onlar)",
+        "keep": "saklamak, elinde tutmak",
+        "the": "(belirli tanımlık)",
+        "other": "diğer, öbür",
+        "half": "yarım; yarı"
+      },
+      "source": "p05-s05"
+    },
+    {
+      "en": "She opened her notebook.",
+      "tr": "Defterini açtı.",
+      "chunks": [],
+      "words": {
+        "she": "o (kadın, kız)",
+        "opened": "açtı; açıldı (open + -ed)",
+        "her": "onun; onu (kadın)",
+        "notebook": "defter"
+      },
+      "source": "p05-s06"
+    },
+    {
+      "en": "\"Clue two: half a card in Limon's basket.\"",
+      "tr": "\"İkinci ipucu: Limon'un sepetinde yarım kart.\"",
+      "chunks": [],
+      "words": {
+        "clue": "ipucu",
+        "two": "iki",
+        "half": "yarım",
+        "a": "bir",
+        "card": "kart",
+        "in": "içinde, -de",
+        "limon's": "Limon'un",
+        "basket": "sepet"
+      },
+      "source": "p05-s07"
+    },
+    {
+      "en": "Then she wrote three names under the clues.",
+      "tr": "Sonra ipuçlarının altına üç isim yazdı.",
+      "chunks": [],
+      "words": {
+        "then": "sonra",
+        "she": "o (kadın, kız)",
+        "wrote": "yazdı (write → wrote)",
+        "three": "üç",
+        "names": "isimler",
+        "under": "altında",
+        "the": "(belirli tanımlık)",
+        "clues": "ipuçları"
+      },
+      "source": "p05-s08"
+    },
+    {
+      "en": "Bora.",
+      "tr": "Bora.",
+      "chunks": [],
+      "words": {},
+      "source": "p05-s09"
+    },
+    {
+      "en": "Theo.",
+      "tr": "Theo.",
+      "chunks": [],
+      "words": {},
+      "source": "p05-s10"
+    },
+    {
+      "en": "Mr Selim.",
+      "tr": "Selim Bey.",
+      "chunks": [],
+      "words": {
+        "mr": "Bay (burada: Bey)"
+      },
+      "source": "p05-s11"
+    },
+    {
+      "en": "She liked all three people.",
+      "tr": "Üçünü de seviyordu.",
+      "chunks": [],
+      "words": {
+        "she": "o (kadın, kız)",
+        "liked": "seviyordu (like + -d)",
+        "all": "hepsi (all three: üçü de)",
+        "three": "üç",
+        "people": "insanlar"
+      },
+      "source": "p05-s12"
+    },
+    {
+      "en": "That was the worst part.",
+      "tr": "İşin en kötü yanı da buydu.",
+      "chunks": [],
+      "words": {
+        "that": "o, bu",
+        "was": "-di (be geçmiş)",
+        "the": "(belirli tanımlık)",
+        "worst": "en kötü (bad → worst)",
+        "part": "yan, kısım"
+      },
+      "source": "p05-s13"
+    },
+    {
+      "en": "Bora was Elif's cousin.",
+      "tr": "Bora, Elif'in kuzeniydi.",
+      "chunks": [],
+      "words": {
+        "was": "-di (be geçmiş)",
+        "elif's": "Elif'in",
+        "cousin": "kuzen"
+      },
+      "source": "p06-s01"
+    },
+    {
+      "en": "He was seventeen, and he loved his phone.",
+      "tr": "On yedi yaşındaydı ve telefonuna bayılırdı.",
+      "chunks": [],
+      "words": {
+        "he": "o (erkek)",
+        "was": "-di (be geçmiş)",
+        "seventeen": "on yedi",
+        "and": "ve",
+        "loved": "bayılırdı (love + -d)",
+        "his": "onun (erkek)",
+        "phone": "telefon"
+      },
+      "source": "p06-s02"
+    },
+    {
+      "en": "He took photos of every plate in the restaurant.",
+      "tr": "Lokantadaki her tabağın fotoğrafını çekerdi.",
+      "chunks": [
+        {
+          "en": "took photos",
+          "tr": "fotoğraf çekti"
+        }
+      ],
+      "words": {
+        "he": "o (erkek)",
+        "took": "çekti (take → took; take a photo: fotoğraf çekmek)",
+        "photos": "fotoğraflar",
+        "of": "-in; -den",
+        "every": "her",
+        "plate": "tabak",
+        "in": "içinde, -de",
+        "the": "(belirli tanımlık)",
+        "restaurant": "lokanta"
+      },
+      "source": "p06-s03"
+    },
+    {
+      "en": "Then he put them online.",
+      "tr": "Sonra onları internete koyardı.",
+      "chunks": [],
+      "words": {
+        "then": "sonra",
+        "he": "o (erkek)",
+        "put": "koyardı (put → put)",
+        "them": "onları",
+        "online": "internete, internette"
+      },
+      "source": "p06-s04"
+    },
+    {
+      "en": "\"Did you take the recipe card?\"",
+      "tr": "\"Tarif kartını sen mi aldın?\"",
+      "chunks": [],
+      "words": {
+        "did": "yaptı (do → did)",
+        "you": "sen; seni",
+        "take": "almak",
+        "the": "(belirli tanımlık)",
+        "recipe": "tarif",
+        "card": "kart"
+      },
+      "source": "p06-s05"
+    },
+    {
+      "en": "Elif asked him.",
+      "tr": "diye sordu Elif.",
+      "chunks": [],
+      "words": {
+        "asked": "sordu (ask + -ed)",
+        "him": "onu (erkek)"
+      },
+      "source": "p06-s06"
+    },
+    {
+      "en": "\"Why?",
+      "tr": "\"Neden?",
+      "chunks": [],
+      "words": {
+        "why": "neden"
+      },
+      "source": "p06-s07"
+    },
+    {
+      "en": "I don't need a card,\" said Bora.",
+      "tr": "Benim karta ihtiyacım yok,\" dedi Bora.",
+      "chunks": [],
+      "words": {
+        "i": "ben",
+        "don't": "-mem (do not)",
+        "need": "ihtiyacı olmak",
+        "a": "bir",
+        "card": "kart",
+        "said": "dedi (say → said)"
+      },
+      "source": "p06-s08"
+    },
+    {
+      "en": "\"I only need photos.\"",
+      "tr": "\"Bana sadece fotoğraf lazım.\"",
+      "chunks": [],
+      "words": {
+        "i": "ben",
+        "only": "sadece",
+        "need": "ihtiyacı olmak",
+        "photos": "fotoğraflar"
+      },
+      "source": "p06-s09"
+    },
+    {
+      "en": "He showed her a photo of the lemon cake.",
+      "tr": "Elif'e limonlu kekin bir fotoğrafını gösterdi.",
+      "chunks": [],
+      "words": {
+        "he": "o (erkek)",
+        "showed": "gösterdi (show + -ed)",
+        "her": "onun; onu (kadın)",
+        "a": "bir",
+        "photo": "fotoğraf",
+        "of": "-in; -den",
+        "the": "(belirli tanımlık)",
+        "lemon": "limon",
+        "cake": "kek"
+      },
+      "source": "p06-s10"
+    },
+    {
+      "en": "It had fifty thousand likes.",
+      "tr": "Elli bin beğenisi vardı.",
+      "chunks": [],
+      "words": {
+        "it": "o; onu",
+        "had": "vardı; -si vardı (have → had)",
+        "fifty": "elli",
+        "thousand": "bin",
+        "likes": "beğeniler"
+      },
+      "source": "p06-s11"
+    },
+    {
+      "en": "But Elif noticed something.",
+      "tr": "Ama Elif bir şey fark etti.",
+      "chunks": [],
+      "words": {
+        "but": "ama",
+        "noticed": "fark etti (notice + -d)",
+        "something": "bir şey"
+      },
+      "source": "p06-s12"
+    },
+    {
+      "en": "Bora's hands were white with flour.",
+      "tr": "Bora'nın elleri unla bembeyazdı.",
+      "chunks": [],
+      "words": {
+        "bora's": "Bora'nın",
+        "hands": "eller",
+        "were": "-miydin; idiler (be geçmiş)",
+        "white": "beyaz",
+        "with": "-le (unla)",
+        "flour": "un"
+      },
+      "source": "p06-s13"
+    },
+    {
+      "en": "\"I helped with the bread this morning,\" he said quickly.",
+      "tr": "\"Bu sabah ekmeğe yardım ettim,\" dedi hızlıca.",
+      "chunks": [],
+      "words": {
+        "i": "ben",
+        "helped": "yardım etti (help + -ed)",
+        "with": "-e (help with: -e yardım etmek)",
+        "the": "(belirli tanımlık)",
+        "bread": "ekmek",
+        "this": "bu",
+        "morning": "sabah",
+        "he": "o (erkek)",
+        "said": "dedi (say → said)",
+        "quickly": "hızlıca, çabucak"
+      },
+      "source": "p06-s14"
+    },
+    {
+      "en": "Too quickly?",
+      "tr": "Fazla mı hızlı?",
+      "chunks": [],
+      "words": {
+        "too": "fazla",
+        "quickly": "hızlıca, çabucak"
+      },
+      "source": "p06-s15"
+    },
+    {
+      "en": "Elif wrote it down.",
+      "tr": "Elif bunu not etti.",
+      "chunks": [
+        {
+          "en": "wrote it down",
+          "tr": "not etti"
+        }
+      ],
+      "words": {
+        "wrote": "yazdı (write → wrote)",
+        "it": "o; onu",
+        "down": "(write down: not etmek)"
+      },
+      "source": "p06-s16"
+    },
+    {
+      "en": "Theo was the new waiter.",
+      "tr": "Theo yeni garsondu.",
+      "chunks": [],
+      "words": {
+        "was": "-di (be geçmiş)",
+        "the": "(belirli tanımlık)",
+        "new": "yeni",
+        "waiter": "garson"
+      },
+      "source": "p07-s01"
+    },
+    {
+      "en": "He came from England, and he was learning Turkish.",
+      "tr": "İngiltere'den gelmişti ve Türkçe öğreniyordu.",
+      "chunks": [],
+      "words": {
+        "he": "o (erkek)",
+        "came": "gelmişti (come → came)",
+        "from": "-den",
+        "and": "ve",
+        "was": "-di (be geçmiş)",
+        "learning": "öğreniyordu (learn + -ing)"
+      },
+      "source": "p07-s02"
+    },
+    {
+      "en": "He was polite and quiet.",
+      "tr": "Kibar ve sessizdi.",
+      "chunks": [],
+      "words": {
+        "he": "o (erkek)",
+        "was": "-di (be geçmiş)",
+        "polite": "kibar",
+        "and": "ve",
+        "quiet": "sessiz"
+      },
+      "source": "p07-s03"
+    },
+    {
+      "en": "He always carried a small blue notebook.",
+      "tr": "Hep küçük, mavi bir defter taşırdı.",
+      "chunks": [],
+      "words": {
+        "he": "o (erkek)",
+        "always": "hep, her zaman",
+        "carried": "taşırdı (carry → carried)",
+        "a": "bir",
+        "small": "küçük",
+        "blue": "mavi",
+        "notebook": "defter"
+      },
+      "source": "p07-s04"
+    },
+    {
+      "en": "All day, he wrote new words in it.",
+      "tr": "Bütün gün ona yeni kelimeler yazardı.",
+      "chunks": [
+        {
+          "en": "All day",
+          "tr": "bütün gün"
+        }
+      ],
+      "words": {
+        "all": "bütün, hepsi",
+        "day": "gün",
+        "he": "o (erkek)",
+        "wrote": "yazardı (write → wrote)",
+        "new": "yeni",
+        "words": "kelimeler",
+        "in": "içine",
+        "it": "o; onu"
+      },
+      "source": "p07-s05"
+    },
+    {
+      "en": "\"Theo, were you in the kitchen yesterday?\"",
+      "tr": "\"Theo, dün mutfakta mıydın?\"",
+      "chunks": [],
+      "words": {
+        "were": "-miydin; idiler (be geçmiş)",
+        "you": "sen; seni",
+        "in": "içinde, -de",
+        "the": "(belirli tanımlık)",
+        "kitchen": "mutfak",
+        "yesterday": "dün"
+      },
+      "source": "p07-s06"
+    },
+    {
+      "en": "Elif asked.",
+      "tr": "diye sordu Elif.",
+      "chunks": [],
+      "words": {
+        "asked": "sordu (ask + -ed)"
+      },
+      "source": "p07-s07"
+    },
+    {
+      "en": "\"Yes.",
+      "tr": "\"Evet.",
+      "chunks": [],
+      "words": {
+        "yes": "evet"
+      },
+      "source": "p07-s08"
+    },
+    {
+      "en": "Every morning,\" said Theo.",
+      "tr": "Her sabah,\" dedi Theo.",
+      "chunks": [],
+      "words": {
+        "every": "her",
+        "morning": "sabah",
+        "said": "dedi (say → said)"
+      },
+      "source": "p07-s09"
+    },
+    {
+      "en": "His Turkish was slow but careful.",
+      "tr": "Türkçesi yavaş ama özenliydi.",
+      "chunks": [],
+      "words": {
+        "his": "onun (erkek)",
+        "was": "-di (be geçmiş)",
+        "slow": "yavaş",
+        "but": "ama",
+        "careful": "dikkatli, özenli"
+      },
+      "source": "p07-s10"
+    },
+    {
+      "en": "\"I come very early.\"",
+      "tr": "\"Çok erken geliyorum.\"",
+      "chunks": [],
+      "words": {
+        "i": "ben",
+        "come": "gelmek",
+        "very": "çok",
+        "early": "erken"
+      },
+      "source": "p07-s11"
+    },
+    {
+      "en": "\"Why so early?",
+      "tr": "\"Neden bu kadar erken?",
+      "chunks": [],
+      "words": {
+        "why": "neden",
+        "so": "bu kadar",
+        "early": "erken"
+      },
+      "source": "p07-s12"
+    },
+    {
+      "en": "The restaurant opens at ten.\"",
+      "tr": "Lokanta onda açılıyor.\"",
+      "chunks": [],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "restaurant": "lokanta",
+        "opens": "açılır (open + -s)",
+        "at": "-de (at ten: saat onda)",
+        "ten": "on"
+      },
+      "source": "p07-s13"
+    },
+    {
+      "en": "Theo smiled, but he didn't answer.",
+      "tr": "Theo gülümsedi ama cevap vermedi.",
+      "chunks": [],
+      "words": {
+        "smiled": "gülümsedi (smile + -d)",
+        "but": "ama",
+        "he": "o (erkek)",
+        "didn't": "-medi (did not)",
+        "answer": "cevap vermek"
+      },
+      "source": "p07-s14"
+    },
+    {
+      "en": "He closed his notebook a little faster.",
+      "tr": "Defterini biraz hızlıca kapattı.",
+      "chunks": [],
+      "words": {
+        "he": "o (erkek)",
+        "closed": "kapattı (close + -d)",
+        "his": "onun (erkek)",
+        "notebook": "defter",
+        "a": "bir",
+        "little": "küçük; biraz (a little)",
+        "faster": "daha hızlı, aceleyle (fast → faster)"
+      },
+      "source": "p07-s15"
+    },
+    {
+      "en": "Mr Selim had the cake shop across the street.",
+      "tr": "Selim Bey'in sokağın karşısında pasta dükkânı vardı.",
+      "chunks": [],
+      "words": {
+        "mr": "Bay (burada: Bey)",
+        "had": "vardı, sahibiydi (have → had)",
+        "the": "(belirli tanımlık)",
+        "cake": "pasta, kek",
+        "shop": "dükkân",
+        "across": "karşısında",
+        "street": "sokak"
+      },
+      "source": "p08-s01"
+    },
+    {
+      "en": "He was the kindest man in Ayvalık.",
+      "tr": "Ayvalık'ın en iyi kalpli adamıydı.",
+      "chunks": [],
+      "words": {
+        "he": "o (erkek)",
+        "was": "-di (be geçmiş)",
+        "the": "(belirli tanımlık)",
+        "kindest": "en iyi kalpli (kind → kindest)",
+        "man": "adam",
+        "in": "içinde, -de"
+      },
+      "source": "p08-s02"
+    },
+    {
+      "en": "He gave sweets to every child.",
+      "tr": "Her çocuğa şeker verirdi.",
+      "chunks": [],
+      "words": {
+        "he": "o (erkek)",
+        "gave": "verirdi (give → gave)",
+        "sweets": "şekerler",
+        "to": "-e; (mastar)",
+        "every": "her",
+        "child": "çocuk"
+      },
+      "source": "p08-s03"
+    },
+    {
+      "en": "\"Your aunt's recipe?",
+      "tr": "\"Teyzenin tarifi mi?",
+      "chunks": [],
+      "words": {
+        "your": "senin",
+        "aunt's": "teyzenin",
+        "recipe": "tarif"
+      },
+      "source": "p08-s04"
+    },
+    {
+      "en": "I'd love to see it!\" he laughed.",
+      "tr": "Görmeye bayılırım!\" diye güldü.",
+      "chunks": [
+        {
+          "en": "I'd love to",
+          "tr": "-mek isterdim, bayılırım"
+        }
+      ],
+      "words": {
+        "i'd": "-mek isterdim (I would)",
+        "love": "çok istemek, bayılmak",
+        "to": "-e; (mastar)",
+        "see": "görmek",
+        "it": "o; onu",
+        "he": "o (erkek)",
+        "laughed": "güldü (laugh + -ed)"
+      },
+      "source": "p08-s05"
+    },
+    {
+      "en": "\"But I make my own cakes.",
+      "tr": "\"Ama ben kendi keklerimi yaparım.",
+      "chunks": [],
+      "words": {
+        "but": "ama",
+        "i": "ben",
+        "make": "yaparım",
+        "my": "benim",
+        "own": "kendi",
+        "cakes": "kekler"
+      },
+      "source": "p08-s06"
+    },
+    {
+      "en": "And mine are sweeter.\"",
+      "tr": "Benimkiler daha tatlı.\"",
+      "chunks": [],
+      "words": {
+        "and": "ve",
+        "mine": "benimkiler",
+        "are": "(olmak; çoğul)",
+        "sweeter": "daha tatlı (sweet → sweeter)"
+      },
+      "source": "p08-s07"
+    },
+    {
+      "en": "Elif compared her suspects in her notebook.",
+      "tr": "Elif defterinde şüphelilerini karşılaştırdı.",
+      "chunks": [],
+      "words": {
+        "compared": "karşılaştırdı (compare + -d)",
+        "her": "onun; onu (kadın)",
+        "suspects": "şüpheliler",
+        "in": "içinde, -de",
+        "notebook": "defter"
+      },
+      "source": "p08-s08"
+    },
+    {
+      "en": "Bora was the busiest.",
+      "tr": "En meşgulü Bora'ydı.",
+      "chunks": [],
+      "words": {
+        "was": "-di (be geçmiş)",
+        "the": "(belirli tanımlık)",
+        "busiest": "en meşgul (busy → busiest)"
+      },
+      "source": "p08-s09"
+    },
+    {
+      "en": "Theo was the quietest.",
+      "tr": "En sessizi Theo'ydu.",
+      "chunks": [],
+      "words": {
+        "was": "-di (be geçmiş)",
+        "the": "(belirli tanımlık)",
+        "quietest": "en sessiz (quiet → quietest)"
+      },
+      "source": "p08-s10"
+    },
+    {
+      "en": "Mr Selim was the kindest.",
+      "tr": "En iyi kalplisi Selim Bey'di.",
+      "chunks": [],
+      "words": {
+        "mr": "Bay (burada: Bey)",
+        "was": "-di (be geçmiş)",
+        "the": "(belirli tanımlık)",
+        "kindest": "en iyi kalpli (kind → kindest)"
+      },
+      "source": "p08-s11"
+    },
+    {
+      "en": "Nobody looked like a thief.",
+      "tr": "Hiçbiri hırsıza benzemiyordu.",
+      "chunks": [
+        {
+          "en": "looked like",
+          "tr": "-e benziyordu"
+        }
+      ],
+      "words": {
+        "nobody": "hiç kimse",
+        "looked": "görünüyordu (look like: benzemek)",
+        "like": "gibi (look like: -e benzemek)",
+        "a": "bir",
+        "thief": "hırsız"
+      },
+      "source": "p08-s12"
+    },
+    {
+      "en": "Later that evening, Theo left his notebook on a table.",
+      "tr": "O akşam daha sonra Theo defterini bir masada unuttu.",
+      "chunks": [],
+      "words": {
+        "later": "daha sonra",
+        "that": "o; şu",
+        "evening": "akşam",
+        "left": "bıraktı, unuttu (leave → left)",
+        "his": "onun (erkek)",
+        "notebook": "defter",
+        "on": "üstünde; -de",
+        "a": "bir",
+        "table": "masa"
+      },
+      "source": "p08-s13"
+    },
+    {
+      "en": "It was open.",
+      "tr": "Defter açıktı.",
+      "chunks": [],
+      "words": {
+        "it": "o; onu",
+        "was": "-di (be geçmiş)",
+        "open": "açık"
+      },
+      "source": "p08-s14"
+    },
+    {
+      "en": "Elif didn't want to read it.",
+      "tr": "Elif okumak istemedi.",
+      "chunks": [],
+      "words": {
+        "didn't": "-medi (did not)",
+        "want": "istemek",
+        "to": "-e; (mastar)",
+        "read": "okudu; okumak (read → read)",
+        "it": "o; onu"
+      },
+      "source": "p08-s15"
+    },
+    {
+      "en": "But she saw one page.",
+      "tr": "Ama bir sayfayı gördü.",
+      "chunks": [],
+      "words": {
+        "but": "ama",
+        "she": "o (kadın, kız)",
+        "saw": "gördü (see → saw)",
+        "one": "bir; tek",
+        "page": "sayfa"
+      },
+      "source": "p08-s16"
+    },
+    {
+      "en": "There was a drawing of a lemon.",
+      "tr": "Bir limon çizimi vardı.",
+      "chunks": [],
+      "words": {
+        "there": "orada (there was: vardı)",
+        "was": "-di (be geçmiş)",
+        "a": "bir",
+        "drawing": "çizim, resim",
+        "of": "-in; -den",
+        "lemon": "limon"
+      },
+      "source": "p08-s17"
+    },
+    {
+      "en": "Next to it, there was a time: six in the morning.",
+      "tr": "Yanında bir saat yazıyordu: sabah altı.",
+      "chunks": [
+        {
+          "en": "Next to it",
+          "tr": "yanında"
+        }
+      ],
+      "words": {
+        "next": "yan (next to: yanında)",
+        "to": "-e; (mastar)",
+        "it": "o; onu",
+        "there": "orada (there was: vardı)",
+        "was": "-di (be geçmiş)",
+        "a": "bir",
+        "time": "saat, zaman",
+        "six": "altı",
+        "in": "-de (in the morning: sabah)",
+        "the": "(belirli tanımlık)",
+        "morning": "sabah"
+      },
+      "source": "p08-s18"
+    },
+    {
+      "en": "Three Bad Cakes",
+      "tr": "Üç Kötü Kek",
+      "chunks": [],
+      "words": {
+        "three": "üç",
+        "bad": "kötü",
+        "cakes": "kekler"
+      },
+      "source": "c3"
+    },
+    {
+      "en": "Elif had no card.",
+      "tr": "Elif'in kartı yoktu.",
+      "chunks": [],
+      "words": {
+        "had": "-si vardı (have → had)",
+        "no": "hiç (no card: kartı yok)",
+        "card": "kart"
+      },
+      "source": "p09-s01"
+    },
+    {
+      "en": "But she had half a card and a good memory.",
+      "tr": "Ama yarım kartı ve iyi bir hafızası vardı.",
+      "chunks": [],
+      "words": {
+        "but": "ama",
+        "she": "o (kadın, kız)",
+        "had": "vardı; -si vardı (have → had)",
+        "half": "yarım; yarı",
+        "a": "bir",
+        "card": "kart",
+        "and": "ve",
+        "good": "iyi",
+        "memory": "hafıza"
+      },
+      "source": "p09-s02"
+    },
+    {
+      "en": "She watched Aunt Füsun make the cake many times.",
+      "tr": "Füsun Teyze'yi keki yaparken çok kez izlemişti.",
+      "chunks": [],
+      "words": {
+        "she": "o (kadın, kız)",
+        "watched": "izlemişti (watch + -ed)",
+        "aunt": "teyze, hala",
+        "make": "yapmak (make the cake: keki yapmak)",
+        "the": "(belirli tanımlık)",
+        "cake": "kek",
+        "many": "çok, birçok",
+        "times": "kez, defa"
+      },
+      "source": "p09-s03"
+    },
+    {
+      "en": "\"I can do this,\" she said.",
+      "tr": "\"Bunu yapabilirim,\" dedi.",
+      "chunks": [],
+      "words": {
+        "i": "ben",
+        "can": "-ebilmek",
+        "do": "yapmak (genel iş)",
+        "this": "bu",
+        "she": "o (kadın, kız)",
+        "said": "dedi (say → said)"
+      },
+      "source": "p09-s04"
+    },
+    {
+      "en": "Then she laughed.",
+      "tr": "Sonra güldü.",
+      "chunks": [],
+      "words": {
+        "then": "sonra",
+        "she": "o (kadın, kız)",
+        "laughed": "güldü (laugh + -ed)"
+      },
+      "source": "p09-s05"
+    },
+    {
+      "en": "\"No.",
+      "tr": "\"Hayır.",
+      "chunks": [],
+      "words": {
+        "no": "hayır"
+      },
+      "source": "p09-s06"
+    },
+    {
+      "en": "I can make this.\"",
+      "tr": "Bunu pişirebilirim.\"",
+      "chunks": [],
+      "words": {
+        "i": "ben",
+        "can": "-ebilmek",
+        "make": "yapmak, pişirmek (kek, yemek: make)",
+        "this": "bu"
+      },
+      "source": "p09-s07"
+    },
+    {
+      "en": "On Saturday morning, she made her first cake.",
+      "tr": "Cumartesi sabahı ilk kekini yaptı.",
+      "chunks": [],
+      "words": {
+        "on": "üstünde; -de",
+        "saturday": "cumartesi",
+        "morning": "sabah",
+        "she": "o (kadın, kız)",
+        "made": "yaptı (make → made)",
+        "her": "onun; onu (kadın)",
+        "first": "ilk, birinci",
+        "cake": "kek"
+      },
+      "source": "p09-s08"
+    },
+    {
+      "en": "She used two lemons, like the card said.",
+      "tr": "Kartta yazdığı gibi iki limon kullandı.",
+      "chunks": [
+        {
+          "en": "like the card said",
+          "tr": "kartta yazdığı gibi"
+        }
+      ],
+      "words": {
+        "she": "o (kadın, kız)",
+        "used": "kullandı (use + -d)",
+        "two": "iki",
+        "lemons": "limonlar",
+        "like": "gibi",
+        "the": "(belirli tanımlık)",
+        "card": "kart",
+        "said": "yazıyordu (say → said; yazıda \"der\")"
+      },
+      "source": "p09-s09"
+    },
+    {
+      "en": "After forty minutes, she took it out of the oven.",
+      "tr": "Kırk dakika sonra onu fırından çıkardı.",
+      "chunks": [
+        {
+          "en": "took it out of",
+          "tr": "-den çıkardı"
+        }
+      ],
+      "words": {
+        "after": "sonra",
+        "forty": "kırk",
+        "minutes": "dakika",
+        "she": "o (kadın, kız)",
+        "took": "çıkardı (take out: çıkarmak)",
+        "it": "o; onu",
+        "out": "dışarı (take out of: -den çıkarmak)",
+        "of": "-den",
+        "the": "(belirli tanımlık)",
+        "oven": "fırın"
+      },
+      "source": "p09-s10"
+    },
+    {
+      "en": "It looked perfect.",
+      "tr": "Mükemmel görünüyordu.",
+      "chunks": [],
+      "words": {
+        "it": "o; onu",
+        "looked": "baktı; görünüyordu (look + -ed)",
+        "perfect": "mükemmel"
+      },
+      "source": "p09-s11"
+    },
+    {
+      "en": "She ate a piece.",
+      "tr": "Bir dilim yedi.",
+      "chunks": [],
+      "words": {
+        "she": "o (kadın, kız)",
+        "ate": "yedi (eat → ate)",
+        "a": "bir",
+        "piece": "dilim"
+      },
+      "source": "p09-s12"
+    },
+    {
+      "en": "It was very sour!",
+      "tr": "Çok ekşiydi!",
+      "chunks": [],
+      "words": {
+        "it": "o; onu",
+        "was": "-di (be geçmiş)",
+        "very": "çok",
+        "sour": "ekşi"
+      },
+      "source": "p09-s13"
+    },
+    {
+      "en": "Her face looked like Limon's face in the rain.",
+      "tr": "Yüzü, yağmurdaki Limon'un yüzüne benzedi.",
+      "chunks": [
+        {
+          "en": "looked like",
+          "tr": "-e benziyordu"
+        }
+      ],
+      "words": {
+        "her": "onun; onu (kadın)",
+        "face": "yüz",
+        "looked": "görünüyordu (look like: benzemek)",
+        "like": "gibi (look like: -e benzemek)",
+        "limon's": "Limon'un",
+        "in": "içinde, -de",
+        "the": "(belirli tanımlık)",
+        "rain": "yağmur"
+      },
+      "source": "p09-s14"
+    },
+    {
+      "en": "\"It's more sour than a lemon,\" said Bora.",
+      "tr": "\"Limondan bile ekşi,\" dedi Bora.",
+      "chunks": [
+        {
+          "en": "more sour than",
+          "tr": "-den daha ekşi"
+        }
+      ],
+      "words": {
+        "it's": "o ... (it is)",
+        "more": "daha",
+        "sour": "ekşi",
+        "than": "-den (karşılaştırma)",
+        "a": "bir",
+        "lemon": "limon",
+        "said": "dedi (say → said)"
+      },
+      "source": "p09-s15"
+    },
+    {
+      "en": "He took a photo.",
+      "tr": "Bir fotoğraf çekti.",
+      "chunks": [],
+      "words": {
+        "he": "o (erkek)",
+        "took": "çekti (take a photo: fotoğraf çekmek)",
+        "a": "bir",
+        "photo": "fotoğraf"
+      },
+      "source": "p09-s16"
+    },
+    {
+      "en": "For the second cake, Elif used one lemon and less butter.",
+      "tr": "İkinci kek için Elif bir limon ve daha az tereyağı kullandı.",
+      "chunks": [],
+      "words": {
+        "for": "için",
+        "the": "(belirli tanımlık)",
+        "second": "ikinci",
+        "cake": "kek",
+        "used": "kullandı (use + -d)",
+        "one": "bir; tek",
+        "lemon": "limon",
+        "and": "ve",
+        "less": "daha az",
+        "butter": "tereyağı"
+      },
+      "source": "p10-s01"
+    },
+    {
+      "en": "It wasn't sour this time.",
+      "tr": "Bu sefer ekşi değildi.",
+      "chunks": [],
+      "words": {
+        "it": "o; onu",
+        "wasn't": "değildi (was not)",
+        "sour": "ekşi",
+        "this": "bu",
+        "time": "kez, sefer (this time: bu sefer)"
+      },
+      "source": "p10-s02"
+    },
+    {
+      "en": "But it was dry.",
+      "tr": "Ama kuruydu.",
+      "chunks": [],
+      "words": {
+        "but": "ama",
+        "it": "o; onu",
+        "was": "-di (be geçmiş)",
+        "dry": "kuru"
+      },
+      "source": "p10-s03"
+    },
+    {
+      "en": "It was drier than an old shoe.",
+      "tr": "Eski bir ayakkabıdan daha kuruydu.",
+      "chunks": [],
+      "words": {
+        "it": "o; onu",
+        "was": "-di (be geçmiş)",
+        "drier": "daha kuru (dry → drier)",
+        "than": "-den (karşılaştırma)",
+        "an": "bir",
+        "old": "eski; yaşlı",
+        "shoe": "ayakkabı"
+      },
+      "source": "p10-s04"
+    },
+    {
+      "en": "For the third cake, she added more sugar.",
+      "tr": "Üçüncü kek için daha fazla şeker ekledi.",
+      "chunks": [],
+      "words": {
+        "for": "için",
+        "the": "(belirli tanımlık)",
+        "third": "üçüncü",
+        "cake": "kek",
+        "she": "o (kadın, kız)",
+        "added": "ekledi (add + -ed)",
+        "more": "daha fazla",
+        "sugar": "şeker"
+      },
+      "source": "p10-s05"
+    },
+    {
+      "en": "It was sweet.",
+      "tr": "Tatlıydı.",
+      "chunks": [],
+      "words": {
+        "it": "o; onu",
+        "was": "-di (be geçmiş)",
+        "sweet": "tatlı"
+      },
+      "source": "p10-s06"
+    },
+    {
+      "en": "It was much too sweet.",
+      "tr": "Hem de fazlasıyla tatlıydı.",
+      "chunks": [
+        {
+          "en": "much too sweet",
+          "tr": "fazlasıyla tatlı"
+        }
+      ],
+      "words": {
+        "it": "o; onu",
+        "was": "-di (be geçmiş)",
+        "much": "çok (much too: fazlasıyla)",
+        "too": "fazla",
+        "sweet": "tatlı"
+      },
+      "source": "p10-s07"
+    },
+    {
+      "en": "It was sweeter than Mr Selim's cakes.",
+      "tr": "Selim Bey'in keklerinden daha tatlıydı.",
+      "chunks": [],
+      "words": {
+        "it": "o; onu",
+        "was": "-di (be geçmiş)",
+        "sweeter": "daha tatlı (sweet → sweeter)",
+        "than": "-den (karşılaştırma)",
+        "mr": "Bay (burada: Bey)",
+        "selim's": "Selim Bey'in",
+        "cakes": "kekler"
+      },
+      "source": "p10-s08"
+    },
+    {
+      "en": "Three cakes, and three bad cakes.",
+      "tr": "Üç kek, üç kötü kek.",
+      "chunks": [],
+      "words": {
+        "three": "üç",
+        "cakes": "kekler",
+        "and": "ve",
+        "bad": "kötü"
+      },
+      "source": "p10-s09"
+    },
+    {
+      "en": "Elif sat down on the kitchen floor.",
+      "tr": "Elif mutfağın zeminine oturdu.",
+      "chunks": [
+        {
+          "en": "sat down",
+          "tr": "oturdu"
+        }
+      ],
+      "words": {
+        "sat": "oturdu (sit → sat)",
+        "down": "aşağı (sit down: oturmak)",
+        "on": "-e",
+        "the": "(belirli tanımlık)",
+        "kitchen": "mutfak",
+        "floor": "yer, zemin"
+      },
+      "source": "p10-s10"
+    },
+    {
+      "en": "The contest was tomorrow.",
+      "tr": "Yarışma yarındı.",
+      "chunks": [],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "contest": "yarışma",
+        "was": "-di (be geçmiş)",
+        "tomorrow": "yarın"
+      },
+      "source": "p10-s11"
+    },
+    {
+      "en": "Aunt Füsun came into the kitchen.",
+      "tr": "Füsun Teyze mutfağa geldi.",
+      "chunks": [],
+      "words": {
+        "aunt": "teyze, hala",
+        "came": "geldi (come → came)",
+        "into": "içine",
+        "the": "(belirli tanımlık)",
+        "kitchen": "mutfak"
+      },
+      "source": "p11-s01"
+    },
+    {
+      "en": "She tried a little piece of each cake.",
+      "tr": "Her kekten küçük bir parça tattı.",
+      "chunks": [],
+      "words": {
+        "she": "o (kadın, kız)",
+        "tried": "tattı (try → tried)",
+        "a": "bir",
+        "little": "küçük",
+        "piece": "parça, dilim",
+        "of": "-den",
+        "each": "her bir",
+        "cake": "kek"
+      },
+      "source": "p11-s02"
+    },
+    {
+      "en": "Then she started to make lunch.",
+      "tr": "Sonra öğle yemeği yapmaya başladı.",
+      "chunks": [],
+      "words": {
+        "then": "sonra",
+        "she": "o (kadın, kız)",
+        "started": "başladı (start + -ed)",
+        "to": "-e; (mastar)",
+        "make": "yapmak (make lunch: yemek yapmak)",
+        "lunch": "öğle yemeği"
+      },
+      "source": "p11-s03"
+    },
+    {
+      "en": "Elif watched her.",
+      "tr": "Elif onu izledi.",
+      "chunks": [],
+      "words": {
+        "watched": "izledi (watch + -ed)",
+        "her": "onun; onu (kadın)"
+      },
+      "source": "p11-s04"
+    },
+    {
+      "en": "Aunt Füsun put oil in a pan, then onions, then tomatoes.",
+      "tr": "Füsun Teyze tavaya yağ koydu, sonra soğan, sonra domates.",
+      "chunks": [],
+      "words": {
+        "aunt": "teyze, hala",
+        "put": "koydu (put → put)",
+        "oil": "yağ",
+        "in": "-e (tavaya)",
+        "a": "bir",
+        "pan": "tava",
+        "then": "sonra",
+        "onions": "soğanlar",
+        "tomatoes": "domatesler"
+      },
+      "source": "p11-s05"
+    },
+    {
+      "en": "She added a little of this and a little of that.",
+      "tr": "Biraz şundan, biraz bundan ekledi.",
+      "chunks": [
+        {
+          "en": "a little of this and a little of that",
+          "tr": "biraz şundan, biraz bundan"
+        }
+      ],
+      "words": {
+        "she": "o (kadın, kız)",
+        "added": "ekledi (add + -ed)",
+        "a": "bir",
+        "little": "biraz (a little)",
+        "of": "-in; -den",
+        "this": "bu",
+        "and": "ve",
+        "that": "şu"
+      },
+      "source": "p11-s06"
+    },
+    {
+      "en": "She never looked at a card, a book or a phone.",
+      "tr": "Ne karta, ne kitaba, ne telefona baktı.",
+      "chunks": [],
+      "words": {
+        "she": "o (kadın, kız)",
+        "never": "hiç",
+        "looked": "baktı",
+        "at": "-e (look at: -e bakmak)",
+        "a": "bir",
+        "card": "kart",
+        "book": "kitap",
+        "or": "ya da, veya",
+        "phone": "telefon"
+      },
+      "source": "p11-s07"
+    },
+    {
+      "en": "Then Elif understood something.",
+      "tr": "Sonra Elif bir şeyi anladı.",
+      "chunks": [],
+      "words": {
+        "then": "sonra",
+        "understood": "anladı (understand → understood)",
+        "something": "bir şey"
+      },
+      "source": "p11-s08"
+    },
+    {
+      "en": "She opened her notebook.",
+      "tr": "Defterini açtı.",
+      "chunks": [],
+      "words": {
+        "she": "o (kadın, kız)",
+        "opened": "açtı; açıldı (open + -ed)",
+        "her": "onun; onu (kadın)",
+        "notebook": "defter"
+      },
+      "source": "p11-s09"
+    },
+    {
+      "en": "\"Clue three: Aunt Füsun never cooks from paper.\"",
+      "tr": "\"Üçüncü ipucu: Füsun Teyze hiçbir zaman kâğıttan yemek yapmaz.\"",
+      "chunks": [],
+      "words": {
+        "clue": "ipucu",
+        "three": "üç",
+        "aunt": "teyze, hala",
+        "never": "hiç, asla",
+        "cooks": "yemek yapar (cook + -s)",
+        "from": "-den",
+        "paper": "kâğıt"
+      },
+      "source": "p11-s10"
+    },
+    {
+      "en": "So why was there a card in the box?",
+      "tr": "Peki kutuda neden bir kart vardı?",
+      "chunks": [],
+      "words": {
+        "so": "peki",
+        "why": "neden",
+        "was": "-di (be geçmiş)",
+        "there": "orada (there was: vardı)",
+        "a": "bir",
+        "card": "kart",
+        "in": "içinde, -de",
+        "the": "(belirli tanımlık)",
+        "box": "kutu"
+      },
+      "source": "p11-s11"
+    },
+    {
+      "en": "In the early evening, Elif heard voices behind the restaurant.",
+      "tr": "Akşamüstü Elif lokantanın arkasından sesler duydu.",
+      "chunks": [
+        {
+          "en": "In the early evening",
+          "tr": "Akşamüstü"
+        }
+      ],
+      "words": {
+        "in": "içinde, -de",
+        "the": "(belirli tanımlık)",
+        "early": "erken (early evening: akşamüstü)",
+        "evening": "akşam",
+        "heard": "duydu (hear → heard)",
+        "voices": "sesler",
+        "behind": "arkasından",
+        "restaurant": "lokanta"
+      },
+      "source": "p12-s01"
+    },
+    {
+      "en": "Theo and Aunt Füsun sat at a small table outside.",
+      "tr": "Theo ile Füsun Teyze dışarıda küçük bir masada oturuyordu.",
+      "chunks": [],
+      "words": {
+        "and": "ve",
+        "aunt": "teyze, hala",
+        "sat": "oturuyordu (sit → sat)",
+        "at": "-de; saat (at six)",
+        "a": "bir",
+        "small": "küçük",
+        "table": "masa",
+        "outside": "dışarıda"
+      },
+      "source": "p12-s02"
+    },
+    {
+      "en": "\"Good evening, Theo,\" said Aunt Füsun slowly.",
+      "tr": "\"İyi akşamlar, Theo,\" dedi Füsun Teyze yavaşça.",
+      "chunks": [
+        {
+          "en": "Good evening",
+          "tr": "İyi akşamlar"
+        }
+      ],
+      "words": {
+        "good": "iyi",
+        "evening": "akşam",
+        "said": "dedi (say → said)",
+        "aunt": "teyze, hala",
+        "slowly": "yavaşça"
+      },
+      "source": "p12-s03"
+    },
+    {
+      "en": "She said it in English!",
+      "tr": "Bunu İngilizce söyledi!",
+      "chunks": [],
+      "words": {
+        "she": "o (kadın, kız)",
+        "said": "söyledi (say → said)",
+        "it": "o; onu",
+        "in": "-ce (in English: İngilizce)"
+      },
+      "source": "p12-s04"
+    },
+    {
+      "en": "Theo answered her in Turkish.",
+      "tr": "Theo ona Türkçe cevap verdi.",
+      "chunks": [],
+      "words": {
+        "answered": "cevap verdi (answer + -ed)",
+        "her": "onun; onu (kadın)",
+        "in": "-ce (in Turkish: Türkçe)"
+      },
+      "source": "p12-s05"
+    },
+    {
+      "en": "Then they both laughed.",
+      "tr": "Sonra ikisi de güldü.",
+      "chunks": [],
+      "words": {
+        "then": "sonra",
+        "they": "onlar",
+        "both": "ikisi de",
+        "laughed": "güldü (laugh + -ed)"
+      },
+      "source": "p12-s06"
+    },
+    {
+      "en": "So that was Theo's secret!",
+      "tr": "Demek Theo'nun sırrı buydu!",
+      "chunks": [],
+      "words": {
+        "so": "demek (ki)",
+        "that": "o; şu",
+        "was": "-di (be geçmiş)",
+        "theo's": "Theo'nun",
+        "secret": "sır"
+      },
+      "source": "p12-s07"
+    },
+    {
+      "en": "Every morning at six, they had a lesson.",
+      "tr": "Her sabah saat altıda ders yapıyorlardı.",
+      "chunks": [],
+      "words": {
+        "every": "her",
+        "morning": "sabah",
+        "at": "-de; saat (at six)",
+        "six": "altı",
+        "they": "onlar",
+        "had": "yapıyorlardı (have a lesson: ders yapmak)",
+        "a": "bir",
+        "lesson": "ders"
+      },
+      "source": "p12-s08"
+    },
+    {
+      "en": "Aunt Füsun taught Theo Turkish.",
+      "tr": "Füsun Teyze Theo'ya Türkçe öğretti.",
+      "chunks": [],
+      "words": {
+        "aunt": "teyze, hala",
+        "taught": "öğretti (teach → taught)"
+      },
+      "source": "p12-s09"
+    },
+    {
+      "en": "Theo taught Aunt Füsun English.",
+      "tr": "Theo da Füsun Teyze'ye İngilizce öğretti.",
+      "chunks": [],
+      "words": {
+        "taught": "öğretti (teach → taught)",
+        "aunt": "teyze, hala"
+      },
+      "source": "p12-s10"
+    },
+    {
+      "en": "The lemon was for her lessons.",
+      "tr": "Limon çizimi onun dersleri içindi.",
+      "chunks": [],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "lemon": "limon",
+        "was": "-di (be geçmiş)",
+        "for": "için",
+        "her": "onun (Füsun Teyze'nin)",
+        "lessons": "dersler"
+      },
+      "source": "p12-s11"
+    },
+    {
+      "en": "She paid him with cake.",
+      "tr": "Theo'ya kekle ödeme yapıyordu.",
+      "chunks": [],
+      "words": {
+        "she": "o (kadın, kız)",
+        "paid": "ödüyordu (pay → paid)",
+        "him": "ona (Theo'ya)",
+        "with": "-le",
+        "cake": "kek"
+      },
+      "source": "p12-s12"
+    },
+    {
+      "en": "Elif put a line through Theo's name.",
+      "tr": "Elif, Theo'nun adının üstünü çizdi.",
+      "chunks": [
+        {
+          "en": "put a line through",
+          "tr": "üstünü çizdi"
+        }
+      ],
+      "words": {
+        "put": "koydu (put → put)",
+        "a": "bir",
+        "line": "çizgi",
+        "through": "içinden (put a line through: üstünü çizmek)",
+        "theo's": "Theo'nun",
+        "name": "isim, ad"
+      },
+      "source": "p12-s13"
+    },
+    {
+      "en": "That night, Elif couldn't sleep.",
+      "tr": "O gece Elif uyuyamadı.",
+      "chunks": [],
+      "words": {
+        "that": "o; şu",
+        "night": "gece",
+        "couldn't": "-emedi (could not)",
+        "sleep": "uyumak"
+      },
+      "source": "p12-s14"
+    },
+    {
+      "en": "At midnight, she went down for some water.",
+      "tr": "Gece yarısı biraz su içmek için aşağı indi.",
+      "chunks": [],
+      "words": {
+        "at": "-de; saat (at six)",
+        "midnight": "gece yarısı",
+        "she": "o (kadın, kız)",
+        "went": "indi (go down: aşağı inmek)",
+        "down": "aşağı",
+        "for": "için",
+        "some": "biraz",
+        "water": "su"
+      },
+      "source": "p12-s15"
+    },
+    {
+      "en": "There was a light in the kitchen.",
+      "tr": "Mutfakta bir ışık vardı.",
+      "chunks": [],
+      "words": {
+        "there": "orada (there was: vardı)",
+        "was": "-di (be geçmiş)",
+        "a": "bir",
+        "light": "ışık",
+        "in": "içinde, -de",
+        "the": "(belirli tanımlık)",
+        "kitchen": "mutfak"
+      },
+      "source": "p12-s16"
+    },
+    {
+      "en": "Aunt Füsun stood by the oven.",
+      "tr": "Füsun Teyze fırının yanında duruyordu.",
+      "chunks": [],
+      "words": {
+        "aunt": "teyze, hala",
+        "stood": "duruyordu (stand → stood)",
+        "by": "yanında",
+        "the": "(belirli tanımlık)",
+        "oven": "fırın"
+      },
+      "source": "p12-s17"
+    },
+    {
+      "en": "She didn't look surprised.",
+      "tr": "Şaşırmış görünmüyordu.",
+      "chunks": [],
+      "words": {
+        "she": "o (kadın, kız)",
+        "didn't": "-medi (did not)",
+        "look": "görünmek",
+        "surprised": "şaşırmış"
+      },
+      "source": "p12-s18"
+    },
+    {
+      "en": "\"Are you ready?\" she asked.",
+      "tr": "\"Hazır mısın?\" diye sordu.",
+      "chunks": [],
+      "words": {
+        "are": "(olmak; çoğul, şimdiki)",
+        "you": "sen; seni",
+        "ready": "hazır",
+        "she": "o (kadın, kız)",
+        "asked": "sordu (ask + -ed)"
+      },
+      "source": "p12-s19"
+    },
+    {
+      "en": "In English.",
+      "tr": "İngilizce.",
+      "chunks": [],
+      "words": {
+        "in": "içinde, -de"
+      },
+      "source": "p12-s20"
+    },
+    {
+      "en": "The Real Recipe",
+      "tr": "Gerçek Tarif",
+      "chunks": [],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "real": "gerçek",
+        "recipe": "tarif"
+      },
+      "source": "c4"
+    },
+    {
+      "en": "\"Ready for what?\" asked Elif.",
+      "tr": "\"Ne için hazır?\" diye sordu Elif.",
+      "chunks": [],
+      "words": {
+        "ready": "hazır",
+        "for": "için",
+        "what": "ne",
+        "asked": "sordu (ask + -ed)"
+      },
+      "source": "p13-s01"
+    },
+    {
+      "en": "\"For the real recipe,\" said Aunt Füsun.",
+      "tr": "\"Gerçek tarif için,\" dedi Füsun Teyze.",
+      "chunks": [],
+      "words": {
+        "for": "için",
+        "the": "(belirli tanımlık)",
+        "real": "gerçek",
+        "recipe": "tarif",
+        "said": "dedi (say → said)",
+        "aunt": "teyze, hala"
+      },
+      "source": "p13-s02"
+    },
+    {
+      "en": "She took something out of her pocket.",
+      "tr": "Cebinden bir şey çıkardı.",
+      "chunks": [
+        {
+          "en": "took something out of",
+          "tr": "bir şey çıkardı"
+        }
+      ],
+      "words": {
+        "she": "o (kadın, kız)",
+        "took": "çıkardı (take out: çıkarmak)",
+        "something": "bir şey",
+        "out": "dışarı (take out of: -den çıkarmak)",
+        "of": "-den",
+        "her": "onun; onu (kadın)",
+        "pocket": "cep"
+      },
+      "source": "p13-s03"
+    },
+    {
+      "en": "It was the other half of the card.",
+      "tr": "Kartın öbür yarısıydı.",
+      "chunks": [],
+      "words": {
+        "it": "o; onu",
+        "was": "-di (be geçmiş)",
+        "the": "(belirli tanımlık)",
+        "other": "diğer, öbür",
+        "half": "yarı",
+        "of": "-in; -den",
+        "card": "kart"
+      },
+      "source": "p13-s04"
+    },
+    {
+      "en": "Elif's mouth opened.",
+      "tr": "Elif'in ağzı açık kaldı.",
+      "chunks": [],
+      "words": {
+        "elif's": "Elif'in",
+        "mouth": "ağız",
+        "opened": "açıldı (open + -ed)"
+      },
+      "source": "p13-s05"
+    },
+    {
+      "en": "\"You took it?\"",
+      "tr": "\"Sen mi aldın?\"",
+      "chunks": [],
+      "words": {
+        "you": "sen; seni",
+        "took": "aldı; götürdü (take → took)",
+        "it": "o; onu"
+      },
+      "source": "p13-s06"
+    },
+    {
+      "en": "\"I hid it,\" said Aunt Füsun.",
+      "tr": "\"Ben sakladım,\" dedi Füsun Teyze.",
+      "chunks": [],
+      "words": {
+        "i": "ben",
+        "hid": "sakladı (hide → hid)",
+        "it": "o; onu",
+        "said": "dedi (say → said)",
+        "aunt": "teyze, hala"
+      },
+      "source": "p13-s07"
+    },
+    {
+      "en": "\"On Thursday night.",
+      "tr": "\"Perşembe gecesi.",
+      "chunks": [],
+      "words": {
+        "on": "-de (gün)",
+        "thursday": "perşembe",
+        "night": "gece"
+      },
+      "source": "p13-s08"
+    },
+    {
+      "en": "Limon helped me.\"",
+      "tr": "Limon da yardım etti.\"",
+      "chunks": [],
+      "words": {
+        "helped": "yardım etti (help + -ed)",
+        "me": "bana"
+      },
+      "source": "p13-s09"
+    },
+    {
+      "en": "Elif remembered the flour on the table.",
+      "tr": "Elif masadaki unu hatırladı.",
+      "chunks": [],
+      "words": {
+        "remembered": "hatırladı (remember + -ed)",
+        "the": "(belirli tanımlık)",
+        "flour": "un",
+        "on": "üstünde; -de",
+        "table": "masa"
+      },
+      "source": "p13-s10"
+    },
+    {
+      "en": "Aunt Füsun's hands always had flour on them.",
+      "tr": "Füsun Teyze'nin ellerinde hep un olurdu.",
+      "chunks": [],
+      "words": {
+        "aunt": "teyze, hala",
+        "füsun's": "Füsun'un",
+        "hands": "eller",
+        "always": "hep, her zaman",
+        "had": "olurdu (have → had)",
+        "flour": "un",
+        "on": "üstünde",
+        "them": "onları"
+      },
+      "source": "p13-s11"
+    },
+    {
+      "en": "And Limon slept in Aunt Füsun's room every night.",
+      "tr": "Ve Limon her gece Füsun Teyze'nin odasında uyurdu.",
+      "chunks": [],
+      "words": {
+        "and": "ve",
+        "slept": "uyurdu, uyudu (sleep → slept)",
+        "in": "içinde, -de",
+        "aunt": "teyze, hala",
+        "füsun's": "Füsun'un",
+        "room": "oda",
+        "every": "her",
+        "night": "gece"
+      },
+      "source": "p13-s12"
+    },
+    {
+      "en": "\"He loves paper,\" said Aunt Füsun.",
+      "tr": "\"Kâğıda bayılır,\" dedi Füsun Teyze.",
+      "chunks": [],
+      "words": {
+        "he": "o (erkek)",
+        "loves": "bayılır (love + -s)",
+        "paper": "kâğıt",
+        "said": "dedi (say → said)",
+        "aunt": "teyze, hala"
+      },
+      "source": "p13-s13"
+    },
+    {
+      "en": "\"He took one half to his basket.",
+      "tr": "\"Bir yarısını sepetine götürdü.",
+      "chunks": [],
+      "words": {
+        "he": "o (erkek)",
+        "took": "götürdü (take → took)",
+        "one": "bir",
+        "half": "yarı",
+        "to": "-e; (mastar)",
+        "his": "onun (erkek)",
+        "basket": "sepet"
+      },
+      "source": "p13-s14"
+    },
+    {
+      "en": "I'm sorry about that.\"",
+      "tr": "Bunun için özür dilerim.\"",
+      "chunks": [
+        {
+          "en": "I'm sorry",
+          "tr": "özür dilerim"
+        }
+      ],
+      "words": {
+        "i'm": "ben ...-im (I am)",
+        "sorry": "üzgün (I'm sorry: özür dilerim)",
+        "about": "için",
+        "that": "o; şu"
+      },
+      "source": "p13-s15"
+    },
+    {
+      "en": "\"But why?\" asked Elif.",
+      "tr": "\"Ama neden?\" diye sordu Elif.",
+      "chunks": [],
+      "words": {
+        "but": "ama",
+        "why": "neden",
+        "asked": "sordu (ask + -ed)"
+      },
+      "source": "p14-s01"
+    },
+    {
+      "en": "Aunt Füsun put the two pieces together on the table.",
+      "tr": "Füsun Teyze iki parçayı masanın üstünde birleştirdi.",
+      "chunks": [
+        {
+          "en": "put the two pieces together",
+          "tr": "iki parçayı birleştirdi"
+        }
+      ],
+      "words": {
+        "aunt": "teyze, hala",
+        "put": "koydu (put → put)",
+        "the": "(belirli tanımlık)",
+        "two": "iki",
+        "pieces": "parçalar",
+        "together": "bir araya, birlikte",
+        "on": "üstünde; -de",
+        "table": "masa"
+      },
+      "source": "p14-s02"
+    },
+    {
+      "en": "\"Read it,\" she said.",
+      "tr": "\"Oku,\" dedi.",
+      "chunks": [],
+      "words": {
+        "read": "oku",
+        "it": "o; onu",
+        "she": "o (kadın, kız)",
+        "said": "dedi (say → said)"
+      },
+      "source": "p14-s03"
+    },
+    {
+      "en": "Elif read it.",
+      "tr": "Elif okudu.",
+      "chunks": [],
+      "words": {
+        "read": "okudu; okumak (read → read)",
+        "it": "o; onu"
+      },
+      "source": "p14-s04"
+    },
+    {
+      "en": "Then she read it again.",
+      "tr": "Sonra bir daha okudu.",
+      "chunks": [],
+      "words": {
+        "then": "sonra",
+        "she": "o (kadın, kız)",
+        "read": "okudu; okumak (read → read)",
+        "it": "o; onu",
+        "again": "bir daha"
+      },
+      "source": "p14-s05"
+    },
+    {
+      "en": "Three lemons.",
+      "tr": "Üç limon.",
+      "chunks": [],
+      "words": {
+        "three": "üç",
+        "lemons": "limonlar"
+      },
+      "source": "p14-s06"
+    },
+    {
+      "en": "Two glasses of salt.",
+      "tr": "İki bardak tuz.",
+      "chunks": [],
+      "words": {
+        "two": "iki",
+        "glasses": "bardaklar",
+        "of": "-in; -den",
+        "salt": "tuz"
+      },
+      "source": "p14-s07"
+    },
+    {
+      "en": "No butter at all.",
+      "tr": "Hiç tereyağı yok.",
+      "chunks": [
+        {
+          "en": "at all",
+          "tr": "hiç"
+        }
+      ],
+      "words": {
+        "no": "hiç; yok; hayır",
+        "butter": "tereyağı",
+        "at": "-de; saat (at six)",
+        "all": "(at all: hiç)"
+      },
+      "source": "p14-s08"
+    },
+    {
+      "en": "\"This is wrong!\" she said.",
+      "tr": "\"Bu yanlış!\" dedi.",
+      "chunks": [],
+      "words": {
+        "this": "bu",
+        "is": "(olmak; şimdiki)",
+        "wrong": "yanlış",
+        "she": "o (kadın, kız)",
+        "said": "dedi (say → said)"
+      },
+      "source": "p14-s09"
+    },
+    {
+      "en": "\"This makes a terrible cake!\"",
+      "tr": "\"Bununla berbat bir kek olur!\"",
+      "chunks": [],
+      "words": {
+        "this": "bu",
+        "makes": "yapar, ortaya çıkarır (make + -s)",
+        "a": "bir",
+        "terrible": "berbat, korkunç",
+        "cake": "kek"
+      },
+      "source": "p14-s10"
+    },
+    {
+      "en": "\"Of course it does,\" said Aunt Füsun.",
+      "tr": "\"Elbette olur,\" dedi Füsun Teyze.",
+      "chunks": [
+        {
+          "en": "Of course",
+          "tr": "elbette"
+        }
+      ],
+      "words": {
+        "of": "-in; -den",
+        "course": "(of course: elbette)",
+        "it": "o; onu",
+        "does": "öyle yapar (do → does)",
+        "said": "dedi (say → said)",
+        "aunt": "teyze, hala"
+      },
+      "source": "p14-s11"
+    },
+    {
+      "en": "\"Every year, somebody wants my recipe.",
+      "tr": "\"Her yıl biri tarifimi ister.",
+      "chunks": [],
+      "words": {
+        "every": "her",
+        "year": "yıl",
+        "somebody": "birisi",
+        "wants": "ister (want + -s)",
+        "my": "benim",
+        "recipe": "tarif"
+      },
+      "source": "p14-s12"
+    },
+    {
+      "en": "Every year, somebody opens that box.",
+      "tr": "Her yıl biri o kutuyu açar.",
+      "chunks": [],
+      "words": {
+        "every": "her",
+        "year": "yıl",
+        "somebody": "birisi",
+        "opens": "açar (open + -s)",
+        "that": "o; şu",
+        "box": "kutu"
+      },
+      "source": "p14-s13"
+    },
+    {
+      "en": "So I wrote a wrong card.",
+      "tr": "Ben de yanlış bir kart yazdım.",
+      "chunks": [],
+      "words": {
+        "so": "bu yüzden (burada: ben de)",
+        "i": "ben",
+        "wrote": "yazdı (write → wrote)",
+        "a": "bir",
+        "wrong": "yanlış",
+        "card": "kart"
+      },
+      "source": "p14-s14"
+    },
+    {
+      "en": "It's a trap for people with long noses.\"",
+      "tr": "Bu, burnunu her şeye sokanlar için bir tuzak.\"",
+      "chunks": [
+        {
+          "en": "people with long noses",
+          "tr": "burnu uzun insanlar (meraklı, burnunu sokan)"
+        }
+      ],
+      "words": {
+        "it's": "o ... (it is)",
+        "a": "bir",
+        "trap": "tuzak",
+        "for": "için",
+        "people": "insanlar",
+        "with": "ile",
+        "long": "uzun",
+        "noses": "burunlar"
+      },
+      "source": "p14-s15"
+    },
+    {
+      "en": "\"So where is the real recipe?\"",
+      "tr": "\"Peki gerçek tarif nerede?\"",
+      "chunks": [],
+      "words": {
+        "so": "peki",
+        "where": "nerede",
+        "is": "(olmak; şimdiki)",
+        "the": "(belirli tanımlık)",
+        "real": "gerçek",
+        "recipe": "tarif"
+      },
+      "source": "p14-s16"
+    },
+    {
+      "en": "Aunt Füsun showed her two hands.",
+      "tr": "Füsun Teyze iki elini gösterdi.",
+      "chunks": [],
+      "words": {
+        "aunt": "teyze, hala",
+        "showed": "gösterdi (show + -ed)",
+        "her": "onun; onu (kadın)",
+        "two": "iki",
+        "hands": "eller"
+      },
+      "source": "p14-s17"
+    },
+    {
+      "en": "Then she touched her head.",
+      "tr": "Sonra başına dokundu.",
+      "chunks": [],
+      "words": {
+        "then": "sonra",
+        "she": "o (kadın, kız)",
+        "touched": "dokundu (touch + -ed)",
+        "her": "onun; onu (kadın)",
+        "head": "baş, kafa"
+      },
+      "source": "p14-s18"
+    },
+    {
+      "en": "\"Here.",
+      "tr": "\"Burada.",
+      "chunks": [],
+      "words": {
+        "here": "burada"
+      },
+      "source": "p14-s19"
+    },
+    {
+      "en": "I didn't want you to learn from paper.",
+      "tr": "Senin kâğıttan öğrenmeni istemedim.",
+      "chunks": [],
+      "words": {
+        "i": "ben",
+        "didn't": "-medi (did not)",
+        "want": "istemek",
+        "you": "sen; seni",
+        "to": "-e; (mastar)",
+        "learn": "öğrenmek",
+        "from": "-den",
+        "paper": "kâğıt"
+      },
+      "source": "p14-s20"
+    },
+    {
+      "en": "I wanted you to learn with your eyes.",
+      "tr": "Gözlerinle öğrenmeni istedim.",
+      "chunks": [],
+      "words": {
+        "i": "ben",
+        "wanted": "istedi (want + -ed)",
+        "you": "sen; seni",
+        "to": "-e; (mastar)",
+        "learn": "öğrenmek",
+        "with": "ile",
+        "your": "senin",
+        "eyes": "gözler"
+      },
+      "source": "p14-s21"
+    },
+    {
+      "en": "Today you watched me.",
+      "tr": "Bugün beni izledin.",
+      "chunks": [],
+      "words": {
+        "today": "bugün",
+        "you": "sen; seni",
+        "watched": "izledi (watch + -ed)",
+        "me": "beni, bana"
+      },
+      "source": "p14-s22"
+    },
+    {
+      "en": "You saw everything.\"",
+      "tr": "Her şeyi gördün.\"",
+      "chunks": [],
+      "words": {
+        "you": "sen; seni",
+        "saw": "gördü (see → saw)",
+        "everything": "her şey"
+      },
+      "source": "p14-s23"
+    },
+    {
+      "en": "They baked all night.",
+      "tr": "Bütün gece kek pişirdiler.",
+      "chunks": [
+        {
+          "en": "all night",
+          "tr": "bütün gece"
+        }
+      ],
+      "words": {
+        "they": "onlar",
+        "baked": "(kek) pişirdiler (bake + -d)",
+        "all": "bütün, hepsi",
+        "night": "gece"
+      },
+      "source": "p15-s01"
+    },
+    {
+      "en": "Aunt Füsun didn't use a glass or a spoon.",
+      "tr": "Füsun Teyze ne bardak ne kaşık kullandı.",
+      "chunks": [],
+      "words": {
+        "aunt": "teyze, hala",
+        "didn't": "-medi (did not)",
+        "use": "kullanmak",
+        "a": "bir",
+        "glass": "bardak",
+        "or": "ne de",
+        "spoon": "kaşık"
+      },
+      "source": "p15-s02"
+    },
+    {
+      "en": "She showed Elif everything.",
+      "tr": "Elif'e her şeyi gösterdi.",
+      "chunks": [],
+      "words": {
+        "she": "o (kadın, kız)",
+        "showed": "gösterdi (show + -ed)",
+        "everything": "her şey"
+      },
+      "source": "p15-s03"
+    },
+    {
+      "en": "\"Feel the butter.",
+      "tr": "\"Tereyağını hisset.",
+      "chunks": [],
+      "words": {
+        "feel": "hisset, dokunup anla",
+        "the": "(belirli tanımlık)",
+        "butter": "tereyağı"
+      },
+      "source": "p15-s04"
+    },
+    {
+      "en": "It must be soft.",
+      "tr": "Yumuşak olmalı.",
+      "chunks": [],
+      "words": {
+        "it": "o; onu",
+        "must": "-meli, -malı",
+        "be": "olmak",
+        "soft": "yumuşak"
+      },
+      "source": "p15-s05"
+    },
+    {
+      "en": "Smell the lemon.",
+      "tr": "Limonu kokla.",
+      "chunks": [],
+      "words": {
+        "smell": "kokla",
+        "the": "(belirli tanımlık)",
+        "lemon": "limon"
+      },
+      "source": "p15-s06"
+    },
+    {
+      "en": "Look at the colour.\"",
+      "tr": "Rengine bak.\"",
+      "chunks": [],
+      "words": {
+        "look": "bak",
+        "at": "-e (look at: -e bakmak)",
+        "the": "(belirli tanımlık)",
+        "colour": "renk"
+      },
+      "source": "p15-s07"
+    },
+    {
+      "en": "Elif watched her hands and did the same.",
+      "tr": "Elif onun ellerini izledi ve aynısını yaptı.",
+      "chunks": [],
+      "words": {
+        "watched": "izledi (watch + -ed)",
+        "her": "onun",
+        "hands": "eller",
+        "and": "ve",
+        "did": "yaptı (do → did)",
+        "the": "(belirli tanımlık)",
+        "same": "aynı"
+      },
+      "source": "p15-s08"
+    },
+    {
+      "en": "The first cake was good.",
+      "tr": "İlk kek iyiydi.",
+      "chunks": [],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "first": "ilk, birinci",
+        "cake": "kek",
+        "was": "-di (be geçmiş)",
+        "good": "iyi"
+      },
+      "source": "p15-s09"
+    },
+    {
+      "en": "The second cake was better.",
+      "tr": "İkinci kek daha iyiydi.",
+      "chunks": [],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "second": "ikinci",
+        "cake": "kek",
+        "was": "-di (be geçmiş)",
+        "better": "daha iyi (good → better)"
+      },
+      "source": "p15-s10"
+    },
+    {
+      "en": "At three o'clock, Elif had an idea.",
+      "tr": "Saat üçte Elif'in aklına bir fikir geldi.",
+      "chunks": [
+        {
+          "en": "had an idea",
+          "tr": "aklına bir fikir geldi"
+        }
+      ],
+      "words": {
+        "at": "-de (saat)",
+        "three": "üç",
+        "o'clock": "saat (tam)",
+        "had": "-si vardı (have an idea: aklına gelmek)",
+        "an": "bir",
+        "idea": "fikir"
+      },
+      "source": "p15-s11"
+    },
+    {
+      "en": "She went into the garden.",
+      "tr": "Bahçeye çıktı.",
+      "chunks": [],
+      "words": {
+        "she": "o (kadın, kız)",
+        "went": "gitti, çıktı (go → went)",
+        "into": "-e",
+        "the": "(belirli tanımlık)",
+        "garden": "bahçe"
+      },
+      "source": "p15-s12"
+    },
+    {
+      "en": "She came back with a few green leaves of mint.",
+      "tr": "Elinde birkaç yeşil nane yaprağıyla geri geldi.",
+      "chunks": [
+        {
+          "en": "came back",
+          "tr": "geri geldi"
+        }
+      ],
+      "words": {
+        "she": "o (kadın, kız)",
+        "came": "geldi (come → came)",
+        "back": "geri",
+        "with": "-le",
+        "a": "bir",
+        "few": "birkaç (a few)",
+        "green": "yeşil",
+        "leaves": "yapraklar (leaf → leaves)",
+        "of": "(leaves of mint: nane yaprakları)",
+        "mint": "nane"
+      },
+      "source": "p15-s13"
+    },
+    {
+      "en": "She put a little mint in the third cake.",
+      "tr": "Üçüncü keke biraz nane koydu.",
+      "chunks": [],
+      "words": {
+        "she": "o (kadın, kız)",
+        "put": "koydu (put → put)",
+        "a": "bir",
+        "little": "biraz (a little)",
+        "mint": "nane",
+        "in": "içine",
+        "the": "(belirli tanımlık)",
+        "third": "üçüncü",
+        "cake": "kek"
+      },
+      "source": "p15-s14"
+    },
+    {
+      "en": "Aunt Füsun tried it.",
+      "tr": "Füsun Teyze tadına baktı.",
+      "chunks": [],
+      "words": {
+        "aunt": "teyze, hala",
+        "tried": "tadına baktı (try → tried)",
+        "it": "o; onu"
+      },
+      "source": "p15-s15"
+    },
+    {
+      "en": "She closed her eyes for a long time.",
+      "tr": "Uzun süre gözlerini kapadı.",
+      "chunks": [
+        {
+          "en": "for a long time",
+          "tr": "uzun süre"
+        }
+      ],
+      "words": {
+        "she": "o (kadın, kız)",
+        "closed": "kapattı (close + -d)",
+        "her": "onun; onu (kadın)",
+        "eyes": "gözler",
+        "for": "için",
+        "a": "bir",
+        "long": "uzun",
+        "time": "süre"
+      },
+      "source": "p15-s16"
+    },
+    {
+      "en": "\"That's not my cake,\" she said at last.",
+      "tr": "\"Bu benim kekim değil,\" dedi sonunda.",
+      "chunks": [
+        {
+          "en": "at last",
+          "tr": "sonunda"
+        }
+      ],
+      "words": {
+        "that's": "o ... (that is)",
+        "not": "değil",
+        "my": "benim",
+        "cake": "kek",
+        "she": "o (kadın, kız)",
+        "said": "dedi (say → said)",
+        "at": "-de; saat (at six)",
+        "last": "son (at last: sonunda)"
+      },
+      "source": "p15-s17"
+    },
+    {
+      "en": "\"That's your cake.\"",
+      "tr": "\"Bu senin kekin.\"",
+      "chunks": [],
+      "words": {
+        "that's": "o ... (that is)",
+        "your": "senin",
+        "cake": "kek"
+      },
+      "source": "p15-s18"
+    },
+    {
+      "en": "On Sunday, the town square was full of people and cakes.",
+      "tr": "Pazar günü kasaba meydanı insan ve kekle doluydu.",
+      "chunks": [],
+      "words": {
+        "on": "üstünde; -de",
+        "sunday": "pazar",
+        "the": "(belirli tanımlık)",
+        "town": "kasaba",
+        "square": "meydan",
+        "was": "-di (be geçmiş)",
+        "full": "dolu",
+        "of": "ile (full of: ile dolu)",
+        "people": "insanlar",
+        "and": "ve",
+        "cakes": "kekler"
+      },
+      "source": "p16-s01"
+    },
+    {
+      "en": "The judges tried every cake slowly.",
+      "tr": "Jüri her keki yavaş yavaş tattı.",
+      "chunks": [],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "judges": "jüri üyeleri, hakemler",
+        "tried": "tattı (try → tried)",
+        "every": "her",
+        "cake": "kek",
+        "slowly": "yavaşça"
+      },
+      "source": "p16-s02"
+    },
+    {
+      "en": "Mr Selim won with a big chocolate cake.",
+      "tr": "Selim Bey büyük bir çikolatalı kekle kazandı.",
+      "chunks": [],
+      "words": {
+        "mr": "Bay (burada: Bey)",
+        "won": "kazandı (win → won)",
+        "with": "ile",
+        "a": "bir",
+        "big": "büyük",
+        "chocolate": "çikolata",
+        "cake": "kek"
+      },
+      "source": "p16-s03"
+    },
+    {
+      "en": "Elif and Aunt Füsun came second.",
+      "tr": "Elif ile Füsun Teyze ikinci oldu.",
+      "chunks": [
+        {
+          "en": "came second",
+          "tr": "ikinci oldu"
+        }
+      ],
+      "words": {
+        "and": "ve",
+        "aunt": "teyze, hala",
+        "came": "geldi; oldu (come second: ikinci olmak)",
+        "second": "ikinci"
+      },
+      "source": "p16-s04"
+    },
+    {
+      "en": "For a moment, Elif was sad.",
+      "tr": "Bir an Elif üzüldü.",
+      "chunks": [
+        {
+          "en": "For a moment",
+          "tr": "bir an"
+        }
+      ],
+      "words": {
+        "for": "için",
+        "a": "bir",
+        "moment": "an",
+        "was": "-di (be geçmiş)",
+        "sad": "üzgün"
+      },
+      "source": "p16-s05"
+    },
+    {
+      "en": "Then she looked at Aunt Füsun.",
+      "tr": "Sonra Füsun Teyze'ye baktı.",
+      "chunks": [],
+      "words": {
+        "then": "sonra",
+        "she": "o (kadın, kız)",
+        "looked": "baktı; görünüyordu (look + -ed)",
+        "at": "-de; saat (at six)",
+        "aunt": "teyze, hala"
+      },
+      "source": "p16-s06"
+    },
+    {
+      "en": "Aunt Füsun was laughing, so Elif laughed, too.",
+      "tr": "Füsun Teyze gülüyordu, Elif de güldü.",
+      "chunks": [],
+      "words": {
+        "aunt": "teyze, hala",
+        "was": "-di (be geçmiş)",
+        "laughing": "gülüyordu (laugh + -ing)",
+        "so": "bu yüzden (burada: o da)",
+        "laughed": "güldü (laugh + -ed)",
+        "too": "de, da"
+      },
+      "source": "p16-s07"
+    },
+    {
+      "en": "\"Second is good,\" said Aunt Füsun.",
+      "tr": "\"İkincilik de iyidir,\" dedi Füsun Teyze.",
+      "chunks": [],
+      "words": {
+        "second": "ikinci (burada: ikincilik)",
+        "is": "(olmak; şimdiki)",
+        "good": "iyi",
+        "said": "dedi (say → said)",
+        "aunt": "teyze, hala"
+      },
+      "source": "p16-s08"
+    },
+    {
+      "en": "\"Next year, you're going to win.",
+      "tr": "\"Gelecek yıl sen kazanacaksın.",
+      "chunks": [
+        {
+          "en": "going to win",
+          "tr": "kazanacaksın"
+        }
+      ],
+      "words": {
+        "next": "gelecek",
+        "year": "yıl",
+        "you're": "sen ...-sin (you are)",
+        "going": "(be going to: -ecek)",
+        "to": "-e; (mastar)",
+        "win": "kazanmak"
+      },
+      "source": "p16-s09"
+    },
+    {
+      "en": "And I'm going to write a new wrong card.\"",
+      "tr": "Ben de yeni bir yanlış kart yazacağım.\"",
+      "chunks": [
+        {
+          "en": "going to write",
+          "tr": "yazacağım"
+        }
+      ],
+      "words": {
+        "and": "ve (burada: ben de)",
+        "i'm": "ben ...-im (I am)",
+        "going": "(be going to: -ecek)",
+        "to": "-e; (mastar)",
+        "write": "yazmak",
+        "a": "bir",
+        "new": "yeni",
+        "wrong": "yanlış",
+        "card": "kart"
+      },
+      "source": "p16-s10"
+    },
+    {
+      "en": "Bora took a photo of them.",
+      "tr": "Bora onların bir fotoğrafını çekti.",
+      "chunks": [],
+      "words": {
+        "took": "çekti (take a photo: fotoğraf çekmek)",
+        "a": "bir",
+        "photo": "fotoğraf",
+        "of": "-in; -den",
+        "them": "onları"
+      },
+      "source": "p16-s11"
+    },
+    {
+      "en": "That evening, it got more likes than the cake.",
+      "tr": "O akşam fotoğraf, kekten daha çok beğeni aldı.",
+      "chunks": [],
+      "words": {
+        "that": "o; şu",
+        "evening": "akşam",
+        "it": "o (fotoğraf)",
+        "got": "aldı (get → got)",
+        "more": "daha çok",
+        "likes": "beğeniler",
+        "than": "-den (karşılaştırma)",
+        "the": "(belirli tanımlık)",
+        "cake": "kek"
+      },
+      "source": "p16-s12"
+    },
+    {
+      "en": "That night, Elif opened her notebook for the last time.",
+      "tr": "O gece Elif defterini son kez açtı.",
+      "chunks": [
+        {
+          "en": "for the last time",
+          "tr": "son kez"
+        }
+      ],
+      "words": {
+        "that": "o; şu",
+        "night": "gece",
+        "opened": "açtı; açıldı (open + -ed)",
+        "her": "onun; onu (kadın)",
+        "notebook": "defter",
+        "for": "için",
+        "the": "(belirli tanımlık)",
+        "last": "son",
+        "time": "kez"
+      },
+      "source": "p16-s13"
+    },
+    {
+      "en": "Under \"Find the recipe,\" she wrote one more line.",
+      "tr": "\"Tarifi bul\" yazısının altına bir satır daha yazdı.",
+      "chunks": [],
+      "words": {
+        "under": "altında",
+        "find": "bulmak",
+        "the": "(belirli tanımlık)",
+        "recipe": "tarif",
+        "she": "o (kadın, kız)",
+        "wrote": "yazdı (write → wrote)",
+        "one": "bir; tek",
+        "more": "daha",
+        "line": "satır"
+      },
+      "source": "p16-s14"
+    },
+    {
+      "en": "\"Found.",
+      "tr": "\"Bulundu.",
+      "chunks": [],
+      "words": {
+        "found": "bulundu (find → found)"
+      },
+      "source": "p16-s15"
+    },
+    {
+      "en": "It was in Aunt Füsun's hands.",
+      "tr": "Füsun Teyze'nin ellerindeymiş.",
+      "chunks": [],
+      "words": {
+        "it": "o; onu",
+        "was": "-di (burada: -miş)",
+        "in": "içinde, -de",
+        "aunt": "teyze, hala",
+        "füsun's": "Füsun'un",
+        "hands": "eller"
+      },
+      "source": "p16-s16"
+    },
+    {
+      "en": "Now it's in mine, too.\"",
+      "tr": "Artık benimkilerde de var.\"",
+      "chunks": [],
+      "words": {
+        "now": "şimdi",
+        "it's": "o ... (it is)",
+        "in": "içinde, -de",
+        "mine": "benimkiler (benim ellerim)",
+        "too": "de, da"
+      },
+      "source": "p16-s17"
+    }
+  ],
+  "phrases": [
+    {
+      "en": "did the dishes",
+      "tr": "bulaşıkları yıkadı",
+      "note": "do the dishes: bulaşık yıkamak. Kek ve yemek için make, iş ve görev için do.",
+      "words": {
+        "did": "yaptı (do → did)",
+        "the": "(belirli tanımlık)",
+        "dishes": "bulaşıklar (do the dishes: bulaşık yıkamak)"
+      },
+      "source": "dil odağı"
+    },
+    {
+      "en": "make a cake",
+      "tr": "kek yapmak",
+      "note": "Türkçede \"kek yapmak\" ama İngilizcede do değil make.",
+      "words": {
+        "make": "yapmak",
+        "a": "bir",
+        "cake": "kek"
+      },
+      "source": "dil odağı"
+    },
+    {
+      "en": "more sour than",
+      "tr": "-den daha ekşi",
+      "note": "Karşılaştırma: sıfat + -er + than ya da more + sıfat + than.",
+      "words": {
+        "more": "daha",
+        "sour": "ekşi",
+        "than": "-den (karşılaştırma)"
+      },
+      "source": "dil odağı"
+    },
+    {
+      "en": "drier than",
+      "tr": "-den daha kuru",
+      "note": "dry → drier: -y → -ier.",
+      "words": {
+        "drier": "daha kuru (dry → drier)",
+        "than": "-den (karşılaştırma)"
+      },
+      "source": "dil odağı"
+    },
+    {
+      "en": "going to",
+      "tr": "-ecek, -acak (plan)",
+      "note": "You're going to win. = Kazanacaksın.",
+      "words": {
+        "going": "(be going to: -ecek)",
+        "to": "-e; (mastar)"
+      },
+      "source": "dil odağı"
+    },
+    {
+      "en": "at last",
+      "tr": "sonunda",
+      "note": "Uzun bir bekleyişin sonunda.",
+      "words": {
+        "at": "-de; saat (at six)",
+        "last": "son"
+      },
+      "source": "dil odağı"
+    }
+  ]
+}

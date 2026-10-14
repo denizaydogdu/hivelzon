@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "id": "A1-K04",
+  "slug": "A1-K04-pip-cannot-sleep",
+  "level": "A1",
+  "genre": "scifi-fantasy",
+  "title": "Pip Cannot Sleep",
+  "titleTr": "Pip Uyuyamıyor",
+  "blurbTr": "Pip her gece evi temizliyor, ışıkları kapatıyor ve bekliyor. Herkes uyuyor, Pip uyuyamıyor. Koyun sayıyor, sıcak süt deniyor, battaniyeye sarılıyor. Bir robot uyuyabilir mi?",
+  "hookEn": "Pip the robot wants to sleep.",
+  "contentVersion": 1,
+  "status": "DRAFT",
+  "aiGenerated": true,
+  "palette": {
+    "background": "#F6F2FC",
+    "surface": "#E9E1F6",
+    "text": "#2A2148",
+    "accent": "#147A78",
+    "highlight": "#FFD966"
+  },
+  "cover": "cover.png",
+  "properNouns": [
+    "Pip",
+    "Zara"
+  ],
+  "narration": {
+    "modelId": "eleven_v3",
+    "speed": 0.9,
+    "voiceId": "EXAVITQu4vr4xnSDxMaL"
+  },
+  "chapters": [
+    {
+      "id": "c1",
+      "title": "Night",
+      "titleTr": "Gece",
+      "pages": [
+        {"id": "p01", "image": "p01.png"},
+        {"id": "p02", "image": null},
+        {"id": "p03", "image": null},
+        {"id": "p04", "image": null},
+        {"id": "p05", "image": null}
+      ]
+    },
+    {
+      "id": "c2",
+      "title": "A Story",
+      "titleTr": "Bir Hikâye",
+      "pages": [
+        {"id": "p06", "image": "p06.png"},
+        {"id": "p07", "image": null},
+        {"id": "p08", "image": null},
+        {"id": "p09", "image": null},
+        {"id": "p10", "image": null}
+      ]
+    }
+  ]
+}

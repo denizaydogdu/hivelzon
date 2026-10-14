@@ -1,0 +1,2372 @@
+{
+  "contentId": "A1-K03",
+  "status": "DRAFT",
+  "author": "Claude taslak (H-071); kullanıcı onayı bekliyor",
+  "date": "2026-10-14",
+  "notes": [
+    "Anlatım İngilizcede geniş zamanda (present simple); Türkçede doğal anlatım için çoğunlukla şimdiki zaman (-iyor) kullanıldı.",
+    "Hareket ve yer edatları (over, up, down, into, after, near) kelime anlamında cümledeki kullanımına göre verildi.",
+    "-s takısı olan fiillerde (flies, runs, goes) not düşüldü."
+  ],
+  "lines": [
+    {
+      "en": "The Wind",
+      "tr": "Rüzgâr",
+      "chunks": [],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "wind": "rüzgâr"
+      },
+      "source": "c1"
+    },
+    {
+      "en": "Today, Ravi's red kite flies over the town.",
+      "tr": "Bugün Ravi'nin kırmızı uçurtması kasabanın üstünden uçuyor.",
+      "chunks": [
+        {
+          "en": "flies over the town",
+          "tr": "kasabanın üstünden uçuyor"
+        }
+      ],
+      "words": {
+        "today": "bugün",
+        "ravi's": "Ravi'nin",
+        "red": "kırmızı",
+        "kite": "uçurtma",
+        "flies": "uçuyor (fly + -ies)",
+        "over": "üstünden, üzerinden",
+        "the": "(belirli tanımlık)",
+        "town": "kasaba, şehir"
+      },
+      "source": "p01-s01"
+    },
+    {
+      "en": "Ravi is nine.",
+      "tr": "Ravi dokuz yaşında.",
+      "chunks": [],
+      "words": {
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "nine": "dokuz"
+      },
+      "source": "p01-s02"
+    },
+    {
+      "en": "He lives in a town by the sea.",
+      "tr": "Deniz kenarında bir kasabada yaşıyor.",
+      "chunks": [
+        {
+          "en": "by the sea",
+          "tr": "deniz kenarında"
+        }
+      ],
+      "words": {
+        "he": "o (erkek)",
+        "lives": "yaşıyor (live + -s)",
+        "in": "içinde, -de",
+        "a": "bir",
+        "town": "kasaba, şehir",
+        "by": "kenarında, yanında",
+        "the": "(belirli tanımlık)",
+        "sea": "deniz"
+      },
+      "source": "p01-s03"
+    },
+    {
+      "en": "His home is on a hill.",
+      "tr": "Evi bir tepenin üstünde.",
+      "chunks": [],
+      "words": {
+        "his": "onun (erkek)",
+        "home": "ev; eve",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "on": "üstünde",
+        "a": "bir",
+        "hill": "tepe"
+      },
+      "source": "p01-s04"
+    },
+    {
+      "en": "It has a small balcony with flowers.",
+      "tr": "Evin çiçekli küçük bir balkonu var.",
+      "chunks": [],
+      "words": {
+        "it": "o; onu",
+        "has": "-si var (have → has)",
+        "a": "bir",
+        "small": "küçük",
+        "balcony": "balkon",
+        "with": "-li (çiçekli)",
+        "flowers": "çiçekler"
+      },
+      "source": "p01-s05"
+    },
+    {
+      "en": "Ravi and his dad make the kite.",
+      "tr": "Uçurtmayı Ravi ve babası birlikte yapıyor.",
+      "chunks": [],
+      "words": {
+        "and": "ve",
+        "his": "onun (erkek)",
+        "dad": "baba",
+        "make": "yapıyorlar",
+        "the": "(belirli tanımlık)",
+        "kite": "uçurtma"
+      },
+      "source": "p01-s06"
+    },
+    {
+      "en": "It is red and yellow.",
+      "tr": "Uçurtma kırmızı ve sarı.",
+      "chunks": [],
+      "words": {
+        "it": "o; onu",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "red": "kırmızı",
+        "and": "ve",
+        "yellow": "sarı"
+      },
+      "source": "p01-s07"
+    },
+    {
+      "en": "Mum is on the balcony.",
+      "tr": "Annesi balkonda.",
+      "chunks": [],
+      "words": {
+        "mum": "anne",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "on": "-de",
+        "the": "(belirli tanımlık)",
+        "balcony": "balkon"
+      },
+      "source": "p01-s08"
+    },
+    {
+      "en": "\"Lunch is at twelve, Ravi!\"",
+      "tr": "\"Öğle yemeği saat on ikide, Ravi!\"",
+      "chunks": [
+        {
+          "en": "at twelve",
+          "tr": "saat on ikide"
+        }
+      ],
+      "words": {
+        "lunch": "öğle yemeği",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "at": "-de; saat ...'de",
+        "twelve": "on iki"
+      },
+      "source": "p01-s09"
+    },
+    {
+      "en": "\"OK, Mum!\"",
+      "tr": "\"Tamam, anne!\"",
+      "chunks": [],
+      "words": {
+        "ok": "tamam",
+        "mum": "anne"
+      },
+      "source": "p01-s10"
+    },
+    {
+      "en": "It is Sunday morning.",
+      "tr": "Pazar sabahı.",
+      "chunks": [],
+      "words": {
+        "it": "(özne; Türkçede karşılığı yok)",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "sunday": "pazar (gün)",
+        "morning": "sabah"
+      },
+      "source": "p01-s11"
+    },
+    {
+      "en": "The wind is very strong.",
+      "tr": "Rüzgâr çok sert.",
+      "chunks": [],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "wind": "rüzgâr",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "very": "çok",
+        "strong": "güçlü, sert"
+      },
+      "source": "p01-s12"
+    },
+    {
+      "en": "Ravi runs to the park.",
+      "tr": "Ravi koşarak parka gidiyor.",
+      "chunks": [],
+      "words": {
+        "runs": "koşuyor (run + -s)",
+        "to": "-e (parka)",
+        "the": "(belirli tanımlık)",
+        "park": "park"
+      },
+      "source": "p01-s13"
+    },
+    {
+      "en": "Where does the kite go today?",
+      "tr": "Uçurtma bugün nereye gidiyor?",
+      "chunks": [],
+      "words": {
+        "where": "nerede; nereye",
+        "does": "(yardımcı fiil, soru)",
+        "the": "(belirli tanımlık)",
+        "kite": "uçurtma",
+        "go": "gitmek",
+        "today": "bugün"
+      },
+      "source": "p01-s14"
+    },
+    {
+      "en": "The park is on top of the hill.",
+      "tr": "Park tepenin en üstünde.",
+      "chunks": [
+        {
+          "en": "on top of",
+          "tr": "en üstünde"
+        }
+      ],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "park": "park",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "on": "üstünde, -de",
+        "top": "tepe, üst",
+        "of": "-in",
+        "hill": "tepe"
+      },
+      "source": "p02-s01"
+    },
+    {
+      "en": "There are tall trees and green grass.",
+      "tr": "Uzun ağaçlar ve yeşil çimen var.",
+      "chunks": [
+        {
+          "en": "There are",
+          "tr": "var"
+        }
+      ],
+      "words": {
+        "there": "orada (there is/are: var)",
+        "are": "(olmak; çoğul)",
+        "tall": "uzun boylu, yüksek",
+        "trees": "ağaçlar",
+        "and": "ve",
+        "green": "yeşil",
+        "grass": "çimen"
+      },
+      "source": "p02-s02"
+    },
+    {
+      "en": "Ravi holds his kite.",
+      "tr": "Ravi uçurtmasını tutuyor.",
+      "chunks": [],
+      "words": {
+        "holds": "tutuyor (hold + -s)",
+        "his": "onun (uçurtması)",
+        "kite": "uçurtma"
+      },
+      "source": "p02-s03"
+    },
+    {
+      "en": "It goes up, up, up.",
+      "tr": "Uçurtma yükseliyor, yükseliyor, yükseliyor.",
+      "chunks": [
+        {
+          "en": "goes up",
+          "tr": "yükseliyor"
+        }
+      ],
+      "words": {
+        "it": "o; onu",
+        "goes": "gidiyor (go + -es)",
+        "up": "yukarı"
+      },
+      "source": "p02-s04"
+    },
+    {
+      "en": "It dances in the blue sky.",
+      "tr": "Mavi gökyüzünde dans ediyor.",
+      "chunks": [],
+      "words": {
+        "it": "o; onu",
+        "dances": "dans ediyor (dance + -s)",
+        "in": "içinde, -de",
+        "the": "(belirli tanımlık)",
+        "blue": "mavi",
+        "sky": "gökyüzü"
+      },
+      "source": "p02-s05"
+    },
+    {
+      "en": "\"Look at my kite!\" says Ravi.",
+      "tr": "\"Uçurtmama bak!\" diyor Ravi.",
+      "chunks": [
+        {
+          "en": "Look at",
+          "tr": "-e bak"
+        }
+      ],
+      "words": {
+        "look": "bak (look at: -e bakmak)",
+        "at": "-de; saat ...'de",
+        "my": "benim",
+        "kite": "uçurtma",
+        "says": "diyor (say + -s)"
+      },
+      "source": "p02-s06"
+    },
+    {
+      "en": "Then the wind is very strong.",
+      "tr": "Sonra rüzgâr çok sertleşiyor.",
+      "chunks": [],
+      "words": {
+        "then": "sonra, o zaman",
+        "the": "(belirli tanımlık)",
+        "wind": "rüzgâr",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "very": "çok",
+        "strong": "güçlü, sert"
+      },
+      "source": "p02-s07"
+    },
+    {
+      "en": "Ravi's hand opens.",
+      "tr": "Ravi'nin eli açılıyor.",
+      "chunks": [],
+      "words": {
+        "ravi's": "Ravi'nin",
+        "hand": "el",
+        "opens": "açılıyor (open + -s)"
+      },
+      "source": "p02-s08"
+    },
+    {
+      "en": "The kite flies away!",
+      "tr": "Uçurtma uçup gidiyor!",
+      "chunks": [
+        {
+          "en": "flies away",
+          "tr": "uçup gidiyor"
+        }
+      ],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "kite": "uçurtma",
+        "flies": "uçuyor (fly + -ies)",
+        "away": "uzağa"
+      },
+      "source": "p02-s09"
+    },
+    {
+      "en": "\"Stop!\" says Ravi.",
+      "tr": "\"Dur!\" diyor Ravi.",
+      "chunks": [],
+      "words": {
+        "stop": "dur",
+        "says": "diyor (say + -s)"
+      },
+      "source": "p02-s10"
+    },
+    {
+      "en": "But a kite can't hear.",
+      "tr": "Ama uçurtma duyamaz.",
+      "chunks": [],
+      "words": {
+        "but": "ama",
+        "a": "bir",
+        "kite": "uçurtma",
+        "can't": "-emez (duyamaz)",
+        "hear": "duymak"
+      },
+      "source": "p02-s11"
+    },
+    {
+      "en": "It flies over the trees.",
+      "tr": "Ağaçların üstünden uçuyor.",
+      "chunks": [],
+      "words": {
+        "it": "o; onu",
+        "flies": "uçuyor (fly + -ies)",
+        "over": "üstünden, üzerinden",
+        "the": "(belirli tanımlık)",
+        "trees": "ağaçlar"
+      },
+      "source": "p02-s12"
+    },
+    {
+      "en": "It goes down the hill.",
+      "tr": "Tepeden aşağı iniyor.",
+      "chunks": [
+        {
+          "en": "goes down",
+          "tr": "aşağı iniyor"
+        }
+      ],
+      "words": {
+        "it": "o; onu",
+        "goes": "gidiyor (go + -es)",
+        "down": "aşağı",
+        "the": "(belirli tanımlık)",
+        "hill": "tepe"
+      },
+      "source": "p02-s13"
+    },
+    {
+      "en": "Ravi runs after it.",
+      "tr": "Ravi peşinden koşuyor.",
+      "chunks": [
+        {
+          "en": "runs after",
+          "tr": "peşinden koşuyor"
+        }
+      ],
+      "words": {
+        "runs": "koşuyor (run + -s)",
+        "after": "arkasından, peşinden",
+        "it": "o; onu"
+      },
+      "source": "p02-s14"
+    },
+    {
+      "en": "Ravi runs into the market.",
+      "tr": "Ravi koşarak pazara giriyor.",
+      "chunks": [
+        {
+          "en": "runs into",
+          "tr": "koşarak giriyor"
+        }
+      ],
+      "words": {
+        "runs": "koşuyor (run + -s)",
+        "into": "içine",
+        "the": "(belirli tanımlık)",
+        "market": "pazar (açık hava pazarı)"
+      },
+      "source": "p03-s01"
+    },
+    {
+      "en": "There are apples, oranges and bananas.",
+      "tr": "Elmalar, portakallar ve muzlar var.",
+      "chunks": [
+        {
+          "en": "There are",
+          "tr": "var"
+        }
+      ],
+      "words": {
+        "there": "orada (there is/are: var)",
+        "are": "(olmak; çoğul)",
+        "apples": "elmalar",
+        "oranges": "portakallar",
+        "and": "ve",
+        "bananas": "muzlar"
+      },
+      "source": "p03-s02"
+    },
+    {
+      "en": "Mr Das sells fruit here.",
+      "tr": "Bay Das burada meyve satıyor.",
+      "chunks": [],
+      "words": {
+        "mr": "Bay (erkeklerin adından önce)",
+        "sells": "satıyor (sell + -s)",
+        "fruit": "meyve",
+        "here": "burada"
+      },
+      "source": "p03-s03"
+    },
+    {
+      "en": "He has a big white hat.",
+      "tr": "Büyük, beyaz bir şapkası var.",
+      "chunks": [],
+      "words": {
+        "he": "o (erkek)",
+        "has": "-si var (have → has)",
+        "a": "bir",
+        "big": "büyük",
+        "white": "beyaz",
+        "hat": "şapka"
+      },
+      "source": "p03-s04"
+    },
+    {
+      "en": "He knows Ravi.",
+      "tr": "Ravi'yi tanıyor.",
+      "chunks": [],
+      "words": {
+        "he": "o (erkek)",
+        "knows": "tanıyor (know + -s)"
+      },
+      "source": "p03-s05"
+    },
+    {
+      "en": "\"Mr Das!",
+      "tr": "\"Bay Das!",
+      "chunks": [],
+      "words": {
+        "mr": "Bay (erkeklerin adından önce)"
+      },
+      "source": "p03-s06"
+    },
+    {
+      "en": "My kite!",
+      "tr": "Uçurtmam!",
+      "chunks": [],
+      "words": {
+        "my": "benim",
+        "kite": "uçurtma"
+      },
+      "source": "p03-s07"
+    },
+    {
+      "en": "Can you see it?\"",
+      "tr": "Onu görebiliyor musunuz?\"",
+      "chunks": [],
+      "words": {
+        "can": "-ebilir (görebilir misiniz)",
+        "you": "siz (saygı)",
+        "see": "görmek",
+        "it": "o; onu"
+      },
+      "source": "p03-s08"
+    },
+    {
+      "en": "Mr Das looks up.",
+      "tr": "Bay Das yukarı bakıyor.",
+      "chunks": [
+        {
+          "en": "looks up",
+          "tr": "yukarı bakıyor"
+        }
+      ],
+      "words": {
+        "mr": "Bay (erkeklerin adından önce)",
+        "looks": "bakıyor (look + -s)",
+        "up": "yukarı"
+      },
+      "source": "p03-s09"
+    },
+    {
+      "en": "\"It goes to the river.\"",
+      "tr": "\"Nehre doğru gidiyor.\"",
+      "chunks": [],
+      "words": {
+        "it": "o; onu",
+        "goes": "gidiyor (go + -es)",
+        "to": "-e doğru",
+        "the": "(belirli tanımlık)",
+        "river": "nehir"
+      },
+      "source": "p03-s10"
+    },
+    {
+      "en": "\"Oh no!",
+      "tr": "\"Eyvah!",
+      "chunks": [],
+      "words": {
+        "oh": "ah, eyvah",
+        "no": "hayır; hiç ... yok"
+      },
+      "source": "p03-s11"
+    },
+    {
+      "en": "The river is very far.\"",
+      "tr": "Nehir çok uzak.\"",
+      "chunks": [],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "river": "nehir",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "very": "çok",
+        "far": "uzak"
+      },
+      "source": "p03-s12"
+    },
+    {
+      "en": "Mr Das smiles.",
+      "tr": "Bay Das gülümsüyor.",
+      "chunks": [],
+      "words": {
+        "mr": "Bay (erkeklerin adından önce)",
+        "smiles": "gülümsüyor (smile + -s)"
+      },
+      "source": "p03-s13"
+    },
+    {
+      "en": "He gives Ravi an orange.",
+      "tr": "Ravi'ye bir portakal veriyor.",
+      "chunks": [],
+      "words": {
+        "he": "o (erkek)",
+        "gives": "veriyor (give + -s)",
+        "an": "bir",
+        "orange": "portakal"
+      },
+      "source": "p03-s14"
+    },
+    {
+      "en": "\"Don't be sad.",
+      "tr": "\"Üzülme.",
+      "chunks": [
+        {
+          "en": "Don't be sad",
+          "tr": "üzülme"
+        }
+      ],
+      "words": {
+        "don't": "yapma (do not)",
+        "be": "olmak (Don't be: olma)",
+        "sad": "üzgün"
+      },
+      "source": "p03-s15"
+    },
+    {
+      "en": "The wind turns at twelve.\"",
+      "tr": "Rüzgâr saat on ikide döner.\"",
+      "chunks": [
+        {
+          "en": "at twelve",
+          "tr": "saat on ikide"
+        }
+      ],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "wind": "rüzgâr",
+        "turns": "dönüyor (turn + -s)",
+        "at": "-de; saat ...'de",
+        "twelve": "on iki"
+      },
+      "source": "p03-s16"
+    },
+    {
+      "en": "Ravi does not know this.",
+      "tr": "Ravi bunu bilmiyor.",
+      "chunks": [],
+      "words": {
+        "does": "(yardımcı fiil; he/she/it)",
+        "not": "değil; -me",
+        "know": "bilmek",
+        "this": "bu"
+      },
+      "source": "p03-s17"
+    },
+    {
+      "en": "But he says thank you.",
+      "tr": "Ama teşekkür ediyor.",
+      "chunks": [
+        {
+          "en": "says thank you",
+          "tr": "teşekkür ediyor"
+        }
+      ],
+      "words": {
+        "but": "ama",
+        "he": "o (erkek)",
+        "says": "söylüyor (say + -s)",
+        "thank": "teşekkür etmek",
+        "you": "sen; seni"
+      },
+      "source": "p03-s18"
+    },
+    {
+      "en": "Then he runs on.",
+      "tr": "Sonra koşmaya devam ediyor.",
+      "chunks": [
+        {
+          "en": "runs on",
+          "tr": "koşmaya devam ediyor"
+        }
+      ],
+      "words": {
+        "then": "sonra, o zaman",
+        "he": "o (erkek)",
+        "runs": "koşuyor (run + -s)",
+        "on": "devam (runs on: koşmayı sürdürüyor)"
+      },
+      "source": "p03-s19"
+    },
+    {
+      "en": "Now Ravi is on a long street.",
+      "tr": "Şimdi Ravi uzun bir caddede.",
+      "chunks": [],
+      "words": {
+        "now": "şimdi",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "on": "üstünde, -de",
+        "a": "bir",
+        "long": "uzun",
+        "street": "cadde"
+      },
+      "source": "p04-s01"
+    },
+    {
+      "en": "Cars and bikes go up and down.",
+      "tr": "Arabalar ve bisikletler aşağı yukarı gidip geliyor.",
+      "chunks": [
+        {
+          "en": "up and down",
+          "tr": "aşağı yukarı"
+        }
+      ],
+      "words": {
+        "cars": "arabalar",
+        "and": "ve",
+        "bikes": "bisikletler",
+        "go": "gidip gelmek",
+        "up": "yukarı",
+        "down": "aşağı"
+      },
+      "source": "p04-s02"
+    },
+    {
+      "en": "An old yellow tram comes down the street.",
+      "tr": "Caddeden eski, sarı bir tramvay iniyor.",
+      "chunks": [
+        {
+          "en": "comes down",
+          "tr": "aşağı iniyor"
+        }
+      ],
+      "words": {
+        "an": "bir",
+        "old": "eski; yaşlı",
+        "yellow": "sarı",
+        "tram": "tramvay",
+        "comes": "geliyor (come + -s)",
+        "down": "aşağı",
+        "the": "(belirli tanımlık)",
+        "street": "sokak, cadde"
+      },
+      "source": "p04-s03"
+    },
+    {
+      "en": "It is very slow.",
+      "tr": "Çok yavaş.",
+      "chunks": [],
+      "words": {
+        "it": "o; onu",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "very": "çok",
+        "slow": "yavaş"
+      },
+      "source": "p04-s04"
+    },
+    {
+      "en": "Ravi looks up.",
+      "tr": "Ravi yukarı bakıyor.",
+      "chunks": [
+        {
+          "en": "looks up",
+          "tr": "yukarı bakıyor"
+        }
+      ],
+      "words": {
+        "looks": "bakıyor (look + -s)",
+        "up": "yukarı"
+      },
+      "source": "p04-s05"
+    },
+    {
+      "en": "Where is his kite?",
+      "tr": "Uçurtması nerede?",
+      "chunks": [],
+      "words": {
+        "where": "nerede",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "his": "onun (erkek)",
+        "kite": "uçurtma"
+      },
+      "source": "p04-s06"
+    },
+    {
+      "en": "Then he sees something red.",
+      "tr": "Sonra kırmızı bir şey görüyor.",
+      "chunks": [],
+      "words": {
+        "then": "sonra, o zaman",
+        "he": "o (erkek)",
+        "sees": "görüyor (see + -s)",
+        "something": "bir şey",
+        "red": "kırmızı"
+      },
+      "source": "p04-s07"
+    },
+    {
+      "en": "It is on top of the tram!",
+      "tr": "Tramvayın tepesinde!",
+      "chunks": [
+        {
+          "en": "on top of",
+          "tr": "tepesinde"
+        }
+      ],
+      "words": {
+        "it": "o; onu",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "on": "üstünde, -de",
+        "top": "tepe, üst",
+        "of": "-in",
+        "the": "(belirli tanımlık)",
+        "tram": "tramvay"
+      },
+      "source": "p04-s08"
+    },
+    {
+      "en": "It goes down the street.",
+      "tr": "Tramvay caddeden aşağı gidiyor.",
+      "chunks": [
+        {
+          "en": "goes down",
+          "tr": "aşağı gidiyor"
+        }
+      ],
+      "words": {
+        "it": "o; onu",
+        "goes": "gidiyor (go + -es)",
+        "down": "aşağı",
+        "the": "(belirli tanımlık)",
+        "street": "sokak, cadde"
+      },
+      "source": "p04-s09"
+    },
+    {
+      "en": "It does not stop.",
+      "tr": "Durmuyor.",
+      "chunks": [],
+      "words": {
+        "it": "o; onu",
+        "does": "(yardımcı fiil; he/she/it)",
+        "not": "değil; -me",
+        "stop": "durmak"
+      },
+      "source": "p04-s10"
+    },
+    {
+      "en": "The River",
+      "tr": "Nehir",
+      "chunks": [],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "river": "nehir"
+      },
+      "source": "c2"
+    },
+    {
+      "en": "\"Wait!",
+      "tr": "\"Bekle!",
+      "chunks": [],
+      "words": {
+        "wait": "bekle (dur)"
+      },
+      "source": "p05-s01"
+    },
+    {
+      "en": "Wait!\" calls Ravi.",
+      "tr": "Bekle!\" diye sesleniyor Ravi.",
+      "chunks": [],
+      "words": {
+        "wait": "bekle (dur)",
+        "calls": "sesleniyor (call + -s)"
+      },
+      "source": "p05-s02"
+    },
+    {
+      "en": "He runs and runs.",
+      "tr": "Koşuyor da koşuyor.",
+      "chunks": [
+        {
+          "en": "runs and runs",
+          "tr": "koşuyor da koşuyor"
+        }
+      ],
+      "words": {
+        "he": "o (erkek)",
+        "runs": "koşuyor (run + -s)",
+        "and": "ve"
+      },
+      "source": "p05-s03"
+    },
+    {
+      "en": "The tram stops at the corner.",
+      "tr": "Tramvay köşede duruyor.",
+      "chunks": [],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "tram": "tramvay",
+        "stops": "duruyor (stop + -s)",
+        "at": "-de; saat ...'de",
+        "corner": "köşe"
+      },
+      "source": "p05-s04"
+    },
+    {
+      "en": "Ravi gets on.",
+      "tr": "Ravi biniyor.",
+      "chunks": [
+        {
+          "en": "gets on",
+          "tr": "biniyor"
+        }
+      ],
+      "words": {
+        "gets": "(get + -s; gets on: biniyor, gets off: iniyor)",
+        "on": "üstüne (gets on: biniyor)"
+      },
+      "source": "p05-s05"
+    },
+    {
+      "en": "He sits near a window.",
+      "tr": "Bir pencerenin yanına oturuyor.",
+      "chunks": [],
+      "words": {
+        "he": "o (erkek)",
+        "sits": "oturuyor (sit + -s)",
+        "near": "yanına",
+        "a": "bir",
+        "window": "pencere"
+      },
+      "source": "p05-s06"
+    },
+    {
+      "en": "The tram goes down, down, down.",
+      "tr": "Tramvay aşağı iniyor, iniyor, iniyor.",
+      "chunks": [
+        {
+          "en": "goes down",
+          "tr": "aşağı iniyor"
+        }
+      ],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "tram": "tramvay",
+        "goes": "gidiyor (go + -es)",
+        "down": "aşağı"
+      },
+      "source": "p05-s07"
+    },
+    {
+      "en": "Ravi can see pink houses and blue houses.",
+      "tr": "Ravi pembe ve mavi evleri görebiliyor.",
+      "chunks": [],
+      "words": {
+        "can": "-ebilir",
+        "see": "görmek",
+        "pink": "pembe",
+        "houses": "evler",
+        "and": "ve",
+        "blue": "mavi"
+      },
+      "source": "p05-s08"
+    },
+    {
+      "en": "He can't see his kite.",
+      "tr": "Uçurtmasını göremiyor.",
+      "chunks": [],
+      "words": {
+        "he": "o (erkek)",
+        "can't": "-emez (göremiyor)",
+        "see": "görmek",
+        "his": "onun (erkek)",
+        "kite": "uçurtma"
+      },
+      "source": "p05-s09"
+    },
+    {
+      "en": "It is over his head.",
+      "tr": "Uçurtma tam başının üstünde.",
+      "chunks": [],
+      "words": {
+        "it": "o; onu",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "over": "üstünde",
+        "his": "onun (erkek)",
+        "head": "baş, kafa"
+      },
+      "source": "p05-s10"
+    },
+    {
+      "en": "Soon it stops again.",
+      "tr": "Az sonra tramvay yine duruyor.",
+      "chunks": [],
+      "words": {
+        "soon": "az sonra, kısa sürede",
+        "it": "o; onu",
+        "stops": "duruyor (stop + -s)",
+        "again": "yine, tekrar"
+      },
+      "source": "p05-s11"
+    },
+    {
+      "en": "Ravi gets off.",
+      "tr": "Ravi iniyor.",
+      "chunks": [
+        {
+          "en": "gets off",
+          "tr": "iniyor"
+        }
+      ],
+      "words": {
+        "gets": "(get + -s; gets on: biniyor, gets off: iniyor)",
+        "off": "-den aşağı (gets off: iniyor; jumps off: atlıyor)"
+      },
+      "source": "p05-s12"
+    },
+    {
+      "en": "He looks up.",
+      "tr": "Yukarı bakıyor.",
+      "chunks": [
+        {
+          "en": "looks up",
+          "tr": "yukarı bakıyor"
+        }
+      ],
+      "words": {
+        "he": "o (erkek)",
+        "looks": "bakıyor (look + -s)",
+        "up": "yukarı"
+      },
+      "source": "p05-s13"
+    },
+    {
+      "en": "The kite is not there!",
+      "tr": "Uçurtma orada yok!",
+      "chunks": [],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "kite": "uçurtma",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "not": "değil; -me",
+        "there": "orada"
+      },
+      "source": "p05-s14"
+    },
+    {
+      "en": "The wind takes it again.",
+      "tr": "Rüzgâr onu yine götürüyor.",
+      "chunks": [],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "wind": "rüzgâr",
+        "takes": "alıyor, götürüyor (take + -s)",
+        "it": "o; onu",
+        "again": "yine, tekrar"
+      },
+      "source": "p05-s15"
+    },
+    {
+      "en": "The kite flies over a high wall.",
+      "tr": "Uçurtma yüksek bir duvarın üstünden uçuyor.",
+      "chunks": [],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "kite": "uçurtma",
+        "flies": "uçuyor (fly + -ies)",
+        "over": "üstünden, üzerinden",
+        "a": "bir",
+        "high": "yüksek",
+        "wall": "duvar"
+      },
+      "source": "p06-s01"
+    },
+    {
+      "en": "Ravi can't go over the wall.",
+      "tr": "Ravi duvarın üstünden geçemez.",
+      "chunks": [],
+      "words": {
+        "can't": "-emez (geçemez)",
+        "go": "gitmek, geçmek",
+        "over": "üstünden, üzerinden",
+        "the": "(belirli tanımlık)",
+        "wall": "duvar"
+      },
+      "source": "p06-s02"
+    },
+    {
+      "en": "There are steps near it.",
+      "tr": "Duvarın yanında basamaklar var.",
+      "chunks": [
+        {
+          "en": "There are",
+          "tr": "var"
+        }
+      ],
+      "words": {
+        "there": "orada (there is/are: var)",
+        "are": "(olmak; çoğul)",
+        "steps": "basamaklar, merdiven",
+        "near": "yakınında, yanında",
+        "it": "o (duvar)"
+      },
+      "source": "p06-s03"
+    },
+    {
+      "en": "Ravi runs down the steps.",
+      "tr": "Ravi basamaklardan koşarak iniyor.",
+      "chunks": [
+        {
+          "en": "runs down",
+          "tr": "koşarak iniyor"
+        }
+      ],
+      "words": {
+        "runs": "koşuyor (run + -s)",
+        "down": "aşağı",
+        "the": "(belirli tanımlık)",
+        "steps": "basamaklar, merdiven"
+      },
+      "source": "p06-s04"
+    },
+    {
+      "en": "There are many, many steps!",
+      "tr": "Çok, çok fazla basamak var!",
+      "chunks": [
+        {
+          "en": "There are",
+          "tr": "var"
+        }
+      ],
+      "words": {
+        "there": "orada (there is/are: var)",
+        "are": "(olmak; çoğul)",
+        "many": "çok, birçok",
+        "steps": "basamaklar, merdiven"
+      },
+      "source": "p06-s05"
+    },
+    {
+      "en": "On the wall, there is a black cat.",
+      "tr": "Duvarın üstünde siyah bir kedi var.",
+      "chunks": [
+        {
+          "en": "there is",
+          "tr": "var"
+        }
+      ],
+      "words": {
+        "on": "üstünde",
+        "the": "(belirli tanımlık)",
+        "wall": "duvar",
+        "there": "orada (there is/are: var)",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "a": "bir",
+        "black": "siyah",
+        "cat": "kedi"
+      },
+      "source": "p06-s06"
+    },
+    {
+      "en": "It has big yellow eyes.",
+      "tr": "Kocaman sarı gözleri var.",
+      "chunks": [],
+      "words": {
+        "it": "o; onu",
+        "has": "-si var (have → has)",
+        "big": "büyük",
+        "yellow": "sarı",
+        "eyes": "gözler"
+      },
+      "source": "p06-s07"
+    },
+    {
+      "en": "It watches the kite, too.",
+      "tr": "O da uçurtmayı izliyor.",
+      "chunks": [],
+      "words": {
+        "it": "o; onu",
+        "watches": "izliyor (watch + -es)",
+        "the": "(belirli tanımlık)",
+        "kite": "uçurtma",
+        "too": "de, da"
+      },
+      "source": "p06-s08"
+    },
+    {
+      "en": "\"Do you see my kite?\" asks Ravi.",
+      "tr": "\"Uçurtmamı görüyor musun?\" diye soruyor Ravi.",
+      "chunks": [],
+      "words": {
+        "do": "(yardımcı fiil, soru)",
+        "you": "sen; seni",
+        "see": "görmek",
+        "my": "benim",
+        "kite": "uçurtma",
+        "asks": "soruyor (ask + -s)"
+      },
+      "source": "p06-s09"
+    },
+    {
+      "en": "The cat looks at the sky.",
+      "tr": "Kedi gökyüzüne bakıyor.",
+      "chunks": [
+        {
+          "en": "looks at",
+          "tr": "-e bakıyor"
+        }
+      ],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "cat": "kedi",
+        "looks": "bakıyor (look + -s)",
+        "at": "-de; saat ...'de",
+        "sky": "gökyüzü"
+      },
+      "source": "p06-s10"
+    },
+    {
+      "en": "Then it looks at the river.",
+      "tr": "Sonra nehre bakıyor.",
+      "chunks": [
+        {
+          "en": "looks at",
+          "tr": "-e bakıyor"
+        }
+      ],
+      "words": {
+        "then": "sonra, o zaman",
+        "it": "o; onu",
+        "looks": "bakıyor (look + -s)",
+        "at": "-de; saat ...'de",
+        "the": "(belirli tanımlık)",
+        "river": "nehir"
+      },
+      "source": "p06-s11"
+    },
+    {
+      "en": "Now Ravi is at the river.",
+      "tr": "Şimdi Ravi nehrin kıyısında.",
+      "chunks": [],
+      "words": {
+        "now": "şimdi",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "at": "-de (kıyısında)",
+        "the": "(belirli tanımlık)",
+        "river": "nehir"
+      },
+      "source": "p07-s01"
+    },
+    {
+      "en": "There are big boats and small boats.",
+      "tr": "Büyük tekneler ve küçük tekneler var.",
+      "chunks": [
+        {
+          "en": "There are",
+          "tr": "var"
+        }
+      ],
+      "words": {
+        "there": "orada (there is/are: var)",
+        "are": "(olmak; çoğul)",
+        "big": "büyük",
+        "boats": "tekneler",
+        "and": "ve",
+        "small": "küçük"
+      },
+      "source": "p07-s02"
+    },
+    {
+      "en": "There is no bridge here.",
+      "tr": "Burada köprü yok.",
+      "chunks": [
+        {
+          "en": "There is no",
+          "tr": "yok"
+        }
+      ],
+      "words": {
+        "there": "orada (there is/are: var)",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "no": "hayır; hiç ... yok",
+        "bridge": "köprü",
+        "here": "burada"
+      },
+      "source": "p07-s03"
+    },
+    {
+      "en": "Ravi can't go over the river.",
+      "tr": "Ravi nehrin üstünden geçemez.",
+      "chunks": [],
+      "words": {
+        "can't": "-emez (geçemez)",
+        "go": "gitmek, geçmek",
+        "over": "üstünden, üzerinden",
+        "the": "(belirli tanımlık)",
+        "river": "nehir"
+      },
+      "source": "p07-s04"
+    },
+    {
+      "en": "Then he sees the kite.",
+      "tr": "Sonra uçurtmayı görüyor.",
+      "chunks": [],
+      "words": {
+        "then": "sonra, o zaman",
+        "he": "o (erkek)",
+        "sees": "görüyor (see + -s)",
+        "the": "(belirli tanımlık)",
+        "kite": "uçurtma"
+      },
+      "source": "p07-s05"
+    },
+    {
+      "en": "It is on a white boat!",
+      "tr": "Beyaz bir teknenin üstünde!",
+      "chunks": [],
+      "words": {
+        "it": "o; onu",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "on": "üstünde",
+        "a": "bir",
+        "white": "beyaz",
+        "boat": "tekne"
+      },
+      "source": "p07-s06"
+    },
+    {
+      "en": "The boat is on the other side.",
+      "tr": "Tekne nehrin öbür yakasında.",
+      "chunks": [
+        {
+          "en": "on the other side",
+          "tr": "öbür yakada"
+        }
+      ],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "boat": "tekne",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "on": "üstünde, -de",
+        "other": "öbür, diğer",
+        "side": "yaka, taraf"
+      },
+      "source": "p07-s07"
+    },
+    {
+      "en": "\"Hello!\" calls Ravi.",
+      "tr": "\"Merhaba!\" diye sesleniyor Ravi.",
+      "chunks": [],
+      "words": {
+        "hello": "merhaba",
+        "calls": "sesleniyor (call + -s)"
+      },
+      "source": "p08-s01"
+    },
+    {
+      "en": "\"That is my kite!\"",
+      "tr": "\"O benim uçurtmam!\"",
+      "chunks": [],
+      "words": {
+        "that": "o, şu",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "my": "benim",
+        "kite": "uçurtma"
+      },
+      "source": "p08-s02"
+    },
+    {
+      "en": "But no one hears him.",
+      "tr": "Ama kimse onu duymuyor.",
+      "chunks": [
+        {
+          "en": "no one",
+          "tr": "hiç kimse"
+        }
+      ],
+      "words": {
+        "but": "ama",
+        "no": "hiç",
+        "one": "biri",
+        "hears": "duyuyor (hear + -s)",
+        "him": "onu (erkek)"
+      },
+      "source": "p08-s03"
+    },
+    {
+      "en": "The wind is very strong.",
+      "tr": "Rüzgâr çok sert.",
+      "chunks": [],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "wind": "rüzgâr",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "very": "çok",
+        "strong": "güçlü, sert"
+      },
+      "source": "p08-s04"
+    },
+    {
+      "en": "Ravi sits down.",
+      "tr": "Ravi oturuyor.",
+      "chunks": [
+        {
+          "en": "sits down",
+          "tr": "oturuyor"
+        }
+      ],
+      "words": {
+        "sits": "oturuyor (sit + -s)",
+        "down": "aşağı (sits down: oturuyor)"
+      },
+      "source": "p08-s05"
+    },
+    {
+      "en": "He is tired.",
+      "tr": "Yorgun.",
+      "chunks": [],
+      "words": {
+        "he": "o (erkek)",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "tired": "yorgun"
+      },
+      "source": "p08-s06"
+    },
+    {
+      "en": "His legs hurt.",
+      "tr": "Bacakları ağrıyor.",
+      "chunks": [],
+      "words": {
+        "his": "onun (erkek)",
+        "legs": "bacaklar",
+        "hurt": "ağrıyor (hurt)"
+      },
+      "source": "p08-s07"
+    },
+    {
+      "en": "He looks at his watch.",
+      "tr": "Kol saatine bakıyor.",
+      "chunks": [
+        {
+          "en": "looks at",
+          "tr": "-e bakıyor"
+        }
+      ],
+      "words": {
+        "he": "o (erkek)",
+        "looks": "bakıyor (look + -s)",
+        "at": "-de; saat ...'de",
+        "his": "onun (erkek)",
+        "watch": "kol saati"
+      },
+      "source": "p08-s08"
+    },
+    {
+      "en": "It is eleven o'clock.",
+      "tr": "Saat on bir.",
+      "chunks": [],
+      "words": {
+        "it": "o; onu",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "eleven": "on bir",
+        "o'clock": "saat (tam)"
+      },
+      "source": "p08-s09"
+    },
+    {
+      "en": "Lunch is at twelve.",
+      "tr": "Öğle yemeği saat on ikide.",
+      "chunks": [
+        {
+          "en": "at twelve",
+          "tr": "saat on ikide"
+        }
+      ],
+      "words": {
+        "lunch": "öğle yemeği",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "at": "-de; saat ...'de",
+        "twelve": "on iki"
+      },
+      "source": "p08-s10"
+    },
+    {
+      "en": "Then the white boat moves.",
+      "tr": "Sonra beyaz tekne hareket ediyor.",
+      "chunks": [],
+      "words": {
+        "then": "sonra, o zaman",
+        "the": "(belirli tanımlık)",
+        "white": "beyaz",
+        "boat": "tekne",
+        "moves": "hareket ediyor, kımıldıyor (move + -s)"
+      },
+      "source": "p08-s11"
+    },
+    {
+      "en": "It goes down the river.",
+      "tr": "Nehirden aşağı gidiyor.",
+      "chunks": [
+        {
+          "en": "goes down",
+          "tr": "aşağı gidiyor"
+        }
+      ],
+      "words": {
+        "it": "o; onu",
+        "goes": "gidiyor (go + -es)",
+        "down": "aşağı",
+        "the": "(belirli tanımlık)",
+        "river": "nehir"
+      },
+      "source": "p08-s12"
+    },
+    {
+      "en": "And the red kite goes with it!",
+      "tr": "Kırmızı uçurtma da onunla gidiyor!",
+      "chunks": [
+        {
+          "en": "goes with it",
+          "tr": "onunla gidiyor"
+        }
+      ],
+      "words": {
+        "and": "ve, de",
+        "the": "(belirli tanımlık)",
+        "red": "kırmızı",
+        "kite": "uçurtma",
+        "goes": "gidiyor (go + -es)",
+        "with": "ile; -li",
+        "it": "o; onu"
+      },
+      "source": "p08-s13"
+    },
+    {
+      "en": "Home",
+      "tr": "Ev",
+      "chunks": [],
+      "words": {
+        "home": "ev; eve"
+      },
+      "source": "c3"
+    },
+    {
+      "en": "Ravi stands up.",
+      "tr": "Ravi ayağa kalkıyor.",
+      "chunks": [
+        {
+          "en": "stands up",
+          "tr": "ayağa kalkıyor"
+        }
+      ],
+      "words": {
+        "stands": "(stand + -s; stands up: ayağa kalkıyor)",
+        "up": "yukarı"
+      },
+      "source": "p09-s01"
+    },
+    {
+      "en": "There is a small green ferry.",
+      "tr": "Küçük, yeşil bir feribot var.",
+      "chunks": [
+        {
+          "en": "There is",
+          "tr": "var"
+        }
+      ],
+      "words": {
+        "there": "orada (there is/are: var)",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "a": "bir",
+        "small": "küçük",
+        "green": "yeşil",
+        "ferry": "feribot, küçük vapur"
+      },
+      "source": "p09-s02"
+    },
+    {
+      "en": "It goes to the other side.",
+      "tr": "Öbür yakaya gidiyor.",
+      "chunks": [
+        {
+          "en": "the other side",
+          "tr": "öbür yaka"
+        }
+      ],
+      "words": {
+        "it": "o; onu",
+        "goes": "gidiyor (go + -es)",
+        "to": "-e",
+        "the": "(belirli tanımlık)",
+        "other": "öbür, diğer",
+        "side": "yaka, taraf"
+      },
+      "source": "p09-s03"
+    },
+    {
+      "en": "\"Can I come, please?\" asks Ravi.",
+      "tr": "\"Ben de gelebilir miyim, lütfen?\" diye soruyor Ravi.",
+      "chunks": [],
+      "words": {
+        "can": "-ebilir",
+        "i": "ben",
+        "come": "gelmek",
+        "please": "lütfen",
+        "asks": "soruyor (ask + -s)"
+      },
+      "source": "p09-s04"
+    },
+    {
+      "en": "A kind woman smiles.",
+      "tr": "Nazik bir kadın gülümsüyor.",
+      "chunks": [],
+      "words": {
+        "a": "bir",
+        "kind": "nazik, iyi kalpli",
+        "woman": "kadın",
+        "smiles": "gülümsüyor (smile + -s)"
+      },
+      "source": "p09-s05"
+    },
+    {
+      "en": "\"Yes, you can.\"",
+      "tr": "\"Evet, gelebilirsin.\"",
+      "chunks": [],
+      "words": {
+        "yes": "evet",
+        "you": "sen; seni",
+        "can": "-ebilir (gelebilirsin)"
+      },
+      "source": "p09-s06"
+    },
+    {
+      "en": "The ferry goes over the river.",
+      "tr": "Feribot nehrin üstünden geçiyor.",
+      "chunks": [],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "ferry": "feribot, küçük vapur",
+        "goes": "geçiyor (go + -es)",
+        "over": "üstünden, üzerinden",
+        "river": "nehir"
+      },
+      "source": "p09-s07"
+    },
+    {
+      "en": "The wind is in Ravi's hair.",
+      "tr": "Rüzgâr Ravi'nin saçlarında.",
+      "chunks": [],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "wind": "rüzgâr",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "in": "içinde, -de",
+        "ravi's": "Ravi'nin",
+        "hair": "saç"
+      },
+      "source": "p09-s08"
+    },
+    {
+      "en": "He can see the white boat.",
+      "tr": "Beyaz tekneyi görebiliyor.",
+      "chunks": [],
+      "words": {
+        "he": "o (erkek)",
+        "can": "-ebilir",
+        "see": "görmek",
+        "the": "(belirli tanımlık)",
+        "white": "beyaz",
+        "boat": "tekne"
+      },
+      "source": "p09-s09"
+    },
+    {
+      "en": "The kite is still on it.",
+      "tr": "Uçurtma hâlâ onun üstünde.",
+      "chunks": [],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "kite": "uçurtma",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "still": "hâlâ",
+        "on": "üstünde",
+        "it": "o; onu"
+      },
+      "source": "p09-s10"
+    },
+    {
+      "en": "Soon they are on the other side.",
+      "tr": "Az sonra öbür yakadalar.",
+      "chunks": [
+        {
+          "en": "on the other side",
+          "tr": "öbür yakada"
+        }
+      ],
+      "words": {
+        "soon": "az sonra, kısa sürede",
+        "they": "onlar",
+        "are": "(olmak; çoğul)",
+        "on": "üstünde, -de",
+        "the": "(belirli tanımlık)",
+        "other": "öbür, diğer",
+        "side": "yaka, taraf"
+      },
+      "source": "p10-s01"
+    },
+    {
+      "en": "Ravi jumps off.",
+      "tr": "Ravi aşağı atlıyor.",
+      "chunks": [
+        {
+          "en": "jumps off",
+          "tr": "aşağı atlıyor"
+        }
+      ],
+      "words": {
+        "jumps": "atlıyor (jump + -s)",
+        "off": "-den aşağı (gets off: iniyor; jumps off: atlıyor)"
+      },
+      "source": "p10-s02"
+    },
+    {
+      "en": "He runs near the river.",
+      "tr": "Nehrin yanında koşuyor.",
+      "chunks": [],
+      "words": {
+        "he": "o (erkek)",
+        "runs": "koşuyor (run + -s)",
+        "near": "yanında",
+        "the": "(belirli tanımlık)",
+        "river": "nehir"
+      },
+      "source": "p10-s03"
+    },
+    {
+      "en": "The white boat stops, too.",
+      "tr": "Beyaz tekne de duruyor.",
+      "chunks": [],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "white": "beyaz",
+        "boat": "tekne",
+        "stops": "duruyor (stop + -s)",
+        "too": "de, da"
+      },
+      "source": "p10-s04"
+    },
+    {
+      "en": "Ravi can see the red kite.",
+      "tr": "Ravi kırmızı uçurtmayı görebiliyor.",
+      "chunks": [],
+      "words": {
+        "can": "-ebilir",
+        "see": "görmek",
+        "the": "(belirli tanımlık)",
+        "red": "kırmızı",
+        "kite": "uçurtma"
+      },
+      "source": "p10-s05"
+    },
+    {
+      "en": "\"Please!",
+      "tr": "\"Lütfen!",
+      "chunks": [],
+      "words": {
+        "please": "lütfen"
+      },
+      "source": "p10-s06"
+    },
+    {
+      "en": "My kite!\" calls Ravi.",
+      "tr": "Uçurtmam!\" diye sesleniyor Ravi.",
+      "chunks": [],
+      "words": {
+        "my": "benim",
+        "kite": "uçurtma",
+        "calls": "sesleniyor (call + -s)"
+      },
+      "source": "p10-s07"
+    },
+    {
+      "en": "Then the town clock rings.",
+      "tr": "Sonra kasabanın saati çalıyor.",
+      "chunks": [],
+      "words": {
+        "then": "sonra, o zaman",
+        "the": "(belirli tanımlık)",
+        "town": "kasaba",
+        "clock": "saat (büyük saat)",
+        "rings": "çalıyor (ring + -s)"
+      },
+      "source": "p10-s08"
+    },
+    {
+      "en": "One, two, three… twelve.",
+      "tr": "Bir, iki, üç… on iki.",
+      "chunks": [],
+      "words": {
+        "one": "bir",
+        "two": "iki",
+        "three": "üç",
+        "twelve": "on iki"
+      },
+      "source": "p10-s09"
+    },
+    {
+      "en": "And the wind turns.",
+      "tr": "Ve rüzgâr dönüyor.",
+      "chunks": [],
+      "words": {
+        "and": "ve",
+        "the": "(belirli tanımlık)",
+        "wind": "rüzgâr",
+        "turns": "dönüyor (turn + -s)"
+      },
+      "source": "p10-s10"
+    },
+    {
+      "en": "The kite goes up into the sky.",
+      "tr": "Uçurtma gökyüzüne yükseliyor.",
+      "chunks": [
+        {
+          "en": "goes up",
+          "tr": "yükseliyor"
+        }
+      ],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "kite": "uçurtma",
+        "goes": "gidiyor (go + -es)",
+        "up": "yukarı",
+        "into": "içine",
+        "sky": "gökyüzü"
+      },
+      "source": "p10-s11"
+    },
+    {
+      "en": "Now it flies back over the river!",
+      "tr": "Şimdi nehrin üstünden geri uçuyor!",
+      "chunks": [
+        {
+          "en": "flies back",
+          "tr": "geri uçuyor"
+        }
+      ],
+      "words": {
+        "now": "şimdi",
+        "it": "o; onu",
+        "flies": "uçuyor (fly + -ies)",
+        "back": "geri",
+        "over": "üstünden, üzerinden",
+        "the": "(belirli tanımlık)",
+        "river": "nehir"
+      },
+      "source": "p10-s12"
+    },
+    {
+      "en": "\"No!\" says Ravi.",
+      "tr": "\"Hayır!\" diyor Ravi.",
+      "chunks": [],
+      "words": {
+        "no": "hayır; hiç ... yok",
+        "says": "diyor (say + -s)"
+      },
+      "source": "p10-s13"
+    },
+    {
+      "en": "\"Not again!\"",
+      "tr": "\"Yine mi!\"",
+      "chunks": [
+        {
+          "en": "Not again",
+          "tr": "yine mi"
+        }
+      ],
+      "words": {
+        "not": "değil; -me",
+        "again": "yine, tekrar"
+      },
+      "source": "p10-s14"
+    },
+    {
+      "en": "Ravi runs after the kite again.",
+      "tr": "Ravi yine uçurtmanın peşinden koşuyor.",
+      "chunks": [
+        {
+          "en": "runs after",
+          "tr": "peşinden koşuyor"
+        }
+      ],
+      "words": {
+        "runs": "koşuyor (run + -s)",
+        "after": "arkasından, peşinden",
+        "the": "(belirli tanımlık)",
+        "kite": "uçurtma",
+        "again": "yine, tekrar"
+      },
+      "source": "p11-s01"
+    },
+    {
+      "en": "Here there is a long bridge.",
+      "tr": "Burada uzun bir köprü var.",
+      "chunks": [
+        {
+          "en": "there is",
+          "tr": "var"
+        }
+      ],
+      "words": {
+        "here": "burada",
+        "there": "orada (there is/are: var)",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "a": "bir",
+        "long": "uzun",
+        "bridge": "köprü"
+      },
+      "source": "p11-s02"
+    },
+    {
+      "en": "He runs over it.",
+      "tr": "Köprünün üstünden koşarak geçiyor.",
+      "chunks": [],
+      "words": {
+        "he": "o (erkek)",
+        "runs": "koşuyor (run + -s)",
+        "over": "üstünden",
+        "it": "onu (köprüyü)"
+      },
+      "source": "p11-s03"
+    },
+    {
+      "en": "The kite flies over the market.",
+      "tr": "Uçurtma pazarın üstünden uçuyor.",
+      "chunks": [],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "kite": "uçurtma",
+        "flies": "uçuyor (fly + -ies)",
+        "over": "üstünden, üzerinden",
+        "market": "pazar (açık hava pazarı)"
+      },
+      "source": "p11-s04"
+    },
+    {
+      "en": "Mr Das sees Ravi.",
+      "tr": "Bay Das Ravi'yi görüyor.",
+      "chunks": [],
+      "words": {
+        "mr": "Bay (erkeklerin adından önce)",
+        "sees": "görüyor (see + -s)"
+      },
+      "source": "p11-s05"
+    },
+    {
+      "en": "He laughs.",
+      "tr": "Gülüyor.",
+      "chunks": [],
+      "words": {
+        "he": "o (erkek)",
+        "laughs": "gülüyor (laugh + -s)"
+      },
+      "source": "p11-s06"
+    },
+    {
+      "en": "\"The wind turns at twelve!\"",
+      "tr": "\"Rüzgâr saat on ikide döner!\"",
+      "chunks": [
+        {
+          "en": "at twelve",
+          "tr": "saat on ikide"
+        }
+      ],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "wind": "rüzgâr",
+        "turns": "dönüyor (turn + -s)",
+        "at": "-de; saat ...'de",
+        "twelve": "on iki"
+      },
+      "source": "p11-s07"
+    },
+    {
+      "en": "The kite flies up the hill.",
+      "tr": "Uçurtma tepeye doğru uçuyor.",
+      "chunks": [
+        {
+          "en": "flies up",
+          "tr": "yukarı uçuyor"
+        }
+      ],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "kite": "uçurtma",
+        "flies": "uçuyor (fly + -ies)",
+        "up": "yukarı",
+        "hill": "tepe"
+      },
+      "source": "p11-s08"
+    },
+    {
+      "en": "Ravi runs up the hill, too.",
+      "tr": "Ravi de tepeye koşuyor.",
+      "chunks": [
+        {
+          "en": "runs up",
+          "tr": "yukarı koşuyor"
+        }
+      ],
+      "words": {
+        "runs": "koşuyor (run + -s)",
+        "up": "yukarı",
+        "the": "(belirli tanımlık)",
+        "hill": "tepe",
+        "too": "de, da"
+      },
+      "source": "p11-s09"
+    },
+    {
+      "en": "His legs are very tired.",
+      "tr": "Bacakları çok yorgun.",
+      "chunks": [],
+      "words": {
+        "his": "onun (erkek)",
+        "legs": "bacaklar",
+        "are": "(olmak; çoğul)",
+        "very": "çok",
+        "tired": "yorgun"
+      },
+      "source": "p11-s10"
+    },
+    {
+      "en": "He knows this street.",
+      "tr": "Bu sokağı tanıyor.",
+      "chunks": [],
+      "words": {
+        "he": "o (erkek)",
+        "knows": "tanıyor (know + -s)",
+        "this": "bu",
+        "street": "sokak, cadde"
+      },
+      "source": "p11-s11"
+    },
+    {
+      "en": "He knows this tree.",
+      "tr": "Bu ağacı tanıyor.",
+      "chunks": [],
+      "words": {
+        "he": "o (erkek)",
+        "knows": "tanıyor (know + -s)",
+        "this": "bu",
+        "tree": "ağaç"
+      },
+      "source": "p11-s12"
+    },
+    {
+      "en": "He knows this house.",
+      "tr": "Bu evi tanıyor.",
+      "chunks": [],
+      "words": {
+        "he": "o (erkek)",
+        "knows": "tanıyor (know + -s)",
+        "this": "bu",
+        "house": "ev"
+      },
+      "source": "p11-s13"
+    },
+    {
+      "en": "It is his street!",
+      "tr": "Burası onun sokağı!",
+      "chunks": [],
+      "words": {
+        "it": "burası",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "his": "onun (erkek)",
+        "street": "sokak, cadde"
+      },
+      "source": "p11-s14"
+    },
+    {
+      "en": "The red kite is in some flowers.",
+      "tr": "Kırmızı uçurtma birkaç çiçeğin arasında.",
+      "chunks": [],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "red": "kırmızı",
+        "kite": "uçurtma",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "in": "arasında, içinde",
+        "some": "birkaç, biraz",
+        "flowers": "çiçekler"
+      },
+      "source": "p12-s01"
+    },
+    {
+      "en": "They are on a small balcony.",
+      "tr": "Çiçekler küçük bir balkonda.",
+      "chunks": [],
+      "words": {
+        "they": "onlar",
+        "are": "(olmak; çoğul)",
+        "on": "üstünde, -de",
+        "a": "bir",
+        "small": "küçük",
+        "balcony": "balkon"
+      },
+      "source": "p12-s02"
+    },
+    {
+      "en": "It is Ravi's balcony!",
+      "tr": "Ravi'nin balkonu!",
+      "chunks": [],
+      "words": {
+        "it": "burası",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "ravi's": "Ravi'nin",
+        "balcony": "balkon"
+      },
+      "source": "p12-s03"
+    },
+    {
+      "en": "Mum is there.",
+      "tr": "Annesi orada.",
+      "chunks": [],
+      "words": {
+        "mum": "anne",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "there": "orada"
+      },
+      "source": "p12-s04"
+    },
+    {
+      "en": "She holds the red kite.",
+      "tr": "Kırmızı uçurtmayı tutuyor.",
+      "chunks": [],
+      "words": {
+        "she": "o (kadın)",
+        "holds": "tutuyor (hold + -s)",
+        "the": "(belirli tanımlık)",
+        "red": "kırmızı",
+        "kite": "uçurtma"
+      },
+      "source": "p12-s05"
+    },
+    {
+      "en": "She laughs.",
+      "tr": "Gülüyor.",
+      "chunks": [],
+      "words": {
+        "she": "o (kadın)",
+        "laughs": "gülüyor (laugh + -s)"
+      },
+      "source": "p12-s06"
+    },
+    {
+      "en": "\"Ravi!",
+      "tr": "\"Ravi!",
+      "chunks": [],
+      "words": {},
+      "source": "p12-s07"
+    },
+    {
+      "en": "Your kite is home first!\"",
+      "tr": "Uçurtman eve senden önce geldi!\"",
+      "chunks": [
+        {
+          "en": "is home first",
+          "tr": "eve senden önce geldi"
+        }
+      ],
+      "words": {
+        "your": "senin",
+        "kite": "uçurtma",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "home": "evde, eve",
+        "first": "önce, ilk"
+      },
+      "source": "p12-s08"
+    },
+    {
+      "en": "Ravi laughs, too.",
+      "tr": "Ravi de gülüyor.",
+      "chunks": [],
+      "words": {
+        "laughs": "gülüyor (laugh + -s)",
+        "too": "de, da"
+      },
+      "source": "p12-s09"
+    },
+    {
+      "en": "He is tired, hot and very happy.",
+      "tr": "Yorgun, terli ve çok mutlu.",
+      "chunks": [],
+      "words": {
+        "he": "o (erkek)",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "tired": "yorgun",
+        "hot": "sıcak; terli",
+        "and": "ve",
+        "very": "çok",
+        "happy": "mutlu"
+      },
+      "source": "p12-s10"
+    },
+    {
+      "en": "He thinks of Mr Das.",
+      "tr": "Bay Das'ı düşünüyor.",
+      "chunks": [
+        {
+          "en": "thinks of",
+          "tr": "-i düşünüyor"
+        }
+      ],
+      "words": {
+        "he": "o (erkek)",
+        "thinks": "düşünüyor (think + -s)",
+        "of": "(thinks of: -i düşünmek)",
+        "mr": "Bay (erkeklerin adından önce)"
+      },
+      "source": "p12-s11"
+    },
+    {
+      "en": "The morning wind goes to the river.",
+      "tr": "Sabah rüzgârı nehre doğru gider.",
+      "chunks": [],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "morning": "sabah",
+        "wind": "rüzgâr",
+        "goes": "gider (go + -es)",
+        "to": "-e doğru",
+        "river": "nehir"
+      },
+      "source": "p12-s12"
+    },
+    {
+      "en": "At twelve, it turns.",
+      "tr": "Saat on ikide döner.",
+      "chunks": [
+        {
+          "en": "At twelve",
+          "tr": "saat on ikide"
+        }
+      ],
+      "words": {
+        "at": "-de; saat ...'de",
+        "twelve": "on iki",
+        "it": "o (rüzgâr)",
+        "turns": "döner (turn + -s)"
+      },
+      "source": "p12-s13"
+    },
+    {
+      "en": "It brings the kite home.",
+      "tr": "Uçurtmayı eve getirir.",
+      "chunks": [],
+      "words": {
+        "it": "o; onu",
+        "brings": "getirir (bring + -s)",
+        "the": "(belirli tanımlık)",
+        "kite": "uçurtma",
+        "home": "eve"
+      },
+      "source": "p12-s14"
+    },
+    {
+      "en": "Mum looks at the clock.",
+      "tr": "Annesi saate bakıyor.",
+      "chunks": [
+        {
+          "en": "looks at",
+          "tr": "-e bakıyor"
+        }
+      ],
+      "words": {
+        "mum": "anne",
+        "looks": "bakıyor (look + -s)",
+        "at": "-de; saat ...'de",
+        "the": "(belirli tanımlık)",
+        "clock": "saat (büyük saat)"
+      },
+      "source": "p12-s15"
+    },
+    {
+      "en": "It is twelve o'clock.",
+      "tr": "Saat tam on iki.",
+      "chunks": [],
+      "words": {
+        "it": "(özne; Türkçede karşılığı yok)",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "twelve": "on iki",
+        "o'clock": "saat (tam)"
+      },
+      "source": "p12-s16"
+    },
+    {
+      "en": "\"Lunch is ready,\" she says.",
+      "tr": "\"Öğle yemeği hazır,\" diyor.",
+      "chunks": [],
+      "words": {
+        "lunch": "öğle yemeği",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "ready": "hazır",
+        "she": "o (kadın)",
+        "says": "diyor (say + -s)"
+      },
+      "source": "p12-s17"
+    }
+  ],
+  "phrases": [
+    {
+      "en": "over the town",
+      "tr": "kasabanın üstünden",
+      "note": "Yer/hareket edatı: over = bir şeyin üstünden (geçerek). The kite flies over the trees.",
+      "words": {
+        "over": "üstünden, üzerinden",
+        "the": "(belirli tanımlık)",
+        "town": "kasaba, şehir"
+      },
+      "source": "dil odağı"
+    },
+    {
+      "en": "runs after",
+      "tr": "peşinden koşmak",
+      "note": "after = arkasından. Ravi runs after the kite.",
+      "words": {
+        "runs": "koşuyor (run + -s)",
+        "after": "arkasından, peşinden"
+      },
+      "source": "dil odağı"
+    },
+    {
+      "en": "gets on",
+      "tr": "(araca) binmek",
+      "note": "Tersi: gets off = inmek. Türkçede \"binmek\" tek kelime; İngilizcede fiil + edat.",
+      "words": {
+        "gets": "(get + -s; gets on: biniyor, gets off: iniyor)",
+        "on": "üstünde, -de"
+      },
+      "source": "dil odağı"
+    },
+    {
+      "en": "on the other side",
+      "tr": "öbür yakada, karşı tarafta",
+      "note": "Nehir için \"öbür yaka\".",
+      "words": {
+        "on": "üstünde, -de",
+        "the": "(belirli tanımlık)",
+        "other": "öbür, diğer",
+        "side": "yaka, taraf"
+      },
+      "source": "dil odağı"
+    },
+    {
+      "en": "at twelve",
+      "tr": "saat on ikide",
+      "note": "Saatten önce \"at\": at nine, at twelve. Tam saatte o'clock da denebilir: twelve o'clock.",
+      "words": {
+        "at": "-de; saat ...'de",
+        "twelve": "on iki"
+      },
+      "source": "dil odağı"
+    },
+    {
+      "en": "can't",
+      "tr": "-emez",
+      "note": "can + not. Her kişiyle aynı: I can't, he can't. ~~He can'ts~~ yok.",
+      "words": {
+        "can't": "-emez (can not)"
+      },
+      "source": "dil odağı"
+    }
+  ]
+}

@@ -142,7 +142,7 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 | K3 | H-068 | Arka planda dinleme ve kilit ekranı | Orta | H-067 | ⏳ |
 | K4 | H-069 | Pilot kitaplar A1 + A2 (≈ 15 kr görsel, maliyet onayı önce) | Yüksek | H-065, H-066, H-067 | ✅ |
 | K5 | H-070 | Kitaplık arka ucu (BOOK, C2, onay) | Orta | H-066 | ⏳ |
-| K6 | H-071 | Kitap dalgası 1: A1 + A2 (kalan 8) | Orta | H-069 | ⏳ |
+| K6 | H-071 | Kitap dalgası 1: A1 + A2 (kalan 8) | Orta | H-069 | 🔄 |
 | K7 | H-072 | Kitap dalgası 2: B1 + B2 (10) | Orta | H-071 | ⏳ |
 | K8 | H-073 | Kitap dalgası 3: C1 + C2 (10) | Orta | H-072 | ⏳ |
 
@@ -152,6 +152,7 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 | İş | Başlık | Başlangıç | Not |
 |---|---|---|---|
 | H-023 | İş planını kararlarla güncelle | 2026-10-12 | `docs/IS-PLANI.md` v0.2 ve `docs/SARTNAME.md` karar notları yazıldı; kullanıcının gözden geçirmesi ve H-001 onayı bekleniyor |
+| H-071 | Kitap dalgası 1: A1 + A2 (kalan 8) | 2026-10-14 | 8 kitabın metni, çevirisi (DRAFT), sözlüğü ve görsel planı (kapak + bölüm başı) yazıldı; book-lint 0 hata. Kullanıcı onayı, görsel ve ses bekleniyor |
 
 ## Biten işler
 | İş | Başlık | Bitiş | Doğrulama |
