@@ -130,6 +130,11 @@ public class HivelzonProperties {
          * {@code <kök>/<id>/_build/package/}, sezon paketleri {@code <kök>/_evren/_build/season/S<n>/}.
          */
         private String importRoot = "../icerik";
+        /**
+         * Kitaplık kökü ({@code kitaplar/}, H-070): kitap paketleri {@code <kök>/<id>-<slug>/_build/package/}.
+         * Klasör yoksa kitaplar atlanır (bölüm içe aktarması etkilenmez).
+         */
+        private String booksImportRoot = "../kitaplar";
         /** {@code POST /api/v1/admin/catalog/import} açık mı (prod'da kapalı). */
         private boolean devImportEnabled = true;
         /** Katalog cevaplarının istemcide önbellekte kalma süresi (sonra ETag ile yeniden doğrulanır). */
@@ -137,6 +142,8 @@ public class HivelzonProperties {
 
         public String getImportRoot() { return importRoot; }
         public void setImportRoot(String v) { importRoot = v; }
+        public String getBooksImportRoot() { return booksImportRoot; }
+        public void setBooksImportRoot(String v) { booksImportRoot = v; }
         public boolean isDevImportEnabled() { return devImportEnabled; }
         public void setDevImportEnabled(boolean v) { devImportEnabled = v; }
         public Duration getCacheMaxAge() { return cacheMaxAge; }

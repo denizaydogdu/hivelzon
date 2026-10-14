@@ -23,7 +23,7 @@ import tr.velzon.hivelzon.common.web.PageParams;
 import tr.velzon.hivelzon.common.web.PageResponse;
 
 /**
- * Açık katalog. Yalnızca görünür içerik döner: {@code PUBLISHED} ya da ({@code APPROVED}/{@code SCHEDULED} ve
+ * Açık katalog (bölümler ve H-070 kitapları ayrı listelerde). Yalnızca görünür içerik döner: {@code PUBLISHED} ya da ({@code APPROVED}/{@code SCHEDULED} ve
  * {@code publish_at <= şimdi}). Aynı bölümün birden çok görünür sürümü varsa en yenisi. Her liste sabit sayıda
  * SQL ifadesiyle (N+1 yok) okunur.
  */
@@ -36,12 +36,35 @@ public class CatalogService {
                    publish_at, package_base_path, manifest_sha256, total_bytes, rendition_bytes::text AS rendition_bytes,
                    estimated_minutes, updated_at
               FROM content_items
-             WHERE (status = 'PUBLISHED' OR (status IN ('APPROVED', 'SCHEDULED') AND publish_at <= ?))
+             WHERE content_type = 'EPISODE'
+               AND (status = 'PUBLISHED' OR (status IN ('APPROVED', 'SCHEDULED') AND publish_at <= ?))
             """;
+
+    /** Görünür kitap sürümleri (kitap başına en yeni, H-070); {@code ?} = şimdi. */
+    private static final String VISIBLE_BOOKS = """
+            SELECT DISTINCT ON (content_id) content_id, content_version, slug, number, level, genre, title,
+                   descriptor::text AS descriptor, publish_at, package_base_path, manifest_sha256, total_bytes,
+                   estimated_minutes, updated_at
+              FROM content_items
+             WHERE content_type = 'BOOK'
+               AND (status = 'PUBLISHED' OR (status IN ('APPROVED', 'SCHEDULED') AND publish_at <= ?))
+            """;
+    private static final java.util.regex.Pattern LEVEL = java.util.regex.Pattern.compile("^(A1|A2|B1|B2|C1|C2)$");
 
     public record CatalogItem(String contentId, int contentVersion, String slug, int season, int number, String level,
             String title, Integer estimatedMinutes, Instant publishAt, String packageBaseUrl, String scenesUrl,
             String manifestUrl, String manifestSha256, Long totalBytes, JsonNode renditionBytes, Instant updatedAt) {
+    }
+
+    /**
+     * Kitap kataloğu kartı (H-070): rafta gereken her şey; bölüm ve sayfalar paketteki {@code book.json} ve
+     * {@code pages.json}'dadır. {@code coverUrl} paket içindeki kapak ya da {@code null}.
+     */
+    public record BookItem(String contentId, int contentVersion, String slug, String level, int number, String genre,
+            String title, String titleTr, String blurbTr, String hookEn, JsonNode palette, String coverUrl,
+            Integer wordCount, Integer pageCount, Integer chapterCount, Integer estimatedMinutes, Boolean aiGenerated,
+            JsonNode grammarTopics, Instant publishAt, String packageBaseUrl, String bookUrl, String pagesUrl,
+            String manifestUrl, String manifestSha256, Long totalBytes, Instant updatedAt) {
     }
 
     private final JdbcTemplate jdbc;
@@ -69,6 +92,28 @@ public class CatalogService {
         List<CatalogItem> items = jdbc.query("SELECT * FROM (" + VISIBLE + filter
                 + " ORDER BY content_id, content_version DESC) v ORDER BY season, number, content_id LIMIT ? OFFSET ?",
                 this::mapItem, pageArgs);
+        long t = total == null ? 0 : total;
+        int pages = (int) ((t + pageable.getPageSize() - 1) / pageable.getPageSize());
+        return new PageResponse<>(items, pageable.getPageNumber(), pageable.getPageSize(), t, pages);
+    }
+
+    /** Görünür kitaplar; isteğe bağlı seviye süzgeci. Sıra: seviye, K numarası. */
+    @Transactional(readOnly = true)
+    public PageResponse<BookItem> books(String level, Integer page, Integer size) {
+        if (level != null && !LEVEL.matcher(level).matches()) {
+            throw new ApiException(ErrorCode.VALIDATION_FAILED, Map.of("field", "level"));
+        }
+        var pageable = PageParams.of(page, size, org.springframework.data.domain.Sort.unsorted());
+        OffsetDateTime now = CatalogImportService.utc(clock.instant());
+        String filter = level == null ? "" : " AND level = ?";
+        String visible = VISIBLE_BOOKS + filter + " ORDER BY content_id, content_version DESC";
+        Object[] args = level == null ? new Object[] {now} : new Object[] {now, level};
+        Long total = jdbc.queryForObject("SELECT count(*) FROM (" + visible + ") v", Long.class, args);
+        Object[] pageArgs = level == null
+                ? new Object[] {now, pageable.getPageSize(), pageable.getOffset()}
+                : new Object[] {now, level, pageable.getPageSize(), pageable.getOffset()};
+        List<BookItem> items = jdbc.query("SELECT * FROM (" + visible
+                + ") v ORDER BY level, number, content_id LIMIT ? OFFSET ?", this::mapBook, pageArgs);
         long t = total == null ? 0 : total;
         int pages = (int) ((t + pageable.getPageSize() - 1) / pageable.getPageSize());
         return new PageResponse<>(items, pageable.getPageNumber(), pageable.getPageSize(), t, pages);
@@ -122,6 +167,30 @@ public class CatalogService {
                     });
         }
         return doc;
+    }
+
+    private BookItem mapBook(ResultSet rs, int i) throws SQLException {
+        String packageUrl = hosting.packageBaseUrl(rs.getString("package_base_path"));
+        JsonNode d = json.readTree(rs.getString("descriptor"));
+        OffsetDateTime publishAt = rs.getObject("publish_at", OffsetDateTime.class);
+        String cover = text(d, "cover");
+        return new BookItem(rs.getString("content_id"), rs.getInt("content_version"), rs.getString("slug"),
+                rs.getString("level"), rs.getInt("number"), rs.getString("genre"), rs.getString("title"),
+                text(d, "titleTr"), text(d, "blurbTr"), text(d, "hookEn"), d.get("palette"),
+                cover == null ? null : packageUrl + cover, integer(d, "wordCount"), integer(d, "pageCount"),
+                integer(d, "chapterCount"), (Integer) rs.getObject("estimated_minutes"),
+                d.hasNonNull("aiGenerated") ? d.path("aiGenerated").asBoolean() : null, d.get("grammarTopics"),
+                publishAt == null ? null : publishAt.toInstant(), packageUrl, packageUrl + "book.json",
+                packageUrl + "pages.json", packageUrl + "manifest.json", rs.getString("manifest_sha256"),
+                (Long) rs.getObject("total_bytes"), rs.getObject("updated_at", OffsetDateTime.class).toInstant());
+    }
+
+    private static String text(JsonNode node, String field) {
+        return node.hasNonNull(field) ? node.path(field).asString() : null;
+    }
+
+    private static Integer integer(JsonNode node, String field) {
+        return node.hasNonNull(field) ? node.path(field).asInt() : null;
     }
 
     private CatalogItem mapItem(ResultSet rs, int i) throws SQLException {

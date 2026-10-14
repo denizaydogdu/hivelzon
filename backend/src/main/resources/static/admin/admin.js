@@ -28,6 +28,17 @@
     mediaChecked: 'medya maddesi', rightsAndAiDisclosureChecked: 'haklar ve AI maddesi'
   };
 
+  var GENRES = {
+    mystery: 'Gizem', adventure: 'Macera', humor: 'Mizah', 'scifi-fantasy': 'Bilimkurgu/fantastik',
+    everyday: 'Günlük hayat/duygu'
+  };
+
+  // Bölüm: "S1 · B3"; kitap (H-070): "Kitap · A1 · K01".
+  function place(item) {
+    if (item.contentType === 'BOOK') { return 'Kitap · ' + item.level + ' · K' + (item.number < 10 ? '0' : '') + item.number; }
+    return 'S' + item.season + ' · B' + item.number;
+  }
+
   var $ = function (id) { return document.getElementById(id); };
   var current = null; // açık sürüm (AdminItem)
 
@@ -194,14 +205,15 @@
   function loadList() {
     show('list-view');
     var season = $('season').value;
-    api('GET', '/admin/content/items' + (season ? '?season=' + encodeURIComponent(season) : '')).then(function (r) {
+    var query = season === 'books' ? '?type=BOOK' : (season ? '?type=EPISODE&season=' + encodeURIComponent(season) : '');
+    api('GET', '/admin/content/items' + query).then(function (r) {
       if (!r.ok) { setError(problemText(r)); return; }
       var body = $('items');
       clear(body);
       $('empty').hidden = r.data.length > 0;
       r.data.forEach(function (item) {
         var tr = document.createElement('tr');
-        cell(tr, 'S' + item.season + ' · B' + item.number);
+        cell(tr, place(item));
         var idCell = cell(tr, '');
         var a = document.createElement('a');
         a.href = '#/item/' + encodeURIComponent(item.contentId) + '/' + item.contentVersion;
@@ -259,7 +271,11 @@
     clear(dl);
     fact(dl, 'Durum', chip(item.status));
     fact(dl, 'Katalogda görünür', item.visible ? 'Evet' : 'Hayır');
-    fact(dl, 'Sezon · bölüm · seviye', 'S' + item.season + ' · B' + item.number + ' · ' + item.level);
+    if (item.contentType === 'BOOK') {
+      fact(dl, 'Kitap · seviye · tür', place(item) + ' · ' + (GENRES[item.genre] || item.genre));
+    } else {
+      fact(dl, 'Sezon · bölüm · seviye', place(item) + ' · ' + item.level);
+    }
     fact(dl, 'Lint', lintText(item) + (item.lintCheckedAt ? ' (' + fmt(item.lintCheckedAt) + ')' : ''));
     fact(dl, 'Çeviri dosyası', item.translationStatus || 'yok');
     fact(dl, 'Yayın zamanı', fmt(item.publishAt));
@@ -277,6 +293,8 @@
     $('act-withdraw').hidden = allowed.indexOf('WITHDRAW') < 0;
     Array.prototype.forEach.call(document.querySelectorAll('#act-approve input[type=checkbox]'),
       function (c) { c.checked = false; });
+    // Kitaplar hikâye kanonuna bağlı değil: kanon maddesi sorulmaz (H-070).
+    $('canon-item').hidden = item.contentType === 'BOOK';
     $('reason').value = '';
     $('publish-at').value = '';
 
@@ -318,7 +336,7 @@
   $('btn-approve').addEventListener('click', function () {
     var checklist = {};
     Array.prototype.forEach.call(document.querySelectorAll('#act-approve input[type=checkbox]'),
-      function (c) { checklist[c.name] = c.checked; });
+      function (c) { if (!(c.name === 'canonChecked' && $('canon-item').hidden)) { checklist[c.name] = c.checked; } });
     transition({ action: 'APPROVE', checklist: checklist });
   });
   $('btn-schedule').addEventListener('click', function () {

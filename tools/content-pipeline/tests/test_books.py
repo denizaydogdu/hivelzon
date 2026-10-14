@@ -224,6 +224,16 @@ def test_lint_cli_word_count_rule(capsys):
     assert "[book-words]" in out and "560–840" in out
 
 
+def test_lint_write_reports_for_backend_import(book_dir, capsys):
+    # H-070: backend içe aktarması <kitap>/_build/lint.json okur (content_lint --write-reports biçimi).
+    assert book_lint.main([str(book_dir), "--write-reports"]) == 1
+    doc = json.loads((book_dir / "_build" / "lint.json").read_text(encoding="utf-8"))
+    assert doc["tool"] == "book-lint" and doc["contentId"] == "A1-K99" and doc["level"] == "A1"
+    assert any("[book-words]" in e for e in doc["errors"])
+    assert isinstance(doc["warnings"], list) and doc["generatedAt"].endswith("Z")
+    assert not (book_dir / "_build" / "lint.json.tmp").exists()
+
+
 def test_lint_catches_rule_violations(book_dir):
     text = (book_dir / "text.en.md").read_text(encoding="utf-8")
     text = text.replace("The box is red.", "The box is red and blue and green and very old.")
@@ -545,6 +555,9 @@ def test_dev_server_serves_books_with_range(book_dir):
         assert idx["books"][0]["firstChapterAudio"] is True
         pages = json.loads(urllib.request.urlopen(f"{base}/books/A1-K99/pages.json").read())
         assert pages["bookId"] == "A1-K99"
+        # backend kataloğunun paket yeri (VideoHostingPort: _books/<kitapId>, H-070) aynı dosyayı verir
+        alias = json.loads(urllib.request.urlopen(f"{base}/packages/_books/A1-K99/pages.json").read())
+        assert alias == pages
         req = urllib.request.Request(f"{base}/books/A1-K99/audio/c1.m4a", headers={"Range": "bytes=0-3"})
         with urllib.request.urlopen(req) as r:
             assert r.status == 206 and r.read() == b"m4a:" and r.headers["Content-Type"] == "audio/mp4"

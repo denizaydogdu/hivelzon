@@ -93,6 +93,8 @@ hivelzon:
   catalog:
     # Geliştirme içe aktarması (POST /api/v1/admin/catalog/import, EDITOR/ADMIN). prod'da kapalı.
     import-root: ${HIVELZON_CATALOG_IMPORT_ROOT:../icerik}
+    # Kitaplık paketleri (H-070): kitaplar/<id>-<slug>/_build/package/. Klasör yoksa kitaplar atlanır.
+    books-import-root: ${HIVELZON_CATALOG_BOOKS_IMPORT_ROOT:../kitaplar}
     dev-import-enabled: ${HIVELZON_CATALOG_DEV_IMPORT:true}
     cache-max-age: 60s
   media:

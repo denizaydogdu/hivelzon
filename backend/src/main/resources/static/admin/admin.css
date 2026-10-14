@@ -62,3 +62,5 @@ fieldset input { margin-top: 4px; }
 .card > label { display: block; margin-bottom: 4px; }
 .card > input, .card > select { margin-bottom: 8px; display: block; }
 @media (max-width: 600px) { .facts { grid-template-columns: 1fr; } }
+/* hidden özniteliği display kurallarını ezsin (ör. kitapta kanon maddesi, H-070). */
+[hidden] { display: none !important; }

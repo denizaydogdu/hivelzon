@@ -25,6 +25,8 @@ import tr.velzon.hivelzon.TestcontainersConfiguration;
  */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, properties = {
         "hivelzon.jobs.enabled=false",
+        // Kitaplık kökü testte boş (yok): gerçek kitaplar/ paketleri sayımlara karışmaz; kitap testleri ayarlar.
+        "hivelzon.catalog.books-import-root=target/test-no-books",
         "spring.jpa.properties.hibernate.generate_statistics=true",
         "logging.level.org.hibernate.engine.internal.StatisticalLoggingSessionEventListener=WARN",
         // Yalnızca test anahtarları (rastgele üretilmiş, hiçbir ortamda kullanılmaz).
