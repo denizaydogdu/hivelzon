@@ -51,7 +51,7 @@ x There is two boxes. | İki kutu, yani çoğul: there are.
 ## seeInStory
 Bu yapı hikâyede ve kitaplarda çok geçiyor. Şu cümlelere bir daha bak.
 - episode A1-006 | There are cables everywhere!
-- episode A1-008 | There is a café near the park.
+- episode A1-006 | There is a radio on the desk.
 - book A1-K01 p01 | On the top floor, there is one door.
 - book A1-K03 p02 | There are tall trees and green grass.
 
