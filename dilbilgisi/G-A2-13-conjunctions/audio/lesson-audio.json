@@ -1,0 +1,462 @@
+{
+ "schemaVersion": 1,
+ "lessonId": "G-A2-13-conjunctions",
+ "voices": {
+  "tr": {
+   "model": "alania-v2",
+   "voice": "alania2-f1",
+   "timing": "duyu-1",
+   "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+  },
+  "en": {
+   "model": "eleven_v3",
+   "voice": "EXAVITQu4vr4xnSDxMaL",
+   "speed": 0.95
+  }
+ },
+ "cards": [
+  {
+   "card": "c01",
+   "type": "hook",
+   "segments": [
+    {
+     "id": "c01-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Sisli dağ hikâyesi bu cümleyle açılıyor. İki olay var ve bir kelime onları birbirine bağlıyor. Türkçede bunu tek bir ek yapar: sis çökünce.",
+     "textSha256": "4e6df9049bb445e1007f397b044ac88f7a9985149e153d994d1e306a272c324c",
+     "chars": 139,
+     "audio": "tr/c01-tr.mp3",
+     "align": "tr/c01-tr.align.json",
+     "present": true,
+     "duration": 8.48,
+     "quality": {
+      "words": 23,
+      "exact": 22,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c01-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "When the fog came down, the path disappeared.",
+     "textSha256": "28c0da81f5dc125969c427a6cec6d775fa195f544f870c5c1b1532438715c5f0",
+     "chars": 45,
+     "audio": "en/c01-ex1.mp3",
+     "align": "en/c01-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c02",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c02-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Ve, ama, çünkü ve bu yüzden anlamındaki kelimeler iki cümleyi bağlar. Bu kelimeler iki cümlenin arasına, ikinci cümlenin başına gelir. Türkçede bu işi çoğu zaman ekler yapar.",
+     "textSha256": "c5e262c6d9195897fa5a441fde520621e2a5a24c4f9524c510c5fea57cdf5e16",
+     "chars": 174,
+     "audio": "tr/c02-tr.mp3",
+     "align": "tr/c02-tr.align.json",
+     "present": true,
+     "duration": 11.71,
+     "quality": {
+      "words": 27,
+      "exact": 27,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c02-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I like tea, but my sister likes coffee.",
+     "textSha256": "9b810e3193914ce00dac76682fa0fc0fa43d807ac09ff3744418e0bf9463cbb4",
+     "chars": 39,
+     "audio": "en/c02-ex1.mp3",
+     "align": "en/c02-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c02-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "Elif opened the box and looked inside.",
+     "textSha256": "e76c0c6b9b7847ee308bfff0fbb007b2096287d3902c726514954297956a994c",
+     "chars": 38,
+     "audio": "en/c02-ex2.mp3",
+     "align": "en/c02-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c03",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c03-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Çünkü anlamındaki kelime nedeni, bu yüzden anlamındaki kelime sonucu getirir. Aynı olayı iki yoldan anlatabilirsin. Yazıda neden cümlesi tek başına kalmaz.",
+     "textSha256": "e13b8c43a190521032d5cc2441689219dfc83b421c0fdfb4e92923eeaf9a4c63",
+     "chars": 155,
+     "audio": "tr/c03-tr.mp3",
+     "align": "tr/c03-tr.align.json",
+     "present": true,
+     "duration": 10.59,
+     "quality": {
+      "words": 21,
+      "exact": 21,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 4,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "We stayed home because it was cold.",
+     "textSha256": "ba0a8f1e037b39cf06a2c83ec3907acb8855216837259c7cf71d36208e6b4ca4",
+     "chars": 35,
+     "audio": "en/c03-ex1.mp3",
+     "align": "en/c03-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c03-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "It was cold, so we stayed home.",
+     "textSha256": "9df1b9346abc5d1bf716db6f0218085b8aa6bc3e8f18f8f6cf87d08c17120127",
+     "chars": 31,
+     "audio": "en/c03-ex2.mp3",
+     "align": "en/c03-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c04",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c04-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Bir olayın zamanını söylemek için gelince, gitmeden önce ve yedikten sonra anlamındaki kelimeler kullanılır. Bu yan cümle başa da sona da gelebilir. Başa gelirse arkasına virgül konur.",
+     "textSha256": "34b4c7cd0778ca355d3a63ce52feff0819b6c28f5060ed01c6bcf98b96eadc42",
+     "chars": 184,
+     "audio": "tr/c04-tr.mp3",
+     "align": "tr/c04-tr.align.json",
+     "present": true,
+     "duration": 12.29,
+     "quality": {
+      "words": 27,
+      "exact": 27,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c04-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "When I got home, my cat was asleep.",
+     "textSha256": "8b7fa75e2bf084b7338991fe7c97faf9cf2a1e49cbe91cc877b903aba1d6c884",
+     "chars": 35,
+     "audio": "en/c04-ex1.mp3",
+     "align": "en/c04-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "Wash your hands before you eat.",
+     "textSha256": "956f703d0044fc289acb4b17b54d2de102e150b353953ec2a6ab53a691da04a9",
+     "chars": 31,
+     "audio": "en/c04-ex2.mp3",
+     "align": "en/c04-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "We watched TV after we had dinner.",
+     "textSha256": "12ffc2b1f764373f12fa815f17172cf87dd1f3968e59383d083ef81b586a7868",
+     "chars": 34,
+     "audio": "en/c04-ex3.mp3",
+     "align": "en/c04-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c05",
+   "type": "examples",
+   "segments": [
+    {
+     "id": "c05-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I was hungry, so I made a sandwich.",
+     "textSha256": "c3dc00db219066c4e131de94ca3cf3415e9d303dd3f14f0064ac3d95b0ec27ec",
+     "chars": 35,
+     "audio": "en/c05-ex1.mp3",
+     "align": "en/c05-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "She was late because she missed the bus.",
+     "textSha256": "713d7cf1fd3dbc6a38ecdba658921971612bf60e329c78eca714b88c775f881e",
+     "chars": 40,
+     "audio": "en/c05-ex2.mp3",
+     "align": "en/c05-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "It started to rain, so we went inside.",
+     "textSha256": "46cc22182df882c55eef1f8fd9c12ec33f874bd3e0bf90c876af6683f2ef24c1",
+     "chars": 38,
+     "audio": "en/c05-ex3.mp3",
+     "align": "en/c05-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex4",
+     "lang": "en",
+     "role": "example",
+     "text": "When the film ended, we went home.",
+     "textSha256": "1f8f721a9e4f1a2582c4bf9de45495fc85ad875c33cd28e030672de67fba08f6",
+     "chars": 34,
+     "audio": "en/c05-ex4.mp3",
+     "align": "en/c05-ex4.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex5",
+     "lang": "en",
+     "role": "example",
+     "text": "The water was cold, but we swam.",
+     "textSha256": "b6bc8507b5765a89863ad4a501c9efa98a6b8b1b1b14d691beeb224d241606e1",
+     "chars": 32,
+     "audio": "en/c05-ex5.mp3",
+     "align": "en/c05-ex5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c06",
+   "type": "contrast",
+   "segments": [
+    {
+     "id": "c06-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Türkçede bağlama çoğu zaman cümle sonundaki eklerle yapılır: gelince, yorgun olduğu için. İngilizcede bağlaç cümlenin başına gelir. Gelecekten söz etsek de zaman bildiren yan cümlede gelecek kelimesi kullanılmaz.",
+     "textSha256": "2bf9971e2b863d6363bb6b175d5261d5649c0fdfcf9be71ff393de405acbba40",
+     "chars": 212,
+     "audio": "tr/c06-tr.mp3",
+     "align": "tr/c06-tr.align.json",
+     "present": true,
+     "duration": 12.83,
+     "quality": {
+      "words": 28,
+      "exact": 28,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 4,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c06-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "When I arrive, I'll call you.",
+     "textSha256": "3b7231a527696cef073e50f4b1c65c70eccef8c7ab31848fe25c444c4956227b",
+     "chars": 29,
+     "audio": "en/c06-ex1.mp3",
+     "align": "en/c06-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c06-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "I went to bed early because I was tired.",
+     "textSha256": "8f6e23172afcdf490e8081f8871674782b37d22677ac8f1bafed34b3de9f556f",
+     "chars": 40,
+     "audio": "en/c06-ex2.mp3",
+     "align": "en/c06-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c07",
+   "type": "practice",
+   "segments": [
+    {
+     "id": "c07-q5",
+     "lang": "en",
+     "role": "say",
+     "text": "When the fog came down, the path disappeared.",
+     "textSha256": "28c0da81f5dc125969c427a6cec6d775fa195f544f870c5c1b1532438715c5f0",
+     "chars": 45,
+     "audio": "en/c07-q5.mp3",
+     "align": "en/c07-q5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c08",
+   "type": "seeInStory",
+   "segments": [
+    {
+     "id": "c08-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Kitaplardaki cümleler bu kelimelerle birbirine bağlanıyor. Şu cümlelere bir daha bak.",
+     "textSha256": "7e408f00f29ca34d7303fb8af647f50d32571b5acf257404d0ed16d9181ef4a2",
+     "chars": 85,
+     "audio": "tr/c08-tr.mp3",
+     "align": "tr/c08-tr.align.json",
+     "present": true,
+     "duration": 5.92,
+     "quality": {
+      "words": 11,
+      "exact": 11,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 1,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    }
+   ]
+  },
+  {
+   "card": "c09",
+   "type": "rule",
+   "segments": [
+    {
+     "id": "c09-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Ve, ama, çünkü ve bu yüzden anlamındaki kelimeler iki cümleyi bağlar. Zaman bildiren yan cümlede gelecek kelimesi kullanılmaz.",
+     "textSha256": "fd9b322783446ea817befdbf12f13fc2fd1b6b45a6b69d7181038e6afe31fdfc",
+     "chars": 126,
+     "audio": "tr/c09-tr.mp3",
+     "align": "tr/c09-tr.align.json",
+     "present": true,
+     "duration": 8.0,
+     "quality": {
+      "words": 18,
+      "exact": 18,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c09-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "It was cold, so we stayed home.",
+     "textSha256": "9df1b9346abc5d1bf716db6f0218085b8aa6bc3e8f18f8f6cf87d08c17120127",
+     "chars": 31,
+     "audio": "en/c09-ex1.mp3",
+     "align": "en/c09-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  }
+ ]
+}

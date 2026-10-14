@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "id": "G-A2-04-past-simple-regular",
+  "level": "A2",
+  "titleTr": "Geçmiş zaman: düzenli fiiller (-ed)",
+  "titleEn": "Past simple: regular verbs",
+  "goalTr": "Bitmiş geçmiş olayları fiile -ed ekleyerek anlatır, bu ekin üç okunuşunu tanırsın.",
+  "prerequisites": [
+    "G-A2-03-was-were"
+  ],
+  "contentVersion": 1,
+  "status": "DRAFT",
+  "aiGenerated": true,
+  "teacherReview": null,
+  "linksTo": {
+    "episodes": [],
+    "books": [
+      "A2-K01",
+      "A2-K02",
+      "A2-K03",
+      "A2-K04"
+    ]
+  },
+  "properNouns": [
+    "Nia",
+    "Lunaria",
+    "Elif",
+    "English"
+  ],
+  "pronunciations": [
+    {
+      "term": "-ed",
+      "say_as": "ed"
+    }
+  ],
+  "narration": {
+    "tr": {
+      "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+    }
+  }
+}

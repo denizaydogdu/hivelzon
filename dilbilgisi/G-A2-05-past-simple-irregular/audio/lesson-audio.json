@@ -1,0 +1,393 @@
+{
+ "schemaVersion": 1,
+ "lessonId": "G-A2-05-past-simple-irregular",
+ "voices": {
+  "tr": {
+   "model": "alania-v2",
+   "voice": "alania2-f1",
+   "timing": "duyu-1",
+   "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+  },
+  "en": {
+   "model": "eleven_v3",
+   "voice": "EXAVITQu4vr4xnSDxMaL",
+   "speed": 0.95
+  }
+ },
+ "cards": [
+  {
+   "card": "c01",
+   "type": "hook",
+   "segments": [
+    {
+     "id": "c01-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Ünlü tarif kartı kaybolmuş. Elif tek bir şey soruyor. Bu cümlenin fiili ek almamış, kendisi değişmiş.",
+     "textSha256": "81696489b440b2488e1c61312a6c34ccb31a976715eb9a7204391a4cf21f95ee",
+     "chars": 101,
+     "audio": "tr/c01-tr.mp3",
+     "align": "tr/c01-tr.align.json",
+     "present": true,
+     "duration": 7.68,
+     "quality": {
+      "words": 16,
+      "exact": 16,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c01-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "Who took it?",
+     "textSha256": "bc4b23c69a4ab44af75dd8c00dd92373db7de5b89a009a545a3f762dde261279",
+     "chars": 12,
+     "audio": "en/c01-ex1.mp3",
+     "align": "en/c01-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c02",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c02-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Bazı fiiller geçmişte ek almaz, kendisi değişir. Almak, gitmek, görmek ve gelmek bunlardan. Yeni biçim yine bütün kişiler için aynıdır.",
+     "textSha256": "6cf1b81e3acfb53c54a53f9b5b7b0c208997a576a0fd40bce9f8c723636cab0e",
+     "chars": 135,
+     "audio": "tr/c02-tr.mp3",
+     "align": "tr/c02-tr.align.json",
+     "present": true,
+     "duration": 9.12,
+     "quality": {
+      "words": 20,
+      "exact": 20,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    }
+   ]
+  },
+  {
+   "card": "c03",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c03-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Bu fiillerin listesi uzun görünür, ama en sık geçenler az sayıdadır. Onları hikâyelerde tekrar tekrar duyarsın. Her gün birkaçını söylemen yeterli.",
+     "textSha256": "693198eedd0f9a65743c40ff067c231cf88654a3de9103c959e5b33200bfd1dc",
+     "chars": 147,
+     "audio": "tr/c03-tr.mp3",
+     "align": "tr/c03-tr.align.json",
+     "present": true,
+     "duration": 10.27,
+     "quality": {
+      "words": 21,
+      "exact": 20,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I went home.",
+     "textSha256": "614f817d7aaa70b658d797df6de2e68ccc9cb1b09b5e392e7c63d9df5b1e4172",
+     "chars": 12,
+     "audio": "en/c03-ex1.mp3",
+     "align": "en/c03-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c03-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "She saw a bird.",
+     "textSha256": "2beee64045e06b7bca167a0314a44eff87ab10ffc6896bbfa9761a4d1ed33304",
+     "chars": 15,
+     "audio": "en/c03-ex2.mp3",
+     "align": "en/c03-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c03-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "He came late.",
+     "textSha256": "9683cb4e100aed936a6d24e304120ea2991f39b5508b34aefa1dd0b863081e7f",
+     "chars": 13,
+     "audio": "en/c03-ex3.mp3",
+     "align": "en/c03-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c03-ex4",
+     "lang": "en",
+     "role": "example",
+     "text": "They said hello.",
+     "textSha256": "9229acfb3e8590eefff539703bbf4bb40ee902aa23b4ac5b1583aca8811b15d0",
+     "chars": 16,
+     "audio": "en/c03-ex4.mp3",
+     "align": "en/c03-ex4.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c04",
+   "type": "examples",
+   "segments": [
+    {
+     "id": "c04-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I went to the beach on Saturday.",
+     "textSha256": "6a868ba88b9e16bd77aebc9731afd956c650b263ce812290220a5037b1e38c34",
+     "chars": 32,
+     "audio": "en/c04-ex1.mp3",
+     "align": "en/c04-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "We saw a big ship near the sea.",
+     "textSha256": "80c4236305d8f89840ef32a83c725b954443b29b651c68ab951e7d88f80eef8d",
+     "chars": 31,
+     "audio": "en/c04-ex2.mp3",
+     "align": "en/c04-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "He made a cake for his mother.",
+     "textSha256": "8d9825b6fc15485e1cd8f10d881fc567fe2c0e1f4b83dee8ed4dea74ab60d84a",
+     "chars": 30,
+     "audio": "en/c04-ex3.mp3",
+     "align": "en/c04-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex4",
+     "lang": "en",
+     "role": "example",
+     "text": "They found the key under the bed.",
+     "textSha256": "f4d04a00ba66df245b6c6a2860c25fc869a2744c58fb3af25f606dde95f84b27",
+     "chars": 33,
+     "audio": "en/c04-ex4.mp3",
+     "align": "en/c04-ex4.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex5",
+     "lang": "en",
+     "role": "example",
+     "text": "She had a cup of tea.",
+     "textSha256": "407afcb670712497c6ea463ec6cefd5889340c67afcaf2de3885c4269faca026",
+     "chars": 21,
+     "audio": "en/c04-ex5.mp3",
+     "align": "en/c04-ex5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c05",
+   "type": "contrast",
+   "segments": [
+    {
+     "id": "c05-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Türkçede her fiil aynı ekle geçmişe döner: gittim, aldım, gördüm. İngilizcede bu fiiller kendine özgü bir biçim alır. Önce düzenli ek gibi denemek çok doğal, zamanla oturur.",
+     "textSha256": "3257a100605287d28d8b064ee8628350ccb8129cdf69880101694f952d071e6d",
+     "chars": 173,
+     "audio": "tr/c05-tr.mp3",
+     "align": "tr/c05-tr.align.json",
+     "present": true,
+     "duration": 12.51,
+     "quality": {
+      "words": 27,
+      "exact": 27,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "He took my pen.",
+     "textSha256": "8122ac4fc36cf8430f4f2ab34286b35e7f0dae9f58974514ed0ab47f3c4e62e3",
+     "chars": 15,
+     "audio": "en/c05-ex1.mp3",
+     "align": "en/c05-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "I went to the beach yesterday.",
+     "textSha256": "781126fff19f965f948b933a14ef549a9d281527715400cd906f21f772202d67",
+     "chars": 30,
+     "audio": "en/c05-ex2.mp3",
+     "align": "en/c05-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c06",
+   "type": "practice",
+   "segments": [
+    {
+     "id": "c06-q5",
+     "lang": "en",
+     "role": "say",
+     "text": "I went to the beach on Saturday.",
+     "textSha256": "6a868ba88b9e16bd77aebc9731afd956c650b263ce812290220a5037b1e38c34",
+     "chars": 32,
+     "audio": "en/c06-q5.mp3",
+     "align": "en/c06-q5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c07",
+   "type": "seeInStory",
+   "segments": [
+    {
+     "id": "c07-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Bu fiiller kitaplarda hep karşına çıkıyor. Şu cümlelere bir daha bak.",
+     "textSha256": "f6ce734051d7f5941ad8e85f16a8860b8c12423cf0960692d4622dcd3e220984",
+     "chars": 69,
+     "audio": "tr/c07-tr.mp3",
+     "align": "tr/c07-tr.align.json",
+     "present": true,
+     "duration": 4.96,
+     "quality": {
+      "words": 11,
+      "exact": 11,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    }
+   ]
+  },
+  {
+   "card": "c08",
+   "type": "rule",
+   "segments": [
+    {
+     "id": "c08-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Düzensiz fiiller geçmişte ek almaz, kendisi değişir. Yeni biçim bütün kişiler için aynıdır.",
+     "textSha256": "bb65e7a6b612273824f0161b1439c736dd5940b7c9a7bfb3a80d40f5d6e03b55",
+     "chars": 91,
+     "audio": "tr/c08-tr.mp3",
+     "align": "tr/c08-tr.align.json",
+     "present": true,
+     "duration": 6.72,
+     "quality": {
+      "words": 13,
+      "exact": 13,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c08-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "We went to the sea.",
+     "textSha256": "890ea235a06e3148a87be68adaf3804fdd286cc2475bba102afa566c1c829ec0",
+     "chars": 19,
+     "audio": "en/c08-ex1.mp3",
+     "align": "en/c08-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  }
+ ]
+}

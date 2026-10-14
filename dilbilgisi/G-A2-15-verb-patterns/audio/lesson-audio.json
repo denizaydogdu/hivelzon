@@ -1,0 +1,423 @@
+{
+ "schemaVersion": 1,
+ "lessonId": "G-A2-15-verb-patterns",
+ "voices": {
+  "tr": {
+   "model": "alania-v2",
+   "voice": "alania2-f1",
+   "timing": "duyu-1",
+   "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+  },
+  "en": {
+   "model": "eleven_v3",
+   "voice": "EXAVITQu4vr4xnSDxMaL",
+   "speed": 0.95
+  }
+ },
+ "cards": [
+  {
+   "card": "c01",
+   "type": "hook",
+   "segments": [
+    {
+     "id": "c01-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Nia Ay'da doğmuş ve hiç yağmur görmemiş. Bu cümlede iki fiil art arda geliyor. Aralarındaki küçük kelimeyi dinle.",
+     "textSha256": "ef85fcbb562bbd7491cdd5feb31b72f7cfc516009a46099f50c80677abd2476b",
+     "chars": 113,
+     "audio": "tr/c01-tr.mp3",
+     "align": "tr/c01-tr.align.json",
+     "present": true,
+     "duration": 8.0,
+     "quality": {
+      "words": 18,
+      "exact": 17,
+      "fuzzy": 0,
+      "weak": 1,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 1,
+      "score": 0.944,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c01-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "She wanted to see rain.",
+     "textSha256": "e7010cf8cff4902031de1e5e8ce60dd535eae894d7e5a401d8c957272c18998b",
+     "chars": 23,
+     "audio": "en/c01-ex1.mp3",
+     "align": "en/c01-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c02",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c02-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Bir fiilden sonra ikinci bir fiil gelirse aralarına çoğu zaman küçük bir kelime girer. İstemek, ihtiyaç duymak ve denemek fiillerinden sonra bu kelime ve yalın fiil gelir. Türkçedeki gitmek istiyorum sözündeki ekin işini görür.",
+     "textSha256": "5e7420039368befa0a9caddb4189898b7a35708f7e4c789f0e09d232ea304ce2",
+     "chars": 227,
+     "audio": "tr/c02-tr.mp3",
+     "align": "tr/c02-tr.align.json",
+     "present": true,
+     "duration": 15.39,
+     "quality": {
+      "words": 34,
+      "exact": 34,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    }
+   ]
+  },
+  {
+   "card": "c03",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c03-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Sevmek ve bayılmak gibi fiillerden sonra ikinci fiil çoğu zaman -ing alır. Türkçede de okumayı severim deriz; fiil bir isim gibi kullanılır. Hangi fiilden sonra ne geldiğini kulakla öğrenirsin.",
+     "textSha256": "bdb4fa3820eb0edb99598c5966ba4c144ca290e7aea3ea9f2fbcf6a46c3d3070",
+     "chars": 193,
+     "audio": "tr/c03-tr.mp3",
+     "align": "tr/c03-tr.align.json",
+     "present": true,
+     "duration": 13.15,
+     "quality": {
+      "words": 29,
+      "exact": 29,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 4,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I like reading.",
+     "textSha256": "928ce13f2c5126a2284f4df4ccc2b85cfd454e206074cd78e9762d9a2c72e0ad",
+     "chars": 15,
+     "audio": "en/c03-ex1.mp3",
+     "align": "en/c03-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c03-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "She loves dancing.",
+     "textSha256": "1d446a13f81eeb15f7213cbe210f2c10115b3c071adfdc52cd754979d1084377",
+     "chars": 18,
+     "audio": "en/c03-ex2.mp3",
+     "align": "en/c03-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c04",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c04-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Kibarca bir şey isterken istemek yerine iki kelimelik yumuşak bir kalıp kullanılır. Ardından yine küçük kelime ve yalın fiil gelir. Kafede ve dükkânda çok işine yarar.",
+     "textSha256": "103f88a461aa9415b1e213e0b749433d5da82843c4e6913fdff40b47466081b4",
+     "chars": 167,
+     "audio": "tr/c04-tr.mp3",
+     "align": "tr/c04-tr.align.json",
+     "present": true,
+     "duration": 11.1,
+     "quality": {
+      "words": 26,
+      "exact": 25,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c04-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I'd like to see the menu, please.",
+     "textSha256": "8f76da14f8cf3c17922ca0fdf17056593b8eb4d7235db2d655c147277e53d355",
+     "chars": 33,
+     "audio": "en/c04-ex1.mp3",
+     "align": "en/c04-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "Would you like to come?",
+     "textSha256": "cd9c9c75150c3012bcb18991e639091043f9eb9ca075fba7aedd65f8ab09238d",
+     "chars": 23,
+     "audio": "en/c04-ex2.mp3",
+     "align": "en/c04-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c05",
+   "type": "examples",
+   "segments": [
+    {
+     "id": "c05-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I want to learn English.",
+     "textSha256": "38277d948581f642c06d67e4481e634b2485cb7fb77bd5d9dfa2d099cec6815b",
+     "chars": 24,
+     "audio": "en/c05-ex1.mp3",
+     "align": "en/c05-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "We need to buy some bread.",
+     "textSha256": "d0dc77335e4270ec759f8ca080e1ebff1acfbaa1cce23b4f85c3b39116155ffc",
+     "chars": 26,
+     "audio": "en/c05-ex2.mp3",
+     "align": "en/c05-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "My sister likes dancing.",
+     "textSha256": "89ff80483dc5ad5f0d4ebfe1201da2c738ed9960991c7227e7b92ddcb280cce7",
+     "chars": 24,
+     "audio": "en/c05-ex3.mp3",
+     "align": "en/c05-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex4",
+     "lang": "en",
+     "role": "example",
+     "text": "He tried to open the door.",
+     "textSha256": "1c2bc41402673b02d7a542a674313f0cf8bded37186658b80c3e55c8333fec93",
+     "chars": 26,
+     "audio": "en/c05-ex4.mp3",
+     "align": "en/c05-ex4.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex5",
+     "lang": "en",
+     "role": "example",
+     "text": "Would you like to have some tea?",
+     "textSha256": "e6fe43e95419e60fa8f55f209fcaf61e0c57ef011ef73612ad70e01b0b07e692",
+     "chars": 32,
+     "audio": "en/c05-ex5.mp3",
+     "align": "en/c05-ex5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c06",
+   "type": "contrast",
+   "segments": [
+    {
+     "id": "c06-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Türkçede ikinci fiil hep bir ekle isimleşir: gitmek istiyorum, okumayı severim. İngilizcede biçim birinci fiile göre seçilir. Aradaki küçük kelimeyi unutmak çok olağan, zamanla oturur.",
+     "textSha256": "ff5a69dc6b0f00bf2577833fdd09d7ce28de3e418039ba80bc1bf1ee55736c93",
+     "chars": 184,
+     "audio": "tr/c06-tr.mp3",
+     "align": "tr/c06-tr.align.json",
+     "present": true,
+     "duration": 12.19,
+     "quality": {
+      "words": 25,
+      "exact": 25,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c06-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I want to go home.",
+     "textSha256": "5fdf81f8a3ff018a45210391eeceac33951fc8385258ef89d3d2c28e75b65e74",
+     "chars": 18,
+     "audio": "en/c06-ex1.mp3",
+     "align": "en/c06-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c06-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "I would like to go.",
+     "textSha256": "3d95f62395df1fc3ef4d936656c45dca4ba53297ed2d1fb8684cc1e2d9b6de31",
+     "chars": 19,
+     "audio": "en/c06-ex2.mp3",
+     "align": "en/c06-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c07",
+   "type": "practice",
+   "segments": [
+    {
+     "id": "c07-q5",
+     "lang": "en",
+     "role": "say",
+     "text": "I want to learn English.",
+     "textSha256": "38277d948581f642c06d67e4481e634b2485cb7fb77bd5d9dfa2d099cec6815b",
+     "chars": 24,
+     "audio": "en/c07-q5.mp3",
+     "align": "en/c07-q5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c08",
+   "type": "seeInStory",
+   "segments": [
+    {
+     "id": "c08-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Kitaplarda karakterler ne istediğini hep böyle söylüyor. Şu cümlelere bir daha bak.",
+     "textSha256": "d1958fa00e8d1ddf189eccc8433163ab796c04182f5d2c20060c644112df106a",
+     "chars": 83,
+     "audio": "tr/c08-tr.mp3",
+     "align": "tr/c08-tr.align.json",
+     "present": true,
+     "duration": 5.12,
+     "quality": {
+      "words": 12,
+      "exact": 12,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    }
+   ]
+  },
+  {
+   "card": "c09",
+   "type": "rule",
+   "segments": [
+    {
+     "id": "c09-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "İstemek, ihtiyaç duymak ve denemek fiillerinden sonra küçük kelime ve yalın fiil gelir. Sevmek fiillerinden sonra ikinci fiil çoğu zaman -ing alır.",
+     "textSha256": "ae90465ede57a5db9c916a55fbf3656f9e76527efe8b493188ca9d85a5e7e6e2",
+     "chars": 147,
+     "audio": "tr/c09-tr.mp3",
+     "align": "tr/c09-tr.align.json",
+     "present": true,
+     "duration": 10.27,
+     "quality": {
+      "words": 22,
+      "exact": 22,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c09-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I want to go home.",
+     "textSha256": "5fdf81f8a3ff018a45210391eeceac33951fc8385258ef89d3d2c28e75b65e74",
+     "chars": 18,
+     "audio": "en/c09-ex1.mp3",
+     "align": "en/c09-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  }
+ ]
+}

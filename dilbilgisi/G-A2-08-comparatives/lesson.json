@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "id": "G-A2-08-comparatives",
+  "level": "A2",
+  "titleTr": "Karşılaştırma: -er / more … than",
+  "titleEn": "Comparatives",
+  "goalTr": "İki şeyi -er ya da more ile ve than kullanarak karşılaştırır; better ve worse'ü bilirsin.",
+  "prerequisites": [
+    "G-A1-01-to-be"
+  ],
+  "contentVersion": 1,
+  "status": "DRAFT",
+  "aiGenerated": true,
+  "teacherReview": null,
+  "linksTo": {
+    "episodes": [],
+    "books": [
+      "A2-K04",
+      "A2-K01",
+      "A2-K05",
+      "A2-K03"
+    ]
+  },
+  "properNouns": [
+    "Nia",
+    "Leo",
+    "Earth",
+    "Moon"
+  ],
+  "pronunciations": [
+    {
+      "term": "-er",
+      "say_as": "er"
+    }
+  ],
+  "narration": {
+    "tr": {
+      "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+    }
+  }
+}

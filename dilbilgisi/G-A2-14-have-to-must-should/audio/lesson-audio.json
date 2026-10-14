@@ -1,0 +1,475 @@
+{
+ "schemaVersion": 1,
+ "lessonId": "G-A2-14-have-to-must-should",
+ "voices": {
+  "tr": {
+   "model": "alania-v2",
+   "voice": "alania2-f1",
+   "timing": "duyu-1",
+   "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+  },
+  "en": {
+   "model": "eleven_v3",
+   "voice": "EXAVITQu4vr4xnSDxMaL",
+   "speed": 0.95
+  }
+ },
+ "cards": [
+  {
+   "card": "c01",
+   "type": "hook",
+   "segments": [
+    {
+     "id": "c01-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Paloma bir çiçeğin fotoğrafını çekmek istiyor. Jonas ise öğretmenin kuralını hatırlatıyor. Bu cümlede bir zorunluluk var, dinle.",
+     "textSha256": "1ebe3b28d61cd68da3a6fc84bf204696eb019941834b668c06719bcb220f7826",
+     "chars": 128,
+     "audio": "tr/c01-tr.mp3",
+     "align": "tr/c01-tr.align.json",
+     "present": true,
+     "duration": 7.68,
+     "quality": {
+      "words": 17,
+      "exact": 17,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c01-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "We have to stay on the path.",
+     "textSha256": "ca18215cb0829d959b86eaa1fe74b6472ab78eab0d72e1c2fc03e6a23159076b",
+     "chars": 28,
+     "audio": "en/c01-ex1.mp3",
+     "align": "en/c01-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c02",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c02-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Zorunluluk için iki yol var ve anlamları çok yakındır. Biri günlük konuşmada daha sık geçer, öbürü yazılı kurallarda ve güçlü uyarılarda. O için ilk yol biraz değişir.",
+     "textSha256": "11b260c7a5985139827ac77df60184de6cfa65f6bad0bd1cdd50664fc04f2768",
+     "chars": 167,
+     "audio": "tr/c02-tr.mp3",
+     "align": "tr/c02-tr.align.json",
+     "present": true,
+     "duration": 12.5,
+     "quality": {
+      "words": 27,
+      "exact": 27,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c02-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "We have to stay on the path.",
+     "textSha256": "ca18215cb0829d959b86eaa1fe74b6472ab78eab0d72e1c2fc03e6a23159076b",
+     "chars": 28,
+     "audio": "en/c02-ex1.mp3",
+     "align": "en/c02-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c02-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "The children must have lunch at twelve.",
+     "textSha256": "8c952b153ff026ef22787c8252ce620f982a021b466a8bd9a419ecdaf3fabb54",
+     "chars": 39,
+     "audio": "en/c02-ex2.mp3",
+     "align": "en/c02-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c02-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "She has to work on Saturday.",
+     "textSha256": "ee260afe65f0001240c07a8dd5bb277f0e042ec0a6c69a5b16c8497ff85163bf",
+     "chars": 28,
+     "audio": "en/c02-ex3.mp3",
+     "align": "en/c02-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c03",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c03-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Bu iki yolun olumsuzu çok farklı anlamlar taşır. Birinin olumsuzu yasak demektir: yapmamalısın. Öbürünün olumsuzu gerek yok demektir: istersen yaparsın.",
+     "textSha256": "115f1075bb98ebb8544bc49cb0e4cb03dca937dc6e7d77ff94cdd0de0f6a1c84",
+     "chars": 152,
+     "audio": "tr/c03-tr.mp3",
+     "align": "tr/c03-tr.align.json",
+     "present": true,
+     "duration": 10.84,
+     "quality": {
+      "words": 20,
+      "exact": 20,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "You mustn't swim here.",
+     "textSha256": "108cb99748727406b4d83cceb73a82a5511ad2d319fd341a67fa05219e384f8a",
+     "chars": 22,
+     "audio": "en/c03-ex1.mp3",
+     "align": "en/c03-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c03-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "You don't have to pay.",
+     "textSha256": "643f39626c4b56921a1cab1b9277a4cafed5c0beb39b9257762859d85a5cfaad",
+     "chars": 22,
+     "audio": "en/c03-ex2.mp3",
+     "align": "en/c03-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c04",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c04-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Birine tavsiye verirken daha yumuşak bir kelime kullanılır. Türkçedeki gitmelisin sözüne yakındır, ama zorunluluk değil, öneridir. Ardından yalın fiil gelir.",
+     "textSha256": "149b34c8ba57cfd0ff5572dcbeb5af34480f6559bec8de9548069ba26b57c024",
+     "chars": 157,
+     "audio": "tr/c04-tr.mp3",
+     "align": "tr/c04-tr.align.json",
+     "present": true,
+     "duration": 10.25,
+     "quality": {
+      "words": 20,
+      "exact": 20,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c04-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "You should drink more water.",
+     "textSha256": "610a2bdc81852bf69c26a7ccf38670aa9bb433efe91998bbf3c7d4ac297877d8",
+     "chars": 28,
+     "audio": "en/c04-ex1.mp3",
+     "align": "en/c04-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "You shouldn't eat so much sugar.",
+     "textSha256": "6b7c14b641313e58771b9fffdea496e22e3ac535b6e160a02b17af3abb53f83b",
+     "chars": 32,
+     "audio": "en/c04-ex2.mp3",
+     "align": "en/c04-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c05",
+   "type": "examples",
+   "segments": [
+    {
+     "id": "c05-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I have to get up early tomorrow.",
+     "textSha256": "6f915df4086b4700338563e1450b83ae4c0a46742bf096db487ebbcc1c5b3cd2",
+     "chars": 32,
+     "audio": "en/c05-ex1.mp3",
+     "align": "en/c05-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "My dad has to work on Saturdays.",
+     "textSha256": "f3390d41fb37a747bebdd27949c471f7eec68ae5d1cc4714854f87b1c58988d6",
+     "chars": 32,
+     "audio": "en/c05-ex2.mp3",
+     "align": "en/c05-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "You must stop at a red light.",
+     "textSha256": "a37eb6fbbee4ad3448dcfece9b1c6d665be2543cb9c2f0aac83ef2319758adde",
+     "chars": 29,
+     "audio": "en/c05-ex3.mp3",
+     "align": "en/c05-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex4",
+     "lang": "en",
+     "role": "example",
+     "text": "We don't have to go to school on Saturday.",
+     "textSha256": "9376b333c822ae6272ba5d6741c0591522ab6bec3fdc3f83a7e19c6760d67f2c",
+     "chars": 42,
+     "audio": "en/c05-ex4.mp3",
+     "align": "en/c05-ex4.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex5",
+     "lang": "en",
+     "role": "example",
+     "text": "You should see a doctor.",
+     "textSha256": "a71e1468273048f2f84c2201c31218c0b4ff505e3562d98538e393ca7450c983",
+     "chars": 24,
+     "audio": "en/c05-ex5.mp3",
+     "align": "en/c05-ex5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c06",
+   "type": "contrast",
+   "segments": [
+    {
+     "id": "c06-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Türkçede yapmamalısın ile yapmak zorunda değilsin çok farklıdır, İngilizcede de öyle. Ama yasak anlamındaki olumsuz kolayca gerek yok diye anlaşılır. Kısa olan iki kelimeden sonra da fiil doğrudan gelir, araya başka kelime girmez.",
+     "textSha256": "9ce48045b30597cda7baa8e775fca7cf3909f9f8be421e2665d5ea26075fe75d",
+     "chars": 230,
+     "audio": "tr/c06-tr.mp3",
+     "align": "tr/c06-tr.align.json",
+     "present": true,
+     "duration": 16.21,
+     "quality": {
+      "words": 33,
+      "exact": 33,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c06-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "You must go.",
+     "textSha256": "cce07d83e5369b6b3df6edade93efe3c8a78e6d7889c3b4fac7f0794f8c216bc",
+     "chars": 12,
+     "audio": "en/c06-ex1.mp3",
+     "align": "en/c06-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c06-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "You don't have to come.",
+     "textSha256": "476b0c6b5e6d7747970a33528c84524fdb9608c2992b3c3adc02870f75940e55",
+     "chars": 23,
+     "audio": "en/c06-ex2.mp3",
+     "align": "en/c06-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c06-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "She has to work.",
+     "textSha256": "03d1afd3d81acb9537029b38e095cfda57db8c788ffc8d04e44197d2cdfa4f4e",
+     "chars": 16,
+     "audio": "en/c06-ex3.mp3",
+     "align": "en/c06-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c07",
+   "type": "practice",
+   "segments": [
+    {
+     "id": "c07-q5",
+     "lang": "en",
+     "role": "say",
+     "text": "We have to stay on the path.",
+     "textSha256": "ca18215cb0829d959b86eaa1fe74b6472ab78eab0d72e1c2fc03e6a23159076b",
+     "chars": 28,
+     "audio": "en/c07-q5.mp3",
+     "align": "en/c07-q5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c08",
+   "type": "seeInStory",
+   "segments": [
+    {
+     "id": "c08-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Kitaplardaki karakterler kuralları hep bu kelimelerle anlatıyor. Şu cümlelere bir daha bak.",
+     "textSha256": "c15d9e35efd6127c746c44105a4226568248c400ff6c1a846ad27edbd8368514",
+     "chars": 91,
+     "audio": "tr/c08-tr.mp3",
+     "align": "tr/c08-tr.align.json",
+     "present": true,
+     "duration": 5.6,
+     "quality": {
+      "words": 12,
+      "exact": 12,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    }
+   ]
+  },
+  {
+   "card": "c09",
+   "type": "rule",
+   "segments": [
+    {
+     "id": "c09-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Zorunluluk için iki yol var. Birinin olumsuzu yasak, öbürünün olumsuzu gerek yok demektir. Öneri için daha yumuşak bir kelime kullanılır.",
+     "textSha256": "c34bfb7d06d629348b581258b04a165ee144e883e93317e1a5dad81ab335ae08",
+     "chars": 137,
+     "audio": "tr/c09-tr.mp3",
+     "align": "tr/c09-tr.align.json",
+     "present": true,
+     "duration": 9.76,
+     "quality": {
+      "words": 20,
+      "exact": 20,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c09-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "You don't have to pay.",
+     "textSha256": "643f39626c4b56921a1cab1b9277a4cafed5c0beb39b9257762859d85a5cfaad",
+     "chars": 22,
+     "audio": "en/c09-ex1.mp3",
+     "align": "en/c09-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  }
+ ]
+}

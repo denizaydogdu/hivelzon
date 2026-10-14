@@ -1,0 +1,380 @@
+{
+ "schemaVersion": 1,
+ "lessonId": "G-A2-08-comparatives",
+ "voices": {
+  "tr": {
+   "model": "alania-v2",
+   "voice": "alania2-f1",
+   "timing": "duyu-1",
+   "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+  },
+  "en": {
+   "model": "eleven_v3",
+   "voice": "EXAVITQu4vr4xnSDxMaL",
+   "speed": 0.95
+  }
+ },
+ "cards": [
+  {
+   "card": "c01",
+   "type": "hook",
+   "segments": [
+    {
+     "id": "c01-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Nia, Ay'dan Dünya'ya gitmeye hazırlanıyor. Bu cümlede iki gök cismi karşılaştırılıyor. Sıfatın sonuna dikkat et.",
+     "textSha256": "c0cf70aafff1542cb0276c12bbd1cd89ccefd4791d064b3684d68f560738ceae",
+     "chars": 112,
+     "audio": "tr/c01-tr.mp3",
+     "align": "tr/c01-tr.align.json",
+     "present": true,
+     "duration": 6.88,
+     "quality": {
+      "words": 15,
+      "exact": 15,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c01-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "The Earth was much bigger than the Moon.",
+     "textSha256": "e38539f662268f1e9db6abdb7edd8c9348eb653aa8f6e69d634b6f3cb7c89427",
+     "chars": 40,
+     "audio": "en/c01-ex1.mp3",
+     "align": "en/c01-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c02",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c02-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Kısa sıfatlarla karşılaştırma yaparken sıfata -er eklenir. Ardından karşılaştırılan şeyden önce ayrı bir kelime gelir. Bu kelime Türkçedeki den, dan ekinin işini yapar.",
+     "textSha256": "bae72c704c9a3ee070aca39e4a309171006792f11d3ec0a48be33b45b291b04c",
+     "chars": 168,
+     "audio": "tr/c02-tr.mp3",
+     "align": "tr/c02-tr.align.json",
+     "present": true,
+     "duration": 11.69,
+     "quality": {
+      "words": 23,
+      "exact": 23,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    }
+   ]
+  },
+  {
+   "card": "c03",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c03-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Uzun sıfatlar ek almaz; önlerine daha anlamında ayrı bir kelime gelir. İyi ve kötü ise tamamen değişir. Bunları kulakla öğrenirsin.",
+     "textSha256": "a36c6d7632d48782ca5a4ed70471901ac72326d4a56bd77dd59a34e0e3b61712",
+     "chars": 131,
+     "audio": "tr/c03-tr.mp3",
+     "align": "tr/c03-tr.align.json",
+     "present": true,
+     "duration": 8.32,
+     "quality": {
+      "words": 20,
+      "exact": 20,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "This book is more interesting than the film.",
+     "textSha256": "53dc2afaddd4d78dbe0020a287cc0034705b973ea9d97f6ad7e329d5c171c11d",
+     "chars": 44,
+     "audio": "en/c03-ex1.mp3",
+     "align": "en/c03-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c03-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "My cake is better than your cake.",
+     "textSha256": "68952508ac5865de738921df891918898bd7674d7fd2a7243024e51f928703f7",
+     "chars": 33,
+     "audio": "en/c03-ex2.mp3",
+     "align": "en/c03-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c03-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "The weather is worse today.",
+     "textSha256": "7a7052eb20349273df02b0b2daef074528e77e2b54bdb413b3d0f34675f42d86",
+     "chars": 27,
+     "audio": "en/c03-ex3.mp3",
+     "align": "en/c03-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c04",
+   "type": "examples",
+   "segments": [
+    {
+     "id": "c04-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "My brother is taller than me.",
+     "textSha256": "82efef4177a5e1b6ff848e115f684d99b01ce38f85fac30d5f73f438b5f7f91e",
+     "chars": 29,
+     "audio": "en/c04-ex1.mp3",
+     "align": "en/c04-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "The sea is colder today.",
+     "textSha256": "d989b15d7dd94ec439e0b682ef98cf510636302a8239ab0d2c795ca916c17f4a",
+     "chars": 24,
+     "audio": "en/c04-ex2.mp3",
+     "align": "en/c04-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "This bag is heavier than that bag.",
+     "textSha256": "ba29804c14c6406e799d903cff29ef7125f0bb305bf1357f344da05186a6d2cf",
+     "chars": 34,
+     "audio": "en/c04-ex3.mp3",
+     "align": "en/c04-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex4",
+     "lang": "en",
+     "role": "example",
+     "text": "The film was more exciting than the book.",
+     "textSha256": "e36e21687b8f7cb5c101cf4a04740158ee1ba72bd203e2abc501ec1d5bbb9e62",
+     "chars": 41,
+     "audio": "en/c04-ex4.mp3",
+     "align": "en/c04-ex4.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex5",
+     "lang": "en",
+     "role": "example",
+     "text": "Your idea is better than mine.",
+     "textSha256": "4e65cb1f14a9100008bed47e4d84a443d2e50d41e5a0b11dac5fed802f6b9b2e",
+     "chars": 30,
+     "audio": "en/c04-ex5.mp3",
+     "align": "en/c04-ex5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c05",
+   "type": "contrast",
+   "segments": [
+    {
+     "id": "c05-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Türkçede sıfat değişmez ve ölçüt önce gelir: Ay'dan daha büyük. İngilizcede sıfat değişir, ölçüt sonra gelir. Eki ve daha anlamındaki kelimeyi birlikte kullanmak çok olağan bir hata.",
+     "textSha256": "e95c6aa25bbb81ab1838e5723c25b8b9a1dfa30fab41e81b4e40f61488aee85a",
+     "chars": 182,
+     "audio": "tr/c05-tr.mp3",
+     "align": "tr/c05-tr.align.json",
+     "present": true,
+     "duration": 12.03,
+     "quality": {
+      "words": 27,
+      "exact": 27,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "This cake is better.",
+     "textSha256": "2031acdaef878aba38366e280f100c5ad5edb3f80b924876801de5c5bacc6e52",
+     "chars": 20,
+     "audio": "en/c05-ex1.mp3",
+     "align": "en/c05-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "She is taller than me.",
+     "textSha256": "9e747a4f4fa5cc45f0d606ab4172605a3d476ecb001d1f1408c5dd97affecad9",
+     "chars": 22,
+     "audio": "en/c05-ex2.mp3",
+     "align": "en/c05-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c06",
+   "type": "practice",
+   "segments": [
+    {
+     "id": "c06-q5",
+     "lang": "en",
+     "role": "say",
+     "text": "My brother is taller than me.",
+     "textSha256": "82efef4177a5e1b6ff848e115f684d99b01ce38f85fac30d5f73f438b5f7f91e",
+     "chars": 29,
+     "audio": "en/c06-q5.mp3",
+     "align": "en/c06-q5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c07",
+   "type": "seeInStory",
+   "segments": [
+    {
+     "id": "c07-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Kitaplarda bu karşılaştırmalar çok geçiyor. Şu cümlelere bir daha bak.",
+     "textSha256": "b5b7fbfec7386e5740d21eb74962dd1a0b820d9c317abfa982df2314f2241887",
+     "chars": 70,
+     "audio": "tr/c07-tr.mp3",
+     "align": "tr/c07-tr.align.json",
+     "present": true,
+     "duration": 4.64,
+     "quality": {
+      "words": 10,
+      "exact": 10,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    }
+   ]
+  },
+  {
+   "card": "c08",
+   "type": "rule",
+   "segments": [
+    {
+     "id": "c08-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Kısa sıfatlara -er eklenir, uzun sıfatların önüne daha anlamında bir kelime gelir. Karşılaştırılan şeyden önce ayrı bir kelime durur.",
+     "textSha256": "e24ad987587a93446cffb574fdb24d88083cd119f59d6736520f1b20295ed7c4",
+     "chars": 133,
+     "audio": "tr/c08-tr.mp3",
+     "align": "tr/c08-tr.align.json",
+     "present": true,
+     "duration": 8.16,
+     "quality": {
+      "words": 19,
+      "exact": 19,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c08-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "The Earth is bigger than the Moon.",
+     "textSha256": "2e94e00ab33e915e0e72f473e34b4b492bae4c4347753d782d8f25c39a958e77",
+     "chars": 34,
+     "audio": "en/c08-ex1.mp3",
+     "align": "en/c08-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  }
+ ]
+}

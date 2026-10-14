@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "id": "G-A2-02-simple-vs-continuous",
+  "level": "A2",
+  "titleTr": "Geniş zaman mı, şimdiki zaman mı?",
+  "titleEn": "Present simple or present continuous",
+  "goalTr": "Rutini ve genel doğruyu geniş zamanla, şu an ve geçici olanı -ing ile söylersin; know, like, want gibi fiilleri -ing'siz kullanırsın.",
+  "prerequisites": [
+    "G-A2-01-present-continuous",
+    "G-A1-14-do-does"
+  ],
+  "contentVersion": 1,
+  "status": "DRAFT",
+  "aiGenerated": true,
+  "teacherReview": null,
+  "linksTo": {
+    "episodes": [
+      "A1-005",
+      "A1-012"
+    ],
+    "books": [
+      "A2-K03",
+      "A1-K05",
+      "A2-K02"
+    ]
+  },
+  "properNouns": [
+    "Finn",
+    "Maya",
+    "Jordan",
+    "Mrs Berg"
+  ],
+  "glossary": [
+    "pancake"
+  ],
+  "pronunciations": [
+    {
+      "term": "-ing",
+      "say_as": "ing"
+    }
+  ],
+  "narration": {
+    "tr": {
+      "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+    }
+  }
+}

@@ -1,0 +1,436 @@
+{
+ "schemaVersion": 1,
+ "lessonId": "G-A2-01-present-continuous",
+ "voices": {
+  "tr": {
+   "model": "alania-v2",
+   "voice": "alania2-f1",
+   "timing": "duyu-1",
+   "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+  },
+  "en": {
+   "model": "eleven_v3",
+   "voice": "EXAVITQu4vr4xnSDxMaL",
+   "speed": 0.95
+  }
+ },
+ "cards": [
+  {
+   "card": "c01",
+   "type": "hook",
+   "segments": [
+    {
+     "id": "c01-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Paloma fotoğraf çekiyor, arkadaşı Jonas onu uyarıyor. Öğretmenleri tam o anda konuşuyor. Bu cümlede iki parça var, dinle.",
+     "textSha256": "56f85cefb5b250522197c617b4fd45b6b458226b12a8b48eb3a1230c6ebbf7bc",
+     "chars": 121,
+     "audio": "tr/c01-tr.mp3",
+     "align": "tr/c01-tr.align.json",
+     "present": true,
+     "duration": 7.68,
+     "quality": {
+      "words": 18,
+      "exact": 18,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c01-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "Mrs Berg is talking.",
+     "textSha256": "da4980c40a41882d346e2c4b996c33589767edbca3c02b7d6ef9b17f9370b064",
+     "chars": 20,
+     "audio": "en/c01-ex1.mp3",
+     "align": "en/c01-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c02",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c02-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Şu anda olan bir şeyi anlatırken iki parça kullanırız. Önce olmak fiili gelir, sonra fiile -ing eklenir. Bu günlerde süren geçici durumlar için de aynı yapı kullanılır.",
+     "textSha256": "c2ba4358af98e0e98bb0d1f0cc8b824f8a15f50903daa04fbd51c32bb7ec0b8c",
+     "chars": 168,
+     "audio": "tr/c02-tr.mp3",
+     "align": "tr/c02-tr.align.json",
+     "present": true,
+     "duration": 11.87,
+     "quality": {
+      "words": 27,
+      "exact": 26,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    }
+   ]
+  },
+  {
+   "card": "c03",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c03-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Olmak fiili yine kişiye göre seçilir. Ben için bir biçim, o için başka bir biçim gelir. Sen, biz, siz ve onlar için de üçüncü biçim gelir.",
+     "textSha256": "a20a68721aad9ed1a3508ac653253b5a4c245626af4b9e01853e4f342d9ea391",
+     "chars": 138,
+     "audio": "tr/c03-tr.mp3",
+     "align": "tr/c03-tr.align.json",
+     "present": true,
+     "duration": 11.68,
+     "quality": {
+      "words": 26,
+      "exact": 25,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 1,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I am reading.",
+     "textSha256": "c2c0d90ebcfe3bf61ba0295aefde2db7b2faa72b079d75ed54630745e14aa2bf",
+     "chars": 13,
+     "audio": "en/c03-ex1.mp3",
+     "align": "en/c03-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c03-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "She is reading.",
+     "textSha256": "ff5baad1fc2ac4ff4555e2abb362a9724eacf83bc923058136e1ca5c3a318f0c",
+     "chars": 15,
+     "audio": "en/c03-ex2.mp3",
+     "align": "en/c03-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c03-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "They are reading.",
+     "textSha256": "f15b9812beb5968a413693daf9c23644abd65327be05a5eff05db89a03e51822",
+     "chars": 17,
+     "audio": "en/c03-ex3.mp3",
+     "align": "en/c03-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c04",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c04-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Ek eklenirken bazı fiiller biraz değişir. Sondaki okunmayan e harfi düşer. Tek heceli bir fiil bir ünlü ve bir ünsüzle bitiyorsa son harf iki kez yazılır.",
+     "textSha256": "7ede3185a33dfeb5655b5992a9759fcc09465ef3c770a48bcc31e8dedb596e31",
+     "chars": 154,
+     "audio": "tr/c04-tr.mp3",
+     "align": "tr/c04-tr.align.json",
+     "present": true,
+     "duration": 10.59,
+     "quality": {
+      "words": 26,
+      "exact": 26,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c04-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "She is making a cake.",
+     "textSha256": "68ad7a343e9e940a6c2e852d558beb1428e53ed9ab695e8eeb423bc610dc5401",
+     "chars": 21,
+     "audio": "en/c04-ex1.mp3",
+     "align": "en/c04-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "They are running.",
+     "textSha256": "988f482a0339984a8d473ee0912285576cac8259c1d6f64045c81ee9b01c16c5",
+     "chars": 17,
+     "audio": "en/c04-ex2.mp3",
+     "align": "en/c04-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c05",
+   "type": "examples",
+   "segments": [
+    {
+     "id": "c05-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I'm reading a book now.",
+     "textSha256": "9d9fec8afdb0fbaad32ac05e1f5727bca4d37eaa3c8c9c8443e8cf96e58ef459",
+     "chars": 23,
+     "audio": "en/c05-ex1.mp3",
+     "align": "en/c05-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "Look, the children are playing in the park.",
+     "textSha256": "63b8e9375521323a3a0ed2dc92aa9badd7b7dc7f2aa0c2adac1e2b392cc3f368",
+     "chars": 43,
+     "audio": "en/c05-ex2.mp3",
+     "align": "en/c05-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "We are waiting for the bus.",
+     "textSha256": "fa93a99fd153014eac7bb117d1b9810a4dc2e1e99c393d99b710fd4feaebfb56",
+     "chars": 27,
+     "audio": "en/c05-ex3.mp3",
+     "align": "en/c05-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex4",
+     "lang": "en",
+     "role": "example",
+     "text": "I'm learning English this year.",
+     "textSha256": "df201d39e9fb7f95bbc91cff9276f036332414e1a043f302bb72c61caf6a14ed",
+     "chars": 31,
+     "audio": "en/c05-ex4.mp3",
+     "align": "en/c05-ex4.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex5",
+     "lang": "en",
+     "role": "example",
+     "text": "Look! It's raining.",
+     "textSha256": "8bc402216a7f71e419b7c744649b5bd5e2ebaac98183b6ab3cf89d19991e8160",
+     "chars": 19,
+     "audio": "en/c05-ex5.mp3",
+     "align": "en/c05-ex5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c06",
+   "type": "contrast",
+   "segments": [
+    {
+     "id": "c06-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Türkçede tek bir ek yetiyor: arıyorum, yağıyor. İngilizcede iki parça gerekir ve biri kolayca düşer. Bu çok olağan, iki parçayı birlikte düşün.",
+     "textSha256": "7a1562109449897d05ba4f304857eaeeb8aa17fd413835a000cf4a187828466f",
+     "chars": 143,
+     "audio": "tr/c06-tr.mp3",
+     "align": "tr/c06-tr.align.json",
+     "present": true,
+     "duration": 10.58,
+     "quality": {
+      "words": 22,
+      "exact": 22,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c06-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I'm looking for the old radio.",
+     "textSha256": "7b3f28ef94752f409606f048465b64730c9926fe1b8b4cac9ac1daecbfb09f8a",
+     "chars": 30,
+     "audio": "en/c06-ex1.mp3",
+     "align": "en/c06-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c06-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "She is cooking now.",
+     "textSha256": "9f68fc2f6b9381d9087159cdad60ad24c030fa5d0284b8d1f250840f7f867b79",
+     "chars": 19,
+     "audio": "en/c06-ex2.mp3",
+     "align": "en/c06-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c07",
+   "type": "practice",
+   "segments": [
+    {
+     "id": "c07-q5",
+     "lang": "en",
+     "role": "say",
+     "text": "I'm looking for the old radio.",
+     "textSha256": "7b3f28ef94752f409606f048465b64730c9926fe1b8b4cac9ac1daecbfb09f8a",
+     "chars": 30,
+     "audio": "en/c07-q5.mp3",
+     "align": "en/c07-q5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c08",
+   "type": "seeInStory",
+   "segments": [
+    {
+     "id": "c08-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Bu yapı hikâyede ve kitaplarda da var. Şu cümlelere bir daha bak.",
+     "textSha256": "a4be7a15a8e9428c67b4bde30a7ba4e53aae34cd6b48d1384c64216b2e0c5dad",
+     "chars": 65,
+     "audio": "tr/c08-tr.mp3",
+     "align": "tr/c08-tr.align.json",
+     "present": true,
+     "duration": 4.8,
+     "quality": {
+      "words": 12,
+      "exact": 12,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    }
+   ]
+  },
+  {
+   "card": "c09",
+   "type": "rule",
+   "segments": [
+    {
+     "id": "c09-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Şu anda olan bir şey için olmak fiili ve fiile eklenen -ing birlikte gelir. İki parça da cümlede durur.",
+     "textSha256": "f178aecc6f0d944ec5d8641837e7646f088452bc193ce5a72856ef2195257350",
+     "chars": 103,
+     "audio": "tr/c09-tr.mp3",
+     "align": "tr/c09-tr.align.json",
+     "present": true,
+     "duration": 6.4,
+     "quality": {
+      "words": 19,
+      "exact": 18,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c09-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "She is reading a book now.",
+     "textSha256": "60aaaa727c54ab62e0cbc7d7b5fd6b0cc911706fe0ae6fcd1ea7f2a35aa832bf",
+     "chars": 26,
+     "audio": "en/c09-ex1.mp3",
+     "align": "en/c09-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  }
+ ]
+}

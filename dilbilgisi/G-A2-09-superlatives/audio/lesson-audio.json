@@ -1,0 +1,449 @@
+{
+ "schemaVersion": 1,
+ "lessonId": "G-A2-09-superlatives",
+ "voices": {
+  "tr": {
+   "model": "alania-v2",
+   "voice": "alania2-f1",
+   "timing": "duyu-1",
+   "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+  },
+  "en": {
+   "model": "eleven_v3",
+   "voice": "EXAVITQu4vr4xnSDxMaL",
+   "speed": 0.95
+  }
+ },
+ "cards": [
+  {
+   "card": "c01",
+   "type": "hook",
+   "segments": [
+    {
+     "id": "c01-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Elif'in ailesinin lokantasında herkesin bildiği bir şey var. Bu cümle onu en kelimesiyle anlatıyor. İngilizcede en için iki parça var, dinle.",
+     "textSha256": "f8d84665a12a79735a4374c058ee7e8255e9acdfaad8765933cf222d88734d35",
+     "chars": 141,
+     "audio": "tr/c01-tr.mp3",
+     "align": "tr/c01-tr.align.json",
+     "present": true,
+     "duration": 8.8,
+     "quality": {
+      "words": 21,
+      "exact": 20,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c01-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "The most famous thing in the restaurant was a cake.",
+     "textSha256": "7fc602a3cc5cabd8831c98a7cae868d0d28923fd4f61fea4cc8ab7e0c986451c",
+     "chars": 51,
+     "audio": "en/c01-ex1.mp3",
+     "align": "en/c01-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c02",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c02-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Kısa sıfatlarda en demek için sıfata -est eklenir. Önüne de belirli şeyleri gösteren küçük kelime gelir. Çünkü en olan şey tektir ve herkes onu bilir.",
+     "textSha256": "4a774aae601c10cf5fb5aa028548a8559b27a560ef94613055bc6f25755ac8db",
+     "chars": 150,
+     "audio": "tr/c02-tr.mp3",
+     "align": "tr/c02-tr.align.json",
+     "present": true,
+     "duration": 10.38,
+     "quality": {
+      "words": 25,
+      "exact": 25,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c02-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "He is the tallest.",
+     "textSha256": "9102f9e7171333d702115ebd8f06444deb62fde53c5aac6d392ddfc269524db9",
+     "chars": 18,
+     "audio": "en/c02-ex1.mp3",
+     "align": "en/c02-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c03",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c03-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Uzun sıfatlar ek almaz; önlerine en anlamında ayrı bir kelime gelir. İyi ve kötü yine tamamen değişir. Küçük kelime burada da başta durur.",
+     "textSha256": "36f6869478cea8cee9f6d89e465e350ef777449badfaeaf7d33a80e1ee5d2d5c",
+     "chars": 138,
+     "audio": "tr/c03-tr.mp3",
+     "align": "tr/c03-tr.align.json",
+     "present": true,
+     "duration": 9.6,
+     "quality": {
+      "words": 23,
+      "exact": 22,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "It's the most beautiful beach.",
+     "textSha256": "f90e6414459a031a605e7463e8db7c5629cd4d14884a3240065e4a38d6f899f6",
+     "chars": 30,
+     "audio": "en/c03-ex1.mp3",
+     "align": "en/c03-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c03-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "She's the best player.",
+     "textSha256": "7a1f4fa31f21c4cf371b3d342558ff29935d434622db2f0c563f4e36c21685ad",
+     "chars": 22,
+     "audio": "en/c03-ex2.mp3",
+     "align": "en/c03-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c03-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "It was the worst day.",
+     "textSha256": "a0f18494f24fe8773af8f9f456743bb8637321868ec5925320bab552f1f15f48",
+     "chars": 21,
+     "audio": "en/c03-ex3.mp3",
+     "align": "en/c03-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c04",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c04-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Grup bir yer ya da topluluksa önüne içinde anlamındaki kelime gelir: dünya, sınıf, takım. Bir sayı ya da çoğul bir isim söylüyorsak başka bir kelime gelir. Türkçedeki dünyanın en iyisi tamlaması seni yanıltmasın.",
+     "textSha256": "91bd2f47022c353bdbfd7f50d075840779c472913bdb9040558b5bfbb5fa3a4b",
+     "chars": 212,
+     "audio": "tr/c04-tr.mp3",
+     "align": "tr/c04-tr.align.json",
+     "present": true,
+     "duration": 15.27,
+     "quality": {
+      "words": 33,
+      "exact": 32,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 1,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c04-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "It's the biggest city in the world.",
+     "textSha256": "96aab8570cfaa51e12a164e7b4269ce031d24afb7b8d86224880e28cbd32dac4",
+     "chars": 35,
+     "audio": "en/c04-ex1.mp3",
+     "align": "en/c04-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "She's the tallest of the three.",
+     "textSha256": "8c14711e994a5e97bfb2fb73858ec5fe5839dd31691edf173bfbe78264084a98",
+     "chars": 31,
+     "audio": "en/c04-ex2.mp3",
+     "align": "en/c04-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c05",
+   "type": "examples",
+   "segments": [
+    {
+     "id": "c05-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "This is the biggest room in the house.",
+     "textSha256": "ed0897fd8fadbad62f278f90ae174d14ecf272cd3e4a9fcb02d2bca48288c9e0",
+     "chars": 38,
+     "audio": "en/c05-ex1.mp3",
+     "align": "en/c05-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "She's the best player in our team.",
+     "textSha256": "24ccfce33dd822ceaeee284c4325479c807be8d61009528e5ec83711081cd506",
+     "chars": 34,
+     "audio": "en/c05-ex2.mp3",
+     "align": "en/c05-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "It was the coldest day of the year.",
+     "textSha256": "a66627af76d52f5097175bb50b10ed848c1237c25708a85537e0d2c361282d23",
+     "chars": 35,
+     "audio": "en/c05-ex3.mp3",
+     "align": "en/c05-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex4",
+     "lang": "en",
+     "role": "example",
+     "text": "This is the most interesting book in the library.",
+     "textSha256": "fcf6db75bb766bdbf09233e528c860691e4324f201775ee5486875d7ef977958",
+     "chars": 49,
+     "audio": "en/c05-ex4.mp3",
+     "align": "en/c05-ex4.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex5",
+     "lang": "en",
+     "role": "example",
+     "text": "Who is the youngest in your family?",
+     "textSha256": "9dfeef9c3b86d62282885e24098c12abb9a2400d18aa789e19643798192fe038",
+     "chars": 35,
+     "audio": "en/c05-ex5.mp3",
+     "align": "en/c05-ex5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c06",
+   "type": "contrast",
+   "segments": [
+    {
+     "id": "c06-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Türkçede en tek kelimedir, sıfat değişmez ve önüne bir şey gelmez. İngilizcede sıfat değişir ve başa küçük bir kelime gelir. Bu küçük kelimeyi unutmak çok olağan, zamanla oturur.",
+     "textSha256": "4fc9cae5f8a67e2422e0fc02144d56d5b123a638ac1f2251ecf41b9b0ad94f15",
+     "chars": 178,
+     "audio": "tr/c06-tr.mp3",
+     "align": "tr/c06-tr.align.json",
+     "present": true,
+     "duration": 11.7,
+     "quality": {
+      "words": 28,
+      "exact": 28,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c06-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "She is the best student.",
+     "textSha256": "99022832389e32c7bec9f54a1899ee6496837c38f8d3ebddb574fb985f3c2c57",
+     "chars": 24,
+     "audio": "en/c06-ex1.mp3",
+     "align": "en/c06-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c06-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "It's the best café in the world.",
+     "textSha256": "f28a34383be14bfa198106a8972ae07ed577c9a7670ce716593491cbaed7c390",
+     "chars": 32,
+     "audio": "en/c06-ex2.mp3",
+     "align": "en/c06-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c07",
+   "type": "practice",
+   "segments": [
+    {
+     "id": "c07-q5",
+     "lang": "en",
+     "role": "say",
+     "text": "It's the best pancake in the world.",
+     "textSha256": "d518f84e1ff295728914130bdf066baa2630d5739587214784bbe73132ca6868",
+     "chars": 35,
+     "audio": "en/c07-q5.mp3",
+     "align": "en/c07-q5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c08",
+   "type": "seeInStory",
+   "segments": [
+    {
+     "id": "c08-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Kitaplarda kimin en iyi, kimin en nazik olduğu çok söyleniyor. Şu cümlelere bir daha bak.",
+     "textSha256": "3628c563b296e582077b910a46081ce668a42ebcd899316329782ab87be51d42",
+     "chars": 89,
+     "audio": "tr/c08-tr.mp3",
+     "align": "tr/c08-tr.align.json",
+     "present": true,
+     "duration": 5.12,
+     "quality": {
+      "words": 15,
+      "exact": 15,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    }
+   ]
+  },
+  {
+   "card": "c09",
+   "type": "rule",
+   "segments": [
+    {
+     "id": "c09-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "En için başa küçük bir kelime gelir. Kısa sıfata -est eklenir, uzun sıfatın önüne en anlamında bir kelime gelir.",
+     "textSha256": "97693dca1073a6ea831a20570f4b99a5c21034b8763dd35ee808fa0efffed981",
+     "chars": 112,
+     "audio": "tr/c09-tr.mp3",
+     "align": "tr/c09-tr.align.json",
+     "present": true,
+     "duration": 8.16,
+     "quality": {
+      "words": 19,
+      "exact": 18,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c09-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "This is the biggest room in the house.",
+     "textSha256": "ed0897fd8fadbad62f278f90ae174d14ecf272cd3e4a9fcb02d2bca48288c9e0",
+     "chars": 38,
+     "audio": "en/c09-ex1.mp3",
+     "align": "en/c09-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  }
+ ]
+}

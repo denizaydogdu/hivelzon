@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "id": "G-A2-01-present-continuous",
+  "level": "A2",
+  "titleTr": "Şimdiki zaman: am / is / are + -ing",
+  "titleEn": "Present continuous",
+  "goalTr": "Şu anda olan ve geçici durumları am, is, are ve fiil + -ing ile anlatırsın.",
+  "prerequisites": [
+    "G-A1-01-to-be",
+    "G-A1-11-present-simple"
+  ],
+  "contentVersion": 1,
+  "status": "DRAFT",
+  "aiGenerated": true,
+  "teacherReview": null,
+  "linksTo": {
+    "episodes": [
+      "A1-011",
+      "A1-012"
+    ],
+    "books": [
+      "A2-K02",
+      "A2-K03"
+    ]
+  },
+  "properNouns": [
+    "Mrs Berg",
+    "Paloma",
+    "Jonas",
+    "Elif",
+    "Finn",
+    "English"
+  ],
+  "pronunciations": [
+    {
+      "term": "-ing",
+      "say_as": "ing"
+    }
+  ],
+  "narration": {
+    "tr": {
+      "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+    }
+  }
+}

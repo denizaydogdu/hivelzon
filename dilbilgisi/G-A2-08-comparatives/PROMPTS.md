@@ -1,0 +1,32 @@
+# G-A2-08-comparatives PROMPTS
+
+Ders: Karşılaştırma: -er / more … than · Dalga 1 A2 (H-080) · `docs/DILBILGISI.md` §4, §9
+
+## Metin
+- **Yazan:** Claude (Opus 5.5), Claude Code oturumu, 2026-10-14. Ayrı bir LLM istemi ya da API çağrısı yok; metin doğrudan bu depoda yazıldı.
+- **Girdi:** `dilbilgisi/MUFREDAT.md` (H-076, onaylı) konu kaydı: hedef, Türkçeyle karşılaştırma, tipik hata, hikâye bağı. Biçim ve ton: pilot dersler (`G-A1-01-to-be`, `G-A1-03-a-an`, `G-A1-13-third-person-s`), `icerik/_evren/CHARACTER_PROFILES.md` (Hi), `docs/ARAYUZ-METINLERI.md`.
+- **Kurallar:** Türkçe anlatım kart başına en çok 3 kısa cümle, Hi'nin sesiyle, suçlamasız. İngilizce kelime Türkçe anlatıma yazılmaz; ayrı örnek parçasına (`+`) taşınır. Örnekler A2 kapsamasında ve en çok 12 kelime (`grammar_lint.py`).
+- **Görsel ve Higgsfield:** kullanılmadı (şemalar kodla çizilir; kredi harcanmadı).
+- **Söyleniş:** `-er` → "er".
+
+## Ses çağrıları
+Türkçe anlatım: PatientDesk Alania (`alania-v2`, `alania2-f1`) + Duyu (`duyu-1`) kelime zamanı. Lansman kampanyası: 14 Kasım 2026'ya kadar ücretsiz ve sınırsız (kullanıcı bildirimi 2026-10-14). Bu dalganın Türkçe çağrıları ayrı defterde: `kitaplar/_maliyet/patientdesk-h080b.json`. İngilizce örnekler (Sarah, ElevenLabs): henüz üretilmedi, yalnız kuru çalışma.
+
+Aşağıdaki satırları `tts_lesson.py` yazar.
+
+## Türkçe seslendirme kayıtları (tts_tr.py)
+
+| Tarih (UTC) | Parça | Model | Ses | Sürüm | Karakter | Ses (sn) | İstek kimliği | Metin sha256 |
+|---|---|---|---|---|---|---|---|---|
+| 2026-10-14T13:09:47Z | c01-tr | alania-v2 | alania2-f1 | alania-v2.1 | 112 | 6.88 | 5f99f2e9cc934e17bd4baef0c6407361 | c0cf70aafff1542c |
+| 2026-10-14T13:09:48Z | c01-tr | duyu-1 | - | - | - | 6.88 | - | c0cf70aafff1542c |
+| 2026-10-14T13:09:50Z | c02-tr | alania-v2 | alania2-f1 | alania-v2.1 | 168 | 11.69 | bc494ac48c8b4e44941a9f10edd3cb18 | bae72c704c9a3ee0 |
+| 2026-10-14T13:09:52Z | c02-tr | duyu-1 | - | - | - | 11.69 | - | bae72c704c9a3ee0 |
+| 2026-10-14T13:09:55Z | c03-tr | alania-v2 | alania2-f1 | alania-v2.1 | 131 | 8.32 | cd3790c733914f25b94847f81a4aa2e5 | a36c6d7632d48782 |
+| 2026-10-14T13:09:56Z | c03-tr | duyu-1 | - | - | - | 8.32 | - | a36c6d7632d48782 |
+| 2026-10-14T13:09:58Z | c05-tr | alania-v2 | alania2-f1 | alania-v2.1 | 182 | 12.03 | dfb7ec1b2e3e4febb740e29473f96c03 | e95c6aa25bbb81ab |
+| 2026-10-14T13:09:59Z | c05-tr | duyu-1 | - | - | - | 12.03 | - | e95c6aa25bbb81ab |
+| 2026-10-14T13:10:02Z | c07-tr | alania-v2 | alania2-f1 | alania-v2.1 | 70 | 4.64 | f1c4b59fee994479a421208207869de8 | b5b7fbfec7386e57 |
+| 2026-10-14T13:10:02Z | c07-tr | duyu-1 | - | - | - | 4.64 | - | b5b7fbfec7386e57 |
+| 2026-10-14T13:10:04Z | c08-tr | alania-v2 | alania2-f1 | alania-v2.1 | 133 | 8.16 | a75393aecb6f42758d1fe66ebb07698b | e24ad987587a9344 |
+| 2026-10-14T13:10:05Z | c08-tr | duyu-1 | - | - | - | 8.16 | - | e24ad987587a9344 |

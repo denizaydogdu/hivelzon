@@ -1,0 +1,461 @@
+{
+ "schemaVersion": 1,
+ "lessonId": "G-A2-12-adverbs",
+ "voices": {
+  "tr": {
+   "model": "alania-v2",
+   "voice": "alania2-f1",
+   "timing": "duyu-1",
+   "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+  },
+  "en": {
+   "model": "eleven_v3",
+   "voice": "EXAVITQu4vr4xnSDxMaL",
+   "speed": 0.95
+  }
+ },
+ "cards": [
+  {
+   "card": "c01",
+   "type": "hook",
+   "segments": [
+    {
+     "id": "c01-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Jonas uslu bir öğrenci, Paloma ise pek değil. Bu cümlede bir şeyin ne sıklıkla olduğunu söyleyen bir kelime var. Yerine dikkat et.",
+     "textSha256": "7bcd17e900ea33327938cddd0e0b204e02c6efc59cec4f0792600787927ddff9",
+     "chars": 130,
+     "audio": "tr/c01-tr.mp3",
+     "align": "tr/c01-tr.align.json",
+     "present": true,
+     "duration": 8.32,
+     "quality": {
+      "words": 22,
+      "exact": 21,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c01-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "He always listened to teachers.",
+     "textSha256": "89c5141f1bcd8c41eaf1f122bb6f34a4511d18473a9aa14d78c57fd12c5876c0",
+     "chars": 31,
+     "audio": "en/c01-ex1.mp3",
+     "align": "en/c01-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c02",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c02-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Ne sıklıkla olduğunu söyleyen kelimeler cümlede sabit bir yerde durur. Ana fiilin hemen önüne gelirler. Olmak fiili varsa ondan sonra gelirler.",
+     "textSha256": "f5c095b99d532ef772eb354f0d74db114aa7f4a58a0a74ca9d6b25c70276ad99",
+     "chars": 143,
+     "audio": "tr/c02-tr.mp3",
+     "align": "tr/c02-tr.align.json",
+     "present": true,
+     "duration": 10.43,
+     "quality": {
+      "words": 21,
+      "exact": 21,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c02-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I always walk to school.",
+     "textSha256": "461c135203732a8b5de500f2661ab4ea67ca5be34d169c6379e7dd816daad4f4",
+     "chars": 24,
+     "audio": "en/c02-ex1.mp3",
+     "align": "en/c02-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c02-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "She is always late.",
+     "textSha256": "d3cf82f7611a96ac99db9bb7fe6695a5077f6bb1ef642fd485c14dbf2a910c6c",
+     "chars": 19,
+     "audio": "en/c02-ex2.mp3",
+     "align": "en/c02-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c03",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c03-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Bu kelimeler en sıktan en seyreğe doğru sıralanır. Genelde ve bazen anlamındakiler cümlenin başına da gelebilir. Hiç anlamındaki kelime zaten olumsuzdur, yanına ikinci bir olumsuz gelmez.",
+     "textSha256": "a58891a2f3fff7ec95179ca73c07d105b92bf7940fa4df9b788b9982ec37fea5",
+     "chars": 187,
+     "audio": "tr/c03-tr.mp3",
+     "align": "tr/c03-tr.align.json",
+     "present": true,
+     "duration": 12.35,
+     "quality": {
+      "words": 26,
+      "exact": 25,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I usually get up at seven.",
+     "textSha256": "6c54deb762e1bf8265088db881f3ef56796ebce504d2723e84e07ddf06e7c4e9",
+     "chars": 26,
+     "audio": "en/c03-ex1.mp3",
+     "align": "en/c03-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c03-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "We sometimes eat fish.",
+     "textSha256": "0c9b6b18c30d37fbfb21910921af6882f14303fe84fca96f7eb3fa6874c1c1c3",
+     "chars": 22,
+     "audio": "en/c03-ex2.mp3",
+     "align": "en/c03-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c03-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "He never drinks coffee.",
+     "textSha256": "b64fca404003be7a1e1050c550b30a11ef451482d96a08ed078c119ef64f24a4",
+     "chars": 23,
+     "audio": "en/c03-ex3.mp3",
+     "align": "en/c03-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c04",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c04-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Bir işin nasıl yapıldığını söylemek için sıfata -ly eklenir. Türkçedeki yavaşça, dikkatlice kelimelerine benzer. Bu kelime çoğu zaman fiilden ya da nesneden sonra gelir.",
+     "textSha256": "c0cebce6e714738cd22c07e64a72204dfb6bd47c5c4a0c0abc839790cd444233",
+     "chars": 169,
+     "audio": "tr/c04-tr.mp3",
+     "align": "tr/c04-tr.align.json",
+     "present": true,
+     "duration": 11.71,
+     "quality": {
+      "words": 24,
+      "exact": 22,
+      "fuzzy": 1,
+      "weak": 1,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 1,
+      "score": 0.958,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c04-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "Please speak slowly.",
+     "textSha256": "4cf75e1f8451b8473b7cd9aed244efd165f670087ae828341dac09269d36fc70",
+     "chars": 20,
+     "audio": "en/c04-ex1.mp3",
+     "align": "en/c04-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "She closed the door quietly.",
+     "textSha256": "6f385db08bb7bae6264f67101f6e987f9a2495335ce4bbf0ff0e3456ad00fc1e",
+     "chars": 28,
+     "audio": "en/c04-ex2.mp3",
+     "align": "en/c04-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c05",
+   "type": "examples",
+   "segments": [
+    {
+     "id": "c05-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "Mateo usually swims in summer.",
+     "textSha256": "fc81e8365ea4a8f9a74142634eaffd86422e81958b2140d9e91c5c0195f3ff99",
+     "chars": 30,
+     "audio": "en/c05-ex1.mp3",
+     "align": "en/c05-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "My cat is always hungry.",
+     "textSha256": "0650dd0beddd348bae99ebaae06c237f0bb45182e5d197c71c5378dc5319d294",
+     "chars": 24,
+     "audio": "en/c05-ex2.mp3",
+     "align": "en/c05-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "We often go to the park on Sunday.",
+     "textSha256": "c9907ccee0622c6c7afe1c15efee9f6405da16fb06b00b10c932932bd3c5c313",
+     "chars": 34,
+     "audio": "en/c05-ex3.mp3",
+     "align": "en/c05-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex4",
+     "lang": "en",
+     "role": "example",
+     "text": "Please read the question carefully.",
+     "textSha256": "ca992131988c2885d64ef5df709dee26c11626fd9937a74490c3c0c2bcb24458",
+     "chars": 35,
+     "audio": "en/c05-ex4.mp3",
+     "align": "en/c05-ex4.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex5",
+     "lang": "en",
+     "role": "example",
+     "text": "She speaks English very well.",
+     "textSha256": "5d8e8b92da3084b5e95c6e0398085839a075a9dee609b18174839e938e1429f8",
+     "chars": 29,
+     "audio": "en/c05-ex5.mp3",
+     "align": "en/c05-ex5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c06",
+   "type": "contrast",
+   "segments": [
+    {
+     "id": "c06-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Türkçede hep ve genelde cümlede serbestçe gezebilir. İngilizcede bu kelimelerin yeri sabittir ve hiç anlamındaki kelimenin yanına ikinci bir olumsuz gelmez. Yavaşça yerine sıfatın kendisini kullanmak da çok olağan bir hata.",
+     "textSha256": "f24c0e935edb75a9bb347b39c8fa9d46e7d1100823b758caa3f192bbc20bc396",
+     "chars": 223,
+     "audio": "tr/c06-tr.mp3",
+     "align": "tr/c06-tr.align.json",
+     "present": true,
+     "duration": 16.34,
+     "quality": {
+      "words": 31,
+      "exact": 31,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c06-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I always go to school by bus.",
+     "textSha256": "b279fbb5b7bfbdcaf47aefc11b8470cc7907f50f434358a43b9c9e62eac16b66",
+     "chars": 29,
+     "audio": "en/c06-ex1.mp3",
+     "align": "en/c06-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c06-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "I never eat meat.",
+     "textSha256": "1ebd95039bc09efc6d6a9e0002d203817e05228cfa960d95d16fab46b0b0fb68",
+     "chars": 17,
+     "audio": "en/c06-ex2.mp3",
+     "align": "en/c06-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c06-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "Please speak slowly.",
+     "textSha256": "4cf75e1f8451b8473b7cd9aed244efd165f670087ae828341dac09269d36fc70",
+     "chars": 20,
+     "audio": "en/c06-ex3.mp3",
+     "align": "en/c06-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c07",
+   "type": "practice",
+   "segments": []
+  },
+  {
+   "card": "c08",
+   "type": "seeInStory",
+   "segments": [
+    {
+     "id": "c08-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Bu kelimeler hikâyede ve kitaplarda da var. Şu cümlelere bir daha bak.",
+     "textSha256": "ab65d6764c5129b3ca984810cc5e372ba2ff6ec1450f386532123b9784121aef",
+     "chars": 70,
+     "audio": "tr/c08-tr.mp3",
+     "align": "tr/c08-tr.align.json",
+     "present": true,
+     "duration": 4.16,
+     "quality": {
+      "words": 12,
+      "exact": 11,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    }
+   ]
+  },
+  {
+   "card": "c09",
+   "type": "rule",
+   "segments": [
+    {
+     "id": "c09-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Sıklık kelimesi ana fiilden önce, olmak fiilinden sonra gelir. Bir işin nasıl yapıldığını söylemek için sıfata -ly eklenir.",
+     "textSha256": "0931b2ffbb264e51c8b97d585cf4ca72560bbcb79cb28027e9c4bd61e45323cf",
+     "chars": 123,
+     "audio": "tr/c09-tr.mp3",
+     "align": "tr/c09-tr.align.json",
+     "present": true,
+     "duration": 7.68,
+     "quality": {
+      "words": 18,
+      "exact": 16,
+      "fuzzy": 1,
+      "weak": 1,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 1,
+      "score": 0.944,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c09-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "She always speaks slowly.",
+     "textSha256": "75815a164fc98547b30bc8559c124869c9b54ce2cc3f9ccac2802eae8c6db3d1",
+     "chars": 25,
+     "audio": "en/c09-ex1.mp3",
+     "align": "en/c09-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  }
+ ]
+}

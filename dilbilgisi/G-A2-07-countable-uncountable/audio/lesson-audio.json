@@ -1,0 +1,475 @@
+{
+ "schemaVersion": 1,
+ "lessonId": "G-A2-07-countable-uncountable",
+ "voices": {
+  "tr": {
+   "model": "alania-v2",
+   "voice": "alania2-f1",
+   "timing": "duyu-1",
+   "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+  },
+  "en": {
+   "model": "eleven_v3",
+   "voice": "EXAVITQu4vr4xnSDxMaL",
+   "speed": 0.95
+  }
+ },
+ "cards": [
+  {
+   "card": "c01",
+   "type": "hook",
+   "segments": [
+    {
+     "id": "c01-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Kafede Sam sipariş veriyor. Süt sayılamaz, iki süt diyemeyiz. Bu yüzden önüne biraz anlamında küçük bir kelime koyuyor.",
+     "textSha256": "0de2d03750b9b28828fdf78580f31bcdc3c61549452c916b559f4397d6027469",
+     "chars": 119,
+     "audio": "tr/c01-tr.mp3",
+     "align": "tr/c01-tr.align.json",
+     "present": true,
+     "duration": 7.36,
+     "quality": {
+      "words": 18,
+      "exact": 18,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c01-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "And some milk, please?",
+     "textSha256": "b3a265f19553852eb810415b9626562529806b8e2964abe3a1bdbeb93bfa0af5",
+     "chars": 22,
+     "audio": "en/c01-ex1.mp3",
+     "align": "en/c01-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c02",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c02-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Bazı isimler sayılır: bir elma, iki elma. Su, süt, para ve ekmek gibi isimler ise sayılamaz. Bunlar bir anlamındaki küçük kelimeyi ve çoğul ekini almaz.",
+     "textSha256": "7d87d5287db7d0f329ef0b0118921475039b63f07ae4462841e81aefaf7f4710",
+     "chars": 152,
+     "audio": "tr/c02-tr.mp3",
+     "align": "tr/c02-tr.align.json",
+     "present": true,
+     "duration": 11.53,
+     "quality": {
+      "words": 25,
+      "exact": 25,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 4,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c02-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I have two apples.",
+     "textSha256": "726b1a3756495fc51e52b562f2a910b3eb8a634aac08cafa24418a631053e245",
+     "chars": 18,
+     "audio": "en/c02-ex1.mp3",
+     "align": "en/c02-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c02-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "I need some water.",
+     "textSha256": "6150b66a2ce7474bb0642ed310b8e0e2f4e4016ff3dafe4bf403ba74ba7a1395",
+     "chars": 18,
+     "audio": "en/c02-ex2.mp3",
+     "align": "en/c02-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c03",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c03-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Olumlu cümlede biraz için bir kelime kullanılır. Soru ve olumsuz cümlede çoğu zaman başka bir kelime gelir. İkisi de hem sayılan hem sayılamayan isimlerle kullanılır.",
+     "textSha256": "63902156e518b2063eff31fd9434e21997c9ad912f643ab3ad8187745e0d880b",
+     "chars": 166,
+     "audio": "tr/c03-tr.mp3",
+     "align": "tr/c03-tr.align.json",
+     "present": true,
+     "duration": 10.43,
+     "quality": {
+      "words": 25,
+      "exact": 25,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "There is some bread.",
+     "textSha256": "c6c4b068cbdafd4404db961d0551097428c21970f65e3a2fd34fae420fff32a4",
+     "chars": 20,
+     "audio": "en/c03-ex1.mp3",
+     "align": "en/c03-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c03-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "Is there any milk?",
+     "textSha256": "7258518922bbc7f652812fdf326b7fb527ccea68b21bd37570e149703b3c111f",
+     "chars": 18,
+     "audio": "en/c03-ex2.mp3",
+     "align": "en/c03-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c03-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "There aren't any eggs.",
+     "textSha256": "7afaf0d5ef66af0f14d4df886d595c3fa2d99a31c148562b4a2f344912db8567",
+     "chars": 22,
+     "audio": "en/c03-ex3.mp3",
+     "align": "en/c03-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c04",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c04-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Çok demek için sayılan isimlerle bir kelime, sayılamayanlarla başka bir kelime kullanılır. Bu ikisi en çok soru ve olumsuz cümlede geçer. Olumlu cümlede üç kelimelik bir kalıp daha doğal durur.",
+     "textSha256": "76e54c9640bd77d7bcf9b6254b0257e298809173a210b45b53721ce8228beca7",
+     "chars": 193,
+     "audio": "tr/c04-tr.mp3",
+     "align": "tr/c04-tr.align.json",
+     "present": true,
+     "duration": 12.19,
+     "quality": {
+      "words": 30,
+      "exact": 30,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c04-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "How many eggs do we need?",
+     "textSha256": "dea4d4f7b66266117d1f5ff0b5cac9893dbb98c3765d31b74063cf22abbfe9ad",
+     "chars": 25,
+     "audio": "en/c04-ex1.mp3",
+     "align": "en/c04-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "We don't have much time.",
+     "textSha256": "da6f7b83364a89cf123448ee3c5e83e78a1c15ea7498f443245d3c8d61919361",
+     "chars": 24,
+     "audio": "en/c04-ex2.mp3",
+     "align": "en/c04-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "She drinks a lot of water.",
+     "textSha256": "72ea66c993b00d28522c61f0b50e315a0d917b1a9922f9f3c4bca6082322cfdf",
+     "chars": 26,
+     "audio": "en/c04-ex3.mp3",
+     "align": "en/c04-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c05",
+   "type": "examples",
+   "segments": [
+    {
+     "id": "c05-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "Can I have some water, please?",
+     "textSha256": "e11a23aa1fc36c58cc5f71df863c08c81f46d58e7fa74895ce11bd831f1c1167",
+     "chars": 30,
+     "audio": "en/c05-ex1.mp3",
+     "align": "en/c05-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "There aren't any eggs in the fridge.",
+     "textSha256": "a897e1c2ee26cac6bc4dcdc46438a3046cc5733e7521c7918a102157d481c188",
+     "chars": 36,
+     "audio": "en/c05-ex2.mp3",
+     "align": "en/c05-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "I don't have much money.",
+     "textSha256": "74457233be04ac72268693be8bc399f3efbca7bb1633b792f236f2ed06cbf0a8",
+     "chars": 24,
+     "audio": "en/c05-ex3.mp3",
+     "align": "en/c05-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex4",
+     "lang": "en",
+     "role": "example",
+     "text": "There are a lot of people on the beach.",
+     "textSha256": "93df7e6c7e8bb3e034b4583d1781df3d17d35042fbb366403b6bf6848355c34a",
+     "chars": 39,
+     "audio": "en/c05-ex4.mp3",
+     "align": "en/c05-ex4.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex5",
+     "lang": "en",
+     "role": "example",
+     "text": "How many brothers do you have?",
+     "textSha256": "0396f6de7ba0b1cfc695ba4fa8c2d254c0ae6584e249613431680d2018edc87a",
+     "chars": 30,
+     "audio": "en/c05-ex5.mp3",
+     "align": "en/c05-ex5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c06",
+   "type": "contrast",
+   "segments": [
+    {
+     "id": "c06-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Türkçede neredeyse her şey sayılır: iki su, bilgiler, tavsiyeler. İngilizcede bilgi, tavsiye ve ödev gibi kelimeler sayılamaz ve çoğul olmaz. Bunu karıştırmak çok olağan, kelimeyle birlikte öğrenirsin.",
+     "textSha256": "b0c407bb0521b1f3cd97689af977714ac8258d743dfde264eff19f0ba3329215",
+     "chars": 201,
+     "audio": "tr/c06-tr.mp3",
+     "align": "tr/c06-tr.align.json",
+     "present": true,
+     "duration": 13.63,
+     "quality": {
+      "words": 27,
+      "exact": 27,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c06-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I need some information.",
+     "textSha256": "bf06be1649239f9dbc76fb46951a0571f6a299cf66b37d1568687ed531b984bf",
+     "chars": 24,
+     "audio": "en/c06-ex1.mp3",
+     "align": "en/c06-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c06-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "I don't have any money.",
+     "textSha256": "0c031540183a2d1af1dc19d5ecc50034f3d3013a6b1061f8d2f5fbe59be4674c",
+     "chars": 23,
+     "audio": "en/c06-ex2.mp3",
+     "align": "en/c06-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c07",
+   "type": "practice",
+   "segments": [
+    {
+     "id": "c07-q5",
+     "lang": "en",
+     "role": "say",
+     "text": "Can I have some water, please?",
+     "textSha256": "e11a23aa1fc36c58cc5f71df863c08c81f46d58e7fa74895ce11bd831f1c1167",
+     "chars": 30,
+     "audio": "en/c07-q5.mp3",
+     "align": "en/c07-q5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c08",
+   "type": "seeInStory",
+   "segments": [
+    {
+     "id": "c08-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Bu kelimeler hikâyede ve kitaplarda da var. Şu cümlelere bir daha bak.",
+     "textSha256": "ab65d6764c5129b3ca984810cc5e372ba2ff6ec1450f386532123b9784121aef",
+     "chars": 70,
+     "audio": "tr/c08-tr.mp3",
+     "align": "tr/c08-tr.align.json",
+     "present": true,
+     "duration": 5.6,
+     "quality": {
+      "words": 12,
+      "exact": 11,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    }
+   ]
+  },
+  {
+   "card": "c09",
+   "type": "rule",
+   "segments": [
+    {
+     "id": "c09-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Sayılamayan isimler çoğul olmaz. Olumlu cümlede biraz için bir kelime, soru ve olumsuz cümlede başka bir kelime gelir.",
+     "textSha256": "664c51a91737264959c084cec097e17c8c5839f9421e4d1eb3d5fcd314455e49",
+     "chars": 118,
+     "audio": "tr/c09-tr.mp3",
+     "align": "tr/c09-tr.align.json",
+     "present": true,
+     "duration": 8.0,
+     "quality": {
+      "words": 18,
+      "exact": 18,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c09-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "There aren't any eggs, but there is some milk.",
+     "textSha256": "492ece5bec98e6a8ba4f6ef19942760695ddf211518ad4f6f3775b92a62c5752",
+     "chars": 46,
+     "audio": "en/c09-ex1.mp3",
+     "align": "en/c09-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  }
+ ]
+}

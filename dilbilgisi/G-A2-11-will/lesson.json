@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "G-A2-11-will",
+  "level": "A2",
+  "titleTr": "will: anlık karar, söz ve tahmin",
+  "titleEn": "will",
+  "goalTr": "Konuşma anında verdiğin kararı, sözü, teklifi ve görüşe dayalı tahmini will ve won't ile söylersin.",
+  "prerequisites": [
+    "G-A2-10-going-to"
+  ],
+  "contentVersion": 1,
+  "status": "DRAFT",
+  "aiGenerated": true,
+  "teacherReview": null,
+  "linksTo": {
+    "episodes": [
+      "A1-010"
+    ],
+    "books": []
+  },
+  "properNouns": [
+    "Alex"
+  ],
+  "pronunciations": [
+    {
+      "term": "Alex",
+      "say_as": "Aleks"
+    }
+  ],
+  "narration": {
+    "tr": {
+      "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+    }
+  }
+}
