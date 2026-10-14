@@ -55,7 +55,8 @@ class ReaderScreen extends ConsumerStatefulWidget {
   ConsumerState<ReaderScreen> createState() => _ReaderScreenState();
 }
 
-class _ReaderScreenState extends ConsumerState<ReaderScreen> {
+class _ReaderScreenState extends ConsumerState<ReaderScreen>
+    with WidgetsBindingObserver {
   ReaderController? _c;
   Book? _book;
   BookColors? _colors;
@@ -83,7 +84,15 @@ class _ReaderScreenState extends ConsumerState<ReaderScreen> {
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addObserver(this);
     unawaited(_load());
+  }
+
+  /// H-068: ses arka planda (ekran kilitliyken) sürer; öne dönünce vurgu
+  /// ve sayfa çaların konumuyla yeniden eşlenir.
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.resumed) unawaited(_c?.resync());
   }
 
   Future<void> _load() async {
@@ -254,6 +263,7 @@ class _ReaderScreenState extends ConsumerState<ReaderScreen> {
 
   @override
   void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
     _followTimer?.cancel();
     _c?.removeListener(_onController);
     _c?.dispose();

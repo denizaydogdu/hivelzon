@@ -6,6 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hivelzon/app/theme.dart';
+import 'package:hivelzon/features/library/application/background_book_audio.dart';
 import 'package:hivelzon/features/library/application/book_audio.dart';
 import 'package:hivelzon/features/library/application/library_providers.dart';
 import 'package:hivelzon/features/library/presentation/reader_screen.dart';
@@ -18,6 +19,7 @@ import 'package:hivelzon/shared/speech/speech_providers.dart';
 import 'package:hivelzon/shared/storage/app_database.dart';
 import 'package:hivelzon/shared/storage/storage_providers.dart';
 
+import 'fake_audio_session.dart';
 import 'fake_book_audio.dart';
 import 'fake_content_source.dart';
 
@@ -30,6 +32,7 @@ class LibraryHarness {
     this.suggestedLevel,
     bool booksFail = false,
     Set<String> unnarrated = const {},
+    this.background = false,
   }) : db = AppDatabase.memory(),
        source = FakeContentSource(packageIds: const ['A1-001'])
          ..books = testBookSummaries(bookIds)
@@ -38,6 +41,28 @@ class LibraryHarness {
     audio = FakeBookAudio(
       clock,
       durations: const {'c1.m4a': 11.3, 'c2.m4a': 7.0},
+    );
+    engine = FakeAudioEngine(
+      clock,
+      durations: const {'c1.m4a': 11.3, 'c2.m4a': 7.0},
+    );
+  }
+
+  /// H-068: okuyucu gerçek arka plan bağdaştırıcısıyla (`BackgroundBookAudio`)
+  /// açılır; altında sahte motor ([engine]) ve sahte oturum ([session]).
+  final bool background;
+  late final FakeAudioEngine engine;
+  final session = FakeSessionHost();
+
+  /// Son açılan arka plan sesi.
+  BackgroundBookAudio? backgroundAudio;
+
+  BookAudio _makeAudio() {
+    if (!background) return audio;
+    return backgroundAudio = BackgroundBookAudio(
+      engine: engine,
+      host: session,
+      pauseStateDelay: Duration.zero,
     );
   }
 
@@ -48,7 +73,10 @@ class LibraryHarness {
   final String? suggestedLevel;
   late GoRouter router;
 
-  Future<void> dispose() => db.close();
+  Future<void> dispose() async {
+    await session.close();
+    await db.close();
+  }
 
   /// Uygulamayı [location]'da açar. Yollar: `/hikaye`, `/kitap/:id`,
   /// `/defter`.
@@ -120,7 +148,7 @@ class LibraryHarness {
           learningEventLogProvider.overrideWithValue(
             InMemoryLearningEventLog(),
           ),
-          bookAudioFactoryProvider.overrideWithValue(() => audio as BookAudio),
+          bookAudioFactoryProvider.overrideWithValue(_makeAudio),
           readerClockProvider.overrideWithValue(clock.call),
           libraryRandomProvider.overrideWithValue(math.Random(3)),
           speechVisibleProvider.overrideWithValue(false),
