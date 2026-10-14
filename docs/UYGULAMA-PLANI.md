@@ -78,7 +78,7 @@ Kullanıcı Profil'i beğenmedi ("her şey iç içe, düz yazı gibi"); bütün 
 | **T1** | **H-058** Ekran taslakları v2 | ~10 ekran + ~6 illüstrasyon (Higgsfield, ~8 kr, maliyet önce) | Taslaklar kullanıcı onaylı | ✅ |
 | **T2** | **H-059** Profil + Hesap + Hi gizlilik + hukuk metni | Şekilli başlık, istatistik şeridi, gruplanmış ayarlar, tehlikeli bölge | Önce/sonra; golden; kullanıcı onayı | ✅ |
 | **—** | **H-039** Açılış (yeni tasarımla) | Kapsam aynı; H-057 bileşenleri | H-039 kriterleri | ✅ |
-| **T3** | **H-060** Ana Sayfa + harita + bölüm paneli + jenerik | Hedef halkası, hero kartı, harita animasyonu | Önce/sonra; golden | ⏳ |
+| **T3** | **H-060** Ana Sayfa + harita + bölüm paneli + jenerik | Hedef halkası, hero kartı, harita animasyonu | Önce/sonra; golden | 🔄 |
 | **T4** | **H-061** Defter + tekrar + konu seti + sahne avı | Tek satır biçimi, geri bildirim animasyonu, özet istatistikleri | Önce/sonra; golden | ⏳ |
 | **T5** | **H-062** Oynatıcı katmanları | Palet belirteçlere, ~42 sabit metin l10n'e, giriş animasyonları | H-031/H-054 ölçümleri bozulmaz | ⏳ |
 | **T6** | **H-063** Hi'nin canlılığı | Kodla çizilen ifade durumları, balonda nefes alma, panel bölünmesi | "Hareketi azalt" testi | ⏳ |

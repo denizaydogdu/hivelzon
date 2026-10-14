@@ -124,7 +124,7 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 | T0 | H-057 | Tasarım sistemi v2 (belirteçler, bileşen kitaplığı, hareket, yazı tipleri) | Yüksek | H-053, H-054 | ✅ |
 | T1 | H-058 | Ekran taslakları v2 ve illüstrasyonlar (Higgsfield, ~8 kr) | Yüksek | H-057 | ✅ |
 | T2 | H-059 | Profil, Hesap, "Hi benim hakkımda", hukuk metni tasarımı | Yüksek | H-057, H-058 | ✅ |
-| T3 | H-060 | Ana Sayfa, harita, bölüm paneli, jenerik tasarımı | Orta | H-057, H-058, H-039 | ⏳ |
+| T3 | H-060 | Ana Sayfa, harita, bölüm paneli, jenerik tasarımı | Orta | H-057, H-058, H-039 | 🔄 |
 | T4 | H-061 | Defter, Kelime tekrarı, Konu seti, Sahne avı tasarımı | Orta | H-057, H-058 | ⏳ |
 | T5 | H-062 | Oynatıcı katmanlarının tasarımı | Orta | H-057 | ⏳ |
 | T6 | H-063 | Hi'nin canlılığı (ifadeler, animasyonlar) | Orta | H-057 | ⏳ |
@@ -351,3 +351,4 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
   - H-039 ayrı dalda yapıldı ve `main`'e birleştirildi (494 test): açılış akışı, 13 altına hesap yok, Türkçe altyazı tercihi, atlanabilir kademeli test (taslak 22 soru). Açık kararlar kullanıcıya soruldu.
   - Kullanıcı kararları: doğum yılı saklanmaz (yalnız geçmemiş eşik), adım zorunlu, hesapta yıl yeniden sorulur. Soru havuzu onaylandı; H-039 bitti. Sıradaki H-060.
   - Kullanıcı isteği: Kitaplık (seviyeli, resimli, sesli kitaplar; okunan cümle vurgulu; dokun → Türkçe; Defter'e ekle; okuduklarım/yarıda kalanlar; 6 seviye × 5 = 30 kitap). Önerilen kararlar onaylandı (pilot önce, ElevenLabs, kısa kitap, bağımsız türler). `docs/KITAPLIK.md` ve H-065…H-073 açıldı. H-060 ayrı dalda sürüyor.
+  - H-060 ayrı dalda yapıldı ve `main`'e birleştirildi (530 test): hedef halkalı Ana Sayfa, yeni harita başlığı, bir kez oynayan bölüm açılış ışığı, AppSheet bölüm paneli. Kullanıcı onayı ve açık sorular bekleniyor.

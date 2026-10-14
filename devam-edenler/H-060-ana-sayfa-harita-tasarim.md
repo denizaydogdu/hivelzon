@@ -1,6 +1,6 @@
 # H-060: Ana Sayfa, Hikâye haritası, bölüm paneli ve jenerik tasarımı
 
-- **Durum:** Yapılacak
+- **Durum:** Devam ediyor (kod bitti ve `main`'de, flutter test 530/530; kullanıcının tasarım onayı ve 3 açık soru bekleniyor)
 - **Tür:** Uygulama (tasarım)
 - **Faz:** Tasarım yenilemesi T3 (`docs/UYGULAMA-PLANI.md`)
 - **Bağımlılık:** H-057, H-058, H-039
