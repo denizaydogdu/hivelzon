@@ -1,0 +1,432 @@
+{
+ "schemaVersion": 1,
+ "lessonId": "G-C1-01-inversion",
+ "voices": {
+  "tr": {
+   "model": "alania-v2",
+   "voice": "alania2-f1",
+   "timing": "duyu-1",
+   "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+  },
+  "en": {
+   "model": "eleven_v3",
+   "voice": "EXAVITQu4vr4xnSDxMaL",
+   "speed": 1.05
+  }
+ },
+ "cards": [
+  {
+   "card": "c01",
+   "type": "hook",
+   "segments": [
+    {
+     "id": "c01-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Bu cümleyi dinle. Konuşan, hayatında gördüğü en güzel manzarayı anlatıyor. Cümle olumsuz bir kelimeyle başlıyor ve ardından soru gibi bir sıra geliyor.",
+     "textSha256": "97cca81464d7effb3c596b4ca5d49278324b12de867710d9c36b6cd5e2888090",
+     "chars": 151,
+     "audio": "tr/c01-tr.mp3",
+     "align": "tr/c01-tr.align.json",
+     "present": true,
+     "duration": 10.75,
+     "quality": {
+      "words": 22,
+      "exact": 22,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c01-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "Never have I seen such a beautiful sunset.",
+     "textSha256": "3e5de10fb07f1c37db10ca520bed2a745f678a3cf06c9362e552f7b9c4e299b5",
+     "chars": 42,
+     "audio": "en/c01-ex1.mp3",
+     "align": "en/c01-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c02",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c02-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Olumsuz ya da kısıtlayıcı bir ifade cümlenin başına geçerse sıra değişir. Yardımcı fiil öznenin önüne gelir, tıpkı soruda olduğu gibi. Ama cümle soru değildir; güçlü bir vurgudur.",
+     "textSha256": "742e1db8773fdc2503ae133d5fdbdf49e703ef4b517612f2e34426a78e792103",
+     "chars": 179,
+     "audio": "tr/c02-tr.mp3",
+     "align": "tr/c02-tr.align.json",
+     "present": true,
+     "duration": 13.46,
+     "quality": {
+      "words": 27,
+      "exact": 27,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c02-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I have never seen such a view.",
+     "textSha256": "e1f894938328fff422dc70cfe1c229cb81e01749fcbc7e524229f8a6bd0570e6",
+     "chars": 30,
+     "audio": "en/c02-ex1.mp3",
+     "align": "en/c02-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c02-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "Never have I seen such a view.",
+     "textSha256": "b56ea58ad5dc4114738b6f99a8478ee422f29cd0dbe265ec7bca2a706a864c9d",
+     "chars": 30,
+     "audio": "en/c02-ex2.mp3",
+     "align": "en/c02-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c03",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c03-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Cümlede yardımcı fiil yoksa, soruda kullandığın yardımcıyı eklersin. Geçmişte bu yardımcı geçmiş biçimiyle gelir, ana fiil yalın kalır. Olmak fiili varsa yardımcı eklenmez; olmak fiilinin kendisi öne geçer.",
+     "textSha256": "468c3c08febf4b6bfbebd25717da7ed44f7e1339325b950ba563e63417f9e2ba",
+     "chars": 206,
+     "audio": "tr/c03-tr.mp3",
+     "align": "tr/c03-tr.align.json",
+     "present": true,
+     "duration": 13.63,
+     "quality": {
+      "words": 28,
+      "exact": 28,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "Not only did she win the race, but she also broke the record.",
+     "textSha256": "2bb5cc80290ef1b1e080f92b9fba37e0a9d86f943eb7e1be39371be06816f637",
+     "chars": 61,
+     "audio": "en/c03-ex1.mp3",
+     "align": "en/c03-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c03-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "Not only is he clever, but he is also kind.",
+     "textSha256": "fd0d538b4ea7e01cdeb2e122a97dbd36ab835b511d0e03f45800c00492b23981",
+     "chars": 43,
+     "audio": "en/c03-ex2.mp3",
+     "align": "en/c03-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c04",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c04-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Bu sıra her kelimeden sonra gelmez; yalnız belli olumsuz ve kısıtlayıcı ifadelerden sonra gelir. Hiçbir zaman, nadiren, ancak o zaman, hiçbir koşulda gibi anlamlar taşırlar. Bu yapı daha çok yazıda, konuşmalarda ve resmî dilde duyulur.",
+     "textSha256": "f084c54351ed9be19958f2ca42af5fbc5c2d256b4c312fee26c1951a1c355ec5",
+     "chars": 235,
+     "audio": "tr/c04-tr.mp3",
+     "align": "tr/c04-tr.align.json",
+     "present": true,
+     "duration": 16.19,
+     "quality": {
+      "words": 35,
+      "exact": 34,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c04-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "Rarely do we see snow in İzmir.",
+     "textSha256": "cf9b671c389183865f55a493396a613cd130473900affb74d2131b1862bdf3d9",
+     "chars": 31,
+     "audio": "en/c04-ex1.mp3",
+     "align": "en/c04-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "Only then did I understand the problem.",
+     "textSha256": "87bf958707059b4b5cee34f03bbe20f1b51e5fbb7f812fff4e74dce36ffa1717",
+     "chars": 39,
+     "audio": "en/c04-ex2.mp3",
+     "align": "en/c04-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c05",
+   "type": "examples",
+   "segments": [
+    {
+     "id": "c05-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "Never have I felt so tired.",
+     "textSha256": "b7b0f6ec04e1dd4c476cd697d946a053169a051a4be15e2f20f1eb87990e18fc",
+     "chars": 27,
+     "audio": "en/c05-ex1.mp3",
+     "align": "en/c05-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "Seldom does he complain about his work.",
+     "textSha256": "0e57e919003507fc6a7a506ead1dc40f6efc52c362d14a4043fef26d19086eee",
+     "chars": 39,
+     "audio": "en/c05-ex2.mp3",
+     "align": "en/c05-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "Hardly had we arrived when it started to rain.",
+     "textSha256": "1a8833259a2c4aa16fb328ed19e1df96a11e305da1a28978ee6a8e0563eb225e",
+     "chars": 46,
+     "audio": "en/c05-ex3.mp3",
+     "align": "en/c05-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex4",
+     "lang": "en",
+     "role": "example",
+     "text": "Not until I got home did I notice the mistake.",
+     "textSha256": "e02913a4d510db19419608c8ec1d754171b7f9e28c02a96e7317499e22aba3a1",
+     "chars": 46,
+     "audio": "en/c05-ex4.mp3",
+     "align": "en/c05-ex4.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex5",
+     "lang": "en",
+     "role": "example",
+     "text": "Under no circumstances should you open this door.",
+     "textSha256": "a34f9fe52230fbc149d072d755ca9d2195b67fcea31633881a2839292b985df2",
+     "chars": 49,
+     "audio": "en/c05-ex5.mp3",
+     "align": "en/c05-ex5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c06",
+   "type": "contrast",
+   "segments": [
+    {
+     "id": "c06-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Türkçede vurguyu kelimelerin yerini değiştirerek ve sesimizle yaparız. Türkçedeki devrik cümle, yüklemin öne geçmesidir; bu başka bir şeydir. İngilizcede olumsuz ifadeyi başa alıp sırayı eski hâliyle bırakmak çok olağan bir hatadır.",
+     "textSha256": "6220fcd7ac604e1f5e31771fa926f0bbf7304b77fdb03d90a4642cac303b556f",
+     "chars": 232,
+     "audio": "tr/c06-tr.mp3",
+     "align": "tr/c06-tr.align.json",
+     "present": true,
+     "duration": 16.28,
+     "quality": {
+      "words": 31,
+      "exact": 30,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c06-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "Never have I seen such a sunset.",
+     "textSha256": "ed62b6b4c76972153c5bef136de7c8463a2f4b9383ef8f1a0b70bb55c444ce09",
+     "chars": 32,
+     "audio": "en/c06-ex1.mp3",
+     "align": "en/c06-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c06-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "Not only is he clever, but he is also kind.",
+     "textSha256": "fd0d538b4ea7e01cdeb2e122a97dbd36ab835b511d0e03f45800c00492b23981",
+     "chars": 43,
+     "audio": "en/c06-ex2.mp3",
+     "align": "en/c06-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c06-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "Only then did I understand.",
+     "textSha256": "0df2061a2de74f8a4e39a1d7fd2e996436d8830bfef7febd02ab7a010f4ba382",
+     "chars": 27,
+     "audio": "en/c06-ex3.mp3",
+     "align": "en/c06-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c07",
+   "type": "practice",
+   "segments": [
+    {
+     "id": "c07-q5",
+     "lang": "en",
+     "role": "say",
+     "text": "Never have I seen such a beautiful sunset.",
+     "textSha256": "3e5de10fb07f1c37db10ca520bed2a745f678a3cf06c9362e552f7b9c4e299b5",
+     "chars": 42,
+     "audio": "en/c07-q5.mp3",
+     "align": "en/c07-q5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c08",
+   "type": "rule",
+   "segments": [
+    {
+     "id": "c08-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Olumsuz ya da kısıtlayıcı bir ifade başa gelirse yardımcı fiil özneden önce gelir. Yardımcı fiil yoksa soru yardımcısı eklenir; bu yapı vurgu katar ve resmîdir.",
+     "textSha256": "4d57c0eda4aaceb34c27e19698359a0d7829b65ef03932f29ab47d189f809da8",
+     "chars": 160,
+     "audio": "tr/c08-tr.mp3",
+     "align": "tr/c08-tr.align.json",
+     "present": true,
+     "duration": 12.28,
+     "quality": {
+      "words": 25,
+      "exact": 24,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c08-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "Never have I seen such a beautiful sunset.",
+     "textSha256": "3e5de10fb07f1c37db10ca520bed2a745f678a3cf06c9362e552f7b9c4e299b5",
+     "chars": 42,
+     "audio": "en/c08-ex1.mp3",
+     "align": "en/c08-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  }
+ ]
+}

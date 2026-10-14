@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "G-C1-05-modal-nuances",
+  "level": "C1",
+  "titleTr": "Modal incelikleri: needn't have, be supposed to, would rather",
+  "titleEn": "Modal nuances",
+  "goalTr": "Gereksiz yere yapılmış işi, yapılması gerekip yapılmamış işi, beklentiyi ve tercihi doğru modal kalıbıyla ayırırsın.",
+  "prerequisites": [
+    "G-B2-07-past-modals-deduction",
+    "G-A2-14-have-to-must-should"
+  ],
+  "contentVersion": 1,
+  "status": "DRAFT",
+  "aiGenerated": true,
+  "teacherReview": null,
+  "linksTo": {
+    "episodes": [],
+    "books": []
+  },
+  "narration": {
+    "tr": {
+      "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+    }
+  }
+}

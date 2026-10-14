@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "id": "G-C2-04-formal-subjunctive",
+  "level": "C2",
+  "titleTr": "Resmî dilek kipi ve if'siz şart (subjunctive, inverted conditionals): Should you…, Had I known…",
+  "titleEn": "Formal subjunctive and inverted conditionals",
+  "goalTr": "Resmî metinlerdeki that he be… yapısını ve Should you…, Had I known… gibi if'siz şart devriklerini tanır, uygun yerde kullanırsın.",
+  "prerequisites": [
+    "G-C1-01-inversion",
+    "G-C1-03-mixed-conditionals"
+  ],
+  "contentVersion": 1,
+  "status": "DRAFT",
+  "aiGenerated": true,
+  "teacherReview": null,
+  "linksTo": {
+    "episodes": [],
+    "books": []
+  },
+  "properNouns": [
+    "Friday"
+  ],
+  "narration": {
+    "tr": {
+      "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+    }
+  }
+}

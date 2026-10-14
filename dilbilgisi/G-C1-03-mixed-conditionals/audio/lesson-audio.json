@@ -1,0 +1,380 @@
+{
+ "schemaVersion": 1,
+ "lessonId": "G-C1-03-mixed-conditionals",
+ "voices": {
+  "tr": {
+   "model": "alania-v2",
+   "voice": "alania2-f1",
+   "timing": "duyu-1",
+   "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+  },
+  "en": {
+   "model": "eleven_v3",
+   "voice": "EXAVITQu4vr4xnSDxMaL",
+   "speed": 1.05
+  }
+ },
+ "cards": [
+  {
+   "card": "c01",
+   "type": "hook",
+   "segments": [
+    {
+     "id": "c01-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Bu cümleyi dinle. Konuşan geçmişte bir işi kabul etmedi; sonucunu ise bugün yaşıyor. Cümlenin iki yarısı iki ayrı zamandan geliyor.",
+     "textSha256": "f4d1961b62ea39450ddeed8905ca40a28d2df4142e1e1352dd17489a4b9c2018",
+     "chars": 131,
+     "audio": "tr/c01-tr.mp3",
+     "align": "tr/c01-tr.align.json",
+     "present": true,
+     "duration": 9.6,
+     "quality": {
+      "words": 20,
+      "exact": 20,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c01-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "If I had taken that job, I would be in London now.",
+     "textSha256": "6330f9c304cd52a5daca33cccfa3e1e587745da9a41de5207e4d17292d5ae224",
+     "chars": 50,
+     "audio": "en/c01-ex1.mp3",
+     "align": "en/c01-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c02",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c02-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Üçüncü tipte koşul da sonuç da geçmiştedir. Karışık koşulda koşul geçmişte kalır, ama sonuç bugüne bakar. Bu yüzden koşul tarafı üçüncü tipten, sonuç tarafı ikinci tipten gelir.",
+     "textSha256": "aac0e11e05f269deef22417220b7b48245e1dc3a5198ecb1b4d54bc6c0a6595c",
+     "chars": 177,
+     "audio": "tr/c02-tr.mp3",
+     "align": "tr/c02-tr.align.json",
+     "present": true,
+     "duration": 11.55,
+     "quality": {
+      "words": 27,
+      "exact": 25,
+      "fuzzy": 2,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c02-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "If I had studied medicine, I would be a doctor now.",
+     "textSha256": "8e9253d6aff803bf3a99ef32a7935601c067923ba5c97de8a38f8b3f5318e06d",
+     "chars": 51,
+     "audio": "en/c02-ex1.mp3",
+     "align": "en/c02-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c03",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c03-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Ters yön de olur: koşul bugün de geçerli bir özelliktir, sonuç ise geçmişte kalmıştır. Bu kez koşul tarafı ikinci tipten, sonuç tarafı üçüncü tipten gelir. Kişinin hep öyle olduğunu anlatırken kullanılır.",
+     "textSha256": "436c8d08e4fd3f623c859aa95dd0bcca62f5187a90ce1a53eabdbfa1ad05eef1",
+     "chars": 204,
+     "audio": "tr/c03-tr.mp3",
+     "align": "tr/c03-tr.align.json",
+     "present": true,
+     "duration": 15.84,
+     "quality": {
+      "words": 31,
+      "exact": 31,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "If she weren't so shy, she would have spoken at the meeting.",
+     "textSha256": "c00c26e52d4e565c26fe554a28688b76f21b48fdaf3cbf2bd47b35ea030bb414",
+     "chars": 60,
+     "audio": "en/c03-ex1.mp3",
+     "align": "en/c03-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c04",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c04-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Sonuç tarafındaki şimdi, bugün gibi zaman kelimeleri iyi bir ipucudur. Bu kelimeleri görürsen sonuç tarafında olurdu anlamı veren kelime ve yalın fiil seçersin.",
+     "textSha256": "2c2b869881f5708468b219612a8ecf808d6201759664f0d012ed926bd1e06da3",
+     "chars": 160,
+     "audio": "tr/c04-tr.mp3",
+     "align": "tr/c04-tr.align.json",
+     "present": true,
+     "duration": 13.03,
+     "quality": {
+      "words": 23,
+      "exact": 23,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 3,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c04-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "If you had listened to me, we wouldn't be lost now.",
+     "textSha256": "791b99def348be36f1ec2c6a5f2caf0012e2b406b092119880b56efe577c67e8",
+     "chars": 51,
+     "audio": "en/c04-ex1.mp3",
+     "align": "en/c04-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c05",
+   "type": "examples",
+   "segments": [
+    {
+     "id": "c05-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "If I hadn't missed the train, I'd be at home by now.",
+     "textSha256": "29492c6f1a8f526bd9ad4c536c7e0b480707195ac7fe35cea82e4c9b8f445d6a",
+     "chars": 52,
+     "audio": "en/c05-ex1.mp3",
+     "align": "en/c05-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "If he were more careful, he wouldn't have lost his keys.",
+     "textSha256": "b83af95f2961fd6be4f8fdfb970272c5a77ee183805ac1b4e7c019709b2454f7",
+     "chars": 56,
+     "audio": "en/c05-ex2.mp3",
+     "align": "en/c05-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "If we had left earlier, we wouldn't be stuck in traffic now.",
+     "textSha256": "76f098ecb31a587450fbcd2afc3dc9716039d270c688d230b85fa0e55c34e373",
+     "chars": 60,
+     "audio": "en/c05-ex3.mp3",
+     "align": "en/c05-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex4",
+     "lang": "en",
+     "role": "example",
+     "text": "If I spoke German, I would have applied for that job.",
+     "textSha256": "bd0444003f6f86c4776086a2d9517eb6651c03450c773eeebc9421efc0aaff26",
+     "chars": 53,
+     "audio": "en/c05-ex4.mp3",
+     "align": "en/c05-ex4.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex5",
+     "lang": "en",
+     "role": "example",
+     "text": "If she hadn't helped me, I wouldn't be here today.",
+     "textSha256": "a3260a54b50a17f206812d10bccb8f792fba37c55ede93238a3588f0631e7ca5",
+     "chars": 50,
+     "audio": "en/c05-ex5.mp3",
+     "align": "en/c05-ex5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c06",
+   "type": "contrast",
+   "segments": [
+    {
+     "id": "c06-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Türkçede iki taraf da aynı eklerle kurulur: kabul etseydim, olurdum. Şimdi kelimesi zamanı kendiliğinden belli eder. İngilizcede ise her taraf için zamanı ayrı seçmek gerekir. Şimdiki sonuca geçmiş biçimi koymak çok olağandır.",
+     "textSha256": "d46e73277dc15137144537bb3fc438507f66afcead6a45aba8cd1a7826f88447",
+     "chars": 226,
+     "audio": "tr/c06-tr.mp3",
+     "align": "tr/c06-tr.align.json",
+     "present": true,
+     "duration": 14.27,
+     "quality": {
+      "words": 32,
+      "exact": 32,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c06-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "If I had taken the job, I would be in London now.",
+     "textSha256": "510d3fe3c4f9a13fc4f7b90b65b34791492bb024b79d7dde5d71922e01d0e793",
+     "chars": 49,
+     "audio": "en/c06-ex1.mp3",
+     "align": "en/c06-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c06-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "If I had studied, I would be a doctor.",
+     "textSha256": "251a5be46d43e8ee7f025d32b453174cb7d8da10e6f2242f4a6df78b63aac6ec",
+     "chars": 38,
+     "audio": "en/c06-ex2.mp3",
+     "align": "en/c06-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c07",
+   "type": "practice",
+   "segments": [
+    {
+     "id": "c07-q5",
+     "lang": "en",
+     "role": "say",
+     "text": "If I had studied medicine, I would be a doctor now.",
+     "textSha256": "8e9253d6aff803bf3a99ef32a7935601c067923ba5c97de8a38f8b3f5318e06d",
+     "chars": 51,
+     "audio": "en/c07-q5.mp3",
+     "align": "en/c07-q5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c08",
+   "type": "rule",
+   "segments": [
+    {
+     "id": "c08-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Geçmişteki bir koşulun bugünkü sonucu için koşul üçüncü tipten, sonuç ikinci tipten gelir. Kalıcı bir özelliğin geçmişteki sonucu için tersi yapılır.",
+     "textSha256": "7138f767339bb901edfca4c339daf417d2f6d93329c9275b9af9b2cc34f65b7c",
+     "chars": 149,
+     "audio": "tr/c08-tr.mp3",
+     "align": "tr/c08-tr.align.json",
+     "present": true,
+     "duration": 10.27,
+     "quality": {
+      "words": 21,
+      "exact": 21,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c08-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "If I had studied medicine, I would be a doctor now.",
+     "textSha256": "8e9253d6aff803bf3a99ef32a7935601c067923ba5c97de8a38f8b3f5318e06d",
+     "chars": 51,
+     "audio": "en/c08-ex1.mp3",
+     "align": "en/c08-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  }
+ ]
+}

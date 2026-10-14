@@ -1,0 +1,393 @@
+{
+ "schemaVersion": 1,
+ "lessonId": "G-C1-06-impersonal-passive",
+ "voices": {
+  "tr": {
+   "model": "alania-v2",
+   "voice": "alania2-f1",
+   "timing": "duyu-1",
+   "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+  },
+  "en": {
+   "model": "eleven_v3",
+   "voice": "EXAVITQu4vr4xnSDxMaL",
+   "speed": 1.05
+  }
+ },
+ "cards": [
+  {
+   "card": "c01",
+   "type": "hook",
+   "segments": [
+    {
+     "id": "c01-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Bu cümleyi dinle. Konuşan, kalenin perili olduğuna kendisi inanmıyor; yalnızca anlatılanı aktarıyor. Türkçedeki söyleniyor sözü gibi mesafeli bir anlam taşır.",
+     "textSha256": "8a1db58b465b7655fefab308584ddfe34ddde95d028838790c75a818a3f0087f",
+     "chars": 158,
+     "audio": "tr/c01-tr.mp3",
+     "align": "tr/c01-tr.align.json",
+     "present": true,
+     "duration": 10.74,
+     "quality": {
+      "words": 20,
+      "exact": 19,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c01-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "It is said that the castle is haunted.",
+     "textSha256": "5d7e0ee1a005f2b9191a7f43feca593f2af3ae0aa558b397b595158f320e5be5",
+     "chars": 38,
+     "audio": "en/c01-ex1.mp3",
+     "align": "en/c01-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c02",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c02-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Cümle boş bir özneyle başlar, ardından edilgen bir söyleme fiili ve bağlaç gelir. Sonra haberi tam bir cümle olarak verirsin. Söyleme fiili yerine inanmak, düşünmek, bildirmek gibi fiiller de gelir.",
+     "textSha256": "5a20740bfacb9f43fc600d0c327648ad000bbc832d52fd26db36eebb7751fcc7",
+     "chars": 198,
+     "audio": "tr/c02-tr.mp3",
+     "align": "tr/c02-tr.align.json",
+     "present": true,
+     "duration": 13.95,
+     "quality": {
+      "words": 30,
+      "exact": 30,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c02-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "It is believed that the painting is very old.",
+     "textSha256": "3948f7209db608d5236309a79c1abe17049e98a903506dceaedee814868c4ab1",
+     "chars": 45,
+     "audio": "en/c02-ex1.mp3",
+     "align": "en/c02-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c03",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c03-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Haberin konusu olan kişi ya da şey de cümlenin başına geçebilir. O zaman edilgen fiilden sonra mastar gelir, bağlaç gelmez. Anlam aynıdır, ama bu biçim daha kısa ve akıcıdır.",
+     "textSha256": "38c97319c354bc9d2133d42d6de2db02eef354f1e930a8b9aed289eac54a1c5c",
+     "chars": 174,
+     "audio": "tr/c03-tr.mp3",
+     "align": "tr/c03-tr.align.json",
+     "present": true,
+     "duration": 11.07,
+     "quality": {
+      "words": 29,
+      "exact": 28,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "The painting is believed to be 300 years old.",
+     "textSha256": "7a6bc4287155b5e407a77d1ffb6294e835e1ef7a10dedd6c2e70b2831b611983",
+     "chars": 45,
+     "audio": "en/c03-ex1.mp3",
+     "align": "en/c03-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c04",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c04-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Haber geçmişte olmuş bir şeyse, mastar da geçmiş biçim alır. Bunun için mastarda sahip olmak fiili ve üçüncü hâl kullanılır. Bu kalıplar haberlerde ve resmî yazıda çok geçer; günlük konuşmada daha az duyulur.",
+     "textSha256": "d3c84b3aaed03fab2a907bd4dc23befd694686dc2948e36d515bdcc4a9381778",
+     "chars": 208,
+     "audio": "tr/c04-tr.mp3",
+     "align": "tr/c04-tr.align.json",
+     "present": true,
+     "duration": 14.27,
+     "quality": {
+      "words": 33,
+      "exact": 29,
+      "fuzzy": 4,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c04-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "The thief is thought to have left the city.",
+     "textSha256": "661290f267141e0b16eace0ba18c73b7dc08f7f425ad9b416e1d468ce059e880",
+     "chars": 43,
+     "audio": "en/c04-ex1.mp3",
+     "align": "en/c04-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c05",
+   "type": "examples",
+   "segments": [
+    {
+     "id": "c05-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "It is reported that the road will reopen on Monday.",
+     "textSha256": "cc7b47c0a4f26b6d6ab9e05b0764100eb3abcade37cfb8caf232b902ce4fe416",
+     "chars": 51,
+     "audio": "en/c05-ex1.mp3",
+     "align": "en/c05-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "She is said to be the best teacher in the school.",
+     "textSha256": "1c417acf8965be2a56b8c4b8d8050dee450e9c4e2aab1c70d939342a2639d4b1",
+     "chars": 49,
+     "audio": "en/c05-ex2.mp3",
+     "align": "en/c05-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "It is expected that prices will rise.",
+     "textSha256": "6753f45d2a72765aeb02231ae7e5c0e25c0309ba16d113a5d3e08d892c6454d6",
+     "chars": 37,
+     "audio": "en/c05-ex3.mp3",
+     "align": "en/c05-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex4",
+     "lang": "en",
+     "role": "example",
+     "text": "The ship is believed to have sunk in 1850.",
+     "textSha256": "7331901779e89f6a51755d521345e7803223a1bc8b0a6daa024e1c015001fb94",
+     "chars": 42,
+     "audio": "en/c05-ex4.mp3",
+     "align": "en/c05-ex4.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex5",
+     "lang": "en",
+     "role": "example",
+     "text": "He is known to be very careful with money.",
+     "textSha256": "e4322547972c54c0b696496fa92495ed1883e4ae7f37eb01ad11fb5b6e2b28c7",
+     "chars": 42,
+     "audio": "en/c05-ex5.mp3",
+     "align": "en/c05-ex5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c06",
+   "type": "contrast",
+   "segments": [
+    {
+     "id": "c06-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Türkçe bunu çok kolay yapar: zengin olduğu söyleniyor, ya da kısaca zenginmiş. İngilizcede iki ayrı kalıp vardır ve ikisini karıştırmak çok olağandır. Kişiyle başlarsan bağlaç değil, mastar gelir.",
+     "textSha256": "53a9bd3689a5b23643d2b7affb5eb349af6593ad24562490394fd5e73e6cf421",
+     "chars": 196,
+     "audio": "tr/c06-tr.mp3",
+     "align": "tr/c06-tr.align.json",
+     "present": true,
+     "duration": 12.35,
+     "quality": {
+      "words": 28,
+      "exact": 27,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c06-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "He is said to be rich.",
+     "textSha256": "abb15031d60dc4f2187e16b525640f40c4f867de52d18580a8f2363598a1be56",
+     "chars": 22,
+     "audio": "en/c06-ex1.mp3",
+     "align": "en/c06-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c06-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "It is said that he is rich.",
+     "textSha256": "a05f5265eabc59dc5512b7ea9bb7c620429643fa6879b1ba427f16a2fbef1416",
+     "chars": 27,
+     "audio": "en/c06-ex2.mp3",
+     "align": "en/c06-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c06-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "She is believed to have left yesterday.",
+     "textSha256": "1d156dc10a6b499d3905fb444a2e769b9f7dcd6ebfddc4abf3d82bcff6b1b726",
+     "chars": 39,
+     "audio": "en/c06-ex3.mp3",
+     "align": "en/c06-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c07",
+   "type": "practice",
+   "segments": [
+    {
+     "id": "c07-q5",
+     "lang": "en",
+     "role": "say",
+     "text": "It is said that the castle is haunted.",
+     "textSha256": "5d7e0ee1a005f2b9191a7f43feca593f2af3ae0aa558b397b595158f320e5be5",
+     "chars": 38,
+     "audio": "en/c07-q5.mp3",
+     "align": "en/c07-q5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c08",
+   "type": "rule",
+   "segments": [
+    {
+     "id": "c08-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Söylenti ve haberleri mesafeli aktarmak için boş özneli çerçeve ve bağlaç kullanılır. Konuyla başlarsan edilgen fiilden sonra mastar gelir. Geçmiş için mastarda sahip olmak fiili ve üçüncü hâl kullanılır.",
+     "textSha256": "2ef6bf7667509b54cc632e7f570cc258f6c8111cdff14f15233ecb4cd08d6ba6",
+     "chars": 204,
+     "audio": "tr/c08-tr.mp3",
+     "align": "tr/c08-tr.align.json",
+     "present": true,
+     "duration": 15.87,
+     "quality": {
+      "words": 29,
+      "exact": 24,
+      "fuzzy": 5,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c08-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "The painting is believed to be 300 years old.",
+     "textSha256": "7a6bc4287155b5e407a77d1ffb6294e835e1ef7a10dedd6c2e70b2831b611983",
+     "chars": 45,
+     "audio": "en/c08-ex1.mp3",
+     "align": "en/c08-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  }
+ ]
+}

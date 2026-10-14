@@ -1,0 +1,419 @@
+{
+ "schemaVersion": 1,
+ "lessonId": "G-C1-05-modal-nuances",
+ "voices": {
+  "tr": {
+   "model": "alania-v2",
+   "voice": "alania2-f1",
+   "timing": "duyu-1",
+   "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+  },
+  "en": {
+   "model": "eleven_v3",
+   "voice": "EXAVITQu4vr4xnSDxMaL",
+   "speed": 1.05
+  }
+ },
+ "cards": [
+  {
+   "card": "c01",
+   "type": "hook",
+   "segments": [
+    {
+     "id": "c01-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Bu cümleyi dinle. Misafir bir hediye getirmiş, ev sahibi de teşekkür ediyor. Hediye geldi, ama hiç gerek yoktu diyor.",
+     "textSha256": "bcd0d3093877244ac9f3ed1f60cc9fd3d5cfa702800f6523f85497c5d9bc8cd7",
+     "chars": 117,
+     "audio": "tr/c01-tr.mp3",
+     "align": "tr/c01-tr.align.json",
+     "present": true,
+     "duration": 8.16,
+     "quality": {
+      "words": 19,
+      "exact": 19,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c01-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "Oh, you needn't have brought a gift!",
+     "textSha256": "777fc609196dcc361a4c56118167f6e14a81c28a3d0f84e6b6f19629f923a77a",
+     "chars": 36,
+     "audio": "en/c01-ex1.mp3",
+     "align": "en/c01-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c02",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c02-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Bir işi yaptın, ama sonradan gereksiz olduğu anlaşıldı. Bunun için gerek yok anlamındaki yardımcı fiil, sahip olmak fiili ve üçüncü hâl gelir. Gerekmediği için hiç yapmadıysan başka bir kalıp kullanılır.",
+     "textSha256": "fd3aac56b5d47ce5ff562cfa0ca20339276eb22b0f50c5b6ca35b1f2bc14297a",
+     "chars": 203,
+     "audio": "tr/c02-tr.mp3",
+     "align": "tr/c02-tr.align.json",
+     "present": true,
+     "duration": 15.74,
+     "quality": {
+      "words": 30,
+      "exact": 28,
+      "fuzzy": 2,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c02-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I needn't have cooked; they had already eaten.",
+     "textSha256": "a1da9bd56d1ee56f5fa24c81fb9b8ffc39aa4a0fd199ae2c019424b27c9f804f",
+     "chars": 46,
+     "audio": "en/c02-ex1.mp3",
+     "align": "en/c02-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c02-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "I didn't need to cook, so I had a rest.",
+     "textSha256": "456f6c39884c819c05c20cb67ef94a3f0499978f0607a5b10aad45f2def3a6a4",
+     "chars": 39,
+     "audio": "en/c02-ex2.mp3",
+     "align": "en/c02-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c03",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c03-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Geçmişte yapılması gerekip yapılmayan bir iş için öğüt veren yardımcı fiil kullanılır. Ardından yine sahip olmak fiili ve üçüncü hâl gelir. Bu kalıp hafif bir sitem taşır.",
+     "textSha256": "1ecde98aef7b87047672964ab47a984f60f4a8f9132a101de82088aa6c279b4c",
+     "chars": 171,
+     "audio": "tr/c03-tr.mp3",
+     "align": "tr/c03-tr.align.json",
+     "present": true,
+     "duration": 10.75,
+     "quality": {
+      "words": 27,
+      "exact": 26,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "You should have told me earlier.",
+     "textSha256": "fd558332476981b31f5e11fd75f86a4e84cd8652b6aa9628eed641d416e6ba04",
+     "chars": 32,
+     "audio": "en/c03-ex1.mp3",
+     "align": "en/c03-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c04",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c04-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Kurallardan ya da plandan gelen bir beklenti, olmak fiiliyle kurulan bir kalıpla anlatılır. Tercih için de yeğlerim anlamında bir kalıp vardır. Bu kalıptan sonra doğrudan yalın fiil gelir.",
+     "textSha256": "bcd0a40edced7bd264daa2ba55db7f35a01a6341fd4db4d5fe58807309da4448",
+     "chars": 188,
+     "audio": "tr/c04-tr.mp3",
+     "align": "tr/c04-tr.align.json",
+     "present": true,
+     "duration": 13.12,
+     "quality": {
+      "words": 28,
+      "exact": 26,
+      "fuzzy": 2,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c04-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "We are supposed to be there at eight.",
+     "textSha256": "494129a62590f11ea1e8da82f4423637541f0d3ff200f725c3902f262cd21158",
+     "chars": 37,
+     "audio": "en/c04-ex1.mp3",
+     "align": "en/c04-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "I'd rather stay at home tonight.",
+     "textSha256": "d01f68bf876491a41813500e341fb37ca0467e29b4f758545dc49772576c6cc9",
+     "chars": 32,
+     "audio": "en/c04-ex2.mp3",
+     "align": "en/c04-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c05",
+   "type": "examples",
+   "segments": [
+    {
+     "id": "c05-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "You needn't have waited for me.",
+     "textSha256": "3819163b0a1fe409c120fc04e71e4c1dd677550b3375eb8cc9282ea6fbdf4c2d",
+     "chars": 31,
+     "audio": "en/c05-ex1.mp3",
+     "align": "en/c05-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "We didn't need to take a taxi, so we walked.",
+     "textSha256": "bbb89a1ba2c7fb96b8f56da17908c921818707ea350cd0a2507f9a4dee4b277f",
+     "chars": 44,
+     "audio": "en/c05-ex2.mp3",
+     "align": "en/c05-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "He was supposed to call me, but he didn't.",
+     "textSha256": "7278d6a75250d229ca41c6231cfe1f557b90e6436990682cf2906c8798e964bd",
+     "chars": 42,
+     "audio": "en/c05-ex3.mp3",
+     "align": "en/c05-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex4",
+     "lang": "en",
+     "role": "example",
+     "text": "You shouldn't have said that to her.",
+     "textSha256": "8e231d51678b150b239f665563753d0fef3f542d58280afbca4534f92931d5ec",
+     "chars": 36,
+     "audio": "en/c05-ex4.mp3",
+     "align": "en/c05-ex4.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex5",
+     "lang": "en",
+     "role": "example",
+     "text": "I'd rather not talk about it.",
+     "textSha256": "57dbc01660ce9334985491c7c04fef38109e1b9ee96059f1153afe4f97721f82",
+     "chars": 29,
+     "audio": "en/c05-ex5.mp3",
+     "align": "en/c05-ex5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c06",
+   "type": "contrast",
+   "segments": [
+    {
+     "id": "c06-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Türkçede gerek yokmuş deriz; işin yapılıp yapılmadığını bağlam söyler. İngilizcede bu fark kalıbın içindedir. Söylemeliydin derken tahmin bildiren yardımcı fiili seçmek de çok olağan bir hatadır.",
+     "textSha256": "c31238819cac4b6d8df70ebca1e0120244e30e45c09b01a31e46eb8020329e1f",
+     "chars": 195,
+     "audio": "tr/c06-tr.mp3",
+     "align": "tr/c06-tr.align.json",
+     "present": true,
+     "duration": 12.02,
+     "quality": {
+      "words": 26,
+      "exact": 26,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c06-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "You should have told me.",
+     "textSha256": "0dcf8974915236ba9246d6c149a5dc3713a5c3a29fcd72e2d68e6754779aa806",
+     "chars": 24,
+     "audio": "en/c06-ex1.mp3",
+     "align": "en/c06-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c06-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "I didn't need to go, so I stayed at home.",
+     "textSha256": "7206d0c0007c46baec47d0de78f1fc5b71207b6cc68e0d8060f54065dd376395",
+     "chars": 41,
+     "audio": "en/c06-ex2.mp3",
+     "align": "en/c06-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c06-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "I'd rather stay here.",
+     "textSha256": "6dfc4cdea743cc80d56e5aa16407ee10af418f3f00bb4c56dec4b2113a532c68",
+     "chars": 21,
+     "audio": "en/c06-ex3.mp3",
+     "align": "en/c06-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c07",
+   "type": "practice",
+   "segments": [
+    {
+     "id": "c07-q5",
+     "lang": "en",
+     "role": "say",
+     "text": "You needn't have brought a gift.",
+     "textSha256": "698ebe712c3f0f91d916d3108791a85ace14bbb94aa571027592725867df9d32",
+     "chars": 32,
+     "audio": "en/c07-q5.mp3",
+     "align": "en/c07-q5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c08",
+   "type": "rule",
+   "segments": [
+    {
+     "id": "c08-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Gereksiz yapılan işte gerek yok yardımcısı, sahip olmak fiili ve üçüncü hâl gelir. Yapılmayan gerekli iş için öğüt veren yardımcı fiil aynı biçimle kullanılır. Tercih kalıbından sonra yalın fiil gelir.",
+     "textSha256": "8a9ce12fa86b0230050c027632a3daa21b045beb3353afa4ba68d0cfdff39fc5",
+     "chars": 201,
+     "audio": "tr/c08-tr.mp3",
+     "align": "tr/c08-tr.align.json",
+     "present": true,
+     "duration": 13.28,
+     "quality": {
+      "words": 30,
+      "exact": 28,
+      "fuzzy": 2,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c08-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "You needn't have brought a gift.",
+     "textSha256": "698ebe712c3f0f91d916d3108791a85ace14bbb94aa571027592725867df9d32",
+     "chars": 32,
+     "audio": "en/c08-ex1.mp3",
+     "align": "en/c08-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  }
+ ]
+}

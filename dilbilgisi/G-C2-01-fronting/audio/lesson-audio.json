@@ -1,0 +1,406 @@
+{
+ "schemaVersion": 1,
+ "lessonId": "G-C2-01-fronting",
+ "voices": {
+  "tr": {
+   "model": "alania-v2",
+   "voice": "alania2-f1",
+   "timing": "duyu-1",
+   "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+  },
+  "en": {
+   "model": "eleven_v3",
+   "voice": "EXAVITQu4vr4xnSDxMaL",
+   "speed": 1.05
+  }
+ },
+ "cards": [
+  {
+   "card": "c01",
+   "type": "hook",
+   "segments": [
+    {
+     "id": "c01-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Bu cümleyi dinle. Hikâyenin heyecanlı bir yerinde anlatıcı, okura karakterin bilmediği bir şeyi fısıldıyor. Cümle az anlamında bir kelimeyle başlıyor ve sıra yine değişiyor.",
+     "textSha256": "6ee78bef475f5be0748c74a0e1d917405c901814253d19853dd83f7b186e4be2",
+     "chars": 173,
+     "audio": "tr/c01-tr.mp3",
+     "align": "tr/c01-tr.align.json",
+     "present": true,
+     "duration": 11.39,
+     "quality": {
+      "words": 24,
+      "exact": 23,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c01-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "Little did she know that the letter would change everything.",
+     "textSha256": "a8e664b15a535a5ae0e43c92239a3b7768c19ff3c2277756b0f2c9c232705dc8",
+     "chars": 60,
+     "audio": "en/c01-ex1.mp3",
+     "align": "en/c01-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c02",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c02-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Hiç bilmiyordu anlamını güçlü vermek için az anlamındaki kelime başa alınır. Ardından devrik yapıdaki gibi yardımcı fiil özneden önce gelir. Bu kalıp çoğu zaman bilmek, fark etmek, tahmin etmek gibi fiillerle kullanılır.",
+     "textSha256": "9240f65a583e24fcbf44ba80efb5d05665bd38c364aa43ad56c803541df6ad40",
+     "chars": 220,
+     "audio": "tr/c02-tr.mp3",
+     "align": "tr/c02-tr.align.json",
+     "present": true,
+     "duration": 13.61,
+     "quality": {
+      "words": 32,
+      "exact": 32,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c02-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "Little did we realise how hard it would be.",
+     "textSha256": "517c26b1ead57d3275657efe3886042d7257ea1d013444fb6ed4164a5ee3e427",
+     "chars": 43,
+     "audio": "en/c02-ex1.mp3",
+     "align": "en/c02-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c03",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c03-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Bir şeyin derecesini vurgulamak için böyle anlamındaki kelime ve olmak fiili başa alınır. Özne arkaya kalır, ardından sonucu anlatan bir cümle gelir. Türkçedeki öyle büyüktü ki kalıbına çok benzer.",
+     "textSha256": "f4e89c67d9067a5b14689243625456c53f15287cf8001c17fa1f449d461cff8a",
+     "chars": 197,
+     "audio": "tr/c03-tr.mp3",
+     "align": "tr/c03-tr.align.json",
+     "present": true,
+     "duration": 13.3,
+     "quality": {
+      "words": 29,
+      "exact": 29,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "Such was the noise that nobody heard the bell.",
+     "textSha256": "0c039f556a4ec95673381aba99da2af66c8f0b628a936d1b2f9d3235a654c76a",
+     "chars": 46,
+     "audio": "en/c03-ex1.mp3",
+     "align": "en/c03-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c03-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "So strong was the wind that we couldn't open the door.",
+     "textSha256": "6af88ed5d3d1987c79452d24de777ef411cbe917e8d8a5ae507248c740231f2d",
+     "chars": 54,
+     "audio": "en/c03-ex2.mp3",
+     "align": "en/c03-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c04",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c04-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "İngilizcede de bilinen bilgi başa, yeni bilgi sona gelme eğilimindedir. Yer ya da nesne öne alınabilir; yer öne alınınca fiil de özneden önce gelebilir. Bu yapılar metne akış ve vurgu katar, ama çok sık kullanılırsa yapay durur.",
+     "textSha256": "8768363dd895e47202c06fa79748baab3313041d098dfb4fc4a73bf3e6ab2ccc",
+     "chars": 228,
+     "audio": "tr/c04-tr.mp3",
+     "align": "tr/c04-tr.align.json",
+     "present": true,
+     "duration": 16.74,
+     "quality": {
+      "words": 37,
+      "exact": 37,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c04-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "On the hill stood an old lighthouse.",
+     "textSha256": "72cbfc45ce4644a419051d83766a32b3ca44ef0aa5ed5964a8dd58f9c80eacf4",
+     "chars": 36,
+     "audio": "en/c04-ex1.mp3",
+     "align": "en/c04-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "This I can promise you.",
+     "textSha256": "c96dbb8e77fbb17ebca71af0a8922ae578021ed679a4b4a4ef47b5fff3f35ec1",
+     "chars": 23,
+     "audio": "en/c04-ex2.mp3",
+     "align": "en/c04-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c05",
+   "type": "examples",
+   "segments": [
+    {
+     "id": "c05-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "Little did they know that someone was listening.",
+     "textSha256": "e952d88c97d97a965756cee6bd2f245d0ba9581f8e1693fc2b1b6ff60bf1b694",
+     "chars": 48,
+     "audio": "en/c05-ex1.mp3",
+     "align": "en/c05-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "Such was her surprise that she couldn't speak.",
+     "textSha256": "2dd49bcde313b4eec84cb08335730fc7d990ce0d59795af57ae2db257e0251c7",
+     "chars": 46,
+     "audio": "en/c05-ex2.mp3",
+     "align": "en/c05-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "So quickly did everything happen that nobody noticed.",
+     "textSha256": "c058d6445eb3e78ab0e0ea44525e14b6e274ec870bbdd1155812d6cba3648b14",
+     "chars": 53,
+     "audio": "en/c05-ex3.mp3",
+     "align": "en/c05-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex4",
+     "lang": "en",
+     "role": "example",
+     "text": "Into the room walked a tall stranger.",
+     "textSha256": "b51d91fa69e95a018dea4dc7c073196db06956590260652466c267001d44dfdc",
+     "chars": 37,
+     "audio": "en/c05-ex4.mp3",
+     "align": "en/c05-ex4.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex5",
+     "lang": "en",
+     "role": "example",
+     "text": "What he said next I will never forget.",
+     "textSha256": "2e995b9ef4e38ba5231c3246f702770ce20188ff18f053bda7e28a5d112709c6",
+     "chars": 38,
+     "audio": "en/c05-ex5.mp3",
+     "align": "en/c05-ex5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c06",
+   "type": "contrast",
+   "segments": [
+    {
+     "id": "c06-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Türkçede bilgi akışını kelimelerin yerini değiştirerek kolayca yönetiriz. İngilizcede sıra katı olduğu için bunun özel kalıpları vardır ve kalıbın içindeki sıra da sabittir. Öne alınan kelimeden sonra sırayı düz bırakmak çok olağandır.",
+     "textSha256": "1c4d527f785f265203bb027a6d8c0d475850ea2f747c777c978aeac336d1c156",
+     "chars": 235,
+     "audio": "tr/c06-tr.mp3",
+     "align": "tr/c06-tr.align.json",
+     "present": true,
+     "duration": 16.48,
+     "quality": {
+      "words": 32,
+      "exact": 32,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c06-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "Little did she know that he was there.",
+     "textSha256": "fa455884b900439b8a5d08324a5c955b3787f3043e61b6482698974a5585df78",
+     "chars": 38,
+     "audio": "en/c06-ex1.mp3",
+     "align": "en/c06-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c06-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "Such was the noise that nobody slept.",
+     "textSha256": "a1922e60898be367cde428541abeb094d470cc069288070a09de8c9c17e15d63",
+     "chars": 37,
+     "audio": "en/c06-ex2.mp3",
+     "align": "en/c06-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c07",
+   "type": "practice",
+   "segments": [
+    {
+     "id": "c07-q5",
+     "lang": "en",
+     "role": "say",
+     "text": "Little did she know that the letter would change everything.",
+     "textSha256": "a8e664b15a535a5ae0e43c92239a3b7768c19ff3c2277756b0f2c9c232705dc8",
+     "chars": 60,
+     "audio": "en/c07-q5.mp3",
+     "align": "en/c07-q5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c08",
+   "type": "rule",
+   "segments": [
+    {
+     "id": "c08-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Vurgu ya da akış için bir öğe başa alınabilir. Az anlamındaki kelimeden ve olumsuz ifadelerden sonra yardımcı fiil özneden önce gelir. Böyle anlamındaki kalıpta özne olmak fiilinden sonra gelir.",
+     "textSha256": "320c8e9e147f0a0a84ff82c707cf5d322b3383d99240d963d36419f056d86b19",
+     "chars": 194,
+     "audio": "tr/c08-tr.mp3",
+     "align": "tr/c08-tr.align.json",
+     "present": true,
+     "duration": 12.98,
+     "quality": {
+      "words": 29,
+      "exact": 29,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c08-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "Little did she know that the letter would change everything.",
+     "textSha256": "a8e664b15a535a5ae0e43c92239a3b7768c19ff3c2277756b0f2c9c232705dc8",
+     "chars": 60,
+     "audio": "en/c08-ex1.mp3",
+     "align": "en/c08-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  }
+ ]
+}

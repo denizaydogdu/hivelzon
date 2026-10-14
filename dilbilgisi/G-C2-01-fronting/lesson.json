@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "G-C2-01-fronting",
+  "level": "C2",
+  "titleTr": "Öne alma ve bilgi yapısı (fronting): Little did she know…, Such was…",
+  "titleEn": "Fronting and information structure",
+  "goalTr": "Little did she know…, Such was… gibi öne alma yapılarıyla metnin bilgi akışını ve vurgusunu yönetirsin.",
+  "prerequisites": [
+    "G-C1-01-inversion",
+    "G-C1-02-cleft-sentences"
+  ],
+  "contentVersion": 1,
+  "status": "DRAFT",
+  "aiGenerated": true,
+  "teacherReview": null,
+  "linksTo": {
+    "episodes": [],
+    "books": []
+  },
+  "narration": {
+    "tr": {
+      "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+    }
+  }
+}

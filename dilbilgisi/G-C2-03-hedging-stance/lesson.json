@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "G-C2-03-hedging-stance",
+  "level": "C2",
+  "titleTr": "Yumuşatma ve tutum (hedging and stance): It would appear that…, arguably",
+  "titleEn": "Hedging and stance",
+  "goalTr": "İddiayı yumuşatmak ya da tutum bildirmek için seem, appear, tend to, arguably, presumably gibi araçları ölçülü seçersin.",
+  "prerequisites": [
+    "G-C1-05-modal-nuances",
+    "G-C1-06-impersonal-passive"
+  ],
+  "contentVersion": 1,
+  "status": "DRAFT",
+  "aiGenerated": true,
+  "teacherReview": null,
+  "linksTo": {
+    "episodes": [],
+    "books": []
+  },
+  "narration": {
+    "tr": {
+      "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+    }
+  }
+}

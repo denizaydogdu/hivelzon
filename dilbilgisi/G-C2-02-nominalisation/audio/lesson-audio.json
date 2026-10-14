@@ -1,0 +1,419 @@
+{
+ "schemaVersion": 1,
+ "lessonId": "G-C2-02-nominalisation",
+ "voices": {
+  "tr": {
+   "model": "alania-v2",
+   "voice": "alania2-f1",
+   "timing": "duyu-1",
+   "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+  },
+  "en": {
+   "model": "eleven_v3",
+   "voice": "EXAVITQu4vr4xnSDxMaL",
+   "speed": 1.05
+  }
+ },
+ "cards": [
+  {
+   "card": "c01",
+   "type": "hook",
+   "segments": [
+    {
+     "id": "c01-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Bu cümleyi dinle. Bir kurumun duyurusu gibi resmî ve yoğun. Toplantının ertelenmesi diyor; olayı fiille değil, isimle anlatıyor.",
+     "textSha256": "e4c7cf7a8f107b3f1e8be8270f3e4be13655129e9bc3a162a3beedf0e9a0abad",
+     "chars": 128,
+     "audio": "tr/c01-tr.mp3",
+     "align": "tr/c01-tr.align.json",
+     "present": true,
+     "duration": 9.44,
+     "quality": {
+      "words": 18,
+      "exact": 17,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c01-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "The postponement of the meeting caused confusion.",
+     "textSha256": "3d388bfb399e0b6eadd34a14467777975c8ecfa7945e58988c28e3b5f37e9d55",
+     "chars": 49,
+     "audio": "en/c01-ex1.mp3",
+     "align": "en/c01-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c02",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c02-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Adlaştırmada bir fiil ya da sıfat isme dönüşür ve cümlenin öznesi ya da nesnesi olur. Kimin yaptığı çoğu zaman cümleden çıkar, olay tek bir isimde toplanır. Bu, metni kısaltır ve daha resmî gösterir.",
+     "textSha256": "c155f798162060c571a5f3a457444882d2e3f842897040d95d7f15586d9037ec",
+     "chars": 199,
+     "audio": "tr/c02-tr.mp3",
+     "align": "tr/c02-tr.align.json",
+     "present": true,
+     "duration": 14.43,
+     "quality": {
+      "words": 33,
+      "exact": 32,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c02-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "They postponed the meeting.",
+     "textSha256": "fc09d309848f2a2760e6f0caeffcfd90f738476ee1cf28d4426eb9abf3fac2e5",
+     "chars": 27,
+     "audio": "en/c02-ex1.mp3",
+     "align": "en/c02-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c02-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "The postponement of the meeting was a surprise.",
+     "textSha256": "19c10e0c64d56936b499e01cf946daa06803f7598e847ebbed2d7d43e46bd486",
+     "chars": 47,
+     "audio": "en/c02-ex2.mp3",
+     "align": "en/c02-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c03",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c03-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "İsme dönüşen fiil çoğu zaman bir edatla devam eder ve bu edat isme göre değişir. Artıştan sonra içinde anlamındaki edat, karardan sonra mastar gelir. Bu eşleşmeleri kelimeyle birlikte öğrenmek en iyisidir.",
+     "textSha256": "518385519d12d3325c4a43f49854533c5f67e686ece74e66152fc5af7237cfa2",
+     "chars": 205,
+     "audio": "tr/c03-tr.mp3",
+     "align": "tr/c03-tr.align.json",
+     "present": true,
+     "duration": 14.41,
+     "quality": {
+      "words": 31,
+      "exact": 30,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "There has been a sharp increase in demand.",
+     "textSha256": "937d80e9f011fadcdbdc04c27d25bb3bef6d96cd6465c232b6412d1e1f0c9ae6",
+     "chars": 42,
+     "audio": "en/c03-ex1.mp3",
+     "align": "en/c03-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c03-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "The decision to close the factory surprised everyone.",
+     "textSha256": "5c670d7b5296fd561d7b514606f5b9a5d93c4b979b5fdf413f2bfc5056998687",
+     "chars": 53,
+     "audio": "en/c03-ex2.mp3",
+     "align": "en/c03-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c04",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c04-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Adlaştırma raporlarda, akademik yazıda ve resmî duyurularda güçlüdür. Ama günlük konuşmada ya da çok fazla kullanılınca metin ağırlaşır. İyi yazar gerektiğinde isimleri yeniden fiile açar.",
+     "textSha256": "7efc5d587bf895763674edda513206f6548cd4bb2578bb760f30e14052391748",
+     "chars": 188,
+     "audio": "tr/c04-tr.mp3",
+     "align": "tr/c04-tr.align.json",
+     "present": true,
+     "duration": 12.19,
+     "quality": {
+      "words": 25,
+      "exact": 24,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c04-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "The team's failure to respond led to delays.",
+     "textSha256": "eaccbd1c04465da30374b6009a49a8caa685d8b51eae3d9c71dfd3104f489a7b",
+     "chars": 44,
+     "audio": "en/c04-ex1.mp3",
+     "align": "en/c04-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "The team didn't respond, so everything was late.",
+     "textSha256": "123410185ab8e128c48eddd492b517dac51963fa6775c6fcd0bce413ce1cbb77",
+     "chars": 48,
+     "audio": "en/c04-ex2.mp3",
+     "align": "en/c04-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c05",
+   "type": "examples",
+   "segments": [
+    {
+     "id": "c05-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "The introduction of new rules was announced yesterday.",
+     "textSha256": "75ffe08469bbe13855f457ea7c8735e1344b2e3a75ea008a08fe48505d4022ff",
+     "chars": 54,
+     "audio": "en/c05-ex1.mp3",
+     "align": "en/c05-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "Her refusal to answer made things worse.",
+     "textSha256": "b19f1b3a8386ec9155e1320d22b23de11f2ea48f2e09cfafb5b6720589ccf119",
+     "chars": 40,
+     "audio": "en/c05-ex2.mp3",
+     "align": "en/c05-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "The growth of online shopping has changed our cities.",
+     "textSha256": "0ae3baa8bd10ef96d82705cf03a3a5ec194ce2838ce2b41638c5b60a9d06250b",
+     "chars": 53,
+     "audio": "en/c05-ex3.mp3",
+     "align": "en/c05-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex4",
+     "lang": "en",
+     "role": "example",
+     "text": "A lack of sleep can affect your memory.",
+     "textSha256": "f11e13fe7b103fe0c2e2ecc8aa0a252437e82995e1e378ceeb02c73cffc3f712",
+     "chars": 39,
+     "audio": "en/c05-ex4.mp3",
+     "align": "en/c05-ex4.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex5",
+     "lang": "en",
+     "role": "example",
+     "text": "The arrival of the train was delayed by an hour.",
+     "textSha256": "302f3e0e4ac4f1e57c0ac9bdc48777a9c1a8b6cc924db7de67a0830ed52740a4",
+     "chars": 48,
+     "audio": "en/c05-ex5.mp3",
+     "align": "en/c05-ex5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c06",
+   "type": "contrast",
+   "segments": [
+    {
+     "id": "c06-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Türkçede adlaştırma eklerle çok doğaldır: ertelenmesi, artışı, kapatılması. İngilizcede isim, edat ve mastar zinciri gerekir; edatı yanlış seçmek çok olağandır. Türkçedeki mastar ekini düşünüp her yere -ing getirmek de tipik bir hatadır.",
+     "textSha256": "a7c195c0f6691dab50e4155bb0ba7f2bc2d2ee5f1d618e9311f5489d0f634dd8",
+     "chars": 237,
+     "audio": "tr/c06-tr.mp3",
+     "align": "tr/c06-tr.align.json",
+     "present": true,
+     "duration": 15.4,
+     "quality": {
+      "words": 32,
+      "exact": 29,
+      "fuzzy": 3,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c06-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "The decision to postpone the trip was wise.",
+     "textSha256": "b0eb7d8a56e8d2e5dc7eff7ed8363e92c276aaf5d2bfb37e27fbc16c13584873",
+     "chars": 43,
+     "audio": "en/c06-ex1.mp3",
+     "align": "en/c06-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c06-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "The increase in prices worries everyone.",
+     "textSha256": "25a00f301bf6d8ef5ff1f08a044464349d993a69443bedcc657ae02e66624367",
+     "chars": 40,
+     "audio": "en/c06-ex2.mp3",
+     "align": "en/c06-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c07",
+   "type": "practice",
+   "segments": [
+    {
+     "id": "c07-q5",
+     "lang": "en",
+     "role": "say",
+     "text": "The postponement of the meeting caused confusion.",
+     "textSha256": "3d388bfb399e0b6eadd34a14467777975c8ecfa7945e58988c28e3b5f37e9d55",
+     "chars": 49,
+     "audio": "en/c07-q5.mp3",
+     "align": "en/c07-q5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c08",
+   "type": "rule",
+   "segments": [
+    {
+     "id": "c08-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Adlaştırmada fiil ya da sıfat isme döner ve olay tek bir isimde toplanır. İsmin edatı ya da mastarı kelimeyle birlikte öğrenilir. Metin ağırlaşırsa isim yeniden fiile açılır.",
+     "textSha256": "d4adf0cd4e976b91b39d7ef60e1b3754da5ed724733b06a32b37daf7fcf8bfa1",
+     "chars": 174,
+     "audio": "tr/c08-tr.mp3",
+     "align": "tr/c08-tr.align.json",
+     "present": true,
+     "duration": 11.39,
+     "quality": {
+      "words": 27,
+      "exact": 26,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c08-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "The postponement of the meeting caused confusion.",
+     "textSha256": "3d388bfb399e0b6eadd34a14467777975c8ecfa7945e58988c28e3b5f37e9d55",
+     "chars": 49,
+     "audio": "en/c08-ex1.mp3",
+     "align": "en/c08-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  }
+ ]
+}

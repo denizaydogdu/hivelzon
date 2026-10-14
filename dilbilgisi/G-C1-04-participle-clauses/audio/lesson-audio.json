@@ -1,0 +1,393 @@
+{
+ "schemaVersion": 1,
+ "lessonId": "G-C1-04-participle-clauses",
+ "voices": {
+  "tr": {
+   "model": "alania-v2",
+   "voice": "alania2-f1",
+   "timing": "duyu-1",
+   "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+  },
+  "en": {
+   "model": "eleven_v3",
+   "voice": "EXAVITQu4vr4xnSDxMaL",
+   "speed": 1.05
+  }
+ },
+ "cards": [
+  {
+   "card": "c01",
+   "type": "hook",
+   "segments": [
+    {
+     "id": "c01-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Bu cümleyi dinle. Başında özne yok, yalnız bir fiil var; ama kimin yürüdüğünü anlıyoruz. Türkçedeki yürürken sözüne çok benziyor.",
+     "textSha256": "8c2d4105755416918a9017efaceacdab448c8fde4c59308ac857779a77ba7f99",
+     "chars": 129,
+     "audio": "tr/c01-tr.mp3",
+     "align": "tr/c01-tr.align.json",
+     "present": true,
+     "duration": 8.64,
+     "quality": {
+      "words": 19,
+      "exact": 19,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c01-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "Walking home, I saw an old friend.",
+     "textSha256": "d5f899e7e464f116a71252c28773da92bbf4516e81add2aa9b31cee5679c9280",
+     "chars": 34,
+     "audio": "en/c01-ex1.mp3",
+     "align": "en/c01-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c02",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c02-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Yan cümlenin öznesi ana cümleyle aynıysa, bağlacı ve özneyi atıp cümleyi kısaltabilirsin. Etken ve aynı anda olan işlerde fiile -ing eki gelir. Türkçedeki yürürken, görünce, gülerek gibi biçimlere benzer.",
+     "textSha256": "3b1b46268227f40147848df22c1cb3fa7077d7bb19b105594e816487061f48a7",
+     "chars": 204,
+     "audio": "tr/c02-tr.mp3",
+     "align": "tr/c02-tr.align.json",
+     "present": true,
+     "duration": 13.43,
+     "quality": {
+      "words": 29,
+      "exact": 29,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c02-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "Opening the door, she smiled at us.",
+     "textSha256": "24cde46f4921053714ba899da53edfba9e5b37e1613d349a5e31cd4558d82b57",
+     "chars": 35,
+     "audio": "en/c02-ex1.mp3",
+     "align": "en/c02-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c03",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c03-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Bir iş öbüründen önce bittiyse, sahip olmak fiilinin -ing biçimi ve üçüncü hâl gelir. Türkçedeki bitirdikten sonra gibi biçimlere benzer. Sıra bu yapıyla açıkça belli olur.",
+     "textSha256": "09f9489c5ed9e8678a3ee709b16dd3e821cadf705859b31623b8a5ce1673e1ef",
+     "chars": 172,
+     "audio": "tr/c03-tr.mp3",
+     "align": "tr/c03-tr.align.json",
+     "present": true,
+     "duration": 12.16,
+     "quality": {
+      "words": 26,
+      "exact": 24,
+      "fuzzy": 2,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "Having finished the report, she went home.",
+     "textSha256": "802d1ba735b8c3182ef0108029ed459371e7bf4ebdc3d82caa89c4164aad5e86",
+     "chars": 42,
+     "audio": "en/c03-ex1.mp3",
+     "align": "en/c03-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c04",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c04-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "İşi özne yapmıyorsa, yani edilgen bir anlam varsa, yalnız üçüncü hâl gelir. Bu kısa biçimler resmî yazıda ve haberlerde çok kullanılır. Günlük konuşmada daha çok uzun yan cümle duyulur.",
+     "textSha256": "5cc260e6902abdd1faabaa66c0756d452d7466f115cb7c970187cf167bb40a5c",
+     "chars": 185,
+     "audio": "tr/c04-tr.mp3",
+     "align": "tr/c04-tr.align.json",
+     "present": true,
+     "duration": 11.69,
+     "quality": {
+      "words": 29,
+      "exact": 27,
+      "fuzzy": 2,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c04-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "Built in 1890, the bridge is still in use.",
+     "textSha256": "6a63c9e40d1bd4216ffe74c5e9c45065212d37bb445573876f2586449af2cab0",
+     "chars": 42,
+     "audio": "en/c04-ex1.mp3",
+     "align": "en/c04-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c05",
+   "type": "examples",
+   "segments": [
+    {
+     "id": "c05-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "Feeling tired, I went to bed early.",
+     "textSha256": "bf44e52344305e1530d60a785479d9345ee9d741c8eba407ac9297855bfdca99",
+     "chars": 35,
+     "audio": "en/c05-ex1.mp3",
+     "align": "en/c05-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "Having lost his keys, he had to wait outside.",
+     "textSha256": "a0484c38c1e1809c1d298e386abd9fa8b16d2c1a2dad4a293d94becc146a29d6",
+     "chars": 45,
+     "audio": "en/c05-ex2.mp3",
+     "align": "en/c05-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "Written in simple English, the book is easy to read.",
+     "textSha256": "10bff5ac4e856dc1ca93ce9a41cf4b81903e5b93bc3ab850be747abd5bde8eda",
+     "chars": 52,
+     "audio": "en/c05-ex3.mp3",
+     "align": "en/c05-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex4",
+     "lang": "en",
+     "role": "example",
+     "text": "Looking out of the window, she noticed a strange car.",
+     "textSha256": "c236c048edef4746a0e6669dd373d5a0ce0ae6259057cdea29fc1ac37cc8de5b",
+     "chars": 53,
+     "audio": "en/c05-ex4.mp3",
+     "align": "en/c05-ex4.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex5",
+     "lang": "en",
+     "role": "example",
+     "text": "Not knowing what to say, he stayed silent.",
+     "textSha256": "06d2e8b583c194408e4da34fc949a7f3ccc00bd2a36d3dcae2466f01aedd6652",
+     "chars": 42,
+     "audio": "en/c05-ex5.mp3",
+     "align": "en/c05-ex5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c06",
+   "type": "contrast",
+   "segments": [
+    {
+     "id": "c06-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Türkçe bu kısaltmaları çok sever; bu senin için büyük bir avantaj. Asıl tuzak öznedir: Türkçede sorun olmayan cümle İngilizcede komik bir anlam kazanabilir. Kısa yan cümlenin öznesi, ana cümlenin öznesiyle aynı olmalıdır.",
+     "textSha256": "5b2e5d7ece16b563016b996b3fed37443ee325e0a132d98a8ff414f54416ec71",
+     "chars": 221,
+     "audio": "tr/c06-tr.mp3",
+     "align": "tr/c06-tr.align.json",
+     "present": true,
+     "duration": 15.32,
+     "quality": {
+      "words": 32,
+      "exact": 32,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c06-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "Walking home, I got caught in the rain.",
+     "textSha256": "d5ce2d647d275b94ed7fb9dc80f902afca99ab1df8994c16cb42a71ea84506db",
+     "chars": 39,
+     "audio": "en/c06-ex1.mp3",
+     "align": "en/c06-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c06-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "After finishing the work, we left.",
+     "textSha256": "3743959e3e04968cfd76854b562fa6de7effef07899190002305ec60c8de3bf1",
+     "chars": 34,
+     "audio": "en/c06-ex2.mp3",
+     "align": "en/c06-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c06-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "Having finished the work, we went home.",
+     "textSha256": "335bacf23d5c6e5a753701dcb8b5c2dcfe5c1f13b0886e259a8a97b9fd5c2802",
+     "chars": 39,
+     "audio": "en/c06-ex3.mp3",
+     "align": "en/c06-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c07",
+   "type": "practice",
+   "segments": [
+    {
+     "id": "c07-q5",
+     "lang": "en",
+     "role": "say",
+     "text": "Having finished the report, she went home.",
+     "textSha256": "802d1ba735b8c3182ef0108029ed459371e7bf4ebdc3d82caa89c4164aad5e86",
+     "chars": 42,
+     "audio": "en/c07-q5.mp3",
+     "align": "en/c07-q5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c08",
+   "type": "rule",
+   "segments": [
+    {
+     "id": "c08-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Özneler aynıysa yan cümle kısaltılabilir. Aynı anda olan etken işte -ing, edilgen anlamda üçüncü hâl gelir. Önce biten iş için sahip olmak fiilinin -ing biçimi ve üçüncü hâl kullanılır.",
+     "textSha256": "a3a6ba442fb8a960d4ab8e89ba58934b756e920063dcf4ee632305eefacdf4f8",
+     "chars": 185,
+     "audio": "tr/c08-tr.mp3",
+     "align": "tr/c08-tr.align.json",
+     "present": true,
+     "duration": 13.31,
+     "quality": {
+      "words": 29,
+      "exact": 25,
+      "fuzzy": 4,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c08-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "Having finished the report, she went home.",
+     "textSha256": "802d1ba735b8c3182ef0108029ed459371e7bf4ebdc3d82caa89c4164aad5e86",
+     "chars": 42,
+     "audio": "en/c08-ex1.mp3",
+     "align": "en/c08-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  }
+ ]
+}

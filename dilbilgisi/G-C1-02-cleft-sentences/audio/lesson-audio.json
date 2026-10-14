@@ -1,0 +1,419 @@
+{
+ "schemaVersion": 1,
+ "lessonId": "G-C1-02-cleft-sentences",
+ "voices": {
+  "tr": {
+   "model": "alania-v2",
+   "voice": "alania2-f1",
+   "timing": "duyu-1",
+   "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+  },
+  "en": {
+   "model": "eleven_v3",
+   "voice": "EXAVITQu4vr4xnSDxMaL",
+   "speed": 1.05
+  }
+ },
+ "cards": [
+  {
+   "card": "c01",
+   "type": "hook",
+   "segments": [
+    {
+     "id": "c01-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Bu cümleyi dinle. Konuşan, ona yemek yapmayı kimin öğrettiğini özellikle vurguluyor: annesi değil, büyükannesi. İngilizcede bunun için cümle ikiye bölünür.",
+     "textSha256": "916ce8f9646525339189f5aac0707e5a21e0cb1c4aff431498b99731eee21720",
+     "chars": 155,
+     "audio": "tr/c01-tr.mp3",
+     "align": "tr/c01-tr.align.json",
+     "present": true,
+     "duration": 11.22,
+     "quality": {
+      "words": 20,
+      "exact": 20,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c01-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "It was my grandmother who taught me to cook.",
+     "textSha256": "116fb7a54692eff525f0accf429e4bf7fd74ad3e87f7e83ce119813c551d334f",
+     "chars": 44,
+     "audio": "en/c01-ex1.mp3",
+     "align": "en/c01-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c02",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c02-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "İngilizcede kelime sırası sabittir, bu yüzden vurgu için cümle ikiye bölünür. Vurgulanan parça baştaki bir çerçevenin içine yerleşir. Geri kalanı, arkadan gelen bir sıfat cümleciği gibi eklenir.",
+     "textSha256": "d5951c7c8285a2b71b60757d9456a9f168561bb3c381a38ee04398a627e10ed3",
+     "chars": 194,
+     "audio": "tr/c02-tr.mp3",
+     "align": "tr/c02-tr.align.json",
+     "present": true,
+     "duration": 12.49,
+     "quality": {
+      "words": 27,
+      "exact": 26,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c02-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "Ali opened the door.",
+     "textSha256": "2e7e5658c01f6ad8da60bcbac116ee2fccf149778bb937ec4ec65591d516124d",
+     "chars": 20,
+     "audio": "en/c02-ex1.mp3",
+     "align": "en/c02-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c02-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "It was Ali who opened the door.",
+     "textSha256": "97262a3197f4b239b9231e7d16ab417d962b7801da7f8936979ff618dd5707b6",
+     "chars": 31,
+     "audio": "en/c02-ex2.mp3",
+     "align": "en/c02-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c03",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c03-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Bu çerçeveyle kişiyi, nesneyi, yeri ya da zamanı öne çıkarabilirsin. Kişiden sonra iki bağlayıcıdan biri gelebilir, öteki öğelerden sonra çoğu zaman genel bağlayıcı gelir. Çerçevedeki olmak fiili, anlatılan zamana göre şimdiki ya da geçmiş olur.",
+     "textSha256": "13e0e0b06f784448a8e43a0c8be253682cab6bb892d194a11b3b287a61511d9f",
+     "chars": 245,
+     "audio": "tr/c03-tr.mp3",
+     "align": "tr/c03-tr.align.json",
+     "present": true,
+     "duration": 16.38,
+     "quality": {
+      "words": 35,
+      "exact": 35,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "It was in İzmir that they first met.",
+     "textSha256": "8af7bdc4ddc567e5946b5a586166e68bd6038ccf1a50a482d32ae38787c246a4",
+     "chars": 36,
+     "audio": "en/c03-ex1.mp3",
+     "align": "en/c03-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c03-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "It's the noise that I can't stand.",
+     "textSha256": "c279e861e4415f82ff54d7ca6c45db096dff56137b55b3ff02fdb25df3d9dc9d",
+     "chars": 34,
+     "audio": "en/c03-ex2.mp3",
+     "align": "en/c03-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c04",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c04-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "İkinci yolda cümle, Türkçedeki ne kelimesinin karşılığıyla başlar. Önce merak uyandıran kısım gelir, sonra olmak fiili ve asıl bilgi. Asıl söylemek istediğini sona saklamak gibidir.",
+     "textSha256": "63ff7439256b0ad8af3b549da22de5e863cdd314acd94615b6497533e705759a",
+     "chars": 181,
+     "audio": "tr/c04-tr.mp3",
+     "align": "tr/c04-tr.align.json",
+     "present": true,
+     "duration": 11.55,
+     "quality": {
+      "words": 25,
+      "exact": 25,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c04-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "What I really need is a long holiday.",
+     "textSha256": "0ce15c0d8f561cde56db0a5b9ccf6845c8f7ad04040e9d7dd5a9d3823884e345",
+     "chars": 37,
+     "audio": "en/c04-ex1.mp3",
+     "align": "en/c04-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "What she did was call the police.",
+     "textSha256": "973432608a0d3a4b993b4e8f233b190d66359bc5a1372b8a507640d0de9f0999",
+     "chars": 33,
+     "audio": "en/c04-ex2.mp3",
+     "align": "en/c04-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c05",
+   "type": "examples",
+   "segments": [
+    {
+     "id": "c05-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "It was Elif who found the key.",
+     "textSha256": "9e10f3a7db04d94bd7e91e6b46e41a170fcce8d0147f7bf5ae4f1a2c2686c772",
+     "chars": 30,
+     "audio": "en/c05-ex1.mp3",
+     "align": "en/c05-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "It wasn't until midnight that we finished.",
+     "textSha256": "a89145b25a38e9f615a90566ed5fac6f7ab8eb2c9bc9f3017f83f820bfae0f52",
+     "chars": 42,
+     "audio": "en/c05-ex2.mp3",
+     "align": "en/c05-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "What surprised me was his calm voice.",
+     "textSha256": "c00f8931ff3f896152460d79711f1f1545638d07e102d17988029ffd53c47e3f",
+     "chars": 37,
+     "audio": "en/c05-ex3.mp3",
+     "align": "en/c05-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex4",
+     "lang": "en",
+     "role": "example",
+     "text": "All I want is a quiet evening.",
+     "textSha256": "b7e254f0da05a43859de21c700a1246234f111939fb127b0ec24f3c7ca4ff289",
+     "chars": 30,
+     "audio": "en/c05-ex4.mp3",
+     "align": "en/c05-ex4.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex5",
+     "lang": "en",
+     "role": "example",
+     "text": "It's your health that matters most.",
+     "textSha256": "17abbf697b0ede5d925335d23d16dc494d233d18393cd478dc1279d17583b3cd",
+     "chars": 35,
+     "audio": "en/c05-ex5.mp3",
+     "align": "en/c05-ex5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c06",
+   "type": "contrast",
+   "segments": [
+    {
+     "id": "c06-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Türkçede vurgulanan kelimeyi yüklemin hemen önüne alırız: kapıyı Ali açtı. Ya da açan Ali'ydi deriz; bu yapı İngilizceye çok yakındır. İngilizcede çerçevenin ilk kelimesini atlamak ya da fazladan bir zamir eklemek çok olağandır.",
+     "textSha256": "4f195d8194090aa53c49ae6113b57a8cb0f9720fb13d238f7919ec3134f1b1ce",
+     "chars": 228,
+     "audio": "tr/c06-tr.mp3",
+     "align": "tr/c06-tr.align.json",
+     "present": true,
+     "duration": 14.75,
+     "quality": {
+      "words": 33,
+      "exact": 33,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c06-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "It was Ali who opened the door.",
+     "textSha256": "97262a3197f4b239b9231e7d16ab417d962b7801da7f8936979ff618dd5707b6",
+     "chars": 31,
+     "audio": "en/c06-ex1.mp3",
+     "align": "en/c06-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c06-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "What I need is a holiday.",
+     "textSha256": "f680ca13676023cc7f5a5c6f2a9c3e650bfbe39a4afc22576633236ea83a76d9",
+     "chars": 25,
+     "audio": "en/c06-ex2.mp3",
+     "align": "en/c06-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c07",
+   "type": "practice",
+   "segments": [
+    {
+     "id": "c07-q5",
+     "lang": "en",
+     "role": "say",
+     "text": "It was my grandmother who taught me to cook.",
+     "textSha256": "116fb7a54692eff525f0accf429e4bf7fd74ad3e87f7e83ce119813c551d334f",
+     "chars": 44,
+     "audio": "en/c07-q5.mp3",
+     "align": "en/c07-q5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c08",
+   "type": "rule",
+   "segments": [
+    {
+     "id": "c08-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Bir parçayı vurgulamak için cümle ikiye bölünür. Vurgulanan parça ya baştaki çerçeveye girer ya da olmak fiilinden sonra sona kalır.",
+     "textSha256": "0ab616b3890f36344abfe70431facfa83357706cbf0f78f1b4e20a1fb68b34b9",
+     "chars": 132,
+     "audio": "tr/c08-tr.mp3",
+     "align": "tr/c08-tr.align.json",
+     "present": true,
+     "duration": 8.16,
+     "quality": {
+      "words": 20,
+      "exact": 20,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c08-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "It was my grandmother who taught me to cook.",
+     "textSha256": "116fb7a54692eff525f0accf429e4bf7fd74ad3e87f7e83ce119813c551d334f",
+     "chars": 44,
+     "audio": "en/c08-ex1.mp3",
+     "align": "en/c08-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  }
+ ]
+}

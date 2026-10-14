@@ -1,0 +1,432 @@
+{
+ "schemaVersion": 1,
+ "lessonId": "G-C2-06-aspect-nuance",
+ "voices": {
+  "tr": {
+   "model": "alania-v2",
+   "voice": "alania2-f1",
+   "timing": "duyu-1",
+   "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+  },
+  "en": {
+   "model": "eleven_v3",
+   "voice": "EXAVITQu4vr4xnSDxMaL",
+   "speed": 1.05
+  }
+ },
+ "cards": [
+  {
+   "card": "c01",
+   "type": "hook",
+   "segments": [
+    {
+     "id": "c01-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Bu cümleyi dinle. Arkadaşı normalde konuşkan biri, ama bugün hiç sesi çıkmıyor. Konuşan bunun geçici olduğunu fiilin biçimiyle gösteriyor.",
+     "textSha256": "4c51a54254d923a2cb6eaa178e66b07516b73bb5c7e0702bde813347500adb11",
+     "chars": 138,
+     "audio": "tr/c01-tr.mp3",
+     "align": "tr/c01-tr.align.json",
+     "present": true,
+     "duration": 8.64,
+     "quality": {
+      "words": 19,
+      "exact": 18,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c01-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "You're being very quiet today.",
+     "textSha256": "99dab159d2b3d0d955ef4e1c8ec228a8d44c2567c750fca3a779681a59b8f7ea",
+     "chars": 30,
+     "audio": "en/c01-ex1.mp3",
+     "align": "en/c01-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c02",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c02-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Olmak fiili genellikle sürekli biçimde kullanılmaz, çünkü bir durumu anlatır. Ama bir kişinin şu anki davranışını anlatırken sürekli biçim gelir. Böylece bunun kalıcı bir özellik değil, geçici bir davranış olduğunu söylersin.",
+     "textSha256": "cba626fcd914cf9b544402c9b8fabbacb2d9ebcd095e3ad14e9632e04c3053c1",
+     "chars": 225,
+     "audio": "tr/c02-tr.mp3",
+     "align": "tr/c02-tr.align.json",
+     "present": true,
+     "duration": 13.82,
+     "quality": {
+      "words": 31,
+      "exact": 31,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c02-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "He is rude.",
+     "textSha256": "cef01b5e4fab5f92cca07332f1d3897c3347c54904e0b4ee61e52207a378886c",
+     "chars": 11,
+     "audio": "en/c02-ex1.mp3",
+     "align": "en/c02-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c02-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "He is being rude.",
+     "textSha256": "e74684e92510712273f6978cc254789abeff6a87b8599ae35cc88a4770177ee2",
+     "chars": 17,
+     "audio": "en/c02-ex2.mp3",
+     "align": "en/c02-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c03",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c03-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Bazı durum fiilleri sürekli biçimde başka bir anlam kazanır. Örneğin sahip olmak fiili yemek yemek, düşünmek fiili de bir konuyu tartmak anlamına gelir. Görmek fiili ise buluşmak anlamını alabilir.",
+     "textSha256": "5b0b3cdb9102aa301f391ceab7c6d79fc4079acd41b04d9c433750ca190196b2",
+     "chars": 197,
+     "audio": "tr/c03-tr.mp3",
+     "align": "tr/c03-tr.align.json",
+     "present": true,
+     "duration": 12.83,
+     "quality": {
+      "words": 29,
+      "exact": 29,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "We are having dinner.",
+     "textSha256": "00d12b86aa3e3a8d4ea0c78e9049550d6aae6572f39f844c94bea2f6cfc4d876",
+     "chars": 21,
+     "audio": "en/c03-ex1.mp3",
+     "align": "en/c03-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c03-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "I am thinking about your offer.",
+     "textSha256": "310ac73baf9c7038d5b6a061a9570495070278908645def7296f463c6ae65403",
+     "chars": 31,
+     "audio": "en/c03-ex2.mp3",
+     "align": "en/c03-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c03-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "I'm seeing the doctor tomorrow.",
+     "textSha256": "066f5a4f7eee33a3c44a3d01754e232aaf7b430b126b2c310063bb63f5b0840a",
+     "chars": 31,
+     "audio": "en/c03-ex3.mp3",
+     "align": "en/c03-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c04",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c04-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Bir şey rica ederken geçmiş sürekli biçim isteği yumuşatır ve mesafe katar. Türkçedeki acaba yardım edebilir misiniz sorusuna benzer. Fiil geçmiş görünür, ama rica şimdi yapılır.",
+     "textSha256": "b0c6d65d704bd646d9b540775b28c5589e5d7f1704a147b548738b744cc62201",
+     "chars": 178,
+     "audio": "tr/c04-tr.mp3",
+     "align": "tr/c04-tr.align.json",
+     "present": true,
+     "duration": 11.68,
+     "quality": {
+      "words": 26,
+      "exact": 25,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c04-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I was wondering if you could help me.",
+     "textSha256": "97f5f0be61e09a2650a69fec6ce2e822acbb741cc60d9113f1268b2aec48cfbe",
+     "chars": 37,
+     "audio": "en/c04-ex1.mp3",
+     "align": "en/c04-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "I was hoping we could talk.",
+     "textSha256": "942158c5b6fcede2dc34525d125e80f2de25a548300d92109d0af0c0d9f9f373",
+     "chars": 27,
+     "audio": "en/c04-ex2.mp3",
+     "align": "en/c04-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c05",
+   "type": "examples",
+   "segments": [
+    {
+     "id": "c05-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "You're being very kind today.",
+     "textSha256": "c021e8753689ef2850775ab7ebe3609ab74db1af348fb8db43e16b857642b865",
+     "chars": 29,
+     "audio": "en/c05-ex1.mp3",
+     "align": "en/c05-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "We're having a party on Saturday.",
+     "textSha256": "01b5030049250e699da1db0228c696716255a9dbec792f2bf9baabd45db75db4",
+     "chars": 33,
+     "audio": "en/c05-ex2.mp3",
+     "align": "en/c05-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "She is being very careful with her words.",
+     "textSha256": "c7e3175050d7e53e0a890e4b680c33abc48f43bf0767aba241086c36493d4b68",
+     "chars": 41,
+     "audio": "en/c05-ex3.mp3",
+     "align": "en/c05-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex4",
+     "lang": "en",
+     "role": "example",
+     "text": "I was wondering if I could leave early.",
+     "textSha256": "c58edf9873806f60b93a3f30dbc42b61235a7e4dfa17a7c4fbb02b9160faba61",
+     "chars": 39,
+     "audio": "en/c05-ex4.mp3",
+     "align": "en/c05-ex4.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex5",
+     "lang": "en",
+     "role": "example",
+     "text": "I was thinking we could eat out tonight.",
+     "textSha256": "082cca18838135e33e1023c58abd59948b7919e4bd8043fa418694572d2e2d0b",
+     "chars": 40,
+     "audio": "en/c05-ex5.mp3",
+     "align": "en/c05-ex5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c06",
+   "type": "contrast",
+   "segments": [
+    {
+     "id": "c06-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Türkçe bu ayrımı güzel yapar: kabadır ile kaba davranıyor farklıdır. Bu senin için iyi bir köprü. Ama şu an olan işi geniş zamanla söylemek çok olağan bir hatadır.",
+     "textSha256": "02162aa39d2900ea4d660b10174527c15947fe7df3c513dfa8f97e976d6a6625",
+     "chars": 163,
+     "audio": "tr/c06-tr.mp3",
+     "align": "tr/c06-tr.align.json",
+     "present": true,
+     "duration": 10.43,
+     "quality": {
+      "words": 28,
+      "exact": 27,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c06-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "We are having dinner now. Can I call you back?",
+     "textSha256": "ad5d1c70fed5a75027d405128d38c1debedf0e1b3ad7b2f8174404b45652d4dc",
+     "chars": 46,
+     "audio": "en/c06-ex1.mp3",
+     "align": "en/c06-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c06-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "He is being rude today.",
+     "textSha256": "0686e35bb5f5328e99578d8d411d9b280a978817b3915844e5d96e0c70fea772",
+     "chars": 23,
+     "audio": "en/c06-ex2.mp3",
+     "align": "en/c06-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c07",
+   "type": "practice",
+   "segments": [
+    {
+     "id": "c07-q5",
+     "lang": "en",
+     "role": "say",
+     "text": "I was wondering if you could help me.",
+     "textSha256": "97f5f0be61e09a2650a69fec6ce2e822acbb741cc60d9113f1268b2aec48cfbe",
+     "chars": 37,
+     "audio": "en/c07-q5.mp3",
+     "align": "en/c07-q5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c08",
+   "type": "rule",
+   "segments": [
+    {
+     "id": "c08-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Durum fiilleri sürekli biçimde geçici bir davranışı ya da başka bir anlamı anlatabilir. Geçmiş sürekli biçim ricayı yumuşatır ve daha kibar yapar.",
+     "textSha256": "0c4abb5e409895c83498fb780644c43f809068200336656c90d489baf9b55331",
+     "chars": 146,
+     "audio": "tr/c08-tr.mp3",
+     "align": "tr/c08-tr.align.json",
+     "present": true,
+     "duration": 9.63,
+     "quality": {
+      "words": 22,
+      "exact": 22,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c08-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I was wondering if you could help me.",
+     "textSha256": "97f5f0be61e09a2650a69fec6ce2e822acbb741cc60d9113f1268b2aec48cfbe",
+     "chars": 37,
+     "audio": "en/c08-ex1.mp3",
+     "align": "en/c08-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  }
+ ]
+}

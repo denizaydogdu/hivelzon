@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "id": "G-C1-03-mixed-conditionals",
+  "level": "C1",
+  "titleTr": "Karışık koşul cümleleri (mixed conditionals)",
+  "titleEn": "Mixed conditionals",
+  "goalTr": "Geçmişteki bir koşulun bugünkü sonucunu ya da kalıcı bir özelliğin geçmişteki sonucunu karışık koşulla anlatırsın.",
+  "prerequisites": [
+    "G-B2-04-second-conditional",
+    "G-B2-05-third-conditional"
+  ],
+  "contentVersion": 1,
+  "status": "DRAFT",
+  "aiGenerated": true,
+  "teacherReview": null,
+  "linksTo": {
+    "episodes": [],
+    "books": []
+  },
+  "properNouns": [
+    "London",
+    "German"
+  ],
+  "narration": {
+    "tr": {
+      "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+    }
+  }
+}

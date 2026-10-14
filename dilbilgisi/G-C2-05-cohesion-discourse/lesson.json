@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "G-C2-05-cohesion-discourse",
+  "level": "C2",
+  "titleTr": "Bağdaşıklık ve söylem belirleyicileri (cohesion and discourse markers)",
+  "titleEn": "Cohesion and discourse markers",
+  "goalTr": "Uzun metinde fikirleri that said, nonetheless, by contrast gibi söylem belirleyicileriyle ve the former / the latter gibi gönderimlerle akıcı bağlarsın.",
+  "prerequisites": [
+    "G-B2-12-contrast-linkers",
+    "G-C1-08-ellipsis-substitution"
+  ],
+  "contentVersion": 1,
+  "status": "DRAFT",
+  "aiGenerated": true,
+  "teacherReview": null,
+  "linksTo": {
+    "episodes": [],
+    "books": []
+  },
+  "narration": {
+    "tr": {
+      "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+    }
+  }
+}

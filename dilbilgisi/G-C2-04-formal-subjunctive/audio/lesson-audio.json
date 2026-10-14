@@ -1,0 +1,419 @@
+{
+ "schemaVersion": 1,
+ "lessonId": "G-C2-04-formal-subjunctive",
+ "voices": {
+  "tr": {
+   "model": "alania-v2",
+   "voice": "alania2-f1",
+   "timing": "duyu-1",
+   "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+  },
+  "en": {
+   "model": "eleven_v3",
+   "voice": "EXAVITQu4vr4xnSDxMaL",
+   "speed": 1.05
+  }
+ },
+ "cards": [
+  {
+   "card": "c01",
+   "type": "hook",
+   "segments": [
+    {
+     "id": "c01-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Bu cümleyi dinle. Otel ya da şirket yazılarında çok görülür. Koşul bağlacı yok; yardımcı fiil başa geçmiş ve şart anlamı veriyor.",
+     "textSha256": "b022ed8377645b3ac72d40c030e2ca04ca9edbb479584ef5e0cb31ccb95ea1e0",
+     "chars": 129,
+     "audio": "tr/c01-tr.mp3",
+     "align": "tr/c01-tr.align.json",
+     "present": true,
+     "duration": 10.4,
+     "quality": {
+      "words": 21,
+      "exact": 18,
+      "fuzzy": 2,
+      "weak": 0,
+      "missing": 1,
+      "extraHeard": 0,
+      "worstRun": 1,
+      "score": 0.952,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c01-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "Should you need any help, please contact us.",
+     "textSha256": "b094e17adaeaa66efee9143daa6310b42469ad9b7551b526e9d1a2e9d9f41c7d",
+     "chars": 44,
+     "audio": "en/c01-ex1.mp3",
+     "align": "en/c01-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c02",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c02-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Resmî dilde koşul bağlacı düşebilir; o zaman yardımcı fiil özneden önce gelir. Olası durumda öğüt veren yardımcı fiil, gerçek dışı geçmişte sahip olmak fiilinin geçmişi başa gelir. Anlam aynıdır, yalnız daha resmîdir.",
+     "textSha256": "77de07fb273fbe5434ff000c870a3de4c08556282754b8cd74536b9422569cd0",
+     "chars": 217,
+     "audio": "tr/c02-tr.mp3",
+     "align": "tr/c02-tr.align.json",
+     "present": true,
+     "duration": 15.38,
+     "quality": {
+      "words": 32,
+      "exact": 29,
+      "fuzzy": 3,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c02-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "If I had known about the delay, I would have stayed at home.",
+     "textSha256": "aebbd0f5ed05e3b608a4907b38efe3ee47829888b732d58479424db0e149b5e0",
+     "chars": 60,
+     "audio": "en/c02-ex1.mp3",
+     "align": "en/c02-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c02-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "Had I known about the delay, I would have stayed at home.",
+     "textSha256": "c5c2a7292a0d85beab57cbe17a2c6a92d4506b957834750e5a9bfaddf6410a71",
+     "chars": 57,
+     "audio": "en/c02-ex2.mp3",
+     "align": "en/c02-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c03",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c03-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Bugünkü gerçek dışı durumda olmak fiilinin geçmiş biçimi başa gelir. Bu biçim daha da resmîdir ve günlük konuşmada az duyulur. Olumsuzda kısaltma kullanılmaz; olumsuz kelime özneden sonra ayrı gelir.",
+     "textSha256": "98ee8d89ec80b459ee08c4da7e0508f096896ca2ee98dc5a289d2776305a3ff0",
+     "chars": 199,
+     "audio": "tr/c03-tr.mp3",
+     "align": "tr/c03-tr.align.json",
+     "present": true,
+     "duration": 12.98,
+     "quality": {
+      "words": 29,
+      "exact": 28,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "Were I in your position, I would accept the offer.",
+     "textSha256": "e1df26137f3962c6547b4fc6cacec63838a1b4ce2f57417ffa3de4a8d3e2b6e4",
+     "chars": 50,
+     "audio": "en/c03-ex1.mp3",
+     "align": "en/c03-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c03-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "Had it not been for your help, we would have failed.",
+     "textSha256": "2f4ac421154287c7fb9f238e0317cca5a60f3e8c7196af19e1c6b7d4f50124bc",
+     "chars": 52,
+     "audio": "en/c03-ex2.mp3",
+     "align": "en/c03-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c04",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c04-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Önemli, gerekli, öneririm gibi ifadelerden sonra gelen yan cümlede fiil yalın kalır. Özne o olsa bile ek almaz, olmak fiili de yalın biçimde gelir. Bu yapı resmîdir; günlük dilde yerine öğüt veren yardımcı fiil de kullanılır.",
+     "textSha256": "7e4a0dbc688e18d07fafec418de08a145aa718d85fc23f3e88edf31aea908051",
+     "chars": 225,
+     "audio": "tr/c04-tr.mp3",
+     "align": "tr/c04-tr.align.json",
+     "present": true,
+     "duration": 16.17,
+     "quality": {
+      "words": 36,
+      "exact": 34,
+      "fuzzy": 2,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c04-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "It is essential that he be on time.",
+     "textSha256": "c1f90d49f6ddef0602fff698e84b4337f66a7efeef607768c975e6bca9b66253",
+     "chars": 35,
+     "audio": "en/c04-ex1.mp3",
+     "align": "en/c04-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "The doctor recommended that she rest for a week.",
+     "textSha256": "9249e81948320dd59513bf5b432273eee2567ebfaa1dbaba12a3f5d921295fc4",
+     "chars": 48,
+     "audio": "en/c04-ex2.mp3",
+     "align": "en/c04-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c05",
+   "type": "examples",
+   "segments": [
+    {
+     "id": "c05-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "Should you have any questions, please call us.",
+     "textSha256": "eb57f8c304263fe10490c02e583007cd4bac966a987c2c9a987e415107b79e80",
+     "chars": 46,
+     "audio": "en/c05-ex1.mp3",
+     "align": "en/c05-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "Had we left earlier, we would have caught the train.",
+     "textSha256": "bc71a053bb3d1a4728249af50e09b206fbdf31639a40a0a7f9b90b6f7d67b9fd",
+     "chars": 52,
+     "audio": "en/c05-ex2.mp3",
+     "align": "en/c05-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "Were it not for the rain, we would go out.",
+     "textSha256": "e4ea35e954264e0ea961ad874cd7966ae9dfc073730fd7a7f7fa17037f7cf5fc",
+     "chars": 42,
+     "audio": "en/c05-ex3.mp3",
+     "align": "en/c05-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex4",
+     "lang": "en",
+     "role": "example",
+     "text": "We insist that the work be finished by Friday.",
+     "textSha256": "d6b3e419227292823b500118789ef0f0ff3bf2c098e09cd5ada5d8a6fb61c936",
+     "chars": 46,
+     "audio": "en/c05-ex4.mp3",
+     "align": "en/c05-ex4.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex5",
+     "lang": "en",
+     "role": "example",
+     "text": "It is important that every student have a copy.",
+     "textSha256": "aaf7f5794551a9d434ef5efe754305eec46b4867ccc01f1972d2c0b7beb9b808",
+     "chars": 47,
+     "audio": "en/c05-ex5.mp3",
+     "align": "en/c05-ex5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c06",
+   "type": "contrast",
+   "segments": [
+    {
+     "id": "c06-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Türkçede şart ve dilek ekle kurulur: gerekirse, gelsin. İngilizcede bağlaç düşünce yardımcı fiil başa geçer, ama ardından gelen fiilin biçimi değişmez. Bu kalıba gelecek yardımcısı eklemek ya da üçüncü hâli unutmak çok olağandır.",
+     "textSha256": "6c705be25766463eb7e10ffd70cc50befdb2f0c1adca8e11213fda4688a53e07",
+     "chars": 229,
+     "audio": "tr/c06-tr.mp3",
+     "align": "tr/c06-tr.align.json",
+     "present": true,
+     "duration": 15.1,
+     "quality": {
+      "words": 33,
+      "exact": 32,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c06-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "Should you need help, call us.",
+     "textSha256": "350f3d520096ccf233d222a1cc815fe9e8ac82ddc13f1fab234f6b0e7f1e30f8",
+     "chars": 30,
+     "audio": "en/c06-ex1.mp3",
+     "align": "en/c06-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c06-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "Had I known, I would have come.",
+     "textSha256": "663c43d86f37992c1a592f570ac97d7a25c935428d5768d9bc859f3ab0c6223a",
+     "chars": 31,
+     "audio": "en/c06-ex2.mp3",
+     "align": "en/c06-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c07",
+   "type": "practice",
+   "segments": [
+    {
+     "id": "c07-q5",
+     "lang": "en",
+     "role": "say",
+     "text": "Should you need any help, please contact us.",
+     "textSha256": "b094e17adaeaa66efee9143daa6310b42469ad9b7551b526e9d1a2e9d9f41c7d",
+     "chars": 44,
+     "audio": "en/c07-q5.mp3",
+     "align": "en/c07-q5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c08",
+   "type": "rule",
+   "segments": [
+    {
+     "id": "c08-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Resmî dilde koşul bağlacı düşebilir; o zaman yardımcı fiil özneden önce gelir. Gereklilik bildiren ifadelerden sonra gelen yan cümlede fiil yalın kalır.",
+     "textSha256": "9bf2261b8b3e1384fc27f2dc4e86e68aa81a5bbe8f3d527b9b8da884f216c3bb",
+     "chars": 152,
+     "audio": "tr/c08-tr.mp3",
+     "align": "tr/c08-tr.align.json",
+     "present": true,
+     "duration": 9.63,
+     "quality": {
+      "words": 22,
+      "exact": 19,
+      "fuzzy": 3,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c08-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "Should you need any help, please contact us.",
+     "textSha256": "b094e17adaeaa66efee9143daa6310b42469ad9b7551b526e9d1a2e9d9f41c7d",
+     "chars": 44,
+     "audio": "en/c08-ex1.mp3",
+     "align": "en/c08-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  }
+ ]
+}
