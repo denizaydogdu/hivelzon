@@ -1,0 +1,52 @@
+# Sözlük: The Ninth Plate (C1-K01)
+
+İleri düzey kelimeler, deyimler, eşdizimler ve C1 dilbilgisi yapıları; Türk öğrenci notlarıyla. Taslak; kullanıcı onayı bekliyor (H-028).
+
+| Kelime | Türkçe | Örnek | Not |
+|---|---|---|---|
+| had been laid for nine | dokuz kişilik kurulmuştu | Eight strangers were invited to dinner, but the table had been laid for nine. | lay the table = sofrayı kurmak (lay → laid → laid). **Dikkat:** lay (bir şeyi koymak, sermek) ile lie (uzanmak; lie → lay → lain) karışır: ~~the table had been lain~~. |
+| by heart | ezbere | Ruth took her own invitation out of her handbag and read it again, although she knew it by heart. | know something by heart = bir şeyi ezbere bilmek; learn by heart = ezberlemek. |
+| set the Saturday puzzle | cumartesi bulmacasını hazırladı | For twenty-six years she had set the Saturday puzzle for a newspaper in Calderbury under the name Night Owl, and for twenty of those years nobody but her editor had known who Night Owl was. | set a puzzle / a crossword = bulmaca hazırlamak. Hazırlayan kişi: setter. Çözmek: do / solve a crossword. |
+| night owl | gece kuşu, geç yatan kişi | "I'm a night owl," Ruth had said. | Karşıtı: early bird (erkenci kuş). Kitabın çözümü bu iki deyimin karşıtlığına dayanır. |
+| early bird | erkenci kuş, sabah erken kalkan kişi | Who in a hotel is an early bird? | Atasözü: The early bird catches the worm (erken kalkan yol alır). |
+| anagram | anagram | The Anagram | Bir kelimenin harflerinin yerini değiştirerek kurulan başka kelime: Daryl Brie → Early Bird. Bridal Rye da aynı dokuz harftir. |
+| So had the road | yol da öyle (kaybolmuştu) | So had the road. | Eksiltme ve yerine koyma: so + yardımcı fiil + özne. Önceki cümlenin yardımcı fiiline uyar (had vanished → So had). **Dikkat:** ~~So did the road~~ değil. |
+| as though the snow were a personal friend | sanki kar yakın bir dostuymuş gibi | The taxi itself belonged to Desmond Pike, a large, cheerful man of about sixty-five who called everyone "love" and drove as though the snow were a personal friend. | Gerçek dışı geçmiş: as if / as though + geçmiş biçim (were), şimdiki gerçek dışılığı anlatır. Resmî dilde her kişiyle were. |
+| It was the signature that | (onu getiren şey) o imzaydı | It was the signature that had brought Ruth all this way. | Cleft (vurgulu) yapı: It was + vurgulanan öğe + that/who. Türkçe "-an … idi" kalıbı. **Dikkat:** ~~Was the signature that…~~ (it eksik olmaz). |
+| It was Bev who | sessizliği bozan Bev oldu | It was Bev who broke the silence, because of course it was. | Cleft yapı; kişi vurgulanınca who da kullanılır. |
+| What she needed was | ona gereken şey … idi | What she needed was the one thing that did not fit. | What-cleft: What + özne + fiil + is/was + vurgulanan öğe. **Dikkat:** ~~What she needed it was~~. |
+| not at liberty to say | söyleme yetkim yok | "I'm afraid," he said, "I am not at liberty to say." | Resmî, kaçamak üslup: söylemeye izni olmadığını kibarca belirtir. |
+| with whom one is dining | insanın kiminle yemek yediği | "One does like to know with whom one is dining." | Ambrose'un resmî İngilizcesi: genel özne one, edatın başa geldiği whom, vurgulu does. Gündelik dilde: You want to know who you're eating with. |
+| Hardly had the last spoon been put down when | son kaşık bırakılır bırakılmaz | Hardly had the last spoon been put down when eight pairs of hands reached for eight pieces of green string. | Devrik yapı: Hardly + had + özne + V3 … when. **Dikkat:** ~~Hardly the last spoon had been put down~~; ikinci kısımda than değil, when. |
+| No sooner had he opened his mouth than | daha ağzını açar açmaz | No sooner had he opened his mouth than every light in the Glasswater Hotel went out. | Devrik yapı: No sooner + had + özne + V3 … than. **Dikkat:** ~~No sooner … when~~ değil, than. |
+| Never have I met a worse one | ömrümde bundan kötüsüyle karşılaşmadım | "Never have I met a worse one." | Devrik yapı: olumsuz zarf başa gelince yardımcı fiil özneden önce gelir. **Dikkat:** ~~Never I have met~~. |
+| Not only had she been looking | yalnızca … bakmakla kalmamıştı | Not only had she been looking at the wrong words, she realised; she had been looking at them the wrong way round. | Devrik yapı: Not only + yardımcı fiil + özne. |
+| Only then did she understand | ancak o zaman anladı | Only then did she understand what the signature had been saying all along. | Devrik yapı: Only then / Only when + did + özne + yalın fiil. **Dikkat:** ~~Only then she understood~~. |
+| might well have given | pekâlâ vermiş olabilirsiniz | "You might well have given them away," said Agnes quietly, "and simply forgotten." | might well have + V3 = geçmişte büyük olasılıkla … olmuş olabilir. Şimdiki zaman: He might well be. |
+| must have been | olmalı | It must have been about seven o'clock. | must have + V3 = geçmişe dair güçlü çıkarım. **Dikkat:** eleştiride must have değil should have: ~~You must have told me~~ → You should have told me. |
+| was supposed to have gone home | eve gitmiş olması gerekiyordu | I'm the one who was supposed to have gone home." | be supposed to = beklenen, planlanan (ama olmayan) şey. Felix: I was supposed to be at my sister's for dinner. |
+| needn't assure | temin etmenize gerek yok | "You needn't assure us of anything," said Priya. | needn't + yalın fiil = şimdi gerek yok. |
+| needn't have gone | gitmenize (girmene) gerek yoktu | "You needn't have gone to all this trouble, you know," said Bev. | needn't have + V3 = yapıldı ama gereksizdi. **Dikkat:** didn't need to go = gerek yoktu (yapılıp yapılmadığı belli değil, çoğunlukla yapılmadı). |
+| I would rather she had something to hold | tutacak bir şeyi olsun isterdim | "Because I would rather she had something to hold." | would rather + başka bir özne + geçmiş biçim = birinin bir şey yapmasını tercih etmek. **Dikkat:** ~~I would rather she has~~. |
+| I would rather you didn't | anlatmasanız daha iyi olur | "I would rather you didn't," said Ambrose. | Kibar ama net bir ret. Eksiltme: didn't (tell us the rest). |
+| I'd rather not | -memeyi tercih ederim | "I'd rather not talk about it, if you don't mind. | would rather + yalın fiil (to yok). **Dikkat:** ~~I'd rather not to talk~~. |
+| it is high time you told us | bize söylemenizin vakti çoktan geldi | With respect, it is high time you told us the truth." | It's (high) time + özne + geçmiş biçim: bir şey çoktan yapılmış olmalıydı. **Dikkat:** ~~it is high time you tell us~~. |
+| It is often said that | sık sık söylenir ki | It is often said that nothing brings people together like a shared mystery. | Kişisiz edilgen: It is said / believed / thought that … Mesafeli, kaynağı belirsiz bilgi. |
+| She is believed to have danced | dans ettiğine inanılır | She is believed to have danced in this very room every night of the summer of nineteen twenty-six. | Kişisiz edilgen: özne + is believed / said + to have + V3 (geçmiş için). **Dikkat:** ~~She is believed that she danced~~. |
+| It would seem | öyle görünüyor ki | "It would seem," she said, "that someone has gone to considerable trouble to find eight people who have never met. | Temkinli dil: kesin konuşmadan çıkarım yapar. Benzerleri: it appears, apparently. |
+| If I weren't so vain, I would have seen it | bu kadar kibirli olmasaydım, görürdüm | If I weren't so vain, I would have seen it on the very first day." | Karma koşul: şimdiki/kalıcı özellik (weren't so vain) → geçmiş sonuç (would have seen). |
+| If you hadn't all stopped that night, I wouldn't be a cook now | o gece durmasaydınız, bugün aşçı olmazdım | "If you hadn't all stopped that night, I wouldn't be a cook now. | Karma koşul: geçmiş koşul (had + V3) → şimdiki sonuç (would + yalın fiil). **Dikkat:** ~~I wouldn't have been a cook now~~. |
+| Having found her way back | yolunu bulup döndükten sonra | Having found her way back to her place beside the empty chair, Ruth sat down and looked at the invitation again in the candlelight. | Ortaç yan cümlesi: Having + V3 = önce olan eylem. Türkçe -ip, -dikten sonra. **Dikkat:** iki cümlenin öznesi aynı olmalı (Ruth). |
+| Left alone with | … ile baş başa kalan | Left alone with the candles and the others, Ruth picked one up and went after her. | Ortaç yan cümlesi (V3 ile): Ruth was left alone → Left alone, Ruth… |
+| a red herring | yanıltıcı ipucu | A very kind, very anxious red herring, but a red herring all the same. | Deyim: dikkati asıl çözümden uzaklaştıran şey. Kelime anlamı "kırmızı ringa balığı". |
+| put two and two together | ikiyle ikiyi toplamak, sonuca varmak | It did not take a crossword setter to put two and two together after that. | Deyim: eldeki ipuçlarını birleştirip açık sonucu görmek. |
+| written all over your face | yüzünden okunuyor | "It's written all over your face." | Deyim: duygu ya da sır yüzden açıkça anlaşılıyor. |
+| on the grounds that | … gerekçesiyle | Theo suspected Felix, on the grounds that vets were used to keeping secrets from animals. | Resmî bağlaç: because'ün resmî karşılığı. |
+| fed up | bıkkın, bezgin | That night everybody was too fed up to listen. | Gündelik İngiliz kullanımı. be fed up with something = -den bıkmak. |
+| snowed in | karda mahsur | Whoever said it had clearly never spent an evening snowed in with seven strangers, a nervous manager and nine plates. | be snowed in = kar yüzünden bir yerden çıkamamak. |
+| sworn to secrecy | sır tutmaya yemin ettirilmiş | "He was sworn to secrecy. | swear → swore → sworn. be sworn to secrecy = sır tutacağına söz vermiş olmak. |
+| plectrum | pena | "A plectrum," he said, and laughed, but not as if anything was funny. | Gündelik dilde: (guitar) pick. |
+| torch | el feneri | "The storm," said Mr Crane, reappearing in the doorway with a torch that did not work. | İngiliz İngilizcesi; Amerikan İngilizcesinde flashlight. |
+| How do you do | Memnun oldum (resmî selamlaşma) | There was Ambrose Hale, a retired history teacher of about seventy-eight, as tall and thin as a coat stand, who shook everybody's hand and said "How do you do" as though the phrase were still in daily use. | Çok resmî ve eski usul. Bir soru değildir; cevabı da "How do you do". **Dikkat:** ~~I'm fine, thanks~~ diye cevap verilmez. |
+| I hope so | umarım öyle | "I hope so." | Eksiltme: so önceki cümlenin yerine geçer. Olumsuzu: I hope not. **Dikkat:** ~~I hope it~~, ~~I hope yes~~. |
+| So am I | ben de | "So am I," said Bev, wiping her eyes with a napkin and not pretending otherwise. | Eksiltme: So + yardımcı fiil + özne (I am glad → So am I). Olumsuzda: Neither am I. |

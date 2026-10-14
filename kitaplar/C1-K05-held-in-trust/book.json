@@ -1,0 +1,203 @@
+{
+  "schemaVersion": 1,
+  "id": "C1-K05",
+  "slug": "C1-K05-held-in-trust",
+  "level": "C1",
+  "genre": "everyday",
+  "title": "Held in Trust",
+  "titleTr": "Emanet",
+  "blurbTr": "Nur'un işi yalnızca çeviri yapmak: kelimeleri bir dilden ötekine taşımak ve görünmez kalmak. Ama 81 yaşındaki Margaret, Kaş yakınlarındaki küçük bir sahil köyüne manzara için gelmedi. 1968'de bir yıl öğretmenlik yaptığı bu köye, elli sekiz yıl önce aldığı küçük mavi bir kutuyu geri vermek için geldi. Köy değişmiş, eski okul otel olmuş. Kutunun sahibi Hatice Hanım ise hâlâ yaşıyor ve kimseyi görmek istemiyor. Nur'un cuma akşamı kızının okul gösterisine yetişmesi gerekiyor; ama bu hafta çevirmesi gereken tek şey kelimeler değil.",
+  "hookEn": "Margaret had kept a small blue box for fifty-eight years, and she had come back to return it.",
+  "contentVersion": 1,
+  "status": "DRAFT",
+  "aiGenerated": true,
+  "palette": {
+    "background": "#F4F0E6",
+    "surface": "#E1E3D3",
+    "text": "#23262A",
+    "accent": "#3D6B47",
+    "highlight": "#C8673F"
+  },
+  "cover": "cover.png",
+  "properNouns": [
+    "Margaret",
+    "Ellis",
+    "Nur",
+    "Demir",
+    "Priya",
+    "Mina",
+    "Ollie",
+    "Hatice",
+    "Kaya",
+    "Osman",
+    "Emre",
+    "Peter",
+    "Sarnıçlı",
+    "Kaş",
+    "London",
+    "Istanbul",
+    "Turkey",
+    "Alps",
+    "Manchester",
+    "Spain",
+    "Hanım",
+    "Amca"
+  ],
+  "narration": {
+    "modelId": "eleven_v3",
+    "speed": 1.05,
+    "voiceId": "EXAVITQu4vr4xnSDxMaL"
+  },
+  "chapters": [
+    {
+      "id": "c1",
+      "title": "The Job",
+      "titleTr": "İş",
+      "pages": [
+        {
+          "id": "p01",
+          "image": "p01.png"
+        },
+        {
+          "id": "p02",
+          "image": null
+        },
+        {
+          "id": "p03",
+          "image": null
+        },
+        {
+          "id": "p04",
+          "image": null
+        },
+        {
+          "id": "p05",
+          "image": null
+        }
+      ]
+    },
+    {
+      "id": "c2",
+      "title": "The Village",
+      "titleTr": "Köy",
+      "pages": [
+        {
+          "id": "p06",
+          "image": "p06.png"
+        },
+        {
+          "id": "p07",
+          "image": null
+        },
+        {
+          "id": "p08",
+          "image": null
+        },
+        {
+          "id": "p09",
+          "image": null
+        }
+      ]
+    },
+    {
+      "id": "c3",
+      "title": "1968",
+      "titleTr": "1968",
+      "pages": [
+        {
+          "id": "p10",
+          "image": "p10.png"
+        },
+        {
+          "id": "p11",
+          "image": null
+        },
+        {
+          "id": "p12",
+          "image": null
+        },
+        {
+          "id": "p13",
+          "image": null
+        },
+        {
+          "id": "p14",
+          "image": null
+        }
+      ]
+    },
+    {
+      "id": "c4",
+      "title": "Mothers",
+      "titleTr": "Anneler",
+      "pages": [
+        {
+          "id": "p15",
+          "image": "p15.png"
+        },
+        {
+          "id": "p16",
+          "image": null
+        },
+        {
+          "id": "p17",
+          "image": null
+        },
+        {
+          "id": "p18",
+          "image": null
+        }
+      ]
+    },
+    {
+      "id": "c5",
+      "title": "Beyond the Brief",
+      "titleTr": "Görev Tanımının Ötesinde",
+      "pages": [
+        {
+          "id": "p19",
+          "image": "p19.png"
+        },
+        {
+          "id": "p20",
+          "image": null
+        },
+        {
+          "id": "p21",
+          "image": null
+        },
+        {
+          "id": "p22",
+          "image": null
+        },
+        {
+          "id": "p23",
+          "image": null
+        }
+      ]
+    },
+    {
+      "id": "c6",
+      "title": "Emanet",
+      "titleTr": "Emanet",
+      "pages": [
+        {
+          "id": "p24",
+          "image": "p24.png"
+        },
+        {
+          "id": "p25",
+          "image": null
+        },
+        {
+          "id": "p26",
+          "image": null
+        },
+        {
+          "id": "p27",
+          "image": null
+        }
+      ]
+    }
+  ]
+}

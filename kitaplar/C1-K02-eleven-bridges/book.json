@@ -1,0 +1,214 @@
+{
+  "schemaVersion": 1,
+  "id": "C1-K02",
+  "slug": "C1-K02-eleven-bridges",
+  "level": "C1",
+  "genre": "adventure",
+  "title": "Eleven Bridges",
+  "titleTr": "On Bir Köprü",
+  "blurbTr": "Lena, annesinin tavan arasındaki bir ayakkabı kutusunda büyük teyzesi Hedda'nın 1962 yazından kalma defterini buluyor: bir nehir boyunca bisiklet yolculuğu, on bir köprü ve her birinin özenli bir kurşun kalem çizimi. Hedda'nın doksanıncı doğum gününe üç hafta var. İnşaat mühendisi Lena, ona hediye olarak aynı yolu sürmeye ve her köprünün bugünkü hâlini çizmeye karar veriyor. Ama on birinci köprü hiçbir haritada yok. Hedda yalnızca gülümsüyor: \"Some bridges you find. Some find you.\"",
+  "hookEn": "My great-aunt's diary described eleven bridges, but only ten of them were on any map.",
+  "contentVersion": 1,
+  "status": "DRAFT",
+  "aiGenerated": true,
+  "palette": {
+    "background": "#F4F1E6",
+    "surface": "#E2E6DA",
+    "text": "#22302B",
+    "accent": "#3E6B5A",
+    "highlight": "#D9A93A"
+  },
+  "cover": "cover.png",
+  "properNouns": [
+    "Lena",
+    "Hedda",
+    "Vogt",
+    "Mortimer",
+    "Ostrel",
+    "Brenning",
+    "Odderby",
+    "Kerrow",
+    "Priya",
+    "Tamsby",
+    "Lindhaven",
+    "Pellow",
+    "Ilan",
+    "Harl",
+    "Ambrey",
+    "Margit",
+    "Tomasz",
+    "Mardle",
+    "Saltings",
+    "Wrenmouth",
+    "Holm",
+    "Dunmore"
+  ],
+  "narration": {
+    "modelId": "eleven_v3",
+    "speed": 1.05,
+    "voiceId": "EXAVITQu4vr4xnSDxMaL"
+  },
+  "chapters": [
+    {
+      "id": "c1",
+      "title": "The Diary",
+      "titleTr": "Defter",
+      "pages": [
+        {
+          "id": "p01",
+          "image": "p01.png"
+        },
+        {
+          "id": "p02",
+          "image": null
+        },
+        {
+          "id": "p03",
+          "image": null
+        },
+        {
+          "id": "p04",
+          "image": null
+        }
+      ]
+    },
+    {
+      "id": "c2",
+      "title": "Stone, Wood, Iron",
+      "titleTr": "Taş, Ahşap, Demir",
+      "pages": [
+        {
+          "id": "p05",
+          "image": "p05.png"
+        },
+        {
+          "id": "p06",
+          "image": null
+        },
+        {
+          "id": "p07",
+          "image": null
+        },
+        {
+          "id": "p08",
+          "image": null
+        }
+      ]
+    },
+    {
+      "id": "c3",
+      "title": "The Knee",
+      "titleTr": "Diz",
+      "pages": [
+        {
+          "id": "p09",
+          "image": "p09.png"
+        },
+        {
+          "id": "p10",
+          "image": null
+        },
+        {
+          "id": "p11",
+          "image": null
+        },
+        {
+          "id": "p12",
+          "image": null
+        }
+      ]
+    },
+    {
+      "id": "c4",
+      "title": "The Festival",
+      "titleTr": "Şenlik",
+      "pages": [
+        {
+          "id": "p13",
+          "image": "p13.png"
+        },
+        {
+          "id": "p14",
+          "image": null
+        },
+        {
+          "id": "p15",
+          "image": null
+        },
+        {
+          "id": "p16",
+          "image": null
+        }
+      ]
+    },
+    {
+      "id": "c5",
+      "title": "The Delta",
+      "titleTr": "Delta",
+      "pages": [
+        {
+          "id": "p17",
+          "image": "p17.png"
+        },
+        {
+          "id": "p18",
+          "image": null
+        },
+        {
+          "id": "p19",
+          "image": null
+        },
+        {
+          "id": "p20",
+          "image": null
+        }
+      ]
+    },
+    {
+      "id": "c6",
+      "title": "Nothing There",
+      "titleTr": "Orada Hiçbir Şey Yok",
+      "pages": [
+        {
+          "id": "p21",
+          "image": "p21.png"
+        },
+        {
+          "id": "p22",
+          "image": null
+        },
+        {
+          "id": "p23",
+          "image": null
+        },
+        {
+          "id": "p24",
+          "image": null
+        }
+      ]
+    },
+    {
+      "id": "c7",
+      "title": "The Eleventh Bridge",
+      "titleTr": "On Birinci Köprü",
+      "pages": [
+        {
+          "id": "p25",
+          "image": "p25.png"
+        },
+        {
+          "id": "p26",
+          "image": null
+        },
+        {
+          "id": "p27",
+          "image": null
+        },
+        {
+          "id": "p28",
+          "image": null
+        }
+      ]
+    }
+  ]
+}
