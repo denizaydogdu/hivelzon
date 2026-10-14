@@ -1,0 +1,2222 @@
+{
+  "contentId": "A1-K01",
+  "status": "DRAFT",
+  "author": "Claude taslak (H-069); kullanıcı onayı bekliyor",
+  "date": "2026-10-14",
+  "notes": [
+    "Anlatım İngilizcede geniş zamanda (present simple); Türkçede doğal anlatım için çoğunlukla şimdiki zaman (-iyor) kullanıldı.",
+    "Kelime anlamları cümledeki kullanıma göre verildi; -s takısı olan fiillerde (lives, has, goes) not düşüldü."
+  ],
+  "lines": [
+    {
+      "en": "The New Home",
+      "tr": "Yeni Ev",
+      "chunks": [],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "new": "yeni",
+        "home": "ev, yuva"
+      },
+      "source": "c1"
+    },
+    {
+      "en": "Lina is eleven.",
+      "tr": "Lina on bir yaşında.",
+      "chunks": [
+        {
+          "en": "Lina is eleven",
+          "tr": "Lina on bir yaşında"
+        }
+      ],
+      "words": {
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "eleven": "on bir"
+      },
+      "source": "p01-s01"
+    },
+    {
+      "en": "Today she has a new home.",
+      "tr": "Bugün yeni bir evi var.",
+      "chunks": [],
+      "words": {
+        "today": "bugün",
+        "she": "o (kadın, kız)",
+        "has": "-si var (have → has)",
+        "a": "bir",
+        "new": "yeni",
+        "home": "ev, yuva"
+      },
+      "source": "p01-s02"
+    },
+    {
+      "en": "It is an old building on a river.",
+      "tr": "Nehir kıyısında eski bir bina.",
+      "chunks": [],
+      "words": {
+        "it": "o; onu",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "an": "bir",
+        "old": "eski; yaşlı",
+        "building": "bina",
+        "on": "kıyısında (on a river)",
+        "a": "bir",
+        "river": "nehir"
+      },
+      "source": "p01-s03"
+    },
+    {
+      "en": "It has five floors.",
+      "tr": "Beş katı var.",
+      "chunks": [],
+      "words": {
+        "it": "o; onu",
+        "has": "-si var (have → has)",
+        "five": "beş",
+        "floors": "katlar"
+      },
+      "source": "p01-s04"
+    },
+    {
+      "en": "Lina and her mum live on floor four.",
+      "tr": "Lina ve annesi dördüncü katta oturuyor.",
+      "chunks": [
+        {
+          "en": "live on floor four",
+          "tr": "dördüncü katta oturmak"
+        }
+      ],
+      "words": {
+        "and": "ve",
+        "her": "onun; onu",
+        "mum": "anne",
+        "live": "oturmak (evde yaşamak)",
+        "on": "-de (katta)",
+        "floor": "kat",
+        "four": "dört"
+      },
+      "source": "p01-s05"
+    },
+    {
+      "en": "Lina runs up the steps.",
+      "tr": "Lina merdivenleri koşarak çıkıyor.",
+      "chunks": [
+        {
+          "en": "runs up",
+          "tr": "koşarak çıkıyor"
+        }
+      ],
+      "words": {
+        "runs": "koşuyor (run + -s)",
+        "up": "yukarı",
+        "the": "(belirli tanımlık)",
+        "steps": "basamaklar, merdiven"
+      },
+      "source": "p01-s06"
+    },
+    {
+      "en": "Every door has a number.",
+      "tr": "Her kapının bir numarası var.",
+      "chunks": [],
+      "words": {
+        "every": "her",
+        "door": "kapı",
+        "has": "-si var (have → has)",
+        "a": "bir",
+        "number": "numara"
+      },
+      "source": "p01-s07"
+    },
+    {
+      "en": "On the top floor, there is one door.",
+      "tr": "En üst katta tek bir kapı var.",
+      "chunks": [
+        {
+          "en": "On the top floor",
+          "tr": "en üst katta"
+        },
+        {
+          "en": "there is",
+          "tr": "var"
+        }
+      ],
+      "words": {
+        "on": "üstünde, -de",
+        "the": "(belirli tanımlık)",
+        "top": "en üst",
+        "floor": "kat",
+        "there": "orada (there is/are: var)",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "one": "bir",
+        "door": "kapı"
+      },
+      "source": "p01-s08"
+    },
+    {
+      "en": "It is blue.",
+      "tr": "Kapı mavi.",
+      "chunks": [],
+      "words": {
+        "it": "o; onu",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "blue": "mavi"
+      },
+      "source": "p01-s09"
+    },
+    {
+      "en": "It has no number.",
+      "tr": "Numarası yok.",
+      "chunks": [],
+      "words": {
+        "it": "o; onu",
+        "has": "-si var (have → has)",
+        "no": "hiç; yok",
+        "number": "numara"
+      },
+      "source": "p01-s10"
+    },
+    {
+      "en": "Lina tries the door.",
+      "tr": "Lina kapıyı açmayı deniyor.",
+      "chunks": [],
+      "words": {
+        "tries": "deniyor (try + -ies)",
+        "the": "(belirli tanımlık)",
+        "door": "kapı"
+      },
+      "source": "p01-s11"
+    },
+    {
+      "en": "It does not open.",
+      "tr": "Kapı açılmıyor.",
+      "chunks": [
+        {
+          "en": "does not open",
+          "tr": "açılmıyor"
+        }
+      ],
+      "words": {
+        "it": "o; onu",
+        "does": "(yardımcı fiil; he/she/it)",
+        "not": "değil, -me",
+        "open": "açık; açılmak"
+      },
+      "source": "p01-s12"
+    },
+    {
+      "en": "It is locked.",
+      "tr": "Kilitli.",
+      "chunks": [],
+      "words": {
+        "it": "o; onu",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "locked": "kilitli"
+      },
+      "source": "p01-s13"
+    },
+    {
+      "en": "Who lives behind the blue door?",
+      "tr": "Mavi kapının arkasında kim yaşıyor?",
+      "chunks": [],
+      "words": {
+        "who": "kim",
+        "lives": "yaşıyor, oturuyor (live + -s)",
+        "behind": "arkasında",
+        "the": "(belirli tanımlık)",
+        "blue": "mavi",
+        "door": "kapı"
+      },
+      "source": "p01-s14"
+    },
+    {
+      "en": "Mum carries boxes into the flat.",
+      "tr": "Annesi kutuları daireye taşıyor.",
+      "chunks": [],
+      "words": {
+        "mum": "anne",
+        "carries": "taşıyor (carry + -s)",
+        "boxes": "kutular",
+        "into": "içine",
+        "the": "(belirli tanımlık)",
+        "flat": "daire"
+      },
+      "source": "p02-s01"
+    },
+    {
+      "en": "Lina helps her.",
+      "tr": "Lina ona yardım ediyor.",
+      "chunks": [],
+      "words": {
+        "helps": "yardım ediyor (help + -s)",
+        "her": "onun; onu"
+      },
+      "source": "p02-s02"
+    },
+    {
+      "en": "In one box, there is a red pot.",
+      "tr": "Bir kutuda kırmızı bir saksı var.",
+      "chunks": [
+        {
+          "en": "there is",
+          "tr": "var"
+        }
+      ],
+      "words": {
+        "in": "içinde, -de",
+        "one": "bir",
+        "box": "kutu",
+        "there": "orada (there is/are: var)",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "a": "bir",
+        "red": "kırmızı",
+        "pot": "saksı"
+      },
+      "source": "p02-s03"
+    },
+    {
+      "en": "There is a flower in it.",
+      "tr": "İçinde bir çiçek var.",
+      "chunks": [
+        {
+          "en": "There is",
+          "tr": "var"
+        }
+      ],
+      "words": {
+        "there": "orada (there is/are: var)",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "a": "bir",
+        "flower": "çiçek",
+        "in": "içinde, -de",
+        "it": "onun (içinde)"
+      },
+      "source": "p02-s04"
+    },
+    {
+      "en": "The flower is very dry.",
+      "tr": "Çiçek çok kuru.",
+      "chunks": [],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "flower": "çiçek",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "very": "çok",
+        "dry": "kuru"
+      },
+      "source": "p02-s05"
+    },
+    {
+      "en": "It is brown, not green.",
+      "tr": "Yeşil değil, kahverengi.",
+      "chunks": [],
+      "words": {
+        "it": "o; onu",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "brown": "kahverengi",
+        "not": "değil, -me",
+        "green": "yeşil"
+      },
+      "source": "p02-s06"
+    },
+    {
+      "en": "\"Poor flower,\" says Lina.",
+      "tr": "\"Zavallı çiçek,\" diyor Lina.",
+      "chunks": [],
+      "words": {
+        "poor": "zavallı",
+        "flower": "çiçek",
+        "says": "diyor (say + -s)"
+      },
+      "source": "p02-s07"
+    },
+    {
+      "en": "She puts it on her window.",
+      "tr": "Saksıyı penceresinin önüne koyuyor.",
+      "chunks": [],
+      "words": {
+        "she": "o (kadın, kız)",
+        "puts": "koyuyor (put + -s)",
+        "it": "onu",
+        "on": "önüne (pencereye)",
+        "her": "onun; onu",
+        "window": "pencere"
+      },
+      "source": "p02-s08"
+    },
+    {
+      "en": "Mum looks at it.",
+      "tr": "Annesi çiçeğe bakıyor.",
+      "chunks": [],
+      "words": {
+        "mum": "anne",
+        "looks": "bakıyor (look + -s)",
+        "at": "-e (look at: -e bakmak)",
+        "it": "onu"
+      },
+      "source": "p02-s09"
+    },
+    {
+      "en": "\"It needs sun,\" says Mum.",
+      "tr": "\"Güneşe ihtiyacı var,\" diyor annesi.",
+      "chunks": [],
+      "words": {
+        "it": "o; onu",
+        "needs": "ihtiyacı var (need + -s)",
+        "sun": "güneş",
+        "says": "diyor (say + -s)",
+        "mum": "anne"
+      },
+      "source": "p02-s10"
+    },
+    {
+      "en": "\"And water.\"",
+      "tr": "\"Bir de suya.\"",
+      "chunks": [],
+      "words": {
+        "and": "ve",
+        "water": "su"
+      },
+      "source": "p02-s11"
+    },
+    {
+      "en": "Lina gives it water.",
+      "tr": "Lina çiçeği suluyor.",
+      "chunks": [],
+      "words": {
+        "gives": "veriyor (give + -s)",
+        "it": "ona",
+        "water": "su"
+      },
+      "source": "p02-s12"
+    },
+    {
+      "en": "But her window is small.",
+      "tr": "Ama penceresi küçük.",
+      "chunks": [],
+      "words": {
+        "but": "ama",
+        "her": "onun; onu",
+        "window": "pencere",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "small": "küçük"
+      },
+      "source": "p02-s13"
+    },
+    {
+      "en": "There is not much sun here.",
+      "tr": "Burada pek güneş yok.",
+      "chunks": [
+        {
+          "en": "There is not much",
+          "tr": "pek … yok"
+        }
+      ],
+      "words": {
+        "there": "orada (there is/are: var)",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "not": "değil, -me",
+        "much": "çok",
+        "sun": "güneş",
+        "here": "burada"
+      },
+      "source": "p02-s14"
+    },
+    {
+      "en": "In the evening, Lina meets two neighbours.",
+      "tr": "Akşam Lina iki komşuyla tanışıyor.",
+      "chunks": [],
+      "words": {
+        "in": "içinde, -de",
+        "the": "(belirli tanımlık)",
+        "evening": "akşam",
+        "meets": "tanışıyor (meet + -s)",
+        "two": "iki",
+        "neighbours": "komşular"
+      },
+      "source": "p03-s01"
+    },
+    {
+      "en": "Mr Tom lives on floor one.",
+      "tr": "Tom Bey birinci katta oturuyor.",
+      "chunks": [],
+      "words": {
+        "mr": "Bay (… Bey)",
+        "lives": "yaşıyor, oturuyor (live + -s)",
+        "on": "üstünde, -de",
+        "floor": "kat",
+        "one": "bir"
+      },
+      "source": "p03-s02"
+    },
+    {
+      "en": "He has a big grey cat.",
+      "tr": "Büyük, gri bir kedisi var.",
+      "chunks": [],
+      "words": {
+        "he": "o (erkek)",
+        "has": "-si var (have → has)",
+        "a": "bir",
+        "big": "büyük",
+        "grey": "gri",
+        "cat": "kedi"
+      },
+      "source": "p03-s03"
+    },
+    {
+      "en": "Mrs Ada lives on floor two.",
+      "tr": "Ada Hanım ikinci katta oturuyor.",
+      "chunks": [],
+      "words": {
+        "mrs": "Bayan (… Hanım)",
+        "lives": "yaşıyor, oturuyor (live + -s)",
+        "on": "üstünde, -de",
+        "floor": "kat",
+        "two": "iki"
+      },
+      "source": "p03-s04"
+    },
+    {
+      "en": "She is old and small.",
+      "tr": "Yaşlı ve ufak tefek bir kadın.",
+      "chunks": [],
+      "words": {
+        "she": "o (kadın, kız)",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "old": "eski; yaşlı",
+        "and": "ve",
+        "small": "küçük"
+      },
+      "source": "p03-s05"
+    },
+    {
+      "en": "She has a kind face.",
+      "tr": "Yüzü çok sevimli.",
+      "chunks": [],
+      "words": {
+        "she": "o (kadın, kız)",
+        "has": "-si var (have → has)",
+        "a": "bir",
+        "kind": "iyi kalpli, sevimli",
+        "face": "yüz"
+      },
+      "source": "p03-s06"
+    },
+    {
+      "en": "\"Who lives behind the blue door?\" asks Lina.",
+      "tr": "\"Mavi kapının arkasında kim yaşıyor?\" diye soruyor Lina.",
+      "chunks": [],
+      "words": {
+        "who": "kim",
+        "lives": "yaşıyor, oturuyor (live + -s)",
+        "behind": "arkasında",
+        "the": "(belirli tanımlık)",
+        "blue": "mavi",
+        "door": "kapı",
+        "asks": "soruyor (ask + -s)"
+      },
+      "source": "p03-s07"
+    },
+    {
+      "en": "Mr Tom laughs.",
+      "tr": "Tom Bey gülüyor.",
+      "chunks": [],
+      "words": {
+        "mr": "Bay (… Bey)",
+        "laughs": "gülüyor (laugh + -s)"
+      },
+      "source": "p03-s08"
+    },
+    {
+      "en": "\"No one lives there.",
+      "tr": "\"Orada kimse yaşamıyor.",
+      "chunks": [
+        {
+          "en": "No one",
+          "tr": "hiç kimse"
+        }
+      ],
+      "words": {
+        "no": "hiç; yok",
+        "one": "bir",
+        "lives": "yaşıyor, oturuyor (live + -s)",
+        "there": "orada (there is/are: var)"
+      },
+      "source": "p03-s09"
+    },
+    {
+      "en": "It is very old.",
+      "tr": "Orası çok eski.",
+      "chunks": [],
+      "words": {
+        "it": "o; onu",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "very": "çok",
+        "old": "eski; yaşlı"
+      },
+      "source": "p03-s10"
+    },
+    {
+      "en": "No one has a key.\"",
+      "tr": "Kimsede anahtarı yok.\"",
+      "chunks": [
+        {
+          "en": "No one has",
+          "tr": "kimsede … yok"
+        }
+      ],
+      "words": {
+        "no": "hiç; yok",
+        "one": "bir",
+        "has": "-si var (have → has)",
+        "a": "bir",
+        "key": "anahtar"
+      },
+      "source": "p03-s11"
+    },
+    {
+      "en": "Mrs Ada smiles.",
+      "tr": "Ada Hanım gülümsüyor.",
+      "chunks": [],
+      "words": {
+        "mrs": "Bayan (… Hanım)",
+        "smiles": "gülümsüyor (smile + -s)"
+      },
+      "source": "p03-s12"
+    },
+    {
+      "en": "\"No one lives there, dear.",
+      "tr": "\"Orada kimse yaşamıyor, canım.",
+      "chunks": [
+        {
+          "en": "No one",
+          "tr": "hiç kimse"
+        }
+      ],
+      "words": {
+        "no": "hiç; yok",
+        "one": "bir",
+        "lives": "yaşıyor, oturuyor (live + -s)",
+        "there": "orada (there is/are: var)",
+        "dear": "canım (hitap)"
+      },
+      "source": "p03-s13"
+    },
+    {
+      "en": "That is true.\"",
+      "tr": "Bu doğru.\"",
+      "chunks": [],
+      "words": {
+        "that": "o, bu",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "true": "doğru"
+      },
+      "source": "p03-s14"
+    },
+    {
+      "en": "Then she goes into her flat.",
+      "tr": "Sonra dairesine giriyor.",
+      "chunks": [
+        {
+          "en": "goes into",
+          "tr": "-e giriyor"
+        }
+      ],
+      "words": {
+        "then": "sonra",
+        "she": "o (kadın, kız)",
+        "goes": "gidiyor (go + -es)",
+        "into": "içine",
+        "her": "onun; onu",
+        "flat": "daire"
+      },
+      "source": "p03-s15"
+    },
+    {
+      "en": "At night, Lina can't sleep.",
+      "tr": "Gece Lina uyuyamıyor.",
+      "chunks": [
+        {
+          "en": "can't sleep",
+          "tr": "uyuyamıyor"
+        }
+      ],
+      "words": {
+        "at": "-de (saat/yer)",
+        "night": "gece",
+        "can't": "-emez, yapamaz",
+        "sleep": "uyumak"
+      },
+      "source": "p04-s01"
+    },
+    {
+      "en": "Her new room is strange.",
+      "tr": "Yeni odası ona tuhaf geliyor.",
+      "chunks": [],
+      "words": {
+        "her": "onun; onu",
+        "new": "yeni",
+        "room": "oda",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "strange": "tuhaf, garip"
+      },
+      "source": "p04-s02"
+    },
+    {
+      "en": "It is nine o'clock.",
+      "tr": "Saat dokuz.",
+      "chunks": [
+        {
+          "en": "nine o'clock",
+          "tr": "saat dokuz"
+        }
+      ],
+      "words": {
+        "it": "o; onu",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "nine": "dokuz",
+        "o'clock": "saat (tam)"
+      },
+      "source": "p04-s03"
+    },
+    {
+      "en": "The building is quiet and dark.",
+      "tr": "Bina sessiz ve karanlık.",
+      "chunks": [],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "building": "bina",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "quiet": "sessiz",
+        "and": "ve",
+        "dark": "karanlık"
+      },
+      "source": "p04-s04"
+    },
+    {
+      "en": "Lina opens her door.",
+      "tr": "Lina kapısını açıyor.",
+      "chunks": [],
+      "words": {
+        "opens": "açıyor (open + -s)",
+        "her": "onun; onu",
+        "door": "kapı"
+      },
+      "source": "p04-s05"
+    },
+    {
+      "en": "She looks up the steps.",
+      "tr": "Merdivenlerden yukarı bakıyor.",
+      "chunks": [
+        {
+          "en": "looks up",
+          "tr": "yukarı bakıyor"
+        }
+      ],
+      "words": {
+        "she": "o (kadın, kız)",
+        "looks": "bakıyor (look + -s)",
+        "up": "yukarı",
+        "the": "(belirli tanımlık)",
+        "steps": "basamaklar, merdiven"
+      },
+      "source": "p04-s06"
+    },
+    {
+      "en": "There is a light under the blue door!",
+      "tr": "Mavi kapının altında bir ışık var!",
+      "chunks": [
+        {
+          "en": "There is",
+          "tr": "var"
+        }
+      ],
+      "words": {
+        "there": "orada (there is/are: var)",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "a": "bir",
+        "light": "ışık",
+        "under": "altında",
+        "the": "(belirli tanımlık)",
+        "blue": "mavi",
+        "door": "kapı"
+      },
+      "source": "p04-s07"
+    },
+    {
+      "en": "It is a warm yellow light.",
+      "tr": "Sıcak, sarı bir ışık.",
+      "chunks": [],
+      "words": {
+        "it": "o; onu",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "a": "bir",
+        "warm": "sıcak",
+        "yellow": "sarı",
+        "light": "ışık"
+      },
+      "source": "p04-s08"
+    },
+    {
+      "en": "Lina does not move.",
+      "tr": "Lina kıpırdamıyor.",
+      "chunks": [],
+      "words": {
+        "does": "(yardımcı fiil; he/she/it)",
+        "not": "değil, -me",
+        "move": "kıpırdamak"
+      },
+      "source": "p04-s09"
+    },
+    {
+      "en": "She waits and watches.",
+      "tr": "Bekliyor ve izliyor.",
+      "chunks": [],
+      "words": {
+        "she": "o (kadın, kız)",
+        "waits": "bekliyor (wait + -s)",
+        "and": "ve",
+        "watches": "izliyor (watch + -es)"
+      },
+      "source": "p04-s10"
+    },
+    {
+      "en": "At ten o'clock, the light goes off.",
+      "tr": "Saat onda ışık sönüyor.",
+      "chunks": [
+        {
+          "en": "At ten o'clock",
+          "tr": "saat onda"
+        },
+        {
+          "en": "goes off",
+          "tr": "sönüyor"
+        }
+      ],
+      "words": {
+        "at": "-de (saat/yer)",
+        "ten": "on",
+        "o'clock": "saat (tam)",
+        "the": "(belirli tanımlık)",
+        "light": "ışık",
+        "goes": "gidiyor (go + -es)",
+        "off": "kapalı (go off: sönmek)"
+      },
+      "source": "p04-s11"
+    },
+    {
+      "en": "In the morning, Lina runs up again.",
+      "tr": "Sabah Lina yine koşarak yukarı çıkıyor.",
+      "chunks": [],
+      "words": {
+        "in": "içinde, -de",
+        "the": "(belirli tanımlık)",
+        "morning": "sabah",
+        "runs": "koşuyor (run + -s)",
+        "up": "yukarı",
+        "again": "yine, tekrar"
+      },
+      "source": "p04-s12"
+    },
+    {
+      "en": "There is something brown on the steps.",
+      "tr": "Basamaklarda kahverengi bir şey var.",
+      "chunks": [
+        {
+          "en": "There is",
+          "tr": "var"
+        }
+      ],
+      "words": {
+        "there": "orada (there is/are: var)",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "something": "bir şey",
+        "brown": "kahverengi",
+        "on": "üstünde, -de",
+        "the": "(belirli tanımlık)",
+        "steps": "basamaklar, merdiven"
+      },
+      "source": "p04-s13"
+    },
+    {
+      "en": "It is in front of the blue door.",
+      "tr": "Mavi kapının önünde.",
+      "chunks": [
+        {
+          "en": "in front of",
+          "tr": "önünde"
+        }
+      ],
+      "words": {
+        "it": "o; onu",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "in": "içinde, -de",
+        "front": "ön",
+        "of": "-in; (smell of: … kokmak)",
+        "the": "(belirli tanımlık)",
+        "blue": "mavi",
+        "door": "kapı"
+      },
+      "source": "p04-s14"
+    },
+    {
+      "en": "Lina touches it.",
+      "tr": "Lina ona dokunuyor.",
+      "chunks": [],
+      "words": {
+        "touches": "dokunuyor (touch + -es)",
+        "it": "ona"
+      },
+      "source": "p04-s15"
+    },
+    {
+      "en": "It is earth.",
+      "tr": "Bu toprak.",
+      "chunks": [],
+      "words": {
+        "it": "o; onu",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "earth": "toprak"
+      },
+      "source": "p04-s16"
+    },
+    {
+      "en": "Clues",
+      "tr": "İpuçları",
+      "chunks": [],
+      "words": {
+        "clues": "ipuçları"
+      },
+      "source": "c2"
+    },
+    {
+      "en": "Lina has a notebook.",
+      "tr": "Lina'nın bir defteri var.",
+      "chunks": [],
+      "words": {
+        "has": "-si var (have → has)",
+        "a": "bir",
+        "notebook": "defter"
+      },
+      "source": "p05-s01"
+    },
+    {
+      "en": "She writes in it.",
+      "tr": "Deftere yazıyor.",
+      "chunks": [],
+      "words": {
+        "she": "o (kadın, kız)",
+        "writes": "yazıyor (write + -s)",
+        "in": "içinde, -de",
+        "it": "ona (deftere)"
+      },
+      "source": "p05-s02"
+    },
+    {
+      "en": "One: a light at nine o'clock.",
+      "tr": "Bir: saat dokuzda bir ışık.",
+      "chunks": [],
+      "words": {
+        "one": "bir",
+        "a": "bir",
+        "light": "ışık",
+        "at": "-de (saat/yer)",
+        "nine": "dokuz",
+        "o'clock": "saat (tam)"
+      },
+      "source": "p05-s03"
+    },
+    {
+      "en": "Two: earth on the steps.",
+      "tr": "İki: basamaklarda toprak.",
+      "chunks": [],
+      "words": {
+        "two": "iki",
+        "earth": "toprak",
+        "on": "üstünde, -de",
+        "the": "(belirli tanımlık)",
+        "steps": "basamaklar, merdiven"
+      },
+      "source": "p05-s04"
+    },
+    {
+      "en": "She looks at the steps again.",
+      "tr": "Basamaklara yeniden bakıyor.",
+      "chunks": [],
+      "words": {
+        "she": "o (kadın, kız)",
+        "looks": "bakıyor (look + -s)",
+        "at": "-e (look at: -e bakmak)",
+        "the": "(belirli tanımlık)",
+        "steps": "basamaklar, merdiven",
+        "again": "yine, tekrar"
+      },
+      "source": "p05-s05"
+    },
+    {
+      "en": "There is more earth.",
+      "tr": "Daha fazla toprak var.",
+      "chunks": [],
+      "words": {
+        "there": "orada (there is/are: var)",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "more": "daha (fazla)",
+        "earth": "toprak"
+      },
+      "source": "p05-s06"
+    },
+    {
+      "en": "It goes down to floor three.",
+      "tr": "Toprak üçüncü kata iniyor.",
+      "chunks": [
+        {
+          "en": "goes down",
+          "tr": "aşağı iniyor"
+        }
+      ],
+      "words": {
+        "it": "o; onu",
+        "goes": "gidiyor (go + -es)",
+        "down": "aşağı",
+        "to": "-e, -a",
+        "floor": "kat",
+        "three": "üç"
+      },
+      "source": "p05-s07"
+    },
+    {
+      "en": "Then it goes down to floor two.",
+      "tr": "Sonra ikinci kata iniyor.",
+      "chunks": [
+        {
+          "en": "goes down",
+          "tr": "aşağı iniyor"
+        }
+      ],
+      "words": {
+        "then": "sonra",
+        "it": "o; onu",
+        "goes": "gidiyor (go + -es)",
+        "down": "aşağı",
+        "to": "-e, -a",
+        "floor": "kat",
+        "two": "iki"
+      },
+      "source": "p05-s08"
+    },
+    {
+      "en": "It stops at a green door.",
+      "tr": "Yeşil bir kapıda bitiyor.",
+      "chunks": [],
+      "words": {
+        "it": "o; onu",
+        "stops": "duruyor, bitiyor (stop + -s)",
+        "at": "-de",
+        "a": "bir",
+        "green": "yeşil",
+        "door": "kapı"
+      },
+      "source": "p05-s09"
+    },
+    {
+      "en": "It is the door of Mrs Ada.",
+      "tr": "Bu, Ada Hanım'ın kapısı.",
+      "chunks": [
+        {
+          "en": "the door of Mrs Ada",
+          "tr": "Ada Hanım'ın kapısı"
+        }
+      ],
+      "words": {
+        "it": "o; onu",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "the": "(belirli tanımlık)",
+        "door": "kapı",
+        "of": "-in; (smell of: … kokmak)",
+        "mrs": "Bayan (… Hanım)"
+      },
+      "source": "p05-s10"
+    },
+    {
+      "en": "Mrs Ada opens the door.",
+      "tr": "Ada Hanım kapıyı açıyor.",
+      "chunks": [],
+      "words": {
+        "mrs": "Bayan (… Hanım)",
+        "opens": "açıyor (open + -s)",
+        "the": "(belirli tanımlık)",
+        "door": "kapı"
+      },
+      "source": "p06-s01"
+    },
+    {
+      "en": "Her flat smells of tomatoes.",
+      "tr": "Dairesi domates kokuyor.",
+      "chunks": [
+        {
+          "en": "smells of",
+          "tr": "… kokuyor"
+        }
+      ],
+      "words": {
+        "her": "onun; onu",
+        "flat": "daire",
+        "smells": "kokuyor (smell + -s)",
+        "of": "-in; (smell of: … kokmak)",
+        "tomatoes": "domatesler"
+      },
+      "source": "p06-s02"
+    },
+    {
+      "en": "\"Good morning, Lina,\" she says.",
+      "tr": "\"Günaydın, Lina,\" diyor.",
+      "chunks": [
+        {
+          "en": "Good morning",
+          "tr": "günaydın"
+        }
+      ],
+      "words": {
+        "good": "iyi",
+        "morning": "sabah",
+        "she": "o (kadın, kız)",
+        "says": "diyor (say + -s)"
+      },
+      "source": "p06-s03"
+    },
+    {
+      "en": "Lina looks at her hands.",
+      "tr": "Lina onun ellerine bakıyor.",
+      "chunks": [],
+      "words": {
+        "looks": "bakıyor (look + -s)",
+        "at": "-e (look at: -e bakmak)",
+        "her": "onun",
+        "hands": "eller"
+      },
+      "source": "p06-s04"
+    },
+    {
+      "en": "They are green!",
+      "tr": "Elleri yeşil!",
+      "chunks": [],
+      "words": {
+        "they": "onlar",
+        "are": "(olmak; çoğul)",
+        "green": "yeşil"
+      },
+      "source": "p06-s05"
+    },
+    {
+      "en": "\"Your flower is very dry,\" says Mrs Ada.",
+      "tr": "\"Çiçeğin çok kuru,\" diyor Ada Hanım.",
+      "chunks": [],
+      "words": {
+        "your": "senin",
+        "flower": "çiçek",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "very": "çok",
+        "dry": "kuru",
+        "says": "diyor (say + -s)",
+        "mrs": "Bayan (… Hanım)"
+      },
+      "source": "p06-s06"
+    },
+    {
+      "en": "\"The flower in the red pot.\"",
+      "tr": "\"Kırmızı saksıdaki çiçek.\"",
+      "chunks": [],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "flower": "çiçek",
+        "in": "içinde, -de",
+        "red": "kırmızı",
+        "pot": "saksı"
+      },
+      "source": "p06-s07"
+    },
+    {
+      "en": "Lina is surprised.",
+      "tr": "Lina şaşırıyor.",
+      "chunks": [],
+      "words": {
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "surprised": "şaşırmış"
+      },
+      "source": "p06-s08"
+    },
+    {
+      "en": "Her flower is on floor four.",
+      "tr": "Çiçeği dördüncü katta.",
+      "chunks": [],
+      "words": {
+        "her": "onun; onu",
+        "flower": "çiçek",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "on": "üstünde, -de",
+        "floor": "kat",
+        "four": "dört"
+      },
+      "source": "p06-s09"
+    },
+    {
+      "en": "How does Mrs Ada know?",
+      "tr": "Ada Hanım bunu nereden biliyor?",
+      "chunks": [],
+      "words": {
+        "how": "nasıl",
+        "does": "(yardımcı fiil; he/she/it)",
+        "mrs": "Bayan (… Hanım)",
+        "know": "bilmek"
+      },
+      "source": "p06-s10"
+    },
+    {
+      "en": "\"Mrs Ada, who lives behind the blue door?\" asks Lina.",
+      "tr": "\"Ada Hanım, mavi kapının arkasında kim yaşıyor?\" diye soruyor Lina.",
+      "chunks": [],
+      "words": {
+        "mrs": "Bayan (… Hanım)",
+        "who": "kim",
+        "lives": "yaşıyor, oturuyor (live + -s)",
+        "behind": "arkasında",
+        "the": "(belirli tanımlık)",
+        "blue": "mavi",
+        "door": "kapı",
+        "asks": "soruyor (ask + -s)"
+      },
+      "source": "p07-s01"
+    },
+    {
+      "en": "Mrs Ada smiles again.",
+      "tr": "Ada Hanım yine gülümsüyor.",
+      "chunks": [],
+      "words": {
+        "mrs": "Bayan (… Hanım)",
+        "smiles": "gülümsüyor (smile + -s)",
+        "again": "yine, tekrar"
+      },
+      "source": "p07-s02"
+    },
+    {
+      "en": "\"No one, dear.",
+      "tr": "\"Kimse, canım.",
+      "chunks": [],
+      "words": {
+        "no": "hiç; yok",
+        "one": "bir",
+        "dear": "canım (hitap)"
+      },
+      "source": "p07-s03"
+    },
+    {
+      "en": "And I go to bed early.",
+      "tr": "Hem ben erken yatarım.",
+      "chunks": [
+        {
+          "en": "go to bed",
+          "tr": "yatmak"
+        }
+      ],
+      "words": {
+        "and": "ve",
+        "i": "ben",
+        "go": "gitmek",
+        "to": "-e, -a",
+        "bed": "yatak",
+        "early": "erken"
+      },
+      "source": "p07-s04"
+    },
+    {
+      "en": "I sleep at eight.\"",
+      "tr": "Sekizde uyurum.\"",
+      "chunks": [],
+      "words": {
+        "i": "ben",
+        "sleep": "uyumak",
+        "at": "-de (saat/yer)",
+        "eight": "sekiz"
+      },
+      "source": "p07-s05"
+    },
+    {
+      "en": "She closes her door.",
+      "tr": "Kapısını kapatıyor.",
+      "chunks": [],
+      "words": {
+        "she": "o (kadın, kız)",
+        "closes": "kapatıyor (close + -s)",
+        "her": "onun; onu",
+        "door": "kapı"
+      },
+      "source": "p07-s06"
+    },
+    {
+      "en": "Lina sits on the steps.",
+      "tr": "Lina basamaklara oturuyor.",
+      "chunks": [],
+      "words": {
+        "sits": "oturuyor (sit + -s)",
+        "on": "üstünde, -de",
+        "the": "(belirli tanımlık)",
+        "steps": "basamaklar, merdiven"
+      },
+      "source": "p07-s07"
+    },
+    {
+      "en": "She opens her notebook.",
+      "tr": "Defterini açıyor.",
+      "chunks": [],
+      "words": {
+        "she": "o (kadın, kız)",
+        "opens": "açıyor (open + -s)",
+        "her": "onun; onu",
+        "notebook": "defter"
+      },
+      "source": "p07-s08"
+    },
+    {
+      "en": "Three: green hands.",
+      "tr": "Üç: yeşil eller.",
+      "chunks": [],
+      "words": {
+        "three": "üç",
+        "green": "yeşil",
+        "hands": "eller"
+      },
+      "source": "p07-s09"
+    },
+    {
+      "en": "Four: a smell of tomatoes.",
+      "tr": "Dört: domates kokusu.",
+      "chunks": [],
+      "words": {
+        "four": "dört",
+        "a": "bir",
+        "smell": "koku",
+        "of": "-in; (smell of: … kokmak)",
+        "tomatoes": "domatesler"
+      },
+      "source": "p07-s10"
+    },
+    {
+      "en": "Five: \"I sleep at eight.\"",
+      "tr": "Beş: \"Sekizde uyurum.\"",
+      "chunks": [],
+      "words": {
+        "five": "beş",
+        "i": "ben",
+        "sleep": "uyumak",
+        "at": "-de (saat/yer)",
+        "eight": "sekiz"
+      },
+      "source": "p07-s11"
+    },
+    {
+      "en": "Lina thinks.",
+      "tr": "Lina düşünüyor.",
+      "chunks": [],
+      "words": {
+        "thinks": "düşünüyor (think + -s)"
+      },
+      "source": "p07-s12"
+    },
+    {
+      "en": "Then she writes a question.",
+      "tr": "Sonra bir soru yazıyor.",
+      "chunks": [],
+      "words": {
+        "then": "sonra",
+        "she": "o (kadın, kız)",
+        "writes": "yazıyor (write + -s)",
+        "a": "bir",
+        "question": "soru"
+      },
+      "source": "p07-s13"
+    },
+    {
+      "en": "Is it true?",
+      "tr": "Bu doğru mu?",
+      "chunks": [],
+      "words": {
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "it": "o; onu",
+        "true": "doğru"
+      },
+      "source": "p07-s14"
+    },
+    {
+      "en": "That night, Lina does not sleep.",
+      "tr": "O gece Lina uyumuyor.",
+      "chunks": [],
+      "words": {
+        "that": "o, bu",
+        "night": "gece",
+        "does": "(yardımcı fiil; he/she/it)",
+        "not": "değil, -me",
+        "sleep": "uyumak"
+      },
+      "source": "p08-s01"
+    },
+    {
+      "en": "She sits behind her door and listens.",
+      "tr": "Kapısının arkasına oturup dinliyor.",
+      "chunks": [],
+      "words": {
+        "she": "o (kadın, kız)",
+        "sits": "oturuyor (sit + -s)",
+        "behind": "arkasında",
+        "her": "onun; onu",
+        "door": "kapı",
+        "and": "ve",
+        "listens": "dinliyor (listen + -s)"
+      },
+      "source": "p08-s02"
+    },
+    {
+      "en": "At eight o'clock, the building is quiet.",
+      "tr": "Saat sekizde bina sessiz.",
+      "chunks": [
+        {
+          "en": "At eight o'clock",
+          "tr": "saat sekizde"
+        }
+      ],
+      "words": {
+        "at": "-de (saat/yer)",
+        "eight": "sekiz",
+        "o'clock": "saat (tam)",
+        "the": "(belirli tanımlık)",
+        "building": "bina",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "quiet": "sessiz"
+      },
+      "source": "p08-s03"
+    },
+    {
+      "en": "At half past eight, it is quiet, too.",
+      "tr": "Sekiz buçukta da sessiz.",
+      "chunks": [
+        {
+          "en": "At half past eight",
+          "tr": "sekiz buçukta"
+        }
+      ],
+      "words": {
+        "at": "-de (saat/yer)",
+        "half": "yarım, buçuk",
+        "past": "geçe (half past: buçuk)",
+        "eight": "sekiz",
+        "it": "o; onu",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "quiet": "sessiz",
+        "too": "de, da"
+      },
+      "source": "p08-s04"
+    },
+    {
+      "en": "At nine, Lina hears someone on the steps.",
+      "tr": "Dokuzda Lina basamaklarda birini duyuyor.",
+      "chunks": [],
+      "words": {
+        "at": "-de (saat/yer)",
+        "nine": "dokuz",
+        "hears": "duyuyor (hear + -s)",
+        "someone": "biri",
+        "on": "üstünde, -de",
+        "the": "(belirli tanımlık)",
+        "steps": "basamaklar, merdiven"
+      },
+      "source": "p08-s05"
+    },
+    {
+      "en": "Someone slow.",
+      "tr": "Yavaş biri.",
+      "chunks": [],
+      "words": {
+        "someone": "biri",
+        "slow": "yavaş"
+      },
+      "source": "p08-s06"
+    },
+    {
+      "en": "They go up, up, up.",
+      "tr": "Yukarı, yukarı, yukarı çıkıyor.",
+      "chunks": [],
+      "words": {
+        "they": "onlar",
+        "go": "gitmek",
+        "up": "yukarı"
+      },
+      "source": "p08-s07"
+    },
+    {
+      "en": "Then Lina hears a key.",
+      "tr": "Sonra Lina bir anahtar sesi duyuyor.",
+      "chunks": [],
+      "words": {
+        "then": "sonra",
+        "hears": "duyuyor (hear + -s)",
+        "a": "bir",
+        "key": "anahtar"
+      },
+      "source": "p08-s08"
+    },
+    {
+      "en": "The blue door opens.",
+      "tr": "Mavi kapı açılıyor.",
+      "chunks": [],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "blue": "mavi",
+        "door": "kapı",
+        "opens": "açıyor (open + -s)"
+      },
+      "source": "p08-s09"
+    },
+    {
+      "en": "The Light",
+      "tr": "Işık",
+      "chunks": [],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "light": "ışık"
+      },
+      "source": "c3"
+    },
+    {
+      "en": "Lina goes up.",
+      "tr": "Lina yukarı çıkıyor.",
+      "chunks": [],
+      "words": {
+        "goes": "gidiyor (go + -es)",
+        "up": "yukarı"
+      },
+      "source": "p09-s01"
+    },
+    {
+      "en": "She is very quiet.",
+      "tr": "Çıt çıkarmıyor.",
+      "chunks": [],
+      "words": {
+        "she": "o (kadın, kız)",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "very": "çok",
+        "quiet": "sessiz"
+      },
+      "source": "p09-s02"
+    },
+    {
+      "en": "Her heart is fast.",
+      "tr": "Kalbi hızlı atıyor.",
+      "chunks": [],
+      "words": {
+        "her": "onun; onu",
+        "heart": "kalp",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "fast": "hızlı"
+      },
+      "source": "p09-s03"
+    },
+    {
+      "en": "The blue door is open now.",
+      "tr": "Mavi kapı artık açık.",
+      "chunks": [],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "blue": "mavi",
+        "door": "kapı",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "open": "açık; açılmak",
+        "now": "şimdi, artık"
+      },
+      "source": "p09-s04"
+    },
+    {
+      "en": "Behind it, there are more steps.",
+      "tr": "Arkasında başka basamaklar var.",
+      "chunks": [],
+      "words": {
+        "behind": "arkasında",
+        "it": "o; onu",
+        "there": "orada (there is/are: var)",
+        "are": "(olmak; çoğul)",
+        "more": "daha (fazla)",
+        "steps": "basamaklar, merdiven"
+      },
+      "source": "p09-s05"
+    },
+    {
+      "en": "They are old and dark.",
+      "tr": "Basamaklar eski ve karanlık.",
+      "chunks": [],
+      "words": {
+        "they": "onlar",
+        "are": "(olmak; çoğul)",
+        "old": "eski; yaşlı",
+        "and": "ve",
+        "dark": "karanlık"
+      },
+      "source": "p09-s06"
+    },
+    {
+      "en": "At the top, there is a yellow light.",
+      "tr": "En üstte sarı bir ışık var.",
+      "chunks": [],
+      "words": {
+        "at": "-de (saat/yer)",
+        "the": "(belirli tanımlık)",
+        "top": "en üst",
+        "there": "orada (there is/are: var)",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "a": "bir",
+        "yellow": "sarı",
+        "light": "ışık"
+      },
+      "source": "p09-s07"
+    },
+    {
+      "en": "Lina feels the cold night on her face.",
+      "tr": "Lina gecenin serinliğini yüzünde hissediyor.",
+      "chunks": [],
+      "words": {
+        "feels": "hissediyor (feel + -s)",
+        "the": "(belirli tanımlık)",
+        "cold": "soğuk, serin",
+        "night": "gece (the cold night: gecenin serinliği)",
+        "on": "üzerinde",
+        "her": "onun; onu",
+        "face": "yüz"
+      },
+      "source": "p09-s08"
+    },
+    {
+      "en": "She takes one more step.",
+      "tr": "Bir adım daha atıyor.",
+      "chunks": [
+        {
+          "en": "takes one more step",
+          "tr": "bir adım daha atıyor"
+        }
+      ],
+      "words": {
+        "she": "o (kadın, kız)",
+        "takes": "alıyor; (step) atıyor (take + -s)",
+        "one": "bir",
+        "more": "daha (fazla)",
+        "step": "adım"
+      },
+      "source": "p09-s09"
+    },
+    {
+      "en": "Then she stops.",
+      "tr": "Sonra duruyor.",
+      "chunks": [],
+      "words": {
+        "then": "sonra",
+        "she": "o (kadın, kız)",
+        "stops": "duruyor, bitiyor (stop + -s)"
+      },
+      "source": "p09-s10"
+    },
+    {
+      "en": "She is on the roof!",
+      "tr": "Çatıda!",
+      "chunks": [],
+      "words": {
+        "she": "o (kadın, kız)",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "on": "üstünde, -de",
+        "the": "(belirli tanımlık)",
+        "roof": "çatı"
+      },
+      "source": "p09-s11"
+    },
+    {
+      "en": "There are little lights everywhere.",
+      "tr": "Her yerde küçük ışıklar var.",
+      "chunks": [
+        {
+          "en": "There are",
+          "tr": "var (çoğul)"
+        }
+      ],
+      "words": {
+        "there": "orada (there is/are: var)",
+        "are": "(olmak; çoğul)",
+        "little": "küçük",
+        "lights": "ışıklar",
+        "everywhere": "her yerde"
+      },
+      "source": "p10-s01"
+    },
+    {
+      "en": "Under the lights, there is a garden.",
+      "tr": "Işıkların altında bir bahçe var.",
+      "chunks": [
+        {
+          "en": "there is",
+          "tr": "var"
+        }
+      ],
+      "words": {
+        "under": "altında",
+        "the": "(belirli tanımlık)",
+        "lights": "ışıklar",
+        "there": "orada (there is/are: var)",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "a": "bir",
+        "garden": "bahçe"
+      },
+      "source": "p10-s02"
+    },
+    {
+      "en": "There are red tomatoes and long green beans.",
+      "tr": "Kırmızı domatesler ve uzun yeşil fasulyeler var.",
+      "chunks": [
+        {
+          "en": "There are",
+          "tr": "var (çoğul)"
+        }
+      ],
+      "words": {
+        "there": "orada (there is/are: var)",
+        "are": "(olmak; çoğul)",
+        "red": "kırmızı",
+        "tomatoes": "domatesler",
+        "and": "ve",
+        "long": "uzun",
+        "green": "yeşil",
+        "beans": "fasulyeler"
+      },
+      "source": "p10-s03"
+    },
+    {
+      "en": "There are many plants and flowers.",
+      "tr": "Bir sürü bitki ve çiçek var.",
+      "chunks": [
+        {
+          "en": "There are many",
+          "tr": "bir sürü … var"
+        }
+      ],
+      "words": {
+        "there": "orada (there is/are: var)",
+        "are": "(olmak; çoğul)",
+        "many": "çok, bir sürü",
+        "plants": "bitkiler",
+        "and": "ve",
+        "flowers": "çiçekler"
+      },
+      "source": "p10-s04"
+    },
+    {
+      "en": "A small old woman stands in the garden.",
+      "tr": "Bahçede ufak tefek, yaşlı bir kadın duruyor.",
+      "chunks": [],
+      "words": {
+        "a": "bir",
+        "small": "küçük",
+        "old": "eski; yaşlı",
+        "woman": "kadın",
+        "stands": "duruyor, ayakta (stand + -s)",
+        "in": "içinde, -de",
+        "the": "(belirli tanımlık)",
+        "garden": "bahçe"
+      },
+      "source": "p10-s05"
+    },
+    {
+      "en": "She gives water to the tomatoes.",
+      "tr": "Domatesleri suluyor.",
+      "chunks": [
+        {
+          "en": "gives water to",
+          "tr": "sulamak"
+        }
+      ],
+      "words": {
+        "she": "o (kadın, kız)",
+        "gives": "veriyor (give + -s)",
+        "water": "su",
+        "to": "-e (give water to: sulamak)",
+        "the": "(belirli tanımlık)",
+        "tomatoes": "domatesler"
+      },
+      "source": "p10-s06"
+    },
+    {
+      "en": "It is Mrs Ada!",
+      "tr": "Bu Ada Hanım!",
+      "chunks": [],
+      "words": {
+        "it": "o; onu",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "mrs": "Bayan (… Hanım)"
+      },
+      "source": "p10-s07"
+    },
+    {
+      "en": "\"Good evening, Lina,\" she says.",
+      "tr": "\"İyi akşamlar, Lina,\" diyor.",
+      "chunks": [
+        {
+          "en": "Good evening",
+          "tr": "iyi akşamlar"
+        }
+      ],
+      "words": {
+        "good": "iyi",
+        "evening": "akşam",
+        "she": "o (kadın, kız)",
+        "says": "diyor (say + -s)"
+      },
+      "source": "p10-s08"
+    },
+    {
+      "en": "She is not surprised.",
+      "tr": "Hiç şaşırmış görünmüyor.",
+      "chunks": [],
+      "words": {
+        "she": "o (kadın, kız)",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "not": "değil, -me",
+        "surprised": "şaşırmış"
+      },
+      "source": "p10-s09"
+    },
+    {
+      "en": "\"You sleep at eight?\" asks Lina.",
+      "tr": "\"Sekizde mi uyursunuz?\" diye soruyor Lina.",
+      "chunks": [],
+      "words": {
+        "you": "sen",
+        "sleep": "uyumak",
+        "at": "-de (saat/yer)",
+        "eight": "sekiz",
+        "asks": "soruyor (ask + -s)"
+      },
+      "source": "p10-s10"
+    },
+    {
+      "en": "Mrs Ada laughs.",
+      "tr": "Ada Hanım gülüyor.",
+      "chunks": [],
+      "words": {
+        "mrs": "Bayan (… Hanım)",
+        "laughs": "gülüyor (laugh + -s)"
+      },
+      "source": "p10-s11"
+    },
+    {
+      "en": "\"Not really.",
+      "tr": "\"Pek sayılmaz.",
+      "chunks": [
+        {
+          "en": "Not really",
+          "tr": "pek sayılmaz"
+        }
+      ],
+      "words": {
+        "not": "değil, -me",
+        "really": "gerçekten"
+      },
+      "source": "p10-s12"
+    },
+    {
+      "en": "Sorry, dear.\"",
+      "tr": "Kusura bakma, canım.\"",
+      "chunks": [
+        {
+          "en": "Sorry, dear",
+          "tr": "kusura bakma, canım"
+        }
+      ],
+      "words": {
+        "sorry": "üzgünüm, kusura bakma",
+        "dear": "canım (hitap)"
+      },
+      "source": "p10-s13"
+    },
+    {
+      "en": "\"No one lives here,\" says Mrs Ada.",
+      "tr": "\"Burada kimse yaşamıyor,\" diyor Ada Hanım.",
+      "chunks": [
+        {
+          "en": "No one",
+          "tr": "hiç kimse"
+        }
+      ],
+      "words": {
+        "no": "hiç; yok",
+        "one": "bir",
+        "lives": "yaşıyor, oturuyor (live + -s)",
+        "here": "burada",
+        "says": "diyor (say + -s)",
+        "mrs": "Bayan (… Hanım)"
+      },
+      "source": "p11-s01"
+    },
+    {
+      "en": "\"Only my tomatoes and beans.\"",
+      "tr": "\"Yalnızca domateslerim ve fasulyelerim.\"",
+      "chunks": [],
+      "words": {
+        "only": "yalnızca",
+        "my": "benim",
+        "tomatoes": "domatesler",
+        "and": "ve",
+        "beans": "fasulyeler"
+      },
+      "source": "p11-s02"
+    },
+    {
+      "en": "Lina laughs, too.",
+      "tr": "Lina da gülüyor.",
+      "chunks": [],
+      "words": {
+        "laughs": "gülüyor (laugh + -s)",
+        "too": "de, da"
+      },
+      "source": "p11-s03"
+    },
+    {
+      "en": "Mrs Ada is right!",
+      "tr": "Ada Hanım haklı!",
+      "chunks": [],
+      "words": {
+        "mrs": "Bayan (… Hanım)",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "right": "haklı; doğru"
+      },
+      "source": "p11-s04"
+    },
+    {
+      "en": "Then Mrs Ada opens her hand.",
+      "tr": "Sonra Ada Hanım elini açıyor.",
+      "chunks": [],
+      "words": {
+        "then": "sonra",
+        "mrs": "Bayan (… Hanım)",
+        "opens": "açıyor (open + -s)",
+        "her": "onun; onu",
+        "hand": "el"
+      },
+      "source": "p11-s05"
+    },
+    {
+      "en": "There are two keys in it.",
+      "tr": "Avucunda iki anahtar var.",
+      "chunks": [
+        {
+          "en": "There are",
+          "tr": "var (çoğul)"
+        }
+      ],
+      "words": {
+        "there": "orada (there is/are: var)",
+        "are": "(olmak; çoğul)",
+        "two": "iki",
+        "keys": "anahtarlar",
+        "in": "içinde, -de",
+        "it": "onun (içinde: avucunda)"
+      },
+      "source": "p11-s06"
+    },
+    {
+      "en": "\"One key is for me,\" she says.",
+      "tr": "\"Bir anahtar benim için,\" diyor.",
+      "chunks": [],
+      "words": {
+        "one": "bir",
+        "key": "anahtar",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "for": "için",
+        "me": "ben, bana, beni",
+        "she": "o (kadın, kız)",
+        "says": "diyor (say + -s)"
+      },
+      "source": "p11-s07"
+    },
+    {
+      "en": "\"One key is for you.\"",
+      "tr": "\"Bir anahtar da senin için.\"",
+      "chunks": [],
+      "words": {
+        "one": "bir",
+        "key": "anahtar",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "for": "için",
+        "you": "sen"
+      },
+      "source": "p11-s08"
+    },
+    {
+      "en": "\"For me?",
+      "tr": "\"Benim için mi?",
+      "chunks": [],
+      "words": {
+        "for": "için",
+        "me": "ben, bana, beni"
+      },
+      "source": "p11-s09"
+    },
+    {
+      "en": "Why?\"",
+      "tr": "Neden?\"",
+      "chunks": [],
+      "words": {
+        "why": "neden"
+      },
+      "source": "p11-s10"
+    },
+    {
+      "en": "Mrs Ada looks down.",
+      "tr": "Ada Hanım aşağı bakıyor.",
+      "chunks": [
+        {
+          "en": "looks down",
+          "tr": "aşağı bakıyor"
+        }
+      ],
+      "words": {
+        "mrs": "Bayan (… Hanım)",
+        "looks": "bakıyor (look + -s)",
+        "down": "aşağı"
+      },
+      "source": "p11-s11"
+    },
+    {
+      "en": "Lina looks down, too.",
+      "tr": "Lina da aşağı bakıyor.",
+      "chunks": [
+        {
+          "en": "looks down",
+          "tr": "aşağı bakıyor"
+        }
+      ],
+      "words": {
+        "looks": "bakıyor (look + -s)",
+        "down": "aşağı",
+        "too": "de, da"
+      },
+      "source": "p11-s12"
+    },
+    {
+      "en": "She sees her small window.",
+      "tr": "Kendi küçük penceresini görüyor.",
+      "chunks": [],
+      "words": {
+        "she": "o (kadın, kız)",
+        "sees": "görüyor (see + -s)",
+        "her": "onun; onu",
+        "small": "küçük",
+        "window": "pencere"
+      },
+      "source": "p11-s13"
+    },
+    {
+      "en": "She sees her red pot.",
+      "tr": "Kırmızı saksısını görüyor.",
+      "chunks": [],
+      "words": {
+        "she": "o (kadın, kız)",
+        "sees": "görüyor (see + -s)",
+        "her": "onun; onu",
+        "red": "kırmızı",
+        "pot": "saksı"
+      },
+      "source": "p11-s14"
+    },
+    {
+      "en": "\"I see your poor flower every day.",
+      "tr": "\"Zavallı çiçeğini her gün görüyorum.",
+      "chunks": [],
+      "words": {
+        "i": "ben",
+        "see": "görmek",
+        "your": "senin",
+        "poor": "zavallı",
+        "flower": "çiçek",
+        "every": "her",
+        "day": "gün"
+      },
+      "source": "p11-s15"
+    },
+    {
+      "en": "It needs sun.",
+      "tr": "Onun güneşe ihtiyacı var.",
+      "chunks": [],
+      "words": {
+        "it": "o; onu",
+        "needs": "ihtiyacı var (need + -s)",
+        "sun": "güneş"
+      },
+      "source": "p11-s16"
+    },
+    {
+      "en": "The sun is here.\"",
+      "tr": "Güneş burada.\"",
+      "chunks": [],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "sun": "güneş",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "here": "burada"
+      },
+      "source": "p11-s17"
+    },
+    {
+      "en": "Now Lina's flower is on the roof.",
+      "tr": "Artık Lina'nın çiçeği çatıda.",
+      "chunks": [],
+      "words": {
+        "now": "artık",
+        "lina's": "Lina'nın",
+        "flower": "çiçek",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "on": "üstünde, -de",
+        "the": "(belirli tanımlık)",
+        "roof": "çatı"
+      },
+      "source": "p11-s18"
+    },
+    {
+      "en": "It is next to the tomatoes.",
+      "tr": "Domateslerin yanında duruyor.",
+      "chunks": [
+        {
+          "en": "next to",
+          "tr": "yanında"
+        }
+      ],
+      "words": {
+        "it": "o; onu",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "next": "yan (next to: yanında)",
+        "to": "-e, -a",
+        "the": "(belirli tanımlık)",
+        "tomatoes": "domatesler"
+      },
+      "source": "p11-s19"
+    },
+    {
+      "en": "A week later, there is a new leaf.",
+      "tr": "Bir hafta sonra yeni bir yaprak çıkıyor.",
+      "chunks": [
+        {
+          "en": "A week later",
+          "tr": "bir hafta sonra"
+        },
+        {
+          "en": "there is",
+          "tr": "var"
+        }
+      ],
+      "words": {
+        "a": "bir",
+        "week": "hafta",
+        "later": "sonra",
+        "there": "orada (there is/are: var)",
+        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "new": "yeni",
+        "leaf": "yaprak"
+      },
+      "source": "p11-s20"
+    },
+    {
+      "en": "Lina smiles.",
+      "tr": "Lina gülümsüyor.",
+      "chunks": [],
+      "words": {
+        "smiles": "gülümsüyor (smile + -s)"
+      },
+      "source": "p11-s21"
+    },
+    {
+      "en": "She has a key.",
+      "tr": "Bir anahtarı var.",
+      "chunks": [],
+      "words": {
+        "she": "o (kadın, kız)",
+        "has": "-si var (have → has)",
+        "a": "bir",
+        "key": "anahtar"
+      },
+      "source": "p11-s22"
+    },
+    {
+      "en": "She has a garden.",
+      "tr": "Bir bahçesi var.",
+      "chunks": [],
+      "words": {
+        "she": "o (kadın, kız)",
+        "has": "-si var (have → has)",
+        "a": "bir",
+        "garden": "bahçe"
+      },
+      "source": "p11-s23"
+    },
+    {
+      "en": "And she has a friend.",
+      "tr": "Bir de arkadaşı var.",
+      "chunks": [],
+      "words": {
+        "and": "ve",
+        "she": "o (kadın, kız)",
+        "has": "-si var (have → has)",
+        "a": "bir",
+        "friend": "arkadaş"
+      },
+      "source": "p11-s24"
+    }
+  ],
+  "phrases": [
+    {
+      "en": "there is",
+      "tr": "var (tekil)",
+      "words": {
+        "there": "orada",
+        "is": "(olmak)"
+      },
+      "source": "dil odağı",
+      "note": "Türkçede 'var' tek kelimedir; İngilizcede there is / there are ikilisi kullanılır."
+    },
+    {
+      "en": "there are",
+      "tr": "var (çoğul)",
+      "words": {
+        "there": "orada",
+        "are": "(olmak; çoğul)"
+      },
+      "source": "dil odağı"
+    },
+    {
+      "en": "next to",
+      "tr": "yanında",
+      "words": {
+        "next": "yan",
+        "to": "-e"
+      },
+      "source": "p11-s19"
+    },
+    {
+      "en": "in front of",
+      "tr": "önünde",
+      "words": {
+        "in": "-de",
+        "front": "ön",
+        "of": "-in"
+      },
+      "source": "p04-s14"
+    },
+    {
+      "en": "no one",
+      "tr": "hiç kimse",
+      "words": {
+        "no": "hiç",
+        "one": "biri"
+      },
+      "source": "p03-s09"
+    }
+  ]
+}

@@ -1,0 +1,3771 @@
+{
+  "contentId": "A2-K03",
+  "status": "DRAFT",
+  "author": "Claude taslak (H-069); kullanıcı onayı bekliyor",
+  "date": "2026-10-14",
+  "notes": [
+    "Anlatım İngilizcede geçmiş zamanda (past simple); Türkçede -di'li geçmiş zaman kullanıldı.",
+    "Kaptan'ın replikleri Max'in sözlerinin aynısıdır; çevirileri de aynı tutuldu.",
+    "must / mustn't (zorunda / -memeli, yasak) ile don't have to (zorunda değil) farkı sözlükte not edildi."
+  ],
+  "lines": [
+    {
+      "en": "The Rules",
+      "tr": "Kurallar",
+      "chunks": [],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "rules": "kurallar"
+      },
+      "source": "c1"
+    },
+    {
+      "en": "Max had one rule: never say anything near the parrot.",
+      "tr": "Max'in tek bir kuralı vardı: papağanın yanında asla bir şey söyleme.",
+      "chunks": [
+        {
+          "en": "never say anything",
+          "tr": "asla bir şey söyleme"
+        }
+      ],
+      "words": {
+        "had": "vardı; yedi (have → had)",
+        "one": "bir, tek",
+        "rule": "kural",
+        "never": "asla, hiç",
+        "say": "söylemek",
+        "anything": "bir şey, hiçbir şey",
+        "near": "yakınında, yanında",
+        "the": "(belirli tanımlık)",
+        "parrot": "papağan"
+      },
+      "source": "p01-s01"
+    },
+    {
+      "en": "But that Saturday, he forgot it.",
+      "tr": "Ama o cumartesi bu kuralı unuttu.",
+      "chunks": [],
+      "words": {
+        "but": "ama",
+        "that": "o; şu",
+        "saturday": "cumartesi",
+        "he": "o (erkek)",
+        "forgot": "unuttu (forget → forgot, düzensiz)",
+        "it": "onu (kuralı)"
+      },
+      "source": "p01-s02"
+    },
+    {
+      "en": "Max was sixteen, and he wanted a guitar.",
+      "tr": "Max on altı yaşındaydı ve bir gitar istiyordu.",
+      "chunks": [],
+      "words": {
+        "was": "idi (be → was)",
+        "sixteen": "on altı",
+        "and": "ve",
+        "he": "o (erkek)",
+        "wanted": "istedi (want → wanted)",
+        "a": "bir",
+        "guitar": "gitar"
+      },
+      "source": "p01-s03"
+    },
+    {
+      "en": "Not just any guitar.",
+      "tr": "Herhangi bir gitar değil.",
+      "chunks": [
+        {
+          "en": "Not just any",
+          "tr": "herhangi bir … değil"
+        }
+      ],
+      "words": {
+        "not": "değil, -me",
+        "just": "sadece; (not just any: herhangi bir … değil)",
+        "any": "herhangi bir; hiç",
+        "guitar": "gitar"
+      },
+      "source": "p01-s04"
+    },
+    {
+      "en": "He wanted the red one in the music shop on the corner.",
+      "tr": "Köşedeki müzik dükkânındaki kırmızı gitarı istiyordu.",
+      "chunks": [
+        {
+          "en": "on the corner",
+          "tr": "köşedeki"
+        }
+      ],
+      "words": {
+        "he": "o (erkek)",
+        "wanted": "istedi (want → wanted)",
+        "the": "(belirli tanımlık)",
+        "red": "kırmızı; (saç) kızıl",
+        "one": "olan (red one: kırmızı olan)",
+        "in": "içinde, -de",
+        "music": "müzik",
+        "shop": "dükkân",
+        "on": "üstünde, -de",
+        "corner": "köşe"
+      },
+      "source": "p01-s05"
+    },
+    {
+      "en": "He looked at it every day after school.",
+      "tr": "Her gün okuldan sonra ona bakıyordu.",
+      "chunks": [
+        {
+          "en": "looked at",
+          "tr": "-e baktı"
+        },
+        {
+          "en": "every day",
+          "tr": "her gün"
+        },
+        {
+          "en": "after school",
+          "tr": "okuldan sonra"
+        }
+      ],
+      "words": {
+        "he": "o (erkek)",
+        "looked": "baktı; göründü (look → looked)",
+        "at": "-de; -e (look at: -e bakmak)",
+        "it": "o; onu",
+        "every": "her",
+        "day": "gün",
+        "after": "sonra",
+        "school": "okul"
+      },
+      "source": "p01-s06"
+    },
+    {
+      "en": "It cost two hundred.",
+      "tr": "Fiyatı iki yüzdü.",
+      "chunks": [],
+      "words": {
+        "it": "o; onu",
+        "cost": "tuttu, (fiyatı) …ydı (cost → cost, düzensiz)",
+        "two": "iki",
+        "hundred": "yüz (100)"
+      },
+      "source": "p01-s07"
+    },
+    {
+      "en": "Max had one hundred and forty.",
+      "tr": "Max'in yüz kırkı vardı.",
+      "chunks": [],
+      "words": {
+        "had": "vardı; yedi (have → had)",
+        "one": "bir; (red one: kırmızı olan)",
+        "hundred": "yüz (100)",
+        "and": "ve",
+        "forty": "kırk"
+      },
+      "source": "p01-s08"
+    },
+    {
+      "en": "So when Mrs Bell from next door called him, he listened carefully.",
+      "tr": "Bu yüzden yan komşu Bell Hanım onu arayınca dikkatle dinledi.",
+      "chunks": [
+        {
+          "en": "from next door",
+          "tr": "yan komşu"
+        }
+      ],
+      "words": {
+        "so": "bu yüzden",
+        "when": "-ince, -dığında",
+        "mrs": "Bayan (… Hanım)",
+        "from": "-den",
+        "next": "yan (next door: yan komşu)",
+        "door": "kapı",
+        "called": "aradı (telefonla); seslendi (call → called)",
+        "him": "onu, ona",
+        "he": "o (erkek)",
+        "listened": "dinledi (listen → listened)",
+        "carefully": "dikkatle"
+      },
+      "source": "p01-s09"
+    },
+    {
+      "en": "\"Can you look after the twins on Saturday?\" she asked.",
+      "tr": "\"Cumartesi ikizlere bakabilir misin?\" diye sordu.",
+      "chunks": [
+        {
+          "en": "look after",
+          "tr": "-e bakmak (ilgilenmek)"
+        }
+      ],
+      "words": {
+        "can": "-ebilmek",
+        "you": "sen, siz",
+        "look": "bakmak (look after: -e bakmak, ilgilenmek)",
+        "after": "sonra",
+        "the": "(belirli tanımlık)",
+        "twins": "ikizler",
+        "on": "üstünde, -de",
+        "saturday": "cumartesi",
+        "she": "o (kadın)",
+        "asked": "sordu (ask → asked)"
+      },
+      "source": "p01-s10"
+    },
+    {
+      "en": "\"We're going to a wedding.",
+      "tr": "\"Bir düğüne gidiyoruz.",
+      "chunks": [
+        {
+          "en": "We're going to",
+          "tr": "-e gidiyoruz"
+        }
+      ],
+      "words": {
+        "we're": "biz … (we are)",
+        "going": "gidiyor; (going to: -ecek)",
+        "to": "-e",
+        "a": "bir",
+        "wedding": "düğün"
+      },
+      "source": "p01-s11"
+    },
+    {
+      "en": "We're going to be back at ten.",
+      "tr": "Saat onda döneceğiz.",
+      "chunks": [
+        {
+          "en": "We're going to be back",
+          "tr": "döneceğiz"
+        }
+      ],
+      "words": {
+        "we're": "biz … (we are)",
+        "going": "gidiyor; (going to: -ecek)",
+        "to": "-e",
+        "be": "olmak",
+        "back": "geri; arka",
+        "at": "-de; -e (look at: -e bakmak)",
+        "ten": "on"
+      },
+      "source": "p01-s12"
+    },
+    {
+      "en": "I can pay you sixty.\"",
+      "tr": "Sana altmış verebilirim.\"",
+      "chunks": [],
+      "words": {
+        "i": "ben",
+        "can": "-ebilirim",
+        "pay": "ödemek, para vermek",
+        "you": "sen, siz",
+        "sixty": "altmış"
+      },
+      "source": "p01-s13"
+    },
+    {
+      "en": "Sixty!",
+      "tr": "Altmış!",
+      "chunks": [],
+      "words": {
+        "sixty": "altmış"
+      },
+      "source": "p01-s14"
+    },
+    {
+      "en": "Max did the maths very quickly.",
+      "tr": "Max hesabı çabucak yaptı.",
+      "chunks": [
+        {
+          "en": "did the maths",
+          "tr": "hesabı yaptı"
+        }
+      ],
+      "words": {
+        "did": "yaptı (do → did); (soru yardımcısı)",
+        "the": "(belirli tanımlık)",
+        "maths": "matematik, hesap",
+        "very": "çok",
+        "quickly": "çabucak"
+      },
+      "source": "p01-s15"
+    },
+    {
+      "en": "\"Of course,\" he said.",
+      "tr": "\"Tabii ki,\" dedi.",
+      "chunks": [
+        {
+          "en": "Of course",
+          "tr": "tabii ki"
+        }
+      ],
+      "words": {
+        "of": "-in; (full of: … dolu)",
+        "course": "(of course: tabii ki)",
+        "he": "o (erkek)",
+        "said": "dedi (say → said, düzensiz)"
+      },
+      "source": "p01-s16"
+    },
+    {
+      "en": "\"It's going to be easy.\"",
+      "tr": "\"Kolay olacak.\"",
+      "chunks": [
+        {
+          "en": "It's going to be",
+          "tr": "… olacak"
+        }
+      ],
+      "words": {
+        "it's": "o … (it is)",
+        "going": "gidiyor; (going to: -ecek)",
+        "to": "-e",
+        "be": "olmak",
+        "easy": "kolay"
+      },
+      "source": "p01-s17"
+    },
+    {
+      "en": "At nine o'clock on Saturday, Max knocked on the Bells' door.",
+      "tr": "Cumartesi saat dokuzda Max, Bell'lerin kapısını çaldı.",
+      "chunks": [
+        {
+          "en": "At nine o'clock",
+          "tr": "saat dokuzda"
+        },
+        {
+          "en": "knocked on",
+          "tr": "(kapıyı) çaldı"
+        }
+      ],
+      "words": {
+        "at": "-de; -e (look at: -e bakmak)",
+        "nine": "dokuz",
+        "o'clock": "saat (tam)",
+        "on": "üstünde, -de",
+        "saturday": "cumartesi",
+        "knocked": "(kapıyı) çaldı (knock → knocked)",
+        "the": "(belirli tanımlık)",
+        "door": "kapı"
+      },
+      "source": "p02-s01"
+    },
+    {
+      "en": "Mr Bell opened it.",
+      "tr": "Kapıyı Bell Bey açtı.",
+      "chunks": [],
+      "words": {
+        "mr": "Bay (… Bey)",
+        "opened": "açtı; açıldı (open → opened)",
+        "it": "o; onu"
+      },
+      "source": "p02-s02"
+    },
+    {
+      "en": "He was a tall man with a tired face.",
+      "tr": "Yorgun yüzlü, uzun boylu bir adamdı.",
+      "chunks": [],
+      "words": {
+        "he": "o (erkek)",
+        "was": "idi (be → was)",
+        "a": "bir",
+        "tall": "uzun boylu",
+        "man": "adam",
+        "with": "ile",
+        "tired": "yorgun",
+        "face": "yüz"
+      },
+      "source": "p02-s03"
+    },
+    {
+      "en": "Behind him, two small faces watched Max.",
+      "tr": "Arkasından iki küçük yüz Max'i izliyordu.",
+      "chunks": [],
+      "words": {
+        "behind": "arkasında",
+        "him": "onu, ona",
+        "two": "iki",
+        "small": "küçük",
+        "faces": "yüzler",
+        "watched": "izledi (watch → watched)"
+      },
+      "source": "p02-s04"
+    },
+    {
+      "en": "Finn and Nora were seven.",
+      "tr": "Finn ile Nora yedi yaşındaydı.",
+      "chunks": [],
+      "words": {
+        "and": "ve",
+        "were": "idiler (be → were)",
+        "seven": "yedi"
+      },
+      "source": "p02-s05"
+    },
+    {
+      "en": "They had the same red hair and the same smile.",
+      "tr": "İkisinin de saçları aynı kızıllıktaydı, gülümsemeleri de aynıydı.",
+      "chunks": [],
+      "words": {
+        "they": "onlar",
+        "had": "vardı; yedi (have → had)",
+        "the": "(belirli tanımlık)",
+        "same": "aynı",
+        "red": "kırmızı; (saç) kızıl",
+        "hair": "saç",
+        "and": "ve",
+        "smile": "gülümseme"
+      },
+      "source": "p02-s06"
+    },
+    {
+      "en": "It was a dangerous smile.",
+      "tr": "Tehlikeli bir gülümsemeydi bu.",
+      "chunks": [],
+      "words": {
+        "it": "o; onu",
+        "was": "idi (be → was)",
+        "a": "bir",
+        "dangerous": "tehlikeli",
+        "smile": "gülümseme"
+      },
+      "source": "p02-s07"
+    },
+    {
+      "en": "\"Hi,\" said Max.",
+      "tr": "\"Selam,\" dedi Max.",
+      "chunks": [],
+      "words": {
+        "hi": "selam",
+        "said": "dedi (say → said, düzensiz)"
+      },
+      "source": "p02-s08"
+    },
+    {
+      "en": "\"I'm going to look after you today.\"",
+      "tr": "\"Bugün size ben bakacağım.\"",
+      "chunks": [
+        {
+          "en": "I'm going to look after",
+          "tr": "-e ben bakacağım"
+        }
+      ],
+      "words": {
+        "i'm": "ben … (I am)",
+        "going": "gidiyor; (going to: -ecek)",
+        "to": "-e",
+        "look": "bakmak; görünmek",
+        "after": "sonra",
+        "you": "sen, siz",
+        "today": "bugün"
+      },
+      "source": "p02-s09"
+    },
+    {
+      "en": "Nora looked at Finn.",
+      "tr": "Nora, Finn'e baktı.",
+      "chunks": [],
+      "words": {
+        "looked": "baktı; göründü (look → looked)",
+        "at": "-de; -e (look at: -e bakmak)"
+      },
+      "source": "p02-s10"
+    },
+    {
+      "en": "Finn looked at Nora.",
+      "tr": "Finn, Nora'ya baktı.",
+      "chunks": [],
+      "words": {
+        "looked": "baktı; göründü (look → looked)",
+        "at": "-de; -e (look at: -e bakmak)"
+      },
+      "source": "p02-s11"
+    },
+    {
+      "en": "Then they ran up the stairs and disappeared.",
+      "tr": "Sonra koşarak merdivenleri çıkıp gözden kayboldular.",
+      "chunks": [
+        {
+          "en": "ran up the stairs",
+          "tr": "koşarak merdivenleri çıktı"
+        }
+      ],
+      "words": {
+        "then": "sonra",
+        "they": "onlar",
+        "ran": "koştu (run → ran, düzensiz)",
+        "up": "yukarı",
+        "the": "(belirli tanımlık)",
+        "stairs": "merdiven",
+        "and": "ve",
+        "disappeared": "gözden kayboldu (disappear → disappeared)"
+      },
+      "source": "p02-s12"
+    },
+    {
+      "en": "Max followed Mr Bell into the living room.",
+      "tr": "Max, Bell Bey'in peşinden oturma odasına girdi.",
+      "chunks": [
+        {
+          "en": "living room",
+          "tr": "oturma odası"
+        }
+      ],
+      "words": {
+        "followed": "peşinden gitti (follow → followed)",
+        "mr": "Bay (… Bey)",
+        "into": "içine",
+        "the": "(belirli tanımlık)",
+        "living": "(living room: oturma odası)",
+        "room": "oda"
+      },
+      "source": "p02-s13"
+    },
+    {
+      "en": "On the wall, there was an old brown guitar.",
+      "tr": "Duvarda eski, kahverengi bir gitar vardı.",
+      "chunks": [
+        {
+          "en": "there was",
+          "tr": "vardı"
+        }
+      ],
+      "words": {
+        "on": "üstünde, -de",
+        "the": "(belirli tanımlık)",
+        "wall": "duvar",
+        "there": "orada (there was: vardı)",
+        "was": "idi (be → was)",
+        "an": "bir",
+        "old": "eski",
+        "brown": "kahverengi",
+        "guitar": "gitar"
+      },
+      "source": "p02-s14"
+    },
+    {
+      "en": "It looked lonely.",
+      "tr": "Yalnız görünüyordu.",
+      "chunks": [],
+      "words": {
+        "it": "o; onu",
+        "looked": "göründü (look → looked)",
+        "lonely": "yalnız, kimsesiz"
+      },
+      "source": "p02-s15"
+    },
+    {
+      "en": "\"Do you play?\" asked Max.",
+      "tr": "\"Siz çalıyor musunuz?\" diye sordu Max.",
+      "chunks": [],
+      "words": {
+        "do": "(soru yardımcısı)",
+        "you": "sen, siz",
+        "play": "çalmak (çalgı)",
+        "asked": "sordu (ask → asked)"
+      },
+      "source": "p02-s16"
+    },
+    {
+      "en": "Mr Bell looked at it.",
+      "tr": "Bell Bey gitara baktı.",
+      "chunks": [],
+      "words": {
+        "mr": "Bay (… Bey)",
+        "looked": "baktı; göründü (look → looked)",
+        "at": "-de; -e (look at: -e bakmak)",
+        "it": "o; onu"
+      },
+      "source": "p02-s17"
+    },
+    {
+      "en": "\"Not anymore,\" he said quietly.",
+      "tr": "\"Artık çalmıyorum,\" dedi alçak sesle.",
+      "chunks": [
+        {
+          "en": "Not anymore",
+          "tr": "artık değil"
+        }
+      ],
+      "words": {
+        "not": "değil, -me",
+        "anymore": "artık (olumsuzda)",
+        "he": "o (erkek)",
+        "said": "dedi (say → said, düzensiz)",
+        "quietly": "alçak sesle, sessizce"
+      },
+      "source": "p02-s18"
+    },
+    {
+      "en": "Mrs Bell gave Max a long list.",
+      "tr": "Bell Hanım, Max'e uzun bir liste verdi.",
+      "chunks": [],
+      "words": {
+        "mrs": "Bayan (… Hanım)",
+        "gave": "verdi (give → gave, düzensiz)",
+        "a": "bir",
+        "long": "uzun",
+        "list": "liste"
+      },
+      "source": "p03-s01"
+    },
+    {
+      "en": "\"These are the house rules,\" she said.",
+      "tr": "\"Bunlar evin kuralları,\" dedi.",
+      "chunks": [],
+      "words": {
+        "these": "bunlar",
+        "are": "(olmak; çoğul, şimdiki)",
+        "the": "(belirli tanımlık)",
+        "house": "ev",
+        "rules": "kurallar",
+        "she": "o (kadın)",
+        "said": "dedi (say → said, düzensiz)"
+      },
+      "source": "p03-s02"
+    },
+    {
+      "en": "The children must have lunch at twelve.",
+      "tr": "Çocuklar saat on ikide öğle yemeği yemeli.",
+      "chunks": [
+        {
+          "en": "must have lunch",
+          "tr": "öğle yemeği yemeli"
+        }
+      ],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "children": "çocuklar",
+        "must": "-meli, zorunda",
+        "have": "sahip olmak; (have lunch: öğle yemeği yemek)",
+        "lunch": "öğle yemeği",
+        "at": "-de; -e (look at: -e bakmak)",
+        "twelve": "on iki"
+      },
+      "source": "p03-s03"
+    },
+    {
+      "en": "They mustn't eat sweets before lunch.",
+      "tr": "Öğle yemeğinden önce tatlı yememeliler.",
+      "chunks": [
+        {
+          "en": "mustn't eat",
+          "tr": "yememeli"
+        }
+      ],
+      "words": {
+        "they": "onlar",
+        "mustn't": "-memeli (yasak)",
+        "eat": "yemek",
+        "sweets": "tatlılar, şekerlemeler",
+        "before": "önce",
+        "lunch": "öğle yemeği"
+      },
+      "source": "p03-s04"
+    },
+    {
+      "en": "They must have a bath at six.",
+      "tr": "Saat altıda banyo yapmalılar.",
+      "chunks": [
+        {
+          "en": "must have a bath",
+          "tr": "banyo yapmalı"
+        }
+      ],
+      "words": {
+        "they": "onlar",
+        "must": "-meli, zorunda",
+        "have": "sahip olmak; (have lunch: öğle yemeği yemek)",
+        "a": "bir",
+        "bath": "banyo; küvet",
+        "at": "-de; -e (look at: -e bakmak)",
+        "six": "altı"
+      },
+      "source": "p03-s05"
+    },
+    {
+      "en": "They must be in bed at eight.",
+      "tr": "Saat sekizde yatakta olmalılar.",
+      "chunks": [
+        {
+          "en": "must be",
+          "tr": "-meli, olmalı"
+        }
+      ],
+      "words": {
+        "they": "onlar",
+        "must": "-meli, zorunda",
+        "be": "olmak",
+        "in": "içinde, -de",
+        "bed": "yatak",
+        "at": "-de; -e (look at: -e bakmak)",
+        "eight": "sekiz"
+      },
+      "source": "p03-s06"
+    },
+    {
+      "en": "Biscuit, the cat, mustn't go outside.",
+      "tr": "Kedi Bisküvi dışarı çıkmamalı.",
+      "chunks": [
+        {
+          "en": "mustn't go outside",
+          "tr": "dışarı çıkmamalı"
+        }
+      ],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "cat": "kedi",
+        "mustn't": "-memeli (yasak)",
+        "go": "gitmek",
+        "outside": "dışarı(da)"
+      },
+      "source": "p03-s07"
+    },
+    {
+      "en": "\"And one more thing,\" said Mr Bell.",
+      "tr": "\"Bir şey daha,\" dedi Bell Bey.",
+      "chunks": [
+        {
+          "en": "one more thing",
+          "tr": "bir şey daha"
+        }
+      ],
+      "words": {
+        "and": "ve",
+        "one": "bir; (red one: kırmızı olan)",
+        "more": "daha",
+        "thing": "şey",
+        "said": "dedi (say → said, düzensiz)",
+        "mr": "Bay (… Bey)"
+      },
+      "source": "p03-s08"
+    },
+    {
+      "en": "He pointed at a big cage near the window.",
+      "tr": "Pencerenin yanındaki büyük bir kafesi gösterdi.",
+      "chunks": [
+        {
+          "en": "pointed at",
+          "tr": "-i gösterdi"
+        }
+      ],
+      "words": {
+        "he": "o (erkek)",
+        "pointed": "gösterdi (point → pointed)",
+        "at": "-de; -e (look at: -e bakmak)",
+        "a": "bir",
+        "big": "büyük",
+        "cage": "kafes",
+        "near": "yakınında, yanında",
+        "the": "(belirli tanımlık)",
+        "window": "pencere"
+      },
+      "source": "p03-s09"
+    },
+    {
+      "en": "A green bird sat inside.",
+      "tr": "İçinde yeşil bir kuş oturuyordu.",
+      "chunks": [],
+      "words": {
+        "a": "bir",
+        "green": "yeşil",
+        "bird": "kuş",
+        "sat": "oturdu (sit → sat, düzensiz)",
+        "inside": "içinde"
+      },
+      "source": "p03-s10"
+    },
+    {
+      "en": "He looked at Max with one orange eye.",
+      "tr": "Turuncu tek gözüyle Max'e baktı.",
+      "chunks": [],
+      "words": {
+        "he": "o (erkek)",
+        "looked": "baktı; göründü (look → looked)",
+        "at": "-de; -e (look at: -e bakmak)",
+        "with": "ile",
+        "one": "bir; (red one: kırmızı olan)",
+        "orange": "turuncu",
+        "eye": "göz"
+      },
+      "source": "p03-s11"
+    },
+    {
+      "en": "\"This is Captain.",
+      "tr": "\"Bu Kaptan.",
+      "chunks": [],
+      "words": {
+        "this": "bu",
+        "is": "(olmak; şimdiki)"
+      },
+      "source": "p03-s12"
+    },
+    {
+      "en": "He repeats everything.",
+      "tr": "Her şeyi tekrarlar.",
+      "chunks": [],
+      "words": {
+        "he": "o (erkek)",
+        "repeats": "tekrarlar (repeat + -s)",
+        "everything": "her şey"
+      },
+      "source": "p03-s13"
+    },
+    {
+      "en": "And I mean everything.",
+      "tr": "Gerçekten her şeyi.",
+      "chunks": [],
+      "words": {
+        "and": "ve",
+        "i": "ben",
+        "mean": "kastetmek",
+        "everything": "her şey"
+      },
+      "source": "p03-s14"
+    },
+    {
+      "en": "So be careful with your words.",
+      "tr": "O yüzden sözlerine dikkat et.",
+      "chunks": [
+        {
+          "en": "be careful with",
+          "tr": "-e dikkat et"
+        }
+      ],
+      "words": {
+        "so": "bu yüzden",
+        "be": "olmak",
+        "careful": "dikkatli",
+        "with": "ile",
+        "your": "senin, sizin",
+        "words": "sözler, kelimeler"
+      },
+      "source": "p03-s15"
+    },
+    {
+      "en": "At night, he always sleeps in the children's room.\"",
+      "tr": "Geceleri hep çocukların odasında uyur.\"",
+      "chunks": [],
+      "words": {
+        "at": "-de; -e (look at: -e bakmak)",
+        "night": "gece",
+        "he": "o (erkek)",
+        "always": "her zaman, hep",
+        "sleeps": "uyur (sleep + -s)",
+        "in": "içinde, -de",
+        "the": "(belirli tanımlık)",
+        "children's": "çocukların",
+        "room": "oda"
+      },
+      "source": "p03-s16"
+    },
+    {
+      "en": "\"Hello, Captain,\" said Max.",
+      "tr": "\"Merhaba, Kaptan,\" dedi Max.",
+      "chunks": [],
+      "words": {
+        "hello": "merhaba",
+        "said": "dedi (say → said, düzensiz)"
+      },
+      "source": "p03-s17"
+    },
+    {
+      "en": "\"Hello, Captain!\" said the bird.",
+      "tr": "\"Merhaba, Kaptan!\" dedi kuş.",
+      "chunks": [],
+      "words": {
+        "hello": "merhaba",
+        "said": "dedi (say → said, düzensiz)",
+        "the": "(belirli tanımlık)",
+        "bird": "kuş"
+      },
+      "source": "p03-s18"
+    },
+    {
+      "en": "He sounded exactly like Max.",
+      "tr": "Sesi tıpkı Max'in sesine benziyordu.",
+      "chunks": [
+        {
+          "en": "sounded exactly like",
+          "tr": "tıpkı … gibi çıktı"
+        }
+      ],
+      "words": {
+        "he": "o (erkek)",
+        "sounded": "(sesi) … gibi çıktı (sound → sounded)",
+        "exactly": "tıpkı, tam olarak",
+        "like": "gibi; sevmek"
+      },
+      "source": "p03-s19"
+    },
+    {
+      "en": "The Bells left at half past nine.",
+      "tr": "Bell'ler dokuz buçukta çıktı.",
+      "chunks": [
+        {
+          "en": "half past nine",
+          "tr": "dokuz buçuk"
+        }
+      ],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "left": "çıktı, ayrıldı (leave → left, düzensiz)",
+        "at": "-de; -e (look at: -e bakmak)",
+        "half": "yarım, buçuk",
+        "past": "geçe (half past: buçuk)",
+        "nine": "dokuz"
+      },
+      "source": "p04-s01"
+    },
+    {
+      "en": "The house was very quiet.",
+      "tr": "Ev çok sessizdi.",
+      "chunks": [],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "house": "ev",
+        "was": "idi (be → was)",
+        "very": "çok",
+        "quiet": "sessiz"
+      },
+      "source": "p04-s02"
+    },
+    {
+      "en": "It was too quiet.",
+      "tr": "Fazla sessizdi.",
+      "chunks": [],
+      "words": {
+        "it": "o; onu",
+        "was": "idi (be → was)",
+        "too": "de, da; fazla",
+        "quiet": "sessiz"
+      },
+      "source": "p04-s03"
+    },
+    {
+      "en": "\"Finn?",
+      "tr": "\"Finn?",
+      "chunks": [],
+      "words": {},
+      "source": "p04-s04"
+    },
+    {
+      "en": "Nora?\"",
+      "tr": "Nora?\"",
+      "chunks": [],
+      "words": {},
+      "source": "p04-s05"
+    },
+    {
+      "en": "Max called.",
+      "tr": "Max böyle seslendi.",
+      "chunks": [],
+      "words": {
+        "called": "seslendi (call → called)"
+      },
+      "source": "p04-s06"
+    },
+    {
+      "en": "Nobody answered.",
+      "tr": "Kimse cevap vermedi.",
+      "chunks": [],
+      "words": {
+        "nobody": "hiç kimse",
+        "answered": "cevap verdi (answer → answered)"
+      },
+      "source": "p04-s07"
+    },
+    {
+      "en": "He looked in the kitchen.",
+      "tr": "Mutfağa baktı.",
+      "chunks": [],
+      "words": {
+        "he": "o (erkek)",
+        "looked": "baktı; göründü (look → looked)",
+        "in": "içinde, -de",
+        "the": "(belirli tanımlık)",
+        "kitchen": "mutfak"
+      },
+      "source": "p04-s08"
+    },
+    {
+      "en": "He looked in the bathroom.",
+      "tr": "Banyoya baktı.",
+      "chunks": [],
+      "words": {
+        "he": "o (erkek)",
+        "looked": "baktı; göründü (look → looked)",
+        "in": "içinde, -de",
+        "the": "(belirli tanımlık)",
+        "bathroom": "banyo (oda)"
+      },
+      "source": "p04-s09"
+    },
+    {
+      "en": "He looked under the beds and inside the cupboards.",
+      "tr": "Yatakların altına ve dolapların içine baktı.",
+      "chunks": [],
+      "words": {
+        "he": "o (erkek)",
+        "looked": "baktı; göründü (look → looked)",
+        "under": "altında",
+        "the": "(belirli tanımlık)",
+        "beds": "yataklar",
+        "and": "ve",
+        "inside": "içinde",
+        "cupboards": "dolaplar"
+      },
+      "source": "p04-s10"
+    },
+    {
+      "en": "The children weren't anywhere.",
+      "tr": "Çocuklar hiçbir yerde yoktu.",
+      "chunks": [
+        {
+          "en": "weren't anywhere",
+          "tr": "hiçbir yerde yoktu"
+        }
+      ],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "children": "çocuklar",
+        "weren't": "değildi; yoktu (were not)",
+        "anywhere": "hiçbir yerde (olumsuzda)"
+      },
+      "source": "p04-s11"
+    },
+    {
+      "en": "Ten minutes later, he still couldn't find them.",
+      "tr": "On dakika sonra hâlâ onları bulamamıştı.",
+      "chunks": [
+        {
+          "en": "Ten minutes later",
+          "tr": "on dakika sonra"
+        },
+        {
+          "en": "couldn't find",
+          "tr": "bulamadı"
+        }
+      ],
+      "words": {
+        "ten": "on",
+        "minutes": "dakikalar",
+        "later": "sonra",
+        "he": "o (erkek)",
+        "still": "hâlâ",
+        "couldn't": "-emedi (could not)",
+        "find": "bulmak",
+        "them": "onları, onlarla"
+      },
+      "source": "p04-s12"
+    },
+    {
+      "en": "His heart went faster and faster.",
+      "tr": "Kalbi gittikçe daha hızlı atıyordu.",
+      "chunks": [
+        {
+          "en": "faster and faster",
+          "tr": "gittikçe daha hızlı"
+        }
+      ],
+      "words": {
+        "his": "onun",
+        "heart": "kalp",
+        "went": "gitti (go → went, düzensiz)",
+        "faster": "daha hızlı (fast → faster)",
+        "and": "ve"
+      },
+      "source": "p04-s13"
+    },
+    {
+      "en": "Max sat down on the sofa.",
+      "tr": "Max kanepeye oturdu.",
+      "chunks": [
+        {
+          "en": "sat down",
+          "tr": "oturdu"
+        }
+      ],
+      "words": {
+        "sat": "oturdu (sit → sat, düzensiz)",
+        "down": "aşağı",
+        "on": "üstünde, -de",
+        "the": "(belirli tanımlık)",
+        "sofa": "kanepe"
+      },
+      "source": "p04-s14"
+    },
+    {
+      "en": "He put his head in his hands.",
+      "tr": "Başını ellerinin arasına aldı.",
+      "chunks": [],
+      "words": {
+        "he": "o (erkek)",
+        "put": "koydu (put → put, düzensiz)",
+        "his": "onun",
+        "head": "baş, kafa",
+        "in": "içinde, -de",
+        "hands": "eller"
+      },
+      "source": "p04-s15"
+    },
+    {
+      "en": "\"This is a disaster!\" he said.",
+      "tr": "\"Bu bir felaket!\" dedi.",
+      "chunks": [],
+      "words": {
+        "this": "bu",
+        "is": "(olmak; şimdiki)",
+        "a": "bir",
+        "disaster": "felaket",
+        "he": "o (erkek)",
+        "said": "dedi (say → said, düzensiz)"
+      },
+      "source": "p04-s16"
+    },
+    {
+      "en": "\"This is a disaster!\" said Captain happily.",
+      "tr": "\"Bu bir felaket!\" dedi Kaptan neşeyle.",
+      "chunks": [],
+      "words": {
+        "this": "bu",
+        "is": "(olmak; şimdiki)",
+        "a": "bir",
+        "disaster": "felaket",
+        "said": "dedi (say → said, düzensiz)",
+        "happily": "neşeyle"
+      },
+      "source": "p04-s17"
+    },
+    {
+      "en": "Then the sofa laughed.",
+      "tr": "Sonra kanepe güldü.",
+      "chunks": [],
+      "words": {
+        "then": "sonra",
+        "the": "(belirli tanımlık)",
+        "sofa": "kanepe",
+        "laughed": "güldü (laugh → laughed)"
+      },
+      "source": "p04-s18"
+    },
+    {
+      "en": "Two red heads came up from behind the sofa.",
+      "tr": "Kanepenin arkasından iki kızıl kafa çıktı.",
+      "chunks": [
+        {
+          "en": "came up",
+          "tr": "çıktı"
+        },
+        {
+          "en": "from behind",
+          "tr": "arkasından"
+        }
+      ],
+      "words": {
+        "two": "iki",
+        "red": "kırmızı; (saç) kızıl",
+        "heads": "kafalar",
+        "came": "geldi (come → came, düzensiz)",
+        "up": "yukarı",
+        "from": "-den",
+        "behind": "arkasında",
+        "the": "(belirli tanımlık)",
+        "sofa": "kanepe"
+      },
+      "source": "p05-s01"
+    },
+    {
+      "en": "\"Found you!\" said Max.",
+      "tr": "\"Buldum sizi!\" dedi Max.",
+      "chunks": [
+        {
+          "en": "Found you",
+          "tr": "buldum seni / sizi"
+        }
+      ],
+      "words": {
+        "found": "buldu (find → found, düzensiz)",
+        "you": "sen, siz",
+        "said": "dedi (say → said, düzensiz)"
+      },
+      "source": "p05-s02"
+    },
+    {
+      "en": "He was angry, but he was happy, too.",
+      "tr": "Kızgındı ama bir yandan da sevinmişti.",
+      "chunks": [],
+      "words": {
+        "he": "o (erkek)",
+        "was": "idi (be → was)",
+        "angry": "kızgın",
+        "but": "ama",
+        "happy": "mutlu",
+        "too": "de, da; fazla"
+      },
+      "source": "p05-s03"
+    },
+    {
+      "en": "\"Found you!\" said Captain.",
+      "tr": "\"Buldum sizi!\" dedi Kaptan.",
+      "chunks": [],
+      "words": {
+        "found": "buldu (find → found, düzensiz)",
+        "you": "sen, siz",
+        "said": "dedi (say → said, düzensiz)"
+      },
+      "source": "p05-s04"
+    },
+    {
+      "en": "The children thought this was very funny.",
+      "tr": "Çocuklar bunu çok komik buldu.",
+      "chunks": [],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "children": "çocuklar",
+        "thought": "düşündü; buldu (think → thought, düzensiz)",
+        "this": "bu",
+        "was": "idi (be → was)",
+        "very": "çok",
+        "funny": "komik"
+      },
+      "source": "p05-s05"
+    },
+    {
+      "en": "They laughed, and Captain laughed with them.",
+      "tr": "Güldüler, Kaptan da onlarla birlikte güldü.",
+      "chunks": [],
+      "words": {
+        "they": "onlar",
+        "laughed": "güldü (laugh → laughed)",
+        "and": "ve",
+        "with": "ile",
+        "them": "onları, onlarla"
+      },
+      "source": "p05-s06"
+    },
+    {
+      "en": "His laugh sounded exactly like Mr Bell's laugh.",
+      "tr": "Kahkahası tıpkı Bell Bey'in kahkahasına benziyordu.",
+      "chunks": [
+        {
+          "en": "sounded exactly like",
+          "tr": "tıpkı … gibi çıktı"
+        }
+      ],
+      "words": {
+        "his": "onun",
+        "laugh": "kahkaha",
+        "sounded": "(sesi) … gibi çıktı (sound → sounded)",
+        "exactly": "tıpkı, tam olarak",
+        "like": "gibi; sevmek",
+        "mr": "Bay (… Bey)",
+        "bell's": "Bell'in"
+      },
+      "source": "p05-s07"
+    },
+    {
+      "en": "Max turned to the bird.",
+      "tr": "Max kuşa döndü.",
+      "chunks": [
+        {
+          "en": "turned to",
+          "tr": "-e döndü"
+        }
+      ],
+      "words": {
+        "turned": "döndü (turn → turned)",
+        "to": "-e",
+        "the": "(belirli tanımlık)",
+        "bird": "kuş"
+      },
+      "source": "p05-s08"
+    },
+    {
+      "en": "\"Please be quiet,\" he said.",
+      "tr": "\"Lütfen sessiz ol,\" dedi.",
+      "chunks": [],
+      "words": {
+        "please": "lütfen",
+        "be": "olmak",
+        "quiet": "sessiz",
+        "he": "o (erkek)",
+        "said": "dedi (say → said, düzensiz)"
+      },
+      "source": "p05-s09"
+    },
+    {
+      "en": "\"Please be quiet,\" said Captain.",
+      "tr": "\"Lütfen sessiz ol,\" dedi Kaptan.",
+      "chunks": [],
+      "words": {
+        "please": "lütfen",
+        "be": "olmak",
+        "quiet": "sessiz",
+        "said": "dedi (say → said, düzensiz)"
+      },
+      "source": "p05-s10"
+    },
+    {
+      "en": "Max closed his eyes.",
+      "tr": "Max gözlerini kapattı.",
+      "chunks": [],
+      "words": {
+        "closed": "kapattı (close → closed)",
+        "his": "onun",
+        "eyes": "gözler"
+      },
+      "source": "p05-s11"
+    },
+    {
+      "en": "Only twelve more hours, he thought.",
+      "tr": "Sadece on iki saat daha, diye düşündü.",
+      "chunks": [
+        {
+          "en": "Only twelve more hours",
+          "tr": "sadece on iki saat daha"
+        }
+      ],
+      "words": {
+        "only": "sadece; daha",
+        "twelve": "on iki",
+        "more": "daha",
+        "hours": "saatler",
+        "he": "o (erkek)",
+        "thought": "düşündü; buldu (think → thought, düzensiz)"
+      },
+      "source": "p05-s12"
+    },
+    {
+      "en": "Sixty.",
+      "tr": "Altmış.",
+      "chunks": [],
+      "words": {
+        "sixty": "altmış"
+      },
+      "source": "p05-s13"
+    },
+    {
+      "en": "A red guitar.",
+      "tr": "Kırmızı bir gitar.",
+      "chunks": [],
+      "words": {
+        "a": "bir",
+        "red": "kırmızı; (saç) kızıl",
+        "guitar": "gitar"
+      },
+      "source": "p05-s14"
+    },
+    {
+      "en": "When he opened his eyes, the children weren't there again.",
+      "tr": "Gözlerini açtığında çocuklar yine ortada yoktu.",
+      "chunks": [],
+      "words": {
+        "when": "-ince, -dığında",
+        "he": "o (erkek)",
+        "opened": "açtı; açıldı (open → opened)",
+        "his": "onun",
+        "eyes": "gözler",
+        "the": "(belirli tanımlık)",
+        "children": "çocuklar",
+        "weren't": "değildi; yoktu (were not)",
+        "there": "orada (there was: vardı)",
+        "again": "yine, tekrar"
+      },
+      "source": "p05-s15"
+    },
+    {
+      "en": "Then he heard a strange noise from the kitchen.",
+      "tr": "Sonra mutfaktan tuhaf bir ses duydu.",
+      "chunks": [],
+      "words": {
+        "then": "sonra",
+        "he": "o (erkek)",
+        "heard": "duydu (hear → heard, düzensiz)",
+        "a": "bir",
+        "strange": "tuhaf",
+        "noise": "ses, gürültü",
+        "from": "-den",
+        "the": "(belirli tanımlık)",
+        "kitchen": "mutfak"
+      },
+      "source": "p05-s16"
+    },
+    {
+      "en": "A big white cloud came out of the door.",
+      "tr": "Kapıdan büyük, beyaz bir bulut çıktı.",
+      "chunks": [
+        {
+          "en": "came out of",
+          "tr": "-den çıktı"
+        }
+      ],
+      "words": {
+        "a": "bir",
+        "big": "büyük",
+        "white": "beyaz",
+        "cloud": "bulut",
+        "came": "geldi (come → came, düzensiz)",
+        "out": "dışarı",
+        "of": "-in; (full of: … dolu)",
+        "the": "(belirli tanımlık)",
+        "door": "kapı"
+      },
+      "source": "p05-s17"
+    },
+    {
+      "en": "Pancakes and Bubbles",
+      "tr": "Krepler ve Köpükler",
+      "chunks": [],
+      "words": {
+        "pancakes": "krepler",
+        "and": "ve",
+        "bubbles": "köpükler"
+      },
+      "source": "c2"
+    },
+    {
+      "en": "The kitchen was white.",
+      "tr": "Mutfak bembeyazdı.",
+      "chunks": [],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "kitchen": "mutfak",
+        "was": "idi (be → was)",
+        "white": "beyaz"
+      },
+      "source": "p06-s01"
+    },
+    {
+      "en": "The floor was white.",
+      "tr": "Yer beyazdı.",
+      "chunks": [],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "floor": "yer, zemin",
+        "was": "idi (be → was)",
+        "white": "beyaz"
+      },
+      "source": "p06-s02"
+    },
+    {
+      "en": "The table was white.",
+      "tr": "Masa beyazdı.",
+      "chunks": [],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "table": "masa",
+        "was": "idi (be → was)",
+        "white": "beyaz"
+      },
+      "source": "p06-s03"
+    },
+    {
+      "en": "Even Biscuit was white, and Biscuit was usually a brown cat.",
+      "tr": "Bisküvi bile beyazdı, oysa Bisküvi normalde kahverengi bir kediydi.",
+      "chunks": [],
+      "words": {
+        "even": "bile",
+        "was": "idi (be → was)",
+        "white": "beyaz",
+        "and": "ve",
+        "usually": "genellikle, normalde",
+        "a": "bir",
+        "brown": "kahverengi",
+        "cat": "kedi"
+      },
+      "source": "p06-s04"
+    },
+    {
+      "en": "In the middle of the kitchen stood two little white ghosts.",
+      "tr": "Mutfağın ortasında iki küçük beyaz hayalet duruyordu.",
+      "chunks": [
+        {
+          "en": "In the middle of",
+          "tr": "ortasında"
+        }
+      ],
+      "words": {
+        "in": "içinde, -de",
+        "the": "(belirli tanımlık)",
+        "middle": "orta",
+        "of": "-in; (full of: … dolu)",
+        "kitchen": "mutfak",
+        "stood": "duruyordu (stand → stood, düzensiz)",
+        "two": "iki",
+        "little": "küçük; biraz",
+        "white": "beyaz",
+        "ghosts": "hayaletler"
+      },
+      "source": "p06-s05"
+    },
+    {
+      "en": "They held an empty bag of flour.",
+      "tr": "Ellerinde boş bir un paketi vardı.",
+      "chunks": [],
+      "words": {
+        "they": "onlar",
+        "held": "tuttu; (held out: uzattı) (hold → held, düzensiz)",
+        "an": "bir",
+        "empty": "boş",
+        "bag": "paket, torba",
+        "of": "-in; (full of: … dolu)",
+        "flour": "un"
+      },
+      "source": "p06-s06"
+    },
+    {
+      "en": "\"We're making pancakes,\" said Finn.",
+      "tr": "\"Krep yapıyoruz,\" dedi Finn.",
+      "chunks": [
+        {
+          "en": "We're making",
+          "tr": "yapıyoruz"
+        }
+      ],
+      "words": {
+        "we're": "biz … (we are)",
+        "making": "yapıyor (-ing)",
+        "pancakes": "krepler",
+        "said": "dedi (say → said, düzensiz)"
+      },
+      "source": "p06-s07"
+    },
+    {
+      "en": "\"For you!\" said Nora.",
+      "tr": "\"Senin için!\" dedi Nora.",
+      "chunks": [],
+      "words": {
+        "for": "için; (for hours: saatlerce)",
+        "you": "sen, siz",
+        "said": "dedi (say → said, düzensiz)"
+      },
+      "source": "p06-s08"
+    },
+    {
+      "en": "Max opened his mouth.",
+      "tr": "Max ağzını açtı.",
+      "chunks": [],
+      "words": {
+        "opened": "açtı; açıldı (open → opened)",
+        "his": "onun",
+        "mouth": "ağız"
+      },
+      "source": "p06-s09"
+    },
+    {
+      "en": "He wanted to shout.",
+      "tr": "Bağırmak istedi.",
+      "chunks": [],
+      "words": {
+        "he": "o (erkek)",
+        "wanted": "istedi (want → wanted)",
+        "to": "-e",
+        "shout": "bağırmak"
+      },
+      "source": "p06-s10"
+    },
+    {
+      "en": "But then he looked at their faces.",
+      "tr": "Ama sonra yüzlerine baktı.",
+      "chunks": [],
+      "words": {
+        "but": "ama",
+        "then": "sonra",
+        "he": "o (erkek)",
+        "looked": "baktı; göründü (look → looked)",
+        "at": "-de; -e (look at: -e bakmak)",
+        "their": "onların",
+        "faces": "yüzler"
+      },
+      "source": "p06-s11"
+    },
+    {
+      "en": "They looked very pleased with themselves.",
+      "tr": "Kendilerinden çok memnun görünüyorlardı.",
+      "chunks": [
+        {
+          "en": "pleased with themselves",
+          "tr": "kendilerinden memnun"
+        }
+      ],
+      "words": {
+        "they": "onlar",
+        "looked": "göründü (look → looked)",
+        "very": "çok",
+        "pleased": "memnun",
+        "with": "ile",
+        "themselves": "kendileri"
+      },
+      "source": "p06-s12"
+    },
+    {
+      "en": "He sat down for a moment.",
+      "tr": "Bir an oturdu.",
+      "chunks": [
+        {
+          "en": "for a moment",
+          "tr": "bir an"
+        }
+      ],
+      "words": {
+        "he": "o (erkek)",
+        "sat": "oturdu (sit → sat, düzensiz)",
+        "down": "aşağı",
+        "for": "için; (for hours: saatlerce)",
+        "a": "bir",
+        "moment": "an"
+      },
+      "source": "p06-s13"
+    },
+    {
+      "en": "\"OK,\" he said.",
+      "tr": "\"Tamam,\" dedi.",
+      "chunks": [],
+      "words": {
+        "ok": "tamam",
+        "he": "o (erkek)",
+        "said": "dedi (say → said, düzensiz)"
+      },
+      "source": "p06-s14"
+    },
+    {
+      "en": "\"We're going to cook.",
+      "tr": "\"Yemek yapacağız.",
+      "chunks": [
+        {
+          "en": "We're going to cook",
+          "tr": "yemek yapacağız"
+        }
+      ],
+      "words": {
+        "we're": "biz … (we are)",
+        "going": "gidiyor; (going to: -ecek)",
+        "to": "-e",
+        "cook": "yemek yapmak"
+      },
+      "source": "p06-s15"
+    },
+    {
+      "en": "Together.",
+      "tr": "Birlikte.",
+      "chunks": [],
+      "words": {
+        "together": "birlikte"
+      },
+      "source": "p06-s16"
+    },
+    {
+      "en": "And slowly.\"",
+      "tr": "Hem de yavaş yavaş.\"",
+      "chunks": [],
+      "words": {
+        "and": "ve",
+        "slowly": "yavaşça"
+      },
+      "source": "p06-s17"
+    },
+    {
+      "en": "Cooking with two seven-year-olds was harder than any exam.",
+      "tr": "Yedi yaşında iki çocukla yemek yapmak her sınavdan zordu.",
+      "chunks": [
+        {
+          "en": "harder than",
+          "tr": "-den daha zor"
+        }
+      ],
+      "words": {
+        "cooking": "yemek yapmak (-ing)",
+        "with": "ile",
+        "two": "iki",
+        "seven-year-olds": "yedi yaşındaki çocuklar",
+        "was": "idi (be → was)",
+        "harder": "daha zor (hard → harder)",
+        "than": "-den (daha)",
+        "any": "herhangi bir; hiç",
+        "exam": "sınav"
+      },
+      "source": "p07-s01"
+    },
+    {
+      "en": "Finn dropped the eggs on the floor.",
+      "tr": "Finn yumurtaları yere düşürdü.",
+      "chunks": [],
+      "words": {
+        "dropped": "düşürdü (drop → dropped)",
+        "the": "(belirli tanımlık)",
+        "eggs": "yumurtalar",
+        "on": "üstünde, -de",
+        "floor": "yer, zemin"
+      },
+      "source": "p07-s02"
+    },
+    {
+      "en": "Nora put salt in the milk.",
+      "tr": "Nora sütün içine tuz koydu.",
+      "chunks": [],
+      "words": {
+        "put": "koydu (put → put, düzensiz)",
+        "salt": "tuz",
+        "in": "içinde, -de",
+        "the": "(belirli tanımlık)",
+        "milk": "süt"
+      },
+      "source": "p07-s03"
+    },
+    {
+      "en": "The first one flew up and stayed on the ceiling.",
+      "tr": "İlk krep havaya uçtu ve tavana yapışıp kaldı.",
+      "chunks": [
+        {
+          "en": "flew up",
+          "tr": "havaya uçtu"
+        }
+      ],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "first": "ilk",
+        "one": "olan (first one: ilki)",
+        "flew": "uçtu (fly → flew, düzensiz)",
+        "up": "yukarı",
+        "and": "ve",
+        "stayed": "kaldı (stay → stayed)",
+        "on": "üstünde, -de",
+        "ceiling": "tavan"
+      },
+      "source": "p07-s04"
+    },
+    {
+      "en": "\"Oh no, not again!\" said Max.",
+      "tr": "\"Ah hayır, yine mi!\" dedi Max.",
+      "chunks": [
+        {
+          "en": "Oh no, not again",
+          "tr": "ah hayır, yine mi"
+        }
+      ],
+      "words": {
+        "oh": "ah",
+        "no": "hayır",
+        "not": "değil, -me",
+        "again": "yine, tekrar",
+        "said": "dedi (say → said, düzensiz)"
+      },
+      "source": "p07-s05"
+    },
+    {
+      "en": "\"Oh no, not again!\" said Captain from the living room.",
+      "tr": "\"Ah hayır, yine mi!\" dedi Kaptan oturma odasından.",
+      "chunks": [
+        {
+          "en": "Oh no, not again",
+          "tr": "ah hayır, yine mi"
+        }
+      ],
+      "words": {
+        "oh": "ah",
+        "no": "hayır",
+        "not": "değil, -me",
+        "again": "yine, tekrar",
+        "said": "dedi (say → said, düzensiz)",
+        "from": "-den",
+        "the": "(belirli tanımlık)",
+        "living": "(living room: oturma odası)",
+        "room": "oda"
+      },
+      "source": "p07-s06"
+    },
+    {
+      "en": "He sounded happier than Max.",
+      "tr": "Sesi Max'inkinden daha mutlu çıkıyordu.",
+      "chunks": [
+        {
+          "en": "happier than",
+          "tr": "-den daha mutlu"
+        }
+      ],
+      "words": {
+        "he": "o (erkek)",
+        "sounded": "(sesi) … gibi çıktı (sound → sounded)",
+        "happier": "daha mutlu (happy → happier)",
+        "than": "-den (daha)"
+      },
+      "source": "p07-s07"
+    },
+    {
+      "en": "But the next one was perfect.",
+      "tr": "Ama sonraki krep kusursuzdu.",
+      "chunks": [],
+      "words": {
+        "but": "ama",
+        "the": "(belirli tanımlık)",
+        "next": "sonraki",
+        "one": "olan (next one: sonraki)",
+        "was": "idi (be → was)",
+        "perfect": "kusursuz"
+      },
+      "source": "p07-s08"
+    },
+    {
+      "en": "It was round and warm and golden.",
+      "tr": "Yuvarlak, sıcacık ve altın sarısıydı.",
+      "chunks": [],
+      "words": {
+        "it": "o; onu",
+        "was": "idi (be → was)",
+        "round": "yuvarlak",
+        "and": "ve",
+        "warm": "sıcak",
+        "golden": "altın sarısı"
+      },
+      "source": "p07-s09"
+    },
+    {
+      "en": "The children ate it with honey.",
+      "tr": "Çocuklar onu balla yedi.",
+      "chunks": [],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "children": "çocuklar",
+        "ate": "yedi (eat → ate, düzensiz)",
+        "it": "o; onu",
+        "with": "ile",
+        "honey": "bal"
+      },
+      "source": "p07-s10"
+    },
+    {
+      "en": "They said it was the best pancake in the world.",
+      "tr": "Dünyanın en güzel krebi olduğunu söylediler.",
+      "chunks": [
+        {
+          "en": "the best",
+          "tr": "en iyi, en güzel"
+        }
+      ],
+      "words": {
+        "they": "onlar",
+        "said": "dedi (say → said, düzensiz)",
+        "it": "o; onu",
+        "was": "idi (be → was)",
+        "the": "(belirli tanımlık)",
+        "best": "en iyi (good → better → best)",
+        "pancake": "krep",
+        "in": "içinde, -de",
+        "world": "dünya"
+      },
+      "source": "p07-s11"
+    },
+    {
+      "en": "At twelve, they had lunch.",
+      "tr": "On ikide öğle yemeği yediler.",
+      "chunks": [
+        {
+          "en": "had lunch",
+          "tr": "öğle yemeği yedi"
+        }
+      ],
+      "words": {
+        "at": "-de; -e (look at: -e bakmak)",
+        "twelve": "on iki",
+        "they": "onlar",
+        "had": "vardı; yedi (have → had)",
+        "lunch": "öğle yemeği"
+      },
+      "source": "p07-s12"
+    },
+    {
+      "en": "At one, Max cleaned the kitchen.",
+      "tr": "Saat birde Max mutfağı temizledi.",
+      "chunks": [],
+      "words": {
+        "at": "-de; -e (look at: -e bakmak)",
+        "one": "bir; (red one: kırmızı olan)",
+        "cleaned": "temizledi (clean → cleaned)",
+        "the": "(belirli tanımlık)",
+        "kitchen": "mutfak"
+      },
+      "source": "p07-s13"
+    },
+    {
+      "en": "At three, he was very tired.",
+      "tr": "Saat üçte çok yorgundu.",
+      "chunks": [],
+      "words": {
+        "at": "-de; -e (look at: -e bakmak)",
+        "three": "üç",
+        "he": "o (erkek)",
+        "was": "idi (be → was)",
+        "very": "çok",
+        "tired": "yorgun"
+      },
+      "source": "p07-s14"
+    },
+    {
+      "en": "At four, the house was quiet again.",
+      "tr": "Saat dörtte ev yine sessizdi.",
+      "chunks": [],
+      "words": {
+        "at": "-de; -e (look at: -e bakmak)",
+        "four": "dört",
+        "the": "(belirli tanımlık)",
+        "house": "ev",
+        "was": "idi (be → was)",
+        "quiet": "sessiz",
+        "again": "yine, tekrar"
+      },
+      "source": "p07-s15"
+    },
+    {
+      "en": "Too quiet.",
+      "tr": "Fazla sessiz.",
+      "chunks": [],
+      "words": {
+        "too": "de, da; fazla",
+        "quiet": "sessiz"
+      },
+      "source": "p07-s16"
+    },
+    {
+      "en": "Max found the children in the bathroom.",
+      "tr": "Max çocukları banyoda buldu.",
+      "chunks": [],
+      "words": {
+        "found": "buldu (find → found, düzensiz)",
+        "the": "(belirli tanımlık)",
+        "children": "çocuklar",
+        "in": "içinde, -de",
+        "bathroom": "banyo (oda)"
+      },
+      "source": "p08-s01"
+    },
+    {
+      "en": "The bath was full of bubbles.",
+      "tr": "Küvet köpük doluydu.",
+      "chunks": [
+        {
+          "en": "full of",
+          "tr": "… dolu"
+        }
+      ],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "bath": "banyo; küvet",
+        "was": "idi (be → was)",
+        "full": "dolu",
+        "of": "-in; (full of: … dolu)",
+        "bubbles": "köpükler"
+      },
+      "source": "p08-s02"
+    },
+    {
+      "en": "They were on the floor and on the walls.",
+      "tr": "Köpükler yerdeydi, duvarlardaydı.",
+      "chunks": [],
+      "words": {
+        "they": "onlar",
+        "were": "idiler (be → were)",
+        "on": "üstünde, -de",
+        "the": "(belirli tanımlık)",
+        "floor": "yer, zemin",
+        "and": "ve",
+        "walls": "duvarlar"
+      },
+      "source": "p08-s03"
+    },
+    {
+      "en": "They were even on the mirror.",
+      "tr": "Aynada bile köpük vardı.",
+      "chunks": [],
+      "words": {
+        "they": "onlar",
+        "were": "idiler (be → were)",
+        "even": "bile; daha da",
+        "on": "üstünde, -de",
+        "the": "(belirli tanımlık)",
+        "mirror": "ayna"
+      },
+      "source": "p08-s04"
+    },
+    {
+      "en": "And in the middle of the bath sat Biscuit.",
+      "tr": "Küvetin tam ortasında da Bisküvi oturuyordu.",
+      "chunks": [
+        {
+          "en": "in the middle of",
+          "tr": "ortasında"
+        }
+      ],
+      "words": {
+        "and": "ve",
+        "in": "içinde, -de",
+        "the": "(belirli tanımlık)",
+        "middle": "orta",
+        "of": "-in; (full of: … dolu)",
+        "bath": "banyo; küvet",
+        "sat": "oturdu (sit → sat, düzensiz)"
+      },
+      "source": "p08-s05"
+    },
+    {
+      "en": "He did not look happy.",
+      "tr": "Hiç mutlu görünmüyordu.",
+      "chunks": [],
+      "words": {
+        "he": "o (erkek)",
+        "did": "yaptı (do → did); (soru yardımcısı)",
+        "not": "değil, -me",
+        "look": "görünmek",
+        "happy": "mutlu"
+      },
+      "source": "p08-s06"
+    },
+    {
+      "en": "\"Biscuit needs a bath,\" said Nora.",
+      "tr": "\"Bisküvi'nin banyo yapması lazım,\" dedi Nora.",
+      "chunks": [],
+      "words": {
+        "needs": "ihtiyacı var (need + -s)",
+        "a": "bir",
+        "bath": "banyo; küvet",
+        "said": "dedi (say → said, düzensiz)"
+      },
+      "source": "p08-s07"
+    },
+    {
+      "en": "\"He's white now.\"",
+      "tr": "\"Artık beyaz oldu.\"",
+      "chunks": [],
+      "words": {
+        "he's": "o … (he is)",
+        "white": "beyaz",
+        "now": "şimdi, artık"
+      },
+      "source": "p08-s08"
+    },
+    {
+      "en": "\"Cats hate water!\" said Max.",
+      "tr": "\"Kediler sudan nefret eder!\" dedi Max.",
+      "chunks": [],
+      "words": {
+        "cats": "kediler",
+        "hate": "nefret etmek",
+        "water": "su",
+        "said": "dedi (say → said, düzensiz)"
+      },
+      "source": "p08-s09"
+    },
+    {
+      "en": "Biscuit agreed.",
+      "tr": "Bisküvi de aynı fikirdeydi.",
+      "chunks": [],
+      "words": {
+        "agreed": "aynı fikirdeydi (agree → agreed)"
+      },
+      "source": "p08-s10"
+    },
+    {
+      "en": "He jumped out of the bath and ran down the stairs.",
+      "tr": "Küvetten fırladı ve merdivenlerden aşağı koştu.",
+      "chunks": [
+        {
+          "en": "jumped out of",
+          "tr": "-den fırladı"
+        },
+        {
+          "en": "ran down the stairs",
+          "tr": "merdivenlerden aşağı koştu"
+        }
+      ],
+      "words": {
+        "he": "o (erkek)",
+        "jumped": "fırladı, atladı (jump → jumped)",
+        "out": "dışarı",
+        "of": "-in; (full of: … dolu)",
+        "the": "(belirli tanımlık)",
+        "bath": "banyo; küvet",
+        "and": "ve",
+        "ran": "koştu (run → ran, düzensiz)",
+        "down": "aşağı",
+        "stairs": "merdiven"
+      },
+      "source": "p08-s11"
+    },
+    {
+      "en": "The back door was open.",
+      "tr": "Arka kapı açıktı.",
+      "chunks": [],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "back": "geri; arka",
+        "door": "kapı",
+        "was": "idi (be → was)",
+        "open": "açık"
+      },
+      "source": "p08-s12"
+    },
+    {
+      "en": "\"Biscuit!",
+      "tr": "\"Bisküvi!",
+      "chunks": [],
+      "words": {},
+      "source": "p08-s13"
+    },
+    {
+      "en": "Come back, you silly cat!\" shouted Max.",
+      "tr": "Geri gel, seni sersem kedi!\" diye bağırdı Max.",
+      "chunks": [
+        {
+          "en": "Come back",
+          "tr": "geri gel"
+        }
+      ],
+      "words": {
+        "come": "gelmek",
+        "back": "geri; arka",
+        "you": "sen, siz",
+        "silly": "sersem, aptalca (şakayla)",
+        "cat": "kedi",
+        "shouted": "bağırdı (shout → shouted)"
+      },
+      "source": "p08-s14"
+    },
+    {
+      "en": "\"Silly cat!\" shouted Captain.",
+      "tr": "\"Sersem kedi!\" diye bağırdı Kaptan.",
+      "chunks": [],
+      "words": {
+        "silly": "sersem, aptalca (şakayla)",
+        "cat": "kedi",
+        "shouted": "bağırdı (shout → shouted)"
+      },
+      "source": "p08-s15"
+    },
+    {
+      "en": "He was even happier now.",
+      "tr": "Artık daha da mutluydu.",
+      "chunks": [],
+      "words": {
+        "he": "o (erkek)",
+        "was": "idi (be → was)",
+        "even": "daha da",
+        "happier": "daha mutlu (happy → happier)",
+        "now": "şimdi, artık"
+      },
+      "source": "p08-s16"
+    },
+    {
+      "en": "Biscuit was faster than Max.",
+      "tr": "Bisküvi, Max'ten hızlıydı.",
+      "chunks": [
+        {
+          "en": "faster than",
+          "tr": "-den hızlı"
+        }
+      ],
+      "words": {
+        "was": "idi (be → was)",
+        "faster": "daha hızlı (fast → faster)",
+        "than": "-den (daha)"
+      },
+      "source": "p09-s01"
+    },
+    {
+      "en": "He ran across the garden and under a bush.",
+      "tr": "Bahçeyi koşarak geçti ve bir çalının altına girdi.",
+      "chunks": [],
+      "words": {
+        "he": "o (erkek)",
+        "ran": "koştu (run → ran, düzensiz)",
+        "across": "karşıya, boyunca (across the garden: bahçeyi geçerek)",
+        "the": "(belirli tanımlık)",
+        "garden": "bahçe",
+        "and": "ve",
+        "under": "altında",
+        "a": "bir",
+        "bush": "çalı"
+      },
+      "source": "p09-s02"
+    },
+    {
+      "en": "Max lay on the wet grass and held out his hand.",
+      "tr": "Max ıslak çimlere uzandı ve elini uzattı.",
+      "chunks": [
+        {
+          "en": "held out",
+          "tr": "uzattı"
+        }
+      ],
+      "words": {
+        "lay": "uzandı (lie → lay, düzensiz)",
+        "on": "üstünde, -de",
+        "the": "(belirli tanımlık)",
+        "wet": "ıslak",
+        "grass": "çim",
+        "and": "ve",
+        "held": "uzattı (held out; hold → held, düzensiz)",
+        "out": "dışarı (held out: uzattı)",
+        "his": "onun",
+        "hand": "el"
+      },
+      "source": "p09-s03"
+    },
+    {
+      "en": "\"Come on, Biscuit,\" he said.",
+      "tr": "\"Hadi, Bisküvi,\" dedi.",
+      "chunks": [
+        {
+          "en": "Come on",
+          "tr": "hadi"
+        }
+      ],
+      "words": {
+        "come": "gelmek",
+        "on": "üstünde, -de",
+        "he": "o (erkek)",
+        "said": "dedi (say → said, düzensiz)"
+      },
+      "source": "p09-s04"
+    },
+    {
+      "en": "\"Please.",
+      "tr": "\"Lütfen.",
+      "chunks": [],
+      "words": {
+        "please": "lütfen"
+      },
+      "source": "p09-s05"
+    },
+    {
+      "en": "I'm going to give you some fish.\"",
+      "tr": "Sana biraz balık vereceğim.\"",
+      "chunks": [
+        {
+          "en": "I'm going to give",
+          "tr": "vereceğim"
+        }
+      ],
+      "words": {
+        "i'm": "ben … (I am)",
+        "going": "gidiyor; (going to: -ecek)",
+        "to": "-e",
+        "give": "vermek",
+        "you": "sen, siz",
+        "some": "biraz",
+        "fish": "balık"
+      },
+      "source": "p09-s06"
+    },
+    {
+      "en": "After ten minutes, Biscuit came out.",
+      "tr": "On dakika sonra Bisküvi dışarı çıktı.",
+      "chunks": [
+        {
+          "en": "came out",
+          "tr": "dışarı çıktı"
+        }
+      ],
+      "words": {
+        "after": "sonra",
+        "ten": "on",
+        "minutes": "dakikalar",
+        "came": "geldi (come → came, düzensiz)",
+        "out": "dışarı (came out: dışarı çıktı)"
+      },
+      "source": "p09-s07"
+    },
+    {
+      "en": "Max carried him back into the house.",
+      "tr": "Max onu kucaklayıp eve geri taşıdı.",
+      "chunks": [
+        {
+          "en": "carried him back",
+          "tr": "onu geri taşıdı"
+        }
+      ],
+      "words": {
+        "carried": "taşıdı (carry → carried)",
+        "him": "onu, ona",
+        "back": "geri; arka",
+        "into": "içine",
+        "the": "(belirli tanımlık)",
+        "house": "ev"
+      },
+      "source": "p09-s08"
+    },
+    {
+      "en": "His socks were wet.",
+      "tr": "Çorapları ıslaktı.",
+      "chunks": [],
+      "words": {
+        "his": "onun",
+        "socks": "çoraplar",
+        "were": "idiler (be → were)",
+        "wet": "ıslak"
+      },
+      "source": "p09-s09"
+    },
+    {
+      "en": "His shirt was wet.",
+      "tr": "Gömleği ıslaktı.",
+      "chunks": [],
+      "words": {
+        "his": "onun",
+        "shirt": "gömlek",
+        "was": "idi (be → was)",
+        "wet": "ıslak"
+      },
+      "source": "p09-s10"
+    },
+    {
+      "en": "His hair was still full of flour.",
+      "tr": "Saçları hâlâ un içindeydi.",
+      "chunks": [
+        {
+          "en": "full of",
+          "tr": "… dolu, … içinde"
+        }
+      ],
+      "words": {
+        "his": "onun",
+        "hair": "saç",
+        "was": "idi (be → was)",
+        "still": "hâlâ",
+        "full": "dolu",
+        "of": "-in; (full of: … dolu)",
+        "flour": "un"
+      },
+      "source": "p09-s11"
+    },
+    {
+      "en": "He read the list of rules again.",
+      "tr": "Kural listesini yeniden okudu.",
+      "chunks": [],
+      "words": {
+        "he": "o (erkek)",
+        "read": "okudu (read → read, düzensiz)",
+        "the": "(belirli tanımlık)",
+        "list": "liste",
+        "of": "-in; (full of: … dolu)",
+        "rules": "kurallar",
+        "again": "yine, tekrar"
+      },
+      "source": "p09-s12"
+    },
+    {
+      "en": "Biscuit mustn't go outside.",
+      "tr": "Bisküvi dışarı çıkmamalı.",
+      "chunks": [],
+      "words": {
+        "mustn't": "-memeli (yasak)",
+        "go": "gitmek",
+        "outside": "dışarı(da)"
+      },
+      "source": "p09-s13"
+    },
+    {
+      "en": "Max sat down on the stairs.",
+      "tr": "Max merdivene oturdu.",
+      "chunks": [],
+      "words": {
+        "sat": "oturdu (sit → sat, düzensiz)",
+        "down": "aşağı",
+        "on": "üstünde, -de",
+        "the": "(belirli tanımlık)",
+        "stairs": "merdiven"
+      },
+      "source": "p09-s14"
+    },
+    {
+      "en": "\"I'm never going to get that guitar,\" he said.",
+      "tr": "\"O gitarı asla alamayacağım,\" dedi.",
+      "chunks": [
+        {
+          "en": "I'm never going to get",
+          "tr": "asla alamayacağım"
+        }
+      ],
+      "words": {
+        "i'm": "ben … (I am)",
+        "never": "asla, hiç",
+        "going": "gidiyor; (going to: -ecek)",
+        "to": "-e",
+        "get": "almak, elde etmek",
+        "that": "o; şu",
+        "guitar": "gitar",
+        "he": "o (erkek)",
+        "said": "dedi (say → said, düzensiz)"
+      },
+      "source": "p09-s15"
+    },
+    {
+      "en": "\"Never going to get that guitar!\" said Captain.",
+      "tr": "\"O gitarı asla alamayacağım!\" dedi Kaptan.",
+      "chunks": [
+        {
+          "en": "Never going to get",
+          "tr": "asla alamayacağım"
+        }
+      ],
+      "words": {
+        "never": "asla, hiç",
+        "going": "gidiyor; (going to: -ecek)",
+        "to": "-e",
+        "get": "almak, elde etmek",
+        "that": "o; şu",
+        "guitar": "gitar",
+        "said": "dedi (say → said, düzensiz)"
+      },
+      "source": "p09-s16"
+    },
+    {
+      "en": "At eight o'clock, Finn and Nora were in bed.",
+      "tr": "Saat sekizde Finn ile Nora yataktaydı.",
+      "chunks": [],
+      "words": {
+        "at": "-de; -e (look at: -e bakmak)",
+        "eight": "sekiz",
+        "o'clock": "saat (tam)",
+        "and": "ve",
+        "were": "idiler (be → were)",
+        "in": "içinde, -de",
+        "bed": "yatak"
+      },
+      "source": "p10-s01"
+    },
+    {
+      "en": "But they didn't sleep.",
+      "tr": "Ama uyumadılar.",
+      "chunks": [],
+      "words": {
+        "but": "ama",
+        "they": "onlar",
+        "didn't": "-medi (did not)",
+        "sleep": "uyumak"
+      },
+      "source": "p10-s02"
+    },
+    {
+      "en": "Outside, the wind was strong.",
+      "tr": "Dışarıda rüzgâr sert esiyordu.",
+      "chunks": [],
+      "words": {
+        "outside": "dışarı(da)",
+        "the": "(belirli tanımlık)",
+        "wind": "rüzgâr",
+        "was": "idi (be → was)",
+        "strong": "sert, güçlü"
+      },
+      "source": "p10-s03"
+    },
+    {
+      "en": "\"I don't like the wind,\" said Nora in a small voice.",
+      "tr": "\"Rüzgârı sevmiyorum,\" dedi Nora küçük bir sesle.",
+      "chunks": [
+        {
+          "en": "in a small voice",
+          "tr": "küçük bir sesle"
+        }
+      ],
+      "words": {
+        "i": "ben",
+        "don't": "-me (do not)",
+        "like": "gibi; sevmek",
+        "the": "(belirli tanımlık)",
+        "wind": "rüzgâr",
+        "said": "dedi (say → said, düzensiz)",
+        "in": "içinde, -de",
+        "a": "bir",
+        "small": "küçük",
+        "voice": "ses"
+      },
+      "source": "p10-s04"
+    },
+    {
+      "en": "Max carried Captain into their room.",
+      "tr": "Max, Kaptan'ı onların odasına taşıdı.",
+      "chunks": [],
+      "words": {
+        "carried": "taşıdı (carry → carried)",
+        "into": "içine",
+        "their": "onların",
+        "room": "oda"
+      },
+      "source": "p10-s05"
+    },
+    {
+      "en": "The bird was quiet.",
+      "tr": "Kuş sessizdi.",
+      "chunks": [],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "bird": "kuş",
+        "was": "idi (be → was)",
+        "quiet": "sessiz"
+      },
+      "source": "p10-s06"
+    },
+    {
+      "en": "For once, he didn't say anything.",
+      "tr": "Bir kez olsun hiçbir şey söylemedi.",
+      "chunks": [
+        {
+          "en": "For once",
+          "tr": "bir kez olsun"
+        }
+      ],
+      "words": {
+        "for": "için; (for hours: saatlerce)",
+        "once": "bir kez",
+        "he": "o (erkek)",
+        "didn't": "-medi (did not)",
+        "say": "söylemek",
+        "anything": "bir şey, hiçbir şey"
+      },
+      "source": "p10-s07"
+    },
+    {
+      "en": "But his eyes were open.",
+      "tr": "Ama gözleri açıktı.",
+      "chunks": [],
+      "words": {
+        "but": "ama",
+        "his": "onun",
+        "eyes": "gözler",
+        "were": "idiler (be → were)",
+        "open": "açık"
+      },
+      "source": "p10-s08"
+    },
+    {
+      "en": "Max sat on the floor between the two beds.",
+      "tr": "Max iki yatağın arasında yere oturdu.",
+      "chunks": [
+        {
+          "en": "between the two beds",
+          "tr": "iki yatağın arasında"
+        }
+      ],
+      "words": {
+        "sat": "oturdu (sit → sat, düzensiz)",
+        "on": "üstünde, -de",
+        "the": "(belirli tanımlık)",
+        "floor": "yer, zemin",
+        "between": "arasında",
+        "two": "iki",
+        "beds": "yataklar"
+      },
+      "source": "p10-s09"
+    },
+    {
+      "en": "\"Listen,\" he said softly.",
+      "tr": "\"Dinleyin,\" dedi yumuşak bir sesle.",
+      "chunks": [],
+      "words": {
+        "listen": "dinlemek",
+        "he": "o (erkek)",
+        "said": "dedi (say → said, düzensiz)",
+        "softly": "yumuşak bir sesle"
+      },
+      "source": "p10-s10"
+    },
+    {
+      "en": "\"You two are very brave.",
+      "tr": "\"Siz ikiniz çok cesursunuz.",
+      "chunks": [],
+      "words": {
+        "you": "sen, siz",
+        "two": "iki",
+        "are": "(olmak; çoğul, şimdiki)",
+        "very": "çok",
+        "brave": "cesur"
+      },
+      "source": "p10-s11"
+    },
+    {
+      "en": "You cooked for me.",
+      "tr": "Benim için yemek yaptınız.",
+      "chunks": [],
+      "words": {
+        "you": "sen, siz",
+        "cooked": "yemek yaptı (cook → cooked)",
+        "for": "için; (for hours: saatlerce)",
+        "me": "beni, bana"
+      },
+      "source": "p10-s12"
+    },
+    {
+      "en": "You gave a cat a bath.",
+      "tr": "Bir kediyi yıkadınız.",
+      "chunks": [],
+      "words": {
+        "you": "sen, siz",
+        "gave": "verdi (give → gave, düzensiz)",
+        "a": "bir",
+        "cat": "kedi",
+        "bath": "banyo; küvet"
+      },
+      "source": "p10-s13"
+    },
+    {
+      "en": "That's brave.\"",
+      "tr": "Bu cesaret ister.\"",
+      "chunks": [],
+      "words": {
+        "that's": "bu … (that is)",
+        "brave": "cesur"
+      },
+      "source": "p10-s14"
+    },
+    {
+      "en": "Nora smiled.",
+      "tr": "Nora gülümsedi.",
+      "chunks": [],
+      "words": {
+        "smiled": "gülümsedi (smile → smiled)"
+      },
+      "source": "p10-s15"
+    },
+    {
+      "en": "Then Max sang an old song.",
+      "tr": "Sonra Max eski bir şarkı söyledi.",
+      "chunks": [],
+      "words": {
+        "then": "sonra",
+        "sang": "söyledi (sing → sang, düzensiz)",
+        "an": "bir",
+        "old": "eski",
+        "song": "şarkı"
+      },
+      "source": "p10-s16"
+    },
+    {
+      "en": "His grandmother often sang it to him.",
+      "tr": "Büyükannesi ona bu şarkıyı sık sık söylerdi.",
+      "chunks": [
+        {
+          "en": "often sang",
+          "tr": "sık sık söylerdi"
+        }
+      ],
+      "words": {
+        "his": "onun",
+        "grandmother": "büyükanne, nine",
+        "often": "sık sık",
+        "sang": "söyledi (sing → sang, düzensiz)",
+        "it": "onu (şarkıyı)",
+        "to": "-e",
+        "him": "onu, ona"
+      },
+      "source": "p10-s17"
+    },
+    {
+      "en": "\"Little boat, little boat, the moon is your light.",
+      "tr": "\"Küçük tekne, küçük tekne, ay senin ışığın.",
+      "chunks": [],
+      "words": {
+        "little": "küçük; biraz",
+        "boat": "tekne",
+        "the": "(belirli tanımlık)",
+        "moon": "ay",
+        "is": "(olmak; şimdiki)",
+        "your": "senin, sizin",
+        "light": "ışık"
+      },
+      "source": "p10-s18"
+    },
+    {
+      "en": "Little boat, little boat, come home tonight.\"",
+      "tr": "Küçük tekne, küçük tekne, bu gece eve dön.\"",
+      "chunks": [
+        {
+          "en": "come home",
+          "tr": "eve dön"
+        }
+      ],
+      "words": {
+        "little": "küçük; biraz",
+        "boat": "tekne",
+        "come": "gelmek",
+        "home": "ev",
+        "tonight": "bu gece"
+      },
+      "source": "p10-s19"
+    },
+    {
+      "en": "Slowly, the children closed their eyes.",
+      "tr": "Çocuklar yavaş yavaş gözlerini kapattı.",
+      "chunks": [],
+      "words": {
+        "slowly": "yavaşça",
+        "the": "(belirli tanımlık)",
+        "children": "çocuklar",
+        "closed": "kapattı (close → closed)",
+        "their": "onların",
+        "eyes": "gözler"
+      },
+      "source": "p10-s20"
+    },
+    {
+      "en": "Then Max heard a car outside.",
+      "tr": "Sonra Max dışarıda bir araba sesi duydu.",
+      "chunks": [],
+      "words": {
+        "then": "sonra",
+        "heard": "duydu (hear → heard, düzensiz)",
+        "a": "bir",
+        "car": "araba",
+        "outside": "dışarı(da)"
+      },
+      "source": "p10-s21"
+    },
+    {
+      "en": "He looked at the clock.",
+      "tr": "Saate baktı.",
+      "chunks": [],
+      "words": {
+        "he": "o (erkek)",
+        "looked": "baktı; göründü (look → looked)",
+        "at": "-de; -e (look at: -e bakmak)",
+        "the": "(belirli tanımlık)",
+        "clock": "saat (duvar saati)"
+      },
+      "source": "p10-s22"
+    },
+    {
+      "en": "It was only nine.",
+      "tr": "Saat daha dokuzdu.",
+      "chunks": [],
+      "words": {
+        "it": "o; onu",
+        "was": "idi (be → was)",
+        "only": "daha, henüz",
+        "nine": "dokuz"
+      },
+      "source": "p10-s23"
+    },
+    {
+      "en": "The Bells were home early!",
+      "tr": "Bell'ler eve erken dönmüştü!",
+      "chunks": [
+        {
+          "en": "home early",
+          "tr": "eve erken"
+        }
+      ],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "were": "idiler (be → were)",
+        "home": "ev",
+        "early": "erken"
+      },
+      "source": "p10-s24"
+    },
+    {
+      "en": "Captain Speaks",
+      "tr": "Kaptan Konuşuyor",
+      "chunks": [],
+      "words": {
+        "speaks": "konuşuyor (speak + -s)"
+      },
+      "source": "c3"
+    },
+    {
+      "en": "Max ran downstairs.",
+      "tr": "Max koşarak aşağı indi.",
+      "chunks": [],
+      "words": {
+        "ran": "koştu (run → ran, düzensiz)",
+        "downstairs": "aşağı kata"
+      },
+      "source": "p11-s01"
+    },
+    {
+      "en": "He looked around the living room.",
+      "tr": "Oturma odasına göz gezdirdi.",
+      "chunks": [
+        {
+          "en": "looked around",
+          "tr": "etrafına baktı"
+        }
+      ],
+      "words": {
+        "he": "o (erkek)",
+        "looked": "baktı; göründü (look → looked)",
+        "around": "etrafında, etrafına",
+        "the": "(belirli tanımlık)",
+        "living": "(living room: oturma odası)",
+        "room": "oda"
+      },
+      "source": "p11-s02"
+    },
+    {
+      "en": "There was flour on the sofa.",
+      "tr": "Kanepede un vardı.",
+      "chunks": [
+        {
+          "en": "There was",
+          "tr": "vardı"
+        }
+      ],
+      "words": {
+        "there": "orada (there was: vardı)",
+        "was": "idi (be → was)",
+        "flour": "un",
+        "on": "üstünde, -de",
+        "the": "(belirli tanımlık)",
+        "sofa": "kanepe"
+      },
+      "source": "p11-s03"
+    },
+    {
+      "en": "There was a pancake on the ceiling.",
+      "tr": "Tavanda bir krep vardı.",
+      "chunks": [],
+      "words": {
+        "there": "orada (there was: vardı)",
+        "was": "idi (be → was)",
+        "a": "bir",
+        "pancake": "krep",
+        "on": "üstünde, -de",
+        "the": "(belirli tanımlık)",
+        "ceiling": "tavan"
+      },
+      "source": "p11-s04"
+    },
+    {
+      "en": "There was a white cat on the chair.",
+      "tr": "Sandalyede beyaz bir kedi vardı.",
+      "chunks": [],
+      "words": {
+        "there": "orada (there was: vardı)",
+        "was": "idi (be → was)",
+        "a": "bir",
+        "white": "beyaz",
+        "cat": "kedi",
+        "on": "üstünde, -de",
+        "the": "(belirli tanımlık)",
+        "chair": "sandalye"
+      },
+      "source": "p11-s05"
+    },
+    {
+      "en": "The front door opened.",
+      "tr": "Ön kapı açıldı.",
+      "chunks": [],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "front": "ön",
+        "door": "kapı",
+        "opened": "açtı; açıldı (open → opened)"
+      },
+      "source": "p11-s06"
+    },
+    {
+      "en": "\"Hello, Max!\" said Mrs Bell.",
+      "tr": "\"Merhaba, Max!\" dedi Bell Hanım.",
+      "chunks": [],
+      "words": {
+        "hello": "merhaba",
+        "said": "dedi (say → said, düzensiz)",
+        "mrs": "Bayan (… Hanım)"
+      },
+      "source": "p11-s07"
+    },
+    {
+      "en": "\"How was your day?",
+      "tr": "\"Günün nasıl geçti?",
+      "chunks": [
+        {
+          "en": "How was your day",
+          "tr": "günün nasıl geçti"
+        }
+      ],
+      "words": {
+        "how": "nasıl",
+        "was": "idi (be → was)",
+        "your": "senin, sizin",
+        "day": "gün"
+      },
+      "source": "p11-s08"
+    },
+    {
+      "en": "Were the children good?\"",
+      "tr": "Çocuklar uslu durdu mu?\"",
+      "chunks": [],
+      "words": {
+        "were": "idiler (be → were)",
+        "the": "(belirli tanımlık)",
+        "children": "çocuklar",
+        "good": "iyi; uslu"
+      },
+      "source": "p11-s09"
+    },
+    {
+      "en": "\"Yes!\" said Max.",
+      "tr": "\"Evet!\" dedi Max.",
+      "chunks": [],
+      "words": {
+        "yes": "evet",
+        "said": "dedi (say → said, düzensiz)"
+      },
+      "source": "p11-s10"
+    },
+    {
+      "en": "\"They were great.",
+      "tr": "\"Harikaydılar.",
+      "chunks": [],
+      "words": {
+        "they": "onlar",
+        "were": "idiler (be → were)",
+        "great": "harika"
+      },
+      "source": "p11-s11"
+    },
+    {
+      "en": "Everything was fine.\"",
+      "tr": "Her şey yolundaydı.\"",
+      "chunks": [],
+      "words": {
+        "everything": "her şey",
+        "was": "idi (be → was)",
+        "fine": "iyi, yolunda"
+      },
+      "source": "p11-s12"
+    },
+    {
+      "en": "Upstairs, somebody spoke.",
+      "tr": "Yukarıda biri konuştu.",
+      "chunks": [],
+      "words": {
+        "upstairs": "yukarıda (üst katta)",
+        "somebody": "biri",
+        "spoke": "konuştu (speak → spoke, düzensiz)"
+      },
+      "source": "p11-s13"
+    },
+    {
+      "en": "It was Captain.",
+      "tr": "Kaptan'dı bu.",
+      "chunks": [],
+      "words": {
+        "it": "o; onu",
+        "was": "idi (be → was)"
+      },
+      "source": "p11-s14"
+    },
+    {
+      "en": "The bedroom door was open.",
+      "tr": "Yatak odasının kapısı açıktı.",
+      "chunks": [],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "bedroom": "yatak odası",
+        "door": "kapı",
+        "was": "idi (be → was)",
+        "open": "açık"
+      },
+      "source": "p11-s15"
+    },
+    {
+      "en": "\"This is a disaster!\" said Captain.",
+      "tr": "\"Bu bir felaket!\" dedi Kaptan.",
+      "chunks": [],
+      "words": {
+        "this": "bu",
+        "is": "(olmak; şimdiki)",
+        "a": "bir",
+        "disaster": "felaket",
+        "said": "dedi (say → said, düzensiz)"
+      },
+      "source": "p11-s16"
+    },
+    {
+      "en": "Mrs Bell looked at Max.",
+      "tr": "Bell Hanım, Max'e baktı.",
+      "chunks": [],
+      "words": {
+        "mrs": "Bayan (… Hanım)",
+        "looked": "baktı; göründü (look → looked)",
+        "at": "-de; -e (look at: -e bakmak)"
+      },
+      "source": "p11-s17"
+    },
+    {
+      "en": "Max looked at the floor.",
+      "tr": "Max yere baktı.",
+      "chunks": [],
+      "words": {
+        "looked": "baktı; göründü (look → looked)",
+        "at": "-de; -e (look at: -e bakmak)",
+        "the": "(belirli tanımlık)",
+        "floor": "yer, zemin"
+      },
+      "source": "p11-s18"
+    },
+    {
+      "en": "\"Oh no, not again!\" said Captain.",
+      "tr": "\"Ah hayır, yine mi!\" dedi Kaptan.",
+      "chunks": [],
+      "words": {
+        "oh": "ah",
+        "no": "hayır",
+        "not": "değil, -me",
+        "again": "yine, tekrar",
+        "said": "dedi (say → said, düzensiz)"
+      },
+      "source": "p12-s01"
+    },
+    {
+      "en": "Mr Bell looked up.",
+      "tr": "Bell Bey yukarı baktı.",
+      "chunks": [],
+      "words": {
+        "mr": "Bay (… Bey)",
+        "looked": "baktı; göründü (look → looked)",
+        "up": "yukarı"
+      },
+      "source": "p12-s02"
+    },
+    {
+      "en": "He saw the pancake above his head.",
+      "tr": "Başının üstündeki krebi gördü.",
+      "chunks": [],
+      "words": {
+        "he": "o (erkek)",
+        "saw": "gördü (see → saw, düzensiz)",
+        "the": "(belirli tanımlık)",
+        "pancake": "krep",
+        "above": "üstünde",
+        "his": "onun",
+        "head": "baş, kafa"
+      },
+      "source": "p12-s03"
+    },
+    {
+      "en": "\"Silly cat!\" said Captain.",
+      "tr": "\"Sersem kedi!\" dedi Kaptan.",
+      "chunks": [],
+      "words": {
+        "silly": "sersem, aptalca (şakayla)",
+        "cat": "kedi",
+        "said": "dedi (say → said, düzensiz)"
+      },
+      "source": "p12-s04"
+    },
+    {
+      "en": "Mrs Bell looked at Biscuit.",
+      "tr": "Bell Hanım, Bisküvi'ye baktı.",
+      "chunks": [],
+      "words": {
+        "mrs": "Bayan (… Hanım)",
+        "looked": "baktı; göründü (look → looked)",
+        "at": "-de; -e (look at: -e bakmak)"
+      },
+      "source": "p12-s05"
+    },
+    {
+      "en": "Biscuit was still a little white.",
+      "tr": "Bisküvi hâlâ biraz beyazdı.",
+      "chunks": [],
+      "words": {
+        "was": "idi (be → was)",
+        "still": "hâlâ",
+        "a": "bir",
+        "little": "küçük; biraz",
+        "white": "beyaz"
+      },
+      "source": "p12-s06"
+    },
+    {
+      "en": "Max's face was redder than a tomato.",
+      "tr": "Max'in yüzü domatesten kırmızıydı.",
+      "chunks": [
+        {
+          "en": "redder than a tomato",
+          "tr": "domatesten kırmızı"
+        }
+      ],
+      "words": {
+        "max's": "Max'in",
+        "face": "yüz",
+        "was": "idi (be → was)",
+        "redder": "daha kırmızı (red → redder)",
+        "than": "-den (daha)",
+        "a": "bir",
+        "tomato": "domates"
+      },
+      "source": "p12-s07"
+    },
+    {
+      "en": "He wanted to disappear.",
+      "tr": "Yerin dibine girmek istedi.",
+      "chunks": [],
+      "words": {
+        "he": "o (erkek)",
+        "wanted": "istedi (want → wanted)",
+        "to": "-e",
+        "disappear": "ortadan kaybolmak"
+      },
+      "source": "p12-s08"
+    },
+    {
+      "en": "\"I'm sorry,\" he said.",
+      "tr": "\"Özür dilerim,\" dedi.",
+      "chunks": [],
+      "words": {
+        "i'm": "ben … (I am)",
+        "sorry": "üzgünüm, özür dilerim",
+        "he": "o (erkek)",
+        "said": "dedi (say → said, düzensiz)"
+      },
+      "source": "p12-s09"
+    },
+    {
+      "en": "\"I can explain.",
+      "tr": "\"Açıklayabilirim.",
+      "chunks": [],
+      "words": {
+        "i": "ben",
+        "can": "-ebilmek",
+        "explain": "açıklamak"
+      },
+      "source": "p12-s10"
+    },
+    {
+      "en": "There was flour.",
+      "tr": "Un vardı.",
+      "chunks": [],
+      "words": {
+        "there": "orada (there was: vardı)",
+        "was": "idi (be → was)",
+        "flour": "un"
+      },
+      "source": "p12-s11"
+    },
+    {
+      "en": "Then there were bubbles.",
+      "tr": "Sonra köpükler oldu.",
+      "chunks": [],
+      "words": {
+        "then": "sonra",
+        "there": "orada (there was: vardı)",
+        "were": "idiler (be → were)",
+        "bubbles": "köpükler"
+      },
+      "source": "p12-s12"
+    },
+    {
+      "en": "Then the cat went into the garden.\"",
+      "tr": "Sonra kedi bahçeye kaçtı.\"",
+      "chunks": [],
+      "words": {
+        "then": "sonra",
+        "the": "(belirli tanımlık)",
+        "cat": "kedi",
+        "went": "gitti (go → went, düzensiz)",
+        "into": "içine",
+        "garden": "bahçe"
+      },
+      "source": "p12-s13"
+    },
+    {
+      "en": "\"You don't have to pay me,\" said Max quietly.",
+      "tr": "\"Bana para vermek zorunda değilsiniz,\" dedi Max alçak sesle.",
+      "chunks": [
+        {
+          "en": "don't have to",
+          "tr": "zorunda değilsiniz"
+        }
+      ],
+      "words": {
+        "you": "sen, siz",
+        "don't": "-me (do not)",
+        "have": "sahip olmak; (have lunch: öğle yemeği yemek)",
+        "to": "-e",
+        "pay": "ödemek, para vermek",
+        "me": "beni, bana",
+        "said": "dedi (say → said, düzensiz)",
+        "quietly": "alçak sesle, sessizce"
+      },
+      "source": "p12-s15"
+    },
+    {
+      "en": "But Captain was not finished.",
+      "tr": "Ama Kaptan'ın sözü bitmemişti.",
+      "chunks": [],
+      "words": {
+        "but": "ama",
+        "was": "idi (be → was)",
+        "not": "değil, -me",
+        "finished": "bitmiş (finish → finished)"
+      },
+      "source": "p13-s01"
+    },
+    {
+      "en": "He walked up and down in his cage.",
+      "tr": "Kafesinde bir aşağı bir yukarı yürüdü.",
+      "chunks": [
+        {
+          "en": "walked up and down",
+          "tr": "bir aşağı bir yukarı yürüdü"
+        }
+      ],
+      "words": {
+        "he": "o (erkek)",
+        "walked": "yürüdü (walk → walked)",
+        "up": "yukarı",
+        "and": "ve",
+        "down": "aşağı",
+        "in": "içinde, -de",
+        "his": "onun",
+        "cage": "kafes"
+      },
+      "source": "p13-s02"
+    },
+    {
+      "en": "Then he spoke again.",
+      "tr": "Sonra yeniden konuştu.",
+      "chunks": [],
+      "words": {
+        "then": "sonra",
+        "he": "o (erkek)",
+        "spoke": "konuştu (speak → spoke, düzensiz)",
+        "again": "yine, tekrar"
+      },
+      "source": "p13-s03"
+    },
+    {
+      "en": "His voice was softer now.",
+      "tr": "Sesi artık daha yumuşaktı.",
+      "chunks": [],
+      "words": {
+        "his": "onun",
+        "voice": "ses",
+        "was": "idi (be → was)",
+        "softer": "daha yumuşak (soft → softer)",
+        "now": "şimdi, artık"
+      },
+      "source": "p13-s04"
+    },
+    {
+      "en": "\"You are very brave.\"",
+      "tr": "\"Siz çok cesursunuz.\"",
+      "chunks": [],
+      "words": {
+        "you": "sen, siz",
+        "are": "(olmak; çoğul, şimdiki)",
+        "very": "çok",
+        "brave": "cesur"
+      },
+      "source": "p13-s05"
+    },
+    {
+      "en": "Mrs Bell stopped.",
+      "tr": "Bell Hanım durdu.",
+      "chunks": [],
+      "words": {
+        "mrs": "Bayan (… Hanım)",
+        "stopped": "durdu (stop → stopped)"
+      },
+      "source": "p13-s06"
+    },
+    {
+      "en": "\"Who said that?\"",
+      "tr": "\"Bunu kim söyledi?\"",
+      "chunks": [],
+      "words": {
+        "who": "kim",
+        "said": "dedi (say → said, düzensiz)",
+        "that": "o; şu"
+      },
+      "source": "p13-s07"
+    },
+    {
+      "en": "Then Captain began to sing.",
+      "tr": "Sonra Kaptan şarkı söylemeye başladı.",
+      "chunks": [
+        {
+          "en": "began to sing",
+          "tr": "şarkı söylemeye başladı"
+        }
+      ],
+      "words": {
+        "then": "sonra",
+        "began": "başladı (begin → began, düzensiz)",
+        "to": "-e",
+        "sing": "şarkı söylemek"
+      },
+      "source": "p13-s08"
+    },
+    {
+      "en": "He sang very badly.",
+      "tr": "Çok kötü söylüyordu.",
+      "chunks": [],
+      "words": {
+        "he": "o (erkek)",
+        "sang": "söyledi (sing → sang, düzensiz)",
+        "very": "çok",
+        "badly": "kötü (biçimde)"
+      },
+      "source": "p13-s09"
+    },
+    {
+      "en": "But everyone knew the words.",
+      "tr": "Ama sözleri herkes biliyordu.",
+      "chunks": [],
+      "words": {
+        "but": "ama",
+        "everyone": "herkes",
+        "knew": "biliyordu (know → knew, düzensiz)",
+        "the": "(belirli tanımlık)",
+        "words": "sözler, kelimeler"
+      },
+      "source": "p13-s10"
+    },
+    {
+      "en": "\"Little boat, little boat, the moon is your light…\"",
+      "tr": "\"Küçük tekne, küçük tekne, ay senin ışığın…\"",
+      "chunks": [],
+      "words": {
+        "little": "küçük; biraz",
+        "boat": "tekne",
+        "the": "(belirli tanımlık)",
+        "moon": "ay",
+        "is": "(olmak; şimdiki)",
+        "your": "senin, sizin",
+        "light": "ışık"
+      },
+      "source": "p13-s11"
+    },
+    {
+      "en": "Mr Bell's face changed.",
+      "tr": "Bell Bey'in yüzü değişti.",
+      "chunks": [],
+      "words": {
+        "mr": "Bay (… Bey)",
+        "bell's": "Bell'in",
+        "face": "yüz",
+        "changed": "değişti (change → changed)"
+      },
+      "source": "p13-s12"
+    },
+    {
+      "en": "He looked at Max.",
+      "tr": "Max'e baktı.",
+      "chunks": [],
+      "words": {
+        "he": "o (erkek)",
+        "looked": "baktı; göründü (look → looked)",
+        "at": "-de; -e (look at: -e bakmak)"
+      },
+      "source": "p13-s13"
+    },
+    {
+      "en": "\"Where did he learn that song?\" he asked.",
+      "tr": "\"Bu şarkıyı nereden öğrendi?\" diye sordu.",
+      "chunks": [],
+      "words": {
+        "where": "nereden, nerede",
+        "did": "yaptı (do → did); (soru yardımcısı)",
+        "he": "o (erkek)",
+        "learn": "öğrenmek",
+        "that": "o; şu",
+        "song": "şarkı",
+        "asked": "sordu (ask → asked)"
+      },
+      "source": "p13-s14"
+    },
+    {
+      "en": "\"From me,\" said Max.",
+      "tr": "\"Benden,\" dedi Max.",
+      "chunks": [],
+      "words": {
+        "from": "-den",
+        "me": "beni, bana",
+        "said": "dedi (say → said, düzensiz)"
+      },
+      "source": "p13-s15"
+    },
+    {
+      "en": "\"I sang it to Finn and Nora.",
+      "tr": "\"Finn'le Nora'ya söyledim.",
+      "chunks": [],
+      "words": {
+        "i": "ben",
+        "sang": "söyledi (sing → sang, düzensiz)",
+        "it": "o; onu",
+        "to": "-e",
+        "and": "ve"
+      },
+      "source": "p13-s16"
+    },
+    {
+      "en": "My grandmother taught it to me.\"",
+      "tr": "Bana büyükannem öğretmişti.\"",
+      "chunks": [],
+      "words": {
+        "my": "benim",
+        "grandmother": "büyükanne, nine",
+        "taught": "öğretti (teach → taught, düzensiz)",
+        "it": "o; onu",
+        "to": "-e",
+        "me": "beni, bana"
+      },
+      "source": "p13-s17"
+    },
+    {
+      "en": "Two small faces appeared at the top of the stairs.",
+      "tr": "Merdivenin tepesinde iki küçük yüz belirdi.",
+      "chunks": [
+        {
+          "en": "at the top of",
+          "tr": "-in tepesinde"
+        }
+      ],
+      "words": {
+        "two": "iki",
+        "small": "küçük",
+        "faces": "yüzler",
+        "appeared": "belirdi, göründü (appear → appeared)",
+        "at": "-de; -e (look at: -e bakmak)",
+        "the": "(belirli tanımlık)",
+        "top": "tepe, en üst",
+        "of": "-in; (full of: … dolu)",
+        "stairs": "merdiven"
+      },
+      "source": "p13-s18"
+    },
+    {
+      "en": "\"Max made pancakes!\" said Finn.",
+      "tr": "\"Max krep yaptı!\" dedi Finn.",
+      "chunks": [],
+      "words": {
+        "made": "yaptı (make → made, düzensiz)",
+        "pancakes": "krepler",
+        "said": "dedi (say → said, düzensiz)"
+      },
+      "source": "p13-s19"
+    },
+    {
+      "en": "\"Max is the best!\" said Nora.",
+      "tr": "\"Max en iyisi!\" dedi Nora.",
+      "chunks": [
+        {
+          "en": "the best",
+          "tr": "en iyisi"
+        }
+      ],
+      "words": {
+        "is": "(olmak; şimdiki)",
+        "the": "(belirli tanımlık)",
+        "best": "en iyi (good → better → best)",
+        "said": "dedi (say → said, düzensiz)"
+      },
+      "source": "p13-s20"
+    },
+    {
+      "en": "Mr Bell went into the living room.",
+      "tr": "Bell Bey oturma odasına gitti.",
+      "chunks": [],
+      "words": {
+        "mr": "Bay (… Bey)",
+        "went": "gitti (go → went, düzensiz)",
+        "into": "içine",
+        "the": "(belirli tanımlık)",
+        "living": "(living room: oturma odası)",
+        "room": "oda"
+      },
+      "source": "p14-s01"
+    },
+    {
+      "en": "He came back with the old guitar.",
+      "tr": "Elinde eski gitarla geri geldi.",
+      "chunks": [
+        {
+          "en": "came back",
+          "tr": "geri geldi"
+        }
+      ],
+      "words": {
+        "he": "o (erkek)",
+        "came": "geldi (come → came, düzensiz)",
+        "back": "geri; arka",
+        "with": "ile",
+        "the": "(belirli tanımlık)",
+        "old": "eski",
+        "guitar": "gitar"
+      },
+      "source": "p14-s02"
+    },
+    {
+      "en": "\"My mother sang that song, too,\" he said.",
+      "tr": "\"Annem de bu şarkıyı söylerdi,\" dedi.",
+      "chunks": [],
+      "words": {
+        "my": "benim",
+        "mother": "anne",
+        "sang": "söyledi (sing → sang, düzensiz)",
+        "that": "o; şu",
+        "song": "şarkı",
+        "too": "de, da; fazla",
+        "he": "o (erkek)",
+        "said": "dedi (say → said, düzensiz)"
+      },
+      "source": "p14-s03"
+    },
+    {
+      "en": "\"I often played it on this guitar.",
+      "tr": "\"Ben de onu sık sık bu gitarla çalardım.",
+      "chunks": [
+        {
+          "en": "often played",
+          "tr": "sık sık çalardım"
+        }
+      ],
+      "words": {
+        "i": "ben",
+        "often": "sık sık",
+        "played": "çaldı (play → played)",
+        "it": "onu (şarkıyı)",
+        "on": "-le (çalgıyla)",
+        "this": "bu",
+        "guitar": "gitar"
+      },
+      "source": "p14-s04"
+    },
+    {
+      "en": "But my hands are too slow now.",
+      "tr": "Ama ellerim artık çok yavaş.",
+      "chunks": [
+        {
+          "en": "too slow",
+          "tr": "fazla yavaş"
+        }
+      ],
+      "words": {
+        "but": "ama",
+        "my": "benim",
+        "hands": "eller",
+        "are": "(olmak; çoğul, şimdiki)",
+        "too": "de, da; fazla",
+        "slow": "yavaş",
+        "now": "şimdi, artık"
+      },
+      "source": "p14-s05"
+    },
+    {
+      "en": "This guitar needs a new player.\"",
+      "tr": "Bu gitarın yeni birine ihtiyacı var.\"",
+      "chunks": [],
+      "words": {
+        "this": "bu",
+        "guitar": "gitar",
+        "needs": "ihtiyacı var (need + -s)",
+        "a": "bir",
+        "new": "yeni",
+        "player": "çalan, çalgıcı"
+      },
+      "source": "p14-s06"
+    },
+    {
+      "en": "He gave it to Max.",
+      "tr": "Gitarı Max'e verdi.",
+      "chunks": [],
+      "words": {
+        "he": "o (erkek)",
+        "gave": "verdi (give → gave, düzensiz)",
+        "it": "onu (gitarı)",
+        "to": "-e"
+      },
+      "source": "p14-s07"
+    },
+    {
+      "en": "Max couldn't speak.",
+      "tr": "Max'in dili tutuldu.",
+      "chunks": [],
+      "words": {
+        "couldn't": "-emedi (could not)",
+        "speak": "konuşmak"
+      },
+      "source": "p14-s08"
+    },
+    {
+      "en": "Mrs Bell laughed and gave him sixty.",
+      "tr": "Bell Hanım güldü ve ona altmışı verdi.",
+      "chunks": [],
+      "words": {
+        "mrs": "Bayan (… Hanım)",
+        "laughed": "güldü (laugh → laughed)",
+        "and": "ve",
+        "gave": "verdi (give → gave, düzensiz)",
+        "him": "onu, ona",
+        "sixty": "altmış"
+      },
+      "source": "p14-s09"
+    },
+    {
+      "en": "\"Are you free next Saturday?\" she asked.",
+      "tr": "\"Gelecek cumartesi boş musun?\" diye sordu.",
+      "chunks": [
+        {
+          "en": "next Saturday",
+          "tr": "gelecek cumartesi"
+        }
+      ],
+      "words": {
+        "are": "(olmak; çoğul, şimdiki)",
+        "you": "sen, siz",
+        "free": "boş, müsait",
+        "next": "gelecek (next Saturday)",
+        "saturday": "cumartesi",
+        "she": "o (kadın)",
+        "asked": "sordu (ask → asked)"
+      },
+      "source": "p14-s10"
+    },
+    {
+      "en": "\"And every Saturday?\"",
+      "tr": "\"Ya da her cumartesi?\"",
+      "chunks": [],
+      "words": {
+        "and": "ve",
+        "every": "her",
+        "saturday": "cumartesi"
+      },
+      "source": "p14-s11"
+    },
+    {
+      "en": "\"Every Saturday!\" said Captain.",
+      "tr": "\"Her cumartesi!\" dedi Kaptan.",
+      "chunks": [],
+      "words": {
+        "every": "her",
+        "saturday": "cumartesi",
+        "said": "dedi (say → said, düzensiz)"
+      },
+      "source": "p14-s12"
+    },
+    {
+      "en": "That night, Max played the guitar for the first time.",
+      "tr": "O gece Max gitarı ilk kez çaldı.",
+      "chunks": [
+        {
+          "en": "for the first time",
+          "tr": "ilk kez"
+        }
+      ],
+      "words": {
+        "that": "o; şu",
+        "night": "gece",
+        "played": "çaldı (play → played)",
+        "the": "(belirli tanımlık)",
+        "guitar": "gitar",
+        "for": "için; (for hours: saatlerce)",
+        "first": "ilk",
+        "time": "kez (for the first time: ilk kez)"
+      },
+      "source": "p14-s13"
+    },
+    {
+      "en": "He played badly, but he played for hours.",
+      "tr": "Kötü çaldı ama saatlerce çaldı.",
+      "chunks": [
+        {
+          "en": "for hours",
+          "tr": "saatlerce"
+        }
+      ],
+      "words": {
+        "he": "o (erkek)",
+        "played": "çaldı (play → played)",
+        "badly": "kötü (biçimde)",
+        "but": "ama",
+        "for": "için; (for hours: saatlerce)",
+        "hours": "saatler"
+      },
+      "source": "p14-s14"
+    },
+    {
+      "en": "And he had a new rule.",
+      "tr": "Artık yeni bir kuralı vardı.",
+      "chunks": [],
+      "words": {
+        "and": "ve",
+        "he": "o (erkek)",
+        "had": "vardı; yedi (have → had)",
+        "a": "bir",
+        "new": "yeni",
+        "rule": "kural"
+      },
+      "source": "p14-s15"
+    },
+    {
+      "en": "Always say nice things near the parrot.",
+      "tr": "Papağanın yanında hep güzel şeyler söyle.",
+      "chunks": [
+        {
+          "en": "Always say",
+          "tr": "hep … söyle"
+        }
+      ],
+      "words": {
+        "always": "her zaman, hep",
+        "say": "söylemek",
+        "nice": "güzel, hoş",
+        "things": "şeyler",
+        "near": "yakınında, yanında",
+        "the": "(belirli tanımlık)",
+        "parrot": "papağan"
+      },
+      "source": "p14-s16"
+    }
+  ],
+  "phrases": [
+    {
+      "en": "going to",
+      "tr": "-ecek, -acak (plan)",
+      "words": {
+        "going": "gidiyor",
+        "to": "-e"
+      },
+      "source": "dil odağı",
+      "note": "be going to + fiil: plan ya da yakın gelecek. We're going to cook. = Yemek yapacağız."
+    },
+    {
+      "en": "must",
+      "tr": "-meli, zorunda",
+      "words": {
+        "must": "-meli"
+      },
+      "source": "p03-s03"
+    },
+    {
+      "en": "mustn't",
+      "tr": "-memeli (yasak)",
+      "words": {
+        "mustn't": "-memeli"
+      },
+      "source": "p03-s04",
+      "note": "mustn't = yasak; don't have to = zorunda değil. İkisi aynı şey değildir."
+    },
+    {
+      "en": "don't have to",
+      "tr": "zorunda değil",
+      "words": {
+        "don't": "-me",
+        "have": "sahip olmak",
+        "to": "-e"
+      },
+      "source": "p12-s15"
+    },
+    {
+      "en": "look after",
+      "tr": "-e bakmak, ilgilenmek",
+      "words": {
+        "look": "bakmak",
+        "after": "sonra"
+      },
+      "source": "p01-s10"
+    }
+  ]
+}

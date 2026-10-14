@@ -36,6 +36,19 @@ def test_coverage_counts_glossary_and_excludes_proper_nouns():
     assert cov.pct == 75.0 and cov.pct_with_gloss == 100.0
 
 
+def test_lemma_irregular_past_and_comparatives():
+    """A2 past simple ve karşılaştırma biçimleri başsözcüğe iner (H-069)."""
+    cov = coverage(["Max sang. He spoke and held it. Finn was faster, happier and redder. It was the biggest."], "A2",
+                   proper={"max", "finn"})
+    assert cov.in_list == cov.tokens, cov.off_list
+
+
+def test_glossary_note_does_not_push_listed_word_off_list():
+    """Sözlükteki öğretim notu (going to, sang) listedeki sözcüğü 'sözlükle' sayılana düşürmez."""
+    cov = coverage(["We're going to cook. Max sang."], "A2", gloss=["going to", "sang"], proper={"max"})
+    assert cov.glossed == 0 and cov.pct == 100.0
+
+
 def test_sentence_length_rule_a1():
     cov = coverage(["One two three four five six seven eight nine."], "A1")
     assert cov.long_sentences and cov.max_sentence_words == 9
