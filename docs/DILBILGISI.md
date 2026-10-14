@@ -85,6 +85,30 @@ Bu iş, ürünün ilk ayağının ("hazır ders videoları, sabit yapay zekâ ö
 - **Söyleniş sözlüğü:** Alania İngilizce kelimeleri Türkçe okur. Türkçe anlatımda geçen İngilizce örnekler (ör. "*goes* kelimesi") ya ayrı ses parçası olarak Sarah'ya okutulur ya da söyleniş sözlüğüne yazılır. Pilotta ikisi karşılaştırılır.
 - **Maliyet (tahmin):** Türkçe ~1.500 karakter/konu × 70 ≈ 105 bin karakter; ilk ay ücretsiz, sonra ≈ 80 TL. İngilizce ~300 karakter/konu × 70 ≈ 21 bin karakter ElevenLabs.
 
+### 6.1 Araç: `tts_tr.py` (H-075)
+Girdi, kimlikli Türkçe parça listesidir:
+- JSON: `[{"id","text","instructions"?,"pronunciations"?}]` ya da `{"instructions"?, "segments": [...]}`;
+- Markdown: her parça `## <kimlik>` başlığı ve altındaki metin.
+
+```bash
+P=tools/content-pipeline/.venv/bin/python
+# Kuru çalışma (varsayılan): karakter ve tahmini TL; API çağrılmaz.
+$P tools/content-pipeline/tts_tr.py <parcalar.json> --out-dir <klasör>
+# Gerçek üretim: aylık tavan şart (HIVELZON_TR_TTS_MONTHLY_CHAR_CAP ya da --monthly-char-cap).
+$P tools/content-pipeline/tts_tr.py <parcalar.json> --out-dir <klasör> --execute --monthly-char-cap 50000
+```
+
+- **Çıktı:** `<kimlik>.mp3` (-16 LUFS, 44,1 kHz, 128 kb/sn; kitaplarla aynı) ve `<kimlik>.align.json`. Hizalama ElevenLabs `alignment` biçimindedir; `align.py` (`Alignment.load`, `sentence_timings`) değişmeden okur. Ek olarak kelime listesi (`words`: kelime, zaman, `exact|fuzzy|weak|missing`, Duyu'nun duyduğu) ve `quality` bulunur.
+- **Eşleme:** Duyu kelimeleri özgün metne eşlenir; zaman Duyu'dan, metin her zaman özgün metinden gelir. Noktalama, büyük/küçük harf, Türkçe harf farkları ve bölünmüş ya da birleşmiş kelimeler (ör. "-s ekleriz" → "sekleriz") tolere edilir. Duyu'nun duymadığı kelimeye komşuları arasında zaman verilir.
+- **Uyarı:** İyi eşleşen kelime oranı %85'in altındaysa, art arda 2 kelime zayıf ya da eksikse veya Duyu metinde olmayan çok kelime duyduysa uyarı verilir ve `quality.ok = false` yazılır. `--strict` ile çıkış kodu 3 olur. Uyarılı parça dinlenmeden kullanılmaz.
+- **Önbellek ve idempotentlik:** Ödenmiş ham WAV ve Duyu sonucu `_raw/` altında tutulur. Anahtar; metin, model, ses, `instructions` ve söyleniş sözlüğünün sha256'sıdır. Güncel çıktı varsa hiçbir çağrı yapılmaz.
+- **Kayıt:** Her Alania ve Duyu çağrısı `--prompts` dosyasına yazılır (varsayılan: parça dosyasının yanındaki `PROMPTS.md`). Satırda tarih, parça, model, ses, sürüm, karakter, ses süresi, istek kimliği ve metin sha256'sı bulunur. Aylık defter: `kitaplar/_maliyet/patientdesk-karakter.json` (karakter, çağrı, Duyu saniyesi).
+- **Anahtar:** `PD_API_KEY` ortamdan ya da `~/.config/hivelzon/patientdesk.env`'den, yalnız `--execute` ile okunur. Ekrana ve dosyaya yazılmaz. 429 yanıtında `Retry-After` kadar beklenir (en fazla 5 deneme).
+- **Duman testi (2026-10-14, ücretsiz ay):** Hi'nin "-s takısı" anlatımından 2 cümle üretildi: 154 karakter, 4,32 + 7,20 sn, -16,5 / -16,6 LUFS.
+  - Türkçe cümlede 10 kelimenin 10'u eşleşti.
+  - İngilizce örnekli cümlede (`he, she … She plays`) Alania İngilizce kelimeleri Türkçe okudu; Duyu bunları "h", "ş", "fi" duydu. Araç bu parçayı uyarıyla işaretledi (%81).
+  - Sonuç: İngilizce örnekler ayrı Sarah parçası olur ya da söyleniş sözlüğüne yazılır (pilotta karşılaştırılır). "-s" de "şakısını" diye duyuldu; söyleniş sözlüğü adayıdır (ör. `-s` → "se").
+
 ## 7. Uygulama
 - **Ekranlar:**
   - Hikâye → Dilbilgisi: seviye rafları, "Senin seviyen", "Hikâyende geçenler", tamamlananlar.

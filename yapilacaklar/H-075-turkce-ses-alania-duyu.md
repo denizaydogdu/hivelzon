@@ -28,3 +28,14 @@ Kendi dalında; `git revert`.
 
 ## Notlar
 2026-10-14: Kullanıcı isteğiyle açıldı: "Türk öğrenciler bazen konuları anlamıyor; A1'den C2'ye Türkçe anlatacağımız dilbilgisi konuları olsun." Ek istek: "Her hikâyeden önce dilbilgisi konusunu anlatayım mı diye sorulsun; ayrıca ayrı bir dilbilgisi alanı olsun." Kararlar: anlatıcı Hi (Türkçe Alania, İngilizce örnekler Sarah); biçim canlı ders kartları; yer Hikâye'de üçüncü bölüm ve bağlamdan; teklif bölüm panelinde ikincil düğme (H-050 korunur); önce müfredat, pilot 3 A1 konusu, sonra dalgalar. Ayrıntı: `docs/DILBILGISI.md`.
+
+2026-10-14 (uygulama, `h-075-turkce-ses` dalı):
+- Kod: `tools/content-pipeline/hvpipeline/tts_tr.py` ve CLI `tools/content-pipeline/tts_tr.py`. Kullanım: `docs/DILBILGISI.md` §6.1.
+- Testler: `tests/test_tts_tr.py`, 15 test, sahte istemciyle (ağ yok). Kapsam: kuru çalışma, tavan reddi, idempotentlik ve önbellek, Retry-After, yanlış duyma ve noktalama dahil eşleme, `align.py` uyumu, -16 LUFS. Bütün paket: 175 geçti, 9 atlandı (git dışı medya).
+- Duman testi (gerçek API, ücretsiz ay, kullanıcı onaylı): Hi'nin "-s takısı" anlatımından 2 cümle. Çıktı repo dışında: `/Users/felece/.claude/jobs/f31ecd68/tmp/h075/`.
+  - 154 karakter; 4,32 sn ve 7,20 sn; -16,49 ve -16,6 LUFS; Alania sürümü `alania-v2.1`.
+  - Türkçe cümle: 10/10 kelime eşleşti.
+  - İngilizce örnekli cümle: `he/she/She plays` Türkçe okundu ve "h/ş/fi" duyuldu. Araç uyardı (%81, `quality.ok=false`).
+  - İkinci çalışmada hiçbir çağrı yapılmadı.
+  - Defter: `kitaplar/_maliyet/patientdesk-karakter.json`.
+- Açık: İngilizce örnekler için Sarah parçası mı, söyleniş sözlüğü mü (pilot). "-s" söylenişi de sözlük adayı. Sesler henüz kulakla dinlenmedi. Kabul kriterlerinin doğrulanması ve dosyanın taşınması kullanıcıya bırakıldı.
