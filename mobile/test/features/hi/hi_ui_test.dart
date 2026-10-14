@@ -1,3 +1,5 @@
+import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -8,6 +10,7 @@ import 'package:hivelzon/features/hi/presentation/hi_bubble.dart';
 import 'package:hivelzon/features/player/data/drift_progress_repository.dart';
 import 'package:hivelzon/features/player/presentation/widgets/hi_avatar.dart';
 import 'package:hivelzon/l10n/tr_strings.dart';
+import 'package:hivelzon/shared/widgets/placeholder_view.dart';
 import 'package:hivelzon/features/story/data/season_intro_repository.dart';
 import 'package:hivelzon/shared/content/content_providers.dart';
 import 'package:hivelzon/shared/meaning/error_taxonomy.dart';
@@ -43,8 +46,13 @@ void main() {
     }
   }
 
-  Future<void> pumpApp(WidgetTester tester, {double height = 2556}) async {
-    tester.view.physicalSize = Size(1179, height);
+  Future<void> pumpApp(
+    WidgetTester tester, {
+    double height = 2556,
+    double width = 1179,
+    bool clips = false,
+  }) async {
+    tester.view.physicalSize = Size(width, height);
     tester.view.devicePixelRatio = 3;
     addTearDown(tester.view.reset);
     await tester.pumpWidget(
@@ -54,7 +62,7 @@ void main() {
           appDatabaseProvider.overrideWithValue(db),
           legacyImportProvider.overrideWithValue(Future<void>.value()),
           contentSourceProvider.overrideWithValue(
-            FakeContentSource(realSubtitles: true),
+            FakeContentSource(realSubtitles: true)..withClips = clips,
           ),
           seasonIntroRepositoryProvider.overrideWithValue(
             InMemorySeasonIntroRepository(),
@@ -103,35 +111,205 @@ void main() {
     }
   });
 
-  testWidgets(
-    'balon kart içeriğini örtmez: Ana Sayfa, Hikâye, Profil (H-055)',
-    (tester) async {
-      await pumpApp(tester);
-      final bubble = find.byKey(const ValueKey('hi-bubble'));
-      // Ana Sayfa ve Profil: kaydırılan alan balonun üstünde biter.
-      for (final route in [AppRoutes.home, AppRoutes.profile]) {
-        go(route);
+  group('balon katmanı: içerik altından kayar (H-064)', () {
+    final bubble = find.byKey(const ValueKey('hi-bubble'));
+
+    /// Sekme kökünün kaydırılan listesi (iç içe yatay raflar değil).
+    Finder rootList(String? key) => key == null
+        ? find.byType(Scrollable).hitTestable().first
+        : find
+              .descendant(
+                of: find.byKey(ValueKey(key)),
+                matching: find.byType(Scrollable),
+              )
+              .first;
+
+    /// Listede görünen yazı ve ikonların ekrandaki dikdörtgenleri.
+    List<Rect> contentRects(WidgetTester tester, Finder list) => [
+      for (final e
+          in find
+              .descendant(
+                of: list,
+                matching: find.byWidgetPredicate(
+                  (w) => w is RichText || w is Icon,
+                ),
+              )
+              .evaluate())
+        if ((e.renderObject as RenderBox?)?.hasSize ?? false)
+          tester.getRect(find.byWidget(e.widget).first),
+    ];
+
+    // Sekme kökleri: Ana Sayfa, Profil, Konuş (yer tutucu), Hikâye ·
+    // Kitaplık ve Dilbilgisi.
+    final roots = <(String, String?, String?)>[
+      (AppRoutes.home, null, null),
+      (AppRoutes.profile, 'profile-list', null),
+      (AppRoutes.talk, null, null),
+      (AppRoutes.story, 'library-view', 'Kitaplık'),
+      (AppRoutes.story, 'grammar-view', 'Dilbilgisi'),
+    ];
+
+    Future<Finder> open(
+      WidgetTester tester,
+      String route,
+      String? key,
+      String? section,
+    ) async {
+      // Hikâye sekmesinde jenerik izlenmiş sayılır (harita açılır).
+      await container.read(seasonIntroRepositoryProvider).markSeen(1);
+      go(route);
+      await settle(tester, 30);
+      if (section != null) {
+        await tester.tap(find.text(section));
         await settle(tester, 30);
-        final top = tester.getTopLeft(bubble).dy;
-        final list = find.byType(Scrollable).hitTestable().first;
+      }
+      return rootList(key);
+    }
+
+    testWidgets('sayfa alt şerit bırakmaz; uzun liste balonun altından '
+        'kayar', (tester) async {
+      // Kısa ekran: listeler sığmaz, kaydırılır.
+      await pumpApp(tester, height: 1704);
+      final shell = tester.getRect(find.byType(NavigationBar));
+      for (final (route, key, section) in roots) {
+        final list = await open(tester, route, key, section);
+        final b = tester.getRect(bubble);
+        // Liste menünün üstüne kadar uzanır (eskiden balon kadar kısaydı).
         expect(
           tester.getBottomLeft(list).dy,
-          lessThanOrEqualTo(top),
-          reason: route,
+          moreOrLessEquals(shell.top, epsilon: 0.5),
+          reason: '$route $key',
         );
+        expect(tester.getBottomLeft(list).dy, greaterThan(b.bottom));
+        final pos = tester.state<ScrollableState>(list).position;
+        // Konuş yer tutucusu kısa: balonun satırına içerik düşmeyebilir.
+        if (pos.maxScrollExtent <= 0 || route == AppRoutes.talk) continue;
+        // Liste sonunda değilken balonun satırında içerik görünür.
+        pos.jumpTo(pos.maxScrollExtent / 2);
+        await settle(tester, 4);
+        final inRow = contentRects(
+          tester,
+          list,
+        ).where((r) => r.bottom > b.top && r.top < b.bottom);
+        expect(inRow, isNotEmpty, reason: '$route $key: balon satırı boş');
+        pos.jumpTo(0);
+        await settle(tester, 4);
       }
-      // Hikâye: odak kartı balonun üstünde (jenerik izlenmiş sayılır).
-      await container.read(seasonIntroRepositoryProvider).markSeen(1);
-      go(AppRoutes.story);
+    });
+
+    testWidgets('liste sonunda son öğe balonun tamamen üstünde', (
+      tester,
+    ) async {
+      await pumpApp(tester, height: 1704);
+      for (final (route, key, section) in roots) {
+        final list = await open(tester, route, key, section);
+        final pos = tester.state<ScrollableState>(list).position;
+        pos.jumpTo(pos.maxScrollExtent);
+        await settle(tester, 6);
+        final b = tester.getRect(bubble);
+        final rects = contentRects(tester, list);
+        expect(rects, isNotEmpty, reason: '$route $key');
+        final last = rects.map((r) => r.bottom).reduce(math.max);
+        expect(last, lessThanOrEqualTo(b.top), reason: '$route $key');
+        pos.jumpTo(0);
+        await settle(tester, 4);
+      }
+    });
+
+    testWidgets('balon yokken fazladan son dolgu yok', (tester) async {
+      Future<EdgeInsets> padding({bool? visible}) async {
+        const view = PlaceholderView(
+          title: 'Konuş',
+          icon: Icons.chat_bubble,
+          heading: 'Yakında',
+          message: 'Gövde',
+        );
+        await tester.pumpWidget(
+          MaterialApp(
+            home: visible == null
+                ? view
+                : HiBubbleInset(visible: visible, child: view),
+          ),
+        );
+        return tester.widget<ListView>(find.byType(ListView)).padding!
+            as EdgeInsets;
+      }
+
+      final none = await padding();
+      final hidden = await padding(visible: false);
+      final shown = await padding(visible: true);
+      expect(hidden, none);
+      expect(shown.bottom - hidden.bottom, HiBubble.clearance);
+      expect(shown.top, hidden.top);
+      expect(shown.right, hidden.right);
+      await tester.pumpWidget(const SizedBox());
+      await tester.pump(const Duration(seconds: 5));
+    });
+
+    for (final (w, h, scale, wide) in [
+      (1179.0, 2556.0, 1.0, true),
+      (960.0, 1704.0, 1.0, false),
+      (960.0, 1704.0, 1.3, false),
+      (1179.0, 2556.0, 1.3, false),
+      (1179.0, 1704.0, 1.3, false),
+    ]) {
+      testWidgets('Hikâye: odak kartının dokunma alanını balon örtmez '
+          '(${w ~/ 3}×${h ~/ 3}, $scale×)', (tester) async {
+        tester.platformDispatcher.textScaleFactorTestValue = scale;
+        addTearDown(tester.platformDispatcher.clearTextScaleFactorTestValue);
+        await pumpApp(tester, height: h, width: w);
+        await container.read(seasonIntroRepositoryProvider).markSeen(1);
+        go(AppRoutes.story);
+        await settle(tester, 40);
+        // Kısa ekranda sayfa kayar; odak kartı sayfanın sonundadır.
+        final scroll = find.byKey(const ValueKey('story-scroll'));
+        if (scroll.evaluate().isNotEmpty) {
+          final pos = tester
+              .state<ScrollableState>(
+                find
+                    .descendant(of: scroll, matching: find.byType(Scrollable))
+                    .first,
+              )
+              .position;
+          pos.jumpTo(pos.maxScrollExtent);
+          await settle(tester, 6);
+        }
+        final card = find.byKey(const ValueKey('story-focus-card'));
+        expect(card, findsOneWidget);
+        final b = tester.getRect(bubble);
+        final c = tester.getRect(card);
+        expect(c.overlaps(b), isFalse, reason: '$c / $b');
+        // Tam genişlikte şerit yok: kart ya balonun solunda biter (yer
+        // varsa) ya da dar ekranda / büyük yazıda balonun üstünde.
+        if (wide) {
+          expect(c.right, lessThanOrEqualTo(b.left));
+        } else {
+          expect(c.bottom, lessThanOrEqualTo(b.top));
+        }
+        final chevron = find.descendant(
+          of: card,
+          matching: find.byIcon(Icons.chevron_right_rounded),
+        );
+        expect(chevron.hitTestable(), findsOneWidget);
+        expect(tester.takeException(), isNull);
+      });
+    }
+
+    testWidgets('Keşfet: alt denetimler balonun altında kalmaz (H-055)', (
+      tester,
+    ) async {
+      await pumpApp(tester, clips: true);
+      go(AppRoutes.discover);
       await settle(tester, 40);
-      final card = find.byKey(const ValueKey('story-focus-card'));
-      expect(card, findsOneWidget);
-      expect(
-        tester.getBottomLeft(card).dy,
-        lessThanOrEqualTo(tester.getTopLeft(bubble).dy),
-      );
-    },
-  );
+      final save = find.byKey(const ValueKey('clip-save'));
+      expect(save, findsWidgets);
+      final b = tester.getRect(bubble);
+      expect(tester.getRect(save.first).bottom, lessThanOrEqualTo(b.top));
+      // Oynatıcı zamanlayıcıları kapansın.
+      await tester.pumpWidget(const SizedBox());
+      await tester.pump(const Duration(seconds: 31));
+    });
+  });
 
   testWidgets('balon sekmelerde görünür; Defter ve tekrarda gizlenir', (
     tester,

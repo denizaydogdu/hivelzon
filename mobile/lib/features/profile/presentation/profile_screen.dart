@@ -17,6 +17,7 @@ import '../../player/presentation/widgets/hi_avatar.dart';
 import '../../speak/speech_settings_section.dart';
 import '../application/profile_providers.dart';
 import '../data/user_profile_store.dart';
+import '../../hi/presentation/hi_bubble.dart';
 
 /// Profil (H-036, H-053; tasarım H-059): illüstrasyonlu dalga başlık, ad ve
 /// tek satır durum, üç istatistik ve gruplanmış ayarlar. Açıklamalar satır
@@ -56,12 +57,14 @@ class ProfileScreen extends ConsumerWidget {
     final topInset = MediaQuery.paddingOf(context).top;
     return Scaffold(
       // Üstte güvenli alan yok: illüstrasyon durum çubuğunun altına uzanır.
-      // Alt güvenli alan Hi balonunun payını taşır (ShellScaffold, H-055).
+      // Hi balonunun payı yalnızca listenin sonunda (HiBubbleInset, H-064).
       body: SafeArea(
         top: false,
         child: ListView(
           key: const ValueKey('profile-list'),
-          padding: const EdgeInsets.only(bottom: AppSpace.s32),
+          padding: EdgeInsets.only(
+            bottom: AppSpace.s32 + HiBubbleInset.of(context),
+          ),
           children: [
             ShapedHeader(image: headerImage, height: 168 + topInset),
             _Identity(

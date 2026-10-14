@@ -17,6 +17,7 @@ import '../../profile/application/profile_providers.dart';
 import '../../story/application/story_providers.dart';
 import '../../story/domain/season_map.dart';
 import '../application/home_providers.dart';
+import '../../hi/presentation/hi_bubble.dart';
 
 /// Ana Sayfa (H-035, H-036, H-053; tasarım H-060, taslak S07).
 ///
@@ -42,12 +43,13 @@ class HomeScreen extends ConsumerWidget {
     return Scaffold(
       body: SafeArea(
         child: ListView(
-          // Hi balonunun payı alt güvenli alanda (ShellScaffold, H-055).
-          padding: const EdgeInsets.fromLTRB(
+          // Hi balonu içeriğin üstünde yüzer; pay yalnızca listenin sonunda
+          // (HiBubbleInset, H-064): son kart balonun üstüne kadar kayar.
+          padding: EdgeInsets.fromLTRB(
             AppSpace.page,
             AppSpace.s16,
             AppSpace.page,
-            AppSpace.s32,
+            AppSpace.s32 + HiBubbleInset.of(context),
           ),
           children: [
             StaggeredList(
