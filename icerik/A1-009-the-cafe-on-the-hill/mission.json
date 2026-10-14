@@ -1,0 +1,42 @@
+{
+  "contentId": "A1-009",
+  "status": "DRAFT",
+  "mission": {
+    "tr": "Kafede kibarca sipariş ver ve kayıt hakkında 2 bilgi topla."
+  },
+  "targetPhrases": [
+    "Can I have a tea, please?",
+    "a / an",
+    "some",
+    "How much is it?",
+    "Here you are."
+  ],
+  "successCriteria": {
+    "rule": "all",
+    "comprehension": [
+      "t-gorev"
+    ],
+    "targetPhrase": [
+      "k1",
+      "k2"
+    ],
+    "activeTask": [
+      "t-kanit"
+    ],
+    "note": "Bölüm kapısı (K-29): üç ölçütün hepsi; her ölçütte listedeki herhangi bir düğüm yeter. Deneme ve ipucu sınırsız; zaman kilidi yok."
+  },
+  "hintPolicy": {
+    "levels": [
+      "keyword",
+      "pattern",
+      "explanation"
+    ],
+    "unlimited": true,
+    "wrongChoice": "Nazik tepki + Hi balonu, sonra aynı karar anına dönülür (K-28); hata hikâyeyi kilitlemez.",
+    "decisions": [
+      "k1",
+      "k2"
+    ]
+  },
+  "source": "story.en.md görev kartı + kurgu.json gate (H-085). Bu dosyayı henüz hiçbir araç okumuyor; paket görev cümlesini story.en.md başlığından alır."
+}

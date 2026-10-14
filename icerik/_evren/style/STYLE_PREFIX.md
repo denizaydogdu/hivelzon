@@ -22,6 +22,9 @@ Dosyalar yerelde ve git dışında; Higgsfield'e yüklendi.
 | Maya | refs/R4-maya-gpt.png | 6db4fa91-a3ff-4587-9b02-43a480ecb45a | (R4-maya-gpt.json) |
 | Jordan (H-085) | refs/R5-jordan-gpt.png | — (job kimliği kullanılır) | 185195f6-f42d-4cbe-a013-7151a26d759a |
 | Ses kaydedici (H-085) | refs/R6-kaydedici-gpt.png | — (job kimliği kullanılır) | 72e65920-4ec7-4946-ae36-502810c61948 |
+| Rosa (H-085, B9) | refs/R9-rosa-gpt.png | — (job kimliği kullanılır) | a30f6cb8-b8bd-42f2-9bcb-573477f1eb65 |
+| Mr Grant (H-085, B10) | refs/R10-grant-gpt.png | — (job kimliği kullanılır) | effcd1d0-a1a7-4490-b464-571ed47edf5d |
+| Tom (H-085, B11–B12) | refs/R11-tom-gpt.png | — (job kimliği kullanılır) | d253029e-727a-4f84-9042-4afc2e552a08 |
 
 ## Format
 

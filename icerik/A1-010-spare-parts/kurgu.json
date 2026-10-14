@@ -1,0 +1,226 @@
+{
+  "kurguVersion": 2,
+  "contentId": "A1-010",
+  "source": "H-085: story.en.md (H-032 onaylı diyalog) düğümlere bölündü; görseller B10-01…B10-13. Soğuk açılıştaki Rosa repliği B9'un sesi (b9_47_rosa) ve son karesiyle (B9-12) yeniden kullanılır. Fiyat etiketleri ve duyuru kurguda (signs); görselde rakam yok.",
+  "start": "title",
+  "gate": {
+    "comprehension": ["t-gorev"],
+    "targetPhrase": ["k1", "k2"],
+    "activeTask": ["t-kanit", "t-kanit2"]
+  },
+  "nodes": [
+    {
+      "id": "title", "type": "title",
+      "next": "recap"
+    },
+    {
+      "id": "recap", "type": "recap",
+      "shots": [{"image": "../A1-009-the-cafe-on-the-hill/images/B9-12-pecete-cizim.png", "audio": [{"path": "../A1-009-the-cafe-on-the-hill/audio/b9_47_rosa"}], "move": [1.0, 1.08, 0.5, 0.5, 0.5, 0.5]}],
+      "next": "s01"
+    },
+    {
+      "id": "s01", "type": "segment", "scene": "Sahne 1: Grant's Spare Parts", "checkpoint": true,
+      "shots": [
+        {"image": "images/B10-01-dukkan-dis.png", "len": 2.6, "move": [1.0, 1.08, 0.5, 0.5, 0.5, 0.45]},
+        {"image": "images/B10-02-grant-tezgah.png", "audio": ["b10_01_alex", "b10_02_grant", "b10_03_alex", "b10_04_grant", "b10_05_sam"], "move": [1.0, 1.1, 0.5, 0.5, 0.5, 0.42]},
+        {"image": "images/B10-03-piller.png", "audio": ["b10_06_alex", "b10_07_grant", "b10_08_alex"], "move": [1.04, 1.12, 0.5, 0.5, 0.5, 0.45]}
+      ],
+      "next": "h-01"
+    },
+    {
+      "id": "h-01", "type": "card", "kind": "hi", "advance": "tap",
+      "background": "images/B10-03-piller.png",
+      "lines": [{"speaker": "HI", "text": "İki pil, yani çoğul: \"How much are they?\" Tek şey için \"How much is it?\" Türkçede ikisi de \"Ne kadar?\", İngilizcede is ve are ayrı.", "lang": "tr"}],
+      "speechTr": "İki pil, yani çoğul: {How much are they?} Tek şey için {How much is it?} Türkçede ikisi de ne kadar, İngilizcede {is} ve {are} ayrı.",
+      "next": "s02"
+    },
+    {
+      "id": "s02", "type": "segment",
+      "shots": [{"image": "images/B10-04-k1-pov.png", "audio": ["b10_09_grant"], "aoff": 0.6, "move": [1.0, 1.08, 0.5, 0.5, 0.5, 0.5]}],
+      "next": "k1"
+    },
+    {
+      "id": "k1", "type": "decision", "skill": "listening", "cefr": "A1",
+      "prompt": {"tr": "Hangi sayıyı duydun?"},
+      "cue": {"speaker": "MR GRANT", "text": "They're thirteen."},
+      "pov": "POV: tezgâh; Mr Grant'in yüzü yakın plan. Müzik kısılır.",
+      "background": "images/B10-04-k1-pov.png",
+      "targetPhrase": "It's thirteen.",
+      "options": [
+        {"id": "a", "text": "thirteen (13)", "correct": true, "next": "k1-ok"},
+        {"id": "b", "text": "thirty (30)", "correct": false, "next": "r-k1-b"}
+      ],
+      "hints": [
+        {"level": 1, "kind": "keyword", "tr": "Kelimenin sonunu dinle: -teen mi, -ty mi?"},
+        {"level": 2, "kind": "pattern", "tr": "thir-TEEN: vurgu sonda. THIR-ty: vurgu başta."},
+        {"level": 3, "kind": "explanation", "tr": "-teen sayılarında vurgu sonda (thir-TEEN), -ty sayılarında başta (THIR-ty). Mr Grant'in vurgusu sondaydı."}
+      ]
+    },
+    {
+      "id": "r-k1-b", "type": "reaction",
+      "shots": [{"image": "images/B10-04-k1-pov.png", "audio": ["b10_10_grant"], "move": [1.06, 1.0, 0.5, 0.5, 0.5, 0.5]}],
+      "bubble": {"speaker": "HI", "lang": "tr", "text": "Böyle de söyleyebilirsin: thir-TEEN. -teen sayılarında vurgu sonda, -ty sayılarında başta (THIR-ty). Bir daha dinle!", "speechTr": "Böyle de söyleyebilirsin: {thirteen.} {teen} sayılarında vurgu sonda, {ty} sayılarında başta: {thirty.} Bir daha dinle!"},
+      "next": "k1"
+    },
+    {
+      "id": "k1-ok", "type": "segment",
+      "shots": [{"image": "images/B10-03-piller.png", "audio": ["b10_11_alex", "b10_12_grant"], "move": [1.0, 1.08, 0.5, 0.5, 0.5, 0.5],
+                 "signs": [{"style": "note", "lines": [{"text": "13", "size": 88}], "start": 0.3, "end": 2.6}]}],
+      "next": "s03"
+    },
+    {
+      "id": "s03", "type": "segment", "scene": "Sahne 2: Hangi anten?", "checkpoint": true,
+      "shots": [{"image": "images/B10-05-iki-anten.png", "audio": ["b10_13_grant", "b10_14_grant", "b10_15_sam"], "move": [1.0, 1.08, 0.5, 0.5, 0.5, 0.45]}],
+      "next": "k2"
+    },
+    {
+      "id": "k2", "type": "decision", "skill": "spoken_interaction", "cefr": "A1",
+      "prompt": {"tr": "Sam uzun anteni istiyor. Hangisini alırsın?"},
+      "cue": {"speaker": "SAM", "text": "We need a long one. Not a small one."},
+      "pov": "POV: yakında küçük anten, rafta uzun anten.",
+      "background": "images/B10-05-iki-anten.png",
+      "targetPhrase": "this / that",
+      "options": [
+        {"id": "a", "text": "That one, please.", "correct": true, "audio": "b10_16_alex", "next": "k2-ok"},
+        {"id": "b", "text": "This one, please.", "correct": false, "audio": "b10_17_alex", "next": "r-k2-b"}
+      ],
+      "hints": [
+        {"level": 1, "kind": "keyword", "tr": "Uzun anten nerede: yakında mı, uzakta mı?"},
+        {"level": 2, "kind": "pattern", "tr": "this = yakındaki · that = uzaktaki"},
+        {"level": 3, "kind": "explanation", "tr": "Sam'in istediği uzun anten rafta, uzakta. Uzaktaki şey için that: \"That one, please.\""}
+      ]
+    },
+    {
+      "id": "r-k2-b", "type": "reaction",
+      "shots": [{"image": "images/B10-05-iki-anten.png", "audio": ["b10_17_alex", "b10_18_sam"], "move": [1.06, 1.0, 0.5, 0.5, 0.5, 0.5]}],
+      "bubble": {"speaker": "HI", "lang": "tr", "text": "this = yakındaki, that = uzaktaki. Sam'in istediği uzun anten rafta, uzakta.", "speechTr": "{this} yakındaki, {that} uzaktaki. Sam'in istediği uzun anten rafta, uzakta."},
+      "next": "k2"
+    },
+    {
+      "id": "k2-ok", "type": "segment",
+      "shots": [
+        {"image": "images/B10-05-iki-anten.png", "audio": ["b10_16_alex", "b10_19_alex", "b10_20_grant", "b10_21_alex"], "aoff": 0.4, "move": [1.06, 1.12, 0.5, 0.6, 0.45, 0.4]},
+        {"image": "images/B10-06-para-ustu.png", "audio": ["b10_22_grant", "b10_23_alex"], "move": [1.0, 1.08, 0.5, 0.5, 0.5, 0.45]}
+      ],
+      "next": "t-gorev"
+    },
+    {
+      "id": "t-gorev", "type": "task", "kind": "choice", "role": "comprehension", "skill": "listening", "cefr": "A1",
+      "scene": "Görev: Doğru parça, doğru fiyat",
+      "prompt": {"tr": "Mr Grant'in söylediği fiyatları seç. Bütçen 40."},
+      "background": "images/B10-07-raf-etiket.png",
+      "items": [
+        {"id": "i1", "stem": "How much are the batteries?", "options": [
+          {"id": "a", "text": "13", "correct": true},
+          {"id": "b", "text": "30", "correct": false}]},
+        {"id": "i2", "stem": "How much is the long antenna?", "options": [
+          {"id": "a", "text": "20", "correct": true},
+          {"id": "b", "text": "12", "correct": false}]},
+        {"id": "i3", "stem": "13 + 20 = 33. Alex gives 40. The change?", "stemTr": "13 + 20 = 33. Alex 40 veriyor. Para üstü?", "options": [
+          {"id": "a", "text": "7", "correct": true},
+          {"id": "b", "text": "17", "correct": false}]}
+      ],
+      "feedback": {"wrong": {"speaker": "HI", "lang": "tr", "text": "Vurguyu hatırla: thir-TEEN on üç, THIR-ty otuz. Bir daha dene.", "speechTr": "Vurguyu hatırla: {thirteen} on üç, {thirty} otuz. Bir daha dene.", "audio": {"id": "tr_t-gorev", "speaker": "HI"}}},
+      "result": [{"text": "Forty. Thank you. Here you are. Seven.", "lang": "en", "style": "highlight"}],
+      "next": "t-kanit"
+    },
+    {
+      "id": "t-kanit", "type": "task", "kind": "match", "role": "evidence", "skill": "listening", "cefr": "A1",
+      "prompt": {"tr": "Başka bir dükkân: satıcıyı dinle, doğru etiketi eşleştir."},
+      "context": "Yeni bağlam: giyim dükkânı, fiyat dinleme (11–99)",
+      "audio": "b10_24_seller",
+      "background": "images/B10-08-kanit-dukkan.png",
+      "items": [{"id": "i1", "pairs": [
+        {"left": "the hat", "right": "15"},
+        {"left": "the bag", "right": "50"}
+      ]}],
+      "feedback": {"wrong": {"speaker": "HI", "lang": "tr", "text": "fifteen on beş, fifty elli. Vurgu nerede? Bir daha dinle.", "speechTr": "{fifteen} on beş, {fifty} elli. Vurgu nerede? Bir daha dinle.", "audio": {"id": "tr_t-kanit", "speaker": "HI"}}},
+      "next": "t-kanit2"
+    },
+    {
+      "id": "t-kanit2", "type": "task", "kind": "match", "role": "evidence", "skill": "listening", "cefr": "A1",
+      "prompt": {"tr": "Bir daha dinle ve eşleştir."},
+      "context": "Yeni bağlam: giyim dükkânı, fiyat dinleme (11–99)",
+      "audio": "b10_25_seller",
+      "background": "images/B10-08-kanit-dukkan.png",
+      "items": [{"id": "i1", "pairs": [
+        {"left": "the shoes", "right": "60"},
+        {"left": "the cap", "right": "16"}
+      ]}],
+      "feedback": {"wrong": {"speaker": "HI", "lang": "tr", "text": "sixteen on altı, sixty altmış. Sonu dinle: teen mi, ty mi?", "speechTr": "{sixteen} on altı, {sixty} altmış. Kelimenin sonunu dikkatle dinle.", "audio": {"id": "tr_t-kanit2", "speaker": "HI"}}},
+      "next": "s04"
+    },
+    {
+      "id": "s04", "type": "segment", "scene": "Sahne 3: Tepede", "checkpoint": true,
+      "shots": [
+        {"image": "images/B10-09-tepe-anten.png", "audio": ["b10_26_sam", "b10_27_maya", "b10_28_sam"], "move": [1.0, 1.08, 0.5, 0.5, 0.55, 0.45]},
+        {"image": "images/B10-10-yesil-isik.png", "audio": [{"id": "b10_29_voice", "radio": true}], "aoff": 1.0, "move": [1.0, 1.1, 0.5, 0.5, 0.5, 0.5]},
+        {"image": "images/B10-09-tepe-anten.png", "audio": ["b10_30_maya", "b10_31_sam"], "move": [1.08, 1.14, 0.5, 0.5, 0.45, 0.42]}
+      ],
+      "next": "k3"
+    },
+    {
+      "id": "k3", "type": "decision", "skill": "spoken_interaction", "cefr": "A1",
+      "prompt": {"tr": "Biri şimdi orada! Telsize cevap ver."},
+      "cue": {"speaker": "SAM", "text": "It's not the old call. Someone is there now!"},
+      "pov": "POV: telsize eğilme. Müzik kısılır.",
+      "background": "images/B10-10-yesil-isik.png",
+      "options": [
+        {"id": "a", "text": "Hello! I can hear you!", "correct": true, "audio": "b10_32_alex", "next": "k3-ok"},
+        {"id": "b", "text": "Yes, I am!", "correct": false, "audio": "b10_33_alex", "next": "r-k3-b"}
+      ],
+      "hints": [
+        {"level": 1, "kind": "keyword", "tr": "B1'i hatırla: hear."},
+        {"level": 2, "kind": "pattern", "tr": "Hello! I can … you!"},
+        {"level": 3, "kind": "explanation", "tr": "Can you hear me? sorusunun cevabı: \"I can hear you.\""}
+      ]
+    },
+    {
+      "id": "r-k3-b", "type": "reaction",
+      "shots": [{"image": "images/B10-10-yesil-isik.png", "audio": ["b10_33_alex"], "move": [1.06, 1.0, 0.5, 0.5, 0.5, 0.5]}],
+      "bubble": {"speaker": "HI", "lang": "tr", "text": "B1'i hatırla: Can you hear me? sorusuna cevap \"I can hear you.\" Şimdi sen söyle!", "speechTr": "Birinci bölümü hatırla: {Can you hear me?} sorusuna cevap {I can hear you.} Şimdi sen söyle!"},
+      "next": "k3"
+    },
+    {
+      "id": "k3-ok", "type": "segment",
+      "shots": [
+        {"image": "images/B10-10-yesil-isik.png", "audio": ["b10_32_alex", "b10_34_alex"], "aoff": 0.4, "move": [1.0, 1.06, 0.5, 0.5, 0.5, 0.5]},
+        {"image": "images/B10-11-isik-soner.png", "audio": ["b10_35_alex", "b10_36_sam"], "aoff": 1.2, "move": [1.0, 1.08, 0.5, 0.5, 0.5, 0.45]}
+      ],
+      "next": "s05"
+    },
+    {
+      "id": "s05", "type": "segment", "scene": "Son kare", "checkpoint": true,
+      "shots": [
+        {"image": "images/B10-12-maya-telefon.png", "audio": ["b10_37_maya", "b10_38_alex"], "aoff": 1.4, "move": [1.0, 1.08, 0.5, 0.5, 0.5, 0.5],
+         "signs": [{"style": "note", "lines": [{"text": "Lumen Point Museum"}, {"text": "Light Night. Saturday."}], "start": 0.3, "end": 3.2}]},
+        {"image": "images/B10-13-hava-durumu.png", "len": 2.6, "move": [1.0, 1.08, 0.5, 0.5, 0.5, 0.5],
+         "signs": [{"style": "caption", "lines": [{"text": "Saturday"}], "start": 0.3, "end": 2.6}]}
+      ],
+      "next": "c-alex"
+    },
+    {
+      "id": "c-alex", "type": "card", "kind": "line", "advance": "tap",
+      "background": "images/B10-13-hava-durumu.png",
+      "lines": [{"speaker": "ALEX", "text": "Cumartesi… fırtına mı?", "lang": "tr"}],
+      "next": "c-clues", "audio": {"id": "tr_c-alex", "speaker": "ALEX (TR)"}
+    },
+    {
+      "id": "c-clues", "type": "card", "kind": "clue", "advance": "tap", "clueIds": ["C16"], "answers": ["Q9"],
+      "lines": [{"text": "İpucu panosu", "lang": "tr", "style": "heading"},
+                {"text": "C16 · Canlı mesaj: …next Saturday… the light test… eight o'clock… come…", "lang": "tr"},
+                {"text": "Q9 kapandı: Yeni antenle canlı ikinci bir mesaj yakalandı.", "lang": "tr"}],
+      "speechTr": "İpucu panosu. Canlı mesaj: {next Saturday, the light test, eight o'clock, come.} Dokuzuncu soru kapandı: yeni antenle canlı ikinci bir mesaj yakalandı.",
+      "next": "c-oq"
+    },
+    {
+      "id": "c-oq", "type": "card", "kind": "openQuestion", "advance": "tap", "questionId": "Q10",
+      "background": "images/B10-13-hava-durumu.png",
+      "lines": [{"text": "AÇIK SORU", "lang": "tr", "style": "caption"},
+                {"text": "Cumartesi saat sekizdeki \"light test\" ne? Gidebilir miyiz?", "lang": "tr", "style": "heading"},
+                {"text": "Bölüm 11: Storm Warning", "lang": "en", "style": "caption"}],
+      "speechTr": "Açık soru: Cumartesi saat sekizdeki {light test} ne? Gidebilir miyiz?",
+      "next": null
+    }
+  ]
+}

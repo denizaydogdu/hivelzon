@@ -1,0 +1,32 @@
+[
+  {
+    "created_at": "2026-10-14T17:24:42.520401Z",
+    "display_name": "GPT Image 2.5",
+    "id": "55743b3a-a1bd-4371-ae04-15dd0070658b",
+    "job_type": "gpt_image_2_5",
+    "min_result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261014_172442_55743b3a-a1bd-4371-ae04-15dd0070658b_min.webp",
+    "params": {
+      "aspect_ratio": "9:16",
+      "height": 2688,
+      "medias": [
+        {
+          "data": {
+            "id": "a30f6cb8-b8bd-42f2-9bcb-573477f1eb65",
+            "type": "image_job",
+            "url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261014_171808_a30f6cb8-b8bd-42f2-9bcb-573477f1eb65.png"
+          },
+          "role": "image"
+        }
+      ],
+      "model": "flare",
+      "prompt": "Use the reference image for Rosa. First-person point of view across a café counter: Rosa (58, dark hair with grey streaks in a low bun, reading glasses pushed up on her head, sage-green cardigan, long mustard-yellow apron) faces the viewer, smiling kindly and waiting for an order, one hand resting on the counter next to a teapot and cups; blank chalkboard behind her; calm, slightly muted mood. No text on any sign, screen, label or paper. Vertical composition. Warm animated-series illustration, graphic-novel style, clean ink lines, soft cel shading, coastal palette of sea blue, sand, lighthouse yellow and evening orange, mature tone suitable for teens and adults, not childish, no text, no letters, no numbers, no logos.",
+      "quality": "low",
+      "reference_elements": [],
+      "remove_bg": false,
+      "resolution": "2k",
+      "width": 1520
+    },
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261014_172442_55743b3a-a1bd-4371-ae04-15dd0070658b.png",
+    "status": "completed"
+  }
+]

@@ -1,0 +1,209 @@
+{
+  "kurguVersion": 2,
+  "contentId": "A1-011",
+  "source": "H-085: story.en.md (H-032 onaylı diyalog) düğümlere bölündü; görseller B11-01…B11-13. Cuma 19:00 çağrısı B1'in kayıtlarıyla (voice_01, voice_02) yeniden kullanılır; yalnızca sondaki '…the light…' yeni. Afiş, tarife ve not kurguda (signs).",
+  "start": "title",
+  "gate": {
+    "comprehension": ["t-gorev", "t-otobus"],
+    "targetPhrase": ["k1", "k2"],
+    "activeTask": ["t-kanit"]
+  },
+  "nodes": [
+    {
+      "id": "title", "type": "title",
+      "next": "recap"
+    },
+    {
+      "id": "recap", "type": "recap",
+      "shots": [{"image": "../A1-010-spare-parts/images/B10-13-hava-durumu.png", "len": 3.0, "move": [1.0, 1.06, 0.5, 0.5, 0.5, 0.5],
+                 "signs": [{"style": "caption", "lines": [{"text": "Saturday"}], "start": 0.3, "end": 3.0}]}],
+      "next": "s01"
+    },
+    {
+      "id": "s01", "type": "segment", "scene": "Sahne 1: Hava durumu", "checkpoint": true,
+      "shots": [
+        {"image": "images/B11-01-dukkan-radyo.png", "audio": [{"id": "b11_01_presenter", "radio": true}, {"id": "b11_02_presenter", "radio": true}, {"id": "b11_03_presenter", "radio": true}, {"id": "b11_04_presenter", "radio": true}], "aoff": 1.0, "move": [1.0, 1.1, 0.5, 0.5, 0.5, 0.45],
+         "signs": [{"style": "caption", "lines": [{"text": "Friday"}], "start": 0.2, "end": 1.4}]},
+        {"image": "images/B11-02-k1-pov.png", "audio": ["b11_05_maya"], "move": [1.0, 1.06, 0.5, 0.5, 0.45, 0.42]}
+      ],
+      "next": "k1"
+    },
+    {
+      "id": "k1", "type": "decision", "skill": "listening", "cefr": "A1",
+      "prompt": {"tr": "Radyo cumartesi için ne dedi? Maya'ya söyle."},
+      "cue": {"speaker": "MAYA", "text": "Oh no! Alex, what's the weather on Saturday?"},
+      "pov": "POV: tezgâh, radyo. Müzik kısılır.",
+      "background": "images/B11-02-k1-pov.png",
+      "targetPhrase": "It's windy.",
+      "options": [
+        {"id": "a", "text": "It's windy and rainy.", "correct": true, "audio": "b11_06_alex", "next": "k1-ok"},
+        {"id": "b", "text": "It is rain.", "correct": false, "audio": "b11_07_alex", "next": "r-k1-b"}
+      ],
+      "hints": [
+        {"level": 1, "kind": "keyword", "tr": "Radyo: very windy … raining."},
+        {"level": 2, "kind": "pattern", "tr": "It's windy and …"},
+        {"level": 3, "kind": "explanation", "tr": "Hava için It's + sıfat: It's windy, It's rainy. rain tek başına \"yağmur\" demek."}
+      ]
+    },
+    {
+      "id": "r-k1-b", "type": "reaction",
+      "shots": [{"image": "images/B11-02-k1-pov.png", "audio": ["b11_07_alex", "b11_08_maya"], "move": [1.06, 1.0, 0.5, 0.5, 0.45, 0.45]}],
+      "bubble": {"speaker": "HI", "lang": "tr", "text": "Böyle de söyleyebilirsin: \"It's raining.\" (şu an yağıyor) ya da \"It's rainy.\" (yağmurlu bir gün). rain tek başına \"yağmur\" demek.", "speechTr": "Böyle de söyleyebilirsin: {It's raining.} Şu an yağıyor. Ya da {It's rainy.} Yağmurlu bir gün. {rain} tek başına yağmur demek."},
+      "next": "k1"
+    },
+    {
+      "id": "k1-ok", "type": "segment",
+      "shots": [
+        {"image": "images/B11-02-k1-pov.png", "audio": ["b11_06_alex"], "aoff": 0.4, "move": [1.0, 1.05, 0.5, 0.5, 0.45, 0.45]},
+        {"image": "images/B11-01-dukkan-radyo.png", "audio": ["b11_09_alex", "b11_10_maya", "b11_11_alex"], "move": [1.08, 1.14, 0.5, 0.5, 0.45, 0.42]}
+      ],
+      "next": "s02"
+    },
+    {
+      "id": "s02", "type": "segment", "scene": "Sahne 2: Telefon", "checkpoint": true,
+      "shots": [
+        {"image": "images/B11-03-telefon-tom.png", "audio": ["b11_12_tom", "b11_13_alex", "b11_14_tom", "b11_15_alex", "b11_16_tom", "b11_17_tom"], "move": [1.0, 1.08, 0.5, 0.5, 0.5, 0.45]},
+        {"image": "images/B11-03-telefon-tom.png", "audio": ["b11_18_alex", "b11_19_tom", "b11_20_tom", "b11_21_alex"], "move": [1.08, 1.14, 0.5, 0.5, 0.45, 0.5]},
+        {"image": "images/B11-04-afis.png", "audio": ["b11_22_maya"], "aoff": 2.0, "move": [1.0, 1.08, 0.5, 0.5, 0.5, 0.5],
+         "signs": [{"style": "note", "lines": [{"text": "Light Night at Lumen Point"}, {"text": "Saturday, 8 pm"}, {"text": "Come and see the light!"}], "start": 0.3, "end": 3.6}]}
+      ],
+      "next": "s03"
+    },
+    {
+      "id": "s03", "type": "segment", "scene": "Sahne 3: Hazırlık", "checkpoint": true,
+      "shots": [
+        {"image": "images/B11-05-oda-sam.png", "audio": ["b11_23_sam", "b11_24_maya"], "move": [1.0, 1.08, 0.5, 0.5, 0.5, 0.45]},
+        {"image": "images/B11-06-k2-pov.png", "audio": ["b11_25_sam"], "move": [1.0, 1.06, 0.5, 0.5, 0.45, 0.42]}
+      ],
+      "next": "k2"
+    },
+    {
+      "id": "k2", "type": "decision", "skill": "spoken_interaction", "cefr": "A1",
+      "prompt": {"tr": "Cumartesi rüzgârlı ve yağmurlu. Sam'e ne önerirsin?"},
+      "cue": {"speaker": "SAM", "text": "OK, OK. What do I wear?"},
+      "pov": "POV: Sam'e bakış; arkada pencere, rüzgâr.",
+      "background": "images/B11-06-k2-pov.png",
+      "targetPhrase": "Wear a raincoat.",
+      "options": [
+        {"id": "a", "text": "Wear a raincoat.", "correct": true, "audio": "b11_26_alex", "next": "k2-ok"},
+        {"id": "b", "text": "Wear a T-shirt.", "correct": false, "audio": "b11_27_alex", "next": "r-k2-b"}
+      ],
+      "hints": [
+        {"level": 1, "kind": "keyword", "tr": "Yağmur için: raincoat."},
+        {"level": 2, "kind": "pattern", "tr": "Wear a …"},
+        {"level": 3, "kind": "explanation", "tr": "Öneri vermek için fiille başla: \"Wear a raincoat.\""}
+      ]
+    },
+    {
+      "id": "r-k2-b", "type": "reaction",
+      "shots": [{"image": "images/B11-07-sam-titrer.png", "audio": ["b11_27_alex", "b11_28_sam"], "move": [1.0, 1.08, 0.5, 0.5, 0.5, 0.45]}],
+      "bubble": {"speaker": "HI", "lang": "tr", "text": "Hava rüzgârlı ve yağmurlu. Öneri vermek için fiille başla: \"Wear a raincoat.\"", "speechTr": "Hava rüzgârlı ve yağmurlu. Öneri vermek için fiille başla: {Wear a raincoat.}"},
+      "next": "k2"
+    },
+    {
+      "id": "k2-ok", "type": "segment",
+      "shots": [
+        {"image": "images/B11-06-k2-pov.png", "audio": ["b11_26_alex", "b11_29_sam", "b11_30_maya", "b11_31_sam"], "aoff": 0.4, "move": [1.0, 1.06, 0.5, 0.5, 0.45, 0.45]},
+        {"image": "images/B11-08-semsiye-hayal.png", "audio": ["b11_32_alex"], "aoff": 1.2, "move": [1.0, 1.1, 0.5, 0.5, 0.5, 0.4]},
+        {"image": "images/B11-09-el-feneri.png", "audio": ["b11_33_sam", "b11_34_alex"], "move": [1.0, 1.08, 0.5, 0.5, 0.5, 0.45]}
+      ],
+      "next": "h-guvenlik"
+    },
+    {
+      "id": "h-guvenlik", "type": "card", "kind": "hi", "advance": "tap",
+      "background": "images/B11-09-el-feneri.png",
+      "lines": [{"speaker": "HI", "text": "Küçük bir hatırlatma: Cumartesi otobüsle gidin ve hep birlikte kalın. Müzede gönüllüler var; bir şey gerekirse onlara sorun. Telefonunun şarjı dolu olsun.", "lang": "tr"}],
+      "next": "t-gorev", "audio": {"id": "tr_h-guvenlik", "speaker": "HI"}
+    },
+    {
+      "id": "t-gorev", "type": "task", "kind": "multiSelect", "role": "comprehension", "skill": "vocabulary", "cefr": "A1",
+      "scene": "Görev: Hazırlan",
+      "prompt": {"tr": "Hava durumuna göre çantayı doldur. Doğru üçünü seç."},
+      "background": "images/B11-10-canta.png",
+      "items": [{"id": "i1", "options": [
+        {"id": "a", "text": "a raincoat", "correct": true},
+        {"id": "b", "text": "a warm hat", "correct": true},
+        {"id": "c", "text": "a light", "correct": true},
+        {"id": "d", "text": "an umbrella", "correct": false}
+      ]}],
+      "feedback": {"wrong": {"speaker": "HI", "lang": "tr", "text": "Cumartesi çok rüzgârlı. Rüzgârda hangisi işe yaramaz? Bir daha düşün.", "audio": {"id": "tr_t-gorev", "speaker": "HI"}}},
+      "next": "t-otobus"
+    },
+    {
+      "id": "t-otobus", "type": "task", "kind": "choice", "role": "comprehension", "skill": "reading", "cefr": "A1",
+      "prompt": {"tr": "Light Night saat sekizde başlıyor. Hangi otobüse binersin?"},
+      "context": "Tarife: Bus to Lumen Point 6:30 · 7:30 · 8:30",
+      "background": "images/B11-04-afis.png",
+      "items": [{"id": "i1", "stem": "Bus to Lumen Point: 6:30 · 7:30 · 8:30", "stemTr": "Lumen Point otobüsü: 6.30 · 7.30 · 8.30", "options": [
+        {"id": "a", "text": "7:30", "correct": true},
+        {"id": "b", "text": "8:30", "correct": false}]}],
+      "feedback": {"wrong": {"speaker": "HI", "lang": "tr", "text": "8:30'da çıkarsan geç kalırsın. at eight = saat sekizde.", "speechTr": "Sekiz buçukta çıkarsan geç kalırsın. {at eight}: saat sekizde.", "audio": {"id": "tr_t-otobus", "speaker": "HI"}}},
+      "result": [{"text": "On Saturday, at eight.", "lang": "en", "style": "highlight"}],
+      "next": "t-kanit"
+    },
+    {
+      "id": "t-kanit", "type": "task", "kind": "choice", "role": "evidence", "skill": "reading", "cefr": "A1",
+      "prompt": {"tr": "Hi bir harita gösteriyor. İzmir'de hava nasıl?"},
+      "context": "Yeni bağlam: farklı bir şehir (İzmir)",
+      "background": "images/B11-11-hi-izmir.png",
+      "items": [{"id": "i1", "stem": "What's the weather in İzmir?", "options": [
+        {"id": "a", "text": "It's sunny and hot.", "correct": true},
+        {"id": "b", "text": "It's raining.", "correct": false}]}],
+      "feedback": {"wrong": {"speaker": "HI", "lang": "tr", "text": "Haritaya bak: İzmir'in üstünde güneş var. Bir daha dene.", "audio": {"id": "tr_t-kanit", "speaker": "HI"}}},
+      "next": "h-lab"
+    },
+    {
+      "id": "h-lab", "type": "card", "kind": "hi", "scene": "Dil laboratuvarı", "checkpoint": true, "advance": "tap",
+      "background": "images/B11-10-canta.png",
+      "lines": [{"speaker": "HI", "text": "Öneri ve talimat için fiille başla: Wear a raincoat. Take an umbrella. Türkçedeki gibi özne yok.", "lang": "tr"}],
+      "speechTr": "Öneri ve talimat için fiille başla: {Wear a raincoat. Take an umbrella.} Türkçedeki gibi özne yok.",
+      "next": "s04"
+    },
+    {
+      "id": "s04", "type": "segment", "scene": "Sahne 4: Cuma, saat yedi", "checkpoint": true,
+      "shots": [
+        {"image": "images/B11-12-cuma-yedi.png", "audio": [{"path": "../A1-001-a-strange-message/audio/voice_01", "radio": true}, {"path": "../A1-001-a-strange-message/audio/voice_02", "radio": true}], "aoff": 1.4, "move": [1.0, 1.1, 0.5, 0.5, 0.5, 0.45],
+         "signs": [{"style": "caption", "lines": [{"text": "Friday · 7:00 pm"}], "start": 0.2, "end": 1.4}]},
+        {"image": "images/B11-12-cuma-yedi.png", "audio": [{"id": "b11_35_voice", "radio": true}], "aoff": 0.8, "move": [1.1, 1.18, 0.5, 0.5, 0.45, 0.45]},
+        {"image": "images/B11-12-cuma-yedi.png", "audio": ["b11_36_sam", "b11_37_sam", "b11_38_maya", "b11_39_alex"], "move": [1.18, 1.1, 0.5, 0.5, 0.45, 0.5]}
+      ],
+      "next": "c-alex"
+    },
+    {
+      "id": "c-alex", "type": "card", "kind": "line", "advance": "tap",
+      "background": "images/B11-12-cuma-yedi.png",
+      "lines": [{"speaker": "ALEX", "text": "Çağrı fenerden mi geliyor? Yarın gece bulabilecek miyiz?", "lang": "tr"}],
+      "next": "s05", "audio": {"id": "tr_c-alex", "speaker": "ALEX (TR)"}
+    },
+    {
+      "id": "s05", "type": "segment", "scene": "Son kare", "checkpoint": true,
+      "shots": [{"image": "images/B11-13-gece-not.png", "len": 3.4, "move": [1.0, 1.1, 0.5, 0.5, 0.5, 0.55],
+                 "signs": [{"style": "note", "lines": [{"text": "…Unutma. — N."}], "start": 0.6, "end": 3.4}]}],
+      "next": "c-unutma"
+    },
+    {
+      "id": "c-unutma", "type": "card", "kind": "line", "advance": "tap",
+      "background": "images/B11-13-gece-not.png",
+      "lines": [{"speaker": "ALEX", "text": "Unutma.", "lang": "tr"}],
+      "next": "c-clues", "audio": {"id": "tr_c-unutma", "speaker": "ALEX (TR)"}
+    },
+    {
+      "id": "c-clues", "type": "card", "kind": "clue", "advance": "tap", "clueIds": ["C17", "C18"], "answers": ["Q10"],
+      "lines": [{"text": "İpucu panosu", "lang": "tr", "style": "heading"},
+                {"text": "C17 · Etkinlik afişi: Light Night at Lumen Point. Saturday, 8 pm.", "lang": "tr"},
+                {"text": "C18 · Otobüs saatleri: 6:30 · 7:30 · 8:30", "lang": "tr"},
+                {"text": "Q10 kapandı: \"The light test\" müzenin Light Night etkinliği. Etkinlik açık; otobüsle gidip birlikte kalmak güvenli.", "lang": "tr"}],
+      "speechTr": "İpucu panosu. Etkinlik afişi: {Light Night at Lumen Point.} Otobüs saatleri. Onuncu soru kapandı: {the light test,} müzenin {Light Night} etkinliği. Etkinlik açık; otobüsle gidip birlikte kalmak güvenli.",
+      "next": "c-oq"
+    },
+    {
+      "id": "c-oq", "type": "card", "kind": "openQuestion", "advance": "tap", "questionId": "Q11",
+      "background": "images/B11-13-gece-not.png",
+      "lines": [{"text": "AÇIK SORU", "lang": "tr", "style": "caption"},
+                {"text": "Fener gecesinde çağrının kaynağını bulabilecek miyiz?", "lang": "tr", "style": "heading"},
+                {"text": "Bölüm 12: The Lighthouse", "lang": "en", "style": "caption"}],
+      "speechTr": "Açık soru: Fener gecesinde çağrının kaynağını bulabilecek miyiz?",
+      "next": null, "audio": {"id": "tr_c-oq", "speaker": "ANLATICI (TR)"}
+    }
+  ]
+}

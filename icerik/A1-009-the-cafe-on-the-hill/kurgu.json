@@ -1,0 +1,188 @@
+{
+  "kurguVersion": 2,
+  "contentId": "A1-009",
+  "source": "H-085: story.en.md (H-032 onaylı diyalog) düğümlere bölündü; görseller B9-01…B9-12. K1'de iki doğru seçenek drink_choice bayrağını yazar (B12'de Rosa'nın termosu). Özet karesi B8'in son karesi yerine B9-01 (tepedeki kafe, ışıklı pencere); B8 görselleri ana kopyaya gelince B8'in son karesiyle değiştirilebilir.",
+  "start": "title",
+  "gate": {
+    "comprehension": ["t-gorev"],
+    "targetPhrase": ["k1", "k2"],
+    "activeTask": ["t-kanit"]
+  },
+  "nodes": [
+    {
+      "id": "title", "type": "title",
+      "next": "recap"
+    },
+    {
+      "id": "recap", "type": "recap",
+      "shots": [{"image": "images/B9-01-kafe-dis.png", "len": 3.0, "move": [1.0, 1.06, 0.5, 0.5, 0.5, 0.45],
+                 "signs": [{"style": "caption", "lines": [{"text": "Hilltop Café"}], "start": 0.3, "end": 3.0}]}],
+      "next": "s01"
+    },
+    {
+      "id": "s01", "type": "segment", "scene": "Sahne 1: Sipariş", "checkpoint": true,
+      "shots": [
+        {"image": "images/B9-02-kafe-kapi.png", "len": 2.6, "move": [1.0, 1.08, 0.5, 0.5, 0.5, 0.45]},
+        {"image": "images/B9-03-rosa-tezgah.png", "audio": ["b9_01_rosa", "b9_02_alex", "b9_03_rosa"], "move": [1.0, 1.08, 0.5, 0.5, 0.45, 0.42],
+         "signs": [{"style": "note", "lines": [{"text": "tea · hot chocolate"}, {"text": "orange juice · cake"}], "start": 0.3, "end": 2.6}]},
+        {"image": "images/B9-03-rosa-tezgah.png", "audio": ["b9_04_rosa", "b9_05_alex", "b9_06_rosa", "b9_07_alex"], "move": [1.08, 1.14, 0.5, 0.5, 0.42, 0.4]}
+      ],
+      "next": "k1"
+    },
+    {
+      "id": "k1", "type": "decision", "skill": "spoken_interaction", "cefr": "A1",
+      "prompt": {"tr": "Rosa siparişini bekliyor. Kibarca iste."},
+      "cue": {"speaker": "ALEX", "text": "Yes, it is. It's by the sea."},
+      "pov": "POV: tezgâh; Rosa gülümseyerek bekliyor.",
+      "background": "images/B9-04-k1-pov.png",
+      "targetPhrase": "Can I have a tea, please?",
+      "options": [
+        {"id": "a", "text": "Can I have a tea, please?", "correct": true, "setFlag": {"flag": "drink_choice", "value": "tea"}, "audio": "b9_08_alex", "next": "k1-tea"},
+        {"id": "b", "text": "Can I have a hot chocolate, please?", "correct": true, "setFlag": {"flag": "drink_choice", "value": "hot_chocolate"}, "audio": "b9_09_alex", "next": "k1-choc"},
+        {"id": "c", "text": "I want tea.", "correct": false, "audio": "b9_10_alex", "next": "r-k1-c"}
+      ],
+      "hints": [
+        {"level": 1, "kind": "keyword", "tr": "Kibar istek: please."},
+        {"level": 2, "kind": "pattern", "tr": "Can I have a …, please?"},
+        {"level": 3, "kind": "explanation", "tr": "Kafede istek soru gibi sorulur: \"Can I have a tea, please?\" Sonuna please eklenir."}
+      ]
+    },
+    {
+      "id": "r-k1-c", "type": "reaction",
+      "shots": [{"image": "images/B9-04-k1-pov.png", "audio": ["b9_10_alex", "b9_11_rosa"], "move": [1.06, 1.0, 0.5, 0.5, 0.45, 0.45]}],
+      "bubble": {"speaker": "HI", "lang": "tr", "text": "I want… yanlış değil, ama kafede çok doğrudan duyulur. Böyle de söyleyebilirsin: \"Can I have a tea, please?\"", "speechTr": "{I want} yanlış değil, ama kafede çok doğrudan duyulur. Böyle de söyleyebilirsin: {Can I have a tea, please?}"},
+      "next": "k1"
+    },
+    {
+      "id": "k1-tea", "type": "segment",
+      "shots": [{"image": "images/B9-04-k1-pov.png", "audio": ["b9_08_alex"], "aoff": 0.4, "move": [1.0, 1.05, 0.5, 0.5, 0.45, 0.45]}],
+      "next": "s02"
+    },
+    {
+      "id": "k1-choc", "type": "segment",
+      "shots": [{"image": "images/B9-04-k1-pov.png", "audio": ["b9_09_alex"], "aoff": 0.4, "move": [1.0, 1.05, 0.5, 0.5, 0.45, 0.45]}],
+      "next": "s02"
+    },
+    {
+      "id": "s02", "type": "segment",
+      "shots": [
+        {"image": "images/B9-05-siparis.png", "audio": ["b9_12_maya", "b9_13_sam", "b9_14_rosa", "b9_15_sam", "b9_16_rosa"], "move": [1.0, 1.1, 0.5, 0.5, 0.5, 0.45]},
+        {"image": "images/B9-06-tepsi.png", "audio": ["b9_17_rosa", "b9_18_alex", "b9_19_rosa", "b9_20_alex"], "move": [1.04, 1.12, 0.5, 0.5, 0.45, 0.42]}
+      ],
+      "next": "s03"
+    },
+    {
+      "id": "s03", "type": "segment", "scene": "Sahne 2: Kayıt", "checkpoint": true,
+      "shots": [
+        {"image": "images/B9-07-pencere-masa.png", "audio": ["b9_21_alex", "b9_22_sam"], "move": [1.0, 1.08, 0.5, 0.5, 0.55, 0.45]},
+        {"image": "images/B9-07-pencere-masa.png", "audio": [{"id": "b9_23_voice", "radio": true}], "move": [1.1, 1.18, 0.5, 0.5, 0.5, 0.5]},
+        {"image": "images/B9-08-rosa-dinler.png", "len": 2.2, "move": [1.0, 1.06, 0.5, 0.5, 0.45, 0.42]}
+      ],
+      "next": "k2"
+    },
+    {
+      "id": "k2", "type": "decision", "skill": "spoken_interaction", "cefr": "A1",
+      "prompt": {"tr": "Rosa kaydı dinliyor. Sesi tanıyor mu, sor."},
+      "cue": {"speaker": "VOICE", "text": "Hello? Hello? Can you hear me? This is E."},
+      "pov": "POV: Rosa'ya dönme; masaların arasında duruyor.",
+      "background": "images/B9-08-rosa-dinler.png",
+      "targetPhrase": "Do you know this voice?",
+      "options": [
+        {"id": "a", "text": "Do you know this voice?", "correct": true, "audio": "b9_24_alex", "next": "k2-ok"},
+        {"id": "b", "text": "You know it?", "correct": false, "audio": "b9_25_alex", "next": "r-k2-b"}
+      ],
+      "hints": [
+        {"level": 1, "kind": "keyword", "tr": "Soru Do ile başlar."},
+        {"level": 2, "kind": "pattern", "tr": "Do you know this …?"},
+        {"level": 3, "kind": "explanation", "tr": "Soru için başa Do gelir: \"Do you know this voice?\""}
+      ]
+    },
+    {
+      "id": "r-k2-b", "type": "reaction",
+      "shots": [{"image": "images/B9-08-rosa-dinler.png", "audio": ["b9_25_alex", "b9_26_rosa"], "move": [1.06, 1.0, 0.5, 0.5, 0.45, 0.45]}],
+      "bubble": {"speaker": "HI", "lang": "tr", "text": "Soru için başa Do gelir: \"Do you know this voice?\"", "speechTr": "Soru için başa {Do} gelir: {Do you know this voice?}"},
+      "next": "k2"
+    },
+    {
+      "id": "k2-ok", "type": "segment",
+      "shots": [
+        {"image": "images/B9-08-rosa-dinler.png", "audio": ["b9_24_alex", "b9_27_rosa", "b9_28_rosa", "b9_29_rosa"], "aoff": 0.4, "move": [1.0, 1.08, 0.5, 0.5, 0.45, 0.42]},
+        {"image": "images/B9-09-rosa-duvar.png", "audio": ["b9_30_maya", "b9_31_rosa", "b9_32_maya", "b9_33_rosa"], "move": [1.0, 1.08, 0.5, 0.5, 0.5, 0.45]},
+        {"image": "images/B9-10-duvar-foto.png", "audio": ["b9_34_sam"], "aoff": 1.0, "move": [1.0, 1.1, 0.5, 0.5, 0.5, 0.5],
+         "signs": [{"style": "note", "lines": [{"text": "PLRC", "size": 72}], "start": 0.3, "end": 2.4}]},
+        {"image": "images/B9-09-rosa-duvar.png", "audio": ["b9_35_alex", "b9_36_rosa", "b9_37_rosa", "b9_38_alex", "b9_39_rosa"], "move": [1.08, 1.14, 0.5, 0.5, 0.45, 0.42]},
+        {"image": "images/B9-07-pencere-masa.png", "audio": ["b9_40_alex", "b9_41_alex", "b9_42_maya", "b9_43_sam"], "move": [1.0, 1.08, 0.5, 0.5, 0.45, 0.55]}
+      ],
+      "next": "t-gorev"
+    },
+    {
+      "id": "t-gorev", "type": "task", "kind": "multiSelect", "role": "comprehension", "skill": "listening", "cefr": "A1",
+      "scene": "Görev: Sipariş ver, bilgi al",
+      "prompt": {"tr": "Rosa ne anlattı? Doğru iki bilgiyi seç."},
+      "background": "images/B9-10-duvar-foto.png",
+      "items": [{"id": "i1", "options": [
+        {"id": "a", "text": "Long ago, the club was here.", "correct": true},
+        {"id": "b", "text": "One person goes there on Saturdays.", "correct": true},
+        {"id": "c", "text": "E. works in the café.", "correct": false},
+        {"id": "d", "text": "The club meets at the old station.", "correct": false}
+      ]}],
+      "feedback": {"wrong": {"speaker": "HI", "lang": "tr", "text": "Rosa'nın sözlerini bir daha düşün: kulüp eskiden neredeydi, biri fenere ne zaman gidiyor?", "audio": {"id": "tr_t-gorev", "speaker": "HI"}}},
+      "result": [{"text": "One member goes to the lighthouse. On Saturdays.", "lang": "en", "style": "highlight"}],
+      "next": "h-lab"
+    },
+    {
+      "id": "h-lab", "type": "card", "kind": "hi", "scene": "Dil laboratuvarı", "checkpoint": true, "advance": "tap",
+      "background": "images/B9-06-tepsi.png",
+      "lines": [{"speaker": "HI", "text": "a sessiz harften önce, an sesli harften önce: a tea, a cake, ama an orange juice.", "lang": "tr"}],
+      "speechTr": "{a} sessiz harften önce, {an} sesli harften önce: {a tea, a cake,} ama {an orange juice.}",
+      "next": "t-kanit"
+    },
+    {
+      "id": "t-kanit", "type": "task", "kind": "choice", "role": "evidence", "skill": "grammar", "cefr": "A1",
+      "prompt": {"tr": "Başka bir kafede sipariş ver: doğru kelimeyi seç."},
+      "context": "Yeni bağlam: yeni kafe, yeni sipariş (rol kartı)",
+      "background": "images/B9-13-kanit-kafe.png",
+      "items": [
+        {"id": "i1", "stem": "Can I have ___ apple, please?", "options": [
+          {"id": "a", "text": "an", "correct": true},
+          {"id": "b", "text": "a", "correct": false}]},
+        {"id": "i2", "stem": "Can I have ___ coffee, please?", "options": [
+          {"id": "a", "text": "a", "correct": true},
+          {"id": "b", "text": "an", "correct": false}]},
+        {"id": "i3", "stem": "How much is it?", "options": [
+          {"id": "a", "text": "It's nine.", "correct": true},
+          {"id": "b", "text": "Here you are.", "correct": false}]}
+      ],
+      "feedback": {"wrong": {"speaker": "HI", "lang": "tr", "text": "Kelimenin ilk sesine bak: apple sesliyle başlar, coffee sessizle. Bir daha dene.", "speechTr": "Kelimenin ilk sesine bak: {apple} sesliyle başlar, {coffee} sessizle. Bir daha dene.", "audio": {"id": "tr_t-kanit", "speaker": "HI"}}},
+      "result": [{"text": "Can I have an apple, please?", "lang": "en", "style": "highlight"}],
+      "next": "s04"
+    },
+    {
+      "id": "s04", "type": "segment", "scene": "Sahne 3: Liste", "checkpoint": true,
+      "shots": [
+        {"image": "images/B9-11-telsiz-pencere.png", "audio": ["b9_44_sam", "b9_45_sam"], "move": [1.0, 1.08, 0.5, 0.5, 0.5, 0.45]},
+        {"image": "images/B9-12-pecete-cizim.png", "audio": ["b9_46_alex", "b9_47_rosa"], "aoff": 1.6, "move": [1.0, 1.08, 0.5, 0.5, 0.5, 0.5],
+         "signs": [{"style": "note", "lines": [{"text": "Antenna. Battery. Cable."}], "start": 0.3, "end": 2.8}]}
+      ],
+      "next": "c-clues"
+    },
+    {
+      "id": "c-clues", "type": "card", "kind": "clue", "advance": "tap", "clueIds": ["C14", "C15"], "answers": ["Q8"],
+      "lines": [{"text": "İpucu panosu", "lang": "tr", "style": "heading"},
+                {"text": "C14 · Kafedeki anten fotoğrafı (PLRC)", "lang": "tr"},
+                {"text": "C15 · Rosa'nın sözü: lighthouse on Saturdays", "lang": "tr"},
+                {"text": "Q8 kapandı: Hilltop Café eski radyo kulübünün buluşma yeriydi; bir üye cumartesileri fenere gidiyor.", "lang": "tr"}],
+      "speechTr": "İpucu panosu. Kafedeki anten fotoğrafı. Rosa'nın sözü: {lighthouse on Saturdays.} Sekizinci soru kapandı: tepedeki kafe eski radyo kulübünün buluşma yeriydi; bir üye cumartesileri fenere gidiyor.",
+      "next": "c-oq"
+    },
+    {
+      "id": "c-oq", "type": "card", "kind": "openQuestion", "advance": "tap", "questionId": "Q9",
+      "background": "images/B9-12-pecete-cizim.png",
+      "lines": [{"text": "AÇIK SORU", "lang": "tr", "style": "caption"},
+                {"text": "Çağrıyı daha net duymak için ne lazım?", "lang": "tr", "style": "heading"},
+                {"text": "Bölüm 10: Spare Parts", "lang": "en", "style": "caption"}],
+      "speechTr": "Açık soru: Çağrıyı daha net duymak için ne lazım?",
+      "next": null, "audio": {"id": "tr_c-oq", "speaker": "ANLATICI (TR)"}
+    }
+  ]
+}

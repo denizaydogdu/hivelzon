@@ -1,0 +1,32 @@
+[
+  {
+    "created_at": "2026-10-14T17:33:23.76057Z",
+    "display_name": "GPT Image 2.5",
+    "id": "500206f4-7be9-41b1-aee8-38393986bc92",
+    "job_type": "gpt_image_2_5",
+    "min_result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261014_173323_500206f4-7be9-41b1-aee8-38393986bc92_min.webp",
+    "params": {
+      "aspect_ratio": "9:16",
+      "height": 2688,
+      "medias": [
+        {
+          "data": {
+            "id": "36603112-756f-4e45-a460-dc52d5e29a12",
+            "type": "image_job",
+            "url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261014_172408_36603112-756f-4e45-a460-dc52d5e29a12.png"
+          },
+          "role": "image"
+        }
+      ],
+      "model": "flare",
+      "prompt": "Use the reference image as the exact same place and camera angle: the arched doorway at the base of the lighthouse at night in wind and rain. Change only this: the heavy wooden door is now fully closed, nobody stands there, and a thin line of warm golden light shines through the gap under the door; same stone walls, same wet steps, same lamp. No people. No text on any sign. Vertical composition. Warm animated-series illustration, graphic-novel style, clean ink lines, soft cel shading, coastal palette of sea blue, sand, lighthouse yellow and evening orange, mature tone suitable for teens and adults, not childish, no text, no letters, no numbers, no logos.",
+      "quality": "low",
+      "reference_elements": [],
+      "remove_bg": false,
+      "resolution": "2k",
+      "width": 1520
+    },
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261014_173323_500206f4-7be9-41b1-aee8-38393986bc92.png",
+    "status": "completed"
+  }
+]

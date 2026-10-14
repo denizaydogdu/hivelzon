@@ -1,0 +1,48 @@
+[
+  {
+    "created_at": "2026-10-14T17:21:26.564687Z",
+    "display_name": "GPT Image 2.5",
+    "id": "693d6ed9-29a9-4751-9e69-6b9e7d5dda99",
+    "job_type": "gpt_image_2_5",
+    "min_result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261014_172126_693d6ed9-29a9-4751-9e69-6b9e7d5dda99_min.webp",
+    "params": {
+      "aspect_ratio": "9:16",
+      "height": 2688,
+      "medias": [
+        {
+          "data": {
+            "id": "663ea0fe-3df5-4cea-ba8c-e08c80e48a96",
+            "type": "media_input",
+            "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/663ea0fe-3df5-4cea-ba8c-e08c80e48a96.png"
+          },
+          "role": "image"
+        },
+        {
+          "data": {
+            "id": "6db4fa91-a3ff-4587-9b02-43a480ecb45a",
+            "type": "media_input",
+            "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/6db4fa91-a3ff-4587-9b02-43a480ecb45a.png"
+          },
+          "role": "image"
+        },
+        {
+          "data": {
+            "id": "d83596f7-7f31-4914-ae9e-5e4134e086b6",
+            "type": "image_job",
+            "url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261014_171106_d83596f7-7f31-4914-ae9e-5e4134e086b6.png"
+          },
+          "role": "image"
+        }
+      ],
+      "model": "flare",
+      "prompt": "Use the reference images for Alex, Maya and Sam. Scene: the three friends open the wooden door of a warm, cosy hilltop café and step inside; old framed photographs on the walls, wooden tables, plants, soft lamps. Distinct outfits: Alex (19, dark brown shoulder-length hair, olive jacket over a cream sweater, jeans, canvas backpack); Maya (19, curly dark-brown hair, freckles, bright yellow raincoat over a striped sweater); Sam (17, slim boy, wavy dark-brown hair, round dark-rimmed glasses, navy-blue hoodie, black headphones around his neck, grey jeans; NOT a yellow raincoat). Curious, happy faces. No text on any sign, screen, label or paper. Vertical composition. Warm animated-series illustration, graphic-novel style, clean ink lines, soft cel shading, coastal palette of sea blue, sand, lighthouse yellow and evening orange, mature tone suitable for teens and adults, not childish, no text, no letters, no numbers, no logos.",
+      "quality": "low",
+      "reference_elements": [],
+      "remove_bg": false,
+      "resolution": "2k",
+      "width": 1520
+    },
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261014_172126_693d6ed9-29a9-4751-9e69-6b9e7d5dda99.png",
+    "status": "completed"
+  }
+]

@@ -1,0 +1,23 @@
+[
+  {
+    "created_at": "2026-10-14T17:21:00.004328Z",
+    "display_name": "GPT Image 2.5",
+    "id": "eca9ca21-040f-44d4-9e75-8b1572622a3f",
+    "job_type": "gpt_image_2_5",
+    "min_result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261014_172100_eca9ca21-040f-44d4-9e75-8b1572622a3f_min.webp",
+    "params": {
+      "aspect_ratio": "9:16",
+      "height": 2688,
+      "medias": [],
+      "model": "flare",
+      "prompt": "Scene: late Saturday afternoon on a green hill above a small coastal town; a cosy old café with a wooden sign board (blank, no letters), warm light in its windows; trees around it; far below, the harbour and, on a distant point across the bay, a small lighthouse. No text on any sign, screen, label or paper. Vertical composition. Warm animated-series illustration, graphic-novel style, clean ink lines, soft cel shading, coastal palette of sea blue, sand, lighthouse yellow and evening orange, mature tone suitable for teens and adults, not childish, no text, no letters, no numbers, no logos.",
+      "quality": "low",
+      "reference_elements": [],
+      "remove_bg": false,
+      "resolution": "2k",
+      "width": 1520
+    },
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261014_172100_eca9ca21-040f-44d4-9e75-8b1572622a3f.png",
+    "status": "completed"
+  }
+]

@@ -1,0 +1,48 @@
+[
+  {
+    "created_at": "2026-10-14T17:23:48.19638Z",
+    "display_name": "GPT Image 2.5",
+    "id": "5195fc5c-3ab1-488a-b615-cd8ef2c5f6ca",
+    "job_type": "gpt_image_2_5",
+    "min_result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261014_172348_5195fc5c-3ab1-488a-b615-cd8ef2c5f6ca_min.webp",
+    "params": {
+      "aspect_ratio": "9:16",
+      "height": 2688,
+      "medias": [
+        {
+          "data": {
+            "id": "663ea0fe-3df5-4cea-ba8c-e08c80e48a96",
+            "type": "media_input",
+            "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/663ea0fe-3df5-4cea-ba8c-e08c80e48a96.png"
+          },
+          "role": "image"
+        },
+        {
+          "data": {
+            "id": "6db4fa91-a3ff-4587-9b02-43a480ecb45a",
+            "type": "media_input",
+            "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/6db4fa91-a3ff-4587-9b02-43a480ecb45a.png"
+          },
+          "role": "image"
+        },
+        {
+          "data": {
+            "id": "d253029e-727a-4f84-9042-4afc2e552a08",
+            "type": "image_job",
+            "url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261014_171848_d253029e-727a-4f84-9042-4afc2e552a08.png"
+          },
+          "role": "image"
+        }
+      ],
+      "model": "flare",
+      "prompt": "Use the reference images for Alex, Maya and Tom. Split-screen comic panel divided by a diagonal line: on the left, Alex (19, dark brown shoulder-length hair, olive jacket over a cream sweater, jeans, canvas backpack) holds a phone to her ear in the book shop with Maya (19, curly dark-brown hair, freckles, bright yellow raincoat over a striped sweater) listening close beside her; on the right, Tom (24, tall, messy ginger hair, freckles, dark-teal rain jacket, yellow lanyard with a blank badge, grey scarf) answers a phone at a small wooden desk in a lighthouse museum, old lamps and ship models behind him, friendly smile. No text on any sign, screen, label or paper. Vertical composition. Warm animated-series illustration, graphic-novel style, clean ink lines, soft cel shading, coastal palette of sea blue, sand, lighthouse yellow and evening orange, mature tone suitable for teens and adults, not childish, no text, no letters, no numbers, no logos.",
+      "quality": "low",
+      "reference_elements": [],
+      "remove_bg": false,
+      "resolution": "2k",
+      "width": 1520
+    },
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261014_172348_5195fc5c-3ab1-488a-b615-cd8ef2c5f6ca.png",
+    "status": "completed"
+  }
+]

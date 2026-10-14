@@ -1,0 +1,32 @@
+[
+  {
+    "created_at": "2026-10-14T17:24:51.05487Z",
+    "display_name": "GPT Image 2.5",
+    "id": "1e2f3107-f11f-4964-9a51-e84b939a8bba",
+    "job_type": "gpt_image_2_5",
+    "min_result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261014_172451_1e2f3107-f11f-4964-9a51-e84b939a8bba_min.webp",
+    "params": {
+      "aspect_ratio": "9:16",
+      "height": 2688,
+      "medias": [
+        {
+          "data": {
+            "id": "effcd1d0-a1a7-4490-b464-571ed47edf5d",
+            "type": "image_job",
+            "url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261014_171828_effcd1d0-a1a7-4490-b464-571ed47edf5d.png"
+          },
+          "role": "image"
+        }
+      ],
+      "model": "flare",
+      "prompt": "Use the reference image for Mr Grant. First-person point of view across the shop counter: close-up of Mr Grant (70, bald on top with white hair at the sides, bushy white moustache, round glasses low on his nose, brown knitted waistcoat over a checked shirt) saying a number clearly and patiently, eyebrows raised, one finger lifted; shelves of old radios blurred behind. Calm, slightly muted mood. No text on any sign, screen, label or paper. Vertical composition. Warm animated-series illustration, graphic-novel style, clean ink lines, soft cel shading, coastal palette of sea blue, sand, lighthouse yellow and evening orange, mature tone suitable for teens and adults, not childish, no text, no letters, no numbers, no logos.",
+      "quality": "low",
+      "reference_elements": [],
+      "remove_bg": false,
+      "resolution": "2k",
+      "width": 1520
+    },
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261014_172451_1e2f3107-f11f-4964-9a51-e84b939a8bba.png",
+    "status": "completed"
+  }
+]

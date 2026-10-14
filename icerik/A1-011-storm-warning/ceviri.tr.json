@@ -1,0 +1,986 @@
+{
+  "contentId": "A1-011",
+  "status": "DRAFT",
+  "author": "Claude taslak",
+  "date": "2026-10-14",
+  "lines": [
+    {
+      "en": "Storm Warning",
+      "tr": "Fırtına Uyarısı",
+      "chunks": [],
+      "words": {
+        "storm": "fırtına",
+        "warning": "uyarı"
+      },
+      "source": "content:title"
+    },
+    {
+      "en": "The Lighthouse",
+      "tr": "Deniz Feneri",
+      "chunks": [],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "lighthouse": "deniz feneri"
+      },
+      "source": "content:title"
+    },
+    {
+      "en": "Good morning!",
+      "tr": "Günaydın!",
+      "chunks": [
+        {
+          "en": "Good morning",
+          "tr": "Günaydın"
+        }
+      ],
+      "words": {
+        "good": "iyi",
+        "morning": "sabah"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "Here is the weather.",
+      "tr": "İşte hava durumu.",
+      "chunks": [
+        {
+          "en": "Here is",
+          "tr": "İşte"
+        }
+      ],
+      "words": {
+        "here": "işte",
+        "is": "-dır / -dir (olmak)",
+        "the": "(belirli tanımlık)",
+        "weather": "hava durumu"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "Today is cold and cloudy.",
+      "tr": "Bugün hava soğuk ve bulutlu.",
+      "chunks": [],
+      "words": {
+        "today": "bugün",
+        "is": "-dır / -dir (olmak)",
+        "cold": "soğuk",
+        "and": "ve",
+        "cloudy": "bulutlu"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "On Saturday, it's very windy.",
+      "tr": "Cumartesi çok rüzgârlı.",
+      "chunks": [
+        {
+          "en": "On Saturday",
+          "tr": "Cumartesi günü"
+        }
+      ],
+      "words": {
+        "on": "-de (gün için)",
+        "saturday": "cumartesi",
+        "it's": "(hava) … -dır",
+        "very": "çok",
+        "windy": "rüzgârlı"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "And it's raining in the evening.",
+      "tr": "Akşam da yağmur yağıyor.",
+      "chunks": [
+        {
+          "en": "it's raining",
+          "tr": "yağmur yağıyor"
+        },
+        {
+          "en": "in the evening",
+          "tr": "akşam"
+        }
+      ],
+      "words": {
+        "and": "ve",
+        "it's": "(hava) … -dır",
+        "raining": "yağmur yağıyor",
+        "in": "-de / içinde",
+        "the": "(belirli tanımlık)",
+        "evening": "akşam"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "Oh no!",
+      "tr": "Ah, olamaz!",
+      "chunks": [
+        {
+          "en": "Oh no",
+          "tr": "Ah, olamaz"
+        }
+      ],
+      "words": {
+        "oh": "ah, oh",
+        "no": "olamaz (ünlem)"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "Alex, what's the weather on Saturday?",
+      "tr": "Alex, cumartesi hava nasıl?",
+      "chunks": [
+        {
+          "en": "what's the weather",
+          "tr": "hava nasıl"
+        }
+      ],
+      "words": {
+        "what's": "ne … (burada: nasıl)",
+        "the": "(belirli tanımlık)",
+        "weather": "hava durumu",
+        "on": "-de (gün için)",
+        "saturday": "cumartesi"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "Oh no! Alex, what's the weather on Saturday?",
+      "tr": "Ah, olamaz! Alex, cumartesi hava nasıl?",
+      "chunks": [
+        {
+          "en": "what's the weather",
+          "tr": "hava nasıl"
+        }
+      ],
+      "words": {
+        "oh": "ah, oh",
+        "no": "olamaz (ünlem)",
+        "what's": "ne … (burada: nasıl)",
+        "the": "(belirli tanımlık)",
+        "weather": "hava durumu",
+        "on": "-de (gün için)",
+        "saturday": "cumartesi"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "It is rain.",
+      "tr": "(Hatalı) O yağmurdur.",
+      "chunks": [],
+      "words": {
+        "it": "o",
+        "is": "-dır / -dir (olmak)",
+        "rain": "yağmur"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "Rain? Yes…",
+      "tr": "Yağmur mu? Evet…",
+      "chunks": [],
+      "words": {
+        "rain": "yağmur",
+        "yes": "evet"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "It's windy and rainy.",
+      "tr": "Rüzgârlı ve yağmurlu.",
+      "chunks": [],
+      "words": {
+        "it's": "(hava) … -dır",
+        "windy": "rüzgârlı",
+        "and": "ve",
+        "rainy": "yağmurlu"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "Yes. And it's cold.",
+      "tr": "Evet. Bir de soğuk.",
+      "chunks": [],
+      "words": {
+        "yes": "evet",
+        "and": "ve",
+        "it's": "(hava) … -dır",
+        "cold": "soğuk"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "Is Light Night open?",
+      "tr": "Light Night açık mı?",
+      "chunks": [],
+      "words": {
+        "is": "-dır / -dir (olmak)",
+        "light": "ışık (etkinlik adı)",
+        "night": "gece (etkinlik adı)",
+        "open": "açık"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "I don't know.",
+      "tr": "Bilmiyorum.",
+      "chunks": [
+        {
+          "en": "I don't know",
+          "tr": "Bilmiyorum"
+        }
+      ],
+      "words": {
+        "i": "ben",
+        "don't": "-ma / -me (olumsuz)",
+        "know": "bilmek / tanımak"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "Let's call Lumen Point.",
+      "tr": "Lumen Point'i arayalım.",
+      "chunks": [],
+      "words": {
+        "let's": "hadi (-elim)",
+        "call": "aramak (telefonla)"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "Hello, Lumen Point.",
+      "tr": "Merhaba, Lumen Point.",
+      "chunks": [],
+      "words": {
+        "hello": "merhaba"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "This is Tom.",
+      "tr": "Ben Tom.",
+      "chunks": [
+        {
+          "en": "This is",
+          "tr": "Ben … (telefonda)"
+        }
+      ],
+      "words": {
+        "this": "bu (burada: ben)",
+        "is": "-dır / -dir (olmak)"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "Hello. Is Light Night open on Saturday?",
+      "tr": "Merhaba. Light Night cumartesi açık mı?",
+      "chunks": [],
+      "words": {
+        "hello": "merhaba",
+        "is": "-dır / -dir (olmak)",
+        "light": "ışık (etkinlik adı)",
+        "night": "gece (etkinlik adı)",
+        "open": "açık",
+        "on": "-de (gün için)",
+        "saturday": "cumartesi"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "Yes, it's open.",
+      "tr": "Evet, açık.",
+      "chunks": [],
+      "words": {
+        "yes": "evet",
+        "it's": "o … -dır",
+        "open": "açık"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "On Saturday, at eight.",
+      "tr": "Cumartesi, saat sekizde.",
+      "chunks": [
+        {
+          "en": "at eight",
+          "tr": "saat sekizde"
+        }
+      ],
+      "words": {
+        "on": "-de (gün için)",
+        "saturday": "cumartesi",
+        "at": "-e (bakmak) / -de (saat)",
+        "eight": "sekiz"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "And the light test?",
+      "tr": "Peki ışık denemesi?",
+      "chunks": [
+        {
+          "en": "the light test",
+          "tr": "ışık denemesi"
+        }
+      ],
+      "words": {
+        "and": "peki, ve",
+        "the": "(belirli tanımlık)",
+        "light": "ışık",
+        "test": "deneme, test"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "What is it?",
+      "tr": "Ne o?",
+      "chunks": [],
+      "words": {
+        "what": "ne",
+        "is": "-dır / -dir (olmak)",
+        "it": "o"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "The light test?",
+      "tr": "Işık denemesi mi?",
+      "chunks": [
+        {
+          "en": "The light test",
+          "tr": "ışık denemesi"
+        }
+      ],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "light": "ışık",
+        "test": "deneme, test"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "That's Light Night!",
+      "tr": "O, Light Night!",
+      "chunks": [],
+      "words": {
+        "that's": "o … -dır",
+        "light": "ışık (etkinlik adı)",
+        "night": "gece (etkinlik adı)"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "Come and see the old light.",
+      "tr": "Gel, eski ışığı gör.",
+      "chunks": [
+        {
+          "en": "Come and see",
+          "tr": "Gel ve gör"
+        }
+      ],
+      "words": {
+        "come": "gel",
+        "and": "ve",
+        "see": "görmek",
+        "the": "(belirli tanımlık)",
+        "old": "eski / yaşlı",
+        "light": "ışık"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "The weather is bad.",
+      "tr": "Hava kötü.",
+      "chunks": [],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "weather": "hava",
+        "is": "-dır / -dir (olmak)",
+        "bad": "kötü"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "Is it OK?",
+      "tr": "Sorun olur mu?",
+      "chunks": [],
+      "words": {
+        "is": "-dır / -dir (olmak)",
+        "it": "o",
+        "ok": "tamam, sorun yok"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "Yes, it's OK.",
+      "tr": "Evet, sorun yok.",
+      "chunks": [
+        {
+          "en": "it's OK",
+          "tr": "sorun yok"
+        }
+      ],
+      "words": {
+        "yes": "evet",
+        "it's": "o … -dır",
+        "ok": "tamam"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "We're open.",
+      "tr": "Açığız.",
+      "chunks": [],
+      "words": {
+        "we're": "biz … -ız",
+        "open": "açık"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "Take the bus.",
+      "tr": "Otobüse binin.",
+      "chunks": [
+        {
+          "en": "Take the bus",
+          "tr": "Otobüse bin"
+        }
+      ],
+      "words": {
+        "take": "binmek (taşıta)",
+        "the": "(belirli tanımlık)",
+        "bus": "otobüs"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "Wear a warm coat.",
+      "tr": "Kalın bir mont giyin.",
+      "chunks": [],
+      "words": {
+        "wear": "giy",
+        "a": "bir",
+        "warm": "sıcak, kalın",
+        "coat": "palto, mont"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "Thank you, Tom!",
+      "tr": "Teşekkürler, Tom!",
+      "chunks": [
+        {
+          "en": "Thank you",
+          "tr": "Teşekkür ederim"
+        }
+      ],
+      "words": {
+        "thank": "teşekkür etmek",
+        "you": "sen / siz"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "See you on Saturday.",
+      "tr": "Cumartesi görüşürüz.",
+      "chunks": [
+        {
+          "en": "See you",
+          "tr": "Görüşürüz"
+        }
+      ],
+      "words": {
+        "see": "görmek",
+        "you": "sen / siz",
+        "on": "-de (gün için)",
+        "saturday": "cumartesi"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "The light test is Light Night!",
+      "tr": "Işık denemesi, Light Night'mış!",
+      "chunks": [
+        {
+          "en": "The light test",
+          "tr": "ışık denemesi"
+        }
+      ],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "light": "ışık",
+        "test": "deneme, test",
+        "is": "-dır / -dir (olmak)",
+        "night": "gece (etkinlik adı)"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "Hi! I'm ready for Saturday!",
+      "tr": "Selam! Cumartesiye hazırım!",
+      "chunks": [
+        {
+          "en": "ready for",
+          "tr": "-e hazır"
+        }
+      ],
+      "words": {
+        "hi": "selam",
+        "i'm": "ben … -ım",
+        "ready": "hazır",
+        "for": "için",
+        "saturday": "cumartesi"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "Sam! It's very cold!",
+      "tr": "Sam! Hava çok soğuk!",
+      "chunks": [],
+      "words": {
+        "it's": "(hava) … -dır",
+        "very": "çok",
+        "cold": "soğuk"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "OK, OK.",
+      "tr": "Tamam, tamam.",
+      "chunks": [],
+      "words": {
+        "ok": "tamam"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "What do I wear?",
+      "tr": "Ne giyeyim?",
+      "chunks": [],
+      "words": {
+        "what": "ne",
+        "do": "(soru yardımcısı)",
+        "i": "ben",
+        "wear": "giymek"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "OK, OK. What do I wear?",
+      "tr": "Tamam, tamam. Ne giyeyim?",
+      "chunks": [],
+      "words": {
+        "ok": "tamam",
+        "what": "ne",
+        "do": "(soru yardımcısı)",
+        "i": "ben",
+        "wear": "giymek"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "Wear a T-shirt.",
+      "tr": "Tişört giy.",
+      "chunks": [],
+      "words": {
+        "wear": "giy",
+        "a": "bir",
+        "t-shirt": "tişört"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "No, no!",
+      "tr": "Yok, yok!",
+      "chunks": [],
+      "words": {
+        "no": "hayır / yok"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "It's very cold!",
+      "tr": "Çok soğuk!",
+      "chunks": [],
+      "words": {
+        "it's": "(hava) … -dır",
+        "very": "çok",
+        "cold": "soğuk"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "Wear a raincoat.",
+      "tr": "Yağmurluk giy.",
+      "chunks": [],
+      "words": {
+        "wear": "giy",
+        "a": "bir",
+        "raincoat": "yağmurluk"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "Good idea.",
+      "tr": "İyi fikir.",
+      "chunks": [
+        {
+          "en": "Good idea",
+          "tr": "İyi fikir"
+        }
+      ],
+      "words": {
+        "good": "iyi",
+        "idea": "fikir"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "Take an umbrella, too.",
+      "tr": "Bir de şemsiye al.",
+      "chunks": [],
+      "words": {
+        "take": "almak",
+        "an": "bir (sesliden önce)",
+        "umbrella": "şemsiye",
+        "too": "de, da"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "An umbrella?",
+      "tr": "Şemsiye mi?",
+      "chunks": [],
+      "words": {
+        "an": "bir (sesliden önce)",
+        "umbrella": "şemsiye"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "In this wind?",
+      "tr": "Bu rüzgârda mı?",
+      "chunks": [],
+      "words": {
+        "in": "-de / içinde",
+        "this": "bu",
+        "wind": "rüzgâr"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "OK. No umbrella.",
+      "tr": "Tamam. Şemsiye yok.",
+      "chunks": [],
+      "words": {
+        "ok": "tamam",
+        "no": "hayır / yok",
+        "umbrella": "şemsiye"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "Wear a warm hat.",
+      "tr": "Kalın bir bere giy.",
+      "chunks": [],
+      "words": {
+        "wear": "giy",
+        "a": "bir",
+        "warm": "sıcak, kalın",
+        "hat": "şapka, bere"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "And take this light.",
+      "tr": "Bir de bu feneri al.",
+      "chunks": [],
+      "words": {
+        "and": "ve",
+        "take": "almak",
+        "this": "bu",
+        "light": "fener, el feneri"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "Turn it on, Alex.",
+      "tr": "Aç onu, Alex.",
+      "chunks": [
+        {
+          "en": "Turn it on",
+          "tr": "Aç onu"
+        }
+      ],
+      "words": {
+        "turn": "çevirmek (turn on: açmak)",
+        "it": "o",
+        "on": "(turn on: açmak)"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "Good. It works!",
+      "tr": "Güzel. Çalışıyor!",
+      "chunks": [],
+      "words": {
+        "good": "iyi",
+        "it": "o",
+        "works": "çalışıyor"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "Bus to Lumen Point: 6:30 · 7:30 · 8:30",
+      "tr": "Lumen Point otobüsü: 6.30 · 7.30 · 8.30",
+      "chunks": [],
+      "words": {
+        "bus": "otobüs",
+        "to": "-e",
+        "6:30": "altı buçuk",
+        "7:30": "yedi buçuk",
+        "8:30": "sekiz buçuk"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "What's the weather in İzmir?",
+      "tr": "İzmir'de hava nasıl?",
+      "chunks": [
+        {
+          "en": "What's the weather",
+          "tr": "hava nasıl"
+        }
+      ],
+      "words": {
+        "what's": "ne … (burada: nasıl)",
+        "the": "(belirli tanımlık)",
+        "weather": "hava durumu",
+        "in": "-de / içinde"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "Hello? Hello?",
+      "tr": "Alo? Alo?",
+      "chunks": [],
+      "words": {
+        "hello": "alo / merhaba"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "Can you hear me?",
+      "tr": "Beni duyabiliyor musun?",
+      "chunks": [
+        {
+          "en": "Can you hear me",
+          "tr": "Beni duyabiliyor musun"
+        }
+      ],
+      "words": {
+        "can": "-ebilmek",
+        "you": "sen / siz",
+        "hear": "duymak",
+        "me": "beni / bana"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "This is E.",
+      "tr": "Ben E.",
+      "chunks": [
+        {
+          "en": "This is",
+          "tr": "Ben … (telefonda, telsizde)"
+        }
+      ],
+      "words": {
+        "this": "bu (burada: ben)",
+        "is": "-dır / -dir (olmak)"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "Meet me at the old station.",
+      "tr": "Benimle eski istasyonda buluş.",
+      "chunks": [
+        {
+          "en": "Meet me",
+          "tr": "Benimle buluş"
+        }
+      ],
+      "words": {
+        "meet": "buluşmak",
+        "me": "benimle",
+        "at": "-e (bakmak) / -de (saat)",
+        "the": "(belirli tanımlık)",
+        "old": "eski / yaşlı",
+        "station": "istasyon"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "Friday. Seven o'clock.",
+      "tr": "Cuma. Saat yedi.",
+      "chunks": [],
+      "words": {
+        "friday": "cuma",
+        "seven": "yedi",
+        "o'clock": "saat (tam saat)"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "…the light…",
+      "tr": "…ışık…",
+      "chunks": [],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "light": "ışık"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "Listen! It's the same call.",
+      "tr": "Dinle! Aynı çağrı.",
+      "chunks": [],
+      "words": {
+        "listen": "dinle",
+        "it's": "o … -dır",
+        "the": "(belirli tanımlık)",
+        "same": "aynı",
+        "call": "çağrı"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "But now we can hear the end!",
+      "tr": "Ama şimdi sonunu duyabiliyoruz!",
+      "chunks": [],
+      "words": {
+        "but": "ama",
+        "now": "şimdi",
+        "we": "biz",
+        "can": "-ebilmek",
+        "hear": "duymak",
+        "the": "(belirli tanımlık)",
+        "end": "son"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "The light.",
+      "tr": "Işık.",
+      "chunks": [],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "light": "ışık"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "Again, the light!",
+      "tr": "Yine ışık!",
+      "chunks": [],
+      "words": {
+        "again": "yine, tekrar",
+        "the": "(belirli tanımlık)",
+        "light": "ışık"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "The light test.",
+      "tr": "Işık denemesi.",
+      "chunks": [
+        {
+          "en": "The light test",
+          "tr": "ışık denemesi"
+        }
+      ],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "light": "ışık",
+        "test": "deneme, test"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "On Saturday, at eight. The light test.",
+      "tr": "Cumartesi, saat sekizde. Işık denemesi.",
+      "chunks": [],
+      "words": {
+        "on": "-de (gün için)",
+        "saturday": "cumartesi",
+        "at": "-e (bakmak) / -de (saat)",
+        "eight": "sekiz",
+        "the": "(belirli tanımlık)",
+        "light": "ışık",
+        "test": "deneme, test"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "It's windy.",
+      "tr": "Hava rüzgârlı.",
+      "chunks": [],
+      "words": {
+        "it's": "(hava) … -dır",
+        "windy": "rüzgârlı"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "It's raining.",
+      "tr": "Yağmur yağıyor.",
+      "chunks": [
+        {
+          "en": "It's raining",
+          "tr": "Yağmur yağıyor"
+        }
+      ],
+      "words": {
+        "it's": "(hava) … -dır",
+        "raining": "yağmur yağıyor"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "It's cold.",
+      "tr": "Hava soğuk.",
+      "chunks": [],
+      "words": {
+        "it's": "(hava) … -dır",
+        "cold": "soğuk"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "Take an umbrella.",
+      "tr": "Şemsiye al.",
+      "chunks": [],
+      "words": {
+        "take": "almak",
+        "an": "bir (sesliden önce)",
+        "umbrella": "şemsiye"
+      },
+      "source": "kurgu"
+    }
+  ],
+  "phrases": [
+    {
+      "en": "storm",
+      "tr": "fırtına",
+      "words": {
+        "storm": "fırtına"
+      },
+      "source": "content:targetPhrases/glossary",
+      "note": "sözlük; bölüm adı"
+    }
+  ],
+  "notes": [
+    "'It is rain.' Türk öğrenci hatası (Türkçe 'yağmur' tek kelime); (Hatalı) işaretiyle çevrildi.",
+    "'Light Night' etkinlik adı; çevrilmedi, kelime anlamları ayrıca verildi.",
+    "'light' bu bölümde hem 'ışık' (the light test) hem 'el feneri' (take this light) anlamında; satıra özel anlam verildi."
+  ]
+}

@@ -1,0 +1,23 @@
+[
+  {
+    "created_at": "2026-10-14T17:29:53.406062Z",
+    "display_name": "GPT Image 2.5",
+    "id": "1c20f1e8-a911-4697-b821-31667b2fd4c7",
+    "job_type": "gpt_image_2_5",
+    "min_result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261014_172953_1c20f1e8-a911-4697-b821-31667b2fd4c7_min.webp",
+    "params": {
+      "aspect_ratio": "9:16",
+      "height": 2688,
+      "medias": [],
+      "model": "flare",
+      "prompt": "Scene: night, wind and rain over a dark sea; a tall lighthouse on a rocky point, its lamp at the top shining one long warm yellow beam pointing to the left over the waves. Seen from a distance, lighthouse in the centre. No text on any sign, screen, label or paper. Vertical composition. Warm animated-series illustration, graphic-novel style, clean ink lines, soft cel shading, coastal palette of sea blue, sand, lighthouse yellow and evening orange, mature tone suitable for teens and adults, not childish, no text, no letters, no numbers, no logos.",
+      "quality": "low",
+      "reference_elements": [],
+      "remove_bg": false,
+      "resolution": "2k",
+      "width": 1520
+    },
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261014_172953_1c20f1e8-a911-4697-b821-31667b2fd4c7.png",
+    "status": "completed"
+  }
+]

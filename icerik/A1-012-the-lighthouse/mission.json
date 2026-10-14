@@ -1,0 +1,47 @@
+{
+  "contentId": "A1-012",
+  "status": "DRAFT",
+  "mission": {
+    "tr": "Fenerde yardım iste, eski kulüp telsizini bul ve fotoğraftaki adları oku."
+  },
+  "targetPhrases": [
+    "Can you help me, please?",
+    "I'm looking for…",
+    "What's this?",
+    "Who is she?",
+    "Thank you very much."
+  ],
+  "successCriteria": {
+    "rule": "all",
+    "comprehension": [
+      "t-gorev"
+    ],
+    "targetPhrase": [
+      "k1",
+      "k2"
+    ],
+    "activeTask": [
+      "t-kanit",
+      "t-kanit2"
+    ],
+    "note": "Bölüm kapısı (K-29): üç ölçütün hepsi; her ölçütte listedeki herhangi bir düğüm yeter. Deneme ve ipucu sınırsız; zaman kilidi yok."
+  },
+  "hintPolicy": {
+    "levels": [
+      "keyword",
+      "pattern",
+      "explanation"
+    ],
+    "unlimited": true,
+    "wrongChoice": "Nazik tepki + Hi balonu, sonra aynı karar anına dönülür (K-28); hata hikâyeyi kilitlemez.",
+    "decisions": [
+      "k1",
+      "k2",
+      "k3"
+    ]
+  },
+  "source": "story.en.md görev kartı + kurgu.json gate (H-085). Bu dosyayı henüz hiçbir araç okumuyor; paket görev cümlesini story.en.md başlığından alır.",
+  "seasonFinale": {
+    "note": "Sezon finali kapı testi (ICERIK-MIMARISI §7.3, OYUN-TASARIMI §10.2): t-gorev B1–B12 hedefleri; t-kanit ve t-kanit2 sezon tekrarı (10 ifade). Geçilemezse hikâyenin sonu yine izlenir; 'Sezon 2'ye hazırlık' tekrar görevleri önerilir."
+  }
+}
