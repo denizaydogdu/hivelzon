@@ -18,9 +18,9 @@ Kurallar: her ücretli üretimden **önce** `higgsfield generate cost` ile maliy
 
 **Adil son için yerleştirilen ipuçları:** ilk cümle "I tell you a story tonight." ve "I know this robot very well." (p01); anlatıcının Pip'in iç dünyasını bilmesi (p03–p05); Zara'nın verdiği yeni mavi kitabın "about a robot" olması (p07); Pip'in okuduğu kitabın ilk satırının kitabın ilk cümlesiyle aynı olması ve kitabın Pip'in gecesini anlatması (p08).
 
-## Görsel planı (üretilmedi)
+## Görsel planı ve üretim kaydı (2026-10-14)
 
-> **Henüz üretilmedi.** Kullanıcı kararı (2026-10-14, H-071): kalan kitaplarda yalnız **kapak + her bölümün ilk sayfası**. Bu kitapta 3 görsel: `images/cover.png`, `images/p01.png`, `images/p06.png` (git dışı; adlar `book.json` ile aynı). Öbür sayfalar resimsiz, palet renkli (`image: null`).
+> **Üretildi (2026-10-14).** Kullanıcı onayı: dalga 1 metinleri ve 34 görsel (~17 kr) onaylandı ("İlk dalganın 8 kitap metni … onay", 2026-10-14). Kesin maliyet `generate cost` ile doğrulandı: GPT Image 2.5, 3:4, medium, 1k = 0,5 kr. Bölüm başları kapak işi referans verilerek üretildi. Eski plan notu: Kullanıcı kararı (2026-10-14, H-071): kalan kitaplarda yalnız **kapak + her bölümün ilk sayfası**. Bu kitapta 3 görsel: `images/cover.png`, `images/p01.png`, `images/p06.png` (git dışı; adlar `book.json` ile aynı). Öbür sayfalar resimsiz, palet renkli (`image: null`).
 > Öngörülen model: GPT Image 2.5, 3:4, quality medium, 1k ≈ 0,5 kr/görsel (pilotla aynı; ≈ 1,5 kr). Her üretimden önce `higgsfield generate cost` ile maliyet gösterilir ve kullanıcı onayı alınır. Bölüm başı görselleri kapak işi referans verilerek üretilir (karakter tutarlılığı).
 
 **Sabit stil öneki (her istemin başına):**
@@ -40,6 +40,17 @@ Kurallar: her ücretli üretimden **önce** `higgsfield generate cost` ile maliy
 | p06.png | c2 başı | Late at night Zara in purple pyjamas, holding her toy bear, sits on the kitchen floor next to Pip under the window; they look at each other; moonlight. |
 
 **Sürpriz kontrolü:** Sürpriz, anlatıcının Pip olması ve Pip'in Zara'ya okuduğu kitabın bu kitap olmasıdır. Hiçbir istemde Pip'in elinde kitap, kitap okuma sahnesi, rüyadaki koyunlar ya da Pip'in uyuduğu (ışıklarının söndüğü) an yok. Kapak yalnız kancayı gösterir (uyanık, yalnız bir robot ve ay). Bölüm 2 görseli yalnız Zara'nın gelişini gösterir; çözüm (hikâye okuma, rüya) görsele girmez.
+
+
+### Üretim kaydı
+
+| Dosya | Job id | Referans | Tarih (UTC) | Parametre | Kredi |
+|---|---|---|---|---|---|
+| cover.png | 65c911ea-a2d3-44d0-a1f9-b66204322ff2 | — | 2026-10-14T11:10:33+00:00 | 3:4, medium, 1k | 0.5 |
+| p06.png | 01a2bd45-ef6b-4a87-9618-b28bb2e4ceed | 65c911ea-a2d3-44d0-a1f9-b66204322ff2 | 2026-10-14T11:13:26+00:00 | 3:4, medium, 1k | 0.5 |
+| p01.png | 391137af-c8cb-4684-a768-9bf353ea33a0 | 65c911ea-a2d3-44d0-a1f9-b66204322ff2 | 2026-10-14T11:13:29+00:00 | 3:4, medium, 1k | 0.5 |
+
+**Toplam:** 1.5 kr. Tam istem metinleri yerel `images/_jobs.json`'da (git dışı). **Editör değerlendirmesi:** karakter ve üslup tutarlı; görselde yazı yok; sürpriz ele verilmiyor.
 
 ## Seslendirme kayıtları (tts_book.py)
 

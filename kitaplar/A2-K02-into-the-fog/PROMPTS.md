@@ -22,9 +22,9 @@ Kurallar: her ücretli üretimden **önce** `higgsfield generate cost` ile maliy
 - p11: Paloma "If you are lost, listen." parçasını hatırlar ve çanları dinler; çanların dağdan aşağı indiğini duyar.
 - Çözüm p14'te: "Follow the bells. These goats come home at six every evening."
 
-## Görsel planı (üretilmedi)
+## Görsel planı ve üretim kaydı (2026-10-14)
 
-> **Henüz üretilmedi.** Kullanıcı kararı (2026-10-14): kalan 28 kitapta resim yoğunluğu **kapak + bölüm başı**. Bu kitapta 5 görsel: kapak + 4 bölüm başı (p01, p05, p09, p12); diğer sayfalar resimsiz, palet renkli (`book.json → image: null`). Model: GPT Image 2.5, 3:4, düşük kalite, ~0,5 kr/görsel (≈ 2,5 kr; kesin tutar üretimden önce `higgsfield generate cost` ile doğrulanır). **Her üretimden önce maliyet gösterilir ve kullanıcı onayı alınır.** Dosya adları `book.json` ile aynı: `images/cover.png`, `images/p01.png`, `images/p05.png`, `images/p09.png`, `images/p12.png` (git dışı). Sayfa görselleri kapak işi referans verilerek üretilir (karakter tutarlılığı).
+> **Üretildi (2026-10-14).** Kullanıcı onayı: dalga 1 metinleri ve 34 görsel (~17 kr) onaylandı ("İlk dalganın 8 kitap metni … onay", 2026-10-14). Kesin maliyet `generate cost` ile doğrulandı: GPT Image 2.5, 3:4, medium, 1k = 0,5 kr. Bölüm başları kapak işi referans verilerek üretildi. Eski plan notu: Kullanıcı kararı (2026-10-14): kalan 28 kitapta resim yoğunluğu **kapak + bölüm başı**. Bu kitapta 5 görsel: kapak + 4 bölüm başı (p01, p05, p09, p12); diğer sayfalar resimsiz, palet renkli (`book.json → image: null`). Model: GPT Image 2.5, 3:4, düşük kalite, ~0,5 kr/görsel (≈ 2,5 kr; kesin tutar üretimden önce `higgsfield generate cost` ile doğrulanır). **Her üretimden önce maliyet gösterilir ve kullanıcı onayı alınır.** Dosya adları `book.json` ile aynı: `images/cover.png`, `images/p01.png`, `images/p05.png`, `images/p09.png`, `images/p12.png` (git dışı). Sayfa görselleri kapak işi referans verilerek üretilir (karakter tutarlılığı).
 
 **Sabit stil öneki (her istemin başına):**
 `Ink wash (sumi-e style) storybook illustration, non-photorealistic, soft wet brush edges and layered grey-green washes, misty mountain atmosphere. Palette: fog grey, sage and grey-green, pale stone, dark pine ink; the only strong colour accent is Paloma's bright orange jacket. Tense but safe and warm mood, never scary, no danger to anyone. Absolutely no text, letters, numbers, signs, logos or writing anywhere in the image; phone and camera screens are blank or show only soft light. Consistent characters as described. Vertical 3:4.`
@@ -50,6 +50,19 @@ Kurallar: her ücretli üretimden **önce** `higgsfield generate cost` ile maliy
 - **p01** ve **p05** keçisizdir; evin arkasındaki boş otlak gösterilmez.
 - **p09** bölüm 3'ün başında açılır ve metinde keçi bu sayfanın içinde ortaya çıkar; görsel bu yüzden yalnız belirsiz karaltıları gösterir (boynuz, bacak, sakal, çan yok). Keçiler ilk kez **p12**'de (bölüm 4, açıklamadan sonra) görünür.
 - Hiçbir görsel son sürprizi (keçilerin her akşam saat altıda eve dönmesi, dördüncü kuralın "Follow the bells" olması, Paloma'nın en sevdiği fotoğraf) göstermez; p12'de ev görünmez.
+
+
+### Üretim kaydı
+
+| Dosya | Job id | Referans | Tarih (UTC) | Parametre | Kredi |
+|---|---|---|---|---|---|
+| cover.png | 332235ba-8a6f-4a05-8df5-d3dd06aaee63 | — | 2026-10-14T11:11:32+00:00 | 3:4, medium, 1k | 0.5 |
+| p09.png | 5173a6f7-9828-4fe1-9898-8ccf4b003576 | 332235ba-8a6f-4a05-8df5-d3dd06aaee63 | 2026-10-14T11:14:46+00:00 | 3:4, medium, 1k | 0.5 |
+| p05.png | 85d000ae-eaea-4cda-8fe0-0174bdbe085f | 332235ba-8a6f-4a05-8df5-d3dd06aaee63 | 2026-10-14T11:14:47+00:00 | 3:4, medium, 1k | 0.5 |
+| p12.png | c98c6b02-1013-44ad-8eb0-9294c84a8541 | 332235ba-8a6f-4a05-8df5-d3dd06aaee63 | 2026-10-14T11:14:49+00:00 | 3:4, medium, 1k | 0.5 |
+| p01.png | f188a079-c26b-4fb6-ac3a-f56f31adbc06 | 332235ba-8a6f-4a05-8df5-d3dd06aaee63 | 2026-10-14T11:14:49+00:00 | 3:4, medium, 1k | 0.5 |
+
+**Toplam:** 2.5 kr. Tam istem metinleri yerel `images/_jobs.json`'da (git dışı). **Editör değerlendirmesi:** karakter ve üslup tutarlı; görselde yazı yok; sürpriz ele verilmiyor.
 
 ## Seslendirme kayıtları (tts_book.py)
 

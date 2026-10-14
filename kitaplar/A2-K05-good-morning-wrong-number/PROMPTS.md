@@ -26,9 +26,9 @@ Kurallar: her ücretli üretimden **önce** `higgsfield generate cost` ile maliy
 
 **Ad yazımı:** Katalogdaki *Inês* metinde *Ines* (`rights-and-review.md`).
 
-## Görsel planı (üretilmedi)
+## Görsel planı ve üretim kaydı (2026-10-14)
 
-> **Henüz üretilmedi.** Kullanıcı kararı (2026-10-14, pilot sonrası): kalan 28 kitapta **kapak + bölüm başı** görseli. Bu kitapta 5 görsel: kapak + 4 bölüm başı (p01, p05, p09, p13); diğer sayfalar resimsiz, kitap paletiyle renkli (`book.json → image: null`). Standart yol: GPT Image 2.5, 3:4, ~0,5 kr/görsel (≈ 2,5 kr). **Her üretimden önce `higgsfield generate cost` ile maliyet gösterilir ve onay alınır.** Dosyalar `images/cover.png`, `images/p01.png`, `images/p05.png`, `images/p09.png`, `images/p13.png` (git dışı). Bölüm başı görselleri kapak işi referans verilerek üretilir (karakter tutarlılığı).
+> **Üretildi (2026-10-14).** Kullanıcı onayı: dalga 1 metinleri ve 34 görsel (~17 kr) onaylandı ("İlk dalganın 8 kitap metni … onay", 2026-10-14). Kesin maliyet `generate cost` ile doğrulandı: GPT Image 2.5, 3:4, medium, 1k = 0,5 kr. Bölüm başları kapak işi referans verilerek üretildi. Eski plan notu: Kullanıcı kararı (2026-10-14, pilot sonrası): kalan 28 kitapta **kapak + bölüm başı** görseli. Bu kitapta 5 görsel: kapak + 4 bölüm başı (p01, p05, p09, p13); diğer sayfalar resimsiz, kitap paletiyle renkli (`book.json → image: null`). Standart yol: GPT Image 2.5, 3:4, ~0,5 kr/görsel (≈ 2,5 kr). **Her üretimden önce `higgsfield generate cost` ile maliyet gösterilir ve onay alınır.** Dosyalar `images/cover.png`, `images/p01.png`, `images/p05.png`, `images/p09.png`, `images/p13.png` (git dışı). Bölüm başı görselleri kapak işi referans verilerek üretilir (karakter tutarlılığı).
 
 **Sabit stil öneki (her istemin başına):**
 `Watercolour storybook illustration, non-photorealistic, soft wet edges and visible paper texture, nostalgic and full of light. Palette: Atlantic turquoise, sunny yellow house, bright blue balcony, small red fishing boat, warm sand, morning pink sky. Gentle, warm, slightly melancholic but hopeful mood. Absolutely no text, letters, numbers, signs or writing anywhere in the image; phone screens show only a small picture of the sea, never any words, icons with letters or message bubbles. Consistent characters as described. Vertical 3:4.`
@@ -49,6 +49,19 @@ Kurallar: her ücretli üretimden **önce** `higgsfield generate cost` ile maliy
 | p13.png | Mateo, cast off, his left leg thin and pale, walks slowly down the hill path with one crutch next to Mum, who smiles a secret smile; below them the busy beach and, small in the distance, a tall white wooden tower with an empty red chair on top. |
 
 **Sürpriz kontrolü:** Gönderenin kim olduğu ve fotoğrafların cankurtaran kulesinden çekildiği sona kadar saklıdır. Kapakta yalnız Mateo, balkon ve deniz var; telefon ekranında yalnız deniz resmi (yazı yok), başka kişi, kule, kırmızı şapka ya da düdük yok. p01, p05 ve p09'da da kule, kırmızı sandalye, şapka ve Ines yok (p09'da plaj uzaktan, kule vurgulanmadan; istemde "no tower" eklenir). Kule yalnız p13'te, uzakta ve boş görünür: bölümün adı zaten *The Tower* ve sayfa metni kuleyi aynı sayfada anlatıyor; Ines'in kendisi hiçbir planlı görselde yok, bu yüzden sürpriz (yüzme öğretmeni) p14'te okurla birlikte açılır.
+
+
+### Üretim kaydı
+
+| Dosya | Job id | Referans | Tarih (UTC) | Parametre | Kredi |
+|---|---|---|---|---|---|
+| cover.png | 85793bb7-88e4-4220-ae96-1e53ebe42bba | — | 2026-10-14T11:12:09+00:00 | 3:4, medium, 1k | 0.5 |
+| p05.png | 32b1977d-07f8-4f07-8106-51273d2e1273 | 85793bb7-88e4-4220-ae96-1e53ebe42bba | 2026-10-14T11:15:37+00:00 | 3:4, medium, 1k | 0.5 |
+| p13.png | 828d0d6c-6f61-4c87-bf32-90fdd401773d | 85793bb7-88e4-4220-ae96-1e53ebe42bba | 2026-10-14T11:15:37+00:00 | 3:4, medium, 1k | 0.5 |
+| p01.png | 2a7375dc-b58f-44a5-8f40-1ccc3ea2289f | 85793bb7-88e4-4220-ae96-1e53ebe42bba | 2026-10-14T11:15:39+00:00 | 3:4, medium, 1k | 0.5 |
+| p09.png | 0f8ea692-c6dd-4177-a197-bc02726c6acf | 85793bb7-88e4-4220-ae96-1e53ebe42bba | 2026-10-14T11:15:41+00:00 | 3:4, medium, 1k | 0.5 |
+
+**Toplam:** 2.5 kr. Tam istem metinleri yerel `images/_jobs.json`'da (git dışı). **Editör değerlendirmesi:** karakter ve üslup tutarlı; görselde yazı yok; sürpriz ele verilmiyor.
 
 ## Seslendirme kayıtları (tts_book.py)
 

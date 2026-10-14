@@ -18,9 +18,9 @@ Kurallar: her ücretli üretimden **önce** `higgsfield generate cost` ile maliy
 
 **Adil son için yerleştirilen ipuçları:** Füsun Teyze'nin hiçbir şeyi yazmaması, "elleriyle, kâğıtla değil" yemek yapması (p02); masadaki unlu el izleri (p03); Limon'un geceleri hep Füsun Teyze'nin yatağında uyuması ve yarım kartın Limon'un sepetinden çıkması (p04, p05); karttaki ölçülerle yapılan üç kötü kek (p09–p10); Füsun Teyze'nin hiç ölçmeden, karta bakmadan yemek yapması (p11); Theo ile sabah altıdaki gizli dersler ve Füsun Teyze'nin İngilizce konuşması (p07, p08, p12).
 
-## Görsel planı (üretilmedi)
+## Görsel planı ve üretim kaydı (2026-10-14)
 
-> **Henüz üretilmedi.** Kullanıcı kararı (2026-10-14, H-071): kalan 28 kitapta resim yoğunluğu **kapak + bölüm başı**. Bu kitapta 5 görsel: `images/cover.png`, `images/p01.png`, `images/p05.png`, `images/p09.png`, `images/p13.png` (git dışı; dosya adları `book.json` ile aynı, diğer sayfalar resimsiz ve palet renkli). Model: GPT Image 2.5, 3:4, ~0,5 kr/görsel (pilotta 1k medium ile doğrulandı; tahmini toplam ≈ 2,5 kr). **Her üretimden önce `higgsfield generate cost` ile maliyet gösterilir ve kullanıcı onayı alınır.** Bölüm başı görselleri kapak işi referans verilerek üretilir (karakter tutarlılığı).
+> **Üretildi (2026-10-14).** Kullanıcı onayı: dalga 1 metinleri ve 34 görsel (~17 kr) onaylandı ("İlk dalganın 8 kitap metni … onay", 2026-10-14). Kesin maliyet `generate cost` ile doğrulandı: GPT Image 2.5, 3:4, medium, 1k = 0,5 kr. Bölüm başları kapak işi referans verilerek üretildi. Eski plan notu: Kullanıcı kararı (2026-10-14, H-071): kalan 28 kitapta resim yoğunluğu **kapak + bölüm başı**. Bu kitapta 5 görsel: `images/cover.png`, `images/p01.png`, `images/p05.png`, `images/p09.png`, `images/p13.png` (git dışı; dosya adları `book.json` ile aynı, diğer sayfalar resimsiz ve palet renkli). Model: GPT Image 2.5, 3:4, ~0,5 kr/görsel (pilotta 1k medium ile doğrulandı; tahmini toplam ≈ 2,5 kr). **Her üretimden önce `higgsfield generate cost` ile maliyet gösterilir ve kullanıcı onayı alınır.** Bölüm başı görselleri kapak işi referans verilerek üretilir (karakter tutarlılığı).
 
 **Sabit stil öneki (her istemin başına):**
 `Gouache storybook illustration, non-photorealistic, soft visible brush strokes, warm, playful detective mood. Palette: lemon yellow, olive green, whitewashed white, Aegean blue, warm terracotta. Small seaside Aegean town with narrow stone streets, white houses with blue shutters and olive trees. Absolutely no text, letters, numbers, signs, labels or writing anywhere in the image; recipe cards, notebooks, shop fronts and phone screens are blank or drawn with abstract lines only. Consistent characters as described. Vertical 3:4.`
@@ -44,6 +44,19 @@ Kurallar: her ücretli üretimden **önce** `higgsfield generate cost` ile maliy
 | p13.png | c4 başı | Midnight kitchen lit by one warm lamp; Aunt Füsun, with flour on her hands, holds out her open hand towards Elif in pyjamas at the door; inviting, friendly, no paper visible. |
 
 **Sürpriz kontrolü:** Hiçbir görsel kartı kimin aldığını göstermez. Kapak yalnızca boş kutuyu ve meraklı Elif'i gösterir; Füsun Teyze kapakta yok. Bölüm başı görselleri sonu ele vermez: c2'de üç şüpheli eşit ağırlıkta ve masum gündelik işlerinde; c3'te yalnız Elif'in kek denemesi; c4'te Füsun Teyze'nin elinde kart parçası **yok**, yalnızca davet eden açık bir el var (kartı sakladığı ve kartın yanlış olduğu metinde öğrenilir). Theo ile Füsun Teyze'nin sabah dersleri hiçbir görselde yer almaz.
+
+
+### Üretim kaydı
+
+| Dosya | Job id | Referans | Tarih (UTC) | Parametre | Kredi |
+|---|---|---|---|---|---|
+| cover.png | d8c23b5e-3ff3-4dc2-bbeb-3762f17f2bba | — | 2026-10-14T11:11:12+00:00 | 3:4, medium, 1k | 0.5 |
+| p05.png | 050d6d14-a6a7-4290-bb84-7aa6bb25b729 | d8c23b5e-3ff3-4dc2-bbeb-3762f17f2bba | 2026-10-14T11:14:18+00:00 | 3:4, medium, 1k | 0.5 |
+| p09.png | 123ac385-0619-499b-ae86-d710bce4d318 | d8c23b5e-3ff3-4dc2-bbeb-3762f17f2bba | 2026-10-14T11:14:21+00:00 | 3:4, medium, 1k | 0.5 |
+| p13.png | c246c559-1e56-413e-9e21-42ea8ab2c856 | d8c23b5e-3ff3-4dc2-bbeb-3762f17f2bba | 2026-10-14T11:14:21+00:00 | 3:4, medium, 1k | 0.5 |
+| p01.png | e3de7819-00fe-48e6-87d4-f76d81fb3358 | d8c23b5e-3ff3-4dc2-bbeb-3762f17f2bba | 2026-10-14T11:14:22+00:00 | 3:4, medium, 1k | 0.5 |
+
+**Toplam:** 2.5 kr. Tam istem metinleri yerel `images/_jobs.json`'da (git dışı). **Editör değerlendirmesi:** karakter ve üslup tutarlı; görselde yazı yok; sürpriz ele verilmiyor.
 
 ## Seslendirme kayıtları (tts_book.py)
 

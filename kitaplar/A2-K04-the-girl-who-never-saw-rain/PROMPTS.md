@@ -20,9 +20,9 @@ Kurallar: her ücretli üretimden **önce** `higgsfield generate cost` ile maliy
 - Leo, Nia'nın üzüldüğünü görüp tek söz etmeden çıkıyor; arka kapının sesi (p11).
 - Gece "yağmuru": beklenenden ılık, Leo ıslak ve ayakkabıları çamurlu, Nia'ya bakmıyor (p13); koku yok, Lunaria'daki su gibi; gökyüzünde yıldızlar ve tek küçük bulut; su yandan, pencerenin yakınından geliyor (p14).
 
-## Görsel planı (üretilmedi)
+## Görsel planı ve üretim kaydı (2026-10-14)
 
-> **Henüz üretilmedi.** Kullanıcı kararı (2026-10-14): kalan 28 kitapta resim yoğunluğu **kapak + bölüm başı**. Bu kitapta 5 görsel: `images/cover.png`, `images/p01.png`, `images/p05.png`, `images/p09.png`, `images/p13.png` (git dışı; adlar `book.json` ile aynı). Diğer sayfalar resimsiz, palet renkli (`image: null`).
+> **Üretildi (2026-10-14).** Kullanıcı onayı: dalga 1 metinleri ve 34 görsel (~17 kr) onaylandı ("İlk dalganın 8 kitap metni … onay", 2026-10-14). Kesin maliyet `generate cost` ile doğrulandı: GPT Image 2.5, 3:4, medium, 1k = 0,5 kr. Bölüm başları kapak işi referans verilerek üretildi. Eski plan notu: Kullanıcı kararı (2026-10-14): kalan 28 kitapta resim yoğunluğu **kapak + bölüm başı**. Bu kitapta 5 görsel: `images/cover.png`, `images/p01.png`, `images/p05.png`, `images/p09.png`, `images/p13.png` (git dışı; adlar `book.json` ile aynı). Diğer sayfalar resimsiz, palet renkli (`image: null`).
 > Model ve maliyet: GPT Image 2.5, 3:4, ≈ 0,5 kr/görsel (pilotta 1k medium), toplam ≈ 2,5 kr. Her üretimden önce `higgsfield generate cost` ile maliyet gösterilir ve kullanıcı onayı alınır. Sayfa görselleri kapak işi referans verilerek üretilir (karakter tutarlılığı).
 
 **Sabit stil öneki (her istemin başına):**
@@ -46,6 +46,19 @@ Kurallar: her ücretli üretimden **önce** `higgsfield generate cost` ile maliy
 | p13.png | p13 (Bölüm 4, The Smell of Rain) | Night in the farmhouse garden: Nia in her pyjamas laughs and spins with her arms open, her hair and face wet and shining in the light from the back door; the scene is lit warmly from the house; no source of water is shown. |
 
 **Sürpriz kontrolü:** Sonun sürprizi, ilk "yağmurun" Leo'nun açtığı sulama boruları olmasıdır. Hiçbir görselde çalışan sulama başlığı, Leo'nun çarkı çevirmesi, boru ya da yıldızlı açık gökyüzü altında yağan su gösterilmez. Kapak yalnız Nia'nın özlemini (Ay ve uzaktaki Dünya) gösterir; sonu, yağmuru ya da Leo'yu göstermez. p13 yalnızca Nia'nın sevincini gösterir; suyun nereden geldiği görünmez, Leo görünmez, gökyüzü kadraj dışındadır. Borular yalnızca metinde (p07, resimsiz sayfa) geçer.
+
+
+### Üretim kaydı
+
+| Dosya | Job id | Referans | Tarih (UTC) | Parametre | Kredi |
+|---|---|---|---|---|---|
+| cover.png | c9814759-b88d-4323-99c9-a39ec2731a3e | — | 2026-10-14T11:11:51+00:00 | 3:4, medium, 1k | 0.5 |
+| p01.png | 36e54c6f-71e7-4402-a633-a7040f445a60 | c9814759-b88d-4323-99c9-a39ec2731a3e | 2026-10-14T11:15:12+00:00 | 3:4, medium, 1k | 0.5 |
+| p05.png | 497fcf1a-0061-4d63-afae-bbf57151ff32 | c9814759-b88d-4323-99c9-a39ec2731a3e | 2026-10-14T11:15:12+00:00 | 3:4, medium, 1k | 0.5 |
+| p13.png | 76732da9-1660-405f-a40d-d126ca09f606 | c9814759-b88d-4323-99c9-a39ec2731a3e | 2026-10-14T11:15:12+00:00 | 3:4, medium, 1k | 0.5 |
+| p09.png | e613facd-103c-4ba0-a362-c36b3d4e4fa1 | c9814759-b88d-4323-99c9-a39ec2731a3e | 2026-10-14T11:15:14+00:00 | 3:4, medium, 1k | 0.5 |
+
+**Toplam:** 2.5 kr. Tam istem metinleri yerel `images/_jobs.json`'da (git dışı). **Editör değerlendirmesi:** karakter ve üslup tutarlı; görselde yazı yok; sürpriz ele verilmiyor.
 
 ## Seslendirme kayıtları (tts_book.py)
 

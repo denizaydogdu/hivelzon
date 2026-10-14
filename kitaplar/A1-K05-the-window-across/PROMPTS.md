@@ -16,9 +16,9 @@ Kurallar: her ücretli üretimden **önce** `higgsfield generate cost` ile maliy
 
 **Adil son için yerleştirilen ipuçları:** kızın gözlerinin Omar'ın yüzünde değil, biraz aşağıda olması (p01); dışarıdaki süt bardağı ve "her sabah bardak dolu değil" (p03–p04); karda küçük çiçeğe benzeyen izler (p04); kızın "Omar'ın penceresine" gülümsemesi (p04); fırtına gecesi yalnız fırının sıcak kalması, sabah bardağın dolu ve karın izsiz olması (p05); torbaların arkasındaki küçük ses (p06).
 
-## Görsel planı (üretilmedi)
+## Görsel planı ve üretim kaydı (2026-10-14)
 
-> **Henüz üretilmedi.** Kullanıcı kararı (2026-10-14): kalan kitaplarda yalnız **kapak + bölüm başı** görseli. Model GPT Image 2.5, 3:4, ~0,5 kr/görsel; her üretimden önce `higgsfield generate cost` ile maliyet gösterilir ve onay alınır. Dosyalar `images/cover.png`, `images/p01.png`, `images/p06.png` (git dışı); diğer sayfalar resimsiz, palet renkli (`book.json → image: null`). Sayfa görselleri kapak işi referans verilerek üretilir (karakter tutarlılığı). **Toplam: 3 görsel ≈ 1,5 kr.**
+> **Üretildi (2026-10-14).** Kullanıcı onayı: dalga 1 metinleri ve 34 görsel (~17 kr) onaylandı ("İlk dalganın 8 kitap metni … onay", 2026-10-14). Kesin maliyet `generate cost` ile doğrulandı: GPT Image 2.5, 3:4, medium, 1k = 0,5 kr. Bölüm başları kapak işi referans verilerek üretildi. Eski plan notu: Kullanıcı kararı (2026-10-14): kalan kitaplarda yalnız **kapak + bölüm başı** görseli. Model GPT Image 2.5, 3:4, ~0,5 kr/görsel; her üretimden önce `higgsfield generate cost` ile maliyet gösterilir ve onay alınır. Dosyalar `images/cover.png`, `images/p01.png`, `images/p06.png` (git dışı); diğer sayfalar resimsiz, palet renkli (`book.json → image: null`). Sayfa görselleri kapak işi referans verilerek üretilir (karakter tutarlılığı). **Toplam: 3 görsel ≈ 1,5 kr.**
 
 **Sabit stil öneki (her istemin başına):**
 `Linocut print style storybook illustration, non-photorealistic, bold carved lines and visible print texture, simple shapes. Palette: winter blue-grey, snow white, warm orange window light, bread brown, soft cream. Quiet, gentle mood moving from loneliness to warmth; never sad or dark in a heavy way. Absolutely no text, letters, numbers, signs, shop names or writing anywhere in the image; shop windows, letters and photos are drawn without any marks. Consistent characters as described. Vertical 3:4.`
@@ -38,6 +38,17 @@ Kurallar: her ücretli üretimden **önce** `higgsfield generate cost` ile maliy
 | p06.png | Evening, deep snow: Omar in his brown coat and green scarf crosses the street with a round flat bread wrapped in a cloth, holding it close; he looks nervous but brave. Behind him the bread shop window glows orange; above, across the street, a warm window with a yellow hat silhouette. No cat visible. |
 
 **Sürpriz kontrolü:** Kitabın sürprizi, kızın Omar'a değil pervazdaki kediye el sallaması ve kedinin fırına sığınması. Bu yüzden kapak ve p01 istemlerinde kedi, pati izi ve süt bardağı yok; pervaz düz, izsiz karla çizilir ve istemde "No animals anywhere" yazılı. p06 (2. bölüm başı, adı "The Cat") kediyi göstermez, yalnız Omar'ın cesaretini (sokağı geçişini) gösterir; un çuvalları ve fırının içi de çizilmez, böylece kedinin nerede olduğu ele verilmez. Mimi'nin tanımı yalnız ileride sayfa içi görsel istenirse kullanılır.
+
+
+### Üretim kaydı
+
+| Dosya | Job id | Referans | Tarih (UTC) | Parametre | Kredi |
+|---|---|---|---|---|---|
+| cover.png | 0d7055b4-deb0-4cdb-b96a-eef79ddb9640 | — | 2026-10-14T11:10:53+00:00 | 3:4, medium, 1k | 0.5 |
+| p06.png | a615893d-2d82-4cc5-963f-30375bc36c40 | 0d7055b4-deb0-4cdb-b96a-eef79ddb9640 | 2026-10-14T11:13:55+00:00 | 3:4, medium, 1k | 0.5 |
+| p01.png | b1fd84e9-33a5-4a12-8583-2929dd39adb1 | 0d7055b4-deb0-4cdb-b96a-eef79ddb9640 | 2026-10-14T11:13:55+00:00 | 3:4, medium, 1k | 0.5 |
+
+**Toplam:** 1.5 kr. Tam istem metinleri yerel `images/_jobs.json`'da (git dışı). **Editör değerlendirmesi:** karakter ve üslup tutarlı; görselde yazı yok; sürpriz ele verilmiyor.
 
 ## Seslendirme kayıtları (tts_book.py)
 

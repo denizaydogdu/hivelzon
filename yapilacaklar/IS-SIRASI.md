@@ -388,3 +388,4 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
   - Kullanıcı kararı: Türkçe cümleler PatientDesk Alania ile seslendirilir (ilk ay ücretsiz); Duyu ile kelime zamanlaması alınır (denendi, çalışıyor). Anahtar sunucu ayarında (`hivelzon.tts.patientdesk`), değer repo dışında `~/.config/hivelzon/backend.yml`.
   - Kullanıcı isteği: Dilbilgisi (Hi'den Türkçe konu anlatımı, A1–C2, ~70 konu; bölüm panelinde "Bu bölümdeki dilbilgisi" teklifi; ayrı Dilbilgisi alanı). Kararlar alındı; `docs/DILBILGISI.md` ve H-075…H-082 açıldı.
   - Kullanıcı H-062'yi ve dalga 1'in 8 kitap metnini onayladı; 34 görsel (~17 kr) üretimine geçildi.
+  - Dalga 1'in 34 görseli üretildi (17 kr, başarısız iş yok; kredi 29,06). 10 kitabın paketi hazır, dev sunucuda 10 kitap. Seslendirme ElevenLabs Creator anahtarı gelince. H-075 Türkçe ses aracı bitti.

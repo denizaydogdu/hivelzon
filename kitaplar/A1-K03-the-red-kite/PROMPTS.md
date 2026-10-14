@@ -18,9 +18,9 @@ Kurallar: her ücretli üretimden **önce** `higgsfield generate cost` ile maliy
 
 **Adil son için yerleştirilen ipuçları:** evin tepede olması ve çiçekli küçük balkon (p01); annenin "Lunch is at twelve" demesi (p01, p08); Bay Das'ın "The wind turns at twelve" demesi (p03); rüzgârın sabah uçurtmayı tepeden aşağı, nehre götürmesi (p02–p04); Ravi'nin saat on birde saatine bakması (p08); saat on ikide çalan kasaba saati ve dönen rüzgâr (p10).
 
-## Görsel planı (üretilmedi)
+## Görsel planı ve üretim kaydı (2026-10-14)
 
-> **Henüz üretilmedi.** Kullanıcı kararı (2026-10-14): kalan 28 kitapta **kapak + bölüm başı**. Bu kitapta 4 görsel: `images/cover.png`, `images/p01.png`, `images/p05.png`, `images/p09.png` (git dışı); diğer sayfalar resimsizdir ve kitabın paletiyle renklidir (`book.json → image: null`). Model GPT Image 2.5, 3:4, ~0,5 kr/görsel (≈ 2 kr). Her üretimden önce `higgsfield generate cost` ile maliyet gösterilir ve onay alınır. Bölüm başı görselleri kapak işi referans verilerek üretilir (karakter tutarlılığı).
+> **Üretildi (2026-10-14).** Kullanıcı onayı: dalga 1 metinleri ve 34 görsel (~17 kr) onaylandı ("İlk dalganın 8 kitap metni … onay", 2026-10-14). Kesin maliyet `generate cost` ile doğrulandı: GPT Image 2.5, 3:4, medium, 1k = 0,5 kr. Bölüm başları kapak işi referans verilerek üretildi. Eski plan notu: Kullanıcı kararı (2026-10-14): kalan 28 kitapta **kapak + bölüm başı**. Bu kitapta 4 görsel: `images/cover.png`, `images/p01.png`, `images/p05.png`, `images/p09.png` (git dışı); diğer sayfalar resimsizdir ve kitabın paletiyle renklidir (`book.json → image: null`). Model GPT Image 2.5, 3:4, ~0,5 kr/görsel (≈ 2 kr). Her üretimden önce `higgsfield generate cost` ile maliyet gösterilir ve onay alınır. Bölüm başı görselleri kapak işi referans verilerek üretilir (karakter tutarlılığı).
 
 **Sabit stil öneki (her istemin başına):**
 `Watercolour and ink-line storybook illustration, non-photorealistic, light loose washes with fine dark ink outlines, airy and full of movement, bright and cheerful, never scary. Palette: sky blue, soft pastel houses (pink, peach, mint, pale yellow), river grey-blue; the red kite is the only strong warm accent. Hilly harbour town by the sea. Absolutely no text, letters, numbers, signs, shop names or writing anywhere in the image; clocks have plain faces without numbers or marks. Consistent characters as described. Vertical 3:4.`
@@ -42,6 +42,18 @@ Kurallar: her ücretli üretimden **önce** `higgsfield generate cost` ile maliy
 | p09.png | Ravi stands on a small green ferry crossing the wide grey-blue river, hair blowing; ahead, a white boat with a tiny red kite on top. |
 
 **Sürpriz kontrolü:** Sürpriz, rüzgârın öğlen dönüp uçurtmayı Ravi'nin kendi balkonuna getirmesidir. Hiçbir istemde balkon, Ravi'nin evi ya da uçurtmanın geri dönüşü yok. Kapakta uçurtma Ravi'den **uzaklaşıyor** (nehre doğru); p01'de evin balkonu değil, tepe parkı ve uzaktaki nehir var; p09 bölüm 3'ün başındaki ana (karşıya geçiş) kalır, sona geçmez. Annenin tanımı yalnız ileride gerekirse diye tutuldu; bu dört görselde kullanılmaz.
+
+
+### Üretim kaydı
+
+| Dosya | Job id | Referans | Tarih (UTC) | Parametre | Kredi |
+|---|---|---|---|---|---|
+| cover.png | f4a7da56-91fe-43d7-bdf9-4c6e1801a5bd | — | 2026-10-14T11:10:14+00:00 | 3:4, medium, 1k | 0.5 |
+| p05.png | 66ddba29-10a0-4f0f-acc1-74c0c0875ce9 | f4a7da56-91fe-43d7-bdf9-4c6e1801a5bd | 2026-10-14T11:12:59+00:00 | 3:4, medium, 1k | 0.5 |
+| p09.png | b76d43f5-6bbb-4d9b-a3b0-39b40cf697cd | f4a7da56-91fe-43d7-bdf9-4c6e1801a5bd | 2026-10-14T11:13:02+00:00 | 3:4, medium, 1k | 0.5 |
+| p01.png | 81de1c55-d2eb-4c7a-9766-87c697259cec | f4a7da56-91fe-43d7-bdf9-4c6e1801a5bd | 2026-10-14T11:13:03+00:00 | 3:4, medium, 1k | 0.5 |
+
+**Toplam:** 2 kr. Tam istem metinleri yerel `images/_jobs.json`'da (git dışı). **Editör değerlendirmesi:** karakter ve üslup tutarlı; görselde yazı yok; sürpriz ele verilmiyor.
 
 ## Seslendirme kayıtları (tts_book.py)
 
