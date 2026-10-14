@@ -31,7 +31,7 @@ Bu dosya tek takip noktasıdır. Hangi işin hangi sırada yapıldığını, şu
   - H dosyasının `Durum` satırı güncellenir;
   - **Günlük** bölümüne bir satır eklenir.
 - **Biten işler:** "Biten işler" tablosuna doğrulama kanıtıyla birlikte yazılır.
-- **Numaralar:** Tek sayaçla verilir. Sıradaki boş numara: **H-075**.
+- **Numaralar:** Tek sayaçla verilir. Sıradaki boş numara: **H-083**.
 
 **Durum simgeleri:**
 - ⛔ Kullanıcı kararı bekliyor
@@ -147,6 +147,20 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 | K8 | H-073 | Kitap dalgası 3: C1 + C2 (10) | Orta | H-072 | ⏳ |
 
 **Sıra:** H-065 hemen (belge + katalog) → H-066 ve H-067, tasarım fazlarıyla paralel, ayrı dallarda → H-069 pilot → resim yoğunluğu ve ses planı kararı → H-068, H-070 → H-071 → H-072 → H-073.
+
+### Adım 8 — Dilbilgisi: Hi'den Türkçe konu anlatımı (2026-10-14, kullanıcı isteği; `docs/DILBILGISI.md`)
+| # | İş | Başlık | Öncelik | Bağımlılık | Durum |
+|---|---|---|---|---|---|
+| D0 | H-075 | Türkçe ses: Alania + Duyu hizalama | Yüksek | — | ⏳ |
+| D0 | H-076 | Dilbilgisi müfredatı (~70 konu) | Yüksek | — | ⏳ |
+| D1 | H-077 | Ders paketi ve grammar-lint | Yüksek | H-075, H-076 | ⏳ |
+| D2 | H-078 | Dilbilgisi ekranı (Hikâye'de 3. bölüm, bölüm panelinde teklif) | Yüksek | H-077 | ⏳ |
+| D3 | H-079 | Pilot: 3 A1 konusu | Yüksek | H-076…H-078 | ⏳ |
+| D4 | H-080 | Dalga 1: A1 + A2 | Orta | H-079 | ⏳ |
+| D5 | H-081 | Dalga 2: B1 + B2 | Orta | H-080 | ⏳ |
+| D6 | H-082 | Dalga 3: C1 + C2 | Orta | H-081 | ⏳ |
+
+**Sıra:** H-075 ve H-076 hemen ve paralel (Alania'nın ücretsiz ayı sınırlı) → H-077 → H-078 → H-079 → dalgalar.
 
 ## Devam eden işler
 | İş | Başlık | Başlangıç | Not |
@@ -370,3 +384,4 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
   - Pilot simülatörde denendi (vurgu, otomatik sayfa, anlam paneli çalışıyor). Kullanıcı H-067 ve pilotu onayladı. Kararlar: uzun basma sesli/sessiz moda göre; kalan kitaplarda kapak + bölüm başı resim (~90 kr, kredi yüklemesi gerekir); ses ElevenLabs Creator (kullanıcı hesabı açacak). Sıradaki: H-062 oynatıcı tasarımı; kitap dalgası 1 (H-071) metinleri paralel.
   - H-062 (oynatıcı katmanları: belirteçler, ~45 metin l10n'e, giriş animasyonları, sakin bölüm sonu) `main`'e birleştirildi; onay bekleniyor. Okuyucuya bölüm bazlı ses ve okunan cümleyi takip eden kaydırma eklendi (kullanıcının bildirdiği hata). A2-K03 bölüm 1–2 seslendirildi (ücretsiz kota bitti). Dalga 1 metinleri (8 kitap) `main`'de, onay bekliyor.
   - Kullanıcı kararı: Türkçe cümleler PatientDesk Alania ile seslendirilir (ilk ay ücretsiz); Duyu ile kelime zamanlaması alınır (denendi, çalışıyor). Anahtar sunucu ayarında (`hivelzon.tts.patientdesk`), değer repo dışında `~/.config/hivelzon/backend.yml`.
+  - Kullanıcı isteği: Dilbilgisi (Hi'den Türkçe konu anlatımı, A1–C2, ~70 konu; bölüm panelinde "Bu bölümdeki dilbilgisi" teklifi; ayrı Dilbilgisi alanı). Kararlar alındı; `docs/DILBILGISI.md` ve H-075…H-082 açıldı.
