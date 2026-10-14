@@ -2,7 +2,7 @@
 
 **Sürüm:** 0.2 · **Tarih:** 2026-10-11 (durum güncellemesi 2026-10-12) · **Durum:** Onaylandı (2026-10-11); uygulama sürüyor. İlk dilim: önce oynatıcı; ilk test cihazı iOS simülatörü.
 **Dayanak:** CLAUDE.md "Onaylı içerik mimarisi kararları" ve "Onaylı oyun tasarımı kararları"; `docs/OYUN-TASARIMI.md`; `docs/ICERIK-MIMARISI.md`.
-**Kural:** Plan onaylandı, kodlama bu plana göre sürüyor; plana yeni kapsam kullanıcı onayıyla eklenir. Oynatıcı işi var olan H-031 numarasını korur; yeni işler H-033'ten başlar. Sonradan eklenenler: H-045, H-046, H-048, H-049, H-050, H-051, H-052, H-053, H-054, H-055, H-056 tasarım yenilemesi H-057…H-064 ve Kitaplık H-065…H-073. **Sıradaki boş numara: H-085.** (H-075…H-082: Dilbilgisi, `docs/DILBILGISI.md`; H-083 Türkçe sesler; H-084 B2-K01 eksik görsel.) (H-074: gerçek süre ölçümü.) Her alt faz ayrı bir H işidir: küçük, test edilebilir ve geri alınabilir.
+**Kural:** Plan onaylandı, kodlama bu plana göre sürüyor; plana yeni kapsam kullanıcı onayıyla eklenir. Oynatıcı işi var olan H-031 numarasını korur; yeni işler H-033'ten başlar. Sonradan eklenenler: H-045, H-046, H-048, H-049, H-050, H-051, H-052, H-053, H-054, H-055, H-056 tasarım yenilemesi H-057…H-064 ve Kitaplık H-065…H-073. **Sıradaki boş numara: H-087.** (H-075…H-082: Dilbilgisi, `docs/DILBILGISI.md`; H-083 Türkçe sesler; H-084 B2-K01 eksik görsel; H-085 Bölüm 5–12 üretimi; H-086 kitapta Sayfanın Türkçesi.) (H-074: gerçek süre ölçümü.) Her alt faz ayrı bir H işidir: küçük, test edilebilir ve geri alınabilir.
 
 ---
 
