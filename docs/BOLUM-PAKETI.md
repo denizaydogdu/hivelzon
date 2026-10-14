@@ -127,6 +127,7 @@ Sezon paketi `icerik/_evren/_build/season/S<n>/` altında üretilir (git dışı
 | `season.json` → `map` | | `image`, `width`, `height` (piksel). Uygulama haritayı bu en-boy oranıyla çizer, gerekirse dikey kaydırır. |
 | `season.json` → `episodes[]` | `_evren/harita/season-<nn>.json` (depoda) | Sezonun bütün bölüm yerleri (S1: 12). Alanlar aşağıda. |
 | `hi.json` + `hi/<ad>.m4a` | `_evren/hata-katalogu.json`, `konu-tanitimlari.json`, `kopru-gorevleri.json`; ses `_evren/hi-ses/<ad>.mp3` (git dışı, hizalama depoda) | Hi verisi (H-048). **H-083:** `errorCatalog[]`, `topicIntros[]`, `bridgeTasks[]` girdilerinde isteğe bağlı `audio` = sezon paketine göre yol (`hi/note-<id>.m4a`, `hi/intro-<id>.m4a`, `hi/bridge-<id>.m4a`; -16 LUFS AAC). Uygulama kartta "Dinle" düğmesi gösterir; kart kapanınca ses durur. Kaynaktaki `speechTr`, `speechMode`, `pronunciations` pakete girmez. Ses dosyası yoksa alan düşer (`season.json → hi.audioMissing`). |
+| `clips.json` + `clips/<id>.mp4`, `clips/<id>.webp` | `_evren/klipler/S<n>.json` (depoda) | Keşfet klipleri (H-040, §9). `season.json → clips`: `path`, `count`, `status`, `seconds`, `quizzes`, `bytes`. |
 
 `episodes[]` alanları:
 
@@ -363,7 +364,56 @@ sets/<id>/<öğe>.m4a, <öğe>.example.m4a → kelime ve örnek cümle sesi (AAC
 
 Seviyeli sesli kitaplar bölüm paketinden ayrı bir biçim kullanır: `kitaplar/<SEVİYE>-K<NN>-<kisa-baslik>/_build/package/` (`book.json`, `pages.json`, `audio/<bölüm>.m4a`, `images/<sayfa>.webp`, `manifest.json`). `pages.json`, bu belgedeki altyazı JSON'unun (§3) kitap karşılığıdır: cümle düzeyinde zamanlama, `tr`, kelime `gloss` ve `chunks` aynı kurallarla `ceviri.tr.json`'dan gelir. Kaynak biçimi, araçlar (`book_lint.py`, `export_book.py`, `tts_book.py`) ve kurallar: `docs/KITAPLIK.md` §6. Seviye listesi C2'yi de kapsar (`cefr.LEVELS`); C1/C2 kapsaması Octanove C1/C2 ayrı veri setiyle yapılır, dosya yoksa "liste yok; kapsama denetlenmedi" uyarısı verilir (bölümler için de geçerli).
 
-## 9. Atıf
+## 9. Keşfet klipleri (H-040)
+
+Keşfet'in kısa klipleri bölüm kayıtlarından kesilir; **ücretli üretim yoktur**. Kaynak `icerik/_evren/klipler/S<n>.json` (sezon başına bir dosya), paket sezon paketinin içindedir. Kod: `tools/content-pipeline/hvpipeline/clips.py` (kesim ve ses: `media.cut_clip`, `media.parts_loudness`).
+
+**Kaynak alanları:** `schemaVersion` (1), `season`, `level`, `status` (`DRAFT` → editör onayından sonra `APPROVED`; H-028), `clips[]`:
+
+| Alan | Açıklama |
+|---|---|
+| `id` | `S<sezon>-K<2 hane>` (`S1-K01`). Akış sırası dosyadaki sıradır. |
+| `episode` | Kaynak bölüm (`A1-001`). |
+| `parts[]` | Bir ya da birkaç ardışık parça: `node` (videolu `segment`/`recap`/`reaction` düğümü), `start`, `end` (segmentin başına göre saniye). Örnek: karar anından önceki sahne + doğru cevabın segmenti (`s02` + `k1-ok`). |
+| `titleTr` | Kısa Türkçe başlık (en çok 40 karakter). |
+| `target` | Tek öğrenme hedefi: `kind` (`phrase` \| `word`), `en`, `tr`. `…` ile biten ifade önek olarak eşleşir ("Where is…?"). |
+| `grammar` | İsteğe bağlı dilbilgisi dersi (G-ID); `dilbilgisi/<G-ID>/lesson.json` olmalı. Uygulamada klibin üstünde "Dilbilgisi: …" etiketi dersi açar. |
+| `quiz` | İsteğe bağlı soru kartı: `promptTr`, `options[]` (`text`, `lang` `tr`/`en`, tam 1 `correct`), `explainTr`. Puan ve süre yok. |
+
+**Paket** (`/packages/_season/S<n>/`):
+
+```
+clips.json         → schemaVersion, season, level, status, aiLabel, clips[]:
+                     id, episode, episodeNumber, episodeTitle, titleTr, duration, video, poster,
+                     target {kind, en, tr, cue}, grammar {id, titleTr}, quiz, parts [{node, start, end, at}],
+                     cues [altyazı satırları: §3 biçimi, zamanlar klibin başına göre; kimlikler bölümdekiyle aynı],
+                     sourceStatus (kaynak bölümün durumu), loudness {before, gainDb, after}, bytes, videoDuration
+clips/<id>.mp4     → 720×1280 H.264 High (720p sürümüyle aynı ayarlar) + AAC 128k, faststart; görüntüye yazı yok
+clips/<id>.webp    → ilk kare (720 genişlik), video açılana dek görünür
+```
+
+- Görüntü ve ses bölüm paketinin **720p** segmentlerinden kesilir. Parça uçlarında 20/30 ms yumuşak geçiş, ses her klipte ölçülüp **-16 LUFS**'a getirilir (kazanç + sınırlayıcı; S1: 17 klipte -16,02…-16,04 LUFS).
+- Altyazı satır kimlikleri bölümdekiyle aynı kalır: Keşfet'ten Defter'e eklenen ifade bölüm verisinden görsel ve ses alır.
+- Önbellek: `clips/.<id>.key.json` (kaynak dosya, aralık, kodlama sürümü). Kaynak değişmezse yeniden kesilmez; kaynaktan çıkan klibin dosyaları silinir.
+- Yapay zekâ etiketi gömülmez; uygulama akış açılınca kısa bir not gösterir (CLAUDE.md Higgsfield kuralı 6).
+
+**Denetim** (`content_lint.py` bölümlerle birlikte; `export_package.py` hata varsa pakete yazmaz):
+
+| Kod | Seviye | Kural |
+|---|---|---|
+| `clip-bounds` | Hata | Parça segmentin içinde (`0 ≤ start < end ≤ süre + 0,05 sn`). |
+| `clip-cue-cut` | Hata | Hiçbir altyazı satırı ortadan bölünmez (klip kendi başına anlaşılır). |
+| `clip-duration` | Hata | Toplam 3–30 sn. |
+| `clip-target` | Hata | `target.en` klibin altyazısında geçer; `kind` `phrase`/`word`. |
+| `clip-node`, `clip-rendition`, `clip-package`, `clip-episode` | Hata | Düğüm videolu ve 720p sürümü var; bölüm paketi üretilmiş. |
+| `clip-grammar` | Hata | Ders kimliği geçerli ve ders var. |
+| `clip-quiz`, `clip-quiz-tone` | Hata | 2–4 seçenek, tam 1 doğru, seçenekler farklı; suçlayıcı ya da baskı kuran dil yok (K-32). |
+| `clip-id`, `clip-title`, `clips-schema`, `clips-empty` | Hata | Biçim. |
+| `clips-status`, `clip-source-status` | Uyarı (`--require-approved` ile hata) | **Klipler yalnızca editörün onayladığı içerikten yayınlanır:** klip dosyası `APPROVED` değilse ya da kaynak bölümün `content.json` durumu `APPROVED`/`SCHEDULED`/`PUBLISHED` değilse. Yerel çalışmada uyarıdır; yayından önce `content_lint.py … --require-approved` hatasız geçmelidir. |
+
+**Uygulama (Keşfet):** yalnızca açılmış (oynanabilir) bölümlerin klipleri gösterilir; akış biter (bitiş kartı hikâyeyi önerir), 4–5 klipte bir quiz kartı, ~10 klipte bir mola kartı (K-15). Ayrıntı: `yapilacaklar/H-040-kesfet-akisi.md`.
+
+## 10. Atıf
 
 > The CEFR-J Wordlist Version 1.6. Compiled by Yukio Tono, Tokyo University of Foreign Studies. Retrieved from https://www.cefr-j.org/download.html on 11/10/26.
 

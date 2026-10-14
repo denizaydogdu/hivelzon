@@ -24,6 +24,9 @@ yazılır (bkz. hi.py); season.json'a `hi` özeti eklenir.
 
 Konu setleri (H-051): `_evren/setler/*.json` varsa `sets/` altına set verisi, sahne ve öğe görselleri
 (WebP) ve ses kesitleri yazılır; season.json'a `topicSets` özeti eklenir (bkz. sets.py).
+
+Keşfet klipleri (H-040): `_evren/klipler/S<n>.json` varsa `clips.json` ve `clips/` (720p klip + ilk kare)
+yazılır; season.json'a `clips` özeti eklenir (bkz. clips.py).
 """
 
 from __future__ import annotations
@@ -33,6 +36,7 @@ import shutil
 from dataclasses import dataclass
 from pathlib import Path
 
+from .clips import clips_source, export_clips
 from .hi import export_hi
 from .sets import export_sets, sets_dir
 
@@ -146,7 +150,8 @@ def rendition_file(name: str, rendition: str = "720p") -> str:
 
 
 def export_season(icerik_root: Path, season: int, probe=None, digest=None, poster=None,
-                  rendition=None, image=None, set_media: dict | None = None, hi_audio=None) -> dict:
+                  rendition=None, image=None, set_media: dict | None = None, hi_audio=None,
+                  clip_media: dict | None = None) -> dict:
     """Sezon paketini kopyalar ve season.json yazar. Video yoksa hata verir (kurgu.py çalıştırılmalı).
 
     rendition(src, out): 720p sürümü üretir (H-054); verilmezse yalnızca 1080p kopyalanır.
@@ -156,6 +161,8 @@ def export_season(icerik_root: Path, season: int, probe=None, digest=None, poste
     yalnızca JSON üretilir (testler).
     hi_audio(src, out): Hi verisinin Türkçe sesini (H-083, `_evren/hi-ses/*.mp3`) -16 LUFS m4a olarak yazar;
     verilmezse sesler pakete girmez ve `audio` alanı düşer.
+    clip_media: Keşfet kliplerinin medya adımları (H-040; `clips.export_clips` anahtar sözcükleri: cut,
+    measure, poster, probe); verilmezse yalnızca clips.json yazılır (testler).
     """
     src = SeasonSource.load(icerik_root, season)
     if src.media_dir is None:
@@ -221,6 +228,11 @@ def export_season(icerik_root: Path, season: int, probe=None, digest=None, poste
     hi = export_hi(icerik_root, season, out, audio=hi_audio)
     if hi is not None:
         doc["hi"] = hi
+    # Keşfet klipleri (H-040): clips.json + clips/<id>.mp4 (720p) ve ilk kare.
+    if clips_source(icerik_root, season).exists() or (out / "clips.json").exists():
+        clips = export_clips(icerik_root, season, out, **(clip_media or {}))
+        if clips is not None:
+            doc["clips"] = {k: v for k, v in clips.items() if k != "warnings"}
     # Eski biçimler (H-054 öncesi jpg afiş) temizlenir; yalnızca güncel dosyalar listelenir.
     if poster is not None:
         (out / Path(src.title_poster).with_suffix(".jpg").name).unlink(missing_ok=True)

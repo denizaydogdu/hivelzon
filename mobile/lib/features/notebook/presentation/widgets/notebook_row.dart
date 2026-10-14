@@ -110,11 +110,13 @@ class NotebookRow extends StatelessWidget {
 /// eksiksiz): yeni bir kaynak (ör. kitap) eklenince derleyici burayı sorar.
 String? notebookSourceLine(NotebookItem item) => switch (item.source) {
   NotebookSource.topicSet => NotebookTexts.sourceTopicSet,
-  // Kullanıcının bölümde kendi eklediği (altyazı, anlam paneli).
+  // Kullanıcının bölümde kendi eklediği (altyazı, anlam paneli). Keşfet'ten
+  // eklenende (H-040) kaynak adı yazılıdır: "Keşfet: A Strange Message".
   NotebookSource.userSaved =>
-    item.episodeNumber == null
-        ? null
-        : NotebookTexts.sourceEpisode(item.episodeNumber!),
+    item.sourceTitle ??
+        (item.episodeNumber == null
+            ? null
+            : NotebookTexts.sourceEpisode(item.episodeNumber!)),
   NotebookSource.book =>
     item.sourceTitle == null
         ? NotebookTexts.sourceBookUnknown

@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:hivelzon/features/discover/domain/clip.dart';
 import 'package:hivelzon/features/grammar/domain/grammar_lesson.dart';
 import 'package:hivelzon/features/hi/domain/hi_content.dart';
 import 'package:hivelzon/features/library/domain/book.dart';
@@ -115,7 +116,23 @@ class FakeContentSource implements ContentSource {
       mapHeight: mapImage == null ? null : 2688,
       episodes: withCatalogue ? catalogue(packageIds) : const [],
       topicSets: withTopicSets ? topicSetSummaries() : const [],
+      clipsPath: withClips ? 'clips.json' : null,
     );
+  }
+
+  /// Keşfet klipleri (H-040): sezon paketinde `clips.json` olsun mu.
+  /// Varsayılan kapalı (eski testler klip görmez). [clipCatalog] verilirse
+  /// o döner; yoksa gerçek dışa aktarımın kopyası (`fixtures/clips.json`).
+  bool withClips = false;
+  bool clipsFail = false;
+  ClipCatalog? clipCatalog;
+  int clipLoads = 0;
+
+  @override
+  Future<ClipCatalog> loadClips(int season, String path) async {
+    clipLoads++;
+    if (fail || clipsFail) throw ContentUnavailableException('kapalı');
+    return clipCatalog ?? loadClipFixture();
   }
 
   @override
@@ -201,6 +218,11 @@ class FakeContentSource implements ContentSource {
   Uri grammarMediaUri(String lessonId, String path) =>
       Uri.parse('http://test.invalid/grammar/$lessonId/$path');
 }
+
+/// Sezon 1 klipleri (H-040 dışa aktarımının kopyası: 17 klip, B1–B4).
+ClipCatalog loadClipFixture() => ClipCatalog.fromJson(
+  (jsonDecode(fixtureText('clips.json')) as Map).cast<String, dynamic>(),
+);
 
 /// Deneme dersi (H-077 `G-A1-99-third-person-s` dışa aktarımı; sahte ses
 /// süreleriyle). [silent]: hiç ses yok; [noEnglishAudio]: yalnız Türkçe

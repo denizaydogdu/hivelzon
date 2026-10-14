@@ -672,16 +672,89 @@ abstract final class ProfileTexts {
 
 /// Henüz gelmeyen sekmeler.
 abstract final class PlaceholderTexts {
-  static const discoverTitle = 'Keşfet';
-  static const discoverHeading = 'Kısa klipler yakında';
-  static const discoverBody =
-      'Bölümlerden 30 saniyelik klipler burada akacak. Her klipten sonra kısa '
-      'bir soru ya da kelime kaydetme seçeneği olacak.';
   static const talkTitle = 'Konuş';
   static const talkHeading = 'Konuşma pratiği yakında';
   static const talkBody =
       'Hikâyedeki karakterlerle İngilizce konuşma pratiği sonraki sürümde '
       'geliyor. Karşındakinin yapay zekâ olduğu her zaman söylenecek.';
+}
+
+/// Keşfet (H-040, K-15): bölümlerden kısa klipler. Akış biter (sonsuz
+/// kaydırma yok); quiz ve mola kartı sakin, puansız; süre sınırı izlerken
+/// geri sayım göstermez (K-32). Kılavuz: ARAYUZ-METINLERI §7.
+abstract final class DiscoverTexts {
+  static const title = 'Keşfet';
+  static const screenSemantics = 'Keşfet: bölümlerden kısa klipler';
+  static const loading = 'Klipler hazırlanıyor…';
+  static const errorTitle = 'Klipler açılamadı';
+  static const errorBody = 'Bağlantını kontrol edip tekrar dene.';
+  static const emptyTitle = 'Klipler hazırlanıyor';
+  static const emptyBody =
+      'Bölümlerden kısa klipler burada akacak. Şimdilik hikâyene devam '
+      'edebilirsin.';
+  static const goStory = 'Hikâyeye git';
+
+  // Klip
+  static String episodeChip(int n) => 'Bölüm $n';
+  static String clipSemantics(int n, int total, String title) =>
+      'Klip $n / $total: $title';
+  static const save = 'Kaydet';
+  static const saved = 'Defterinde';
+  static String saveSemantics(String en) => '"$en" ifadesini deftere ekle';
+  static String savedSemantics(String en) => '"$en" defterinde';
+  static String notebookSource(String title) => 'Keşfet: $title';
+  static const meaning = 'Anlam';
+  static const meaningSemantics = 'Altyazının anlamını aç';
+  static const fullStory = 'Tam hikâye';
+  static String fullStorySemantics(int? n) =>
+      n == null ? 'Bölümü aç' : 'Bölüm ${accusativeNumber(n)} aç';
+  static String grammarChip(String title) => 'Dilbilgisi: $title';
+  static const targetPhrase = 'Bu klibin ifadesi';
+  static const targetWord = 'Bu klibin kelimesi';
+  static const mute = 'Sesi kapat';
+  static const unmute = 'Sesi aç';
+  static const playPause = 'Oynat ya da duraklat';
+  static const replay = 'Tekrar izle';
+  static const swipeHint = 'Sonraki klip için yukarı kaydır.';
+  static const videoError = 'Video yüklenemedi.';
+
+  // Quiz kartı (puan yok)
+  static const quizLabel = 'Kısa soru';
+  static String quizFrom(String title) => 'Klip: $title';
+  static const quizCorrect = 'Evet, doğru.';
+  static const quizTryAgain = 'Bir daha bakalım.';
+  static const quizShown = 'Doğru cevap bu.';
+  static const dontKnow = 'Bilmiyorum';
+  static const next = 'Devam et';
+
+  // Mola kartı
+  static const breakLabel = 'Mola';
+  static const breakTitle = 'Biraz ara verelim mi?';
+  static String breakBody(int clips, int saved) => saved == 0
+      ? 'Az önce $clips klip izledin.'
+      : 'Az önce $clips klip izledin, $saved ifade kaydettin.';
+  static const breakSuggestion =
+      'Bugünün tek adımı Ana Sayfa\'da seni bekliyor.';
+  static const breakHome = 'Bugünün adımına geç';
+  static const breakContinue = 'Kliplere devam et';
+
+  // Bitiş kartı (sonsuz kaydırma yok)
+  static const endTitle = 'Şimdilik bu kadar';
+  static const endBodyLocked =
+      'Açık bölümlerin bütün kliplerini izledin. Hikâyede ilerledikçe yeni '
+      'klipler açılır.';
+  static const endBody =
+      'Bütün klipleri izledin. Yeni klipler yeni bölümlerle gelir.';
+  static const endStory = 'Hikâyeye git';
+  static const endHome = 'Ana Sayfa\'ya dön';
+
+  // Günlük süre (13–17 ve 13 altı; yalnızca dolunca gösterilir)
+  static const limitTitle = 'Bugünlük Keşfet burada bitiyor';
+  static const limitBody =
+      'Keşfet için günlük 20 dakikan doldu. Klipler gece yarısından sonra '
+      'yeniden açılır.';
+  static const limitAlso = 'Hikâyen, Defter ve Kelime tekrarı her zaman açık.';
+  static const limitStory = 'Hikâyene devam et';
 }
 
 /// Oynatıcı (H-031, H-050; H-062'de bütün metinler buraya taşındı).

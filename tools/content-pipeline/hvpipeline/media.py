@@ -358,6 +358,81 @@ def rendition_720(src: Path, out: Path) -> Path:
     return out
 
 
+# --- Keşfet klipleri (H-040) -----------------------------------------------------------------
+
+def _has_audio(path: Path) -> bool:
+    return any(s.get("codec_type") == "audio" for s in probe_streams(path))
+
+
+def _parts_graph(parts: list[tuple[Path, float, float | None]], video: bool) -> tuple[list[str], str]:
+    """Parçaları (kaynak, başlangıç, bitiş) kesip birleştiren ffmpeg girişleri ve süzgeç grafiği.
+
+    Her parçanın sesi tam parça süresine doldurulur/kırpılır (görüntüyle kaymaz) ve uçlarında 20/30 ms
+    yumuşak giriş/çıkış olur (birleşim yerinde tık sesi yok). Sessiz parçaya sessizlik eklenir.
+    Çıkış etiketleri: `[v]` (video=True ise) ve `[a]`.
+    """
+    args: list[str] = []
+    flt: list[str] = []
+    labels = ""
+    for i, (src, start, end) in enumerate(parts):
+        length = (end if end is not None else probe_duration(src)) - start
+        args += ["-ss", f"{start:.3f}", "-t", f"{length:.3f}", "-i", str(src)]
+        a_in = f"[{i}:a]" if _has_audio(src) else None
+        if video:
+            flt.append(f"[{i}:v]setpts=PTS-STARTPTS,fps={FPS},scale={R720_W}:{R720_H}:flags=lanczos,"
+                       f"setsar=1,format=yuv420p[v{i}]")
+        src_a = a_in if a_in else f"anullsrc=r=44100:cl=stereo,atrim=end={length:.3f}"
+        lead = f"{src_a}," if not a_in else a_in
+        flt.append(f"{lead}aresample=44100,aformat=channel_layouts=stereo,asetpts=PTS-STARTPTS,"
+                   f"apad=whole_dur={length:.4f},atrim=end={length:.4f},afade=t=in:d=0.02,"
+                   f"afade=t=out:st={max(0.0, length - 0.03):.4f}:d=0.03[a{i}]")
+        labels += (f"[v{i}]" if video else "") + f"[a{i}]"
+    flt.append(f"{labels}concat=n={len(parts)}:v={1 if video else 0}:a=1" + ("[v][a]" if video else "[a]"))
+    return args, ";".join(flt)
+
+
+def parts_loudness(parts: list[tuple[Path, float, float | None]]) -> dict:
+    """Parçaların birleşik sesinin tümleşik ölçümü (loudnorm ölçüm geçişi): {"I", "TP", "LRA"}."""
+    args, graph = _parts_graph(parts, video=False)
+    graph += f";[a]loudnorm=I={TARGET_LUFS}:TP=-1.5:LRA=11:print_format=json[o]"
+    r = subprocess.run(["ffmpeg", "-hide_banner", "-nostats"] + args + ["-filter_complex", graph, "-map", "[o]",
+                        "-f", "null", "-"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    if r.returncode:
+        raise MediaError(r.stderr.decode(errors="replace")[-600:])
+    m = re.search(r"\{[^{}]*\"input_i\"[^{}]*\}", r.stderr.decode(errors="replace"), re.S)
+    if not m:
+        raise MediaError("loudnorm çıktısı okunamadı")
+    j = json.loads(m.group(0))
+    return {"I": float(j["input_i"]), "TP": float(j["input_tp"]), "LRA": float(j["input_lra"])}
+
+
+def cut_clip(parts: list[tuple[Path, float, float | None]], gain_db: float, out: Path) -> Path:
+    """Keşfet klibi: 720p segmentlerden kesilir ve birleştirilir; 720×1280 H.264 High (rendition_720 ile aynı
+    ayarlar) + AAC 128k, ses kazancı + sınırlayıcı, faststart. Görüntüye yazı eklenmez (AI notu uygulamada)."""
+    out.parent.mkdir(parents=True, exist_ok=True)
+    args, graph = _parts_graph(parts, video=True)
+    graph += f";[a]{gain_filter(gain_db)}[ao]"
+    run(["ffmpeg", "-y", "-loglevel", "error"] + args + ["-filter_complex", graph, "-map", "[v]", "-map", "[ao]",
+         "-c:v", "libx264", "-preset", "slow", "-tune", "animation", "-profile:v", "high",
+         "-pix_fmt", "yuv420p", "-crf", str(R720_CRF), "-maxrate", R720_MAXRATE, "-bufsize", R720_BUFSIZE,
+         "-g", "60", "-c:a", "aac", "-b:a", "128k", "-ar", "44100", "-movflags", "+faststart",
+         "-f", "mp4", str(out)])
+    return out
+
+
+def frame_webp(src: Path, out: Path, width: int = R720_W) -> Path:
+    """Videonun ilk karesi WebP olarak (klip afişi; yüklenirken görünür)."""
+    out.parent.mkdir(parents=True, exist_ok=True)
+    frame = out.with_name(out.stem + ".frame.png")
+    run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(src), "-vf", f"scale={width}:-2:flags=lanczos",
+         "-frames:v", "1", str(frame)])
+    try:
+        to_webp(frame, out)
+    finally:
+        frame.unlink(missing_ok=True)
+    return out
+
+
 def render_shot(shot: dict, out: Path, label: Path | None) -> Path:
     """Tek çekim: Ken Burns (ya da klip) + yazı katmanları + gecikmeli ses → ara .mov (PCM)."""
     if out.exists():
