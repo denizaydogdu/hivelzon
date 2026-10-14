@@ -61,3 +61,6 @@ Henüz üretilmedi. Anlatıcı **Sarah** (`EXAVITQu4vr4xnSDxMaL`, kullanıcı se
 
 | Tarih (UTC) | Bölüm | Parça | Ses | Model | Hız | Karakter | Metin sha256 | Dosya |
 |---|---|---|---|---|---|---|---|---|
+| 2026-10-14T12:16:05Z | c1 | 1/1 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 1383 | 5f7ae907388f0f9f | audio/c1.mp3 |
+| 2026-10-14T12:16:25Z | c2 | 1/1 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 1142 | 450c191ff9c8a9db | audio/c2.mp3 |
+| 2026-10-14T12:16:47Z | c3 | 1/1 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 1332 | cb106b3988bf2cf7 | audio/c3.mp3 |
