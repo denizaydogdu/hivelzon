@@ -19,17 +19,81 @@
     "highlight": "#FFD45C"
   },
   "cover": "cover.png",
-  "properNouns": ["Lina", "Ada", "Tom"],
-  "narration": { "modelId": "eleven_v3", "speed": 0.9 },
+  "properNouns": [
+    "Lina",
+    "Ada",
+    "Tom"
+  ],
+  "narration": {
+    "modelId": "eleven_v3",
+    "speed": 0.9,
+    "voiceId": "EXAVITQu4vr4xnSDxMaL"
+  },
   "chapters": [
-    { "id": "c1", "title": "The New Home", "titleTr": "Yeni Ev",
-      "pages": [ { "id": "p01", "image": "p01.png" }, { "id": "p02", "image": "p02.png" },
-                 { "id": "p03", "image": "p03.png" }, { "id": "p04", "image": "p04.png" } ] },
-    { "id": "c2", "title": "Clues", "titleTr": "İpuçları",
-      "pages": [ { "id": "p05", "image": "p05.png" }, { "id": "p06", "image": "p06.png" },
-                 { "id": "p07", "image": "p07.png" }, { "id": "p08", "image": "p08.png" } ] },
-    { "id": "c3", "title": "The Light", "titleTr": "Işık",
-      "pages": [ { "id": "p09", "image": "p09.png" }, { "id": "p10", "image": "p10.png" },
-                 { "id": "p11", "image": "p11.png" } ] }
+    {
+      "id": "c1",
+      "title": "The New Home",
+      "titleTr": "Yeni Ev",
+      "pages": [
+        {
+          "id": "p01",
+          "image": "p01.png"
+        },
+        {
+          "id": "p02",
+          "image": "p02.png"
+        },
+        {
+          "id": "p03",
+          "image": "p03.png"
+        },
+        {
+          "id": "p04",
+          "image": "p04.png"
+        }
+      ]
+    },
+    {
+      "id": "c2",
+      "title": "Clues",
+      "titleTr": "İpuçları",
+      "pages": [
+        {
+          "id": "p05",
+          "image": "p05.png"
+        },
+        {
+          "id": "p06",
+          "image": "p06.png"
+        },
+        {
+          "id": "p07",
+          "image": "p07.png"
+        },
+        {
+          "id": "p08",
+          "image": "p08.png"
+        }
+      ]
+    },
+    {
+      "id": "c3",
+      "title": "The Light",
+      "titleTr": "Işık",
+      "pages": [
+        {
+          "id": "p09",
+          "image": "p09.png"
+        },
+        {
+          "id": "p10",
+          "image": "p10.png"
+        },
+        {
+          "id": "p11",
+          "image": "p11.png"
+        }
+      ]
+    }
   ]
 }

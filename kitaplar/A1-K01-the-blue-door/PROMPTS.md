@@ -73,7 +73,10 @@ Kurallar: her ücretli üretimden **önce** `higgsfield generate cost` ile maliy
 
 ## Seslendirme kayıtları (tts_book.py)
 
-Henüz üretilmedi. Pilot ses ElevenLabs ücretsiz kotasıyla, yalnız iç kullanım için üretilecek (H-069); önce `tts_book.py` kuru çalışmasıyla karakter ve kredi gösterilir. `narration.voiceId` henüz seçilmedi. Aşağıdaki tabloya satırları `tts_book.py --execute` ekler.
+**Üretildi (2026-10-14), anlatıcı Sarah.** Kullanıcı kararı: önce yalnız A1, ücretsiz kota (videoGenerator hesabı, iç kullanım; yayından önce ticari planla yeniden üretilir, H-006). Kota kontrolü: bu ay 0/10.000 kullanılmıştı; 3.880 karakter harcandı, tavan 4.000 verildi. Not: ölçülen hız 144–168 k/dk, A1 hedefi 100–110; yavaşlatma ayrıca yapılacak. Eski not: Pilot ses ElevenLabs ücretsiz kotasıyla, yalnız iç kullanım için üretilecek (H-069); önce `tts_book.py` kuru çalışmasıyla karakter ve kredi gösterilir. `narration.voiceId` henüz seçilmedi. Aşağıdaki tabloya satırları `tts_book.py --execute` ekler.
 
 | Tarih (UTC) | Bölüm | Parça | Ses | Model | Hız | Karakter | Metin sha256 | Dosya |
 |---|---|---|---|---|---|---|---|---|
+| 2026-10-14T10:08:28Z | c1 | 1/1 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 1507 | a07284b8f5d8a618 | audio/c1.mp3 |
+| 2026-10-14T10:08:48Z | c2 | 1/1 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 1152 | cc0b4809cd518ed5 | audio/c2.mp3 |
+| 2026-10-14T10:09:06Z | c3 | 1/1 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 1221 | e9e4744a6f8da689 | audio/c3.mp3 |
