@@ -1,0 +1,449 @@
+{
+ "schemaVersion": 1,
+ "lessonId": "G-A1-08-imperatives",
+ "voices": {
+  "tr": {
+   "model": "alania-v2",
+   "voice": "alania2-f1",
+   "timing": "duyu-1",
+   "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+  },
+  "en": {
+   "model": "eleven_v3",
+   "voice": "EXAVITQu4vr4xnSDxMaL",
+   "speed": 0.9
+  }
+ },
+ "cards": [
+  {
+   "card": "c01",
+   "type": "hook",
+   "segments": [
+    {
+     "id": "c01-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Bir adam, Alex'e limanın yolunu tarif ediyor. Bu cümlede ilginç bir şey var. Cümlede kişi yok, doğrudan fiil var.",
+     "textSha256": "31f37608a9830d50b2d8e516cc5924ec0e0c1eefd67a493aaac30afbbc215cd9",
+     "chars": 113,
+     "audio": "tr/c01-tr.mp3",
+     "align": "tr/c01-tr.align.json",
+     "present": true,
+     "duration": 7.2,
+     "quality": {
+      "words": 19,
+      "exact": 17,
+      "fuzzy": 2,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c01-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "Then turn left.",
+     "textSha256": "a50a64ed10de674ea098f536488098eb67ee937c237130b4383eeb817aab897b",
+     "chars": 15,
+     "audio": "en/c01-ex1.mp3",
+     "align": "en/c01-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c02",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c02-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Birine bir şey yapmasını söylerken cümle doğrudan fiille başlar. Kişi söylenmez, fiil de ek almaz. Bir kişiye de çok kişiye de aynı biçim kullanılır.",
+     "textSha256": "09fd9cd69d7c0d6be405e79c11c0aa658affcef9eed28a48c4de64c145287809",
+     "chars": 149,
+     "audio": "tr/c02-tr.mp3",
+     "align": "tr/c02-tr.align.json",
+     "present": true,
+     "duration": 10.11,
+     "quality": {
+      "words": 24,
+      "exact": 23,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c02-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "Open the door.",
+     "textSha256": "a1e83c80f5c3cd70b92c065e3bc9e9e6f398222ceb6b00b4a7b8a1cdef4d3c11",
+     "chars": 14,
+     "audio": "en/c02-ex1.mp3",
+     "align": "en/c02-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c02-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "Sit down, please.",
+     "textSha256": "a7b0cedf6497e1ff48aeab7716852fbb18442feb683920831e198c9bffa8283b",
+     "chars": 17,
+     "audio": "en/c02-ex2.mp3",
+     "align": "en/c02-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c03",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c03-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Birine bir şeyi yapmamasını söylerken fiilin önüne olumsuz bir kelime gelir. Türkçede fiile ek gelir, burada gelmez. Fiil yine yalın kalır.",
+     "textSha256": "e06bcaeb6b94dabaa32067ee5338bea0104d6378734ee20830be1895071d4aec",
+     "chars": 139,
+     "audio": "tr/c03-tr.mp3",
+     "align": "tr/c03-tr.align.json",
+     "present": true,
+     "duration": 11.04,
+     "quality": {
+      "words": 21,
+      "exact": 20,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "Don't forget.",
+     "textSha256": "e24cd036c971ab93ef902012e3b65250737a4493f41fa2475fe1321eeab16814",
+     "chars": 13,
+     "audio": "en/c03-ex1.mp3",
+     "align": "en/c03-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c03-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "Don't open the window.",
+     "textSha256": "511fe70b13091e9062dbb7229b37f18adc4b929d4bf87e7a03368afce891f24f",
+     "chars": 22,
+     "audio": "en/c03-ex2.mp3",
+     "align": "en/c03-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c04",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c04-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Türkçede gelin deyince kibar oluruz, ama İngilizcede böyle bir ek yok. Kibarlık için cümleye lütfen eklenir. Rica ederken soru biçimi daha da yumuşaktır.",
+     "textSha256": "f30dcccba6a06bf1aaa439617929c84e87a3e02fea5a5dfbb7be9a44fd1cf1f5",
+     "chars": 153,
+     "audio": "tr/c04-tr.mp3",
+     "align": "tr/c04-tr.align.json",
+     "present": true,
+     "duration": 10.43,
+     "quality": {
+      "words": 23,
+      "exact": 22,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c04-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "Close the door, please.",
+     "textSha256": "53cdb368cd4c97e6c378262645f4118703a61532504c192b678ce00709e918de",
+     "chars": 23,
+     "audio": "en/c04-ex1.mp3",
+     "align": "en/c04-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "Can you help me, please?",
+     "textSha256": "8266f9d07e530dee2fa934fd340022f956bd258d92193de5b3d9174d6748b1da",
+     "chars": 24,
+     "audio": "en/c04-ex2.mp3",
+     "align": "en/c04-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c05",
+   "type": "examples",
+   "segments": [
+    {
+     "id": "c05-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "Go straight and turn left.",
+     "textSha256": "a9f5a974c8a79b21d9a3d831014c0154ffa42a4ed243ee14290597a6d33ecef4",
+     "chars": 26,
+     "audio": "en/c05-ex1.mp3",
+     "align": "en/c05-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "Look at the map!",
+     "textSha256": "4a09f951d9fb109cb653c5d893ff6746b419754785de060e7492f09311d36ce3",
+     "chars": 16,
+     "audio": "en/c05-ex2.mp3",
+     "align": "en/c05-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "Wash your hands, please.",
+     "textSha256": "d63231d711e9ce89929ee944e89e0af6e9daedede45c00451c313d4c6d3db292",
+     "chars": 24,
+     "audio": "en/c05-ex3.mp3",
+     "align": "en/c05-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex4",
+     "lang": "en",
+     "role": "example",
+     "text": "Don't run!",
+     "textSha256": "1b94e294c6286cfbec29b1b1f800741609cdfab22bc03f345bcee3caaab1afc4",
+     "chars": 10,
+     "audio": "en/c05-ex4.mp3",
+     "align": "en/c05-ex4.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex5",
+     "lang": "en",
+     "role": "example",
+     "text": "Listen to me.",
+     "textSha256": "66d49e374f9f48781118674e35c4f0fd9703fe920e5344ce4c4174a4b5345e99",
+     "chars": 13,
+     "audio": "en/c05-ex5.mp3",
+     "align": "en/c05-ex5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c06",
+   "type": "contrast",
+   "segments": [
+    {
+     "id": "c06-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Türkçede yapma demek için fiile ek gelir: gitme, unutma. İngilizcede fiil değişmez, olumsuz kelime fiilin önüne gelir. Türkçedeki sırayla söylemek çok olağan, zamanla oturur.",
+     "textSha256": "c7307c51e45d9ed4d21805950d45b639dee26eb56e90c137da77bc0f5c7ffba5",
+     "chars": 174,
+     "audio": "tr/c06-tr.mp3",
+     "align": "tr/c06-tr.align.json",
+     "present": true,
+     "duration": 12.19,
+     "quality": {
+      "words": 24,
+      "exact": 23,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c06-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "Don't forget.",
+     "textSha256": "e24cd036c971ab93ef902012e3b65250737a4493f41fa2475fe1321eeab16814",
+     "chars": 13,
+     "audio": "en/c06-ex1.mp3",
+     "align": "en/c06-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c06-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "Don't go!",
+     "textSha256": "6873f5b191f6f2102f826b7fc52cb5dc6d0bc8c095997d272e5545fe8175ea6e",
+     "chars": 9,
+     "audio": "en/c06-ex2.mp3",
+     "align": "en/c06-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c07",
+   "type": "practice",
+   "segments": [
+    {
+     "id": "c07-q5",
+     "lang": "en",
+     "role": "say",
+     "text": "Go straight and turn left.",
+     "textSha256": "a9f5a974c8a79b21d9a3d831014c0154ffa42a4ed243ee14290597a6d33ecef4",
+     "chars": 26,
+     "audio": "en/c07-q5.mp3",
+     "align": "en/c07-q5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c08",
+   "type": "seeInStory",
+   "segments": [
+    {
+     "id": "c08-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Talimatları hikâyede çok duydun. Şu cümlelere bir daha bak.",
+     "textSha256": "a407fb161b89f381d19f1f608395429f16f19d49cb367f3ae1c895e54162b249",
+     "chars": 59,
+     "audio": "tr/c08-tr.mp3",
+     "align": "tr/c08-tr.align.json",
+     "present": true,
+     "duration": 4.48,
+     "quality": {
+      "words": 9,
+      "exact": 8,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    }
+   ]
+  },
+  {
+   "card": "c09",
+   "type": "rule",
+   "segments": [
+    {
+     "id": "c09-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Talimatta cümle doğrudan yalın fiille başlar. Yapma demek için fiilin önüne olumsuz kelime gelir.",
+     "textSha256": "4d4a8b436b724b2dd39b93dd007348e306a6040fc96319cc86b529d108a12d5d",
+     "chars": 97,
+     "audio": "tr/c09-tr.mp3",
+     "align": "tr/c09-tr.align.json",
+     "present": true,
+     "duration": 6.56,
+     "quality": {
+      "words": 14,
+      "exact": 14,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c09-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "Don't forget the key.",
+     "textSha256": "6299b6af1ce3e491b5046a3215b51d121589de630595cfaacc375d06c0c1086b",
+     "chars": 21,
+     "audio": "en/c09-ex1.mp3",
+     "align": "en/c09-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  }
+ ]
+}

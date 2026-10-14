@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "G-A1-14-do-does",
+  "level": "A1",
+  "titleTr": "do / does ile soru ve olumsuz",
+  "titleEn": "Questions and negatives with do and does",
+  "goalTr": "Geniş zamanda soru ve olumsuzu do ve does ile kurarsın; does'tan sonra fiili yalın bırakırsın.",
+  "prerequisites": ["G-A1-13-third-person-s"],
+  "contentVersion": 1,
+  "status": "DRAFT",
+  "aiGenerated": true,
+  "teacherReview": null,
+  "linksTo": { "episodes": ["A1-007", "A1-009"], "books": ["A1-K01", "A1-K03"] },
+  "glossary": ["voice"],
+  "properNouns": ["Maya", "Rosa"],
+  "pronunciations": [{ "term": "Alex", "say_as": "Aleks" }],
+  "narration": { "tr": { "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı" } }
+}

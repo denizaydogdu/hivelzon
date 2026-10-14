@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "id": "G-A1-08-imperatives",
+  "level": "A1",
+  "titleTr": "Emir kipi: Go / Turn / Don't…",
+  "titleEn": "Imperatives",
+  "goalTr": "Talimat, yol tarifi ve uyarıda cümleye yalın fiille başlarsın; olumsuzunu Don't ile yapar, please ve Can you…? ile yumuşatırsın.",
+  "prerequisites": [],
+  "contentVersion": 1,
+  "status": "DRAFT",
+  "aiGenerated": true,
+  "teacherReview": null,
+  "linksTo": { "episodes": ["A1-001", "A1-003", "A1-008", "A1-011"], "books": ["A2-K02"] },
+  "properNouns": ["Jonas"],
+  "pronunciations": [{ "term": "Alex", "say_as": "Aleks" }],
+  "narration": { "tr": { "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı" } }
+}

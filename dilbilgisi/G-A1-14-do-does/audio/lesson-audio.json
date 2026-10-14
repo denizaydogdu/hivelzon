@@ -1,0 +1,449 @@
+{
+ "schemaVersion": 1,
+ "lessonId": "G-A1-14-do-does",
+ "voices": {
+  "tr": {
+   "model": "alania-v2",
+   "voice": "alania2-f1",
+   "timing": "duyu-1",
+   "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+  },
+  "en": {
+   "model": "eleven_v3",
+   "voice": "EXAVITQu4vr4xnSDxMaL",
+   "speed": 0.9
+  }
+ },
+ "cards": [
+  {
+   "card": "c01",
+   "type": "hook",
+   "segments": [
+    {
+     "id": "c01-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Alex, telsizdeki sesi Rosa'ya dinletiyor ve ona bir soru soruyor. Bu cümlede ilginç bir şey var. Cümlenin başında, kendi anlamı olmayan küçük bir kelime duruyor.",
+     "textSha256": "6bc7c968e351329e4385f944c1a80c7bd5bd731803e5e2c36c1a577b6bc666b4",
+     "chars": 161,
+     "audio": "tr/c01-tr.mp3",
+     "align": "tr/c01-tr.align.json",
+     "present": true,
+     "duration": 10.59,
+     "quality": {
+      "words": 25,
+      "exact": 24,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c01-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "Do you know this voice?",
+     "textSha256": "cf383d02068d0f79fc34ea2ccd0ce586db49904b367565a5d85509cf7e1ddaae",
+     "chars": 23,
+     "audio": "en/c01-ex1.mp3",
+     "align": "en/c01-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c02",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c02-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Geniş zamanda soru sormak için cümlenin başına yardımcı bir kelime gelir. Bu kelimenin kendi anlamı yoktur, yalnız soruyu kurar. Türkçedeki mi ekinin işini görür.",
+     "textSha256": "eaf07a57e686325eac0a16f2192fda0067dccf4be257ed15d11454fd66aff026",
+     "chars": 162,
+     "audio": "tr/c02-tr.mp3",
+     "align": "tr/c02-tr.align.json",
+     "present": true,
+     "duration": 10.9,
+     "quality": {
+      "words": 24,
+      "exact": 23,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c02-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "You know Maya.",
+     "textSha256": "c5b9878178fc0b2dc8ec17c86fa49742ca4acb33661ee05800c1cb1061859aae",
+     "chars": 14,
+     "audio": "en/c02-ex1.mp3",
+     "align": "en/c02-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c02-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "Do you know Maya?",
+     "textSha256": "c0d37581035d59405416682da586edcfea1deddb9261d9021bbcbdddd6f9cc3d",
+     "chars": 17,
+     "audio": "en/c02-ex2.mp3",
+     "align": "en/c02-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c03",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c03-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "O için yardımcı kelime değişir ve eki o alır. Fiil ise yalın kalır. Ek cümlede yalnız bir kez gelir.",
+     "textSha256": "f662041c7f00fbc5f5aea781303ea0184a3efdcd4829e1ba9d9b84d6e9161f95",
+     "chars": 100,
+     "audio": "tr/c03-tr.mp3",
+     "align": "tr/c03-tr.align.json",
+     "present": true,
+     "duration": 8.96,
+     "quality": {
+      "words": 19,
+      "exact": 19,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "She works here.",
+     "textSha256": "0e07443ddc008fafcb9709f0c48524d177a61c85a6484759ae44e37ab88b8c57",
+     "chars": 15,
+     "audio": "en/c03-ex1.mp3",
+     "align": "en/c03-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c03-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "Does she work here?",
+     "textSha256": "472861eee9407b7b7c9f9fd6dca93675868ab2a7ea3f9899b1c397e9dfe7c5b8",
+     "chars": 19,
+     "audio": "en/c03-ex2.mp3",
+     "align": "en/c03-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c04",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c04-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Olumsuz cümlede de aynı yardımcı kelime kullanılır, arkasına değil anlamındaki kelime gelir. Konuşurken ikisi çoğu zaman kısalır. Fiil yine yalın kalır.",
+     "textSha256": "78624ad84df8506001c33af54bc011e589e44b9369eb68f053951907d03c08c3",
+     "chars": 152,
+     "audio": "tr/c04-tr.mp3",
+     "align": "tr/c04-tr.align.json",
+     "present": true,
+     "duration": 10.41,
+     "quality": {
+      "words": 21,
+      "exact": 20,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c04-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I don't know.",
+     "textSha256": "810d7c3ca6aa6411102588f8636833035138a35f32f5e7b2df96d2ab2dc4d660",
+     "chars": 13,
+     "audio": "en/c04-ex1.mp3",
+     "align": "en/c04-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "She doesn't like coffee.",
+     "textSha256": "17be8b5553d1507655829e531f228010ce50e3093cd1fcd2e97a5e5660f7f39f",
+     "chars": 24,
+     "audio": "en/c04-ex2.mp3",
+     "align": "en/c04-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c05",
+   "type": "examples",
+   "segments": [
+    {
+     "id": "c05-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "Do you like tea? No, I don't.",
+     "textSha256": "3efddb1aded372c91080baca7bcf70d8aa9bb83df40563c18d6a93a8f01de418",
+     "chars": 29,
+     "audio": "en/c05-ex1.mp3",
+     "align": "en/c05-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "Where does your sister live?",
+     "textSha256": "a6d69c463fb9b87824bbecdb8819d89c2762a5e68c4bafe067cc82fd4787b8ec",
+     "chars": 28,
+     "audio": "en/c05-ex2.mp3",
+     "align": "en/c05-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "He doesn't eat meat.",
+     "textSha256": "4348dbb46b8d34194350e2adab5b3d47ad8ce814af8f016e800cde854e77587c",
+     "chars": 20,
+     "audio": "en/c05-ex3.mp3",
+     "align": "en/c05-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex4",
+     "lang": "en",
+     "role": "example",
+     "text": "Does Maya work here? Yes, she does.",
+     "textSha256": "c5f630df9637a1e24e1be7d328125e3c35f84f80e12429b5bebfd7c54d0ef2bd",
+     "chars": 35,
+     "audio": "en/c05-ex4.mp3",
+     "align": "en/c05-ex4.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex5",
+     "lang": "en",
+     "role": "example",
+     "text": "What does she look like?",
+     "textSha256": "d0bbbfc8e7bdb41bbcac12c13b4d7ca81af179ae9b316e2e0d8520296d3d465d",
+     "chars": 24,
+     "audio": "en/c05-ex5.mp3",
+     "align": "en/c05-ex5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c06",
+   "type": "contrast",
+   "segments": [
+    {
+     "id": "c06-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Türkçede soru da olumsuz da fiilin ekiyle kurulur: biliyor musun, bilmiyorum. Bu yüzden yardımcı kelimeyi atlamak çok olağan. Bir de eki iki kez koymak kolay, ama ek yalnız bir kez gelir.",
+     "textSha256": "cd506dcabbe1a2a2c46a1ed6310956cfec3efb5896e0141c55746a77590f4d18",
+     "chars": 187,
+     "audio": "tr/c06-tr.mp3",
+     "align": "tr/c06-tr.align.json",
+     "present": true,
+     "duration": 12.19,
+     "quality": {
+      "words": 31,
+      "exact": 30,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c06-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "Where does she live?",
+     "textSha256": "d28167116c987d458d2962a66d4f25bae38ba0b19af89ea91faa35e8fbdffbaa",
+     "chars": 20,
+     "audio": "en/c06-ex1.mp3",
+     "align": "en/c06-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c06-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "She doesn't work.",
+     "textSha256": "bd3c8c9cf2b87fd79c931a87d23a7f3c8ea317ad087bc582c5b742642ff3ea5e",
+     "chars": 17,
+     "audio": "en/c06-ex2.mp3",
+     "align": "en/c06-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c07",
+   "type": "practice",
+   "segments": [
+    {
+     "id": "c07-q5",
+     "lang": "en",
+     "role": "say",
+     "text": "Do you know Maya?",
+     "textSha256": "c0d37581035d59405416682da586edcfea1deddb9261d9021bbcbdddd6f9cc3d",
+     "chars": 17,
+     "audio": "en/c07-q5.mp3",
+     "align": "en/c07-q5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c08",
+   "type": "seeInStory",
+   "segments": [
+    {
+     "id": "c08-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Bu yardımcı kelimeyi hikâyede ve kitaplarda çok duydun. Şu cümlelere bir daha bak.",
+     "textSha256": "a46a0d9fb09d4f8e27bb2b79be00f897e51b28e20b0921b3c97dfb5bd58fb0be",
+     "chars": 82,
+     "audio": "tr/c08-tr.mp3",
+     "align": "tr/c08-tr.align.json",
+     "present": true,
+     "duration": 5.28,
+     "quality": {
+      "words": 13,
+      "exact": 12,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    }
+   ]
+  },
+  {
+   "card": "c09",
+   "type": "rule",
+   "segments": [
+    {
+     "id": "c09-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Geniş zamanda soru ve olumsuz için yardımcı bir kelime gelir. O için bu kelime ek alır, fiil ise yalın kalır.",
+     "textSha256": "21212b94295aa2994314f94476df43638e3526e8df89013497d472fab0d6bcd3",
+     "chars": 109,
+     "audio": "tr/c09-tr.mp3",
+     "align": "tr/c09-tr.align.json",
+     "present": true,
+     "duration": 7.2,
+     "quality": {
+      "words": 20,
+      "exact": 20,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c09-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "Does she work here?",
+     "textSha256": "472861eee9407b7b7c9f9fd6dca93675868ab2a7ea3f9899b1c397e9dfe7c5b8",
+     "chars": 19,
+     "audio": "en/c09-ex1.mp3",
+     "align": "en/c09-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  }
+ ]
+}

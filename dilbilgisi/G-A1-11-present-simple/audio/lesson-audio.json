@@ -1,0 +1,462 @@
+{
+ "schemaVersion": 1,
+ "lessonId": "G-A1-11-present-simple",
+ "voices": {
+  "tr": {
+   "model": "alania-v2",
+   "voice": "alania2-f1",
+   "timing": "duyu-1",
+   "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+  },
+  "en": {
+   "model": "eleven_v3",
+   "voice": "EXAVITQu4vr4xnSDxMaL",
+   "speed": 0.9
+  }
+ },
+ "cards": [
+  {
+   "card": "c01",
+   "type": "hook",
+   "segments": [
+    {
+     "id": "c01-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Jordan, Alex'e her gün ne yaptığını anlatıyor. Bu cümlede ilginç bir şey var. Fiil hiç ek almadan, olduğu gibi duruyor.",
+     "textSha256": "01e1ed229fc002478e7f1a1cb5462d7b99a21de01a2977112f20f00d16fd3b0d",
+     "chars": 119,
+     "audio": "tr/c01-tr.mp3",
+     "align": "tr/c01-tr.align.json",
+     "present": true,
+     "duration": 8.48,
+     "quality": {
+      "words": 20,
+      "exact": 20,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c01-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I work here every day.",
+     "textSha256": "96787c3291eed8ca87718b8993fe5f76daaf3a2a54b276c0f19e30a9f99c63a0",
+     "chars": 22,
+     "audio": "en/c01-ex1.mp3",
+     "align": "en/c01-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c02",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c02-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Her gün ya da her hafta yaptığımız işleri bu zamanla anlatırız. Genel doğruları da bu zamanla söyleriz. Türkçedeki geniş zamana benzer, ama her yerde birebir aynı değildir.",
+     "textSha256": "2406a81a293f4a18e7e8a149d29b54ad630d1c8caed02915c8d45ab3ab3b3123",
+     "chars": 172,
+     "audio": "tr/c02-tr.mp3",
+     "align": "tr/c02-tr.align.json",
+     "present": true,
+     "duration": 10.59,
+     "quality": {
+      "words": 27,
+      "exact": 27,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c02-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I drink tea every morning.",
+     "textSha256": "34beee44f15ad9bb287fbf01f8776c87f9fd94cb34608f009a5b502b8e5646a7",
+     "chars": 26,
+     "audio": "en/c02-ex1.mp3",
+     "align": "en/c02-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c02-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "We live in İzmir.",
+     "textSha256": "f07963f55c90515a8629dc1a1af6ea14f298f36375c3ac9bf07bd4c1aa9d4afe",
+     "chars": 17,
+     "audio": "en/c02-ex2.mp3",
+     "align": "en/c02-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c03",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c03-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Ben, sen, biz, siz ve onlar için fiil yalın kalır, hiç ek almaz. Türkçede kişiyi ekten anlarız, bu yüzden çoğu zaman söylemeyiz. İngilizcede ise kişi her zaman söylenir.",
+     "textSha256": "d87a7c91d42d781159f711b6afd79f2a4d7df1bd1cc1c87c4c972af415218724",
+     "chars": 169,
+     "audio": "tr/c03-tr.mp3",
+     "align": "tr/c03-tr.align.json",
+     "present": true,
+     "duration": 13.63,
+     "quality": {
+      "words": 28,
+      "exact": 26,
+      "fuzzy": 2,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "They play football.",
+     "textSha256": "f058c630d2206dccb39263c9282024ecaaa411f07723d65766591569e78cfbcc",
+     "chars": 19,
+     "audio": "en/c03-ex1.mp3",
+     "align": "en/c03-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c03-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "You speak English well.",
+     "textSha256": "f30ebc9595d305d0564ddf31b9731f0815541b4d9ec00c2a31c2bab25ef590c6",
+     "chars": 23,
+     "audio": "en/c03-ex2.mp3",
+     "align": "en/c03-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c04",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c04-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Bu zamanda fiilin yanına olmak fiili gelmez. Fiil tek başına iş görür. Katılıyorum gibi fiillerde de böyledir.",
+     "textSha256": "b9c2e6731d1d27cdaaa3288d271165f3aa8b86ff2401c11b5bbc291b8f1b3359",
+     "chars": 110,
+     "audio": "tr/c04-tr.mp3",
+     "align": "tr/c04-tr.align.json",
+     "present": true,
+     "duration": 8.32,
+     "quality": {
+      "words": 17,
+      "exact": 17,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c04-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I agree.",
+     "textSha256": "826ff0dab649a97ffdd7779a332accafb35cc161012253a19383db19289d6e02",
+     "chars": 8,
+     "audio": "en/c04-ex1.mp3",
+     "align": "en/c04-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "I work here.",
+     "textSha256": "7f3a819eb3a3bf033a05cfa82fd4e38c21d9fbab5f0038b7fb98ce42b7d119de",
+     "chars": 12,
+     "audio": "en/c04-ex2.mp3",
+     "align": "en/c04-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c05",
+   "type": "examples",
+   "segments": [
+    {
+     "id": "c05-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I work in a café.",
+     "textSha256": "7b513c289d454094f19b50add6ec151abb2f7495f1f568cb3275f3b529de91b4",
+     "chars": 17,
+     "audio": "en/c05-ex1.mp3",
+     "align": "en/c05-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "We watch TV on Fridays.",
+     "textSha256": "cea7527fa554dd8ce048f4121d1bc9be41e46465161d385dfa2a7d0c0885dadb",
+     "chars": 23,
+     "audio": "en/c05-ex2.mp3",
+     "align": "en/c05-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "They live near the sea.",
+     "textSha256": "5946354313d5a472b78e2b5460351e0a190909125e2acfe1b0a38809a90340b4",
+     "chars": 23,
+     "audio": "en/c05-ex3.mp3",
+     "align": "en/c05-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex4",
+     "lang": "en",
+     "role": "example",
+     "text": "You know my sister.",
+     "textSha256": "20023cc092fb34c551d95a256b347cdc999b3252ad93712d947ac23e44d4dec9",
+     "chars": 19,
+     "audio": "en/c05-ex4.mp3",
+     "align": "en/c05-ex4.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex5",
+     "lang": "en",
+     "role": "example",
+     "text": "I walk to school every day.",
+     "textSha256": "573b5abffed4836f1218cbabe775eca2819dd21c41f8d8ed67643cd5f7159460",
+     "chars": 27,
+     "audio": "en/c05-ex5.mp3",
+     "align": "en/c05-ex5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c06",
+   "type": "contrast",
+   "segments": [
+    {
+     "id": "c06-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Türkçede her gün yürüyorum deriz, yani şimdiki zaman ekini de kullanırız. İngilizcede her gün olan işler için bu zaman kullanılır. Bir de fiilin yanına olmak fiili eklemek çok olağan, ama gerek yok.",
+     "textSha256": "5f8ceedd8b5825e828478e6cf398f4d163fa5254976a43fad95dd8abfb3f9e6b",
+     "chars": 198,
+     "audio": "tr/c06-tr.mp3",
+     "align": "tr/c06-tr.align.json",
+     "present": true,
+     "duration": 12.94,
+     "quality": {
+      "words": 32,
+      "exact": 32,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c06-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I agree.",
+     "textSha256": "826ff0dab649a97ffdd7779a332accafb35cc161012253a19383db19289d6e02",
+     "chars": 8,
+     "audio": "en/c06-ex1.mp3",
+     "align": "en/c06-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c06-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "I work here.",
+     "textSha256": "7f3a819eb3a3bf033a05cfa82fd4e38c21d9fbab5f0038b7fb98ce42b7d119de",
+     "chars": 12,
+     "audio": "en/c06-ex2.mp3",
+     "align": "en/c06-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c06-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "I walk every day.",
+     "textSha256": "7b1ded309ee8e643273668adc0c4b1031a37efbc7736c48580c0449abc25c0ef",
+     "chars": 17,
+     "audio": "en/c06-ex3.mp3",
+     "align": "en/c06-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c07",
+   "type": "practice",
+   "segments": [
+    {
+     "id": "c07-q5",
+     "lang": "en",
+     "role": "say",
+     "text": "I agree.",
+     "textSha256": "826ff0dab649a97ffdd7779a332accafb35cc161012253a19383db19289d6e02",
+     "chars": 8,
+     "audio": "en/c07-q5.mp3",
+     "align": "en/c07-q5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c08",
+   "type": "seeInStory",
+   "segments": [
+    {
+     "id": "c08-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Bu zamanı hikâyede ve kitaplarda çok duydun. Şu cümlelere bir daha bak.",
+     "textSha256": "6f3a0c37b32aec8b5d15512e356c6aade1c4da53384f9a06e4f1a451af63b04f",
+     "chars": 71,
+     "audio": "tr/c08-tr.mp3",
+     "align": "tr/c08-tr.align.json",
+     "present": true,
+     "duration": 4.64,
+     "quality": {
+      "words": 12,
+      "exact": 11,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    }
+   ]
+  },
+  {
+   "card": "c09",
+   "type": "rule",
+   "segments": [
+    {
+     "id": "c09-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Her gün olan işleri ve genel doğruları bu zamanla anlatırız. Ben, sen, biz, siz ve onlar için fiil yalın kalır; olmak fiili gelmez.",
+     "textSha256": "e932c510f77d4c130e59aa9e924a71e5a59ac8a821ddbd4ef4e5e27148fade59",
+     "chars": 131,
+     "audio": "tr/c09-tr.mp3",
+     "align": "tr/c09-tr.align.json",
+     "present": true,
+     "duration": 9.28,
+     "quality": {
+      "words": 23,
+      "exact": 23,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c09-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I work here every day.",
+     "textSha256": "96787c3291eed8ca87718b8993fe5f76daaf3a2a54b276c0f19e30a9f99c63a0",
+     "chars": 22,
+     "audio": "en/c09-ex1.mp3",
+     "align": "en/c09-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  }
+ ]
+}

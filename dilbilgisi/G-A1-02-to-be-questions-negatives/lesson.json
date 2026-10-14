@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "id": "G-A1-02-to-be-questions-negatives",
+  "level": "A1",
+  "titleTr": "to be ile soru ve olumsuz",
+  "titleEn": "Questions and negatives with to be",
+  "goalTr": "Am, is ve are'ı kişinin önüne alarak soru, not ile olumsuz cümle kurarsın; soru kelimesini başa koyarsın.",
+  "prerequisites": ["G-A1-01-to-be"],
+  "contentVersion": 1,
+  "status": "DRAFT",
+  "aiGenerated": true,
+  "teacherReview": null,
+  "linksTo": { "episodes": ["A1-001", "A1-002", "A1-004"], "books": ["A1-K04"] },
+  "properNouns": ["Maya", "Ankara", "Pip"],
+  "pronunciations": [{ "term": "Alex", "say_as": "Aleks" }],
+  "narration": { "tr": { "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı" } }
+}

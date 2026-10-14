@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "id": "G-A1-06-this-that-plurals",
+  "level": "A1",
+  "titleTr": "this / that / these / those ve çoğul -s",
+  "titleEn": "This, that, these, those and plurals",
+  "goalTr": "Yakın ve uzak, tek ve çok ayrımıyla gösterir, tanıtırsın; çoğulu -s ile yapar, people ve children gibi düzensizleri tanırsın.",
+  "prerequisites": ["G-A1-01-to-be", "G-A1-03-a-an"],
+  "contentVersion": 1,
+  "status": "DRAFT",
+  "aiGenerated": true,
+  "teacherReview": null,
+  "linksTo": { "episodes": ["A1-002", "A1-003", "A1-010"], "books": ["A1-K01", "A1-K02"] },
+  "properNouns": ["Can", "Sam"],
+  "pronunciations": [{ "term": "Alex", "say_as": "Aleks" }],
+  "narration": { "tr": { "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı" } }
+}

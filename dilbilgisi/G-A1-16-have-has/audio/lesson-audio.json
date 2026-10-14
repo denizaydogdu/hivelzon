@@ -1,0 +1,449 @@
+{
+ "schemaVersion": 1,
+ "lessonId": "G-A1-16-have-has",
+ "voices": {
+  "tr": {
+   "model": "alania-v2",
+   "voice": "alania2-f1",
+   "timing": "duyu-1",
+   "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+  },
+  "en": {
+   "model": "eleven_v3",
+   "voice": "EXAVITQu4vr4xnSDxMaL",
+   "speed": 0.9
+  }
+ },
+ "cards": [
+  {
+   "card": "c01",
+   "type": "hook",
+   "segments": [
+    {
+     "id": "c01-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Jordan, cuma akşamı gördüğü kadını anlatıyor. Bu cümlede ilginç bir şey var. Türkçede onun mavi bir montu var deriz, İngilizcede ise kadın cümlenin başına geçiyor.",
+     "textSha256": "3295b637e664cf11599684f3e262eef0460ee9e1ed722593a32e1c7f5c8e56b8",
+     "chars": 163,
+     "audio": "tr/c01-tr.mp3",
+     "align": "tr/c01-tr.align.json",
+     "present": true,
+     "duration": 11.23,
+     "quality": {
+      "words": 25,
+      "exact": 25,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c01-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "She has a blue coat.",
+     "textSha256": "e7ecf517c7ca5db528992b51872d485b5f43cf7f1dd0392e384f775a23664470",
+     "chars": 20,
+     "audio": "en/c01-ex1.mp3",
+     "align": "en/c01-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c02",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c02-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Türkçede sahipliği var kelimesi ve bir ekle söyleriz: kedim var. İngilizcede sahip olan kişi cümlenin başına gelir. Arkasından sahip olmak anlamındaki fiil gelir.",
+     "textSha256": "2da652ef09307740e680111c6aec511e76c316f412217c46f626e0341ce86bc3",
+     "chars": 162,
+     "audio": "tr/c02-tr.mp3",
+     "align": "tr/c02-tr.align.json",
+     "present": true,
+     "duration": 12.03,
+     "quality": {
+      "words": 23,
+      "exact": 23,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c02-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I have a cat.",
+     "textSha256": "dcec1b9b3638698ad48766737542c1c818f54292a6ae1dadf6a92c8a45555f9f",
+     "chars": 13,
+     "audio": "en/c02-ex1.mp3",
+     "align": "en/c02-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c03",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c03-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Ben, sen, biz, siz ve onlar için fiil aynı kalır. O için fiil biraz değişir. Bu, geniş zamandaki ek kuralına benzer.",
+     "textSha256": "70f782d61c16fd4095be4aec01e828c98d5b9a2d05bdaee1d02273260c6e0e89",
+     "chars": 116,
+     "audio": "tr/c03-tr.mp3",
+     "align": "tr/c03-tr.align.json",
+     "present": true,
+     "duration": 10.56,
+     "quality": {
+      "words": 21,
+      "exact": 21,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "We have two cats.",
+     "textSha256": "2cb823ba7c18bb6f33b18f748b595a99c0095f79e9639fc1e4702f5aaa28c322",
+     "chars": 17,
+     "audio": "en/c03-ex1.mp3",
+     "align": "en/c03-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c03-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "She has a cat.",
+     "textSha256": "f9ef57857cc636c032b7c72a5f0b39a5e4c09f4273d22726f691f4fddfdf40c5",
+     "chars": 14,
+     "audio": "en/c03-ex2.mp3",
+     "align": "en/c03-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c04",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c04-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Bu fiille dış görünüşü de anlatırız: saç ve göz gibi. Programımızı da söyleriz: dokuzda dersim var. Saçtan söz ederken İngilizcede kelime tekil kalır.",
+     "textSha256": "50655fb1088ffa1749a21faff69884e50e8de88aa2df1294bda74cd12ab05b68",
+     "chars": 150,
+     "audio": "tr/c04-tr.mp3",
+     "align": "tr/c04-tr.align.json",
+     "present": true,
+     "duration": 11.55,
+     "quality": {
+      "words": 23,
+      "exact": 22,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c04-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "He has short hair.",
+     "textSha256": "cf8e4ff30ca5946dcbb61227005d54daeaead4fdce49fd227159540b98d1b699",
+     "chars": 18,
+     "audio": "en/c04-ex1.mp3",
+     "align": "en/c04-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "I have English at nine.",
+     "textSha256": "3b7225230c0ec6a632b9c56dd52854e5ee5595040a012a9a09f8b1ca19526551",
+     "chars": 23,
+     "audio": "en/c04-ex2.mp3",
+     "align": "en/c04-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c05",
+   "type": "examples",
+   "segments": [
+    {
+     "id": "c05-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I have two brothers.",
+     "textSha256": "e31375d7603809d2d0d049ba61a68c2a69fcdd654a9ba2dc85c72389daac7857",
+     "chars": 20,
+     "audio": "en/c05-ex1.mp3",
+     "align": "en/c05-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "My grandmother has a small garden.",
+     "textSha256": "a3b6d582575deea77e16fc492128bd7f28e3a23c122938a3a7eb571512246489",
+     "chars": 34,
+     "audio": "en/c05-ex2.mp3",
+     "align": "en/c05-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "She has long hair.",
+     "textSha256": "3fa3098436f2410ffab5e60d73800d9a041dd243b341f938437afa1eacaff66a",
+     "chars": 18,
+     "audio": "en/c05-ex3.mp3",
+     "align": "en/c05-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex4",
+     "lang": "en",
+     "role": "example",
+     "text": "We have English on Monday.",
+     "textSha256": "9331b82ac44aaa198260b32924bfa96df56a04935c24e1340157139d1598794c",
+     "chars": 26,
+     "audio": "en/c05-ex4.mp3",
+     "align": "en/c05-ex4.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex5",
+     "lang": "en",
+     "role": "example",
+     "text": "The house has five rooms.",
+     "textSha256": "232e271e75998175bf96373cad2abbb3ce8b51feff32a15773aa71d069aeabfb",
+     "chars": 25,
+     "audio": "en/c05-ex5.mp3",
+     "align": "en/c05-ex5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c06",
+   "type": "contrast",
+   "segments": [
+    {
+     "id": "c06-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Türkçede sahiplik de, bir yerde bir şey olması da var kelimesiyle söylenir. İngilizcede sahip olan kişi özne olur. Yaşı ise bu fiille değil, olmak fiiliyle söyleriz.",
+     "textSha256": "8b7ef00d9c01257619f07e0adadc277e7587cbfb91fb4e88a9a48a33fe0e14c6",
+     "chars": 165,
+     "audio": "tr/c06-tr.mp3",
+     "align": "tr/c06-tr.align.json",
+     "present": true,
+     "duration": 11.55,
+     "quality": {
+      "words": 26,
+      "exact": 24,
+      "fuzzy": 2,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c06-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "She has a car.",
+     "textSha256": "d360896124b044e25d81afe402b3ccccfeff053587fcbf5f6a0d3b5af56293d0",
+     "chars": 14,
+     "audio": "en/c06-ex1.mp3",
+     "align": "en/c06-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c06-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "She has white hair.",
+     "textSha256": "c1c76518882a158cc414a4d7374438b57f66260b7e8288efa161c215034ce381",
+     "chars": 19,
+     "audio": "en/c06-ex2.mp3",
+     "align": "en/c06-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c06-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "I'm nineteen.",
+     "textSha256": "50a6e46e74820bd727b603781ace21a6110657589f1d5e274ca48852de59ec80",
+     "chars": 13,
+     "audio": "en/c06-ex3.mp3",
+     "align": "en/c06-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c07",
+   "type": "practice",
+   "segments": [
+    {
+     "id": "c07-q5",
+     "lang": "en",
+     "role": "say",
+     "text": "I have two brothers.",
+     "textSha256": "e31375d7603809d2d0d049ba61a68c2a69fcdd654a9ba2dc85c72389daac7857",
+     "chars": 20,
+     "audio": "en/c07-q5.mp3",
+     "align": "en/c07-q5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c08",
+   "type": "seeInStory",
+   "segments": [
+    {
+     "id": "c08-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Bu fiil hikâyede ve kitaplarda çok geçiyor. Şu cümlelere bir daha bak.",
+     "textSha256": "e70cd0b58e9bd4e8efe617db15754b1362886b90860518156186fbad469f49d8",
+     "chars": 70,
+     "audio": "tr/c08-tr.mp3",
+     "align": "tr/c08-tr.align.json",
+     "present": true,
+     "duration": 5.12,
+     "quality": {
+      "words": 12,
+      "exact": 11,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    }
+   ]
+  },
+  {
+   "card": "c09",
+   "type": "rule",
+   "segments": [
+    {
+     "id": "c09-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Sahip olan kişi cümlenin başına gelir, arkasından sahip olmak fiili gelir. O için bu fiilin biçimi değişir.",
+     "textSha256": "b6d5bc65eccecee0861e66bb336bbd7ed781adb86bbd105afe03efce99b33437",
+     "chars": 107,
+     "audio": "tr/c09-tr.mp3",
+     "align": "tr/c09-tr.align.json",
+     "present": true,
+     "duration": 7.04,
+     "quality": {
+      "words": 17,
+      "exact": 17,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c09-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "She has a blue coat.",
+     "textSha256": "e7ecf517c7ca5db528992b51872d485b5f43cf7f1dd0392e384f775a23664470",
+     "chars": 20,
+     "audio": "en/c09-ex1.mp3",
+     "align": "en/c09-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  }
+ ]
+}

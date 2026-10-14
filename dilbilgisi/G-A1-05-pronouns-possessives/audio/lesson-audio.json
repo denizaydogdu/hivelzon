@@ -1,0 +1,492 @@
+{
+ "schemaVersion": 1,
+ "lessonId": "G-A1-05-pronouns-possessives",
+ "voices": {
+  "tr": {
+   "model": "alania-v2",
+   "voice": "alania2-f1",
+   "timing": "duyu-1",
+   "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+  },
+  "en": {
+   "model": "eleven_v3",
+   "voice": "EXAVITQu4vr4xnSDxMaL",
+   "speed": 0.9
+  }
+ },
+ "cards": [
+  {
+   "card": "c01",
+   "type": "hook",
+   "segments": [
+    {
+     "id": "c01-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Maya, Alex'i ailesiyle tanıştırıyor. Bu cümlede ilginç bir şey var. Türkçede annem deriz ve ek sona gelir; İngilizcede ise ayrı bir kelime başa geçer.",
+     "textSha256": "7caa9a4659a6e5375388e2954618bef770f391f9fe72a9dd4134d450e3c2c4f7",
+     "chars": 150,
+     "audio": "tr/c01-tr.mp3",
+     "align": "tr/c01-tr.align.json",
+     "present": true,
+     "duration": 12.28,
+     "quality": {
+      "words": 24,
+      "exact": 22,
+      "fuzzy": 2,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c01-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "This is my mother.",
+     "textSha256": "3edb60c0eee69a9502999e8e5fef1653ebd27bdba8f163b666463b28ccf1d5c8",
+     "chars": 18,
+     "audio": "en/c01-ex1.mp3",
+     "align": "en/c01-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c02",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c02-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Türkçede tek bir o vardır. İngilizcede erkek, kadın ve eşya ya da hayvan için üç ayrı kelime var. Kişinin kadın mı erkek mi olduğuna bakarak seçersin.",
+     "textSha256": "7b07625eadb26e677f7b343d4812f9727ce6367995b0f6e99e8d8118b514b7a2",
+     "chars": 150,
+     "audio": "tr/c02-tr.mp3",
+     "align": "tr/c02-tr.align.json",
+     "present": true,
+     "duration": 11.86,
+     "quality": {
+      "words": 26,
+      "exact": 26,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c02-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "He is my brother.",
+     "textSha256": "0334c9539df956313b6a4bf629efc1a4af37b013562c7cd133b1bc118183a72e",
+     "chars": 17,
+     "audio": "en/c02-ex1.mp3",
+     "align": "en/c02-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c02-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "She is my sister.",
+     "textSha256": "fcbe1b9a60aeee61a1159e7d17a9adb58ed5de336d389273a96a82d197986cb1",
+     "chars": 17,
+     "audio": "en/c02-ex2.mp3",
+     "align": "en/c02-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c03",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c03-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Türkçede sahipliği çoğu zaman bir ek gösterir: kitabım, kitabın. İngilizcede ek yoktur, ismin önüne ayrı bir kelime gelir. O için yine kadın ve erkek ayrı söylenir.",
+     "textSha256": "b6cc3bfca48cef176e98d6e8c75b76eaf7fb6a1f61d12ece605f11c365f946cf",
+     "chars": 164,
+     "audio": "tr/c03-tr.mp3",
+     "align": "tr/c03-tr.align.json",
+     "present": true,
+     "duration": 13.31,
+     "quality": {
+      "words": 26,
+      "exact": 25,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "His name is Sam.",
+     "textSha256": "0e29114aa86c115d37ae1488a704458453a38cdebd78c5ff9c3b32195df50b38",
+     "chars": 16,
+     "audio": "en/c03-ex1.mp3",
+     "align": "en/c03-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c03-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "Her name is Maya.",
+     "textSha256": "b1235f4bb50ad8fd06f3e4b5f8cf5b9928165259d2ece890e2209be573ba8fc7",
+     "chars": 17,
+     "audio": "en/c03-ex2.mp3",
+     "align": "en/c03-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c04",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c04-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Fiilden sonra gelen kişi için başka biçimler kullanılır. Türkçedeki beni, onu, ona gibi düşünebilirsin. Kadın için olan biçim, sahiplik biçimiyle aynıdır.",
+     "textSha256": "5fd28c47b3855f3f6ae1f7fe503c09c1e8aadefef6b314c92cd2a504f86d867d",
+     "chars": 154,
+     "audio": "tr/c04-tr.mp3",
+     "align": "tr/c04-tr.align.json",
+     "present": true,
+     "duration": 9.31,
+     "quality": {
+      "words": 21,
+      "exact": 20,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c04-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "Can you hear me?",
+     "textSha256": "37e79c35d4fee75c4b225c6b8caa30481e72868356f37bd2f53c43aac43e9a29",
+     "chars": 16,
+     "audio": "en/c04-ex1.mp3",
+     "align": "en/c04-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "I know her.",
+     "textSha256": "13d913c719a839de583d6fbb668b8969e470f1d1b9c6238e8c797492eb4d63ae",
+     "chars": 11,
+     "audio": "en/c04-ex2.mp3",
+     "align": "en/c04-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c05",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c05-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Bir kişinin adıyla sahiplik söylerken ada kısa bir ek gelir. Türkçedeki Maya'nın gibi düşünebilirsin. Ekten önce yine kesme işareti konur.",
+     "textSha256": "d5f9a8fb56ff19cd1a13396d88fd7ece384d4d60bd90f7620f2d087649adbd4b",
+     "chars": 138,
+     "audio": "tr/c05-tr.mp3",
+     "align": "tr/c05-tr.align.json",
+     "present": true,
+     "duration": 9.12,
+     "quality": {
+      "words": 20,
+      "exact": 20,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "This is Maya's map.",
+     "textSha256": "5a409be8454147e5db22b62fbdcdf5e2e23a399fb7deb26b5af43c66f4f27e25",
+     "chars": 19,
+     "audio": "en/c05-ex1.mp3",
+     "align": "en/c05-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c06",
+   "type": "examples",
+   "segments": [
+    {
+     "id": "c06-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "This is my brother. He likes football.",
+     "textSha256": "3f7e132afd28844bf5bf9355dc31326030f19182b8a019f23c05e16081aeb6b4",
+     "chars": 38,
+     "audio": "en/c06-ex1.mp3",
+     "align": "en/c06-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c06-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "Her name is Elif.",
+     "textSha256": "5b6d780b36cb8acb317eb9e7ffb57e4c4f4003aacd0a74908e5911e04a9bbf2d",
+     "chars": 17,
+     "audio": "en/c06-ex2.mp3",
+     "align": "en/c06-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c06-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "Our house is small.",
+     "textSha256": "4b7bc1c77d00c1bf281c0d17ecc206b04ed930baa0b5e05671f07ab45fbc94e0",
+     "chars": 19,
+     "audio": "en/c06-ex3.mp3",
+     "align": "en/c06-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c06-ex4",
+     "lang": "en",
+     "role": "example",
+     "text": "Call me, please.",
+     "textSha256": "6d31d54ee54debca9f170789f58f394303d08606814d3f34d76fed7e4556fe7c",
+     "chars": 16,
+     "audio": "en/c06-ex4.mp3",
+     "align": "en/c06-ex4.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c06-ex5",
+     "lang": "en",
+     "role": "example",
+     "text": "Sam's room is big.",
+     "textSha256": "016306c84cc7ec9a349de8ad73094c93c0495d93b0bcb0b0f29cd1f75e2704b7",
+     "chars": 18,
+     "audio": "en/c06-ex5.mp3",
+     "align": "en/c06-ex5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c07",
+   "type": "contrast",
+   "segments": [
+    {
+     "id": "c07-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Türkçede o kelimesi kadın ve erkek için aynıdır. Bu yüzden İngilizcede ikisini karıştırmak çok olağan. Adını söylerken de sahiplik kelimesi başa gelir.",
+     "textSha256": "26ae31d4624888c7a0fd61581e32e0379536f208c1f6511e588504ba4795ac8d",
+     "chars": 151,
+     "audio": "tr/c07-tr.mp3",
+     "align": "tr/c07-tr.align.json",
+     "present": true,
+     "duration": 9.47,
+     "quality": {
+      "words": 22,
+      "exact": 22,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c07-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "Her name is Zeynep.",
+     "textSha256": "778621772ae2924f6c5a493faa4274485f955c4bc9493fa44f8856c00b2d331b",
+     "chars": 19,
+     "audio": "en/c07-ex1.mp3",
+     "align": "en/c07-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c07-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "My mother is a teacher. She is nice.",
+     "textSha256": "fd8dcf86dbfb246c57db41f56b1aa3d39b2c226843ebcb82fa4988401b2c2eca",
+     "chars": 36,
+     "audio": "en/c07-ex2.mp3",
+     "align": "en/c07-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c08",
+   "type": "practice",
+   "segments": [
+    {
+     "id": "c08-q5",
+     "lang": "en",
+     "role": "say",
+     "text": "Her name is Elif.",
+     "textSha256": "5b6d780b36cb8acb317eb9e7ffb57e4c4f4003aacd0a74908e5911e04a9bbf2d",
+     "chars": 17,
+     "audio": "en/c08-q5.mp3",
+     "align": "en/c08-q5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c09",
+   "type": "seeInStory",
+   "segments": [
+    {
+     "id": "c09-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Bu kelimeleri hikâyede ve kitaplarda çok duydun. Şu cümlelere bir daha bak.",
+     "textSha256": "b4986ab5ad92b184526b3b9e7534f7f608df918b731e064a50ddf15f0714f63b",
+     "chars": 75,
+     "audio": "tr/c09-tr.mp3",
+     "align": "tr/c09-tr.align.json",
+     "present": true,
+     "duration": 4.64,
+     "quality": {
+      "words": 12,
+      "exact": 11,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    }
+   ]
+  },
+  {
+   "card": "c10",
+   "type": "rule",
+   "segments": [
+    {
+     "id": "c10-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Erkek için bir kelime, kadın için başka bir kelime, eşya ve hayvan için üçüncüsü kullanılır. Sahiplik, ismin önüne gelen ayrı bir kelimeyle söylenir.",
+     "textSha256": "77924a5f8435f45230568ae998ca11a597bb5f3bdaa09da5a5fedbb18d825ca7",
+     "chars": 149,
+     "audio": "tr/c10-tr.mp3",
+     "align": "tr/c10-tr.align.json",
+     "present": true,
+     "duration": 10.11,
+     "quality": {
+      "words": 23,
+      "exact": 22,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c10-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "Her name is Maya.",
+     "textSha256": "b1235f4bb50ad8fd06f3e4b5f8cf5b9928165259d2ece890e2209be573ba8fc7",
+     "chars": 17,
+     "audio": "en/c10-ex1.mp3",
+     "align": "en/c10-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  }
+ ]
+}
