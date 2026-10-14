@@ -1,6 +1,6 @@
 # H-082: Dilbilgisi dalgası 3: C1 + C2
 
-- **Durum:** Yapılacak
+- **Durum:** Devam ediyor (C1 8 + C2 6 ders main'de, lint 0 hata, Türkçe sesler hazır (15.787 karakter, ücretsiz); İngilizce örnek sesi 7.482 karakter bekliyor; kullanıcı onayı ve öğretmen kontrolü bekleniyor)
 - **Tür:** İçerik üretimi
 - **Faz:** Dilbilgisi D6 (`docs/DILBILGISI.md` §8)
 - **Bağımlılık:** H-081

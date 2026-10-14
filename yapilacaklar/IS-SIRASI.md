@@ -158,7 +158,7 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 | D3 | H-079 | Pilot: 3 A1 konusu | Yüksek | H-076…H-078 | ✅ |
 | D4 | H-080 | Dalga 1: A1 + A2 | Orta | H-079 | 🔄 |
 | D5 | H-081 | Dalga 2: B1 + B2 | Orta | H-080 | 🔄 |
-| D6 | H-082 | Dalga 3: C1 + C2 | Orta | H-081 | ⏳ |
+| D6 | H-082 | Dalga 3: C1 + C2 | Orta | H-081 | 🔄 |
 | D0' | H-083 | Türkçe seslerin Alania'ya geçişi (Hi, Alex, babaanne, ipucu kartları, Hi paneli) | Yüksek | H-075 | 🔄 |
 
 **Sıra:** H-075 ve H-076 hemen ve paralel (Alania'nın ücretsiz ayı sınırlı) → H-077 → H-078 → H-079 → dalgalar.
@@ -407,3 +407,4 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
   - H-080: A1 13 + A2 15 ders yazıldı ve Türkçe sesleri üretildi; toplam 31 ders lint 0 hata. Bölüm/kitap `grammarTopics` dolduruldu (en fazla 3, aynı/alt seviye). İngilizce örnek sesleri ~9.250 karakter bekliyor.
   - H-081: B1 14 + B2 12 ders yazıldı, Türkçe sesleri üretildi; toplam 57 ders lint 0 hata. Kalan: C1–C2 (14 ders, H-082). İngilizce örnek sesleri toplam ~20.300 karakter bekliyor.
   - H-040 Keşfet `main`'e birleştirildi: 17 klip (B1–B4, ücretsiz kesim, -16 LUFS), quiz ve mola kartları, günlük 20 dk sınırı (13–17 ve 13 altı), sonsuz kaydırma yok, bellek ölçümü sızıntısız (RSS tepe +60 MB, en fazla 2 canlı oynatıcı). Onay bekliyor.
+  - H-082: C1 8 + C2 6 ders yazıldı ve Türkçe sesleri üretildi. **71 konunun tamamı yazıldı, Türkçe sesli (toplam ~69.000 karakter, ücretsiz kampanya), lint 0 hata.** İngilizce örnek sesleri toplam ~27.800 karakter bekliyor. Hi balonu katman olarak yüzer (H-064 notu).
