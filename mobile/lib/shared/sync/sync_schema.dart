@@ -43,6 +43,7 @@ abstract final class SyncSql {
     ('hi_records', 'hr', ['kind', 'ref_id']),
     ('user_book_progress', 'ubp', ['book_id']),
     ('user_grammar_progress', 'ugp', ['lesson_id']),
+    ('daily_activity', 'da', ['day', 'source_id']),
   ];
 
   /// Yalnız eklenen, doğal anahtarlı tablolar.

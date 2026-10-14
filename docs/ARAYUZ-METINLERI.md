@@ -67,7 +67,7 @@ Düzen: selam ve tek cümle, ardından **Hikâyen** (birincil, sarı düğme), a
 | Tekrar yok, defter dolu | (kutu gizliydi) | Şu an tekrar edilecek ifade yok. Yeni ifadeler bölüm bitince defterine eklenir. | Sakin durum cümlesi; düğme yok. |
 | Defter boş | (kutu gizliydi) | Bir bölümü bitirince ifadeler defterine eklenir; tekrar zamanları burada görünür. | Yeni kullanıcıya özelliği tanıtır. |
 | Defter yükleniyor | — | Defterin hazırlanıyor… | Boş durumla karışmaz. |
-| Günlük hedef halkası (H-060) | — | Selamın sağında halka: "6/10" + "dk"; ekran okuyucu: "Günlük hedef: bugün yaklaşık 6 dakika, hedefin 10 dakika" | Bugünkü süre mevcut kayıtlardan **tahmindir** (bugün biten bölümlerin süresi + tekrarda geçen süre). Hedefin altında kalmak vurgulanmaz; utandırıcı metin yok. |
+| Günlük hedef halkası (H-060) | — | Selamın sağında halka: "6/10" + "dk"; ekran okuyucu: "Günlük hedef: bugün yaklaşık 6 dakika, hedefin 10 dakika" | Bugünkü süre **cihazda ölçülür** (H-074): oynatıcı, kelime tekrarı, konu seti, sahne avı, kitap ve dilbilgisi ekranı ön plandayken; arka planda ve uzun süre dokunulmadan geçen süre sayılmaz. Ölçüm başlamadan önceki etkinlik (güncellemenin yapıldığı gün) eski tahminle sayılır. Hedefin altında kalmak vurgulanmaz; utandırıcı metin yok. |
 
 ## 4. Hikâye sekmesi
 

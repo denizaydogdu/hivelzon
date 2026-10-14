@@ -164,6 +164,16 @@ const syncTables = <SyncTableSpec>[
       SyncCol('completedAt', 'completed_at', _d),
     ],
   ),
+  // Günlük ölçülen süre (H-074): (yerel gün, kaynak) başına toplam; her
+  // satırı yalnız kendi cihazı yazar (düz LWW).
+  SyncTableSpec(
+    name: 'daily_activity',
+    order: 90,
+    mutable: true,
+    keys: [SyncCol('day', 'day', _t), SyncCol('sourceId', 'source_id', _t)],
+    lww: _updatedAt,
+    data: [SyncCol('activeSeconds', 'active_seconds', _i, localDefault: 0)],
+  ),
   SyncTableSpec(
     name: 'notebook_items',
     order: 100,

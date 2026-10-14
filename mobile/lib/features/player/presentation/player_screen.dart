@@ -8,6 +8,7 @@ import 'package:video_player/video_player.dart';
 import '../../../app/router.dart';
 import '../../../app/theme.dart';
 import '../../../l10n/tr_strings.dart';
+import '../../../shared/activity/study_clock.dart';
 import '../../../shared/content/content_providers.dart';
 import '../../../shared/meaning/learning_event_log.dart';
 import '../../../shared/meaning/meaning_controller.dart';
@@ -164,6 +165,13 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen>
   bool _posterCached = false;
 
   void _onSession() {
+    // Oynayan video öğrenme etkinliğidir (H-074: günlük süre).
+    if (_session.phase == PlayerPhase.playing &&
+        _session.isVideoNode &&
+        !_session.userPaused &&
+        !_session.missionPanelOpen) {
+      ref.read(studyClockProvider).signal();
+    }
     // Başlık afişi bölüm yüklenir yüklenmez önbelleğe alınır (H-050).
     final poster = _session.episode?.titleNode?.posterPath;
     if (!_posterCached && poster != null && mounted) {

@@ -59,7 +59,7 @@ public abstract class IntegrationTest {
             jdbc.execute("TRUNCATE consents, refresh_tokens, users, otp_challenges, rate_limit_buckets, audit_log, "
                     + "content_items, catalog_seasons, user_story_progress, user_story_flags, gate_progress, "
                     + "season_state, clues, story_links, notebook_items, review_cards, review_logs, learning_events, "
-                    + "hi_records, speech_attempts, user_book_progress, user_grammar_progress");
+                    + "hi_records, speech_attempts, user_book_progress, user_grammar_progress, daily_activity");
         });
         clock.reset();
         mail.clear();
