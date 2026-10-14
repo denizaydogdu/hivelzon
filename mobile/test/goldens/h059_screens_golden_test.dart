@@ -33,6 +33,7 @@ import 'package:hivelzon/shared/storage/storage_providers.dart';
 import 'package:hivelzon/shared/ui/ui.dart';
 
 import '../support/app_fonts.dart';
+import '../support/golden.dart';
 import '../support/fake_api_server.dart';
 import '../support/fake_content_source.dart';
 
@@ -234,7 +235,7 @@ void main() {
         matchesGoldenFile('images/h059_$id.png'),
       );
       await unmount(tester);
-    });
+    }, skip: skipGoldensOffMac);
 
     testWidgets('$id: erişilebilirlik yönergeleri', (tester) async {
       final handle = tester.ensureSemantics();

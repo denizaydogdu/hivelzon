@@ -15,6 +15,7 @@ import 'package:hivelzon/app/theme.dart';
 import 'package:hivelzon/features/design_showcase/design_showcase_screen.dart';
 
 import '../support/app_fonts.dart';
+import '../support/golden.dart';
 
 const _width = 390.0;
 
@@ -67,7 +68,7 @@ void main() {
         find.byKey(const ValueKey('golden')),
         matchesGoldenFile('images/showcase_$name.png'),
       );
-    });
+    }, skip: skipGoldensOffMac);
   }
 
   testWidgets(
