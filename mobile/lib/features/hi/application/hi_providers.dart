@@ -134,13 +134,15 @@ Future<(CoachBook?, CoachBook?)> _coachBooks(Ref ref) async {
       estimatedMinutes: b.estimatedMinutes,
     );
     final reading = shelves.continueReading.firstOrNull;
-    final unread = shelves.userLevelBooks
-        .where(
-          (b) =>
-              progress[b.id] == null ||
-              progress[b.id]!.status == BookStatus.notStarted,
-        )
-        .firstOrNull;
+    // Hi kitabı sesli açar: ilk bölümünün sesi olan kitap önce.
+    final unreadAll = shelves.userLevelBooks.where(
+      (b) =>
+          progress[b.id] == null ||
+          progress[b.id]!.status == BookStatus.notStarted,
+    );
+    final unread =
+        unreadAll.where((b) => b.startsWithAudio).firstOrNull ??
+        unreadAll.firstOrNull;
     return (
       reading == null ? null : of(reading),
       unread == null ? null : of(unread),

@@ -29,10 +29,12 @@ class LibraryHarness {
     List<String> bookIds = const ['A1-K99'],
     this.suggestedLevel,
     bool booksFail = false,
+    Set<String> unnarrated = const {},
   }) : db = AppDatabase.memory(),
        source = FakeContentSource(packageIds: const ['A1-001'])
          ..books = testBookSummaries(bookIds)
-         ..booksFail = booksFail {
+         ..booksFail = booksFail
+         ..unnarratedChapters = unnarrated {
     audio = FakeBookAudio(
       clock,
       durations: const {'c1.m4a': 11.3, 'c2.m4a': 7.0},

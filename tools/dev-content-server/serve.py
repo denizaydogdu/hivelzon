@@ -111,6 +111,9 @@ def discover_books(root: Path) -> dict[str, dict]:
                 "estimatedMinutes": d.get("estimatedMinutes"),
                 "pageCount": d.get("pageCount"),
                 "chapters": len(d.get("chapters", [])),
+                # Ses bölüm bölüm hazırlanabilir: "Bana bir kitap oku" ilk
+                # bölümünün sesi olan kitabı önce seçer.
+                "firstChapterAudio": bool((d.get("chapters") or [{}])[0].get("audio")),
             }
         except (OSError, ValueError, KeyError) as exc:
             print(f"uyarı: {bj} okunamadı: {exc}", file=sys.stderr)

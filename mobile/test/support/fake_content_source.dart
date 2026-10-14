@@ -141,8 +141,11 @@ class FakeContentSource implements ContentSource {
   @override
   Future<Book> loadBook(String bookId) async {
     if (fail || booksFail) throw ContentUnavailableException('kapalı');
-    return loadTestBook(id: bookId);
+    return loadTestBook(id: bookId, unnarrated: unnarratedChapters);
   }
+
+  /// Sesi henüz hazır olmayan bölümler (kitap bölüm bölüm seslendirilir).
+  Set<String> unnarratedChapters = const {};
 
   @override
   Uri bookMediaUri(String bookId, String path) =>
@@ -156,6 +159,7 @@ Book loadTestBook({
   String? title,
   String? level,
   double? chapterDuration,
+  Set<String> unnarrated = const {},
 }) {
   final book = (jsonDecode(fixtureText('books/A1-K99/book.json')) as Map)
       .cast<String, dynamic>();
@@ -168,6 +172,32 @@ Book loadTestBook({
   if (chapterDuration != null) {
     for (final c in pages['chapters'] as List) {
       (c as Map)['duration'] = chapterDuration;
+    }
+  }
+  // Sesi olmayan bölüm: ses yolu, süre ve bütün zamanlar boş.
+  void untime(Map<dynamic, dynamic> sentence) {
+    sentence['start'] = null;
+    sentence['end'] = null;
+    for (final w in (sentence['words'] as List? ?? const [])) {
+      (w as Map)['start'] = null;
+      w['end'] = null;
+    }
+  }
+
+  for (final list in [book['chapters'], pages['chapters']]) {
+    for (final c in (list as List? ?? const [])) {
+      if (unnarrated.contains((c as Map)['id'])) {
+        c['audio'] = null;
+        c['duration'] = null;
+        if (c['heading'] is Map) untime(c['heading'] as Map);
+      }
+    }
+  }
+  for (final p in pages['pages'] as List) {
+    if (unnarrated.contains((p as Map)['chapter'])) {
+      for (final s in (p['sentences'] as List)) {
+        untime(s as Map);
+      }
     }
   }
   return Book.fromJson(book, pages);
