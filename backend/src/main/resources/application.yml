@@ -3,6 +3,9 @@
 spring:
   application:
     name: hivelzon-backend
+  config:
+    # Yerel sırlar repo dışında (git'e girmez): ~/.config/hivelzon/backend.yml. Yoksa yok sayılır.
+    import: optional:file:${HIVELZON_LOCAL_CONFIG:${user.home}/.config/hivelzon/backend.yml}
   datasource:
     url: ${HIVELZON_DB_URL:jdbc:postgresql://localhost:5435/hivelzon}
     username: ${HIVELZON_DB_USER:hivelzon}
@@ -110,6 +113,16 @@ hivelzon:
     enabled: ${HIVELZON_JOBS_ENABLED:true}
     purge-cron: "0 17 * * * *"
     cleanup-cron: "0 */15 * * * *"
+  tts:
+    # Türkçe seslendirme (Alania) ve Türkçe konuşma tanıma (Duyu), PatientDesk AI (kullanıcı kararı
+    # 2026-10-14: yalnızca Türkçe cümleler). Anahtar yalnızca sunucuda; yerelde backend.yml'den,
+    # sunucuda ortam değişkeninden. Tanımlı değilse Türkçe seslendirme kapalıdır.
+    patientdesk:
+      base-url: ${PD_API_URL:https://voice.patientdesk.ai}
+      api-key: ${PD_API_KEY:}
+      model: alania-v2
+      voice: alania2-f1
+      stt-model: duyu-1
 
 logging:
   pattern:
