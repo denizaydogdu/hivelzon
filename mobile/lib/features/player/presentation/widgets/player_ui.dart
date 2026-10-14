@@ -168,6 +168,7 @@ class HiPanel extends StatelessWidget {
     this.title,
     this.onListen,
     required this.actions,
+    this.expression = HiExpression.neutral,
   });
 
   final String text;
@@ -175,13 +176,16 @@ class HiPanel extends StatelessWidget {
   final VoidCallback? onListen;
   final List<Widget> actions;
 
+  /// Hi'nin ifadesi (H-063): ipucunda düşünen, diğerlerinde varsayılan.
+  final HiExpression expression;
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        const CalmPop(child: HiAvatar(size: 120)),
+        CalmPop(child: HiAvatar(size: 120, expression: expression)),
         const SizedBox(height: AppSpace.s16),
         PlayerEntrance(
           index: 1,

@@ -20,6 +20,7 @@ import '../../../shared/ui/ui.dart';
 import '../../speak/speak_env.dart';
 import '../../hi/application/hi_providers.dart';
 import '../../hi/presentation/hi_cards.dart';
+import '../../player/presentation/widgets/hi_avatar.dart';
 import '../application/card_audio_player.dart';
 import '../application/notebook_providers.dart';
 import '../domain/retrieval_task.dart';
@@ -808,7 +809,17 @@ class _ReviewScreenState extends ConsumerState<ReviewScreen> {
       key: const ValueKey('review-summary'),
       padding: const EdgeInsets.all(AppSpace.s24),
       children: [
-        const Center(child: CalmCelebration(icon: Icons.auto_awesome_rounded)),
+        // H-063: tekrar bitti, Hi mutlu.
+        const Center(
+          child: CalmCelebration(
+            child: HiAvatar(
+              key: ValueKey('review-summary-hi'),
+              size: 90,
+              expression: HiExpression.happy,
+              pulseCycles: 1,
+            ),
+          ),
+        ),
         const SizedBox(height: AppSpace.s24),
         Semantics(
           header: true,

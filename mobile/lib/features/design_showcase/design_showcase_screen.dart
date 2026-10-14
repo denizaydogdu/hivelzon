@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../app/theme.dart';
 import '../../shared/ui/ui.dart';
 import '../../shared/widgets/page_header.dart';
+import 'showcase_hi_section.dart';
 
 // Bileşen vitrini (H-057): yalnız debug derlemede `/tasarim` yolunda açılır,
 // uygulamadan bağlantı verilmez. Geliştirici aracıdır; metinleri bu yüzden
@@ -43,6 +44,8 @@ class DesignShowcaseScreen extends StatelessWidget {
           ShowcaseProgressSection(),
           SizedBox(height: AppSpace.s32),
           ShowcaseEmptySection(),
+          SizedBox(height: AppSpace.s32),
+          ShowcaseHiSection(),
         ],
       ),
     );

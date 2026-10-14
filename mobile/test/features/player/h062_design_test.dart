@@ -14,6 +14,7 @@ import 'package:hivelzon/features/player/presentation/player_screen.dart';
 import 'package:hivelzon/features/player/presentation/widgets/card_view.dart';
 import 'package:hivelzon/features/player/presentation/widgets/decision_sheet.dart';
 import 'package:hivelzon/features/player/presentation/widgets/end_view.dart';
+import 'package:hivelzon/features/player/presentation/widgets/hi_avatar.dart';
 import 'package:hivelzon/features/player/presentation/widgets/player_ui.dart';
 import 'package:hivelzon/l10n/tr_strings.dart';
 import 'package:hivelzon/shared/content/content_providers.dart';
@@ -229,6 +230,14 @@ void main() {
         ),
       );
       expect(find.byType(CalmCelebration), findsOneWidget);
+      // H-063: bayrak yerine mutlu Hi.
+      expect(find.byIcon(Icons.flag_rounded), findsNothing);
+      expect(
+        tester
+            .widget<HiAvatar>(find.byKey(const ValueKey('end-hi')))
+            .expression,
+        HiExpression.happy,
+      );
       expect(find.text(PlayerTexts.endTitle), findsOneWidget);
       expect(find.text('TOPLANAN İPUÇLARI'), findsOneWidget);
       expect(find.text('AÇIK SORU'), findsOneWidget);

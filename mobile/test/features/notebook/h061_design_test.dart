@@ -16,6 +16,7 @@ import 'package:hivelzon/features/notebook/data/notebook_store.dart';
 import 'package:hivelzon/features/notebook/presentation/notebook_screen.dart';
 import 'package:hivelzon/features/notebook/presentation/review_screen.dart';
 import 'package:hivelzon/features/notebook/presentation/widgets/notebook_row.dart';
+import 'package:hivelzon/features/player/presentation/widgets/hi_avatar.dart';
 import 'package:hivelzon/features/player/data/progress_repository.dart';
 import 'package:hivelzon/features/topic_sets/application/topic_set_providers.dart';
 import 'package:hivelzon/features/topic_sets/domain/topic_set.dart';
@@ -331,6 +332,13 @@ void main() {
       }
       expect(find.text('Tekrar tamam'), findsOneWidget);
       expect(find.byType(CalmCelebration), findsOneWidget);
+      // H-063: tekrar bitti, Hi mutlu.
+      expect(
+        tester
+            .widget<HiAvatar>(find.byKey(const ValueKey('review-summary-hi')))
+            .expression,
+        HiExpression.happy,
+      );
       expect(
         find.byKey(const ValueKey('review-summary-stats')),
         findsOneWidget,

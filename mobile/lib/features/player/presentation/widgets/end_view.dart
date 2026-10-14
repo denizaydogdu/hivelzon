@@ -7,13 +7,14 @@ import '../../../../shared/speech/speech_store.dart';
 import '../../../../shared/ui/ui.dart';
 import '../../domain/episode.dart';
 import '../../domain/episode_engine.dart';
+import 'hi_avatar.dart';
 import 'player_ui.dart';
 
 /// Bölüm sonu: görev tamam, toplanan ipuçları, açık soru, hedef ifadeler.
 ///
 /// H-062: sakin kutlama (`CalmCelebration`: bir kez beliren iki yumuşak
 /// halka; konfeti, ses, puan yok; K-32) ve bölümler sırayla belirir.
-/// "Hareketi azalt" açıksa durağan.
+/// H-063: ortada bayrak yerine mutlu Hi. "Hareketi azalt" açıksa durağan.
 class EndView extends StatelessWidget {
   const EndView({
     super.key,
@@ -191,7 +192,13 @@ class EndView extends StatelessWidget {
             const Center(
               child: CalmCelebration(
                 key: ValueKey('end-celebration'),
-                icon: Icons.flag_rounded,
+                // H-063: bayrak yerine mutlu Hi.
+                child: HiAvatar(
+                  key: ValueKey('end-hi'),
+                  size: 90,
+                  expression: HiExpression.happy,
+                  pulseCycles: 1,
+                ),
               ),
             ),
             const SizedBox(height: AppSpace.s16),

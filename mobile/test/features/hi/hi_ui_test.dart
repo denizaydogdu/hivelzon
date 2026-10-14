@@ -6,6 +6,8 @@ import 'package:hivelzon/app/router.dart';
 import 'package:hivelzon/features/hi/data/hi_store.dart';
 import 'package:hivelzon/features/hi/presentation/hi_bubble.dart';
 import 'package:hivelzon/features/player/data/drift_progress_repository.dart';
+import 'package:hivelzon/features/player/presentation/widgets/hi_avatar.dart';
+import 'package:hivelzon/l10n/tr_strings.dart';
 import 'package:hivelzon/features/story/data/season_intro_repository.dart';
 import 'package:hivelzon/shared/content/content_providers.dart';
 import 'package:hivelzon/shared/meaning/error_taxonomy.dart';
@@ -184,6 +186,27 @@ void main() {
     }
     expect(await tester.runAsync(store.panelOpenedDay), isNotNull);
 
+    // H-063 bölme eşdeğerliği: aynı anahtarlar, metinler ve başlıklar.
+    for (final k in [
+      'hi-panel',
+      'hi-disclosure',
+      'hi-suggestion-title',
+      'hi-suggestion-reason',
+      'hi-suggestion-action',
+    ]) {
+      expect(find.byKey(ValueKey(k)), findsOneWidget, reason: k);
+    }
+    expect(find.text(HiTexts.introSub), findsOneWidget);
+    expect(find.byTooltip(CommonTexts.close), findsOneWidget);
+    for (final h in [HiTexts.todayHeading, HiTexts.quickHeading]) {
+      final node = tester.getSemantics(find.text(h));
+      expect(node.flagsCollection.isHeader, isTrue, reason: h);
+    }
+    // H-063: Hi önce bir kez el sallar, sonra hikâye önerisine mutlu bakar.
+    final avatar = find.byKey(const ValueKey('hi-panel-avatar'));
+    expect(tester.widget<HiAvatar>(avatar).greet, isTrue);
+    expect(tester.widget<HiAvatar>(avatar).expression, HiExpression.happy);
+
     Navigator.of(tester.element(find.byKey(const ValueKey('hi-panel')))).pop();
     await settle(tester, 30);
     expect(find.byKey(const ValueKey('hi-bubble-badge')), findsNothing);
@@ -270,6 +293,13 @@ void main() {
         findsOneWidget,
       );
       expect(find.text("Hi'nin notu: Saat ve gün: at / on"), findsOneWidget);
+      // H-063: Hi'nin notu önerisinde Hi düşünür.
+      expect(
+        tester
+            .widget<HiAvatar>(find.byKey(const ValueKey('hi-panel-avatar')))
+            .expression,
+        HiExpression.thinking,
+      );
       expect(
         find.textContaining('Son 7 günde "Edat" konusunda 2 kez takıldın.'),
         findsOneWidget,
@@ -281,6 +311,17 @@ void main() {
         findsOneWidget,
       );
       expect(find.text("It's in seven o'clock."), findsOneWidget);
+      expect(
+        tester
+            .widget<HiAvatar>(
+              find.descendant(
+                of: find.byKey(const ValueKey('hi-note-time-preposition')),
+                matching: find.byType(HiAvatar),
+              ),
+            )
+            .expression,
+        HiExpression.thinking,
+      );
       expect(find.text("It's seven o'clock."), findsOneWidget);
       expect(
         (await tester.runAsync(store.notesReadAt))!.keys,

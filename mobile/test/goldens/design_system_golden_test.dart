@@ -13,6 +13,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hivelzon/app/theme.dart';
 import 'package:hivelzon/features/design_showcase/design_showcase_screen.dart';
+import 'package:hivelzon/features/design_showcase/showcase_hi_section.dart';
 
 import '../support/app_fonts.dart';
 import '../support/golden.dart';
@@ -58,6 +59,7 @@ void main() {
     'settings': (const ShowcaseSettingsSection(), 480),
     'progress': (const ShowcaseProgressSection(), 320),
     'empty': (const ShowcaseEmptySection(), 440),
+    'hi': (const ShowcaseHiSection(), 760),
   };
 
   for (final MapEntry(key: name, value: (widget, height)) in sections.entries) {

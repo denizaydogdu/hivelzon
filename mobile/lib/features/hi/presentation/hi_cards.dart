@@ -22,7 +22,8 @@ class HiNoteCard extends StatelessWidget {
       children: [
         Row(
           children: [
-            const HiAvatar(size: 48),
+            // H-063: Hi'nin notu: düşünen Hi.
+            const HiAvatar(size: 48, expression: HiExpression.thinking),
             const SizedBox(width: AppSpacing.xs),
             Expanded(
               child: Column(
