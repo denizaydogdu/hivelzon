@@ -553,8 +553,112 @@ abstract final class PlaceholderTexts {
       'geliyor. Karşındakinin yapay zekâ olduğu her zaman söylenecek.';
 }
 
-/// Oynatıcıda değişen metinler (geri kalanı widget'larda; kılavuzda listeli).
+/// Oynatıcı (H-031, H-050; H-062'de bütün metinler buraya taşındı).
+/// Kılavuz: ARAYUZ-METINLERI §4.4–4.5. Büyük harfli etiketler normal
+/// yazılır, ekranda `CapsLabel` (`upperTr`) büyütür.
 abstract final class PlayerTexts {
+  // Açılış (H-050)
+  static String titleSemantics(int season, int episode, String title) =>
+      'Sezon $season, Bölüm $episode: $title';
+  static const recap = 'Önceki bölümde';
+  static const recapSkip = 'Atla';
+  static const recapSkipSemantics = 'Önceki bölüm özetini atla';
+
+  // Üst çubuk
+  static const exitEpisode = 'Bölümden çık';
+  static String sceneProgress(int n, int total) => 'Sahne $n / $total';
+  static const missionButton = 'Görev ve hedef ifadeler';
+  static String speed(double s) => s == 1.0 ? '1x' : '0,75x';
+  static String speedSemantics(double s) => s == 1.0
+      ? 'Hız normal. Yavaşlatmak için dokun.'
+      : 'Hız 0,75. Normale dönmek için dokun.';
+
+  // Altyazı menüsü: kısa ad (düğmede), ekran okuyucu adı, menü satırı.
+  static const subtitleEn = 'EN';
+  static const subtitleEnTr = 'EN+TR';
+  static const subtitleOff = 'Kapalı';
+  static const subtitleEnSpoken = 'İngilizce';
+  static const subtitleEnTrSpoken = 'İngilizce ve Türkçe';
+  static const subtitleOffSpoken = 'kapalı';
+  static String subtitleTooltip(String spoken) => 'Altyazı: $spoken';
+  static const subtitleMenuEn = 'EN (İngilizce)';
+  static const subtitleMenuEnTr = 'EN + TR (Türkçe satırla)';
+  static const subtitleMenuOff = 'Kapalı';
+
+  /// Anlamı olan İngilizce satırın ekran okuyucu etiketi (H-046).
+  static String tapForMeaning(String text) =>
+      '$text. Anlamını görmek için dokun.';
+  static String subtitleSemantics(String en, String? tr) =>
+      '$en.${tr == null ? '' : ' $tr.'} Anlamını görmek için dokun.';
+
+  // Çıkış sorusu
+  static const exitTitle = 'Bölümden çıkılsın mı?';
+  static const exitBody =
+      'Kaldığın sahne kaydedilecek. Sonra oradan devam edebilirsin.';
+  static const exitStay = 'Kal';
+  static const exitLeave = 'Çık';
+
+  // Yükleme ve hata
+  static const loading = 'Bölüm yükleniyor…';
+  static const genericError = 'Bir şeyler ters gitti.';
+  static const errorHint =
+      'Bağlantını ya da içerik sunucusunu kontrol edip tekrar deneyebilirsin.';
+  static const retry = 'Tekrar dene';
+
+  // Kaldığın yerden devam
+  static String resumeBody(String? scene) => scene == null
+      ? 'Bu bölümü yarıda bırakmıştın.'
+      : 'Bu bölümü yarıda bırakmıştın: $scene';
+  static const resumeContinue = 'Kaldığın yerden devam';
+  static const restart = 'Baştan başla';
+
+  // Karar anı (süre yok, geri sayım yok; K-32)
+  static const decisionHeading = 'Ne dersin?';
+  static const askHint = "Hi'den ipucu al";
+  static String listenTo(String text) => 'Dinle: $text';
+  static const listen = 'Dinle';
+
+  // Hi'nin ipucu ve tepki balonu
+  static String hintTitle(int level, int total) => 'İpucu $level / $total';
+  static const hintMore = 'Bir ipucu daha';
+  static const hintAllOpen = 'Tüm ipuçları açık';
+  static const listenHi = "Hi'yi dinle";
+  static const hiSemantics = 'Hi, yapay zekâ yardımcın';
+
+  /// Yanlış seçimde nazik, cezalandırmayan geri bildirim (sırayla).
+  static const gentleRetry = [
+    'Bir daha bakalım.',
+    'Neredeyse! Bir kez daha dene.',
+    'Acele yok, tekrar dene.',
+  ];
+
+  // Kartlar
+  static const missionLabel = 'Görev';
+  static const newClueLabel = 'Yeni ipucu';
+  static const finishEpisode = 'Bölümü bitir';
+  static const messageFallback = 'Mesaj';
+
+  // Görevler
+  static const taskDone = 'Harika, buldun!';
+  static const listenRecording = 'Kaydı dinle';
+  static const yourSentence = 'Senin cümlen';
+  static const matchHelp = 'Önce soldan bir parça, sonra sağdan eşini seç.';
+  static const check = 'Kontrol et';
+  static String tokenRemove(String t) => '$t, çıkarmak için dokun';
+  static String tokenAdd(String t) => '$t, eklemek için dokun';
+  static const blankName = 'Adın';
+  static const blankFrom = 'Nerelisin';
+
+  // 🎯 paneli (H-050)
+  static const targetPhrasesLabel = 'Hedef ifadeler';
+
+  // Bölüm sonu (puan, lig, geri sayım yok; K-32)
+  static const endTitle = 'Görev tamam!';
+  static const cluesLabel = 'Toplanan ipuçları';
+  static const openQuestionLabel = 'Açık soru';
+  static String nextTeaser(String t) => 'Sıradaki: $t';
+  static const phrasesLabel = 'Bu bölümün ifadeleri';
+
   static const backToMap = 'Haritaya dön';
   static const endNotebookNote =
       'Bu ifadeler defterine eklendi. Tekrar zamanı gelince Ana Sayfa\'daki '
@@ -567,6 +671,34 @@ abstract final class PlayerTexts {
       'Bu bölümün yerindeki nesneler: $title';
   static const openTopicSet = 'Konu setini aç';
   static const continueAction = 'Devam et';
+}
+
+/// Anlam paneli (H-046; oynatıcı, Keşfet ve kitap okuyucu ortak). H-062'de
+/// buraya taşındı.
+abstract final class MeaningTexts {
+  static const title = 'Anlam';
+  static const close = CommonTexts.close;
+  static const closeSemantics = 'Paneli kapat';
+  static const hintWithAudio =
+      'Bir kelimeye dokun: anlamını gör ve sesini dinle.';
+  static const hint = 'Bir kelimeye dokun: anlamını gör.';
+  static const properNoun = 'Özel ad: Türkçesi aynı kalır.';
+  static const blank = 'boşluk';
+  static String wordSemantics(String w) => '$w. Anlamı için dokun.';
+  static const chunkLabel = 'Kalıp';
+  static const turkishLabel = 'Türkçesi';
+  static const reveal = 'Türkçesini göster';
+  static const replay = 'Tekrar dinle';
+  static const slow = '0,75x';
+  static const slowOn = 'Yavaş dinleme açık (0,75). Normale dönmek için dokun.';
+  static const slowOff = 'Yavaş dinle (0,75)';
+  static const save = 'Deftere ekle';
+  static const saveFailed =
+      'Şu an deftere eklenemedi. Biraz sonra tekrar dene.';
+
+  // Konuşmacı adları (kart, görev ve başlık satırları için "Anlam").
+  static const speakerRadio = 'Telsizdeki ses';
+  static const speakerNote = 'Not';
 }
 
 /// Hi-A (H-048): balon, panel, öneri gerekçeleri, notlar, konu kartı, yan

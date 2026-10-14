@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 
-import '../../../../app/theme.dart';
+import '../../../../app/design/design.dart';
+import '../../../../l10n/tr_strings.dart';
 import '../../domain/episode.dart';
 
 /// Bölüm başlık ekranı (H-050): sezonun kısa animasyonu üstünde
@@ -68,7 +69,7 @@ class _EpisodeTitleOverlayState extends State<EpisodeTitleOverlay>
         // Gökyüzü: jenerik görselinin üst üçte biri boştur.
         alignment: const Alignment(0, -0.42),
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: AppSpacing.md),
+          padding: const EdgeInsets.symmetric(horizontal: AppSpace.s24),
           child: Opacity(
             opacity: opacity,
             child: Transform.translate(
@@ -77,9 +78,11 @@ class _EpisodeTitleOverlayState extends State<EpisodeTitleOverlay>
                 key: const ValueKey('title-screen'),
                 header: true,
                 liveRegion: true,
-                label:
-                    'Sezon ${node.season}, Bölüm ${node.episode}: '
-                    '${node.title}',
+                label: PlayerTexts.titleSemantics(
+                  node.season,
+                  node.episode,
+                  node.title,
+                ),
                 excludeSemantics: true,
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
@@ -88,19 +91,17 @@ class _EpisodeTitleOverlayState extends State<EpisodeTitleOverlay>
                       node.caption,
                       textAlign: TextAlign.center,
                       style: t.titleMedium?.copyWith(
-                        color: AppColors.lighthouseYellow,
-                        fontWeight: FontWeight.w700,
+                        color: AppPalette.lighthouseYellow,
                         letterSpacing: 2.4,
                         shadows: shadow,
                       ),
                     ),
-                    const SizedBox(height: AppSpacing.xs),
+                    const SizedBox(height: AppSpace.s8),
                     Text(
                       node.title,
                       textAlign: TextAlign.center,
                       style: t.displaySmall?.copyWith(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w700,
+                        color: AppPalette.white,
                         shadows: shadow,
                       ),
                     ),
@@ -122,63 +123,66 @@ class RecapBar extends StatelessWidget {
   final VoidCallback? onSkip;
 
   /// Altyazının bu çubuğun üstünde kalması için gereken yükseklik.
-  static const height = 48.0 + AppSpacing.sm;
+  static const height = AppTouch.min + AppSpace.s16;
 
   @override
   Widget build(BuildContext context) {
+    final label = Theme.of(context).textTheme.labelLarge?.copyWith(
+      color: AppPalette.white,
+      fontWeight: AppFonts.bold,
+    );
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Flexible(
           child: Container(
             constraints: const BoxConstraints(minHeight: 40),
-            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-            decoration: BoxDecoration(
-              color: Colors.black.withValues(alpha: 0.55),
-              borderRadius: BorderRadius.circular(AppTheme.radius),
+            padding: const EdgeInsets.symmetric(
+              horizontal: AppSpace.s12,
+              vertical: AppSpace.s8,
             ),
-            child: const Row(
+            decoration: const BoxDecoration(
+              color: AppScrim.dim,
+              borderRadius: AppRadius.mdAll,
+            ),
+            child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Icon(Icons.history_rounded, size: 18, color: Colors.white),
-                SizedBox(width: AppSpacing.xs),
+                const Icon(
+                  Icons.history_rounded,
+                  size: AppIconSize.sm,
+                  color: AppPalette.white,
+                ),
+                const SizedBox(width: AppSpace.s8),
                 Flexible(
                   child: Text(
-                    'Önceki bölümde',
+                    PlayerTexts.recap,
                     overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 14,
-                      fontWeight: FontWeight.w700,
-                    ),
+                    style: label,
                   ),
                 ),
               ],
             ),
           ),
         ),
-        const SizedBox(width: AppSpacing.xs),
+        const SizedBox(width: AppSpace.s8),
         if (onSkip != null)
           Semantics(
             button: true,
-            label: 'Önceki bölüm özetini atla',
+            label: PlayerTexts.recapSkipSemantics,
             excludeSemantics: true,
             child: FilledButton.icon(
               key: const ValueKey('recap-skip'),
               onPressed: onSkip,
               style: FilledButton.styleFrom(
-                minimumSize: const Size(96, 48),
-                padding: const EdgeInsets.symmetric(horizontal: AppSpacing.sm),
-                backgroundColor: Colors.white,
-                foregroundColor: AppColors.seaBlue,
-                textStyle: const TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w700,
-                ),
+                minimumSize: const Size(96, AppTouch.min),
+                padding: const EdgeInsets.symmetric(horizontal: AppSpace.s16),
+                backgroundColor: AppPalette.white,
+                foregroundColor: AppPalette.seaBlue,
               ),
               iconAlignment: IconAlignment.end,
               icon: const Icon(Icons.skip_next_rounded),
-              label: const Text('Atla'),
+              label: const Text(PlayerTexts.recapSkip),
             ),
           ),
       ],

@@ -7,6 +7,7 @@ import 'package:video_player/video_player.dart';
 
 import '../../../app/router.dart';
 import '../../../app/theme.dart';
+import '../../../l10n/tr_strings.dart';
 import '../../../shared/content/content_providers.dart';
 import '../../../shared/meaning/learning_event_log.dart';
 import '../../../shared/meaning/meaning_controller.dart';
@@ -317,18 +318,16 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen>
     final leave = await showDialog<bool>(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Bölümden çıkılsın mı?'),
-        content: const Text(
-          'Kaldığın sahne kaydedilecek. Sonra oradan devam edebilirsin.',
-        ),
+        title: const Text(PlayerTexts.exitTitle),
+        content: const Text(PlayerTexts.exitBody),
         actions: [
           TextButton(
             onPressed: () => Navigator.of(context).pop(false),
-            child: const Text('Kal'),
+            child: const Text(PlayerTexts.exitStay),
           ),
           FilledButton(
             onPressed: () => Navigator.of(context).pop(true),
-            child: const Text('Çık'),
+            child: const Text(PlayerTexts.exitLeave),
           ),
         ],
       ),
@@ -352,22 +351,26 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen>
       child: Scaffold(
         backgroundColor: AppScrim.playerBackground,
         body: switch (s.phase) {
-          PlayerPhase.loading => const _Centered(
+          PlayerPhase.loading => _Centered(
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                CircularProgressIndicator(color: AppColors.lighthouseYellow),
-                SizedBox(height: AppSpacing.sm),
+                const CircularProgressIndicator(
+                  color: AppPalette.lighthouseYellow,
+                ),
+                const SizedBox(height: AppSpace.s16),
                 Text(
-                  'Bölüm yükleniyor…',
-                  style: TextStyle(color: Colors.white, fontSize: 16),
+                  PlayerTexts.loading,
+                  style: Theme.of(
+                    context,
+                  ).textTheme.bodyLarge?.copyWith(color: AppPalette.white),
                 ),
               ],
             ),
           ),
           PlayerPhase.error => _Centered(
             child: _ErrorPanel(
-              message: s.error ?? 'Bir şeyler ters gitti.',
+              message: s.error ?? PlayerTexts.genericError,
               onRetry: () => unawaited(s.start()),
               onBack: _exit,
             ),
@@ -433,19 +436,19 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen>
         // 3) Karar anında kararma (K-27).
         IgnorePointer(
           child: AnimatedContainer(
-            duration: const Duration(milliseconds: 250),
-            color: Colors.black.withValues(
-              alpha: !dim
-                  ? 0
-                  : node is CardNode && node.kind == CardKind.title
-                  ? 0.35
-                  : 0.55,
-            ),
+            duration: AppMotion.base,
+            color: !dim
+                ? AppScrim.dim.withValues(alpha: 0)
+                : node is CardNode && node.kind == CardKind.title
+                ? AppScrim.dimLight
+                : AppScrim.dim,
           ),
         ),
         if (s.videoLoading && isVideo && !isTitle)
           const Center(
-            child: CircularProgressIndicator(color: AppColors.lighthouseYellow),
+            child: CircularProgressIndicator(
+              color: AppPalette.lighthouseYellow,
+            ),
           ),
         if (s.userPaused && isVideo && !isTitle)
           const IgnorePointer(
@@ -453,19 +456,23 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen>
               child: CircleAvatar(
                 radius: 36,
                 backgroundColor: AppScrim.strong,
-                child: Icon(Icons.pause_rounded, color: Colors.white, size: 40),
+                child: Icon(
+                  Icons.pause_rounded,
+                  color: AppPalette.white,
+                  size: AppIconSize.xl,
+                ),
               ),
             ),
           ),
         // 4) Altyazı.
         if (isVideo && !s.reactionBubbleVisible)
           Positioned(
-            left: AppSpacing.sm,
-            right: AppSpacing.sm,
+            left: AppSpace.s16,
+            right: AppSpace.s16,
             bottom:
                 media.padding.bottom +
-                AppSpacing.lg +
-                AppSpacing.md +
+                AppSpace.s32 +
+                AppSpace.s24 +
                 (node is RecapNode ? RecapBar.height : 0),
             child: Center(
               child: SubtitleOverlay(
@@ -479,7 +486,7 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen>
         // kaybolur (kullanıcı kararı 2026-10-12: "kullanıcı az görsün"). Uygulama içi
         // videolarda gömülü etiket yok; sosyal medya kesitlerinde gömülü kalır (K-14).
         Positioned(
-          left: AppSpacing.sm,
+          left: AppSpace.s16,
           top: media.padding.top + 72, // üst çubuğun altında
           child: IgnorePointer(child: AiNotice(text: e.episode.info.aiLabel)),
         ),
@@ -487,16 +494,16 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen>
         if (s.topicIntro != null)
           Positioned.fill(
             child: ColoredBox(
-              color: Colors.black.withValues(alpha: 0.55),
+              color: AppScrim.dim,
               child: SafeArea(
                 child: Align(
                   alignment: Alignment.bottomCenter,
                   child: SingleChildScrollView(
                     padding: const EdgeInsets.fromLTRB(
-                      AppSpacing.sm,
+                      AppSpace.s16,
                       96,
-                      AppSpacing.sm,
-                      AppSpacing.md,
+                      AppSpace.s16,
+                      AppSpace.s24,
                     ),
                     child: HiTopicCard(
                       intro: s.topicIntro!,
@@ -556,10 +563,10 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen>
           child: SingleChildScrollView(
             reverse: true,
             padding: const EdgeInsets.fromLTRB(
-              AppSpacing.sm,
+              AppSpace.s16,
               96,
-              AppSpacing.sm,
-              AppSpacing.md,
+              AppSpace.s16,
+              AppSpace.s24,
             ),
             child: child,
           ),
@@ -575,7 +582,7 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen>
             bottom(
               key: const ValueKey('hint-panel'),
               HiPanel(
-                title: 'İpucu ${hint.level} / ${node.hints.length}',
+                title: PlayerTexts.hintTitle(hint.level, node.hints.length),
                 text: hint.tr,
                 onListen: hint.audio == null
                     ? null
@@ -585,25 +592,27 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen>
                     key: const ValueKey('hint-more'),
                     onPressed: e.canRequestHint ? () => s.requestHint() : null,
                     style: FilledButton.styleFrom(
-                      backgroundColor: AppColors.seaBlue,
-                      foregroundColor: Colors.white,
-                      minimumSize: const Size(48, 56),
+                      backgroundColor: AppPalette.seaBlue,
+                      foregroundColor: AppPalette.white,
+                      minimumSize: const Size(AppTouch.min, AppTouch.primary),
                     ),
                     icon: const Icon(Icons.lightbulb_outline_rounded),
                     label: Text(
-                      e.canRequestHint ? 'Bir ipucu daha' : 'Tüm ipuçları açık',
+                      e.canRequestHint
+                          ? PlayerTexts.hintMore
+                          : PlayerTexts.hintAllOpen,
                     ),
                   ),
                   OutlinedButton.icon(
                     key: const ValueKey('hint-retry'),
                     onPressed: s.closeHint,
                     style: OutlinedButton.styleFrom(
-                      backgroundColor: Colors.white,
-                      foregroundColor: AppColors.seaBlue,
-                      minimumSize: const Size(48, 56),
+                      backgroundColor: AppPalette.white,
+                      foregroundColor: AppPalette.seaBlue,
+                      minimumSize: const Size(AppTouch.min, AppTouch.primary),
                     ),
                     icon: const Icon(Icons.refresh_rounded),
-                    label: const Text('Tekrar dene'),
+                    label: const Text(PlayerTexts.retry),
                   ),
                 ],
               ),
@@ -618,7 +627,7 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen>
               children: [
                 if (node.cue != null && node.cue!.text.isNotEmpty)
                   Padding(
-                    padding: const EdgeInsets.only(bottom: AppSpacing.sm),
+                    padding: const EdgeInsets.only(bottom: AppSpace.s16),
                     child: _CuePill(
                       cue: node.cue!,
                       onTap: node.cue!.gloss == null
@@ -663,10 +672,10 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen>
                   key: const ValueKey('reaction-retry'),
                   onPressed: s.advance,
                   style: FilledButton.styleFrom(
-                    minimumSize: const Size(48, 56),
+                    minimumSize: const Size(AppTouch.min, AppTouch.primary),
                   ),
                   icon: const Icon(Icons.refresh_rounded),
-                  label: const Text('Tekrar dene'),
+                  label: const Text(PlayerTexts.retry),
                 ),
               ],
             ),
@@ -697,7 +706,7 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen>
             Positioned.fill(
               child: Center(
                 child: Padding(
-                  padding: const EdgeInsets.all(AppSpacing.md),
+                  padding: const EdgeInsets.all(AppSpace.s24),
                   child: card,
                 ),
               ),
@@ -739,9 +748,9 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen>
         return [
           Positioned(
             key: ValueKey('recap-${node.id}'),
-            left: AppSpacing.sm,
-            right: AppSpacing.sm,
-            bottom: MediaQuery.of(context).padding.bottom + AppSpacing.sm,
+            left: AppSpace.s16,
+            right: AppSpace.s16,
+            bottom: MediaQuery.of(context).padding.bottom + AppSpace.s16,
             child: RecapBar(
               onSkip: e.canSkip ? () => unawaited(s.skipRecap()) : null,
             ),
@@ -819,29 +828,25 @@ class _CuePill extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final pill = Container(
-      constraints: const BoxConstraints(minHeight: 48),
+      constraints: const BoxConstraints(minHeight: AppTouch.min),
       padding: const EdgeInsets.symmetric(
-        horizontal: AppSpacing.sm,
-        vertical: AppSpacing.xs,
+        horizontal: AppSpace.s16,
+        vertical: AppSpace.s8,
       ),
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: AppScrim.captionBox,
-        borderRadius: BorderRadius.circular(AppTheme.radius),
+        borderRadius: AppRadius.mdAll,
       ),
       child: Text(
         cue.text,
         textAlign: TextAlign.center,
-        style: const TextStyle(
-          color: Colors.white,
-          fontSize: 18,
-          fontWeight: FontWeight.w500,
-        ),
+        style: AppTypography.lead.copyWith(color: AppPalette.white),
       ),
     );
     if (onTap == null) return pill;
     return Semantics(
       button: true,
-      label: '${cue.text}. Anlamını görmek için dokun.',
+      label: PlayerTexts.tapForMeaning(cue.text),
       excludeSemantics: true,
       child: GestureDetector(
         key: const ValueKey('decision-cue'),
@@ -863,7 +868,7 @@ class _Centered extends StatelessWidget {
     return SafeArea(
       child: Center(
         child: SingleChildScrollView(
-          padding: const EdgeInsets.all(AppSpacing.md),
+          padding: const EdgeInsets.all(AppSpace.s24),
           child: child,
         ),
       ),
@@ -890,28 +895,21 @@ class _ErrorPanel extends StatelessWidget {
         children: [
           const Icon(
             Icons.cloud_off_rounded,
-            size: 48,
-            color: AppColors.seaBlue,
+            size: AppIconSize.xl,
+            color: AppPalette.seaBlue,
           ),
-          const SizedBox(height: AppSpacing.sm),
+          const SizedBox(height: AppSpace.s16),
           Text(
             message,
             textAlign: TextAlign.center,
             style: Theme.of(context).textTheme.titleMedium,
           ),
-          const SizedBox(height: AppSpacing.xs),
-          const Text(
-            'Bağlantını ya da içerik sunucusunu kontrol edip tekrar deneyebilirsin.',
-            textAlign: TextAlign.center,
-          ),
-          const SizedBox(height: AppSpacing.md),
-          PrimaryAction(label: 'Tekrar dene', onPressed: onRetry),
-          const SizedBox(height: AppSpacing.xs),
-          TextButton(
-            onPressed: onBack,
-            style: TextButton.styleFrom(minimumSize: const Size(48, 48)),
-            child: const Text('Geri dön'),
-          ),
+          const SizedBox(height: AppSpace.s8),
+          const Text(PlayerTexts.errorHint, textAlign: TextAlign.center),
+          const SizedBox(height: AppSpace.s24),
+          PrimaryAction(label: PlayerTexts.retry, onPressed: onRetry),
+          const SizedBox(height: AppSpace.s8),
+          TextButton(onPressed: onBack, child: const Text(CommonTexts.goBack)),
         ],
       ),
     );
@@ -935,33 +933,27 @@ class _ResumePanel extends StatelessWidget {
           Text(
             ep.info.title,
             textAlign: TextAlign.center,
-            style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-              color: AppColors.seaBlue,
-              fontWeight: FontWeight.w700,
-            ),
+            style: Theme.of(
+              context,
+            ).textTheme.headlineSmall?.copyWith(color: AppPalette.seaBlue),
           ),
-          const SizedBox(height: AppSpacing.xs),
-          Text(
-            scene == null
-                ? 'Bu bölümü yarıda bırakmıştın.'
-                : 'Bu bölümü yarıda bırakmıştın: $scene',
-            textAlign: TextAlign.center,
-          ),
-          const SizedBox(height: AppSpacing.md),
+          const SizedBox(height: AppSpace.s8),
+          Text(PlayerTexts.resumeBody(scene), textAlign: TextAlign.center),
+          const SizedBox(height: AppSpace.s24),
           PrimaryAction(
             key: const ValueKey('resume-continue'),
-            label: 'Kaldığın yerden devam',
+            label: PlayerTexts.resumeContinue,
             icon: Icons.play_arrow_rounded,
             onPressed: () => session.resume(fromCheckpoint: true),
           ),
-          const SizedBox(height: AppSpacing.xs),
+          const SizedBox(height: AppSpace.s8),
           OutlinedButton(
             key: const ValueKey('resume-restart'),
             onPressed: () => session.resume(fromCheckpoint: false),
             style: OutlinedButton.styleFrom(
-              minimumSize: const Size.fromHeight(48),
+              minimumSize: const Size.fromHeight(AppTouch.min),
             ),
-            child: const Text('Baştan başla'),
+            child: const Text(PlayerTexts.restart),
           ),
         ],
       ),
@@ -1008,19 +1000,28 @@ class _AiNoticeState extends State<AiNotice> {
       opacity: _visible ? 1 : 0,
       duration: const Duration(milliseconds: 600),
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-        decoration: BoxDecoration(
-          color: Colors.black.withValues(alpha: 0.45),
-          borderRadius: BorderRadius.circular(AppTheme.radius),
+        padding: const EdgeInsets.symmetric(
+          horizontal: AppSpace.s12,
+          vertical: AppSpace.s4,
+        ),
+        decoration: const BoxDecoration(
+          color: AppScrim.chip,
+          borderRadius: AppRadius.mdAll,
         ),
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const Icon(Icons.auto_awesome, size: 14, color: Colors.white70),
-            const SizedBox(width: 6),
+            const Icon(
+              Icons.auto_awesome,
+              size: AppIconSize.sm,
+              color: AppScrim.captionText,
+            ),
+            const SizedBox(width: AppSpace.s4),
             Text(
               widget.text,
-              style: const TextStyle(color: Colors.white, fontSize: 12),
+              style: Theme.of(
+                context,
+              ).textTheme.bodySmall?.copyWith(color: AppPalette.white),
             ),
           ],
         ),

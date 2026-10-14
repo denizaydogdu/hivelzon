@@ -1,7 +1,7 @@
 # Arayüz metinleri kılavuzu (H-053)
 
 > **Durum:** Taslak 1 (2026-10-12). Uygulama bu kılavuza göre güncellendi.
-> **Kod:** metinler `mobile/lib/l10n/tr_strings.dart` dosyasında ekran ekran durur. Oynatıcının değişmeyen metinleri kendi widget'larındadır (§4.5).
+> **Kod:** metinler `mobile/lib/l10n/tr_strings.dart` dosyasında ekran ekran durur. Oynatıcının ve anlam panelinin metinleri de H-062'den beri burada (`PlayerTexts`, `MeaningTexts`; §4.5).
 > **Türkçe yardımcılar:** `mobile/lib/shared/text/turkish.dart` (`upperTr`, `lowerTr`, `possessiveNumber`).
 
 ## 1. İlkeler
@@ -124,7 +124,7 @@ Düzen: selam ve tek cümle, ardından **Hikâyen** (birincil, sarı düğme), a
 - **Hata:** "Bölüm yükleniyor…", "Bağlantını ya da içerik sunucusunu kontrol edip tekrar deneyebilirsin.", "Tekrar dene" ve "Geri dön".
 - **Hi:** "Hi, yapay zekâ yardımcın" (ekran okuyucu).
 
-Sonraki adım: oynatıcı metinleri de `tr_strings.dart` dosyasına taşınabilir. Bu iş, bu kılavuzla davranış değiştirmeden yapılır.
+**H-062 (2026-10-14):** Bu bölümdeki metinler sözcüğü sözcüğüne aynı kalarak `tr_strings.dart` → `PlayerTexts` (oynatıcı) ve `MeaningTexts` (anlam paneli; oynatıcı, Keşfet ve kitap okuyucu ortak) altına taşındı. Büyük harfli etiketler ("GÖREV", "YENİ İPUCU", "HEDEF İFADELER", "TOPLANAN İPUÇLARI", "AÇIK SORU", "BU BÖLÜMÜN İFADELERİ", "KALIP", "TÜRKÇESİ") normal yazılır, ekranda `CapsLabel` büyütür; ekran okuyucu normal yazımla okur. Yalnız "Video yüklenemedi." oynatma katmanında (`player_session.dart`) kaldı: oynatma kodu bu işte değiştirilmedi.
 
 ### 4.6 Kitaplık (H-067)
 Hikâye sekmesinin üstünde **Macera · Kitaplık** seçici (sekme sayısı değişmez, K-30). Açıklama satırı seçime göre değişir.

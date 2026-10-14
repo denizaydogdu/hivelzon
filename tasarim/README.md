@@ -30,7 +30,7 @@ Lisanslar `mobile/assets/fonts/*/OFL.txt`; Lisanslar sayfasına `registerFontLic
 | `warning` / `warningSurface` | `#8A5A00` / `#FFF4D6` | Dikkat (suçlamasız) |
 | `info` / `infoSurface` | `seaBlue` / `seaBlue50` | Bilgi, ipucu |
 | `danger` / `dangerSurface` | `#B3261E` / `#FBE9E7` | Geri alınması zor eylem (hesap silme) |
-| `AppScrim.*` | `playerBackground #101418`, `captionBox #CC1B1B1B`, `captionText #E6FFFFFF`, `strong #99000000`, `gradientEnd #B3000000`, `textShadow`, `panelShadow`, `cardShadow`, `badgeShadow` | Oynatıcı ve görsel üstü perdeler |
+| `AppScrim.*` | `playerBackground #101418`, `captionBox #CC1B1B1B`, `captionText #E6FFFFFF`, `strong #99000000`, `dim #8C000000` (karar/kart arkası, H-062), `dimLight #59000000` (başlık kartı, anlam paneli perdesi), `chip #73000000` (yapay zekâ notu), `gradientEnd #B3000000`, `textShadow`, `panelShadow`, `cardShadow`, `badgeShadow` | Oynatıcı ve görsel üstü perdeler |
 | `AppMapColors.*` (H-060) | `sea #2E6A9A`, `land #E9DCC2`, `hill #8FA876`, `hillDark #6F8C5C`, `lighthouseBand #C0392B`, `nodeLocked #5B6470`, `badgeLocked #3A414A`, `badgeDone = success`, `badgeInProgress = eveningOrange` | Kodla çizilen yedek harita ve bölüm düğümleri (eskiden ekranda sabit renkti) |
 
 ### Ölçüler
@@ -41,7 +41,7 @@ Lisanslar `mobile/assets/fonts/*/OFL.txt`; Lisanslar sayfasına `registerFontLic
 | Gölge `AppShadows` | `level1` kart · `level2` öne çıkan kart · `level3` panel; sıcak tonlu, düşük opaklık |
 | İkon `AppIconSize` | 16 / 24 / 32 / 48 |
 | Dokunma `AppTouch` | en az 48; ana eylem 56 |
-| Yazı ölçeği `AppTypography` | Material 3 boyutları (57 … 12; `labelSmall` 11 → 12); başlık Nunito 700, metin Inter 400, etiket Inter 500; düğme Inter 700 16 |
+| Yazı ölçeği `AppTypography` | Material 3 boyutları (57 … 12; `labelSmall` 11 → 12); başlık Nunito 700, metin Inter 400, etiket Inter 500; düğme Inter 700 16. Oynatıcı (H-062): `lead` Inter 500 18 (seçenek, replik hapı, mesaj, anlam), `spoken` Inter italik 20 (replik), `subtitle` Inter 500 20 (altyazı, anlam kelimesi), `subtitleTr` Inter 15 |
 
 ### Hareket (`AppMotion`)
 | Belirteç | Değer | Nerede |
@@ -77,7 +77,8 @@ Kurallar: Sekmeler arası geçiş anlık. İtilen sayfalarda (Defter, Hesap, Hi 
 | `ProgressRing` | Dolan halka, değer ekran okuyucuda |
 | `EmptyState` | İllüstrasyon / ikon + başlık + açıklama + eylem |
 | `TappableCard`, `PressScale` | Dokunma tepkili kart / sarmalayıcı |
-| `StaggeredList`, `FadeSlideIn` | Sırayla belirme (`flutter_animate`, zamanlayıcısız) |
+| `StaggeredList`, `FadeSlideIn` | Sırayla belirme (`flutter_animate`) |
+| `SoftEntrance`, `CalmPop`, `CalmCelebration` | Örtük animasyonla tek öğe girişi / sakin belirme / sakin kutlama; zamanlayıcı bırakmaz (H-062: oynatıcı katmanları ve bölüm sonu) |
 | `ShapedEdgeClipper` | `ShapedHeader`'ın dalga / çapraz kesimi; başka yüzeylerde (Ana Sayfa bölüm kartının görseli, H-060) |
 
 Mevcutlar yeniden kullanılır: `PageHeader` / `SectionHeading`, `Skeleton` ailesi, oynatıcı kiti (`player_ui.dart`), `CardFace` / `AudioButton` / `EpisodeTag`, `HiAvatar`.

@@ -8,7 +8,8 @@ import 'package:flutter_test/flutter_test.dart';
 ///
 /// Aşağıdaki taban çizgisi 2026-10-14'teki durumdur (H-057 sonrasında:
 /// `Color(0x` 31 → 10, `fontSize:` 40 → 37; H-060 sonrasında `Color(0x`
-/// 10 → 1, `fontSize:` 37 → 36; H-061 sonrasında `fontSize:` 36 → 33).
+/// 10 → 1, `fontSize:` 37 → 36; H-061 sonrasında `fontSize:` 36 → 33;
+/// H-062 sonrasında oynatıcı ve anlam paneli temizlendi, `fontSize:` 33 → 1).
 /// Sayılar yalnızca **azalabilir**:
 /// ekran fazları (H-059…H-064) bir dosyayı temizleyince o dosyanın satırını
 /// düşür ya da sil. Yeni dosyada (ör. `lib/shared/ui/`) sabit stil olmaz.
@@ -17,16 +18,6 @@ const _colorBaseline = <String, int>{
 };
 
 const _fontSizeBaseline = <String, int>{
-  'lib/features/player/presentation/player_screen.dart': 3,
-  'lib/features/player/presentation/widgets/opening_overlays.dart': 2,
-  'lib/features/player/presentation/widgets/card_view.dart': 3,
-  'lib/features/player/presentation/widgets/end_view.dart': 1,
-  'lib/features/player/presentation/widgets/mission_sheet.dart': 1,
-  'lib/features/player/presentation/widgets/decision_sheet.dart': 2,
-  'lib/features/player/presentation/widgets/subtitle_overlay.dart': 2,
-  'lib/features/player/presentation/widgets/task_view.dart': 3,
-  'lib/features/player/presentation/widgets/player_top_bar.dart': 2,
-  'lib/shared/meaning/meaning_sheet.dart': 13,
   'lib/shared/speech/speak_widgets.dart': 1,
 };
 
@@ -92,6 +83,32 @@ void main() {
       }
     }
   });
+
+  test(
+    'oynatıcı katmanları ve anlam paneli yalnız belirteç kullanır (H-062)',
+    () {
+      // Hi'nin çizimi (hi_avatar.dart) H-063'te; geri kalan oynatıcı arayüzünde
+      // sabit renk, yazı boyutu, eski renk adları ve w600 gibi ağırlıklar yok.
+      final strict = RegExp(
+        r'Color\(0x|fontSize:|FontWeight\.w\d00|AppColors\.|AppSpacing\.|'
+        r'Colors\.(white|black)',
+      );
+      final files = [
+        ...Directory('lib/features/player/presentation')
+            .listSync(recursive: true)
+            .whereType<File>()
+            .where((f) => !f.path.endsWith('hi_avatar.dart')),
+        File('lib/shared/meaning/meaning_sheet.dart'),
+      ];
+      for (final f in files) {
+        expect(
+          strict.hasMatch(f.readAsStringSync()),
+          isFalse,
+          reason: '${f.path}: sabit stil',
+        );
+      }
+    },
+  );
 
   test('taban çizgisi güncel (temizlenen dosya tabandan düşülür)', () {
     // Sayı tabanın altına indiyse tabanı da indir: kazanım geri gitmesin.

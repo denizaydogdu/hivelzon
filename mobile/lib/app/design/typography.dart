@@ -123,6 +123,40 @@ abstract final class AppTypography {
     );
   }
 
+  /// Oynatıcı ve anlam paneli (H-062): büyük okuma satırı (karar seçeneği,
+  /// replik hapı, mesaj balonu, anlam, hedef ifade).
+  static const TextStyle lead = TextStyle(
+    fontFamily: AppFonts.body,
+    fontSize: 18,
+    height: 26 / 18,
+    fontWeight: AppFonts.medium,
+  );
+
+  /// Karakterin repliği (iç ses; italik).
+  static const TextStyle spoken = TextStyle(
+    fontFamily: AppFonts.body,
+    fontSize: 20,
+    height: 1.35,
+    fontWeight: AppFonts.regular,
+    fontStyle: FontStyle.italic,
+  );
+
+  /// Video üstü altyazı (İngilizce) ve anlam panelindeki kelime kutucuğu.
+  static const TextStyle subtitle = TextStyle(
+    fontFamily: AppFonts.body,
+    fontSize: 20,
+    height: 1.3,
+    fontWeight: AppFonts.medium,
+  );
+
+  /// Altyazının Türkçe satırı (küçük).
+  static const TextStyle subtitleTr = TextStyle(
+    fontFamily: AppFonts.body,
+    fontSize: 15,
+    height: 1.3,
+    fontWeight: AppFonts.regular,
+  );
+
   /// Alt sekme etiketi.
   static const TextStyle navLabel = TextStyle(
     fontFamily: AppFonts.body,

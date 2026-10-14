@@ -2,8 +2,9 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-import '../../../../app/theme.dart';
+import '../../../../app/design/design.dart';
 import '../../../../l10n/tr_strings.dart';
+import '../../../../shared/ui/ui.dart';
 import '../../domain/episode.dart';
 import '../../domain/task_check.dart';
 import 'player_ui.dart';
@@ -135,8 +136,7 @@ class _TaskViewState extends State<TaskView> {
                   child: Text(
                     task.prompt.tr,
                     style: theme.textTheme.titleLarge?.copyWith(
-                      color: AppColors.seaBlue,
-                      fontWeight: FontWeight.w700,
+                      color: AppPalette.seaBlue,
                     ),
                   ),
                 ),
@@ -144,33 +144,33 @@ class _TaskViewState extends State<TaskView> {
               if (task.audio != null)
                 ListenButton(
                   onPressed: () => widget.onListen(task.audio!),
-                  semanticLabel: 'Kaydı dinle',
+                  semanticLabel: PlayerTexts.listenRecording,
                 ),
             ],
           ),
           if (task.context != null)
             Padding(
-              padding: const EdgeInsets.only(top: 4),
+              padding: const EdgeInsets.only(top: AppSpace.s4),
               child: Text(
                 task.context!,
                 style: theme.textTheme.bodyMedium?.copyWith(
-                  color: AppColors.eveningOrange,
-                  fontWeight: FontWeight.w500,
+                  color: AppPalette.orange700,
+                  fontWeight: AppFonts.medium,
                 ),
               ),
             ),
           if (task.items.length > 1 && !_done)
             Padding(
-              padding: const EdgeInsets.only(top: 4),
+              padding: const EdgeInsets.only(top: AppSpace.s4),
               child: Text(
                 PlayerTexts.taskProgress(_index + 1, task.items.length),
                 style: theme.textTheme.labelLarge,
               ),
             ),
-          const SizedBox(height: AppSpacing.sm),
+          const SizedBox(height: AppSpace.s16),
           if (_done) ..._result(theme) else ..._itemUi(theme),
           if (_feedback != null && !_done) ...[
-            const SizedBox(height: AppSpacing.sm),
+            const SizedBox(height: AppSpace.s16),
             _Feedback(text: _feedback!),
           ],
         ],
@@ -181,28 +181,27 @@ class _TaskViewState extends State<TaskView> {
   List<Widget> _result(ThemeData theme) => [
     Row(
       children: [
-        const Icon(Icons.check_circle_rounded, color: AppColors.seaBlue),
-        const SizedBox(width: AppSpacing.xs),
-        Text(
-          'Harika, buldun!',
-          style: theme.textTheme.titleMedium?.copyWith(
-            fontWeight: FontWeight.w700,
-          ),
+        const CalmPop(
+          child: Icon(Icons.check_circle_rounded, color: AppPalette.success),
+        ),
+        const SizedBox(width: AppSpace.s8),
+        Flexible(
+          child: Text(PlayerTexts.taskDone, style: theme.textTheme.titleMedium),
         ),
       ],
     ),
     for (final l in widget.task.result)
       Padding(
-        padding: const EdgeInsets.only(top: AppSpacing.xs),
+        padding: const EdgeInsets.only(top: AppSpace.s8),
         child: Text(
           l.text,
-          style: theme.textTheme.titleMedium?.copyWith(
-            color: AppColors.seaBlue,
-            fontWeight: FontWeight.w500,
+          style: theme.textTheme.bodyLarge?.copyWith(
+            color: AppPalette.seaBlue,
+            fontWeight: AppFonts.medium,
           ),
         ),
       ),
-    const SizedBox(height: AppSpacing.sm),
+    const SizedBox(height: AppSpace.s16),
     PrimaryAction(
       key: const ValueKey('task-continue'),
       label: PlayerTexts.continueAction,
@@ -217,14 +216,14 @@ class _TaskViewState extends State<TaskView> {
     if (tap == null || item.stemGloss == null) return text;
     return Semantics(
       button: true,
-      label: '${item.stem}. Anlamını görmek için dokun.',
+      label: PlayerTexts.tapForMeaning(item.stem!),
       excludeSemantics: true,
       child: InkWell(
         key: ValueKey('task-stem-${item.id}'),
-        borderRadius: BorderRadius.circular(AppTheme.radius),
+        borderRadius: AppRadius.mdAll,
         onTap: () => tap(item),
         child: ConstrainedBox(
-          constraints: const BoxConstraints(minHeight: 48),
+          constraints: const BoxConstraints(minHeight: AppTouch.min),
           child: Align(
             alignment: Alignment.centerLeft,
             child: Text(
@@ -232,7 +231,7 @@ class _TaskViewState extends State<TaskView> {
               style: style?.copyWith(
                 decoration: TextDecoration.underline,
                 decorationStyle: TextDecorationStyle.dotted,
-                decorationColor: AppColors.seaBlue.withValues(alpha: 0.5),
+                decorationColor: AppPalette.seaBlue300,
               ),
             ),
           ),
@@ -243,14 +242,14 @@ class _TaskViewState extends State<TaskView> {
 
   List<Widget> _itemUi(ThemeData theme) {
     final item = _item;
-    final stemStyle = theme.textTheme.titleMedium?.copyWith(
-      fontWeight: FontWeight.w500,
+    final stemStyle = theme.textTheme.bodyLarge?.copyWith(
+      fontWeight: AppFonts.medium,
     );
     switch (widget.task.kind) {
       case TaskKind.choice:
         return [
           if (item.stem != null) _stem(item, stemStyle),
-          const SizedBox(height: AppSpacing.xs),
+          const SizedBox(height: AppSpace.s8),
           for (final o in item.options)
             _OptionTile(
               key: ValueKey('task-option-${o.id}'),
@@ -285,7 +284,7 @@ class _TaskViewState extends State<TaskView> {
                   ? null
                   : () => widget.onListen(o.audio!),
             ),
-          const SizedBox(height: AppSpacing.xs),
+          const SizedBox(height: AppSpace.s8),
           _checkButton(
             enabled: _selected.isNotEmpty,
             onPressed: () => _submit(checkMultiSelect(item, _selected)),
@@ -299,19 +298,17 @@ class _TaskViewState extends State<TaskView> {
         return [
           Container(
             constraints: const BoxConstraints(minHeight: 64),
-            padding: const EdgeInsets.all(AppSpacing.xs),
+            padding: const EdgeInsets.all(AppSpace.s8),
             decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(AppTheme.radius),
-              border: Border.all(
-                color: AppColors.seaBlue.withValues(alpha: 0.3),
-              ),
+              color: AppPalette.white,
+              borderRadius: AppRadius.mdAll,
+              border: Border.all(color: AppPalette.seaBlue200),
             ),
             child: Semantics(
-              label: 'Senin cümlen',
+              label: PlayerTexts.yourSentence,
               child: Wrap(
-                spacing: AppSpacing.xs,
-                runSpacing: AppSpacing.xs,
+                spacing: AppSpace.s8,
+                runSpacing: AppSpace.s8,
                 children: [
                   for (final i in _placed)
                     _TokenChip(
@@ -324,10 +321,10 @@ class _TaskViewState extends State<TaskView> {
               ),
             ),
           ),
-          const SizedBox(height: AppSpacing.sm),
+          const SizedBox(height: AppSpace.s16),
           Wrap(
-            spacing: AppSpacing.xs,
-            runSpacing: AppSpacing.xs,
+            spacing: AppSpace.s8,
+            runSpacing: AppSpace.s8,
             children: [
               for (final i in remaining)
                 _TokenChip(
@@ -337,7 +334,7 @@ class _TaskViewState extends State<TaskView> {
                 ),
             ],
           ),
-          const SizedBox(height: AppSpacing.sm),
+          const SizedBox(height: AppSpace.s16),
           _checkButton(
             enabled: remaining.isEmpty,
             onPressed: () => _submit(
@@ -348,11 +345,8 @@ class _TaskViewState extends State<TaskView> {
       case TaskKind.match:
         final usedRights = _pairs.values.toSet();
         return [
-          Text(
-            'Önce soldan bir parça, sonra sağdan eşini seç.',
-            style: theme.textTheme.bodyMedium,
-          ),
-          const SizedBox(height: AppSpacing.xs),
+          Text(PlayerTexts.matchHelp, style: theme.textTheme.bodyMedium),
+          const SizedBox(height: AppSpace.s8),
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -375,7 +369,7 @@ class _TaskViewState extends State<TaskView> {
                   ],
                 ),
               ),
-              const SizedBox(width: AppSpacing.xs),
+              const SizedBox(width: AppSpace.s8),
               Expanded(
                 child: Column(
                   children: [
@@ -398,7 +392,7 @@ class _TaskViewState extends State<TaskView> {
               ),
             ],
           ),
-          const SizedBox(height: AppSpacing.xs),
+          const SizedBox(height: AppSpace.s8),
           _checkButton(
             enabled: _pairs.length == item.pairs.length,
             onPressed: () => _submit(checkMatch(item, _pairs)),
@@ -435,12 +429,12 @@ class _TaskViewState extends State<TaskView> {
         final filled = _blanks.values.every((c) => c.text.trim().isNotEmpty);
         return [
           Wrap(
-            spacing: AppSpacing.xs,
-            runSpacing: AppSpacing.xs,
+            spacing: AppSpace.s8,
+            runSpacing: AppSpace.s8,
             crossAxisAlignment: WrapCrossAlignment.center,
             children: children,
           ),
-          const SizedBox(height: AppSpacing.sm),
+          const SizedBox(height: AppSpace.s16),
           _checkButton(
             enabled: filled,
             onPressed: () => _submit(
@@ -454,8 +448,8 @@ class _TaskViewState extends State<TaskView> {
   }
 
   static String _blankLabel(String id) => switch (id) {
-    'name' => 'Adın',
-    'from' => 'Nerelisin',
+    'name' => PlayerTexts.blankName,
+    'from' => PlayerTexts.blankFrom,
     _ => id,
   };
 
@@ -464,7 +458,7 @@ class _TaskViewState extends State<TaskView> {
     required VoidCallback onPressed,
   }) => PrimaryAction(
     key: const ValueKey('task-check'),
-    label: 'Kontrol et',
+    label: PlayerTexts.check,
     onPressed: enabled ? onPressed : null,
   );
 }
@@ -479,25 +473,24 @@ class _Feedback extends StatelessWidget {
     return Semantics(
       liveRegion: true,
       child: Container(
-        padding: const EdgeInsets.all(12),
-        decoration: BoxDecoration(
+        padding: const EdgeInsets.all(AppSpace.s12),
+        decoration: const BoxDecoration(
           color: AppPalette.yellow100,
-          borderRadius: BorderRadius.circular(AppTheme.radius),
+          borderRadius: AppRadius.mdAll,
         ),
         child: Row(
           children: [
             const Icon(
               Icons.lightbulb_outline_rounded,
-              color: AppColors.seaBlue,
+              color: AppPalette.seaBlue,
             ),
-            const SizedBox(width: AppSpacing.xs),
+            const SizedBox(width: AppSpace.s8),
             Expanded(
               child: Text(
                 text,
-                style: const TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w500,
-                ),
+                style: Theme.of(
+                  context,
+                ).textTheme.bodyLarge?.copyWith(fontWeight: AppFonts.medium),
               ),
             ),
           ],
@@ -530,32 +523,30 @@ class _OptionTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bg = selected
-        ? AppColors.seaBlue
+        ? AppPalette.seaBlue
         : done
         ? AppPalette.seaBlue100
         : AppPalette.seaBlue50;
-    final fg = selected ? Colors.white : AppColors.seaBlue;
+    final fg = selected ? AppPalette.white : AppPalette.seaBlue;
     return Padding(
-      padding: const EdgeInsets.only(bottom: AppSpacing.xs),
+      padding: const EdgeInsets.only(bottom: AppSpace.s8),
       child: Opacity(
         opacity: dimmed ? 0.5 : 1,
         child: Material(
           color: bg,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(AppTheme.radius),
-          ),
+          shape: const RoundedRectangleBorder(borderRadius: AppRadius.mdAll),
           child: InkWell(
-            borderRadius: BorderRadius.circular(AppTheme.radius),
+            borderRadius: AppRadius.mdAll,
             onTap: onTap,
             child: ConstrainedBox(
-              constraints: const BoxConstraints(minHeight: 48),
+              constraints: const BoxConstraints(minHeight: AppTouch.min),
               child: Padding(
-                padding: const EdgeInsets.only(left: 12),
+                padding: const EdgeInsets.only(left: AppSpace.s12),
                 child: Row(
                   children: [
                     if (checkbox)
                       Padding(
-                        padding: const EdgeInsets.only(right: AppSpacing.xs),
+                        padding: const EdgeInsets.only(right: AppSpace.s8),
                         child: Icon(
                           selected
                               ? Icons.check_box_rounded
@@ -565,25 +556,27 @@ class _OptionTile extends StatelessWidget {
                       ),
                     Expanded(
                       child: Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 12),
+                        padding: const EdgeInsets.symmetric(
+                          vertical: AppSpace.s12,
+                        ),
                         child: Text(
                           text,
-                          style: TextStyle(
-                            color: fg,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500,
-                          ),
+                          style: Theme.of(context).textTheme.bodyLarge
+                              ?.copyWith(
+                                color: fg,
+                                fontWeight: AppFonts.medium,
+                              ),
                         ),
                       ),
                     ),
                     if (onListen != null)
                       ListenButton(
                         onPressed: onListen!,
-                        semanticLabel: 'Dinle: $text',
+                        semanticLabel: PlayerTexts.listenTo(text),
                         filled: false,
                       )
                     else
-                      const SizedBox(width: 12),
+                      const SizedBox(width: AppSpace.s12),
                   ],
                 ),
               ),
@@ -612,27 +605,28 @@ class _TokenChip extends StatelessWidget {
     return Semantics(
       button: true,
       label: filled
-          ? '$text, çıkarmak için dokun'
-          : '$text, eklemek için dokun',
+          ? PlayerTexts.tokenRemove(text)
+          : PlayerTexts.tokenAdd(text),
       excludeSemantics: true,
       child: Material(
-        color: filled ? AppColors.seaBlue : AppPalette.seaBlue50,
-        borderRadius: BorderRadius.circular(AppTheme.radius),
+        color: filled ? AppPalette.seaBlue : AppPalette.seaBlue50,
+        borderRadius: AppRadius.mdAll,
         child: InkWell(
-          borderRadius: BorderRadius.circular(AppTheme.radius),
+          borderRadius: AppRadius.mdAll,
           onTap: onTap,
           child: ConstrainedBox(
-            constraints: const BoxConstraints(minHeight: 48, minWidth: 48),
+            constraints: const BoxConstraints(
+              minHeight: AppTouch.min,
+              minWidth: AppTouch.min,
+            ),
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 14),
+              padding: const EdgeInsets.symmetric(horizontal: AppSpace.s12),
               child: Center(
                 widthFactor: 1,
                 child: Text(
                   text,
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w500,
-                    color: filled ? Colors.white : AppColors.seaBlue,
+                  style: AppTypography.lead.copyWith(
+                    color: filled ? AppPalette.white : AppPalette.seaBlue,
                   ),
                 ),
               ),

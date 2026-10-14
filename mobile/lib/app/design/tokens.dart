@@ -79,6 +79,15 @@ abstract final class AppScrim {
   /// Güçlü perde (karar anı, duraklatma).
   static const Color strong = Color(0x99000000);
 
+  /// Karar, kart ve Hi panelinin arkasında videoyu karartma (%55; K-27).
+  static const Color dim = Color(0x8C000000);
+
+  /// Hafif karartma (%35): başlık kartı, anlam panelinin arka perdesi.
+  static const Color dimLight = Color(0x59000000);
+
+  /// Video üstündeki küçük bilgi hapı (yapay zekâ notu, "Önceki bölümde").
+  static const Color chip = Color(0x73000000);
+
   /// Görsel üstü yazı için alttan koyulaşan geçişin koyu ucu.
   static const Color gradientEnd = Color(0xB3000000);
 
