@@ -136,7 +136,7 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 ### Adım 7 — Kitaplık: seviyeli, resimli, sesli kitaplar (2026-10-14, kullanıcı isteği; `docs/KITAPLIK.md`)
 | # | İş | Başlık | Öncelik | Bağımlılık | Durum |
 |---|---|---|---|---|---|
-| K0 | H-065 | Kitaplık kararları ve 30 kitaplık katalog | Yüksek | — | 🔄 |
+| K0 | H-065 | Kitaplık kararları ve 30 kitaplık katalog | Yüksek | — | ✅ |
 | K1 | H-066 | Kitap paketi ve içerik boru hattı (book-lint, C1/C2 listesi, TTS betiği) | Yüksek | H-065 | ⏳ |
 | K2 | H-067 | Kitaplık ve okuyucu (sesli/sessiz, cümle vurgusu, Defter'e ekle) | Yüksek | H-066 | ⏳ |
 | K3 | H-068 | Arka planda dinleme ve kilit ekranı | Orta | H-067 | ⏳ |
@@ -156,6 +156,7 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 ## Biten işler
 | İş | Başlık | Bitiş | Doğrulama |
 |---|---|---|---|
+| H-065 | Kitaplık kararları ve 30 kitaplık katalog | 2026-10-14 | `kitaplar/KATALOG.md` (6 seviye × 5 tür) kullanıcı onaylı; pilot A1-K01 + A2-K03; yerleşim Hikâye sekmesinde "Macera · Kitaplık" |
 | H-060 | Ana Sayfa, harita, bölüm paneli, jenerik tasarımı | 2026-10-14 | Hedef halkalı selam (aşılınca 10/10 + onay), dalga kesimli bölüm kartı, yeni harita başlığı, bir kez oynayan açılış ışığı, AppSheet paneli, metinler l10n'de; flutter test 531/531, CI yeşil; kullanıcı onayladı |
 | H-039 | Açılış ve yerleştirme | 2026-10-14 | Hoş geldin → doğum yılı (saklanmaz; yalnız geçmemiş yaş eşiği) ve isteğe bağlı ad → bilgilendirme → hedef + Türkçe altyazı → atlanabilir kademeli test (22 madde, kullanıcı onaylı) → hazır; 13 altına hesap yok; bir kez gösterim; flutter test geçti, CI yeşil |
 | H-059 | Profil, Hesap, Hi gizlilik, hukuk metni tasarımı | 2026-10-14 | Şekilli başlık, istatistik şeridi, gruplanmış ayarlar, tehlikeli bölge; golden testler (yalnız macOS) + belirteç kontrast testi; flutter test 464/464, CI yeşil; kullanıcı tasarımı onayladı |
@@ -355,3 +356,4 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
   - Kullanıcı isteği: Kitaplık (seviyeli, resimli, sesli kitaplar; okunan cümle vurgulu; dokun → Türkçe; Defter'e ekle; okuduklarım/yarıda kalanlar; 6 seviye × 5 = 30 kitap). Önerilen kararlar onaylandı (pilot önce, ElevenLabs, kısa kitap, bağımsız türler). `docs/KITAPLIK.md` ve H-065…H-073 açıldı. H-060 ayrı dalda sürüyor.
   - H-060 ayrı dalda yapıldı ve `main`'e birleştirildi (530 test): hedef halkalı Ana Sayfa, yeni harita başlığı, bir kez oynayan bölüm açılış ışığı, AppSheet bölüm paneli. Kullanıcı onayı ve açık sorular bekleniyor.
   - Kullanıcı H-060 tasarımını onayladı; hedef aşılınca "10/10" + onay ikonu; animasyon güncelleyenlere bir kez; gerçek süre ölçümü H-074 olarak açıldı. H-060 bitti; sıradaki H-061.
+  - Kullanıcı 30 kitaplık kataloğu, pilot kitapları (The Blue Door, The Parrot Who Told Everything) ve yerleşimi onayladı; H-065 bitti. Sıradaki: H-066 (kitap paketi + boru hattı) ve H-061, paralel.

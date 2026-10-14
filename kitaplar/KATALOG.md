@@ -1,6 +1,6 @@
 # Kitaplık kataloğu: 30 kitap (A1–C2)
 
-> **Durum: TASLAK (kullanıcı onayı bekliyor, H-028)**
+> **Durum: ONAYLI (kullanıcı onayı 2026-10-14, H-065; editör toplu kontrolü H-028'e göre üretimde)**
 > İş: H-065 · Plan: `docs/KITAPLIK.md` · Tarih: 2026-10-14
 > Bu belge kitapların kendisi değil, kataloğudur. Metinler onaydan sonra dalgalar hâlinde yazılır (H-069, H-071…H-073).
 

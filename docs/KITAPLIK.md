@@ -22,6 +22,7 @@ Ana hikâyeden (*The Missing Signal*) ayrı ama onu tamamlayan bir **dinleme + k
 | Ses | **ElevenLabs, önce pilot.** Bölümlerdeki gibi zaman damgalı TTS. Pilot ücretsiz kotayla ve yalnız iç kullanım için. 30 kitap ≈ 870 bin karakter, ticari plan gerekir (H-006). Plan ve maliyet ayrıca onaylanır. |
 | Uzunluk | **Kısa kitap**, yatak öncesi bir oturuşta biter. Bölümlere ayrılır ve kaldığın yerden devam edilir. §4'teki tablo. |
 | Konu | **Bağımsız kitaplar, karışık türler.** Her seviyede 5 ayrı tür: gizem, macera, mizah, bilimkurgu/fantastik, günlük hayat/duygu. Hepsi özgün. Port Lumen kanonuna bağlı değil. |
+| Katalog ve pilot | 30 kitaplık katalog onaylı (`kitaplar/KATALOG.md`). Pilot kitaplar: A1-K01 *The Blue Door* (gizem) ve A2-K03 *The Parrot Who Told Everything* (mizah). Yerleşim: Hikâye sekmesinde "Macera · Kitaplık" (2026-10-14). |
 | C2 | Kullanıcı C2'yi de istedi. Belgelerdeki seviye tablosu C1'de bitiyordu; Kitaplık için C2 eklenir (§4, §6). |
 
 ## 3. Dünyadaki örnekler (2026-10-14 taraması)
@@ -114,7 +115,7 @@ Zamanlama mevcut `hvpipeline/align.py` ile ElevenLabs karakter hizalamasından �
 **Yer:**
 - **Hikâye** sekmesinde iki bölüm: "Macera" (harita) ve "Kitaplık". Sekme sayısı değişmez (K-30).
 - Ana Sayfa'daki tek eylem ilkesi korunur. Kitap, Hi'nin önerisi olarak ya da yarıda kalan kitap varsa ikincil kartta görünür.
-- Bu yerleşim UNCONFIRMED; H-065'te kullanıcıya sorulur.
+- Yerleşim kullanıcı onaylı (2026-10-14, H-065).
 
 **Kitaplık ekranı:**
 - **Raflar:** "Okumaya devam et" (yarıda kalanlar, yüzdesiyle), "Senin seviyen", diğer seviyeler, "Okuduklarım".
