@@ -139,7 +139,7 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 | K0 | H-065 | Kitaplık kararları ve 30 kitaplık katalog | Yüksek | — | ✅ |
 | K1 | H-066 | Kitap paketi ve içerik boru hattı (book-lint, C1/C2 listesi, TTS betiği) | Yüksek | H-065 | ✅ |
 | K2 | H-067 | Kitaplık ve okuyucu (sesli/sessiz, cümle vurgusu, Defter'e ekle) | Yüksek | H-066 | ✅ |
-| K3 | H-068 | Arka planda dinleme ve kilit ekranı | Orta | H-067 | ⏳ |
+| K3 | H-068 | Arka planda dinleme ve kilit ekranı | Orta | H-067 | 🔄 |
 | K4 | H-069 | Pilot kitaplar A1 + A2 (≈ 15 kr görsel, maliyet onayı önce) | Yüksek | H-065, H-066, H-067 | ✅ |
 | K5 | H-070 | Kitaplık arka ucu (BOOK, C2, onay) | Orta | H-066 | ⏳ |
 | K6 | H-071 | Kitap dalgası 1: A1 + A2 (kalan 8) | Orta | H-069 | 🔄 |
@@ -409,3 +409,4 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
   - H-040 Keşfet `main`'e birleştirildi: 17 klip (B1–B4, ücretsiz kesim, -16 LUFS), quiz ve mola kartları, günlük 20 dk sınırı (13–17 ve 13 altı), sonsuz kaydırma yok, bellek ölçümü sızıntısız (RSS tepe +60 MB, en fazla 2 canlı oynatıcı). Onay bekliyor.
   - H-082: C1 8 + C2 6 ders yazıldı ve Türkçe sesleri üretildi. **71 konunun tamamı yazıldı, Türkçe sesli (toplam ~69.000 karakter, ücretsiz kampanya), lint 0 hata.** İngilizce örnek sesleri toplam ~27.800 karakter bekliyor. Hi balonu katman olarak yüzer (H-064 notu).
   - H-072: 5 B1 kitabının metni (2.974–3.265 kelime, kapsama %98,7–99,4, B1 yapıları doğal biçimde) main'de; onay ve görsel (28 görsel ≈ 14 kr) bekleniyor. Dilbilgisi listesinde ilerleme yüzdesi ve İngilizce örnekler için cihaz sesi eklendi (main'de, 871 test).
+  - H-068 (just_audio + audio_service, MIT): kitaplar ekran kapalıyken çalar, kilit ekranında oynat/duraklat, 10 sn geri, sonraki bölüm, kapak; main'de (887 test). Kilit ekranı görünümü gerçek iPhone'da denenecek.
