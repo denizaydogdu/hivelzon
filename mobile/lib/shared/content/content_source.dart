@@ -1,3 +1,4 @@
+import '../../features/discover/domain/clip.dart';
 import '../../features/grammar/domain/grammar_lesson.dart';
 import '../../features/hi/domain/hi_content.dart';
 import '../../features/library/domain/book.dart';
@@ -106,6 +107,7 @@ class SeasonInfo {
     this.mapWidth,
     this.mapHeight,
     this.topicSets = const [],
+    this.clipsPath,
   });
 
   /// [rendition]: jenerik videolarının oynatılacak sürümü (H-054).
@@ -142,6 +144,9 @@ class SeasonInfo {
         for (final t in (j['topicSets'] as List? ?? const []))
           TopicSetSummary.fromJson((t as Map).cast<String, dynamic>()),
       ]..sort((a, b) => a.order.compareTo(b.order)),
+      clipsPath: j['clips'] is Map
+          ? (j['clips'] as Map)['path'] as String?
+          : null,
     );
   }
 
@@ -171,6 +176,9 @@ class SeasonInfo {
 
   /// Konu setleri (H-051; yoksa boş): `sets/<id>.json` özetleri.
   final List<TopicSetSummary> topicSets;
+
+  /// Keşfet klipleri (H-040): `clips.json` yolu; sezonda klip yoksa null.
+  final String? clipsPath;
 
   /// Harita yüksekliği / genişliği.
   double? get mapAspect =>
@@ -214,6 +222,9 @@ abstract interface class ContentSource {
   /// Hi-A verisi (H-048): sezon paketindeki `hi.json` (hata kataloğu, konu
   /// tanıtımları, köprü görevleri, "Bu ne demek?" dizini).
   Future<HiContent> loadHiContent(int season);
+
+  /// Keşfet klipleri (H-040): sezon paketindeki `clips.json` ([path]).
+  Future<ClipCatalog> loadClips(int season, String path);
 
   /// Kitaplık (H-067): `/books/index.json`.
   Future<List<BookSummary>> listBooks();

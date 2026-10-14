@@ -286,11 +286,32 @@ Hikâye sekmesinin seçicisi **Macera · Kitaplık · Dilbilgisi** olur (sekme s
 
 Ad kuralları: Baştaki ve sondaki boşluk atılır, aradaki boşluklar teke iner. Boş ad, kaydı siler. İzin verilen karakterler harf, boşluk, kesme işareti, tire ve noktadır. En fazla 20 karakter yazılabilir. Ad `app_meta` tablosunda `profile.displayName` anahtarıyla tutulur; şema değişmez. Onboarding'de (H-039) de sorulur. Hesap açılınca (H-038) hesaba taşınır.
 
-## 7. Keşfet ve Konuş (yer tutucular)
+## 7. Keşfet ve Konuş
+
+### 7.1 Keşfet (H-040)
+
+Kod: `DiscoverTexts` (`mobile/lib/l10n/tr_strings.dart`). Keşfet artık yer tutucu değil: açılmış bölümlerden kısa klipler, dikey akış (K-15). Akış biter; sonsuz kaydırma, beğeni sayısı, yorum ve geri sayım yok (K-32). Quiz ve mola kartı puansız ve sakindir.
+
+| Yer | Metin |
+|---|---|
+| Klip üstü | Sarı etiket **Bölüm 1** · klibin Türkçe başlığı ("Telsizde bir ses") · sağ üstte ses düğmesi (ekran okuyucu: "Sesi kapat" / "Sesi aç") |
+| Sağdaki düğmeler | **Kaydet** (kayıttan sonra **Defterinde**) · **Anlam** · **Tam hikâye**. Ekran okuyucu: `"Can you hear me?" ifadesini deftere ekle`, "Altyazının anlamını aç", "Bölüm 1'i aç". |
+| Dilbilgisi etiketi | **Dilbilgisi: can / can't** (dersin kısa adı; dokununca ders açılır) |
+| Alt kart | **BU KLİBİN İFADESİ** (kelimede **BU KLİBİN KELİMESİ**) · İngilizce ifade · Türkçesi |
+| Kaydet onayı | `"Can you hear me?" deftere eklendi.` / `"Can you hear me?" zaten defterinde.` (anlam panelindekiyle aynı) |
+| Defter'de kaynak | **Keşfet: A Strange Message** |
+| Klip bitince | **Tekrar izle** · "Sonraki klip için yukarı kaydır." (kendiliğinden geçmez) |
+| Yapay zekâ notu | "Yapay zekâ ile üretilmiştir" (akış açılınca birkaç saniye, yalnızca klip üstünde) |
+| Quiz kartı | **KISA SORU** · soru ("“Nice to meet you.” ne demek?") · "Klip: Tanıştığımıza memnun oldum" · seçenekler · **Bilmiyorum**. Yanlışta "Bir daha bakalım." (seçenek soluklaşır, yeniden denenir); doğruda "Evet, doğru." + kısa açıklama + **Devam et**; "Bilmiyorum"da "Doğru cevap bu." |
+| Mola kartı | **MOLA** · **Biraz ara verelim mi?** · "Az önce 10 klip izledin, 2 ifade kaydettin." · "Bugünün tek adımı Ana Sayfa'da seni bekliyor." · **Bugünün adımına geç** / **Kliplere devam et** |
+| Bitiş kartı | **Şimdilik bu kadar** · kilitli bölüm varsa "Açık bölümlerin bütün kliplerini izledin. Hikâyede ilerledikçe yeni klipler açılır.", yoksa "Bütün klipleri izledin. Yeni klipler yeni bölümlerle gelir." · **Hikâyeye git** / **Ana Sayfa'ya dön** |
+| Günlük süre (13–17 ve 13 altı) | Yalnızca dolunca: **Bugünlük Keşfet burada bitiyor** · "Keşfet için günlük 20 dakikan doldu. Klipler gece yarısından sonra yeniden açılır." · "Hikâyen, Defter ve Kelime tekrarı her zaman açık." · **Hikâyene devam et**. İzlerken kalan süre gösterilmez. |
+| Yükleniyor / boş / hata | İskelet ("Klipler hazırlanıyor…") · **Klipler hazırlanıyor** "Bölümlerden kısa klipler burada akacak. Şimdilik hikâyene devam edebilirsin." **Hikâyeye git** · **Klipler açılamadı** "Bağlantını kontrol edip tekrar dene." **Tekrar dene** |
+
+### 7.2 Konuş (yer tutucu)
 
 | Sekme | Eski | Yeni |
 |---|---|---|
-| Keşfet | Üst çubuk "Keşfet" · "Kısa klipler burada akacak." | Başlık **Keşfet** · **Kısa klipler yakında** · "Bölümlerden 30 saniyelik klipler burada akacak. Her klipten sonra kısa bir soru ya da kelime kaydetme seçeneği olacak." |
 | Konuş | Üst çubuk "Konuş" · "Yakında / Karakterlerle konuşma pratiği sonraki sürümde geliyor." | Başlık **Konuş** · **Konuşma pratiği yakında** · "Hikâyedeki karakterlerle İngilizce konuşma pratiği sonraki sürümde geliyor. Karşındakinin yapay zekâ olduğu her zaman söylenecek." |
 
 Neden: Sekmelerin başlık düzeni öteki sekmelerle aynı olur. Ne geleceği ve neden işe yarayacağı tek paragrafta söylenir. Yapay zekâ açıklaması önceden yapılır.

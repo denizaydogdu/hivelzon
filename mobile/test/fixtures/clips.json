@@ -1,0 +1,4333 @@
+{
+ "schemaVersion": 1,
+ "season": 1,
+ "level": "A1",
+ "status": "DRAFT",
+ "aiLabel": "Yapay zekâ ile üretilmiştir",
+ "clips": [
+  {
+   "id": "S1-K01",
+   "episode": "A1-001",
+   "episodeNumber": 1,
+   "episodeTitle": "A Strange Message",
+   "titleTr": "Telsizde bir ses",
+   "duration": 15.567,
+   "target": {
+    "kind": "phrase",
+    "en": "Can you hear me?",
+    "tr": "Beni duyabiliyor musun?",
+    "cue": "s02-04"
+   },
+   "parts": [
+    {
+     "node": "s02",
+     "start": 0.0,
+     "end": 13.167,
+     "at": 0.0
+    },
+    {
+     "node": "k1-ok",
+     "start": 0.0,
+     "end": 2.4,
+     "at": 13.167
+    }
+   ],
+   "cues": [
+    {
+     "id": "s02-01",
+     "tr": "Tamam. Cuma.",
+     "speaker": "ALEX",
+     "text": "OK. Friday.",
+     "chunks": [],
+     "start": 0.59,
+     "end": 1.87,
+     "words": [
+      {
+       "w": "OK.",
+       "start": 0.59,
+       "end": 1.3,
+       "gloss": "tamam"
+      },
+      {
+       "w": "Friday.",
+       "start": 1.357,
+       "end": 1.78,
+       "gloss": "cuma"
+      }
+     ]
+    },
+    {
+     "id": "s02-02",
+     "tr": "Yedinci kanal.",
+     "speaker": "ALEX",
+     "text": "Channel seven.",
+     "chunks": [
+      {
+       "en": "Channel seven",
+       "tr": "7. kanal, yedinci kanal",
+       "startWord": 0,
+       "endWord": 1
+      }
+     ],
+     "start": 1.87,
+     "end": 3.37,
+     "words": [
+      {
+       "w": "Channel",
+       "start": 1.87,
+       "end": 2.5,
+       "gloss": "kanal"
+      },
+      {
+       "w": "seven.",
+       "start": 2.567,
+       "end": 3.22,
+       "gloss": "yedi"
+      }
+     ]
+    },
+    {
+     "id": "s02-03",
+     "tr": "Alo? Alo?",
+     "speaker": "VOICE",
+     "text": "Hello? Hello?",
+     "chunks": [],
+     "start": 8.747,
+     "end": 10.897,
+     "words": [
+      {
+       "w": "Hello?",
+       "start": 8.747,
+       "end": 9.147,
+       "gloss": "alo (telsizde/telefonda), merhaba"
+      },
+      {
+       "w": "Hello?",
+       "start": 9.4,
+       "end": 10.747,
+       "gloss": "alo (telsizde/telefonda), merhaba"
+      }
+     ]
+    },
+    {
+     "id": "s02-04",
+     "tr": "Beni duyabiliyor musun?",
+     "speaker": "VOICE",
+     "text": "Can you hear me?",
+     "chunks": [
+      {
+       "en": "Can you hear me?",
+       "tr": "Beni duyabiliyor musun?",
+       "startWord": 0,
+       "endWord": 3
+      }
+     ],
+     "start": 11.027,
+     "end": 12.737,
+     "words": [
+      {
+       "w": "Can",
+       "start": 11.027,
+       "end": 11.867,
+       "gloss": "-ebilir mi (soru)"
+      },
+      {
+       "w": "you",
+       "start": 11.907,
+       "end": 12.027,
+       "gloss": "sen"
+      },
+      {
+       "w": "hear",
+       "start": 12.075,
+       "end": 12.267,
+       "gloss": "duymak"
+      },
+      {
+       "w": "me?",
+       "start": 12.347,
+       "end": 12.587,
+       "gloss": "beni"
+      }
+     ]
+    },
+    {
+     "id": "k1-ok-01",
+     "tr": "Evet, seni duyabiliyorum.",
+     "speaker": "ALEX",
+     "text": "Yes, I can hear you.",
+     "chunks": [
+      {
+       "en": "Yes, I can.",
+       "tr": "Evet, (yapabiliyorum).",
+       "startWord": 0,
+       "endWord": 2
+      },
+      {
+       "en": "I can hear you",
+       "tr": "Seni duyabiliyorum",
+       "startWord": 1,
+       "endWord": 4
+      }
+     ],
+     "start": 13.627,
+     "end": 15.18,
+     "words": [
+      {
+       "w": "Yes,",
+       "start": 13.627,
+       "end": 13.957,
+       "gloss": "evet"
+      },
+      {
+       "w": "I",
+       "start": 14.055,
+       "end": 14.152,
+       "gloss": "ben"
+      },
+      {
+       "w": "can",
+       "start": 14.201,
+       "end": 14.347,
+       "gloss": "-ebilmek"
+      },
+      {
+       "w": "hear",
+       "start": 14.387,
+       "end": 14.543,
+       "gloss": "duymak"
+      },
+      {
+       "w": "you.",
+       "start": 14.591,
+       "end": 15.03,
+       "gloss": "seni"
+      }
+     ]
+    }
+   ],
+   "sourceStatus": "DRAFT",
+   "grammar": {
+    "id": "G-A1-07-can",
+    "titleTr": "can / can't: yetenek, rica ve kısa cevap"
+   },
+   "quiz": {
+    "promptTr": "“Can you hear me?” sorusuna kısa cevap hangisi?",
+    "options": [
+     {
+      "text": "Yes, I can.",
+      "lang": "en",
+      "correct": true
+     },
+     {
+      "text": "Yes, I am.",
+      "lang": "en",
+      "correct": false
+     },
+     {
+      "text": "Yes, I do.",
+      "lang": "en",
+      "correct": false
+     }
+    ],
+    "explainTr": "Soru Can you…? ile başlıyorsa kısa cevap “Yes, I can.” olur."
+   },
+   "video": "clips/S1-K01.mp4",
+   "loudness": {
+    "before": {
+     "I": -15.68,
+     "TP": -1.42,
+     "LRA": 8.6
+    },
+    "gainDb": -0.32,
+    "after": {
+     "I": -16.03,
+     "TP": -1.73,
+     "LRA": 8.5
+    }
+   },
+   "videoDuration": 15.567,
+   "poster": "clips/S1-K01.webp",
+   "bytes": 3061661
+  },
+  {
+   "id": "S1-K02",
+   "episode": "A1-001",
+   "episodeNumber": 1,
+   "episodeTitle": "A Strange Message",
+   "titleTr": "Bir daha, lütfen",
+   "duration": 14.4,
+   "target": {
+    "kind": "phrase",
+    "en": "Again, please.",
+    "tr": "Bir daha, lütfen.",
+    "cue": "k2-ok-01"
+   },
+   "parts": [
+    {
+     "node": "s03",
+     "start": 0.0,
+     "end": 12.067,
+     "at": 0.0
+    },
+    {
+     "node": "k2-ok",
+     "start": 0.0,
+     "end": 2.333,
+     "at": 12.067
+    }
+   ],
+   "cues": [
+    {
+     "id": "s03-01",
+     "tr": "Ben E.",
+     "speaker": "VOICE",
+     "text": "This is E.",
+     "chunks": [
+      {
+       "en": "This is …",
+       "tr": "Ben … (telsizde/telefonda kendini tanıtırken)",
+       "startWord": 0,
+       "endWord": 2
+      }
+     ],
+     "start": 0.53,
+     "end": 2.73,
+     "words": [
+      {
+       "w": "This",
+       "start": 0.53,
+       "end": 0.98,
+       "gloss": "bu (burada: ben)"
+      },
+      {
+       "w": "is",
+       "start": 1.247,
+       "end": 1.78,
+       "gloss": "-dır / -dir (olmak)"
+      },
+      {
+       "w": "E.",
+       "start": 2.14,
+       "end": 2.58,
+       "gloss": null
+      }
+     ]
+    },
+    {
+     "id": "s03-02",
+     "tr": "Benimle eski istasyonda buluş.",
+     "speaker": "VOICE",
+     "text": "Meet me at the old station.",
+     "chunks": [
+      {
+       "en": "Meet me at …",
+       "tr": "Benimle …-de buluş",
+       "startWord": 0,
+       "endWord": 5
+      },
+      {
+       "en": "the old station",
+       "tr": "eski istasyon",
+       "startWord": 3,
+       "endWord": 5
+      }
+     ],
+     "start": 2.788,
+     "end": 4.957,
+     "words": [
+      {
+       "w": "Meet",
+       "start": 2.788,
+       "end": 3.62,
+       "gloss": "buluş"
+      },
+      {
+       "w": "me",
+       "start": 3.673,
+       "end": 3.78,
+       "gloss": "benimle (beni)"
+      },
+      {
+       "w": "at",
+       "start": 3.807,
+       "end": 3.86,
+       "gloss": "-de / -da (yer)"
+      },
+      {
+       "w": "the",
+       "start": 3.88,
+       "end": 3.94,
+       "gloss": "(belirli tanımlık)"
+      },
+      {
+       "w": "old",
+       "start": 4.02,
+       "end": 4.26,
+       "gloss": "eski"
+      },
+      {
+       "w": "station.",
+       "start": 4.33,
+       "end": 4.82,
+       "gloss": "istasyon"
+      }
+     ]
+    },
+    {
+     "id": "s03-03",
+     "tr": "Cuma. Saat yedi.",
+     "speaker": "VOICE",
+     "text": "Friday. Seven o'clock.",
+     "chunks": [
+      {
+       "en": "seven o'clock",
+       "tr": "saat yedi",
+       "startWord": 1,
+       "endWord": 2
+      }
+     ],
+     "start": 4.957,
+     "end": 7.37,
+     "words": [
+      {
+       "w": "Friday.",
+       "start": 4.957,
+       "end": 6.18,
+       "gloss": "cuma"
+      },
+      {
+       "w": "Seven",
+       "start": 6.247,
+       "end": 6.58,
+       "gloss": "yedi"
+      },
+      {
+       "w": "o'clock.",
+       "start": 6.62,
+       "end": 7.22,
+       "gloss": "saat (tam saat)"
+      }
+     ]
+    },
+    {
+     "id": "s03-04",
+     "tr": "Alo? Alo?",
+     "speaker": "ALEX",
+     "text": "Hello? Hello?",
+     "chunks": [],
+     "start": 8.027,
+     "end": 10.507,
+     "words": [
+      {
+       "w": "Hello?",
+       "start": 8.027,
+       "end": 8.287,
+       "gloss": "alo (telsizde/telefonda), merhaba"
+      },
+      {
+       "w": "Hello?",
+       "start": 8.54,
+       "end": 10.367,
+       "gloss": "alo (telsizde/telefonda), merhaba"
+      }
+     ]
+    },
+    {
+     "id": "s03-05",
+     "tr": "Sen kimsin?",
+     "speaker": "ALEX",
+     "text": "Who are you?",
+     "chunks": [
+      {
+       "en": "Who are you?",
+       "tr": "Kimsin?",
+       "startWord": 0,
+       "endWord": 2
+      }
+     ],
+     "start": 10.507,
+     "end": 11.637,
+     "words": [
+      {
+       "w": "Who",
+       "start": 10.507,
+       "end": 10.927,
+       "gloss": "kim"
+      },
+      {
+       "w": "are",
+       "start": 10.967,
+       "end": 11.087,
+       "gloss": "-sin (olmak)"
+      },
+      {
+       "w": "you?",
+       "start": 11.147,
+       "end": 11.487,
+       "gloss": "sen"
+      }
+     ]
+    },
+    {
+     "id": "k2-ok-01",
+     "tr": "Bir daha, lütfen.",
+     "speaker": "ALEX",
+     "text": "Again, please.",
+     "chunks": [
+      {
+       "en": "Again, please.",
+       "tr": "Bir daha, lütfen. (kibar tekrar isteği)",
+       "startWord": 0,
+       "endWord": 1
+      }
+     ],
+     "start": 12.527,
+     "end": 14.029,
+     "words": [
+      {
+       "w": "Again,",
+       "start": 12.527,
+       "end": 13.032,
+       "gloss": "tekrar, bir daha"
+      },
+      {
+       "w": "please.",
+       "start": 13.113,
+       "end": 13.879,
+       "gloss": "lütfen"
+      }
+     ]
+    }
+   ],
+   "sourceStatus": "DRAFT",
+   "quiz": {
+    "promptTr": "Anlamadığında kibarca ne dersin?",
+    "options": [
+     {
+      "text": "Again, please.",
+      "lang": "en",
+      "correct": true
+     },
+     {
+      "text": "What?",
+      "lang": "en",
+      "correct": false
+     },
+     {
+      "text": "Go straight.",
+      "lang": "en",
+      "correct": false
+     }
+    ],
+    "explainTr": "“What?” bazen sert duyulur. “Again, please.” kibar bir tekrar isteğidir."
+   },
+   "video": "clips/S1-K02.mp4",
+   "loudness": {
+    "before": {
+     "I": -15.73,
+     "TP": -1.29,
+     "LRA": 7.6
+    },
+    "gainDb": -0.27,
+    "after": {
+     "I": -16.04,
+     "TP": -1.68,
+     "LRA": 7.6
+    }
+   },
+   "videoDuration": 14.4,
+   "poster": "clips/S1-K02.webp",
+   "bytes": 2944097
+  },
+  {
+   "id": "S1-K03",
+   "episode": "A1-001",
+   "episodeNumber": 1,
+   "episodeTitle": "A Strange Message",
+   "titleTr": "Eski istasyon nerede?",
+   "duration": 10.467,
+   "target": {
+    "kind": "phrase",
+    "en": "Where is…?",
+    "tr": "… nerede?",
+    "cue": "s05-01"
+   },
+   "parts": [
+    {
+     "node": "s04",
+     "start": 0.0,
+     "end": 7.767,
+     "at": 0.0
+    },
+    {
+     "node": "s05",
+     "start": 0.0,
+     "end": 2.7,
+     "at": 7.767
+    }
+   ],
+   "cues": [
+    {
+     "id": "s04-01",
+     "tr": "Ben E.",
+     "speaker": "VOICE",
+     "text": "This is E.",
+     "chunks": [
+      {
+       "en": "This is …",
+       "tr": "Ben … (telsizde/telefonda kendini tanıtırken)",
+       "startWord": 0,
+       "endWord": 2
+      }
+     ],
+     "start": 0.53,
+     "end": 2.73,
+     "words": [
+      {
+       "w": "This",
+       "start": 0.53,
+       "end": 0.98,
+       "gloss": "bu (burada: ben)"
+      },
+      {
+       "w": "is",
+       "start": 1.247,
+       "end": 1.78,
+       "gloss": "-dır / -dir (olmak)"
+      },
+      {
+       "w": "E.",
+       "start": 2.14,
+       "end": 2.58,
+       "gloss": null
+      }
+     ]
+    },
+    {
+     "id": "s04-02",
+     "tr": "Benimle eski istasyonda buluş.",
+     "speaker": "VOICE",
+     "text": "Meet me at the old station.",
+     "chunks": [
+      {
+       "en": "Meet me at …",
+       "tr": "Benimle …-de buluş",
+       "startWord": 0,
+       "endWord": 5
+      },
+      {
+       "en": "the old station",
+       "tr": "eski istasyon",
+       "startWord": 3,
+       "endWord": 5
+      }
+     ],
+     "start": 2.788,
+     "end": 4.957,
+     "words": [
+      {
+       "w": "Meet",
+       "start": 2.788,
+       "end": 3.62,
+       "gloss": "buluş"
+      },
+      {
+       "w": "me",
+       "start": 3.673,
+       "end": 3.78,
+       "gloss": "benimle (beni)"
+      },
+      {
+       "w": "at",
+       "start": 3.807,
+       "end": 3.86,
+       "gloss": "-de / -da (yer)"
+      },
+      {
+       "w": "the",
+       "start": 3.88,
+       "end": 3.94,
+       "gloss": "(belirli tanımlık)"
+      },
+      {
+       "w": "old",
+       "start": 4.02,
+       "end": 4.26,
+       "gloss": "eski"
+      },
+      {
+       "w": "station.",
+       "start": 4.33,
+       "end": 4.82,
+       "gloss": "istasyon"
+      }
+     ]
+    },
+    {
+     "id": "s04-03",
+     "tr": "Cuma. Saat yedi.",
+     "speaker": "VOICE",
+     "text": "Friday. Seven o'clock.",
+     "chunks": [
+      {
+       "en": "seven o'clock",
+       "tr": "saat yedi",
+       "startWord": 1,
+       "endWord": 2
+      }
+     ],
+     "start": 4.957,
+     "end": 7.37,
+     "words": [
+      {
+       "w": "Friday.",
+       "start": 4.957,
+       "end": 6.18,
+       "gloss": "cuma"
+      },
+      {
+       "w": "Seven",
+       "start": 6.247,
+       "end": 6.58,
+       "gloss": "yedi"
+      },
+      {
+       "w": "o'clock.",
+       "start": 6.62,
+       "end": 7.22,
+       "gloss": "saat (tam saat)"
+      }
+     ]
+    },
+    {
+     "id": "s05-01",
+     "tr": "Eski istasyon nerede?",
+     "speaker": "ALEX",
+     "text": "Where is the old station?",
+     "chunks": [
+      {
+       "en": "Where is …?",
+       "tr": "… nerede?",
+       "startWord": 0,
+       "endWord": 4
+      },
+      {
+       "en": "the old station",
+       "tr": "eski istasyon",
+       "startWord": 2,
+       "endWord": 4
+      }
+     ],
+     "start": 8.347,
+     "end": 10.076,
+     "words": [
+      {
+       "w": "Where",
+       "start": 8.347,
+       "end": 8.462,
+       "gloss": "nerede"
+      },
+      {
+       "w": "is",
+       "start": 8.527,
+       "end": 8.657,
+       "gloss": "(olmak; Türkçede karşılığı yok)"
+      },
+      {
+       "w": "the",
+       "start": 8.682,
+       "end": 8.755,
+       "gloss": "(belirli tanımlık)"
+      },
+      {
+       "w": "old",
+       "start": 8.852,
+       "end": 9.145,
+       "gloss": "eski"
+      },
+      {
+       "w": "station?",
+       "start": 9.218,
+       "end": 9.926,
+       "gloss": "istasyon"
+      }
+     ]
+    }
+   ],
+   "sourceStatus": "DRAFT",
+   "grammar": {
+    "id": "G-A1-01-to-be",
+    "titleTr": "am / is / are: \"olmak\" fiili"
+   },
+   "quiz": {
+    "promptTr": "Mesajdaki buluşma yeri neresi?",
+    "options": [
+     {
+      "text": "the old station",
+      "lang": "en",
+      "correct": true
+     },
+     {
+      "text": "the harbour",
+      "lang": "en",
+      "correct": false
+     },
+     {
+      "text": "the cafe",
+      "lang": "en",
+      "correct": false
+     }
+    ],
+    "explainTr": "E. şöyle dedi: “Meet me at the old station.”"
+   },
+   "video": "clips/S1-K03.mp4",
+   "loudness": {
+    "before": {
+     "I": -15.27,
+     "TP": -1.41,
+     "LRA": 8.7
+    },
+    "gainDb": -0.73,
+    "after": {
+     "I": -16.02,
+     "TP": -2.15,
+     "LRA": 8.7
+    }
+   },
+   "videoDuration": 10.467,
+   "poster": "clips/S1-K03.webp",
+   "bytes": 1929343
+  },
+  {
+   "id": "S1-K04",
+   "episode": "A1-002",
+   "episodeNumber": 2,
+   "episodeTitle": "The New Neighbour",
+   "titleTr": "Tanıştığımıza memnun oldum",
+   "duration": 8.4,
+   "target": {
+    "kind": "phrase",
+    "en": "Nice to meet you.",
+    "tr": "Tanıştığımıza memnun oldum.",
+    "cue": "k1-a-01"
+   },
+   "parts": [
+    {
+     "node": "s02",
+     "start": 0.0,
+     "end": 5.367,
+     "at": 0.0
+    },
+    {
+     "node": "k1-a",
+     "start": 0.0,
+     "end": 3.033,
+     "at": 5.367
+    }
+   ],
+   "cues": [
+    {
+     "id": "s02-01",
+     "tr": "Günaydın!",
+     "speaker": "MAYA",
+     "text": "Good morning!",
+     "chunks": [
+      {
+       "en": "Good morning!",
+       "tr": "Günaydın!",
+       "startWord": 0,
+       "endWord": 1
+      }
+     ],
+     "start": 3.26,
+     "end": 3.82,
+     "words": [
+      {
+       "w": "Good",
+       "start": 3.26,
+       "end": 3.28,
+       "gloss": "iyi (good morning: günaydın)"
+      },
+      {
+       "w": "morning!",
+       "start": 3.33,
+       "end": 3.76,
+       "gloss": "sabah"
+      }
+     ]
+    },
+    {
+     "id": "s02-02",
+     "tr": "Yardımcı olabilir miyim?",
+     "speaker": "MAYA",
+     "text": "Can I help you?",
+     "chunks": [
+      {
+       "en": "Can I help you?",
+       "tr": "Yardımcı olabilir miyim? (dükkânda)",
+       "startWord": 0,
+       "endWord": 3
+      }
+     ],
+     "start": 3.82,
+     "end": 4.95,
+     "words": [
+      {
+       "w": "Can",
+       "start": 3.82,
+       "end": 4.0,
+       "gloss": "-ebilir miyim (soru)"
+      },
+      {
+       "w": "I",
+       "start": 4.04,
+       "end": 4.08,
+       "gloss": "ben"
+      },
+      {
+       "w": "help",
+       "start": 4.128,
+       "end": 4.32,
+       "gloss": "yardım etmek"
+      },
+      {
+       "w": "you?",
+       "start": 4.36,
+       "end": 4.8,
+       "gloss": "size / sana"
+      }
+     ]
+    },
+    {
+     "id": "k1-a-01",
+     "tr": "Tanıştığımıza memnun oldum.",
+     "speaker": "ALEX",
+     "text": "Nice to meet you.",
+     "chunks": [
+      {
+       "en": "Nice to meet you.",
+       "tr": "Tanıştığımıza memnun oldum.",
+       "startWord": 0,
+       "endWord": 3
+      }
+     ],
+     "start": 5.837,
+     "end": 6.797,
+     "words": [
+      {
+       "w": "Nice",
+       "start": 5.837,
+       "end": 6.007,
+       "gloss": "hoş, güzel"
+      },
+      {
+       "w": "to",
+       "start": 6.034,
+       "end": 6.087,
+       "gloss": "(mastar: -mek)"
+      },
+      {
+       "w": "meet",
+       "start": 6.135,
+       "end": 6.327,
+       "gloss": "tanışmak"
+      },
+      {
+       "w": "you.",
+       "start": 6.387,
+       "end": 6.647,
+       "gloss": "seninle / sizinle"
+      }
+     ]
+    },
+    {
+     "id": "k1-a-02",
+     "tr": "Ben Alex.",
+     "speaker": "ALEX",
+     "text": "I'm Alex.",
+     "chunks": [
+      {
+       "en": "I'm …",
+       "tr": "Ben … (kendini tanıtma)",
+       "startWord": 0,
+       "endWord": 1
+      }
+     ],
+     "start": 6.887,
+     "end": 7.997,
+     "words": [
+      {
+       "w": "I'm",
+       "start": 6.887,
+       "end": 7.207,
+       "gloss": "ben …-im"
+      },
+      {
+       "w": "Alex.",
+       "start": 7.303,
+       "end": 7.847,
+       "gloss": null
+      }
+     ]
+    }
+   ],
+   "sourceStatus": "DRAFT",
+   "grammar": {
+    "id": "G-A1-01-to-be",
+    "titleTr": "am / is / are: \"olmak\" fiili"
+   },
+   "quiz": {
+    "promptTr": "“Nice to meet you.” ne demek?",
+    "options": [
+     {
+      "text": "Tanıştığımıza memnun oldum.",
+      "lang": "tr",
+      "correct": true
+     },
+     {
+      "text": "Seni görmek güzel.",
+      "lang": "tr",
+      "correct": false
+     },
+     {
+      "text": "Yardımcı olabilir miyim?",
+      "lang": "tr",
+      "correct": false
+     }
+    ],
+    "explainTr": "Biriyle ilk kez tanışınca “Nice to meet you.” denir."
+   },
+   "video": "clips/S1-K04.mp4",
+   "loudness": {
+    "before": {
+     "I": -16.5,
+     "TP": -4.64,
+     "LRA": 5.7
+    },
+    "gainDb": 0.5,
+    "after": {
+     "I": -16.02,
+     "TP": -4.11,
+     "LRA": 5.8
+    }
+   },
+   "videoDuration": 8.4,
+   "poster": "clips/S1-K04.webp",
+   "bytes": 1982849
+  },
+  {
+   "id": "S1-K05",
+   "episode": "A1-002",
+   "episodeNumber": 2,
+   "episodeTitle": "The New Neighbour",
+   "titleTr": "Yeni komşu",
+   "duration": 5.34,
+   "target": {
+    "kind": "phrase",
+    "en": "Are you new here?",
+    "tr": "Buralarda yeni misin?",
+    "cue": "s03-03"
+   },
+   "parts": [
+    {
+     "node": "s03",
+     "start": 0.0,
+     "end": 5.34,
+     "at": 0.0
+    }
+   ],
+   "cues": [
+    {
+     "id": "s03-01",
+     "tr": "Selam Alex!",
+     "speaker": "MAYA",
+     "text": "Hi, Alex!",
+     "chunks": [],
+     "start": 0.57,
+     "end": 1.38,
+     "words": [
+      {
+       "w": "Hi,",
+       "start": 0.57,
+       "end": 0.94,
+       "gloss": "selam"
+      },
+      {
+       "w": "Alex!",
+       "start": 0.996,
+       "end": 1.3,
+       "gloss": null
+      }
+     ]
+    },
+    {
+     "id": "s03-02",
+     "tr": "Ben Maya.",
+     "speaker": "MAYA",
+     "text": "I'm Maya.",
+     "chunks": [
+      {
+       "en": "I'm …",
+       "tr": "Ben … (kendini tanıtma)",
+       "startWord": 0,
+       "endWord": 1
+      }
+     ],
+     "start": 1.38,
+     "end": 2.22,
+     "words": [
+      {
+       "w": "I'm",
+       "start": 1.38,
+       "end": 1.54,
+       "gloss": "ben …-im"
+      },
+      {
+       "w": "Maya.",
+       "start": 1.636,
+       "end": 2.1,
+       "gloss": null
+      }
+     ]
+    },
+    {
+     "id": "s03-03",
+     "tr": "Buralarda yeni misin?",
+     "speaker": "MAYA",
+     "text": "Are you new here?",
+     "chunks": [
+      {
+       "en": "Are you new here?",
+       "tr": "Buralarda yeni misin?",
+       "startWord": 0,
+       "endWord": 3
+      }
+     ],
+     "start": 2.22,
+     "end": 3.37,
+     "words": [
+      {
+       "w": "Are",
+       "start": 2.22,
+       "end": 2.58,
+       "gloss": "(soru) -misin (olmak)"
+      },
+      {
+       "w": "you",
+       "start": 2.6,
+       "end": 2.66,
+       "gloss": "sen"
+      },
+      {
+       "w": "new",
+       "start": 2.72,
+       "end": 2.9,
+       "gloss": "yeni"
+      },
+      {
+       "w": "here?",
+       "start": 2.948,
+       "end": 3.22,
+       "gloss": "burada"
+      }
+     ]
+    },
+    {
+     "id": "s03-04",
+     "tr": "Evet. Yeni komşunum.",
+     "speaker": "ALEX",
+     "text": "Yes. I'm your new neighbour.",
+     "chunks": [],
+     "start": 3.57,
+     "end": 5.24,
+     "words": [
+      {
+       "w": "Yes.",
+       "start": 3.57,
+       "end": 4.13,
+       "gloss": "evet"
+      },
+      {
+       "w": "I'm",
+       "start": 4.17,
+       "end": 4.29,
+       "gloss": "ben …-im"
+      },
+      {
+       "w": "your",
+       "start": 4.306,
+       "end": 4.37,
+       "gloss": "senin"
+      },
+      {
+       "w": "new",
+       "start": 4.43,
+       "end": 4.61,
+       "gloss": "yeni"
+      },
+      {
+       "w": "neighbour.",
+       "start": 4.642,
+       "end": 5.09,
+       "gloss": "komşu"
+      }
+     ]
+    }
+   ],
+   "sourceStatus": "DRAFT",
+   "grammar": {
+    "id": "G-A1-02-to-be-questions-negatives",
+    "titleTr": "to be ile soru ve olumsuz"
+   },
+   "quiz": {
+    "promptTr": "“I'm your new neighbour.” ne demek?",
+    "options": [
+     {
+      "text": "Yeni komşunum.",
+      "lang": "tr",
+      "correct": true
+     },
+     {
+      "text": "Yeni arkadaşınım.",
+      "lang": "tr",
+      "correct": false
+     },
+     {
+      "text": "Yeni öğrenciyim.",
+      "lang": "tr",
+      "correct": false
+     }
+    ],
+    "explainTr": "neighbour = komşu. your new neighbour = yeni komşun."
+   },
+   "video": "clips/S1-K05.mp4",
+   "loudness": {
+    "before": {
+     "I": -14.97,
+     "TP": -4.13,
+     "LRA": 3.4
+    },
+    "gainDb": -1.03,
+    "after": {
+     "I": -16.04,
+     "TP": -5.17,
+     "LRA": 3.5
+    }
+   },
+   "videoDuration": 5.367,
+   "poster": "clips/S1-K05.webp",
+   "bytes": 1234910
+  },
+  {
+   "id": "S1-K06",
+   "episode": "A1-002",
+   "episodeNumber": 2,
+   "episodeTitle": "The New Neighbour",
+   "titleTr": "Nerelisin?",
+   "duration": 11.06,
+   "target": {
+    "kind": "phrase",
+    "en": "Where are you from?",
+    "tr": "Nerelisin?",
+    "cue": "s03-06"
+   },
+   "parts": [
+    {
+     "node": "s03",
+     "start": 5.34,
+     "end": 16.4,
+     "at": 0.0
+    }
+   ],
+   "cues": [
+    {
+     "id": "s03-05",
+     "tr": "Aa, hoş geldin!",
+     "speaker": "MAYA",
+     "text": "Oh, welcome!",
+     "chunks": [],
+     "start": 0.1,
+     "end": 1.053,
+     "words": [
+      {
+       "w": "Oh,",
+       "start": 0.1,
+       "end": 0.26,
+       "gloss": "aa, oh"
+      },
+      {
+       "w": "welcome!",
+       "start": 0.33,
+       "end": 1.02,
+       "gloss": "hoş geldin"
+      }
+     ]
+    },
+    {
+     "id": "s03-06",
+     "tr": "Nerelisin?",
+     "speaker": "MAYA",
+     "text": "Where are you from?",
+     "chunks": [
+      {
+       "en": "Where are you from?",
+       "tr": "Nerelisin? / Nereden geliyorsun?",
+       "startWord": 0,
+       "endWord": 3
+      }
+     ],
+     "start": 1.053,
+     "end": 2.33,
+     "words": [
+      {
+       "w": "Where",
+       "start": 1.053,
+       "end": 1.22,
+       "gloss": "nere(li)"
+      },
+      {
+       "w": "are",
+       "start": 1.24,
+       "end": 1.3,
+       "gloss": "-sin (olmak)"
+      },
+      {
+       "w": "you",
+       "start": 1.34,
+       "end": 1.46,
+       "gloss": "sen"
+      },
+      {
+       "w": "from?",
+       "start": 1.524,
+       "end": 2.18,
+       "gloss": "-den / -dan (-li)"
+      }
+     ]
+    },
+    {
+     "id": "s03-07",
+     "tr": "Türkiye'denim.",
+     "speaker": "ALEX",
+     "text": "I'm from Türkiye.",
+     "chunks": [
+      {
+       "en": "I'm from …",
+       "tr": "…-denim / …-liyim",
+       "startWord": 0,
+       "endWord": 2
+      }
+     ],
+     "start": 2.53,
+     "end": 3.65,
+     "words": [
+      {
+       "w": "I'm",
+       "start": 2.53,
+       "end": 2.69,
+       "gloss": "ben …-im"
+      },
+      {
+       "w": "from",
+       "start": 2.722,
+       "end": 2.85,
+       "gloss": "-den / -dan"
+      },
+      {
+       "w": "Türkiye.",
+       "start": 2.92,
+       "end": 3.61,
+       "gloss": null
+      }
+     ]
+    },
+    {
+     "id": "s03-08",
+     "tr": "İzmir'den.",
+     "speaker": "ALEX",
+     "text": "From İzmir.",
+     "chunks": [],
+     "start": 3.65,
+     "end": 4.6,
+     "words": [
+      {
+       "w": "From",
+       "start": 3.65,
+       "end": 3.81,
+       "gloss": "-den / -dan"
+      },
+      {
+       "w": "İzmir.",
+       "start": 3.89,
+       "end": 4.45,
+       "gloss": null
+      }
+     ]
+    },
+    {
+     "id": "s03-09",
+     "tr": "İzmir mi? Deniz kenarında mı?",
+     "speaker": "MAYA",
+     "text": "İzmir? Is it by the sea?",
+     "chunks": [
+      {
+       "en": "by the sea",
+       "tr": "deniz kenarında",
+       "startWord": 3,
+       "endWord": 5
+      }
+     ],
+     "start": 5.63,
+     "end": 7.87,
+     "words": [
+      {
+       "w": "İzmir?",
+       "start": 5.63,
+       "end": 6.44,
+       "gloss": null
+      },
+      {
+       "w": "Is",
+       "start": 6.573,
+       "end": 6.84,
+       "gloss": "(soru) mı (olmak)"
+      },
+      {
+       "w": "it",
+       "start": 6.867,
+       "end": 6.92,
+       "gloss": "o (orası)"
+      },
+      {
+       "w": "by",
+       "start": 6.973,
+       "end": 7.08,
+       "gloss": "kenarında"
+      },
+      {
+       "w": "the",
+       "start": 7.12,
+       "end": 7.24,
+       "gloss": "(belirli tanımlık)"
+      },
+      {
+       "w": "sea?",
+       "start": 7.32,
+       "end": 7.72,
+       "gloss": "deniz"
+      }
+     ]
+    },
+    {
+     "id": "s03-10",
+     "tr": "Evet! Port Lumen gibi.",
+     "speaker": "ALEX",
+     "text": "Yes! Like Port Lumen.",
+     "chunks": [],
+     "start": 8.07,
+     "end": 10.3,
+     "words": [
+      {
+       "w": "Yes!",
+       "start": 8.07,
+       "end": 8.63,
+       "gloss": "evet"
+      },
+      {
+       "w": "Like",
+       "start": 8.742,
+       "end": 9.19,
+       "gloss": "gibi"
+      },
+      {
+       "w": "Port",
+       "start": 9.254,
+       "end": 9.51,
+       "gloss": null
+      },
+      {
+       "w": "Lumen.",
+       "start": 9.59,
+       "end": 10.15,
+       "gloss": null
+      }
+     ]
+    }
+   ],
+   "sourceStatus": "DRAFT",
+   "grammar": {
+    "id": "G-A1-02-to-be-questions-negatives",
+    "titleTr": "to be ile soru ve olumsuz"
+   },
+   "quiz": {
+    "promptTr": "Alex nereli?",
+    "options": [
+     {
+      "text": "İzmir'den",
+      "lang": "tr",
+      "correct": true
+     },
+     {
+      "text": "Port Lumen'den",
+      "lang": "tr",
+      "correct": false
+     },
+     {
+      "text": "İstanbul'dan",
+      "lang": "tr",
+      "correct": false
+     }
+    ],
+    "explainTr": "Alex şöyle dedi: “I'm from Türkiye. From İzmir.”"
+   },
+   "video": "clips/S1-K06.mp4",
+   "loudness": {
+    "before": {
+     "I": -16.41,
+     "TP": -4.35,
+     "LRA": 6.2
+    },
+    "gainDb": 0.41,
+    "after": {
+     "I": -16.04,
+     "TP": -3.93,
+     "LRA": 6.3
+    }
+   },
+   "videoDuration": 11.06,
+   "poster": "clips/S1-K06.webp",
+   "bytes": 2847613
+  },
+  {
+   "id": "S1-K07",
+   "episode": "A1-002",
+   "episodeNumber": 2,
+   "episodeTitle": "The New Neighbour",
+   "titleTr": "Bu annem",
+   "duration": 8.667,
+   "target": {
+    "kind": "phrase",
+    "en": "This is my…",
+    "tr": "Bu benim… (birini tanıtırken)",
+    "cue": "s04-01"
+   },
+   "parts": [
+    {
+     "node": "s04",
+     "start": 0.0,
+     "end": 8.667,
+     "at": 0.0
+    }
+   ],
+   "cues": [
+    {
+     "id": "s04-01",
+     "tr": "Bu annem.",
+     "speaker": "MAYA",
+     "text": "This is my mother.",
+     "chunks": [
+      {
+       "en": "This is my …",
+       "tr": "Bu benim … (birini tanıtırken)",
+       "startWord": 0,
+       "endWord": 3
+      }
+     ],
+     "start": 0.54,
+     "end": 1.85,
+     "words": [
+      {
+       "w": "This",
+       "start": 0.54,
+       "end": 0.66,
+       "gloss": "bu"
+      },
+      {
+       "w": "is",
+       "start": 0.687,
+       "end": 0.74,
+       "gloss": "-dır / -dir (olmak)"
+      },
+      {
+       "w": "my",
+       "start": 0.82,
+       "end": 0.98,
+       "gloss": "benim"
+      },
+      {
+       "w": "mother.",
+       "start": 1.037,
+       "end": 1.7,
+       "gloss": "anne"
+      }
+     ]
+    },
+    {
+     "id": "s04-02",
+     "tr": "Merhaba Alex.",
+     "speaker": "MRS BROOKS",
+     "text": "Hello, Alex.",
+     "chunks": [],
+     "start": 2.05,
+     "end": 3.09,
+     "words": [
+      {
+       "w": "Hello,",
+       "start": 2.05,
+       "end": 2.37,
+       "gloss": "merhaba"
+      },
+      {
+       "w": "Alex.",
+       "start": 2.482,
+       "end": 3.01,
+       "gloss": null
+      }
+     ]
+    },
+    {
+     "id": "s04-03",
+     "tr": "Tanıştığımıza memnun oldum.",
+     "speaker": "MRS BROOKS",
+     "text": "Nice to meet you.",
+     "chunks": [
+      {
+       "en": "Nice to meet you.",
+       "tr": "Tanıştığımıza memnun oldum.",
+       "startWord": 0,
+       "endWord": 3
+      }
+     ],
+     "start": 3.09,
+     "end": 4.36,
+     "words": [
+      {
+       "w": "Nice",
+       "start": 3.09,
+       "end": 3.41,
+       "gloss": "hoş, güzel"
+      },
+      {
+       "w": "to",
+       "start": 3.463,
+       "end": 3.57,
+       "gloss": "(mastar: -mek)"
+      },
+      {
+       "w": "meet",
+       "start": 3.618,
+       "end": 3.81,
+       "gloss": "tanışmak"
+      },
+      {
+       "w": "you.",
+       "start": 3.87,
+       "end": 4.21,
+       "gloss": "seninle / sizinle"
+      }
+     ]
+    },
+    {
+     "id": "s04-04",
+     "tr": "Bu da kuzenim Sam.",
+     "speaker": "MAYA",
+     "text": "And this is my cousin, Sam.",
+     "chunks": [
+      {
+       "en": "This is my …",
+       "tr": "Bu benim … (birini tanıtırken)",
+       "startWord": 1,
+       "endWord": 5
+      }
+     ],
+     "start": 4.56,
+     "end": 6.027,
+     "words": [
+      {
+       "w": "And",
+       "start": 4.56,
+       "end": 4.64,
+       "gloss": "ve (… da)"
+      },
+      {
+       "w": "this",
+       "start": 4.672,
+       "end": 4.8,
+       "gloss": "bu"
+      },
+      {
+       "w": "is",
+       "start": 4.827,
+       "end": 4.88,
+       "gloss": "-dır / -dir (olmak)"
+      },
+      {
+       "w": "my",
+       "start": 4.96,
+       "end": 5.12,
+       "gloss": "benim"
+      },
+      {
+       "w": "cousin,",
+       "start": 5.154,
+       "end": 5.44,
+       "gloss": "kuzen"
+      },
+      {
+       "w": "Sam.",
+       "start": 5.54,
+       "end": 5.92,
+       "gloss": null
+      }
+     ]
+    },
+    {
+     "id": "s04-05",
+     "tr": "Telsizlere bayılır!",
+     "speaker": "MAYA",
+     "text": "He loves radios!",
+     "chunks": [],
+     "start": 6.027,
+     "end": 7.91,
+     "words": [
+      {
+       "w": "He",
+       "start": 6.027,
+       "end": 6.24,
+       "gloss": "o (erkek)"
+      },
+      {
+       "w": "loves",
+       "start": 6.307,
+       "end": 6.64,
+       "gloss": "çok seviyor, bayılıyor"
+      },
+      {
+       "w": "radios!",
+       "start": 6.754,
+       "end": 7.76,
+       "gloss": "telsizler, radyolar"
+      }
+     ]
+    }
+   ],
+   "sourceStatus": "DRAFT",
+   "grammar": {
+    "id": "G-A1-06-this-that-plurals",
+    "titleTr": "this / that / these / those ve çoğul -s"
+   },
+   "quiz": {
+    "promptTr": "“my cousin” ne demek?",
+    "options": [
+     {
+      "text": "kuzenim",
+      "lang": "tr",
+      "correct": true
+     },
+     {
+      "text": "kardeşim",
+      "lang": "tr",
+      "correct": false
+     },
+     {
+      "text": "annem",
+      "lang": "tr",
+      "correct": false
+     }
+    ],
+    "explainTr": "cousin = kuzen. my cousin = kuzenim."
+   },
+   "video": "clips/S1-K07.mp4",
+   "loudness": {
+    "before": {
+     "I": -15.68,
+     "TP": -4.51,
+     "LRA": 2.8
+    },
+    "gainDb": -0.32,
+    "after": {
+     "I": -16.03,
+     "TP": -4.85,
+     "LRA": 2.8
+    }
+   },
+   "videoDuration": 8.667,
+   "poster": "clips/S1-K07.webp",
+   "bytes": 2100278
+  },
+  {
+   "id": "S1-K08",
+   "episode": "A1-002",
+   "episodeNumber": 2,
+   "episodeTitle": "The New Neighbour",
+   "titleTr": "Affedersiniz, istasyon nerede?",
+   "duration": 14.833,
+   "target": {
+    "kind": "phrase",
+    "en": "Excuse me, where is…?",
+    "tr": "Affedersiniz, … nerede?",
+    "cue": "k2-ok-01"
+   },
+   "parts": [
+    {
+     "node": "k2-ok",
+     "start": 0.0,
+     "end": 14.833,
+     "at": 0.0
+    }
+   ],
+   "cues": [
+    {
+     "id": "k2-ok-01",
+     "tr": "Pardon, eski istasyon nerede?",
+     "speaker": "ALEX",
+     "text": "Excuse me, where is the old station?",
+     "chunks": [
+      {
+       "en": "Excuse me",
+       "tr": "Affedersiniz / Pardon (kibar başlangıç)",
+       "startWord": 0,
+       "endWord": 1
+      },
+      {
+       "en": "Where is …?",
+       "tr": "… nerede?",
+       "startWord": 2,
+       "endWord": 6
+      },
+      {
+       "en": "the old station",
+       "tr": "eski istasyon",
+       "startWord": 4,
+       "endWord": 6
+      }
+     ],
+     "start": 0.52,
+     "end": 2.79,
+     "words": [
+      {
+       "w": "Excuse",
+       "start": 0.52,
+       "end": 0.8,
+       "gloss": "affetmek (excuse me: affedersiniz)"
+      },
+      {
+       "w": "me,",
+       "start": 0.88,
+       "end": 1.28,
+       "gloss": "(excuse me kalıbının parçası)"
+      },
+      {
+       "w": "where",
+       "start": 1.307,
+       "end": 1.44,
+       "gloss": "nerede"
+      },
+      {
+       "w": "is",
+       "start": 1.493,
+       "end": 1.6,
+       "gloss": "(olmak; Türkçede karşılığı yok)"
+      },
+      {
+       "w": "the",
+       "start": 1.64,
+       "end": 1.76,
+       "gloss": "(belirli tanımlık)"
+      },
+      {
+       "w": "old",
+       "start": 1.82,
+       "end": 2.0,
+       "gloss": "eski"
+      },
+      {
+       "w": "station?",
+       "start": 2.07,
+       "end": 2.64,
+       "gloss": "istasyon"
+      }
+     ]
+    },
+    {
+     "id": "k2-ok-02",
+     "tr": "Eski istasyon mu?",
+     "speaker": "MAYA",
+     "text": "The old station?",
+     "chunks": [
+      {
+       "en": "the old station",
+       "tr": "eski istasyon",
+       "startWord": 0,
+       "endWord": 2
+      }
+     ],
+     "start": 3.45,
+     "end": 4.35,
+     "words": [
+      {
+       "w": "The",
+       "start": 3.45,
+       "end": 3.48,
+       "gloss": "(belirli tanımlık)"
+      },
+      {
+       "w": "old",
+       "start": 3.52,
+       "end": 3.64,
+       "gloss": "eski"
+      },
+      {
+       "w": "station?",
+       "start": 3.7,
+       "end": 4.2,
+       "gloss": "istasyon"
+      }
+     ]
+    },
+    {
+     "id": "k2-ok-03",
+     "tr": "Limanın yakınında.",
+     "speaker": "MAYA",
+     "text": "It's near the harbour.",
+     "chunks": [
+      {
+       "en": "It's near …",
+       "tr": "…-in yakınında",
+       "startWord": 0,
+       "endWord": 3
+      }
+     ],
+     "start": 4.413,
+     "end": 6.06,
+     "words": [
+      {
+       "w": "It's",
+       "start": 4.413,
+       "end": 4.92,
+       "gloss": "o … -dır (orası)"
+      },
+      {
+       "w": "near",
+       "start": 4.936,
+       "end": 5.0,
+       "gloss": "yakınında"
+      },
+      {
+       "w": "the",
+       "start": 5.04,
+       "end": 5.16,
+       "gloss": "(belirli tanımlık)"
+      },
+      {
+       "w": "harbour.",
+       "start": 5.22,
+       "end": 5.96,
+       "gloss": "liman"
+      }
+     ]
+    },
+    {
+     "id": "k2-ok-04",
+     "tr": "Ama kapalı.",
+     "speaker": "MAYA",
+     "text": "But it's closed.",
+     "chunks": [],
+     "start": 6.06,
+     "end": 7.293,
+     "words": [
+      {
+       "w": "But",
+       "start": 6.06,
+       "end": 6.36,
+       "gloss": "ama"
+      },
+      {
+       "w": "it's",
+       "start": 6.387,
+       "end": 6.52,
+       "gloss": "o … -dır (orası)"
+      },
+      {
+       "w": "closed.",
+       "start": 6.6,
+       "end": 7.16,
+       "gloss": "kapalı"
+      }
+     ]
+    },
+    {
+     "id": "k2-ok-05",
+     "tr": "Çok eski.",
+     "speaker": "MAYA",
+     "text": "It's very old.",
+     "chunks": [],
+     "start": 7.293,
+     "end": 8.99,
+     "words": [
+      {
+       "w": "It's",
+       "start": 7.293,
+       "end": 7.64,
+       "gloss": "o … -dır (orası)"
+      },
+      {
+       "w": "very",
+       "start": 7.72,
+       "end": 8.04,
+       "gloss": "çok"
+      },
+      {
+       "w": "old.",
+       "start": 8.14,
+       "end": 8.84,
+       "gloss": "eski"
+      }
+     ]
+    },
+    {
+     "id": "k2-ok-06",
+     "tr": "Kapalı mı? Bir daha, lütfen.",
+     "speaker": "ALEX",
+     "text": "Closed? Again, please.",
+     "chunks": [
+      {
+       "en": "Again, please.",
+       "tr": "Bir daha, lütfen. (kibar tekrar isteği)",
+       "startWord": 1,
+       "endWord": 2
+      }
+     ],
+     "start": 9.19,
+     "end": 11.74,
+     "words": [
+      {
+       "w": "Closed?",
+       "start": 9.19,
+       "end": 9.75,
+       "gloss": "kapalı"
+      },
+      {
+       "w": "Again,",
+       "start": 9.91,
+       "end": 10.79,
+       "gloss": "tekrar, bir daha"
+      },
+      {
+       "w": "please.",
+       "start": 10.87,
+       "end": 11.59,
+       "gloss": "lütfen"
+      }
+     ]
+    },
+    {
+     "id": "k2-ok-07",
+     "tr": "Kapalı.",
+     "speaker": "MAYA",
+     "text": "It is closed.",
+     "chunks": [],
+     "start": 11.94,
+     "end": 12.89,
+     "words": [
+      {
+       "w": "It",
+       "start": 11.94,
+       "end": 12.02,
+       "gloss": "o (orası)"
+      },
+      {
+       "w": "is",
+       "start": 12.047,
+       "end": 12.1,
+       "gloss": "-dır (olmak)"
+      },
+      {
+       "w": "closed.",
+       "start": 12.18,
+       "end": 12.74,
+       "gloss": "kapalı"
+      }
+     ]
+    },
+    {
+     "id": "k2-ok-08",
+     "tr": "Kimse yok.",
+     "speaker": "MAYA",
+     "text": "No people.",
+     "chunks": [
+      {
+       "en": "No people.",
+       "tr": "Kimse yok.",
+       "startWord": 0,
+       "endWord": 1
+      }
+     ],
+     "start": 12.953,
+     "end": 14.09,
+     "words": [
+      {
+       "w": "No",
+       "start": 12.953,
+       "end": 13.38,
+       "gloss": "hiç (yok)"
+      },
+      {
+       "w": "people.",
+       "start": 13.449,
+       "end": 13.94,
+       "gloss": "insanlar"
+      }
+     ]
+    }
+   ],
+   "sourceStatus": "DRAFT",
+   "grammar": {
+    "id": "G-A1-09-prepositions-place",
+    "titleTr": "Yer edatları: in / on / under / near / between / behind"
+   },
+   "quiz": {
+    "promptTr": "Eski istasyon nerede?",
+    "options": [
+     {
+      "text": "Limanın yakınında.",
+      "lang": "tr",
+      "correct": true
+     },
+     {
+      "text": "Kafenin arkasında.",
+      "lang": "tr",
+      "correct": false
+     },
+     {
+      "text": "Okulun yanında.",
+      "lang": "tr",
+      "correct": false
+     }
+    ],
+    "explainTr": "Maya şöyle dedi: “It's near the harbour.” near = yakınında."
+   },
+   "video": "clips/S1-K08.mp4",
+   "loudness": {
+    "before": {
+     "I": -16.5,
+     "TP": -4.57,
+     "LRA": 6.8
+    },
+    "gainDb": 0.5,
+    "after": {
+     "I": -16.03,
+     "TP": -3.86,
+     "LRA": 6.8
+    }
+   },
+   "videoDuration": 14.833,
+   "poster": "clips/S1-K08.webp",
+   "bytes": 3479837
+  },
+  {
+   "id": "S1-K09",
+   "episode": "A1-002",
+   "episodeNumber": 2,
+   "episodeTitle": "The New Neighbour",
+   "titleTr": "Uzak mı?",
+   "duration": 9.4,
+   "target": {
+    "kind": "phrase",
+    "en": "Is it far?",
+    "tr": "Uzak mı?",
+    "cue": "s05-01"
+   },
+   "parts": [
+    {
+     "node": "s05",
+     "start": 0.0,
+     "end": 9.4,
+     "at": 0.0
+    }
+   ],
+   "cues": [
+    {
+     "id": "s05-01",
+     "tr": "Uzak mı?",
+     "speaker": "ALEX",
+     "text": "Is it far?",
+     "chunks": [
+      {
+       "en": "Is it far?",
+       "tr": "Uzak mı?",
+       "startWord": 0,
+       "endWord": 2
+      }
+     ],
+     "start": 0.62,
+     "end": 1.45,
+     "words": [
+      {
+       "w": "Is",
+       "start": 0.62,
+       "end": 0.66,
+       "gloss": "(soru) mı (olmak)"
+      },
+      {
+       "w": "it",
+       "start": 0.687,
+       "end": 0.74,
+       "gloss": "o (orası)"
+      },
+      {
+       "w": "far?",
+       "start": 0.84,
+       "end": 1.3,
+       "gloss": "uzak"
+      }
+     ]
+    },
+    {
+     "id": "s05-02",
+     "tr": "Hayır, değil.",
+     "speaker": "MAYA",
+     "text": "No, it isn't.",
+     "chunks": [
+      {
+       "en": "No, it isn't.",
+       "tr": "Hayır, değil. (kısa cevap)",
+       "startWord": 0,
+       "endWord": 2
+      }
+     ],
+     "start": 1.49,
+     "end": 2.93,
+     "words": [
+      {
+       "w": "No,",
+       "start": 1.49,
+       "end": 1.89,
+       "gloss": "hayır"
+      },
+      {
+       "w": "it",
+       "start": 1.943,
+       "end": 2.05,
+       "gloss": "o (orası)"
+      },
+      {
+       "w": "isn't.",
+       "start": 2.11,
+       "end": 2.85,
+       "gloss": "değil"
+      }
+     ]
+    },
+    {
+     "id": "s05-03",
+     "tr": "Bak, işte bir harita.",
+     "speaker": "MAYA",
+     "text": "Look, here is a map.",
+     "chunks": [
+      {
+       "en": "here is …",
+       "tr": "işte …",
+       "startWord": 1,
+       "endWord": 4
+      }
+     ],
+     "start": 2.93,
+     "end": 4.6,
+     "words": [
+      {
+       "w": "Look,",
+       "start": 2.93,
+       "end": 3.49,
+       "gloss": "bak"
+      },
+      {
+       "w": "here",
+       "start": 3.538,
+       "end": 3.73,
+       "gloss": "işte (here is)"
+      },
+      {
+       "w": "is",
+       "start": 3.757,
+       "end": 3.81,
+       "gloss": "-dır / -dir (olmak)"
+      },
+      {
+       "w": "a",
+       "start": 3.85,
+       "end": 3.89,
+       "gloss": "bir"
+      },
+      {
+       "w": "map.",
+       "start": 3.99,
+       "end": 4.45,
+       "gloss": "harita"
+      }
+     ]
+    },
+    {
+     "id": "s05-04",
+     "tr": "Sana gösterebilirim. Yarın olur mu?",
+     "speaker": "MAYA",
+     "text": "I can show you. Tomorrow?",
+     "chunks": [
+      {
+       "en": "I can show you.",
+       "tr": "Sana gösterebilirim.",
+       "startWord": 0,
+       "endWord": 3
+      }
+     ],
+     "start": 4.8,
+     "end": 6.71,
+     "words": [
+      {
+       "w": "I",
+       "start": 4.8,
+       "end": 4.96,
+       "gloss": "ben"
+      },
+      {
+       "w": "can",
+       "start": 5.0,
+       "end": 5.12,
+       "gloss": "-ebilmek"
+      },
+      {
+       "w": "show",
+       "start": 5.168,
+       "end": 5.36,
+       "gloss": "göstermek"
+      },
+      {
+       "w": "you.",
+       "start": 5.4,
+       "end": 5.6,
+       "gloss": "sana"
+      },
+      {
+       "w": "Tomorrow?",
+       "start": 5.689,
+       "end": 6.56,
+       "gloss": "yarın"
+      }
+     ]
+    },
+    {
+     "id": "s05-05",
+     "tr": "Evet, lütfen!",
+     "speaker": "ALEX",
+     "text": "Yes, please!",
+     "chunks": [
+      {
+       "en": "Yes, please!",
+       "tr": "Evet, lütfen! (bir teklifi kabul ederken)",
+       "startWord": 0,
+       "endWord": 1
+      }
+     ],
+     "start": 6.91,
+     "end": 7.83,
+     "words": [
+      {
+       "w": "Yes,",
+       "start": 6.91,
+       "end": 7.43,
+       "gloss": "evet"
+      },
+      {
+       "w": "please!",
+       "start": 7.47,
+       "end": 7.79,
+       "gloss": "lütfen"
+      }
+     ]
+    },
+    {
+     "id": "s05-06",
+     "tr": "Teşekkür ederim.",
+     "speaker": "ALEX",
+     "text": "Thank you.",
+     "chunks": [
+      {
+       "en": "Thank you.",
+       "tr": "Teşekkür ederim.",
+       "startWord": 0,
+       "endWord": 1
+      }
+     ],
+     "start": 7.83,
+     "end": 8.66,
+     "words": [
+      {
+       "w": "Thank",
+       "start": 7.83,
+       "end": 8.03,
+       "gloss": "teşekkür etmek"
+      },
+      {
+       "w": "you.",
+       "start": 8.11,
+       "end": 8.51,
+       "gloss": "sana / size"
+      }
+     ]
+    }
+   ],
+   "sourceStatus": "DRAFT",
+   "grammar": {
+    "id": "G-A1-02-to-be-questions-negatives",
+    "titleTr": "to be ile soru ve olumsuz"
+   },
+   "quiz": {
+    "promptTr": "“No, it isn't.” ne demek?",
+    "options": [
+     {
+      "text": "Hayır, değil.",
+      "lang": "tr",
+      "correct": true
+     },
+     {
+      "text": "Evet, öyle.",
+      "lang": "tr",
+      "correct": false
+     },
+     {
+      "text": "Bilmiyorum.",
+      "lang": "tr",
+      "correct": false
+     }
+    ],
+    "explainTr": "Kısa olumsuz cevap: No, it isn't. (isn't = is not)"
+   },
+   "video": "clips/S1-K09.mp4",
+   "loudness": {
+    "before": {
+     "I": -16.45,
+     "TP": -4.61,
+     "LRA": 5.3
+    },
+    "gainDb": 0.45,
+    "after": {
+     "I": -16.03,
+     "TP": -4.15,
+     "LRA": 5.2
+    }
+   },
+   "videoDuration": 9.4,
+   "poster": "clips/S1-K09.webp",
+   "bytes": 2330613
+  },
+  {
+   "id": "S1-K10",
+   "episode": "A1-003",
+   "episodeNumber": 3,
+   "episodeTitle": "Find the Station",
+   "titleTr": "Yol tarifi",
+   "duration": 14.267,
+   "target": {
+    "kind": "phrase",
+    "en": "Go straight.",
+    "tr": "Düz git.",
+    "cue": "k1-ok-03"
+   },
+   "parts": [
+    {
+     "node": "k1-ok",
+     "start": 0.0,
+     "end": 14.267,
+     "at": 0.0
+    }
+   ],
+   "cues": [
+    {
+     "id": "k1-ok-01",
+     "tr": "Affedersiniz, liman nerede?",
+     "speaker": "ALEX",
+     "text": "Excuse me, where is the harbour?",
+     "chunks": [
+      {
+       "en": "Excuse me",
+       "tr": "Affedersiniz / Pardon (kibar başlangıç)",
+       "startWord": 0,
+       "endWord": 1
+      },
+      {
+       "en": "Where is …?",
+       "tr": "… nerede?",
+       "startWord": 2,
+       "endWord": 5
+      }
+     ],
+     "start": 0.51,
+     "end": 2.87,
+     "words": [
+      {
+       "w": "Excuse",
+       "start": 0.51,
+       "end": 0.88,
+       "gloss": "affetmek (excuse me: affedersiniz)"
+      },
+      {
+       "w": "me,",
+       "start": 0.96,
+       "end": 1.6,
+       "gloss": "(excuse me kalıbının parçası)"
+      },
+      {
+       "w": "where",
+       "start": 1.627,
+       "end": 1.76,
+       "gloss": "nerede"
+      },
+      {
+       "w": "is",
+       "start": 1.813,
+       "end": 1.92,
+       "gloss": "(olmak; Türkçede karşılığı yok)"
+      },
+      {
+       "w": "the",
+       "start": 1.94,
+       "end": 2.0,
+       "gloss": "(belirli tanımlık)"
+      },
+      {
+       "w": "harbour?",
+       "start": 2.07,
+       "end": 2.72,
+       "gloss": "liman"
+      }
+     ]
+    },
+    {
+     "id": "k1-ok-02",
+     "tr": "Liman mı?",
+     "speaker": "MAN",
+     "text": "The harbour?",
+     "chunks": [],
+     "start": 3.557,
+     "end": 4.697,
+     "words": [
+      {
+       "w": "The",
+       "start": 3.547,
+       "end": 3.547,
+       "gloss": "(belirli tanımlık)"
+      },
+      {
+       "w": "harbour?",
+       "start": 3.607,
+       "end": 4.547,
+       "gloss": "liman"
+      }
+     ]
+    },
+    {
+     "id": "k1-ok-03",
+     "tr": "Düz git.",
+     "speaker": "MAN",
+     "text": "Go straight.",
+     "chunks": [
+      {
+       "en": "Go straight.",
+       "tr": "Düz git.",
+       "startWord": 0,
+       "endWord": 1
+      }
+     ],
+     "start": 4.72,
+     "end": 5.819,
+     "words": [
+      {
+       "w": "Go",
+       "start": 4.72,
+       "end": 5.067,
+       "gloss": "git"
+      },
+      {
+       "w": "straight.",
+       "start": 5.129,
+       "end": 5.787,
+       "gloss": "düz"
+      }
+     ]
+    },
+    {
+     "id": "k1-ok-04",
+     "tr": "Sonra sola dön.",
+     "speaker": "MAN",
+     "text": "Then turn left.",
+     "chunks": [
+      {
+       "en": "turn left",
+       "tr": "sola dön",
+       "startWord": 1,
+       "endWord": 2
+      }
+     ],
+     "start": 5.819,
+     "end": 6.977,
+     "words": [
+      {
+       "w": "Then",
+       "start": 5.819,
+       "end": 5.947,
+       "gloss": "sonra"
+      },
+      {
+       "w": "turn",
+       "start": 6.011,
+       "end": 6.267,
+       "gloss": "dön"
+      },
+      {
+       "w": "left.",
+       "start": 6.347,
+       "end": 6.827,
+       "gloss": "sola"
+      }
+     ]
+    },
+    {
+     "id": "k1-ok-05",
+     "tr": "Bir daha, lütfen.",
+     "speaker": "ALEX",
+     "text": "Again, please.",
+     "chunks": [
+      {
+       "en": "Again, please.",
+       "tr": "Bir daha, lütfen. (kibar tekrar isteği)",
+       "startWord": 0,
+       "endWord": 1
+      }
+     ],
+     "start": 7.177,
+     "end": 9.007,
+     "words": [
+      {
+       "w": "Again,",
+       "start": 7.177,
+       "end": 7.577,
+       "gloss": "tekrar, bir daha"
+      },
+      {
+       "w": "please.",
+       "start": 7.737,
+       "end": 8.857,
+       "gloss": "lütfen"
+      }
+     ]
+    },
+    {
+     "id": "k1-ok-06",
+     "tr": "Düz git.",
+     "speaker": "MAN",
+     "text": "Go straight.",
+     "chunks": [
+      {
+       "en": "Go straight.",
+       "tr": "Düz git.",
+       "startWord": 0,
+       "endWord": 1
+      }
+     ],
+     "start": 9.207,
+     "end": 10.279,
+     "words": [
+      {
+       "w": "Go",
+       "start": 9.207,
+       "end": 9.367,
+       "gloss": "git"
+      },
+      {
+       "w": "straight.",
+       "start": 9.42,
+       "end": 10.207,
+       "gloss": "düz"
+      }
+     ]
+    },
+    {
+     "id": "k1-ok-07",
+     "tr": "Sola dön.",
+     "speaker": "MAN",
+     "text": "Turn left.",
+     "chunks": [
+      {
+       "en": "Turn left.",
+       "tr": "Sola dön.",
+       "startWord": 0,
+       "endWord": 1
+      }
+     ],
+     "start": 10.279,
+     "end": 11.34,
+     "words": [
+      {
+       "w": "Turn",
+       "start": 10.279,
+       "end": 10.567,
+       "gloss": "dön"
+      },
+      {
+       "w": "left.",
+       "start": 10.647,
+       "end": 11.247,
+       "gloss": "sola"
+      }
+     ]
+    },
+    {
+     "id": "k1-ok-08",
+     "tr": "Yakında.",
+     "speaker": "MAN",
+     "text": "It's near.",
+     "chunks": [],
+     "start": 11.34,
+     "end": 12.237,
+     "words": [
+      {
+       "w": "It's",
+       "start": 11.34,
+       "end": 11.607,
+       "gloss": "o … -dır (orası)"
+      },
+      {
+       "w": "near.",
+       "start": 11.687,
+       "end": 12.087,
+       "gloss": "yakın(da)"
+      }
+     ]
+    },
+    {
+     "id": "k1-ok-09",
+     "tr": "Teşekkürler!",
+     "speaker": "ALEX",
+     "text": "Thank you!",
+     "chunks": [
+      {
+       "en": "Thank you!",
+       "tr": "Teşekkürler! / Teşekkür ederim!",
+       "startWord": 0,
+       "endWord": 1
+      }
+     ],
+     "start": 12.437,
+     "end": 13.467,
+     "words": [
+      {
+       "w": "Thank",
+       "start": 12.437,
+       "end": 12.677,
+       "gloss": "teşekkür etmek"
+      },
+      {
+       "w": "you!",
+       "start": 12.777,
+       "end": 13.317,
+       "gloss": "size / sana"
+      }
+     ]
+    }
+   ],
+   "sourceStatus": "DRAFT",
+   "grammar": {
+    "id": "G-A1-08-imperatives",
+    "titleTr": "Emir kipi: Go / Turn / Don't…"
+   },
+   "quiz": {
+    "promptTr": "“Turn left.” ne demek?",
+    "options": [
+     {
+      "text": "Sola dön.",
+      "lang": "tr",
+      "correct": true
+     },
+     {
+      "text": "Sağa dön.",
+      "lang": "tr",
+      "correct": false
+     },
+     {
+      "text": "Düz git.",
+      "lang": "tr",
+      "correct": false
+     }
+    ],
+    "explainTr": "left = sol, right = sağ."
+   },
+   "video": "clips/S1-K10.mp4",
+   "loudness": {
+    "before": {
+     "I": -17.69,
+     "TP": -3.76,
+     "LRA": 1.9
+    },
+    "gainDb": 1.69,
+    "after": {
+     "I": -16.04,
+     "TP": -2.09,
+     "LRA": 1.8
+    }
+   },
+   "videoDuration": 14.267,
+   "poster": "clips/S1-K10.webp",
+   "bytes": 3652243
+  },
+  {
+   "id": "S1-K11",
+   "episode": "A1-003",
+   "episodeNumber": 3,
+   "episodeTitle": "Find the Station",
+   "titleTr": "Kimse var mı?",
+   "duration": 9.867,
+   "target": {
+    "kind": "phrase",
+    "en": "Is anybody here?",
+    "tr": "Kimse var mı?",
+    "cue": "s04-02"
+   },
+   "parts": [
+    {
+     "node": "s04",
+     "start": 0.0,
+     "end": 9.867,
+     "at": 0.0
+    }
+   ],
+   "cues": [
+    {
+     "id": "s04-01",
+     "tr": "Burası eski istasyon!",
+     "speaker": "ALEX",
+     "text": "This is the old station!",
+     "chunks": [
+      {
+       "en": "This is …",
+       "tr": "Burası … / Bu …",
+       "startWord": 0,
+       "endWord": 4
+      }
+     ],
+     "start": 0.58,
+     "end": 2.01,
+     "words": [
+      {
+       "w": "This",
+       "start": 0.58,
+       "end": 0.58,
+       "gloss": "bu (burası)"
+      },
+      {
+       "w": "is",
+       "start": 0.633,
+       "end": 0.74,
+       "gloss": "-dır / -dir (olmak)"
+      },
+      {
+       "w": "the",
+       "start": 0.76,
+       "end": 0.82,
+       "gloss": "(belirli tanımlık)"
+      },
+      {
+       "w": "old",
+       "start": 0.92,
+       "end": 1.22,
+       "gloss": "eski"
+      },
+      {
+       "w": "station!",
+       "start": 1.29,
+       "end": 1.86,
+       "gloss": "istasyon"
+      }
+     ]
+    },
+    {
+     "id": "s04-02",
+     "tr": "Merhaba? Kimse var mı?",
+     "speaker": "ALEX",
+     "text": "Hello? Is anybody here?",
+     "chunks": [
+      {
+       "en": "Is anybody here?",
+       "tr": "Kimse var mı?",
+       "startWord": 1,
+       "endWord": 3
+      }
+     ],
+     "start": 2.1,
+     "end": 5.13,
+     "words": [
+      {
+       "w": "Hello?",
+       "start": 2.1,
+       "end": 3.38,
+       "gloss": "merhaba"
+      },
+      {
+       "w": "Is",
+       "start": 3.567,
+       "end": 3.94,
+       "gloss": "(soru) var mı (olmak)"
+      },
+      {
+       "w": "anybody",
+       "start": 3.99,
+       "end": 4.34,
+       "gloss": "kimse, biri"
+      },
+      {
+       "w": "here?",
+       "start": 4.404,
+       "end": 4.98,
+       "gloss": "burada"
+      }
+     ]
+    },
+    {
+     "id": "s04-03",
+     "tr": "E! Telsizdeki mesaj!",
+     "speaker": "ALEX",
+     "text": "E! The message on the radio!",
+     "chunks": [
+      {
+       "en": "on the radio",
+       "tr": "telsizde, telsizdeki",
+       "startWord": 3,
+       "endWord": 5
+      }
+     ],
+     "start": 7.313,
+     "end": 8.983,
+     "words": [
+      {
+       "w": "E!",
+       "start": 7.313,
+       "end": 7.553,
+       "gloss": null
+      },
+      {
+       "w": "The",
+       "start": 7.613,
+       "end": 7.793,
+       "gloss": "(belirli tanımlık)"
+      },
+      {
+       "w": "message",
+       "start": 7.833,
+       "end": 8.113,
+       "gloss": "mesaj"
+      },
+      {
+       "w": "on",
+       "start": 8.14,
+       "end": 8.193,
+       "gloss": "-de (on the radio: telsizde)"
+      },
+      {
+       "w": "the",
+       "start": 8.213,
+       "end": 8.273,
+       "gloss": "(belirli tanımlık)"
+      },
+      {
+       "w": "radio!",
+       "start": 8.353,
+       "end": 8.833,
+       "gloss": "telsiz"
+      }
+     ]
+    }
+   ],
+   "sourceStatus": "DRAFT",
+   "grammar": {
+    "id": "G-A1-02-to-be-questions-negatives",
+    "titleTr": "to be ile soru ve olumsuz"
+   },
+   "video": "clips/S1-K11.mp4",
+   "loudness": {
+    "before": {
+     "I": -15.13,
+     "TP": -3.18,
+     "LRA": 2.8
+    },
+    "gainDb": -0.87,
+    "after": {
+     "I": -16.02,
+     "TP": -4.07,
+     "LRA": 2.8
+    }
+   },
+   "videoDuration": 9.867,
+   "poster": "clips/S1-K11.webp",
+   "bytes": 2244720
+  },
+  {
+   "id": "S1-K12",
+   "episode": "A1-004",
+   "episodeNumber": 4,
+   "episodeTitle": "The Note",
+   "titleTr": "Bugün günlerden ne?",
+   "duration": 7.13,
+   "target": {
+    "kind": "phrase",
+    "en": "What day is it today?",
+    "tr": "Bugün günlerden ne?",
+    "cue": "s02-02"
+   },
+   "parts": [
+    {
+     "node": "s02",
+     "start": 0.0,
+     "end": 7.13,
+     "at": 0.0
+    }
+   ],
+   "cues": [
+    {
+     "id": "s02-01",
+     "tr": "Selam Alex!",
+     "speaker": "MAYA",
+     "text": "Hi, Alex!",
+     "chunks": [],
+     "start": 0.57,
+     "end": 1.476,
+     "words": [
+      {
+       "w": "Hi,",
+       "start": 0.57,
+       "end": 0.74,
+       "gloss": "selam"
+      },
+      {
+       "w": "Alex!",
+       "start": 0.852,
+       "end": 1.38,
+       "gloss": null
+      }
+     ]
+    },
+    {
+     "id": "s02-02",
+     "tr": "Bugün günlerden ne?",
+     "speaker": "MAYA",
+     "text": "What day is it today?",
+     "chunks": [
+      {
+       "en": "What day is it today?",
+       "tr": "Bugün günlerden ne?",
+       "startWord": 0,
+       "endWord": 4
+      }
+     ],
+     "start": 1.476,
+     "end": 3.29,
+     "words": [
+      {
+       "w": "What",
+       "start": 1.476,
+       "end": 1.86,
+       "gloss": "hangi, ne"
+      },
+      {
+       "w": "day",
+       "start": 1.92,
+       "end": 2.1,
+       "gloss": "gün"
+      },
+      {
+       "w": "is",
+       "start": 2.127,
+       "end": 2.18,
+       "gloss": "-dır / -dir (olmak)"
+      },
+      {
+       "w": "it",
+       "start": 2.233,
+       "end": 2.34,
+       "gloss": "(gün cümlesinde boş özne)"
+      },
+      {
+       "w": "today?",
+       "start": 2.393,
+       "end": 3.14,
+       "gloss": "bugün"
+      }
+     ]
+    },
+    {
+     "id": "s02-03",
+     "tr": "Pazartesi.",
+     "speaker": "ALEX",
+     "text": "It's Monday.",
+     "chunks": [
+      {
+       "en": "It's + gün",
+       "tr": "Bugün …",
+       "startWord": 0,
+       "endWord": 1
+      }
+     ],
+     "start": 3.49,
+     "end": 4.68,
+     "words": [
+      {
+       "w": "It's",
+       "start": 3.49,
+       "end": 3.93,
+       "gloss": "(bugün) … -dır"
+      },
+      {
+       "w": "Monday.",
+       "start": 3.97,
+       "end": 4.53,
+       "gloss": "pazartesi"
+      }
+     ]
+    },
+    {
+     "id": "s02-04",
+     "tr": "Pazartesi! Dokuzda tarih dersim var.",
+     "speaker": "MAYA",
+     "text": "Monday! I have History at nine.",
+     "chunks": [
+      {
+       "en": "I have History",
+       "tr": "Tarih dersim var",
+       "startWord": 1,
+       "endWord": 3
+      },
+      {
+       "en": "at nine",
+       "tr": "saat dokuzda",
+       "startWord": 4,
+       "endWord": 5
+      }
+     ],
+     "start": 4.88,
+     "end": 7.03,
+     "words": [
+      {
+       "w": "Monday!",
+       "start": 4.88,
+       "end": 5.36,
+       "gloss": "pazartesi"
+      },
+      {
+       "w": "I",
+       "start": 5.48,
+       "end": 5.6,
+       "gloss": "ben"
+      },
+      {
+       "w": "have",
+       "start": 5.632,
+       "end": 5.76,
+       "gloss": "var (sahip olmak)"
+      },
+      {
+       "w": "History",
+       "start": 5.81,
+       "end": 6.16,
+       "gloss": "tarih (dersi)"
+      },
+      {
+       "w": "at",
+       "start": 6.187,
+       "end": 6.24,
+       "gloss": "-de (saat için)"
+      },
+      {
+       "w": "nine.",
+       "start": 6.336,
+       "end": 6.88,
+       "gloss": "dokuz"
+      }
+     ]
+    }
+   ],
+   "sourceStatus": "DRAFT",
+   "grammar": {
+    "id": "G-A1-10-prepositions-time",
+    "titleTr": "Saat ve gün: at / on / in, What time is it?"
+   },
+   "quiz": {
+    "promptTr": "“I have History at nine.” ne demek?",
+    "options": [
+     {
+      "text": "Dokuzda tarih dersim var.",
+      "lang": "tr",
+      "correct": true
+     },
+     {
+      "text": "Dokuz tane tarih dersim var.",
+      "lang": "tr",
+      "correct": false
+     },
+     {
+      "text": "Tarih dersim dokuz dakika.",
+      "lang": "tr",
+      "correct": false
+     }
+    ],
+    "explainTr": "Saatten önce at gelir: at nine = saat dokuzda."
+   },
+   "video": "clips/S1-K12.mp4",
+   "loudness": {
+    "before": {
+     "I": -14.93,
+     "TP": -4.87,
+     "LRA": 2.3
+    },
+    "gainDb": -1.07,
+    "after": {
+     "I": -16.03,
+     "TP": -5.96,
+     "LRA": 2.3
+    }
+   },
+   "videoDuration": 7.133,
+   "poster": "clips/S1-K12.webp",
+   "bytes": 1751273
+  },
+  {
+   "id": "S1-K13",
+   "episode": "A1-004",
+   "episodeNumber": 4,
+   "episodeTitle": "The Note",
+   "titleTr": "Bir not",
+   "duration": 7.103,
+   "target": {
+    "kind": "word",
+    "en": "a note",
+    "tr": "bir not",
+    "cue": "s02-06"
+   },
+   "parts": [
+    {
+     "node": "s02",
+     "start": 7.13,
+     "end": 14.233,
+     "at": 0.0
+    }
+   ],
+   "cues": [
+    {
+     "id": "s02-05",
+     "tr": "Maya, bak.",
+     "speaker": "ALEX",
+     "text": "Maya, look.",
+     "chunks": [],
+     "start": 0.1,
+     "end": 1.05,
+     "words": [
+      {
+       "w": "Maya,",
+       "start": 0.1,
+       "end": 0.62,
+       "gloss": null
+      },
+      {
+       "w": "look.",
+       "start": 0.66,
+       "end": 0.9,
+       "gloss": "bak"
+      }
+     ]
+    },
+    {
+     "id": "s02-06",
+     "tr": "Bir not.",
+     "speaker": "ALEX",
+     "text": "A note.",
+     "chunks": [],
+     "start": 1.14,
+     "end": 2.292,
+     "words": [
+      {
+       "w": "A",
+       "start": 1.14,
+       "end": 1.38,
+       "gloss": "bir"
+      },
+      {
+       "w": "note.",
+       "start": 1.476,
+       "end": 2.22,
+       "gloss": "not"
+      }
+     ]
+    },
+    {
+     "id": "s02-07",
+     "tr": "Eski istasyondan.",
+     "speaker": "ALEX",
+     "text": "From the old station.",
+     "chunks": [
+      {
+       "en": "the old station",
+       "tr": "eski istasyon",
+       "startWord": 1,
+       "endWord": 3
+      }
+     ],
+     "start": 2.292,
+     "end": 3.77,
+     "words": [
+      {
+       "w": "From",
+       "start": 2.292,
+       "end": 2.58,
+       "gloss": "-den / -dan"
+      },
+      {
+       "w": "the",
+       "start": 2.6,
+       "end": 2.66,
+       "gloss": "(belirli tanımlık)"
+      },
+      {
+       "w": "old",
+       "start": 2.72,
+       "end": 2.9,
+       "gloss": "eski"
+      },
+      {
+       "w": "station.",
+       "start": 2.97,
+       "end": 3.62,
+       "gloss": "istasyon"
+      }
+     ]
+    },
+    {
+     "id": "s02-08",
+     "tr": "Bazı harfler eksik.",
+     "speaker": "MAYA",
+     "text": "Some letters are not here.",
+     "chunks": [
+      {
+       "en": "are not here",
+       "tr": "burada değil, eksik",
+       "startWord": 2,
+       "endWord": 4
+      }
+     ],
+     "start": 3.97,
+     "end": 5.37,
+     "words": [
+      {
+       "w": "Some",
+       "start": 3.97,
+       "end": 4.13,
+       "gloss": "bazı"
+      },
+      {
+       "w": "letters",
+       "start": 4.17,
+       "end": 4.45,
+       "gloss": "harfler"
+      },
+      {
+       "w": "are",
+       "start": 4.49,
+       "end": 4.61,
+       "gloss": "-dır (olmak, çoğul)"
+      },
+      {
+       "w": "not",
+       "start": 4.67,
+       "end": 4.85,
+       "gloss": "değil"
+      },
+      {
+       "w": "here.",
+       "start": 4.914,
+       "end": 5.25,
+       "gloss": "burada"
+      }
+     ]
+    },
+    {
+     "id": "s02-09",
+     "tr": "Hadi bakalım.",
+     "speaker": "MAYA",
+     "text": "Let's look.",
+     "chunks": [
+      {
+       "en": "Let's look.",
+       "tr": "Hadi bakalım.",
+       "startWord": 0,
+       "endWord": 1
+      }
+     ],
+     "start": 5.37,
+     "end": 6.36,
+     "words": [
+      {
+       "w": "Let's",
+       "start": 5.37,
+       "end": 5.81,
+       "gloss": "hadi …-elim"
+      },
+      {
+       "w": "look.",
+       "start": 5.874,
+       "end": 6.21,
+       "gloss": "bak"
+      }
+     ]
+    }
+   ],
+   "sourceStatus": "DRAFT",
+   "grammar": {
+    "id": "G-A1-03-a-an",
+    "titleTr": "a / an: \"bir\"i söylemek"
+   },
+   "quiz": {
+    "promptTr": "“Some letters are not here.” ne demek?",
+    "options": [
+     {
+      "text": "Bazı harfler eksik.",
+      "lang": "tr",
+      "correct": true
+     },
+     {
+      "text": "Bütün harfler burada.",
+      "lang": "tr",
+      "correct": false
+     },
+     {
+      "text": "Bazı notlar kayıp.",
+      "lang": "tr",
+      "correct": false
+     }
+    ],
+    "explainTr": "Some letters are not here = bazı harfler burada yok, yani eksik."
+   },
+   "video": "clips/S1-K13.mp4",
+   "loudness": {
+    "before": {
+     "I": -15.86,
+     "TP": -4.75,
+     "LRA": 6.1
+    },
+    "gainDb": -0.14,
+    "after": {
+     "I": -16.02,
+     "TP": -4.87,
+     "LRA": 6.1
+    }
+   },
+   "videoDuration": 7.103,
+   "poster": "clips/S1-K13.webp",
+   "bytes": 1807428
+  },
+  {
+   "id": "S1-K14",
+   "episode": "A1-004",
+   "episodeNumber": 4,
+   "episodeTitle": "The Note",
+   "titleTr": "Fri… ne demek?",
+   "duration": 11.88,
+   "target": {
+    "kind": "word",
+    "en": "Friday",
+    "tr": "cuma",
+    "cue": "k1-ok-01"
+   },
+   "parts": [
+    {
+     "node": "s03",
+     "start": 0.0,
+     "end": 4.2,
+     "at": 0.0
+    },
+    {
+     "node": "k1-ok",
+     "start": 0.0,
+     "end": 7.68,
+     "at": 4.2
+    }
+   ],
+   "cues": [
+    {
+     "id": "s03-01",
+     "tr": "Fri… Bu ne?",
+     "speaker": "MAYA",
+     "text": "Fri… What is it?",
+     "chunks": [
+      {
+       "en": "What is it?",
+       "tr": "Bu ne?",
+       "startWord": 1,
+       "endWord": 3
+      }
+     ],
+     "start": 1.64,
+     "end": 3.79,
+     "words": [
+      {
+       "w": "Fri…",
+       "start": 1.64,
+       "end": 2.76,
+       "gloss": "Fri… (Friday'in başı)"
+      },
+      {
+       "w": "What",
+       "start": 2.792,
+       "end": 2.92,
+       "gloss": "ne"
+      },
+      {
+       "w": "is",
+       "start": 3.0,
+       "end": 3.16,
+       "gloss": "-dır / -dir (olmak)"
+      },
+      {
+       "w": "it?",
+       "start": 3.213,
+       "end": 3.64,
+       "gloss": "o, bu"
+      }
+     ]
+    },
+    {
+     "id": "k1-ok-01",
+     "tr": "Cuma.",
+     "speaker": "ALEX",
+     "text": "Friday.",
+     "chunks": [],
+     "start": 4.73,
+     "end": 6.59,
+     "words": [
+      {
+       "w": "Friday.",
+       "start": 4.73,
+       "end": 6.44,
+       "gloss": "cuma"
+      }
+     ]
+    },
+    {
+     "id": "k1-ok-02",
+     "tr": "Cuma! Dinle.",
+     "speaker": "ALEX",
+     "text": "Friday! Listen.",
+     "chunks": [
+      {
+       "en": "Listen.",
+       "tr": "Dinle.",
+       "startWord": 1,
+       "endWord": 1
+      }
+     ],
+     "start": 7.29,
+     "end": 9.11,
+     "words": [
+      {
+       "w": "Friday!",
+       "start": 7.29,
+       "end": 7.92,
+       "gloss": "cuma"
+      },
+      {
+       "w": "Listen.",
+       "start": 8.057,
+       "end": 8.96,
+       "gloss": "dinle"
+      }
+     ]
+    },
+    {
+     "id": "k1-ok-03",
+     "tr": "Cuma. Saat yedi.",
+     "speaker": "VOICE",
+     "text": "Friday. Seven o'clock.",
+     "chunks": [
+      {
+       "en": "seven o'clock",
+       "tr": "saat yedi",
+       "startWord": 1,
+       "endWord": 2
+      }
+     ],
+     "start": 9.31,
+     "end": 11.38,
+     "words": [
+      {
+       "w": "Friday.",
+       "start": 9.31,
+       "end": 9.95,
+       "gloss": "cuma"
+      },
+      {
+       "w": "Seven",
+       "start": 10.057,
+       "end": 10.59,
+       "gloss": "yedi"
+      },
+      {
+       "w": "o'clock.",
+       "start": 10.67,
+       "end": 11.23,
+       "gloss": "saat (tam saat)"
+      }
+     ]
+    }
+   ],
+   "sourceStatus": "DRAFT",
+   "grammar": {
+    "id": "G-A1-10-prepositions-time",
+    "titleTr": "Saat ve gün: at / on / in, What time is it?"
+   },
+   "quiz": {
+    "promptTr": "Notta “Fri…” ile başlayan kelime hangisi?",
+    "options": [
+     {
+      "text": "Friday",
+      "lang": "en",
+      "correct": true
+     },
+     {
+      "text": "Free",
+      "lang": "en",
+      "correct": false
+     },
+     {
+      "text": "Fried",
+      "lang": "en",
+      "correct": false
+     }
+    ],
+    "explainTr": "Günler İngilizcede büyük harfle başlar: Friday = cuma."
+   },
+   "video": "clips/S1-K14.mp4",
+   "loudness": {
+    "before": {
+     "I": -18.73,
+     "TP": -5.61,
+     "LRA": 11.7
+    },
+    "gainDb": 2.73,
+    "after": {
+     "I": -16.03,
+     "TP": -2.92,
+     "LRA": 11.8
+    }
+   },
+   "videoDuration": 11.9,
+   "poster": "clips/S1-K14.webp",
+   "bytes": 2447970
+  },
+  {
+   "id": "S1-K15",
+   "episode": "A1-004",
+   "episodeNumber": 4,
+   "episodeTitle": "The Note",
+   "titleTr": "Saat kaç?",
+   "duration": 8.82,
+   "target": {
+    "kind": "phrase",
+    "en": "What time is it?",
+    "tr": "Saat kaç?",
+    "cue": "k1-ok-05"
+   },
+   "parts": [
+    {
+     "node": "k1-ok",
+     "start": 7.68,
+     "end": 11.1,
+     "at": 0.0
+    },
+    {
+     "node": "k2-ok",
+     "start": 0.0,
+     "end": 5.4,
+     "at": 3.42
+    }
+   ],
+   "cues": [
+    {
+     "id": "k1-ok-04",
+     "tr": "Bak, bir saat.",
+     "speaker": "MAYA",
+     "text": "Look, a clock.",
+     "chunks": [],
+     "start": 0.503,
+     "end": 1.525,
+     "words": [
+      {
+       "w": "Look,",
+       "start": 0.503,
+       "end": 0.773,
+       "gloss": "bak"
+      },
+      {
+       "w": "a",
+       "start": 0.813,
+       "end": 0.853,
+       "gloss": "bir"
+      },
+      {
+       "w": "clock.",
+       "start": 0.933,
+       "end": 1.413,
+       "gloss": "saat (duvar saati)"
+      }
+     ]
+    },
+    {
+     "id": "k1-ok-05",
+     "tr": "Saat kaç?",
+     "speaker": "MAYA",
+     "text": "What time is it?",
+     "chunks": [
+      {
+       "en": "What time is it?",
+       "tr": "Saat kaç?",
+       "startWord": 0,
+       "endWord": 3
+      }
+     ],
+     "start": 1.525,
+     "end": 3.003,
+     "words": [
+      {
+       "w": "What",
+       "start": 1.525,
+       "end": 1.973,
+       "gloss": "ne / kaç"
+      },
+      {
+       "w": "time",
+       "start": 2.021,
+       "end": 2.213,
+       "gloss": "saat"
+      },
+      {
+       "w": "is",
+       "start": 2.266,
+       "end": 2.373,
+       "gloss": "-dır / -dir (olmak)"
+      },
+      {
+       "w": "it?",
+       "start": 2.453,
+       "end": 2.853,
+       "gloss": "(saat cümlesinde boş özne)"
+      }
+     ]
+    },
+    {
+     "id": "k2-ok-01",
+     "tr": "Saat yedi.",
+     "speaker": "ALEX",
+     "text": "It's seven o'clock.",
+     "chunks": [
+      {
+       "en": "It's seven o'clock.",
+       "tr": "Saat yedi.",
+       "startWord": 0,
+       "endWord": 2
+      }
+     ],
+     "start": 3.92,
+     "end": 5.09,
+     "words": [
+      {
+       "w": "It's",
+       "start": 3.92,
+       "end": 3.98,
+       "gloss": "(saat) … -dır"
+      },
+      {
+       "w": "seven",
+       "start": 4.02,
+       "end": 4.22,
+       "gloss": "yedi"
+      },
+      {
+       "w": "o'clock.",
+       "start": 4.3,
+       "end": 4.94,
+       "gloss": "saat (tam saat)"
+      }
+     ]
+    },
+    {
+     "id": "k2-ok-02",
+     "tr": "Saat yedi.",
+     "speaker": "MAYA",
+     "text": "Seven o'clock.",
+     "chunks": [
+      {
+       "en": "seven o'clock",
+       "tr": "saat yedi",
+       "startWord": 0,
+       "endWord": 1
+      }
+     ],
+     "start": 5.807,
+     "end": 6.557,
+     "words": [
+      {
+       "w": "Seven",
+       "start": 5.807,
+       "end": 5.847,
+       "gloss": "yedi"
+      },
+      {
+       "w": "o'clock.",
+       "start": 5.887,
+       "end": 6.407,
+       "gloss": "saat (tam saat)"
+      }
+     ]
+    },
+    {
+     "id": "k2-ok-03",
+     "tr": "Cuma günü saat yedide.",
+     "speaker": "MAYA",
+     "text": "On Friday at seven.",
+     "chunks": [
+      {
+       "en": "on Friday",
+       "tr": "cuma günü (gün için on)",
+       "startWord": 0,
+       "endWord": 1
+      },
+      {
+       "en": "at seven",
+       "tr": "saat yedide (saat için at)",
+       "startWord": 2,
+       "endWord": 3
+      }
+     ],
+     "start": 6.594,
+     "end": 8.397,
+     "words": [
+      {
+       "w": "On",
+       "start": 6.594,
+       "end": 6.967,
+       "gloss": "-de / -da (gün için)"
+      },
+      {
+       "w": "Friday",
+       "start": 7.024,
+       "end": 7.367,
+       "gloss": "cuma"
+      },
+      {
+       "w": "at",
+       "start": 7.394,
+       "end": 7.447,
+       "gloss": "-de (saat için)"
+      },
+      {
+       "w": "seven.",
+       "start": 7.527,
+       "end": 8.247,
+       "gloss": "yedi"
+      }
+     ]
+    }
+   ],
+   "sourceStatus": "DRAFT",
+   "grammar": {
+    "id": "G-A1-10-prepositions-time",
+    "titleTr": "Saat ve gün: at / on / in, What time is it?"
+   },
+   "quiz": {
+    "promptTr": "“On Friday at seven.” ne demek?",
+    "options": [
+     {
+      "text": "Cuma günü saat yedide.",
+      "lang": "tr",
+      "correct": true
+     },
+     {
+      "text": "Cuma günü yedi kişi.",
+      "lang": "tr",
+      "correct": false
+     },
+     {
+      "text": "Yedi gün sonra cuma.",
+      "lang": "tr",
+      "correct": false
+     }
+    ],
+    "explainTr": "Gün için on, saat için at: on Friday, at seven."
+   },
+   "video": "clips/S1-K15.mp4",
+   "loudness": {
+    "before": {
+     "I": -15.6,
+     "TP": -4.73,
+     "LRA": 4.1
+    },
+    "gainDb": -0.4,
+    "after": {
+     "I": -16.02,
+     "TP": -5.03,
+     "LRA": 4.1
+    }
+   },
+   "videoDuration": 8.833,
+   "poster": "clips/S1-K15.webp",
+   "bytes": 1965707
+  },
+  {
+   "id": "S1-K16",
+   "episode": "A1-004",
+   "episodeNumber": 4,
+   "episodeTitle": "The Note",
+   "titleTr": "3 numaralı iskele",
+   "duration": 11.667,
+   "target": {
+    "kind": "phrase",
+    "en": "It's between…",
+    "tr": "… ile …-in arasında.",
+    "cue": "s04-05"
+   },
+   "parts": [
+    {
+     "node": "s04",
+     "start": 0.0,
+     "end": 11.667,
+     "at": 0.0
+    }
+   ],
+   "cues": [
+    {
+     "id": "s04-01",
+     "tr": "Bak! Küçük bir üç.",
+     "speaker": "MAYA",
+     "text": "Look! A little three.",
+     "chunks": [],
+     "start": 0.58,
+     "end": 2.17,
+     "words": [
+      {
+       "w": "Look!",
+       "start": 0.58,
+       "end": 0.9,
+       "gloss": "bak"
+      },
+      {
+       "w": "A",
+       "start": 1.1,
+       "end": 1.3,
+       "gloss": "bir"
+      },
+      {
+       "w": "little",
+       "start": 1.323,
+       "end": 1.46,
+       "gloss": "küçük"
+      },
+      {
+       "w": "three.",
+       "start": 1.54,
+       "end": 2.02,
+       "gloss": "üç"
+      }
+     ]
+    },
+    {
+     "id": "s04-02",
+     "tr": "3 numaralı iskele!",
+     "speaker": "MAYA",
+     "text": "Pier 3!",
+     "chunks": [
+      {
+       "en": "Pier 3",
+       "tr": "3 numaralı iskele",
+       "startWord": 0,
+       "endWord": 1
+      }
+     ],
+     "start": 2.18,
+     "end": 3.77,
+     "words": [
+      {
+       "w": "Pier",
+       "start": 2.18,
+       "end": 2.82,
+       "gloss": "iskele"
+      },
+      {
+       "w": "3!",
+       "start": 2.9,
+       "end": 3.62,
+       "gloss": "üç"
+      }
+     ]
+    },
+    {
+     "id": "s04-03",
+     "tr": "3 numaralı iskele nerede?",
+     "speaker": "ALEX",
+     "text": "Where is Pier 3?",
+     "chunks": [
+      {
+       "en": "Where is …?",
+       "tr": "… nerede?",
+       "startWord": 0,
+       "endWord": 3
+      },
+      {
+       "en": "Pier 3",
+       "tr": "3 numaralı iskele",
+       "startWord": 2,
+       "endWord": 3
+      }
+     ],
+     "start": 4.447,
+     "end": 5.717,
+     "words": [
+      {
+       "w": "Where",
+       "start": 4.447,
+       "end": 4.527,
+       "gloss": "nerede"
+      },
+      {
+       "w": "is",
+       "start": 4.58,
+       "end": 4.687,
+       "gloss": "(olmak; Türkçede karşılığı yok)"
+      },
+      {
+       "w": "Pier",
+       "start": 4.751,
+       "end": 5.007,
+       "gloss": "iskele"
+      },
+      {
+       "w": "3?",
+       "start": 5.087,
+       "end": 5.567,
+       "gloss": "üç"
+      }
+     ]
+    },
+    {
+     "id": "s04-04",
+     "tr": "Limanın yakınında. İşte burada.",
+     "speaker": "MAYA",
+     "text": "It's near the harbour. Here.",
+     "chunks": [
+      {
+       "en": "It's near …",
+       "tr": "…-in yakınında",
+       "startWord": 0,
+       "endWord": 4
+      }
+     ],
+     "start": 5.917,
+     "end": 8.067,
+     "words": [
+      {
+       "w": "It's",
+       "start": 5.917,
+       "end": 6.077,
+       "gloss": "o … -dır (orası)"
+      },
+      {
+       "w": "near",
+       "start": 6.125,
+       "end": 6.317,
+       "gloss": "yakınında"
+      },
+      {
+       "w": "the",
+       "start": 6.337,
+       "end": 6.397,
+       "gloss": "(belirli tanımlık)"
+      },
+      {
+       "w": "harbour.",
+       "start": 6.457,
+       "end": 7.277,
+       "gloss": "liman"
+      },
+      {
+       "w": "Here.",
+       "start": 7.357,
+       "end": 7.917,
+       "gloss": "işte burada"
+      }
+     ]
+    },
+    {
+     "id": "s04-05",
+     "tr": "2 ve 4 numaralı iskelelerin arasında.",
+     "speaker": "MAYA",
+     "text": "It's between Pier 2 and Pier 4.",
+     "chunks": [
+      {
+       "en": "between … and …",
+       "tr": "… ile …-in arasında",
+       "startWord": 1,
+       "endWord": 6
+      }
+     ],
+     "start": 8.267,
+     "end": 10.897,
+     "words": [
+      {
+       "w": "It's",
+       "start": 8.267,
+       "end": 8.547,
+       "gloss": "o … -dır (orası)"
+      },
+      {
+       "w": "between",
+       "start": 8.572,
+       "end": 8.747,
+       "gloss": "arasında"
+      },
+      {
+       "w": "Pier",
+       "start": 8.811,
+       "end": 9.067,
+       "gloss": "iskele"
+      },
+      {
+       "w": "2",
+       "start": 9.227,
+       "end": 9.467,
+       "gloss": "iki"
+      },
+      {
+       "w": "and",
+       "start": 9.547,
+       "end": 9.787,
+       "gloss": "ve (… ile)"
+      },
+      {
+       "w": "Pier",
+       "start": 9.835,
+       "end": 10.027,
+       "gloss": "iskele"
+      },
+      {
+       "w": "4.",
+       "start": 10.107,
+       "end": 10.747,
+       "gloss": "dört"
+      }
+     ]
+    }
+   ],
+   "sourceStatus": "DRAFT",
+   "grammar": {
+    "id": "G-A1-09-prepositions-place",
+    "titleTr": "Yer edatları: in / on / under / near / between / behind"
+   },
+   "quiz": {
+    "promptTr": "Pier 3 nerede?",
+    "options": [
+     {
+      "text": "Pier 2 ile Pier 4'ün arasında.",
+      "lang": "tr",
+      "correct": true
+     },
+     {
+      "text": "Limanın arkasında.",
+      "lang": "tr",
+      "correct": false
+     },
+     {
+      "text": "Pier 4'ün önünde.",
+      "lang": "tr",
+      "correct": false
+     }
+    ],
+    "explainTr": "between = arasında. It's between Pier 2 and Pier 4."
+   },
+   "video": "clips/S1-K16.mp4",
+   "loudness": {
+    "before": {
+     "I": -16.42,
+     "TP": -4.9,
+     "LRA": 4.1
+    },
+    "gainDb": 0.42,
+    "after": {
+     "I": -16.03,
+     "TP": -4.48,
+     "LRA": 4.1
+    }
+   },
+   "videoDuration": 11.667,
+   "poster": "clips/S1-K16.webp",
+   "bytes": 2696143
+  },
+  {
+   "id": "S1-K17",
+   "episode": "A1-004",
+   "episodeNumber": 4,
+   "episodeTitle": "The Note",
+   "titleTr": "İyi misin?",
+   "duration": 5.5,
+   "target": {
+    "kind": "phrase",
+    "en": "Are you OK?",
+    "tr": "İyi misin?",
+    "cue": "s06-01"
+   },
+   "parts": [
+    {
+     "node": "s06",
+     "start": 0.0,
+     "end": 5.5,
+     "at": 0.0
+    }
+   ],
+   "cues": [
+    {
+     "id": "s06-01",
+     "tr": "Alex? İyi misin?",
+     "speaker": "MAYA",
+     "text": "Alex? Are you OK?",
+     "chunks": [
+      {
+       "en": "Are you OK?",
+       "tr": "İyi misin?",
+       "startWord": 1,
+       "endWord": 3
+      }
+     ],
+     "start": 0.56,
+     "end": 2.57,
+     "words": [
+      {
+       "w": "Alex?",
+       "start": 0.56,
+       "end": 1.06,
+       "gloss": null
+      },
+      {
+       "w": "Are",
+       "start": 1.2,
+       "end": 1.62,
+       "gloss": "(soru) -misin (olmak)"
+      },
+      {
+       "w": "you",
+       "start": 1.64,
+       "end": 1.7,
+       "gloss": "sen"
+      },
+      {
+       "w": "OK?",
+       "start": 1.833,
+       "end": 2.42,
+       "gloss": "iyi"
+      }
+     ]
+    },
+    {
+     "id": "s06-02",
+     "tr": "Evet. İyiyim.",
+     "speaker": "ALEX",
+     "text": "Yes. I'm OK.",
+     "chunks": [
+      {
+       "en": "I'm OK.",
+       "tr": "İyiyim.",
+       "startWord": 1,
+       "endWord": 2
+      }
+     ],
+     "start": 2.77,
+     "end": 4.01,
+     "words": [
+      {
+       "w": "Yes.",
+       "start": 2.77,
+       "end": 3.37,
+       "gloss": "evet"
+      },
+      {
+       "w": "I'm",
+       "start": 3.43,
+       "end": 3.57,
+       "gloss": "ben …-im"
+      },
+      {
+       "w": "OK.",
+       "start": 3.677,
+       "end": 3.97,
+       "gloss": "iyi"
+      }
+     ]
+    },
+    {
+     "id": "s06-03",
+     "tr": "Teşekkürler.",
+     "speaker": "ALEX",
+     "text": "Thank you.",
+     "chunks": [
+      {
+       "en": "Thank you.",
+       "tr": "Teşekkür ederim.",
+       "startWord": 0,
+       "endWord": 1
+      }
+     ],
+     "start": 4.01,
+     "end": 4.76,
+     "words": [
+      {
+       "w": "Thank",
+       "start": 4.01,
+       "end": 4.21,
+       "gloss": "teşekkür etmek"
+      },
+      {
+       "w": "you.",
+       "start": 4.25,
+       "end": 4.61,
+       "gloss": "sana / size"
+      }
+     ]
+    }
+   ],
+   "sourceStatus": "DRAFT",
+   "grammar": {
+    "id": "G-A1-02-to-be-questions-negatives",
+    "titleTr": "to be ile soru ve olumsuz"
+   },
+   "video": "clips/S1-K17.mp4",
+   "loudness": {
+    "before": {
+     "I": -18.07,
+     "TP": -4.67,
+     "LRA": 7.6
+    },
+    "gainDb": 2.07,
+    "after": {
+     "I": -16.02,
+     "TP": -2.58,
+     "LRA": 7.5
+    }
+   },
+   "videoDuration": 5.5,
+   "poster": "clips/S1-K17.webp",
+   "bytes": 1300920
+  }
+ ]
+}

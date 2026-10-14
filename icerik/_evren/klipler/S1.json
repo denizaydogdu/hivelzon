@@ -1,0 +1,279 @@
+{
+  "schemaVersion": 1,
+  "season": 1,
+  "level": "A1",
+  "status": "DRAFT",
+  "note": "Keşfet klipleri (H-040). Bölüm kayıtlarından kesilir; ücretli üretim yok. Türkçe başlık, hedef ifade ve quiz metinleri editör onayı bekler (H-028).",
+  "clips": [
+    {
+      "id": "S1-K01",
+      "episode": "A1-001",
+      "parts": [{"node": "s02", "start": 0, "end": 13.167}, {"node": "k1-ok", "start": 0, "end": 2.4}],
+      "titleTr": "Telsizde bir ses",
+      "target": {"kind": "phrase", "en": "Can you hear me?", "tr": "Beni duyabiliyor musun?"},
+      "grammar": "G-A1-07-can",
+      "quiz": {
+        "promptTr": "“Can you hear me?” sorusuna kısa cevap hangisi?",
+        "options": [
+          {"text": "Yes, I can.", "lang": "en", "correct": true},
+          {"text": "Yes, I am.", "lang": "en"},
+          {"text": "Yes, I do.", "lang": "en"}
+        ],
+        "explainTr": "Soru Can you…? ile başlıyorsa kısa cevap “Yes, I can.” olur."
+      }
+    },
+    {
+      "id": "S1-K02",
+      "episode": "A1-001",
+      "parts": [{"node": "s03", "start": 0, "end": 12.067}, {"node": "k2-ok", "start": 0, "end": 2.333}],
+      "titleTr": "Bir daha, lütfen",
+      "target": {"kind": "phrase", "en": "Again, please.", "tr": "Bir daha, lütfen."},
+      "quiz": {
+        "promptTr": "Anlamadığında kibarca ne dersin?",
+        "options": [
+          {"text": "Again, please.", "lang": "en", "correct": true},
+          {"text": "What?", "lang": "en"},
+          {"text": "Go straight.", "lang": "en"}
+        ],
+        "explainTr": "“What?” bazen sert duyulur. “Again, please.” kibar bir tekrar isteğidir."
+      }
+    },
+    {
+      "id": "S1-K03",
+      "episode": "A1-001",
+      "parts": [{"node": "s04", "start": 0, "end": 7.767}, {"node": "s05", "start": 0, "end": 2.7}],
+      "titleTr": "Eski istasyon nerede?",
+      "target": {"kind": "phrase", "en": "Where is…?", "tr": "… nerede?"},
+      "grammar": "G-A1-01-to-be",
+      "quiz": {
+        "promptTr": "Mesajdaki buluşma yeri neresi?",
+        "options": [
+          {"text": "the old station", "lang": "en", "correct": true},
+          {"text": "the harbour", "lang": "en"},
+          {"text": "the cafe", "lang": "en"}
+        ],
+        "explainTr": "E. şöyle dedi: “Meet me at the old station.”"
+      }
+    },
+    {
+      "id": "S1-K04",
+      "episode": "A1-002",
+      "parts": [{"node": "s02", "start": 0, "end": 5.367}, {"node": "k1-a", "start": 0, "end": 3.033}],
+      "titleTr": "Tanıştığımıza memnun oldum",
+      "target": {"kind": "phrase", "en": "Nice to meet you.", "tr": "Tanıştığımıza memnun oldum."},
+      "grammar": "G-A1-01-to-be",
+      "quiz": {
+        "promptTr": "“Nice to meet you.” ne demek?",
+        "options": [
+          {"text": "Tanıştığımıza memnun oldum.", "lang": "tr", "correct": true},
+          {"text": "Seni görmek güzel.", "lang": "tr"},
+          {"text": "Yardımcı olabilir miyim?", "lang": "tr"}
+        ],
+        "explainTr": "Biriyle ilk kez tanışınca “Nice to meet you.” denir."
+      }
+    },
+    {
+      "id": "S1-K05",
+      "episode": "A1-002",
+      "parts": [{"node": "s03", "start": 0, "end": 5.34}],
+      "titleTr": "Yeni komşu",
+      "target": {"kind": "phrase", "en": "Are you new here?", "tr": "Buralarda yeni misin?"},
+      "grammar": "G-A1-02-to-be-questions-negatives",
+      "quiz": {
+        "promptTr": "“I'm your new neighbour.” ne demek?",
+        "options": [
+          {"text": "Yeni komşunum.", "lang": "tr", "correct": true},
+          {"text": "Yeni arkadaşınım.", "lang": "tr"},
+          {"text": "Yeni öğrenciyim.", "lang": "tr"}
+        ],
+        "explainTr": "neighbour = komşu. your new neighbour = yeni komşun."
+      }
+    },
+    {
+      "id": "S1-K06",
+      "episode": "A1-002",
+      "parts": [{"node": "s03", "start": 5.34, "end": 16.4}],
+      "titleTr": "Nerelisin?",
+      "target": {"kind": "phrase", "en": "Where are you from?", "tr": "Nerelisin?"},
+      "grammar": "G-A1-02-to-be-questions-negatives",
+      "quiz": {
+        "promptTr": "Alex nereli?",
+        "options": [
+          {"text": "İzmir'den", "lang": "tr", "correct": true},
+          {"text": "Port Lumen'den", "lang": "tr"},
+          {"text": "İstanbul'dan", "lang": "tr"}
+        ],
+        "explainTr": "Alex şöyle dedi: “I'm from Türkiye. From İzmir.”"
+      }
+    },
+    {
+      "id": "S1-K07",
+      "episode": "A1-002",
+      "parts": [{"node": "s04", "start": 0, "end": 8.667}],
+      "titleTr": "Bu annem",
+      "target": {"kind": "phrase", "en": "This is my…", "tr": "Bu benim… (birini tanıtırken)"},
+      "grammar": "G-A1-06-this-that-plurals",
+      "quiz": {
+        "promptTr": "“my cousin” ne demek?",
+        "options": [
+          {"text": "kuzenim", "lang": "tr", "correct": true},
+          {"text": "kardeşim", "lang": "tr"},
+          {"text": "annem", "lang": "tr"}
+        ],
+        "explainTr": "cousin = kuzen. my cousin = kuzenim."
+      }
+    },
+    {
+      "id": "S1-K08",
+      "episode": "A1-002",
+      "parts": [{"node": "k2-ok", "start": 0, "end": 14.833}],
+      "titleTr": "Affedersiniz, istasyon nerede?",
+      "target": {"kind": "phrase", "en": "Excuse me, where is…?", "tr": "Affedersiniz, … nerede?"},
+      "grammar": "G-A1-09-prepositions-place",
+      "quiz": {
+        "promptTr": "Eski istasyon nerede?",
+        "options": [
+          {"text": "Limanın yakınında.", "lang": "tr", "correct": true},
+          {"text": "Kafenin arkasında.", "lang": "tr"},
+          {"text": "Okulun yanında.", "lang": "tr"}
+        ],
+        "explainTr": "Maya şöyle dedi: “It's near the harbour.” near = yakınında."
+      }
+    },
+    {
+      "id": "S1-K09",
+      "episode": "A1-002",
+      "parts": [{"node": "s05", "start": 0, "end": 9.4}],
+      "titleTr": "Uzak mı?",
+      "target": {"kind": "phrase", "en": "Is it far?", "tr": "Uzak mı?"},
+      "grammar": "G-A1-02-to-be-questions-negatives",
+      "quiz": {
+        "promptTr": "“No, it isn't.” ne demek?",
+        "options": [
+          {"text": "Hayır, değil.", "lang": "tr", "correct": true},
+          {"text": "Evet, öyle.", "lang": "tr"},
+          {"text": "Bilmiyorum.", "lang": "tr"}
+        ],
+        "explainTr": "Kısa olumsuz cevap: No, it isn't. (isn't = is not)"
+      }
+    },
+    {
+      "id": "S1-K10",
+      "episode": "A1-003",
+      "parts": [{"node": "k1-ok", "start": 0, "end": 14.267}],
+      "titleTr": "Yol tarifi",
+      "target": {"kind": "phrase", "en": "Go straight.", "tr": "Düz git."},
+      "grammar": "G-A1-08-imperatives",
+      "quiz": {
+        "promptTr": "“Turn left.” ne demek?",
+        "options": [
+          {"text": "Sola dön.", "lang": "tr", "correct": true},
+          {"text": "Sağa dön.", "lang": "tr"},
+          {"text": "Düz git.", "lang": "tr"}
+        ],
+        "explainTr": "left = sol, right = sağ."
+      }
+    },
+    {
+      "id": "S1-K11",
+      "episode": "A1-003",
+      "parts": [{"node": "s04", "start": 0, "end": 9.867}],
+      "titleTr": "Kimse var mı?",
+      "target": {"kind": "phrase", "en": "Is anybody here?", "tr": "Kimse var mı?"},
+      "grammar": "G-A1-02-to-be-questions-negatives"
+    },
+    {
+      "id": "S1-K12",
+      "episode": "A1-004",
+      "parts": [{"node": "s02", "start": 0, "end": 7.13}],
+      "titleTr": "Bugün günlerden ne?",
+      "target": {"kind": "phrase", "en": "What day is it today?", "tr": "Bugün günlerden ne?"},
+      "grammar": "G-A1-10-prepositions-time",
+      "quiz": {
+        "promptTr": "“I have History at nine.” ne demek?",
+        "options": [
+          {"text": "Dokuzda tarih dersim var.", "lang": "tr", "correct": true},
+          {"text": "Dokuz tane tarih dersim var.", "lang": "tr"},
+          {"text": "Tarih dersim dokuz dakika.", "lang": "tr"}
+        ],
+        "explainTr": "Saatten önce at gelir: at nine = saat dokuzda."
+      }
+    },
+    {
+      "id": "S1-K13",
+      "episode": "A1-004",
+      "parts": [{"node": "s02", "start": 7.13, "end": 14.233}],
+      "titleTr": "Bir not",
+      "target": {"kind": "word", "en": "a note", "tr": "bir not"},
+      "grammar": "G-A1-03-a-an",
+      "quiz": {
+        "promptTr": "“Some letters are not here.” ne demek?",
+        "options": [
+          {"text": "Bazı harfler eksik.", "lang": "tr", "correct": true},
+          {"text": "Bütün harfler burada.", "lang": "tr"},
+          {"text": "Bazı notlar kayıp.", "lang": "tr"}
+        ],
+        "explainTr": "Some letters are not here = bazı harfler burada yok, yani eksik."
+      }
+    },
+    {
+      "id": "S1-K14",
+      "episode": "A1-004",
+      "parts": [{"node": "s03", "start": 0, "end": 4.2}, {"node": "k1-ok", "start": 0, "end": 7.68}],
+      "titleTr": "Fri… ne demek?",
+      "target": {"kind": "word", "en": "Friday", "tr": "cuma"},
+      "grammar": "G-A1-10-prepositions-time",
+      "quiz": {
+        "promptTr": "Notta “Fri…” ile başlayan kelime hangisi?",
+        "options": [
+          {"text": "Friday", "lang": "en", "correct": true},
+          {"text": "Free", "lang": "en"},
+          {"text": "Fried", "lang": "en"}
+        ],
+        "explainTr": "Günler İngilizcede büyük harfle başlar: Friday = cuma."
+      }
+    },
+    {
+      "id": "S1-K15",
+      "episode": "A1-004",
+      "parts": [{"node": "k1-ok", "start": 7.68, "end": 11.1}, {"node": "k2-ok", "start": 0, "end": 5.4}],
+      "titleTr": "Saat kaç?",
+      "target": {"kind": "phrase", "en": "What time is it?", "tr": "Saat kaç?"},
+      "grammar": "G-A1-10-prepositions-time",
+      "quiz": {
+        "promptTr": "“On Friday at seven.” ne demek?",
+        "options": [
+          {"text": "Cuma günü saat yedide.", "lang": "tr", "correct": true},
+          {"text": "Cuma günü yedi kişi.", "lang": "tr"},
+          {"text": "Yedi gün sonra cuma.", "lang": "tr"}
+        ],
+        "explainTr": "Gün için on, saat için at: on Friday, at seven."
+      }
+    },
+    {
+      "id": "S1-K16",
+      "episode": "A1-004",
+      "parts": [{"node": "s04", "start": 0, "end": 11.667}],
+      "titleTr": "3 numaralı iskele",
+      "target": {"kind": "phrase", "en": "It's between…", "tr": "… ile …-in arasında."},
+      "grammar": "G-A1-09-prepositions-place",
+      "quiz": {
+        "promptTr": "Pier 3 nerede?",
+        "options": [
+          {"text": "Pier 2 ile Pier 4'ün arasında.", "lang": "tr", "correct": true},
+          {"text": "Limanın arkasında.", "lang": "tr"},
+          {"text": "Pier 4'ün önünde.", "lang": "tr"}
+        ],
+        "explainTr": "between = arasında. It's between Pier 2 and Pier 4."
+      }
+    },
+    {
+      "id": "S1-K17",
+      "episode": "A1-004",
+      "parts": [{"node": "s06", "start": 0, "end": 5.5}],
+      "titleTr": "İyi misin?",
+      "target": {"kind": "phrase", "en": "Are you OK?", "tr": "İyi misin?"},
+      "grammar": "G-A1-02-to-be-questions-negatives"
+    }
+  ]
+}

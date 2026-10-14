@@ -3,6 +3,7 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 
+import '../../features/discover/domain/clip.dart';
 import '../../features/grammar/domain/grammar_lesson.dart';
 import '../../features/hi/domain/hi_content.dart';
 import '../../features/library/domain/book.dart';
@@ -103,6 +104,17 @@ class HttpContentSource implements ContentSource {
       return HiContent.fromJson(json.cast<String, dynamic>());
     } on Object catch (e) {
       throw ContentUnavailableException('Bozuk hi.json', cause: e);
+    }
+  }
+
+  @override
+  Future<ClipCatalog> loadClips(int season, String path) async {
+    final json = await _getJson(seasonMediaUri(season, path));
+    if (json is! Map) throw ContentUnavailableException('Bozuk clips.json');
+    try {
+      return ClipCatalog.fromJson(json.cast<String, dynamic>());
+    } on Object catch (e) {
+      throw ContentUnavailableException('Bozuk clips.json', cause: e);
     }
   }
 

@@ -120,7 +120,9 @@ def main(argv: list[str] | None = None) -> int:
                            set_media={"crop": media.crop_webp, "scene": media.scene_webp, "cut": media.cut_audio,
                                       "gain": media.gain_to_target, "probe": media.probe_duration,
                                       "size": media.image_size},
-                           hi_audio=lambda s, o: media.audio_clip(s, media.gain_to_target(s), o))
+                           hi_audio=lambda s, o: media.audio_clip(s, media.gain_to_target(s), o),
+                           clip_media={"cut": media.cut_clip, "measure": media.parts_loudness,
+                                       "poster": media.frame_webp, "probe": media.probe_duration})
         sd = sr["doc"]
         print(f"== Sezon {n} paketi → {sr['dir']}")
         print("   " + ", ".join(f"{k} {sd[k]['video']} {sd[k].get('duration')} sn"
@@ -134,6 +136,10 @@ def main(argv: list[str] | None = None) -> int:
             h = sd["hi"]
             print(f"   Hi verisi: {h['errorCatalog']} hata notu, {h['topicIntros']} konu tanıtımı, "
                   f"{h['bridgeTasks']} köprü görevi, {h.get('audio', 0)} Türkçe ses (eksik {len(h.get('audioMissing', []))}), {h['lookup']} sözlük girdisi ({h['bytes'] / 1e3:.0f} kB)")
+        if "clips" in sd:
+            c = sd["clips"]
+            print(f"   Keşfet klipleri: {c['count']} klip ({c['seconds']} sn, {c['quizzes']} quiz), "
+                  f"{c['bytes'] / 1e6:.1f} MB, durum {c['status']}")
         if "episodes" in sd:
             avail = [e["number"] for e in sd["episodes"] if e["available"]]
             print(f"   harita: {len(sd['episodes'])} bölüm, oynanabilir {avail}; "

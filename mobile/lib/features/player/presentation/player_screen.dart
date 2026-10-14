@@ -1022,7 +1022,8 @@ class _AiNoticeState extends State<AiNotice> {
   Widget build(BuildContext context) {
     return AnimatedOpacity(
       opacity: _visible ? 1 : 0,
-      duration: const Duration(milliseconds: 600),
+      // "Hareketi azalt" açıksa solmadan kaybolur (H-040).
+      duration: AppMotion.of(context, const Duration(milliseconds: 600)),
       child: Container(
         padding: const EdgeInsets.symmetric(
           horizontal: AppSpace.s12,
