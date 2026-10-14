@@ -1,11 +1,14 @@
 import 'package:drift/drift.dart';
 
 import '../../../shared/storage/app_database.dart';
+import '../domain/age.dart';
 
 /// Açılışın (H-039) cihazdaki kayıtları (`app_meta`; eşitlenmez, sunucuya
 /// gitmez):
 /// - açılış bitti mi (bir kez gösterilir);
-/// - doğum yılı (yalnızca yıl; H-002, H-009);
+/// - doğum yılı **saklanmaz** (veri minimizasyonu, kullanıcı kararı 2026-10-14):
+///   13–17 için yalnızca 18 yaşına girilen yıl tutulur; 13 altı için hesap
+///   kapısının yılı [AgeGate]'tedir; 18+ için yaşa dair kayıt yoktur;
 /// - yerleştirme testinin önerdiği seviye (yalnızca bilgi; K-06).
 class OnboardingStore {
   OnboardingStore(this._db, {Future<void>? ready, DateTime Function()? clock})
@@ -18,7 +21,10 @@ class OnboardingStore {
 
   static const completedKey = 'onboarding.completedAt';
   static const noticeVersionKey = 'onboarding.noticeVersion';
-  static const birthYearKey = 'profile.birthYear';
+  static const adultFromYearKey = 'profile.adultFromYear';
+
+  /// H-039'un ilk sürümünün yazdığı anahtar; artık yazılmaz, görülünce silinir.
+  static const legacyBirthYearKey = 'profile.birthYear';
   static const suggestedLevelKey = 'placement.suggestedLevel';
 
   Future<String?> _meta(String key) async => (await (_db.select(
@@ -83,7 +89,7 @@ class OnboardingStore {
   }
 
   /// Açılışı yeniden göstermek için (testler ve debug). Girilen bilgiler
-  /// (doğum yılı, ad, ayarlar) silinmez.
+  /// (yaş eşiği, ad, ayarlar) silinmez.
   Future<void> reset() async {
     await _ready;
     await (_db.delete(
@@ -91,14 +97,25 @@ class OnboardingStore {
     )..where((t) => t.key.equals(completedKey))).go();
   }
 
-  Future<int?> birthYear() async {
+  /// 18 yaşına girilen yıl (yalnızca 13–17 için kayıtlı; yoksa `null`).
+  Future<int?> adultFromYear() async {
     await _ready;
-    return int.tryParse(await _meta(birthYearKey) ?? '');
+    return int.tryParse(await _meta(adultFromYearKey) ?? '');
   }
 
-  Future<void> setBirthYear(int year) async {
+  /// Doğum yılından yalnızca henüz geçmemiş eşik saklanır; yıl kendisi
+  /// yazılmaz. Tekrar çağrı aynı sonucu verir; eski doğum yılı kaydı silinir.
+  Future<void> setAgeThresholds(int birthYear, DateTime now) async {
     await _ready;
-    await _setMeta(birthYearKey, '$year');
+    final adultFrom = birthYear + adultAge;
+    await _db.transaction(() async {
+      await (_db.delete(
+        _db.appMeta,
+      )..where((t) => t.key.isIn([legacyBirthYearKey, adultFromYearKey]))).go();
+      if (adultFrom > now.toUtc().year) {
+        await _setMeta(adultFromYearKey, '$adultFrom');
+      }
+    });
   }
 
   /// Okunan bilgilendirme metninin sürümü (yalnızca cihazda).

@@ -50,3 +50,9 @@ Kendi dalında (`h-039-onboarding-yerlestirme`) yapılır; `main`'e alınmadan �
 5. **Bilgilendirme metni:** "Reklam yok; seni başka uygulamalarda izlemiyoruz" ve "Sesin kaydedilmez" ürün kararlarından alındı; hukuk teyidi (H-042) ve ebeveyn kapısı (H-043/H-044) bekliyor. "Bir büyüğünle birlikte oku" notu yeterli mi?
 6. **Hesap ekranında doğum yılının yeniden sorulması:** Açılışta girilen yıl hesap açarken önceden doldurulsun mu (şimdi yeniden soruluyor)?
 7. **"Dil" adımı:** Arayüz yalnız Türkçe olduğu için ayrı dil adımı konmadı.
+2026-10-14 (kullanıcı kararları):
+- Doğum yılı **saklanmaz**; yalnızca henüz geçmemiş eşik tutulur (13 altı: `account.ageBlockedUntil`; 13–17: `profile.adultFromYear`; 18+: kayıt yok). İlk sürümün `profile.birthYear` kaydı görülünce silinir.
+- Doğum yılı adımı zorunlu kalır ("Daha sonra" yok).
+- Hesap açarken doğum yılı yeniden sorulur (önceden doldurulmaz).
+- Soru havuzu: kullanıcı okuyup onaylayacak; onaydan sonra `status: DRAFT` kaldırılır.
+

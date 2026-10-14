@@ -188,11 +188,35 @@ void main() {
     });
 
     test('yeniden göster (reset) yalnızca işareti siler', () async {
-      await store.setBirthYear(2008);
+      await store.setAgeThresholds(2012, DateTime.utc(2026, 10, 14));
       await store.markCompleted();
       await store.reset();
       expect(await store.needsOnboarding(), isTrue);
-      expect(await store.birthYear(), 2008);
+      expect(await store.adultFromYear(), 2030);
+    });
+
+    test('doğum yılı saklanmaz; yalnızca geçmemiş 18 eşiği kalır', () async {
+      final now = DateTime.utc(2026, 10, 14);
+      Future<String?> raw(String k) async => (await (db.select(
+        db.appMeta,
+      )..where((t) => t.key.equals(k))).getSingleOrNull())?.value;
+
+      await db
+          .into(db.appMeta)
+          .insert(
+            AppMetaCompanion.insert(
+              key: OnboardingStore.legacyBirthYearKey,
+              value: '2010',
+            ),
+          );
+      await store.setAgeThresholds(2010, now); // 16 yaş
+      expect(await store.adultFromYear(), 2028);
+      expect(await raw(OnboardingStore.legacyBirthYearKey), isNull);
+
+      await store.setAgeThresholds(1990, now); // yetişkin: yaş kaydı yok
+      expect(await store.adultFromYear(), isNull);
+      await store.setAgeThresholds(1990, now); // idempotent
+      expect(await store.adultFromYear(), isNull);
     });
   });
 

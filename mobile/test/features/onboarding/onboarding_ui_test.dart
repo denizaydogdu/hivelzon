@@ -167,10 +167,12 @@ void main() {
     expect(find.byType(NavigationBar), findsOneWidget);
     expect(find.text('Merhaba Ece!'), findsOneWidget);
 
-    // Kayıtlar yalnızca cihazda: yıl, yaş kapısı, ad, altyazı, bitiş.
+    // Kayıtlar yalnızca cihazda: yaş eşikleri (doğum yılı değil), ad,
+    // altyazı, bitiş.
+    expect(await meta(tester, OnboardingStore.legacyBirthYearKey), isNull);
     expect(
-      await meta(tester, OnboardingStore.birthYearKey),
-      '${thisYear - 10}',
+      await meta(tester, OnboardingStore.adultFromYearKey),
+      '${thisYear - 10 + 18}',
     );
     expect(
       await meta(tester, 'account.ageBlockedUntil'),

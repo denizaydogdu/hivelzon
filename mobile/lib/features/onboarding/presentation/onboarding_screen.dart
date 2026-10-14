@@ -83,13 +83,12 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
     unawaited(_prefill());
   }
 
-  /// Açılış yarıda kaldıysa girilenler geri gelir.
+  /// Açılış yarıda kaldıysa girilen ad geri gelir.
   Future<void> _prefill() async {
     try {
-      final year = await ref.read(onboardingStoreProvider).birthYear();
+      // Doğum yılı saklanmadığı için yalnızca ad geri gelir.
       final name = await ref.read(userProfileStoreProvider).displayName();
       if (!mounted) return;
-      if (year != null && _year.text.isEmpty) _year.text = '$year';
       if (name != null && _name.text.isEmpty) _name.text = name;
     } on Object catch (e) {
       debugPrint('[H039] açılış bilgileri okunamadı: $e');
@@ -156,7 +155,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
     final band = ageBandOf(year, _now);
     setState(() => _busy = true);
     try {
-      await ref.read(onboardingStoreProvider).setBirthYear(year);
+      await ref.read(onboardingStoreProvider).setAgeThresholds(year, _now);
       if (band == AgeBand.under13) {
         // Hesap ekranlarıyla aynı kapı: hesap açma gösterilmez (H-002).
         // Açılışta geri dönülüp yıl değiştirilse de kapı açılmaz.
