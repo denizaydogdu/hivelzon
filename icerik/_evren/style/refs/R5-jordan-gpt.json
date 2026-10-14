@@ -1,0 +1,23 @@
+[
+  {
+    "created_at": "2026-10-14T16:47:25.147415Z",
+    "display_name": "GPT Image 2.5",
+    "id": "185195f6-f42d-4cbe-a013-7151a26d759a",
+    "job_type": "gpt_image_2_5",
+    "min_result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261014_164725_185195f6-f42d-4cbe-a013-7151a26d759a_min.webp",
+    "params": {
+      "aspect_ratio": "3:2",
+      "height": 1360,
+      "medias": [],
+      "model": "flare",
+      "prompt": "Character reference sheet of an original character: Jordan Reed, a 31-year-old man, a bicycle courier in a small coastal town; short black curly hair, short neat beard, warm brown skin, friendly wide grin, energetic posture; bright orange courier jacket with grey reflective stripes, dark grey cycling helmet (shown on his head and also held in his hand), black cargo trousers, sturdy trainers, a dark green messenger bag across his body, holding a small cardboard parcel; a sturdy city bicycle with a front basket. Front view, side view, back view, and three facial expressions: big laugh, thinking with a hand on his chin, surprised. Plain light background. Warm animated-series illustration, graphic-novel style, clean ink lines, soft cel shading, coastal palette of sea blue, sand, lighthouse yellow and evening orange, mature tone suitable for teens and adults, not childish, no text, no letters, no numbers, no logos.",
+      "quality": "low",
+      "reference_elements": [],
+      "remove_bg": false,
+      "resolution": "2k",
+      "width": 2048
+    },
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261014_164725_185195f6-f42d-4cbe-a013-7151a26d759a.png",
+    "status": "completed"
+  }
+]

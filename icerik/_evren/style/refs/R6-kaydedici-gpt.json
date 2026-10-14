@@ -1,0 +1,23 @@
+[
+  {
+    "created_at": "2026-10-14T16:47:47.999681Z",
+    "display_name": "GPT Image 2.5",
+    "id": "72e65920-4ec7-4946-ae36-502810c61948",
+    "job_type": "gpt_image_2_5",
+    "min_result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261014_164747_72e65920-4ec7-4946-ae36-502810c61948_min.webp",
+    "params": {
+      "aspect_ratio": "3:2",
+      "height": 1360,
+      "medias": [],
+      "model": "flare",
+      "prompt": "Prop design sheet: a small old handheld voice recorder from the 1980s, palm-sized, scuffed faded red plastic body with a silver metal speaker grille, one round button and one small slide switch, a tiny round indicator light, a small window showing a mini cassette inside, a short black wrist strap; no labels, no brand, no writing. Front view, side view, back view, indicator light on and indicator light off. Plain background. Warm animated-series illustration, graphic-novel style, clean ink lines, soft cel shading, coastal palette of sea blue, sand, lighthouse yellow and evening orange, mature tone suitable for teens and adults, not childish, no text, no letters, no numbers, no logos.",
+      "quality": "low",
+      "reference_elements": [],
+      "remove_bg": false,
+      "resolution": "2k",
+      "width": 2048
+    },
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261014_164747_72e65920-4ec7-4946-ae36-502810c61948.png",
+    "status": "completed"
+  }
+]

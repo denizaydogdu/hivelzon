@@ -54,6 +54,10 @@ def main(argv: list[str] | None = None, tr_client=None, en_client=None, finalize
     ap.add_argument("--compare-dir", help="karışık dil satırlarının a ve b sürümlerini bu klasöre de yaz")
     ap.add_argument("--no-update", action="store_true", help="kurgu.json ve Hi verisine audio ekleme")
     ap.add_argument("--strict", action="store_true", help="hizalama uyarısında çıkış kodu 3")
+    ap.add_argument("--tr-only", action="store_true",
+                    help="ElevenLabs çağrılmaz (H-085, İngilizce kota bitince): yalnız Türkçe sesler kurulur; "
+                         "b kipindeki satırların Türkçe parçaları önbelleğe (_raw/) alınır, satır İngilizce "
+                         "parçası gelince tamamlanır")
     a = ap.parse_args(argv)
     if not a.episodes and not a.hi:
         ap.error("bölüm klasörü ya da --hi gerekli")
@@ -86,6 +90,11 @@ def main(argv: list[str] | None = None, tr_client=None, en_client=None, finalize
     tr_used, en_used = tr.ledger_used(tr_ledger, month), tts.ledger_used(en_ledger, month)
     print(f"Toplam: {len(plans)} ses ({sum(1 for p in plans if p.action == 'skip')} güncel); Türkçe {t.tr_all} karakter, "
           f"İngilizce {t.en_all} karakter.")
+    if a.tr_only:
+        pend = [p for p in plans if p.action != "skip" and p.en]
+        print(f"--tr-only: ElevenLabs çağrılmaz; {len(pend)} karışık satır bekler "
+              f"({sum(len(e.text) for p in pend for e in p.en)} İngilizce karakter): "
+              + (", ".join(p.item.stem for p in pend) or "-"))
     print(f"Ödenecek: Alania {t.tr_chars} karakter (bu ay {tr_used}; tavan {tr_cap if tr_cap else 'TANIMLI DEĞİL'}; "
           f"≈ {tr.estimate_tl(t.tr_chars, t.tr_chars / tr.EST_CHARS_PER_SEC):.2f} TL, PatientDesk kampanyasında ücretsiz) · "
           f"ElevenLabs {vm.en['name']} {t.en_chars} karakter (bu ay {en_used}; tavan {en_cap if en_cap else 'TANIMLI DEĞİL'}; "
@@ -96,15 +105,16 @@ def main(argv: list[str] | None = None, tr_client=None, en_client=None, finalize
     if t.tr_chars and tr_cap is None:
         print(f"HATA: Türkçe aylık tavan tanımlı değil ({tr.ENV_CAP}); ücretli üretim kapalı.", file=sys.stderr)
         return 1
-    if t.en_chars and not en_cap:
+    if t.en_chars and not en_cap and not a.tr_only:
         print("HATA: İngilizce aylık tavan tanımlı değil; ücretli üretim kapalı.", file=sys.stderr)
         return 1
-    if t.en_chars and en_used + t.en_chars > en_cap:
+    if t.en_chars and not a.tr_only and en_used + t.en_chars > en_cap:
         print(f"HATA: İngilizce tavan aşılır ({en_used} + {t.en_chars} > {en_cap}); hiçbir çağrı yapılmadı.",
               file=sys.stderr)
         return 1
 
     work = [p for p in plans if p.action != "skip"]
+    waiting: list[str] = []
     try:
         for p in work:
             ep.backup_old(p.item)
@@ -112,7 +122,7 @@ def main(argv: list[str] | None = None, tr_client=None, en_client=None, finalize
         need_tr = any(not tp.raw_wav().exists() for tp in tr_pieces)
         call = tr_client or (tr.HttpClient() if need_tr else None)
         tr_chars, tr_calls, warns = ep.run_tr(tr_pieces, call, tr_cap, tr_ledger, finalize=finalize, sleep=sleep)
-        en_pieces = [e for p in work for e in p.en]
+        en_pieces = [] if a.tr_only else [e for p in work for e in p.en]
         en_chars = en_calls = 0
         if en_pieces:
             need_en = any(not e.raw_mp3().exists() for e in en_pieces)
@@ -121,6 +131,10 @@ def main(argv: list[str] | None = None, tr_client=None, en_client=None, finalize
             ecall = en_client or (tts.http_client() if need_en else None)
             en_chars, en_calls = ep.run_en(en_pieces, vm.en, ecall, en_cap, en_ledger)
         for p in work:
+            if a.tr_only and p.en and not all(e.raw_mp3().exists() and e.raw_json().exists() for e in p.en):
+                print(f"  {p.item.stem}: Türkçe parçalar önbellekte; İngilizce parça bekleniyor (--tr-only)")
+                waiting.append(p.item.stem)
+                continue
             if p.item.mode == "b":
                 doc = ep.build_mixed(p, vm, finalize=finalize)
                 q = doc["quality"]
@@ -154,7 +168,7 @@ def main(argv: list[str] | None = None, tr_client=None, en_client=None, finalize
     except (ep.EpisodeTtsError, tr.TrTtsError, tts.TtsError) as e:
         print(f"HATA: {e}", file=sys.stderr)
         return 1
-    print(f"== {len(work)} ses kuruldu, {len(plans) - len(work)} güncel; Alania {tr_calls} çağrı / {tr_chars} karakter, "
+    print(f"== {len(work) - len(waiting)} ses kuruldu, {len(waiting)} İngilizce parça bekliyor, {len(plans) - len(work)} güncel; Alania {tr_calls} çağrı / {tr_chars} karakter, "
           f"ElevenLabs {en_calls} çağrı / {en_chars} karakter")
     for w in warns:
         print(f"UYARI {w}")

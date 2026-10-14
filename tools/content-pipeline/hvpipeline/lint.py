@@ -132,11 +132,15 @@ def check_graph(ep_dir: Path, c: dict, source: str = "auto") -> tuple[list[Issue
         issues += _check_season_files(ep_dir, doc)
     elif has_kurgu and source in ("auto", "kurgu"):
         try:
-            doc, _ = build_dry(ep_dir)
+            doc, b = build_dry(ep_dir)
         except (BuildError, FileNotFoundError, KeyError) as e:
             return [Issue("error", "kurgu", f"{KURGU_FILE} okunamadı: {e}")], None
         origin = "kurgu (kuru derleme)"
         issues = check_scenes(doc)
+        if b.ep.estimated:
+            # H-085: ses henüz yok; süreler ve altyazı zamanları audio_manifest.json metninden tahmin edildi.
+            issues.append(Issue("warning", "missing-audio",
+                                f"{len(b.ep.estimated)} replik sesi yok, süre tahmini: " + ", ".join(b.ep.estimated)))
     else:
         return [], None
     nodes = doc.get("nodes", [])

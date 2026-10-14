@@ -46,6 +46,21 @@
     "monthlyCharCap": 10000,
     "reason": "Kitaplardaki ve dilbilgisi derslerindeki İngilizce ses (DILBILGISI §2). Yalnız kısa İngilizce ifadeler okunur."
   },
+  "episodeEnglish": {
+    "note": "Bölüm replikleri (H-085, tts_episode_en.py): audio_manifest.json'daki İngilizce satırlar. Sesler ve ayarlar B1–B4 ile aynı (bölümlerin PROMPTS.md'si). Yeni karakterin sesi kullanıcı onayıyla eklenir.",
+    "provider": "ElevenLabs",
+    "modelId": "eleven_v3",
+    "speed": 0.9,
+    "voices": {
+      "ALEX": {"name": "Jessica", "voiceId": "cgSgspJ2msm6clMCkdW9"},
+      "MAYA": {"name": "Sarah", "voiceId": "EXAVITQu4vr4xnSDxMaL"},
+      "VOICE": {"name": "Lily", "voiceId": "pFZP5JQG7iQjIQuC4Bku"},
+      "MRS BROOKS": {"name": "Alice", "voiceId": "Xb7hH8MSUJpSbSDYk0k2"},
+      "MAN": {"name": "George", "voiceId": "JBFqnCBsd6RMkjVDRZzb"},
+      "JORDAN": {"name": null, "voiceId": null, "status": "ONAY BEKLİYOR",
+                 "proposal": "Charlie (ElevenLabs hazır ses; genç-orta yaş erkek, sıcak, konuşkan; kimlik kullanmadan önce /v1/voices ile doğrulanmalı). CHARACTER_PROFILES: sıcak, gürültülü, hızlı ama S1'de net; George (B3 köpekli adam) ile karışmasın."}
+    }
+  },
   "mixed": {
     "default": "b",
     "gap": 0.15,

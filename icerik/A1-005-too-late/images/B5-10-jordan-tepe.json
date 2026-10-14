@@ -1,0 +1,32 @@
+[
+  {
+    "created_at": "2026-10-14T16:50:07.253314Z",
+    "display_name": "GPT Image 2.5",
+    "id": "1a8cb66f-ac9a-45b7-826d-59bf0f078d6b",
+    "job_type": "gpt_image_2_5",
+    "min_result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261014_165007_1a8cb66f-ac9a-45b7-826d-59bf0f078d6b_min.webp",
+    "params": {
+      "aspect_ratio": "9:16",
+      "height": 2688,
+      "medias": [
+        {
+          "data": {
+            "id": "185195f6-f42d-4cbe-a013-7151a26d759a",
+            "type": "image_job",
+            "url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261014_164725_185195f6-f42d-4cbe-a013-7151a26d759a.png"
+          },
+          "role": "image"
+        }
+      ],
+      "model": "flare",
+      "prompt": "Use the reference image for Jordan. Scene: Jordan the bicycle courier (bright orange courier jacket with grey reflective stripes) stands on the evening harbour pier, head tilted, unsure, one hand scratching his helmet and the other hand pointing up toward a green hill above the small town, where a tiny café with warm lit windows sits among trees, far away. No text on any sign. Vertical composition. Warm animated-series illustration, graphic-novel style, clean ink lines, soft cel shading, coastal palette of sea blue, sand, lighthouse yellow and evening orange, mature tone suitable for teens and adults, not childish, no text, no letters, no numbers, no logos.",
+      "quality": "low",
+      "reference_elements": [],
+      "remove_bg": false,
+      "resolution": "2k",
+      "width": 1520
+    },
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261014_165007_1a8cb66f-ac9a-45b7-826d-59bf0f078d6b.png",
+    "status": "completed"
+  }
+]

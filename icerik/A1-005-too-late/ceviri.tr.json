@@ -1,0 +1,824 @@
+{
+  "contentId": "A1-005",
+  "status": "DRAFT",
+  "author": "Claude taslak",
+  "date": "2026-10-14",
+  "lines": [
+    {
+      "en": "Too Late?",
+      "speaker": "TITLE",
+      "tr": "Çok mu geç?",
+      "chunks": [],
+      "words": {
+        "too": "fazla, çok",
+        "late": "geç"
+      },
+      "source": "content:title"
+    },
+    {
+      "en": "The Recording",
+      "speaker": "TITLE",
+      "tr": "Kayıt",
+      "chunks": [],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "recording": "kayıt"
+      },
+      "source": "scenes:c-oq"
+    },
+    {
+      "en": "Friday. Seven o'clock.",
+      "speaker": "ALEX",
+      "tr": "Cuma. Saat yedi.",
+      "chunks": [],
+      "words": {
+        "friday": "cuma",
+        "seven": "yedi",
+        "o'clock": "saat (tam saat)"
+      },
+      "source": "subs/s01"
+    },
+    {
+      "en": "Let's go!",
+      "speaker": "ALEX",
+      "tr": "Hadi gidelim!",
+      "chunks": [
+        {
+          "en": "Let's go!",
+          "tr": "Hadi gidelim!"
+        }
+      ],
+      "words": {
+        "let's": "hadi (-elim)",
+        "go": "gitmek"
+      },
+      "source": "subs/s01"
+    },
+    {
+      "en": "The bus is late.",
+      "speaker": "ALEX",
+      "tr": "Otobüs gecikti.",
+      "chunks": [
+        {
+          "en": "is late",
+          "tr": "geç kaldı / gecikti"
+        }
+      ],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "bus": "otobüs",
+        "is": "-dır / -dir (olmak)",
+        "late": "geç"
+      },
+      "source": "subs/s02"
+    },
+    {
+      "en": "Oh no.",
+      "speaker": "ALEX",
+      "tr": "Ah, olamaz.",
+      "chunks": [
+        {
+          "en": "Oh no",
+          "tr": "Ah, olamaz"
+        }
+      ],
+      "words": {
+        "oh": "ah",
+        "no": "olamaz (ünlem)"
+      },
+      "source": "subs/s02"
+    },
+    {
+      "en": "Hello? E.?",
+      "speaker": "ALEX",
+      "tr": "Merhaba? E.?",
+      "chunks": [],
+      "words": {
+        "hello": "merhaba"
+      },
+      "source": "subs/s03"
+    },
+    {
+      "en": "Hello! Is that a radio?",
+      "speaker": "JORDAN",
+      "tr": "Merhaba! O bir telsiz mi?",
+      "chunks": [],
+      "words": {
+        "hello": "merhaba",
+        "is": "-dır / -dir (olmak)",
+        "that": "o / şu",
+        "a": "bir",
+        "radio": "telsiz"
+      },
+      "source": "subs/s03"
+    },
+    {
+      "en": "Yes. It's my radio.",
+      "speaker": "ALEX",
+      "tr": "Evet. Benim telsizim.",
+      "chunks": [],
+      "words": {
+        "yes": "evet",
+        "it's": "o … -dır",
+        "my": "benim",
+        "radio": "telsiz"
+      },
+      "source": "subs/s03"
+    },
+    {
+      "en": "Are you the radio friend?",
+      "speaker": "JORDAN",
+      "tr": "Telsizci arkadaş sen misin?",
+      "chunks": [
+        {
+          "en": "the radio friend",
+          "tr": "telsizci arkadaş"
+        }
+      ],
+      "words": {
+        "are": "-sın (olmak)",
+        "you": "sen",
+        "the": "(belirli tanımlık)",
+        "radio": "telsiz",
+        "friend": "arkadaş"
+      },
+      "source": "subs/s03"
+    },
+    {
+      "en": "You're late!",
+      "speaker": "JORDAN",
+      "tr": "Geç kaldın!",
+      "chunks": [
+        {
+          "en": "You're late",
+          "tr": "Geç kaldın"
+        }
+      ],
+      "words": {
+        "you're": "sen … -sın",
+        "late": "geç"
+      },
+      "source": "subs/s03"
+    },
+    {
+      "en": "Are you the radio friend? You're late!",
+      "speaker": "JORDAN",
+      "tr": "Telsizci arkadaş sen misin? Geç kaldın!",
+      "chunks": [
+        {
+          "en": "the radio friend",
+          "tr": "telsizci arkadaş"
+        },
+        {
+          "en": "You're late",
+          "tr": "Geç kaldın"
+        }
+      ],
+      "words": {
+        "are": "-sın (olmak)",
+        "you": "sen",
+        "the": "(belirli tanımlık)",
+        "radio": "telsiz",
+        "friend": "arkadaş",
+        "you're": "sen … -sın",
+        "late": "geç"
+      },
+      "source": "scenes:k1.cue"
+    },
+    {
+      "en": "I am late, sorry me.",
+      "speaker": "ALEX",
+      "tr": "(Hatalı) Geç kaldım, beni üzgün.",
+      "chunks": [],
+      "words": {
+        "i": "ben",
+        "am": "-ım (olmak)",
+        "late": "geç",
+        "sorry": "üzgün",
+        "me": "beni (burada yanlış)"
+      },
+      "source": "subs/r-k1-b"
+    },
+    {
+      "en": "Sorry me?",
+      "speaker": "JORDAN",
+      "tr": "\"Beni üzgün\" mü?",
+      "chunks": [],
+      "words": {
+        "sorry": "üzgün",
+        "me": "beni"
+      },
+      "source": "subs/r-k1-b"
+    },
+    {
+      "en": "Ha! It's OK, it's OK!",
+      "speaker": "JORDAN",
+      "tr": "Ha! Sorun değil, sorun değil!",
+      "chunks": [
+        {
+          "en": "It's OK",
+          "tr": "Sorun değil"
+        }
+      ],
+      "words": {
+        "ha": "ha (gülme)",
+        "it's": "(boş özne) … -dır",
+        "ok": "tamam"
+      },
+      "source": "subs/r-k1-b"
+    },
+    {
+      "en": "Sorry, I'm late.",
+      "speaker": "ALEX",
+      "tr": "Özür dilerim, geç kaldım.",
+      "chunks": [
+        {
+          "en": "I'm late",
+          "tr": "geç kaldım"
+        }
+      ],
+      "words": {
+        "sorry": "özür dilerim / üzgünüm",
+        "i'm": "ben … -ım",
+        "late": "geç"
+      },
+      "source": "subs/k1-ok"
+    },
+    {
+      "en": "No problem!",
+      "speaker": "JORDAN",
+      "tr": "Sorun değil!",
+      "chunks": [
+        {
+          "en": "No problem",
+          "tr": "Sorun değil"
+        }
+      ],
+      "words": {
+        "no": "hayır / yok",
+        "problem": "sorun"
+      },
+      "source": "subs/k1-ok"
+    },
+    {
+      "en": "I'm Jordan.",
+      "speaker": "JORDAN",
+      "tr": "Ben Jordan.",
+      "chunks": [],
+      "words": {
+        "i'm": "ben … -ım"
+      },
+      "source": "subs/k1-ok"
+    },
+    {
+      "en": "Nice to meet you.",
+      "speaker": "ALEX",
+      "tr": "Tanıştığımıza memnun oldum.",
+      "chunks": [
+        {
+          "en": "Nice to meet you",
+          "tr": "Tanıştığımıza memnun oldum"
+        }
+      ],
+      "words": {
+        "nice": "hoş",
+        "to": "-mek / -e",
+        "meet": "tanışmak",
+        "you": "sen"
+      },
+      "source": "subs/k1-ok"
+    },
+    {
+      "en": "I'm Alex.",
+      "speaker": "ALEX",
+      "tr": "Ben Alex.",
+      "chunks": [],
+      "words": {
+        "i'm": "ben … -ım"
+      },
+      "source": "subs/k1-ok"
+    },
+    {
+      "en": "Nice to meet you, Alex!",
+      "speaker": "JORDAN",
+      "tr": "Memnun oldum, Alex!",
+      "chunks": [
+        {
+          "en": "Nice to meet you",
+          "tr": "Tanıştığımıza memnun oldum"
+        }
+      ],
+      "words": {
+        "nice": "hoş",
+        "to": "-mek / -e",
+        "meet": "tanışmak",
+        "you": "sen"
+      },
+      "source": "subs/k1-ok"
+    },
+    {
+      "en": "I work here every day.",
+      "speaker": "JORDAN",
+      "tr": "Her gün burada çalışırım.",
+      "chunks": [
+        {
+          "en": "every day",
+          "tr": "her gün"
+        }
+      ],
+      "words": {
+        "i": "ben",
+        "work": "çalışmak",
+        "here": "burada / buraya",
+        "every": "her",
+        "day": "gün"
+      },
+      "source": "subs/s04"
+    },
+    {
+      "en": "I go here, I go there!",
+      "speaker": "JORDAN",
+      "tr": "Oraya giderim, buraya giderim!",
+      "chunks": [],
+      "words": {
+        "i": "ben",
+        "go": "gitmek",
+        "here": "buraya",
+        "there": "oraya"
+      },
+      "source": "subs/s04"
+    },
+    {
+      "en": "I'm here at seven every day.",
+      "speaker": "JORDAN",
+      "tr": "Her gün saat yedide buradayım.",
+      "chunks": [
+        {
+          "en": "at seven",
+          "tr": "saat yedide"
+        },
+        {
+          "en": "every day",
+          "tr": "her gün"
+        }
+      ],
+      "words": {
+        "i'm": "ben … -ım",
+        "here": "burada",
+        "at": "-de (saat için)",
+        "seven": "yedi",
+        "every": "her",
+        "day": "gün"
+      },
+      "source": "subs/s04"
+    },
+    {
+      "en": "A woman was here!",
+      "speaker": "JORDAN",
+      "tr": "Burada bir kadın vardı!",
+      "chunks": [
+        {
+          "en": "was here",
+          "tr": "buradaydı"
+        }
+      ],
+      "words": {
+        "a": "bir",
+        "woman": "kadın",
+        "was": "idi (-di)",
+        "here": "burada"
+      },
+      "source": "subs/s04"
+    },
+    {
+      "en": "At seven.",
+      "speaker": "JORDAN",
+      "tr": "Saat yedide.",
+      "chunks": [
+        {
+          "en": "At seven",
+          "tr": "saat yedide"
+        }
+      ],
+      "words": {
+        "at": "-de (saat için)",
+        "seven": "yedi"
+      },
+      "source": "subs/s04"
+    },
+    {
+      "en": "Red coat.",
+      "speaker": "JORDAN",
+      "tr": "Kırmızı palto.",
+      "chunks": [],
+      "words": {
+        "red": "kırmızı",
+        "coat": "palto"
+      },
+      "source": "subs/s04"
+    },
+    {
+      "en": "She waits.",
+      "speaker": "JORDAN",
+      "tr": "Bekliyor.",
+      "chunks": [],
+      "words": {
+        "she": "o (kadın)",
+        "waits": "bekler"
+      },
+      "source": "subs/s04"
+    },
+    {
+      "en": "She looks at the sea.",
+      "speaker": "JORDAN",
+      "tr": "Denize bakıyor.",
+      "chunks": [
+        {
+          "en": "looks at",
+          "tr": "-e bakar"
+        }
+      ],
+      "words": {
+        "she": "o (kadın)",
+        "looks": "bakar",
+        "at": "-e (bakmak fiiliyle)",
+        "the": "(belirli tanımlık)",
+        "sea": "deniz"
+      },
+      "source": "subs/s04"
+    },
+    {
+      "en": "She waits, then she goes.",
+      "speaker": "JORDAN",
+      "tr": "Bekliyor, sonra gidiyor.",
+      "chunks": [],
+      "words": {
+        "she": "o (kadın)",
+        "waits": "bekler",
+        "then": "sonra",
+        "goes": "gider"
+      },
+      "source": "subs/s04"
+    },
+    {
+      "en": "Who is she?",
+      "speaker": "ALEX",
+      "tr": "O kim?",
+      "chunks": [],
+      "words": {
+        "who": "kim",
+        "is": "-dır / -dir (olmak)",
+        "she": "o (kadın)"
+      },
+      "source": "subs/k2-who"
+    },
+    {
+      "en": "Her name?",
+      "speaker": "JORDAN",
+      "tr": "Adı mı?",
+      "chunks": [],
+      "words": {
+        "her": "onun (kadın)",
+        "name": "ad, isim"
+      },
+      "source": "subs/k2-who"
+    },
+    {
+      "en": "Helen, I think.",
+      "speaker": "JORDAN",
+      "tr": "Helen, sanırım.",
+      "chunks": [
+        {
+          "en": "I think",
+          "tr": "sanırım"
+        }
+      ],
+      "words": {
+        "i": "ben",
+        "think": "düşünmek / sanmak"
+      },
+      "source": "subs/k2-who"
+    },
+    {
+      "en": "Yeah, Helen.",
+      "speaker": "JORDAN",
+      "tr": "Evet, Helen.",
+      "chunks": [],
+      "words": {
+        "yeah": "evet (günlük dil)"
+      },
+      "source": "subs/k2-who"
+    },
+    {
+      "en": "Where is she now?",
+      "speaker": "ALEX",
+      "tr": "Şimdi nerede?",
+      "chunks": [],
+      "words": {
+        "where": "nerede",
+        "is": "-dır / -dir (olmak)",
+        "she": "o (kadın)",
+        "now": "şimdi"
+      },
+      "source": "subs/k2-who"
+    },
+    {
+      "en": "I don't know.",
+      "speaker": "JORDAN",
+      "tr": "Bilmiyorum.",
+      "chunks": [
+        {
+          "en": "I don't know",
+          "tr": "Bilmiyorum"
+        }
+      ],
+      "words": {
+        "i": "ben",
+        "don't": "-ma / -me (olumsuz)",
+        "know": "bilmek"
+      },
+      "source": "subs/k2-who"
+    },
+    {
+      "en": "The hill café, I think?",
+      "speaker": "JORDAN",
+      "tr": "Tepedeki kafe, sanırım?",
+      "chunks": [
+        {
+          "en": "the hill café",
+          "tr": "tepedeki kafe"
+        },
+        {
+          "en": "I think",
+          "tr": "sanırım"
+        }
+      ],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "hill": "tepe",
+        "café": "kafe",
+        "i": "ben",
+        "think": "düşünmek / sanmak"
+      },
+      "source": "subs/k2-who"
+    },
+    {
+      "en": "Look! She gives me this.",
+      "speaker": "JORDAN",
+      "tr": "Bak! Bunu bana veriyor.",
+      "chunks": [],
+      "words": {
+        "look": "bak",
+        "she": "o (kadın)",
+        "gives": "verir",
+        "me": "bana",
+        "this": "bu"
+      },
+      "source": "subs/s05"
+    },
+    {
+      "en": "She says: \"For the radio friend.\"",
+      "speaker": "JORDAN",
+      "tr": "Diyor ki: \"Telsizci arkadaş için.\"",
+      "chunks": [
+        {
+          "en": "the radio friend",
+          "tr": "telsizci arkadaş"
+        }
+      ],
+      "words": {
+        "she": "o (kadın)",
+        "says": "der",
+        "for": "için",
+        "the": "(belirli tanımlık)",
+        "radio": "telsiz",
+        "friend": "arkadaş"
+      },
+      "source": "subs/s05"
+    },
+    {
+      "en": "For me?",
+      "speaker": "ALEX",
+      "tr": "Benim için mi?",
+      "chunks": [],
+      "words": {
+        "for": "için",
+        "me": "ben (için)"
+      },
+      "source": "subs/s05"
+    },
+    {
+      "en": "Yes! You have the radio. Here.",
+      "speaker": "JORDAN",
+      "tr": "Evet! Telsiz sende. Al bakalım.",
+      "chunks": [
+        {
+          "en": "You have",
+          "tr": "Sende … var"
+        }
+      ],
+      "words": {
+        "yes": "evet",
+        "you": "sen",
+        "have": "sahip olmak (-ın var)",
+        "the": "(belirli tanımlık)",
+        "radio": "telsiz",
+        "here": "al, buyur"
+      },
+      "source": "subs/s05"
+    },
+    {
+      "en": "He works every day.",
+      "speaker": "ALEX",
+      "tr": "Her gün çalışıyor.",
+      "chunks": [
+        {
+          "en": "every day",
+          "tr": "her gün"
+        }
+      ],
+      "words": {
+        "he": "o (erkek)",
+        "works": "çalışır",
+        "every": "her",
+        "day": "gün"
+      },
+      "source": "subs/s06"
+    },
+    {
+      "en": "Oh no.",
+      "speaker": "JORDAN",
+      "tr": "Ah, olamaz.",
+      "chunks": [
+        {
+          "en": "Oh no",
+          "tr": "Ah, olamaz"
+        }
+      ],
+      "words": {
+        "oh": "ah",
+        "no": "olamaz (ünlem)"
+      },
+      "source": "subs/s07"
+    },
+    {
+      "en": "No battery!",
+      "speaker": "JORDAN",
+      "tr": "Pili bitmiş!",
+      "chunks": [
+        {
+          "en": "No battery",
+          "tr": "Pil yok / pili bitmiş"
+        }
+      ],
+      "words": {
+        "no": "yok",
+        "battery": "pil"
+      },
+      "source": "subs/s07"
+    },
+    {
+      "en": "Oh no!",
+      "speaker": "ALEX",
+      "tr": "Ah, olamaz!",
+      "chunks": [
+        {
+          "en": "Oh no",
+          "tr": "Ah, olamaz"
+        }
+      ],
+      "words": {
+        "oh": "ah",
+        "no": "olamaz (ünlem)"
+      },
+      "source": "subs/s07"
+    },
+    {
+      "en": "Is this Maya's map?",
+      "speaker": "JORDAN",
+      "tr": "Bu Maya'nın haritası mı?",
+      "chunks": [],
+      "words": {
+        "is": "-dır / -dir (olmak)",
+        "this": "bu",
+        "maya's": "Maya'nın",
+        "map": "harita"
+      },
+      "source": "subs/s07"
+    },
+    {
+      "en": "From Tide & Pages?",
+      "speaker": "JORDAN",
+      "tr": "Tide & Pages'ten mi?",
+      "chunks": [],
+      "words": {
+        "from": "-den"
+      },
+      "source": "subs/s07"
+    },
+    {
+      "en": "Yes! Maya is my friend.",
+      "speaker": "ALEX",
+      "tr": "Evet! Maya benim arkadaşım.",
+      "chunks": [],
+      "words": {
+        "yes": "evet",
+        "is": "-dır / -dir (olmak)",
+        "my": "benim",
+        "friend": "arkadaş"
+      },
+      "source": "subs/s07"
+    },
+    {
+      "en": "My friend Sam… no, Maya's cousin Sam!",
+      "speaker": "JORDAN",
+      "tr": "Arkadaşım Sam… yok, Maya'nın kuzeni Sam!",
+      "chunks": [],
+      "words": {
+        "my": "benim",
+        "friend": "arkadaş",
+        "no": "yok, hayır (düzeltme)",
+        "maya's": "Maya'nın",
+        "cousin": "kuzen"
+      },
+      "source": "subs/s07"
+    },
+    {
+      "en": "He can fix it!",
+      "speaker": "JORDAN",
+      "tr": "O tamir edebilir!",
+      "chunks": [
+        {
+          "en": "can fix",
+          "tr": "tamir edebilir"
+        }
+      ],
+      "words": {
+        "he": "o (erkek)",
+        "can": "-ebilir",
+        "fix": "tamir etmek",
+        "it": "onu"
+      },
+      "source": "subs/s07"
+    },
+    {
+      "en": "What does she wear?",
+      "speaker": "TASK",
+      "tr": "Ne giyiyor?",
+      "chunks": [],
+      "words": {
+        "what": "ne",
+        "does": "(soru yardımcısı)",
+        "she": "o (kadın)",
+        "wear": "giymek"
+      },
+      "source": "scenes:t-gorev.i1"
+    },
+    {
+      "en": "What does she do?",
+      "speaker": "TASK",
+      "tr": "Ne yapıyor?",
+      "chunks": [],
+      "words": {
+        "what": "ne",
+        "does": "(soru yardımcısı)",
+        "she": "o (kadın)",
+        "do": "yapmak"
+      },
+      "source": "scenes:t-gorev.i2"
+    },
+    {
+      "en": "What does she give Jordan?",
+      "speaker": "TASK",
+      "tr": "Jordan'a ne veriyor?",
+      "chunks": [],
+      "words": {
+        "what": "ne",
+        "does": "(soru yardımcısı)",
+        "she": "o (kadın)",
+        "give": "vermek"
+      },
+      "source": "scenes:t-gorev.i3"
+    }
+  ],
+  "phrases": [
+    {
+      "en": "She was here.",
+      "tr": "Buradaydı.",
+      "words": {
+        "she": "o (kadın)",
+        "was": "idi (-di)",
+        "here": "burada"
+      },
+      "source": "content:targetPhrases",
+      "note": "altyazıda 'A woman was here!' olarak geçiyor; was yalnızca tanıma"
+    }
+  ],
+  "notes": [
+    "Türk öğrenci tuzağı: 'I am late, sorry me.' — Türkçedeki 'kusura bakma beni' kalıbı; İngilizcede önce 'Sorry,' sonra 'I'm late.' gelir. Tepki satırında Türkçe karşılık bilerek bozuk bırakıldı ve (Hatalı) diye işaretlendi.",
+    "3. tekil -s: 'She waits.' / 'He works.' Türkçede şimdiki zamanla çevrildi (bekliyor, çalışıyor), çünkü anlatım o anı ve alışkanlığı birlikte veriyor.",
+    "'was' yalnızca tanıma düzeyinde (H-032); 'A woman was here!' → 'Burada bir kadın vardı!'.",
+    "'the radio friend' Ellen'in Alex'e (telsizi taşıyana) verdiği ad; 'telsizci arkadaş' olarak çevrildi.",
+    "Görev seçenekleri (A red coat. / A yellow raincoat. …) kullanıcı kararı gereği çevrilmedi."
+  ]
+}
