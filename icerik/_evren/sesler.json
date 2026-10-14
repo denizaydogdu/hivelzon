@@ -41,11 +41,11 @@
     "name": "Sarah",
     "modelId": "eleven_v3",
     "speed": 0.9,
-    "keyFile": "~/.config/hivelzon/elevenlabs-1.env",
-    "ledger": "kitaplar/_maliyet/elevenlabs-hesap1-karakter.json",
+    "keyFile": "~/.config/hivelzon/elevenlabs-4.env",
+    "ledger": "kitaplar/_maliyet/elevenlabs-hesap4-karakter.json",
     "monthlyCharCap": 10000,
     "reason": "Kitaplardaki ve dilbilgisi derslerindeki İngilizce ses (DILBILGISI §2). Yalnız kısa İngilizce ifadeler okunur.",
-    "note": "2026-10-14: hesap2 doldu; kısa İngilizce ifadeler için hesap1 (videoGenerator, kullanıcı onaylı) kullanılıyor. Kota yenilenince tekrar değerlendirilir."
+    "note": "2026-10-14: hesap4 (kullanıcının arkadaşının ücretsiz hesabı) — B6–B12 bölüm sesleri."
   },
   "episodeEnglish": {
     "note": "Bölüm replikleri (H-085, tts_episode_en.py): audio_manifest.json'daki İngilizce satırlar. Sesler ve ayarlar B1–B4 ile aynı (bölümlerin PROMPTS.md'si). Yeni karakterin sesi kullanıcı onayıyla eklenir.",
@@ -77,6 +77,11 @@
         "name": "Chris",
         "voiceId": "iP95p4xoKVk53GoZ742B",
         "note": "2026-10-14: ana oturum seçimi (kullanıcının genel onayı): samimi, gündelik, Amerikan aksanı; A1 için net; George (İngiliz) ile karışmaz. Charlie (Avustralya aksanı) yerine."
+      },
+      "SAM": {
+        "name": "Liam",
+        "voiceId": "TX3LPaxmHKxFdv7VOQHJ",
+        "note": "2026-10-14: ana oturum seçimi (kullanıcının genel onayı): genç, enerjik, Amerikan; CHARACTER_PROFILES 'genç, enerjik, hızlı'; Chris (Jordan) ve George'tan ayrışır. /v1/voices ile doğrulandı."
       }
     }
   },
