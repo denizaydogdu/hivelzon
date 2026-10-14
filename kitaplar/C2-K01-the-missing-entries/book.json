@@ -1,0 +1,228 @@
+{
+  "schemaVersion": 1,
+  "id": "C2-K01",
+  "slug": "C2-K01-the-missing-entries",
+  "level": "C2",
+  "genre": "mystery",
+  "title": "The Missing Entries",
+  "titleTr": "Kayıp Maddeler",
+  "blurbTr": "Köy kütüphanesindeki dev sözlükten her gece bir madde özenle kesilip alınıyor. Herkes omuz silkiyor; kütüphane zaten bütçe incelemesinde, eski bir sözlük kimin umurunda? Emekli sözlükbilimci Edmund Pryce ise bunu kişisel bir hakaret sayıyor. Defterini açıyor, şüphelileri sıralıyor, titiz sorgulamalara girişiyor. Ama kayıp kelimeler bir şey söylemeye çalışıyor gibi. Peki kim, neden?",
+  "hookEn": "Somebody was stealing words from the village dictionary, one entry a night, and Edmund Pryce took it personally.",
+  "contentVersion": 1,
+  "status": "DRAFT",
+  "aiGenerated": true,
+  "palette": {
+    "background": "#F5EEDF",
+    "surface": "#E9DDC6",
+    "text": "#2A2016",
+    "accent": "#7A5230",
+    "highlight": "#E2B21C"
+  },
+  "cover": "cover.png",
+  "properNouns": [
+    "Edmund",
+    "Pryce",
+    "Quillham",
+    "Thornwick",
+    "Janet",
+    "Moss",
+    "Keith",
+    "Dunmore",
+    "Callum",
+    "Reid",
+    "Alf",
+    "Tidy",
+    "Gordon",
+    "Speake",
+    "Quizzly",
+    "Marjorie",
+    "Fenn",
+    "Nigel",
+    "Brimble",
+    "Zofia",
+    "Lenart"
+  ],
+  "narration": {
+    "modelId": "eleven_v3",
+    "speed": 1.05,
+    "voiceId": "EXAVITQu4vr4xnSDxMaL"
+  },
+  "chapters": [
+    {
+      "id": "c1",
+      "title": "An Absence",
+      "titleTr": "Bir Eksiklik",
+      "pages": [
+        {
+          "id": "p01",
+          "image": "p01.png"
+        },
+        {
+          "id": "p02",
+          "image": null
+        },
+        {
+          "id": "p03",
+          "image": null
+        },
+        {
+          "id": "p04",
+          "image": null
+        }
+      ]
+    },
+    {
+      "id": "c2",
+      "title": "Suspects",
+      "titleTr": "Şüpheliler",
+      "pages": [
+        {
+          "id": "p05",
+          "image": "p05.png"
+        },
+        {
+          "id": "p06",
+          "image": null
+        },
+        {
+          "id": "p07",
+          "image": null
+        },
+        {
+          "id": "p08",
+          "image": null
+        }
+      ]
+    },
+    {
+      "id": "c3",
+      "title": "A Pattern",
+      "titleTr": "Bir Örüntü",
+      "pages": [
+        {
+          "id": "p09",
+          "image": "p09.png"
+        },
+        {
+          "id": "p10",
+          "image": null
+        },
+        {
+          "id": "p11",
+          "image": null
+        },
+        {
+          "id": "p12",
+          "image": null
+        }
+      ]
+    },
+    {
+      "id": "c4",
+      "title": "The Stakeout",
+      "titleTr": "Gözetleme",
+      "pages": [
+        {
+          "id": "p13",
+          "image": "p13.png"
+        },
+        {
+          "id": "p14",
+          "image": null
+        },
+        {
+          "id": "p15",
+          "image": null
+        },
+        {
+          "id": "p16",
+          "image": null
+        }
+      ]
+    },
+    {
+      "id": "c5",
+      "title": "Correspondence",
+      "titleTr": "Yazışma",
+      "pages": [
+        {
+          "id": "p17",
+          "image": "p17.png"
+        },
+        {
+          "id": "p18",
+          "image": null
+        },
+        {
+          "id": "p19",
+          "image": null
+        },
+        {
+          "id": "p20",
+          "image": null
+        }
+      ]
+    },
+    {
+      "id": "c6",
+      "title": "Callum",
+      "titleTr": "Callum",
+      "pages": [
+        {
+          "id": "p21",
+          "image": "p21.png"
+        },
+        {
+          "id": "p22",
+          "image": null
+        },
+        {
+          "id": "p23",
+          "image": null
+        }
+      ]
+    },
+    {
+      "id": "c7",
+      "title": "The Basket",
+      "titleTr": "Sepet",
+      "pages": [
+        {
+          "id": "p24",
+          "image": "p24.png"
+        },
+        {
+          "id": "p25",
+          "image": null
+        },
+        {
+          "id": "p26",
+          "image": null
+        },
+        {
+          "id": "p27",
+          "image": null
+        }
+      ]
+    },
+    {
+      "id": "c8",
+      "title": "Definitions",
+      "titleTr": "Tanımlar",
+      "pages": [
+        {
+          "id": "p28",
+          "image": "p28.png"
+        },
+        {
+          "id": "p29",
+          "image": null
+        },
+        {
+          "id": "p30",
+          "image": null
+        }
+      ]
+    }
+  ]
+}

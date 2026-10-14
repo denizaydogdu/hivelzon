@@ -1,0 +1,201 @@
+{
+  "schemaVersion": 1,
+  "id": "C1-K03",
+  "slug": "C1-K03-the-anniversary-committee",
+  "level": "C1",
+  "genre": "humor",
+  "title": "The Anniversary Committee",
+  "titleTr": "Yıl Dönümü Komitesi",
+  "blurbTr": "Gwen Holloway'in hayattaki tek hedefi, göze batmadan terfi almak. Sonra bir toplantıdan yeterince hızlı çıkamıyor ve çalıştığı şemsiye şirketinin 50. yıl kutlama komitesinin başkanı oluyor. Komitede logo takıntılı bir pazarlama müdürü, patronun her şeye \"efsane\" diyen yeğeni, her şeyi not alan bir stajyer ve \"kapalı alanda havai fişek\" önerisi var. Kutlamaya yedi hafta kaldı. Gwen kimsenin dikkatini çekmeden bundan nasıl kurtulacak?",
+  "hookEn": "Gwen joined the anniversary committee by accident: she was the only person who didn't leave the room fast enough.",
+  "contentVersion": 1,
+  "status": "DRAFT",
+  "aiGenerated": true,
+  "palette": {
+    "background": "#F3EFE6",
+    "surface": "#E3DCCB",
+    "text": "#2B2230",
+    "accent": "#6B2D5C",
+    "highlight": "#C9302C"
+  },
+  "cover": "cover.png",
+  "properNouns": [
+    "Gwen",
+    "Holloway",
+    "Howard",
+    "Brindle",
+    "Albert",
+    "Clive",
+    "Marsh",
+    "Jasper",
+    "Nell",
+    "Okafor",
+    "Derek",
+    "Pole",
+    "Ambrose",
+    "Penrose",
+    "Dorothy",
+    "Fairweather",
+    "Margaret",
+    "Wexley",
+    "Seaborough",
+    "Grandad"
+  ],
+  "narration": {
+    "modelId": "eleven_v3",
+    "speed": 1.05,
+    "voiceId": "EXAVITQu4vr4xnSDxMaL"
+  },
+  "chapters": [
+    {
+      "id": "c1",
+      "title": "The Meeting",
+      "titleTr": "Toplantı",
+      "pages": [
+        {
+          "id": "p01",
+          "image": "p01.png"
+        },
+        {
+          "id": "p02",
+          "image": null
+        },
+        {
+          "id": "p03",
+          "image": null
+        },
+        {
+          "id": "p04",
+          "image": null
+        },
+        {
+          "id": "p05",
+          "image": null
+        }
+      ]
+    },
+    {
+      "id": "c2",
+      "title": "Subcommittees",
+      "titleTr": "Alt Komiteler",
+      "pages": [
+        {
+          "id": "p06",
+          "image": "p06.png"
+        },
+        {
+          "id": "p07",
+          "image": null
+        },
+        {
+          "id": "p08",
+          "image": null
+        },
+        {
+          "id": "p09",
+          "image": null
+        }
+      ]
+    },
+    {
+      "id": "c3",
+      "title": "The Basement",
+      "titleTr": "Bodrum",
+      "pages": [
+        {
+          "id": "p10",
+          "image": "p10.png"
+        },
+        {
+          "id": "p11",
+          "image": null
+        },
+        {
+          "id": "p12",
+          "image": null
+        },
+        {
+          "id": "p13",
+          "image": null
+        },
+        {
+          "id": "p14",
+          "image": null
+        }
+      ]
+    },
+    {
+      "id": "c4",
+      "title": "Escalation",
+      "titleTr": "Tırmanış",
+      "pages": [
+        {
+          "id": "p15",
+          "image": "p15.png"
+        },
+        {
+          "id": "p16",
+          "image": null
+        },
+        {
+          "id": "p17",
+          "image": null
+        },
+        {
+          "id": "p18",
+          "image": null
+        }
+      ]
+    },
+    {
+      "id": "c5",
+      "title": "Three Days",
+      "titleTr": "Üç Gün",
+      "pages": [
+        {
+          "id": "p19",
+          "image": "p19.png"
+        },
+        {
+          "id": "p20",
+          "image": null
+        },
+        {
+          "id": "p21",
+          "image": null
+        },
+        {
+          "id": "p22",
+          "image": null
+        },
+        {
+          "id": "p23",
+          "image": null
+        }
+      ]
+    },
+    {
+      "id": "c6",
+      "title": "The Speech",
+      "titleTr": "Konuşma",
+      "pages": [
+        {
+          "id": "p24",
+          "image": "p24.png"
+        },
+        {
+          "id": "p25",
+          "image": null
+        },
+        {
+          "id": "p26",
+          "image": null
+        },
+        {
+          "id": "p27",
+          "image": null
+        }
+      ]
+    }
+  ]
+}

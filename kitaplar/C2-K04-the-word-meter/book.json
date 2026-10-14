@@ -1,0 +1,216 @@
+{
+  "schemaVersion": 1,
+  "id": "C2-K04",
+  "slug": "C2-K04-the-word-meter",
+  "level": "C2",
+  "genre": "scifi-fantasy",
+  "title": "The Word Meter",
+  "titleTr": "Kelime Sayacı",
+  "blurbTr": "Halvern'de herkesin boynunda bir sayaç var ve günde dokuz yüz kelime hakkı. İnsanlar el işaretleriyle anlaşıyor, düğün yeminleri için aylarca kelime biriktiriyor. Kelime komisyoncusu Petra'nın birikimi on bir yıllık; onu tek bir konuşma için, yıllardır küs olduğu babasıyla yapacağı konuşma için saklıyor. Kelime Hizmeti biriken hakların ay sonunda silineceğini duyurunca yola çıkmaya hazırlanıyor. Ama bir sabah sayacı, biriktirdiğinden çok daha fazlasını gösteriyor.",
+  "hookEn": "In the city of Halvern, every citizen was allowed nine hundred spoken words a day, and Petra had been saving hers for eleven years.",
+  "contentVersion": 1,
+  "status": "DRAFT",
+  "aiGenerated": true,
+  "palette": {
+    "background": "#EEECE7",
+    "surface": "#D8D6D1",
+    "text": "#22252A",
+    "accent": "#8A5A12",
+    "highlight": "#B3262E"
+  },
+  "cover": "cover.png",
+  "properNouns": [
+    "Halvern",
+    "Petra",
+    "Lind",
+    "Anna",
+    "Osric",
+    "Pell",
+    "Hilde",
+    "Matthias",
+    "Eastmere",
+    "Joaquim",
+    "Varga",
+    "Fenwick",
+    "Copper Street",
+    "Lantern Street",
+    "Glass Arcade",
+    "Iron Bridge"
+  ],
+  "narration": {
+    "modelId": "eleven_v3",
+    "speed": 1.05,
+    "voiceId": "EXAVITQu4vr4xnSDxMaL"
+  },
+  "chapters": [
+    {
+      "id": "c1",
+      "title": "Nine Hundred",
+      "titleTr": "Dokuz Yüz",
+      "pages": [
+        {
+          "id": "p01",
+          "image": "p01.png"
+        },
+        {
+          "id": "p02",
+          "image": null
+        },
+        {
+          "id": "p03",
+          "image": null
+        },
+        {
+          "id": "p04",
+          "image": null
+        },
+        {
+          "id": "p05",
+          "image": null
+        }
+      ]
+    },
+    {
+      "id": "c2",
+      "title": "The Balance",
+      "titleTr": "Bakiye",
+      "pages": [
+        {
+          "id": "p06",
+          "image": "p06.png"
+        },
+        {
+          "id": "p07",
+          "image": null
+        },
+        {
+          "id": "p08",
+          "image": null
+        },
+        {
+          "id": "p09",
+          "image": null
+        }
+      ]
+    },
+    {
+      "id": "c3",
+      "title": "Joaquim",
+      "titleTr": "Joaquim",
+      "pages": [
+        {
+          "id": "p10",
+          "image": "p10.png"
+        },
+        {
+          "id": "p11",
+          "image": null
+        },
+        {
+          "id": "p12",
+          "image": null
+        },
+        {
+          "id": "p13",
+          "image": null
+        }
+      ]
+    },
+    {
+      "id": "c4",
+      "title": "The Archive",
+      "titleTr": "Arşiv",
+      "pages": [
+        {
+          "id": "p14",
+          "image": "p14.png"
+        },
+        {
+          "id": "p15",
+          "image": null
+        },
+        {
+          "id": "p16",
+          "image": null
+        },
+        {
+          "id": "p17",
+          "image": null
+        }
+      ]
+    },
+    {
+      "id": "c5",
+      "title": "Habit",
+      "titleTr": "Alışkanlık",
+      "pages": [
+        {
+          "id": "p18",
+          "image": "p18.png"
+        },
+        {
+          "id": "p19",
+          "image": null
+        },
+        {
+          "id": "p20",
+          "image": null
+        },
+        {
+          "id": "p21",
+          "image": null
+        },
+        {
+          "id": "p22",
+          "image": null
+        }
+      ]
+    },
+    {
+      "id": "c6",
+      "title": "The Speech",
+      "titleTr": "Konuşma",
+      "pages": [
+        {
+          "id": "p23",
+          "image": "p23.png"
+        },
+        {
+          "id": "p24",
+          "image": null
+        },
+        {
+          "id": "p25",
+          "image": null
+        },
+        {
+          "id": "p26",
+          "image": null
+        }
+      ]
+    },
+    {
+      "id": "c7",
+      "title": "Zero",
+      "titleTr": "Sıfır",
+      "pages": [
+        {
+          "id": "p27",
+          "image": "p27.png"
+        },
+        {
+          "id": "p28",
+          "image": null
+        },
+        {
+          "id": "p29",
+          "image": null
+        },
+        {
+          "id": "p30",
+          "image": null
+        }
+      ]
+    }
+  ]
+}

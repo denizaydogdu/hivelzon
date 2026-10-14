@@ -117,7 +117,7 @@ Lina has a new home. It is old.
 She likes it.
 ```
 - Gövde düz metindir; `* _ \` [ ]` kullanılmaz (lint hatası).
-- Cümleler `. ! ? …` (ve ardından gelen tırnak) ile biter. *Mr., Mrs., Dr., St.* gibi kısaltmalar bölünmez. Alıntıdan sonra **küçük harfle** devam eden konuşma eki aynı cümledir (`"Stop!" says Lina.`); büyük harfle devam ederse iki cümle olur (`"Stop!"` · `Lina says.`).
+- Cümleler `. ! ? …` (ve ardından gelen tırnak) ile biter. *Mr., Mrs., Dr., St., e.g., i.e., a.m.* gibi kısaltmalar, rakamdan önceki *No. 3 / p. 12* ve ondalık sayılar bölünmez. Baş harf (*A. Serra*) yalnız sonraki sözcük `properNouns`'ta (ya da `data/proper_nouns.txt`'te) ise, önünde bir unvan varsa (*Ms A. Vale*) ya da başka bir baş harfle birlikteyse (*J. R. Hale*) bölünmez; "This is E. Meet me…" iki cümledir (H-073, `hvpipeline/sentsplit.py`). Özel adlar Unicode harfle okunur: *Lucía, Tomás, Zoë, Şebnem, Çağrı, Ömer* tek ad sayılır. Alıntıdan sonra **küçük harfle** devam eden konuşma eki aynı cümledir (`"Stop!" says Lina.`); büyük harfle devam ederse iki cümle olur (`"Stop!"` · `Lina says.`).
 - Bölümün ses metni: `Başlık.` + boş satır + paragraflar (boş satırla). `tts_book.py` bunu gönderir; `textSha256` bu metnin özetidir.
 
 ### 6.3 Paket: `_build/package/`

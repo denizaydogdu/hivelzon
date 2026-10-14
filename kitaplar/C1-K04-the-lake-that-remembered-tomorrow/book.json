@@ -1,0 +1,202 @@
+{
+  "schemaVersion": 1,
+  "id": "C1-K04",
+  "slug": "C1-K04-the-lake-that-remembered-tomorrow",
+  "level": "C1",
+  "genre": "scifi-fantasy",
+  "title": "The Lake That Remembered Tomorrow",
+  "titleTr": "Yarını Hatırlayan Göl",
+  "blurbTr": "Hidrolog Tomás Arrieta'nın görevi basit: Ardal köyündeki dağ gölü hakkındaki batıl inancı ölçümlerle çürütüp şehre dönmek. Terfisi bu rapora bağlı. Ama ilk sabah suya baktığında kendini bir çocuğa paltosunu verirken görüyor. Ertesi gün tam olarak bunu yapıyor. Ölçümler kusursuz biçimde normal; köylüler ise ona yalnızca gülümsüyor. Göl gerçekten yarını mı hatırlıyor?",
+  "hookEn": "In the lake at Ardal, Tomás saw himself doing something he had not yet decided to do.",
+  "contentVersion": 1,
+  "status": "DRAFT",
+  "aiGenerated": true,
+  "palette": {
+    "background": "#EEF0F4",
+    "surface": "#DADDE8",
+    "text": "#1D2130",
+    "accent": "#4B4377",
+    "highlight": "#C99A3E"
+  },
+  "cover": "cover.png",
+  "properNouns": [
+    "Tomás",
+    "Arrieta",
+    "Ardal",
+    "Petra",
+    "Nico",
+    "Hallam",
+    "Oriana",
+    "Aurel",
+    "Constantin",
+    "Luka"
+  ],
+  "narration": {
+    "modelId": "eleven_v3",
+    "speed": 1.05,
+    "voiceId": "EXAVITQu4vr4xnSDxMaL"
+  },
+  "chapters": [
+    {
+      "id": "c1",
+      "title": "Arrival",
+      "titleTr": "Varış",
+      "pages": [
+        {
+          "id": "p01",
+          "image": "p01.png"
+        },
+        {
+          "id": "p02",
+          "image": null
+        },
+        {
+          "id": "p03",
+          "image": null
+        },
+        {
+          "id": "p04",
+          "image": null
+        },
+        {
+          "id": "p05",
+          "image": null
+        }
+      ]
+    },
+    {
+      "id": "c2",
+      "title": "Instruments",
+      "titleTr": "Ölçüm Aletleri",
+      "pages": [
+        {
+          "id": "p06",
+          "image": "p06.png"
+        },
+        {
+          "id": "p07",
+          "image": null
+        },
+        {
+          "id": "p08",
+          "image": null
+        },
+        {
+          "id": "p09",
+          "image": null
+        }
+      ]
+    },
+    {
+      "id": "c3",
+      "title": "The Ledger",
+      "titleTr": "Kayıt Defteri",
+      "pages": [
+        {
+          "id": "p10",
+          "image": "p10.png"
+        },
+        {
+          "id": "p11",
+          "image": null
+        },
+        {
+          "id": "p12",
+          "image": null
+        },
+        {
+          "id": "p13",
+          "image": null
+        }
+      ]
+    },
+    {
+      "id": "c4",
+      "title": "What You Want",
+      "titleTr": "Ne İstediğin",
+      "pages": [
+        {
+          "id": "p14",
+          "image": "p14.png"
+        },
+        {
+          "id": "p15",
+          "image": null
+        },
+        {
+          "id": "p16",
+          "image": null
+        },
+        {
+          "id": "p17",
+          "image": null
+        }
+      ]
+    },
+    {
+      "id": "c5",
+      "title": "The Report",
+      "titleTr": "Rapor",
+      "pages": [
+        {
+          "id": "p18",
+          "image": "p18.png"
+        },
+        {
+          "id": "p19",
+          "image": null
+        },
+        {
+          "id": "p20",
+          "image": null
+        },
+        {
+          "id": "p21",
+          "image": null
+        }
+      ]
+    },
+    {
+      "id": "c6",
+      "title": "Storm",
+      "titleTr": "Fırtına",
+      "pages": [
+        {
+          "id": "p22",
+          "image": "p22.png"
+        },
+        {
+          "id": "p23",
+          "image": null
+        },
+        {
+          "id": "p24",
+          "image": null
+        },
+        {
+          "id": "p25",
+          "image": null
+        }
+      ]
+    },
+    {
+      "id": "c7",
+      "title": "Blank Water",
+      "titleTr": "Boş Su",
+      "pages": [
+        {
+          "id": "p26",
+          "image": "p26.png"
+        },
+        {
+          "id": "p27",
+          "image": null
+        },
+        {
+          "id": "p28",
+          "image": null
+        }
+      ]
+    }
+  ]
+}

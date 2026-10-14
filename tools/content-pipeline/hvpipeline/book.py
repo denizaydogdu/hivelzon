@@ -55,36 +55,17 @@ BOOK_LEVELS: dict[str, dict] = {
 }
 WORD_TOLERANCE = 0.20
 
-# Kısaltmadan sonraki nokta cümle sonu sayılmaz.
-ABBREVIATIONS = {"mr", "mrs", "ms", "dr", "st", "mt", "prof", "jr", "sr", "vs", "etc", "a.m", "p.m", "e.g", "i.e"}
-_END_RE = re.compile(r"[.!?…]+[\"”’')\]]*(?=\s|$)")
+# Cümle bölücü ortak modülde (kısaltma, baş harf, sayı kısaltması; H-073): sentsplit.py.
+from .sentsplit import ABBREVIATIONS, name_keys, split_sentences  # noqa: E402,F401
+
+
+def _default_names() -> frozenset[str]:
+    from .cefr import load_proper_nouns   # cefr book'u içe aktarmaz; döngü yok
+    return load_proper_nouns()
 
 
 class BookError(ValueError):
     pass
-
-
-def split_sentences(par: str) -> list[str]:
-    """Paragrafı cümlelere böler. Kısaltma (Mr.) ve alıntıdan sonra küçük harfle devam eden
-    cümle (\"Hello!\" says Lina.) bölünmez."""
-    out: list[str] = []
-    start = 0
-    for m in _END_RE.finditer(par):
-        token = par[start:m.start()].split()
-        last = token[-1].lower().rstrip(".") if token else ""
-        if m.group().startswith(".") and m.group().rstrip("\"”’')]") == "." and last in ABBREVIATIONS:
-            continue
-        rest = par[m.end():].lstrip()
-        if rest and rest[0].islower():
-            continue
-        s = par[start:m.end()].strip()
-        if s:
-            out.append(s)
-        start = m.end()
-    tail = par[start:].strip()
-    if tail:
-        out.append(tail)
-    return out
 
 
 @dataclass
@@ -145,7 +126,8 @@ class BookText:
         return [c.title for c in self.chapters] + [s.text for s in self.sentences()]
 
 
-def parse_text(text: str) -> BookText:
+def parse_text(text: str, names=frozenset()) -> BookText:
+    """`names`: özel ad anahtarları (baş harf kuralı: *A. Serra* bölünmez; sentsplit)."""
     title = None
     chapters: list[Chapter] = []
     errors: list[str] = []
@@ -204,7 +186,7 @@ def parse_text(text: str) -> BookText:
         for p in c.pages:
             k = 0
             for pi, par in enumerate(p.paragraphs, start=1):
-                for s in split_sentences(par):
+                for s in split_sentences(par, names):
                     k += 1
                     p.sentences.append(Sentence(f"{p.id}-s{k:02d}", s, pi))
     return BookText(title, chapters, errors)
@@ -278,7 +260,8 @@ class Book:
         except json.JSONDecodeError as e:
             raise BookError(f"{BOOK_FILE} geçersiz JSON: {e}") from e
         tp = d / TEXT_FILE
-        text = parse_text(tp.read_text(encoding="utf-8")) if tp.exists() else BookText(None, [], [f"{TEXT_FILE} yok"])
+        names = name_keys(meta.get("properNouns", []) or []) | _default_names()
+        text = parse_text(tp.read_text(encoding="utf-8"), names) if tp.exists() else BookText(None, [], [f"{TEXT_FILE} yok"])
         gp = d / GLOSSARY_FILE
         gl, ge = parse_glossary(gp.read_text(encoding="utf-8")) if gp.exists() else ([], [])
         return cls(d, meta, text, gl, ge)
@@ -293,10 +276,7 @@ class Book:
 
     @property
     def proper_nouns(self) -> set[str]:
-        out = set()
-        for p in self.meta.get("properNouns", []) or []:
-            out.update(w.lower() for w in re.findall(r"[A-Za-zÇĞİÖŞÜçğıöşüé']+", p))
-        return out
+        return name_keys(self.meta.get("properNouns", []) or [])
 
     def chapter_meta(self) -> list[dict]:
         return list(self.meta.get("chapters", []) or [])

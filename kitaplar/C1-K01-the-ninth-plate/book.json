@@ -1,0 +1,215 @@
+{
+  "schemaVersion": 1,
+  "id": "C1-K01",
+  "slug": "C1-K01-the-ninth-plate",
+  "level": "C1",
+  "genre": "mystery",
+  "title": "The Ninth Plate",
+  "titleTr": "Dokuzuncu Tabak",
+  "blurbTr": "Sekiz yabancı, karla kapanmış bir göl oteli ve dokuz kişilik bir masa. Emekli bulmaca yazarı Ruth Okafor, onları bu akşam yemeğine kimin ve neden çağırdığını bilmiyor. Davetiyedeki imza tanıdık değil, ama Ruth harflerin bir şey sakladığından emin. Her tabağın yanında bir paket var ve her paketin içinde konuklardan birinin çoktan unuttuğu bir eşya. Peki dokuzuncu tabak kimin için?",
+  "hookEn": "Eight strangers were invited to dinner, but the table had been laid for nine.",
+  "contentVersion": 1,
+  "status": "DRAFT",
+  "aiGenerated": true,
+  "palette": {
+    "background": "#F6F3EA",
+    "surface": "#E3ECE5",
+    "text": "#1B2722",
+    "accent": "#1F6B4E",
+    "highlight": "#C99A3C"
+  },
+  "cover": "cover.png",
+  "properNouns": [
+    "Ruth",
+    "Okafor",
+    "Calderbury",
+    "Glasswater",
+    "Fennick",
+    "Agnes",
+    "Thorne",
+    "Desmond",
+    "Pike",
+    "Ambrose",
+    "Hale",
+    "Felix",
+    "Arden",
+    "Bev",
+    "Hartley",
+    "Priya",
+    "Nair",
+    "Theo",
+    "Fallon",
+    "Crane",
+    "Maren",
+    "Daryl",
+    "Brie"
+  ],
+  "narration": {
+    "modelId": "eleven_v3",
+    "speed": 1.05,
+    "voiceId": "EXAVITQu4vr4xnSDxMaL"
+  },
+  "chapters": [
+    {
+      "id": "c1",
+      "title": "Snow",
+      "titleTr": "Kar",
+      "pages": [
+        {
+          "id": "p01",
+          "image": "p01.png"
+        },
+        {
+          "id": "p02",
+          "image": null
+        },
+        {
+          "id": "p03",
+          "image": null
+        },
+        {
+          "id": "p04",
+          "image": null
+        }
+      ]
+    },
+    {
+      "id": "c2",
+      "title": "Parcels",
+      "titleTr": "Paketler",
+      "pages": [
+        {
+          "id": "p05",
+          "image": "p05.png"
+        },
+        {
+          "id": "p06",
+          "image": null
+        },
+        {
+          "id": "p07",
+          "image": null
+        },
+        {
+          "id": "p08",
+          "image": null
+        }
+      ]
+    },
+    {
+      "id": "c3",
+      "title": "Suspicion",
+      "titleTr": "Şüphe",
+      "pages": [
+        {
+          "id": "p09",
+          "image": "p09.png"
+        },
+        {
+          "id": "p10",
+          "image": null
+        },
+        {
+          "id": "p11",
+          "image": null
+        },
+        {
+          "id": "p12",
+          "image": null
+        }
+      ]
+    },
+    {
+      "id": "c4",
+      "title": "That Night",
+      "titleTr": "O Gece",
+      "pages": [
+        {
+          "id": "p13",
+          "image": "p13.png"
+        },
+        {
+          "id": "p14",
+          "image": null
+        },
+        {
+          "id": "p15",
+          "image": null
+        },
+        {
+          "id": "p16",
+          "image": null
+        }
+      ]
+    },
+    {
+      "id": "c5",
+      "title": "Candles",
+      "titleTr": "Mumlar",
+      "pages": [
+        {
+          "id": "p17",
+          "image": "p17.png"
+        },
+        {
+          "id": "p18",
+          "image": null
+        },
+        {
+          "id": "p19",
+          "image": null
+        },
+        {
+          "id": "p20",
+          "image": null
+        }
+      ]
+    },
+    {
+      "id": "c6",
+      "title": "The Anagram",
+      "titleTr": "Anagram",
+      "pages": [
+        {
+          "id": "p21",
+          "image": "p21.png"
+        },
+        {
+          "id": "p22",
+          "image": null
+        },
+        {
+          "id": "p23",
+          "image": null
+        },
+        {
+          "id": "p24",
+          "image": null
+        }
+      ]
+    },
+    {
+      "id": "c7",
+      "title": "The Ninth Guest",
+      "titleTr": "Dokuzuncu Konuk",
+      "pages": [
+        {
+          "id": "p25",
+          "image": "p25.png"
+        },
+        {
+          "id": "p26",
+          "image": null
+        },
+        {
+          "id": "p27",
+          "image": null
+        },
+        {
+          "id": "p28",
+          "image": null
+        }
+      ]
+    }
+  ]
+}
