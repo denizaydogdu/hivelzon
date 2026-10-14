@@ -25,3 +25,5 @@
 | — | Editör toplu kontrolü | Editör | Bekliyor |
 
 - 2026-10-14: Kullanıcı metni ve Türkçe çeviriyi onayladı (H-028). Görseller kapak + bölüm başı olarak üretilecek.
+
+- 2026-10-14: p09'daki "the biggest clouds Nia ever saw" cümlesi (A2'de past perfect gerektiren yapı) karşılaştırmayla yeniden yazıldı (H-076 müfredat incelemesi).

@@ -2350,27 +2350,30 @@
       "source": "p09-s12"
     },
     {
-      "en": "Soon they were the biggest clouds Nia ever saw.",
-      "tr": "Çok geçmeden Nia'nın şimdiye kadar gördüğü en büyük bulutlar oldular.",
+      "en": "Soon they were bigger than all the clouds in Nia's books.",
+      "tr": "Çok geçmeden Nia'nın kitaplarındaki bütün bulutlardan daha büyük oldular.",
       "chunks": [
         {
-          "en": "the biggest clouds",
-          "tr": "en büyük bulutlar"
+          "en": "bigger than",
+          "tr": "-den daha büyük"
         },
         {
-          "en": "ever saw",
-          "tr": "şimdiye kadar gördüğü"
+          "en": "all the clouds in Nia's books",
+          "tr": "Nia'nın kitaplarındaki bütün bulutlar"
         }
       ],
       "words": {
         "soon": "çok geçmeden, yakında",
         "they": "onlar",
         "were": "idi, -di (be → were)",
+        "bigger": "daha büyük (big → bigger)",
+        "than": "-den, -dan (karşılaştırmada)",
+        "all": "bütün, hepsi",
         "the": "(belirli tanımlık)",
-        "biggest": "en büyük (big → biggest)",
         "clouds": "bulutlar",
-        "ever": "hiç, şimdiye kadar",
-        "saw": "gördü (see → saw)"
+        "in": "içinde, -de",
+        "nia's": "Nia'nın",
+        "books": "kitaplar"
       },
       "source": "p09-s13"
     },

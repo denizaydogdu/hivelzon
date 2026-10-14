@@ -135,7 +135,7 @@ Leo taught her about clouds.
 
 On Friday morning, the sky was white and flat. Nia ran outside early.
 
-Then the clouds came. They got darker and bigger. Soon they were the biggest clouds Nia ever saw.
+Then the clouds came. They got darker and bigger. Soon they were bigger than all the clouds in Nia's books.
 
 The wind was cooler now. The trees moved.
 
