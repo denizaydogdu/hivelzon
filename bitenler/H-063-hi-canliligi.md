@@ -1,6 +1,6 @@
 # H-063: Hi'nin canlılığı (ifadeler ve animasyonlar)
 
-- **Durum:** Devam ediyor (kod `main`'de, flutter 716/716; kullanıcının ifadelere bakması bekleniyor; simülatör önce/sonra H-064'e)
+- **Durum:** Bitti (2026-10-14; flutter 716/716; kullanıcı onayladı)
 - **Tür:** Uygulama (tasarım)
 - **Faz:** Tasarım yenilemesi T6 (`docs/UYGULAMA-PLANI.md`)
 - **Bağımlılık:** H-057
@@ -44,3 +44,4 @@ Kendi dalında (`h-063-hi-canliligi`); sorun olursa birleştirme commit'i `git r
 - **Vitrin:** `/tasarim` → "Hi ifadeleri" (7 ifade + seçilerek geçiş denenen büyük Hi), `showcase_hi_section.dart`.
 - **Testler:** `test/features/hi/hi_expressions_test.dart` (ifade başına çizim + etiket, geçiş ara değeri, hareketi azalt, nefes sınırı ve durması, göz kırpma, selamlama, balon dokunma alanı ≥ 48 ve etiket); `hi_ui_test` panel bölme eşdeğerliği ve ifade eşlemesi; H-061/H-062 testlerine mutlu Hi denetimi. Golden: `test/goldens/images/h063_hi_<ifade>.png` (7), `showcase_hi.png`; yeniden üretilen: `h062_bolum_sonu`, `h062_ipucu`, `h061_tekrar_ozet`, `h059_hi_gizlilik` (yalnız ışığın dinlenme değeri; eskiden nabız bitişi kareye göre değişiyordu). Hepsi gözle kontrol edildi.
 - **Açık:** simülatör önce/sonra ekran görüntüleri (`.yerel/h-063/`) bu adımda alınmadı; birleştirmeden önce alınacak.
+2026-10-14: Kullanıcı 7 ifadeyi onayladı. Simülatör önce/sonra H-064'te. "Dinleyen" ifadesinin Söyle'ye bağlanması ileride.

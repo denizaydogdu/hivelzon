@@ -9,7 +9,7 @@ Bu dosya tek takip noktasıdır. Hangi işin hangi sırada yapıldığını, şu
 - **Her şey yerelde** (kullanıcı kararı): Docker PostgreSQL (5434), yerel içerik sunucusu (`python3 tools/dev-content-server/serve.py`, 127.0.0.1:8787), iOS simülatörü "hiVelzon iPhone 17". Sunucu, Bunny Stream, mağaza ve geliştirici hesapları en sonda (H-044).
 - **Biten uygulama işleri:** H-033 repo iskeleti · H-034 bölüm paketi + content-lint · H-045 tasarım yönü (6 taslak, 6 kr) · H-031 etkileşimli oynatıcı · H-046 altyazıya dokun → Türkçe anlam (B1–B4 çevirileri APPROVED) · H-047 Hi kararları · H-049 sezon jeneriği (6,69 kr) · H-050 başlıkla açılış (schemaVersion 2) · H-035 hikâye haritası + Drift ilerleme + kilit kuralı.
 - **İçerik:** B1–B4 üretildi (pilot + B2–B4), jenerik, 6 arayüz taslağı, harita görseli. B5–B12 diyalogları onaylı (H-032) ama üretilmedi; kalan Sezon 1 üretimi ≈ 8 × ~8,5 kr. Higgsfield kredisi **84,56** (lite plan).
-- **Sıradaki adım:** Tasarım yenilemesi (Adım 6): H-057, H-058, H-059, H-041 ve H-039, H-060, H-061 bitti H-062 bitti → **H-063** Hi'nin canlılığı → H-064, H-040 (Kitaplık H-065… paralel); sonra H-042 … H-044.
+- **Sıradaki adım:** Tasarım yenilemesi (Adım 6): H-057, H-058, H-059, H-041 ve H-039, H-060, H-061 bitti H-062, H-063 bitti → **H-064** tasarım kalite turu, H-040 (Kitaplık H-065… paralel); sonra H-042 … H-044.
 - **Kullanıcı kararı bekleyenler** (kodlamayı durdurmuyor):
   - H-001: güncellenen iş planının (`docs/IS-PLANI.md`, H-023) son onayı.
   - H-003: günlük konuşma kotasının ölçüsü, uyarı eşikleri, bütçe sorumlusu (tavan 300 USD/ay kararlaştı; v1 öncesi).
@@ -128,7 +128,7 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 | T3' | H-074 | Günlük hedef için gerçek süre ölçümü | Orta | H-060 | ⏳ |
 | T4 | H-061 | Defter, Kelime tekrarı, Konu seti, Sahne avı tasarımı | Orta | H-057, H-058 | ✅ |
 | T5 | H-062 | Oynatıcı katmanlarının tasarımı | Orta | H-057 | ✅ |
-| T6 | H-063 | Hi'nin canlılığı (ifadeler, animasyonlar) | Orta | H-057 | 🔄 |
+| T6 | H-063 | Hi'nin canlılığı (ifadeler, animasyonlar) | Orta | H-057 | ✅ |
 | T7 | H-064 | Tasarım kalite turu (erişilebilirlik, golden, temizlik) | Orta | H-059 … H-063, H-040 | ⏳ |
 
 **Sıra:** H-057 → H-058 → H-059 → H-039 → H-060 → H-061 → H-062 → H-063 → H-040 → H-064 → H-041, H-042, H-043, H-044.
@@ -171,6 +171,7 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 ## Biten işler
 | İş | Başlık | Bitiş | Doğrulama |
 |---|---|---|---|
+| H-063 | Hi'nin canlılığı | 2026-10-14 | 7 kodla çizilen ifade ve geçişler, sakin 3 nefes, bağlama göre ifade, bölüm sonunda mutlu Hi, Hi paneli bölündü (703 → 248 satır), renkler belirteçte; flutter 716/716; kullanıcı onayladı |
 | H-077 | Ders paketi ve grammar-lint | 2026-10-14 | `lesson.json` + `lesson.md` biçimi, `grammar_lint.py`, `tts_lesson.py` (TR Alania+Duyu, EN ElevenLabs), `export_grammar.py`, dev sunucuda `/grammar/`, bölüm ve kitapta `grammarTopics`; pytest 212/212 |
 | H-076 | Dilbilgisi müfredatı | 2026-10-14 | 71 konu, önkoşullar, Türkçeyle karşılaştırma, tipik hata, doğrulanmış hikâye bağları, bölüm → konu eşlemesi; kullanıcının genel onayı |
 | H-075 | Türkçe ses: Alania + Duyu | 2026-10-14 | `tts_tr.py`: Alania TTS → Duyu kelime zamanları → `align.py` biçimi, -16 LUFS; varsayılan kuru çalışma, tavansız çalışmaz, idempotent, 429 bekleme, anahtar repo dışında; gerçek deneme 154 karakter; pytest 184/184 |
