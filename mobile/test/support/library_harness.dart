@@ -32,12 +32,14 @@ class LibraryHarness {
     this.suggestedLevel,
     bool booksFail = false,
     Set<String> unnarrated = const {},
+    Set<String> withoutTurkish = const {},
     this.background = false,
   }) : db = AppDatabase.memory(),
        source = FakeContentSource(packageIds: const ['A1-001'])
          ..books = testBookSummaries(bookIds)
          ..booksFail = booksFail
-         ..unnarratedChapters = unnarrated {
+         ..unnarratedChapters = unnarrated
+         ..withoutTurkish = withoutTurkish {
     audio = FakeBookAudio(
       clock,
       durations: const {'c1.m4a': 11.3, 'c2.m4a': 7.0},

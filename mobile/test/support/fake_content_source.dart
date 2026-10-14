@@ -167,12 +167,16 @@ class FakeContentSource implements ContentSource {
     return loadTestBook(
       id: bookId,
       unnarrated: unnarratedChapters,
+      withoutTurkish: withoutTurkish,
       grammarTopics: grammarTopics[bookId] ?? const [],
     );
   }
 
   /// Sesi henüz hazır olmayan bölümler (kitap bölüm bölüm seslendirilir).
   Set<String> unnarratedChapters = const {};
+
+  /// Türkçesi (`tr`) olmayan cümleler ve başlıklar (kimlikle; H-086).
+  Set<String> withoutTurkish = const {};
 
   @override
   Uri bookMediaUri(String bookId, String path) =>
@@ -297,6 +301,7 @@ Book loadTestBook({
   String? level,
   double? chapterDuration,
   Set<String> unnarrated = const {},
+  Set<String> withoutTurkish = const {},
   List<String> grammarTopics = const [],
 }) {
   final book = (jsonDecode(fixtureText('books/A1-K99/book.json')) as Map)
@@ -329,6 +334,18 @@ Book loadTestBook({
         c['audio'] = null;
         c['duration'] = null;
         if (c['heading'] is Map) untime(c['heading'] as Map);
+      }
+    }
+  }
+  // Türkçesi olmayan cümleler (H-086).
+  if (withoutTurkish.isNotEmpty) {
+    for (final c in pages['chapters'] as List) {
+      final h = (c as Map)['heading'];
+      if (h is Map && withoutTurkish.contains(h['id'])) h.remove('tr');
+    }
+    for (final p in pages['pages'] as List) {
+      for (final s in ((p as Map)['sentences'] as List)) {
+        if (withoutTurkish.contains((s as Map)['id'])) s.remove('tr');
       }
     }
   }

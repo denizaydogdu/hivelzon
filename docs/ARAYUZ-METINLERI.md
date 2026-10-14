@@ -143,13 +143,14 @@ Hikâye sekmesinin üstünde **Macera · Kitaplık** seçici (sekme sayısı de�
 ### 4.7 Kitap okuyucu (H-067)
 | Yer | Metin | Not |
 |---|---|---|
-| Üst çubuk | Kitap adı · "Bölüm 1 · A Small Box"; düğmeler "Kitabı kapat", "Bölümler", "Okuma ayarları" | Bölüm adı kitabın kendi (İngilizce) adıdır. |
+| Üst çubuk | Kitap adı · "Bölüm 1 · A Small Box"; düğmeler "Kitabı kapat", "Sayfanın Türkçesi", "Bölümler", "Okuma ayarları" | Bölüm adı kitabın kendi (İngilizce) adıdır. "Sayfanın Türkçesi" sayfanın hiç Türkçesi yoksa görünmez. |
 | Biçim | **Sesli** · **Sessiz** (grup: "Okuma biçimi") · "s. 2 / 12" (ekran okuyucu: "12 sayfadan 2. sayfa") | Ses açılamazsa: "Bu kitabın sesi şu an açılamıyor. Sessiz okuyabilirsin." Kitap bölüm bölüm seslendirilir: sesi olmayan bölüme gelince (ya da orada **Sesli** seçilince) ses durur, sessiz moda geçilir ve bir kez "Bu bölümün sesi henüz hazır değil; kendin okuyabilirsin." |
 | Ses denetimleri | "Dinle" / "Duraklat", "10 saniye geri", "1x / 1,25x / 0,75x" (ekran okuyucu: "Hız normal. Değiştirmek için dokun."), "Uyku zamanlayıcısı" | |
 | Uyku zamanlayıcısı | Kapalı · Bölüm sonunda · 10 / 20 / 30 dakika sonra; seçince "Uyku zamanlayıcısı: 20 dakika sonra"; dolunca "Uyku zamanlayıcısı sesi durdurdu. İyi uykular!" | **Geri sayım gösterilmez** (K-32). |
 | Sessiz mod | "Önceki sayfa", "Sonraki sayfa", son sayfada **Kitabı bitir** | |
 | Okunan yeri izleme | Sesli modda sayfa okunan cümleyi kendiliğinden izler. Kullanıcı kaydırınca izleme durur, küçük çip: **Okunan yere dön** (dokununca ya da ~4 sn sonra izleme sürer). | Uyarı ya da açılır pencere yok. |
-| Ayarlar | **Yazı boyutu**: Küçük · Orta · Büyük; **Okunan kelimeyi de vurgula** "Kapalıyken yalnız okunan cümle vurgulanır." | Yalnız bu cihazda. |
+| Ayarlar | **Yazı boyutu**: Küçük · Orta · Büyük; **Satır altı Türkçe** "Her İngilizce cümlenin altında Türkçesi küçük yazıyla görünür."; **Okunan kelimeyi de vurgula** "Kapalıyken yalnız okunan cümle vurgulanır." | Yalnız bu cihazda. Satır altı Türkçe varsayılan kapalı (K-03). Ekran okuyucu satırı "Türkçesi: …" diye okur. |
+| Sayfanın Türkçesi (H-086) | Sayfa sonunda ve üst çubukta **Sayfanın Türkçesi**; panel başlığı aynı, altında "Bir cümleye dokun, İngilizcesi sayfada vurgulansın." Cümleler sırasıyla (bölüm başlığı önce). Ekran okuyucu ipucu: "İngilizcesini sayfada göstermek için dokun". | Panel açıkken ses durur, kapanınca sürer. Cümleye dokununca panel kapanır, İngilizcesi vurgulanır ve görünür kılınır. Türkçesi olmayan cümle listede yer almaz. |
 | Uzun basma | Sesli modda kelimeye uzun basınca **Deftere eklendi** (ikinci kez: ""box" zaten defterinde.") | Sessiz modda uzun basma o cümleyi seslendirir. |
 | Ekran okuyucu | Cümle düğmesi ipucu: "Anlamını göstermek için dokun" | |
 | Kitap sonu | **Kitabı bitirdin** · ""The Blue Door" bitti. Dinlediğin ve okuduğun her sayfa kulağını güçlendirir." · **Bu kitapta kaydettiklerin** (yoksa: "Bu kitaptan defterine ifade eklemedin. Bir dahakine bilmediğin kelimeye dokunup "Deftere ekle" diyebilirsin.") · "Bu ifadeler Kelime tekrarında karşına çıkar." · **Sıradaki kitabı aç** (aynı seviyede açılmamış kitap varsa) · **Kitaplığa dön** · **Baştan oku** | Puan, lig, geri sayım yok (K-32). |
