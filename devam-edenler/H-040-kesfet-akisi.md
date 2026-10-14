@@ -1,6 +1,6 @@
 # H-040: Keşfet akışı (kısa klipler)
 
-- **Durum:** Uygulandı, dalda (`h-040-kesfet`); birleştirme ve kullanıcı onayı bekliyor (dosya taşınmadı)
+- **Durum:** Devam ediyor (kod main'de: flutter 839, pytest 256; bellek ölçümü sızıntısız; kullanıcı onayı ve açık sorular bekleniyor)
 - **Tür:** Uygulama (kod)
 - **Faz:** 1.8 (`docs/UYGULAMA-PLANI.md`)
 - **Bağımlılık:** H-038

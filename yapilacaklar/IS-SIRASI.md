@@ -111,7 +111,7 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 | 1.6 | H-038 | Mobil ↔ backend, isteğe bağlı hesap | Yüksek | H-035, H-037 | ✅ |
 | 1.6' | H-056 | Eşitleme ince ayarı (bitti kazanır, 30 sn hoşgörü, çıkışlı silme, sekme yenileme) | Yüksek | H-038 | ✅ |
 | 1.7 | H-039 | Onboarding ve yerleştirme | Orta | H-038 | ✅ |
-| 1.8 | H-040 | Keşfet akışı | Orta | H-038 | ⏳ |
+| 1.8 | H-040 | Keşfet akışı | Orta | H-038 | 🔄 |
 | 1.9 | H-041 | Editör onay ekranı, içerik içe aktarma | Orta | H-038 | ✅ |
 | 1.10 | H-042 | Profil, ayarlar, hukuki metinler | Orta | H-038 | ⏳ |
 | 1.11 | H-043 | Kalite ve iç beta hazırlığı | Orta | H-039 … H-042 | ⏳ |
@@ -406,3 +406,4 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
   - H-083: 44 Türkçe klip Alania'ya geçti (Hi f1, Alex nisa, babaanne selin, anlatıcı m1; İngilizce ifadeler Sarah); Hi paneline "Hi'yi dinle". (a)/(b) örnekleri `.yerel/h083/`. flutter 799, pytest 223.
   - H-080: A1 13 + A2 15 ders yazıldı ve Türkçe sesleri üretildi; toplam 31 ders lint 0 hata. Bölüm/kitap `grammarTopics` dolduruldu (en fazla 3, aynı/alt seviye). İngilizce örnek sesleri ~9.250 karakter bekliyor.
   - H-081: B1 14 + B2 12 ders yazıldı, Türkçe sesleri üretildi; toplam 57 ders lint 0 hata. Kalan: C1–C2 (14 ders, H-082). İngilizce örnek sesleri toplam ~20.300 karakter bekliyor.
+  - H-040 Keşfet `main`'e birleştirildi: 17 klip (B1–B4, ücretsiz kesim, -16 LUFS), quiz ve mola kartları, günlük 20 dk sınırı (13–17 ve 13 altı), sonsuz kaydırma yok, bellek ölçümü sızıntısız (RSS tepe +60 MB, en fazla 2 canlı oynatıcı). Onay bekliyor.
