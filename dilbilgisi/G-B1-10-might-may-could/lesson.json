@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "id": "G-B1-10-might-may-could",
+  "level": "B1",
+  "titleTr": "Olasılık: might / may / could",
+  "titleEn": "Possibility: might, may, could",
+  "goalTr": "Emin olmadığın olasılıkları might, may ya da could ile söyler, could'un geçmişteki yetenek anlamını ayırırsın.",
+  "prerequisites": [
+    "G-A1-07-can",
+    "G-B1-06-future-forms"
+  ],
+  "contentVersion": 1,
+  "status": "DRAFT",
+  "aiGenerated": true,
+  "teacherReview": null,
+  "linksTo": {
+    "episodes": [],
+    "books": [
+      "A2-K02",
+      "A2-K04",
+      "A2-K05"
+    ]
+  },
+  "properNouns": [
+    "Ece",
+    "Ankara",
+    "Nia",
+    "Earth",
+    "Jonas"
+  ],
+  "narration": {
+    "tr": {
+      "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+    }
+  }
+}

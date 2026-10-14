@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "id": "G-B1-12-ing-ed-adjectives",
+  "level": "B1",
+  "titleTr": "bored mı boring mi? -ed / -ing sıfatları",
+  "titleEn": "-ed and -ing adjectives",
+  "goalTr": "Duyguyu yaşayanı -ed ile (bored, surprised), duyguya yol açanı -ing ile (boring, surprising) anlatırsın.",
+  "prerequisites": [
+    "G-A1-01-to-be"
+  ],
+  "contentVersion": 1,
+  "status": "DRAFT",
+  "aiGenerated": true,
+  "teacherReview": null,
+  "linksTo": {
+    "episodes": [],
+    "books": [
+      "A1-K01",
+      "A2-K02",
+      "A2-K03",
+      "A2-K05"
+    ]
+  },
+  "properNouns": [
+    "Lina"
+  ],
+  "pronunciations": [
+    {
+      "term": "-ed",
+      "say_as": "ed"
+    },
+    {
+      "term": "-ing",
+      "say_as": "ing"
+    }
+  ],
+  "narration": {
+    "tr": {
+      "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+    }
+  }
+}

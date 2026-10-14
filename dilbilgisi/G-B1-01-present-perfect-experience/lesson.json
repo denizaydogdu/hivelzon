@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "id": "G-B1-01-present-perfect-experience",
+  "level": "B1",
+  "titleTr": "Present perfect (1): deneyim, ever / never",
+  "titleEn": "Present perfect: life experience",
+  "goalTr": "Ne zaman olduğu önemli olmayan hayat deneyimlerini have / has ve fiilin üçüncü hâliyle anlatır, Have you ever…? diye sorarsın.",
+  "prerequisites": [
+    "G-A2-05-past-simple-irregular",
+    "G-A2-06-past-questions-negatives"
+  ],
+  "contentVersion": 1,
+  "status": "DRAFT",
+  "aiGenerated": true,
+  "teacherReview": null,
+  "linksTo": {
+    "episodes": [],
+    "books": [
+      "A2-K04"
+    ]
+  },
+  "properNouns": [
+    "Nia",
+    "Moon",
+    "Rome",
+    "London",
+    "Germany",
+    "Ankara",
+    "Paris",
+    "Japanese"
+  ],
+  "narration": {
+    "tr": {
+      "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+    }
+  }
+}

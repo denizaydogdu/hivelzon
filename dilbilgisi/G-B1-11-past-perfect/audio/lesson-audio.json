@@ -1,0 +1,350 @@
+{
+ "schemaVersion": 1,
+ "lessonId": "G-B1-11-past-perfect",
+ "voices": {
+  "tr": {
+   "model": "alania-v2",
+   "voice": "alania2-f1",
+   "timing": "duyu-1",
+   "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+  },
+  "en": {
+   "model": "eleven_v3",
+   "voice": "EXAVITQu4vr4xnSDxMaL",
+   "speed": 1.0
+  }
+ },
+ "cards": [
+  {
+   "card": "c01",
+   "type": "hook",
+   "segments": [
+    {
+     "id": "c01-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Nia'nın uzay gemisi Dünya'ya indi, kapı açıldı ve Nia gökyüzünü gördü. O ana kadar hiç mavi bir gökyüzü görmemişti. Geçmişteki bir andan daha önceyi anlatan bu yapıyı dinle.",
+     "textSha256": "89fa6b4538a0ae9ca39ff5370884540756bcfb921cea4cd561d9c7fe73a90035",
+     "chars": 173,
+     "audio": "tr/c01-tr.mp3",
+     "align": "tr/c01-tr.align.json",
+     "present": true,
+     "duration": 13.94,
+     "quality": {
+      "words": 28,
+      "exact": 28,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 2,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c01-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "She had never seen a blue sky before.",
+     "textSha256": "3c4cff48a5182cd4b928aa2cc905d5c8990b7fd6189720f5143222d1bb8979c9",
+     "chars": 37,
+     "audio": "en/c01-ex1.mp3",
+     "align": "en/c01-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c02",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c02-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Geçmişte iki olay varsa, daha önce olanı göstermek için bu yapı kullanılır. Yardımcı fiilin geçmiş hâli ve fiilin üçüncü hâli gelir. Bu biçim ben, sen, o, biz, siz ve onlar için aynıdır.",
+     "textSha256": "5da509746620c7aaed631100efc6af225b75b6cdca61aacef78ee297d3177d68",
+     "chars": 186,
+     "audio": "tr/c02-tr.mp3",
+     "align": "tr/c02-tr.align.json",
+     "present": true,
+     "duration": 13.95,
+     "quality": {
+      "words": 32,
+      "exact": 30,
+      "fuzzy": 2,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c02-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "When we got to the station, the train had left.",
+     "textSha256": "d961b226c85e93daf0bbad908edb965d0224577af430c290cb2abe1dfc25b1f3",
+     "chars": 47,
+     "audio": "en/c02-ex1.mp3",
+     "align": "en/c02-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c03",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c03-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Olaylar sırayla anlatılıyorsa bu yapıya gerek yoktur. Önce, sonra gibi kelimeler sırayı zaten gösteriyorsa bildiğin geçmiş zaman kullanılır. Her geçmiş cümleye bu yapıyı koymak gerekmez.",
+     "textSha256": "16f601253c0e7daf5cc87fbae0f644932bd6b70f099717a2919ad94febc409dc",
+     "chars": 186,
+     "audio": "tr/c03-tr.mp3",
+     "align": "tr/c03-tr.align.json",
+     "present": true,
+     "duration": 12.19,
+     "quality": {
+      "words": 25,
+      "exact": 25,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I closed the window and went to bed.",
+     "textSha256": "d374318bb241cd4689cd438c7293989e6abd8703a2d4146e9549d53cd9ad1d36",
+     "chars": 36,
+     "audio": "en/c03-ex1.mp3",
+     "align": "en/c03-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c03-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "After I finished my homework, I watched TV.",
+     "textSha256": "260b61dd49f1e7833f487ea17ea89b32e90eeb1da18936e312a4f9fc860bd679",
+     "chars": 43,
+     "audio": "en/c03-ex2.mp3",
+     "align": "en/c03-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c04",
+   "type": "examples",
+   "segments": [
+    {
+     "id": "c04-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "She had never seen the sea before that day.",
+     "textSha256": "fdd50cbc9f5b9294d63a003d15d0b44a7faab3ab1fbc72821bbba06695e8b3ff",
+     "chars": 43,
+     "audio": "en/c04-ex1.mp3",
+     "align": "en/c04-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "When I arrived, the film had already started.",
+     "textSha256": "23fc02ee5111ee0e8e4098470514e1010d027359946c4ab6cb49a63f2d80d942",
+     "chars": 45,
+     "audio": "en/c04-ex2.mp3",
+     "align": "en/c04-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "I couldn't open the door. I had lost my key.",
+     "textSha256": "deea3f17e4ffcd060e329a5a63415492704506465799262b8d6c2032a164264d",
+     "chars": 44,
+     "audio": "en/c04-ex3.mp3",
+     "align": "en/c04-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex4",
+     "lang": "en",
+     "role": "example",
+     "text": "He was tired because he hadn't slept well.",
+     "textSha256": "de78294fc08c55febaedce913ba345dd839386ce07c36e7f6ef433786bf4fc51",
+     "chars": 42,
+     "audio": "en/c04-ex4.mp3",
+     "align": "en/c04-ex4.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex5",
+     "lang": "en",
+     "role": "example",
+     "text": "Had you met him before the party?",
+     "textSha256": "d8662be4cce2b2fd641c65d057504d5cf81ff4fd09c9158d01b95414f577156b",
+     "chars": 33,
+     "audio": "en/c04-ex5.mp3",
+     "align": "en/c04-ex5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c05",
+   "type": "contrast",
+   "segments": [
+    {
+     "id": "c05-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Türkçedeki mişti eki burada çok iyi bir köprü: vardığımda tren kalkmıştı. Ama bu yapı yalnız iki geçmiş olayın sırası önemliyse gerekir. Üçüncü hâli geçmiş hâliyle karıştırmak da çok olağan.",
+     "textSha256": "63df1c673448c34304383a3c5974f9b48e4b859d3e7fded9381899e20d4f092f",
+     "chars": 190,
+     "audio": "tr/c05-tr.mp3",
+     "align": "tr/c05-tr.align.json",
+     "present": true,
+     "duration": 11.87,
+     "quality": {
+      "words": 29,
+      "exact": 26,
+      "fuzzy": 3,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "When I arrived, the train had left.",
+     "textSha256": "baf7989b1034ef0524cf71526827bac9da1e6c607dbb27049b884ae3a0938ced",
+     "chars": 35,
+     "audio": "en/c05-ex1.mp3",
+     "align": "en/c05-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "I had gone home.",
+     "textSha256": "87edb17ac6f41ec25e059708c59fbb0c2ffcc57468689fa4f6385833d481ce8d",
+     "chars": 16,
+     "audio": "en/c05-ex2.mp3",
+     "align": "en/c05-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c06",
+   "type": "practice",
+   "segments": [
+    {
+     "id": "c06-q5",
+     "lang": "en",
+     "role": "say",
+     "text": "When we got to the station, the train had left.",
+     "textSha256": "d961b226c85e93daf0bbad908edb965d0224577af430c290cb2abe1dfc25b1f3",
+     "chars": 47,
+     "audio": "en/c06-q5.mp3",
+     "align": "en/c06-q5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c07",
+   "type": "rule",
+   "segments": [
+    {
+     "id": "c07-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Geçmişteki iki olaydan önce olanı, yardımcı fiilin geçmiş hâli ve fiilin üçüncü hâli gösterir. Sıra zaten belliyse bildiğin geçmiş zaman kullanılır.",
+     "textSha256": "212ef6a09031cd6ab146cca84ea3bff7e07619e43850b08ec5e0d2e0f4dea803",
+     "chars": 148,
+     "audio": "tr/c07-tr.mp3",
+     "align": "tr/c07-tr.align.json",
+     "present": true,
+     "duration": 9.63,
+     "quality": {
+      "words": 21,
+      "exact": 19,
+      "fuzzy": 2,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c07-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "When I arrived, the train had left.",
+     "textSha256": "baf7989b1034ef0524cf71526827bac9da1e6c607dbb27049b884ae3a0938ced",
+     "chars": 35,
+     "audio": "en/c07-ex1.mp3",
+     "align": "en/c07-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  }
+ ]
+}

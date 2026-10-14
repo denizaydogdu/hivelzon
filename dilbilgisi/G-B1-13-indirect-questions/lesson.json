@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "id": "G-B1-13-indirect-questions",
+  "level": "B1",
+  "titleTr": "Dolaylı sorular: Can you tell me where…?",
+  "titleEn": "Indirect questions",
+  "goalTr": "Do you know…, Can you tell me… ile kibar soru sorarken soru kelimesinden sonra düz cümle sırası kullanır, evet/hayır sorularında if ya da whether eklersin.",
+  "prerequisites": [
+    "G-A1-02-to-be-questions-negatives",
+    "G-A1-14-do-does"
+  ],
+  "contentVersion": 1,
+  "status": "DRAFT",
+  "aiGenerated": true,
+  "teacherReview": null,
+  "linksTo": {
+    "episodes": [
+      "A1-001"
+    ],
+    "books": []
+  },
+  "pronunciations": [
+    {
+      "term": "Alex",
+      "say_as": "Aleks"
+    }
+  ],
+  "narration": {
+    "tr": {
+      "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+    }
+  }
+}

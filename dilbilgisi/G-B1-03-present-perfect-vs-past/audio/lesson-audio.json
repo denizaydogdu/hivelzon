@@ -1,0 +1,376 @@
+{
+ "schemaVersion": 1,
+ "lessonId": "G-B1-03-present-perfect-vs-past",
+ "voices": {
+  "tr": {
+   "model": "alania-v2",
+   "voice": "alania2-f1",
+   "timing": "duyu-1",
+   "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+  },
+  "en": {
+   "model": "eleven_v3",
+   "voice": "EXAVITQu4vr4xnSDxMaL",
+   "speed": 1.0
+  }
+ },
+ "cards": [
+  {
+   "card": "c01",
+   "type": "hook",
+   "segments": [
+    {
+     "id": "c01-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Mateo'nun bacağındaki alçı cuma sabahı çıkarıldı. Kitap bunu belli bir zamanla, geçmiş zamanla anlatıyor. Mateo aynı haberi o anda bir arkadaşına yazsaydı, başka bir yapı seçerdi.",
+     "textSha256": "08a51777f2934e77b893302aa7b5eed528e2769d091cd00a568d2af844bf9d38",
+     "chars": 179,
+     "audio": "tr/c01-tr.mp3",
+     "align": "tr/c01-tr.align.json",
+     "present": true,
+     "duration": 13.94,
+     "quality": {
+      "words": 26,
+      "exact": 22,
+      "fuzzy": 4,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c01-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "The doctor has just taken off my cast!",
+     "textSha256": "4c54dac7a139d009f300b8c3d02682a05455bb4c77630498bcd0aa0d8be59981",
+     "chars": 38,
+     "audio": "en/c01-ex1.mp3",
+     "align": "en/c01-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c02",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c02-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Olayın zamanını söylüyorsan bildiğin geçmiş zaman kullanılır. Zaman yoksa ve sonucu şimdi önemliyse yardımcı fiil ve fiilin üçüncü hâli gelir. Türkçede ikisi de aynı geçmiş ekiyle söylenir.",
+     "textSha256": "d2c3621ffd71123abf137fd6cf4200d7b395150fafbc1912468cf7ba2f100e0c",
+     "chars": 189,
+     "audio": "tr/c02-tr.mp3",
+     "align": "tr/c02-tr.align.json",
+     "present": true,
+     "duration": 12.51,
+     "quality": {
+      "words": 27,
+      "exact": 26,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c02-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I lost my keys yesterday.",
+     "textSha256": "ea5e259fb3bef55857c0f1566f60ee480cc42df788846cef90621f8f2455bdb6",
+     "chars": 25,
+     "audio": "en/c02-ex1.mp3",
+     "align": "en/c02-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c02-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "I've lost my keys.",
+     "textSha256": "fcca49dc1e0433c0844e8df92628ae77f4468e30e2ac3a7b15081f3be91f9b57",
+     "chars": 18,
+     "audio": "en/c02-ex2.mp3",
+     "align": "en/c02-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c03",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c03-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Az önce olan şey için bir kelime, çoktan olmuş şey için başka bir kelime eklenir. Bu ikisi yardımcı fiil ile üçüncü hâlin arasına girer. Henüz anlamındaki kelime ise soruda ve olumsuzda cümlenin sonunda durur.",
+     "textSha256": "27606fc15982bf8e8eec9f3d5c520e8ad917718b258ded8515e4dabbb18a6aed",
+     "chars": 209,
+     "audio": "tr/c03-tr.mp3",
+     "align": "tr/c03-tr.align.json",
+     "present": true,
+     "duration": 14.91,
+     "quality": {
+      "words": 34,
+      "exact": 33,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "She has just left.",
+     "textSha256": "87d78efec3f2085ded41d04e543e7f1453b6bc0e450fc2991523508877bedb4b",
+     "chars": 18,
+     "audio": "en/c03-ex1.mp3",
+     "align": "en/c03-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c03-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "We have already eaten.",
+     "textSha256": "13443c34b8dd2427a8753e62b9c9b12d140bb78cf447be38533b028e7f0068f1",
+     "chars": 22,
+     "audio": "en/c03-ex2.mp3",
+     "align": "en/c03-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c03-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "I haven't finished yet.",
+     "textSha256": "663df90a9317b1147022f91cfe814e21a64c67159d6aad5bfca0b20d279c1d93",
+     "chars": 23,
+     "audio": "en/c03-ex3.mp3",
+     "align": "en/c03-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c04",
+   "type": "examples",
+   "segments": [
+    {
+     "id": "c04-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I've already done my homework.",
+     "textSha256": "fb8b55d81f1781910f27935b0701d7146cda2dbfab5b2916455d75cd2990c2ee",
+     "chars": 30,
+     "audio": "en/c04-ex1.mp3",
+     "align": "en/c04-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "She finished it an hour ago.",
+     "textSha256": "1c05ab9dc1e3f2884455436124503997b23fff7743d9bc1e6f2bc940e31a1309",
+     "chars": 28,
+     "audio": "en/c04-ex2.mp3",
+     "align": "en/c04-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "The film has just started.",
+     "textSha256": "503c424136b5c6695db07815269003a15df31d9f6b9a2e614906f37c09c7d5c5",
+     "chars": 26,
+     "audio": "en/c04-ex3.mp3",
+     "align": "en/c04-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex4",
+     "lang": "en",
+     "role": "example",
+     "text": "Has the bus arrived yet?",
+     "textSha256": "9294916ad15a1dd98d5ade74d54e1943d723f83bbfeae35bad1c320513b7ca6e",
+     "chars": 24,
+     "audio": "en/c04-ex4.mp3",
+     "align": "en/c04-ex4.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex5",
+     "lang": "en",
+     "role": "example",
+     "text": "We visited Rome last summer.",
+     "textSha256": "dae24a699eb59f35220c182486e45f2f88561f3b4ebfff2af02f0fa17c2756d0",
+     "chars": 28,
+     "audio": "en/c04-ex5.mp3",
+     "align": "en/c04-ex5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c05",
+   "type": "contrast",
+   "segments": [
+    {
+     "id": "c05-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Türkçede dün kaybettim de, kaybettim ve hâlâ yok da aynı ekle söylenir. İngilizcede dün, geçen yıl, bir saat önce gibi bir zaman varsa bu yapı kullanılmaz. Ne zaman diye soran sorular da bildiğin geçmiş zamanla kurulur.",
+     "textSha256": "a38eec53102fc8d112c4fa8ddec5be6b5e6a70efa5f706c51f2f10cee0969117",
+     "chars": 219,
+     "audio": "tr/c05-tr.mp3",
+     "align": "tr/c05-tr.align.json",
+     "present": true,
+     "duration": 14.3,
+     "quality": {
+      "words": 36,
+      "exact": 35,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I finished it yesterday.",
+     "textSha256": "9011e0d6b81fb9f74adff76eba24e60cd470f0ea160bc253633062e4709dd46e",
+     "chars": 24,
+     "audio": "en/c05-ex1.mp3",
+     "align": "en/c05-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "When did you arrive?",
+     "textSha256": "071aa22b7a36666fee3fd144fbca00cdcee466f58f26262c6067a31632df759c",
+     "chars": 20,
+     "audio": "en/c05-ex2.mp3",
+     "align": "en/c05-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c06",
+   "type": "practice",
+   "segments": [
+    {
+     "id": "c06-q5",
+     "lang": "en",
+     "role": "say",
+     "text": "I've already done my homework.",
+     "textSha256": "fb8b55d81f1781910f27935b0701d7146cda2dbfab5b2916455d75cd2990c2ee",
+     "chars": 30,
+     "audio": "en/c06-q5.mp3",
+     "align": "en/c06-q5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c07",
+   "type": "rule",
+   "segments": [
+    {
+     "id": "c07-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Zamanı belli, bitmiş bir olay için geçmiş zaman kullanılır. Zamanı söylenmeyen ve sonucu şimdi önemli olan olay için yardımcı fiil ve üçüncü hâl gelir.",
+     "textSha256": "8145a4f08e37448bfcdc549047b3fdf00d37c01d0febe7eafd5b26ad7294b2b4",
+     "chars": 151,
+     "audio": "tr/c07-tr.mp3",
+     "align": "tr/c07-tr.align.json",
+     "present": true,
+     "duration": 10.91,
+     "quality": {
+      "words": 24,
+      "exact": 23,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c07-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I've just finished my homework.",
+     "textSha256": "eca70b9d394aa8ee15406d62b0198559bf0fce9b82a2c129a935314b66829ee6",
+     "chars": 31,
+     "audio": "en/c07-ex1.mp3",
+     "align": "en/c07-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  }
+ ]
+}

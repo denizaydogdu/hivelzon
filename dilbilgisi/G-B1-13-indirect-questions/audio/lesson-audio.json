@@ -1,0 +1,419 @@
+{
+ "schemaVersion": 1,
+ "lessonId": "G-B1-13-indirect-questions",
+ "voices": {
+  "tr": {
+   "model": "alania-v2",
+   "voice": "alania2-f1",
+   "timing": "duyu-1",
+   "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+  },
+  "en": {
+   "model": "eleven_v3",
+   "voice": "EXAVITQu4vr4xnSDxMaL",
+   "speed": 1.0
+  }
+ },
+ "cards": [
+  {
+   "card": "c01",
+   "type": "hook",
+   "segments": [
+    {
+     "id": "c01-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Alex ilk bölümde doğrudan soruyor: eski istasyon nerede? Yabancı birine daha kibar sormak istersen soruyu bir kalıbın içine koyarsın. O zaman kelimelerin sırası değişir, dinle.",
+     "textSha256": "6f2f524331f5c71e9547cb40903452630d650f1b16f8521e25cda39b65815d4f",
+     "chars": 176,
+     "audio": "tr/c01-tr.mp3",
+     "align": "tr/c01-tr.align.json",
+     "present": true,
+     "duration": 13.47,
+     "quality": {
+      "words": 25,
+      "exact": 25,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c01-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "Can you tell me where the old station is?",
+     "textSha256": "7c64674c8e6e670480127f61c2dbaba81a0bf60b34a70e42406616fc2af7dd1b",
+     "chars": 41,
+     "audio": "en/c01-ex1.mp3",
+     "align": "en/c01-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c02",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c02-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Bilir misin, söyler misin gibi bir kalıpla başlayan soruda ikinci kısım düz cümle gibi sıralanır. Soru kelimesinden sonra önce özne, sonra fiil gelir.",
+     "textSha256": "9238fb9fec2f02a05da6188d147520173c12778cfbb4cda0c2a7d786246ab0c8",
+     "chars": 150,
+     "audio": "tr/c02-tr.mp3",
+     "align": "tr/c02-tr.align.json",
+     "present": true,
+     "duration": 10.11,
+     "quality": {
+      "words": 23,
+      "exact": 23,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c02-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "Where is the station?",
+     "textSha256": "143c343f0c548b3f628160667244404e93047c8e9a63af609efaf33a057e6f0f",
+     "chars": 21,
+     "audio": "en/c02-ex1.mp3",
+     "align": "en/c02-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c02-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "Do you know where the station is?",
+     "textSha256": "e0df8d899e7d3aaa07ef2d88d2b2e180ce20e2f30323f60662036171c1a5ed07",
+     "chars": 33,
+     "audio": "en/c02-ex2.mp3",
+     "align": "en/c02-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c03",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c03-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Doğrudan soruda kullanılan yardımcı fiil, dolaylı soruda düşer. Fiil de kişiye ve zamana göre gereken eki alır.",
+     "textSha256": "ab27296b7a7ed021f9dd30736d807a23949a5726ba6c1c370a239ef191df5f4c",
+     "chars": 111,
+     "audio": "tr/c03-tr.mp3",
+     "align": "tr/c03-tr.align.json",
+     "present": true,
+     "duration": 6.72,
+     "quality": {
+      "words": 17,
+      "exact": 17,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "What time does it open?",
+     "textSha256": "a1aa3e7afdab62fcea3d6540ad23b1f52cbb1c8f90845edb8af5ce2044238ac8",
+     "chars": 23,
+     "audio": "en/c03-ex1.mp3",
+     "align": "en/c03-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c03-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "Can you tell me what time it opens?",
+     "textSha256": "949b9af754eee6203ab0eb83252c46463fa9b770ecabd1ac45f1726e91797b6b",
+     "chars": 35,
+     "audio": "en/c03-ex2.mp3",
+     "align": "en/c03-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c04",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c04-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Cevabı evet ya da hayır olan sorularda araya bir bağlantı kelimesi eklenir. Türkçedeki gelip gelmediği yapısına benzer.",
+     "textSha256": "abc7383601d21ecc20a7fa9781f78819e5dcae29fea57aa241da0b527b3a5617",
+     "chars": 119,
+     "audio": "tr/c04-tr.mp3",
+     "align": "tr/c04-tr.align.json",
+     "present": true,
+     "duration": 8.96,
+     "quality": {
+      "words": 17,
+      "exact": 17,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c04-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "Is she at home?",
+     "textSha256": "86fbf23ffe39c84efcab96a15fdc1a58a6ac4dfa655a86de626e6f06d2c337a9",
+     "chars": 15,
+     "audio": "en/c04-ex1.mp3",
+     "align": "en/c04-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "I don't know if she's at home.",
+     "textSha256": "f7e980a056be816d1878b5830e0a10f7cbca53d2e370d93f70bc327b3a7201d3",
+     "chars": 30,
+     "audio": "en/c04-ex2.mp3",
+     "align": "en/c04-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c05",
+   "type": "examples",
+   "segments": [
+    {
+     "id": "c05-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "Do you know where the post office is?",
+     "textSha256": "fd37a4703824075e35c934447be734ac72028b3dd118fc287516749630df3de5",
+     "chars": 37,
+     "audio": "en/c05-ex1.mp3",
+     "align": "en/c05-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "Could you tell me how much this costs?",
+     "textSha256": "385b2c589573880088fa675012206b447eca9104695a0df4e82ed74d5329f672",
+     "chars": 38,
+     "audio": "en/c05-ex2.mp3",
+     "align": "en/c05-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "I wonder why she left early.",
+     "textSha256": "221da374b73d61ff7e7a68c875adab876e65352eca1c6d6b7a54cd3ac76eb6e1",
+     "chars": 28,
+     "audio": "en/c05-ex3.mp3",
+     "align": "en/c05-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex4",
+     "lang": "en",
+     "role": "example",
+     "text": "Do you know if the shop is open?",
+     "textSha256": "9fe13472964c63b6cb170f4a90d2ab4ff2c62401555abb60e68e10943e7e07b0",
+     "chars": 32,
+     "audio": "en/c05-ex4.mp3",
+     "align": "en/c05-ex4.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex5",
+     "lang": "en",
+     "role": "example",
+     "text": "I don't remember what he said.",
+     "textSha256": "2c1d7c390f7a00a873f8bec59d6aafa6cc4277f02b2d9a9c14c00aec106f9ffc",
+     "chars": 30,
+     "audio": "en/c05-ex5.mp3",
+     "align": "en/c05-ex5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c06",
+   "type": "contrast",
+   "segments": [
+    {
+     "id": "c06-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Türkçede iç soru isimleşir: istasyonun nerede olduğunu biliyor musun? İngilizcede doğrudan soru olduğu gibi içeri konmaz, sıra düz cümleye döner. Soru sırasını korumak çok olağan bir hata, kulağın alıştıkça düzelir.",
+     "textSha256": "72f7611c77af3b86faf28169f042ab49f77084a47caaeb0bdd276b0c55ccbd38",
+     "chars": 215,
+     "audio": "tr/c06-tr.mp3",
+     "align": "tr/c06-tr.align.json",
+     "present": true,
+     "duration": 13.5,
+     "quality": {
+      "words": 30,
+      "exact": 30,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c06-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "Do you know where the station is?",
+     "textSha256": "e0df8d899e7d3aaa07ef2d88d2b2e180ce20e2f30323f60662036171c1a5ed07",
+     "chars": 33,
+     "audio": "en/c06-ex1.mp3",
+     "align": "en/c06-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c06-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "Can you tell me what time it opens?",
+     "textSha256": "949b9af754eee6203ab0eb83252c46463fa9b770ecabd1ac45f1726e91797b6b",
+     "chars": 35,
+     "audio": "en/c06-ex2.mp3",
+     "align": "en/c06-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c07",
+   "type": "practice",
+   "segments": [
+    {
+     "id": "c07-q5",
+     "lang": "en",
+     "role": "say",
+     "text": "Excuse me, can you tell me where the station is?",
+     "textSha256": "8b0f21f3d543b12a244a0c53a2d9e065f18b23a3ea6bc0b57a5b035ace02e0f9",
+     "chars": 48,
+     "audio": "en/c07-q5.mp3",
+     "align": "en/c07-q5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c08",
+   "type": "rule",
+   "segments": [
+    {
+     "id": "c08-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Kibar bir kalıpla sorarken soru kelimesinden sonra düz cümle sırası gelir ve yardımcı fiil düşer. Evet ya da hayır sorusunda araya bir bağlantı kelimesi girer.",
+     "textSha256": "dc992b79e0892d025a05b6510b63f9933da611d89535f16df95536b195e176bf",
+     "chars": 159,
+     "audio": "tr/c08-tr.mp3",
+     "align": "tr/c08-tr.align.json",
+     "present": true,
+     "duration": 9.61,
+     "quality": {
+      "words": 25,
+      "exact": 25,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c08-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "Do you know where the station is?",
+     "textSha256": "e0df8d899e7d3aaa07ef2d88d2b2e180ce20e2f30323f60662036171c1a5ed07",
+     "chars": 33,
+     "audio": "en/c08-ex1.mp3",
+     "align": "en/c08-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,436 @@
+{
+ "schemaVersion": 1,
+ "lessonId": "G-B1-10-might-may-could",
+ "voices": {
+  "tr": {
+   "model": "alania-v2",
+   "voice": "alania2-f1",
+   "timing": "duyu-1",
+   "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+  },
+  "en": {
+   "model": "eleven_v3",
+   "voice": "EXAVITQu4vr4xnSDxMaL",
+   "speed": 1.0
+  }
+ },
+ "cards": [
+  {
+   "card": "c01",
+   "type": "hook",
+   "segments": [
+    {
+     "id": "c01-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Hava raporu, cuma günü yağmur geleceğini söylüyor. Ama hava her zaman söz dinlemez. Emin olmadığımız bir şeyi söylemek için İngilizcede başka kelimeler var, dinle.",
+     "textSha256": "5866722ca4a9ada9af882545d1c0fdec56df99cb38a05338cd20c5c3c29e9507",
+     "chars": 163,
+     "audio": "tr/c01-tr.mp3",
+     "align": "tr/c01-tr.align.json",
+     "present": true,
+     "duration": 10.11,
+     "quality": {
+      "words": 24,
+      "exact": 24,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c01-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "It might rain on Friday.",
+     "textSha256": "6146ffd6756da81a17ca2495cc89b394cbfe853b16b23633e04f833eeb369d31",
+     "chars": 24,
+     "audio": "en/c01-ex1.mp3",
+     "align": "en/c01-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c02",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c02-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Emin olmadığın bir olasılık için üç kelimeden biri kullanılır. Anlamları çok yakındır, biri biraz daha resmîdir. Ardından fiil yalın gelir ve kişiye göre ek almaz.",
+     "textSha256": "73e1213aaa49aaaaa4756b11606e67c0c034738e9ae9bba4c7940b2998682f29",
+     "chars": 163,
+     "audio": "tr/c02-tr.mp3",
+     "align": "tr/c02-tr.align.json",
+     "present": true,
+     "duration": 10.4,
+     "quality": {
+      "words": 25,
+      "exact": 23,
+      "fuzzy": 2,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 4,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c02-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "She may be at home now.",
+     "textSha256": "ecb7e17a9fb6e954ab4e24e34d95d274557c614c3ddc8c686df83733fc4e7ab0",
+     "chars": 23,
+     "audio": "en/c02-ex1.mp3",
+     "align": "en/c02-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c02-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "The test could be difficult.",
+     "textSha256": "60c01e463d8d6c0182c14add8bb2d9762c9cbccb6df95e5b4e056ec22cac64c8",
+     "chars": 28,
+     "audio": "en/c02-ex2.mp3",
+     "align": "en/c02-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c03",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c03-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Olumsuz olasılıkta ilk iki kelimeye olumsuzluk kelimesi eklenir. Üçüncü kelimenin olumsuzu ise başka bir anlam taşır: imkânsız demektir.",
+     "textSha256": "322df938c282e146797030c35af37282af0aefbc388486ca473aadf6d32aa397",
+     "chars": 136,
+     "audio": "tr/c03-tr.mp3",
+     "align": "tr/c03-tr.align.json",
+     "present": true,
+     "duration": 8.8,
+     "quality": {
+      "words": 18,
+      "exact": 17,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "He might not come today.",
+     "textSha256": "a1667c5c7d55a1b928d8b2dcf17a985b6d54e6df0fe8426be26233e4b911079b",
+     "chars": 24,
+     "audio": "en/c03-ex1.mp3",
+     "align": "en/c03-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c03-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "That couldn't be Ece. She's in Ankara.",
+     "textSha256": "eeb48c81773b8a48c8620921dba6a502e0191dae4b7971062e7d1cbefc7a9389",
+     "chars": 38,
+     "audio": "en/c03-ex2.mp3",
+     "align": "en/c03-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c04",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c04-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Üçüncü kelimenin bir anlamı daha var: geçmişte bir şeyi yapabilmek. Hangi anlam olduğunu cümleden anlarsın.",
+     "textSha256": "2c62e17886c2d2fcad1f0897b6b1e07e41dc9baf08f085ba6c7d013c78fa8b76",
+     "chars": 107,
+     "audio": "tr/c04-tr.mp3",
+     "align": "tr/c04-tr.align.json",
+     "present": true,
+     "duration": 7.36,
+     "quality": {
+      "words": 15,
+      "exact": 15,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c04-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "When I was five, I could swim.",
+     "textSha256": "7fd425129d4d7510a8dbf32982c3d7a1d605fa33a4518babc0df8e6f453a23ae",
+     "chars": 30,
+     "audio": "en/c04-ex1.mp3",
+     "align": "en/c04-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c05",
+   "type": "examples",
+   "segments": [
+    {
+     "id": "c05-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "Take an umbrella. It might rain later.",
+     "textSha256": "00e33a2ee6a9033a4abbf9554f9a2ff84db803f8a6bb31c8506847da169c4117",
+     "chars": 38,
+     "audio": "en/c05-ex1.mp3",
+     "align": "en/c05-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "I may be late tonight.",
+     "textSha256": "744ce4220a2bb1a9d9d649a5f34e8e40f032083a1a822f0883f552f0d08a4021",
+     "chars": 22,
+     "audio": "en/c05-ex2.mp3",
+     "align": "en/c05-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "The keys could be in the car.",
+     "textSha256": "87201ce6567450b684c03c6165155eb88de9049795d7aed992264cb1dafd17e7",
+     "chars": 29,
+     "audio": "en/c05-ex3.mp3",
+     "align": "en/c05-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex4",
+     "lang": "en",
+     "role": "example",
+     "text": "We might not have time.",
+     "textSha256": "21af3ffcfa29e48fd4ce526be57503c0fca3e96f71fbdde57b8d5c2543bbb098",
+     "chars": 23,
+     "audio": "en/c05-ex4.mp3",
+     "align": "en/c05-ex4.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex5",
+     "lang": "en",
+     "role": "example",
+     "text": "It may not be true.",
+     "textSha256": "59be2c68b94a1eea7249935b02f8e97aeab791f3ffa8a87604886eef20891f22",
+     "chars": 19,
+     "audio": "en/c05-ex5.mp3",
+     "align": "en/c05-ex5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c06",
+   "type": "contrast",
+   "segments": [
+    {
+     "id": "c06-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Türkçedeki ebilir eki hem yeteneği hem olasılığı anlatır: yüzebilirim, yağmur yağabilir. İngilizcede olasılık için yetenek kelimesini kullanmak çoğu zaman yanlış olur. Ardından gelen fiil de yalın kalır, önüne başka kelime almaz.",
+     "textSha256": "125a321fdbaed6ffff8f11383c67e1d5bf0b032384cd414d80c675928b1c5e79",
+     "chars": 229,
+     "audio": "tr/c06-tr.mp3",
+     "align": "tr/c06-tr.align.json",
+     "present": true,
+     "duration": 14.43,
+     "quality": {
+      "words": 31,
+      "exact": 31,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c06-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "It might rain tomorrow.",
+     "textSha256": "fadf7f55f41dcfbe01f6d52e24ca3dd38ad8cb79fd682ffd9a43184f47629f51",
+     "chars": 23,
+     "audio": "en/c06-ex1.mp3",
+     "align": "en/c06-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c06-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "She might come.",
+     "textSha256": "c966251e3e299c1685ba9446cecfe8512ecd5be70c65edf57d4c81a2403ee843",
+     "chars": 15,
+     "audio": "en/c06-ex2.mp3",
+     "align": "en/c06-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c07",
+   "type": "practice",
+   "segments": [
+    {
+     "id": "c07-q5",
+     "lang": "en",
+     "role": "say",
+     "text": "It might rain later.",
+     "textSha256": "e47c760ea9d2b0054e41b7dc4427c124ba3a4ad7297cf8c03c8a8f39f7952448",
+     "chars": 20,
+     "audio": "en/c07-q5.mp3",
+     "align": "en/c07-q5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c08",
+   "type": "seeInStory",
+   "segments": [
+    {
+     "id": "c08-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Kitaplarda bu kelime şimdilik yalnız geçmişteki yetenek anlamında geçiyor. Şu cümlelere bir daha bak.",
+     "textSha256": "f685564a9211ad43bacefa36f750d1f21b541292cc8f0a0278c7dd3cdcf6b4c5",
+     "chars": 101,
+     "audio": "tr/c08-tr.mp3",
+     "align": "tr/c08-tr.align.json",
+     "present": true,
+     "duration": 6.4,
+     "quality": {
+      "words": 14,
+      "exact": 14,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 1,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    }
+   ]
+  },
+  {
+   "card": "c09",
+   "type": "rule",
+   "segments": [
+    {
+     "id": "c09-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Emin olmadığın olasılıklar için bu üç kelimeden biri ve yalın fiil kullanılır. Olasılık için yetenek kelimesi kullanılmaz.",
+     "textSha256": "e6e677d35ed01fae6ef09973d9d207120c795621d71f1d9d42ffd1b4adbcace8",
+     "chars": 122,
+     "audio": "tr/c09-tr.mp3",
+     "align": "tr/c09-tr.align.json",
+     "present": true,
+     "duration": 7.36,
+     "quality": {
+      "words": 17,
+      "exact": 17,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c09-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "It might rain later.",
+     "textSha256": "e47c760ea9d2b0054e41b7dc4427c124ba3a4ad7297cf8c03c8a8f39f7952448",
+     "chars": 20,
+     "audio": "en/c09-ex1.mp3",
+     "align": "en/c09-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  }
+ ]
+}

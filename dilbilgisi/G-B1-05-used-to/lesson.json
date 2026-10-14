@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "id": "G-B1-05-used-to",
+  "level": "B1",
+  "titleTr": "used to: geçmişteki alışkanlık",
+  "titleEn": "used to",
+  "goalTr": "Geçmişte olan ama artık olmayan alışkanlık ve durumları used to ve yalın fiille anlatır, be used to ile karıştırmazsın.",
+  "prerequisites": [
+    "G-A2-06-past-questions-negatives"
+  ],
+  "contentVersion": 1,
+  "status": "DRAFT",
+  "aiGenerated": true,
+  "teacherReview": null,
+  "linksTo": {
+    "episodes": [
+      "A1-000"
+    ],
+    "books": []
+  },
+  "narration": {
+    "tr": {
+      "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+    }
+  }
+}

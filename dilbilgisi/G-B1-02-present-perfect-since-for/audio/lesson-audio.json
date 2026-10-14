@@ -1,0 +1,350 @@
+{
+ "schemaVersion": 1,
+ "lessonId": "G-B1-02-present-perfect-since-for",
+ "voices": {
+  "tr": {
+   "model": "alania-v2",
+   "voice": "alania2-f1",
+   "timing": "duyu-1",
+   "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+  },
+  "en": {
+   "model": "eleven_v3",
+   "voice": "EXAVITQu4vr4xnSDxMaL",
+   "speed": 1.0
+  }
+ },
+ "cards": [
+  {
+   "card": "c01",
+   "type": "hook",
+   "segments": [
+    {
+     "id": "c01-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "İnes otuz yıldır her sabah bu kuleden denizi izliyor ve bugün son günü. Kitap bunu geçmiş zamanla anlatıyor. İnes kendisi anlatsaydı, hâlâ süren bir iş için başka bir yapı seçerdi.",
+     "textSha256": "5e047ba9bf8971fec571ff366c4436635c75a0efc38c50a87b7089b0ae28724c",
+     "chars": 180,
+     "audio": "tr/c01-tr.mp3",
+     "align": "tr/c01-tr.align.json",
+     "present": true,
+     "duration": 12.83,
+     "quality": {
+      "words": 30,
+      "exact": 27,
+      "fuzzy": 3,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c01-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I've watched the sea for thirty years.",
+     "textSha256": "b522f59f1d022c31e24b19de5a40d1a15b9362afaf4f347e6ee390e582c1955d",
+     "chars": 38,
+     "audio": "en/c01-ex1.mp3",
+     "align": "en/c01-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c02",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c02-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Geçmişte başlayıp şimdi de süren bir durum için yardımcı fiil ve fiilin üçüncü hâli kullanılır. Yanına ne zamandan beri ya da ne kadardır sürdüğü eklenir. Durum bugüne kadar uzanır.",
+     "textSha256": "39157fb0acdc297c77e0a5e397f98e181f868fb106a318a98c438b754b838ffa",
+     "chars": 181,
+     "audio": "tr/c02-tr.mp3",
+     "align": "tr/c02-tr.align.json",
+     "present": true,
+     "duration": 12.35,
+     "quality": {
+      "words": 29,
+      "exact": 28,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c02-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I have lived here since 2020.",
+     "textSha256": "ee85019195d8b388cf9c5b551a6c36b0695b12fb47dc24a60e10d4a071faa080",
+     "chars": 29,
+     "audio": "en/c02-ex1.mp3",
+     "align": "en/c02-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c03",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c03-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Başlangıç anını söylüyorsan bir kelime, ne kadar sürdüğünü söylüyorsan başka bir kelime gelir. Türkçedeki den beri birincisine, dır eki ikincisine denk düşer. Pazartesi, 2020 ya da kahvaltı gibi bir an başlangıçtır; üç yıl gibi bir uzunluk süredir.",
+     "textSha256": "4a14036ab3b4350aec57f5439d1eafb883fba8200be268d1bb67d1ec0ced0350",
+     "chars": 248,
+     "audio": "tr/c03-tr.mp3",
+     "align": "tr/c03-tr.align.json",
+     "present": true,
+     "duration": 17.73,
+     "quality": {
+      "words": 37,
+      "exact": 36,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "She has worked here since May.",
+     "textSha256": "9ae9bd7bccfaaf68493fa43599590147cbce9d6446bccbfd74b36566a3439c20",
+     "chars": 30,
+     "audio": "en/c03-ex1.mp3",
+     "align": "en/c03-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c03-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "She has worked here for six months.",
+     "textSha256": "e1119e14784c41b839c1b5ce79f7fe02c99d104dfac01d1f1146f13895f462d3",
+     "chars": 35,
+     "audio": "en/c03-ex2.mp3",
+     "align": "en/c03-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c04",
+   "type": "examples",
+   "segments": [
+    {
+     "id": "c04-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I've known Ece for five years.",
+     "textSha256": "7c03cc21e087416bf05665458ee6e73b75a2de8b3b4ae3604774751cec36e95f",
+     "chars": 30,
+     "audio": "en/c04-ex1.mp3",
+     "align": "en/c04-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "We have lived in Ankara since 2018.",
+     "textSha256": "79a6695f9d188dc562798a4cfdcaeabe16c0365b30a558d48d909c94f1c46bed",
+     "chars": 35,
+     "audio": "en/c04-ex2.mp3",
+     "align": "en/c04-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "He hasn't eaten anything since breakfast.",
+     "textSha256": "5f96deb06eec06df6ab4a61be30883313e2d8e8a7d8ca6ffe461d693ad109309",
+     "chars": 41,
+     "audio": "en/c04-ex3.mp3",
+     "align": "en/c04-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex4",
+     "lang": "en",
+     "role": "example",
+     "text": "They have been friends for a long time.",
+     "textSha256": "213d76c2ed4d9288cbc0e0ffcd97cc88e6086eca03da9c83ac6d04dd5667b25e",
+     "chars": 39,
+     "audio": "en/c04-ex4.mp3",
+     "align": "en/c04-ex4.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex5",
+     "lang": "en",
+     "role": "example",
+     "text": "How long have you had this phone?",
+     "textSha256": "dc02678d17d4294446af85f3cb02968a850da0f7653236451987ef310aba4b73",
+     "chars": 33,
+     "audio": "en/c04-ex5.mp3",
+     "align": "en/c04-ex5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c05",
+   "type": "contrast",
+   "segments": [
+    {
+     "id": "c05-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Türkçe bunu şimdiki zamanla söyler: 2019'dan beri buradayım, üç yıldır onu tanıyorum. Birebir çevirince İngilizcede yanlış zamana düşersin. Bu çok olağan bir hata, yapıyı birkaç kez duyunca oturur.",
+     "textSha256": "3b1737fa56aaeba8d6d54468c57c3009249d660a23671b49b55ee3feab9e201f",
+     "chars": 197,
+     "audio": "tr/c05-tr.mp3",
+     "align": "tr/c05-tr.align.json",
+     "present": true,
+     "duration": 14.57,
+     "quality": {
+      "words": 28,
+      "exact": 28,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I have been here since 2019.",
+     "textSha256": "fc4df9ab858d23572e114141993a458fd32a2b75223ba410c76c0c1118329cae",
+     "chars": 28,
+     "audio": "en/c05-ex1.mp3",
+     "align": "en/c05-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "I've known him for five years.",
+     "textSha256": "ea30fb25e07f47d7a15e14cfd573bbbc44db70e7fbdcb9db5b042dc7156a484d",
+     "chars": 30,
+     "audio": "en/c05-ex2.mp3",
+     "align": "en/c05-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c06",
+   "type": "practice",
+   "segments": [
+    {
+     "id": "c06-q5",
+     "lang": "en",
+     "role": "say",
+     "text": "I've lived here since 2020.",
+     "textSha256": "fb2b5f7309fd0b2c70c0a00782ca6c1f4404ec3fa9312560f55c6c98c435fcdd",
+     "chars": 27,
+     "audio": "en/c06-q5.mp3",
+     "align": "en/c06-q5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c07",
+   "type": "rule",
+   "segments": [
+    {
+     "id": "c07-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Geçmişte başlayıp hâlâ süren durum için yardımcı fiil ve fiilin üçüncü hâli kullanılır. Başlangıç anı için bir kelime, süre için başka bir kelime gelir.",
+     "textSha256": "91cf34a468978b389282b10f5e1673a28ceb5e9409aaa3efa685b5e27b845a18",
+     "chars": 152,
+     "audio": "tr/c07-tr.mp3",
+     "align": "tr/c07-tr.align.json",
+     "present": true,
+     "duration": 9.95,
+     "quality": {
+      "words": 24,
+      "exact": 22,
+      "fuzzy": 2,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c07-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I've lived here since 2020.",
+     "textSha256": "fb2b5f7309fd0b2c70c0a00782ca6c1f4404ec3fa9312560f55c6c98c435fcdd",
+     "chars": 27,
+     "audio": "en/c07-ex1.mp3",
+     "align": "en/c07-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  }
+ ]
+}

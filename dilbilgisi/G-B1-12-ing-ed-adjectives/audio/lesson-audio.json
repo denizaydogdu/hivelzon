@@ -1,0 +1,393 @@
+{
+ "schemaVersion": 1,
+ "lessonId": "G-B1-12-ing-ed-adjectives",
+ "voices": {
+  "tr": {
+   "model": "alania-v2",
+   "voice": "alania2-f1",
+   "timing": "duyu-1",
+   "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+  },
+  "en": {
+   "model": "eleven_v3",
+   "voice": "EXAVITQu4vr4xnSDxMaL",
+   "speed": 1.0
+  }
+ },
+ "cards": [
+  {
+   "card": "c01",
+   "type": "hook",
+   "segments": [
+    {
+     "id": "c01-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Mateo'nun bacağı alçıda ve günler hiç geçmiyor. Annesine bir cümle söylüyor, annesi gülüp düzeltiyor. Bu iki kelimenin farkı bu dersin konusu.",
+     "textSha256": "eda39c8b2acaf53d193b722027ade5aa38c0897696406a09b3f48b2848bd02fa",
+     "chars": 142,
+     "audio": "tr/c01-tr.mp3",
+     "align": "tr/c01-tr.align.json",
+     "present": true,
+     "duration": 9.6,
+     "quality": {
+      "words": 21,
+      "exact": 21,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c01-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "No, you're bored. Boring is different.",
+     "textSha256": "2a506085a50b32cdb62bb54a107d9f890014b9c497d5acad675c2a0f6211ac30",
+     "chars": 38,
+     "audio": "en/c01-ex1.mp3",
+     "align": "en/c01-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c02",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c02-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Duyguyu yaşayan kişi için -ed ile biten kelime kullanılır. Duyguya yol açan şey ya da kişi için -ing ile biten kelime gelir. İkisi aynı kökten gelir, ama anlamları farklıdır.",
+     "textSha256": "6f1c74e0eed5e0e0582aa684c037ecf78a2be4789070c0479140f9b0d02512e6",
+     "chars": 174,
+     "audio": "tr/c02-tr.mp3",
+     "align": "tr/c02-tr.align.json",
+     "present": true,
+     "duration": 11.71,
+     "quality": {
+      "words": 29,
+      "exact": 29,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c02-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I'm bored.",
+     "textSha256": "3ef57ee78f94b3b398f83b0a01024e8e86f6d16e2edd8fa7d43bab0a3dc7391a",
+     "chars": 10,
+     "audio": "en/c02-ex1.mp3",
+     "align": "en/c02-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c02-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "The film is boring.",
+     "textSha256": "dd3ce63c18b528101e39d3e12ec307c2261f9ea3097fb2c1ebc4580a9028a691",
+     "chars": 19,
+     "audio": "en/c02-ex2.mp3",
+     "align": "en/c02-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c03",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c03-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Bir kişi için -ing ile biten kelimeyi kullanırsan, onun başkalarına bu duyguyu verdiğini söylersin. Yani kendine sıkıcıyım dersen, başkaları seninle sıkılır demiş olursun.",
+     "textSha256": "1ce3fe66f7bd30ea2c79009eb5fe6ee280c3f3b05c3d561f99e1b7dc0d68a2ff",
+     "chars": 171,
+     "audio": "tr/c03-tr.mp3",
+     "align": "tr/c03-tr.align.json",
+     "present": true,
+     "duration": 10.89,
+     "quality": {
+      "words": 23,
+      "exact": 23,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "He is interesting.",
+     "textSha256": "ad2c5967484cddf2a64b3dcd1fb2413a8c99d88fc75ca82a7849d2b60746cef6",
+     "chars": 18,
+     "audio": "en/c03-ex1.mp3",
+     "align": "en/c03-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c03-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "He is interested in music.",
+     "textSha256": "55d9a4e25f5b990d5572ce9e7dce4877b705d9ed896accdcca22ebe6cf50e87b",
+     "chars": 26,
+     "audio": "en/c03-ex2.mp3",
+     "align": "en/c03-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c04",
+   "type": "examples",
+   "segments": [
+    {
+     "id": "c04-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "The lesson was boring, so I was bored.",
+     "textSha256": "c1bc67e07c309e657b1922a6fef916cc641f5734b7ac3d8b110849d44821c661",
+     "chars": 38,
+     "audio": "en/c04-ex1.mp3",
+     "align": "en/c04-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "I'm interested in science.",
+     "textSha256": "6e6aa55afdd0f219b6ba7e2e4a2cbf5b98d3179b981db682e9d913f0b93783ce",
+     "chars": 26,
+     "audio": "en/c04-ex2.mp3",
+     "align": "en/c04-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "The news was surprising.",
+     "textSha256": "eeb6a4fd7c371bab2c1822af1f885d54ecbbc250d250e105e1eafc850243ae9c",
+     "chars": 24,
+     "audio": "en/c04-ex3.mp3",
+     "align": "en/c04-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex4",
+     "lang": "en",
+     "role": "example",
+     "text": "We were tired after the tiring walk.",
+     "textSha256": "4c1877a64dcb967574e36a1d0281763c6a6742293fedec5d8907430a432a5df5",
+     "chars": 36,
+     "audio": "en/c04-ex4.mp3",
+     "align": "en/c04-ex4.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex5",
+     "lang": "en",
+     "role": "example",
+     "text": "Are you excited about the trip?",
+     "textSha256": "c122b9e2f7f880a36416327cb3ba562a58b2e7df9c67600082a2a3897e4daa36",
+     "chars": 31,
+     "audio": "en/c04-ex5.mp3",
+     "align": "en/c04-ex5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c05",
+   "type": "contrast",
+   "segments": [
+    {
+     "id": "c05-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Türkçede sıkıldım ve sıkıcıyım ayrı kelimelerdir, ama ikisi de aynı kökten gelir. Bu yüzden sıkıldığını söylerken yanlış kelimeyi seçmek çok olağan. Kendi duygun için hep -ed ile biten kelimeyi düşün.",
+     "textSha256": "79b668aa475c3eb92ccf0c703db7db0b8e58892159b5de67a58f566febfa52ea",
+     "chars": 200,
+     "audio": "tr/c05-tr.mp3",
+     "align": "tr/c05-tr.align.json",
+     "present": true,
+     "duration": 13.28,
+     "quality": {
+      "words": 30,
+      "exact": 29,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 1,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I'm bored.",
+     "textSha256": "3ef57ee78f94b3b398f83b0a01024e8e86f6d16e2edd8fa7d43bab0a3dc7391a",
+     "chars": 10,
+     "audio": "en/c05-ex1.mp3",
+     "align": "en/c05-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "I'm interested in music.",
+     "textSha256": "b06b2db64f30125778553c7fe80f2dbb6352d2ba59fad59bf533cc42b7cfa452",
+     "chars": 24,
+     "audio": "en/c05-ex2.mp3",
+     "align": "en/c05-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c06",
+   "type": "practice",
+   "segments": [
+    {
+     "id": "c06-q5",
+     "lang": "en",
+     "role": "say",
+     "text": "The lesson was boring, so I was bored.",
+     "textSha256": "c1bc67e07c309e657b1922a6fef916cc641f5734b7ac3d8b110849d44821c661",
+     "chars": 38,
+     "audio": "en/c06-q5.mp3",
+     "align": "en/c06-q5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c07",
+   "type": "seeInStory",
+   "segments": [
+    {
+     "id": "c07-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Kitaplarda bu kelimeler sık geçiyor. Şu cümlelere bir daha bak.",
+     "textSha256": "9466536444f7df5f39c679801f8166503d9799cf7cee50ebd50e8b8c52f48140",
+     "chars": 63,
+     "audio": "tr/c07-tr.mp3",
+     "align": "tr/c07-tr.align.json",
+     "present": true,
+     "duration": 4.32,
+     "quality": {
+      "words": 10,
+      "exact": 10,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    }
+   ]
+  },
+  {
+   "card": "c08",
+   "type": "rule",
+   "segments": [
+    {
+     "id": "c08-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Duyguyu yaşayan kişi için -ed ile, duyguya yol açan şey için -ing ile biten kelime kullanılır.",
+     "textSha256": "2831316009e7eeed80c257a7a1d1af3ecf9bba7181fb02457f8b9740ec8f591b",
+     "chars": 94,
+     "audio": "tr/c08-tr.mp3",
+     "align": "tr/c08-tr.align.json",
+     "present": true,
+     "duration": 6.24,
+     "quality": {
+      "words": 16,
+      "exact": 16,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c08-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "The film was boring, so we were bored.",
+     "textSha256": "31b4ded8f028ed4b2de2000e5e76dd6859d253770de5d945ae4fcd91efb799f3",
+     "chars": 38,
+     "audio": "en/c08-ex1.mp3",
+     "align": "en/c08-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  }
+ ]
+}
