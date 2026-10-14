@@ -9,7 +9,7 @@ Bu dosya tek takip noktasıdır. Hangi işin hangi sırada yapıldığını, şu
 - **Her şey yerelde** (kullanıcı kararı): Docker PostgreSQL (5434), yerel içerik sunucusu (`python3 tools/dev-content-server/serve.py`, 127.0.0.1:8787), iOS simülatörü "hiVelzon iPhone 17". Sunucu, Bunny Stream, mağaza ve geliştirici hesapları en sonda (H-044).
 - **Biten uygulama işleri:** H-033 repo iskeleti · H-034 bölüm paketi + content-lint · H-045 tasarım yönü (6 taslak, 6 kr) · H-031 etkileşimli oynatıcı · H-046 altyazıya dokun → Türkçe anlam (B1–B4 çevirileri APPROVED) · H-047 Hi kararları · H-049 sezon jeneriği (6,69 kr) · H-050 başlıkla açılış (schemaVersion 2) · H-035 hikâye haritası + Drift ilerleme + kilit kuralı.
 - **İçerik:** B1–B4 üretildi (pilot + B2–B4), jenerik, 6 arayüz taslağı, harita görseli. B5–B12 diyalogları onaylı (H-032) ama üretilmedi; kalan Sezon 1 üretimi ≈ 8 × ~8,5 kr. Higgsfield kredisi **84,56** (lite plan).
-- **Sıradaki adım:** Tasarım yenilemesi (Adım 6): H-057, H-058, H-059, H-041 ve H-039, H-060, H-061 bitti → **H-062** Oynatıcı katmanları → H-063, H-064, H-040 (Kitaplık H-065… paralel); sonra H-042 … H-044.
+- **Sıradaki adım:** Tasarım yenilemesi (Adım 6): H-057, H-058, H-059, H-041 ve H-039, H-060, H-061 bitti H-062 bitti → **H-063** Hi'nin canlılığı → H-064, H-040 (Kitaplık H-065… paralel); sonra H-042 … H-044.
 - **Kullanıcı kararı bekleyenler** (kodlamayı durdurmuyor):
   - H-001: güncellenen iş planının (`docs/IS-PLANI.md`, H-023) son onayı.
   - H-003: günlük konuşma kotasının ölçüsü, uyarı eşikleri, bütçe sorumlusu (tavan 300 USD/ay kararlaştı; v1 öncesi).
@@ -127,7 +127,7 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 | T3 | H-060 | Ana Sayfa, harita, bölüm paneli, jenerik tasarımı | Orta | H-057, H-058, H-039 | ✅ |
 | T3' | H-074 | Günlük hedef için gerçek süre ölçümü | Orta | H-060 | ⏳ |
 | T4 | H-061 | Defter, Kelime tekrarı, Konu seti, Sahne avı tasarımı | Orta | H-057, H-058 | ✅ |
-| T5 | H-062 | Oynatıcı katmanlarının tasarımı | Orta | H-057 | 🔄 |
+| T5 | H-062 | Oynatıcı katmanlarının tasarımı | Orta | H-057 | ✅ |
 | T6 | H-063 | Hi'nin canlılığı (ifadeler, animasyonlar) | Orta | H-057 | ⏳ |
 | T7 | H-064 | Tasarım kalite turu (erişilebilirlik, golden, temizlik) | Orta | H-059 … H-063, H-040 | ⏳ |
 
@@ -171,6 +171,7 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 ## Biten işler
 | İş | Başlık | Bitiş | Doğrulama |
 |---|---|---|---|
+| H-062 | Oynatıcı katmanlarının tasarımı | 2026-10-14 | Oynatıcı ve anlam paneli yalnız belirteçlerle; ~45 metin l10n'de; karar kartı ve Hi paneli giriş animasyonları; sakin bölüm sonu; geçiş ve senkron testleri; flutter 691/691; kullanıcı onayladı |
 | H-069 | Pilot kitaplar (A1 + A2) | 2026-10-14 | The Blue Door (metin, çeviri, 12 görsel, ses Sarah, 105 k/dk) ve The Parrot Who Told Everything (metin, çeviri, 15 görsel; ses Creator planıyla); 27 görsel 14 kr; simülatörde denendi, kullanıcı onayladı |
 | H-067 | Kitaplık ve okuyucu | 2026-10-14 | Macera · Kitaplık, raflar, Bana bir kitap oku, okuyucu (sesli/sessiz, cümle vurgusu, otomatik sayfa, hız, uyku zamanlayıcısı), anlam paneli, Defter'e ekle (kaynak satırı), kitap ilerlemesi eşitlemesi (Drift v6, V8), Hi önerisi; flutter 649, mvn 126; kullanıcı onayladı |
 | H-061 | Defter, Kelime tekrarı, Konu seti, Sahne avı tasarımı | 2026-10-14 | Tek satır biçimli Defter (kaynak satırı), sakin doğru/Bilmiyorum geri bildirimi + hafif haptic, özet StatRow + sakin kutlama, illüstrasyonlu boş durumlar, ortak DontKnowButton; flutter test 581/581; kullanıcı onayladı |
@@ -385,3 +386,4 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
   - H-062 (oynatıcı katmanları: belirteçler, ~45 metin l10n'e, giriş animasyonları, sakin bölüm sonu) `main`'e birleştirildi; onay bekleniyor. Okuyucuya bölüm bazlı ses ve okunan cümleyi takip eden kaydırma eklendi (kullanıcının bildirdiği hata). A2-K03 bölüm 1–2 seslendirildi (ücretsiz kota bitti). Dalga 1 metinleri (8 kitap) `main`'de, onay bekliyor.
   - Kullanıcı kararı: Türkçe cümleler PatientDesk Alania ile seslendirilir (ilk ay ücretsiz); Duyu ile kelime zamanlaması alınır (denendi, çalışıyor). Anahtar sunucu ayarında (`hivelzon.tts.patientdesk`), değer repo dışında `~/.config/hivelzon/backend.yml`.
   - Kullanıcı isteği: Dilbilgisi (Hi'den Türkçe konu anlatımı, A1–C2, ~70 konu; bölüm panelinde "Bu bölümdeki dilbilgisi" teklifi; ayrı Dilbilgisi alanı). Kararlar alındı; `docs/DILBILGISI.md` ve H-075…H-082 açıldı.
+  - Kullanıcı H-062'yi ve dalga 1'in 8 kitap metnini onayladı; 34 görsel (~17 kr) üretimine geçildi.
