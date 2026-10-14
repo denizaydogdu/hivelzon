@@ -1,6 +1,6 @@
 # H-078: Dilbilgisi ekranı (mobil)
 
-- **Durum:** Yapılacak
+- **Durum:** Devam ediyor (kod main'de: flutter 785, mvn 132; simülatörde pilot derslerle deneme ve kullanıcı onayı bekleniyor)
 - **Tür:** Uygulama (kod)
 - **Faz:** Dilbilgisi D2 (`docs/DILBILGISI.md` §8)
 - **Bağımlılık:** H-077

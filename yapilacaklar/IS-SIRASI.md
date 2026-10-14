@@ -154,7 +154,7 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 | D0 | H-075 | Türkçe ses: Alania + Duyu hizalama | Yüksek | — | ✅ |
 | D0 | H-076 | Dilbilgisi müfredatı (~70 konu) | Yüksek | — | ✅ |
 | D1 | H-077 | Ders paketi ve grammar-lint | Yüksek | H-075, H-076 | ✅ |
-| D2 | H-078 | Dilbilgisi ekranı (Hikâye'de 3. bölüm, bölüm panelinde teklif) | Yüksek | H-077 | ⏳ |
+| D2 | H-078 | Dilbilgisi ekranı (Hikâye'de 3. bölüm, bölüm panelinde teklif) | Yüksek | H-077 | 🔄 |
 | D3 | H-079 | Pilot: 3 A1 konusu | Yüksek | H-076…H-078 | 🔄 |
 | D4 | H-080 | Dalga 1: A1 + A2 | Orta | H-079 | ⏳ |
 | D5 | H-081 | Dalga 2: B1 + B2 | Orta | H-080 | ⏳ |
@@ -396,3 +396,5 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
   - H-063 (7 ifade, sakin nefes, panel bölünmesi, bölüm sonunda mutlu Hi) `main`'e birleştirildi (716 test). H-078 dilbilgisi ekranı ve H-079 pilot dersler sürüyor.
   - H-079: 3 pilot ders (to be, a/an, -s) `main`'de; Türkçe sesler Alania ile (2.730 karakter, ücretsiz), İngilizce örnekler ElevenLabs anahtarını bekliyor (627 karakter). G-A1-13'te "siz" eksiği düzeltildi.
   - Kullanıcı yeni ElevenLabs anahtarı verdi (repo dışında `~/.config/hivelzon/elevenlabs.env`); hesap **ücretsiz** (10.000 karakter/ay, ticari lisans yok → yayından önce ücretli planla yeniden üretim, H-006). Üretildi (6.559 karakter, ayrı defter `elevenlabs-hesap2-karakter.json`): A2-K03 bölüm 3 (pilot tamamen sesli), dilbilgisi pilotunun İngilizce örnekleri (3 ders tamamen sesli), A1-K03 The Red Kite. Sesli kitap sayısı: 3/10.
+  - Kullanıcı kararı (hukukçu görüşü): ücretsiz ElevenLabs sesleri yayında kullanılabilir; yeniden üretim gerekmez (H-006 güncellendi).
+  - H-078 dilbilgisi ekranı `main`'e birleştirildi (flutter 785, mvn 132; Drift v7, V9). Birleşmede Hi ifade eşlemesine dilbilgisi önerisi (düşünen) eklendi. Simülatör denemesi bekleniyor.

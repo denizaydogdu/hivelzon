@@ -24,6 +24,7 @@ Ana hikâyeden (*The Missing Signal*) ayrı ama onu tamamlayan bir **dinleme + k
 | Konu | **Bağımsız kitaplar, karışık türler.** Her seviyede 5 ayrı tür: gizem, macera, mizah, bilimkurgu/fantastik, günlük hayat/duygu. Hepsi özgün. Port Lumen kanonuna bağlı değil. |
 | Katalog ve pilot | 30 kitaplık katalog onaylı (`kitaplar/KATALOG.md`). Pilot kitaplar: A1-K01 *The Blue Door* (gizem) ve A2-K03 *The Parrot Who Told Everything* (mizah). Yerleşim: Hikâye sekmesinde "Macera · Kitaplık" (2026-10-14). |
 | Pilot sonrası (2026-10-14) | Pilot onaylandı. Kalan 28 kitapta resim: **kapak + bölüm başı** (~180 görsel ≈ 90 kr). Ses: **ElevenLabs Creator** (~22 USD/ay, ~100 bin karakter, ticari lisans; kullanıcı hesabı açar). Uzun basma: sesli modda kelime → Defter, sessiz modda cümle → seslendir. |
+| Ses lisansı (2026-10-14) | Kullanıcı kararı (hukukçu görüşü): ücretsiz ElevenLabs hesaplarıyla üretilen sesler yayında kullanılabilir; ticari planla yeniden üretim gerekmez. |
 | C2 | Kullanıcı C2'yi de istedi. Belgelerdeki seviye tablosu C1'de bitiyordu; Kitaplık için C2 eklenir (§4, §6). |
 
 ## 3. Dünyadaki örnekler (2026-10-14 taraması)

@@ -9,12 +9,14 @@ bool isLateEvening(DateTime local) => local.hour >= 21 || local.hour < 5;
 /// - Hi'nin notu (tekrarlayan hata) → düşünen;
 /// - dinlenme önerisi → geç akşamsa uykulu, değilse mutlu;
 /// - hikâye, kitap ve sahne avı önerileri → mutlu;
+/// - dilbilgisi önerisi → düşünen (bir yapıyı birlikte inceleme);
 /// - tekrar ve defter → varsayılan (sakin).
 HiExpression hiExpressionForSuggestion(
   HiSuggestionKind kind, {
   required DateTime now,
 }) => switch (kind) {
-  HiSuggestionKind.errorNote => HiExpression.thinking,
+  HiSuggestionKind.errorNote ||
+  HiSuggestionKind.grammarSuggest => HiExpression.thinking,
   HiSuggestionKind.rest =>
     isLateEvening(now) ? HiExpression.sleepy : HiExpression.happy,
   HiSuggestionKind.continueEpisode ||
