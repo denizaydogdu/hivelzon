@@ -27,9 +27,9 @@ Kurallar: her ücretli üretimden **önce** `higgsfield generate cost` ile maliy
 - 1964 raporu: "Kuzey duvarında olağandışı delikler. İncelenmedi." (p08).
 - Taş yığınında iki tür taş: keskin kenarlı soluk yeni taşlar ve çok daha eski, tozlu koyu taşlar (p15) → altta bilerek örülmüş eski duvar (p20).
 
-## Görsel planı (üretilmedi)
+## Görsel planı ve üretim kaydı (2026-10-14)
 
-> **Henüz üretilmedi.** Kullanıcı kararı (2026-10-14, H-071/H-072): kalan kitaplarda resim yoğunluğu **kapak + bölüm başı**. Bu kitapta 6 görsel: `images/cover.png`, `images/p01.png`, `images/p06.png`, `images/p11.png`, `images/p16.png`, `images/p20.png` (git dışı; dosya adları `book.json` ile aynı, diğer sayfalar resimsiz ve palet renkli). Model: GPT Image 2.5, 3:4, ≈ 0,5 kr/görsel (dalga 1'de 1k medium ile doğrulandı); tahmini toplam ≈ 3 kr. **Her üretimden önce `higgsfield generate cost` ile maliyet gösterilir ve kullanıcı onayı alınır.** Bölüm başı görselleri kapak işi referans verilerek üretilir (karakter tutarlılığı).
+> **Üretildi (2026-10-14).** Kullanıcı onayı: "15,06 krediye kadar kullan". GPT Image 2.5, 3:4, medium, 1k = 0,5 kr; bölüm başları kapak işi referans verilerek. Eski plan notu: Kullanıcı kararı (2026-10-14, H-071/H-072): kalan kitaplarda resim yoğunluğu **kapak + bölüm başı**. Bu kitapta 6 görsel: `images/cover.png`, `images/p01.png`, `images/p06.png`, `images/p11.png`, `images/p16.png`, `images/p20.png` (git dışı; dosya adları `book.json` ile aynı, diğer sayfalar resimsiz ve palet renkli). Model: GPT Image 2.5, 3:4, ≈ 0,5 kr/görsel (dalga 1'de 1k medium ile doğrulandı); tahmini toplam ≈ 3 kr. **Her üretimden önce `higgsfield generate cost` ile maliyet gösterilir ve kullanıcı onayı alınır.** Bölüm başı görselleri kapak işi referans verilerek üretilir (karakter tutarlılığı).
 
 **Sabit stil öneki (her istemin başına):**
 `Stylised graphic novel illustration, non-photorealistic, bold clean ink lines with flat colour shapes and soft grain, wide epic compositions. Palette: soft volcanic rock tones of apricot, pink-beige and cream by day; deep night indigo and warm lantern yellow at night; strong warm-cold contrast inside tunnels. Mood: adventurous, calm tension, wonder. Absolutely no text, letters, numbers, signs, logos or writing anywhere in the image; maps, notebooks, graphs, reports and signs are blank or drawn only as abstract lines; hot-air balloons are plain colours or simple stripes with no logos. Consistent characters as described. Vertical 3:4.`
@@ -54,6 +54,20 @@ Kurallar: her ücretli üretimden **önce** `higgsfield generate cost` ile maliy
 | p20.png | p20 (Bölüm 5, The Second Song) | Careful work in a carved passage lit by work lamps: Mr Hakan and two other engineers in white helmets study a large pile of stones while Jonah carries a basket of stones towards the stairs; Dr Aydın stands with a camera on a tripod recording; numbered small tags on some stones are plain shapes without numbers. |
 
 **Sürpriz kontrolü:** Sonun sürprizi, tepenin altındaki sıra sıra oyukların kuzey rüzgârında öten, insan yapımı bir uyarı "çalgısı" olması ve yüzyıllardır duvarla kapalı kalmış ikinci bir borunun açılmasıyla tepenin iki sesle söylemesidir. Hiçbir görselde delikli duvar ya da ikinci oda gösterilmez (p16'da yalnızca şaşkın yüzler ve ışık hüzmeleri; duvar görünmez). p20'deki taş yığını açılmamış hâliyle çizilir; arkasındaki oda ve ikinci baca görünmez. Kapakta tepenin içi gösterilmez. Kemal Bey'in "iki ses" sözü ve kar ipucu yalnız metindedir.
+
+
+### Üretim kaydı
+
+| Dosya | Job id | Referans | Tarih (UTC) | Parametre | Kredi |
+|---|---|---|---|---|---|
+| cover.png | 455f1a7f-9425-406a-9476-95c894390ab2 | — | 2026-10-14T16:15:58+00:00 | 3:4, medium, 1k | 0.5 |
+| p16.png | 07765cb2-0e17-4a67-a0dc-917030683c73 | 455f1a7f-9425-406a-9476-95c894390ab2 | 2026-10-14T16:18:13+00:00 | 3:4, medium, 1k | 0.5 |
+| p11.png | 1b432705-fb77-4505-aee6-9d046361fc11 | 455f1a7f-9425-406a-9476-95c894390ab2 | 2026-10-14T16:18:16+00:00 | 3:4, medium, 1k | 0.5 |
+| p06.png | 918f135f-4d43-4320-b769-e047382ebda1 | 455f1a7f-9425-406a-9476-95c894390ab2 | 2026-10-14T16:18:18+00:00 | 3:4, medium, 1k | 0.5 |
+| p01.png | 361bf695-4cd0-4bd8-b56e-5cc90b9079b9 | 455f1a7f-9425-406a-9476-95c894390ab2 | 2026-10-14T16:18:30+00:00 | 3:4, medium, 1k | 0.5 |
+| p20.png | 003c8406-89c1-4494-a29e-7b0bb59080e1 | 455f1a7f-9425-406a-9476-95c894390ab2 | 2026-10-14T16:18:38+00:00 | 3:4, medium, 1k | 0.5 |
+
+**Toplam:** 3 kr. Tam istemler yerel `images/_jobs.json`'da (git dışı). **Editör değerlendirmesi:** karakter ve üslup tutarlı; görselde yazı yok; sürpriz ele verilmiyor.
 
 ## Seslendirme kayıtları (tts_book.py)
 

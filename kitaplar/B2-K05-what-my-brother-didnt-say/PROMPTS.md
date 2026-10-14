@@ -26,9 +26,9 @@ Kurallar: her ücretli üretimden **önce** `higgsfield generate cost` ile maliy
 - Annem: baba gençken Tommy Doyle'un yanında tekne yapmış, Daniel doğacakken sigorta işine geçmiş (p16); Sophie fotoğrafın Doyle'un atölyesinde çekildiğini fark ediyor (p17).
 - Baba: "…while you make the same mistake I…" diyip susuyor (p18).
 
-## Görsel planı (üretilmedi)
+## Görsel planı ve üretim kaydı (2026-10-14)
 
-> **Henüz üretilmedi.** Kullanıcı kararı (2026-10-14, H-071/H-072): kalan kitaplarda resim yoğunluğu **kapak + bölüm başı**. Bu kitapta 6 görsel: `images/cover.png`, `images/p01.png`, `images/p06.png`, `images/p10.png`, `images/p15.png`, `images/p19.png` (git dışı; dosya adları `book.json` ile aynı, diğer sayfalar resimsiz ve palet renkli). Model: GPT Image 2.5, 3:4, ≈ 0,5 kr/görsel; tahmini toplam ≈ 3 kr. **Her üretimden önce `higgsfield generate cost` ile maliyet gösterilir ve kullanıcı onayı alınır.** Bölüm başı görselleri kapak işi referans verilerek üretilir (karakter tutarlılığı).
+> **Üretildi (2026-10-14).** Kullanıcı onayı: "15,06 krediye kadar kullan". GPT Image 2.5, 3:4, medium, 1k = 0,5 kr; bölüm başları kapak işi referans verilerek. Eski plan notu: Kullanıcı kararı (2026-10-14, H-071/H-072): kalan kitaplarda resim yoğunluğu **kapak + bölüm başı**. Bu kitapta 6 görsel: `images/cover.png`, `images/p01.png`, `images/p06.png`, `images/p10.png`, `images/p15.png`, `images/p19.png` (git dışı; dosya adları `book.json` ile aynı, diğer sayfalar resimsiz ve palet renkli). Model: GPT Image 2.5, 3:4, ≈ 0,5 kr/görsel; tahmini toplam ≈ 3 kr. **Her üretimden önce `higgsfield generate cost` ile maliyet gösterilir ve kullanıcı onayı alınır.** Bölüm başı görselleri kapak işi referans verilerek üretilir (karakter tutarlılığı).
 
 **Sabit stil öneki (her istemin başına):**
 `Pencil and watercolour illustration, non-photorealistic, visible pencil lines and soft watercolour washes on textured paper, quiet and tender. Palette: moss green, grey-blue sea, warm wood brown, evening copper light, pale sky. Mood: quiet, honest, a little tense, warm underneath. Absolutely no text, letters, numbers, signs, logos or writing anywhere in the image; photographs in frames are drawn only as soft blurred shapes, phone screens are blank. Consistent characters as described. Vertical 3:4.`
@@ -54,6 +54,20 @@ Kurallar: her ücretli üretimden **önce** `higgsfield generate cost` ile maliy
 | p19.png | p19 (Bölüm 5, Launch) | A bright cold Saturday morning at the top of the stone ramp: a crowd of townspeople (fishermen, neighbours, children, Mrs Kelly with a flask), Mr Doyle in a jacket and tie, Daniel in a bright orange life jacket looking up at the empty road; the finished wooden boat on a wheeled frame, seen from the side at a distance, honey-coloured on top and dark below. Dad is not in the picture. |
 
 **Sürpriz kontrolü:** Sonun sürprizi, Daniel'ın bitirdiği teknenin babanın yirmi iki yıl önce başlayıp yarım bıraktığı teknenin kendisi olmasıdır. Fotoğraftaki yarım tekne hiçbir görselde gösterilmez (p01'de fotoğraf yoktur; çerçeveli fotoğraflar yalnız bulanık biçim olarak çizilir). Teknenin içine oyulmuş küçük balık ve raftaki tahta balıklar hiçbir görselde yer almaz. p10'da tekne yalnız kısmen ve bulanık görünür; p19'da tekne uzaktan ve yandan görünür, baba görselde yoktur. Kapakta tekne görünmez. Böylece hiçbir görsel fotoğraftaki tekneyle Daniel'ın teknesini yan yana ya da aynı biçimde göstermez.
+
+
+### Üretim kaydı
+
+| Dosya | Job id | Referans | Tarih (UTC) | Parametre | Kredi |
+|---|---|---|---|---|---|
+| cover.png | 8a187236-b8ad-474a-a21f-b7f47b8d6530 | — | 2026-10-14T16:16:57+00:00 | 3:4, medium, 1k | 0.5 |
+| p06.png | d5a4958e-5ea4-47c4-99a5-b84bddcd35c6 | 8a187236-b8ad-474a-a21f-b7f47b8d6530 | 2026-10-14T16:20:47+00:00 | 3:4, medium, 1k | 0.5 |
+| p10.png | 99598bad-c5d6-42f9-a630-a494510406ef | 8a187236-b8ad-474a-a21f-b7f47b8d6530 | 2026-10-14T16:20:50+00:00 | 3:4, medium, 1k | 0.5 |
+| p01.png | 8455cfce-5dd4-4241-af2a-d0a5ab34a164 | 8a187236-b8ad-474a-a21f-b7f47b8d6530 | 2026-10-14T16:20:53+00:00 | 3:4, medium, 1k | 0.5 |
+| p15.png | e66e9fac-753b-45cc-ae0a-bfe00ef883a8 | 8a187236-b8ad-474a-a21f-b7f47b8d6530 | 2026-10-14T16:20:59+00:00 | 3:4, medium, 1k | 0.5 |
+| p19.png | 20bcdbf2-99b7-4cd4-8f4a-8f1f2babb842 | 8a187236-b8ad-474a-a21f-b7f47b8d6530 | 2026-10-14T16:21:09+00:00 | 3:4, medium, 1k | 0.5 |
+
+**Toplam:** 3 kr. Tam istemler yerel `images/_jobs.json`'da (git dışı). **Editör değerlendirmesi:** karakter ve üslup tutarlı; görselde yazı yok; sürpriz ele verilmiyor. Not: kapak ile p06 sahnesi (kayıkhane) birbirine çok benziyor.
 
 ## Seslendirme kayıtları (tts_book.py)
 

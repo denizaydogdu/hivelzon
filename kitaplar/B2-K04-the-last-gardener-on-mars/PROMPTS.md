@@ -28,9 +28,9 @@ Kurallar: her ücretli üretimden **önce** `higgsfield generate cost` ile maliy
 - Sap kazınınca altı hâlâ yeşil ve nemli: "Not dead. Waiting." (p16); yaz dolabındaki bitki yeşilleniyor (p17).
 - Şişlik sapla son yaprağın arasında, pürüzsüz ve açık yeşil; "olmak üzere olan bir şeye" benziyor (p20).
 
-## Görsel planı (üretilmedi)
+## Görsel planı ve üretim kaydı (2026-10-14)
 
-> **Henüz üretilmedi.** Kullanıcı kararı (2026-10-14, H-071/H-072): kalan kitaplarda resim yoğunluğu **kapak + bölüm başı**. Bu kitapta 6 görsel: `images/cover.png`, `images/p01.png`, `images/p06.png`, `images/p11.png`, `images/p16.png`, `images/p21.png` (git dışı; dosya adları `book.json` ile aynı, diğer sayfalar resimsiz ve palet renkli). Model: GPT Image 2.5, 3:4, ≈ 0,5 kr/görsel (dalga 1'de 1k medium ile doğrulandı); tahmini toplam ≈ 3 kr. **Her üretimden önce `higgsfield generate cost` ile maliyet gösterilir ve kullanıcı onayı alınır.** Bölüm başı görselleri kapak işi referans verilerek üretilir (karakter tutarlılığı).
+> **Üretildi (2026-10-14).** Kullanıcı onayı: "15,06 krediye kadar kullan". GPT Image 2.5, 3:4, medium, 1k = 0,5 kr; bölüm başları kapak işi referans verilerek. Eski plan notu: Kullanıcı kararı (2026-10-14, H-071/H-072): kalan kitaplarda resim yoğunluğu **kapak + bölüm başı**. Bu kitapta 6 görsel: `images/cover.png`, `images/p01.png`, `images/p06.png`, `images/p11.png`, `images/p16.png`, `images/p21.png` (git dışı; dosya adları `book.json` ile aynı, diğer sayfalar resimsiz ve palet renkli). Model: GPT Image 2.5, 3:4, ≈ 0,5 kr/görsel (dalga 1'de 1k medium ile doğrulandı); tahmini toplam ≈ 3 kr. **Her üretimden önce `higgsfield generate cost` ile maliyet gösterilir ve kullanıcı onayı alınır.** Bölüm başı görselleri kapak işi referans verilerek üretilir (karakter tutarlılığı).
 
 **Sabit stil öneki (her istemin başına):**
 `Clean-line graphic science-fiction illustration, non-photorealistic, flat colour areas with soft gradients, crisp ink outlines, calm and hopeful with quiet tension. Palette: rust-red Mars landscape and dusty pink-orange sky, deep greenhouse greens, warm sodium-lamp orange light, pale steel and glass. Absolutely no text, letters, numbers, signs, logos or writing anywhere in the image; computer screens and graphs show only simple abstract lines, notebooks show only soft illegible marks, labels are blank. Consistent characters as described. Vertical 3:4.`
@@ -55,6 +55,20 @@ Kurallar: her ücretli üretimden **önce** `higgsfield generate cost` ile maliy
 | p21.png | p21 (Bölüm 5, Buds) | The crowded main hall of the colony: Kofi stands nervously in front of the council table; Councillor Hale and other councillors sit behind it; Kofi's mother and Yara in the front row; on a small table, a bean plant under a clear cover, seen from a distance with only tired leaves visible. |
 
 **Sürpriz kontrolü:** Sonun sürprizi, bitkilerin ölmediği, Mars kışı için uykuya geçtiği ve saptaki şişliğin bir çiçek tomurcuğu, yani ilk gerçek Mars tohumlarının habercisi olmasıdır. Hiçbir görselde tomurcuk, çiçek ya da şişlik gösterilmez: kapakta Kofi'nin elinde yalnızca sarı bir yaprak vardır; p16'da bitkiler yorgun ve soluktur; p21'de dolaptan gelen bitki uzaktan, yalnızca yorgun yapraklarıyla görünür. Dünya fasulyelerindeki beyaz çiçekler (p05) ve Dr Lindqvist'in salona gelişi (p22) görsellenmez. Defterdeki "They will learn the long year" satırı yazı olduğu için hiçbir görselde yer almaz.
+
+
+### Üretim kaydı
+
+| Dosya | Job id | Referans | Tarih (UTC) | Parametre | Kredi |
+|---|---|---|---|---|---|
+| cover.png | 3b7f308d-a091-45d3-9426-c17b1014c5cb | — | 2026-10-14T16:16:37+00:00 | 3:4, medium, 1k | 0.5 |
+| p06.png | 142e7f84-655a-439e-92f8-0c3a12819f53 | 3b7f308d-a091-45d3-9426-c17b1014c5cb | 2026-10-14T16:19:58+00:00 | 3:4, medium, 1k | 0.5 |
+| p01.png | 2b587f9d-e15f-4336-a10b-e551a8c8bc93 | 3b7f308d-a091-45d3-9426-c17b1014c5cb | 2026-10-14T16:19:58+00:00 | 3:4, medium, 1k | 0.5 |
+| p16.png | 81b31f26-67a8-4747-9e6e-22241d8e3984 | 3b7f308d-a091-45d3-9426-c17b1014c5cb | 2026-10-14T16:20:00+00:00 | 3:4, medium, 1k | 0.5 |
+| p11.png | a9ce3cb6-e0c4-4acc-96fa-ee338017fc6c | 3b7f308d-a091-45d3-9426-c17b1014c5cb | 2026-10-14T16:20:15+00:00 | 3:4, medium, 1k | 0.5 |
+| p21.png | 0985e8ca-b820-40ce-b4e5-8bc41088f3da | 3b7f308d-a091-45d3-9426-c17b1014c5cb | 2026-10-14T16:20:24+00:00 | 3:4, medium, 1k | 0.5 |
+
+**Toplam:** 3 kr. Tam istemler yerel `images/_jobs.json`'da (git dışı). **Editör değerlendirmesi:** karakter ve üslup tutarlı; görselde yazı yok; sürpriz ele verilmiyor.
 
 ## Seslendirme kayıtları (tts_book.py)
 

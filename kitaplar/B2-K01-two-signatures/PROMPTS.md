@@ -26,9 +26,9 @@ Kurallar: her ücretli üretimden **önce** `higgsfield generate cost` ile maliy
 - Tepedeki ev: tablo oradan gelir (p01); 1931 fotoğrafı da oradadır, ev büyükanne ölünce eşyalarıyla satılmıştır (p22); tarih 1931 köşede (p20) ve fotoğrafta (p22).
 - Vernik: oğlu ölümünden sonra tabloları temizletip vernikletti (p23) — ikinci ismin neden vernik altında kaldığı.
 
-## Görsel planı (üretilmedi)
+## Görsel planı ve üretim kaydı (2026-10-14)
 
-> **Henüz üretilmedi.** Kullanıcı kararı (2026-10-14, H-071/H-072): kalan kitaplarda resim yoğunluğu **kapak + bölüm başı**. Bu kitapta 7 görsel: `images/cover.png`, `images/p01.png`, `images/p05.png`, `images/p09.png`, `images/p13.png`, `images/p17.png`, `images/p21.png` (git dışı; dosya adları `book.json` ile aynı, diğer sayfalar resimsiz ve palet renkli). Model: GPT Image 2.5, 3:4, ≈ 0,5 kr/görsel; tahmini toplam ≈ 3,5 kr. **Her üretimden önce `higgsfield generate cost` ile maliyet gösterilir ve kullanıcı onayı alınır.** Bölüm başı görselleri kapak işi referans verilerek üretilir (karakter tutarlılığı).
+> **Üretildi (2026-10-14).** Kullanıcı onayı: "15,06 krediye kadar kullan". GPT Image 2.5, 3:4, medium, 1k = 0,5 kr; bölüm başları kapak işi referans verilerek. **Eksik: p13 (4. bölüm başı) kredi bitince bırakıldı → H-084.** Eski plan notu: Kullanıcı kararı (2026-10-14, H-071/H-072): kalan kitaplarda resim yoğunluğu **kapak + bölüm başı**. Bu kitapta 7 görsel: `images/cover.png`, `images/p01.png`, `images/p05.png`, `images/p09.png`, `images/p13.png`, `images/p17.png`, `images/p21.png` (git dışı; dosya adları `book.json` ile aynı, diğer sayfalar resimsiz ve palet renkli). Model: GPT Image 2.5, 3:4, ≈ 0,5 kr/görsel; tahmini toplam ≈ 3,5 kr. **Her üretimden önce `higgsfield generate cost` ile maliyet gösterilir ve kullanıcı onayı alınır.** Bölüm başı görselleri kapak işi referans verilerek üretilir (karakter tutarlılığı).
 
 **Sabit stil öneki (her istemin başına):**
 `Stylised illustration with a rich oil-paint texture, a picture within a picture, non-photorealistic, visible brushstrokes, thoughtful and quiet mood. Palette: saffron, mustard yellow, Mediterranean blue, warm workshop shadows, a small accent of boat red. Absolutely no text, letters, numbers, signs, logos or writing anywhere in the image; signatures are drawn only as small abstract brush marks, documents, labels, catalogues and letters are blank or abstract lines, screens are blank. Consistent characters as described. Vertical 3:4.`
@@ -54,6 +54,20 @@ Kurallar: her ücretli üretimden **önce** `higgsfield generate cost` ile maliy
 | p21.png | p21 (Bölüm 6, The Same Hand) | Evening in the workshop: the cleaned painting on the easel under the lamp; Ms Vidal in her grey coat has just come through the door and stops, one hand raised to her mouth; Lucía and Mr Castell turn towards her. |
 
 **Sürpriz kontrolü:** Sonun sürprizi, Andreu ile Aina Serra'nın aynı kişi olması, ikinci ismi Aina'nın 1931'de kendisinin yazması ve Bayan Vidal'ın onun torununun torunu olarak kaydı düzeltmek istemesidir. Hiçbir görselde yaşlı Aina ya da 1931 fotoğrafı gösterilmez; imzalar yalnız soyut fırça izi olarak çizilir (okunur ad ve tarih yok); p09'daki figür yalnızca belirsiz bir karaltıdır, yüzü görünmez; Bayan Vidal yalnız p21'de, şaşkın ve duygulu ama ne düşündüğü belli olmadan görünür; mektupların içeriği hiçbir görselde okunmaz.
+
+
+### Üretim kaydı
+
+| Dosya | Job id | Referans | Tarih (UTC) | Parametre | Kredi |
+|---|---|---|---|---|---|
+| cover.png | 1d011fd5-c1bd-4da8-bfa1-11164f1521e8 | — | 2026-10-14T16:15:38+00:00 | 3:4, medium, 1k | 0.5 |
+| p01.png | c51807f6-7f38-4b59-8dc4-f7821c08763c | 1d011fd5-c1bd-4da8-bfa1-11164f1521e8 | 2026-10-14T16:17:20+00:00 | 3:4, medium, 1k | 0.5 |
+| p17.png | 9450aa4c-4ad0-4a4b-a6ca-f2d1bd2c9bcf | 1d011fd5-c1bd-4da8-bfa1-11164f1521e8 | 2026-10-14T16:17:23+00:00 | 3:4, medium, 1k | 0.5 |
+| p05.png | a5db8076-25e3-4d90-93e4-f450860d6a5d | 1d011fd5-c1bd-4da8-bfa1-11164f1521e8 | 2026-10-14T16:17:23+00:00 | 3:4, medium, 1k | 0.5 |
+| p09.png | b956ac37-f2e6-4adb-a5bc-edd5d2e6ce7f | 1d011fd5-c1bd-4da8-bfa1-11164f1521e8 | 2026-10-14T16:17:25+00:00 | 3:4, medium, 1k | 0.5 |
+| p21.png | c4c8d5ba-dd8c-4766-b5bd-bed422d29a44 | 1d011fd5-c1bd-4da8-bfa1-11164f1521e8 | 2026-10-14T16:17:49+00:00 | 3:4, medium, 1k | 0.5 |
+
+**Toplam:** 3 kr. Tam istemler yerel `images/_jobs.json`'da (git dışı). **Editör değerlendirmesi:** karakter ve üslup tutarlı; görselde yazı yok; sürpriz ele verilmiyor.
 
 ## Seslendirme kayıtları (tts_book.py)
 

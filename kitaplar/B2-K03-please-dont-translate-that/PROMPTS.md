@@ -30,9 +30,9 @@ Kurallar: her ücretli üretimden **önce** `higgsfield generate cost` ile maliy
 - Karanlık köşede oturan Orhan Bey, "Orhan Bey couldn't have understood those. At least, that is what Bruno thought." (p18).
 - Kediye gönderme: Orhan Bey bir kez, "something about a cat" yüzünden gülmüş (p02) → "Your mistakes are the best thing in this house since the cat." (p21).
 
-## Görsel planı (üretilmedi)
+## Görsel planı ve üretim kaydı (2026-10-14)
 
-> **Henüz üretilmedi.** Kullanıcı kararı (2026-10-14, H-071/H-072): kalan kitaplarda resim yoğunluğu **kapak + bölüm başı**. Bu kitapta 6 görsel: `images/cover.png`, `images/p01.png`, `images/p06.png`, `images/p11.png`, `images/p15.png`, `images/p19.png` (git dışı; dosya adları `book.json` ile aynı, diğer sayfalar resimsiz ve palet renkli). Model: GPT Image 2.5, 3:4, ≈ 0,5 kr/görsel; tahmini toplam ≈ 3 kr. **Her üretimden önce `higgsfield generate cost` ile maliyet gösterilir ve kullanıcı onayı alınır.** Bölüm başı görselleri kapak işi referans verilerek üretilir (karakter tutarlılığı).
+> **Üretildi (2026-10-14).** Kullanıcı onayı: "15,06 krediye kadar kullan". GPT Image 2.5, 3:4, medium, 1k = 0,5 kr; bölüm başları kapak işi referans verilerek. Eski plan notu: Kullanıcı kararı (2026-10-14, H-071/H-072): kalan kitaplarda resim yoğunluğu **kapak + bölüm başı**. Bu kitapta 6 görsel: `images/cover.png`, `images/p01.png`, `images/p06.png`, `images/p11.png`, `images/p15.png`, `images/p19.png` (git dışı; dosya adları `book.json` ile aynı, diğer sayfalar resimsiz ve palet renkli). Model: GPT Image 2.5, 3:4, ≈ 0,5 kr/görsel; tahmini toplam ≈ 3 kr. **Her üretimden önce `higgsfield generate cost` ile maliyet gösterilir ve kullanıcı onayı alınır.** Bölüm başı görselleri kapak işi referans verilerek üretilir (karakter tutarlılığı).
 
 **Sabit stil öneki (her istemin başına):**
 `Lively comic-book comedy illustration, clean ink lines with flat bright colours and soft halftone shading, non-photorealistic, warm and affectionate family chaos, expressive faces. Palette: turquoise, candy pink, mustard yellow, peach, warm cream, a little deep plum for shadows. Setting details: old colourful wooden houses by a slow green river in a Turkish city. Absolutely no text, letters, numbers, signs, logos or writing anywhere in the image; phone screens are blank or show only abstract shapes; speech is never shown as speech bubbles with words, the earpiece's translation is shown only as small wordless wave symbols near the ear. Consistent characters as described. Vertical 3:4.`
@@ -57,6 +57,20 @@ Kurallar: her ücretli üretimden **önce** `higgsfield generate cost` ile maliy
 | p19.png | p19 (Bölüm 5, Blessing) | The train room in warm yellow lamplight: Bruno and Orhan Bey sit facing each other across the model railway, both leaning forward and talking; a small red train between them on the stone bridge; Orhan Bey's face is softer, almost smiling. Neither man's ears are visible. |
 
 **Sürpriz kontrolü:** Sonun sürprizi, Selin'in ikinci kulaklığı ilk akşam babasına vermiş olması ve Orhan Bey'in bütün hafta Bruno'nun Portekizce deyimlerinin kelimesi kelimesine çevirisini dinleyip gülmemek için sofradan kalkmasıdır. **Hiçbir görselde Orhan Bey kulaklık takarken ya da elinde kulaklıkla gösterilmez;** kulakları her görselde saçla örtülüdür. p15'te köşedeki koltuk boş bir gölgedir, Orhan Bey görünmez. p19'da kulaklık masada ya da elde gösterilmez; yalnız iki adamın konuştuğu görülür. Telefon ekranındaki "two earpieces connected" satırı ve gülerken mutfakta saklanan Orhan Bey hiçbir görselde yer almaz (yalnız metinde, resimsiz sayfalar p10, p14, p20).
+
+
+### Üretim kaydı
+
+| Dosya | Job id | Referans | Tarih (UTC) | Parametre | Kredi |
+|---|---|---|---|---|---|
+| cover.png | fe970fcf-0f06-45dd-818b-fa4836554fc6 | — | 2026-10-14T16:16:17+00:00 | 3:4, medium, 1k | 0.5 |
+| p11.png | 60bafda8-04ca-4fcc-92ee-90d13ecf94aa | fe970fcf-0f06-45dd-818b-fa4836554fc6 | 2026-10-14T16:19:05+00:00 | 3:4, medium, 1k | 0.5 |
+| p15.png | c5d7e8c6-d402-405c-96e2-005dc8911b03 | fe970fcf-0f06-45dd-818b-fa4836554fc6 | 2026-10-14T16:19:07+00:00 | 3:4, medium, 1k | 0.5 |
+| p06.png | 2e01cd3b-5f8b-48d8-983b-8e353fce80b8 | fe970fcf-0f06-45dd-818b-fa4836554fc6 | 2026-10-14T16:19:07+00:00 | 3:4, medium, 1k | 0.5 |
+| p01.png | 31d97522-f7bd-467e-8b3a-3b7cc30a81c6 | fe970fcf-0f06-45dd-818b-fa4836554fc6 | 2026-10-14T16:19:08+00:00 | 3:4, medium, 1k | 0.5 |
+| p19.png | aee36b5a-3a8d-480e-8f98-38528d103edc | fe970fcf-0f06-45dd-818b-fa4836554fc6 | 2026-10-14T16:19:31+00:00 | 3:4, medium, 1k | 0.5 |
+
+**Toplam:** 3 kr. Tam istemler yerel `images/_jobs.json`'da (git dışı). **Editör değerlendirmesi:** karakter ve üslup tutarlı; görselde yazı yok; sürpriz ele verilmiyor.
 
 ## Seslendirme kayıtları (tts_book.py)
 
