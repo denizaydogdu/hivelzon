@@ -26,6 +26,10 @@ class HiBubble extends ConsumerWidget {
 
   static const double size = 64;
 
+  /// Balon açılınca Hi kaç kez sakin nefes alır (bir nefes
+  /// [HiAvatar.idlePeriod]); sonra durağan kalır, dikkat dağıtmaz.
+  static const int breathCycles = 3;
+
   /// Sayfaların alttan bırakması gereken boşluk: balon (64) + alt pay (16) +
   /// aralık (8). Bkz. `ShellScaffold`.
   static const double clearance = size + AppSpacing.sm + AppSpacing.xs;
@@ -64,7 +68,14 @@ class HiBubble extends ConsumerWidget {
                     ),
                   ),
                 ),
-                const Center(child: HiAvatar(size: 58, pulseCycles: 2)),
+                // H-063: sakin nefes (birkaç döngü, sonra durur).
+                const Center(
+                  child: HiAvatar(
+                    size: 58,
+                    pulseCycles: HiBubble.breathCycles,
+                    breathe: true,
+                  ),
+                ),
                 if (badge)
                   Positioned(
                     right: 4,

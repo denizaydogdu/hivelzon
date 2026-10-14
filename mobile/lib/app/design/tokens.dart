@@ -104,6 +104,25 @@ abstract final class AppScrim {
   static const Color badgeShadow = Color(0x55000000);
 }
 
+/// Hi'nin renkleri (H-005, H-063): kodla çizilen balonun gövdesi, ışığı ve
+/// yüzü. Fotogerçekçi değil; sıcak sarı çekirdek, açık turkuaz ışık.
+abstract final class AppHiColors {
+  /// Balonun kenarı ve ışığı (açık turkuaz).
+  static const Color rim = Color(0xFF7FD8E8);
+
+  /// Balonun sıcak çekirdeği.
+  static const Color core = AppPalette.yellow100;
+
+  /// Gözler, ağız ve küçük işaretler.
+  static const Color face = AppPalette.seaBlue;
+
+  /// Göz parıltısı ve gövdenin parlak ucu.
+  static const Color highlight = AppPalette.white;
+
+  /// Mutluyken yanaklardaki hafif sıcaklık (düşük opaklıkla çizilir).
+  static const Color cheek = AppPalette.eveningOrange;
+}
+
 /// Hikâye haritasının renkleri (H-060): kodla çizilen yedek harita ve bölüm
 /// düğümleri. Harita görseli yokken ya da açılamazken kullanılır.
 abstract final class AppMapColors {

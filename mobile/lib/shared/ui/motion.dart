@@ -206,10 +206,17 @@ class SoftEntrance extends StatelessWidget {
 /// ikon. Bir kez belirir; dış halka hafifçe genişleyip yerine oturur. Konfeti,
 /// ses, titreme ya da tekrar eden ışık yok (K-32). Hareket azaltılmışsa
 /// durağan. Ekran okuyucuya görünmez (süs).
+///
+/// Ortada [icon] (sarı daire içinde) ya da [child] durur. H-063: bölüm sonu
+/// ve tekrar özeti ortada mutlu Hi gösterir (`child`).
 class CalmCelebration extends StatelessWidget {
-  const CalmCelebration({super.key, required this.icon, this.size = 112});
+  const CalmCelebration({super.key, this.icon, this.child, this.size = 112})
+    : assert(icon != null || child != null);
 
-  final IconData icon;
+  final IconData? icon;
+
+  /// İkon yerine ortada duran öğe (ör. mutlu Hi); boyutu [size] × 0,8.
+  final Widget? child;
   final double size;
 
   @override
@@ -246,19 +253,21 @@ class CalmCelebration extends StatelessWidget {
           children: [
             halo,
             CalmPop(
-              child: Container(
-                width: size * 0.68,
-                height: size * 0.68,
-                decoration: const BoxDecoration(
-                  color: AppPalette.yellow200,
-                  shape: BoxShape.circle,
-                ),
-                child: Icon(
-                  icon,
-                  size: AppIconSize.xl,
-                  color: AppPalette.orange700,
-                ),
-              ),
+              child: child != null
+                  ? SizedBox.square(dimension: size * 0.8, child: child)
+                  : Container(
+                      width: size * 0.68,
+                      height: size * 0.68,
+                      decoration: const BoxDecoration(
+                        color: AppPalette.yellow200,
+                        shape: BoxShape.circle,
+                      ),
+                      child: Icon(
+                        icon,
+                        size: AppIconSize.xl,
+                        color: AppPalette.orange700,
+                      ),
+                    ),
             ),
           ],
         ),

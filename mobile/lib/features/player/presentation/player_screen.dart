@@ -32,6 +32,7 @@ import '../data/subtitle_preference_store.dart';
 import 'widgets/card_view.dart';
 import 'widgets/decision_sheet.dart';
 import 'widgets/end_view.dart';
+import 'widgets/hi_avatar.dart' show HiExpression;
 import 'widgets/mission_sheet.dart';
 import 'widgets/opening_overlays.dart';
 import 'widgets/player_top_bar.dart';
@@ -582,6 +583,7 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen>
             bottom(
               key: const ValueKey('hint-panel'),
               HiPanel(
+                expression: HiExpression.thinking,
                 title: PlayerTexts.hintTitle(hint.level, node.hints.length),
                 text: hint.tr,
                 onListen: hint.audio == null
