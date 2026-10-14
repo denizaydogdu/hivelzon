@@ -141,7 +141,7 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 | K2 | H-067 | Kitaplık ve okuyucu (sesli/sessiz, cümle vurgusu, Defter'e ekle) | Yüksek | H-066 | ✅ |
 | K3 | H-068 | Arka planda dinleme ve kilit ekranı | Orta | H-067 | 🔄 |
 | K4 | H-069 | Pilot kitaplar A1 + A2 (≈ 15 kr görsel, maliyet onayı önce) | Yüksek | H-065, H-066, H-067 | ✅ |
-| K5 | H-070 | Kitaplık arka ucu (BOOK, C2, onay) | Orta | H-066 | ⏳ |
+| K5 | H-070 | Kitaplık arka ucu (BOOK, C2, onay) | Orta | H-066 | ✅ |
 | K6 | H-071 | Kitap dalgası 1: A1 + A2 (kalan 8) | Orta | H-069 | 🔄 |
 | K7 | H-072 | Kitap dalgası 2: B1 + B2 (10) | Orta | H-071 | 🔄 |
 | K8 | H-073 | Kitap dalgası 3: C1 + C2 (10) | Orta | H-072 | ⏳ |
@@ -428,3 +428,4 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
   - **B5 "Too Late?" tamamlandı** (14 görsel 8 kr, Türkçe Alania, İngilizce 964 karakter: hesap3 + hesap1; senkron 0,01 sn; lint 0 hata). Jordan = Chris. B6–B12 için ~7.700 İngilizce karakter gerekiyor.
   - **Sezon 1'in 12 bölümü de üretildi** (H-085): B6–B12 görsel, ★ klipler, Türkçe (Alania) ve İngilizce (hesap4) sesler, paketler; haritada 12/12 oynanabilir, lint 0 hata, -16,0 LUFS. Yeni sesler: Rosa Matilda, Mr Grant Bill, Tom Will, Sunucu Daniel, Satıcı Laura. Bekleyen: simülatör denemesi ve editör onayı (H-028). Higgsfield 385,06 kr.
   - Dilbilgisi A2: 7 dersin İngilizce örnekleri sesli (G-A2-01…07; 08 kısmen); hesap4 doldu. G-A1-15 hikâye bağı düzeltildi (0 hata). H-070 ve H-074 ayrı dallarda başladı.
+  - **H-070 bitti:** kitaplar `content_items` içinde (BOOK türü, C2 yalnız kitap, V10), içe aktarma + K-05 onayı + `GET /api/v1/catalog/books`; yönetim ekranında Kitaplık süzgeci; `book_lint.py --write-reports` (export_book sonrası çalışmalı). Backend 137 test, araçlar 281 test geçti.
