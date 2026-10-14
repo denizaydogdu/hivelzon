@@ -1,0 +1,294 @@
+{
+  "kurguVersion": 2,
+  "contentId": "A1-012",
+  "source": "H-085: story.en.md (H-032 onaylı diyalog) düğümlere bölündü; görseller B12-01…B12-16, iki ★ kilit klip (Seedance 2.0 Mini: kapı açılır, fenerin ışığı döner). Ellen'in yüzü gösterilmez (1979 fotoğrafında E. Hart yüzünü çevirmiş). drink_choice (B9) Maya'nın termos kartında varyantla geri döner; varyant satırlarına ayrı ses verilemediği için kart yalnızca metin (b12_39/b12_40 manifestte, oynatıcı varyant sesini desteklerse kullanılır).",
+  "start": "title",
+  "externalFlags": [
+    {"episode": "A1-009", "id": "drink_choice", "values": ["tea", "hot_chocolate"], "default": "tea"}
+  ],
+  "gate": {
+    "comprehension": ["t-gorev"],
+    "targetPhrase": ["k1", "k2"],
+    "activeTask": ["t-kanit", "t-kanit2"]
+  },
+  "nodes": [
+    {
+      "id": "title", "type": "title",
+      "next": "recap"
+    },
+    {
+      "id": "recap", "type": "recap",
+      "shots": [{"image": "../A1-011-storm-warning/images/B11-13-gece-not.png", "len": 3.0, "move": [1.0, 1.06, 0.5, 0.5, 0.5, 0.55],
+                 "signs": [{"style": "note", "lines": [{"text": "…Unutma. — N."}], "start": 0.3, "end": 3.0}]}],
+      "next": "s01"
+    },
+    {
+      "id": "s01", "type": "segment", "scene": "Soğuk açılış: Lumen Point", "checkpoint": true,
+      "shots": [
+        {"image": "images/B12-01-otobus-varis.png", "audio": ["b12_01_maya", "b12_02_sam", "b12_03_alex"], "aoff": 1.0, "move": [1.0, 1.1, 0.5, 0.5, 0.5, 0.42],
+         "signs": [{"style": "caption", "lines": [{"text": "Saturday · 8:00 pm"}], "start": 0.2, "end": 1.6}]}
+      ],
+      "next": "s02"
+    },
+    {
+      "id": "s02", "type": "segment", "scene": "Sahne 1: Kapıda", "checkpoint": true,
+      "shots": [
+        {"clip": "clips/K-kapi-seedance-mini.mp4", "len": 5.0},
+        {"image": "images/B12-03-kapi-tom.png", "audio": ["b12_04_tom", "b12_05_alex", "b12_06_tom", "b12_07_alex"], "move": [1.04, 1.12, 0.5, 0.5, 0.45, 0.42]}
+      ],
+      "next": "k1"
+    },
+    {
+      "id": "k1", "type": "decision", "skill": "spoken_interaction", "cefr": "A1",
+      "prompt": {"tr": "Tom'dan kibarca yardım iste."},
+      "cue": {"speaker": "ALEX", "text": "Yes! Nice to meet you."},
+      "pov": "POV: Tom'a bakış; arkada kalabalık. Müzik kısılır.",
+      "background": "images/B12-04-k-pov-tom.png",
+      "targetPhrase": "Can you help me, please?",
+      "options": [
+        {"id": "a", "text": "Can you help me, please?", "correct": true, "audio": "b12_08_alex", "next": "k1-ok"},
+        {"id": "b", "text": "Help me!", "correct": false, "audio": "b12_09_alex", "next": "r-k1-b"}
+      ],
+      "hints": [
+        {"level": 1, "kind": "keyword", "tr": "Kibar istek: Can you … please?"},
+        {"level": 2, "kind": "pattern", "tr": "Can you help me, …?"},
+        {"level": 3, "kind": "explanation", "tr": "\"Help me!\" acil bir durumda \"İmdat!\" gibi duyulur. Kibar bir istek için: \"Can you help me, please?\""}
+      ]
+    },
+    {
+      "id": "r-k1-b", "type": "reaction",
+      "shots": [{"image": "images/B12-04-k-pov-tom.png", "audio": ["b12_09_alex", "b12_10_tom"], "move": [1.06, 1.0, 0.5, 0.5, 0.45, 0.45]}],
+      "bubble": {"speaker": "HI", "lang": "tr", "text": "\"Help me!\" acil bir durumda \"İmdat!\" gibi duyulur. Kibar bir istek için: \"Can you help me, please?\"", "speechTr": "{Help me!} acil bir durumda imdat gibi duyulur. Kibar bir istek için: {Can you help me, please?}"},
+      "next": "k1"
+    },
+    {
+      "id": "k1-ok", "type": "segment",
+      "shots": [{"image": "images/B12-04-k-pov-tom.png", "audio": ["b12_08_alex", "b12_11_tom"], "aoff": 0.4, "move": [1.0, 1.06, 0.5, 0.5, 0.45, 0.45]}],
+      "next": "k2"
+    },
+    {
+      "id": "k2", "type": "decision", "skill": "spoken_interaction", "cefr": "A1",
+      "prompt": {"tr": "Ne aradığını söyle."},
+      "cue": {"speaker": "TOM", "text": "Of course! What are you looking for?"},
+      "pov": "POV: Tom'a bakış.",
+      "background": "images/B12-04-k-pov-tom.png",
+      "targetPhrase": "I'm looking for…",
+      "options": [
+        {"id": "a", "text": "I'm looking for the old radio.", "correct": true, "audio": "b12_12_alex", "next": "k2-ok"},
+        {"id": "b", "text": "I am look for the old radio.", "correct": false, "audio": "b12_13_alex", "next": "r-k2-b"}
+      ],
+      "hints": [
+        {"level": 1, "kind": "keyword", "tr": "Tom'un sorusunu dinle: looking for."},
+        {"level": 2, "kind": "pattern", "tr": "I'm looking for the …"},
+        {"level": 3, "kind": "explanation", "tr": "Şu an yaptığın bir şey için am + -ing: I'm looking for…"}
+      ]
+    },
+    {
+      "id": "r-k2-b", "type": "reaction",
+      "shots": [{"image": "images/B12-04-k-pov-tom.png", "audio": ["b12_13_alex", "b12_14_tom"], "move": [1.06, 1.0, 0.5, 0.5, 0.45, 0.45]}],
+      "bubble": {"speaker": "HI", "lang": "tr", "text": "Böyle de söyleyebilirsin: \"I'm looking for…\" Şu an yaptığın bir şey için am + -ing: I'm looking for.", "speechTr": "Böyle de söyleyebilirsin: {I'm looking for.} Şu an yaptığın bir şey için {am} ve {ing}: {I'm looking for.}"},
+      "next": "k2"
+    },
+    {
+      "id": "k2-ok", "type": "segment",
+      "shots": [
+        {"image": "images/B12-04-k-pov-tom.png", "audio": ["b12_12_alex"], "aoff": 0.4, "move": [1.0, 1.05, 0.5, 0.5, 0.45, 0.45]},
+        {"image": "images/B12-05-telsiz-etiket.png", "audio": ["b12_15_alex", "b12_16_tom"], "aoff": 1.4, "move": [1.0, 1.1, 0.5, 0.5, 0.5, 0.5],
+         "signs": [{"style": "note", "lines": [{"text": "PLRC 1979", "size": 64}], "start": 0.3, "end": 2.4}]}
+      ],
+      "next": "s03"
+    },
+    {
+      "id": "s03", "type": "segment", "scene": "Sahne 2: Kulüp odası", "checkpoint": true,
+      "shots": [
+        {"image": "images/B12-06-kulup-odasi.png", "audio": ["b12_17_alex", "b12_18_tom"], "aoff": 1.0, "move": [1.0, 1.08, 0.5, 0.5, 0.5, 0.45]},
+        {"image": "images/B12-06-kulup-odasi.png", "audio": ["b12_19_sam", "b12_20_sam", "b12_21_maya"], "move": [1.12, 1.2, 0.5, 0.6, 0.5, 0.6],
+         "signs": [{"style": "note", "lines": [{"text": "Every Friday, 7 pm"}], "start": 0.2, "end": 2.8}]},
+        {"image": "images/B12-07-mikrofon.png", "audio": ["b12_22_alex"], "move": [1.0, 1.08, 0.5, 0.5, 0.5, 0.45]},
+        {"image": "images/B12-08-canta-isik.png", "audio": [{"id": "b12_22_alex", "radio": true}, "b12_23_sam"], "move": [1.0, 1.1, 0.5, 0.5, 0.5, 0.5]}
+      ],
+      "next": "s04"
+    },
+    {
+      "id": "s04", "type": "segment", "scene": "Sahne 3: Fotoğraf", "checkpoint": true,
+      "shots": [{"image": "images/B12-09-foto-duvar.png", "audio": ["b12_24_maya"], "aoff": 1.6, "move": [1.0, 1.08, 0.5, 0.5, 0.45, 0.5],
+                 "signs": [{"style": "note", "lines": [{"text": "Port Lumen Radio Club · 1979"}, {"text": "N. Yıldız   E. Hart   …"}], "start": 0.3, "end": 3.6}]}],
+      "next": "k3"
+    },
+    {
+      "id": "k3", "type": "decision", "skill": "reading", "cefr": "A1",
+      "prompt": {"tr": "\"N. Yıldız\" kim? Adlar soldan sağa sıralı. Doğru kişiye dokun."},
+      "cue": {"speaker": "MAYA", "text": "1979! Look at the names."},
+      "pov": "POV: duvardaki 1979 kulüp fotoğrafı; altında adlar.",
+      "background": "images/B12-09-foto-duvar.png",
+      "options": [
+        {"id": "a", "text": "Soldaki: kısa, koyu saçlı genç kadın", "lang": "tr", "correct": true, "next": "k3-ok"},
+        {"id": "b", "text": "Yanındaki: uzun saçlı genç kadın", "lang": "tr", "correct": false, "next": "r-k3-b"}
+      ],
+      "hints": [
+        {"level": 1, "kind": "keyword", "tr": "İlk ad: N. Yıldız."},
+        {"level": 2, "kind": "pattern", "tr": "İlk ad → soldaki kişi."},
+        {"level": 3, "kind": "explanation", "tr": "Adlar fotoğraftaki sırayla yazılmış: ilk ad, soldaki kişi."}
+      ]
+    },
+    {
+      "id": "r-k3-b", "type": "reaction",
+      "shots": [{"image": "images/B12-09-foto-duvar.png", "len": 2.0, "move": [1.06, 1.0, 0.5, 0.5, 0.5, 0.5]}],
+      "bubble": {"speaker": "HI", "lang": "tr", "text": "Adlar fotoğraftaki sırayla yazılmış: ilk ad, soldaki kişi. Bir daha bak!", "audio": {"id": "tr_r-k3-b", "speaker": "HI"}},
+      "next": "k3"
+    },
+    {
+      "id": "k3-ok", "type": "segment",
+      "shots": [
+        {"image": "images/B12-10-nermin-yakin.png", "audio": ["b12_25_alex"], "aoff": 1.0, "move": [1.0, 1.12, 0.5, 0.5, 0.45, 0.42]}
+      ],
+      "next": "c-babaanne"
+    },
+    {
+      "id": "c-babaanne", "type": "card", "kind": "line", "advance": "tap",
+      "background": "images/B12-10-nermin-yakin.png",
+      "lines": [{"speaker": "ALEX", "text": "Babaanne?!", "lang": "tr"}],
+      "next": "s05", "audio": {"id": "tr_c-babaanne", "speaker": "ALEX (TR)"}
+    },
+    {
+      "id": "s05", "type": "segment",
+      "shots": [{"image": "images/B12-09-foto-duvar.png", "audio": ["b12_26_maya", "b12_27_alex"], "move": [1.08, 1.14, 0.42, 0.4, 0.5, 0.5]}],
+      "next": "s06"
+    },
+    {
+      "id": "s06", "type": "segment", "scene": "Sahne 4: Not", "checkpoint": true,
+      "shots": [
+        {"image": "images/B12-11-not-masa.png", "audio": ["b12_28_alex", "b12_29_sam", "b12_30_alex"], "aoff": 1.8, "move": [1.0, 1.08, 0.5, 0.5, 0.5, 0.5],
+         "signs": [{"style": "note", "lines": [{"text": "Still waiting for N."}, {"text": "— E."}], "start": 0.3, "end": 3.4}]},
+        {"image": "images/B12-12-tom-anlatir.png", "audio": ["b12_31_tom", "b12_32_tom", "b12_33_tom", "b12_34_alex", "b12_35_tom", "b12_36_alex"], "move": [1.0, 1.1, 0.5, 0.5, 0.5, 0.45]},
+        {"image": "images/B12-13-termos.png", "len": 2.2, "move": [1.0, 1.06, 0.5, 0.5, 0.5, 0.5]}
+      ],
+      "next": "c-termos"
+    },
+    {
+      "id": "c-termos", "type": "card", "kind": "line", "advance": "tap",
+      "background": "images/B12-13-termos.png",
+      "lines": [{"speaker": "MAYA", "text": "Rosa's tea! Here you are, Alex.", "lang": "en"}],
+      "variants": [
+        {"when": {"episode": "A1-009", "flag": "drink_choice", "value": "tea"},
+         "lines": [{"speaker": "MAYA", "text": "Rosa's tea! Here you are, Alex.", "lang": "en"}]},
+        {"when": {"episode": "A1-009", "flag": "drink_choice", "value": "hot_chocolate"},
+         "lines": [{"speaker": "MAYA", "text": "Rosa's hot chocolate! Here you are, Alex.", "lang": "en"}]}
+      ],
+      "next": "s07"
+    },
+    {
+      "id": "s07", "type": "segment",
+      "shots": [{"image": "images/B12-13-termos.png", "audio": ["b12_37_alex", "b12_38_tom"], "move": [1.06, 1.12, 0.5, 0.5, 0.5, 0.45]}],
+      "next": "h-lab"
+    },
+    {
+      "id": "h-lab", "type": "card", "kind": "hi", "scene": "Dil laboratuvarı", "checkpoint": true, "advance": "tap",
+      "background": "images/B12-13-termos.png",
+      "lines": [{"speaker": "HI", "text": "Thank you very much = çok teşekkür ederim. Thank you'dan daha sıcak.", "lang": "tr"}],
+      "speechTr": "{Thank you very much:} çok teşekkür ederim. {Thank you} demekten daha sıcak.",
+      "next": "t-gorev"
+    },
+    {
+      "id": "t-gorev", "type": "task", "kind": "choice", "role": "comprehension", "skill": "spoken_interaction", "cefr": "A1",
+      "scene": "Görev: Sezon finali",
+      "prompt": {"tr": "Sezonun büyük görevi: fenerde doğru cevabı seç."},
+      "background": "images/B12-06-kulup-odasi.png",
+      "items": [
+        {"id": "i1", "stem": "Tom: Where are you from?", "options": [
+          {"id": "a", "text": "I'm from Türkiye.", "correct": true},
+          {"id": "b", "text": "I from Türkiye.", "correct": false}]},
+        {"id": "i2", "stem": "Tom: Is your radio new?", "options": [
+          {"id": "a", "text": "No. It's very old.", "correct": true},
+          {"id": "b", "text": "Yes, I am.", "correct": false}]},
+        {"id": "i3", "stem": "Every Friday, 7 pm. When is the call?", "options": [
+          {"id": "a", "text": "On Friday, at seven.", "correct": true},
+          {"id": "b", "text": "In Friday, in seven.", "correct": false}]},
+        {"id": "i4", "stem": "Maya: Who is she?", "options": [
+          {"id": "a", "text": "She is my grandmother.", "correct": true},
+          {"id": "b", "text": "He is my grandmother.", "correct": false}]},
+        {"id": "i5", "stem": "Maya: Here you are, Alex.", "options": [
+          {"id": "a", "text": "Thank you very much!", "correct": true},
+          {"id": "b", "text": "Help me!", "correct": false}]}
+      ],
+      "feedback": {"wrong": {"speaker": "HI", "lang": "tr", "text": "Sezon boyunca bunu birlikte gördük. Acele yok, bir daha dene.", "audio": {"id": "tr_t-gorev", "speaker": "HI"}}},
+      "result": [{"text": "Still waiting for N. — E.", "lang": "en", "style": "highlight"}],
+      "next": "t-kanit"
+    },
+    {
+      "id": "t-kanit", "type": "task", "kind": "match", "role": "evidence", "skill": "vocabulary", "cefr": "A1",
+      "prompt": {"tr": "Sezon tekrarı: ifadeyi Türkçesiyle eşleştir."},
+      "context": "Sezon tekrarı (1/2): B1–B4 ifadeleri",
+      "background": "images/B12-11-not-masa.png",
+      "items": [{"id": "i1", "pairs": [
+        {"left": "Can you hear me?", "right": "Beni duyabiliyor musun?"},
+        {"left": "Again, please.", "right": "Tekrar, lütfen."},
+        {"left": "Excuse me, where is…?", "right": "Affedersiniz, … nerede?"},
+        {"left": "Turn left.", "right": "Sola dön."},
+        {"left": "at seven o'clock", "right": "saat yedide"}
+      ]}],
+      "feedback": {"wrong": {"speaker": "HI", "lang": "tr", "text": "Bu ifadeleri ilk bölümlerde kullandın. Bir daha eşleştir.", "audio": {"id": "tr_t-kanit", "speaker": "HI"}}},
+      "next": "t-kanit2"
+    },
+    {
+      "id": "t-kanit2", "type": "task", "kind": "choice", "role": "evidence", "skill": "grammar", "cefr": "A1",
+      "prompt": {"tr": "Sezon tekrarı: doğru kelimeyi seç."},
+      "context": "Sezon tekrarı (2/2): B5–B10 ifadeleri",
+      "background": "images/B12-12-tom-anlatir.png",
+      "items": [
+        {"id": "i1", "stem": "She ___. Then she goes.", "options": [
+          {"id": "a", "text": "waits", "correct": true},
+          {"id": "b", "text": "wait", "correct": false}]},
+        {"id": "i2", "stem": "There ___ a radio on the desk.", "options": [
+          {"id": "a", "text": "is", "correct": true},
+          {"id": "b", "text": "are", "correct": false}]},
+        {"id": "i3", "stem": "She ___ white hair.", "options": [
+          {"id": "a", "text": "has", "correct": true},
+          {"id": "b", "text": "have", "correct": false}]},
+        {"id": "i4", "stem": "Can I have ___ tea, please?", "options": [
+          {"id": "a", "text": "a", "correct": true},
+          {"id": "b", "text": "an", "correct": false}]},
+        {"id": "i5", "stem": "How much ___ it?", "options": [
+          {"id": "a", "text": "is", "correct": true},
+          {"id": "b", "text": "are", "correct": false}]}
+      ],
+      "feedback": {"wrong": {"speaker": "HI", "lang": "tr", "text": "Öznene bak: she ile -s, tek şey için is. Bir daha dene.", "speechTr": "Öznene bak: {she} ile fiile {s} gelir, tek şey için {is}. Bir daha dene.", "audio": {"id": "tr_t-kanit2", "speaker": "HI"}}},
+      "next": "s08"
+    },
+    {
+      "id": "s08", "type": "segment", "scene": "Son kare", "checkpoint": true,
+      "shots": [
+        {"clip": "clips/K-fener-seedance-mini.mp4", "len": 5.0},
+        {"image": "images/B12-16-son-telefon.png", "len": 3.4, "move": [1.0, 1.08, 0.5, 0.5, 0.5, 0.5],
+         "signs": [{"style": "caption", "lines": [{"text": "Babaanne arıyor…"}], "start": 0.6, "end": 3.4}]}
+      ],
+      "next": "c-alex"
+    },
+    {
+      "id": "c-alex", "type": "card", "kind": "line", "advance": "tap",
+      "background": "images/B12-16-son-telefon.png",
+      "lines": [{"speaker": "ALEX", "text": "Ellen nerede? Neden hâlâ babaannemi bekliyor?", "lang": "tr"}],
+      "next": "c-clues", "audio": {"id": "tr_c-alex", "speaker": "ALEX (TR)"}
+    },
+    {
+      "id": "c-clues", "type": "card", "kind": "clue", "advance": "tap", "clueIds": ["C19", "C20", "C21"], "answers": ["Q11", "S1-Q"],
+      "lines": [{"text": "İpucu panosu", "lang": "tr", "style": "heading"},
+                {"text": "C19 · 1979 kulüp fotoğrafı: N. Yıldız, E. Hart", "lang": "tr"},
+                {"text": "C20 · Masadaki not: Still waiting for N. — E.", "lang": "tr"},
+                {"text": "C21 · Zamanlayıcı etiketi: Every Friday, 7 pm", "lang": "tr"},
+                {"text": "Q11 kapandı: Çağrının kaynağı bulundu: kulübün eski telsizi, zamanlayıcı ve 1979 fotoğrafı.", "lang": "tr"},
+                {"text": "Sezon sorusu kapandı: Çağrıyı fenerdeki eski kulüp telsizi gönderiyor; zamanlayıcıyı Ellen Hart kurmuş.", "lang": "tr"}],
+      "speechTr": "İpucu panosu. Kulübün eski fotoğrafı. Masadaki not: {Still waiting for N.} Zamanlayıcı etiketi: {Every Friday, 7 pm.} On birinci soru kapandı: çağrının kaynağı bulundu. Sezon sorusu kapandı: çağrıyı fenerdeki eski kulüp telsizi gönderiyor; zamanlayıcıyı Ellen Hart kurmuş.",
+      "next": "c-oq"
+    },
+    {
+      "id": "c-oq", "type": "card", "kind": "openQuestion", "advance": "tap", "questionId": "Q12",
+      "background": "images/B12-16-son-telefon.png",
+      "lines": [{"text": "AÇIK SORU · SEZON 2", "lang": "tr", "style": "caption"},
+                {"text": "Ellen nerede? Neden hâlâ babaannemi bekliyor?", "lang": "tr", "style": "heading"},
+                {"text": "Sezon 2: The Second Voice", "lang": "en", "style": "caption"}],
+      "speechTr": "Açık soru, ikinci sezon: Ellen nerede? Neden hâlâ babaannemi bekliyor?",
+      "next": null, "audio": {"id": "tr_c-oq", "speaker": "ANLATICI (TR)"}
+    }
+  ]
+}

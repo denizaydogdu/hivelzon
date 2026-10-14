@@ -1,0 +1,46 @@
+[
+  {
+    "created_at": "2026-10-14T17:35:03.795792Z",
+    "display_name": "Seedance 2.0 Mini",
+    "id": "7533acde-7389-49dc-a303-79f1499b15d2",
+    "job_type": "seedance_2_0_mini",
+    "min_result_url": null,
+    "params": {
+      "aspect_ratio": "9:16",
+      "duration": 5,
+      "generate_audio": false,
+      "genre": "auto",
+      "height": 1280,
+      "medias": [
+        {
+          "data": {
+            "id": "500206f4-7be9-41b1-aee8-38393986bc92",
+            "type": "image_job",
+            "url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261014_173323_500206f4-7be9-41b1-aee8-38393986bc92.png"
+          },
+          "role": "start_image"
+        },
+        {
+          "data": {
+            "id": "36603112-756f-4e45-a460-dc52d5e29a12",
+            "type": "image_job",
+            "url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261014_172408_36603112-756f-4e45-a460-dc52d5e29a12.png"
+          },
+          "role": "end_image"
+        }
+      ],
+      "multi_prompt": [],
+      "multi_shot_mode": "custom",
+      "multi_shots": false,
+      "prompt": "The heavy wooden lighthouse door slowly swings open inward; warm golden light pours out onto the wet stone steps; a young volunteer with ginger hair and a dark-teal rain jacket steps into the doorway holding up a glowing hand lantern and smiles in welcome; rain keeps falling, waves crash softly behind; the camera stays still.",
+      "prompt_language": "en",
+      "reference_elements": [],
+      "resolution": "720p",
+      "speedramp": "auto",
+      "width": 720
+    },
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261014_173503_7533acde-7389-49dc-a303-79f1499b15d2.mp4",
+    "status": "completed",
+    "thumbnail_url": "https://cdn.higgsfield.ai/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261014_173503_7533acde-7389-49dc-a303-79f1499b15d2_thumbnail.webp"
+  }
+]

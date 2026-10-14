@@ -1,0 +1,44 @@
+{
+  "contentId": "A1-010",
+  "status": "DRAFT",
+  "mission": {
+    "tr": "Sam'in listesindeki parçaları doğru fiyata al. Yeni antenle telsizi dene."
+  },
+  "targetPhrases": [
+    "How much is it?",
+    "How much are they?",
+    "It's thirteen.",
+    "I'll take it.",
+    "this / that"
+  ],
+  "successCriteria": {
+    "rule": "all",
+    "comprehension": [
+      "t-gorev"
+    ],
+    "targetPhrase": [
+      "k1",
+      "k2"
+    ],
+    "activeTask": [
+      "t-kanit",
+      "t-kanit2"
+    ],
+    "note": "Bölüm kapısı (K-29): üç ölçütün hepsi; her ölçütte listedeki herhangi bir düğüm yeter. Deneme ve ipucu sınırsız; zaman kilidi yok."
+  },
+  "hintPolicy": {
+    "levels": [
+      "keyword",
+      "pattern",
+      "explanation"
+    ],
+    "unlimited": true,
+    "wrongChoice": "Nazik tepki + Hi balonu, sonra aynı karar anına dönülür (K-28); hata hikâyeyi kilitlemez.",
+    "decisions": [
+      "k1",
+      "k2",
+      "k3"
+    ]
+  },
+  "source": "story.en.md görev kartı + kurgu.json gate (H-085). Bu dosyayı henüz hiçbir araç okumuyor; paket görev cümlesini story.en.md başlığından alır."
+}

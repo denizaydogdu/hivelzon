@@ -24,6 +24,9 @@ Dosyalar yerelde ve git dışında; Higgsfield'e yüklendi.
 | Ses kaydedici (H-085) | refs/R6-kaydedici-gpt.png | — (job kimliği kullanılır) | 72e65920-4ec7-4946-ae36-502810c61948 |
 | Sam Brooks (H-085, B6) | refs/R7-sam-gpt.png | — (job kimliği kullanılır) | d83596f7-7f31-4914-ae9e-5e4134e086b6 |
 | Mrs Brooks (H-085, B7) | refs/R8-mrs-brooks-gpt.png | — (job kimliği kullanılır) | 57542708-ccdc-4b07-a8e7-a1f5ab17f965 |
+| Rosa (H-085, B9) | refs/R9-rosa-gpt.png | — (job kimliği kullanılır) | a30f6cb8-b8bd-42f2-9bcb-573477f1eb65 |
+| Mr Grant (H-085, B10) | refs/R10-grant-gpt.png | — (job kimliği kullanılır) | effcd1d0-a1a7-4490-b464-571ed47edf5d |
+| Tom (H-085, B11–B12) | refs/R11-tom-gpt.png | — (job kimliği kullanılır) | d253029e-727a-4f84-9042-4afc2e552a08 |
 
 ## Format
 

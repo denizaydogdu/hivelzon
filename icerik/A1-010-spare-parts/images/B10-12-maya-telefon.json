@@ -1,0 +1,40 @@
+[
+  {
+    "created_at": "2026-10-14T17:29:00.631798Z",
+    "display_name": "GPT Image 2.5",
+    "id": "f123a79f-abb9-4cac-993b-4cdd2f00ac3f",
+    "job_type": "gpt_image_2_5",
+    "min_result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261014_172900_f123a79f-abb9-4cac-993b-4cdd2f00ac3f_min.webp",
+    "params": {
+      "aspect_ratio": "9:16",
+      "height": 2688,
+      "medias": [
+        {
+          "data": {
+            "id": "6db4fa91-a3ff-4587-9b02-43a480ecb45a",
+            "type": "media_input",
+            "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/6db4fa91-a3ff-4587-9b02-43a480ecb45a.png"
+          },
+          "role": "image"
+        },
+        {
+          "data": {
+            "id": "663ea0fe-3df5-4cea-ba8c-e08c80e48a96",
+            "type": "media_input",
+            "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/663ea0fe-3df5-4cea-ba8c-e08c80e48a96.png"
+          },
+          "role": "image"
+        }
+      ],
+      "model": "flare",
+      "prompt": "Use the reference images for Maya and Alex. Scene: evening on the hill; Maya (19, curly dark-brown hair, freckles, bright yellow raincoat over a striped sweater) excitedly holds out her phone toward Alex (19, dark brown shoulder-length hair, olive jacket over a cream sweater, jeans, canvas backpack); the phone screen shows only a small drawing of a lighthouse with rays of light, no writing; Alex leans in. No text on any sign, screen, label or paper. Vertical composition. Warm animated-series illustration, graphic-novel style, clean ink lines, soft cel shading, coastal palette of sea blue, sand, lighthouse yellow and evening orange, mature tone suitable for teens and adults, not childish, no text, no letters, no numbers, no logos.",
+      "quality": "low",
+      "reference_elements": [],
+      "remove_bg": false,
+      "resolution": "2k",
+      "width": 1520
+    },
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261014_172900_f123a79f-abb9-4cac-993b-4cdd2f00ac3f.png",
+    "status": "completed"
+  }
+]

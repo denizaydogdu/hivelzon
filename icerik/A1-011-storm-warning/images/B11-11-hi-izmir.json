@@ -1,0 +1,32 @@
+[
+  {
+    "created_at": "2026-10-14T17:32:24.341541Z",
+    "display_name": "GPT Image 2.5",
+    "id": "2abc3fe6-c22d-429e-9d1b-c08f86cdf5fc",
+    "job_type": "gpt_image_2_5",
+    "min_result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261014_173224_2abc3fe6-c22d-429e-9d1b-c08f86cdf5fc_min.webp",
+    "params": {
+      "aspect_ratio": "9:16",
+      "height": 2688,
+      "medias": [
+        {
+          "data": {
+            "id": "48e01750-864a-4c0e-bdd3-e9bc989684cb",
+            "type": "media_input",
+            "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/48e01750-864a-4c0e-bdd3-e9bc989684cb.png"
+          },
+          "role": "image"
+        }
+      ],
+      "model": "flare",
+      "prompt": "Use the reference image for Hi, the small round glowing speech-bubble AI assistant with two friendly eyes. Scene: Hi floats beside a large flat illustrated weather map seen like a screen: the Aegean coast of western Turkey drawn simply as sand-coloured land and blue sea, one small round dot for a coastal city, and above that dot a simple bright yellow sun symbol with rays (no face); a few tiny clouds far away over other areas; no buildings, no names, no letters, no numbers on the map. Vertical composition. Warm animated-series illustration, graphic-novel style, clean ink lines, soft cel shading, coastal palette of sea blue, sand, lighthouse yellow and evening orange, mature tone suitable for teens and adults, not childish, no text, no letters, no numbers, no logos.",
+      "quality": "low",
+      "reference_elements": [],
+      "remove_bg": false,
+      "resolution": "2k",
+      "width": 1520
+    },
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261014_173224_2abc3fe6-c22d-429e-9d1b-c08f86cdf5fc.png",
+    "status": "completed"
+  }
+]

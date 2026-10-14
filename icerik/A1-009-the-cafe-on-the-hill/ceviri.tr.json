@@ -1,0 +1,1054 @@
+{
+  "contentId": "A1-009",
+  "status": "DRAFT",
+  "author": "Claude taslak",
+  "date": "2026-10-14",
+  "lines": [
+    {
+      "en": "The Café on the Hill",
+      "tr": "Tepedeki Kafe",
+      "chunks": [],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "café": "kafe",
+        "on": "-de (gün için)",
+        "hill": "tepe"
+      },
+      "source": "content:title"
+    },
+    {
+      "en": "Spare Parts",
+      "tr": "Yedek Parçalar",
+      "chunks": [],
+      "words": {
+        "spare": "yedek",
+        "parts": "parçalar"
+      },
+      "source": "content:title"
+    },
+    {
+      "en": "Hello! Are you new here?",
+      "tr": "Merhaba! Burada yeni misin?",
+      "chunks": [
+        {
+          "en": "new here",
+          "tr": "burada yeni"
+        }
+      ],
+      "words": {
+        "hello": "merhaba",
+        "are": "-sın / -ler (olmak)",
+        "you": "sen / siz",
+        "new": "yeni",
+        "here": "burada"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "Yes. I'm Alex.",
+      "tr": "Evet. Ben Alex.",
+      "chunks": [],
+      "words": {
+        "yes": "evet",
+        "i'm": "ben … -ım"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "Nice to meet you.",
+      "tr": "Tanıştığımıza memnun oldum.",
+      "chunks": [
+        {
+          "en": "Nice to meet you",
+          "tr": "Tanıştığımıza memnun oldum"
+        }
+      ],
+      "words": {
+        "nice": "hoş",
+        "to": "-mek / -e",
+        "meet": "tanışmak",
+        "you": "sen / siz"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "Nice to meet you, Alex.",
+      "tr": "Memnun oldum, Alex.",
+      "chunks": [
+        {
+          "en": "Nice to meet you",
+          "tr": "Tanıştığımıza memnun oldum"
+        }
+      ],
+      "words": {
+        "nice": "hoş",
+        "to": "-mek / -e",
+        "meet": "tanışmak",
+        "you": "sen / siz"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "I'm Rosa.",
+      "tr": "Ben Rosa.",
+      "chunks": [],
+      "words": {
+        "i'm": "ben … -ım"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "Where are you from?",
+      "tr": "Nerelisin?",
+      "chunks": [
+        {
+          "en": "Where are you from",
+          "tr": "Nerelisin"
+        }
+      ],
+      "words": {
+        "where": "nerede / nereli",
+        "are": "-sın / -ler (olmak)",
+        "you": "sen / siz",
+        "from": "-den"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "I'm from Türkiye.",
+      "tr": "Türkiye'denim.",
+      "chunks": [
+        {
+          "en": "I'm from",
+          "tr": "-liyim / -denim"
+        }
+      ],
+      "words": {
+        "i'm": "ben … -ım",
+        "from": "-den"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "From İzmir.",
+      "tr": "İzmir'den.",
+      "chunks": [],
+      "words": {
+        "from": "-den"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "İzmir! Is it a big city?",
+      "tr": "İzmir! Büyük bir şehir mi?",
+      "chunks": [],
+      "words": {
+        "is": "-dır / -dir (olmak)",
+        "it": "o",
+        "a": "bir",
+        "big": "büyük",
+        "city": "şehir"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "Yes, it is.",
+      "tr": "Evet, öyle.",
+      "chunks": [
+        {
+          "en": "Yes, it is",
+          "tr": "Evet, öyle"
+        }
+      ],
+      "words": {
+        "yes": "evet",
+        "it": "o",
+        "is": "-dır / -dir (olmak)"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "It's by the sea.",
+      "tr": "Deniz kenarında.",
+      "chunks": [
+        {
+          "en": "by the sea",
+          "tr": "deniz kenarında"
+        }
+      ],
+      "words": {
+        "it's": "o … -dır",
+        "by": "kenarında, yanında",
+        "the": "(belirli tanımlık)",
+        "sea": "deniz"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "Yes, it is. It's by the sea.",
+      "tr": "Evet, öyle. Deniz kenarında.",
+      "chunks": [
+        {
+          "en": "by the sea",
+          "tr": "deniz kenarında"
+        }
+      ],
+      "words": {
+        "yes": "evet",
+        "it": "o",
+        "is": "-dır / -dir (olmak)",
+        "it's": "o … -dır",
+        "by": "kenarında, yanında",
+        "the": "(belirli tanımlık)",
+        "sea": "deniz"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "I want tea.",
+      "tr": "Çay istiyorum.",
+      "chunks": [],
+      "words": {
+        "i": "ben",
+        "want": "istemek",
+        "tea": "çay"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "Please?",
+      "tr": "Lütfen?",
+      "chunks": [],
+      "words": {
+        "please": "lütfen"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "Can I have a tea, please?",
+      "tr": "Bir çay alabilir miyim, lütfen?",
+      "chunks": [
+        {
+          "en": "Can I have",
+          "tr": "… alabilir miyim"
+        }
+      ],
+      "words": {
+        "can": "-ebilmek",
+        "i": "ben",
+        "have": "almak (burada) / sahip olmak",
+        "a": "bir",
+        "tea": "çay",
+        "please": "lütfen"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "Can I have a hot chocolate, please?",
+      "tr": "Bir sıcak çikolata alabilir miyim, lütfen?",
+      "chunks": [
+        {
+          "en": "Can I have",
+          "tr": "… alabilir miyim"
+        },
+        {
+          "en": "hot chocolate",
+          "tr": "sıcak çikolata"
+        }
+      ],
+      "words": {
+        "can": "-ebilmek",
+        "i": "ben",
+        "have": "almak (burada) / sahip olmak",
+        "a": "bir",
+        "hot": "sıcak",
+        "chocolate": "çikolata",
+        "please": "lütfen"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "Can I have an orange juice, please?",
+      "tr": "Bir portakal suyu alabilir miyim, lütfen?",
+      "chunks": [
+        {
+          "en": "Can I have",
+          "tr": "… alabilir miyim"
+        },
+        {
+          "en": "orange juice",
+          "tr": "portakal suyu"
+        }
+      ],
+      "words": {
+        "can": "-ebilmek",
+        "i": "ben",
+        "have": "almak (burada) / sahip olmak",
+        "an": "bir (sesliden önce)",
+        "orange": "portakal",
+        "juice": "suyu, meyve suyu",
+        "please": "lütfen"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "And a cake, please.",
+      "tr": "Bir de pasta, lütfen.",
+      "chunks": [],
+      "words": {
+        "and": "ve",
+        "a": "bir",
+        "cake": "pasta, kek",
+        "please": "lütfen"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "A big cake!",
+      "tr": "Büyük bir pasta!",
+      "chunks": [],
+      "words": {
+        "a": "bir",
+        "big": "büyük",
+        "cake": "pasta, kek"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "OK. Some cake for you!",
+      "tr": "Tamam. Sana biraz pasta!",
+      "chunks": [],
+      "words": {
+        "ok": "tamam",
+        "some": "biraz",
+        "cake": "pasta, kek",
+        "for": "için",
+        "you": "sana"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "And some milk, please?",
+      "tr": "Bir de biraz süt, lütfen?",
+      "chunks": [],
+      "words": {
+        "and": "ve",
+        "some": "biraz",
+        "milk": "süt",
+        "please": "lütfen"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "Yes, yes.",
+      "tr": "Tamam, tamam.",
+      "chunks": [],
+      "words": {
+        "yes": "evet (tamam)"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "One minute.",
+      "tr": "Bir dakika.",
+      "chunks": [
+        {
+          "en": "One minute",
+          "tr": "Bir dakika"
+        }
+      ],
+      "words": {
+        "one": "bir",
+        "minute": "dakika"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "Here you are.",
+      "tr": "Buyurun.",
+      "chunks": [
+        {
+          "en": "Here you are",
+          "tr": "Buyurun / Al bakalım"
+        }
+      ],
+      "words": {
+        "here": "işte",
+        "you": "sen",
+        "are": "-sın"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "Thank you.",
+      "tr": "Teşekkür ederim.",
+      "chunks": [
+        {
+          "en": "Thank you",
+          "tr": "Teşekkür ederim"
+        }
+      ],
+      "words": {
+        "thank": "teşekkür etmek",
+        "you": "sana / size"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "How much is it?",
+      "tr": "Ne kadar?",
+      "chunks": [
+        {
+          "en": "How much",
+          "tr": "Ne kadar"
+        }
+      ],
+      "words": {
+        "how": "nasıl",
+        "much": "çok",
+        "is": "-dır / -dir (olmak)",
+        "it": "o"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "It's twelve, please.",
+      "tr": "On iki, lütfen.",
+      "chunks": [],
+      "words": {
+        "it's": "o … -dır",
+        "twelve": "on iki",
+        "please": "lütfen"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "Sam, can you play it?",
+      "tr": "Sam, çalabilir misin?",
+      "chunks": [
+        {
+          "en": "can you",
+          "tr": "-ebilir misin"
+        }
+      ],
+      "words": {
+        "can": "-ebilmek",
+        "you": "sen / siz",
+        "play": "çalmak (kayıt)",
+        "it": "o"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "Yes. Listen.",
+      "tr": "Evet. Dinle.",
+      "chunks": [],
+      "words": {
+        "yes": "evet",
+        "listen": "dinle"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "Hello? Hello?",
+      "tr": "Alo? Alo?",
+      "chunks": [],
+      "words": {
+        "hello": "alo / merhaba"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "Can you hear me?",
+      "tr": "Beni duyabiliyor musun?",
+      "chunks": [
+        {
+          "en": "Can you hear me",
+          "tr": "Beni duyabiliyor musun"
+        }
+      ],
+      "words": {
+        "can": "-ebilmek",
+        "you": "sen / siz",
+        "hear": "duymak",
+        "me": "beni / bana"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "This is E.",
+      "tr": "Ben E.",
+      "chunks": [
+        {
+          "en": "This is",
+          "tr": "Ben … (telefonda, telsizde)"
+        }
+      ],
+      "words": {
+        "this": "bu (burada: ben)",
+        "is": "-dır / -dir (olmak)"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "Hello? Hello? Can you hear me? This is E.",
+      "tr": "Alo? Alo? Beni duyabiliyor musun? Ben E.",
+      "chunks": [
+        {
+          "en": "Can you hear me",
+          "tr": "Beni duyabiliyor musun"
+        }
+      ],
+      "words": {
+        "hello": "alo / merhaba",
+        "can": "-ebilmek",
+        "you": "sen / siz",
+        "hear": "duymak",
+        "me": "beni / bana",
+        "this": "bu (burada: ben)",
+        "is": "-dır / -dir (olmak)"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "You know it?",
+      "tr": "(Hatalı) Biliyorsun onu?",
+      "chunks": [],
+      "words": {
+        "you": "sen / siz",
+        "know": "bilmek / tanımak",
+        "it": "o"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "Sorry?",
+      "tr": "Efendim?",
+      "chunks": [],
+      "words": {
+        "sorry": "efendim? / özür dilerim"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "Do you know this voice?",
+      "tr": "Bu sesi tanıyor musunuz?",
+      "chunks": [
+        {
+          "en": "Do you know",
+          "tr": "… tanıyor musunuz / biliyor musunuz"
+        }
+      ],
+      "words": {
+        "do": "(soru yardımcısı)",
+        "you": "sen / siz",
+        "know": "bilmek / tanımak",
+        "this": "bu",
+        "voice": "ses"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "Oh! That's the old club call!",
+      "tr": "Aa! Bu eski kulüp çağrısı!",
+      "chunks": [
+        {
+          "en": "club call",
+          "tr": "kulüp çağrısı"
+        }
+      ],
+      "words": {
+        "oh": "aa, ah",
+        "that's": "o … -dır",
+        "the": "(belirli tanımlık)",
+        "old": "eski / yaşlı",
+        "club": "kulüp",
+        "call": "çağrı"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "The radio club was here.",
+      "tr": "Telsiz kulübü buradaydı.",
+      "chunks": [
+        {
+          "en": "radio club",
+          "tr": "telsiz kulübü"
+        },
+        {
+          "en": "was here",
+          "tr": "buradaydı"
+        }
+      ],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "radio": "telsiz / radyo",
+        "club": "kulüp",
+        "was": "idi (-di)",
+        "here": "burada"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "Long ago.",
+      "tr": "Uzun zaman önce.",
+      "chunks": [
+        {
+          "en": "Long ago",
+          "tr": "Uzun zaman önce"
+        }
+      ],
+      "words": {
+        "long": "uzun",
+        "ago": "önce"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "Every Friday.",
+      "tr": "Her cuma.",
+      "chunks": [],
+      "words": {
+        "every": "her",
+        "friday": "cuma"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "Here? In this café?",
+      "tr": "Burada mı? Bu kafede mi?",
+      "chunks": [],
+      "words": {
+        "here": "burada",
+        "in": "-de / içinde",
+        "this": "bu",
+        "café": "kafe"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "Yes. Look at the wall.",
+      "tr": "Evet. Duvara bakın.",
+      "chunks": [
+        {
+          "en": "Look at",
+          "tr": "-e bak"
+        }
+      ],
+      "words": {
+        "yes": "evet",
+        "look": "bak",
+        "at": "-e (bakmak) / -de (saat)",
+        "the": "(belirli tanımlık)",
+        "wall": "duvar"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "Is the club here now?",
+      "tr": "Kulüp şimdi burada mı?",
+      "chunks": [],
+      "words": {
+        "is": "-dır / -dir (olmak)",
+        "the": "(belirli tanımlık)",
+        "club": "kulüp",
+        "here": "burada",
+        "now": "şimdi"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "No. Only the old photos.",
+      "tr": "Hayır. Yalnızca eski fotoğraflar.",
+      "chunks": [],
+      "words": {
+        "no": "hayır / yok",
+        "only": "yalnızca",
+        "the": "(belirli tanımlık)",
+        "old": "eski / yaşlı",
+        "photos": "fotoğraflar"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "Look! It's an old photo.",
+      "tr": "Bak! Eski bir fotoğraf.",
+      "chunks": [],
+      "words": {
+        "look": "bak",
+        "it's": "o … -dır",
+        "an": "bir (sesliden önce)",
+        "old": "eski / yaşlı",
+        "photo": "fotoğraf"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "Who is E.?",
+      "tr": "E. kim?",
+      "chunks": [],
+      "words": {
+        "who": "kim",
+        "is": "-dır / -dir (olmak)"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "One member goes to the lighthouse.",
+      "tr": "Bir üye fenere gidiyor.",
+      "chunks": [
+        {
+          "en": "goes to",
+          "tr": "-e gider"
+        }
+      ],
+      "words": {
+        "one": "bir",
+        "member": "üye",
+        "goes": "gider",
+        "to": "-mek / -e",
+        "the": "(belirli tanımlık)",
+        "lighthouse": "deniz feneri"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "On Saturdays.",
+      "tr": "Cumartesileri.",
+      "chunks": [
+        {
+          "en": "On Saturdays",
+          "tr": "Cumartesileri"
+        }
+      ],
+      "words": {
+        "on": "-de (gün için)",
+        "saturdays": "cumartesileri"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "What's her name?",
+      "tr": "Adı ne?",
+      "chunks": [
+        {
+          "en": "What's her name",
+          "tr": "Onun adı ne"
+        }
+      ],
+      "words": {
+        "what's": "ne … -dır",
+        "her": "onun (kadın)",
+        "name": "ad, isim"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "Sorry. It's her story, not my story.",
+      "tr": "Kusura bakma. Bu onun hikâyesi, benim değil.",
+      "chunks": [],
+      "words": {
+        "sorry": "kusura bakma",
+        "it's": "o … -dır",
+        "her": "onun (kadın)",
+        "story": "hikâye",
+        "not": "değil",
+        "my": "benim"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "OK. Thank you, Rosa.",
+      "tr": "Tamam. Teşekkürler, Rosa.",
+      "chunks": [
+        {
+          "en": "Thank you",
+          "tr": "Teşekkür ederim"
+        }
+      ],
+      "words": {
+        "ok": "tamam",
+        "thank": "teşekkür etmek",
+        "you": "sen / siz"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "Today is Saturday!",
+      "tr": "Bugün cumartesi!",
+      "chunks": [],
+      "words": {
+        "today": "bugün",
+        "is": "-dır / -dir (olmak)",
+        "saturday": "cumartesi"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "Let's go!",
+      "tr": "Hadi gidelim!",
+      "chunks": [
+        {
+          "en": "Let's go",
+          "tr": "Hadi gidelim"
+        }
+      ],
+      "words": {
+        "let's": "hadi (-elim)",
+        "go": "gitmek"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "Lumen Point is far.",
+      "tr": "Lumen Point uzak.",
+      "chunks": [],
+      "words": {
+        "is": "-dır / -dir (olmak)",
+        "far": "uzak"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "No bus now.",
+      "tr": "Şimdi otobüs yok.",
+      "chunks": [],
+      "words": {
+        "no": "hayır / yok",
+        "bus": "otobüs",
+        "now": "şimdi"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "And the radio is weak. Look.",
+      "tr": "Bir de telsiz zayıf. Bak.",
+      "chunks": [],
+      "words": {
+        "and": "ve",
+        "the": "(belirli tanımlık)",
+        "radio": "telsiz / radyo",
+        "is": "-dır / -dir (olmak)",
+        "weak": "zayıf",
+        "look": "bak"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "The signal is weak.",
+      "tr": "Sinyal zayıf.",
+      "chunks": [],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "signal": "sinyal",
+        "is": "-dır / -dir (olmak)",
+        "weak": "zayıf"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "We need a better antenna.",
+      "tr": "Daha iyi bir antene ihtiyacımız var.",
+      "chunks": [
+        {
+          "en": "We need",
+          "tr": "… ihtiyacımız var"
+        }
+      ],
+      "words": {
+        "we": "biz",
+        "need": "ihtiyacı olmak",
+        "a": "bir",
+        "better": "daha iyi",
+        "antenna": "anten"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "Where can I buy them?",
+      "tr": "Onları nereden alabilirim?",
+      "chunks": [],
+      "words": {
+        "where": "nereden",
+        "can": "-ebilmek",
+        "i": "ben",
+        "buy": "satın almak",
+        "them": "onları"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "Mr. Grant's shop.",
+      "tr": "Bay Grant'in dükkânı.",
+      "chunks": [],
+      "words": {
+        "mr": "Bay",
+        "grant's": "Grant'in",
+        "shop": "dükkân"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "Near the bus stop.",
+      "tr": "Otobüs durağının yakınında.",
+      "chunks": [
+        {
+          "en": "bus stop",
+          "tr": "otobüs durağı"
+        }
+      ],
+      "words": {
+        "near": "yakınında",
+        "the": "(belirli tanımlık)",
+        "bus": "otobüs",
+        "stop": "durak"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "Can I have ___ apple, please?",
+      "tr": "___ elma alabilir miyim, lütfen?",
+      "chunks": [],
+      "words": {
+        "can": "-ebilmek",
+        "i": "ben",
+        "have": "almak (burada) / sahip olmak",
+        "apple": "elma",
+        "please": "lütfen"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "Can I have ___ coffee, please?",
+      "tr": "___ kahve alabilir miyim, lütfen?",
+      "chunks": [],
+      "words": {
+        "can": "-ebilmek",
+        "i": "ben",
+        "have": "almak (burada) / sahip olmak",
+        "coffee": "kahve",
+        "please": "lütfen"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "Long ago, the club was here.",
+      "tr": "Uzun zaman önce kulüp buradaydı.",
+      "chunks": [],
+      "words": {
+        "long": "uzun",
+        "ago": "önce",
+        "the": "(belirli tanımlık)",
+        "club": "kulüp",
+        "was": "idi (-di)",
+        "here": "burada"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "One person goes there on Saturdays.",
+      "tr": "Bir kişi cumartesileri oraya gidiyor.",
+      "chunks": [],
+      "words": {
+        "one": "bir",
+        "person": "kişi",
+        "goes": "gider",
+        "there": "oraya",
+        "on": "-de (gün için)",
+        "saturdays": "cumartesileri"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "One member goes to the lighthouse. On Saturdays.",
+      "tr": "Bir üye fenere gidiyor. Cumartesileri.",
+      "chunks": [],
+      "words": {
+        "one": "bir",
+        "member": "üye",
+        "goes": "gider",
+        "to": "-mek / -e",
+        "the": "(belirli tanımlık)",
+        "lighthouse": "deniz feneri",
+        "on": "-de (gün için)",
+        "saturdays": "cumartesileri"
+      },
+      "source": "kurgu"
+    },
+    {
+      "en": "Can I have an apple, please?",
+      "tr": "Bir elma alabilir miyim, lütfen?",
+      "chunks": [
+        {
+          "en": "Can I have",
+          "tr": "… alabilir miyim"
+        }
+      ],
+      "words": {
+        "can": "-ebilmek",
+        "i": "ben",
+        "have": "almak (burada) / sahip olmak",
+        "an": "bir (sesliden önce)",
+        "apple": "elma",
+        "please": "lütfen"
+      },
+      "source": "kurgu"
+    }
+  ],
+  "phrases": [
+    {
+      "en": "a / an",
+      "tr": "bir (a: sessizden önce, an: sesliden önce)",
+      "words": {
+        "a": "bir",
+        "an": "bir (sesliden önce)"
+      },
+      "source": "content:targetPhrases/glossary",
+      "note": "dilbilgisi hedefi; altyazıda kalıp olarak geçmiyor"
+    },
+    {
+      "en": "some",
+      "tr": "biraz",
+      "words": {
+        "some": "biraz"
+      },
+      "source": "content:targetPhrases/glossary",
+      "note": "altyazıda 'Some cake for you!' ve 'some milk'"
+    },
+    {
+      "en": "battery",
+      "tr": "pil",
+      "words": {
+        "battery": "pil"
+      },
+      "source": "content:targetPhrases/glossary",
+      "note": "sözlük"
+    },
+    {
+      "en": "cable",
+      "tr": "kablo",
+      "words": {
+        "cable": "kablo"
+      },
+      "source": "content:targetPhrases/glossary",
+      "note": "sözlük"
+    },
+    {
+      "en": "next to",
+      "tr": "yanında",
+      "words": {
+        "next": "yan",
+        "to": "-de"
+      },
+      "source": "content:targetPhrases/glossary",
+      "note": "sözlük (A2); B9'da 'near' kullanıldı"
+    }
+  ],
+  "notes": [
+    "'Can I have…, please?' kafede kibar istek; 'I want tea.' yanlış değil ama doğrudan. Tepki satırı (Hatalı değil) çevrildi; Rosa'nın 'Please?' sözü nazik hatırlatma olarak açıklandı.",
+    "'You know it?' soru yapısı hatalı; (Hatalı) işaretiyle çevrildi.",
+    "Rosa, Ellen'in adını söylemez (F-016): 'It's her story, not my story.' → 'Bu onun hikâyesi, benim değil.'",
+    "Fiyatlar birimsiz (S1 kararı): 'It's twelve.' → 'On iki.'",
+    "Görev seçenekleri kullanıcı kararı gereği uygulamada çevrilmez; burada yalnız editör içindir."
+  ]
+}

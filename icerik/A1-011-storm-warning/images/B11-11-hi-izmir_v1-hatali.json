@@ -1,0 +1,32 @@
+[
+  {
+    "created_at": "2026-10-14T17:27:59.33509Z",
+    "display_name": "GPT Image 2.5",
+    "id": "f7165bf5-0420-4c01-a4d5-ee4ad7cb0391",
+    "job_type": "gpt_image_2_5",
+    "min_result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261014_172759_f7165bf5-0420-4c01-a4d5-ee4ad7cb0391_min.webp",
+    "params": {
+      "aspect_ratio": "9:16",
+      "height": 2688,
+      "medias": [
+        {
+          "data": {
+            "id": "48e01750-864a-4c0e-bdd3-e9bc989684cb",
+            "type": "media_input",
+            "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/48e01750-864a-4c0e-bdd3-e9bc989684cb.png"
+          },
+          "role": "image"
+        }
+      ],
+      "model": "flare",
+      "prompt": "Use the reference image for Hi, the small round glowing speech-bubble AI assistant with two friendly eyes. Scene: Hi floats next to a simple illustrated map of the Aegean coast; over one coastal city on the map a big bright smiling sun; blue sea; no names, no letters, no numbers on the map. Vertical composition. Warm animated-series illustration, graphic-novel style, clean ink lines, soft cel shading, coastal palette of sea blue, sand, lighthouse yellow and evening orange, mature tone suitable for teens and adults, not childish, no text, no letters, no numbers, no logos.",
+      "quality": "low",
+      "reference_elements": [],
+      "remove_bg": false,
+      "resolution": "2k",
+      "width": 1520
+    },
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261014_172759_f7165bf5-0420-4c01-a4d5-ee4ad7cb0391.png",
+    "status": "completed"
+  }
+]
