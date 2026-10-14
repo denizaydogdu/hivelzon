@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "id": "G-C1-04-participle-clauses",
+  "level": "C1",
+  "titleTr": "Ortaç yan cümleleri (participle clauses): Having finished…, Walking home…",
+  "titleEn": "Participle clauses",
+  "goalTr": "-ing, üçüncü hâl ve having + üçüncü hâl ile yan cümleleri kısaltır, iki cümlenin öznesinin aynı olmasına dikkat edersin.",
+  "prerequisites": [
+    "G-B1-08-defining-relative-clauses",
+    "G-B2-01-passive"
+  ],
+  "contentVersion": 1,
+  "status": "DRAFT",
+  "aiGenerated": true,
+  "teacherReview": null,
+  "linksTo": {
+    "episodes": [],
+    "books": []
+  },
+  "properNouns": [
+    "English"
+  ],
+  "pronunciations": [
+    {
+      "term": "-ing",
+      "say_as": "ing"
+    }
+  ],
+  "narration": {
+    "tr": {
+      "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "G-C1-06-impersonal-passive",
+  "level": "C1",
+  "titleTr": "Kişisiz edilgen (impersonal passive): It is said that…, He is believed to…",
+  "titleEn": "Impersonal passive",
+  "goalTr": "Söylenti, inanç ve haberleri It is said that… ve He is said to… kalıplarıyla mesafeli bir dille aktarırsın.",
+  "prerequisites": [
+    "G-B2-01-passive",
+    "G-B2-02-reported-statements"
+  ],
+  "contentVersion": 1,
+  "status": "DRAFT",
+  "aiGenerated": true,
+  "teacherReview": null,
+  "linksTo": {
+    "episodes": [],
+    "books": []
+  },
+  "narration": {
+    "tr": {
+      "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+    }
+  }
+}

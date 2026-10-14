@@ -1,0 +1,406 @@
+{
+ "schemaVersion": 1,
+ "lessonId": "G-C2-05-cohesion-discourse",
+ "voices": {
+  "tr": {
+   "model": "alania-v2",
+   "voice": "alania2-f1",
+   "timing": "duyu-1",
+   "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+  },
+  "en": {
+   "model": "eleven_v3",
+   "voice": "EXAVITQu4vr4xnSDxMaL",
+   "speed": 1.05
+  }
+ },
+ "cards": [
+  {
+   "card": "c01",
+   "type": "hook",
+   "segments": [
+    {
+     "id": "c01-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Bu iki cümleyi dinle. İkinci cümle bir karşı fikir getiriyor, ama ilk cümleyi silmiyor. Baştaki kısa ifade iki fikri yumuşakça bağlıyor.",
+     "textSha256": "da1a44abdc4e886ce8d3069440199e2ddfa863fa7fa80e0be7692f5acf062f5f",
+     "chars": 136,
+     "audio": "tr/c01-tr.mp3",
+     "align": "tr/c01-tr.align.json",
+     "present": true,
+     "duration": 8.64,
+     "quality": {
+      "words": 21,
+      "exact": 21,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c01-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "The plan is expensive. That said, it may save money in the long term.",
+     "textSha256": "fe72978f1cafeaae1741f47205d9a72d774d94b8589960faa896146340c78d50",
+     "chars": 69,
+     "audio": "en/c01-ex1.mp3",
+     "align": "en/c01-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c02",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c02-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Söylem belirleyicileri, okura sıradaki cümlenin nereye gittiğini söyleyen yön levhalarıdır. Kimisi zıtlık, kimisi ekleme, kimisi sonuç bildirir. Doğru levhayı seçmek için iki cümlenin gerçek ilişkisine bakarsın.",
+     "textSha256": "5bcb418bd6428ac1fe77f89ed68d499d645313a2482e080ff666c885a787dba2",
+     "chars": 211,
+     "audio": "tr/c02-tr.mp3",
+     "align": "tr/c02-tr.align.json",
+     "present": true,
+     "duration": 13.63,
+     "quality": {
+      "words": 26,
+      "exact": 26,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c02-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "The hotel was old. Nonetheless, we loved it.",
+     "textSha256": "2fdfd3a598b6626192ca1f69f8a2ef5b6bf77d08ecf6a67c80d8d6bb02c28bd7",
+     "chars": 44,
+     "audio": "en/c02-ex1.mp3",
+     "align": "en/c02-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c02-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "The flight was cancelled. As a result, we stayed another night.",
+     "textSha256": "8bc7406bb69b23f6acaf018a15e7327f4d328784d4860699bad381b33ec29caf",
+     "chars": 63,
+     "audio": "en/c02-ex2.mp3",
+     "align": "en/c02-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c03",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c03-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Aynı ismi tekrar etmemek için önceki cümleye geri gönderen kelimeler kullanılır. İki şeyden söz ettiysen, ilki ve ikincisi anlamında özel kelimeler vardır. Bu kelimeler metni kısaltır ve fikirleri birbirine örer.",
+     "textSha256": "d33d6d95d758fe9c73f5a6d38d29bc9d8bbc3e1160f861b46d6836b8a7be7aa4",
+     "chars": 212,
+     "audio": "tr/c03-tr.mp3",
+     "align": "tr/c03-tr.align.json",
+     "present": true,
+     "duration": 13.47,
+     "quality": {
+      "words": 30,
+      "exact": 30,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "Both cities are popular; the former, however, is quieter.",
+     "textSha256": "d0cb43ebd2e8dc23e6b0c43d3042d6e8efb7cceeaa7a3c42b48a21b46410b763",
+     "chars": 57,
+     "audio": "en/c03-ex1.mp3",
+     "align": "en/c03-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c03-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "Prices rose sharply. This worried many families.",
+     "textSha256": "7cede9fdad35ff675aa4cac8d075447740aa20eac21decd8c8d8b71bd3a82c56",
+     "chars": 48,
+     "audio": "en/c03-ex2.mp3",
+     "align": "en/c03-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c04",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c04-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Her paragrafı aynı levhayla başlatmak metni mekanik gösterir. Gerçek bir zıtlık yoksa zıtlık levhası kullanılmaz. Bazen en iyi bağ, iyi kurulmuş iki cümle ve doğru bir gönderimdir.",
+     "textSha256": "b78d774a73779b8cc1c5dd21570bc30dc9c9152f817cd4f97c613d27d3d2385e",
+     "chars": 180,
+     "audio": "tr/c04-tr.mp3",
+     "align": "tr/c04-tr.align.json",
+     "present": true,
+     "duration": 12.99,
+     "quality": {
+      "words": 27,
+      "exact": 26,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 4,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c04-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "The first study found a strong effect. By contrast, the second found none.",
+     "textSha256": "b001d61866c7cbc81659983c97fd297b14c9c3f5d6e81108812f8e6474ba1797",
+     "chars": 74,
+     "audio": "en/c04-ex1.mp3",
+     "align": "en/c04-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c05",
+   "type": "examples",
+   "segments": [
+    {
+     "id": "c05-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "The course was hard. Even so, most students passed.",
+     "textSha256": "2a6803d8be77b0d244d2fbb180cb0f133e55925385de37fb92616ab3fcd77c1e",
+     "chars": 51,
+     "audio": "en/c05-ex1.mp3",
+     "align": "en/c05-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "Some prefer trains, others planes; the latter are faster.",
+     "textSha256": "ffb16961391950ad534ee53dafda4735c89e1ddcdf54842cc68b2b691ddec38f",
+     "chars": 57,
+     "audio": "en/c05-ex2.mp3",
+     "align": "en/c05-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "The test failed twice. In other words, the method does not work.",
+     "textSha256": "7c6154420505a8ed3bef14fdfc6f6216d793d106de501f10dc759ec717ba16a3",
+     "chars": 64,
+     "audio": "en/c05-ex3.mp3",
+     "align": "en/c05-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex4",
+     "lang": "en",
+     "role": "example",
+     "text": "He was tired. What is more, he was hungry.",
+     "textSha256": "0e05420e3c93b7f4b5d964a9ce3c0d02ef3321714e5a487a6c6ffe6b86827fce",
+     "chars": 42,
+     "audio": "en/c05-ex4.mp3",
+     "align": "en/c05-ex4.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex5",
+     "lang": "en",
+     "role": "example",
+     "text": "The city has grown fast. Such growth brings new problems.",
+     "textSha256": "8db2fc0ca74ca27848396be5caaafa050f425d5f957d1b9450f2e01a2fdec768",
+     "chars": 57,
+     "audio": "en/c05-ex5.mp3",
+     "align": "en/c05-ex5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c06",
+   "type": "contrast",
+   "segments": [
+    {
+     "id": "c06-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Türkçe uzun bir düşünceyi eklerle tek cümlede bağlayabilir. İngilizcede aynı düşünce çoğu zaman birkaç cümleye bölünür ve aralarına levhalar konur. Yazıda bitmeyen bir ve zinciri ya da her paragrafta aynı levha çok olağandır.",
+     "textSha256": "1c7572ec1e731e9542a1929f247e5f3583325eeb7ac91926a7f8060d1eebb8bc",
+     "chars": 225,
+     "audio": "tr/c06-tr.mp3",
+     "align": "tr/c06-tr.align.json",
+     "present": true,
+     "duration": 14.94,
+     "quality": {
+      "words": 33,
+      "exact": 33,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c06-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I like the city. What is more, I love its food.",
+     "textSha256": "3666d0e025121118fe7195fb612ef8cbfe20eb6feca2df4a9e7e259f65d93175",
+     "chars": 47,
+     "audio": "en/c06-ex1.mp3",
+     "align": "en/c06-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c06-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "The museum was closed and it was raining. As a result, we went home.",
+     "textSha256": "1db11e59079066f25be2cca2122ed28de9052eaf26bf6f74188d006632586118",
+     "chars": 68,
+     "audio": "en/c06-ex2.mp3",
+     "align": "en/c06-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c07",
+   "type": "practice",
+   "segments": [
+    {
+     "id": "c07-q5",
+     "lang": "en",
+     "role": "say",
+     "text": "The plan is expensive. That said, it may save money in the long term.",
+     "textSha256": "fe72978f1cafeaae1741f47205d9a72d774d94b8589960faa896146340c78d50",
+     "chars": 69,
+     "audio": "en/c07-q5.mp3",
+     "align": "en/c07-q5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c08",
+   "type": "rule",
+   "segments": [
+    {
+     "id": "c08-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Söylem belirleyicileri iki cümlenin gerçek ilişkisini gösterir: zıtlık, ekleme ya da sonuç. Geri gönderen kelimeler tekrarı önler. Levhayı yalnız gerektiğinde kullan.",
+     "textSha256": "f0316fe183ce77b599bc2ec80d99225dae5956ee88d06c85c26436d81d199b58",
+     "chars": 166,
+     "audio": "tr/c08-tr.mp3",
+     "align": "tr/c08-tr.align.json",
+     "present": true,
+     "duration": 12.13,
+     "quality": {
+      "words": 21,
+      "exact": 21,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 1,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c08-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "The plan is expensive. That said, it may save money.",
+     "textSha256": "0656c5878795c8f6a232d3e586af5dcf895b8497308615b55ab44d0bce3debfc",
+     "chars": 52,
+     "audio": "en/c08-ex1.mp3",
+     "align": "en/c08-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  }
+ ]
+}

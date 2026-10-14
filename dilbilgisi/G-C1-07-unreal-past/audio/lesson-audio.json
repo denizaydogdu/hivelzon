@@ -1,0 +1,406 @@
+{
+ "schemaVersion": 1,
+ "lessonId": "G-C1-07-unreal-past",
+ "voices": {
+  "tr": {
+   "model": "alania-v2",
+   "voice": "alania2-f1",
+   "timing": "duyu-1",
+   "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+  },
+  "en": {
+   "model": "eleven_v3",
+   "voice": "EXAVITQu4vr4xnSDxMaL",
+   "speed": 1.05
+  }
+ },
+ "cards": [
+  {
+   "card": "c01",
+   "type": "hook",
+   "segments": [
+    {
+     "id": "c01-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Bu cümleyi dinle. Saat geç olmuş ve konuşan eve gitmek istiyor. Fiil geçmiş biçimde, ama gitmek şimdi olacak.",
+     "textSha256": "ef33ba32ac958674f3b020e89bf881cd7e99d592f71843bc5b0351cecca138fd",
+     "chars": 109,
+     "audio": "tr/c01-tr.mp3",
+     "align": "tr/c01-tr.align.json",
+     "present": true,
+     "duration": 8.48,
+     "quality": {
+      "words": 18,
+      "exact": 18,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c01-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "It's time we went home.",
+     "textSha256": "3eb97721e4349b9be3c818dc14edf6547bcc753a109a9286db10d2cfe7a55849",
+     "chars": 23,
+     "audio": "en/c01-ex1.mp3",
+     "align": "en/c01-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c02",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c02-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Dilek dersinde gördüğün gibi, geçmiş biçim bazen zamanı değil, gerçekten uzaklığı gösterir. Bu derste üç kalıpta aynı şey olur. Anlatılan şey şimdi ya da gelecek, ama fiil geçmiş biçimdedir.",
+     "textSha256": "6823ecb5b4a8b62e6109f2a0a8a03c4adb475f3a7a56d7b1a00f2bf7f771c05b",
+     "chars": 190,
+     "audio": "tr/c02-tr.mp3",
+     "align": "tr/c02-tr.align.json",
+     "present": true,
+     "duration": 12.83,
+     "quality": {
+      "words": 29,
+      "exact": 29,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c02-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "It's high time you started studying.",
+     "textSha256": "1833a43121b336330b4cd6fcacb1a33b2fe4258166da13135d91f7463847947b",
+     "chars": 36,
+     "audio": "en/c02-ex1.mp3",
+     "align": "en/c02-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c03",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c03-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Kendi tercihini söylerken yalın fiil kullanırsın. Ama tercih başka bir kişinin davranışıysa, o kişiden sonra geçmiş biçim gelir. Bu, kibar bir istek gibi de duyulur.",
+     "textSha256": "0c4e3cbe6cffdb3bdb93b1a7a8004e8f20ef0ed2bae12a4cf22238b73a53d2c3",
+     "chars": 165,
+     "audio": "tr/c03-tr.mp3",
+     "align": "tr/c03-tr.align.json",
+     "present": true,
+     "duration": 11.23,
+     "quality": {
+      "words": 25,
+      "exact": 25,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I'd rather stay at home.",
+     "textSha256": "e887b4c9b782c0b762a0b81566ab734e6751838fa7fedd649456da5e6cc21dd5",
+     "chars": 24,
+     "audio": "en/c03-ex1.mp3",
+     "align": "en/c03-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c03-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "I'd rather you came tomorrow.",
+     "textSha256": "4c2eed48385a89182987e17d1cee2e4aa5530877d130219335bce59b1fe3ba69",
+     "chars": 29,
+     "audio": "en/c03-ex2.mp3",
+     "align": "en/c03-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c04",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c04-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Türkçedeki sanki ve mış gibi anlamını veren bağlaçtan sonra da geçmiş biçim gelebilir. Böylece durumun gerçek olmadığını ya da şüpheli olduğunu gösterirsin. Gerçek olabilecek bir durumda şimdiki biçim de kullanılır.",
+     "textSha256": "47c92c5ec73865da1010ad8c9abc5e1b6a746cc6ba561cc69db2e1b89dab0e2f",
+     "chars": 215,
+     "audio": "tr/c04-tr.mp3",
+     "align": "tr/c04-tr.align.json",
+     "present": true,
+     "duration": 14.27,
+     "quality": {
+      "words": 30,
+      "exact": 30,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c04-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "She talks as if she knew everyone.",
+     "textSha256": "682f9e17a0fd49d1cf7fa4f900557fb05970e002c52537f4933174fa522cf8ab",
+     "chars": 34,
+     "audio": "en/c04-ex1.mp3",
+     "align": "en/c04-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "It looks as if it's going to rain.",
+     "textSha256": "e7c8ad07dad8da019c4715dfbd677609fa42eeb246bbe09211accfa08177b408",
+     "chars": 34,
+     "audio": "en/c04-ex2.mp3",
+     "align": "en/c04-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c05",
+   "type": "examples",
+   "segments": [
+    {
+     "id": "c05-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "It's time the children went to bed.",
+     "textSha256": "94935a7b1a3d8c451e6ee21d59c0ed6f19c12e5b563ac3b3b5478a7ee7d7fe42",
+     "chars": 35,
+     "audio": "en/c05-ex1.mp3",
+     "align": "en/c05-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "I'd rather you didn't tell anyone.",
+     "textSha256": "79c87cd9b08fa84b1d2b40d01224675b4363098d7d8145af775cff3b2d987269",
+     "chars": 34,
+     "audio": "en/c05-ex2.mp3",
+     "align": "en/c05-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "He acts as if he were the boss.",
+     "textSha256": "3d8977bb36fce552033cfeb9163fc111a4a90e05168d9d276c3446e32da45708",
+     "chars": 31,
+     "audio": "en/c05-ex3.mp3",
+     "align": "en/c05-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex4",
+     "lang": "en",
+     "role": "example",
+     "text": "Would you rather we met on Friday?",
+     "textSha256": "01a7a05dcc82c52f88798b27c03b3a6b21bd9e37c2477195cc87a4911e8e7ce3",
+     "chars": 34,
+     "audio": "en/c05-ex4.mp3",
+     "align": "en/c05-ex4.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex5",
+     "lang": "en",
+     "role": "example",
+     "text": "You look as though you'd seen a ghost.",
+     "textSha256": "e9eb542030dafe39ed7e4970419fb4b93a24804e4ea3b8b0b315a9b5a4d5c410",
+     "chars": 38,
+     "audio": "en/c05-ex5.mp3",
+     "align": "en/c05-ex5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c06",
+   "type": "contrast",
+   "segments": [
+    {
+     "id": "c06-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Türkçe bu kalıplarda geçmiş eki kullanmaz: artık gitme vakti, yarın gelsen daha iyi. Bu yüzden İngilizcede şimdiki biçimi seçmek çok doğal gelir. Ama burada geçmiş biçim zamanı değil, gerçek dışılığı gösterir.",
+     "textSha256": "003df5d021fe8e8b660dfc120aa1d0938c7ee1cb022c6b4917d36c50879f5cb6",
+     "chars": 209,
+     "audio": "tr/c06-tr.mp3",
+     "align": "tr/c06-tr.align.json",
+     "present": true,
+     "duration": 13.73,
+     "quality": {
+      "words": 31,
+      "exact": 31,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c06-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "It's time we went home.",
+     "textSha256": "3eb97721e4349b9be3c818dc14edf6547bcc753a109a9286db10d2cfe7a55849",
+     "chars": 23,
+     "audio": "en/c06-ex1.mp3",
+     "align": "en/c06-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c06-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "I'd rather you came tomorrow.",
+     "textSha256": "4c2eed48385a89182987e17d1cee2e4aa5530877d130219335bce59b1fe3ba69",
+     "chars": 29,
+     "audio": "en/c06-ex2.mp3",
+     "align": "en/c06-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c07",
+   "type": "practice",
+   "segments": [
+    {
+     "id": "c07-q5",
+     "lang": "en",
+     "role": "say",
+     "text": "It's time we went home.",
+     "textSha256": "3eb97721e4349b9be3c818dc14edf6547bcc753a109a9286db10d2cfe7a55849",
+     "chars": 23,
+     "audio": "en/c07-q5.mp3",
+     "align": "en/c07-q5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c08",
+   "type": "rule",
+   "segments": [
+    {
+     "id": "c08-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Bu üç kalıpta geçmiş biçim zamanı değil, gerçek dışılığı gösterir. Vakit kalıbından ve başka bir kişiye yönelik tercihten sonra geçmiş biçim gelir. Sanki anlamındaki bağlaçtan sonra da gelebilir.",
+     "textSha256": "0c59e8f867ace0730a89df0bb7e5c821da8ad366c36b50d30e8fd1d1c1003f7e",
+     "chars": 195,
+     "audio": "tr/c08-tr.mp3",
+     "align": "tr/c08-tr.align.json",
+     "present": true,
+     "duration": 12.32,
+     "quality": {
+      "words": 28,
+      "exact": 27,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c08-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "It's time we went home.",
+     "textSha256": "3eb97721e4349b9be3c818dc14edf6547bcc753a109a9286db10d2cfe7a55849",
+     "chars": 23,
+     "audio": "en/c08-ex1.mp3",
+     "align": "en/c08-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  }
+ ]
+}

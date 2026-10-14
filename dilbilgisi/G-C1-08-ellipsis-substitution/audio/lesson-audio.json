@@ -1,0 +1,445 @@
+{
+ "schemaVersion": 1,
+ "lessonId": "G-C1-08-ellipsis-substitution",
+ "voices": {
+  "tr": {
+   "model": "alania-v2",
+   "voice": "alania2-f1",
+   "timing": "duyu-1",
+   "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+  },
+  "en": {
+   "model": "eleven_v3",
+   "voice": "EXAVITQu4vr4xnSDxMaL",
+   "speed": 1.05
+  }
+ },
+ "cards": [
+  {
+   "card": "c01",
+   "type": "hook",
+   "segments": [
+    {
+     "id": "c01-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Kitaplıktaki Pip uyuyamıyor; Zara da uyuyamadığını söyleyince Pip ona katılıyor. Pip'in cevabı gündelik ve kısa, konuşmada çok duyulur. Olumsuz bir cümleye katılmanın daha özenli bir yolu da var, dinle.",
+     "textSha256": "8001c9d66594637eaf5788119f3c482af134afd9338573d51f2390fc1e1ac87b",
+     "chars": 202,
+     "audio": "tr/c01-tr.mp3",
+     "align": "tr/c01-tr.align.json",
+     "present": true,
+     "duration": 13.78,
+     "quality": {
+      "words": 29,
+      "exact": 29,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c01-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I can't sleep. Neither can I.",
+     "textSha256": "40fa15e92f03ef9f8493311afa735d71104a1bba10ef27e51439c3351b894e2c",
+     "chars": 29,
+     "audio": "en/c01-ex1.mp3",
+     "align": "en/c01-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c02",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c02-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Olumlu cümleye katılırken ben de anlamındaki kelime, yardımcı fiil ve özne sırayla gelir. Olumsuz bir cümleye katılırken bu kelimenin yerine olumsuz bir kelime gelir. Sıra yine aynıdır: önce yardımcı fiil, sonra özne.",
+     "textSha256": "89dca818eb43487bc4426a3ed6d7936f41f8a9cd518ebfe855c38c6dc9422875",
+     "chars": 217,
+     "audio": "tr/c02-tr.mp3",
+     "align": "tr/c02-tr.align.json",
+     "present": true,
+     "duration": 14.75,
+     "quality": {
+      "words": 32,
+      "exact": 32,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c02-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I love this song. So do I.",
+     "textSha256": "eec706c0c881e2a8bbc209679da1b008cc19e625f043ecab3e260f2726d5797f",
+     "chars": 26,
+     "audio": "en/c02-ex1.mp3",
+     "align": "en/c02-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c02-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "She can't swim. Neither can I.",
+     "textSha256": "f61af145ccad480aede69fcffdff11764b5d88ffe7054f6b89a1fb6859b6d3f8",
+     "chars": 30,
+     "audio": "en/c02-ex2.mp3",
+     "align": "en/c02-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c03",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c03-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "İlk cümlede olmak fiili varsa, cevapta da olmak fiili gelir. Bir yardımcı fiil varsa onu tekrar edersin; hiç yoksa soru yardımcısı gelir. Zaman da ilk cümleyle aynı olur.",
+     "textSha256": "2ab53b1680bd80d663daa90f9316414f32d61ca9423013518afd641894a46ff8",
+     "chars": 170,
+     "audio": "tr/c03-tr.mp3",
+     "align": "tr/c03-tr.align.json",
+     "present": true,
+     "duration": 11.55,
+     "quality": {
+      "words": 28,
+      "exact": 28,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I'm tired. So am I.",
+     "textSha256": "e155a9cd1df981776b533531490027a88c94fadf19abdd8117c5692d123e9f9b",
+     "chars": 19,
+     "audio": "en/c03-ex1.mp3",
+     "align": "en/c03-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c03-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "We went to the concert. So did they.",
+     "textSha256": "a10c054ce0116cfc67382f7ced48bc98da324f69a056fac92ededf039feb9fd4",
+     "chars": 36,
+     "audio": "en/c03-ex2.mp3",
+     "align": "en/c03-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c04",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c04-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Düşünmek ve ummak fiillerinden sonra bütün cümle tekrar edilmez; öyle anlamında bir kelime gelir. Olumsuz cevapta bu kelimenin yerine değil anlamında başka bir kelime gelir. Bir ismi tekrar etmemek için de bir anlamındaki kelime kullanılır.",
+     "textSha256": "5c589557c37bb5cac907f84bbe5889831fc1340eace9021e2f2b440b49913423",
+     "chars": 240,
+     "audio": "tr/c04-tr.mp3",
+     "align": "tr/c04-tr.align.json",
+     "present": true,
+     "duration": 15.39,
+     "quality": {
+      "words": 35,
+      "exact": 35,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c04-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "Will it rain tomorrow? I hope not.",
+     "textSha256": "c44e142d54adb3d13850844c0b69cc9213f373861d51438b57c772391459a7ac",
+     "chars": 34,
+     "audio": "en/c04-ex1.mp3",
+     "align": "en/c04-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "Is she coming? I think so.",
+     "textSha256": "f27c30734cdaa366b9eaf188684c576849bf5dafcd2deb3d938b1888569eef05",
+     "chars": 26,
+     "audio": "en/c04-ex2.mp3",
+     "align": "en/c04-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "I don't like this cup. Can I have the blue one?",
+     "textSha256": "500e757705636ccc9c69159a363d3390fa5b76ed20d167383cc8625f3eacfa08",
+     "chars": 47,
+     "audio": "en/c04-ex3.mp3",
+     "align": "en/c04-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c05",
+   "type": "examples",
+   "segments": [
+    {
+     "id": "c05-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I've never been to Paris. Neither have I.",
+     "textSha256": "0fea748574640f0532a9fa705481f371e832c61468b94843a4211e96421b7ac8",
+     "chars": 41,
+     "audio": "en/c05-ex1.mp3",
+     "align": "en/c05-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "She didn't like the film, and nor did I.",
+     "textSha256": "d5434ddac6a5b03309fef74a9b090cb60ec4a4e9ce1d9aa8fba7135a18169639",
+     "chars": 40,
+     "audio": "en/c05-ex2.mp3",
+     "align": "en/c05-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "I wanted to help, but I couldn't.",
+     "textSha256": "1ad25f99007df0f559f1a8c94bb144e69744f0f911034bd79e4669774e603855",
+     "chars": 33,
+     "audio": "en/c05-ex3.mp3",
+     "align": "en/c05-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex4",
+     "lang": "en",
+     "role": "example",
+     "text": "Do you think we'll win? I'm afraid not.",
+     "textSha256": "f569efc55bc4e8cff0a6c0b9a36dadd858aaeafef36c9a004a83d2cbde329d5b",
+     "chars": 39,
+     "audio": "en/c05-ex4.mp3",
+     "align": "en/c05-ex4.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex5",
+     "lang": "en",
+     "role": "example",
+     "text": "My phone is very old, so I need a new one.",
+     "textSha256": "83bfd00bb801dc38ef65665d714a670288aeedfd1b740e3de01b12f9eb05acd1",
+     "chars": 42,
+     "audio": "en/c05-ex5.mp3",
+     "align": "en/c05-ex5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c06",
+   "type": "contrast",
+   "segments": [
+    {
+     "id": "c06-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Türkçede ben de, bence de, umarım demek yeterlidir; fiili hiç söylemeyiz. İngilizcede doğru yardımcı fiili seçmek ve sırayı çevirmek gerekir. Olumsuz bir cümleye olumlu kalıpla katılmak çok olağandır.",
+     "textSha256": "4115961c88a64f2599ff56cdb98a3e1e800d50d71618969d913eb9a24d468386",
+     "chars": 200,
+     "audio": "tr/c06-tr.mp3",
+     "align": "tr/c06-tr.align.json",
+     "present": true,
+     "duration": 14.43,
+     "quality": {
+      "words": 28,
+      "exact": 28,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c06-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I don't like coffee. Neither do I.",
+     "textSha256": "624dd30253f8b2fea3e64e5cb5a556694fcbcf5e9a6acc4e1c4948615f2b782f",
+     "chars": 34,
+     "audio": "en/c06-ex1.mp3",
+     "align": "en/c06-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c06-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "I think so.",
+     "textSha256": "69c0bd5adac736f3961a3ff054ac4326486daa67404ac412f0d955edc39e4197",
+     "chars": 11,
+     "audio": "en/c06-ex2.mp3",
+     "align": "en/c06-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c06-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "I hope so.",
+     "textSha256": "5bc10e8175dc942238f3f0250d2ae8dd4c36bf64143b1654eb4260d54cccae68",
+     "chars": 10,
+     "audio": "en/c06-ex3.mp3",
+     "align": "en/c06-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c07",
+   "type": "practice",
+   "segments": [
+    {
+     "id": "c07-q5",
+     "lang": "en",
+     "role": "say",
+     "text": "I've never been to Paris. Neither have I.",
+     "textSha256": "0fea748574640f0532a9fa705481f371e832c61468b94843a4211e96421b7ac8",
+     "chars": 41,
+     "audio": "en/c07-q5.mp3",
+     "align": "en/c07-q5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c08",
+   "type": "rule",
+   "segments": [
+    {
+     "id": "c08-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Katılmak için ben de anlamındaki kelime, yardımcı fiil ve özne gelir. Olumsuzda başka bir kelime kullanılır. Düşünmek ve ummaktan sonra cümlenin yerine kısa bir kelime gelir.",
+     "textSha256": "4ebc4d5b841b8b3ad3de8c769c03c17a59506a38353e0fc7a93f8dfd20e0a6ab",
+     "chars": 174,
+     "audio": "tr/c08-tr.mp3",
+     "align": "tr/c08-tr.align.json",
+     "present": true,
+     "duration": 12.35,
+     "quality": {
+      "words": 26,
+      "exact": 26,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c08-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I love this song. So do I.",
+     "textSha256": "eec706c0c881e2a8bbc209679da1b008cc19e625f043ecab3e260f2726d5797f",
+     "chars": 26,
+     "audio": "en/c08-ex1.mp3",
+     "align": "en/c08-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  }
+ ]
+}

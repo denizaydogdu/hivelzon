@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "id": "G-C1-07-unreal-past",
+  "level": "C1",
+  "titleTr": "Gerçek dışı geçmiş (unreal past): It's time…, would rather…, as if…",
+  "titleEn": "Unreal past",
+  "goalTr": "It's time…, would rather + kişi ve as if yapılarında geçmiş biçimle şimdiki gerçek dışılığı anlatırsın.",
+  "prerequisites": [
+    "G-B2-06-wish-if-only"
+  ],
+  "contentVersion": 1,
+  "status": "DRAFT",
+  "aiGenerated": true,
+  "teacherReview": null,
+  "linksTo": {
+    "episodes": [],
+    "books": []
+  },
+  "narration": {
+    "tr": {
+      "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+    }
+  }
+}

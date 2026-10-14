@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "id": "G-C1-01-inversion",
+  "level": "C1",
+  "titleTr": "Devrik yapı (inversion): Never have I…, Not only…",
+  "titleEn": "Inversion after negative adverbials",
+  "goalTr": "Olumsuz ya da kısıtlayıcı bir ifade başa geldiğinde yardımcı fiili özneden önce getirir, vurgulu ve resmî cümleler kurarsın.",
+  "prerequisites": [
+    "G-B1-01-present-perfect-experience",
+    "G-B1-11-past-perfect"
+  ],
+  "contentVersion": 1,
+  "status": "DRAFT",
+  "aiGenerated": true,
+  "teacherReview": null,
+  "linksTo": {
+    "episodes": [],
+    "books": []
+  },
+  "properNouns": [
+    "İzmir"
+  ],
+  "narration": {
+    "tr": {
+      "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+    }
+  }
+}

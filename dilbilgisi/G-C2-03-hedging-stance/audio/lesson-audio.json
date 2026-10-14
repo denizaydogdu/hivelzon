@@ -1,0 +1,419 @@
+{
+ "schemaVersion": 1,
+ "lessonId": "G-C2-03-hedging-stance",
+ "voices": {
+  "tr": {
+   "model": "alania-v2",
+   "voice": "alania2-f1",
+   "timing": "duyu-1",
+   "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+  },
+  "en": {
+   "model": "eleven_v3",
+   "voice": "EXAVITQu4vr4xnSDxMaL",
+   "speed": 1.05
+  }
+ },
+ "cards": [
+  {
+   "card": "c01",
+   "type": "hook",
+   "segments": [
+    {
+     "id": "c01-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Bu cümleyi dinle. Konuşan planın başarısız olduğunu söylüyor, ama kesin konuşmuyor. Elindeki kanıta göre öyle göründüğünü söylüyor; bu dikkatli bir dil.",
+     "textSha256": "80b7310a7bfaa42087f0ec8d2884ddaad83088b2c22d2fe2a82cf5d307cbcc70",
+     "chars": 152,
+     "audio": "tr/c01-tr.mp3",
+     "align": "tr/c01-tr.align.json",
+     "present": true,
+     "duration": 10.36,
+     "quality": {
+      "words": 21,
+      "exact": 21,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c01-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "It would appear that the plan has failed.",
+     "textSha256": "152e0e9db3d8a632e7cdd75665fdda5b4e8f409b1dff565fb32afe4963dd6c23",
+     "chars": 41,
+     "audio": "en/c01-ex1.mp3",
+     "align": "en/c01-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c02",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c02-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Yazıda ve resmî konuşmada iddiaları çoğu zaman yumuşatırız. Görünmek fiilleri, olasılık bildiren yardımcı fiiller ve eğilim kalıbı bu işi yapar. Böylece kanıtın gücü kadar konuşursun, fazlasını değil.",
+     "textSha256": "df377476fd8ab26ba8965100dba92fa917390f8f2fbf9fd5c1558c525473e29f",
+     "chars": 200,
+     "audio": "tr/c02-tr.mp3",
+     "align": "tr/c02-tr.align.json",
+     "present": true,
+     "duration": 13.79,
+     "quality": {
+      "words": 27,
+      "exact": 26,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c02-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "The results seem to suggest a link.",
+     "textSha256": "56bd863fca230e953f07226de3d782c67b5ac2b24ee8254d831df03fbc1b79e8",
+     "chars": 35,
+     "audio": "en/c02-ex1.mp3",
+     "align": "en/c02-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c02-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "Young people tend to sleep later.",
+     "textSha256": "90abd8557b71cf0169d9575f2954d47c0bd25cb42c7b3eaf85f5bf7f3e3057cc",
+     "chars": 33,
+     "audio": "en/c02-ex2.mp3",
+     "align": "en/c02-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c03",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c03-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Bazı zarflar senin bakış açını gösterir: tartışılır ama, muhtemelen, şaşırtıcı biçimde gibi. Bu zarflar genellikle cümlenin başına ya da fiilin önüne gelir. Okur, neyin bilgi, neyin senin yorumun olduğunu böylece anlar.",
+     "textSha256": "ec6e6db608c0e7c139f8d8647ec13ad6466bf7233e38a6fe015c0a73e48d56e6",
+     "chars": 219,
+     "audio": "tr/c03-tr.mp3",
+     "align": "tr/c03-tr.align.json",
+     "present": true,
+     "duration": 16.0,
+     "quality": {
+      "words": 31,
+      "exact": 31,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "This is arguably her best novel.",
+     "textSha256": "096d494642d9be6bd8306ec2aec46fe358776f8cdb7ff9ff9a79da2b3f17de4e",
+     "chars": 32,
+     "audio": "en/c03-ex1.mp3",
+     "align": "en/c03-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c03-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "Presumably, the train was late.",
+     "textSha256": "1366ff119e39f4c8d06e8d738c53e3616c36ca9b06a4f99a125ea39d5e7f1d95",
+     "chars": 31,
+     "audio": "en/c03-ex2.mp3",
+     "align": "en/c03-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c03-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "Surprisingly, nobody complained.",
+     "textSha256": "fc8912e1efe387c8746203f9302e46a9f9ff2c1e72745b39b8ab69fef6a6dea7",
+     "chars": 32,
+     "audio": "en/c03-ex3.mp3",
+     "align": "en/c03-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c04",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c04-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Her cümleye belki ya da bence eklemek metni kararsız gösterir. Kanıtsız kesin konuşmak ise güveni zedeler. Bir paragrafta bir iki yumuşatma çoğu zaman yeterlidir.",
+     "textSha256": "e7af05f43cb056edd5f86018fa5185b1dae38edafd4efc6354a2e346c3abb77c",
+     "chars": 162,
+     "audio": "tr/c04-tr.mp3",
+     "align": "tr/c04-tr.align.json",
+     "present": true,
+     "duration": 10.75,
+     "quality": {
+      "words": 24,
+      "exact": 24,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c04-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "There is some evidence that the method works.",
+     "textSha256": "fbe8654e6d454743088ca68adbf2987a22c716e59789edef071bac51bf3eedf8",
+     "chars": 45,
+     "audio": "en/c04-ex1.mp3",
+     "align": "en/c04-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c05",
+   "type": "examples",
+   "segments": [
+    {
+     "id": "c05-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "It seems that nobody read the email.",
+     "textSha256": "1b7bd6d9a72adb44162acb8259a0306d6ebedfcec462715f782ebca965be0c02",
+     "chars": 36,
+     "audio": "en/c05-ex1.mp3",
+     "align": "en/c05-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "The price is likely to rise next year.",
+     "textSha256": "0fd2e044498dec84af5eb67804709f764f1c453d479f27ad1182e83ebcd1e409",
+     "chars": 38,
+     "audio": "en/c05-ex2.mp3",
+     "align": "en/c05-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "This may be because the instructions were unclear.",
+     "textSha256": "435b550d3b669e0ee7864298df651b5021bd952cd1502770b4e74b87d6a98708",
+     "chars": 50,
+     "audio": "en/c05-ex3.mp3",
+     "align": "en/c05-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex4",
+     "lang": "en",
+     "role": "example",
+     "text": "Arguably, the second film is better than the first.",
+     "textSha256": "55c7d7fa8395955e010d7516b27998a5653790365408057274a81bfc0de9bd05",
+     "chars": 51,
+     "audio": "en/c05-ex4.mp3",
+     "align": "en/c05-ex4.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex5",
+     "lang": "en",
+     "role": "example",
+     "text": "The data would seem to support this idea.",
+     "textSha256": "1cce1e9571a82b34da0cea42a0f7ac36d47decd46bfc1ebeddb68526d96c2ef5",
+     "chars": 41,
+     "audio": "en/c05-ex5.mp3",
+     "align": "en/c05-ex5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c06",
+   "type": "contrast",
+   "segments": [
+    {
+     "id": "c06-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Türkçede yorulmuştur derken aynı ek hem kesinlik hem tahmin bildirebilir; galiba ve sanki de yumuşatır. İngilizcede bu araçlar ayrı kelimelerdir ve üst üste yığılmaz. Ya çok kesin konuşmak ya da her cümleye belki eklemek çok olağandır.",
+     "textSha256": "5c2fbbd1057b9e3eaa3e77a6c62463e06de058e16bdea53eebbde783850fa0b6",
+     "chars": 235,
+     "audio": "tr/c06-tr.mp3",
+     "align": "tr/c06-tr.align.json",
+     "present": true,
+     "duration": 15.71,
+     "quality": {
+      "words": 36,
+      "exact": 34,
+      "fuzzy": 2,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c06-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "It is probably true.",
+     "textSha256": "7bdcbc3ca0373a04bece36cb47fe4c0214369c1146ba8cf6dc1080877b8d547b",
+     "chars": 20,
+     "audio": "en/c06-ex1.mp3",
+     "align": "en/c06-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c06-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "This is arguably the best method.",
+     "textSha256": "78dd8c81dfa1a5985e8dd6d461bf71da4ea60d95228783b6e6453ce659dc3d6d",
+     "chars": 33,
+     "audio": "en/c06-ex2.mp3",
+     "align": "en/c06-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c07",
+   "type": "practice",
+   "segments": [
+    {
+     "id": "c07-q5",
+     "lang": "en",
+     "role": "say",
+     "text": "It would appear that the plan has failed.",
+     "textSha256": "152e0e9db3d8a632e7cdd75665fdda5b4e8f409b1dff565fb32afe4963dd6c23",
+     "chars": 41,
+     "audio": "en/c07-q5.mp3",
+     "align": "en/c07-q5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c08",
+   "type": "rule",
+   "segments": [
+    {
+     "id": "c08-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "İddiayı kanıt kadar güçlü söylemek için görünmek fiilleri ve olasılık kalıpları kullanılır. Tutum zarfları senin yorumunu gösterir. Ölçülü kullanılınca metin güvenilir olur.",
+     "textSha256": "a98448d6ae80792a8b49de7bc5b13945a5d6b1e2b7ba1f61a451ba40178e2daa",
+     "chars": 173,
+     "audio": "tr/c08-tr.mp3",
+     "align": "tr/c08-tr.align.json",
+     "present": true,
+     "duration": 11.39,
+     "quality": {
+      "words": 22,
+      "exact": 22,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c08-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "It would appear that the plan has failed.",
+     "textSha256": "152e0e9db3d8a632e7cdd75665fdda5b4e8f409b1dff565fb32afe4963dd6c23",
+     "chars": 41,
+     "audio": "en/c08-ex1.mp3",
+     "align": "en/c08-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  }
+ ]
+}

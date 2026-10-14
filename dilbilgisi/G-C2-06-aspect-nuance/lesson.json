@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "id": "G-C2-06-aspect-nuance",
+  "level": "C2",
+  "titleTr": "Görünüş incelikleri (aspect): She's being rude, I was wondering…",
+  "titleEn": "Aspect nuances",
+  "goalTr": "Durum fiillerini geçici davranış ve değişen anlam için sürekli biçimde kullanır, I was wondering if… ile kibar rica kurarsın.",
+  "prerequisites": [
+    "G-A2-02-simple-vs-continuous",
+    "G-B2-08-present-perfect-continuous"
+  ],
+  "contentVersion": 1,
+  "status": "DRAFT",
+  "aiGenerated": true,
+  "teacherReview": null,
+  "linksTo": {
+    "episodes": [],
+    "books": []
+  },
+  "properNouns": [
+    "Ankara"
+  ],
+  "narration": {
+    "tr": {
+      "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+    }
+  }
+}

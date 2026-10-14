@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "id": "G-C1-08-ellipsis-substitution",
+  "level": "C1",
+  "titleTr": "Eksiltme ve yerine koyma (ellipsis and substitution): So do I, I hope not",
+  "titleEn": "Ellipsis and substitution",
+  "goalTr": "Tekrarı önlemek için so, not ve one'ı kullanır; So do I, Neither can she gibi kısa cevapları doğru yardımcı fiille kurarsın.",
+  "prerequisites": [
+    "G-A1-14-do-does",
+    "G-A1-07-can"
+  ],
+  "contentVersion": 1,
+  "status": "DRAFT",
+  "aiGenerated": true,
+  "teacherReview": null,
+  "linksTo": {
+    "episodes": [],
+    "books": [
+      "A1-K04"
+    ]
+  },
+  "properNouns": [
+    "Pip",
+    "Zara",
+    "Paris"
+  ],
+  "narration": {
+    "tr": {
+      "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+    }
+  }
+}

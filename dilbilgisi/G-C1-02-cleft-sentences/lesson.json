@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "id": "G-C1-02-cleft-sentences",
+  "level": "C1",
+  "titleTr": "Vurgulu yapılar (cleft sentences): It was… that…, What I need is…",
+  "titleEn": "Cleft sentences",
+  "goalTr": "Cümlenin bir parçasını it … that / who ya da what … is yapısıyla öne çıkarır, vurguyu doğru yere koyarsın.",
+  "prerequisites": [
+    "G-B1-08-defining-relative-clauses"
+  ],
+  "contentVersion": 1,
+  "status": "DRAFT",
+  "aiGenerated": true,
+  "teacherReview": null,
+  "linksTo": {
+    "episodes": [],
+    "books": []
+  },
+  "properNouns": [
+    "Ali",
+    "Elif",
+    "İzmir",
+    "Ankara"
+  ],
+  "narration": {
+    "tr": {
+      "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+    }
+  }
+}

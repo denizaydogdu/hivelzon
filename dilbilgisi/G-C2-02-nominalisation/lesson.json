@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "id": "G-C2-02-nominalisation",
+  "level": "C2",
+  "titleTr": "Adlaştırma (nominalisation): resmî ve akademik yazı",
+  "titleEn": "Nominalisation",
+  "goalTr": "Fiil ve sıfatları isme çevirerek yoğun, resmî cümleler kurar; gerektiğinde sade dile geri açarsın.",
+  "prerequisites": [
+    "G-B2-01-passive",
+    "G-C1-04-participle-clauses"
+  ],
+  "contentVersion": 1,
+  "status": "DRAFT",
+  "aiGenerated": true,
+  "teacherReview": null,
+  "linksTo": {
+    "episodes": [],
+    "books": []
+  },
+  "pronunciations": [
+    {
+      "term": "-ing",
+      "say_as": "ing"
+    }
+  ],
+  "narration": {
+    "tr": {
+      "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+    }
+  }
+}
