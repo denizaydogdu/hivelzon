@@ -28,7 +28,7 @@ Kurallar: her ücretli üretimden **önce** `higgsfield generate cost` ile maliy
 
 ## Görsel planı ve üretim kaydı (2026-10-14)
 
-> **Üretildi (2026-10-14).** Kullanıcı onayı: "15,06 krediye kadar kullan". GPT Image 2.5, 3:4, medium, 1k = 0,5 kr; bölüm başları kapak işi referans verilerek. **Eksik: p13 (4. bölüm başı) kredi bitince bırakıldı → H-084.** Eski plan notu: Kullanıcı kararı (2026-10-14, H-071/H-072): kalan kitaplarda resim yoğunluğu **kapak + bölüm başı**. Bu kitapta 7 görsel: `images/cover.png`, `images/p01.png`, `images/p05.png`, `images/p09.png`, `images/p13.png`, `images/p17.png`, `images/p21.png` (git dışı; dosya adları `book.json` ile aynı, diğer sayfalar resimsiz ve palet renkli). Model: GPT Image 2.5, 3:4, ≈ 0,5 kr/görsel; tahmini toplam ≈ 3,5 kr. **Her üretimden önce `higgsfield generate cost` ile maliyet gösterilir ve kullanıcı onayı alınır.** Bölüm başı görselleri kapak işi referans verilerek üretilir (karakter tutarlılığı).
+> **Üretildi (2026-10-14).** Kullanıcı onayı: "15,06 krediye kadar kullan". GPT Image 2.5, 3:4, medium, 1k = 0,5 kr; bölüm başları kapak işi referans verilerek. p13 (4. bölüm başı) kredi yüklenince H-084 ile üretildi (2026-10-14). Eski plan notu: Kullanıcı kararı (2026-10-14, H-071/H-072): kalan kitaplarda resim yoğunluğu **kapak + bölüm başı**. Bu kitapta 7 görsel: `images/cover.png`, `images/p01.png`, `images/p05.png`, `images/p09.png`, `images/p13.png`, `images/p17.png`, `images/p21.png` (git dışı; dosya adları `book.json` ile aynı, diğer sayfalar resimsiz ve palet renkli). Model: GPT Image 2.5, 3:4, ≈ 0,5 kr/görsel; tahmini toplam ≈ 3,5 kr. **Her üretimden önce `higgsfield generate cost` ile maliyet gösterilir ve kullanıcı onayı alınır.** Bölüm başı görselleri kapak işi referans verilerek üretilir (karakter tutarlılığı).
 
 **Sabit stil öneki (her istemin başına):**
 `Stylised illustration with a rich oil-paint texture, a picture within a picture, non-photorealistic, visible brushstrokes, thoughtful and quiet mood. Palette: saffron, mustard yellow, Mediterranean blue, warm workshop shadows, a small accent of boat red. Absolutely no text, letters, numbers, signs, logos or writing anywhere in the image; signatures are drawn only as small abstract brush marks, documents, labels, catalogues and letters are blank or abstract lines, screens are blank. Consistent characters as described. Vertical 3:4.`
@@ -67,7 +67,8 @@ Kurallar: her ücretli üretimden **önce** `higgsfield generate cost` ile maliy
 | p09.png | b956ac37-f2e6-4adb-a5bc-edd5d2e6ce7f | 1d011fd5-c1bd-4da8-bfa1-11164f1521e8 | 2026-10-14T16:17:25+00:00 | 3:4, medium, 1k | 0.5 |
 | p21.png | c4c8d5ba-dd8c-4766-b5bd-bed422d29a44 | 1d011fd5-c1bd-4da8-bfa1-11164f1521e8 | 2026-10-14T16:17:49+00:00 | 3:4, medium, 1k | 0.5 |
 
-**Toplam:** 3 kr. Tam istemler yerel `images/_jobs.json`'da (git dışı). **Editör değerlendirmesi:** karakter ve üslup tutarlı; görselde yazı yok; sürpriz ele verilmiyor.
+| p13.png | dbf698c3-99e1-4bd3-9b08-f137b3ad1b0a | 1d011fd5-c1bd-4da8-bfa1-11164f1521e8 | 2026-10-14T16:37:59+00:00 | 3:4, medium, 1k | 0.5 |
+**Toplam:** 3.5 kr. Tam istemler yerel `images/_jobs.json`'da (git dışı). **Editör değerlendirmesi:** karakter ve üslup tutarlı; görselde yazı yok; sürpriz ele verilmiyor.
 
 ## Seslendirme kayıtları (tts_book.py)
 

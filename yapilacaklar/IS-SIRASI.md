@@ -145,7 +145,7 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 | K6 | H-071 | Kitap dalgası 1: A1 + A2 (kalan 8) | Orta | H-069 | 🔄 |
 | K7 | H-072 | Kitap dalgası 2: B1 + B2 (10) | Orta | H-071 | 🔄 |
 | K8 | H-073 | Kitap dalgası 3: C1 + C2 (10) | Orta | H-072 | ⏳ |
-| K7' | H-084 | B2-K01 eksik bölüm başı görseli (p13), kredi yüklenince | Düşük | kredi | ⏳ |
+| K7' | H-084 | B2-K01 eksik bölüm başı görseli (p13), kredi yüklenince | Düşük | kredi | ✅ |
 
 **Sıra:** H-065 hemen (belge + katalog) → H-066 ve H-067, tasarım fazlarıyla paralel, ayrı dallarda → H-069 pilot → resim yoğunluğu ve ses planı kararı → H-068, H-070 → H-071 → H-072 → H-073.
 
@@ -419,3 +419,4 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
   - H-084 açıldı: B2 görselleri 15,06 krediye sığsın diye 30/31 üretiliyor; B2-K01 p13 (4. bölüm başı) kredi yüklenince tamamlanacak.
   - H-064 tasarım kalite turu bitti (924 test). Tasarım yenilemesi (Adım 6) H-057…H-064 tamamlandı.
   - Üçüncü ücretsiz ElevenLabs hesabı (kullanıcının arkadaşının; anahtar repo dışında `~/.config/hivelzon/elevenlabs-3.env`, defter `elevenlabs-hesap3-karakter.json`): A1-K04 ve A1-K05 seslendirildi; A1 dilbilgisinin 16 dersinin hepsi İngilizce örnekleriyle sesli. Sesli kitap: 5/20.
+  - Kullanıcı Higgsfield'a 500 kredi yükledi ve yarım kalan işler için onay verdi. H-084 bitti (p13). Kitaplık: 20 kitabın hepsi tam resimli.

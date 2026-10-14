@@ -1,6 +1,6 @@
 # H-084: B2-K01 eksik bölüm başı görseli (kredi yüklenince)
 
-- **Durum:** Yapılacak (Higgsfield kredisi yüklenince)
+- **Durum:** Bitti (2026-10-14; kredi yüklendi, p13 üretildi, 0,5 kr)
 - **Tür:** İçerik üretimi (görsel)
 - **Faz:** Kitaplık K7 (H-072'nin kalanı)
 - **Bağımlılık:** Higgsfield kredi yüklemesi (kullanıcı)
@@ -24,3 +24,4 @@ Görsel git dışı; paket yeniden üretilir.
 
 ## Notlar
 2026-10-14: Kullanıcı isteğiyle açıldı ("bunu ek iş olarak kayıt et, unutmayalım"). O zamana kadar bölüm kitabın renkli zemini ile gösterilir.
+2026-10-14: Kullanıcı 500 kredi yükledi; p13 üretildi ve kontrol edildi (yazı yok, sürpriz yok). İş kapandı.
