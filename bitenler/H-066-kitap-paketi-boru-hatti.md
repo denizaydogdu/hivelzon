@@ -1,6 +1,6 @@
 # H-066: Kitap paketi ve içerik boru hattı
 
-- **Durum:** Yapılacak
+- **Durum:** Bitti (2026-10-14; pytest 151/151, bölüm lint 0 hata)
 - **Tür:** Uygulama (araç)
 - **Faz:** Kitaplık K1 (`docs/KITAPLIK.md` §9)
 - **Bağımlılık:** H-065
@@ -58,3 +58,5 @@ Kendi dalında; `git revert`.
 - Aylık karakter tavanı değeri kullanıcı kararı (ücretsiz plan kotası ya da ticari plan, H-006). Tavan tanımlanmadan `--execute` çalışmaz.
 - Bölüm başlığı seslendiriliyor ("A New Home."); "Chapter one" gibi bir giriş istenirse metne eklenir.
 - `kitaplar/_maliyet/elevenlabs-karakter.json` defteri depoda tutulacak (gizli değil); başka makinede çalışırken defter eşitlenmezse aylık sayım eksik kalır.
+2026-10-14: `main`'e birleştirildi ve kapandı. Pilotta (H-069) kesinleşecekler: aylık karakter tavanı (`HIVELZON_TTS_MONTHLY_CHAR_CAP`, kullanıcı kararı), istek başına karakter sınırı ve kredi/karakter oranı (ElevenLabs belgelerinden doğrulanacak), A1 üstü anlatım hızları. C1/C2 için Octanove dosyası eklenince kapsama denetlenir (H-073'ten önce).
+

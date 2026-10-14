@@ -101,7 +101,7 @@ A1–C2, seviye başına 5 kitap, toplam 30. Kararlar: önce 2 pilot kitap, Elev
 | Faz | İş | Kapsam | Durum |
 |---|---|---|---|
 | **K0** | **H-065** Kararlar + 30 kitaplık katalog | Katalog, yerleşim, tel çerçeve | ✅ |
-| **K1** | **H-066** Kitap paketi + boru hattı | `book.json`/`pages.json`, book-lint (A1–C2), Octanove C1/C2, TTS betiği | ⏳ |
+| **K1** | **H-066** Kitap paketi + boru hattı | `book.json`/`pages.json`, book-lint (A1–C2), Octanove C1/C2, TTS betiği | ✅ |
 | **K2** | **H-067** Kitaplık + okuyucu | Sesli/sessiz, vurgu, anlam paneli, Defter'e ekle, ilerleme + eşitleme | ⏳ |
 | **K3** | **H-068** Arka planda dinleme | just_audio + audio_service, kilit ekranı | ⏳ |
 | **K4** | **H-069** Pilot A1 + A2 | ≈ 15 kr görsel, ücretsiz TTS kotası; sonra yoğunluk kararı | ⏳ |
