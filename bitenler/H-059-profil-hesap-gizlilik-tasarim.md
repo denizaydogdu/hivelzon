@@ -1,6 +1,6 @@
 # H-059: Profil, Hesap, "Hi benim hakkımda" ve hukuk metni tasarımı
 
-- **Durum:** Devam ediyor (kod bitti, flutter test 463/463; kullanıcının tasarım onayı bekleniyor)
+- **Durum:** Bitti (2026-10-14; flutter test 463/463, CI yeşil, tasarım kullanıcı onaylı)
 - **Tür:** Uygulama (tasarım)
 - **Faz:** Tasarım yenilemesi T2 (`docs/UYGULAMA-PLANI.md`)
 - **Bağımlılık:** H-057, H-058
@@ -45,3 +45,4 @@ Kendi dalında (`h-059-profil-hesap-gizlilik-tasarim`); sorun olursa birleştirm
 - Testler: `flutter analyze` temiz; `flutter test` **463/463** (önce 439). Yeni: `test/goldens/h059_screens_golden_test.dart` (6 golden: profil, profil_adsiz, hesap_kapali, hesap_acik, hi_gizlilik, hukuk; her biri için erişilebilirlik yönergeleri ve 1,3× yazı; Tehlikeli bölge, gizlilik kartları, hukuk genişliği, hata konumu), Profil testinde günlük hedef ve ad panelleri. Stil denetimi tabanı değişmedi (dokunulan dosyalar tabanda yoktu; yeni sabit renk/boyut yok).
 - Simülatör: veri yedeği `.yerel/h059/yedek/app-data.tgz`; yalnızca gezinildi, veri değişmedi (Deniz, 15 ifade, 3 bölüm yerinde). Görüntüler `integration_test/h059_screens_test.dart` ile: `.yerel/h059/once-*.png`, `sonra-*.png` (profil, profil-alt, gunluk-hedef, ad, hesap, hi-gizlilik, hi-gizlilik-alt, hukuk), montaj `.yerel/h059/montaj.png`. Oturum açık Hesap yalnızca golden'da (backend açılmadı).
 2026-10-14 (ana oturum): flutter test 463/463, analyze temiz yeniden doğrulandı; montaj `.yerel/h059/montaj.png`. Commit (kullanıcının kalıcı commit onayı). Tasarım onayı bekleniyor.
+2026-10-14: Kullanıcı yeni Profil, Hesap, Hi gizlilik ve hukuk metni tasarımını onayladı ("onayladım"). İş kapandı. Açık metin soruları ("Bu telefondaki verileri sil", haftalık sayılar) H-064 kalite turunda yeniden gözden geçirilebilir.

@@ -1,6 +1,6 @@
 # İş Sırası — hiVelzon
 
-> Son güncelleme: 2026-10-12 · Güncelleyen: Claude
+> Son güncelleme: 2026-10-14 · Güncelleyen: Claude
 
 Bu dosya tek takip noktasıdır. Hangi işin hangi sırada yapıldığını, şu an ne üzerinde çalışıldığını ve neyin bittiğini gösterir. Her işin ayrıntısı kendi `H-<numara>-<başlık>.md` dosyasındadır.
 
@@ -9,7 +9,7 @@ Bu dosya tek takip noktasıdır. Hangi işin hangi sırada yapıldığını, şu
 - **Her şey yerelde** (kullanıcı kararı): Docker PostgreSQL (5434), yerel içerik sunucusu (`python3 tools/dev-content-server/serve.py`, 127.0.0.1:8787), iOS simülatörü "hiVelzon iPhone 17". Sunucu, Bunny Stream, mağaza ve geliştirici hesapları en sonda (H-044).
 - **Biten uygulama işleri:** H-033 repo iskeleti · H-034 bölüm paketi + content-lint · H-045 tasarım yönü (6 taslak, 6 kr) · H-031 etkileşimli oynatıcı · H-046 altyazıya dokun → Türkçe anlam (B1–B4 çevirileri APPROVED) · H-047 Hi kararları · H-049 sezon jeneriği (6,69 kr) · H-050 başlıkla açılış (schemaVersion 2) · H-035 hikâye haritası + Drift ilerleme + kilit kuralı.
 - **İçerik:** B1–B4 üretildi (pilot + B2–B4), jenerik, 6 arayüz taslağı, harita görseli. B5–B12 diyalogları onaylı (H-032) ama üretilmedi; kalan Sezon 1 üretimi ≈ 8 × ~8,5 kr. Higgsfield kredisi **84,56** (lite plan).
-- **Sıradaki adım:** Tasarım yenilemesi (Adım 6): **H-057** tasarım sistemi v2 → H-058 taslaklar (~8 kr) → H-059 Profil → **H-039** açılış (yeni tasarımla) → H-060 … H-064, H-040; sonra H-041 … H-044.
+- **Sıradaki adım:** Tasarım yenilemesi (Adım 6): H-057, H-058, H-059 ve H-041 bitti → **H-039** açılış (yeni tasarımla, ayrı dalda sürüyor) → H-060 … H-064, H-040; sonra H-042 … H-044.
 - **Kullanıcı kararı bekleyenler** (kodlamayı durdurmuyor):
   - H-001: güncellenen iş planının (`docs/IS-PLANI.md`, H-023) son onayı.
   - H-003: günlük konuşma kotasının ölçüsü, uyarı eşikleri, bütçe sorumlusu (tavan 300 USD/ay kararlaştı; v1 öncesi).
@@ -122,8 +122,8 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 | # | İş | Başlık | Öncelik | Bağımlılık | Durum |
 |---|---|---|---|---|---|
 | T0 | H-057 | Tasarım sistemi v2 (belirteçler, bileşen kitaplığı, hareket, yazı tipleri) | Yüksek | H-053, H-054 | ✅ |
-| T1 | H-058 | Ekran taslakları v2 ve illüstrasyonlar (Higgsfield, ~8 kr) | Yüksek | H-057 | 🔄 |
-| T2 | H-059 | Profil, Hesap, "Hi benim hakkımda", hukuk metni tasarımı | Yüksek | H-057, H-058 | 🔄 |
+| T1 | H-058 | Ekran taslakları v2 ve illüstrasyonlar (Higgsfield, ~8 kr) | Yüksek | H-057 | ✅ |
+| T2 | H-059 | Profil, Hesap, "Hi benim hakkımda", hukuk metni tasarımı | Yüksek | H-057, H-058 | ✅ |
 | T3 | H-060 | Ana Sayfa, harita, bölüm paneli, jenerik tasarımı | Orta | H-057, H-058, H-039 | ⏳ |
 | T4 | H-061 | Defter, Kelime tekrarı, Konu seti, Sahne avı tasarımı | Orta | H-057, H-058 | ⏳ |
 | T5 | H-062 | Oynatıcı katmanlarının tasarımı | Orta | H-057 | ⏳ |
@@ -140,6 +140,8 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 ## Biten işler
 | İş | Başlık | Bitiş | Doğrulama |
 |---|---|---|---|
+| H-059 | Profil, Hesap, Hi gizlilik, hukuk metni tasarımı | 2026-10-14 | Şekilli başlık, istatistik şeridi, gruplanmış ayarlar, tehlikeli bölge; golden testler (yalnız macOS) + belirteç kontrast testi; flutter test 464/464, CI yeşil; kullanıcı tasarımı onayladı |
+| H-058 | Ekran taslakları v2 ve illüstrasyonlar | 2026-10-14 | 16 görsel (8 kr, `tasarim/v2/PROMPTS.md`), 6 illüstrasyon WebP olarak uygulamada; kullanıcı onayladı |
 | H-057 | Tasarım sistemi v2 | 2026-10-14 | Nunito + Inter (gömülü, OFL, Türkçe glif testli), belirteçler, `shared/ui` bileşenleri, flutter_animate, /tasarim vitrini, golden + erişilebilirlik testleri; sabit renk 31 → 10; flutter test 439 → 463 (H-059 ile) |
 | H-041 | Editör onay ekranı ve içerik içe aktarma | 2026-10-14 | Durum veritabanında (içe aktarma dokunmaz), lint özeti (`--write-reports`), 6 geçiş + kontrol listesi + iyimser kilit + denetim kaydı, `/admin` Türkçe ekran; zamanlanmış içerik tam zamanında görünür; mvn verify 121/121, pytest 112 geçti; gerçek B1–B4 paketleriyle ayrı veritabanında curl denemesi |
 | H-056 | Eşitleme ince ayarı | 2026-10-14 | "Bitti" kazanır (sunucu + telefon), yenilemede 30 sn hoşgörü, çıkışlı Hi silme girişte işlenir, sekme yenileme hatası giderildi; flutter test 404/404, mvn verify 110/110 |
@@ -328,3 +330,5 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
   - H-057 kodu bitti (439 test). H-058: 16 görsel üretildi (8 kr), onay bekliyor. H-059 başladı.
   - H-057 bitti; H-058 (16 görsel, 8 kr) ve H-059 (Profil, Hesap, Hi gizlilik, hukuk) kodu bitti, tasarım onayı bekliyor. Commit + push (kalıcı onay).
   - H-041 ayrı dalda (`h-041-editor-onay`) paralel yapıldı ve bitti: onay durumu veritabanında, `/admin` editör ekranı, V7. Not: V7, yerel veritabanında H-037 içe aktarmasının `PUBLISHED` yazdığı B1/B2'yi `IN_REVIEW`'e çeker; birleştirmeden sonra açık katalog, editör ekranından onaylanana kadar boş görünür.
+  - Mobil CI kontrast hatası giderildi (piksel denetimi yalnız macOS'ta, belirteç kontrastı her platformda; 5688a49, CI yeşil). H-039 ayrı dalda başladı.
+  - Kullanıcı H-058 taslaklarını ve H-059 tasarımını onayladı; ikisi de bitti.
