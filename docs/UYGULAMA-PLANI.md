@@ -2,7 +2,7 @@
 
 **Sürüm:** 0.2 · **Tarih:** 2026-10-11 (durum güncellemesi 2026-10-12) · **Durum:** Onaylandı (2026-10-11); uygulama sürüyor. İlk dilim: önce oynatıcı; ilk test cihazı iOS simülatörü.
 **Dayanak:** CLAUDE.md "Onaylı içerik mimarisi kararları" ve "Onaylı oyun tasarımı kararları"; `docs/OYUN-TASARIMI.md`; `docs/ICERIK-MIMARISI.md`.
-**Kural:** Plan onaylandı, kodlama bu plana göre sürüyor; plana yeni kapsam kullanıcı onayıyla eklenir. Oynatıcı işi var olan H-031 numarasını korur; yeni işler H-033'ten başlar. Sonradan eklenenler: H-045, H-046, H-048, H-049, H-050. **Sıradaki boş numara: H-051.** Her alt faz ayrı bir H işidir: küçük, test edilebilir ve geri alınabilir.
+**Kural:** Plan onaylandı, kodlama bu plana göre sürüyor; plana yeni kapsam kullanıcı onayıyla eklenir. Oynatıcı işi var olan H-031 numarasını korur; yeni işler H-033'ten başlar. Sonradan eklenenler: H-045, H-046, H-048, H-049, H-050, H-051, H-052, H-053, H-054, H-055, H-056 ve tasarım yenilemesi H-057…H-064. **Sıradaki boş numara: H-065.** Her alt faz ayrı bir H işidir: küçük, test edilebilir ve geri alınabilir.
 
 ---
 
@@ -56,18 +56,36 @@
 | **1.2c** | **H-050** Bölüm açılışı: doğrudan başlık | Her bölüm başlık ekranıyla açılır; B2+ atlanabilir "Önceki bölümde"; görev ve hedef ifadeler 🎯 panelinde; sezon paketi; **`scenes.json` schemaVersion 2** (`title`, `recap`) | B1–B4 başlıkla açılıyor; başlık→hikâye ~39 ms; lint `title-first` kuralı | ✅ |
 | — | **H-049** Sezon 1 jeneriği | 10 sn tam + kısa sürüm + başlık arka planı (6,69 kr) | Kullanıcı onayı; -16 LUFS | ✅ |
 | **1.3** | **H-035** Hikâye haritası, bölüm kapısı, yerel ilerleme | Sezon haritası; kilit nedeni; spoiler içermeyen ipucu; bölüm kapısı (K-29); `user_story_progress` yerel kaydı; "Hikâyeye devam" | Kapı kuralı testli; uygulama kapatılıp açılınca kalınan yerden devam ediyor | ✅ |
-| **1.4** | **H-036** Defter, ipucu panosu, FSRS tekrarı | Toplanan ifadeler; ipucu panosu ve açık sorular; FSRS (Bildim / Bilmedim); Ana Sayfa'da "Hızlı pratik" | FSRS birim testleri; eşdeğerlik testi verisi hazır | ⏳ sıradaki |
-| **1.4a** | **H-051** Konu setleri + sahne avı | Hikâye mekânlarına bağlı kelime setleri (ızgara), sahne görselinde "Find the …!" oyunu | En az 2 set çalışıyor; testler | ⏳ |
-| **1.4b** | **H-048** Hi-A: yönlendiren Hi | Sağ alt Hi balonu; günlük tek öneri + gerekçe, haftalık özet, "bu ne demek?", Türkçeye göre hata ipuçları; AI yok (H-047) | Öneri kuralları testli; balon doğru ekranlarda | ⏳ |
-| **1.4c** | **H-055** "Söyle" alıştırmaları (S1) | Cihazda konuşma tanıma; kelime tekrarı, anlam paneli, karar anı, bölüm sonu; puan yok (`docs/KONUSMA-ALISTIRMASI.md`) | Karşılaştırma motoru testli; ses saklanmıyor | ⏳ |
-| **1.5** | **H-037** Backend çekirdek | Kimlik doğrulama, kullanıcı, rızalar (yalnızca ekleme), `audit_log`, hesap silme (30 gün), içerik kataloğu API'si, ilerleme ve olay (`learning_events`) API'si; Flyway; ProblemDetail hata modeli | Entegrasyon testleri (Testcontainers) yeşil; silme ve geri alma testli; giriş hız sınırı var | ⏳ |
-| **1.6** | **H-038** Mobil ↔ backend, misafir modu | Kayıt ve giriş; misafir verisinin hesaba taşınması; ilerleme ve olay eşitleme (idempotent `client_event_id`) | Misafir → kayıt akışı veri kaybetmeden çalışıyor | ⏳ |
+| **1.4** | **H-036** Defter, ipucu panosu, FSRS tekrarı | Toplanan ifadeler; ipucu panosu ve açık sorular; FSRS (Bildim / Bilmedim); Ana Sayfa'da "Hızlı pratik" | FSRS birim testleri; eşdeğerlik testi verisi hazır | ✅ |
+| **1.4a** | **H-051** Konu setleri + sahne avı | Hikâye mekânlarına bağlı kelime setleri (ızgara), sahne görselinde "Find the …!" oyunu | En az 2 set çalışıyor; testler | ✅ |
+| **1.4b** | **H-048** Hi-A: yönlendiren Hi | Sağ alt Hi balonu; günlük tek öneri + gerekçe, haftalık özet, "bu ne demek?", Türkçeye göre hata ipuçları; AI yok (H-047) | Öneri kuralları testli; balon doğru ekranlarda | ✅ |
+| **1.4c** | **H-055** "Söyle" alıştırmaları (S1) | Cihazda konuşma tanıma; kelime tekrarı, anlam paneli, karar anı, bölüm sonu; puan yok (`docs/KONUSMA-ALISTIRMASI.md`) | Karşılaştırma motoru testli; ses saklanmıyor | ✅ |
+| **1.5** | **H-037** Backend çekirdek | Kimlik doğrulama, kullanıcı, rızalar (yalnızca ekleme), `audit_log`, hesap silme (30 gün), içerik kataloğu API'si, ilerleme ve olay (`learning_events`) API'si; Flyway; ProblemDetail hata modeli | Entegrasyon testleri (Testcontainers) yeşil; silme ve geri alma testli; giriş hız sınırı var | ✅ |
+| **1.6** | **H-038** Mobil ↔ backend, misafir modu | Kayıt ve giriş; misafir verisinin hesaba taşınması; ilerleme ve olay eşitleme (idempotent `client_event_id`) | Misafir → kayıt akışı veri kaybetmeden çalışıyor | ✅ |
 | **1.7** | **H-039** Onboarding ve yerleştirme | Dil, yaş beyanı (13+), rızalar, prolog, atlanabilir kademeli test (K-06), bildirim izni sonra | Yaş altı kayıt engelleniyor; test atlanabiliyor | ⏳ |
 | **1.8** | **H-040** Keşfet akışı | Kısa klipler (B1–B4'ten); Kaydet / Anlam / Tam hikâye; her 4–5 klipte quiz kartı, ~10 klipte mola kartı; 13–17 yaş için 20 dk sınırı (K-15) | Akış bellek sınırında; mola ve sınır testli | ⏳ |
 | **1.9** | **H-041** Editör onay ekranı ve içerik içe aktarma | `content-lint` → içe aktarma → Onayla / Zamanla / Kaldır; sürümler; `publish_at` (K-05, K-12); medya yerel adaptörle | Onaysız içerik katalogda görünmüyor (backend testi) | ⏳ |
 | **1.10** | **H-042** Profil, ayarlar, hukuki metinler, hesap silme arayüzü | Beceri ve ilerleme gösterimi; bildirim ayarları; gizlilik; lisans atıfları (CEFR-J vb.) | Hesap silme ve geri alma arayüzden çalışıyor | ⏳ |
 | **1.11** | **H-043** Kalite ve iç beta hazırlığı | Erişilebilirlik, hata durumları, çökme raporlama (veri minimizasyonuyla); simülatör ve yerel cihazda uçtan uca deneme; H-031'den taşınan Android bellek/ısı ve gerçek telefon ses–yazı kontrolleri | Beta kontrol listesi tamam (mağaza hariç) | ⏳ |
 | **1.12** | **H-044** Dış hesaplar, barındırma ve mağaza (en son) | Sunucu yeri ve kurulum; Bunny Stream hesabı ve adaptörü; Apple ve Google geliştirici hesapları; TestFlight / Play dahili test | Uygulama sunucudaki backend ve Bunny medyasıyla çalışıyor; dahili test sürümü yüklendi | ⏳ en son |
+
+### Tasarım yenilemesi (2026-10-14, kullanıcı isteği)
+Kullanıcı Profil'i beğenmedi ("her şey iç içe, düz yazı gibi"); bütün sayfaların daha hareketli, şekilli ve çekici olması istendi. Kararlar: bütçe ~8 kr (Higgsfield 1k taslak + illüstrasyon), başlıklarda yuvarlak yazı tipi + metinde Inter (gömülü, OFL), yalnız açık tema, sıra aşağıdaki gibi. Ayrıntılı plan: `/Users/felece/.claude/plans/ek-i-olarak-sayfalar-n-delightful-elephant.md`.
+
+| Faz | İş | Kapsam | Kabul kriteri (özet) | Durum |
+|---|---|---|---|---|
+| **T0** | **H-057** Tasarım sistemi v2 | Belirteçler (yazı, boşluk, köşe, gölge, anlamsal renk, hareket), tema bileşenleri, ortak bileşen kitaplığı (`shared/ui/`), `flutter_animate`, gömülü yazı tipleri, debug vitrin, golden altyapısı | Sabit stil yok testi; golden; testler yeşil | ⏳ |
+| **T1** | **H-058** Ekran taslakları v2 | ~10 ekran + ~6 illüstrasyon (Higgsfield, ~8 kr, maliyet önce) | Taslaklar kullanıcı onaylı | ⏳ |
+| **T2** | **H-059** Profil + Hesap + Hi gizlilik + hukuk metni | Şekilli başlık, istatistik şeridi, gruplanmış ayarlar, tehlikeli bölge | Önce/sonra; golden; kullanıcı onayı | ⏳ |
+| **—** | **H-039** Açılış (yeni tasarımla) | Kapsam aynı; H-057 bileşenleri | H-039 kriterleri | ⏳ |
+| **T3** | **H-060** Ana Sayfa + harita + bölüm paneli + jenerik | Hedef halkası, hero kartı, harita animasyonu | Önce/sonra; golden | ⏳ |
+| **T4** | **H-061** Defter + tekrar + konu seti + sahne avı | Tek satır biçimi, geri bildirim animasyonu, özet istatistikleri | Önce/sonra; golden | ⏳ |
+| **T5** | **H-062** Oynatıcı katmanları | Palet belirteçlere, ~42 sabit metin l10n'e, giriş animasyonları | H-031/H-054 ölçümleri bozulmaz | ⏳ |
+| **T6** | **H-063** Hi'nin canlılığı | Kodla çizilen ifade durumları, balonda nefes alma, panel bölünmesi | "Hareketi azalt" testi | ⏳ |
+| **—** | **H-040** Keşfet (yeni tasarımla) | T6 taslağı + H-057 bileşenleri | H-040 kriterleri | ⏳ |
+| **T7** | **H-064** Tasarım kalite turu | Erişilebilirlik, metin büyütme, golden kapsamı, temizlik | Bütün testler yeşil | ⏳ |
+
+**Yeni sıra:** H-057 → H-058 → H-059 → H-039 → H-060 → H-061 → H-062 → H-063 → H-040 → H-064 → H-041, H-042 (profil kısmı H-059'a taşındı), H-043, H-044.
 
 **Durum simgeleri:** ✅ bitti · 🔄 sürüyor · ⏳ sırada. Ayrıntılı durum ve günlük: `yapilacaklar/IS-SIRASI.md`.
 

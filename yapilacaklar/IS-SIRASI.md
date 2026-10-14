@@ -9,7 +9,7 @@ Bu dosya tek takip noktasıdır. Hangi işin hangi sırada yapıldığını, şu
 - **Her şey yerelde** (kullanıcı kararı): Docker PostgreSQL (5434), yerel içerik sunucusu (`python3 tools/dev-content-server/serve.py`, 127.0.0.1:8787), iOS simülatörü "hiVelzon iPhone 17". Sunucu, Bunny Stream, mağaza ve geliştirici hesapları en sonda (H-044).
 - **Biten uygulama işleri:** H-033 repo iskeleti · H-034 bölüm paketi + content-lint · H-045 tasarım yönü (6 taslak, 6 kr) · H-031 etkileşimli oynatıcı · H-046 altyazıya dokun → Türkçe anlam (B1–B4 çevirileri APPROVED) · H-047 Hi kararları · H-049 sezon jeneriği (6,69 kr) · H-050 başlıkla açılış (schemaVersion 2) · H-035 hikâye haritası + Drift ilerleme + kilit kuralı.
 - **İçerik:** B1–B4 üretildi (pilot + B2–B4), jenerik, 6 arayüz taslağı, harita görseli. B5–B12 diyalogları onaylı (H-032) ama üretilmedi; kalan Sezon 1 üretimi ≈ 8 × ~8,5 kr. Higgsfield kredisi **84,56** (lite plan).
-- **Sıradaki adım (ara verildi 2026-10-14):** H-039 (açılış: doğum yılı + isteğe bağlı ad, hesap istenmez, 13 altı hesap seçeneği gizli), sonra H-040 (Keşfet), H-041 (editör onay ekranı; onay durumu veritabanında), H-042 (profil + hukuk metinleri), H-043 (kalite, gerçek cihaz), H-044 (dış hesaplar, en son).
+- **Sıradaki adım:** Tasarım yenilemesi (Adım 6): **H-057** tasarım sistemi v2 → H-058 taslaklar (~8 kr) → H-059 Profil → **H-039** açılış (yeni tasarımla) → H-060 … H-064, H-040; sonra H-041 … H-044.
 - **Kullanıcı kararı bekleyenler** (kodlamayı durdurmuyor):
   - H-001: güncellenen iş planının (`docs/IS-PLANI.md`, H-023) son onayı.
   - H-003: günlük konuşma kotasının ölçüsü, uyarı eşikleri, bütçe sorumlusu (tavan 300 USD/ay kararlaştı; v1 öncesi).
@@ -31,7 +31,7 @@ Bu dosya tek takip noktasıdır. Hangi işin hangi sırada yapıldığını, şu
   - H dosyasının `Durum` satırı güncellenir;
   - **Günlük** bölümüne bir satır eklenir.
 - **Biten işler:** "Biten işler" tablosuna doğrulama kanıtıyla birlikte yazılır.
-- **Numaralar:** Tek sayaçla verilir. Sıradaki boş numara: **H-057**.
+- **Numaralar:** Tek sayaçla verilir. Sıradaki boş numara: **H-065**.
 
 **Durum simgeleri:**
 - ⛔ Kullanıcı kararı bekliyor
@@ -117,6 +117,20 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 | 1.11 | H-043 | Kalite ve iç beta hazırlığı | Orta | H-039 … H-042 | ⏳ |
 | — | H-045 | Arayüz tasarım yönü (6 ekran taslağı, 6 kr) | Orta | H-033 | ✅ |
 | 1.12 | H-044 | Dış hesaplar, barındırma ve mağaza (en son) | Orta | H-043 | ⏳ |
+
+### Adım 6 — Tasarım yenilemesi (2026-10-14, kullanıcı isteği; sıra önemli)
+| # | İş | Başlık | Öncelik | Bağımlılık | Durum |
+|---|---|---|---|---|---|
+| T0 | H-057 | Tasarım sistemi v2 (belirteçler, bileşen kitaplığı, hareket, yazı tipleri) | Yüksek | H-053, H-054 | ⏳ |
+| T1 | H-058 | Ekran taslakları v2 ve illüstrasyonlar (Higgsfield, ~8 kr) | Yüksek | H-057 | ⏳ |
+| T2 | H-059 | Profil, Hesap, "Hi benim hakkımda", hukuk metni tasarımı | Yüksek | H-057, H-058 | ⏳ |
+| T3 | H-060 | Ana Sayfa, harita, bölüm paneli, jenerik tasarımı | Orta | H-057, H-058, H-039 | ⏳ |
+| T4 | H-061 | Defter, Kelime tekrarı, Konu seti, Sahne avı tasarımı | Orta | H-057, H-058 | ⏳ |
+| T5 | H-062 | Oynatıcı katmanlarının tasarımı | Orta | H-057 | ⏳ |
+| T6 | H-063 | Hi'nin canlılığı (ifadeler, animasyonlar) | Orta | H-057 | ⏳ |
+| T7 | H-064 | Tasarım kalite turu (erişilebilirlik, golden, temizlik) | Orta | H-059 … H-063, H-040 | ⏳ |
+
+**Sıra:** H-057 → H-058 → H-059 → H-039 → H-060 → H-061 → H-062 → H-063 → H-040 → H-064 → H-041, H-042, H-043, H-044.
 
 ## Devam eden işler
 | İş | Başlık | Başlangıç | Not |
@@ -308,3 +322,4 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
   - H-038 bitti. Kararlar → H-056 (bitti kazanır, 30 sn hoşgörü, çıkışlı silme girişte işlenir, sekme yenileme).
 - **2026-10-14:**
   - H-056 bitti ve gönderildi. Kullanıcı ara verdi; sıradaki H-039.
+  - Kullanıcı isteği: sayfaların tasarımını gözden geçiren fazlı iş (Profil "iç içe, düz yazı gibi"; daha hareketli, şekilli, çekici). Plan modunda planlandı ve onaylandı. Kararlar: ~8 kr, başlık yazı tipi yuvarlak + metin Inter (gömülü), yalnız açık tema, önce tasarım sistemi + Profil. H-057 … H-064 açıldı (Adım 6).
