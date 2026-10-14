@@ -1,0 +1,393 @@
+{
+ "schemaVersion": 1,
+ "lessonId": "G-B2-08-present-perfect-continuous",
+ "voices": {
+  "tr": {
+   "model": "alania-v2",
+   "voice": "alania2-f1",
+   "timing": "duyu-1",
+   "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+  },
+  "en": {
+   "model": "eleven_v3",
+   "voice": "EXAVITQu4vr4xnSDxMaL",
+   "speed": 1.0
+  }
+ },
+ "cards": [
+  {
+   "card": "c01",
+   "type": "hook",
+   "segments": [
+    {
+     "id": "c01-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Bu cümleyi dinle. Bekleme iki saat önce başladı ve hâlâ sürüyor. Türkçede bekliyorum deriz, ama İngilizce burada şimdiki zamanı kullanmaz.",
+     "textSha256": "14b07f13a533437e5146924c1e61437f4d36d07acc65bc1e149816b34b8bbb83",
+     "chars": 138,
+     "audio": "tr/c01-tr.mp3",
+     "align": "tr/c01-tr.align.json",
+     "present": true,
+     "duration": 9.6,
+     "quality": {
+      "words": 20,
+      "exact": 19,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 4,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c01-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I've been waiting for two hours.",
+     "textSha256": "926a524947cbb9d42ce17a3a63238a51f5ed97e004c53de9a6ded4bddad74502",
+     "chars": 32,
+     "audio": "en/c01-ex1.mp3",
+     "align": "en/c01-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c02",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c02-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Geçmişte başlayıp şu ana kadar süren bir eylem için bu yapı kullanılır. Önce yardımcı fiil, sonra olmak fiilinin üçüncü hâli, en sonda -ing ekli fiil gelir. O için yardımcı fiil biraz değişir.",
+     "textSha256": "47239595f051c04e7ab10ed5fdff499d6ad0a10fb153f026aa9053fc37995532",
+     "chars": 192,
+     "audio": "tr/c02-tr.mp3",
+     "align": "tr/c02-tr.align.json",
+     "present": true,
+     "duration": 13.45,
+     "quality": {
+      "words": 32,
+      "exact": 31,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c02-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "She has been studying since nine.",
+     "textSha256": "c8f6f0889bb48887c560d87f0005f721fda78223052363efc0bf5aaca41a7f59",
+     "chars": 33,
+     "audio": "en/c02-ex1.mp3",
+     "align": "en/c02-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c03",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c03-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Eylem yeni bitmiş olabilir, ama izi hâlâ görünür. Islak bir yol, kırmızı gözler ya da yorgun bir yüz buna örnektir. Bu durumda da aynı yapı kullanılır.",
+     "textSha256": "babe63d7918df5fa997f0a8dabcec127edcfef5b6eb903806c34a18e83250529",
+     "chars": 151,
+     "audio": "tr/c03-tr.mp3",
+     "align": "tr/c03-tr.align.json",
+     "present": true,
+     "duration": 10.27,
+     "quality": {
+      "words": 26,
+      "exact": 25,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "You're wet! Have you been swimming?",
+     "textSha256": "ee962c24d11ae33193ddbec8cd0fe895ec58746378b9feb24e80b217c823ad91",
+     "chars": 35,
+     "audio": "en/c03-ex1.mp3",
+     "align": "en/c03-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c03-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "It's been raining. The streets are wet.",
+     "textSha256": "567bffee959d9a99be5dc45d76a86a799ebe675175bf30e2b2c965aafaa03a23",
+     "chars": 39,
+     "audio": "en/c03-ex2.mp3",
+     "align": "en/c03-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c04",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c04-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Bilmek, sevmek ve sahip olmak gibi bir durumu anlatan fiiller genellikle bu yapıyı almaz. Bunlarda önceki derste gördüğün kısa yapı kullanılır: yardımcı fiil ve üçüncü hâl. Süre yine aynı iki küçük kelimeyle söylenir.",
+     "textSha256": "9d219861b0ffe15ab090b6084fdc394a6a523fd27413d2dd7cfe7e21464cb12c",
+     "chars": 217,
+     "audio": "tr/c04-tr.mp3",
+     "align": "tr/c04-tr.align.json",
+     "present": true,
+     "duration": 14.59,
+     "quality": {
+      "words": 33,
+      "exact": 32,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c04-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I've known her for ten years.",
+     "textSha256": "fa32e924ff56886928bf5fdd1f93c8de5ca16d1cf1e8155b0a730aa98ee32c7e",
+     "chars": 29,
+     "audio": "en/c04-ex1.mp3",
+     "align": "en/c04-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c05",
+   "type": "examples",
+   "segments": [
+    {
+     "id": "c05-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I've been learning English for three years.",
+     "textSha256": "eee3c6ed2d793eed93f1d6dc54a57a258f976867ebf7be2a230882864c490a45",
+     "chars": 43,
+     "audio": "en/c05-ex1.mp3",
+     "align": "en/c05-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "It's been raining since Monday.",
+     "textSha256": "67e367fec830409095812b217f6c1603fe149d77e6d83025dad48ace3fbc89af",
+     "chars": 31,
+     "audio": "en/c05-ex2.mp3",
+     "align": "en/c05-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "We've been looking for you all morning!",
+     "textSha256": "4fdc0ade561d65960db6e14865aaae75bfc6fe189b59aab0a6906d2640815d50",
+     "chars": 39,
+     "audio": "en/c05-ex3.mp3",
+     "align": "en/c05-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex4",
+     "lang": "en",
+     "role": "example",
+     "text": "How long have you been working here?",
+     "textSha256": "669ba1ae00f4e3cc5cb631013de9c837218e340149eaa8c977c901f43163d6f3",
+     "chars": 36,
+     "audio": "en/c05-ex4.mp3",
+     "align": "en/c05-ex4.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex5",
+     "lang": "en",
+     "role": "example",
+     "text": "Your eyes are red. Have you been crying?",
+     "textSha256": "ed120a86895ab1b2af76e176c741cab0ce91459b0a4e45e5a49d4a7ebda55746",
+     "chars": 40,
+     "audio": "en/c05-ex5.mp3",
+     "align": "en/c05-ex5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c06",
+   "type": "contrast",
+   "segments": [
+    {
+     "id": "c06-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Türkçede hâlâ süren bir eylemi şimdiki zamanla söyleriz: iki saattir bekliyorum. Bunu birebir çevirince İngilizcede şimdiki zaman çıkar, ama süre varsa bu yapı gerekir. Bilmek gibi durum fiillerinde ise -ing eki gelmez.",
+     "textSha256": "bf4f065317634a9bfb4a916767054abc57b70fb8d5cded455c52046b27e31ff4",
+     "chars": 219,
+     "audio": "tr/c06-tr.mp3",
+     "align": "tr/c06-tr.align.json",
+     "present": true,
+     "duration": 14.11,
+     "quality": {
+      "words": 32,
+      "exact": 30,
+      "fuzzy": 2,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 4,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c06-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I've been waiting for two hours.",
+     "textSha256": "926a524947cbb9d42ce17a3a63238a51f5ed97e004c53de9a6ded4bddad74502",
+     "chars": 32,
+     "audio": "en/c06-ex1.mp3",
+     "align": "en/c06-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c06-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "I've known her for years.",
+     "textSha256": "500e53c241dbbcc515d10a2c0dfd3a15981d50ffc1e6815b2cfcb252658e0412",
+     "chars": 25,
+     "audio": "en/c06-ex2.mp3",
+     "align": "en/c06-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c07",
+   "type": "practice",
+   "segments": [
+    {
+     "id": "c07-q5",
+     "lang": "en",
+     "role": "say",
+     "text": "I've been waiting for two hours.",
+     "textSha256": "926a524947cbb9d42ce17a3a63238a51f5ed97e004c53de9a6ded4bddad74502",
+     "chars": 32,
+     "audio": "en/c07-q5.mp3",
+     "align": "en/c07-q5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c08",
+   "type": "rule",
+   "segments": [
+    {
+     "id": "c08-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Geçmişte başlayıp hâlâ süren eylem için bu yapı kullanılır. Yardımcı fiil, olmak fiilinin üçüncü hâli ve -ing ekli fiil sırayla gelir. Durum fiilleri bu yapıyı almaz.",
+     "textSha256": "155aa161899c2dd8ba01b18cc4d250acae3d0e86eb525d6c2b2368d4871822af",
+     "chars": 166,
+     "audio": "tr/c08-tr.mp3",
+     "align": "tr/c08-tr.align.json",
+     "present": true,
+     "duration": 10.56,
+     "quality": {
+      "words": 26,
+      "exact": 24,
+      "fuzzy": 2,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c08-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I've been waiting for two hours.",
+     "textSha256": "926a524947cbb9d42ce17a3a63238a51f5ed97e004c53de9a6ded4bddad74502",
+     "chars": 32,
+     "audio": "en/c08-ex1.mp3",
+     "align": "en/c08-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,449 @@
+{
+ "schemaVersion": 1,
+ "lessonId": "G-B2-01-passive",
+ "voices": {
+  "tr": {
+   "model": "alania-v2",
+   "voice": "alania2-f1",
+   "timing": "duyu-1",
+   "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+  },
+  "en": {
+   "model": "eleven_v3",
+   "voice": "EXAVITQu4vr4xnSDxMaL",
+   "speed": 1.0
+  }
+ },
+ "cards": [
+  {
+   "card": "c01",
+   "type": "hook",
+   "segments": [
+    {
+     "id": "c01-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Nia'nın hikâyesi bu cümleyle başlıyor. Türkçede doğdum deriz ve bunu kendimiz yapmış gibi söyleriz. İngilizcede bu fiil başka türlü kurulur, dinle.",
+     "textSha256": "0f677022dd19ab18bb9163dc39c125b2e9f9c21498b482d9228da9248b7a3699",
+     "chars": 147,
+     "audio": "tr/c01-tr.mp3",
+     "align": "tr/c01-tr.align.json",
+     "present": true,
+     "duration": 10.24,
+     "quality": {
+      "words": 21,
+      "exact": 19,
+      "fuzzy": 2,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c01-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "Nia was born on the Moon.",
+     "textSha256": "8b33df7df6217c3ebd380ae949de3af1e0722372a5fd737df5682ae46af1ce8e",
+     "chars": 25,
+     "audio": "en/c01-ex1.mp3",
+     "align": "en/c01-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c02",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c02-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Bazen bir işi kimin yaptığı önemli değildir ya da bilinmez. O zaman işten etkilenen şey cümlenin başına geçer. Fiil iki parça olur: olmak fiili ve fiilin üçüncü hâli.",
+     "textSha256": "4fa30d60264c024ca871a311ed24f852755f9690b32d529eba81abf87a51c1fd",
+     "chars": 166,
+     "audio": "tr/c02-tr.mp3",
+     "align": "tr/c02-tr.align.json",
+     "present": true,
+     "duration": 11.96,
+     "quality": {
+      "words": 28,
+      "exact": 26,
+      "fuzzy": 2,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c02-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "This bridge was built in 1890.",
+     "textSha256": "a8bd37644b759e1496ad415c43ca442d65e82f8248b9bbfcad28f4a640b09877",
+     "chars": 30,
+     "audio": "en/c02-ex1.mp3",
+     "align": "en/c02-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c03",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c03-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Zaman değişince yalnız olmak fiili değişir. Üçüncü hâl her zamanda aynı kalır. Olmak fiilinin biçimi de yine kişiye ve sayıya göre seçilir.",
+     "textSha256": "da2987edcbf91cbbcaa87df3b18e1ae15d7b8e1bdc469b24f80f809a5f9fb426",
+     "chars": 139,
+     "audio": "tr/c03-tr.mp3",
+     "align": "tr/c03-tr.align.json",
+     "present": true,
+     "duration": 8.96,
+     "quality": {
+      "words": 22,
+      "exact": 21,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "English is spoken in many countries.",
+     "textSha256": "614135ec7a4af6abcaacd9d64de73b3a83daf1e451face458b78d40a92fffe78",
+     "chars": 36,
+     "audio": "en/c03-ex1.mp3",
+     "align": "en/c03-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c03-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "The results will be announced next week.",
+     "textSha256": "f21405c93845a596e62394de98c743cae4163ac500abe789ba4a48f8a87f31b0",
+     "chars": 40,
+     "audio": "en/c03-ex2.mp3",
+     "align": "en/c03-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c03-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "My bike has been stolen!",
+     "textSha256": "f870af4856cd5f9fb0ec39c1ff634689534f9fe30b2d81dff3a7c6866c3c9b0d",
+     "chars": 24,
+     "audio": "en/c03-ex3.mp3",
+     "align": "en/c03-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c04",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c04-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Yapanı söylemek istersen, cümlenin sonuna küçük bir edat ve yapanı eklersin. Türkçedeki tarafından sözüne karşılık gelir. Ama çoğu zaman yapan hiç söylenmez, çünkü önemli değildir ya da zaten bellidir.",
+     "textSha256": "3c32853669f0efa31d26aedc270063edf0a573729acc967f7ebbcf0ade69dd13",
+     "chars": 201,
+     "audio": "tr/c04-tr.mp3",
+     "align": "tr/c04-tr.align.json",
+     "present": true,
+     "duration": 13.79,
+     "quality": {
+      "words": 29,
+      "exact": 29,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c04-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "The book was written by a young teacher.",
+     "textSha256": "a87be233400d2a2447b15be26cc1bbb7868fc0207e8a96d3c7c3aa2112d3b9d4",
+     "chars": 40,
+     "audio": "en/c04-ex1.mp3",
+     "align": "en/c04-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c05",
+   "type": "examples",
+   "segments": [
+    {
+     "id": "c05-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "The windows are cleaned every Friday.",
+     "textSha256": "9e505983d3fe07aad77edbb3f5932c8bccc9353dc5cfbb8ec278c71912bfbf74",
+     "chars": 37,
+     "audio": "en/c05-ex1.mp3",
+     "align": "en/c05-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "The museum was opened in 2010.",
+     "textSha256": "b15ff9512c1a2c5f85ada101cfbcaa8b03dca8a913dfec22d39c10c6404e0f30",
+     "chars": 30,
+     "audio": "en/c05-ex2.mp3",
+     "align": "en/c05-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "The match has been cancelled because of the rain.",
+     "textSha256": "0393dd8c7e15b3a6fa33d3d43d66466397c74db2dc6aebd9e2eeeaec83476b5e",
+     "chars": 49,
+     "audio": "en/c05-ex3.mp3",
+     "align": "en/c05-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex4",
+     "lang": "en",
+     "role": "example",
+     "text": "Dinner will be served at eight.",
+     "textSha256": "934714943b22b49762a693ff8cd431e45949a84b02b238b8d02226ca69dc48f4",
+     "chars": 31,
+     "audio": "en/c05-ex4.mp3",
+     "align": "en/c05-ex4.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex5",
+     "lang": "en",
+     "role": "example",
+     "text": "Were you invited to the party?",
+     "textSha256": "99480d75be3a42090acb03fe000924d6fbda95fb951d925a9378c5a824dd8c61",
+     "chars": 30,
+     "audio": "en/c05-ex5.mp3",
+     "align": "en/c05-ex5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c06",
+   "type": "contrast",
+   "segments": [
+    {
+     "id": "c06-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Türkçede edilgenlik fiile eklenen bir ekle kurulur: yapıldı, kilitlendi. İngilizcede iki parça gerekir ve olmak fiili kolayca unutulur. Doğmak da İngilizcede edilgendir, bu yüzden doğdum derken de olmak fiili gelir. Meydana gelmek gibi nesne almayan fiiller ise hiç edilgen olmaz.",
+     "textSha256": "3427860794bf16f94f7e07efcc31d3999fe156f36efd1c7a0fc727701ba45f30",
+     "chars": 280,
+     "audio": "tr/c06-tr.mp3",
+     "align": "tr/c06-tr.align.json",
+     "present": true,
+     "duration": 19.25,
+     "quality": {
+      "words": 40,
+      "exact": 40,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c06-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I was born in 2005.",
+     "textSha256": "34677f240258ed73a2d2bc5628294f7b35ae567382a7a21af21e380c4b893cad",
+     "chars": 19,
+     "audio": "en/c06-ex1.mp3",
+     "align": "en/c06-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c06-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "The house was built in 1990.",
+     "textSha256": "fda06093122bff239550354d26e85b399d783ae3895a95ca7545dddbf5a3aedd",
+     "chars": 28,
+     "audio": "en/c06-ex2.mp3",
+     "align": "en/c06-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c06-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "It happened at night.",
+     "textSha256": "aafe277bee60d47803a79a8d71da1b19a53f2b48d9a3e21d53060dfd7c18eeef",
+     "chars": 21,
+     "audio": "en/c06-ex3.mp3",
+     "align": "en/c06-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c07",
+   "type": "practice",
+   "segments": [
+    {
+     "id": "c07-q5",
+     "lang": "en",
+     "role": "say",
+     "text": "I was born in İzmir.",
+     "textSha256": "392f42b6dfef3f66f2a5f6e0f0256c5075ac86ef24a05bde1a7960bc593f2560",
+     "chars": 20,
+     "audio": "en/c07-q5.mp3",
+     "align": "en/c07-q5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c08",
+   "type": "seeInStory",
+   "segments": [
+    {
+     "id": "c08-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Kitaplarda bu yapıyı başka yerde de gördün. Şu cümleye bir daha bak.",
+     "textSha256": "75df77f4657462236bef817933893a1185a6e41ac21550e3df0727d758c36dae",
+     "chars": 68,
+     "audio": "tr/c08-tr.mp3",
+     "align": "tr/c08-tr.align.json",
+     "present": true,
+     "duration": 3.84,
+     "quality": {
+      "words": 12,
+      "exact": 12,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    }
+   ]
+  },
+  {
+   "card": "c09",
+   "type": "rule",
+   "segments": [
+    {
+     "id": "c09-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Eylemi yapan önemli değilse ya da bilinmiyorsa edilgen yapı kullanılır. Olmak fiili zamana göre değişir, ardından fiilin üçüncü hâli gelir.",
+     "textSha256": "72bc07870ca63d04ec094d6648bb4c3bc5a527bb36a32340b478b5894b7dae53",
+     "chars": 139,
+     "audio": "tr/c09-tr.mp3",
+     "align": "tr/c09-tr.align.json",
+     "present": true,
+     "duration": 8.8,
+     "quality": {
+      "words": 20,
+      "exact": 19,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c09-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "This bridge was built in 1890.",
+     "textSha256": "a8bd37644b759e1496ad415c43ca442d65e82f8248b9bbfcad28f4a640b09877",
+     "chars": 30,
+     "audio": "en/c09-ex1.mp3",
+     "align": "en/c09-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  }
+ ]
+}

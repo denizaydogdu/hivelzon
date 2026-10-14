@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "id": "G-B2-03-reported-questions-commands",
+  "level": "B2",
+  "titleTr": "Dolaylı anlatım (2): soru ve rica aktarma",
+  "titleEn": "Reported questions and requests",
+  "goalTr": "Soruları asked ile ve if ya da soru kelimesinden sonra düz sırayla, rica ve emirleri asked ya da told, kişi ve to ile aktarırsın.",
+  "prerequisites": [
+    "G-B2-02-reported-statements",
+    "G-B1-13-indirect-questions"
+  ],
+  "contentVersion": 1,
+  "status": "DRAFT",
+  "aiGenerated": true,
+  "teacherReview": null,
+  "linksTo": {
+    "episodes": [],
+    "books": [
+      "A2-K04"
+    ]
+  },
+  "properNouns": [
+    "Nia"
+  ],
+  "narration": {
+    "tr": {
+      "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+    }
+  }
+}

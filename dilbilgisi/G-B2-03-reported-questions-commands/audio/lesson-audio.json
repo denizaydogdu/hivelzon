@@ -1,0 +1,445 @@
+{
+ "schemaVersion": 1,
+ "lessonId": "G-B2-03-reported-questions-commands",
+ "voices": {
+  "tr": {
+   "model": "alania-v2",
+   "voice": "alania2-f1",
+   "timing": "duyu-1",
+   "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+  },
+  "en": {
+   "model": "eleven_v3",
+   "voice": "EXAVITQu4vr4xnSDxMaL",
+   "speed": 1.0
+  }
+ },
+ "cards": [
+  {
+   "card": "c01",
+   "type": "hook",
+   "segments": [
+    {
+     "id": "c01-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Nia yağmurun nasıl bir şey olduğunu hep merak ediyordu. Kitap onun sorusunu tırnak içinde aynen veriyor. Biz bu soruyu aktarınca soru düz bir cümleye dönüşür, dinle.",
+     "textSha256": "a071286fe4643182bca427f6d6f7d09183af965ab35188dc07834e1e801e631d",
+     "chars": 165,
+     "audio": "tr/c01-tr.mp3",
+     "align": "tr/c01-tr.align.json",
+     "present": true,
+     "duration": 11.39,
+     "quality": {
+      "words": 26,
+      "exact": 25,
+      "fuzzy": 0,
+      "weak": 1,
+      "missing": 0,
+      "extraHeard": 1,
+      "worstRun": 1,
+      "score": 0.962,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c01-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "She often asked what rain was really like.",
+     "textSha256": "8cc2f490a56b7ff4a80a229ed76f0cb2ccba51dfeae4bdd90e455ac4b2ab8415",
+     "chars": 42,
+     "audio": "en/c01-ex1.mp3",
+     "align": "en/c01-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c02",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c02-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Soruyu aktarırken soru kelimesi kalır, ama ardından cümle düz sırayla devam eder. Olmak fiili kişiden sonra gelir, sorudaki yardımcı fiil ise düşer. Soru işareti de kalkar.",
+     "textSha256": "83547c912357a45198d1b264dbdce1cf85e2723a78f4d33d0056a0ae1ec1d2c8",
+     "chars": 172,
+     "audio": "tr/c02-tr.mp3",
+     "align": "tr/c02-tr.align.json",
+     "present": true,
+     "duration": 12.19,
+     "quality": {
+      "words": 26,
+      "exact": 26,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c02-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "\"Where do you live?\" she asked.",
+     "textSha256": "eac3443654cf1dd4fb2cba8d6f3082cc70f3d7cdad3aa6ee01d49e2ea1bc7d58",
+     "chars": 31,
+     "audio": "en/c02-ex1.mp3",
+     "align": "en/c02-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c02-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "She asked me where I lived.",
+     "textSha256": "41c727079a7e126cc07e381283af4b2105800993d28c8e6b5b29c7daf8233b76",
+     "chars": 27,
+     "audio": "en/c02-ex2.mp3",
+     "align": "en/c02-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c03",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c03-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Cevabı evet ya da hayır olan soruda soru kelimesi yoktur. Onun yerine eğer anlamındaki küçük bir kelime gelir. Zaman, düz sözlerdeki gibi bir adım geri kayar.",
+     "textSha256": "37d8d826bbbb0eaed46c22b9fa606281bf06a39419ba805bfd6ec678c5450d92",
+     "chars": 158,
+     "audio": "tr/c03-tr.mp3",
+     "align": "tr/c03-tr.align.json",
+     "present": true,
+     "duration": 11.36,
+     "quality": {
+      "words": 26,
+      "exact": 26,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "\"Are you ready?\" he asked.",
+     "textSha256": "879bf7f81c602caac5b7d29b4a8fc02b2ed7e31150473e97889c54a42dcf7834",
+     "chars": 26,
+     "audio": "en/c03-ex1.mp3",
+     "align": "en/c03-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c03-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "He asked if I was ready.",
+     "textSha256": "29500b517b8285105d40cd964953d265708830f39af27b970492cc1a657f9614",
+     "chars": 24,
+     "audio": "en/c03-ex2.mp3",
+     "align": "en/c03-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c04",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c04-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Bir ricayı ya da emri aktarırken kişiden sonra mastar gelir. Rica için sormak fiili, emir için söylemek fiili seçilir. Olumsuzda mastarın önüne olumsuzluk kelimesi gelir.",
+     "textSha256": "8ac0cb39182abcc181484bf05a91ab5ac684a999b73805ac6906757ab51eec0c",
+     "chars": 170,
+     "audio": "tr/c04-tr.mp3",
+     "align": "tr/c04-tr.align.json",
+     "present": true,
+     "duration": 12.14,
+     "quality": {
+      "words": 25,
+      "exact": 22,
+      "fuzzy": 3,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c04-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "The teacher told us to close our books.",
+     "textSha256": "9c422660548db8e9875a7fcbb443625242476a6b39e1a2e25eefcb2dedeeddf1",
+     "chars": 39,
+     "audio": "en/c04-ex1.mp3",
+     "align": "en/c04-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "She asked me not to tell anyone.",
+     "textSha256": "608615cf2186fbb393d6b18ec37b8f7c4d03251cd53cd2e0bd4c4d2347f4945a",
+     "chars": 32,
+     "audio": "en/c04-ex2.mp3",
+     "align": "en/c04-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c05",
+   "type": "examples",
+   "segments": [
+    {
+     "id": "c05-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "He asked me what time it was.",
+     "textSha256": "d86e12640876786a4823f9a52692705e64e23fbe56b71e877c4d1f1341b91da6",
+     "chars": 29,
+     "audio": "en/c05-ex1.mp3",
+     "align": "en/c05-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "They asked if we wanted some tea.",
+     "textSha256": "9c725c0476f1a10b590a403149bee314e641e094dd469b6ed8b9c5e8f544ae74",
+     "chars": 33,
+     "audio": "en/c05-ex2.mp3",
+     "align": "en/c05-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "My mum asked me to buy some bread.",
+     "textSha256": "a6268b91a2784ad3679b3c20cb42ea7a68ba9c9c402a7519437bef8342dab252",
+     "chars": 34,
+     "audio": "en/c05-ex3.mp3",
+     "align": "en/c05-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex4",
+     "lang": "en",
+     "role": "example",
+     "text": "The doctor told him not to eat sugar.",
+     "textSha256": "7cea3f13afe49e8226c45dbe3914acfce26ac64708dfcfd17e3ac2c7e4c42561",
+     "chars": 37,
+     "audio": "en/c05-ex4.mp3",
+     "align": "en/c05-ex4.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex5",
+     "lang": "en",
+     "role": "example",
+     "text": "I asked her why she was sad.",
+     "textSha256": "af5d394fc66d999c705899aeae5777460100180b3de0e7fc967bb0d93685329c",
+     "chars": 28,
+     "audio": "en/c05-ex5.mp3",
+     "align": "en/c05-ex5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c06",
+   "type": "contrast",
+   "segments": [
+    {
+     "id": "c06-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Türkçede sorulanı ve isteneni isim hâline getiririz: nerede oturduğumu sordu, beklememi söyledi. İngilizcede soru, soru sırasını bırakıp düz cümle olur. Rica da söyledi diye değil, mastarla aktarılır.",
+     "textSha256": "f755b148b7a3c777f01f06baf2a5f1f91ec6b6c0612c19638eaa2bc10ca30b1d",
+     "chars": 200,
+     "audio": "tr/c06-tr.mp3",
+     "align": "tr/c06-tr.align.json",
+     "present": true,
+     "duration": 13.63,
+     "quality": {
+      "words": 27,
+      "exact": 25,
+      "fuzzy": 2,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c06-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "She asked me where I was going.",
+     "textSha256": "f3c5c34e14828f198c53cb3b3eb024e6c19f0b56187a5dedad7089e4fc60b17d",
+     "chars": 31,
+     "audio": "en/c06-ex1.mp3",
+     "align": "en/c06-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c06-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "He told me to wait.",
+     "textSha256": "216d659c04f3d4329de2563af3d2b6d8b54ef81ced6a5372f76e3b6c3a6af9b0",
+     "chars": 19,
+     "audio": "en/c06-ex2.mp3",
+     "align": "en/c06-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c06-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "She asked me if I liked it.",
+     "textSha256": "542975651cca5aea318dda22e05a008f12f46756f13ee79b9a3ed80901bad9e4",
+     "chars": 27,
+     "audio": "en/c06-ex3.mp3",
+     "align": "en/c06-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c07",
+   "type": "practice",
+   "segments": [
+    {
+     "id": "c07-q5",
+     "lang": "en",
+     "role": "say",
+     "text": "She asked me where I lived.",
+     "textSha256": "41c727079a7e126cc07e381283af4b2105800993d28c8e6b5b29c7daf8233b76",
+     "chars": 27,
+     "audio": "en/c07-q5.mp3",
+     "align": "en/c07-q5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c08",
+   "type": "rule",
+   "segments": [
+    {
+     "id": "c08-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Aktarılan soruda düz sıra gelir; evet-hayır sorusu eğer anlamındaki kelimeyle aktarılır. Rica ve emirde kişiden sonra mastar gelir.",
+     "textSha256": "0f53518fa219e349590f93d411632e15cc7576a58e02155edb3419ee183e898e",
+     "chars": 131,
+     "audio": "tr/c08-tr.mp3",
+     "align": "tr/c08-tr.align.json",
+     "present": true,
+     "duration": 8.96,
+     "quality": {
+      "words": 19,
+      "exact": 18,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c08-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "She asked me where I lived.",
+     "textSha256": "41c727079a7e126cc07e381283af4b2105800993d28c8e6b5b29c7daf8233b76",
+     "chars": 27,
+     "audio": "en/c08-ex1.mp3",
+     "align": "en/c08-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c08-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "He told me to wait.",
+     "textSha256": "216d659c04f3d4329de2563af3d2b6d8b54ef81ced6a5372f76e3b6c3a6af9b0",
+     "chars": 19,
+     "audio": "en/c08-ex2.mp3",
+     "align": "en/c08-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  }
+ ]
+}

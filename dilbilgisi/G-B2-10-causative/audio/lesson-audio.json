@@ -1,0 +1,406 @@
+{
+ "schemaVersion": 1,
+ "lessonId": "G-B2-10-causative",
+ "voices": {
+  "tr": {
+   "model": "alania-v2",
+   "voice": "alania2-f1",
+   "timing": "duyu-1",
+   "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+  },
+  "en": {
+   "model": "eleven_v3",
+   "voice": "EXAVITQu4vr4xnSDxMaL",
+   "speed": 1.0
+  }
+ },
+ "cards": [
+  {
+   "card": "c01",
+   "type": "hook",
+   "segments": [
+    {
+     "id": "c01-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Bu cümleyi dinle. Konuşan kişi saçını kendisi kesmedi, kuaföre kestirdi. İngilizcede bu fark bir ekle değil, ayrı bir yapıyla söylenir.",
+     "textSha256": "c449ab069a4a64d7cd61aab7cdf654e448845ac0a9a655cf1ef073ec3e16aff4",
+     "chars": 135,
+     "audio": "tr/c01-tr.mp3",
+     "align": "tr/c01-tr.align.json",
+     "present": true,
+     "duration": 10.08,
+     "quality": {
+      "words": 20,
+      "exact": 20,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c01-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I had my hair cut yesterday.",
+     "textSha256": "6fe1c25c669e434aef8a1d66fc77d29f850d6049e30478f0921fbc42b8292c6e",
+     "chars": 28,
+     "audio": "en/c01-ex1.mp3",
+     "align": "en/c01-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c02",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c02-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Bir işi başkasına yaptırdığında bu yapı kullanılır. Önce sahip olmak fiili, sonra işin yapıldığı nesne, en sonda fiilin üçüncü hâli gelir. Zamanı yalnız ilk fiil gösterir.",
+     "textSha256": "c00a16df513a1390cbb651f2fa3c90b33c3e70298aa4c2836500a8f83086f983",
+     "chars": 171,
+     "audio": "tr/c02-tr.mp3",
+     "align": "tr/c02-tr.align.json",
+     "present": true,
+     "duration": 12.83,
+     "quality": {
+      "words": 26,
+      "exact": 25,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c02-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I cut my hair.",
+     "textSha256": "fc9fcbd08f22f31f7fd864fa41d9337cf6874ed7a9afdcfd52c2f48afc730d1b",
+     "chars": 14,
+     "audio": "en/c02-ex1.mp3",
+     "align": "en/c02-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c02-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "I had my hair cut.",
+     "textSha256": "ce0cb0bc730793d31bec073350085461fc3340dbcfdcfb7840a2b26410f08c4b",
+     "chars": 18,
+     "audio": "en/c02-ex2.mp3",
+     "align": "en/c02-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c03",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c03-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Günlük konuşmada sahip olmak fiilinin yerine almak anlamındaki fiil de kullanılır. Anlam aynıdır, yalnız ton biraz daha gündeliktir. Sıra da değişmez.",
+     "textSha256": "af978411d52adc06e675ee53869543d586aea63b6ee2dba7afd0166e2c46b688",
+     "chars": 150,
+     "audio": "tr/c03-tr.mp3",
+     "align": "tr/c03-tr.align.json",
+     "present": true,
+     "duration": 10.11,
+     "quality": {
+      "words": 21,
+      "exact": 20,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "We're getting the kitchen painted next week.",
+     "textSha256": "dc33a6a60210fafd7ca404cc647d508d3d94ea22d61f9504b1f56a15c530045f",
+     "chars": 44,
+     "audio": "en/c03-ex1.mp3",
+     "align": "en/c03-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c04",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c04-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Bu yapı her zamanda kullanılabilir. İlk fiil zamana göre değişir, üçüncü hâl hep aynı kalır.",
+     "textSha256": "8f24d001e3efc360ea7356759c8abde484211ca429568921353f071862559139",
+     "chars": 92,
+     "audio": "tr/c04-tr.mp3",
+     "align": "tr/c04-tr.align.json",
+     "present": true,
+     "duration": 7.04,
+     "quality": {
+      "words": 15,
+      "exact": 14,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c04-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I'm having my car repaired today.",
+     "textSha256": "309544786bfdc32cd7bc2b652bf68783ec0cf148a1794b6477203b78c589c03a",
+     "chars": 33,
+     "audio": "en/c04-ex1.mp3",
+     "align": "en/c04-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "You should have your eyes tested.",
+     "textSha256": "e9abe3d9561b43475d31c3e1eb4dfbac50b3623facdf142c39fc2d866b342ad1",
+     "chars": 33,
+     "audio": "en/c04-ex2.mp3",
+     "align": "en/c04-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c05",
+   "type": "examples",
+   "segments": [
+    {
+     "id": "c05-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "We had the house painted last summer.",
+     "textSha256": "348996df964c71b30842c1d595b9501cdaf6948a02d1ba73dd506f5de46da519",
+     "chars": 37,
+     "audio": "en/c05-ex1.mp3",
+     "align": "en/c05-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "I need to get my phone fixed.",
+     "textSha256": "89f76b30ad47169ca12022d6800edd1abe3651793a6c37c1f576a6c07bfb7596",
+     "chars": 29,
+     "audio": "en/c05-ex2.mp3",
+     "align": "en/c05-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "Where do you have your hair cut?",
+     "textSha256": "5f7bf1a6219f323d162484fa953a834963a70b90990674f33138995794fbdfdc",
+     "chars": 32,
+     "audio": "en/c05-ex3.mp3",
+     "align": "en/c05-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex4",
+     "lang": "en",
+     "role": "example",
+     "text": "They're having a new kitchen built.",
+     "textSha256": "1a434cb87f44fc18f36843b61bb878bd687180a8783032bb9c742c2a6f926e68",
+     "chars": 35,
+     "audio": "en/c05-ex4.mp3",
+     "align": "en/c05-ex4.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex5",
+     "lang": "en",
+     "role": "example",
+     "text": "He got his watch repaired last week.",
+     "textSha256": "b3620e2192f89bc2f0a68ed7b7c65eab67933e307bfcf6a105296672a1815dcb",
+     "chars": 36,
+     "audio": "en/c05-ex5.mp3",
+     "align": "en/c05-ex5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c06",
+   "type": "contrast",
+   "segments": [
+    {
+     "id": "c06-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Türkçede yaptırmak fiile eklenen bir ekle söylenir: kestirdim, boyattık. İngilizcede saçımı kestim dersen işi kendin yapmış olursun. Yaptırmak için zorlamak anlamındaki fiil de bu yapıya uymaz.",
+     "textSha256": "d45923af5bfa6a0ade72e2a4400e6840139f339e7c782f78089929a6585735d5",
+     "chars": 193,
+     "audio": "tr/c06-tr.mp3",
+     "align": "tr/c06-tr.align.json",
+     "present": true,
+     "duration": 13.63,
+     "quality": {
+      "words": 26,
+      "exact": 26,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c06-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I had my hair cut at the hairdresser's.",
+     "textSha256": "e856bb674fc3d30acba70d9ef6a56fed461e99242f70416837b4e8d98c2e877a",
+     "chars": 39,
+     "audio": "en/c06-ex1.mp3",
+     "align": "en/c06-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c06-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "I had my car repaired.",
+     "textSha256": "33367ed073a6ad730e7d91f2a66b1df34ab9cf86d8b598a1b271e330507b0f93",
+     "chars": 22,
+     "audio": "en/c06-ex2.mp3",
+     "align": "en/c06-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c07",
+   "type": "practice",
+   "segments": [
+    {
+     "id": "c07-q5",
+     "lang": "en",
+     "role": "say",
+     "text": "I had my hair cut yesterday.",
+     "textSha256": "6fe1c25c669e434aef8a1d66fc77d29f850d6049e30478f0921fbc42b8292c6e",
+     "chars": 28,
+     "audio": "en/c07-q5.mp3",
+     "align": "en/c07-q5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c08",
+   "type": "rule",
+   "segments": [
+    {
+     "id": "c08-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Bir işi başkasına yaptırırken ilk fiil, nesne ve üçüncü hâl sırayla gelir. Zamanı yalnız ilk fiil gösterir.",
+     "textSha256": "961593f2bd862409eabfe645d0b0025c0d51bde2cc897937de17abe2f55a328e",
+     "chars": 107,
+     "audio": "tr/c08-tr.mp3",
+     "align": "tr/c08-tr.align.json",
+     "present": true,
+     "duration": 8.8,
+     "quality": {
+      "words": 17,
+      "exact": 16,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c08-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I had my hair cut yesterday.",
+     "textSha256": "6fe1c25c669e434aef8a1d66fc77d29f850d6049e30478f0921fbc42b8292c6e",
+     "chars": 28,
+     "audio": "en/c08-ex1.mp3",
+     "align": "en/c08-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "id": "G-B2-12-contrast-linkers",
+  "level": "B2",
+  "titleTr": "Zıtlık bağlaçları: although, despite, however, whereas",
+  "titleEn": "Contrast linkers",
+  "goalTr": "Zıtlığı although ve even though ile cümleyle, despite ve in spite of ile isimle, however ile iki cümle arasında, whereas ile karşılaştırarak kurarsın.",
+  "prerequisites": [
+    "G-A2-13-conjunctions",
+    "G-B1-09-gerund-infinitive"
+  ],
+  "contentVersion": 1,
+  "status": "DRAFT",
+  "aiGenerated": true,
+  "teacherReview": null,
+  "linksTo": {
+    "episodes": [],
+    "books": [
+      "A2-K03"
+    ]
+  },
+  "properNouns": [
+    "Max"
+  ],
+  "pronunciations": [
+    {
+      "term": "Max",
+      "say_as": "Maks"
+    },
+    {
+      "term": "-ing",
+      "say_as": "ing"
+    }
+  ],
+  "narration": {
+    "tr": {
+      "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+    }
+  }
+}

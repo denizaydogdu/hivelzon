@@ -47,13 +47,24 @@ IRREGULAR = {
     "stood": "stand", "stole": "steal", "swam": "swim", "taught": "teach", "threw": "throw",
     "understood": "understand", "woke": "wake", "wore": "wear", "won": "win",
     "better": "good", "best": "good", "worse": "bad", "worst": "bad",
+    # Düzensiz üçüncü hâl (V3; B1–B2 dilbilgisi dersleri, H-081: edilgen, perfect, koşul, wish).
+    # Başsözcük listede yoksa yine liste dışı sayılır.
+    "born": "bear", "beaten": "beat", "bitten": "bite", "chosen": "choose", "done": "do",
+    "driven": "drive", "drunk": "drink", "eaten": "eat", "fallen": "fall", "flown": "fly",
+    "forgotten": "forget", "frozen": "freeze", "given": "give", "gone": "go", "grown": "grow",
+    "hidden": "hide", "known": "know", "ridden": "ride", "risen": "rise", "seen": "see",
+    "shaken": "shake", "shown": "show", "spoken": "speak", "stolen": "steal", "sung": "sing",
+    "swum": "swim", "taken": "take", "thrown": "throw", "woken": "wake", "worn": "wear",
+    "written": "write",
+    # -ie fiilleri: lie → lying
+    "lying": "lie", "dying": "die", "tying": "tie",
 }
 
 # "'s" yalnızca bu sözcüklerde "is"; diğerlerinde iyelik ekidir ve atılır.
 S_IS = {"it", "what", "that", "he", "she", "there", "where", "who", "here", "how"}
 NT_BASE = {"can": "can", "won": "will", "don": "do", "doesn": "does", "didn": "did",
            "isn": "is", "aren": "are", "wasn": "was", "weren": "were", "couldn": "could",
-           "shouldn": "should", "wouldn": "would", "haven": "have", "hasn": "has", "mustn": "must"}
+           "shouldn": "should", "wouldn": "would", "haven": "have", "hasn": "has", "hadn": "had", "mustn": "must"}
 OTHER_CONTR = {"m": "am", "re": "are", "ll": "will", "ve": "have", "d": "would"}
 
 SUFFIXES = (("ies", "y"), ("es", ""), ("s", ""), ("ied", "y"), ("ed", ""), ("ed", "e"),

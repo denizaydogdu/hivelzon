@@ -1,0 +1,445 @@
+{
+ "schemaVersion": 1,
+ "lessonId": "G-B2-12-contrast-linkers",
+ "voices": {
+  "tr": {
+   "model": "alania-v2",
+   "voice": "alania2-f1",
+   "timing": "duyu-1",
+   "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+  },
+  "en": {
+   "model": "eleven_v3",
+   "voice": "EXAVITQu4vr4xnSDxMaL",
+   "speed": 1.0
+  }
+ },
+ "cards": [
+  {
+   "card": "c01",
+   "type": "hook",
+   "segments": [
+    {
+     "id": "c01-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Max gitarı ilk kez çalıyor. Bu cümlede iki zıt bilgi basit bir bağlaçla birleşiyor. Aynı zıtlığı daha güçlü bir bağlaçla da kurabiliriz, dinle.",
+     "textSha256": "8deb00cea66cfa1df15982d95e346e99ea98402b63688ebb2b56cb2ffd939726",
+     "chars": 143,
+     "audio": "tr/c01-tr.mp3",
+     "align": "tr/c01-tr.align.json",
+     "present": true,
+     "duration": 9.63,
+     "quality": {
+      "words": 23,
+      "exact": 23,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c01-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "Although he played badly, he played for hours.",
+     "textSha256": "4e597a01559f73edf014733b7dc0f656ecff8e59bbc14d0053a1b8dc9b6216c5",
+     "chars": 46,
+     "audio": "en/c01-ex1.mp3",
+     "align": "en/c01-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c02",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c02-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Zıt bilgiyi tam bir cümleyle veriyorsan, o cümlenin başına rağmen anlamındaki bağlaç gelir. Daha güçlü bir vurgu için önüne bir kelime daha eklenir. Bu bağlaçlı taraf ana cümleden önce ya da sonra gelebilir.",
+     "textSha256": "4f0457db6b6614fd10fdb8d514089654b670a0bd092fe26c06f9d08f37bdd504",
+     "chars": 207,
+     "audio": "tr/c02-tr.mp3",
+     "align": "tr/c02-tr.align.json",
+     "present": true,
+     "duration": 13.95,
+     "quality": {
+      "words": 33,
+      "exact": 31,
+      "fuzzy": 1,
+      "weak": 1,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 1,
+      "score": 0.97,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c02-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "Although it was late, we kept talking.",
+     "textSha256": "bff965b17cb887c67e7fb2bd17fae9e2bdbf8868ec2fb9def59c87a56fb966e8",
+     "chars": 38,
+     "audio": "en/c02-ex1.mp3",
+     "align": "en/c02-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c02-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "Even though I was tired, I finished my homework.",
+     "textSha256": "bebb9ba8b68616e897c705a85d74d52676b1a555c10ebacbf60e2738764ea7c0",
+     "chars": 48,
+     "audio": "en/c02-ex2.mp3",
+     "align": "en/c02-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c03",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c03-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Zıt bilgiyi bir isimle ya da -ing ekli bir fiille veriyorsan başka bir edat gelir. Bu edattan sonra tam cümle gelmez. Üç kelimelik bir eş anlamlısı da vardır.",
+     "textSha256": "8d176a23dc2cce6d5f77a7d8927413983bf5dc4d29c58051b30c1199874b3359",
+     "chars": 158,
+     "audio": "tr/c03-tr.mp3",
+     "align": "tr/c03-tr.align.json",
+     "present": true,
+     "duration": 9.79,
+     "quality": {
+      "words": 28,
+      "exact": 27,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "Despite the rain, the match continued.",
+     "textSha256": "261e1271775d870c249247b24916ba24d636bd949e0a03c296fca2d51201c2ae",
+     "chars": 38,
+     "audio": "en/c03-ex1.mp3",
+     "align": "en/c03-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c03-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "In spite of being tired, she went out.",
+     "textSha256": "83f97715b48ac1e07b063bf948a3d23306c2a15c1578fa9eadafeef5e53272ab",
+     "chars": 38,
+     "audio": "en/c03-ex2.mp3",
+     "align": "en/c03-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c04",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c04-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "İki ayrı cümleyi zıtlıkla bağlamak için ikinci cümlenin başına ayrı bir kelime gelir. Ardından virgül konur ve anlamı ancak ya da yine de olur. İki şeyi karşılaştırırken ise oysa anlamındaki bağlaç kullanılır.",
+     "textSha256": "263bebbac4e485e94e5f2d5cc74e7645da799fb3161e3a834f53110b1674455c",
+     "chars": 209,
+     "audio": "tr/c04-tr.mp3",
+     "align": "tr/c04-tr.align.json",
+     "present": true,
+     "duration": 16.67,
+     "quality": {
+      "words": 32,
+      "exact": 32,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c04-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "The hotel was expensive. However, the food was great.",
+     "textSha256": "f95e91746ac061ee402dd9cd12d1ba88b1eb5774c30521a3c5cdde9617468da2",
+     "chars": 53,
+     "audio": "en/c04-ex1.mp3",
+     "align": "en/c04-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "I like tea, whereas my sister prefers coffee.",
+     "textSha256": "90f137c0c131f822ca31f8072d0ed2beb061eef917441290fe2ab602e15eb17a",
+     "chars": 45,
+     "audio": "en/c04-ex2.mp3",
+     "align": "en/c04-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c05",
+   "type": "examples",
+   "segments": [
+    {
+     "id": "c05-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "Although the test was hard, everyone passed.",
+     "textSha256": "6b6abaca03da7ab1ec88f9e56dffeb53d24adf1fffe81fa87f6941b70cc3a928",
+     "chars": 44,
+     "audio": "en/c05-ex1.mp3",
+     "align": "en/c05-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "We went to the beach despite the cold weather.",
+     "textSha256": "252df215948362a69fa9f95361e0718ce888cc0046136de28797df7294dcfe52",
+     "chars": 46,
+     "audio": "en/c05-ex2.mp3",
+     "align": "en/c05-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "She has a lot of money. However, she isn't happy.",
+     "textSha256": "d97a957258feb3a6846e141e0c9f946bb6b159e649272eb43c378b0b5fed6cd9",
+     "chars": 49,
+     "audio": "en/c05-ex3.mp3",
+     "align": "en/c05-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex4",
+     "lang": "en",
+     "role": "example",
+     "text": "Even though he lives nearby, he is always late.",
+     "textSha256": "468dcc0a9ac0f2fe2d000319f38736c3202c48a7e9fbd158790f2e01e392707e",
+     "chars": 47,
+     "audio": "en/c05-ex4.mp3",
+     "align": "en/c05-ex4.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex5",
+     "lang": "en",
+     "role": "example",
+     "text": "My brother loves football, whereas I prefer basketball.",
+     "textSha256": "3b192c0bfe60188dd81535acbd0843799244e2b524c90accd5391530632a01ae",
+     "chars": 55,
+     "audio": "en/c05-ex5.mp3",
+     "align": "en/c05-ex5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c06",
+   "type": "contrast",
+   "segments": [
+    {
+     "id": "c06-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Türkçede rağmen hem isimle hem cümleyle kullanılır: yağmura rağmen, yağmur yağmasına rağmen. İngilizcede ikisi için ayrı kelimeler vardır. Türkçedeki rağmen ve ama ikilisi de iki bağlacı birden kullanma hatasına götürür.",
+     "textSha256": "59e222e6566753e6d87fbaf1e3e78719e7c53c96604621d6aa8f0a08a28daef5",
+     "chars": 220,
+     "audio": "tr/c06-tr.mp3",
+     "align": "tr/c06-tr.align.json",
+     "present": true,
+     "duration": 14.75,
+     "quality": {
+      "words": 30,
+      "exact": 29,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c06-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "Although it was raining, we went out.",
+     "textSha256": "48f582847170388c5f207801740efa267e969e3aa968fa87c8d160435c98baeb",
+     "chars": 37,
+     "audio": "en/c06-ex1.mp3",
+     "align": "en/c06-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c06-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "Despite the cold, we swam.",
+     "textSha256": "45d902197fc60dba784888abc0455a81e306db301f8611ca4c9065ba291eff33",
+     "chars": 26,
+     "audio": "en/c06-ex2.mp3",
+     "align": "en/c06-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c06-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "Despite the rain, we played.",
+     "textSha256": "b23af4fb23375c48a4e84c402732ff361f2246a06ef211c76eb3e5cf8e94b5af",
+     "chars": 28,
+     "audio": "en/c06-ex3.mp3",
+     "align": "en/c06-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c07",
+   "type": "practice",
+   "segments": [
+    {
+     "id": "c07-q5",
+     "lang": "en",
+     "role": "say",
+     "text": "Although it was late, we kept talking.",
+     "textSha256": "bff965b17cb887c67e7fb2bd17fae9e2bdbf8868ec2fb9def59c87a56fb966e8",
+     "chars": 38,
+     "audio": "en/c07-q5.mp3",
+     "align": "en/c07-q5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c08",
+   "type": "rule",
+   "segments": [
+    {
+     "id": "c08-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Zıtlıkta tam cümleden önce bağlaç, isimden ya da -ing ekli fiilden önce edat gelir. Bu bağlaçla birlikte ama kullanılmaz.",
+     "textSha256": "c295b3e2d9152fc2bdc55cccd47cd1a1b61a0f305f71601d7111f5a5157e3b6b",
+     "chars": 121,
+     "audio": "tr/c08-tr.mp3",
+     "align": "tr/c08-tr.align.json",
+     "present": true,
+     "duration": 7.84,
+     "quality": {
+      "words": 19,
+      "exact": 19,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c08-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "Although it was late, we kept talking.",
+     "textSha256": "bff965b17cb887c67e7fb2bd17fae9e2bdbf8868ec2fb9def59c87a56fb966e8",
+     "chars": 38,
+     "audio": "en/c08-ex1.mp3",
+     "align": "en/c08-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c08-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "Despite the rain, the match continued.",
+     "textSha256": "261e1271775d870c249247b24916ba24d636bd949e0a03c296fca2d51201c2ae",
+     "chars": 38,
+     "audio": "en/c08-ex2.mp3",
+     "align": "en/c08-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  }
+ ]
+}

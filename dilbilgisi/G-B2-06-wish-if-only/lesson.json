@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "G-B2-06-wish-if-only",
+  "level": "B2",
+  "titleTr": "wish ve if only: dilek ve pişmanlık",
+  "titleEn": "wish / if only",
+  "goalTr": "Şimdiki dileği wish ve geçmiş biçimle, geçmiş pişmanlığı wish ve had V3 ile, başkasının davranışından yakınmayı wish ve would ile söylersin.",
+  "prerequisites": [
+    "G-B2-04-second-conditional",
+    "G-B2-05-third-conditional"
+  ],
+  "contentVersion": 1,
+  "status": "DRAFT",
+  "aiGenerated": true,
+  "teacherReview": null,
+  "linksTo": {
+    "episodes": [],
+    "books": []
+  },
+  "narration": {
+    "tr": {
+      "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+    }
+  }
+}

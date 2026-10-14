@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "G-B2-04-second-conditional",
+  "level": "B2",
+  "titleTr": "2. tip koşul (second conditional): gerçek dışı şimdi",
+  "titleEn": "Second conditional",
+  "goalTr": "Gerçek olmayan ya da olasılığı düşük durumları if ve geçmiş biçimle, sonucu would ve yalın fiille anlatır; If I were you ile öğüt verirsin.",
+  "prerequisites": [
+    "G-B1-07-zero-first-conditional",
+    "G-A2-04-past-simple-regular"
+  ],
+  "contentVersion": 1,
+  "status": "DRAFT",
+  "aiGenerated": true,
+  "teacherReview": null,
+  "linksTo": {
+    "episodes": [],
+    "books": []
+  },
+  "narration": {
+    "tr": {
+      "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+    }
+  }
+}
