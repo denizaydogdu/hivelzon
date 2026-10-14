@@ -1,0 +1,171 @@
+{
+  "schemaVersion": 1,
+  "id": "B2-K02",
+  "slug": "B2-K02-the-singing-hill",
+  "level": "B2",
+  "genre": "adventure",
+  "title": "The Singing Hill",
+  "titleTr": "Şarkı Söyleyen Tepe",
+  "blurbTr": "Jonah'ın Kapadokya'daki ilk gecesinde tepeden alçak, uzun bir ses yükseliyor; insan sesine benzemiyor ama bir şarkıya benziyor. Köylüler omuz silkiyor: \"Rüzgâr.\" Ama ses tam olarak rüzgârın yönüne göre değişiyor ve rüzgâr durduğu an kesiliyor. Tepenin altında ne var?",
+  "hookEn": "Every night when the wind turned north, the hill began to sing.",
+  "contentVersion": 1,
+  "status": "DRAFT",
+  "aiGenerated": true,
+  "palette": {
+    "background": "#F7EDE3",
+    "surface": "#EBD3C4",
+    "text": "#2A2238",
+    "accent": "#9A4A2E",
+    "highlight": "#E8B04A"
+  },
+  "cover": "cover.png",
+  "properNouns": [
+    "Jonah",
+    "Price",
+    "Defne",
+    "Kaya",
+    "Aydın",
+    "Kemal",
+    "Hakan",
+    "Murat",
+    "Wales",
+    "Welsh",
+    "Turkey",
+    "Turkish",
+    "English"
+  ],
+  "narration": {
+    "modelId": "eleven_v3",
+    "speed": 1.0,
+    "voiceId": "EXAVITQu4vr4xnSDxMaL"
+  },
+  "chapters": [
+    {
+      "id": "c1",
+      "title": "First Night",
+      "titleTr": "İlk Gece",
+      "pages": [
+        {
+          "id": "p01",
+          "image": "p01.png"
+        },
+        {
+          "id": "p02",
+          "image": null
+        },
+        {
+          "id": "p03",
+          "image": null
+        },
+        {
+          "id": "p04",
+          "image": null
+        },
+        {
+          "id": "p05",
+          "image": null
+        }
+      ]
+    },
+    {
+      "id": "c2",
+      "title": "The Survey",
+      "titleTr": "Ölçüm",
+      "pages": [
+        {
+          "id": "p06",
+          "image": "p06.png"
+        },
+        {
+          "id": "p07",
+          "image": null
+        },
+        {
+          "id": "p08",
+          "image": null
+        },
+        {
+          "id": "p09",
+          "image": null
+        },
+        {
+          "id": "p10",
+          "image": null
+        }
+      ]
+    },
+    {
+      "id": "c3",
+      "title": "Permission",
+      "titleTr": "İzin",
+      "pages": [
+        {
+          "id": "p11",
+          "image": "p11.png"
+        },
+        {
+          "id": "p12",
+          "image": null
+        },
+        {
+          "id": "p13",
+          "image": null
+        },
+        {
+          "id": "p14",
+          "image": null
+        },
+        {
+          "id": "p15",
+          "image": null
+        }
+      ]
+    },
+    {
+      "id": "c4",
+      "title": "Holes in a Row",
+      "titleTr": "Sıra Sıra Oyuklar",
+      "pages": [
+        {
+          "id": "p16",
+          "image": "p16.png"
+        },
+        {
+          "id": "p17",
+          "image": null
+        },
+        {
+          "id": "p18",
+          "image": null
+        },
+        {
+          "id": "p19",
+          "image": null
+        }
+      ]
+    },
+    {
+      "id": "c5",
+      "title": "The Second Song",
+      "titleTr": "İkinci Şarkı",
+      "pages": [
+        {
+          "id": "p20",
+          "image": "p20.png"
+        },
+        {
+          "id": "p21",
+          "image": null
+        },
+        {
+          "id": "p22",
+          "image": null
+        },
+        {
+          "id": "p23",
+          "image": null
+        }
+      ]
+    }
+  ]
+}

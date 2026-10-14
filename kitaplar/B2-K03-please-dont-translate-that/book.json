@@ -1,0 +1,182 @@
+{
+  "schemaVersion": 1,
+  "id": "B2-K03",
+  "slug": "B2-K03-please-dont-translate-that",
+  "level": "B2",
+  "genre": "humor",
+  "title": "Please Don't Translate That",
+  "titleTr": "Lütfen Onu Çevirme",
+  "blurbTr": "Bruno'nun bir haftası, bir çeviri kulaklığı ve tek bir hedefi var: nişanlısı Selin'in sessiz, ciddi babası Orhan Bey'i etkilemek. Kulaklık \"Eline sağlık\"ı \"Health to your hand\" diye çevirdiğinde Bruno ne diyeceğini bilemiyor. Orhan Bey ise hiç gülmüyor ve her yemekte bir noktada kulağına dokunup sofradan kalkıyor. Neden?",
+  "hookEn": "The translation earpiece worked perfectly, until Selin's family started using idioms.",
+  "contentVersion": 1,
+  "status": "DRAFT",
+  "aiGenerated": true,
+  "palette": {
+    "background": "#FFF4E6",
+    "surface": "#D9F2EE",
+    "text": "#2A1E2E",
+    "accent": "#B23A6A",
+    "highlight": "#E3B43C"
+  },
+  "cover": "cover.png",
+  "properNouns": [
+    "Bruno",
+    "Costa",
+    "Selin",
+    "Orhan",
+    "Bey",
+    "Nermin",
+    "Hanım",
+    "Emre",
+    "Kemal",
+    "Eskişehir",
+    "London",
+    "Brazil",
+    "Turkish",
+    "English",
+    "Portuguese",
+    "Brazilian",
+    "Eline",
+    "Ağzına",
+    "sağlık",
+    "Kolay",
+    "gelsin",
+    "Afiyet",
+    "olsun",
+    "Hoş",
+    "bulduk",
+    "Saluk",
+    "Salik",
+    "Sauluk"
+  ],
+  "narration": {
+    "modelId": "eleven_v3",
+    "speed": 1.0,
+    "voiceId": "EXAVITQu4vr4xnSDxMaL"
+  },
+  "chapters": [
+    {
+      "id": "c1",
+      "title": "Health to Your Hand",
+      "titleTr": "Eline Sağlık",
+      "pages": [
+        {
+          "id": "p01",
+          "image": "p01.png"
+        },
+        {
+          "id": "p02",
+          "image": null
+        },
+        {
+          "id": "p03",
+          "image": null
+        },
+        {
+          "id": "p04",
+          "image": null
+        },
+        {
+          "id": "p05",
+          "image": null
+        }
+      ]
+    },
+    {
+      "id": "c2",
+      "title": "Börek Disaster",
+      "titleTr": "Börek Felaketi",
+      "pages": [
+        {
+          "id": "p06",
+          "image": "p06.png"
+        },
+        {
+          "id": "p07",
+          "image": null
+        },
+        {
+          "id": "p08",
+          "image": null
+        },
+        {
+          "id": "p09",
+          "image": null
+        },
+        {
+          "id": "p10",
+          "image": null
+        }
+      ]
+    },
+    {
+      "id": "c3",
+      "title": "No Earpiece",
+      "titleTr": "Kulaklıksız",
+      "pages": [
+        {
+          "id": "p11",
+          "image": "p11.png"
+        },
+        {
+          "id": "p12",
+          "image": null
+        },
+        {
+          "id": "p13",
+          "image": null
+        },
+        {
+          "id": "p14",
+          "image": null
+        }
+      ]
+    },
+    {
+      "id": "c4",
+      "title": "Night Practice",
+      "titleTr": "Gece Çalışması",
+      "pages": [
+        {
+          "id": "p15",
+          "image": "p15.png"
+        },
+        {
+          "id": "p16",
+          "image": null
+        },
+        {
+          "id": "p17",
+          "image": null
+        },
+        {
+          "id": "p18",
+          "image": null
+        }
+      ]
+    },
+    {
+      "id": "c5",
+      "title": "Blessing",
+      "titleTr": "Hayır Dua",
+      "pages": [
+        {
+          "id": "p19",
+          "image": "p19.png"
+        },
+        {
+          "id": "p20",
+          "image": null
+        },
+        {
+          "id": "p21",
+          "image": null
+        },
+        {
+          "id": "p22",
+          "image": null
+        }
+      ]
+    }
+  ]
+}
