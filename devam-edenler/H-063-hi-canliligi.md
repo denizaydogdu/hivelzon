@@ -1,6 +1,6 @@
 # H-063: Hi'nin canlılığı (ifadeler ve animasyonlar)
 
-- **Durum:** Yapılacak
+- **Durum:** Devam ediyor (kod `main`'de, flutter 716/716; kullanıcının ifadelere bakması bekleniyor; simülatör önce/sonra H-064'e)
 - **Tür:** Uygulama (tasarım)
 - **Faz:** Tasarım yenilemesi T6 (`docs/UYGULAMA-PLANI.md`)
 - **Bağımlılık:** H-057

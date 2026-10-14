@@ -128,7 +128,7 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 | T3' | H-074 | Günlük hedef için gerçek süre ölçümü | Orta | H-060 | ⏳ |
 | T4 | H-061 | Defter, Kelime tekrarı, Konu seti, Sahne avı tasarımı | Orta | H-057, H-058 | ✅ |
 | T5 | H-062 | Oynatıcı katmanlarının tasarımı | Orta | H-057 | ✅ |
-| T6 | H-063 | Hi'nin canlılığı (ifadeler, animasyonlar) | Orta | H-057 | ⏳ |
+| T6 | H-063 | Hi'nin canlılığı (ifadeler, animasyonlar) | Orta | H-057 | 🔄 |
 | T7 | H-064 | Tasarım kalite turu (erişilebilirlik, golden, temizlik) | Orta | H-059 … H-063, H-040 | ⏳ |
 
 **Sıra:** H-057 → H-058 → H-059 → H-039 → H-060 → H-061 → H-062 → H-063 → H-040 → H-064 → H-041, H-042, H-043, H-044.
@@ -392,3 +392,4 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
   - Kullanıcı H-062'yi ve dalga 1'in 8 kitap metnini onayladı; 34 görsel (~17 kr) üretimine geçildi.
   - Dalga 1'in 34 görseli üretildi (17 kr, başarısız iş yok; kredi 29,06). 10 kitabın paketi hazır, dev sunucuda 10 kitap. Seslendirme ElevenLabs Creator anahtarı gelince. H-075 Türkçe ses aracı bitti.
   - H-076 müfredat (71 konu) onaylandı ve kaydedildi; pilot konular to be, a/an, -s. A2-K04 p09 dilbilgisi hatası düzeltildi.
+  - H-063 (7 ifade, sakin nefes, panel bölünmesi, bölüm sonunda mutlu Hi) `main`'e birleştirildi (716 test). H-078 dilbilgisi ekranı ve H-079 pilot dersler sürüyor.
