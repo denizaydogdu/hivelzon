@@ -1,0 +1,182 @@
+{
+  "schemaVersion": 1,
+  "id": "B2-K01",
+  "slug": "B2-K01-two-signatures",
+  "level": "B2",
+  "genre": "mystery",
+  "title": "Two Signatures",
+  "titleTr": "İki İmza",
+  "blurbTr": "Bir ev boşaltmasından gelen sıradan bir liman tablosu. Restorasyon stajyeri Lucía verniği temizlerken imzanın altında ikinci bir isim beliriyor. Patronu tabloyu hafta sonu bir an önce satmak istiyor; gizemli bir koleksiyoncu ise fazlasıyla ilgili. Tabloyu gerçekte kim yaptı?",
+  "hookEn": "Under the varnish of an ordinary harbour painting, Lucía found a second name.",
+  "contentVersion": 1,
+  "status": "DRAFT",
+  "aiGenerated": true,
+  "palette": {
+    "background": "#F7EEDC",
+    "surface": "#EBD9B4",
+    "text": "#2A2118",
+    "accent": "#1F5E8C",
+    "highlight": "#E3A92B"
+  },
+  "cover": "cover.png",
+  "properNouns": [
+    "Lucía",
+    "Ferrer",
+    "Castell",
+    "Vidal",
+    "Roig",
+    "Pons",
+    "Tomás",
+    "Teresa",
+    "Andreu",
+    "Aina",
+    "Serra",
+    "Marell",
+    "Ai"
+  ],
+  "narration": {
+    "modelId": "eleven_v3",
+    "speed": 1.0,
+    "voiceId": "EXAVITQu4vr4xnSDxMaL"
+  },
+  "chapters": [
+    {
+      "id": "c1",
+      "title": "Varnish",
+      "titleTr": "Vernik",
+      "pages": [
+        {
+          "id": "p01",
+          "image": "p01.png"
+        },
+        {
+          "id": "p02",
+          "image": null
+        },
+        {
+          "id": "p03",
+          "image": null
+        },
+        {
+          "id": "p04",
+          "image": null
+        }
+      ]
+    },
+    {
+      "id": "c2",
+      "title": "The Archive",
+      "titleTr": "Arşiv",
+      "pages": [
+        {
+          "id": "p05",
+          "image": "p05.png"
+        },
+        {
+          "id": "p06",
+          "image": null
+        },
+        {
+          "id": "p07",
+          "image": null
+        },
+        {
+          "id": "p08",
+          "image": null
+        }
+      ]
+    },
+    {
+      "id": "c3",
+      "title": "Ultraviolet",
+      "titleTr": "Morötesi",
+      "pages": [
+        {
+          "id": "p09",
+          "image": "p09.png"
+        },
+        {
+          "id": "p10",
+          "image": null
+        },
+        {
+          "id": "p11",
+          "image": null
+        },
+        {
+          "id": "p12",
+          "image": null
+        }
+      ]
+    },
+    {
+      "id": "c4",
+      "title": "Letters",
+      "titleTr": "Mektuplar",
+      "pages": [
+        {
+          "id": "p13",
+          "image": "p13.png"
+        },
+        {
+          "id": "p14",
+          "image": null
+        },
+        {
+          "id": "p15",
+          "image": null
+        },
+        {
+          "id": "p16",
+          "image": null
+        }
+      ]
+    },
+    {
+      "id": "c5",
+      "title": "Evidence",
+      "titleTr": "Kanıt",
+      "pages": [
+        {
+          "id": "p17",
+          "image": "p17.png"
+        },
+        {
+          "id": "p18",
+          "image": null
+        },
+        {
+          "id": "p19",
+          "image": null
+        },
+        {
+          "id": "p20",
+          "image": null
+        }
+      ]
+    },
+    {
+      "id": "c6",
+      "title": "The Same Hand",
+      "titleTr": "Aynı El",
+      "pages": [
+        {
+          "id": "p21",
+          "image": "p21.png"
+        },
+        {
+          "id": "p22",
+          "image": null
+        },
+        {
+          "id": "p23",
+          "image": null
+        },
+        {
+          "id": "p24",
+          "image": null
+        }
+      ]
+    }
+  ]
+}
