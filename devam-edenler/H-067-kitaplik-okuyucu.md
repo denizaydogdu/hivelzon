@@ -1,6 +1,6 @@
 # H-067: Kitaplık ve okuyucu (mobil)
 
-- **Durum:** Yapılacak
+- **Durum:** Devam ediyor (kod `main`'de: flutter 649/649, mvn 126/126; pilot kitaplarla simülatör denemesi ve kullanıcı onayı bekleniyor)
 - **Tür:** Uygulama (kod)
 - **Faz:** Kitaplık K2 (`docs/KITAPLIK.md` §9)
 - **Bağımlılık:** H-066

@@ -138,9 +138,9 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 |---|---|---|---|---|---|
 | K0 | H-065 | Kitaplık kararları ve 30 kitaplık katalog | Yüksek | — | ✅ |
 | K1 | H-066 | Kitap paketi ve içerik boru hattı (book-lint, C1/C2 listesi, TTS betiği) | Yüksek | H-065 | ✅ |
-| K2 | H-067 | Kitaplık ve okuyucu (sesli/sessiz, cümle vurgusu, Defter'e ekle) | Yüksek | H-066 | ⏳ |
+| K2 | H-067 | Kitaplık ve okuyucu (sesli/sessiz, cümle vurgusu, Defter'e ekle) | Yüksek | H-066 | 🔄 |
 | K3 | H-068 | Arka planda dinleme ve kilit ekranı | Orta | H-067 | ⏳ |
-| K4 | H-069 | Pilot kitaplar A1 + A2 (≈ 15 kr görsel, maliyet onayı önce) | Yüksek | H-065, H-066, H-067 | ⏳ |
+| K4 | H-069 | Pilot kitaplar A1 + A2 (≈ 15 kr görsel, maliyet onayı önce) | Yüksek | H-065, H-066, H-067 | 🔄 |
 | K5 | H-070 | Kitaplık arka ucu (BOOK, C2, onay) | Orta | H-066 | ⏳ |
 | K6 | H-071 | Kitap dalgası 1: A1 + A2 (kalan 8) | Orta | H-069 | ⏳ |
 | K7 | H-072 | Kitap dalgası 2: B1 + B2 (10) | Orta | H-071 | ⏳ |
@@ -362,3 +362,5 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
   - H-066 ayrı dalda yapıldı ve `main`'e birleştirildi (pytest 151/151); bitti. H-061 sürüyor. Sıradaki Kitaplık işi H-067 (okuyucu).
   - H-061 ayrı dalda yapıldı ve `main`'e birleştirildi (581 test): tek satır biçimli Defter, sakin geri bildirimli tekrar, özet istatistikleri, dokunma tepkili konu setleri. Kullanıcı onayı bekleniyor.
   - Kullanıcı H-061'i onayladı (özet sayısı kalır; titreşim ayarı H-064'e; "Bölüm N'den ekledin" H-067'ye). H-061 bitti. H-067 okuyucu ayrı dalda başladı.
+  - Pilot kitaplar: metin + çeviri onaylı; 27 görsel üretildi (14 kr; kredi 46,06); A1 sesi Sarah ile (3.880 karakter, ücretsiz kota). A1 hızı 144–168 k/dk → cümle arası duraklarla düzeltme ayrı dalda.
+  - H-067 ayrı dalda yapıldı ve `main`'e birleştirildi (flutter 649, mvn 126, pytest 153): Macera · Kitaplık, okuyucu, Defter'e ekleme, kitap ilerlemesi eşitlemesi, Hi önerisi. Pilotla simülatör denemesi bekleniyor.
