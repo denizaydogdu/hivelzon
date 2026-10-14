@@ -1,0 +1,32 @@
+[
+  {
+    "created_at": "2026-10-14T17:11:06.62142Z",
+    "display_name": "GPT Image 2.5",
+    "id": "d83596f7-7f31-4914-ae9e-5e4134e086b6",
+    "job_type": "gpt_image_2_5",
+    "min_result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261014_171106_d83596f7-7f31-4914-ae9e-5e4134e086b6_min.webp",
+    "params": {
+      "aspect_ratio": "3:2",
+      "height": 1360,
+      "medias": [
+        {
+          "data": {
+            "id": "26d1a6c2-2b43-439a-a345-e071d55b75e8",
+            "type": "image_job",
+            "url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261011_163601_26d1a6c2-2b43-439a-a345-e071d55b75e8.png"
+          },
+          "role": "image"
+        }
+      ],
+      "model": "flare",
+      "prompt": "Use the reference image only for the teenage boy with glasses and headphones in the framed photo; keep his face and hair. Character reference sheet of an original character: Sam Brooks, a 17-year-old teenage boy, a tech enthusiast; slim, wavy dark-brown hair, light-brown skin, round dark-rimmed glasses, quick bright smile; a navy-blue hoodie with front pockets full of small screws and a coiled cable, over-ear headphones resting around his neck, grey jeans, worn sneakers; a small screwdriver behind one ear. Front view, side view, back view, and three facial expressions (excited talking fast, focused, embarrassed grin). Plain background. Warm animated-series illustration, graphic-novel style, clean ink lines, soft cel shading, coastal palette of sea blue, sand, lighthouse yellow and evening orange, mature tone suitable for teens and adults, not childish, no text, no letters, no numbers, no logos.",
+      "quality": "low",
+      "reference_elements": [],
+      "remove_bg": false,
+      "resolution": "2k",
+      "width": 2048
+    },
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261014_171106_d83596f7-7f31-4914-ae9e-5e4134e086b6.png",
+    "status": "completed"
+  }
+]

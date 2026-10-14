@@ -1,0 +1,48 @@
+[
+  {
+    "created_at": "2026-10-14T17:15:15.329529Z",
+    "display_name": "GPT Image 2.5",
+    "id": "e8a7173c-ad16-4e24-b37f-c6228860d421",
+    "job_type": "gpt_image_2_5",
+    "min_result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261014_171515_e8a7173c-ad16-4e24-b37f-c6228860d421_min.webp",
+    "params": {
+      "aspect_ratio": "9:16",
+      "height": 2688,
+      "medias": [
+        {
+          "data": {
+            "id": "d83596f7-7f31-4914-ae9e-5e4134e086b6",
+            "type": "image_job",
+            "url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261014_171106_d83596f7-7f31-4914-ae9e-5e4134e086b6.png"
+          },
+          "role": "image"
+        },
+        {
+          "data": {
+            "id": "663ea0fe-3df5-4cea-ba8c-e08c80e48a96",
+            "type": "media_input",
+            "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/663ea0fe-3df5-4cea-ba8c-e08c80e48a96.png"
+          },
+          "role": "image"
+        },
+        {
+          "data": {
+            "id": "72e65920-4ec7-4946-ae36-502810c61948",
+            "type": "image_job",
+            "url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261014_164747_72e65920-4ec7-4946-ae36-502810c61948.png"
+          },
+          "role": "image"
+        }
+      ],
+      "model": "flare",
+      "prompt": "Use the reference images for Sam, Alex and the small old red voice recorder. Scene: in Sam's tech bedroom; Alex has put the small old red voice recorder on the desk; Sam (navy-blue hoodie, round glasses, headphones around his neck) grabs it excitedly and turns it over in his hands, talking very fast with a huge grin; Alex (olive jacket, cream sweater) blinks, a little lost. Vertical composition. Warm animated-series illustration, graphic-novel style, clean ink lines, soft cel shading, coastal palette of sea blue, sand, lighthouse yellow and evening orange, mature tone suitable for teens and adults, not childish, no text, no letters, no numbers, no logos.",
+      "quality": "low",
+      "reference_elements": [],
+      "remove_bg": false,
+      "resolution": "2k",
+      "width": 1520
+    },
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261014_171515_e8a7173c-ad16-4e24-b37f-c6228860d421.png",
+    "status": "completed"
+  }
+]

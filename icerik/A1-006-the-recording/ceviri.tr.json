@@ -1,0 +1,754 @@
+{
+  "contentId": "A1-006",
+  "status": "DRAFT",
+  "author": "Claude taslak",
+  "date": "2026-10-14",
+  "lines": [
+    {
+      "en": "The Recording",
+      "speaker": "TITLE",
+      "tr": "Kayıt",
+      "chunks": [],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "recording": "kayıt"
+      },
+      "source": "content:title"
+    },
+    {
+      "en": "Who Knows What?",
+      "speaker": "TITLE",
+      "tr": "Kim ne biliyor?",
+      "chunks": [
+        {
+          "en": "Who knows what?",
+          "tr": "Kim ne biliyor?"
+        }
+      ],
+      "words": {
+        "who": "kim",
+        "knows": "biliyor (know: bilmek)",
+        "what": "ne"
+      },
+      "source": "scenes:c-oq"
+    },
+    {
+      "en": "Alex, this is my cousin, Sam.",
+      "speaker": "MAYA",
+      "tr": "Alex, bu benim kuzenim Sam.",
+      "chunks": [
+        {
+          "en": "this is …",
+          "tr": "bu …"
+        }
+      ],
+      "words": {
+        "this": "bu",
+        "is": "-dır (olmak)",
+        "my": "benim",
+        "cousin": "kuzen"
+      },
+      "source": "subs/s02"
+    },
+    {
+      "en": "Hi, Sam.",
+      "speaker": "ALEX",
+      "tr": "Merhaba Sam.",
+      "chunks": [],
+      "words": {
+        "hi": "merhaba"
+      },
+      "source": "subs/s02"
+    },
+    {
+      "en": "Nice to meet you.",
+      "speaker": "ALEX",
+      "tr": "Tanıştığımıza memnun oldum.",
+      "chunks": [
+        {
+          "en": "Nice to meet you.",
+          "tr": "Tanıştığımıza memnun oldum."
+        }
+      ],
+      "words": {
+        "nice": "hoş",
+        "to": "-mek (mastar)",
+        "meet": "tanışmak",
+        "you": "sen"
+      },
+      "source": "subs/s02"
+    },
+    {
+      "en": "Sam? Can you hear me?",
+      "speaker": "ALEX",
+      "tr": "Sam? Beni duyabiliyor musun?",
+      "chunks": [
+        {
+          "en": "Can you hear me?",
+          "tr": "Beni duyabiliyor musun?"
+        }
+      ],
+      "words": {
+        "can": "-ebilmek",
+        "you": "sen",
+        "hear": "duymak",
+        "me": "beni"
+      },
+      "source": "subs/s02"
+    },
+    {
+      "en": "Oh! Sorry!",
+      "speaker": "SAM",
+      "tr": "Ah! Pardon!",
+      "chunks": [],
+      "words": {
+        "oh": "ah, oh",
+        "sorry": "pardon, özür dilerim"
+      },
+      "source": "subs/s02"
+    },
+    {
+      "en": "Yes, I can. Hi!",
+      "speaker": "SAM",
+      "tr": "Evet, duyabiliyorum. Merhaba!",
+      "chunks": [
+        {
+          "en": "Yes, I can.",
+          "tr": "Evet, -ebiliyorum."
+        }
+      ],
+      "words": {
+        "yes": "evet",
+        "i": "ben",
+        "can": "-ebilmek (burada: duyabilmek)",
+        "hi": "merhaba"
+      },
+      "source": "subs/s02"
+    },
+    {
+      "en": "Look at this room, Alex!",
+      "speaker": "MAYA",
+      "tr": "Şu odaya bak, Alex!",
+      "chunks": [
+        {
+          "en": "look at …",
+          "tr": "…-e bak"
+        }
+      ],
+      "words": {
+        "look": "bakmak",
+        "at": "-de",
+        "this": "bu, şu",
+        "room": "oda"
+      },
+      "source": "subs/s02"
+    },
+    {
+      "en": "There is a radio on the desk.",
+      "speaker": "MAYA",
+      "tr": "Masanın üstünde bir radyo var.",
+      "chunks": [
+        {
+          "en": "There is a …",
+          "tr": "bir … var"
+        },
+        {
+          "en": "on the desk",
+          "tr": "masanın üstünde"
+        }
+      ],
+      "words": {
+        "there": "(there is/are: var)",
+        "is": "-dır (olmak)",
+        "a": "bir",
+        "radio": "radyo",
+        "on": "üstünde / (turn on: aç)",
+        "the": "(belirli tanımlık)",
+        "desk": "masa"
+      },
+      "source": "subs/s02"
+    },
+    {
+      "en": "There are cables everywhere!",
+      "speaker": "MAYA",
+      "tr": "Her yerde kablo var!",
+      "chunks": [
+        {
+          "en": "There are …",
+          "tr": "… var (çoğul)"
+        }
+      ],
+      "words": {
+        "there": "(there is/are: var)",
+        "are": "-dır (olmak, çoğul)",
+        "cables": "kablolar",
+        "everywhere": "her yerde"
+      },
+      "source": "subs/s02"
+    },
+    {
+      "en": "And there is a box under the bed.",
+      "speaker": "SAM",
+      "tr": "Bir de yatağın altında bir kutu var.",
+      "chunks": [
+        {
+          "en": "there is a …",
+          "tr": "bir … var"
+        },
+        {
+          "en": "under the bed",
+          "tr": "yatağın altında"
+        }
+      ],
+      "words": {
+        "and": "ve, bir de",
+        "there": "(there is/are: var)",
+        "is": "-dır (olmak)",
+        "a": "bir",
+        "box": "kutu",
+        "under": "altında",
+        "the": "(belirli tanımlık)",
+        "bed": "yatak"
+      },
+      "source": "subs/s02"
+    },
+    {
+      "en": "Oh, cool!",
+      "speaker": "SAM",
+      "tr": "Oo, harika!",
+      "chunks": [],
+      "words": {
+        "oh": "ah, oh",
+        "cool": "harika"
+      },
+      "source": "subs/s03"
+    },
+    {
+      "en": "It's old.",
+      "speaker": "SAM",
+      "tr": "Eski.",
+      "chunks": [],
+      "words": {
+        "it's": "o … -dır",
+        "old": "eski"
+      },
+      "source": "subs/s03"
+    },
+    {
+      "en": "I can open it. Easy!",
+      "speaker": "SAM",
+      "tr": "Açabilirim. Kolay!",
+      "chunks": [
+        {
+          "en": "I can open it.",
+          "tr": "Onu açabilirim."
+        }
+      ],
+      "words": {
+        "i": "ben",
+        "can": "-ebilmek",
+        "open": "açmak",
+        "it": "o (nesne)",
+        "easy": "kolay"
+      },
+      "source": "subs/s03"
+    },
+    {
+      "en": "Sam! Slow down!",
+      "speaker": "MAYA",
+      "tr": "Sam! Yavaşla!",
+      "chunks": [
+        {
+          "en": "Slow down!",
+          "tr": "Yavaşla!"
+        }
+      ],
+      "words": {
+        "slow": "yavaş",
+        "down": "(slow down: yavaşla)"
+      },
+      "source": "subs/s03"
+    },
+    {
+      "en": "Oh, cool! It's old. I can open it. Easy!",
+      "speaker": "SAM",
+      "tr": "Oo, harika! Eski. Açabilirim. Kolay!",
+      "chunks": [
+        {
+          "en": "I can open it.",
+          "tr": "Onu açabilirim."
+        }
+      ],
+      "words": {
+        "oh": "ah, oh",
+        "cool": "harika",
+        "it's": "o … -dır",
+        "old": "eski",
+        "i": "ben",
+        "can": "-ebilmek",
+        "open": "açmak",
+        "it": "o (nesne)",
+        "easy": "kolay"
+      },
+      "source": "scenes:k1.cue"
+    },
+    {
+      "en": "Slowly, please.",
+      "speaker": "ALEX",
+      "tr": "Yavaş lütfen.",
+      "chunks": [
+        {
+          "en": "Slowly, please.",
+          "tr": "Yavaş lütfen."
+        }
+      ],
+      "words": {
+        "slowly": "yavaşça",
+        "please": "lütfen"
+      },
+      "source": "subs/k1-a"
+    },
+    {
+      "en": "Again, please.",
+      "speaker": "ALEX",
+      "tr": "Tekrar lütfen.",
+      "chunks": [
+        {
+          "en": "Again, please.",
+          "tr": "Bir daha, lütfen."
+        }
+      ],
+      "words": {
+        "again": "yine, tekrar",
+        "please": "lütfen"
+      },
+      "source": "subs/k1-b"
+    },
+    {
+      "en": "Sorry! It is old.",
+      "speaker": "SAM",
+      "tr": "Pardon! Eski.",
+      "chunks": [],
+      "words": {
+        "sorry": "pardon, özür dilerim",
+        "it": "o (nesne)",
+        "is": "-dır (olmak)",
+        "old": "eski"
+      },
+      "source": "subs/k1-a"
+    },
+    {
+      "en": "I can open it.",
+      "speaker": "SAM",
+      "tr": "Onu açabilirim.",
+      "chunks": [],
+      "words": {
+        "i": "ben",
+        "can": "-ebilmek",
+        "open": "açmak",
+        "it": "o (nesne)"
+      },
+      "source": "subs/k1-a"
+    },
+    {
+      "en": "It's easy.",
+      "speaker": "SAM",
+      "tr": "Kolay.",
+      "chunks": [],
+      "words": {
+        "it's": "o … -dır",
+        "easy": "kolay"
+      },
+      "source": "subs/k1-a"
+    },
+    {
+      "en": "Can you play it?",
+      "speaker": "ALEX",
+      "tr": "Onu çalabilir misin?",
+      "chunks": [
+        {
+          "en": "Can you play it?",
+          "tr": "Onu çalabilir misin? (oynatır mısın?)"
+        }
+      ],
+      "words": {
+        "can": "-ebilmek",
+        "you": "sen",
+        "play": "çalmak, oynatmak",
+        "it": "o (nesne)"
+      },
+      "source": "subs/s04"
+    },
+    {
+      "en": "You can.",
+      "speaker": "SAM",
+      "tr": "Sen çalabilirsin.",
+      "chunks": [],
+      "words": {
+        "you": "sen",
+        "can": "-ebilmek (burada: çalabilmek)"
+      },
+      "source": "subs/s04"
+    },
+    {
+      "en": "Turn it on.",
+      "speaker": "SAM",
+      "tr": "Aç onu.",
+      "chunks": [
+        {
+          "en": "Turn it on.",
+          "tr": "Aç onu. (çalıştır)"
+        }
+      ],
+      "words": {
+        "turn": "çevirmek (turn on: açmak)",
+        "it": "o (nesne)",
+        "on": "(turn on: açmak)"
+      },
+      "source": "subs/s04"
+    },
+    {
+      "en": "You can. Turn it on.",
+      "speaker": "SAM",
+      "tr": "Sen çalabilirsin. Aç onu.",
+      "chunks": [
+        {
+          "en": "Turn it on.",
+          "tr": "Aç onu."
+        }
+      ],
+      "words": {
+        "you": "sen",
+        "can": "-ebilmek",
+        "turn": "çevirmek (turn on: açmak)",
+        "it": "o (nesne)",
+        "on": "(turn on: açmak)"
+      },
+      "source": "scenes:k2.cue"
+    },
+    {
+      "en": "No, no.",
+      "speaker": "SAM",
+      "tr": "Yok, yok.",
+      "chunks": [],
+      "words": {
+        "no": "hayır"
+      },
+      "source": "subs/r-k2-b"
+    },
+    {
+      "en": "Not that.",
+      "speaker": "SAM",
+      "tr": "O değil.",
+      "chunks": [],
+      "words": {
+        "not": "değil",
+        "that": "o, şu"
+      },
+      "source": "subs/r-k2-b"
+    },
+    {
+      "en": "If you have the radio,",
+      "speaker": "VOICE",
+      "tr": "Telsiz sendeyse,",
+      "chunks": [
+        {
+          "en": "you have the radio",
+          "tr": "telsiz sende"
+        }
+      ],
+      "words": {
+        "if": "eğer",
+        "you": "sen",
+        "have": "sahip olmak, -si var",
+        "the": "(belirli tanımlık)",
+        "radio": "telsiz"
+      },
+      "source": "subs/k2-ok"
+    },
+    {
+      "en": "you are a friend.",
+      "speaker": "VOICE",
+      "tr": "sen bir dostsun.",
+      "chunks": [],
+      "words": {
+        "you": "sen",
+        "are": "-dır (olmak, çoğul)",
+        "a": "bir",
+        "friend": "arkadaş, dost"
+      },
+      "source": "subs/k2-ok"
+    },
+    {
+      "en": "I'm at Lumen Point on Saturdays.",
+      "speaker": "VOICE",
+      "tr": "Cumartesileri Lumen Point'teyim.",
+      "chunks": [
+        {
+          "en": "on Saturdays",
+          "tr": "cumartesileri"
+        }
+      ],
+      "words": {
+        "i'm": "ben … -im",
+        "at": "-de",
+        "on": "üstünde / (turn on: aç)",
+        "saturdays": "cumartesileri"
+      },
+      "source": "subs/k2-ok"
+    },
+    {
+      "en": "The light.",
+      "speaker": "VOICE",
+      "tr": "Işık.",
+      "chunks": [],
+      "words": {
+        "the": "(belirli tanımlık)",
+        "light": "ışık"
+      },
+      "source": "subs/k2-ok"
+    },
+    {
+      "en": "— E.",
+      "speaker": "VOICE",
+      "tr": "— E.",
+      "chunks": [],
+      "words": {},
+      "source": "subs/k2-ok"
+    },
+    {
+      "en": "Play it again.",
+      "speaker": "SAM",
+      "tr": "Bir daha çal.",
+      "chunks": [
+        {
+          "en": "Play it again.",
+          "tr": "Bir daha çal."
+        }
+      ],
+      "words": {
+        "play": "çalmak, oynatmak",
+        "it": "o (nesne)",
+        "again": "yine, tekrar"
+      },
+      "source": "subs/k2-ok"
+    },
+    {
+      "en": "She was here.",
+      "speaker": "ALEX",
+      "tr": "Buradaydı.",
+      "chunks": [],
+      "words": {
+        "she": "o (kadın)",
+        "was": "idi (-di)",
+        "here": "burada"
+      },
+      "source": "subs/s05"
+    },
+    {
+      "en": "At Pier 3.",
+      "speaker": "ALEX",
+      "tr": "3 numaralı iskelede.",
+      "chunks": [],
+      "words": {
+        "at": "-de",
+        "3": "üç"
+      },
+      "source": "subs/s05"
+    },
+    {
+      "en": "On Friday.",
+      "speaker": "ALEX",
+      "tr": "Cuma günü.",
+      "chunks": [],
+      "words": {
+        "on": "(gün önünde: … günü)",
+        "friday": "cuma"
+      },
+      "source": "subs/s05"
+    },
+    {
+      "en": "Jordan says \"Helen.\" And \"the hill café.\"",
+      "speaker": "ALEX",
+      "tr": "Jordan \"Helen\" diyor. Bir de \"tepedeki kafe\".",
+      "chunks": [
+        {
+          "en": "the hill café",
+          "tr": "tepedeki kafe"
+        }
+      ],
+      "words": {
+        "says": "diyor (say: demek)",
+        "and": "ve",
+        "the": "(belirli tanımlık)",
+        "hill": "tepe",
+        "café": "kafe"
+      },
+      "source": "subs/s05"
+    },
+    {
+      "en": "But she says \"E.\" And Lumen Point.",
+      "speaker": "MAYA",
+      "tr": "Ama kadın \"E.\" diyor. Bir de Lumen Point.",
+      "chunks": [],
+      "words": {
+        "but": "ama",
+        "she": "o (kadın)",
+        "says": "diyor (say: demek)",
+        "and": "ve"
+      },
+      "source": "subs/s05"
+    },
+    {
+      "en": "So who is right?",
+      "speaker": "SAM",
+      "tr": "Peki kim haklı?",
+      "chunks": [
+        {
+          "en": "Who is right?",
+          "tr": "Kim haklı?"
+        }
+      ],
+      "words": {
+        "so": "o zaman, yani",
+        "who": "kim",
+        "is": "-dır (olmak)",
+        "right": "haklı, doğru"
+      },
+      "source": "subs/s05"
+    },
+    {
+      "en": "PLRC… Radio Club?",
+      "speaker": "SAM",
+      "tr": "PLRC… Radyo Kulübü mü?",
+      "chunks": [],
+      "words": {
+        "radio": "radyo, telsiz",
+        "club": "kulüp"
+      },
+      "source": "subs/s05"
+    },
+    {
+      "en": "An old club?",
+      "speaker": "SAM",
+      "tr": "Eski bir kulüp mü?",
+      "chunks": [],
+      "words": {
+        "an": "bir",
+        "old": "eski",
+        "club": "kulüp"
+      },
+      "source": "subs/s05"
+    },
+    {
+      "en": "Lumen Point is the lighthouse.",
+      "speaker": "MAYA",
+      "tr": "Lumen Point deniz feneri.",
+      "chunks": [],
+      "words": {
+        "is": "-dır (olmak)",
+        "the": "(belirli tanımlık)",
+        "lighthouse": "deniz feneri"
+      },
+      "source": "subs/s06"
+    },
+    {
+      "en": "Not the hill.",
+      "speaker": "MAYA",
+      "tr": "Tepe değil.",
+      "chunks": [],
+      "words": {
+        "not": "değil",
+        "the": "(belirli tanımlık)",
+        "hill": "tepe"
+      },
+      "source": "subs/s06"
+    },
+    {
+      "en": "I'm at ___ on Saturdays.",
+      "speaker": "TASK",
+      "tr": "Cumartesileri ___'deyim.",
+      "chunks": [],
+      "words": {
+        "i'm": "ben … -im",
+        "at": "-de",
+        "on": "üstünde / (turn on: aç)",
+        "saturdays": "cumartesileri"
+      },
+      "source": "scenes:t-gorev.i1"
+    },
+    {
+      "en": "I'm at Lumen Point on ___.",
+      "speaker": "TASK",
+      "tr": "___ Lumen Point'teyim.",
+      "chunks": [],
+      "words": {
+        "i'm": "ben … -im",
+        "at": "-de",
+        "on": "üstünde / (turn on: aç)"
+      },
+      "source": "scenes:t-gorev.i2"
+    },
+    {
+      "en": "The ___.",
+      "speaker": "TASK",
+      "tr": "___.",
+      "chunks": [],
+      "words": {
+        "the": "(belirli tanımlık)"
+      },
+      "source": "scenes:t-gorev.i3"
+    }
+  ],
+  "phrases": [
+    {
+      "en": "There is a…",
+      "tr": "Bir … var.",
+      "source": "content:targetPhrases",
+      "note": "tekil",
+      "words": {
+        "there": "(there is/are: var)",
+        "is": "-dır (olmak)",
+        "a": "bir"
+      }
+    },
+    {
+      "en": "There are…",
+      "tr": "… var. (çoğul)",
+      "source": "content:targetPhrases",
+      "note": "çoğul",
+      "words": {
+        "there": "(there is/are: var)",
+        "are": "-dır (olmak, çoğul)"
+      }
+    },
+    {
+      "en": "cable",
+      "tr": "kablo",
+      "source": "content:glossary",
+      "words": {}
+    },
+    {
+      "en": "slowly",
+      "tr": "yavaşça",
+      "source": "content:glossary",
+      "words": {
+        "slowly": "yavaşça"
+      }
+    },
+    {
+      "en": "lighthouse",
+      "tr": "deniz feneri",
+      "source": "content:glossary",
+      "words": {
+        "lighthouse": "deniz feneri"
+      }
+    }
+  ],
+  "notes": [
+    "Türk öğrenci tuzağı: Türkçede tek kelime 'var'; İngilizcede tekil There is, çoğul There are ('There is two radios' değil, 'There are two radios').",
+    "'If you have the radio, you are a friend.' kayıtta 8 kelime sınırı için iki parçaya bölündü; 'Telsiz sendeyse, sen bir dostsun.' olarak çevrildi ('the radio friend' B5'te 'telsizci arkadaş').",
+    "'Lumen Point' ve 'PLRC' özel ad; çevrilmedi. 'the hill café' Jordan'ın sözü olduğu için tırnak içinde 'tepedeki kafe'.",
+    "K2 seçenekleri Türkçe ve düğme tarifidir (yazı yok); görev seçenekleri kullanıcı kararı gereği çevrilmedi."
+  ]
+}

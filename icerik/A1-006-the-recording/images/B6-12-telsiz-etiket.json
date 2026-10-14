@@ -1,0 +1,40 @@
+[
+  {
+    "created_at": "2026-10-14T17:18:50.004915Z",
+    "display_name": "GPT Image 2.5",
+    "id": "8399c038-482d-4d74-b4af-2a879dbfdb8c",
+    "job_type": "gpt_image_2_5",
+    "min_result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261014_171850_8399c038-482d-4d74-b4af-2a879dbfdb8c_min.webp",
+    "params": {
+      "aspect_ratio": "9:16",
+      "height": 2688,
+      "medias": [
+        {
+          "data": {
+            "id": "d83596f7-7f31-4914-ae9e-5e4134e086b6",
+            "type": "image_job",
+            "url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261014_171106_d83596f7-7f31-4914-ae9e-5e4134e086b6.png"
+          },
+          "role": "image"
+        },
+        {
+          "data": {
+            "id": "74fb45e8-d78d-4902-b6d6-e95fd85aca46",
+            "type": "media_input",
+            "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/74fb45e8-d78d-4902-b6d6-e95fd85aca46.png"
+          },
+          "role": "image"
+        }
+      ],
+      "model": "flare",
+      "prompt": "Use the reference images for Sam and the old radio. Scene: Sam (navy-blue hoodie, round glasses, headphones around his neck) holds Alex's old cream-and-green portable radio up close to his glasses and studies a small faded blank sticker on its side, one eyebrow raised, very curious; a pencil and a blank sheet of paper on the desk beside him. The sticker is blank, no readable text. Vertical composition. Warm animated-series illustration, graphic-novel style, clean ink lines, soft cel shading, coastal palette of sea blue, sand, lighthouse yellow and evening orange, mature tone suitable for teens and adults, not childish, no text, no letters, no numbers, no logos.",
+      "quality": "low",
+      "reference_elements": [],
+      "remove_bg": false,
+      "resolution": "2k",
+      "width": 1520
+    },
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261014_171850_8399c038-482d-4d74-b4af-2a879dbfdb8c.png",
+    "status": "completed"
+  }
+]
