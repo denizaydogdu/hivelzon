@@ -31,7 +31,7 @@ Bu dosya tek takip noktasıdır. Hangi işin hangi sırada yapıldığını, şu
   - H dosyasının `Durum` satırı güncellenir;
   - **Günlük** bölümüne bir satır eklenir.
 - **Biten işler:** "Biten işler" tablosuna doğrulama kanıtıyla birlikte yazılır.
-- **Numaralar:** Tek sayaçla verilir. Sıradaki boş numara: **H-084**.
+- **Numaralar:** Tek sayaçla verilir. Sıradaki boş numara: **H-085**.
 
 **Durum simgeleri:**
 - ⛔ Kullanıcı kararı bekliyor
@@ -145,6 +145,7 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 | K6 | H-071 | Kitap dalgası 1: A1 + A2 (kalan 8) | Orta | H-069 | 🔄 |
 | K7 | H-072 | Kitap dalgası 2: B1 + B2 (10) | Orta | H-071 | 🔄 |
 | K8 | H-073 | Kitap dalgası 3: C1 + C2 (10) | Orta | H-072 | ⏳ |
+| K7' | H-084 | B2-K01 eksik bölüm başı görseli (p13), kredi yüklenince | Düşük | kredi | ⏳ |
 
 **Sıra:** H-065 hemen (belge + katalog) → H-066 ve H-067, tasarım fazlarıyla paralel, ayrı dallarda → H-069 pilot → resim yoğunluğu ve ses planı kararı → H-068, H-070 → H-071 → H-072 → H-073.
 
@@ -414,3 +415,4 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
   - H-068 (just_audio + audio_service, MIT): kitaplar ekran kapalıyken çalar, kilit ekranında oynat/duraklat, 10 sn geri, sonraki bölüm, kapak; main'de (887 test). Kilit ekranı görünümü gerçek iPhone'da denenecek.
   - H-072: 5 B2 kitabının metni de main'de. Kitaplıkta 20 kitap (A1 5, A2 5, B1 5, B2 5), hepsi lint 0 hata. Görseller: B1+B2 59 görsel ≈ 29,5 kr (kredi 29,06; yükleme gerekir).
   - Kullanıcı onayları: Keşfet (13 altı da 20 dk), H-083 (b) yolu, B1+B2 kitap metinleri ve çevirileri. B1 görselleri (28, ~14 kr) üretime alındı; B2 görselleri (31, ~15,5 kr) kredi yüklemesi bekliyor.
+  - H-084 açıldı: B2 görselleri 15,06 krediye sığsın diye 30/31 üretiliyor; B2-K01 p13 (4. bölüm başı) kredi yüklenince tamamlanacak.
