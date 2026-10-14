@@ -53,6 +53,15 @@ class _ReaderScreenState extends ConsumerState<ReaderScreen> {
   bool _showEnd = false;
   bool _audioNoticeShown = false;
 
+  /// Okunan yeri izleme (sesli mod): kullanıcı kaydırınca durur, kaydırma
+  /// bittikten [followResumeAfter] sonra ya da Dinle / sayfa düğmesi /
+  /// cümleye dokunma / "Okunan yere dön" ile sürer.
+  bool _followPaused = false;
+  int _followRequest = 0;
+  Timer? _followTimer;
+
+  static const followResumeAfter = Duration(seconds: 4);
+
   /// Kitap sonunda önerilecek, aynı seviyede açılmamış kitap (yoksa null).
   String? _nextBookId;
 
@@ -113,6 +122,10 @@ class _ReaderScreenState extends ConsumerState<ReaderScreen> {
           c.place,
           book.sentenceAt(c.pageIndex, c.place.sentenceIndex).start,
         );
+      }
+      if (c.chapterAudioMissing) {
+        c.clearChapterAudioNotice();
+        _snack(ReaderTexts.chapterNoAudio);
       }
       if (c.mode == ReaderMode.listen) unawaited(c.play());
     } on Object catch (e) {
@@ -181,7 +194,34 @@ class _ReaderScreenState extends ConsumerState<ReaderScreen> {
       _audioNoticeShown = true;
       _snack(ReaderTexts.noAudio);
     }
+    if (c.chapterAudioMissing) {
+      c.clearChapterAudioNotice();
+      _snack(ReaderTexts.chapterNoAudio);
+    }
     setState(() {});
+  }
+
+  // ------------------------------------------------------------ izleme
+
+  void _onUserScroll() {
+    _followTimer?.cancel();
+    if (!_followPaused) setState(() => _followPaused = true);
+  }
+
+  void _onUserScrollEnd() {
+    _followTimer?.cancel();
+    _followTimer = Timer(followResumeAfter, _resumeFollow);
+  }
+
+  /// İzleme sürer; okunan cümle görünür kılınır.
+  void _resumeFollow() {
+    _followTimer?.cancel();
+    _followTimer = null;
+    if (!mounted) return;
+    setState(() {
+      _followPaused = false;
+      _followRequest++;
+    });
   }
 
   void _snack(String text) {
@@ -192,6 +232,7 @@ class _ReaderScreenState extends ConsumerState<ReaderScreen> {
 
   @override
   void dispose() {
+    _followTimer?.cancel();
     _c?.removeListener(_onController);
     _c?.dispose();
     _pages?.dispose();
@@ -204,6 +245,7 @@ class _ReaderScreenState extends ConsumerState<ReaderScreen> {
     final c = _c;
     final book = _book;
     if (c == null || book == null) return;
+    if (_followPaused) _resumeFollow();
     final wasPlaying = await c.pauseForSheet();
     if (!mounted) return;
     final s = book.sentenceAt(place.pageIndex, place.sentenceIndex);
@@ -396,6 +438,7 @@ class _ReaderScreenState extends ConsumerState<ReaderScreen> {
         progress,
         book.level,
         ref.read(libraryRandomProvider),
+        preferAudio: true,
       );
       if (mounted) setState(() => _nextBookId = next?.id);
     } on Object catch (e) {
@@ -482,14 +525,35 @@ class _ReaderScreenState extends ConsumerState<ReaderScreen> {
                         highlightedWord: c.highlightedWord,
                         onWordTap: _openMeaning,
                         onWordLongPress: _longPress,
+                        follow: c.mode == ReaderMode.listen && !_followPaused,
+                        followWord: c.spokenWord,
+                        followRequest: _followRequest,
+                        onUserScroll: _onUserScroll,
+                        onUserScrollEnd: _onUserScrollEnd,
                       ),
                     ),
             ),
+            if (!_showEnd && _followPaused && c.mode == ReaderMode.listen)
+              Padding(
+                padding: const EdgeInsets.only(bottom: AppSpace.s8),
+                child: Center(
+                  child: ActionChip(
+                    key: const ValueKey('reader-follow-back'),
+                    avatar: const Icon(Icons.my_location_rounded, size: 18),
+                    label: const Text(ReaderTexts.followBack),
+                    onPressed: _resumeFollow,
+                  ),
+                ),
+              ),
             if (!_showEnd)
               _Controls(
                 controller: c,
                 colors: colors,
                 onSleep: _sleep,
+                onTogglePlay: () {
+                  if (_followPaused) _resumeFollow();
+                  unawaited(c.togglePlay());
+                },
                 onPrev: c.pageIndex > 0 ? () => _turn(c.pageIndex - 1) : null,
                 onNext: c.pageIndex < book.pages.length - 1
                     ? () => _turn(c.pageIndex + 1)
@@ -506,6 +570,7 @@ class _ReaderScreenState extends ConsumerState<ReaderScreen> {
 
   /// Düğmeyle sayfa çevirme (kaydırmayla aynı hareket).
   void _turn(int i) {
+    if (_followPaused) _resumeFollow();
     final pages = _pages;
     if (pages == null || !pages.hasClients) return;
     if (AppMotion.reduced(context)) {
@@ -603,6 +668,7 @@ class _Controls extends StatelessWidget {
     required this.controller,
     required this.colors,
     required this.onSleep,
+    required this.onTogglePlay,
     required this.onPrev,
     required this.onNext,
     required this.onFinish,
@@ -611,6 +677,7 @@ class _Controls extends StatelessWidget {
   final ReaderController controller;
   final BookColors colors;
   final VoidCallback onSleep;
+  final VoidCallback onTogglePlay;
   final VoidCallback? onPrev;
   final VoidCallback? onNext;
   final VoidCallback? onFinish;
@@ -708,7 +775,7 @@ class _Controls extends StatelessWidget {
                   dimension: AppTouch.primary + AppSpace.s8,
                   child: IconButton.filled(
                     key: const ValueKey('reader-play'),
-                    onPressed: () => unawaited(c.togglePlay()),
+                    onPressed: onTogglePlay,
                     tooltip: c.isPlaying ? ReaderTexts.pause : ReaderTexts.play,
                     style: IconButton.styleFrom(
                       backgroundColor: AppPalette.lighthouseYellow,

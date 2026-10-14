@@ -268,6 +268,75 @@ void main() {
     c.dispose();
   });
 
+  group('bölüm bölüm ses (c2 seslendirilmemiş)', () {
+    setUp(() => book = loadTestBook(unnarrated: const {'c2'}));
+
+    test('bölüm sonunda sessiz moda geçer, c2 başında kalır, not bir kez '
+        '(kitap bitmez)', () async {
+      final c = make();
+      expect(c.canListen, isTrue);
+      expect(c.chapterCanListen, isTrue);
+      await c.play();
+      for (var i = 0; i < 80 && c.isPlaying; i++) {
+        await step(c, 0.25);
+      }
+      expect(c.isPlaying, isFalse);
+      expect(c.mode, ReaderMode.silent);
+      expect(c.place, const ReaderPlace(2, -1));
+      expect(c.pageIndex, 2);
+      expect(c.chapterCanListen, isFalse);
+      expect(c.chapterAudioMissing, isTrue);
+      expect(finished, 0);
+      expect(audio.opened.map((u) => u.path), [endsWith('c1.m4a')]);
+      expect(places.last, ('c2', 3, -1, 0.0));
+      c.clearChapterAudioNotice();
+      expect(c.chapterAudioMissing, isFalse);
+      c.dispose();
+    });
+
+    test(
+      'sesi olmayan bölümde "Sesli": not, sessiz kalır; play çalmaz',
+      () async {
+        final c = make(mode: ReaderMode.silent);
+        await c.goToPage(2);
+        await c.setMode(ReaderMode.listen);
+        expect(c.mode, ReaderMode.silent);
+        expect(c.chapterAudioMissing, isTrue);
+        c.clearChapterAudioNotice();
+        await c.play();
+        expect(c.mode, ReaderMode.silent);
+        expect(c.chapterAudioMissing, isTrue);
+        expect(audio.plays, 0);
+        // Seslendirilmiş bölüme dönünce sesli okunur.
+        await c.goToPage(1);
+        await c.setMode(ReaderMode.listen);
+        expect(c.mode, ReaderMode.listen);
+        expect(c.isPlaying, isTrue);
+        c.dispose();
+      },
+    );
+
+    test('sesli okurken sesi olmayan bölüme geçilirse ses durur', () async {
+      final c = make();
+      await c.play();
+      await step(c, 1.0);
+      await c.goToChapter(1);
+      expect(c.isPlaying, isFalse);
+      expect(c.mode, ReaderMode.silent);
+      expect(c.chapterAudioMissing, isTrue);
+      expect(c.pageIndex, 2);
+      c.dispose();
+    });
+
+    test('sesi olmayan bölümde açılan kitap sessiz açılır, not', () {
+      final c = make(start: const ReaderPlace(2, 0));
+      expect(c.mode, ReaderMode.silent);
+      expect(c.chapterAudioMissing, isTrue);
+      expect(c.canListen, isTrue);
+      c.dispose();
+    });
+  });
+
   test('kalınan cümleden başlar (başlık yalnız bölüm başında)', () async {
     final c = make(start: const ReaderPlace(1, 1));
     expect(c.pageIndex, 1);

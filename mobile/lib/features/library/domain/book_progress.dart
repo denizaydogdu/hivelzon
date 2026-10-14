@@ -188,13 +188,18 @@ LibraryShelves buildShelves(
 
 /// "Bana bir kitap oku": [level] seviyesinde hiç açılmamış kitaplardan biri
 /// (yoksa null). Yarıda kalan ya da biten kitap seçilmez.
+///
+/// [preferAudio] (kitap sesli açılacaksa): ilk bölümünün sesi olan kitaplar
+/// önce; hiçbirinin sesi yoksa yine açılmamış bir kitap seçilir (sessiz
+/// açılır).
 BookSummary? pickUnreadBook(
   List<BookSummary> books,
   Map<String, BookProgress> progress,
   String level,
-  math.Random random,
-) {
-  final unread = [
+  math.Random random, {
+  bool preferAudio = false,
+}) {
+  var unread = [
     for (final b in books)
       if (b.level == level &&
           (progress[b.id]?.status ?? BookStatus.notStarted) ==
@@ -202,6 +207,13 @@ BookSummary? pickUnreadBook(
         b,
   ]..sort((a, b) => a.id.compareTo(b.id));
   if (unread.isEmpty) return null;
+  if (preferAudio) {
+    final voiced = [
+      for (final b in unread)
+        if (b.startsWithAudio) b,
+    ];
+    if (voiced.isNotEmpty) unread = voiced;
+  }
   return unread[random.nextInt(unread.length)];
 }
 

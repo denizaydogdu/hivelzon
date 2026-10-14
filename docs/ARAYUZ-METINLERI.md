@@ -144,10 +144,11 @@ Hikâye sekmesinin üstünde **Macera · Kitaplık** seçici (sekme sayısı de�
 | Yer | Metin | Not |
 |---|---|---|
 | Üst çubuk | Kitap adı · "Bölüm 1 · A Small Box"; düğmeler "Kitabı kapat", "Bölümler", "Okuma ayarları" | Bölüm adı kitabın kendi (İngilizce) adıdır. |
-| Biçim | **Sesli** · **Sessiz** (grup: "Okuma biçimi") · "s. 2 / 12" (ekran okuyucu: "12 sayfadan 2. sayfa") | Ses açılamazsa: "Bu kitabın sesi şu an açılamıyor. Sessiz okuyabilirsin." |
+| Biçim | **Sesli** · **Sessiz** (grup: "Okuma biçimi") · "s. 2 / 12" (ekran okuyucu: "12 sayfadan 2. sayfa") | Ses açılamazsa: "Bu kitabın sesi şu an açılamıyor. Sessiz okuyabilirsin." Kitap bölüm bölüm seslendirilir: sesi olmayan bölüme gelince (ya da orada **Sesli** seçilince) ses durur, sessiz moda geçilir ve bir kez "Bu bölümün sesi henüz hazır değil; kendin okuyabilirsin." |
 | Ses denetimleri | "Dinle" / "Duraklat", "10 saniye geri", "1x / 1,25x / 0,75x" (ekran okuyucu: "Hız normal. Değiştirmek için dokun."), "Uyku zamanlayıcısı" | |
 | Uyku zamanlayıcısı | Kapalı · Bölüm sonunda · 10 / 20 / 30 dakika sonra; seçince "Uyku zamanlayıcısı: 20 dakika sonra"; dolunca "Uyku zamanlayıcısı sesi durdurdu. İyi uykular!" | **Geri sayım gösterilmez** (K-32). |
 | Sessiz mod | "Önceki sayfa", "Sonraki sayfa", son sayfada **Kitabı bitir** | |
+| Okunan yeri izleme | Sesli modda sayfa okunan cümleyi kendiliğinden izler. Kullanıcı kaydırınca izleme durur, küçük çip: **Okunan yere dön** (dokununca ya da ~4 sn sonra izleme sürer). | Uyarı ya da açılır pencere yok. |
 | Ayarlar | **Yazı boyutu**: Küçük · Orta · Büyük; **Okunan kelimeyi de vurgula** "Kapalıyken yalnız okunan cümle vurgulanır." | Yalnız bu cihazda. |
 | Uzun basma | Sesli modda kelimeye uzun basınca **Deftere eklendi** (ikinci kez: ""box" zaten defterinde.") | Sessiz modda uzun basma o cümleyi seslendirir. |
 | Ekran okuyucu | Cümle düğmesi ipucu: "Anlamını göstermek için dokun" | |

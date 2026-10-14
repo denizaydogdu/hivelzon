@@ -205,6 +205,11 @@ abstract final class ReaderTexts {
   static const modeLabel = 'Okuma biçimi';
   static const noAudio =
       'Bu kitabın sesi şu an açılamıyor. Sessiz okuyabilirsin.';
+  static const chapterNoAudio =
+      'Bu bölümün sesi henüz hazır değil; kendin okuyabilirsin.';
+
+  // Okunan yeri izleme (sesli mod)
+  static const followBack = 'Okunan yere dön';
 
   // Ses denetimleri
   static const play = 'Dinle';

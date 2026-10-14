@@ -312,6 +312,7 @@ class _LevelPickerState extends ConsumerState<_LevelPicker> {
       widget.data.progress,
       _level,
       ref.read(libraryRandomProvider),
+      preferAudio: true,
     );
     if (b == null) {
       setState(() => _none = true);

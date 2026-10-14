@@ -133,6 +133,30 @@ void main() {
       expect(b.palette.background, BookPalette.fallback.background);
     });
 
+    test('bölüm bölüm ses: en az bir bölümün sesi varsa sesli okunur', () {
+      final full = loadTestBook();
+      expect(full.chapterCanListen('c1'), isTrue);
+      expect(full.chapterCanListen('c2'), isTrue);
+      expect(full.firstChapterCanListen, isTrue);
+
+      final partial = loadTestBook(unnarrated: const {'c2'});
+      expect(partial.canListen, isTrue);
+      expect(partial.chapterCanListen('c1'), isTrue);
+      expect(partial.chapterCanListen('c2'), isFalse);
+      expect(partial.firstChapterCanListen, isTrue);
+      // Sesi olmayan bölümün sonu: süre ve zaman yok.
+      expect(partial.track('c2').end, 0);
+
+      final secondOnly = loadTestBook(unnarrated: const {'c1'});
+      expect(secondOnly.canListen, isTrue);
+      expect(secondOnly.firstChapterCanListen, isFalse);
+
+      final none = loadTestBook(unnarrated: const {'c1', 'c2'});
+      expect(none.canListen, isFalse);
+      expect(none.chapterCanListen('c1'), isFalse);
+      expect(none.chapterCanListen('yok'), isFalse);
+    });
+
     test('renk ayrıştırma', () {
       expect(parseHexColor('#1F4E79'), 0xFF1F4E79);
       expect(parseHexColor('1F4E79'), isNull);
@@ -196,6 +220,46 @@ void main() {
           pickUnreadBook(books, {}, 'A1', math.Random(seed))!.id,
       };
       expect(picks, {'A1-K01', 'A1-K02', 'A1-K03'});
+    });
+
+    test('sesli açılacaksa ilk bölümünün sesi olan kitap önce; '
+        'hiçbirinin yoksa yine okunmamış biri', () {
+      BookSummary s(String id, bool? audio) => BookSummary.fromJson({
+        'id': id,
+        'title': id,
+        'firstChapterAudio': ?audio,
+      });
+      final list = [s('A2-K01', false), s('A2-K02', true), s('A2-K03', null)];
+      expect(list.map((b) => b.startsWithAudio), [false, true, true]);
+      final picks = {
+        for (var seed = 0; seed < 30; seed++)
+          pickUnreadBook(
+            list,
+            {},
+            'A2',
+            math.Random(seed),
+            preferAudio: true,
+          )!.id,
+      };
+      // Bilinmeyen (eski liste) sesli sayılır.
+      expect(picks, {'A2-K02', 'A2-K03'});
+      // Tercih yoksa hepsi aday.
+      final any = {
+        for (var seed = 0; seed < 30; seed++)
+          pickUnreadBook(list, {}, 'A2', math.Random(seed))!.id,
+      };
+      expect(any, {'A2-K01', 'A2-K02', 'A2-K03'});
+      // Sesli kitap kalmadıysa sessiz olan seçilir.
+      expect(
+        pickUnreadBook(
+          [s('A2-K01', false)],
+          {},
+          'A2',
+          math.Random(1),
+          preferAudio: true,
+        )!.id,
+        'A2-K01',
+      );
     });
 
     test('okunan kısım sayfaya göre; başlanmışta en az %1', () {

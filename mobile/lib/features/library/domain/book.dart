@@ -86,6 +86,7 @@ class BookSummary {
     this.estimatedMinutes,
     this.pageCount,
     this.chapterCount,
+    this.firstChapterAudio,
   });
 
   factory BookSummary.fromJson(Map<String, dynamic> j) => BookSummary(
@@ -98,6 +99,7 @@ class BookSummary {
     estimatedMinutes: (j['estimatedMinutes'] as num?)?.round(),
     pageCount: (j['pageCount'] as num?)?.toInt(),
     chapterCount: (j['chapters'] as num?)?.toInt(),
+    firstChapterAudio: j['firstChapterAudio'] as bool?,
   );
 
   final String id;
@@ -111,6 +113,13 @@ class BookSummary {
   final int? estimatedMinutes;
   final int? pageCount;
   final int? chapterCount;
+
+  /// İlk bölümün sesi var mı (`index.json → firstChapterAudio`). Eski
+  /// listelerde yoktur (null): sesli sayılır.
+  final bool? firstChapterAudio;
+
+  /// "Bana bir kitap oku" sesli açar: ilk bölümünün sesi olan kitap önce.
+  bool get startsWithAudio => firstChapterAudio ?? true;
 
   /// `A2-K03` → `A2`.
   static String levelOf(String id) => id.split('-').first;
@@ -326,10 +335,13 @@ class ChapterTrack {
   }
 
   /// Bölüm sesinin sonu (süre yoksa son cümlenin bitişi).
-  double get end =>
-      chapter.duration ??
-      items.lastWhere((i) => i.sentence.end != null).sentence.end ??
-      0;
+  double get end {
+    if (chapter.duration != null) return chapter.duration!;
+    for (final i in items.reversed) {
+      if (i.sentence.end != null) return i.sentence.end!;
+    }
+    return 0;
+  }
 }
 
 /// Bir kitabın tamamı.
@@ -463,14 +475,22 @@ class Book {
     return ChapterTrack(c, items);
   });
 
-  /// Sesli okunabilir mi: her bölümün sesi ve zamanları var.
-  bool get canListen =>
-      chapters.isNotEmpty &&
-      chapters.every(
-        (c) =>
-            c.audio != null &&
-            track(c.id).items.every((i) => i.sentence.hasTiming),
-      );
+  /// Sesli okunabilir mi: en az bir bölümün sesi ve zamanları var. Ses
+  /// bölüm bölüm hazırlanabilir (ör. ücretsiz TTS kotası bitti); sesi
+  /// olmayan bölüm sessiz okunur ([chapterCanListen]).
+  bool get canListen => chapters.any((c) => chapterCanListen(c.id));
+
+  /// Bu bölüm sesli okunabilir mi: sesi var ve bütün cümlelerinin zamanı var.
+  bool chapterCanListen(String chapterId) {
+    final c = chapters.where((c) => c.id == chapterId).firstOrNull;
+    if (c == null || c.audio == null) return false;
+    final items = track(c.id).items;
+    return items.isNotEmpty && items.every((i) => i.sentence.hasTiming);
+  }
+
+  /// İlk bölümü sesli okunabilir mi ("Bana bir kitap oku" sesli açar).
+  bool get firstChapterCanListen =>
+      chapters.isNotEmpty && chapterCanListen(chapters.first.id);
 
   /// Sayfadaki cümle (−1: bölüm başlığı).
   BookSentence sentenceAt(int pageIndex, int index) {

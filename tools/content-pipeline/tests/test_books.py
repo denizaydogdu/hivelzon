@@ -542,6 +542,7 @@ def test_dev_server_serves_books_with_range(book_dir):
         idx = json.loads(urllib.request.urlopen(f"{base}/books/index.json").read())
         assert [b["id"] for b in idx["books"]] == ["A1-K99"]
         assert idx["books"][0]["level"] == "A1" and "dir" not in idx["books"][0]
+        assert idx["books"][0]["firstChapterAudio"] is True
         pages = json.loads(urllib.request.urlopen(f"{base}/books/A1-K99/pages.json").read())
         assert pages["bookId"] == "A1-K99"
         req = urllib.request.Request(f"{base}/books/A1-K99/audio/c1.m4a", headers={"Range": "bytes=0-3"})

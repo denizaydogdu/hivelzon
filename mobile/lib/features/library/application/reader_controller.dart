@@ -78,6 +78,13 @@ class ReaderController extends ChangeNotifier {
         : s.sentenceIndex.clamp(-1, book.pages[pi].sentences.length - 1);
     _place = ReaderPlace(pi, si);
     _pageIndex = pi;
+    // Kitabın bir kısmı seslendirilmiş, açılan bölümün sesi yok: sessiz
+    // açılır, ekran bir kez sakin not gösterir.
+    if (_mode == ReaderMode.listen &&
+        !book.chapterCanListen(book.pages[pi].chapterId)) {
+      _mode = ReaderMode.silent;
+      _chapterAudioMissing = true;
+    }
   }
 
   static double Function() _stopwatchClock() {
@@ -112,6 +119,7 @@ class ReaderController extends ChangeNotifier {
   bool _sleepFired = false;
   bool _finished = false;
   bool _audioFailed = false;
+  bool _chapterAudioMissing = false;
   bool _disposed = false;
 
   /// Açık bölüm sesi ([book.chapters] sırası).
@@ -138,6 +146,32 @@ class ReaderController extends ChangeNotifier {
   ReaderMode get mode => _mode;
   bool get canListen => book.canListen && !_audioFailed;
   bool get audioFailed => _audioFailed;
+
+  /// Ekrandaki bölüm sesli okunabilir mi (kitap bölüm bölüm
+  /// seslendirilebilir; sesi olmayan bölüm sessiz okunur).
+  bool get chapterCanListen =>
+      canListen && book.chapterCanListen(book.pages[_pageIndex].chapterId);
+
+  /// Sesi olmayan bölüme gelindi (sesli okuma sessize geçti ya da "Sesli"
+  /// seçildi); ekran bir kez sakin not gösterir ve [clearChapterAudioNotice]
+  /// çağırır.
+  bool get chapterAudioMissing => _chapterAudioMissing;
+
+  void clearChapterAudioNotice() {
+    if (!_chapterAudioMissing) return;
+    _chapterAudioMissing = false;
+    _notify();
+  }
+
+  /// Bu bölümün sesi yok: ses durur, sessiz moda geçilir, not işaretlenir.
+  Future<void> _silenceForChapter() async {
+    if (_playing) await pause();
+    _stopAt = null;
+    _mode = ReaderMode.silent;
+    _chapterAudioMissing = true;
+    _notify();
+  }
+
   bool get isPlaying => _playing;
   double get speed => _speed;
   SleepOption get sleep => _sleep;
@@ -160,6 +194,9 @@ class ReaderController extends ChangeNotifier {
 
   /// Vurgulanan kelime (kelime vurgusu açıksa).
   int? get highlightedWord => _wordHighlight ? _word : null;
+
+  /// Okunan kelime (vurgu kapalı da olsa; okunan yeri izleme için).
+  int? get spokenWord => _mode == ReaderMode.listen ? _word : null;
 
   BookChapter get chapter => book.chapterOf(page);
 
@@ -234,6 +271,10 @@ class ReaderController extends ChangeNotifier {
     if (_disposed || !canListen) return;
     if (_finished) _finished = false;
     _sleepFired = false;
+    if (!book.chapterCanListen(book.pages[_place.pageIndex].chapterId)) {
+      await _silenceForChapter();
+      return;
+    }
     _mode = ReaderMode.listen;
     _stopAt = null;
     _tracking = true;
@@ -263,7 +304,7 @@ class ReaderController extends ChangeNotifier {
 
   /// 10 sn geri (bölümün başından öteye gitmez).
   Future<void> back10() async {
-    if (!canListen) return;
+    if (!canListen || _mode != ReaderMode.listen) return;
     final now = estimatedPosition;
     await _seek(now - 10);
     _applyPosition(_sample, save: true);
@@ -303,6 +344,12 @@ class ReaderController extends ChangeNotifier {
   Future<void> setMode(ReaderMode m) async {
     if (m == _mode) return;
     if (m == ReaderMode.listen && !canListen) return;
+    if (m == ReaderMode.listen && !chapterCanListen) {
+      // Sesi olmayan bölümde "Sesli": not çıkar, sessiz kalır.
+      _chapterAudioMissing = true;
+      _notify();
+      return;
+    }
     _mode = m;
     if (m == ReaderMode.silent) {
       await pause();
@@ -326,6 +373,11 @@ class ReaderController extends ChangeNotifier {
     _place = ReaderPlace(i, _firstOn(i));
     _word = null;
     _report();
+    if (_mode == ReaderMode.listen && canListen && !chapterCanListen) {
+      // Sesli okurken sesi olmayan bölüme geçildi.
+      await _silenceForChapter();
+      return;
+    }
     if (_mode == ReaderMode.listen && canListen) {
       final wasPlaying = _playing;
       final item = _itemOf(_place);
@@ -497,7 +549,9 @@ class ReaderController extends ChangeNotifier {
     }
     if (word != _word) {
       _word = word;
-      if (_wordHighlight) changed = true;
+      // Kelime vurgusu kapalıyken de: okunan yeri izleme uzun cümlede
+      // kelimeyi izler.
+      changed = true;
     }
     if (changed) _notify();
   }
@@ -550,6 +604,13 @@ class ReaderController extends ChangeNotifier {
     _word = null;
     _sample = 0;
     _report(sec: 0);
+    if (!book.chapterCanListen(next.id)) {
+      // Sıradaki bölümün sesi henüz yok: sessiz moda geçilir, bölümün ilk
+      // sayfasında kalınır; ekran bir kez sakin not gösterir.
+      if (_sleep == SleepOption.endOfChapter) _sleep = SleepOption.off;
+      await _silenceForChapter();
+      return;
+    }
     if (_sleep == SleepOption.endOfChapter) {
       _sleep = SleepOption.off;
       _sleepFired = true;
