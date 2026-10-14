@@ -1,0 +1,228 @@
+{
+  "schemaVersion": 1,
+  "id": "C2-K05",
+  "slug": "C2-K05-the-other-half-of-the-sentence",
+  "level": "C2",
+  "genre": "everyday",
+  "title": "The Other Half of the Sentence",
+  "titleTr": "Cümlenin Öbür Yarısı",
+  "blurbTr": "Aylin babasıyla hiçbir zaman aynı dili tam olarak konuşamadı: babası İngilizce bilmezdi, Aylin'in Türkçesi ise on yaşında donup kalmıştı. Şimdi bir yıl önce ölen yazar babasının son romanını İngilizceye çeviriyor: İstanbul'da bir vapur iskelesinde bilet satan bir adam ve uzakta yaşayan kızı. Dokuz bölüm var, onuncusu yok; içindekiler sayfasında onuncu bölümün yerinde yalnızca Aylin'in adı yazıyor. Ve kenar notlarında, babasının hiç bilmediğini sandığı bir dilde, el yazısıyla notlar.",
+  "hookEn": "My father wrote nine chapters in Turkish and left the tenth, it seemed, to me.",
+  "contentVersion": 1,
+  "status": "DRAFT",
+  "aiGenerated": true,
+  "palette": {
+    "background": "#F4F1EA",
+    "surface": "#DCDFE0",
+    "text": "#23262B",
+    "accent": "#9A3B2C",
+    "highlight": "#C4673F"
+  },
+  "cover": "cover.png",
+  "properNouns": [
+    "Aylin",
+    "Marsh",
+    "Hakan",
+    "Aral",
+    "Judith",
+    "Rosalind",
+    "Pike",
+    "Halyard",
+    "Nevzat",
+    "Deniz",
+    "Selçuk",
+    "Bey",
+    "Dilek",
+    "Hanım",
+    "Ayım",
+    "Istanbul",
+    "Manchester",
+    "Kemerburnu",
+    "Çınaraltı",
+    "Sakızlı",
+    "Christmas"
+  ],
+  "narration": {
+    "modelId": "eleven_v3",
+    "speed": 1.05,
+    "voiceId": "EXAVITQu4vr4xnSDxMaL"
+  },
+  "chapters": [
+    {
+      "id": "c1",
+      "title": "The Manuscript",
+      "titleTr": "Müsvedde",
+      "pages": [
+        {
+          "id": "p01",
+          "image": "p01.png"
+        },
+        {
+          "id": "p02",
+          "image": null
+        },
+        {
+          "id": "p03",
+          "image": null
+        },
+        {
+          "id": "p04",
+          "image": null
+        }
+      ]
+    },
+    {
+      "id": "c2",
+      "title": "Untranslatable",
+      "titleTr": "Çevrilemeyen",
+      "pages": [
+        {
+          "id": "p05",
+          "image": "p05.png"
+        },
+        {
+          "id": "p06",
+          "image": null
+        },
+        {
+          "id": "p07",
+          "image": null
+        },
+        {
+          "id": "p08",
+          "image": null
+        }
+      ]
+    },
+    {
+      "id": "c3",
+      "title": "Istanbul",
+      "titleTr": "İstanbul",
+      "pages": [
+        {
+          "id": "p09",
+          "image": "p09.png"
+        },
+        {
+          "id": "p10",
+          "image": null
+        },
+        {
+          "id": "p11",
+          "image": null
+        },
+        {
+          "id": "p12",
+          "image": null
+        }
+      ]
+    },
+    {
+      "id": "c4",
+      "title": "Childhood Turkish",
+      "titleTr": "Çocukluk Türkçesi",
+      "pages": [
+        {
+          "id": "p13",
+          "image": "p13.png"
+        },
+        {
+          "id": "p14",
+          "image": null
+        },
+        {
+          "id": "p15",
+          "image": null
+        }
+      ]
+    },
+    {
+      "id": "c5",
+      "title": "Tuesdays",
+      "titleTr": "Salılar",
+      "pages": [
+        {
+          "id": "p16",
+          "image": "p16.png"
+        },
+        {
+          "id": "p17",
+          "image": null
+        },
+        {
+          "id": "p18",
+          "image": null
+        },
+        {
+          "id": "p19",
+          "image": null
+        }
+      ]
+    },
+    {
+      "id": "c6",
+      "title": "Chapter Nine",
+      "titleTr": "Dokuzuncu Bölüm",
+      "pages": [
+        {
+          "id": "p20",
+          "image": "p20.png"
+        },
+        {
+          "id": "p21",
+          "image": null
+        },
+        {
+          "id": "p22",
+          "image": null
+        }
+      ]
+    },
+    {
+      "id": "c7",
+      "title": "The Envelope",
+      "titleTr": "Zarf",
+      "pages": [
+        {
+          "id": "p23",
+          "image": "p23.png"
+        },
+        {
+          "id": "p24",
+          "image": null
+        },
+        {
+          "id": "p25",
+          "image": null
+        },
+        {
+          "id": "p26",
+          "image": null
+        }
+      ]
+    },
+    {
+      "id": "c8",
+      "title": "The Other Half",
+      "titleTr": "Öbür Yarısı",
+      "pages": [
+        {
+          "id": "p27",
+          "image": "p27.png"
+        },
+        {
+          "id": "p28",
+          "image": null
+        },
+        {
+          "id": "p29",
+          "image": null
+        },
+        {
+          "id": "p30",
+          "image": null
+        }
+      ]
+    }
+  ]
+}

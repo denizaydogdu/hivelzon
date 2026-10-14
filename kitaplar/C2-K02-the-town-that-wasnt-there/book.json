@@ -1,0 +1,219 @@
+{
+  "schemaVersion": 1,
+  "id": "C2-K02",
+  "slug": "C2-K02-the-town-that-wasnt-there",
+  "level": "C2",
+  "genre": "adventure",
+  "title": "The Town That Wasn't There",
+  "titleTr": "Orada Olmayan Kasaba",
+  "blurbTr": "Haritacıların eski bir hilesi vardır: kopyalayanı yakalamak için haritaya hiç var olmayan bir sokak, bir köy eklemek. Merrow Cross 1931'den beri bütün kâğıt haritalarda görünüyor ama hiçbir uydu görüntüsünde yok. Saha doğrulama uzmanı Amira Haddad, masa başına geçmeden önceki son işinde bu tuzak kasabayı kayıttan silmekle görevli ve işin basit olduğundan emin. Tek sorun, Merrow Cross damgasıyla bir ay önce postalanmış bir kartpostal.",
+  "hookEn": "The town of Merrow Cross appeared on every paper map printed since 1931, and on no satellite image ever taken.",
+  "contentVersion": 1,
+  "status": "DRAFT",
+  "aiGenerated": true,
+  "palette": {
+    "background": "#F4EDDC",
+    "surface": "#E6DBC1",
+    "text": "#2A261D",
+    "accent": "#2F5141",
+    "highlight": "#7C8F4A"
+  },
+  "cover": "cover.png",
+  "properNouns": [
+    "Amira",
+    "Haddad",
+    "Merrow",
+    "Corrin",
+    "Gridwell",
+    "Gavin",
+    "Pell",
+    "Theo",
+    "Marsh",
+    "Hollins",
+    "Vane",
+    "Canada",
+    "Lebanon",
+    "Beirut",
+    "Callowford",
+    "Bryony",
+    "Kit",
+    "Rowley",
+    "Nell",
+    "Hester",
+    "Gale",
+    "Arthur",
+    "Lisle"
+  ],
+  "narration": {
+    "modelId": "eleven_v3",
+    "speed": 1.05,
+    "voiceId": "EXAVITQu4vr4xnSDxMaL"
+  },
+  "chapters": [
+    {
+      "id": "c1",
+      "title": "Trap Streets",
+      "titleTr": "Tuzak Sokaklar",
+      "pages": [
+        {
+          "id": "p01",
+          "image": "p01.png"
+        },
+        {
+          "id": "p02",
+          "image": null
+        },
+        {
+          "id": "p03",
+          "image": null
+        },
+        {
+          "id": "p04",
+          "image": null
+        }
+      ]
+    },
+    {
+      "id": "c2",
+      "title": "The Road",
+      "titleTr": "Yol",
+      "pages": [
+        {
+          "id": "p05",
+          "image": "p05.png"
+        },
+        {
+          "id": "p06",
+          "image": null
+        },
+        {
+          "id": "p07",
+          "image": null
+        },
+        {
+          "id": "p08",
+          "image": null
+        }
+      ]
+    },
+    {
+      "id": "c3",
+      "title": "Crossing",
+      "titleTr": "Karşıya Geçiş",
+      "pages": [
+        {
+          "id": "p09",
+          "image": "p09.png"
+        },
+        {
+          "id": "p10",
+          "image": null
+        },
+        {
+          "id": "p11",
+          "image": null
+        },
+        {
+          "id": "p12",
+          "image": null
+        }
+      ]
+    },
+    {
+      "id": "c4",
+      "title": "Population: Unconfirmed",
+      "titleTr": "Nüfus: Doğrulanmadı",
+      "pages": [
+        {
+          "id": "p13",
+          "image": "p13.png"
+        },
+        {
+          "id": "p14",
+          "image": null
+        },
+        {
+          "id": "p15",
+          "image": null
+        },
+        {
+          "id": "p16",
+          "image": null
+        },
+        {
+          "id": "p17",
+          "image": null
+        }
+      ]
+    },
+    {
+      "id": "c5",
+      "title": "Invented",
+      "titleTr": "Uydurma",
+      "pages": [
+        {
+          "id": "p18",
+          "image": "p18.png"
+        },
+        {
+          "id": "p19",
+          "image": null
+        },
+        {
+          "id": "p20",
+          "image": null
+        },
+        {
+          "id": "p21",
+          "image": null
+        }
+      ]
+    },
+    {
+      "id": "c6",
+      "title": "Two Drafts",
+      "titleTr": "İki Taslak",
+      "pages": [
+        {
+          "id": "p22",
+          "image": "p22.png"
+        },
+        {
+          "id": "p23",
+          "image": null
+        },
+        {
+          "id": "p24",
+          "image": null
+        },
+        {
+          "id": "p25",
+          "image": null
+        }
+      ]
+    },
+    {
+      "id": "c7",
+      "title": "Green Roofs",
+      "titleTr": "Yeşil Çatılar",
+      "pages": [
+        {
+          "id": "p26",
+          "image": "p26.png"
+        },
+        {
+          "id": "p27",
+          "image": null
+        },
+        {
+          "id": "p28",
+          "image": null
+        },
+        {
+          "id": "p29",
+          "image": null
+        }
+      ]
+    }
+  ]
+}

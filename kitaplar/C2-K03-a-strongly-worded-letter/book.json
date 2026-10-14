@@ -1,0 +1,218 @@
+{
+  "schemaVersion": 1,
+  "id": "C2-K03",
+  "slug": "C2-K03-a-strongly-worded-letter",
+  "level": "C2",
+  "genre": "humor",
+  "title": "A Strongly Worded Letter",
+  "titleTr": "Sert Bir Mektup",
+  "blurbTr": "Her şey nazik bir mektupla başladı. Sonra bir cevap geldi, sonra cevaba cevap. Emekli okul müdiresi Constance Webb, yeni komşusu emekli vergi müfettişi Desmond Achterberg'den güneşini kesen dev porsuk çitini alçaltmasını istiyor. Desmond da en az onun kadar kibar, en az onun kadar inatçı. İki komşu, son derece incelikli bir dille, giderek tırmanan bir mektup savaşına giriyor. Postacı günde üç kez geliyor, köy taraf tutuyor, dükkândaki tahtada bahisler açılıyor. Peki bu çit gerçekte kimin?",
+  "hookEn": "\"Dear Mr Achterberg, I write, with the greatest possible reluctance, about your hedge.\"",
+  "contentVersion": 1,
+  "status": "DRAFT",
+  "aiGenerated": true,
+  "palette": {
+    "background": "#F6F2EA",
+    "surface": "#E4EADF",
+    "text": "#1E2A3F",
+    "accent": "#5C7F45",
+    "highlight": "#D98C9A"
+  },
+  "cover": "cover.png",
+  "properNouns": [
+    "Constance",
+    "Webb",
+    "Con",
+    "Desmond",
+    "Achterberg",
+    "Beatrice",
+    "Bea",
+    "Pike",
+    "Fernleigh",
+    "Hollybank",
+    "Larkspur",
+    "Nether",
+    "Ambley",
+    "Kingsmere",
+    "Wexcombe",
+    "Hartwell",
+    "Barry",
+    "Tuttle",
+    "Priya",
+    "Dhillon",
+    "Fairweather",
+    "Ogunleye",
+    "Quayle",
+    "Hollis",
+    "Josh",
+    "Audit"
+  ],
+  "narration": {
+    "modelId": "eleven_v3",
+    "speed": 1.05,
+    "voiceId": "EXAVITQu4vr4xnSDxMaL"
+  },
+  "chapters": [
+    {
+      "id": "c1",
+      "title": "Reluctance",
+      "titleTr": "Gönülsüzlük",
+      "pages": [
+        {
+          "id": "p01",
+          "image": "p01.png"
+        },
+        {
+          "id": "p02",
+          "image": null
+        },
+        {
+          "id": "p03",
+          "image": null
+        },
+        {
+          "id": "p04",
+          "image": null
+        }
+      ]
+    },
+    {
+      "id": "c2",
+      "title": "With Respect",
+      "titleTr": "Tüm Saygımla",
+      "pages": [
+        {
+          "id": "p05",
+          "image": "p05.png"
+        },
+        {
+          "id": "p06",
+          "image": null
+        },
+        {
+          "id": "p07",
+          "image": null
+        },
+        {
+          "id": "p08",
+          "image": null
+        }
+      ]
+    },
+    {
+      "id": "c3",
+      "title": "The Street Takes Sides",
+      "titleTr": "Sokak Taraf Tutuyor",
+      "pages": [
+        {
+          "id": "p09",
+          "image": "p09.png"
+        },
+        {
+          "id": "p10",
+          "image": null
+        },
+        {
+          "id": "p11",
+          "image": null
+        },
+        {
+          "id": "p12",
+          "image": null
+        }
+      ]
+    },
+    {
+      "id": "c4",
+      "title": "Beatrice",
+      "titleTr": "Beatrice",
+      "pages": [
+        {
+          "id": "p13",
+          "image": "p13.png"
+        },
+        {
+          "id": "p14",
+          "image": null
+        },
+        {
+          "id": "p15",
+          "image": null
+        },
+        {
+          "id": "p16",
+          "image": null
+        }
+      ]
+    },
+    {
+      "id": "c5",
+      "title": "Silence",
+      "titleTr": "Sessizlik",
+      "pages": [
+        {
+          "id": "p17",
+          "image": "p17.png"
+        },
+        {
+          "id": "p18",
+          "image": null
+        },
+        {
+          "id": "p19",
+          "image": null
+        },
+        {
+          "id": "p20",
+          "image": null
+        }
+      ]
+    },
+    {
+      "id": "c6",
+      "title": "The Survey",
+      "titleTr": "Ölçüm",
+      "pages": [
+        {
+          "id": "p21",
+          "image": "p21.png"
+        },
+        {
+          "id": "p22",
+          "image": null
+        },
+        {
+          "id": "p23",
+          "image": null
+        },
+        {
+          "id": "p24",
+          "image": null
+        }
+      ]
+    },
+    {
+      "id": "c7",
+      "title": "Tea?",
+      "titleTr": "Çay?",
+      "pages": [
+        {
+          "id": "p25",
+          "image": "p25.png"
+        },
+        {
+          "id": "p26",
+          "image": null
+        },
+        {
+          "id": "p27",
+          "image": null
+        },
+        {
+          "id": "p28",
+          "image": null
+        }
+      ]
+    }
+  ]
+}
