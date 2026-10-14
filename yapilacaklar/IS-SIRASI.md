@@ -126,7 +126,7 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 | T2 | H-059 | Profil, Hesap, "Hi benim hakkımda", hukuk metni tasarımı | Yüksek | H-057, H-058 | ✅ |
 | T3 | H-060 | Ana Sayfa, harita, bölüm paneli, jenerik tasarımı | Orta | H-057, H-058, H-039 | ✅ |
 | T3' | H-074 | Günlük hedef için gerçek süre ölçümü | Orta | H-060 | ⏳ |
-| T4 | H-061 | Defter, Kelime tekrarı, Konu seti, Sahne avı tasarımı | Orta | H-057, H-058 | ⏳ |
+| T4 | H-061 | Defter, Kelime tekrarı, Konu seti, Sahne avı tasarımı | Orta | H-057, H-058 | 🔄 |
 | T5 | H-062 | Oynatıcı katmanlarının tasarımı | Orta | H-057 | ⏳ |
 | T6 | H-063 | Hi'nin canlılığı (ifadeler, animasyonlar) | Orta | H-057 | ⏳ |
 | T7 | H-064 | Tasarım kalite turu (erişilebilirlik, golden, temizlik) | Orta | H-059 … H-063, H-040 | ⏳ |
@@ -359,3 +359,4 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
   - Kullanıcı H-060 tasarımını onayladı; hedef aşılınca "10/10" + onay ikonu; animasyon güncelleyenlere bir kez; gerçek süre ölçümü H-074 olarak açıldı. H-060 bitti; sıradaki H-061.
   - Kullanıcı 30 kitaplık kataloğu, pilot kitapları (The Blue Door, The Parrot Who Told Everything) ve yerleşimi onayladı; H-065 bitti. Sıradaki: H-066 (kitap paketi + boru hattı) ve H-061, paralel.
   - H-066 ayrı dalda yapıldı ve `main`'e birleştirildi (pytest 151/151); bitti. H-061 sürüyor. Sıradaki Kitaplık işi H-067 (okuyucu).
+  - H-061 ayrı dalda yapıldı ve `main`'e birleştirildi (581 test): tek satır biçimli Defter, sakin geri bildirimli tekrar, özet istatistikleri, dokunma tepkili konu setleri. Kullanıcı onayı bekleniyor.

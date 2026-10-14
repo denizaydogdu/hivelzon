@@ -70,6 +70,20 @@ Future<void> _settle(WidgetTester tester) async {
   }
 }
 
+Future<void> _precacheAssets(WidgetTester tester) async {
+  final images = tester
+      .widgetList<Image>(find.byType(Image))
+      .map((w) => w.image)
+      .whereType<AssetImage>()
+      .toList();
+  if (images.isEmpty) return;
+  final context = tester.element(find.byType(Image).first);
+  for (final image in images) {
+    await tester.runAsync(() => precacheImage(image, context));
+  }
+  await _settle(tester);
+}
+
 Future<void> _tap(WidgetTester tester, Finder f) async {
   await tester.ensureVisible(f);
   await tester.pump();
@@ -244,6 +258,9 @@ void main() {
     // Sayı kutuları ve belirme animasyonları bitsin; görseller hata verip
     // yer tutucuya geçsin.
     await _settle(tester);
+    // Uygulama içi resimler (boş durum illüstrasyonları) çözülmeden görüntü
+    // alınmasın: ekrandaki asset resimleri önceden yüklenir (kararsız golden).
+    await _precacheAssets(tester);
     await tester.pumpAndSettle();
   }
 

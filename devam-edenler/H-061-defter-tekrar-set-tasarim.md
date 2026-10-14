@@ -1,6 +1,6 @@
 # H-061: Defter, Kelime tekrarı, Konu seti ve Sahne avı tasarımı
 
-- **Durum:** Kod dalda (`h-061-defter-tekrar-set-tasarim`), testler yeşil; tasarım onayı ve simülatör görüntüleri bekleniyor
+- **Durum:** Devam ediyor (kod bitti ve `main`'de, flutter test 581/581; kullanıcının tasarım onayı ve 3 açık soru bekleniyor)
 - **Tür:** Uygulama (tasarım)
 - **Faz:** Tasarım yenilemesi T4 (`docs/UYGULAMA-PLANI.md`)
 - **Bağımlılık:** H-057, H-058
@@ -68,3 +68,5 @@ Kendi dalında (`h-061-defter-tekrar-set-tasarim`); sorun olursa birleştirme co
 2. Kelime tekrarı özetinde "ilk seferde bildin" sayısı gösteriliyor (sıfırsa gizli). Puan gibi algılanabilir mi; kalsın mı?
 3. Doğru cevapta tek hafif titreşim var; ayarlarda kapatma seçeneği istenir mi (şimdilik yok)?
 4. Simülatör önce/sonra görüntüleri (`.yerel/h-061/`) ve tasarım onayı bekleniyor.
+2026-10-14: `main`'e birleştirildi. Birleşmeden sonra `h061_tekrar_yok` golden'ı kararsız çıktı (illüstrasyon bazen çözülmeden görüntü alınıyordu); testte asset resimleri önceden yükleniyor, 5/5 geçti.
+
