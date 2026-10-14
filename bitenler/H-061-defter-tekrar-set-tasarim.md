@@ -1,6 +1,6 @@
 # H-061: Defter, Kelime tekrarı, Konu seti ve Sahne avı tasarımı
 
-- **Durum:** Devam ediyor (kod bitti ve `main`'de, flutter test 581/581; kullanıcının tasarım onayı ve 3 açık soru bekleniyor)
+- **Durum:** Bitti (2026-10-14; flutter test 581/581; tasarım kullanıcı onaylı)
 - **Tür:** Uygulama (tasarım)
 - **Faz:** Tasarım yenilemesi T4 (`docs/UYGULAMA-PLANI.md`)
 - **Bağımlılık:** H-057, H-058
@@ -69,4 +69,5 @@ Kendi dalında (`h-061-defter-tekrar-set-tasarim`); sorun olursa birleştirme co
 3. Doğru cevapta tek hafif titreşim var; ayarlarda kapatma seçeneği istenir mi (şimdilik yok)?
 4. Simülatör önce/sonra görüntüleri (`.yerel/h-061/`) ve tasarım onayı bekleniyor.
 2026-10-14: `main`'e birleştirildi. Birleşmeden sonra `h061_tekrar_yok` golden'ı kararsız çıktı (illüstrasyon bazen çözülmeden görüntü alınıyordu); testte asset resimleri önceden yükleniyor, 5/5 geçti.
+2026-10-14 (kullanıcı kararları): Tasarım onaylandı. Özetteki "ilk seferde bildin" kalır (sıfırsa gizli). Titreşim için Profil'de aç/kapa ayarı → H-064. Altyazıdan eklenenlerde "Bölüm N'den ekledin" kaynak satırı → H-067 ile (aynı kod). İş kapandı.
 

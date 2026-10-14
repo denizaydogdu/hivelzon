@@ -33,3 +33,5 @@ Kendi dalında (`h-064-tasarim-kalite-turu`); sorun olursa birleştirme commit'i
 
 ## Notlar
 2026-10-14: Kullanıcı isteğiyle açıldı: "Sayfaların tasarımlarıyla ilgilenen bir iş aç; Profilim sayfasını hiç beğenmedim, her şey iç içe, düz yazı gibi. Daha animasyonlu, şekilli, kullanıcıyı çekecek tasarımlar."
+2026-10-14 (H-061 kararı): Doğru cevaptaki hafif titreşim için Profil > Öğrenme'de "Titreşim" aç/kapa anahtarı (varsayılan açık); bütün haptic çağrıları bu ayara bağlanır.
+

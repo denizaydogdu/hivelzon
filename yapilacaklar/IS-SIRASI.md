@@ -9,7 +9,7 @@ Bu dosya tek takip noktasıdır. Hangi işin hangi sırada yapıldığını, şu
 - **Her şey yerelde** (kullanıcı kararı): Docker PostgreSQL (5434), yerel içerik sunucusu (`python3 tools/dev-content-server/serve.py`, 127.0.0.1:8787), iOS simülatörü "hiVelzon iPhone 17". Sunucu, Bunny Stream, mağaza ve geliştirici hesapları en sonda (H-044).
 - **Biten uygulama işleri:** H-033 repo iskeleti · H-034 bölüm paketi + content-lint · H-045 tasarım yönü (6 taslak, 6 kr) · H-031 etkileşimli oynatıcı · H-046 altyazıya dokun → Türkçe anlam (B1–B4 çevirileri APPROVED) · H-047 Hi kararları · H-049 sezon jeneriği (6,69 kr) · H-050 başlıkla açılış (schemaVersion 2) · H-035 hikâye haritası + Drift ilerleme + kilit kuralı.
 - **İçerik:** B1–B4 üretildi (pilot + B2–B4), jenerik, 6 arayüz taslağı, harita görseli. B5–B12 diyalogları onaylı (H-032) ama üretilmedi; kalan Sezon 1 üretimi ≈ 8 × ~8,5 kr. Higgsfield kredisi **84,56** (lite plan).
-- **Sıradaki adım:** Tasarım yenilemesi (Adım 6): H-057, H-058, H-059, H-041 ve H-039, H-060 bitti → **H-061** Defter ve tekrar → H-062 … H-064, H-040 (Kitaplık H-065… paralel); sonra H-042 … H-044.
+- **Sıradaki adım:** Tasarım yenilemesi (Adım 6): H-057, H-058, H-059, H-041 ve H-039, H-060, H-061 bitti → **H-062** Oynatıcı katmanları → H-063, H-064, H-040 (Kitaplık H-065… paralel); sonra H-042 … H-044.
 - **Kullanıcı kararı bekleyenler** (kodlamayı durdurmuyor):
   - H-001: güncellenen iş planının (`docs/IS-PLANI.md`, H-023) son onayı.
   - H-003: günlük konuşma kotasının ölçüsü, uyarı eşikleri, bütçe sorumlusu (tavan 300 USD/ay kararlaştı; v1 öncesi).
@@ -126,7 +126,7 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 | T2 | H-059 | Profil, Hesap, "Hi benim hakkımda", hukuk metni tasarımı | Yüksek | H-057, H-058 | ✅ |
 | T3 | H-060 | Ana Sayfa, harita, bölüm paneli, jenerik tasarımı | Orta | H-057, H-058, H-039 | ✅ |
 | T3' | H-074 | Günlük hedef için gerçek süre ölçümü | Orta | H-060 | ⏳ |
-| T4 | H-061 | Defter, Kelime tekrarı, Konu seti, Sahne avı tasarımı | Orta | H-057, H-058 | 🔄 |
+| T4 | H-061 | Defter, Kelime tekrarı, Konu seti, Sahne avı tasarımı | Orta | H-057, H-058 | ✅ |
 | T5 | H-062 | Oynatıcı katmanlarının tasarımı | Orta | H-057 | ⏳ |
 | T6 | H-063 | Hi'nin canlılığı (ifadeler, animasyonlar) | Orta | H-057 | ⏳ |
 | T7 | H-064 | Tasarım kalite turu (erişilebilirlik, golden, temizlik) | Orta | H-059 … H-063, H-040 | ⏳ |
@@ -156,6 +156,7 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 ## Biten işler
 | İş | Başlık | Bitiş | Doğrulama |
 |---|---|---|---|
+| H-061 | Defter, Kelime tekrarı, Konu seti, Sahne avı tasarımı | 2026-10-14 | Tek satır biçimli Defter (kaynak satırı), sakin doğru/Bilmiyorum geri bildirimi + hafif haptic, özet StatRow + sakin kutlama, illüstrasyonlu boş durumlar, ortak DontKnowButton; flutter test 581/581; kullanıcı onayladı |
 | H-066 | Kitap paketi ve içerik boru hattı | 2026-10-14 | `book.json`/`pages.json` şeması, `book_lint.py` (A1–C2, kapsama, cümle, çeviri, hizalama), `export_book.py` (-16 LUFS, WebP, manifest), `tts_book.py` (varsayılan kuru çalışma, tavansız çalışmaz, idempotent, anahtar yalnız ortamdan), dev sunucuda `/books/`; pytest 151/151 |
 | H-065 | Kitaplık kararları ve 30 kitaplık katalog | 2026-10-14 | `kitaplar/KATALOG.md` (6 seviye × 5 tür) kullanıcı onaylı; pilot A1-K01 + A2-K03; yerleşim Hikâye sekmesinde "Macera · Kitaplık" |
 | H-060 | Ana Sayfa, harita, bölüm paneli, jenerik tasarımı | 2026-10-14 | Hedef halkalı selam (aşılınca 10/10 + onay), dalga kesimli bölüm kartı, yeni harita başlığı, bir kez oynayan açılış ışığı, AppSheet paneli, metinler l10n'de; flutter test 531/531, CI yeşil; kullanıcı onayladı |
@@ -360,3 +361,4 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
   - Kullanıcı 30 kitaplık kataloğu, pilot kitapları (The Blue Door, The Parrot Who Told Everything) ve yerleşimi onayladı; H-065 bitti. Sıradaki: H-066 (kitap paketi + boru hattı) ve H-061, paralel.
   - H-066 ayrı dalda yapıldı ve `main`'e birleştirildi (pytest 151/151); bitti. H-061 sürüyor. Sıradaki Kitaplık işi H-067 (okuyucu).
   - H-061 ayrı dalda yapıldı ve `main`'e birleştirildi (581 test): tek satır biçimli Defter, sakin geri bildirimli tekrar, özet istatistikleri, dokunma tepkili konu setleri. Kullanıcı onayı bekleniyor.
+  - Kullanıcı H-061'i onayladı (özet sayısı kalır; titreşim ayarı H-064'e; "Bölüm N'den ekledin" H-067'ye). H-061 bitti. H-067 okuyucu ayrı dalda başladı.
