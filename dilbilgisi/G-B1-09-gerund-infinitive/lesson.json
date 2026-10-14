@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "id": "G-B1-09-gerund-infinitive",
+  "level": "B1",
+  "titleTr": "-ing mi, to mu? Fiil kalıpları (2)",
+  "titleEn": "Gerund or infinitive",
+  "goalTr": "enjoy / finish / avoid + -ing ile decide / hope / want + to ayrımını yapar, stop ve remember'daki anlam farkını bilir, want someone to do yapısını kurarsın.",
+  "prerequisites": [
+    "G-A2-15-verb-patterns"
+  ],
+  "contentVersion": 1,
+  "status": "DRAFT",
+  "aiGenerated": true,
+  "teacherReview": null,
+  "linksTo": {
+    "episodes": [],
+    "books": [
+      "A2-K02",
+      "A2-K03",
+      "A2-K04"
+    ]
+  },
+  "properNouns": [
+    "Paloma",
+    "Mrs Berg",
+    "Nia",
+    "Captain"
+  ],
+  "pronunciations": [
+    {
+      "term": "-ing",
+      "say_as": "ing"
+    }
+  ],
+  "narration": {
+    "tr": {
+      "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+    }
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "id": "G-B1-06-future-forms",
+  "level": "B1",
+  "titleTr": "Gelecek: will, going to, şimdiki zamanla randevu",
+  "titleEn": "Future forms",
+  "goalTr": "Kesinleşmiş randevuyu present continuous, planı going to, anlık kararı, sözü ve görüşe dayalı tahmini will ile söylersin.",
+  "prerequisites": [
+    "G-A2-10-going-to",
+    "G-A2-11-will"
+  ],
+  "contentVersion": 1,
+  "status": "DRAFT",
+  "aiGenerated": true,
+  "teacherReview": null,
+  "linksTo": {
+    "episodes": [
+      "A1-010"
+    ],
+    "books": [
+      "A2-K04",
+      "A2-K05"
+    ]
+  },
+  "properNouns": [
+    "Leo",
+    "Nia",
+    "Ankara",
+    "London",
+    "Ece",
+    "Mum"
+  ],
+  "narration": {
+    "tr": {
+      "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "id": "G-B1-02-present-perfect-since-for",
+  "level": "B1",
+  "titleTr": "Present perfect (2): since / for",
+  "titleEn": "Present perfect with since and for",
+  "goalTr": "Geçmişte başlayıp hâlâ süren durumu have / has ve fiilin üçüncü hâliyle, başlangıç için since, süre için for kullanarak söylersin.",
+  "prerequisites": [
+    "G-B1-01-present-perfect-experience"
+  ],
+  "contentVersion": 1,
+  "status": "DRAFT",
+  "aiGenerated": true,
+  "teacherReview": null,
+  "linksTo": {
+    "episodes": [],
+    "books": [
+      "A2-K05"
+    ]
+  },
+  "properNouns": [
+    "Ece",
+    "Ankara",
+    "May"
+  ],
+  "narration": {
+    "tr": {
+      "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+    }
+  }
+}

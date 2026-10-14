@@ -1,0 +1,475 @@
+{
+ "schemaVersion": 1,
+ "lessonId": "G-B1-09-gerund-infinitive",
+ "voices": {
+  "tr": {
+   "model": "alania-v2",
+   "voice": "alania2-f1",
+   "timing": "duyu-1",
+   "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+  },
+  "en": {
+   "model": "eleven_v3",
+   "voice": "EXAVITQu4vr4xnSDxMaL",
+   "speed": 1.0
+  }
+ },
+ "cards": [
+  {
+   "card": "c01",
+   "type": "hook",
+   "segments": [
+    {
+     "id": "c01-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Sisin içinde Paloma, Bayan Berg'in kurallarını hatırlamaya çalışıyor. Bu cümlede iki fiil art arda geliyor. İkinci fiilin nasıl bağlandığına dikkat et.",
+     "textSha256": "4bd26d44fd5e1326af7129af28b10aee5edbabfbb003c4e6e2be625cc75b6629",
+     "chars": 151,
+     "audio": "tr/c01-tr.mp3",
+     "align": "tr/c01-tr.align.json",
+     "present": true,
+     "duration": 8.99,
+     "quality": {
+      "words": 21,
+      "exact": 20,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c01-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "Paloma tried to remember the rules.",
+     "textSha256": "b467a35e7456fb783a61302373ac4bd2391954abbcf5ab63fc9e52a1698309bc",
+     "chars": 35,
+     "audio": "en/c01-ex1.mp3",
+     "align": "en/c01-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c02",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c02-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Bir fiilden sonra ikinci fiil iki biçimde gelebilir: -ing ekiyle ya da mastar olarak. Hangisinin geleceğini birinci fiil belirler. Bunlar kuralla değil, kulakla öğrenilen eşleşmelerdir.",
+     "textSha256": "36b610680fd2cdfa4538c524c23f5ec697ed64ae362bb16423534b7bda364536",
+     "chars": 185,
+     "audio": "tr/c02-tr.mp3",
+     "align": "tr/c02-tr.align.json",
+     "present": true,
+     "duration": 12.16,
+     "quality": {
+      "words": 25,
+      "exact": 23,
+      "fuzzy": 2,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c02-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I enjoy cooking.",
+     "textSha256": "73b7a9a5c482c4d0902b6d0bd90e967b54b271d5d684df6d7e1dba5ba3575712",
+     "chars": 16,
+     "audio": "en/c02-ex1.mp3",
+     "align": "en/c02-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c02-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "She decided to study abroad.",
+     "textSha256": "d6f208bd4bae66a6f2b11b02c00c0fbde3d5a49220321fbb2cf67bf55b5af980",
+     "chars": 28,
+     "audio": "en/c02-ex2.mp3",
+     "align": "en/c02-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c03",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c03-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Birkaç fiilde iki kalıp da olur, ama anlam değişir. Durmak fiilinden sonra -ing gelirse işi bırakırsın, mastar gelirse bir şey yapmak için durursun. Hatırlamak fiilinde de -ing geçmişi, mastar yapılacak işi gösterir.",
+     "textSha256": "2baee57ab1db542116e23ca46bc724e1e6abeea4f3b7b0738e4322f817d82f5c",
+     "chars": 216,
+     "audio": "tr/c03-tr.mp3",
+     "align": "tr/c03-tr.align.json",
+     "present": true,
+     "duration": 15.58,
+     "quality": {
+      "words": 32,
+      "exact": 28,
+      "fuzzy": 4,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "They stopped talking.",
+     "textSha256": "c3f873a939f6237f0a94114c78f70345ec04b2a9f575fc852ec0c223472c0ecd",
+     "chars": 21,
+     "audio": "en/c03-ex1.mp3",
+     "align": "en/c03-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c03-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "We stopped to buy some water.",
+     "textSha256": "60496166d97eb3d5603c9353432dc59d948199914a66c37209fef781ea2acd8c",
+     "chars": 29,
+     "audio": "en/c03-ex2.mp3",
+     "align": "en/c03-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c03-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "Remember to lock the door.",
+     "textSha256": "a4c23ae0ba474ea6401f7d8a2379b9c1b142f93cd1338e3db617d4f6db75e48b",
+     "chars": 26,
+     "audio": "en/c03-ex3.mp3",
+     "align": "en/c03-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c03-ex4",
+     "lang": "en",
+     "role": "example",
+     "text": "I remember meeting her.",
+     "textSha256": "cfc278286a90da74a396be49781c32b4907b1340a72680b75319b3e3c3fc68e4",
+     "chars": 23,
+     "audio": "en/c03-ex4.mp3",
+     "align": "en/c03-ex4.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c04",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c04-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Türkçede gelmeni istiyorum deriz. İngilizcede istemek fiilinden sonra önce kişi, sonra mastar gelir. Araya bağlaç girmez.",
+     "textSha256": "4ed58465382ec5e59df13abe5496a897eec4cc4b1868f6ebef8707dd6b59e4db",
+     "chars": 121,
+     "audio": "tr/c04-tr.mp3",
+     "align": "tr/c04-tr.align.json",
+     "present": true,
+     "duration": 8.32,
+     "quality": {
+      "words": 16,
+      "exact": 15,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c04-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I want you to help me.",
+     "textSha256": "7d995d596e2b5670cc597172401cdc597ae1330f0a46bbecf572aad19192d99f",
+     "chars": 22,
+     "audio": "en/c04-ex1.mp3",
+     "align": "en/c04-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c05",
+   "type": "examples",
+   "segments": [
+    {
+     "id": "c05-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I enjoy reading before bed.",
+     "textSha256": "193a5d77443e7948e99eed6e2a4e512efe0cced5706fa7c1af76fa18d0afebdc",
+     "chars": 27,
+     "audio": "en/c05-ex1.mp3",
+     "align": "en/c05-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "We hope to see you soon.",
+     "textSha256": "047e2833204194854487bfbd36d032c8175f25809a1cc1aa13725e1432590320",
+     "chars": 24,
+     "audio": "en/c05-ex2.mp3",
+     "align": "en/c05-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "Have you finished cleaning your room?",
+     "textSha256": "899e7612cdc88adf4a3850ecd511f59f76a0328bb9b5a414f4319f5683e35563",
+     "chars": 37,
+     "audio": "en/c05-ex3.mp3",
+     "align": "en/c05-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex4",
+     "lang": "en",
+     "role": "example",
+     "text": "She wants me to call her.",
+     "textSha256": "e5ff0cca97fa78f7c6ceede606be13e589a57837b32451ccc0bfdceabf01e773",
+     "chars": 25,
+     "audio": "en/c05-ex4.mp3",
+     "align": "en/c05-ex4.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex5",
+     "lang": "en",
+     "role": "example",
+     "text": "I'm looking forward to seeing you.",
+     "textSha256": "c9a75dab072830406c04790fd46b59eb4437df80dd06813000fcd5b86ff8b368",
+     "chars": 34,
+     "audio": "en/c05-ex5.mp3",
+     "align": "en/c05-ex5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c06",
+   "type": "contrast",
+   "segments": [
+    {
+     "id": "c06-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Türkçe iki kalıp için de mek ya da meyi der: yüzmeyi severim, okumaya karar verdim. Bu yüzden hangi kalıbın geleceği tahmin edilemez, eşleşmeyi duyarak öğrenirsin. Gelmeni istiyorum yapısını bağlaçla kurmak da çok olağan.",
+     "textSha256": "807fc8877b19203878d99d0be0e2f083d5f505f8c323fde0968e1c6e84ec3dd8",
+     "chars": 221,
+     "audio": "tr/c06-tr.mp3",
+     "align": "tr/c06-tr.align.json",
+     "present": true,
+     "duration": 14.91,
+     "quality": {
+      "words": 33,
+      "exact": 31,
+      "fuzzy": 2,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c06-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I enjoy swimming.",
+     "textSha256": "e6b72b66a2c3d4a384a13377d45b41ab2139bbca570092cb3829974e26dac974",
+     "chars": 17,
+     "audio": "en/c06-ex1.mp3",
+     "align": "en/c06-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c06-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "I want you to help me.",
+     "textSha256": "7d995d596e2b5670cc597172401cdc597ae1330f0a46bbecf572aad19192d99f",
+     "chars": 22,
+     "audio": "en/c06-ex2.mp3",
+     "align": "en/c06-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c06-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "I'm looking forward to seeing you.",
+     "textSha256": "c9a75dab072830406c04790fd46b59eb4437df80dd06813000fcd5b86ff8b368",
+     "chars": 34,
+     "audio": "en/c06-ex3.mp3",
+     "align": "en/c06-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c07",
+   "type": "practice",
+   "segments": [
+    {
+     "id": "c07-q5",
+     "lang": "en",
+     "role": "say",
+     "text": "I'm looking forward to seeing you.",
+     "textSha256": "c9a75dab072830406c04790fd46b59eb4437df80dd06813000fcd5b86ff8b368",
+     "chars": 34,
+     "audio": "en/c07-q5.mp3",
+     "align": "en/c07-q5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c08",
+   "type": "seeInStory",
+   "segments": [
+    {
+     "id": "c08-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Kitaplarda bu fiillerden sonra hep mastar geliyor. Şu cümlelere bir daha bak.",
+     "textSha256": "3aaab09c7e21e7061b1f2816edc16b0006a20f60c4d810c38dfa1e1e8ee32413",
+     "chars": 77,
+     "audio": "tr/c08-tr.mp3",
+     "align": "tr/c08-tr.align.json",
+     "present": true,
+     "duration": 4.64,
+     "quality": {
+      "words": 12,
+      "exact": 11,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    }
+   ]
+  },
+  {
+   "card": "c09",
+   "type": "rule",
+   "segments": [
+    {
+     "id": "c09-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Bazı fiillerden sonra ikinci fiil -ing ekiyle, bazılarından sonra mastar olarak gelir. Birinin bir şey yapmasını isterken önce kişi, sonra mastar gelir.",
+     "textSha256": "fa0b8e04c8571b6b8d0097f21f46b93555f994bf3fde12302c414163bb93bbaf",
+     "chars": 152,
+     "audio": "tr/c09-tr.mp3",
+     "align": "tr/c09-tr.align.json",
+     "present": true,
+     "duration": 11.02,
+     "quality": {
+      "words": 22,
+      "exact": 18,
+      "fuzzy": 4,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c09-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I enjoy reading, and I want to write a book.",
+     "textSha256": "f33b15009e56b1c255ac5afc0dd1d8d63697764e0d360efcc0e4af283cf45455",
+     "chars": 44,
+     "audio": "en/c09-ex1.mp3",
+     "align": "en/c09-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  }
+ ]
+}

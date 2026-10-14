@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "id": "G-B1-14-articles-general-specific",
+  "level": "B1",
+  "titleTr": "Artikeller (2): genel mi, belirli mi?",
+  "titleEn": "Articles: general or specific",
+  "goalTr": "Genel anlamda çoğul ve sayılamayan isimleri the'siz, belirli olanları the ile kullanır; go to school, by bus, the sea gibi kalıpları bilirsin.",
+  "prerequisites": [
+    "G-A1-04-the",
+    "G-A2-07-countable-uncountable"
+  ],
+  "contentVersion": 1,
+  "status": "DRAFT",
+  "aiGenerated": true,
+  "teacherReview": null,
+  "linksTo": {
+    "episodes": [
+      "A1-001"
+    ],
+    "books": [
+      "A1-K04",
+      "A2-K04"
+    ]
+  },
+  "properNouns": [
+    "Leo",
+    "Ece",
+    "Pip",
+    "Moon"
+  ],
+  "narration": {
+    "tr": {
+      "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+    }
+  }
+}

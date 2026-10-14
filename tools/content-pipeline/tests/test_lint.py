@@ -43,6 +43,12 @@ def test_lemma_irregular_past_and_comparatives():
     assert cov.in_list == cov.tokens, cov.off_list
 
 
+def test_lemma_past_participles_and_hadnt():
+    """B1 present / past perfect: düzensiz üçüncü hâl ve hadn't başsözcüğe iner (H-081)."""
+    cov = coverage(["I've seen it. She has eaten. He hadn't gone. We have known her. They had taken it."], "B1")
+    assert cov.in_list == cov.tokens, cov.off_list
+
+
 def test_glossary_note_does_not_push_listed_word_off_list():
     """Sözlükteki öğretim notu (going to, sang) listedeki sözcüğü 'sözlükle' sayılana düşürmez."""
     cov = coverage(["We're going to cook. Max sang."], "A2", gloss=["going to", "sang"], proper={"max"})

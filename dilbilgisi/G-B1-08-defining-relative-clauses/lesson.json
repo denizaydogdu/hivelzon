@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "id": "G-B1-08-defining-relative-clauses",
+  "level": "B1",
+  "titleTr": "Tanımlayan sıfat cümlecikleri: who / which / that",
+  "titleEn": "Defining relative clauses",
+  "goalTr": "Bir ismi arkasından who, which ya da that ile tanımlar, nesne konumunda bu kelimeyi düşürebileceğini bilirsin.",
+  "prerequisites": [
+    "G-A2-04-past-simple-regular",
+    "G-A1-05-pronouns-possessives"
+  ],
+  "contentVersion": 1,
+  "status": "DRAFT",
+  "aiGenerated": true,
+  "teacherReview": null,
+  "linksTo": {
+    "episodes": [],
+    "books": [
+      "A2-K04"
+    ]
+  },
+  "properNouns": [
+    "Nia"
+  ],
+  "narration": {
+    "tr": {
+      "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+    }
+  }
+}

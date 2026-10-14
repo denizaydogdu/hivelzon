@@ -55,7 +55,7 @@ IRREGULAR = {
     "hidden": "hide", "known": "know", "ridden": "ride", "risen": "rise", "seen": "see",
     "shaken": "shake", "shown": "show", "spoken": "speak", "stolen": "steal", "sung": "sing",
     "swum": "swim", "taken": "take", "thrown": "throw", "woken": "wake", "worn": "wear",
-    "written": "write",
+    "written": "write", "drawn": "draw", "rung": "ring",
     # -ie fiilleri: lie → lying
     "lying": "lie", "dying": "die", "tying": "tie",
 }

@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "id": "G-B1-07-zero-first-conditional",
+  "level": "B1",
+  "titleTr": "Koşul cümleleri: 0 ve 1. tip",
+  "titleEn": "Zero and first conditional",
+  "goalTr": "Genel doğruları if + geniş zaman, gerçek olasılıkları if + geniş zaman ve will ile kurar; if, when ve unless'ı ayırırsın.",
+  "prerequisites": [
+    "G-A2-11-will",
+    "G-A2-13-conjunctions"
+  ],
+  "contentVersion": 1,
+  "status": "DRAFT",
+  "aiGenerated": true,
+  "teacherReview": null,
+  "linksTo": {
+    "episodes": [],
+    "books": [
+      "A2-K02"
+    ]
+  },
+  "properNouns": [
+    "Ece",
+    "Leo"
+  ],
+  "narration": {
+    "tr": {
+      "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+    }
+  }
+}

@@ -1,0 +1,406 @@
+{
+ "schemaVersion": 1,
+ "lessonId": "G-B1-06-future-forms",
+ "voices": {
+  "tr": {
+   "model": "alania-v2",
+   "voice": "alania2-f1",
+   "timing": "duyu-1",
+   "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+  },
+  "en": {
+   "model": "eleven_v3",
+   "voice": "EXAVITQu4vr4xnSDxMaL",
+   "speed": 1.0
+  }
+ },
+ "cards": [
+  {
+   "card": "c01",
+   "type": "hook",
+   "segments": [
+    {
+     "id": "c01-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Annesi, Nia'ya Dünya biletini getirdi ve Nia hemen Leo'ya yazdı. Bilet alındı, tarih belli: bu artık kesinleşmiş bir plan. İngilizcede böyle bir plan için şimdiki zaman da kullanılır, dinle.",
+     "textSha256": "976f35ca8d4833bf5ad9870ddee799fa1be4b6b5de2e8ba63731bb4c78aad4e8",
+     "chars": 190,
+     "audio": "tr/c01-tr.mp3",
+     "align": "tr/c01-tr.align.json",
+     "present": true,
+     "duration": 13.95,
+     "quality": {
+      "words": 29,
+      "exact": 29,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c01-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I'm coming!",
+     "textSha256": "d290923960920881f713fca39fc1b7771f47a79dbeed4f11c82cc362dea9916f",
+     "chars": 11,
+     "audio": "en/c01-ex1.mp3",
+     "align": "en/c01-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c02",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c02-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Tarihi ve yeri belli, kesinleşmiş planlar için şimdiki zaman kullanılır. Türkçede de yarın doktora gidiyorum deriz. Yanına çoğu zaman bir zaman ifadesi gelir.",
+     "textSha256": "c294552ac3e4e8013f6e55eaf039ea7ac0a3410a8bd9992fbf3a7ec11f8f118b",
+     "chars": 158,
+     "audio": "tr/c02-tr.mp3",
+     "align": "tr/c02-tr.align.json",
+     "present": true,
+     "duration": 10.88,
+     "quality": {
+      "words": 23,
+      "exact": 23,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c02-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I'm seeing the doctor on Monday.",
+     "textSha256": "ceabd7c8f48ad2ff84e17bbe33b3b3ffb780027436b2243b8d91ed4ff3f4ad9c",
+     "chars": 32,
+     "audio": "en/c02-ex1.mp3",
+     "align": "en/c02-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c02-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "We're flying to Ankara tomorrow.",
+     "textSha256": "9667c76f94bcdb574251128bfb8664608626d24757cc2f07b05d2f92ec765cff",
+     "chars": 32,
+     "audio": "en/c02-ex2.mp3",
+     "align": "en/c02-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c03",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c03-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Önceden verilmiş kararlar ve gözle görülen kanıt için plan kalıbı kullanılır. Konuşurken o anda verilen karar ve söz için gelecek yardımcı fiili gelir. Kanıtı olmayan, görüşe dayalı tahminde de o kullanılır.",
+     "textSha256": "f5b07b2f2332cbb83f223241dcc0cfacbdc2e93611d7f5531f92d613a034cd84",
+     "chars": 207,
+     "audio": "tr/c03-tr.mp3",
+     "align": "tr/c03-tr.align.json",
+     "present": true,
+     "duration": 14.2,
+     "quality": {
+      "words": 31,
+      "exact": 31,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I'm going to study medicine.",
+     "textSha256": "c294f52e76a6662769100fabe968dbff16eeaca21f46c74065a00b5a1d85a6e8",
+     "chars": 28,
+     "audio": "en/c03-ex1.mp3",
+     "align": "en/c03-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c03-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "The phone is ringing. I'll answer it.",
+     "textSha256": "376bf3024c7ea9e5dfa9f05d88db4770a8467e09b8855b0af4292ee01daaad57",
+     "chars": 37,
+     "audio": "en/c03-ex2.mp3",
+     "align": "en/c03-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c03-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "I think it will be sunny tomorrow.",
+     "textSha256": "eeff5809adb83ad34736cbffb27d7b1c6a60018a5d58a6430380c2a63341be30",
+     "chars": 34,
+     "audio": "en/c03-ex3.mp3",
+     "align": "en/c03-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c04",
+   "type": "examples",
+   "segments": [
+    {
+     "id": "c04-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "We're meeting at six at the café.",
+     "textSha256": "1ef02448c5d5769626efc5aee88d6bba9b548f71f6e374da1a26fd688788ec17",
+     "chars": 33,
+     "audio": "en/c04-ex1.mp3",
+     "align": "en/c04-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "I'm going to learn to swim this summer.",
+     "textSha256": "763982bce37ac0ae3595674c53cdd19269f3291c7e3fbf1430e0f4fda40f7034",
+     "chars": 39,
+     "audio": "en/c04-ex2.mp3",
+     "align": "en/c04-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "I'm tired. I think I'll go to bed early.",
+     "textSha256": "cd12106b19f318614f84779445feb413bdbdb45c4e49d22f7c7e2f4bd86d58e8",
+     "chars": 40,
+     "audio": "en/c04-ex3.mp3",
+     "align": "en/c04-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex4",
+     "lang": "en",
+     "role": "example",
+     "text": "Don't worry. I won't tell anyone.",
+     "textSha256": "c26fa058718321eebda88ee95a6b6c73189f3e94893a23236d0d959ec5139131",
+     "chars": 33,
+     "audio": "en/c04-ex4.mp3",
+     "align": "en/c04-ex4.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex5",
+     "lang": "en",
+     "role": "example",
+     "text": "Look at the sky! It's going to rain.",
+     "textSha256": "4942048822b0536f8c2d33a4985ddceea318c2889d36d1e64b2be616388d24ee",
+     "chars": 36,
+     "audio": "en/c04-ex5.mp3",
+     "align": "en/c04-ex5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c05",
+   "type": "contrast",
+   "segments": [
+    {
+     "id": "c05-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Türkçe geleceği çoğu zaman ecek ekiyle söyler; söz verirken de geniş zamanı kullanır: seni ararım. Kesin randevu için kullandığımız iyor eki ise İngilizceyle aynı çalışır. Olunca, sonra gibi zaman bildiren yan cümlede gelecek yardımcı fiili gelmez.",
+     "textSha256": "e535cb9aae75a7f987fcfcc6765481fb377ae61f6209c4cc284abe69025f1da8",
+     "chars": 248,
+     "audio": "tr/c05-tr.mp3",
+     "align": "tr/c05-tr.align.json",
+     "present": true,
+     "duration": 16.7,
+     "quality": {
+      "words": 36,
+      "exact": 34,
+      "fuzzy": 2,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 4,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I'll call you tomorrow.",
+     "textSha256": "7cab89c1c27d0815ccc29aedf4b1e68b128706b2c5bac054e64167677e30d90d",
+     "chars": 23,
+     "audio": "en/c05-ex1.mp3",
+     "align": "en/c05-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "When I finish, I'll call you.",
+     "textSha256": "3ad4553d62db3e91e8252397adf5659a2b1f0691317e620746e17df1f8864e7f",
+     "chars": 29,
+     "audio": "en/c05-ex2.mp3",
+     "align": "en/c05-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c06",
+   "type": "practice",
+   "segments": [
+    {
+     "id": "c06-q5",
+     "lang": "en",
+     "role": "say",
+     "text": "I'm seeing the doctor on Monday.",
+     "textSha256": "ceabd7c8f48ad2ff84e17bbe33b3b3ffb780027436b2243b8d91ed4ff3f4ad9c",
+     "chars": 32,
+     "audio": "en/c06-q5.mp3",
+     "align": "en/c06-q5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c07",
+   "type": "seeInStory",
+   "segments": [
+    {
+     "id": "c07-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Kitaplarda ve bölümlerde bu üç biçimin hepsi var. Şu cümlelere bir daha bak.",
+     "textSha256": "d65f55aea2f241a6894d4533965da3ee11b28b69abbd0dbd67385c4f1f23b1c8",
+     "chars": 76,
+     "audio": "tr/c07-tr.mp3",
+     "align": "tr/c07-tr.align.json",
+     "present": true,
+     "duration": 4.64,
+     "quality": {
+      "words": 13,
+      "exact": 9,
+      "fuzzy": 4,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    }
+   ]
+  },
+  {
+   "card": "c08",
+   "type": "rule",
+   "segments": [
+    {
+     "id": "c08-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Kesin randevu için şimdiki zaman, plan ve kanıta dayalı tahmin için plan kalıbı kullanılır. Anlık karar, söz ve görüşe dayalı tahmin için gelecek yardımcı fiili gelir.",
+     "textSha256": "80605e4e5d8212c27bf2e4ee8f3cd22d589441f651afb965eca27d4ff638389d",
+     "chars": 167,
+     "audio": "tr/c08-tr.mp3",
+     "align": "tr/c08-tr.align.json",
+     "present": true,
+     "duration": 11.39,
+     "quality": {
+      "words": 26,
+      "exact": 26,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c08-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I'm meeting Ece at five.",
+     "textSha256": "b31c541fa9aa1cf1b724d14d5690ba0e53db93b0343ba7c145ed46c70c76454b",
+     "chars": 24,
+     "audio": "en/c08-ex1.mp3",
+     "align": "en/c08-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  }
+ ]
+}

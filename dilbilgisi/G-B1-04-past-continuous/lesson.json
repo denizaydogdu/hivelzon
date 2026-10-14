@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "id": "G-B1-04-past-continuous",
+  "level": "B1",
+  "titleTr": "Past continuous ve when / while",
+  "titleEn": "Past continuous",
+  "goalTr": "Geçmişte süren arka plan eylemini was / were + -ing ile, onu kesen kısa olayı past simple ile anlatırsın.",
+  "prerequisites": [
+    "G-A2-01-present-continuous",
+    "G-A2-05-past-simple-irregular"
+  ],
+  "contentVersion": 1,
+  "status": "DRAFT",
+  "aiGenerated": true,
+  "teacherReview": null,
+  "linksTo": {
+    "episodes": [],
+    "books": [
+      "A2-K01",
+      "A2-K02",
+      "A2-K04"
+    ]
+  },
+  "properNouns": [
+    "Paloma",
+    "Aunt",
+    "Füsun",
+    "Elif"
+  ],
+  "pronunciations": [
+    {
+      "term": "-ing",
+      "say_as": "ing"
+    }
+  ],
+  "narration": {
+    "tr": {
+      "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+    }
+  }
+}

@@ -1,0 +1,423 @@
+{
+ "schemaVersion": 1,
+ "lessonId": "G-B1-07-zero-first-conditional",
+ "voices": {
+  "tr": {
+   "model": "alania-v2",
+   "voice": "alania2-f1",
+   "timing": "duyu-1",
+   "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+  },
+  "en": {
+   "model": "eleven_v3",
+   "voice": "EXAVITQu4vr4xnSDxMaL",
+   "speed": 1.0
+  }
+ },
+ "cards": [
+  {
+   "card": "c01",
+   "type": "hook",
+   "segments": [
+    {
+     "id": "c01-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Bayan Berg dağa çıkmadan önce kuralları anlatıyor. Üçüncü kural bir koşul taşıyor: sis gelirse ne yapacaksınız? Koşulun olduğu taraftaki fiile dikkat et.",
+     "textSha256": "c60c036d551572134d4c1272078479e9b924a5f6d811627cd05169e6bc51cec7",
+     "chars": 153,
+     "audio": "tr/c01-tr.mp3",
+     "align": "tr/c01-tr.align.json",
+     "present": true,
+     "duration": 9.95,
+     "quality": {
+      "words": 22,
+      "exact": 19,
+      "fuzzy": 3,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c01-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "If the fog comes, stop and stay together.",
+     "textSha256": "1a254e83719c6fea92c2a29406b910f5cae379cc72cecdcaf73f9c91463c3f4c",
+     "chars": 41,
+     "audio": "en/c01-ex1.mp3",
+     "align": "en/c01-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c02",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c02-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Her zaman doğru olan sonuçlar için iki tarafta da geniş zaman kullanılır. Burada koşul kelimesi, her ne zaman anlamına yakındır. Bilimsel gerçekler ve alışkanlıklar böyle anlatılır.",
+     "textSha256": "f72cb064abf5e34d884bf81ea602fb7d4037a28a5d9cefb5deaa83701ea1678b",
+     "chars": 181,
+     "audio": "tr/c02-tr.mp3",
+     "align": "tr/c02-tr.align.json",
+     "present": true,
+     "duration": 11.55,
+     "quality": {
+      "words": 26,
+      "exact": 26,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c02-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "If you heat ice, it melts.",
+     "textSha256": "173fe2b3c1a66f2e9d5209492b253f18cd1ba687c4c4e846c8a949b995aadaf3",
+     "chars": 26,
+     "audio": "en/c02-ex1.mp3",
+     "align": "en/c02-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c03",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c03-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Gelecekte gerçekten olabilecek bir durum için koşul tarafında geniş zaman kullanılır. Sonuç tarafında gelecek yardımcı fiili ya da bir emir gelir. Koşul tarafına gelecek yardımcı fiili konmaz.",
+     "textSha256": "8e292f5f498d81934756233a43f76f1f7c764649b11474291c4f425e2998a187",
+     "chars": 192,
+     "audio": "tr/c03-tr.mp3",
+     "align": "tr/c03-tr.align.json",
+     "present": true,
+     "duration": 12.99,
+     "quality": {
+      "words": 27,
+      "exact": 27,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "If it rains tomorrow, we'll stay at home.",
+     "textSha256": "7144be90d42b78420710677a7b56270e1adbb0c418a5ff2207a01a4a55863d20",
+     "chars": 41,
+     "audio": "en/c03-ex1.mp3",
+     "align": "en/c03-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c04",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c04-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Eğer değilse anlamında tek bir kelime vardır; olumsuzluğu kendisi taşır, ardından fiil olumlu kalır. Olacağından emin olduğun bir şey için ise olunca anlamındaki kelime kullanılır.",
+     "textSha256": "500a1b51aa441cd712df9ce0987610c7fd78ad7c805ab932b1dbe656a38e7e0e",
+     "chars": 180,
+     "audio": "tr/c04-tr.mp3",
+     "align": "tr/c04-tr.align.json",
+     "present": true,
+     "duration": 12.03,
+     "quality": {
+      "words": 25,
+      "exact": 24,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c04-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "Unless you hurry, you'll miss the bus.",
+     "textSha256": "5e5840d539e47197c215986ea89999a1b5aff214cdce5dc52d457ee349472901",
+     "chars": 38,
+     "audio": "en/c04-ex1.mp3",
+     "align": "en/c04-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "When I get home, I'll call you.",
+     "textSha256": "400ae17955ed36fa483d2f0eb33b8df95d4fe8fa07579a3be2a867ae328f6307",
+     "chars": 31,
+     "audio": "en/c04-ex2.mp3",
+     "align": "en/c04-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c05",
+   "type": "examples",
+   "segments": [
+    {
+     "id": "c05-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "If you mix red and blue, you get purple.",
+     "textSha256": "7f73010687e7eeb8c8ef9847bedd0baadfc5f5a058252f7fab422a8e7d89c8a6",
+     "chars": 40,
+     "audio": "en/c05-ex1.mp3",
+     "align": "en/c05-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "If you study hard, you'll pass the exam.",
+     "textSha256": "7a2362317cd66d64adf5154ddf37e028ac8a4e312cf492a5a3a628a72ffe9009",
+     "chars": 40,
+     "audio": "en/c05-ex2.mp3",
+     "align": "en/c05-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "If I see Ece, I'll tell her.",
+     "textSha256": "f9c6c860147a3d277e60f7d6af2e7b90f7d144e877ec41fba28b787645ad5f74",
+     "chars": 28,
+     "audio": "en/c05-ex3.mp3",
+     "align": "en/c05-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex4",
+     "lang": "en",
+     "role": "example",
+     "text": "What will you do if the shop is closed?",
+     "textSha256": "ca01413e376f2ec7d194941b42d5c9816c236d35ada909f4d9e032d7f73384f4",
+     "chars": 39,
+     "audio": "en/c05-ex4.mp3",
+     "align": "en/c05-ex4.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex5",
+     "lang": "en",
+     "role": "example",
+     "text": "Unless it rains, we'll have a picnic.",
+     "textSha256": "27faa0f3cc6e090b73d255f9072755e09a308fd7eb34d41a02a7880970a01930",
+     "chars": 37,
+     "audio": "en/c05-ex5.mp3",
+     "align": "en/c05-ex5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c06",
+   "type": "contrast",
+   "segments": [
+    {
+     "id": "c06-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Türkçede koşulu çoğu zaman se ekiyle, gelecek eki olmadan söyleriz: yağarsa evde kalırız. İngilizce de aynı: koşul tarafına gelecek yardımcı fiili konmaz. Eğer değilse anlamındaki kelimeden sonra ikinci bir olumsuzluk da gelmez.",
+     "textSha256": "59dc589e59f37c8165414fa21466c36fcb172f510777340cdb552e70a9f84a39",
+     "chars": 228,
+     "audio": "tr/c06-tr.mp3",
+     "align": "tr/c06-tr.align.json",
+     "present": true,
+     "duration": 16.28,
+     "quality": {
+      "words": 32,
+      "exact": 30,
+      "fuzzy": 2,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c06-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "If it rains, we'll stay at home.",
+     "textSha256": "295c084e178c0fd27fb1732ed8703376c8da4a919ff728b2904bd96399dd1463",
+     "chars": 32,
+     "audio": "en/c06-ex1.mp3",
+     "align": "en/c06-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c06-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "Unless you hurry, you'll be late.",
+     "textSha256": "7008a77df1022aeb412944586577a6b93feda2a4d4855265430793fcc9aa37e3",
+     "chars": 33,
+     "audio": "en/c06-ex2.mp3",
+     "align": "en/c06-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c07",
+   "type": "practice",
+   "segments": [
+    {
+     "id": "c07-q5",
+     "lang": "en",
+     "role": "say",
+     "text": "If it rains tomorrow, we'll stay at home.",
+     "textSha256": "7144be90d42b78420710677a7b56270e1adbb0c418a5ff2207a01a4a55863d20",
+     "chars": 41,
+     "audio": "en/c07-q5.mp3",
+     "align": "en/c07-q5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c08",
+   "type": "seeInStory",
+   "segments": [
+    {
+     "id": "c08-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Kitapta Bayan Berg'in kurallarında bu yapı iki kez geçiyor. Şu cümlelere bir daha bak.",
+     "textSha256": "100b79a26ded3d833275c86e7da1cd4d5d7126feac6f94aff65d048a1bb5c6db",
+     "chars": 86,
+     "audio": "tr/c08-tr.mp3",
+     "align": "tr/c08-tr.align.json",
+     "present": true,
+     "duration": 5.12,
+     "quality": {
+      "words": 14,
+      "exact": 14,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    }
+   ]
+  },
+  {
+   "card": "c09",
+   "type": "rule",
+   "segments": [
+    {
+     "id": "c09-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Gerçek bir olasılık için koşul tarafında geniş zaman, sonuç tarafında gelecek yardımcı fiili kullanılır. Her zaman doğru olan sonuçta iki taraf da geniş zamandadır.",
+     "textSha256": "0472b39de17af7a9c657824b5a48e6509132e6d848d48408fbd72c7215a59f78",
+     "chars": 164,
+     "audio": "tr/c09-tr.mp3",
+     "align": "tr/c09-tr.align.json",
+     "present": true,
+     "duration": 10.41,
+     "quality": {
+      "words": 24,
+      "exact": 24,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c09-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "If it rains, we'll stay at home.",
+     "textSha256": "295c084e178c0fd27fb1732ed8703376c8da4a919ff728b2904bd96399dd1463",
+     "chars": 32,
+     "audio": "en/c09-ex1.mp3",
+     "align": "en/c09-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  }
+ ]
+}

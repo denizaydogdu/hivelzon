@@ -1,0 +1,419 @@
+{
+ "schemaVersion": 1,
+ "lessonId": "G-B1-01-present-perfect-experience",
+ "voices": {
+  "tr": {
+   "model": "alania-v2",
+   "voice": "alania2-f1",
+   "timing": "duyu-1",
+   "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+  },
+  "en": {
+   "model": "eleven_v3",
+   "voice": "EXAVITQu4vr4xnSDxMaL",
+   "speed": 1.0
+  }
+ },
+ "cards": [
+  {
+   "card": "c01",
+   "type": "hook",
+   "segments": [
+    {
+     "id": "c01-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Nia Ay'da doğdu ve hayatında hiç yağmur görmedi. Bunu kendisi anlatsaydı, belli bir zamandan değil, bütün hayatından söz ederdi. İngilizcede bunun için özel bir yapı var, dinle.",
+     "textSha256": "41cec98304db2eadc01229a775ffce34398d6cd516c37289d3a9c89a304c8693",
+     "chars": 177,
+     "audio": "tr/c01-tr.mp3",
+     "align": "tr/c01-tr.align.json",
+     "present": true,
+     "duration": 12.81,
+     "quality": {
+      "words": 27,
+      "exact": 26,
+      "fuzzy": 0,
+      "weak": 1,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 1,
+      "score": 0.963,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c01-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I've never seen rain.",
+     "textSha256": "44671de8b45bee4bcb983f80582b605d1074e49ad4645b3dace2c68970a8562c",
+     "chars": 21,
+     "audio": "en/c01-ex1.mp3",
+     "align": "en/c01-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c02",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c02-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Bu yapıda önce bir yardımcı fiil gelir, sonra fiilin üçüncü hâli. Yardımcı fiil ben, sen, biz, siz ve onlar için aynıdır. Yalnız o için değişir.",
+     "textSha256": "117014f87f2783741d3b4d4f905eb81bee793a71a2ee80ebaa66ca82cca676fb",
+     "chars": 144,
+     "audio": "tr/c02-tr.mp3",
+     "align": "tr/c02-tr.align.json",
+     "present": true,
+     "duration": 11.55,
+     "quality": {
+      "words": 25,
+      "exact": 24,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c02-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I have seen the sea.",
+     "textSha256": "0985a84b9f1370c0fb67c3945e721db369b6a0ae7f5c3367e7a150a4574b506d",
+     "chars": 20,
+     "audio": "en/c02-ex1.mp3",
+     "align": "en/c02-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c02-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "She has seen the sea.",
+     "textSha256": "9fbbc6d53d4a0d292edaba93c93774ad56736d73b9662c32ff6a588771e9b136",
+     "chars": 21,
+     "audio": "en/c02-ex2.mp3",
+     "align": "en/c02-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c03",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c03-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Düzenli fiillerde üçüncü hâl, geçmiş hâliyle aynıdır. Düzensiz fiillerin bir kısmında ise ayrı bir biçimdir. Bunları zamanla kulakla öğrenirsin.",
+     "textSha256": "f37f1c661da205c8043c4ae386bd2a3c25bf4916d0b86b00b76a2657182cdc0c",
+     "chars": 144,
+     "audio": "tr/c03-tr.mp3",
+     "align": "tr/c03-tr.align.json",
+     "present": true,
+     "duration": 10.27,
+     "quality": {
+      "words": 19,
+      "exact": 17,
+      "fuzzy": 2,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "We have visited Rome.",
+     "textSha256": "05f4df39fd752ebe6ecf5335ee3105279d7145b92d8d294a25e7a89f8190d29b",
+     "chars": 21,
+     "audio": "en/c03-ex1.mp3",
+     "align": "en/c03-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c03-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "He has written three books.",
+     "textSha256": "2dbfeeead270718be5d91deb902d5b234b9f2b89a294503e46a17470249c2aee",
+     "chars": 27,
+     "audio": "en/c03-ex2.mp3",
+     "align": "en/c03-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c04",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c04-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Soruda hayatının herhangi bir anını kastetmek için kısa bir kelime eklenir. Hiçbir zaman demek için başka bir kelime gelir; cümleyi kendisi olumsuz yapar. İkisi de yardımcı fiil ile üçüncü hâlin arasına girer.",
+     "textSha256": "109aac51f2a53703c3b2734daadfc9e459da3bd9ed1f2882cb2246ac7512a8c5",
+     "chars": 209,
+     "audio": "tr/c04-tr.mp3",
+     "align": "tr/c04-tr.align.json",
+     "present": true,
+     "duration": 15.48,
+     "quality": {
+      "words": 32,
+      "exact": 31,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c04-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "Have you ever been to London?",
+     "textSha256": "a6b72f9a39a22ef68d24bf6b59e1a640ae2cb551b1c4e72d24e2d2e2d14e2845",
+     "chars": 29,
+     "audio": "en/c04-ex1.mp3",
+     "align": "en/c04-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "I have never been on a plane.",
+     "textSha256": "ad15fdd7b5aacbeb794b34626f61a3b3879ab515b62a2c5d5c90ca159fd680e2",
+     "chars": 29,
+     "audio": "en/c04-ex2.mp3",
+     "align": "en/c04-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c05",
+   "type": "examples",
+   "segments": [
+    {
+     "id": "c05-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "Have you ever seen snow?",
+     "textSha256": "cfb44f2b73efe487f6f63df468ecaa4727a8f2db23ec7bae657d67416ca74bcd",
+     "chars": 24,
+     "audio": "en/c05-ex1.mp3",
+     "align": "en/c05-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "I've never tried Japanese food.",
+     "textSha256": "475aa26769a0cacfe9c8e53ac7171c08d01dcfd76e36e76866018d39643431da",
+     "chars": 31,
+     "audio": "en/c05-ex2.mp3",
+     "align": "en/c05-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "My brother has been to Germany twice.",
+     "textSha256": "576fc4167749894383ff4ee59d715996b70325e34afbc47f10322a6a61930496",
+     "chars": 37,
+     "audio": "en/c05-ex3.mp3",
+     "align": "en/c05-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex4",
+     "lang": "en",
+     "role": "example",
+     "text": "We have met her before.",
+     "textSha256": "11e99ec6a9415bf7c3bf140c95b17627474d5e10542572b77251686f1df61723",
+     "chars": 23,
+     "audio": "en/c05-ex4.mp3",
+     "align": "en/c05-ex4.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex5",
+     "lang": "en",
+     "role": "example",
+     "text": "She hasn't read this book.",
+     "textSha256": "5c070116500b8d618051b9f1b6cd7616aa8484f82b9fd5ef47ebc20d8e943556",
+     "chars": 26,
+     "audio": "en/c05-ex5.mp3",
+     "align": "en/c05-ex5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c06",
+   "type": "contrast",
+   "segments": [
+    {
+     "id": "c06-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Türkçede deneyimi de geçmiş ekiyle sorarız: hiç Londra'ya gittin mi? İngilizcede zaman söylenmiyorsa bu yapı gerekir; dün dersen bildiğin geçmiş zamana dönersin. Duyduğumuzu anlatan miş eki ise bunun karşılığı değildir, benzerlik yanıltmasın.",
+     "textSha256": "900f8cd3b205ad4c767f96a93d37d9086fac51fc0e5102acaf4274ab2dcbbb8d",
+     "chars": 242,
+     "audio": "tr/c06-tr.mp3",
+     "align": "tr/c06-tr.align.json",
+     "present": true,
+     "duration": 16.44,
+     "quality": {
+      "words": 32,
+      "exact": 30,
+      "fuzzy": 2,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c06-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I saw him yesterday.",
+     "textSha256": "de52cf204f4253af0344a8be7051f26c110c00706d1502293c62a602ad2e3143",
+     "chars": 20,
+     "audio": "en/c06-ex1.mp3",
+     "align": "en/c06-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c06-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "I have been to Paris.",
+     "textSha256": "324efccef9667e85e85ba6d634f8f277f3e5ddc986fb17953593a4ddad66007b",
+     "chars": 21,
+     "audio": "en/c06-ex2.mp3",
+     "align": "en/c06-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c07",
+   "type": "practice",
+   "segments": [
+    {
+     "id": "c07-q5",
+     "lang": "en",
+     "role": "say",
+     "text": "Have you ever been to London?",
+     "textSha256": "a6b72f9a39a22ef68d24bf6b59e1a640ae2cb551b1c4e72d24e2d2e2d14e2845",
+     "chars": 29,
+     "audio": "en/c07-q5.mp3",
+     "align": "en/c07-q5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c08",
+   "type": "rule",
+   "segments": [
+    {
+     "id": "c08-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Ne zaman olduğu önemli olmayan hayat deneyimleri için yardımcı fiil ve fiilin üçüncü hâli kullanılır. Zamanı söylersen bildiğin geçmiş zamana dönersin.",
+     "textSha256": "05494a0bf89ecb7dca626869695bcb304c00835c55ceee94e79b2d4b4002ef37",
+     "chars": 151,
+     "audio": "tr/c08-tr.mp3",
+     "align": "tr/c08-tr.align.json",
+     "present": true,
+     "duration": 10.22,
+     "quality": {
+      "words": 21,
+      "exact": 19,
+      "fuzzy": 2,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c08-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I've never seen snow.",
+     "textSha256": "d9e84bbb27acacc851f7d8eb4c3819fc4927520877a934ecf752e73005fa0be8",
+     "chars": 21,
+     "audio": "en/c08-ex1.mp3",
+     "align": "en/c08-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,363 @@
+{
+ "schemaVersion": 1,
+ "lessonId": "G-B1-05-used-to",
+ "voices": {
+  "tr": {
+   "model": "alania-v2",
+   "voice": "alania2-f1",
+   "timing": "duyu-1",
+   "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+  },
+  "en": {
+   "model": "eleven_v3",
+   "voice": "EXAVITQu4vr4xnSDxMaL",
+   "speed": 1.0
+  }
+ },
+ "cards": [
+  {
+   "card": "c01",
+   "type": "hook",
+   "segments": [
+    {
+     "id": "c01-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Hikâyenin ilk sahnelerinde babaanne Nermin, telsiz için orada iyi çekerdi diyor. Bu erdi eki, geçmişte olan ama artık olmayan bir şeyi anlatıyor. İngilizcede bunun için kısa bir kalıp var, dinle.",
+     "textSha256": "5ff6d531a93165f2c9be7cf1ae1f9027bb02b7b5e3b46577789e4a87e6111202",
+     "chars": 195,
+     "audio": "tr/c01-tr.mp3",
+     "align": "tr/c01-tr.align.json",
+     "present": true,
+     "duration": 13.47,
+     "quality": {
+      "words": 30,
+      "exact": 28,
+      "fuzzy": 2,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c01-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "The signal used to be good there.",
+     "textSha256": "f0bb2b8e5f7b01dfe01dc5f9a18e6ce784c1e1a3a394c0f816ed05612eb03f5e",
+     "chars": 33,
+     "audio": "en/c01-ex1.mp3",
+     "align": "en/c01-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c02",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c02-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Geçmişte düzenli olan ama artık olmayan alışkanlık ve durumlar için bu kalıp kullanılır. Kalıptan sonra fiil yalın gelir. Ben, sen, o, biz, siz ve onlar için biçim aynıdır.",
+     "textSha256": "ec1e22457dc33605a07cc85a59be4b773808ee79419fffd743af21b091f5cfb9",
+     "chars": 172,
+     "audio": "tr/c02-tr.mp3",
+     "align": "tr/c02-tr.align.json",
+     "present": true,
+     "duration": 13.6,
+     "quality": {
+      "words": 28,
+      "exact": 27,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c02-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I used to play the piano.",
+     "textSha256": "9254faea7659e24a52760c10ce57f2612bf762493bc8db5e68ae2b51fc54a6c4",
+     "chars": 25,
+     "audio": "en/c02-ex1.mp3",
+     "align": "en/c02-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c03",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c03-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Soru ve olumsuzda geçmiş zamanın yardımcı fiili gelir. O zaman kalıbın sonundaki d harfi düşer, çünkü geçmişi yardımcı fiil taşır. Söylenişte fark duyulmaz, yalnız yazıda görünür.",
+     "textSha256": "6d8b1749e00a8a751ac646e8f0e6def8177949bb29a7b69e1aa535e3021ff471",
+     "chars": 179,
+     "audio": "tr/c03-tr.mp3",
+     "align": "tr/c03-tr.align.json",
+     "present": true,
+     "duration": 12.03,
+     "quality": {
+      "words": 26,
+      "exact": 26,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "Did you use to walk to school?",
+     "textSha256": "c87e942f55f226bc479d5616ce05a23cc549951920bd77b8ca58070aa2133d53",
+     "chars": 30,
+     "audio": "en/c03-ex1.mp3",
+     "align": "en/c03-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c03-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "She didn't use to like coffee.",
+     "textSha256": "2645ca22e63335bd76ae0f66ff2de43a703b80e1719d7118df6ffcde334a65c3",
+     "chars": 30,
+     "audio": "en/c03-ex2.mp3",
+     "align": "en/c03-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c04",
+   "type": "examples",
+   "segments": [
+    {
+     "id": "c04-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I used to live in a small village.",
+     "textSha256": "4813291d0b4daa528e14de279dd8661f390d6d0bb2cd6871d5b9c0b87392f2cb",
+     "chars": 34,
+     "audio": "en/c04-ex1.mp3",
+     "align": "en/c04-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "There used to be a cinema here.",
+     "textSha256": "83aa8052703c0549a7ecd9cb398acd8e645616f4b116b3da74175aadcb7cb9ff",
+     "chars": 31,
+     "audio": "en/c04-ex2.mp3",
+     "align": "en/c04-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "My grandfather used to tell us stories.",
+     "textSha256": "a40b92b36ea9e363de0a228ea39ee86ab86471ec9fb648cdabb06e681139e6a9",
+     "chars": 39,
+     "audio": "en/c04-ex3.mp3",
+     "align": "en/c04-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex4",
+     "lang": "en",
+     "role": "example",
+     "text": "We didn't use to have a car.",
+     "textSha256": "87852481062561ac8605defcae0b5528b75d04b31bd7e208820cb6a42df914d4",
+     "chars": 28,
+     "audio": "en/c04-ex4.mp3",
+     "align": "en/c04-ex4.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex5",
+     "lang": "en",
+     "role": "example",
+     "text": "Did he use to play football?",
+     "textSha256": "9db56dff927d2bfa588f1369ae1195d56680d726f544955d244f7257e20c9b3d",
+     "chars": 28,
+     "audio": "en/c04-ex5.mp3",
+     "align": "en/c04-ex5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c05",
+   "type": "contrast",
+   "segments": [
+    {
+     "id": "c05-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Türkçedeki erdi eki burada iyi bir köprü: eskiden balık tutardım. Ama bu kalıp, alışkın olmak anlamındaki başka bir kalıpla kolayca karışır. O kalıpta olmak fiili vardır ve anlamı bambaşkadır.",
+     "textSha256": "dce4a956c80ac0c20049faf88f73497734923b2c62fc7d7f96a3fdfcdbb337c0",
+     "chars": 192,
+     "audio": "tr/c05-tr.mp3",
+     "align": "tr/c05-tr.align.json",
+     "present": true,
+     "duration": 11.87,
+     "quality": {
+      "words": 29,
+      "exact": 29,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I used to play football.",
+     "textSha256": "d694b547f480406fc7b8f8f36cff593a2238ed25e0f6d59d7931fd37d9c4bbff",
+     "chars": 24,
+     "audio": "en/c05-ex1.mp3",
+     "align": "en/c05-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "Did you use to live here?",
+     "textSha256": "e4f5a9340f1f8a9a227ceaea0c70adc9e6733a6f608d3e4fbf7e36e3dbd11694",
+     "chars": 25,
+     "audio": "en/c05-ex2.mp3",
+     "align": "en/c05-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "I'm used to getting up early.",
+     "textSha256": "d224f8251ac4f115f1c4a1e42fa8f98f5155d29d1a553bf0d98d19378527dcdc",
+     "chars": 29,
+     "audio": "en/c05-ex3.mp3",
+     "align": "en/c05-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c06",
+   "type": "practice",
+   "segments": [
+    {
+     "id": "c06-q5",
+     "lang": "en",
+     "role": "say",
+     "text": "I used to live in a small village.",
+     "textSha256": "4813291d0b4daa528e14de279dd8661f390d6d0bb2cd6871d5b9c0b87392f2cb",
+     "chars": 34,
+     "audio": "en/c06-q5.mp3",
+     "align": "en/c06-q5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c07",
+   "type": "rule",
+   "segments": [
+    {
+     "id": "c07-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Geçmişte düzenli olan ama artık olmayan şeyler için bu kalıp ve yalın fiil kullanılır. Soru ve olumsuzda geçmiş yardımcı fiili gelir, kalıbın sonundaki d düşer.",
+     "textSha256": "693882880a76f1fa6d2ca72804a327e9bca61863d1187b4e8b9715d40e138de9",
+     "chars": 160,
+     "audio": "tr/c07-tr.mp3",
+     "align": "tr/c07-tr.align.json",
+     "present": true,
+     "duration": 11.52,
+     "quality": {
+      "words": 25,
+      "exact": 25,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c07-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I used to live in a village.",
+     "textSha256": "2bbc64192d9a8b411bb1f1f3b7fc0246ef712996a410e9316c48dcdcb6c94819",
+     "chars": 28,
+     "audio": "en/c07-ex1.mp3",
+     "align": "en/c07-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  }
+ ]
+}

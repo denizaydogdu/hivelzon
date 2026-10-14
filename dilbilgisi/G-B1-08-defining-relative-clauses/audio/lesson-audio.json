@@ -1,0 +1,436 @@
+{
+ "schemaVersion": 1,
+ "lessonId": "G-B1-08-defining-relative-clauses",
+ "voices": {
+  "tr": {
+   "model": "alania-v2",
+   "voice": "alania2-f1",
+   "timing": "duyu-1",
+   "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+  },
+  "en": {
+   "model": "eleven_v3",
+   "voice": "EXAVITQu4vr4xnSDxMaL",
+   "speed": 1.0
+  }
+ },
+ "cards": [
+  {
+   "card": "c01",
+   "type": "hook",
+   "segments": [
+    {
+     "id": "c01-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Nia, Dünya'ya gitmeden önce her sabah çalışıyor. Hangi makinede koştuğunu cümle, makineden sonra anlatıyor. Türkçede bu bilgi isimden önce gelirdi.",
+     "textSha256": "910766fff1f6e9cf9e64b5331c036339d7cf0e149ad52913e87663c83499a57e",
+     "chars": 147,
+     "audio": "tr/c01-tr.mp3",
+     "align": "tr/c01-tr.align.json",
+     "present": true,
+     "duration": 9.76,
+     "quality": {
+      "words": 20,
+      "exact": 20,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c01-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "She ran on a machine that made her body heavier.",
+     "textSha256": "c8043fc70854d11dc2d1dfeef24453bd6796338dc5cfcd6cb8cb5033d4b2b6bf",
+     "chars": 48,
+     "audio": "en/c01-ex1.mp3",
+     "align": "en/c01-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c02",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c02-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "İngilizcede önce isim gelir, sonra onu tanımlayan cümlecik. Cümlecik bir bağlantı kelimesiyle başlar. Türkçede ise tanım isimden önce gelir ve ekle kurulur.",
+     "textSha256": "61c2c7ad5a30de20f25c0cf11c8d4741a1928ac56884d3eb6f3335db713878c3",
+     "chars": 156,
+     "audio": "tr/c02-tr.mp3",
+     "align": "tr/c02-tr.align.json",
+     "present": true,
+     "duration": 9.79,
+     "quality": {
+      "words": 22,
+      "exact": 22,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c02-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "the girl who lives next door",
+     "textSha256": "6f75e06bfe59ed982765ce8e7d18a71e10309bc41733bfba1cde52808fa91a75",
+     "chars": 28,
+     "audio": "en/c02-ex1.mp3",
+     "align": "en/c02-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c03",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c03-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "İnsanlar için bir kelime, eşyalar ve hayvanlar için başka bir kelime kullanılır. Üçüncü bir kelime ikisine de uyar ve konuşmada çok sık duyulur.",
+     "textSha256": "9a39fc5458c30d779c92b59a28a4ef5d12b11f1dcf7fbb09bb89b9b3446c078a",
+     "chars": 144,
+     "audio": "tr/c03-tr.mp3",
+     "align": "tr/c03-tr.align.json",
+     "present": true,
+     "duration": 8.64,
+     "quality": {
+      "words": 23,
+      "exact": 23,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "The man who called you is my uncle.",
+     "textSha256": "fb0299ed6474d129f336263cf86022c095dc18e373b7001c633723ff32c1df3b",
+     "chars": 35,
+     "audio": "en/c03-ex1.mp3",
+     "align": "en/c03-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c03-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "This is the bag which I lost.",
+     "textSha256": "3ca42f5b9631906542d76a60a7d5e42fb5c11f4268d95b8d8f286a52c8c83036",
+     "chars": 29,
+     "audio": "en/c03-ex2.mp3",
+     "align": "en/c03-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c03-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "The film that we watched was great.",
+     "textSha256": "d44e726e87a0cf51b34fb10df3271650d7039ffd65c55aa5e6b54bbf9d2b7d69",
+     "chars": 35,
+     "audio": "en/c03-ex3.mp3",
+     "align": "en/c03-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c04",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c04-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Tanımlanan isim cümleciğin öznesi değilse bağlantı kelimesi düşebilir. Cümleciğin içinde o ismi bir zamirle yeniden söylemezsin.",
+     "textSha256": "a14ca8293135b691da57c0ac297bf0d2061c6d72e13e20e70da693a2ab0e07fe",
+     "chars": 128,
+     "audio": "tr/c04-tr.mp3",
+     "align": "tr/c04-tr.align.json",
+     "present": true,
+     "duration": 8.48,
+     "quality": {
+      "words": 16,
+      "exact": 16,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c04-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "This is the phone I bought last week.",
+     "textSha256": "1ccf35bfa51a571d4d63e2f432938539d904db8960009539bdbd512bdcf30604",
+     "chars": 37,
+     "audio": "en/c04-ex1.mp3",
+     "align": "en/c04-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c05",
+   "type": "examples",
+   "segments": [
+    {
+     "id": "c05-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "The girl who lives next door is my friend.",
+     "textSha256": "fdd468d73578831ffc6481b95a94893b231bdc6c8b0d9744b1e2ac0a0020598a",
+     "chars": 42,
+     "audio": "en/c05-ex1.mp3",
+     "align": "en/c05-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "I have a cat that sleeps all day.",
+     "textSha256": "5b0cbd30a1e24da8f70b7e7eedcebf1b8e3e35581ac21b843168f73ee12144c0",
+     "chars": 33,
+     "audio": "en/c05-ex2.mp3",
+     "align": "en/c05-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "The book which you gave me is very good.",
+     "textSha256": "6578c4360cf9d7a58f0384753607c1178a3ff0836c8c8c89519eba8fb67f21b8",
+     "chars": 40,
+     "audio": "en/c05-ex3.mp3",
+     "align": "en/c05-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex4",
+     "lang": "en",
+     "role": "example",
+     "text": "Do you know the woman who works at the café?",
+     "textSha256": "443ced44f0d67f8b1f33fa2907cb0b7f676eddde4e740782d7d2f7989b918c25",
+     "chars": 44,
+     "audio": "en/c05-ex4.mp3",
+     "align": "en/c05-ex4.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex5",
+     "lang": "en",
+     "role": "example",
+     "text": "That's the bus we take every morning.",
+     "textSha256": "5afc1213deeb0eecbd9cb15c17f06f08205a491effbed2163b7b51b8e34514e0",
+     "chars": 37,
+     "audio": "en/c05-ex5.mp3",
+     "align": "en/c05-ex5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c06",
+   "type": "contrast",
+   "segments": [
+    {
+     "id": "c06-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Türkçede tanım isimden önce ve ekle gelir: yağmuru hiç görmemiş kız. İngilizcede sıra tamamen tersine döner ve ayrı bir bağlantı kelimesi gerekir. Cümleciğin sonuna ismi bir zamirle yeniden eklemek de çok olağan bir hata.",
+     "textSha256": "99f17af2b38ee7eb44acbb98383b07359f4565cd1f34bc22ef317386ed5cff45",
+     "chars": 221,
+     "audio": "tr/c06-tr.mp3",
+     "align": "tr/c06-tr.align.json",
+     "present": true,
+     "duration": 15.09,
+     "quality": {
+      "words": 34,
+      "exact": 34,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c06-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "The book that I read was good.",
+     "textSha256": "c17d01838f6aea9ab90cef5de97d55df213595a59eed56a294afa7003aa45da7",
+     "chars": 30,
+     "audio": "en/c06-ex1.mp3",
+     "align": "en/c06-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c06-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "The film that I saw was funny.",
+     "textSha256": "b27b543038ba1a1a1aeaa2c6674bf1435605304cf9b1f0925ab14d982aaeeb05",
+     "chars": 30,
+     "audio": "en/c06-ex2.mp3",
+     "align": "en/c06-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c07",
+   "type": "practice",
+   "segments": [
+    {
+     "id": "c07-q5",
+     "lang": "en",
+     "role": "say",
+     "text": "The girl who lives next door is my friend.",
+     "textSha256": "fdd468d73578831ffc6481b95a94893b231bdc6c8b0d9744b1e2ac0a0020598a",
+     "chars": 42,
+     "audio": "en/c07-q5.mp3",
+     "align": "en/c07-q5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c08",
+   "type": "seeInStory",
+   "segments": [
+    {
+     "id": "c08-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "İki kitabın adında bu yapı saklı: yağmuru hiç görmemiş kız, her şeyi anlatan papağan. Şu cümlede bağlantı kelimesi düşmüş.",
+     "textSha256": "f206bb3156907352d4da67122ceecce8f1ee1432c12f96e0831006a065025c21",
+     "chars": 122,
+     "audio": "tr/c08-tr.mp3",
+     "align": "tr/c08-tr.align.json",
+     "present": true,
+     "duration": 8.16,
+     "quality": {
+      "words": 19,
+      "exact": 19,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    }
+   ]
+  },
+  {
+   "card": "c09",
+   "type": "rule",
+   "segments": [
+    {
+     "id": "c09-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Tanım isimden sonra gelir ve bir bağlantı kelimesiyle başlar. İnsana bir kelime, eşyaya başka bir kelime, ikisine de üçüncü bir kelime uyar.",
+     "textSha256": "a46f94b3ac46342b64fd7aa9d545e4143e44cbd4aad27bbb799eaa7f481793e8",
+     "chars": 140,
+     "audio": "tr/c09-tr.mp3",
+     "align": "tr/c09-tr.align.json",
+     "present": true,
+     "duration": 9.12,
+     "quality": {
+      "words": 22,
+      "exact": 22,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c09-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "The girl who lives next door is my friend.",
+     "textSha256": "fdd468d73578831ffc6481b95a94893b231bdc6c8b0d9744b1e2ac0a0020598a",
+     "chars": 42,
+     "audio": "en/c09-ex1.mp3",
+     "align": "en/c09-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  }
+ ]
+}
