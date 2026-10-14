@@ -24,7 +24,7 @@ class PlayerPanel extends StatelessWidget {
         borderRadius: BorderRadius.circular(AppTheme.radius),
         boxShadow: const [
           BoxShadow(
-            color: Color(0x33000000),
+            color: AppScrim.panelShadow,
             blurRadius: 16,
             offset: Offset(0, 4),
           ),
@@ -55,7 +55,7 @@ class PrimaryAction extends StatelessWidget {
   Widget build(BuildContext context) {
     final style = FilledButton.styleFrom(
       minimumSize: const Size.fromHeight(56),
-      textStyle: const TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
+      textStyle: AppTypography.buttonLarge,
     );
     return icon == null
         ? FilledButton(onPressed: onPressed, style: style, child: Text(label))

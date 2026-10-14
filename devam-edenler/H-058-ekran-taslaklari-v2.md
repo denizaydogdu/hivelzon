@@ -1,6 +1,6 @@
 # H-058: Ekran taslakları v2 ve illüstrasyonlar (Higgsfield, ~8 kr)
 
-- **Durum:** Yapılacak
+- **Durum:** Devam ediyor (taslaklar üretildi; kullanıcı onayı bekliyor)
 - **Tür:** Uygulama (tasarım)
 - **Faz:** Tasarım yenilemesi T1 (`docs/UYGULAMA-PLANI.md`)
 - **Bağımlılık:** H-057
@@ -35,3 +35,4 @@ Kendi dalında (`h-058-ekran-taslaklari-v2`); sorun olursa birleştirme commit'i
 
 ## Notlar
 2026-10-14: Kullanıcı isteğiyle açıldı: "Sayfaların tasarımlarıyla ilgilenen bir iş aç; Profilim sayfasını hiç beğenmedim, her şey iç içe, düz yazı gibi. Daha animasyonlu, şekilli, kullanıcıyı çekecek tasarımlar."
+2026-10-14: 10 ekran taslağı + 6 illüstrasyon üretildi (8 kr; 68,06 → 60,06). Kayıt `tasarim/v2/PROMPTS.md`, önizlemeler `tasarim/v2/onizleme/`, illüstrasyonlar `mobile/assets/illustrations/*.webp`. Kullanıcı onayı bekleniyor.

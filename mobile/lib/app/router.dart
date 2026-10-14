@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -5,6 +6,7 @@ import 'package:go_router/go_router.dart';
 import '../features/account/presentation/account_screen.dart';
 import '../features/account/presentation/account_widgets.dart';
 import '../features/account/presentation/sign_in_screen.dart';
+import '../features/design_showcase/design_showcase_screen.dart';
 import '../features/discover/presentation/discover_screen.dart';
 import '../features/hi/presentation/hi_privacy_screen.dart';
 import '../features/player/application/autoplay_driver.dart';
@@ -19,6 +21,7 @@ import '../features/story/presentation/story_screen.dart';
 import '../features/talk/presentation/talk_screen.dart';
 import '../features/topic_sets/presentation/scene_hunt_screen.dart';
 import '../features/topic_sets/presentation/topic_set_screen.dart';
+import 'design/transitions.dart';
 import 'shell_scaffold.dart';
 
 /// Sekme yolları (K-30): Ana Sayfa · Keşfet · Hikâye · Konuş · Profil.
@@ -63,12 +66,29 @@ abstract final class AppRoutes {
 
   /// Sahne avı (tam ekran, H-051).
   static String sceneHunt(String id) => '/konu-seti/$id/sahne-avi';
+
+  /// Tasarım sistemi vitrini (H-057): yalnız debug derlemede.
+  static const designShowcase = '/tasarim';
 }
+
+/// Debug derlemede başlangıç yolu (`--dart-define=HV_START_ROUTE=/tasarim`);
+/// ekran görüntüsü ve vitrin için. Release'de yok sayılır.
+const _debugStartRoute = String.fromEnvironment('HV_START_ROUTE');
 
 final routerProvider = Provider<GoRouter>((ref) {
   final router = GoRouter(
-    initialLocation: autoplayEnabled ? AppRoutes.story : AppRoutes.home,
+    initialLocation: kDebugMode && _debugStartRoute.isNotEmpty
+        ? _debugStartRoute
+        : autoplayEnabled
+        ? AppRoutes.story
+        : AppRoutes.home,
     routes: [
+      if (kDebugMode)
+        GoRoute(
+          path: AppRoutes.designShowcase,
+          pageBuilder: (context, state) =>
+              appPage(key: state.pageKey, child: const DesignShowcaseScreen()),
+        ),
       GoRoute(
         path: '/play/:contentId',
         pageBuilder: (context, state) => MaterialPage(
@@ -92,8 +112,10 @@ final routerProvider = Provider<GoRouter>((ref) {
       ),
       GoRoute(
         path: '/konu-seti/:id',
-        builder: (context, state) =>
-            TopicSetScreen(setId: state.pathParameters['id']!),
+        pageBuilder: (context, state) => appPage(
+          key: state.pageKey,
+          child: TopicSetScreen(setId: state.pathParameters['id']!),
+        ),
         routes: [
           GoRoute(
             path: 'sahne-avi',
@@ -131,30 +153,42 @@ final routerProvider = Provider<GoRouter>((ref) {
             routes: [
               GoRoute(
                 path: 'defter',
-                builder: (context, state) => NotebookScreen(
-                  initialTab: switch (state.uri.queryParameters['sekme']) {
-                    'ipuclari' => 1,
-                    'setler' => 2,
-                    _ => 0,
-                  },
+                pageBuilder: (context, state) => appPage(
+                  key: state.pageKey,
+                  child: NotebookScreen(
+                    initialTab: switch (state.uri.queryParameters['sekme']) {
+                      'ipuclari' => 1,
+                      'setler' => 2,
+                      _ => 0,
+                    },
+                  ),
                 ),
               ),
               GoRoute(
                 path: 'hi',
-                builder: (context, state) => const HiPrivacyScreen(),
+                pageBuilder: (context, state) =>
+                    appPage(key: state.pageKey, child: const HiPrivacyScreen()),
               ),
               GoRoute(
                 path: 'hesap',
-                builder: (context, state) => const AccountScreen(),
+                pageBuilder: (context, state) =>
+                    appPage(key: state.pageKey, child: const AccountScreen()),
                 routes: [
                   GoRoute(
                     path: 'giris',
-                    builder: (context, state) => const SignInScreen(),
+                    pageBuilder: (context, state) => appPage(
+                      key: state.pageKey,
+                      child: const SignInScreen(),
+                    ),
                   ),
                   GoRoute(
                     path: 'metin/:kind',
-                    builder: (context, state) =>
-                        LegalTextScreen(kind: state.pathParameters['kind']!),
+                    pageBuilder: (context, state) => appPage(
+                      key: state.pageKey,
+                      child: LegalTextScreen(
+                        kind: state.pathParameters['kind']!,
+                      ),
+                    ),
                   ),
                 ],
               ),

@@ -1,0 +1,23 @@
+[
+  {
+    "created_at": "2026-10-14T05:49:58.897014Z",
+    "display_name": "GPT Image 2.5",
+    "id": "4957f28d-4391-45b1-9015-4801abf0246a",
+    "job_type": "gpt_image_2_5",
+    "min_result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261014_054958_4957f28d-4391-45b1-9015-4801abf0246a_min.webp",
+    "params": {
+      "aspect_ratio": "9:16",
+      "height": 1344,
+      "medias": [],
+      "model": "flare",
+      "prompt": "Account screen, signed out, pushed page with back arrow and title 'Hesap'. A diagonal-cut header with an illustration of a phone and a small lighthouse sending a soft light beam to a second phone. Card with three benefit rows each with a round tinted icon: 'İlerlemen yedeklenir', 'Başka telefonda devam et', 'Hesapsız da her şey çalışır'. A large yellow pill button 'E-postayla devam et' and a small grey line 'Şifre yok: e-postana tek kullanımlık kod gelir.'. No bottom navigation on this pushed page. High-fidelity mobile app UI mockup, single iPhone screen, portrait, flat front view, no device frame, for 'hiVelzon', an English-learning app built around an animated coastal mystery story. Design system: warm sand background (#F7F1E6), white rounded cards (12px corners) with soft warm shadows, deep sea blue (#1F4E79) for titles and accents, lighthouse yellow (#F2B33D) pill-shaped primary buttons, evening orange (#E98A3C) small accents, small caps orange labels, rounded friendly bold headings (Nunito style) and clean body text (Inter style), 8px grid, generous whitespace, playful but calm, illustrated graphic-novel art inside shaped headers (wave or diagonal cut). Bottom navigation with 5 tabs: 'Ana Sayfa', 'Keşfet', 'Hikâye', 'Konuş', 'Profil', and a small round glowing speech-bubble mascot with two friendly eyes floating at bottom-right above the tab bar. Turkish UI text, legible, minimal. No ads, no hearts/lives, no timers, no leaderboards, no real brand logos.",
+      "quality": "medium",
+      "reference_elements": [],
+      "remove_bg": false,
+      "resolution": "1k",
+      "width": 752
+    },
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261014_054958_4957f28d-4391-45b1-9015-4801abf0246a.png",
+    "status": "completed"
+  }
+]

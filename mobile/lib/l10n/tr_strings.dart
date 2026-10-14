@@ -280,7 +280,67 @@ abstract final class ReviewTexts {
 /// Profil.
 abstract final class ProfileTexts {
   static const title = 'Profil';
-  static const subtitle = 'Adın, defterin ve günlük hedefin.';
+
+  // Başlık (H-059): ad varsa "Merhaba Deniz", yoksa "Merhaba!".
+  static String greeting(String? name) =>
+      name == null ? 'Merhaba!' : 'Merhaba $name';
+
+  /// Ad yokken avatarın ekran okuyucu metni.
+  static const avatarNoName = 'Hi';
+
+  /// Başlığın altındaki tek satır: bu haftadan olumlu bir cümle; kayıt
+  /// yoksa sakin bir davet (yapılmayan söylenmez, K-16).
+  static String status({
+    required int phrasesAdded,
+    required int phrasesReviewed,
+    required int episodesCompleted,
+  }) {
+    if (phrasesReviewed > 0) {
+      return 'Bu hafta $phrasesReviewed ifadeyi tekrar ettin.';
+    }
+    if (phrasesAdded > 0) {
+      return 'Bu hafta $phrasesAdded yeni ifade topladın.';
+    }
+    if (episodesCompleted > 0) {
+      return 'Bu hafta $episodesCompleted bölüm bitirdin.';
+    }
+    return 'Bugün küçük bir adım yeter.';
+  }
+
+  // İstatistik kutuları (sayı + ne sayıldığı).
+  static const statPhrases = 'ifade';
+  static const statEpisodes = 'bölüm bitti';
+  static const statWeekReviews = 'bu hafta tekrar';
+
+  // Gruplar
+  static const learningGroup = 'Öğrenme';
+  static const accountGroup = 'Hesap ve gizlilik';
+
+  // Defter satırı
+  static const notebookTile = 'Defter';
+  static const notebookLoading = 'İfadeler, İpucu panosu ve Konu setleri';
+  static const notebookEmpty = 'Bölüm bitince ifadeler buraya eklenir.';
+  static String notebookCount(int total, int due) => due > 0
+      ? '$total ifade · $due ifadenin tekrar zamanı geldi'
+      : '$total ifade';
+
+  // Günlük hedef satırı ve paneli
+  static const goalSection = 'Günlük hedef';
+  static const goalIntro = 'Günde ne kadar zaman ayırmak istersin?';
+  static String goalOption(int minutes) => '$minutes dk';
+  static String goalNote(int newPerDay) =>
+      'Kelime tekrarında günde en fazla $newPerDay yeni ifade açılır.';
+  static const goalChangeNote =
+      'İstediğin zaman değiştirebilirsin. Hedefin altında kalmak sorun değil.';
+
+  // Konu setleri satırı
+  static const topicSetsTile = 'Konu setleri';
+  static const topicSetsHint = 'Hikâyedeki yerlerin nesneleri.';
+
+  // Ad satırı ve paneli
+  static const nameRow = 'Adın';
+  static const nameRowEmpty = 'Eklenmedi';
+  static const nameRowHint = 'Ana Sayfa seni bu adla selamlar.';
   static const nameSection = 'Sana nasıl seslenelim?';
   static const nameLabel = 'Adın ya da takma adın';
   static const nameHelper = 'İsteğe bağlı. Yalnızca bu cihazda saklanır.';
@@ -289,19 +349,6 @@ abstract final class ProfileTexts {
       'Yalnızca harf, boşluk, kesme işareti ve tire kullanabilirsin.';
   static const nameSaved = 'Adın kaydedildi.';
   static const nameCleared = 'Adın silindi; Ana Sayfa "Merhaba!" der.';
-  static const notebookSection = 'Defter';
-  static const notebookTile = 'Defterini aç';
-  static const notebookLoading = 'İfadeler ve İpucu panosu';
-  static const notebookEmpty =
-      'Henüz ifade yok. Bölüm bitince ifadeler buraya eklenir.';
-  static String notebookCount(int total, int due) => due > 0
-      ? 'Defterinde $total ifade var; $due ifadenin tekrar zamanı geldi.'
-      : 'Defterinde $total ifade var.';
-  static const goalSection = 'Günlük hedef';
-  static const goalIntro = 'Günde ne kadar zaman ayırmak istersin?';
-  static String goalOption(int minutes) => '$minutes dk';
-  static String goalNote(int newPerDay) =>
-      'Kelime tekrarında günde en fazla $newPerDay yeni ifade açılır.';
 }
 
 /// Henüz gelmeyen sekmeler.
@@ -470,8 +517,28 @@ abstract final class HiTexts {
   static const privacyTileSub = 'Bu cihazda saklananları gör, istersen sil.';
   static const privacyTitle = 'Hi benim hakkımda ne biliyor?';
   static const privacyIntro =
-      'Hi önerilerini yalnızca bu cihazdaki kayıtlara bakarak seçer. '
-      'Bu bilgiler sunucuya gönderilmez ve reklam için kullanılmaz.';
+      'Hi önerilerini bu cihazdaki kayıtlara bakarak seçer. Reklam için '
+      'kullanılmaz.';
+
+  // Konum notu (H-059): hesap yoksa / varsa.
+  static const privacyLocalTitle = 'Yalnızca bu telefonda';
+  static const privacyLocalBody =
+      'Bu bilgiler telefonundan dışarı gönderilmez.';
+  static const privacyAccountTitle = 'Hesabına da eşitlenir';
+  static const privacyAccountBody =
+      'Hesabın açık olduğu için bu kayıtlar yedek olarak hesabına da '
+      'eşitlenir. Silersen hesabına bağlı öteki cihazlardan da silinir.';
+
+  // Sayılar (H-059)
+  static const privacyNumbers = 'Sayılarla';
+  static const statLookups = 'kez anlamına baktın';
+  static const statRetries = 'kez yeniden denedin';
+  static const statSpeech = 'kez söyledin';
+  static const privacyStored = 'Bu cihazda saklananlar';
+  static const weekStatAdded = 'yeni ifade';
+  static const weekStatReviewed = 'ifade tekrar';
+  static const weekStatEpisodes = 'bölüm bitti';
+  static String errorChip(String label, int n) => '$label · $n';
   static const privacyName = 'Adın';
   static const privacyNoName = 'Kaydetmedin.';
   static const privacyProgress = 'Hikâye ilerlemen';
@@ -508,10 +575,6 @@ abstract final class HiTexts {
   static const privacyError = 'Kayıtlar okunamadı. Biraz sonra tekrar dene.';
 
   // Hesap açıkken (H-038): kayıtlar hesaba da eşitlenir; silme her yerde.
-  static const privacyIntroAccount =
-      'Hi önerilerini bu cihazdaki kayıtlara bakarak seçer. Hesabın açık '
-      'olduğu için bu kayıtlar yedek olarak hesabına da eşitlenir. Reklam '
-      'için kullanılmaz.';
   static const privacyConfirmBodyAccount =
       'Anlamına baktığın kelimeler, yeniden denediğin seçimler, Söyle '
       'sonuçları ve yan görev durumları silinir. Hesabına bağlı öteki '
@@ -571,21 +634,17 @@ abstract final class SpeakTexts {
       'İzin verilmedi. Her şey dokunarak çalışmaya devam eder.';
 
   // Profil
-  static const profileSection = 'Söyle alıştırmaları';
-  static const profileToggle = 'Söyle alıştırmalarını göster';
-  static const profileToggleSub =
-      'Kelime tekrarında, anlam panelinde, karar anında ve bölüm sonunda '
-      'İngilizceyi sesli söyleyebilirsin. İsteğe bağlıdır.';
+  static const profileToggle = 'Söyle alıştırmaları';
   static const profilePrivacy =
       'Sesin bu telefonda yazıya çevrilir; kaydedilmez, hiçbir yere '
       'gönderilmez.';
   static const profileUnsupported =
-      'Bu telefon İngilizce konuşmayı kendi içinde yazıya çeviremiyor. '
-      'Sesin dışarı gönderilmesin diye Söyle alıştırmaları kapalı; her şey '
-      'dokunarak çalışır.';
+      'Bu telefon İngilizceyi kendi içinde yazıya çeviremiyor; sesin dışarı '
+      'gönderilmesin diye kapalı. Her şey dokunarak çalışır.';
   static const profileDenied =
-      'Mikrofon ya da konuşma tanıma izni kapalı. İstersen telefonun '
-      'Ayarlar bölümünden açabilirsin; her şey dokunarak da çalışır.';
+      'Mikrofon izni kapalı. Telefonun Ayarlar bölümünden açabilirsin; her '
+      'şey dokunarak da çalışır.';
+  static const profileUnavailable = 'Kapalı';
 
   // "Hi benim hakkımda ne biliyor?"
   static const privacyRow = 'Söyle alıştırmaları';
@@ -612,6 +671,10 @@ abstract final class AccountTexts {
   static const nudgeLater = 'Şimdi değil';
   static String tileSignedIn(String email) => 'Hesabın: $email';
 
+  // Profil → Hesap satırı (H-059): sağda kısa durum.
+  static const rowValueSignedOut = 'Açık değil';
+  static const rowValueBlocked = '13+';
+
   // Yaş (H-002): 13 yaş altı hesap açamaz; uygulamanın tamamı çalışır.
   static const ageBlockedTitle = 'Hesap için en az 13 yaş';
   static const ageBlocked =
@@ -632,6 +695,11 @@ abstract final class AccountTexts {
   static const benefitLocal =
       'Hesap açmazsan hiçbir bilgin bu telefondan çıkmaz.';
   static const methodsHeading = 'Nasıl devam etmek istersin?';
+
+  // Fayda satırları (H-059): kısa başlık + açıklama.
+  static const benefitBackupTitle = 'İlerlemen yedeklenir';
+  static const benefitDevicesTitle = 'Başka telefonda devam et';
+  static const benefitLocalTitle = 'Hesapsız da her şey çalışır';
   static const methodEmail = 'E-postayla devam et';
   static const methodEmailNote =
       'Şifre yok: e-postana tek kullanımlık bir kod göndeririz.';
@@ -711,6 +779,14 @@ abstract final class AccountTexts {
   }
 
   static const syncWaiting = 'Bağlantı gelince kendiliğinden eşitlenecek.';
+
+  // Tehlikeli bölge (H-059): geri alınması zor eylemler ayrı grupta.
+  static const dangerZone = 'Tehlikeli bölge';
+  static const wipeRowHint =
+      'Çıkış yapılır. Hesabındaki kopya durur; yeniden giriş yapınca geri '
+      'gelir.';
+  static const deleteRowHint =
+      '30 gün içinde aynı e-postayla giriş yapıp geri alabilirsin.';
   static const syncNow = 'Şimdi eşitle';
   static const syncNowDone = 'Eşitlendi.';
   static const signOut = 'Çıkış yap';
@@ -718,7 +794,7 @@ abstract final class AccountTexts {
   static const signOutBody =
       'Verilerin bu telefonda kalır; eşitleme durur. İstediğin zaman yeniden '
       'giriş yapabilirsin.';
-  static const wipeAlso = 'Bu telefondaki verileri de sil';
+  static const wipeAlso = 'Bu telefondaki verileri sil';
   static const wipeTitle = 'Bu telefondaki veriler de silinsin mi?';
   static const wipeBody =
       'İlerlemen, defterin ve Hi\'nin kayıtları bu telefondan silinir. '
@@ -751,16 +827,29 @@ abstract final class AccountTexts {
   static const termsTitle = 'Kullanım koşulları';
   static const privacyTitle = 'KVKK aydınlatma metni';
   static String legalVersion(String v) => 'Sürüm: $v';
+  static const legalDraftTitle = 'Taslak metin';
   static const legalDraft =
       'Bu bir taslak. Kesin metin yayından önce buraya eklenecek.';
-  static const termsDraftBody =
-      'hiVelzon ücretsiz bir İngilizce öğrenme uygulamasıdır. Hesap isteğe '
-      'bağlıdır. Hesabını istediğin zaman silebilirsin; silme isteğinden '
-      'sonra 30 gün içinde geri alabilirsin.';
-  static const privacyDraftBody =
-      'Hesap açarsan e-posta adresin, doğum yılın, isteğe bağlı adın ve '
-      'öğrenme ilerlemen saklanır. Sesin ve söylediklerinin yazısı hiçbir '
-      'zaman saklanmaz. Hesap açmazsan hiçbir bilgin bu telefondan çıkmaz.';
+
+  /// Yer tutucu metinler bölüm bölüm: (başlık, metin). Kesin metinler H-042.
+  static const termsSections = <(String, String)>[
+    ('Uygulama', 'hiVelzon ücretsiz bir İngilizce öğrenme uygulamasıdır.'),
+    ('Hesap', 'Hesap isteğe bağlıdır. Hesapsız da her şey çalışır.'),
+    (
+      'Hesabını silmek',
+      'Hesabını istediğin zaman silebilirsin; silme isteğinden sonra 30 gün '
+          'içinde geri alabilirsin.',
+    ),
+  ];
+  static const privacySections = <(String, String)>[
+    (
+      'Hesap açarsan',
+      'E-posta adresin, doğum yılın, isteğe bağlı adın ve öğrenme ilerlemen '
+          'saklanır.',
+    ),
+    ('Sesin', 'Sesin ve söylediklerinin yazısı hiçbir zaman saklanmaz.'),
+    ('Hesap açmazsan', 'Hiçbir bilgin bu telefondan çıkmaz.'),
+  ];
 
   /// Hata kodunun Türkçe açıklaması (sunucu metni yedek).
   static String errorFor(String code, {String? fallback}) => switch (code) {

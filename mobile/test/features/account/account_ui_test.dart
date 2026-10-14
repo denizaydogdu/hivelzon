@@ -15,6 +15,7 @@ import 'package:hivelzon/shared/api/token_store.dart';
 import 'package:hivelzon/shared/content/content_providers.dart';
 import 'package:hivelzon/shared/storage/app_database.dart';
 import 'package:hivelzon/shared/storage/storage_providers.dart';
+import 'package:hivelzon/shared/ui/ui.dart';
 
 import '../../support/fake_api_server.dart';
 import '../../support/fake_content_source.dart';
@@ -96,14 +97,18 @@ void main() {
 
   Future<void> tapKey(WidgetTester tester, String key) async {
     final f = find.byKey(ValueKey(key));
+    // Alana odaklanınca başlayan kaydırma bitsin, sonra göster ve dokun.
+    await settle(tester, 4);
     await tester.ensureVisible(f);
+    await tester.pump();
     await tester.tap(f);
     await settle(tester);
   }
 
   testWidgets('hesapsız: sakin davet, hiçbir istek yok', (tester) async {
-    await pump(tester, const AccountSection());
-    expect(find.text(AccountTexts.tileSignedOut), findsOneWidget);
+    await pump(tester, const AccountRow());
+    expect(find.text(AccountTexts.section), findsOneWidget);
+    expect(find.text(AccountTexts.rowValueSignedOut), findsOneWidget);
     expect(
       find.text(
         'İlerlemen yalnızca bu telefonda. Kaybolmasın istersen hesap aç.',
@@ -121,7 +126,7 @@ void main() {
   testWidgets(
     '13 yaş altı: açıklama, bilgi gönderilmez, hesap kapısı kapanır',
     (tester) async {
-      await pump(tester, const AccountSection());
+      await pump(tester, const AccountRow());
       await tapKey(tester, 'profile-account');
       await tapKey(tester, 'account-email');
       await tester.enterText(
@@ -156,12 +161,12 @@ void main() {
       expect(gate, DateTime.now().year + 3);
       await unmount(tester);
 
-      await pump(tester, const AccountSection());
-      expect(find.text(AccountTexts.ageBlockedTitle), findsOneWidget);
-      final tile = tester.widget<ListTile>(
+      await pump(tester, const AccountRow());
+      expect(find.text(AccountTexts.ageBlocked), findsOneWidget);
+      final row = tester.widget<SettingsRow>(
         find.byKey(const ValueKey('profile-account')),
       );
-      expect(tile.enabled, isFalse);
+      expect(row.onTap, isNull);
       await unmount(tester);
     },
   );
@@ -176,7 +181,7 @@ void main() {
             updatedAt: DateTime.utc(2026, 10, 12),
           ),
         );
-    await pump(tester, const AccountSection());
+    await pump(tester, const AccountRow());
     await tapKey(tester, 'profile-account');
     await tapKey(tester, 'account-email');
     // Geçersiz e-posta: istek yok.

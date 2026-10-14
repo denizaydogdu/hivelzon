@@ -11,6 +11,7 @@ import '../../../l10n/tr_strings.dart';
 import '../../../shared/api/api_client.dart';
 import '../../../shared/api/auth_service.dart';
 import '../../../shared/sync/sync_engine.dart';
+import '../../../shared/ui/ui.dart';
 import '../../../shared/widgets/page_header.dart';
 import '../../profile/application/profile_providers.dart';
 import '../../profile/data/user_profile_store.dart';
@@ -230,32 +231,19 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
     return PopScope(
       canPop: _step != SignInStep.syncing,
       child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: theme.colorScheme.surface,
-          title: const Text(
-            AccountTexts.signInTitle,
-            style: TextStyle(fontWeight: FontWeight.w700),
-          ),
-        ),
+        appBar: AppBar(title: const Text(AccountTexts.signInTitle)),
         body: SafeArea(
           top: false,
           child: AutofillGroup(
-            child: ListView(
+            // Kısa form: tembel liste yerine tek kaydırma (her alan ve
+            // ana düğme ağaçta; klavye açıkken de kaydırılarak erişilir).
+            child: SingleChildScrollView(
               key: ValueKey('sign-in-step-${_step.name}'),
               padding: const EdgeInsets.all(AppSpacing.sm),
-              children: [
-                ..._body(theme),
-                if (_error != null) ...[
-                  const SizedBox(height: AppSpacing.sm),
-                  Text(
-                    _error!,
-                    key: const ValueKey('sign-in-error'),
-                    style: theme.textTheme.bodyLarge?.copyWith(
-                      color: theme.colorScheme.error,
-                    ),
-                  ),
-                ],
-              ],
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: _body(theme),
+              ),
             ),
           ),
         ),
@@ -263,21 +251,36 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
     );
   }
 
+  /// Girdi: tema biçimi (H-057), sayaç gizli (ekran okuyucu İngilizce
+  /// okuyordu).
   InputDecoration _field(String label, {String? helper}) => InputDecoration(
     labelText: label,
     helperText: helper,
     helperMaxLines: 2,
     counterText: '',
-    filled: true,
-    fillColor: Colors.white.withValues(alpha: 0.7),
-    border: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(AppTheme.radius),
-    ),
   );
 
-  Widget _primary(String key, String label, VoidCallback? onPressed) =>
+  /// Ana eylem; hata metni **hemen üstünde** (H-059: altta kalınca klavye
+  /// açıkken ekran dışına düşüyordu).
+  Widget _primary(String key, String label, VoidCallback? onPressed) => Column(
+    crossAxisAlignment: CrossAxisAlignment.stretch,
+    children: [
+      if (_error != null) ...[
+        Semantics(
+          liveRegion: true,
+          child: InfoCard(
+            key: const ValueKey('sign-in-error'),
+            tone: InfoTone.danger,
+            title: _error!,
+          ),
+        ),
+        const SizedBox(height: AppSpace.s12),
+      ],
       FilledButton(
         key: ValueKey(key),
+        style: FilledButton.styleFrom(
+          minimumSize: const Size.fromHeight(AppTouch.primary),
+        ),
         onPressed: _busy ? null : onPressed,
         child: _busy
             ? const SizedBox(
@@ -289,7 +292,9 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
                 ),
               )
             : Text(label),
-      );
+      ),
+    ],
+  );
 
   List<Widget> _body(ThemeData theme) {
     switch (_step) {
@@ -404,27 +409,30 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
             decoration: _field(AccountTexts.displayNameLabel),
           ),
           const SizedBox(height: AppSpacing.sm),
-          _Consent(
-            key: const ValueKey('sign-in-terms'),
-            value: _terms,
-            label: AccountTexts.termsCheck,
-            onChanged: (v) => setState(() => _terms = v),
-            onOpen: () => context.push(AppRoutes.legal('kosullar')),
-          ),
-          _Consent(
-            key: const ValueKey('sign-in-privacy'),
-            value: _privacy,
-            label: AccountTexts.privacyCheck,
-            onChanged: (v) => setState(() => _privacy = v),
-            onOpen: () => context.push(AppRoutes.legal('aydinlatma')),
-          ),
-          SwitchListTile(
-            key: const ValueKey('sign-in-marketing'),
-            contentPadding: EdgeInsets.zero,
-            value: _marketing,
-            onChanged: (v) => setState(() => _marketing = v),
-            title: const Text(AccountTexts.marketing),
-            subtitle: const Text(AccountTexts.marketingNote),
+          SettingsGroup(
+            children: [
+              _Consent(
+                key: const ValueKey('sign-in-terms'),
+                value: _terms,
+                label: AccountTexts.termsCheck,
+                onChanged: (v) => setState(() => _terms = v),
+                onOpen: () => context.push(AppRoutes.legal('kosullar')),
+              ),
+              _Consent(
+                key: const ValueKey('sign-in-privacy'),
+                value: _privacy,
+                label: AccountTexts.privacyCheck,
+                onChanged: (v) => setState(() => _privacy = v),
+                onOpen: () => context.push(AppRoutes.legal('aydinlatma')),
+              ),
+              SwitchListTile(
+                key: const ValueKey('sign-in-marketing'),
+                value: _marketing,
+                onChanged: (v) => setState(() => _marketing = v),
+                title: const Text(AccountTexts.marketing),
+                subtitle: const Text(AccountTexts.marketingNote),
+              ),
+            ],
           ),
           const SizedBox(height: AppSpacing.sm),
           _primary(
@@ -500,19 +508,15 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
         return [
           Icon(
             ok ? Icons.cloud_done_outlined : Icons.cloud_queue_rounded,
-            size: 48,
-            color: AppColors.seaBlue,
+            size: AppIconSize.xl,
+            color: ok ? AppPalette.success : AppPalette.seaBlue,
           ),
           const SizedBox(height: AppSpacing.sm),
           Text(
             ok ? AccountTexts.synced : AccountTexts.syncLater,
             key: const ValueKey('sign-in-done'),
             textAlign: TextAlign.center,
-            style: ok
-                ? theme.textTheme.titleLarge?.copyWith(
-                    fontWeight: FontWeight.w700,
-                  )
-                : theme.textTheme.bodyLarge,
+            style: ok ? theme.textTheme.titleLarge : theme.textTheme.bodyLarge,
           ),
           if (ok) ...[
             const SizedBox(height: AppSpacing.xs),
@@ -552,18 +556,14 @@ class _Consent extends StatelessWidget {
     children: [
       Expanded(
         child: CheckboxListTile(
-          contentPadding: EdgeInsets.zero,
           controlAffinity: ListTileControlAffinity.leading,
           value: value,
           onChanged: (v) => onChanged(v ?? false),
           title: Text(label),
         ),
       ),
-      TextButton(
-        style: TextButton.styleFrom(minimumSize: const Size(48, 48)),
-        onPressed: onOpen,
-        child: const Text(AccountTexts.readText),
-      ),
+      TextButton(onPressed: onOpen, child: const Text(AccountTexts.readText)),
+      const SizedBox(width: AppSpace.s4),
     ],
   );
 }

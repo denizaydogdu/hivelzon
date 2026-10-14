@@ -481,7 +481,7 @@ class _Feedback extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(12),
         decoration: BoxDecoration(
-          color: const Color(0xFFFFF4C9),
+          color: AppPalette.yellow100,
           borderRadius: BorderRadius.circular(AppTheme.radius),
         ),
         child: Row(
@@ -532,8 +532,8 @@ class _OptionTile extends StatelessWidget {
     final bg = selected
         ? AppColors.seaBlue
         : done
-        ? const Color(0xFFDCE8F3)
-        : const Color(0xFFEAF1F8);
+        ? AppPalette.seaBlue100
+        : AppPalette.seaBlue50;
     final fg = selected ? Colors.white : AppColors.seaBlue;
     return Padding(
       padding: const EdgeInsets.only(bottom: AppSpacing.xs),
@@ -616,7 +616,7 @@ class _TokenChip extends StatelessWidget {
           : '$text, eklemek için dokun',
       excludeSemantics: true,
       child: Material(
-        color: filled ? AppColors.seaBlue : const Color(0xFFEAF1F8),
+        color: filled ? AppColors.seaBlue : AppPalette.seaBlue50,
         borderRadius: BorderRadius.circular(AppTheme.radius),
         child: InkWell(
           borderRadius: BorderRadius.circular(AppTheme.radius),

@@ -321,7 +321,7 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen>
         if (!didPop) unawaited(_confirmClose());
       },
       child: Scaffold(
-        backgroundColor: const Color(0xFF101418),
+        backgroundColor: AppScrim.playerBackground,
         body: switch (s.phase) {
           PlayerPhase.loading => const _Centered(
             child: Column(
@@ -423,7 +423,7 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen>
             child: Center(
               child: CircleAvatar(
                 radius: 36,
-                backgroundColor: Color(0x99000000),
+                backgroundColor: AppScrim.strong,
                 child: Icon(Icons.pause_rounded, color: Colors.white, size: 40),
               ),
             ),
@@ -796,7 +796,7 @@ class _CuePill extends StatelessWidget {
         vertical: AppSpacing.xs,
       ),
       decoration: BoxDecoration(
-        color: const Color(0xCC1B1B1B),
+        color: AppScrim.captionBox,
         borderRadius: BorderRadius.circular(AppTheme.radius),
       ),
       child: Text(

@@ -1,0 +1,23 @@
+[
+  {
+    "created_at": "2026-10-14T05:50:00.106203Z",
+    "display_name": "GPT Image 2.5",
+    "id": "1412214d-033e-4641-944d-6bb51ecbc50a",
+    "job_type": "gpt_image_2_5",
+    "min_result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261014_055000_1412214d-033e-4641-944d-6bb51ecbc50a_min.webp",
+    "params": {
+      "aspect_ratio": "9:16",
+      "height": 1344,
+      "medias": [],
+      "model": "flare",
+      "prompt": "Topic set screen 'Alex'in odası' (pushed page). Wave-shaped header with an illustrated cozy room with a window to the sea. A highlighted card 'Sahne avı' with a magnifier icon, short text 'Nesneleri resimde bul. Süre yok.' and a yellow pill button 'Başla'. Then a two-column grid of rounded item cards, each with a cropped illustration (radio, clock, cup, book, window, shelf) and the English word in bold with Turkish below in grey, one card with a small green check badge. High-fidelity mobile app UI mockup, single iPhone screen, portrait, flat front view, no device frame, for 'hiVelzon', an English-learning app built around an animated coastal mystery story. Design system: warm sand background (#F7F1E6), white rounded cards (12px corners) with soft warm shadows, deep sea blue (#1F4E79) for titles and accents, lighthouse yellow (#F2B33D) pill-shaped primary buttons, evening orange (#E98A3C) small accents, small caps orange labels, rounded friendly bold headings (Nunito style) and clean body text (Inter style), 8px grid, generous whitespace, playful but calm, illustrated graphic-novel art inside shaped headers (wave or diagonal cut). Bottom navigation with 5 tabs: 'Ana Sayfa', 'Keşfet', 'Hikâye', 'Konuş', 'Profil', and a small round glowing speech-bubble mascot with two friendly eyes floating at bottom-right above the tab bar. Turkish UI text, legible, minimal. No ads, no hearts/lives, no timers, no leaderboards, no real brand logos.",
+      "quality": "medium",
+      "reference_elements": [],
+      "remove_bg": false,
+      "resolution": "1k",
+      "width": 752
+    },
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261014_055000_1412214d-033e-4641-944d-6bb51ecbc50a.png",
+    "status": "completed"
+  }
+]

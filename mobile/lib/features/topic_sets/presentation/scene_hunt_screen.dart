@@ -769,18 +769,12 @@ class _Pending extends StatelessWidget {
               fontWeight: FontWeight.w500,
             ),
           );
-    // İnceleme ekranındaki "Bilmiyorum" ile aynı biçim.
+    // İnceleme ekranındaki "Bilmiyorum" ile aynı biçim (H-057: ortak stil).
     final dontKnow = OutlinedButton.icon(
       key: const ValueKey('hunt-dont-know'),
       onPressed: onDontKnow,
-      style: OutlinedButton.styleFrom(
-        minimumSize: const Size(48, 48),
-        foregroundColor: AppColors.seaBlue,
-        backgroundColor: Colors.transparent,
-        side: const BorderSide(color: AppColors.seaBlue, width: 1.5),
-        textStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
-      ),
-      icon: const Icon(Icons.help_outline_rounded),
+      style: AppButtonStyles.dontKnow(),
+      icon: const Icon(AppButtonStyles.dontKnowIcon),
       label: const Text(HuntTexts.dontKnow),
     );
     if (choices == null) {

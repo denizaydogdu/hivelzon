@@ -286,7 +286,7 @@ class _OptionButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final icons = _arrowIcons(option.icon);
     return Material(
-      color: const Color(0xFFEAF1F8),
+      color: AppPalette.seaBlue50,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(AppTheme.radius),
         side: BorderSide(color: AppColors.seaBlue.withValues(alpha: 0.25)),

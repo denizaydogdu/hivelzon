@@ -5,10 +5,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../app/router.dart';
-import '../../../app/theme.dart';
+import '../../../app/design/design.dart';
 import '../../../l10n/tr_strings.dart';
 import '../../../shared/api/api_client.dart';
-import '../../../shared/widgets/page_header.dart';
+import '../../../shared/ui/ui.dart';
 import '../../profile/application/profile_providers.dart';
 import '../application/account_providers.dart';
 
@@ -21,26 +21,43 @@ import '../application/account_providers.dart';
 class AccountScreen extends ConsumerWidget {
   const AccountScreen({super.key});
 
+  static const headerImage = AssetImage('assets/illustrations/hosgeldin.webp');
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final view = accountViewOf(ref.watch);
-    final theme = Theme.of(context);
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: theme.colorScheme.surface,
-        title: const Text(
-          AccountTexts.title,
-          style: TextStyle(fontWeight: FontWeight.w700),
-        ),
-      ),
+      appBar: AppBar(title: const Text(AccountTexts.title)),
       body: SafeArea(
         top: false,
         child: ListView(
           key: const ValueKey('account-screen'),
-          padding: const EdgeInsets.all(AppSpacing.sm),
+          padding: const EdgeInsets.only(bottom: AppSpace.s32),
           children: view.signedIn
-              ? [_SignedIn(view: view)]
-              : [_SignedOut(view: view)],
+              ? [
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(
+                      AppSpace.page,
+                      AppSpace.s8,
+                      AppSpace.page,
+                      0,
+                    ),
+                    child: _SignedIn(view: view),
+                  ),
+                ]
+              : [
+                  const ShapedHeader(
+                    shape: HeaderShape.diagonal,
+                    image: headerImage,
+                    height: 190,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: AppSpace.page,
+                    ),
+                    child: _SignedOut(view: view),
+                  ),
+                ],
         ),
       ),
     );
@@ -58,57 +75,145 @@ class _SignedOut extends StatelessWidget {
     final now = DateTime.now().toUtc();
     final reason = AccountTexts.signedOutReason(view.row?.signedOutReason);
     if (view.ageBlocked(now)) {
-      return _Info(
-        key: const ValueKey('account-age-blocked'),
-        icon: Icons.info_outline_rounded,
-        text: AccountTexts.ageBlocked,
+      return const InfoCard(
+        key: ValueKey('account-age-blocked'),
+        title: AccountTexts.ageBlockedTitle,
+        body: AccountTexts.ageBlocked,
       );
     }
-    Widget bullet(IconData icon, String text) => Padding(
-      padding: const EdgeInsets.only(bottom: AppSpacing.xs),
+    return StaggeredList(
+      children: [
+        if (reason != null)
+          InfoCard(
+            key: const ValueKey('account-signed-out-reason'),
+            tone: InfoTone.warning,
+            icon: Icons.lock_outline_rounded,
+            title: reason,
+          ),
+        Semantics(
+          header: true,
+          child: Text(AccountTexts.intro, style: theme.textTheme.titleMedium),
+        ),
+        const _BenefitCard(),
+        // Giriş yolları listesi: Apple ve Google (H-044) buraya eklenir.
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            FilledButton.icon(
+              key: const ValueKey('account-email'),
+              style: FilledButton.styleFrom(
+                minimumSize: const Size.fromHeight(AppTouch.primary),
+              ),
+              onPressed: () => context.push(AppRoutes.signIn),
+              icon: const Icon(Icons.mail_outline_rounded),
+              label: const Text(AccountTexts.methodEmail),
+            ),
+            const SizedBox(height: AppSpace.s8),
+            Text(
+              AccountTexts.methodEmailNote,
+              textAlign: TextAlign.center,
+              style: theme.textTheme.bodySmall?.copyWith(
+                color: AppPalette.ink500,
+              ),
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+}
+
+/// Hesabın üç faydası: yuvarlak, renkli zeminli ikon + kısa başlık +
+/// açıklama.
+class _BenefitCard extends StatelessWidget {
+  const _BenefitCard();
+
+  @override
+  Widget build(BuildContext context) {
+    return const SettingsGroup(
+      children: [
+        _Benefit(
+          icon: Icons.cloud_upload_outlined,
+          background: AppPalette.yellow100,
+          foreground: AppPalette.yellow700,
+          title: AccountTexts.benefitBackupTitle,
+          body: AccountTexts.benefitBackup,
+        ),
+        _Benefit(
+          icon: Icons.devices_outlined,
+          background: AppPalette.seaBlue50,
+          foreground: AppPalette.seaBlue,
+          title: AccountTexts.benefitDevicesTitle,
+          body: AccountTexts.benefitDevices,
+        ),
+        _Benefit(
+          icon: Icons.sentiment_satisfied_alt_rounded,
+          background: AppPalette.successSurface,
+          foreground: AppPalette.success,
+          title: AccountTexts.benefitLocalTitle,
+          body: AccountTexts.benefitLocal,
+        ),
+      ],
+    );
+  }
+}
+
+class _Benefit extends StatelessWidget {
+  const _Benefit({
+    required this.icon,
+    required this.background,
+    required this.foreground,
+    required this.title,
+    required this.body,
+  });
+
+  final IconData icon;
+  final Color background;
+  final Color foreground;
+  final String title;
+  final String body;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return Padding(
+      padding: const EdgeInsets.all(AppSpace.s16),
       child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Icon(icon, color: AppColors.seaBlue),
-          const SizedBox(width: AppSpacing.sm),
-          Expanded(child: Text(text, style: theme.textTheme.bodyLarge)),
+          ExcludeSemantics(
+            child: Container(
+              width: AppSpace.s48,
+              height: AppSpace.s48,
+              decoration: BoxDecoration(
+                color: background,
+                shape: BoxShape.circle,
+              ),
+              child: Icon(icon, color: foreground, size: AppIconSize.md),
+            ),
+          ),
+          const SizedBox(width: AppSpace.s16),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  title,
+                  style: theme.textTheme.titleMedium?.copyWith(
+                    color: AppPalette.seaBlue,
+                  ),
+                ),
+                const SizedBox(height: 2),
+                Text(
+                  body,
+                  style: theme.textTheme.bodyMedium?.copyWith(
+                    color: AppPalette.ink500,
+                  ),
+                ),
+              ],
+            ),
+          ),
         ],
       ),
-    );
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        if (reason != null) ...[
-          _Info(
-            key: const ValueKey('account-signed-out-reason'),
-            icon: Icons.lock_outline_rounded,
-            text: reason,
-          ),
-          const SizedBox(height: AppSpacing.sm),
-        ],
-        Text(
-          AccountTexts.intro,
-          style: theme.textTheme.titleMedium?.copyWith(
-            fontWeight: FontWeight.w700,
-          ),
-        ),
-        const SizedBox(height: AppSpacing.sm),
-        bullet(Icons.cloud_upload_outlined, AccountTexts.benefitBackup),
-        bullet(Icons.devices_outlined, AccountTexts.benefitDevices),
-        bullet(Icons.phone_iphone_rounded, AccountTexts.benefitLocal),
-        const SizedBox(height: AppSpacing.md),
-        const SectionHeading(AccountTexts.methodsHeading),
-        const SizedBox(height: AppSpacing.xs),
-        // Giriş yolları listesi: Apple ve Google (H-044) buraya eklenir.
-        FilledButton.icon(
-          key: const ValueKey('account-email'),
-          onPressed: () => context.push(AppRoutes.signIn),
-          icon: const Icon(Icons.mail_outline_rounded),
-          label: const Text(AccountTexts.methodEmail),
-        ),
-        const SizedBox(height: AppSpacing.xs),
-        Text(AccountTexts.methodEmailNote, style: theme.textTheme.bodyMedium),
-      ],
     );
   }
 }
@@ -142,26 +247,31 @@ class _SignedInState extends ConsumerState<_SignedIn> {
     );
   }
 
-  Future<bool?> _confirm(String title, String body, String action) =>
-      showDialog<bool>(
-        context: context,
-        builder: (context) => AlertDialog(
-          title: Text(title),
-          content: Text(body),
-          actions: [
-            TextButton(
-              key: const ValueKey('account-confirm-cancel'),
-              onPressed: () => Navigator.of(context).pop(false),
-              child: const Text(AccountTexts.cancel),
-            ),
-            FilledButton(
-              key: const ValueKey('account-confirm-ok'),
-              onPressed: () => Navigator.of(context).pop(true),
-              child: Text(action),
-            ),
-          ],
+  Future<bool?> _confirm(
+    String title,
+    String body,
+    String action, {
+    bool danger = false,
+  }) => showDialog<bool>(
+    context: context,
+    builder: (context) => AlertDialog(
+      title: Text(title),
+      content: Text(body),
+      actions: [
+        TextButton(
+          key: const ValueKey('account-confirm-cancel'),
+          onPressed: () => Navigator.of(context).pop(false),
+          child: const Text(AccountTexts.cancel),
         ),
-      );
+        FilledButton(
+          key: const ValueKey('account-confirm-ok'),
+          style: danger ? AppButtonStyles.dangerFilled() : null,
+          onPressed: () => Navigator.of(context).pop(true),
+          child: Text(action),
+        ),
+      ],
+    ),
+  );
 
   Future<void> _signOut({required bool wipe}) async {
     final ok = wipe
@@ -169,6 +279,7 @@ class _SignedInState extends ConsumerState<_SignedIn> {
             AccountTexts.wipeTitle,
             AccountTexts.wipeBody,
             AccountTexts.wipeConfirm,
+            danger: true,
           )
         : await _confirm(
             AccountTexts.signOutTitle,
@@ -199,6 +310,7 @@ class _SignedInState extends ConsumerState<_SignedIn> {
       AccountTexts.deleteTitle,
       AccountTexts.deleteBody,
       AccountTexts.deleteAccount,
+      danger: true,
     );
     if (ok != true || !mounted) return;
     setState(() => _busy = true);
@@ -225,111 +337,140 @@ class _SignedInState extends ConsumerState<_SignedIn> {
     final syncing = ref.watch(syncControllerProvider).syncing;
     final now = DateTime.now().toUtc();
     final waiting = row?.lastErrorCode == ApiException.networkCode;
-    final children = <Widget>[
-      const SectionHeading(AccountTexts.signedInHeading),
-      const SizedBox(height: AppSpacing.xs),
-      Text(
-        row?.emailMasked ?? '',
-        key: const ValueKey('account-email-masked'),
-        style: theme.textTheme.titleMedium?.copyWith(
-          fontWeight: FontWeight.w700,
-        ),
-      ),
-      const SizedBox(height: 4),
-    ];
-    if (widget.view.pendingDeletion) {
-      children.addAll([
-        _Info(
-          icon: Icons.info_outline_rounded,
-          text: AccountTexts.pendingDeletion(
-            AccountTexts.date(row?.scheduledPurgeAt ?? now),
-          ),
-        ),
-        const SizedBox(height: AppSpacing.sm),
-        FilledButton(
-          key: const ValueKey('account-restore'),
-          onPressed: _busy ? null : () => context.push(AppRoutes.signIn),
-          child: const Text(AccountTexts.restore),
-        ),
-      ]);
-    } else {
-      children.addAll([
-        Text(
-          syncing
-              ? AccountTexts.syncing
-              : AccountTexts.syncLine(row?.lastSyncAt, now),
-          key: const ValueKey('account-sync-line'),
-          style: theme.textTheme.bodyLarge,
-        ),
-        if (waiting && !syncing)
-          Text(AccountTexts.syncWaiting, style: theme.textTheme.bodyMedium),
-        const SizedBox(height: AppSpacing.sm),
-        OutlinedButton.icon(
-          key: const ValueKey('account-sync-now'),
-          style: OutlinedButton.styleFrom(minimumSize: const Size(48, 48)),
-          onPressed: _busy || syncing ? null : () => unawaited(_syncNow()),
-          icon: const Icon(Icons.sync_rounded),
-          label: const Text(AccountTexts.syncNow),
-        ),
-      ]);
-    }
-    children.addAll([
-      const SizedBox(height: AppSpacing.md),
-      OutlinedButton.icon(
-        key: const ValueKey('account-sign-out'),
-        style: OutlinedButton.styleFrom(minimumSize: const Size(48, 48)),
-        onPressed: _busy ? null : () => unawaited(_signOut(wipe: false)),
-        icon: const Icon(Icons.logout_rounded),
-        label: const Text(AccountTexts.signOut),
-      ),
-      const SizedBox(height: AppSpacing.xs),
-      TextButton(
-        key: const ValueKey('account-sign-out-wipe'),
-        style: TextButton.styleFrom(minimumSize: const Size(48, 48)),
-        onPressed: _busy ? null : () => unawaited(_signOut(wipe: true)),
-        child: const Text(AccountTexts.wipeAlso),
-      ),
-      if (!widget.view.pendingDeletion) ...[
-        const SizedBox(height: AppSpacing.md),
-        TextButton.icon(
-          key: const ValueKey('account-delete'),
-          style: TextButton.styleFrom(minimumSize: const Size(48, 48)),
-          onPressed: _busy ? null : () => unawaited(_delete()),
-          icon: const Icon(Icons.delete_outline_rounded),
-          label: const Text(AccountTexts.deleteAccount),
-        ),
-      ],
-    ]);
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: children,
-    );
-  }
-}
+    final pending = widget.view.pendingDeletion;
+    // Eşitleme durumu: renk + ikon (yalnız renge dayanmaz; metin de var).
+    final (IconData syncIcon, Color syncColor) = pending
+        ? (Icons.schedule_rounded, AppPalette.warning)
+        : syncing
+        ? (Icons.sync_rounded, AppPalette.seaBlue)
+        : waiting
+        ? (Icons.cloud_queue_rounded, AppPalette.warning)
+        : (Icons.cloud_done_outlined, AppPalette.success);
 
-class _Info extends StatelessWidget {
-  const _Info({super.key, required this.icon, required this.text});
-
-  final IconData icon;
-  final String text;
-
-  @override
-  Widget build(BuildContext context) => Card(
-    margin: EdgeInsets.zero,
-    elevation: 0,
-    color: Colors.white,
-    child: Padding(
-      padding: const EdgeInsets.all(AppSpacing.sm),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
+    final status = Container(
+      key: const ValueKey('account-status'),
+      padding: const EdgeInsets.all(AppSpace.s16),
+      decoration: const BoxDecoration(
+        color: AppPalette.white,
+        borderRadius: AppRadius.mdAll,
+        boxShadow: AppShadows.level2,
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Icon(icon, color: AppColors.seaBlue),
-          const SizedBox(width: AppSpacing.sm),
-          Expanded(
-            child: Text(text, style: Theme.of(context).textTheme.bodyLarge),
+          Row(
+            children: [
+              ExcludeSemantics(
+                child: Container(
+                  width: AppSpace.s48,
+                  height: AppSpace.s48,
+                  decoration: BoxDecoration(
+                    color: syncColor.withValues(alpha: 0.12),
+                    shape: BoxShape.circle,
+                  ),
+                  child: Icon(syncIcon, color: syncColor),
+                ),
+              ),
+              const SizedBox(width: AppSpace.s16),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const CapsLabel(
+                      AccountTexts.signedInHeading,
+                      tone: CapsTone.blue,
+                    ),
+                    const SizedBox(height: AppSpace.s4),
+                    Text(
+                      row?.emailMasked ?? '',
+                      key: const ValueKey('account-email-masked'),
+                      style: theme.textTheme.titleMedium,
+                    ),
+                    if (!pending) ...[
+                      const SizedBox(height: 2),
+                      Text(
+                        syncing
+                            ? AccountTexts.syncing
+                            : AccountTexts.syncLine(row?.lastSyncAt, now),
+                        key: const ValueKey('account-sync-line'),
+                        style: theme.textTheme.bodyMedium?.copyWith(
+                          color: AppPalette.ink700,
+                        ),
+                      ),
+                      if (waiting && !syncing)
+                        Text(
+                          AccountTexts.syncWaiting,
+                          style: theme.textTheme.bodySmall?.copyWith(
+                            color: AppPalette.ink500,
+                          ),
+                        ),
+                    ],
+                  ],
+                ),
+              ),
+            ],
           ),
+          if (!pending) ...[
+            const SizedBox(height: AppSpace.s16),
+            OutlinedButton.icon(
+              key: const ValueKey('account-sync-now'),
+              onPressed: _busy || syncing ? null : () => unawaited(_syncNow()),
+              icon: const Icon(Icons.sync_rounded),
+              label: const Text(AccountTexts.syncNow),
+            ),
+          ],
         ],
       ),
-    ),
-  );
+    );
+
+    return StaggeredList(
+      children: [
+        status,
+        if (pending)
+          InfoCard(
+            key: const ValueKey('account-pending-deletion'),
+            tone: InfoTone.warning,
+            title: AccountTexts.pendingDeletion(
+              AccountTexts.date(row?.scheduledPurgeAt ?? now),
+            ),
+            action: FilledButton(
+              key: const ValueKey('account-restore'),
+              onPressed: _busy ? null : () => context.push(AppRoutes.signIn),
+              child: const Text(AccountTexts.restore),
+            ),
+          ),
+        Center(
+          child: TextButton.icon(
+            key: const ValueKey('account-sign-out'),
+            onPressed: _busy ? null : () => unawaited(_signOut(wipe: false)),
+            icon: const Icon(Icons.logout_rounded),
+            label: const Text(AccountTexts.signOut),
+          ),
+        ),
+        SettingsGroup(
+          key: const ValueKey('account-danger-zone'),
+          title: AccountTexts.dangerZone,
+          children: [
+            SettingsRow(
+              key: const ValueKey('account-sign-out-wipe'),
+              icon: Icons.phonelink_erase_rounded,
+              title: AccountTexts.wipeAlso,
+              subtitle: AccountTexts.wipeRowHint,
+              destructive: true,
+              onTap: _busy ? null : () => unawaited(_signOut(wipe: true)),
+            ),
+            if (!pending)
+              SettingsRow(
+                key: const ValueKey('account-delete'),
+                icon: Icons.delete_outline_rounded,
+                title: AccountTexts.deleteAccount,
+                subtitle: AccountTexts.deleteRowHint,
+                destructive: true,
+                onTap: _busy ? null : () => unawaited(_delete()),
+              ),
+          ],
+        ),
+      ],
+    );
+  }
 }

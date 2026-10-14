@@ -245,12 +245,12 @@ class _NoteCard extends StatelessWidget {
       width: double.infinity,
       padding: const EdgeInsets.all(AppSpacing.md),
       decoration: BoxDecoration(
-        color: const Color(0xFFFFFBEF),
+        color: AppPalette.yellow50,
         borderRadius: BorderRadius.circular(AppTheme.radius),
-        border: Border.all(color: const Color(0xFFE4D8BE)),
+        border: Border.all(color: AppPalette.sand300),
         boxShadow: const [
           BoxShadow(
-            color: Color(0x40000000),
+            color: AppScrim.cardShadow,
             blurRadius: 12,
             offset: Offset(0, 4),
           ),

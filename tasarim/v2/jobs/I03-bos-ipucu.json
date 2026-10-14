@@ -1,0 +1,23 @@
+[
+  {
+    "created_at": "2026-10-14T05:50:33.254602Z",
+    "display_name": "GPT Image 2.5",
+    "id": "0d8c10d2-36c9-4b0e-a2ee-02b8139b94ed",
+    "job_type": "gpt_image_2_5",
+    "min_result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261014_055033_0d8c10d2-36c9-4b0e-a2ee-02b8139b94ed_min.webp",
+    "params": {
+      "aspect_ratio": "1:1",
+      "height": 2048,
+      "medias": [],
+      "model": "flare",
+      "prompt": "Spot illustration on a plain warm sand background: a small cork board with three empty pins and a loose piece of string, a magnifying glass leaning on it, centered, lots of empty margin, curious and calm mood. Warm animated-series illustration, graphic-novel style, clean ink lines, soft cel shading, coastal palette of sea blue, sand, lighthouse yellow and evening orange, mature tone suitable for teens and adults, not childish, no text, no letters, no numbers, no logos.",
+      "quality": "low",
+      "reference_elements": [],
+      "remove_bg": false,
+      "resolution": "2k",
+      "width": 2048
+    },
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261014_055033_0d8c10d2-36c9-4b0e-a2ee-02b8139b94ed.png",
+    "status": "completed"
+  }
+]

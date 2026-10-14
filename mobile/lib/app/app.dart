@@ -28,7 +28,9 @@ class HiVelzonApp extends ConsumerWidget {
       title: 'hiVelzon',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.light(),
+      // H-057: yalnız açık tema (karanlık mod sonra ayrı iş).
       darkTheme: AppTheme.dark(),
+      themeMode: ThemeMode.light,
       // Arayüz Türkçe (H-053): Material'ın kendi metinleri ve ekran okuyucu
       // etiketleri de ("Geri", "Kapat", "Sekme 1/5") Türkçe olur.
       locale: const Locale('tr'),

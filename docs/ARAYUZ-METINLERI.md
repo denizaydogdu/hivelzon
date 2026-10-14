@@ -17,7 +17,12 @@
 9. **Arayüz çerçevesinde İngilizce yok.** İngilizce yalnızca öğrenilen içerikte olur: hikâye metni, ifade, bölüm adı. "EN / EN+TR" altyazı kısaltması menüde açılır ("EN (İngilizce)"). Ekran okuyucu bu kısaltmayı tam okur. Uygulama dili `tr` olarak sabittir (`flutter_localizations`). Böylece Material'ın kendi metinleri de Türkçedir: "Geri", "Kapat", "Sekme 1 / 5". Önceden bunlar İngilizceydi: "Back", "Dismiss", "Scrim", "Tab 1 of 5", "20 characters remaining".
 10. **Yapay zekâ açıkça söylenir.** Oynatıcıda ve jenerikte kısa süreli "Yapay zekâ ile üretilmiştir" notu olduğu gibi kalır. Hi kendini yapay zekâ yardımcısı olarak tanıtır. Konuş sekmesi de bunu önceden söyler.
 11. **Erişilebilirlik etiketleri metinle aynıdır.** Bir metin değişince aynı anlamdaki `Semantics` ya da `tooltip` metni de değişir.
-12. **Görsel düzen.** 8 px ızgara, köşe 12 px. Yazı ağırlığı en fazla 3 tanedir (400 / 500 / 700); `w600` kaldırıldı. Yazı en az 12 px, dokunma alanı en az 48 px.
+12. **Görsel düzen** (H-057; belirteçler `tasarim/README.md` "Tasarım sistemi v2").
+    - **Izgara ve köşe:** 8 px ızgara (4 / 8 / 12 / 16 / 24 / 32 / 48 / 64). Köşe 8 / 12 / 20 / tam: kart ve giriş alanı 12, alt panel ve pencere 20, düğme hap biçimi (tam).
+    - **Yazı:** Başlıklar **Nunito** 700 (display / headline / title), metin ve etiketler **Inter** 400 / 500 (vurgu 700). Yazı ağırlığı en fazla 3 tanedir (400 / 500 / 700); `w600` yok. İkisi de uygulamaya gömülüdür (OFL). Yazı en az 12 px; boyut `Theme.of(context).textTheme` ya da `AppTypography` ile verilir, ekranda `fontSize:` yazılmaz.
+    - **Renk:** yalnızca `AppPalette` / `AppScrim` belirteçleri; ekranda `Color(0x…)` yazılmaz (test denetler). Metin kontrastı WCAG AA (≥ 4,5:1). Turuncu metin `orange700`, ikincil metin `ink500`.
+    - **Dokunma alanı** en az 48 px; ana eylem 56 px.
+    - **Hareket:** sakin ve amaçlı. Dokunma tepkisi (0,97 ölçek, 150 ms), sayfa geçişi (solarak + hafif kayma, 250 ms), listede sırayla belirme (öğe başına 50 ms, en fazla 8 öğe), dolan halka (400 ms). Sekmeler arası geçiş anlıktır. "Hareketi azalt" açıksa hepsi durağandır. Geri sayım, titreşen uyarı, baskı kuran animasyon yok (K-32).
 
 ## 2. Terimler (tek anlam, tek kelime)
 
@@ -196,17 +201,22 @@ Sonraki adım: oynatıcı metinleri de `tr_strings.dart` dosyasına taşınabili
 
 ## 6. Profil
 
-Düzen: başlık ve tek cümle, ardından **Sana nasıl seslenelim?**, **Defter** ve **Günlük hedef** bölümleri.
+**Düzen (H-059, 2026-10-14):** illüstrasyonlu dalga başlık → avatar (adın ilk harfi; ad yoksa Hi) + **Merhaba Deniz** / **Merhaba!** + tek satır durum → üç istatistik kutusu → iki ayar grubu. Açıklamalar ayrı paragraf değil, satırın altında ipucudur. Ad ve günlük hedef alt panelde değişir. Sayılar sıfırdan sayarak belirir; "Hareketi azalt" açıksa durağan.
 
-| Yer | Eski | Yeni | Neden |
-|---|---|---|---|
-| Başlık | Profil | Profil · "Adın, defterin ve günlük hedefin." | Sayfada ne olduğu. |
-| Ad bölümü | — | **Sana nasıl seslenelim?** Alan: "Adın ya da takma adın". Yardım metni: "İsteğe bağlı. Yalnızca bu cihazda saklanır." Düğme: **Kaydet** | Kullanıcı kararı (H-053). KVKK gereği en az veri: yalnızca ilk ad ya da takma ad. |
-| Ad hataları | — | "En fazla 20 karakter yazabilirsin.", "Yalnızca harf, boşluk, kesme işareti ve tire kullanabilirsin." | Nedeni söyler, suçlamaz. |
-| Ad kaydı | — | "Adın kaydedildi." / Boş kaydedilince: "Adın silindi; Ana Sayfa "Merhaba!" der." | Sonucu görünür. |
-| Defter bölümü | Defter · "Henüz ifade yok · ipucu panosu" / "12 ifade · 4 tekrar bekliyor" | **Defter** başlığı; satır: "Defterini aç" · "Defterinde 12 ifade var; 4 ifadenin tekrar zamanı geldi." / "Henüz ifade yok. Bölüm bitince ifadeler buraya eklenir." | Sayılar cümle içinde; düğme fiil. |
-| Günlük hedef | Günlük hedef · 5 / 10 / 15 dk | Günlük hedef · "Günde ne kadar zaman ayırmak istersin?" · 5 / 10 / 15 dk | Seçimin ne olduğu. |
-| Hedef notu | Tekrarda günde en fazla 10 yeni kart açılır. | Kelime tekrarında günde en fazla 10 yeni ifade açılır. | Terim. |
+| Yer | Metin | Not |
+|---|---|---|
+| Selam | "Merhaba Deniz" / ad yoksa "Merhaba!" | Ekran okuyucuda başlık. Avatarın etiketi ad ya da "Hi". |
+| Durum satırı | "Bu hafta 6 ifadeyi tekrar ettin." → yoksa "Bu hafta 4 yeni ifade topladın." → "Bu hafta 1 bölüm bitirdin." → hiçbiri yoksa "Bugün küçük bir adım yeter." | Yapılmayan söylenmez, kıyas yok (K-16). |
+| İstatistikler | **15** ifade · **3** bölüm bitti · **6** bu hafta tekrar | Sayı + ne sayıldığı; ekran okuyucu "15 ifade" diye tek parça okur. |
+| Grup **Öğrenme** | **Defter** · "15 ifade · 5 ifadenin tekrar zamanı geldi" / "Bölüm bitince ifadeler buraya eklenir." | |
+| | **Günlük hedef** · "Kelime tekrarında günde en fazla 10 yeni ifade açılır." · sağda "10 dk" | Panel: "Günde ne kadar zaman ayırmak istersin?" · 5 / 10 / 15 dk · bilgi kartı (aynı cümle + "İstediğin zaman değiştirebilirsin. Hedefin altında kalmak sorun değil.") |
+| | **Söyle alıştırmaları** (anahtar) · "Sesin bu telefonda yazıya çevrilir; kaydedilmez, hiçbir yere gönderilmez." | Destek / izin yoksa sağda "Kapalı" ve nedeni (§11). |
+| | **Konu setleri** · "Hikâyedeki yerlerin nesneleri." | Defter → Konu setleri. |
+| Grup **Hesap ve gizlilik** | **Hesap** · sağda "Açık değil" / maskeli e-posta / 13 yaş altında "13+" (satır kapalı) | İpucu §12'deki satır metni. |
+| | **Hi benim hakkımda ne biliyor?** · "Bu cihazda saklananları gör, istersen sil." | |
+| | **Adın** · "Ana Sayfa seni bu adla selamlar." · sağda ad ya da "Eklenmedi" | Panel: **Sana nasıl seslenelim?** · alan "Adın ya da takma adın" · "İsteğe bağlı. Yalnızca bu cihazda saklanır." · **Kaydet** (kaydedince panel kapanır). |
+| Ad hataları | "En fazla 20 karakter yazabilirsin.", "Yalnızca harf, boşluk, kesme işareti ve tire kullanabilirsin." | Nedeni söyler, suçlamaz. |
+| Ad kaydı | "Adın kaydedildi." / Boş kaydedilince: "Adın silindi; Ana Sayfa "Merhaba!" der." | Sonucu görünür. |
 
 Ad kuralları: Baştaki ve sondaki boşluk atılır, aradaki boşluklar teke iner. Boş ad, kaydı siler. İzin verilen karakterler harf, boşluk, kesme işareti, tire ve noktadır. En fazla 20 karakter yazılabilir. Ad `app_meta` tablosunda `profile.displayName` anahtarıyla tutulur; şema değişmez. Onboarding'de (H-039) de sorulur. Hesap açılınca (H-038) hesaba taşınır.
 
@@ -224,7 +234,7 @@ Neden: Sekmelerin başlık düzeni öteki sekmelerle aynı olur. Ne geleceği ve
 
 ## 9. Testler
 - `test/shared/text/turkish_test.dart`: `upperTr`, `lowerTr`, `possessiveNumber`; Ana Sayfa metin işlevleri.
-- `test/features/profile/profile_test.dart`: ad kuralı, kalıcılık (`app_meta`) ve Profil ekranı.
+- `test/features/profile/profile_test.dart`: ad kuralı, kalıcılık (`app_meta`), Profil ekranı (başlık, istatistikler, gruplar, günlük hedef ve ad panelleri).
 - `test/features/notebook/notebook_ui_test.dart`: Ana Sayfa'da adlı ve adsız selam; tekrar zamanı gelmiş ve gelmemiş durum; Defter açıklamaları.
 - `test/features/home/home_screen_test.dart` ve `test/features/story/story_screen_test.dart`: sezon ilerleme cümlesi, harita başlığı ve açıklaması.
 - `test/features/topic_sets/`: konu seti listesi ve kilit nedeni, ızgara ve ekleme metinleri, sahne avı geri bildirimleri ve özeti, bölüm sonu satırı (H-051).
@@ -247,7 +257,7 @@ Kod: `HiTexts` (`mobile/lib/l10n/tr_strings.dart`). Hi kendini yapay zekâ asist
 | Defter | **Hi'nin konu notları** · "Hikâyede tanıştığın 2 konu. Birine dokununca kartı açılır." / boşsa: "Bölümlerde yeni bir konu geçince Hi kısa bir not bırakır; notlar burada toplanır." | Yalnızca görülen kartlar (spoiler yok). |
 | Yan görev | **YAN GÖREV** · başlık · metin · "İsteğe bağlı. Yalnızca sen bilirsin." · **Yaptım** / **Şimdi değil** · "Harika! Hikâyedeki ifade gerçek hayatta da işe yaradı." | Fotoğraf, yükleme ve konum istenmez. |
 | Profil satırı | **Hi benim hakkımda ne biliyor?** · "Bu cihazda saklananları gör, istersen sil." | |
-| Gizlilik ekranı | Giriş: "Hi önerilerini yalnızca bu cihazdaki kayıtlara bakarak seçer. Bu bilgiler sunucuya gönderilmez ve reklam için kullanılmaz." · Adın · Hikâye ilerlemen · Defterin · Hi'nin öğrenme kayıtları ("6 kez bir kelimenin anlamına baktın; 4 kez bir seçimi yeniden denedin.") · Konulara göre yeniden denemeler · Son 7 gün · Yan görevler · **Hi'nin kayıtlarını sil** | Onay: "Hi'nin kayıtları silinsin mi?" · **Vazgeç** / **Sil** · sonra "Hi'nin kayıtları silindi. İlerlemen ve defterin yerinde." Silinen: öğrenme olayları, yan görev durumları, açılan notlar. Kalan: ilerleme, defter, tekrar geçmişi, ad, görülen konu kartları. |
+| Gizlilik ekranı (tasarım H-059) | Hi + "Hi önerilerini bu cihazdaki kayıtlara bakarak seçer. Reklam için kullanılmaz." · bilgi kartı: hesapsız **Yalnızca bu telefonda** · "Bu bilgiler telefonundan dışarı gönderilmez." / hesapla **Hesabına da eşitlenir** · "Hesabın açık olduğu için bu kayıtlar yedek olarak hesabına da eşitlenir. Silersen hesabına bağlı öteki cihazlardan da silinir." · **SAYILARLA**: 12 kez anlamına baktın · 4 kez yeniden denedin · 7 kez söyledin · **Bu cihazda saklananlar**: Adın · Hikâye ilerlemen · Defterin · Hi'nin öğrenme kayıtları ("6 kez bir kelimenin anlamına baktın; 4 kez bir seçimi yeniden denedin.") · Söyle alıştırmaları · Yan görevler · **Konulara göre yeniden denemeler**: çipler "Fiil yapısı · 3" (yoksa "Kayıt yok.") · **Son 7 gün**: yeni ifade · ifade tekrar · bölüm bitti (+ "En çok üzerinde çalıştığın konu: …") · **Hi'nin kayıtlarını sil** (kırmızı kenarlı) | "Sunucu" kelimesi kaldırıldı (§1.1). Onay: "Hi'nin kayıtları silinsin mi?" · **Vazgeç** / **Sil** · sonra "Hi'nin kayıtları silindi. İlerlemen ve defterin yerinde." Silinen: öğrenme olayları, yan görev durumları, açılan notlar. Kalan: ilerleme, defter, tekrar geçmişi, ad, görülen konu kartları. |
 
 Testler: `test/features/hi/` (öneri öncelik tablosu ve gerekçeler, metin denetim listesi, arama, haftalık özet, Drift kayıtları ve silme kapsamı, balon görünürlüğü, panel, konu kartı).
 
@@ -264,7 +274,7 @@ Kod: `SpeakTexts` (`mobile/lib/l10n/tr_strings.dart`). Puan, yüzde, dalga biçi
 | Karar anı | **Söyleyerek seç** · "Seni tam duyamadım. İstersen dokunarak seç." · iki denemeden sonra "Dokunarak seçebilirsin." | Yalnızca seçenekler İngilizceyse. |
 | Bölüm sonu | **HEDEF İFADELERİ SÖYLE** · "İstersen bu bölümün ifadelerini bir kez de sen söyle. İsteğe bağlı." | |
 | İzin öncesi | **Söyle alıştırmaları** · "Sesin bu telefonda yazıya çevrilir; kaydedilmez, hiçbir yere gönderilmez. Söylediğinin yazısı da saklanmaz; yalnızca "söyledin" ya da "bir daha dene" sonucu bu cihazda kalır." · "Şimdi telefonun mikrofon ve konuşma tanıma iznini soracak." · **Devam et** / **Şimdi değil** · reddedilirse "İzin verilmedi. Her şey dokunarak çalışmaya devam eder." | |
-| Profil | **Söyle alıştırmaları** · anahtar "Söyle alıştırmalarını göster" + açıklama · gizlilik satırı · desteklenmiyorsa / izin kapalıysa nedeni | |
+| Profil (H-059) | Anahtarlı satır **Söyle alıştırmaları** · ipucu "Sesin bu telefonda yazıya çevrilir; kaydedilmez, hiçbir yere gönderilmez." · desteklenmiyorsa sağda "Kapalı" + "Bu telefon İngilizceyi kendi içinde yazıya çeviremiyor; sesin dışarı gönderilmesin diye kapalı. Her şey dokunarak çalışır." · izin kapalıysa "Mikrofon izni kapalı. Telefonun Ayarlar bölümünden açabilirsin; her şey dokunarak da çalışır." | |
 | Hi benim hakkımda ne biliyor? | "3 kez söyledin; 2 tanesinde ifadenin tamamı duyuldu. Yalnızca bu sonuç saklanır; sesin ve söylediklerinin yazısı saklanmaz." | "Hi'nin kayıtlarını sil" bunları da siler. |
 | iOS izin metinleri (Info.plist) | Mikrofon: "Söyle alıştırmalarında İngilizceyi sesli söylediğinde mikrofon kullanılır. …" · Konuşma tanıma: "Söylediğin İngilizce yalnızca bu telefonda yazıya çevrilir …" | |
 
@@ -274,19 +284,23 @@ Kod: `AccountTexts` (`mobile/lib/l10n/tr_strings.dart`). Hesap isteğe bağlıd�
 
 | Yer | Metin | Not |
 |---|---|---|
-| Profil → **Hesap** (hesap yok) | **Hesap aç ya da giriş yap** · "İlerlemen yalnızca bu telefonda. Kaybolmasın istersen hesap aç." | Kullanıcı kararı. |
-| Profil → Hesap (hesap var) | "Hesabın: d•••@example.com" · "Eşitleme: son 2 dk önce" / "Eşitleme: az önce" / "Eşitleme: henüz yapılmadı" | E-posta cihazda yalnızca maskeli durur. |
+| Profil → **Hesap** (hesap yok) | **Hesap** · sağda "Açık değil" · "İlerlemen yalnızca bu telefonda. Kaybolmasın istersen hesap aç." | Kullanıcı kararı; satır biçimi H-059. |
+| Profil → Hesap (hesap var) | **Hesap** · sağda "d•••@example.com" · "Eşitleme: son 2 dk önce" / "Eşitleme: az önce" / "Eşitleme: henüz yapılmadı" | E-posta cihazda yalnızca maskeli durur. |
 | Ana Sayfa kartı | **İlerlemen yalnızca bu telefonda** · "Kaybolmasın istersen hesap aç. İstemezsen hesapsız devam edebilirsin." · **Hesap aç** / **Şimdi değil** | Yalnızca hesap yokken ve biraz ilerleme varken (1 bölüm ya da 3 ifade). Kapatılınca 30 gün görünmez, en fazla 3 kez. |
-| Hesap ekranı (hesap yok) | "Hesap isteğe bağlı. Hesapsız da her şey çalışır." · yedek / başka telefon / "Hesap açmazsan hiçbir bilgin bu telefondan çıkmaz." · **Nasıl devam etmek istersin?** · **E-postayla devam et** · "Şifre yok: e-postana tek kullanımlık bir kod göndeririz." | Apple ve Google (H-044) aynı listeye eklenir. |
+| Hesap ekranı (hesap yok; tasarım H-059) | Çapraz kesimli illüstrasyonlu başlık · "Hesap isteğe bağlı. Hesapsız da her şey çalışır." · üç fayda satırı (yuvarlak renkli ikon + başlık + açıklama): **İlerlemen yedeklenir** · **Başka telefonda devam et** · **Hesapsız da her şey çalışır** ("Hesap açmazsan hiçbir bilgin bu telefondan çıkmaz.") · büyük sarı **E-postayla devam et** · küçük "Şifre yok: e-postana tek kullanımlık bir kod göndeririz." · 13 yaş altında bilgi kartı | Apple ve Google (H-044) aynı yere eklenir. |
 | E-posta | **E-posta adresin** · "Hesabın varsa giriş yaparsın, yoksa yeni hesap açılır." · **Kod gönder** · hata: "Geçerli bir e-posta adresi yaz." | |
 | Kod | **Kodu yaz** · "… adresine 6 haneli bir kod gönderdik. Kod 10 dakika geçerli." · **Doğrula** · "Yeni kodu 42 sn sonra isteyebilirsin." → **Yeni kod gönder** · **E-postayı değiştir** | Otomatik doldurma (tek kullanımlık kod); 6 rakam girilince kendiliğinden doğrular. |
 | Kod hataları | "Bu kod eşleşmedi. E-postandaki kodu bir daha kontrol et." · "Bu kodun süresi doldu. Yeni bir kod isteyebilirsin." · "Bu kod için deneme hakkın bitti. Yeni bir kod isteyebilirsin." · "Kısa sürede çok istek geldi. Biraz sonra tekrar dene." | "Yanlış" denmez. |
 | Yeni hesap | **Hesabını aç** · "Son birkaç bilgi kaldı." · Doğum yılın ("Yalnızca yılı soruyoruz.") · "Sana nasıl seslenelim? (isteğe bağlı)" · ☐ "Kullanım koşullarını okudum, kabul ediyorum." · ☐ "KVKK aydınlatma metnini okudum." · **Metni aç** · anahtar "hiVelzon'daki yenilikleri e-postayla almak istiyorum." (varsayılan kapalı) · **Hesabımı aç** | Hukuk metinleri yer tutucu (H-042); sürüm `TERMS_VERSION` / `PRIVACY_NOTICE_VERSION`. |
 | 13 yaş altı | **Hesap için en az 13 yaş** · "Hesap açmak için en az 13 yaşında olmalısın; uygulamanın tamamını hesapsız kullanabilirsin." · "Yazdığın bilgiler kaydedilmedi." · **Uygulamaya dön** | Doğum yılı gönderilmez ve saklanmaz; cihaz yalnızca hesabın açılabileceği yılı hatırlar, Profil satırı o yıla kadar kapalı kalır. |
 | İlk eşitleme | "Verilerin eşitleniyor…" → **Verilerin eşitlendi** · "Bu telefondaki ilerlemen artık hesabında da." / bağlantı yoksa "Şu an eşitlenemedi. Verilerin bu telefonda duruyor; bağlantı gelince kendiliğinden eşitlenir." | |
-| Hesap ekranı (hesap var) | **Şimdi eşitle** ("Eşitlendi.") · **Çıkış yap** ("Verilerin bu telefonda kalır; eşitleme durur…") · **Bu telefondaki verileri de sil** (ayrı onay; "Hesabındaki kopya durur; yeniden giriş yapınca geri gelir.") · **Hesabımı sil** ("30 gün içinde aynı e-postayla giriş yapıp hesabını geri alabilirsin…") | |
+| Hesap ekranı (hesap var; tasarım H-059) | Durum kartı: **GİRİŞ YAPTIĞIN HESAP** · maskeli e-posta · eşitleme satırı (ikon ve renk: eşitlendi yeşil, bağlantı bekliyor turuncu) · **Şimdi eşitle** (ikincil; "Eşitlendi.") · sessiz **Çıkış yap** ("Verilerin bu telefonda kalır; eşitleme durur…") · ayrı grup **Tehlikeli bölge** (kırmızı satırlar): **Bu telefondaki verileri sil** · "Çıkış yapılır. Hesabındaki kopya durur; yeniden giriş yapınca geri gelir." (ayrı onay, son düğme kırmızı) · **Hesabımı sil** · "30 gün içinde aynı e-postayla giriş yapıp geri alabilirsin." | Mantık değişmedi; yalnızca görünüm. |
 | Silinmek üzere hesap | **Hesabın silinmek üzere** · "… tarihine kadar geri alabilirsin; o gün hesabın ve hesabındaki veriler kalıcı olarak silinir." · **Hesabımı geri al** / **Geri alma, çıkış yap** | |
 | Oturum kapandıysa | "Güvenliğin için bu telefondaki oturumu kapattık. Verilerin bu telefonda duruyor; istersen yeniden giriş yapabilirsin." | Kullanılmış yenileme belirteci (`TOKEN_REUSED`). |
 | Hi benim hakkımda ne biliyor? (hesap var) | "… Hesabın açık olduğu için bu kayıtlar yedek olarak hesabına da eşitlenir. Reklam için kullanılmaz." · silme onayı: "… Hesabına bağlı öteki cihazlardan da silinir. …" | Hesap yokken eski metin ("sunucuya gönderilmez") kalır. |
 
-Testler: `test/features/account/account_ui_test.dart`, `test/shared/api/api_client_test.dart` (hata metinleri suçlamasız).
+Giriş adımlarında hata metni ana düğmenin **hemen üstünde**, kırmızı bilgi kartıyla gösterilir (H-059; önceden düğmenin altında kalıp klavye açıkken görünmeyebiliyordu). Onay kutuları beyaz bir grup içindedir.
+
+**Hukuk metni ekranı (H-059):** sürüm etiketi (**SÜRÜM: …**), **Taslak metin** bilgi kartı, başlıklı bölümler (Koşullar: Uygulama · Hesap · Hesabını silmek; Aydınlatma: Hesap açarsan · Sesin · Hesap açmazsan), satır genişliği en fazla 600 px. Kesin metinler H-042.
+
+Testler: `test/features/account/account_ui_test.dart`, `test/shared/api/api_client_test.dart` (hata metinleri suçlamasız), `test/goldens/h059_screens_golden_test.dart` (H-059 golden'ları, erişilebilirlik, 1,3× yazı).

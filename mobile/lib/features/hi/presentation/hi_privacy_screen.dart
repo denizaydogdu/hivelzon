@@ -3,19 +3,25 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../app/theme.dart';
+import '../../../app/design/design.dart';
 import '../../../l10n/tr_strings.dart';
 import '../../../shared/meaning/error_taxonomy.dart';
+import '../../../shared/ui/ui.dart';
 import '../../account/application/account_providers.dart';
+import '../../player/presentation/widgets/hi_avatar.dart';
 import '../../profile/application/profile_providers.dart';
 import '../application/hi_providers.dart';
+import '../data/hi_store.dart';
 import '../domain/weekly_summary.dart';
 
-/// Profil → "Hi benim hakkımda ne biliyor?" (H-048, HI-ASISTAN-VE-KOC §5).
+/// Profil → "Hi benim hakkımda ne biliyor?" (H-048, HI-ASISTAN-VE-KOC §5;
+/// tasarım H-059).
 ///
-/// Cihazda saklananları sade dille listeler; "Hi'nin kayıtlarını sil" yalnızca
-/// öğrenme olaylarını ve yan görev durumlarını siler (onaylı). İlerleme,
-/// defter ve ad silinmez.
+/// Cihazda saklananları sade dille gösterir: Hi ile tek cümle giriş, nerede
+/// saklandığı (bilgi kartı), sayılar (`StatTile`), saklananlar (salt okunur
+/// satırlar), konu çipleri, son 7 gün. "Hi'nin kayıtlarını sil" yalnızca
+/// öğrenme olaylarını, Söyle sonuçlarını ve yan görev durumlarını siler
+/// (onaylı). İlerleme, defter ve ad silinmez.
 class HiPrivacyScreen extends ConsumerWidget {
   const HiPrivacyScreen({super.key});
 
@@ -38,6 +44,7 @@ class HiPrivacyScreen extends ConsumerWidget {
           ),
           FilledButton(
             key: const ValueKey('hi-privacy-confirm'),
+            style: AppButtonStyles.dangerFilled(),
             onPressed: () => Navigator.of(context).pop(true),
             child: const Text(HiTexts.privacyConfirmDelete),
           ),
@@ -57,107 +64,46 @@ class HiPrivacyScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final theme = Theme.of(context);
     final k = ref.watch(hiKnowledgeProvider);
     final name = ref.watch(displayNameProvider).value;
     final week = ref.watch(weeklySummaryProvider).value;
     final account = accountViewOf(ref.watch).signedIn;
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: theme.colorScheme.surface,
-        title: const Text(
-          HiTexts.privacyTitle,
-          style: TextStyle(fontWeight: FontWeight.w700),
-        ),
-      ),
+      appBar: AppBar(title: const Text(HiTexts.privacyTitle)),
       body: SafeArea(
         top: false,
         child: switch (k) {
           AsyncData(:final value) => ListView(
             key: const ValueKey('hi-privacy'),
-            padding: const EdgeInsets.all(AppSpacing.sm),
+            padding: const EdgeInsets.fromLTRB(
+              AppSpace.page,
+              AppSpace.s8,
+              AppSpace.page,
+              AppSpace.s32,
+            ),
             children: [
-              Text(
-                account ? HiTexts.privacyIntroAccount : HiTexts.privacyIntro,
-                style: theme.textTheme.bodyLarge,
-              ),
-              const SizedBox(height: AppSpacing.sm),
-              _Row(
-                icon: Icons.badge_outlined,
-                title: HiTexts.privacyName,
-                value: name ?? HiTexts.privacyNoName,
-              ),
-              _Row(
-                icon: Icons.auto_stories_outlined,
-                title: HiTexts.privacyProgress,
-                value: HiTexts.privacyProgressValue(
-                  value.completedEpisodes,
-                  value.inProgressEpisodes,
-                ),
-              ),
-              _Row(
-                icon: Icons.menu_book_outlined,
-                title: HiTexts.privacyNotebook,
-                value: HiTexts.privacyNotebookValue(
-                  value.notebookItems,
-                  value.reviewAnswers,
-                ),
-              ),
-              _Row(
-                key: const ValueKey('hi-privacy-events'),
-                icon: Icons.insights_outlined,
-                title: HiTexts.privacyEvents,
-                value: HiTexts.privacyEventsValue(value.lookups, value.errors),
-              ),
-              _Row(
-                key: const ValueKey('hi-privacy-errors'),
-                icon: Icons.translate_rounded,
-                title: HiTexts.privacyErrors,
-                value: _errorLines(value.errorCounts),
-              ),
-              _Row(
-                key: const ValueKey('hi-privacy-speech'),
-                icon: Icons.mic_none_rounded,
-                title: SpeakTexts.privacyRow,
-                value: SpeakTexts.privacyValue(
-                  value.speechAttempts,
-                  value.speechFull,
-                ),
-              ),
-              _Row(
-                icon: Icons.calendar_today_outlined,
-                title: HiTexts.privacyWeek,
-                value: _weekText(week),
-              ),
-              _Row(
-                icon: Icons.flag_outlined,
-                title: HiTexts.privacyBridge,
-                value: HiTexts.privacyBridgeValue(
-                  value.bridgeDone,
-                  value.bridgeDismissed,
-                ),
-              ),
-              const SizedBox(height: AppSpacing.md),
-              Text(
-                HiTexts.privacyDeleteNote,
-                style: theme.textTheme.bodyMedium,
-              ),
-              const SizedBox(height: AppSpacing.xs),
-              OutlinedButton.icon(
-                key: const ValueKey('hi-privacy-delete'),
-                onPressed: () => unawaited(_delete(context, ref)),
-                style: OutlinedButton.styleFrom(
-                  minimumSize: const Size(48, 48),
-                ),
-                icon: const Icon(Icons.delete_outline_rounded),
-                label: const Text(HiTexts.privacyDelete),
+              StaggeredList(
+                spacing: AppSpace.s24,
+                children: [
+                  _Intro(account: account),
+                  _Numbers(k: value),
+                  _Stored(k: value, name: name),
+                  _Errors(counts: value.errorCounts),
+                  _Week(week: week),
+                  _DeleteBlock(
+                    onDelete: () => unawaited(_delete(context, ref)),
+                  ),
+                ],
               ),
             ],
           ),
           AsyncError() => const Center(
             child: Padding(
-              padding: EdgeInsets.all(AppSpacing.md),
-              child: Text(HiTexts.privacyError, textAlign: TextAlign.center),
+              padding: EdgeInsets.all(AppSpace.s24),
+              child: EmptyState(
+                icon: Icons.cloud_off_outlined,
+                title: HiTexts.privacyError,
+              ),
             ),
           ),
           _ => const Center(
@@ -169,92 +115,306 @@ class HiPrivacyScreen extends ConsumerWidget {
   }
 }
 
-String _errorLines(Map<ErrorType, int> counts) {
-  if (counts.isEmpty) return HiTexts.privacyErrorsNone;
-  final sorted = counts.entries.toList()
-    ..sort((a, b) => b.value.compareTo(a.value));
-  return [for (final e in sorted) '${e.key.labelTr}: ${e.value}'].join('\n');
-}
+/// Hi + tek cümle + nerede saklandığı.
+class _Intro extends StatelessWidget {
+  const _Intro({required this.account});
 
-String _weekText(WeeklySummary? w) {
-  if (w == null) return HiTexts.loading;
-  final lines = [
-    if (w.phrasesAdded > 0) HiTexts.weekPhrases(w.phrasesAdded),
-    if (w.phrasesReviewed > 0) HiTexts.weekReviews(w.phrasesReviewed),
-    if (w.episodesCompleted > 0) HiTexts.weekEpisodes(w.episodesCompleted),
-    if (w.focus != null) HiTexts.weekFocus(w.focus!.labelTr),
-  ];
-  return lines.isEmpty ? HiTexts.weekEmpty : lines.join('\n');
-}
-
-class _Row extends StatelessWidget {
-  const _Row({
-    super.key,
-    required this.icon,
-    required this.title,
-    required this.value,
-  });
-
-  final IconData icon;
-  final String title;
-  final String value;
+  final bool account;
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return Card(
-      margin: const EdgeInsets.only(bottom: AppSpacing.xs),
-      color: Colors.white,
-      elevation: 0,
-      child: Padding(
-        padding: const EdgeInsets.all(AppSpacing.sm),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Row(
           children: [
-            Icon(icon, color: AppColors.seaBlue),
-            const SizedBox(width: AppSpacing.sm),
+            // Ayrı düğüm: "görsel" işareti sayfanın geri kalanına geçmesin.
+            Semantics(
+              container: true,
+              child: const HiAvatar(size: 64, pulseCycles: 1),
+            ),
+            const SizedBox(width: AppSpace.s12),
             Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    title,
-                    style: theme.textTheme.titleSmall?.copyWith(
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
-                  const SizedBox(height: 2),
-                  Text(value, style: theme.textTheme.bodyLarge),
-                ],
+              child: Text(
+                HiTexts.privacyIntro,
+                key: const ValueKey('hi-privacy-intro'),
+                style: theme.textTheme.bodyLarge,
               ),
             ),
           ],
         ),
-      ),
+        const SizedBox(height: AppSpace.s16),
+        account
+            ? const InfoCard(
+                key: ValueKey('hi-privacy-account'),
+                tone: InfoTone.info,
+                icon: Icons.cloud_sync_outlined,
+                title: HiTexts.privacyAccountTitle,
+                body: HiTexts.privacyAccountBody,
+              )
+            : const InfoCard(
+                key: ValueKey('hi-privacy-local'),
+                tone: InfoTone.success,
+                icon: Icons.phone_iphone_rounded,
+                title: HiTexts.privacyLocalTitle,
+                body: HiTexts.privacyLocalBody,
+              ),
+      ],
     );
   }
 }
 
-/// Profil'deki giriş satırı.
-class HiPrivacyTile extends StatelessWidget {
-  const HiPrivacyTile({super.key, required this.onTap});
+class _Numbers extends StatelessWidget {
+  const _Numbers({required this.k});
+
+  final HiKnowledge k;
+
+  @override
+  Widget build(BuildContext context) => Column(
+    crossAxisAlignment: CrossAxisAlignment.stretch,
+    children: [
+      const CapsLabel(HiTexts.privacyNumbers),
+      const SizedBox(height: AppSpace.s8),
+      StatRow(
+        key: const ValueKey('hi-privacy-stats'),
+        tiles: [
+          StatTile.count(
+            count: k.lookups,
+            label: HiTexts.statLookups,
+            icon: Icons.translate_rounded,
+          ),
+          StatTile.count(
+            count: k.errors,
+            label: HiTexts.statRetries,
+            icon: Icons.replay_rounded,
+            color: AppPalette.orange700,
+          ),
+          StatTile.count(
+            count: k.speechAttempts,
+            label: HiTexts.statSpeech,
+            icon: Icons.mic_none_rounded,
+            color: AppPalette.success,
+          ),
+        ],
+      ),
+    ],
+  );
+}
+
+/// Saklananlar: salt okunur satırlar (dokunulmaz, ok yok).
+class _Stored extends StatelessWidget {
+  const _Stored({required this.k, required this.name});
+
+  final HiKnowledge k;
+  final String? name;
+
+  @override
+  Widget build(BuildContext context) => SettingsGroup(
+    title: HiTexts.privacyStored,
+    children: [
+      SettingsRow(
+        icon: Icons.badge_outlined,
+        title: HiTexts.privacyName,
+        subtitle: name ?? HiTexts.privacyNoName,
+      ),
+      SettingsRow(
+        icon: Icons.auto_stories_outlined,
+        title: HiTexts.privacyProgress,
+        subtitle: HiTexts.privacyProgressValue(
+          k.completedEpisodes,
+          k.inProgressEpisodes,
+        ),
+      ),
+      SettingsRow(
+        icon: Icons.menu_book_outlined,
+        title: HiTexts.privacyNotebook,
+        subtitle: HiTexts.privacyNotebookValue(
+          k.notebookItems,
+          k.reviewAnswers,
+        ),
+      ),
+      SettingsRow(
+        key: const ValueKey('hi-privacy-events'),
+        icon: Icons.insights_outlined,
+        title: HiTexts.privacyEvents,
+        subtitle: HiTexts.privacyEventsValue(k.lookups, k.errors),
+      ),
+      SettingsRow(
+        key: const ValueKey('hi-privacy-speech'),
+        icon: Icons.mic_none_rounded,
+        title: SpeakTexts.privacyRow,
+        subtitle: SpeakTexts.privacyValue(k.speechAttempts, k.speechFull),
+      ),
+      SettingsRow(
+        icon: Icons.flag_outlined,
+        title: HiTexts.privacyBridge,
+        subtitle: HiTexts.privacyBridgeValue(k.bridgeDone, k.bridgeDismissed),
+      ),
+    ],
+  );
+}
+
+/// Konulara göre yeniden denemeler: çipler (çoktan aza).
+class _Errors extends StatelessWidget {
+  const _Errors({required this.counts});
+
+  final Map<ErrorType, int> counts;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final sorted = counts.entries.toList()
+      ..sort((a, b) => b.value.compareTo(a.value));
+    return Column(
+      key: const ValueKey('hi-privacy-errors'),
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Semantics(
+          header: true,
+          child: Text(
+            HiTexts.privacyErrors,
+            style: theme.textTheme.titleMedium,
+          ),
+        ),
+        const SizedBox(height: AppSpace.s8),
+        if (sorted.isEmpty)
+          Text(
+            HiTexts.privacyErrorsNone,
+            style: theme.textTheme.bodyMedium?.copyWith(
+              color: AppPalette.ink500,
+            ),
+          )
+        else
+          Wrap(
+            spacing: AppSpace.s8,
+            runSpacing: AppSpace.s8,
+            children: [
+              for (final e in sorted)
+                Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: AppSpace.s12,
+                    vertical: AppSpace.s8,
+                  ),
+                  decoration: BoxDecoration(
+                    color: AppPalette.orange50,
+                    borderRadius: BorderRadius.circular(AppRadius.full),
+                    border: Border.all(color: AppPalette.orange100),
+                  ),
+                  child: Text(
+                    HiTexts.errorChip(e.key.labelTr, e.value),
+                    style: theme.textTheme.labelLarge?.copyWith(
+                      color: AppPalette.ink,
+                    ),
+                  ),
+                ),
+            ],
+          ),
+      ],
+    );
+  }
+}
+
+/// Son 7 gün: küçük istatistik şeridi (+ en çok çalışılan konu).
+class _Week extends StatelessWidget {
+  const _Week({required this.week});
+
+  final WeeklySummary? week;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final w = week;
+    return Column(
+      key: const ValueKey('hi-privacy-week'),
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Semantics(
+          header: true,
+          child: Text(HiTexts.privacyWeek, style: theme.textTheme.titleMedium),
+        ),
+        const SizedBox(height: AppSpace.s8),
+        if (w == null)
+          Text(HiTexts.loading, style: theme.textTheme.bodyMedium)
+        else if (w.isEmpty)
+          Text(
+            HiTexts.weekEmpty,
+            style: theme.textTheme.bodyMedium?.copyWith(
+              color: AppPalette.ink500,
+            ),
+          )
+        else ...[
+          StatRow(
+            tiles: [
+              StatTile(
+                value: '${w.phrasesAdded}',
+                label: HiTexts.weekStatAdded,
+              ),
+              StatTile(
+                value: '${w.phrasesReviewed}',
+                label: HiTexts.weekStatReviewed,
+              ),
+              StatTile(
+                value: '${w.episodesCompleted}',
+                label: HiTexts.weekStatEpisodes,
+              ),
+            ],
+          ),
+          if (w.focus != null) ...[
+            const SizedBox(height: AppSpace.s8),
+            Text(
+              HiTexts.weekFocus(w.focus!.labelTr),
+              style: theme.textTheme.bodyMedium?.copyWith(
+                color: AppPalette.ink700,
+              ),
+            ),
+          ],
+        ],
+      ],
+    );
+  }
+}
+
+class _DeleteBlock extends StatelessWidget {
+  const _DeleteBlock({required this.onDelete});
+
+  final VoidCallback onDelete;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Text(
+          HiTexts.privacyDeleteNote,
+          style: theme.textTheme.bodyMedium?.copyWith(color: AppPalette.ink500),
+        ),
+        const SizedBox(height: AppSpace.s12),
+        OutlinedButton.icon(
+          key: const ValueKey('hi-privacy-delete'),
+          onPressed: onDelete,
+          style: AppButtonStyles.danger(),
+          icon: const Icon(Icons.delete_outline_rounded),
+          label: const Text(HiTexts.privacyDelete),
+        ),
+      ],
+    );
+  }
+}
+
+/// Profil'deki satır.
+class HiPrivacyRow extends StatelessWidget {
+  const HiPrivacyRow({super.key, required this.onTap});
 
   final VoidCallback onTap;
 
   @override
-  Widget build(BuildContext context) => Card(
-    margin: EdgeInsets.zero,
-    child: ListTile(
-      key: const ValueKey('profile-hi-privacy'),
-      minTileHeight: 64,
-      leading: const Icon(Icons.privacy_tip_outlined, color: AppColors.seaBlue),
-      title: const Text(
-        HiTexts.privacyTile,
-        style: TextStyle(fontWeight: FontWeight.w700),
-      ),
-      subtitle: const Text(HiTexts.privacyTileSub),
-      trailing: const Icon(Icons.chevron_right_rounded),
-      onTap: onTap,
-    ),
+  Widget build(BuildContext context) => SettingsRow(
+    key: const ValueKey('profile-hi-privacy'),
+    icon: Icons.privacy_tip_outlined,
+    title: HiTexts.privacyTile,
+    subtitle: HiTexts.privacyTileSub,
+    onTap: onTap,
   );
 }

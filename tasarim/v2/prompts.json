@@ -1,0 +1,124 @@
+{
+ "S01-profil": {
+  "prompt": "Profile screen ('Profil' tab active). Top: a wave-shaped header filled with an illustrated harbour at dusk, a round avatar with the initial 'D', large title 'Merhaba Deniz', small line 'Bugün 6 ifade tekrar ettin.'. Below: a row of three white stat tiles with icons and big numbers ('42 ifade', '3 bölüm', '18 bu hafta'). Then a grouped settings card titled 'Öğrenme' with rows (icon, title, small grey hint, chevron or value): 'Defter', 'Günlük hedef · 10 dk', 'Söyle alıştırmaları' with a toggle. Then a second group 'Hesap ve gizlilik' with rows 'Hesap', 'Hi benim hakkımda ne biliyor?'. Clean hierarchy, lots of whitespace. High-fidelity mobile app UI mockup, single iPhone screen, portrait, flat front view, no device frame, for 'hiVelzon', an English-learning app built around an animated coastal mystery story. Design system: warm sand background (#F7F1E6), white rounded cards (12px corners) with soft warm shadows, deep sea blue (#1F4E79) for titles and accents, lighthouse yellow (#F2B33D) pill-shaped primary buttons, evening orange (#E98A3C) small accents, small caps orange labels, rounded friendly bold headings (Nunito style) and clean body text (Inter style), 8px grid, generous whitespace, playful but calm, illustrated graphic-novel art inside shaped headers (wave or diagonal cut). Bottom navigation with 5 tabs: 'Ana Sayfa', 'Keşfet', 'Hikâye', 'Konuş', 'Profil', and a small round glowing speech-bubble mascot with two friendly eyes floating at bottom-right above the tab bar. Turkish UI text, legible, minimal. No ads, no hearts/lives, no timers, no leaderboards, no real brand logos.",
+  "refs": [],
+  "ar": "9:16",
+  "q": "medium",
+  "res": "1k"
+ },
+ "S02-hesap": {
+  "prompt": "Account screen, signed out, pushed page with back arrow and title 'Hesap'. A diagonal-cut header with an illustration of a phone and a small lighthouse sending a soft light beam to a second phone. Card with three benefit rows each with a round tinted icon: 'İlerlemen yedeklenir', 'Başka telefonda devam et', 'Hesapsız da her şey çalışır'. A large yellow pill button 'E-postayla devam et' and a small grey line 'Şifre yok: e-postana tek kullanımlık kod gelir.'. No bottom navigation on this pushed page. High-fidelity mobile app UI mockup, single iPhone screen, portrait, flat front view, no device frame, for 'hiVelzon', an English-learning app built around an animated coastal mystery story. Design system: warm sand background (#F7F1E6), white rounded cards (12px corners) with soft warm shadows, deep sea blue (#1F4E79) for titles and accents, lighthouse yellow (#F2B33D) pill-shaped primary buttons, evening orange (#E98A3C) small accents, small caps orange labels, rounded friendly bold headings (Nunito style) and clean body text (Inter style), 8px grid, generous whitespace, playful but calm, illustrated graphic-novel art inside shaped headers (wave or diagonal cut). Bottom navigation with 5 tabs: 'Ana Sayfa', 'Keşfet', 'Hikâye', 'Konuş', 'Profil', and a small round glowing speech-bubble mascot with two friendly eyes floating at bottom-right above the tab bar. Turkish UI text, legible, minimal. No ads, no hearts/lives, no timers, no leaderboards, no real brand logos.",
+  "refs": [],
+  "ar": "9:16",
+  "q": "medium",
+  "res": "1k"
+ },
+ "S03-hi-panel": {
+  "prompt": "A bottom sheet over a dimmed home screen: the glowing speech-bubble mascot 'Hi' at the top with a friendly expression and the line 'Ben Hi, yapay zekâ asistanın.'. A highlighted suggestion card 'Bugünkü önerim: Hikâyeye devam' with a small 'Neden?' caption and a reason line, and a yellow pill button. A 2x2 grid of quick action tiles with icons ('Hikâye', 'Kelime tekrarı', 'Defter', 'Konu setleri'). A 'Bu hafta' row of three small stat tiles. Rounded top corners 20px, drag handle. High-fidelity mobile app UI mockup, single iPhone screen, portrait, flat front view, no device frame, for 'hiVelzon', an English-learning app built around an animated coastal mystery story. Design system: warm sand background (#F7F1E6), white rounded cards (12px corners) with soft warm shadows, deep sea blue (#1F4E79) for titles and accents, lighthouse yellow (#F2B33D) pill-shaped primary buttons, evening orange (#E98A3C) small accents, small caps orange labels, rounded friendly bold headings (Nunito style) and clean body text (Inter style), 8px grid, generous whitespace, playful but calm, illustrated graphic-novel art inside shaped headers (wave or diagonal cut). Bottom navigation with 5 tabs: 'Ana Sayfa', 'Keşfet', 'Hikâye', 'Konuş', 'Profil', and a small round glowing speech-bubble mascot with two friendly eyes floating at bottom-right above the tab bar. Turkish UI text, legible, minimal. No ads, no hearts/lives, no timers, no leaderboards, no real brand logos.",
+  "refs": [],
+  "ar": "9:16",
+  "q": "medium",
+  "res": "1k"
+ },
+ "S04-defter": {
+  "prompt": "Notebook screen 'Defter' (pushed page). Diagonal-cut header with an illustration of an open notebook with a lighthouse sketch. A pill segmented control with three tabs 'İfadeler' (active), 'İpucu panosu', 'Konu setleri'. A white review card with a yellow progress ring showing '5' and text '5 ifadenin tekrar zamanı geldi · ~2 dk' and a yellow pill button 'Tekrara başla'. Then a list of rounded white rows each with a small colored episode badge ('B1', 'B2'), an English phrase in bold, Turkish meaning in grey, and a speaker icon. High-fidelity mobile app UI mockup, single iPhone screen, portrait, flat front view, no device frame, for 'hiVelzon', an English-learning app built around an animated coastal mystery story. Design system: warm sand background (#F7F1E6), white rounded cards (12px corners) with soft warm shadows, deep sea blue (#1F4E79) for titles and accents, lighthouse yellow (#F2B33D) pill-shaped primary buttons, evening orange (#E98A3C) small accents, small caps orange labels, rounded friendly bold headings (Nunito style) and clean body text (Inter style), 8px grid, generous whitespace, playful but calm, illustrated graphic-novel art inside shaped headers (wave or diagonal cut). Bottom navigation with 5 tabs: 'Ana Sayfa', 'Keşfet', 'Hikâye', 'Konuş', 'Profil', and a small round glowing speech-bubble mascot with two friendly eyes floating at bottom-right above the tab bar. Turkish UI text, legible, minimal. No ads, no hearts/lives, no timers, no leaderboards, no real brand logos.",
+  "refs": [],
+  "ar": "9:16",
+  "q": "medium",
+  "res": "1k"
+ },
+ "S05-tekrar": {
+  "prompt": "Vocabulary review task screen 'Kelime tekrarı · 3 / 8' with a thin yellow progress bar at top and a close button. A large rounded image card showing an illustrated old green radio on a desk. Prompt 'Hangisi \"telsiz\"?' . Four large white pill option buttons stacked: 'radio', 'river', 'rain', 'road'. Below, a sea-blue outlined pill button with a question icon 'Bilmiyorum'. Calm, encouraging, no timer. High-fidelity mobile app UI mockup, single iPhone screen, portrait, flat front view, no device frame, for 'hiVelzon', an English-learning app built around an animated coastal mystery story. Design system: warm sand background (#F7F1E6), white rounded cards (12px corners) with soft warm shadows, deep sea blue (#1F4E79) for titles and accents, lighthouse yellow (#F2B33D) pill-shaped primary buttons, evening orange (#E98A3C) small accents, small caps orange labels, rounded friendly bold headings (Nunito style) and clean body text (Inter style), 8px grid, generous whitespace, playful but calm, illustrated graphic-novel art inside shaped headers (wave or diagonal cut). Bottom navigation with 5 tabs: 'Ana Sayfa', 'Keşfet', 'Hikâye', 'Konuş', 'Profil', and a small round glowing speech-bubble mascot with two friendly eyes floating at bottom-right above the tab bar. Turkish UI text, legible, minimal. No ads, no hearts/lives, no timers, no leaderboards, no real brand logos.",
+  "refs": [],
+  "ar": "9:16",
+  "q": "medium",
+  "res": "1k"
+ },
+ "S06-konu-seti": {
+  "prompt": "Topic set screen 'Alex'in odası' (pushed page). Wave-shaped header with an illustrated cozy room with a window to the sea. A highlighted card 'Sahne avı' with a magnifier icon, short text 'Nesneleri resimde bul. Süre yok.' and a yellow pill button 'Başla'. Then a two-column grid of rounded item cards, each with a cropped illustration (radio, clock, cup, book, window, shelf) and the English word in bold with Turkish below in grey, one card with a small green check badge. High-fidelity mobile app UI mockup, single iPhone screen, portrait, flat front view, no device frame, for 'hiVelzon', an English-learning app built around an animated coastal mystery story. Design system: warm sand background (#F7F1E6), white rounded cards (12px corners) with soft warm shadows, deep sea blue (#1F4E79) for titles and accents, lighthouse yellow (#F2B33D) pill-shaped primary buttons, evening orange (#E98A3C) small accents, small caps orange labels, rounded friendly bold headings (Nunito style) and clean body text (Inter style), 8px grid, generous whitespace, playful but calm, illustrated graphic-novel art inside shaped headers (wave or diagonal cut). Bottom navigation with 5 tabs: 'Ana Sayfa', 'Keşfet', 'Hikâye', 'Konuş', 'Profil', and a small round glowing speech-bubble mascot with two friendly eyes floating at bottom-right above the tab bar. Turkish UI text, legible, minimal. No ads, no hearts/lives, no timers, no leaderboards, no real brand logos.",
+  "refs": [],
+  "ar": "9:16",
+  "q": "medium",
+  "res": "1k"
+ },
+ "S07-ana-sayfa": {
+  "prompt": "Home screen ('Ana Sayfa' tab active). Top: 'Merhaba Deniz!' large rounded bold title and a yellow daily goal ring on the right showing '6/10 dk'. A big hero story card with an illustrated lighthouse at blue hour, small caps orange label 'SEZON 1 · BÖLÜM 4', title 'The Note', a one-line teaser, a slim progress bar 'Bu sezonda 12 bölümden 3'ü bitti', and a yellow pill button 'Devam et'. Below a second card 'Kelime tekrarı' with a small progress ring and '5 ifade · ~2 dk' and an outlined button. Generous whitespace. High-fidelity mobile app UI mockup, single iPhone screen, portrait, flat front view, no device frame, for 'hiVelzon', an English-learning app built around an animated coastal mystery story. Design system: warm sand background (#F7F1E6), white rounded cards (12px corners) with soft warm shadows, deep sea blue (#1F4E79) for titles and accents, lighthouse yellow (#F2B33D) pill-shaped primary buttons, evening orange (#E98A3C) small accents, small caps orange labels, rounded friendly bold headings (Nunito style) and clean body text (Inter style), 8px grid, generous whitespace, playful but calm, illustrated graphic-novel art inside shaped headers (wave or diagonal cut). Bottom navigation with 5 tabs: 'Ana Sayfa', 'Keşfet', 'Hikâye', 'Konuş', 'Profil', and a small round glowing speech-bubble mascot with two friendly eyes floating at bottom-right above the tab bar. Turkish UI text, legible, minimal. No ads, no hearts/lives, no timers, no leaderboards, no real brand logos.",
+  "refs": [],
+  "ar": "9:16",
+  "q": "medium",
+  "res": "1k"
+ },
+ "S08-hikaye": {
+  "prompt": "Story tab ('Hikâye' active). Top: a header card in deep sea blue with a small lighthouse thumbnail, title 'Sezon 1 · The Missing Signal', a yellow progress bar '3 / 12' and a small outlined light button 'Jeneriği izle'. Main area: an illustrated vertical map of a coastal town with a winding sand path from harbour to lighthouse, round numbered nodes (1-3 completed with green check badges, 4 glowing yellow as next, 5-12 dimmed with small locks). A floating white focus card at the bottom: 'Bölüm 4 · sıradaki · The Note' with chevron. High-fidelity mobile app UI mockup, single iPhone screen, portrait, flat front view, no device frame, for 'hiVelzon', an English-learning app built around an animated coastal mystery story. Design system: warm sand background (#F7F1E6), white rounded cards (12px corners) with soft warm shadows, deep sea blue (#1F4E79) for titles and accents, lighthouse yellow (#F2B33D) pill-shaped primary buttons, evening orange (#E98A3C) small accents, small caps orange labels, rounded friendly bold headings (Nunito style) and clean body text (Inter style), 8px grid, generous whitespace, playful but calm, illustrated graphic-novel art inside shaped headers (wave or diagonal cut). Bottom navigation with 5 tabs: 'Ana Sayfa', 'Keşfet', 'Hikâye', 'Konuş', 'Profil', and a small round glowing speech-bubble mascot with two friendly eyes floating at bottom-right above the tab bar. Turkish UI text, legible, minimal. No ads, no hearts/lives, no timers, no leaderboards, no real brand logos.",
+  "refs": [],
+  "ar": "9:16",
+  "q": "medium",
+  "res": "1k"
+ },
+ "S09-acilis": {
+  "prompt": "Onboarding welcome screen, no bottom navigation. Top half: a large illustration of a young woman with shoulder-length wavy brown hair holding an old green radio, and the small glowing speech-bubble mascot waving next to her, harbour and lighthouse behind at golden hour. Below: big rounded title 'hiVelzon'a hoş geldin!', one short line 'Bir hikâye oyna, İngilizceyi kendiliğinden öğren.', a white card asking 'Doğum yılın?' with a simple year picker showing '2008', a small grey line 'Yalnızca yılı soruyoruz.', a yellow pill button 'Başla' and a quiet text button 'Daha sonra'. Page dots at the bottom. High-fidelity mobile app UI mockup, single iPhone screen, portrait, flat front view, no device frame, for 'hiVelzon', an English-learning app built around an animated coastal mystery story. Design system: warm sand background (#F7F1E6), white rounded cards (12px corners) with soft warm shadows, deep sea blue (#1F4E79) for titles and accents, lighthouse yellow (#F2B33D) pill-shaped primary buttons, evening orange (#E98A3C) small accents, small caps orange labels, rounded friendly bold headings (Nunito style) and clean body text (Inter style), 8px grid, generous whitespace, playful but calm, illustrated graphic-novel art inside shaped headers (wave or diagonal cut). Bottom navigation with 5 tabs: 'Ana Sayfa', 'Keşfet', 'Hikâye', 'Konuş', 'Profil', and a small round glowing speech-bubble mascot with two friendly eyes floating at bottom-right above the tab bar. Turkish UI text, legible, minimal. No ads, no hearts/lives, no timers, no leaderboards, no real brand logos.",
+  "refs": [],
+  "ar": "9:16",
+  "q": "medium",
+  "res": "1k"
+ },
+ "S10-kesfet": {
+  "prompt": "Discover feed ('Keşfet' tab active), full-bleed vertical video frame: illustrated two young women talking on a harbour pier at sunset. Subtitle card at the bottom with one highlighted word 'neighbour' and small Turkish gloss 'komşu'. Right side vertical round action buttons with labels 'Kaydet', 'Anlam', 'Tam hikâye'. A small top chip 'Bölüm 2'. No likes, no comments. High-fidelity mobile app UI mockup, single iPhone screen, portrait, flat front view, no device frame, for 'hiVelzon', an English-learning app built around an animated coastal mystery story. Design system: warm sand background (#F7F1E6), white rounded cards (12px corners) with soft warm shadows, deep sea blue (#1F4E79) for titles and accents, lighthouse yellow (#F2B33D) pill-shaped primary buttons, evening orange (#E98A3C) small accents, small caps orange labels, rounded friendly bold headings (Nunito style) and clean body text (Inter style), 8px grid, generous whitespace, playful but calm, illustrated graphic-novel art inside shaped headers (wave or diagonal cut). Bottom navigation with 5 tabs: 'Ana Sayfa', 'Keşfet', 'Hikâye', 'Konuş', 'Profil', and a small round glowing speech-bubble mascot with two friendly eyes floating at bottom-right above the tab bar. Turkish UI text, legible, minimal. No ads, no hearts/lives, no timers, no leaderboards, no real brand logos.",
+  "refs": [],
+  "ar": "9:16",
+  "q": "medium",
+  "res": "1k"
+ },
+ "I01-profil-baslik": {
+  "prompt": "Panoramic wide header illustration: a small coastal harbour town at dusk seen from a hill, warm windows lighting up, fishing boats, the white lighthouse on the far right with a soft beam, a young woman from behind sitting on a low wall with an old green radio (attached Alex reference) and the small glowing speech-bubble companion (attached Hi reference) floating beside her. Large calm sky area on the left for overlaid text. Warm animated-series illustration, graphic-novel style, clean ink lines, soft cel shading, coastal palette of sea blue, sand, lighthouse yellow and evening orange, mature tone suitable for teens and adults, not childish, no text, no letters, no numbers, no logos.",
+  "refs": [
+   "663ea0fe-3df5-4cea-ba8c-e08c80e48a96",
+   "48e01750-864a-4c0e-bdd3-e9bc989684cb"
+  ],
+  "ar": "16:9",
+  "q": "low",
+  "res": "2k"
+ },
+ "I02-bos-defter": {
+  "prompt": "Spot illustration on a plain warm sand background: an open blank notebook with a pencil and a tiny lighthouse doodle on the corner, a few floating paper stars, centered, lots of empty margin, simple and calm. Warm animated-series illustration, graphic-novel style, clean ink lines, soft cel shading, coastal palette of sea blue, sand, lighthouse yellow and evening orange, mature tone suitable for teens and adults, not childish, no text, no letters, no numbers, no logos.",
+  "refs": [],
+  "ar": "1:1",
+  "q": "low",
+  "res": "2k"
+ },
+ "I03-bos-ipucu": {
+  "prompt": "Spot illustration on a plain warm sand background: a small cork board with three empty pins and a loose piece of string, a magnifying glass leaning on it, centered, lots of empty margin, curious and calm mood. Warm animated-series illustration, graphic-novel style, clean ink lines, soft cel shading, coastal palette of sea blue, sand, lighthouse yellow and evening orange, mature tone suitable for teens and adults, not childish, no text, no letters, no numbers, no logos.",
+  "refs": [],
+  "ar": "1:1",
+  "q": "low",
+  "res": "2k"
+ },
+ "I04-tekrar-yok": {
+  "prompt": "Spot illustration on a plain warm sand background: the young woman from the attached Alex reference sitting relaxed by a window with a cup of tea, the sea and lighthouse outside, cozy and calm, centered with empty margin. Warm animated-series illustration, graphic-novel style, clean ink lines, soft cel shading, coastal palette of sea blue, sand, lighthouse yellow and evening orange, mature tone suitable for teens and adults, not childish, no text, no letters, no numbers, no logos.",
+  "refs": [
+   "663ea0fe-3df5-4cea-ba8c-e08c80e48a96"
+  ],
+  "ar": "1:1",
+  "q": "low",
+  "res": "2k"
+ },
+ "I05-baglanti-yok": {
+  "prompt": "Spot illustration on a plain warm sand background: the old green handheld radio from the attached reference with gentle static squiggle lines and a small cloud, calm not alarming, centered with empty margin. Warm animated-series illustration, graphic-novel style, clean ink lines, soft cel shading, coastal palette of sea blue, sand, lighthouse yellow and evening orange, mature tone suitable for teens and adults, not childish, no text, no letters, no numbers, no logos.",
+  "refs": [
+   "74fb45e8-d78d-4902-b6d6-e95fd85aca46"
+  ],
+  "ar": "1:1",
+  "q": "low",
+  "res": "2k"
+ },
+ "I06-hosgeldin": {
+  "prompt": "Wide welcome illustration at golden hour: the young woman from the attached Alex reference smiling and holding an old green radio, the small glowing speech-bubble companion from the attached Hi reference waving beside her, harbour with boats and the white lighthouse behind, inviting and warm. Leave calm space at the bottom. Warm animated-series illustration, graphic-novel style, clean ink lines, soft cel shading, coastal palette of sea blue, sand, lighthouse yellow and evening orange, mature tone suitable for teens and adults, not childish, no text, no letters, no numbers, no logos.",
+  "refs": [
+   "663ea0fe-3df5-4cea-ba8c-e08c80e48a96",
+   "48e01750-864a-4c0e-bdd3-e9bc989684cb"
+  ],
+  "ar": "16:9",
+  "q": "low",
+  "res": "2k"
+ }
+}

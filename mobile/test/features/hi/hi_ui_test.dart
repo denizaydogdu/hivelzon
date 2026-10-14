@@ -327,13 +327,18 @@ void main() {
       await pumpApp(tester, height: 4400);
       go(AppRoutes.profile);
       await settle(tester, 30);
+      await reveal(
+        tester,
+        find.byKey(const ValueKey('profile-hi-privacy')),
+        'profile-list',
+      );
       await tester.tap(find.byKey(const ValueKey('profile-hi-privacy')));
       await settle(tester, 40);
 
       expect(find.text('Hi benim hakkımda ne biliyor?'), findsWidgets);
       expect(find.byKey(const ValueKey('hi-privacy')), findsOneWidget);
       expect(find.text('1 bölüm bitti.'), findsOneWidget);
-      expect(find.text('Fiil yapısı: 1'), findsOneWidget);
+      expect(find.text('Fiil yapısı · 1'), findsOneWidget);
       expect(
         find.text('0 yan görevi yaptın, 1 tanesini geçtin.'),
         findsOneWidget,

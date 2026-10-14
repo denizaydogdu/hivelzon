@@ -2,6 +2,8 @@ import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 
+import '../../../../app/design/tokens.dart';
+
 /// Hi: yuvarlak, yumuşak ışıklı konuşma balonu ve iki göz (H-005).
 ///
 /// Görsel üretimi yok; tamamen çizimle. Hareket azaltma açıksa nabız durur.
@@ -82,9 +84,9 @@ class _HiPainter extends CustomPainter {
 
   final double glow;
 
-  static const _core = Color(0xFFFFF4C9);
+  static const _core = AppPalette.yellow100;
   static const _rim = Color(0xFF7FD8E8);
-  static const _eye = Color(0xFF1F4E79);
+  static const _eye = AppPalette.seaBlue;
 
   @override
   void paint(Canvas canvas, Size size) {

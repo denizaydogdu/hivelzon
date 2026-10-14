@@ -83,7 +83,10 @@ void main() {
       expect(r(SpeechMatchLevel.full), FsrsRating.good);
       expect(r(SpeechMatchLevel.full, st: 30), FsrsRating.easy);
       expect(r(SpeechMatchLevel.full, st: 30, sec: 20), FsrsRating.good);
-      expect(r(SpeechMatchLevel.full, st: 30, attempts: 2), FsrsRating.hard); // 2. denemede tam → Hard
+      expect(
+        r(SpeechMatchLevel.full, st: 30, attempts: 2),
+        FsrsRating.hard,
+      ); // 2. denemede tam → Hard
       expect(r(SpeechMatchLevel.close), FsrsRating.hard);
       expect(r(SpeechMatchLevel.no), FsrsRating.again);
     });

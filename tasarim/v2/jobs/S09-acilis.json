@@ -1,0 +1,23 @@
+[
+  {
+    "created_at": "2026-10-14T05:50:16.940935Z",
+    "display_name": "GPT Image 2.5",
+    "id": "e38a7719-bb9f-4390-a643-108f9d6b7f1d",
+    "job_type": "gpt_image_2_5",
+    "min_result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261014_055016_e38a7719-bb9f-4390-a643-108f9d6b7f1d_min.webp",
+    "params": {
+      "aspect_ratio": "9:16",
+      "height": 1344,
+      "medias": [],
+      "model": "flare",
+      "prompt": "Onboarding welcome screen, no bottom navigation. Top half: a large illustration of a young woman with shoulder-length wavy brown hair holding an old green radio, and the small glowing speech-bubble mascot waving next to her, harbour and lighthouse behind at golden hour. Below: big rounded title 'hiVelzon'a hoş geldin!', one short line 'Bir hikâye oyna, İngilizceyi kendiliğinden öğren.', a white card asking 'Doğum yılın?' with a simple year picker showing '2008', a small grey line 'Yalnızca yılı soruyoruz.', a yellow pill button 'Başla' and a quiet text button 'Daha sonra'. Page dots at the bottom. High-fidelity mobile app UI mockup, single iPhone screen, portrait, flat front view, no device frame, for 'hiVelzon', an English-learning app built around an animated coastal mystery story. Design system: warm sand background (#F7F1E6), white rounded cards (12px corners) with soft warm shadows, deep sea blue (#1F4E79) for titles and accents, lighthouse yellow (#F2B33D) pill-shaped primary buttons, evening orange (#E98A3C) small accents, small caps orange labels, rounded friendly bold headings (Nunito style) and clean body text (Inter style), 8px grid, generous whitespace, playful but calm, illustrated graphic-novel art inside shaped headers (wave or diagonal cut). Bottom navigation with 5 tabs: 'Ana Sayfa', 'Keşfet', 'Hikâye', 'Konuş', 'Profil', and a small round glowing speech-bubble mascot with two friendly eyes floating at bottom-right above the tab bar. Turkish UI text, legible, minimal. No ads, no hearts/lives, no timers, no leaderboards, no real brand logos.",
+      "quality": "medium",
+      "reference_elements": [],
+      "remove_bg": false,
+      "resolution": "1k",
+      "width": 752
+    },
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261014_055016_e38a7719-bb9f-4390-a643-108f9d6b7f1d.png",
+    "status": "completed"
+  }
+]

@@ -1,0 +1,23 @@
+[
+  {
+    "created_at": "2026-10-14T05:49:59.914141Z",
+    "display_name": "GPT Image 2.5",
+    "id": "e57f8c94-12ae-41c5-b6b2-eeb6387a14d5",
+    "job_type": "gpt_image_2_5",
+    "min_result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261014_054959_e57f8c94-12ae-41c5-b6b2-eeb6387a14d5_min.webp",
+    "params": {
+      "aspect_ratio": "9:16",
+      "height": 1344,
+      "medias": [],
+      "model": "flare",
+      "prompt": "Vocabulary review task screen 'Kelime tekrarı · 3 / 8' with a thin yellow progress bar at top and a close button. A large rounded image card showing an illustrated old green radio on a desk. Prompt 'Hangisi \"telsiz\"?' . Four large white pill option buttons stacked: 'radio', 'river', 'rain', 'road'. Below, a sea-blue outlined pill button with a question icon 'Bilmiyorum'. Calm, encouraging, no timer. High-fidelity mobile app UI mockup, single iPhone screen, portrait, flat front view, no device frame, for 'hiVelzon', an English-learning app built around an animated coastal mystery story. Design system: warm sand background (#F7F1E6), white rounded cards (12px corners) with soft warm shadows, deep sea blue (#1F4E79) for titles and accents, lighthouse yellow (#F2B33D) pill-shaped primary buttons, evening orange (#E98A3C) small accents, small caps orange labels, rounded friendly bold headings (Nunito style) and clean body text (Inter style), 8px grid, generous whitespace, playful but calm, illustrated graphic-novel art inside shaped headers (wave or diagonal cut). Bottom navigation with 5 tabs: 'Ana Sayfa', 'Keşfet', 'Hikâye', 'Konuş', 'Profil', and a small round glowing speech-bubble mascot with two friendly eyes floating at bottom-right above the tab bar. Turkish UI text, legible, minimal. No ads, no hearts/lives, no timers, no leaderboards, no real brand logos.",
+      "quality": "medium",
+      "reference_elements": [],
+      "remove_bg": false,
+      "resolution": "1k",
+      "width": 752
+    },
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261014_054959_e57f8c94-12ae-41c5-b6b2-eeb6387a14d5.png",
+    "status": "completed"
+  }
+]

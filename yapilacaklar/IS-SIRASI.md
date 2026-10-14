@@ -121,9 +121,9 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 ### Adım 6 — Tasarım yenilemesi (2026-10-14, kullanıcı isteği; sıra önemli)
 | # | İş | Başlık | Öncelik | Bağımlılık | Durum |
 |---|---|---|---|---|---|
-| T0 | H-057 | Tasarım sistemi v2 (belirteçler, bileşen kitaplığı, hareket, yazı tipleri) | Yüksek | H-053, H-054 | ⏳ |
-| T1 | H-058 | Ekran taslakları v2 ve illüstrasyonlar (Higgsfield, ~8 kr) | Yüksek | H-057 | ⏳ |
-| T2 | H-059 | Profil, Hesap, "Hi benim hakkımda", hukuk metni tasarımı | Yüksek | H-057, H-058 | ⏳ |
+| T0 | H-057 | Tasarım sistemi v2 (belirteçler, bileşen kitaplığı, hareket, yazı tipleri) | Yüksek | H-053, H-054 | ✅ |
+| T1 | H-058 | Ekran taslakları v2 ve illüstrasyonlar (Higgsfield, ~8 kr) | Yüksek | H-057 | 🔄 |
+| T2 | H-059 | Profil, Hesap, "Hi benim hakkımda", hukuk metni tasarımı | Yüksek | H-057, H-058 | 🔄 |
 | T3 | H-060 | Ana Sayfa, harita, bölüm paneli, jenerik tasarımı | Orta | H-057, H-058, H-039 | ⏳ |
 | T4 | H-061 | Defter, Kelime tekrarı, Konu seti, Sahne avı tasarımı | Orta | H-057, H-058 | ⏳ |
 | T5 | H-062 | Oynatıcı katmanlarının tasarımı | Orta | H-057 | ⏳ |
@@ -140,6 +140,7 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 ## Biten işler
 | İş | Başlık | Bitiş | Doğrulama |
 |---|---|---|---|
+| H-057 | Tasarım sistemi v2 | 2026-10-14 | Nunito + Inter (gömülü, OFL, Türkçe glif testli), belirteçler, `shared/ui` bileşenleri, flutter_animate, /tasarim vitrini, golden + erişilebilirlik testleri; sabit renk 31 → 10; flutter test 439 → 463 (H-059 ile) |
 | H-056 | Eşitleme ince ayarı | 2026-10-14 | "Bitti" kazanır (sunucu + telefon), yenilemede 30 sn hoşgörü, çıkışlı Hi silme girişte işlenir, sekme yenileme hatası giderildi; flutter test 404/404, mvn verify 110/110 |
 | H-038 | Telefon ↔ sunucu, isteğe bağlı hesap | 2026-10-13 | E-posta koduyla hesap, ilk aktarım, iki yönlü eşitleme, Hi silme her cihazda; hesapsız trafik yok; simülatörde iki cihaz denemesi; flutter test 389/389, mvn verify 97/97 |
 | H-037 | Backend çekirdeği | 2026-10-13 | Kimlik (e-posta kodu, oturum, rıza, denetim, 30 gün silme) + katalog (ETag) + eşitleme (idempotent, LWW, transkript reddi) + FSRS Java (159/159); mvn verify 94/94; uçtan uca curl denemeleri |
@@ -323,3 +324,5 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 - **2026-10-14:**
   - H-056 bitti ve gönderildi. Kullanıcı ara verdi; sıradaki H-039.
   - Kullanıcı isteği: sayfaların tasarımını gözden geçiren fazlı iş (Profil "iç içe, düz yazı gibi"; daha hareketli, şekilli, çekici). Plan modunda planlandı ve onaylandı. Kararlar: ~8 kr, başlık yazı tipi yuvarlak + metin Inter (gömülü), yalnız açık tema, önce tasarım sistemi + Profil. H-057 … H-064 açıldı (Adım 6).
+  - H-057 kodu bitti (439 test). H-058: 16 görsel üretildi (8 kr), onay bekliyor. H-059 başladı.
+  - H-057 bitti; H-058 (16 görsel, 8 kr) ve H-059 (Profil, Hesap, Hi gizlilik, hukuk) kodu bitti, tasarım onayı bekliyor. Commit + push (kalıcı onay).

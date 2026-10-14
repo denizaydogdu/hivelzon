@@ -93,7 +93,7 @@ class _SubtitleOverlayState extends State<SubtitleOverlay>
             vertical: AppSpacing.xs,
           ),
           decoration: BoxDecoration(
-            color: const Color(0xCC1B1B1B),
+            color: AppScrim.captionBox,
             borderRadius: BorderRadius.circular(AppTheme.radius),
           ),
           child: Column(
@@ -110,7 +110,7 @@ class _SubtitleOverlayState extends State<SubtitleOverlay>
                   key: const ValueKey('subtitle-tr'),
                   textAlign: TextAlign.center,
                   style: const TextStyle(
-                    color: Color(0xE6FFFFFF),
+                    color: AppScrim.captionText,
                     fontSize: 15,
                     fontWeight: FontWeight.w400,
                     height: 1.3,

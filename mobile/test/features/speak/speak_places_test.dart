@@ -484,6 +484,7 @@ void main() {
       );
       await settle(tester);
       expect(find.text('Söyle alıştırmaları'), findsOneWidget);
+      expect(find.text('Kapalı'), findsOneWidget);
       expect(
         find.byKey(const ValueKey('profile-speech-unsupported')),
         findsOneWidget,
@@ -501,7 +502,10 @@ void main() {
       );
       await settle(tester);
       final toggle = find.byKey(const ValueKey('profile-speech-toggle'));
-      expect(tester.widget<SwitchListTile>(toggle).value, isTrue);
+      Switch switchOf() => tester.widget<Switch>(
+        find.descendant(of: toggle, matching: find.byType(Switch)),
+      );
+      expect(switchOf().value, isTrue);
       expect(
         find.text(
           'Sesin bu telefonda yazıya çevrilir; kaydedilmez, hiçbir yere '
@@ -514,7 +518,7 @@ void main() {
       await settle(tester);
       expect(await status(tester, c), SpeechStatus.switchedOff);
       expect(c.read(speechVisibleProvider), isFalse);
-      expect(tester.widget<SwitchListTile>(toggle).value, isFalse);
+      expect(switchOf().value, isFalse);
     });
 
     testWidgets('Profil: izin kapalıysa nedeni yazar', (tester) async {

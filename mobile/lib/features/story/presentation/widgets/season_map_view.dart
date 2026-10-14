@@ -249,7 +249,7 @@ class _MapNodeState extends State<MapNode> with SingleTickerProviderStateMixin {
             )
           else
             const BoxShadow(
-              color: Color(0x55000000),
+              color: AppScrim.badgeShadow,
               blurRadius: 4,
               offset: Offset(0, 2),
             ),

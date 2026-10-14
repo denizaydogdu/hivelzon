@@ -74,3 +74,5 @@ tasarim/*.png
 
 # Yerel çalışma dosyaları (ekran görüntüleri, loglar, geçici araçlar)
 /.yerel/
+tasarim/v2/*.png
+/.claude/worktrees/

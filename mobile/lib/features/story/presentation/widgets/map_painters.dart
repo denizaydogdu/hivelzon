@@ -72,7 +72,7 @@ class MapFallbackPainter extends CustomPainter {
     canvas.drawPath(ridge, Paint()..color = _hillDark);
 
     // Liman: rıhtım ve iskele.
-    final quay = Paint()..color = const Color(0xFFCDBB9A);
+    final quay = Paint()..color = AppPalette.sand500;
     canvas.drawRRect(
       RRect.fromRectAndRadius(
         Rect.fromLTWH(w * 0.10, h * 0.79, w * 0.62, h * 0.02),
@@ -89,7 +89,7 @@ class MapFallbackPainter extends CustomPainter {
     );
 
     // Küçük evler (turuncu çatılar).
-    final house = Paint()..color = const Color(0xFFF7F1E6);
+    final house = Paint()..color = AppPalette.sand;
     final roof = Paint()..color = AppColors.eveningOrange;
     for (final (x, y) in const [
       (0.14, 0.70),

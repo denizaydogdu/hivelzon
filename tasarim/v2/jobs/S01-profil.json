@@ -1,0 +1,23 @@
+[
+  {
+    "created_at": "2026-10-14T05:50:00.339731Z",
+    "display_name": "GPT Image 2.5",
+    "id": "4ca0a107-993c-415e-93d3-f564f467e3ca",
+    "job_type": "gpt_image_2_5",
+    "min_result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261014_055000_4ca0a107-993c-415e-93d3-f564f467e3ca_min.webp",
+    "params": {
+      "aspect_ratio": "9:16",
+      "height": 1344,
+      "medias": [],
+      "model": "flare",
+      "prompt": "Profile screen ('Profil' tab active). Top: a wave-shaped header filled with an illustrated harbour at dusk, a round avatar with the initial 'D', large title 'Merhaba Deniz', small line 'Bugün 6 ifade tekrar ettin.'. Below: a row of three white stat tiles with icons and big numbers ('42 ifade', '3 bölüm', '18 bu hafta'). Then a grouped settings card titled 'Öğrenme' with rows (icon, title, small grey hint, chevron or value): 'Defter', 'Günlük hedef · 10 dk', 'Söyle alıştırmaları' with a toggle. Then a second group 'Hesap ve gizlilik' with rows 'Hesap', 'Hi benim hakkımda ne biliyor?'. Clean hierarchy, lots of whitespace. High-fidelity mobile app UI mockup, single iPhone screen, portrait, flat front view, no device frame, for 'hiVelzon', an English-learning app built around an animated coastal mystery story. Design system: warm sand background (#F7F1E6), white rounded cards (12px corners) with soft warm shadows, deep sea blue (#1F4E79) for titles and accents, lighthouse yellow (#F2B33D) pill-shaped primary buttons, evening orange (#E98A3C) small accents, small caps orange labels, rounded friendly bold headings (Nunito style) and clean body text (Inter style), 8px grid, generous whitespace, playful but calm, illustrated graphic-novel art inside shaped headers (wave or diagonal cut). Bottom navigation with 5 tabs: 'Ana Sayfa', 'Keşfet', 'Hikâye', 'Konuş', 'Profil', and a small round glowing speech-bubble mascot with two friendly eyes floating at bottom-right above the tab bar. Turkish UI text, legible, minimal. No ads, no hearts/lives, no timers, no leaderboards, no real brand logos.",
+      "quality": "medium",
+      "reference_elements": [],
+      "remove_bg": false,
+      "resolution": "1k",
+      "width": 752
+    },
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_30yXiq2xafODSk0L84JfoGJtkCR/hf_20261014_055000_4ca0a107-993c-415e-93d3-f564f467e3ca.png",
+    "status": "completed"
+  }
+]

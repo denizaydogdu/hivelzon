@@ -61,7 +61,7 @@ class _EpisodeTitleOverlayState extends State<EpisodeTitleOverlay>
     final opacity = _opacity;
     final t = Theme.of(context).textTheme;
     const shadow = [
-      Shadow(color: Color(0x99000000), blurRadius: 12, offset: Offset(0, 2)),
+      Shadow(color: AppScrim.textShadow, blurRadius: 12, offset: Offset(0, 2)),
     ];
     return IgnorePointer(
       child: Align(

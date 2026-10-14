@@ -7,65 +7,48 @@ import 'package:go_router/go_router.dart';
 import '../../../app/router.dart';
 import '../../../app/theme.dart';
 import '../../../l10n/tr_strings.dart';
-import '../../../shared/widgets/page_header.dart';
+import '../../../shared/ui/ui.dart';
 import '../application/account_providers.dart';
 
-/// Profil → **Hesap** bölümü (H-038): hesap yoksa sakin bir davet, 13 yaş
-/// altıysa nedeni, hesap varsa e-posta ve son eşitleme.
-class AccountSection extends ConsumerWidget {
-  const AccountSection({super.key});
+/// Profil → **Hesap** satırı (H-038; tasarım H-059): hesap yoksa sakin bir
+/// davet, 13 yaş altıysa nedeni (satır kapalı), hesap varsa maskeli e-posta
+/// ve son eşitleme.
+class AccountRow extends ConsumerWidget {
+  const AccountRow({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final view = accountViewOf(ref.watch);
     final now = DateTime.now().toUtc();
-    final String title;
     final String subtitle;
+    final String value;
     var enabled = true;
     if (view.signedIn) {
-      title = AccountTexts.tileSignedIn(view.row?.emailMasked ?? '');
+      value = view.row?.emailMasked ?? '';
       subtitle = view.pendingDeletion
           ? AccountTexts.pendingDeletion(
               AccountTexts.date(view.row?.scheduledPurgeAt ?? now),
             )
           : AccountTexts.syncLine(view.row?.lastSyncAt, now);
     } else if (view.ageBlocked(now)) {
-      title = AccountTexts.ageBlockedTitle;
+      value = AccountTexts.rowValueBlocked;
       subtitle = AccountTexts.ageBlocked;
       enabled = false;
     } else {
-      title = AccountTexts.tileSignedOut;
+      value = AccountTexts.rowValueSignedOut;
       subtitle =
           AccountTexts.signedOutReason(view.row?.signedOutReason) ??
           AccountTexts.localOnly;
     }
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        const SectionHeading(AccountTexts.section),
-        const SizedBox(height: AppSpacing.xs),
-        Card(
-          margin: EdgeInsets.zero,
-          child: ListTile(
-            key: const ValueKey('profile-account'),
-            minTileHeight: 64,
-            enabled: enabled,
-            leading: Icon(
-              view.signedIn
-                  ? Icons.cloud_done_outlined
-                  : Icons.person_add_alt_outlined,
-              color: AppColors.seaBlue,
-            ),
-            title: Text(
-              title,
-              style: const TextStyle(fontWeight: FontWeight.w700),
-            ),
-            subtitle: Text(subtitle),
-            trailing: enabled ? const Icon(Icons.chevron_right_rounded) : null,
-            onTap: enabled ? () => context.push(AppRoutes.account) : null,
-          ),
-        ),
-      ],
+    return SettingsRow(
+      key: const ValueKey('profile-account'),
+      icon: view.signedIn
+          ? Icons.cloud_done_outlined
+          : Icons.person_outline_rounded,
+      title: AccountTexts.section,
+      subtitle: subtitle,
+      value: value,
+      onTap: enabled ? () => context.push(AppRoutes.account) : null,
     );
   }
 }
@@ -150,45 +133,81 @@ class AccountNudgeCard extends ConsumerWidget {
   }
 }
 
-/// Kesin metinler gelene kadar (H-042) hukuk metinlerinin yer tutucusu.
+/// Kesin metinler gelene kadar (H-042) hukuk metinlerinin yer tutucusu
+/// (tasarım H-059): sürüm etiketi, taslak notu, başlıklı bölümler; okunur
+/// satır genişliği (en fazla 600 px).
 class LegalTextScreen extends ConsumerWidget {
   const LegalTextScreen({super.key, required this.kind});
 
   /// `kosullar` | `aydinlatma`
   final String kind;
 
+  static const double maxWidth = 600;
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final config = ref.watch(apiConfigProvider);
     final terms = kind != 'aydinlatma';
     final theme = Theme.of(context);
+    final sections = terms
+        ? AccountTexts.termsSections
+        : AccountTexts.privacySections;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: theme.colorScheme.surface,
         title: Text(
           terms ? AccountTexts.termsTitle : AccountTexts.privacyTitle,
-          style: const TextStyle(fontWeight: FontWeight.w700),
         ),
       ),
       body: SafeArea(
         top: false,
         child: ListView(
-          padding: const EdgeInsets.all(AppSpacing.sm),
+          key: const ValueKey('legal-text'),
+          padding: const EdgeInsets.fromLTRB(
+            AppSpace.page,
+            AppSpace.s8,
+            AppSpace.page,
+            AppSpace.s32,
+          ),
           children: [
-            Text(
-              AccountTexts.legalVersion(
-                terms ? config.termsVersion : config.privacyNoticeVersion,
+            Center(
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(maxWidth: maxWidth),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    CapsLabel(
+                      AccountTexts.legalVersion(
+                        terms
+                            ? config.termsVersion
+                            : config.privacyNoticeVersion,
+                      ),
+                      tone: CapsTone.blue,
+                    ),
+                    const SizedBox(height: AppSpace.s16),
+                    const InfoCard(
+                      tone: InfoTone.warning,
+                      icon: Icons.edit_note_rounded,
+                      title: AccountTexts.legalDraftTitle,
+                      body: AccountTexts.legalDraft,
+                    ),
+                    for (final (heading, body) in sections) ...[
+                      const SizedBox(height: AppSpace.s24),
+                      Semantics(
+                        header: true,
+                        child: Text(heading, style: theme.textTheme.titleLarge),
+                      ),
+                      const SizedBox(height: AppSpace.s8),
+                      Text(
+                        body,
+                        style: theme.textTheme.bodyLarge?.copyWith(
+                          height: 1.6,
+                          color: AppPalette.ink700,
+                        ),
+                      ),
+                    ],
+                  ],
+                ),
               ),
-              style: theme.textTheme.bodyMedium,
-            ),
-            const SizedBox(height: AppSpacing.xs),
-            Text(AccountTexts.legalDraft, style: theme.textTheme.bodyMedium),
-            const SizedBox(height: AppSpacing.sm),
-            Text(
-              terms
-                  ? AccountTexts.termsDraftBody
-                  : AccountTexts.privacyDraftBody,
-              style: theme.textTheme.bodyLarge,
             ),
           ],
         ),

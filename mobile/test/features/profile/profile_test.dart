@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hivelzon/app/theme.dart';
+import 'package:hivelzon/features/notebook/data/notebook_store.dart';
 import 'package:hivelzon/features/player/data/progress_repository.dart';
 import 'package:hivelzon/features/profile/data/user_profile_store.dart';
 import 'package:hivelzon/features/profile/presentation/profile_screen.dart';
@@ -93,21 +94,82 @@ void main() {
       }
     }
 
-    testWidgets('bölüm başlıkları ve ad alanı; kaydet ve doğrula', (
+    Future<void> openSheet(WidgetTester tester, String key) async {
+      final f = find.byKey(ValueKey(key));
+      await tester.ensureVisible(f);
+      await tester.pump();
+      await tester.tap(f);
+      await settle(tester);
+    }
+
+    testWidgets('başlık, istatistikler ve gruplar (adsız: "Merhaba!")', (
       tester,
     ) async {
       await pump(tester);
       await settle(tester);
-      expect(find.text('Profil'), findsOneWidget);
+      expect(find.text('Merhaba!'), findsOneWidget);
+      expect(find.byKey(const ValueKey('profile-stats')), findsOneWidget);
+      expect(find.text('ifade'), findsOneWidget);
+      expect(find.text('bölüm bitti'), findsOneWidget);
+      expect(find.text('bu hafta tekrar'), findsOneWidget);
+      expect(find.text('Öğrenme'), findsOneWidget);
+      expect(find.text('Hesap ve gizlilik'), findsOneWidget);
+      expect(find.text('Defter'), findsOneWidget);
+      expect(find.text('Günlük hedef'), findsOneWidget);
+      expect(find.text('Konu setleri'), findsOneWidget);
+      expect(find.text('Hesap'), findsOneWidget);
+      expect(find.text('Hi benim hakkımda ne biliyor?'), findsOneWidget);
+      // Açıklamalar satır altı ipucu.
+      expect(
+        find.text('Bölüm bitince ifadeler buraya eklenir.'),
+        findsOneWidget,
+      );
+      expect(find.text('Eklenmedi'), findsOneWidget);
+      expect(find.text('Bugün küçük bir adım yeter.'), findsOneWidget);
+      await tester.pumpWidget(const SizedBox());
+      await settle(tester);
+    });
+
+    testWidgets('günlük hedef paneli: seçim kaydedilir, satır güncellenir', (
+      tester,
+    ) async {
+      await pump(tester);
+      await settle(tester);
+      expect(find.text('10 dk'), findsOneWidget);
+      await openSheet(tester, 'profile-goal');
+      expect(find.byKey(const ValueKey('daily-goal')), findsOneWidget);
+      expect(find.text('Günde ne kadar zaman ayırmak istersin?'), findsOne);
+      await tester.tap(find.text('15 dk'));
+      await settle(tester);
+      expect(
+        await tester.runAsync(() => NotebookStore(db).dailyGoalMinutes()),
+        15,
+      );
+      expect(
+        find.text('Kelime tekrarında günde en fazla 15 yeni ifade açılır.'),
+        findsWidgets,
+      );
+      await tester.tap(find.byTooltip('Kapat'));
+      await settle(tester);
+      expect(find.byKey(const ValueKey('daily-goal')), findsNothing);
+      expect(find.text('15 dk'), findsOneWidget);
+      await tester.pumpWidget(const SizedBox());
+      await settle(tester);
+    });
+
+    testWidgets('ad paneli: doğrula, kaydet, başlık selamı değişir', (
+      tester,
+    ) async {
+      await pump(tester);
+      await settle(tester);
+      await openSheet(tester, 'profile-name-row');
       expect(find.text('Sana nasıl seslenelim?'), findsOneWidget);
       expect(
         find.text('İsteğe bağlı. Yalnızca bu cihazda saklanır.'),
         findsOneWidget,
       );
-      expect(find.text('Defter'), findsOneWidget);
-      expect(find.text('Günlük hedef'), findsOneWidget);
 
-      // Geçersiz: rakam → hata, yazılmaz.
+      // Geçersiz: rakam → hata, yazılmaz, panel açık kalır.
       await tester.enterText(
         find.byKey(const ValueKey('profile-name')),
         'Deniz1',
@@ -125,7 +187,7 @@ void main() {
         isNull,
       );
 
-      // Geçerli: kırpılır ve kaydedilir.
+      // Geçerli: kırpılır, kaydedilir, panel kapanır.
       await tester.enterText(
         find.byKey(const ValueKey('profile-name')),
         '  Deniz ',
@@ -137,19 +199,28 @@ void main() {
         await tester.runAsync(() => UserProfileStore(db).displayName()),
         'Deniz',
       );
+      expect(find.byKey(const ValueKey('profile-name')), findsNothing);
+      await tester.drag(
+        find.byKey(const ValueKey('profile-list')),
+        const Offset(0, 3000),
+      );
+      await settle(tester);
+      expect(find.text('Merhaba Deniz'), findsOneWidget);
+      expect(
+        find.descendant(
+          of: find.byKey(const ValueKey('profile-avatar')),
+          matching: find.text('D'),
+        ),
+        findsOneWidget,
+      );
 
-      // Alan en fazla 20 karakter alır.
+      // Yeniden açılınca kayıtlı ad alanda; en fazla 20 karakter.
+      await openSheet(tester, 'profile-name-row');
+      expect(find.widgetWithText(TextField, 'Deniz'), findsOneWidget);
       final field = tester.widget<TextField>(
         find.byKey(const ValueKey('profile-name')),
       );
       expect(field.maxLength, 20);
-
-      // Yeniden açılınca kayıtlı ad alanda.
-      await tester.pumpWidget(const SizedBox());
-      await settle(tester);
-      await pump(tester);
-      await settle(tester);
-      expect(find.widgetWithText(TextField, 'Deniz'), findsOneWidget);
       await tester.pumpWidget(const SizedBox());
       await settle(tester);
     });

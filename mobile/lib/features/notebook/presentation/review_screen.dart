@@ -473,17 +473,8 @@ class _ReviewScreenState extends ConsumerState<ReviewScreen> {
         child: OutlinedButton.icon(
           key: const ValueKey('task-dont-know'),
           onPressed: () => _answer(correct: false, dontKnow: true),
-          style: OutlinedButton.styleFrom(
-            minimumSize: const Size(220, 48),
-            foregroundColor: AppColors.seaBlue,
-            backgroundColor: Colors.transparent,
-            side: const BorderSide(color: AppColors.seaBlue, width: 1.5),
-            textStyle: const TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.w700,
-            ),
-          ),
-          icon: const Icon(Icons.help_outline_rounded),
+          style: AppButtonStyles.dontKnow(minimumSize: const Size(220, 48)),
+          icon: const Icon(AppButtonStyles.dontKnowIcon),
           label: const Text(ReviewTexts.dontKnow),
         ),
       ),

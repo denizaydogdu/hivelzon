@@ -138,7 +138,7 @@ class _ContinueCard extends ConsumerWidget {
                         begin: Alignment.topCenter,
                         end: Alignment.bottomCenter,
                         stops: [0.45, 1],
-                        colors: [Colors.transparent, Color(0xB3000000)],
+                        colors: [Colors.transparent, AppScrim.gradientEnd],
                       ),
                     ),
                   ),
