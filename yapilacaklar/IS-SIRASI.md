@@ -151,7 +151,7 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 ### Adım 8 — Dilbilgisi: Hi'den Türkçe konu anlatımı (2026-10-14, kullanıcı isteği; `docs/DILBILGISI.md`)
 | # | İş | Başlık | Öncelik | Bağımlılık | Durum |
 |---|---|---|---|---|---|
-| D0 | H-075 | Türkçe ses: Alania + Duyu hizalama | Yüksek | — | ⏳ |
+| D0 | H-075 | Türkçe ses: Alania + Duyu hizalama | Yüksek | — | ✅ |
 | D0 | H-076 | Dilbilgisi müfredatı (~70 konu) | Yüksek | — | ⏳ |
 | D1 | H-077 | Ders paketi ve grammar-lint | Yüksek | H-075, H-076 | ⏳ |
 | D2 | H-078 | Dilbilgisi ekranı (Hikâye'de 3. bölüm, bölüm panelinde teklif) | Yüksek | H-077 | ⏳ |
@@ -171,6 +171,7 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 ## Biten işler
 | İş | Başlık | Bitiş | Doğrulama |
 |---|---|---|---|
+| H-075 | Türkçe ses: Alania + Duyu | 2026-10-14 | `tts_tr.py`: Alania TTS → Duyu kelime zamanları → `align.py` biçimi, -16 LUFS; varsayılan kuru çalışma, tavansız çalışmaz, idempotent, 429 bekleme, anahtar repo dışında; gerçek deneme 154 karakter; pytest 184/184 |
 | H-062 | Oynatıcı katmanlarının tasarımı | 2026-10-14 | Oynatıcı ve anlam paneli yalnız belirteçlerle; ~45 metin l10n'de; karar kartı ve Hi paneli giriş animasyonları; sakin bölüm sonu; geçiş ve senkron testleri; flutter 691/691; kullanıcı onayladı |
 | H-069 | Pilot kitaplar (A1 + A2) | 2026-10-14 | The Blue Door (metin, çeviri, 12 görsel, ses Sarah, 105 k/dk) ve The Parrot Who Told Everything (metin, çeviri, 15 görsel; ses Creator planıyla); 27 görsel 14 kr; simülatörde denendi, kullanıcı onayladı |
 | H-067 | Kitaplık ve okuyucu | 2026-10-14 | Macera · Kitaplık, raflar, Bana bir kitap oku, okuyucu (sesli/sessiz, cümle vurgusu, otomatik sayfa, hız, uyku zamanlayıcısı), anlam paneli, Defter'e ekle (kaynak satırı), kitap ilerlemesi eşitlemesi (Drift v6, V8), Hi önerisi; flutter 649, mvn 126; kullanıcı onayladı |

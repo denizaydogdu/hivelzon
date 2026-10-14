@@ -1,6 +1,6 @@
 # H-075: Türkçe ses: Alania + Duyu hizalama
 
-- **Durum:** Yapılacak
+- **Durum:** Bitti (2026-10-14; pytest 184/184; gerçek uçtan uca deneme yapıldı)
 - **Tür:** Uygulama (araç)
 - **Faz:** Dilbilgisi D0 (`docs/DILBILGISI.md` §8)
 - **Bağımlılık:** —
@@ -39,3 +39,4 @@ Kendi dalında; `git revert`.
   - İkinci çalışmada hiçbir çağrı yapılmadı.
   - Defter: `kitaplar/_maliyet/patientdesk-karakter.json`.
 - Açık: İngilizce örnekler için Sarah parçası mı, söyleniş sözlüğü mü (pilot). "-s" söylenişi de sözlük adayı. Sesler henüz kulakla dinlenmedi. Kabul kriterlerinin doğrulanması ve dosyanın taşınması kullanıcıya bırakıldı.
+2026-10-14: `main`'e birleştirildi ve kapandı. Bulgu: Alania İngilizce kelimeleri Türkçe okur; Türkçe anlatım içindeki İngilizce örnekler ayrı parça olarak Sarah'ya (ElevenLabs) okutulacak. Söyleniş sözlüğü (ör. `-s` → "se") pilotta (H-079) denenecek.
