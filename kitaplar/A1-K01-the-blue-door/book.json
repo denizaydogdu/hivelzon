@@ -11,6 +11,11 @@
   "contentVersion": 1,
   "status": "DRAFT",
   "aiGenerated": true,
+  "grammarTopics": [
+    "G-A1-01-to-be",
+    "G-A1-03-a-an",
+    "G-A1-13-third-person-s"
+  ],
   "palette": {
     "background": "#FFF8EC",
     "surface": "#F6EBD3",

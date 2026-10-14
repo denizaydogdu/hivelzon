@@ -28,6 +28,10 @@
     "possessive_my",
     "article_a_role"
   ],
+  "grammarTopics": [
+    "G-A1-01-to-be",
+    "G-A1-03-a-an"
+  ],
   "targetPhrases": [
     "Hello.",
     "My name is…",

@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "id": "G-A1-13-third-person-s",
+  "level": "A1",
+  "titleTr": "He / she / it ile fiile -s",
+  "titleEn": "Third person -s",
+  "goalTr": "Geniş zamanda he, she, it ve tek bir isimle fiile -s ya da -es eklersin.",
+  "prerequisites": ["G-A1-05-pronouns-possessives", "G-A1-11-present-simple"],
+  "contentVersion": 1,
+  "status": "DRAFT",
+  "aiGenerated": true,
+  "teacherReview": null,
+  "linksTo": { "episodes": ["A1-002", "A1-005", "A1-012"], "books": ["A1-K01", "A1-K02"] },
+  "properNouns": ["Maya", "Sam", "Jordan", "Port Lumen", "Lina", "Ankara"],
+  "pronunciations": [{ "term": "-s", "say_as": "se" }],
+  "narration": { "tr": { "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı" } }
+}
