@@ -24,7 +24,7 @@ import tr.velzon.hivelzon.sync.SyncRow;
  * silme yapar, o da gönderilmez).</li>
  * </ul>
  * Aynı kural kitap ilerlemesine de uygulanır (H-067, {@link #forBooks()}): kayıt noktası orada kalınan bölüm, sayfa,
- * cümle ve ses konumudur.
+ * cümle ve ses konumudur. Dilbilgisi dersinde (H-078, {@link #forGrammar()}) kalınan karttır.
  */
 final class ProgressMerger implements SyncMerger {
 
@@ -48,6 +48,11 @@ final class ProgressMerger implements SyncMerger {
     /** Kitap ilerlemesi (H-067). */
     static ProgressMerger forBooks() {
         return new ProgressMerger(List.of("chapter_id", "page_number", "sentence_index", "position_sec"));
+    }
+
+    /** Dilbilgisi dersi ilerlemesi (H-078): kalınan yer son kart. */
+    static ProgressMerger forGrammar() {
+        return new ProgressMerger(List.of("last_card"));
     }
 
     private boolean hasPlace(Map<String, Object> row) {

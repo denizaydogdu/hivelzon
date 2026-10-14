@@ -3,7 +3,10 @@
 import '../../../shared/fsrs/fsrs.dart';
 import 'review_policy.dart';
 
-enum NotebookKind { word, phrase, sentence }
+/// [rule]: dilbilgisi kural kartı (H-078). `textEn`/`textTr` kuralın
+/// örneği ve Türkçesi (tekrarda sorulan), `exampleTr` kuralın kendisi
+/// (Türkçe); `sourceTitle` dersin başlığı.
+enum NotebookKind { word, phrase, sentence, rule }
 
 /// Kart nereden geldi.
 enum NotebookSource {
@@ -20,7 +23,10 @@ enum NotebookSource {
   topicSet('topic_set'),
 
   /// Kitaplık'ta okunan kitaptan eklenen ifade (H-067).
-  book('book');
+  book('book'),
+
+  /// Dilbilgisi dersinin kural kartı (H-078: "Deftere kural kartı ekle").
+  grammar('grammar');
 
   const NotebookSource(this.code);
 
@@ -99,6 +105,9 @@ class NotebookItem {
 
   bool get hasAudio => audio != null;
 
+  /// Dilbilgisi kural kartının kuralı (Türkçe); başka kartta null.
+  String? get ruleTr => kind == NotebookKind.rule ? exampleTr : null;
+
   /// Bölüm etiketi: `A1-004` → `B4`.
   String? get episodeTag {
     final n = episodeNumber;
@@ -107,7 +116,9 @@ class NotebookItem {
 
   /// Bölüm numarası (`A1-004` → 4); bölümden gelmiyorsa null.
   int? get episodeNumber {
-    if (source == NotebookSource.book) return null;
+    if (source == NotebookSource.book || source == NotebookSource.grammar) {
+      return null;
+    }
     final m = RegExp(r'-(\d{3})$').firstMatch(contentId ?? '');
     return m == null ? null : int.parse(m.group(1)!);
   }

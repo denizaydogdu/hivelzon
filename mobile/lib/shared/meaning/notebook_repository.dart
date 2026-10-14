@@ -166,7 +166,7 @@ class DriftNotebookRepository implements NotebookRepository {
         kind: switch (e.item.kind) {
           NotebookKind.word => SavedKind.word,
           NotebookKind.phrase => SavedKind.phrase,
-          NotebookKind.sentence => SavedKind.sentence,
+          NotebookKind.sentence || NotebookKind.rule => SavedKind.sentence,
         },
         en: e.item.textEn,
         tr: e.item.textTr,

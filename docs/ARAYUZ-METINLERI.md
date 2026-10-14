@@ -155,6 +155,38 @@ Hikâye sekmesinin üstünde **Macera · Kitaplık** seçici (sekme sayısı de�
 | Kitap sonu | **Kitabı bitirdin** · ""The Blue Door" bitti. Dinlediğin ve okuduğun her sayfa kulağını güçlendirir." · **Bu kitapta kaydettiklerin** (yoksa: "Bu kitaptan defterine ifade eklemedin. Bir dahakine bilmediğin kelimeye dokunup "Deftere ekle" diyebilirsin.") · "Bu ifadeler Kelime tekrarında karşına çıkar." · **Sıradaki kitabı aç** (aynı seviyede açılmamış kitap varsa) · **Kitaplığa dön** · **Baştan oku** | Puan, lig, geri sayım yok (K-32). |
 | Hata | **Bağlantı kurulamadı** · "Kitap açılamadı. …" · **Tekrar dene** | |
 
+### 4.8 Dilbilgisi (H-078)
+Hikâye sekmesinin seçicisi **Macera · Kitaplık · Dilbilgisi** olur (sekme sayısı değişmez, K-30). Dar ekranda ya da büyük yazıda ikonlar kalkar; etiket yine sığmazsa küçülür, kesilmez. Kod: `GrammarTexts`.
+
+| Yer | Metin | Not |
+|---|---|---|
+| Seçici | **Dilbilgisi** (kep ikonu) | Ekran okuyucu grubu "Hikâye bölümü" (aynı). |
+| Açıklama | Hi, İngilizcenin nasıl işlediğini Türkçe ve kısaca anlatır. | Tek cümle. |
+| Raflar | **Hikâyende geçenler** (oynadığın bölümde ya da açtığın kitapta geçen, bitmemiş konular) · **Senin seviyen · A1** · **A2 konuları** · **Tamamladıkların** | Her ders tek rafta; kilit yok. |
+| Ders kartı | Seviye rozeti (bitince onay işareti), Türkçe başlık, tek cümle hedef, "A1 · ~3 dk" (bitince "· Tamamlandı") | Ekran okuyucu: "Üçüncü tekil -s, A1 seviyesi, yaklaşık 3 dakika, tamamlandı". |
+| Yükleniyor / boş / hata | "Dersler hazırlanıyor…" (iskelet) · **Dersler hazırlanıyor** "İlk dilbilgisi dersleri hazır olunca burada görünür. O zamana kadar maceraya devam edebilirsin." · **Bağlantı kurulamadı** "Dersler yüklenemedi. …" + **Tekrar dene** | |
+| Bölüm paneli | Ana düğmenin altında ikincil **Bu bölümdeki dilbilgisi (~5 dk)** ve altında konuların adları ("Üçüncü tekil -s · There is / there are") | Yalnız oynanabilir bölümde ve bölümün `grammarTopics`'inde dersi olan konu varsa. Dersler sırayla gelir; son dersten sonra **Bölümü başlat** bölümü bugünkü gibi açar (H-050: başlıkla). Vazgeçilirse bölüm açılmaz. |
+| Kitap açma paneli | Kitapta ders varsa kapağa dokununca: seviye · tür, başlık, **Kitabı aç** ve ikincil **Bu kitaptaki dilbilgisi (~3 dk)**; derslerden sonra **Kitabı aç** | Dersi olmayan kitap eskisi gibi doğrudan açılır. |
+| Anlam paneli | **BU YAPI NE?** + konu çipleri | Bölümün ya da kitabın konusu varsa; çipe dokununca panel kapanır, ders açılır (oynatıcıda video durur). |
+| Hi | **"Kısa bir konu: Üçüncü tekil -s"** · ""The New Neighbour" bölümünde bu yapı geçti. İstersen Türkçe ve kısaca anlatayım. Yaklaşık 3 dk sürer; …" · **Konuyu aç** | Düşük öncelik: kitap önerisinden sonra, "Bugünlük bu kadar"dan önce. Kaynak kitapsa "… kitabında". |
+
+### 4.9 Ders ekranı (H-078)
+| Yer | Metin | Not |
+|---|---|---|
+| Üst çubuk | "Dersi kapat" · ders adı · "Kart 2 / 7" (ekran okuyucu: "7 karttan 2'si") · ses düğmesi "Sesi kapat" / "Sesi aç" | Altında sarı ilerleme çizgisi. |
+| Kart etiketleri | BU CÜMLEDE · ANLATIM · ÖRNEKLER · TÜRKÇEDE NASIL? · ALIŞTIRMA · HİKÂYEDE GÖR · KURAL | `CapsLabel`; solda küçük Hi (anlatırken parlar; ekran okuyucu "Hi anlatıyor"). |
+| Anlatım | Hi'nin Türkçe metni; kart açılınca kendiliğinden okunur, okunan cümle ve kelime vurgulanır · **Dinle** / **Durdur** | Sessiz modda ya da ses yoksa okunmaz, düğme görünmez; metin tam. Ses açılamazsa bir kez: "Bu dersin sesi şu an açılamıyor. Okuyarak devam edebilirsin." |
+| Şema | Kodla çizilir: zaman çizgisi (geçmiş · şimdi · gelecek), kutu–ok ("özne", "fiil ve ek"), renkli ek (go + es) | Ekran okuyucu: "Şema: open + s = opens, …". |
+| Örnekler | İngilizce cümle (hedef yapı turuncu, kalın, altı çizili) + Türkçesi · "Anlamı için kelimeye dokun." · çal düğmesi "Örneği dinle: She plays football." | İngilizce ses yoksa çal düğmesi gizli. Kelimeye dokununca anlam paneli; "Deftere ekle" kaynağı "Dilbilgisi: <ders adı>". |
+| Türkçede nasıl? | **SIK YAPILAN HATA** + yanlış biçim + kısa Türkçe açıklama ("Ek eksik.") · **DOĞRUSU** + sesli örnek | Üstü çizili ya da kırmızı yok; utandırmaz. |
+| Alıştırma | "Soru 1 / 4" · "Boşluğa uyan kelimeyi seç." · "Boşluğa uyan kelimeyi yaz." (alan "Cevabın") · "Kelimeleri doğru sıraya diz." · **Baştan diz** · **Kontrol et** · Söyle: "Cümleyi dinle, sonra sen de söyle." (tanıma yoksa "… sesli tekrar et.") | Puan, süre, can yok (K-32). |
+| Alıştırma geri bildirimi | Doğruda **Doğru!** + çözülmüş cümle · **Sonraki soru**; yanlışta **Bir daha bakalım.** + kısa Türkçe açıklama · **Tekrar dene** / **Geç**; geçilince "Doğrusu: He plays football." · bitince "Alıştırma tamam. Puan yok; denemek yeter." | "Geç" her zaman var; alıştırma kartı ilerlemeyi kilitlemez. |
+| Hikâyede gör | "Bölüm: The New Neighbour" / "Kitap: The Test Box, s. 3" + gerçek cümle + **Bölümü aç** / **Kitapta aç** | Kitap o sayfada sessiz açılır. Bölüm, haritada açıksa başından açılır (düğümden açma oynatıcıda yok); değilse "Bu bölüm henüz açık değil. Önceki bölümleri bitirince buradan da açabilirsin." |
+| Kural kartı | Kural (büyük) + örnek · **Deftere kural kartı ekle** → "Kural kartı defterine eklendi." / "Bu kural kartı zaten defterinde." + "Kelime tekrarında karşına çıkar." | Defter satırı: kaynak "Dilbilgisi: Üçüncü tekil -s", kartta **KURAL**. |
+| Alt çubuk | "Önceki kart" (ok) · **Devam et** · son kartta **Dersi bitir** | |
+| Dersin sonu | Sakin kutlama · **Dersi bitirdin** · ""Üçüncü tekil -s" tamam. Bu yapıyı hikâyede gördükçe daha kolay tanırsın." · sırada ders varsa **Sıradaki konu: …**; bölüm panelinden gelindiyse **Bölümü başlat** (kitaptan **Kitabı aç**) · **Dilbilgisine dön** (bölüm/kitap akışında **Kapat**) | Puan, lig, geri sayım yok. |
+| Hata | **Bağlantı kurulamadı** · "Ders açılamadı. …" · **Tekrar dene** | |
+
 ## 5. Defter, İpucu panosu ve kelime tekrarı
 
 ### 5.1 Defter
@@ -176,6 +208,7 @@ Hikâye sekmesinin üstünde **Macera · Kitaplık** seçici (sekme sayısı de�
 | Arama | İfade ya da Türkçesi ara | İngilizce ya da Türkçe ara | Neyle arandığı açık. Arama `lowerTr` ile yapılır ("İ" doğru eşleşir). |
 | Boş | Defterin henüz boş. … "Deftere ekle" de diyebilirsin. | Başlık **Defterin henüz boş** + "Bir bölümü bitirince hedef ifadeler buraya gelir. Altyazıda bir kelimeye dokunup "Deftere ekle" de diyebilirsin." (illüstrasyonlu; boşken arama alanı yok) | H-061: `EmptyState` başlık + açıklama. |
 | Kaynak satırı | — | Satırın altında küçük turuncu satır: konu setinden gelende **"Konu setinden"**; kullanıcının bölümde kendi eklediğinde (altyazı, anlam paneli) **"Bölüm 3'ten ekledin"** (`ablativeNumber`: 1'den, 3'ten, 6'dan, 10'dan); kitaptan eklenende **"Kitap: The Blue Door, s. 4"** (başlık yoksa "Kitaptan"). Bölümün kendi eklediklerinde (hedef ifade, bakılan kelime) satır yok; kaynak soldaki "B1" etiketidir. | H-061 tek satır biçimi; H-067 (kullanıcı kararı 2026-10-14). Kitaptan gelenin sol rozeti kitap ikonudur. |
+| Kaynak satırı (H-078) | — | Dilbilgisi dersinden eklenende **"Dilbilgisi: Üçüncü tekil -s"** (kural kartı ve anlam panelinden eklenen); sol rozet kural ikonu. Kural kartının yüzünde **KURAL** başlığıyla kuralın kendisi. | "Hikâyeden" süzgecine girmez. |
 | Kaynağa göre süz | — | Kitaptan eklenen ifade varsa arama alanının altında çipler: **Hepsi · Hikâyeden · <kitap başlığı>** | H-067: "Defter'de kitaba göre süzme". Ekran okuyucu grubu "Kaynağa göre süz" diye okur. |
 | Eşleşme yok | Eşleşen ifade yok. | Aradığın ifade defterinde yok. | Sade. |
 | Hata | Defter açılamadı. Uygulamayı yeniden başlatmayı dene. | Defter açılamadı. Uygulamayı yeniden başlatıp dene. | Kısa. |
@@ -296,6 +329,8 @@ Testler: `test/features/hi/` (öneri öncelik tablosu ve gerekçeler, metin dene
 
 Kitaplık önerileri (H-067): yarım bölüm, tekrar (≥ 5) ve Hi'nin notundan sonra **"Kitaba devam: The Blue Door"** · ""The Blue Door" kitabının %40 kadarını okudun; kaldığın cümleden devam edersin. …" · **Kitaba devam et**; bütün öteki önerilerden sonra (dinlenmeden önce) **"Bir kitap dinle: …"** · "Bugünkü işlerin bitti. İstersen A1 seviyesinde kısa bir kitabı dinleyerek kulağını çalıştır. …" · **Dinlemeye başla**.
 
+Dilbilgisi önerisi (H-078): kitap önerisinden sonra, dinlenmeden önce **"Kısa bir konu: …"** · ""…" bölümünde bu yapı geçti. İstersen Türkçe ve kısaca anlatayım. …" · **Konuyu aç** (§4.8).
+
 ## 11. "Söyle" alıştırmaları (H-055)
 
 Kod: `SpeakTexts` (`mobile/lib/l10n/tr_strings.dart`). Puan, yüzde, dalga biçimi ve "yanlış" yok; en çok 2 deneme, sonra metin gösterilir; "Geç" hep var. Cihazda tanıma yoksa ya da izin kapalıysa hiçbir "Söyle" düğmesi görünmez.
@@ -307,6 +342,7 @@ Kod: `SpeakTexts` (`mobile/lib/l10n/tr_strings.dart`). Puan, yüzde, dalga biçi
 | Kelime tekrarı | Görev: "Dinle ve söyle." · "Dinle, sonra mikrofona dokunup İngilizcesini söyle." · yakın sonuçta **Devam et** · **Bilmiyorum** · **Geç** · başlık "Söyledin!" / "Neredeyse!" | İngilizce metin önce gizli. |
 | Anlam paneli | **Sen de söyle** | "Tekrar dinle"nin altında. |
 | Karar anı | **Söyleyerek seç** · "Seni tam duyamadım. İstersen dokunarak seç." · iki denemeden sonra "Dokunarak seçebilirsin." | Yalnızca seçenekler İngilizceyse. |
+| Dilbilgisi alıştırması (H-078) | "Cümleyi dinle, sonra sen de söyle." + **Söyle** | Sonuç `place = grammar` olarak kaydedilir. |
 | Bölüm sonu | **HEDEF İFADELERİ SÖYLE** · "İstersen bu bölümün ifadelerini bir kez de sen söyle. İsteğe bağlı." | |
 | İzin öncesi | **Söyle alıştırmaları** · "Sesin bu telefonda yazıya çevrilir; kaydedilmez, hiçbir yere gönderilmez. Söylediğinin yazısı da saklanmaz; yalnızca "söyledin" ya da "bir daha dene" sonucu bu cihazda kalır." · "Şimdi telefonun mikrofon ve konuşma tanıma iznini soracak." · **Devam et** / **Şimdi değil** · reddedilirse "İzin verilmedi. Her şey dokunarak çalışmaya devam eder." | |
 | Profil (H-059) | Anahtarlı satır **Söyle alıştırmaları** · ipucu "Sesin bu telefonda yazıya çevrilir; kaydedilmez, hiçbir yere gönderilmez." · desteklenmiyorsa sağda "Kapalı" + "Bu telefon İngilizceyi kendi içinde yazıya çeviremiyor; sesin dışarı gönderilmesin diye kapalı. Her şey dokunarak çalışır." · izin kapalıysa "Mikrofon izni kapalı. Telefonun Ayarlar bölümünden açabilirsin; her şey dokunarak da çalışır." | |

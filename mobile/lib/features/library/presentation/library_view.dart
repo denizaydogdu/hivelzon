@@ -9,6 +9,10 @@ import '../../../l10n/tr_strings.dart';
 import '../../../shared/ui/ui.dart';
 import '../../../shared/widgets/page_header.dart';
 import '../../../shared/widgets/skeleton.dart';
+import '../../grammar/application/grammar_providers.dart';
+import '../../grammar/domain/grammar_progress.dart';
+import '../../grammar/presentation/grammar_lesson_screen.dart';
+import '../../grammar/presentation/grammar_view.dart';
 import '../../hi/application/hi_providers.dart';
 import '../../notebook/application/notebook_providers.dart';
 import '../application/library_providers.dart';
@@ -46,6 +50,8 @@ class LibraryView extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final data = ref.watch(libraryProvider);
+    // Kitap açma panelindeki dilbilgisi teklifi hazır olsun (H-078).
+    ref.watch(bookGrammarOffersProvider);
     final bottom = MediaQuery.paddingOf(context).bottom;
     final children = <Widget>[
       ?header,
@@ -115,7 +121,15 @@ class _Shelves extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final s = data.shelves;
     final p = data.progress;
-    void open(BookSummary b) => openBook(context, ref, b.id);
+    void open(BookSummary b) {
+      final offer = ref.read(bookGrammarOffersProvider).value?[b.id];
+      if (offer == null) {
+        openBook(context, ref, b.id);
+      } else {
+        showBookOpenSheet(context, ref, b, offer);
+      }
+    }
+
     return StaggeredList(
       spacing: AppSpace.s24,
       children: [
@@ -374,4 +388,79 @@ class _LevelPickerState extends ConsumerState<_LevelPicker> {
       ],
     );
   }
+}
+
+/// Kitap açma paneli (H-078): yalnız kitapta dilbilgisi dersi varsa açılır.
+/// "Kitabı aç" (ana düğme) ve ikincil "Bu kitaptaki dilbilgisi (~N dk)".
+/// Dersler bitince "Kitabı aç" seçilirse kitap bugünkü gibi açılır.
+Future<void> showBookOpenSheet(
+  BuildContext context,
+  WidgetRef ref,
+  BookSummary book,
+  GrammarOffer offer,
+) async {
+  final choice = await showAppSheet<String>(
+    context: context,
+    builder: (context) {
+      final theme = Theme.of(context);
+      return SingleChildScrollView(
+        key: const ValueKey('book-open-sheet'),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Align(
+              alignment: AlignmentDirectional.centerStart,
+              child: CapsLabel(
+                [
+                  book.level,
+                  if (book.genre != null) LibraryTexts.genre(book.genre!.code),
+                ].join(' · '),
+              ),
+            ),
+            const SizedBox(height: AppSpace.s8),
+            Semantics(
+              header: true,
+              child: Text(book.title, style: theme.textTheme.headlineSmall),
+            ),
+            if (book.titleTr != null)
+              Text(
+                book.titleTr!,
+                style: theme.textTheme.bodyLarge?.copyWith(
+                  color: AppPalette.ink700,
+                ),
+              ),
+            const SizedBox(height: AppSpace.s24),
+            FilledButton.icon(
+              key: const ValueKey('book-sheet-open'),
+              onPressed: () => Navigator.of(context).pop('open'),
+              style: FilledButton.styleFrom(
+                minimumSize: const Size.fromHeight(AppTouch.primary),
+              ),
+              icon: const Icon(Icons.menu_book_rounded),
+              label: const Text(GrammarTexts.openBookNow),
+            ),
+            const SizedBox(height: AppSpace.s16),
+            GrammarOfferButton(
+              offer: offer,
+              label: GrammarTexts.bookOffer(offer.minutes),
+              onPressed: () => Navigator.of(context).pop('grammar'),
+            ),
+          ],
+        ),
+      );
+    },
+  );
+  if (!context.mounted || choice == null) return;
+  if (choice == 'open') {
+    await openBook(context, ref, book.id);
+    return;
+  }
+  final go = await playGrammarLessons(
+    context,
+    ref,
+    offer.ids,
+    then: GrammarContinue.book,
+  );
+  if (go && context.mounted) await openBook(context, ref, book.id);
 }

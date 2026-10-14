@@ -558,7 +558,7 @@ class SyncStore {
   };
 
   /// Durumu "bitti kazanır" kuralıyla birleşen tablolar (H-056; kitap
-  /// ilerlemesi H-067): anahtar ve "kalınan yer" alanları (yerel bitmişse
+  /// ilerlemesi H-067, dilbilgisi dersi H-078): anahtar ve "kalınan yer" alanları (yerel bitmişse
   /// yereldeki kalır).
   static const _progressTables = <String, _ProgressTable>{
     'user_story_progress':
@@ -573,6 +573,12 @@ class SyncStore {
           ('sentenceIndex', 'sentence_index'),
           ('positionSec', 'position_sec'),
         ]),
+    'user_grammar_progress': _ProgressTable(
+      'user_grammar_progress',
+      'lessonId',
+      'lesson_id',
+      [('lastCard', 'last_card')],
+    ),
   };
 
   /// Gelen ilerleme satırı yereldeki durumu yükseltiyor mu? (Sunucu
@@ -827,6 +833,7 @@ class SyncStore {
         'user_story_flags',
         'user_story_progress',
         'user_book_progress',
+        'user_grammar_progress',
         'season_state',
       ]) {
         await db.customUpdate(

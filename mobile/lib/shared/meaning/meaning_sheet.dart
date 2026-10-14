@@ -14,13 +14,16 @@ import 'meaning_text.dart';
 /// ya da "Kapat" ile) dönen Future tamamlanır.
 ///
 /// [speak]: cihazda tanıma varsa "Sen de söyle" (H-055); yoksa düğme yok.
+/// [structures]: içeriğin dilbilgisi konuları (H-078: "Bu yapı ne?");
+/// birine dokunulursa panel kapanır ve dönen değer o konunun kimliğidir.
 /// Oynatıcı, Keşfet ve kitap okuyucu (H-067) ortak kullanır.
-Future<void> showMeaningSheet(
+Future<String?> showMeaningSheet(
   BuildContext context,
   MeaningController controller, {
   SpeakEnv? speak,
+  List<MeaningStructure> structures = const [],
 }) {
-  return showModalBottomSheet<void>(
+  return showModalBottomSheet<String>(
     context: context,
     isScrollControlled: true,
     useSafeArea: true,
@@ -41,11 +44,21 @@ Future<void> showMeaningSheet(
             controller: controller,
             scrollController: scroll,
             speak: speak,
+            structures: structures,
           ),
         ),
       ),
     ),
   );
+}
+
+/// Anlam panelinde "Bu yapı ne?" altında gösterilen dilbilgisi konusu
+/// (H-078): ders kimliği ve Türkçe adı.
+class MeaningStructure {
+  const MeaningStructure(this.id, this.title);
+
+  final String id;
+  final String title;
 }
 
 /// Kademeli anlam paneli (H-046). Keşfet'teki "Anlam" düğmesi de bunu kullanır.
@@ -58,6 +71,7 @@ class MeaningSheet extends StatelessWidget {
     required this.controller,
     this.scrollController,
     this.speak,
+    this.structures = const [],
   });
 
   final MeaningController controller;
@@ -65,6 +79,9 @@ class MeaningSheet extends StatelessWidget {
 
   /// "Sen de söyle" (H-055); null: gösterilmez.
   final SpeakEnv? speak;
+
+  /// "Bu yapı ne?" (H-078); boşsa gösterilmez.
+  final List<MeaningStructure> structures;
 
   @override
   Widget build(BuildContext context) {
@@ -135,6 +152,10 @@ class MeaningSheet extends StatelessWidget {
                     const SizedBox(height: AppSpace.s16),
                     _TurkishStep(controller: c),
                   ],
+                  if (structures.isNotEmpty) ...[
+                    const SizedBox(height: AppSpace.s16),
+                    _Structures(structures: structures),
+                  ],
                 ],
               ),
             ),
@@ -154,6 +175,44 @@ class MeaningSheet extends StatelessWidget {
           ],
         );
       },
+    );
+  }
+}
+
+/// "Bu yapı ne?" (H-078): içeriğin dilbilgisi konuları; dokununca panel
+/// kapanır ve ders açılır.
+class _Structures extends StatelessWidget {
+  const _Structures({required this.structures});
+
+  final List<MeaningStructure> structures;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      key: const ValueKey('meaning-structures'),
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const CapsLabel(MeaningTexts.structureLabel, tone: CapsTone.blue),
+        const SizedBox(height: AppSpace.s8),
+        Wrap(
+          spacing: AppSpace.s8,
+          runSpacing: AppSpace.s8,
+          children: [
+            for (final s in structures)
+              ActionChip(
+                key: ValueKey('meaning-structure-${s.id}'),
+                avatar: const Icon(
+                  Icons.school_outlined,
+                  size: AppIconSize.sm + 2,
+                  color: AppPalette.seaBlue,
+                ),
+                label: Text(s.title),
+                materialTapTargetSize: MaterialTapTargetSize.padded,
+                onPressed: () => Navigator.of(context).pop(s.id),
+              ),
+          ],
+        ),
+      ],
     );
   }
 }

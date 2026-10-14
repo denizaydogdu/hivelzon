@@ -119,6 +119,9 @@ String? notebookSourceLine(NotebookItem item) => switch (item.source) {
     item.sourceTitle == null
         ? NotebookTexts.sourceBookUnknown
         : NotebookTexts.sourceBook(item.sourceTitle!, item.bookPage),
+  NotebookSource.grammar => NotebookTexts.sourceGrammar(
+    item.sourceTitle ?? item.contentId ?? '',
+  ),
   // Bölümün kendi eklediklerinin kaynağı soldaki bölüm etiketidir.
   NotebookSource.autoTargetPhrase || NotebookSource.lookup => null,
 };
@@ -131,6 +134,7 @@ Widget notebookLeading(NotebookItem item) {
     icon: switch (item.source) {
       NotebookSource.topicSet => Icons.category_outlined,
       NotebookSource.book => Icons.menu_book_rounded,
+      NotebookSource.grammar => Icons.rule_rounded,
       _ => Icons.chat_bubble_outline_rounded,
     },
   );

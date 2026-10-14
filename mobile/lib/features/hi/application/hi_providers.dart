@@ -1,12 +1,14 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../l10n/tr_strings.dart';
 import '../../../shared/content/content_providers.dart';
 import '../../../shared/content/content_source.dart';
 import '../../../shared/meaning/error_taxonomy.dart';
 import '../../../shared/progress/story_progress.dart';
 import '../../../shared/state/safe_refresh.dart';
 import '../../../shared/storage/storage_providers.dart';
+import '../../grammar/application/grammar_providers.dart';
 import '../../library/application/library_providers.dart';
 import '../../library/domain/book.dart';
 import '../../library/domain/book_progress.dart';
@@ -91,6 +93,7 @@ final coachInputProvider = FutureProvider.autoDispose<CoachInput>((ref) async {
   final goal = await ref.watch(notebookStoreProvider).dailyGoalMinutes();
   final hunted = await store.huntedSets();
   final books = await _coachBooks(ref);
+  final grammar = await _coachGrammar(ref, packages, progress);
   final sets = info == null
       ? const <TopicSetView>[]
       : resolveTopicSets(info.topicSets, progress);
@@ -115,8 +118,69 @@ final coachInputProvider = FutureProvider.autoDispose<CoachInput>((ref) async {
     content: content,
     bookInProgress: books.$1,
     bookToStart: books.$2,
+    grammar: grammar,
   );
 }, retry: (_, _) => null);
+
+/// Hi için dilbilgisi (H-078): en son oynanan bölümde ya da açılan kitapta
+/// geçen, bitirilmemiş ilk konu. Ders listesi yoksa ya da okunamazsa yok.
+Future<CoachGrammar?> _coachGrammar(
+  Ref ref,
+  List<PackageSummary> packages,
+  Map<String, StoryProgress> story,
+) async {
+  try {
+    final lessons = await ref.watch(grammarLessonsOrEmptyProvider.future);
+    if (lessons.isEmpty) return null;
+    final done = await ref.watch(grammarProgressStoreProvider).all();
+    final byId = {for (final l in lessons) l.id: l};
+    // (kaynak, konular, zaman): oynanan bölümler ve açılan kitaplar.
+    final seen = <(String, List<String>, DateTime)>[];
+    for (final p in packages) {
+      final s = story[p.id];
+      if (p.grammarTopics.isEmpty || s == null) continue;
+      if (s.status == StoryStatus.notStarted) continue;
+      seen.add((
+        HiTexts.grammarSourceEpisode(p.title),
+        p.grammarTopics,
+        s.completedAt ?? s.startedAt ?? DateTime.utc(2000),
+      ));
+    }
+    try {
+      final books = await ref.watch(contentSourceProvider).listBooks();
+      final read = await ref.watch(bookProgressStoreProvider).all();
+      for (final b in books) {
+        final p = read[b.id];
+        if (b.grammarTopics.isEmpty || p == null) continue;
+        if (p.status == BookStatus.notStarted) continue;
+        seen.add((
+          HiTexts.grammarSourceBook(b.title),
+          b.grammarTopics,
+          p.updatedAt,
+        ));
+      }
+    } on Object catch (e) {
+      debugPrint('[H078] Hi için kitaplar okunamadı: $e');
+    }
+    seen.sort((a, b) => b.$3.compareTo(a.$3));
+    for (final (source, topics, _) in seen) {
+      for (final id in topics) {
+        final l = byId[id];
+        if (l == null || (done[id]?.isCompleted ?? false)) continue;
+        return CoachGrammar(
+          lessonId: l.id,
+          titleTr: l.titleTr,
+          sourceTr: source,
+          minutes: l.minutes,
+        );
+      }
+    }
+    return null;
+  } on Object catch (e) {
+    debugPrint('[H078] Hi için dilbilgisi okunamadı: $e');
+    return null;
+  }
+}
 
 /// Hi için kitaplar (H-067): son okunan yarım kitap ve önerilen seviyede
 /// açılmamış ilk kitap. Kitaplık yüklenemezse ikisi de yok.

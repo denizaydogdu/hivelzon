@@ -149,6 +149,21 @@ const syncTables = <SyncTableSpec>[
       SyncCol('completedAt', 'completed_at', _d),
     ],
   ),
+  // Dilbilgisi dersi ilerlemesi (H-078): "bitti" kazanır (`SyncStore`,
+  // backend `ProgressMerger`).
+  SyncTableSpec(
+    name: 'user_grammar_progress',
+    order: 80,
+    mutable: true,
+    keys: [SyncCol('lessonId', 'lesson_id', _t)],
+    lww: _updatedAt,
+    data: [
+      SyncCol('status', 'status', _t),
+      SyncCol('lastCard', 'last_card', _t),
+      SyncCol('startedAt', 'started_at', _d),
+      SyncCol('completedAt', 'completed_at', _d),
+    ],
+  ),
   SyncTableSpec(
     name: 'notebook_items',
     order: 100,

@@ -1,0 +1,38 @@
+{
+ "schemaVersion": 1,
+ "id": "G-A1-99-third-person-s",
+ "level": "A1",
+ "titleTr": "Üçüncü tekil -s",
+ "titleEn": "Third person -s",
+ "goalTr": "Tek kişiden söz ederken fiile ek getirebilirsin.",
+ "prerequisites": [],
+ "contentVersion": 1,
+ "status": "DRAFT",
+ "aiGenerated": true,
+ "linksTo": {
+  "episodes": [
+   "A1-901"
+  ],
+  "books": [
+   "A1-K99"
+  ]
+ },
+ "teacherReview": null,
+ "cardCount": 7,
+ "teacherReviewed": false,
+ "durations": {
+  "narration": 45.0,
+  "examples": 63.0,
+  "total": 108.0,
+  "cards": {
+   "c01": 18.0,
+   "c02": 9.0,
+   "c03": 27.0,
+   "c04": 18.0,
+   "c05": 9.0,
+   "c06": 9.0,
+   "c07": 18.0
+  }
+ },
+ "estimatedMinutes": 2.5
+}

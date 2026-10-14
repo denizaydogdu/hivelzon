@@ -22,7 +22,7 @@ import tr.velzon.hivelzon.sync.SyncTableProvider;
  * Hikâye ilerlemesi tabloları (mobil Drift şema 4 aynası): bölüm ilerlemesi, kalıcı bayraklar, bölüm kapısı,
  * sezon durumu, ipuçları ve bölüm bağları. Hepsi doğal anahtarlıdır. Bölüm ilerlemesinde "bitti her zaman
  * kazanır" ({@link ProgressMerger}, H-056); bölüm kapısı yalnız eklenir (silinmez, üzerine yazılmaz). Kitaplık
- * ilerlemesi (H-067, mobil şema 6) aynı kuralla birleşir.
+ * ilerlemesi (H-067, mobil şema 6) ve dilbilgisi dersi ilerlemesi (H-078, mobil şema 7) aynı kuralla birleşir.
  */
 @Component
 public class ProgressSyncTables implements SyncTableProvider {
@@ -69,6 +69,12 @@ public class ProgressSyncTables implements SyncTableProvider {
                         integer("sentenceIndex", "sentence_index", false, -1, 9_999),
                         decimal("positionSec", "position_sec", false),
                         instant("startedAt", "started_at", false),
-                        instant("completedAt", "completed_at", false)), ProgressMerger.forBooks()));
+                        instant("completedAt", "completed_at", false)), ProgressMerger.forBooks()),
+                new SyncTable("user_grammar_progress", 80, Kind.MUTABLE,
+                        List.of(string("lessonId", "lesson_id", true, 64)), UPDATED_AT, List.of(
+                        oneOf("status", "status", true, "NOT_STARTED", "IN_PROGRESS", "COMPLETED"),
+                        string("lastCard", "last_card", false, 16),
+                        instant("startedAt", "started_at", false),
+                        instant("completedAt", "completed_at", false)), ProgressMerger.forGrammar()));
     }
 }

@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import '../../../../app/design/tokens.dart';
 import '../../../../l10n/tr_strings.dart';
 import '../../../../shared/ui/ui.dart';
+import '../../../grammar/domain/grammar_progress.dart';
+import '../../../grammar/presentation/grammar_view.dart';
 import '../../domain/season_map.dart';
 import '../../domain/unlock_rule.dart';
 
@@ -11,22 +13,52 @@ import '../../domain/unlock_rule.dart';
 ///
 /// Oynanabilir: "Başla" / "Devam et" (+ "Baştan başla") / "Tekrar oyna".
 /// Kilitli: nazik kilit nedeni (zaman yok, suçlama yok). Yakında: tarih yok.
+///
+/// H-078: oynanabilir bölümde `grammarTopics` dersleri varsa ikincil düğme
+/// "Bu bölümdeki dilbilgisi (~N dk)" ve konuların adları. Seçilmezse hiçbir
+/// şey değişmez (H-050: bölüm yine doğrudan başlıkla açılır).
 class EpisodeSheet extends StatelessWidget {
-  const EpisodeSheet({super.key, required this.episode, required this.onPlay});
+  const EpisodeSheet({
+    super.key,
+    required this.episode,
+    required this.onPlay,
+    this.grammar,
+    this.onGrammar,
+  });
 
   final MapEpisode episode;
 
   /// [mode]: `resume` | `restart` | `null`.
   final void Function(String contentId, String? mode) onPlay;
 
+  /// Bölümdeki dilbilgisi dersleri (yoksa düğme yok).
+  final GrammarOffer? grammar;
+
+  /// [mode]: dersler bitince bölümün açılacağı biçim (ana düğmeyle aynı).
+  final void Function(GrammarOffer offer, String? mode)? onGrammar;
+
   static Future<void> show(
     BuildContext context,
     MapEpisode episode, {
     required void Function(String contentId, String? mode) onPlay,
+    GrammarOffer? grammar,
+    void Function(GrammarOffer offer, String? mode)? onGrammar,
   }) => showAppSheet<void>(
     context: context,
-    builder: (context) => EpisodeSheet(episode: episode, onPlay: onPlay),
+    builder: (context) => EpisodeSheet(
+      episode: episode,
+      onPlay: onPlay,
+      grammar: grammar,
+      onGrammar: onGrammar,
+    ),
   );
+
+  /// Ana düğmenin biçimi: yarımsa kaldığı yerden, bittiyse baştan.
+  String? get _primaryMode => episode.progress.hasCheckpoint
+      ? 'resume'
+      : episode.state == MapNodeState.completed
+      ? 'restart'
+      : null;
 
   void _play(BuildContext context, String? mode) {
     Navigator.of(context).pop();
@@ -128,6 +160,17 @@ class EpisodeSheet extends StatelessWidget {
           if (actions.isNotEmpty) ...[
             const SizedBox(height: AppSpace.s24),
             ...actions,
+          ],
+          if (actions.isNotEmpty && grammar != null && onGrammar != null) ...[
+            const SizedBox(height: AppSpace.s16),
+            GrammarOfferButton(
+              offer: grammar!,
+              label: GrammarTexts.episodeOffer(grammar!.minutes),
+              onPressed: () {
+                Navigator.of(context).pop();
+                onGrammar!(grammar!, _primaryMode);
+              },
+            ),
           ],
         ],
       ),

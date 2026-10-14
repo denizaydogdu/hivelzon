@@ -8,6 +8,7 @@ import '../features/account/presentation/account_widgets.dart';
 import '../features/account/presentation/sign_in_screen.dart';
 import '../features/design_showcase/design_showcase_screen.dart';
 import '../features/discover/presentation/discover_screen.dart';
+import '../features/grammar/presentation/grammar_lesson_screen.dart';
 import '../features/hi/presentation/hi_privacy_screen.dart';
 import '../features/player/application/autoplay_driver.dart';
 import '../features/player/application/player_session.dart';
@@ -74,6 +75,29 @@ abstract final class AppRoutes {
   /// kitap oku"); yoksa kitabın kalınan yerinden, son kullanılan biçimle.
   static String book(String id, {bool listen = false}) =>
       listen ? '/kitap/$id?mod=dinle' : '/kitap/$id';
+
+  /// Kitabı bir sayfada ve cümlede, sessiz açar (H-078: dilbilgisi dersinde
+  /// "Hikâyede gör").
+  static String bookAt(String id, {required String page, String? sentence}) =>
+      Uri(
+        path: '/kitap/$id',
+        queryParameters: {'mod': 'oku', 'sayfa': page, 'cumle': ?sentence},
+      ).toString();
+
+  /// Dilbilgisi dersi (H-078; tam ekran). [then]: ardından sırayla açılacak
+  /// dersler; [cont]: son dersten sonra "Bölümü başlat" (`bolum`) ya da
+  /// "Kitabı aç" (`kitap`) sunulur (sayfa `true` ile kapanır).
+  static String grammarLesson(
+    String id, {
+    List<String> then = const [],
+    String? cont,
+  }) => Uri(
+    path: '/dilbilgisi/$id',
+    queryParameters: {
+      if (then.isNotEmpty) 'sonra': then.join(','),
+      'devam': ?cont,
+    },
+  ).toString();
 
   /// Tasarım sistemi vitrini (H-057): yalnız debug derlemede.
   static const designShowcase = '/tasarim';
@@ -152,6 +176,27 @@ final routerProvider = Provider<GoRouter>((ref) {
             key: ValueKey(state.pathParameters['bookId']),
             bookId: state.pathParameters['bookId']!,
             listen: state.uri.queryParameters['mod'] != 'oku',
+            startPage: state.uri.queryParameters['sayfa'],
+            startSentence: state.uri.queryParameters['cumle'],
+          ),
+        ),
+      ),
+      GoRoute(
+        path: '/dilbilgisi/:id',
+        pageBuilder: (context, state) => MaterialPage(
+          key: state.pageKey,
+          fullscreenDialog: true,
+          child: GrammarLessonScreen(
+            lessonIds: [
+              state.pathParameters['id']!,
+              for (final x in (state.uri.queryParameters['sonra'] ?? '').split(
+                ',',
+              ))
+                if (x.isNotEmpty) x,
+            ],
+            continueKind: GrammarContinue.parse(
+              state.uri.queryParameters['devam'],
+            ),
           ),
         ),
       ),

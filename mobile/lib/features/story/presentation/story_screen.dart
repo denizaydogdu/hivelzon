@@ -12,6 +12,10 @@ import '../../../shared/content/content_providers.dart';
 import '../../../shared/widgets/page_header.dart';
 import '../../../shared/ui/ui.dart';
 import '../../../shared/widgets/skeleton.dart';
+import '../../grammar/application/grammar_providers.dart';
+import '../../grammar/domain/grammar_progress.dart';
+import '../../grammar/presentation/grammar_lesson_screen.dart';
+import '../../grammar/presentation/grammar_view.dart';
 import '../../library/presentation/library_view.dart';
 import '../../player/application/autoplay_driver.dart';
 import '../../player/data/progress_repository.dart';
@@ -42,18 +46,39 @@ class StoryScreen extends ConsumerStatefulWidget {
 class _StoryScreenState extends ConsumerState<StoryScreen> {
   bool _autoplayStarted = false;
 
-  /// "Macera" (harita) ya da "Kitaplık" (H-067).
+  /// "Macera" (harita), "Kitaplık" (H-067) ya da "Dilbilgisi" (H-078).
   StorySection _section = StorySection.adventure;
 
   void _openSheet(MapEpisode e) => EpisodeSheet.show(
     context,
     e,
     onPlay: (id, mode) => openEpisode(context, ref, id, mode: mode),
+    grammar: ref.read(episodeGrammarOffersProvider).value?[e.contentId],
+    onGrammar: (offer, mode) => _grammarThenEpisode(e, offer, mode),
   );
+
+  /// "Bu bölümdeki dilbilgisi": dersler sırayla; sonunda "Bölümü başlat"
+  /// seçilirse bölüm bugünkü gibi açılır (H-050: başlıkla).
+  Future<void> _grammarThenEpisode(
+    MapEpisode e,
+    GrammarOffer offer,
+    String? mode,
+  ) async {
+    final start = await playGrammarLessons(
+      context,
+      ref,
+      offer.ids,
+      then: GrammarContinue.episode,
+    );
+    if (!start || !mounted) return;
+    await openEpisode(context, ref, e.contentId, mode: mode);
+  }
 
   @override
   Widget build(BuildContext context) {
     final map = ref.watch(seasonMapProvider);
+    // Bölüm panelindeki dilbilgisi teklifi hazır olsun (H-078).
+    ref.watch(episodeGrammarOffersProvider);
     if (autoplayEnabled && map.hasValue && !_autoplayStarted) {
       _autoplayStarted = true;
       unawaited(_runAutoplay(map.requireValue));
@@ -65,6 +90,11 @@ class _StoryScreenState extends ConsumerState<StoryScreen> {
     if (_section == StorySection.library) {
       return Scaffold(
         body: SafeArea(bottom: false, child: LibraryView(header: header)),
+      );
+    }
+    if (_section == StorySection.grammar) {
+      return Scaffold(
+        body: SafeArea(bottom: false, child: GrammarView(header: header)),
       );
     }
     final top = Padding(
@@ -275,10 +305,11 @@ class _MapBody extends StatelessWidget {
   }
 }
 
-enum StorySection { adventure, library }
+enum StorySection { adventure, library, grammar }
 
-/// Sayfa başlığı ve "Macera · Kitaplık" seçici (H-067; sekme sayısı
-/// değişmez, K-30).
+/// Sayfa başlığı ve "Macera · Kitaplık · Dilbilgisi" seçici (H-067, H-078;
+/// sekme sayısı değişmez, K-30). Dar ekranda ya da büyük yazıda ikonlar
+/// kalkar; etiket yine sığmazsa küçülür (kesilmez).
 class _StoryHeader extends StatelessWidget {
   const _StoryHeader({required this.section, required this.onChanged});
 
@@ -287,39 +318,78 @@ class _StoryHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Widget label(String text) =>
-        Text(text, maxLines: 1, overflow: TextOverflow.ellipsis);
+    const labels = [
+      LibraryTexts.segmentAdventure,
+      LibraryTexts.segmentLibrary,
+      GrammarTexts.segment,
+    ];
+    Widget label(String text) => FittedBox(
+      fit: BoxFit.scaleDown,
+      child: Text(text, maxLines: 1, overflow: TextOverflow.ellipsis),
+    );
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         PageHeader(
           title: StoryTexts.title,
-          subtitle: section == StorySection.adventure
-              ? StoryTexts.intro
-              : LibraryTexts.intro,
+          subtitle: switch (section) {
+            StorySection.adventure => StoryTexts.intro,
+            StorySection.library => LibraryTexts.intro,
+            StorySection.grammar => GrammarTexts.intro,
+          },
         ),
         const SizedBox(height: AppSpace.s12),
-        Semantics(
-          container: true,
-          label: LibraryTexts.segmentsLabel,
-          child: SegmentedButton<StorySection>(
-            key: const ValueKey('story-sections'),
-            showSelectedIcon: false,
-            segments: [
-              ButtonSegment(
-                value: StorySection.adventure,
-                icon: const Icon(Icons.map_outlined),
-                label: label(LibraryTexts.segmentAdventure),
+        LayoutBuilder(
+          builder: (context, c) {
+            // İkon + boşluk + en uzun etiket + iç boşluk sığıyor mu?
+            final style = Theme.of(context).textTheme.labelLarge;
+            var widest = 0.0;
+            for (final l in labels) {
+              final tp = TextPainter(
+                text: TextSpan(text: l, style: style),
+                textDirection: Directionality.of(context),
+                textScaler: MediaQuery.textScalerOf(context),
+                maxLines: 1,
+              )..layout();
+              if (tp.width > widest) widest = tp.width;
+              tp.dispose();
+            }
+            final icons =
+                c.maxWidth / labels.length >=
+                widest + AppIconSize.md + AppSpace.s8 + AppSpace.s24;
+            return Semantics(
+              container: true,
+              label: LibraryTexts.segmentsLabel,
+              child: SegmentedButton<StorySection>(
+                key: const ValueKey('story-sections'),
+                showSelectedIcon: false,
+                style: SegmentedButton.styleFrom(
+                  padding: const EdgeInsets.symmetric(horizontal: AppSpace.s8),
+                ),
+                segments: [
+                  ButtonSegment(
+                    value: StorySection.adventure,
+                    icon: icons ? const Icon(Icons.map_outlined) : null,
+                    label: label(labels[0]),
+                  ),
+                  ButtonSegment(
+                    value: StorySection.library,
+                    icon: icons
+                        ? const Icon(Icons.auto_stories_outlined)
+                        : null,
+                    label: label(labels[1]),
+                  ),
+                  ButtonSegment(
+                    value: StorySection.grammar,
+                    icon: icons ? const Icon(Icons.school_outlined) : null,
+                    label: label(labels[2]),
+                  ),
+                ],
+                selected: {section},
+                onSelectionChanged: (s) => onChanged(s.first),
               ),
-              ButtonSegment(
-                value: StorySection.library,
-                icon: const Icon(Icons.auto_stories_outlined),
-                label: label(LibraryTexts.segmentLibrary),
-              ),
-            ],
-            selected: {section},
-            onSelectionChanged: (s) => onChanged(s.first),
-          ),
+            );
+          },
         ),
       ],
     );

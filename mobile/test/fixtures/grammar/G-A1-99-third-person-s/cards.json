@@ -1,0 +1,831 @@
+{
+ "schemaVersion": 1,
+ "lessonId": "G-A1-99-third-person-s",
+ "contentVersion": 1,
+ "level": "A1",
+ "cards": [
+  {
+   "id": "c01",
+   "type": "hook",
+   "narration": {
+    "lang": "tr",
+    "text": "Bu cümlede ilginç bir şey var. Fiilin sonunda küçük bir ek duruyor.",
+    "audio": "audio/c01-tr.m4a",
+    "duration": 9.0,
+    "sentences": [
+     {
+      "text": "Bu cümlede ilginç bir şey var.",
+      "start": 0.2,
+      "end": 1.95,
+      "words": [
+       {
+        "w": "Bu",
+        "start": 0.2,
+        "end": 0.32
+       },
+       {
+        "w": "cümlede",
+        "start": 0.37,
+        "end": 0.79
+       },
+       {
+        "w": "ilginç",
+        "start": 0.84,
+        "end": 1.2
+       },
+       {
+        "w": "bir",
+        "start": 1.25,
+        "end": 1.43
+       },
+       {
+        "w": "şey",
+        "start": 1.48,
+        "end": 1.66
+       },
+       {
+        "w": "var.",
+        "start": 1.71,
+        "end": 1.95
+       }
+      ]
+     },
+     {
+      "text": "Fiilin sonunda küçük bir ek duruyor.",
+      "start": 2.0,
+      "end": 4.11,
+      "words": [
+       {
+        "w": "Fiilin",
+        "start": 2.0,
+        "end": 2.36
+       },
+       {
+        "w": "sonunda",
+        "start": 2.41,
+        "end": 2.83
+       },
+       {
+        "w": "küçük",
+        "start": 2.88,
+        "end": 3.18
+       },
+       {
+        "w": "bir",
+        "start": 3.23,
+        "end": 3.41
+       },
+       {
+        "w": "ek",
+        "start": 3.46,
+        "end": 3.58
+       },
+       {
+        "w": "duruyor.",
+        "start": 3.63,
+        "end": 4.11
+       }
+      ]
+     }
+    ]
+   },
+   "examples": [
+    {
+     "id": "c01-ex1",
+     "en": "Ece opens the box.",
+     "tr": "Ece kutuyu açar.",
+     "targets": [
+      {
+       "start": 4,
+       "end": 9,
+       "text": "opens"
+      }
+     ],
+     "audio": "audio/c01-ex1.m4a",
+     "duration": 9.0,
+     "start": 0.1,
+     "end": 1.0,
+     "words": [
+      {
+       "w": "Ece",
+       "start": 0.1,
+       "end": 0.25
+      },
+      {
+       "w": "opens",
+       "start": 0.3,
+       "end": 0.55
+      },
+      {
+       "w": "the",
+       "start": 0.6,
+       "end": 0.75
+      },
+      {
+       "w": "box.",
+       "start": 0.8,
+       "end": 1.0
+      }
+     ]
+    }
+   ],
+   "wrong": [],
+   "diagrams": [],
+   "practice": [],
+   "links": [
+    {
+     "kind": "book",
+     "bookId": "A1-K99",
+     "chapter": "c2",
+     "page": "p03",
+     "sentenceId": "p03-s02",
+     "text": "Ece opens the box.",
+     "start": null,
+     "end": null
+    }
+   ]
+  },
+  {
+   "id": "c02",
+   "type": "explain",
+   "title": "Ek nereden geliyor?",
+   "narration": {
+    "lang": "tr",
+    "text": "Tek bir kişiden ya da şeyden söz ederken fiile -s eklenir. Ben ve sen ile ek gelmez.",
+    "audio": "audio/c02-tr.m4a",
+    "duration": 9.0,
+    "sentences": [
+     {
+      "text": "Tek bir kişiden ya da şeyden söz ederken fiile -s eklenir.",
+      "start": 0.2,
+      "end": 3.58,
+      "words": [
+       {
+        "w": "Tek",
+        "start": 0.2,
+        "end": 0.38
+       },
+       {
+        "w": "bir",
+        "start": 0.43,
+        "end": 0.61
+       },
+       {
+        "w": "kişiden",
+        "start": 0.66,
+        "end": 1.08
+       },
+       {
+        "w": "ya",
+        "start": 1.13,
+        "end": 1.25
+       },
+       {
+        "w": "da",
+        "start": 1.3,
+        "end": 1.42
+       },
+       {
+        "w": "şeyden",
+        "start": 1.47,
+        "end": 1.83
+       },
+       {
+        "w": "söz",
+        "start": 1.88,
+        "end": 2.06
+       },
+       {
+        "w": "ederken",
+        "start": 2.11,
+        "end": 2.53
+       },
+       {
+        "w": "fiile",
+        "start": 2.58,
+        "end": 2.88
+       },
+       {
+        "w": "-s",
+        "start": 2.93,
+        "end": 3.05
+       },
+       {
+        "w": "eklenir.",
+        "start": 3.1,
+        "end": 3.58
+       }
+      ]
+     },
+     {
+      "text": "Ben ve sen ile ek gelmez.",
+      "start": 3.63,
+      "end": 5.08,
+      "words": [
+       {
+        "w": "Ben",
+        "start": 3.63,
+        "end": 3.81
+       },
+       {
+        "w": "ve",
+        "start": 3.86,
+        "end": 3.98
+       },
+       {
+        "w": "sen",
+        "start": 4.03,
+        "end": 4.21
+       },
+       {
+        "w": "ile",
+        "start": 4.26,
+        "end": 4.44
+       },
+       {
+        "w": "ek",
+        "start": 4.49,
+        "end": 4.61
+       },
+       {
+        "w": "gelmez.",
+        "start": 4.66,
+        "end": 5.08
+       }
+      ]
+     }
+    ]
+   },
+   "examples": [],
+   "wrong": [],
+   "diagrams": [
+    {
+     "kind": "suffix",
+     "words": [
+      {
+       "base": "open",
+       "suffix": "s",
+       "word": "opens"
+      },
+      {
+       "base": "go",
+       "suffix": "es",
+       "word": "goes"
+      },
+      {
+       "base": "play",
+       "suffix": "s",
+       "word": "plays"
+      }
+     ]
+    },
+    {
+     "kind": "boxes",
+     "boxes": [
+      {
+       "text": "Ece",
+       "caption": "özne"
+      },
+      {
+       "text": "opens",
+       "caption": "fiil ve ek"
+      },
+      {
+       "text": "the box"
+      }
+     ],
+     "arrows": true
+    }
+   ],
+   "practice": [],
+   "links": []
+  },
+  {
+   "id": "c03",
+   "type": "examples",
+   "narration": null,
+   "examples": [
+    {
+     "id": "c03-ex1",
+     "en": "She plays football.",
+     "tr": "O futbol oynar.",
+     "targets": [
+      {
+       "start": 4,
+       "end": 9,
+       "text": "plays"
+      }
+     ],
+     "audio": "audio/c03-ex1.m4a",
+     "duration": 9.0,
+     "start": 0.1,
+     "end": 1.05,
+     "words": [
+      {
+       "w": "She",
+       "start": 0.1,
+       "end": 0.25
+      },
+      {
+       "w": "plays",
+       "start": 0.3,
+       "end": 0.55
+      },
+      {
+       "w": "football.",
+       "start": 0.6,
+       "end": 1.05
+      }
+     ]
+    },
+    {
+     "id": "c03-ex2",
+     "en": "He goes to school.",
+     "tr": "O okula gider.",
+     "targets": [
+      {
+       "start": 3,
+       "end": 7,
+       "text": "goes"
+      }
+     ],
+     "audio": "audio/c03-ex2.m4a",
+     "duration": 9.0,
+     "start": 0.1,
+     "end": 1.0,
+     "words": [
+      {
+       "w": "He",
+       "start": 0.1,
+       "end": 0.2
+      },
+      {
+       "w": "goes",
+       "start": 0.25,
+       "end": 0.45
+      },
+      {
+       "w": "to",
+       "start": 0.5,
+       "end": 0.6
+      },
+      {
+       "w": "school.",
+       "start": 0.65,
+       "end": 1.0
+      }
+     ]
+    },
+    {
+     "id": "c03-ex3",
+     "en": "The cat sleeps here.",
+     "tr": "Kedi burada uyur.",
+     "targets": [
+      {
+       "start": 8,
+       "end": 14,
+       "text": "sleeps"
+      }
+     ],
+     "audio": "audio/c03-ex3.m4a",
+     "duration": 9.0,
+     "start": 0.1,
+     "end": 1.1,
+     "words": [
+      {
+       "w": "The",
+       "start": 0.1,
+       "end": 0.25
+      },
+      {
+       "w": "cat",
+       "start": 0.3,
+       "end": 0.45
+      },
+      {
+       "w": "sleeps",
+       "start": 0.5,
+       "end": 0.8
+      },
+      {
+       "w": "here.",
+       "start": 0.85,
+       "end": 1.1
+      }
+     ]
+    }
+   ],
+   "wrong": [],
+   "diagrams": [],
+   "practice": [],
+   "links": []
+  },
+  {
+   "id": "c04",
+   "type": "contrast",
+   "title": "Türkçede nasıl?",
+   "narration": {
+    "lang": "tr",
+    "text": "Türkçede fiil her kişi için değişir: gider, gideriz. İngilizcede yalnız tek kişi için ek gelir.",
+    "audio": "audio/c04-tr.m4a",
+    "duration": 9.0,
+    "sentences": [
+     {
+      "text": "Türkçede fiil her kişi için değişir: gider, gideriz.",
+      "start": 0.2,
+      "end": 3.25,
+      "words": [
+       {
+        "w": "Türkçede",
+        "start": 0.2,
+        "end": 0.68
+       },
+       {
+        "w": "fiil",
+        "start": 0.73,
+        "end": 0.97
+       },
+       {
+        "w": "her",
+        "start": 1.02,
+        "end": 1.2
+       },
+       {
+        "w": "kişi",
+        "start": 1.25,
+        "end": 1.49
+       },
+       {
+        "w": "için",
+        "start": 1.54,
+        "end": 1.78
+       },
+       {
+        "w": "değişir:",
+        "start": 1.83,
+        "end": 2.31
+       },
+       {
+        "w": "gider,",
+        "start": 2.36,
+        "end": 2.72
+       },
+       {
+        "w": "gideriz.",
+        "start": 2.77,
+        "end": 3.25
+       }
+      ]
+     },
+     {
+      "text": "İngilizcede yalnız tek kişi için ek gelir.",
+      "start": 3.3,
+      "end": 5.76,
+      "words": [
+       {
+        "w": "İngilizcede",
+        "start": 3.3,
+        "end": 3.96
+       },
+       {
+        "w": "yalnız",
+        "start": 4.01,
+        "end": 4.37
+       },
+       {
+        "w": "tek",
+        "start": 4.42,
+        "end": 4.6
+       },
+       {
+        "w": "kişi",
+        "start": 4.65,
+        "end": 4.89
+       },
+       {
+        "w": "için",
+        "start": 4.94,
+        "end": 5.18
+       },
+       {
+        "w": "ek",
+        "start": 5.23,
+        "end": 5.35
+       },
+       {
+        "w": "gelir.",
+        "start": 5.4,
+        "end": 5.76
+       }
+      ]
+     }
+    ]
+   },
+   "examples": [
+    {
+     "id": "c04-ex1",
+     "en": "She goes to school.",
+     "tr": "O okula gider.",
+     "targets": [
+      {
+       "start": 4,
+       "end": 8,
+       "text": "goes"
+      }
+     ],
+     "audio": "audio/c04-ex1.m4a",
+     "duration": 9.0,
+     "start": 0.1,
+     "end": 1.05,
+     "words": [
+      {
+       "w": "She",
+       "start": 0.1,
+       "end": 0.25
+      },
+      {
+       "w": "goes",
+       "start": 0.3,
+       "end": 0.5
+      },
+      {
+       "w": "to",
+       "start": 0.55,
+       "end": 0.65
+      },
+      {
+       "w": "school.",
+       "start": 0.7,
+       "end": 1.05
+      }
+     ]
+    }
+   ],
+   "wrong": [
+    {
+     "id": "c04-x1",
+     "en": "She go to school.",
+     "tr": "Ek eksik."
+    }
+   ],
+   "diagrams": [],
+   "practice": [],
+   "links": []
+  },
+  {
+   "id": "c05",
+   "type": "practice",
+   "narration": null,
+   "examples": [],
+   "wrong": [],
+   "diagrams": [],
+   "practice": [
+    {
+     "id": "c05-q1",
+     "kind": "choose",
+     "stem": "She ___ to school.",
+     "options": [
+      {
+       "text": "go",
+       "correct": false
+      },
+      {
+       "text": "goes",
+       "correct": true
+      }
+     ],
+     "feedbackTr": "Tek kişi var; fiile ek gelir."
+    },
+    {
+     "id": "c05-q2",
+     "kind": "fill",
+     "stem": "He ___ football. (play)",
+     "answers": [
+      "plays"
+     ],
+     "feedbackTr": "Tek kişi var; ek unutulmasın."
+    },
+    {
+     "id": "c05-q3",
+     "kind": "order",
+     "tokens": [
+      "the box",
+      "opens",
+      "Ece"
+     ],
+     "answer": "Ece opens the box.",
+     "feedbackTr": "Önce kişi, sonra fiil gelir."
+    },
+    {
+     "id": "c05-q4",
+     "kind": "say",
+     "text": "She goes to school.",
+     "tr": "O okula gider.",
+     "audio": "audio/c05-q4.m4a",
+     "duration": 9.0,
+     "words": [
+      {
+       "w": "She",
+       "start": 0.1,
+       "end": 0.25
+      },
+      {
+       "w": "goes",
+       "start": 0.3,
+       "end": 0.5
+      },
+      {
+       "w": "to",
+       "start": 0.55,
+       "end": 0.65
+      },
+      {
+       "w": "school.",
+       "start": 0.7,
+       "end": 1.05
+      }
+     ]
+    }
+   ],
+   "links": []
+  },
+  {
+   "id": "c06",
+   "type": "seeInStory",
+   "narration": {
+    "lang": "tr",
+    "text": "Bu yapıyı hikâyede ve kitapta da gördün.",
+    "audio": "audio/c06-tr.m4a",
+    "duration": 9.0,
+    "sentences": [
+     {
+      "text": "Bu yapıyı hikâyede ve kitapta da gördün.",
+      "start": 0.2,
+      "end": 2.54,
+      "words": [
+       {
+        "w": "Bu",
+        "start": 0.2,
+        "end": 0.32
+       },
+       {
+        "w": "yapıyı",
+        "start": 0.37,
+        "end": 0.73
+       },
+       {
+        "w": "hikâyede",
+        "start": 0.78,
+        "end": 1.26
+       },
+       {
+        "w": "ve",
+        "start": 1.31,
+        "end": 1.43
+       },
+       {
+        "w": "kitapta",
+        "start": 1.48,
+        "end": 1.9
+       },
+       {
+        "w": "da",
+        "start": 1.95,
+        "end": 2.07
+       },
+       {
+        "w": "gördün.",
+        "start": 2.12,
+        "end": 2.54
+       }
+      ]
+     }
+    ]
+   },
+   "examples": [],
+   "wrong": [],
+   "diagrams": [],
+   "practice": [],
+   "links": [
+    {
+     "kind": "episode",
+     "episodeId": "A1-901",
+     "node": "s01",
+     "cueId": "s01-04",
+     "text": "I'm your new neighbour.",
+     "cueText": "Yes. I'm your new neighbour.",
+     "start": 3.82,
+     "end": 5.49
+    },
+    {
+     "kind": "book",
+     "bookId": "A1-K99",
+     "chapter": "c1",
+     "page": "p01",
+     "sentenceId": "p01-s01",
+     "text": "Ece has a small box.",
+     "start": null,
+     "end": null
+    }
+   ]
+  },
+  {
+   "id": "c07",
+   "type": "rule",
+   "narration": {
+    "lang": "tr",
+    "text": "Tek kişiden söz ederken fiile ek gelir.",
+    "audio": "audio/c07-tr.m4a",
+    "duration": 9.0,
+    "sentences": [
+     {
+      "text": "Tek kişiden söz ederken fiile ek gelir.",
+      "start": 0.2,
+      "end": 2.48,
+      "words": [
+       {
+        "w": "Tek",
+        "start": 0.2,
+        "end": 0.38
+       },
+       {
+        "w": "kişiden",
+        "start": 0.43,
+        "end": 0.85
+       },
+       {
+        "w": "söz",
+        "start": 0.9,
+        "end": 1.08
+       },
+       {
+        "w": "ederken",
+        "start": 1.13,
+        "end": 1.55
+       },
+       {
+        "w": "fiile",
+        "start": 1.6,
+        "end": 1.9
+       },
+       {
+        "w": "ek",
+        "start": 1.95,
+        "end": 2.07
+       },
+       {
+        "w": "gelir.",
+        "start": 2.12,
+        "end": 2.48
+       }
+      ]
+     }
+    ]
+   },
+   "examples": [
+    {
+     "id": "c07-ex1",
+     "en": "She goes to school.",
+     "tr": "O okula gider.",
+     "targets": [
+      {
+       "start": 4,
+       "end": 8,
+       "text": "goes"
+      }
+     ],
+     "audio": "audio/c07-ex1.m4a",
+     "duration": 9.0,
+     "start": 0.1,
+     "end": 1.05,
+     "words": [
+      {
+       "w": "She",
+       "start": 0.1,
+       "end": 0.25
+      },
+      {
+       "w": "goes",
+       "start": 0.3,
+       "end": 0.5
+      },
+      {
+       "w": "to",
+       "start": 0.55,
+       "end": 0.65
+      },
+      {
+       "w": "school.",
+       "start": 0.7,
+       "end": 1.05
+      }
+     ]
+    }
+   ],
+   "wrong": [],
+   "diagrams": [],
+   "practice": [],
+   "links": []
+  }
+ ]
+}

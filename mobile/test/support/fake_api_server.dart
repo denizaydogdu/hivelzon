@@ -275,7 +275,8 @@ class FakeApiServer {
             for (final c in spec.data) c.json: null,
         };
         if ((spec.name == 'user_story_progress' ||
-                spec.name == 'user_book_progress') &&
+                spec.name == 'user_book_progress' ||
+                spec.name == 'user_grammar_progress') &&
             stored != null &&
             !deleted &&
             stored['deleted'] != true) {
@@ -385,6 +386,7 @@ class FakeApiServer {
         'pageNumber',
         'sentenceIndex',
         'positionSec',
+        'lastCard',
       ]) {
         if (high.containsKey(k)) base[k] = high[k];
       }

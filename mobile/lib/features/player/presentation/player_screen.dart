@@ -16,6 +16,8 @@ import '../../../shared/meaning/meaning_text.dart';
 import '../../../shared/meaning/notebook_repository.dart';
 import '../../../shared/speech/speech_providers.dart';
 import '../../speak/speak_env.dart';
+import '../../grammar/application/grammar_providers.dart';
+import '../../grammar/presentation/grammar_lesson_screen.dart';
 import '../../hi/application/hi_providers.dart';
 import '../../hi/presentation/hi_cards.dart';
 import '../../notebook/application/deck_sync.dart';
@@ -238,9 +240,18 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen>
           context,
           m,
           speak: ref.read(speechVisibleProvider) ? speakEnvOf(context) : null,
-        ).whenComplete(() {
+          structures: meaningStructures(
+            ref,
+            _session.episode?.info.grammarTopics ?? const [],
+          ),
+        ).then((topic) async {
           if (identical(_shownMeaning, m)) _shownMeaning = null;
-          unawaited(_session.closeMeaning());
+          await _session.closeMeaning();
+          // "Bu yapı ne?" (H-078): video durur, ders açılır.
+          if (topic == null || !mounted) return;
+          await _session.onBackground();
+          if (!mounted) return;
+          await playGrammarLessons(context, ref, [topic]);
         });
       });
     } else if (m == null && _shownMeaning != null) {
@@ -344,6 +355,10 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen>
     final s = _session;
     // "Söyle" durumu erkenden yüklensin (anlam paneli açılırken hazır olsun).
     ref.watch(speechVisibleProvider);
+    // "Bu yapı ne?" için ders listesi (H-078; bölümde konu varsa).
+    if (s.episode?.info.grammarTopics.isNotEmpty ?? false) {
+      ref.watch(grammarLessonsOrEmptyProvider);
+    }
     return PopScope(
       canPop: s.phase != PlayerPhase.playing,
       onPopInvokedWithResult: (didPop, _) {

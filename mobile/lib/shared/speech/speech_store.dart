@@ -15,7 +15,10 @@ enum SpeechPlace {
   decision('decision'),
 
   /// Bölüm sonunda "Hedef ifadeleri söyle".
-  episodeEnd('episode_end');
+  episodeEnd('episode_end'),
+
+  /// Dilbilgisi dersinin alıştırmasında "Söyle" (H-078).
+  grammar('grammar');
 
   const SpeechPlace(this.code);
 

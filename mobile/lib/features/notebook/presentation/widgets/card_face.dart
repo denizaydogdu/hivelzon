@@ -189,6 +189,20 @@ class CardFace extends StatelessWidget {
             ),
           ),
         ],
+        // Dilbilgisi kural kartı (H-078): kuralın kendisi.
+        if (item.ruleTr != null) ...[
+          const Divider(height: AppSpace.s24),
+          Text(NotebookTexts.ruleLabel, style: label),
+          const SizedBox(height: AppSpace.s4),
+          Text(
+            item.ruleTr!,
+            key: const ValueKey('card-face-rule'),
+            style: theme.textTheme.bodyLarge?.copyWith(
+              fontWeight: AppFonts.medium,
+              color: AppPalette.ink,
+            ),
+          ),
+        ],
         if (item.exampleEn != null && item.exampleEn != item.textEn) ...[
           const Divider(height: AppSpace.s24),
           Text(

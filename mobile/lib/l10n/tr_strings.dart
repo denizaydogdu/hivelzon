@@ -270,6 +270,128 @@ abstract final class ReaderTexts {
   static const readAgain = 'Baştan oku';
 }
 
+/// Dilbilgisi (H-078): Hikâye sekmesinde "Macera · Kitaplık · Dilbilgisi",
+/// ders kartları ve giriş noktaları (`docs/DILBILGISI.md`).
+abstract final class GrammarTexts {
+  static const segment = 'Dilbilgisi';
+  static const intro =
+      'Hi, İngilizcenin nasıl işlediğini Türkçe ve kısaca anlatır.';
+
+  // Raflar
+  static const shelfFromStory = 'Hikâyende geçenler';
+  static String shelfMine(String level) => 'Senin seviyen · $level';
+  static String shelfLevel(String level) => '$level konuları';
+  static const shelfCompleted = 'Tamamladıkların';
+  static String minutes(int m) => '~$m dk';
+  static const done = 'Tamamlandı';
+  static String cardSemantics({
+    required String title,
+    required String level,
+    int? minutes,
+    bool done = false,
+  }) => [
+    title,
+    '$level seviyesi',
+    if (minutes != null) 'yaklaşık $minutes dakika',
+    if (done) 'tamamlandı',
+  ].join(', ');
+  static const loading = 'Dersler hazırlanıyor…';
+  static const emptyTitle = 'Dersler hazırlanıyor';
+  static const emptyBody =
+      'İlk dilbilgisi dersleri hazır olunca burada görünür. O zamana kadar '
+      'maceraya devam edebilirsin.';
+  static const loadError = 'Dersler yüklenemedi.';
+
+  // Ders ekranı
+  static const close = 'Dersi kapat';
+  static const lessonLoading = 'Ders açılıyor…';
+  static const lessonError = 'Ders açılamadı.';
+  static String cardOf(int n, int total) => 'Kart $n / $total';
+  static String cardOfSemantics(int n, int total) =>
+      '$total karttan ${possessiveNumber(n)}';
+  static const previous = 'Önceki kart';
+  static const next = 'Devam et';
+  static const finish = 'Dersi bitir';
+  static const soundOn = 'Sesi kapat';
+  static const soundOff = 'Sesi aç';
+  static const noAudio =
+      'Bu dersin sesi şu an açılamıyor. Okuyarak devam edebilirsin.';
+  static const listen = 'Dinle';
+  static const stop = 'Durdur';
+  static const hiSpeaking = 'Hi anlatıyor';
+  static const hiLabel = 'Hi, yapay zekâ yardımcın';
+
+  /// Kart türünün etiketi (ekranda büyük harfle).
+  static String cardLabel(String type) => switch (type) {
+    'hook' => 'Bu cümlede',
+    'explain' => 'Anlatım',
+    'examples' => 'Örnekler',
+    'contrast' => 'Türkçede nasıl?',
+    'practice' => 'Alıştırma',
+    'seeInStory' => 'Hikâyede gör',
+    'rule' => 'Kural',
+    _ => 'Anlatım',
+  };
+  static String playExample(String en) => 'Örneği dinle: $en';
+  static const examplesHint = 'Anlamı için kelimeye dokun.';
+  static const wrongLabel = 'Sık yapılan hata';
+  static const rightLabel = 'Doğrusu';
+  static const diagramLabel = 'Şema';
+  static const timelinePast = 'geçmiş';
+  static const timelineNow = 'şimdi';
+  static const timelineFuture = 'gelecek';
+
+  // Alıştırma (puan, süre, can yok; K-32)
+  static String questionOf(int n, int total) => 'Soru $n / $total';
+  static const chooseHint = 'Boşluğa uyan kelimeyi seç.';
+  static const fillHint = 'Boşluğa uyan kelimeyi yaz.';
+  static const fillField = 'Cevabın';
+  static const check = 'Kontrol et';
+  static const orderHint = 'Kelimeleri doğru sıraya diz.';
+  static const orderAnswer = 'Senin cümlen';
+  static const orderReset = 'Baştan diz';
+  static const sayHint = 'Cümleyi dinle, sonra sen de söyle.';
+  static const sayNoSpeech = 'Cümleyi dinle, sonra sesli tekrar et.';
+  static const correct = 'Doğru!';
+  static const tryTitle = 'Bir daha bakalım.';
+  static const tryAgain = 'Tekrar dene';
+  static const skip = 'Geç';
+  static const nextQuestion = 'Sonraki soru';
+  static const practiceDone = 'Alıştırma tamam. Puan yok; denemek yeter.';
+  static String answerWas(String solved) => 'Doğrusu: $solved';
+
+  // Hikâyede gör
+  static String episodeSource(String title) => 'Bölüm: $title';
+  static String bookSource(String title, int? page) =>
+      page == null ? 'Kitap: $title' : 'Kitap: $title, s. $page';
+  static const openEpisode = 'Bölümü aç';
+  static const openBook = 'Kitapta aç';
+  static const linkLocked =
+      'Bu bölüm henüz açık değil. Önceki bölümleri bitirince buradan da '
+      'açabilirsin.';
+
+  // Kural kartı ve bitiş
+  static const addRule = 'Deftere kural kartı ekle';
+  static const ruleAdded = 'Kural kartı defterine eklendi.';
+  static const ruleExists = 'Bu kural kartı zaten defterinde.';
+  static const ruleInNotebook = 'Defterinde';
+  static const ruleNote = 'Kelime tekrarında karşına çıkar.';
+  static const ruleFailed =
+      'Şu an deftere eklenemedi. Biraz sonra tekrar dene.';
+  static const doneTitle = 'Dersi bitirdin';
+  static String doneBody(String title) =>
+      '"$title" tamam. Bu yapıyı hikâyede gördükçe daha kolay tanırsın.';
+  static String nextLesson(String title) => 'Sıradaki konu: $title';
+  static const startEpisode = 'Bölümü başlat';
+  static const openBookNow = 'Kitabı aç';
+  static const backToList = 'Dilbilgisine dön';
+
+  // Giriş noktaları
+  static String episodeOffer(int m) => 'Bu bölümdeki dilbilgisi (~$m dk)';
+  static String bookOffer(int m) => 'Bu kitaptaki dilbilgisi (~$m dk)';
+  static String offerTopics(List<String> titles) => titles.join(' · ');
+}
+
 /// Sezon jeneriği (H-049, H-050; metinler H-060'ta buraya taşındı).
 abstract final class SeasonIntroTexts {
   static String semantics(int season, String? title) =>
@@ -329,6 +451,10 @@ abstract final class NotebookTexts {
   static String sourceBook(String title, int? page) =>
       page == null ? 'Kitap: $title' : 'Kitap: $title, s. $page';
   static const sourceBookUnknown = 'Kitaptan';
+
+  /// Dilbilgisi kural kartı (H-078): "Dilbilgisi: Üçüncü tekil -s".
+  static String sourceGrammar(String title) => 'Dilbilgisi: $title';
+  static const ruleLabel = 'KURAL';
 
   /// Kaynağa göre süzme (H-067; kitaptan eklenen ifade varsa görünür).
   static const filterLabel = 'Kaynağa göre süz';
@@ -681,6 +807,8 @@ abstract final class PlayerTexts {
 /// Anlam paneli (H-046; oynatıcı, Keşfet ve kitap okuyucu ortak). H-062'de
 /// buraya taşındı.
 abstract final class MeaningTexts {
+  /// H-078: içeriğin dilbilgisi konuları ("Bu yapı ne?").
+  static const structureLabel = 'Bu yapı ne?';
   static const title = 'Anlam';
   static const close = CommonTexts.close;
   static const closeSemantics = 'Paneli kapat';
@@ -797,6 +925,16 @@ abstract final class HiTexts {
       'Bugünkü işlerin bitti. İstersen $level seviyesinde kısa bir kitabı '
       'dinleyerek kulağını çalıştır.${_minutes(est, goal)}';
   static const startBookAction = 'Dinlemeye başla';
+
+  // i) dilbilgisi (H-078): oynanan bölümde ya da okunan kitapta geçen,
+  // bitirilmemiş konu.
+  static String grammarTitle(String title) => 'Kısa bir konu: $title';
+  static String grammarReason(String source, int? est, int goal) =>
+      '$source bu yapı geçti. İstersen Türkçe ve kısaca anlatayım.'
+      '${_minutes(est, goal)}';
+  static String grammarSourceEpisode(String title) => '"$title" bölümünde';
+  static String grammarSourceBook(String title) => '"$title" kitabında';
+  static const grammarAction = 'Konuyu aç';
 
   // f) dinlenme
   static const restTitle = 'Bugünlük bu kadar yeter';

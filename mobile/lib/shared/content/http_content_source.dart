@@ -3,6 +3,7 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 
+import '../../features/grammar/domain/grammar_lesson.dart';
 import '../../features/hi/domain/hi_content.dart';
 import '../../features/library/domain/book.dart';
 import '../../features/player/domain/episode.dart';
@@ -137,6 +138,43 @@ class HttpContentSource implements ContentSource {
       return Book.fromJson(book.cast(), pages.cast());
     } on Object catch (e) {
       throw ContentUnavailableException('Bozuk kitap paketi', cause: e);
+    }
+  }
+
+  Uri _grammarUri(List<String> segments) =>
+      _base.resolveUri(Uri(pathSegments: ['grammar', ...segments]));
+
+  @override
+  Uri grammarMediaUri(String lessonId, String path) =>
+      _grammarUri([lessonId, ...path.split('/')]);
+
+  @override
+  Future<List<GrammarLessonSummary>> loadGrammarIndex() async {
+    final json = await _getJson(_grammarUri(['index.json']));
+    final list = (json is Map ? json['lessons'] : null) as List? ?? const [];
+    try {
+      return [
+        for (final l in list) GrammarLessonSummary.fromJson((l as Map).cast()),
+      ];
+    } on Object catch (e) {
+      throw ContentUnavailableException('Bozuk ders listesi', cause: e);
+    }
+  }
+
+  @override
+  Future<GrammarLesson> loadLesson(String lessonId) async {
+    final results = await Future.wait([
+      _getJson(grammarMediaUri(lessonId, 'lesson.json')),
+      _getJson(grammarMediaUri(lessonId, 'cards.json')),
+    ]);
+    final (lesson, cards) = (results[0], results[1]);
+    if (lesson is! Map || cards is! Map) {
+      throw ContentUnavailableException('Bozuk ders paketi');
+    }
+    try {
+      return GrammarLesson.fromJson(lesson.cast(), cards.cast());
+    } on Object catch (e) {
+      throw ContentUnavailableException('Bozuk ders paketi', cause: e);
     }
   }
 
