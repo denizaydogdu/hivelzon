@@ -42,6 +42,13 @@ import tr.velzon.hivelzon.common.web.ErrorCode;
 @Configuration(proxyBeanMethods = false)
 public class SecurityConfig {
 
+    /**
+     * Bütün cevaplarda: yalnızca aynı kökten betik, stil ve bağlantı; satır içi betik yok; çerçeveleme yok. JSON
+     * uçları için zararsız, editör ekranı için XSS savunmasının ikinci katmanı (ekran veriyi textContent ile yazar).
+     */
+    static final String CONTENT_SECURITY_POLICY = "default-src 'none'; script-src 'self'; style-src 'self'; "
+            + "img-src 'self'; connect-src 'self'; form-action 'self'; frame-ancestors 'none'; base-uri 'none'";
+
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http, JwtAuthenticationConverter converter,
             @Qualifier("handlerExceptionResolver") HandlerExceptionResolver resolver) throws Exception {
@@ -57,8 +64,17 @@ public class SecurityConfig {
                 .logout(l -> l.disable())
                 .requestCache(r -> r.disable())
                 .sessionManagement(s -> s.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                // Editör ekranı (H-041) aynı kökten statik dosya; satır içi betik/stil yok, çerçevelenemez.
+                .headers(h -> h
+                        .contentSecurityPolicy(c -> c.policyDirectives(CONTENT_SECURITY_POLICY))
+                        .referrerPolicy(r -> r.policy(
+                                org.springframework.security.web.header.writers.ReferrerPolicyHeaderWriter
+                                        .ReferrerPolicy.NO_REFERRER)))
                 .authorizeHttpRequests(a -> a
                         .requestMatchers(HttpMethod.GET, "/actuator/health", "/actuator/health/**").permitAll()
+                        // Editör ekranının kabuğu (veri içermez); veriler /api/v1/admin/** üzerinden rol ister.
+                        .requestMatchers(HttpMethod.GET, "/admin", "/admin/", "/admin/index.html", "/admin/admin.js",
+                                "/admin/admin.css").permitAll()
                         .requestMatchers(HttpMethod.POST, "/api/v1/auth/**").permitAll()
                         // Katalog açık: misafir ve hesapsız (13 yaş altı) kullanıcılar da içerik görür (H-009, H-002).
                         .requestMatchers(HttpMethod.GET, "/api/v1/catalog/**").permitAll()

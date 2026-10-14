@@ -88,3 +88,17 @@ def test_real_episodes_pass_lint_from_kurgu():
         rep = lint_episode(d, graph_source="kurgu")
         assert rep.errors == [], (d.name, [str(i) for i in rep.errors])
         assert rep.graph and rep.graph["decisions"] <= 4
+
+
+def test_write_reports_creates_per_episode_summary(tmp_path):
+    import shutil
+    shutil.copytree(FX, tmp_path / "fx")  # bölümler kardeş hizalama dosyalarına bakar
+    good = tmp_path / "fx" / "ep-good"
+    broken = tmp_path / "fx" / "ep-broken"
+    assert content_lint.main([str(good), str(broken), "--write-reports", "--no-chain"]) == 1
+    ok = json.loads((good / "_build" / "lint.json").read_text(encoding="utf-8"))
+    bad = json.loads((broken / "_build" / "lint.json").read_text(encoding="utf-8"))
+    assert ok["tool"] == "content-lint" and ok["errors"] == [] and ok["generatedAt"].endswith("Z")
+    assert ok["contentId"] and isinstance(ok["warnings"], list)
+    assert len(bad["errors"]) > 0
+    assert not list(good.glob("_build/*.tmp"))

@@ -112,7 +112,7 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 | 1.6' | H-056 | Eşitleme ince ayarı (bitti kazanır, 30 sn hoşgörü, çıkışlı silme, sekme yenileme) | Yüksek | H-038 | ✅ |
 | 1.7 | H-039 | Onboarding ve yerleştirme | Orta | H-038 | ⏳ |
 | 1.8 | H-040 | Keşfet akışı | Orta | H-038 | ⏳ |
-| 1.9 | H-041 | Editör onay ekranı, içerik içe aktarma | Orta | H-038 | ⏳ |
+| 1.9 | H-041 | Editör onay ekranı, içerik içe aktarma | Orta | H-038 | ✅ |
 | 1.10 | H-042 | Profil, ayarlar, hukuki metinler | Orta | H-038 | ⏳ |
 | 1.11 | H-043 | Kalite ve iç beta hazırlığı | Orta | H-039 … H-042 | ⏳ |
 | — | H-045 | Arayüz tasarım yönü (6 ekran taslağı, 6 kr) | Orta | H-033 | ✅ |
@@ -141,6 +141,7 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 | İş | Başlık | Bitiş | Doğrulama |
 |---|---|---|---|
 | H-057 | Tasarım sistemi v2 | 2026-10-14 | Nunito + Inter (gömülü, OFL, Türkçe glif testli), belirteçler, `shared/ui` bileşenleri, flutter_animate, /tasarim vitrini, golden + erişilebilirlik testleri; sabit renk 31 → 10; flutter test 439 → 463 (H-059 ile) |
+| H-041 | Editör onay ekranı ve içerik içe aktarma | 2026-10-14 | Durum veritabanında (içe aktarma dokunmaz), lint özeti (`--write-reports`), 6 geçiş + kontrol listesi + iyimser kilit + denetim kaydı, `/admin` Türkçe ekran; zamanlanmış içerik tam zamanında görünür; mvn verify 121/121, pytest 112 geçti; gerçek B1–B4 paketleriyle ayrı veritabanında curl denemesi |
 | H-056 | Eşitleme ince ayarı | 2026-10-14 | "Bitti" kazanır (sunucu + telefon), yenilemede 30 sn hoşgörü, çıkışlı Hi silme girişte işlenir, sekme yenileme hatası giderildi; flutter test 404/404, mvn verify 110/110 |
 | H-038 | Telefon ↔ sunucu, isteğe bağlı hesap | 2026-10-13 | E-posta koduyla hesap, ilk aktarım, iki yönlü eşitleme, Hi silme her cihazda; hesapsız trafik yok; simülatörde iki cihaz denemesi; flutter test 389/389, mvn verify 97/97 |
 | H-037 | Backend çekirdeği | 2026-10-13 | Kimlik (e-posta kodu, oturum, rıza, denetim, 30 gün silme) + katalog (ETag) + eşitleme (idempotent, LWW, transkript reddi) + FSRS Java (159/159); mvn verify 94/94; uçtan uca curl denemeleri |
@@ -326,3 +327,4 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
   - Kullanıcı isteği: sayfaların tasarımını gözden geçiren fazlı iş (Profil "iç içe, düz yazı gibi"; daha hareketli, şekilli, çekici). Plan modunda planlandı ve onaylandı. Kararlar: ~8 kr, başlık yazı tipi yuvarlak + metin Inter (gömülü), yalnız açık tema, önce tasarım sistemi + Profil. H-057 … H-064 açıldı (Adım 6).
   - H-057 kodu bitti (439 test). H-058: 16 görsel üretildi (8 kr), onay bekliyor. H-059 başladı.
   - H-057 bitti; H-058 (16 görsel, 8 kr) ve H-059 (Profil, Hesap, Hi gizlilik, hukuk) kodu bitti, tasarım onayı bekliyor. Commit + push (kalıcı onay).
+  - H-041 ayrı dalda (`h-041-editor-onay`) paralel yapıldı ve bitti: onay durumu veritabanında, `/admin` editör ekranı, V7. Not: V7, yerel veritabanında H-037 içe aktarmasının `PUBLISHED` yazdığı B1/B2'yi `IN_REVIEW`'e çeker; birleştirmeden sonra açık katalog, editör ekranından onaylanana kadar boş görünür.

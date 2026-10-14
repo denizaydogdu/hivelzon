@@ -29,20 +29,20 @@ import tr.velzon.hivelzon.common.web.ApiException;
 import tr.velzon.hivelzon.common.web.ErrorCode;
 
 /**
- * Geliştirme içe aktarması (K-12: içerik kod olarak yönetilir → içe aktarma). Yapılandırılan içerik kökünden
- * okur; istekten yol almaz.
+ * Geliştirme içe aktarması (K-12: içerik kod olarak yönetilir → content-lint → içe aktarma). Yapılandırılan
+ * içerik kökünden okur; istekten yol almaz.
  * <ul>
  * <li>Bölüm: {@code <kök>/<id>-<slug>/_build/package/manifest.json} + {@code scenes.json} ({@code episode}) +
- * bölüm klasöründeki {@code content.json} ve varsa {@code ceviri.tr.json}.</li>
+ * bölüm klasöründeki {@code content.json}, varsa {@code ceviri.tr.json} ve {@code _build/lint.json}.</li>
  * <li>Sezon: {@code <kök>/_evren/_build/season/S<n>/season.json}.</li>
  * </ul>
  * (content_id, content_version) ile idempotent: aynı paket ikinci kez içe aktarılınca satır değişmez.
  *
- * <p><b>Durum eşlemesi</b> (editör onay ekranı H-041 gelene kadar): {@code content.json → status} K-05
- * değerlerinden biriyse o alınır, değilse DRAFT. APPROVED / SCHEDULED / PUBLISHED yalnızca onay kanıtı varsa
- * kabul edilir: {@code humanReviewed: true} <b>ve</b> {@code ceviri.tr.json} varsa onun {@code status: APPROVED}
- * olması. Kanıt yoksa DRAFT'a düşer (rapora yazılır). Çevirinin tek başına onaylı olması bölümü onaylamaz.
- * SCHEDULED için {@code publishAt} zorunludur (yoksa DRAFT).
+ * <p><b>Durum veritabanındadır (H-041).</b> İçe aktarma durumu ve yayın zamanını hiç yazmaz;
+ * {@code content.json → status/publishAt} yok sayılır (AI'ın yayın yetkisi yok, K-05). Yeni sürüm lint temizse
+ * {@code IN_REVIEW}, değilse {@code DRAFT} başlar. {@code DRAFT}/{@code IN_REVIEW} sürümde yeniden içe aktarma
+ * yalnızca paket bilgisini ve lint özetini günceller; onaylanmış ya da kapanmış sürüm donmuştur (paket değiştiyse
+ * {@code SKIPPED}: yeni sürüm gerekir). Geçişler {@link EditorialService}'tedir.
  */
 @Service
 public class CatalogImportService {
@@ -52,7 +52,7 @@ public class CatalogImportService {
     private static final Pattern SEASON_DIR = Pattern.compile("^S(\\d{1,3})$");
 
     public record ItemResult(String contentId, Integer contentVersion, String result, String status,
-            List<String> notes) {
+            Integer lintErrors, Integer lintWarnings, List<String> notes) {
     }
 
     public record SeasonResult(int season, String result) {
@@ -60,6 +60,10 @@ public class CatalogImportService {
 
     public record ImportReport(int created, int updated, int unchanged, int skipped, List<ItemResult> items,
             List<SeasonResult> seasons) {
+    }
+
+    /** content-lint özeti: hata ve uyarı sayısı, raporun zamanı. */
+    record Lint(int errors, int warnings, Instant checkedAt) {
     }
 
     private final JdbcTemplate jdbc;
@@ -139,7 +143,7 @@ public class CatalogImportService {
             int version = manifest.path("contentVersion").asInt(0);
             if (contentId == null || !contentId.equals(folderId) || !contentId.equals(episode.path("id").asString(null))
                     || version < 1 || version != episode.path("contentVersion").asInt(-1)) {
-                return new ItemResult(folderId, version > 0 ? version : null, "SKIPPED", null,
+                return new ItemResult(folderId, version > 0 ? version : null, "SKIPPED", null, null, null,
                         List.of("manifest, scenes.json ve klasör adı tutarsız (contentId/contentVersion)"));
             }
             if (content != null && content.has("version") && content.path("version").asInt() != version) {
@@ -150,18 +154,18 @@ public class CatalogImportService {
             int number = episode.path("number").asInt(-1);
             String title = episode.path("title").asString("");
             if (season < 1 || number < 0 || title.isBlank() || !level.matches("A1|A2|B1|B2|C1")) {
-                return new ItemResult(contentId, version, "SKIPPED", null, List.of("scenes.json episode alanları eksik"));
+                return new ItemResult(contentId, version, "SKIPPED", null, null, null,
+                        List.of("scenes.json episode alanları eksik"));
             }
-
-            Instant publishAt = null;
-            if (content != null && content.hasNonNull("publishAt")) {
-                try {
-                    publishAt = OffsetDateTime.parse(content.path("publishAt").asString()).toInstant();
-                } catch (DateTimeParseException e) {
-                    notes.add("publishAt okunamadı (ISO-8601 ve saat dilimi gerekir)");
-                }
+            if (content != null && content.hasNonNull("status")
+                    && !"DRAFT".equalsIgnoreCase(content.path("status").asString(""))) {
+                notes.add("content.json durumu yok sayıldı: onay durumu veritabanında, editör ekranından değişir");
             }
-            ContentStatus status = mapStatus(dir, content, publishAt, notes);
+            Lint lint = readLint(dir, pkg, contentId, notes);
+            Integer lintErrors = lint == null ? null : lint.errors();
+            Integer lintWarnings = lint == null ? null : lint.warnings();
+            OffsetDateTime lintAt = lint == null ? null : utc(lint.checkedAt());
+            String translationStatus = readTranslationStatus(dir);
 
             String sha = HexFormat.of().formatHex(java.security.MessageDigest.getInstance("SHA-256").digest(manifestBytes));
             Long totalBytes = manifest.hasNonNull("totalBytes") ? manifest.path("totalBytes").asLong() : null;
@@ -170,70 +174,127 @@ public class CatalogImportService {
                     : content != null && content.hasNonNull("estimatedMinutes") ? content.path("estimatedMinutes").asInt() : null;
             String slug = episode.path("slug").asString(null);
 
-            List<Boolean> rows = jdbc.query("""
-                    INSERT INTO content_items (content_id, content_version, slug, season, number, level, title, status,
-                        publish_at, package_base_path, manifest_sha256, total_bytes, rendition_bytes, estimated_minutes,
-                        imported_at, updated_at)
-                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?::jsonb, ?, ?, ?)
-                    ON CONFLICT (content_id, content_version) DO UPDATE SET
-                        slug = EXCLUDED.slug, season = EXCLUDED.season, number = EXCLUDED.number,
-                        level = EXCLUDED.level, title = EXCLUDED.title, status = EXCLUDED.status,
-                        publish_at = EXCLUDED.publish_at, package_base_path = EXCLUDED.package_base_path,
-                        manifest_sha256 = EXCLUDED.manifest_sha256, total_bytes = EXCLUDED.total_bytes,
-                        rendition_bytes = EXCLUDED.rendition_bytes, estimated_minutes = EXCLUDED.estimated_minutes,
-                        imported_at = EXCLUDED.imported_at, updated_at = EXCLUDED.updated_at
-                    WHERE (content_items.slug, content_items.season, content_items.number, content_items.level,
-                           content_items.title, content_items.status, content_items.publish_at,
-                           content_items.package_base_path, content_items.manifest_sha256, content_items.total_bytes,
-                           content_items.rendition_bytes, content_items.estimated_minutes)
-                          IS DISTINCT FROM
-                          (EXCLUDED.slug, EXCLUDED.season, EXCLUDED.number, EXCLUDED.level, EXCLUDED.title,
-                           EXCLUDED.status, EXCLUDED.publish_at, EXCLUDED.package_base_path, EXCLUDED.manifest_sha256,
-                           EXCLUDED.total_bytes, EXCLUDED.rendition_bytes, EXCLUDED.estimated_minutes)
-                    RETURNING (xmax = 0) AS inserted""",
-                    (rs, i) -> rs.getBoolean(1),
-                    contentId, version, slug, season, number, level, title, status.name(), utc(publishAt), contentId,
-                    sha, totalBytes, renditionBytes, minutes, utc(now), utc(now));
-            String result = rows.isEmpty() ? "UNCHANGED" : rows.get(0) ? "CREATED" : "UPDATED";
-            return new ItemResult(contentId, version, result, status.name(), notes);
+            List<String[]> existing = jdbc.query(
+                    "SELECT status, manifest_sha256 FROM content_items WHERE content_id = ? AND content_version = ? FOR UPDATE",
+                    (rs, i) -> new String[] {rs.getString(1), rs.getString(2)}, contentId, version);
+            if (existing.isEmpty()) {
+                // Yeni sürüm: lint temizse doğrudan incelemeye, değilse taslak. Asla onaylı başlamaz (K-05).
+                ContentStatus initial = lintErrors != null && lintErrors == 0 ? ContentStatus.IN_REVIEW : ContentStatus.DRAFT;
+                int inserted = jdbc.update("""
+                        INSERT INTO content_items (content_id, content_version, slug, season, number, level, title, status,
+                            package_base_path, manifest_sha256, total_bytes, rendition_bytes, estimated_minutes,
+                            lint_errors, lint_warnings, lint_checked_at, translation_status, imported_at, updated_at,
+                            status_changed_at)
+                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?::jsonb, ?, ?, ?, ?, ?, ?, ?, ?)
+                        ON CONFLICT (content_id, content_version) DO NOTHING""",
+                        contentId, version, slug, season, number, level, title, initial.name(), contentId, sha,
+                        totalBytes, renditionBytes, minutes, lintErrors, lintWarnings, lintAt, translationStatus,
+                        utc(now), utc(now), utc(now));
+                if (inserted == 1) {
+                    return new ItemResult(contentId, version, "CREATED", initial.name(), lintErrors, lintWarnings, notes);
+                }
+                notes.add("eşzamanlı içe aktarma: satır başka işlemde oluştu");
+                return new ItemResult(contentId, version, "SKIPPED", null, lintErrors, lintWarnings, notes);
+            }
+            ContentStatus current = ContentStatus.valueOf(existing.get(0)[0]);
+            if (!current.isEditable()) {
+                // Onaylanmış (ya da kapanmış) sürüm donmuştur: paket ve lint özeti değişmez.
+                if (sha.equals(existing.get(0)[1])) {
+                    return new ItemResult(contentId, version, "UNCHANGED", current.name(), lintErrors, lintWarnings,
+                            notes);
+                }
+                notes.add(current + " sürümün paketi değişmiş: onaydan sonra paket değişmez, contentVersion artırılmalı");
+                return new ItemResult(contentId, version, "SKIPPED", current.name(), lintErrors, lintWarnings, notes);
+            }
+            // DRAFT / IN_REVIEW: yalnızca paket bilgisi ve lint özeti güncellenir; durum ve yayın zamanı korunur.
+            int updated = jdbc.update("""
+                    UPDATE content_items SET slug = ?, season = ?, number = ?, level = ?, title = ?,
+                        package_base_path = ?, manifest_sha256 = ?, total_bytes = ?, rendition_bytes = ?::jsonb,
+                        estimated_minutes = ?, lint_errors = ?, lint_warnings = ?, lint_checked_at = ?,
+                        translation_status = ?, imported_at = ?, updated_at = ?
+                     WHERE content_id = ? AND content_version = ?
+                       AND (slug, season, number, level, title, package_base_path, manifest_sha256, total_bytes,
+                            rendition_bytes, estimated_minutes, lint_errors, lint_warnings, lint_checked_at,
+                            translation_status)
+                           IS DISTINCT FROM
+                           (?::varchar, ?::integer, ?::integer, ?::varchar, ?::varchar, ?::varchar, ?::varchar,
+                            ?::bigint, ?::jsonb, ?::integer, ?::integer, ?::integer, ?::timestamptz, ?::varchar)""",
+                    slug, season, number, level, title, contentId, sha, totalBytes, renditionBytes, minutes,
+                    lintErrors, lintWarnings, lintAt, translationStatus, utc(now), utc(now),
+                    contentId, version,
+                    slug, season, number, level, title, contentId, sha, totalBytes, renditionBytes, minutes,
+                    lintErrors, lintWarnings, lintAt, translationStatus);
+            return new ItemResult(contentId, version, updated == 1 ? "UPDATED" : "UNCHANGED", current.name(),
+                    lintErrors, lintWarnings, notes);
         } catch (IOException | RuntimeException | java.security.NoSuchAlgorithmException e) {
             if (e instanceof org.springframework.dao.DataAccessException dae) {
                 throw dae;
             }
             log.warn("Bölüm paketi okunamadı: {} ({})", folderId, e.getClass().getSimpleName());
-            return new ItemResult(folderId, null, "SKIPPED", null, List.of("paket dosyaları okunamadı"));
+            return new ItemResult(folderId, null, "SKIPPED", null, null, null, List.of("paket dosyaları okunamadı"));
         }
     }
 
-    private ContentStatus mapStatus(Path dir, JsonNode content, Instant publishAt, List<String> notes) throws IOException {
-        if (content == null) {
-            notes.add("content.json yok: DRAFT");
-            return ContentStatus.DRAFT;
+    /**
+     * {@code <bölüm>/_build/lint.json}: {@code content_lint.py --write-reports} çıktısı (tek bölüm:
+     * {@code contentId}, {@code errors[]}, {@code warnings[]}, {@code generatedAt}) ya da {@code --json} raporu
+     * ({@code episodes[]} içinden bu bölüm). Rapor yoksa, okunamıyorsa ya da paketten eskiyse {@code null}: onay
+     * verilemez. Sunucu Python çalıştırmaz; rapor içerik hattında üretilir.
+     */
+    private Lint readLint(Path dir, Path pkg, String contentId, List<String> notes) {
+        Path file = dir.resolve("_build").resolve("lint.json");
+        if (!Files.isRegularFile(file)) {
+            notes.add("lint raporu yok (_build/lint.json): content_lint.py --write-reports çalıştırılmalı");
+            return null;
         }
-        String raw = content.path("status").asString("DRAFT").toUpperCase(Locale.ROOT);
-        ContentStatus status;
         try {
-            status = ContentStatus.valueOf(raw);
-        } catch (IllegalArgumentException e) {
-            notes.add("bilinmeyen durum '" + raw + "': DRAFT");
-            return ContentStatus.DRAFT;
+            Instant lintTime = Files.getLastModifiedTime(file).toInstant();
+            Instant packageTime = Files.getLastModifiedTime(pkg.resolve("manifest.json")).toInstant();
+            if (lintTime.isBefore(packageTime)) {
+                notes.add("lint raporu paketten eski: content-lint yeniden çalıştırılmalı");
+                return null;
+            }
+            JsonNode doc = json.readTree(Files.readAllBytes(file));
+            JsonNode entry = null;
+            if (doc.has("episodes")) {
+                for (JsonNode e : doc.path("episodes")) {
+                    if (contentId.equals(e.path("contentId").asString(null))) {
+                        entry = e;
+                    }
+                }
+            } else if (contentId.equals(doc.path("contentId").asString(null))) {
+                entry = doc;
+            }
+            if (entry == null || !entry.path("errors").isArray() || !entry.path("warnings").isArray()) {
+                notes.add("lint raporu bu bölüme ait değil ya da biçimi bozuk");
+                return null;
+            }
+            Instant checkedAt = lintTime;
+            if (doc.hasNonNull("generatedAt")) {
+                try {
+                    checkedAt = OffsetDateTime.parse(doc.path("generatedAt").asString()).toInstant();
+                } catch (DateTimeParseException ignored) {
+                    // dosya zamanı kullanılır
+                }
+            }
+            return new Lint(entry.path("errors").size(), entry.path("warnings").size(), checkedAt);
+        } catch (IOException | RuntimeException e) {
+            notes.add("lint raporu okunamadı");
+            return null;
         }
-        if (!status.requiresApproval()) {
-            return status;
-        }
-        boolean humanReviewed = content.path("humanReviewed").asBoolean(false);
+    }
+
+    private String readTranslationStatus(Path dir) {
         Path ceviri = dir.resolve("ceviri.tr.json");
-        boolean translationOk = !Files.isRegularFile(ceviri)
-                || "APPROVED".equals(json.readTree(Files.readAllBytes(ceviri)).path("status").asString(""));
-        if (!humanReviewed || !translationOk) {
-            notes.add(status + " için onay kanıtı yok (humanReviewed ve çeviri onayı gerekir): DRAFT");
-            return ContentStatus.DRAFT;
+        if (!Files.isRegularFile(ceviri)) {
+            return null;
         }
-        if (status == ContentStatus.SCHEDULED && publishAt == null) {
-            notes.add("SCHEDULED için publishAt gerekir: DRAFT");
-            return ContentStatus.DRAFT;
+        try {
+            String s = json.readTree(Files.readAllBytes(ceviri)).path("status").asString("").toUpperCase(Locale.ROOT);
+            return s.matches("[A-Z_]{1,16}") ? s : "UNKNOWN";
+        } catch (IOException | RuntimeException e) {
+            return "UNKNOWN";
         }
-        return status;
     }
 
     private SeasonResult importSeason(Path dir, Instant now) throws IOException {

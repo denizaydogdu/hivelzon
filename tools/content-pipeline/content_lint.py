@@ -5,6 +5,7 @@ Kullanım:
     python3 tools/content-pipeline/content_lint.py icerik/A1-0*
     python3 tools/content-pipeline/content_lint.py icerik/A1-001-* --json
     python3 tools/content-pipeline/content_lint.py icerik/A1-001-* --graph-source kurgu
+    python3 tools/content-pipeline/content_lint.py icerik/A1-0* --write-reports   # _build/lint.json (H-041)
 
 Çıkış kodu: 0 = hata yok (uyarı olabilir), 1 = en az bir hata, 2 = kullanım hatası.
 """
@@ -23,6 +24,36 @@ from hvpipeline.hi import has_hi_sources, lint_hi  # noqa: E402
 from hvpipeline.sets import lint_sets, sets_dir  # noqa: E402
 
 
+def write_reports(reports, chain) -> list[Path]:
+    """Bölüm başına lint özeti: <bölüm>/_build/lint.json (H-041).
+
+    Backend içe aktarması hata/uyarı sayısını buradan alır; rapor paketten (manifest.json) eskiyse yok sayılır.
+    Zincir (bölümler arası) bulguları, mesajında bölümün kimliği geçiyorsa o bölüme eklenir. Atomik yazılır.
+    """
+    from datetime import datetime, timezone
+    import os
+
+    now = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    written = []
+    for r in reports:
+        cid = r.content_id or ""
+        mine = [i for i in chain if cid and cid in str(i)]
+        doc = {
+            "tool": "content-lint", "schemaVersion": 1, "contentId": r.content_id, "level": r.level,
+            "generatedAt": now,
+            "errors": [str(i) for i in r.errors] + [str(i) for i in mine if i.level == "error"],
+            "warnings": [str(i) for i in r.warnings] + [str(i) for i in mine if i.level != "error"],
+            "coverage": r.coverage,
+        }
+        out = r.path / "_build" / "lint.json"
+        out.parent.mkdir(parents=True, exist_ok=True)
+        tmp = out.with_suffix(".json.tmp")
+        tmp.write_text(json.dumps(doc, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        os.replace(tmp, out)
+        written.append(out)
+    return written
+
+
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description="hiVelzon content-lint (CEFR kapsama, bağ alanları, scenes grafiği)")
     ap.add_argument("episodes", nargs="+", help="bölüm klasörleri (icerik/A1-001-...)")
@@ -32,6 +63,8 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--no-chain", action="store_true", help="bölümler arası zincir denetimini atla")
     ap.add_argument("--no-sets", action="store_true", help="konu seti denetimini atla (H-051)")
     ap.add_argument("--no-hi", action="store_true", help="Hi-A verisi denetimini atla (H-048)")
+    ap.add_argument("--write-reports", action="store_true",
+                    help="her bölüm için <bölüm>/_build/lint.json yaz (backend içe aktarması okur, H-041)")
     a = ap.parse_args(argv)
 
     dirs = [Path(p) for p in a.episodes if Path(p).is_dir() and not Path(p).name.startswith("_")]
@@ -65,6 +98,8 @@ def main(argv: list[str] | None = None) -> int:
     n_err = (sum(len(r.errors) for r in reports) + sum(1 for i in chain if i.level == "error")
              + sum(1 for _, iss, _ in sets for i in iss if i.level == "error")
              + sum(1 for _, iss in hi for i in iss if i.level == "error"))
+    if a.write_reports:
+        write_reports(reports, chain)
     if a.json:
         print(json.dumps({"episodes": [r.to_dict() for r in reports], "chain": [str(i) for i in chain],
                           "sets": [{"id": sid, **rep, "errors": [str(i) for i in iss if i.level == "error"],
