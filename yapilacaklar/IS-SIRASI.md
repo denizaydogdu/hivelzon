@@ -157,7 +157,7 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 | D2 | H-078 | Dilbilgisi ekranı (Hikâye'de 3. bölüm, bölüm panelinde teklif) | Yüksek | H-077 | ✅ |
 | D3 | H-079 | Pilot: 3 A1 konusu | Yüksek | H-076…H-078 | ✅ |
 | D4 | H-080 | Dalga 1: A1 + A2 | Orta | H-079 | 🔄 |
-| D5 | H-081 | Dalga 2: B1 + B2 | Orta | H-080 | ⏳ |
+| D5 | H-081 | Dalga 2: B1 + B2 | Orta | H-080 | 🔄 |
 | D6 | H-082 | Dalga 3: C1 + C2 | Orta | H-081 | ⏳ |
 | D0' | H-083 | Türkçe seslerin Alania'ya geçişi (Hi, Alex, babaanne, ipucu kartları, Hi paneli) | Yüksek | H-075 | 🔄 |
 
@@ -405,3 +405,4 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
   - Kullanıcı H-078 ve H-079'u onayladı. H-080 (dilbilgisi dalga 1: kalan 28 A1–A2 konusu) başladı; Türkçe sesler kampanyada ücretsiz.
   - H-083: 44 Türkçe klip Alania'ya geçti (Hi f1, Alex nisa, babaanne selin, anlatıcı m1; İngilizce ifadeler Sarah); Hi paneline "Hi'yi dinle". (a)/(b) örnekleri `.yerel/h083/`. flutter 799, pytest 223.
   - H-080: A1 13 + A2 15 ders yazıldı ve Türkçe sesleri üretildi; toplam 31 ders lint 0 hata. Bölüm/kitap `grammarTopics` dolduruldu (en fazla 3, aynı/alt seviye). İngilizce örnek sesleri ~9.250 karakter bekliyor.
+  - H-081: B1 14 + B2 12 ders yazıldı, Türkçe sesleri üretildi; toplam 57 ders lint 0 hata. Kalan: C1–C2 (14 ders, H-082). İngilizce örnek sesleri toplam ~20.300 karakter bekliyor.
