@@ -315,6 +315,29 @@ class UserBookProgress extends Table {
   Set<Column<Object>> get primaryKey => {bookId};
 }
 
+// ---------------------------------------------------------------- Dilbilgisi (H-078, şema 7)
+
+/// Dilbilgisi dersi başına ilerleme (`docs/DILBILGISI.md` §7): görüldü
+/// (`IN_PROGRESS`) ya da bitti (`COMPLETED`). Hesap varsa eşitlenir; "bitti"
+/// kazanır (H-056 kuralı), öteki alanlarda son yazan kazanır.
+class UserGrammarProgress extends Table {
+  /// Ders kimliği (`G-A1-03-third-person-s`).
+  TextColumn get lessonId => text()();
+
+  /// `NOT_STARTED` | `IN_PROGRESS` | `COMPLETED`
+  TextColumn get status => text().withDefault(const Constant('NOT_STARTED'))();
+
+  /// Kalınan kart (`c03`).
+  TextColumn get lastCard => text().nullable()();
+
+  DateTimeColumn get startedAt => dateTime().nullable()();
+  DateTimeColumn get completedAt => dateTime().nullable()();
+  DateTimeColumn get updatedAt => dateTime()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {lessonId};
+}
+
 // ---------------------------------------------------------------- eşitleme (H-038, şema 5)
 
 /// Hesap ve eşitleme durumu (tek satır, `id = 1`). Hesap yoksa
@@ -407,6 +430,7 @@ class SyncOutbox extends Table {
     SyncState,
     SyncOutbox,
     UserBookProgress,
+    UserGrammarProgress,
   ],
 )
 class AppDatabase extends _$AppDatabase {
@@ -427,7 +451,7 @@ class AppDatabase extends _$AppDatabase {
   );
 
   @override
-  int get schemaVersion => 6;
+  int get schemaVersion => 7;
 
   @override
   MigrationStrategy get migration => MigrationStrategy(
@@ -475,6 +499,10 @@ class AppDatabase extends _$AppDatabase {
           await m.addColumn(notebookItems, notebookItems.sourceTitle);
         }
         await m.createTable(userBookProgress);
+      }
+      // 6 → 7 (H-078): dilbilgisi dersi ilerlemesi.
+      if (from < 7) {
+        await m.createTable(userGrammarProgress);
       }
     },
     beforeOpen: (details) async {

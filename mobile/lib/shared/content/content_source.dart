@@ -1,3 +1,4 @@
+import '../../features/grammar/domain/grammar_lesson.dart';
 import '../../features/hi/domain/hi_content.dart';
 import '../../features/library/domain/book.dart';
 import '../../features/player/domain/episode.dart';
@@ -14,6 +15,7 @@ class PackageSummary {
     this.season,
     this.number,
     this.estimatedMinutes,
+    this.grammarTopics = const [],
   });
 
   factory PackageSummary.fromJson(Map<String, dynamic> j) => PackageSummary(
@@ -23,6 +25,7 @@ class PackageSummary {
     season: (j['season'] as num?)?.toInt(),
     number: (j['number'] as num?)?.toInt(),
     estimatedMinutes: (j['estimatedMinutes'] as num?)?.toDouble(),
+    grammarTopics: grammarTopicsOf(j['grammarTopics']),
   );
 
   final String id;
@@ -31,7 +34,17 @@ class PackageSummary {
   final int? season;
   final int? number;
   final double? estimatedMinutes;
+
+  /// Bölümde geçen dilbilgisi konuları (G-ID; H-077 `grammarTopics`).
+  final List<String> grammarTopics;
 }
+
+/// `grammarTopics` alanı (bölüm, kitap): G-ID listesi; yoksa boş.
+List<String> grammarTopicsOf(Object? v) => [
+  if (v is List)
+    for (final x in v)
+      if (x is String && x.isNotEmpty) x,
+];
 
 /// Sezon haritasındaki bir bölüm yeri (`season.json` → `episodes[]`, H-035).
 class SeasonEpisode {
@@ -210,6 +223,25 @@ abstract interface class ContentSource {
 
   /// Kitap paketindeki bir dosyanın adresi (`/books/<kitap>/<yol>`).
   Uri bookMediaUri(String bookId, String path);
+
+  /// Dilbilgisi dersleri (H-078): `/grammar/index.json`.
+  Future<List<GrammarLessonSummary>> loadGrammarIndex();
+
+  /// Ders paketi: `lesson.json` + `cards.json`.
+  Future<GrammarLesson> loadLesson(String lessonId);
+
+  /// Ders paketindeki bir dosyanın adresi (`/grammar/<ders>/<yol>`).
+  Uri grammarMediaUri(String lessonId, String path);
+}
+
+/// Defter kartında ders paketindeki dosya yolu (H-078):
+/// `_grammar/<ders>/<yol>`.
+String grammarMediaPath(String lessonId, String path) =>
+    '_grammar/$lessonId/$path';
+
+(String, String)? parseGrammarMediaPath(String path) {
+  final m = RegExp(r'^_grammar/([^/]+)/(.+)$').firstMatch(path);
+  return m == null ? null : (m.group(1)!, m.group(2)!);
 }
 
 /// Defter kartında kitap paketindeki dosya yolu (H-067): `_books/<kitap>/<yol>`.
@@ -222,10 +254,13 @@ String bookMediaPath(String bookId, String path) => '_books/$bookId/$path';
 
 /// Defter kartındaki görsel ya da ses yolu: bölüm paketinde (`stills/x.webp`)
 /// ya da sezon paketinde (`_season/S1/sets/…`, konu setleri, H-051) ya da
-/// kitap paketinde (`_books/A1-K01/audio/c1.m4a`, H-067).
+/// kitap paketinde (`_books/A1-K01/audio/c1.m4a`, H-067) ya da ders
+/// paketinde (`_grammar/G-A1-03-…/audio/c07-ex1.m4a`, H-078).
 Uri resolveMediaUri(ContentSource source, String contentId, String path) {
   final book = parseBookMediaPath(path);
   if (book != null) return source.bookMediaUri(book.$1, book.$2);
+  final grammar = parseGrammarMediaPath(path);
+  if (grammar != null) return source.grammarMediaUri(grammar.$1, grammar.$2);
   final season = parseSeasonMediaPath(path);
   return season == null
       ? source.mediaUri(contentId, path)

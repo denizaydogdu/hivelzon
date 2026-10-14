@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:hivelzon/features/grammar/domain/grammar_lesson.dart';
 import 'package:hivelzon/features/hi/domain/hi_content.dart';
 import 'package:hivelzon/features/library/domain/book.dart';
 import 'package:hivelzon/features/player/domain/episode.dart';
@@ -67,9 +68,14 @@ class FakeContentSource implements ContentSource {
           season: 1,
           number: int.parse(id.substring(3)),
           estimatedMinutes: 6,
+          grammarTopics: grammarTopics[id] ?? const [],
         ),
     ];
   }
+
+  /// Bölüm ve kitapların `grammarTopics` alanı (H-078): içerik kimliği →
+  /// G-ID listesi.
+  Map<String, List<String>> grammarTopics = const {};
 
   @override
   Future<Episode> loadEpisode(String contentId) async {
@@ -141,7 +147,11 @@ class FakeContentSource implements ContentSource {
   @override
   Future<Book> loadBook(String bookId) async {
     if (fail || booksFail) throw ContentUnavailableException('kapalı');
-    return loadTestBook(id: bookId, unnarrated: unnarratedChapters);
+    return loadTestBook(
+      id: bookId,
+      unnarrated: unnarratedChapters,
+      grammarTopics: grammarTopics[bookId] ?? const [],
+    );
   }
 
   /// Sesi henüz hazır olmayan bölümler (kitap bölüm bölüm seslendirilir).
@@ -150,7 +160,112 @@ class FakeContentSource implements ContentSource {
   @override
   Uri bookMediaUri(String bookId, String path) =>
       Uri.parse('http://test.invalid/books/$bookId/$path');
+
+  /// Dilbilgisi dersleri (H-078). Varsayılan boş (eski testler dersleri
+  /// görmez); [testLessonSummaries] ile doldurulur.
+  List<GrammarLessonSummary> lessons = const [];
+  bool grammarFails = false;
+  int grammarIndexCalls = 0;
+
+  /// Sesi olmayan ders (sessiz okuma) ya da yalnız İngilizce sesi olmayan.
+  bool lessonsSilent = false;
+  bool lessonsNoEnglishAudio = false;
+
+  /// "Hikâyede gör" bölüm bağının hedefi (deneme dersinde `A1-901`).
+  String? lessonEpisodeLink;
+
+  @override
+  Future<List<GrammarLessonSummary>> loadGrammarIndex() async {
+    grammarIndexCalls++;
+    if (fail || grammarFails) throw ContentUnavailableException('kapalı');
+    return lessons;
+  }
+
+  /// Her kimlik için deneme dersi G-A1-99'un kopyası (kimlik, başlık ve
+  /// seviye değişir).
+  @override
+  Future<GrammarLesson> loadLesson(String lessonId) async {
+    if (fail || grammarFails) throw ContentUnavailableException('kapalı');
+    final s = lessons.where((l) => l.id == lessonId).firstOrNull;
+    return loadTestLesson(
+      id: lessonId,
+      title: s?.titleTr,
+      level: s?.level,
+      silent: lessonsSilent,
+      noEnglishAudio: lessonsNoEnglishAudio,
+      episodeLink: lessonEpisodeLink,
+    );
+  }
+
+  @override
+  Uri grammarMediaUri(String lessonId, String path) =>
+      Uri.parse('http://test.invalid/grammar/$lessonId/$path');
 }
+
+/// Deneme dersi (H-077 `G-A1-99-third-person-s` dışa aktarımı; sahte ses
+/// süreleriyle). [silent]: hiç ses yok; [noEnglishAudio]: yalnız Türkçe
+/// anlatımın sesi var.
+GrammarLesson loadTestLesson({
+  String id = kTestLessonId,
+  String? title,
+  String? level,
+  bool silent = false,
+  bool noEnglishAudio = false,
+  String? episodeLink,
+}) {
+  final lesson =
+      (jsonDecode(fixtureText('grammar/$kTestLessonId/lesson.json')) as Map)
+          .cast<String, dynamic>();
+  final cards =
+      (jsonDecode(fixtureText('grammar/$kTestLessonId/cards.json')) as Map)
+          .cast<String, dynamic>();
+  lesson['id'] = id;
+  if (title != null) lesson['titleTr'] = title;
+  if (level != null) lesson['level'] = level;
+  for (final c in cards['cards'] as List) {
+    final card = c as Map;
+    if (episodeLink != null) {
+      for (final l in card['links'] as List) {
+        if ((l as Map)['kind'] == 'episode') l['episodeId'] = episodeLink;
+      }
+    }
+    if (silent && card['narration'] is Map) {
+      (card['narration'] as Map)['audio'] = null;
+    }
+    if (silent || noEnglishAudio) {
+      for (final e in [
+        ...card['examples'] as List,
+        ...card['practice'] as List,
+      ]) {
+        if ((e as Map).containsKey('audio')) e['audio'] = null;
+      }
+    }
+  }
+  return GrammarLesson.fromJson(lesson, cards);
+}
+
+const kTestLessonId = 'G-A1-99-third-person-s';
+
+/// Ders listesi: [ids] kimlikli deneme dersleri (başlık kimlikten).
+List<GrammarLessonSummary> testLessonSummaries(
+  List<String> ids, {
+  Map<String, String> titles = const {},
+  List<String> episodes = const ['A1-901'],
+  List<String> books = const ['A1-K99'],
+}) => [
+  for (final id in ids)
+    GrammarLessonSummary(
+      id: id,
+      level: GrammarLessonSummary.levelOf(id),
+      titleTr: titles[id] ?? (id == kTestLessonId ? 'Üçüncü tekil -s' : id),
+      goalTr: 'Tek kişiden söz ederken fiile ek getirebilirsin.',
+      episodes: episodes,
+      books: books,
+      cardCount: 7,
+      estimatedMinutes: 2.5,
+      status: 'DRAFT',
+    ),
+];
 
 /// Deneme kitabı (H-066 `A1-K99-the-test-box` dışa aktarımı; testte ses ve
 /// görsel varmış gibi bölüm süreleri ve görsel yolları eklendi).
@@ -160,12 +275,14 @@ Book loadTestBook({
   String? level,
   double? chapterDuration,
   Set<String> unnarrated = const {},
+  List<String> grammarTopics = const [],
 }) {
   final book = (jsonDecode(fixtureText('books/A1-K99/book.json')) as Map)
       .cast<String, dynamic>();
   final pages = (jsonDecode(fixtureText('books/A1-K99/pages.json')) as Map)
       .cast<String, dynamic>();
   book['id'] = id;
+  if (grammarTopics.isNotEmpty) book['grammarTopics'] = grammarTopics;
   if (title != null) book['title'] = title;
   if (level != null) book['level'] = level;
   if (id != 'A1-K99' && title == null) book['title'] = 'The Test Box $id';
@@ -204,9 +321,13 @@ Book loadTestBook({
 }
 
 /// Kitap listesi: [ids] kimlikli deneme kitapları.
-List<BookSummary> testBookSummaries(List<String> ids) => [
+List<BookSummary> testBookSummaries(
+  List<String> ids, {
+  Map<String, List<String>> grammarTopics = const {},
+}) => [
   for (final id in ids)
     BookSummary(
+      grammarTopics: grammarTopics[id] ?? const [],
       id: id,
       title: id == 'A1-K99' ? 'The Test Box' : 'The Test Box $id',
       level: BookSummary.levelOf(id),

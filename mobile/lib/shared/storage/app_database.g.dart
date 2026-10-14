@@ -2188,7 +2188,7 @@ class NotebookItemRow extends DataClass implements Insertable<NotebookItemRow> {
   final String source;
 
   /// Kaynağın adı (şema 6, H-067): kitaptan eklenende kitabın başlığı
-  /// ("Kitap: <başlık>, s. N" satırı için; sayfa `cueId`'den).
+  /// (`Kitap: <başlık>, s. N` satırı için; sayfa `cueId`'den).
   final String? sourceTitle;
   final DateTime createdAt;
 
@@ -8324,6 +8324,441 @@ class UserBookProgressCompanion extends UpdateCompanion<UserBookProgressData> {
   }
 }
 
+class $UserGrammarProgressTable extends UserGrammarProgress
+    with TableInfo<$UserGrammarProgressTable, UserGrammarProgressData> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $UserGrammarProgressTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _lessonIdMeta = const VerificationMeta(
+    'lessonId',
+  );
+  @override
+  late final GeneratedColumn<String> lessonId = GeneratedColumn<String>(
+    'lesson_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _statusMeta = const VerificationMeta('status');
+  @override
+  late final GeneratedColumn<String> status = GeneratedColumn<String>(
+    'status',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    defaultValue: const Constant('NOT_STARTED'),
+  );
+  static const VerificationMeta _lastCardMeta = const VerificationMeta(
+    'lastCard',
+  );
+  @override
+  late final GeneratedColumn<String> lastCard = GeneratedColumn<String>(
+    'last_card',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _startedAtMeta = const VerificationMeta(
+    'startedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> startedAt = GeneratedColumn<DateTime>(
+    'started_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _completedAtMeta = const VerificationMeta(
+    'completedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> completedAt = GeneratedColumn<DateTime>(
+    'completed_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _updatedAtMeta = const VerificationMeta(
+    'updatedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> updatedAt = GeneratedColumn<DateTime>(
+    'updated_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: true,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    lessonId,
+    status,
+    lastCard,
+    startedAt,
+    completedAt,
+    updatedAt,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'user_grammar_progress';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<UserGrammarProgressData> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('lesson_id')) {
+      context.handle(
+        _lessonIdMeta,
+        lessonId.isAcceptableOrUnknown(data['lesson_id']!, _lessonIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_lessonIdMeta);
+    }
+    if (data.containsKey('status')) {
+      context.handle(
+        _statusMeta,
+        status.isAcceptableOrUnknown(data['status']!, _statusMeta),
+      );
+    }
+    if (data.containsKey('last_card')) {
+      context.handle(
+        _lastCardMeta,
+        lastCard.isAcceptableOrUnknown(data['last_card']!, _lastCardMeta),
+      );
+    }
+    if (data.containsKey('started_at')) {
+      context.handle(
+        _startedAtMeta,
+        startedAt.isAcceptableOrUnknown(data['started_at']!, _startedAtMeta),
+      );
+    }
+    if (data.containsKey('completed_at')) {
+      context.handle(
+        _completedAtMeta,
+        completedAt.isAcceptableOrUnknown(
+          data['completed_at']!,
+          _completedAtMeta,
+        ),
+      );
+    }
+    if (data.containsKey('updated_at')) {
+      context.handle(
+        _updatedAtMeta,
+        updatedAt.isAcceptableOrUnknown(data['updated_at']!, _updatedAtMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_updatedAtMeta);
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {lessonId};
+  @override
+  UserGrammarProgressData map(
+    Map<String, dynamic> data, {
+    String? tablePrefix,
+  }) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return UserGrammarProgressData(
+      lessonId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}lesson_id'],
+      )!,
+      status: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}status'],
+      )!,
+      lastCard: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}last_card'],
+      ),
+      startedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}started_at'],
+      ),
+      completedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}completed_at'],
+      ),
+      updatedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}updated_at'],
+      )!,
+    );
+  }
+
+  @override
+  $UserGrammarProgressTable createAlias(String alias) {
+    return $UserGrammarProgressTable(attachedDatabase, alias);
+  }
+}
+
+class UserGrammarProgressData extends DataClass
+    implements Insertable<UserGrammarProgressData> {
+  /// Ders kimliği (`G-A1-03-third-person-s`).
+  final String lessonId;
+
+  /// `NOT_STARTED` | `IN_PROGRESS` | `COMPLETED`
+  final String status;
+
+  /// Kalınan kart (`c03`).
+  final String? lastCard;
+  final DateTime? startedAt;
+  final DateTime? completedAt;
+  final DateTime updatedAt;
+  const UserGrammarProgressData({
+    required this.lessonId,
+    required this.status,
+    this.lastCard,
+    this.startedAt,
+    this.completedAt,
+    required this.updatedAt,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['lesson_id'] = Variable<String>(lessonId);
+    map['status'] = Variable<String>(status);
+    if (!nullToAbsent || lastCard != null) {
+      map['last_card'] = Variable<String>(lastCard);
+    }
+    if (!nullToAbsent || startedAt != null) {
+      map['started_at'] = Variable<DateTime>(startedAt);
+    }
+    if (!nullToAbsent || completedAt != null) {
+      map['completed_at'] = Variable<DateTime>(completedAt);
+    }
+    map['updated_at'] = Variable<DateTime>(updatedAt);
+    return map;
+  }
+
+  UserGrammarProgressCompanion toCompanion(bool nullToAbsent) {
+    return UserGrammarProgressCompanion(
+      lessonId: Value(lessonId),
+      status: Value(status),
+      lastCard: lastCard == null && nullToAbsent
+          ? const Value.absent()
+          : Value(lastCard),
+      startedAt: startedAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(startedAt),
+      completedAt: completedAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(completedAt),
+      updatedAt: Value(updatedAt),
+    );
+  }
+
+  factory UserGrammarProgressData.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return UserGrammarProgressData(
+      lessonId: serializer.fromJson<String>(json['lessonId']),
+      status: serializer.fromJson<String>(json['status']),
+      lastCard: serializer.fromJson<String?>(json['lastCard']),
+      startedAt: serializer.fromJson<DateTime?>(json['startedAt']),
+      completedAt: serializer.fromJson<DateTime?>(json['completedAt']),
+      updatedAt: serializer.fromJson<DateTime>(json['updatedAt']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'lessonId': serializer.toJson<String>(lessonId),
+      'status': serializer.toJson<String>(status),
+      'lastCard': serializer.toJson<String?>(lastCard),
+      'startedAt': serializer.toJson<DateTime?>(startedAt),
+      'completedAt': serializer.toJson<DateTime?>(completedAt),
+      'updatedAt': serializer.toJson<DateTime>(updatedAt),
+    };
+  }
+
+  UserGrammarProgressData copyWith({
+    String? lessonId,
+    String? status,
+    Value<String?> lastCard = const Value.absent(),
+    Value<DateTime?> startedAt = const Value.absent(),
+    Value<DateTime?> completedAt = const Value.absent(),
+    DateTime? updatedAt,
+  }) => UserGrammarProgressData(
+    lessonId: lessonId ?? this.lessonId,
+    status: status ?? this.status,
+    lastCard: lastCard.present ? lastCard.value : this.lastCard,
+    startedAt: startedAt.present ? startedAt.value : this.startedAt,
+    completedAt: completedAt.present ? completedAt.value : this.completedAt,
+    updatedAt: updatedAt ?? this.updatedAt,
+  );
+  UserGrammarProgressData copyWithCompanion(UserGrammarProgressCompanion data) {
+    return UserGrammarProgressData(
+      lessonId: data.lessonId.present ? data.lessonId.value : this.lessonId,
+      status: data.status.present ? data.status.value : this.status,
+      lastCard: data.lastCard.present ? data.lastCard.value : this.lastCard,
+      startedAt: data.startedAt.present ? data.startedAt.value : this.startedAt,
+      completedAt: data.completedAt.present
+          ? data.completedAt.value
+          : this.completedAt,
+      updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('UserGrammarProgressData(')
+          ..write('lessonId: $lessonId, ')
+          ..write('status: $status, ')
+          ..write('lastCard: $lastCard, ')
+          ..write('startedAt: $startedAt, ')
+          ..write('completedAt: $completedAt, ')
+          ..write('updatedAt: $updatedAt')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+    lessonId,
+    status,
+    lastCard,
+    startedAt,
+    completedAt,
+    updatedAt,
+  );
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is UserGrammarProgressData &&
+          other.lessonId == this.lessonId &&
+          other.status == this.status &&
+          other.lastCard == this.lastCard &&
+          other.startedAt == this.startedAt &&
+          other.completedAt == this.completedAt &&
+          other.updatedAt == this.updatedAt);
+}
+
+class UserGrammarProgressCompanion
+    extends UpdateCompanion<UserGrammarProgressData> {
+  final Value<String> lessonId;
+  final Value<String> status;
+  final Value<String?> lastCard;
+  final Value<DateTime?> startedAt;
+  final Value<DateTime?> completedAt;
+  final Value<DateTime> updatedAt;
+  final Value<int> rowid;
+  const UserGrammarProgressCompanion({
+    this.lessonId = const Value.absent(),
+    this.status = const Value.absent(),
+    this.lastCard = const Value.absent(),
+    this.startedAt = const Value.absent(),
+    this.completedAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  UserGrammarProgressCompanion.insert({
+    required String lessonId,
+    this.status = const Value.absent(),
+    this.lastCard = const Value.absent(),
+    this.startedAt = const Value.absent(),
+    this.completedAt = const Value.absent(),
+    required DateTime updatedAt,
+    this.rowid = const Value.absent(),
+  }) : lessonId = Value(lessonId),
+       updatedAt = Value(updatedAt);
+  static Insertable<UserGrammarProgressData> custom({
+    Expression<String>? lessonId,
+    Expression<String>? status,
+    Expression<String>? lastCard,
+    Expression<DateTime>? startedAt,
+    Expression<DateTime>? completedAt,
+    Expression<DateTime>? updatedAt,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (lessonId != null) 'lesson_id': lessonId,
+      if (status != null) 'status': status,
+      if (lastCard != null) 'last_card': lastCard,
+      if (startedAt != null) 'started_at': startedAt,
+      if (completedAt != null) 'completed_at': completedAt,
+      if (updatedAt != null) 'updated_at': updatedAt,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  UserGrammarProgressCompanion copyWith({
+    Value<String>? lessonId,
+    Value<String>? status,
+    Value<String?>? lastCard,
+    Value<DateTime?>? startedAt,
+    Value<DateTime?>? completedAt,
+    Value<DateTime>? updatedAt,
+    Value<int>? rowid,
+  }) {
+    return UserGrammarProgressCompanion(
+      lessonId: lessonId ?? this.lessonId,
+      status: status ?? this.status,
+      lastCard: lastCard ?? this.lastCard,
+      startedAt: startedAt ?? this.startedAt,
+      completedAt: completedAt ?? this.completedAt,
+      updatedAt: updatedAt ?? this.updatedAt,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (lessonId.present) {
+      map['lesson_id'] = Variable<String>(lessonId.value);
+    }
+    if (status.present) {
+      map['status'] = Variable<String>(status.value);
+    }
+    if (lastCard.present) {
+      map['last_card'] = Variable<String>(lastCard.value);
+    }
+    if (startedAt.present) {
+      map['started_at'] = Variable<DateTime>(startedAt.value);
+    }
+    if (completedAt.present) {
+      map['completed_at'] = Variable<DateTime>(completedAt.value);
+    }
+    if (updatedAt.present) {
+      map['updated_at'] = Variable<DateTime>(updatedAt.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('UserGrammarProgressCompanion(')
+          ..write('lessonId: $lessonId, ')
+          ..write('status: $status, ')
+          ..write('lastCard: $lastCard, ')
+          ..write('startedAt: $startedAt, ')
+          ..write('completedAt: $completedAt, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
 abstract class _$AppDatabase extends GeneratedDatabase {
   _$AppDatabase(QueryExecutor e) : super(e);
   $AppDatabaseManager get managers => $AppDatabaseManager(this);
@@ -8346,6 +8781,8 @@ abstract class _$AppDatabase extends GeneratedDatabase {
   late final $UserBookProgressTable userBookProgress = $UserBookProgressTable(
     this,
   );
+  late final $UserGrammarProgressTable userGrammarProgress =
+      $UserGrammarProgressTable(this);
   @override
   Iterable<TableInfo<Table, Object?>> get allTables =>
       allSchemaEntities.whereType<TableInfo<Table, Object?>>();
@@ -8367,6 +8804,7 @@ abstract class _$AppDatabase extends GeneratedDatabase {
     syncState,
     syncOutbox,
     userBookProgress,
+    userGrammarProgress,
   ];
   @override
   StreamQueryUpdateRules get streamUpdateRules => const StreamQueryUpdateRules([
@@ -12969,6 +13407,243 @@ typedef $$UserBookProgressTableProcessedTableManager =
       UserBookProgressData,
       PrefetchHooks Function()
     >;
+typedef $$UserGrammarProgressTableCreateCompanionBuilder =
+    UserGrammarProgressCompanion Function({
+      required String lessonId,
+      Value<String> status,
+      Value<String?> lastCard,
+      Value<DateTime?> startedAt,
+      Value<DateTime?> completedAt,
+      required DateTime updatedAt,
+      Value<int> rowid,
+    });
+typedef $$UserGrammarProgressTableUpdateCompanionBuilder =
+    UserGrammarProgressCompanion Function({
+      Value<String> lessonId,
+      Value<String> status,
+      Value<String?> lastCard,
+      Value<DateTime?> startedAt,
+      Value<DateTime?> completedAt,
+      Value<DateTime> updatedAt,
+      Value<int> rowid,
+    });
+
+class $$UserGrammarProgressTableFilterComposer
+    extends Composer<_$AppDatabase, $UserGrammarProgressTable> {
+  $$UserGrammarProgressTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get lessonId => $composableBuilder(
+    column: $table.lessonId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get status => $composableBuilder(
+    column: $table.status,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get lastCard => $composableBuilder(
+    column: $table.lastCard,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get startedAt => $composableBuilder(
+    column: $table.startedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get completedAt => $composableBuilder(
+    column: $table.completedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$UserGrammarProgressTableOrderingComposer
+    extends Composer<_$AppDatabase, $UserGrammarProgressTable> {
+  $$UserGrammarProgressTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get lessonId => $composableBuilder(
+    column: $table.lessonId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get status => $composableBuilder(
+    column: $table.status,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get lastCard => $composableBuilder(
+    column: $table.lastCard,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get startedAt => $composableBuilder(
+    column: $table.startedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get completedAt => $composableBuilder(
+    column: $table.completedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$UserGrammarProgressTableAnnotationComposer
+    extends Composer<_$AppDatabase, $UserGrammarProgressTable> {
+  $$UserGrammarProgressTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get lessonId =>
+      $composableBuilder(column: $table.lessonId, builder: (column) => column);
+
+  GeneratedColumn<String> get status =>
+      $composableBuilder(column: $table.status, builder: (column) => column);
+
+  GeneratedColumn<String> get lastCard =>
+      $composableBuilder(column: $table.lastCard, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get startedAt =>
+      $composableBuilder(column: $table.startedAt, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get completedAt => $composableBuilder(
+    column: $table.completedAt,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<DateTime> get updatedAt =>
+      $composableBuilder(column: $table.updatedAt, builder: (column) => column);
+}
+
+class $$UserGrammarProgressTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $UserGrammarProgressTable,
+          UserGrammarProgressData,
+          $$UserGrammarProgressTableFilterComposer,
+          $$UserGrammarProgressTableOrderingComposer,
+          $$UserGrammarProgressTableAnnotationComposer,
+          $$UserGrammarProgressTableCreateCompanionBuilder,
+          $$UserGrammarProgressTableUpdateCompanionBuilder,
+          (
+            UserGrammarProgressData,
+            BaseReferences<
+              _$AppDatabase,
+              $UserGrammarProgressTable,
+              UserGrammarProgressData
+            >,
+          ),
+          UserGrammarProgressData,
+          PrefetchHooks Function()
+        > {
+  $$UserGrammarProgressTableTableManager(
+    _$AppDatabase db,
+    $UserGrammarProgressTable table,
+  ) : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$UserGrammarProgressTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$UserGrammarProgressTableOrderingComposer(
+                $db: db,
+                $table: table,
+              ),
+          createComputedFieldComposer: () =>
+              $$UserGrammarProgressTableAnnotationComposer(
+                $db: db,
+                $table: table,
+              ),
+          updateCompanionCallback:
+              ({
+                Value<String> lessonId = const Value.absent(),
+                Value<String> status = const Value.absent(),
+                Value<String?> lastCard = const Value.absent(),
+                Value<DateTime?> startedAt = const Value.absent(),
+                Value<DateTime?> completedAt = const Value.absent(),
+                Value<DateTime> updatedAt = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => UserGrammarProgressCompanion(
+                lessonId: lessonId,
+                status: status,
+                lastCard: lastCard,
+                startedAt: startedAt,
+                completedAt: completedAt,
+                updatedAt: updatedAt,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                required String lessonId,
+                Value<String> status = const Value.absent(),
+                Value<String?> lastCard = const Value.absent(),
+                Value<DateTime?> startedAt = const Value.absent(),
+                Value<DateTime?> completedAt = const Value.absent(),
+                required DateTime updatedAt,
+                Value<int> rowid = const Value.absent(),
+              }) => UserGrammarProgressCompanion.insert(
+                lessonId: lessonId,
+                status: status,
+                lastCard: lastCard,
+                startedAt: startedAt,
+                completedAt: completedAt,
+                updatedAt: updatedAt,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$UserGrammarProgressTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $UserGrammarProgressTable,
+      UserGrammarProgressData,
+      $$UserGrammarProgressTableFilterComposer,
+      $$UserGrammarProgressTableOrderingComposer,
+      $$UserGrammarProgressTableAnnotationComposer,
+      $$UserGrammarProgressTableCreateCompanionBuilder,
+      $$UserGrammarProgressTableUpdateCompanionBuilder,
+      (
+        UserGrammarProgressData,
+        BaseReferences<
+          _$AppDatabase,
+          $UserGrammarProgressTable,
+          UserGrammarProgressData
+        >,
+      ),
+      UserGrammarProgressData,
+      PrefetchHooks Function()
+    >;
 
 class $AppDatabaseManager {
   final _$AppDatabase _db;
@@ -13005,4 +13680,6 @@ class $AppDatabaseManager {
       $$SyncOutboxTableTableManager(_db, _db.syncOutbox);
   $$UserBookProgressTableTableManager get userBookProgress =>
       $$UserBookProgressTableTableManager(_db, _db.userBookProgress);
+  $$UserGrammarProgressTableTableManager get userGrammarProgress =>
+      $$UserGrammarProgressTableTableManager(_db, _db.userGrammarProgress);
 }

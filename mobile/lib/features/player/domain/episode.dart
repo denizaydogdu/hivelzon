@@ -226,6 +226,7 @@ class EpisodeInfo {
     this.prev,
     this.next,
     this.estimatedMinutes,
+    this.grammarTopics = const [],
   });
 
   factory EpisodeInfo.fromJson(Object? json) {
@@ -259,6 +260,7 @@ class EpisodeInfo {
       prev: j['prev'] as String?,
       next: j['next'] as String?,
       estimatedMinutes: _num(j['estimatedMinutes']),
+      grammarTopics: _strings(j['grammarTopics']),
     );
   }
 
@@ -283,6 +285,9 @@ class EpisodeInfo {
   final String? prev;
   final String? next;
   final double? estimatedMinutes;
+
+  /// Bölümde geçen dilbilgisi konuları (G-ID; H-077 `grammarTopics`).
+  final List<String> grammarTopics;
 }
 
 /// Bölüm sözlüğündeki kelime ve Türkçesi (`episode.glossary`, H-052).

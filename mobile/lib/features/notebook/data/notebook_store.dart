@@ -43,6 +43,15 @@ class NotebookStore {
     return added;
   }
 
+  /// Bu anahtarlı ifade defterde mi (H-078: kural kartı düğmesi).
+  Future<bool> hasItem(String key) async {
+    await _ready;
+    final row = await (_db.select(
+      _db.notebookItems,
+    )..where((t) => t.itemKey.equals(key))).getSingleOrNull();
+    return row != null;
+  }
+
   Future<bool> _insert(NotebookItem item) async {
     final existing = await (_db.select(
       _db.notebookItems,
@@ -112,6 +121,8 @@ class NotebookStore {
                   t.contentId.isNotNull() &
                   // Kitaptan eklenenler kaydedilirken doldurulur (H-067).
                   t.source.equals(NotebookSource.book.code).not() &
+                  // Dilbilgisi kural kartı da eklenirken doldurulur (H-078).
+                  t.source.equals(NotebookSource.grammar.code).not() &
                   (t.imagePath.isNull() | t.audioPath.isNull()),
             ))
             .get();
@@ -172,6 +183,7 @@ class NotebookStore {
                     NotebookSource.userSaved.code,
                     NotebookSource.topicSet.code,
                     NotebookSource.book.code,
+                    NotebookSource.grammar.code,
                   ]),
             ))
             .go();

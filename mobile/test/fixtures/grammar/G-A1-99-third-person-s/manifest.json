@@ -1,0 +1,148 @@
+{
+  "schemaVersion": 1,
+  "contentId": "G-A1-99-third-person-s",
+  "contentType": "GRAMMAR_LESSON",
+  "contentVersion": 1,
+  "tool": "hiVelzon content-pipeline 0.1.0",
+  "textSha256": {
+    "c01-tr": "8cffdafa85d680a53e611d416fb440f19ae4e81fb333b08b22cc7ab6ff023fde",
+    "c02-tr": "f3217725775e44d2107d7d609245eaae1f3e02ab7abb9dcb8b2dfa1a0c4af581",
+    "c04-tr": "338ea4964eee17d11e1e1e51d0346681a20d678b1b6d5da9632a6db1fd67eaa3",
+    "c06-tr": "45b6db3fae586835a8be1024ab45b1d066c5a2df131f0bf2482f5c4d92be0c11",
+    "c07-tr": "6b1aff68ddc5bab96da06796078724509684d029337981a1ab24efbf83b1bd2b",
+    "c01-ex1": "368f126d78297a72947a8b3f9a020916d3a04271fc26ba10fc794be6aa3bcd3e",
+    "c03-ex1": "cf98ea7e9ffb0b81ae64f4c38b7463d5771737a726e7bc9972b47aaea7050569",
+    "c03-ex2": "c84bd32f77a16831e54680cb06991e07933b845b90c32c62c957c69dc6405f74",
+    "c03-ex3": "bf55b29a62e2438c1e400413d6eaff850a778a29de16e3a0a39f09c12c76f5f4",
+    "c04-ex1": "ecb47d16cd79b5bab97107c0804fd2cd2c94f91cc83c98ca6af65cc234df143c",
+    "c05-q4": "ecb47d16cd79b5bab97107c0804fd2cd2c94f91cc83c98ca6af65cc234df143c",
+    "c07-ex1": "ecb47d16cd79b5bab97107c0804fd2cd2c94f91cc83c98ca6af65cc234df143c"
+  },
+  "loudness": {
+    "targetLUFS": -16.0,
+    "segments": {
+      "c01-tr": {
+        "before": -20.0,
+        "gainDb": 4.0
+      },
+      "c01-ex1": {
+        "before": -20.0,
+        "gainDb": 4.0
+      },
+      "c02-tr": {
+        "before": -20.0,
+        "gainDb": 4.0
+      },
+      "c03-ex1": {
+        "before": -20.0,
+        "gainDb": 4.0
+      },
+      "c03-ex2": {
+        "before": -20.0,
+        "gainDb": 4.0
+      },
+      "c03-ex3": {
+        "before": -20.0,
+        "gainDb": 4.0
+      },
+      "c04-tr": {
+        "before": -20.0,
+        "gainDb": 4.0
+      },
+      "c04-ex1": {
+        "before": -20.0,
+        "gainDb": 4.0
+      },
+      "c05-q4": {
+        "before": -20.0,
+        "gainDb": 4.0
+      },
+      "c06-tr": {
+        "before": -20.0,
+        "gainDb": 4.0
+      },
+      "c07-tr": {
+        "before": -20.0,
+        "gainDb": 4.0
+      },
+      "c07-ex1": {
+        "before": -20.0,
+        "gainDb": 4.0
+      }
+    }
+  },
+  "missing": [],
+  "files": [
+    {
+      "path": "audio/c01-ex1.m4a",
+      "bytes": 18,
+      "sha256": "19eb2a40bfaf7aff8d6a4629c485872721056ab985fd068c240ba19d536f80e2"
+    },
+    {
+      "path": "audio/c01-tr.m4a",
+      "bytes": 17,
+      "sha256": "658d4dbd0cf79f8dd88f323d6b91c16a33155e2904070f3f1c069243fd9324e7"
+    },
+    {
+      "path": "audio/c02-tr.m4a",
+      "bytes": 17,
+      "sha256": "0bd4892397ebbcb244489188aa3b4539f973ae37351b8bdede74a499bfb78f17"
+    },
+    {
+      "path": "audio/c03-ex1.m4a",
+      "bytes": 18,
+      "sha256": "9c3385631ac27ef620a52c6b31776cee0e71ca34cc69b383627a93f9a3ca6d28"
+    },
+    {
+      "path": "audio/c03-ex2.m4a",
+      "bytes": 18,
+      "sha256": "58cb5974104e618afef077c7b814fdf44eb455818b9f1836cfdb1b941ef5ab4f"
+    },
+    {
+      "path": "audio/c03-ex3.m4a",
+      "bytes": 18,
+      "sha256": "06109325f5b3602e438c3d51a9da115ded50f6833fe68773f1ad1f03f163aa22"
+    },
+    {
+      "path": "audio/c04-ex1.m4a",
+      "bytes": 18,
+      "sha256": "3e2e6bf990e0e3916b778f5cb081518de3f06932fb5031babcf662e0401a3ba0"
+    },
+    {
+      "path": "audio/c04-tr.m4a",
+      "bytes": 17,
+      "sha256": "ec24f15621e9f44b64855ac0ae94113180dc0d964820778deb527d9c86e4625f"
+    },
+    {
+      "path": "audio/c05-q4.m4a",
+      "bytes": 17,
+      "sha256": "39087a6b7831a58ffbeb72ac3d50cb53df9e71f456b6dc9aded510a915fb98b4"
+    },
+    {
+      "path": "audio/c06-tr.m4a",
+      "bytes": 17,
+      "sha256": "e54a9b3b5c0affe24c3465172affbfb40e72c855d0b7e189ef5e3cc8a3584622"
+    },
+    {
+      "path": "audio/c07-ex1.m4a",
+      "bytes": 18,
+      "sha256": "ec337e04a60b64c2725da9b65e9cb2509681afd0ceb875075be766f8a700c1d4"
+    },
+    {
+      "path": "audio/c07-tr.m4a",
+      "bytes": 17,
+      "sha256": "1c42c0e0ea9ad1b709bb98ffe29c84c9a74a654d06e2712dd1cac410a1c4c937"
+    },
+    {
+      "path": "cards.json",
+      "bytes": 14376,
+      "sha256": "57b3cccce915eec488f0d697c92b0e304b1a88bb5e21ce5ae9dd0a7f6eb2e578"
+    },
+    {
+      "path": "lesson.json",
+      "bytes": 668,
+      "sha256": "b8fccd4c49993e3015481c0d38b047c4d2baac166ced9e4e7fb89c0b4dd4b77d"
+    }
+  ],
+  "totalBytes": 15254
+}

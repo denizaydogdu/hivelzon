@@ -11,6 +11,8 @@
 //   e) açılmış ama sahne avı yapılmamış konu seti → Sahne avı
 //   b') birkaç ifadenin tekrar zamanı geldiyse (eşiğin altında) → Kelime tekrarı
 //   h) seviyede okunmamış kitap → dinlemeye başla (H-067)
+//   i) oynanan bölümde / okunan kitapta geçen, bitmemiş dilbilgisi konusu →
+//      kısa ders (H-078; düşük öncelik, gerekçe görünür)
 //   f) hiçbiri → "Bugünlük bu kadar yeter"
 //
 // Dil: suçlama, geri sayım, aciliyet yok (K-32). Süreler günlük hedefe göre
@@ -33,6 +35,7 @@ enum HiSuggestionKind {
   sceneHunt,
   continueBook,
   startBook,
+  grammarSuggest,
   rest,
 }
 
@@ -110,6 +113,24 @@ class CoachBook {
   final int? estimatedMinutes;
 }
 
+/// Dilbilgisi dersi (H-078): oynanan bölümde ya da okunan kitapta geçen,
+/// bitirilmemiş konu.
+class CoachGrammar {
+  const CoachGrammar({
+    required this.lessonId,
+    required this.titleTr,
+    required this.sourceTr,
+    this.minutes,
+  });
+
+  final String lessonId;
+  final String titleTr;
+
+  /// Gerekçedeki kaynak: '"The New Neighbour" bölümünde'.
+  final String sourceTr;
+  final int? minutes;
+}
+
 /// Öğrenme olayındaki hata (yalnızca `errorType` dolu olanlar).
 class ErrorObservation {
   const ErrorObservation({
@@ -141,6 +162,7 @@ class CoachInput {
     this.content = HiContent.empty,
     this.bookInProgress,
     this.bookToStart,
+    this.grammar,
   });
 
   /// UTC.
@@ -164,6 +186,9 @@ class CoachInput {
   /// Yarıda kalan kitap (son okunan) ve seviyede okunmamış bir kitap.
   final CoachBook? bookInProgress;
   final CoachBook? bookToStart;
+
+  /// Hikâyede geçen, bitirilmemiş dilbilgisi konusu (H-078).
+  final CoachGrammar? grammar;
 }
 
 /// Kurallar sırayla denenir; ilk tutan öneri döner (her zaman bir öneri var).
@@ -250,6 +275,19 @@ HiSuggestion suggestToday(CoachInput i) {
       actionLabel: HiTexts.startBookAction,
       actionRoute: '/kitap/${sb.bookId}?mod=dinle',
       minutes: sb.estimatedMinutes,
+    );
+  }
+
+  // i) Hikâyede geçen dilbilgisi konusu (H-078; düşük öncelik).
+  final g = i.grammar;
+  if (g != null) {
+    return HiSuggestion(
+      kind: HiSuggestionKind.grammarSuggest,
+      title: HiTexts.grammarTitle(g.titleTr),
+      reasonTr: HiTexts.grammarReason(g.sourceTr, g.minutes, goal),
+      actionLabel: HiTexts.grammarAction,
+      actionRoute: '/dilbilgisi/${g.lessonId}',
+      minutes: g.minutes,
     );
   }
 

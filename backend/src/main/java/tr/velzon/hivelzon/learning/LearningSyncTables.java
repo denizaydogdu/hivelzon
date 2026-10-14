@@ -50,12 +50,12 @@ public class LearningSyncTables implements SyncTableProvider {
     public List<SyncTable> syncTables() {
         return List.of(
                 new SyncTable(NOTEBOOK_ITEMS, 100, Kind.MUTABLE, List.of(ITEM_KEY), UPDATED_AT, List.of(
-                        oneOf("kind", "kind", true, "word", "phrase", "sentence"),
+                        oneOf("kind", "kind", true, "word", "phrase", "sentence", "rule"),
                         string("textEn", "text_en", true, 300),
                         string("textTr", "text_tr", false, 300),
                         string("exampleEn", "example_en", false, 500),
                         string("exampleTr", "example_tr", false, 500),
-                        string("contentId", "content_id", false, 32),
+                        string("contentId", "content_id", false, 64),
                         string("cueId", "cue_id", false, 64),
                         string("imagePath", "image_path", false, 200),
                         string("imageCrop", "image_crop", false, 64),
@@ -65,7 +65,7 @@ public class LearningSyncTables implements SyncTableProvider {
                         decimal("exampleStart", "example_start", false),
                         decimal("exampleEnd", "example_end", false),
                         oneOf("source", "source", true, "auto_target_phrase", "user_saved", "lookup", "topic_set",
-                                "book"),
+                                "book", "grammar"),
                         string("sourceTitle", "source_title", false, 200),
                         instant("createdAt", "created_at", true))),
                 new SyncTable(REVIEW_CARDS, 110, Kind.MUTABLE, List.of(ITEM_KEY), UPDATED_AT, List.of(
@@ -87,7 +87,7 @@ public class LearningSyncTables implements SyncTableProvider {
                         integer("durationMs", "duration_ms", false, 0, 86_400_000),
                         bool("wasNew", "was_new", true))),
                 new SyncTable("learning_events", 130, Kind.APPEND_ONLY, List.of(), null, List.of(
-                        string("contentId", "content_id", true, 32),
+                        string("contentId", "content_id", true, 64),
                         string("sourceId", "source_id", true, 64),
                         string("target", "target", true, 300),
                         instant("at", "at", true),
@@ -101,8 +101,8 @@ public class LearningSyncTables implements SyncTableProvider {
                         List.of(oneOf("status", "status", true, "seen", "done", "dismissed", "read", "cleared"))),
                 // H-055: yalnızca sonuç. Ses ve tanıma yazısı alanı yoktur; gönderilirse reddedilir.
                 new SyncTable("speech_attempts", 150, Kind.APPEND_ONLY, List.of(), null, List.of(
-                        oneOf("place", "place", true, "review", "meaning", "decision", "episode_end"),
-                        string("contentId", "content_id", false, 32),
+                        oneOf("place", "place", true, "review", "meaning", "decision", "episode_end", "grammar"),
+                        string("contentId", "content_id", false, 64),
                         string("itemRef", "item_ref", true, 300),
                         oneOf("matchLevel", "match_level", true, "full", "close", "no"),
                         integer("missingCount", "missing_count", true, 0, 100),

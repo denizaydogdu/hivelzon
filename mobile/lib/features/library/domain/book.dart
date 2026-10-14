@@ -5,6 +5,7 @@
 // başına görelidir. Hizalama yoksa `start`/`end` null'dur: kitap yalnızca
 // sessiz okunur.
 
+import '../../../shared/content/content_source.dart' show grammarTopicsOf;
 import '../../../shared/meaning/meaning_text.dart';
 
 /// Kitaplık seviyeleri (C2 yalnız Kitaplık'ta; `KITAPLIK.md` §2).
@@ -87,6 +88,7 @@ class BookSummary {
     this.pageCount,
     this.chapterCount,
     this.firstChapterAudio,
+    this.grammarTopics = const [],
   });
 
   factory BookSummary.fromJson(Map<String, dynamic> j) => BookSummary(
@@ -100,6 +102,7 @@ class BookSummary {
     pageCount: (j['pageCount'] as num?)?.toInt(),
     chapterCount: (j['chapters'] as num?)?.toInt(),
     firstChapterAudio: j['firstChapterAudio'] as bool?,
+    grammarTopics: grammarTopicsOf(j['grammarTopics']),
   );
 
   final String id;
@@ -120,6 +123,9 @@ class BookSummary {
 
   /// "Bana bir kitap oku" sesli açar: ilk bölümünün sesi olan kitap önce.
   bool get startsWithAudio => firstChapterAudio ?? true;
+
+  /// Kitapta geçen dilbilgisi konuları (G-ID; H-077 `grammarTopics`).
+  final List<String> grammarTopics;
 
   /// `A2-K03` → `A2`.
   static String levelOf(String id) => id.split('-').first;
@@ -359,6 +365,7 @@ class Book {
     this.cover,
     this.estimatedMinutes,
     this.contentVersion = 1,
+    this.grammarTopics = const [],
   }) {
     for (var i = 0; i < pages.length; i++) {
       _pageIndex[pages[i].id] = i;
@@ -412,6 +419,7 @@ class Book {
       cover: bookJson['cover'] as String?,
       estimatedMinutes: (bookJson['estimatedMinutes'] as num?)?.round(),
       contentVersion: (bookJson['contentVersion'] as num?)?.toInt() ?? 1,
+      grammarTopics: grammarTopicsOf(bookJson['grammarTopics']),
       palette: BookPalette.fromJson(bookJson['palette']),
       chapters: chapters,
       pages: pages,
@@ -427,6 +435,9 @@ class Book {
   final String? cover;
   final int? estimatedMinutes;
   final int contentVersion;
+
+  /// Kitapta geçen dilbilgisi konuları (G-ID; H-077).
+  final List<String> grammarTopics;
   final BookPalette palette;
   final List<BookChapter> chapters;
   final List<BookPage> pages;

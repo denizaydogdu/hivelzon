@@ -37,7 +37,8 @@ CardAudioPlayer createCardAudio(WidgetRef ref) {
 bool isRemovable(NotebookItem item) =>
     item.source == NotebookSource.userSaved ||
     item.source == NotebookSource.topicSet ||
-    item.source == NotebookSource.book;
+    item.source == NotebookSource.book ||
+    item.source == NotebookSource.grammar;
 
 /// Tekrar oturumunu açar; dönünce sayılar yenilenir.
 Future<void> openReview(BuildContext context, WidgetRef ref) async {
@@ -270,7 +271,8 @@ class _NotebookScreenState extends ConsumerState<NotebookScreen> {
     final f = _filter;
     bool source(NotebookItem i) => switch (f) {
       null => true,
-      'story' => i.source != NotebookSource.book,
+      'story' =>
+        i.source != NotebookSource.book && i.source != NotebookSource.grammar,
       _ => i.source == NotebookSource.book && 'book:${i.contentId}' == f,
     };
     final list = [

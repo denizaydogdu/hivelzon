@@ -15,6 +15,8 @@ import '../../../shared/meaning/notebook_repository.dart';
 import '../../../shared/speech/speech_providers.dart';
 import '../../../shared/ui/ui.dart';
 import '../../../shared/widgets/skeleton.dart';
+import '../../grammar/application/grammar_providers.dart';
+import '../../grammar/presentation/grammar_lesson_screen.dart';
 import '../../speak/speak_env.dart';
 import '../application/library_providers.dart';
 import '../application/reader_controller.dart';
@@ -31,9 +33,20 @@ import 'widgets/end_of_book_view.dart';
 /// kalınan cümleden okumaya başlar. Yarıda kalan kitap kaldığı cümleden açılır;
 /// biten kitap baştan açılır (durumu "bitti" kalır).
 class ReaderScreen extends ConsumerStatefulWidget {
-  const ReaderScreen({super.key, required this.bookId, this.listen = true});
+  const ReaderScreen({
+    super.key,
+    required this.bookId,
+    this.listen = true,
+    this.startPage,
+    this.startSentence,
+  });
 
   final String bookId;
+
+  /// Bu sayfada (`p03`) ve cümlede (`p03-s02`) açılır (H-078: dilbilgisi
+  /// dersinde "Hikâyede gör"); verilmezse kalınan yerden.
+  final String? startPage;
+  final String? startSentence;
 
   /// Sesli açılsın mı (kitabın sesi yoksa sessiz açılır).
   final bool listen;
@@ -89,6 +102,15 @@ class _ReaderScreenState extends ConsumerState<ReaderScreen> {
       if (p != null && !p.isCompleted && p.pageNumber != null) {
         final pi = book.pages.indexWhere((x) => x.number == p.pageNumber);
         if (pi >= 0) start = ReaderPlace(pi, p.sentenceIndex ?? 0);
+      }
+      final linkPage = widget.startPage == null
+          ? -1
+          : book.pages.indexWhere((x) => x.id == widget.startPage);
+      if (linkPage >= 0) {
+        final si = book.pages[linkPage].sentences.indexWhere(
+          (x) => x.id == widget.startSentence,
+        );
+        start = ReaderPlace(linkPage, si < 0 ? 0 : si);
       }
       final source = ref.read(contentSourceProvider);
       final c = ReaderController(
@@ -265,13 +287,21 @@ class _ReaderScreenState extends ConsumerState<ReaderScreen> {
       ),
     );
     if (wordIndex != null) m.selectWord(wordIndex);
-    await showMeaningSheet(
+    final topic = await showMeaningSheet(
       context,
       m,
       speak: ref.read(speechVisibleProvider) ? speakEnvOf(context) : null,
+      structures: meaningStructures(ref, book.grammarTopics),
     );
     m.dispose();
     if (!mounted) return;
+    if (topic != null) {
+      // "Bu yapı ne?" (H-078): ders açılır; dönünce okuma duraklı kalır.
+      await c.resumeAfterSheet(false);
+      if (!mounted) return;
+      await playGrammarLessons(context, ref, [topic]);
+      return;
+    }
     await c.resumeAfterSheet(wasPlaying);
   }
 
@@ -456,6 +486,10 @@ class _ReaderScreenState extends ConsumerState<ReaderScreen> {
 
   @override
   Widget build(BuildContext context) {
+    // "Bu yapı ne?" için ders listesi hazır olsun (H-078).
+    if (_book?.grammarTopics.isNotEmpty ?? false) {
+      ref.watch(grammarLessonsOrEmptyProvider);
+    }
     final c = _c;
     final book = _book;
     final colors = _colors;
