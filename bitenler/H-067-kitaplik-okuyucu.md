@@ -1,6 +1,6 @@
 # H-067: Kitaplık ve okuyucu (mobil)
 
-- **Durum:** Devam ediyor (kod `main`'de: flutter 649/649, mvn 126/126; pilot kitaplarla simülatör denemesi ve kullanıcı onayı bekleniyor)
+- **Durum:** Bitti (2026-10-14; flutter 649/649, mvn 126/126; simülatörde pilotla denendi, kullanıcı onayladı)
 - **Tür:** Uygulama (kod)
 - **Faz:** Kitaplık K2 (`docs/KITAPLIK.md` §9)
 - **Bağımlılık:** H-066
@@ -46,3 +46,4 @@ Kendi dalında (`h-067-kitaplik-okuyucu`); `git revert`.
 - **Testler:** `cd mobile && flutter analyze && flutter test` (yeni: `test/features/library/*`, `test/features/hi/coach_books*_test.dart`, `test/shared/storage/schema6_migration_test.dart`, `test/shared/content/http_books_test.dart`, golden `test/goldens/h067_screens_golden_test.dart`); backend `cd backend && mvn -B verify` (`BookProgressSyncTest`). H-060 harita golden'ları seçici eklendiği için yenilendi.
 
 2026-10-14: Kullanıcı isteğiyle açıldı: "Bir dinleme hikâyesi olsun; yatakta 'A2 bir hikâye aç' diyebileyim, okumadığım bir kitap sesli okunsun, ekranda renkli kitap gibi görünsün, okunan cümle işaretlensin, dokununca Türkçesi çıksın, durdurabileyim, sesi kapatıp kendim de okuyabileyim; okuduklarım ve yarıda kalanlar takip edilsin; her seviyeden 5, toplam 30 ilgi çekici kitap." Ek istek: bilmediği kelimeleri Defter'e ekleyip sonra çalışabilmeli. Kararlar (önerilenler onaylandı): önce 2 pilot kitap resimli, ElevenLabs önce pilotla, kısa kitap, bağımsız karışık türler. Ayrıntı: `docs/KITAPLIK.md`.
+2026-10-14 (kullanıcı kararları, pilot sonrası): Kitaplık ve pilot onaylandı. Uzun basma: sesli modda kelime → Defter'e ekle, sessiz modda cümle → yalnız o cümleyi seslendir. Kalan 28 kitabın resim yoğunluğu: **kapak + bölüm başı** (~180 görsel ≈ 90 kr; Higgsfield kredi yüklemesi gerekir, her dalgadan önce maliyet onayı). Ses: **ElevenLabs Creator (~22 USD/ay, ~100 bin karakter, ticari)**; hesabı kullanıcı açar, anahtar repo dışında; A2-K03 sesi ve pilot A1 sesi bu hesapla (ticari) yeniden üretilir.

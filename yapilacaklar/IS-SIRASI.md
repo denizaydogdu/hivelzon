@@ -138,9 +138,9 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 |---|---|---|---|---|---|
 | K0 | H-065 | Kitaplık kararları ve 30 kitaplık katalog | Yüksek | — | ✅ |
 | K1 | H-066 | Kitap paketi ve içerik boru hattı (book-lint, C1/C2 listesi, TTS betiği) | Yüksek | H-065 | ✅ |
-| K2 | H-067 | Kitaplık ve okuyucu (sesli/sessiz, cümle vurgusu, Defter'e ekle) | Yüksek | H-066 | 🔄 |
+| K2 | H-067 | Kitaplık ve okuyucu (sesli/sessiz, cümle vurgusu, Defter'e ekle) | Yüksek | H-066 | ✅ |
 | K3 | H-068 | Arka planda dinleme ve kilit ekranı | Orta | H-067 | ⏳ |
-| K4 | H-069 | Pilot kitaplar A1 + A2 (≈ 15 kr görsel, maliyet onayı önce) | Yüksek | H-065, H-066, H-067 | 🔄 |
+| K4 | H-069 | Pilot kitaplar A1 + A2 (≈ 15 kr görsel, maliyet onayı önce) | Yüksek | H-065, H-066, H-067 | ✅ |
 | K5 | H-070 | Kitaplık arka ucu (BOOK, C2, onay) | Orta | H-066 | ⏳ |
 | K6 | H-071 | Kitap dalgası 1: A1 + A2 (kalan 8) | Orta | H-069 | ⏳ |
 | K7 | H-072 | Kitap dalgası 2: B1 + B2 (10) | Orta | H-071 | ⏳ |
@@ -156,6 +156,8 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 ## Biten işler
 | İş | Başlık | Bitiş | Doğrulama |
 |---|---|---|---|
+| H-069 | Pilot kitaplar (A1 + A2) | 2026-10-14 | The Blue Door (metin, çeviri, 12 görsel, ses Sarah, 105 k/dk) ve The Parrot Who Told Everything (metin, çeviri, 15 görsel; ses Creator planıyla); 27 görsel 14 kr; simülatörde denendi, kullanıcı onayladı |
+| H-067 | Kitaplık ve okuyucu | 2026-10-14 | Macera · Kitaplık, raflar, Bana bir kitap oku, okuyucu (sesli/sessiz, cümle vurgusu, otomatik sayfa, hız, uyku zamanlayıcısı), anlam paneli, Defter'e ekle (kaynak satırı), kitap ilerlemesi eşitlemesi (Drift v6, V8), Hi önerisi; flutter 649, mvn 126; kullanıcı onayladı |
 | H-061 | Defter, Kelime tekrarı, Konu seti, Sahne avı tasarımı | 2026-10-14 | Tek satır biçimli Defter (kaynak satırı), sakin doğru/Bilmiyorum geri bildirimi + hafif haptic, özet StatRow + sakin kutlama, illüstrasyonlu boş durumlar, ortak DontKnowButton; flutter test 581/581; kullanıcı onayladı |
 | H-066 | Kitap paketi ve içerik boru hattı | 2026-10-14 | `book.json`/`pages.json` şeması, `book_lint.py` (A1–C2, kapsama, cümle, çeviri, hizalama), `export_book.py` (-16 LUFS, WebP, manifest), `tts_book.py` (varsayılan kuru çalışma, tavansız çalışmaz, idempotent, anahtar yalnız ortamdan), dev sunucuda `/books/`; pytest 151/151 |
 | H-065 | Kitaplık kararları ve 30 kitaplık katalog | 2026-10-14 | `kitaplar/KATALOG.md` (6 seviye × 5 tür) kullanıcı onaylı; pilot A1-K01 + A2-K03; yerleşim Hikâye sekmesinde "Macera · Kitaplık" |
@@ -364,3 +366,4 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
   - Kullanıcı H-061'i onayladı (özet sayısı kalır; titreşim ayarı H-064'e; "Bölüm N'den ekledin" H-067'ye). H-061 bitti. H-067 okuyucu ayrı dalda başladı.
   - Pilot kitaplar: metin + çeviri onaylı; 27 görsel üretildi (14 kr; kredi 46,06); A1 sesi Sarah ile (3.880 karakter, ücretsiz kota). A1 hızı 144–168 k/dk → cümle arası duraklarla düzeltme ayrı dalda.
   - H-067 ayrı dalda yapıldı ve `main`'e birleştirildi (flutter 649, mvn 126, pytest 153): Macera · Kitaplık, okuyucu, Defter'e ekleme, kitap ilerlemesi eşitlemesi, Hi önerisi. Pilotla simülatör denemesi bekleniyor.
+  - Pilot simülatörde denendi (vurgu, otomatik sayfa, anlam paneli çalışıyor). Kullanıcı H-067 ve pilotu onayladı. Kararlar: uzun basma sesli/sessiz moda göre; kalan kitaplarda kapak + bölüm başı resim (~90 kr, kredi yüklemesi gerekir); ses ElevenLabs Creator (kullanıcı hesabı açacak). Sıradaki: H-062 oynatıcı tasarımı; kitap dalgası 1 (H-071) metinleri paralel.
