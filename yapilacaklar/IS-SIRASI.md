@@ -418,3 +418,4 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
   - Kullanıcı onayları: Keşfet (13 altı da 20 dk), H-083 (b) yolu, B1+B2 kitap metinleri ve çevirileri. B1 görselleri (28, ~14 kr) üretime alındı; B2 görselleri (31, ~15,5 kr) kredi yüklemesi bekliyor.
   - H-084 açıldı: B2 görselleri 15,06 krediye sığsın diye 30/31 üretiliyor; B2-K01 p13 (4. bölüm başı) kredi yüklenince tamamlanacak.
   - H-064 tasarım kalite turu bitti (924 test). Tasarım yenilemesi (Adım 6) H-057…H-064 tamamlandı.
+  - Üçüncü ücretsiz ElevenLabs hesabı (kullanıcının arkadaşının; anahtar repo dışında `~/.config/hivelzon/elevenlabs-3.env`, defter `elevenlabs-hesap3-karakter.json`): A1-K04 ve A1-K05 seslendirildi; A1 dilbilgisinin 16 dersinin hepsi İngilizce örnekleriyle sesli. Sesli kitap: 5/20.
