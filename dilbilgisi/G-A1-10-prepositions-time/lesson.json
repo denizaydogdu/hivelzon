@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "id": "G-A1-10-prepositions-time",
+  "level": "A1",
+  "titleTr": "Saat ve gün: at / on / in, What time is it?",
+  "titleEn": "Prepositions of time",
+  "goalTr": "Saati at, günü on, sabah ve akşamı in ile söylersin; saati sorar, It's … o'clock diye cevap verirsin.",
+  "prerequisites": ["G-A1-01-to-be", "G-A1-09-prepositions-place"],
+  "contentVersion": 1,
+  "status": "DRAFT",
+  "aiGenerated": true,
+  "teacherReview": null,
+  "linksTo": { "episodes": ["A1-004"], "books": ["A1-K01", "A1-K02"] },
+  "properNouns": ["English", "History", "Ece"],
+  "pronunciations": [{ "term": "Alex", "say_as": "Aleks" }],
+  "narration": { "tr": { "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı" } }
+}

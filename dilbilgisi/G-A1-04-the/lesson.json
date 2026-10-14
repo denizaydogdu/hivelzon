@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "id": "G-A1-04-the",
+  "level": "A1",
+  "titleTr": "the: ikimizin bildiği şey",
+  "titleEn": "The definite article the",
+  "goalTr": "Konuşanın ve dinleyenin bildiği, daha önce söz edilen ya da tek olan şey için the kullanırsın; ilk söz edişte a, sonra the dersin.",
+  "prerequisites": ["G-A1-03-a-an"],
+  "contentVersion": 1,
+  "status": "DRAFT",
+  "aiGenerated": true,
+  "teacherReview": null,
+  "linksTo": { "episodes": ["A1-001", "A1-003", "A1-005"], "books": ["A1-K01"] },
+  "properNouns": [],
+  "pronunciations": [{ "term": "Alex", "say_as": "Aleks" }],
+  "narration": { "tr": { "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı" } }
+}

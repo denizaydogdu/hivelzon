@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "id": "G-A1-05-pronouns-possessives",
+  "level": "A1",
+  "titleTr": "he / she / it, me / him / her, my / your / his / her ve 's",
+  "titleEn": "Pronouns and possessives",
+  "goalTr": "Özne, nesne ve sahiplik kelimelerini kişiye ve cinsiyete göre seçersin; 's ile sahiplik söylersin.",
+  "prerequisites": ["G-A1-01-to-be"],
+  "contentVersion": 1,
+  "status": "DRAFT",
+  "aiGenerated": true,
+  "teacherReview": null,
+  "linksTo": { "episodes": ["A1-001", "A1-002", "A1-007"], "books": ["A1-K01", "A1-K03"] },
+  "properNouns": ["Maya", "Sam", "Elif", "Zeynep", "Aleyna", "Lina", "Ravi"],
+  "pronunciations": [{ "term": "Alex", "say_as": "Aleks" }],
+  "narration": { "tr": { "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı" } }
+}

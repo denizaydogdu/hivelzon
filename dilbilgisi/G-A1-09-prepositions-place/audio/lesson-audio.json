@@ -1,0 +1,436 @@
+{
+ "schemaVersion": 1,
+ "lessonId": "G-A1-09-prepositions-place",
+ "voices": {
+  "tr": {
+   "model": "alania-v2",
+   "voice": "alania2-f1",
+   "timing": "duyu-1",
+   "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+  },
+  "en": {
+   "model": "eleven_v3",
+   "voice": "EXAVITQu4vr4xnSDxMaL",
+   "speed": 0.9
+  }
+ },
+ "cards": [
+  {
+   "card": "c01",
+   "type": "hook",
+   "segments": [
+    {
+     "id": "c01-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Maya, Alex'e haritada bir iskeleyi gösteriyor. Bu cümlede ilginç bir şey var. Yeri anlatan kelime ismin önünde duruyor.",
+     "textSha256": "1988e77a7014b1c36436d111e54ea3a0fed75851f743350018f76b819e596fd1",
+     "chars": 119,
+     "audio": "tr/c01-tr.mp3",
+     "align": "tr/c01-tr.align.json",
+     "present": true,
+     "duration": 7.36,
+     "quality": {
+      "words": 18,
+      "exact": 18,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c01-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "It's between Pier 2 and Pier 4.",
+     "textSha256": "72c105d51d933f1ac22d49a43a00bd047fa24b76ad8316584a59a4b83b6e5d47",
+     "chars": 31,
+     "audio": "en/c01-ex1.mp3",
+     "align": "en/c01-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c02",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c02-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Türkçede yer, isimden sonra gelen bir ekle ya da kelimeyle söylenir: masanın altında. İngilizcede sıra terstir. Yer kelimesi ismin önüne gelir.",
+     "textSha256": "744fa0abab8a68f56134fd06119c350daa9214dd8691792a970cdbfb644dcb0e",
+     "chars": 143,
+     "audio": "tr/c02-tr.mp3",
+     "align": "tr/c02-tr.align.json",
+     "present": true,
+     "duration": 10.75,
+     "quality": {
+      "words": 21,
+      "exact": 21,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c02-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "The cat is under the table.",
+     "textSha256": "8b6d6ef61a892426b185e4e5c064e1795afb11c6ec89ac42cd8f102948b2b0d0",
+     "chars": 27,
+     "audio": "en/c02-ex1.mp3",
+     "align": "en/c02-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c03",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c03-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "En sık kullanılan yer kelimeleri şunlar: içinde, üstünde, altında, yakınında, arasında ve arkasında. Her birini küçük bir resim gibi düşün. Arasında derken iki şeyi ve anlamındaki kelimeyle bağlarız.",
+     "textSha256": "33d8ed09c3e419b5f8708c6cb88554d700338b995d22bac7903eb3d5e0caf14e",
+     "chars": 199,
+     "audio": "tr/c03-tr.mp3",
+     "align": "tr/c03-tr.align.json",
+     "present": true,
+     "duration": 12.73,
+     "quality": {
+      "words": 28,
+      "exact": 28,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "The bag is behind the door.",
+     "textSha256": "40fbeafa27adbdd4dc08b7454c1960542c93123ddf62d26914f12d2ca0c8d7bc",
+     "chars": 27,
+     "audio": "en/c03-ex1.mp3",
+     "align": "en/c03-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c03-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "It's between the bank and the café.",
+     "textSha256": "a64a82ab58776654db479043ff04f8c39e7cecf33f9f24e495f79a4faea889fa",
+     "chars": 35,
+     "audio": "en/c03-ex2.mp3",
+     "align": "en/c03-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c04",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c04-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Türkçedeki tek bir ek, İngilizcede farklı kelimelere ayrılır. Bir şeyin içindeysen bir kelime, üstündeysen başka bir kelime kullanılır. Masada derken çoğu zaman üstünde demek isteriz.",
+     "textSha256": "a7ba327205f3394e373ca05eb6b1cc41bedb5435ce5b553c7062af26f17d60b1",
+     "chars": 183,
+     "audio": "tr/c04-tr.mp3",
+     "align": "tr/c04-tr.align.json",
+     "present": true,
+     "duration": 12.19,
+     "quality": {
+      "words": 25,
+      "exact": 23,
+      "fuzzy": 2,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c04-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "The keys are in the bag.",
+     "textSha256": "47dc5110b0b5c826dfae32e896ca9bd9f57ead0c000767cc7578902060313b88",
+     "chars": 24,
+     "audio": "en/c04-ex1.mp3",
+     "align": "en/c04-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "The keys are on the table.",
+     "textSha256": "495156bf6ccd679df378ce8abdd6421dc54a00a4a69d22653523e65fada3d5c5",
+     "chars": 26,
+     "audio": "en/c04-ex2.mp3",
+     "align": "en/c04-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c05",
+   "type": "examples",
+   "segments": [
+    {
+     "id": "c05-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "The radio is on the desk.",
+     "textSha256": "76ce6f78a1f4b21245558b3b3e1fb4e0b48e45ceb7ddc5890ef062a7be505589",
+     "chars": 25,
+     "audio": "en/c05-ex1.mp3",
+     "align": "en/c05-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "The box is under the bed.",
+     "textSha256": "f5bbe6b0bd61e926cb861c7e0179671c1e8131572e56606a7eb86e76cd109337",
+     "chars": 25,
+     "audio": "en/c05-ex2.mp3",
+     "align": "en/c05-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "My house is near the park.",
+     "textSha256": "c3ff8fb22166c1a76cef842f58171b126a70b83d30295b9ef3116af9591476c0",
+     "chars": 26,
+     "audio": "en/c05-ex3.mp3",
+     "align": "en/c05-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex4",
+     "lang": "en",
+     "role": "example",
+     "text": "The pen is in the box.",
+     "textSha256": "f147fb04bee48eeb888f50241b05882e5e4532da0e5420e57d92af775ff4c288",
+     "chars": 22,
+     "audio": "en/c05-ex4.mp3",
+     "align": "en/c05-ex4.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex5",
+     "lang": "en",
+     "role": "example",
+     "text": "The cat is behind the sofa.",
+     "textSha256": "2a7653a34b3c963d2e6e37fe0890cd2425b9edfd844cb75eb105c981120b71e7",
+     "chars": 27,
+     "audio": "en/c05-ex5.mp3",
+     "align": "en/c05-ex5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c06",
+   "type": "contrast",
+   "segments": [
+    {
+     "id": "c06-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Türkçede yer sözü ismin arkasından gelir: limanın yakınında. Bu yüzden İngilizcede de aynı sırayla söylemek çok olağan. Yer kelimesini hep ismin önüne koy.",
+     "textSha256": "8653c3a099d1e10f0f2690a309f802e75bd8aeefd3d88288fe048ab3038686d1",
+     "chars": 155,
+     "audio": "tr/c06-tr.mp3",
+     "align": "tr/c06-tr.align.json",
+     "present": true,
+     "duration": 9.63,
+     "quality": {
+      "words": 23,
+      "exact": 23,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c06-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "near the station",
+     "textSha256": "e857b90d36b6f0c9480b2526d45ad2340c50344e895ef22d7d42e9cfea819bb8",
+     "chars": 16,
+     "audio": "en/c06-ex1.mp3",
+     "align": "en/c06-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c06-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "The book is on the desk.",
+     "textSha256": "0a47440c4f6c9747ff2833f47144e1d6ff8664e5eccab44d6509f7bbe93ab347",
+     "chars": 24,
+     "audio": "en/c06-ex2.mp3",
+     "align": "en/c06-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c07",
+   "type": "practice",
+   "segments": [
+    {
+     "id": "c07-q5",
+     "lang": "en",
+     "role": "say",
+     "text": "The box is under the bed.",
+     "textSha256": "f5bbe6b0bd61e926cb861c7e0179671c1e8131572e56606a7eb86e76cd109337",
+     "chars": 25,
+     "audio": "en/c07-q5.mp3",
+     "align": "en/c07-q5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c08",
+   "type": "seeInStory",
+   "segments": [
+    {
+     "id": "c08-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Yer kelimeleri hikâyede ve kitaplarda çok geçiyor. Şu cümlelere bir daha bak.",
+     "textSha256": "8a23b0458a2fb518991f06048798535b166af71ed61b21619d87104bfd483fe5",
+     "chars": 77,
+     "audio": "tr/c08-tr.mp3",
+     "align": "tr/c08-tr.align.json",
+     "present": true,
+     "duration": 4.96,
+     "quality": {
+      "words": 12,
+      "exact": 11,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    }
+   ]
+  },
+  {
+   "card": "c09",
+   "type": "rule",
+   "segments": [
+    {
+     "id": "c09-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Yer kelimesi ismin önüne gelir. Bir şeyin içindeyse bir kelime, üstündeyse başka bir kelime kullanılır.",
+     "textSha256": "e62409ee41e8c60ab3e760748e90e7d8ae51bf1865c5edabf387b9b10123dcc3",
+     "chars": 103,
+     "audio": "tr/c09-tr.mp3",
+     "align": "tr/c09-tr.align.json",
+     "present": true,
+     "duration": 7.84,
+     "quality": {
+      "words": 15,
+      "exact": 15,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c09-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "The radio is on the desk.",
+     "textSha256": "76ce6f78a1f4b21245558b3b3e1fb4e0b48e45ceb7ddc5890ef062a7be505589",
+     "chars": 25,
+     "audio": "en/c09-ex1.mp3",
+     "align": "en/c09-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  }
+ ]
+}

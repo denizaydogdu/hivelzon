@@ -1,0 +1,462 @@
+{
+ "schemaVersion": 1,
+ "lessonId": "G-A1-07-can",
+ "voices": {
+  "tr": {
+   "model": "alania-v2",
+   "voice": "alania2-f1",
+   "timing": "duyu-1",
+   "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+  },
+  "en": {
+   "model": "eleven_v3",
+   "voice": "EXAVITQu4vr4xnSDxMaL",
+   "speed": 0.9
+  }
+ },
+ "cards": [
+  {
+   "card": "c01",
+   "type": "hook",
+   "segments": [
+    {
+     "id": "c01-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Telsizden bir ses geliyor ve Alex'e bir şey soruyor. Bu cümlede ilginç bir şey var. Türkçede fiile bir ek yapışır, İngilizcede ise ayrı bir kelime başa geçer.",
+     "textSha256": "145d180bc0646f34735ab5b45daa35a0d41ec85bedeb3637a390b1fce432c365",
+     "chars": 158,
+     "audio": "tr/c01-tr.mp3",
+     "align": "tr/c01-tr.align.json",
+     "present": true,
+     "duration": 10.39,
+     "quality": {
+      "words": 27,
+      "exact": 27,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c01-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "Can you hear me?",
+     "textSha256": "37e79c35d4fee75c4b225c6b8caa30481e72868356f37bd2f53c43aac43e9a29",
+     "chars": 16,
+     "audio": "en/c01-ex1.mp3",
+     "align": "en/c01-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c02",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c02-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Türkçede yapabilmek için fiile bir ek gelir: yüzebilirim. İngilizcede fiilin önüne ayrı bir kelime konur. Bu kelime kişiye göre değişmez, fiil de yalın kalır.",
+     "textSha256": "ffda19b8e5574e030a4ff7de36a3249386fd7a5ce1329365199e886d80a03e60",
+     "chars": 158,
+     "audio": "tr/c02-tr.mp3",
+     "align": "tr/c02-tr.align.json",
+     "present": true,
+     "duration": 12.67,
+     "quality": {
+      "words": 24,
+      "exact": 24,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c02-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I can swim.",
+     "textSha256": "4dfec7b6fe858196c65db7ad167795d8367fda06fd74f3f9f220f511bfa9a8c1",
+     "chars": 11,
+     "audio": "en/c02-ex1.mp3",
+     "align": "en/c02-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c02-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "She can swim.",
+     "textSha256": "bd2d7cace91ee2eb27e2f653a12a4c3d979f7fde4c97b54dbe6390e118d8c879",
+     "chars": 13,
+     "audio": "en/c02-ex2.mp3",
+     "align": "en/c02-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c03",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c03-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Yapamadığını söylerken bu kelimenin olumsuz biçimi kullanılır. Konuşurken bu biçim çoğu zaman kısalır. Fiil yine yalın kalır.",
+     "textSha256": "beca484e0db49123a368c5375939ebcac7f7d17e1bc781869d52861c1fff2fff",
+     "chars": 125,
+     "audio": "tr/c03-tr.mp3",
+     "align": "tr/c03-tr.align.json",
+     "present": true,
+     "duration": 8.0,
+     "quality": {
+      "words": 17,
+      "exact": 17,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I can't swim.",
+     "textSha256": "7ada9beab290cf53517324f701cf09bc1cef4d854ad6fdb9338b10742ef3eafc",
+     "chars": 13,
+     "audio": "en/c03-ex1.mp3",
+     "align": "en/c03-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c03-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "He can't walk fast.",
+     "textSha256": "9e90eb72593da91285d5e509fb928e9b037657e6a8df3c6d1c97b0c17d09e2f5",
+     "chars": 19,
+     "audio": "en/c03-ex2.mp3",
+     "align": "en/c03-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c04",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c04-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Soru sorarken bu kelime kişinin önüne geçer. Rica ederken ve izin isterken de aynı soruyu sorarız. Kısa cevapta fiil tekrar edilmez, yalnız bu kelime söylenir.",
+     "textSha256": "6348cb098d21ef1e651e9487b93f3191bd0b8c81faf784bc7680abe1fb956642",
+     "chars": 159,
+     "audio": "tr/c04-tr.mp3",
+     "align": "tr/c04-tr.align.json",
+     "present": true,
+     "duration": 11.87,
+     "quality": {
+      "words": 25,
+      "exact": 24,
+      "fuzzy": 0,
+      "weak": 1,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 1,
+      "score": 0.96,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c04-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "Can I have a tea, please?",
+     "textSha256": "3cd420f5ca93599a0afb6b9460e57a272838df711370a5fa2fa98bf3aecfe67a",
+     "chars": 25,
+     "audio": "en/c04-ex1.mp3",
+     "align": "en/c04-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "Can you help me? Yes, I can.",
+     "textSha256": "946856fcf2768adef4ca68077d666775d8e7ff5e728b761d093998618db718fd",
+     "chars": 28,
+     "audio": "en/c04-ex2.mp3",
+     "align": "en/c04-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c05",
+   "type": "examples",
+   "segments": [
+    {
+     "id": "c05-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "My brother can't swim.",
+     "textSha256": "e03d51d2675bc601390eed63d1e0fe4e9656aa815406673efda98428121de41c",
+     "chars": 22,
+     "audio": "en/c05-ex1.mp3",
+     "align": "en/c05-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "Can you help me, please?",
+     "textSha256": "8266f9d07e530dee2fa934fd340022f956bd258d92193de5b3d9174d6748b1da",
+     "chars": 24,
+     "audio": "en/c05-ex2.mp3",
+     "align": "en/c05-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "She can speak English.",
+     "textSha256": "0a568186027ca0603b1b982356c7a36fafb0b1257758e006dab6a228c2c3b509",
+     "chars": 22,
+     "audio": "en/c05-ex3.mp3",
+     "align": "en/c05-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex4",
+     "lang": "en",
+     "role": "example",
+     "text": "Can I open the window?",
+     "textSha256": "7a2478852c8366df88c63230db01cb4aeb5e1c211cdc2825069c262ddddec3f7",
+     "chars": 22,
+     "audio": "en/c05-ex4.mp3",
+     "align": "en/c05-ex4.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex5",
+     "lang": "en",
+     "role": "example",
+     "text": "I can see the sea.",
+     "textSha256": "fc92fbc81f95af005f29810f3023e05301a9cc15ff1df37a54a2a120cd2ad395",
+     "chars": 18,
+     "audio": "en/c05-ex5.mp3",
+     "align": "en/c05-ex5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c06",
+   "type": "contrast",
+   "segments": [
+    {
+     "id": "c06-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Türkçede kısa cevapta fiili tekrar ederiz: evet, duyuyorum. İngilizcede ise soruda hangi kelime varsa cevapta da o kullanılır. Olmak fiiliyle cevap vermek çok olağan, zamanla oturur.",
+     "textSha256": "9783ab8c1493ea77dd07b015a28e13320b4ed2e160cb5a5d5e836b96968e571d",
+     "chars": 182,
+     "audio": "tr/c06-tr.mp3",
+     "align": "tr/c06-tr.align.json",
+     "present": true,
+     "duration": 12.83,
+     "quality": {
+      "words": 26,
+      "exact": 26,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c06-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "Yes, I can.",
+     "textSha256": "044feecf91a29253c1c0d9c9a3b23341db933f7d5028a72d8991f257cbb7d775",
+     "chars": 11,
+     "audio": "en/c06-ex1.mp3",
+     "align": "en/c06-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c06-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "She can swim.",
+     "textSha256": "bd2d7cace91ee2eb27e2f653a12a4c3d979f7fde4c97b54dbe6390e118d8c879",
+     "chars": 13,
+     "audio": "en/c06-ex2.mp3",
+     "align": "en/c06-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c06-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "I can swim.",
+     "textSha256": "4dfec7b6fe858196c65db7ad167795d8367fda06fd74f3f9f220f511bfa9a8c1",
+     "chars": 11,
+     "audio": "en/c06-ex3.mp3",
+     "align": "en/c06-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c07",
+   "type": "practice",
+   "segments": [
+    {
+     "id": "c07-q5",
+     "lang": "en",
+     "role": "say",
+     "text": "Yes, I can hear you.",
+     "textSha256": "aa8a38408553451e7647386e66d636170474fae36ce19bebb756d76be32fc3e4",
+     "chars": 20,
+     "audio": "en/c07-q5.mp3",
+     "align": "en/c07-q5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c08",
+   "type": "seeInStory",
+   "segments": [
+    {
+     "id": "c08-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Bu kelimeyi hikâyede çok duydun. Şu cümlelere bir daha bak.",
+     "textSha256": "e89a5c6a53f5df2f360dd4101fc83900fecde871c0fff9d9791c55e54d4be74b",
+     "chars": 59,
+     "audio": "tr/c08-tr.mp3",
+     "align": "tr/c08-tr.align.json",
+     "present": true,
+     "duration": 4.16,
+     "quality": {
+      "words": 10,
+      "exact": 10,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    }
+   ]
+  },
+  {
+   "card": "c09",
+   "type": "rule",
+   "segments": [
+    {
+     "id": "c09-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Yapabilmek için fiilin önüne ayrı bir kelime gelir. Bu kelime kişiye göre değişmez, fiil de yalın kalır. Kısa cevapta da aynı kelime kullanılır.",
+     "textSha256": "f0742249f2a30a9b3d76c2b846b1bc59bdaf4a0d6b03063872554fbd6f9e18b3",
+     "chars": 144,
+     "audio": "tr/c09-tr.mp3",
+     "align": "tr/c09-tr.align.json",
+     "present": true,
+     "duration": 10.43,
+     "quality": {
+      "words": 23,
+      "exact": 23,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c09-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "She can swim.",
+     "textSha256": "bd2d7cace91ee2eb27e2f653a12a4c3d979f7fde4c97b54dbe6390e118d8c879",
+     "chars": 13,
+     "audio": "en/c09-ex1.mp3",
+     "align": "en/c09-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  }
+ ]
+}

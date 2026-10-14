@@ -1,0 +1,423 @@
+{
+ "schemaVersion": 1,
+ "lessonId": "G-A1-12-word-order-svo",
+ "voices": {
+  "tr": {
+   "model": "alania-v2",
+   "voice": "alania2-f1",
+   "timing": "duyu-1",
+   "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+  },
+  "en": {
+   "model": "eleven_v3",
+   "voice": "EXAVITQu4vr4xnSDxMaL",
+   "speed": 0.9
+  }
+ },
+ "cards": [
+  {
+   "card": "c01",
+   "type": "hook",
+   "segments": [
+    {
+     "id": "c01-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Lina'nın annesi yeni eve kutular taşıyor. Bu cümlede ilginç bir şey var. Fiil sonda değil, kişinin hemen arkasında duruyor.",
+     "textSha256": "137609ef5b289f69351fff44f99866c1a2422ea4c6861bfacf7f7f9220ead5f1",
+     "chars": 123,
+     "audio": "tr/c01-tr.mp3",
+     "align": "tr/c01-tr.align.json",
+     "present": true,
+     "duration": 7.84,
+     "quality": {
+      "words": 19,
+      "exact": 18,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c01-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "Mum carries boxes into the flat.",
+     "textSha256": "d8e8e79a856e0e8618a2717e9f58fb5ff1587e4e63f98133bc0f7e58aededa0b",
+     "chars": 32,
+     "audio": "en/c01-ex1.mp3",
+     "align": "en/c01-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c02",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c02-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Türkçede fiil cümlenin sonuna gelir: ben çay içerim. İngilizcede fiil kişinin hemen arkasından gelir. Fiilden sonra da nesne, yani neyi sorusunun cevabı gelir.",
+     "textSha256": "96fd37242d9f2be21b1cb6a055b7040e02e73349687fdc3ec91d2fefc48525a3",
+     "chars": 159,
+     "audio": "tr/c02-tr.mp3",
+     "align": "tr/c02-tr.align.json",
+     "present": true,
+     "duration": 10.58,
+     "quality": {
+      "words": 23,
+      "exact": 22,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c02-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I drink tea.",
+     "textSha256": "5c669a424c49d9abef8457d802ccfe6fbed2df378bcf9a831fb32a65ed3ca3dd",
+     "chars": 12,
+     "audio": "en/c02-ex1.mp3",
+     "align": "en/c02-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c03",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c03-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Türkçede kimin ne yaptığını ekler gösterir, bu yüzden sırayı değiştirebiliriz. İngilizcede bu işi sıra yapar. Sıra değişirse anlam da değişir.",
+     "textSha256": "3a7164629855b91024f714b85db0bc6bed2437216402348d03a53b073beb5e46",
+     "chars": 142,
+     "audio": "tr/c03-tr.mp3",
+     "align": "tr/c03-tr.align.json",
+     "present": true,
+     "duration": 10.59,
+     "quality": {
+      "words": 20,
+      "exact": 20,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "The dog sees the cat.",
+     "textSha256": "d1b3a3eb30086c2ee0bb00e8a46aed38a1459fa916383c82589d2bf4a15f6394",
+     "chars": 21,
+     "audio": "en/c03-ex1.mp3",
+     "align": "en/c03-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c03-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "The cat sees the dog.",
+     "textSha256": "dd043b306bf45968ebf5cf5601026077ff6b1b6a15639177e255ddfe5eb82ba8",
+     "chars": 21,
+     "audio": "en/c03-ex2.mp3",
+     "align": "en/c03-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c04",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c04-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Yer ve zaman çoğunlukla cümlenin sonuna gelir. Önce yer, sonra zaman söylenir. Bu, Türkçedeki sıranın neredeyse tersidir.",
+     "textSha256": "0e8db7aad9b0e34614ecb52dc5ba2f62eab67f1a7aa152feb41a73612c81915a",
+     "chars": 121,
+     "audio": "tr/c04-tr.mp3",
+     "align": "tr/c04-tr.align.json",
+     "present": true,
+     "duration": 9.12,
+     "quality": {
+      "words": 17,
+      "exact": 17,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c04-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I drink tea at home every day.",
+     "textSha256": "a285ab82e5153264d0dd48009e437c2ebc7e781df8964ed21b0ef550aed7369a",
+     "chars": 30,
+     "audio": "en/c04-ex1.mp3",
+     "align": "en/c04-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c05",
+   "type": "examples",
+   "segments": [
+    {
+     "id": "c05-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I drink tea in the morning.",
+     "textSha256": "e6669daa7f52308f47a032f719cc22599db99de7024df000dcd2e63784633799",
+     "chars": 27,
+     "audio": "en/c05-ex1.mp3",
+     "align": "en/c05-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "Maya opens the shop at nine.",
+     "textSha256": "e3711a3aff1881373ca3d4003a18b21bb3913607794af8b0586f25d67eaa5a8e",
+     "chars": 28,
+     "audio": "en/c05-ex2.mp3",
+     "align": "en/c05-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "We play football in the park.",
+     "textSha256": "2ef6ab7f3df868970f9a5c773395dcb21dcb3bd95ec6b8f277d2b4b2d4018529",
+     "chars": 29,
+     "audio": "en/c05-ex3.mp3",
+     "align": "en/c05-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex4",
+     "lang": "en",
+     "role": "example",
+     "text": "My sister reads books every evening.",
+     "textSha256": "3250314edba0c09840d1fe7cee08164ee1a81a05d18f134e3c4656b32303f676",
+     "chars": 36,
+     "audio": "en/c05-ex4.mp3",
+     "align": "en/c05-ex4.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex5",
+     "lang": "en",
+     "role": "example",
+     "text": "I see Maya every day.",
+     "textSha256": "ac3c43554289bb8a45a952581048ab19e3ef80d132a11702cddab7fba180c2a6",
+     "chars": 21,
+     "audio": "en/c05-ex5.mp3",
+     "align": "en/c05-ex5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c06",
+   "type": "contrast",
+   "segments": [
+    {
+     "id": "c06-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Türkçe düşünürken fiili sona koymak çok doğal. İngilizcede ise fiil kişinin hemen arkasında durur. Önce kim, sonra ne yapıyor, sonra neyi diye sor.",
+     "textSha256": "d8b7d66ae905bfdfa61f56676645bd3ff4927d5368c982669ff747734cf59bfa",
+     "chars": 147,
+     "audio": "tr/c06-tr.mp3",
+     "align": "tr/c06-tr.align.json",
+     "present": true,
+     "duration": 10.59,
+     "quality": {
+      "words": 23,
+      "exact": 23,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c06-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I drink tea.",
+     "textSha256": "5c669a424c49d9abef8457d802ccfe6fbed2df378bcf9a831fb32a65ed3ca3dd",
+     "chars": 12,
+     "audio": "en/c06-ex1.mp3",
+     "align": "en/c06-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c06-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "I drink coffee every day.",
+     "textSha256": "171f3ab474badb7ec302d13cae6970544f882cb73c88705fabf5aff1a0fa3dd2",
+     "chars": 25,
+     "audio": "en/c06-ex2.mp3",
+     "align": "en/c06-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c07",
+   "type": "practice",
+   "segments": [
+    {
+     "id": "c07-q5",
+     "lang": "en",
+     "role": "say",
+     "text": "I drink tea in the morning.",
+     "textSha256": "e6669daa7f52308f47a032f719cc22599db99de7024df000dcd2e63784633799",
+     "chars": 27,
+     "audio": "en/c07-q5.mp3",
+     "align": "en/c07-q5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c08",
+   "type": "seeInStory",
+   "segments": [
+    {
+     "id": "c08-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Bu sırayı hikâyede ve kitaplarda çok duydun. Şu cümlelere bir daha bak.",
+     "textSha256": "2d81949401123ad3008fa794f70a65c9de0cd2c8b0fa511dfbe50671535b0a7d",
+     "chars": 71,
+     "audio": "tr/c08-tr.mp3",
+     "align": "tr/c08-tr.align.json",
+     "present": true,
+     "duration": 4.32,
+     "quality": {
+      "words": 12,
+      "exact": 11,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    }
+   ]
+  },
+  {
+   "card": "c09",
+   "type": "rule",
+   "segments": [
+    {
+     "id": "c09-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "İngilizcede sıra önce kişi, sonra fiil, sonra nesnedir. Yer ve zaman çoğunlukla sona gelir.",
+     "textSha256": "f7d5de45f2334ccf341da2d434d062e406c9c5912c452cbf60424686f7e2f088",
+     "chars": 91,
+     "audio": "tr/c09-tr.mp3",
+     "align": "tr/c09-tr.align.json",
+     "present": true,
+     "duration": 6.24,
+     "quality": {
+      "words": 14,
+      "exact": 14,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c09-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I drink tea every day.",
+     "textSha256": "905328f7fe6fa06eff6fd1df3729a72334ee91f9d4f6c995ae6a53ba74579e11",
+     "chars": 22,
+     "audio": "en/c09-ex1.mp3",
+     "align": "en/c09-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  }
+ ]
+}

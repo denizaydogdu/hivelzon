@@ -1,0 +1,423 @@
+{
+ "schemaVersion": 1,
+ "lessonId": "G-A1-04-the",
+ "voices": {
+  "tr": {
+   "model": "alania-v2",
+   "voice": "alania2-f1",
+   "timing": "duyu-1",
+   "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+  },
+  "en": {
+   "model": "eleven_v3",
+   "voice": "EXAVITQu4vr4xnSDxMaL",
+   "speed": 0.9
+  }
+ },
+ "cards": [
+  {
+   "card": "c01",
+   "type": "hook",
+   "segments": [
+    {
+     "id": "c01-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Telsizdeki ses, Alex'e bir buluşma yeri söylüyor. Bu cümlede ilginç bir şey var. Ses belli bir istasyondan söz ediyor, herhangi birinden değil.",
+     "textSha256": "861e44d72abcd04585213315380e0644b7c99e13f78cb598d1c8b86dd4a330f9",
+     "chars": 143,
+     "audio": "tr/c01-tr.mp3",
+     "align": "tr/c01-tr.align.json",
+     "present": true,
+     "duration": 9.93,
+     "quality": {
+      "words": 22,
+      "exact": 21,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c01-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "Meet me at the old station.",
+     "textSha256": "9242eb956cf0696bf5e030c6332ff460678d55951890a0e50738878376756b40",
+     "chars": 27,
+     "audio": "en/c01-ex1.mp3",
+     "align": "en/c01-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c02",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c02-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Konuşan da dinleyen de hangi şey olduğunu biliyorsa ismin önüne başka bir küçük kelime gelir. Anlamı aşağı yukarı şu bildiğimiz demektir. Türkçede bu kelimenin karşılığı yoktur.",
+     "textSha256": "a14ae1e6acedfbb86e01bdee769577221e288d5521ed5ae8636c1de58c12ed01",
+     "chars": 177,
+     "audio": "tr/c02-tr.mp3",
+     "align": "tr/c02-tr.align.json",
+     "present": true,
+     "duration": 10.88,
+     "quality": {
+      "words": 26,
+      "exact": 26,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    }
+   ]
+  },
+  {
+   "card": "c03",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c03-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Bir şeyi ilk kez söylerken bir anlamındaki kelimeyi kullanırız. Aynı şeyden yeniden söz edince kelime değişir. Çünkü artık ikimiz de hangisi olduğunu biliyoruz.",
+     "textSha256": "5bc5b00f6764e9fb9f49bbe559873e5de98503a5e77feb83d8d163c3487dac03",
+     "chars": 160,
+     "audio": "tr/c03-tr.mp3",
+     "align": "tr/c03-tr.align.json",
+     "present": true,
+     "duration": 9.47,
+     "quality": {
+      "words": 23,
+      "exact": 22,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 4,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I have a cat.",
+     "textSha256": "dcec1b9b3638698ad48766737542c1c818f54292a6ae1dadf6a92c8a45555f9f",
+     "chars": 13,
+     "audio": "en/c03-ex1.mp3",
+     "align": "en/c03-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c03-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "The cat is black.",
+     "textSha256": "8b2af896f0625e1da35ca8048a9b9b016d099d22a0c545382a4bd1c72313e5e7",
+     "chars": 17,
+     "audio": "en/c03-ex2.mp3",
+     "align": "en/c03-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c04",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c04-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Herkesin bildiği, tek olan şeyler için de bu kelime gelir: güneş ya da deniz gibi. Odadaki kapı da böyledir, çünkü hangisi olduğu belli.",
+     "textSha256": "bd9288834e4b8d36edfb556332a3477995195ee1f3231ad21e8f694b3274d9c5",
+     "chars": 136,
+     "audio": "tr/c04-tr.mp3",
+     "align": "tr/c04-tr.align.json",
+     "present": true,
+     "duration": 9.12,
+     "quality": {
+      "words": 23,
+      "exact": 23,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c04-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "The sun is hot today.",
+     "textSha256": "6b93369e272ee424eead511596f1764960fd787f9e45e6c512780308724f537a",
+     "chars": 21,
+     "audio": "en/c04-ex1.mp3",
+     "align": "en/c04-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "Can you close the door, please?",
+     "textSha256": "7df38bb1010b964b36e89dc1f7dadc464c426481fcd17007344749aefb8667ea",
+     "chars": 31,
+     "audio": "en/c04-ex2.mp3",
+     "align": "en/c04-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c05",
+   "type": "examples",
+   "segments": [
+    {
+     "id": "c05-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "Where is the old station?",
+     "textSha256": "197fbdee66010f8491326dcfccbe408893a9abeaaeaab1942fccbaf2dd9afcb8",
+     "chars": 25,
+     "audio": "en/c05-ex1.mp3",
+     "align": "en/c05-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "Open the window, please.",
+     "textSha256": "f5c38121d555aab2f6915834c1594465eaf12d33eb1234aa8b9fe0ea4476035c",
+     "chars": 24,
+     "audio": "en/c05-ex2.mp3",
+     "align": "en/c05-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "I have a dog. The dog is small.",
+     "textSha256": "d4b64e26992ccf42615bfb3c9e075694d8af2072abb459497da6ae8ee3552731",
+     "chars": 31,
+     "audio": "en/c05-ex3.mp3",
+     "align": "en/c05-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex4",
+     "lang": "en",
+     "role": "example",
+     "text": "Look at the sea!",
+     "textSha256": "a6729f05cd0ad9a35594b5c99e43c73e4c9ea12c58462300d783417de6da83af",
+     "chars": 16,
+     "audio": "en/c05-ex4.mp3",
+     "align": "en/c05-ex4.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex5",
+     "lang": "en",
+     "role": "example",
+     "text": "The shop is near the park.",
+     "textSha256": "eb946ec174d554d4d0fe8ce49a4066a9b64ca16577cc061f2becfec813482baf",
+     "chars": 26,
+     "audio": "en/c05-ex5.mp3",
+     "align": "en/c05-ex5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c06",
+   "type": "contrast",
+   "segments": [
+    {
+     "id": "c06-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Türkçede bu kelimenin karşılığı yoktur; bazen bir ek bu işi yapar: kitabı aldım. Bu yüzden onu unutmak çok olağan. Kendine sor: hangisi olduğunu ikimiz de biliyor muyuz?",
+     "textSha256": "ad18817109f79fff3bd2411c58f073883ea1af62704ebf5595fb331dcf2ea3c5",
+     "chars": 169,
+     "audio": "tr/c06-tr.mp3",
+     "align": "tr/c06-tr.align.json",
+     "present": true,
+     "duration": 12.12,
+     "quality": {
+      "words": 27,
+      "exact": 27,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c06-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "Where is the old station?",
+     "textSha256": "197fbdee66010f8491326dcfccbe408893a9abeaaeaab1942fccbaf2dd9afcb8",
+     "chars": 25,
+     "audio": "en/c06-ex1.mp3",
+     "align": "en/c06-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c06-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "I see a cat. The cat is black.",
+     "textSha256": "7a8e21ca6fafd001cae08472169e84b63fd8e5fdaeb923f0b14fec2fc44f88cb",
+     "chars": 30,
+     "audio": "en/c06-ex2.mp3",
+     "align": "en/c06-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c07",
+   "type": "practice",
+   "segments": [
+    {
+     "id": "c07-q5",
+     "lang": "en",
+     "role": "say",
+     "text": "Where is the old station?",
+     "textSha256": "197fbdee66010f8491326dcfccbe408893a9abeaaeaab1942fccbaf2dd9afcb8",
+     "chars": 25,
+     "audio": "en/c07-q5.mp3",
+     "align": "en/c07-q5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c08",
+   "type": "seeInStory",
+   "segments": [
+    {
+     "id": "c08-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Bu küçük kelime hikâyede ve kitapta çok geçiyor. Şu cümlelere bir daha bak.",
+     "textSha256": "c4b61d081b412ff1d0539436b4f6c571a2b52da853118999e68662222045e44d",
+     "chars": 75,
+     "audio": "tr/c08-tr.mp3",
+     "align": "tr/c08-tr.align.json",
+     "present": true,
+     "duration": 4.8,
+     "quality": {
+      "words": 13,
+      "exact": 12,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    }
+   ]
+  },
+  {
+   "card": "c09",
+   "type": "rule",
+   "segments": [
+    {
+     "id": "c09-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Bir şeyi ilk kez söylerken bir anlamındaki kelime gelir. Konuşan da dinleyen de hangisi olduğunu biliyorsa ismin önüne öbür küçük kelime gelir.",
+     "textSha256": "846a0f4a076471242563674ffdf539b85a8c95eef29a7283ff812eb7b29fe8cb",
+     "chars": 143,
+     "audio": "tr/c09-tr.mp3",
+     "align": "tr/c09-tr.align.json",
+     "present": true,
+     "duration": 8.51,
+     "quality": {
+      "words": 22,
+      "exact": 22,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c09-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "Open the door, please.",
+     "textSha256": "a18577f8de1202dd29af3fd667f8ed95b3d0cad34bbad366ed97cf0022fda8a3",
+     "chars": 22,
+     "audio": "en/c09-ex1.mp3",
+     "align": "en/c09-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  }
+ ]
+}

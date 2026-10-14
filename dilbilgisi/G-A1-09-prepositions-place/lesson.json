@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "id": "G-A1-09-prepositions-place",
+  "level": "A1",
+  "titleTr": "Yer edatları: in / on / under / near / between / behind",
+  "titleEn": "Prepositions of place",
+  "goalTr": "Bir şeyin nerede olduğunu yer kelimesiyle söylersin; bu kelimeyi ismin önüne koyarsın.",
+  "prerequisites": ["G-A1-01-to-be", "G-A1-04-the"],
+  "contentVersion": 1,
+  "status": "DRAFT",
+  "aiGenerated": true,
+  "teacherReview": null,
+  "linksTo": { "episodes": ["A1-002", "A1-004", "A1-006"], "books": ["A1-K01", "A1-K05"] },
+  "properNouns": ["Pier"],
+  "pronunciations": [{ "term": "Alex", "say_as": "Aleks" }],
+  "narration": { "tr": { "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı" } }
+}

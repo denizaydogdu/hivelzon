@@ -1,0 +1,462 @@
+{
+ "schemaVersion": 1,
+ "lessonId": "G-A1-06-this-that-plurals",
+ "voices": {
+  "tr": {
+   "model": "alania-v2",
+   "voice": "alania2-f1",
+   "timing": "duyu-1",
+   "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+  },
+  "en": {
+   "model": "eleven_v3",
+   "voice": "EXAVITQu4vr4xnSDxMaL",
+   "speed": 0.9
+  }
+ },
+ "cards": [
+  {
+   "card": "c01",
+   "type": "hook",
+   "segments": [
+    {
+     "id": "c01-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Alex sonunda eski istasyona varıyor. Bu cümlede ilginç bir şey var. Alex, tam önünde duran bir yeri gösteriyor.",
+     "textSha256": "8b52231a390cf5931c9ae6b530d16c46919056adc0ab3f6901b396e03e8e335f",
+     "chars": 111,
+     "audio": "tr/c01-tr.mp3",
+     "align": "tr/c01-tr.align.json",
+     "present": true,
+     "duration": 7.2,
+     "quality": {
+      "words": 18,
+      "exact": 18,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c01-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "This is the old station!",
+     "textSha256": "de9fc86ae1fcb4ec82169e24619729317af532d9faf915bcb60047d6347d7c72",
+     "chars": 24,
+     "audio": "en/c01-ex1.mp3",
+     "align": "en/c01-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c02",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c02-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Yakındaki tek bir şeyi gösterirken bir kelime, uzaktaki için başka bir kelime kullanılır. Türkçedeki bu ve şu gibi düşünebilirsin. Tanıtırken de bu kelimeyle başlarız.",
+     "textSha256": "824806945a6ce145370e0c4344630b1c08307102051b71bbe1d1d13baae637ac",
+     "chars": 167,
+     "audio": "tr/c02-tr.mp3",
+     "align": "tr/c02-tr.align.json",
+     "present": true,
+     "duration": 11.94,
+     "quality": {
+      "words": 24,
+      "exact": 24,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c02-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "This is my bag.",
+     "textSha256": "df63101fed847354bade017ce86eea4bf83d6b0b31c29d7700919423ae37b621",
+     "chars": 15,
+     "audio": "en/c02-ex1.mp3",
+     "align": "en/c02-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c02-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "That is my house.",
+     "textSha256": "94ffe3ed8b7b8336665202aed3cd6cefb8c15f64315b63c25418be9e0f780944",
+     "chars": 17,
+     "audio": "en/c02-ex2.mp3",
+     "align": "en/c02-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c03",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c03-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Birden çok şey varsa ismin sonuna kısa bir ek gelir. Türkçede iki kitap deriz, ama İngilizcede sayıdan sonra da bu ek gelir. Birkaç kelime ise tamamen değişir.",
+     "textSha256": "4a793e00cf267b9c071afc3a9d2447e460727f8f0bce9dd78d0e1895ceb58d70",
+     "chars": 159,
+     "audio": "tr/c03-tr.mp3",
+     "align": "tr/c03-tr.align.json",
+     "present": true,
+     "duration": 10.1,
+     "quality": {
+      "words": 27,
+      "exact": 27,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I have two books.",
+     "textSha256": "17a5eb84adfd207b066b28afaa9390ada295d318ace7db72ffd536b9897654d4",
+     "chars": 17,
+     "audio": "en/c03-ex1.mp3",
+     "align": "en/c03-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c03-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "Two children are in the park.",
+     "textSha256": "b83b583f136a97d8f372a3c32ff9577f21484001ce5170112cb6429f86b36960",
+     "chars": 29,
+     "audio": "en/c03-ex2.mp3",
+     "align": "en/c03-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c04",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c04-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Yakındaki birden çok şey için ayrı bir kelime, uzaktakiler için de ayrı bir kelime var. Bunlar çoğul olduğu için olmak fiilinin çoğul biçimi gelir.",
+     "textSha256": "0f78d1395fa516b0aaaad36b4df0d6a670f9039ecce19f8f8970b508d802e439",
+     "chars": 147,
+     "audio": "tr/c04-tr.mp3",
+     "align": "tr/c04-tr.align.json",
+     "present": true,
+     "duration": 9.76,
+     "quality": {
+      "words": 24,
+      "exact": 24,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c04-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "These are my shoes.",
+     "textSha256": "8da8035d789bdb33f81631cbe971ecbbc42a34cad2f7d921a9b12305a1376d68",
+     "chars": 19,
+     "audio": "en/c04-ex1.mp3",
+     "align": "en/c04-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "Those shoes are new.",
+     "textSha256": "4a639601588b2b7f2e0fdb5c8f3faa5f13a329c1d928dc3eb21f83808c56601f",
+     "chars": 20,
+     "audio": "en/c04-ex2.mp3",
+     "align": "en/c04-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c05",
+   "type": "examples",
+   "segments": [
+    {
+     "id": "c05-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "This is my friend, Can.",
+     "textSha256": "bea20617d54dcd5ed83ee55bde47d2e2cb2da721fce62d41542f49062340cc40",
+     "chars": 23,
+     "audio": "en/c05-ex1.mp3",
+     "align": "en/c05-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "Is that your bag?",
+     "textSha256": "e757e9291c3ceda411196120dc90d1bf447b9c5639fff43d90a2cecb6e8a2560",
+     "chars": 17,
+     "audio": "en/c05-ex2.mp3",
+     "align": "en/c05-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "These apples are red.",
+     "textSha256": "1a141f21eb07c6fcaaf028ec236cb722d40ab3a7f1519b7e3522e6ce35d6cd10",
+     "chars": 21,
+     "audio": "en/c05-ex3.mp3",
+     "align": "en/c05-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex4",
+     "lang": "en",
+     "role": "example",
+     "text": "I have three cats.",
+     "textSha256": "b660171e4755f91a798f2743625003033a9837e0952a58c0f7055476c9ad31de",
+     "chars": 18,
+     "audio": "en/c05-ex4.mp3",
+     "align": "en/c05-ex4.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex5",
+     "lang": "en",
+     "role": "example",
+     "text": "Many people are here.",
+     "textSha256": "18e9a4ef5a0ee33064391800ec01543adcacdcfa4028c47f31656e3f5f300539",
+     "chars": 21,
+     "audio": "en/c05-ex5.mp3",
+     "align": "en/c05-ex5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c06",
+   "type": "contrast",
+   "segments": [
+    {
+     "id": "c06-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Türkçede sayıdan sonra çoğul eki gelmez: iki kitap. İngilizcede sayı birden büyükse ek yine gelir. Bir de tanıtırken Türkçede fiil yoktur, İngilizcede olmak fiili şarttır.",
+     "textSha256": "1cb70a8a4aa350d696c7acdceffaefa0fec0075ed0d0942dd79f193858077ce8",
+     "chars": 171,
+     "audio": "tr/c06-tr.mp3",
+     "align": "tr/c06-tr.align.json",
+     "present": true,
+     "duration": 12.82,
+     "quality": {
+      "words": 25,
+      "exact": 25,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c06-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "two books",
+     "textSha256": "a7a2b9611ef63cd97d1beaddb9cd5b7fdbd6ea020ab8a78ffa6a789a3dd676e5",
+     "chars": 9,
+     "audio": "en/c06-ex1.mp3",
+     "align": "en/c06-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c06-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "This is my friend.",
+     "textSha256": "f940f5e58060c0ca507347c69ea6617ab5900fdb3d8251dee1b67766bc8ec831",
+     "chars": 18,
+     "audio": "en/c06-ex2.mp3",
+     "align": "en/c06-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c06-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "These are my shoes.",
+     "textSha256": "8da8035d789bdb33f81631cbe971ecbbc42a34cad2f7d921a9b12305a1376d68",
+     "chars": 19,
+     "audio": "en/c06-ex3.mp3",
+     "align": "en/c06-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c07",
+   "type": "practice",
+   "segments": [
+    {
+     "id": "c07-q5",
+     "lang": "en",
+     "role": "say",
+     "text": "These are my shoes.",
+     "textSha256": "8da8035d789bdb33f81631cbe971ecbbc42a34cad2f7d921a9b12305a1376d68",
+     "chars": 19,
+     "audio": "en/c07-q5.mp3",
+     "align": "en/c07-q5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c08",
+   "type": "seeInStory",
+   "segments": [
+    {
+     "id": "c08-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Bu kelimeler hikâyede ve kitaplarda da var. Şu cümlelere bir daha bak.",
+     "textSha256": "ab65d6764c5129b3ca984810cc5e372ba2ff6ec1450f386532123b9784121aef",
+     "chars": 70,
+     "audio": "tr/c08-tr.mp3",
+     "align": "tr/c08-tr.align.json",
+     "present": true,
+     "duration": 4.48,
+     "quality": {
+      "words": 12,
+      "exact": 11,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    }
+   ]
+  },
+  {
+   "card": "c09",
+   "type": "rule",
+   "segments": [
+    {
+     "id": "c09-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Yakındaki için bir kelime, uzaktaki için başka bir kelime kullanılır. İkisinin de çoğul biçimi var. Birden çok şey için ismin sonuna kısa bir ek gelir.",
+     "textSha256": "fd99c54e14afc86adc46cd196c9d44c0715cdbb0d8a5630a16ebdeb53e404b36",
+     "chars": 151,
+     "audio": "tr/c09-tr.mp3",
+     "align": "tr/c09-tr.align.json",
+     "present": true,
+     "duration": 10.26,
+     "quality": {
+      "words": 25,
+      "exact": 25,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c09-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "These are my books.",
+     "textSha256": "4fc3919968e556c4f4723278fc5a622efa2ed500de3fece68c53ef9cd70a8b1a",
+     "chars": 19,
+     "audio": "en/c09-ex1.mp3",
+     "align": "en/c09-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "id": "G-A1-07-can",
+  "level": "A1",
+  "titleTr": "can / can't: yetenek, rica ve kısa cevap",
+  "titleEn": "can and can't",
+  "goalTr": "Can ve yalın fiille yapabildiğini, ricanı ve izin isteğini söylersin; Can you…? sorusuna Yes, I can ya da No, I can't diye cevap verirsin.",
+  "prerequisites": ["G-A1-02-to-be-questions-negatives"],
+  "contentVersion": 1,
+  "status": "DRAFT",
+  "aiGenerated": true,
+  "teacherReview": null,
+  "linksTo": { "episodes": ["A1-001", "A1-002", "A1-007"], "books": ["A1-K01"] },
+  "properNouns": ["Lina", "English"],
+  "pronunciations": [{ "term": "Alex", "say_as": "Aleks" }],
+  "narration": { "tr": { "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı" } }
+}

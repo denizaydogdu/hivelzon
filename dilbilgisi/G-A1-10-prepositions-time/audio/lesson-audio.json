@@ -1,0 +1,436 @@
+{
+ "schemaVersion": 1,
+ "lessonId": "G-A1-10-prepositions-time",
+ "voices": {
+  "tr": {
+   "model": "alania-v2",
+   "voice": "alania2-f1",
+   "timing": "duyu-1",
+   "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+  },
+  "en": {
+   "model": "eleven_v3",
+   "voice": "EXAVITQu4vr4xnSDxMaL",
+   "speed": 0.9
+  }
+ },
+ "cards": [
+  {
+   "card": "c01",
+   "type": "hook",
+   "segments": [
+    {
+     "id": "c01-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Maya notu okuyor ve buluşma zamanını söylüyor. Bu cümlede ilginç bir şey var. Gün ve saat için iki ayrı küçük kelime kullanılıyor.",
+     "textSha256": "7801652380db1e858d603640976855fb5ea5af79a5f62e08a6419325e93b0bba",
+     "chars": 130,
+     "audio": "tr/c01-tr.mp3",
+     "align": "tr/c01-tr.align.json",
+     "present": true,
+     "duration": 7.68,
+     "quality": {
+      "words": 22,
+      "exact": 22,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c01-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "On Friday at seven.",
+     "textSha256": "bcf9b67eeefa0e65b7669606048a3058ce5f0b43db18ae26fb1aa7ff92656b35",
+     "chars": 19,
+     "audio": "en/c01-ex1.mp3",
+     "align": "en/c01-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c02",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c02-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Türkçede saat ve gün için çoğu zaman bir ek iş görür: yedide, akşamleyin. İngilizcede saat, gün ve gün bölümü için üç ayrı kelime vardır. Bu kelime zamanın önüne gelir.",
+     "textSha256": "7ae6202a8d44fdec1d96b8ace2de33e85aff61a1047dc0fa6d19c0d137e4ef62",
+     "chars": 168,
+     "audio": "tr/c02-tr.mp3",
+     "align": "tr/c02-tr.align.json",
+     "present": true,
+     "duration": 13.95,
+     "quality": {
+      "words": 29,
+      "exact": 29,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 1,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c02-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "My class starts at nine.",
+     "textSha256": "4573e802831653845cb34a60139fa36cd572400f39f0f75645ef020fb874cb61",
+     "chars": 24,
+     "audio": "en/c02-ex1.mp3",
+     "align": "en/c02-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c02-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "We play football on Saturday.",
+     "textSha256": "e455eaa92a776712b515ebb83b118d09c492b6339ede75f44f0cf5a06897002d",
+     "chars": 29,
+     "audio": "en/c02-ex2.mp3",
+     "align": "en/c02-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c02-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "I read in the evening.",
+     "textSha256": "e15b456bb9802c0c9fa6dde8a3be5e7fdc37ffe841c83a61c2ff723e2f332907",
+     "chars": 22,
+     "audio": "en/c02-ex3.mp3",
+     "align": "en/c02-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c03",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c03-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Gece, sabah ve akşamdan biraz farklıdır. Gece için saatteki kelime kullanılır. Bunu tek bir kalıp gibi öğrenebilirsin.",
+     "textSha256": "1e2ca74684f334d7841775d82ddae298b095dc2013f0a1e9c66f6690644d9bb9",
+     "chars": 118,
+     "audio": "tr/c03-tr.mp3",
+     "align": "tr/c03-tr.align.json",
+     "present": true,
+     "duration": 6.88,
+     "quality": {
+      "words": 17,
+      "exact": 17,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I sleep at night.",
+     "textSha256": "6db007abe1e06c9b07f36cfdf0e69102060a4a13f2c5098e01a4d9a2c37dde35",
+     "chars": 17,
+     "audio": "en/c03-ex1.mp3",
+     "align": "en/c03-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c04",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c04-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Saati söylerken cümle kısa bir özneyle başlar. Türkçede yalnız saat yedi deriz, İngilizcede başa bu özne gelir. Burada saatin önüne o küçük kelime gelmez.",
+     "textSha256": "9fd4fdeb312b35861d470bb22b40bf0b31f8d015c1e6bbfe76e3930fe5cc6edd",
+     "chars": 154,
+     "audio": "tr/c04-tr.mp3",
+     "align": "tr/c04-tr.align.json",
+     "present": true,
+     "duration": 10.75,
+     "quality": {
+      "words": 24,
+      "exact": 24,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c04-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "What time is it? It's seven o'clock.",
+     "textSha256": "ccecf83f153c28f09753a52eae96eff4ee2cffb27f034bbab6322095c8b23c0c",
+     "chars": 36,
+     "audio": "en/c04-ex1.mp3",
+     "align": "en/c04-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c05",
+   "type": "examples",
+   "segments": [
+    {
+     "id": "c05-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "The shop opens at nine.",
+     "textSha256": "26807498437bc4093727d2ffcc17dd25237d573ac6e5f0fb65a9764f637a3c29",
+     "chars": 23,
+     "audio": "en/c05-ex1.mp3",
+     "align": "en/c05-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "See you on Monday!",
+     "textSha256": "06c8971e7b975988b91d6377a1a251aaaaf50a60b03a790bc33a33b3eae2f5a1",
+     "chars": 18,
+     "audio": "en/c05-ex2.mp3",
+     "align": "en/c05-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "I drink tea in the morning.",
+     "textSha256": "e6669daa7f52308f47a032f719cc22599db99de7024df000dcd2e63784633799",
+     "chars": 27,
+     "audio": "en/c05-ex3.mp3",
+     "align": "en/c05-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex4",
+     "lang": "en",
+     "role": "example",
+     "text": "The class is at eight o'clock.",
+     "textSha256": "90aab95caf65a5777231b04145a11945c7c76c1a9ea0c324514d643acd3202e3",
+     "chars": 30,
+     "audio": "en/c05-ex4.mp3",
+     "align": "en/c05-ex4.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex5",
+     "lang": "en",
+     "role": "example",
+     "text": "We have English on Fridays.",
+     "textSha256": "48168b62123e539649e852e095f49c28c379a4e974e42059f21c14de3ddf032a",
+     "chars": 27,
+     "audio": "en/c05-ex5.mp3",
+     "align": "en/c05-ex5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c06",
+   "type": "contrast",
+   "segments": [
+    {
+     "id": "c06-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Türkçede yedide, akşamleyin, cuma günü deriz ve ayrı bir kelime kullanmayız. Bu yüzden İngilizcedeki üç kelimeyi karıştırmak çok olağan. Önce kendine sor: saat mi, gün mü, gün bölümü mü?",
+     "textSha256": "6fd5d1bf45384b5bdc3306b39d8a9eeb9071b5aa6859833c7ef69c8c9db9c7ac",
+     "chars": 186,
+     "audio": "tr/c06-tr.mp3",
+     "align": "tr/c06-tr.align.json",
+     "present": true,
+     "duration": 12.96,
+     "quality": {
+      "words": 29,
+      "exact": 28,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c06-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "It's seven o'clock.",
+     "textSha256": "ba57b745b2a2173070b72aaac109d7df2db7983c489e87c27a7b7fc7dc9e6c31",
+     "chars": 19,
+     "audio": "en/c06-ex1.mp3",
+     "align": "en/c06-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c06-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "on Friday",
+     "textSha256": "7c1ea03ace9f7f901013e86bc2312f5053c01779ca3c52dd4ee7683963b54b2a",
+     "chars": 9,
+     "audio": "en/c06-ex2.mp3",
+     "align": "en/c06-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c07",
+   "type": "practice",
+   "segments": [
+    {
+     "id": "c07-q5",
+     "lang": "en",
+     "role": "say",
+     "text": "See you on Friday at seven.",
+     "textSha256": "d03a9f627cd86a9c04a3641ac2fe6027b1d19304911d763a7dcc1cd4f37259e2",
+     "chars": 27,
+     "audio": "en/c07-q5.mp3",
+     "align": "en/c07-q5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c08",
+   "type": "seeInStory",
+   "segments": [
+    {
+     "id": "c08-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Saatleri ve günleri hikâyede de kitaplarda da çok duydun. Şu cümlelere bir daha bak.",
+     "textSha256": "9dd39cf92fb24ccea8f12aee27a7d2bf6fd221a1f18c62f086445e3e48604518",
+     "chars": 84,
+     "audio": "tr/c08-tr.mp3",
+     "align": "tr/c08-tr.align.json",
+     "present": true,
+     "duration": 5.76,
+     "quality": {
+      "words": 14,
+      "exact": 13,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 1,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    }
+   ]
+  },
+  {
+   "card": "c09",
+   "type": "rule",
+   "segments": [
+    {
+     "id": "c09-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Saat için bir kelime, gün için başka bir kelime, sabah ve akşam için üçüncüsü gelir. Saati söylerken cümle kısa bir özneyle başlar.",
+     "textSha256": "eb9a069e353b6f62d60abf6ce96fe9dbaa34476a03619b793f836939e5835052",
+     "chars": 131,
+     "audio": "tr/c09-tr.mp3",
+     "align": "tr/c09-tr.align.json",
+     "present": true,
+     "duration": 9.6,
+     "quality": {
+      "words": 22,
+      "exact": 21,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c09-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "See you on Friday at seven.",
+     "textSha256": "d03a9f627cd86a9c04a3641ac2fe6027b1d19304911d763a7dcc1cd4f37259e2",
+     "chars": 27,
+     "audio": "en/c09-ex1.mp3",
+     "align": "en/c09-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,449 @@
+{
+ "schemaVersion": 1,
+ "lessonId": "G-A1-02-to-be-questions-negatives",
+ "voices": {
+  "tr": {
+   "model": "alania-v2",
+   "voice": "alania2-f1",
+   "timing": "duyu-1",
+   "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
+  },
+  "en": {
+   "model": "eleven_v3",
+   "voice": "EXAVITQu4vr4xnSDxMaL",
+   "speed": 0.9
+  }
+ },
+ "cards": [
+  {
+   "card": "c01",
+   "type": "hook",
+   "segments": [
+    {
+     "id": "c01-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Maya, Alex'e bir soru soruyor. Bu cümlede ilginç bir şey var. Kelimelerin sırası değişmiş, dinle.",
+     "textSha256": "c1b58def1a69967770d82d119121d7cbc78952731b766b6531519d0362a3a133",
+     "chars": 97,
+     "audio": "tr/c01-tr.mp3",
+     "align": "tr/c01-tr.align.json",
+     "present": true,
+     "duration": 6.56,
+     "quality": {
+      "words": 15,
+      "exact": 14,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c01-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "Are you new here?",
+     "textSha256": "40823c4d63a8b6414e7e309de232218fb30e004bfc1bcd2e4994a2c5148fc29f",
+     "chars": 17,
+     "audio": "en/c01-ex1.mp3",
+     "align": "en/c01-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c02",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c02-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Türkçede soru için mi ekini ekleriz ve sıra hiç değişmez. İngilizcede ise olmak fiili kişinin önüne geçer. Soruyu bu yer değiştirme kurar.",
+     "textSha256": "05b5e46714fdca55281519b1134219426e4189067fc66f5d427dc8a8674c20a9",
+     "chars": 138,
+     "audio": "tr/c02-tr.mp3",
+     "align": "tr/c02-tr.align.json",
+     "present": true,
+     "duration": 9.92,
+     "quality": {
+      "words": 22,
+      "exact": 22,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c02-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "You are new here.",
+     "textSha256": "95432d940e2f9884c5dc59667c44d35f9450ab84ba97a5ffa2e20963515c6350",
+     "chars": 17,
+     "audio": "en/c02-ex1.mp3",
+     "align": "en/c02-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c02-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "Are you new here?",
+     "textSha256": "40823c4d63a8b6414e7e309de232218fb30e004bfc1bcd2e4994a2c5148fc29f",
+     "chars": 17,
+     "audio": "en/c02-ex2.mp3",
+     "align": "en/c02-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c03",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c03-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Nerede, kim, ne gibi soru kelimeleri en başa gelir. Hemen arkasından olmak fiili, sonra kişi ya da şey gelir. Türkçede istasyon nerede deriz; İngilizcede sıra tersine döner.",
+     "textSha256": "7cb2e60e8ad9672bffb24b0cc8b71064abf151c01bbcfcd908d7e04623f0725e",
+     "chars": 173,
+     "audio": "tr/c03-tr.mp3",
+     "align": "tr/c03-tr.align.json",
+     "present": true,
+     "duration": 13.47,
+     "quality": {
+      "words": 27,
+      "exact": 27,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "Where is the old station?",
+     "textSha256": "197fbdee66010f8491326dcfccbe408893a9abeaaeaab1942fccbaf2dd9afcb8",
+     "chars": 25,
+     "audio": "en/c03-ex1.mp3",
+     "align": "en/c03-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c03-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "Who are you?",
+     "textSha256": "80495816f7f221579a472ca05647122a046f90846f2531202061c7eb7e7a8c8c",
+     "chars": 12,
+     "audio": "en/c03-ex2.mp3",
+     "align": "en/c03-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c04",
+   "type": "explain",
+   "segments": [
+    {
+     "id": "c04-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Olumsuz cümlede değil anlamına gelen bir kelime kullanılır. Bu kelime olmak fiilinin hemen arkasına gelir. Konuşurken iki kelime çoğu zaman kısalır.",
+     "textSha256": "0a52d302007406ea7db6316894e60c2a5676b6d7004179ff345d56a4581120a1",
+     "chars": 148,
+     "audio": "tr/c04-tr.mp3",
+     "align": "tr/c04-tr.align.json",
+     "present": true,
+     "duration": 9.95,
+     "quality": {
+      "words": 21,
+      "exact": 21,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c04-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "I'm not tired.",
+     "textSha256": "73a49347e8800bec27da2123c02f2c73030079e87d45593ca4a07d9d51141b43",
+     "chars": 14,
+     "audio": "en/c04-ex1.mp3",
+     "align": "en/c04-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c04-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "It isn't cold.",
+     "textSha256": "a887eb6690fe779d57fcb94e44097b226f7f1782a0cea7190ca96d5717a820f6",
+     "chars": 14,
+     "audio": "en/c04-ex2.mp3",
+     "align": "en/c04-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c05",
+   "type": "examples",
+   "segments": [
+    {
+     "id": "c05-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "Are you from Ankara?",
+     "textSha256": "720946a8eb0f14bc8e3792676c01bd64208e244b86155b2d6cfdd85a058ef5de",
+     "chars": 20,
+     "audio": "en/c05-ex1.mp3",
+     "align": "en/c05-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "Is it cold? No, it isn't.",
+     "textSha256": "963bbb218ef60b1e424d390e6178b20f880bbce66cf8629233eb3855efc5a34c",
+     "chars": 25,
+     "audio": "en/c05-ex2.mp3",
+     "align": "en/c05-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex3",
+     "lang": "en",
+     "role": "example",
+     "text": "Where is the bus stop?",
+     "textSha256": "5b763a76d38ca86d3af9e1ec622e3ba4b365feeff6221ef8dbaa00f4a3162de2",
+     "chars": 22,
+     "audio": "en/c05-ex3.mp3",
+     "align": "en/c05-ex3.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex4",
+     "lang": "en",
+     "role": "example",
+     "text": "She isn't at home.",
+     "textSha256": "03accb9277743c99b3f86e2fb144e28be2a4c2f7df3880b1bfc72921faa8c6cc",
+     "chars": 18,
+     "audio": "en/c05-ex4.mp3",
+     "align": "en/c05-ex4.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c05-ex5",
+     "lang": "en",
+     "role": "example",
+     "text": "They aren't here.",
+     "textSha256": "8ed8bb8d31054495c8f77c3372f015dcd6ac1967195e38141cecf499216bee6a",
+     "chars": 17,
+     "audio": "en/c05-ex5.mp3",
+     "align": "en/c05-ex5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c06",
+   "type": "contrast",
+   "segments": [
+    {
+     "id": "c06-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Türkçede soruyu mi eki kurar, kelimeler yerinden oynamaz. Bu yüzden olmak fiilini unutmak ya da sırayı korumak çok olağan. Önce olmak fiilini bul, sonra yerini değiştir.",
+     "textSha256": "8c9ea8523e4c1a908740cdd001dcf23039d1ec004e9cc51a9a74f1439f60321e",
+     "chars": 169,
+     "audio": "tr/c06-tr.mp3",
+     "align": "tr/c06-tr.align.json",
+     "present": true,
+     "duration": 11.51,
+     "quality": {
+      "words": 26,
+      "exact": 25,
+      "fuzzy": 0,
+      "weak": 1,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 1,
+      "score": 0.962,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c06-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "Where is the station?",
+     "textSha256": "143c343f0c548b3f628160667244404e93047c8e9a63af609efaf33a057e6f0f",
+     "chars": 21,
+     "audio": "en/c06-ex1.mp3",
+     "align": "en/c06-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    },
+    {
+     "id": "c06-ex2",
+     "lang": "en",
+     "role": "example",
+     "text": "I'm not tired.",
+     "textSha256": "73a49347e8800bec27da2123c02f2c73030079e87d45593ca4a07d9d51141b43",
+     "chars": 14,
+     "audio": "en/c06-ex2.mp3",
+     "align": "en/c06-ex2.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c07",
+   "type": "practice",
+   "segments": [
+    {
+     "id": "c07-q5",
+     "lang": "en",
+     "role": "say",
+     "text": "Is she your sister?",
+     "textSha256": "754c7f9db79a01b92d614e98dca9178fb7088e0c0ad922f9b68c3cf310518274",
+     "chars": 19,
+     "audio": "en/c07-q5.mp3",
+     "align": "en/c07-q5.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  },
+  {
+   "card": "c08",
+   "type": "seeInStory",
+   "segments": [
+    {
+     "id": "c08-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Bu soruları hikâyede çok duydun. Şu cümlelere bir daha bak.",
+     "textSha256": "c52bc4a6691bafb9780df19a55ea7537c46c4e24ac167a2abac3fd85952df42f",
+     "chars": 59,
+     "audio": "tr/c08-tr.mp3",
+     "align": "tr/c08-tr.align.json",
+     "present": true,
+     "duration": 4.0,
+     "quality": {
+      "words": 10,
+      "exact": 8,
+      "fuzzy": 2,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    }
+   ]
+  },
+  {
+   "card": "c09",
+   "type": "rule",
+   "segments": [
+    {
+     "id": "c09-tr",
+     "lang": "tr",
+     "role": "narration",
+     "text": "Soruda olmak fiili kişinin önüne geçer, soru kelimesi en başa gelir. Olumsuzda değil anlamındaki kelime olmak fiilinin arkasına gelir.",
+     "textSha256": "5246a208a948f9c75aeb3610f8ad096efdb592a105b4be5d90a118e74f2f758f",
+     "chars": 134,
+     "audio": "tr/c09-tr.mp3",
+     "align": "tr/c09-tr.align.json",
+     "present": true,
+     "duration": 9.76,
+     "quality": {
+      "words": 19,
+      "exact": 18,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c09-ex1",
+     "lang": "en",
+     "role": "example",
+     "text": "Where is the bus stop?",
+     "textSha256": "5b763a76d38ca86d3af9e1ec622e3ba4b365feeff6221ef8dbaa00f4a3162de2",
+     "chars": 22,
+     "audio": "en/c09-ex1.mp3",
+     "align": "en/c09-ex1.align.json",
+     "present": false,
+     "duration": null,
+     "quality": null
+    }
+   ]
+  }
+ ]
+}

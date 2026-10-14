@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "id": "G-A1-11-present-simple",
+  "level": "A1",
+  "titleTr": "Geniş zaman (present simple): I / you / we / they",
+  "titleEn": "Present simple",
+  "goalTr": "Rutini, alışkanlığı ve genel doğruları yalın fiille, every day ve on Fridays gibi zaman ifadeleriyle anlatırsın.",
+  "prerequisites": ["G-A1-05-pronouns-possessives", "G-A1-10-prepositions-time"],
+  "contentVersion": 1,
+  "status": "DRAFT",
+  "aiGenerated": true,
+  "teacherReview": null,
+  "linksTo": { "episodes": ["A1-005", "A1-008"], "books": ["A1-K01", "A1-K02", "A1-K05"] },
+  "properNouns": ["Jordan", "İzmir", "English", "Lina"],
+  "pronunciations": [{ "term": "Alex", "say_as": "Aleks" }],
+  "narration": { "tr": { "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı" } }
+}

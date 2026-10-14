@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "id": "G-A1-15-there-is-are",
+  "level": "A1",
+  "titleTr": "there is / there are: \"var\" demek",
+  "titleEn": "There is and there are",
+  "goalTr": "Bir yerde bir şeyin olduğunu ya da olmadığını there is ve there are ile söylersin; tek ve çoğa göre seçer, Is there…? diye sorarsın.",
+  "prerequisites": ["G-A1-03-a-an", "G-A1-06-this-that-plurals", "G-A1-09-prepositions-place"],
+  "contentVersion": 1,
+  "status": "DRAFT",
+  "aiGenerated": true,
+  "teacherReview": null,
+  "linksTo": { "episodes": ["A1-006", "A1-008"], "books": ["A1-K01", "A1-K03"] },
+  "properNouns": ["Sam"],
+  "pronunciations": [],
+  "narration": { "tr": { "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı" } }
+}
