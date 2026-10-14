@@ -1,0 +1,158 @@
+{
+  "schemaVersion": 1,
+  "id": "B1-K01",
+  "slug": "B1-K01-the-backwards-clock",
+  "level": "B1",
+  "genre": "mystery",
+  "title": "The Backwards Clock",
+  "titleTr": "Geri Giden Saat",
+  "blurbTr": "Aziz bu yaz sessiz bir dağ kasabasında saat tamiri öğrenecekti. Ama meydandaki kule saati her cumartesi gece yarısı geriye doğru dönmeye başlıyor. Kulenin anahtarı yalnızca iki kişide var: yaşlı saatçi Bayan Ilse'de ve Aziz'de. Kasaba ya bir hayaletten ya da yeni çıraktan şüpheleniyor.",
+  "hookEn": "Every Saturday at midnight, the old clock in the square started to run backwards.",
+  "contentVersion": 1,
+  "status": "DRAFT",
+  "aiGenerated": true,
+  "palette": {
+    "background": "#F3ECDC",
+    "surface": "#E4DAC2",
+    "text": "#1C2638",
+    "accent": "#2F5D4A",
+    "highlight": "#C9A227"
+  },
+  "cover": "cover.png",
+  "properNouns": [
+    "Aziz",
+    "Ilse",
+    "Brandt",
+    "Haldenberg",
+    "Marta",
+    "Hofer",
+    "Pavel",
+    "Otto",
+    "Rosa",
+    "Hanne",
+    "Bernard",
+    "Klaus"
+  ],
+  "narration": {
+    "modelId": "eleven_v3",
+    "speed": 1.0,
+    "voiceId": "EXAVITQu4vr4xnSDxMaL"
+  },
+  "chapters": [
+    {
+      "id": "c1",
+      "title": "The Apprentice",
+      "titleTr": "Çırak",
+      "pages": [
+        {
+          "id": "p01",
+          "image": "p01.png"
+        },
+        {
+          "id": "p02",
+          "image": null
+        },
+        {
+          "id": "p03",
+          "image": null
+        },
+        {
+          "id": "p04",
+          "image": null
+        }
+      ]
+    },
+    {
+      "id": "c2",
+      "title": "Footprints",
+      "titleTr": "Ayak İzleri",
+      "pages": [
+        {
+          "id": "p05",
+          "image": "p05.png"
+        },
+        {
+          "id": "p06",
+          "image": null
+        },
+        {
+          "id": "p07",
+          "image": null
+        },
+        {
+          "id": "p08",
+          "image": null
+        }
+      ]
+    },
+    {
+      "id": "c3",
+      "title": "Old Photographs",
+      "titleTr": "Eski Fotoğraflar",
+      "pages": [
+        {
+          "id": "p09",
+          "image": "p09.png"
+        },
+        {
+          "id": "p10",
+          "image": null
+        },
+        {
+          "id": "p11",
+          "image": null
+        },
+        {
+          "id": "p12",
+          "image": null
+        }
+      ]
+    },
+    {
+      "id": "c4",
+      "title": "Midnight",
+      "titleTr": "Gece Yarısı",
+      "pages": [
+        {
+          "id": "p13",
+          "image": "p13.png"
+        },
+        {
+          "id": "p14",
+          "image": null
+        },
+        {
+          "id": "p15",
+          "image": null
+        },
+        {
+          "id": "p16",
+          "image": null
+        }
+      ]
+    },
+    {
+      "id": "c5",
+      "title": "Seven Fifteen",
+      "titleTr": "Yediyi Çeyrek Geçe",
+      "pages": [
+        {
+          "id": "p17",
+          "image": "p17.png"
+        },
+        {
+          "id": "p18",
+          "image": null
+        },
+        {
+          "id": "p19",
+          "image": null
+        },
+        {
+          "id": "p20",
+          "image": null
+        }
+      ]
+    }
+  ]
+}

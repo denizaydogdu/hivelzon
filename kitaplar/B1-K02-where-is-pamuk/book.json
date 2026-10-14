@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "id": "B1-K02",
+  "slug": "B1-K02-where-is-pamuk",
+  "level": "B1",
+  "genre": "adventure",
+  "title": "Where Is Pamuk?",
+  "titleTr": "Pamuk Nerede?",
+  "blurbTr": "Pamuk aylarca kurtarma merkezinde iyileşti ve sonunda denize döndü. Üç gün sonra konum etiketi sustu. Son konumu, hiçbir haritada adı olmayan küçük bir koy. Kerem oraya gitmek istiyor; yaklaşan fırtına da.",
+  "hookEn": "Three days after we set Pamuk free, her tracker stopped working.",
+  "contentVersion": 1,
+  "status": "DRAFT",
+  "aiGenerated": true,
+  "palette": {
+    "background": "#F4EDE1",
+    "surface": "#E4F1EF",
+    "text": "#1C3340",
+    "accent": "#1A8C8C",
+    "highlight": "#E8735A"
+  },
+  "cover": "cover.png",
+  "properNouns": [
+    "Pamuk",
+    "Kerem",
+    "Sevgi",
+    "Ela",
+    "Hasan",
+    "Kumlu",
+    "Istanbul",
+    "Türkiye",
+    "Martı"
+  ],
+  "narration": {
+    "modelId": "eleven_v3",
+    "speed": 1.0,
+    "voiceId": "EXAVITQu4vr4xnSDxMaL"
+  },
+  "chapters": [
+    {
+      "id": "c1",
+      "title": "Free",
+      "titleTr": "Özgür",
+      "pages": [
+        {"id": "p01", "image": "p01.png"},
+        {"id": "p02", "image": null},
+        {"id": "p03", "image": null},
+        {"id": "p04", "image": null},
+        {"id": "p05", "image": null}
+      ]
+    },
+    {
+      "id": "c2",
+      "title": "The Boat",
+      "titleTr": "Tekne",
+      "pages": [
+        {"id": "p06", "image": "p06.png"},
+        {"id": "p07", "image": null},
+        {"id": "p08", "image": null},
+        {"id": "p09", "image": null}
+      ]
+    },
+    {
+      "id": "c3",
+      "title": "The Bay",
+      "titleTr": "Koy",
+      "pages": [
+        {"id": "p10", "image": "p10.png"},
+        {"id": "p11", "image": null},
+        {"id": "p12", "image": null},
+        {"id": "p13", "image": null}
+      ]
+    },
+    {
+      "id": "c4",
+      "title": "Under the Sand",
+      "titleTr": "Kumun Altında",
+      "pages": [
+        {"id": "p14", "image": "p14.png"},
+        {"id": "p15", "image": null},
+        {"id": "p16", "image": null},
+        {"id": "p17", "image": null},
+        {"id": "p18", "image": null}
+      ]
+    }
+  ]
+}

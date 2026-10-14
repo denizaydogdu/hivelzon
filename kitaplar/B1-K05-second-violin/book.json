@@ -1,0 +1,136 @@
+{
+  "schemaVersion": 1,
+  "id": "B1-K05",
+  "slug": "B1-K05-second-violin",
+  "level": "B1",
+  "genre": "everyday",
+  "title": "Second Violin",
+  "titleTr": "İkinci Keman",
+  "blurbTr": "Noah üç yıldır gençlik orkestrasında aynı sandalyede oturuyor: ikinci keman. Bu yaz konserdeki solo partisini istiyor. Sonra orkestraya Hana geliyor ve ilk çalışında herkes susuyor. Ama Hana neden kimse yokken çalıyor da biri kapıyı açınca duruyor?",
+  "hookEn": "Noah has played second violin for three years, and he wants more.",
+  "contentVersion": 1,
+  "status": "DRAFT",
+  "aiGenerated": true,
+  "palette": {
+    "background": "#F6EFEA",
+    "surface": "#EADCE3",
+    "text": "#2B1D22",
+    "accent": "#7A2E3A",
+    "highlight": "#B79AC8"
+  },
+  "cover": "cover.png",
+  "properNouns": [
+    "Noah",
+    "Hana",
+    "Adeyemi",
+    "Ruby",
+    "Ella"
+  ],
+  "narration": {
+    "modelId": "eleven_v3",
+    "speed": 1.0,
+    "voiceId": "EXAVITQu4vr4xnSDxMaL"
+  },
+  "chapters": [
+    {
+      "id": "c1",
+      "title": "The Same Chair",
+      "titleTr": "Aynı Sandalye",
+      "pages": [
+        {
+          "id": "p01",
+          "image": "p01.png"
+        },
+        {
+          "id": "p02",
+          "image": null
+        },
+        {
+          "id": "p03",
+          "image": null
+        },
+        {
+          "id": "p04",
+          "image": null
+        },
+        {
+          "id": "p05",
+          "image": null
+        }
+      ]
+    },
+    {
+      "id": "c2",
+      "title": "The Audition",
+      "titleTr": "Seçme",
+      "pages": [
+        {
+          "id": "p06",
+          "image": "p06.png"
+        },
+        {
+          "id": "p07",
+          "image": null
+        },
+        {
+          "id": "p08",
+          "image": null
+        },
+        {
+          "id": "p09",
+          "image": null
+        }
+      ]
+    },
+    {
+      "id": "c3",
+      "title": "Pigeons and Little Kids",
+      "titleTr": "Güvercinler ve Küçük Çocuklar",
+      "pages": [
+        {
+          "id": "p10",
+          "image": "p10.png"
+        },
+        {
+          "id": "p11",
+          "image": null
+        },
+        {
+          "id": "p12",
+          "image": null
+        },
+        {
+          "id": "p13",
+          "image": null
+        },
+        {
+          "id": "p14",
+          "image": null
+        }
+      ]
+    },
+    {
+      "id": "c4",
+      "title": "Duet",
+      "titleTr": "Düet",
+      "pages": [
+        {
+          "id": "p15",
+          "image": "p15.png"
+        },
+        {
+          "id": "p16",
+          "image": null
+        },
+        {
+          "id": "p17",
+          "image": null
+        },
+        {
+          "id": "p18",
+          "image": null
+        }
+      ]
+    }
+  ]
+}

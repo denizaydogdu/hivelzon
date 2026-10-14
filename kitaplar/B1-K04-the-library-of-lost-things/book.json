@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "id": "B1-K04",
+  "slug": "B1-K04-the-library-of-lost-things",
+  "level": "B1",
+  "genre": "scifi-fantasy",
+  "title": "The Library of Lost Things",
+  "titleTr": "Kayıp Eşyalar Kütüphanesi",
+  "blurbTr": "Ines bir yıl önce trende eskiz defterini kaybetti ve o günden beri tek bir çizgi çizmedi. İstasyondaki kayıp eşya bürosuna son kez sormaya gittiğinde, kimsenin görmediği bir kapı onu dünyanın bütün kayıp eşyalarının toplandığı bir kütüphaneye götürüyor: şemsiyeler, tek eldivenler, unutulmuş şarkılar. Defteri burada mı?",
+  "hookEn": "Behind the lost-property office, Ines found a door that nobody else could see.",
+  "contentVersion": 1,
+  "status": "DRAFT",
+  "aiGenerated": true,
+  "palette": {
+    "background": "#F3ECD9",
+    "surface": "#E6DCC2",
+    "text": "#1F2A44",
+    "accent": "#2C4A7A",
+    "highlight": "#D9822B"
+  },
+  "cover": "cover.png",
+  "properNouns": [
+    "Ines",
+    "Orrin",
+    "Pell"
+  ],
+  "narration": {
+    "modelId": "eleven_v3",
+    "speed": 1.0,
+    "voiceId": "EXAVITQu4vr4xnSDxMaL"
+  },
+  "chapters": [
+    {
+      "id": "c1",
+      "title": "The Door",
+      "titleTr": "Kapı",
+      "pages": [
+        {"id": "p01", "image": "p01.png"},
+        {"id": "p02", "image": null},
+        {"id": "p03", "image": null},
+        {"id": "p04", "image": null}
+      ]
+    },
+    {
+      "id": "c2",
+      "title": "Umbrellas to the Ceiling",
+      "titleTr": "Tavana Kadar Şemsiye",
+      "pages": [
+        {"id": "p05", "image": "p05.png"},
+        {"id": "p06", "image": null},
+        {"id": "p07", "image": null},
+        {"id": "p08", "image": null}
+      ]
+    },
+    {
+      "id": "c3",
+      "title": "Borrowers",
+      "titleTr": "Ödünç Alanlar",
+      "pages": [
+        {"id": "p09", "image": "p09.png"},
+        {"id": "p10", "image": null},
+        {"id": "p11", "image": null},
+        {"id": "p12", "image": null}
+      ]
+    },
+    {
+      "id": "c4",
+      "title": "What to Leave",
+      "titleTr": "Ne Bırakmalı?",
+      "pages": [
+        {"id": "p13", "image": "p13.png"},
+        {"id": "p14", "image": null},
+        {"id": "p15", "image": null},
+        {"id": "p16", "image": null}
+      ]
+    },
+    {
+      "id": "c5",
+      "title": "The Most Borrowed Book",
+      "titleTr": "En Çok Ödünç Alınan Defter",
+      "pages": [
+        {"id": "p17", "image": "p17.png"},
+        {"id": "p18", "image": null},
+        {"id": "p19", "image": null},
+        {"id": "p20", "image": null}
+      ]
+    }
+  ]
+}

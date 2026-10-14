@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "id": "B1-K03",
+  "slug": "B1-K03-the-accidental-chef",
+  "level": "B1",
+  "genre": "humor",
+  "title": "The Accidental Chef",
+  "titleTr": "Kazara Şef",
+  "blurbTr": "Priya'nın özgeçmişinde bir hata var: kuzeninin şablonundan kalan \"deneyimli şef\" satırı. Bir sahil oteli onu hemen işe alıyor. Şef ilk gün sakatlanıyor ve Priya mutfağın başında kalıyor. Bildiği tek yemek annesinin mercimek yemeği; üstelik otelde kimliği gizli, ünlü bir yemek yazarı var.",
+  "hookEn": "Priya couldn't cook, but her new job title said \"Head Chef\".",
+  "contentVersion": 1,
+  "status": "DRAFT",
+  "aiGenerated": true,
+  "palette": {
+    "background": "#FBF3E4",
+    "surface": "#F1E2C6",
+    "text": "#2B1D14",
+    "accent": "#C8372D",
+    "highlight": "#E8A317"
+  },
+  "cover": "cover.png",
+  "properNouns": [
+    "Priya",
+    "Nair",
+    "Meera",
+    "Ferris",
+    "Seagull",
+    "Amma",
+    "Bruno",
+    "Tom",
+    "Ellie",
+    "Gus",
+    "Sunita",
+    "Mill",
+    "Kamala"
+  ],
+  "narration": {
+    "modelId": "eleven_v3",
+    "speed": 1.0,
+    "voiceId": "EXAVITQu4vr4xnSDxMaL"
+  },
+  "chapters": [
+    {
+      "id": "c1",
+      "title": "The Interview",
+      "titleTr": "Mülakat",
+      "pages": [
+        {"id": "p01", "image": "p01.png"},
+        {"id": "p02", "image": null},
+        {"id": "p03", "image": null},
+        {"id": "p04", "image": null}
+      ]
+    },
+    {
+      "id": "c2",
+      "title": "One Dish, Five Names",
+      "titleTr": "Tek Yemek, Beş Ad",
+      "pages": [
+        {"id": "p05", "image": "p05.png"},
+        {"id": "p06", "image": null},
+        {"id": "p07", "image": null},
+        {"id": "p08", "image": null}
+      ]
+    },
+    {
+      "id": "c3",
+      "title": "Burnt but Proud",
+      "titleTr": "Yanık ama Gururlu",
+      "pages": [
+        {"id": "p09", "image": "p09.png"},
+        {"id": "p10", "image": null},
+        {"id": "p11", "image": null},
+        {"id": "p12", "image": null}
+      ]
+    },
+    {
+      "id": "c4",
+      "title": "Dal",
+      "titleTr": "Dal",
+      "pages": [
+        {"id": "p13", "image": "p13.png"},
+        {"id": "p14", "image": null},
+        {"id": "p15", "image": null},
+        {"id": "p16", "image": null}
+      ]
+    },
+    {
+      "id": "c5",
+      "title": "The Review",
+      "titleTr": "Eleştiri Yazısı",
+      "pages": [
+        {"id": "p17", "image": "p17.png"},
+        {"id": "p18", "image": null},
+        {"id": "p19", "image": null},
+        {"id": "p20", "image": null}
+      ]
+    }
+  ]
+}
