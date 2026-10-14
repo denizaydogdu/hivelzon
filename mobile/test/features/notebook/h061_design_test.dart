@@ -23,6 +23,7 @@ import 'package:hivelzon/features/topic_sets/domain/topic_set.dart';
 import 'package:hivelzon/features/topic_sets/presentation/scene_hunt_screen.dart';
 import 'package:hivelzon/features/topic_sets/presentation/topic_set_screen.dart';
 import 'package:hivelzon/shared/content/content_providers.dart';
+import 'package:hivelzon/shared/haptics/haptics.dart';
 import 'package:hivelzon/shared/meaning/learning_event_log.dart';
 import 'package:hivelzon/shared/storage/app_database.dart';
 import 'package:hivelzon/shared/storage/storage_providers.dart';
@@ -314,6 +315,21 @@ void main() {
       await unmount(tester);
     });
 
+    testWidgets('Profil\'de "Titreşim" kapalıysa doğru cevapta da titreşim '
+        'yok (H-064)', (tester) async {
+      await HapticsStore(db).setEnabled(false);
+      await progress.markCompleted('A1-001', gate: const {});
+      await pump(tester, AppRoutes.review);
+      await settle(tester);
+      await answerRight(tester);
+      expect(
+        find.byKey(const ValueKey('feedback-panel-correct')),
+        findsOneWidget,
+      );
+      expect(haptics, isEmpty);
+      await unmount(tester);
+    });
+
     testWidgets('özet: sakin kutlama + StatRow (sıfır olan sayı yok)', (
       tester,
     ) async {
@@ -460,6 +476,25 @@ void main() {
       );
       expect(find.byType(Animate), findsNothing);
       await g2.cancel();
+      await unmount(tester);
+    });
+
+    testWidgets('sahne avı: "Titreşim" kapalıysa bulununca da titreşim yok '
+        '(H-064)', (tester) async {
+      await HapticsStore(db).setEnabled(false);
+      await progress.markCompleted('A1-001', gate: const {});
+      await pump(tester, '/konu-seti/alex-room/sahne-avi', reduceMotion: true);
+      await settle(tester);
+      final set = loadTopicSetFixture('alex-room');
+      final order = [...set.items]..shuffle(math.Random(1));
+      final scene = tester.getRect(find.byKey(const ValueKey('hunt-scene')));
+      final (x, y) = _inside(order.first.hotspots.first);
+      await tester.tapAt(
+        Offset(scene.left + x * scene.width, scene.top + y * scene.height),
+      );
+      await settle(tester);
+      expect(find.text('Buldun!'), findsOneWidget);
+      expect(haptics, isEmpty);
       await unmount(tester);
     });
 

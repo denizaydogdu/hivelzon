@@ -36,7 +36,7 @@ Future<bool> showSpeechPermissionSheet(BuildContext context) async {
   final ok = await showModalBottomSheet<bool>(
     context: context,
     useSafeArea: true,
-    backgroundColor: AppColors.sand,
+    backgroundColor: AppPalette.sand,
     shape: const RoundedRectangleBorder(
       borderRadius: BorderRadius.vertical(
         top: Radius.circular(AppTheme.radius),
@@ -56,10 +56,10 @@ class SpeechPermissionSheet extends StatelessWidget {
     return SingleChildScrollView(
       key: const ValueKey('speech-permission-sheet'),
       padding: const EdgeInsets.fromLTRB(
-        AppSpacing.md,
-        AppSpacing.md,
-        AppSpacing.md,
-        AppSpacing.sm,
+        AppSpace.s24,
+        AppSpace.s24,
+        AppSpace.s24,
+        AppSpace.s16,
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -68,31 +68,31 @@ class SpeechPermissionSheet extends StatelessWidget {
           const Icon(
             Icons.mic_none_rounded,
             size: 48,
-            color: AppColors.seaBlue,
+            color: AppPalette.seaBlue,
           ),
-          const SizedBox(height: AppSpacing.xs),
+          const SizedBox(height: AppSpace.s8),
           Semantics(
             header: true,
             child: Text(
               SpeakTexts.permissionTitle,
               textAlign: TextAlign.center,
               style: theme.textTheme.titleLarge?.copyWith(
-                fontWeight: FontWeight.w700,
+                fontWeight: AppFonts.bold,
               ),
             ),
           ),
-          const SizedBox(height: AppSpacing.sm),
+          const SizedBox(height: AppSpace.s16),
           Text(SpeakTexts.permissionBody, style: theme.textTheme.bodyLarge),
-          const SizedBox(height: AppSpacing.xs),
+          const SizedBox(height: AppSpace.s8),
           Text(SpeakTexts.permissionNext, style: theme.textTheme.bodyMedium),
-          const SizedBox(height: AppSpacing.md),
+          const SizedBox(height: AppSpace.s24),
           FilledButton(
             key: const ValueKey('speech-permission-continue'),
             onPressed: () => Navigator.of(context).pop(true),
             style: FilledButton.styleFrom(minimumSize: const Size(48, 48)),
             child: const Text(SpeakTexts.permissionContinue),
           ),
-          const SizedBox(height: AppSpacing.xs),
+          const SizedBox(height: AppSpace.s8),
           TextButton(
             key: const ValueKey('speech-permission-later'),
             onPressed: () => Navigator.of(context).pop(false),
@@ -214,10 +214,10 @@ class _SpeakPracticeState extends State<SpeakPractice> {
                   onPressed: _go,
                   style: OutlinedButton.styleFrom(
                     minimumSize: const Size(48, 48),
-                    foregroundColor: AppColors.seaBlue,
-                    backgroundColor: Colors.white,
+                    foregroundColor: AppPalette.seaBlue,
+                    backgroundColor: AppPalette.white,
                     side: BorderSide(
-                      color: AppColors.seaBlue.withValues(alpha: 0.4),
+                      color: AppPalette.seaBlue.withValues(alpha: 0.4),
                     ),
                   ),
                   icon: icon,
@@ -228,10 +228,7 @@ class _SpeakPracticeState extends State<SpeakPractice> {
                   onPressed: _go,
                   style: FilledButton.styleFrom(
                     minimumSize: const Size.fromHeight(48),
-                    textStyle: const TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w700,
-                    ),
+                    textStyle: AppTypography.button,
                   ),
                   icon: icon,
                   label: Text(label),
@@ -255,7 +252,7 @@ class _SpeakPracticeState extends State<SpeakPractice> {
     if (feedback != null && !c.listening) {
       children.add(
         Padding(
-          padding: const EdgeInsets.only(top: AppSpacing.xs),
+          padding: const EdgeInsets.only(top: AppSpace.s8),
           child: Semantics(
             liveRegion: true,
             child: Row(
@@ -266,16 +263,16 @@ class _SpeakPracticeState extends State<SpeakPractice> {
                       ? Icons.check_circle_rounded
                       : Icons.lightbulb_outline_rounded,
                   color: c.succeeded
-                      ? AppColors.seaBlue
-                      : AppColors.eveningOrange,
+                      ? AppPalette.seaBlue
+                      : AppPalette.eveningOrange,
                 ),
-                const SizedBox(width: AppSpacing.xs),
+                const SizedBox(width: AppSpace.s8),
                 Expanded(
                   child: Text(
                     feedback,
                     key: ValueKey('$p-feedback'),
                     style: theme.textTheme.bodyLarge?.copyWith(
-                      fontWeight: c.succeeded ? FontWeight.w700 : null,
+                      fontWeight: c.succeeded ? AppFonts.bold : null,
                     ),
                   ),
                 ),
@@ -293,8 +290,8 @@ class _SpeakPracticeState extends State<SpeakPractice> {
             widget.expected,
             key: ValueKey('$p-reveal'),
             style: theme.textTheme.titleMedium?.copyWith(
-              fontWeight: FontWeight.w700,
-              color: AppColors.ink,
+              fontWeight: AppFonts.bold,
+              color: AppPalette.ink,
             ),
           ),
         ),

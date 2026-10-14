@@ -278,6 +278,7 @@ Hikâye sekmesinin seçicisi **Macera · Kitaplık · Dilbilgisi** olur (sekme s
 | Grup **Öğrenme** | **Defter** · "15 ifade · 5 ifadenin tekrar zamanı geldi" / "Bölüm bitince ifadeler buraya eklenir." | |
 | | **Günlük hedef** · "Kelime tekrarında günde en fazla 10 yeni ifade açılır." · sağda "10 dk" | Panel: "Günde ne kadar zaman ayırmak istersin?" · 5 / 10 / 15 dk · bilgi kartı (aynı cümle + "İstediğin zaman değiştirebilirsin. Hedefin altında kalmak sorun değil.") |
 | | **Söyle alıştırmaları** (anahtar) · "Sesin bu telefonda yazıya çevrilir; kaydedilmez, hiçbir yere gönderilmez." | Destek / izin yoksa sağda "Kapalı" ve nedeni (§11). |
+| | **Titreşim** (anahtar, varsayılan açık) · "Doğru cevapta ve sahne avında bulunca telefon hafifçe titrer." | H-064. Kapalıyken uygulama hiç titreşmez. Yanlış cevapta ve "Bilmiyorum"da zaten titreşim yok (K-32). `app_meta` `haptics.enabled`. |
 | | **Konu setleri** · "Hikâyedeki yerlerin nesneleri." | Defter → Konu setleri. |
 | Grup **Hesap ve gizlilik** | **Hesap** · sağda "Açık değil" / maskeli e-posta / 13 yaş altında "13+" (satır kapalı) | İpucu §12'deki satır metni. |
 | | **Hi benim hakkımda ne biliyor?** · "Bu cihazda saklananları gör, istersen sil." | |

@@ -61,40 +61,65 @@ class ShellScaffold extends StatelessWidget {
             ),
         ],
       ),
-      bottomNavigationBar: NavigationBar(
-        selectedIndex: navigationShell.currentIndex,
-        onDestinationSelected: (index) => navigationShell.goBranch(
-          index,
-          initialLocation: index == navigationShell.currentIndex,
-        ),
-        destinations: const [
-          NavigationDestination(
-            icon: Icon(Icons.home_outlined),
-            selectedIcon: Icon(Icons.home),
-            label: TabTexts.home,
-          ),
-          NavigationDestination(
-            icon: Icon(Icons.explore_outlined),
-            selectedIcon: Icon(Icons.explore),
-            label: TabTexts.discover,
-          ),
-          NavigationDestination(
-            icon: Icon(Icons.auto_stories_outlined),
-            selectedIcon: Icon(Icons.auto_stories),
-            label: TabTexts.story,
-          ),
-          NavigationDestination(
-            icon: Icon(Icons.chat_bubble_outline),
-            selectedIcon: Icon(Icons.chat_bubble),
-            label: TabTexts.talk,
-          ),
-          NavigationDestination(
-            icon: Icon(Icons.person_outline),
-            selectedIcon: Icon(Icons.person),
-            label: TabTexts.profile,
-          ),
-        ],
+      // H-064: dar ekranda büyük yazıda "Ana Sayfa" iki satıra bölünmesin;
+      // etiket ölçeği en geniş etiketin tek satıra sığacağı değerde
+      // sınırlanır (ikonlar değişmez).
+      bottomNavigationBar: MediaQuery.withClampedTextScaling(
+        maxScaleFactor: _navLabelScale(context),
+        child: _navigationBar(),
       ),
+    );
+  }
+
+  static const _labels = [
+    TabTexts.home,
+    TabTexts.discover,
+    TabTexts.story,
+    TabTexts.talk,
+    TabTexts.profile,
+  ];
+
+  static double _navLabelScale(BuildContext context) {
+    final mq = MediaQuery.of(context);
+    final slot =
+        (mq.size.width - mq.padding.left - mq.padding.right) / _labels.length;
+    return AppTypography.navLabelFitScale(slot, _labels);
+  }
+
+  Widget _navigationBar() {
+    return NavigationBar(
+      selectedIndex: navigationShell.currentIndex,
+      onDestinationSelected: (index) => navigationShell.goBranch(
+        index,
+        initialLocation: index == navigationShell.currentIndex,
+      ),
+      destinations: const [
+        NavigationDestination(
+          icon: Icon(Icons.home_outlined),
+          selectedIcon: Icon(Icons.home),
+          label: TabTexts.home,
+        ),
+        NavigationDestination(
+          icon: Icon(Icons.explore_outlined),
+          selectedIcon: Icon(Icons.explore),
+          label: TabTexts.discover,
+        ),
+        NavigationDestination(
+          icon: Icon(Icons.auto_stories_outlined),
+          selectedIcon: Icon(Icons.auto_stories),
+          label: TabTexts.story,
+        ),
+        NavigationDestination(
+          icon: Icon(Icons.chat_bubble_outline),
+          selectedIcon: Icon(Icons.chat_bubble),
+          label: TabTexts.talk,
+        ),
+        NavigationDestination(
+          icon: Icon(Icons.person_outline),
+          selectedIcon: Icon(Icons.person),
+          label: TabTexts.profile,
+        ),
+      ],
     );
   }
 }

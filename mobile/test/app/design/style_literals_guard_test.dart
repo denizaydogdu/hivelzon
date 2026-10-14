@@ -10,15 +10,15 @@ import 'package:flutter_test/flutter_test.dart';
 /// `Color(0x` 31 → 10, `fontSize:` 40 → 37; H-060 sonrasında `Color(0x`
 /// 10 → 1, `fontSize:` 37 → 36; H-061 sonrasında `fontSize:` 36 → 33;
 /// H-062 sonrasında oynatıcı ve anlam paneli temizlendi, `fontSize:` 33 → 1;
-/// H-063 sonrasında Hi'nin ışık rengi belirtece taşındı, `Color(0x` 1 → 0).
+/// H-063 sonrasında Hi'nin ışık rengi belirtece taşındı, `Color(0x` 1 → 0;
+/// H-064 sonrasında "Söyle" düğmesi `AppTypography.button`'a geçti,
+/// `fontSize:` 1 → 0).
 /// Sayılar yalnızca **azalabilir**:
 /// ekran fazları (H-059…H-064) bir dosyayı temizleyince o dosyanın satırını
 /// düşür ya da sil. Yeni dosyada (ör. `lib/shared/ui/`) sabit stil olmaz.
 const _colorBaseline = <String, int>{};
 
-const _fontSizeBaseline = <String, int>{
-  'lib/shared/speech/speak_widgets.dart': 1,
-};
+const _fontSizeBaseline = <String, int>{};
 
 bool _isTokenSource(String path) =>
     path.startsWith('lib/app/design/') || path == 'lib/app/theme.dart';

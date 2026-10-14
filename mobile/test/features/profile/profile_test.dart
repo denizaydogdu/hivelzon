@@ -7,8 +7,10 @@ import 'package:hivelzon/features/player/data/progress_repository.dart';
 import 'package:hivelzon/features/profile/data/user_profile_store.dart';
 import 'package:hivelzon/features/profile/presentation/profile_screen.dart';
 import 'package:hivelzon/shared/content/content_providers.dart';
+import 'package:hivelzon/shared/haptics/haptics.dart';
 import 'package:hivelzon/shared/storage/app_database.dart';
 import 'package:hivelzon/shared/storage/storage_providers.dart';
+import 'package:hivelzon/shared/ui/ui.dart';
 
 import '../../support/fake_content_source.dart';
 
@@ -65,9 +67,10 @@ void main() {
     setUp(() => db = AppDatabase.memory());
     tearDown(() => db.close());
 
-    Future<void> pump(WidgetTester tester) async {
+    Future<void> pump(WidgetTester tester, {double topInset = 0}) async {
       tester.view.physicalSize = const Size(1179, 2556);
       tester.view.devicePixelRatio = 3;
+      tester.view.padding = FakeViewPadding(top: topInset * 3);
       addTearDown(tester.view.reset);
       await tester.pumpWidget(
         ProviderScope(
@@ -126,6 +129,79 @@ void main() {
       );
       expect(find.text('Eklenmedi'), findsOneWidget);
       expect(find.text('Bugün küçük bir adım yeter.'), findsOneWidget);
+      await tester.pumpWidget(const SizedBox());
+      await settle(tester);
+    });
+
+    testWidgets('"Titreşim" anahtarı: varsayılan açık, kapatılınca kaydedilir '
+        '(H-064)', (tester) async {
+      await pump(tester);
+      await settle(tester);
+      final row = find.byKey(const ValueKey('profile-haptics-toggle'));
+      await tester.ensureVisible(row);
+      await tester.pump();
+      expect(find.text('Titreşim'), findsOneWidget);
+      // Öğrenme grubunda, "Söyle alıştırmaları"nın altında.
+      expect(
+        find.descendant(
+          of: find.ancestor(
+            of: find.text('Öğrenme'),
+            matching: find.byType(SettingsGroup),
+          ),
+          matching: row,
+        ),
+        findsOneWidget,
+      );
+      bool switchValue() => tester
+          .widget<Switch>(
+            find.descendant(of: row, matching: find.byType(Switch)),
+          )
+          .value;
+      expect(switchValue(), isTrue);
+      await tester.tap(row);
+      await settle(tester);
+      expect(switchValue(), isFalse);
+      expect(await HapticsStore(db).enabled(), isFalse);
+      await tester.pumpWidget(const SizedBox());
+      await settle(tester);
+    });
+
+    testWidgets('kaydırınca durum çubuğunun altına kum perdesi gelir; içerik '
+        'saatin üstüne binmez (H-064)', (tester) async {
+      await pump(tester, topInset: 59);
+      await settle(tester);
+      double opacity() => tester
+          .widget<AnimatedOpacity>(
+            find.byKey(const ValueKey('status-bar-scrim')),
+          )
+          .opacity;
+      // En üstte illüstrasyon durum çubuğunun altında; perde yok.
+      expect(opacity(), 0);
+      final greeting = find.byKey(const ValueKey('profile-greeting'));
+      // Selam satırını saatin hizasına (y ≈ 20) kaydır.
+      final start = tester.getRect(greeting).top;
+      await tester.timedDrag(
+        find.byKey(const ValueKey('profile-list')),
+        Offset(0, -(start - 20)),
+        const Duration(seconds: 1),
+      );
+      await tester.pumpAndSettle();
+      expect(opacity(), 1);
+      final scrim = tester.getRect(
+        find.byKey(const ValueKey('status-bar-scrim')),
+      );
+      expect(scrim.top, 0);
+      expect(scrim.height, 59);
+      expect(tester.getRect(greeting).top, lessThan(59));
+      // Perde selamın üstünde (Stack'te sonra) çizilir ve dokunuşu alır.
+      expect(greeting.hitTestable(at: Alignment.topLeft), findsNothing);
+      // Geri en üste: perde kaybolur.
+      await tester.drag(
+        find.byKey(const ValueKey('profile-list')),
+        const Offset(0, 600),
+      );
+      await tester.pumpAndSettle();
+      expect(opacity(), 0);
       await tester.pumpWidget(const SizedBox());
       await settle(tester);
     });

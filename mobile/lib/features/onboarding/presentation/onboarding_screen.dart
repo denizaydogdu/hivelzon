@@ -297,73 +297,76 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
     bool showBack = true,
     Widget? trailing,
   }) {
-    return Scaffold(
-      key: ValueKey('onboarding-${_step.name}'),
-      body: Column(
-        children: [
-          if (header == null)
-            SafeArea(
-              bottom: false,
-              child: _TopRow(
-                onBack: showBack ? _back : null,
-                index: _dotIndex,
-                count: _dotCount,
-                trailing: trailing,
-              ),
-            ),
-          Expanded(
-            child: ListView(
-              key: const ValueKey('onboarding-scroll'),
-              padding: EdgeInsets.zero,
-              children: [
-                ?header,
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(
-                    AppSpace.page,
-                    AppSpace.s8,
-                    AppSpace.page,
-                    AppSpace.s24,
-                  ),
-                  child: Center(
-                    child: ConstrainedBox(
-                      constraints: const BoxConstraints(maxWidth: 560),
-                      child: FadeSlideIn(
-                        key: ValueKey('step-${_step.name}'),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: children,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ],
+    final body = Column(
+      children: [
+        if (header == null)
+          SafeArea(
+            bottom: false,
+            child: _TopRow(
+              onBack: showBack ? _back : null,
+              index: _dotIndex,
+              count: _dotCount,
+              trailing: trailing,
             ),
           ),
-          if (actions.isNotEmpty)
-            SafeArea(
-              top: false,
-              child: Padding(
+        Expanded(
+          child: ListView(
+            key: const ValueKey('onboarding-scroll'),
+            padding: EdgeInsets.zero,
+            children: [
+              ?header,
+              Padding(
                 padding: const EdgeInsets.fromLTRB(
                   AppSpace.page,
                   AppSpace.s8,
                   AppSpace.page,
-                  AppSpace.s16,
+                  AppSpace.s24,
                 ),
                 child: Center(
                   child: ConstrainedBox(
                     constraints: const BoxConstraints(maxWidth: 560),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: actions,
+                    child: FadeSlideIn(
+                      key: ValueKey('step-${_step.name}'),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: children,
+                      ),
                     ),
                   ),
                 ),
               ),
+            ],
+          ),
+        ),
+        if (actions.isNotEmpty)
+          SafeArea(
+            top: false,
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(
+                AppSpace.page,
+                AppSpace.s8,
+                AppSpace.page,
+                AppSpace.s16,
+              ),
+              child: Center(
+                child: ConstrainedBox(
+                  constraints: const BoxConstraints(maxWidth: 560),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: actions,
+                  ),
+                ),
+              ),
             ),
-        ],
-      ),
+          ),
+      ],
+    );
+    return Scaffold(
+      key: ValueKey('onboarding-${_step.name}'),
+      // Başlık illüstrasyonu durum çubuğunun altına uzanır; kaydırınca
+      // metin saatin altına girmesin (H-064 durum çubuğu perdesi).
+      body: header == null ? body : StatusBarScrim(child: body),
     );
   }
 

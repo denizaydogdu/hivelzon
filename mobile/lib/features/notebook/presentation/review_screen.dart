@@ -2,13 +2,13 @@ import 'dart:async';
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../app/design/design.dart';
 import '../../../l10n/tr_strings.dart';
 import '../../../shared/fsrs/fsrs.dart';
+import '../../../shared/haptics/haptics.dart';
 import '../../../shared/meaning/error_taxonomy.dart';
 import '../../../shared/meaning/learning_event_log.dart';
 import '../../../shared/speech/speak_controller.dart';
@@ -203,7 +203,7 @@ class _ReviewScreenState extends ConsumerState<ReviewScreen> {
     if (!mounted) return;
     // Doğru cevapta tek, hafif dokunsal onay (H-061). Yanlış ve "Bilmiyorum"
     // titreşimsiz: uyarı gibi hissettirmesin (K-32).
-    if (outcome.correct) unawaited(HapticFeedback.lightImpact());
+    if (outcome.correct) unawaited(ref.read(hapticsProvider).success());
     setState(() => _outcome = outcome);
     unawaited(_audio.play(outcome.item));
   }

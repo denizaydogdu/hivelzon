@@ -80,12 +80,17 @@ Kurallar: Sekmeler arası geçiş anlık. İtilen sayfalarda (Defter, Hesap, Hi 
 | `StaggeredList`, `FadeSlideIn` | Sırayla belirme (`flutter_animate`) |
 | `SoftEntrance`, `CalmPop`, `CalmCelebration` | Örtük animasyonla tek öğe girişi / sakin belirme / sakin kutlama; zamanlayıcı bırakmaz (H-062: oynatıcı katmanları ve bölüm sonu) |
 | `ShapedEdgeClipper` | `ShapedHeader`'ın dalga / çapraz kesimi; başka yüzeylerde (Ana Sayfa bölüm kartının görseli, H-060) |
+| `StatusBarScrim` | Üst güvenli alanı olmayan, illüstrasyonu durum çubuğunun altına uzanan kaydırılan sayfalarda (Profil, açılışın karşılaması) kaydırınca saatin altına kum renkli şerit; en üstte görünmez, simgeler açık / koyu değişir (H-064) |
 
 Mevcutlar yeniden kullanılır: `PageHeader` / `SectionHeading`, `Skeleton` ailesi, oynatıcı kiti (`player_ui.dart`), `CardFace` / `AudioButton` / `EpisodeTag`, `HiAvatar`.
 
 ### Testler
 - Golden: `mobile/test/goldens/` (gömülü yazı tipleriyle; `test/support/app_fonts.dart`). Bilinçli görsel değişiklikten sonra: `cd mobile && flutter test --update-goldens test/goldens`. Golden'lar macOS'ta üretildi.
 - Erişilebilirlik: vitrinde `androidTapTargetGuideline`, `iOSTapTargetGuideline`, `labeledTapTargetGuideline`, `textContrastGuideline`; metin 1,3× büyütmede taşma yok.
+- Kalite turu (H-064): her ana ekran ve alt panel için aynı dört yönerge ve **320 × 568, metin 1,3×** taşma testi; hangi ekranın nerede denetlendiği `mobile/test/goldens/h064_quality_test.dart` başındaki haritada. `textContrastGuideline` piksel ölçtüğü için yalnız macOS'ta (`if (!skipGoldensOffMac)`).
+- Sabit stil bekçisi `mobile/test/app/design/style_literals_guard_test.dart`: belirteç dışında `Color(0x` **0**, `fontSize:` **0** (H-064).
+- Alt sekme etiketi (H-064): `AppTypography.navLabelFitScale` en geniş etiketin ("Ana Sayfa") tek satıra sığacağı ölçeği hesaplar; 320 pt'de 1,3× yazıda etiket iki satıra bölünmek yerine biraz küçülür, kesilmez (alt sınır 0,85×). Geniş ekranda kullanıcının ölçeği (Material sınırı 1,3×) aynen kalır.
+- Dokunsal geri bildirim (H-064): yalnızca `shared/haptics/haptics.dart` (`Haptics.success`), Profil > Öğrenme > **Titreşim** ayarına uyar; `HapticFeedback` başka yerde çağrılmaz (testle korunur).
 
 ## Tasarım belirteçleri v1 (H-045; v2'nin temeli)
 | Belirteç | Değer | Kullanım |

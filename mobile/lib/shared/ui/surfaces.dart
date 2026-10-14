@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import '../../app/design/tokens.dart';
 import '../../l10n/tr_strings.dart';
@@ -372,6 +373,90 @@ class EmptyState extends StatelessWidget {
             action!,
           ],
         ],
+      ),
+    );
+  }
+}
+
+/// Durum çubuğu perdesi (H-064): üst güvenli alanı olmayan, illüstrasyonu
+/// durum çubuğunun altına uzanan kaydırılan sayfalarda (Profil, açılışın
+/// karşılama adımı) içerik kaydırılınca saatin ve Dynamic Island'ın altına
+/// kum renkli sakin bir şerit belirir; içerik saatin üstüne binmez.
+///
+/// [child] içindeki ilk dikey kaydırmayı dinler. Sayfa en üstteyken şerit
+/// görünmez (illüstrasyon durum çubuğunun altında, simgeler açık renk);
+/// kaydırılınca şerit belirir, simgeler koyulaşır. "Hareketi azalt" açıksa
+/// geçiş anlıktır.
+class StatusBarScrim extends StatefulWidget {
+  const StatusBarScrim({
+    super.key,
+    required this.child,
+    this.color = AppPalette.sand,
+    this.revealAfter = AppSpace.s8,
+  });
+
+  final Widget child;
+
+  /// Şeridin rengi (sayfa zemini).
+  final Color color;
+
+  /// Bu kadar kaydırılınca şerit belirir.
+  final double revealAfter;
+
+  @override
+  State<StatusBarScrim> createState() => _StatusBarScrimState();
+}
+
+class _StatusBarScrimState extends State<StatusBarScrim> {
+  bool _covered = false;
+
+  bool _onScroll(ScrollNotification n) {
+    if (n.depth != 0 || n.metrics.axis != Axis.vertical) return false;
+    final covered = n.metrics.pixels > widget.revealAfter;
+    if (covered != _covered) setState(() => _covered = covered);
+    return false;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final top = MediaQuery.paddingOf(context).top;
+    final reduced = AppMotion.reduced(context);
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+      value: _covered ? SystemUiOverlayStyle.dark : SystemUiOverlayStyle.light,
+      child: NotificationListener<ScrollNotification>(
+        onNotification: _onScroll,
+        child: Stack(
+          children: [
+            Positioned.fill(child: widget.child),
+            if (top > 0)
+              Positioned(
+                top: 0,
+                left: 0,
+                right: 0,
+                height: top,
+                child: IgnorePointer(
+                  ignoring: !_covered,
+                  child: AnimatedOpacity(
+                    key: const ValueKey('status-bar-scrim'),
+                    opacity: _covered ? 1 : 0,
+                    duration: reduced ? Duration.zero : AppMotion.fast,
+                    curve: AppMotion.standard,
+                    child: DecoratedBox(
+                      decoration: BoxDecoration(
+                        color: widget.color,
+                        border: Border(
+                          bottom: BorderSide(
+                            color: Theme.of(context).colorScheme.outlineVariant,
+                          ),
+                        ),
+                      ),
+                      child: const SizedBox.expand(),
+                    ),
+                  ),
+                ),
+              ),
+          ],
+        ),
       ),
     );
   }
