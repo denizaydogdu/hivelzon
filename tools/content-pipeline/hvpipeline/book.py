@@ -43,14 +43,15 @@ MARKUP_RE = re.compile(r"[*_`\[\]]")
 HEADING_SEP = ".\n\n"
 
 # Seviye tablosu (docs/KITAPLIK.md §4). `speed`: ElevenLabs voice_settings.speed başlangıç değeri
-# (bölümlerde A1 için 0.9 ölçüldü: ~107 k/dk). Gerçek hız book-lint'te hizalamadan ölçülür (`wpm`).
+# (bölümlerde A1 için 0.9 ölçüldü: ~107 k/dk; kitapta 144–168). Gerçek hız book-lint'te hizalamadan
+# ölçülür (`wpm`). `pacing`: `narration.pacing` yoksa dışa aktarmadaki anlatım temposu modu (pacing.py, H-069).
 BOOK_LEVELS: dict[str, dict] = {
-    "A1": {"words": 700, "pages": (10, 12), "chapters": (2, 3), "wpm": (100, 110), "speed": 0.90},
-    "A2": {"words": 1500, "pages": (14, 16), "chapters": (3, 4), "wpm": (115, 125), "speed": 0.95},
-    "B1": {"words": 3000, "pages": (18, 20), "chapters": (4, 5), "wpm": (130, 140), "speed": 1.00},
-    "B2": {"words": 5000, "pages": (22, 24), "chapters": (5, 6), "wpm": (145, 155), "speed": 1.00},
-    "C1": {"words": 8000, "pages": (26, 28), "chapters": (6, 7), "wpm": (150, 170), "speed": 1.05},
-    "C2": {"words": 10000, "pages": (28, 30), "chapters": (7, 8), "wpm": (150, 180), "speed": 1.05},
+    "A1": {"words": 700, "pages": (10, 12), "chapters": (2, 3), "wpm": (100, 110), "speed": 0.90, "pacing": "auto"},
+    "A2": {"words": 1500, "pages": (14, 16), "chapters": (3, 4), "wpm": (115, 125), "speed": 0.95, "pacing": "auto"},
+    "B1": {"words": 3000, "pages": (18, 20), "chapters": (4, 5), "wpm": (130, 140), "speed": 1.00, "pacing": "auto"},
+    "B2": {"words": 5000, "pages": (22, 24), "chapters": (5, 6), "wpm": (145, 155), "speed": 1.00, "pacing": "off"},
+    "C1": {"words": 8000, "pages": (26, 28), "chapters": (6, 7), "wpm": (150, 170), "speed": 1.05, "pacing": "off"},
+    "C2": {"words": 10000, "pages": (28, 30), "chapters": (7, 8), "wpm": (150, 180), "speed": 1.05, "pacing": "off"},
 }
 WORD_TOLERANCE = 0.20
 

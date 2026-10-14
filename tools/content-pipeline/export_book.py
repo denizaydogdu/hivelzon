@@ -51,7 +51,13 @@ def main(argv: list[str] | None = None) -> int:
               f"{sum(1 for p in r.pages['pages'] if p['image'])} görsel; {len(m['files'])} dosya, {m['totalBytes'] / 1e6:.2f} MB")
         if m["loudness"]:
             lo = m["loudness"]
-            print(f"   ses: önce {lo['before']['I']} LUFS, kazanç {lo['gainDb']} dB, sonra {lo['after']['I']} LUFS")
+            print(f"   ses: önce {lo['before']['I']} LUFS, kazanç {lo['gainDb']} dB, sonra {lo['after']['I']} LUFS, "
+                  f"gerçek tepe {lo['after']['TP']} dBTP")
+        for cid, pc in r.pacing.items():
+            dur = next((c["duration"] for c in r.pages["chapters"] if c["id"] == cid), None)
+            how = (f"duraklama {pc['sentencePauseSec']} sn, tempo {pc['tempo']}, +{pc['insertedSec']} sn sessizlik"
+                   if pc["applied"] else "işlenmedi")
+            print(f"   tempo {cid} [{pc['mode']}]: {pc['wpmRaw']} → {pc['wpm']} k/dk; {how}; süre {dur} sn")
         for e in r.errors:
             print(f"   - HATA {e}")
         for x in r.missing:
@@ -60,7 +66,8 @@ def main(argv: list[str] | None = None) -> int:
         if miss_tr:
             print(f"   - UYARI [translation] {len(miss_tr)} eksik çeviri/anlam (book_lint.py ayrıntıyı verir)")
         summary.append({"book": r.book_id, "package": str(r.package), "errors": r.errors, "missing": r.missing,
-                        "files": len(m["files"]), "bytes": m["totalBytes"], "loudness": m["loudness"]})
+                        "files": len(m["files"]), "bytes": m["totalBytes"], "loudness": m["loudness"],
+                        "pacing": m["pacing"]})
     if a.report:
         Path(a.report).write_text(json.dumps(summary, ensure_ascii=False, indent=2), encoding="utf-8")
     return 1 if failed else 0

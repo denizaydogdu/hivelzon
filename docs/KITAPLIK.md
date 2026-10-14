@@ -102,7 +102,7 @@ Kaynaklar:
 | `audio/_parts/` | Uzun bölümlerin ödenmiş parça önbelleği (yeniden ödeme olmasın diye) | **git dışı** |
 | `images/` | Sayfa ve kapak görselleri (PNG/JPG) | **git dışı** |
 
-**`book.json` alanları:** `schemaVersion` (1), `id`, `slug` (= klasör adı), `level` (A1–C2), `genre` (`mystery` Gizem · `adventure` Macera · `humor` Mizah · `scifi-fantasy` Bilimkurgu/fantastik · `everyday` Günlük hayat/duygu), `title`, `titleTr`, `blurbTr` (Türkçe tanıtım), `hookEn`, `contentVersion`, `status` (K-05 durumları), `aiGenerated`, `palette` (`background`, `text`, `accent`, isteğe bağlı `surface`, `highlight`; `#RRGGBB`), `cover` (images/ altındaki dosya adı ya da `null`), `properNouns` (kapsamaya ve kelime anlamı zorunluluğuna girmez), `narration` (`voiceId`, `modelId`, `speed`; anahtar asla burada değil), `chapters[]` → `id` (`c1`…), `title`, `titleTr`, `pages[]` → `id` (`p01`…, kitap boyunca tekil ve sıralı), `image` (dosya adı ya da `null` = resimsiz, palet renkli sayfa).
+**`book.json` alanları:** `schemaVersion` (1), `id`, `slug` (= klasör adı), `level` (A1–C2), `genre` (`mystery` Gizem · `adventure` Macera · `humor` Mizah · `scifi-fantasy` Bilimkurgu/fantastik · `everyday` Günlük hayat/duygu), `title`, `titleTr`, `blurbTr` (Türkçe tanıtım), `hookEn`, `contentVersion`, `status` (K-05 durumları), `aiGenerated`, `palette` (`background`, `text`, `accent`, isteğe bağlı `surface`, `highlight`; `#RRGGBB`), `cover` (images/ altındaki dosya adı ya da `null`), `properNouns` (kapsamaya ve kelime anlamı zorunluluğuna girmez), `narration` (`voiceId`, `modelId`, `speed`, isteğe bağlı `pacing` = anlatım temposu §6.5; anahtar asla burada değil), `chapters[]` → `id` (`c1`…), `title`, `titleTr`, `pages[]` → `id` (`p01`…, kitap boyunca tekil ve sıralı), `image` (dosya adı ya da `null` = resimsiz, palet renkli sayfa).
 
 ### 6.2 `text.en.md` işaretleri
 ```
@@ -123,9 +123,9 @@ She likes it.
 |---|---|
 | `book.json` | Kaynak meta verinin yayın alanları (aynı şema) + `cover` (`images/cover.webp`), `wordCount`, `pageCount`, `estimatedMinutes`; bölümlerde `audio` (`audio/<bölüm>.m4a` ya da `null`) ve `duration` (sn); sayfalarda `image` = `images/<sayfa>.webp` ya da `null`. `narration` ve `properNouns` pakete girmez. |
 | `pages.json` | Şema `schema/pages.schema.json`. `chapters[]`: `id`, `title`, `audio`, `duration`, `heading` (seslendirilen başlık cümlesi), `pages[]` (kimlikler). `pages[]`: `id`, `number`, `chapter`, `image`, `sentences[]` → `id` (`p01-s01`; başlıkta `c1-h`), `paragraph`, `text`, `start`, `end`, `tr`, `words[]` (`w`, `start`, `end`, `gloss`), `chunks[]` (`en`, `tr`, `startWord`, `endWord`). Zamanlar sn, bölüm sesinin başına göre. Hizalama yoksa `start`/`end` `null` (sessiz okuma). |
-| `audio/<bölüm>.m4a` | AAC 96k; kitabın bütün bölümleri birlikte ölçülür, tek kazanç, hedef **-16 LUFS**, sınırlayıcı ≈ -1,5 dBFS (`media.audio_clip`). |
+| `audio/<bölüm>.m4a` | Anlatım temposu uygulanmış ses (§6.5). AAC 96k; kitabın bütün bölümleri (tempo **sonrası**) birlikte ölçülür, tek kazanç, hedef **-16 LUFS**, sınırlayıcı ≈ -1,5 dBFS (`media.audio_clip`). Ses düzeyi her zaman son adımdır. |
 | `images/<sayfa>.webp`, `images/cover.webp` | 1080 px genişlik, oran korunur, WebP q80, yazısız. |
-| `manifest.json` | `contentType: "BOOK"`, `contentVersion`, `tool`, `textSha256` (bölüm başına), `loudness`, `missing[]` (bu ortamda bulunmayan ses, hizalama, görsel), `files[]` (`path`, `bytes`, `sha256`), `totalBytes`. |
+| `manifest.json` | `contentType: "BOOK"`, `contentVersion`, `tool`, `textSha256` (bölüm başına), `loudness`, `pacing` (bölüm başına `mode`, `sentencePauseSec`, `tempo`, `insertedSec`, `applied`, `wpmRaw`, `wpm`), `missing[]` (bu ortamda bulunmayan ses, hizalama, görsel), `files[]` (`path`, `bytes`, `sha256`), `totalBytes`. |
 
 - **Zamanlama** `hvpipeline/align.py` → `sentence_timings`: **cümle düzeyinde** (bölüm altyazısındaki gibi kısa parçaları birleştirmez). Hizalama ile metin boşluk ve tırnak biçimi dışında birebir eşleşmelidir; metin TTS'ten sonra değişirse lint ve dışa aktarma hata verir (sesi yeniden üret).
 - **Eksik medya:** ses ve görseller git dışında olduğundan CI'da yoktur. Paket yine üretilir, eksikler `manifest.missing`'e yazılır ve UYARI olarak gösterilir; `--require-media` ile hata olur.
@@ -137,7 +137,7 @@ P=tools/content-pipeline/.venv/bin/python
 $P tools/content-pipeline/book_lint.py kitaplar/A1-K01-*          # denetim (ücretsiz)
 $P tools/content-pipeline/tts_book.py kitaplar/A1-K01-*           # KURU çalışma: karakter + tahmini kredi
 $P tools/content-pipeline/tts_book.py kitaplar/A1-K01-* --execute # ÜCRETLİ: maliyet onayından sonra
-$P tools/content-pipeline/export_book.py kitaplar/A1-K01-*        # paket (yerel ffmpeg + ImageMagick)
+$P tools/content-pipeline/export_book.py kitaplar/A1-K01-*        # paket (yerel ffmpeg + ImageMagick; anlatım temposu §6.5)
 ```
 
 **book-lint kuralları**
@@ -154,10 +154,11 @@ $P tools/content-pipeline/export_book.py kitaplar/A1-K01-*        # paket (yerel
 | `translation` | Her cümlenin (başlıklar dahil) çeviri satırı ve özel ad dışındaki her kelimenin anlamı; durum `APPROVED` değilse uyarı; bulunamayan kalıp uyarı | Hata / uyarı |
 | `book-align` | Hizalama metinle uyuşuyor (uyuşmazsa hata); `textSha256` farklıysa uyarı | Hata / uyarı |
 | `book-audio`, `book-media` | Hizalama henüz yok; ses ya da görsel bu ortamda yok (git dışı medya) | Uyarı |
-| `book-speed` | Hizalamadan ölçülen anlatım hızı seviye aralığının ± %10'u dışında (`narration.speed` ayarlanır) | Uyarı |
+| `book-speed` | Anlatım hızı, **anlatım temposundan sonra** (§6.5) seviye aralığının ± %10'u dışında. Ham hız da raporlanır (`hız c1 105 k/dk (ham 168)`); `narration.speed` ya da `narration.pacing` ayarlanır | Uyarı |
+| `book-pacing` | `narration.pacing` geçersiz (bilinmeyen mod; manual tempo 0,85–1,25 dışında) | Hata |
 
 **TTS betiği (`tts_book.py`)**
-- ElevenLabs `POST /v1/text-to-speech/{voice}/with-timestamps`, `mp3_44100_128`, `language_code: en`, model `eleven_v3`, `stability` 0.5, `similarity_boost` 0.75 (bölümlerle aynı). **Hız başlangıç değerleri:** A1 0.90 (bölümlerde ~107 k/dk ölçüldü), A2 0.95, B1 1.00, B2 1.00, C1 1.05, C2 1.05; `book.json → narration.speed` ile değişir, gerçek hız book-lint'te ölçülür.
+- ElevenLabs `POST /v1/text-to-speech/{voice}/with-timestamps`, `mp3_44100_128`, `language_code: en`, model `eleven_v3`, `stability` 0.5, `similarity_boost` 0.75 (bölümlerle aynı). **Hız başlangıç değerleri:** A1 0.90 (bölümlerde ~107 k/dk ölçüldü; kitapta 144–168 çıktı, dışa aktarmada anlatım temposuyla düzeltilir, §6.5), A2 0.95, B1 1.00, B2 1.00, C1 1.05, C2 1.05; `book.json → narration.speed` ile değişir, gerçek hız book-lint'te ölçülür.
 - **Anahtar** yalnızca `ELEVENLABS_API_KEY` ortam değişkeninden, yalnızca `--execute` ile okunur; hiçbir dosyaya ve loga yazılmaz.
 - **Varsayılan kuru çalışma:** API çağrılmaz; bölüm başına karakter, parça sayısı ve tahmini kredi yazılır (eleven_v3 ≈ 1 kredi/karakter, tahmin).
 - **Aylık karakter tavanı:** `HIVELZON_TTS_MONTHLY_CHAR_CAP` ya da `--monthly-char-cap`. **Tanımlı değilse `--execute` reddedilir.** Her parçadan önce `kitaplar/_maliyet/elevenlabs-karakter.json` defteriyle (ay → karakter, çağrı) denetlenir; aşılacaksa çağrı yapılmadan durur.
@@ -168,6 +169,36 @@ $P tools/content-pipeline/export_book.py kitaplar/A1-K01-*        # paket (yerel
 - İçerik türü olarak `BOOK` eklenir.
 - Seviyeye C2 eklenir.
 - İçe aktarma ve `/admin` onayı genişletilir (K-05 durum makinesi aynen).
+
+### 6.5 Anlatım temposu (H-069, 2026-10-14)
+**Sorun:** ElevenLabs `speed` yeterince inmiyor. A1-K01 0.9 ile seslendirildi, ama 144–168 k/dk ölçüldü; hedef 100–110. Yeniden üretim ücretli. **Çözüm ücretsiz ve dışa aktarmada:** `tools/content-pipeline/hvpipeline/pacing.py` + `media.pace_audio`.
+
+- **Ayar:** `book.json → narration.pacing` = `{"mode": "auto" | "manual" | "off", "sentencePauseSec": sayı, "tempo": sayı}` (şema: 0–3 sn, tempo 0.85–1.25).
+  - Alan yoksa **seviye varsayılanı** kullanılır: A1–B1 `auto`, B2–C2 `off` (`book.BOOK_LEVELS[...]["pacing"]`).
+  - `auto`: Her bölüm için seviye aralığının **ortası** hedeflenir: A1 105, A2 120, B1 135 k/dk. Önce cümle arası duraklama denenir (en çok 1,2 sn). Yetmezse tempo düşürülür (en az 0,85). Hiçbir zaman hızlandırmaz: kayıt zaten yavaşsa ses olduğu gibi kalır. Bu modda verilen sayılar yok sayılır.
+  - `manual`: `sentencePauseSec` (varsayılan 0,6) ve `tempo` (varsayılan 1,0) olduğu gibi uygulanır.
+  - `off`: ses olduğu gibi kalır (eski davranış).
+- **Duraklama:** `sentencePauseSec`, iki cümle arasındaki **toplam** sessizliğin alt sınırıdır. Kayıttaki doğal boşluk (tempo sonrası) kısaysa fark kadar sessizlik eklenir; uzunsa ekleme yapılmaz. Paragraf sınırında ×1,25, sayfa sınırında ve bölüm başlığından sonra ×1,5.
+- **Kesim:** Kesim noktası cümle sonu (son karakterin bitişi) ile sonraki cümlenin başı arasındadır. Ses zarfındaki en sessiz 10 ms seçilir. ElevenLabs hizalaması gerçek sessizlikten ~0,1 sn kayabiliyor (A1-K01'de ölçüldü: "dear." sönümü hizalama boşluğuna taşıyor). Bu yüzden boşluk -40 dB'den sessiz değilse arama ±0,25 sn genişler; iki cümlenin ortasını geçmez. Eklenen sessizliğin iki yanında ≤ 8 ms yumuşak geçiş vardır.
+- **Tempo:** ffmpeg `atempo` perdeyi korur. Parça parça uygulanır; eklenen sessizlik yavaşlatılmaz.
+- **Zamanlar:** Her parça tempo sonrası tam `round(N / tempo)` örneğe doldurulur ya da kırpılır, ardından tam sessizlik eklenir. `pages.json` zamanları örnek düzeyinde kesindir: yeni zaman = t / tempo + önceki eklenen sessizlikler. Her cümlenin zamanı kendi parçasına sıkıştırılır, bu yüzden vurgu eklenen duraklamaya düşmez. Bölüm `duration` işlenmiş sesin süresidir. Ses bu ortamda yoksa plan hizalamadan kurulur; zaman eşlemesi kesim yerinden bağımsız olduğu için aynı zamanlar çıkar.
+- **Sıra:** hizalama → tempo planı → kesim + sessizlik + atempo (geçici WAV, float) → birleşik ses düzeyi ölçümü → tek kazanç + sınırlayıcı → AAC. **-16 LUFS son adımdır.** Süreç deterministiktir: aynı girdiyle ikinci dışa aktarma bayt bayt aynı `pages.json` ve `.m4a` üretir.
+- **book-lint** aynı planı hizalamadan kurar. `book-speed` tempo sonrası hızı denetler ve ham hızı da yazar.
+
+**A1-K01 sonucu** (2026-10-14, `auto`, yalnız duraklama; tempo gerekmedi):
+
+| Bölüm | Ham | Sonra | Duraklama | Tempo | Eklenen sessizlik | Süre |
+|---|---|---|---|---|---|---|
+| c1 | 168 k/dk | 105,0 | 1,17 sn | 1,0 | 65,1 sn | 109,1 → 174,2 sn |
+| c2 | 144 | 105,1 | 0,93 | 1,0 | 34,3 | 92,4 → 126,7 |
+| c3 | 154 | 104,9 | 1,01 | 1,0 | 43,5 | 93,3 → 136,7 |
+
+- **Ses düzeyi:** -16,04 LUFS (bölüm başına -15,93 / -16,29 / -15,94; kazanç -2,34 dB), gerçek tepe en çok -5,38 dBTP, örnek tepe -5,40 dBFS; kırpılma yok, sınırlayıcı devreye girmedi.
+- **Doğrulama:**
+  - İşlenmiş sesin her parçası, kaynakla planlanan yerde ±1 örnekte (8 kHz) eşleşiyor. Korelasyon ≥ 0,96; fark yalnızca kayıplı kodlamadan.
+  - Eklenen sessizlik gerçekten sessiz.
+  - Bütün kesimler kaynakta en büyük seviyenin en az 41 dB altında; ortanca -62…-68 dB.
+- **Not:** Seslendiricinin kendi konuşma hızı yüksek (cümle içinde ~165–190 k/dk). Ortalama hız duraklamalarla hedefe iniyor; cümle içi hız değişmiyor. Kullanıcı dinleyip cümle içini hızlı bulursa `manual` ile tempo 0,9 denenebilir: duraklama azalır, cümle içi yavaşlar.
 
 ## 7. Uygulama deneyimi (taslak; H-067'de tasarım taslağıyla kesinleşir)
 **Yer:**

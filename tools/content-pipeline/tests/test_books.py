@@ -48,6 +48,8 @@ class FakeMedia:
 
     def __init__(self):
         self.audio_calls = []
+        self.pace_calls = []
+        self._dur = {}
 
     def loudness(self, paths):
         return {"I": -20.0, "TP": -3.0, "LRA": 5.0}
@@ -56,15 +58,40 @@ class FakeMedia:
         self.audio_calls.append((src.name, round(gain, 2)))
         out.parent.mkdir(parents=True, exist_ok=True)
         out.write_bytes(b"m4a:" + src.read_bytes())
+        if src.name in self._dur:
+            self._dur[out.name] = self._dur[src.name]
         return out
 
     def duration(self, path):
-        return 12.5
+        return self._dur.get(path.name, 12.5)
+
+    # anlatım temposu (H-069): kaynak 12,5 sn, zarf yok (kesim aralığın ortası)
+    def samples(self, path):
+        return int(12.5 * 44100)
+
+    def envelope(self, path):
+        return []
+
+    def pace(self, src, plan, out):
+        self.pace_calls.append((src.name, plan.pause, plan.tempo))
+        out.parent.mkdir(parents=True, exist_ok=True)
+        out.write_bytes(b"paced:" + src.read_bytes())
+        self._dur[out.name] = plan.out_total / plan.sr
+        return out
 
     def image(self, src, out):
         out.parent.mkdir(parents=True, exist_ok=True)
         out.write_bytes(b"webp:" + src.read_bytes())
         return out
+
+
+def set_pacing(d: Path, cfg: dict | None) -> None:
+    """book.json → narration.pacing (None: alanı kaldır, seviye varsayılanı)."""
+    bj = json.loads((d / "book.json").read_text(encoding="utf-8"))
+    bj["narration"].pop("pacing", None)
+    if cfg is not None:
+        bj["narration"]["pacing"] = cfg
+    (d / "book.json").write_text(json.dumps(bj, ensure_ascii=False), encoding="utf-8")
 
 
 def add_fake_media(d: Path) -> None:
@@ -268,6 +295,7 @@ def test_concat_alignments_offsets():
 # --- paket --------------------------------------------------------------------------------------
 
 def test_export_with_fake_media(book_dir):
+    set_pacing(book_dir, {"mode": "off"})     # tempo işlemi ayrı testte (test_pacing.py)
     add_fake_media(book_dir)
     fm = FakeMedia()
     r = export(book_dir, media=fm)
@@ -327,6 +355,7 @@ def test_export_fails_on_alignment_mismatch(book_dir):
 
 @pytest.mark.skipif(not (HAS_FFMPEG and HAS_MAGICK), reason="ffmpeg/ImageMagick yok")
 def test_export_real_media_loudness_and_webp(book_dir):
+    set_pacing(book_dir, {"mode": "off"})     # 6 sn'lik ton hizalamayla uyuşmaz; tempo test_pacing.py'de
     (book_dir / "images").mkdir()
     for c, f in (("c1", 330), ("c2", 440)):
         subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-f", "lavfi", "-i", f"sine=frequency={f}:duration=6",

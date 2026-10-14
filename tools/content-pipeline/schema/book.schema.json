@@ -49,7 +49,17 @@
         "modelId": { "type": "string", "minLength": 1 },
         "speed": { "type": "number", "minimum": 0.7, "maximum": 1.2 },
         "stability": { "type": "number", "minimum": 0, "maximum": 1 },
-        "similarityBoost": { "type": "number", "minimum": 0, "maximum": 1 }
+        "similarityBoost": { "type": "number", "minimum": 0, "maximum": 1 },
+        "pacing": {
+          "description": "Dışa aktarmada anlatım temposu (H-069, docs/KITAPLIK.md §6.5): cümle sınırlarına sessizlik + perde korunarak yavaşlatma. Yoksa seviye varsayılanı: A1–B1 auto, B2+ off. auto: seviye hız aralığının ortası için bölüm başına hesaplanır (sayılar yok sayılır). manual: sentencePauseSec (varsayılan 0.6) ve tempo (varsayılan 1.0).",
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "mode": { "enum": ["auto", "manual", "off"] },
+            "sentencePauseSec": { "description": "Cümleler arası toplam sessizliğin alt sınırı (sn); paragrafta ×1,25, sayfada ×1,5.", "type": "number", "minimum": 0, "maximum": 3 },
+            "tempo": { "description": "ffmpeg atempo (perde korunur); 0.85 altına inilmez.", "type": "number", "minimum": 0.85, "maximum": 1.25 }
+          }
+        }
       }
     },
     "wordCount": { "type": "integer", "minimum": 0 },

@@ -9,7 +9,8 @@ Denetimler:
 - Cümle uzunluğu (A1 ≤ 8, A2 ≤ 12), kelime sayısı seviye hedefi ± %20.
 - Sözlük: her girdinin Türkçesi (hata), örnek cümlesi (uyarı), metinde geçmesi (uyarı).
 - Çeviri (`ceviri.tr.json`): durum, her cümlenin Türkçesi ve özel ad dışındaki her kelimenin anlamı.
-- Ses: hizalama metinle uyuşuyor mu (hata), ses/hizalama var mı ve ölçülen hız (uyarı; git dışı medya).
+- Ses: hizalama metinle uyuşuyor mu (hata), ses/hizalama var mı ve anlatım hızı (uyarı; git dışı medya).
+  Hız, dışa aktarmadaki anlatım temposundan (pacing.py, H-069) SONRAKİ etkin hızdır; ham hız da raporlanır.
 - Görsel: `book.json`'da adı geçen görsel bu ortamda var mı (uyarı; git dışı medya).
 """
 
@@ -19,6 +20,7 @@ import json
 from dataclasses import dataclass, field
 from pathlib import Path
 
+from . import pacing
 from .align import Alignment, AlignmentMismatch, sentence_timings
 from .book import (BOOK_FILE, BOOK_LEVELS, DIR_RE, PROMPTS_FILE, RIGHTS_FILE, TEXT_FILE, GLOSSARY_FILE,
                    WORD_TOLERANCE, Book, BookError, text_sha256)
@@ -204,8 +206,13 @@ def _check_translation(book: Book) -> tuple[list[Issue], dict | None]:
 
 def _check_media(book: Book) -> tuple[list[Issue], dict]:
     issues: list[Issue] = []
-    audio = {"chapters": len(book.text.chapters), "aligned": 0, "audio": 0, "wpm": {}}
+    audio = {"chapters": len(book.text.chapters), "aligned": 0, "audio": 0, "wpm": {}, "wpmRaw": {}, "pacing": {}}
     lv = BOOK_LEVELS.get(book.level)
+    try:
+        cfg = pacing.settings(book.meta, book.level)
+    except pacing.PacingError as e:
+        issues.append(Issue("error", "book-pacing", str(e)))
+        cfg = None
     for c in book.text.chapters:
         ap = book.align_path(c.id)
         if not ap.exists():
@@ -227,16 +234,25 @@ def _check_media(book: Book) -> tuple[list[Issue], dict]:
         if sha and sha != text_sha256(c.tts_text()):
             issues.append(Issue("warning", "book-align", f"{c.id}: hizalama başka bir metin sürümünden (textSha256 farklı; "
                                                          "cümleler yine eşleşiyor, noktalama değişmiş olabilir)"))
-        spoken = [t for t in timings if t["start"] is not None]
-        if spoken and lv:
-            dur = spoken[-1]["end"] - spoken[0]["start"]
-            n = sum(len(t["words"]) for t in spoken)
-            wpm = round(60.0 * n / dur) if dur > 0 else None
+        if pacing.spoken(timings) and lv:
+            # Etkin hız: dışa aktarmadaki anlatım temposundan sonra (H-069; plan hizalamadan, kesim yerinden bağımsız)
+            plan = None
+            if cfg is not None and cfg["mode"] != "off":
+                plan = pacing.plan_chapter(timings, pacing.chapter_units(c), cfg, book.level,
+                                           pacing.spoken(timings)[-1]["end"])
+            raw = pacing.wpm(timings)
+            eff = pacing.wpm(pacing.apply(timings, plan)) if plan else raw
+            raw = round(raw) if raw else None
+            wpm = round(eff) if eff else None
+            audio["wpmRaw"][c.id] = raw
             audio["wpm"][c.id] = wpm
+            audio["pacing"][c.id] = plan.describe() if plan else {"mode": cfg["mode"] if cfg else "?"}
             lo, hi = lv["wpm"]
             if wpm is not None and not (lo * 0.9 <= wpm <= hi * 1.1):
-                issues.append(Issue("warning", "book-speed", f"{c.id}: anlatım hızı ~{wpm} k/dk; {book.level} için {lo}–{hi} "
-                                                             "(narration.speed ayarlanabilir)"))
+                how = (f"tempo sonrası ~{wpm} k/dk (ham ~{raw}; duraklama {plan.pause} sn, tempo {plan.tempo})"
+                       if plan else f"~{wpm} k/dk (tempo işlemi yok)")
+                issues.append(Issue("warning", "book-speed", f"{c.id}: anlatım hızı {how}; {book.level} için {lo}–{hi} "
+                                                             "(narration.speed ya da narration.pacing ayarlanabilir)"))
         if book.audio_path(c.id).exists():
             audio["audio"] += 1
         else:
