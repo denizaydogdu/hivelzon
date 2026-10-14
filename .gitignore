@@ -76,6 +76,13 @@ kitaplar/**/*.m4a
 kitaplar/**/audio/_parts/
 kitaplar/**/_build/
 
+# Dilbilgisi dersleri (H-077): ses git dışında; hizalamalar (audio/**/*.align.json) ve
+# audio/lesson-audio.json depoda. Ödenmiş ham önbellek ve paket git dışında.
+dilbilgisi/**/*.mp3
+dilbilgisi/**/*.m4a
+dilbilgisi/**/audio/**/_raw/
+dilbilgisi/**/_build/
+
 # İçerik boru hattı (tools/content-pipeline)
 tools/content-pipeline/.venv/
 __pycache__/

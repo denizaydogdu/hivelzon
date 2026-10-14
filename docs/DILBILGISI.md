@@ -1,6 +1,6 @@
 # Dilbilgisi: Hi'den Türkçe konu anlatımı (H-075…H-082)
 
-> Durum: **plan** (kullanıcı isteği ve kararları 2026-10-14). İşler §8'de.
+> Durum: **plan** (kullanıcı isteği ve kararları 2026-10-14). İşler §8'de. Ders paketi biçimi ve araçları (H-077): §9.
 
 ## 1. Neden
 Kullanıcının gözlemi: "Türk öğrenciler bazen konuları anlamıyor."
@@ -134,3 +134,116 @@ $P tools/content-pipeline/tts_tr.py <parcalar.json> --out-dir <klasör> --execut
 | D6 | **H-082** Dalga 3: C1 + C2 (~14) | Aynı akış | Onaylı |
 
 **Sıra:** H-075 ve H-076 hemen ve paralel → H-077 → H-078 (H-077 ile paralel olabilir) → H-079 → H-080… Ücretsiz ay sınırlı olduğu için A1–A2 metinleri öne alınır.
+
+## 9. Ders paketi biçimi (H-077)
+Araçlar `tools/content-pipeline/` altındadır. Şemalar: `schema/lesson.schema.json`, `cards.schema.json`, `lesson-audio.schema.json`. Örnek ders: `tools/content-pipeline/tests/fixtures/grammar/G-A1-99-third-person-s/` (sahte hizalamalı, yalnız test).
+
+### 9.1 Kaynak: `dilbilgisi/<G-ID>/`
+| Dosya | İçerik |
+|---|---|
+| `lesson.json` | `id` (klasör adıyla aynı), `level`, `titleTr`, `titleEn`?, `goalTr`, `prerequisites` (G-ID listesi), `contentVersion`, `status` (K-05), `aiGenerated`, `teacherReview` (`null` ya da `{by, at, notes?}`), `linksTo` (`episodes`, `books`). İsteğe bağlı: `glossary`, `properNouns`, `pronunciations` (`[{term, say_as}]`, Alania söyleniş sözlüğü; yalnız terimi geçen parçaya gider), `narration.tr` (`voice`, `model`, `instructions`), `narration.en` (`voiceId`, `modelId`, `speed`; varsayılan Sarah `EXAVITQu4vr4xnSDxMaL`, `eleven_v3`, seviye hızı). |
+| `lesson.md` | Kartlar (§9.2). |
+| `PROMPTS.md`, `rights-and-review.md` | Zorunlu. Ses çağrıları `PROMPTS.md`'ye yazılır. |
+| `audio/tr/<kart>-tr.{mp3,align.json}` | Türkçe anlatım (kart başına bir parça). |
+| `audio/en/<örnek>.{mp3,align.json}` | İngilizce örnek ve "Söyle" cümlesi (her biri ayrı parça). |
+| `audio/lesson-audio.json` | Kart → ses parçaları haritası (yol, metin sha256, süre, Duyu kalitesi, var mı). |
+
+Ses (mp3) ve ödenmiş ham önbellek (`_raw/`) git dışındadır; hizalamalar ve harita depodadır.
+
+### 9.2 `lesson.md` işaretleri
+```text
+# G-A1-03-third-person-s                  isteğe bağlı; kimlikle aynı
+> yorum                                   denetime ve sese girmez
+## hook | Kart başlığı                    kart başı; başlık isteğe bağlı
+Düz Türkçe cümleler.                      Hi'nin anlatımı (Alania); boş satır paragraf sonu
++ She [[goes]] to school. | O okula gider.    İngilizce örnek | Türkçesi; [[ ]] hedef yapı (Sarah okur)
+x She go to school. | Ek eksik.           yanlış biçim (contrast); sessiz, kapsamaya girmez
+? choose | She ___ to school. | go | *goes    seç; doğru seçenek *
+? fill | He ___ football. (play) | plays      boşluk doldur; kabul edilen cevaplar
+? order | the box / opens / Ece | Ece opens the box.   sıraya koy
+? say | She goes to school. | O okula gider.  Söyle (H-055); cümleyi Sarah okur
+! Türkçe kısa açıklama                    önceki sorunun yanlış cevap açıklaması
+- episode A1-001 s01 | Can you hear me?   Hikâyede gör: bölüm (+ isteğe bağlı düğüm)
+- book A1-K01 p03 | Lina opens the door.  kitap (+ isteğe bağlı sayfa)
+@diagram timeline | past: I played | now: I play | future: I will play
+@diagram boxes | She :: özne | goes :: fiil ve ek | to school
+@diagram suffix | go+es | play+s
+```
+- **Kart türleri ve sıra:** `hook → explain (tekrar edebilir) → examples → contrast → practice → seeInStory → rule`. `seeInStory` dışındakiler zorunludur. Kartlar sırayla `c01, c02…` kimliğini alır.
+- **Parça kimlikleri:** Türkçe `c02-tr`; örnek `c03-ex1`; yanlış biçim `c04-x1`; soru `c05-q1`.
+- Türkçe anlatım düz metindir: yıldız, alt çizgi, ters tırnak ve köşeli parantez kullanılmaz; İngilizce kelime yazılmaz. İngilizce kelime ayrı bir `+` örneğine taşınır; ek gösterimi (`-s`) `pronunciations`'a yazılır.
+
+### 9.3 Ses: `tts_lesson.py`
+```bash
+P=tools/content-pipeline/.venv/bin/python
+$P tools/content-pipeline/tts_lesson.py dilbilgisi/G-…            # kuru çalışma: karakter, TL ve kredi
+HIVELZON_TR_TTS_MONTHLY_CHAR_CAP=50000 HIVELZON_TTS_MONTHLY_CHAR_CAP=10000 \
+  $P tools/content-pipeline/tts_lesson.py dilbilgisi/G-… --execute [--lang tr|en] [--card c02]
+$P tools/content-pipeline/tts_lesson.py dilbilgisi/G-… --manifest-only   # yalnız haritayı yaz
+```
+- **Türkçe:** `tts_tr` (Alania + Duyu, -16 LUFS mp3, hizalama). Tavan `HIVELZON_TR_TTS_MONTHLY_CHAR_CAP`, defter `kitaplar/_maliyet/patientdesk-karakter.json`.
+- **İngilizce:** ElevenLabs zaman damgalı (tts.py ile aynı uç nokta ve ayarlar). Tavan `HIVELZON_TTS_MONTHLY_CHAR_CAP`, defter `kitaplar/_maliyet/elevenlabs-karakter.json` (kitaplarla ortak).
+- **Kurallar:**
+  - Varsayılan kuru çalışmadır.
+  - `--execute` için iş olan her dilin tavanı tanımlı olmalı; yoksa hiçbir çağrı yapılmaz.
+  - Tavan her parçadan önce denetlenir.
+  - Güncel çıktı atlanır (anahtar: metin + ses + model + ayar).
+  - Ödenmiş ham çıktı `_raw/`'dan yeniden kurulur. Aynı İngilizce cümle derste birden çok kez geçerse bir kez ücretlenir.
+  - Her çağrı `PROMPTS.md`'ye yazılır.
+  - Türkçe anlatımda İngilizce kelime görülürse uyarı verilir.
+
+### 9.4 Denetim: `grammar_lint.py`
+```bash
+$P tools/content-pipeline/grammar_lint.py dilbilgisi/G-* [--json]
+```
+| Denetim | Düzey |
+|---|---|
+| `lesson.json` şeması; kimlik = klasör adı, seviyeyle başlar; zorunlu dosyalar | hata |
+| `teacherReview` (by, at) yok ve durum APPROVED, SCHEDULED ya da PUBLISHED | hata |
+| `linksTo` bölüm/kitap bulunamadı | hata |
+| Önkoşul ders henüz yok | uyarı |
+| Kart sırası, zorunlu kartlar, tekrar eden kart | hata |
+| `seeInStory` kartı yok | uyarı |
+| Kanca, anlatım, karşılaştırma ve kural kartında Türkçe anlatım yok | hata |
+| Anlatım kartında 3'ten çok cümle | hata |
+| Diğer kartlarda 4'ten çok cümle | uyarı |
+| Türkçe cümle 20 kelimeden uzun | hata (15'ten uzunsa uyarı) |
+| Türkçe anlatımda İngilizce kelime ya da `-s` gibi ek (söyleniş sözlüğünde değilse) | uyarı |
+| Örnek kartında 3–5 örnek yok; örneğin Türkçesi yok; örnekler, karşılaştırma ve kuralda `[[ ]]` hedefi yok | hata |
+| Kural kartında örnek yok | hata |
+| Kancada bağ ya da sesli örnek yok; karşılaştırmada `x`/`+` yok | uyarı |
+| Kapsama (K-07: ≥ %98, %95 yalnız sözlükle) ve cümle uzunluğu (İngilizce örnekler ve çözülmüş alıştırmalar) | hata/uyarı (bölümle aynı) |
+| Alıştırma 3–5 soru değil; cevap anahtarı geçersiz (seç: tek `___`, en az 2 seçenek, tek doğru, tekrar yok; boşluk: tek `___` ve cevap; sırala: parçalar cevapla aynı kelimeler; söyle: metin) | hata |
+| Sırala parçaları zaten doğru sırada; yanlış cevap açıklaması (`!`) yok | uyarı |
+| "Hikâyede gör" bağı birebir cümleyle çözülmüyor | hata |
+| Bağ birden çok yerde geçiyor ya da yalnız `story.en.md` satırına çözülüyor; bağ `linksTo`'da yok | uyarı |
+| Hizalama metinle uyuşmuyor (`textSha256` ya da karakterler) | hata |
+| Hizalama ya da ses dosyası yok; Duyu kalitesi düşük | uyarı |
+
+**Bağ çözümü:**
+- **Bölüm:** Önce paket altyazılarına (`_build/package/subs`) bakılır. Paket yoksa `kurgu.json` kuru derlenir; o da yoksa yalnız `story.en.md` satırı kullanılır.
+  - Altyazı satırı birden çok cümle taşıyabilir; cümlelerden biri birebir eşleşmelidir.
+- **Kitap:** Kaynak metin (`text.en.md`) kullanılır. Cümle kimlikleri `pages.json` ile aynıdır.
+- Boşluk ve tırnak biçimi farkı yok sayılır. Büyük/küçük harf ve noktalama sayılır.
+
+### 9.5 Paket: `export_grammar.py` → `dilbilgisi/<G-ID>/_build/package/`
+```bash
+$P tools/content-pipeline/export_grammar.py dilbilgisi/G-… [--require-media]
+```
+| Dosya | İçerik |
+|---|---|
+| `lesson.json` | Kaynak meta veri (ses ayarı, söyleniş ve öğretmen notu olmadan). Ek alanlar: `durations` (`narration`, `examples`, `total`, kart başına), `estimatedMinutes` (ses + soru başına 10 sn), `cardCount`, `teacherReviewed`. |
+| `cards.json` | Kartlar: `narration` (Türkçe metin, ses, süre, cümle başına `start/end` ve kelime zamanları), `examples` (en, tr, `targets` karakter aralıkları, ses, kelime zamanları), `wrong`, `diagrams`, `practice` (seç: `options[{text, correct}]`; boşluk: `answers`; sırala: `tokens`, `answer`; söyle: `text`, ses; `feedbackTr`), `links` (derin bağ: `episodeId + node + cueId` ya da `bookId + chapter + page + sentenceId`). |
+| `audio/<parça>.m4a` | Her parça ayrı -16 LUFS. |
+| `manifest.json` | Dosyalar, sha256, ses düzeyi, metin sha256, eksik medya. |
+
+- Eksik ses paketi durdurmaz: `manifest.missing` listesine yazılır, zamanlar hizalamadan gelir. `--require-media` ile eksik ses hata olur.
+- Hizalama metinle uyuşmazsa paket üretilmez.
+
+### 9.6 Dev içerik sunucusu ve `grammarTopics`
+- **Sunucu:** `serve.py` şu adresleri de sunar: `/grammar/index.json` (ders listesi: kimlik, seviye, ad, hedef, önkoşul, bağlar, kart sayısı, süre) ve `/grammar/<G-ID>/<yol>`. Klasör `--grammar-root`'tur (varsayılan `dilbilgisi/`).
+- **`grammarTopics`:** Bölüm (`content.json`) ve kitap (`book.json`) isteğe bağlı bu alanı taşır: G-ID listesi.
+  - Bölüm paketinde `scenes.json → episode.grammarTopics`, kitap paketinde `book.json` içinde bulunur.
+  - Sunucu dizinlerinde (`/packages/index.json`, `/books/index.json`) de yer alır. Uygulamadaki "Bu bölümdeki dilbilgisi" düğmesi bu alanı kullanır.
+  - **Denetim:** `content-lint` ve `book-lint`. Biçim hatalıysa hata. `dilbilgisi/`'de ders varsa bilinmeyen kimlik hatadır; henüz hiç ders yoksa uyarıdır.
+  - Alan yoksa çıktı eskisiyle aynıdır.

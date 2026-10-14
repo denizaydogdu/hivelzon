@@ -62,6 +62,11 @@
         }
       }
     },
+    "grammarTopics": {
+      "description": "Bu kitapta geçen dilbilgisi konuları (H-077): dilbilgisi/<G-ID> kimlikleri. Kitap açma ekranında \"Bu kitaptaki dilbilgisi\" teklifi bunu kullanır. book-lint: ders varsa kimlik bulunmalı.",
+      "type": "array", "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^G-(A1|A2|B1|B2|C1|C2)-[0-9]{2}-[a-z0-9]+(-[a-z0-9]+)*$" }
+    },
     "wordCount": { "type": "integer", "minimum": 0 },
     "pageCount": { "type": "integer", "minimum": 0 },
     "estimatedMinutes": { "type": ["number", "null"], "minimum": 0 },

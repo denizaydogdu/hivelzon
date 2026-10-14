@@ -191,6 +191,9 @@ def episode_meta(ep: Episode, translation: Translation | None = None) -> dict:
     meta["glossary"] = glossary
     if "estimatedMinutes" in c:
         meta["estimatedMinutes"] = c["estimatedMinutes"]
+    if c.get("grammarTopics"):
+        # H-077: bölüm panelinde "Bu bölümdeki dilbilgisi" (isteğe bağlı alan; content-lint denetler)
+        meta["grammarTopics"] = list(dict.fromkeys(c["grammarTopics"]))
     return meta
 
 

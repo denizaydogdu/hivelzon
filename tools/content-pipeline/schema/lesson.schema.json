@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hi.velzon.tr/schema/lesson.v1.schema.json",
+  "title": "hiVelzon dilbilgisi dersi (lesson.json)",
+  "description": "Kaynak (dilbilgisi/<G-ID>/lesson.json) ve paket (_build/package/lesson.json) aynı şemayı kullanır. Pakette ses ayarları, söyleniş sözlüğü ve öğretmen notu yoktur; ek olarak `durations`, `estimatedMinutes`, `cardCount`, `teacherReviewed` bulunur. H-077, docs/DILBILGISI.md §9.",
+  "type": "object",
+  "required": ["schemaVersion", "id", "level", "titleTr", "goalTr", "prerequisites", "contentVersion", "status", "aiGenerated", "teacherReview", "linksTo"],
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "id": { "$ref": "#/$defs/lessonId" },
+    "level": { "enum": ["A1", "A2", "B1", "B2", "C1", "C2"] },
+    "titleTr": { "description": "Türkçe konu adı (ör. \"Üçüncü tekil -s\").", "type": "string", "minLength": 1 },
+    "titleEn": { "description": "İsteğe bağlı İngilizce ad (ör. \"Third person -s\").", "type": "string", "minLength": 1 },
+    "goalTr": { "description": "Tek cümlelik Türkçe hedef.", "type": "string", "minLength": 1 },
+    "prerequisites": { "type": "array", "items": { "$ref": "#/$defs/lessonId" }, "uniqueItems": true },
+    "contentVersion": { "type": "integer", "minimum": 1 },
+    "status": { "enum": ["DRAFT", "IN_REVIEW", "APPROVED", "SCHEDULED", "PUBLISHED", "ARCHIVED", "WITHDRAWN"] },
+    "aiGenerated": { "type": "boolean" },
+    "teacherReview": {
+      "description": "Öğretmen ya da editör kontrolü (DILBILGISI §5: yayın şartı). APPROVED, SCHEDULED ve PUBLISHED için zorunlu (grammar-lint). Kontrol yoksa null. Pakette `notes` yazılmaz.",
+      "oneOf": [
+        { "type": "null" },
+        {
+          "type": "object",
+          "required": ["by", "at"],
+          "additionalProperties": false,
+          "properties": {
+            "by": { "type": "string", "minLength": 1 },
+            "at": { "description": "Tarih (YYYY-MM-DD, UTC).", "type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}" },
+            "notes": { "type": "string" }
+          }
+        }
+      ]
+    },
+    "linksTo": {
+      "description": "Bu konunun geçtiği bölümler ve kitaplar (öneri ve 'Hikâyende geçenler' için).",
+      "type": "object",
+      "required": ["episodes", "books"],
+      "additionalProperties": false,
+      "properties": {
+        "episodes": { "type": "array", "items": { "type": "string", "pattern": "^(A1|A2|B1|B2|C1|C2)-[0-9]{3}$" }, "uniqueItems": true },
+        "books": { "type": "array", "items": { "type": "string", "pattern": "^(A1|A2|B1|B2|C1|C2)-K[0-9]{2}$" }, "uniqueItems": true }
+      }
+    },
+    "glossary": { "description": "Seviye üstü İngilizce kelimeler (kapsama, K-07).", "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "properNouns": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "pronunciations": {
+      "description": "Alania söyleniş sözlüğü (tts_tr `pronunciations`): Türkçe anlatımda geçen ek ya da terim nasıl okunur (ör. -s → se). Yalnız terimi geçen parçaya gönderilir.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["term", "say_as"],
+        "additionalProperties": false,
+        "properties": { "term": { "type": "string", "minLength": 1 }, "say_as": { "type": "string", "minLength": 1 } }
+      }
+    },
+    "narration": {
+      "description": "Ses ayarları (yalnız kaynakta). Anahtar burada tutulmaz.",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "tr": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "voice": { "type": "string", "minLength": 1 },
+            "model": { "type": "string", "minLength": 1 },
+            "instructions": { "type": "string", "minLength": 1 }
+          }
+        },
+        "en": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "voiceId": { "type": "string", "minLength": 1 },
+            "modelId": { "type": "string", "minLength": 1 },
+            "speed": { "type": "number", "minimum": 0.7, "maximum": 1.2 }
+          }
+        }
+      }
+    },
+    "cardCount": { "description": "Yalnız pakette.", "type": "integer", "minimum": 0 },
+    "teacherReviewed": { "description": "Yalnız pakette.", "type": "boolean" },
+    "durations": {
+      "description": "Yalnız pakette: ses süreleri (sn). Ses yoksa null.",
+      "type": "object",
+      "required": ["narration", "examples", "total", "cards"],
+      "additionalProperties": false,
+      "properties": {
+        "narration": { "type": ["number", "null"], "minimum": 0 },
+        "examples": { "type": ["number", "null"], "minimum": 0 },
+        "total": { "type": ["number", "null"], "minimum": 0 },
+        "cards": { "description": "Kart kimliği → o kartın ses süresi (sn).", "type": "object" }
+      }
+    },
+    "estimatedMinutes": { "description": "Yalnız pakette: ses + alıştırma başına 10 sn.", "type": ["number", "null"], "minimum": 0 }
+  },
+  "$defs": {
+    "lessonId": { "type": "string", "pattern": "^G-(A1|A2|B1|B2|C1|C2)-[0-9]{2}-[a-z0-9]+(-[a-z0-9]+)*$" }
+  }
+}

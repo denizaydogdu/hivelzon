@@ -12,12 +12,20 @@ Kitaplık paketleri (`kitaplar/<id>/_build/package/`, H-066):
     http://127.0.0.1:8787/books/index.json             -> kitap listesi
     http://127.0.0.1:8787/books/<kitapId>/<yol>        -> book.json, pages.json, audio/*.m4a, images/*.webp
 
+Dilbilgisi dersleri (`dilbilgisi/<G-ID>/_build/package/`, H-077):
+
+    http://127.0.0.1:8787/grammar/index.json           -> ders listesi
+    http://127.0.0.1:8787/grammar/<G-ID>/<yol>         -> lesson.json, cards.json, audio/*.m4a
+
+Bölüm ve kitap listelerinde `grammarTopics` (varsa) yer alır: "Bu bölümdeki dilbilgisi".
+
 - Yalnızca 127.0.0.1'e bağlanır (dışarıya açık değildir).
 - HTTP Range isteklerini destekler (AVPlayer mp4 için bayt aralığı ister).
 - Yalnızca standart kütüphane kullanılır; ücretli ya da dış servis çağrısı yoktur.
 
 Kullanım:
-    python3 tools/dev-content-server/serve.py [--port 8787] [--root icerik] [--books-root kitaplar] [--quiet]
+    python3 tools/dev-content-server/serve.py [--port 8787] [--root icerik] [--books-root kitaplar]
+        [--grammar-root dilbilgisi] [--quiet]
 
 Bu sunucu ileride VideoHostingPort / CDN (K-13) adaptörünün yerini tutar.
 """
@@ -84,6 +92,8 @@ def discover_packages(root: Path) -> dict[str, dict]:
             "contentVersion": ep.get("contentVersion"),
             "estimatedMinutes": ep.get("estimatedMinutes"),
         }
+        if ep.get("grammarTopics"):
+            packages[ep["id"]]["grammarTopics"] = ep["grammarTopics"]
     return packages
 
 
@@ -115,15 +125,47 @@ def discover_books(root: Path) -> dict[str, dict]:
                 # bölümünün sesi olan kitabı önce seçer.
                 "firstChapterAudio": bool((d.get("chapters") or [{}])[0].get("audio")),
             }
+            if d.get("grammarTopics"):
+                books[d["id"]]["grammarTopics"] = d["grammarTopics"]
         except (OSError, ValueError, KeyError) as exc:
             print(f"uyarı: {bj} okunamadı: {exc}", file=sys.stderr)
     return books
+
+
+def discover_grammar(root: Path) -> dict[str, dict]:
+    """G-ID -> {dir, titleTr, level, ...}. lesson.json'u olan her `<ders>/_build/package` (H-077)."""
+    lessons: dict[str, dict] = {}
+    if not root.is_dir():
+        return lessons
+    for lj in sorted(root.glob("*/_build/package/lesson.json")):
+        if lj.parents[2].name.startswith("_"):
+            continue
+        try:
+            d = json.loads(lj.read_text(encoding="utf-8"))
+            lessons[d["id"]] = {
+                "dir": lj.parent,
+                "id": d["id"],
+                "level": d.get("level"),
+                "titleTr": d.get("titleTr"),
+                "titleEn": d.get("titleEn"),
+                "goalTr": d.get("goalTr"),
+                "prerequisites": d.get("prerequisites", []),
+                "contentVersion": d.get("contentVersion"),
+                "status": d.get("status"),
+                "linksTo": d.get("linksTo"),
+                "cardCount": d.get("cardCount"),
+                "estimatedMinutes": d.get("estimatedMinutes"),
+            }
+        except (OSError, ValueError, KeyError) as exc:
+            print(f"uyarı: {lj} okunamadı: {exc}", file=sys.stderr)
+    return lessons
 
 
 class Handler(BaseHTTPRequestHandler):
     server_version = "hiVelzonDevContent/0.1"
     root: Path = REPO_ROOT / "icerik"
     books_root: Path = REPO_ROOT / "kitaplar"
+    grammar_root: Path = REPO_ROOT / "dilbilgisi"
     quiet = False
 
     def log_message(self, fmt: str, *args) -> None:  # noqa: D401
@@ -153,8 +195,31 @@ class Handler(BaseHTTPRequestHandler):
             if book is None:
                 return self.send_error(HTTPStatus.NOT_FOUND, "Unknown book")
             return self._send_file(book["dir"].resolve(), parts[2:], send_body)
+        if parts == ["grammar", "index.json"]:
+            return self._send_grammar_index(send_body)
+        if len(parts) >= 3 and parts[0] == "grammar":
+            lesson = discover_grammar(self.grammar_root).get(parts[1])
+            if lesson is None:
+                return self.send_error(HTTPStatus.NOT_FOUND, "Unknown lesson")
+            return self._send_file(lesson["dir"].resolve(), parts[2:], send_body)
         # http.server durum satırını latin-1 yazar: iletiler ASCII olmalı.
         self.send_error(HTTPStatus.NOT_FOUND, "Not found")
+
+    def _send_grammar_index(self, send_body: bool) -> None:
+        # Her istekte yeniden taranır (bölüm ve kitap paketleri gibi).
+        lessons = discover_grammar(self.grammar_root)
+        body = json.dumps(
+            {"schemaVersion": 1,
+             "lessons": [{k: v for k, v in g.items() if k != "dir"} for g in sorted(lessons.values(), key=lambda g: g["id"])]},
+            ensure_ascii=False,
+        ).encode("utf-8")
+        self.send_response(HTTPStatus.OK)
+        self.send_header("Content-Type", "application/json; charset=utf-8")
+        self.send_header("Content-Length", str(len(body)))
+        self.send_header("Cache-Control", "no-store")
+        self.end_headers()
+        if send_body:
+            self.wfile.write(body)
 
     def _send_books_index(self, send_body: bool) -> None:
         # Her istekte yeniden taranır (bölüm paketleri gibi).
@@ -275,11 +340,13 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--port", type=int, default=int(os.environ.get("PORT", 8787)))
     parser.add_argument("--root", type=Path, default=REPO_ROOT / "icerik", help="icerik klasörü")
     parser.add_argument("--books-root", type=Path, default=REPO_ROOT / "kitaplar", help="kitaplar klasörü (H-066)")
+    parser.add_argument("--grammar-root", type=Path, default=REPO_ROOT / "dilbilgisi", help="dilbilgisi klasörü (H-077)")
     parser.add_argument("--quiet", action="store_true", help="istek günlüğünü kapat")
     args = parser.parse_args(argv)
 
     Handler.root = args.root.resolve()
     Handler.books_root = args.books_root.resolve()
+    Handler.grammar_root = args.grammar_root.resolve()
     Handler.quiet = args.quiet
     packages = discover_packages(Handler.root)
     server = ThreadingHTTPServer(("127.0.0.1", args.port), Handler)
@@ -294,6 +361,11 @@ def main(argv: list[str] | None = None) -> int:
         print(f"Kitaplık: http://127.0.0.1:{args.port}/books/index.json")
     for b in sorted(books):
         print(f"  {b}  {books[b]['title']}  ({books[b]['dir']})")
+    lessons = discover_grammar(Handler.grammar_root)
+    if lessons:
+        print(f"Dilbilgisi: http://127.0.0.1:{args.port}/grammar/index.json")
+    for g in sorted(lessons):
+        print(f"  {g}  {lessons[g]['titleTr']}  ({lessons[g]['dir']})")
     try:
         server.serve_forever()
     except KeyboardInterrupt:

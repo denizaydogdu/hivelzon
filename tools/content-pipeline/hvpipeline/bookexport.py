@@ -228,7 +228,7 @@ def export_book(book_dir: Path, media=None, clean: bool = True) -> BookExport:
     # 5) book.json (paket)
     m = book.meta
     keep = ("schemaVersion", "id", "slug", "level", "genre", "title", "titleTr", "blurbTr", "hookEn",
-            "contentVersion", "status", "aiGenerated", "palette")
+            "contentVersion", "status", "aiGenerated", "palette", "grammarTopics")
     book_doc = {k: m[k] for k in keep if k in m}
     total = sum(durations.values()) if durations else None
     book_doc.update({

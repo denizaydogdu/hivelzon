@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hi.velzon.tr/schema/lesson-audio.v1.schema.json",
+  "title": "hiVelzon dilbilgisi dersi ses haritası (audio/lesson-audio.json)",
+  "description": "tts_lesson.py yazar: kart → ses parçaları (Türkçe anlatım Alania + Duyu, İngilizce örnek ElevenLabs). Yollar audio/ klasörüne göredir. H-077.",
+  "type": "object",
+  "required": ["schemaVersion", "lessonId", "voices", "cards"],
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "lessonId": { "type": "string", "minLength": 1 },
+    "voices": {
+      "type": "object",
+      "required": ["tr", "en"],
+      "additionalProperties": false,
+      "properties": {
+        "tr": {
+          "type": "object", "required": ["model", "voice", "timing"], "additionalProperties": false,
+          "properties": { "model": { "type": "string" }, "voice": { "type": "string" }, "timing": { "type": "string" },
+                          "instructions": { "type": ["string", "null"] } }
+        },
+        "en": {
+          "type": "object", "required": ["model", "voice", "speed"], "additionalProperties": false,
+          "properties": { "model": { "type": "string" }, "voice": { "type": "string" }, "speed": { "type": "number" } }
+        }
+      }
+    },
+    "cards": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["card", "type", "segments"],
+        "additionalProperties": false,
+        "properties": {
+          "card": { "type": "string", "pattern": "^c[0-9]{2}$" },
+          "type": { "type": "string" },
+          "segments": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["id", "lang", "role", "text", "textSha256", "chars", "audio", "align", "present"],
+              "additionalProperties": false,
+              "properties": {
+                "id": { "type": "string", "minLength": 1 },
+                "lang": { "enum": ["tr", "en"] },
+                "role": { "enum": ["narration", "example", "say"] },
+                "text": { "type": "string", "minLength": 1 },
+                "textSha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+                "chars": { "type": "integer", "minimum": 0 },
+                "audio": { "type": "string" },
+                "align": { "type": "string" },
+                "present": { "description": "Ses ve güncel hizalama bu ortamda var mı.", "type": "boolean" },
+                "duration": { "type": ["number", "null"] },
+                "quality": { "description": "Türkçe parçada Duyu eşleşme kalitesi (tts_tr).", "type": ["object", "null"] }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
