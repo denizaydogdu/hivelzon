@@ -194,6 +194,52 @@ public abstract class IntegrationTest {
         return response.text("code");
     }
 
+    // ------------------------------------------------------------------ editör geçişleri (H-041)
+
+    protected static final Map<String, Object> FULL_CHECKLIST = Map.of("canonChecked", true, "levelChecked", true,
+            "translationApproved", true, "mediaChecked", true, "rightsAndAiDisclosureChecked", true);
+
+    protected Response editorItem(String token, String contentId, int version) {
+        return get("/api/v1/admin/content/items/" + contentId + "/versions/" + version, token);
+    }
+
+    /** Güncel kilit sürümünü okuyup geçişi uygular. {@code extra}: checklist, publishAt, reason … */
+    protected Response transition(String token, String contentId, int version, String action,
+            Map<String, Object> extra) {
+        long lock = editorItem(token, contentId, version).body().path("item").path("lockVersion").asLong();
+        Map<String, Object> body = new LinkedHashMap<>(extra);
+        body.put("action", action);
+        body.put("expectedLockVersion", lock);
+        return call("POST", "/api/v1/admin/content/items/" + contentId + "/versions/" + version + "/transitions",
+                body, token);
+    }
+
+    /** DRAFT/IN_REVIEW sürümü onaylar (gerekirse önce incelemeye gönderir). */
+    protected void approve(String token, String contentId, int version) {
+        String status = editorItem(token, contentId, version).body().path("item").path("status").asString();
+        if ("DRAFT".equals(status)) {
+            expectOk(transition(token, contentId, version, "SUBMIT", Map.of()));
+        }
+        expectOk(transition(token, contentId, version, "APPROVE", Map.of("checklist", FULL_CHECKLIST)));
+    }
+
+    protected void publish(String token, String contentId, int version) {
+        approve(token, contentId, version);
+        expectOk(transition(token, contentId, version, "PUBLISH", Map.of()));
+    }
+
+    protected void schedule(String token, String contentId, int version, String publishAtIso) {
+        approve(token, contentId, version);
+        expectOk(transition(token, contentId, version, "SCHEDULE", Map.of("publishAt", publishAtIso)));
+    }
+
+    protected static Response expectOk(Response r) {
+        if (r.status() != 200) {
+            throw new AssertionError("geçiş " + r.status() + " " + r.raw());
+        }
+        return r;
+    }
+
     protected int count(String sql, Object... args) {
         Integer n = jdbc.queryForObject(sql, Integer.class, args);
         return n == null ? 0 : n;

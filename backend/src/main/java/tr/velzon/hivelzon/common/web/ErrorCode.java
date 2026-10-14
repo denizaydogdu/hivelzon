@@ -31,6 +31,11 @@ public enum ErrorCode {
     TRANSCRIPT_NOT_ALLOWED(HttpStatus.BAD_REQUEST,
             "Konuşmanın sesi ya da yazısı sunucuya gönderilmez; yalnızca sonucu eşitlenir."),
     CATALOG_IMPORT_FAILED(HttpStatus.UNPROCESSABLE_CONTENT, "İçerik paketi okunamadı. Paket dosyalarını kontrol et."),
+    INVALID_TRANSITION(HttpStatus.CONFLICT, "Bu içerik şu anki durumundan bu duruma geçemez."),
+    APPROVAL_REQUIREMENTS_NOT_MET(HttpStatus.UNPROCESSABLE_CONTENT,
+            "Onay için koşullar tamam değil: lint hatasız olmalı ve kontrol listesinin bütün maddeleri işaretlenmeli."),
+    CONCURRENT_MODIFICATION(HttpStatus.CONFLICT,
+            "Bu içerik sen bakarken değişti. Sayfayı yenileyip tekrar dene."),
     METHOD_NOT_ALLOWED(HttpStatus.METHOD_NOT_ALLOWED, "Bu işlem desteklenmiyor."),
     MAIL_UNAVAILABLE(HttpStatus.SERVICE_UNAVAILABLE, "Şu an e-posta gönderemedik. Biraz sonra tekrar dene."),
     INTERNAL_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "Beklenmeyen bir sorun oldu. Biraz sonra tekrar dene.");

@@ -17,5 +17,15 @@ public enum AuditAction {
     ACCOUNT_DELETION_REQUESTED,
     ACCOUNT_RESTORED,
     ACCOUNT_PURGED,
-    CATALOG_IMPORT
+    CATALOG_IMPORT,
+    /**
+     * Editör geçişleri (H-041). {@code detail} = {@code <contentId>:v<sürüm>:<eski>><yeni>[:<ek>]}; ek yalnızca
+     * sabit kod (kontrol listesi özetinin ilk 12 hanesi, yayın zamanı, kaldırma gerekçe kodu).
+     */
+    CONTENT_SUBMITTED,
+    CONTENT_APPROVED,
+    CONTENT_SCHEDULED,
+    CONTENT_PUBLISHED,
+    CONTENT_ARCHIVED,
+    CONTENT_WITHDRAWN
 }

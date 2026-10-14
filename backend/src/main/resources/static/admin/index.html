@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>hiVelzon · Editör onayı</title>
+  <link rel="stylesheet" href="admin.css">
+  <script src="admin.js" defer></script>
+</head>
+<body>
+  <header class="top">
+    <h1>hiVelzon · Editör onayı</h1>
+    <nav id="nav" hidden>
+      <span id="who"></span>
+      <button type="button" id="logout" class="link">Çıkış</button>
+    </nav>
+  </header>
+
+  <main>
+    <p id="error" class="error" role="alert" hidden></p>
+    <p id="info" class="info" role="status" hidden></p>
+
+    <!-- Giriş: mevcut e-posta kodu akışı. Hesap açılmaz; yalnızca EDITOR/ADMIN rolündeki hesap girer. -->
+    <section id="login-view" hidden aria-labelledby="login-title">
+      <h2 id="login-title">Giriş</h2>
+      <form id="start-form" class="stack">
+        <label for="email">E-posta</label>
+        <input id="email" name="email" type="email" autocomplete="email" required maxlength="254">
+        <button type="submit">Kod gönder</button>
+      </form>
+      <form id="verify-form" class="stack" hidden>
+        <label for="code">E-postana gelen 6 haneli kod</label>
+        <input id="code" name="code" inputmode="numeric" autocomplete="one-time-code" pattern="[0-9]{6}"
+               maxlength="6" required>
+        <button type="submit">Giriş yap</button>
+      </form>
+    </section>
+
+    <section id="list-view" hidden aria-labelledby="list-title">
+      <div class="bar">
+        <h2 id="list-title">İçerikler</h2>
+        <label for="season">Sezon</label>
+        <select id="season">
+          <option value="">Tümü</option>
+          <option value="1">Sezon 1</option>
+          <option value="2">Sezon 2</option>
+          <option value="3">Sezon 3</option>
+          <option value="4">Sezon 4</option>
+          <option value="5">Sezon 5</option>
+        </select>
+        <button type="button" id="reload">Yenile</button>
+        <button type="button" id="import" class="secondary">İçe aktar</button>
+      </div>
+      <p class="hint">Saatler Türkiye saatiyle (Europe/Istanbul) gösterilir; sunucuda UTC saklanır.</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Bölüm</th>
+              <th scope="col">Kimlik</th>
+              <th scope="col">Sürüm</th>
+              <th scope="col">Başlık</th>
+              <th scope="col">Durum</th>
+              <th scope="col">Katalogda</th>
+              <th scope="col">Lint</th>
+              <th scope="col">Yayın zamanı</th>
+            </tr>
+          </thead>
+          <tbody id="items"></tbody>
+        </table>
+      </div>
+      <p id="empty" class="hint" hidden>Henüz içe aktarılmış içerik yok.</p>
+    </section>
+
+    <section id="detail-view" hidden aria-labelledby="detail-title">
+      <p><a href="#/">← Listeye dön</a></p>
+      <h2 id="detail-title"></h2>
+      <dl id="facts" class="facts"></dl>
+
+      <div id="actions" class="actions">
+        <section id="act-submit" class="card" hidden>
+          <h3>İncelemeye gönder</h3>
+          <p class="hint">Taslak incelemeye alınır.</p>
+          <button type="button" id="btn-submit">İncelemeye gönder</button>
+        </section>
+
+        <section id="act-approve" class="card" hidden>
+          <h3>Onay kontrol listesi</h3>
+          <p class="hint">Onay bu sürüme ve bu pakete bağlanır. Lint hatasız olmalı, bütün maddeler işaretlenmeli.</p>
+          <fieldset>
+            <legend>Kontrol ettim</legend>
+            <label><input type="checkbox" name="canonChecked"> Kanon: bağ alanları, açık sorular ve hikâye kanonuyla uyumlu (K-34)</label>
+            <label><input type="checkbox" name="levelChecked"> Seviye: CEFR, kapsama, cümle uzunluğu, dilbilgisi ve quiz cevapları uygun</label>
+            <label><input type="checkbox" name="translationApproved"> Çeviri: Türkçe çeviri ve sözlük anlamları insan tarafından onaylandı</label>
+            <label><input type="checkbox" name="mediaChecked"> Medya: ses, hız, altyazı eşlemesi, görsel–sahne uyumu ve güvenli alanlar kontrol edildi</label>
+            <label><input type="checkbox" name="rightsAndAiDisclosureChecked"> Haklar ve AI: telif, marka, kişi benzerliği, yaş uygunluğu, AI bilgisi ve prompt/maliyet kaydı tamam</label>
+          </fieldset>
+          <button type="button" id="btn-approve">Onayla</button>
+        </section>
+
+        <section id="act-schedule" class="card" hidden>
+          <h3>Zamanla</h3>
+          <label for="publish-at">Yayın zamanı (Türkiye saati)</label>
+          <input id="publish-at" type="datetime-local" step="60">
+          <button type="button" id="btn-schedule">Zamanla</button>
+        </section>
+
+        <section id="act-publish" class="card" hidden>
+          <h3>Yayınla</h3>
+          <p class="hint">Hemen katalogda görünür.</p>
+          <button type="button" id="btn-publish">Yayınla</button>
+        </section>
+
+        <section id="act-archive" class="card" hidden>
+          <h3>Arşivle</h3>
+          <p class="hint">Katalogdan çıkar; kayıt ve geçmiş kalır.</p>
+          <button type="button" id="btn-archive" class="secondary">Arşivle</button>
+        </section>
+
+        <section id="act-withdraw" class="card danger" hidden>
+          <h3>Kaldır</h3>
+          <label for="reason">Gerekçe</label>
+          <select id="reason">
+            <option value="">Seç</option>
+            <option value="COPYRIGHT">Telif şikâyeti</option>
+            <option value="CONTENT_ERROR">İçerik hatası</option>
+            <option value="SAFETY">Güvenlik ya da yaş uygunluğu</option>
+            <option value="OTHER">Diğer</option>
+          </select>
+          <button type="button" id="btn-withdraw" class="danger">Kaldır</button>
+        </section>
+      </div>
+
+      <h3>Geçmiş</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th scope="col">Zaman</th><th scope="col">Eylem</th><th scope="col">Kim</th><th scope="col">Ayrıntı</th></tr>
+          </thead>
+          <tbody id="history"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

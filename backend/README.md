@@ -56,7 +56,11 @@ Bütün hatalar RFC 9457 `application/problem+json`: `code` (makine), `detail` (
 | `GET /actuator/health` | açık | Yalnızca `UP/DOWN`. Diğer actuator uçları kapalı. |
 | `GET /api/v1/catalog/items?season=&page=&size=` | açık | Görünür bölümler (aşağıda), sayfalı (`size` en çok 100), sezon + sıra düzeninde. Her öğe: `contentId`, `contentVersion`, `season`, `number`, `level`, `title`, `estimatedMinutes`, `publishAt`, `packageBaseUrl`, `scenesUrl`, `manifestUrl`, `manifestSha256`, `totalBytes`, `renditionBytes`. |
 | `GET /api/v1/catalog/seasons/{n}` | açık | `season.json` (dosya listesi hariç) + `packageBaseUrl`. `episodes[]` haritanın bütün yerleri; görünür bölümde `available: true` ve `item` (yukarıdaki öğe). Onaysız `teaserTr` gösterilmez. Sezon yoksa `404 NOT_FOUND`. |
-| `POST /api/v1/admin/catalog/import` | Bearer, EDITOR/ADMIN; yalnızca prod dışı | Geliştirme içe aktarması; `{created, updated, unchanged, skipped, items[], seasons[]}`. (content_id, content_version) ile idempotent. Denetim kaydı `CATALOG_IMPORT`. |
+| `POST /api/v1/admin/catalog/import` | Bearer, EDITOR/ADMIN; yalnızca prod dışı | Geliştirme içe aktarması; `{created, updated, unchanged, skipped, items[{contentId, contentVersion, result, status, lintErrors, lintWarnings, notes}], seasons[]}`. (content_id, content_version) ile idempotent. Durumu yazmaz (aşağıda). Denetim kaydı `CATALOG_IMPORT`. |
+| `GET /api/v1/admin/content/items?season=` | Bearer, EDITOR/ADMIN (rol veritabanından da denetlenir) | Editör listesi: bütün sürümler (sezon, sıra, yeni sürüm önce). Her öğe: kimlik, sürüm, başlık, `status`, `visible`, `publishAt`, `lintErrors`/`lintWarnings`/`lintCheckedAt`, `translationStatus`, `approvedAt`, `checklistSha256`, `withdrawReason`, `manifestSha256`, `lockVersion`, `allowedActions`. |
+| `GET /api/v1/admin/content/items/{contentId}/versions/{v}` | aynı | `{item, history[{action, at, actor, detail}]}`; geçmiş denetim kaydından (kişi: görünen ad ya da maskeli e-posta). |
+| `POST /api/v1/admin/content/items/{contentId}/versions/{v}/transitions` `{action, expectedLockVersion, checklist?, publishAt? \| publishAtLocal?, reason?}` | aynı | Editör geçişi (aşağıda). `200 {item, history}`. Hatalar: `409 INVALID_TRANSITION` (+ `from`, `action`), `422 APPROVAL_REQUIREMENTS_NOT_MET` (+ `missing[]`), `409 CONCURRENT_MODIFICATION` (+ `currentLockVersion`), `400 VALIDATION_FAILED` (+ `field`). |
+| `GET /admin` | açık (kabuk; veri içermez) | Editör onay ekranı (aşağıda). |
 | `POST /api/v1/sync/push` `{deviceId?, changes: {tablo: [satır]}}` | Bearer | Eşitleme itmesi (kurallar aşağıda). `{accepted[{table, clientId, result}], conflicts[{table, clientId, reason, serverRow}], serverTime}`. Hatalar: `SYNC_ROW_INVALID` / `SYNC_FIELD_NOT_ALLOWED` (+ `table`, `index`, `field`), `TRANSCRIPT_NOT_ALLOWED`, `413 PAYLOAD_TOO_LARGE` (500 satır ya da 1 MiB üstü), `429 RATE_LIMITED`. |
 | `GET /api/v1/sync/pull?since=&limit=` | Bearer | `since` imlecinden sonraki değişiklikler (sunucu sırası), `limit` varsayılan 200, en çok 500. `{changes: {tablo: [satır]}, nextSince, hasMore, serverTime}`; `hasMore` false olana kadar `since=nextSince`. |
 | `DELETE /api/v1/sync/speech-attempts` | Bearer | "Hi'nin kayıtlarını sil"in sunucu karşılığı: "Söyle" sonuçları kalıcı silinir. `204`, idempotent. |
@@ -64,13 +68,34 @@ Bütün hatalar RFC 9457 `application/problem+json`: `code` (makine), `detail` (
 
 Silinmek üzere olan hesap `/me`, `/me/restore` ve `DELETE /me` dışında `403 ACCOUNT_PENDING_DELETION` alır (eşitleme ve tekrar notu dahil). `/api/**` gövde sınırı 64 KiB (eşitleme itmesi 1 MiB); aşılırsa `413 PAYLOAD_TOO_LARGE`.
 
-### Katalog: görünürlük, önbellek, durum eşlemesi
+### Katalog: görünürlük, önbellek, içe aktarma
 
 - **Görünür = `PUBLISHED` ya da (`APPROVED`/`SCHEDULED` ve `publish_at ≤ şimdi`)** (K-05). Aynı bölümün birden çok görünür sürümü varsa en yenisi döner. Durum alanı istemciye dönmez.
 - Cevaplarda güçlü `ETag` ve `Cache-Control: max-age=60, must-revalidate, public`; `If-None-Match` eşleşirse gövdesiz `304`. ETag cevabın kendisinden hesaplanır: zamanlanmış bölüm görünür olunca da değişir.
 - Katalog uçları kimlik istemez (misafir ve hesapsız 13 yaş altı da içerik görür, H-009/H-002); bozuk ya da süresi dolmuş `Authorization` başlığı yok sayılır.
-- **İçe aktarmada durum (editör onay ekranı H-041'e kadar):** `content.json → status` K-05 değeriyse o alınır, değilse `DRAFT`. `APPROVED`/`SCHEDULED`/`PUBLISHED` yalnızca **onay kanıtıyla** kabul edilir: `humanReviewed: true` **ve** (`ceviri.tr.json` varsa) `status: APPROVED`. Kanıt yoksa `DRAFT` olur ve rapora not düşülür; çeviri onayı tek başına bölümü onaylamaz. `SCHEDULED` için `publishAt` zorunlu. Bugün bütün bölümler `DRAFT`: açık katalog boştur.
+- **Durum veritabanındadır (H-041).** İçe aktarma `status` ve `publish_at` kolonlarına hiç dokunmaz; `content.json → status/publishAt/humanReviewed` yok sayılır (AI'ın yayın yetkisi yok). Yeni sürüm lint 0 hataysa `IN_REVIEW`, değilse (ya da lint raporu yoksa) `DRAFT` başlar. `DRAFT`/`IN_REVIEW` sürümde yeniden içe aktarma yalnızca paket bilgisini (başlık, manifest özeti, boyutlar) ve lint özetini günceller, durumu korur. `APPROVED` ve sonrası **donmuştur**: paket aynıysa `UNCHANGED`, değiştiyse `SKIPPED` + not ("contentVersion artırılmalı"); onaylanan paket özeti veritabanında kısıtla korunur (`approved_manifest_sha256 = manifest_sha256`). Yeni `contentVersion` yeni satırdır; yayımlanmış eski sürüm, yenisi yayımlanana kadar görünür kalır.
+- **Lint özeti:** `tools/content-pipeline/content_lint.py icerik/A1-0* --write-reports` her bölüm için `<bölüm>/_build/lint.json` yazar (`contentId`, `errors[]`, `warnings[]`, `generatedAt`; `--json` raporunun tamamı da kabul edilir). Sunucu Python çalıştırmaz. Rapor yoksa, okunamıyorsa ya da `manifest.json`'dan eskiyse lint özeti boş kalır ve onay verilemez. Zincir (bölümler arası) bulguları mesajında bölüm kimliği geçiyorsa o bölüme yazılır.
+- **V7 geçişi:** H-037 içe aktarmasının `content.json`'a göre yazdığı `APPROVED`/`SCHEDULED`/`PUBLISHED` satırlarının onay kaydı yoktur; V7 bunları `IN_REVIEW`'e çeker (`publish_at` boşalır). Yerel veritabanında açık katalog, editör ekranından yeniden onaylanana kadar boş görünür.
 - Medya veritabanında tutulmaz: satırda paketin yeri (`package_base_path`: `A1-001`, `_season/S1`) ve `manifest.json` SHA-256'sı vardır. Adresi `VideoHostingPort` kurar (yerelde `LocalPackageAdapter` → içerik sunucusu).
+
+### Editör onayı (H-041, K-05, K-12, H-028)
+
+Akış: içerik hattı (Claude üretir) → `content_lint.py --write-reports` → içe aktarma → editör ekranında kontrol listesi → Onayla → Zamanla ya da Yayınla. Geçişler (`EditorialService`):
+
+| Eylem | Nereden → nereye | Koşul |
+|---|---|---|
+| `SUBMIT` | `DRAFT` → `IN_REVIEW` | — |
+| `APPROVE` | `IN_REVIEW` → `APPROVED` | lint raporu var ve 0 hata; `ceviri.tr.json` varsa `APPROVED`; `checklist` maddelerinin hepsi `true`: `canonChecked` (K-34), `levelChecked`, `translationApproved`, `mediaChecked`, `rightsAndAiDisclosureChecked` (şartname §7.2'nin gruplanmış hâli). Kim, ne zaman, kontrol listesi (kanonik JSON + SHA-256) ve onaylanan manifest özeti sürüme yazılır. |
+| `SCHEDULE` | `APPROVED` → `SCHEDULED`; yayına girmemiş `SCHEDULED` yeniden zamanlanabilir | `publishAt` (ISO-8601, saat dilimli) ya da `publishAtLocal` (`2026-10-20T10:00`, **Europe/Istanbul**); gelecekte olmalı. UTC saklanır. |
+| `PUBLISH` | `APPROVED` / `SCHEDULED` → `PUBLISHED` | `publish_at` zamanı gelmişse korunur, yoksa şimdi. Zamanlanmış içerik için iş gerekmez: görünürlük `publish_at ≤ şimdi` ile hesaplanır. |
+| `ARCHIVE` | `PUBLISHED` (ya da zamanı gelmiş `APPROVED`/`SCHEDULED`) → `ARCHIVED` | — |
+| `WITHDRAW` | `WITHDRAWN` dışındaki her durum → `WITHDRAWN` | `reason`: `COPYRIGHT` / `CONTENT_ERROR` / `SAFETY` / `OTHER` (serbest metin yok). Son durumdur; düzeltme yeni sürümdür. |
+
+- **İyimser kilit:** her geçiş `expectedLockVersion` ister; satırdaki `lock_version` farklıysa `409 CONCURRENT_MODIFICATION` (iki sekme aynı anda). Satır ayrıca `FOR UPDATE` ile kilitlenir.
+- **Denetim:** her geçiş `audit_log`'a `CONTENT_SUBMITTED|APPROVED|SCHEDULED|PUBLISHED|ARCHIVED|WITHDRAWN` yazar; `detail` = `A1-001:v1:IN_REVIEW>APPROVED:c=<liste özeti 12 hane>` (zamanlamada `:20261020T070000Z`, kaldırmada gerekçe kodu). Kişisel veri yok; kişi `actor_user_id`'dir (kalıcı silmede anonimleşir, içerik satırındaki `approved_by`/`status_changed_by` boşaltılır).
+- **Yetki:** `/api/v1/admin/**` belirteçte EDITOR/ADMIN ister; editör uçları rolü veritabanından da denetler (rolü geri alınan editörün belirteci 15 dk geçerli kalsa da reddedilir). Bu uçlar prod'da da açıktır; içe aktarma yalnızca prod dışında.
+
+**Ekran:** `http://localhost:8080/admin` (Türkçe, statik HTML + JS, `src/main/resources/static/admin/`). Giriş mevcut e-posta koduyla (`/auth/email/start` + `/verify`); hesap açılmaz, rolü EDITOR/ADMIN olmayan hesap girmez. Belirteçler sekme oturumunda (`sessionStorage`) durur, 401'de bir kez yenilenir, "Çıkış" sunucu oturumunu kapatır. Çerez kullanılmadığı için CSRF yüzeyi yok; CSP `default-src 'none'; script-src 'self'; …; frame-ancestors 'none'`, veriler yalnızca `textContent` ile yazılır. Liste: sezon süzgeci, durum etiketleri, katalogda görünürlük, lint, yayın zamanı (Türkiye saati); "İçe aktar" düğmesi (geliştirme). Ayrıntı: bilgiler, kontrol listesi + Onayla, İncelemeye gönder, Zamanla (Türkiye saati), Yayınla, Arşivle, Kaldır (gerekçe) ve geçmiş. Yerel editör hesabı: kodla giriş yap, sonra `UPDATE users SET role = 'EDITOR' WHERE email = '…'` ve yeniden gir.
 
 ### Eşitleme kuralları (H-038 mobil entegrasyonu için)
 
