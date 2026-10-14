@@ -57,13 +57,13 @@
     {
       "id": "r-k1-b", "type": "reaction",
       "shots": [{"image": "images/B4-03-uc-kart.png", "audio": ["b4_09_alex", "b4_10_maya"], "move": [1.0, 1.05, 0.5, 0.5, 0.5, 0.5]}],
-      "bubble": {"speaker": "HI", "lang": "tr", "text": "Böyle de söyleyebilirsin: \"Friday.\" Notta bir gün olmalı. Günler İngilizcede büyük harfle başlar: Friday.", "audio": "b4_11_hi"},
+      "bubble": {"speaker": "HI", "lang": "tr", "text": "Böyle de söyleyebilirsin: \"Friday.\" Notta bir gün olmalı. Günler İngilizcede büyük harfle başlar: Friday.", "audio": "b4_11_hi", "speechTr": "Böyle de söyleyebilirsin: {Friday.} Notta bir gün olmalı. Günler İngilizcede büyük harfle başlar: {Friday.}"},
       "next": "k1"
     },
     {
       "id": "r-k1-c", "type": "reaction",
       "shots": [{"image": "images/B4-03-uc-kart.png", "audio": ["b4_12_alex", "b4_13_maya"], "move": [1.05, 1.0, 0.5, 0.5, 0.5, 0.5]}],
-      "bubble": {"speaker": "HI", "lang": "tr", "text": "Fri… ile başlayan bir gün: \"Friday.\" Günleri hatırla: Monday, Tuesday… Friday.", "audio": "b4_14_hi"},
+      "bubble": {"speaker": "HI", "lang": "tr", "text": "Fri… ile başlayan bir gün: \"Friday.\" Günleri hatırla: Monday, Tuesday… Friday.", "audio": "b4_14_hi", "speechTr": "{Fri…} ile başlayan bir gün: {Friday.} Günleri hatırla: {Monday, Tuesday… Friday.}"},
       "next": "k1"
     },
     {
@@ -95,7 +95,7 @@
     {
       "id": "r-k2-b", "type": "reaction",
       "shots": [{"image": "images/B4-04-saat-cizimi.png", "audio": ["b4_19_alex", "b4_20_maya"], "move": [1.06, 1.1, 0.5, 0.5, 0.45, 0.45]}],
-      "bubble": {"speaker": "HI", "lang": "tr", "text": "Böyle de söyleyebilirsin: \"It's seven o'clock.\" Saatin önünde in olmaz. Cümlenin içinde at kullanılır: at seven.", "audio": "b4_21_hi"},
+      "bubble": {"speaker": "HI", "lang": "tr", "text": "Böyle de söyleyebilirsin: \"It's seven o'clock.\" Saatin önünde in olmaz. Cümlenin içinde at kullanılır: at seven.", "audio": "b4_21_hi", "speechTr": "Böyle de söyleyebilirsin: {It's seven o'clock.} Saatin önünde {in} olmaz. Cümlenin içinde {at} kullanılır: {at seven.}"},
       "next": "k2"
     },
     {
@@ -137,14 +137,14 @@
       "background": "images/B4-07-telsiz-not.png",
       "title": "Babaannenin notu",
       "lines": [{"text": "Cuma. Saat yedi. Yedinci kanal. Unutma.", "lang": "tr"}, {"text": "— N.", "lang": "tr"}],
-      "next": "c-alex"
+      "next": "c-alex", "voiceRole": "nermin", "speechTr": "Cuma. Saat yedi. Yedinci kanal. Unutma.", "audio": {"id": "tr_c-nermin", "speaker": "NERMIN (TR)"}
     },
     {
       "id": "c-alex", "type": "card", "kind": "line", "advance": "tap",
       "background": "images/B4-08-iki-not.png",
       "lines": [{"speaker": "ALEX", "text": "Cuma… saat yedi. Babaannemin notunda da aynı saat.", "lang": "tr"}],
       "why": "Alex'in Türkçe repliği için ses üretilmedi",
-      "next": "s06"
+      "next": "s06", "audio": {"id": "tr_c-alex", "speaker": "ALEX (TR)"}
     },
     {
       "id": "s06", "type": "segment",
@@ -156,7 +156,7 @@
       "background": "images/B4-08-iki-not.png",
       "lines": [{"speaker": "HI", "text": "Saat için at, gün için on: at seven, on Friday. Türkçede \"yedide\" deriz; İngilizcede in seven değil, at seven.", "lang": "tr"}],
       "audio": "b4_29_hi",
-      "next": "c-schedule"
+      "next": "c-schedule", "speechTr": "Saat için {at}, gün için {on}: {at seven, on Friday.} Türkçede yedide deriz; İngilizcede {in seven} değil, {at seven.}"
     },
     {
       "id": "c-schedule", "type": "card", "kind": "note", "advance": "tap",
@@ -175,7 +175,7 @@
         {"id": "a", "text": "At two o'clock.", "correct": true, "audio": "b4_31_alex"},
         {"id": "b", "text": "In two o'clock.", "correct": false, "audio": "b4_32_alex"}
       ]}],
-      "feedback": {"wrong": {"speaker": "HI", "lang": "tr", "text": "Saatten önce at: at two o'clock.", "audio": "b4_33_hi"}},
+      "feedback": {"wrong": {"speaker": "HI", "lang": "tr", "text": "Saatten önce at: at two o'clock.", "audio": "b4_33_hi", "speechTr": "Saatten önce {at}: {at two o'clock.}"}},
       "next": "s07"
     },
     {
@@ -190,7 +190,7 @@
                 {"text": "C5 · Tamamlanmış not: Friday. 7 pm. Pier 3. — E.", "lang": "tr"},
                 {"text": "C6 · İki not yan yana", "lang": "tr"},
                 {"text": "Q3 kapandı: Not çözüldü.", "lang": "tr"}],
-      "next": "c-oq"
+      "next": "c-oq", "speechTr": "İpucu panosu. Tamamlanmış not: {Friday. 7 pm. Pier 3. E.} İki not yan yana. Üçüncü soru kapandı: Not çözüldü.", "audio": {"id": "tr_c-clues", "speaker": "ANLATICI (TR)"}
     },
     {
       "id": "c-oq", "type": "card", "kind": "openQuestion", "advance": "tap", "questionId": "Q4",
@@ -198,7 +198,7 @@
       "lines": [{"text": "AÇIK SORU", "lang": "tr", "style": "caption"},
                 {"text": "Cuma saat yedide Pier 3'te kim olacak?", "lang": "tr", "style": "heading"},
                 {"text": "Bölüm 5: Too Late?", "lang": "en", "style": "caption"}],
-      "next": null
+      "next": null, "speechTr": "Açık soru: Cuma saat yedide Pier 3'te kim olacak?", "speechMode": "a", "pronunciations": [{"term": "Pier", "say_as": "Pir"}], "audio": {"id": "tr_c-oq", "speaker": "ANLATICI (TR)"}
     }
   ]
 }

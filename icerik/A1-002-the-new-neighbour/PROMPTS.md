@@ -27,3 +27,27 @@
 - **Dosyalar:**
   - `audio/*.mp3` (git dışı) ve `audio/*.align.json`;
   - `audio_manifest.json`: replik → ses kimliği eşlemesi. B1 ile aynı telsiz replikleri B1'in kayıtlarını kullanır.
+
+## Türkçe seslendirme kayıtları (tts_tr.py)
+
+| Tarih (UTC) | Parça | Model | Ses | Sürüm | Karakter | Ses (sn) | İstek kimliği | Metin sha256 |
+|---|---|---|---|---|---|---|---|---|
+| 2026-10-14T13:03:42Z | b2_17_hi.p1 | alania-v2 | alania2-f1 | alania-v2.1 | 25 | 1.44 | b9ecfc31daf644efa3f055776bc5fc53 | e26f97cd14cb7587 |
+| 2026-10-14T13:03:43Z | b2_17_hi.p1 | duyu-1 | - | - | - | 1.44 | - | e26f97cd14cb7587 |
+| 2026-10-14T13:03:44Z | b2_17_hi.p4 | alania-v2 | alania2-f1 | alania-v2.1 | 23 | 1.92 | 8cb07329d2d04029aa86c38e8267ed8e | b2f309b3d7a9ea66 |
+| 2026-10-14T13:03:45Z | b2_17_hi.p4 | duyu-1 | - | - | - | 1.92 | - | b2f309b3d7a9ea66 |
+| 2026-10-14T13:03:53Z | b2_17_hi | alania-v2 | alania2-f1 | alania-v2.1 | 96 | 6.56 | 4796fb891d79460c8c04bd24929fc41c | d13e694c218b14a6 |
+| 2026-10-14T13:03:54Z | b2_17_hi | duyu-1 | - | - | - | 6.56 | - | d13e694c218b14a6 |
+
+## İngilizce ifade seslendirme kayıtları (tts_episode_tr.py)
+
+| Tarih (UTC) | Parça | Ses | Model | Hız | Karakter | Metin sha256 |
+|---|---|---|---|---|---|---|
+| 2026-10-14T13:03:59Z | b2_17_hi.p2 | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 36 | 0ed10ff0338dbc20 |
+| 2026-10-14T13:03:59Z | b2_17_hi.p3 | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 9 | f868adba71dd145e |
+| 2026-10-14T13:04:46Z | tr_c-alex | alania-v2 | alania2-nisa | alania-v2.1 | 40 | 2.56 | 2d6d9c447ee641cb8192a631790a1372 | 1ffbe11aef016470 |
+| 2026-10-14T13:04:47Z | tr_c-alex | duyu-1 | - | - | - | 2.56 | - | 1ffbe11aef016470 |
+| 2026-10-14T13:04:49Z | tr_c-clues | alania-v2 | alania2-m1 | alania-v2.1 | 95 | 8.32 | 347b429e7d4248bd9252ad999d3e5a61 | 332163a12f9bf9bf |
+| 2026-10-14T13:04:50Z | tr_c-clues | duyu-1 | - | - | - | 8.32 | - | 332163a12f9bf9bf |
+| 2026-10-14T13:04:52Z | tr_c-oq | alania-v2 | alania2-m1 | alania-v2.1 | 59 | 4.32 | e25db17518294df7b496235bc6b3f57d | 88dd7444b298e3fc |
+| 2026-10-14T13:04:53Z | tr_c-oq | duyu-1 | - | - | - | 4.32 | - | 88dd7444b298e3fc |

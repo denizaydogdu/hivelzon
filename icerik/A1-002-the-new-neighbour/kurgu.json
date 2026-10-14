@@ -84,7 +84,7 @@
     {
       "id": "r-k2-b", "type": "reaction",
       "shots": [{"image": "images/B2-05-maya-sasirma.png", "audio": ["b2_15_alex", "b2_16_maya"], "move": [1.0, 1.05, 0.5, 0.5, 0.45, 0.45]}],
-      "bubble": {"speaker": "HI", "lang": "tr", "text": "Böyle de söyleyebilirsin: \"Excuse me, where is the old station?\" Excuse me kibar bir başlangıçtır.", "audio": "b2_17_hi"},
+      "bubble": {"speaker": "HI", "lang": "tr", "text": "Böyle de söyleyebilirsin: \"Excuse me, where is the old station?\" Excuse me kibar bir başlangıçtır.", "audio": "b2_17_hi", "speechTr": "Böyle de söyleyebilirsin: {Excuse me, where is the old station?} {Excuse me} kibar bir başlangıçtır."},
       "next": "k2"
     },
     {
@@ -132,14 +132,14 @@
       "background": "images/B2-07-oda-harita.png",
       "lines": [{"speaker": "ALEX", "text": "Kapalıysa… neden orada buluşmak istiyor?", "lang": "tr"}],
       "why": "Alex'in Türkçe iç sesi için ses üretilmedi",
-      "next": "c-clues"
+      "next": "c-clues", "audio": {"id": "tr_c-alex", "speaker": "ALEX (TR)"}
     },
     {
       "id": "c-clues", "type": "card", "kind": "clue", "advance": "tap", "clueIds": ["C3"], "answers": ["Q1:partial"],
       "lines": [{"text": "İpucu panosu", "lang": "tr", "style": "heading"},
                 {"text": "C3 · Maya'nın haritası (liman bölgesi açıldı)", "lang": "tr"},
                 {"text": "Q1 kısmen cevaplandı: limanda.", "lang": "tr"}],
-      "next": "c-oq"
+      "next": "c-oq", "speechTr": "İpucu panosu. Maya'nın haritası: liman bölgesi açıldı. Birinci soru kısmen cevaplandı: limanda.", "audio": {"id": "tr_c-clues", "speaker": "ANLATICI (TR)"}
     },
     {
       "id": "c-oq", "type": "card", "kind": "openQuestion", "advance": "tap", "questionId": "Q2",
@@ -147,7 +147,7 @@
       "lines": [{"text": "AÇIK SORU", "lang": "tr", "style": "caption"},
                 {"text": "İstasyon kapalıysa, çağrı neden oraya çağırıyor?", "lang": "tr", "style": "heading"},
                 {"text": "Bölüm 3: Find the Station", "lang": "en", "style": "caption"}],
-      "next": null
+      "next": null, "speechTr": "Açık soru: İstasyon kapalıysa, çağrı neden oraya çağırıyor?", "audio": {"id": "tr_c-oq", "speaker": "ANLATICI (TR)"}
     }
   ]
 }

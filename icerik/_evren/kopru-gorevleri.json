@@ -10,28 +10,36 @@
       "contentId": "A1-001",
       "titleTr": "Sorulara kulak ver",
       "textTr": "Bu hafta İngilizce bir şarkıda ya da videoda \"Can you…?\" ile başlayan bir soru yakala. Duyunca içinden \"Yes, I can.\" de.",
-      "phraseEn": "Yes, I can."
+      "phraseEn": "Yes, I can.",
+      "speechTr": "Bu hafta İngilizce bir şarkıda ya da videoda {Can you…?} ile başlayan bir soru yakala. Duyunca içinden şunu de: {Yes, I can.}",
+      "audio": "hi-ses/bridge-bt-a1-001.mp3"
     },
     {
       "id": "bt-a1-002",
       "contentId": "A1-002",
       "titleTr": "Kendini tanıt",
       "textTr": "Aynanın karşısında kendini İngilizce tanıt: \"Hello! My name is … I'm from …\" İkinci seferde daha yavaş söyle.",
-      "phraseEn": "Nice to meet you."
+      "phraseEn": "Nice to meet you.",
+      "speechTr": "Aynanın karşısında kendini İngilizce tanıt: {Hello! My name is… I'm from…} İkinci seferde daha yavaş söyle.",
+      "audio": "hi-ses/bridge-bt-a1-002.mp3"
     },
     {
       "id": "bt-a1-003",
       "contentId": "A1-003",
       "titleTr": "Yolunu İngilizce düşün",
       "textTr": "Bir yere yürürken dönüşleri içinden İngilizce söyle: \"Go straight. Turn left.\" Üç dönüş yeter.",
-      "phraseEn": "Turn left / right."
+      "phraseEn": "Turn left / right.",
+      "speechTr": "Bir yere yürürken dönüşleri içinden İngilizce söyle: {Go straight. Turn left.} Üç dönüş yeter.",
+      "audio": "hi-ses/bridge-bt-a1-003.mp3"
     },
     {
       "id": "bt-a1-004",
       "contentId": "A1-004",
       "titleTr": "Saati İngilizce söyle",
       "textTr": "Bugün saate üç kez bak ve İngilizce söyle: \"It's seven o'clock.\" gibi. Tam saat değilse yalnızca saati söylemen yeter.",
-      "phraseEn": "It's seven o'clock."
+      "phraseEn": "It's seven o'clock.",
+      "speechTr": "Bugün saate üç kez bak ve İngilizce söyle: {It's seven o'clock.} gibi. Tam saat değilse yalnızca saati söylemen yeter.",
+      "audio": "hi-ses/bridge-bt-a1-004.mp3"
     }
   ],
   "approvedBy": "kullanıcı (önceden onay, 2026-10-13: \"onayladım şimdiden\"); içerik ana oturumda okundu"

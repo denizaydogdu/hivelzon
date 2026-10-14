@@ -27,3 +27,31 @@
 - **Dosyalar:**
   - `audio/*.mp3` (git dışı) ve `audio/*.align.json`;
   - `audio_manifest.json`: replik → ses kimliği eşlemesi. B1 ile aynı telsiz replikleri B1'in kayıtlarını kullanır.
+
+## Türkçe seslendirme kayıtları (tts_tr.py)
+
+| Tarih (UTC) | Parça | Model | Ses | Sürüm | Karakter | Ses (sn) | İstek kimliği | Metin sha256 |
+|---|---|---|---|---|---|---|---|---|
+| 2026-10-14T13:04:54Z | b3_05_hi.p1 | alania-v2 | alania2-f1 | alania-v2.1 | 31 | 2.4 | 5b2c54fe5a9f4f39a041e0c9d518a670 | fc194f98b7471534 |
+| 2026-10-14T13:04:55Z | b3_05_hi.p1 | duyu-1 | - | - | - | 2.4 | - | fc194f98b7471534 |
+| 2026-10-14T13:04:56Z | tr_r-k2-b.p2 | alania-v2 | alania2-f1 | alania-v2.1 | 6 | 0.48 | dc9a8ca46d8140d49f3ff9d216eb4831 | 5a343e0ac04749c3 |
+| 2026-10-14T13:04:56Z | tr_r-k2-b.p2 | duyu-1 | - | - | - | 0.48 | - | 5a343e0ac04749c3 |
+| 2026-10-14T13:04:57Z | tr_r-k2-b.p4 | alania-v2 | alania2-f1 | alania-v2.1 | 19 | 2.4 | 0cc0fea8d7b04ee1aac0ce2f52a571fb | 275da6b4098dac4c |
+| 2026-10-14T13:04:58Z | tr_r-k2-b.p4 | duyu-1 | - | - | - | 2.4 | - | 275da6b4098dac4c |
+| 2026-10-14T13:04:59Z | b3_10_hi.p2 | alania-v2 | alania2-f1 | alania-v2.1 | 51 | 3.68 | ac14f3833d2a442aa98de84e40c11d1b | a7be4994aad1755a |
+| 2026-10-14T13:04:59Z | b3_10_hi.p2 | duyu-1 | - | - | - | 3.68 | - | a7be4994aad1755a |
+| 2026-10-14T13:05:01Z | b3_13_hi | alania-v2 | alania2-f1 | alania-v2.1 | 49 | 3.68 | 0c435ef184374e1eaa85e4cfcf5b5efa | 478742dc589fecb9 |
+| 2026-10-14T13:05:01Z | b3_13_hi | duyu-1 | - | - | - | 3.68 | - | 478742dc589fecb9 |
+| 2026-10-14T13:05:03Z | tr_c-clues | alania-v2 | alania2-m1 | alania-v2.1 | 83 | 6.4 | b3f3f065539548ff8adcf496a5f1c32e | 63379d7df124b53b |
+| 2026-10-14T13:05:05Z | tr_c-clues | duyu-1 | - | - | - | 6.4 | - | 63379d7df124b53b |
+| 2026-10-14T13:05:06Z | tr_c-oq | alania-v2 | alania2-m1 | alania-v2.1 | 43 | 3.52 | ff466b32ba334b168500b1e4d4c51bdf | 95c74534fc80fb76 |
+| 2026-10-14T13:05:07Z | tr_c-oq | duyu-1 | - | - | - | 3.52 | - | 95c74534fc80fb76 |
+
+## İngilizce ifade seslendirme kayıtları (tts_episode_tr.py)
+
+| Tarih (UTC) | Parça | Ses | Model | Hız | Karakter | Metin sha256 |
+|---|---|---|---|---|---|---|
+| 2026-10-14T13:07:04Z | b3_05_hi.p2 | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 21 | 970ff260266b9d4b |
+| 2026-10-14T13:07:05Z | tr_r-k2-b.p1 | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 4 | 58eb9032e3bb83f0 |
+| 2026-10-14T13:07:06Z | tr_r-k2-b.p3 | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 5 | 883361d5d682a157 |
+| 2026-10-14T13:07:07Z | b3_10_hi.p1 | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 7 | c1ea3f5e7aa47303 |

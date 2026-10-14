@@ -146,7 +146,7 @@ def rendition_file(name: str, rendition: str = "720p") -> str:
 
 
 def export_season(icerik_root: Path, season: int, probe=None, digest=None, poster=None,
-                  rendition=None, image=None, set_media: dict | None = None) -> dict:
+                  rendition=None, image=None, set_media: dict | None = None, hi_audio=None) -> dict:
     """Sezon paketini kopyalar ve season.json yazar. Video yoksa hata verir (kurgu.py çalıştırılmalı).
 
     rendition(src, out): 720p sürümü üretir (H-054); verilmezse yalnızca 1080p kopyalanır.
@@ -154,6 +154,8 @@ def export_season(icerik_root: Path, season: int, probe=None, digest=None, poste
     set_media: konu setlerinin medya adımları (H-051; `sets.export_sets` anahtar sözcükleri: crop, scene,
     cut, gain, probe, size). `_evren/setler/` varsa setler her durumda yazılır; medya adımı verilmezse
     yalnızca JSON üretilir (testler).
+    hi_audio(src, out): Hi verisinin Türkçe sesini (H-083, `_evren/hi-ses/*.mp3`) -16 LUFS m4a olarak yazar;
+    verilmezse sesler pakete girmez ve `audio` alanı düşer.
     """
     src = SeasonSource.load(icerik_root, season)
     if src.media_dir is None:
@@ -216,7 +218,7 @@ def export_season(icerik_root: Path, season: int, probe=None, digest=None, poste
     if sets_dir(icerik_root).is_dir():
         doc["topicSets"] = export_sets(icerik_root, season, out, **(set_media or {}))
     # Hi-A (H-048): hata kataloğu, konu tanıtımları, köprü görevleri, "Bu ne demek?" dizini → hi.json.
-    hi = export_hi(icerik_root, season, out)
+    hi = export_hi(icerik_root, season, out, audio=hi_audio)
     if hi is not None:
         doc["hi"] = hi
     # Eski biçimler (H-054 öncesi jpg afiş) temizlenir; yalnızca güncel dosyalar listelenir.

@@ -18,13 +18,14 @@ icerik/A1-001-a-strange-message/_build/package/
 ├── segments/<düğüm>.720p.mp4  # 720×1280, H.264 High yuv420p, CRF 21 + maxrate 2M/bufsize 4M, -tune animation;
 │                          #   ses 1080p'den kopya (AAC 128k), faststart; ~1,7–1,9 Mbps (H-054, uygulamanın varsayılanı)
 ├── subs/<düğüm>.en.json   # İngilizce altyazı: ipucu (cue) ve kelime zamanları (şema: subs.schema.json)
-├── audio/<kimlik>.m4a     # Hi balonu, seçenek ve görev sesleri (AAC)
+├── audio/<kimlik>.m4a     # Hi balonu, Türkçe kart (Hi, Alex, not, ipucu, açık soru), seçenek ve görev sesleri (AAC)
 └── stills/<görsel>.webp   # karar, kart ve görev arka planları (1080×1920, WebP q80; H-054 öncesi .jpg)
 ```
 
 - **Altyazı videoya gömülmez (K-03).** Oynatıcı `subs/*.en.json` dosyasından çizer. Videoda yalnızca **dünya içi yazılar** (saat, takvim, kapıdaki yarım not) ve küçük "Yapay zekâ ile üretilmiştir" etiketi gömülüdür.
 - **Karar kartları videoya gömülmez.** Karar anı yerel arayüzdür (OYUN-TASARIMI §11.4).
-- Ses düzeyi: bölümdeki bütün segmentler birlikte ölçülür, tek kazanç uygulanır, hedef **-16 LUFS** ve sınırlayıcı ≈ -1,5 dBFS.
+- Ses düzeyi: bölümdeki bütün segmentler birlikte ölçülür, tek kazanç uygulanır, hedef **-16 LUFS** ve sınırlayıcı ≈ -1,5 dBFS. İngilizce klipler (seçenek, görev) bu bölüm kazancını alır.
+- **Türkçe klipler (H-083)** bölüm kazancını almaz: her biri kendi ölçümüyle -16 LUFS'a getirilir (Alania çıktısı zaten -16 LUFS'tur; kazanç ≈ 0). Türkçe klip: hizalamada `lang: "tr"` ya da konuşmacı Hi / `(TR)`. Uygulanan kazançlar `manifest.loudness.turkishClips`'te.
 - **720p sürüm (H-054):** 1080p son çıktıdan yeniden kodlanır (Ken Burns yeniden çizilmez). Ses kopyalanır; süre 1080p ile aynıdır (ölçülen fark 0,000 sn) ve senkron 720p dosyada da ayrıca ölçülür (≤ 0,2 sn). Önbellek: `_build/cache/r720/`.
 - Segment geçişlerinde video içi geçiş (xfade) yoktur. Segment içindeki çekimler 0,3 sn geçişle birleşir. Segmentler arası geçişi oynatıcı yapar.
 
@@ -125,6 +126,7 @@ Sezon paketi `icerik/_evren/_build/season/S<n>/` altında üretilir (git dışı
 | `map.webp` | `_evren/harita/map.jpg` (kayıpsız `map.png` varsa ondan; git dışı; üretim kaydı `_evren/harita/PROMPTS.md`) | Hikâye haritasının arka planı (WebP q80, H-054). **Yoksa** uygulama haritayı kodla çizer. Numara ve düğümler görselde değil, uygulamada çizilir. |
 | `season.json` → `map` | | `image`, `width`, `height` (piksel). Uygulama haritayı bu en-boy oranıyla çizer, gerekirse dikey kaydırır. |
 | `season.json` → `episodes[]` | `_evren/harita/season-<nn>.json` (depoda) | Sezonun bütün bölüm yerleri (S1: 12). Alanlar aşağıda. |
+| `hi.json` + `hi/<ad>.m4a` | `_evren/hata-katalogu.json`, `konu-tanitimlari.json`, `kopru-gorevleri.json`; ses `_evren/hi-ses/<ad>.mp3` (git dışı, hizalama depoda) | Hi verisi (H-048). **H-083:** `errorCatalog[]`, `topicIntros[]`, `bridgeTasks[]` girdilerinde isteğe bağlı `audio` = sezon paketine göre yol (`hi/note-<id>.m4a`, `hi/intro-<id>.m4a`, `hi/bridge-<id>.m4a`; -16 LUFS AAC). Uygulama kartta "Dinle" düğmesi gösterir; kart kapanınca ses durur. Kaynaktaki `speechTr`, `speechMode`, `pronunciations` pakete girmez. Ses dosyası yoksa alan düşer (`season.json → hi.audioMissing`). |
 
 `episodes[]` alanları:
 
@@ -225,6 +227,27 @@ Her bölüm klasöründe, paketin kaynağı olan kurgu tanımı vardır. `scenes
 - Ses alanları (`audio`) ses kimliğidir ve `audio/*.m4a` olur.
 - Kaynakta ses yoksa düğüm yalnızca metin kalır ve `manifest.textOnly`'ye yazılır. **Araç hiçbir ücretli üretim çağrısı yapmaz.**
 
+### 5.1 Türkçe sesler (H-083)
+
+"Uygulamadaki Türkçe konuşan her yer Alania ile" (kullanıcı kararı 2026-10-14). Roller ve sesler `icerik/_evren/sesler.json`'dadır (DILBILGISI §2.1). Üretim: `tts_episode_tr.py` (§6).
+
+| Yer (`kurgu.json`) | Rol | Ses dosyası |
+|---|---|---|
+| `reaction.bubble` (lang tr), `task.feedback.wrong` | Hi | var olan kimlik (ör. `hi_01`) ya da `tr_<düğüm>` |
+| `card` kind `hi` | Hi | var olan kimlik ya da `tr_<düğüm>` |
+| `card` kind `line` (satırlar tr; konuşmacı ALEX) | Alex | `tr_<düğüm>` |
+| `card` kind `note` (satırlar tr) | `voiceRole` (ör. `nermin`), yoksa anlatıcı | `tr_<düğüm>` |
+| `card` kind `clue`, `openQuestion` | anlatıcı | `tr_<düğüm>` |
+
+Kaynak alanları (pakete girmez):
+- `speechTr`: söylenen metin (yoksa ekrandaki metin). İngilizce ifadeler `{…}` ile işaretlenir: `Böyle de söyleyebilirsin: {Again, please.}`. Kartlarda okunmayan kodlar (`C1 ·`, `Q3`) yazılmaz.
+- `speechMode`: `b` (varsayılan; İngilizce ifade Sarah, Türkçe Alania, arka arkaya) ya da `a` (tümü Alania + söyleniş sözlüğü; Türkçe ek alan özel ad, ör. "Pier 3'te"). İşaret yoksa tek Alania parçası.
+- `pronunciations`: `[{term, say_as}]`, düğüme özel söyleniş.
+- `voiceRole`: rolü elle seçer (`hi`, `alex`, `nermin`, `narrator`).
+- `audio`: araç sesi üretince ekler: `{"id": "tr_c-oq", "speaker": "ANLATICI (TR)"}` (el biçimi korunur).
+
+Paket alanları: bu kart türlerinde ve balonlarda isteğe bağlı `audio` (`audio/<bölüm>_<ad>.m4a`). Oynatıcı kart açılınca sesi kendiliğinden çalar ve "Dinle" düğmesi gösterir (Hi kartındaki gibi). Hizalama (`audio/<ad>.align.json`): `text` = düz söylenen metin, `lang: "tr"`, `voice_id` (Alania), `timing` (`duyu-1` ya da `duyu-1+elevenlabs`), `variant` (`tr`/`a`/`b`), `role`, `speaker`, `speech`, `quality` (Duyu eşleşmesi); `b` kipinde ayrıca `parts[]` (dil, metin, kırpma, kazanç) ve `en` (Sarah ayarı).
+
 ## 6. Araçlar
 
 ```bash
@@ -238,6 +261,20 @@ python3 tools/content-pipeline/export_package.py icerik/A1-00[1-4]-*   # paket (
 - Önbellek dosyaları önce geçici adla yazılır.
 - Çıktıda her segment ve özet için senkron ölçümü yapılır: ilk ipucu ile gerçek ses başlangıcı arasındaki fark ≤ 0,2 sn olmalı. H-054'ten beri 720p dosyalarda da ölçülür; ayrıca 720p süresi 1080p'den en çok 1 kare farklı, biçimi H.264 High 720×1280 yuv420p ve faststart olmalı.
 - Sezon paketi de aynı komutla üretilir (bölümlerin sezonları için). Yalnızca sezon paketi: `--season 1` (§2.7).
+
+**Türkçe sesler (H-083, §5.1):**
+
+```bash
+P=tools/content-pipeline/.venv/bin/python
+$P tools/content-pipeline/tts_episode_tr.py icerik/A1-00[1-4]-* --hi              # kuru çalışma: ses, rol, kip, TR/EN karakter
+HIVELZON_TR_TTS_MONTHLY_CHAR_CAP=500000 \
+  $P tools/content-pipeline/tts_episode_tr.py icerik/A1-00[1-4]-* --hi --execute    # gerçek üretim
+$P tools/content-pipeline/tts_episode_tr.py icerik/A1-002-* --only b2_17_hi --compare-dir .yerel/h083 --execute  # a/b karşılaştırması
+```
+- Türkçe: Alania + Duyu (`tts_tr`), tavan `HIVELZON_TR_TTS_MONTHLY_CHAR_CAP`, defter `kitaplar/_maliyet/patientdesk-karakter.json`. İngilizce ifadeler: ElevenLabs Sarah, tavan `sesler.json` → `english.monthlyCharCap` (ya da `--en-cap`), defter `english.ledger`. Tavan aşılacaksa hiçbir çağrı yapılmaz.
+- `b` kipi: Türkçe parçalar ve İngilizce ifadeler ayrı üretilir; baş/son sessizlikleri kırpılır, İngilizce parçalar Türkçe parçaların ses düzeyine getirilir, 0,15 sn boşlukla birleştirilir, bütün -16 LUFS'a getirilir. Yalnız noktalama olan parça (`{at}: {at seven.}` → `:`) seslendirilmez, hizalamada sıfır sürelidir.
+- İdempotent: anahtar = parçaların (metin + ses + model + üslup + söyleniş) anahtarları + boşluk + birleştirme sürümü. Ödenmiş ham çıktı `audio/_raw/` (git dışı); aynı İngilizce ifade bir kez ücretlenir. Eski ElevenLabs Türkçe sesleri silinmez, `audio/_raw/elevenlabs/`e kopyalanır.
+- Her çağrı bölümün `PROMPTS.md`'sine yazılır (Hi verisi: `_evren/hi-ses/PROMPTS.md`).
 
 ### content-lint kuralları
 
@@ -263,6 +300,7 @@ python3 tools/content-pipeline/export_package.py icerik/A1-00[1-4]-*   # paket (
 | `gate` | Kapı ölçütlerindeki düğümler var ve ulaşılabilir | Hata |
 | `chain` | Açılan bölüm sorusu en geç 3 bölümde kapanır; aynı anda en fazla 2 bölüm sorusu açık (sezon ve seri soruları hariç) | Hata |
 | `missing-file` | Pakette `scenes.json`'ın andığı dosya var | Hata |
+| `tr-voice` | (H-083, `_evren/sesler.json` varsa) Türkçe ses metni güncel değil ya da `{…}` işareti bozuk: hata. Türkçe ses yok, Alania dışı ses (ör. eski ElevenLabs), Duyu hizalaması zayıf, ses var ama `kurgu.json`'da `audio` yok, işaretlenmemiş İngilizce şüphesi: uyarı. Hi verisinde `audio` var ama hizalama yok: hata. | Hata / uyarı |
 | `translation` | `ceviri.tr.json` varsa: her altyazı ipucunun çeviri satırı ve her kelimenin (özel ad hariç) anlamı var. Kart, karar repliği ve görev kökünde eksik çeviri ya da cümlede bulunamayan kalıp uyarıdır. Dosya yoksa "çeviri yok", durum `APPROVED` değilse durum uyarısı. | Hata / uyarı |
 
 **Konu seti kuralları (H-051, §7):** content-lint bölümlerle aynı içerik kökündeki `_evren/setler/*.json` dosyalarını da denetler (`--no-sets` ile atlanır). Hatalı set dışa aktarılmaz.

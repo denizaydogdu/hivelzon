@@ -163,10 +163,33 @@ def tr_lower(s: str) -> str:
     return s.replace("I", "ı").replace("İ", "i").lower()
 
 
+_ONES = ["", "bir", "iki", "üç", "dört", "beş", "altı", "yedi", "sekiz", "dokuz"]
+_TENS = ["", "on", "yirmi", "otuz", "kırk", "elli", "altmış", "yetmiş", "seksen", "doksan"]
+
+
+def number_tr(n: int) -> str:
+    """Sayıyı Türkçe yazıya çevirir (0–999 999; boşluksuz, karşılaştırma için). H-083: Duyu "yedi"yi
+    "7" diye yazabilir; metindeki "3'te" de "üçte" diye duyulur."""
+    if n == 0:
+        return "sıfır"
+    if n >= 1_000_000:
+        return str(n)
+    out = ""
+    th, n = divmod(n, 1000)
+    if th:
+        out += ("" if th == 1 else number_tr(th)) + "bin"
+    h, n = divmod(n, 100)
+    if h:
+        out += ("" if h == 1 else _ONES[h]) + "yüz"
+    t, o = divmod(n, 10)
+    return out + _TENS[t] + _ONES[o]
+
+
 def norm(w: str) -> str:
-    """Karşılaştırma biçimi: Türkçe küçük harf, noktalama ve kesme işareti yok."""
+    """Karşılaştırma biçimi: Türkçe küçük harf, noktalama ve kesme işareti yok; rakamlar yazıyla."""
     w = unicodedata.normalize("NFC", tr_lower(w))
-    return "".join(c for c in w if c.isalnum())
+    w = "".join(c for c in w if c.isalnum())
+    return re.sub(r"\d+", lambda m: number_tr(int(m.group(0))), w) if any(c.isdigit() for c in w) else w
 
 
 def fold(w: str) -> str:

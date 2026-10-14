@@ -58,7 +58,7 @@
     {
       "id": "r-k1-b", "type": "reaction",
       "shots": [{"image": "images/B3-02-kopekli-adam-pov.png", "audio": ["b3_03_alex", "b3_04_man"], "move": [1.0, 1.05, 0.5, 0.5, 0.45, 0.45]}],
-      "bubble": {"speaker": "HI", "lang": "tr", "text": "Dün kullandığın kalıbı hatırla: \"Excuse me, where is…?\"", "audio": "b3_05_hi"},
+      "bubble": {"speaker": "HI", "lang": "tr", "text": "Dün kullandığın kalıbı hatırla: \"Excuse me, where is…?\"", "audio": "b3_05_hi", "speechTr": "Dün kullandığın kalıbı hatırla: {Excuse me, where is…?}"},
       "next": "k1"
     },
     {
@@ -88,7 +88,7 @@
     {
       "id": "r-k2-b", "type": "reaction",
       "shots": [{"image": "images/B3-04-cikmaz-kedi.png", "len": 3.0, "move": [1.0, 1.06, 0.5, 0.5, 0.5, 0.5]}],
-      "bubble": {"speaker": "HI", "lang": "tr", "text": "left = sol, right = sağ. Tekrar dene!", "why": "Bu Hi repliği için ses üretilmedi"},
+      "bubble": {"speaker": "HI", "lang": "tr", "text": "left = sol, right = sağ. Tekrar dene!", "speechTr": "{Left}: sol. {Right}: sağ. Tekrar dene!", "audio": {"id": "tr_r-k2-b", "speaker": "HI"}},
       "next": "k2"
     },
     {
@@ -120,7 +120,7 @@
     },
     {
       "id": "r-k3-b", "type": "reaction",
-      "bubble": {"speaker": "HI", "lang": "tr", "text": "between = ikisinin arasında. Otobüs durağına ve kafeye bak.", "audio": "b3_10_hi"},
+      "bubble": {"speaker": "HI", "lang": "tr", "text": "between = ikisinin arasında. Otobüs durağına ve kafeye bak.", "audio": "b3_10_hi", "speechTr": "{Between}: ikisinin arasında. Otobüs durağına ve kafeye bak."},
       "why": "Tepki yalnızca Hi balonu (story.en.md'de görsel tepki yok)",
       "next": "k3"
     },
@@ -170,7 +170,7 @@
       "lines": [{"text": "İpucu panosu", "lang": "tr", "style": "heading"},
                 {"text": "C4 · Kapıdaki yarım not (fotoğraf)", "lang": "tr"},
                 {"text": "Q1 kapandı: İstasyon bulundu.", "lang": "tr"}],
-      "next": "c-oq"
+      "next": "c-oq", "speechTr": "İpucu panosu. Kapıdaki yarım not: fotoğraf. Birinci soru kapandı: İstasyon bulundu.", "audio": {"id": "tr_c-clues", "speaker": "ANLATICI (TR)"}
     },
     {
       "id": "c-oq", "type": "card", "kind": "openQuestion", "advance": "tap", "questionId": "Q3",
@@ -178,7 +178,7 @@
       "lines": [{"text": "AÇIK SORU", "lang": "tr", "style": "caption"},
                 {"text": "Kapıdaki yarım notta ne yazıyor?", "lang": "tr", "style": "heading"},
                 {"text": "Bölüm 4: The Note", "lang": "en", "style": "caption"}],
-      "next": null
+      "next": null, "speechTr": "Açık soru: Kapıdaki yarım notta ne yazıyor?", "audio": {"id": "tr_c-oq", "speaker": "ANLATICI (TR)"}
     }
   ]
 }

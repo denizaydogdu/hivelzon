@@ -290,7 +290,24 @@ def lint_hi(icerik_root: Path) -> list[tuple[str, list[Issue]]]:
             continue
         if doc is not None:
             out.append((name, fn(doc, icerik_root)))
+    out += _lint_hi_voice(Path(icerik_root))
     return out
+
+
+def _lint_hi_voice(root: Path) -> list[tuple[str, list[Issue]]]:
+    """H-083: Hi verisinin Türkçe sesleri (ses haritası varsa)."""
+    from .tts_episode_tr import VOICE_MAP_FILE, EpisodeTtsError, VoiceMap, check_items, collect_hi
+    if not (root / VOICE_MAP_FILE).exists():
+        return []
+    try:
+        items = collect_hi(root, VoiceMap.load(root))
+    except (EpisodeTtsError, KeyError, ValueError) as e:
+        return [("sesler", [Issue("error", "tr-voice", str(e))])]
+    issues = [Issue(lv, code, msg) for lv, code, msg in check_items(items)]
+    for it in items:
+        if it.has_ref and not it.align().exists():
+            issues.append(Issue("error", "tr-voice", f"{it.where}: audio var ama hizalama yok ({it.align().name})"))
+    return [("hi-ses", issues)] if issues else []
 
 
 # --- "Bu ne demek?" dizini -------------------------------------------------------------------
@@ -407,9 +424,35 @@ def build_lookup(icerik_root: Path) -> tuple[list[dict], list[str]]:
 
 # --- dışa aktarma ----------------------------------------------------------------------------
 
-def export_hi(icerik_root: Path, season: int, out: Path) -> dict | None:
+HI_AUDIO_PACKAGE_DIR = "hi"
+# Yalnız kaynakta kalan alanlar (ses üretimi için; H-083)
+SOURCE_ONLY = ("speechTr", "speechMode", "pronunciations")
+
+
+def _with_audio(entries: list[dict], root: Path, out: Path, audio, missing: list[str]) -> list[dict]:
+    """Kaynak `audio` (`hi-ses/<ad>.mp3`, _evren'e göre) → paket `hi/<ad>.m4a` (H-083). Ses dosyası ya da
+    ses adımı yoksa alan düşer ve `missing`e yazılır."""
+    res = []
+    for e in entries:
+        e = {k: v for k, v in e.items() if k not in SOURCE_ONLY}
+        src = e.pop("audio", None)
+        if src:
+            f = root / HI_DIR / src
+            rel = f"{HI_AUDIO_PACKAGE_DIR}/{Path(src).stem}.m4a"
+            if audio is not None and f.exists():
+                (out / rel).parent.mkdir(parents=True, exist_ok=True)
+                audio(f, out / rel)
+                e["audio"] = rel
+            else:
+                missing.append(src)
+        res.append(e)
+    return res
+
+
+def export_hi(icerik_root: Path, season: int, out: Path, audio=None) -> dict | None:
     """Sezon paketine `hi.json` yazar; season.json için özet döndürür. Kaynak yoksa None.
-    Denetim hatası varsa ValueError (hatalı veri pakete girmez)."""
+    Denetim hatası varsa ValueError (hatalı veri pakete girmez).
+    audio(src, out): Türkçe sesi pakete yazar (H-083; verilmezse `audio` alanları düşer)."""
     root = Path(icerik_root)
     if not has_hi_sources(root):
         (Path(out) / HI_PACKAGE_FILE).unlink(missing_ok=True)
@@ -421,22 +464,31 @@ def export_hi(icerik_root: Path, season: int, out: Path) -> dict | None:
     intros = _load(hi_source(root, INTROS_FILE)) or {}
     bridge = _load(hi_source(root, BRIDGE_FILE)) or {}
     lookup, used = build_lookup(root)
+    out = Path(out)
+    missing: list[str] = []
     doc = {
         "schemaVersion": 1, "season": season, "taxonomyVersion": TAXONOMY_VERSION,
         "status": {"errorCatalog": catalog.get("status"), "topicIntros": intros.get("status"),
                    "bridgeTasks": bridge.get("status")},
-        "errorCatalog": catalog.get("entries") or [],
+        "errorCatalog": _with_audio(catalog.get("entries") or [], root, out, audio, missing),
         "decisionErrors": catalog.get("decisionErrors") or [],
-        "topicIntros": intros.get("intros") or [],
-        "bridgeTasks": bridge.get("tasks") or [],
+        "topicIntros": _with_audio(intros.get("intros") or [], root, out, audio, missing),
+        "bridgeTasks": _with_audio(bridge.get("tasks") or [], root, out, audio, missing),
         "lookupEpisodes": used,
         "lookup": lookup,
     }
-    out = Path(out)
     out.mkdir(parents=True, exist_ok=True)
     tmp = out / f".{HI_PACKAGE_FILE}.tmp"
     tmp.write_text(json.dumps(doc, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     tmp.replace(out / HI_PACKAGE_FILE)
+    used_audio = {e["audio"] for k in ("errorCatalog", "topicIntros", "bridgeTasks") for e in doc[k] if e.get("audio")}
+    adir = out / HI_AUDIO_PACKAGE_DIR
+    if adir.is_dir():   # eski sesler kalmasın
+        for f in adir.iterdir():
+            if f"{HI_AUDIO_PACKAGE_DIR}/{f.name}" not in used_audio:
+                f.unlink()
+    audio_bytes = sum((out / a).stat().st_size for a in used_audio)
     return {"path": HI_PACKAGE_FILE, "errorCatalog": len(doc["errorCatalog"]), "topicIntros": len(doc["topicIntros"]),
             "bridgeTasks": len(doc["bridgeTasks"]), "lookup": len(lookup),
+            "audio": len(used_audio), "audioBytes": audio_bytes, "audioMissing": missing,
             "bytes": (out / HI_PACKAGE_FILE).stat().st_size}

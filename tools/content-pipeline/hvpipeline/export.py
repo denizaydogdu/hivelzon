@@ -14,6 +14,17 @@ from .graph import check_scenes, schema_errors
 CACHE_VERSION = "1"
 
 
+def is_turkish(item: AudioItem) -> bool:
+    """Türkçe klip: hizalama `lang: tr` ya da konuşmacı Hi / "(TR)" (H-083)."""
+    try:
+        if json.loads(item.align.read_text(encoding="utf-8")).get("lang") == "tr":
+            return True
+    except (OSError, ValueError):
+        pass
+    sp = item.speaker.upper()
+    return sp.startswith("HI") or "(TR)" in sp
+
+
 def _key(*parts) -> str:
     h = hashlib.sha256()
     for p in parts:
@@ -33,6 +44,7 @@ class FfmpegMedia:
         self.label = media.label_png(self.cache / "label.png") if label else None
         self.joined: dict[str, Path] = {}      # segment id → ara .mov
         self.clips: dict[str, Path] = {}       # paket yolu → ham ses kaynağı
+        self.tr_clips: set[str] = set()        # kendi -16 LUFS düzeyini koruyan Türkçe klipler (H-083)
         self.stills: dict[str, Path] = {}
 
     def _src(self, item: AudioItem) -> Path:
@@ -82,6 +94,8 @@ class FfmpegMedia:
     def audio_clip(self, ep: Episode, item: AudioItem) -> str:
         rel = f"audio/{slug_name(item.key)}.m4a"
         self.clips[rel] = self._src(item)
+        if is_turkish(item):
+            self.tr_clips.add(rel)
         return rel
 
     def season_duration(self, src) -> float:
@@ -115,8 +129,14 @@ def export_episode(ep_dir: Path, label: bool = True, clean: bool = True) -> dict
         if not cached.exists():
             media.rendition_720(final, cached)
         shutil.copyfile(cached, pkg / media.rendition_name(f"segments/{sid}.mp4"))
+    # H-083: Türkçe klipler (Alania) bölümün video sesine göre değil, kendi -16 LUFS düzeyine göre yazılır;
+    # bölüm kazancı ikinci kez uygulanmaz. İngilizce klipler (seçenek, görev) bölüm kazancını alır.
+    clip_gains = {}
     for rel, src in fm.clips.items():
-        media.audio_clip(src, gain, pkg / rel)
+        g = media.gain_to_target(src) if rel in fm.tr_clips else gain
+        if rel in fm.tr_clips:
+            clip_gains[rel] = g
+        media.audio_clip(src, g, pkg / rel)
     for rel, img in fm.stills.items():
         media.still(img, pkg / rel)
 
@@ -147,7 +167,8 @@ def export_episode(ep_dir: Path, label: bool = True, clean: bool = True) -> dict
         "contentVersion": doc["episode"]["contentVersion"],
         "tool": TOOL_ID,
         "loudness": {"targetLUFS": media.TARGET_LUFS, "gainDb": round(gain, 2),
-                     "before": before, "after": after},
+                     "before": before, "after": after,
+                     "turkishClips": {k: round(v, 2) for k, v in sorted(clip_gains.items())}},
         "textOnly": [{"node": t.node, "what": t.what, "reason": t.reason} for t in b.text_only],
         "files": [{"path": str(p.relative_to(pkg)), "bytes": p.stat().st_size, "sha256": file_digest(p)}
                   for p in files],

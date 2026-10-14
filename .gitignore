@@ -63,6 +63,8 @@ icerik/**/*.m4a
 icerik/**/*.wav
 .DS_Store
 icerik/**/_build/
+# Türkçe sesler (H-083): ödenmiş ham önbellek (Alania WAV, Duyu, Sarah parçaları) ve eski ElevenLabs yedeği
+icerik/**/_raw/
 
 # Kitaplık (H-066): ses ve görsel kaynakları git dışında; hizalama (audio/*.align.json) depoda.
 # Aylık TTS karakter defteri (kitaplar/_maliyet/) depoda tutulur.

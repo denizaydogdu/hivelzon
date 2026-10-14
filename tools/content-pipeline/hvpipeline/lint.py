@@ -272,7 +272,20 @@ def lint_episode(ep_dir: Path, graph_source: str = "auto", grammar_root: Path | 
     rep.issues += gi
     ti, rep.translation = check_translation(ep_dir, c)
     rep.issues += ti
+    rep.issues += check_turkish_voice(ep_dir)
     return rep
+
+
+def check_turkish_voice(ep_dir: Path) -> list[Issue]:
+    """H-083: bölümdeki Türkçe sesler Alania'dan ve güncel metinle mi (ses haritası varsa)."""
+    from .tts_episode_tr import VOICE_MAP_FILE, EpisodeTtsError, VoiceMap, check_items, collect_episode
+    if not (ep_dir.parent / VOICE_MAP_FILE).exists() or not (ep_dir / KURGU_FILE).exists():
+        return []
+    try:
+        items = collect_episode(ep_dir, VoiceMap.load(ep_dir.parent))
+    except (EpisodeTtsError, KeyError, ValueError) as e:
+        return [Issue("error", "tr-voice", str(e))]
+    return [Issue(lv, code, msg) for lv, code, msg in check_items(items)]
 
 
 def _qid(a: str) -> tuple[str, str]:
