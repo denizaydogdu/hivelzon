@@ -91,6 +91,25 @@ void main() {
       expect(r(SpeechMatchLevel.no), FsrsRating.again);
     });
 
+    test('anlamı ters söyleyiş Good/Easy almaz (H-087)', () {
+      for (final (exp, heard) in const [
+        ('I can help you.', 'I can not help you'),
+        ('I agree.', "I don't agree"),
+      ]) {
+        final m = SpeechMatcher.compareAny(exp, [heard]);
+        final rating = ReviewPolicy.rateSpeech(
+          level: m.level,
+          elapsed: const Duration(seconds: 1),
+          stage: _stage(5, st: 30),
+        );
+        expect(
+          rating,
+          isNot(anyOf(FsrsRating.good, FsrsRating.easy)),
+          reason: '$exp ← $heard',
+        );
+      }
+    });
+
     test('oturum: verilen not kullanılır; "Geç" kaydetmez', () async {
       final t0 = DateTime.utc(2026, 10, 13, 9);
       final item = NotebookItem(

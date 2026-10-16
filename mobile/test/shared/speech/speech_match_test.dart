@@ -171,6 +171,159 @@ void main() {
     });
   });
 
+  group('anlamı değiştiren fazla kelime (H-087)', () {
+    test('olumsuzluk eklenirse tam değil, yakın; kelime söylenir', () {
+      final a = cmp('I can help you.', 'I can not help you');
+      expect(a.level, SpeechMatchLevel.close);
+      expect(a.missingWords, isEmpty);
+      expect(a.changedWords, ['not']);
+      final b = cmp('I agree.', 'I do not agree');
+      expect(b.level, SpeechMatchLevel.close);
+      expect(b.changedWords, ['not']);
+    });
+
+    test('kısaltmalı olumsuzluk da yakalanır', () {
+      for (final (exp, heard) in const [
+        ('I can help you.', "I can't help you"),
+        ('I can help you.', 'I cannot help you'),
+        ('I agree.', "I don't agree"),
+        ('She likes tea.', "She doesn't likes tea"),
+        ('I saw it.', "I didn't saw it"),
+        ('I will go.', "I won't go"),
+        ('It is here.', "It isn't here"),
+        ('They are ready.', "They aren't ready"),
+        ('I was there.', "I wasn't there"),
+        ('You should go.', "You shouldn't go"),
+        ('I have a map.', "I haven't a map"),
+      ]) {
+        final m = cmp(exp, heard);
+        expect(m.level, SpeechMatchLevel.close, reason: '$exp ← $heard');
+        expect(m.changedWords, contains('not'), reason: '$exp ← $heard');
+      }
+    });
+
+    test('never / no eklenirse tam değil', () {
+      expect(
+        cmp('I drink coffee.', 'I never drink coffee').level,
+        SpeechMatchLevel.close,
+      );
+      expect(
+        cmp('I have time.', 'I have no time').level,
+        SpeechMatchLevel.close,
+      );
+    });
+
+    test('modal değişimi tam değil', () {
+      expect(
+        cmp('I can help you.', 'I must help you').level,
+        isNot(SpeechMatchLevel.full),
+      );
+      expect(
+        cmp('I can help you.', 'I could help you').level,
+        isNot(SpeechMatchLevel.full),
+      );
+      final m = cmp('I help you.', 'I can help you');
+      expect(m.level, SpeechMatchLevel.close);
+      expect(m.changedWords, ['can']);
+      expect(cmp('I go.', "I'll go").level, SpeechMatchLevel.close);
+    });
+
+    test('sayı farklı ya da eklenmiş → tam değil', () {
+      expect(
+        cmp("It's thirteen.", "It's fourteen").level,
+        isNot(SpeechMatchLevel.full),
+      );
+      expect(
+        cmp("It's thirteen.", "It's 30").level,
+        isNot(SpeechMatchLevel.full),
+      );
+      final m = cmp('I have cats.', 'I have 3 cats');
+      expect(m.level, SpeechMatchLevel.close);
+      expect(m.changedWords, ['three']);
+      expect(
+        cmp('I have cats.', 'I have twenty cats').level,
+        SpeechMatchLevel.close,
+      );
+    });
+
+    test('soru yapısı: başa do/does/did eklenirse tam değil', () {
+      expect(
+        cmp('You like tea.', 'do you like tea').level,
+        SpeechMatchLevel.close,
+      );
+      expect(
+        cmp('You can swim.', 'can you swim').level,
+        isNot(SpeechMatchLevel.full),
+      );
+      // Vurgulu "do" cümle içinde: anlam aynı → tam.
+      expect(cmp('I agree.', 'I do agree').level, SpeechMatchLevel.full);
+    });
+
+    test('kelime sırası değişirse tam değil', () {
+      expect(
+        cmp('The cat is black.', 'black is the cat').level,
+        isNot(SpeechMatchLevel.full),
+      );
+    });
+
+    test('doğal, anlamı korumayan ekler tam kalır', () {
+      for (final (exp, heard) in const [
+        ('I agree.', 'I agree Maya'),
+        ('I agree.', 'yes I agree'),
+        ('Again, please.', 'again please please'),
+        ('I agree.', 'okay I agree'),
+        ('I agree.', 'well I agree'),
+        ('I agree.', 'so I agree'),
+        ('Yes, I can.', 'yes I can Mrs Brooks'),
+        ('I agree.', 'um I agree'),
+        ('Thank you.', 'thank you very much'),
+        ('I want to go.', 'I want to go too'),
+      ]) {
+        final m = cmp(exp, heard);
+        expect(m.level, SpeechMatchLevel.full, reason: '$exp ← $heard');
+        expect(m.changedWords, isEmpty, reason: '$exp ← $heard');
+      }
+    });
+
+    test('ifadede zaten olan olumsuzluk sorun değil', () {
+      expect(
+        cmp("I don't know.", 'I do not know').level,
+        SpeechMatchLevel.full,
+      );
+      expect(cmp('No, thanks.', 'no thanks').level, SpeechMatchLevel.full);
+      expect(
+        cmp("I can't hear you.", "I can't hear you").level,
+        SpeechMatchLevel.full,
+      );
+    });
+
+    test('joker: yer adı serbest, olumsuzluk yine geçmez', () {
+      expect(
+        cmp('Where is…?', 'Where is the old station').level,
+        SpeechMatchLevel.full,
+      );
+      expect(
+        cmp("I'd like…", 'I would like three apples').level,
+        SpeechMatchLevel.full,
+      );
+      final m = cmp('Where is…?', "Where isn't the station");
+      expect(m.level, SpeechMatchLevel.close);
+      expect(m.changedWords, ['not']);
+      expect(
+        cmp('I like…', "I don't like the harbour").level,
+        SpeechMatchLevel.close,
+      );
+    });
+
+    test('alternatiflerden anlamı koruyan seçilir', () {
+      final m = SpeechMatcher.compareAny('I can help you.', [
+        "I can't help you",
+        'I can help you',
+      ]);
+      expect(m.level, SpeechMatchLevel.full);
+    });
+  });
+
   group('bestOption (karar anı)', () {
     test('doğru seçenek', () {
       final p = SpeechMatcher.bestOption(

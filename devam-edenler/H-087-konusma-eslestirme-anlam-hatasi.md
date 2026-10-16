@@ -25,3 +25,6 @@ cd mobile && flutter analyze && flutter test
 
 ## Geri alma
 Kendi dalında; `git revert`.
+
+## Notlar
+- 2026-10-16: `SpeechMatcher.compare` artık fazla kelimelerden anlamı değiştirenleri (`changedWords`) ayırıyor: olumsuzluk (not/n't/cannot/never/no/nothing/nobody/none/nowhere/neither/nor), kip (can/could/may/might/must/shall/should/will/would; `'ll`, `'d` dahil), sayı (rakamlar kelimeye çevrilir; one/two/four/eight sesteş oldukları için hariç), başa eklenen do/does/did (soru). İfadede zaten geçen kelime sayılmaz. Beklenen her kelime duyulduysa ve böyle bir ek varsa sonuç `close` ("Neredeyse! İfadede olmayan bir kelime duydum: not"); kelime tekrarında Hard, Good/Easy değil. Jokerli ifadede yalnız olumsuzluk sayılır. Testler: `test/shared/speech/speech_match_test.dart` (H-087 grubu), `speak_review_test.dart`, `speak_places_test.dart`.

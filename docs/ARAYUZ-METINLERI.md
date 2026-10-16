@@ -362,7 +362,7 @@ Kod: `SpeakTexts` (`mobile/lib/l10n/tr_strings.dart`). Puan, yüzde, dalga biçi
 | Yer | Metin | Not |
 |---|---|---|
 | Düğmeler | **Söyle** → **Bir daha söyle**; dinlerken **Bitirdim** + "Dinliyorum… Söyleyince biraz bekle." | Fiil. |
-| Geri bildirim | "Söyledin!" · "Neredeyse! Şu kelimeyi duyamadım: hear" · "Şu kelimeleri duyamadım: excuse, me. Bir daha dene." · "Seni duyamadım. Bir daha dene." · 2 denemeden sonra "Sorun değil. İfade şöyle:" + ifade · tipik hata tanınırsa **Neden böyle?** (Hi'nin notu) | Duyulmayan kelime asıl yazımıyla. |
+| Geri bildirim | "Söyledin!" · "Neredeyse! Şu kelimeyi duyamadım: hear" · anlamı değiştiren ek duyulursa (H-087) "Neredeyse! İfadede olmayan bir kelime duydum: not" · "Şu kelimeleri duyamadım: excuse, me. Bir daha dene." · "Seni duyamadım. Bir daha dene." · 2 denemeden sonra "Sorun değil. İfade şöyle:" + ifade · tipik hata tanınırsa **Neden böyle?** (Hi'nin notu) | Duyulmayan kelime asıl yazımıyla. |
 | Kelime tekrarı | Görev: "Dinle ve söyle." · "Dinle, sonra mikrofona dokunup İngilizcesini söyle." · yakın sonuçta **Devam et** · **Bilmiyorum** · **Geç** · başlık "Söyledin!" / "Neredeyse!" | İngilizce metin önce gizli. |
 | Anlam paneli | **Sen de söyle** | "Tekrar dinle"nin altında. |
 | Karar anı | **Söyleyerek seç** · "Seni tam duyamadım. İstersen dokunarak seç." · iki denemeden sonra "Dokunarak seçebilirsin." | Yalnızca seçenekler İngilizceyse. |
