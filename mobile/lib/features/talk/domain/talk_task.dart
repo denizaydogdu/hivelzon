@@ -97,7 +97,8 @@ class MessageCheck {
 
   factory MessageCheck.fromJson(Map<String, dynamic> j) => MessageCheck(
     all: [
-      for (final g in j['all'] as List) [for (final a in g as List) a as String],
+      for (final g in j['all'] as List)
+        [for (final a in g as List) a as String],
     ],
     none: [for (final n in (j['none'] as List? ?? const [])) n as String],
     hintTr: j['hintTr'] as String?,
@@ -168,7 +169,9 @@ class TalkTask {
       selfCheckTr: [
         for (final s in (j['selfCheckTr'] as List? ?? const [])) s as String,
       ],
-      targets: [for (final t in (j['targets'] as List? ?? const [])) t as String],
+      targets: [
+        for (final t in (j['targets'] as List? ?? const [])) t as String,
+      ],
     );
   }
 

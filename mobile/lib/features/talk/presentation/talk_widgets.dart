@@ -68,8 +68,7 @@ class TalkLineSpeaker {
   bool? _device;
 
   /// Cihaz sesi var mı (bir kez sorulur).
-  Future<bool> deviceAvailable() async =>
-      _device ??= await _speech.available();
+  Future<bool> deviceAvailable() async => _device ??= await _speech.available();
 
   Future<void> play(TalkLine line) async {
     await stop();

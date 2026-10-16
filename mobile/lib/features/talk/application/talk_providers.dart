@@ -76,10 +76,7 @@ class TalkActions {
   Future<void> recordUse(Iterable<String> phrases, {required bool own}) async {
     if (phrases.isEmpty) return;
     try {
-      await record(
-        phrases,
-        own ? EvidenceStage.ownUse : EvidenceStage.helped,
-      );
+      await record(phrases, own ? EvidenceStage.ownUse : EvidenceStage.helped);
     } on Object catch (e) {
       debugPrint('[H090] kanıt yazılamadı: $e');
     }
@@ -95,5 +92,4 @@ class TalkActions {
 }
 
 /// Bitirilen görevden sonra liste ve plan yenilenir.
-void refreshTalk(WidgetRef ref) =>
-    invalidateAndFlush(ref, [talkViewsProvider]);
+void refreshTalk(WidgetRef ref) => invalidateAndFlush(ref, [talkViewsProvider]);

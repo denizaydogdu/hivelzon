@@ -5,7 +5,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../app/design/design.dart';
 import '../../../l10n/tr_strings.dart';
-import '../../../shared/speech/speak_widgets.dart';
 import '../../../shared/speech/speech_match.dart';
 import '../../../shared/speech/speech_providers.dart';
 import '../../../shared/speech/speech_store.dart';
@@ -145,7 +144,11 @@ class _TalkSceneViewState extends ConsumerState<TalkSceneView> {
     _scrollToEnd();
   }
 
-  Future<void> _accept(String answer, {required bool own, bool spoken = false}) async {
+  Future<void> _accept(
+    String answer, {
+    required bool own,
+    bool spoken = false,
+  }) async {
     final used = TalkMatcher.usedTargets(_turn.targets, answer);
     setState(() {
       _result = _TurnResult(answer: answer, own: own, spoken: spoken);
@@ -202,11 +205,7 @@ class _TalkSceneViewState extends ConsumerState<TalkSceneView> {
     );
     setState(() => _listening = false);
     if (r.accepted) {
-      await _accept(
-        turn.accept[r.acceptIndex!],
-        own: !_sawHelp,
-        spoken: true,
-      );
+      await _accept(turn.accept[r.acceptIndex!], own: !_sawHelp, spoken: true);
       return;
     }
     setState(() {
@@ -311,9 +310,7 @@ class _TalkSceneViewState extends ConsumerState<TalkSceneView> {
         Semantics(
           liveRegion: true,
           child: Text(
-            _done
-                ? TalkTexts.endTitle
-                : TalkTexts.turnProgress(_index + 1, n),
+            _done ? TalkTexts.endTitle : TalkTexts.turnProgress(_index + 1, n),
             key: const ValueKey('talk-progress'),
             style: theme.textTheme.labelLarge?.copyWith(
               color: AppPalette.ink500,
@@ -600,9 +597,7 @@ class _TalkSceneViewState extends ConsumerState<TalkSceneView> {
         ),
         child: Row(
           children: [
-            Expanded(
-              child: Text(built, style: theme.textTheme.titleMedium),
-            ),
+            Expanded(child: Text(built, style: theme.textTheme.titleMedium)),
             if (_built.isNotEmpty)
               IconButton(
                 key: const ValueKey('talk-undo'),
@@ -613,7 +608,8 @@ class _TalkSceneViewState extends ConsumerState<TalkSceneView> {
           ],
         ),
       ),
-      if (_buildRetry) _note(theme, TalkTexts.buildRetry, key: 'talk-build-retry'),
+      if (_buildRetry)
+        _note(theme, TalkTexts.buildRetry, key: 'talk-build-retry'),
       const SizedBox(height: AppSpace.s8),
       Wrap(
         spacing: AppSpace.s8,
@@ -653,7 +649,10 @@ class _TalkSceneViewState extends ConsumerState<TalkSceneView> {
         Row(
           children: [
             const ExcludeSemantics(
-              child: Icon(Icons.check_circle_rounded, color: AppPalette.success),
+              child: Icon(
+                Icons.check_circle_rounded,
+                color: AppPalette.success,
+              ),
             ),
             const SizedBox(width: AppSpace.s8),
             Expanded(

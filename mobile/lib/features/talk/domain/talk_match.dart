@@ -94,7 +94,10 @@ abstract final class TalkMatcher {
     }
     for (var i = 0; i < turn.distractors.length; i++) {
       if (SpeechMatcher.compareAny(turn.distractors[i].en, alts).isFull) {
-        return TalkSpeechResult(TalkSpeechOutcome.distractor, distractorIndex: i);
+        return TalkSpeechResult(
+          TalkSpeechOutcome.distractor,
+          distractorIndex: i,
+        );
       }
     }
     return TalkSpeechResult(
@@ -189,7 +192,10 @@ abstract final class TalkMatcher {
 }
 
 class MessageCheckResult {
-  const MessageCheckResult({this.missing = const [], this.forbidden = const []});
+  const MessageCheckResult({
+    this.missing = const [],
+    this.forbidden = const [],
+  });
 
   /// Eksik gruplar (her grubun ilk kalıbı; ipucu için).
   final List<String> missing;

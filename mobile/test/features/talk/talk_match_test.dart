@@ -69,14 +69,8 @@ void main() {
 
     test('Türkiye ve İzmir motorun yazımıyla eşleşir', () {
       final t = turn('maya-neighbour', 't3');
-      expect(
-        TalkMatcher.judgeSpeech(t, ["I'm from Turkey"]).accepted,
-        isTrue,
-      );
-      expect(
-        TalkMatcher.judgeSpeech(t, ['I am from Izmir']).accepted,
-        isTrue,
-      );
+      expect(TalkMatcher.judgeSpeech(t, ["I'm from Turkey"]).accepted, isTrue);
+      expect(TalkMatcher.judgeSpeech(t, ['I am from Izmir']).accepted, isTrue);
       expect(SpeechMatcher.tokenize('İzmir'), ['izmir']);
     });
 
@@ -122,9 +116,8 @@ void main() {
   });
 
   group('ortak örnekler (içerik hattıyla aynı sonuç)', () {
-    final vectors =
-        (jsonDecode(fixtureText('talk_check_vectors.json')) as Map)
-            .cast<String, dynamic>();
+    final vectors = (jsonDecode(fixtureText('talk_check_vectors.json')) as Map)
+        .cast<String, dynamic>();
     for (final v in (vectors['checks'] as List).cast<Map>()) {
       test('mesaj kuralı: ${v['text']}', () {
         final check = MessageCheck.fromJson(
@@ -159,10 +152,9 @@ void main() {
 
     test('kullanılan hedef ifadeler', () {
       expect(
-        TalkMatcher.usedTargets(
-          ['Sorry, I\'m late.'],
-          'Sorry Maya! I am late, the bus is late.',
-        ),
+        TalkMatcher.usedTargets([
+          'Sorry, I\'m late.',
+        ], 'Sorry Maya! I am late, the bus is late.'),
         ["Sorry, I'm late."],
       );
       expect(

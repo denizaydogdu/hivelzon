@@ -91,7 +91,10 @@ class TalkScreen extends ConsumerWidget {
       children: [
         for (var i = 0; i < items.length; i++) ...[
           if (i > 0) const SizedBox(height: AppSpace.s12),
-          FadeSlideIn(index: i, child: _TaskCard(view: items[i])),
+          FadeSlideIn(
+            index: i,
+            child: _TaskCard(view: items[i]),
+          ),
         ],
       ],
     );
