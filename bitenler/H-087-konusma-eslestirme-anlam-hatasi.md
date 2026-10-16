@@ -1,6 +1,6 @@
 # H-087: Konuşma eşleştirmesinde anlam hatası (P0)
 
-- **Durum:** Devam ediyor (2026-10-16)
+- **Durum:** Bitti (2026-10-16)
 - **Tür:** Hata düzeltmesi (kod)
 - **Faz:** F1 MVP — ürün incelemesi sonrası (2026-10-16)
 - **Bağımlılık:** H-055
