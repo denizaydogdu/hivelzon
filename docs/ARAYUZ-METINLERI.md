@@ -330,13 +330,22 @@ Kod: `DiscoverTexts` (`mobile/lib/l10n/tr_strings.dart`). Keşfet artık yer tut
 | Günlük süre (13–17 ve 13 altı) | Yalnızca dolunca: **Bugünlük Keşfet burada bitiyor** · "Keşfet için günlük 20 dakikan doldu. Klipler gece yarısından sonra yeniden açılır." · "Hikâyen, Defter ve Kelime tekrarı her zaman açık." · **Hikâyene devam et**. İzlerken kalan süre gösterilmez. |
 | Yükleniyor / boş / hata | İskelet ("Klipler hazırlanıyor…") · **Klipler hazırlanıyor** "Bölümlerden kısa klipler burada akacak. Şimdilik hikâyene devam edebilirsin." **Hikâyeye git** · **Klipler açılamadı** "Bağlantını kontrol edip tekrar dene." **Tekrar dene** |
 
-### 7.2 Konuş (yer tutucu)
+### 7.2 Konuş (H-090)
 
-| Sekme | Eski | Yeni |
+Kod: `TalkTexts`, plan gerekçesi `TalkPlanTexts` (`mobile/lib/l10n/tr_strings.dart`). Yapay zekâ sohbeti değildir (H-007): sahnelerin cümleleri önceden yazılmıştır ve sayfanın başında açıkça söylenir. Puan, yüzde, "yanlış" yok; "Geç" hep var (K-32). Mikrofon izni yalnızca **Söyle**'ye ilk dokununca sorulur; izin yoksa her şey dokunarak çalışır.
+
+| Yer | Metin | Not |
 |---|---|---|
-| Konuş | Üst çubuk "Konuş" · "Yakında / Karakterlerle konuşma pratiği sonraki sürümde geliyor." | Başlık **Konuş** · **Konuşma pratiği yakında** · "Hikâyedeki karakterlerle İngilizce konuşma pratiği sonraki sürümde geliyor. Karşındakinin yapay zekâ olduğu her zaman söylenecek." |
-
-Neden: Sekmelerin başlık düzeni öteki sekmelerle aynı olur. Ne geleceği ve neden işe yarayacağı tek paragrafta söylenir. Yapay zekâ açıklaması önceden yapılır.
+| Sekme | Başlık **Konuş** · "Hikâyedeki karakterlerle kısa provalar." · bilgi kartı **Hazır cümlelerle prova** · "Bu sahnelerde yapay zekâ yok: karakterlerin cümleleri önceden yazıldı. Söyleyerek ya da dokunarak cevap verirsin; puan yok. Karakterlerle serbest sohbet sonraki sürümde gelecek." | Eski "Konuşma pratiği yakında" yer tutucusunun yerine. |
+| Listeler | **Sahneler** · **Kısa mesajlar**; kart: başlık + "Maya ile · 4 tur · yaklaşık 3 dk" / "Alıcı: Maya · yaklaşık 2 dk"; kilitli: "Bölüm 9'u bitirince açılır."; bitmiş: **Yaptın** (yeniden oynanabilir) | Görsel bölümün sahne görselidir. |
+| Yükleniyor / boş / hata | İskelet ("Konuşma sahneleri hazırlanıyor…") · **Konuşma sahneleri hazırlanıyor** "Bölümleri bitirdikçe burada kısa konuşma sahneleri açılacak." · **Sahneler açılamadı** "Bağlantını kontrol edip tekrar dene." **Tekrar dene** | |
+| Sahne girişi | Görsel + giriş cümlesi ("Bu bir prova: … Alex'in yerine sen konuşuyorsun.") · "Bu bir prova: puan yok. İstediğin turu geçebilirsin." · **Başla** | |
+| Tur | "Tur 2 / 4" · karakter balonu (ad turuncu) + **Dinle** (bölüm kaydı ya da cihazın İngilizce sesi) + **Türkçesi** / **Türkçesini gizle** · kart **SIRA SENDE** + Türkçe görev · **Söyle** (yalnız cihazda tanıma varsa) · **Seçeneklerden seç** · **Kelimelerle kur** · **Geç** | Söylemede en çok 2 deneme; sonra "Sorun değil. Şöyle diyebilirsin; istersen seçeneklerden seç:" + örnek cevap. |
+| Geri bildirim | "Söyledin!" (söyleyerek) / "Güzel! Anlaşıldı." (seçerek, dizerek) · "Böyle de söyleyebilirsin: …" · yakın seçenekte bilgi kartı **Neredeyse!** + kibar tepki (ör. "Rosa gülümsüyor: "Please?" …") · "Neredeyse! İfadede olmayan bir kelime duydum: not" (H-087) · "Sıra biraz farklı. Bir daha dene." · geçince "Sorun değil. Şöyle diyebilirsin:" + örnek | Kullanıcının balonu **Sen**; söylenen yazı gösterilmez, kabul edilen cevabın yazımı görünür. |
+| Sahne sonu | Kapanış satırı · **Sahneyi bitirdin** · "Kendin kullandığın ifadeler: …" (yoksa "İstediğin zaman yeniden oynayabilirsin.") · **Konuş'a dön** · **Tekrar oyna** | Sakin kutlama. |
+| Mesaj | Görev cümlesi · "Alıcı: Maya" · alan **Mesajın (İngilizce)** / "İngilizce 1–2 cümle yaz" · "Yazdığın mesaj kaydedilmez; yalnızca görevi bitirdiğin bilgisi bu cihazda kalır." · **Gönder** | 160 karakter. |
+| Mesaj sonucu | Kural geçti: **Mesajın anlaşılır!** + **ÖRNEK MESAJ** · Geçmedi: **Neredeyse!** "Mesajında "not" var; anlam tersine dönmüş olabilir." · "Mesajında şunu göremedim: sorry." + ipucu · **Gönder** · **Örnek mesaja bak** · Kural yok: **Kendin karşılaştır** · "Bu mesajı uygulama denetlemiyor. Örnekle karşılaştır:" + maddeler · **Benzer yazdım** / **Bir daha deneyeyim** · **Mesaj görevini bitirdin** | Kesin puan yok. |
+| Bugünün planı (§3.1) | **Konuş: Yeni komşunla tanış** · "İlk haftanın 2. günü. Bölüm 2'yi bitirdin; şimdi Maya ile kısa bir konuşmayı sen yap. Söyleyerek ya da dokunarak cevap verirsin; puan yok. Yaklaşık 3 dk sürer." · **Sahneye başla** / **Mesajı yaz**; adım etiketi KÜÇÜK GÖREV | İlk 7 gün (A1) küçük görevlerin başında; sonra sahne avından sonra; günde en çok bir tane; B1+ önerilmez. |
 
 ## 8. Sekme çubuğu
 "Ana Sayfa · Keşfet · Hikâye · Konuş · Profil" (K-30) aynı kalır.

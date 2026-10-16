@@ -419,6 +419,15 @@ clips/<id>.webp    → ilk kare (720 genişlik), video açılana dek görünür
 
 **Uygulama (Keşfet):** yalnızca açılmış (oynanabilir) bölümlerin klipleri gösterilir; akış biter (bitiş kartı hikâyeyi önerir), 4–5 klipte bir quiz kartı, ~10 klipte bir mola kartı (K-15). Ayrıntı: `yapilacaklar/H-040-kesfet-akisi.md`.
 
+## 9a. Konuş görevleri (H-090)
+
+Kaynak `icerik/_evren/konusma/<id>.json` (şema `tools/content-pipeline/schema/talk-task.schema.json`), paket `/packages/_season/S<n>/talk.json` (+ `talk/<görev>-<tur>.m4a`), season.json → `talk` özeti (`path`, `tasks`, `scenes`, `messages`, `audio`, `audioMissing`). Seçim gerekçesi: konu setleri ve Hi verisi gibi sezona bağlı küçük veri; bölüm kilidiyle açılır, görselleri bölüm paketlerindeki `stills/` görselleridir (kopyalanmaz), uygulamaya gömülmez (içerik yayın hattından geçer: content-lint → dışa aktarma → editör onayı, H-028).
+
+- **`kind: scene`** — `introTr`, `character` (`nameTr`, ses kaydı için `speaker`: `audio_manifest.json`'daki konuşan), `image` (`episode` + `stills/…webp`), `turns` (3–5): `id` (t1…), `line` (`en`, `tr`, isteğe bağlı `speaker`/`nameTr`), `promptTr`, `accept` (2–8 doğal cevap; ilki örnek), `distractors` (1–2; `en` + kibar `reactionTr`), `targets` (bölümlerin hedef ifadeleri); `outro`.
+- **`kind: message`** — `taskTr`, `to`, `model` (`en`, `tr`), `check` (`all`: her gruptan en az bir kalıp, `none`: anlamı tersine çeviren kelimeler, `hintTr`) ya da `null` (öz değerlendirme; `selfCheckTr` zorunlu), `targets`.
+- **Ses:** ücretli üretim yok. Satır bölüm kaydında **konuşan + metin aynen** varsa o kayıt -16 LUFS m4a olarak pakete girer; yoksa uygulama cihazın İngilizce sesini kullanır (ElevenLabs sesleri sonra).
+- **content-lint (`talk-*`):** şema, dosya adı = kimlik, durum (DRAFT uyarı), kilit bölümü var, görsel bölümde var ve kilitten sonraki bölümden değil (spoiler), hedef ifade kilit ve öncesindeki bölümlerin `targetPhrases`'inde var ve en az bir kabul cevabında sırayla geçiyor, aynı cevap iki kez yok (normalleştirilmiş), yakın seçenek kabul listesinde değil, mesajın örneği kendi kuralından geçiyor, gerekli ve yasak kelime çakışmıyor, CEFR-J kapsama (%98; %95 yalnız bölüm sözlüğüyle) ve A1 cümle ≤ 8 sözcük. Normalleştirme uygulamadaki `SpeechMatcher` ile aynıdır; ortak örnekler `mobile/test/fixtures/talk_check_vectors.json`.
+
 ## 10. Atıf
 
 > The CEFR-J Wordlist Version 1.6. Compiled by Yukio Tono, Tokyo University of Foreign Studies. Retrieved from https://www.cefr-j.org/download.html on 11/10/26.

@@ -1,6 +1,6 @@
 """Konuş sekmesi görevleri (H-090): yönlendirmeli sahneler ve kısa mesaj yazma.
 
-Kaynak: `icerik/_evren/konusma/<id>.json` (şema: schema/talk-task.schema.json; belge: docs/BOLUM-PAKETI.md §9).
+Kaynak: `icerik/_evren/konusma/<id>.json` (şema: schema/talk-task.schema.json; belge: docs/BOLUM-PAKETI.md §9a).
 İki tür vardır:
 
 - `scene`: bir karakterle 3–5 turluk prova. Her turda karakterin İngilizce satırı (Türkçesi istenince),

@@ -75,6 +75,7 @@ Bütün kartları beceri başına çoğaltmak gerekmedi (inceleme önerisi): kar
   - Hedef ifadenin kartı henüz yoksa (ilk oynayışta karar anı bölüm bitmeden gelir) kanıt, bölüm bitince oluşacak kartın anahtarıyla yazılır (`targetPhraseKey`: tek kelime → `word|…`, birden çok → `phrase|…`; deste kuralıyla aynı). Kart gelince kanıt ona bağlanır. Bölüm hiç bitmezse satır defterde görünmez; Profil ve Defter yalnız defterdeki ifadeleri gösterir, gizlilik ekranı anahtardaki metinle listeler.
   - Kelime tekrarı kendi sonucunu yazar (`saveOutcome`); dilbilgisi alıştırmasındaki "Söyle" ifade kartı olmadığından yazılmaz.
 - Kitap sonu anlama (H-091) kitap başına tutulduğundan ifade basamağına bağlanmadı.
+- **Konuş görevleri (H-090):** yeni bağlamda (prova sahnesi ya da mesaj) **seçenek görmeden** söylenen ve kabul listesindeki bir cevapla **tam** eşleşen cevap ya da kuralı geçen yazılı mesaj → kullandığı hedef ifadelere **"kendin kullandın"** (`own_use`). Seçerek ya da kelimeleri dizerek verilen cevap → **"yardımla yaptın"**. Öz değerlendirmeli mesaj (kural yok) ve geçilen tur yazmaz. Hedef ifade cevapta kelime sırasıyla geçmelidir (araya kelime girebilir: "Sorry, Maya. I'm late." → *Sorry, I'm late.*). Yalnız defterdeki ifadeye yazılır; FSRS kartı ve `review_logs` değişmez (`NotebookStore.recordPhraseUse`). Söylemede "yakın" (bir kelime eksik) kabul edilmez: turda birkaç doğal cevap kabul edildiğinden tipik hata ("I from Türkiye") cevap sayılmasın.
 
 ### 3.2 Veri (yalnız cihazda; hesap varsa eşitlenir)
 

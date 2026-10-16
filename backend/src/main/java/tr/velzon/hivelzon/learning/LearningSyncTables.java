@@ -108,7 +108,8 @@ public class LearningSyncTables implements SyncTableProvider {
                         List.of(oneOf("status", "status", true, "seen", "done", "dismissed", "read", "cleared"))),
                 // H-055: yalnızca sonuç. Ses ve tanıma yazısı alanı yoktur; gönderilirse reddedilir.
                 new SyncTable("speech_attempts", 150, Kind.APPEND_ONLY, List.of(), null, List.of(
-                        oneOf("place", "place", true, "review", "meaning", "decision", "episode_end", "grammar"),
+                        oneOf("place", "place", true, "review", "meaning", "decision", "episode_end", "grammar",
+                                "talk"),
                         string("contentId", "content_id", false, 64),
                         string("itemRef", "item_ref", true, 300),
                         oneOf("matchLevel", "match_level", true, "full", "close", "no"),

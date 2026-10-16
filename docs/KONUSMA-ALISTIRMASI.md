@@ -19,6 +19,9 @@ Türk öğrencinin en sık sorunu "anlıyorum ama konuşamıyorum". Dinlediğini
 - **Yaş:** cihazda kaldığı için bütün yaşlar (13+). Açık bilgilendirme metni. Serbest yapay zekâ sohbeti 18+ kuralı ayrıdır ve korunur. Hukuk teyidi listesine eklenir.
 - Öğrenme olayına yalnızca sonuç yazılır (doğru/yanlış, eksik kelime, hata türü); ses ve tam transkript saklanmaz.
 
+## Konuş sekmesi: yönlendirmeli sahneler (H-090)
+MVP'de Konuş sekmesi "yakında" yerine 3 prova sahnesi (Maya'yla tanışma, yol sorma, Rosa'nın kafesinde sipariş) ve kısa mesaj görevleri sunar. Yapay zekâ yoktur: karakter satırları ve kabul edilen cevaplar önceden yazılmış, editör onayı bekleyen içeriktir (`icerik/_evren/konusma/`). Kurallar bu belgedekilerle aynıdır: cihazda tanıma, izin ilk kullanımda, ses ve yazı saklanmaz (sonuç `place = talk`), puan yok, 2 deneme + "Geç", dokunarak (seç ya da kelimelerle kur) baştan sona oynanır. Fark: her turda **birkaç doğal cevap** kabul edilir; söyleneni kabul için birinin **tam** duyulması gerekir; yakın seçenek duyulursa kibar tepkisi gösterilir.
+
 ## Fazlar
 | Faz | Ne | Ne zaman |
 |---|---|---|
