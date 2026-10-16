@@ -31,7 +31,7 @@ Bu dosya tek takip noktasıdır. Hangi işin hangi sırada yapıldığını, şu
   - H dosyasının `Durum` satırı güncellenir;
   - **Günlük** bölümüne bir satır eklenir.
 - **Biten işler:** "Biten işler" tablosuna doğrulama kanıtıyla birlikte yazılır.
-- **Numaralar:** Tek sayaçla verilir. Sıradaki boş numara: **H-093**.
+- **Numaralar:** Tek sayaçla verilir. Sıradaki boş numara: **H-094**.
 
 **Durum simgeleri:**
 - ⛔ Kullanıcı kararı bekliyor
@@ -150,8 +150,9 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 | S1 | H-085 | Sezon 1 Bölüm 5–12 üretimi (üretim bitti; simülatör denemesi + editör onayı bekliyor) | Yüksek | H-032, H-083 | 🔄 |
 | İ1 | H-087 | Konuşma eşleştirmesinde anlam hatası (P0) | Kritik | H-055 | ✅ |
 | İ2 | H-088 | Tek günlük plan (Ana Sayfa = Hi; seviyeye göre öneri) | Yüksek | H-047, H-074 | ✅ |
-| İ3 | H-089 | Taklit/hatırlama ayrımı, öğrenme kanıtı basamakları | Yüksek | H-087 | 🔄 |
-| İ4 | H-090 | İlk 7 gün A1 + Konuş'ta 3 yönlendirmeli sahne, kısa mesaj | Yüksek | H-088, H-089 | ⏳ |
+| İ3 | H-089 | Taklit/hatırlama ayrımı, öğrenme kanıtı basamakları | Yüksek | H-087 | ✅ |
+| İ3' | H-093 | Haftalık özette kanıt, Hi gizlilik, hikâye içi Söyle kanıtı | Orta | H-088, H-089 | 🔄 |
+| İ4 | H-090 | İlk 7 gün A1 + Konuş'ta 3 yönlendirmeli sahne, kısa mesaj | Yüksek | H-088, H-089 | 🔄 |
 | İ5 | H-091 | Kitap sonu anlama + yeniden anlatma | Orta | H-067 | ✅ |
 | İ6 | H-092 | Kullanılabilirlik testi ve 7–14 gün pilot | Yüksek | H-087…H-091 | ⏳ |
 
@@ -442,3 +443,4 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
   - **H-088 bitti:** Ana Sayfa ve Hi tek karardan (`planToday`) beslenir: "Bugünün planı" (Kısa tekrar · Sahne/Okuma · Küçük görev), "Neden?" gerekçesi, "Başka bir öneri" (o gün için). B1+ kullanıcıda birincil öneri seviyesinde kitap, hikâye "isteğe bağlı". Ana Sayfa'da "Çalışma araçların": Kelime tekrarı ve Defter tek dokunuş (sekmeler değişmedi). Eşikler (yarım bölüm 7 gün, uzun ara 7 gün) pilotta sınanacak. Mobil 1007 test geçti.
   - Kullanıcı H-091 sorularını/örnek anlatımlarını ve H-088 eşiklerini onayladı.
   - Kullanıcı kararı: B1+ kullanıcıya sahne avı önerilmez (H-088 güncellendi).
+  - **H-089 bitti:** FSRS'e yalnız yardımsız hatırlama gider; seçme, dinle-seç, dizme, dinle-söyle ve sahne avı "pratik" (not verilmez; ifade oturum sonunda bir de hatırlama sorusu olarak gelir). Yeni görev `speak_recall` (Türkçe anlamdan söyle; ses yok). Anlamı ters çeviren söyleme hatırlamada Again. Yavaş ama doğru cevap artık Good (erişilebilirlik). Kanıt basamakları (Gördü → Yardımla yaptı → Kendi kullandı → Sonra hatırladı) cihazda, hesap varsa eşitlenir (Drift 10, backend V13). Profil'de "Neler yapabiliyorsun"; sayılar "İçerik ilerlemesi" başlığında. Kurallar `docs/KELIME-TEKRARI.md`. Mobil 1026, backend 143 test geçti. H-090 ve H-093 başladı.

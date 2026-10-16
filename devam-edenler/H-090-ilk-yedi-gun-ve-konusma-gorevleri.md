@@ -1,6 +1,6 @@
 # H-090: İlk 7 günlük A1 deneyimi ve yönlendirmeli konuşma görevleri
 
-- **Durum:** Yapılacak
+- **Durum:** Devam ediyor (2026-10-16)
 - **Tür:** Uygulama + içerik
 - **Faz:** F1 MVP — ürün incelemesi sonrası (2026-10-16)
 - **Bağımlılık:** H-088, H-089
