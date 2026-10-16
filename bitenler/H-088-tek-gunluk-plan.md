@@ -34,3 +34,5 @@ Kendi dalında; `git revert`.
 - **Ana Sayfa:** başlık "Bugünün planı" + sakin adım çipleri; bölüm önerisinde görselli kart (gerekçeyle), öteki önerilerde plan kartı; birincil öneri bölüm değilse "Hikâyen" ikincil (B1+'da "İsteğe bağlı"); "Çalışma araçların": Kelime tekrarı ve Defter tek dokunuşla (Defter Ana Sayfa sekmesinde `/defter`; K-30 değişmedi). Plan hesaplanamazsa hikâye kartı birincil kalır.
 - **Golden'lar (bilinçli):** `h060_ana_sayfa`, `h060_ana_sayfa_yeni`, `h060_ana_sayfa_sezon_bitti` güncellendi; yeni `h060_ana_sayfa_b2`.
 - **Açık:** adım çiplerinin pilot sınaması (H-092); "Başka bir öneri"nin günlük sıfırlanması yeterli mi (pilot gözlemi).
+
+2026-10-16: **Kullanıcı onayı:** eşikler kalır (yarım bölüm 7 gün, uzun ara 7 gün, ret 1 gün); pilotta (H-092) yeniden bakılır.
