@@ -40,9 +40,9 @@ void main() {
     }
     expect(find.byType(NavigationDestination), findsNWidgets(5));
     expect(find.textContaining('yakında'), findsNothing);
-    // Ana Sayfa: selam + "Hikâyen" bölümü (H-035, H-053).
+    // Ana Sayfa: selam + "Bugünün planı" bölümü (H-035, H-053, H-088).
     expect(find.text('Merhaba!'), findsOneWidget);
-    expect(find.text('Hikâyen'), findsOneWidget);
+    expect(find.text('Bugünün planı'), findsOneWidget);
     expect(find.byKey(const ValueKey('home-continue')), findsOneWidget);
 
     await tester.tap(find.descendant(of: nav, matching: find.text('Konuş')));

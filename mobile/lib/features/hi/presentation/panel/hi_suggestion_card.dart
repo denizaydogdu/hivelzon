@@ -12,10 +12,14 @@ class HiSuggestionCard extends StatelessWidget {
     super.key,
     required this.suggestion,
     required this.onAct,
+    this.onAnother,
   });
 
   final HiSuggestion suggestion;
   final VoidCallback onAct;
+
+  /// "Başka bir öneri" (H-088): öneriyi bugünlük geçer.
+  final VoidCallback? onAnother;
 
   @override
   Widget build(BuildContext context) {
@@ -58,6 +62,17 @@ class HiSuggestionCard extends StatelessWidget {
                 style: FilledButton.styleFrom(minimumSize: const Size(48, 48)),
                 child: Text(s.actionLabel!),
               ),
+              if (onAnother != null && s.dismissible)
+                Align(
+                  child: TextButton(
+                    key: const ValueKey('hi-suggestion-another'),
+                    onPressed: onAnother,
+                    style: TextButton.styleFrom(
+                      minimumSize: const Size(48, 48),
+                    ),
+                    child: const Text(HiTexts.another),
+                  ),
+                ),
             ],
           ],
         ),

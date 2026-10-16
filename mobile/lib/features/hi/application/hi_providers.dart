@@ -80,6 +80,7 @@ final coachInputProvider = FutureProvider.autoDispose<CoachInput>((ref) async {
           number: e.number,
           title: e.title,
           estimatedMinutes: minutes[e.contentId],
+          lastPlayedAt: progress[e.contentId]?.updatedAt,
         );
   final inProgress = map.episodes
       .where(
@@ -92,11 +93,42 @@ final coachInputProvider = FutureProvider.autoDispose<CoachInput>((ref) async {
   final overview = await ref.watch(reviewOverviewProvider.future);
   final goal = await ref.watch(notebookStoreProvider).dailyGoalMinutes();
   final hunted = await store.huntedSets();
-  final books = await _coachBooks(ref);
+  String? level;
+  try {
+    level = await ref.watch(onboardingStoreProvider).suggestedLevel();
+  } on Object {
+    level = null;
+  }
+  final books = await _coachBooks(ref, level);
   final grammar = await _coachGrammar(ref, packages, progress);
   final sets = info == null
       ? const <TopicSetView>[]
       : resolveTopicSets(info.topicSets, progress);
+
+  // Günlük plan (H-088): bugün ne yapıldı, en son ne zaman çalışıldı,
+  // bugün hangi öneriler geçildi. Okunamayan kaynak planı durdurmaz.
+  final (dayStart, _) = localDayBounds(now);
+  bool today(DateTime? t) => t != null && !t.toUtc().isBefore(dayStart);
+  final lastReview = await _orNull(store.lastReviewAt);
+  final grammarDoneToday =
+      await _orNull(() async {
+        final all = await ref.watch(grammarProgressStoreProvider).all();
+        return all.values.any((p) => today(p.completedAt));
+      }) ??
+      false;
+  final huntToday = await _orNull(() => store.huntDoneSince(dayStart)) ?? false;
+  final dismissed = await _orNull(store.dismissedToday) ?? const <String>{};
+  DateTime? lastActive = lastReview;
+  void seen(DateTime? t) {
+    if (t != null && (lastActive == null || t.isAfter(lastActive!))) {
+      lastActive = t;
+    }
+  }
+
+  for (final p in progress.values) {
+    seen(p.updatedAt ?? p.completedAt ?? p.startedAt);
+  }
+  seen(books.lastRead);
   return CoachInput(
     now: now,
     dailyGoalMinutes: goal,
@@ -116,11 +148,28 @@ final coachInputProvider = FutureProvider.autoDispose<CoachInput>((ref) async {
           ),
     ],
     content: content,
-    bookInProgress: books.$1,
-    bookToStart: books.$2,
+    bookInProgress: books.reading,
+    bookToStart: books.unread,
     grammar: grammar,
+    level: level,
+    lastActiveAt: lastActive,
+    dismissed: dismissed,
+    reviewedToday: today(lastReview),
+    mainDoneToday:
+        progress.values.any((p) => today(p.completedAt)) ||
+        today(books.lastRead),
+    taskDoneToday: huntToday || grammarDoneToday,
   );
 }, retry: (_, _) => null);
+
+Future<T?> _orNull<T>(Future<T> Function() read) async {
+  try {
+    return await read();
+  } on Object catch (e) {
+    debugPrint('[H088] plan girdisi okunamadı: $e');
+    return null;
+  }
+}
 
 /// Hi için dilbilgisi (H-078): en son oynanan bölümde ya da açılan kitapta
 /// geçen, bitirilmemiş ilk konu. Ders listesi yoksa ya da okunamazsa yok.
@@ -182,13 +231,27 @@ Future<CoachGrammar?> _coachGrammar(
   }
 }
 
-/// Hi için kitaplar (H-067): son okunan yarım kitap ve önerilen seviyede
-/// açılmamış ilk kitap. Kitaplık yüklenemezse ikisi de yok.
-Future<(CoachBook?, CoachBook?)> _coachBooks(Ref ref) async {
+/// Hi için kitaplar (H-067): son okunan yarım kitap, önerilen seviyede
+/// açılmamış ilk kitap ve en son okuma anı (H-088). Kitaplık yüklenemezse
+/// hiçbiri yok.
+Future<({CoachBook? reading, CoachBook? unread, DateTime? lastRead})>
+_coachBooks(Ref ref, String? level) async {
   try {
-    final books = await ref.watch(contentSourceProvider).listBooks();
     final progress = await ref.watch(bookProgressStoreProvider).all();
-    final level = await ref.watch(onboardingStoreProvider).suggestedLevel();
+    DateTime? lastRead;
+    for (final p in progress.values) {
+      if (p.status == BookStatus.notStarted) continue;
+      if (lastRead == null || p.updatedAt.isAfter(lastRead)) {
+        lastRead = p.updatedAt;
+      }
+    }
+    final List<BookSummary> books;
+    try {
+      books = await ref.watch(contentSourceProvider).listBooks();
+    } on Object catch (e) {
+      debugPrint('[H067] Hi için kitaplar okunamadı: $e');
+      return (reading: null, unread: null, lastRead: lastRead);
+    }
     final shelves = buildShelves(books, progress, suggestedLevel: level);
     CoachBook of(BookSummary b) => CoachBook(
       bookId: b.id,
@@ -208,19 +271,38 @@ Future<(CoachBook?, CoachBook?)> _coachBooks(Ref ref) async {
         unreadAll.where((b) => b.startsWithAudio).firstOrNull ??
         unreadAll.firstOrNull;
     return (
-      reading == null ? null : of(reading),
-      unread == null ? null : of(unread),
+      reading: reading == null ? null : of(reading),
+      unread: unread == null ? null : of(unread),
+      lastRead: lastRead,
     );
   } on Object catch (e) {
     debugPrint('[H067] Hi için kitaplar okunamadı: $e');
-    return (null, null);
+    return (reading: null, unread: null, lastRead: null);
   }
 }
 
-final hiSuggestionProvider = FutureProvider.autoDispose<HiSuggestion>(
-  (ref) async => suggestToday(await ref.watch(coachInputProvider.future)),
+/// Bugünün planı (H-088): Ana Sayfa'nın birincil kartı ve Hi'nin önerisi
+/// buradan gelir (tek karar, [planToday]).
+final dailyPlanProvider = FutureProvider.autoDispose<DailyPlan>(
+  (ref) async => planToday(await ref.watch(coachInputProvider.future)),
   retry: (_, _) => null,
 );
+
+final hiSuggestionProvider = FutureProvider.autoDispose<HiSuggestion>(
+  (ref) async => (await ref.watch(dailyPlanProvider.future)).primary,
+  retry: (_, _) => null,
+);
+
+/// "Başka bir öneri": öneriyi bugünlük geçer, plan yeniden hesaplanır.
+Future<void> dismissSuggestion(WidgetRef ref, HiSuggestion s) async {
+  if (!s.dismissible) return;
+  try {
+    await ref.read(hiStoreProvider).dismissToday(s.key);
+  } on Object catch (e) {
+    debugPrint('[H088] öneri geçilemedi: $e');
+  }
+  refreshHi(ref);
+}
 
 /// Balondaki nokta: bugün için yeni bir öneri var ve panel bugün açılmadı.
 final hiBadgeProvider = FutureProvider.autoDispose<bool>((ref) async {
@@ -345,6 +427,7 @@ final seenTopicIntrosProvider = FutureProvider.autoDispose<List<TopicIntro>>((
 /// Görünmeyen sekmelerde de güvenli (H-056, [invalidateAndFlush]).
 void refreshHi(WidgetRef ref) => invalidateAndFlush(ref, [
   coachInputProvider,
+  dailyPlanProvider,
   hiSuggestionProvider,
   hiBadgeProvider,
   weeklySummaryProvider,

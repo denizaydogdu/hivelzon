@@ -208,6 +208,7 @@ class DriftProgressRepository implements ProgressRepository {
           lastCheckpointNodeId: r.lastCheckpointNodeId,
           startedAt: r.startedAt?.toUtc(),
           completedAt: r.completedAt?.toUtc(),
+          updatedAt: r.updatedAt.toUtc(),
           gateItems: items[r.contentId] ?? const {},
         ),
     };

@@ -45,6 +45,9 @@ abstract final class AppRoutes {
   /// Profil → Defter (H-036).
   static const notebook = '/profil/defter';
 
+  /// Ana Sayfa → Defter (H-088): aynı ekran, Ana Sayfa sekmesinde.
+  static const homeNotebook = '/defter';
+
   /// Defter → Konu setleri sekmesi (H-048: Hi'nin hızlı eylemi).
   static const notebookSets = '/profil/defter?sekme=setler';
 
@@ -255,7 +258,19 @@ final routerProvider = Provider<GoRouter>((ref) {
         branches: [
           // Başka cihazdan veri gelince bütün sekmeler uygulama kökünden
           // yenilenir (H-056, `local_data_refresh.dart`).
-          _branch(AppRoutes.home, const HomeScreen()),
+          _branch(
+            AppRoutes.home,
+            const HomeScreen(),
+            routes: [
+              // H-088: Ana Sayfa'dan tek dokunuşla Defter; Ana Sayfa
+              // sekmesinde açılır (sekme değişmez, geri Ana Sayfa'ya döner).
+              GoRoute(
+                path: 'defter',
+                pageBuilder: (context, state) =>
+                    appPage(key: state.pageKey, child: const NotebookScreen()),
+              ),
+            ],
+          ),
           _branch(AppRoutes.discover, const DiscoverScreen()),
           _branch(AppRoutes.story, const StoryScreen()),
           _branch(AppRoutes.talk, const TalkScreen()),

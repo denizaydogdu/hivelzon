@@ -72,6 +72,9 @@ class HiStore {
 
   static const panelOpenedKey = 'hi.panelOpenedDay';
 
+  /// Bugün geçilen öneriler (H-088; yalnızca bu cihazda, eşitlenmez).
+  static const dismissedKey = 'hi.dismissedToday';
+
   DateTime now() => _clock().toUtc();
 
   // ------------------------------------------------------------ kayıtlar
@@ -156,6 +159,54 @@ class HiStore {
         .insertOnConflictUpdate(
           AppMetaCompanion.insert(key: panelOpenedKey, value: localDay(now())),
         );
+  }
+
+  /// "Başka bir öneri" ile bugün (yerel gün) geçilen önerilerin anahtarları
+  /// (H-088). Ertesi gün boş döner. Değer: `gün\nanahtar\nanahtar…`.
+  Future<Set<String>> dismissedToday() async {
+    await _ready;
+    final raw = (await (_db.select(
+      _db.appMeta,
+    )..where((t) => t.key.equals(dismissedKey))).getSingleOrNull())?.value;
+    if (raw == null) return const {};
+    final lines = raw.split('\n');
+    if (lines.first != localDay(now())) return const {};
+    return {
+      for (final l in lines.skip(1))
+        if (l.isNotEmpty) l,
+    };
+  }
+
+  /// Öneriyi bugünlük geçer (idempotent: aynı anahtar bir kez yazılır).
+  Future<void> dismissToday(String suggestionKey) async {
+    await _ready;
+    await _db.transaction(() async {
+      final keys = {...await dismissedToday(), suggestionKey};
+      await _db
+          .into(_db.appMeta)
+          .insertOnConflictUpdate(
+            AppMetaCompanion.insert(
+              key: dismissedKey,
+              value: [localDay(now()), ...keys].join('\n'),
+            ),
+          );
+    });
+  }
+
+  /// [since] sonrası bitirilen sahne avı var mı (günlük planın küçük görevi).
+  Future<bool> huntDoneSince(DateTime since) async => (await _records(
+    HiRecordKind.huntDone,
+  )).values.any((r) => !r.$2.isBefore(since.toUtc()));
+
+  /// Son kelime tekrarı cevabının anı (yoksa null).
+  Future<DateTime?> lastReviewAt() async {
+    await _ready;
+    final row =
+        await (_db.select(_db.reviewLogs)
+              ..orderBy([(t) => OrderingTerm.desc(t.reviewedAt)])
+              ..limit(1))
+            .getSingleOrNull();
+    return row?.reviewedAt.toUtc();
   }
 
   // ------------------------------------------------------------ okumalar
@@ -261,7 +312,8 @@ class HiStore {
   // ------------------------------------------------------------ silme
 
   /// "Hi'nin kayıtlarını sil": öğrenme olayları, "Söyle" sonuçları (H-055),
-  /// yan görev durumları, açılan notlar ve panel işareti. İlerleme, defter, tekrar geçmişi, ad ve görülen
+  /// yan görev durumları, açılan notlar, panel işareti ve bugün geçilen
+  /// öneriler (H-088). İlerleme, defter, tekrar geçmişi, ad ve görülen
   /// konu tanıtımları **silinmez**.
   ///
   /// Hesap açıksa (H-038) silme bütün cihazlarda geçerlidir: silme işareti
@@ -307,7 +359,7 @@ class HiStore {
               .go();
       await (_db.delete(
         _db.appMeta,
-      )..where((t) => t.key.equals(panelOpenedKey))).go();
+      )..where((t) => t.key.isIn([panelOpenedKey, dismissedKey]))).go();
       return events + speech + records;
     });
   }

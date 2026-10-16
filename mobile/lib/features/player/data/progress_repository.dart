@@ -45,6 +45,7 @@ class _ProgressRow {
   StoryStatus status = StoryStatus.notStarted;
   DateTime? startedAt;
   DateTime? completedAt;
+  DateTime? updatedAt;
   final Map<GateItem, Set<String>> gate = {};
 }
 
@@ -67,6 +68,7 @@ class InMemoryProgressRepository implements ProgressRepository {
     checkpoints[contentId] = snapshot;
     final r = _rows.putIfAbsent(contentId, _ProgressRow.new);
     r.startedAt ??= clock();
+    r.updatedAt = clock();
     if (r.status != StoryStatus.completed) r.status = StoryStatus.inProgress;
   }
 
@@ -79,6 +81,7 @@ class InMemoryProgressRepository implements ProgressRepository {
     r.startedAt ??= clock();
     r.status = StoryStatus.completed;
     r.completedAt = clock();
+    r.updatedAt = r.completedAt;
     for (final e in gate.entries) {
       if (e.value.isEmpty) continue;
       r.gate.putIfAbsent(e.key, () => {}).addAll(e.value);
@@ -98,6 +101,7 @@ class InMemoryProgressRepository implements ProgressRepository {
         lastCheckpointNodeId: checkpoints[id]?.checkpointNodeId,
         startedAt: _rows[id]?.startedAt,
         completedAt: _rows[id]?.completedAt,
+        updatedAt: _rows[id]?.updatedAt,
         gateItems: {...?_rows[id]?.gate.keys},
       ),
   };

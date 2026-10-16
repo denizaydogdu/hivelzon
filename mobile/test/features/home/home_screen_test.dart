@@ -7,7 +7,10 @@ import 'package:go_router/go_router.dart';
 import 'package:flutter_riverpod/misc.dart' show Override;
 import 'package:hivelzon/app/theme.dart';
 import 'package:hivelzon/features/home/application/home_providers.dart';
+import 'package:hivelzon/features/hi/application/hi_providers.dart';
+import 'package:hivelzon/features/hi/domain/coach_rules.dart';
 import 'package:hivelzon/features/home/presentation/home_screen.dart';
+import 'package:hivelzon/features/onboarding/data/onboarding_store.dart';
 import 'package:hivelzon/features/notebook/application/notebook_providers.dart';
 import 'package:hivelzon/features/notebook/domain/review_session.dart';
 import 'package:hivelzon/l10n/tr_strings.dart';
@@ -18,6 +21,8 @@ import 'package:hivelzon/shared/content/content_providers.dart';
 import 'package:hivelzon/shared/content/content_source.dart';
 import 'package:hivelzon/shared/widgets/skeleton.dart';
 import 'package:hivelzon/shared/progress/story_progress.dart';
+import 'package:hivelzon/shared/storage/app_database.dart';
+import 'package:hivelzon/shared/storage/storage_providers.dart';
 
 import '../../support/fake_content_source.dart';
 
@@ -31,11 +36,15 @@ const _fullGate = {
 void main() {
   late InMemoryProgressRepository progress;
   late List<String> pushed;
+  late AppDatabase db;
 
   setUp(() {
     progress = InMemoryProgressRepository();
     pushed = [];
+    // H-088: Ana Sayfa kartı günlük plandan gelir (Hi'nin kayıtları Drift'te).
+    db = AppDatabase.memory();
   });
+  tearDown(() => db.close());
 
   Future<void> pump(
     WidgetTester tester,
@@ -65,12 +74,35 @@ void main() {
           path: '/hikaye',
           builder: (_, _) => const Scaffold(body: Text('harita')),
         ),
+        GoRoute(
+          path: '/tekrar',
+          builder: (context, state) {
+            pushed.add(state.uri.toString());
+            return const Scaffold(body: Text('tekrar'));
+          },
+        ),
+        GoRoute(
+          path: '/defter',
+          builder: (context, state) {
+            pushed.add(state.uri.toString());
+            return const Scaffold(body: Text('defter'));
+          },
+        ),
+        GoRoute(
+          path: '/kitap/:id',
+          builder: (context, state) {
+            pushed.add(state.uri.toString());
+            return const Scaffold(body: Text('kitap'));
+          },
+        ),
       ],
     );
     addTearDown(router.dispose);
     await tester.pumpWidget(
       ProviderScope(
         overrides: [
+          appDatabaseProvider.overrideWithValue(db),
+          legacyImportProvider.overrideWithValue(Future<void>.value()),
           contentSourceProvider.overrideWithValue(source),
           progressRepositoryProvider.overrideWithValue(progress),
           ...overrides,
@@ -82,6 +114,11 @@ void main() {
       ),
     );
     await tester.pump();
+    // Drift işlemleri gerçek mikro görevlerdir (plan girdileri).
+    for (var i = 0; i < 10; i++) {
+      await tester.runAsync(() => Future<void>.delayed(Duration.zero));
+      await tester.pump();
+    }
     await tester.pump(const Duration(milliseconds: 100));
     // H-060: bölümler sırayla belirir (en çok ~0,5 sn); ekran okuyucu
     // görünmeyen (opaklığı 0) öğeyi okumaz.
@@ -94,7 +131,11 @@ void main() {
     await pump(tester, FakeContentSource(packageIds: _four));
     expect(find.byKey(const ValueKey('home-continue')), findsOneWidget);
     expect(find.text('Merhaba!'), findsOneWidget);
-    expect(find.text('Hikâyen'), findsOneWidget);
+    // H-088: başlık "Bugünün planı"; bölüm önerisi görselli kartta, gerekçe
+    // görünür.
+    expect(find.text('Bugünün planı'), findsOneWidget);
+    expect(find.text('Hikâyen'), findsNothing);
+    expect(find.text('Neden?'), findsOneWidget);
     expect(find.text('Bu sezonda 12 bölüm var.'), findsOneWidget);
     expect(find.text('A Strange Message'), findsOneWidget);
     expect(find.text('İpucu 1.'), findsOneWidget);
@@ -227,13 +268,31 @@ void main() {
     expect(find.text('harita'), findsOneWidget);
   });
 
-  testWidgets('H-060: tek ana eylem — ekranda yalnızca bir dolu (birincil) '
-      'düğme; tekrar düğmesi çerçeveli', (tester) async {
+  testWidgets('H-060/H-088: tek ana eylem — ekranda yalnızca bir dolu '
+      '(birincil) düğme; hikâye ikincilken çerçeveli', (tester) async {
     await pump(
       tester,
       FakeContentSource(packageIds: _four),
       overrides: [overview(5)],
     );
+    expect(find.bySubtype<FilledButton>(), findsOneWidget);
+    // Tekrar borcu: birincil kart Kelime tekrarı (Hi ile aynı karar).
+    expect(
+      find.descendant(
+        of: find.byKey(const ValueKey('home-plan-review')),
+        matching: find.bySubtype<FilledButton>(),
+      ),
+      findsOneWidget,
+    );
+    expect(
+      find.descendant(
+        of: find.byKey(const ValueKey('home-continue')),
+        matching: find.bySubtype<OutlinedButton>(),
+      ),
+      findsOneWidget,
+    );
+    await tester.pumpWidget(const SizedBox());
+    await pump(tester, FakeContentSource(packageIds: _four));
     expect(find.bySubtype<FilledButton>(), findsOneWidget);
     expect(
       find.descendant(
@@ -242,17 +301,10 @@ void main() {
       ),
       findsOneWidget,
     );
-    expect(
-      find.descendant(
-        of: find.byKey(const ValueKey('home-review')),
-        matching: find.bySubtype<OutlinedButton>(),
-      ),
-      findsOneWidget,
-    );
   });
 
-  testWidgets('H-060: kelime tekrarı — zamanı gelen ifade varsa sayı cümle '
-      'içinde ve düğme; yoksa sakin cümle, düğme yok', (tester) async {
+  testWidgets('H-060/H-088: Kelime tekrarı ve Defter tek dokunuşla; sayı '
+      'cümle içinde, yoksa sakin cümle', (tester) async {
     await pump(
       tester,
       FakeContentSource(packageIds: _four),
@@ -262,7 +314,11 @@ void main() {
       find.text('5 ifadenin tekrar zamanı geldi · yaklaşık 2 dk'),
       findsOneWidget,
     );
-    expect(find.byKey(const ValueKey('home-review-start')), findsOneWidget);
+    await tester.ensureVisible(find.byKey(const ValueKey('home-review-start')));
+    await tester.pumpAndSettle();
+    await tester.tap(find.byKey(const ValueKey('home-review-start')));
+    await tester.pumpAndSettle();
+    expect(pushed, ['/tekrar']);
     await tester.pumpWidget(const SizedBox());
 
     await pump(
@@ -271,7 +327,14 @@ void main() {
       overrides: [overview(0)],
     );
     expect(find.text(HomeTexts.reviewNone), findsOneWidget);
-    expect(find.byKey(const ValueKey('home-review-start')), findsNothing);
+    // Defter Ana Sayfa sekmesinde açılır (sekme değişmez).
+    await tester.ensureVisible(
+      find.byKey(const ValueKey('home-notebook-open')),
+    );
+    await tester.pumpAndSettle();
+    await tester.tap(find.byKey(const ValueKey('home-notebook-open')));
+    await tester.pumpAndSettle();
+    expect(pushed.last, '/defter');
     await tester.pumpWidget(const SizedBox());
 
     await pump(
@@ -280,7 +343,6 @@ void main() {
       overrides: [overview(0, total: 0)],
     );
     expect(find.text(HomeTexts.reviewEmpty), findsOneWidget);
-    expect(find.byKey(const ValueKey('home-review-start')), findsNothing);
   });
 
   testWidgets('H-060: günlük hedef halkası bugünkü süreyi gösterir ve ekran '
@@ -339,6 +401,92 @@ void main() {
       findsOneWidget,
     );
     handle.dispose();
+  });
+
+  // ------------------------------------------------------------ H-088
+
+  Future<void> settle(WidgetTester tester) async {
+    for (var i = 0; i < 15; i++) {
+      await tester.runAsync(() => Future<void>.delayed(Duration.zero));
+      await tester.pump(const Duration(milliseconds: 50));
+    }
+  }
+
+  testWidgets('H-088: B2 yerleştirme — birincil kart seviyesindeki kitap, '
+      'A1 bölümü değil; hikâye "İsteğe bağlı"; Hi aynı öneriyi verir', (
+    tester,
+  ) async {
+    await tester.runAsync(() => OnboardingStore(db).setSuggestedLevel('B2'));
+    final source = FakeContentSource(packageIds: _four)
+      ..books = testBookSummaries(['A1-K99', 'B2-K01']);
+    await pump(tester, source);
+    await settle(tester);
+    expect(find.byKey(const ValueKey('home-plan-startBook')), findsOneWidget);
+    expect(
+      find.text('Seviyene uygun kitap: The Test Box B2-K01'),
+      findsOneWidget,
+    );
+    expect(find.text('İSTEĞE BAĞLI'), findsOneWidget);
+    expect(find.text('A Strange Message'), findsOneWidget);
+    // Tek dolu düğme: kitap; bölüm çerçeveli.
+    expect(find.bySubtype<FilledButton>(), findsOneWidget);
+    expect(
+      find.descendant(
+        of: find.byKey(const ValueKey('home-continue')),
+        matching: find.bySubtype<OutlinedButton>(),
+      ),
+      findsOneWidget,
+    );
+    final container = ProviderScope.containerOf(
+      tester.element(find.byType(HomeScreen)),
+    );
+    final hi = await tester.runAsync(
+      () => container.read(hiSuggestionProvider.future),
+    );
+    expect(hi!.kind, HiSuggestionKind.startBook);
+    expect(hi.actionRoute, '/kitap/B2-K01');
+
+    await tester.ensureVisible(find.byKey(const ValueKey('home-plan-action')));
+    await tester.pumpAndSettle();
+    await tester.tap(find.byKey(const ValueKey('home-plan-action')));
+    await tester.pumpAndSettle();
+    expect(pushed, ['/kitap/B2-K01']);
+  });
+
+  testWidgets('H-088: "Başka bir öneri" öneriyi bugünlük geçer; sıradaki '
+      'öneri gelir ve Hi de aynısını söyler', (tester) async {
+    await pump(
+      tester,
+      FakeContentSource(packageIds: _four),
+      overrides: [overview(6)],
+    );
+    await settle(tester);
+    expect(find.byKey(const ValueKey('home-plan-review')), findsOneWidget);
+    expect(find.byKey(const ValueKey('home-plan-steps')), findsOneWidget);
+    await tester.ensureVisible(find.byKey(const ValueKey('home-plan-another')));
+    await tester.pumpAndSettle();
+    await tester.tap(find.byKey(const ValueKey('home-plan-another')));
+    await settle(tester);
+    expect(find.byKey(const ValueKey('home-plan-review')), findsNothing);
+    // Sıradaki: B1 (görselli bölüm kartı, birincil).
+    expect(
+      find.descendant(
+        of: find.byKey(const ValueKey('home-continue')),
+        matching: find.bySubtype<FilledButton>(),
+      ),
+      findsOneWidget,
+    );
+    final container = ProviderScope.containerOf(
+      tester.element(find.byType(HomeScreen)),
+    );
+    final hi = await tester.runAsync(
+      () => container.read(hiSuggestionProvider.future),
+    );
+    expect(hi!.kind, HiSuggestionKind.startEpisode);
+    final dismissed = await tester.runAsync(
+      () => container.read(hiStoreProvider).dismissedToday(),
+    );
+    expect(dismissed, {'review:/tekrar'});
   });
 
   group('H-060: bugünkü süre tahmini', () {
