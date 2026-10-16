@@ -226,8 +226,10 @@ DailyPlan planToday(CoachInput i) {
       : staleEpisode
       ? [continueBook, continueEpisode, startEpisode]
       : [continueEpisode, continueBook, startEpisode];
+  // Sahne avı A1 mekân kelimeleridir: B1+ kullanıcıya önerilmez (kullanıcı
+  // kararı 2026-10-16); isteyen Defter'den açar.
   final tasks = advanced
-      ? [grammar, smallReview, hunt]
+      ? [grammar, smallReview]
       : [hunt, smallReview, startBook, grammar];
 
   // ---- sıra

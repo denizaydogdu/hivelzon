@@ -140,6 +140,24 @@ void main() {
       expect(plan.primary.kind, HiSuggestionKind.startBook);
     });
 
+    test('B1+: sahne avı (A1 mekân kelimeleri) hiç önerilmez', () {
+      const sets = [CoachTopicSet(id: 'harbour', titleTr: 'Liman')];
+      for (final level in ['B1', 'B2', 'C1', 'C2']) {
+        final plan = planToday(input(level: level, next: b1, sets: sets));
+        expect(
+          [plan.primary, ...plan.queue].map((s) => s.kind),
+          isNot(contains(HiSuggestionKind.sceneHunt)),
+          reason: level,
+        );
+      }
+      // A1–A2'de yine önerilir.
+      final a2 = planToday(input(level: 'A2', next: b1, sets: sets));
+      expect(
+        [a2.primary, ...a2.queue].map((s) => s.kind),
+        contains(HiSuggestionKind.sceneHunt),
+      );
+    });
+
     test('B1+ ama kitap yok: hikâye yedek olarak önerilir', () {
       expect(
         planToday(input(level: 'C1', next: b1)).primary.kind,
