@@ -57,7 +57,8 @@ void main() {
     addTearDown(db.close);
 
     final version = await db.customSelect('PRAGMA user_version').getSingle();
-    expect(version.data.values.first, 8); // 5 → 6 → 7 (H-078) → 8 (H-074)
+    // 5 → 6 → 7 (H-078) → 8 (H-074) → 10 (H-089)
+    expect(version.data.values.first, 10);
 
     // Eski veri yerinde; yeni kolon boş.
     final entries = await NotebookStore(db).entries();

@@ -5,7 +5,6 @@ import '../../../shared/content/content_providers.dart';
 import '../../../shared/content/content_source.dart';
 import '../../notebook/application/notebook_providers.dart';
 import '../../notebook/data/notebook_store.dart';
-import '../../notebook/domain/review_policy.dart';
 import '../../player/data/progress_repository.dart';
 import '../domain/hunt_review.dart';
 import '../domain/topic_set.dart';
@@ -81,12 +80,12 @@ class TopicSetActions {
     return added;
   }
 
-  /// Sahne avı sonuçlarını kelime tekrarına yazar; güncellenen ifade sayısı.
+  /// Sahne avı sonuçlarını defterdeki ifadelere pratik olarak yazar (H-089:
+  /// FSRS değişmez, kanıt basamağı yazılır); defterdeki ifade sayısı.
   Future<int> recordHunt(List<HuntResult> results) async {
     final outcomes = huntOutcomes(
       results: results,
       entries: await _store.entries(),
-      scheduler: ReviewPolicy.scheduler(),
       now: _store.now(),
     );
     for (final o in outcomes) {

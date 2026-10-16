@@ -580,8 +580,9 @@ abstract final class HuntTexts {
   static const statTotal = 'nesneye baktın';
   static const statAlone = 'kendin buldun';
   static const statHelped = 'birlikte baktık';
+  // H-089: sahne avı tanımadır; tekrar zamanını değiştirmez.
   static String deckUpdated(int n) =>
-      'Defterindeki $n ifadenin tekrar zamanı güncellendi.';
+      'Defterindeki $n ifadeyle burada da çalıştın.';
   static const notInDeck =
       'Bu nesneleri defterine eklersen kelime tekrarında da karşına çıkar.';
   static const playAgain = 'Tekrar oyna';
@@ -612,6 +613,9 @@ abstract final class ReviewTexts {
   static const dontKnowFeedback = 'Sorun değil, birlikte bakalım.';
   static const wrongFeedback = 'Doğrusu bu.';
   static const requeued = 'Bu ifade oturumun sonunda yeniden gelecek.';
+  // H-089: başarılı pratikten (seç, dinle, diz, tekrar et) sonra.
+  static const recallFollows =
+      'Oturumun sonunda bu ifadeyi bir de kendin hatırlayacaksın.';
   static const soon = 'Bu ifadeyi yakında yeniden göreceksin.';
   static String chosen(String option) => 'Seçtiğin: $option';
   static const continueAction = 'Devam et';
@@ -1206,6 +1210,10 @@ abstract final class SpeakTexts {
   static const reviewHint =
       'Dinle, sonra mikrofona dokunup İngilizcesini söyle.';
   static const reviewAccept = 'Devam et';
+  // H-089: Türkçe anlamdan, sesi duymadan söyleme (hatırlama).
+  static const recallTask = 'İngilizcesini söyle.';
+  static const recallHint =
+      'Önce dinlemeden, kendin söyle. Sonra kartı birlikte dinleriz.';
 
   // Karar anı
   static const decisionUnclear = 'Seni tam duyamadım. İstersen dokunarak seç.';

@@ -272,6 +272,15 @@ const syncTables = <SyncTableSpec>[
       SyncCol('at', 'at', _d),
     ],
   ),
+  // Öğrenme kanıtı basamağı (H-089): ifade + basamak başına ilk an; yalnız
+  // eklenir (içerik metni, ses ve yazı yok).
+  SyncTableSpec(
+    name: 'expression_evidence',
+    order: 160,
+    mutable: false,
+    keys: [SyncCol('itemKey', 'item_key', _t), SyncCol('stage', 'stage', _t)],
+    data: [SyncCol('at', 'at', _d)],
+  ),
 ];
 
 final syncTablesByName = {for (final t in syncTables) t.name: t};

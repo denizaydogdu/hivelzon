@@ -178,6 +178,13 @@ void main() {
   }
 
   Future<void> answerRight(WidgetTester tester) async {
+    // H-089: pratikten sonra gelen hatırlama sorusu (kendini yokla).
+    final reveal = find.byKey(const ValueKey('task-reveal'));
+    if (reveal.evaluate().isNotEmpty) {
+      await tap(tester, reveal);
+      await tap(tester, find.byKey(const ValueKey('task-knew')));
+      return;
+    }
     final meaning = tester
         .widget<Text>(find.byKey(const ValueKey('task-meaning')))
         .data!;

@@ -212,7 +212,14 @@ void main() {
         find.byKey(const ValueKey('task-meaning')),
       )).data!;
 
-      // 1) Doğru seçim.
+      Future<void> knew() async {
+        await tapKey(tester, 'task-reveal');
+        await tapKey(tester, 'task-knew');
+        expect(find.text('Doğru!'), findsOneWidget);
+        await tapKey(tester, 'review-continue');
+      }
+
+      // 1) Pratik: doğru seçim → oturum sonunda hatırlama (H-089).
       expect(find.text('Kelime tekrarı · 1 / 5'), findsOneWidget);
       expect(find.byKey(const ValueKey('task-picture_choice')), findsOneWidget);
       expect(await currentMeaning(), 'Beni duyabiliyor musun?');
@@ -224,6 +231,10 @@ void main() {
       expect(find.widgetWithText(OutlinedButton, 'Bilmiyorum'), findsOneWidget);
       await choose('Can you hear me?');
       expect(find.text('Doğru!'), findsOneWidget);
+      expect(
+        find.text('Oturumun sonunda bu ifadeyi bir de kendin hatırlayacaksın.'),
+        findsOneWidget,
+      );
       expect(
         find.byKey(const ValueKey('card-face-phrase|can you hear me')),
         findsOneWidget,
@@ -249,7 +260,7 @@ void main() {
         findsOneWidget,
       );
       await tapKey(tester, 'review-continue');
-      expect(find.text('Kelime tekrarı · 3 / 6'), findsOneWidget);
+      expect(find.text('Kelime tekrarı · 3 / 7'), findsOneWidget);
 
       // 3) Bilmiyorum → nazik dil, kart oturum sonuna.
       await tapKey(tester, 'task-dont-know');
@@ -262,14 +273,19 @@ void main() {
       await tapKey(tester, 'review-continue');
 
       // 5) Altyazıda geçmeyen hedef ifade (H-052): görsel + anlam.
-      expect(find.text('Kelime tekrarı · 5 / 7'), findsOneWidget);
+      expect(find.text('Kelime tekrarı · 5 / 9'), findsOneWidget);
       expect(await currentMeaning(), 'Dinle.');
       await choose('Listen.');
       expect(find.text('Doğru!'), findsOneWidget);
       await tapKey(tester, 'review-continue');
 
-      // 6–7) Oturum sonu: bilinemeyen iki kart yeniden.
-      expect(find.text('Kelime tekrarı · 6 / 7'), findsOneWidget);
+      // 6) İlk ifade: yardımsız hatırlama (kendini yokla).
+      expect(find.text('Kelime tekrarı · 6 / 10'), findsOneWidget);
+      expect(find.byKey(const ValueKey('task-self_check')), findsOneWidget);
+      expect(await currentMeaning(), 'Beni duyabiliyor musun?');
+      await knew();
+
+      // 7–8) Bilinemeyen iki ifade yeniden pratikle.
       expect(await currentMeaning(), 'Evet, (yapabiliyorum).');
       await choose('Yes, I can.');
       expect(find.text('Doğru!'), findsOneWidget);
@@ -278,21 +294,32 @@ void main() {
       await choose('Again, please.');
       await tapKey(tester, 'review-continue');
 
+      // 9–12) Kalan dört hatırlama sorusu.
+      for (var i = 0; i < 4; i++) {
+        expect(find.byKey(const ValueKey('task-self_check')), findsOneWidget);
+        await knew();
+      }
+
       expect(find.text('Tekrar tamam'), findsOneWidget);
       expect(find.text('5 ifadeyi tekrar ettin.'), findsOneWidget);
-      // H-061: yarın gelecekler özet istatistiğinde (`StatRow`).
+      // H-061: sonra gelecekler özet istatistiğinde (`StatRow`).
       expect(
         tester
-            .widget<StatTile>(find.byKey(const ValueKey('summary-tomorrow')))
+            .widget<StatTile>(find.byKey(const ValueKey('summary-later')))
             .count,
-        2,
+        5,
       );
       expect(find.textContaining('seri'), findsNothing);
 
+      // FSRS'e yalnızca hatırlama yazılır; pratik kanıt basamağına.
       final logs = await tester.runAsync(() => db.select(db.reviewLogs).get());
-      expect(logs!.map((l) => l.rating), [3, 1, 1, 3, 3, 3, 3]);
-      expect(logs.map((l) => l.taskType).toSet(), {'picture_choice'});
-      expect(logs[2].dontKnow, isTrue);
+      expect(logs!.map((l) => l.rating), [3, 3, 3, 3, 3]);
+      expect(logs.map((l) => l.taskType).toSet(), {'self_check'});
+      final evidence = await tester.runAsync(
+        () => db.select(db.evidenceRecords).get(),
+      );
+      expect(evidence!.map((e) => e.stage).toSet(), {'helped'});
+      expect(evidence, hasLength(5));
       // Yanlış cevaplar sürümlü hata türüyle olay olarak kaydedilir.
       final ev = await events.recent();
       expect(ev.map((e) => e.errorType?.code), ['recall', 'recall']);
@@ -302,19 +329,19 @@ void main() {
   );
 
   testWidgets(
-    'Tekrar: 2. tekrardaki kart "dinle-seç"; ses kendiliğinden çalar',
+    'Tekrar: yeniden öğrenmedeki kart "dinle-seç"; ses kendiliğinden çalar',
     (tester) async {
       await progress.markCompleted('A1-001', gate: const {});
       await pump(tester, '/defter');
       await settle(tester);
-      // Bütün kartlar 2 kez tekrar edilmiş ve vadesi gelmiş olsun.
+      // Bütün kartlar bir kez unutulmuş (yeniden öğrenme) ve vadesi gelmiş.
       await tester.runAsync(
         () => db
             .update(db.reviewCards)
             .write(
               ReviewCardsCompanion(
-                state: const Value(2),
-                step: const Value(null),
+                state: const Value(3),
+                step: const Value(0),
                 stability: const Value(3),
                 difficulty: const Value(5),
                 reps: const Value(2),

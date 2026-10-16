@@ -1,4 +1,6 @@
 // Tekrar oturumu (H-036): kuyruk, oturum içi yeniden sorma, FSRS güncellemesi.
+// H-089: pratik (taklit, tanıma) FSRS'e yazılmaz; başarılı pratikten sonra
+// aynı oturumun sonunda hatırlama sorusu gelir.
 // Saf Dart; kalıcı kayıt [ReviewSession.persist] ile dışarıda yapılır.
 
 import 'dart:math' as math;
@@ -9,6 +11,9 @@ import 'retrieval_task.dart';
 import 'review_policy.dart';
 
 /// Bir cevabın sonucu (kaydedilir, ekranda kartın tamamı gösterilir).
+///
+/// Pratik görevinde ([practice]) not yoktur: [rating] null, [after] =
+/// [before]; yalnızca kanıt basamağı yazılır (H-089).
 class ReviewOutcome {
   const ReviewOutcome({
     required this.before,
@@ -21,12 +26,15 @@ class ReviewOutcome {
     required this.elapsed,
     required this.reviewedAt,
     required this.requeued,
+    this.recallFollows = false,
   });
 
   final ReviewCardState before;
   final ReviewCardState after;
   final NotebookItem item;
-  final FsrsRating rating;
+
+  /// FSRS notu; pratikte null.
+  final FsrsRating? rating;
   final TaskType taskType;
   final bool correct;
   final bool dontKnow;
@@ -36,7 +44,16 @@ class ReviewOutcome {
   /// Kart bu oturumun sonuna yeniden eklendi mi.
   final bool requeued;
 
+  /// Başarılı pratikten sonra aynı ifade oturumun sonunda hatırlama sorusu
+  /// olarak gelecek (H-089).
+  final bool recallFollows;
+
   bool get wasNew => before.isNew;
+
+  /// Pratik sonucu (FSRS'e yazılmaz).
+  bool get practice => rating == null;
+
+  bool get again => rating == FsrsRating.again;
 }
 
 class SessionSummary {
@@ -68,6 +85,9 @@ class SessionCard {
   ReviewCardState card;
   int requeues = 0;
   bool answeredBefore = false;
+
+  /// Sıradaki görevi hatırlama sorusu olsun (pratikten sonra, H-089).
+  bool recallNext = false;
 }
 
 class ReviewSession {
@@ -118,13 +138,19 @@ class ReviewSession {
 
   bool get finished => _index >= _queue.length;
 
-  /// Cevabı değerlendirir, FSRS'i günceller ve kaydeder.
+  /// Cevabı değerlendirir ve kaydeder.
   ///
-  /// "Bilmiyorum" ([dontKnow]) yanlış cevap gibi Again sayılır; kart en çok
-  /// [ReviewPolicy.maxRequeuesPerCard] kez oturumun sonuna yeniden eklenir.
+  /// **Hatırlama** görevi FSRS'i günceller. "Bilmiyorum" ([dontKnow]) yanlış
+  /// cevap gibi Again sayılır; kart en çok [ReviewPolicy.maxRequeuesPerCard]
+  /// kez oturumun sonuna yeniden eklenir (bu kez önce pratikle).
   ///
-  /// [rating]: görev kendi notunu verdiyse ("Dinle ve söyle",
+  /// **Pratik** görevi FSRS'e yazılmaz (H-089). Başarılıysa aynı ifade
+  /// oturumun sonunda hatırlama sorusu olarak gelir; değilse (sınır kadar)
+  /// pratik yeniden sorulur.
+  ///
+  /// [rating]: hatırlama görevi kendi notunu verdiyse ("Söyle",
   /// [ReviewPolicy.rateSpeech]); yoksa doğruluk ve süreden hesaplanır.
+  /// Pratikte yok sayılır.
   Future<ReviewOutcome> answer({
     required bool correct,
     bool dontKnow = false,
@@ -135,8 +161,9 @@ class ReviewSession {
     final task = _task;
     if (sc == null || task == null) throw StateError('oturumda kart yok');
     final ok = correct && !dontKnow;
-    final listens =
-        task.type == TaskType.listenChoice || task.type == TaskType.speak;
+    if (!task.type.isRecall) {
+      return _practice(sc, task, ok: ok, dontKnow: dontKnow, elapsed: elapsed);
+    }
     final rated = dontKnow
         ? FsrsRating.again
         : rating ??
@@ -145,9 +172,6 @@ class ReviewSession {
                 correct: ok,
                 elapsed: elapsed,
                 stage: sc.card.stage,
-                audioLength: listens
-                    ? (sc.item.audio?.length ?? Duration.zero)
-                    : Duration.zero,
               );
     return _apply(
       sc,
@@ -157,6 +181,43 @@ class ReviewSession {
       dontKnow: dontKnow,
       elapsed: elapsed,
     );
+  }
+
+  Future<ReviewOutcome> _practice(
+    SessionCard sc,
+    RetrievalTask task, {
+    required bool ok,
+    required bool dontKnow,
+    required Duration elapsed,
+  }) async {
+    final at = _clock().toUtc();
+    final requeue = !ok && sc.requeues < ReviewPolicy.maxRequeuesPerCard;
+    final outcome = ReviewOutcome(
+      before: sc.card,
+      after: sc.card,
+      item: sc.item,
+      rating: null,
+      taskType: task.type,
+      correct: ok,
+      dontKnow: dontKnow,
+      elapsed: elapsed,
+      reviewedAt: at,
+      requeued: ok || requeue,
+      recallFollows: ok,
+    );
+    await persist(outcome);
+    _answers++;
+    if (!sc.answeredBefore && ok) _firstTryCorrect++;
+    sc.answeredBefore = true;
+    _seen[sc.card.id] = sc;
+    if (ok) {
+      sc.recallNext = true;
+      _queue.add(sc);
+    } else if (requeue) {
+      sc.requeues++;
+      _queue.add(sc);
+    }
+    return outcome;
   }
 
   /// "Geç" (H-055): not verilmez, kaydedilmez, oturum içinde yeniden
@@ -228,6 +289,8 @@ class ReviewSession {
       _task = null;
       return null;
     }
+    final recallOnly = sc.recallNext;
+    sc.recallNext = false;
     _task = buildTask(
       item: sc.item,
       card: sc.card,
@@ -235,6 +298,7 @@ class ReviewSession {
       random: _random,
       level: level,
       canSpeak: canSpeak,
+      recallOnly: recallOnly,
     );
     return _task;
   }

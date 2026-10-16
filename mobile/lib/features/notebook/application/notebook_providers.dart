@@ -9,6 +9,7 @@ import '../../hi/application/hi_providers.dart';
 import '../../player/data/progress_repository.dart';
 import '../data/notebook_store.dart';
 import '../domain/clue_board.dart';
+import '../domain/evidence_ladder.dart';
 import '../domain/notebook_item.dart';
 import '../domain/review_policy.dart';
 import '../domain/review_session.dart';
@@ -98,6 +99,20 @@ final clueBoardProvider = FutureProvider.autoDispose<ClueBoardData>((
   );
 }, retry: (_, _) => null);
 
+/// Profil'deki kanıta dayalı küçük kazanımlar (H-089). Okunamazsa boş özet:
+/// Profil sakin "henüz yok" cümlesini gösterir.
+final evidenceSummaryProvider = FutureProvider.autoDispose<EvidenceSummary>((
+  ref,
+) async {
+  try {
+    await ref.watch(reviewOverviewProvider.future);
+    return await ref.watch(notebookStoreProvider).evidenceSummary();
+  } on Object catch (e) {
+    debugPrint('[H089] kanıt özeti okunamadı: $e');
+    return EvidenceSummary.empty;
+  }
+}, retry: (_, _) => null);
+
 final dailyGoalProvider = FutureProvider.autoDispose<int>(
   (ref) => ref.watch(notebookStoreProvider).dailyGoalMinutes(),
   retry: (_, _) => null,
@@ -109,6 +124,7 @@ void refreshNotebook(WidgetRef ref) => invalidateAndFlush(ref, [
   reviewOverviewProvider,
   notebookEntriesProvider,
   clueBoardProvider,
+  evidenceSummaryProvider,
   // Hi'nin önerisi tekrar sayısına bakar (H-048).
   coachInputProvider,
   hiBadgeProvider,

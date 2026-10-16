@@ -7,6 +7,7 @@ import 'package:path_provider/path_provider.dart';
 
 import '../sync/sync_ids.dart';
 import '../sync/sync_schema.dart';
+import 'evidence_backfill.dart';
 
 part 'app_database.g.dart';
 
@@ -361,6 +362,31 @@ class DailyActivity extends Table {
   Set<Column<Object>> get primaryKey => {day, sourceId};
 }
 
+// ---------------------------------------------------------------- kanıt basamağı (H-089, şema 10)
+
+/// Öğrenme kanıtı basamakları (H-089; `docs/KELIME-TEKRARI.md` §3): ifade
+/// başına ulaşılan basamak ve **ilk** ulaşıldığı an. Yalnızca bunlar tutulur;
+/// içerik metni (ifadenin anahtarı dışında), ses ve tanıma yazısı yok.
+/// "Gördü" basamağı saklanmaz (defterdeki ifadenin eklenme anı).
+///
+/// Yalnız eklenir (aynı basamak ikinci kez yazılmaz; ilk an kalır). Hesap
+/// varsa eşitlenir; cihazlar birleşince her basamağın satırı tektir.
+@DataClassName('EvidenceRow')
+class EvidenceRecords extends Table {
+  @override
+  String get tableName => 'expression_evidence';
+
+  /// Defterdeki ifadenin anahtarı (`notebook_items.item_key`).
+  TextColumn get itemKey => text()();
+
+  /// `helped` | `own_use` | `recalled_later`
+  TextColumn get stage => text()();
+  DateTimeColumn get at => dateTime()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {itemKey, stage};
+}
+
 // ---------------------------------------------------------------- eşitleme (H-038, şema 5)
 
 /// Hesap ve eşitleme durumu (tek satır, `id = 1`). Hesap yoksa
@@ -455,6 +481,7 @@ class SyncOutbox extends Table {
     UserBookProgress,
     UserGrammarProgress,
     DailyActivity,
+    EvidenceRecords,
   ],
 )
 class AppDatabase extends _$AppDatabase {
@@ -475,7 +502,7 @@ class AppDatabase extends _$AppDatabase {
   );
 
   @override
-  int get schemaVersion => 8;
+  int get schemaVersion => 10;
 
   @override
   MigrationStrategy get migration => MigrationStrategy(
@@ -531,6 +558,12 @@ class AppDatabase extends _$AppDatabase {
       // 7 → 8 (H-074): günlük hedef için ölçülen süre (günlük toplam).
       if (from < 8) {
         await m.createTable(dailyActivity);
+      }
+      // (9: H-091 kitap anlama kontrolü; ayrı dalda.)
+      // → 10 (H-089): öğrenme kanıtı basamakları; eski cevaplardan doldurulur.
+      if (from < 10) {
+        await m.createTable(evidenceRecords);
+        await backfillEvidence(this);
       }
     },
     beforeOpen: (details) async {

@@ -47,7 +47,7 @@ void main() {
     addTearDown(db.close);
 
     final version = await db.customSelect('PRAGMA user_version').getSingle();
-    expect(version.data.values.first, 8);
+    expect(version.data.values.first, 10); // 7 → 8 → 10 (H-089)
     expect(
       (await GrammarProgressStore(db).get('G-A1-03-third-person-s'))!.lastCard,
       'c02',

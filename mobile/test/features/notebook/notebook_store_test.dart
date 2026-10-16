@@ -6,6 +6,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:hivelzon/features/notebook/application/deck_sync.dart';
 import 'package:hivelzon/features/notebook/data/legacy_notebook_import.dart';
 import 'package:hivelzon/features/notebook/data/notebook_store.dart';
+import 'package:hivelzon/features/notebook/domain/evidence_ladder.dart';
 import 'package:hivelzon/features/notebook/domain/notebook_item.dart';
 import 'package:hivelzon/features/notebook/domain/review_policy.dart';
 import 'package:hivelzon/features/notebook/domain/review_session.dart';
@@ -102,6 +103,58 @@ void main() {
       expect(cards, hasLength(1));
     });
 
+    test('kanıt basamağı: ilk an kalır; birkaç gün sonra hatırlama; '
+        'çıkarılan ifadenin kanıtı silinir (H-089)', () async {
+      await store.addItems([_item('Mine.', source: NotebookSource.userSaved)]);
+      final e = (await store.entries()).single;
+      ReviewOutcome outcome(
+        TaskType type,
+        FsrsRating? rating,
+        DateTime at, {
+        FsrsState state = FsrsState.review,
+      }) {
+        final card = e.card.copyWith(
+          reps: 3,
+          fsrs: FsrsCard(
+            state: state,
+            stability: 3,
+            difficulty: 5,
+            due: at,
+            lastReview: at.subtract(const Duration(days: 2)),
+          ),
+        );
+        return ReviewOutcome(
+          before: card,
+          after: card,
+          item: e.item,
+          rating: rating,
+          taskType: type,
+          correct: true,
+          dontKnow: false,
+          elapsed: const Duration(seconds: 3),
+          reviewedAt: at,
+          requeued: false,
+        );
+      }
+
+      final t1 = now.add(const Duration(hours: 1));
+      await store.saveOutcome(outcome(TaskType.listenChoice, null, t1));
+      await store.saveOutcome(
+        outcome(TaskType.listenChoice, null, t1.add(const Duration(days: 1))),
+      );
+      final t3 = now.add(const Duration(days: 3));
+      await store.saveOutcome(outcome(TaskType.type, FsrsRating.good, t3));
+      expect((await store.evidence())[e.item.key], {
+        EvidenceStage.helped: t1,
+        EvidenceStage.ownUse: t3,
+        EvidenceStage.recalledLater: t3,
+      });
+      final summary = await store.evidenceSummary();
+      expect(summary.recalledLater.single.textEn, 'Mine.');
+      expect(await store.removeUserItem(e.item.id!), isTrue);
+      expect(await store.evidence(), isEmpty);
+    });
+
     test(
       'cevap kaydı: kart güncellenir, günlük yeni kart sayılır (yerel gün)',
       () async {
@@ -114,21 +167,42 @@ void main() {
           persist: store.saveOutcome,
           clock: () => now,
         );
-        s.start();
+        expect(s.start()!.type, TaskType.pictureChoice);
+        // Pratik: "Bilmiyorum" → kart ve cevap kaydı değişmez (H-089).
         await s.answer(
           correct: false,
           dontKnow: true,
           elapsed: const Duration(seconds: 2),
         );
+        expect(await store.logs(), isEmpty);
+        expect((await store.entries()).every((e) => e.card.isNew), isTrue);
+        // İkinci kart pratikte doğru → yalnız "yardımla yaptı".
         s.next();
         await s.answer(correct: true, elapsed: const Duration(seconds: 5));
-        s.next();
+        expect(await store.logs(), isEmpty);
+        expect((await store.evidence()).values.single, {
+          EvidenceStage.helped: now,
+        });
+        // İlk kart yine pratik (doğru), sonra iki hatırlama sorusu.
+        expect(s.next()!.type, TaskType.pictureChoice);
+        await s.answer(correct: true, elapsed: const Duration(seconds: 5));
         now = now.add(const Duration(minutes: 1));
+        expect(s.next()!.type, TaskType.selfCheck);
         await s.answer(correct: true, elapsed: const Duration(seconds: 5));
+        expect(s.next()!.type, TaskType.selfCheck);
+        await s.answer(correct: true, elapsed: const Duration(seconds: 50));
+        expect(s.next(), isNull);
         final logs = await store.logs();
-        expect(logs.map((l) => l.rating), [1, 3, 3]);
-        expect(logs.map((l) => l.wasNew), [true, true, false]);
-        expect(logs.first.dontKnow, isTrue);
+        expect(logs.map((l) => l.rating), [3, 3]);
+        expect(logs.map((l) => l.taskType), ['self_check', 'self_check']);
+        expect(logs.map((l) => l.wasNew), [true, true]);
+        final ev = await store.evidence();
+        expect(ev, hasLength(2));
+        expect(
+          ev.values.every((m) => m.keys.single == EvidenceStage.helped),
+          isTrue,
+          reason: 'aynı gün hatırlama "sonra hatırladı" değildir',
+        );
         expect(
           await store.newIntroducedBetween(
             now.subtract(const Duration(hours: 1)),
