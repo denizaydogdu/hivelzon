@@ -82,9 +82,18 @@ void _calm(HiSuggestion s) {
 void main() {
   group('öncelik tablosu (her önerinin gerekçesi var)', () {
     final table = <String, (CoachInput, HiSuggestionKind)>{
-      'a) yarım bölüm her şeyden önce': (
+      // H-088: bugün oynanan yarım bölüm (oturumun ortası) her şeyden önce;
+      // dünden kalan yarım bölüm tekrar borcunun arkasına geçer
+      // (daily_plan_test.dart).
+      'a) bugün oynanan yarım bölüm her şeyden önce': (
         _input(
-          inProgress: _b2,
+          inProgress: CoachEpisode(
+            contentId: _b2.contentId,
+            number: _b2.number,
+            title: _b2.title,
+            estimatedMinutes: _b2.estimatedMinutes,
+            lastPlayedAt: _now.subtract(const Duration(minutes: 20)),
+          ),
           next: _b3,
           reviewDue: 20,
           errors: [_err(ErrorType.preposition), _err(ErrorType.preposition)],

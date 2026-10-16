@@ -351,13 +351,21 @@ void main() {
       findsOneWidget,
     );
     expect(find.text('Sıradaki bölüm: A Strange Message'), findsOneWidget);
-    expect(find.text('Neden?'), findsOneWidget);
+    // H-088: Ana Sayfa kartında da "Neden?" var; panelde tek öneri.
+    expect(
+      find.descendant(
+        of: find.byKey(const ValueKey('hi-panel')),
+        matching: find.text('Neden?'),
+      ),
+      findsOneWidget,
+    );
+    // H-088: aynı gerekçe Ana Sayfa kartında ve panelde (tek karar).
     expect(
       find.text(
         'Hikâye buradan başlıyor. Yaklaşık 6 dk sürer; günlük hedefine '
         '(10 dk) sığar.',
       ),
-      findsOneWidget,
+      findsNWidgets(2),
     );
     for (final k in ['story', 'review', 'notebook', 'sets']) {
       expect(find.byKey(ValueKey('hi-quick-$k')), findsOneWidget);
@@ -470,7 +478,9 @@ void main() {
         find.byKey(const ValueKey('hi-suggestion-errorNote')),
         findsOneWidget,
       );
-      expect(find.text("Hi'nin notu: Saat ve gün: at / on"), findsOneWidget);
+      // H-088: Ana Sayfa'nın birincil kartı da aynı öneriyi gösterir.
+      expect(find.text("Hi'nin notu: Saat ve gün: at / on"), findsNWidgets(2));
+      expect(find.byKey(const ValueKey('home-plan-errorNote')), findsOneWidget);
       // H-063: Hi'nin notu önerisinde Hi düşünür.
       expect(
         tester
@@ -479,7 +489,12 @@ void main() {
         HiExpression.thinking,
       );
       expect(
-        find.textContaining('Son 7 günde "Edat" konusunda 2 kez takıldın.'),
+        find.descendant(
+          of: find.byKey(const ValueKey('hi-panel')),
+          matching: find.textContaining(
+            'Son 7 günde "Edat" konusunda 2 kez takıldın.',
+          ),
+        ),
         findsOneWidget,
       );
       await tester.tap(find.byKey(const ValueKey('hi-suggestion-action')));

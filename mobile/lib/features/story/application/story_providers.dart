@@ -93,6 +93,7 @@ Future<void> refreshWhenVisible(BuildContext context, WidgetRef ref) async {
     reviewOverviewProvider,
     // Hi balonundaki nokta ve öneri (H-048).
     coachInputProvider,
+    dailyPlanProvider,
     hiSuggestionProvider,
     hiBadgeProvider,
   ]);

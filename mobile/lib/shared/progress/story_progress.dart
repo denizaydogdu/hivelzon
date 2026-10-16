@@ -49,6 +49,7 @@ class StoryProgress {
     this.lastCheckpointNodeId,
     this.startedAt,
     this.completedAt,
+    this.updatedAt,
     this.gateItems = const {},
   });
 
@@ -59,6 +60,10 @@ class StoryProgress {
   final String? lastCheckpointNodeId;
   final DateTime? startedAt;
   final DateTime? completedAt;
+
+  /// Kaydın son değiştiği an (UTC; ör. son kaydedilen sahne). Bilinmiyorsa
+  /// null. Günlük plan yarım bölümün ne kadar beklediğine buna bakar (H-088).
+  final DateTime? updatedAt;
 
   /// Karşılanmış kapı ölçütleri (bütün oynanışların birleşimi).
   final Set<GateItem> gateItems;

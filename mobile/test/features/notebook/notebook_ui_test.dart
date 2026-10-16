@@ -94,6 +94,9 @@ void main() {
   Future<void> tapKey(WidgetTester tester, String key) async {
     final f = find.byKey(ValueKey(key));
     await tester.ensureVisible(f);
+    // Kaydırma bir sonraki karede uygulanır (H-088: tekrar satırı ekranın
+    // altında olabilir).
+    await tester.pump();
     await tester.tap(f);
     await settle(tester);
   }
@@ -363,9 +366,10 @@ void main() {
     await pump(tester, '/');
     await settle(tester);
     expect(find.text('Merhaba!'), findsOneWidget);
-    expect(find.text('Hikâyen'), findsOneWidget);
+    expect(find.text('Bugünün planı'), findsOneWidget);
     expect(find.text('Kelime tekrarı'), findsOneWidget);
-    // Defter boş: sakin durum cümlesi, düğme yok.
+    // Defter boş: sakin durum cümlesi; satır yine tek dokunuşla açılır
+    // (H-088).
     expect(
       find.text(
         'Bir bölümü bitirince ifadeler defterine eklenir; tekrar zamanları '
@@ -373,7 +377,7 @@ void main() {
       ),
       findsOneWidget,
     );
-    expect(find.byKey(const ValueKey('home-review-start')), findsNothing);
+    expect(find.byKey(const ValueKey('home-review-start')), findsOneWidget);
     await tester.pumpWidget(const SizedBox());
     await settle(tester);
 
@@ -423,7 +427,8 @@ void main() {
       ),
       findsOneWidget,
     );
-    expect(find.byKey(const ValueKey('home-review-start')), findsNothing);
+    // H-088: Kelime tekrarı satırı her zaman tek dokunuşla açılır.
+    expect(find.byKey(const ValueKey('home-review-start')), findsOneWidget);
     await tester.pumpWidget(const SizedBox());
     await settle(tester);
   });

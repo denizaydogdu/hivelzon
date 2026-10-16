@@ -1,6 +1,6 @@
 // H-060 ekran golden'ları ve erişilebilirlik denetimi: Ana Sayfa (devam eden
-// kullanıcı / yeni kullanıcı / sezon bitti), Hikâye haritası, bölüm paneli
-// (kilitli / yarım bölüm).
+// kullanıcı / yeni kullanıcı / sezon bitti / B2 yerleştirme, H-088), Hikâye
+// haritası, bölüm paneli (kilitli / yarım bölüm).
 //
 // Veriler sabit (sağlayıcılar geçersiz kılınır), yazı tipleri gömülü
 // (`loadAppFonts`). Ağ görselleri testte açılmaz: kart görseli yerine akşam
@@ -17,6 +17,7 @@ import 'package:hivelzon/features/account/application/account_providers.dart';
 import 'package:hivelzon/features/home/application/home_providers.dart';
 import 'package:hivelzon/features/home/presentation/home_screen.dart';
 import 'package:hivelzon/features/notebook/application/notebook_providers.dart';
+import 'package:hivelzon/features/onboarding/data/onboarding_store.dart';
 import 'package:hivelzon/features/notebook/domain/review_session.dart';
 import 'package:hivelzon/features/player/data/progress_repository.dart';
 import 'package:hivelzon/features/player/domain/episode_engine.dart';
@@ -76,6 +77,7 @@ class _Case {
     this.minutes = 6,
     this.nudge = false,
     this.openNode,
+    this.level,
   });
 
   final Widget screen;
@@ -89,6 +91,9 @@ class _Case {
 
   /// Haritada dokunulacak düğüm (bölüm paneli).
   final int? openNode;
+
+  /// Seviye testinin önerdiği seviye (H-088).
+  final String? level;
 }
 
 Future<void> _b1Done(InMemoryProgressRepository p) =>
@@ -137,6 +142,18 @@ final _cases = <String, _Case>{
     due: 0,
     minutes: 12,
   ),
+  // H-088: B2 yerleştirme — birincil öneri seviyesindeki kitap, hikâye
+  // isteğe bağlı.
+  'ana_sayfa_b2': _Case(
+    screen: const HomeScreen(),
+    progress: _none,
+    source: () =>
+        FakeContentSource(packageIds: _four)
+          ..books = testBookSummaries(['A1-K99', 'B2-K01']),
+    due: 0,
+    minutes: 3,
+    level: 'B2',
+  ),
   'harita': const _Case(screen: StoryScreen(), progress: _b1Done),
   'bolum_paneli_kilitli': const _Case(
     screen: StoryScreen(),
@@ -175,6 +192,11 @@ void main() {
     }
     final db = AppDatabase.memory();
     addTearDown(db.close);
+    if (c.level != null) {
+      await tester.runAsync(
+        () => OnboardingStore(db).setSuggestedLevel(c.level!),
+      );
+    }
     final server = FakeApiServer();
     final progress = InMemoryProgressRepository();
     await c.progress(progress);

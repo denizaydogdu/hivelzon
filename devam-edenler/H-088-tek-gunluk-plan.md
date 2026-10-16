@@ -26,3 +26,11 @@ cd mobile && flutter analyze && flutter test
 
 ## Geri alma
 Kendi dalında; `git revert`.
+
+## Notlar (2026-10-16, uygulama)
+- **Tek karar:** `mobile/lib/features/hi/domain/daily_plan.dart` → `planToday(CoachInput)` (saf). `dailyPlanProvider` Ana Sayfa'yı, `hiSuggestionProvider` (= plan.primary) Hi panelini besler; `suggestToday` aynı fonksiyona bağlandı.
+- **Sıra:** (1) bugün oynanmış yarım bölüm → (2) kısa tekrar: tekrar ≥ 5 (uzun aradan, 7+ gün, sonra ≥ 1, "Tekrar hoş geldin!") ve Hi'nin notu → (3) ana adım: A1–A2'de yarım bölüm → yarım kitap → sıradaki bölüm (7+ gün bekleyen yarım bölüm yarım kitabın arkasına); B1+'da yarım kitap → seviyesindeki kitap → (4) küçük görev (A1–A2: sahne avı → eşik altı tekrar → kitap dinleme → dilbilgisi; B1+: dilbilgisi → eşik altı tekrar → sahne avı) → B1+'da isteğe bağlı hikâye → (5) dinlenme. Bugün ana adım yapıldıysa (bölüm bitti / kitap okundu) küçük görev ana adımın önüne geçer.
+- **"Başka bir öneri":** öneriyi bugünlük geçer (`app_meta` `hi.dismissedToday`, yalnız cihazda, eşitlenmez; "Hi'nin kayıtlarını sil" de siler). Ertesi gün sıfırlanır; bu yüzden yarım bölüm tekrar borcunu en çok bir gün erteletebilir.
+- **Ana Sayfa:** başlık "Bugünün planı" + sakin adım çipleri; bölüm önerisinde görselli kart (gerekçeyle), öteki önerilerde plan kartı; birincil öneri bölüm değilse "Hikâyen" ikincil (B1+'da "İsteğe bağlı"); "Çalışma araçların": Kelime tekrarı ve Defter tek dokunuşla (Defter Ana Sayfa sekmesinde `/defter`; K-30 değişmedi). Plan hesaplanamazsa hikâye kartı birincil kalır.
+- **Golden'lar (bilinçli):** `h060_ana_sayfa`, `h060_ana_sayfa_yeni`, `h060_ana_sayfa_sezon_bitti` güncellendi; yeni `h060_ana_sayfa_b2`.
+- **Açık:** adım çiplerinin pilot sınaması (H-092); "Başka bir öneri"nin günlük sıfırlanması yeterli mi (pilot gözlemi).
