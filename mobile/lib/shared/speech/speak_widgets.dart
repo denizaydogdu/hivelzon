@@ -330,7 +330,14 @@ class _SpeakPracticeState extends State<SpeakPractice> {
     if (c.revealed) return SpeakTexts.reveal;
     if (c.silent) return SpeakTexts.silence;
     if (m.level == SpeechMatchLevel.close) {
-      return SpeakTexts.close(m.missingWords.single);
+      // Yakın: ya tek kelime duyulmadı ya da anlamı değiştiren ek var (H-087).
+      if (m.missingWords.length == 1) {
+        return SpeakTexts.close(m.missingWords.single);
+      }
+      if (m.changedWords.isNotEmpty) {
+        return SpeakTexts.closeExtra(m.changedWords);
+      }
+      return '${SpeakTexts.closeTitle} ${SpeakTexts.tryAgain}';
     }
     if (m.missingWords.isNotEmpty && m.missingWords.length <= 3) {
       return '${SpeakTexts.missing(m.missingWords)}. ${SpeakTexts.tryAgain}';

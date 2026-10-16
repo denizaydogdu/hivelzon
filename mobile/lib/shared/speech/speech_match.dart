@@ -14,16 +14,19 @@
 // - dolgu sesleri ("uh", "um", baştaki "okay") yalnızca yazıdan atılır
 //   (beklenen ifadede geçiyorsa atılmaz);
 // - `…` joker sayılır: "Where is…?" için "Where is the station?" tam kabul;
+// - anlamı değiştiren fazla kelime (olumsuzluk, kip, sayı, başa eklenen
+//   do/does/did) tam sayılmaz → yakın (H-087); jokerde yalnız olumsuzluk;
 // - hizalama: kelimeler üzerinde Levenshtein (sıra önemlidir).
 
 import 'dart:math' as math;
 
 /// Karşılaştırma sonucu düzeyi (puan yok).
 enum SpeechMatchLevel {
-  /// Beklenen bütün kelimeler duyuldu.
+  /// Beklenen bütün kelimeler duyuldu; anlamı değiştiren ek yok.
   full('full'),
 
-  /// En az 3 kelimelik ifadede tek kelime duyulmadı.
+  /// En az 3 kelimelik ifadede tek kelime duyulmadı ya da bütün kelimeler
+  /// duyuldu ama anlamı değiştiren bir kelime eklendi (H-087).
   close('close'),
 
   /// Diğer durumlar (ya da hiç ses yok).
@@ -42,6 +45,7 @@ class SpeechMatch {
     required this.level,
     this.missingWords = const [],
     this.extraWords = const [],
+    this.changedWords = const [],
   });
 
   static const nothing = SpeechMatch(level: SpeechMatchLevel.no);
@@ -53,6 +57,11 @@ class SpeechMatch {
 
   /// Duyulan ama beklenmeyen kelimeler (dolgu sesleri hariç).
   final List<String> extraWords;
+
+  /// Duyulan ama ifadede olmayan, anlamı değiştirebilen kelimeler
+  /// (normalleştirilmiş: olumsuzluk, kip, sayı, soru yardımcı fiili; H-087).
+  /// Boş değilse sonuç `full` olmaz.
+  final List<String> changedWords;
 
   bool get isFull => level == SpeechMatchLevel.full;
 }
@@ -321,13 +330,110 @@ abstract final class SpeechMatcher {
     final a = _align(want, heard);
     // Joker varsa fazla kelime beklenir (ör. "Where is…?" + yer adı).
     final extra = wildcard ? const <String>[] : a.extra;
+    final changed = _meaningChangers(want, heard, a.extra, wildcard: wildcard);
     final missing = _surfaces(wantT, a.missingAt.toSet());
+    // Beklenen her kelime duyuldu ama anlamı değiştiren bir kelime eklendiyse
+    // (ör. "not") tam sayılmaz; "yanlış" da denmez: yakın → "Bir daha dene".
     final level = a.missing.isEmpty
-        ? SpeechMatchLevel.full
+        ? (changed.isEmpty ? SpeechMatchLevel.full : SpeechMatchLevel.close)
         : (a.missing.length == 1 && want.length >= closeMinWords)
         ? SpeechMatchLevel.close
         : SpeechMatchLevel.no;
-    return SpeechMatch(level: level, missingWords: missing, extraWords: extra);
+    return SpeechMatch(
+      level: level,
+      missingWords: missing,
+      extraWords: extra,
+      changedWords: changed,
+    );
+  }
+
+  // ------------------------------------------------------------ anlam değişimi (H-087)
+
+  /// Eklenince cümleyi olumsuz yapan kelimeler (`n't`, `cannot` → `not`).
+  static const Set<String> negations = {
+    'not',
+    'never',
+    'no',
+    'nothing',
+    'nobody',
+    'none',
+    'nowhere',
+    'neither',
+    'nor',
+  };
+
+  /// Kipler: "I can" → "I must" ya da sonradan eklenen kip anlamı değiştirir
+  /// (`'ll` → `will`, `'d` → `would`).
+  static const Set<String> modals = {
+    'can',
+    'could',
+    'may',
+    'might',
+    'must',
+    'shall',
+    'should',
+    'will',
+    'would',
+  };
+
+  /// Başa eklenince düz cümleyi soruya çeviren yardımcı fiiller.
+  static const Set<String> questionAux = {'do', 'does', 'did'};
+
+  /// Sayı kelimeleri (rakamlar da bunlara çevrilir). "one", "two", "four",
+  /// "eight" yok: sesteşleriyle (won/to/too/for/ate) aynı biçime iniyorlar ve
+  /// "this one", "go too" gibi zararsız ekleri cezalandırırdı.
+  static const Set<String> _numberWords = {
+    'zero',
+    'three',
+    'five',
+    'six',
+    'seven',
+    'nine',
+    'ten',
+    'eleven',
+    'twelve',
+    'thirteen',
+    'fourteen',
+    'fifteen',
+    'sixteen',
+    'seventeen',
+    'eighteen',
+    'nineteen',
+    'twenty',
+    'thirty',
+    'forty',
+    'fifty',
+    'sixty',
+    'seventy',
+    'eighty',
+    'ninety',
+    'hundred',
+  };
+
+  /// Fazla kelimelerden anlamı değiştirebilenler. İfadede zaten geçen kelime
+  /// sayılmaz (tekrar zararsızdır). Jokerli ifadede yer, sayı ve kip serbest;
+  /// olumsuzluk yine sayılır.
+  static List<String> _meaningChangers(
+    List<String> want,
+    List<String> heard,
+    List<String> extra, {
+    required bool wildcard,
+  }) {
+    final wanted = want.toSet();
+    final startsQuestion =
+        questionAux.contains(heard.first) && heard.first != want.first;
+    final out = <String>[];
+    for (final w in extra) {
+      if (wanted.contains(w)) continue;
+      final changes = wildcard
+          ? negations.contains(w)
+          : negations.contains(w) ||
+                modals.contains(w) ||
+                _numberWords.contains(w) ||
+                (startsQuestion && w == heard.first);
+      if (changes && !out.contains(w)) out.add(w);
+    }
+    return out;
   }
 
   /// Duyulmayan kelimelerin asıl yazımı; kısaltmanın iki parçası tek kez

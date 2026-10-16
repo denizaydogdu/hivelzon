@@ -1190,6 +1190,9 @@ abstract final class SpeakTexts {
   static const full = 'Söyledin!';
   static const closeTitle = 'Neredeyse!';
   static String close(String word) => 'Neredeyse! Şu kelimeyi duyamadım: $word';
+  static String closeExtra(List<String> words) => words.length == 1
+      ? 'Neredeyse! İfadede olmayan bir kelime duydum: ${words.single}'
+      : 'Neredeyse! İfadede olmayan kelimeler duydum: ${words.join(', ')}';
   static String missing(List<String> words) => words.length == 1
       ? 'Şu kelimeyi duyamadım: ${words.single}'
       : 'Şu kelimeleri duyamadım: ${words.join(', ')}';

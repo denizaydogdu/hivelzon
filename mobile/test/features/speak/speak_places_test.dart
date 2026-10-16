@@ -113,6 +113,29 @@ void main() {
       expect(events.events, isEmpty);
     });
 
+    testWidgets('olumsuzluk eklenirse "Neredeyse!" + fazla kelime (H-087)', (
+      tester,
+    ) async {
+      final r = FakeSpeechRecognizer()..queued.add(["yes I can't hear you"]);
+      final log = <SpeechAttempt>[];
+      await _pump(
+        tester,
+        MeaningSheet(
+          controller: controller(InMemoryLearningEventLog()),
+          speak: _env(r, log),
+        ),
+      );
+      await tester.tap(find.byKey(const ValueKey('meaning-speak-mic')));
+      await tester.pumpAndSettle();
+      expect(
+        find.text('Neredeyse! İfadede olmayan bir kelime duydum: not'),
+        findsOneWidget,
+      );
+      expect(find.text('Söyledin!'), findsNothing);
+      expect(find.text('Bir daha söyle'), findsOneWidget);
+      expect(log.single.level, SpeechMatchLevel.close);
+    });
+
     testWidgets('2 denemeden sonra metin ve sakin dil; puan yok', (
       tester,
     ) async {
