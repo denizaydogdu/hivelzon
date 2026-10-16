@@ -374,7 +374,7 @@ def export_talk(icerik_root: Path, season: int, out: Path, audio=None) -> dict |
             rel = f"{TALK_AUDIO_DIR}/{doc['id']}-{name}.m4a"
             if audio is not None and src.exists():
                 adir.mkdir(parents=True, exist_ok=True)
-                tmp = adir / f".{doc['id']}-{name}.m4a.tmp"
+                tmp = adir / f".tmp-{doc['id']}-{name}.m4a"  # ffmpeg biçimi uzantıdan çıkarır
                 tmp.unlink(missing_ok=True)
                 audio(src, tmp)
                 tmp.replace(out / rel)

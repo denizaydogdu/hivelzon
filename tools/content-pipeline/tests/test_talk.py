@@ -221,3 +221,19 @@ def test_export_refuses_lint_errors(tmp_path):
     p.write_text(json.dumps(doc), encoding="utf-8")
     with pytest.raises(ValueError):
         export_talk(root, 1, tmp_path / "S1")
+
+
+def test_export_audio_temp_file_keeps_m4a_extension(tmp_path):
+    # ffmpeg çıktı biçimini uzantıdan çıkarır: geçici dosya da .m4a ile bitmeli
+    # (".m4a.tmp" → "Invalid argument").
+    root = _copy_root(tmp_path)
+    (root / "A1-009-the-cafe-on-the-hill" / "audio").mkdir()
+    (root / "A1-009-the-cafe-on-the-hill" / "audio" / "b9_17_rosa.mp3").write_bytes(b"mp3")
+    outs = []
+
+    def audio(src, out):
+        outs.append(Path(out))
+        Path(out).write_bytes(b"m4a")
+
+    export_talk(root, 1, tmp_path / "S1", audio=audio)
+    assert outs and all(p.suffix == ".m4a" for p in outs)

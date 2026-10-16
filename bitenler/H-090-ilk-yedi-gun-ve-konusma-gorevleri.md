@@ -1,6 +1,6 @@
 # H-090: İlk 7 günlük A1 deneyimi ve yönlendirmeli konuşma görevleri
 
-- **Durum:** Devam ediyor (2026-10-16)
+- **Durum:** Bitti (2026-10-16); 6 Konuş görevinin metni DRAFT, editör onayı bekler (H-028)
 - **Tür:** Uygulama + içerik
 - **Faz:** F1 MVP — ürün incelemesi sonrası (2026-10-16)
 - **Bağımlılık:** H-088, H-089
@@ -35,3 +35,5 @@ Kendi dalında; `git revert`.
 - **Veri:** Drift şema 11 `user_talk_progress` (görev kimliği, ilk ve son bitiş, updated_at; metin/ses yok), eşitleme sırası 97; backend V14 (+ `speech_attempts.place = 'talk'`).
 - **Goldenler (yeni):** `h090_*` (10 ekran); `h064` "konus" durumu yeni ekrana bağlandı. Kabuk testi "yakında" yerine Konuş ekranını bekler.
 - **Açık:** editör onayı (İngilizce ve Türkçe metinler, kibar tepkiler); ElevenLabs sesleri; ana depoda `export_package.py --season 1` çalıştırılınca `talk.json` ve 8 ses dev sunucuya gelir.
+
+2026-10-16 (birleştirme): Ana klasörde sezon dışa aktarımı ffmpeg geçici dosya adı (`.m4a.tmp`) yüzünden hata verdi; ad `.tmp-<id>.m4a` yapıldı + test. 8 bölüm sesi `talk/` altına yazıldı. Araçlar 325, mobil 1130, backend 146 test geçti.
