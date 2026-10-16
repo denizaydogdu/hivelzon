@@ -3,6 +3,8 @@ import 'package:hivelzon/features/hi/domain/coach_rules.dart';
 import 'package:hivelzon/features/hi/domain/hi_content.dart';
 import 'package:hivelzon/features/hi/domain/lookup_search.dart';
 import 'package:hivelzon/features/hi/domain/weekly_summary.dart';
+import 'package:hivelzon/features/hi/presentation/panel/hi_week_card.dart';
+import 'package:hivelzon/features/notebook/domain/evidence_ladder.dart';
 import 'package:hivelzon/features/notebook/domain/notebook_item.dart';
 import 'package:hivelzon/l10n/tr_strings.dart';
 import 'package:hivelzon/shared/meaning/error_taxonomy.dart';
@@ -216,6 +218,93 @@ void main() {
         errors: const [],
       );
       expect(empty.isEmpty, isTrue);
+    });
+
+    test('H-093: kanıt cümlesi en güçlü basamaktan; pencere dışı sayılmaz', () {
+      WeeklySummary week(List<(EvidenceStage, DateTime)> ev) =>
+          computeWeeklySummary(
+            now: now,
+            itemCreatedAt: const [],
+            reviews: const [],
+            completedAt: const [],
+            errors: const [],
+            evidence: ev,
+          );
+      final s = week([
+        (EvidenceStage.recalledLater, ago(1)),
+        (EvidenceStage.recalledLater, ago(3)),
+        (EvidenceStage.recalledLater, ago(9)),
+        (EvidenceStage.ownUse, ago(2)),
+        (EvidenceStage.helped, ago(2)),
+      ]);
+      expect((s.recalledLater, s.ownUse, s.helped), (2, 1, 1));
+      expect(s.topEvidence, (EvidenceStage.recalledLater, 2));
+      expect(s.isEmpty, isFalse);
+      expect(
+        weekEvidenceLine(s),
+        '2 ifadeyi birkaç gün sonra kendin hatırladın.',
+      );
+      expect(
+        weekEvidenceLine(week([(EvidenceStage.ownUse, ago(1))])),
+        '1 ifadeyi Türkçesinden kendin söyledin ya da yazdın.',
+      );
+      expect(
+        weekEvidenceLine(week([(EvidenceStage.helped, ago(1))])),
+        '1 ifadeyi yardımla yaptın.',
+      );
+      // Boş durum: cümle yok, özet boş (sakin davet gösterilir).
+      final none = week([(EvidenceStage.helped, ago(8))]);
+      expect(weekEvidenceLine(none), isNull);
+      expect(none.isEmpty, isTrue);
+    });
+
+    test('H-093: Profil durum satırı önce kanıt, sonra tekrar; yüzde yok', () {
+      expect(
+        ProfileTexts.status(
+          phrasesAdded: 4,
+          phrasesReviewed: 6,
+          episodesCompleted: 1,
+          recalledLater: 2,
+          ownUse: 3,
+        ),
+        'Bu hafta 2 ifadeyi birkaç gün sonra kendin hatırladın.',
+      );
+      expect(
+        ProfileTexts.status(
+          phrasesAdded: 4,
+          phrasesReviewed: 6,
+          episodesCompleted: 1,
+          ownUse: 3,
+          helped: 5,
+        ),
+        'Bu hafta 3 ifadeyi Türkçesinden kendin söyledin ya da yazdın.',
+      );
+      expect(
+        ProfileTexts.status(
+          phrasesAdded: 4,
+          phrasesReviewed: 6,
+          episodesCompleted: 1,
+          helped: 5,
+        ),
+        'Bu hafta 6 ifadeyi tekrar ettin.',
+      );
+      expect(
+        ProfileTexts.status(
+          phrasesAdded: 4,
+          phrasesReviewed: 0,
+          episodesCompleted: 1,
+          helped: 5,
+        ),
+        'Bu hafta 5 ifadeyi yardımla yaptın.',
+      );
+      expect(
+        ProfileTexts.status(
+          phrasesAdded: 0,
+          phrasesReviewed: 0,
+          episodesCompleted: 0,
+        ),
+        'Bugün küçük bir adım yeter.',
+      );
     });
   });
 

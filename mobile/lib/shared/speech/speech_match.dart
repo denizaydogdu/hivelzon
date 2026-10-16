@@ -64,6 +64,16 @@ class SpeechMatch {
   final List<String> changedWords;
 
   bool get isFull => level == SpeechMatchLevel.full;
+
+  /// Taklit (dinleyip tekrar etme) başarılı mı (H-089, H-093): tam, ya da
+  /// yalnızca bir kelime duyulmadı ve anlamı değiştiren ek yok. Kelime
+  /// tekrarındaki "Dinle ve söyle" ile aynı kural
+  /// (`ReviewPolicy.speechPracticeSucceeded`).
+  bool get imitationSucceeded => switch (level) {
+    SpeechMatchLevel.full => true,
+    SpeechMatchLevel.close => changedWords.isEmpty,
+    SpeechMatchLevel.no => false,
+  };
 }
 
 /// Seçenekler arasından söylenen (karar anı). [index] null ise belirsiz ya

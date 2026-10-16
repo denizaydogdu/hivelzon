@@ -411,7 +411,12 @@ class FakeApiServer {
     Map<String, Map<String, Map<String, dynamic>>> data,
     DateTime t,
   ) {
-    for (final name in ['learning_events', 'speech_attempts']) {
+    // H-093: öğrenme kanıtı da (backend `HiResetHook` aynası).
+    for (final name in [
+      'learning_events',
+      'speech_attempts',
+      'expression_evidence',
+    ]) {
       data[name]?.removeWhere(
         (_, r) => !DateTime.parse(r['at'] as String).isAfter(t),
       );

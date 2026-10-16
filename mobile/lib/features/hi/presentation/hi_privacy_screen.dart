@@ -8,20 +8,24 @@ import '../../../l10n/tr_strings.dart';
 import '../../../shared/meaning/error_taxonomy.dart';
 import '../../../shared/ui/ui.dart';
 import '../../account/application/account_providers.dart';
+import '../../notebook/application/notebook_providers.dart';
+import '../../notebook/domain/evidence_ladder.dart';
 import '../../player/presentation/widgets/hi_avatar.dart';
 import '../../profile/application/profile_providers.dart';
 import '../application/hi_providers.dart';
 import '../data/hi_store.dart';
 import '../domain/weekly_summary.dart';
+import 'panel/hi_week_card.dart' show weekEvidenceLine;
 
 /// Profil → "Hi benim hakkımda ne biliyor?" (H-048, HI-ASISTAN-VE-KOC §5;
 /// tasarım H-059).
 ///
 /// Cihazda saklananları sade dille gösterir: Hi ile tek cümle giriş, nerede
 /// saklandığı (bilgi kartı), sayılar (`StatTile`), saklananlar (salt okunur
-/// satırlar), konu çipleri, son 7 gün. "Hi'nin kayıtlarını sil" yalnızca
-/// öğrenme olaylarını, Söyle sonuçlarını ve yan görev durumlarını siler
-/// (onaylı). İlerleme, defter ve ad silinmez.
+/// satırlar), öğrenme kanıtları (ifade, basamak, tarih; H-093), konu
+/// çipleri, son 7 gün. "Hi'nin kayıtlarını sil" öğrenme olaylarını, öğrenme
+/// kanıtlarını, Söyle sonuçlarını ve yan görev durumlarını siler (onaylı).
+/// İlerleme, defter (FSRS kartları ve hatırlama cevapları) ve ad silinmez.
 class HiPrivacyScreen extends ConsumerWidget {
   const HiPrivacyScreen({super.key});
 
@@ -54,6 +58,8 @@ class HiPrivacyScreen extends ConsumerWidget {
     if (ok != true) return;
     await ref.read(hiStoreProvider).deleteLearningData();
     refreshHi(ref);
+    // Profil'deki "Neler yapabiliyorsun" kanıttan okunur (H-093).
+    refreshNotebook(ref);
     // H-038: hesap açıksa silme işareti hemen gönderilsin (öteki cihazlar).
     if (account) unawaited(ref.read(syncControllerProvider.notifier).syncNow());
     if (!context.mounted) return;
@@ -88,6 +94,7 @@ class HiPrivacyScreen extends ConsumerWidget {
                   _Intro(account: account),
                   _Numbers(k: value),
                   _Stored(k: value, name: name),
+                  _Evidence(items: value.evidence),
                   _Errors(counts: value.errorCounts),
                   _Week(week: week),
                   _DeleteBlock(
@@ -255,6 +262,94 @@ class _Stored extends StatelessWidget {
   );
 }
 
+/// Öğrenme kanıtları (H-093): ifade, basamak ve ilk tarih; en yeniden
+/// eskiye. İlk [shown] satır, sonra "Hepsini göster". Salt okunur.
+class _Evidence extends StatefulWidget {
+  const _Evidence({required this.items});
+
+  final List<HiEvidence> items;
+
+  static const shown = 5;
+
+  @override
+  State<_Evidence> createState() => _EvidenceState();
+}
+
+class _EvidenceState extends State<_Evidence> {
+  bool _all = false;
+
+  static (String, IconData) _stage(EvidenceStage s) => switch (s) {
+    EvidenceStage.recalledLater => (
+      HiTexts.evidenceStageRecalled,
+      Icons.psychology_alt_outlined,
+    ),
+    EvidenceStage.ownUse => (
+      HiTexts.evidenceStageOwnUse,
+      Icons.edit_note_rounded,
+    ),
+    _ => (HiTexts.evidenceStageHelped, Icons.back_hand_outlined),
+  };
+
+  @override
+  Widget build(BuildContext context) {
+    final items = widget.items;
+    final visible = _all ? items : items.take(_Evidence.shown).toList();
+    final hidden = items.length - visible.length;
+    return Column(
+      key: const ValueKey('hi-privacy-evidence'),
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        if (items.isEmpty) ...[
+          // Boş durum: "Konulara göre yeniden denemeler" gibi sakin bir satır.
+          Semantics(
+            header: true,
+            child: Text(
+              HiTexts.privacyEvidence,
+              style: Theme.of(context).textTheme.titleMedium,
+            ),
+          ),
+          const SizedBox(height: AppSpace.s8),
+          Text(
+            HiTexts.privacyEvidenceValue(0),
+            key: const ValueKey('hi-privacy-evidence-empty'),
+            style: Theme.of(
+              context,
+            ).textTheme.bodyMedium?.copyWith(color: AppPalette.ink500),
+          ),
+        ] else
+          SettingsGroup(
+            title: HiTexts.privacyEvidence,
+            footer: HiTexts.privacyEvidenceValue(items.length),
+            children: [
+              for (final (i, e) in visible.indexed)
+                SettingsRow(
+                  key: ValueKey('hi-privacy-evidence-$i'),
+                  icon: _stage(e.stage).$2,
+                  title: '“${e.text}”',
+                  subtitle: HiTexts.privacyEvidenceRow(
+                    _stage(e.stage).$1,
+                    AccountTexts.date(e.at),
+                  ),
+                ),
+            ],
+          ),
+        if (hidden > 0)
+          Align(
+            alignment: Alignment.centerLeft,
+            child: TextButton(
+              key: const ValueKey('hi-privacy-evidence-all'),
+              onPressed: () => setState(() => _all = true),
+              style: TextButton.styleFrom(
+                minimumSize: const Size(AppTouch.min, AppTouch.min),
+              ),
+              child: Text(HiTexts.privacyEvidenceMore(items.length)),
+            ),
+          ),
+      ],
+    );
+  }
+}
+
 /// Konulara göre yeniden denemeler: çipler (çoktan aza).
 class _Errors extends StatelessWidget {
   const _Errors({required this.counts});
@@ -360,6 +455,16 @@ class _Week extends StatelessWidget {
               ),
             ],
           ),
+          if (weekEvidenceLine(w) case final line?) ...[
+            const SizedBox(height: AppSpace.s8),
+            Text(
+              line,
+              key: const ValueKey('hi-privacy-week-evidence'),
+              style: theme.textTheme.bodyMedium?.copyWith(
+                color: AppPalette.ink700,
+              ),
+            ),
+          ],
           if (w.focus != null) ...[
             const SizedBox(height: AppSpace.s8),
             Text(

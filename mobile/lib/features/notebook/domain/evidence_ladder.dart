@@ -184,3 +184,34 @@ EvidenceSummary summarizeEvidence(
     total: entries.length,
   );
 }
+
+/// Hikâye içi "Söyle" başarısının (H-093: anlam paneli "Sen de söyle",
+/// bölüm sonu hedef ifadeler, karar anı "Söyleyerek seç") "yardımla yaptı"
+/// yazılacağı ifade anahtarları. Taklittir: FSRS'e gitmez.
+///
+/// - Defterde İngilizcesi söylenen metinle aynı olan ifade; ya da defter
+///   kartının örnek cümlesi söylenen metinse (aynı içerikten) o ifade.
+/// - [targetPhrase]: söylenen, bölümün hedef ifadesidir. Kart henüz yoksa
+///   (bölüm bitmeden, karar anında) bölüm bitince oluşacak kartın anahtarı
+///   ([targetPhraseKey]) yazılır; kart gelince kanıt ona bağlanır.
+/// - Defterde olmayan ve hedef ifade olmayan metin için hiçbir şey yazılmaz
+///   (kanıt yalnız defterdeki ifadeye aittir; en az veri).
+Set<String> spokenPracticeKeys({
+  required String expression,
+  required Iterable<NotebookItem> items,
+  String? contentId,
+  bool targetPhrase = false,
+}) {
+  final said = normalizeEn(expression);
+  if (said.isEmpty) return const {};
+  final keys = <String>{
+    for (final i in items)
+      if (normalizeEn(i.textEn) == said ||
+          (i.exampleEn != null &&
+              normalizeEn(i.exampleEn!) == said &&
+              (contentId == null || i.contentId == contentId)))
+        i.key,
+  };
+  if (targetPhrase) keys.add(targetPhraseKey(expression));
+  return keys;
+}

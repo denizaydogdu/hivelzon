@@ -328,6 +328,8 @@ final weeklySummaryProvider = FutureProvider.autoDispose<WeeklySummary>((
     reviews: await store.reviewsSince(since),
     completedAt: await store.completedSince(since),
     errors: await store.errorsSince(since),
+    // H-093: kanıt cümlesi (okunamazsa yalnız sayılar).
+    evidence: await _orNull(() => store.evidenceSince(since)) ?? const [],
   );
 }, retry: (_, _) => null);
 

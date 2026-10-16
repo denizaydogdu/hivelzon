@@ -114,6 +114,11 @@ Her aday model bu setle puanlanır: doğruluk, Türkçe açıklama kalitesi, gec
   - Gençlere serbest sohbet ancak hukuk teyidinden sonra açılabilir (hukukçu sorusu olarak eklenecek).
 - **Saklama:** Ham ses saklanmaz. Sohbet metninin saklama süresi ve erişimi sınırlıdır. Loglara transkript yazılmaz (mühendislik ilkeleri, H-008).
 - **Profil çıkarma:** Öğrenci modeli bir profil çıkarmadır. Aydınlatma metninde açıkça yazılır ve kullanıcı Profil'de "Hi benim hakkımda ne biliyor?" ekranından görüp silebilir.
+- **Öğrenme kanıtları ve "Hi'nin kayıtlarını sil" (H-093, 2026-10-16; veri minimizasyonu):** Kanıt basamakları (`expression_evidence`: ifade anahtarı, basamak, ilk an; `docs/KELIME-TEKRARI.md` §3) Hi'nin kullanıcı hakkında çıkardığı bir özettir: haftalık özet cümlesi ve Profil'deki "Neler yapabiliyorsun" bundan okunur. Bu yüzden:
+  - Gizlilik ekranı bunları **ifade, basamak ve ilk tarih** olarak listeler (en yeni önce; ilk 5, sonra "Hepsini göster"). İçerik metni dışında ses ya da tanıma yazısı yoktur.
+  - **Karar:** ayrı bir "kanıtları sil" seçeneği yerine **"Hi'nin kayıtlarını sil" kanıtları da siler** (tek düğme, tek onay; seçenek çoğaltmak yerine az veri). Onay metni bunu söyler: "… öğrenme kanıtların ("Neler yapabiliyorsun") … silinir." Hesap açıksa mevcut `hi_reset` işaretiyle sunucuda (`HiResetHook`, şema değişmeden) ve öteki cihazlarda da silinir.
+  - Silinmeyenler aynı kalır: hikâye ilerlemesi, defter, FSRS kartları ve hatırlama cevapları (`review_logs`; tekrar takvimi bunlarla çalışır), ad, görülen konu kartları, sahne avı. Kanıtlar sonra yeni etkinlikle yeniden birikir; geçmiş cevaplardan yeniden doldurulmaz (doldurma yalnız şema 10 geçişinde bir kez çalışır).
+  - Gerekçe: kanıt satırı ifade düzeyinde bir "neyi bildiğin" kaydıdır; kullanıcı Hi'nin hakkındaki çıkarımlarını sildiğinde bu da gitmelidir. Kart ve cevap geçmişi ise tekrarın çalışması için gereken asgari veridir ve "Defterden çıkar" ile ifade başına silinebilir.
 - **Persona:** Hi romantik, manipülatif ya da bağımlılık yaratan bir dil kullanmaz; yapay zekâ olduğunu söyler (ürün ilkeleri).
 
 ## 6. Fazlar

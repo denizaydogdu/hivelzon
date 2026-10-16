@@ -1,6 +1,6 @@
 # Kelime tekrarı: hatırlama, pratik ve öğrenme kanıtı (H-089)
 
-> **Durum:** 2026-10-16, H-089 ile uygulandı. Önceki kurallar H-036 (FSRS, görevler), H-055 ("Söyle") ve H-087 (anlamı değiştiren ek).
+> **Durum:** 2026-10-16, H-089 ile uygulandı; H-093 ile haftalık özet, gizlilik ve hikâye içi "Söyle" eklendi. Önceki kurallar H-036 (FSRS, görevler), H-055 ("Söyle") ve H-087 (anlamı değiştiren ek).
 > **Kaynak:** `docs/URUN-INCELEMESI-2026-10-15.md` §4 ("Tamamlamak, hatırlamak ve kullanabilmek ayrı kaydedilmeli"; "Hafıza ölçümü ile dinleyip taklit etme aynı kart durumuna karışıyor").
 > **Kod:** `mobile/lib/features/notebook/domain/review_policy.dart` (görev ve not), `review_session.dart` (oturum akışı), `evidence_ladder.dart` (basamaklar), `data/notebook_store.dart` (kayıt), `shared/storage/evidence_backfill.dart` (eski cevaplardan doldurma).
 
@@ -69,17 +69,36 @@ Bütün kartları beceri başına çoğaltmak gerekmedi (inceleme önerisi): kar
 
 - Basamaklar sırayla gelmek zorunda değildir (kendini yoklamayla "sonra hatırladın", denetlenen üretimden önce gelebilir). Ekranda **en yüksek** basamak kullanılır.
 - Her basamağın yalnız **ilk** anı tutulur; tekrar yazmak bir şey değiştirmez (idempotent).
-- Hikâye içi "Sen de söyle", bölüm sonu hedef ifadeleri söyleme ve karar anı "Söyleyerek seç" şimdilik basamağa yazılmaz (hikâye kodu bu işin kapsamı dışında; sonra "yardımla yaptın"a bağlanabilir). Kitap sonu anlama (H-091) kitap başına tutulduğundan ifade basamağına bağlanmadı.
+- **Hikâye içi "Söyle" (H-093):** anlam paneli "Sen de söyle" (oynatıcı, Keşfet, kitap okuyucu), bölüm sonu hedef ifadeleri söyleme ve karar anı "Söyleyerek seç" başarısı **"yardımla yaptın"** yazar (taklittir: ifade ekranda ya da az önce duyuldu). FSRS kartı ve `review_logs` değişmez. Başarı kuralı kelime tekrarındaki "Dinle ve söyle" ile aynıdır: tam ya da yalnız bir kelime duyulmadı, anlamı değiştiren ek yok (`SpeechMatch.imitationSucceeded`). Hangi ifadeye yazıldığı (`spokenPracticeKeys`):
+  - Anlam paneli: söylenen satır defterdeki bir ifadenin İngilizcesiyse o ifade; defter kartının örnek cümlesiyse (aynı bölümden) o kartın ifadesi. Defterde karşılığı yoksa **hiçbir şey yazılmaz** (kanıt yalnız defterdeki ifadeye aittir; en az veri).
+  - Bölüm sonu: söylenen hedef ifadenin kartı. Karar anı: yalnız **doğru** seçenek söylenirse kararın hedef ifadesi (`targetPhrase`); yanlış seçenek ve belirsiz sonuç yazmaz.
+  - Hedef ifadenin kartı henüz yoksa (ilk oynayışta karar anı bölüm bitmeden gelir) kanıt, bölüm bitince oluşacak kartın anahtarıyla yazılır (`targetPhraseKey`: tek kelime → `word|…`, birden çok → `phrase|…`; deste kuralıyla aynı). Kart gelince kanıt ona bağlanır. Bölüm hiç bitmezse satır defterde görünmez; Profil ve Defter yalnız defterdeki ifadeleri gösterir, gizlilik ekranı anahtardaki metinle listeler.
+  - Kelime tekrarı kendi sonucunu yazar (`saveOutcome`); dilbilgisi alıştırmasındaki "Söyle" ifade kartı olmadığından yazılmaz.
+- Kitap sonu anlama (H-091) kitap başına tutulduğundan ifade basamağına bağlanmadı.
 
 ### 3.2 Veri (yalnız cihazda; hesap varsa eşitlenir)
 
-`expression_evidence (item_key, stage, at)` — Drift şema 10, backend V13. İfadenin anahtarı (defterdeki `item_key`), basamak ve ilk an. İçerik metni (anahtar dışında), ses ve tanıma yazısı **yoktur**. Yalnız eklenir; iki cihazda aynı basamak varsa ilk gelen kalır (istemcide yereldeki ilk an korunur). "Defterden çıkar" ifadenin kanıtlarını cihazda siler; "Bu telefondaki verileri de sil" hepsini siler. Hesap silmede sunucudaki satırlar diğer öğrenme verisiyle birlikte silinir.
+`expression_evidence (item_key, stage, at)` — Drift şema 10, backend V13. İfadenin anahtarı (defterdeki `item_key`), basamak ve ilk an. İçerik metni (anahtar dışında), ses ve tanıma yazısı **yoktur**. Yalnız eklenir; iki cihazda aynı basamak varsa ilk gelen kalır (istemcide yereldeki ilk an korunur). "Defterden çıkar" ifadenin kanıtlarını cihazda siler; **"Hi'nin kayıtlarını sil" bütün kanıtları siler** (H-093; hesap açıksa `hi_reset` işaretiyle sunucuda ve öteki cihazlarda da, `HiResetHook`); "Bu telefondaki verileri de sil" hepsini siler. Hesap silmede sunucudaki satırlar diğer öğrenme verisiyle birlikte silinir. Gizlilik ekranı ("Hi benim hakkımda ne biliyor?") kanıtları ifade, basamak ve ilk tarihle listeler.
+
+**`review_logs` artık yalnız hatırlama tutar (H-093 denetimi):**
+
+| Kullanım | Durum |
+|---|---|
+| Haftalık özet "N ifadeyi tekrar ettin" (`phrasesReviewed`), Profil "bu hafta tekrar" | Hatırlama sorusu cevaplanan ifadeler. Pratiği yapılıp hatırlama sorusuna gelmeden bırakılan ifade sayılmaz; pratik başarısı kanıt cümlesinde ("yardımla yaptın") görünür. Sayı korunur (hâlâ anlamlı). |
+| Hi günlük planı "bugün tekrar yapıldı" ve "son etkinlik" (`HiStore.lastReviewAt`) | Hatırlama cevabı **ya da** tekrar oturumundaki son pratik: pratik anı `app_meta` `review.lastPracticeAt`'te tutulur (yalnız bu cihazda; yalnız daha yeni an yazılır; sahne avı sayılmaz). "Bu telefondaki verileri de sil" bunu da siler. |
+| Ana Sayfa halkası geçiş tahmini (`HiStore.reviewTimeSince`) | Değişmedi: yalnız ölçüm başlamadan önceki cevaplar için; pratik süresi tekrar ekranında `StudyClock` ile zaten ölçülür (H-074). |
+| Günlük yeni ifade sınırı (`newIntroducedBetween`) | Değişmedi (yukarıdaki kasıtlı sapma). |
+| Gizlilik ekranı "N tekrar cevabı kayıtlı" | Doğru: saklanan yalnız hatırlama cevaplarıdır. |
+| Eski cevaplardan doldurma (§3.3) | Değişmedi (yalnız şema 10 geçişinde). |
 
 ### 3.3 Eski cevaplardan doldurma (şema 10 geçişi)
 
 Eski cevaplarda kartın o anki durumu olmadığından yaklaşıktır: doğru pratik cevabı → yardımla; doğru `type` cevabı (not ≥ Hard) → kendin kullandın; doğru `type` / `self_check` cevabı, ifade ≥ 2 gün önce eklenmiş ve aynı kartın ≥ 1 gün önce başka cevabı var → sonra hatırladın. Eski `speak` cevapları taklittir → yardımla. Hesap açıksa doldurulan satırlar eşitleme kuyruğuna alınır.
 
-## 4. Profil: kanıta dayalı küçük kazanımlar
+## 4. Profil ve haftalık özet: kanıta dayalı küçük kazanımlar
+
+**Haftalık özet ve Profil durum satırı (H-093):** bu hafta ilk kez ulaşılan basamaklardan **tek cümle**, en güçlüsü: "Bu hafta 2 ifadeyi birkaç gün sonra kendin hatırladın." → yoksa "… Türkçesinden kendin söyledin ya da yazdın." → yoksa "… yardımla yaptın." (Hi panelinde ve gizlilik ekranının "Son 7 gün"ünde "Bu hafta" olmadan). Profil durum satırında sıra: sonra hatırladın → kendin kullandın → tekrar ettin → yardımla yaptın → yeni ifade → bölüm → "Bugün küçük bir adım yeter.". Kanıt yoksa cümle yok; hiçbir kayıt yoksa sakin davet. Yüzde ve kıyas yok (K-32).
+
 
 "**Neler yapabiliyorsun**" bölümü sayı yığını ve yüzde yerine en çok dört kısa cümle gösterir (`ProfileTexts.evidence*`; metinler `docs/ARAYUZ-METINLERI.md` §6):
 
@@ -94,6 +113,5 @@ Sayılar (ifade, bitirilen bölüm, bu hafta tekrar) **"İçerik ilerlemesi"** b
 
 ## 5. Sonra
 
-- Haftalık özet (Hi, Ana Sayfa) hâlâ "tekrar ettin / ekledin" sayar; kanıt basamaklarından bir cümle ("Bu hafta 2 ifadeyi birkaç gün sonra kendin hatırladın") eklenmeli. `review_logs` artık yalnız hatırlamayı içerdiği için "tekrar edilen ifade" sayısı pratiği saymaz.
-- Hikâye içi söyleme yerleri → "yardımla yaptın".
+- ~~Haftalık özete kanıt cümlesi; hikâye içi söyleme yerleri → "yardımla yaptın".~~ H-093 ile yapıldı (§3.1, §3.2, §4).
 - Pilotta: hızlı = Easy kuralının etkisi ve kendini yoklamanın dürüstlüğü ölçülür.

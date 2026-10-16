@@ -212,6 +212,18 @@ class _SpeakToChooseState extends State<SpeakToChoose> {
         at: at,
       ),
     );
+    // H-093: doğru seçeneği söylemek, kararın hedef ifadesi için
+    // "yardımla yaptı"dır (seçenekler ekranda: taklit, FSRS'e gitmez).
+    final target = widget.node.targetPhrase;
+    if (option.correct && target != null && m.imitationSucceeded) {
+      widget.env.practiced?.call(
+        SpokenPractice(
+          place: SpeechPlace.decision,
+          expression: target,
+          contentId: widget.contentId,
+        ),
+      );
+    }
     setState(() => _unclear = 0);
     widget.onChoose(option);
   }

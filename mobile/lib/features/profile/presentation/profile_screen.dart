@@ -81,6 +81,9 @@ class ProfileScreen extends ConsumerWidget {
                         phrasesAdded: week.phrasesAdded,
                         phrasesReviewed: week.phrasesReviewed,
                         episodesCompleted: week.episodesCompleted,
+                        recalledLater: week.recalledLater,
+                        ownUse: week.ownUse,
+                        helped: week.helped,
                       ),
               ),
               Padding(

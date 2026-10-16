@@ -24,6 +24,11 @@ class NotebookStore {
 
   static const dailyGoalKey = 'settings.dailyGoalMinutes';
 
+  /// Tekrar oturumundaki son pratiğin anı (H-093; UTC ISO-8601, yalnız bu
+  /// cihazda). Pratik `review_logs`'a yazılmadığından (H-089) Hi'nin günlük
+  /// planı "bugün tekrar yapıldı mı"yı buradan da okur.
+  static const lastPracticeKey = 'review.lastPracticeAt';
+
   final AppDatabase _db;
   final Future<void> _ready;
   final DateTime Function() _clock;
@@ -238,7 +243,12 @@ class NotebookStore {
         );
       }
       final rating = o.rating;
-      if (rating == null) return;
+      if (rating == null) {
+        if (o.taskType != TaskType.sceneHunt) {
+          await _markPractice(o.reviewedAt);
+        }
+        return;
+      }
       await (_db.update(
         _db.reviewCards,
       )..where((t) => t.id.equals(c.id))).write(
@@ -278,6 +288,46 @@ class NotebookStore {
                     ),
             ),
           );
+    });
+  }
+
+  /// Son pratik anını yazar; yalnız daha yeniyse (idempotent).
+  Future<void> _markPractice(DateTime at) async {
+    final prev = DateTime.tryParse(await meta(lastPracticeKey) ?? '');
+    if (prev != null && !at.toUtc().isAfter(prev.toUtc())) return;
+    await _db
+        .into(_db.appMeta)
+        .insertOnConflictUpdate(
+          AppMetaCompanion.insert(
+            key: lastPracticeKey,
+            value: at.toUtc().toIso8601String(),
+          ),
+        );
+  }
+
+  /// Hikâye içi "Söyle" başarısı (H-093): ilgili ifadeye "yardımla yaptı"
+  /// yazar ([spokenPracticeKeys]). Taklittir: kart (FSRS) ve `review_logs`
+  /// değişmez. Var olan basamak korunur (ilk an kalır). Yazılan anahtarlar.
+  Future<Set<String>> recordSpokenPractice(
+    String expression, {
+    String? contentId,
+    bool targetPhrase = false,
+    DateTime? at,
+  }) async {
+    await _ready;
+    final when = (at ?? now()).toUtc();
+    return _db.transaction(() async {
+      final rows = await _db.select(_db.notebookItems).get();
+      final keys = spokenPracticeKeys(
+        expression: expression,
+        items: rows.map(_toItem),
+        contentId: contentId,
+        targetPhrase: targetPhrase,
+      );
+      for (final k in keys) {
+        await _recordEvidence(k, const {EvidenceStage.helped}, when);
+      }
+      return keys;
     });
   }
 
