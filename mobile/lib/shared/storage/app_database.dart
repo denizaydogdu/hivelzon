@@ -417,6 +417,28 @@ class EvidenceRecords extends Table {
   Set<Column<Object>> get primaryKey => {itemKey, stage};
 }
 
+// ---------------------------------------------------------------- Konuş görevleri (H-090, şema 11)
+
+/// Bitirilen Konuş görevi (H-090: yönlendirmeli sahne ya da kısa mesaj).
+/// **Yalnızca** görevin kimliği ve zamanlar tutulur: kullanıcının yazdığı
+/// mesaj, söylediğinin yazısı ve ses hiçbir zaman saklanmaz. Hesap varsa
+/// eşitlenir; son yazan kazanır (ilk bitiş anı korunarak yazılır).
+@DataClassName('TalkProgressRow')
+class UserTalkProgress extends Table {
+  /// Görev kimliği (`talk.json` → `id`, ör. `cafe-rosa`).
+  TextColumn get taskId => text()();
+
+  /// İlk bitirildiği an.
+  DateTimeColumn get completedAt => dateTime()();
+
+  /// En son bitirildiği an (Ana Sayfa planında "bugün yapıldı" için).
+  DateTimeColumn get lastDoneAt => dateTime()();
+  DateTimeColumn get updatedAt => dateTime()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {taskId};
+}
+
 // ---------------------------------------------------------------- eşitleme (H-038, şema 5)
 
 /// Hesap ve eşitleme durumu (tek satır, `id = 1`). Hesap yoksa
@@ -513,6 +535,7 @@ class SyncOutbox extends Table {
     DailyActivity,
     UserBookComprehension,
     EvidenceRecords,
+    UserTalkProgress,
   ],
 )
 class AppDatabase extends _$AppDatabase {
@@ -533,7 +556,7 @@ class AppDatabase extends _$AppDatabase {
   );
 
   @override
-  int get schemaVersion => 10;
+  int get schemaVersion => 11;
 
   @override
   MigrationStrategy get migration => MigrationStrategy(
@@ -598,6 +621,10 @@ class AppDatabase extends _$AppDatabase {
       if (from < 10) {
         await m.createTable(evidenceRecords);
         await backfillEvidence(this);
+      }
+      // 10 → 11 (H-090): bitirilen Konuş görevleri (metin ve ses yok).
+      if (from < 11) {
+        await m.createTable(userTalkProgress);
       }
     },
     beforeOpen: (details) async {

@@ -39,6 +39,7 @@ from pathlib import Path
 from .clips import clips_source, export_clips
 from .hi import export_hi
 from .sets import export_sets, sets_dir
+from .talk import export_talk
 
 SEASON_SOURCE = Path("_evren") / "jenerik" / "season.json"
 SEASON_BUILD = Path("_evren") / "_build" / "season"
@@ -151,7 +152,7 @@ def rendition_file(name: str, rendition: str = "720p") -> str:
 
 def export_season(icerik_root: Path, season: int, probe=None, digest=None, poster=None,
                   rendition=None, image=None, set_media: dict | None = None, hi_audio=None,
-                  clip_media: dict | None = None) -> dict:
+                  clip_media: dict | None = None, talk_audio=None) -> dict:
     """Sezon paketini kopyalar ve season.json yazar. Video yoksa hata verir (kurgu.py çalıştırılmalı).
 
     rendition(src, out): 720p sürümü üretir (H-054); verilmezse yalnızca 1080p kopyalanır.
@@ -163,6 +164,8 @@ def export_season(icerik_root: Path, season: int, probe=None, digest=None, poste
     verilmezse sesler pakete girmez ve `audio` alanı düşer.
     clip_media: Keşfet kliplerinin medya adımları (H-040; `clips.export_clips` anahtar sözcükleri: cut,
     measure, poster, probe); verilmezse yalnızca clips.json yazılır (testler).
+    talk_audio(src, out): Konuş görevlerinde bölüm kaydında aynen geçen karakter satırının sesi (H-090);
+    verilmezse `audio` alanı düşer (uygulama cihaz sesini kullanır).
     """
     src = SeasonSource.load(icerik_root, season)
     if src.media_dir is None:
@@ -228,6 +231,10 @@ def export_season(icerik_root: Path, season: int, probe=None, digest=None, poste
     hi = export_hi(icerik_root, season, out, audio=hi_audio)
     if hi is not None:
         doc["hi"] = hi
+    # Konuş görevleri (H-090): yönlendirmeli sahneler ve kısa mesajlar → talk.json.
+    talk = export_talk(icerik_root, season, out, audio=talk_audio)
+    if talk is not None:
+        doc["talk"] = talk
     # Keşfet klipleri (H-040): clips.json + clips/<id>.mp4 (720p) ve ilk kare.
     if clips_source(icerik_root, season).exists() or (out / "clips.json").exists():
         clips = export_clips(icerik_root, season, out, **(clip_media or {}))

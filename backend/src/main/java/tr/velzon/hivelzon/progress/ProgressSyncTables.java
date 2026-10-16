@@ -25,7 +25,8 @@ import tr.velzon.hivelzon.sync.SyncTableProvider;
  * ilerlemesi (H-067, mobil şema 6) ve dilbilgisi dersi ilerlemesi (H-078, mobil şema 7) aynı kuralla birleşir.
  * Günlük ölçülen süre (H-074, mobil şema 8) (gün, kaynak) başına toplamdır; her satırı yalnız kendi cihazı yazar,
  * düz LWW. Kitap sonu anlama (H-091, mobil şema 9) yalnız sayı ve öz değerlendirmedir (yazılan metin yok), düz
- * LWW.
+ * LWW. Konuş görevleri (H-090, mobil şema 11) yalnız görev kimliği ve zamanlardır (yazılan mesaj, söylenenin
+ * yazısı ve ses yok), düz LWW.
  */
 @Component
 public class ProgressSyncTables implements SyncTableProvider {
@@ -89,6 +90,10 @@ public class ProgressSyncTables implements SyncTableProvider {
                         integer("firstTryCorrect", "first_try_correct", true, 0, 2),
                         bool("retellDone", "retell_done", true),
                         oneOf("selfCheck", "self_check", false, "all", "some", "not_yet"),
-                        instant("completedAt", "completed_at", true))));
+                        instant("completedAt", "completed_at", true))),
+                new SyncTable("user_talk_progress", 97, Kind.MUTABLE,
+                        List.of(string("taskId", "task_id", true, 64)), UPDATED_AT, List.of(
+                        instant("completedAt", "completed_at", true),
+                        instant("lastDoneAt", "last_done_at", true))));
     }
 }

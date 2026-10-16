@@ -124,6 +124,14 @@ class OnboardingStore {
     await _setMeta(noticeVersionKey, version);
   }
 
+  /// Açılışın ilk bittiği an (UTC); yoksa null. İlk 7 günlük akış buna göre
+  /// sayılır (H-090).
+  Future<DateTime?> completedAt() async {
+    await _ready;
+    final v = await _meta(completedKey);
+    return v == null ? null : DateTime.tryParse(v)?.toUtc();
+  }
+
   Future<String?> suggestedLevel() async {
     await _ready;
     return _meta(suggestedLevelKey);

@@ -21,8 +21,13 @@
 //      - B1+: yarım kitap → seviyesindeki okunmamış kitap. Hikâye isteğe
 //        bağlıdır: yarım ve sıradaki bölüm küçük görevden sonra gelir (kitap
 //        yoksa yedek). Yeni bölüm üretilmez (K-25).
-//   4. Küçük görev: A1–A2'de sahne avı → eşik altı tekrar → kitap dinleme →
-//      dilbilgisi; B1+'da dilbilgisi → eşik altı tekrar → sahne avı.
+//   4. Küçük görev: A1–A2'de sahne avı → Konuş görevi → eşik altı tekrar →
+//      kitap dinleme → dilbilgisi; B1+'da dilbilgisi → eşik altı tekrar
+//      (sahne avı ve Konuş görevleri A1 mekân ve ifadeleridir; önerilmez).
+//      **İlk 7 gün (A1 ya da seviye yok; H-090):** Konuş görevi küçük
+//      görevlerin başına geçer ve gerekçe günü söyler ("İlk haftanın 3.
+//      günü…"). Görev, ilgili bölüm bitince açılır (kafe sahnesi B9'dan
+//      sonra). Konuş görevi günde en çok bir kez önerilir.
 //      Bugün ana adım yapıldıysa (bölüm bitti ya da kitap okundu) küçük görev
 //      ana adımın önüne geçer: "sahne → küçük görev" sırası korunur.
 //   5. Hiçbiri (ya da hepsi bugün geçildi) → "Bugünlük bu kadar yeter".
@@ -40,11 +45,32 @@ const Duration kStaleHalfEpisode = Duration(days: 7);
 /// Bu kadar süre etkinlik yoksa plan kısa bir tekrarla başlar.
 const Duration kLongBreak = Duration(days: 7);
 
+/// İlk hafta akışının süresi (H-090).
+const int kFirstWeekDays = 7;
+
 /// Birincil önerinin kitap olduğu seviyeler (yerleştirme sonucu).
 const Set<String> kAdvancedLevels = {'B1', 'B2', 'C1', 'C2'};
 
 bool isAdvancedLevel(String? level) =>
     kAdvancedLevels.contains(level?.trim().toUpperCase());
+
+/// İlk haftanın kaçıncı günü (1–7); ilk hafta akışı yoksa null (H-090).
+/// Yalnızca A1 (ya da seviye testi yapılmamış) kullanıcı için; gün yerel
+/// takvimle sayılır.
+int? firstWeekDay(CoachInput i) {
+  final start = i.startedAt;
+  final level = i.level?.trim().toUpperCase();
+  if (start == null || (level != null && level != 'A1')) return null;
+  final a = start.toLocal();
+  final b = i.now.toLocal();
+  final days = DateTime.utc(
+    b.year,
+    b.month,
+    b.day,
+  ).difference(DateTime.utc(a.year, a.month, a.day)).inDays;
+  if (days < 0 || days >= kFirstWeekDays) return null;
+  return days + 1;
+}
 
 enum PlanStepState { done, current, upcoming }
 
@@ -210,6 +236,30 @@ DailyPlan planToday(CoachInput i) {
           stage: PlanStage.task,
         );
 
+  // Konuş görevi (H-090): günde en çok bir tane; B1+ kullanıcıya önerilmez.
+  final day = advanced ? null : firstWeekDay(i);
+  final tk = (advanced || i.talkDoneToday) ? null : i.talkTasks.firstOrNull;
+  final talk = tk == null
+      ? null
+      : HiSuggestion(
+          kind: HiSuggestionKind.talk,
+          title: TalkPlanTexts.title(tk.titleTr),
+          reasonTr: TalkPlanTexts.reason(
+            day: day,
+            scene: tk.scene,
+            episode: tk.unlockEpisode,
+            character: tk.characterTr,
+            minutes: tk.minutes,
+            goal: goal,
+          ),
+          actionLabel: tk.scene
+              ? TalkPlanTexts.sceneAction
+              : TalkPlanTexts.messageAction,
+          actionRoute: '/konusma/${tk.id}',
+          minutes: tk.minutes,
+          stage: PlanStage.task,
+        );
+
   final dueWarm =
       i.reviewDue >= kReviewThreshold || (longBreak && i.reviewDue > 0);
   final warm = <HiSuggestion?>[
@@ -230,7 +280,10 @@ DailyPlan planToday(CoachInput i) {
   // kararı 2026-10-16); isteyen Defter'den açar.
   final tasks = advanced
       ? [grammar, smallReview]
-      : [hunt, smallReview, startBook, grammar];
+      : day != null
+      // İlk hafta (H-090): bölümden sonra kendi kullanma görevi önce.
+      ? [talk, hunt, smallReview, startBook, grammar]
+      : [hunt, talk, smallReview, startBook, grammar];
 
   // ---- sıra
   final ordered = <HiSuggestion>[];
@@ -261,6 +314,7 @@ DailyPlan planToday(CoachInput i) {
     hunt,
     grammar,
     smallReview,
+    talk,
     ...warm,
   ].any((s) => s != null && i.dismissed.contains(s.key));
   ordered.add(

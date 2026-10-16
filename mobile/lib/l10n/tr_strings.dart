@@ -1774,3 +1774,122 @@ abstract final class OnboardingTexts {
   static const readyLocalChild = 'Hesap gerekmez; her şey bu telefonda kalır.';
   static const readyStart = 'Hikâyeye başla';
 }
+
+/// Bugünün planında Konuş görevi (H-090): ilk 7 gün ve sonrası. Gerekçe
+/// görünür; puan, geri sayım ve aciliyet yok (K-32).
+abstract final class TalkPlanTexts {
+  static String title(String task) => 'Konuş: $task';
+
+  static String reason({
+    int? day,
+    required bool scene,
+    int? episode,
+    String? character,
+    int? minutes,
+    required int goal,
+  }) {
+    final first = day == null ? '' : 'İlk haftanın $day. günü. ';
+    final now = episode == null
+        ? 'Şimdi'
+        : 'Bölüm ${accusativeNumber(episode)} bitirdin; şimdi';
+    final body = scene
+        ? '$now ${character == null ? '' : '$character ile '}kısa bir '
+              'konuşmayı sen yap. Söyleyerek ya da dokunarak cevap verirsin; '
+              'puan yok.'
+        : '$now öğrendiklerinle kısa bir mesaj yaz. Puan yok.';
+    final m = minutes == null || minutes <= 0
+        ? ''
+        : minutes <= goal
+        ? ' Yaklaşık $minutes dk sürer.'
+        : ' Yaklaşık $minutes dk sürer; istediğin yerde bırakabilirsin.';
+    return '$first$body$m';
+  }
+
+  static const sceneAction = 'Sahneye başla';
+  static const messageAction = 'Mesajı yaz';
+}
+
+/// Konuş sekmesi (H-090): yönlendirmeli sahneler ve kısa mesajlar. Yapay
+/// zekâ sohbeti değildir (H-007); puan yok, "yanlış" yok, "Geç" hep var
+/// (K-32). Kılavuz: ARAYUZ-METINLERI §7.2.
+abstract final class TalkTexts {
+  // Sekme
+  static const title = 'Konuş';
+  static const subtitle = 'Hikâyedeki karakterlerle kısa provalar.';
+  static const introTitle = 'Hazır cümlelerle prova';
+  static const introBody =
+      'Bu sahnelerde yapay zekâ yok: karakterlerin cümleleri önceden '
+      'yazıldı. Söyleyerek ya da dokunarak cevap verirsin; puan yok. '
+      'Karakterlerle serbest sohbet sonraki sürümde gelecek.';
+  static const scenesHeading = 'Sahneler';
+  static const messagesHeading = 'Kısa mesajlar';
+  static String sceneMeta(String? character, int turns, int minutes) =>
+      '${character == null ? '' : '$character ile · '}$turns tur · '
+      'yaklaşık $minutes dk';
+  static String messageMeta(String? to, int minutes) =>
+      '${to == null ? '' : 'Alıcı: $to · '}yaklaşık $minutes dk';
+  static String locked(int? episode) => episode == null
+      ? 'İlgili bölümü bitirince açılır.'
+      : 'Bölüm ${accusativeNumber(episode)} bitirince açılır.';
+  static const doneLabel = 'Yaptın';
+  static const loading = 'Konuşma sahneleri hazırlanıyor…';
+  static const emptyTitle = 'Konuşma sahneleri hazırlanıyor';
+  static const emptyBody =
+      'Bölümleri bitirdikçe burada kısa konuşma sahneleri açılacak.';
+  static const errorTitle = 'Sahneler açılamadı';
+  static const errorBody = 'Bağlantını kontrol edip tekrar dene.';
+
+  // Sahne
+  static const rehearsalNote =
+      'Bu bir prova: puan yok. İstediğin turu geçebilirsin.';
+  static const start = 'Başla';
+  static String turnProgress(int i, int n) => 'Tur $i / $n';
+  static const listen = 'Dinle';
+  static const showTr = 'Türkçesi';
+  static const hideTr = 'Türkçesini gizle';
+  static const yourTurn = 'Sıra sende';
+  static const you = 'Sen';
+  static const chooseMode = 'Seçeneklerden seç';
+  static const buildMode = 'Kelimelerle kur';
+  static const skip = 'Geç';
+  static const chooseHint = 'Uygun cevaba dokun.';
+  static const buildHint = 'Kelimelere sırayla dokun.';
+  static const buildUndo = 'Son kelimeyi geri al';
+  static const buildRetry = 'Sıra biraz farklı. Bir daha dene.';
+  static const accepted = 'Güzel! Anlaşıldı.';
+  static String alsoSay(String other) => 'Böyle de söyleyebilirsin: $other';
+  static const skipped = 'Sorun değil. Şöyle diyebilirsin:';
+  static const revealed =
+      'Sorun değil. Şöyle diyebilirsin; istersen seçeneklerden seç:';
+  static const next = 'Devam et';
+  static const endTitle = 'Sahneyi bitirdin';
+  static String endOwn(List<String> phrases) =>
+      'Kendin kullandığın ifadeler: ${phrases.join(' · ')}';
+  static const endBody = 'İstediğin zaman yeniden oynayabilirsin.';
+  static const backToTalk = "Konuş'a dön";
+  static const replay = 'Tekrar oyna';
+  static const taskError = 'Bu görev açılamadı.';
+
+  // Mesaj
+  static String to(String to) => 'Alıcı: $to';
+  static const fieldLabel = 'Mesajın (İngilizce)';
+  static const fieldHint = 'İngilizce 1–2 cümle yaz';
+  static const send = 'Gönder';
+  static const passed = 'Mesajın anlaşılır!';
+  static const modelLabel = 'Örnek mesaj';
+  static String missing(List<String> words) =>
+      'Mesajında şunu göremedim: ${words.join(', ')}.';
+  static String forbidden(List<String> words) =>
+      'Mesajında "${words.join('", "')}" var; anlam tersine dönmüş olabilir.';
+  static const edit = 'Düzelt';
+  static const showModel = 'Örnek mesaja bak';
+  static const selfCheckTitle = 'Kendin karşılaştır';
+  static const selfCheckIntro =
+      'Bu mesajı uygulama denetlemiyor. Örnekle karşılaştır:';
+  static const similar = 'Benzer yazdım';
+  static const tryAgain = 'Bir daha deneyeyim';
+  static const messageDone = 'Mesaj görevini bitirdin';
+  static const privacy =
+      'Yazdığın mesaj kaydedilmez; yalnızca görevi bitirdiğin bilgisi bu '
+      'cihazda kalır.';
+}

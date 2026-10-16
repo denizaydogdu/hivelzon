@@ -9,6 +9,7 @@ import '../../features/hi/domain/hi_content.dart';
 import '../../features/library/domain/book.dart';
 import '../../features/player/domain/episode.dart';
 import '../../features/player/domain/subtitles.dart';
+import '../../features/talk/domain/talk_task.dart';
 import '../../features/topic_sets/domain/topic_set.dart';
 import 'content_source.dart';
 
@@ -115,6 +116,17 @@ class HttpContentSource implements ContentSource {
       return ClipCatalog.fromJson(json.cast<String, dynamic>());
     } on Object catch (e) {
       throw ContentUnavailableException('Bozuk clips.json', cause: e);
+    }
+  }
+
+  @override
+  Future<TalkCatalog> loadTalk(int season, String path) async {
+    final json = await _getJson(seasonMediaUri(season, path));
+    if (json is! Map) throw ContentUnavailableException('Bozuk talk.json');
+    try {
+      return TalkCatalog.fromJson(json.cast<String, dynamic>());
+    } on Object catch (e) {
+      throw ContentUnavailableException('Bozuk talk.json', cause: e);
     }
   }
 

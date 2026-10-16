@@ -76,7 +76,7 @@ Future<Set<String>> recordSpokenPractice(
   final target = switch (p.place) {
     SpeechPlace.episodeEnd || SpeechPlace.decision => true,
     SpeechPlace.meaning => false,
-    SpeechPlace.review || SpeechPlace.grammar => null,
+    SpeechPlace.review || SpeechPlace.grammar || SpeechPlace.talk => null,
   };
   if (target == null) return const {};
   final keys = await container

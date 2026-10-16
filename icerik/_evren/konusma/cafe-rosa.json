@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "id": "cafe-rosa",
+  "kind": "scene",
+  "season": 1,
+  "level": "A1",
+  "order": 90,
+  "status": "DRAFT",
+  "author": "Claude (taslak, H-090)",
+  "date": "2026-10-16",
+  "unlockAfter": "A1-009",
+  "titleTr": "Kafede sipariş ver",
+  "introTr": "Hilltop Café'desin. Rosa tezgâhta seni bekliyor. Bu bir prova: Alex'in yerine sen sipariş ver.",
+  "character": {"nameTr": "Rosa", "speaker": "ROSA"},
+  "image": {"episode": "A1-009", "path": "stills/B9-04-k1-pov.webp"},
+  "turns": [
+    {
+      "id": "t1",
+      "line": {"en": "Hello, Alex! Tea or hot chocolate?", "tr": "Merhaba Alex! Çay mı, sıcak çikolata mı?"},
+      "promptTr": "Kibarca bir içecek iste: çay ya da sıcak çikolata.",
+      "accept": [
+        "Can I have a tea, please?",
+        "Can I have a hot chocolate, please?",
+        "Can I have tea, please?",
+        "A tea, please.",
+        "A hot chocolate, please.",
+        "Tea, please."
+      ],
+      "distractors": [
+        {"en": "I want tea.", "reactionTr": "Rosa gülümsüyor: \"Please?\" İngilizcede istekler kibar söylenir: Can I have a tea, please?"}
+      ],
+      "targets": ["Can I have a tea, please?"]
+    },
+    {
+      "id": "t2",
+      "line": {"en": "Here you are.", "tr": "Buyurun."},
+      "promptTr": "Teşekkür et ve fiyatını sor.",
+      "accept": [
+        "Thank you. How much is it?",
+        "Thanks! How much is it?",
+        "Thank you. How much is the tea?",
+        "How much is it, please?",
+        "How much is it?"
+      ],
+      "distractors": [
+        {"en": "Thank you. How many is it?", "reactionTr": "Fiyat sorarken \"How much\" denir: How much is it?"}
+      ],
+      "targets": ["How much is it?", "Thank you."]
+    },
+    {
+      "id": "t3",
+      "line": {"en": "It's twelve, please.", "tr": "On iki, lütfen."},
+      "promptTr": "Parayı uzatırken \"Buyurun\" de.",
+      "accept": [
+        "Here you are.",
+        "Here you are. Thank you.",
+        "Here you go.",
+        "OK. Here you are."
+      ],
+      "distractors": [
+        {"en": "Here are you.", "reactionTr": "Kelime sırası farklı: Here you are."}
+      ],
+      "targets": ["Here you are."]
+    },
+    {
+      "id": "t4",
+      "line": {"en": "Thank you! Do you want a cake?", "tr": "Teşekkürler! Kek ister misin?"},
+      "promptTr": "Kibarca hayır de.",
+      "accept": [
+        "No, thank you.",
+        "No, thanks.",
+        "No, thank you, Rosa.",
+        "No, thank you. Just the tea."
+      ],
+      "distractors": [
+        {"en": "No, I can't.", "reactionTr": "\"Do you want…?\" sorusuna kibar cevap: No, thank you."}
+      ],
+      "targets": ["Thank you."]
+    }
+  ],
+  "outro": {"en": "OK! Have a nice day.", "tr": "Peki! İyi günler."}
+}

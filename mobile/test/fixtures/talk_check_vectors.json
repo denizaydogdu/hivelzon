@@ -1,0 +1,32 @@
+{
+  "_note": "H-090: Konuş mesaj kuralı ve hedef ifade eşleşmesi için ortak örnekler. Uygulama (talk_match_test.dart) ve içerik hattı (test_talk.py) aynı sonucu vermeli.",
+  "checks": [
+    {"check": {"all": [["sorry"], ["late"]], "none": ["not", "never", "no"]}, "text": "Sorry, Maya. I'm late.", "expect": true},
+    {"check": {"all": [["sorry"], ["late"]], "none": ["not", "never", "no"]}, "text": "sorry i am late", "expect": true},
+    {"check": {"all": [["sorry"], ["late"]], "none": ["not", "never", "no"]}, "text": "Sorry! I'll be late. The bus is late.", "expect": true},
+    {"check": {"all": [["sorry"], ["late"]], "none": ["not", "never", "no"]}, "text": "I'm late.", "expect": false},
+    {"check": {"all": [["sorry"], ["late"]], "none": ["not", "never", "no"]}, "text": "Sorry, I'm not late.", "expect": false},
+    {"check": {"all": [["sorry"], ["late"]], "none": ["not", "never", "no"]}, "text": "Sorry Maya, I can't come. I'm late.", "expect": false},
+    {"check": {"all": [["sorry"], ["late"]], "none": ["not", "never", "no"]}, "text": "SORRY LATE", "expect": true},
+    {"check": {"all": [["friday"], ["seven"]], "none": ["not", "never", "no"]}, "text": "Pier 3. On Friday at seven.", "expect": true},
+    {"check": {"all": [["friday"], ["seven"]], "none": ["not", "never", "no"]}, "text": "Friday 7 pm, Pier 3", "expect": true},
+    {"check": {"all": [["friday"], ["seven"]], "none": ["not", "never", "no"]}, "text": "friday at 7:00", "expect": true},
+    {"check": {"all": [["friday"], ["seven"]], "none": ["not", "never", "no"]}, "text": "Friday at eleven", "expect": false},
+    {"check": {"all": [["friday"], ["seven"]], "none": ["not", "never", "no"]}, "text": "Not Friday. Seven.", "expect": false},
+    {"check": {"all": [["thank you", "thanks"]]}, "text": "Thanks a lot!", "expect": true},
+    {"check": {"all": [["thank you", "thanks"]]}, "text": "Thank you!", "expect": true},
+    {"check": {"all": [["thank you", "thanks"]]}, "text": "You thank", "expect": false}
+  ],
+  "contains": [
+    {"text": "Sorry, Maya. I'm late.", "phrase": "Sorry, I'm late.", "expect": true},
+    {"text": "Excuse me. Where's the bus stop?", "phrase": "Excuse me, where is…?", "expect": true},
+    {"text": "Where is the bus stop, please?", "phrase": "Excuse me, where is…?", "expect": false},
+    {"text": "Where is the bus stop, please?", "phrase": "Where is…?", "expect": true},
+    {"text": "Hello, my name is Alex.", "phrase": "My name is…", "expect": true},
+    {"text": "I'm Alex.", "phrase": "My name is…", "expect": false},
+    {"text": "I'm from İzmir, Türkiye.", "phrase": "I'm from Türkiye.", "expect": true},
+    {"text": "Pier 3. On Friday at seven.", "phrase": "at seven", "expect": true},
+    {"text": "Friday 7 pm", "phrase": "at seven", "expect": false},
+    {"text": "Thank you. How much is the tea?", "phrase": "How much is it?", "expect": false}
+  ]
+}

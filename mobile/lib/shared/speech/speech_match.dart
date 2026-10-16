@@ -291,9 +291,13 @@ abstract final class SpeechMatcher {
     'theater': 'theatre',
     'gray': 'grey',
     'mom': 'mum',
+    // Motor "Türkiye"yi çoğunlukla "Turkey" yazar (H-090).
+    'turkey': 'turkiye',
   };
 
   static String _foldDiacritics(String s) {
+    // "İ".toLowerCase() → "i" + birleşen nokta (U+0307): "İzmir" = "izmir".
+    s = s.replaceAll('\u0307', '');
     const from = 'àáâãäåçèéêëìíîïñòóôõöùúûüýÿışğ';
     const to = 'aaaaaaceeeeiiiinooooouuuuyyisg';
     final b = StringBuffer();

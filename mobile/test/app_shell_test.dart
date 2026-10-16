@@ -10,9 +10,8 @@ import 'support/fake_content_source.dart';
 import 'support/onboarding.dart';
 
 void main() {
-  testWidgets('5 sekme görünür ve Konuş sekmesi "yakında" gösterir', (
-    tester,
-  ) async {
+  testWidgets('5 sekme görünür; Konuş sekmesi yönlendirmeli sahneleri '
+      'gösterir (H-090; AI sohbeti yok, H-007)', (tester) async {
     await tester.pumpWidget(
       ProviderScope(
         overrides: [
@@ -46,9 +45,13 @@ void main() {
     expect(find.byKey(const ValueKey('home-continue')), findsOneWidget);
 
     await tester.tap(find.descendant(of: nav, matching: find.text('Konuş')));
-    await tester.pumpAndSettle();
+    // Liste yüklenirken iskelet sakin nabız atar (pumpAndSettle bitmez).
+    for (var i = 0; i < 10; i++) {
+      await tester.pump(const Duration(milliseconds: 100));
+    }
 
-    expect(find.text('Konuşma pratiği yakında'), findsOneWidget);
-    expect(find.byKey(const ValueKey('page-title')), findsOneWidget);
+    expect(find.byKey(const ValueKey('talk-screen')), findsOneWidget);
+    expect(find.textContaining('yapay zekâ yok'), findsOneWidget);
+    expect(find.byKey(const ValueKey('page-title')), findsWidgets);
   });
 }

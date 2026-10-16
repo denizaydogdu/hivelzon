@@ -23,6 +23,7 @@ import '../features/profile/presentation/profile_screen.dart';
 import '../features/story/presentation/season_intro_screen.dart';
 import '../features/story/presentation/story_screen.dart';
 import '../features/talk/presentation/talk_screen.dart';
+import '../features/talk/presentation/talk_task_screen.dart';
 import '../features/topic_sets/presentation/scene_hunt_screen.dart';
 import '../features/topic_sets/presentation/topic_set_screen.dart';
 import '../shared/activity/study_clock.dart';
@@ -71,6 +72,9 @@ abstract final class AppRoutes {
 
   /// Konu seti (H-051): Defter'den ve bölüm sonundan açılır.
   static String topicSet(String id) => '/konu-seti/$id';
+
+  /// Konuş görevi (H-090; tam ekran): yönlendirmeli sahne ya da kısa mesaj.
+  static String talkTask(String id) => '/konusma/$id';
 
   /// Sahne avı (tam ekran, H-051).
   static String sceneHunt(String id) => '/konu-seti/$id/sahne-avi';
@@ -241,6 +245,16 @@ final routerProvider = Provider<GoRouter>((ref) {
             ),
           ),
         ],
+      ),
+      GoRoute(
+        path: '/konusma/:id',
+        pageBuilder: (context, state) => MaterialPage(
+          key: state.pageKey,
+          fullscreenDialog: true,
+          child: StudyTimeScope(
+            child: TalkTaskScreen(taskId: state.pathParameters['id']!),
+          ),
+        ),
       ),
       GoRoute(
         path: AppRoutes.review,
