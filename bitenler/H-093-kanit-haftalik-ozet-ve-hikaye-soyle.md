@@ -1,6 +1,6 @@
 # H-093: Haftalık özette kanıt cümlesi, Hi gizlilik ekranı ve hikâye içi "Söyle" kanıtı
 
-- **Durum:** Devam ediyor (2026-10-16)
+- **Durum:** Bitti (2026-10-16)
 - **Tür:** Uygulama (kod)
 - **Faz:** F1 MVP — ürün incelemesi sonrası (H-089'un devamı; H-089 kapsamı "Profil ve haftalık özet" onaylıydı)
 - **Bağımlılık:** H-088, H-089

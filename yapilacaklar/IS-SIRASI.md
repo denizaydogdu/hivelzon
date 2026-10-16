@@ -151,7 +151,7 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 | İ1 | H-087 | Konuşma eşleştirmesinde anlam hatası (P0) | Kritik | H-055 | ✅ |
 | İ2 | H-088 | Tek günlük plan (Ana Sayfa = Hi; seviyeye göre öneri) | Yüksek | H-047, H-074 | ✅ |
 | İ3 | H-089 | Taklit/hatırlama ayrımı, öğrenme kanıtı basamakları | Yüksek | H-087 | ✅ |
-| İ3' | H-093 | Haftalık özette kanıt, Hi gizlilik, hikâye içi Söyle kanıtı | Orta | H-088, H-089 | 🔄 |
+| İ3' | H-093 | Haftalık özette kanıt, Hi gizlilik, hikâye içi Söyle kanıtı | Orta | H-088, H-089 | ✅ |
 | İ4 | H-090 | İlk 7 gün A1 + Konuş'ta 3 yönlendirmeli sahne, kısa mesaj | Yüksek | H-088, H-089 | 🔄 |
 | İ5 | H-091 | Kitap sonu anlama + yeniden anlatma | Orta | H-067 | ✅ |
 | İ6 | H-092 | Kullanılabilirlik testi ve 7–14 gün pilot | Yüksek | H-087…H-091 | ⏳ |
@@ -444,3 +444,4 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
   - Kullanıcı H-091 sorularını/örnek anlatımlarını ve H-088 eşiklerini onayladı.
   - Kullanıcı kararı: B1+ kullanıcıya sahne avı önerilmez (H-088 güncellendi).
   - **H-089 bitti:** FSRS'e yalnız yardımsız hatırlama gider; seçme, dinle-seç, dizme, dinle-söyle ve sahne avı "pratik" (not verilmez; ifade oturum sonunda bir de hatırlama sorusu olarak gelir). Yeni görev `speak_recall` (Türkçe anlamdan söyle; ses yok). Anlamı ters çeviren söyleme hatırlamada Again. Yavaş ama doğru cevap artık Good (erişilebilirlik). Kanıt basamakları (Gördü → Yardımla yaptı → Kendi kullandı → Sonra hatırladı) cihazda, hesap varsa eşitlenir (Drift 10, backend V13). Profil'de "Neler yapabiliyorsun"; sayılar "İçerik ilerlemesi" başlığında. Kurallar `docs/KELIME-TEKRARI.md`. Mobil 1026, backend 143 test geçti. H-090 ve H-093 başladı.
+  - **H-093 bitti:** Hi haftalık özeti ve Profil durum satırı kanıt cümlesiyle ("2 ifadeyi birkaç gün sonra kendin hatırladın."); Hi gizlilik ekranında "Öğrenme kanıtların" listesi; "Hi'nin kayıtlarını sil" kanıtları da siler (yerel, diğer cihazlar, sunucu; defter ve tekrar kartları kalır). Hikâyede "Sen de söyle", bölüm sonu ve "Söyleyerek seç" başarısı "Yardımla yaptı" kaydı (FSRS'e gitmez). Mobil 1037, backend 143 test geçti.
