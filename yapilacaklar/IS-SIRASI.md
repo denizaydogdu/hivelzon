@@ -31,7 +31,7 @@ Bu dosya tek takip noktasıdır. Hangi işin hangi sırada yapıldığını, şu
   - H dosyasının `Durum` satırı güncellenir;
   - **Günlük** bölümüne bir satır eklenir.
 - **Biten işler:** "Biten işler" tablosuna doğrulama kanıtıyla birlikte yazılır.
-- **Numaralar:** Tek sayaçla verilir. Sıradaki boş numara: **H-087**.
+- **Numaralar:** Tek sayaçla verilir. Sıradaki boş numara: **H-093**.
 
 **Durum simgeleri:**
 - ⛔ Kullanıcı kararı bekliyor
