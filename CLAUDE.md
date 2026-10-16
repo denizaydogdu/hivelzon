@@ -132,6 +132,7 @@ cd mobile && flutter run -d "hiVelzon iPhone 17"       # içerik adresi: --dart-
 | `docs/OYUN-TASARIMI.md` | **Oyunlaştırılmış hikâye tasarımı:** evren, kahraman, bölümler arası bağ, Sezon 1 zinciri, ekranlar, veri modeli. Kararlar H-029'da onaylandı (K-21…K-35). |
 | `docs/BOLUM-PAKETI.md` | Bölüm paketi biçimi (`scenes.json` schemaVersion 2, altyazı JSON, sezon paketi) ve content-lint kuralları (H-034, H-046, H-050) |
 | `docs/BOLUM-URETIM-REHBERI.md` | Bir bölümü mevcut araçlarla üretme kontrol listesi (H-085; B6–B12 bunu izler) |
+| `docs/KELIME-TEKRARI.md` | Kelime tekrarı: hatırlama ile pratiğin ayrımı, FSRS not kuralları, öğrenme kanıtı basamakları ve Profil kazanımları (H-089) |
 | `docs/HI-ASISTAN-VE-KOC.md` | Hi asistanı ve öğrenme koçu kararları: Hi-A (MVP, kural tabanlı), Hi-B (v1, yerel LLM + RAG) (H-047) |
 | `docs/LISANS-RAPORU.md` | Kelime listesi ve içerik lisanslarının doğrulaması (H-027) |
 | `tasarim/README.md` | Arayüz tasarım yönü ve tema belirteçleri (H-045) |

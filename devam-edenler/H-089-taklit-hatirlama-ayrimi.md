@@ -24,3 +24,9 @@ cd mobile && flutter analyze && flutter test
 
 ## Geri alma
 Kendi dalında; `git revert`.
+
+## Notlar (2026-10-16, uygulama)
+- Kurallar ve gerekçe: `docs/KELIME-TEKRARI.md`. Pratik (seç, dinle-seç, diz, dinle ve söyle, sahne avı) FSRS'e yazılmaz; başarılıysa aynı oturumun sonunda yardımsız hatırlama sorusu gelir. Uzun vade kartı önce yardımsız hatırlanır. Yeni görev: `speak_recall` (Türkçesinden, sesi duymadan söyle).
+- "Söyle" hatırlamasında anlamı değiştiren ek (H-087 `changedWords`) → Again; yalnız eksik kelime → Hard. "Yavaş = Hard" kuralı kaldırıldı (erişilebilirlik); "hızlı = Easy" yalnız olgun kartta, yazma/söylemede.
+- Kanıt basamağı: `expression_evidence` (Drift şema 10, backend V13, eşitleme sırası 160); eski cevaplardan doldurulur. Profil'de "Neler yapabiliyorsun" + "İçerik ilerlemesi" başlığı.
+- Sonra: Hi/Ana Sayfa haftalık özetine kanıt cümlesi; hikâye içi söyleme yerlerinin "yardımla yaptın"a bağlanması; kitap anlaması (H-091) kitap düzeyinde olduğundan ifade basamağına bağlanmadı.

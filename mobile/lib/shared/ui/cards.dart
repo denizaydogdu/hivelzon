@@ -189,3 +189,44 @@ class CapsLabel extends StatelessWidget {
     );
   }
 }
+
+/// Simgeli kısa satır (H-089, Profil "Neler yapabiliyorsun"): solda renkli
+/// simge, sağda metin. Simge ekran okuyucuda okunmaz; metin tek parça.
+class IconLine extends StatelessWidget {
+  const IconLine({
+    super.key,
+    required this.icon,
+    required this.text,
+    this.color = AppPalette.seaBlue,
+  });
+
+  final IconData icon;
+  final String text;
+  final Color color;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return Padding(
+      padding: const EdgeInsets.symmetric(
+        horizontal: AppSpace.s16,
+        vertical: AppSpace.s12,
+      ),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          ExcludeSemantics(
+            child: Icon(icon, color: color, size: AppIconSize.md),
+          ),
+          const SizedBox(width: AppSpace.s16),
+          Expanded(
+            child: Text(
+              text,
+              style: theme.textTheme.bodyLarge?.copyWith(color: AppPalette.ink),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}

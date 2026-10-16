@@ -62,7 +62,7 @@ public abstract class IntegrationTest {
                     + "content_items, catalog_seasons, user_story_progress, user_story_flags, gate_progress, "
                     + "season_state, clues, story_links, notebook_items, review_cards, review_logs, learning_events, "
                     + "hi_records, speech_attempts, user_book_progress, user_grammar_progress, daily_activity, "
-                    + "user_book_comprehension");
+                    + "user_book_comprehension, expression_evidence");
         });
         clock.reset();
         mail.clear();

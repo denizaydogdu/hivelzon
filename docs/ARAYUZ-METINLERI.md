@@ -255,6 +255,7 @@ Hikâye sekmesinin seçicisi **Macera · Kitaplık · Dilbilgisi** olur (sekme s
 | Düğmeler | "Dinle", "Kontrol et", "Kartı aç", "Bildim", "Bilmiyorum", "Tamam", "Geri dön" | aynı | |
 | Yazma alanı | İngilizce yaz | İngilizcesini yaz | Görev cümlesiyle aynı. |
 | Geri bildirim | "Doğru!", "Sorun değil, birlikte bakalım.", "Doğrusu bu.", "Seçtiğin: …" | aynı | Suçlamasız. |
+| Pratikten sonra (H-089) | — | Doğru pratikte (seç, dinle-seç, diz, dinle ve söyle) panelde: "Oturumun sonunda bu ifadeyi bir de kendin hatırlayacaksın." | Pratik not almaz; oturum sonunda yardımsız hatırlama sorusu gelir (`docs/KELIME-TEKRARI.md` §2). |
 | Kartın yüzü | "TÜRKÇE ANLAMI", "BÖLÜMDEKİ CÜMLE", "Cümleyi dinle", "İfadeyi dinle", "Görsel yok" | aynı | |
 
 ### 5.4 Konu setleri ve sahne avı (H-051)
@@ -280,19 +281,20 @@ Hikâye sekmesinin seçicisi **Macera · Kitaplık · Dilbilgisi** olur (sekme s
 | Buldu | "Buldun!" · kelime · Türkçesi · ses (varsa) · **Devam et** / sonda **Sonucu gör** | |
 | Bilmiyorum | **Bilmiyorum** (Kelime tekrarındaki biçim) → "Burada. Sorun değil, birlikte bakalım." | |
 | Ekran okuyucu seçenekleri | "Doğru nesneyi seç:" + Türkçe adlar | Bölgeler de Türkçe adıyla düğmedir. |
-| Özet | **Sahne avı tamam** · "10 nesnenin hepsini kendin buldun." / "10 nesneden 8 tanesini kendin buldun." / "Bu sefer nesnelere birlikte baktık." · sayı kutuları (H-061): "10 · nesneye baktın", "8 · kendin buldun", "2 · birlikte baktık" (sıfır olan gösterilmez) · "Defterindeki 10 ifadenin tekrar zamanı güncellendi." · "Bu nesneleri defterine eklersen kelime tekrarında da karşına çıkar." · **Tekrar oyna** · **Sete dön** | Puan, yüzde ya da "yanlış" sayısı yok. |
+| Özet | **Sahne avı tamam** · "10 nesnenin hepsini kendin buldun." / "10 nesneden 8 tanesini kendin buldun." / "Bu sefer nesnelere birlikte baktık." · sayı kutuları (H-061): "10 · nesneye baktın", "8 · kendin buldun", "2 · birlikte baktık" (sıfır olan gösterilmez) · "Defterindeki 10 ifadeyle burada da çalıştın." (H-089: sahne avı tanımadır, tekrar zamanını değiştirmez) · "Bu nesneleri defterine eklersen kelime tekrarında da karşına çıkar." · **Tekrar oyna** · **Sete dön** | Puan, yüzde ya da "yanlış" sayısı yok. |
 | Defterden çıkarma | Konu setinden gelen ifade, "Deftere ekle" ile eklenen gibi "Defterden çıkar" menüsüyle çıkarılır. Set etkilenmez; "Hepsini defterime ekle" yeniden ekler. | |
 | Bölüm sonu | **YENİ KONU SETİ** · "Yeni konu seti açıldı: Alex'in odası" · **Konu setini aç**. Tekrar oynayışta **KONU SETİ** · "Bu bölümün yerindeki nesneler: Alex'in odası". | |
 
 ## 6. Profil
 
-**Düzen (H-059, 2026-10-14):** illüstrasyonlu dalga başlık → avatar (adın ilk harfi; ad yoksa Hi) + **Merhaba Deniz** / **Merhaba!** + tek satır durum → üç istatistik kutusu → iki ayar grubu. Açıklamalar ayrı paragraf değil, satırın altında ipucudur. Ad ve günlük hedef alt panelde değişir. Sayılar sıfırdan sayarak belirir; "Hareketi azalt" açıksa durağan.
+**Düzen (H-059, 2026-10-14):** illüstrasyonlu dalga başlık → avatar (adın ilk harfi; ad yoksa Hi) + **Merhaba Deniz** / **Merhaba!** + tek satır durum → **Neler yapabiliyorsun** (H-089) → **İçerik ilerlemesi** başlıklı üç istatistik kutusu → iki ayar grubu. Açıklamalar ayrı paragraf değil, satırın altında ipucudur. Ad ve günlük hedef alt panelde değişir. Sayılar sıfırdan sayarak belirir; "Hareketi azalt" açıksa durağan.
 
 | Yer | Metin | Not |
 |---|---|---|
 | Selam | "Merhaba Deniz" / ad yoksa "Merhaba!" | Ekran okuyucuda başlık. Avatarın etiketi ad ya da "Hi". |
 | Durum satırı | "Bu hafta 6 ifadeyi tekrar ettin." → yoksa "Bu hafta 4 yeni ifade topladın." → "Bu hafta 1 bölüm bitirdin." → hiçbiri yoksa "Bugün küçük bir adım yeter." | Yapılmayan söylenmez, kıyas yok (K-16). |
-| İstatistikler | **15** ifade · **3** bölüm bitti · **6** bu hafta tekrar | Sayı + ne sayıldığı; ekran okuyucu "15 ifade" diye tek parça okur. |
+| **Neler yapabiliyorsun** (H-089) | En çok dört cümle, ifade düzeyinde: "Birkaç gün sonra kendin hatırladın: “Where is…?” ve “Excuse me.”" · "Türkçesinden kendin söyledin ya da yazdın: “I'm new here.”" · (yalnız bu ikisi yoksa) "Yardımla yaptın: “…”. Sırada kendin hatırlamak var." · "Yeniden çalışalım: “What time is it?”" · ikiden fazlası "… ve 3 ifade daha" · kanıt yoksa "Kelime tekrarında bir ifadeyi kendin hatırladığında burada görünür." · alt not "Seçerek ya da dinleyip tekrar ederek yaptıkların "yardımla", Türkçesinden kendin söylediklerin "kendin" sayılır." | Yüzde, puan, "unuttun" yok. Liste noktalamayla bitiyorsa ikinci nokta konmaz. Kurallar `docs/KELIME-TEKRARI.md` §3–4. |
+| İstatistikler | Başlık **İçerik ilerlemesi** · **15** ifade · **3** bölüm bitti · **6** bu hafta tekrar | Sayı + ne sayıldığı; ekran okuyucu "15 ifade" diye tek parça okur. İçerik ilerlemesidir, "öğrendin" denmez (H-089). |
 | Grup **Öğrenme** | **Defter** · "15 ifade · 5 ifadenin tekrar zamanı geldi" / "Bölüm bitince ifadeler buraya eklenir." | |
 | | **Günlük hedef** · "Kelime tekrarında günde en fazla 10 yeni ifade açılır." · sağda "10 dk" | Panel: "Günde ne kadar zaman ayırmak istersin?" · 5 / 10 / 15 dk · bilgi kartı (aynı cümle + "İstediğin zaman değiştirebilirsin. Hedefin altında kalmak sorun değil.") |
 | | **Söyle alıştırmaları** (anahtar) · "Sesin bu telefonda yazıya çevrilir; kaydedilmez, hiçbir yere gönderilmez." | Destek / izin yoksa sağda "Kapalı" ve nedeni (§11). |
@@ -382,7 +384,8 @@ Kod: `SpeakTexts` (`mobile/lib/l10n/tr_strings.dart`). Puan, yüzde, dalga biçi
 |---|---|---|
 | Düğmeler | **Söyle** → **Bir daha söyle**; dinlerken **Bitirdim** + "Dinliyorum… Söyleyince biraz bekle." | Fiil. |
 | Geri bildirim | "Söyledin!" · "Neredeyse! Şu kelimeyi duyamadım: hear" · anlamı değiştiren ek duyulursa (H-087) "Neredeyse! İfadede olmayan bir kelime duydum: not" · "Şu kelimeleri duyamadım: excuse, me. Bir daha dene." · "Seni duyamadım. Bir daha dene." · 2 denemeden sonra "Sorun değil. İfade şöyle:" + ifade · tipik hata tanınırsa **Neden böyle?** (Hi'nin notu) | Duyulmayan kelime asıl yazımıyla. |
-| Kelime tekrarı | Görev: "Dinle ve söyle." · "Dinle, sonra mikrofona dokunup İngilizcesini söyle." · yakın sonuçta **Devam et** · **Bilmiyorum** · **Geç** · başlık "Söyledin!" / "Neredeyse!" | İngilizce metin önce gizli. |
+| Kelime tekrarı | Görev: "Dinle ve söyle." · "Dinle, sonra mikrofona dokunup İngilizcesini söyle." · yakın sonuçta **Devam et** · **Bilmiyorum** · **Geç** · başlık "Söyledin!" / "Neredeyse!" | İngilizce metin önce gizli. H-089: taklittir, not almaz. |
+| Kelime tekrarı: Söyle (H-089) | Görev: "İngilizcesini söyle." · "Önce dinlemeden, kendin söyle. Sonra kartı birlikte dinleriz." · Türkçe anlam + resim; **Dinle** düğmesi yok · yakın sonuçta **Devam et** (anlamı değiştiren ek duyulduysa yok) · **Bilmiyorum** · **Geç** | Hatırlamadır; sesi ve metni önce göstermez. |
 | Anlam paneli | **Sen de söyle** | "Tekrar dinle"nin altında. |
 | Karar anı | **Söyleyerek seç** · "Seni tam duyamadım. İstersen dokunarak seç." · iki denemeden sonra "Dokunarak seçebilirsin." | Yalnızca seçenekler İngilizceyse. |
 | Dilbilgisi alıştırması (H-078) | "Cümleyi dinle, sonra sen de söyle." + **Söyle** | Sonuç `place = grammar` olarak kaydedilir. |
