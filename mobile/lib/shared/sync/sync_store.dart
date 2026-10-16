@@ -788,10 +788,17 @@ class SyncStore {
       db.allTables.firstWhere((t) => t.actualTableName == name);
 
   /// "Hi'nin kayıtlarını sil" işareti geldi: [at] anına kadarki öğrenme
-  /// olayları, "Söyle" sonuçları, yan görev ve not kayıtları bu cihazda da
-  /// silinir (H-038). Konu tanıtımı ve sahne avı kalır (ilerleme sayılır).
+  /// olayları, "Söyle" sonuçları, öğrenme kanıtları (H-093), yan görev ve
+  /// not kayıtları bu cihazda da silinir (H-038). Konu tanıtımı ve sahne avı
+  /// kalır (ilerleme sayılır).
   Future<void> applyHiReset(DateTime at) async {
     final t = Variable<DateTime>(at.toUtc());
+    await db.customUpdate(
+      'DELETE FROM expression_evidence WHERE julianday(at) <= julianday(?)',
+      variables: [t],
+      updates: {db.evidenceRecords},
+      updateKind: UpdateKind.delete,
+    );
     await db.customUpdate(
       'DELETE FROM learning_events WHERE julianday(at) <= julianday(?)',
       variables: [t],
@@ -847,7 +854,7 @@ class SyncStore {
       }
       await db.customUpdate(
         "DELETE FROM app_meta WHERE key IN ('profile.displayName', "
-        "'hi.panelOpenedDay')",
+        "'hi.panelOpenedDay', 'review.lastPracticeAt')",
         updates: {db.appMeta},
         updateKind: UpdateKind.delete,
       );

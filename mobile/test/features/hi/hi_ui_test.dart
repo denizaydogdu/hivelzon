@@ -550,6 +550,16 @@ void main() {
           ),
         );
         await store.setBridgeState('bt-a1-001', BridgeState.dismissed);
+        // H-093: öğrenme kanıtı (ifade, basamak, tarih) görünür ve silinir.
+        await db
+            .into(db.evidenceRecords)
+            .insert(
+              EvidenceRecordsCompanion.insert(
+                itemKey: 'phrase|can you hear me',
+                stage: 'helped',
+                at: DateTime.now().toUtc(),
+              ),
+            );
         // H-055: "Söyle" sonucu da Hi'nin kayıtlarındandır.
         await SpeechStore(db).record(
           SpeechAttempt(
@@ -583,6 +593,19 @@ void main() {
         find.textContaining('1 kez söyledin; 1 tanesinde ifadenin tamamı'),
         findsOneWidget,
       );
+      expect(find.text('Öğrenme kanıtların'), findsOneWidget);
+      expect(find.text('“Can you hear me?”'), findsOneWidget);
+      expect(
+        find.text(
+          'Yardımla yaptın · ${AccountTexts.date(DateTime.now().toUtc())}',
+        ),
+        findsOneWidget,
+      );
+      expect(
+        find.byKey(const ValueKey('hi-privacy-week-evidence')),
+        findsOneWidget,
+      );
+      expect(find.text('1 ifadeyi yardımla yaptın.'), findsOneWidget);
       expect(find.byKey(const ValueKey('hi-bubble')), findsNothing);
       final itemsBefore = await tester.runAsync(
         () => db.select(db.notebookItems).get(),
@@ -621,6 +644,15 @@ void main() {
       expect(
         await tester.runAsync(() => db.select(db.speechAttempts).get()),
         isEmpty,
+      );
+      expect(
+        await tester.runAsync(() => db.select(db.evidenceRecords).get()),
+        isEmpty,
+      );
+      expect(find.text('“Can you hear me?”'), findsNothing);
+      expect(
+        find.textContaining('Henüz yok. Bir ifadeyi yardımla yaptığında'),
+        findsOneWidget,
       );
       expect(
         await tester.runAsync(() => db.select(db.notebookItems).get()),

@@ -80,9 +80,7 @@ DeckBuildResult buildEpisodeDeck(
   for (final phrase in info.targetPhrases) {
     final gloss = info.targetPhraseGloss[phrase];
     final hit = _findCue(order, subtitles, phrase);
-    final kind = wordCount(phrase) > 1
-        ? NotebookKind.phrase
-        : NotebookKind.word;
+    final kind = targetPhraseKind(phrase);
     if (hit != null) {
       final (node, cue, from, to) = hit;
       final tr = gloss?.tr ?? _cueMeaning(cue, from, to);

@@ -6,11 +6,13 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../l10n/tr_strings.dart';
 import '../../shared/speech/speak_widgets.dart';
 import '../../shared/speech/speech_providers.dart';
+import '../../shared/speech/speech_store.dart';
+import '../notebook/application/notebook_providers.dart';
 import '../hi/application/hi_providers.dart';
 import '../hi/presentation/hi_cards.dart';
 
 /// Ekranın "Söyle" ortamı (H-055): sağlayıcılardan tanıyıcı, izin akışı,
-/// sonuç kaydı ve Hi'nin notu.
+/// sonuç kaydı, Hi'nin notu ve hikâye içi taklidin kanıtı (H-093).
 SpeakEnv speakEnvOf(BuildContext context) {
   final container = ProviderScope.containerOf(context, listen: false);
   return SpeakEnv(
@@ -21,6 +23,12 @@ SpeakEnv speakEnvOf(BuildContext context) {
           .read(speechStoreProvider)
           .record(a)
           .catchError((Object e) => debugPrint('[H055] sonuç yazılamadı: $e')),
+    ),
+    practiced: (p) => unawaited(
+      recordSpokenPractice(container, p).then<void>(
+        (_) {},
+        onError: (Object e) => debugPrint('[H093] kanıt yazılamadı: $e'),
+      ),
     ),
     whyAction: (ctx, id) {
       final note = container.read(hiContentProvider).value?.note(id);
@@ -53,4 +61,31 @@ Future<bool> ensureSpeechReady(
     )?.showSnackBar(const SnackBar(content: Text(SpeakTexts.permissionDenied)));
   }
   return granted;
+}
+
+/// Hikâye içi "Söyle" başarısı → "yardımla yaptı" (H-093;
+/// `docs/KELIME-TEKRARI.md` §3.1). Anlam paneli (oynatıcı, Keşfet, kitap),
+/// bölüm sonu hedef ifadeler ve karar anı yazılır; kelime tekrarı kendi
+/// sonucunu yazar (`saveOutcome`), dilbilgisi alıştırması ifade değildir.
+/// Bölüm sonu ve karar anında söylenen hedef ifadedir: kart henüz yoksa bölüm
+/// bitince oluşacak kartın anahtarıyla yazılır.
+Future<Set<String>> recordSpokenPractice(
+  ProviderContainer container,
+  SpokenPractice p,
+) async {
+  final target = switch (p.place) {
+    SpeechPlace.episodeEnd || SpeechPlace.decision => true,
+    SpeechPlace.meaning => false,
+    SpeechPlace.review || SpeechPlace.grammar => null,
+  };
+  if (target == null) return const {};
+  final keys = await container
+      .read(notebookStoreProvider)
+      .recordSpokenPractice(
+        p.expression,
+        contentId: p.contentId,
+        targetPhrase: target,
+      );
+  if (keys.isNotEmpty) container.invalidate(evidenceSummaryProvider);
+  return keys;
 }

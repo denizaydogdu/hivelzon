@@ -19,7 +19,8 @@ import tr.velzon.hivelzon.sync.SyncRow;
  * {@code kind = hi_reset} işaretini iter ({@code updatedAt} = silme anı T). Aynı işlem ve kullanıcı kilidi
  * içinde sunucu:
  * <ul>
- * <li>T'ye kadarki öğrenme olaylarını ve "Söyle" sonuçlarını kalıcı siler (yalnız eklenen tablolar);</li>
+ * <li>T'ye kadarki öğrenme olaylarını, "Söyle" sonuçlarını ve öğrenme kanıtlarını ({@code expression_evidence},
+ * H-093) kalıcı siler (yalnız eklenen tablolar);</li>
  * <li>T'ye kadarki yan görev ve not kayıtlarını ({@code bridge_task}, {@code note_read}) silme işaretiyle
  * kapatır (yeni sıra alır, çekmeyle öteki cihazlara gider).</li>
  * </ul>
@@ -59,6 +60,7 @@ class HiResetHook implements SyncPushHook {
     void reset(UUID userId, OffsetDateTime resetAt) {
         jdbc.update("DELETE FROM learning_events WHERE user_id = ? AND at <= ?", userId, resetAt);
         jdbc.update("DELETE FROM speech_attempts WHERE user_id = ? AND at <= ?", userId, resetAt);
+        jdbc.update("DELETE FROM expression_evidence WHERE user_id = ? AND at <= ?", userId, resetAt);
         jdbc.update("""
                 UPDATE hi_records SET deleted = true, status = NULL, updated_at = ?, seq = nextval('sync_seq'),
                        server_updated_at = ?

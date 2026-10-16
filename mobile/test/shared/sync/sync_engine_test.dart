@@ -262,6 +262,8 @@ void main() {
       await b.engine.sync();
       expect(await b.db.select(b.db.learningEvents).get(), hasLength(1));
       expect(await b.db.select(b.db.speechAttempts).get(), hasLength(1));
+      // H-093: öğrenme kanıtı da Hi'nin kayıtlarıyla silinir.
+      expect(await b.db.select(b.db.evidenceRecords).get(), isNotEmpty);
 
       clock.advance(const Duration(minutes: 10));
       await HiStore(a.db, clock: clock.call).deleteLearningData();
@@ -272,6 +274,7 @@ void main() {
       final data = server.dataOf('deniz@example.com');
       expect(data['learning_events'] ?? {}, isEmpty);
       expect(data['speech_attempts'] ?? {}, isEmpty);
+      expect(data['expression_evidence'] ?? {}, isEmpty);
       final bridge = data['hi_records']!.values.firstWhere(
         (r) => r['kind'] == 'bridge_task',
       );
@@ -280,6 +283,7 @@ void main() {
       await b.engine.sync();
       expect(await b.db.select(b.db.learningEvents).get(), isEmpty);
       expect(await b.db.select(b.db.speechAttempts).get(), isEmpty);
+      expect(await b.db.select(b.db.evidenceRecords).get(), isEmpty);
       final kinds = (await b.db.select(b.db.hiRecords).get()).map(
         (r) => r.kind,
       );

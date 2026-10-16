@@ -23,3 +23,11 @@ cd mobile && flutter analyze && flutter test
 
 ## Geri alma
 Kendi dalında; `git revert`.
+
+## Notlar (2026-10-16, uygulama)
+- **Haftalık özet ve Profil:** `WeeklySummary` bu hafta ilk kez ulaşılan basamakları sayar (`recalledLater`, `ownUse`, `helped`; `HiStore.evidenceSince`). Hi panelinde ve gizlilik "Son 7 gün"ünde tek kanıt cümlesi (en güçlü basamak); Profil durum satırı sırası: sonra hatırladın → kendin kullandın → tekrar ettin → yardımla yaptın → yeni ifade → bölüm. Yüzde yok; kanıt yoksa cümle yok.
+- **`review_logs` denetimi:** `phrasesReviewed` = hatırlama sorusu cevaplanan ifadeler (anlamlı, korundu, belgelendi). `HiStore.lastReviewAt` artık hatırlama cevabı **ya da** tekrar oturumundaki son pratik (`app_meta` `review.lastPracticeAt`, yalnız cihazda, yalnız daha yeni an; sahne avı sayılmaz; "Bu telefondaki verileri de sil" siler). `reviewTimeSince` değişmedi (yalnız ölçüm öncesi geçiş; pratik süresi `StudyClock` ile ölçülüyor). Tablo: `docs/KELIME-TEKRARI.md` §3.2.
+- **Gizlilik:** "Öğrenme kanıtların" bölümü (ifade, basamak, tarih; ilk 5 + "Hepsini göster"). **Karar:** "Hi'nin kayıtlarını sil" kanıtları da siler (ayrı seçenek yok); hesapta `hi_reset` ile sunucuda (`HiResetHook`, şema değişmedi) ve öteki cihazlarda (`applyHiReset`). Belge: `docs/HI-ASISTAN-VE-KOC.md` §5.
+- **Hikâye içi "Söyle":** başarı (tam ya da yalnız bir kelime eksik, anlam değiştiren ek yok) → "yardımla yaptı" (`SpeakEnv.practiced` → `NotebookStore.recordSpokenPractice`). Anlam paneli: yalnız defterdeki ifade ya da kart örnek cümlesi; defterde yoksa hiçbir şey. Bölüm sonu ve karar anı (yalnız doğru seçenek): hedef ifadenin anahtarı (`targetPhraseKey`), kart henüz yoksa bölüm bitince ona bağlanır. FSRS ve `review_logs` değişmez.
+- **Goldenler (bilerek):** `h059_hi_gizlilik`, `h059_profil`, `h059_profil_adsiz`.
+- Şema değişmedi (Drift 10, backend V13).

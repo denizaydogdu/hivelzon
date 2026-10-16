@@ -53,7 +53,7 @@ SyncStateRow _signedIn() => SyncStateRow(
   pendingSpeechDelete: false,
 );
 
-const _knowledge = HiKnowledge(
+final _knowledge = HiKnowledge(
   lookups: 12,
   errors: 4,
   errorCounts: {ErrorType.verbForm: 3, ErrorType.preposition: 1},
@@ -65,6 +65,25 @@ const _knowledge = HiKnowledge(
   inProgressEpisodes: 1,
   speechAttempts: 7,
   speechFull: 5,
+  // H-093: öğrenme kanıtları (ifade, basamak, tarih); öğlen UTC, yerel gün
+  // saat diliminden etkilenmesin.
+  evidence: [
+    HiEvidence(
+      text: 'Where is…?',
+      stage: EvidenceStage.recalledLater,
+      at: DateTime.utc(2026, 10, 14, 12),
+    ),
+    HiEvidence(
+      text: 'Excuse me.',
+      stage: EvidenceStage.ownUse,
+      at: DateTime.utc(2026, 10, 13, 12),
+    ),
+    HiEvidence(
+      text: 'Can you hear me?',
+      stage: EvidenceStage.helped,
+      at: DateTime.utc(2026, 10, 12, 12),
+    ),
+  ],
 );
 
 const _week = WeeklySummary(
@@ -72,6 +91,8 @@ const _week = WeeklySummary(
   phrasesReviewed: 6,
   episodesCompleted: 1,
   focus: ErrorType.verbForm,
+  recalledLater: 2,
+  helped: 3,
 );
 
 NotebookItem _phrase(String en) => NotebookItem(
@@ -224,7 +245,7 @@ void main() {
         ),
         'hi_gizlilik': (
           const HiPrivacyScreen(),
-          1500,
+          1900,
           name: 'Deniz',
           account: null,
           image: null,

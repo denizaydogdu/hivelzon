@@ -196,6 +196,16 @@ class NotebookEntry {
 String itemKey(NotebookKind kind, String en) =>
     '${kind.name}|${normalizeEn(en)}';
 
+/// Bölümün hedef ifadesinin defterdeki türü (deste kuralı): birden çok
+/// kelime → kalıp, tek kelime → kelime. Hikâye içi "Söyle" kanıtı (H-093)
+/// aynı anahtarı buradan hesaplar.
+NotebookKind targetPhraseKind(String phrase) =>
+    wordCount(phrase) > 1 ? NotebookKind.phrase : NotebookKind.word;
+
+/// Hedef ifadenin defter anahtarı (bölüm bitince oluşan kartla aynı).
+String targetPhraseKey(String phrase) =>
+    itemKey(targetPhraseKind(phrase), phrase);
+
 /// Karşılaştırma için İngilizce: küçük harf, tipografik kesme → `'`,
 /// noktalama yok (`…` korunur), tek boşluk.
 String normalizeEn(String s) {

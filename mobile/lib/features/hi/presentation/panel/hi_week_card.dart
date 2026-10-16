@@ -4,10 +4,20 @@ import 'package:flutter/material.dart';
 
 import '../../../../app/theme.dart';
 import '../../../../l10n/tr_strings.dart';
+import '../../../notebook/domain/evidence_ladder.dart';
 import '../../domain/weekly_summary.dart';
 import 'hi_panel_parts.dart';
 
-/// Haftalık özet: bu hafta yapılanlar (sayı baskısı yok).
+/// Haftanın kanıt cümlesi (H-093): en güçlü basamak; yoksa null.
+String? weekEvidenceLine(WeeklySummary s) => switch (s.topEvidence) {
+  (EvidenceStage.recalledLater, final n) => HiTexts.weekRecalled(n),
+  (EvidenceStage.ownUse, final n) => HiTexts.weekOwnUse(n),
+  (EvidenceStage.helped, final n) => HiTexts.weekHelped(n),
+  _ => null,
+};
+
+/// Haftalık özet: bu hafta yapılanlar (sayı baskısı yok). H-093: önce
+/// öğrenme kanıtından tek cümle, sonra sayılar.
 class HiWeekCard extends StatelessWidget {
   const HiWeekCard({super.key, required this.summary});
 
@@ -18,7 +28,9 @@ class HiWeekCard extends StatelessWidget {
     final theme = Theme.of(context);
     final s = summary;
     if (s == null) return const HiPanelLoadingCard();
+    final evidence = weekEvidenceLine(s);
     final lines = <String>[
+      ?evidence,
       if (s.phrasesAdded > 0) HiTexts.weekPhrases(s.phrasesAdded),
       if (s.phrasesReviewed > 0) HiTexts.weekReviews(s.phrasesReviewed),
       if (s.episodesCompleted > 0) HiTexts.weekEpisodes(s.episodesCompleted),

@@ -400,6 +400,10 @@ class SyncTest extends IntegrationTest {
         Map<String, Object> changes = new LinkedHashMap<>();
         changes.put("learning_events", List.of(event(before, "Can you hear me?"), laterEvent));
         changes.put("speech_attempts", List.of(speech(UUID.randomUUID())));
+        // H-093: öğrenme kanıtı da Hi'nin kayıtlarıyla silinir (T'den sonraki kalır).
+        changes.put("expression_evidence", List.of(
+                row("itemKey", "phrase|can you hear me?", "stage", "helped", "at", "2026-10-13T09:00:00Z"),
+                row("itemKey", "phrase|later", "stage", "helped", "at", "2026-10-13T09:40:00Z")));
         changes.put("hi_records", List.of(
                 row("kind", "bridge_task", "refId", "order-coffee", "status", "done", "updatedAt",
                         "2026-10-13T09:00:00Z"),
@@ -420,6 +424,8 @@ class SyncTest extends IntegrationTest {
         assertThat(count("SELECT count(*) FROM learning_events WHERE client_id = ?::uuid", after.toString()))
                 .isEqualTo(1);
         assertThat(count("SELECT count(*) FROM speech_attempts")).isZero();
+        assertThat(count("SELECT count(*) FROM expression_evidence")).isEqualTo(1);
+        assertThat(count("SELECT count(*) FROM expression_evidence WHERE item_key = 'phrase|later'")).isEqualTo(1);
         assertThat(count("SELECT count(*) FROM hi_records WHERE kind = 'bridge_task' AND deleted")).isEqualTo(1);
         assertThat(count("SELECT count(*) FROM hi_records WHERE kind IN ('topic_intro', 'hunt_done') AND NOT deleted"))
                 .isEqualTo(2);

@@ -708,15 +708,25 @@ abstract final class ProfileTexts {
   static const avatarNoName = 'Hi';
 
   /// Başlığın altındaki tek satır: bu haftadan olumlu bir cümle; kayıt
-  /// yoksa sakin bir davet (yapılmayan söylenmez, K-16).
+  /// yoksa sakin bir davet (yapılmayan söylenmez, K-16). H-093: önce en
+  /// güçlü kanıt (sonra hatırladın → kendin kullandın), sonra tekrar,
+  /// yardımla yaptın, ekleme ve bölüm.
   static String status({
     required int phrasesAdded,
     required int phrasesReviewed,
     required int episodesCompleted,
+    int recalledLater = 0,
+    int ownUse = 0,
+    int helped = 0,
   }) {
+    if (recalledLater > 0) {
+      return 'Bu hafta ${HiTexts.weekRecalled(recalledLater)}';
+    }
+    if (ownUse > 0) return 'Bu hafta ${HiTexts.weekOwnUse(ownUse)}';
     if (phrasesReviewed > 0) {
       return 'Bu hafta $phrasesReviewed ifadeyi tekrar ettin.';
     }
+    if (helped > 0) return 'Bu hafta ${HiTexts.weekHelped(helped)}';
     if (phrasesAdded > 0) {
       return 'Bu hafta $phrasesAdded yeni ifade topladın.';
     }
@@ -1210,6 +1220,12 @@ abstract final class HiTexts {
   static String weekEpisodes(int n) => '$n bölüm bitirdin.';
   static String weekFocus(String label) =>
       'En çok üzerinde çalıştığın konu: $label.';
+  // Kanıt cümlesi (H-093): haftanın en güçlü basamağı, tek cümle; yüzde yok.
+  static String weekRecalled(int n) =>
+      '$n ifadeyi birkaç gün sonra kendin hatırladın.';
+  static String weekOwnUse(int n) =>
+      '$n ifadeyi Türkçesinden kendin söyledin ya da yazdın.';
+  static String weekHelped(int n) => '$n ifadeyi yardımla yaptın.';
   static const weekEmpty =
       'Bu hafta henüz kayıt yok. İlk adım için bugünkü öneriye bakabilirsin.';
 
@@ -1291,14 +1307,29 @@ abstract final class HiTexts {
   static const privacyBridge = 'Yan görevler';
   static String privacyBridgeValue(int done, int dismissed) =>
       '$done yan görevi yaptın, $dismissed tanesini geçtin.';
+  // Öğrenme kanıtları (H-093): ifade, basamak ve ilk tarih; Hi'nin
+  // kayıtlarıyla birlikte silinir.
+  static const privacyEvidence = 'Öğrenme kanıtların';
+  static String privacyEvidenceValue(int n) => n == 0
+      ? 'Henüz yok. Bir ifadeyi yardımla yaptığında ya da kendin '
+            'hatırladığında burada görünür.'
+      : '$n kayıt: ifade, ulaştığın basamak ve ilk tarih. Sesin ve '
+            'yazdığın saklanmaz.';
+  static const evidenceStageHelped = 'Yardımla yaptın';
+  static const evidenceStageOwnUse = 'Kendin kullandın';
+  static const evidenceStageRecalled = 'Birkaç gün sonra hatırladın';
+  static String privacyEvidenceRow(String stage, String date) =>
+      '$stage · $date';
+  static String privacyEvidenceMore(int n) => 'Hepsini göster ($n)';
   static const privacyDelete = "Hi'nin kayıtlarını sil";
   static const privacyDeleteNote =
-      'Öğrenme kayıtları, Söyle sonuçları ve yan görev durumları silinir. '
-      'Hikâye ilerlemen, defterin ve adın silinmez.';
+      'Öğrenme kayıtları, öğrenme kanıtların, Söyle sonuçları ve yan görev '
+      'durumları silinir. Hikâye ilerlemen, defterin ve adın silinmez.';
   static const privacyConfirmTitle = "Hi'nin kayıtları silinsin mi?";
   static const privacyConfirmBody =
-      'Anlamına baktığın kelimeler, yeniden denediğin seçimler, Söyle '
-      'sonuçları ve yan görev durumları silinir. Bu geri alınamaz. Hikâye ilerlemen ve defterin '
+      'Anlamına baktığın kelimeler, yeniden denediğin seçimler, öğrenme '
+      'kanıtların ("Neler yapabiliyorsun"), Söyle sonuçları ve yan görev '
+      'durumları silinir. Bu geri alınamaz. Hikâye ilerlemen ve defterin '
       'yerinde kalır.';
   static const privacyConfirmCancel = 'Vazgeç';
   static const privacyConfirmDelete = 'Sil';
@@ -1308,8 +1339,9 @@ abstract final class HiTexts {
 
   // Hesap açıkken (H-038): kayıtlar hesaba da eşitlenir; silme her yerde.
   static const privacyConfirmBodyAccount =
-      'Anlamına baktığın kelimeler, yeniden denediğin seçimler, Söyle '
-      'sonuçları ve yan görev durumları silinir. Hesabına bağlı öteki '
+      'Anlamına baktığın kelimeler, yeniden denediğin seçimler, öğrenme '
+      'kanıtların ("Neler yapabiliyorsun"), Söyle sonuçları ve yan görev '
+      'durumları silinir. Hesabına bağlı öteki '
       'cihazlardan da silinir. Bu geri alınamaz. Hikâye ilerlemen ve defterin '
       'yerinde kalır.';
 }

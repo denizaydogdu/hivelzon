@@ -226,6 +226,32 @@ void main() {
       },
     );
 
+    test('H-093: hikâye içi "Söyle" → yalnız "yardımla yaptı"; kart ve '
+        'cevap kaydı değişmez, ilk an kalır', () async {
+      await store.addItems([_item('Can you hear me?')]);
+      final before = (await store.entries()).single;
+      expect(
+        await store.recordSpokenPractice(
+          'Can you hear me?',
+          contentId: 'A1-001',
+        ),
+        {'phrase|can you hear me'},
+      );
+      final first = now;
+      now = now.add(const Duration(hours: 1));
+      await store.recordSpokenPractice('can you hear me');
+      expect((await store.evidence())[before.item.key], {
+        EvidenceStage.helped: first,
+      });
+      final after = (await store.entries()).single;
+      expect(after.card.isNew, isTrue);
+      expect(after.card.fsrs.due, before.card.fsrs.due);
+      expect(await store.logs(), isEmpty);
+      // Defterde olmayan, hedef ifade olmayan metin: hiçbir şey yazılmaz.
+      expect(await store.recordSpokenPractice('Nice to meet you.'), isEmpty);
+      expect(await store.evidence(), hasLength(1));
+    });
+
     test('günlük hedef ayarı (varsayılan 10)', () async {
       expect(await store.dailyGoalMinutes(), 10);
       await store.setDailyGoalMinutes(5);
@@ -327,6 +353,26 @@ void main() {
       // İpucu kartı kancası tekil yazar.
       await sync.onEpisodeCompleted(loadFixture('A1-001'));
       expect(await store.clues(), hasLength(2));
+    });
+
+    test('H-093: karar anında söylenen hedef ifade, bölüm bitince oluşan '
+        'karta bağlanır', () async {
+      expect(await store.entries(), isEmpty);
+      expect(
+        await store.recordSpokenPractice(
+          'Where is…?',
+          contentId: 'A1-001',
+          targetPhrase: true,
+        ),
+        {'phrase|where is…'},
+      );
+      await sync.onEpisodeCompleted(loadFixture('A1-001'));
+      final summary = await store.evidenceSummary();
+      expect(summary.helped.map((i) => i.textEn), ['Where is…?']);
+      final card = (await store.entries())
+          .firstWhere((e) => e.item.textEn == 'Where is…?')
+          .card;
+      expect(card.isNew, isTrue, reason: 'taklit FSRS\'e gitmez');
     });
   });
 

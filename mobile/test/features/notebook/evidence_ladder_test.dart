@@ -183,4 +183,75 @@ void main() {
       expect(summarizeEvidence(const [], const {}).hasEvidence, isFalse);
     });
   });
+
+  group('hikâye içi "Söyle" (H-093)', () {
+    NotebookItem it(
+      String en, {
+      NotebookKind kind = NotebookKind.phrase,
+      String? example,
+      String contentId = 'A1-001',
+    }) => NotebookItem(
+      kind: kind,
+      textEn: en,
+      exampleEn: example,
+      contentId: contentId,
+      source: NotebookSource.autoTargetPhrase,
+    );
+
+    final items = [
+      it('Excuse me.'),
+      it('station', kind: NotebookKind.word, example: 'Where is the station?'),
+      it(
+        'hear',
+        kind: NotebookKind.word,
+        example: 'I can hear you.',
+        contentId: 'A1-002',
+      ),
+    ];
+
+    test('defterdeki ifade ya da kartın örnek cümlesi (aynı içerik)', () {
+      expect(spokenPracticeKeys(expression: 'excuse me', items: items), {
+        'phrase|excuse me',
+      });
+      expect(
+        spokenPracticeKeys(
+          expression: 'Where is the station?',
+          items: items,
+          contentId: 'A1-001',
+        ),
+        {'word|station'},
+      );
+      // Örnek cümle başka bölümün kartına aitse sayılmaz.
+      expect(
+        spokenPracticeKeys(
+          expression: 'I can hear you.',
+          items: items,
+          contentId: 'A1-001',
+        ),
+        isEmpty,
+      );
+    });
+
+    test(
+      'defterde olmayan metin: hiçbir şey; hedef ifade: kartın anahtarı',
+      () {
+        expect(
+          spokenPracticeKeys(expression: 'Nice to meet you.', items: items),
+          isEmpty,
+        );
+        expect(
+          spokenPracticeKeys(
+            expression: 'Nice to meet you.',
+            items: items,
+            targetPhrase: true,
+          ),
+          {'phrase|nice to meet you'},
+        );
+        // Tek kelimelik hedef ifade kelime kartıdır (deste kuralıyla aynı).
+        expect(targetPhraseKey('Hi!'), 'word|hi');
+        expect(targetPhraseKey('Where is…?'), 'phrase|where is…');
+        expect(spokenPracticeKeys(expression: '  ', items: items), isEmpty);
+      },
+    );
+  });
 }

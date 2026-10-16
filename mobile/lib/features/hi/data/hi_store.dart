@@ -3,6 +3,8 @@ import 'package:drift/drift.dart';
 import '../../../shared/meaning/error_taxonomy.dart';
 import '../../../shared/storage/app_database.dart';
 import '../../../shared/sync/sync_store.dart';
+import '../../notebook/data/notebook_store.dart';
+import '../../notebook/domain/evidence_ladder.dart';
 import '../domain/coach_rules.dart';
 
 /// Hi kayıt türleri (`hi_records.kind`).
@@ -37,6 +39,7 @@ class HiKnowledge {
     required this.inProgressEpisodes,
     this.speechAttempts = 0,
     this.speechFull = 0,
+    this.evidence = const [],
   });
 
   /// Anlamına bakılan kelime sayısı (hata olmayan olaylar).
@@ -55,6 +58,22 @@ class HiKnowledge {
   /// "Söyle" denemeleri (H-055; yalnızca sonuç saklanır) ve tam eşleşenler.
   final int speechAttempts;
   final int speechFull;
+
+  /// Öğrenme kanıtları (H-089, H-093): ifade, basamak, ilk an; en yeniden
+  /// eskiye.
+  final List<HiEvidence> evidence;
+}
+
+/// Gizlilik ekranındaki tek kanıt satırı (H-093).
+class HiEvidence {
+  const HiEvidence({required this.text, required this.stage, required this.at});
+
+  /// İfadenin İngilizcesi (defterde yoksa anahtardaki metin).
+  final String text;
+  final EvidenceStage stage;
+
+  /// UTC.
+  final DateTime at;
 }
 
 /// Hi-A'nın yerel kayıtları (H-048; Drift `hi_records`, `app_meta`) ve
@@ -193,12 +212,29 @@ class HiStore {
     });
   }
 
+  /// Kanıt basamağı satırları (basamak, ilk an) [since] sonrası (H-093,
+  /// haftalık özet). Satır ifade + basamak başına tektir.
+  Future<List<(EvidenceStage, DateTime)>> evidenceSince(DateTime since) async {
+    await _ready;
+    final rows = await (_db.select(
+      _db.evidenceRecords,
+    )..where((t) => t.at.isBiggerOrEqualValue(since.toUtc()))).get();
+    return [
+      for (final r in rows)
+        if (EvidenceStage.parse(r.stage) case final s?) (s, r.at.toUtc()),
+    ];
+  }
+
   /// [since] sonrası bitirilen sahne avı var mı (günlük planın küçük görevi).
   Future<bool> huntDoneSince(DateTime since) async => (await _records(
     HiRecordKind.huntDone,
   )).values.any((r) => !r.$2.isBefore(since.toUtc()));
 
-  /// Son kelime tekrarı cevabının anı (yoksa null).
+  /// Son kelime tekrarı etkinliğinin anı (yoksa null): hatırlama cevabı
+  /// (`review_logs`) ya da tekrar oturumundaki pratik. H-089'dan beri pratik
+  /// `review_logs`'a yazılmadığından anı ayrıca tutulur
+  /// ([NotebookStore.lastPracticeKey]); yalnız pratik yapılıp bırakılan
+  /// oturum da "bugün tekrar yapıldı" sayılır (H-093).
   Future<DateTime?> lastReviewAt() async {
     await _ready;
     final row =
@@ -206,7 +242,16 @@ class HiStore {
               ..orderBy([(t) => OrderingTerm.desc(t.reviewedAt)])
               ..limit(1))
             .getSingleOrNull();
-    return row?.reviewedAt.toUtc();
+    final recall = row?.reviewedAt.toUtc();
+    final raw =
+        (await (_db.select(_db.appMeta)
+                  ..where((t) => t.key.equals(NotebookStore.lastPracticeKey)))
+                .getSingleOrNull())
+            ?.value;
+    final practice = raw == null ? null : DateTime.tryParse(raw)?.toUtc();
+    if (recall == null) return practice;
+    if (practice == null) return recall;
+    return practice.isAfter(recall) ? practice : recall;
   }
 
   // ------------------------------------------------------------ okumalar
@@ -240,6 +285,7 @@ class HiStore {
     return [for (final r in rows) r.createdAt.toUtc()];
   }
 
+  /// Hatırlama cevapları (kart, an). H-089'dan beri pratik burada yok.
   Future<List<(int, DateTime)>> reviewsSince(DateTime since) async {
     await _ready;
     final rows = await (_db.select(
@@ -250,6 +296,11 @@ class HiStore {
 
   /// Tekrar cevaplarının anı ve kartta geçen süre (H-060, Ana Sayfa günlük
   /// hedef halkası). Mevcut `review_logs` kaydından; yeni kayıt tutulmaz.
+  ///
+  /// Yalnız ölçüm başlamadan önceki geçiş tahmininde kullanılır (H-074).
+  /// H-089'dan beri burada yalnız hatırlama cevapları var; pratik süresi
+  /// tekrar ekranında `StudyClock` ile zaten ölçülür (H-093 denetimi), bu
+  /// yüzden eksik sayılmaz.
   Future<List<(DateTime, Duration)>> reviewTimeSince(DateTime since) async {
     await _ready;
     final rows = await (_db.select(
@@ -290,7 +341,20 @@ class HiStore {
     final items = await _db.select(_db.notebookItems).get();
     final logs = await _db.select(_db.reviewLogs).get();
     final speech = await _db.select(_db.speechAttempts).get();
+    final evidenceRows = await (_db.select(
+      _db.evidenceRecords,
+    )..orderBy([(t) => OrderingTerm.desc(t.at)])).get();
+    final texts = {for (final i in items) i.itemKey: i.textEn};
     return HiKnowledge(
+      evidence: [
+        for (final r in evidenceRows)
+          if (EvidenceStage.parse(r.stage) case final s?)
+            HiEvidence(
+              text: texts[r.itemKey] ?? _keyText(r.itemKey),
+              stage: s,
+              at: r.at.toUtc(),
+            ),
+      ],
       speechAttempts: speech.length,
       speechFull: speech.where((r) => r.matchLevel == 'full').length,
       lookups: lookups,
@@ -312,9 +376,11 @@ class HiStore {
   // ------------------------------------------------------------ silme
 
   /// "Hi'nin kayıtlarını sil": öğrenme olayları, "Söyle" sonuçları (H-055),
-  /// yan görev durumları, açılan notlar, panel işareti ve bugün geçilen
-  /// öneriler (H-088). İlerleme, defter, tekrar geçmişi, ad ve görülen
-  /// konu tanıtımları **silinmez**.
+  /// öğrenme kanıtları (H-093; Profil'deki "Neler yapabiliyorsun" ve haftalık
+  /// kanıt cümlesi boşalır), yan görev durumları, açılan notlar, panel
+  /// işareti ve bugün geçilen öneriler (H-088). İlerleme, defter, tekrar
+  /// geçmişi (FSRS kartı ve hatırlama cevapları), ad ve görülen konu
+  /// tanıtımları **silinmez**.
   ///
   /// Hesap açıksa (H-038) silme bütün cihazlarda geçerlidir: silme işareti
   /// ([HiRecordKind.hiReset]) yazılır, eşitlemede sunucuya gider ve sunucudaki
@@ -349,6 +415,7 @@ class HiStore {
       }
       final events = await _db.delete(_db.learningEvents).go();
       final speech = await _db.delete(_db.speechAttempts).go();
+      final evidence = await _db.delete(_db.evidenceRecords).go();
       final records =
           await (_db.delete(_db.hiRecords)..where(
                 (t) => t.kind.isIn([
@@ -360,9 +427,16 @@ class HiStore {
       await (_db.delete(
         _db.appMeta,
       )..where((t) => t.key.isIn([panelOpenedKey, dismissedKey]))).go();
-      return events + speech + records;
+      return events + speech + evidence + records;
     });
   }
+}
+
+/// Defterde olmayan ifadenin anahtarından metni (`phrase|where is…` →
+/// `where is…`).
+String _keyText(String key) {
+  final i = key.indexOf('|');
+  return i < 0 ? key : key.substring(i + 1);
 }
 
 /// Yerel gün anahtarı: `2026-10-13`.

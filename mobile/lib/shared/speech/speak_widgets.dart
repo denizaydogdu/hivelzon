@@ -17,6 +17,7 @@ class SpeakEnv {
     required this.ensureReady,
     required this.record,
     this.whyAction,
+    this.practiced,
   });
 
   final SpeechRecognizerPort recognizer;
@@ -29,6 +30,26 @@ class SpeakEnv {
 
   /// Hata kataloğu notunu açan eylem; not yoksa null ("Neden böyle?" gizli).
   final VoidCallback? Function(BuildContext context, String noteId)? whyAction;
+
+  /// Başarılı taklit (H-093): ifade tam ya da yalnız bir kelime eksik
+  /// söylendi, anlamı değiştiren ek yok ([SpeechMatch.imitationSucceeded]).
+  /// Ekranlar "yardımla yaptı" kanıtı yazar; FSRS'e gitmez. null: yazılmaz.
+  final void Function(SpokenPractice practice)? practiced;
+}
+
+/// Başarılı bir "Söyle" taklidi (H-093). [expression]: söylenmesi beklenen
+/// İngilizce (anlam panelinde satır, bölüm sonunda ve karar anında hedef
+/// ifade). Tanıma yazısı yoktur.
+class SpokenPractice {
+  const SpokenPractice({
+    required this.place,
+    required this.expression,
+    this.contentId,
+  });
+
+  final SpeechPlace place;
+  final String expression;
+  final String? contentId;
 }
 
 /// İzin öncesi Türkçe açıklama. true: "Devam et".
@@ -187,6 +208,15 @@ class _SpeakPracticeState extends State<SpeakPractice> {
         at: DateTime.now().toUtc(),
       ),
     );
+    if (m.imitationSucceeded) {
+      widget.env.practiced?.call(
+        SpokenPractice(
+          place: widget.place,
+          expression: widget.expected,
+          contentId: widget.contentId,
+        ),
+      );
+    }
     widget.onAttempt?.call(_c);
   }
 

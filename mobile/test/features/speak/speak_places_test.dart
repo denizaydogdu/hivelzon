@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hivelzon/app/theme.dart';
+import 'package:hivelzon/features/notebook/application/notebook_providers.dart';
+import 'package:hivelzon/features/notebook/domain/notebook_item.dart';
 import 'package:hivelzon/features/player/data/drift_progress_repository.dart';
 import 'package:hivelzon/features/player/data/progress_repository.dart';
 import 'package:hivelzon/features/player/domain/episode.dart';
@@ -33,7 +35,13 @@ SpeakEnv _env(
   FakeSpeechRecognizer r,
   List<SpeechAttempt> log, {
   bool ready = true,
-}) => SpeakEnv(recognizer: r, ensureReady: (_) async => ready, record: log.add);
+  List<SpokenPractice>? practiced,
+}) => SpeakEnv(
+  recognizer: r,
+  ensureReady: (_) async => ready,
+  record: log.add,
+  practiced: practiced?.add,
+);
 
 Future<void> _pump(WidgetTester tester, Widget child, {double h = 4000}) async {
   tester.view.physicalSize = Size(1179, h);
@@ -134,6 +142,31 @@ void main() {
       expect(find.text('Söyledin!'), findsNothing);
       expect(find.text('Bir daha söyle'), findsOneWidget);
       expect(log.single.level, SpeechMatchLevel.close);
+    });
+
+    testWidgets('H-093: başarılı taklit "yardımla yaptı" bildirir (yalnız bir '
+        'kelime eksik de); anlamı değiştiren ek ya da olmayan bildirmez', (
+      tester,
+    ) async {
+      final r = FakeSpeechRecognizer()
+        ..queued.add(["yes I can't hear you"])
+        ..queued.add(['yes I can you']);
+      final practiced = <SpokenPractice>[];
+      await _pump(
+        tester,
+        MeaningSheet(
+          controller: controller(InMemoryLearningEventLog()),
+          speak: _env(r, [], practiced: practiced),
+        ),
+      );
+      await tester.tap(find.byKey(const ValueKey('meaning-speak-mic')));
+      await tester.pumpAndSettle();
+      expect(practiced, isEmpty, reason: 'olumsuzluk anlamı değiştirir');
+      await tester.tap(find.byKey(const ValueKey('meaning-speak-mic')));
+      await tester.pumpAndSettle();
+      expect(practiced.single.place, SpeechPlace.meaning);
+      expect(practiced.single.expression, 'Yes, I can hear you.');
+      expect(practiced.single.contentId, 'A1-001');
     });
 
     testWidgets('2 denemeden sonra metin ve sakin dil; puan yok', (
@@ -238,11 +271,28 @@ void main() {
       tester,
     ) async {
       final r = FakeSpeechRecognizer()..queued.add(["yes I'm"]);
-      final chosen = await pumpSheet(tester, speak: _env(r, []));
+      final practiced = <SpokenPractice>[];
+      final chosen = await pumpSheet(
+        tester,
+        speak: _env(r, [], practiced: practiced),
+      );
       await tester.tap(find.byKey(const ValueKey('speak-choose-mic')));
       await tester.pumpAndSettle();
       expect(chosen.single.id, 'b');
       expect(chosen.single.correct, isFalse);
+      expect(practiced, isEmpty, reason: 'hedef ifade söylenmedi');
+    });
+
+    testWidgets('H-093: doğru seçeneği söylemek kararın hedef ifadesi için '
+        '"yardımla yaptı"dır', (tester) async {
+      final r = FakeSpeechRecognizer()..queued.add(['yes I can hear you']);
+      final practiced = <SpokenPractice>[];
+      await pumpSheet(tester, speak: _env(r, [], practiced: practiced));
+      await tester.tap(find.byKey(const ValueKey('speak-choose-mic')));
+      await tester.pumpAndSettle();
+      expect(practiced.single.place, SpeechPlace.decision);
+      expect(practiced.single.expression, 'Yes, I can.');
+      expect(practiced.single.contentId, 'A1-001');
     });
 
     testWidgets('belirsiz/eşleşmez: seçilmez, dokunarak seçme önerilir', (
@@ -295,12 +345,13 @@ void main() {
       final r = FakeSpeechRecognizer(script: const ['close', 'full']);
       var spoken = 0;
       final log = <SpeechAttempt>[];
+      final practiced = <SpokenPractice>[];
       await _pump(
         tester,
         EndView(
           engine: EpisodeEngine(loadFixture('A1-001')),
           onBack: () {},
-          speak: _env(r, log),
+          speak: _env(r, log, practiced: practiced),
           onSpokenTarget: () => spoken++,
         ),
       );
@@ -318,6 +369,10 @@ void main() {
       expect(find.text('Söyledin!'), findsOneWidget);
       expect(log.first.place, SpeechPlace.episodeEnd);
       expect(log.first.contentId, 'A1-001');
+      // H-093: tam söylenen hedef ifade "yardımla yaptı" bildirir.
+      final target = loadFixture('A1-001').info.targetPhrases.first;
+      expect(practiced.last.place, SpeechPlace.episodeEnd);
+      expect(practiced.last.expression, target);
     });
 
     test(
@@ -571,5 +626,57 @@ void main() {
       // H-038: eşitleme kimliği (UUID); ses ya da yazı değil.
       'client_id',
     });
+  });
+
+  test('H-093: speakEnvOf kaydı: anlam paneli, bölüm sonu ve karar anı '
+      '"yardımla yaptı" yazar; kelime tekrarı ve dilbilgisi yazmaz', () async {
+    final db = AppDatabase.memory();
+    addTearDown(db.close);
+    final c = ProviderContainer(
+      overrides: [
+        appDatabaseProvider.overrideWithValue(db),
+        legacyImportProvider.overrideWithValue(Future<void>.value()),
+      ],
+    );
+    addTearDown(c.dispose);
+    final store = c.read(notebookStoreProvider);
+    await store.addItems([
+      const NotebookItem(
+        kind: NotebookKind.phrase,
+        textEn: 'Can you hear me?',
+        textTr: 'Beni duyabiliyor musun?',
+        contentId: 'A1-001',
+        source: NotebookSource.autoTargetPhrase,
+      ),
+    ]);
+    Future<Set<String>> say(SpeechPlace place, String en) =>
+        recordSpokenPractice(
+          c,
+          SpokenPractice(place: place, expression: en, contentId: 'A1-001'),
+        );
+    expect(await say(SpeechPlace.review, 'Can you hear me?'), isEmpty);
+    expect(await say(SpeechPlace.grammar, 'Can you hear me?'), isEmpty);
+    expect(await store.evidence(), isEmpty);
+    expect(await say(SpeechPlace.meaning, 'Can you hear me?'), {
+      'phrase|can you hear me',
+    });
+    // Anlam panelinde defterde olmayan satır: hiçbir şey.
+    expect(await say(SpeechPlace.meaning, 'Yes, I can hear you.'), isEmpty);
+    // Karar anı ve bölüm sonu: hedef ifade (kart henüz yoksa da).
+    expect(await say(SpeechPlace.decision, 'Yes, I can.'), {
+      'phrase|yes i can',
+    });
+    expect(await say(SpeechPlace.episodeEnd, 'Again, please.'), {
+      'phrase|again please',
+    });
+    final ev = await store.evidence();
+    expect(ev.keys.toSet(), {
+      'phrase|can you hear me',
+      'phrase|yes i can',
+      'phrase|again please',
+    });
+    expect(ev.values.every((m) => m.keys.single.code == 'helped'), isTrue);
+    expect(await db.select(db.reviewLogs).get(), isEmpty);
+    expect((await store.entries()).single.card.isNew, isTrue);
   });
 }
