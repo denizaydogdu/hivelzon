@@ -178,5 +178,37 @@
         }
       ]
     }
-  ]
+  ],
+  "comprehension": {
+    "questions": [
+      {
+        "id": "q1",
+        "prompt": "What did Lucía see when she looked at the painting under the ultraviolet lamp?",
+        "promptTr": "Lucía tabloya ultraviyole lambayla baktığında ne gördü?",
+        "options": [
+          "A second red boat hidden near the houses",
+          "A woman with a brush standing on the harbour wall",
+          "A date written in the corner under the sky"
+        ],
+        "answer": 1,
+        "page": "p10"
+      },
+      {
+        "id": "q2",
+        "prompt": "Why did Ms Vidal want the label to say only Andreu Serra?",
+        "promptTr": "Bayan Vidal etikette neden yalnızca Andreu Serra yazmasını istedi?",
+        "options": [
+          "She wanted to sell the painting again for a higher price",
+          "She believed that a man had really painted the picture",
+          "She had no proof yet and wanted to buy it quietly first"
+        ],
+        "answer": 2,
+        "page": "p23"
+      }
+    ],
+    "retell": {
+      "modelEn": "While cleaning an old harbour painting signed Andreu Serra, the young restorer Lucía finds a second name under the varnish: Aina. With old records, letters and a paint test, she proves that Aina Serra painted it and sold her work under a man's name. In the end, the painting goes to the city museum with Aina's real name on the label.",
+      "modelTr": "Genç restoratör Lucía, Andreu Serra imzalı eski bir liman tablosunu temizlerken verniğin altında ikinci bir isim bulur: Aina. Eski kayıtlar, mektuplar ve bir boya testiyle tabloyu Aina Serra'nın yaptığını ve eserlerini bir erkek adıyla sattığını kanıtlar. Sonunda tablo, etiketinde Aina'nın gerçek adıyla şehir müzesine verilir."
+    }
+  }
 }

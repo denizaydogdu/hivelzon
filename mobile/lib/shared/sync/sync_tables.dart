@@ -174,6 +174,23 @@ const syncTables = <SyncTableSpec>[
     lww: _updatedAt,
     data: [SyncCol('activeSeconds', 'active_seconds', _i, localDefault: 0)],
   ),
+  // Kitap sonu anlama (H-091): yalnız sonuç (yeniden anlatma metni yok);
+  // düz LWW.
+  SyncTableSpec(
+    name: 'user_book_comprehension',
+    order: 95,
+    mutable: true,
+    keys: [SyncCol('bookId', 'book_id', _t)],
+    lww: _updatedAt,
+    data: [
+      SyncCol('contentVersion', 'content_version', _i, localDefault: 1),
+      SyncCol('answered', 'answered', _i, localDefault: 0),
+      SyncCol('firstTryCorrect', 'first_try_correct', _i, localDefault: 0),
+      SyncCol('retellDone', 'retell_done', _b, localDefault: false),
+      SyncCol('selfCheck', 'self_check', _t),
+      SyncCol('completedAt', 'completed_at', _d),
+    ],
+  ),
   SyncTableSpec(
     name: 'notebook_items',
     order: 100,

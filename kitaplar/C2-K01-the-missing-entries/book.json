@@ -224,5 +224,37 @@
         }
       ]
     }
-  ]
+  ],
+  "comprehension": {
+    "questions": [
+      {
+        "id": "q1",
+        "prompt": "Why did Zofia cut only Edmund's entries out of the Thornwick?",
+        "promptTr": "Zofia, Thornwick sözlüğünden neden yalnızca Edmund'un maddelerini kesti?",
+        "options": [
+          "Because she wanted to get Callum into trouble",
+          "Because his definitions were the only ones she could understand",
+          "Because Gordon asked her to annoy Edmund"
+        ],
+        "answer": 1,
+        "page": "p28"
+      },
+      {
+        "id": "q2",
+        "prompt": "Why does the council decide to keep the library open in the end?",
+        "promptTr": "Sonunda belediye kütüphaneyi neden açık tutmaya karar veriyor?",
+        "options": [
+          "Because Edmund writes the council a long letter",
+          "Because Mr Dunmore finds out who damaged the dictionary",
+          "Because the new Small Words Club brings many more people in"
+        ],
+        "answer": 2,
+        "page": "p30"
+      }
+    ],
+    "retell": {
+      "modelEn": "Edmund Pryce, a retired dictionary writer, finds that someone is cutting his entries out of the village library's old dictionary, one a night. He suspects several people, saves the boy Callum from being wrongly blamed, and gets the missing words back on cards that ask \"Are you lonely too?\" The thief is Zofia, a ten-year-old girl learning English, who could understand only his definitions. Together they start the Small Words Club, which saves the library.",
+      "modelTr": "Emekli sözlük yazarı Edmund Pryce, birinin köy kütüphanesindeki eski sözlükten her gece onun yazdığı bir maddeyi kestiğini fark eder. Birkaç kişiden şüphelenir, genç Callum'un haksız yere suçlanmasını önler ve kayıp kelimeleri \"Sen de mi yalnızsın?\" diye soran kartlar hâlinde geri alır. Hırsız, İngilizce öğrenen on yaşındaki Zofia'dır; yalnızca onun tanımlarını anlayabilmiştir. Birlikte Küçük Kelimeler Kulübü'nü kurarlar ve kulüp kütüphaneyi kurtarır."
+    }
+  }
 }

@@ -167,5 +167,37 @@
         }
       ]
     }
-  ]
+  ],
+  "comprehension": {
+    "questions": [
+      {
+        "id": "q1",
+        "prompt": "Why did Defne want to write a proposal instead of going down into the closed floors at night?",
+        "promptTr": "Defne neden geceleyin kapalı katlara inmek yerine bir öneri yazmak istedi?",
+        "options": [
+          "Going down without permission could make the whole team lose its permit",
+          "Mr Kemal had told them that the lower floors were full of snow",
+          "The guard at the metal gate had already given them the key"
+        ],
+        "answer": 0,
+        "page": "p11"
+      },
+      {
+        "id": "q2",
+        "prompt": "What did it mean when the hill sang with two voices together?",
+        "promptTr": "Tepenin iki sesle birlikte şarkı söylemesi ne anlama geliyordu?",
+        "options": [
+          "That the visitors had to leave the underground city",
+          "That the really cold wind was coming and it would snow",
+          "That the wind had stopped and the summer was over"
+        ],
+        "answer": 1,
+        "page": "p21"
+      }
+    ],
+    "retell": {
+      "modelEn": "Jonah, a geology student on a dig in Turkey, hears a hill that sings at night when the north wind blows. With Defne and Dr Aydın, he finds rows of holes cut by hand deep in an old underground city, which warned people that snow was coming. They also open a second, closed room, and the hill sings with two voices again.",
+      "modelTr": "Türkiye'de bir kazıda çalışan jeoloji öğrencisi Jonah, kuzey rüzgârı estiğinde geceleri şarkı söyleyen bir tepe duyar. Defne ve Dr. Aydın ile birlikte eski bir yeraltı şehrinin derinliklerinde, insanları kar konusunda uyaran, elle oyulmuş sıra sıra delikler bulur. Kapalı ikinci bir odayı da açarlar ve tepe yeniden iki sesle şarkı söyler."
+    }
+  }
 }

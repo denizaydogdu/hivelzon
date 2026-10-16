@@ -281,6 +281,49 @@ abstract final class ReaderTexts {
   static const readAgain = 'Baştan oku';
 }
 
+/// Kitap sonu anlama (H-091): 2 kısa soru + isteğe bağlı yeniden anlatma.
+/// Puan, süre ve suçlama yok (K-32); atlanabilir.
+abstract final class ComprehensionTexts {
+  static const label = 'Kitabı hatırla';
+  static const title = 'Kısa bir hatırlama';
+  static const intro =
+      'İki kısa soru ve istersen kendi cümlelerinle küçük bir anlatım. '
+      'Puan yok; istersen atlayabilirsin.';
+  static const skip = 'Atla';
+  static const skipHint = 'Hatırlamayı atla, kitabın sonuna geç';
+  static String questionOf(int n, int total) => 'Soru $n / $total';
+  static const correct = 'Evet, doğru.';
+  static String tryAgain(int? page) => page == null
+      ? 'Bu değil. Bir daha düşünebilirsin.'
+      : 'Bu değil. İpucu: cevap $page. sayfada.';
+  static String reveal(int? page) => page == null
+      ? 'Doğrusu bu.'
+      : 'Doğrusu bu. Cevap $page. sayfada geçiyor.';
+  static const optionCorrect = 'doğru cevap';
+  static const optionTried = 'denendi';
+
+  // Yeniden anlatma (metin kaydedilmez)
+  static const retellLabel = 'Kendi sözlerinle';
+  static const retellTitle = 'Kitabı 1–3 cümleyle anlat';
+  static const retellBody =
+      'Sesli söyleyebilir ya da aşağıya yazabilirsin. Yazdığın kaydedilmez.';
+  static const retellField = 'Kendi anlatımın';
+  static const retellHint = 'İstersen buraya yaz…';
+  static const showModel = 'Örnek anlatımı göster';
+  static const modelTitle = 'Örnek anlatım';
+  static const modelTurkish = 'Türkçesi';
+  static const selfCheckTitle = 'Senin anlatımın nasıldı?';
+  static const selfAll = 'Ana olayları anlattım';
+  static const selfSome = 'Bir kısmını anlattım';
+  static const selfNotYet = 'Bu sefer zor geldi';
+  static const replyAll = 'Güzel. Kitabın özünü yakaladın.';
+  static const replySome =
+      'Eksik kalanlar örnekte. Anlattıkça daha kolay gelir.';
+  static const replyNotYet =
+      'Sorun değil. Anlatmak okumaktan zordur; denedikçe kolaylaşır.';
+  static const finish = 'Bitir';
+}
+
 /// Dilbilgisi (H-078): Hikâye sekmesinde "Macera · Kitaplık · Dilbilgisi",
 /// ders kartları ve giriş noktaları (`docs/DILBILGISI.md`).
 abstract final class GrammarTexts {

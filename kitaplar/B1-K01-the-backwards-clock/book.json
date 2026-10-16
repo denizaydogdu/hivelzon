@@ -154,5 +154,37 @@
         }
       ]
     }
-  ]
+  ],
+  "comprehension": {
+    "questions": [
+      {
+        "id": "q1",
+        "prompt": "What did Aziz find in the old photos of the dances?",
+        "promptTr": "Aziz dansların eski fotoğraflarında ne buldu?",
+        "options": [
+          "The clock always ran backwards.",
+          "The clock always showed a quarter past seven.",
+          "The clock had no hands at all."
+        ],
+        "answer": 1,
+        "page": "p09"
+      },
+      {
+        "id": "q2",
+        "prompt": "Who was really moving the clock backwards?",
+        "promptTr": "Saati gerçekte kim geri çeviriyordu?",
+        "options": [
+          "Mr Hofer and his grandmother's ghost",
+          "Pavel and the young people from the valley",
+          "Mrs Brandt and the five old people from the band"
+        ],
+        "answer": 2,
+        "page": "p16"
+      }
+    ],
+    "retell": {
+      "modelEn": "Aziz spends the summer with Mrs Brandt, the old clockmaker, and every Saturday the town clock runs backwards. People think Aziz is the ghost, so he hides in the tower. He finds Mrs Brandt and her old band, who want to bring back the Saturday dances. The music starts again, and the whole town dances.",
+      "modelTr": "Aziz yazı yaşlı saatçi Bayan Brandt'in yanında geçirir ve kasabanın saati her cumartesi geriye doğru çalışır. İnsanlar hayaletin Aziz olduğunu düşünür, o da kuleye saklanır. Cumartesi danslarını geri getirmek isteyen Bayan Brandt'i ve eski grubunu bulur. Müzik yeniden başlar ve bütün kasaba dans eder."
+    }
+  }
 }

@@ -102,5 +102,37 @@
         }
       ]
     }
-  ]
+  ],
+  "comprehension": {
+    "questions": [
+      {
+        "id": "q1",
+        "prompt": "How does Mert help Grandpa?",
+        "promptTr": "Mert dedeye nasıl yardım ediyor?",
+        "options": [
+          "He shows Grandpa the phone.",
+          "He makes Grandpa a big cake.",
+          "He gives Grandpa a new phone."
+        ],
+        "answer": 0,
+        "page": "p06"
+      },
+      {
+        "id": "q2",
+        "prompt": "Why is everyone at Grandpa's door on Saturday?",
+        "promptTr": "Cumartesi günü herkes neden dedenin kapısında?",
+        "options": [
+          "They want to see his new phone.",
+          "Ece wants her birthday party with him.",
+          "Mert wants help with his blue curtain."
+        ],
+        "answer": 1,
+        "page": "p10"
+      }
+    ],
+    "retell": {
+      "modelEn": "Grandpa Kemal has a new phone. He wants to send Ece a birthday photo. But the phone does everything wrong. On Saturday, his family comes for a surprise.",
+      "modelTr": "Kemal Dede'nin yeni bir telefonu var. Ece'ye bir doğum günü fotoğrafı göndermek istiyor. Ama telefon her şeyi yanlış yapıyor. Cumartesi günü ailesi ona sürpriz yapmaya geliyor."
+    }
+  }
 }

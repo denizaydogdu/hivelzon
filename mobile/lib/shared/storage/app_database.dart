@@ -361,6 +361,36 @@ class DailyActivity extends Table {
   Set<Column<Object>> get primaryKey => {day, sourceId};
 }
 
+// ---------------------------------------------------------------- kitap sonu anlama (H-091, şema 9)
+
+/// Kitap sonu anlamanın **yalnızca sonucu** (H-091; `docs/KITAPLIK.md`
+/// §7.1). Kitap ilerlemesinden ayrıdır. Kullanıcının yazdığı yeniden anlatma
+/// hiçbir zaman saklanmaz: yalnızca yapıldığı ve öz değerlendirmesi durur.
+/// Atlanan anlama satır yazmaz. Hesap varsa eşitlenir; son yazan kazanır.
+@DataClassName('BookComprehensionRow')
+class UserBookComprehension extends Table {
+  TextColumn get bookId => text()();
+
+  /// Soruların geldiği içerik sürümü (`book.json → contentVersion`).
+  IntColumn get contentVersion => integer().withDefault(const Constant(1))();
+
+  /// Cevaplanan soru sayısı (0–2) ve ilk denemede doğru olanlar (0–2).
+  IntColumn get answered => integer().withDefault(const Constant(0))();
+  IntColumn get firstTryCorrect => integer().withDefault(const Constant(0))();
+
+  /// Yeniden anlatma adımı yapıldı mı (örnek anlatım açıldı ya da öz
+  /// değerlendirme seçildi). Metnin kendisi yok.
+  BoolColumn get retellDone => boolean().withDefault(const Constant(false))();
+
+  /// Öz değerlendirme: `all` | `some` | `not_yet` (ya da boş).
+  TextColumn get selfCheck => text().nullable()();
+  DateTimeColumn get completedAt => dateTime()();
+  DateTimeColumn get updatedAt => dateTime()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {bookId};
+}
+
 // ---------------------------------------------------------------- eşitleme (H-038, şema 5)
 
 /// Hesap ve eşitleme durumu (tek satır, `id = 1`). Hesap yoksa
@@ -455,6 +485,7 @@ class SyncOutbox extends Table {
     UserBookProgress,
     UserGrammarProgress,
     DailyActivity,
+    UserBookComprehension,
   ],
 )
 class AppDatabase extends _$AppDatabase {
@@ -475,7 +506,7 @@ class AppDatabase extends _$AppDatabase {
   );
 
   @override
-  int get schemaVersion => 8;
+  int get schemaVersion => 9;
 
   @override
   MigrationStrategy get migration => MigrationStrategy(
@@ -531,6 +562,10 @@ class AppDatabase extends _$AppDatabase {
       // 7 → 8 (H-074): günlük hedef için ölçülen süre (günlük toplam).
       if (from < 8) {
         await m.createTable(dailyActivity);
+      }
+      // 8 → 9 (H-091): kitap sonu anlama sonucu (metin yok).
+      if (from < 9) {
+        await m.createTable(userBookComprehension);
       }
     },
     beforeOpen: (details) async {

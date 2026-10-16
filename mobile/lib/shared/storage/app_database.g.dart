@@ -9084,6 +9084,545 @@ class DailyActivityCompanion extends UpdateCompanion<DailyActivityRow> {
   }
 }
 
+class $UserBookComprehensionTable extends UserBookComprehension
+    with TableInfo<$UserBookComprehensionTable, BookComprehensionRow> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $UserBookComprehensionTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _bookIdMeta = const VerificationMeta('bookId');
+  @override
+  late final GeneratedColumn<String> bookId = GeneratedColumn<String>(
+    'book_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _contentVersionMeta = const VerificationMeta(
+    'contentVersion',
+  );
+  @override
+  late final GeneratedColumn<int> contentVersion = GeneratedColumn<int>(
+    'content_version',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(1),
+  );
+  static const VerificationMeta _answeredMeta = const VerificationMeta(
+    'answered',
+  );
+  @override
+  late final GeneratedColumn<int> answered = GeneratedColumn<int>(
+    'answered',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(0),
+  );
+  static const VerificationMeta _firstTryCorrectMeta = const VerificationMeta(
+    'firstTryCorrect',
+  );
+  @override
+  late final GeneratedColumn<int> firstTryCorrect = GeneratedColumn<int>(
+    'first_try_correct',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(0),
+  );
+  static const VerificationMeta _retellDoneMeta = const VerificationMeta(
+    'retellDone',
+  );
+  @override
+  late final GeneratedColumn<bool> retellDone = GeneratedColumn<bool>(
+    'retell_done',
+    aliasedName,
+    false,
+    type: DriftSqlType.bool,
+    requiredDuringInsert: false,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'CHECK ("retell_done" IN (0, 1))',
+    ),
+    defaultValue: const Constant(false),
+  );
+  static const VerificationMeta _selfCheckMeta = const VerificationMeta(
+    'selfCheck',
+  );
+  @override
+  late final GeneratedColumn<String> selfCheck = GeneratedColumn<String>(
+    'self_check',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _completedAtMeta = const VerificationMeta(
+    'completedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> completedAt = GeneratedColumn<DateTime>(
+    'completed_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _updatedAtMeta = const VerificationMeta(
+    'updatedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> updatedAt = GeneratedColumn<DateTime>(
+    'updated_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: true,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    bookId,
+    contentVersion,
+    answered,
+    firstTryCorrect,
+    retellDone,
+    selfCheck,
+    completedAt,
+    updatedAt,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'user_book_comprehension';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<BookComprehensionRow> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('book_id')) {
+      context.handle(
+        _bookIdMeta,
+        bookId.isAcceptableOrUnknown(data['book_id']!, _bookIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_bookIdMeta);
+    }
+    if (data.containsKey('content_version')) {
+      context.handle(
+        _contentVersionMeta,
+        contentVersion.isAcceptableOrUnknown(
+          data['content_version']!,
+          _contentVersionMeta,
+        ),
+      );
+    }
+    if (data.containsKey('answered')) {
+      context.handle(
+        _answeredMeta,
+        answered.isAcceptableOrUnknown(data['answered']!, _answeredMeta),
+      );
+    }
+    if (data.containsKey('first_try_correct')) {
+      context.handle(
+        _firstTryCorrectMeta,
+        firstTryCorrect.isAcceptableOrUnknown(
+          data['first_try_correct']!,
+          _firstTryCorrectMeta,
+        ),
+      );
+    }
+    if (data.containsKey('retell_done')) {
+      context.handle(
+        _retellDoneMeta,
+        retellDone.isAcceptableOrUnknown(data['retell_done']!, _retellDoneMeta),
+      );
+    }
+    if (data.containsKey('self_check')) {
+      context.handle(
+        _selfCheckMeta,
+        selfCheck.isAcceptableOrUnknown(data['self_check']!, _selfCheckMeta),
+      );
+    }
+    if (data.containsKey('completed_at')) {
+      context.handle(
+        _completedAtMeta,
+        completedAt.isAcceptableOrUnknown(
+          data['completed_at']!,
+          _completedAtMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_completedAtMeta);
+    }
+    if (data.containsKey('updated_at')) {
+      context.handle(
+        _updatedAtMeta,
+        updatedAt.isAcceptableOrUnknown(data['updated_at']!, _updatedAtMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_updatedAtMeta);
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {bookId};
+  @override
+  BookComprehensionRow map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return BookComprehensionRow(
+      bookId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}book_id'],
+      )!,
+      contentVersion: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}content_version'],
+      )!,
+      answered: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}answered'],
+      )!,
+      firstTryCorrect: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}first_try_correct'],
+      )!,
+      retellDone: attachedDatabase.typeMapping.read(
+        DriftSqlType.bool,
+        data['${effectivePrefix}retell_done'],
+      )!,
+      selfCheck: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}self_check'],
+      ),
+      completedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}completed_at'],
+      )!,
+      updatedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}updated_at'],
+      )!,
+    );
+  }
+
+  @override
+  $UserBookComprehensionTable createAlias(String alias) {
+    return $UserBookComprehensionTable(attachedDatabase, alias);
+  }
+}
+
+class BookComprehensionRow extends DataClass
+    implements Insertable<BookComprehensionRow> {
+  final String bookId;
+
+  /// Soruların geldiği içerik sürümü (`book.json → contentVersion`).
+  final int contentVersion;
+
+  /// Cevaplanan soru sayısı (0–2) ve ilk denemede doğru olanlar (0–2).
+  final int answered;
+  final int firstTryCorrect;
+
+  /// Yeniden anlatma adımı yapıldı mı (örnek anlatım açıldı ya da öz
+  /// değerlendirme seçildi). Metnin kendisi yok.
+  final bool retellDone;
+
+  /// Öz değerlendirme: `all` | `some` | `not_yet` (ya da boş).
+  final String? selfCheck;
+  final DateTime completedAt;
+  final DateTime updatedAt;
+  const BookComprehensionRow({
+    required this.bookId,
+    required this.contentVersion,
+    required this.answered,
+    required this.firstTryCorrect,
+    required this.retellDone,
+    this.selfCheck,
+    required this.completedAt,
+    required this.updatedAt,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['book_id'] = Variable<String>(bookId);
+    map['content_version'] = Variable<int>(contentVersion);
+    map['answered'] = Variable<int>(answered);
+    map['first_try_correct'] = Variable<int>(firstTryCorrect);
+    map['retell_done'] = Variable<bool>(retellDone);
+    if (!nullToAbsent || selfCheck != null) {
+      map['self_check'] = Variable<String>(selfCheck);
+    }
+    map['completed_at'] = Variable<DateTime>(completedAt);
+    map['updated_at'] = Variable<DateTime>(updatedAt);
+    return map;
+  }
+
+  UserBookComprehensionCompanion toCompanion(bool nullToAbsent) {
+    return UserBookComprehensionCompanion(
+      bookId: Value(bookId),
+      contentVersion: Value(contentVersion),
+      answered: Value(answered),
+      firstTryCorrect: Value(firstTryCorrect),
+      retellDone: Value(retellDone),
+      selfCheck: selfCheck == null && nullToAbsent
+          ? const Value.absent()
+          : Value(selfCheck),
+      completedAt: Value(completedAt),
+      updatedAt: Value(updatedAt),
+    );
+  }
+
+  factory BookComprehensionRow.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return BookComprehensionRow(
+      bookId: serializer.fromJson<String>(json['bookId']),
+      contentVersion: serializer.fromJson<int>(json['contentVersion']),
+      answered: serializer.fromJson<int>(json['answered']),
+      firstTryCorrect: serializer.fromJson<int>(json['firstTryCorrect']),
+      retellDone: serializer.fromJson<bool>(json['retellDone']),
+      selfCheck: serializer.fromJson<String?>(json['selfCheck']),
+      completedAt: serializer.fromJson<DateTime>(json['completedAt']),
+      updatedAt: serializer.fromJson<DateTime>(json['updatedAt']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'bookId': serializer.toJson<String>(bookId),
+      'contentVersion': serializer.toJson<int>(contentVersion),
+      'answered': serializer.toJson<int>(answered),
+      'firstTryCorrect': serializer.toJson<int>(firstTryCorrect),
+      'retellDone': serializer.toJson<bool>(retellDone),
+      'selfCheck': serializer.toJson<String?>(selfCheck),
+      'completedAt': serializer.toJson<DateTime>(completedAt),
+      'updatedAt': serializer.toJson<DateTime>(updatedAt),
+    };
+  }
+
+  BookComprehensionRow copyWith({
+    String? bookId,
+    int? contentVersion,
+    int? answered,
+    int? firstTryCorrect,
+    bool? retellDone,
+    Value<String?> selfCheck = const Value.absent(),
+    DateTime? completedAt,
+    DateTime? updatedAt,
+  }) => BookComprehensionRow(
+    bookId: bookId ?? this.bookId,
+    contentVersion: contentVersion ?? this.contentVersion,
+    answered: answered ?? this.answered,
+    firstTryCorrect: firstTryCorrect ?? this.firstTryCorrect,
+    retellDone: retellDone ?? this.retellDone,
+    selfCheck: selfCheck.present ? selfCheck.value : this.selfCheck,
+    completedAt: completedAt ?? this.completedAt,
+    updatedAt: updatedAt ?? this.updatedAt,
+  );
+  BookComprehensionRow copyWithCompanion(UserBookComprehensionCompanion data) {
+    return BookComprehensionRow(
+      bookId: data.bookId.present ? data.bookId.value : this.bookId,
+      contentVersion: data.contentVersion.present
+          ? data.contentVersion.value
+          : this.contentVersion,
+      answered: data.answered.present ? data.answered.value : this.answered,
+      firstTryCorrect: data.firstTryCorrect.present
+          ? data.firstTryCorrect.value
+          : this.firstTryCorrect,
+      retellDone: data.retellDone.present
+          ? data.retellDone.value
+          : this.retellDone,
+      selfCheck: data.selfCheck.present ? data.selfCheck.value : this.selfCheck,
+      completedAt: data.completedAt.present
+          ? data.completedAt.value
+          : this.completedAt,
+      updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('BookComprehensionRow(')
+          ..write('bookId: $bookId, ')
+          ..write('contentVersion: $contentVersion, ')
+          ..write('answered: $answered, ')
+          ..write('firstTryCorrect: $firstTryCorrect, ')
+          ..write('retellDone: $retellDone, ')
+          ..write('selfCheck: $selfCheck, ')
+          ..write('completedAt: $completedAt, ')
+          ..write('updatedAt: $updatedAt')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+    bookId,
+    contentVersion,
+    answered,
+    firstTryCorrect,
+    retellDone,
+    selfCheck,
+    completedAt,
+    updatedAt,
+  );
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is BookComprehensionRow &&
+          other.bookId == this.bookId &&
+          other.contentVersion == this.contentVersion &&
+          other.answered == this.answered &&
+          other.firstTryCorrect == this.firstTryCorrect &&
+          other.retellDone == this.retellDone &&
+          other.selfCheck == this.selfCheck &&
+          other.completedAt == this.completedAt &&
+          other.updatedAt == this.updatedAt);
+}
+
+class UserBookComprehensionCompanion
+    extends UpdateCompanion<BookComprehensionRow> {
+  final Value<String> bookId;
+  final Value<int> contentVersion;
+  final Value<int> answered;
+  final Value<int> firstTryCorrect;
+  final Value<bool> retellDone;
+  final Value<String?> selfCheck;
+  final Value<DateTime> completedAt;
+  final Value<DateTime> updatedAt;
+  final Value<int> rowid;
+  const UserBookComprehensionCompanion({
+    this.bookId = const Value.absent(),
+    this.contentVersion = const Value.absent(),
+    this.answered = const Value.absent(),
+    this.firstTryCorrect = const Value.absent(),
+    this.retellDone = const Value.absent(),
+    this.selfCheck = const Value.absent(),
+    this.completedAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  UserBookComprehensionCompanion.insert({
+    required String bookId,
+    this.contentVersion = const Value.absent(),
+    this.answered = const Value.absent(),
+    this.firstTryCorrect = const Value.absent(),
+    this.retellDone = const Value.absent(),
+    this.selfCheck = const Value.absent(),
+    required DateTime completedAt,
+    required DateTime updatedAt,
+    this.rowid = const Value.absent(),
+  }) : bookId = Value(bookId),
+       completedAt = Value(completedAt),
+       updatedAt = Value(updatedAt);
+  static Insertable<BookComprehensionRow> custom({
+    Expression<String>? bookId,
+    Expression<int>? contentVersion,
+    Expression<int>? answered,
+    Expression<int>? firstTryCorrect,
+    Expression<bool>? retellDone,
+    Expression<String>? selfCheck,
+    Expression<DateTime>? completedAt,
+    Expression<DateTime>? updatedAt,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (bookId != null) 'book_id': bookId,
+      if (contentVersion != null) 'content_version': contentVersion,
+      if (answered != null) 'answered': answered,
+      if (firstTryCorrect != null) 'first_try_correct': firstTryCorrect,
+      if (retellDone != null) 'retell_done': retellDone,
+      if (selfCheck != null) 'self_check': selfCheck,
+      if (completedAt != null) 'completed_at': completedAt,
+      if (updatedAt != null) 'updated_at': updatedAt,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  UserBookComprehensionCompanion copyWith({
+    Value<String>? bookId,
+    Value<int>? contentVersion,
+    Value<int>? answered,
+    Value<int>? firstTryCorrect,
+    Value<bool>? retellDone,
+    Value<String?>? selfCheck,
+    Value<DateTime>? completedAt,
+    Value<DateTime>? updatedAt,
+    Value<int>? rowid,
+  }) {
+    return UserBookComprehensionCompanion(
+      bookId: bookId ?? this.bookId,
+      contentVersion: contentVersion ?? this.contentVersion,
+      answered: answered ?? this.answered,
+      firstTryCorrect: firstTryCorrect ?? this.firstTryCorrect,
+      retellDone: retellDone ?? this.retellDone,
+      selfCheck: selfCheck ?? this.selfCheck,
+      completedAt: completedAt ?? this.completedAt,
+      updatedAt: updatedAt ?? this.updatedAt,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (bookId.present) {
+      map['book_id'] = Variable<String>(bookId.value);
+    }
+    if (contentVersion.present) {
+      map['content_version'] = Variable<int>(contentVersion.value);
+    }
+    if (answered.present) {
+      map['answered'] = Variable<int>(answered.value);
+    }
+    if (firstTryCorrect.present) {
+      map['first_try_correct'] = Variable<int>(firstTryCorrect.value);
+    }
+    if (retellDone.present) {
+      map['retell_done'] = Variable<bool>(retellDone.value);
+    }
+    if (selfCheck.present) {
+      map['self_check'] = Variable<String>(selfCheck.value);
+    }
+    if (completedAt.present) {
+      map['completed_at'] = Variable<DateTime>(completedAt.value);
+    }
+    if (updatedAt.present) {
+      map['updated_at'] = Variable<DateTime>(updatedAt.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('UserBookComprehensionCompanion(')
+          ..write('bookId: $bookId, ')
+          ..write('contentVersion: $contentVersion, ')
+          ..write('answered: $answered, ')
+          ..write('firstTryCorrect: $firstTryCorrect, ')
+          ..write('retellDone: $retellDone, ')
+          ..write('selfCheck: $selfCheck, ')
+          ..write('completedAt: $completedAt, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
 abstract class _$AppDatabase extends GeneratedDatabase {
   _$AppDatabase(QueryExecutor e) : super(e);
   $AppDatabaseManager get managers => $AppDatabaseManager(this);
@@ -9109,6 +9648,8 @@ abstract class _$AppDatabase extends GeneratedDatabase {
   late final $UserGrammarProgressTable userGrammarProgress =
       $UserGrammarProgressTable(this);
   late final $DailyActivityTable dailyActivity = $DailyActivityTable(this);
+  late final $UserBookComprehensionTable userBookComprehension =
+      $UserBookComprehensionTable(this);
   @override
   Iterable<TableInfo<Table, Object?>> get allTables =>
       allSchemaEntities.whereType<TableInfo<Table, Object?>>();
@@ -9132,6 +9673,7 @@ abstract class _$AppDatabase extends GeneratedDatabase {
     userBookProgress,
     userGrammarProgress,
     dailyActivity,
+    userBookComprehension,
   ];
   @override
   StreamQueryUpdateRules get streamUpdateRules => const StreamQueryUpdateRules([
@@ -14158,6 +14700,290 @@ typedef $$DailyActivityTableProcessedTableManager =
       DailyActivityRow,
       PrefetchHooks Function()
     >;
+typedef $$UserBookComprehensionTableCreateCompanionBuilder =
+    UserBookComprehensionCompanion Function({
+      required String bookId,
+      Value<int> contentVersion,
+      Value<int> answered,
+      Value<int> firstTryCorrect,
+      Value<bool> retellDone,
+      Value<String?> selfCheck,
+      required DateTime completedAt,
+      required DateTime updatedAt,
+      Value<int> rowid,
+    });
+typedef $$UserBookComprehensionTableUpdateCompanionBuilder =
+    UserBookComprehensionCompanion Function({
+      Value<String> bookId,
+      Value<int> contentVersion,
+      Value<int> answered,
+      Value<int> firstTryCorrect,
+      Value<bool> retellDone,
+      Value<String?> selfCheck,
+      Value<DateTime> completedAt,
+      Value<DateTime> updatedAt,
+      Value<int> rowid,
+    });
+
+class $$UserBookComprehensionTableFilterComposer
+    extends Composer<_$AppDatabase, $UserBookComprehensionTable> {
+  $$UserBookComprehensionTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get bookId => $composableBuilder(
+    column: $table.bookId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get contentVersion => $composableBuilder(
+    column: $table.contentVersion,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get answered => $composableBuilder(
+    column: $table.answered,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get firstTryCorrect => $composableBuilder(
+    column: $table.firstTryCorrect,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<bool> get retellDone => $composableBuilder(
+    column: $table.retellDone,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get selfCheck => $composableBuilder(
+    column: $table.selfCheck,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get completedAt => $composableBuilder(
+    column: $table.completedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$UserBookComprehensionTableOrderingComposer
+    extends Composer<_$AppDatabase, $UserBookComprehensionTable> {
+  $$UserBookComprehensionTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get bookId => $composableBuilder(
+    column: $table.bookId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get contentVersion => $composableBuilder(
+    column: $table.contentVersion,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get answered => $composableBuilder(
+    column: $table.answered,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get firstTryCorrect => $composableBuilder(
+    column: $table.firstTryCorrect,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<bool> get retellDone => $composableBuilder(
+    column: $table.retellDone,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get selfCheck => $composableBuilder(
+    column: $table.selfCheck,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get completedAt => $composableBuilder(
+    column: $table.completedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$UserBookComprehensionTableAnnotationComposer
+    extends Composer<_$AppDatabase, $UserBookComprehensionTable> {
+  $$UserBookComprehensionTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get bookId =>
+      $composableBuilder(column: $table.bookId, builder: (column) => column);
+
+  GeneratedColumn<int> get contentVersion => $composableBuilder(
+    column: $table.contentVersion,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get answered =>
+      $composableBuilder(column: $table.answered, builder: (column) => column);
+
+  GeneratedColumn<int> get firstTryCorrect => $composableBuilder(
+    column: $table.firstTryCorrect,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<bool> get retellDone => $composableBuilder(
+    column: $table.retellDone,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get selfCheck =>
+      $composableBuilder(column: $table.selfCheck, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get completedAt => $composableBuilder(
+    column: $table.completedAt,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<DateTime> get updatedAt =>
+      $composableBuilder(column: $table.updatedAt, builder: (column) => column);
+}
+
+class $$UserBookComprehensionTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $UserBookComprehensionTable,
+          BookComprehensionRow,
+          $$UserBookComprehensionTableFilterComposer,
+          $$UserBookComprehensionTableOrderingComposer,
+          $$UserBookComprehensionTableAnnotationComposer,
+          $$UserBookComprehensionTableCreateCompanionBuilder,
+          $$UserBookComprehensionTableUpdateCompanionBuilder,
+          (
+            BookComprehensionRow,
+            BaseReferences<
+              _$AppDatabase,
+              $UserBookComprehensionTable,
+              BookComprehensionRow
+            >,
+          ),
+          BookComprehensionRow,
+          PrefetchHooks Function()
+        > {
+  $$UserBookComprehensionTableTableManager(
+    _$AppDatabase db,
+    $UserBookComprehensionTable table,
+  ) : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$UserBookComprehensionTableFilterComposer(
+                $db: db,
+                $table: table,
+              ),
+          createOrderingComposer: () =>
+              $$UserBookComprehensionTableOrderingComposer(
+                $db: db,
+                $table: table,
+              ),
+          createComputedFieldComposer: () =>
+              $$UserBookComprehensionTableAnnotationComposer(
+                $db: db,
+                $table: table,
+              ),
+          updateCompanionCallback:
+              ({
+                Value<String> bookId = const Value.absent(),
+                Value<int> contentVersion = const Value.absent(),
+                Value<int> answered = const Value.absent(),
+                Value<int> firstTryCorrect = const Value.absent(),
+                Value<bool> retellDone = const Value.absent(),
+                Value<String?> selfCheck = const Value.absent(),
+                Value<DateTime> completedAt = const Value.absent(),
+                Value<DateTime> updatedAt = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => UserBookComprehensionCompanion(
+                bookId: bookId,
+                contentVersion: contentVersion,
+                answered: answered,
+                firstTryCorrect: firstTryCorrect,
+                retellDone: retellDone,
+                selfCheck: selfCheck,
+                completedAt: completedAt,
+                updatedAt: updatedAt,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                required String bookId,
+                Value<int> contentVersion = const Value.absent(),
+                Value<int> answered = const Value.absent(),
+                Value<int> firstTryCorrect = const Value.absent(),
+                Value<bool> retellDone = const Value.absent(),
+                Value<String?> selfCheck = const Value.absent(),
+                required DateTime completedAt,
+                required DateTime updatedAt,
+                Value<int> rowid = const Value.absent(),
+              }) => UserBookComprehensionCompanion.insert(
+                bookId: bookId,
+                contentVersion: contentVersion,
+                answered: answered,
+                firstTryCorrect: firstTryCorrect,
+                retellDone: retellDone,
+                selfCheck: selfCheck,
+                completedAt: completedAt,
+                updatedAt: updatedAt,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$UserBookComprehensionTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $UserBookComprehensionTable,
+      BookComprehensionRow,
+      $$UserBookComprehensionTableFilterComposer,
+      $$UserBookComprehensionTableOrderingComposer,
+      $$UserBookComprehensionTableAnnotationComposer,
+      $$UserBookComprehensionTableCreateCompanionBuilder,
+      $$UserBookComprehensionTableUpdateCompanionBuilder,
+      (
+        BookComprehensionRow,
+        BaseReferences<
+          _$AppDatabase,
+          $UserBookComprehensionTable,
+          BookComprehensionRow
+        >,
+      ),
+      BookComprehensionRow,
+      PrefetchHooks Function()
+    >;
 
 class $AppDatabaseManager {
   final _$AppDatabase _db;
@@ -14198,4 +15024,6 @@ class $AppDatabaseManager {
       $$UserGrammarProgressTableTableManager(_db, _db.userGrammarProgress);
   $$DailyActivityTableTableManager get dailyActivity =>
       $$DailyActivityTableTableManager(_db, _db.dailyActivity);
+  $$UserBookComprehensionTableTableManager get userBookComprehension =>
+      $$UserBookComprehensionTableTableManager(_db, _db.userBookComprehension);
 }

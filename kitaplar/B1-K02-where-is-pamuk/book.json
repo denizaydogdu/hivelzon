@@ -82,5 +82,37 @@
         {"id": "p18", "image": null}
       ]
     }
-  ]
+  ],
+  "comprehension": {
+    "questions": [
+      {
+        "id": "q1",
+        "prompt": "Why did Kerem, Aunt Sevgi and Uncle Hasan go to the small bay?",
+        "promptTr": "Kerem, Sevgi Teyze ve Hasan Amca neden küçük koya gittiler?",
+        "options": [
+          "They wanted to watch the dolphins.",
+          "They wanted to hide from the storm.",
+          "Pamuk's tracker stopped there."
+        ],
+        "answer": 2,
+        "page": "p06"
+      },
+      {
+        "id": "q2",
+        "prompt": "What was Pamuk doing on the beach at night?",
+        "promptTr": "Pamuk gece kumsalda ne yapıyordu?",
+        "options": [
+          "She was laying eggs in the sand.",
+          "She was looking for her lost tracker.",
+          "She was hiding because she was hurt."
+        ],
+        "answer": 0,
+        "page": "p16"
+      }
+    ],
+    "retell": {
+      "modelEn": "Kerem helps his aunt at a sea turtle rescue centre and looks after a hurt turtle called Pamuk. After they set Pamuk free, her tracker stops in a small bay, so they go there by boat. At night they find Pamuk on the beach, laying eggs. Pamuk is a she!",
+      "modelTr": "Kerem teyzesine bir deniz kaplumbağası kurtarma merkezinde yardım eder ve Pamuk adlı yaralı bir kaplumbağaya bakar. Pamuk'u serbest bıraktıktan sonra takip cihazı küçük bir koyda durur, onlar da tekneyle oraya giderler. Gece Pamuk'u kumsalda yumurta bırakırken bulurlar. Pamuk bir dişiymiş!"
+    }
+  }
 }

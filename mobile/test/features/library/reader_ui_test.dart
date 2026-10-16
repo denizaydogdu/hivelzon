@@ -213,6 +213,8 @@ void main() {
     expect(pageLabel(tester), 's. 3 / 3');
     await tester.tap(find.byKey(const ValueKey('reader-finish')));
     await h.settle(tester);
+    await tester.tap(find.byKey(const ValueKey('comp-skip')));
+    await h.settle(tester);
     expect(find.byKey(const ValueKey('end-of-book')), findsOneWidget);
     expect(find.text('Kitabı bitirdin'), findsOneWidget);
     // Aynı seviyede başka kitap yok: "Sıradaki kitabı aç" görünmez.
@@ -245,6 +247,8 @@ void main() {
       await h.settle(tester);
     }
     await tester.tap(find.byKey(const ValueKey('reader-finish')));
+    await h.settle(tester);
+    await tester.tap(find.byKey(const ValueKey('comp-skip')));
     await h.settle(tester);
     await tester.tap(find.byKey(const ValueKey('end-next-book')));
     await h.settle(tester);
@@ -426,6 +430,8 @@ void main() {
         await tester.tap(find.byKey(const ValueKey('reader-next')));
         await h.settle(tester);
         await tester.tap(find.byKey(const ValueKey('reader-finish')));
+        await h.settle(tester);
+        await tester.tap(find.byKey(const ValueKey('comp-skip')));
         await h.settle(tester);
         expect(find.byKey(const ValueKey('end-of-book')), findsOneWidget);
       }

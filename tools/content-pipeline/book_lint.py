@@ -85,6 +85,9 @@ def main(argv: list[str] | None = None) -> int:
             t = r.translation
             print(f"   çeviri [{t['status']}]: {t['unitsTranslated']}/{t['units']} cümle, "
                   f"{t['wordsGlossed']}/{t['wordsNeedingGloss']} kelime anlamlı")
+        cq = st.get("comprehension") if st else None
+        if cq:
+            print(f"   anlama: {cq['questions']} soru, cevap sırası {cq['answers']}")
         md = st.get("media") if st else None
         if md:
             raw = md.get("wpmRaw", {})

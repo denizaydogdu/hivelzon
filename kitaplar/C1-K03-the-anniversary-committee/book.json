@@ -197,5 +197,37 @@
         }
       ]
     }
-  ]
+  ],
+  "comprehension": {
+    "questions": [
+      {
+        "id": "q1",
+        "prompt": "Why did Dorothy Fairweather's card worry Gwen?",
+        "promptTr": "Dorothy Fairweather'ın kartı Gwen'i neden endişelendirdi?",
+        "options": [
+          "It said that Dorothy would not be able to come to the party.",
+          "It asked the committee to return Dorothy's old scissors.",
+          "It suggested that the company might be a year younger than everyone believed."
+        ],
+        "answer": 2,
+        "page": "p18"
+      },
+      {
+        "id": "q2",
+        "prompt": "How did Howard react when Gwen told everyone that the company was forty-nine?",
+        "promptTr": "Gwen herkese şirketin kırk dokuz yaşında olduğunu söylediğinde Howard nasıl tepki verdi?",
+        "options": [
+          "He laughed and called the party a rehearsal for next year.",
+          "He stopped the party and sent the band home.",
+          "He was angry and gave Derek's job to Clive."
+        ],
+        "answer": 0,
+        "page": "p27"
+      }
+    ],
+    "retell": {
+      "modelEn": "Gwen, a careful accountant at Brindle Umbrellas, becomes chair of the fiftieth anniversary committee by accident. In the basement archive, a tea stain, an old employee's card, the first accounts and the founder's diary show that the company is really only forty-nine. Gwen tells the truth in her speech, and Howard Brindle laughs, calls the party a rehearsal and asks her to chair the real celebration next year.",
+      "modelTr": "Brindle Umbrellas'ın titiz muhasebecisi Gwen, kazara ellinci yıl dönümü komitesinin başkanı olur. Bodrumdaki arşivde bir çay lekesi, eski bir çalışanın kartı, ilk hesaplar ve kurucunun günlüğü, şirketin aslında yalnızca kırk dokuz yaşında olduğunu gösterir. Gwen konuşmasında gerçeği söyler; Howard Brindle güler, kutlamaya prova der ve Gwen'den gelecek yılki gerçek kutlamanın da başkanı olmasını ister."
+    }
+  }
 }

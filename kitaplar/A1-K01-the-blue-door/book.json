@@ -100,5 +100,37 @@
         }
       ]
     }
-  ]
+  ],
+  "comprehension": {
+    "questions": [
+      {
+        "id": "q1",
+        "prompt": "Where does the earth on the steps stop?",
+        "promptTr": "Merdivendeki toprak nerede bitiyor?",
+        "options": [
+          "At the door of Mr Tom",
+          "At the green door of Mrs Ada",
+          "At Lina's door on floor four"
+        ],
+        "answer": 1,
+        "page": "p05"
+      },
+      {
+        "id": "q2",
+        "prompt": "Who is behind the blue door at night?",
+        "promptTr": "Geceleri mavi kapının arkasında kim var?",
+        "options": [
+          "Mr Tom and his big cat",
+          "Lina's mum with a box",
+          "Mrs Ada in her roof garden"
+        ],
+        "answer": 2,
+        "page": "p10"
+      }
+    ],
+    "retell": {
+      "modelEn": "Lina has a new home by a river. The top floor has a locked blue door. Behind it, Mrs Ada has a roof garden. Now Lina has a key and a friend.",
+      "modelTr": "Lina'nın nehir kenarında yeni bir evi var. En üst katta kilitli mavi bir kapı var. Kapının arkasında Bayan Ada'nın çatıda bir bahçesi var. Artık Lina'nın bir anahtarı ve bir arkadaşı var."
+    }
+  }
 }
