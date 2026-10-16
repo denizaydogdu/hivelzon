@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "late-maya",
+  "kind": "message",
+  "season": 1,
+  "level": "A1",
+  "order": 50,
+  "status": "DRAFT",
+  "author": "Claude (taslak, H-090)",
+  "date": "2026-10-16",
+  "unlockAfter": "A1-005",
+  "titleTr": "Maya'ya geç kaldığını yaz",
+  "taskTr": "Otobüs yine gecikiyor. Maya seni Tide & Pages'te bekliyor. Ona kısa bir mesaj yaz: özür dile ve geç kaldığını söyle.",
+  "to": "Maya",
+  "image": {"episode": "A1-005", "path": "stills/B5-03-otobus-geliyor.webp"},
+  "model": {"en": "Sorry, Maya. I'm late. The bus is late.", "tr": "Kusura bakma Maya. Geç kaldım. Otobüs gecikti."},
+  "check": {
+    "all": [["sorry"], ["late"]],
+    "none": ["not", "never", "no"],
+    "hintTr": "Özür (Sorry) ve geç kalmak (late) mesajında olsun."
+  },
+  "targets": ["Sorry, I'm late."]
+}

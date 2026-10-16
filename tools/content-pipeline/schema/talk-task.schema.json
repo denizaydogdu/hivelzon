@@ -1,0 +1,89 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hi.velzon.tr/schema/talk-task.schema.json",
+  "title": "hiVelzon Konuş görevi kaynağı (H-090): icerik/_evren/konusma/<id>.json — yönlendirmeli sahne ya da kısa mesaj",
+  "type": "object",
+  "required": ["schemaVersion", "id", "kind", "season", "level", "order", "status", "unlockAfter", "titleTr", "image"],
+  "properties": {
+    "schemaVersion": {"const": 1},
+    "id": {"type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"},
+    "kind": {"enum": ["scene", "message"]},
+    "season": {"type": "integer", "minimum": 1},
+    "level": {"enum": ["A1", "A2", "B1", "B2"]},
+    "order": {"type": "integer", "minimum": 1},
+    "status": {"enum": ["DRAFT", "IN_REVIEW", "APPROVED"]},
+    "author": {"type": "string"},
+    "date": {"type": "string"},
+    "approvedBy": {"type": "string"},
+    "unlockAfter": {"type": "string", "pattern": "^[A-C][12]-\\d{3}$"},
+    "titleTr": {"type": "string", "minLength": 1},
+    "introTr": {"type": "string", "minLength": 1},
+    "taskTr": {"type": "string", "minLength": 1},
+    "to": {"type": "string", "minLength": 1},
+    "character": {
+      "type": "object", "required": ["nameTr", "speaker"], "additionalProperties": false,
+      "properties": {"nameTr": {"type": "string", "minLength": 1}, "speaker": {"type": "string", "pattern": "^[A-Z][A-Z ]*$"}}
+    },
+    "image": {
+      "type": "object", "required": ["episode", "path"], "additionalProperties": false,
+      "properties": {
+        "episode": {"type": "string", "pattern": "^[A-C][12]-\\d{3}$"},
+        "path": {"type": "string", "pattern": "^stills/[^/]+\\.webp$"}
+      }
+    },
+    "turns": {"type": "array", "minItems": 3, "maxItems": 5, "items": {"$ref": "#/$defs/turn"}},
+    "outro": {"$ref": "#/$defs/line"},
+    "model": {"$ref": "#/$defs/line"},
+    "check": {
+      "oneOf": [
+        {"type": "null"},
+        {
+          "type": "object", "required": ["all"], "additionalProperties": false,
+          "properties": {
+            "all": {"type": "array", "minItems": 1, "items": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}}},
+            "none": {"type": "array", "items": {"type": "string", "minLength": 1}},
+            "hintTr": {"type": "string", "minLength": 1}
+          }
+        }
+      ]
+    },
+    "selfCheckTr": {"type": "array", "minItems": 1, "maxItems": 3, "items": {"type": "string", "minLength": 1}},
+    "targets": {"type": "array", "items": {"type": "string", "minLength": 1}}
+  },
+  "additionalProperties": false,
+  "allOf": [
+    {"if": {"properties": {"kind": {"const": "scene"}}},
+     "then": {"required": ["introTr", "character", "turns"]}},
+    {"if": {"properties": {"kind": {"const": "message"}}},
+     "then": {"required": ["taskTr", "to", "model", "check", "targets"]}}
+  ],
+  "$defs": {
+    "line": {
+      "type": "object", "required": ["en", "tr"], "additionalProperties": false,
+      "properties": {
+        "en": {"type": "string", "minLength": 1},
+        "tr": {"type": "string", "minLength": 1},
+        "speaker": {"type": "string", "pattern": "^[A-Z][A-Z ]*$"}
+      }
+    },
+    "turn": {
+      "type": "object",
+      "required": ["id", "line", "promptTr", "accept", "distractors", "targets"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {"type": "string", "pattern": "^t[1-9]$"},
+        "line": {"$ref": "#/$defs/line"},
+        "promptTr": {"type": "string", "minLength": 1},
+        "accept": {"type": "array", "minItems": 2, "maxItems": 8, "items": {"type": "string", "minLength": 1}},
+        "distractors": {
+          "type": "array", "minItems": 1, "maxItems": 2,
+          "items": {
+            "type": "object", "required": ["en", "reactionTr"], "additionalProperties": false,
+            "properties": {"en": {"type": "string", "minLength": 1}, "reactionTr": {"type": "string", "minLength": 1}}
+          }
+        },
+        "targets": {"type": "array", "items": {"type": "string", "minLength": 1}}
+      }
+    }
+  }
+}

@@ -31,6 +31,9 @@ enum HiSuggestionKind {
   continueBook,
   startBook,
   grammarSuggest,
+
+  /// Konuş görevi (H-090): yönlendirmeli sahne ya da kısa mesaj.
+  talk,
   rest,
 }
 
@@ -113,6 +116,31 @@ class CoachTopicSet {
   final int? unlockEpisode;
 }
 
+/// Konuş görevi (H-090): açılmış (bölümü bitmiş), henüz yapılmamış.
+class CoachTalk {
+  const CoachTalk({
+    required this.id,
+    required this.titleTr,
+    required this.scene,
+    this.unlockEpisode,
+    this.characterTr,
+    this.minutes = 3,
+  });
+
+  final String id;
+  final String titleTr;
+
+  /// Sahne mi (karakterle konuşma), kısa mesaj mı.
+  final bool scene;
+
+  /// Görevi açan bölüm (gerekçede: "Bölüm 2'de …").
+  final int? unlockEpisode;
+
+  /// Sahnedeki karakter ("Maya"); mesajda alıcı.
+  final String? characterTr;
+  final int minutes;
+}
+
 /// Kitaplık kitabı (H-067).
 class CoachBook {
   const CoachBook({
@@ -188,6 +216,9 @@ class CoachInput {
     this.reviewedToday = false,
     this.mainDoneToday = false,
     this.taskDoneToday = false,
+    this.talkTasks = const [],
+    this.talkDoneToday = false,
+    this.startedAt,
   });
 
   /// UTC.
@@ -233,8 +264,18 @@ class CoachInput {
   /// Bugün bir bölüm bitti ya da kitap okundu mu.
   final bool mainDoneToday;
 
-  /// Bugün küçük bir görev yapıldı mı (sahne avı, dilbilgisi dersi).
+  /// Bugün küçük bir görev yapıldı mı (sahne avı, dilbilgisi dersi, Konuş).
   final bool taskDoneToday;
+
+  /// Açılmış ve yapılmamış Konuş görevleri, sırayla (H-090).
+  final List<CoachTalk> talkTasks;
+
+  /// Bugün bir Konuş görevi bitti mi (ilk haftada günde en çok bir görev).
+  final bool talkDoneToday;
+
+  /// Kullanıcının başladığı an (açılış bitişi; UTC). İlk 7 gün buna göre
+  /// sayılır (H-090); bilinmiyorsa ilk hafta akışı yok.
+  final DateTime? startedAt;
 }
 
 /// Bugünkü tek öneri: [planToday]'ın birincil eylemi (Ana Sayfa ile aynı;

@@ -18,7 +18,10 @@ enum SpeechPlace {
   episodeEnd('episode_end'),
 
   /// Dilbilgisi dersinin alıştırmasında "Söyle" (H-078).
-  grammar('grammar');
+  grammar('grammar'),
+
+  /// Konuş sahnesinde cevabı söyleme (H-090).
+  talk('talk');
 
   const SpeechPlace(this.code);
 

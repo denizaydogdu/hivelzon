@@ -843,6 +843,7 @@ class SyncStore {
         'user_grammar_progress',
         'daily_activity',
         'user_book_comprehension',
+        'user_talk_progress',
         'expression_evidence',
         'season_state',
       ]) {

@@ -191,6 +191,19 @@ const syncTables = <SyncTableSpec>[
       SyncCol('completedAt', 'completed_at', _d),
     ],
   ),
+  // Konuş görevleri (H-090): yalnız görev kimliği ve zamanlar (yazılan
+  // mesaj, söylenenin yazısı ve ses yok); düz LWW.
+  SyncTableSpec(
+    name: 'user_talk_progress',
+    order: 97,
+    mutable: true,
+    keys: [SyncCol('taskId', 'task_id', _t)],
+    lww: _updatedAt,
+    data: [
+      SyncCol('completedAt', 'completed_at', _d),
+      SyncCol('lastDoneAt', 'last_done_at', _d),
+    ],
+  ),
   SyncTableSpec(
     name: 'notebook_items',
     order: 100,

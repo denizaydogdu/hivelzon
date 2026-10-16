@@ -599,6 +599,7 @@ class _PlanCard extends ConsumerWidget {
     HiSuggestionKind.continueBook ||
     HiSuggestionKind.startBook => Icons.auto_stories_rounded,
     HiSuggestionKind.sceneHunt => Icons.travel_explore_rounded,
+    HiSuggestionKind.talk => Icons.forum_outlined,
     HiSuggestionKind.grammarSuggest => Icons.school_outlined,
     HiSuggestionKind.continueEpisode ||
     HiSuggestionKind.startEpisode => Icons.play_circle_outline_rounded,

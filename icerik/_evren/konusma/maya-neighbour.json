@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "id": "maya-neighbour",
+  "kind": "scene",
+  "season": 1,
+  "level": "A1",
+  "order": 20,
+  "status": "DRAFT",
+  "author": "Claude (taslak, H-090)",
+  "date": "2026-10-16",
+  "unlockAfter": "A1-002",
+  "titleTr": "Yeni komşunla tanış",
+  "introTr": "Cumartesi sabahı, Tide & Pages'in kapısındasın. Bu bir prova: Maya'yla tanışırken Alex'in yerine sen konuşuyorsun.",
+  "character": {"nameTr": "Maya", "speaker": "MAYA"},
+  "image": {"episode": "A1-002", "path": "stills/B2-03-maya-pov.webp"},
+  "turns": [
+    {
+      "id": "t1",
+      "line": {"en": "Good morning! Can I help you?", "tr": "Günaydın! Yardımcı olabilir miyim?"},
+      "promptTr": "Kendini tanıt: adını söyle.",
+      "accept": [
+        "Hi! I'm Alex.",
+        "Hello! I'm Alex.",
+        "Hello, my name is Alex.",
+        "Hi, my name is Alex.",
+        "My name is Alex.",
+        "Nice to meet you. I'm Alex.",
+        "I'm Alex."
+      ],
+      "distractors": [
+        {"en": "I Alex.", "reactionTr": "Az kaldı! Türkçede \"ben Alex\" deriz ama İngilizcede \"am\" gerekir: I'm Alex."}
+      ],
+      "targets": ["My name is…", "Nice to meet you."]
+    },
+    {
+      "id": "t2",
+      "line": {"en": "Hi, Alex! I'm Maya. Are you new here?", "tr": "Merhaba Alex! Ben Maya. Burada yeni misin?"},
+      "promptTr": "Evet de; onun yeni komşusu olduğunu söyle.",
+      "accept": [
+        "Yes. I'm your new neighbour.",
+        "Yes, I am. I'm your new neighbour.",
+        "Yes, I am."
+      ],
+      "distractors": [
+        {"en": "Yes, I can.", "reactionTr": "Soru \"Are you…?\" ile başlıyor; kısa cevap da \"am\" ile olur: Yes, I am."}
+      ],
+      "targets": []
+    },
+    {
+      "id": "t3",
+      "line": {"en": "Oh, welcome! Where are you from?", "tr": "Ah, hoş geldin! Nerelisin?"},
+      "promptTr": "Nereli olduğunu söyle.",
+      "accept": [
+        "I'm from Türkiye. From İzmir.",
+        "I'm from Türkiye.",
+        "I'm from İzmir.",
+        "I'm from İzmir, Türkiye.",
+        "I'm from İzmir, in Türkiye."
+      ],
+      "distractors": [
+        {"en": "I from Türkiye.", "reactionTr": "Neredeyse! \"am\" düşmesin: I'm from Türkiye. Türkçede \"-im\" ekiyle söyleriz, İngilizcede ayrı bir kelimedir."}
+      ],
+      "targets": ["I'm from Türkiye."]
+    },
+    {
+      "id": "t4",
+      "line": {"en": "This is my mother.", "tr": "Bu benim annem."},
+      "promptTr": "Maya'nın annesine \"Tanıştığıma memnun oldum\" de.",
+      "accept": [
+        "Nice to meet you.",
+        "Hello! Nice to meet you.",
+        "Hello, Mrs Brooks. Nice to meet you.",
+        "Nice to meet you, Mrs Brooks.",
+        "Hi! Nice to meet you."
+      ],
+      "distractors": [
+        {"en": "Nice to meet me.", "reactionTr": "Az kaldı! Karşındakiyle tanıştın: Nice to meet you."}
+      ],
+      "targets": ["Nice to meet you."]
+    }
+  ],
+  "outro": {"speaker": "MRS BROOKS", "en": "Hello, Alex. Nice to meet you.", "tr": "Merhaba Alex. Tanıştığımıza memnun oldum."}
+}

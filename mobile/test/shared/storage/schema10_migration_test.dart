@@ -74,7 +74,7 @@ void main() {
     final db = openV8(File('${dir.path}/v9.sqlite'), from: 9);
     addTearDown(db.close);
     final version = await db.customSelect('PRAGMA user_version').getSingle();
-    expect(version.data.values.first, 10);
+    expect(version.data.values.first, 11);
     expect(await db.select(db.userBookComprehension).get(), isEmpty);
     expect((await NotebookStore(db).evidence()).keys, ['phrase|where is…']);
   });
@@ -87,8 +87,8 @@ void main() {
     addTearDown(db.close);
 
     final version = await db.customSelect('PRAGMA user_version').getSingle();
-    expect(version.data.values.first, 10);
-    expect(db.schemaVersion, 10);
+    expect(version.data.values.first, 11);
+    expect(db.schemaVersion, 11);
     final store = NotebookStore(db);
     expect(await store.entries(), hasLength(2));
     expect(await store.logs(), hasLength(4));

@@ -6,6 +6,7 @@ import 'package:hivelzon/features/hi/domain/hi_content.dart';
 import 'package:hivelzon/features/library/domain/book.dart';
 import 'package:hivelzon/features/player/domain/episode.dart';
 import 'package:hivelzon/features/player/domain/subtitles.dart';
+import 'package:hivelzon/features/talk/domain/talk_task.dart';
 import 'package:hivelzon/features/topic_sets/domain/topic_set.dart';
 import 'package:hivelzon/shared/content/content_source.dart';
 
@@ -117,7 +118,21 @@ class FakeContentSource implements ContentSource {
       episodes: withCatalogue ? catalogue(packageIds) : const [],
       topicSets: withTopicSets ? topicSetSummaries() : const [],
       clipsPath: withClips ? 'clips.json' : null,
+      talkPath: withTalk ? 'talk.json' : null,
     );
+  }
+
+  /// Konuş görevleri (H-090): sezon paketinde `talk.json` olsun mu (gerçek
+  /// dışa aktarım kopyası, `fixtures/talk.json`).
+  bool withTalk = true;
+  bool talkFails = false;
+  int talkLoads = 0;
+
+  @override
+  Future<TalkCatalog> loadTalk(int season, String path) async {
+    talkLoads++;
+    if (fail || talkFails) throw ContentUnavailableException('kapalı');
+    return loadTalkFixture();
   }
 
   /// Keşfet klipleri (H-040): sezon paketinde `clips.json` olsun mu.
@@ -419,4 +434,9 @@ TopicSet loadTopicSetFixture(String id) => TopicSet.fromJson(
 /// Sezon paketindeki Hi verisi (gerçek dışa aktarım kopyası, H-048).
 HiContent loadHiFixture() => HiContent.fromJson(
   (jsonDecode(fixtureText('hi.json')) as Map).cast<String, dynamic>(),
+);
+
+/// Sezon paketindeki Konuş görevleri (gerçek dışa aktarım kopyası, H-090).
+TalkCatalog loadTalkFixture() => TalkCatalog.fromJson(
+  (jsonDecode(fixtureText('talk.json')) as Map).cast<String, dynamic>(),
 );

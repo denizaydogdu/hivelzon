@@ -23,6 +23,7 @@ from hvpipeline.clips import clips_dir, lint_clips  # noqa: E402
 from hvpipeline.lint import check_chain, lint_episode  # noqa: E402
 from hvpipeline.hi import has_hi_sources, lint_hi  # noqa: E402
 from hvpipeline.sets import lint_sets, sets_dir  # noqa: E402
+from hvpipeline.talk import lint_talk, talk_dir  # noqa: E402
 
 
 def write_reports(reports, chain) -> list[Path]:
@@ -65,6 +66,7 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--no-sets", action="store_true", help="konu seti denetimini atla (H-051)")
     ap.add_argument("--no-hi", action="store_true", help="Hi-A verisi denetimini atla (H-048)")
     ap.add_argument("--no-clips", action="store_true", help="Keşfet klipleri denetimini atla (H-040)")
+    ap.add_argument("--no-talk", action="store_true", help="Konuş görevleri denetimini atla (H-090)")
     ap.add_argument("--require-approved", action="store_true",
                     help="yayın denetimi: onaysız klip dosyası ya da onaysız kaynak bölüm hata sayılır (H-040)")
     ap.add_argument("--write-reports", action="store_true",
@@ -105,10 +107,17 @@ def main(argv: list[str] | None = None) -> int:
         for root in sorted(roots):
             if clips_dir(root).is_dir():
                 clips += lint_clips(root, require_approved=a.require_approved)
+    # Konuş görevleri (H-090): _evren/konusma/*.json (sahne ve kısa mesaj).
+    talk = []
+    if not a.no_talk:
+        for root in sorted(roots):
+            if talk_dir(root).is_dir():
+                talk += lint_talk(root)
     n_err = (sum(len(r.errors) for r in reports) + sum(1 for i in chain if i.level == "error")
              + sum(1 for _, iss, _ in sets for i in iss if i.level == "error")
              + sum(1 for _, iss in hi for i in iss if i.level == "error")
-             + sum(1 for _, iss, _ in clips for i in iss if i.level == "error"))
+             + sum(1 for _, iss, _ in clips for i in iss if i.level == "error")
+             + sum(1 for _, iss, _ in talk for i in iss if i.level == "error"))
     if a.write_reports:
         write_reports(reports, chain)
     if a.json:
@@ -121,6 +130,9 @@ def main(argv: list[str] | None = None) -> int:
                           "clips": [{"file": name, **rep, "errors": [str(i) for i in iss if i.level == "error"],
                                      "warnings": [str(i) for i in iss if i.level == "warning"]}
                                     for name, iss, rep in clips],
+                          "talk": [{"id": tid, **rep, "errors": [str(i) for i in iss if i.level == "error"],
+                                    "warnings": [str(i) for i in iss if i.level == "warning"]}
+                                   for tid, iss, rep in talk],
                           "errors": n_err}, ensure_ascii=False, indent=2))
         return 1 if n_err else 0
 
@@ -168,10 +180,21 @@ def main(argv: list[str] | None = None) -> int:
               f"{rep['quizzes']} quiz, {rep['grammar']} dilbilgisi bağı; bölümler {', '.join(rep['episodes'])}")
         for i in iss:
             print(f"   - {i}")
+    for tid, iss, rep in talk:
+        errs = [i for i in iss if i.level == "error"]
+        print(f"== Konuş görevi {tid} ({rep.get('kind')}): {'HATA' if errs else ('UYARI' if iss else 'TAMAM')}")
+        if rep.get("tokens"):
+            extra = (f"{rep['turns']} tur, {rep['accepted']} kabul edilen cevap, {rep['audioMatches']} satır bölüm sesiyle; "
+                     if rep.get("kind") == "scene" else "")
+            print(f"   {extra}kapsama %{rep['pct']} (sözlükle %{rep['pctWithGlossary']}), "
+                  f"en uzun cümle {rep['maxSentenceWords']} sözcük")
+        for i in iss:
+            print(f"   - {i}")
     warns = (sum(len(r.warnings) for r in reports) + sum(1 for _, iss, _ in sets for i in iss if i.level == "warning")
              + sum(1 for _, iss in hi for i in iss if i.level == "warning")
-             + sum(1 for _, iss, _ in clips for i in iss if i.level == "warning"))
-    print(f"Sonuç: {len(reports)} bölüm, {len(sets)} konu seti, {len(hi)} Hi dosyası, {len(clips)} klip dosyası, "
+             + sum(1 for _, iss, _ in clips for i in iss if i.level == "warning")
+             + sum(1 for _, iss, _ in talk for i in iss if i.level == "warning"))
+    print(f"Sonuç: {len(reports)} bölüm, {len(sets)} konu seti, {len(hi)} Hi dosyası, {len(clips)} klip dosyası, {len(talk)} Konuş görevi, "
           f"{n_err} hata, {warns} uyarı")
     return 1 if n_err else 0
 

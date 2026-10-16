@@ -45,6 +45,7 @@ abstract final class SyncSql {
     ('user_grammar_progress', 'ugp', ['lesson_id']),
     ('daily_activity', 'da', ['day', 'source_id']),
     ('user_book_comprehension', 'ubc', ['book_id']),
+    ('user_talk_progress', 'utp', ['task_id']),
   ];
 
   /// Yalnız eklenen, doğal anahtarlı tablolar.

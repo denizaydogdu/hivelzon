@@ -23,6 +23,7 @@ HiExpression hiExpressionForSuggestion(
   HiSuggestionKind.startEpisode ||
   HiSuggestionKind.continueBook ||
   HiSuggestionKind.startBook ||
-  HiSuggestionKind.sceneHunt => HiExpression.happy,
+  HiSuggestionKind.sceneHunt ||
+  HiSuggestionKind.talk => HiExpression.happy,
   HiSuggestionKind.review || HiSuggestionKind.notebook => HiExpression.neutral,
 };

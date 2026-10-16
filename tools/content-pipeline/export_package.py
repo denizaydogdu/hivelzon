@@ -121,6 +121,7 @@ def main(argv: list[str] | None = None) -> int:
                                       "gain": media.gain_to_target, "probe": media.probe_duration,
                                       "size": media.image_size},
                            hi_audio=lambda s, o: media.audio_clip(s, media.gain_to_target(s), o),
+                           talk_audio=lambda s, o: media.audio_clip(s, media.gain_to_target(s), o),
                            clip_media={"cut": media.cut_clip, "measure": media.parts_loudness,
                                        "poster": media.frame_webp, "probe": media.probe_duration})
         sd = sr["doc"]

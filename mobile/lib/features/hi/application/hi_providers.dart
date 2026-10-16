@@ -17,6 +17,7 @@ import '../../notebook/application/notebook_providers.dart';
 import '../../player/application/player_session.dart';
 import '../../player/data/progress_repository.dart';
 import '../../story/domain/season_map.dart';
+import '../../talk/application/talk_providers.dart';
 import '../../topic_sets/application/topic_set_providers.dart';
 import '../../topic_sets/domain/topic_set.dart';
 import '../data/hi_store.dart';
@@ -118,6 +119,17 @@ final coachInputProvider = FutureProvider.autoDispose<CoachInput>((ref) async {
       false;
   final huntToday = await _orNull(() => store.huntDoneSince(dayStart)) ?? false;
   final dismissed = await _orNull(store.dismissedToday) ?? const <String>{};
+  // Konuş görevleri ve ilk 7 gün (H-090). Okunamazsa plan onlarsız sürer.
+  final talk =
+      await _orNull(() => ref.watch(talkViewsProvider.future)) ?? const [];
+  final talkToday =
+      await _orNull(
+        () => ref.watch(talkProgressStoreProvider).doneSince(dayStart),
+      ) ??
+      false;
+  final startedAt = await _orNull(
+    () => ref.watch(onboardingStoreProvider).completedAt(),
+  );
   DateTime? lastActive = lastReview;
   void seen(DateTime? t) {
     if (t != null && (lastActive == null || t.isAfter(lastActive!))) {
@@ -158,7 +170,21 @@ final coachInputProvider = FutureProvider.autoDispose<CoachInput>((ref) async {
     mainDoneToday:
         progress.values.any((p) => today(p.completedAt)) ||
         today(books.lastRead),
-    taskDoneToday: huntToday || grammarDoneToday,
+    taskDoneToday: huntToday || grammarDoneToday || talkToday,
+    talkTasks: [
+      for (final v in talk)
+        if (v.unlocked && !v.done)
+          CoachTalk(
+            id: v.task.id,
+            titleTr: v.task.titleTr,
+            scene: v.task.isScene,
+            unlockEpisode: v.task.unlockEpisode,
+            characterTr: v.task.isScene ? v.task.characterName : v.task.to,
+            minutes: v.task.minutes,
+          ),
+    ],
+    talkDoneToday: talkToday,
+    startedAt: startedAt,
   );
 }, retry: (_, _) => null);
 

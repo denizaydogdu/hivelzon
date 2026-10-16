@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "id": "hi-intro",
+  "kind": "message",
+  "season": 1,
+  "level": "A1",
+  "order": 10,
+  "status": "DRAFT",
+  "author": "Claude (taslak, H-090)",
+  "date": "2026-10-16",
+  "unlockAfter": "A1-001",
+  "titleTr": "Hi'ye kendini tanıt",
+  "taskTr": "Hi, İngilizce yazdığını görmek istiyor. Ona 1–2 cümleyle kendini tanıt: adın ve nereli olduğun.",
+  "to": "Hi",
+  "image": {"episode": "A1-001", "path": "stills/I2-telefon-hi.webp"},
+  "model": {"en": "Hello! My name is Alex. I'm from Türkiye.", "tr": "Merhaba! Benim adım Alex. Türkiye'denim."},
+  "check": null,
+  "selfCheckTr": ["Adını yazdın mı? (My name is… ya da I'm…)", "Nereli olduğunu yazdın mı? (I'm from…)"],
+  "targets": ["My name is…", "I'm from Türkiye."]
+}

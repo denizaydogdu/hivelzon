@@ -78,8 +78,8 @@ void main() {
     final db = open();
     final version = await db.customSelect('PRAGMA user_version').getSingle();
     // 4 → 5 → 6 (H-067) → 7 (H-078) → 8 (H-074) → 9 (H-091) → 10 (H-089)
-    expect(version.data.values.first, 10);
-    expect(db.schemaVersion, 10);
+    expect(version.data.values.first, 11);
+    expect(db.schemaVersion, 11);
 
     final flag = await db.select(db.userStoryFlags).getSingle();
     expect(flag.updatedAt, DateTime.utc(2026, 10, 11, 10));

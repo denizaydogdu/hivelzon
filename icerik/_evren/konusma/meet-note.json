@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "meet-note",
+  "kind": "message",
+  "season": 1,
+  "level": "A1",
+  "order": 40,
+  "status": "DRAFT",
+  "author": "Claude (taslak, H-090)",
+  "date": "2026-10-16",
+  "unlockAfter": "A1-004",
+  "titleTr": "Telefonuna not al",
+  "taskTr": "Notun tamamını çözdünüz. Unutmamak için telefonuna İngilizce kısa bir not yaz: yer, gün ve saat.",
+  "to": "Notlar",
+  "image": {"episode": "A1-004", "path": "stills/B4-08-iki-not.webp"},
+  "model": {"en": "Pier 3. On Friday at seven.", "tr": "Pier 3. Cuma günü saat yedide."},
+  "check": {
+    "all": [["friday"], ["seven"]],
+    "none": ["not", "never", "no"],
+    "hintTr": "Günü (Friday) ve saati (seven) yazmayı unutma."
+  },
+  "targets": ["on Friday", "at seven"]
+}

@@ -9885,6 +9885,339 @@ class EvidenceRecordsCompanion extends UpdateCompanion<EvidenceRow> {
   }
 }
 
+class $UserTalkProgressTable extends UserTalkProgress
+    with TableInfo<$UserTalkProgressTable, TalkProgressRow> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $UserTalkProgressTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _taskIdMeta = const VerificationMeta('taskId');
+  @override
+  late final GeneratedColumn<String> taskId = GeneratedColumn<String>(
+    'task_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _completedAtMeta = const VerificationMeta(
+    'completedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> completedAt = GeneratedColumn<DateTime>(
+    'completed_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _lastDoneAtMeta = const VerificationMeta(
+    'lastDoneAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> lastDoneAt = GeneratedColumn<DateTime>(
+    'last_done_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _updatedAtMeta = const VerificationMeta(
+    'updatedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> updatedAt = GeneratedColumn<DateTime>(
+    'updated_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: true,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    taskId,
+    completedAt,
+    lastDoneAt,
+    updatedAt,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'user_talk_progress';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<TalkProgressRow> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('task_id')) {
+      context.handle(
+        _taskIdMeta,
+        taskId.isAcceptableOrUnknown(data['task_id']!, _taskIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_taskIdMeta);
+    }
+    if (data.containsKey('completed_at')) {
+      context.handle(
+        _completedAtMeta,
+        completedAt.isAcceptableOrUnknown(
+          data['completed_at']!,
+          _completedAtMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_completedAtMeta);
+    }
+    if (data.containsKey('last_done_at')) {
+      context.handle(
+        _lastDoneAtMeta,
+        lastDoneAt.isAcceptableOrUnknown(
+          data['last_done_at']!,
+          _lastDoneAtMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_lastDoneAtMeta);
+    }
+    if (data.containsKey('updated_at')) {
+      context.handle(
+        _updatedAtMeta,
+        updatedAt.isAcceptableOrUnknown(data['updated_at']!, _updatedAtMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_updatedAtMeta);
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {taskId};
+  @override
+  TalkProgressRow map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return TalkProgressRow(
+      taskId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}task_id'],
+      )!,
+      completedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}completed_at'],
+      )!,
+      lastDoneAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}last_done_at'],
+      )!,
+      updatedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}updated_at'],
+      )!,
+    );
+  }
+
+  @override
+  $UserTalkProgressTable createAlias(String alias) {
+    return $UserTalkProgressTable(attachedDatabase, alias);
+  }
+}
+
+class TalkProgressRow extends DataClass implements Insertable<TalkProgressRow> {
+  /// Görev kimliği (`talk.json` → `id`, ör. `cafe-rosa`).
+  final String taskId;
+
+  /// İlk bitirildiği an.
+  final DateTime completedAt;
+
+  /// En son bitirildiği an (Ana Sayfa planında "bugün yapıldı" için).
+  final DateTime lastDoneAt;
+  final DateTime updatedAt;
+  const TalkProgressRow({
+    required this.taskId,
+    required this.completedAt,
+    required this.lastDoneAt,
+    required this.updatedAt,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['task_id'] = Variable<String>(taskId);
+    map['completed_at'] = Variable<DateTime>(completedAt);
+    map['last_done_at'] = Variable<DateTime>(lastDoneAt);
+    map['updated_at'] = Variable<DateTime>(updatedAt);
+    return map;
+  }
+
+  UserTalkProgressCompanion toCompanion(bool nullToAbsent) {
+    return UserTalkProgressCompanion(
+      taskId: Value(taskId),
+      completedAt: Value(completedAt),
+      lastDoneAt: Value(lastDoneAt),
+      updatedAt: Value(updatedAt),
+    );
+  }
+
+  factory TalkProgressRow.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return TalkProgressRow(
+      taskId: serializer.fromJson<String>(json['taskId']),
+      completedAt: serializer.fromJson<DateTime>(json['completedAt']),
+      lastDoneAt: serializer.fromJson<DateTime>(json['lastDoneAt']),
+      updatedAt: serializer.fromJson<DateTime>(json['updatedAt']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'taskId': serializer.toJson<String>(taskId),
+      'completedAt': serializer.toJson<DateTime>(completedAt),
+      'lastDoneAt': serializer.toJson<DateTime>(lastDoneAt),
+      'updatedAt': serializer.toJson<DateTime>(updatedAt),
+    };
+  }
+
+  TalkProgressRow copyWith({
+    String? taskId,
+    DateTime? completedAt,
+    DateTime? lastDoneAt,
+    DateTime? updatedAt,
+  }) => TalkProgressRow(
+    taskId: taskId ?? this.taskId,
+    completedAt: completedAt ?? this.completedAt,
+    lastDoneAt: lastDoneAt ?? this.lastDoneAt,
+    updatedAt: updatedAt ?? this.updatedAt,
+  );
+  TalkProgressRow copyWithCompanion(UserTalkProgressCompanion data) {
+    return TalkProgressRow(
+      taskId: data.taskId.present ? data.taskId.value : this.taskId,
+      completedAt: data.completedAt.present
+          ? data.completedAt.value
+          : this.completedAt,
+      lastDoneAt: data.lastDoneAt.present
+          ? data.lastDoneAt.value
+          : this.lastDoneAt,
+      updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('TalkProgressRow(')
+          ..write('taskId: $taskId, ')
+          ..write('completedAt: $completedAt, ')
+          ..write('lastDoneAt: $lastDoneAt, ')
+          ..write('updatedAt: $updatedAt')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(taskId, completedAt, lastDoneAt, updatedAt);
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is TalkProgressRow &&
+          other.taskId == this.taskId &&
+          other.completedAt == this.completedAt &&
+          other.lastDoneAt == this.lastDoneAt &&
+          other.updatedAt == this.updatedAt);
+}
+
+class UserTalkProgressCompanion extends UpdateCompanion<TalkProgressRow> {
+  final Value<String> taskId;
+  final Value<DateTime> completedAt;
+  final Value<DateTime> lastDoneAt;
+  final Value<DateTime> updatedAt;
+  final Value<int> rowid;
+  const UserTalkProgressCompanion({
+    this.taskId = const Value.absent(),
+    this.completedAt = const Value.absent(),
+    this.lastDoneAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  UserTalkProgressCompanion.insert({
+    required String taskId,
+    required DateTime completedAt,
+    required DateTime lastDoneAt,
+    required DateTime updatedAt,
+    this.rowid = const Value.absent(),
+  }) : taskId = Value(taskId),
+       completedAt = Value(completedAt),
+       lastDoneAt = Value(lastDoneAt),
+       updatedAt = Value(updatedAt);
+  static Insertable<TalkProgressRow> custom({
+    Expression<String>? taskId,
+    Expression<DateTime>? completedAt,
+    Expression<DateTime>? lastDoneAt,
+    Expression<DateTime>? updatedAt,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (taskId != null) 'task_id': taskId,
+      if (completedAt != null) 'completed_at': completedAt,
+      if (lastDoneAt != null) 'last_done_at': lastDoneAt,
+      if (updatedAt != null) 'updated_at': updatedAt,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  UserTalkProgressCompanion copyWith({
+    Value<String>? taskId,
+    Value<DateTime>? completedAt,
+    Value<DateTime>? lastDoneAt,
+    Value<DateTime>? updatedAt,
+    Value<int>? rowid,
+  }) {
+    return UserTalkProgressCompanion(
+      taskId: taskId ?? this.taskId,
+      completedAt: completedAt ?? this.completedAt,
+      lastDoneAt: lastDoneAt ?? this.lastDoneAt,
+      updatedAt: updatedAt ?? this.updatedAt,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (taskId.present) {
+      map['task_id'] = Variable<String>(taskId.value);
+    }
+    if (completedAt.present) {
+      map['completed_at'] = Variable<DateTime>(completedAt.value);
+    }
+    if (lastDoneAt.present) {
+      map['last_done_at'] = Variable<DateTime>(lastDoneAt.value);
+    }
+    if (updatedAt.present) {
+      map['updated_at'] = Variable<DateTime>(updatedAt.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('UserTalkProgressCompanion(')
+          ..write('taskId: $taskId, ')
+          ..write('completedAt: $completedAt, ')
+          ..write('lastDoneAt: $lastDoneAt, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
 abstract class _$AppDatabase extends GeneratedDatabase {
   _$AppDatabase(QueryExecutor e) : super(e);
   $AppDatabaseManager get managers => $AppDatabaseManager(this);
@@ -9915,6 +10248,9 @@ abstract class _$AppDatabase extends GeneratedDatabase {
   late final $EvidenceRecordsTable evidenceRecords = $EvidenceRecordsTable(
     this,
   );
+  late final $UserTalkProgressTable userTalkProgress = $UserTalkProgressTable(
+    this,
+  );
   @override
   Iterable<TableInfo<Table, Object?>> get allTables =>
       allSchemaEntities.whereType<TableInfo<Table, Object?>>();
@@ -9940,6 +10276,7 @@ abstract class _$AppDatabase extends GeneratedDatabase {
     dailyActivity,
     userBookComprehension,
     evidenceRecords,
+    userTalkProgress,
   ];
   @override
   StreamQueryUpdateRules get streamUpdateRules => const StreamQueryUpdateRules([
@@ -15414,6 +15751,197 @@ typedef $$EvidenceRecordsTableProcessedTableManager =
       EvidenceRow,
       PrefetchHooks Function()
     >;
+typedef $$UserTalkProgressTableCreateCompanionBuilder =
+    UserTalkProgressCompanion Function({
+      required String taskId,
+      required DateTime completedAt,
+      required DateTime lastDoneAt,
+      required DateTime updatedAt,
+      Value<int> rowid,
+    });
+typedef $$UserTalkProgressTableUpdateCompanionBuilder =
+    UserTalkProgressCompanion Function({
+      Value<String> taskId,
+      Value<DateTime> completedAt,
+      Value<DateTime> lastDoneAt,
+      Value<DateTime> updatedAt,
+      Value<int> rowid,
+    });
+
+class $$UserTalkProgressTableFilterComposer
+    extends Composer<_$AppDatabase, $UserTalkProgressTable> {
+  $$UserTalkProgressTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get taskId => $composableBuilder(
+    column: $table.taskId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get completedAt => $composableBuilder(
+    column: $table.completedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get lastDoneAt => $composableBuilder(
+    column: $table.lastDoneAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$UserTalkProgressTableOrderingComposer
+    extends Composer<_$AppDatabase, $UserTalkProgressTable> {
+  $$UserTalkProgressTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get taskId => $composableBuilder(
+    column: $table.taskId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get completedAt => $composableBuilder(
+    column: $table.completedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get lastDoneAt => $composableBuilder(
+    column: $table.lastDoneAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$UserTalkProgressTableAnnotationComposer
+    extends Composer<_$AppDatabase, $UserTalkProgressTable> {
+  $$UserTalkProgressTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get taskId =>
+      $composableBuilder(column: $table.taskId, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get completedAt => $composableBuilder(
+    column: $table.completedAt,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<DateTime> get lastDoneAt => $composableBuilder(
+    column: $table.lastDoneAt,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<DateTime> get updatedAt =>
+      $composableBuilder(column: $table.updatedAt, builder: (column) => column);
+}
+
+class $$UserTalkProgressTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $UserTalkProgressTable,
+          TalkProgressRow,
+          $$UserTalkProgressTableFilterComposer,
+          $$UserTalkProgressTableOrderingComposer,
+          $$UserTalkProgressTableAnnotationComposer,
+          $$UserTalkProgressTableCreateCompanionBuilder,
+          $$UserTalkProgressTableUpdateCompanionBuilder,
+          (
+            TalkProgressRow,
+            BaseReferences<
+              _$AppDatabase,
+              $UserTalkProgressTable,
+              TalkProgressRow
+            >,
+          ),
+          TalkProgressRow,
+          PrefetchHooks Function()
+        > {
+  $$UserTalkProgressTableTableManager(
+    _$AppDatabase db,
+    $UserTalkProgressTable table,
+  ) : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$UserTalkProgressTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$UserTalkProgressTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$UserTalkProgressTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<String> taskId = const Value.absent(),
+                Value<DateTime> completedAt = const Value.absent(),
+                Value<DateTime> lastDoneAt = const Value.absent(),
+                Value<DateTime> updatedAt = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => UserTalkProgressCompanion(
+                taskId: taskId,
+                completedAt: completedAt,
+                lastDoneAt: lastDoneAt,
+                updatedAt: updatedAt,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                required String taskId,
+                required DateTime completedAt,
+                required DateTime lastDoneAt,
+                required DateTime updatedAt,
+                Value<int> rowid = const Value.absent(),
+              }) => UserTalkProgressCompanion.insert(
+                taskId: taskId,
+                completedAt: completedAt,
+                lastDoneAt: lastDoneAt,
+                updatedAt: updatedAt,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$UserTalkProgressTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $UserTalkProgressTable,
+      TalkProgressRow,
+      $$UserTalkProgressTableFilterComposer,
+      $$UserTalkProgressTableOrderingComposer,
+      $$UserTalkProgressTableAnnotationComposer,
+      $$UserTalkProgressTableCreateCompanionBuilder,
+      $$UserTalkProgressTableUpdateCompanionBuilder,
+      (
+        TalkProgressRow,
+        BaseReferences<_$AppDatabase, $UserTalkProgressTable, TalkProgressRow>,
+      ),
+      TalkProgressRow,
+      PrefetchHooks Function()
+    >;
 
 class $AppDatabaseManager {
   final _$AppDatabase _db;
@@ -15458,4 +15986,6 @@ class $AppDatabaseManager {
       $$UserBookComprehensionTableTableManager(_db, _db.userBookComprehension);
   $$EvidenceRecordsTableTableManager get evidenceRecords =>
       $$EvidenceRecordsTableTableManager(_db, _db.evidenceRecords);
+  $$UserTalkProgressTableTableManager get userTalkProgress =>
+      $$UserTalkProgressTableTableManager(_db, _db.userTalkProgress);
 }

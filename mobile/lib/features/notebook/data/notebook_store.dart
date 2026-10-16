@@ -331,6 +331,33 @@ class NotebookStore {
     });
   }
 
+  /// Konuş görevlerinde (H-090) kullanılan hedef ifadelerin kanıtı: yardımsız
+  /// üretim (söyleyerek ya da yazarak, seçenek görmeden) → `own_use`;
+  /// seçerek ya da dizerek → `helped`. **FSRS kartı ve cevap kaydı değişmez.**
+  /// Yalnızca defterdeki ifadeler için yazılır (bölüm bitince eklenir);
+  /// idempotent: ilk an korunur. Yazılan ifade sayısı.
+  Future<int> recordPhraseUse(
+    Iterable<String> phrases,
+    EvidenceStage stage,
+  ) async {
+    await _ready;
+    final at = now();
+    var n = 0;
+    await _db.transaction(() async {
+      for (final p in phrases.toSet()) {
+        final kind = wordCount(p) > 1 ? NotebookKind.phrase : NotebookKind.word;
+        final key = itemKey(kind, p);
+        final row = await (_db.select(
+          _db.notebookItems,
+        )..where((t) => t.itemKey.equals(key))).getSingleOrNull();
+        if (row == null) continue;
+        await _recordEvidence(key, {stage}, at);
+        n++;
+      }
+    });
+    return n;
+  }
+
   /// Basamağın ilk anını yazar; var olan basamak değişmez (idempotent).
   Future<void> _recordEvidence(
     String itemKey,

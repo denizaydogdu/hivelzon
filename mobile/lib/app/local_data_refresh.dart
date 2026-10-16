@@ -8,6 +8,7 @@ import '../features/library/application/library_providers.dart';
 import '../features/notebook/application/notebook_providers.dart';
 import '../features/profile/application/profile_providers.dart';
 import '../features/story/application/story_providers.dart';
+import '../features/talk/application/talk_providers.dart';
 import '../features/topic_sets/application/topic_set_providers.dart';
 import '../shared/state/safe_refresh.dart';
 
@@ -38,6 +39,7 @@ final localDataProviders = <ProviderOrFamily>[
   libraryProvider,
   grammarProgressProvider,
   grammarListProvider,
+  talkViewsProvider,
 ];
 
 /// Başka cihazdan veri geldi ya da yerel veri toplu değişti (H-038, H-056):

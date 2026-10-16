@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "id": "ask-the-way",
+  "kind": "scene",
+  "season": 1,
+  "level": "A1",
+  "order": 30,
+  "status": "DRAFT",
+  "author": "Claude (taslak, H-090)",
+  "date": "2026-10-16",
+  "unlockAfter": "A1-003",
+  "titleTr": "Yol sor",
+  "introTr": "Limandasın ve otobüs durağını arıyorsun. Köpekli adam yine orada. Bu bir prova: Alex'in yerine sen sor.",
+  "character": {"nameTr": "Köpekli adam", "speaker": "MAN"},
+  "image": {"episode": "A1-003", "path": "stills/B3-02-kopekli-adam-pov.webp"},
+  "turns": [
+    {
+      "id": "t1",
+      "line": {"en": "Hello! Can I help you?", "tr": "Merhaba! Yardımcı olabilir miyim?"},
+      "promptTr": "Kibarca otobüs durağının nerede olduğunu sor.",
+      "accept": [
+        "Excuse me, where is the bus stop?",
+        "Yes, please. Where is the bus stop?",
+        "Where is the bus stop, please?",
+        "Excuse me, where is the bus stop, please?"
+      ],
+      "distractors": [
+        {"en": "Where bus stop?", "reactionTr": "Anlaşılıyor ama eksik. Kibar soru kalıbı: Excuse me, where is the bus stop?"}
+      ],
+      "targets": ["Excuse me, where is…?", "Where is…?"]
+    },
+    {
+      "id": "t2",
+      "line": {"en": "The bus stop? Go straight. Then turn left. It's near the café.", "tr": "Otobüs durağı mı? Düz git. Sonra sola dön. Kafenin yakınında."},
+      "promptTr": "Çok hızlı konuştu. Bir kez daha söylemesini rica et.",
+      "accept": [
+        "Again, please.",
+        "Sorry? Again, please.",
+        "Can you say it again, please?"
+      ],
+      "distractors": [
+        {"en": "What?", "reactionTr": "Kaba değil ama biraz sert duyulur. Daha kibarı: Again, please."}
+      ],
+      "targets": ["Again, please."]
+    },
+    {
+      "id": "t3",
+      "line": {"en": "Go straight. Turn left. It's near.", "tr": "Düz git. Sola dön. Yakında."},
+      "promptTr": "Emin olmak için uzak olup olmadığını sor.",
+      "accept": [
+        "Is it far?",
+        "Is it far from here?",
+        "OK. Is it far?",
+        "Thank you. Is it far?"
+      ],
+      "distractors": [
+        {"en": "It is far?", "reactionTr": "Soru için \"is\" başa gelir: Is it far?"}
+      ],
+      "targets": ["Is it far?"]
+    },
+    {
+      "id": "t4",
+      "line": {"en": "No, it isn't. Two minutes.", "tr": "Hayır, değil. İki dakika."},
+      "promptTr": "Teşekkür et.",
+      "accept": [
+        "Thank you!",
+        "Thank you very much!",
+        "Thanks!",
+        "OK. Thank you!",
+        "Thank you. Bye!"
+      ],
+      "distractors": [
+        {"en": "Sorry!", "reactionTr": "\"Sorry\" özür dilemek içindir. Yardım için teşekkür: Thank you!"}
+      ],
+      "targets": ["Thank you."]
+    }
+  ],
+  "outro": {"en": "Have a nice day!", "tr": "İyi günler!"}
+}

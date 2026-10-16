@@ -5,6 +5,7 @@ import '../../features/library/domain/book.dart';
 import '../../features/player/domain/episode.dart';
 import '../../features/player/domain/subtitles.dart';
 import '../../features/player/domain/video_rendition.dart';
+import '../../features/talk/domain/talk_task.dart';
 import '../../features/topic_sets/domain/topic_set.dart';
 
 /// Sunucudaki bir bölüm paketinin özeti (`/packages/index.json`).
@@ -108,6 +109,7 @@ class SeasonInfo {
     this.mapHeight,
     this.topicSets = const [],
     this.clipsPath,
+    this.talkPath,
   });
 
   /// [rendition]: jenerik videolarının oynatılacak sürümü (H-054).
@@ -147,6 +149,7 @@ class SeasonInfo {
       clipsPath: j['clips'] is Map
           ? (j['clips'] as Map)['path'] as String?
           : null,
+      talkPath: j['talk'] is Map ? (j['talk'] as Map)['path'] as String? : null,
     );
   }
 
@@ -179,6 +182,9 @@ class SeasonInfo {
 
   /// Keşfet klipleri (H-040): `clips.json` yolu; sezonda klip yoksa null.
   final String? clipsPath;
+
+  /// Konuş görevleri (H-090): `talk.json` yolu; yoksa null.
+  final String? talkPath;
 
   /// Harita yüksekliği / genişliği.
   double? get mapAspect =>
@@ -225,6 +231,9 @@ abstract interface class ContentSource {
 
   /// Keşfet klipleri (H-040): sezon paketindeki `clips.json` ([path]).
   Future<ClipCatalog> loadClips(int season, String path);
+
+  /// Konuş görevleri (H-090): sezon paketindeki `talk.json` ([path]).
+  Future<TalkCatalog> loadTalk(int season, String path);
 
   /// Kitaplık (H-067): `/books/index.json`.
   Future<List<BookSummary>> listBooks();

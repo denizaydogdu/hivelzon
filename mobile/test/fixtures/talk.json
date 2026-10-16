@@ -1,0 +1,505 @@
+{
+ "schemaVersion": 1,
+ "season": 1,
+ "tasks": [
+  {
+   "id": "hi-intro",
+   "kind": "message",
+   "season": 1,
+   "level": "A1",
+   "order": 10,
+   "status": "DRAFT",
+   "unlockAfter": "A1-001",
+   "titleTr": "Hi'ye kendini tanıt",
+   "taskTr": "Hi, İngilizce yazdığını görmek istiyor. Ona 1–2 cümleyle kendini tanıt: adın ve nereli olduğun.",
+   "to": "Hi",
+   "image": {
+    "episode": "A1-001",
+    "path": "stills/I2-telefon-hi.webp"
+   },
+   "model": {
+    "en": "Hello! My name is Alex. I'm from Türkiye.",
+    "tr": "Merhaba! Benim adım Alex. Türkiye'denim."
+   },
+   "check": null,
+   "selfCheckTr": [
+    "Adını yazdın mı? (My name is… ya da I'm…)",
+    "Nereli olduğunu yazdın mı? (I'm from…)"
+   ],
+   "targets": [
+    "My name is…",
+    "I'm from Türkiye."
+   ],
+   "unlockEpisode": 1
+  },
+  {
+   "id": "maya-neighbour",
+   "kind": "scene",
+   "season": 1,
+   "level": "A1",
+   "order": 20,
+   "status": "DRAFT",
+   "unlockAfter": "A1-002",
+   "titleTr": "Yeni komşunla tanış",
+   "introTr": "Cumartesi sabahı, Tide & Pages'in kapısındasın. Bu bir prova: Maya'yla tanışırken Alex'in yerine sen konuşuyorsun.",
+   "character": {
+    "nameTr": "Maya",
+    "speaker": "MAYA"
+   },
+   "image": {
+    "episode": "A1-002",
+    "path": "stills/B2-03-maya-pov.webp"
+   },
+   "turns": [
+    {
+     "id": "t1",
+     "line": {
+      "en": "Good morning! Can I help you?",
+      "tr": "Günaydın! Yardımcı olabilir miyim?",
+      "audio": "talk/maya-neighbour-t1.m4a"
+     },
+     "promptTr": "Kendini tanıt: adını söyle.",
+     "accept": [
+      "Hi! I'm Alex.",
+      "Hello! I'm Alex.",
+      "Hello, my name is Alex.",
+      "Hi, my name is Alex.",
+      "My name is Alex.",
+      "Nice to meet you. I'm Alex.",
+      "I'm Alex."
+     ],
+     "distractors": [
+      {
+       "en": "I Alex.",
+       "reactionTr": "Az kaldı! Türkçede \"ben Alex\" deriz ama İngilizcede \"am\" gerekir: I'm Alex."
+      }
+     ],
+     "targets": [
+      "My name is…",
+      "Nice to meet you."
+     ]
+    },
+    {
+     "id": "t2",
+     "line": {
+      "en": "Hi, Alex! I'm Maya. Are you new here?",
+      "tr": "Merhaba Alex! Ben Maya. Burada yeni misin?",
+      "audio": "talk/maya-neighbour-t2.m4a"
+     },
+     "promptTr": "Evet de; onun yeni komşusu olduğunu söyle.",
+     "accept": [
+      "Yes. I'm your new neighbour.",
+      "Yes, I am. I'm your new neighbour.",
+      "Yes, I am."
+     ],
+     "distractors": [
+      {
+       "en": "Yes, I can.",
+       "reactionTr": "Soru \"Are you…?\" ile başlıyor; kısa cevap da \"am\" ile olur: Yes, I am."
+      }
+     ],
+     "targets": []
+    },
+    {
+     "id": "t3",
+     "line": {
+      "en": "Oh, welcome! Where are you from?",
+      "tr": "Ah, hoş geldin! Nerelisin?",
+      "audio": "talk/maya-neighbour-t3.m4a"
+     },
+     "promptTr": "Nereli olduğunu söyle.",
+     "accept": [
+      "I'm from Türkiye. From İzmir.",
+      "I'm from Türkiye.",
+      "I'm from İzmir.",
+      "I'm from İzmir, Türkiye.",
+      "I'm from İzmir, in Türkiye."
+     ],
+     "distractors": [
+      {
+       "en": "I from Türkiye.",
+       "reactionTr": "Neredeyse! \"am\" düşmesin: I'm from Türkiye. Türkçede \"-im\" ekiyle söyleriz, İngilizcede ayrı bir kelimedir."
+      }
+     ],
+     "targets": [
+      "I'm from Türkiye."
+     ]
+    },
+    {
+     "id": "t4",
+     "line": {
+      "en": "This is my mother.",
+      "tr": "Bu benim annem.",
+      "audio": "talk/maya-neighbour-t4.m4a"
+     },
+     "promptTr": "Maya'nın annesine \"Tanıştığıma memnun oldum\" de.",
+     "accept": [
+      "Nice to meet you.",
+      "Hello! Nice to meet you.",
+      "Hello, Mrs Brooks. Nice to meet you.",
+      "Nice to meet you, Mrs Brooks.",
+      "Hi! Nice to meet you."
+     ],
+     "distractors": [
+      {
+       "en": "Nice to meet me.",
+       "reactionTr": "Az kaldı! Karşındakiyle tanıştın: Nice to meet you."
+      }
+     ],
+     "targets": [
+      "Nice to meet you."
+     ]
+    }
+   ],
+   "outro": {
+    "en": "Hello, Alex. Nice to meet you.",
+    "tr": "Merhaba Alex. Tanıştığımıza memnun oldum.",
+    "audio": "talk/maya-neighbour-outro.m4a"
+   },
+   "unlockEpisode": 2,
+   "targets": [
+    "My name is…",
+    "Nice to meet you.",
+    "I'm from Türkiye."
+   ]
+  },
+  {
+   "id": "ask-the-way",
+   "kind": "scene",
+   "season": 1,
+   "level": "A1",
+   "order": 30,
+   "status": "DRAFT",
+   "unlockAfter": "A1-003",
+   "titleTr": "Yol sor",
+   "introTr": "Limandasın ve otobüs durağını arıyorsun. Köpekli adam yine orada. Bu bir prova: Alex'in yerine sen sor.",
+   "character": {
+    "nameTr": "Köpekli adam",
+    "speaker": "MAN"
+   },
+   "image": {
+    "episode": "A1-003",
+    "path": "stills/B3-02-kopekli-adam-pov.webp"
+   },
+   "turns": [
+    {
+     "id": "t1",
+     "line": {
+      "en": "Hello! Can I help you?",
+      "tr": "Merhaba! Yardımcı olabilir miyim?"
+     },
+     "promptTr": "Kibarca otobüs durağının nerede olduğunu sor.",
+     "accept": [
+      "Excuse me, where is the bus stop?",
+      "Yes, please. Where is the bus stop?",
+      "Where is the bus stop, please?",
+      "Excuse me, where is the bus stop, please?"
+     ],
+     "distractors": [
+      {
+       "en": "Where bus stop?",
+       "reactionTr": "Anlaşılıyor ama eksik. Kibar soru kalıbı: Excuse me, where is the bus stop?"
+      }
+     ],
+     "targets": [
+      "Excuse me, where is…?",
+      "Where is…?"
+     ]
+    },
+    {
+     "id": "t2",
+     "line": {
+      "en": "The bus stop? Go straight. Then turn left. It's near the café.",
+      "tr": "Otobüs durağı mı? Düz git. Sonra sola dön. Kafenin yakınında."
+     },
+     "promptTr": "Çok hızlı konuştu. Bir kez daha söylemesini rica et.",
+     "accept": [
+      "Again, please.",
+      "Sorry? Again, please.",
+      "Can you say it again, please?"
+     ],
+     "distractors": [
+      {
+       "en": "What?",
+       "reactionTr": "Kaba değil ama biraz sert duyulur. Daha kibarı: Again, please."
+      }
+     ],
+     "targets": [
+      "Again, please."
+     ]
+    },
+    {
+     "id": "t3",
+     "line": {
+      "en": "Go straight. Turn left. It's near.",
+      "tr": "Düz git. Sola dön. Yakında.",
+      "audio": "talk/ask-the-way-t3.m4a"
+     },
+     "promptTr": "Emin olmak için uzak olup olmadığını sor.",
+     "accept": [
+      "Is it far?",
+      "Is it far from here?",
+      "OK. Is it far?",
+      "Thank you. Is it far?"
+     ],
+     "distractors": [
+      {
+       "en": "It is far?",
+       "reactionTr": "Soru için \"is\" başa gelir: Is it far?"
+      }
+     ],
+     "targets": [
+      "Is it far?"
+     ]
+    },
+    {
+     "id": "t4",
+     "line": {
+      "en": "No, it isn't. Two minutes.",
+      "tr": "Hayır, değil. İki dakika."
+     },
+     "promptTr": "Teşekkür et.",
+     "accept": [
+      "Thank you!",
+      "Thank you very much!",
+      "Thanks!",
+      "OK. Thank you!",
+      "Thank you. Bye!"
+     ],
+     "distractors": [
+      {
+       "en": "Sorry!",
+       "reactionTr": "\"Sorry\" özür dilemek içindir. Yardım için teşekkür: Thank you!"
+      }
+     ],
+     "targets": [
+      "Thank you."
+     ]
+    }
+   ],
+   "outro": {
+    "en": "Have a nice day!",
+    "tr": "İyi günler!"
+   },
+   "unlockEpisode": 3,
+   "targets": [
+    "Excuse me, where is…?",
+    "Where is…?",
+    "Again, please.",
+    "Is it far?",
+    "Thank you."
+   ]
+  },
+  {
+   "id": "meet-note",
+   "kind": "message",
+   "season": 1,
+   "level": "A1",
+   "order": 40,
+   "status": "DRAFT",
+   "unlockAfter": "A1-004",
+   "titleTr": "Telefonuna not al",
+   "taskTr": "Notun tamamını çözdünüz. Unutmamak için telefonuna İngilizce kısa bir not yaz: yer, gün ve saat.",
+   "to": "Notlar",
+   "image": {
+    "episode": "A1-004",
+    "path": "stills/B4-08-iki-not.webp"
+   },
+   "model": {
+    "en": "Pier 3. On Friday at seven.",
+    "tr": "Pier 3. Cuma günü saat yedide."
+   },
+   "check": {
+    "all": [
+     [
+      "friday"
+     ],
+     [
+      "seven"
+     ]
+    ],
+    "none": [
+     "not",
+     "never",
+     "no"
+    ],
+    "hintTr": "Günü (Friday) ve saati (seven) yazmayı unutma."
+   },
+   "targets": [
+    "on Friday",
+    "at seven"
+   ],
+   "unlockEpisode": 4
+  },
+  {
+   "id": "late-maya",
+   "kind": "message",
+   "season": 1,
+   "level": "A1",
+   "order": 50,
+   "status": "DRAFT",
+   "unlockAfter": "A1-005",
+   "titleTr": "Maya'ya geç kaldığını yaz",
+   "taskTr": "Otobüs yine gecikiyor. Maya seni Tide & Pages'te bekliyor. Ona kısa bir mesaj yaz: özür dile ve geç kaldığını söyle.",
+   "to": "Maya",
+   "image": {
+    "episode": "A1-005",
+    "path": "stills/B5-03-otobus-geliyor.webp"
+   },
+   "model": {
+    "en": "Sorry, Maya. I'm late. The bus is late.",
+    "tr": "Kusura bakma Maya. Geç kaldım. Otobüs gecikti."
+   },
+   "check": {
+    "all": [
+     [
+      "sorry"
+     ],
+     [
+      "late"
+     ]
+    ],
+    "none": [
+     "not",
+     "never",
+     "no"
+    ],
+    "hintTr": "Özür (Sorry) ve geç kalmak (late) mesajında olsun."
+   },
+   "targets": [
+    "Sorry, I'm late."
+   ],
+   "unlockEpisode": 5
+  },
+  {
+   "id": "cafe-rosa",
+   "kind": "scene",
+   "season": 1,
+   "level": "A1",
+   "order": 90,
+   "status": "DRAFT",
+   "unlockAfter": "A1-009",
+   "titleTr": "Kafede sipariş ver",
+   "introTr": "Hilltop Café'desin. Rosa tezgâhta seni bekliyor. Bu bir prova: Alex'in yerine sen sipariş ver.",
+   "character": {
+    "nameTr": "Rosa",
+    "speaker": "ROSA"
+   },
+   "image": {
+    "episode": "A1-009",
+    "path": "stills/B9-04-k1-pov.webp"
+   },
+   "turns": [
+    {
+     "id": "t1",
+     "line": {
+      "en": "Hello, Alex! Tea or hot chocolate?",
+      "tr": "Merhaba Alex! Çay mı, sıcak çikolata mı?"
+     },
+     "promptTr": "Kibarca bir içecek iste: çay ya da sıcak çikolata.",
+     "accept": [
+      "Can I have a tea, please?",
+      "Can I have a hot chocolate, please?",
+      "Can I have tea, please?",
+      "A tea, please.",
+      "A hot chocolate, please.",
+      "Tea, please."
+     ],
+     "distractors": [
+      {
+       "en": "I want tea.",
+       "reactionTr": "Rosa gülümsüyor: \"Please?\" İngilizcede istekler kibar söylenir: Can I have a tea, please?"
+      }
+     ],
+     "targets": [
+      "Can I have a tea, please?"
+     ]
+    },
+    {
+     "id": "t2",
+     "line": {
+      "en": "Here you are.",
+      "tr": "Buyurun.",
+      "audio": "talk/cafe-rosa-t2.m4a"
+     },
+     "promptTr": "Teşekkür et ve fiyatını sor.",
+     "accept": [
+      "Thank you. How much is it?",
+      "Thanks! How much is it?",
+      "Thank you. How much is the tea?",
+      "How much is it, please?",
+      "How much is it?"
+     ],
+     "distractors": [
+      {
+       "en": "Thank you. How many is it?",
+       "reactionTr": "Fiyat sorarken \"How much\" denir: How much is it?"
+      }
+     ],
+     "targets": [
+      "How much is it?",
+      "Thank you."
+     ]
+    },
+    {
+     "id": "t3",
+     "line": {
+      "en": "It's twelve, please.",
+      "tr": "On iki, lütfen.",
+      "audio": "talk/cafe-rosa-t3.m4a"
+     },
+     "promptTr": "Parayı uzatırken \"Buyurun\" de.",
+     "accept": [
+      "Here you are.",
+      "Here you are. Thank you.",
+      "Here you go.",
+      "OK. Here you are."
+     ],
+     "distractors": [
+      {
+       "en": "Here are you.",
+       "reactionTr": "Kelime sırası farklı: Here you are."
+      }
+     ],
+     "targets": [
+      "Here you are."
+     ]
+    },
+    {
+     "id": "t4",
+     "line": {
+      "en": "Thank you! Do you want a cake?",
+      "tr": "Teşekkürler! Kek ister misin?"
+     },
+     "promptTr": "Kibarca hayır de.",
+     "accept": [
+      "No, thank you.",
+      "No, thanks.",
+      "No, thank you, Rosa.",
+      "No, thank you. Just the tea."
+     ],
+     "distractors": [
+      {
+       "en": "No, I can't.",
+       "reactionTr": "\"Do you want…?\" sorusuna kibar cevap: No, thank you."
+      }
+     ],
+     "targets": [
+      "Thank you."
+     ]
+    }
+   ],
+   "outro": {
+    "en": "OK! Have a nice day.",
+    "tr": "Peki! İyi günler."
+   },
+   "unlockEpisode": 9,
+   "targets": [
+    "Can I have a tea, please?",
+    "How much is it?",
+    "Thank you.",
+    "Here you are."
+   ]
+  }
+ ]
+}
