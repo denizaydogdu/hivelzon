@@ -214,5 +214,37 @@
         }
       ]
     }
-  ]
+  ],
+  "comprehension": {
+    "questions": [
+      {
+        "id": "q1",
+        "prompt": "Why did Mr Achterberg fall off his ladder?",
+        "promptTr": "Bay Achterberg merdivenden neden düştü?",
+        "options": [
+          "He was cutting the hedge down to the height Constance had asked for",
+          "He was trying to look at the blackbirds at the top of the hedge",
+          "He was looking for Audit, his cat, in the top of the hedge"
+        ],
+        "answer": 0,
+        "page": "p19"
+      },
+      {
+        "id": "q2",
+        "prompt": "What did the surveyor's report show about the hedge?",
+        "promptTr": "Ölçüm raporu çit hakkında neyi ortaya koydu?",
+        "options": [
+          "It belonged to Hollybank, as Mr Achterberg had said",
+          "It belonged to Fernleigh, Constance's own house, all along",
+          "It belonged to the farm that once owned the land"
+        ],
+        "answer": 1,
+        "page": "p25"
+      }
+    ],
+    "retell": {
+      "modelEn": "Constance Webb, a retired head teacher, writes polite but angry letters to her new neighbour, Mr Achterberg, about the tall hedge that blocks her sun. For months they write every day but never speak. Then he breaks his wrist falling from a ladder while cutting the hedge for her. The surveyor's report shows that the hedge was hers all along, so she writes him an honest apology, and he invites her for tea.",
+      "modelTr": "Emekli okul müdürü Constance Webb, güneşini kesen yüksek çit yüzünden yeni komşusu Bay Achterberg'e kibar ama öfkeli mektuplar yazar. Aylarca her gün birbirlerine yazarlar ama hiç konuşmazlar. Sonra Bay Achterberg, çiti onun için keserken merdivenden düşüp bileğini kırar. Ölçüm raporu çitin baştan beri Constance'a ait olduğunu gösterir; Constance ona içten bir özür mektubu yazar, o da onu çaya davet eder."
+    }
+  }
 }

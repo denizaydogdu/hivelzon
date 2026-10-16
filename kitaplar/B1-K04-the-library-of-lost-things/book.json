@@ -85,5 +85,37 @@
         {"id": "p20", "image": null}
       ]
     }
-  ]
+  ],
+  "comprehension": {
+    "questions": [
+      {
+        "id": "q1",
+        "prompt": "Why wasn't Ines's notebook on the shelf in the library?",
+        "promptTr": "Ines'in defteri kütüphanede neden rafta değildi?",
+        "options": [
+          "Mr Orrin had put it in the Umbrella Hall.",
+          "It had fallen into a drawer of lost songs.",
+          "Many people had borrowed it, one after another."
+        ],
+        "answer": 2,
+        "page": "p08"
+      },
+      {
+        "id": "q2",
+        "prompt": "What did Ines leave in the library to take her notebook back?",
+        "promptTr": "Ines defterini geri almak için kütüphanede ne bıraktı?",
+        "options": [
+          "Half a sandwich and a boring ticket",
+          "A card with the words 'I'm not good enough'",
+          "Her old maths book and a pen"
+        ],
+        "answer": 1,
+        "page": "p15"
+      }
+    ],
+    "retell": {
+      "modelEn": "Ines lost her drawing notebook on a train and stopped drawing. She finds a door to the Library of Lost Things, where many people have borrowed her notebook. To take it back, she leaves the sentence 'I'm not good enough.' The notebook is full of new drawings, and Ines starts to draw again.",
+      "modelTr": "Ines resim defterini bir trende kaybeder ve çizmeyi bırakır. Kayıp Eşyalar Kütüphanesi'ne açılan bir kapı bulur; orada defterini birçok kişi ödünç almıştır. Defteri geri almak için \"Yeterince iyi değilim\" cümlesini bırakır. Defter yeni çizimlerle doludur ve Ines yeniden çizmeye başlar."
+    }
+  }
 }

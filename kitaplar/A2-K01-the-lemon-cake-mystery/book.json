@@ -134,5 +134,37 @@
     "G-A2-04-past-simple-regular",
     "G-A2-05-past-simple-irregular",
     "G-A2-06-past-questions-negatives"
-  ]
+  ],
+  "comprehension": {
+    "questions": [
+      {
+        "id": "q1",
+        "prompt": "What did Theo do every morning at six?",
+        "promptTr": "Theo her sabah saat altıda ne yapıyordu?",
+        "options": [
+          "He made cakes with Mr Selim.",
+          "He learned Turkish with Aunt Füsun.",
+          "He took photos of the restaurant."
+        ],
+        "answer": 1,
+        "page": "p12"
+      },
+      {
+        "id": "q2",
+        "prompt": "Why did Aunt Füsun hide the recipe card?",
+        "promptTr": "Füsun Teyze tarif kartını neden sakladı?",
+        "options": [
+          "She wanted to give it to Mr Selim.",
+          "She didn't want Elif to enter the contest.",
+          "The card was wrong, and Elif had to watch her."
+        ],
+        "answer": 2,
+        "page": "p14"
+      }
+    ],
+    "retell": {
+      "modelEn": "Elif wanted to make Aunt Füsun's lemon cake for a contest. But the recipe card disappeared, and Elif looked for the thief. Aunt Füsun hid it herself, because the card was wrong. She taught Elif the real recipe, and they came second.",
+      "modelTr": "Elif, Füsun Teyze'nin limonlu kekini bir yarışma için yapmak istedi. Ama tarif kartı kayboldu ve Elif hırsızı aradı. Kartı Füsun Teyze kendisi saklamıştı, çünkü kart yanlıştı. Elif'e gerçek tarifi öğretti ve ikisi yarışmada ikinci oldu."
+    }
+  }
 }

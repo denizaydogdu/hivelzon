@@ -224,5 +224,37 @@
         }
       ]
     }
-  ]
+  ],
+  "comprehension": {
+    "questions": [
+      {
+        "id": "q1",
+        "prompt": "Why did Aylin's father secretly take English lessons?",
+        "promptTr": "Aylin'in babası neden gizlice İngilizce dersi aldı?",
+        "options": [
+          "He wanted to translate his own novels for an English publisher",
+          "He wanted to teach English at the school on the hill",
+          "He wanted to speak to his daughter in her own language"
+        ],
+        "answer": 2,
+        "page": "p18"
+      },
+      {
+        "id": "q2",
+        "prompt": "How is the tenth chapter printed in the end?",
+        "promptTr": "Onuncu bölüm sonunda nasıl basılıyor?",
+        "options": [
+          "In Turkish, written by Aylin herself",
+          "In her father's English, with all his mistakes kept",
+          "In correct English, after Rosalind has edited it"
+        ],
+        "answer": 1,
+        "page": "p28"
+      }
+    ],
+    "retell": {
+      "modelEn": "After the Turkish writer Hakan Aral dies, his daughter Aylin, a translator, must translate his last novel, which has nine chapters and only her name where the tenth should be. In Istanbul she learns that he secretly took English lessons for three years so that he could speak to her in her language. The tenth chapter, written by him in English full of mistakes, waits in an envelope, and Aylin insists that it is printed exactly as he wrote it.",
+      "modelTr": "Türk yazar Hakan Aral ölünce, çevirmen kızı Aylin onun son romanını çevirmek zorunda kalır; romanın dokuz bölümü vardır ve onuncu bölümün yerinde yalnızca Aylin'in adı yazılıdır. Aylin, İstanbul'da babasının onunla kendi dilinde konuşabilmek için üç yıl boyunca gizlice İngilizce dersi aldığını öğrenir. Babasının hatalarla dolu bir İngilizceyle yazdığı onuncu bölüm bir zarfta beklemektedir; Aylin, bölümün tam da babasının yazdığı gibi basılmasında ısrar eder."
+    }
+  }
 }

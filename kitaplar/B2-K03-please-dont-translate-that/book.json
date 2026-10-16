@@ -178,5 +178,37 @@
         }
       ]
     }
-  ]
+  ],
+  "comprehension": {
+    "questions": [
+      {
+        "id": "q1",
+        "prompt": "What did Bruno do when Emre broke his father's favourite tea glass?",
+        "promptTr": "Emre babasının en sevdiği çay bardağını kırınca Bruno ne yaptı?",
+        "options": [
+          "He hid the pieces of glass in the garden",
+          "He told Orhan Bey that Emre had broken it",
+          "He said that he had broken it himself"
+        ],
+        "answer": 2,
+        "page": "p07"
+      },
+      {
+        "id": "q2",
+        "prompt": "Why did Orhan Bey keep touching his ear and leaving the room?",
+        "promptTr": "Orhan Bey neden sürekli kulağına dokunup odadan çıkıyordu?",
+        "options": [
+          "He had the second earpiece and was laughing at Bruno's words",
+          "The earpiece was hurting his ear and he wanted to take it out",
+          "He was angry with Bruno and did not want to talk to him"
+        ],
+        "answer": 0,
+        "page": "p20"
+      }
+    ],
+    "retell": {
+      "modelEn": "Bruno visits Selin's family in Eskişehir with a translation earpiece, and his words cause many funny mistakes. Her quiet father, Orhan Bey, keeps leaving the room, so Bruno thinks he hates him. In the end, Bruno learns that Orhan Bey had the second earpiece all week and was laughing, and the two men become friends.",
+      "modelTr": "Bruno, Selin'in Eskişehir'deki ailesini bir çeviri kulaklığıyla ziyaret eder ve sözleri pek çok komik hataya yol açar. Selin'in sessiz babası Orhan Bey sürekli odadan çıkar, bu yüzden Bruno ondan nefret ettiğini düşünür. Sonunda Bruno, Orhan Bey'in bütün hafta ikinci kulaklığı taktığını ve güldüğünü öğrenir; iki adam arkadaş olur."
+    }
+  }
 }

@@ -6,6 +6,7 @@ import '../../../shared/content/content_providers.dart';
 import '../../../shared/state/safe_refresh.dart';
 import '../../../shared/storage/storage_providers.dart';
 import '../../onboarding/application/onboarding_providers.dart';
+import '../data/book_comprehension_store.dart';
 import '../data/book_progress_store.dart';
 import '../domain/book.dart';
 import '../domain/book_progress.dart';
@@ -15,6 +16,14 @@ import 'book_audio.dart';
 
 final bookProgressStoreProvider = Provider<BookProgressStore>(
   (ref) => BookProgressStore(
+    ref.watch(appDatabaseProvider),
+    ready: ref.watch(legacyImportProvider),
+  ),
+);
+
+/// Kitap sonu anlama sonucu (H-091).
+final bookComprehensionStoreProvider = Provider<BookComprehensionStore>(
+  (ref) => BookComprehensionStore(
     ref.watch(appDatabaseProvider),
     ready: ref.watch(legacyImportProvider),
   ),

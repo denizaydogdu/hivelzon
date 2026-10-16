@@ -211,5 +211,37 @@
         }
       ]
     }
-  ]
+  ],
+  "comprehension": {
+    "questions": [
+      {
+        "id": "q1",
+        "prompt": "What did the small objects in the guests' parcels have in common?",
+        "promptTr": "Konukların paketlerindeki küçük eşyaların ortak noktası neydi?",
+        "options": [
+          "They had all been lost at the Glasswater Hotel.",
+          "They all came from the same stormy night at Calderbury Central station.",
+          "They had all been bought as gifts by Mr Crane."
+        ],
+        "answer": 1,
+        "page": "p08"
+      },
+      {
+        "id": "q2",
+        "prompt": "Who was the real host of the dinner, and why did she invite the guests?",
+        "promptTr": "Yemeğin asıl ev sahibi kimdi ve konukları neden davet etmişti?",
+        "options": [
+          "Agnes, because she wanted back the things she had lent.",
+          "Bev, because she wanted to meet her old passengers again.",
+          "Maren, because she wanted to thank the people who had helped her as a child."
+        ],
+        "answer": 2,
+        "page": "p25"
+      }
+    ],
+    "retell": {
+      "modelEn": "Eight strangers are invited to dinner at the Glasswater Hotel by a mysterious host, Daryl Brie, and each finds a forgotten object in a parcel. Ruth Okafor, a retired crossword setter, realises that they all helped the same lost girl on one stormy night fourteen years ago. She solves the signature as \"Early Bird\", a reply to her secret name, Night Owl: the host is Maren, the hotel cook, who was that girl and wanted to thank them.",
+      "modelTr": "Sekiz yabancı, Daryl Brie adlı gizemli bir ev sahibi tarafından Glasswater Oteli'ne yemeğe davet edilir ve her biri bir pakette unutulmuş bir eşya bulur. Emekli bulmaca hazırlayıcısı Ruth Okafor, hepsinin on dört yıl önce fırtınalı bir gecede kaybolmuş aynı kıza yardım ettiğini anlar. İmzanın, kendi gizli adı Night Owl'a bir cevap olan \"Early Bird\" olduğunu çözer: Ev sahibi, o kız olan otel aşçısı Maren'dir ve onlara teşekkür etmek istemiştir."
+    }
+  }
 }

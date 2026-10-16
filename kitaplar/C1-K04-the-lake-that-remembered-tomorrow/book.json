@@ -198,5 +198,37 @@
         }
       ]
     }
-  ]
+  ],
+  "comprehension": {
+    "questions": [
+      {
+        "id": "q1",
+        "prompt": "What did Tomás do when he found himself about to tear up the report he had written for Dr Hallam?",
+        "promptTr": "Tomás, Dr Hallam için yazdığı raporu yırtmak üzere olduğunu fark edince ne yaptı?",
+        "options": [
+          "He sent Dr Hallam the short report she had asked for.",
+          "He wrote an honest report that included the village records.",
+          "He asked Oriana to send a report to the board for him."
+        ],
+        "answer": 1,
+        "page": "p20"
+      },
+      {
+        "id": "q2",
+        "prompt": "What did Tomás finally understand about the lake?",
+        "promptTr": "Tomás sonunda göl hakkında neyi anladı?",
+        "options": [
+          "It shows what a person wants most in life.",
+          "It shows the future to everyone who looks at dawn.",
+          "It shows where you will end up if you do not make a choice."
+        ],
+        "answer": 2,
+        "page": "p27"
+      }
+    ],
+    "retell": {
+      "modelEn": "Tomás, a hydrologist, is sent to Ardal to prove that its lake cannot show people their tomorrow. He sees his own next day in the water, and eighty years of village records show that sixty-one per cent of the reflections came true. He writes an honest report instead of an easy one, and finally understands that the lake shows where you end up if you do not choose. He decides to stay and study it.",
+      "modelTr": "Hidrolog Tomás, gölün insanlara yarınlarını gösteremeyeceğini kanıtlamak için Ardal'a gönderilir. Suda kendi ertesi gününü görür; köyün seksen yıllık kayıtları da yansımaların yüzde altmış birinin gerçekleştiğini gösterir. Kolay bir rapor yerine dürüst bir rapor yazar ve sonunda gölün, seçim yapmazsan nereye varacağını gösterdiğini anlar. Gölü incelemek için kalmaya karar verir."
+    }
+  }
 }

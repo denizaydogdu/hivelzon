@@ -124,5 +124,37 @@
     "G-A2-10-going-to",
     "G-A2-01-present-continuous",
     "G-A2-05-past-simple-irregular"
-  ]
+  ],
+  "comprehension": {
+    "questions": [
+      {
+        "id": "q1",
+        "prompt": "Why did Paloma and Jonas leave the path?",
+        "promptTr": "Paloma ile Jonas patikadan neden ayrıldı?",
+        "options": [
+          "Paloma wanted a photo of a flower.",
+          "Jonas wanted to look at the goats.",
+          "Mrs Berg sent them to find water."
+        ],
+        "answer": 0,
+        "page": "p03"
+      },
+      {
+        "id": "q2",
+        "prompt": "How did they find the house in the fog?",
+        "promptTr": "Siste evi nasıl buldular?",
+        "options": [
+          "Paloma's phone showed them the way.",
+          "They followed the goats with bells.",
+          "Mrs Berg came up and found them."
+        ],
+        "answer": 1,
+        "page": "p14"
+      }
+    ],
+    "retell": {
+      "modelEn": "Paloma and Jonas were on a school trip in the mountains. Paloma left the path to take a photo, and the fog came. Jonas hurt his leg, and they heard strange bells. They followed the goats with bells and found their house.",
+      "modelTr": "Paloma ile Jonas dağda bir okul gezisindeydi. Paloma fotoğraf çekmek için patikadan ayrıldı ve sis çöktü. Jonas bacağını incitti, sonra tuhaf çan sesleri duydular. Çanlı keçileri izlediler ve kaldıkları evi buldular."
+    }
+  }
 }

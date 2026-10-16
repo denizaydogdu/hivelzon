@@ -103,5 +103,37 @@
     "G-A1-05-pronouns-possessives",
     "G-A1-14-do-does",
     "G-A1-15-there-is-are"
-  ]
+  ],
+  "comprehension": {
+    "questions": [
+      {
+        "id": "q1",
+        "prompt": "What does Mr Das say about the wind?",
+        "promptTr": "Bay Das rüzgâr hakkında ne söylüyor?",
+        "options": [
+          "It goes to the sea at night.",
+          "It turns at twelve o'clock.",
+          "It stops at the market."
+        ],
+        "answer": 1,
+        "page": "p03"
+      },
+      {
+        "id": "q2",
+        "prompt": "Where is the kite at the end?",
+        "promptTr": "Sonunda uçurtma nerede?",
+        "options": [
+          "On Ravi's balcony at home",
+          "On the white boat",
+          "On top of the yellow tram"
+        ],
+        "answer": 0,
+        "page": "p12"
+      }
+    ],
+    "retell": {
+      "modelEn": "Ravi's red kite flies away in the wind. He runs after it to the river. At twelve, the wind turns. The kite comes home to his balcony.",
+      "modelTr": "Ravi'nin kırmızı uçurtması rüzgârla uçup gidiyor. Ravi nehre kadar onun peşinden koşuyor. Saat on ikide rüzgâr dönüyor. Uçurtma eve, Ravi'nin balkonuna geliyor."
+    }
+  }
 }

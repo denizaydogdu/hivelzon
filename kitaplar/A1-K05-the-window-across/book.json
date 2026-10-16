@@ -91,5 +91,37 @@
     "G-A1-09-prepositions-place",
     "G-A1-11-present-simple",
     "G-A1-12-word-order-svo"
-  ]
+  ],
+  "comprehension": {
+    "questions": [
+      {
+        "id": "q1",
+        "prompt": "Who drinks the milk on Omar's window?",
+        "promptTr": "Omar'ın penceresindeki sütü kim içiyor?",
+        "options": [
+          "A small bird",
+          "A grey and white cat",
+          "Freya, the little girl"
+        ],
+        "answer": 1,
+        "page": "p08"
+      },
+      {
+        "id": "q2",
+        "prompt": "Where does Omar find Mimi?",
+        "promptTr": "Omar, Mimi'yi nerede buluyor?",
+        "options": [
+          "In Freya's flat",
+          "On his window",
+          "Behind the bags in his shop"
+        ],
+        "answer": 2,
+        "page": "p09"
+      }
+    ],
+    "retell": {
+      "modelEn": "Omar is new in a cold city. Every morning, a girl waves at his window. The hello is for a cat, Mimi. Omar finds Mimi, and he has new friends.",
+      "modelTr": "Omar soğuk bir şehirde yeni. Her sabah bir kız onun penceresine el sallıyor. Aslında selam, Mimi adında bir kedi için. Omar, Mimi'yi buluyor ve yeni arkadaşlar ediniyor."
+    }
+  }
 }

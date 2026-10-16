@@ -210,5 +210,37 @@
         }
       ]
     }
-  ]
+  ],
+  "comprehension": {
+    "questions": [
+      {
+        "id": "q1",
+        "prompt": "Why does the village of Ambrey hold its Bridge Fair every summer?",
+        "promptTr": "Ambrey köyü Köprü Şenliği'ni neden her yaz düzenliyor?",
+        "options": [
+          "Because Hedda once warned them that the bridge's main beam was rotten.",
+          "Because Tomasz built the white footbridge for the village.",
+          "Because Ilan's father brought his ferry to Ambrey that year."
+        ],
+        "answer": 0,
+        "page": "p14"
+      },
+      {
+        "id": "q2",
+        "prompt": "What did Lena finally understand about the eleventh bridge?",
+        "promptTr": "Lena sonunda on birinci köprü hakkında neyi anladı?",
+        "options": [
+          "It was a dream bridge that Hedda had imagined on her ride.",
+          "It was a real design that Hedda had made for the crossing at Wrenmouth.",
+          "It was an old bridge that the great flood had swept away."
+        ],
+        "answer": 1,
+        "page": "p25"
+      }
+    ],
+    "retell": {
+      "modelEn": "Lena Vogt, a civil engineer, finds her great-aunt Hedda's 1962 diary with drawings of eleven bridges, although only ten are on any map. She cycles the same river route to make a birthday book, but the eleventh bridge leads only to a ferry and open water. Looking at it as an engineer, she sees it is Hedda's own rejected design, updates it, and gives Hedda the book with a council letter promising to study it.",
+      "modelTr": "İnşaat mühendisi Lena Vogt, büyük halası Hedda'nın 1962 tarihli günlüğünü bulur; günlükte on bir köprü çizimi vardır, ama haritalarda yalnızca on köprü bulunur. Bir doğum günü kitabı hazırlamak için aynı nehir yolunu bisikletle gider, ama on birinci köprü onu yalnızca bir feribota ve açık suya götürür. Çizime bir mühendis gözüyle bakınca bunun Hedda'nın reddedilmiş kendi tasarımı olduğunu görür, tasarımı günceller ve kitabı, meclisin tasarımı inceleyeceğini bildiren mektupla birlikte Hedda'ya verir."
+    }
+  }
 }
