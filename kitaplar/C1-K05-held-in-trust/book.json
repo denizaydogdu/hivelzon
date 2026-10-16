@@ -199,5 +199,37 @@
         }
       ]
     }
-  ]
+  ],
+  "comprehension": {
+    "questions": [
+      {
+        "id": "q1",
+        "prompt": "What did Margaret believe Hatice meant when she said \"Bu sana emanet\"?",
+        "promptTr": "Margaret, Hatice'nin \"Bu sana emanet\" derken ne demek istediğini düşünüyordu?",
+        "options": [
+          "That the box was a gift Margaret could keep forever.",
+          "That Hatice was angry with her for leaving so quickly.",
+          "That Hatice had only lent her the box and wanted it back."
+        ],
+        "answer": 2,
+        "page": "p13"
+      },
+      {
+        "id": "q2",
+        "prompt": "What did Hatice do when Margaret tried to give the blue box back?",
+        "promptTr": "Margaret mavi kutuyu geri vermeye çalıştığında Hatice ne yaptı?",
+        "options": [
+          "She opened it and put on her grandmother's earrings.",
+          "She closed Margaret's fingers over it and asked her to keep it.",
+          "She gave it to her grandson Emre to keep."
+        ],
+        "answer": 1,
+        "page": "p26"
+      }
+    ],
+    "retell": {
+      "modelEn": "Nur, an interpreter, travels with Margaret Ellis, an old English teacher, to the Turkish village where Margaret taught in 1968. Margaret wants to return a blue box that her friend Hatice gave her, because a dictionary told her that \"emanet\" meant a loan. Nur explains that it is a promise to meet again, and Hatice opens her door in the green cardigan Margaret left behind. Each friend keeps the other's emanet, and Margaret promises to return.",
+      "modelTr": "Çevirmen Nur, yaşlı İngiliz öğretmen Margaret Ellis'le birlikte Margaret'ın 1968'de öğretmenlik yaptığı Türk köyüne gider. Margaret, arkadaşı Hatice'nin ona verdiği mavi kutuyu geri vermek ister, çünkü bir sözlük ona \"emanet\" sözcüğünün ödünç demek olduğunu söylemiştir. Nur bunun yeniden buluşma sözü olduğunu açıklar ve Hatice kapısını, Margaret'ın geride bıraktığı yeşil hırkayla açar. İki arkadaş da birbirinin emanetini saklar ve Margaret geri geleceğine söz verir."
+    }
+  }
 }

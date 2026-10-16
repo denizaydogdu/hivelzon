@@ -26,6 +26,7 @@ import '../domain/book.dart';
 import '../domain/book_notebook.dart';
 import '../domain/book_progress.dart';
 import 'widgets/book_page_view.dart';
+import 'widgets/comprehension_view.dart';
 import 'widgets/end_of_book_view.dart';
 import 'widgets/page_turkish_sheet.dart';
 
@@ -67,6 +68,9 @@ class _ReaderScreenState extends ConsumerState<ReaderScreen>
   PageController? _pages;
   bool _programmaticPage = false;
   bool _showEnd = false;
+
+  /// Kitap sonu anlama (H-091) bitti ya da atlandı: kitap sonu görünür.
+  bool _comprehensionDone = false;
   bool _audioNoticeShown = false;
 
   /// Satır altı Türkçe (okuma ayarı, H-086).
@@ -211,6 +215,28 @@ class _ReaderScreenState extends ConsumerState<ReaderScreen>
       setState(() => _showEnd = true);
       unawaited(_findNextBook(book));
     }
+  }
+
+  /// Anlama bitti (H-091): yalnız sayılar ve öz değerlendirme yazılır.
+  void _comprehensionFinished(ComprehensionOutcome o) {
+    final book = _book;
+    if (book == null) return;
+    unawaited(
+      ref
+          .read(bookComprehensionStoreProvider)
+          .save(
+            bookId: book.id,
+            contentVersion: book.contentVersion,
+            answered: o.answered,
+            firstTryCorrect: o.firstTryCorrect,
+            retellDone: o.retellDone,
+            selfCheck: o.selfCheck,
+          )
+          .catchError((Object e) {
+            debugPrint('[H091] anlama sonucu yazılamadı: $e');
+          }),
+    );
+    if (mounted) setState(() => _comprehensionDone = true);
   }
 
   void _onController() {
@@ -600,7 +626,16 @@ class _ReaderScreenState extends ConsumerState<ReaderScreen>
               onPageTurkish: _showEnd || !hasTurkish ? null : _openPageTurkish,
             ),
             Expanded(
-              child: _showEnd
+              child:
+                  _showEnd && !_comprehensionDone && book.comprehension != null
+                  ? ComprehensionView(
+                      book: book,
+                      comprehension: book.comprehension!,
+                      colors: colors,
+                      onSkip: () => setState(() => _comprehensionDone = true),
+                      onFinish: _comprehensionFinished,
+                    )
+                  : _showEnd
                   ? EndOfBookView(
                       book: book,
                       colors: colors,
@@ -612,6 +647,7 @@ class _ReaderScreenState extends ConsumerState<ReaderScreen>
                         setState(() {
                           _pages = PageController();
                           _showEnd = false;
+                          _comprehensionDone = false;
                         });
                         WidgetsBinding.instance.addPostFrameCallback(
                           (_) => old?.dispose(),

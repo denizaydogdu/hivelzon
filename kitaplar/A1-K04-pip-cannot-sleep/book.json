@@ -88,5 +88,37 @@
         }
       ]
     }
-  ]
+  ],
+  "comprehension": {
+    "questions": [
+      {
+        "id": "q1",
+        "prompt": "What does Pip want?",
+        "promptTr": "Pip ne istiyor?",
+        "options": [
+          "He wants a new green blanket.",
+          "He wants to drink warm milk.",
+          "He wants to sleep and dream."
+        ],
+        "answer": 2,
+        "page": "p03"
+      },
+      {
+        "id": "q2",
+        "prompt": "How does Pip sleep at the end?",
+        "promptTr": "Pip sonunda nasıl uyuyor?",
+        "options": [
+          "He reads Zara a story.",
+          "He counts fifty sheep.",
+          "He drinks a cup of milk."
+        ],
+        "answer": 0,
+        "page": "p09"
+      }
+    ],
+    "retell": {
+      "modelEn": "Pip is a little robot. He wants to sleep, but robots don't sleep. One night, he reads Zara a story. Then Pip sleeps and dreams about sheep.",
+      "modelTr": "Pip küçük bir robot. Uyumak istiyor ama robotlar uyumaz. Bir gece Zara'ya bir hikâye okuyor. Sonra Pip uyuyor ve rüyasında koyunlar görüyor."
+    }
+  }
 }

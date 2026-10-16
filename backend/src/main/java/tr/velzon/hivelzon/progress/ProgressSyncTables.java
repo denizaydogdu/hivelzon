@@ -24,7 +24,8 @@ import tr.velzon.hivelzon.sync.SyncTableProvider;
  * kazanır" ({@link ProgressMerger}, H-056); bölüm kapısı yalnız eklenir (silinmez, üzerine yazılmaz). Kitaplık
  * ilerlemesi (H-067, mobil şema 6) ve dilbilgisi dersi ilerlemesi (H-078, mobil şema 7) aynı kuralla birleşir.
  * Günlük ölçülen süre (H-074, mobil şema 8) (gün, kaynak) başına toplamdır; her satırı yalnız kendi cihazı yazar,
- * düz LWW.
+ * düz LWW. Kitap sonu anlama (H-091, mobil şema 9) yalnız sayı ve öz değerlendirmedir (yazılan metin yok), düz
+ * LWW.
  */
 @Component
 public class ProgressSyncTables implements SyncTableProvider {
@@ -80,6 +81,14 @@ public class ProgressSyncTables implements SyncTableProvider {
                         instant("completedAt", "completed_at", false)), ProgressMerger.forGrammar()),
                 new SyncTable("daily_activity", 90, Kind.MUTABLE,
                         List.of(string("day", "day", true, 10), string("sourceId", "source_id", true, 36)),
-                        UPDATED_AT, List.of(integer("activeSeconds", "active_seconds", true, 0, 86_400))));
+                        UPDATED_AT, List.of(integer("activeSeconds", "active_seconds", true, 0, 86_400))),
+                new SyncTable("user_book_comprehension", 95, Kind.MUTABLE,
+                        List.of(string("bookId", "book_id", true, 16)), UPDATED_AT, List.of(
+                        integer("contentVersion", "content_version", true, 1, 9_999),
+                        integer("answered", "answered", true, 0, 2),
+                        integer("firstTryCorrect", "first_try_correct", true, 0, 2),
+                        bool("retellDone", "retell_done", true),
+                        oneOf("selfCheck", "self_check", false, "all", "some", "not_yet"),
+                        instant("completedAt", "completed_at", true))));
     }
 }

@@ -159,5 +159,37 @@
         }
       ]
     }
-  ]
+  ],
+  "comprehension": {
+    "questions": [
+      {
+        "id": "q1",
+        "prompt": "Where did Sophie find Daniel when she followed him early in the morning?",
+        "promptTr": "Sophie sabah erkenden Daniel'ı takip ettiğinde onu nerede buldu?",
+        "options": [
+          "At the old boatyard, building a boat with Mr Doyle",
+          "At the fish market, working with the fishermen",
+          "At a café in the next town, reading his books"
+        ],
+        "answer": 0,
+        "page": "p07"
+      },
+      {
+        "id": "q2",
+        "prompt": "What did Dad realise when he looked inside the boat on the day of the launch?",
+        "promptTr": "Babası denize indirme günü teknenin içine baktığında neyi anladı?",
+        "options": [
+          "That Mr Doyle had built the whole boat on his own",
+          "That the boat was too old to go into the water",
+          "That it was the boat he had started building years ago"
+        ],
+        "answer": 2,
+        "page": "p20"
+      }
+    ],
+    "retell": {
+      "modelEn": "Daniel leaves university and comes home without explaining why, and his father is angry. His sister Sophie follows him and finds him finishing a boat at Mr Doyle's old boatyard. On the day of the launch, Dad sees the small fish he once cut into the wood, understands that it is his own old boat, and puts it into the sea with Daniel.",
+      "modelTr": "Daniel üniversiteyi bırakıp nedenini açıklamadan eve döner ve babası kızar. Kız kardeşi Sophie onu takip eder ve onu Bay Doyle'un eski tekne atölyesinde bir tekneyi bitirirken bulur. Denize indirme günü babası, yıllar önce tahtaya oyduğu küçük balığı görür, bunun kendi eski teknesi olduğunu anlar ve tekneyi Daniel'la birlikte denize indirir."
+    }
+  }
 }

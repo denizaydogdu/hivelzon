@@ -362,6 +362,36 @@ class DailyActivity extends Table {
   Set<Column<Object>> get primaryKey => {day, sourceId};
 }
 
+// ---------------------------------------------------------------- kitap sonu anlama (H-091, şema 9)
+
+/// Kitap sonu anlamanın **yalnızca sonucu** (H-091; `docs/KITAPLIK.md`
+/// §7.1). Kitap ilerlemesinden ayrıdır. Kullanıcının yazdığı yeniden anlatma
+/// hiçbir zaman saklanmaz: yalnızca yapıldığı ve öz değerlendirmesi durur.
+/// Atlanan anlama satır yazmaz. Hesap varsa eşitlenir; son yazan kazanır.
+@DataClassName('BookComprehensionRow')
+class UserBookComprehension extends Table {
+  TextColumn get bookId => text()();
+
+  /// Soruların geldiği içerik sürümü (`book.json → contentVersion`).
+  IntColumn get contentVersion => integer().withDefault(const Constant(1))();
+
+  /// Cevaplanan soru sayısı (0–2) ve ilk denemede doğru olanlar (0–2).
+  IntColumn get answered => integer().withDefault(const Constant(0))();
+  IntColumn get firstTryCorrect => integer().withDefault(const Constant(0))();
+
+  /// Yeniden anlatma adımı yapıldı mı (örnek anlatım açıldı ya da öz
+  /// değerlendirme seçildi). Metnin kendisi yok.
+  BoolColumn get retellDone => boolean().withDefault(const Constant(false))();
+
+  /// Öz değerlendirme: `all` | `some` | `not_yet` (ya da boş).
+  TextColumn get selfCheck => text().nullable()();
+  DateTimeColumn get completedAt => dateTime()();
+  DateTimeColumn get updatedAt => dateTime()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {bookId};
+}
+
 // ---------------------------------------------------------------- kanıt basamağı (H-089, şema 10)
 
 /// Öğrenme kanıtı basamakları (H-089; `docs/KELIME-TEKRARI.md` §3): ifade
@@ -481,6 +511,7 @@ class SyncOutbox extends Table {
     UserBookProgress,
     UserGrammarProgress,
     DailyActivity,
+    UserBookComprehension,
     EvidenceRecords,
   ],
 )
@@ -559,8 +590,11 @@ class AppDatabase extends _$AppDatabase {
       if (from < 8) {
         await m.createTable(dailyActivity);
       }
-      // (9: H-091 kitap anlama kontrolü; ayrı dalda.)
-      // → 10 (H-089): öğrenme kanıtı basamakları; eski cevaplardan doldurulur.
+      // 8 → 9 (H-091): kitap sonu anlama sonucu (metin yok).
+      if (from < 9) {
+        await m.createTable(userBookComprehension);
+      }
+      // 9 → 10 (H-089): öğrenme kanıtı basamakları; eski cevaplardan doldurulur.
       if (from < 10) {
         await m.createTable(evidenceRecords);
         await backfillEvidence(this);

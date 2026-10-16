@@ -7,6 +7,7 @@
 
 import '../../../shared/content/content_source.dart' show grammarTopicsOf;
 import '../../../shared/meaning/meaning_text.dart';
+import 'book_comprehension.dart';
 
 /// Kitaplık seviyeleri (C2 yalnız Kitaplık'ta; `KITAPLIK.md` §2).
 const kBookLevels = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
@@ -366,6 +367,7 @@ class Book {
     this.estimatedMinutes,
     this.contentVersion = 1,
     this.grammarTopics = const [],
+    this.comprehension,
   }) {
     for (var i = 0; i < pages.length; i++) {
       _pageIndex[pages[i].id] = i;
@@ -420,6 +422,7 @@ class Book {
       estimatedMinutes: (bookJson['estimatedMinutes'] as num?)?.round(),
       contentVersion: (bookJson['contentVersion'] as num?)?.toInt() ?? 1,
       grammarTopics: grammarTopicsOf(bookJson['grammarTopics']),
+      comprehension: BookComprehension.fromJson(bookJson['comprehension']),
       palette: BookPalette.fromJson(bookJson['palette']),
       chapters: chapters,
       pages: pages,
@@ -438,6 +441,9 @@ class Book {
 
   /// Kitapta geçen dilbilgisi konuları (G-ID; H-077).
   final List<String> grammarTopics;
+
+  /// Kitap sonu anlama (H-091); paket eskiyse ya da yoksa null.
+  final BookComprehension? comprehension;
   final BookPalette palette;
   final List<BookChapter> chapters;
   final List<BookPage> pages;

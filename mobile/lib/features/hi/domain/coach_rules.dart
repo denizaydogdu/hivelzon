@@ -1,26 +1,21 @@
-// Hi-A koçu (H-048): günün tek önerisi ve görünür gerekçesi. Saf Dart; kural
-// tabanlı, öncelik sıralı, yapay zekâ yok (ürün ilkesi: "ilk sürümde öneriler
-// kural tabanlı ve gerekçeli"; HI-ASISTAN-VE-KOC.md §2 F3).
+// Hi-A koçu (H-048) ve günlük plan (H-088): günün tek önerisi ve görünür
+// gerekçesi. Saf Dart; kural tabanlı, öncelik sıralı, yapay zekâ yok (ürün
+// ilkesi: "ilk sürümde öneriler kural tabanlı ve gerekçeli";
+// HI-ASISTAN-VE-KOC.md §2 F3).
 //
-// Öncelik:
-//   a) yarım kalan bölüm → kaldığı yerden devam
-//   b) tekrar zamanı gelen ifade ≥ [kReviewThreshold] → Kelime tekrarı
-//   c) son 7 günde aynı hata türü ≥ [kRepeatedErrors] → Hi'nin notu / defter
-//   g) yarıda kalan kitap → kaldığı cümleden devam (H-067)
-//   d) sıradaki açık bölüm → başla
-//   e) açılmış ama sahne avı yapılmamış konu seti → Sahne avı
-//   b') birkaç ifadenin tekrar zamanı geldiyse (eşiğin altında) → Kelime tekrarı
-//   h) seviyede okunmamış kitap → dinlemeye başla (H-067)
-//   i) oynanan bölümde / okunan kitapta geçen, bitmemiş dilbilgisi konusu →
-//      kısa ders (H-078; düşük öncelik, gerekçe görünür)
-//   f) hiçbiri → "Bugünlük bu kadar yeter"
+// Bu dosya girdileri, öneri tipini ve tekil kuralları (tekrar, hata notu)
+// tutar. Sıralama tek yerdedir: `daily_plan.dart` ([planToday]). Ana Sayfa'nın
+// birincil kartı ve Hi'nin önerisi aynı fonksiyondan gelir.
 //
 // Dil: suçlama, geri sayım, aciliyet yok (K-32). Süreler günlük hedefe göre
 // söylenir; hedefi aşan öneride "istediğin yerde bırakabilirsin" denir.
 
 import '../../../l10n/tr_strings.dart';
 import '../../../shared/meaning/error_taxonomy.dart';
+import 'daily_plan.dart';
 import 'hi_content.dart';
+
+export 'daily_plan.dart';
 
 const int kReviewThreshold = 5;
 const int kRepeatedErrors = 2;
@@ -39,6 +34,11 @@ enum HiSuggestionKind {
   rest,
 }
 
+/// Günlük planın adımları (H-088): kısa tekrar → sahne ya da okuma → küçük
+/// görev. Kullanıcı yine tek eylem görür; adımlar yalnızca sakin bir
+/// ilerleme olarak gösterilir.
+enum PlanStage { warmUp, main, task }
+
 /// Önerinin eylemi: bir sayfa ([route]) ya da Hi'nin notu ([noteId]).
 class HiSuggestion {
   const HiSuggestion({
@@ -50,6 +50,8 @@ class HiSuggestion {
     this.noteId,
     this.errorType,
     this.minutes,
+    this.stage = PlanStage.main,
+    this.contentId,
   });
 
   final HiSuggestionKind kind;
@@ -65,7 +67,20 @@ class HiSuggestion {
   final ErrorType? errorType;
   final int? minutes;
 
+  /// Planın hangi adımı.
+  final PlanStage stage;
+
+  /// Bölüm önerisinde bölümün kimliği (Ana Sayfa'nın görselli kartı için).
+  final String? contentId;
+
   bool get hasAction => actionRoute != null || noteId != null;
+
+  /// "Başka bir öneri" ile bugünlük geçilen önerinin anahtarı: tür + hedef
+  /// (sayfa ya da not). Aynı anahtar o gün yeniden önerilmez.
+  String get key => '${kind.name}:${noteId ?? actionRoute ?? ''}';
+
+  /// "Bugünlük bu kadar yeter" geçilmez.
+  bool get dismissible => kind != HiSuggestionKind.rest;
 }
 
 class CoachEpisode {
@@ -74,12 +89,16 @@ class CoachEpisode {
     required this.number,
     required this.title,
     this.estimatedMinutes,
+    this.lastPlayedAt,
   });
 
   final String contentId;
   final int number;
   final String title;
   final int? estimatedMinutes;
+
+  /// Yarım bölümde son kaydedilen sahnenin anı (UTC; bilinmiyorsa null).
+  final DateTime? lastPlayedAt;
 }
 
 class CoachTopicSet {
@@ -163,6 +182,12 @@ class CoachInput {
     this.bookInProgress,
     this.bookToStart,
     this.grammar,
+    this.level,
+    this.lastActiveAt,
+    this.dismissed = const {},
+    this.reviewedToday = false,
+    this.mainDoneToday = false,
+    this.taskDoneToday = false,
   });
 
   /// UTC.
@@ -189,130 +214,59 @@ class CoachInput {
 
   /// Hikâyede geçen, bitirilmemiş dilbilgisi konusu (H-078).
   final CoachGrammar? grammar;
+
+  /// Seviye testinin önerdiği başlangıç seviyesi (`A1`…`C2`; yoksa null, A1
+  /// gibi). B1 ve üstünde birincil öneri seviyesindeki kitaptır (H-088).
+  final String? level;
+
+  /// Son öğrenme etkinliği (bölüm, kitap, tekrar; UTC). Uzun aradan sonra
+  /// plan kısa bir tekrarla başlar.
+  final DateTime? lastActiveAt;
+
+  /// Bugün "Başka bir öneri" ile geçilen önerilerin anahtarları
+  /// ([HiSuggestion.key]).
+  final Set<String> dismissed;
+
+  /// Bugün kelime tekrarı yapıldı mı (en az bir cevap).
+  final bool reviewedToday;
+
+  /// Bugün bir bölüm bitti ya da kitap okundu mu.
+  final bool mainDoneToday;
+
+  /// Bugün küçük bir görev yapıldı mı (sahne avı, dilbilgisi dersi).
+  final bool taskDoneToday;
 }
 
-/// Kurallar sırayla denenir; ilk tutan öneri döner (her zaman bir öneri var).
-HiSuggestion suggestToday(CoachInput i) {
-  final goal = i.dailyGoalMinutes;
+/// Bugünkü tek öneri: [planToday]'ın birincil eylemi (Ana Sayfa ile aynı;
+/// H-088).
+HiSuggestion suggestToday(CoachInput i) => planToday(i).primary;
 
-  // a) Yarım kalan bölüm.
-  final ip = i.inProgress;
-  if (ip != null) {
-    return HiSuggestion(
-      kind: HiSuggestionKind.continueEpisode,
-      title: HiTexts.continueTitle(ip.title),
-      reasonTr: HiTexts.continueReason(ip.number, ip.estimatedMinutes, goal),
-      actionLabel: HiTexts.continueAction,
-      actionRoute: '/play/${ip.contentId}?mode=resume',
-      minutes: ip.estimatedMinutes,
-    );
-  }
-
-  // b) Tekrar zamanı gelen ifadeler (eşik ve üstü).
-  if (i.reviewDue >= kReviewThreshold) return _review(i.reviewDue, goal);
-
-  // c) Son 7 günde tekrarlayan hata türü.
-  final c = _repeatedError(i);
-  if (c != null) return c;
-
-  // g) Yarıda kalan kitap (bölüm ve tekrardan sonra; H-067).
-  final ib = i.bookInProgress;
-  if (ib != null) {
-    final est = ib.estimatedMinutes == null
-        ? null
-        : (ib.estimatedMinutes! * (100 - ib.percent) / 100).ceil();
-    return HiSuggestion(
-      kind: HiSuggestionKind.continueBook,
-      title: HiTexts.continueBookTitle(ib.title),
-      reasonTr: HiTexts.continueBookReason(ib.title, ib.percent, est, goal),
-      actionLabel: HiTexts.continueBookAction,
-      actionRoute: '/kitap/${ib.bookId}',
-      minutes: est,
-    );
-  }
-
-  // d) Sıradaki bölüm.
-  final nx = i.next;
-  if (nx != null) {
-    return HiSuggestion(
-      kind: HiSuggestionKind.startEpisode,
-      title: HiTexts.startTitle(nx.title),
-      reasonTr: HiTexts.startReason(
-        nx.number,
-        i.completedCount,
-        nx.estimatedMinutes,
-        goal,
-      ),
-      actionLabel: HiTexts.startAction,
-      actionRoute: '/play/${nx.contentId}',
-      minutes: nx.estimatedMinutes,
-    );
-  }
-
-  // e) Sahne avı yapılmamış açık konu seti.
-  final set = i.unhuntedSets.firstOrNull;
-  if (set != null) {
-    return HiSuggestion(
-      kind: HiSuggestionKind.sceneHunt,
-      title: HiTexts.huntTitle(set.titleTr),
-      reasonTr: HiTexts.huntReason(set.titleTr, set.unlockEpisode),
-      actionLabel: HiTexts.huntAction,
-      actionRoute: '/konu-seti/${set.id}/sahne-avi',
-      minutes: 3,
-    );
-  }
-
-  // b') Eşiğin altında da olsa tekrar zamanı gelen ifade.
-  if (i.reviewDue > 0) return _review(i.reviewDue, goal);
-
-  // h) Okunmamış kitap (H-067).
-  final sb = i.bookToStart;
-  if (sb != null) {
-    return HiSuggestion(
-      kind: HiSuggestionKind.startBook,
-      title: HiTexts.startBookTitle(sb.title),
-      reasonTr: HiTexts.startBookReason(sb.level, sb.estimatedMinutes, goal),
-      actionLabel: HiTexts.startBookAction,
-      actionRoute: '/kitap/${sb.bookId}?mod=dinle',
-      minutes: sb.estimatedMinutes,
-    );
-  }
-
-  // i) Hikâyede geçen dilbilgisi konusu (H-078; düşük öncelik).
-  final g = i.grammar;
-  if (g != null) {
-    return HiSuggestion(
-      kind: HiSuggestionKind.grammarSuggest,
-      title: HiTexts.grammarTitle(g.titleTr),
-      reasonTr: HiTexts.grammarReason(g.sourceTr, g.minutes, goal),
-      actionLabel: HiTexts.grammarAction,
-      actionRoute: '/dilbilgisi/${g.lessonId}',
-      minutes: g.minutes,
-    );
-  }
-
-  // f) Bugünlük bu kadar.
-  return const HiSuggestion(
-    kind: HiSuggestionKind.rest,
-    title: HiTexts.restTitle,
-    reasonTr: HiTexts.restReason,
-  );
-}
-
-HiSuggestion _review(int n, int goal) {
+/// Kelime tekrarı önerisi. [afterBreak]: uzun aradan sonra (gerekçe sıcak bir
+/// karşılamayla başlar). [stage]: borç varsa kısa tekrar, yoksa küçük görev.
+HiSuggestion reviewSuggestion(
+  int n,
+  int goal, {
+  bool afterBreak = false,
+  PlanStage stage = PlanStage.warmUp,
+}) {
   final minutes = HomeTexts.reviewMinutes(n);
   return HiSuggestion(
     kind: HiSuggestionKind.review,
     title: HiTexts.reviewTitle,
-    reasonTr: HiTexts.reviewReason(n, minutes, goal),
+    reasonTr: afterBreak
+        ? HiTexts.reviewAfterBreakReason(n, minutes, goal)
+        : HiTexts.reviewReason(n, minutes, goal),
     actionLabel: HiTexts.reviewAction,
     actionRoute: '/tekrar',
     minutes: minutes,
+    stage: stage,
   );
 }
 
-/// Hatırlama ve "diğer" de sayılır; hepsi aynı pencerede değerlendirilir.
-HiSuggestion? _repeatedError(CoachInput i) {
+/// Son 7 günde tekrarlayan hata türü → Hi'nin notu ya da defter (kısa tekrar
+/// adımı). Hatırlama ve "diğer" de sayılır; hepsi aynı pencerede
+/// değerlendirilir. Yoksa null.
+HiSuggestion? repeatedErrorSuggestion(CoachInput i) {
   final since = i.now.subtract(kCoachWindow);
   final byType = <ErrorType, List<ErrorObservation>>{};
   for (final e in i.errors) {
@@ -356,6 +310,7 @@ HiSuggestion? _repeatedError(CoachInput i) {
       noteId: note.id,
       errorType: best,
       minutes: 1,
+      stage: PlanStage.warmUp,
     );
   }
   return HiSuggestion(
@@ -366,5 +321,6 @@ HiSuggestion? _repeatedError(CoachInput i) {
     actionRoute: '/profil/defter',
     errorType: best,
     minutes: 2,
+    stage: PlanStage.warmUp,
   );
 }

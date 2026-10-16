@@ -128,6 +128,7 @@ Her aday model bu setle puanlanır: doğruluk, Türkçe açıklama kalitesi, gec
 
 ## 7. Kararlar (H-047, 2026-10-11, soru-cevap)
 
+- **Tek günlük plan (H-088, 2026-10-16):** Hi'nin günlük önerisi ile Ana Sayfa'nın birincil kartı aynı saf, kural tabanlı karardan gelir (`mobile/lib/features/hi/domain/daily_plan.dart`). Sıra: kısa tekrar (borç varsa) → sahne ya da okuma → küçük görev; tekrar borcu, hata notu, yarım bölümün yaşı, bugün geçilen öneri ("Başka bir öneri"), uzun ara ve yerleştirme seviyesi (B1+ → seviyesindeki kitap birincil, hikâye isteğe bağlı) dikkate alınır.
 - **Fazlar:** Hi-A MVP'de (kural tabanlı, AI yok, bütün yaşlar; uygulama işi H-048). AI sohbeti v1'de (Hi-B).
 - **AI altyapısı:** Yerelde başlanır (port/adaptör + Ollama + yerel embedding + pgvector). Üretimde kendi sunucu mu, API mi kullanılacağı değerlendirme seti ve maliyet ölçümüyle H-044'te seçilir.
 - **13–17 yaş:** Rehberli Hi. Serbest sohbet yalnızca 18+ (H-002 korunur). Gençlere serbest sohbet ancak hukuk teyidinden sonra.

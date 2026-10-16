@@ -132,5 +132,37 @@
         }
       ]
     }
-  ]
+  ],
+  "comprehension": {
+    "questions": [
+      {
+        "id": "q1",
+        "prompt": "Why did Hana leave before her audition?",
+        "promptTr": "Hana seçmeden önce neden ayrıldı?",
+        "options": [
+          "She didn't like the music of Evening Song.",
+          "She was too afraid to play alone in front of people.",
+          "She was angry because Noah had listened to her."
+        ],
+        "answer": 1,
+        "page": "p10"
+      },
+      {
+        "id": "q2",
+        "prompt": "How did Noah and Hana play Evening Song at the concert?",
+        "promptTr": "Noah ve Hana konserde Evening Song'u nasıl çaldılar?",
+        "options": [
+          "They played it together as a duet.",
+          "Hana played it alone with the orchestra.",
+          "Noah played it alone because Hana was ill."
+        ],
+        "answer": 0,
+        "page": "p16"
+      }
+    ],
+    "retell": {
+      "modelEn": "Noah has played second violin for three years and wants the solo. Hana, a new girl, gets it, but she is too afraid to play alone. Noah helps her practise in the park, and they play together. At the concert, the solo becomes a duet, and Noah learns that second doesn't mean less.",
+      "modelTr": "Noah üç yıldır ikinci keman çalmaktadır ve soloyu ister. Yeni gelen Hana soloyu alır, ama tek başına çalmaktan çok korkar. Noah parkta çalışmasına yardım eder ve birlikte çalarlar. Konserde solo bir düete dönüşür ve Noah ikinci olmanın daha az olmak demek olmadığını öğrenir."
+    }
+  }
 }

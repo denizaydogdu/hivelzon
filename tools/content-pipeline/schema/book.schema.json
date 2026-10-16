@@ -67,6 +67,39 @@
       "type": "array", "uniqueItems": true,
       "items": { "type": "string", "pattern": "^G-(A1|A2|B1|B2|C1|C2)-[0-9]{2}-[a-z0-9]+(-[a-z0-9]+)*$" }
     },
+    "comprehension": {
+      "description": "Kitap sonu anlama (H-091, docs/KITAPLIK.md §6.6): tam 2 çoktan seçmeli soru (3 seçenek, tek doğru) + isteğe bağlı yeniden anlatma için model özet. Sayfa aralarına konmaz; atlanabilir; puan yok. Kaynak ve pakette aynı.",
+      "type": "object",
+      "required": ["questions", "retell"],
+      "additionalProperties": false,
+      "properties": {
+        "questions": {
+          "type": "array", "minItems": 2, "maxItems": 2,
+          "items": {
+            "type": "object",
+            "required": ["id", "prompt", "options", "answer", "page"],
+            "additionalProperties": false,
+            "properties": {
+              "id": { "type": "string", "pattern": "^q[12]$" },
+              "prompt": { "description": "İngilizce soru (seviye kelimeleriyle).", "type": "string", "minLength": 1 },
+              "promptTr": { "description": "İsteğe bağlı Türkçe ipucu (A1–A2).", "type": "string", "minLength": 1 },
+              "options": { "type": "array", "minItems": 3, "maxItems": 3, "items": { "type": "string", "minLength": 1 } },
+              "answer": { "description": "Doğru seçeneğin sırası (0'dan).", "type": "integer", "minimum": 0, "maximum": 2 },
+              "page": { "description": "Cevabın geçtiği sayfa kimliği (p05).", "type": "string", "pattern": "^p[0-9]{2,3}$" }
+            }
+          }
+        },
+        "retell": {
+          "type": "object",
+          "required": ["modelEn", "modelTr"],
+          "additionalProperties": false,
+          "properties": {
+            "modelEn": { "description": "Model özet: kitabın ana olayları, 2–4 kısa cümle, seviye kelimeleriyle.", "type": "string", "minLength": 1 },
+            "modelTr": { "description": "Model özetin Türkçesi.", "type": "string", "minLength": 1 }
+          }
+        }
+      }
+    },
     "wordCount": { "type": "integer", "minimum": 0 },
     "pageCount": { "type": "integer", "minimum": 0 },
     "estimatedMinutes": { "type": ["number", "null"], "minimum": 0 },

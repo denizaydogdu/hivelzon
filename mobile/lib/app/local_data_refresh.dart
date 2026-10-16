@@ -22,6 +22,7 @@ final localDataProviders = <ProviderOrFamily>[
   dailyGoalProvider,
   displayNameProvider,
   coachInputProvider,
+  dailyPlanProvider,
   hiSuggestionProvider,
   hiBadgeProvider,
   weeklySummaryProvider,

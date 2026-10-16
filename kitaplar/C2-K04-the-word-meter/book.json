@@ -212,5 +212,37 @@
         }
       ]
     }
-  ]
+  ],
+  "comprehension": {
+    "questions": [
+      {
+        "id": "q1",
+        "prompt": "What did Petra learn from the old reports in the archive?",
+        "promptTr": "Petra arşivdeki eski raporlardan ne öğrendi?",
+        "options": [
+          "The Service planned to give every citizen more words each year",
+          "The word limit was meant to last only three years, but it was never stopped",
+          "Brokers at the Exchange had been selling words without a licence"
+        ],
+        "answer": 1,
+        "page": "p15"
+      },
+      {
+        "id": "q2",
+        "prompt": "Why did nothing happen when Petra's meter reached zero at midnight?",
+        "promptTr": "Gece yarısı Petra'nın sayacı sıfıra inince neden hiçbir şey olmadı?",
+        "options": [
+          "Her father had switched off the Chime in every meter years before",
+          "Joaquim had repaired her meter so that it would not sing",
+          "Her father gave her his nine hundred words just in time"
+        ],
+        "answer": 0,
+        "page": "p28"
+      }
+    ],
+    "retell": {
+      "modelEn": "In Halvern, everyone may speak only nine hundred words a day. Petra Lind has saved her words for eleven years for one long speech to her father, but a notice says that all saved words will be lost at midnight. She reaches his house late, and when her meter reaches zero, nothing happens. Her father had switched off the Chime twenty-five years before and had sent her his words every day, and they talk all night.",
+      "modelTr": "Halvern'de herkes günde yalnızca dokuz yüz kelime konuşabilir. Petra Lind, babasına yapacağı uzun bir konuşma için on bir yıldır kelimelerini biriktirmektedir, ama bir duyuru biriken bütün kelimelerin gece yarısı silineceğini bildirir. Babasının evine geç varır; sayacı sıfıra indiğinde hiçbir şey olmaz. Babası Zil'i yirmi beş yıl önce kapatmış ve ona her gün kendi kelimelerini göndermiştir; ikisi bütün gece konuşur."
+    }
+  }
 }

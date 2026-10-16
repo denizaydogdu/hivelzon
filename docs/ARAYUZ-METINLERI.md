@@ -47,7 +47,7 @@
 
 ## 3. Ana Sayfa
 
-Düzen: selam ve tek cümle, ardından **Hikâyen** (birincil, sarı düğme), ardından **Kelime tekrarı** (ikincil, çerçeveli, çerçeve düğmesi). Tek öğrenme eylemi ilkesi korunur: öne çıkan eylem hikâyedir.
+Düzen: selam ve tek cümle, ardından **Bugünün planı** (birincil, sarı düğme; H-088, §3.1), gerekiyorsa **Hikâyen** (ikincil, çerçeve düğmesi), ardından **Çalışma araçların** (Kelime tekrarı ve Defter). Tek öğrenme eylemi ilkesi korunur: öne çıkan eylem planın birincil önerisidir (A1–A2'de çoğunlukla hikâye).
 
 | Yer | Eski | Yeni | Neden |
 |---|---|---|---|
@@ -68,6 +68,22 @@ Düzen: selam ve tek cümle, ardından **Hikâyen** (birincil, sarı düğme), a
 | Defter boş | (kutu gizliydi) | Bir bölümü bitirince ifadeler defterine eklenir; tekrar zamanları burada görünür. | Yeni kullanıcıya özelliği tanıtır. |
 | Defter yükleniyor | — | Defterin hazırlanıyor… | Boş durumla karışmaz. |
 | Günlük hedef halkası (H-060) | — | Selamın sağında halka: "6/10" + "dk"; ekran okuyucu: "Günlük hedef: bugün yaklaşık 6 dakika, hedefin 10 dakika" | Bugünkü süre **cihazda ölçülür** (H-074): oynatıcı, kelime tekrarı, konu seti, sahne avı, kitap ve dilbilgisi ekranı ön plandayken; arka planda ve uzun süre dokunulmadan geçen süre sayılmaz. Ölçüm başlamadan önceki etkinlik (güncellemenin yapıldığı gün) eski tahminle sayılır. Hedefin altında kalmak vurgulanmaz; utandırıcı metin yok. |
+
+### 3.1 Bugünün planı (H-088)
+
+Ana Sayfa'nın birincil kartı ile Hi'nin günlük önerisi **aynı karardan** gelir (`mobile/lib/features/hi/domain/daily_plan.dart`, `planToday`). Kural tabanlı; her önerinin gerekçesi görünür. Plan sırası: kısa tekrar (borç varsa) → sahne ya da okuma → küçük görev; kullanıcı yine **tek eylem** görür.
+
+| Yer | Metin | Not |
+|---|---|---|
+| Bölüm başlığı | **Bugünün planı** | Eski "Hikâyen" başlığının yerine. Birincil öneri bölüm değilse "Hikâyen" ikincil bölüm olarak altta kalır. |
+| Adım göstergesi | Hap çipler: **Kısa tekrar** · **Sahne** (kitapta **Okuma**) · **Küçük görev**; bitti ✓, şimdi →, sırada ○. Ekran okuyucu: "Bugünün planı: Kısa tekrar bitti, Sahne şimdi, Küçük görev sırada" | En az iki adım varsa görünür. Sayı, yüzde, geri sayım yok; yapılmayan adım vurgulanmaz. |
+| Birincil kart (bölüm) | Görselli bölüm kartı + **Neden?** + gerekçe + **Başla** / **Devam et** | Gerekçe Hi'dekiyle aynı cümle. |
+| Birincil kart (öteki) | Adım etiketi (KISA TEKRAR / OKUMA / KÜÇÜK GÖREV) · başlık · **Neden?** · gerekçe · fiil düğmesi (Tekrara başla, Notu aç, Kitabı aç, Sahne avına başla, Konuyu aç…) | Tek dolu (sarı) düğme. |
+| Geçme | **Başka bir öneri** | Metin düğmesi; öneriyi yalnızca bugünlük geçer, sıradaki öneri gelir (Hi panelinde de). Hepsi geçilince: **Bugünlük bu kadar yeter** · "Bugünlük başka önerim yok. İstediğin zaman Hikâye sekmesinden ya da Ana Sayfa'daki Defter ve Kelime tekrarından kendin seçebilirsin." |
+| B1+ yerleştirme | **Seviyene uygun kitap: …** · "Seviye testin B2 seviyesini önerdi. Bu seviyedeki kısa bir kitap sana uygun; ister dinle, ister kendin oku. …" · **Kitabı aç**; altta **Hikâyen** kartı **İSTEĞE BAĞLI** · "Hikâye A1 seviyesinde başlıyor; sana kolay gelebilir. İstersen keyif için oynayabilirsin." | Hikâye isteğe bağlı kalır; yeni bölüm üretilmez (K-25). |
+| Uzun aradan sonra | "Tekrar hoş geldin! Kısa bir tekrarla başlamak işini kolaylaştırır; 3 ifadenin tekrar zamanı geldi. …" | Ara vurgulanmaz, suçlanmaz. |
+| Uzun süredir yarım bölüm | "Bölüm 2'yi bir süre önce yarıda bırakmıştın. Kaldığın sahne yerinde; istediğin zaman oradan sürersin." | Tekrar ve notun arkasına geçer. |
+| Çalışma araçların | **Kelime tekrarı** (sayı cümle içinde ya da sakin durum cümlesi) · **Defter** · "İfadelerin, ipuçların ve konu setlerin." | İki satır da her zaman tek dokunuşla açılır. Defter Ana Sayfa sekmesinde açılır (`/defter`); sekme düzeni (K-30) değişmez. |
 
 ## 4. Hikâye sekmesi
 
@@ -153,6 +169,7 @@ Hikâye sekmesinin üstünde **Macera · Kitaplık** seçici (sekme sayısı de�
 | Sayfanın Türkçesi (H-086) | Sayfa sonunda ve üst çubukta **Sayfanın Türkçesi**; panel başlığı aynı, altında "Bir cümleye dokun, İngilizcesi sayfada vurgulansın." Cümleler sırasıyla (bölüm başlığı önce). Ekran okuyucu ipucu: "İngilizcesini sayfada göstermek için dokun". | Panel açıkken ses durur, kapanınca sürer. Cümleye dokununca panel kapanır, İngilizcesi vurgulanır ve görünür kılınır. Türkçesi olmayan cümle listede yer almaz. |
 | Uzun basma | Sesli modda kelimeye uzun basınca **Deftere eklendi** (ikinci kez: ""box" zaten defterinde.") | Sessiz modda uzun basma o cümleyi seslendirir. |
 | Ekran okuyucu | Cümle düğmesi ipucu: "Anlamını göstermek için dokun" | |
+| Kitap sonu anlama (H-091) | Üstte KİTABI HATIRLA + **Atla** (ekran okuyucu: "Hatırlamayı atla, kitabın sonuna geç") · **Kısa bir hatırlama** · "İki kısa soru ve istersen kendi cümlelerinle küçük bir anlatım. Puan yok; istersen atlayabilirsin." · "Soru 1 / 2", İngilizce soru ve altında Türkçesi · yanlışta "Bu değil. İpucu: cevap 5. sayfada." · ikinci yanlışta "Doğrusu bu. Cevap 5. sayfada geçiyor." · doğruda "Evet, doğru." · KENDİ SÖZLERİNLE **Kitabı 1–3 cümleyle anlat** "Sesli söyleyebilir ya da aşağıya yazabilirsin. Yazdığın kaydedilmez." · alan "Kendi anlatımın" / "İstersen buraya yaz…" · **Örnek anlatımı göster** → "Örnek anlatım" + **Türkçesi** · **Senin anlatımın nasıldı?** Ana olayları anlattım · Bir kısmını anlattım · Bu sefer zor geldi → "Güzel. Kitabın özünü yakaladın." / "Eksik kalanlar örnekte. Anlattıkça daha kolay gelir." / "Sorun değil. Anlatmak okumaktan zordur; denedikçe kolaylaşır." · **Bitir** | Son sayfadan sonra, kitap sonundan önce. Puan, süre, yanlış sayısı yok (K-32). Seçenekler ekran okuyucuda "…, doğru cevap" / "…, denendi". Kod: `ComprehensionTexts`. |
 | Kitap sonu | **Kitabı bitirdin** · ""The Blue Door" bitti. Dinlediğin ve okuduğun her sayfa kulağını güçlendirir." · **Bu kitapta kaydettiklerin** (yoksa: "Bu kitaptan defterine ifade eklemedin. Bir dahakine bilmediğin kelimeye dokunup "Deftere ekle" diyebilirsin.") · "Bu ifadeler Kelime tekrarında karşına çıkar." · **Sıradaki kitabı aç** (aynı seviyede açılmamış kitap varsa) · **Kitaplığa dön** · **Baştan oku** | Puan, lig, geri sayım yok (K-32). |
 | Hata | **Bağlantı kurulamadı** · "Kitap açılamadı. …" · **Tekrar dene** | |
 
@@ -350,6 +367,8 @@ Kod: `HiTexts` (`mobile/lib/l10n/tr_strings.dart`). Hi kendini yapay zekâ asist
 | Gizlilik ekranı (tasarım H-059) | Hi + "Hi önerilerini bu cihazdaki kayıtlara bakarak seçer. Reklam için kullanılmaz." · bilgi kartı: hesapsız **Yalnızca bu telefonda** · "Bu bilgiler telefonundan dışarı gönderilmez." / hesapla **Hesabına da eşitlenir** · "Hesabın açık olduğu için bu kayıtlar yedek olarak hesabına da eşitlenir. Silersen hesabına bağlı öteki cihazlardan da silinir." · **SAYILARLA**: 12 kez anlamına baktın · 4 kez yeniden denedin · 7 kez söyledin · **Bu cihazda saklananlar**: Adın · Hikâye ilerlemen · Defterin · Hi'nin öğrenme kayıtları ("6 kez bir kelimenin anlamına baktın; 4 kez bir seçimi yeniden denedin.") · Söyle alıştırmaları · Yan görevler · **Konulara göre yeniden denemeler**: çipler "Fiil yapısı · 3" (yoksa "Kayıt yok.") · **Son 7 gün**: yeni ifade · ifade tekrar · bölüm bitti (+ "En çok üzerinde çalıştığın konu: …") · **Hi'nin kayıtlarını sil** (kırmızı kenarlı) | "Sunucu" kelimesi kaldırıldı (§1.1). Onay: "Hi'nin kayıtları silinsin mi?" · **Vazgeç** / **Sil** · sonra "Hi'nin kayıtları silindi. İlerlemen ve defterin yerinde." Silinen: öğrenme olayları, yan görev durumları, açılan notlar. Kalan: ilerleme, defter, tekrar geçmişi, ad, görülen konu kartları. |
 
 Testler: `test/features/hi/` (öneri öncelik tablosu ve gerekçeler, metin denetim listesi, arama, haftalık özet, Drift kayıtları ve silme kapsamı, balon görünürlüğü, panel, konu kartı).
+
+**Öncelik sırası (H-088):** Hi'nin önerisi Ana Sayfa'nın birincil kartıyla aynıdır; sıra `daily_plan.dart`'ın başındadır (bugün oynanan yarım bölüm → kısa tekrar ve Hi'nin notu → sahne ya da okuma → küçük görev → dinlenme). Kartta **Başka bir öneri** düğmesi vardır (§3.1). Aşağıdaki H-067/H-078 notları A1–A2 sırasını anlatır; B1+ yerleştirmede kitap birincildir.
 
 Kitaplık önerileri (H-067): yarım bölüm, tekrar (≥ 5) ve Hi'nin notundan sonra **"Kitaba devam: The Blue Door"** · ""The Blue Door" kitabının %40 kadarını okudun; kaldığın cümleden devam edersin. …" · **Kitaba devam et**; bütün öteki önerilerden sonra (dinlenmeden önce) **"Bir kitap dinle: …"** · "Bugünkü işlerin bitti. İstersen A1 seviyesinde kısa bir kitabı dinleyerek kulağını çalıştır. …" · **Dinlemeye başla**.
 

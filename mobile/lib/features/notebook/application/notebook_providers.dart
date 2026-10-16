@@ -125,7 +125,8 @@ void refreshNotebook(WidgetRef ref) => invalidateAndFlush(ref, [
   notebookEntriesProvider,
   clueBoardProvider,
   evidenceSummaryProvider,
-  // Hi'nin önerisi tekrar sayısına bakar (H-048).
+  // Hi'nin önerisi ve Ana Sayfa planı tekrar sayısına bakar (H-048, H-088).
   coachInputProvider,
+  dailyPlanProvider,
   hiBadgeProvider,
 ]);

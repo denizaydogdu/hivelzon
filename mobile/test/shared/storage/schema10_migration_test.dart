@@ -10,14 +10,14 @@ import 'package:hivelzon/shared/sync/sync_store.dart';
 
 import '../../support/fixtures.dart';
 
-/// Şema 8 → 10 (H-089): öğrenme kanıtı basamakları. `schema_v8.json`: şema
+/// Şema 8/9 → 10 (H-089): öğrenme kanıtı basamakları. `schema_v8.json`: şema
 /// 8'in (H-074) tablo ve dizinleri, bu işten önce `AppDatabase.memory()`'den
 /// alındı. (Şema 9, H-091 kitap anlama kontrolü, ayrı dalda; geçiş adımı
 /// `from < 10` olduğundan 8'den de 9'dan da çalışır.)
 void main() {
-  AppDatabase openV8(File file, {String? account}) {
+  AppDatabase openV8(File file, {String? account, int from = 8}) {
     final v8 =
-        (jsonDecode(fixtureText('schema_v8.json')) as Map)['statements']
+        (jsonDecode(fixtureText('schema_v$from.json')) as Map)['statements']
             as List;
     var first = true;
     return AppDatabase(
@@ -61,11 +61,23 @@ void main() {
               "INSERT INTO sync_state (id, account_user_id) VALUES (1, '$account')",
             );
           }
-          raw.execute('PRAGMA user_version = 8');
+          raw.execute('PRAGMA user_version = $from');
         },
       ),
     );
   }
+
+  test('şema 9 (H-091) → 10: kanıt tablosu eklenir, anlama tablosu '
+      'yerinde', () async {
+    final dir = Directory.systemTemp.createTempSync('h089');
+    addTearDown(() => dir.deleteSync(recursive: true));
+    final db = openV8(File('${dir.path}/v9.sqlite'), from: 9);
+    addTearDown(db.close);
+    final version = await db.customSelect('PRAGMA user_version').getSingle();
+    expect(version.data.values.first, 10);
+    expect(await db.select(db.userBookComprehension).get(), isEmpty);
+    expect((await NotebookStore(db).evidence()).keys, ['phrase|where is…']);
+  });
 
   test('şema 8 → 10: veriler korunur; kanıt basamakları eski cevaplardan '
       'doldurulur; hesap yoksa kuyruk boş', () async {

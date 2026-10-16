@@ -20,5 +20,17 @@
       "pages": [ { "id": "p01", "image": "p01.png" }, { "id": "p02", "image": null } ] },
     { "id": "c2", "title": "The Key", "titleTr": "Anahtar",
       "pages": [ { "id": "p03", "image": "p03.png" } ] }
-  ]
+  ],
+  "comprehension": {
+    "questions": [
+      { "id": "q1", "prompt": "What color is the box?", "promptTr": "Kutu ne renk?",
+        "options": ["It is blue.", "It is red.", "It is green."], "answer": 1, "page": "p01" },
+      { "id": "q2", "prompt": "What is in the box?", "promptTr": "Kutuda ne var?",
+        "options": ["A key.", "A little cat.", "A small bed."], "answer": 1, "page": "p03" }
+    ],
+    "retell": {
+      "modelEn": "Ece has a small red box. She can't open it. She finds a key and opens the box.",
+      "modelTr": "Ece'nin küçük kırmızı bir kutusu var. Kutuyu açamıyor. Bir anahtar buluyor ve kutuyu açıyor."
+    }
+  }
 }

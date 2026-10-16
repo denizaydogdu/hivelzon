@@ -95,5 +95,37 @@
         {"id": "p20", "image": null}
       ]
     }
-  ]
+  ],
+  "comprehension": {
+    "questions": [
+      {
+        "id": "q1",
+        "prompt": "Why did the hotel give Priya the job of head chef?",
+        "promptTr": "Otel baş aşçılık işini Priya'ya neden verdi?",
+        "options": [
+          "Her CV said she was an experienced chef.",
+          "Chef Bruno was her mother's old friend.",
+          "She cooked a perfect dal at the interview."
+        ],
+        "answer": 0,
+        "page": "p01"
+      },
+      {
+        "id": "q2",
+        "prompt": "Who was the Silent Fork?",
+        "promptTr": "Sessiz Çatal kimdi?",
+        "options": [
+          "Kamala, the old lady at table twelve",
+          "Gus, the man who washed the dishes",
+          "The man in the grey hat"
+        ],
+        "answer": 1,
+        "page": "p19"
+      }
+    ],
+    "retell": {
+      "modelEn": "Because of a mistake on her CV, Priya, a graphic designer, becomes head chef at a hotel. She can't cook, but Gus, the quiet dishwasher, teaches her. When an old lady asks for her best dish, Priya honestly cooks her mother's dal. Gus is really the Silent Fork, and his good review helps Priya start again.",
+      "modelTr": "Grafik tasarımcı Priya, özgeçmişindeki bir hata yüzünden bir otelde baş aşçı olur. Yemek yapmayı bilmez, ama sessiz bulaşıkçı Gus ona öğretir. Yaşlı bir kadın en iyi yemeğini isteyince Priya dürüstçe annesinin mercimek yemeğini (dal) pişirir. Gus aslında Sessiz Çatal'dır ve onun güzel yazısı Priya'nın yeniden başlamasına yardım eder."
+    }
+  }
 }

@@ -104,7 +104,7 @@ Kaynaklar:
 | `audio/_parts/` | Uzun bölümlerin ödenmiş parça önbelleği (yeniden ödeme olmasın diye) | **git dışı** |
 | `images/` | Sayfa ve kapak görselleri (PNG/JPG) | **git dışı** |
 
-**`book.json` alanları:** `schemaVersion` (1), `id`, `slug` (= klasör adı), `level` (A1–C2), `genre` (`mystery` Gizem · `adventure` Macera · `humor` Mizah · `scifi-fantasy` Bilimkurgu/fantastik · `everyday` Günlük hayat/duygu), `title`, `titleTr`, `blurbTr` (Türkçe tanıtım), `hookEn`, `contentVersion`, `status` (K-05 durumları), `aiGenerated`, `palette` (`background`, `text`, `accent`, isteğe bağlı `surface`, `highlight`; `#RRGGBB`), `cover` (images/ altındaki dosya adı ya da `null`), `properNouns` (kapsamaya ve kelime anlamı zorunluluğuna girmez), `narration` (`voiceId`, `modelId`, `speed`, isteğe bağlı `pacing` = anlatım temposu §6.5; anahtar asla burada değil), `chapters[]` → `id` (`c1`…), `title`, `titleTr`, `pages[]` → `id` (`p01`…, kitap boyunca tekil ve sıralı), `image` (dosya adı ya da `null` = resimsiz, palet renkli sayfa).
+**`book.json` alanları:** `schemaVersion` (1), `id`, `slug` (= klasör adı), `level` (A1–C2), `genre` (`mystery` Gizem · `adventure` Macera · `humor` Mizah · `scifi-fantasy` Bilimkurgu/fantastik · `everyday` Günlük hayat/duygu), `title`, `titleTr`, `blurbTr` (Türkçe tanıtım), `hookEn`, `contentVersion`, `status` (K-05 durumları), `aiGenerated`, `palette` (`background`, `text`, `accent`, isteğe bağlı `surface`, `highlight`; `#RRGGBB`), `cover` (images/ altındaki dosya adı ya da `null`), `properNouns` (kapsamaya ve kelime anlamı zorunluluğuna girmez), `narration` (`voiceId`, `modelId`, `speed`, isteğe bağlı `pacing` = anlatım temposu §6.5; anahtar asla burada değil), `chapters[]` → `id` (`c1`…), `title`, `titleTr`, `pages[]` → `id` (`p01`…, kitap boyunca tekil ve sıralı), `image` (dosya adı ya da `null` = resimsiz, palet renkli sayfa). `comprehension` = kitap sonu anlama (H-091, §6.6; book-lint için zorunlu).
 
 ### 6.2 `text.en.md` işaretleri
 ```
@@ -123,7 +123,7 @@ She likes it.
 ### 6.3 Paket: `_build/package/`
 | Dosya | İçerik |
 |---|---|
-| `book.json` | Kaynak meta verinin yayın alanları (aynı şema) + `cover` (`images/cover.webp`), `wordCount`, `pageCount`, `estimatedMinutes`; bölümlerde `audio` (`audio/<bölüm>.m4a` ya da `null`) ve `duration` (sn); sayfalarda `image` = `images/<sayfa>.webp` ya da `null`. `narration` ve `properNouns` pakete girmez. |
+| `book.json` | Kaynak meta verinin yayın alanları (aynı şema; `comprehension` aynen) + `cover` (`images/cover.webp`), `wordCount`, `pageCount`, `estimatedMinutes`; bölümlerde `audio` (`audio/<bölüm>.m4a` ya da `null`) ve `duration` (sn); sayfalarda `image` = `images/<sayfa>.webp` ya da `null`. `narration` ve `properNouns` pakete girmez. |
 | `pages.json` | Şema `schema/pages.schema.json`. `chapters[]`: `id`, `title`, `audio`, `duration`, `heading` (seslendirilen başlık cümlesi), `pages[]` (kimlikler). `pages[]`: `id`, `number`, `chapter`, `image`, `sentences[]` → `id` (`p01-s01`; başlıkta `c1-h`), `paragraph`, `text`, `start`, `end`, `tr`, `words[]` (`w`, `start`, `end`, `gloss`), `chunks[]` (`en`, `tr`, `startWord`, `endWord`). Zamanlar sn, bölüm sesinin başına göre. Hizalama yoksa `start`/`end` `null` (sessiz okuma). |
 | `audio/<bölüm>.m4a` | Anlatım temposu uygulanmış ses (§6.5). AAC 96k; kitabın bütün bölümleri (tempo **sonrası**) birlikte ölçülür, tek kazanç, hedef **-16 LUFS**, sınırlayıcı ≈ -1,5 dBFS (`media.audio_clip`). Ses düzeyi her zaman son adımdır. |
 | `images/<sayfa>.webp`, `images/cover.webp` | 1080 px genişlik, oran korunur, WebP q80, yazısız. |
@@ -158,6 +158,8 @@ $P tools/content-pipeline/export_book.py kitaplar/A1-K01-*        # paket (yerel
 | `book-audio`, `book-media` | Hizalama henüz yok; ses ya da görsel bu ortamda yok (git dışı medya) | Uyarı |
 | `book-speed` | Anlatım hızı, **anlatım temposundan sonra** (§6.5) seviye aralığının ± %10'u dışında. Ham hız da raporlanır (`hız c1 105 k/dk (ham 168)`); `narration.speed` ya da `narration.pacing` ayarlanır | Uyarı |
 | `book-pacing` | `narration.pacing` geçersiz (bilinmeyen mod; manual tempo 0,85–1,25 dışında) | Hata |
+| `book-comprehension` | Kitap sonu anlama (§6.6) yok ya da bozuk: tam 2 soru (`q1`, `q2`), her soruda 3 farklı seçenek, `answer` 0–2, `page` kitapta var; model özet 1–4 cümle ve Türkçesi var. A1 ≤ 8, A2 ≤ 12 sözcüklük cümle sınırı soru, seçenek ve özete de uygulanır. Model özet seviye sınırını (A1 40, A2 55, B1 65, B2 75, C1 85, C2 90 sözcük) aşarsa uyarı | Hata / uyarı |
+| `comprehension-vocab` | Soru, seçenek ve model özetteki bir sözcük ne seviyenin kümülatif listesinde ne de kitabın metninde geçiyor (özel adlar sayılmaz). C1/C2'de Octanove listesi yoksa uyarı | Hata (C1/C2 listesiz: uyarı) |
 
 **TTS betiği (`tts_book.py`)**
 - ElevenLabs `POST /v1/text-to-speech/{voice}/with-timestamps`, `mp3_44100_128`, `language_code: en`, model `eleven_v3`, `stability` 0.5, `similarity_boost` 0.75 (bölümlerle aynı). **Hız başlangıç değerleri:** A1 0.90 (bölümlerde ~107 k/dk ölçüldü; kitapta 144–168 çıktı, dışa aktarmada anlatım temposuyla düzeltilir, §6.5), A2 0.95, B1 1.00, B2 1.00, C1 1.05, C2 1.05; `book.json → narration.speed` ile değişir, gerçek hız book-lint'te ölçülür.
@@ -201,6 +203,25 @@ $P tools/content-pipeline/export_book.py kitaplar/A1-K01-*        # paket (yerel
   - Eklenen sessizlik gerçekten sessiz.
   - Bütün kesimler kaynakta en büyük seviyenin en az 41 dB altında; ortanca -62…-68 dB.
 - **Not:** Seslendiricinin kendi konuşma hızı yüksek (cümle içinde ~165–190 k/dk). Ortalama hız duraklamalarla hedefe iniyor; cümle içi hız değişmiyor. Kullanıcı dinleyip cümle içini hızlı bulursa `manual` ile tempo 0,9 denenebilir: duraklama azalır, cümle içi yavaşlar.
+
+### 6.6 Kitap sonu anlama (H-091, 2026-10-16)
+Her kitabın sonunda **2 kısa anlama sorusu** ve **isteğe bağlı yeniden anlatma**. Sayfa aralarına soru konmaz; okuma kesilmez; atlanabilir; puan yok (ürün incelemesi §4 P2, kullanıcı onayı 2026-10-16).
+
+`book.json → comprehension` (kaynak ve pakette aynı; şema `book.schema.json`):
+```json
+"comprehension": {
+  "questions": [
+    {"id": "q1", "prompt": "What color is the box?", "promptTr": "Kutu ne renk?",
+     "options": ["It is blue.", "It is red.", "It is green."], "answer": 1, "page": "p01"},
+    {"id": "q2", "...": "..."}
+  ],
+  "retell": {"modelEn": "Ece has a small red box. …", "modelTr": "Ece'nin küçük kırmızı bir kutusu var. …"}
+}
+```
+- **Sorular:** tam 2; çoktan seçmeli, 3 seçenek, tek doğru (`answer` = 0'dan sıra). Cevap metinden açıkça çıkar; `page` cevabın geçtiği sayfadır (uygulamada ipucu: "cevap 5. sayfada"). Çeldiriciler kitaptaki kişi, yer ve nesnelerden, akla yatkın ama metne göre açıkça yanlış; "hepsi", "hangisi değildir" ve hileli soru yok. Seçenekler benzer uzunlukta; doğru cevabın yeri sorudan soruya değişir. Önerilen düzen: q1 ilk yarıdaki önemli bir olay ya da neden, q2 çözüm/son.
+- **Dil:** yalnızca seviyenin kelime listesi ya da kitabın kendi metninde geçen sözcükler (`comprehension-vocab`); A1/A2 cümle sınırı. `promptTr` isteğe bağlı kısa Türkçe ipucu (30 kitabın hepsinde yazıldı).
+- **Yeniden anlatma:** öğrenci kitabı 1–3 cümleyle kendi sözleriyle anlatır (sesli ya da yazarak; **yazılan kaydedilmez**). Ardından `modelEn` (2–4 kısa cümle: başlangıç, sorun, son) ve isteğe bağlı Türkçesi (`modelTr`) gösterilir; öğrenci kendini değerlendirir. Puan yok.
+- **Onay:** Claude taslağı → `book_lint` → kullanıcı/editör onayı (H-028). 2026-10-16: 30 kitabın hepsine yazıldı (taslak, onay bekliyor).
 
 ## 7. Uygulama deneyimi (H-067'de uygulandı, 2026-10-14)
 Kod: `mobile/lib/features/library/` (alan modeli `domain/`, okuyucu durumu `application/reader_controller.dart`, ekranlar `presentation/`). Metinler: `ARAYUZ-METINLERI.md` §4.6–4.7.
@@ -258,6 +279,12 @@ Kod: `mobile/lib/features/library/` (alan modeli `domain/`, okuyucu durumu `appl
 - **Arka plan:** Ekran kilitliyken dinleme ve kilit ekranı denetimleri (H-068).
 - **Bitiş:** Sakin kutlama, "Bu kitapta kaydettiklerin" listesi ve "sıradaki kitap" önerisi (aynı seviyede açılmamış kitap varsa "Sıradaki kitabı aç"); "Kitaplığa dön", "Baştan oku". Puan, lig ve geri sayım yok (K-32). "Bu kitaptan 5 ifade" kartı kitap içeriği gelince (H-069) ayrıca eklenebilir.
 - **Erişilebilirlik:** Yazı boyutu ayarı (okuma için ayrı, 3 kademe: 18 / 21 / 25 px, sistem büyütmesi üstüne), dokunma hedefi en az 48, ekran okuyucu paragrafı metin olarak okur; ekran okuyucu açıkken her cümle ayrı düğmedir (dokununca anlam paneli). 320 × 568 ekranda 1,3× yazıda taşma yok.
+
+### 7.1 Kitap sonu anlama (H-091, 2026-10-16)
+- **Ne zaman:** son sayfada **Kitabı bitir** (ya da ses kitabın sonuna gelince) kitap biter (`user_book_progress` COMPLETED, değişmedi). Paketin `comprehension` alanı varsa önce anlama ekranı, sonra kitap sonu açılır; yoksa (eski paket) doğrudan kitap sonu. **Atla** (üstte) hiçbir şey yazmadan kitap sonuna geçer. **Baştan oku** ile yeniden bitirilen kitapta anlama yeniden gelir.
+- **Sorular:** İngilizce soru, altında küçük Türkçe ipucu (`promptTr`), 3 seçenek. Yanlış seçimde "Bu değil. İpucu: cevap 5. sayfada." ve seçenek sönükleşir; ikinci yanlışta doğrusu işaretlenir: "Doğrusu bu. Cevap 5. sayfada geçiyor." Doğruda "Evet, doğru." Puan, süre ve yanlış sayısı gösterilmez (K-32).
+- **Yeniden anlatma (isteğe bağlı):** "Kitabı 1–3 cümleyle anlat"; sesli söylenebilir ya da alana yazılabilir. **Yazılan metin ekrandan çıkmaz, kaydedilmez, gönderilmez.** "Örnek anlatımı göster" → `modelEn` + açılır "Türkçesi"; ardından öz değerlendirme: **Ana olayları anlattım · Bir kısmını anlattım · Bu sefer zor geldi** (her birine sakin, suçlamasız bir cümle).
+- **Kayıt:** **Bitir** sonucu Drift **şema 9** `user_book_comprehension` tablosuna yazar (kitap ilerlemesinden ayrı): `book_id`, `content_version`, `answered` (0–2), `first_try_correct` (0–2), `retell_done`, `self_check` (`all` / `some` / `not_yet` / boş), `completed_at`, `updated_at`. Aynı kitap yeniden yapılırsa son sonuç kalır; atlama önceki sonucu değiştirmez. Hesap varsa eşitlenir (backend `V12__book_comprehension.sql`, düz son yazan kazanır); "Bu telefondaki verileri de sil" bunu da siler. H-089 kanıt basamakları bu veriyi ileride okuyacak; şimdilik başka hiçbir yere bağlı değil.
 
 ## 8. Mevcut koddan yeniden kullanılacaklar
 - **Zamanlama:** `tools/content-pipeline/hvpipeline/align.py` (ElevenLabs hizalama → cümle/kelime zamanı), `media.py` (-16 LUFS), `translation.py`, `cefr.py`, `lint.py` (kapsama kuralları).

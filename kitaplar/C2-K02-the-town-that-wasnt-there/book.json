@@ -215,5 +215,37 @@
         }
       ]
     }
-  ]
+  ],
+  "comprehension": {
+    "questions": [
+      {
+        "id": "q1",
+        "prompt": "How did the families who built the town get their address?",
+        "promptTr": "Kasabayı kuran aileler adreslerini nasıl elde etti?",
+        "options": [
+          "The council gave the valley a new name on its forms",
+          "Arthur Lisle wrote to them and told them what to call it",
+          "They found the made-up town on an old map and used its name"
+        ],
+        "answer": 2,
+        "page": "p19"
+      },
+      {
+        "id": "q2",
+        "prompt": "Why has Merrow Cross never appeared on satellite images?",
+        "promptTr": "Merrow Cross neden hiçbir uydu görüntüsünde görünmedi?",
+        "options": [
+          "The people paint their roofs green and keep the trees between the houses",
+          "There is always thick cloud over the hanging valley",
+          "Gridwell removed the town from its pictures long ago"
+        ],
+        "answer": 0,
+        "page": "p28"
+      }
+    ],
+    "retell": {
+      "modelEn": "Amira Haddad, who checks maps for Gridwell, is told to delete Merrow Cross, a town on old maps that no satellite has ever seen. After a postcard arrives from it, she crosses a river on foot and finds a real, hidden town whose people took the made-up name from a 1931 map. They paint their roofs green so that only the post and the ambulance can find them. Her final report keeps the town on the map.",
+      "modelTr": "Gridwell için haritaları denetleyen Amira Haddad'dan, eski haritalarda bulunan ama hiçbir uydunun görmediği Merrow Cross kasabasını silmesi istenir. Kasabadan bir kartpostal gelince bir nehri yürüyerek geçer ve uydurma adı 1931 tarihli bir haritadan almış insanların yaşadığı gerçek, gizli bir kasaba bulur. Bu insanlar çatılarını yeşile boyar; böylece onları yalnızca postacı ve ambulans bulabilir. Amira'nın son raporu kasabayı haritada tutar."
+    }
+  }
 }

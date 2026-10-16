@@ -168,5 +168,37 @@
         }
       ]
     }
-  ]
+  ],
+  "comprehension": {
+    "questions": [
+      {
+        "id": "q1",
+        "prompt": "What did Kofi notice about the sick plants in the greenhouse?",
+        "promptTr": "Kofi seradaki hasta bitkilerle ilgili neyi fark etti?",
+        "options": [
+          "They were all in the rows closest to the new roof",
+          "They were all given less water than the other plants",
+          "They were all Mars-born, while the Earth-seed plants were healthy"
+        ],
+        "answer": 2,
+        "page": "p05"
+      },
+      {
+        "id": "q2",
+        "prompt": "What did the council decide at the end of the story?",
+        "promptTr": "Hikâyenin sonunda konsey ne karar verdi?",
+        "options": [
+          "To close the garden and use the food printers",
+          "To let the Mars-born plants sleep under the real sky until spring",
+          "To throw away the Mars-born seeds and grow only Earth seeds"
+        ],
+        "answer": 1,
+        "page": "p23"
+      }
+    ],
+    "retell": {
+      "modelEn": "On Mars, the Mars-born plants in Kofi's greenhouse turn yellow, and the council plans to close the garden. Using Dr Lindqvist's old notebooks, Kofi understands that the plants are not dying but getting ready for the long Martian winter. He gives one plant a short winter and a spring, a flower bud appears, and the council keeps the greenhouse.",
+      "modelTr": "Mars'ta Kofi'nin serasındaki Mars'ta yetişmiş bitkiler sararır ve konsey bahçeyi kapatmayı planlar. Kofi, Dr. Lindqvist'in eski defterlerinden yararlanarak bitkilerin ölmediğini, uzun Mars kışına hazırlandığını anlar. Bir bitkiye kısa bir kış ve bir bahar yaşatır, bir çiçek tomurcuğu belirir ve konsey serayı açık tutar."
+    }
+  }
 }

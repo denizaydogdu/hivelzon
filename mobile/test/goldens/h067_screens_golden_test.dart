@@ -80,6 +80,8 @@ final _cases = <String, _Case>{
       }
       await tester.tap(find.byKey(const ValueKey('reader-finish')));
       await h.settle(tester);
+      await tester.tap(find.byKey(const ValueKey('comp-skip')));
+      await h.settle(tester);
     },
   ),
 };

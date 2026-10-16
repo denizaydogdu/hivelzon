@@ -116,5 +116,37 @@
     "G-A2-03-was-were",
     "G-A2-14-have-to-must-should",
     "G-A2-01-present-continuous"
-  ]
+  ],
+  "comprehension": {
+    "questions": [
+      {
+        "id": "q1",
+        "prompt": "What does Captain the parrot do?",
+        "promptTr": "Papağan Captain ne yapar?",
+        "options": [
+          "He sings only at night.",
+          "He opens his cage door.",
+          "He repeats everything people say."
+        ],
+        "answer": 2,
+        "page": "p03"
+      },
+      {
+        "id": "q2",
+        "prompt": "What did Mr Bell give Max at the end?",
+        "promptTr": "Sonunda Bay Bell, Max'e ne verdi?",
+        "options": [
+          "His old brown guitar",
+          "The red guitar from the shop",
+          "A cage with a new bird"
+        ],
+        "answer": 0,
+        "page": "p14"
+      }
+    ],
+    "retell": {
+      "modelEn": "Max looked after the twins Finn and Nora for a day. Everything went wrong, and the parrot Captain repeated all his words. But Max also sang an old song, and Captain repeated that, too. Mr Bell loved the song and gave Max his old guitar.",
+      "modelTr": "Max bir gün boyunca ikizler Finn ile Nora'ya baktı. Her şey ters gitti ve papağan Captain onun bütün sözlerini tekrarladı. Ama Max eski bir şarkı da söyledi ve Captain onu da tekrarladı. Bay Bell şarkıyı çok sevdi ve Max'e eski gitarını verdi."
+    }
+  }
 }

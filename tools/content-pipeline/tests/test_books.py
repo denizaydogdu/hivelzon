@@ -273,6 +273,54 @@ def test_lint_requires_files_and_matching_ids(book_dir):
     assert "book-files" in errs and "book-structure" in errs and "book-schema" in errs
 
 
+def _comprehension(book_dir: Path, fn) -> None:
+    bj = json.loads((book_dir / "book.json").read_text(encoding="utf-8"))
+    fn(bj)
+    (book_dir / "book.json").write_text(json.dumps(bj, ensure_ascii=False), encoding="utf-8")
+
+
+def test_lint_comprehension_ok_on_fixture():
+    rep = lint_book(FX, word_targets=FIXTURE_WORDS)
+    assert "book-comprehension" not in codes(rep) and "comprehension-vocab" not in codes(rep)
+    assert rep.stats["comprehension"] == {"questions": 2, "answers": [1, 1], "offList": []}
+
+
+def test_lint_comprehension_missing_is_error(book_dir):
+    _comprehension(book_dir, lambda bj: bj.pop("comprehension"))
+    rep = lint_book(book_dir, word_targets=FIXTURE_WORDS)
+    assert "book-comprehension" in codes(rep)
+
+
+def test_lint_comprehension_rules(book_dir):
+    def bad(bj):
+        q1, q2 = bj["comprehension"]["questions"]
+        q1["answer"] = 3                       # geçersiz sıra (şema da yakalar)
+        q1["page"] = "p09"                     # sayfa yok
+        q2["options"] = ["A key.", "a key", "A cat."]   # aynı seçenek
+        q2["prompt"] = "What wonderful mysterious treasure is in the box?"   # liste/kitap dışı sözcükler
+        bj["comprehension"]["retell"]["modelTr"] = ""
+        bj["comprehension"]["questions"].append(dict(q1, id="q3"))
+    _comprehension(book_dir, bad)
+    rep = lint_book(book_dir, word_targets=FIXTURE_WORDS)
+    msgs = [str(i) for i in rep.issues if i.code == "book-comprehension"]
+    assert any("tam 2 soru" in m for m in msgs)
+    assert any("cevap sırası" in m for m in msgs)
+    assert any("p09" in m for m in msgs)
+    assert any("farklı" in m for m in msgs)
+    assert any("Türkçesi" in m for m in msgs)
+    assert "book-schema" in codes(rep)
+    vocab = [str(i) for i in rep.issues if i.code == "comprehension-vocab"]
+    assert vocab and "treasure" in vocab[0] and "mysterious" in vocab[0]
+    assert "box" not in vocab[0].split(": ", 1)[1]
+
+
+def test_lint_comprehension_sentence_length_a1(book_dir):
+    _comprehension(book_dir, lambda bj: bj["comprehension"]["retell"].update(
+        modelEn="Ece has a small red box and she can not open it."))
+    rep = lint_book(book_dir, word_targets=FIXTURE_WORDS)
+    assert any("en çok 8" in str(i) for i in rep.issues if i.code == "book-comprehension")
+
+
 # --- hizalama -----------------------------------------------------------------------------------
 
 def test_sentence_timings_are_sentence_level():
@@ -335,6 +383,10 @@ def test_export_with_fake_media(book_dir):
     assert book["cover"] == "images/cover.webp" and book["pageCount"] == 3
     assert book["estimatedMinutes"] == pytest.approx(25 / 60, abs=0.05)
     assert "narration" not in book and "properNouns" not in book
+    # kitap sonu anlama (H-091) pakete aynen girer
+    src = json.loads((book_dir / "book.json").read_text(encoding="utf-8"))
+    assert book["comprehension"] == src["comprehension"]
+    assert book["comprehension"]["questions"][1]["answer"] == 1
 
 
 def test_export_reports_missing_media_without_failing(book_dir):

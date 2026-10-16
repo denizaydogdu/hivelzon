@@ -173,6 +173,7 @@ class _HiPanelViewState extends ConsumerState<HiPanelView> {
           AsyncData(:final value) => HiSuggestionCard(
             suggestion: value,
             onAct: () => unawaited(_act(value)),
+            onAnother: () => unawaited(dismissSuggestion(ref, value)),
           ),
           _ => const HiPanelLoadingCard(),
         },

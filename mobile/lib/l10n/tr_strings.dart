@@ -47,6 +47,30 @@ abstract final class HomeTexts {
       name == null || name.isEmpty ? 'Merhaba!' : 'Merhaba $name!';
   static const subtitle = 'Bugün için önerimiz:';
 
+  // Bugünün planı (H-088): Hi'nin önerisiyle aynı karar.
+  static const planSection = 'Bugünün planı';
+  static const stepWarmUp = 'Kısa tekrar';
+  static const stepScene = 'Sahne';
+  static const stepReading = 'Okuma';
+  static const stepTask = 'Küçük görev';
+  static String stepState(String label, String state) => '$label $state';
+  static const stepDone = 'bitti';
+  static const stepCurrent = 'şimdi';
+  static const stepUpcoming = 'sırada';
+  static String stepsSemantics(List<String> parts) =>
+      'Bugünün planı: ${parts.join(', ')}';
+
+  /// B1+ yerleştirmede hikâye isteğe bağlıdır (H-088).
+  static const storyOptional = 'İsteğe bağlı';
+  static const storyOptionalBody =
+      'Hikâye A1 seviyesinde başlıyor; sana kolay gelebilir. İstersen keyif '
+      'için oynayabilirsin.';
+
+  // Çalışma araçları (H-088): Defter ve Kelime tekrarı tek dokunuşla.
+  static const toolsSection = 'Çalışma araçların';
+  static const notebookTool = 'Defter';
+  static const notebookToolBody = 'İfadelerin, ipuçların ve konu setlerin.';
+
   static const storySection = 'Hikâyen';
   static String episodeLabel(int season, int number) =>
       upperTr('Sezon $season · Bölüm $number');
@@ -279,6 +303,49 @@ abstract final class ReaderTexts {
   static const nextBook = 'Sıradaki kitabı aç';
   static const backToLibrary = 'Kitaplığa dön';
   static const readAgain = 'Baştan oku';
+}
+
+/// Kitap sonu anlama (H-091): 2 kısa soru + isteğe bağlı yeniden anlatma.
+/// Puan, süre ve suçlama yok (K-32); atlanabilir.
+abstract final class ComprehensionTexts {
+  static const label = 'Kitabı hatırla';
+  static const title = 'Kısa bir hatırlama';
+  static const intro =
+      'İki kısa soru ve istersen kendi cümlelerinle küçük bir anlatım. '
+      'Puan yok; istersen atlayabilirsin.';
+  static const skip = 'Atla';
+  static const skipHint = 'Hatırlamayı atla, kitabın sonuna geç';
+  static String questionOf(int n, int total) => 'Soru $n / $total';
+  static const correct = 'Evet, doğru.';
+  static String tryAgain(int? page) => page == null
+      ? 'Bu değil. Bir daha düşünebilirsin.'
+      : 'Bu değil. İpucu: cevap $page. sayfada.';
+  static String reveal(int? page) => page == null
+      ? 'Doğrusu bu.'
+      : 'Doğrusu bu. Cevap $page. sayfada geçiyor.';
+  static const optionCorrect = 'doğru cevap';
+  static const optionTried = 'denendi';
+
+  // Yeniden anlatma (metin kaydedilmez)
+  static const retellLabel = 'Kendi sözlerinle';
+  static const retellTitle = 'Kitabı 1–3 cümleyle anlat';
+  static const retellBody =
+      'Sesli söyleyebilir ya da aşağıya yazabilirsin. Yazdığın kaydedilmez.';
+  static const retellField = 'Kendi anlatımın';
+  static const retellHint = 'İstersen buraya yaz…';
+  static const showModel = 'Örnek anlatımı göster';
+  static const modelTitle = 'Örnek anlatım';
+  static const modelTurkish = 'Türkçesi';
+  static const selfCheckTitle = 'Senin anlatımın nasıldı?';
+  static const selfAll = 'Ana olayları anlattım';
+  static const selfSome = 'Bir kısmını anlattım';
+  static const selfNotYet = 'Bu sefer zor geldi';
+  static const replyAll = 'Güzel. Kitabın özünü yakaladın.';
+  static const replySome =
+      'Eksik kalanlar örnekte. Anlattıkça daha kolay gelir.';
+  static const replyNotYet =
+      'Sorun değil. Anlatmak okumaktan zordur; denedikçe kolaylaşır.';
+  static const finish = 'Bitir';
 }
 
 /// Dilbilgisi (H-078): Hikâye sekmesinde "Macera · Kitaplık · Dilbilgisi",
@@ -979,6 +1046,12 @@ abstract final class HiTexts {
   static String continueReason(int number, int? est, int goal) =>
       'Bölüm ${accusativeNumber(number)} yarıda bırakmıştın; kaldığın '
       'sahneden devam edersin.${_minutes(est, goal)}';
+
+  /// Uzun süredir yarım duran bölüm (H-088): önce tekrar ve not gelir.
+  static String continueStaleReason(int number, int? est, int goal) =>
+      'Bölüm ${accusativeNumber(number)} bir süre önce yarıda bırakmıştın. '
+      'Kaldığın sahne yerinde; istediğin zaman oradan sürersin.'
+      '${_minutes(est, goal)}';
   static const continueAction = 'Devam et';
 
   // b) kelime tekrarı
@@ -987,6 +1060,11 @@ abstract final class HiTexts {
       '$n ifadenin tekrar zamanı geldi. Zamanında tekrar edilen ifade daha '
       'kolay hatırlanır.${_minutes(minutes, goal)}';
   static const reviewAction = 'Tekrara başla';
+
+  /// Uzun aradan sonra (H-088): sıcak karşılama, suçlama yok.
+  static String reviewAfterBreakReason(int n, int minutes, int goal) =>
+      'Tekrar hoş geldin! Kısa bir tekrarla başlamak işini kolaylaştırır; '
+      '$n ifadenin tekrar zamanı geldi.${_minutes(minutes, goal)}';
 
   // c) tekrarlayan hata türü
   static String noteTitle(String label) => "Hi'nin notu: $label";
@@ -1037,6 +1115,13 @@ abstract final class HiTexts {
       'dinleyerek kulağını çalıştır.${_minutes(est, goal)}';
   static const startBookAction = 'Dinlemeye başla';
 
+  // h') seviyesindeki kitap: B1+ yerleştirmede birincil öneri (H-088).
+  static String levelBookTitle(String title) => 'Seviyene uygun kitap: $title';
+  static String levelBookReason(String level, int? est, int goal) =>
+      'Seviye testin $level seviyesini önerdi. Bu seviyedeki kısa bir kitap '
+      'sana uygun; ister dinle, ister kendin oku.${_minutes(est, goal)}';
+  static const levelBookAction = 'Kitabı aç';
+
   // i) dilbilgisi (H-078): oynanan bölümde ya da okunan kitapta geçen,
   // bitirilmemiş konu.
   static String grammarTitle(String title) => 'Kısa bir konu: $title';
@@ -1052,6 +1137,14 @@ abstract final class HiTexts {
   static const restReason =
       'Tekrar zamanı gelen ifade yok, sıradaki bölüm de hazırlanıyor. '
       'İstersen aşağıdan bir kelimenin anlamına bakabilirsin.';
+
+  /// Bütün öneriler bugünlük geçildiyse (H-088).
+  static const restDismissedReason =
+      'Bugünlük başka önerim yok. İstediğin zaman Hikâye sekmesinden ya da '
+      "Ana Sayfa'daki Defter ve Kelime tekrarından kendin seçebilirsin.";
+
+  /// Öneriyi bugünlük geçer; sıradaki öneri gelir (H-088).
+  static const another = 'Başka bir öneri';
 
   // Bu ne demek?
   static const lookupHeading = 'Bu ne demek?';

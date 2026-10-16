@@ -12,6 +12,9 @@ Denetimler:
 - Ses: hizalama metinle uyuşuyor mu (hata), ses/hizalama var mı ve anlatım hızı (uyarı; git dışı medya).
   Hız, dışa aktarmadaki anlatım temposundan (pacing.py, H-069) SONRAKİ etkin hızdır; ham hız da raporlanır.
 - Görsel: `book.json`'da adı geçen görsel bu ortamda var mı (uyarı; git dışı medya).
+- Kitap sonu anlama (`comprehension`, H-091; §6.6): tam 2 soru, 3 farklı seçenek, geçerli cevap sırası,
+  var olan sayfa; model özet 1–4 cümle ve Türkçesi. Soru, seçenek ve özetin her sözcüğü seviye listesinde
+  ya da kitabın metninde geçmeli (C1/C2'de Octanove yoksa uyarı); A1/A2 cümle uzunluğu sınırı aynı.
 - `grammarTopics` (isteğe bağlı, H-077): dilbilgisi dersi kimlikleri; ders klasöründe ders varsa bulunmalı
   (hata), hiç ders yoksa uyarı.
 """
@@ -26,7 +29,8 @@ from . import pacing
 from .align import Alignment, AlignmentMismatch, sentence_timings
 from .book import (BOOK_FILE, BOOK_LEVELS, DIR_RE, PROMPTS_FILE, RIGHTS_FILE, TEXT_FILE, GLOSSARY_FILE,
                    WORD_TOLERANCE, Book, BookError, text_sha256)
-from .cefr import LEVELS, NO_LIST_MSG, coverage, has_extra_list, sentences
+from .cefr import (INTERJECTIONS, LEVELS, NO_LIST_MSG, coverage, has_extra_list, lemma, load_proper_nouns,
+                   load_wordlist, sentences, tokens)
 from .graph import Issue, schema_errors
 from .lesson import check_grammar_topics
 from .lint import MAX_SENTENCE_WORDS, coverage_issues
@@ -207,6 +211,121 @@ def _check_translation(book: Book) -> tuple[list[Issue], dict | None]:
     return issues, rep
 
 
+COMPREHENSION_QUESTIONS = 2
+COMPREHENSION_OPTIONS = 3
+RETELL_SENTENCES = (1, 4)
+RETELL_MAX_WORDS = {"A1": 40, "A2": 55, "B1": 65, "B2": 75, "C1": 85, "C2": 90}
+
+
+def _comprehension_texts(c: dict) -> list[tuple[str, str]]:
+    out = []
+    for q in c.get("questions") or []:
+        if not isinstance(q, dict):
+            continue
+        qid = q.get("id", "?")
+        if isinstance(q.get("prompt"), str):
+            out.append((f"{qid} soru", q["prompt"]))
+        for i, o in enumerate(q.get("options") or []):
+            if isinstance(o, str):
+                out.append((f"{qid} seçenek {i}", o))
+    r = c.get("retell") or {}
+    if isinstance(r, dict) and isinstance(r.get("modelEn"), str):
+        out.append(("model özet", r["modelEn"]))
+    return out
+
+
+def _check_comprehension(book: Book) -> tuple[list[Issue], dict | None]:
+    """Kitap sonu anlama (H-091). Şema hataları book-schema'da çıkar; burada anlam ve dil kuralları."""
+    c = book.meta.get("comprehension")
+
+    def err(msg: str) -> Issue:
+        return Issue("error", "book-comprehension", msg)
+
+    if not isinstance(c, dict):
+        return [err("kitap sonu anlama yok (book.json → comprehension: 2 soru + model özet, H-091)")], None
+    issues: list[Issue] = []
+    qs = c.get("questions") if isinstance(c.get("questions"), list) else []
+    if len(qs) != COMPREHENSION_QUESTIONS:
+        issues.append(err(f"tam {COMPREHENSION_QUESTIONS} soru olmalı; bulunan {len(qs)}"))
+    pages = {p.id for p in book.text.pages}
+    for n, q in enumerate(qs, 1):
+        if not isinstance(q, dict):
+            issues.append(err(f"soru {n} nesne değil"))
+            continue
+        qid = q.get("id")
+        if qid != f"q{n}":
+            issues.append(err(f"soru {n} kimliği q{n} olmalı: {qid!r}"))
+        if not str(q.get("prompt") or "").strip():
+            issues.append(err(f"{qid}: soru metni yok"))
+        opts = q.get("options") if isinstance(q.get("options"), list) else []
+        if len(opts) != COMPREHENSION_OPTIONS:
+            issues.append(err(f"{qid}: tam {COMPREHENSION_OPTIONS} seçenek olmalı; bulunan {len(opts)}"))
+        norm = [norm_text(str(o)).lower().rstrip(".!?") for o in opts]
+        if any(not o for o in norm):
+            issues.append(err(f"{qid}: boş seçenek"))
+        if len(set(norm)) != len(norm):
+            issues.append(err(f"{qid}: seçenekler birbirinden farklı olmalı"))
+        a = q.get("answer")
+        if not isinstance(a, int) or isinstance(a, bool) or not 0 <= a < len(opts):
+            issues.append(err(f"{qid}: cevap sırası geçersiz: {a!r} (0–{max(len(opts) - 1, 0)})"))
+        if q.get("page") not in pages:
+            issues.append(err(f"{qid}: cevabın sayfası kitapta yok: {q.get('page')!r}"))
+    r = c.get("retell") if isinstance(c.get("retell"), dict) else {}
+    model = str(r.get("modelEn") or "").strip()
+    if not model:
+        issues.append(err("model özet (retell.modelEn) yok"))
+    else:
+        n = len(sentences(model))
+        lo, hi = RETELL_SENTENCES
+        if not lo <= n <= hi:
+            issues.append(err(f"model özet {lo}–{hi} cümle olmalı; {n} cümle"))
+        words = word_count([model])
+        limit = RETELL_MAX_WORDS.get(book.level)
+        if limit and words > limit:
+            issues.append(Issue("warning", "book-comprehension",
+                                f"model özet {words} sözcük; {book.level} için en çok ~{limit} önerilir "
+                                "(öğrenci 1–3 cümle anlatır, örnek de kısa olmalı)"))
+    if not str(r.get("modelTr") or "").strip():
+        issues.append(err("model özetin Türkçesi (retell.modelTr) yok"))
+
+    # Dil: her sözcük seviye listesinde ya da kitabın kendi metninde (sözlükle açıklananlar metinde geçer).
+    level = book.level
+    if level not in LEVELS:
+        return issues, None
+    wl = load_wordlist(level)
+    proper = set(load_proper_nouns()) | {p.lower() for p in book.proper_nouns}
+    seen_raw: set[str] = set()
+    for t in book.text.texts():
+        for w in tokens(t):
+            seen_raw.update([w, *w.split("-")])
+    seen = seen_raw | {lemma(w, wl.allowed) for w in seen_raw}
+    max_words = MAX_SENTENCE_WORDS.get(level, 10_000)
+    off: dict[str, set[str]] = {}
+    for where, text in _comprehension_texts(c):
+        for s in sentences(text):
+            if len(s) > max_words:
+                issues.append(err(f"{where}: {level} için cümle en çok {max_words} sözcük: \"{' '.join(s)}\""))
+        for w in tokens(text):
+            for part in ([w] if w in wl.allowed or w in seen else w.split("-")):
+                if not part or part in proper or part in INTERJECTIONS:
+                    continue
+                lem = lemma(part, wl.allowed)
+                if lem in wl.allowed or part in seen or lem in seen:
+                    continue
+                off.setdefault(part, set()).add(where)
+    if off:
+        lst = ", ".join(f"{w} ({', '.join(sorted(v))})" for w, v in sorted(off.items()))
+        if has_extra_list(level):
+            issues.append(Issue("error", "comprehension-vocab",
+                                f"seviye listesinde ve kitap metninde olmayan sözcükler: {lst}"))
+        else:
+            issues.append(Issue("warning", "comprehension-vocab",
+                                f"{level}: Octanove C1/C2 {NO_LIST_MSG}; CEFR-J ve kitap metni dışında: {lst}"))
+    rep = {"questions": len(qs), "answers": [q.get("answer") for q in qs if isinstance(q, dict)],
+           "offList": sorted(off)}
+    return issues, rep
+
+
 def _check_media(book: Book) -> tuple[list[Issue], dict]:
     issues: list[Issue] = []
     audio = {"chapters": len(book.text.chapters), "aligned": 0, "audio": 0, "wpm": {}, "wpmRaw": {}, "pacing": {}}
@@ -285,6 +404,8 @@ def lint_book(book_dir: Path, word_targets: dict | None = None, grammar_root: Pa
     li, rep.coverage, rep.stats = _check_language(book, word_targets)
     rep.issues += li
     rep.issues += _check_glossary(book)
+    ci, rep.stats["comprehension"] = _check_comprehension(book)
+    rep.issues += ci
     ti, rep.translation = _check_translation(book)
     rep.issues += ti
     mi, rep.stats["media"] = _check_media(book)
