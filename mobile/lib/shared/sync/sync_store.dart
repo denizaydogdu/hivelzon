@@ -836,6 +836,7 @@ class SyncStore {
         'user_grammar_progress',
         'daily_activity',
         'user_book_comprehension',
+        'expression_evidence',
         'season_state',
       ]) {
         await db.customUpdate(

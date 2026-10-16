@@ -12,7 +12,19 @@ class SettingsGroup extends StatelessWidget {
     this.title,
     this.footer,
     required this.children,
-  });
+  }) : child = null;
+
+  /// Başlıklı bölüm, kutusuz: içerik kendi yüzeyini taşır (ör. `StatRow`;
+  /// kutu içinde kutu olmasın).
+  const SettingsGroup.section({
+    super.key,
+    required String this.title,
+    required Widget this.child,
+    this.footer,
+  }) : children = const [];
+
+  /// [SettingsGroup.section] içeriği.
+  final Widget? child;
 
   final String? title;
 
@@ -23,6 +35,7 @@ class SettingsGroup extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final single = child;
     final rows = <Widget>[];
     for (var i = 0; i < children.length; i++) {
       if (i > 0) {
@@ -50,20 +63,23 @@ class SettingsGroup extends StatelessWidget {
               child: Text(title!, style: theme.textTheme.titleMedium),
             ),
           ),
-        DecoratedBox(
-          decoration: const BoxDecoration(
-            color: AppPalette.white,
-            borderRadius: AppRadius.mdAll,
-            boxShadow: AppShadows.level1,
-          ),
-          child: ClipRRect(
-            borderRadius: AppRadius.mdAll,
-            child: Material(
-              type: MaterialType.transparency,
-              child: Column(mainAxisSize: MainAxisSize.min, children: rows),
+        if (single != null)
+          single
+        else
+          DecoratedBox(
+            decoration: const BoxDecoration(
+              color: AppPalette.white,
+              borderRadius: AppRadius.mdAll,
+              boxShadow: AppShadows.level1,
+            ),
+            child: ClipRRect(
+              borderRadius: AppRadius.mdAll,
+              child: Material(
+                type: MaterialType.transparency,
+                child: Column(mainAxisSize: MainAxisSize.min, children: rows),
+              ),
             ),
           ),
-        ),
         if (footer != null)
           Padding(
             padding: const EdgeInsets.fromLTRB(

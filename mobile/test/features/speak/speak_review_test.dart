@@ -51,20 +51,29 @@ void main() {
       canSpeak: speak,
     );
 
-    test('orta-geç aşamada diğer görevlerle karışık', () {
-      expect(t(_stage(2)), TaskType.speak);
-      expect(t(_stage(3)), TaskType.listenChoice);
-      expect(t(_stage(4)), TaskType.arrange);
-      expect(t(_stage(5)), TaskType.speak);
-      expect(t(_stage(6)), TaskType.arrange);
-      expect(t(_stage(8)), TaskType.speak);
+    test('H-089: "Dinle ve söyle" (taklit) yalnız pratikte; uzun vadede '
+        'sesi duymadan "Söyle" (hatırlama)', () {
+      // Yeniden öğrenme / öğrenme: tek sayılı tekrarda taklit.
+      expect(t(_stage(1, s: FsrsState.relearning)), TaskType.speak);
+      expect(t(_stage(2, s: FsrsState.relearning)), TaskType.listenChoice);
+      expect(t(_stage(3, s: FsrsState.learning)), TaskType.speak);
+      // Uzun vade: üretim aşamasında hatırlama.
+      expect(t(_stage(2)), TaskType.selfCheck);
+      expect(t(_stage(4)), TaskType.speakRecall);
+      expect(t(_stage(5)), TaskType.speakRecall);
     });
 
-    test('tanıma yoksa, ses yoksa, tek kelimede ya da öğrenmede yok', () {
-      expect(t(_stage(2), speak: false), TaskType.listenChoice);
-      expect(t(_stage(2), audio: false), TaskType.pictureChoice);
+    test('tanıma yoksa, ses yoksa, tek kelimede ya da yeni kartta yok', () {
+      expect(
+        t(_stage(1, s: FsrsState.relearning), speak: false),
+        TaskType.listenChoice,
+      );
+      expect(
+        t(_stage(1, s: FsrsState.relearning), audio: false),
+        TaskType.arrange,
+      );
+      expect(t(_stage(4), speak: false), TaskType.selfCheck);
       expect(t(_stage(5), multi: false), TaskType.type);
-      expect(t(_stage(2, s: FsrsState.relearning)), TaskType.pictureChoice);
       expect(t(_stage(0, s: FsrsState.learning)), TaskType.pictureChoice);
     });
 
@@ -110,7 +119,8 @@ void main() {
       }
     });
 
-    test('oturum: verilen not kullanılır; "Geç" kaydetmez', () async {
+    test('oturum: taklit not almaz; "Söyle" verilen notu kullanır; "Geç" '
+        'kaydetmez', () async {
       final t0 = DateTime.utc(2026, 10, 13, 9);
       final item = NotebookItem(
         id: 1,
@@ -123,10 +133,10 @@ void main() {
       ReviewCardState card(int id) => ReviewCardState(
         id: id,
         itemId: id,
-        reps: 2,
+        reps: 5,
         fsrs: FsrsCard(
-          state: FsrsState.review,
-          step: null,
+          state: FsrsState.relearning,
+          step: 0,
           stability: 5,
           difficulty: 5,
           due: t0,
@@ -150,11 +160,19 @@ void main() {
       final o = await s.answer(
         correct: true,
         elapsed: const Duration(seconds: 4),
+        rating: FsrsRating.good,
+      );
+      expect(o.rating, isNull, reason: 'taklit FSRS\'e yazılmaz');
+      expect(o.taskType, TaskType.speak);
+      expect(o.recallFollows, isTrue);
+      expect(s.next()!.type, TaskType.speakRecall);
+      final r = await s.answer(
+        correct: true,
+        elapsed: const Duration(seconds: 4),
         rating: FsrsRating.hard,
       );
-      expect(o.rating, FsrsRating.hard);
-      expect(o.taskType, TaskType.speak);
-      expect(saved, hasLength(1));
+      expect(r.rating, FsrsRating.hard);
+      expect(saved, hasLength(2));
       expect(s.skipped, 1);
     });
   });
@@ -323,7 +341,7 @@ void main() {
     );
   });
 
-  group('Kelime tekrarı ekranı: "Dinle ve söyle"', () {
+  group('Kelime tekrarı ekranı: "Söyle" (hatırlama) ve "Dinle ve söyle"', () {
     late AppDatabase db;
     setUp(() {
       db = AppDatabase.memory();
@@ -333,7 +351,9 @@ void main() {
     });
     tearDown(() => db.close());
 
-    Future<void> seed(WidgetTester tester) async {
+    /// Varsayılan: uzun vade kartı, 4. tekrar → "Söyle" (sesi duymadan).
+    /// [relearning]: yeniden öğrenmede, 1. tekrar → "Dinle ve söyle" (taklit).
+    Future<void> seed(WidgetTester tester, {bool relearning = false}) async {
       await tester.runAsync(() async {
         final store = NotebookStore(db);
         await store.addItems([
@@ -351,11 +371,11 @@ void main() {
             .update(db.reviewCards)
             .write(
               ReviewCardsCompanion(
-                state: const Value(2),
-                step: const Value(null),
+                state: Value(relearning ? 3 : 2),
+                step: Value(relearning ? 0 : null),
                 stability: const Value(5),
                 difficulty: const Value(5),
-                reps: const Value(2),
+                reps: Value(relearning ? 1 : 4),
                 due: Value(DateTime.utc(2026, 10, 2)),
                 lastReview: Value(DateTime.utc(2026, 9, 29)),
               ),
@@ -408,21 +428,29 @@ void main() {
       }
     }
 
-    testWidgets('tam söyleyince Good; metin önce gizli', (tester) async {
+    testWidgets('"Söyle": tam söyleyince Good; metin ve ses önce yok', (
+      tester,
+    ) async {
       await seed(tester);
       final r = FakeSpeechRecognizer()..queued.add(['yes I can']);
       await pump(tester, r);
       await settle(tester);
-      expect(find.byKey(const ValueKey('task-speak')), findsOneWidget);
-      expect(find.text('Dinle ve söyle.'), findsOneWidget);
+      expect(find.byKey(const ValueKey('task-speak_recall')), findsOneWidget);
+      expect(find.text('İngilizcesini söyle.'), findsOneWidget);
+      expect(find.text('Evet, duyabiliyorum.'), findsOneWidget);
       expect(find.text('Yes, I can.'), findsNothing);
+      expect(
+        find.byKey(const ValueKey('task-listen')),
+        findsNothing,
+        reason: 'hatırlamada önce dinlemek yok',
+      );
       expect(find.byKey(const ValueKey('task-dont-know')), findsOneWidget);
       expect(find.byKey(const ValueKey('task-skip')), findsOneWidget);
       await tester.tap(find.byKey(const ValueKey('review-speak-mic')));
       await settle(tester);
       expect(find.text('Söyledin!'), findsOneWidget);
       final logs = await tester.runAsync(() => db.select(db.reviewLogs).get());
-      expect(logs!.single.taskType, 'speak');
+      expect(logs!.single.taskType, 'speak_recall');
       expect(logs.single.rating, FsrsRating.good.value);
       expect(logs.single.correct, isTrue);
       final attempts = await tester.runAsync(
@@ -433,7 +461,9 @@ void main() {
       await tester.pump(const Duration(seconds: 2));
     });
 
-    testWidgets('yakın → "Devam et" ile Hard', (tester) async {
+    testWidgets('"Söyle": yalnız eksik kelime → "Devam et" ile Hard', (
+      tester,
+    ) async {
       await seed(tester);
       final r = FakeSpeechRecognizer()..queued.add(['yes can']);
       await pump(tester, r);
@@ -447,6 +477,59 @@ void main() {
       expect(logs!.single.rating, FsrsRating.hard.value);
       expect(find.text('Neredeyse!'), findsOneWidget);
       // Kart sesinin durdurma zamanlayıcısı.
+      await tester.pump(const Duration(seconds: 2));
+    });
+
+    testWidgets('"Söyle": anlamı değiştiren ek (H-087) → "Devam et" yok, '
+        'Again', (tester) async {
+      await seed(tester);
+      final r = FakeSpeechRecognizer()
+        ..queued.add(['yes I can not'])
+        ..queued.add(['yes I can not']);
+      await pump(tester, r);
+      await settle(tester);
+      await tester.tap(find.byKey(const ValueKey('review-speak-mic')));
+      await settle(tester);
+      expect(find.byKey(const ValueKey('review-speak-accept')), findsNothing);
+      await tester.tap(find.byKey(const ValueKey('review-speak-mic')));
+      await settle(tester);
+      final logs = await tester.runAsync(() => db.select(db.reviewLogs).get());
+      expect(logs!.single.rating, FsrsRating.again.value);
+      expect(logs.single.correct, isFalse);
+      expect(
+        await tester.runAsync(() => db.select(db.evidenceRecords).get()),
+        isEmpty,
+      );
+      await tester.pump(const Duration(seconds: 2));
+    });
+
+    testWidgets('"Dinle ve söyle" (taklit): not yok, yalnız "yardımla '
+        'yaptı"; sonra hatırlama sorusu', (tester) async {
+      await seed(tester, relearning: true);
+      final r = FakeSpeechRecognizer()..queued.add(['yes I can']);
+      await pump(tester, r);
+      await settle(tester);
+      expect(find.byKey(const ValueKey('task-speak')), findsOneWidget);
+      expect(find.text('Dinle ve söyle.'), findsOneWidget);
+      expect(find.text('Yes, I can.'), findsNothing);
+      await tester.tap(find.byKey(const ValueKey('review-speak-mic')));
+      await settle(tester);
+      expect(find.text('Söyledin!'), findsOneWidget);
+      expect(
+        find.text('Oturumun sonunda bu ifadeyi bir de kendin hatırlayacaksın.'),
+        findsOneWidget,
+      );
+      expect(
+        await tester.runAsync(() => db.select(db.reviewLogs).get()),
+        isEmpty,
+      );
+      final ev = await tester.runAsync(
+        () => db.select(db.evidenceRecords).get(),
+      );
+      expect(ev!.single.stage, 'helped');
+      await tester.tap(find.byKey(const ValueKey('review-continue')));
+      await settle(tester);
+      expect(find.byKey(const ValueKey('task-self_check')), findsOneWidget);
       await tester.pump(const Duration(seconds: 2));
     });
 

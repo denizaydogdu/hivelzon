@@ -1,11 +1,14 @@
+import 'package:drift/drift.dart' show Value;
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hivelzon/app/theme.dart';
 import 'package:hivelzon/features/notebook/data/notebook_store.dart';
+import 'package:hivelzon/features/notebook/domain/notebook_item.dart';
 import 'package:hivelzon/features/player/data/progress_repository.dart';
 import 'package:hivelzon/features/profile/data/user_profile_store.dart';
 import 'package:hivelzon/features/profile/presentation/profile_screen.dart';
+import 'package:hivelzon/l10n/tr_strings.dart';
 import 'package:hivelzon/shared/content/content_providers.dart';
 import 'package:hivelzon/shared/haptics/haptics.dart';
 import 'package:hivelzon/shared/storage/app_database.dart';
@@ -110,6 +113,13 @@ void main() {
     ) async {
       await pump(tester);
       await settle(tester);
+      // H-089: kanıt yokken sakin davet cümlesi.
+      expect(
+        find.text(
+          'Kelime tekrarında bir ifadeyi kendin hatırladığında burada görünür.',
+        ),
+        findsOneWidget,
+      );
       expect(find.text('Merhaba!'), findsOneWidget);
       expect(find.byKey(const ValueKey('profile-stats')), findsOneWidget);
       expect(find.text('ifade'), findsOneWidget);
@@ -131,6 +141,93 @@ void main() {
       expect(find.text('Bugün küçük bir adım yeter.'), findsOneWidget);
       await tester.pumpWidget(const SizedBox());
       await settle(tester);
+    });
+
+    testWidgets('H-089: kanıta dayalı kazanımlar; sayılar "İçerik '
+        'ilerlemesi" başlığında', (tester) async {
+      await tester.runAsync(() async {
+        final store = NotebookStore(db);
+        NotebookItem it(String en) => NotebookItem(
+          kind: NotebookKind.phrase,
+          textEn: en,
+          textTr: 'tr',
+          source: NotebookSource.userSaved,
+          createdAt: DateTime.utc(2026, 10, 1),
+        );
+        await store.addItems([
+          it('Where is…?'),
+          it('Excuse me.'),
+          it('What time is it?'),
+        ]);
+        for (final (key, stage) in [
+          ('phrase|where is…', 'recalled_later'),
+          ('phrase|excuse me', 'own_use'),
+          ('phrase|what time is it', 'helped'),
+        ]) {
+          await db
+              .into(db.evidenceRecords)
+              .insert(
+                EvidenceRecordsCompanion.insert(
+                  itemKey: key,
+                  stage: stage,
+                  at: DateTime.utc(2026, 10, 5),
+                ),
+              );
+        }
+        // "What time is it?" son hatırlamada gelmedi: yeniden öğrenmede.
+        final id = (await store.entries())
+            .firstWhere((e) => e.item.textEn == 'What time is it?')
+            .card
+            .id;
+        await (db.update(db.reviewCards)..where((t) => t.id.equals(id))).write(
+          ReviewCardsCompanion(
+            state: const Value(3),
+            step: const Value(0),
+            reps: const Value(3),
+            lastReview: Value(DateTime.utc(2026, 10, 6)),
+          ),
+        );
+      });
+      await pump(tester);
+      await settle(tester);
+      expect(find.text('Neler yapabiliyorsun'), findsOneWidget);
+      expect(
+        find.text('Birkaç gün sonra kendin hatırladın: “Where is…?”'),
+        findsOneWidget,
+      );
+      expect(
+        find.text('Türkçesinden kendin söyledin ya da yazdın: “Excuse me.”'),
+        findsOneWidget,
+      );
+      expect(
+        find.text('Yeniden çalışalım: “What time is it?”'),
+        findsOneWidget,
+      );
+      expect(find.textContaining('Yardımla yaptın'), findsNothing);
+      expect(find.text('İçerik ilerlemesi'), findsOneWidget);
+      expect(find.textContaining('%'), findsNothing);
+      for (final w in ['yanlış', 'başarısız', 'unuttun']) {
+        expect(find.textContaining(w), findsNothing, reason: w);
+      }
+      await tester.pumpWidget(const SizedBox());
+      await settle(tester);
+    });
+
+    test('kanıt cümlesi listesi: en çok iki ifade, kalanı sayıyla', () {
+      expect(ProfileTexts.evidenceList(['A']), '“A”');
+      expect(
+        ProfileTexts.evidenceRevisit(['the radio']),
+        'Yeniden çalışalım: “the radio”.',
+      );
+      expect(
+        ProfileTexts.evidenceHelped(['Hi.', 'the radio']),
+        'Yardımla yaptın: “Hi.” ve “the radio”. Sırada kendin hatırlamak var.',
+      );
+      expect(ProfileTexts.evidenceList(['A', 'B']), '“A” ve “B”');
+      expect(
+        ProfileTexts.evidenceList(['A', 'B', 'C', 'D']),
+        '“A”, “B” ve 2 ifade daha',
+      );
     });
 
     testWidgets('"Titreşim" anahtarı: varsayılan açık, kapatılınca kaydedilir '

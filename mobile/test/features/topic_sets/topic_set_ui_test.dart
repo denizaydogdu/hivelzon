@@ -6,6 +6,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hivelzon/app/theme.dart';
 import 'package:hivelzon/features/notebook/data/notebook_store.dart';
+import 'package:hivelzon/features/notebook/domain/evidence_ladder.dart';
 import 'package:hivelzon/features/notebook/domain/notebook_item.dart';
 import 'package:hivelzon/features/notebook/presentation/notebook_screen.dart';
 import 'package:hivelzon/features/player/data/progress_repository.dart';
@@ -14,7 +15,6 @@ import 'package:hivelzon/features/topic_sets/domain/topic_set.dart';
 import 'package:hivelzon/features/topic_sets/presentation/scene_hunt_screen.dart';
 import 'package:hivelzon/features/topic_sets/presentation/topic_set_screen.dart';
 import 'package:hivelzon/shared/content/content_providers.dart';
-import 'package:hivelzon/shared/fsrs/fsrs.dart';
 import 'package:hivelzon/shared/meaning/learning_event_log.dart';
 import 'package:hivelzon/shared/storage/app_database.dart';
 import 'package:hivelzon/shared/storage/storage_providers.dart';
@@ -276,11 +276,11 @@ void main() {
   }
 
   testWidgets(
-    'Sahne avı: doğru, iki kaçırmada ipucu, Bilmiyorum, özet ve FSRS',
+    'Sahne avı: doğru, iki kaçırmada ipucu, Bilmiyorum, özet ve kanıt',
     (tester) async {
       await progress.markCompleted('A1-001', gate: const {});
       final set = loadTopicSetFixture('alex-room');
-      // Öğeler defterde (yeni kartlar): sonuçlar kelime tekrarına yazılır.
+      // Öğeler defterde (yeni kartlar): sonuçlar kanıt basamağına yazılır.
       final order = [...set.items]..shuffle(math.Random(1));
 
       await pump(tester, '/konu-seti/alex-room/sahne-avi');
@@ -346,17 +346,22 @@ void main() {
         findsOneWidget,
       );
       expect(
-        find.text('Defterindeki 10 ifadenin tekrar zamanı güncellendi.'),
+        find.text('Defterindeki 10 ifadeyle burada da çalıştın.'),
         findsOneWidget,
       );
 
+      // H-089: sahne avı tanımadır; FSRS'e yazılmaz, kendin bulduğun
+      // ifadeler "yardımla yaptı" basamağına girer.
       final logs = await tester.runAsync(() => store().logs());
-      expect(logs!.length, 10);
-      expect(logs.every((l) => l.taskType == 'scene_hunt'), isTrue);
-      expect(logs.where((l) => l.rating == FsrsRating.again.value).length, 2);
-      expect(logs.where((l) => l.dontKnow).length, 1);
+      expect(logs, isEmpty);
+      final evidence = await tester.runAsync(() => store().evidence());
+      expect(evidence!.length, 8);
+      expect(
+        evidence.values.every((m) => m.keys.single == EvidenceStage.helped),
+        isTrue,
+      );
 
-      // Tekrar oyna: aynı gün ikinci oyun kartları yeniden yazmaz.
+      // Tekrar oyna.
       await tapKey(tester, 'hunt-again');
       expect(find.text('Nesne 1 / 10'), findsOneWidget);
     },

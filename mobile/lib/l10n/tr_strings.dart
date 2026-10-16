@@ -647,8 +647,9 @@ abstract final class HuntTexts {
   static const statTotal = 'nesneye baktın';
   static const statAlone = 'kendin buldun';
   static const statHelped = 'birlikte baktık';
+  // H-089: sahne avı tanımadır; tekrar zamanını değiştirmez.
   static String deckUpdated(int n) =>
-      'Defterindeki $n ifadenin tekrar zamanı güncellendi.';
+      'Defterindeki $n ifadeyle burada da çalıştın.';
   static const notInDeck =
       'Bu nesneleri defterine eklersen kelime tekrarında da karşına çıkar.';
   static const playAgain = 'Tekrar oyna';
@@ -679,6 +680,9 @@ abstract final class ReviewTexts {
   static const dontKnowFeedback = 'Sorun değil, birlikte bakalım.';
   static const wrongFeedback = 'Doğrusu bu.';
   static const requeued = 'Bu ifade oturumun sonunda yeniden gelecek.';
+  // H-089: başarılı pratikten (seç, dinle, diz, tekrar et) sonra.
+  static const recallFollows =
+      'Oturumun sonunda bu ifadeyi bir de kendin hatırlayacaksın.';
   static const soon = 'Bu ifadeyi yakında yeniden göreceksin.';
   static String chosen(String option) => 'Seçtiğin: $option';
   static const continueAction = 'Devam et';
@@ -721,6 +725,48 @@ abstract final class ProfileTexts {
     }
     return 'Bugün küçük bir adım yeter.';
   }
+
+  // Kanıta dayalı kazanımlar (H-089): sayı ve yüzde değil, ifadeyle küçük
+  // cümleler. Basamaklar: gördün → yardımla yaptın → kendin kullandın →
+  // birkaç gün sonra hatırladın. Utandırmaz; yapılmayan söylenmez.
+  static const evidenceGroup = 'Neler yapabiliyorsun';
+  static const evidenceFooter =
+      'Seçerek ya da dinleyip tekrar ederek yaptıkların "yardımla", '
+      'Türkçesinden kendin söylediklerin "kendin" sayılır.';
+  static const evidenceEmpty =
+      'Kelime tekrarında bir ifadeyi kendin hatırladığında burada görünür.';
+
+  /// “A”, “B” ve 3 ifade daha
+  static String evidenceList(List<String> phrases, {int max = 2}) {
+    final shown = [for (final p in phrases.take(max)) '“$p”'];
+    final more = phrases.length - shown.length;
+    if (more > 0) return '${shown.join(', ')} ve $more ifade daha';
+    if (shown.length < 2) return shown.join();
+    return '${shown.sublist(0, shown.length - 1).join(', ')} ve ${shown.last}';
+  }
+
+  /// Liste noktalamayla bitiyorsa (“Excuse me.”) ikinci nokta konmaz.
+  static String _sentence(
+    String head,
+    List<String> phrases, [
+    String tail = '',
+  ]) {
+    final list = evidenceList(phrases);
+    final ends = RegExp(r'[.?!…]”$').hasMatch(list);
+    return '$head: $list${ends ? '' : '.'}$tail';
+  }
+
+  static String evidenceRecalled(List<String> phrases) =>
+      _sentence('Birkaç gün sonra kendin hatırladın', phrases);
+  static String evidenceOwnUse(List<String> phrases) =>
+      _sentence('Türkçesinden kendin söyledin ya da yazdın', phrases);
+  static String evidenceHelped(List<String> phrases) =>
+      _sentence('Yardımla yaptın', phrases, ' Sırada kendin hatırlamak var.');
+  static String evidenceRevisit(List<String> phrases) =>
+      _sentence('Yeniden çalışalım', phrases);
+
+  // İçerik ilerlemesi (H-089): bitirilen ve toplanan; "öğrendin" denmez.
+  static const contentProgressGroup = 'İçerik ilerlemesi';
 
   // İstatistik kutuları (sayı + ne sayıldığı).
   static const statPhrases = 'ifade';
@@ -1299,6 +1345,10 @@ abstract final class SpeakTexts {
   static const reviewHint =
       'Dinle, sonra mikrofona dokunup İngilizcesini söyle.';
   static const reviewAccept = 'Devam et';
+  // H-089: Türkçe anlamdan, sesi duymadan söyleme (hatırlama).
+  static const recallTask = 'İngilizcesini söyle.';
+  static const recallHint =
+      'Önce dinlemeden, kendin söyle. Sonra kartı birlikte dinleriz.';
 
   // Karar anı
   static const decisionUnclear = 'Seni tam duyamadım. İstersen dokunarak seç.';

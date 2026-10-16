@@ -20,7 +20,7 @@ import tr.velzon.hivelzon.sync.SyncTableProvider;
 /**
  * Öğrenme tabloları (mobil Drift şema 4 aynası): defter, FSRS kartı ve cevapları, öğrenme olayları, Hi kayıtları
  * ve "Söyle" sonuçları. Defter ve kart doğal anahtarlı ({@code itemKey}); cevap, olay ve "Söyle" sonucu cihazın
- * verdiği UUID ile tekildir.
+ * verdiği UUID ile tekildir. Öğrenme kanıtı basamakları (H-089, mobil şema 10) ifade + basamak doğal anahtarlıdır.
  */
 @Component
 public class LearningSyncTables implements SyncTableProvider {
@@ -39,9 +39,16 @@ public class LearningSyncTables implements SyncTableProvider {
      */
     public static final String HI_RESET = "hi_reset";
 
-    /** Mobil {@code TaskType.code} değerleri. */
+    /**
+     * Mobil {@code TaskType.code} değerleri. H-089: {@code speak_recall} (sesi duymadan söyleme) eklendi. Pratik
+     * görevleri (seç, dinle-seç, diz, dinle ve söyle, sahne avı) yeni istemcilerde cevap kaydına yazılmaz; eski
+     * kayıtlarda bulunabilir.
+     */
     public static final String[] TASK_TYPES = {"picture_choice", "listen_choice", "arrange", "type", "self_check",
-            "scene_hunt", "speak"};
+            "scene_hunt", "speak", "speak_recall"};
+
+    /** Öğrenme kanıtı basamakları (H-089, mobil şema 10). */
+    public static final String EXPRESSION_EVIDENCE = "expression_evidence";
 
     static final SyncField ITEM_KEY = string("itemKey", "item_key", true, 320);
     static final SyncField UPDATED_AT = instant("updatedAt", "updated_at", true);
@@ -107,6 +114,10 @@ public class LearningSyncTables implements SyncTableProvider {
                         oneOf("matchLevel", "match_level", true, "full", "close", "no"),
                         integer("missingCount", "missing_count", true, 0, 100),
                         string("errorNoteId", "error_note_id", false, 64),
-                        instant("at", "at", true))));
+                        instant("at", "at", true))),
+                // H-089: ifade + basamak başına ilk an; yalnız eklenir (ilk gelen kalır). Metin, ses, yazı yok.
+                new SyncTable(EXPRESSION_EVIDENCE, 160, Kind.APPEND_ONLY,
+                        List.of(ITEM_KEY, oneOf("stage", "stage", true, "helped", "own_use", "recalled_later")), null,
+                        List.of(instant("at", "at", true))));
     }
 }

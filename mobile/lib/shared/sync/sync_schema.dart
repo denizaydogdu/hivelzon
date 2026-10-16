@@ -51,6 +51,7 @@ abstract final class SyncSql {
   static const appendNatural = <(String, String, List<String>)>[
     ('gate_progress', 'gp', ['content_id', 'item_kind', 'node_id']),
     ('clues', 'cl', ['content_id', 'clue_id']),
+    ('expression_evidence', 'ee', ['item_key', 'stage']),
   ];
 
   /// Yalnız eklenen, UUID kimlikli tablolar.

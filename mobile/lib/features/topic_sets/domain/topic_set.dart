@@ -5,7 +5,6 @@
 
 import 'dart:math' as math;
 
-import '../../../shared/fsrs/fsrs.dart';
 import '../../../shared/progress/story_progress.dart';
 import '../../notebook/domain/notebook_item.dart';
 import '../../story/domain/unlock_rule.dart' show accusativeNumber;
@@ -456,9 +455,6 @@ class HuntResult {
 
   /// Kendisi buldu (en çok 1 kaçırmayla).
   bool get foundAlone => !revealed && misses < HuntSession.hintAfterMisses;
-
-  /// FSRS notu: kendisi bulduysa Good; "Bilmiyorum" ya da 2+ kaçırma Again.
-  FsrsRating get rating => foundAlone ? FsrsRating.good : FsrsRating.again;
 }
 
 enum HuntTap { correct, miss, ignored }

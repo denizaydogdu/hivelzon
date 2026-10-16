@@ -22,6 +22,6 @@ Türk öğrencinin en sık sorunu "anlıyorum ama konuşamıyorum". Dinlediğini
 ## Fazlar
 | Faz | Ne | Ne zaman |
 |---|---|---|
-| **S1: "Söyle" alıştırmaları** | Kelime tekrarında **"Dinle ve söyle"** görevi (FSRS'ye işlenir) · anlam panelinde **"Sen de söyle"** · karar anında isteğe bağlı **"Söyleyerek seç"** · bölüm sonunda **hedef ifadeleri söyleme** (kapı adımı söyleyerek de geçilir) | MVP; H-055, H-048'den hemen sonra |
+| **S1: "Söyle" alıştırmaları** | Kelime tekrarında **"Dinle ve söyle"** görevi (H-089: taklittir, FSRS'e işlenmez; hatırlama için sesi duymadan **"Söyle"**, `docs/KELIME-TEKRARI.md`) · anlam panelinde **"Sen de söyle"** · karar anında isteğe bağlı **"Söyleyerek seç"** · bölüm sonunda **hedef ifadeleri söyleme** (kapı adımı söyleyerek de geçilir) | MVP; H-055, H-048'den hemen sonra |
 | **S2: Hi ile prova ve karakterlerle konuşma** | Serbest konuşma, "önce Hi'ye fısılda"; cihazda tanıma olmayan telefonlar için kendi sunucumuzda (Türkiye) Whisper | v1, Hi-C ile (`docs/HI-ASISTAN-VE-KOC.md`) |
 | **S3: Telaffuz geri bildirimi** | Türklerin zorlandığı seslere odaklı (th, w/v, uzun/kısa ünlü); yalnızca doğrulanırsa, sayısal puan yalnızca güvenilirse | Sonra; H-015 |

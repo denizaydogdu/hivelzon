@@ -224,12 +224,7 @@ void main() {
       expect(tapOn(s, center(order[3])), HuntTap.correct);
       s.next();
       expect(s.finished, isTrue);
-      expect(s.results.map((r) => r.rating), [
-        FsrsRating.good,
-        FsrsRating.again,
-        FsrsRating.again,
-        FsrsRating.good,
-      ]);
+      expect(s.results.map((r) => r.foundAlone), [true, false, false, true]);
       expect(s.foundAlone, 2);
       expect(s.helped, 2);
     });
@@ -289,9 +284,8 @@ void main() {
       expect(fish.exampleAudio, isNull);
     });
 
-    test('yalnızca defterdeki öğeler; bugün tekrar edilen atlanır', () {
+    test('yalnızca defterdeki öğeler; pratik: FSRS\'e yazılmaz (H-089)', () {
       final now = DateTime.utc(2026, 10, 13, 12);
-      final scheduler = ReviewPolicy.scheduler();
       NotebookEntry entry(int id, String w, {DateTime? last}) => NotebookEntry(
         NotebookItem(
           id: id,
@@ -327,24 +321,18 @@ void main() {
           entry(1, 'radio'),
           entry(2, 'clock', last: DateTime.utc(2026, 10, 1)),
           entry(3, 'cup'),
-          // sea bugün zaten tekrar edildi → atlanır.
           entry(4, 'sea', last: now.subtract(const Duration(hours: 1))),
           // boat defterde yok → yazılmaz.
         ],
-        scheduler: scheduler,
         now: now,
       );
-      expect(out.map((o) => o.item.textEn), ['radio', 'clock', 'cup']);
-      expect(out.map((o) => o.rating), [
-        FsrsRating.good,
-        FsrsRating.again,
-        FsrsRating.again,
-      ]);
+      expect(out.map((o) => o.item.textEn), ['radio', 'clock', 'cup', 'sea']);
+      expect(out.map((o) => o.correct), [true, false, false, true]);
+      // Tanıma: not yok, kart değişmez (yalnız kanıt basamağı yazılır).
+      expect(out.every((o) => o.practice), isTrue);
       expect(out.every((o) => o.taskType == TaskType.sceneHunt), isTrue);
+      expect(out.every((o) => identical(o.after, o.before)), isTrue);
       expect(out[2].dontKnow, isTrue);
-      expect(out[1].after.lapses, 1); // olgun kartta Again = unutma
-      expect(out[0].after.reps, 1);
-      expect(out[0].after.fsrs.lastReview, now);
     });
   });
 }

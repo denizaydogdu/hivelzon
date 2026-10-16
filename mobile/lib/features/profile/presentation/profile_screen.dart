@@ -13,6 +13,8 @@ import '../../account/presentation/account_widgets.dart';
 import '../../hi/application/hi_providers.dart';
 import '../../hi/presentation/hi_privacy_screen.dart';
 import '../../notebook/application/notebook_providers.dart';
+import '../../notebook/domain/evidence_ladder.dart';
+import '../../notebook/domain/notebook_item.dart';
 import '../../notebook/domain/review_policy.dart';
 import '../../player/presentation/widgets/hi_avatar.dart';
 import '../../speak/speech_settings_section.dart';
@@ -86,27 +88,34 @@ class ProfileScreen extends ConsumerWidget {
                 child: StaggeredList(
                   spacing: AppSpace.s24,
                   children: [
-                    StatRow(
-                      key: const ValueKey('profile-stats'),
-                      tiles: [
-                        StatTile.count(
-                          count: overview?.totalItems ?? 0,
-                          label: ProfileTexts.statPhrases,
-                          icon: Icons.menu_book_rounded,
-                        ),
-                        StatTile.count(
-                          count: knowledge?.completedEpisodes ?? 0,
-                          label: ProfileTexts.statEpisodes,
-                          icon: Icons.auto_stories_rounded,
-                          color: AppPalette.orange700,
-                        ),
-                        StatTile.count(
-                          count: week?.phrasesReviewed ?? 0,
-                          label: ProfileTexts.statWeekReviews,
-                          icon: Icons.replay_rounded,
-                          color: AppPalette.success,
-                        ),
-                      ],
+                    // H-089: kanıta dayalı küçük kazanımlar.
+                    const EvidenceSection(),
+                    // İçerik ilerlemesi: bitirilen ve toplanan; dil
+                    // ustalığı olarak yorumlanmaz (H-089).
+                    SettingsGroup.section(
+                      title: ProfileTexts.contentProgressGroup,
+                      child: StatRow(
+                        key: const ValueKey('profile-stats'),
+                        tiles: [
+                          StatTile.count(
+                            count: overview?.totalItems ?? 0,
+                            label: ProfileTexts.statPhrases,
+                            icon: Icons.menu_book_rounded,
+                          ),
+                          StatTile.count(
+                            count: knowledge?.completedEpisodes ?? 0,
+                            label: ProfileTexts.statEpisodes,
+                            icon: Icons.auto_stories_rounded,
+                            color: AppPalette.orange700,
+                          ),
+                          StatTile.count(
+                            count: week?.phrasesReviewed ?? 0,
+                            label: ProfileTexts.statWeekReviews,
+                            icon: Icons.replay_rounded,
+                            color: AppPalette.success,
+                          ),
+                        ],
+                      ),
                     ),
                     SettingsGroup(
                       title: ProfileTexts.learningGroup,
@@ -167,6 +176,70 @@ class ProfileScreen extends ConsumerWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+/// "Neler yapabiliyorsun" (H-089): kanıt basamaklarından en çok dört kısa
+/// cümle; sayı yığını ve yüzde yok. Basamak kuralları
+/// `docs/KELIME-TEKRARI.md` §3.
+class EvidenceSection extends ConsumerWidget {
+  const EvidenceSection({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final s = ref.watch(evidenceSummaryProvider).value ?? EvidenceSummary.empty;
+    List<String> en(List<NotebookItem> l) => [for (final i in l) i.textEn];
+    final lines = <(String, IconData, Color, String)>[
+      if (s.recalledLater.isNotEmpty)
+        (
+          'recalled',
+          Icons.event_available_rounded,
+          AppPalette.success,
+          ProfileTexts.evidenceRecalled(en(s.recalledLater)),
+        ),
+      if (s.ownUse.isNotEmpty)
+        (
+          'own',
+          Icons.record_voice_over_rounded,
+          AppPalette.seaBlue,
+          ProfileTexts.evidenceOwnUse(en(s.ownUse)),
+        ),
+      if (s.helped.isNotEmpty && s.recalledLater.isEmpty && s.ownUse.isEmpty)
+        (
+          'helped',
+          Icons.handshake_outlined,
+          AppPalette.orange700,
+          ProfileTexts.evidenceHelped(en(s.helped)),
+        ),
+      if (s.revisit.isNotEmpty)
+        (
+          'revisit',
+          Icons.replay_rounded,
+          AppPalette.orange700,
+          ProfileTexts.evidenceRevisit(en(s.revisit)),
+        ),
+      if (!s.hasEvidence && s.revisit.isEmpty)
+        (
+          'empty',
+          Icons.auto_awesome_outlined,
+          AppPalette.ink500,
+          ProfileTexts.evidenceEmpty,
+        ),
+    ];
+    return SettingsGroup(
+      key: const ValueKey('profile-evidence'),
+      title: ProfileTexts.evidenceGroup,
+      footer: s.hasEvidence ? ProfileTexts.evidenceFooter : null,
+      children: [
+        for (final (id, icon, color, text) in lines)
+          IconLine(
+            key: ValueKey('profile-evidence-$id'),
+            icon: icon,
+            color: color,
+            text: text,
+          ),
+      ],
     );
   }
 }

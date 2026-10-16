@@ -9623,6 +9623,268 @@ class UserBookComprehensionCompanion
   }
 }
 
+class $EvidenceRecordsTable extends EvidenceRecords
+    with TableInfo<$EvidenceRecordsTable, EvidenceRow> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $EvidenceRecordsTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _itemKeyMeta = const VerificationMeta(
+    'itemKey',
+  );
+  @override
+  late final GeneratedColumn<String> itemKey = GeneratedColumn<String>(
+    'item_key',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _stageMeta = const VerificationMeta('stage');
+  @override
+  late final GeneratedColumn<String> stage = GeneratedColumn<String>(
+    'stage',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _atMeta = const VerificationMeta('at');
+  @override
+  late final GeneratedColumn<DateTime> at = GeneratedColumn<DateTime>(
+    'at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: true,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [itemKey, stage, at];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'expression_evidence';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<EvidenceRow> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('item_key')) {
+      context.handle(
+        _itemKeyMeta,
+        itemKey.isAcceptableOrUnknown(data['item_key']!, _itemKeyMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_itemKeyMeta);
+    }
+    if (data.containsKey('stage')) {
+      context.handle(
+        _stageMeta,
+        stage.isAcceptableOrUnknown(data['stage']!, _stageMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_stageMeta);
+    }
+    if (data.containsKey('at')) {
+      context.handle(_atMeta, at.isAcceptableOrUnknown(data['at']!, _atMeta));
+    } else if (isInserting) {
+      context.missing(_atMeta);
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {itemKey, stage};
+  @override
+  EvidenceRow map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return EvidenceRow(
+      itemKey: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}item_key'],
+      )!,
+      stage: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}stage'],
+      )!,
+      at: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}at'],
+      )!,
+    );
+  }
+
+  @override
+  $EvidenceRecordsTable createAlias(String alias) {
+    return $EvidenceRecordsTable(attachedDatabase, alias);
+  }
+}
+
+class EvidenceRow extends DataClass implements Insertable<EvidenceRow> {
+  /// Defterdeki ifadenin anahtarı (`notebook_items.item_key`).
+  final String itemKey;
+
+  /// `helped` | `own_use` | `recalled_later`
+  final String stage;
+  final DateTime at;
+  const EvidenceRow({
+    required this.itemKey,
+    required this.stage,
+    required this.at,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['item_key'] = Variable<String>(itemKey);
+    map['stage'] = Variable<String>(stage);
+    map['at'] = Variable<DateTime>(at);
+    return map;
+  }
+
+  EvidenceRecordsCompanion toCompanion(bool nullToAbsent) {
+    return EvidenceRecordsCompanion(
+      itemKey: Value(itemKey),
+      stage: Value(stage),
+      at: Value(at),
+    );
+  }
+
+  factory EvidenceRow.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return EvidenceRow(
+      itemKey: serializer.fromJson<String>(json['itemKey']),
+      stage: serializer.fromJson<String>(json['stage']),
+      at: serializer.fromJson<DateTime>(json['at']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'itemKey': serializer.toJson<String>(itemKey),
+      'stage': serializer.toJson<String>(stage),
+      'at': serializer.toJson<DateTime>(at),
+    };
+  }
+
+  EvidenceRow copyWith({String? itemKey, String? stage, DateTime? at}) =>
+      EvidenceRow(
+        itemKey: itemKey ?? this.itemKey,
+        stage: stage ?? this.stage,
+        at: at ?? this.at,
+      );
+  EvidenceRow copyWithCompanion(EvidenceRecordsCompanion data) {
+    return EvidenceRow(
+      itemKey: data.itemKey.present ? data.itemKey.value : this.itemKey,
+      stage: data.stage.present ? data.stage.value : this.stage,
+      at: data.at.present ? data.at.value : this.at,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('EvidenceRow(')
+          ..write('itemKey: $itemKey, ')
+          ..write('stage: $stage, ')
+          ..write('at: $at')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(itemKey, stage, at);
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is EvidenceRow &&
+          other.itemKey == this.itemKey &&
+          other.stage == this.stage &&
+          other.at == this.at);
+}
+
+class EvidenceRecordsCompanion extends UpdateCompanion<EvidenceRow> {
+  final Value<String> itemKey;
+  final Value<String> stage;
+  final Value<DateTime> at;
+  final Value<int> rowid;
+  const EvidenceRecordsCompanion({
+    this.itemKey = const Value.absent(),
+    this.stage = const Value.absent(),
+    this.at = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  EvidenceRecordsCompanion.insert({
+    required String itemKey,
+    required String stage,
+    required DateTime at,
+    this.rowid = const Value.absent(),
+  }) : itemKey = Value(itemKey),
+       stage = Value(stage),
+       at = Value(at);
+  static Insertable<EvidenceRow> custom({
+    Expression<String>? itemKey,
+    Expression<String>? stage,
+    Expression<DateTime>? at,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (itemKey != null) 'item_key': itemKey,
+      if (stage != null) 'stage': stage,
+      if (at != null) 'at': at,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  EvidenceRecordsCompanion copyWith({
+    Value<String>? itemKey,
+    Value<String>? stage,
+    Value<DateTime>? at,
+    Value<int>? rowid,
+  }) {
+    return EvidenceRecordsCompanion(
+      itemKey: itemKey ?? this.itemKey,
+      stage: stage ?? this.stage,
+      at: at ?? this.at,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (itemKey.present) {
+      map['item_key'] = Variable<String>(itemKey.value);
+    }
+    if (stage.present) {
+      map['stage'] = Variable<String>(stage.value);
+    }
+    if (at.present) {
+      map['at'] = Variable<DateTime>(at.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('EvidenceRecordsCompanion(')
+          ..write('itemKey: $itemKey, ')
+          ..write('stage: $stage, ')
+          ..write('at: $at, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
 abstract class _$AppDatabase extends GeneratedDatabase {
   _$AppDatabase(QueryExecutor e) : super(e);
   $AppDatabaseManager get managers => $AppDatabaseManager(this);
@@ -9650,6 +9912,9 @@ abstract class _$AppDatabase extends GeneratedDatabase {
   late final $DailyActivityTable dailyActivity = $DailyActivityTable(this);
   late final $UserBookComprehensionTable userBookComprehension =
       $UserBookComprehensionTable(this);
+  late final $EvidenceRecordsTable evidenceRecords = $EvidenceRecordsTable(
+    this,
+  );
   @override
   Iterable<TableInfo<Table, Object?>> get allTables =>
       allSchemaEntities.whereType<TableInfo<Table, Object?>>();
@@ -9674,6 +9939,7 @@ abstract class _$AppDatabase extends GeneratedDatabase {
     userGrammarProgress,
     dailyActivity,
     userBookComprehension,
+    evidenceRecords,
   ];
   @override
   StreamQueryUpdateRules get streamUpdateRules => const StreamQueryUpdateRules([
@@ -14984,6 +15250,170 @@ typedef $$UserBookComprehensionTableProcessedTableManager =
       BookComprehensionRow,
       PrefetchHooks Function()
     >;
+typedef $$EvidenceRecordsTableCreateCompanionBuilder =
+    EvidenceRecordsCompanion Function({
+      required String itemKey,
+      required String stage,
+      required DateTime at,
+      Value<int> rowid,
+    });
+typedef $$EvidenceRecordsTableUpdateCompanionBuilder =
+    EvidenceRecordsCompanion Function({
+      Value<String> itemKey,
+      Value<String> stage,
+      Value<DateTime> at,
+      Value<int> rowid,
+    });
+
+class $$EvidenceRecordsTableFilterComposer
+    extends Composer<_$AppDatabase, $EvidenceRecordsTable> {
+  $$EvidenceRecordsTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get itemKey => $composableBuilder(
+    column: $table.itemKey,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get stage => $composableBuilder(
+    column: $table.stage,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get at => $composableBuilder(
+    column: $table.at,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$EvidenceRecordsTableOrderingComposer
+    extends Composer<_$AppDatabase, $EvidenceRecordsTable> {
+  $$EvidenceRecordsTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get itemKey => $composableBuilder(
+    column: $table.itemKey,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get stage => $composableBuilder(
+    column: $table.stage,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get at => $composableBuilder(
+    column: $table.at,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$EvidenceRecordsTableAnnotationComposer
+    extends Composer<_$AppDatabase, $EvidenceRecordsTable> {
+  $$EvidenceRecordsTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get itemKey =>
+      $composableBuilder(column: $table.itemKey, builder: (column) => column);
+
+  GeneratedColumn<String> get stage =>
+      $composableBuilder(column: $table.stage, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get at =>
+      $composableBuilder(column: $table.at, builder: (column) => column);
+}
+
+class $$EvidenceRecordsTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $EvidenceRecordsTable,
+          EvidenceRow,
+          $$EvidenceRecordsTableFilterComposer,
+          $$EvidenceRecordsTableOrderingComposer,
+          $$EvidenceRecordsTableAnnotationComposer,
+          $$EvidenceRecordsTableCreateCompanionBuilder,
+          $$EvidenceRecordsTableUpdateCompanionBuilder,
+          (
+            EvidenceRow,
+            BaseReferences<_$AppDatabase, $EvidenceRecordsTable, EvidenceRow>,
+          ),
+          EvidenceRow,
+          PrefetchHooks Function()
+        > {
+  $$EvidenceRecordsTableTableManager(
+    _$AppDatabase db,
+    $EvidenceRecordsTable table,
+  ) : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$EvidenceRecordsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$EvidenceRecordsTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$EvidenceRecordsTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<String> itemKey = const Value.absent(),
+                Value<String> stage = const Value.absent(),
+                Value<DateTime> at = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => EvidenceRecordsCompanion(
+                itemKey: itemKey,
+                stage: stage,
+                at: at,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                required String itemKey,
+                required String stage,
+                required DateTime at,
+                Value<int> rowid = const Value.absent(),
+              }) => EvidenceRecordsCompanion.insert(
+                itemKey: itemKey,
+                stage: stage,
+                at: at,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$EvidenceRecordsTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $EvidenceRecordsTable,
+      EvidenceRow,
+      $$EvidenceRecordsTableFilterComposer,
+      $$EvidenceRecordsTableOrderingComposer,
+      $$EvidenceRecordsTableAnnotationComposer,
+      $$EvidenceRecordsTableCreateCompanionBuilder,
+      $$EvidenceRecordsTableUpdateCompanionBuilder,
+      (
+        EvidenceRow,
+        BaseReferences<_$AppDatabase, $EvidenceRecordsTable, EvidenceRow>,
+      ),
+      EvidenceRow,
+      PrefetchHooks Function()
+    >;
 
 class $AppDatabaseManager {
   final _$AppDatabase _db;
@@ -15026,4 +15456,6 @@ class $AppDatabaseManager {
       $$DailyActivityTableTableManager(_db, _db.dailyActivity);
   $$UserBookComprehensionTableTableManager get userBookComprehension =>
       $$UserBookComprehensionTableTableManager(_db, _db.userBookComprehension);
+  $$EvidenceRecordsTableTableManager get evidenceRecords =>
+      $$EvidenceRecordsTableTableManager(_db, _db.evidenceRecords);
 }

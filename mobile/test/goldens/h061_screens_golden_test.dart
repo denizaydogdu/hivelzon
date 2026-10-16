@@ -93,6 +93,13 @@ Future<void> _tap(WidgetTester tester, Finder f) async {
 
 /// Görevdeki anlamın doğru seçeneğine dokunur.
 Future<void> _answerRight(WidgetTester tester) async {
+  // H-089: pratikten sonra gelen hatırlama sorusu (kendini yokla).
+  final reveal = find.byKey(const ValueKey('task-reveal'));
+  if (reveal.evaluate().isNotEmpty) {
+    await _tap(tester, reveal);
+    await _tap(tester, find.byKey(const ValueKey('task-knew')));
+    return;
+  }
   final meaning = tester
       .widget<Text>(find.byKey(const ValueKey('task-meaning')))
       .data!;
@@ -122,16 +129,18 @@ final _cases = <String, _Case>{
   'tekrar_ozet': _Case(
     AppRoutes.review,
     act: (tester) async {
-      for (var i = 0; i < 12; i++) {
+      var dontKnow = true;
+      for (var i = 0; i < 20; i++) {
         if (find
             .byKey(const ValueKey('review-summary'))
             .evaluate()
             .isNotEmpty) {
           break;
         }
-        // İlk görevi bilmeyelim: özet "yarın" ve "ilk seferde" sayılarını
-        // birlikte göstersin.
-        if (i == 0) {
+        // İlk görevi (pratik) bilmeyelim: özet "ilk seferde" ve "sonra"
+        // sayılarını birlikte göstersin (H-089: pratik not almaz).
+        if (dontKnow) {
+          dontKnow = false;
           await _tap(tester, find.byKey(const ValueKey('task-dont-know')));
         } else {
           await _answerRight(tester);

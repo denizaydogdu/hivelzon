@@ -34,7 +34,9 @@ final reviewRandomProvider = Provider<math.Random>((ref) => math.Random());
 
 enum _Phase { loading, empty, asking, feedback, done, error }
 
-/// Tekrar oturumu (H-036): hatırlama soruları → FSRS notu.
+/// Tekrar oturumu (H-036): hatırlama soruları → FSRS notu. H-089: pratik
+/// görevleri (seç, dinle-seç, diz, dinle ve söyle) not vermez; başarılı
+/// pratikten sonra aynı ifade oturumun sonunda hatırlama sorusu olur.
 ///
 /// Süre ölçülür ama gösterilmez (K-32: geri sayım yok). "Bilmiyorum" her
 /// görevde var; utandırmaz, kart oturumun sonunda yeniden gelir.
@@ -62,7 +64,8 @@ class _ReviewScreenState extends ConsumerState<ReviewScreen> {
   final List<String> _picked = [];
   final TextEditingController _typed = TextEditingController();
 
-  /// "Dinle ve söyle" (H-055): son denemenin durumu (yalnızca sonuç).
+  /// "Dinle ve söyle" / "Söyle" (H-055, H-089): son denemenin durumu
+  /// (yalnızca sonuç).
   SpeakController? _speak;
   String? _speakNoteId;
   SpeechMatchLevel? _speakLevel;
@@ -137,31 +140,55 @@ class _ReviewScreenState extends ConsumerState<ReviewScreen> {
     }
   }
 
-  /// "Dinle ve söyle" denemesi bitti (H-055). Tam → hemen; denemeler dolunca
-  /// en iyi sonuç; yakın sonuçta kullanıcı "Devam et" ile de geçebilir.
+  /// Söyleme denemesi bitti (H-055). Tam → hemen; denemeler dolunca en iyi
+  /// sonuç; yakın sonuçta (anlamı değiştiren ek yoksa) kullanıcı "Devam et"
+  /// ile de geçebilir.
   void _onSpeakAttempt(SpeakController c) {
     _speak = c;
     _speakNoteId = c.errorNoteId ?? _speakNoteId;
     if (c.finished) {
-      unawaited(_answerSpeech(c.bestLevel ?? SpeechMatchLevel.no, c.attempts));
+      unawaited(
+        _answerSpeech(
+          c.bestLevel ?? SpeechMatchLevel.no,
+          c.attempts,
+          c.best?.changedWords ?? const [],
+        ),
+      );
     } else if (mounted) {
       setState(() {});
     }
   }
 
-  Future<void> _answerSpeech(SpeechMatchLevel level, int attempts) async {
+  /// "Dinle ve söyle" taklittir: not yok, yalnızca başarılı mı (H-089).
+  /// "Söyle" (sesi duymadan) hatırlamadır: [ReviewPolicy.rateSpeech]; anlamı
+  /// değiştiren ek varsa Again.
+  Future<void> _answerSpeech(
+    SpeechMatchLevel level,
+    int attempts,
+    List<String> changedWords,
+  ) async {
     final s = _session;
     final sc = s?.current;
-    if (s == null || sc == null) return;
+    final task = s?.task;
+    if (s == null || sc == null || task == null) return;
     _speakLevel = level;
+    if (task.type != TaskType.speakRecall) {
+      await _answer(
+        correct: ReviewPolicy.speechPracticeSucceeded(
+          level,
+          changedWords: changedWords,
+        ),
+      );
+      return;
+    }
     final rating = ReviewPolicy.rateSpeech(
       level: level,
       elapsed: _watch.elapsed,
       stage: sc.card.stage,
       attempts: attempts,
-      audioLength: sc.item.audio?.length ?? Duration.zero,
+      changedWords: changedWords,
     );
-    await _answer(correct: level != SpeechMatchLevel.no, rating: rating);
+    await _answer(correct: rating != FsrsRating.again, rating: rating);
   }
 
   /// "Geç": not yok, kayıt yok; kart sonraki oturumda yine gelir.
@@ -197,7 +224,7 @@ class _ReviewScreenState extends ConsumerState<ReviewScreen> {
     }
     // Söyleme denemesi `speech_attempts`'e yazıldı; tanıma gürültüsü hata
     // sayılmaz. "Bilmiyorum" her görevde hatırlama sinyalidir.
-    if (!outcome.correct && (task.type != TaskType.speak || dontKnow)) {
+    if (!outcome.correct && (!_speaks(task.type) || dontKnow)) {
       _recordMiss(task);
     }
     if (!mounted) return;
@@ -207,6 +234,9 @@ class _ReviewScreenState extends ConsumerState<ReviewScreen> {
     setState(() => _outcome = outcome);
     unawaited(_audio.play(outcome.item));
   }
+
+  static bool _speaks(TaskType t) =>
+      t == TaskType.speak || t == TaskType.speakRecall;
 
   void _recordMiss(RetrievalTask task) {
     final type = switch (task.type) {
@@ -332,6 +362,7 @@ class _ReviewScreenState extends ConsumerState<ReviewScreen> {
       TaskType.type => ReviewTexts.type,
       TaskType.selfCheck || TaskType.sceneHunt => ReviewTexts.selfCheck,
       TaskType.speak => SpeakTexts.reviewTask,
+      TaskType.speakRecall => SpeakTexts.recallTask,
     };
     final listen =
         task.type == TaskType.listenChoice || task.type == TaskType.speak;
@@ -368,10 +399,12 @@ class _ReviewScreenState extends ConsumerState<ReviewScreen> {
                     ),
                   ),
                 ],
-                if (task.type == TaskType.speak) ...[
+                if (_speaks(task.type)) ...[
                   const SizedBox(height: AppSpace.s8),
                   Text(
-                    SpeakTexts.reviewHint,
+                    task.type == TaskType.speak
+                        ? SpeakTexts.reviewHint
+                        : SpeakTexts.recallHint,
                     style: theme.textTheme.bodyMedium?.copyWith(
                       color: AppPalette.ink500,
                     ),
@@ -463,7 +496,7 @@ class _ReviewScreenState extends ConsumerState<ReviewScreen> {
             child: const Text(ReviewTexts.check),
           ),
         ]);
-      case TaskType.speak:
+      case TaskType.speak || TaskType.speakRecall:
         final c = _speak;
         children.add(
           SpeakPractice(
@@ -476,17 +509,19 @@ class _ReviewScreenState extends ConsumerState<ReviewScreen> {
             keyPrefix: 'review-speak',
           ),
         );
-        // Yakın sonuçta denemeyi bitirip geçmek de olur (→ Hard).
+        // Yakın sonuçta denemeyi bitirip geçmek de olur (→ Hard). Anlamı
+        // değiştiren ek duyulduysa (H-087) bir daha denemek önerilir.
         if (c != null &&
             !c.finished &&
-            c.last?.level == SpeechMatchLevel.close) {
+            c.last?.level == SpeechMatchLevel.close &&
+            c.last!.changedWords.isEmpty) {
           children.add(
             Padding(
               padding: const EdgeInsets.only(top: AppSpace.s8),
               child: FilledButton(
                 key: const ValueKey('review-speak-accept'),
                 onPressed: () => unawaited(
-                  _answerSpeech(SpeechMatchLevel.close, c.attempts),
+                  _answerSpeech(SpeechMatchLevel.close, c.attempts, const []),
                 ),
                 child: const Text(SpeakTexts.reviewAccept),
               ),
@@ -537,7 +572,7 @@ class _ReviewScreenState extends ConsumerState<ReviewScreen> {
         expand: true,
         onPressed: () => _answer(correct: false, dontKnow: true),
       ),
-      if (task.type == TaskType.speak)
+      if (_speaks(task.type))
         Center(
           child: TextButton(
             key: const ValueKey('task-skip'),
@@ -629,8 +664,7 @@ class _ReviewScreenState extends ConsumerState<ReviewScreen> {
     final o = _outcome;
     final theme = Theme.of(context);
     if (o == null) return const Center(child: CircularProgressIndicator());
-    final again = o.rating == FsrsRating.again;
-    final speak = o.taskType == TaskType.speak;
+    final speak = _speaks(o.taskType);
     final title = o.correct
         ? (speak
               ? (_speakLevel == SpeechMatchLevel.close
@@ -642,7 +676,10 @@ class _ReviewScreenState extends ConsumerState<ReviewScreen> {
         : o.dontKnow
         ? ReviewTexts.dontKnowFeedback
         : ReviewTexts.wrongFeedback;
-    final body = again
+    // H-089: başarılı pratikten sonra oturum sonunda hatırlama sorusu gelir.
+    final body = o.recallFollows
+        ? ReviewTexts.recallFollows
+        : o.again || (o.practice && !o.correct)
         ? (o.requeued ? ReviewTexts.requeued : ReviewTexts.soon)
         : null;
     final chosen = _chosen;

@@ -35,7 +35,7 @@ class RetrievalTask {
         for (var i = 0; i < picked.length; i++) picked[i] == answerTokens[i],
       ].every((ok) => ok);
 
-  /// "Dinle ve söyle"de beklenen ifade: `…` içeriyorsa örnek cümle.
+  /// "Dinle ve söyle" ve "Söyle"de beklenen ifade: `…` içeriyorsa örnek cümle.
   String get spokenText => item.textEn.contains('…') && item.exampleEn != null
       ? item.exampleEn!
       : item.textEn;
@@ -55,7 +55,8 @@ List<String> arrangeTokens(NotebookItem item) {
   return source.split(RegExp(r'\s+')).where((t) => t.isNotEmpty).toList();
 }
 
-/// Kart için görev kurar. Çeldiriciler defterden: önce aynı tür, sonra aynı
+/// Kart için görev kurar. [recallOnly]: pratikten sonra oturum sonunda gelen
+/// hatırlama sorusu (H-089). Çeldiriciler defterden: önce aynı tür, sonra aynı
 /// bölüm, sonra diğerleri; aynı İngilizceyi taşıyan kart çeldirici olmaz.
 RetrievalTask buildTask({
   required NotebookItem item,
@@ -64,6 +65,7 @@ RetrievalTask buildTask({
   required math.Random random,
   String level = 'A1',
   bool canSpeak = false,
+  bool recallOnly = false,
 }) {
   final distractors = _distractors(item, pool, random, 3);
   final tokens = arrangeTokens(item);
@@ -74,6 +76,7 @@ RetrievalTask buildTask({
     optionCount: distractors.length + 1,
     level: level,
     canSpeak: canSpeak,
+    recallOnly: recallOnly,
   );
   switch (type) {
     case TaskType.pictureChoice || TaskType.listenChoice:
@@ -101,7 +104,8 @@ RetrievalTask buildTask({
     case TaskType.type ||
         TaskType.selfCheck ||
         TaskType.sceneHunt ||
-        TaskType.speak:
+        TaskType.speak ||
+        TaskType.speakRecall:
       return RetrievalTask(type: type, item: item);
   }
 }

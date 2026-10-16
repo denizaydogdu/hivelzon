@@ -20,6 +20,8 @@ import 'package:hivelzon/features/hi/presentation/hi_privacy_screen.dart';
 import 'package:hivelzon/features/notebook/application/notebook_providers.dart';
 import 'package:hivelzon/features/notebook/domain/review_session.dart';
 import 'package:hivelzon/features/player/data/progress_repository.dart';
+import 'package:hivelzon/features/notebook/domain/evidence_ladder.dart';
+import 'package:hivelzon/features/notebook/domain/notebook_item.dart';
 import 'package:hivelzon/features/profile/application/profile_providers.dart';
 import 'package:hivelzon/features/profile/presentation/profile_screen.dart';
 import 'package:hivelzon/l10n/tr_strings.dart';
@@ -72,6 +74,20 @@ const _week = WeeklySummary(
   focus: ErrorType.verbForm,
 );
 
+NotebookItem _phrase(String en) => NotebookItem(
+  kind: NotebookKind.phrase,
+  textEn: en,
+  source: NotebookSource.autoTargetPhrase,
+);
+
+/// H-089: "Neler yapabiliyorsun" örneği (adlı profilde; adsızda boş durum).
+final _evidence = EvidenceSummary(
+  recalledLater: [_phrase('Where is…?'), _phrase('Excuse me.')],
+  ownUse: [_phrase("I'm new here.")],
+  revisit: [_phrase('What time is it?')],
+  total: 15,
+);
+
 void main() {
   setUpAll(loadAppFonts);
   setUp(() => SyncController.listenLifecycle = false);
@@ -121,6 +137,9 @@ void main() {
             ),
           ),
           hiKnowledgeProvider.overrideWith((ref) async => _knowledge),
+          evidenceSummaryProvider.overrideWith(
+            (ref) async => name == null ? EvidenceSummary.empty : _evidence,
+          ),
           weeklySummaryProvider.overrideWith((ref) async => _week),
         ],
         // Uygulama kökü gibi: eşitleme denetleyicisi baştan dinlenir.
@@ -177,7 +196,7 @@ void main() {
       >{
         'profil': (
           const ProfileScreen(),
-          1340,
+          1480,
           name: 'Deniz',
           account: null,
           image: ProfileScreen.headerImage,

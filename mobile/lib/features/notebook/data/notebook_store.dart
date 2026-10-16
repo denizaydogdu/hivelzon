@@ -7,6 +7,7 @@ import '../../../shared/storage/app_database.dart';
 import '../../../shared/sync/sync_ids.dart';
 import '../domain/clue_board.dart';
 import '../domain/deck_builder.dart';
+import '../domain/evidence_ladder.dart';
 import '../domain/notebook_item.dart';
 import '../domain/review_policy.dart';
 import '../domain/review_session.dart';
@@ -175,6 +176,9 @@ class NotebookStore {
   /// "Hepsini defterime ekle" yeniden ekleyebilir.
   Future<bool> removeUserItem(int itemId) async {
     await _ready;
+    final key = (await (_db.select(
+      _db.notebookItems,
+    )..where((t) => t.id.equals(itemId))).getSingleOrNull())?.itemKey;
     final n =
         await (_db.delete(_db.notebookItems)..where(
               (t) =>
@@ -187,6 +191,12 @@ class NotebookStore {
                   ]),
             ))
             .go();
+    // Kanıtları da (H-089; "kartı ve geçmişiyle").
+    if (n > 0 && key != null) {
+      await (_db.delete(
+        _db.evidenceRecords,
+      )..where((t) => t.itemKey.equals(key))).go();
+    }
     return n > 0;
   }
 
@@ -208,13 +218,27 @@ class NotebookStore {
     ];
   }
 
+  /// Cevabı yazar. Hatırlama: kart (FSRS) + cevap kaydı + kanıt basamağı.
+  /// Pratik ([ReviewOutcome.practice], H-089): **yalnızca** kanıt basamağı;
+  /// kart ve `review_logs` değişmez (sunucu kartı cevaplardan yeniden
+  /// hesaplar; pratik orada da not sayılmaz).
   Future<void> saveOutcome(ReviewOutcome o) async {
     await _ready;
     final c = o.after;
     await _db.transaction(() async {
-      final itemKey = (await (_db.select(
+      final item = await (_db.select(
         _db.notebookItems,
-      )..where((t) => t.id.equals(c.itemId))).getSingleOrNull())?.itemKey;
+      )..where((t) => t.id.equals(c.itemId))).getSingleOrNull();
+      final itemKey = item?.itemKey;
+      if (item != null) {
+        await _recordEvidence(
+          item.itemKey,
+          EvidenceRules.fromOutcome(o, seenAt: item.createdAt.toUtc()),
+          o.reviewedAt,
+        );
+      }
+      final rating = o.rating;
+      if (rating == null) return;
       await (_db.update(
         _db.reviewCards,
       )..where((t) => t.id.equals(c.id))).write(
@@ -235,7 +259,7 @@ class NotebookStore {
           .insert(
             ReviewLogsCompanion.insert(
               cardId: c.id,
-              rating: o.rating.value,
+              rating: rating.value,
               reviewedAt: o.reviewedAt.toUtc(),
               taskType: o.taskType.code,
               correct: o.correct,
@@ -249,13 +273,51 @@ class NotebookStore {
                       SyncIds.reviewLog(
                         SyncIds.card(itemKey),
                         o.reviewedAt,
-                        o.rating.value,
+                        rating.value,
                       ),
                     ),
             ),
           );
     });
   }
+
+  /// Basamağın ilk anını yazar; var olan basamak değişmez (idempotent).
+  Future<void> _recordEvidence(
+    String itemKey,
+    Set<EvidenceStage> stages,
+    DateTime at,
+  ) async {
+    for (final s in stages) {
+      if (s == EvidenceStage.seen) continue;
+      await _db
+          .into(_db.evidenceRecords)
+          .insert(
+            EvidenceRecordsCompanion.insert(
+              itemKey: itemKey,
+              stage: s.code,
+              at: at.toUtc(),
+            ),
+            mode: InsertMode.insertOrIgnore,
+          );
+    }
+  }
+
+  /// Kanıt basamakları: ifade anahtarı → basamak → ilk an (UTC).
+  Future<Map<String, Map<EvidenceStage, DateTime>>> evidence() async {
+    await _ready;
+    final rows = await _db.select(_db.evidenceRecords).get();
+    final out = <String, Map<EvidenceStage, DateTime>>{};
+    for (final r in rows) {
+      final stage = EvidenceStage.parse(r.stage);
+      if (stage == null) continue;
+      (out[r.itemKey] ??= {})[stage] = r.at.toUtc();
+    }
+    return out;
+  }
+
+  /// Profil özeti (H-089).
+  Future<EvidenceSummary> evidenceSummary() async =>
+      summarizeEvidence(await entries(), await evidence());
 
   /// [fromUtc, toUtc) aralığında ilk kez tekrar edilen (yeni) kart sayısı.
   Future<int> newIntroducedBetween(DateTime fromUtc, DateTime toUtc) async {
