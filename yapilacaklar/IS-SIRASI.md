@@ -148,6 +148,12 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 | K7' | H-084 | B2-K01 eksik bölüm başı görseli (p13), kredi yüklenince | Düşük | kredi | ✅ |
 | K2' | H-086 | Kitap okuyucuda "Sayfanın Türkçesi" (panel + satır altı ayarı) | Orta | H-067 | 🔄 |
 | S1 | H-085 | Sezon 1 Bölüm 5–12 üretimi (üretim bitti; simülatör denemesi + editör onayı bekliyor) | Yüksek | H-032, H-083 | 🔄 |
+| İ1 | H-087 | Konuşma eşleştirmesinde anlam hatası (P0) | Kritik | H-055 | 🔄 |
+| İ2 | H-088 | Tek günlük plan (Ana Sayfa = Hi; seviyeye göre öneri) | Yüksek | H-047, H-074 | 🔄 |
+| İ3 | H-089 | Taklit/hatırlama ayrımı, öğrenme kanıtı basamakları | Yüksek | H-087 | ⏳ |
+| İ4 | H-090 | İlk 7 gün A1 + Konuş'ta 3 yönlendirmeli sahne, kısa mesaj | Yüksek | H-088, H-089 | ⏳ |
+| İ5 | H-091 | Kitap sonu anlama + yeniden anlatma | Orta | H-067 | 🔄 |
+| İ6 | H-092 | Kullanılabilirlik testi ve 7–14 gün pilot | Yüksek | H-087…H-091 | ⏳ |
 
 **Sıra:** H-065 hemen (belge + katalog) → H-066 ve H-067, tasarım fazlarıyla paralel, ayrı dallarda → H-069 pilot → resim yoğunluğu ve ses planı kararı → H-068, H-070 → H-071 → H-072 → H-073.
 
@@ -430,3 +436,4 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
   - Dilbilgisi A2: 7 dersin İngilizce örnekleri sesli (G-A2-01…07; 08 kısmen); hesap4 doldu. G-A1-15 hikâye bağı düzeltildi (0 hata). H-070 ve H-074 ayrı dallarda başladı.
   - **H-070 bitti:** kitaplar `content_items` içinde (BOOK türü, C2 yalnız kitap, V10), içe aktarma + K-05 onayı + `GET /api/v1/catalog/books`; yönetim ekranında Kitaplık süzgeci; `book_lint.py --write-reports` (export_book sonrası çalışmalı). Backend 137 test, araçlar 281 test geçti.
   - **H-074 bitti:** günlük hedef halkası gerçek etkin süreyi gösterir (öğrenme ekranı açık + uygulama ön planda; dokunma/oynayan video/sesli okuma; boşta 2 dk sınırı); yalnız günlük toplam (Drift şema 8, backend V11, hesap varsa eşitlenir). Keşfet şimdilik ölçülmez. Mobil 956, backend 139 test geçti.
+  - **Ürün incelemesi** (başka bir yapay zekânın raporu, `docs/URUN-INCELEMESI-2026-10-15.md`) değerlendirildi; konuşma eşleştirme hatası, sezon seçiminin seviyeyi kullanmaması, Ana Sayfa–Hi kopukluğu ve Konuş'un boş olması kodda doğrulandı. Kullanıcı bütün önerileri onayladı: H-087…H-092 açıldı (odak A1–A2, yeni C1/C2 dalgası yok, K-30 pilotta sınanır). H-087, H-088, H-091 paralel başladı.
