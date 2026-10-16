@@ -149,10 +149,10 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 | K2' | H-086 | Kitap okuyucuda "Sayfanın Türkçesi" (panel + satır altı ayarı) | Orta | H-067 | 🔄 |
 | S1 | H-085 | Sezon 1 Bölüm 5–12 üretimi (üretim bitti; simülatör denemesi + editör onayı bekliyor) | Yüksek | H-032, H-083 | 🔄 |
 | İ1 | H-087 | Konuşma eşleştirmesinde anlam hatası (P0) | Kritik | H-055 | ✅ |
-| İ2 | H-088 | Tek günlük plan (Ana Sayfa = Hi; seviyeye göre öneri) | Yüksek | H-047, H-074 | 🔄 |
+| İ2 | H-088 | Tek günlük plan (Ana Sayfa = Hi; seviyeye göre öneri) | Yüksek | H-047, H-074 | ✅ |
 | İ3 | H-089 | Taklit/hatırlama ayrımı, öğrenme kanıtı basamakları | Yüksek | H-087 | 🔄 |
 | İ4 | H-090 | İlk 7 gün A1 + Konuş'ta 3 yönlendirmeli sahne, kısa mesaj | Yüksek | H-088, H-089 | ⏳ |
-| İ5 | H-091 | Kitap sonu anlama + yeniden anlatma | Orta | H-067 | 🔄 |
+| İ5 | H-091 | Kitap sonu anlama + yeniden anlatma | Orta | H-067 | ✅ |
 | İ6 | H-092 | Kullanılabilirlik testi ve 7–14 gün pilot | Yüksek | H-087…H-091 | ⏳ |
 
 **Sıra:** H-065 hemen (belge + katalog) → H-066 ve H-067, tasarım fazlarıyla paralel, ayrı dallarda → H-069 pilot → resim yoğunluğu ve ses planı kararı → H-068, H-070 → H-071 → H-072 → H-073.
@@ -438,3 +438,5 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
   - **H-074 bitti:** günlük hedef halkası gerçek etkin süreyi gösterir (öğrenme ekranı açık + uygulama ön planda; dokunma/oynayan video/sesli okuma; boşta 2 dk sınırı); yalnız günlük toplam (Drift şema 8, backend V11, hesap varsa eşitlenir). Keşfet şimdilik ölçülmez. Mobil 956, backend 139 test geçti.
   - **Ürün incelemesi** (başka bir yapay zekânın raporu, `docs/URUN-INCELEMESI-2026-10-15.md`) değerlendirildi; konuşma eşleştirme hatası, sezon seçiminin seviyeyi kullanmaması, Ana Sayfa–Hi kopukluğu ve Konuş'un boş olması kodda doğrulandı. Kullanıcı bütün önerileri onayladı: H-087…H-092 açıldı (odak A1–A2, yeni C1/C2 dalgası yok, K-30 pilotta sınanır). H-087, H-088, H-091 paralel başladı.
   - **H-087 bitti:** anlamı değiştiren fazla kelime (olumsuzluk, modal, sayı, başa do/does/did) artık "tam" sayılmaz; "Neredeyse!" + kelime gösterilir, tekrar notu en fazla Hard. Mobil 969 test geçti. Açık nokta: olumsuzlukla kalan cevap Hard sayılıyor (cihaz "can/can't"ı karıştırabildiği için); H-089 taklidi hatırlamadan ayırınca yeniden bakılır. H-089 başladı.
+  - **H-091 bitti:** 30 kitabın sonunda 2 anlama sorusu (yanlışta sayfa ipucu, ikinci yanlışta doğrusu) + isteğe bağlı yeniden anlatma (yazılan metin saklanmaz; örnek anlatım + öz değerlendirme). Drift şema 9, backend V12. 60 soru ve 30 örnek anlatım Claude taslağı: editör onayı bekler (H-028). Kitap paketleri yeniden dışa aktarıldı (book_lint 0 hata).
+  - **H-088 bitti:** Ana Sayfa ve Hi tek karardan (`planToday`) beslenir: "Bugünün planı" (Kısa tekrar · Sahne/Okuma · Küçük görev), "Neden?" gerekçesi, "Başka bir öneri" (o gün için). B1+ kullanıcıda birincil öneri seviyesinde kitap, hikâye "isteğe bağlı". Ana Sayfa'da "Çalışma araçların": Kelime tekrarı ve Defter tek dokunuş (sekmeler değişmedi). Eşikler (yarım bölüm 7 gün, uzun ara 7 gün) pilotta sınanacak. Mobil 1007 test geçti.

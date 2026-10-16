@@ -1,6 +1,6 @@
 # H-091: Kitap sonunda kısa anlama ve yeniden anlatma
 
-- **Durum:** Devam ediyor (2026-10-16)
+- **Durum:** Bitti (2026-10-16); içerik editör onayı bekler (H-028)
 - **Tür:** Uygulama + içerik
 - **Faz:** F1 MVP — ürün incelemesi sonrası (2026-10-16)
 - **Bağımlılık:** H-067, H-089

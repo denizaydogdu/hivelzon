@@ -1,6 +1,6 @@
 # H-088: Tek günlük plan: Ana Sayfa ve Hi aynı öneriyi verir
 
-- **Durum:** Devam ediyor (2026-10-16)
+- **Durum:** Bitti (2026-10-16); içerik editör onayı bekler (H-028)
 - **Tür:** Uygulama (kod)
 - **Faz:** F1 MVP — ürün incelemesi sonrası (2026-10-16)
 - **Bağımlılık:** H-047, H-060, H-074
