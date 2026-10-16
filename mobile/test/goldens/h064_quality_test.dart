@@ -63,7 +63,7 @@ final _cases = <String, _Case>{
   'kabuk_ana_sayfa': const _Case(AppRoutes.home, 'home-continue'),
   'kabuk_hikaye': const _Case(AppRoutes.story, 'season-map'),
   'kabuk_profil': const _Case(AppRoutes.profile, 'profile-list'),
-  'konus': const _Case(AppRoutes.talk, 'placeholder-heading'),
+  'konus': const _Case(AppRoutes.talk, 'talk-screen'),
   'hi_paneli': const _Case(AppRoutes.home, 'hi-panel', act: _openHiPanel),
   'sezon_jenerigi': const _Case(
     '/sezon/1/jenerik',

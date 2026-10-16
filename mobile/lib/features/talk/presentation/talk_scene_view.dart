@@ -52,7 +52,7 @@ class TalkSceneView extends ConsumerStatefulWidget {
 }
 
 class _TalkSceneViewState extends ConsumerState<TalkSceneView> {
-  late final TalkLineSpeaker _player = TalkLineSpeaker(ref);
+  late final TalkLineSpeaker _player;
   final _scroll = ScrollController();
 
   /// -1: giriş; 0…n-1: tur; n: bitti.
@@ -75,6 +75,12 @@ class _TalkSceneViewState extends ConsumerState<TalkSceneView> {
   TalkTask get _task => widget.task;
   bool get _done => _index >= _task.turns.length;
   TalkTurn get _turn => _task.turns[_index];
+
+  @override
+  void initState() {
+    super.initState();
+    _player = TalkLineSpeaker(ref);
+  }
 
   @override
   void dispose() {
@@ -324,16 +330,20 @@ class _TalkSceneViewState extends ConsumerState<TalkSceneView> {
         children
           ..add(const SizedBox(height: AppSpace.s12))
           ..add(TalkBubble(speaker: speaker, text: t.line.en));
-        children
-          ..add(const SizedBox(height: AppSpace.s8))
-          ..add(
-            TalkBubble(
-              key: ValueKey('talk-answer-${t.id}'),
-              speaker: TalkTexts.you,
-              text: r.answer ?? t.model,
-              mine: true,
-            ),
-          );
+        // Geçilen turda kullanıcının balonu yok (söylemedi).
+        final answer = r.answer;
+        if (answer != null) {
+          children
+            ..add(const SizedBox(height: AppSpace.s8))
+            ..add(
+              TalkBubble(
+                key: ValueKey('talk-answer-${t.id}'),
+                speaker: TalkTexts.you,
+                text: answer,
+                mine: true,
+              ),
+            );
+        }
       }
       if (!_done) {
         children
@@ -703,7 +713,7 @@ class _TalkSceneViewState extends ConsumerState<TalkSceneView> {
         const SizedBox(height: AppSpace.s12),
         TalkLineView(
           key: const ValueKey('talk-outro'),
-          speaker: speaker,
+          speaker: outro.nameTr ?? speaker,
           line: outro,
           player: _player,
           keyPrefix: 'talk-outro',

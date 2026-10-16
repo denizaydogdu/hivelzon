@@ -22,17 +22,26 @@ enum TalkKind {
 /// Karakterin bir satırı. [audio]: bölüm kaydından aynen alınmış ses
 /// (sezon paketinde `talk/…m4a`); yoksa cihazın İngilizce sesi okur.
 class TalkLine {
-  const TalkLine({required this.en, required this.tr, this.audio});
+  const TalkLine({
+    required this.en,
+    required this.tr,
+    this.audio,
+    this.nameTr,
+  });
 
   factory TalkLine.fromJson(Map<String, dynamic> j) => TalkLine(
     en: j['en'] as String,
     tr: j['tr'] as String,
     audio: j['audio'] as String?,
+    nameTr: j['nameTr'] as String?,
   );
 
   final String en;
   final String tr;
   final String? audio;
+
+  /// Konuşan sahnenin karakteri değilse adı (ör. kapanışta "Mrs Brooks").
+  final String? nameTr;
 }
 
 /// Kabul edilmeyen ama yakın seçenek ve kibar tepkisi (K-28: tepkiden sonra

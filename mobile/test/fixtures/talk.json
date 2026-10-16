@@ -152,6 +152,7 @@
     }
    ],
    "outro": {
+    "nameTr": "Mrs Brooks",
     "en": "Hello, Alex. Nice to meet you.",
     "tr": "Merhaba Alex. Tanıştığımıza memnun oldum.",
     "audio": "talk/maya-neighbour-outro.m4a"

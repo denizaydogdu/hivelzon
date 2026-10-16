@@ -79,5 +79,5 @@
       "targets": ["Nice to meet you."]
     }
   ],
-  "outro": {"speaker": "MRS BROOKS", "en": "Hello, Alex. Nice to meet you.", "tr": "Merhaba Alex. Tanıştığımıza memnun oldum."}
+  "outro": {"speaker": "MRS BROOKS", "nameTr": "Mrs Brooks", "en": "Hello, Alex. Nice to meet you.", "tr": "Merhaba Alex. Tanıştığımıza memnun oldum."}
 }
