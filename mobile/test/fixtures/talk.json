@@ -313,6 +313,9 @@
    "check": {
     "all": [
      [
+      "pier 3"
+     ],
+     [
       "friday"
      ],
      [
@@ -324,7 +327,7 @@
      "never",
      "no"
     ],
-    "hintTr": "Günü (Friday) ve saati (seven) yazmayı unutma."
+    "hintTr": "Yeri (Pier 3), günü (Friday) ve saati (seven) yazmayı unutma."
    },
    "targets": [
     "on Friday",
@@ -354,10 +357,17 @@
    "check": {
     "all": [
      [
-      "sorry"
+      "sorry",
+      "apologies"
      ],
      [
-      "late"
+      "I'm late",
+      "I am late",
+      "I'm going to be late",
+      "I am going to be late",
+      "I'll be late",
+      "I will be late",
+      "running late"
      ]
     ],
     "none": [
@@ -365,7 +375,7 @@
      "never",
      "no"
     ],
-    "hintTr": "Özür (Sorry) ve geç kalmak (late) mesajında olsun."
+    "hintTr": "Özür (Sorry) ve geç kaldığını (I'm late) yaz. Gecikme anlamı ayrı bir cümlede de olabilir."
    },
    "targets": [
     "Sorry, I'm late."

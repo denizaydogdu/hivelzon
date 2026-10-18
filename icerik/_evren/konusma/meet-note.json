@@ -15,9 +15,9 @@
   "image": {"episode": "A1-004", "path": "stills/B4-08-iki-not.webp"},
   "model": {"en": "Pier 3. On Friday at seven.", "tr": "Pier 3. Cuma günü saat yedide."},
   "check": {
-    "all": [["friday"], ["seven"]],
+    "all": [["pier 3"], ["friday"], ["seven"]],
     "none": ["not", "never", "no"],
-    "hintTr": "Günü (Friday) ve saati (seven) yazmayı unutma."
+    "hintTr": "Yeri (Pier 3), günü (Friday) ve saati (seven) yazmayı unutma."
   },
   "targets": ["on Friday", "at seven"]
 }

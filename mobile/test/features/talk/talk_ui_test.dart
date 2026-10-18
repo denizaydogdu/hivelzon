@@ -243,8 +243,10 @@ void main() {
   });
 
   group('kısa mesaj', () {
-    testWidgets('kural: eksik ve ters anlam sakin ipucu; doğru mesaj → '
-        'kendi kullandı; yazılan metin saklanmaz', (tester) async {
+    testWidgets('kural: eksik ve ters anlam sakin ipucu; ipucundan sonra '
+        'doğru mesaj yardımlı sayılır; yazılan metin saklanmaz', (
+      tester,
+    ) async {
       final h = TalkHarness(
         completed: const ['A1-001', 'A1-002', 'A1-003', 'A1-004', 'A1-005'],
       );
@@ -253,12 +255,12 @@ void main() {
       await h.pump(tester, '/konusma/late-maya');
       await tester.enterText(
         find.byKey(const ValueKey('message-field')),
-        "I'm not late",
+        "Sorry, I'm not late.",
       );
       await h.tap(tester, 'message-send');
       expect(find.byKey(const ValueKey('message-hint')), findsOneWidget);
       expect(find.textContaining('"not" var'), findsOneWidget);
-      expect(find.textContaining('göremedim: sorry'), findsOneWidget);
+      expect(find.textContaining("göremedim: I'm late"), findsOneWidget);
       await tester.enterText(
         find.byKey(const ValueKey('message-field')),
         'Sorry Maya! I am late. The bus is late.',
@@ -266,8 +268,10 @@ void main() {
       await h.tap(tester, 'message-send');
       expect(find.text(TalkTexts.passed), findsOneWidget);
       expect(find.byKey(const ValueKey('message-model')), findsOneWidget);
+      // İpucu görüldü: kanıt **yardımlı** yazılır, own_use değil.
       final ev = await tester.runAsync(() => NotebookStore(h.db).evidence());
-      expect(ev!["phrase|sorry i'm late"]?.keys, [EvidenceStage.ownUse]);
+      expect(ev!["phrase|sorry i'm late"]?.keys, [EvidenceStage.helped]);
+      expect(find.textContaining('yardımla kullandın'), findsOneWidget);
       final done = await tester.runAsync(
         () => TalkProgressStore(h.db).doneAt(),
       );
@@ -287,6 +291,30 @@ void main() {
       });
       expect(dump, isNot(contains('bus is late')));
       expect(dump, isNot(contains('Sorry Maya')));
+    });
+
+    testWidgets('kural: ilk denemede doğru mesaj kendi kullanım sayılır', (
+      tester,
+    ) async {
+      final h = TalkHarness(
+        completed: const ['A1-001', 'A1-002', 'A1-003', 'A1-004', 'A1-005'],
+      );
+      addTearDown(h.dispose);
+      await h.addTargets(["Sorry, I'm late."]);
+      await h.pump(tester, '/konusma/late-maya');
+      // Yardım görülmedi: farklı cümleye bölünmüş doğal cevap da geçer.
+      await tester.enterText(
+        find.byKey(const ValueKey('message-field')),
+        'Sorry, Maya. I am late.',
+      );
+      await h.tap(tester, 'message-send');
+      expect(find.text(TalkTexts.passed), findsOneWidget);
+      expect(
+        find.textContaining('Kendin kullandığın ifadeler'),
+        findsOneWidget,
+      );
+      final ev = await tester.runAsync(() => NotebookStore(h.db).evidence());
+      expect(ev!["phrase|sorry i'm late"]?.keys, [EvidenceStage.ownUse]);
     });
 
     testWidgets('kural yoksa örnek mesaj + öz değerlendirme; kanıt yazılmaz', (

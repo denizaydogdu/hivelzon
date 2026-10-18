@@ -34,6 +34,11 @@ class _TalkMessageViewState extends ConsumerState<TalkMessageView> {
   MessageCheckResult? _check;
   List<String> _used = const [];
 
+  /// Görev denemesi boyunca yardım görüldü mü (ipucu ya da örnek mesaj).
+  /// Görüldüyse geçen cevap **yardımlı** sayılır: `own_use` yazılmaz
+  /// (17 Ekim 2026 regresyonu; sahne ekranındaki `_sawHelp` ile aynı kural).
+  bool _sawHelp = false;
+
   TalkTask get _task => widget.task;
 
   @override
@@ -61,18 +66,23 @@ class _TalkMessageViewState extends ConsumerState<TalkMessageView> {
       setState(() {
         _check = r;
         _stage = _Stage.retry;
+        // İpucu gösterildi: bundan sonraki doğru cevap yardımlı sayılır.
+        _sawHelp = true;
       });
       return;
     }
-    final used = TalkMatcher.usedTargets(_task.targets, text);
+    // Kural mesajın **anlamını** doğruladı; hedef ifadenin parçaları aranır
+    // (cümlelerden birleştirme yapılmaz, kural zaten anlamı denetler).
+    final used = TalkMatcher.coveredTargets(_task.targets, text);
     setState(() {
       _check = r;
       _used = used;
       _stage = _Stage.passed;
     });
     final actions = ref.read(talkActionsProvider);
-    // Yardımsız, denetlenen yazma → "kendi kullandı" (H-089).
-    await actions.recordUse(used, own: true);
+    // Anlam denetiminden geçti; ipucu/örnek görülmediyse "kendi kullandı"
+    // (H-089). Yardım görüldüyse "yardımla" yazılır: own_use üretilmez.
+    await actions.recordUse(used, own: !_sawHelp);
     await _finish();
   }
 
@@ -176,7 +186,11 @@ class _TalkMessageViewState extends ConsumerState<TalkMessageView> {
           ..add(
             OutlinedButton(
               key: const ValueKey('message-show-model'),
-              onPressed: () => setState(() => _stage = _Stage.selfCheck),
+              onPressed: () => setState(() {
+                _stage = _Stage.selfCheck;
+                // Örnek mesaj açıldı: yardım görüldü.
+                _sawHelp = true;
+              }),
               style: OutlinedButton.styleFrom(
                 minimumSize: const Size.fromHeight(AppTouch.min),
               ),
@@ -277,7 +291,7 @@ class _TalkMessageViewState extends ConsumerState<TalkMessageView> {
             ..add(const SizedBox(height: AppSpace.s8))
             ..add(
               Text(
-                TalkTexts.endOwn(_used),
+                _sawHelp ? TalkTexts.endHelped(_used) : TalkTexts.endOwn(_used),
                 key: const ValueKey('message-own'),
                 style: theme.textTheme.bodyMedium,
               ),

@@ -90,7 +90,7 @@ final _cases = <String, _Case>{
     act: (t, h) async {
       await t.enterText(
         find.byKey(const ValueKey('message-field')),
-        "I'm not late.",
+        "Sorry, I'm not late.",
       );
       await h.tap(t, 'message-send');
     },

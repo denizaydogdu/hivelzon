@@ -144,22 +144,47 @@ void main() {
 
     test('eksik grup ve yasak kelime geri bildirim için döner', () {
       final check = catalog.byId('late-maya')!.check!;
+      // Gerekli kalıp geçmediği için olumsuzluk **kapsam dışı**: iki kalıp da
+      // eksik olarak söylenir.
       final r = TalkMatcher.checkMessage("I'm not late", check)!;
       expect(r.passed, isFalse);
-      expect(r.missing, ['sorry']);
-      expect(r.forbidden, ['not']);
+      expect(r.missing, ['sorry', "I'm late"]);
+      expect(r.forbidden, isEmpty);
+
+      // Gerekli kalıbın cümlesindeki olumsuzluk yasak: anlam tersine dönmüş.
+      final r2 = TalkMatcher.checkMessage("Sorry, I'm not late.", check)!;
+      expect(r2.passed, isFalse);
+      expect(r2.missing, ["I'm late"]);
+      expect(r2.forbidden, ['not']);
     });
 
     test('kullanılan hedef ifadeler', () {
+      // Tek cümle içinde ara kelime serbest.
+      expect(
+        TalkMatcher.usedTargets(["Sorry, I'm late."], 'Sorry Maya, I am late.'),
+        ["Sorry, I'm late."],
+      );
+      // Farklı cümlelerden birleştirilmez (17 Ekim 2026 regresyonu).
       expect(
         TalkMatcher.usedTargets([
-          'Sorry, I\'m late.',
-        ], 'Sorry Maya! I am late, the bus is late.'),
-        ["Sorry, I'm late."],
+          "Sorry, I'm late.",
+        ], 'Sorry, I am early. Maya is late.'),
+        isEmpty,
       );
       expect(
         TalkMatcher.usedTargets(['on Friday', 'at seven'], 'Friday at 7'),
         ['at seven'],
+      );
+      // Serbest mesaj: kural anlamı doğruladıktan sonra ifadenin parçaları.
+      expect(
+        TalkMatcher.coveredTargets([
+          "Sorry, I'm late.",
+        ], 'Sorry, Maya. I am late.'),
+        ["Sorry, I'm late."],
+      );
+      expect(
+        TalkMatcher.coveredTargets(["Sorry, I'm late."], 'Sorry, I am early.'),
+        isEmpty,
       );
     });
   });

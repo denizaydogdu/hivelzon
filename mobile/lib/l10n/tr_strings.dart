@@ -1939,6 +1939,8 @@ abstract final class TalkTexts {
   static const endTitle = 'Sahneyi bitirdin';
   static String endOwn(List<String> phrases) =>
       'Kendin kullandığın ifadeler: ${phrases.join(' · ')}';
+  static String endHelped(List<String> phrases) =>
+      'İfadeyi yardımla kullandın: ${phrases.join(' · ')}';
   static const endBody = 'İstediğin zaman yeniden oynayabilirsin.';
   static const backToTalk = "Konuş'a dön";
   static const replay = 'Tekrar oyna';

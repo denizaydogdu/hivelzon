@@ -1,32 +1,313 @@
 {
-  "_note": "H-090: Konuş mesaj kuralı ve hedef ifade eşleşmesi için ortak örnekler. Uygulama (talk_match_test.dart) ve içerik hattı (test_talk.py) aynı sonucu vermeli.",
-  "checks": [
-    {"check": {"all": [["sorry"], ["late"]], "none": ["not", "never", "no"]}, "text": "Sorry, Maya. I'm late.", "expect": true},
-    {"check": {"all": [["sorry"], ["late"]], "none": ["not", "never", "no"]}, "text": "sorry i am late", "expect": true},
-    {"check": {"all": [["sorry"], ["late"]], "none": ["not", "never", "no"]}, "text": "Sorry! I'll be late. The bus is late.", "expect": true},
-    {"check": {"all": [["sorry"], ["late"]], "none": ["not", "never", "no"]}, "text": "I'm late.", "expect": false},
-    {"check": {"all": [["sorry"], ["late"]], "none": ["not", "never", "no"]}, "text": "Sorry, I'm not late.", "expect": false},
-    {"check": {"all": [["sorry"], ["late"]], "none": ["not", "never", "no"]}, "text": "Sorry Maya, I can't come. I'm late.", "expect": false},
-    {"check": {"all": [["sorry"], ["late"]], "none": ["not", "never", "no"]}, "text": "SORRY LATE", "expect": true},
-    {"check": {"all": [["friday"], ["seven"]], "none": ["not", "never", "no"]}, "text": "Pier 3. On Friday at seven.", "expect": true},
-    {"check": {"all": [["friday"], ["seven"]], "none": ["not", "never", "no"]}, "text": "Friday 7 pm, Pier 3", "expect": true},
-    {"check": {"all": [["friday"], ["seven"]], "none": ["not", "never", "no"]}, "text": "friday at 7:00", "expect": true},
-    {"check": {"all": [["friday"], ["seven"]], "none": ["not", "never", "no"]}, "text": "Friday at eleven", "expect": false},
-    {"check": {"all": [["friday"], ["seven"]], "none": ["not", "never", "no"]}, "text": "Not Friday. Seven.", "expect": false},
-    {"check": {"all": [["thank you", "thanks"]]}, "text": "Thanks a lot!", "expect": true},
-    {"check": {"all": [["thank you", "thanks"]]}, "text": "Thank you!", "expect": true},
-    {"check": {"all": [["thank you", "thanks"]]}, "text": "You thank", "expect": false}
-  ],
-  "contains": [
-    {"text": "Sorry, Maya. I'm late.", "phrase": "Sorry, I'm late.", "expect": true},
-    {"text": "Excuse me. Where's the bus stop?", "phrase": "Excuse me, where is…?", "expect": true},
-    {"text": "Where is the bus stop, please?", "phrase": "Excuse me, where is…?", "expect": false},
-    {"text": "Where is the bus stop, please?", "phrase": "Where is…?", "expect": true},
-    {"text": "Hello, my name is Alex.", "phrase": "My name is…", "expect": true},
-    {"text": "I'm Alex.", "phrase": "My name is…", "expect": false},
-    {"text": "I'm from İzmir, Türkiye.", "phrase": "I'm from Türkiye.", "expect": true},
-    {"text": "Pier 3. On Friday at seven.", "phrase": "at seven", "expect": true},
-    {"text": "Friday 7 pm", "phrase": "at seven", "expect": false},
-    {"text": "Thank you. How much is the tea?", "phrase": "How much is it?", "expect": false}
-  ]
+ "_note": "H-090 + 17 Ekim 2026 regresyonu: Konuş mesaj kuralı ve hedef ifade eşleşmesi için ortak örnekler. Uygulama (talk_match_test.dart) ve içerik hattı (test_talk.py) aynı sonucu vermeli. Kural: zorunlu kalıplar tam sözcüklerdir (anahtar kelime yetmez); yasak kelime yalnız gerekli kalıbın geçtiği cümlede aranır; hedef ifade tek cümle içinde aranır.",
+ "checks": [
+  {
+   "check": {
+    "all": [
+     ["sorry", "apologies"],
+     ["I'm late", "I am late", "I'm going to be late", "I am going to be late", "I'll be late", "I will be late", "running late"]
+    ],
+    "none": ["not", "never", "no"]
+   },
+   "text": "Sorry, Maya. I'm late.",
+   "expect": true
+  },
+  {
+   "check": {
+    "all": [
+     ["sorry", "apologies"],
+     ["I'm late", "I am late", "I'm going to be late", "I am going to be late", "I'll be late", "I will be late", "running late"]
+    ],
+    "none": ["not", "never", "no"]
+   },
+   "text": "sorry i am late",
+   "expect": true
+  },
+  {
+   "check": {
+    "all": [
+     ["sorry", "apologies"],
+     ["I'm late", "I am late", "I'm going to be late", "I am going to be late", "I'll be late", "I will be late", "running late"]
+    ],
+    "none": ["not", "never", "no"]
+   },
+   "text": "Sorry! I'll be late. The bus is late.",
+   "expect": true
+  },
+  {
+   "check": {
+    "all": [
+     ["sorry", "apologies"],
+     ["I'm late", "I am late", "I'm going to be late", "I am going to be late", "I'll be late", "I will be late", "running late"]
+    ],
+    "none": ["not", "never", "no"]
+   },
+   "text": "I'm late. Sorry about that.",
+   "expect": true
+  },
+  {
+   "check": {
+    "all": [
+     ["sorry", "apologies"],
+     ["I'm late", "I am late", "I'm going to be late", "I am going to be late", "I'll be late", "I will be late", "running late"]
+    ],
+    "none": ["not", "never", "no"]
+   },
+   "text": "Apologies, I am running late.",
+   "expect": true
+  },
+  {
+   "check": {
+    "all": [
+     ["sorry", "apologies"],
+     ["I'm late", "I am late", "I'm going to be late", "I am going to be late", "I'll be late", "I will be late", "running late"]
+    ],
+    "none": ["not", "never", "no"]
+   },
+   "text": "Sorry, I'm late. I will never do it again.",
+   "expect": true
+  },
+  {
+   "check": {
+    "all": [
+     ["sorry", "apologies"],
+     ["I'm late", "I am late", "I'm going to be late", "I am going to be late", "I'll be late", "I will be late", "running late"]
+    ],
+    "none": ["not", "never", "no"]
+   },
+   "text": "I'm late.",
+   "expect": false
+  },
+  {
+   "check": {
+    "all": [
+     ["sorry", "apologies"],
+     ["I'm late", "I am late", "I'm going to be late", "I am going to be late", "I'll be late", "I will be late", "running late"]
+    ],
+    "none": ["not", "never", "no"]
+   },
+   "text": "Sorry, I'm not late.",
+   "expect": false
+  },
+  {
+   "check": {
+    "all": [
+     ["sorry", "apologies"],
+     ["I'm late", "I am late", "I'm going to be late", "I am going to be late", "I'll be late", "I will be late", "running late"]
+    ],
+    "none": ["not", "never", "no"]
+   },
+   "text": "Sorry Maya, I can't come. I'm late.",
+   "expect": false
+  },
+  {
+   "check": {
+    "all": [
+     ["sorry", "apologies"],
+     ["I'm late", "I am late", "I'm going to be late", "I am going to be late", "I'll be late", "I will be late", "running late"]
+    ],
+    "none": ["not", "never", "no"]
+   },
+   "text": "Sorry late",
+   "expect": false
+  },
+  {
+   "check": {
+    "all": [
+     ["sorry", "apologies"],
+     ["I'm late", "I am late", "I'm going to be late", "I am going to be late", "I'll be late", "I will be late", "running late"]
+    ],
+    "none": ["not", "never", "no"]
+   },
+   "text": "SORRY LATE",
+   "expect": false
+  },
+  {
+   "check": {
+    "all": [
+     ["sorry", "apologies"],
+     ["I'm late", "I am late", "I'm going to be late", "I am going to be late", "I'll be late", "I will be late", "running late"]
+    ],
+    "none": ["not", "never", "no"]
+   },
+   "text": "Sorry, I am early. Maya is late.",
+   "expect": false
+  },
+  {
+   "check": {
+    "all": [
+     ["sorry", "apologies"],
+     ["I'm late", "I am late", "I'm going to be late", "I am going to be late", "I'll be late", "I will be late", "running late"]
+    ],
+    "none": ["not", "never", "no"]
+   },
+   "text": "Maya is late. Sorry.",
+   "expect": false
+  },
+  {
+   "check": {
+    "all": [
+     ["sorry", "apologies"],
+     ["I'm late", "I am late", "I'm going to be late", "I am going to be late", "I'll be late", "I will be late", "running late"]
+    ],
+    "none": ["not", "never", "no"]
+   },
+   "text": "Sorry, I am not coming. I'm late.",
+   "expect": false
+  },
+  {
+   "check": {
+    "all": [["pier 3"], ["friday"], ["seven"]],
+    "none": ["not", "never", "no"]
+   },
+   "text": "Pier 3. On Friday at seven.",
+   "expect": true
+  },
+  {
+   "check": {
+    "all": [["pier 3"], ["friday"], ["seven"]],
+    "none": ["not", "never", "no"]
+   },
+   "text": "Friday 7 pm, Pier 3",
+   "expect": true
+  },
+  {
+   "check": {
+    "all": [["pier 3"], ["friday"], ["seven"]],
+    "none": ["not", "never", "no"]
+   },
+   "text": "On Friday at seven, Pier 3.",
+   "expect": true
+  },
+  {
+   "check": {
+    "all": [["pier 3"], ["friday"], ["seven"]],
+    "none": ["not", "never", "no"]
+   },
+   "text": "pier 3 friday seven",
+   "expect": true
+  },
+  {
+   "check": {
+    "all": [["pier 3"], ["friday"], ["seven"]],
+    "none": ["not", "never", "no"]
+   },
+   "text": "friday at 7:00",
+   "expect": false
+  },
+  {
+   "check": {
+    "all": [["pier 3"], ["friday"], ["seven"]],
+    "none": ["not", "never", "no"]
+   },
+   "text": "Friday seven",
+   "expect": false
+  },
+  {
+   "check": {
+    "all": [["pier 3"], ["friday"], ["seven"]],
+    "none": ["not", "never", "no"]
+   },
+   "text": "On Friday at seven. Pier 99.",
+   "expect": false
+  },
+  {
+   "check": {
+    "all": [["pier 3"], ["friday"], ["seven"]],
+    "none": ["not", "never", "no"]
+   },
+   "text": "Pier 3. On Friday at seven. Not Saturday.",
+   "expect": true
+  },
+  {
+   "check": {
+    "all": [["pier 3"], ["friday"], ["seven"]],
+    "none": ["not", "never", "no"]
+   },
+   "text": "Not Pier 3. Friday at seven.",
+   "expect": false
+  }
+ ],
+ "contains": [
+  {
+   "text": "Sorry Maya, I'm late.",
+   "phrase": "Sorry, I'm late.",
+   "expect": true
+  },
+  {
+   "text": "Sorry, Maya. I'm late.",
+   "phrase": "Sorry, I'm late.",
+   "expect": false
+  },
+  {
+   "text": "Sorry, I am early. Maya is late.",
+   "phrase": "Sorry, I'm late.",
+   "expect": false
+  },
+  {
+   "text": "Sorry, Maya. I am late.",
+   "phrase": "I'm late.",
+   "expect": true
+  },
+  {
+   "text": "I'm late. Sorry, Maya.",
+   "phrase": "I'm late.",
+   "expect": true
+  },
+  {
+   "text": "Sorry, I am early. Maya is late.",
+   "phrase": "I'm late.",
+   "expect": false
+  },
+  {
+   "text": "Excuse me. Where's the bus stop?",
+   "phrase": "Excuse me, where is…?",
+   "expect": false
+  },
+  {
+   "text": "Excuse me, where is the bus stop?",
+   "phrase": "Excuse me, where is…?",
+   "expect": true
+  },
+  {
+   "text": "Where is the bus stop, please?",
+   "phrase": "Excuse me, where is…?",
+   "expect": false
+  },
+  {
+   "text": "Where is the bus stop, please?",
+   "phrase": "Where is…?",
+   "expect": true
+  },
+  {
+   "text": "Hello, my name is Alex.",
+   "phrase": "My name is…",
+   "expect": true
+  },
+  {
+   "text": "I'm Alex.",
+   "phrase": "My name is…",
+   "expect": false
+  },
+  {
+   "text": "I'm from İzmir, Türkiye.",
+   "phrase": "I'm from Türkiye.",
+   "expect": true
+  },
+  {
+   "text": "Pier 3. On Friday at seven.",
+   "phrase": "at seven",
+   "expect": true
+  },
+  {
+   "text": "Friday 7 pm",
+   "phrase": "at seven",
+   "expect": false
+  },
+  {
+   "text": "Thank you. How much is the tea?",
+   "phrase": "How much is it?",
+   "expect": false
+  }
+ ]
 }

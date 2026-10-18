@@ -119,18 +119,49 @@ def match_tokens(text: str) -> list[str]:
     return out
 
 
+def sentence_tokens(text: str) -> list[list[str]]:
+    """Cümle sınırları (`. ! ? ;` ve satır sonu) içinde normalleştirilmiş kelimeler.
+
+    Virgül cümle sınırı değildir: "Sorry, Maya. I'm late." → [["sorry","maya"], ["i","am","late"]].
+    Uygulamadaki `TalkMatcher.sentences` ile aynı kural (17 Ekim 2026 regresyonu).
+    """
+    out: list[list[str]] = []
+    for part in re.split(r"[.!?;\n]+", text):
+        toks = match_tokens(part)
+        if toks:
+            out.append(toks)
+    return out
+
+
 def contains_in_order(text: str, phrase: str) -> bool:
-    """[phrase]'in kelimeleri (`…` hariç) [text]'te aynı sırayla geçiyor mu (arada başka kelime olabilir)."""
+    """[phrase]'in kelimeleri (`…` hariç) [text]'in **bir cümlesinde** aynı sırayla geçiyor mu.
+
+    Arada başka kelime olabilir; **cümle sınırı aşılmaz**: "Sorry, I am early. Maya is late."
+    → "Sorry, I'm late." sayılmaz (farklı cümlelerden birleştirme kanıt üretmez).
+    """
     want = match_tokens(phrase)
     if not want:
         return False
-    i = 0
-    for w in match_tokens(text):
-        if w == want[i]:
-            i += 1
-            if i == len(want):
-                return True
+    for toks in sentence_tokens(text):
+        i = 0
+        for w in toks:
+            if w == want[i]:
+                i += 1
+                if i == len(want):
+                    return True
     return False
+
+
+def covers(text: str, phrase: str) -> bool:
+    """[phrase]'in **bütün kelimeleri** [text]'te geçiyor mu (sıra serbest).
+
+    Yalnız anlam denetiminden geçen serbest mesajlarda kullanılır: kural hedefi doğrular,
+    burada ifadenin parçaları aranır. Cümlelerden birleştirme "kullanım" sayılmaz
+    (17 Ekim 2026 regresyonu).
+    """
+    want = match_tokens(phrase)
+    have = set(match_tokens(text))
+    return bool(want) and all(w in have for w in want)
 
 
 def _has_phrase(tokens: list[str], phrase: str) -> bool:
@@ -139,12 +170,23 @@ def _has_phrase(tokens: list[str], phrase: str) -> bool:
 
 
 def check_message(text: str, check: dict | None) -> bool | None:
-    """Mesaj kuralı (uygulamadaki `MessageCheck` ile aynı): her `all` grubundan en az bir kalıp geçer ve
-    `none` kelimelerinden hiçbiri yoktur. Kural yoksa None (öz değerlendirme)."""
+    """Mesaj kuralı (uygulamadaki `MessageCheck` ile aynı).
+
+    - Her `all` grubundan bir kalıp **mesajda** geçmeli (kalıplar tam sözcüklerdir:
+      "late" değil "I'm late"; anahtar kelime görevi tamamlamaz).
+    - `none` kelimeleri yalnız **gerekli bir kalıbın geçtiği cümlede** yasaktır:
+      ayrı cümledeki olumsuzluk hedefi tersine çevirmez.
+    - Kural yoksa None (öz değerlendirme).
+    """
     if not check:
         return None
-    toks = match_tokens(text)
-    if any(_has_phrase(toks, n) for n in check.get("none") or []):
+    sents = sentence_tokens(text)
+    toks = [w for s in sents for w in s]
+    matched = [
+        s for s in sents
+        if any(_has_phrase(s, alt) for group in check.get("all") or [] for alt in group)
+    ]
+    if any(_has_phrase(s, n) for n in check.get("none") or [] for s in matched):
         return False
     return all(any(_has_phrase(toks, alt) for alt in group) for group in check.get("all") or [])
 
@@ -290,7 +332,10 @@ def lint_task(path: Path, doc: dict, icerik_root: Path) -> tuple[list[Issue], di
         elif not doc.get("selfCheckTr"):
             issues.append(Issue("error", "talk-check", f"{tid}: kural yoksa öz değerlendirme maddeleri (selfCheckTr) gerekli"))
         for tg in doc.get("targets") or []:
-            if not contains_in_order(model, tg):
+            # Serbest mesajda kullanım, kuralın doğruladığı anlamla birlikte
+            # aranır: ifadenin bütün kelimeleri örnek cevapta geçmeli
+            # (cümlelerden birleştirme yok — 17 Ekim 2026 regresyonu).
+            if not covers(model, tg):
                 issues.append(Issue("warning", "talk-target",
                                     f"{tid}: hedef \"{tg}\" örnek cevapta geçmiyor (yalnız kullanıcı kullanırsa sayılır)"))
     if level in LEVELS and english:

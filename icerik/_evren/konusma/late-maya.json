@@ -15,9 +15,12 @@
   "image": {"episode": "A1-005", "path": "stills/B5-03-otobus-geliyor.webp"},
   "model": {"en": "Sorry, Maya. I'm late. The bus is late.", "tr": "Kusura bakma Maya. Geç kaldım. Otobüs gecikti."},
   "check": {
-    "all": [["sorry"], ["late"]],
+    "all": [
+      ["sorry", "apologies"],
+      ["I'm late", "I am late", "I'm going to be late", "I am going to be late", "I'll be late", "I will be late", "running late"]
+    ],
     "none": ["not", "never", "no"],
-    "hintTr": "Özür (Sorry) ve geç kalmak (late) mesajında olsun."
+    "hintTr": "Özür (Sorry) ve geç kaldığını (I'm late) yaz. Gecikme anlamı ayrı bir cümlede de olabilir."
   },
   "targets": ["Sorry, I'm late."]
 }

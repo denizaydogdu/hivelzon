@@ -14,7 +14,12 @@
 // - Kabul cevabı yoksa ve yakın seçeneklerden (distractor) biri tam
 //   duyulursa onun kibar tepkisi gösterilir (K-28: aynı tura dönülür).
 // - Mesaj: her gerekli gruptan bir kalıp geçmeli, yasak kelime (anlamı
-//   tersine çeviren) olmamalı; kural yoksa öz değerlendirme.
+//   tersine çeviren) **yalnız gerekli kalıbın geçtiği cümlede** olmamalı;
+//   kural yoksa öz değerlendirme. Kalıplar tam sözcüklerdir ("late" değil
+//   "I'm late"): anahtar kelime bulmak görevin anlamını tamamlamaz.
+// - Hedef ifade kullanımı (`usesPhrase`) **bir cümle içinde** aranır; farklı
+//   cümlelerden birleştirilen kelimeler kanıt sayılmaz (17 Ekim 2026
+//   regresyonu).
 
 import '../../../shared/speech/speech_match.dart';
 import 'talk_task.dart';
@@ -122,15 +127,33 @@ abstract final class TalkMatcher {
     return turn.accept.any((x) => tokens(x).join(' ') == a);
   }
 
-  /// [phrase]'in kelimeleri [text]'te aynı sırayla geçiyor mu (arada başka
-  /// kelime olabilir; `…` jokeri atılır). "Sorry, Maya. I'm late." →
-  /// "Sorry, I'm late." geçer.
+  /// Metni cümlelere böler (`. ! ? ;` ve satır sonu) ve her cümleyi
+  /// normalleştirilmiş kelimelere ayırır. Virgül cümle sınırı **değildir**:
+  /// "Sorry, Maya. I'm late." → ["sorry maya", "i am late"].
+  static List<List<String>> sentences(String text) {
+    final out = <List<String>>[];
+    for (final part in text.split(RegExp(r'[.!?;\n]+'))) {
+      final t = tokens(part);
+      if (t.isNotEmpty) out.add(t);
+    }
+    return out;
+  }
+
+  /// [phrase]'in kelimeleri [text]'in **bir cümlesi içinde** aynı sırayla
+  /// geçiyor mu (arada başka kelime olabilir; `…` jokeri atılır).
+  ///
+  /// Cümle sınırı aşılmaz: "Sorry, I am early. Maya is late." → "Sorry, I'm
+  /// late." **sayılmaz** (17 Ekim 2026 regresyonu: iki cümleden birleştirilen
+  /// kelimeler "kendi kullandı" kanıtı üretmez). Tek cümle içinde ara kelime
+  /// serbesttir: "Sorry Maya, I'm late." → "Sorry, I'm late." geçer.
   static bool usesPhrase(String text, String phrase) {
     final want = tokens(phrase);
     if (want.isEmpty) return false;
-    var i = 0;
-    for (final w in tokens(text)) {
-      if (w == want[i] && ++i == want.length) return true;
+    for (final toks in sentences(text)) {
+      var i = 0;
+      for (final w in toks) {
+        if (w == want[i] && ++i == want.length) return true;
+      }
     }
     return false;
   }
@@ -140,6 +163,21 @@ abstract final class TalkMatcher {
     for (final t in targets)
       if (usesPhrase(text, t)) t,
   ];
+
+  /// Hedef ifadenin **bütün kelimeleri** metinde geçiyor mu (sıra serbest).
+  ///
+  /// Yalnız **anlam denetiminden geçen** serbest mesajlarda kullanılır: kural
+  /// hedefi zaten doğrular, burada ifadenin parçaları aranır. Böylece
+  /// "Sorry, Maya. I'm late." → "Sorry, I'm late." sayılır, ama
+  /// "Sorry, I am early. Maya is late." kuraldan geçmediği için **hiçbir**
+  /// hedef yazılmaz (17 Ekim 2026 regresyonu).
+  static List<String> coveredTargets(Iterable<String> targets, String text) {
+    final have = tokens(text).toSet();
+    return [
+      for (final t in targets)
+        if (tokens(t).every(have.contains)) t,
+    ];
+  }
 
   static bool _hasPhrase(List<String> toks, String phrase) {
     final p = tokens(phrase);
@@ -155,16 +193,29 @@ abstract final class TalkMatcher {
   }
 
   /// Mesaj kuralı. Kural yoksa null (öz değerlendirme).
+  ///
+  /// - Her `all` grubundan bir kalıp **mesajda** geçmeli. Kalıplar tam
+  ///   sözcüklerdir ("late" değil "I'm late"): anahtar kelime bulmak görevin
+  ///   anlamını tamamlamaz (17 Ekim 2026 regresyonu).
+  /// - `none` kelimeleri **yalnız gerekli bir kalıbın geçtiği cümlede**
+  ///   yasaktır. Ayrı cümledeki olumsuzluk hedefi tersine çevirmez:
+  ///   "Sorry, I'm late. I will never do it again." geçer; "Sorry, I'm not
+  ///   late." geçmez.
   static MessageCheckResult? checkMessage(String text, MessageCheck? check) {
     if (check == null) return null;
-    final toks = tokens(text);
-    final forbidden = [
-      for (final n in check.none)
-        if (_hasPhrase(toks, n)) n,
-    ];
+    final sents = sentences(text);
+    final all = [for (final s in sents) ...s];
     final missing = [
       for (final g in check.all)
-        if (!g.any((alt) => _hasPhrase(toks, alt))) g.first,
+        if (!g.any((alt) => _hasPhrase(all, alt))) g.first,
+    ];
+    final matched = [
+      for (final s in sents)
+        if (check.all.any((g) => g.any((alt) => _hasPhrase(s, alt)))) s,
+    ];
+    final forbidden = [
+      for (final n in check.none)
+        if (matched.any((s) => _hasPhrase(s, n))) n,
     ];
     return MessageCheckResult(missing: missing, forbidden: forbidden);
   }
