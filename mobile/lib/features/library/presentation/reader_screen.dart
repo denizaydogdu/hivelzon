@@ -164,14 +164,9 @@ class _ReaderScreenState extends ConsumerState<ReaderScreen>
       _pages = PageController(initialPage: c.pageIndex);
       c.addListener(_onController);
       setState(() {});
-      // İlk açılış "okunuyor" olarak kaydedilir (raf ve Hi önerisi için).
-      if (p == null || p.status == BookStatus.notStarted) {
-        _savePlace(
-          book.chapterOf(book.pages[c.pageIndex]),
-          c.place,
-          book.sentenceAt(c.pageIndex, c.place.sentenceIndex).start,
-        );
-      }
+      // **Kitabı açmak okuma sayılmaz** (17 Ekim 2026 regresyonu): ilk açılışta
+      // konum yazılmaz. Kayıt, gerçek ilerlemede (`onPlace`) oluşur; böylece
+      // "kitap açıldı" günlük okuma adımını tamamlamaz (plan §Hi).
       if (c.chapterAudioMissing) {
         c.clearChapterAudioNotice();
         _snack(ReaderTexts.chapterNoAudio);

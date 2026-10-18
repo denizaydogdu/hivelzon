@@ -27,6 +27,11 @@ class ComprehensionOutcome {
 /// doğrusu gösterilir) ve isteğe bağlı yeniden anlatma: kullanıcı 1–3
 /// cümle söyler ya da yazar, örnek anlatımı açar ve kendini değerlendirir.
 /// Yazılan metin bu ekrandan çıkmaz. Puan, süre ve suçlama yok (K-32).
+///
+/// **Örnek özeti açmak yeniden anlatma değildir**: `retellDone` yalnız gerçek
+/// bir denemeyle (yazılan anlatım) ya da kullanıcının kendini değerlendirmesiyle
+/// oluşur; `selfCheck` hangi beyan olduğunu ayrıca taşır (17 Ekim 2026
+/// regresyonu).
 class ComprehensionView extends StatefulWidget {
   const ComprehensionView({
     super.key,
@@ -96,7 +101,10 @@ class _ComprehensionViewState extends State<ComprehensionView> {
       ComprehensionOutcome(
         answered: answered,
         firstTryCorrect: first,
-        retellDone: _modelShown || _selfCheck != null,
+        // Yeniden anlatma **yapıldı** sayılır: kullanıcı bir anlatım denedi
+        // (metin yazdı) ya da örnekle karşılaştırıp kendini değerlendirdi.
+        // Yalnız örnek özeti açmak yetmez (17 Ekim 2026 regresyonu).
+        retellDone: _retell.text.trim().isNotEmpty || _selfCheck != null,
         selfCheck: _selfCheck,
       ),
     );

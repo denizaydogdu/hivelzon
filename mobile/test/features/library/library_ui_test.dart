@@ -113,6 +113,8 @@ void main() {
     expect(reader.bookId, 'A2-K02');
     expect(reader.listen, isTrue);
     expect(h.audio.playing, isTrue);
+    // Gerçekten dinle: konum ilerleyince "okundu" yazılır (açmak yetmez).
+    await h.listenFor(tester, 1.5);
     await tester.tap(find.byKey(const ValueKey('reader-close')));
     await h.settle(tester);
 
@@ -169,6 +171,8 @@ void main() {
     await tester.tap(find.byKey(const ValueKey('book-card-A1-K99')).first);
     await h.settle(tester);
     expect(find.byType(ReaderScreen), findsOneWidget);
+    // Gerçek okuma/dinleme: açmak tek başına "okunuyor" yapmaz.
+    await h.listenFor(tester, 1.5);
     await tester.tap(find.byKey(const ValueKey('reader-close')));
     await h.settle(tester);
     // Dönüşte kitap "Okumaya devam et" rafında.
