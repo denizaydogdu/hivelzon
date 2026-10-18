@@ -1,13 +1,15 @@
-// Keşfet akışının düzeni (H-040, K-15). Saf Dart.
+// Keşfet akışının düzeni (H-040, K-15; günlük set H-094). Saf Dart.
 //
-// - 4–5 klipte bir quiz kartı: 4 klipten sonra son kliplerden birinin
-//   sorusu; o 4 klipte soru yoksa 5. klipten sonra yeniden bakılır, yine
-//   yoksa o blokta quiz çıkmaz.
-// - ~10 klipte bir mola kartı (sonda değil).
-// - Akış biter: klipler tükenince bitiş kartı (sonsuz kaydırma yok).
+// Hikâye klipleri (`buildFeed`): 4–5 klipte bir quiz kartı, ~10 klipte bir
+// mola kartı, sonunda bitiş kartı (sonsuz kaydırma yok).
+//
+// Günlük set (`buildDailyFeed`): üç bağımsız reel; **her videonun sonunda**
+// isteğe bağlı tek anlama sorusu (atlanabilir) ve sonda sakin bitiş.
+// `quizEvery` burada kullanılmaz: günlük sette blok düzeni yoktur (plan §7).
 
 import '../../onboarding/domain/age.dart';
 import 'clip.dart';
+import 'feed_video.dart';
 
 sealed class FeedEntry {
   const FeedEntry();
@@ -27,6 +29,29 @@ class QuizEntry extends FeedEntry {
 
   /// Sorunun geldiği klip.
   final FeedClip clip;
+}
+
+/// Günlük setteki (ya da kategori havuzundaki) tek bağımsız video (H-094).
+class VideoEntry extends FeedEntry {
+  const VideoEntry(this.video, this.ordinal);
+
+  final FeedVideo video;
+
+  /// Set içindeki sıra (1'den); başlıkta "1/3" olarak görünür.
+  final int ordinal;
+}
+
+/// Videonun sonundaki isteğe bağlı tek anlama sorusu (atlanabilir): yanlış
+/// cevap ilerlemeyi engellemez, süre/puan yok (K-15).
+class PracticeEntry extends FeedEntry {
+  const PracticeEntry(this.video);
+
+  final FeedVideo video;
+}
+
+/// Günlük setin sakin bitişi (kaçırma baskısı ve geri sayım yok).
+class DailyEndEntry extends FeedEntry {
+  const DailyEndEntry();
 }
 
 class BreakEntry extends FeedEntry {
@@ -85,6 +110,23 @@ int? nextClipIndex(List<FeedEntry> feed, int from) {
     if (feed[i] is ClipEntry) return i;
   }
   return null;
+}
+
+/// Günlük set (H-094, plan §7): **üç kısa video** (havuzda ne varsa), her
+/// videonun sonunda isteğe bağlı **tek** anlama sorusu ve sonda sakin bitiş.
+/// Mola kartı yok: set kısa, bitişi zaten sakin. `quizEvery` kullanılmaz.
+///
+/// [videos] seçkinin sırasıdır (günlük seçkinin cihazda saklanması ve ilgiye
+/// göre ağırlıklandırma P2'de).
+List<FeedEntry> buildDailyFeed(List<FeedVideo> videos) {
+  final out = <FeedEntry>[];
+  for (var i = 0; i < videos.length; i++) {
+    final v = videos[i];
+    out.add(VideoEntry(v, i + 1));
+    if (v.practice != null) out.add(PracticeEntry(v));
+  }
+  out.add(const DailyEndEntry());
+  return out;
 }
 
 /// Günlük Keşfet sınırı (K-15): 13–17 için varsayılan 20 dk. 13 altı da

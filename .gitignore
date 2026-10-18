@@ -34,6 +34,8 @@ mobile/android/app/.cxx/
 mobile/ios/Flutter/ephemeral/
 mobile/ios/.symlinks/
 mobile/coverage/
+# Golden karşılaştırma çıktıları (başarısız testlerin ürettiği geçici görseller)
+mobile/test/goldens/failures/
 **/.gradle/
 
 # Node
@@ -84,6 +86,18 @@ dilbilgisi/**/*.mp3
 dilbilgisi/**/*.m4a
 dilbilgisi/**/audio/**/_raw/
 dilbilgisi/**/_build/
+
+# Bağımsız reeller (H-094): `reel.json` (senaryo, altyazı, hedef) depoda; görsel ve
+# ses kaynakları, ödenmiş ham önbellek ve paket çıktısı git dışında.
+reeller/**/stills/
+reeller/**/*.png
+reeller/**/*.jpg
+reeller/**/*.jpeg
+reeller/**/*.webp
+reeller/**/*.mp3
+reeller/**/*.m4a
+reeller/**/_raw/
+reeller/**/_build/
 
 # İçerik boru hattı (tools/content-pipeline)
 tools/content-pipeline/.venv/

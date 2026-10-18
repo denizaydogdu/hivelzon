@@ -1,0 +1,52 @@
+# H-094: Keşfet — seviyeye ve ilgiye göre günlük üç kısa video (reel)
+
+- **Durum:** Sürüyor — **P0 ve P1 tamamlandı** (kredisiz, deneme verisi); P2–P3 sırada. Ücretli üretim ve yayın onayı yok.
+- **Tür:** Uygulama (kod) + içerik boru hattı + içerik pilotu
+- **Faz:** F1 MVP — ürün incelemesi sonrası (2026-10-18)
+- **Bağımlılık:** H-040 (Keşfet), H-089 (kanıt basamakları), H-088 (günlük plan); pilot içerik için ücretli üretim onayı ve `PROMPTS.md`
+
+## Kapsam (kullanıcı brief'i 2026-10-18; plan: `docs/KESFET-GUNLUK-UC-VIDEO-PLAN-2026-10-18.md`)
+- Keşfet'i yalnız hikâye klipleri olmaktan çıkarıp **seviyeye ve ilgiye göre günlük üç kısa video** alanı yapar: `Bugün · Sinema · Spor · Kitap · Hikâye klipleri`.
+- **Kategori = konu** (Sinema/Spor/Kitap); **seviye** (A1/A2, mimari genişleyebilir) ayrı filtredir; kaynak türleri (Macera/Kitaplık/Dilbilgisi, hikâye klipleri) karıştırılmaz.
+- **Reels biçimi ama sonsuz akış yok** (K-15/K-32): dikey kaydırma, üç video sonunda sakin bitiş kartı; beğeni/yorum yok.
+- **Günlük seçki ortak onaylı havuzdan** seçilir; kullanıcı başına üretim yok. “Bugünün seçkisi” anlayışı: gece silinmez, kaçırma baskısı/geri sayım yok; geçmiş ve kaydedilenlere erişim sürer.
+- **Hibrit kaynak:** bağımsız konu reelleri (yeni) + mevcut hikâye klipleri (**ayrı çip**; kilit ve spoiler korunur; bağımsız reel’de gereksiz bölüm kilidi yok). **Günlük seçki bağımsız konu videolarına odaklanır.** Video koleksiyonu pilotta **ertelendi**; önce yalnız “İfadeyi Defter’e ekle”.
+- **Bağımsız reel** hikâye bölümüne aitmiş gibi gösterilmez: `sourceType = standalone`, gerçek reel kimliği; “Tam hikâye” yalnız gerçek ilgili bölüm varsa.
+- **Video → anlam → pratik → tekrar:** izleme/taklit “öğrendi” sayılmaz; `helped`/`own_use`/`recalled_later` ayrımı H-089 ile korunur; FSRS’e yalnız uygun hatırlama görevi yazılır. Üç videoluk sette `quizEvery = 4` çalışmaz → **her videonun sonunda atlanabilir tek anlama sorusu** (yanlış cevap ilerlemeyi engellemez; üçlü sonunda ikinci zorunlu sınav yok).
+- **Saklama:** günlük seçki `{id, contentVersion}` ile cihazda; içerik sürümü artınca eski izlenme/soru sonucu yeni sürüme taşınmaz; geri çekilen içerik sabit seçkide olsa bile oynatılmaz.
+- **Önceki hatalar kapanmış sayılmaz:** 17 Ekim raporundaki eksik olumsuzluk, yanlış mesaj kabulü ve yardımlı cevabın bağımsız sayılması örnekleri regresyon testi olur (plan §12.13).
+- **Üretim önceden ve yönetilen hattan** yapılır (Higgsfield görsel + yerel Ken Burns + gerekirse kısa Seedance + ElevenLabs EN; TR ses zorunlu değil); kaydırırken üretim yok.
+- Yeniden kullanılır: dikey oynatıcı, altyazı/anlam paneli, `ClipControllerCache` (sert sınır 3), Defter, FSRS, içerik lint ve onay yaklaşımı.
+
+## Pilot ve teslimler (ücretli üretim onayı AYRI)
+- **Üç ayrı teslim:** (1) **kredisiz uygulama** (P0–P3, deneme verisi), (2) **gerçek içerik üretimi**, (3) **kullanıcı pilotu** (H-092; P4 yayın/geri çekme **ön koşulu**).
+- **Bütçe onaylanmadı.** Üretim öncesi **güncel fiyatla 3 örnek** ve **18 toplam** için **ayrı** maliyet çıkarılır; harcama sonra değerlendirilir.
+- **3 kategori × 2 seviye × 3 video = 18 video** (A1/A2); önce kategori başına 1 örnek. Hareket **zorunlu değil** (önce görsel + Ken Burns; gerekli sahnede ayrı maliyet). Geçmiş 0,5 kr ve 5 kr güncel fiyat sayılmaz; kredi/USD/TL/karakter ayrı raporlanır.
+
+## Kabul kriterleri
+- Plan §12’deki **17 senaryo** geçer (seviye uygunluğu, gün içi kararlılık, gece yarısı, spoiler kilidi, mini soru, Defter’in doğru kaynakla çalışması, kanıt yazılmaması, sayaçlar, idempotent üretim, geri çekme, denetleyici ≤ 3, gerçek cihaz, **önceki hata regresyonları**, içerik sürümü, seviye çipi, P4 kapısı).
+- `flutter analyze && flutter test` ve `pytest` yeşil; golden’lar bilinçli güncellenir.
+- Büyük katalog üretimi, H-092 pilot sonucu görülmeden başlamaz.
+
+## Test
+```bash
+cd mobile && flutter analyze && flutter test
+cd tools/content-pipeline && .venv/bin/python -m pytest -q
+```
+
+## Geri alma
+Kendi dalında; `git revert`. İçerik paketleri `/reels/` altında ayrı durur; hikâye `clips.json` değişmez.
+
+## Notlar
+- 2026-10-18: Kullanıcı plan talebi üzerine açıldı; plan `docs/KESFET-GUNLUK-UC-VIDEO-PLAN-2026-10-18.md`. Bu aşamada kod yazılmadı, ücretli üretim yapılmadı.
+- 2026-10-18: **Kullanıcı kararları işlendi** (plan §14): (1) Hikâye klipleri ayrı çip; (2) video koleksiyonu ertelendi; (3) hareket zorunlu değil; (4) bütçe onaylanmadı — 3 örnek + 18 toplam ayrı maliyet; (5) seviye üstteki çipten (genel testi değiştirmez, “Önerilen seviyeye dön”); (6) seçki ilk sürümde cihazda; (7) ilk pilot A1/A2 (B1+’a A1 “seviyene uygun” sunulmaz); (8) her videonun sonunda atlanabilir tek soru.
+- 2026-10-18: **P0 tamamlandı (kredisiz, deneme verisiyle; ücretli üretim yok).** Yeni: `mobile/lib/features/discover/domain/reel.dart` (`Reel`/`ReelSummary`/`ReelCatalog`); `ContentSource` + `HttpContentSource` `listReels/loadReel/reelMediaUri` ve `resolveMediaUri` `_reels/` öneki; deneme paketleri `reeller/A1-R-CIN-01`, `reeller/A2-R-SPO-01`; `hvpipeline/reels.py` + `reel_lint.py`; `serve.py` `/reels/` kökü (+`packages/_reels` yolu); belge `docs/REEL-PAKETI.md`. Testler: `mobile/test/features/discover/reel_catalog_test.dart` (16), `mobile/test/shared/content/http_reels_test.dart` (3), `tools/content-pipeline/tests/test_reels.py` (20). `flutter analyze` temiz, `flutter test` 1149 geçti, `pytest` tümü geçti. Medya dosyaları yok → lint yalnız uyarı. Sıradaki: P1 (günlük set UI) ve önceki hata regresyon testleri.
+- 2026-10-18: **P1 tamamlandı (kredisiz, deneme verisiyle).** Keşfet artık `Bugün (varsayılan açılış) · Sinema · Spor · Kitap · Hikâye klipleri` çipleriyle açılıp **günlük üç bağımsız video**yu gösterir; hikâye klipleri ayrı çipte ve eski davranışı korur.
+  - **Yeni/kod:** `domain/feed_video.dart` (`FeedVideo` + `keyPrefix` `clip|reel`), `domain/feed.dart` (`buildDailyFeed`: video → atlanabilir tek soru → sakin bitiş; günlük set), `application/feed_videos.dart` (günlük set/havuz kurulumu), `application/discover_providers.dart` (`reelSet/reelPool/reelLevels/reelLevel`, `discoverInitialChipProvider`), `data/discover_store.dart` (`reelLevel`), `l10n/tr_strings.dart` (günlük/havuz/seviye/pratik metinleri + `reelTargetPhrase/Word`, `reelSemantics`), `presentation/widgets/video_page.dart` (eski `clip_page.dart`; `git mv`; `FeedVideo` ile klip ve reel aynı sayfayı paylaşır), `widgets/feed_cards.dart`, `discover_screen.dart` (üst şerit, çipler, seviye paneli, `_ReelFeed`, günlük/boş/hata durumları).
+  - **Kararlar:** üst şeritte başlık tek satır + seviye çipi aynı satırda; tam etiket (`Senin seviyen: A1 · Değiştir`) yalnız ≥ 560 px'de, altında `Seviye: A1 ▾` (ölçüm: 390 px'de tam etiket başlığı kırpıyordu), çip satırın en fazla %45'i; seviye paneli "Keşfet zorluğu" — önerilen seviye + "Önerilen seviyeye dön", seçim `app_meta` `discover.reel.level` (yalnız Keşfet zorluğu, yerleştirme sonucunu değiştirmez); **"önerilen seviyem" yalnız yerleştirmenin önerisi katalogda varsa söylenir** — B1+ kullanıcıya A1 "seviyene uygun" diye sunulmaz (K-06; kabul §12/2), o durumda videolar açıkça "kolay pratik olarak işaretli" denir ve geri alma "Seçimi kaldır" olur; günlük seçki P1'de seviyeye göre **kararlı türetilir** (id sırası, en çok 3) — rastgelelik/ilgi ağırlığı ve cihazda saklama P2; her videonun sonunda atlanabilir tek anlama sorusu (yanlış cevap engellemez); bitiş kartı yalnız günlük sette "Hikâye kliplerine bak" bağlantısı verir; kategori havuzu boşsa sakin boş durum + "Bugüne dön"; "Tam hikâye" yalnız gerçek bölüm bağı varsa görünür (`related: []` → gizli; koşul sentetik reelle sınanır).
+  - **Taşma (ölçülerek bulundu ve düzeltildi):** `_Scrims` sabit 140+320 px, 448 px yüksekliğinde kısa ekranda 12 px taşırıyordu → yüksekliğe göre ölçeklenir; `VideoPage` `LayoutBuilder` ile altyazı satırı **her zaman** kalır, ifade kartı yalnız `room ≥ 600` ise çizilir; kısa ekranda `tight` aralıklar ve tek satır ray etiketleri; seviye paneli kaydırılabilir (kısa ekran + büyük yazıda taşmaz).
+  - **Deneme içeriği:** pilot kapsamı **6 paket** (3 kategori × 2 seviye): `A1/A2 × CIN/SPO/BOK`; hepsi `DRAFT`, `related: []` (uydurma bölüm bağı yok). Dart kopyaları `mobile/test/fixtures/reels/` (6 + `index.json`); `pytest` paket↔fixture ve index özet kaymasını karşılaştırır. Simülatör denemesi için **ücretsiz yerel demo medyası** üretildi (mp4/poster/stills/cue sesi; `.gitignore` dışı, onaylı üretim değil) → `reel_lint` 0 hata, 0 uyarı.
+  - **Testler:** `reel_daily_set_test.dart` (19: günlük set, tek soru, sakin bitiş, "Tam hikâye", geri çekme, boş/hata durumları, seviye paneli ve cihazda saklama, "önerilen seviyem" dürüstlüğü, Defter bağlantısı), `reel_catalog_test.dart` (16), `http_reels_test.dart` (3), `h040_discover_golden_test.dart` (5 golden bilinçli güncellendi: yeni üst şerit), yeni `h094_reel_golden_test.dart` (4 golden: günlük, soru, bitiş, seviye paneli + erişilebilirlik + 320×568/1,3×). `flutter analyze` temiz, **`flutter test` 1190 geçti**, **`pytest` 346 geçti**. Gerçek cihaz ölçümü: `integration_test/h040_memory_test.dart` (canlı denetleyici en çok **2**, sınır 3; RSS tepe +273,6 MB) ✓.
+  - **Simülatör:** `--dart-define=HV_START_ROUTE=/kesfet` ile açıldı; günlük set yüklendi (`Bugün senin için 3 kısa video`, `Seviye: A1 ▾`), bağımsız reel oynadı ve video sonunda kendiliğinden geçmeden "Tekrar izle" + "Kısa soru için yukarı kaydır." gösterdi.
+  - **Regresyon #1 (önceki hata):** `mobile/test/regressions/speech_meaning_regression_test.dart` — anlamı değiştiren eklenen/düşen kelime (olumsuzluk, modal, sayı, başta do/does/did) artık "tam" sayılmaz; önce başarısız olan örnekler düzeltmeyle geçiyor (`speech_match.dart`).
+  - **Sıradaki:** P2 (günlük seçkinin cihazda saklanması + ilgi ağırlığı + izlenme/soru sonucu `{id, contentVersion}`), P3, regresyon #2 (mesajın anlamı doğrulanmadan görev/`own_use` kanıtı yazılmasın) ve #3 (kitap açma/model özeti kanıt yazmasın), P4 (backend yayın/geri çekme) — gerçek pilotun ön koşulu. Commit **yok** (kullanıcı onayı bekleniyor).

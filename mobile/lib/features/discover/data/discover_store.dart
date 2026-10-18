@@ -41,4 +41,30 @@ class DiscoverStore {
       return total;
     });
   }
+
+  /// Keşfet'in zorluk seviyesi (H-094): kullanıcının elle seçimi. `null`
+  /// ise seçim yok, yerleştirmenin önerdiği seviye kullanılır. Yalnızca
+  /// Keşfet videolarını etkiler; yerleştirme sonucunu değiştirmez (K-06).
+  static const reelLevelKey = 'discover.reel.level';
+
+  Future<String?> reelLevel() async =>
+      (await (_db.select(
+            _db.appMeta,
+          )..where((t) => t.key.equals(reelLevelKey))).getSingleOrNull())
+          ?.value;
+
+  /// Seçimi yazar; `null` seçimi siler (önerilen seviyeye dönüş).
+  Future<void> setReelLevel(String? level) async {
+    if (level == null) {
+      await (_db.delete(
+        _db.appMeta,
+      )..where((t) => t.key.equals(reelLevelKey))).go();
+      return;
+    }
+    await _db
+        .into(_db.appMeta)
+        .insertOnConflictUpdate(
+          AppMetaCompanion.insert(key: reelLevelKey, value: level),
+        );
+  }
 }

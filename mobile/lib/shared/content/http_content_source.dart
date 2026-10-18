@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 import '../../features/discover/domain/clip.dart';
+import '../../features/discover/domain/reel.dart';
 import '../../features/grammar/domain/grammar_lesson.dart';
 import '../../features/hi/domain/hi_content.dart';
 import '../../features/library/domain/book.dart';
@@ -171,6 +172,35 @@ class HttpContentSource implements ContentSource {
   @override
   Uri grammarMediaUri(String lessonId, String path) =>
       _grammarUri([lessonId, ...path.split('/')]);
+
+  Uri _reelsUri(List<String> segments) =>
+      _base.resolveUri(Uri(pathSegments: ['reels', ...segments]));
+
+  @override
+  Uri reelMediaUri(String reelId, String path) =>
+      _reelsUri([reelId, ...path.split('/')]);
+
+  @override
+  Future<ReelCatalog> listReels() async {
+    final json = await _getJson(_reelsUri(['index.json']));
+    if (json is! Map) throw ContentUnavailableException('Bozuk reel listesi');
+    try {
+      return ReelCatalog.fromJson(json.cast<String, dynamic>());
+    } on Object catch (e) {
+      throw ContentUnavailableException('Bozuk reel listesi', cause: e);
+    }
+  }
+
+  @override
+  Future<Reel> loadReel(String reelId) async {
+    final json = await _getJson(reelMediaUri(reelId, 'reel.json'));
+    if (json is! Map) throw ContentUnavailableException('Bozuk reel paketi');
+    try {
+      return Reel.fromJson(json.cast<String, dynamic>());
+    } on Object catch (e) {
+      throw ContentUnavailableException('Bozuk reel paketi', cause: e);
+    }
+  }
 
   @override
   Future<List<GrammarLessonSummary>> loadGrammarIndex() async {

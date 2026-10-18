@@ -21,6 +21,7 @@ import '../../../shared/widgets/skeleton.dart';
 import '../../grammar/application/grammar_providers.dart';
 import '../../grammar/presentation/grammar_lesson_screen.dart';
 import '../../notebook/application/notebook_providers.dart';
+import '../../notebook/domain/notebook_item.dart';
 import '../../player/domain/subtitles.dart';
 import '../../player/presentation/player_screen.dart'
     show AiNotice, videoControllerFactoryProvider;
@@ -28,29 +29,452 @@ import '../../speak/speak_env.dart';
 import '../../story/application/story_providers.dart';
 import '../application/clip_controllers.dart';
 import '../application/discover_providers.dart';
+import '../application/feed_videos.dart';
 import '../data/discover_store.dart';
 import '../domain/clip.dart';
 import '../domain/feed.dart';
-import 'widgets/clip_page.dart';
+import '../domain/feed_video.dart';
+import '../domain/reel.dart';
 import 'widgets/feed_cards.dart';
+import 'widgets/video_page.dart';
 
-/// Keşfet (H-040, K-15): açılmış bölümlerden kısa klipler, dikey akış.
+/// Keşfet (H-040, K-15; günlük üç video H-094).
 ///
-/// - Akış biter: klipler tükenince hikâye önerilir (sonsuz kaydırma yok).
-/// - 4–5 klipte bir quiz kartı, ~10 klipte bir mola kartı.
+/// Üstte seviye çipi ve kaynak çipleri:
+/// - **Bugün** (varsayılan): seviyeye uygun **günlük üç bağımsız video**;
+///   her videonun sonunda atlanabilir tek soru, sonda sakin bitiş.
+/// - **Sinema · Spor · Kitap**: o kategori + seviyedeki havuz, sonunda bitiş.
+/// - **Hikâye klipleri**: mevcut `clips.json` akışı (quiz/mola kartları ve
+///   bölüm kilitleri korunur) — **ayrı kaynak** (plan §4).
+///
+/// - Sonsuz kaydırma yok; akış biter.
 /// - 13–17 (ve 13 altı) için günlük 20 dk; yalnızca dolunca söylenir.
-/// - Ses açık başlar, sağ üstte kapatılır. Video kendiliğinden sonrakine
-///   geçmez.
-/// - Aynı anda en çok 3 video denetleyicisi (ekrandaki + sıradaki + atılmayı
-///   bekleyen); ölçüm: `test/features/discover/discover_memory_test.dart`.
+/// - Aynı anda en çok 3 video denetleyicisi.
 class DiscoverScreen extends ConsumerWidget {
   const DiscoverScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final chip = ref.watch(discoverChipProvider);
+    final Widget body;
+    final String title;
+    if (chip == DiscoverChip.storyClips) {
+      title = DiscoverTexts.storyClipsTitle;
+      body = const _StoryClipsBody();
+    } else {
+      final set = ref.watch(reelSetProvider);
+      final loaded = switch (set) {
+        AsyncData(value: final s) => s,
+        _ => null,
+      };
+      title = switch ((chip, loaded)) {
+        (DiscoverChip.today, final s?) => DiscoverTexts.dailyTitle(
+          s.reels.isEmpty ? kDailyReelCount : s.reels.length,
+        ),
+        (_, _) =>
+          chip.categoryCode == null
+              ? DiscoverTexts.dailyTitle(kDailyReelCount)
+              : DiscoverTexts.poolTitle(_chipLabel(chip)),
+      };
+      body = switch (set) {
+        AsyncError() => _Message(
+          key: const ValueKey('reels-error'),
+          icon: Icons.cloud_off_rounded,
+          title: DiscoverTexts.errorTitle,
+          body: DiscoverTexts.errorBody,
+          action: FilledButton(
+            key: const ValueKey('reels-retry'),
+            style: AppButtonStyles.primary(),
+            onPressed: () => retryReels(ref),
+            child: const Text(CommonTexts.retry),
+          ),
+        ),
+        AsyncData(value: final s) when s.reels.isEmpty => _Message(
+          key: const ValueKey('reels-empty'),
+          icon: Icons.explore_outlined,
+          title: DiscoverTexts.poolEmptyTitle,
+          body: DiscoverTexts.poolEmptyBody,
+          action: chip == DiscoverChip.today
+              ? FilledButton(
+                  key: const ValueKey('reels-story-clips'),
+                  style: AppButtonStyles.primary(),
+                  onPressed: () => ref
+                      .read(discoverChipProvider.notifier)
+                      .select(DiscoverChip.storyClips),
+                  child: const Text(DiscoverTexts.chipStoryClips),
+                )
+              : FilledButton(
+                  key: const ValueKey('reels-today'),
+                  style: AppButtonStyles.primary(),
+                  onPressed: () => ref
+                      .read(discoverChipProvider.notifier)
+                      .select(DiscoverChip.today),
+                  child: const Text(DiscoverTexts.poolEmptyToday),
+                ),
+        ),
+        AsyncData(value: final s) => _ReelFeed(set: s),
+        _ => const _Loading(),
+      };
+    }
+    return Scaffold(
+      backgroundColor: AppScrim.playerBackground,
+      body: Semantics(
+        label: DiscoverTexts.screenSemantics,
+        child: Column(
+          children: [
+            _DiscoverHeader(chip: chip, title: title),
+            Expanded(child: body),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+/// Çipin görünen adı (Sinema · Spor · Kitap).
+String _chipLabel(DiscoverChip chip) =>
+    kReelCategoryTr[chip.categoryCode] ?? DiscoverTexts.chipToday;
+
+/// Keşfet üst şeridi (H-094, plan §3): başlık, seviye çipi ve kaynak çipleri.
+/// Kaydırma yönü dikey kalır; şerit videonun üstünde sabit durur.
+class _DiscoverHeader extends ConsumerWidget {
+  const _DiscoverHeader({required this.chip, required this.title});
+
+  final DiscoverChip chip;
+  final String title;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final level = ref.watch(reelLevelProvider);
+    final pad = MediaQuery.paddingOf(context);
+    return ColoredBox(
+      color: AppScrim.playerBackground,
+      child: Padding(
+        padding: EdgeInsets.fromLTRB(
+          AppSpace.s16,
+          pad.top + AppSpace.s8,
+          AppSpace.s16,
+          AppSpace.s8,
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // Başlık ve seviye çipi aynı satırda: başlık kalan yeri alır, çip
+            // en fazla satırın %45'i kadar olur (taşma yok; çok büyük yazıda
+            // çip kısalır, başlık her zaman okunur).
+            LayoutBuilder(
+              builder: (context, box) {
+                final compact = box.maxWidth < _kLevelChipFullWidth;
+                return Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Expanded(
+                      child: Text(
+                        title,
+                        key: const ValueKey('discover-title'),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: Theme.of(context).textTheme.titleMedium
+                            ?.copyWith(color: AppPalette.white),
+                      ),
+                    ),
+                    const SizedBox(width: AppSpace.s8),
+                    ConstrainedBox(
+                      constraints: BoxConstraints(
+                        maxWidth: box.maxWidth * _kLevelChipMaxShare,
+                      ),
+                      child: _LevelChip(
+                        level: level,
+                        compact: compact,
+                        onTap: () => unawaited(_openLevelPanel(context, ref)),
+                      ),
+                    ),
+                  ],
+                );
+              },
+            ),
+            const SizedBox(height: AppSpace.s8),
+            // Kaynak çipleri yatay kaydırılır (küçük ekranda da taşmaz).
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              clipBehavior: Clip.none,
+              child: Row(
+                children: [
+                  for (final c in DiscoverChip.values) ...[
+                    if (c != DiscoverChip.values.first)
+                      const SizedBox(width: AppSpace.s8),
+                    _ChipButton(
+                      key: ValueKey('chip-${c.name}'),
+                      label: c == DiscoverChip.storyClips
+                          ? DiscoverTexts.chipStoryClips
+                          : c == DiscoverChip.today
+                          ? DiscoverTexts.chipToday
+                          : _chipLabel(c),
+                      selected: c == chip,
+                      onTap: () =>
+                          ref.read(discoverChipProvider.notifier).select(c),
+                    ),
+                  ],
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+/// Bu genişliğin altında seviye çipi kısa biçimde yazılır ("Seviye: A1 ▾");
+/// tam metinle birlikte başlığa yer kalmıyor.
+const double _kLevelChipFullWidth = 560;
+
+/// Seviye çipi en fazla satırın bu kadarını alır (başlık önce gelir).
+const double _kLevelChipMaxShare = 0.45;
+
+/// Seviye çipi: "Senin seviyen: A1 · Değiştir" (dar ekranda "A1 · Değiştir";
+/// yalnız Keşfet zorluğu; K-06).
+class _LevelChip extends StatelessWidget {
+  const _LevelChip({
+    required this.level,
+    required this.onTap,
+    this.compact = false,
+  });
+
+  final String level;
+  final VoidCallback onTap;
+
+  /// Dar ekranda kısa etiket.
+  final bool compact;
+
+  @override
+  Widget build(BuildContext context) => Semantics(
+    button: true,
+    label: DiscoverTexts.levelChipLevelSemantics(level),
+    excludeSemantics: true,
+    child: PressScale(
+      child: Material(
+        color: AppScrim.chip,
+        borderRadius: const BorderRadius.all(Radius.circular(AppRadius.full)),
+        child: InkWell(
+          key: const ValueKey('level-chip'),
+          borderRadius: const BorderRadius.all(Radius.circular(AppRadius.full)),
+          onTap: onTap,
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(minHeight: AppTouch.min),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: AppSpace.s12),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Flexible(
+                    child: Text(
+                      compact
+                          ? DiscoverTexts.levelChipShort(level)
+                          : DiscoverTexts.levelChip(level),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: Theme.of(
+                        context,
+                      ).textTheme.labelLarge?.copyWith(color: AppPalette.white),
+                    ),
+                  ),
+                  if (compact)
+                    Icon(
+                      Icons.expand_more_rounded,
+                      size: 18,
+                      color: AppPalette.white.withValues(alpha: 0.8),
+                    ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
+    ),
+  );
+}
+
+/// Kaynak çipi (seçili: fener sarısı).
+class _ChipButton extends StatelessWidget {
+  const _ChipButton({
+    super.key,
+    required this.label,
+    required this.selected,
+    required this.onTap,
+  });
+
+  final String label;
+  final bool selected;
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) => Semantics(
+    button: true,
+    selected: selected,
+    label: label,
+    excludeSemantics: true,
+    child: PressScale(
+      child: Material(
+        color: selected ? AppPalette.lighthouseYellow : AppScrim.chip,
+        borderRadius: const BorderRadius.all(Radius.circular(AppRadius.full)),
+        child: InkWell(
+          borderRadius: const BorderRadius.all(Radius.circular(AppRadius.full)),
+          onTap: onTap,
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(minHeight: AppTouch.min),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: AppSpace.s16),
+              child: Center(
+                widthFactor: 1,
+                child: Text(
+                  label,
+                  style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                    color: selected ? AppPalette.ink : AppPalette.white,
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
+    ),
+  );
+}
+
+/// Seviye paneli (plan §3): önerilen seviye (gerçekten varsa) + elle seçim +
+/// seçimi geri alma. Genel yerleştirme sonucu değişmez.
+Future<void> _openLevelPanel(BuildContext context, WidgetRef ref) async {
+  final level = ref.read(reelLevelProvider);
+  final levels = await ref
+      .read(reelLevelsProvider.future)
+      .catchError((Object _) => <String>[level]);
+  final placement = await ref
+      .read(reelPlacementLevelProvider.future)
+      .catchError((Object _) => null);
+  if (!context.mounted) return;
+  await showModalBottomSheet<void>(
+    context: context,
+    backgroundColor: AppPalette.sand,
+    builder: (context) => _LevelPanel(
+      level: level,
+      levels: levels,
+      placement: placement,
+      onPick: (picked) async {
+        await ref.read(reelLevelChoiceProvider.notifier).choose(picked);
+      },
+      onReset: () async {
+        await ref.read(reelLevelChoiceProvider.notifier).choose(null);
+      },
+    ),
+  );
+}
+
+class _LevelPanel extends StatelessWidget {
+  const _LevelPanel({
+    required this.level,
+    required this.levels,
+    required this.placement,
+    required this.onPick,
+    required this.onReset,
+  });
+
+  final String level;
+  final List<String> levels;
+
+  /// Yerleştirmenin önerisi; katalogda yoksa `null` (o zaman "önerilen
+  /// seviyem" denmez — K-06).
+  final String? placement;
+  final Future<void> Function(String level) onPick;
+  final Future<void> Function() onReset;
+
+  @override
+  Widget build(BuildContext context) {
+    final t = Theme.of(context).textTheme;
+    final placement = this.placement;
+    // Seçim kaldırılınca dönülecek seviye: öneri varsa o, yoksa eldeki ilk.
+    final fallback = placement ?? (levels.isEmpty ? level : levels.first);
+    return SafeArea(
+      // Uzun metin/çok seviye: panel kısa ekranda kaydırılabilir kalır.
+      child: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(AppSpace.s24),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              const CapsLabel(DiscoverTexts.levelPanelTitle),
+              const SizedBox(height: AppSpace.s8),
+              Text(
+                DiscoverTexts.levelPanelBody,
+                style: t.bodyMedium?.copyWith(color: AppPalette.ink700),
+              ),
+              if (placement == null) ...[
+                const SizedBox(height: AppSpace.s8),
+                Text(
+                  DiscoverTexts.levelPanelNoMatch,
+                  style: t.bodyMedium?.copyWith(color: AppPalette.ink700),
+                ),
+              ],
+              const SizedBox(height: AppSpace.s16),
+              for (final l in levels) ...[
+                Semantics(
+                  button: true,
+                  selected: l == level,
+                  label: l == placement
+                      ? '${DiscoverTexts.recommendedLevel(l)}. '
+                            '${l == level ? '' : 'Seç'}'
+                      : 'Seviye $l${l == level ? ', seçili' : ''}',
+                  excludeSemantics: true,
+                  child: OutlinedButton(
+                    key: ValueKey('level-option-$l'),
+                    style: AppButtonStyles.secondary(),
+                    onPressed: () async {
+                      await onPick(l);
+                      if (context.mounted) Navigator.of(context).pop();
+                    },
+                    child: Text(
+                      l == placement ? DiscoverTexts.recommendedLevel(l) : l,
+                    ),
+                  ),
+                ),
+                const SizedBox(height: AppSpace.s8),
+              ],
+              if (level != fallback) ...[
+                const SizedBox(height: AppSpace.s8),
+                FilledButton(
+                  key: const ValueKey('level-reset'),
+                  style: AppButtonStyles.primary(),
+                  onPressed: () async {
+                    await onReset();
+                    if (context.mounted) Navigator.of(context).pop();
+                  },
+                  child: Text(
+                    placement != null
+                        ? DiscoverTexts.backToRecommended
+                        : DiscoverTexts.levelPanelClear,
+                  ),
+                ),
+              ],
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+/// "Hikâye klipleri" çipi: mevcut `clips.json` akışı (H-040). Bölüm kilitleri
+/// ve spoiler koruması burada kalır; quiz ve mola kartları korunur.
+class _StoryClipsBody extends ConsumerWidget {
+  const _StoryClipsBody();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
     final clips = ref.watch(discoverClipsProvider);
     final limit = ref.watch(discoverLimitProvider);
-    final Widget body = switch ((clips, limit)) {
+    return switch ((clips, limit)) {
       (AsyncError(), _) => _Message(
         key: const ValueKey('discover-error'),
         icon: Icons.cloud_off_rounded,
@@ -78,17 +502,46 @@ class DiscoverScreen extends ConsumerWidget {
           ),
         ),
       (AsyncData(value: final c?), AsyncData(value: final l)) => DiscoverFeed(
-        key: const ValueKey('discover-feed'),
-        clips: c.clips,
+        key: const ValueKey('discover-feed-clips'),
+        videos: [
+          for (final clip in c.clips)
+            feedVideoOfClip(clip, ref.watch(contentSourceProvider)),
+        ],
+        entries: buildFeed(c.clips),
         aiLabel: c.aiLabel,
         moreLocked: c.hasLocked,
         limit: l,
       ),
       _ => const _Loading(),
     };
-    return Scaffold(
-      backgroundColor: AppScrim.playerBackground,
-      body: Semantics(label: DiscoverTexts.screenSemantics, child: body),
+  }
+}
+
+/// Günlük set (Bugün) ya da kategori havuzu: **bağımsız reeller** (H-094).
+class _ReelFeed extends ConsumerWidget {
+  const _ReelFeed({required this.set});
+
+  final ReelSet set;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final limit = ref.watch(discoverLimitProvider);
+    if (!limit.hasValue) return const _Loading();
+    final source = ref.watch(contentSourceProvider);
+    final videos = [
+      for (final reel in set.reels) feedVideoOfReel(reel, source),
+    ];
+    return DiscoverFeed(
+      // Çip ya da seviye değişince set baştan başlar (açık bir başlangıç).
+      key: ValueKey('discover-reels-${set.chip.name}-${set.level}'),
+      videos: videos,
+      entries: buildDailyFeed(videos),
+      aiLabel: kDefaultAiLabel,
+      moreLocked: false,
+      limit: limit.requireValue,
+      // "Hikâye kliplerine bak" yalnız günlük sette: kategori havuzu zaten
+      // havuzun kendisi (bitişte yönlendirme zorlanmaz; plan §3).
+      daily: set.chip == DiscoverChip.today,
     );
   }
 }
@@ -101,9 +554,10 @@ class _Loading extends StatelessWidget {
     key: const ValueKey('discover-loading'),
     label: DiscoverTexts.loading,
     child: Padding(
+      // Güvenli alanı üst şerit taşır.
       padding: EdgeInsets.fromLTRB(
         AppSpace.s16,
-        MediaQuery.paddingOf(context).top + AppSpace.s16,
+        AppSpace.s16,
         AppSpace.s16,
         MediaQuery.paddingOf(context).bottom + AppSpace.s16,
       ),
@@ -164,16 +618,27 @@ class _Message extends StatelessWidget {
 class DiscoverFeed extends ConsumerStatefulWidget {
   const DiscoverFeed({
     super.key,
-    required this.clips,
+    required this.videos,
+    required this.entries,
     required this.aiLabel,
     required this.moreLocked,
     required this.limit,
+    this.daily = false,
   });
 
-  final List<FeedClip> clips;
+  /// Akıştaki videolar (sırayla): önbellek anahtarı ve adres çözümü buradan
+  /// gelir; kaynak türü (klip/reel) videonun kendisiyle taşınır.
+  final List<FeedVideo> videos;
+
+  /// Sayfalar: kliplerde `buildFeed`, günlük sette `buildDailyFeed`.
+  final List<FeedEntry> entries;
+
   final String aiLabel;
   final bool moreLocked;
   final DiscoverLimit limit;
+
+  /// Günlük set mi (sakin bitiş ve mini soru kartları).
+  final bool daily;
 
   @override
   ConsumerState<DiscoverFeed> createState() => DiscoverFeedState();
@@ -181,8 +646,20 @@ class DiscoverFeed extends ConsumerStatefulWidget {
 
 class DiscoverFeedState extends ConsumerState<DiscoverFeed>
     with WidgetsBindingObserver {
-  late final List<FeedEntry> feed = buildFeed(widget.clips);
+  late final List<FeedEntry> feed = widget.entries;
+
+  /// Önbellek anahtarı → tam adres (klip: sezon paketi, reel: `/reels/`).
+  late final Map<String, Uri> _uris = {
+    for (final v in widget.videos) v.cacheKey: v.mediaUri,
+  };
+
+  /// Hikâye klibi girdisi → video modeli (klip kimliğiyle).
+  late final Map<String, FeedVideo> _clips = {
+    for (final v in widget.videos)
+      if (!v.isReel) v.id: v,
+  };
   final PageController _pages = PageController();
+
   late final ClipControllerCache cache;
   int _index = 0;
   bool _muted = false;
@@ -206,14 +683,35 @@ class DiscoverFeedState extends ConsumerState<DiscoverFeed>
   /// Ölçüm ve testler: ekrandaki sayfa.
   int get index => _index;
 
-  FeedClip? get _clip => switch (feed[_index]) {
-    ClipEntry(:final clip) => clip,
+  /// Girdinin videosu (klip girdisi kimliğinden çözülür); kartlarda null.
+  FeedVideo? _videoOf(FeedEntry entry) => switch (entry) {
+    ClipEntry(:final clip) => _clips[clip.id],
+    VideoEntry(:final video) => video,
     _ => null,
   };
 
+  FeedVideo? get _video => _videoOf(feed[_index]);
+
   VideoPlayerController? get _current {
-    final c = _clip;
-    return c == null ? null : cache.ready(c.video);
+    final v = _video;
+    return v == null ? null : cache.ready(v.cacheKey);
+  }
+
+  /// [from] sonrasındaki ilk video sayfası (önceden yükleme).
+  int? _nextVideo(int from) {
+    for (var i = from + 1; i < feed.length; i++) {
+      if (_videoOf(feed[i]) != null) return i;
+    }
+    return null;
+  }
+
+  /// [before] sırasından önceki video sayısı (bitiş kartı için).
+  int _videosBefore(int before) {
+    var n = 0;
+    for (var i = 0; i < before && i < feed.length; i++) {
+      if (_videoOf(feed[i]) != null) n++;
+    }
+    return n;
   }
 
   bool get _canPlay =>
@@ -222,11 +720,11 @@ class DiscoverFeedState extends ConsumerState<DiscoverFeed>
   @override
   void initState() {
     super.initState();
-    final source = ref.read(contentSourceProvider);
     cache = ClipControllerCache(
-      uriFor: (p) => source.seasonMediaUri(kDiscoverSeason, p),
+      uriFor: (key) => _uris[key]!,
       factory: ref.read(videoControllerFactoryProvider),
     );
+
     _store = ref.read(discoverStoreProvider);
     _clock = ref.read(discoverClockProvider);
     _tickEvery = ref.read(discoverTickProvider);
@@ -339,22 +837,26 @@ class DiscoverFeedState extends ConsumerState<DiscoverFeed>
     cache.retain(const {});
   }
 
-  /// Sayfa değişti: ekrandaki klip açılır ve oynar, sıradaki önceden açılır,
+  /// Sayfa değişti: ekrandaki video açılır ve oynar, sıradaki önceden açılır,
   /// ötekiler atılır.
   Future<void> _activate(int index) async {
     final token = ++_activation;
     _index = index;
     final entry = feed[index];
-    final next = nextClipIndex(feed, index);
-    final nextPath = next == null ? null : (feed[next] as ClipEntry).clip.video;
-    final keep = <String>{if (entry is ClipEntry) entry.clip.video, ?nextPath};
+    final here = _videoOf(entry);
+    final next = _nextVideo(index);
+    final nextVideo = next == null ? null : _videoOf(feed[next]);
+    final keep = <String>{
+      if (here != null) here.cacheKey,
+      if (nextVideo != null) nextVideo.cacheKey,
+    };
     for (final p in [...cache.paths]) {
       if (!keep.contains(p)) await cache.ready(p)?.pause();
     }
     cache.retain(keep);
     if (mounted) setState(() {});
-    if (entry is ClipEntry) {
-      final c = await cache.acquire(entry.clip.video);
+    if (here != null) {
+      final c = await cache.acquire(here.cacheKey);
       if (!mounted || token != _activation || c == null) return;
       await c.setVolume(_muted ? 0 : 1);
       if (c.value.position > Duration.zero || c.value.isCompleted) {
@@ -363,7 +865,7 @@ class DiscoverFeedState extends ConsumerState<DiscoverFeed>
       if (_canPlay && token == _activation) await c.play();
     }
     if (!mounted || token != _activation) return;
-    if (nextPath != null && !_limitReached) cache.preload(nextPath);
+    if (nextVideo != null && !_limitReached) cache.preload(nextVideo.cacheKey);
   }
 
   Future<void> _togglePlay() async {
@@ -397,29 +899,31 @@ class DiscoverFeedState extends ConsumerState<DiscoverFeed>
       ..showSnackBar(SnackBar(content: Text(text)));
   }
 
-  String _sourceTitle(FeedClip clip) =>
-      DiscoverTexts.notebookSource(clip.episodeTitle ?? clip.titleTr);
-
-  SavedPhrase _targetItem(FeedClip clip) {
-    final cue = clip.targetCue;
+  SavedPhrase _targetItem(FeedVideo v) {
+    final cue = v.targetCue;
+    final id = v.contentId ?? v.id;
     return SavedPhrase(
-      contentId: clip.episodeId,
-      sourceId: cue?.id ?? '${clip.episodeId}#${clip.id}',
-      kind: clip.target.isWord ? SavedKind.word : SavedKind.phrase,
-      en: clip.target.en,
-      tr: clip.target.tr,
+      contentId: id,
+      sourceId: cue?.id ?? '$id#${v.id}',
+      kind: v.target.isWord ? SavedKind.word : SavedKind.phrase,
+      en: v.target.en,
+      tr: v.target.tr,
       context: cue?.text,
       contextTr: cue?.tr,
-      sourceTitle: _sourceTitle(clip),
+      sourceTitle: v.sourceTitle,
+      // Reel paketinden gelen görsel ve ses doğrudan taşınır (H-094): kart
+      // sonradan bölüm verisinden zenginleştirilmez (`_reels/<id>/…`).
+      imagePath: v.imagePath,
+      audio: v.audioPath == null ? null : MediaClip(v.audioPath!),
       savedAt: _clock().toUtc(),
     );
   }
 
-  bool _isSaved(FeedClip clip) => _savedKeys.contains(_targetItem(clip).key);
+  bool _isSaved(FeedVideo v) => _savedKeys.contains(_targetItem(v).key);
 
-  /// "Kaydet": klibin ifadesi Defter'e (kaynak "Keşfet: bölüm adı").
-  Future<void> _save(FeedClip clip) async {
-    final item = _targetItem(clip);
+  /// "Kaydet": videonun ifadesi Defter'e (kaynak "Keşfet: …").
+  Future<void> _save(FeedVideo v) async {
+    final item = _targetItem(v);
     try {
       final added = await ref.read(notebookRepositoryProvider).add(item);
       if (!mounted) return;
@@ -437,7 +941,7 @@ class DiscoverFeedState extends ConsumerState<DiscoverFeed>
 
   /// Altyazı satırı ya da "Anlam": video durur, anlam paneli açılır; panel
   /// kapanınca kaldığı yerden sürer.
-  Future<void> _openMeaning(FeedClip clip, SubtitleCue cue, int? word) async {
+  Future<void> _openMeaning(FeedVideo v, SubtitleCue cue, int? word) async {
     if (_sheetOpen) return;
     final c = _current;
     final wasPlaying = c?.value.isPlaying ?? false;
@@ -449,16 +953,21 @@ class DiscoverFeedState extends ConsumerState<DiscoverFeed>
     final audio = c == null
         ? const SilentMeaningAudio()
         : _ClipMeaningAudio(c, cue);
-    final title = _sourceTitle(clip);
+    final id = v.contentId ?? v.id;
+    final title = v.sourceTitle;
     var saved = false;
     final m = MeaningController(
-      text: cue.toMeaning(clip.episodeId),
+      text: cue.toMeaning(id),
       audio: audio,
       events: ref.read(learningEventLogProvider),
       notebook: ref.read(notebookRepositoryProvider),
       decorate: (draft, {wordIndex, chunk}) {
         saved = true;
-        return draft.copyWith(sourceTitle: title);
+        return draft.copyWith(
+          sourceTitle: title,
+          imagePath: v.imagePath,
+          audio: v.audioPath == null ? null : MediaClip(v.audioPath!),
+        );
       },
     );
     if (word != null) m.selectWord(word);
@@ -466,7 +975,7 @@ class DiscoverFeedState extends ConsumerState<DiscoverFeed>
       context,
       m,
       speak: ref.read(speechVisibleProvider) ? speakEnvOf(context) : null,
-      structures: meaningStructures(ref, [?clip.grammarId]),
+      structures: meaningStructures(ref, [?v.grammarId]),
     );
     m.dispose();
     await audio.stop();
@@ -501,11 +1010,12 @@ class DiscoverFeedState extends ConsumerState<DiscoverFeed>
     }
   }
 
-  /// "Tam hikâye": bölüm açılır (kaldığı yer sorulur); dönünce klip durur
-  /// halde bekler.
-  Future<void> _openEpisode(FeedClip clip) => _whileAway(() async {
-    if (!mounted) return;
-    await openEpisode(context, ref, clip.episodeId);
+  /// "Tam hikâye": bölüm açılır (kaldığı yer sorulur); dönünce video durur
+  /// halde bekler. Yalnızca gerçek bölüm bağı olan videolarda (plan §6.3).
+  Future<void> _openEpisode(FeedVideo v) => _whileAway(() async {
+    final id = v.episodeId;
+    if (id == null || !mounted) return;
+    await openEpisode(context, ref, id);
   });
 
   Future<void> _openGrammar(String id) => _whileAway(() async {
@@ -553,83 +1063,110 @@ class DiscoverFeedState extends ConsumerState<DiscoverFeed>
     if (_limitReached) {
       return LimitCard(onStory: () => context.go(AppRoutes.story));
     }
-    final clipTotal = widget.clips.length;
-    final source = ref.read(contentSourceProvider);
-    return Stack(
-      fit: StackFit.expand,
-      children: [
-        PageView.builder(
-          key: const ValueKey('discover-pages'),
-          controller: _pages,
-          scrollDirection: Axis.vertical,
-          itemCount: feed.length,
-          onPageChanged: (i) => unawaited(_activate(i)),
-          itemBuilder: (context, i) => switch (feed[i]) {
-            ClipEntry(:final clip, :final ordinal) => TickerMode(
-              enabled: i == _index,
-              child: ClipPage(
-                clip: clip,
-                ordinal: ordinal,
-                total: clipTotal,
-                cache: cache,
-                active: i == _index,
-                muted: _muted,
-                saved: _isSaved(clip),
-                posterUri: clip.poster == null
-                    ? null
-                    : source.seasonMediaUri(kDiscoverSeason, clip.poster!),
-                onTogglePlay: () => unawaited(_togglePlay()),
-                onReplay: () => unawaited(_replay()),
-                onToggleMute: () => unawaited(_toggleMute()),
-                onSave: () => unawaited(_save(clip)),
-                onMeaning: (cue, w) => unawaited(_openMeaning(clip, cue, w)),
-                onFullStory: () => unawaited(_openEpisode(clip)),
-                onGrammar: clip.grammarId == null
-                    ? null
-                    : () => unawaited(_openGrammar(clip.grammarId!)),
-                onRetry: () {
-                  cache.retry(clip.video);
-                  unawaited(_activate(i));
-                },
+    return MediaQuery.removePadding(
+      // Güvenli alanı üst şerit (başlık + çipler) taşır.
+      context: context,
+      removeTop: true,
+      child: Stack(
+        fit: StackFit.expand,
+        children: [
+          PageView.builder(
+            key: const ValueKey('discover-pages'),
+            controller: _pages,
+            scrollDirection: Axis.vertical,
+            itemCount: feed.length,
+            onPageChanged: (i) => unawaited(_activate(i)),
+            itemBuilder: (context, i) => switch (feed[i]) {
+              ClipEntry(:final ordinal) => _videoPage(
+                _videoOf(feed[i])!,
+                ordinal,
+                i,
               ),
-            ),
-            QuizEntry(:final clip) => QuizCard(
-              key: ValueKey('quiz-${clip.id}'),
-              clip: clip,
-              onNext: _goNext,
-            ),
-            BreakEntry(:final clipsBefore) => BreakCard(
-              clipsWatched: clipsBefore,
-              saved: _savedCount,
-              onHome: () => context.go(AppRoutes.home),
-              onContinue: _goNext,
-            ),
-            EndEntry() => EndCard(
-              moreLocked: widget.moreLocked,
-              onStory: () => context.go(AppRoutes.story),
-              onHome: () => context.go(AppRoutes.home),
-            ),
-          },
-        ),
-        // Yapay zekâ notu (§5.6): akış açılınca birkaç saniye, sonra kaybolur
-        // (uygulama içi videoda gömülü etiket yok). Yalnızca klip üstünde.
-        Positioned(
-          left: AppSpace.s16,
-          top: MediaQuery.paddingOf(context).top + 112,
-          child: IgnorePointer(
-            child: Visibility(
-              visible: feed[_index] is ClipEntry,
-              maintainState: true,
-              child: AiNotice(
-                key: const ValueKey('ai-note'),
-                text: widget.aiLabel,
+              VideoEntry(:final ordinal) => _videoPage(
+                _videoOf(feed[i])!,
+                ordinal,
+                i,
+              ),
+              QuizEntry(:final clip) => QuizCard(
+                key: ValueKey('quiz-${clip.id}'),
+                clip: clip,
+                onNext: _goNext,
+              ),
+              PracticeEntry(:final video) => PracticeCard(
+                key: ValueKey('practice-${video.id}'),
+                video: video,
+                onNext: _goNext,
+              ),
+              BreakEntry(:final clipsBefore) => BreakCard(
+                clipsWatched: clipsBefore,
+                saved: _savedCount,
+                onHome: () => context.go(AppRoutes.home),
+                onContinue: _goNext,
+              ),
+              EndEntry() => EndCard(
+                moreLocked: widget.moreLocked,
+                onStory: () => context.go(AppRoutes.story),
+                onHome: () => context.go(AppRoutes.home),
+              ),
+              DailyEndEntry() => DailyEndCard(
+                watched: _videosBefore(i),
+                moreLabel: widget.daily ? DiscoverTexts.dailyEndMore : null,
+                onMore: () => ref
+                    .read(discoverChipProvider.notifier)
+                    .select(DiscoverChip.storyClips),
+                onNotebook: () => context.go(AppRoutes.notebook),
+                onHome: () => context.go(AppRoutes.home),
+              ),
+            },
+          ),
+          // Yapay zekâ notu (§5.6): akış açılınca birkaç saniye, sonra
+          // kaybolur (uygulama içi videoda gömülü etiket yok). Video üstünde.
+          Positioned(
+            left: AppSpace.s16,
+            top: 112,
+            child: IgnorePointer(
+              child: Visibility(
+                visible: _video != null,
+                maintainState: true,
+                child: AiNotice(
+                  key: const ValueKey('ai-note'),
+                  text: widget.aiLabel,
+                ),
               ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
+
+  /// Tek video sayfası (klip ya da reel): ortak sayfa + akış eylemleri.
+  Widget _videoPage(FeedVideo v, int ordinal, int i) => TickerMode(
+    enabled: i == _index,
+    child: VideoPage(
+      video: v,
+      ordinal: ordinal,
+      total: widget.videos.length,
+      cache: cache,
+      active: i == _index,
+      muted: _muted,
+      saved: _isSaved(v),
+      topInset: 0,
+      onTogglePlay: () => unawaited(_togglePlay()),
+      onReplay: () => unawaited(_replay()),
+      onToggleMute: () => unawaited(_toggleMute()),
+      onSave: () => unawaited(_save(v)),
+      onMeaning: (cue, w) => unawaited(_openMeaning(v, cue, w)),
+      onFullStory: () => unawaited(_openEpisode(v)),
+      onGrammar: v.grammarId == null
+          ? null
+          : () => unawaited(_openGrammar(v.grammarId!)),
+      onRetry: () {
+        cache.retry(v.cacheKey);
+        unawaited(_activate(i));
+      },
+    ),
+  );
 }
 
 /// Anlam panelinin sesi: klibin kendi kaydından kelime ya da satır çalınır

@@ -162,12 +162,15 @@ class FeedClip {
 }
 
 /// `clips.json`: sezonun klipleri (dışa aktarma sırası = akış sırası).
+/// Yapay zekâ notu pakette yoksa (ve bağımsız reellerde) kullanılan varsayılan.
+const kDefaultAiLabel = 'Yapay zekâ ile üretilmiştir';
+
 class ClipCatalog {
   const ClipCatalog({
     required this.season,
     required this.clips,
     this.status,
-    this.aiLabel = 'Yapay zekâ ile üretilmiştir',
+    this.aiLabel = kDefaultAiLabel,
   });
 
   factory ClipCatalog.fromJson(Map<String, dynamic> j) {
@@ -177,7 +180,7 @@ class ClipCatalog {
     return ClipCatalog(
       season: (j['season'] as num).toInt(),
       status: j['status'] as String?,
-      aiLabel: (j['aiLabel'] as String?) ?? 'Yapay zekâ ile üretilmiştir',
+      aiLabel: (j['aiLabel'] as String?) ?? kDefaultAiLabel,
       clips: [
         for (final c in (j['clips'] as List? ?? const []))
           FeedClip.fromJson((c as Map).cast<String, dynamic>()),

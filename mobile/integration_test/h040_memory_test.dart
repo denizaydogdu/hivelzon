@@ -18,6 +18,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hivelzon/app/theme.dart';
+import 'package:hivelzon/features/discover/application/discover_providers.dart';
 import 'package:hivelzon/features/discover/domain/feed.dart';
 import 'package:hivelzon/features/discover/presentation/discover_screen.dart';
 import 'package:hivelzon/features/player/data/progress_repository.dart';
@@ -76,6 +77,9 @@ void main() {
           appDatabaseProvider.overrideWithValue(db),
           legacyImportProvider.overrideWithValue(Future<void>.value()),
           progressRepositoryProvider.overrideWithValue(progress),
+          // Keşfet artık "Bugün" (bağımsız reeller) ile açılır (H-094); bu
+          // ölçüm hikâye klipleri akışını ölçer.
+          discoverInitialChipProvider.overrideWithValue(DiscoverChip.storyClips),
         ],
         child: MaterialApp.router(
           theme: AppTheme.light(),
@@ -111,6 +115,9 @@ void main() {
           QuizEntry() => 'quiz',
           BreakEntry() => 'mola',
           EndEntry() => 'bitiş',
+          VideoEntry(:final video) => video.id,
+          PracticeEntry() => 'soru',
+          DailyEndEntry() => 'bitiş',
         };
         perPage.add('$label ${_mb(rss).toStringAsFixed(0)}');
         debugPrint(

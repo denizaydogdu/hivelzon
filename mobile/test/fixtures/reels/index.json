@@ -1,0 +1,83 @@
+{
+ "schemaVersion": 1,
+ "reels": [
+  {
+   "id": "A1-R-BOK-01",
+   "category": "BOK",
+   "categoryTr": "Kitap",
+   "level": "A1",
+   "titleTr": "Kütüphanede kitap seçimi",
+   "duration": 10.0,
+   "sourceType": "standalone",
+   "family": "FAM-BOK-FIRSTBOOK",
+   "poster": "A1-R-BOK-01.webp",
+   "contentVersion": 1,
+   "status": "DRAFT"
+  },
+  {
+   "id": "A1-R-CIN-01",
+   "category": "CIN",
+   "categoryTr": "Sinema",
+   "level": "A1",
+   "titleTr": "Gişede iki bilet",
+   "duration": 12.0,
+   "sourceType": "standalone",
+   "family": "FAM-CIN-TICKETS",
+   "poster": "A1-R-CIN-01.webp",
+   "contentVersion": 1,
+   "status": "DRAFT"
+  },
+  {
+   "id": "A1-R-SPO-01",
+   "category": "SPO",
+   "categoryTr": "Spor",
+   "level": "A1",
+   "titleTr": "Antrenmandan sonra su",
+   "duration": 11.0,
+   "sourceType": "standalone",
+   "family": "FAM-SPO-WATER",
+   "poster": "A1-R-SPO-01.webp",
+   "contentVersion": 1,
+   "status": "DRAFT"
+  },
+  {
+   "id": "A2-R-BOK-01",
+   "category": "BOK",
+   "categoryTr": "Kitap",
+   "level": "A2",
+   "titleTr": "Kütüphanede süre uzatma",
+   "duration": 12.0,
+   "sourceType": "standalone",
+   "family": "FAM-BOK-DUE",
+   "poster": "A2-R-BOK-01.webp",
+   "contentVersion": 1,
+   "status": "DRAFT"
+  },
+  {
+   "id": "A2-R-CIN-01",
+   "category": "CIN",
+   "categoryTr": "Sinema",
+   "level": "A2",
+   "titleTr": "Filmden sonra",
+   "duration": 12.5,
+   "sourceType": "standalone",
+   "family": "FAM-CIN-OPINION",
+   "poster": "A2-R-CIN-01.webp",
+   "contentVersion": 1,
+   "status": "DRAFT"
+  },
+  {
+   "id": "A2-R-SPO-01",
+   "category": "SPO",
+   "categoryTr": "Spor",
+   "level": "A2",
+   "titleTr": "Antrenörün uyarısı",
+   "duration": 10.5,
+   "sourceType": "standalone",
+   "family": "FAM-SPO-FOCUS",
+   "poster": "A2-R-SPO-01.webp",
+   "contentVersion": 1,
+   "status": "DRAFT"
+  }
+ ]
+}

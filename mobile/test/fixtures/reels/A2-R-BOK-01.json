@@ -1,0 +1,199 @@
+{
+ "schemaVersion": 1,
+ "id": "A2-R-BOK-01",
+ "contentVersion": 1,
+ "sourceType": "standalone",
+ "category": "BOK",
+ "categoryTr": "Kitap",
+ "level": "A2",
+ "titleTr": "Kütüphanede süre uzatma",
+ "learningObjective": "Ödünç süresini uzatmak istemek",
+ "family": "FAM-BOK-DUE",
+ "duration": 12.0,
+ "video": "A2-R-BOK-01.mp4",
+ "poster": "A2-R-BOK-01.webp",
+ "image": "stills/s04.webp",
+ "audio": "audio/s04-02.m4a",
+ "status": "DRAFT",
+ "target": {
+  "kind": "phrase",
+  "en": "Can I keep it for one more week?",
+  "tr": "Bir hafta daha tutabilir miyim?",
+  "cue": "s04-02"
+ },
+ "practice": {
+  "promptTr": "Kerem ne istiyor?",
+  "explainTr": "Kerem kitabı bir hafta daha tutmak istiyor.",
+  "options": [
+   {
+    "text": "Bir hafta daha tutmak",
+    "lang": "tr",
+    "correct": true
+   },
+   {
+    "text": "Yeni bir kitap almak",
+    "lang": "tr",
+    "correct": false
+   },
+   {
+    "text": "Kitabı satmak",
+    "lang": "tr",
+    "correct": false
+   }
+  ]
+ },
+ "related": [],
+ "cues": [
+  {
+   "id": "s04-01",
+   "start": 0.6,
+   "end": 3.0,
+   "speaker": "LIBRARIAN",
+   "text": "This book is due today.",
+   "tr": "Bu kitabın süresi bugün doluyor.",
+   "chunks": [],
+   "words": [
+    {
+     "w": "This",
+     "start": 0.6,
+     "end": 0.9,
+     "gloss": "bu"
+    },
+    {
+     "w": "book",
+     "start": 0.9,
+     "end": 1.3,
+     "gloss": "kitap"
+    },
+    {
+     "w": "is",
+     "start": 1.3,
+     "end": 1.5
+    },
+    {
+     "w": "due",
+     "start": 1.5,
+     "end": 1.9,
+     "gloss": "son ödeme günü"
+    },
+    {
+     "w": "today.",
+     "start": 2.0,
+     "end": 2.6,
+     "gloss": "bugün"
+    }
+   ]
+  },
+  {
+   "id": "s04-02",
+   "start": 3.8,
+   "end": 6.6,
+   "speaker": "KEREM",
+   "text": "Can I keep it for one more week?",
+   "tr": "Bir hafta daha tutabilir miyim?",
+   "chunks": [],
+   "words": [
+    {
+     "w": "Can",
+     "start": 3.8,
+     "end": 4.0
+    },
+    {
+     "w": "I",
+     "start": 4.0,
+     "end": 4.15
+    },
+    {
+     "w": "keep",
+     "start": 4.15,
+     "end": 4.6,
+     "gloss": "tutmak"
+    },
+    {
+     "w": "it",
+     "start": 4.6,
+     "end": 4.8
+    },
+    {
+     "w": "for",
+     "start": 4.9,
+     "end": 5.1
+    },
+    {
+     "w": "one",
+     "start": 5.1,
+     "end": 5.4,
+     "gloss": "bir"
+    },
+    {
+     "w": "more",
+     "start": 5.4,
+     "end": 5.8,
+     "gloss": "daha"
+    },
+    {
+     "w": "week?",
+     "start": 5.8,
+     "end": 6.3,
+     "gloss": "hafta"
+    }
+   ]
+  },
+  {
+   "id": "s04-03",
+   "start": 7.4,
+   "end": 11.0,
+   "speaker": "LIBRARIAN",
+   "text": "Of course. Please bring it back on Friday.",
+   "tr": "Elbette. Lütfen cuma günü geri getir.",
+   "chunks": [],
+   "words": [
+    {
+     "w": "Of",
+     "start": 7.4,
+     "end": 7.6
+    },
+    {
+     "w": "course.",
+     "start": 7.6,
+     "end": 8.2,
+     "gloss": "elbette"
+    },
+    {
+     "w": "Please",
+     "start": 8.6,
+     "end": 9.0,
+     "gloss": "lütfen"
+    },
+    {
+     "w": "bring",
+     "start": 9.0,
+     "end": 9.4,
+     "gloss": "getirmek"
+    },
+    {
+     "w": "it",
+     "start": 9.4,
+     "end": 9.55
+    },
+    {
+     "w": "back",
+     "start": 9.55,
+     "end": 9.95,
+     "gloss": "geri"
+    },
+    {
+     "w": "on",
+     "start": 10.2,
+     "end": 10.35
+    },
+    {
+     "w": "Friday.",
+     "start": 10.35,
+     "end": 10.9,
+     "gloss": "cuma"
+    }
+   ]
+  }
+ ]
+}

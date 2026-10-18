@@ -1,15 +1,15 @@
 # İş Sırası — hiVelzon
 
-> Son güncelleme: 2026-10-14 · Güncelleyen: Claude
+> Son güncelleme: 2026-10-18 · Güncelleyen: Claude
 
 Bu dosya tek takip noktasıdır. Hangi işin hangi sırada yapıldığını, şu an ne üzerinde çalışıldığını ve neyin bittiğini gösterir. Her işin ayrıntısı kendi `H-<numara>-<başlık>.md` dosyasındadır.
 
 ## Nerede kaldık
-- **Şu an:** **Faz 1 (MVP) uygulaması sürüyor** (`docs/UYGULAMA-PLANI.md`, H-025 onaylı). Kod var: `mobile/` (Flutter), `backend/` (Spring Boot 4 iskeleti), `tools/content-pipeline/`, `tools/dev-content-server/`. Son commit `035f890` (H-035); `main` GitHub'da, CI yeşil.
+- **Şu an:** **Faz 1 (MVP) uygulaması sürüyor** (`docs/UYGULAMA-PLANI.md`, H-025 onaylı). Kod var: `mobile/` (Flutter), `backend/` (Spring Boot 4 iskeleti), `tools/content-pipeline/`, `tools/dev-content-server/`. Son commit `3fc9c3a` (H-090); `main` GitHub'da. H-094 P0+P1 kodda ama **commit edilmedi** (kullanıcı onayı bekliyor).
 - **Her şey yerelde** (kullanıcı kararı): Docker PostgreSQL (5434), yerel içerik sunucusu (`python3 tools/dev-content-server/serve.py`, 127.0.0.1:8787), iOS simülatörü "hiVelzon iPhone 17". Sunucu, Bunny Stream, mağaza ve geliştirici hesapları en sonda (H-044).
 - **Biten uygulama işleri:** H-033 repo iskeleti · H-034 bölüm paketi + content-lint · H-045 tasarım yönü (6 taslak, 6 kr) · H-031 etkileşimli oynatıcı · H-046 altyazıya dokun → Türkçe anlam (B1–B4 çevirileri APPROVED) · H-047 Hi kararları · H-049 sezon jeneriği (6,69 kr) · H-050 başlıkla açılış (schemaVersion 2) · H-035 hikâye haritası + Drift ilerleme + kilit kuralı.
-- **İçerik:** B1–B4 üretildi (pilot + B2–B4), jenerik, 6 arayüz taslağı, harita görseli. B5–B12 diyalogları onaylı (H-032) ama üretilmedi; kalan Sezon 1 üretimi ≈ 8 × ~8,5 kr. Higgsfield kredisi **84,56** (lite plan).
-- **Sıradaki adım:** Tasarım yenilemesi (Adım 6): H-057, H-058, H-059, H-041 ve H-039, H-060, H-061 bitti H-062, H-063 bitti → **H-064** tasarım kalite turu, H-040 (Kitaplık H-065… paralel); sonra H-042 … H-044.
+- **İçerik:** Sezon 1'in 12 bölümü üretildi (görsel, ★ klipler, TR + EN sesler; haritada 12/12) — kalan: editör onayı (H-028) ve cihaz denemesi. Dilbilgisi A1–C2'nin tamamı yazıldı; İngilizce örnek sesleri kısmen bekliyor. Kitaplık: 30 kitap yazıldı ve tam resimli (sesli kitap 5/30). Higgsfield kredisi **385,06**.
+- **Sıradaki adım:** **H-094** (Keşfet günlük üç video) — P0+P1 bitti, kod onay bekliyor; sırada P2 (günlük seçkinin cihazda saklanması, ilgi ağırlığı, `{id, contentVersion}`), P3, 17 Ekim raporu regresyon #2/#3, sonra P4 (yayın/geri çekme; gerçek pilotun ön koşulu). Bağımsız: H-092 pilot hazırlığı, H-028 editör onayı.
 - **Kullanıcı kararı bekleyenler** (kodlamayı durdurmuyor):
   - H-001: güncellenen iş planının (`docs/IS-PLANI.md`, H-023) son onayı.
   - H-003: günlük konuşma kotasının ölçüsü, uyarı eşikleri, bütçe sorumlusu (tavan 300 USD/ay kararlaştı; v1 öncesi).
@@ -31,7 +31,7 @@ Bu dosya tek takip noktasıdır. Hangi işin hangi sırada yapıldığını, şu
   - H dosyasının `Durum` satırı güncellenir;
   - **Günlük** bölümüne bir satır eklenir.
 - **Biten işler:** "Biten işler" tablosuna doğrulama kanıtıyla birlikte yazılır.
-- **Numaralar:** Tek sayaçla verilir. Sıradaki boş numara: **H-094**.
+- **Numaralar:** Tek sayaçla verilir. Sıradaki boş numara: **H-095**.
 
 **Durum simgeleri:**
 - ⛔ Kullanıcı kararı bekliyor
@@ -172,6 +172,13 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 | D0' | H-083 | Türkçe seslerin Alania'ya geçişi (Hi, Alex, babaanne, ipucu kartları, Hi paneli) | Yüksek | H-075 | ✅ |
 
 **Sıra:** H-075 ve H-076 hemen ve paralel (Alania'nın ücretsiz ayı sınırlı) → H-077 → H-078 → H-079 → dalgalar.
+
+### Adım 9 — Keşfet: günlük üç kısa video (2026-10-18, kullanıcı isteği; plan bekliyor)
+| # | İş | Başlık | Öncelik | Bağımlılık | Durum |
+|---|---|---|---|---|---|
+| K0 | H-094 | Keşfet — seviyeye ve ilgiye göre günlük üç kısa video (reel): plan + 18 videoluk pilot | Orta | H-040, H-089; pilot içerik için ücretli üretim onayı | ⏳ |
+
+**Plan:** `docs/KESFET-GUNLUK-UC-VIDEO-PLAN-2026-10-18.md`. **Kullanıcı kararları (2026-10-18)** planda §14: Hikâye klipleri ayrı çip; video koleksiyonu ertelendi; hareket zorunlu değil; **bütçe onaylanmadı**; seviye üstteki çipten (genel testi değiştirmez); seçki cihazda; pilot A1/A2; her videonun sonunda atlanabilir tek soru. **Üç ayrı teslim:** (1) kredisiz uygulama P0–P3, (2) gerçek içerik üretimi (3 örnek + 18 için ayrı maliyet), (3) kullanıcı pilotu (H-092; P4 yayın/geri çekme ön koşulu). 17 Ekim raporundaki hata örnekleri regresyon testi olur; bu iş H-087…H-091 temel düzeltmelerini gölgelemez; pilot sonucu görülmeden geniş katalog üretilmez.
 
 ## Devam eden işler
 | İş | Başlık | Başlangıç | Not |
@@ -446,3 +453,14 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
   - **H-089 bitti:** FSRS'e yalnız yardımsız hatırlama gider; seçme, dinle-seç, dizme, dinle-söyle ve sahne avı "pratik" (not verilmez; ifade oturum sonunda bir de hatırlama sorusu olarak gelir). Yeni görev `speak_recall` (Türkçe anlamdan söyle; ses yok). Anlamı ters çeviren söyleme hatırlamada Again. Yavaş ama doğru cevap artık Good (erişilebilirlik). Kanıt basamakları (Gördü → Yardımla yaptı → Kendi kullandı → Sonra hatırladı) cihazda, hesap varsa eşitlenir (Drift 10, backend V13). Profil'de "Neler yapabiliyorsun"; sayılar "İçerik ilerlemesi" başlığında. Kurallar `docs/KELIME-TEKRARI.md`. Mobil 1026, backend 143 test geçti. H-090 ve H-093 başladı.
   - **H-093 bitti:** Hi haftalık özeti ve Profil durum satırı kanıt cümlesiyle ("2 ifadeyi birkaç gün sonra kendin hatırladın."); Hi gizlilik ekranında "Öğrenme kanıtların" listesi; "Hi'nin kayıtlarını sil" kanıtları da siler (yerel, diğer cihazlar, sunucu; defter ve tekrar kartları kalır). Hikâyede "Sen de söyle", bölüm sonu ve "Söyleyerek seç" başarısı "Yardımla yaptı" kaydı (FSRS'e gitmez). Mobil 1037, backend 143 test geçti.
   - **H-090 bitti:** Konuş sekmesi artık 3 yönlendirmeli sahne (Maya ile tanışma B2'den sonra, yol sorma B3'ten sonra, Rosa'nın kafesi B9'dan sonra; her biri 4 tur, birden çok kabul edilen cevap, söyle / seçeneklerden seç / kelimelerle kur / Geç; mikrofonsuz tamamlanır) ve 3 kısa mesaj görevi (yazılan metin saklanmaz). Başarı "Kendi kullandı" kanıtı. İlk 7 gün (A1): her gün en fazla bir Konuş görevi küçük göreve öne çıkar. Bölüm sesiyle birebir eşleşen 8 replik dışında sesler cihazın İngilizce sesiyle (ElevenLabs sonra). Drift şema 11, backend V14. Metinler DRAFT: editör onayı bekler. Araçlar 325, mobil 1130, backend 146 test geçti.
+- **2026-10-18:**
+  - Kullanıcı Keşfet için yeni bir yön verdi: "Bugün senin için 3 kısa video" (sinema, spor, kitap) — seviyeye ve ilgiye göre, Reels gibi dikey ama **sonsuz akış olmadan**; ortak onaylı havuzdan seçilen "Bugünün seçkisi" (gece silinmez, baskı/geri sayım yok); hibrit kaynak (bağımsız konu reelleri + mevcut hikâye klipleri). Kullanıcı ayrıntılı brief'i yazdı: `docs/KESFET-GUNLUK-UC-VIDEO-YAZILIMCIYA-NOT-2026-10-18.md`.
+  - Kullanıcı yalnız **plan** istedi (ücretli üretim onayı değil). Keşfet kodu ve üretim hattı incelendi (H-040 dosyaları, `clips.py`/`season.py`/`export_package.py`, backend `ContentType` EPISODE/BOOK, kanıt modeli H-089, Defter/medya çözümlemesi).
+  - Plan yazıldı: `docs/KESFET-GUNLUK-UC-VIDEO-PLAN-2026-10-18.md` — doğrulanmış durum, örnek akış, seçim kuralları, veri/paket modeli (`<SEVİYE>-R-<KAT>-<NN>`, `/reels/`), mini soru ve kanıt kuralları, üretim hattı, 18 videoluk (3×2×3) A1/A2 konu tablosu, sütunlu maliyet (kredi/USD/TL/karakter; geçmiş 0,5 kr ve 5 kr üretim gününde yeniden ölçülür), uygulama aşamaları P0–P4, 12 kabul senaryosu ve H-092 pilotuna eklenme yolu.
+  - **H-094 açıldı** (`yapilacaklar/H-094-kesfet-gunluk-uc-video.md`, Adım 9). Bu aşamada **kod yazılmadı, ücretli üretim yapılmadı, commit yok.** Kararlar: kategori konuya göre; ilk üretim A1/A2 (mimari genişleyebilir); günlük üçlü onaylı havuzdan; dikey kaydırma var, sonsuz akış yok; pilot 3×2×3 = 18 video.
+  - Açık kullanıcı kararları: çip seti ("Hikâye klipleri" ayrı mı), "videoyu kaydet" koleksiyonu pilotta mı, pilotta hareketli kare, Keşfet alt bütçesi, seviye geçersiz kılma akışı, hesap eşitlemesi, B1+ kapsamı.
+  - Kullanıcı planı okudu ve kararları bildirdi; plan §14 olarak işlendi: (1) **Hikâye klipleri ayrı çip**; (2) **video koleksiyonu ertelendi** (yalnız "İfadeyi Defter'e ekle"); (3) **hareket zorunlu değil** (önce görsel + Ken Burns; gerekli sahnede ayrı maliyet); (4) **bütçe onaylanmadı** — üretim öncesi 3 örnek ve 18 toplam için güncel fiyatla **ayrı** maliyet; (5) seviye **üstteki çipten** (yalnız Keşfet zorluğu; genel testi değiştirmez; "Önerilen seviyeye dön"); (6) seçki ilk sürümde **cihazda** (eşitleme sonra); (7) ilk pilot **A1/A2** (B1+'a A1 "seviyene uygun" sunulmaz; açıkça etiketli kolay pratik).
+  - Ayrıca düzeltmeler: her videonun sonunda **atlanabilir tek anlama sorusu** (yanlış cevap ilerlemeyi engellemez; üçlü sonunda ikinci zorunlu sınav yok); günlük seçki **`{id, contentVersion}`** ile saklanır (içerik değişince eski sonuç taşınmaz; geri çekilen içerik oynatılmaz); **P4 (backend yayın/geri çekme) gerçek pilotun ön koşulu**; bitiş metinleri sade ("Bugünkü seçkini tamamladın" + "Kaydettiğin ifadeleri çalış"), süreli içerik iması ve "öğrendin" açıklaması kullanıcıya gösterilmez; **aile** yalnız aynı iletişim hedefini bağlar; **17 Ekim raporundaki hata örnekleri regresyon testi** olur. **Üç ayrı teslim:** kredisiz uygulama (P0–P3), gerçek içerik üretimi, kullanıcı pilotu.
+  - **H-094 P0 bitti:** reel paket biçimi (`reeller/<id>/reel.json`), `Reel`/`ReelCatalog`, kaynak yolları + `_reels/` Defter öneki, `serve.py /reels/`, `reel-lint`, `docs/REEL-PAKETI.md`. Testler: mobil 16+3, `pytest` 20 (reel) — hepsi yeşil; medya yok (ücretli üretim onayı yok), lint yalnız uyarı.
+  - **H-094 P1 bitti (kredisiz, deneme verisi):** Keşfet "Bugün · Sinema · Spor · Kitap · Hikâye klipleri" çipleriyle açılıyor; **günlük üç bağımsız video** (dikey kaydırma) + her videonun sonunda **atlanabilir tek soru** + üçlü sonunda **sakin bitiş**; hikâye klipleri ayrı çipte eski haliyle çalışıyor; seviye çipi/paneli yalnız Keşfet zorluğunu değiştiriyor ve cihazda saklanıyor; "önerilen seviyem" yalnız yerleştirme katalogda karşılığı varsa söyleniyor (B1+ kullanıcıya A1 "seviyene uygun" denmez — kabul §12/2); "Tam hikâye" yalnız gerçek bölüm bağı varsa görünüyor (deneme paketlerinde `related: []` → gizli, koşul sentetik reelle sınanıyor). Deneme içeriği **6 paket** (3 kategori × 2 seviye) + ücretsiz yerel demo medyası (`.gitignore` dışı, onaylı üretim değil). Kısa ekran taşması ölçülerek bulundu ve düzeltildi (`_Scrims` ölçekleme, `_kTargetCardRoom`, kaydırılabilir seviye paneli). **Mobil 1190, `pytest` 346 test geçti** (`flutter analyze` temiz); 5 eski golden bilinçli güncellendi, günlük set için 4 yeni golden. Simülatörde denendi (video oynadı, video sonu doğru); gerçek cihaz ölçümünde canlı denetleyici 2 (sınır 3). **Commit yok** (onay bekliyor). Sıradaki: P2 (cihazda seçki + ilgi ağırlığı + `{id, contentVersion}`), P3, regresyon #2/#3, P4.
+  - **Regresyon #1 bitti (17 Ekim raporundaki hata):** anlamı değiştiren eklenen/düşen kelime (olumsuzluk, modal, sayı, başta do/does/did) artık "tam" sayılmıyor; `test/regressions/speech_meaning_regression_test.dart` (10) önce kırmızıydı, `speech_match.dart` düzeltmesiyle yeşil.

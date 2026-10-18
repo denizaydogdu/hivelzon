@@ -5,7 +5,9 @@ import 'package:go_router/go_router.dart';
 import 'package:hivelzon/app/theme.dart';
 import 'package:hivelzon/features/discover/application/discover_providers.dart';
 import 'package:hivelzon/features/discover/domain/clip.dart';
+import 'package:hivelzon/features/discover/domain/reel.dart';
 import 'package:hivelzon/features/discover/presentation/discover_screen.dart';
+import 'package:hivelzon/features/onboarding/data/onboarding_store.dart';
 import 'package:hivelzon/features/player/data/progress_repository.dart';
 import 'package:hivelzon/shared/content/content_providers.dart';
 import 'package:hivelzon/shared/meaning/learning_event_log.dart';
@@ -61,6 +63,12 @@ class DiscoverHarness {
     ClipCatalog? catalog,
     bool withClips = true,
     bool clipsFail = false,
+    this.chip = DiscoverChip.storyClips,
+    List<Reel>? reels,
+    ReelCatalog? reelCatalog,
+    bool withReels = false,
+    bool reelsFail = false,
+    this.suggestedLevel,
   }) : db = AppDatabase.memory(),
        source = FakeContentSource(
          packageIds: const ['A1-001', 'A1-002', 'A1-003', 'A1-004'],
@@ -68,7 +76,16 @@ class DiscoverHarness {
     source
       ..withClips = withClips
       ..clipsFail = clipsFail
-      ..clipCatalog = withoutPosters(catalog ?? loadClipFixture());
+      ..clipCatalog = withoutPosters(catalog ?? loadClipFixture())
+      ..withReels = withReels
+      ..reelsFail = reelsFail
+      ..reelCatalog = reelCatalog
+      // İlk kareler testte boş: ağ isteği hata verirdi (kliplerde olduğu gibi).
+      ..reels =
+          reels ??
+          (withReels
+              ? reelsWithoutPosters(reelCatalog ?? loadReelCatalogFixture())
+              : const []);
     video = FakeVideoPlatform(
       durationFor: durationFor ?? (_) => const Duration(seconds: 8),
       positionFor: positionFor,
@@ -79,8 +96,16 @@ class DiscoverHarness {
   final int unlocked;
   final TestAge age;
 
+  /// Açılıştaki çip: varsayılan "Hikâye klipleri" (H-040 klip testleri);
+  /// günlük set testleri `DiscoverChip.today` verir (H-094).
+  final DiscoverChip chip;
+
   /// Sabit saat (yerel); yoksa 2026-10-14 10:00.
   final DateTime? now;
+
+  /// Yerleştirmenin önerdiği seviye (`placement.suggestedLevel`); yoksa
+  /// öneri yok (seviye çipi eldeki ilk seviyeye düşer).
+  final String? suggestedLevel;
   final AppDatabase db;
   final FakeContentSource source;
   late final FakeVideoPlatform video;
@@ -113,6 +138,9 @@ class DiscoverHarness {
         await meta('account.ageBlockedUntil', '${year + 3}');
       case TestAge.adult || TestAge.unknown:
         break;
+    }
+    if (suggestedLevel != null) {
+      await meta(OnboardingStore.suggestedLevelKey, suggestedLevel!);
     }
   }
 
@@ -199,6 +227,7 @@ class DiscoverHarness {
           speechVisibleProvider.overrideWithValue(false),
           discoverClockProvider.overrideWithValue(() => clock),
           discoverTickProvider.overrideWithValue(tick),
+          discoverInitialChipProvider.overrideWithValue(chip),
         ],
         child: RepaintBoundary(
           key: const ValueKey('golden'),

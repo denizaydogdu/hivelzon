@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:hivelzon/features/discover/domain/clip.dart';
+import 'package:hivelzon/features/discover/domain/reel.dart';
 import 'package:hivelzon/features/grammar/domain/grammar_lesson.dart';
 import 'package:hivelzon/features/hi/domain/hi_content.dart';
 import 'package:hivelzon/features/library/domain/book.dart';
@@ -236,12 +237,94 @@ class FakeContentSource implements ContentSource {
   @override
   Uri grammarMediaUri(String lessonId, String path) =>
       Uri.parse('http://test.invalid/grammar/$lessonId/$path');
+
+  /// Bağımsız reeller (H-094). Varsayılan kapalı (eski testler reel görmez);
+  /// [reelCatalog] verilirse o döner, yoksa deneme kataloğu
+  /// (`fixtures/reels/index.json`). [reels] verilirse yüklemeler oradan.
+  bool withReels = false;
+  bool reelsFail = false;
+  ReelCatalog? reelCatalog;
+  List<Reel> reels = const [];
+  int reelListCalls = 0;
+  int reelLoadCalls = 0;
+
+  @override
+  Future<ReelCatalog> listReels() async {
+    reelListCalls++;
+    if (fail || reelsFail) throw ContentUnavailableException('kapalı');
+    return reelCatalog ?? loadReelCatalogFixture();
+  }
+
+  @override
+  Future<Reel> loadReel(String reelId) async {
+    reelLoadCalls++;
+    if (fail || reelsFail) throw ContentUnavailableException('kapalı');
+    for (final r in reels) {
+      if (r.id == reelId) return r;
+    }
+    return loadReelFixture(reelId);
+  }
+
+  @override
+  Uri reelMediaUri(String reelId, String path) =>
+      Uri.parse('http://test.invalid/reels/$reelId/$path');
 }
 
 /// Sezon 1 klipleri (H-040 dışa aktarımının kopyası: 17 klip, B1–B4).
 ClipCatalog loadClipFixture() => ClipCatalog.fromJson(
   (jsonDecode(fixtureText('clips.json')) as Map).cast<String, dynamic>(),
 );
+
+/// Deneme reel kataloğu (H-094 `fixtures/reels/index.json`; `reeller/`
+/// paketleriyle aynı içerik).
+ReelCatalog loadReelCatalogFixture() => ReelCatalog.fromJson(
+  (jsonDecode(fixtureText('reels/index.json')) as Map).cast<String, dynamic>(),
+);
+
+/// Deneme reeli (H-094 `fixtures/reels/<id>.json`). [withPoster] false ise ilk
+/// kare boşaltılır (testte ağ yok).
+Reel loadReelFixture(String id, {bool withPoster = true}) {
+  final j = reelFixtureJson(id);
+  if (!withPoster) j['poster'] = null;
+  return Reel.fromJson(j);
+}
+
+/// Deneme reelinin JSON kopyası (testte alan değiştirmek için).
+Map<String, dynamic> reelFixtureJson(String id) =>
+    (jsonDecode(fixtureText('reels/$id.json')) as Map).cast<String, dynamic>();
+
+/// Deneme reeli; bağlar ve durum değiştirilebilir (P1 testleri):
+/// [related] verilirse gerçek bağ eklenir ("Tam hikâye" görünür),
+/// [status] `WITHDRAWN` ise geri çekilmiş içerik. İlk kare varsayılan olarak
+/// boşaltılır (testte ağ yok).
+Reel reelWith(
+  String id, {
+  List<Map<String, dynamic>>? related,
+  String? status,
+  bool withPoster = false,
+}) {
+  final j = reelFixtureJson(id);
+  if (related != null) j['related'] = related;
+  if (status != null) j['status'] = status;
+  if (!withPoster) j['poster'] = null;
+  return Reel.fromJson(j);
+}
+
+/// Deneme kataloğu; [withdraw] kimlikleri geri çekilmiş olarak işaretlenir
+/// (plan §5: sabit seçkide olsa bile oynatılmaz).
+ReelCatalog catalogWith({List<String> withdraw = const []}) {
+  final j =
+      (jsonDecode(fixtureText('reels/index.json')) as Map).cast<String, dynamic>();
+  for (final r in j['reels'] as List) {
+    if (withdraw.contains((r as Map)['id'])) r['status'] = 'WITHDRAWN';
+  }
+  return ReelCatalog.fromJson(j);
+}
+
+/// Katalogdaki reellerin ilk kareleri olmadan yüklenmiş hâli (test ortamı).
+List<Reel> reelsWithoutPosters(ReelCatalog catalog) => [
+  for (final s in catalog.reels) loadReelFixture(s.id, withPoster: false),
+];
 
 /// Deneme dersi (H-077 `G-A1-99-third-person-s` dışa aktarımı; sahte ses
 /// süreleriyle). [silent]: hiç ses yok; [noEnglishAudio]: yalnız Türkçe

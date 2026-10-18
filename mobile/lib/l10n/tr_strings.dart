@@ -868,11 +868,16 @@ abstract final class DiscoverTexts {
   static String grammarChip(String title) => 'Dilbilgisi: $title';
   static const targetPhrase = 'Bu klibin ifadesi';
   static const targetWord = 'Bu klibin kelimesi';
+  // Bağımsız reel: "klip" denmez (plan §4).
+  static const reelTargetPhrase = 'Bu videonun ifadesi';
+  static const reelTargetWord = 'Bu videonun kelimesi';
   static const mute = 'Sesi kapat';
   static const unmute = 'Sesi aç';
   static const playPause = 'Oynat ya da duraklat';
   static const replay = 'Tekrar izle';
   static const swipeHint = 'Sonraki klip için yukarı kaydır.';
+  static const reelSwipeHint = 'Sonraki video için yukarı kaydır.';
+  static const practiceSwipeHint = 'Kısa soru için yukarı kaydır.';
   static const videoError = 'Video yüklenemedi.';
 
   // Quiz kartı (puan yok)
@@ -912,6 +917,71 @@ abstract final class DiscoverTexts {
       'yeniden açılır.';
   static const limitAlso = 'Hikâyen, Defter ve Kelime tekrarı her zaman açık.';
   static const limitStory = 'Hikâyene devam et';
+
+  // Günlük üç video (H-094; plan §3, §7)
+  static const chipsSemantics = 'Keşfet kaynağı';
+  static const chipToday = 'Bugün';
+  static const chipStoryClips = 'Hikâye klipleri';
+  static const storyClipsTitle = 'Bölümlerden kısa klipler';
+  static String dailyTitle(int n) => 'Bugün senin için $n kısa video';
+  static String poolTitle(String categoryTr) => '$categoryTr havuzu';
+  static String reelBadge(String categoryTr, String level) =>
+      '$categoryTr · $level';
+  static String reelSemantics(int n, int total, String title) =>
+      'Video $n / $total: $title';
+  static String reelNotebookSource(String categoryTr, String title) =>
+      'Keşfet: $categoryTr · $title';
+
+  /// Seviye çipi ve paneli: yalnızca Keşfet zorluğunu değiştirir (K-06).
+  static String levelChip(String level) => 'Senin seviyen: $level · Değiştir';
+
+  /// Dar ekranda kısa biçim: "Seviye: A1" (+ aşağı ok); tam metin başlığa
+  /// yer bırakmıyor (ekran okuyucu adı `levelChipLevelSemantics`).
+  static String levelChipShort(String level) => 'Seviye: $level';
+  static const levelChipSemantics = 'Keşfet seviyesini değiştir';
+  static String levelChipLevelSemantics(String level) =>
+      'Seviye $level. Keşfet seviyesini değiştir';
+  static const levelPanelTitle = 'Keşfet zorluğu';
+  static const levelPanelBody =
+      'Yalnız Keşfet videolarının seviyesini değiştirir; yerleştirme sonucunu '
+      'değiştirmez.';
+  static String recommendedLevel(String level) => 'Önerilen seviyem ($level)';
+  static const backToRecommended = 'Önerilen seviyeye dön';
+
+  /// Yerleştirme bu videoların seviyesinde değil (B1+ kullanıcı): "önerilen
+  /// seviyem" denmez, videolar kolay pratik olarak açıkça etiketlenir.
+  static const levelPanelNoMatch =
+      'Yerleştirmen bu videoların seviyesinde değil. Bunlar kolay pratik '
+      'olarak işaretli; istersen seviyeyi elle seçebilirsin.';
+  static const levelPanelClear = 'Seçimi kaldır';
+  static const levelPanelClose = 'Kapat';
+
+  /// Kategori havuzu boş (o seviyede içerik daha yok).
+  static const poolEmptyTitle = 'Burada henüz video yok';
+  static const poolEmptyBody =
+      'Bu konudaki kısa videolar hazırlanıyor. Bugünün seçkisine '
+      'dönebilirsin.';
+  static const poolEmptyToday = 'Bugüne dön';
+
+  /// Video sonundaki mini soru (atlanabilir; yanlış cevap engellemez).
+  static const practiceLabel = 'Kısa soru';
+  static String practiceFrom(String title) => 'Video: $title';
+  static const practiceCorrect = 'Evet, doğru.';
+  static const practiceTryAgain = 'Bir daha bakalım.';
+  static const practiceShown = 'Doğru cevap bu.';
+  static const practiceSkip = 'Atla, sonraki videoya geç';
+  static const practiceSkipSemantics = 'Soruyu atla, sonraki videoya geç';
+  static const practiceNext = 'Sonraki video';
+
+  /// Günlük setin sakin bitişi (kaçırma baskısı ve geri sayım yok).
+  static const dailyEndTitle = 'Bugünkü seçkini tamamladın';
+  static String dailyEndBody(int n) => n == 1
+      ? 'Bugünün videosu buydu. Yarın yeni videolar gelir.'
+      : 'Bugünün $n videosunu izledin. Yarın yeni videolar gelir.';
+  static const dailyEndNotebook = 'Kaydettiğin ifadeleri çalış';
+  static const dailyEndStory = 'Hikâyeye git';
+  static const dailyEndHome = 'Ana Sayfa\'ya dön';
+  static const dailyEndMore = 'Hikâye kliplerine bak';
 }
 
 /// Oynatıcı (H-031, H-050; H-062'de bütün metinler buraya taşındı).

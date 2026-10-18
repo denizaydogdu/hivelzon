@@ -4,6 +4,7 @@ import '../../../../app/design/design.dart';
 import '../../../../l10n/tr_strings.dart';
 import '../../../../shared/ui/ui.dart';
 import '../../domain/clip.dart';
+import '../../domain/feed_video.dart';
 
 /// Video olmayan akış kartlarının ortak zemini: kum rengi, ortalanmış,
 /// küçük ekranda ve büyük yazıda kaydırılabilir.
@@ -167,6 +168,138 @@ class _QuizCardState extends State<QuizCard> {
 
 enum _OptionState { idle, tried, correct }
 
+/// Video sonundaki mini soru (H-094, plan §7): **isteğe bağlı ve atlanabilir**;
+/// yanlış cevap ilerlemeyi engellemez, puan ve süre yok (K-15). Günlük sette
+/// "4 klipte bir quiz" düzeni kullanılmaz: her videonun sonunda tek soru.
+class PracticeCard extends StatefulWidget {
+  const PracticeCard({super.key, required this.video, required this.onNext});
+
+  final FeedVideo video;
+
+  /// "Sonraki video" ya da "Atla": ikisi de sıradaki sayfaya geçer.
+  final VoidCallback onNext;
+
+  @override
+  State<PracticeCard> createState() => _PracticeCardState();
+}
+
+class _PracticeCardState extends State<PracticeCard> {
+  final Set<int> _tried = {};
+  bool _done = false;
+  bool _revealed = false;
+
+  ClipQuiz get _quiz => widget.video.practice!;
+
+  void _pick(int i) {
+    if (_done || _tried.contains(i)) return;
+    setState(() {
+      _tried.add(i);
+      if (_quiz.options[i].correct) _done = true;
+    });
+  }
+
+  void _dontKnow() => setState(() {
+    _done = true;
+    _revealed = true;
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final t = Theme.of(context).textTheme;
+    final quiz = _quiz;
+    final correct = quiz.correctIndex;
+    final wrongLast =
+        !_done && _tried.isNotEmpty && !quiz.options[_tried.last].correct;
+    final feedback = _done
+        ? (_revealed
+              ? DiscoverTexts.practiceShown
+              : DiscoverTexts.practiceCorrect)
+        : (wrongLast ? DiscoverTexts.practiceTryAgain : null);
+    return FeedCardFrame(
+      key: const ValueKey('practice-card'),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          const CapsLabel(DiscoverTexts.practiceLabel),
+          const SizedBox(height: AppSpace.s8),
+          Semantics(
+            header: true,
+            child: Text(quiz.promptTr, style: t.headlineSmall),
+          ),
+          const SizedBox(height: AppSpace.s4),
+          Text(
+            DiscoverTexts.practiceFrom(widget.video.titleTr),
+            style: t.bodyMedium?.copyWith(color: AppPalette.ink500),
+          ),
+          const SizedBox(height: AppSpace.s24),
+          for (final (i, o) in quiz.options.indexed) ...[
+            _OptionButton(
+              key: ValueKey('practice-opt-$i'),
+              text: o.text,
+              state: _done && i == correct
+                  ? _OptionState.correct
+                  : _tried.contains(i)
+                  ? _OptionState.tried
+                  : _OptionState.idle,
+              onTap: _done ? null : () => _pick(i),
+            ),
+            const SizedBox(height: AppSpace.s8),
+          ],
+          if (feedback != null) ...[
+            const SizedBox(height: AppSpace.s8),
+            Semantics(
+              liveRegion: true,
+              child: Text(
+                feedback,
+                key: const ValueKey('practice-feedback'),
+                style: t.titleMedium?.copyWith(
+                  color: _done ? AppPalette.success : AppPalette.ink700,
+                ),
+              ),
+            ),
+          ],
+          if (_done && quiz.explainTr != null) ...[
+            const SizedBox(height: AppSpace.s4),
+            Text(
+              quiz.explainTr!,
+              key: const ValueKey('practice-explain'),
+              style: t.bodyLarge?.copyWith(color: AppPalette.ink700),
+            ),
+          ],
+          const SizedBox(height: AppSpace.s24),
+          if (_done)
+            FilledButton(
+              key: const ValueKey('practice-next'),
+              style: AppButtonStyles.primary(),
+              onPressed: widget.onNext,
+              child: const Text(DiscoverTexts.practiceNext),
+            )
+          else ...[
+            DontKnowButton(
+              key: const ValueKey('practice-dont-know'),
+              label: DiscoverTexts.dontKnow,
+              expand: true,
+              onPressed: _dontKnow,
+            ),
+            const SizedBox(height: AppSpace.s12),
+            Semantics(
+              button: true,
+              label: DiscoverTexts.practiceSkipSemantics,
+              excludeSemantics: true,
+              child: OutlinedButton(
+                key: const ValueKey('practice-skip'),
+                style: AppButtonStyles.secondary(),
+                onPressed: widget.onNext,
+                child: const Text(DiscoverTexts.practiceSkip),
+              ),
+            ),
+          ],
+        ],
+      ),
+    );
+  }
+}
 class _OptionButton extends StatelessWidget {
   const _OptionButton({
     super.key,
@@ -390,6 +523,62 @@ class EndCard extends StatelessWidget {
           style: AppButtonStyles.secondary(),
           onPressed: onHome,
           child: const Text(DiscoverTexts.endHome),
+        ),
+      ],
+    ),
+  );
+}
+
+/// Günlük setin sakin bitişi (H-094, plan §7): sonsuz kaydırma yok, geri
+/// sayım yok, "kaçırma" dili yok. Kaç video izlendiği söylenir; istenirse
+/// kaydedilen ifadeler çalışılır.
+class DailyEndCard extends StatelessWidget {
+  const DailyEndCard({
+    super.key,
+    required this.watched,
+    required this.onNotebook,
+    required this.onHome,
+    this.moreLabel,
+    this.onMore,
+  });
+
+  /// İzlenen video sayısı (günlük sette en çok 3).
+  final int watched;
+
+  final VoidCallback onNotebook;
+  final VoidCallback onHome;
+
+  /// "Sinema havuzuna bak" (yalnız "Bugün" çipinde); bitişte zorlanmaz.
+  final String? moreLabel;
+  final VoidCallback? onMore;
+
+  @override
+  Widget build(BuildContext context) => FeedCardFrame(
+    key: const ValueKey('daily-end-card'),
+    child: _InfoBody(
+      icon: Icons.check_circle_outline_rounded,
+      title: DiscoverTexts.dailyEndTitle,
+      lines: [DiscoverTexts.dailyEndBody(watched)],
+      actions: [
+        FilledButton(
+          key: const ValueKey('daily-end-notebook'),
+          style: AppButtonStyles.primary(),
+          onPressed: onNotebook,
+          child: const Text(DiscoverTexts.dailyEndNotebook),
+        ),
+        if (moreLabel != null && onMore != null) ...[
+          OutlinedButton(
+            key: const ValueKey('daily-end-more'),
+            style: AppButtonStyles.secondary(),
+            onPressed: onMore,
+            child: Text(moreLabel!),
+          ),
+        ],
+        OutlinedButton(
+          key: const ValueKey('daily-end-home'),
+          style: AppButtonStyles.secondary(),
+          onPressed: onHome,
+          child: const Text(DiscoverTexts.dailyEndHome),
         ),
       ],
     ),

@@ -1,4 +1,5 @@
 import '../../features/discover/domain/clip.dart';
+import '../../features/discover/domain/reel.dart';
 import '../../features/grammar/domain/grammar_lesson.dart';
 import '../../features/hi/domain/hi_content.dart';
 import '../../features/library/domain/book.dart';
@@ -232,6 +233,16 @@ abstract interface class ContentSource {
   /// Keşfet klipleri (H-040): sezon paketindeki `clips.json` ([path]).
   Future<ClipCatalog> loadClips(int season, String path);
 
+  /// Bağımsız konu reelleri (H-094): `/reels/index.json` kataloğu.
+  Future<ReelCatalog> listReels();
+
+  /// Reel paketi: `/reels/<reelId>/reel.json`. Bilinmeyen `schemaVersion`
+  /// sessizce boş göstermez; açık hata verir (plan §6.4).
+  Future<Reel> loadReel(String reelId);
+
+  /// Reel paketindeki bir dosyanın adresi (`/reels/<reel>/<yol>`).
+  Uri reelMediaUri(String reelId, String path);
+
   /// Konuş görevleri (H-090): sezon paketindeki `talk.json` ([path]).
   Future<TalkCatalog> loadTalk(int season, String path);
 
@@ -272,11 +283,22 @@ String bookMediaPath(String bookId, String path) => '_books/$bookId/$path';
   return m == null ? null : (m.group(1)!, m.group(2)!);
 }
 
+/// Defter kartında reel paketindeki dosya yolu (H-094): `_reels/<reel>/<yol>`.
+String reelMediaPath(String reelId, String path) => '_reels/$reelId/$path';
+
+(String, String)? parseReelMediaPath(String path) {
+  final m = RegExp(r'^_reels/([^/]+)/(.+)$').firstMatch(path);
+  return m == null ? null : (m.group(1)!, m.group(2)!);
+}
+
 /// Defter kartındaki görsel ya da ses yolu: bölüm paketinde (`stills/x.webp`)
 /// ya da sezon paketinde (`_season/S1/sets/…`, konu setleri, H-051) ya da
 /// kitap paketinde (`_books/A1-K01/audio/c1.m4a`, H-067) ya da ders
-/// paketinde (`_grammar/G-A1-03-…/audio/c07-ex1.m4a`, H-078).
+/// paketinde (`_grammar/G-A1-03-…/audio/c07-ex1.m4a`, H-078) ya da reel
+/// paketinde (`_reels/A1-R-CIN-01/stills/s02.webp`, H-094).
 Uri resolveMediaUri(ContentSource source, String contentId, String path) {
+  final reel = parseReelMediaPath(path);
+  if (reel != null) return source.reelMediaUri(reel.$1, reel.$2);
   final book = parseBookMediaPath(path);
   if (book != null) return source.bookMediaUri(book.$1, book.$2);
   final grammar = parseGrammarMediaPath(path);

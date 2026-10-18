@@ -1,0 +1,149 @@
+{
+ "schemaVersion": 1,
+ "id": "A2-R-SPO-01",
+ "contentVersion": 1,
+ "sourceType": "standalone",
+ "category": "SPO",
+ "categoryTr": "Spor",
+ "level": "A2",
+ "titleTr": "Antrenörün uyarısı",
+ "learningObjective": "Bir uyarıyı anlayıp kabul etmek",
+ "family": "FAM-SPO-FOCUS",
+ "duration": 10.5,
+ "video": "A2-R-SPO-01.mp4",
+ "poster": "A2-R-SPO-01.webp",
+ "image": "stills/s01.webp",
+ "audio": "audio/s01-03.m4a",
+ "status": "DRAFT",
+ "target": {
+  "kind": "phrase",
+  "en": "Keep your eyes on the ball.",
+  "tr": "Gözünü toptan ayırma.",
+  "cue": "s01-03"
+ },
+ "practice": {
+  "promptTr": "Antrenör neye bakmasını söylüyor?",
+  "explainTr": "Antrenör topla ilgilenmesini istiyor.",
+  "options": [
+   {
+    "text": "Topa",
+    "lang": "tr",
+    "correct": true
+   },
+   {
+    "text": "Kapıya",
+    "lang": "tr",
+    "correct": false
+   },
+   {
+    "text": "Saate",
+    "lang": "tr",
+    "correct": false
+   }
+  ]
+ },
+ "related": [],
+ "cues": [
+  {
+   "id": "s01-01",
+   "start": 0.5,
+   "end": 2.4,
+   "speaker": "COACH",
+   "text": "Stop. Look at me.",
+   "tr": "Dur. Bana bak.",
+   "chunks": [],
+   "words": [
+    {
+     "w": "Stop.",
+     "start": 0.5,
+     "end": 1.0,
+     "gloss": "dur"
+    },
+    {
+     "w": "Look",
+     "start": 1.3,
+     "end": 1.7,
+     "gloss": "bak"
+    },
+    {
+     "w": "at",
+     "start": 1.7,
+     "end": 1.85
+    },
+    {
+     "w": "me.",
+     "start": 1.85,
+     "end": 2.2,
+     "gloss": "bana"
+    }
+   ]
+  },
+  {
+   "id": "s01-02",
+   "start": 2.8,
+   "end": 4.6,
+   "speaker": "PLAYER",
+   "text": "Sorry, coach.",
+   "tr": "Üzgünüm, antrenör.",
+   "chunks": [],
+   "words": [
+    {
+     "w": "Sorry,",
+     "start": 2.8,
+     "end": 3.4,
+     "gloss": "üzgünüm"
+    },
+    {
+     "w": "coach.",
+     "start": 3.6,
+     "end": 4.2,
+     "gloss": "antrenör"
+    }
+   ]
+  },
+  {
+   "id": "s01-03",
+   "start": 5.4,
+   "end": 9.0,
+   "speaker": "COACH",
+   "text": "Keep your eyes on the ball.",
+   "tr": "Gözünü toptan ayırma.",
+   "chunks": [],
+   "words": [
+    {
+     "w": "Keep",
+     "start": 5.4,
+     "end": 5.9,
+     "gloss": "tut"
+    },
+    {
+     "w": "your",
+     "start": 5.9,
+     "end": 6.2
+    },
+    {
+     "w": "eyes",
+     "start": 6.2,
+     "end": 6.7,
+     "gloss": "gözlerin"
+    },
+    {
+     "w": "on",
+     "start": 6.9,
+     "end": 7.1
+    },
+    {
+     "w": "the",
+     "start": 7.1,
+     "end": 7.3
+    },
+    {
+     "w": "ball.",
+     "start": 7.3,
+     "end": 7.9,
+     "gloss": "top"
+    }
+   ]
+  }
+ ]
+}

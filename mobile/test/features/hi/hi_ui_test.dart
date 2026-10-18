@@ -301,10 +301,20 @@ void main() {
       await pumpApp(tester, clips: true);
       go(AppRoutes.discover);
       await settle(tester, 40);
-      final save = find.byKey(const ValueKey('clip-save'));
-      expect(save, findsWidgets);
       final b = tester.getRect(bubble);
+      // Varsayılan açılış günlük reel seçkisi (H-094): "Kaydet" rayı altta.
+      final save = find.byKey(const ValueKey('reel-save'));
+      expect(save, findsWidgets);
       expect(tester.getRect(save.first).bottom, lessThanOrEqualTo(b.top));
+
+      // "Hikâye klipleri"ne geçince de aynı kural (eski akış korunur).
+      await tester.ensureVisible(find.byKey(const ValueKey('chip-storyClips')));
+      await tester.pump();
+      await tester.tap(find.byKey(const ValueKey('chip-storyClips')));
+      await settle(tester, 40);
+      final clipSave = find.byKey(const ValueKey('clip-save'));
+      expect(clipSave, findsWidgets);
+      expect(tester.getRect(clipSave.first).bottom, lessThanOrEqualTo(b.top));
       // Oynatıcı zamanlayıcıları kapansın.
       await tester.pumpWidget(const SizedBox());
       await tester.pump(const Duration(seconds: 31));

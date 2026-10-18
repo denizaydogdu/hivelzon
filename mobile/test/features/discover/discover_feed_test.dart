@@ -47,6 +47,10 @@ void main() {
               QuizEntry() => 'q',
               BreakEntry() => 'b',
               EndEntry() => 'e',
+              // Günlük set girdileri (H-094) klip akışında çıkmaz.
+              VideoEntry() => 'v',
+              PracticeEntry() => 'p',
+              DailyEndEntry() => 'd',
             },
         ].join();
         expect(kinds, 'ccccqccccqccbccqccccqce');
@@ -164,6 +168,9 @@ void main() {
         QuizEntry() => 'q',
         BreakEntry() => 'b',
         EndEntry() => 'e',
+        VideoEntry() => 'v',
+        PracticeEntry() => 'p',
+        DailyEndEntry() => 'd',
       });
       switch (e) {
         case QuizEntry():
@@ -175,6 +182,10 @@ void main() {
           expect(_key('end-card'), findsOneWidget);
         case ClipEntry(:final clip):
           expect(h.video.isPlaying('${clip.id}.mp4'), isTrue);
+        case VideoEntry():
+        case PracticeEntry():
+        case DailyEndEntry():
+          break;
       }
       expect(h.video.liveCount, lessThanOrEqualTo(3));
       expect(s.cache.liveCount, lessThanOrEqualTo(3));

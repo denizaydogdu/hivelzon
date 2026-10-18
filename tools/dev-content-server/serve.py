@@ -18,6 +18,11 @@ Dilbilgisi dersleri (`dilbilgisi/<G-ID>/_build/package/`, H-077):
     http://127.0.0.1:8787/grammar/index.json           -> ders listesi
     http://127.0.0.1:8787/grammar/<G-ID>/<yol>         -> lesson.json, cards.json, audio/*.m4a
 
+Bağımsız konu reelleri (`reeller/<id>/_build/package/`, H-094):
+
+    http://127.0.0.1:8787/reels/index.json             -> reel listesi
+    http://127.0.0.1:8787/reels/<id>/<yol>             -> reel.json, <id>.mp4, stills/*.webp, audio/*.m4a
+
 Bölüm ve kitap listelerinde `grammarTopics` (varsa) yer alır: "Bu bölümdeki dilbilgisi".
 
 - Yalnızca 127.0.0.1'e bağlanır (dışarıya açık değildir).
@@ -26,7 +31,7 @@ Bölüm ve kitap listelerinde `grammarTopics` (varsa) yer alır: "Bu bölümdeki
 
 Kullanım:
     python3 tools/dev-content-server/serve.py [--port 8787] [--root icerik] [--books-root kitaplar]
-        [--grammar-root dilbilgisi] [--quiet]
+        [--grammar-root dilbilgisi] [--reels-root reeller] [--quiet]
 
 Bu sunucu ileride VideoHostingPort / CDN (K-13) adaptörünün yerini tutar.
 """
@@ -58,6 +63,7 @@ CONTENT_TYPES = {
 RANGE_RE = re.compile(r"^bytes=(\d*)-(\d*)$")
 SEASON_PREFIX = "_season"
 BOOKS_PREFIX = "_books"
+REELS_PREFIX = "_reels"
 SEASON_DIR = Path("_evren") / "_build" / "season"   # export_package.py üretir
 SEASON_RE = re.compile(r"^S\d+$")
 
@@ -163,11 +169,51 @@ def discover_grammar(root: Path) -> dict[str, dict]:
     return lessons
 
 
+REEL_CATEGORY_TR = {"CIN": "Sinema", "SPO": "Spor", "BOK": "Kitap"}
+
+
+def discover_reels(root: Path) -> dict[str, dict]:
+    """reelId -> {dir, titleTr, level, ...}. `reel.json` kaynak klasörde ya da
+    `<reel>/_build/package` altında (H-094); `_build/package` varsa o tercih edilir.
+    `_` ile başlayan klasörler atlanır."""
+    reels: dict[str, dict] = {}
+    if not root.is_dir():
+        return reels
+    for d in sorted(p for p in root.iterdir() if p.is_dir() and not p.name.startswith("_")):
+        rj = next(
+            (c for c in (d / "_build" / "package" / "reel.json", d / "reel.json") if c.is_file()),
+            None,
+        )
+        if rj is None:
+            continue
+        try:
+            doc = json.loads(rj.read_text(encoding="utf-8"))
+            category = doc.get("category")
+            reels[doc["id"]] = {
+                "dir": rj.parent,
+                "id": doc["id"],
+                "category": category,
+                "categoryTr": doc.get("categoryTr") or REEL_CATEGORY_TR.get(category),
+                "level": doc.get("level"),
+                "titleTr": doc.get("titleTr", doc["id"]),
+                "duration": doc.get("duration"),
+                "sourceType": doc.get("sourceType", "standalone"),
+                "family": doc.get("family"),
+                "poster": doc.get("poster"),
+                "contentVersion": doc.get("contentVersion"),
+                "status": doc.get("status"),
+            }
+        except (OSError, ValueError, KeyError) as exc:
+            print(f"uyarı: {rj} okunamadı: {exc}", file=sys.stderr)
+    return reels
+
+
 class Handler(BaseHTTPRequestHandler):
     server_version = "hiVelzonDevContent/0.1"
     root: Path = REPO_ROOT / "icerik"
     books_root: Path = REPO_ROOT / "kitaplar"
     grammar_root: Path = REPO_ROOT / "dilbilgisi"
+    reels_root: Path = REPO_ROOT / "reeller"
     quiet = False
 
     def log_message(self, fmt: str, *args) -> None:  # noqa: D401
@@ -188,6 +234,8 @@ class Handler(BaseHTTPRequestHandler):
             return self._send_index(send_body)
         if len(parts) >= 4 and parts[0] == "packages" and parts[1] == BOOKS_PREFIX:
             parts = ["books", *parts[2:]]  # backend VideoHostingPort yolu: _books/<kitapId> (H-070)
+        if len(parts) >= 4 and parts[0] == "packages" and parts[1] == REELS_PREFIX:
+            parts = ["reels", *parts[2:]]  # backend VideoHostingPort yolu: _reels/<reelId> (H-094)
         if len(parts) >= 4 and parts[0] == "packages" and parts[1] == SEASON_PREFIX:
             return self._send_season_file(parts[2], parts[3:], send_body)
         if len(parts) >= 3 and parts[0] == "packages":
@@ -206,6 +254,13 @@ class Handler(BaseHTTPRequestHandler):
             if lesson is None:
                 return self.send_error(HTTPStatus.NOT_FOUND, "Unknown lesson")
             return self._send_file(lesson["dir"].resolve(), parts[2:], send_body)
+        if parts == ["reels", "index.json"]:
+            return self._send_reels_index(send_body)
+        if len(parts) >= 3 and parts[0] == "reels":
+            reel = discover_reels(self.reels_root).get(parts[1])
+            if reel is None:
+                return self.send_error(HTTPStatus.NOT_FOUND, "Unknown reel")
+            return self._send_file(reel["dir"].resolve(), parts[2:], send_body)
         # http.server durum satırını latin-1 yazar: iletiler ASCII olmalı.
         self.send_error(HTTPStatus.NOT_FOUND, "Not found")
 
@@ -231,6 +286,22 @@ class Handler(BaseHTTPRequestHandler):
         body = json.dumps(
             {"schemaVersion": 1,
              "books": [{k: v for k, v in b.items() if k != "dir"} for b in sorted(books.values(), key=lambda b: b["id"])]},
+            ensure_ascii=False,
+        ).encode("utf-8")
+        self.send_response(HTTPStatus.OK)
+        self.send_header("Content-Type", "application/json; charset=utf-8")
+        self.send_header("Content-Length", str(len(body)))
+        self.send_header("Cache-Control", "no-store")
+        self.end_headers()
+        if send_body:
+            self.wfile.write(body)
+
+    def _send_reels_index(self, send_body: bool) -> None:
+        # Her istekte yeniden taranır (bölüm, kitap ve ders paketleri gibi).
+        reels = discover_reels(self.reels_root)
+        body = json.dumps(
+            {"schemaVersion": 1,
+             "reels": [{k: v for k, v in r.items() if k != "dir"} for r in sorted(reels.values(), key=lambda r: r["id"])]},
             ensure_ascii=False,
         ).encode("utf-8")
         self.send_response(HTTPStatus.OK)
@@ -345,12 +416,14 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--root", type=Path, default=REPO_ROOT / "icerik", help="icerik klasörü")
     parser.add_argument("--books-root", type=Path, default=REPO_ROOT / "kitaplar", help="kitaplar klasörü (H-066)")
     parser.add_argument("--grammar-root", type=Path, default=REPO_ROOT / "dilbilgisi", help="dilbilgisi klasörü (H-077)")
+    parser.add_argument("--reels-root", type=Path, default=REPO_ROOT / "reeller", help="reeller klasörü (H-094)")
     parser.add_argument("--quiet", action="store_true", help="istek günlüğünü kapat")
     args = parser.parse_args(argv)
 
     Handler.root = args.root.resolve()
     Handler.books_root = args.books_root.resolve()
     Handler.grammar_root = args.grammar_root.resolve()
+    Handler.reels_root = args.reels_root.resolve()
     Handler.quiet = args.quiet
     packages = discover_packages(Handler.root)
     server = ThreadingHTTPServer(("127.0.0.1", args.port), Handler)
@@ -370,6 +443,11 @@ def main(argv: list[str] | None = None) -> int:
         print(f"Dilbilgisi: http://127.0.0.1:{args.port}/grammar/index.json")
     for g in sorted(lessons):
         print(f"  {g}  {lessons[g]['titleTr']}  ({lessons[g]['dir']})")
+    reels = discover_reels(Handler.reels_root)
+    if reels:
+        print(f"Reeller: http://127.0.0.1:{args.port}/reels/index.json")
+    for r in sorted(reels):
+        print(f"  {r}  {reels[r]['titleTr']}  ({reels[r]['dir']})")
     try:
         server.serve_forever()
     except KeyboardInterrupt:
