@@ -234,9 +234,9 @@ abstract final class ReviewPolicy {
   /// - tam → Good; olgun kartta ilk denemede hızlı tam → Easy;
   /// - tam ama ikinci denemede → Hard (kullanıcı kararı 2026-10-13);
   /// - yakın, yalnızca bir kelime duyulmadı → Hard;
-  /// - yakın ama anlamı değiştiren fazla kelime var ([changedWords] dolu,
-  ///   H-087: olumsuzluk, kip, sayı, soru) → **Again**: hatırlamada anlam
-  ///   değişmişse doğru sayılmaz (H-089);
+  /// - yakın ama anlamı değiştiren fark var ([changedWords] dolu, H-087:
+  ///   **eklenen ya da düşen** olumsuzluk, kip, sayı, soru yardımcısı) →
+  ///   **Again**: hatırlamada anlam değişmişse doğru sayılmaz (H-089);
   /// - 2 denemede de olmadı ya da "Bilmiyorum" → Again.
   ///
   /// "Geç" not vermez (kart sonraki oturumda yine gelir).

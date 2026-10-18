@@ -14,8 +14,10 @@
 // - dolgu sesleri ("uh", "um", baştaki "okay") yalnızca yazıdan atılır
 //   (beklenen ifadede geçiyorsa atılmaz);
 // - `…` joker sayılır: "Where is…?" için "Where is the station?" tam kabul;
-// - anlamı değiştiren fazla kelime (olumsuzluk, kip, sayı, başa eklenen
-//   do/does/did) tam sayılmaz → yakın (H-087); jokerde yalnız olumsuzluk;
+// - anlamı değiştiren fark (olumsuzluk, kip, sayı, başa eklenen
+//   do/does/did) tam sayılmaz → yakın (H-087); **eklenen** ("I can not help
+//   you") ve **düşen** ("I can hear you" ← "I can't hear you.") iki yönlü
+//   bakılır; jokerde yalnız olumsuzluk;
 // - hizalama: kelimeler üzerinde Levenshtein (sıra önemlidir).
 
 import 'dart:math' as math;
@@ -58,9 +60,11 @@ class SpeechMatch {
   /// Duyulan ama beklenmeyen kelimeler (dolgu sesleri hariç).
   final List<String> extraWords;
 
-  /// Duyulan ama ifadede olmayan, anlamı değiştirebilen kelimeler
-  /// (normalleştirilmiş: olumsuzluk, kip, sayı, soru yardımcı fiili; H-087).
-  /// Boş değilse sonuç `full` olmaz.
+  /// Anlamı değiştiren farklar, normalleştirilmiş biçimde: olumsuzluk, kip,
+  /// sayı ve soru yardımcı fiili (H-087). Hem **eklenen** ("I can not help
+  /// you") hem **düşen** ("I can hear you" ← "I can't hear you.") kelimeleri
+  /// kapsar; düşenler [missingWords] içinde de görünür. Boş değilse sonuç
+  /// `full` olmaz ve cevap başarı sayılmaz (17 Ekim 2026 regresyonu).
   final List<String> changedWords;
 
   bool get isFull => level == SpeechMatchLevel.full;
@@ -344,7 +348,13 @@ abstract final class SpeechMatcher {
     final a = _align(want, heard);
     // Joker varsa fazla kelime beklenir (ör. "Where is…?" + yer adı).
     final extra = wildcard ? const <String>[] : a.extra;
-    final changed = _meaningChangers(want, heard, a.extra, wildcard: wildcard);
+    // Anlam değişimi iki yönlü olur: eklenen ("I can not help you") ve düşen
+    // ("I can hear you" ← "I can't hear you."). İkisi de başarı değildir
+    // (17 Ekim 2026 regresyonu).
+    final changed = [
+      ..._meaningChangers(want, heard, a.extra, wildcard: wildcard),
+      ..._missingMeaningChangers(want, a.missingAt, wildcard: wildcard),
+    ];
     final missing = _surfaces(wantT, a.missingAt.toSet());
     // Beklenen her kelime duyuldu ama anlamı değiştiren bir kelime eklendiyse
     // (ör. "not") tam sayılmaz; "yanlış" da denmez: yakın → "Bir daha dene".
@@ -445,6 +455,33 @@ abstract final class SpeechMatcher {
                 modals.contains(w) ||
                 _numberWords.contains(w) ||
                 (startsQuestion && w == heard.first);
+      if (changes && !out.contains(w)) out.add(w);
+    }
+    return out;
+  }
+
+  /// Duyulmayan kelimeler arasından anlamı değiştirenler: olumsuzluk, kip,
+  /// sayı ve soru yardımcısı. Düşen olumsuzluk cümleyi ters anlama çevirir
+  /// ("I can hear you" ← "I can't hear you."); düşen kip/sayı da hedefi
+  /// bozar. Jokerli ifadede (yer/sayı serbest) yalnız olumsuzluk sayılır.
+  ///
+  /// Sesteşi olan sayılar dışarıda (bkz. [_numberWords]): "to" → "two"
+  /// eşlemesi "Nice to meet you." gibi zararsız düşmeleri cezalandırmasın.
+  static List<String> _missingMeaningChangers(
+    List<String> want,
+    List<int> missingAt, {
+    required bool wildcard,
+  }) {
+    final out = <String>[];
+    for (final i in missingAt) {
+      if (i < 0 || i >= want.length) continue;
+      final w = want[i];
+      final changes = wildcard
+          ? negations.contains(w)
+          : negations.contains(w) ||
+                modals.contains(w) ||
+                questionAux.contains(w) ||
+                _numberWords.contains(w);
       if (changes && !out.contains(w)) out.add(w);
     }
     return out;
