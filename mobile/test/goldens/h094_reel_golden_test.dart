@@ -1,14 +1,16 @@
-// H-094 P1 golden'ları: günlük üç video (bağımsız reeller) — video sayfası
-// (kategori · seviye rozeti, altyazı, ifade kartı), video sonundaki kısa soru
-// ve sakin bitiş. Eski hikâye kliplerinin golden'ları `h040_*`'ta kalır.
+// H-094 golden'ları: günlük üç video (bağımsız reeller) — video sayfası
+// (kategori · seviye rozeti, altyazı, ifade kartı), video sonundaki kısa soru,
+// kontrollü tekrar etiketi ve sakin bitiş. Eski hikâye kliplerinin golden'ları
+// `h040_*`'ta kalır.
 //
-// Altyazı: A1-R-BOK-01 hedef sahnesi 4,2 sn'de ("Is this book good?").
-// Bilinçli görsel değişiklikten sonra:
+// Altyazı: seçkinin ilk reeli Sinema (A1-R-CIN-01); hedef sahnesi 4,2 sn'de
+// ("Two tickets, please."). Bilinçli görsel değişiklikten sonra:
 //
 //   cd mobile && flutter test --update-goldens test/goldens
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hivelzon/features/discover/application/discover_providers.dart';
+import 'package:hivelzon/features/discover/data/discover_store.dart';
 import 'package:hivelzon/features/discover/domain/feed.dart';
 
 import '../support/app_fonts.dart';
@@ -16,9 +18,12 @@ import '../support/discover_harness.dart';
 import '../support/golden.dart';
 
 class _Case {
-  const _Case({this.act});
+  const _Case({this.act, this.seed});
 
   final Future<void> Function(WidgetTester tester, DiscoverHarness h)? act;
+
+  /// Açılıştan önce cihaz kaydı (ör. daha önce gösterilmiş video).
+  final Future<void> Function(DiscoverHarness h)? seed;
 }
 
 Future<void> _jumpToLast(WidgetTester tester, DiscoverHarness h) async {
@@ -37,6 +42,12 @@ final _cases = <String, _Case>{
     },
   ),
   'gunluk_bitis': _Case(act: _jumpToLast),
+  // Daha önce gösterilmiş video: "Tekrar" rozeti (plan §4.5).
+  'gunluk_tekrar': _Case(
+    seed: (h) => DiscoverStore(
+      h.db,
+    ).mergeProgress('A1-R-CIN-01', contentVersion: 1, shownDay: '2026-10-13'),
+  ),
   'gunluk_seviye': _Case(
     act: (t, h) async {
       await t.tap(find.byKey(const ValueKey('level-chip')));
@@ -62,6 +73,7 @@ void main() {
       positionFor: (_) => const Duration(milliseconds: 4200),
     );
     addTearDown(h.dispose);
+    if (c.seed != null) await tester.runAsync(() => c.seed!(h));
     await h.pump(tester, size: size, textScale: textScale);
     await tester.pump(const Duration(milliseconds: 600));
     await h.settle(tester);

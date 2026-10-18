@@ -102,6 +102,15 @@ Backend `VideoHostingPort` yolu `packages/_reels/<id>/<yol>` aynı pakete gider
   uydurma bölüm bağı kurulmaz). Dart kopyaları
   `mobile/test/fixtures/reels/` altında; `pytest` kayma koruması paketleri ve
   `index.json` özetlerini karşılaştırır.
+- **P2 (seçim + saklama):** günlük seçki belirlenimli kurallarla (kategori başına
+  birer; hiç tamamlanmamış → en uzun süredir gösterilmemiş) ve **gün içinde
+  sabit**. Cihazda `discover.daily.<gün>` = `{version, level, prefsSnapshot,
+  items:[{id, contentVersion, repeat}]}`, `discover.reel.<id>` =
+  `{contentVersion, watchedSeconds, completed, lastShownDay, practiceResult?}`,
+  `discover.prefs` = seviye + kategoriler (eşitlenmez). Aynı gün **kalınan yer**
+  `discover.resume.<gün>` ile saklanır. `contentVersion` artınca
+  eski izleme/soru sonucu taşınmaz; geri çekilen içeriğin yerine aynı seviye ve
+  kategoriden yedek konur. Bu kayıtlar **öğrenme kanıtı değildir**.
 - **P4:** backend `ContentType.REEL`, onay/geri çekme ve yayın süzmesi; gerçek
   kullanıcı pilotunun ön koşulu.
 - **Simülatör denemesi için yerel demo medyası:** `reeller/<id>/` altına

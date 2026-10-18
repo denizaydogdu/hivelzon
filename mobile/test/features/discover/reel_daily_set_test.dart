@@ -16,13 +16,22 @@ import '../../support/fake_content_source.dart';
 
 Finder _key(String k) => find.byKey(ValueKey(k));
 
+/// Günlük seçkinin sırası (P2, plan §4.3): ilgi dağıtımı Sinema → Spor →
+/// Kitap; aynı girdi aynı seçkiyi verir (belirlenimli).
+const List<String> _dailyOrder = ['A1-R-CIN-01', 'A1-R-SPO-01', 'A1-R-BOK-01'];
+const List<String> _a2Order = ['A2-R-CIN-01', 'A2-R-SPO-01', 'A2-R-BOK-01'];
+
 Future<void> _tap(WidgetTester tester, DiscoverHarness h, String key) async {
   await tester.tap(_key(key));
   await h.settle(tester, rounds: 12);
 }
 
 /// Yatay kaydırılan çip satırında çipi görünür kılıp dokunur.
-Future<void> _tapChip(WidgetTester tester, DiscoverHarness h, String key) async {
+Future<void> _tapChip(
+  WidgetTester tester,
+  DiscoverHarness h,
+  String key,
+) async {
   await tester.ensureVisible(_key(key));
   await tester.pump();
   await _tap(tester, h, key);
@@ -78,44 +87,43 @@ Future<void> _jump(WidgetTester tester, DiscoverHarness h, int index) async {
 
 void main() {
   group('günlük seçki (Bugün)', () {
-    testWidgets('üç video var; her videonun sonunda tek soru, sonda sakin bitiş', (
-      tester,
-    ) async {
-      final h = await _daily(tester);
-      final s = h.feedState(tester);
+    testWidgets(
+      'üç video var; her videonun sonunda tek soru, sonda sakin bitiş',
+      (tester) async {
+        final h = await _daily(tester);
+        final s = h.feedState(tester);
 
-      // Sıra: video → soru → video → soru → video → soru → bitiş.
-      expect(_kinds(s.feed), 'vpvpvpd');
-      expect(s.feed.whereType<VideoEntry>().length, 3);
-      expect(s.feed.whereType<PracticeEntry>().length, 3);
-      expect(s.feed.last, isA<DailyEndEntry>());
-      // `quizEvery = 4` düzeni günlük sette çalışmaz (plan §7).
-      expect(s.feed.whereType<QuizEntry>(), isEmpty);
-      expect(s.feed.whereType<BreakEntry>(), isEmpty);
+        // Sıra: video → soru → video → soru → video → soru → bitiş.
+        expect(_kinds(s.feed), 'vpvpvpd');
+        expect(s.feed.whereType<VideoEntry>().length, 3);
+        expect(s.feed.whereType<PracticeEntry>().length, 3);
+        expect(s.feed.last, isA<DailyEndEntry>());
+        // `quizEvery = 4` düzeni günlük sette çalışmaz (plan §7).
+        expect(s.feed.whereType<QuizEntry>(), isEmpty);
+        expect(s.feed.whereType<BreakEntry>(), isEmpty);
 
-      // Seçki seviyeye göre kararlı: A1'in üç konusu, kimliğe göre sıralı.
-      expect(
-        s.feed.whereType<VideoEntry>().map((e) => e.video.id),
-        ['A1-R-BOK-01', 'A1-R-CIN-01', 'A1-R-SPO-01'],
-      );
-      expect(
-        s.feed.whereType<VideoEntry>().map((e) => e.ordinal),
-        [1, 2, 3],
-      );
+        // Seçki seviyeye göre kararlı; ilgi dağıtımı Sinema → Spor → Kitap
+        // (plan §4.3).
+        expect(
+          s.feed.whereType<VideoEntry>().map((e) => e.video.id),
+          _dailyOrder,
+        );
+        expect(s.feed.whereType<VideoEntry>().map((e) => e.ordinal), [1, 2, 3]);
 
-      // Başlık ve rozet: kategori · seviye.
-      expect(find.text('Bugün senin için 3 kısa video'), findsOneWidget);
-      expect(_key('reel-page-A1-R-BOK-01'), findsOneWidget);
-      expect(find.text('Kitap · A1'), findsOneWidget);
-      expect(find.text('Kütüphanede kitap seçimi'), findsOneWidget);
+        // Başlık ve rozet: kategori · seviye.
+        expect(find.text('Bugün senin için 3 kısa video'), findsOneWidget);
+        expect(_key('reel-page-A1-R-CIN-01'), findsOneWidget);
+        expect(find.text('Sinema · A1'), findsOneWidget);
+        expect(find.text('Gişede iki bilet'), findsOneWidget);
 
-      // Sonsuz akış yok: sayfa sayısı akışın uzunluğu kadar.
-      await _jump(tester, h, s.feed.length - 1);
-      await h.swipeUp(tester);
-      expect(h.feedState(tester).index, s.feed.length - 1);
+        // Sonsuz akış yok: sayfa sayısı akışın uzunluğu kadar.
+        await _jump(tester, h, s.feed.length - 1);
+        await h.swipeUp(tester);
+        expect(h.feedState(tester).index, s.feed.length - 1);
 
-      await h.unmount(tester);
-    });
+        await h.unmount(tester);
+      },
+    );
 
     testWidgets('video bitince kendiliğinden geçmez: "Tekrar izle"', (
       tester,
@@ -132,7 +140,7 @@ void main() {
       // Sıradaki sayfa kısa soru: ipucu onu söyler (K-32).
       expect(find.text('Kısa soru için yukarı kaydır.'), findsOneWidget);
       await _tap(tester, h, 'reel-replay');
-      expect(h.video.isPlaying('A1-R-BOK-01.mp4'), isTrue);
+      expect(h.video.isPlaying('A1-R-CIN-01.mp4'), isTrue);
       await h.unmount(tester);
     });
 
@@ -189,9 +197,9 @@ void main() {
 
       expect(_key('practice-card'), findsOneWidget);
       expect(find.text('Oyuncu ne istiyor?'), findsNothing);
-      // İlk sıradaki videonun sorusu (A1-R-BOK-01).
-      expect(find.text('Ne soruluyor?'), findsOneWidget);
-      expect(find.text('Video: Kütüphanede kitap seçimi'), findsOneWidget);
+      // İlk sıradaki videonun sorusu (A1-R-CIN-01).
+      expect(find.text('Kaç bilet isteniyor?'), findsOneWidget);
+      expect(find.text('Video: Gişede iki bilet'), findsOneWidget);
 
       // Yanlış seçenek (Kitap güzel mi? → 1. seçenek doğru; 3. seçenek yanlış).
       await _tap(tester, h, 'practice-opt-2');
@@ -202,7 +210,7 @@ void main() {
       expect(_key('practice-skip'), findsOneWidget);
       await _tap(tester, h, 'practice-skip');
       expect(h.feedState(tester).index, 2);
-      expect(_key('reel-page-A1-R-CIN-01'), findsOneWidget);
+      expect(_key('reel-page-A1-R-SPO-01'), findsOneWidget);
       await h.unmount(tester);
     });
 
@@ -211,7 +219,7 @@ void main() {
       await _jump(tester, h, 1);
       await _tap(tester, h, 'practice-opt-0');
       expect(find.text('Evet, doğru.'), findsOneWidget);
-      expect(find.text('Kitabın güzel olup olmadığı soruluyor.'), findsOneWidget);
+      expect(find.text('Mia iki bilet istiyor.'), findsOneWidget);
       await _tap(tester, h, 'practice-next');
       expect(h.feedState(tester).index, 2);
       await h.unmount(tester);
@@ -259,38 +267,43 @@ void main() {
       await h.unmount(tester);
     });
 
-    testWidgets('seviye paneli: A2 seçilir, cihazda saklanır, geri dönülebilir', (
-      tester,
-    ) async {
-      final h = await _daily(tester);
-      expect(find.text('Seviye: A1'), findsOneWidget);
+    testWidgets(
+      'seviye paneli: A2 seçilir, cihazda saklanır, geri dönülebilir',
+      (tester) async {
+        final h = await _daily(tester);
+        expect(find.text('Seviye: A1'), findsOneWidget);
 
-      await _tap(tester, h, 'level-chip');
-      // Başlık CapsLabel ile büyütülür.
-      expect(find.text('Keşfet zorluğu'.toUpperCase()), findsOneWidget);
-      expect(
-        find.textContaining('yerleştirme sonucunu değiştirmez'),
-        findsOneWidget,
-      );
-      expect(find.text('Önerilen seviyem (A1)'), findsOneWidget);
+        await _tap(tester, h, 'level-chip');
+        // Başlık CapsLabel ile büyütülür.
+        expect(find.text('Keşfet zorluğu'.toUpperCase()), findsOneWidget);
+        expect(
+          find.textContaining('yerleştirme sonucunu değiştirmez'),
+          findsOneWidget,
+        );
+        expect(find.text('Önerilen seviyem (A1)'), findsOneWidget);
 
-      await _tap(tester, h, 'level-option-A2');
-      expect(find.text('Seviye: A2'), findsOneWidget);
-      expect(
-        h.feedState(tester).feed.whereType<VideoEntry>().map((e) => e.video.id),
-        ['A2-R-BOK-01', 'A2-R-CIN-01', 'A2-R-SPO-01'],
-      );
-      final stored = await tester.runAsync(
-        () => DiscoverStore(h.db).reelLevel(),
-      );
-      expect(stored, 'A2');
+        await _tap(tester, h, 'level-option-A2');
+        expect(find.text('Seviye: A2'), findsOneWidget);
+        expect(
+          h
+              .feedState(tester)
+              .feed
+              .whereType<VideoEntry>()
+              .map((e) => e.video.id),
+          _a2Order,
+        );
+        final stored = await tester.runAsync(
+          () => DiscoverStore(h.db).reelLevel(),
+        );
+        expect(stored, 'A2');
 
-      // Uygulama yeniden açılsa da seçim kalır (aynı cihaz: aynı veritabanı).
-      await h.unmount(tester);
-      await h.pump(tester);
-      expect(find.text('Seviye: A2'), findsOneWidget);
-      await h.unmount(tester);
-    });
+        // Uygulama yeniden açılsa da seçim kalır (aynı cihaz: aynı veritabanı).
+        await h.unmount(tester);
+        await h.pump(tester);
+        expect(find.text('Seviye: A2'), findsOneWidget);
+        await h.unmount(tester);
+      },
+    );
 
     testWidgets('"Önerilen seviyeye dön" seçimi siler', (tester) async {
       final h = await _daily(tester);
@@ -303,7 +316,7 @@ void main() {
       expect(find.text('Seviye: A1'), findsOneWidget);
       expect(
         h.feedState(tester).feed.whereType<VideoEntry>().map((e) => e.video.id),
-        ['A1-R-BOK-01', 'A1-R-CIN-01', 'A1-R-SPO-01'],
+        _dailyOrder,
       );
       final stored = await tester.runAsync(
         () => DiscoverStore(h.db).reelLevel(),
@@ -341,7 +354,7 @@ void main() {
   group('"Tam hikâye" ve geri çekme', () {
     testWidgets('gerçek bölüm bağı yoksa düğme gizlenir', (tester) async {
       final h = await _daily(tester);
-      expect(_key('reel-page-A1-R-BOK-01'), findsOneWidget);
+      expect(_key('reel-page-A1-R-CIN-01'), findsOneWidget);
       expect(_key('reel-full-story'), findsNothing);
       await h.unmount(tester);
     });
@@ -353,14 +366,16 @@ void main() {
         catalog: catalog,
         reels: [
           reelWith(
-            'A1-R-BOK-01',
+            'A1-R-CIN-01',
             related: [
-              {'kind': 'episode', 'id': 'A1-001', 'titleTr': 'A Strange Message'},
+              {
+                'kind': 'episode',
+                'id': 'A1-001',
+                'titleTr': 'A Strange Message',
+              },
             ],
           ),
-          ...reelsWithoutPosters(
-            catalog,
-          ).where((r) => r.id != 'A1-R-BOK-01'),
+          ...reelsWithoutPosters(catalog).where((r) => r.id != 'A1-R-CIN-01'),
         ],
       );
       expect(_key('reel-full-story'), findsOneWidget);
@@ -375,10 +390,10 @@ void main() {
         catalog: catalogWith(withdraw: ['A1-R-CIN-01']),
       );
       final s = h.feedState(tester);
-      expect(
-        s.feed.whereType<VideoEntry>().map((e) => e.video.id),
-        ['A1-R-BOK-01', 'A1-R-SPO-01'],
-      );
+      expect(s.feed.whereType<VideoEntry>().map((e) => e.video.id), [
+        'A1-R-SPO-01',
+        'A1-R-BOK-01',
+      ]);
       expect(find.text('Bugün senin için 2 kısa video'), findsOneWidget);
       expect(_key('reel-page-A1-R-CIN-01'), findsNothing);
       await h.unmount(tester);
@@ -392,36 +407,42 @@ void main() {
       final h = await _daily(tester);
       expect(find.text('Kaydet'), findsOneWidget);
       await _tap(tester, h, 'reel-save');
-      expect(find.text('"Is this book good?" deftere eklendi.'), findsOneWidget);
+      expect(
+        find.text('"Two tickets, please." deftere eklendi.'),
+        findsOneWidget,
+      );
       expect(find.text('Defterinde'), findsOneWidget);
 
       final items = await tester.runAsync(() => NotebookStore(h.db).entries());
       final item = items!.single.item;
-      expect(item.textEn, 'Is this book good?');
-      expect(item.textTr, 'Bu kitap güzel mi?');
+      expect(item.textEn, 'Two tickets, please.');
+      expect(item.textTr, 'İki bilet, lütfen.');
       // Kaynak: reel paketi (bölüm değil).
-      expect(item.contentId, 'A1-R-BOK-01');
+      expect(item.contentId, 'A1-R-CIN-01');
       expect(item.cueId, 's02-02');
       expect(item.episodeTag, isNull);
-      expect(item.sourceTitle, 'Keşfet: Kitap · Kütüphanede kitap seçimi');
+      expect(item.sourceTitle, 'Keşfet: Sinema · Gişede iki bilet');
 
       // Görsel ve ses doğru reel paketine çözülür.
-      expect(item.imagePath, '_reels/A1-R-BOK-01/stills/s02.webp');
-      expect(item.audio!.path, '_reels/A1-R-BOK-01/audio/s02-02.m4a');
+      expect(item.imagePath, '_reels/A1-R-CIN-01/stills/s02.webp');
+      expect(item.audio!.path, '_reels/A1-R-CIN-01/audio/s02-02.m4a');
       final source = h.source;
       expect(
         resolveMediaUri(source, item.contentId!, item.imagePath!).toString(),
-        'http://test.invalid/reels/A1-R-BOK-01/stills/s02.webp',
+        'http://test.invalid/reels/A1-R-CIN-01/stills/s02.webp',
       );
       expect(
         resolveMediaUri(source, item.contentId!, item.audio!.path).toString(),
-        'http://test.invalid/reels/A1-R-BOK-01/audio/s02-02.m4a',
+        'http://test.invalid/reels/A1-R-CIN-01/audio/s02-02.m4a',
       );
 
       // İkinci kez eklenmez (mevcut davranış korunur).
       await _tap(tester, h, 'reel-save');
       await tester.pump(const Duration(seconds: 1));
-      expect(find.text('"Is this book good?" zaten defterinde.'), findsOneWidget);
+      expect(
+        find.text('"Two tickets, please." zaten defterinde.'),
+        findsOneWidget,
+      );
       final again = await tester.runAsync(() => NotebookStore(h.db).entries());
       expect(again, hasLength(1));
       await h.unmount(tester);
@@ -438,8 +459,8 @@ void main() {
       await tester.pump(const Duration(milliseconds: 600));
       await h.settle(tester, rounds: 5);
       await _tap(tester, h, 'reel-meaning');
-      expect(find.text('Is this book good?'), findsWidgets);
-      expect(h.video.isPlaying('A1-R-BOK-01.mp4'), isFalse);
+      expect(find.text('Two tickets, please.'), findsWidgets);
+      expect(h.video.isPlaying('A1-R-CIN-01.mp4'), isFalse);
       await h.unmount(tester);
     });
   });
@@ -449,7 +470,7 @@ void main() {
       final h = await _daily(tester, age: TestAge.teen, watched: 20 * 60);
       expect(_key('limit-card'), findsOneWidget);
       expect(_key('discover-pages'), findsNothing);
-      expect(_key('reel-page-A1-R-BOK-01'), findsNothing);
+      expect(_key('reel-page-A1-R-CIN-01'), findsNothing);
       expect(h.video.liveCount, 0);
       await h.unmount(tester);
     });

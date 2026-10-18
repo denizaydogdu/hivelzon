@@ -48,7 +48,12 @@ FeedVideo feedVideoOfClip(
 ///   ya da dilbilgisi bağı varsa düğme gizlenir (dilbilgisi bağı ders çipini
 ///   açar). (plan §6.3)
 /// - Defter kartı görseli ve sesi reel paketinden gelir (`_reels/<id>/…`).
-FeedVideo feedVideoOfReel(Reel reel, ContentSource source) {
+/// - [repeat] ise video daha önce gösterilmiştir: arayüz "Tekrar" der (§4.5).
+FeedVideo feedVideoOfReel(
+  Reel reel,
+  ContentSource source, {
+  bool repeat = false,
+}) {
   final episode = _related(reel, 'episode');
   final grammar = _related(reel, 'grammar');
   return FeedVideo(
@@ -72,12 +77,10 @@ FeedVideo feedVideoOfReel(Reel reel, ContentSource source) {
     ),
     episodeId: episode?.id,
     practice: reel.practice,
-    imagePath: reel.image == null
-        ? null
-        : reelMediaPath(reel.id, reel.image!),
-    audioPath: reel.audio == null
-        ? null
-        : reelMediaPath(reel.id, reel.audio!),
+    contentVersion: reel.contentVersion,
+    isRepeat: repeat,
+    imagePath: reel.image == null ? null : reelMediaPath(reel.id, reel.image!),
+    audioPath: reel.audio == null ? null : reelMediaPath(reel.id, reel.audio!),
   );
 }
 

@@ -5,6 +5,7 @@ import '../../../../l10n/tr_strings.dart';
 import '../../../../shared/ui/ui.dart';
 import '../../domain/clip.dart';
 import '../../domain/feed_video.dart';
+import '../../domain/reel_progress.dart';
 
 /// Video olmayan akış kartlarının ortak zemini: kum rengi, ortalanmış,
 /// küçük ekranda ve büyük yazıda kaydırılabilir.
@@ -172,12 +173,21 @@ enum _OptionState { idle, tried, correct }
 /// yanlış cevap ilerlemeyi engellemez, puan ve süre yok (K-15). Günlük sette
 /// "4 klipte bir quiz" düzeni kullanılmaz: her videonun sonunda tek soru.
 class PracticeCard extends StatefulWidget {
-  const PracticeCard({super.key, required this.video, required this.onNext});
+  const PracticeCard({
+    super.key,
+    required this.video,
+    required this.onNext,
+    this.onResult,
+  });
 
   final FeedVideo video;
 
   /// "Sonraki video" ya da "Atla": ikisi de sıradaki sayfaya geçer.
   final VoidCallback onNext;
+
+  /// Ürün ölçümü (H-094 P2, plan §5): sorunun sonucu **kanıt değildir**;
+  /// yalnız `discover.reel.<id>` kaydına yazılır.
+  final ValueChanged<PracticeResult>? onResult;
 
   @override
   State<PracticeCard> createState() => _PracticeCardState();
@@ -192,16 +202,28 @@ class _PracticeCardState extends State<PracticeCard> {
 
   void _pick(int i) {
     if (_done || _tried.contains(i)) return;
+    final correct = _quiz.options[i].correct;
     setState(() {
       _tried.add(i);
-      if (_quiz.options[i].correct) _done = true;
+      if (correct) _done = true;
     });
+    if (correct) widget.onResult?.call(PracticeResult.correct);
   }
 
-  void _dontKnow() => setState(() {
-    _done = true;
-    _revealed = true;
-  });
+  void _dontKnow() {
+    setState(() {
+      _done = true;
+      _revealed = true;
+    });
+    // "Bilmiyorum": cevap gösterildi, kullanıcı bilmedi (ürün sonucu).
+    widget.onResult?.call(PracticeResult.wrong);
+  }
+
+  /// "Atla, sonraki videoya geç": soru atlandı.
+  void _skip() {
+    widget.onResult?.call(PracticeResult.skipped);
+    widget.onNext();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -290,7 +312,7 @@ class _PracticeCardState extends State<PracticeCard> {
               child: OutlinedButton(
                 key: const ValueKey('practice-skip'),
                 style: AppButtonStyles.secondary(),
-                onPressed: widget.onNext,
+                onPressed: _skip,
                 child: const Text(DiscoverTexts.practiceSkip),
               ),
             ),
@@ -300,6 +322,7 @@ class _PracticeCardState extends State<PracticeCard> {
     );
   }
 }
+
 class _OptionButton extends StatelessWidget {
   const _OptionButton({
     super.key,

@@ -21,6 +21,10 @@ const Map<String, String> kReelCategoryTr = {
   'BOK': 'Kitap',
 };
 
+/// Kategorilerin yayın/gösterim sırası (günlük seçkinin ilgi dağıtımı bu
+/// sırayı izler — plan §4).
+const List<String> kReelCategoryOrder = ['CIN', 'SPO', 'BOK'];
+
 /// Reelin gerçek bağı (varsa): bölüm, kitap ya da dilbilgisi dersi. Gerçek bir
 /// bağ yoksa boş kalır ve "Tam hikâye" gizlenir (plan §6.3).
 class ReelRelated {
@@ -78,9 +82,7 @@ class Reel {
       sourceType: (j['sourceType'] as String?) ?? 'standalone',
       category: category,
       categoryTr:
-          (j['categoryTr'] as String?) ??
-          kReelCategoryTr[category] ??
-          category,
+          (j['categoryTr'] as String?) ?? kReelCategoryTr[category] ?? category,
       level: (j['level'] as String?) ?? '',
       titleTr: j['titleTr'] as String,
       learningObjective: j['learningObjective'] as String?,
@@ -214,9 +216,7 @@ class ReelSummary {
       sourceType: (j['sourceType'] as String?) ?? 'standalone',
       category: category,
       categoryTr:
-          (j['categoryTr'] as String?) ??
-          kReelCategoryTr[category] ??
-          category,
+          (j['categoryTr'] as String?) ?? kReelCategoryTr[category] ?? category,
       level: (j['level'] as String?) ?? '',
       titleTr: (j['titleTr'] as String?) ?? j['id'] as String,
       duration: (j['duration'] as num?)?.toDouble() ?? 0,

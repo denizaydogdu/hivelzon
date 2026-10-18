@@ -69,6 +69,7 @@ class DiscoverHarness {
     bool withReels = false,
     bool reelsFail = false,
     this.suggestedLevel,
+    this.clockOf,
   }) : db = AppDatabase.memory(),
        source = FakeContentSource(
          packageIds: const ['A1-001', 'A1-002', 'A1-003', 'A1-004'],
@@ -79,7 +80,8 @@ class DiscoverHarness {
       ..clipCatalog = withoutPosters(catalog ?? loadClipFixture())
       ..withReels = withReels
       ..reelsFail = reelsFail
-      ..reelCatalog = reelCatalog
+      // Sentetik reeller verilip katalog verilmezse özetler onlardan üretilir.
+      ..reelCatalog = reelCatalog ?? (reels == null ? null : catalogOf(reels))
       // İlk kareler testte boş: ağ isteği hata verirdi (kliplerde olduğu gibi).
       ..reels =
           reels ??
@@ -106,6 +108,9 @@ class DiscoverHarness {
   /// Yerleştirmenin önerdiği seviye (`placement.suggestedLevel`); yoksa
   /// öneri yok (seviye çipi eldeki ilk seviyeye düşer).
   final String? suggestedLevel;
+
+  /// Değişebilir saat (gün dönümü testleri): verilirse [now] yerine kullanılır.
+  final DateTime Function()? clockOf;
   final AppDatabase db;
   final FakeContentSource source;
   late final FakeVideoPlatform video;
@@ -113,7 +118,10 @@ class DiscoverHarness {
   late GoRouter router;
   final List<String> opened = [];
 
-  DateTime get clock => now ?? DateTime(2026, 10, 14, 10);
+  /// Anlam/telaffuz olayları (kanıt testleri: buraya yazılmaması gerekir).
+  final InMemoryLearningEventLog learningLog = InMemoryLearningEventLog();
+
+  DateTime get clock => clockOf?.call() ?? now ?? DateTime(2026, 10, 14, 10);
 
   Future<void> dispose() => db.close();
 
@@ -221,9 +229,7 @@ class DiscoverHarness {
           legacyImportProvider.overrideWithValue(Future<void>.value()),
           contentSourceProvider.overrideWithValue(source),
           progressRepositoryProvider.overrideWithValue(progress),
-          learningEventLogProvider.overrideWithValue(
-            InMemoryLearningEventLog(),
-          ),
+          learningEventLogProvider.overrideWithValue(learningLog),
           speechVisibleProvider.overrideWithValue(false),
           discoverClockProvider.overrideWithValue(() => clock),
           discoverTickProvider.overrideWithValue(tick),

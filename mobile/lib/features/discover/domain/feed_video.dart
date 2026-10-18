@@ -40,6 +40,8 @@ class FeedVideo {
     this.practice,
     this.imagePath,
     this.audioPath,
+    this.contentVersion = 1,
+    this.isRepeat = false,
   });
 
   /// `clip` (hikâye klibi) | `reel` (bağımsız konu reeli).
@@ -84,6 +86,14 @@ class FeedVideo {
   /// `_reels/<id>/<yol>`; `resolveMediaUri` bu öneki tanır).
   final String? imagePath;
   final String? audioPath;
+
+  /// İçeriğin sürümü (ilerleme kaydı buna bağlanır; artınca yeniden
+  /// "izlenmemiş" sayılır — plan §5).
+  final int contentVersion;
+
+  /// Bu video kullanıcıya daha önce gösterildi (arayüz "Tekrar" der; yalnız
+  /// bağımsız reellerde anlamlıdır).
+  final bool isRepeat;
 
   bool get isReel => keyPrefix == 'reel';
 

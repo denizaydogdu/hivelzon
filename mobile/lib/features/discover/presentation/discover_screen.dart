@@ -35,6 +35,7 @@ import '../domain/clip.dart';
 import '../domain/feed.dart';
 import '../domain/feed_video.dart';
 import '../domain/reel.dart';
+import '../domain/reel_progress.dart';
 import 'widgets/feed_cards.dart';
 import 'widgets/video_page.dart';
 
@@ -232,6 +233,11 @@ const double _kLevelChipFullWidth = 560;
 
 /// Seviye çipi en fazla satırın bu kadarını alır (başlık önce gelir).
 const double _kLevelChipMaxShare = 0.45;
+
+/// Tamamlanma eşiği (plan §5): video **aktif oynatılırken** süresinin bu
+/// kadarını geçtiyse bitirilmiş sayılır. Aynı iki saniyeyi döndürmek eşiğe
+/// ulaşmadığı için tamamlanma sayılmaz.
+const double _kReelCompletion = 0.9;
 
 /// Seviye çipi: "Senin seviyen: A1 · Değiştir" (dar ekranda "A1 · Değiştir";
 /// yalnız Keşfet zorluğu; K-06).
@@ -529,19 +535,32 @@ class _ReelFeed extends ConsumerWidget {
     if (!limit.hasValue) return const _Loading();
     final source = ref.watch(contentSourceProvider);
     final videos = [
-      for (final reel in set.reels) feedVideoOfReel(reel, source),
+      for (final reel in set.reels)
+        feedVideoOfReel(reel, source, repeat: set.repeats.contains(reel.id)),
     ];
+    final daily = set.chip == DiscoverChip.today;
+    // Aynı gün kalınan yer (plan §5): yalnız günlük sette; bulunamazsa baştan.
+    final resume = daily
+        ? ref.watch(dailyResumeProvider)
+        : const AsyncData<String?>(null);
+    if (daily && !resume.hasValue) return const _Loading();
+    final entries = buildDailyFeed(videos);
+    final resumeId = resume.value;
+    final at = resumeId == null
+        ? -1
+        : entries.indexWhere((e) => e is VideoEntry && e.video.id == resumeId);
     return DiscoverFeed(
       // Çip ya da seviye değişince set baştan başlar (açık bir başlangıç).
       key: ValueKey('discover-reels-${set.chip.name}-${set.level}'),
       videos: videos,
-      entries: buildDailyFeed(videos),
+      entries: entries,
+      initialIndex: at < 0 ? 0 : at,
       aiLabel: kDefaultAiLabel,
       moreLocked: false,
       limit: limit.requireValue,
       // "Hikâye kliplerine bak" yalnız günlük sette: kategori havuzu zaten
       // havuzun kendisi (bitişte yönlendirme zorlanmaz; plan §3).
-      daily: set.chip == DiscoverChip.today,
+      daily: daily,
     );
   }
 }
@@ -624,6 +643,7 @@ class DiscoverFeed extends ConsumerStatefulWidget {
     required this.moreLocked,
     required this.limit,
     this.daily = false,
+    this.initialIndex = 0,
   });
 
   /// Akıştaki videolar (sırayla): önbellek anahtarı ve adres çözümü buradan
@@ -639,6 +659,9 @@ class DiscoverFeed extends ConsumerStatefulWidget {
 
   /// Günlük set mi (sakin bitiş ve mini soru kartları).
   final bool daily;
+
+  /// Açılış sayfası: günlük sette aynı gün kalınan yer (plan §5); 0 = baştan.
+  final int initialIndex;
 
   @override
   ConsumerState<DiscoverFeed> createState() => DiscoverFeedState();
@@ -658,10 +681,16 @@ class DiscoverFeedState extends ConsumerState<DiscoverFeed>
     for (final v in widget.videos)
       if (!v.isReel) v.id: v,
   };
-  final PageController _pages = PageController();
+
+  /// Açılış sayfası (günlük sette kalınan yer); aralık dışıysa baştan.
+  late final int _initial =
+      widget.initialIndex < 0 || widget.initialIndex >= feed.length
+      ? 0
+      : widget.initialIndex;
+  late final PageController _pages = PageController(initialPage: _initial);
 
   late final ClipControllerCache cache;
-  int _index = 0;
+  late int _index = _initial;
   bool _muted = false;
   bool _visible = true;
   bool _foreground = true;
@@ -679,6 +708,13 @@ class DiscoverFeedState extends ConsumerState<DiscoverFeed>
   late final DiscoverStore _store;
   late final DateTime Function() _clock;
   late final Duration _tickEvery;
+
+  // Bağımsız reel ilerlemesi (H-094 P2, plan §5): ekrandaki reel için aktif
+  // saniye ve tamamlanma. **Öğrenme kanıtı değildir.**
+  String? _reelId;
+  int _reelVersion = 1;
+  int _reelPending = 0;
+  bool _reelDone = false;
 
   /// Ölçüm ve testler: ekrandaki sayfa.
   int get index => _index;
@@ -737,7 +773,7 @@ class DiscoverFeedState extends ConsumerState<DiscoverFeed>
   Future<void> _start() async {
     await _loadWatched();
     if (!mounted || _limitReached) return;
-    await _activate(0);
+    await _activate(_initial);
   }
 
   Future<void> _loadWatched() async {
@@ -795,6 +831,7 @@ class DiscoverFeedState extends ConsumerState<DiscoverFeed>
     if (!_canPlay) {
       await _current?.pause();
       await _flush();
+      await _flushReel();
       return;
     }
     // Geri gelindi: gün değişmiş olabilir; süre yeniden okunur.
@@ -809,11 +846,64 @@ class DiscoverFeedState extends ConsumerState<DiscoverFeed>
     final c = _current;
     if (c == null || !c.value.isPlaying || !_canPlay) return;
     _pending += _tickEvery.inSeconds.clamp(1, 60);
+    _onReelTick(c);
     final limit = widget.limit.daily;
     if (limit != null && _watched + _pending >= limit.inSeconds) {
       unawaited(_reachLimit());
-    } else if (_pending >= 10) {
+    } else if (_pending >= 10 || _reelPending >= 10) {
       unawaited(_flush());
+      unawaited(_flushReel());
+    }
+  }
+
+  /// Açık oynatma sayılır; tamamlanma videoyu **açmakla** değil, aktif oynatma
+  /// + sona yaklaşmayla oluşur (aynı iki saniyeyi döndürmek yetmez — plan §5).
+  void _onReelTick(VideoPlayerController c) {
+    if (_reelId == null) return;
+    _reelPending += _tickEvery.inSeconds.clamp(1, 60);
+    final duration = c.value.duration;
+    if (!_reelDone &&
+        duration > Duration.zero &&
+        c.value.position >= duration * _kReelCompletion) {
+      _reelDone = true;
+    }
+  }
+
+  /// Ekrandaki reel ilerlemesini yazar (gösterim günü + saniye + tamamlanma).
+  Future<void> _flushReel({bool markShown = false}) async {
+    final id = _reelId;
+    if (id == null) return;
+    final seconds = _reelPending;
+    final done = _reelDone;
+    if (seconds <= 0 && !done && !markShown) return;
+    _reelPending = 0;
+    _reelDone = false;
+    try {
+      await _store.mergeProgress(
+        id,
+        contentVersion: _reelVersion,
+        addSeconds: seconds,
+        completed: done,
+        shownDay: localDayKey(_clock()),
+      );
+    } on Object catch (e) {
+      debugPrint('[H094] reel ilerlemesi yazılamadı: $e');
+      _reelPending += seconds;
+      _reelDone = _reelDone || done;
+    }
+  }
+
+  /// Sorunun ürün sonucu (kanıt değil): yalnız `discover.reel.<id>`.
+  Future<void> _recordPractice(FeedVideo video, PracticeResult result) async {
+    if (!video.isReel) return;
+    try {
+      await _store.mergeProgress(
+        video.id,
+        contentVersion: video.contentVersion,
+        practiceResult: result,
+      );
+    } on Object catch (e) {
+      debugPrint('[H094] soru sonucu yazılamadı: $e');
     }
   }
 
@@ -834,6 +924,7 @@ class DiscoverFeedState extends ConsumerState<DiscoverFeed>
     setState(() => _limitReached = true);
     await _current?.pause();
     await _flush();
+    await _flushReel();
     cache.retain(const {});
   }
 
@@ -841,9 +932,21 @@ class DiscoverFeedState extends ConsumerState<DiscoverFeed>
   /// ötekiler atılır.
   Future<void> _activate(int index) async {
     final token = ++_activation;
+    await _flushReel();
     _index = index;
     final entry = feed[index];
     final here = _videoOf(entry);
+    _reelId = here != null && here.isReel ? here.id : null;
+    _reelVersion = here?.contentVersion ?? 1;
+    _reelPending = 0;
+    _reelDone = false;
+    if (_reelId != null) {
+      unawaited(_flushReel(markShown: true));
+      // Aynı gün kalınan yer (plan §5): yalnız günlük sette.
+      if (widget.daily) {
+        unawaited(_store.setResumeId(_clock(), _reelId));
+      }
+    }
     final next = _nextVideo(index);
     final nextVideo = next == null ? null : _videoOf(feed[next]);
     final keep = <String>{
@@ -1052,6 +1155,7 @@ class DiscoverFeedState extends ConsumerState<DiscoverFeed>
         _store.addSeconds(_clock(), s).then((_) {}, onError: (Object _) {}),
       );
     }
+    unawaited(_flushReel());
     _pages.dispose();
     cache.dispose();
     super.dispose();
@@ -1096,6 +1200,7 @@ class DiscoverFeedState extends ConsumerState<DiscoverFeed>
                 key: ValueKey('practice-${video.id}'),
                 video: video,
                 onNext: _goNext,
+                onResult: (r) => unawaited(_recordPractice(video, r)),
               ),
               BreakEntry(:final clipsBefore) => BreakCard(
                 clipsWatched: clipsBefore,

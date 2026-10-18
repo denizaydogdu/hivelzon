@@ -321,6 +321,53 @@ ReelCatalog catalogWith({List<String> withdraw = const []}) {
   return ReelCatalog.fromJson(j);
 }
 
+/// Sentetik reel (P2 seçim testleri): şablon bir deneme reelinin alanları
+/// değiştirilerek yeni kimlik/kategori/seviye/sürüm/aile üretilir.
+Reel reelLike(
+  String templateId, {
+  required String id,
+  String? category,
+  String? level,
+  int? contentVersion,
+  String? family,
+  String? status,
+  String? titleTr,
+}) {
+  final j = reelFixtureJson(templateId);
+  j['id'] = id;
+  j['video'] = '$id.mp4';
+  j['poster'] = null;
+  if (category != null) {
+    j['category'] = category;
+    j['categoryTr'] = kReelCategoryTr[category];
+  }
+  if (level != null) j['level'] = level;
+  if (contentVersion != null) j['contentVersion'] = contentVersion;
+  if (family != null) j['family'] = family;
+  if (status != null) j['status'] = status;
+  if (titleTr != null) j['titleTr'] = titleTr;
+  return Reel.fromJson(j);
+}
+
+/// Reellerden katalog (özetler); sunucu `index.json`'ının eşdeğeri.
+ReelCatalog catalogOf(List<Reel> reels) => ReelCatalog(
+  reels: [
+    for (final r in reels)
+      ReelSummary(
+        id: r.id,
+        contentVersion: r.contentVersion,
+        sourceType: r.sourceType,
+        category: r.category,
+        categoryTr: r.categoryTr,
+        level: r.level,
+        titleTr: r.titleTr,
+        duration: r.duration,
+        family: r.family,
+        status: r.status,
+      ),
+  ],
+);
+
 /// Katalogdaki reellerin ilk kareleri olmadan yüklenmiş hâli (test ortamı).
 List<Reel> reelsWithoutPosters(ReelCatalog catalog) => [
   for (final s in catalog.reels) loadReelFixture(s.id, withPoster: false),

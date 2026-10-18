@@ -11,8 +11,10 @@ import '../../onboarding/application/onboarding_providers.dart';
 import '../../story/application/story_providers.dart';
 import '../data/discover_store.dart';
 import '../domain/clip.dart';
+import '../domain/daily_set.dart';
 import '../domain/feed.dart';
 import '../domain/reel.dart';
+import '../domain/reel_selection.dart';
 
 /// Keşfet'in sezonu (MVP: Sezon 1).
 const kDiscoverSeason = 1;
@@ -176,11 +178,10 @@ final reelCatalogProvider = FutureProvider.autoDispose<ReelCatalog>(
 /// Katalogda video bulunan seviyeler (sıralı). Pilot A1/A2.
 final reelLevelsProvider = FutureProvider<List<String>>((ref) async {
   final catalog = await ref.watch(reelCatalogProvider.future);
-  final levels =
-      {
-        for (final r in catalog.reels)
-          if (!r.isWithdrawn && r.level.isNotEmpty) r.level,
-      }.toList()..sort();
+  final levels = {
+    for (final r in catalog.reels)
+      if (!r.isWithdrawn && r.level.isNotEmpty) r.level,
+  }.toList()..sort();
   return levels.isEmpty ? const [kDefaultReelLevel] : levels;
 }, retry: (_, _) => null);
 
@@ -236,8 +237,9 @@ class ReelLevelNotifier extends Notifier<String?> {
   }
 }
 
-final reelLevelChoiceProvider =
-    NotifierProvider<ReelLevelNotifier, String?>(ReelLevelNotifier.new);
+final reelLevelChoiceProvider = NotifierProvider<ReelLevelNotifier, String?>(
+  ReelLevelNotifier.new,
+);
 
 /// Yürürlükteki seviye: elle seçim → yerleştirme önerisi → eldeki ilk seviye.
 final reelLevelProvider = Provider<String>((ref) {
@@ -257,41 +259,126 @@ final reelLevelProvider = Provider<String>((ref) {
 /// Günlük set / kategori havuzu sorgusu (çip + seviye).
 typedef ReelQuery = ({DiscoverChip chip, String level});
 
-/// Seçili çipin havuzu: günlük sette **en çok üç** video, kategori çipinde
-/// kategorinin tamamı. Geri çekilen içerik oynatılmaz (plan §5).
-final reelPoolProvider = FutureProvider.autoDispose
-    .family<List<Reel>, ReelQuery>((ref, query) async {
-      final catalog = await ref.watch(reelCatalogProvider.future);
-      final level = query.level;
-      final category = query.chip.categoryCode;
-      final summaries = [
-        for (final r in catalog.reels)
-          if (!r.isWithdrawn &&
-              (category == null
-                  ? r.level == level
-                  : r.category == category && r.level == level))
-            r,
-      ]..sort((a, b) => a.id.compareTo(b.id));
-      final picked = category == null
-          ? summaries.take(kDailyReelCount).toList()
-          : summaries;
-      final source = ref.watch(contentSourceProvider);
+/// Günün seçkisi (H-094 P2, plan §4–5).
+///
+/// - Gün içinde **kararlı**: cihazda saklanan `{id, contentVersion}` listesi
+///   yeniden seçilmez.
+/// - Seviye ya da kategoriler değişirse seçki **açıkça yeni başlar** (günlük
+///   izleme sayacı ve öğrenme kayıtları korunur).
+/// - Geri çekilen içerik sabit listedeyse yerine aynı seviye-kategoriden yedek
+///   konur; uygun aday yoksa seçki daha az videoyla sürer.
+final dailySetProvider = FutureProvider.autoDispose<DailySet>((ref) async {
+  final store = ref.watch(discoverStoreProvider);
+  final clock = ref.watch(discoverClockProvider);
+  final catalog = await ref.watch(reelCatalogProvider.future);
+  final prefs = await store.prefs();
+  final level = ref.watch(reelLevelProvider);
+  final categories = prefs.normalizedCategories();
+  final progress = await store.allReelProgress();
+  final now = clock();
+  final stored = await store.dailySet(now);
+  if (stored != null && stored.matches(level: level, categories: categories)) {
+    final fixed = reconcileDailySet(
+      set: stored,
+      catalog: catalog.reels,
+      progress: progress,
+    );
+    if (fixed == null) return stored;
+    await store.setDailySet(now, fixed);
+    return fixed;
+  }
+  final picks = selectDailyReels(
+    catalog: catalog.reels,
+    level: level,
+    categories: categories,
+    progress: progress,
+    count: kDailyReelCount,
+  );
+  final set = DailySet(
+    level: level,
+    categories: categories,
+    items: [
+      for (final p in picks)
+        DailyItem(
+          id: p.reel.id,
+          contentVersion: p.reel.contentVersion,
+          repeat: p.repeat,
+        ),
+    ],
+  );
+  await store.setDailySet(now, set);
+  return set;
+}, retry: (_, _) => null);
+
+/// Aynı gün kalınan video (günlük set; plan §5). Boşsa seçki baştan açılır.
+final dailyResumeProvider = FutureProvider.autoDispose<String?>((ref) async {
+  final store = ref.watch(discoverStoreProvider);
+  final now = ref.watch(discoverClockProvider)();
+  return store.resumeId(now);
+}, retry: (_, _) => null);
+
+/// Yüklenmiş reel havuzu: reeller + "Tekrar" etiketli kimlikler.
+class ReelPool {
+  const ReelPool({required this.reels, this.repeats = const {}});
+
+  final List<Reel> reels;
+
+  /// Kullanıcıya daha önce gösterildiği için "Tekrar" denen videolar.
+  final Set<String> repeats;
+}
+
+/// Seçili çipin havuzu: günlük sette **saklanan seçki** (en çok üç video),
+/// kategori çipinde kategorinin tamamı. Geri çekilen içerik oynatılmaz.
+final reelPoolProvider = FutureProvider.autoDispose.family<ReelPool, ReelQuery>(
+  (ref, query) async {
+    final catalog = await ref.watch(reelCatalogProvider.future);
+    final level = query.level;
+    final category = query.chip.categoryCode;
+    final source = ref.watch(contentSourceProvider);
+    if (category == null) {
+      final set = await ref.watch(dailySetProvider.future);
       final reels = <Reel>[];
-      for (final s in picked) {
-        final reel = await source.loadReel(s.id);
+      final repeats = <String>{};
+      final seen = <String>{};
+      for (final item in set.items) {
+        if (!seen.add(item.id)) continue;
+        final reel = await source.loadReel(item.id);
         if (reel.isWithdrawn || !reel.isStandalone) continue;
         reels.add(reel);
+        if (item.repeat) repeats.add(item.id);
       }
-      return reels;
-    }, retry: (_, _) => null);
+      return ReelPool(reels: reels, repeats: repeats);
+    }
+    final summaries = [
+      for (final r in catalog.reels)
+        if (!r.isWithdrawn && r.category == category && r.level == level) r,
+    ]..sort((a, b) => a.id.compareTo(b.id));
+    final reels = <Reel>[];
+    for (final s in summaries) {
+      final reel = await source.loadReel(s.id);
+      if (reel.isWithdrawn || !reel.isStandalone) continue;
+      reels.add(reel);
+    }
+    return ReelPool(reels: reels);
+  },
+  retry: (_, _) => null,
+);
 
 /// Ekranın gördüğü seçki: çip, seviye ve yüklenmiş reeller.
 class ReelSet {
-  const ReelSet({required this.chip, required this.level, required this.reels});
+  const ReelSet({
+    required this.chip,
+    required this.level,
+    required this.reels,
+    this.repeats = const {},
+  });
 
   final DiscoverChip chip;
   final String level;
   final List<Reel> reels;
+
+  /// "Tekrar" etiketli reeller (plan §4.5).
+  final Set<String> repeats;
 }
 
 final reelSetProvider = Provider.autoDispose<AsyncValue<ReelSet>>((ref) {
@@ -302,8 +389,14 @@ final reelSetProvider = Provider.autoDispose<AsyncValue<ReelSet>>((ref) {
     return AsyncError(pool.error!, pool.stackTrace ?? StackTrace.empty);
   }
   if (!pool.hasValue) return const AsyncLoading();
+  final value = pool.requireValue;
   return AsyncData(
-    ReelSet(chip: chip, level: level, reels: pool.requireValue),
+    ReelSet(
+      chip: chip,
+      level: level,
+      reels: value.reels,
+      repeats: value.repeats,
+    ),
   );
 });
 

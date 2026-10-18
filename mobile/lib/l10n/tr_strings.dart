@@ -932,6 +932,10 @@ abstract final class DiscoverTexts {
   static String reelNotebookSource(String categoryTr, String title) =>
       'Keşfet: $categoryTr · $title';
 
+  /// Kontrollü tekrar (plan §4.5): video daha önce gösterildi, açıkça denir.
+  static const reelRepeatBadge = 'Tekrar';
+  static const reelRepeatSemantics = 'Bu video daha önce gösterildi';
+
   /// Seviye çipi ve paneli: yalnızca Keşfet zorluğunu değiştirir (K-06).
   static String levelChip(String level) => 'Senin seviyen: $level · Değiştir';
 

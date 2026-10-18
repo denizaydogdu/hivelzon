@@ -170,16 +170,18 @@ class VideoPage extends StatelessWidget {
                                 : onFullStory,
                           ),
                         ),
-                        SizedBox(
-                          height: tight ? AppSpace.s8 : AppSpace.s12,
-                        ),
-                        if (video.grammarTitle != null && onGrammar != null) ...[
+                        SizedBox(height: tight ? AppSpace.s8 : AppSpace.s12),
+                        if (video.grammarTitle != null &&
+                            onGrammar != null) ...[
                           Align(
                             alignment: Alignment.centerLeft,
                             child: _GrammarChip(
                               prefix: prefix,
                               // Dersin kısa adı: "can / can't: yetenek…" → "can / can't".
-                              title: video.grammarTitle!.split(':').first.trim(),
+                              title: video.grammarTitle!
+                                  .split(':')
+                                  .first
+                                  .trim(),
                               onTap: onGrammar!,
                             ),
                           ),
@@ -329,22 +331,57 @@ class _TopBar extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              if (badge != null)
-                Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: AppSpace.s12,
-                    vertical: AppSpace.s4,
-                  ),
-                  decoration: const BoxDecoration(
-                    color: AppPalette.lighthouseYellow,
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(AppRadius.full),
-                    ),
-                  ),
-                  child: Text(
-                    badge,
-                    style: t.labelLarge?.copyWith(color: AppPalette.ink),
-                  ),
+              if (badge != null || video.isRepeat)
+                Wrap(
+                  spacing: AppSpace.s8,
+                  runSpacing: AppSpace.s8,
+                  children: [
+                    if (badge != null)
+                      Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: AppSpace.s12,
+                          vertical: AppSpace.s4,
+                        ),
+                        decoration: const BoxDecoration(
+                          color: AppPalette.lighthouseYellow,
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(AppRadius.full),
+                          ),
+                        ),
+                        child: Text(
+                          badge,
+                          style: t.labelLarge?.copyWith(color: AppPalette.ink),
+                        ),
+                      ),
+                    // Kontrollü tekrar (H-094 §4.5): video daha önce gösterildi.
+                    if (video.isRepeat)
+                      Semantics(
+                        label: DiscoverTexts.reelRepeatSemantics,
+                        excludeSemantics: true,
+                        child: Container(
+                          key: ValueKey('${video.keyPrefix}-repeat'),
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: AppSpace.s12,
+                            vertical: AppSpace.s4,
+                          ),
+                          decoration: BoxDecoration(
+                            color: AppPalette.white.withValues(alpha: 0.16),
+                            border: Border.all(
+                              color: AppPalette.white.withValues(alpha: 0.56),
+                            ),
+                            borderRadius: const BorderRadius.all(
+                              Radius.circular(AppRadius.full),
+                            ),
+                          ),
+                          child: Text(
+                            DiscoverTexts.reelRepeatBadge,
+                            style: t.labelLarge?.copyWith(
+                              color: AppPalette.white,
+                            ),
+                          ),
+                        ),
+                      ),
+                  ],
                 ),
               const SizedBox(height: AppSpace.s8),
               Semantics(
