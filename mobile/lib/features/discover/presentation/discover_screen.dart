@@ -1052,6 +1052,7 @@ class DiscoverFeedState extends ConsumerState<DiscoverFeed>
     setState(() => _sheetOpen = true);
     await c?.pause();
     await _flush();
+    await _flushReel();
     if (!mounted) return;
     final audio = c == null
         ? const SilentMeaningAudio()

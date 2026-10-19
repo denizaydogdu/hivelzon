@@ -111,6 +111,13 @@ Backend `VideoHostingPort` yolu `packages/_reels/<id>/<yol>` aynı pakete gider
   `discover.resume.<gün>` ile saklanır. `contentVersion` artınca
   eski izleme/soru sonucu taşınmaz; geri çekilen içeriğin yerine aynı seviye ve
   kategoriden yedek konur. Bu kayıtlar **öğrenme kanıtı değildir**.
+- **P3 (kanıt + Defter bağı):** "Kaydet" yalnız ifadeyi ekler; izlemek, tekrar
+  izlemek, anlam panelini açmak, seçenekten bulmak ve "Tam hikâye" **kanıt
+  yazmaz**. Soru sonucu ayrıdır (`discover.reel.<id>.practiceResult`); Defter
+  kartı (FSRS), `review_logs` ve kanıt değişmez. Taklit yalnız `helped`
+  (H-093); `ownUse` yalnız Defter kartının denetlenmiş üretiminden gelir.
+  Defter görseli/sesi `resolveMediaUri(contentId, …)` ile reel paketine
+  çözülür.
 - **P4:** backend `ContentType.REEL`, onay/geri çekme ve yayın süzmesi; gerçek
   kullanıcı pilotunun ön koşulu.
 - **Simülatör denemesi için yerel demo medyası:** `reeller/<id>/` altına

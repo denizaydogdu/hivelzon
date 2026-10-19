@@ -1,6 +1,6 @@
 # H-094: Keşfet — seviyeye ve ilgiye göre günlük üç kısa video (reel)
 
-- **Durum:** Sürüyor — **P0, P1 ve P2 tamamlandı** (kredisiz, deneme verisi); P3 sırada. Ücretli üretim ve yayın onayı yok.
+- **Durum:** Sürüyor — **P0, P1, P2 ve P3 tamamlandı** (kredisiz, deneme verisi); P4 sırada. Ücretli üretim ve yayın onayı yok.
 - **Tür:** Uygulama (kod) + içerik boru hattı + içerik pilotu
 - **Faz:** F1 MVP — ürün incelemesi sonrası (2026-10-18)
 - **Bağımlılık:** H-040 (Keşfet), H-089 (kanıt basamakları), H-088 (günlük plan); pilot içerik için ücretli üretim onayı ve `PROMPTS.md`
@@ -57,4 +57,12 @@ Kendi dalında; `git revert`. İçerik paketleri `/reels/` altında ayrı durur;
   - **Tamamlanma:** yalnız aktif oynatma + sürenin %90'ına ulaşma (`_kReelCompletion`); aynı iki saniyeyi döndürmek tamamlanma sayılmaz. Soru sonucu (`correct|wrong|skipped`) **yalnız** `discover.reel.<id>` ürün kaydına yazılır — Defter'e/kanıta/FSRS'e yazılmaz (kanıt kuralları P3).
   - **Testler:** `reel_selection_test.dart` (20: kurallar, yedek, eşleme, biçimler, birleştirme), `discover_store_test.dart` (9: tercih, gün anahtarı, eski gün silme, bozuk kayıt, sürüm), `reel_daily_rules_test.dart` (15: aynı gün kararlılığı, gün dönümü, gece yarısı kesintisi yok, seviye değişimi + sayaç, geri çekme yedeği, sürüm artışı, "Tekrar", **kalınan yer**, tamamlanma, soru kaydı). Günlük set testleri 19; **keşfet 63 test**; **`flutter test` 1237**, **`pytest` 346**; golden 5 (yeni `h094_gunluk_tekrar.png`, 3 güncelleme: ilk video artık Sinema — plan §4.3 sırası). Cihaz ölçümü: `integration_test/h040_memory_test.dart` — canlı denetleyici en çok **2** (sınır 3), RSS tepe +135,2 MB, akış kapanınca 411 MB.
   - **Not (açık karar):** kategori aç/kapa **arayüzü** yok; tercih altyapısı (`discover.prefs.categories`) hazır ve seçim onu uygular. Pilot öncesi istenirse küçük bir "ilgi alanları" paneli eklenebilir.
-  - **Sıradaki:** P3 (kanıt ve Defter bağı: kaydetme ayrımı, `helped` kuralı, FSRS'e yazılmama, kaydın doğru reel sesi/görseli/kaynağıyla açılması), P4 (backend yayın/geri çekme) — gerçek pilotun ön koşulu. Commit **yok** (kullanıcı onayı bekleniyor).
+- 2026-10-18: **P3 tamamlandı (kredisiz): kanıt ve Defter bağı (plan §7).** Reel yolunda kanıtın nereden yazılabileceği sınandı ve **yalnız doğru kapı** bırakıldı.
+  - **Kaydetme ayrımı:** "Kaydet" **yalnız ifadeyi** ekler (video koleksiyonu yok); yeni kart normal tekrar planına girer (`isNew`, `reps = 0`), **kanıt ve `review_logs` yazılmaz**.
+  - **Kanıt yazmayanlar (testle sabit):** izlemek, tekrar izlemek, altyazı/anlam panelini açmak, seçenekten doğruyu bulmak, "Tam hikâye" ile bölüme gitmek → Defter'e/kanıta hiçbir şey yazılmaz.
+  - **Soru sonucu ayrı:** `discover.reel.<id>.practiceResult` yazılır; **Defter kartı (FSRS `due`/`state`), `reps` ve `review_logs` değişmez**, kanıt oluşmaz.
+  - **Taklit:** H-093 kuralı geçerli — başarılı taklit yalnız `helped` yazar, kartı değiştirmez (mevcut test: `test/features/speak/speak_places_test.dart`); `ownUse` yalnız Defter kartının denetlenmiş bağımsız üretiminden gelir.
+  - **Defter bağı:** kayıt `Keşfet: <Kategori> · <başlık>` kaynağıyla, `_reels/<id>/stills/…` görseli ve `_reels/<id>/audio/…` sesiyle saklanır; bölüm etiketi taşımaz; Defter görseli/sesi `resolveMediaUri(contentId, yol)` ile `/reels/<id>/…` adresine çözülür; yeniden açılışta kalıcıdır.
+  - **Küçük düzeltme:** anlam paneli açılırken reel izleme süresi de yazılır (`_flushReel`) — ölçüm kaybı olmaz.
+  - **Testler:** `test/features/discover/reel_evidence_test.dart` (7). `flutter analyze` temiz, **`flutter test` 1277**, `pytest` 346. Regresyon #1–#3 ayrı commit'lerde.
+  - **Sıradaki:** P4 (backend `ContentType.REEL`, yayın/geri çekme ve yayın süzmesi) — gerçek pilotun ön koşulu. Commit **yok** (kullanıcı onayı bekleniyor).
