@@ -19,6 +19,7 @@ from hvpipeline.reels import (
     load_reel,
     parse_reel,
     reel_folder,
+    write_reports,
 )
 
 REPO = Path(__file__).resolve().parents[3]
@@ -273,3 +274,38 @@ def test_dev_server_serves_reels():
     finally:
         srv.shutdown()
         srv.server_close()
+
+def test_write_reports_writes_backend_lint_summary(tmp_path):
+    """`reel_lint --write-reports`: reel başına `_build/lint.json` (backend onayı için)."""
+    d = tmp_path / "A1-R-CIN-01"
+    d.mkdir()
+    (d / "reel.json").write_text(
+        (TRIAL / "A1-R-CIN-01" / "reel.json").read_text(encoding="utf-8"), encoding="utf-8"
+    )
+    written = write_reports([lint_reel(d)])
+    assert written == [d / "_build" / "lint.json"]
+    doc = json.loads(written[0].read_text(encoding="utf-8"))
+    assert doc["tool"] == "reel-lint"
+    assert doc["schemaVersion"] == 1
+    assert doc["contentId"] == "A1-R-CIN-01"
+    assert doc["level"] == "A1"
+    assert doc["errors"] == []
+    assert isinstance(doc["warnings"], list)
+    assert doc["generatedAt"].endswith("Z")
+    # Üretim paketi düzeninde de rapor kaynak köke yazılır (paket içine değil).
+    pkg = d / "_build" / "package"
+    pkg.mkdir()
+    (pkg / "reel.json").write_text((d / "reel.json").read_text(encoding="utf-8"), encoding="utf-8")
+    written = write_reports([lint_reel(d)])
+    assert written == [d / "_build" / "lint.json"]
+
+
+def test_write_reports_marks_errors(tmp_path):
+    d = tmp_path / "A1-R-CIN-01"
+    d.mkdir()
+    doc = json.loads((TRIAL / "A1-R-CIN-01" / "reel.json").read_text(encoding="utf-8"))
+    doc["level"] = "A2"  # kimlikle uyuşmuyor
+    (d / "reel.json").write_text(json.dumps(doc), encoding="utf-8")
+    written = write_reports([lint_reel(d)])
+    report = json.loads(written[0].read_text(encoding="utf-8"))
+    assert any("seviyesi" in e for e in report["errors"])

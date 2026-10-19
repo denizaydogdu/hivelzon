@@ -305,6 +305,8 @@ Yapı: **3 kategori × 2 seviye × 3 video = 18**. Her satır tek küçük hedef
 - **P3 — Kanıt ve Defter bağı:** kaydetme ayrımı (yalnız ifade), `helped` (taklit) kuralı, FSRS’e yazılmama; kaydın doğru reel sesi/görseli/kaynağıyla geri açılması; **önceki hata regresyon testleri**.
 - **P4 — Backend/editoryel (gerçek pilotun ön koşulu):** `ContentType.REEL`, klasör kalıbı, onay/geri çekme, yayın süzmesi; dev sunucu `/reels/`. **Kullanıcıya gerçek içerik sunulmadan önce bu kontroller tamamlanmış olmalı**; P0–P3 deneme verisiyle ilerler.
 
+**Durum (2026-10-19):** P0–P4 tamamlandı (kredisiz). Ayrıntılar `docs/REEL-PAKETI.md` §7 ve `yapilacaklar/H-094-kesfet-gunluk-uc-video.md`; P4 backend uçları `/api/v1/catalog/reels`.
+
 Her aşama **kendi dalında**, `flutter analyze && flutter test` + `pytest` yeşil; golden’lar bilinçli güncellenir.
 
 **Ayrı teslimler:** (1) **kredisiz uygulama** (P0–P3 + deneme verisi), (2) **gerçek içerik üretimi** (3 örnek → 18 video; bütçe onayı ayrı), (3) **kullanıcı pilotu** (H-092’ye ekleme; P4 ön koşulu). Her biri ayrı onay/bitiş kapısıdır.

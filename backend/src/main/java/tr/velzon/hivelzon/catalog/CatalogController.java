@@ -57,6 +57,18 @@ class CatalogController {
         return cached(json.writeValueAsString(catalog.books(level, page, size)), request);
     }
 
+    /**
+     * Bağımsız reeller (H-094 P4); {@code level} = A1…C1, {@code category} = CIN/SPO/BOK (isteğe bağlı).
+     * Yalnız yayımlanmış ya da zamanı gelmiş onaylı sürümler döner (geri çekilen görünmez).
+     */
+    @GetMapping("/reels")
+    ResponseEntity<String> reels(@RequestParam(required = false) String level,
+            @RequestParam(required = false) String category,
+            @RequestParam(required = false) Integer page, @RequestParam(required = false) Integer size,
+            HttpServletRequest request) {
+        return cached(json.writeValueAsString(catalog.reels(level, category, page, size)), request);
+    }
+
     private ResponseEntity<String> cached(String body, HttpServletRequest request) {
         String etag = "\"" + sha256(body).substring(0, 32) + "\"";
         CacheControl cache = CacheControl.maxAge(properties.getCatalog().getCacheMaxAge()).cachePublic()

@@ -73,7 +73,9 @@ public class EditorialService implements UserDataPurger {
 
         List<String> missing(ContentType type) {
             List<String> out = new ArrayList<>();
-            if (type != ContentType.BOOK && !Boolean.TRUE.equals(canonChecked)) {
+            // Kanon yalnız hikâye bölümüne bağlıdır: kitaplar (H-070) ve bağımsız reeller (H-094)
+            // hikâye kanonuna bağlı değildir.
+            if (type == ContentType.EPISODE && !Boolean.TRUE.equals(canonChecked)) {
                 out.add("canonChecked");
             }
             if (!Boolean.TRUE.equals(levelChecked)) {
@@ -93,7 +95,7 @@ public class EditorialService implements UserDataPurger {
 
         /** Kanonik JSON (sabit sıra): saklanır ve özeti onay kaydına bağlanır. */
         String canonicalJson(ContentType type) {
-            return "{" + (type == ContentType.BOOK ? "" : "\"canonChecked\":true,")
+            return "{" + (type == ContentType.EPISODE ? "\"canonChecked\":true," : "")
                     + "\"levelChecked\":true,\"translationApproved\":true,"
                     + "\"mediaChecked\":true,\"rightsAndAiDisclosureChecked\":true}";
         }

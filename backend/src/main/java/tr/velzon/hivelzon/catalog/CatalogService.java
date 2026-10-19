@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.time.Clock;
 import java.time.Instant;
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -50,6 +51,18 @@ public class CatalogService {
                AND (status = 'PUBLISHED' OR (status IN ('APPROVED', 'SCHEDULED') AND publish_at <= ?))
             """;
     private static final java.util.regex.Pattern LEVEL = java.util.regex.Pattern.compile("^(A1|A2|B1|B2|C1|C2)$");
+    private static final java.util.regex.Pattern REEL_LEVEL = java.util.regex.Pattern.compile("^(A1|A2|B1|B2|C1|C2)$");
+    private static final java.util.regex.Pattern REEL_CATEGORY = java.util.regex.Pattern.compile("^(CIN|SPO|BOK)$");
+
+    /** Görünür reel sürümleri (reel başına en yeni, H-094 P4); {@code ?} = şimdi. */
+    private static final String VISIBLE_REELS = """
+            SELECT DISTINCT ON (content_id) content_id, content_version, slug, number, level, title,
+                   descriptor::text AS descriptor, publish_at, package_base_path, manifest_sha256, total_bytes,
+                   estimated_minutes, updated_at
+              FROM content_items
+             WHERE content_type = 'REEL'
+               AND (status = 'PUBLISHED' OR (status IN ('APPROVED', 'SCHEDULED') AND publish_at <= ?))
+            """;
 
     public record CatalogItem(String contentId, int contentVersion, String slug, int season, int number, String level,
             String title, Integer estimatedMinutes, Instant publishAt, String packageBaseUrl, String scenesUrl,
@@ -67,9 +80,19 @@ public class CatalogService {
             String manifestUrl, String manifestSha256, Long totalBytes, Instant updatedAt) {
     }
 
+    /**
+     * Reel kataloğu kartı (H-094 P4): Keşfet'in "Bugün"ü için gereken katalog küçük verisi. Altyazı,
+     * soru ve medya paketteki {@code reel.json} ve dosyalarındadır; {@code reelUrl} paket içindeki
+     * {@code reel.json}'dır. {@code related} yalnız gerçek bağları taşır.
+     */
+    public record ReelItem(String contentId, int contentVersion, String slug, String level, int number,
+            String category, String titleTr, String title, String learningObjective, JsonNode target,
+            Double duration, JsonNode related, Instant publishAt, String packageBaseUrl, String reelUrl,
+            String sourceSha256, Long totalBytes, Instant updatedAt) {
+    }
+
     private final JdbcTemplate jdbc;
-    private final VideoHostingPort hosting;
-    private final JsonMapper json = JsonMapper.builder().build();
+    private final VideoHostingPort hosting;    private final JsonMapper json = JsonMapper.builder().build();
     private final Clock clock;
 
     public CatalogService(JdbcTemplate jdbc, VideoHostingPort hosting, Clock clock) {
@@ -114,6 +137,46 @@ public class CatalogService {
                 : new Object[] {now, level, pageable.getPageSize(), pageable.getOffset()};
         List<BookItem> items = jdbc.query("SELECT * FROM (" + visible
                 + ") v ORDER BY level, number, content_id LIMIT ? OFFSET ?", this::mapBook, pageArgs);
+        long t = total == null ? 0 : total;
+        int pages = (int) ((t + pageable.getPageSize() - 1) / pageable.getPageSize());
+        return new PageResponse<>(items, pageable.getPageNumber(), pageable.getPageSize(), t, pages);
+    }
+
+    /**
+     * Görünür reeller (H-094 P4); isteğe bağlı seviye (A1…C1) ve kategori (CIN/SPO/BOK) süzgeci.
+     * Sıra: seviye, kategori numarası. Yalnız yayımlanmış ya da zamanı gelmiş onaylı sürümler döner.
+     */
+    @Transactional(readOnly = true)
+    public PageResponse<ReelItem> reels(String level, String category, Integer page, Integer size) {
+        if (level != null && !REEL_LEVEL.matcher(level).matches()) {
+            throw new ApiException(ErrorCode.VALIDATION_FAILED, Map.of("field", "level"));
+        }
+        if (category != null && !REEL_CATEGORY.matcher(category).matches()) {
+            throw new ApiException(ErrorCode.VALIDATION_FAILED, Map.of("field", "category"));
+        }
+        var pageable = PageParams.of(page, size, org.springframework.data.domain.Sort.unsorted());
+        OffsetDateTime now = CatalogImportService.utc(clock.instant());
+        List<Object> args = new ArrayList<>();
+        args.add(now);
+        List<String> where = new ArrayList<>();
+        if (level != null) {
+            where.add("level = ?");
+            args.add(level);
+        }
+        if (category != null) {
+            where.add("descriptor->>'category' = ?");
+            args.add(category);
+        }
+        String filter = where.isEmpty() ? "" : " AND " + String.join(" AND ", where);
+        String visible = VISIBLE_REELS + filter + " ORDER BY content_id, content_version DESC";
+        Long total = jdbc.queryForObject("SELECT count(*) FROM (" + visible + ") v", Long.class,
+                args.toArray());
+        List<Object> pageArgs = new ArrayList<>(args);
+        pageArgs.add(pageable.getPageSize());
+        pageArgs.add(pageable.getOffset());
+        List<ReelItem> items = jdbc.query("SELECT * FROM (" + visible
+                + ") v ORDER BY level, number, content_id LIMIT ? OFFSET ?", this::mapReel,
+                pageArgs.toArray());
         long t = total == null ? 0 : total;
         int pages = (int) ((t + pageable.getPageSize() - 1) / pageable.getPageSize());
         return new PageResponse<>(items, pageable.getPageNumber(), pageable.getPageSize(), t, pages);
@@ -167,6 +230,19 @@ public class CatalogService {
                     });
         }
         return doc;
+    }
+
+    private ReelItem mapReel(ResultSet rs, int i) throws SQLException {
+        String packageUrl = hosting.packageBaseUrl(rs.getString("package_base_path"));
+        JsonNode d = json.readTree(rs.getString("descriptor"));
+        OffsetDateTime publishAt = rs.getObject("publish_at", OffsetDateTime.class);
+        return new ReelItem(rs.getString("content_id"), rs.getInt("content_version"), rs.getString("slug"),
+                rs.getString("level"), rs.getInt("number"), text(d, "category"), text(d, "titleTr"),
+                rs.getString("title"), text(d, "learningObjective"), d.get("target"),
+                d.hasNonNull("duration") ? d.path("duration").asDouble() : null, d.get("related"),
+                publishAt == null ? null : publishAt.toInstant(), packageUrl, packageUrl + "reel.json",
+                rs.getString("manifest_sha256"), (Long) rs.getObject("total_bytes"),
+                rs.getObject("updated_at", OffsetDateTime.class).toInstant());
     }
 
     private BookItem mapBook(ResultSet rs, int i) throws SQLException {

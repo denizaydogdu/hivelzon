@@ -4,6 +4,7 @@
 Kullanım:
     tools/content-pipeline/.venv/bin/python tools/content-pipeline/reel_lint.py reeller/A1-R-CIN-01
     tools/content-pipeline/.venv/bin/python tools/content-pipeline/reel_lint.py reeller/* --json
+    tools/content-pipeline/.venv/bin/python tools/content-pipeline/reel_lint.py reeller/* --write-reports  # _build/lint.json
 
 Kurallar: docs/REEL-PAKETI.md (kimlik, seviye/kategori, hedef, altyazı, soru, medya).
 Çıkış kodu: 0 = hata yok (uyarı olabilir), 1 = en az bir hata, 2 = kullanım hatası.
@@ -18,13 +19,18 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from hvpipeline.reels import as_dict, lint_reel  # noqa: E402
+from hvpipeline.reels import as_dict, lint_reel, write_reports  # noqa: E402
 
 
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description="hiVelzon reel-lint (bağımsız konu reeli denetimi)")
     ap.add_argument("reels", nargs="+", help="reel klasörleri (reeller/A1-R-CIN-01)")
     ap.add_argument("--json", action="store_true", help="makinece okunur rapor")
+    ap.add_argument(
+        "--write-reports",
+        action="store_true",
+        help="reel başına _build/lint.json yaz (backend onayı için)",
+    )
     a = ap.parse_args(argv)
     dirs = [Path(p) for p in a.reels if Path(p).is_dir() and not Path(p).name.startswith("_")]
     if not dirs:
@@ -32,6 +38,9 @@ def main(argv: list[str] | None = None) -> int:
         return 2
     reports = [lint_reel(d) for d in sorted(dirs)]
     n_err = sum(len(r.errors) for r in reports)
+    if a.write_reports:
+        written = write_reports(reports)
+        print(f"Lint raporu yazıldı: {len(written)} dosya")
     if a.json:
         print(json.dumps({"reels": [as_dict(r) for r in reports], "errors": n_err}, ensure_ascii=False, indent=2))
         return 1 if n_err else 0

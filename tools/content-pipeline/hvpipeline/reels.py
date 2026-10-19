@@ -389,6 +389,40 @@ def discover_reels(root: Path) -> list[Path]:
     ]
 
 
+def write_reports(reports: list[ReelReport]) -> list[Path]:
+    """Reel başına lint özeti: `<reel>/_build/lint.json` (H-094 P4).
+
+    Backend içe aktarması hata/uyarı sayısını buradan alır; rapor `reel.json`'dan
+    (üretim paketindeyse paket dosyasından) eskiyse yok sayılır. Atomik yazılır:
+    önce `.json.tmp`, sonra yerine taşınır.
+    """
+    import os
+    from datetime import datetime, timezone
+
+    now = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    written: list[Path] = []
+    for r in reports:
+        root = r.path
+        if root.name == "package" and root.parent.name == "_build":
+            root = root.parent.parent
+        doc = {
+            "tool": "reel-lint",
+            "schemaVersion": 1,
+            "contentId": r.reel.id if r.reel else root.name,
+            "level": r.reel.level if r.reel else None,
+            "generatedAt": now,
+            "errors": [str(i) for i in r.errors],
+            "warnings": [str(i) for i in r.warnings],
+        }
+        out = root / "_build" / "lint.json"
+        out.parent.mkdir(parents=True, exist_ok=True)
+        tmp = out.with_suffix(".json.tmp")
+        tmp.write_text(json.dumps(doc, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        os.replace(tmp, out)
+        written.append(out)
+    return written
+
+
 def as_dict(report: ReelReport) -> dict[str, Any]:
     """`--json` çıktısı: makine okunur özet."""
     return {

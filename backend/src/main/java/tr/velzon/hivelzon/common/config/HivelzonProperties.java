@@ -135,6 +135,12 @@ public class HivelzonProperties {
          * Klasör yoksa kitaplar atlanır (bölüm içe aktarması etkilenmez).
          */
         private String booksImportRoot = "../kitaplar";
+        /**
+         * Reel kökü ({@code reeller/}, H-094 P4): reel paketleri {@code <kök>/<id>-<slug>/} altında
+         * {@code _build/package/reel.json} (yoksa kaynak {@code reel.json}) ile okunur.
+         * Klasör yoksa reeller atlanır.
+         */
+        private String reelsImportRoot = "../reeller";
         /** {@code POST /api/v1/admin/catalog/import} açık mı (prod'da kapalı). */
         private boolean devImportEnabled = true;
         /** Katalog cevaplarının istemcide önbellekte kalma süresi (sonra ETag ile yeniden doğrulanır). */
@@ -144,6 +150,8 @@ public class HivelzonProperties {
         public void setImportRoot(String v) { importRoot = v; }
         public String getBooksImportRoot() { return booksImportRoot; }
         public void setBooksImportRoot(String v) { booksImportRoot = v; }
+        public String getReelsImportRoot() { return reelsImportRoot; }
+        public void setReelsImportRoot(String v) { reelsImportRoot = v; }
         public boolean isDevImportEnabled() { return devImportEnabled; }
         public void setDevImportEnabled(boolean v) { devImportEnabled = v; }
         public Duration getCacheMaxAge() { return cacheMaxAge; }

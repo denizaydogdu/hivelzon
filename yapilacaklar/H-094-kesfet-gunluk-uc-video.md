@@ -1,6 +1,6 @@
 # H-094: Keşfet — seviyeye ve ilgiye göre günlük üç kısa video (reel)
 
-- **Durum:** Sürüyor — **P0, P1, P2 ve P3 tamamlandı** (kredisiz, deneme verisi); P4 sırada. Ücretli üretim ve yayın onayı yok.
+- **Durum:** Sürüyor — **P0, P1, P2, P3 ve P4 tamamlandı** (kredisiz, deneme verisi); sırada maliyet onayı ve gerçek üretim. Ücretli üretim ve yayın onayı yok.
 - **Tür:** Uygulama (kod) + içerik boru hattı + içerik pilotu
 - **Faz:** F1 MVP — ürün incelemesi sonrası (2026-10-18)
 - **Bağımlılık:** H-040 (Keşfet), H-089 (kanıt basamakları), H-088 (günlük plan); pilot içerik için ücretli üretim onayı ve `PROMPTS.md`
@@ -19,7 +19,7 @@
 - Yeniden kullanılır: dikey oynatıcı, altyazı/anlam paneli, `ClipControllerCache` (sert sınır 3), Defter, FSRS, içerik lint ve onay yaklaşımı.
 
 ## Pilot ve teslimler (ücretli üretim onayı AYRI)
-- **Üç ayrı teslim:** (1) **kredisiz uygulama** (P0–P3, deneme verisi), (2) **gerçek içerik üretimi**, (3) **kullanıcı pilotu** (H-092; P4 yayın/geri çekme **ön koşulu**).
+- **Üç ayrı teslim:** (1) **kredisiz uygulama ve yayın kapısı** (P0–P4, deneme verisi), (2) **gerçek içerik üretimi**, (3) **kullanıcı pilotu** (H-092; P4 yayın/geri çekme **ön koşulu** — tamamlandı).
 - **Bütçe onaylanmadı.** Üretim öncesi **güncel fiyatla 3 örnek** ve **18 toplam** için **ayrı** maliyet çıkarılır; harcama sonra değerlendirilir.
 - **3 kategori × 2 seviye × 3 video = 18 video** (A1/A2); önce kategori başına 1 örnek. Hareket **zorunlu değil** (önce görsel + Ken Burns; gerekli sahnede ayrı maliyet). Geçmiş 0,5 kr ve 5 kr güncel fiyat sayılmaz; kredi/USD/TL/karakter ayrı raporlanır.
 
@@ -65,4 +65,13 @@ Kendi dalında; `git revert`. İçerik paketleri `/reels/` altında ayrı durur;
   - **Defter bağı:** kayıt `Keşfet: <Kategori> · <başlık>` kaynağıyla, `_reels/<id>/stills/…` görseli ve `_reels/<id>/audio/…` sesiyle saklanır; bölüm etiketi taşımaz; Defter görseli/sesi `resolveMediaUri(contentId, yol)` ile `/reels/<id>/…` adresine çözülür; yeniden açılışta kalıcıdır.
   - **Küçük düzeltme:** anlam paneli açılırken reel izleme süresi de yazılır (`_flushReel`) — ölçüm kaybı olmaz.
   - **Testler:** `test/features/discover/reel_evidence_test.dart` (7). `flutter analyze` temiz, **`flutter test` 1277**, `pytest` 346. Regresyon #1–#3 ayrı commit'lerde.
-  - **Sıradaki:** P4 (backend `ContentType.REEL`, yayın/geri çekme ve yayın süzmesi) — gerçek pilotun ön koşulu. Commit **yok** (kullanıcı onayı bekleniyor).
+  - **Sıradaki:** maliyet tablosu (3 örnek sahne + 18 video, güncel fiyat) → kullanıcı onayı → gerçek üretim (ayrı teslim) → kullanıcı pilotu (H-092). Commit **yok** (kullanıcı onayı bekleniyor).
+- 2026-10-19: **P4 tamamlandı (backend): yayın, onay ve geri çekme.** Gerçek pilotun ön koşulu yerine getirildi.
+  - **Tür ve kimlik:** `ContentType.REEL` (`<SEVİYE>-R-<KAT>-<NN>`; seviye A1–C2, kategori CIN/SPO/BOK), paket yolu `_reels/<id>`. Migration `V15__reel_catalog.sql` tür/seviye/sezon kısıtlarını genişletir (`REEL`: `season` ve `genre` yok, `number` = kimlikteki NN, `descriptor` zorunlu) ve `content_items_reel_ix` indeksini ekler.
+  - **İçe aktarma:** `reeller/<id>[-<slug>]/` — önce `_build/package/reel.json`, yoksa kaynak `reel.json` (not düşülür); `reel.json → status` yok sayılır (durum veritabanında). Kimlik/seviye/kategori/`sourceType`/başlık klasörle doğrulanır; tutarsızsa satır yazılmaz (`SKIPPED`). Bölüm ve kitap kökleri etkilenmez.
+  - **Onay (K-05):** reel bağımsız içerik → kontrol listesinde **kanon maddesi istenmez**; diğer dört madde ve temiz lint (`_build/lint.json`) zorunlu. Onaylanana kadar açık katalog boş döner.
+  - **Yayın süzmesi:** `GET /api/v1/catalog/reels?level=&category=` yalnız `PUBLISHED` ya da (`APPROVED`/`SCHEDULED` ve `publish_at <= şimdi`) sürümü döner; **geri çekilen (WITHDRAWN) içerik görünmez**; seviye/kategori süzgeci ve geçersiz değerlerde `VALIDATION_FAILED` vardır.
+  - **`reel-lint --write-reports`:** reel başına `_build/lint.json` yazar (H-041 biçimi: `tool`, `contentId`, `level`, `errors[]`, `warnings[]`, `generatedAt`); backend raporu okur, `reel.json`'dan eskiyse yok sayar. Deneme paketlerinin raporları yerelde üretildi (`.gitignore`).
+  - **Testler:** `backend/.../catalog/ReelCatalogTest.java` (7: tür/kimlik, içe aktarma + idempotentlik, onayda kanon istenmemesi + yayın + geri çekme, kanon dışı maddeler, lint kapısı, seviye/kategori süzgeci, veritabanı kısıtları) ve `tests/test_reels.py` (`write_reports`). **`pytest` 362**, **backend `mvn test` 153** (hepsi yeşil); P4 Dart'a dokunmadı.
+  - **Ortam notu:** backend testleri colima'da `DOCKER_HOST=unix://$HOME/.colima/default/docker.sock TESTCONTAINERS_RYUK_DISABLED=true` ile koşuyor; entegrasyon testleri gerçek `reeller/` kökünü saymasın diye `hivelzon.catalog.reels-import-root=target/test-no-reels` ayarı eklendi.
+  - **Sıradaki:** maliyet tablosu (3 örnek sahne + 18 video, güncel fiyat) → üretim/yayın için ayrı onay → gerçek üretim → kullanıcı pilotu (H-092). Commit **yok** (kullanıcı onayı bekleniyor).

@@ -51,6 +51,12 @@ public class CatalogImportService {
     private static final Logger log = LoggerFactory.getLogger(CatalogImportService.class);
     private static final Pattern EPISODE_DIR = Pattern.compile("^(A1|A2|B1|B2|C1)-\\d{3}-[a-z0-9-]+$");
     private static final Pattern BOOK_DIR = Pattern.compile("^(A1|A2|B1|B2|C1|C2)-K\\d{2}-[a-z0-9-]+$");
+    /** Reel klasörü: {@code <id>-<slug>} ya da yalnız {@code <id>} (deneme paketleri). */
+    private static final Pattern REEL_DIR = Pattern.compile("^((A1|A2|B1|B2|C1)-R-(CIN|SPO|BOK)-\\d{2})(-[a-z0-9-]+)?$");
+    private static final java.util.Set<String> REEL_CATEGORIES = java.util.Set.of("CIN", "SPO", "BOK");
+    /** Reel kataloğuna giden reel.json alanları (medya ve durum hariç). */
+    private static final List<String> REEL_DESCRIPTOR_FIELDS = List.of("learningObjective", "family",
+            "sourceType", "target", "duration", "related");
     private static final java.util.Set<String> GENRES = java.util.Set.of("mystery", "adventure", "humor",
             "scifi-fantasy", "everyday");
     /** Kitap kataloğuna giden book.json alanları (bölüm/sayfa listesi, anlatım ayarı ve durum hariç). */
@@ -144,6 +150,26 @@ public class CatalogImportService {
                 throw new ApiException(ErrorCode.CATALOG_IMPORT_FAILED);
             }
         }
+        Path reelsRoot = Path.of(properties.getCatalog().getReelsImportRoot()).toAbsolutePath().normalize();
+        if (Files.isDirectory(reelsRoot)) {
+            try (Stream<Path> dirs = Files.list(reelsRoot)) {
+                for (Path dir : dirs.filter(Files::isDirectory).sorted().toList()) {
+                    if (!REEL_DIR.matcher(dir.getFileName().toString()).matches()) {
+                        continue; // _maliyet vb. reel değil
+                    }
+                    ItemResult r = importReel(dir, now);
+                    items.add(r);
+                    switch (r.result()) {
+                        case "CREATED" -> created++;
+                        case "UPDATED" -> updated++;
+                        case "UNCHANGED" -> unchanged++;
+                        default -> skipped++;
+                    }
+                }
+            } catch (IOException e) {
+                throw new ApiException(ErrorCode.CATALOG_IMPORT_FAILED);
+            }
+        }
         List<SeasonResult> seasons = new ArrayList<>();
         Path seasonRoot = root.resolve("_evren").resolve("_build").resolve("season");
         if (Files.isDirectory(seasonRoot)) {
@@ -193,7 +219,8 @@ public class CatalogImportService {
                     && !"DRAFT".equalsIgnoreCase(content.path("status").asString(""))) {
                 notes.add("content.json durumu yok sayıldı: onay durumu veritabanında, editör ekranından değişir");
             }
-            Lint lint = readLint(dir, pkg, contentId, notes);
+            Lint lint = readLint(dir, pkg.resolve("manifest.json"), contentId,
+                    "content_lint.py --write-reports", notes);
             String translationStatus = readTranslationStatus(dir);
 
             String sha = HexFormat.of().formatHex(java.security.MessageDigest.getInstance("SHA-256").digest(manifestBytes));
@@ -245,7 +272,8 @@ public class CatalogImportService {
             if (book.hasNonNull("status") && !"DRAFT".equalsIgnoreCase(book.path("status").asString(""))) {
                 notes.add("book.json durumu yok sayıldı: onay durumu veritabanında, editör ekranından değişir");
             }
-            Lint lint = readLint(dir, pkg, contentId, notes);
+            Lint lint = readLint(dir, pkg.resolve("manifest.json"), contentId,
+                    "content_lint.py --write-reports", notes);
             String translationStatus = readTranslationStatus(dir);
 
             ObjectNode descriptor = json.createObjectNode();
@@ -268,6 +296,72 @@ public class CatalogImportService {
                 throw dae;
             }
             log.warn("Kitap paketi okunamadı: {} ({})", folderId, e.getClass().getSimpleName());
+            return new ItemResult(folderId, null, "SKIPPED", null, null, null, List.of("paket dosyaları okunamadı"));
+        }
+    }
+
+    /**
+     * Reel (H-094 P4): {@code <reeller>/<id>-<slug>/} altında üretim paketi
+     * {@code _build/package/reel.json} (yoksa kaynak {@code reel.json}); medya pakette kalır.
+     * {@code reel.json → status} yok sayılır (durum veritabanında). Reel bölüme bağlı değildir:
+     * kanon maddesi istenmez, kategori kimlikten ve dosyadan doğrulanır.
+     */
+    private ItemResult importReel(Path dir, Instant now) {
+        List<String> notes = new ArrayList<>();
+        var m = REEL_DIR.matcher(dir.getFileName().toString());
+        String folderId = m.matches() ? m.group(1) : dir.getFileName().toString();
+        try {
+            Path pkg = dir.resolve("_build").resolve("package");
+            Path reelFile = Files.isRegularFile(pkg.resolve("reel.json")) ? pkg.resolve("reel.json")
+                    : dir.resolve("reel.json");
+            if (!Files.isRegularFile(reelFile)) {
+                return new ItemResult(folderId, null, "SKIPPED", null, null, null, List.of("reel.json yok"));
+            }
+            if (!reelFile.startsWith(pkg)) {
+                notes.add("üretim paketi yok: kaynak reel.json kullanıldı (medya paketlenmemiş)");
+            }
+            byte[] bytes = Files.readAllBytes(reelFile);
+            JsonNode reel = json.readTree(bytes);
+            String contentId = reel.path("id").asString(null);
+            int version = reel.path("contentVersion").asInt(0);
+            String level = reel.path("level").asString("");
+            String category = reel.path("category").asString("");
+            String titleTr = reel.path("titleTr").asString("");
+            String sourceType = reel.path("sourceType").asString("standalone");
+            if (contentId == null || !contentId.equals(folderId) || version < 1
+                    || !level.matches("A1|A2|B1|B2|C1|C2") || !contentId.startsWith(level + "-R-")
+                    || !REEL_CATEGORIES.contains(category) || !contentId.contains("-R-" + category + "-")
+                    || !"standalone".equals(sourceType) || titleTr.isBlank()) {
+                return new ItemResult(folderId, version > 0 ? version : null, "SKIPPED", null, null, null,
+                        List.of("reel.json alanları eksik ya da klasörle tutarsız "
+                                + "(id/level/category/sourceType/titleTr)"));
+            }
+            if (reel.hasNonNull("status") && !"DRAFT".equalsIgnoreCase(reel.path("status").asString(""))) {
+                notes.add("reel.json durumu yok sayıldı: onay durumu veritabanında, editör ekranından değişir");
+            }
+            Lint lint = readLint(dir, reelFile, contentId, "reel_lint.py --write-reports", notes);
+            String translationStatus = readTranslationStatus(dir);
+
+            ObjectNode descriptor = json.createObjectNode();
+            descriptor.put("category", category);
+            descriptor.put("titleTr", titleTr);
+            descriptor.put("level", level);
+            for (String field : REEL_DESCRIPTOR_FIELDS) {
+                if (reel.has(field)) {
+                    descriptor.set(field, reel.get(field));
+                }
+            }
+            String sha = HexFormat.of().formatHex(
+                    java.security.MessageDigest.getInstance("SHA-256").digest(bytes));
+            int number = Integer.parseInt(contentId.substring(contentId.length() - 2));
+            return upsert(new Row(ContentType.REEL, contentId, version, reel.path("slug").asString(null), null,
+                    number, level, titleTr, null, json.writeValueAsString(descriptor), sha, null, null, null, lint,
+                    translationStatus), notes, now);
+        } catch (IOException | RuntimeException | java.security.NoSuchAlgorithmException e) {
+            if (e instanceof org.springframework.dao.DataAccessException dae) {
+                throw dae;
+            }
+            log.warn("Reel paketi okunamadı: {} ({})", folderId, e.getClass().getSimpleName());
             return new ItemResult(folderId, null, "SKIPPED", null, null, null, List.of("paket dosyaları okunamadı"));
         }
     }
@@ -357,17 +451,17 @@ public class CatalogImportService {
      * ({@code episodes[]} içinden bu bölüm). Rapor yoksa, okunamıyorsa ya da paketten eskiyse {@code null}: onay
      * verilemez. Sunucu Python çalıştırmaz; rapor içerik hattında üretilir.
      */
-    private Lint readLint(Path dir, Path pkg, String contentId, List<String> notes) {
+    private Lint readLint(Path dir, Path packageFile, String contentId, String tool, List<String> notes) {
         Path file = dir.resolve("_build").resolve("lint.json");
         if (!Files.isRegularFile(file)) {
-            notes.add("lint raporu yok (_build/lint.json): content_lint.py --write-reports çalıştırılmalı");
+            notes.add("lint raporu yok (_build/lint.json): " + tool + " çalıştırılmalı");
             return null;
         }
         try {
             Instant lintTime = Files.getLastModifiedTime(file).toInstant();
-            Instant packageTime = Files.getLastModifiedTime(pkg.resolve("manifest.json")).toInstant();
+            Instant packageTime = Files.getLastModifiedTime(packageFile).toInstant();
             if (lintTime.isBefore(packageTime)) {
-                notes.add("lint raporu paketten eski: content-lint yeniden çalıştırılmalı");
+                notes.add("lint raporu paketten eski: " + tool + " yeniden çalıştırılmalı");
                 return null;
             }
             JsonNode doc = json.readTree(Files.readAllBytes(file));
@@ -381,6 +475,13 @@ public class CatalogImportService {
             } else if (doc.has("books")) {
                 for (JsonNode e : doc.path("books")) {
                     if (contentId.equals(e.path("bookId").asString(null))) {
+                        entry = e;
+                    }
+                }
+            } else if (doc.has("reels")) {
+                for (JsonNode e : doc.path("reels")) {
+                    if (contentId.equals(e.path("id").asString(null))
+                            || contentId.equals(e.path("contentId").asString(null))) {
                         entry = e;
                     }
                 }

@@ -95,6 +95,8 @@ hivelzon:
     import-root: ${HIVELZON_CATALOG_IMPORT_ROOT:../icerik}
     # Kitaplık paketleri (H-070): kitaplar/<id>-<slug>/_build/package/. Klasör yoksa kitaplar atlanır.
     books-import-root: ${HIVELZON_CATALOG_BOOKS_IMPORT_ROOT:../kitaplar}
+    # Bağımsız reeller (H-094 P4): reeller/<id>-<slug>/ (_build/package/reel.json ya da kaynak reel.json).
+    reels-import-root: ${HIVELZON_CATALOG_REELS_IMPORT_ROOT:../reeller}
     dev-import-enabled: ${HIVELZON_CATALOG_DEV_IMPORT:true}
     cache-max-age: 60s
   media:

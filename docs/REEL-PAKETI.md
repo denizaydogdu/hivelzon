@@ -68,7 +68,14 @@ taşır; `resolveMediaUri` bu öneki tanıyıp reel paketine yönlendirir
 ```bash
 tools/content-pipeline/.venv/bin/python tools/content-pipeline/reel_lint.py reeller/A1-R-CIN-01
 tools/content-pipeline/.venv/bin/python tools/content-pipeline/reel_lint.py reeller/* --json
+tools/content-pipeline/.venv/bin/python tools/content-pipeline/reel_lint.py reeller/* --write-reports
 ```
+
+`--write-reports`, reel başına `<reel>/_build/lint.json` yazar (bölümlerdeki
+`content_lint.py`/`book_lint.py` gibi, H-041): `tool`, `contentId`, `level`,
+`errors[]`, `warnings[]`, `generatedAt`. Backend onayı bu raporu okur; rapor
+`reel.json`'dan (üretim paketindeyse paket dosyasından) eskiyse yok sayılır.
+Rapor **hata sayısı 0** değilse reel onaylanamaz (durum `DRAFT`'ta kalır).
 
 Denetimler: kimlik kalıbı ve klasör uyumu; seviye/kategori/`sourceType`/`status`;
 hedef satırının altyazıda bulunması; satır kimliklerinin tekilliği ve zaman
@@ -118,8 +125,17 @@ Backend `VideoHostingPort` yolu `packages/_reels/<id>/<yol>` aynı pakete gider
   (H-093); `ownUse` yalnız Defter kartının denetlenmiş üretiminden gelir.
   Defter görseli/sesi `resolveMediaUri(contentId, …)` ile reel paketine
   çözülür.
-- **P4:** backend `ContentType.REEL`, onay/geri çekme ve yayın süzmesi; gerçek
-  kullanıcı pilotunun ön koşulu.
+- **P4 (backend):** `content_items` tablosunda `content_type = 'REEL'`; kimlik
+  `<SEVİYE>-R-<KAT>-<NN>` (A1–C2, kategori CIN/SPO/BOK), `season` ve `genre`
+  yok, `number` kimlikteki NN, `descriptor` zorunlu (kategori, başlık, hedef,
+  süre, `related`). Paket yolu `_reels/<id>` (`VideoHostingPort`). İçe aktarma
+  `reeller/<id>[-<slug>]/` altında önce `_build/package/reel.json`, yoksa kaynak
+  `reel.json`'ı okur; `reel.json → status` yok sayılır (durum veritabanında).
+  Onay kontrol listesinde **kanon maddesi istenmez** (reel bağımsız içeriktir);
+  diğer dört madde ve temiz lint zorunludur. Açık uç `GET /api/v1/catalog/reels`
+  (`?level=`, `?category=`) yalnız **yayımlanmış ya da zamanı gelmiş onaylı**
+  sürümü döner; **geri çekilen içerik görünmez**. Testler:
+  `backend/.../catalog/ReelCatalogTest.java` (7) + Python `write_reports` (2).
 - **Simülatör denemesi için yerel demo medyası:** `reeller/<id>/` altına
   ücretsiz, yerel üretilmiş yer tutucular (mp4, poster, `stills/`, `audio/`)
   konabilir; hepsi `.gitignore` dışındadır ve **onaylı üretimin yerine geçmez**
