@@ -136,6 +136,10 @@ Backend `VideoHostingPort` yolu `packages/_reels/<id>/<yol>` aynı pakete gider
   (`?level=`, `?category=`) yalnız **yayımlanmış ya da zamanı gelmiş onaylı**
   sürümü döner; **geri çekilen içerik görünmez**. Testler:
   `backend/.../catalog/ReelCatalogTest.java` (7) + Python `write_reports` (2).
+- **Maliyet (2026-10-19):** güncel fiyat tablosu `docs/REEL-MALIYET-2026-10-19.md`
+  içindedir (`higgsfield generate cost` ile ölçüldü; geçmiş 0,5 kr / 5 kr güncel
+  sayılmaz). Önerilen yol: 3 örnek ≈ **17 kr** (senaryo A) → onay → 18 video
+  ≈ **55 kr** (senaryo A) ya da ≈ **266 kr** (2k high, senaryo B). Bakiye 298,06 kr.
 - **Simülatör denemesi için yerel demo medyası:** `reeller/<id>/` altına
   ücretsiz, yerel üretilmiş yer tutucular (mp4, poster, `stills/`, `audio/`)
   konabilir; hepsi `.gitignore` dışındadır ve **onaylı üretimin yerine geçmez**
