@@ -173,20 +173,29 @@ git dışında (`reeller/**/_raw/`, `clips/`, `_build/`).
   (job kimliği, kredi, sha, tarih). İstem değişirse sha değişir, yeniden üretim ayrı görünür.
 - TTS **ortak defter** kullanır: `kitaplar/_maliyet/elevenlabs-karakter.json` (aylık tavan
   `HIVELZON_TTS_MONTHLY_CHAR_CAP`; tavan yoksa üretim kapalıdır).
+- **Ses sığması:** bir cue'nun sesi kendi çekim penceresine (`len − aoff`) sığmalıdır; sığmazsa kurgu
+  sesi **keser** → `reel-lint` hatası `reel.audio.fit`. Çözüm: son kareyi uzatmak (metni kısaltmak değil).
+- **Cue hizası:** çekim süresi değişince elle yazılan alt yazı zamanları kayar. `build_reel.py` cue
+  `start/end` ve kelime aralıklarını **gerçek kurgudan** yeniden hesaplar (çekim başı + `aoff`, süre
+  `timing.json`'dan; kelimeler yeni pencereye ölçeklenir) ve paket `reel.json`'a yazar. Kaynakta eski
+  zaman → `reel.cue.window` **uyarısı**; kurulmuş pakette → **hata**.
+- Süre de pakette güncellenir (`reel.json → duration`), böylece uygulamanın %90 tamamlanma eşiği
+  videonun gerçek süresiyle uyuşur.
 
 **Paket (`_build/package/`)**
 ```
-reel.json          # kaynağın kopyası; image/audio pakete göre güncellenir
+reel.json          # kaynağın kopyası + güncel duration ve yeniden hizalanmış cue'lar
 <id>.mp4           # 720×1280, H.264 High + AAC, faststart (uygulamanın oynattığı sürüm)
 <id>.webp          # afiş (ilk kare)
 stills/<sahne>.webp# Defter kartı ve önizleme durağan görseli (hedef cue'nun karesi)
 audio/<cue>.m4a    # hedef ifadenin sesi (TTS varsa); Defter'e bu gider
-production.json    # üretim izi: job kimlikleri, kredi, sha, aiLabel, kurgu planı
+production.json    # üretim izi: job kimlikleri, kredi, sha, aiLabel, kurgu planı, cuesRetimed
 ```
 `production.json` kullanıcıya gösterilmez; `reel.json` şemasını değiştirmez (içe aktarma bilinmeyen
 dosyaları yok sayar). **Görüntüye yazı gömülmez** (alt Yazı uygulamada; AI notu `aiLabel` alanında —
 klip paketleriyle aynı yaklaşım, H-040).
 
-**3 örnek (2026-10-19, A1: CIN/SPO/BOK):** 13 görsel (6,50 kr) + 2 klip (10,00 kr) = **16,50 kr**;
-ses (220 karakter) anahtar bekliyor. Ayrıntı ve job kimlikleri: `reeller/PROMPTS.md`;
+**3 örnek (2026-10-19/20, A1: CIN/SPO/BOK):** 13 görsel (6,50 kr) + 2 klip (10,00 kr) +
+TTS 220 karakter (defter 9.851/10.000) = **16,50 kr**; süreler **12,6 / 11,0 / 11,0 sn** (ses sığsın
+diye CIN ve BOK'un son karesi uzatıldı). Ayrıntı ve job kimlikleri: `reeller/PROMPTS.md`;
 fiyat tablosu: `docs/REEL-MALIYET-2026-10-19.md`.

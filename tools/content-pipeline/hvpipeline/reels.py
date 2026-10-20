@@ -289,6 +289,93 @@ def _check_media(root: Path, reel: Reel, issues: list[Issue]) -> None:
             issues.append(_warn("reel.media", f"{label} dosyası yok: {rel}"))
 
 
+def _check_audio_fit(root: Path, issues: list[Issue]) -> None:
+    """Ses satırı kare süresine sığmıyorsa kurguda **kesilir** → hata (H-094 §8).
+
+    Yalnız üretim tarafında anlamlıdır: `shots.json` ve `_raw/tts/timing.json`
+    varsa denetlenir; ses henüz üretilmemişse (cue zamanlamada yoksa) atlanır.
+    """
+    shots_file = root / "shots.json"
+    timing_file = root / "_raw" / "tts" / "timing.json"
+    if not shots_file.is_file() or not timing_file.is_file():
+        return
+    try:
+        shots = json.loads(shots_file.read_text(encoding="utf-8"))
+        timing = json.loads(timing_file.read_text(encoding="utf-8"))
+    except (OSError, ValueError) as exc:
+        issues.append(_err("reel.audio.fit", f"zamanlama okunamadı: {exc}"))
+        return
+    if not isinstance(timing, dict):
+        return
+    from .media import AOFF as default_aoff
+
+    for seg in shots.get("timeline") or []:
+        cue = (seg or {}).get("audio")
+        if not cue or cue not in timing:
+            continue
+        free = float(seg.get("len", 0)) - float(seg.get("aoff", default_aoff))
+        length = float(timing[cue])
+        if length > free + 1e-6:
+            issues.append(
+                _err(
+                    "reel.audio.fit",
+                    f"{seg.get('shot')}: {cue} {length:.2f} sn, kare {free:.2f} sn → ses kesilir",
+                )
+            )
+
+
+def _check_cue_windows(root: Path, doc: dict, issues: list[Issue], built: bool) -> None:
+    """Alt yazı (cue) zamanı kurgudaki çekimle aynı yerde mi? (H-094 §8)
+
+    Çekim süresi değişince elle yazılan cue zamanları kayar; alt yazı sesten ayrı
+    düşer. Kaynak `reel.json` elle yazılır → **uyarı** (pakette `build_reel.py`
+    yeniden hizalar). Kurulmuş pakette ise hiza zorunlu → **hata**.
+    """
+    shots_file = root / "shots.json"
+    if not shots_file.is_file():
+        return
+    try:
+        shots = json.loads(shots_file.read_text(encoding="utf-8"))
+    except (OSError, ValueError) as exc:
+        issues.append(_err("reel.cue.window", f"shots.json okunamadı: {exc}"))
+        return
+    from .media import AOFF as default_aoff
+    from .media import XFADE
+
+    timeline = shots.get("timeline") or []
+    starts: list[float] = []
+    acc = 0.0
+    for i, seg in enumerate(timeline):
+        if i:
+            acc -= XFADE
+        starts.append(acc)
+        acc += float(seg.get("len", 0))
+    by_cue = {seg.get("audio"): i for i, seg in enumerate(timeline) if seg.get("audio")}
+    for cue in doc.get("cues", []) or []:
+        i = by_cue.get(cue.get("id"))
+        if i is None:
+            continue
+        shot = timeline[i]["shot"]
+        expected = starts[i] + float(timeline[i].get("aoff", default_aoff))
+        start = float(cue.get("start", -1))
+        end = float(cue.get("end", 0))
+        add = _err if built else _warn
+        if abs(start - expected) > 0.1:
+            issues.append(
+                add(
+                    "reel.cue.window",
+                    f"{cue.get('id')}: alt yazı {start:.2f} sn'de, ses {expected:.2f} sn'de başlıyor ({shot})",
+                )
+            )
+        elif end > starts[i] + float(timeline[i].get("len", 0)) + 0.05:
+            issues.append(
+                add(
+                    "reel.cue.window",
+                    f"{cue.get('id')}: alt yazı {shot} çekiminin sonunu aşıyor ({end:.2f} sn)",
+                )
+            )
+
+
 def lint_reel(root: Path) -> ReelReport:
     """`reel.json` paketini denetler (kimlik, kategori, hedef, soru, medya)."""
     file = reel_file(root)
@@ -370,6 +457,13 @@ def lint_reel(root: Path) -> ReelReport:
     _check_practice(doc, report.issues)
     _check_related(doc, report.issues)
     _check_media(report.path, reel, report.issues)
+    source = (
+        report.path.parent.parent
+        if report.path.name == "package" and report.path.parent.name == "_build"
+        else report.path
+    )
+    _check_audio_fit(source, report.issues)
+    _check_cue_windows(source, doc, report.issues, built=report.path != source)
     return report
 
 

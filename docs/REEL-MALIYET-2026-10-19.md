@@ -152,13 +152,17 @@ Kullanıcı 3 örnek için bütçe onayı verdi (2026-10-19). Ölçülen birim f
 | Görsel — `gpt_image_2_5` 9:16 2k `low` | 12 | 0,50 | 6,00 |
 | Görsel — CIN k3 yeniden üretim (hatalı el) | 1 | 0,50 | 0,50 |
 | Hareket — `seedance_2_0_mini` 9:16 720p 5 sn (sessiz) | 2 | 5,00 | 10,00 |
-| Ses — ElevenLabs | 0 | — | 0,00 |
+| Ses — ElevenLabs (Sarah, `eleven_v3`, hız 0.9) | 220 karakter | — | 0,00* |
 | **Toplam** | | | **16,50** |
+
+\* ElevenLabs karakter aboneliği içinde (aylık ortak defter 9.631 → **9.851 / 10.000**); Higgsfield kredisi harcanmadı.
 
 - Tahmin 17 kr idi; **16,50 kr** harcandı. Bakiye **298,06 → 281,56** (`higgsfield account status`).
 - Plandan iki küçük sapma (toplam üst sınır korunarak): görseller **2k low** (0,50 kr; 1k medium ile
   aynı fiyat, daha yüksek çözünürlük), hareket **2 klip × 720p** (480p 720×1280'e yukarı ölçeklenirdi).
   Kitap reeli yalnız Ken Burns (hareket zorunlu değil kararı).
-- **Ses henüz yok** (`ELEVENLABS_API_KEY` tanımlı değil): 220 karakter bekliyor, tahmini maliyet
-  ihmal edilebilir (ücretsiz kota içinde).
+- **Ses** (2026-10-20): 9 satır, **220 karakter** (CIN 72 · SPO 77 · BOK 71), tek anlatıcı **Sarah**
+  (`EXAVITQu4vr4xnSDxMaL`, `eleven_v3`, hız 0.9). Ortak defter 9.631 → **9.851 / 10.000**.
+- **Süreler:** ses sığsın diye CIN son karesi 2,4 → 3,0 sn, BOK 2,3 → 3,3 sn (kesilen ses yok);
+  paket süreleri **12,6 / 11,0 / 11,0 sn**, yükseklik ≈ −15,8 LUFS, tepe −5…−6 dBFS.
 - 18 video için **harcama onayı yok**; güncel tahmin senaryo A ile ≈55 kr.

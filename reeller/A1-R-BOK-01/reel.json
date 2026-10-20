@@ -9,7 +9,7 @@
  "titleTr": "Kütüphanede kitap seçimi",
  "learningObjective": "Bir kitabı sorup değerlendirmek",
  "family": "FAM-BOK-FIRSTBOOK",
- "duration": 10.0,
+ "duration": 11.0,
  "video": "A1-R-BOK-01.mp4",
  "poster": "A1-R-BOK-01.webp",
  "image": "stills/s02.webp",
@@ -46,8 +46,8 @@
  "cues": [
   {
    "id": "s02-01",
-   "start": 0.6,
-   "end": 3.0,
+   "start": 0.5,
+   "end": 2.58,
    "speaker": "LENA",
    "text": "Excuse me. I need a book.",
    "tr": "Affedersiniz. Bir kitaba ihtiyacım var.",
@@ -55,44 +55,44 @@
    "words": [
     {
      "w": "Excuse",
-     "start": 0.6,
-     "end": 1.0,
+     "start": 0.5,
+     "end": 0.85,
      "gloss": "affedersiniz"
     },
     {
      "w": "me.",
-     "start": 1.0,
-     "end": 1.3,
+     "start": 0.85,
+     "end": 1.11,
      "gloss": "beni"
     },
     {
      "w": "I",
-     "start": 1.8,
-     "end": 1.9
+     "start": 1.54,
+     "end": 1.63
     },
     {
      "w": "need",
-     "start": 1.9,
-     "end": 2.3,
+     "start": 1.63,
+     "end": 1.97,
      "gloss": "ihtiyacım var"
     },
     {
      "w": "a",
-     "start": 2.3,
-     "end": 2.4
+     "start": 1.97,
+     "end": 2.06
     },
     {
      "w": "book.",
-     "start": 2.4,
-     "end": 2.9,
+     "start": 2.06,
+     "end": 2.49,
      "gloss": "kitap"
     }
    ]
   },
   {
    "id": "s02-02",
-   "start": 3.8,
-   "end": 5.6,
+   "start": 3.2,
+   "end": 4.8,
    "speaker": "LENA",
    "text": "Is this book good?",
    "tr": "Bu kitap güzel mi?",
@@ -100,33 +100,33 @@
    "words": [
     {
      "w": "Is",
-     "start": 3.8,
-     "end": 3.95
+     "start": 3.2,
+     "end": 3.33
     },
     {
      "w": "this",
-     "start": 3.95,
-     "end": 4.25,
+     "start": 3.33,
+     "end": 3.6,
      "gloss": "bu"
     },
     {
      "w": "book",
-     "start": 4.25,
-     "end": 4.7,
+     "start": 3.6,
+     "end": 4.0,
      "gloss": "kitap"
     },
     {
      "w": "good?",
-     "start": 5.0,
-     "end": 5.4,
+     "start": 4.27,
+     "end": 4.62,
      "gloss": "güzel"
     }
    ]
   },
   {
    "id": "s02-03",
-   "start": 6.4,
-   "end": 8.6,
+   "start": 8.2,
+   "end": 10.68,
    "speaker": "LIBRARIAN",
    "text": "Yes, it is. And it is short.",
    "tr": "Evet, güzel. Üstelik kısa.",
@@ -134,40 +134,40 @@
    "words": [
     {
      "w": "Yes,",
-     "start": 6.4,
-     "end": 6.7,
+     "start": 8.2,
+     "end": 8.54,
      "gloss": "evet"
     },
     {
      "w": "it",
-     "start": 6.7,
-     "end": 6.85
+     "start": 8.54,
+     "end": 8.71
     },
     {
      "w": "is.",
-     "start": 6.85,
-     "end": 7.1
+     "start": 8.71,
+     "end": 8.99
     },
     {
      "w": "And",
-     "start": 7.4,
-     "end": 7.6,
+     "start": 9.33,
+     "end": 9.55,
      "gloss": "ve"
     },
     {
      "w": "it",
-     "start": 7.6,
-     "end": 7.75
+     "start": 9.55,
+     "end": 9.72
     },
     {
      "w": "is",
-     "start": 7.75,
-     "end": 7.9
+     "start": 9.72,
+     "end": 9.89
     },
     {
      "w": "short.",
-     "start": 7.9,
-     "end": 8.3,
+     "start": 9.89,
+     "end": 10.34,
      "gloss": "kısa"
     }
    ]

@@ -309,3 +309,94 @@ def test_write_reports_marks_errors(tmp_path):
     written = write_reports([lint_reel(d)])
     report = json.loads(written[0].read_text(encoding="utf-8"))
     assert any("seviyesi" in e for e in report["errors"])
+
+
+# --- ses sığma denetimi (H-094 §8) ---------------------------------------------------------------
+
+
+def _with_audio(tmp_path: Path, *, shot_len: float, cue_len: float, aoff: float = 0.5):
+    """shots.json + _raw/tts/timing.json ile üretim tarafı denetimi."""
+    d = tmp_path / "A1-R-CIN-01"
+    d.mkdir(parents=True, exist_ok=True)
+    (d / "reel.json").write_text(json.dumps(_doc(), ensure_ascii=False), encoding="utf-8")
+    (d / "shots.json").write_text(
+        json.dumps(
+            {
+                "timeline": [
+                    {"shot": "k1", "len": shot_len, "audio": "c1", "aoff": aoff},
+                ]
+            }
+        ),
+        encoding="utf-8",
+    )
+    tts = d / "_raw" / "tts"
+    tts.mkdir(parents=True)
+    (tts / "timing.json").write_text(json.dumps({"c1": cue_len}), encoding="utf-8")
+    return lint_reel(d)
+
+
+def test_lint_flags_cue_cut_by_shot_length(tmp_path):
+    """Ses kare süresinden uzunsa kurguda kesilir: sessiz kırpma hata olmalı."""
+    report = _with_audio(tmp_path, shot_len=2.0, cue_len=2.4)
+    assert "reel.audio.fit" in _codes(report)
+    msg = next(i.message for i in report.errors if i.code == "reel.audio.fit")
+    assert "ses kesilir" in msg and "c1 2.40 sn" in msg
+
+
+def test_lint_accepts_cue_that_fits_shot(tmp_path):
+    report = _with_audio(tmp_path, shot_len=3.0, cue_len=2.4)
+    assert "reel.audio.fit" not in _codes(report)
+
+
+def test_lint_skips_audio_fit_when_no_timing(tmp_path):
+    """Ses henüz üretilmeden (timing.json yok) denetim susar; uyarı da üretmez."""
+    d = tmp_path / "A1-R-CIN-01"
+    d.mkdir()
+    (d / "reel.json").write_text(json.dumps(_doc(), ensure_ascii=False), encoding="utf-8")
+    (d / "shots.json").write_text(
+        json.dumps({"timeline": [{"shot": "k1", "len": 1.0, "audio": "c1"}]}),
+        encoding="utf-8",
+    )
+    report = lint_reel(d)
+    assert "reel.audio.fit" not in {i.code for i in report.errors + report.warnings}
+
+
+# --- alt yazı hizası (H-094 §8) -------------------------------------------------------------------
+
+
+def _with_cues(tmp_path: Path, cue_start: float, shot_len: float = 3.0, aoff: float = 0.5):
+    d = tmp_path / "A1-R-CIN-01"
+    d.mkdir(parents=True, exist_ok=True)
+    doc = _doc()
+    doc["cues"][0]["start"] = cue_start
+    doc["cues"][0]["end"] = cue_start + 1.0
+    (d / "reel.json").write_text(json.dumps(doc, ensure_ascii=False), encoding="utf-8")
+    (d / "shots.json").write_text(
+        json.dumps({"timeline": [{"shot": "k1", "len": shot_len, "audio": "c1", "aoff": aoff}]}),
+        encoding="utf-8",
+    )
+    return lint_reel(d)
+
+
+def test_lint_warns_stale_cue_time_in_source(tmp_path):
+    """Kaynak reel.json elle yazılır: çekim 0,5 sn'de konuşurken 1,0 sn → uyarı."""
+    report = _with_cues(tmp_path, cue_start=1.0)
+    codes = {i.code for i in report.warnings}
+    assert "reel.cue.window" in codes
+    assert "reel.cue.window" not in _codes(report)
+
+
+def test_lint_accepts_cue_at_shot_audio_offset(tmp_path):
+    report = _with_cues(tmp_path, cue_start=0.5)
+    assert "reel.cue.window" not in {i.code for i in report.errors + report.warnings}
+
+
+def test_lint_rejects_stale_cue_time_in_built_package(tmp_path):
+    """Kurulmuş pakette hiza zorunlu: build_reel yeniden hizalar, eski paket geçmez."""
+    _with_cues(tmp_path, cue_start=1.0)
+    src = tmp_path / "A1-R-CIN-01"
+    pkg = src / "_build" / "package"
+    pkg.mkdir(parents=True)
+    (pkg / "reel.json").write_text((src / "reel.json").read_text(encoding="utf-8"), encoding="utf-8")
+    report = lint_reel(src)
+    assert "reel.cue.window" in _codes(report)

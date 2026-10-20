@@ -46,6 +46,62 @@ def _ledger(root: Path, name: str) -> list[dict]:
     return json.loads(path.read_text(encoding="utf-8")) if path.is_file() else []
 
 
+def _timing(raw: Path) -> dict[str, float]:
+    """`_raw/tts/timing.json`: cue → gerçek ses süresi (sn)."""
+    path = raw / "tts" / "timing.json"
+    if not path.is_file():
+        return {}
+    try:
+        doc = json.loads(path.read_text(encoding="utf-8"))
+    except ValueError:
+        return {}
+    return {k: float(v) for k, v in doc.items() if isinstance(v, (int, float))}
+
+
+def _shot_starts(plan: list[dict]) -> list[float]:
+    """Kurgudaki gerçek çekim başlangıçları (xfade örtüşmesi düşülerek)."""
+    starts: list[float] = []
+    acc = 0.0
+    for i, p in enumerate(plan):
+        if i:
+            acc -= media.XFADE
+        starts.append(acc)
+        acc += float(p["len"])
+    return starts
+
+
+def _retime_cues(doc: dict, plan: list[dict], timing: dict[str, float], total: float) -> int:
+    """Cue ve kelime zamanlarını **gerçek kurgudan** yeniden hesaplar (H-094 §8).
+
+    Elle yazılan `reel.json` süreleri çekim değişince kayar (alt yazı sesten ayrı
+    düşer). Ses satırı kendi çekiminde, `aoff` kadar sonra başlar; süre
+    `timing.json`'dan alınır, kelime aralıkları yeni pencereye ölçeklenir.
+    """
+    starts = _shot_starts(plan)
+    by_cue = {p["audio"]: i for i, p in enumerate(plan) if p.get("audio")}
+    changed = 0
+    for cue in doc.get("cues", []) or []:
+        i = by_cue.get(cue.get("id"))
+        if i is None:
+            continue
+        shot_start = starts[i]
+        shot_end = min(shot_start + float(plan[i]["len"]), total)
+        new_start = round(shot_start + float(plan[i].get("aoff", media.AOFF)), 2)
+        dur = timing.get(cue["id"])
+        new_end = round(min(new_start + dur, shot_end) if dur else shot_end, 2)
+        old_start = float(cue.get("start", new_start))
+        old_end = float(cue.get("end", old_start + (new_end - new_start)))
+        if abs(new_start - old_start) > 0.01:
+            changed += 1
+        cue["start"], cue["end"] = new_start, new_end
+        span = old_end - old_start
+        if span > 0:
+            for w in cue.get("words", []) or []:
+                w["start"] = round(new_start + (float(w["start"]) - old_start) * (new_end - new_start) / span, 2)
+                w["end"] = round(new_start + (float(w["end"]) - old_start) * (new_end - new_start) / span, 2)
+    return changed
+
+
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description="Reel montajı (H-094)")
     ap.add_argument("reel", help="reel klasörü (reeller/A1-R-CIN-01)")
@@ -101,8 +157,11 @@ def main(argv: list[str] | None = None) -> int:
         media.render_shot(shot, out, None)
         movs.append(out)
         lens.append(length)
-        plan.append({"shot": name, "len": length, "clip": use_clip, "audio": audio_cue,
-                     "source": str(src.relative_to(root))})
+        entry = {"shot": name, "len": length, "clip": use_clip, "audio": audio_cue,
+                 "source": str(src.relative_to(root))}
+        if shot.get("audio"):
+            entry["aoff"] = shot["aoff"]
+        plan.append(entry)
 
     # 2. Birleştirme (xfade)
     joined = media.join_shots(movs, lens, build / "joined.mov")
@@ -142,6 +201,8 @@ def main(argv: list[str] | None = None) -> int:
     if audio_out:
         doc["audio"] = audio_out
     doc["image"] = f"stills/{scene}.webp"
+    doc["duration"] = round(total, 2)
+    retimed = _retime_cues(doc, plan, _timing(raw), total)
     (pkg / "reel.json").write_text(json.dumps(doc, ensure_ascii=False, indent=1) + "\n",
                                    encoding="utf-8")
 
@@ -161,6 +222,7 @@ def main(argv: list[str] | None = None) -> int:
         "video": {"file": reel["video"], "width": media.R720_W, "height": media.R720_H,
                   "seconds": round(total, 2), "master": "1080×1920 (build/master.mp4)"},
         "hasAudio": has_audio,
+        "cuesRetimed": retimed,
         "timeline": plan,
         "credits": credits,
         "jobs": {"images": img_ledger, "clips": clip_ledger},
@@ -171,13 +233,14 @@ def main(argv: list[str] | None = None) -> int:
 
     size = video.stat().st_size / 1e6
     print(f"{reel['id']}: {total:.2f} sn · {media.R720_W}×{media.R720_H} · {size:.1f} MB · "
-          f"ses={'var' if has_audio else 'YOK (sessiz önizleme)'} · kare={len(movs)}")
+          f"ses={'var' if has_audio else 'YOK (sessiz önizleme)'} · kare={len(movs)}"
+          + (f" · cue hizası güncellendi: {retimed}" if retimed else ""))
     print(f"  paket: {pkg}")
     print(f"  kredi: görsel {credits['images']} + hareket {credits['clips']} = {credits['total']} kr")
     for p in plan:
         print(f"    {p['shot']:4} {p['len']:4.1f} sn  {'klip' if p['clip'] else 'kare':4}  {p['source']}")
-    if abs(total - float(reel.get("duration", total))) > 0.4:
-        print(f"  uyarı: süre {total:.2f} sn, reel.json'da {reel.get('duration')} sn")
+    if abs(total - float(reel.get("duration", total))) > 0.05:
+        print(f"  not: süre {total:.2f} sn; kaynak reel.json'da {reel.get('duration')} sn (pakette güncel)")
     if not has_audio:
         print("  not: konuşma sesi yok — ElevenLabs anahtarı gelince `_raw/tts/<cue>.m4a` konur ve "
               "`--force` ile yeniden kurulur.")

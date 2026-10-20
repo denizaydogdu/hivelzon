@@ -133,5 +133,22 @@ koyu yeşil, "double" olmasın; SPO: forma rengi lacivert ✓.
   aylık tavan + **ortak** defter `kitaplar/_maliyet/elevenlabs-karakter.json`; metin sha ile idempotent).
 - Ses **Sarah** (`EXAVITQu4vr4xnSDxMaL`), model `eleven_v3`, hız 0.9 — uygulamadaki anlatıcıyla aynı
   (tek anlatıcı; konuşmacı başına ayrı ses pilot dışı).
-- Ölçüm: CIN 72 · SPO 77 · BOK 71 = **220 karakter** (3 örnek). Anahtar yok → üretim yok.
+- Ölçüm: CIN 72 · SPO 77 · BOK 71 = **220 karakter** (3 örnek); ortak defter **9.851 / 10.000**.
+- Süreler (`_raw/tts/timing.json`): CIN 1,92 / 1,20 / 2,16 sn · SPO 2,00 / 1,68 / 1,52 sn · BOK 2,08 / 1,60 / 2,48 sn.
+  Ses sığsın diye CIN son karesi 3,0 sn, BOK son karesi 3,3 sn (paketler **12,6 / 11,0 / 11,0 sn**);
+  `build_reel.py` cue ve kelime zamanlarını bu sürelerle yeniden hizaladı.
 - Reel sesi cue bazında kesilir: `audio/<cue>.m4a` (hedef ifadenin sesi Defter'e giden kayıt).
+
+## Seslendirme kayıtları (tts_reel.py)
+
+| Tarih (UTC) | Reel | Cue | Ses | Model | Hız | Karakter | Metin sha256 | Dosya |
+|---|---|---|---|---|---|---|---|---|
+| 2026-10-20T09:45:19Z | A1-R-CIN-01 | s02-01 | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 26 | e43e5a36e61f0482 | _raw/tts/s02-01.mp3 |
+| 2026-10-20T09:45:20Z | A1-R-CIN-01 | s02-02 | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 20 | edf9e9dd175b3d7b | _raw/tts/s02-02.mp3 |
+| 2026-10-20T09:45:22Z | A1-R-CIN-01 | s02-03 | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 26 | 60b07e029737a6c9 | _raw/tts/s02-03.mp3 |
+| 2026-10-20T09:45:24Z | A1-R-SPO-01 | s01-01 | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 28 | eeae57bc52d11503 | _raw/tts/s01-01.mp3 |
+| 2026-10-20T09:45:25Z | A1-R-SPO-01 | s01-02 | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 30 | e11a23aa1fc36c58 | _raw/tts/s01-02.mp3 |
+| 2026-10-20T09:45:28Z | A1-R-SPO-01 | s01-03 | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 19 | 8e38acd7b1fc75a2 | _raw/tts/s01-03.mp3 |
+| 2026-10-20T09:45:30Z | A1-R-BOK-01 | s02-01 | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 25 | 58c6107274925909 | _raw/tts/s02-01.mp3 |
+| 2026-10-20T09:45:31Z | A1-R-BOK-01 | s02-02 | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 18 | 586dd5da51eb7cc8 | _raw/tts/s02-02.mp3 |
+| 2026-10-20T09:45:33Z | A1-R-BOK-01 | s02-03 | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 28 | f6ebf1b3fd870cda | _raw/tts/s02-03.mp3 |

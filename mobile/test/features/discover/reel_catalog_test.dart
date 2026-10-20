@@ -24,7 +24,7 @@ void main() {
       expect(first.category, 'CIN');
       expect(first.categoryTr, 'Sinema');
       expect(first.level, 'A1');
-      expect(first.duration, 12.0);
+      expect(first.duration, 12.6);
       expect(first.sourceType, 'standalone');
       expect(first.contentVersion, 1);
       expect(first.isWithdrawn, isFalse);
