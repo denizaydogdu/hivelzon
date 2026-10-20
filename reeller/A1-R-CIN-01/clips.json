@@ -1,0 +1,18 @@
+{
+ "schemaVersion": 1,
+ "id": "A1-R-CIN-01",
+ "model": "seedance_2_0_mini",
+ "params": {
+  "aspect_ratio": "9:16",
+  "duration": 5,
+  "resolution": "720p",
+  "generate_audio": false
+ },
+ "clips": [
+  {
+   "name": "cin-k3",
+   "start": "_raw/k3.png",
+   "prompt": "Gentle continuous shot: a hand in a navy uniform sleeve with a white cuff slides two plain blank cinema tickets slowly across the polished wooden counter toward an open palm with a mustard-yellow jacket sleeve; the brass bell stays still; warm lamp light, subtle natural motion only, no camera shake, no faces."
+  }
+ ]
+}

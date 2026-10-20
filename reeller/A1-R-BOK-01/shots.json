@@ -1,0 +1,86 @@
+{
+ "schemaVersion": 1,
+ "id": "A1-R-BOK-01",
+ "model": "gpt_image_2_5",
+ "params": {
+  "aspect_ratio": "9:16",
+  "resolution": "2k",
+  "quality": "low"
+ },
+ "prefix": "Warm animated-series illustration, graphic-novel style, clean ink lines, soft cel shading, warm everyday palette with soft natural light, mature tone suitable for teens and adults, not childish, no text, no letters, no numbers, no logos.",
+ "shots": [
+  {
+   "name": "k1",
+   "prompt": "Wide shot inside a small neighbourhood library in soft daylight. Lena, a young woman with light brown curly hair tied back, an olive-green cardigan and small round glasses, stands at the wooden desk, one hand on the counter; the librarian, a woman in her fifties with short silver hair and a brown cardigan with a blank round pin, looks up from behind the desk. Tall shelves with completely blank book spines behind them; a green reading lamp on the desk. Vertical composition.",
+   "ref": null
+  },
+  {
+   "name": "k2",
+   "prompt": "Use the reference image for the characters and the setting: keep the same faces, hair, clothes, colours and lighting. Medium shot across the desk: Lena asks, leaning in slightly, eyebrows raised in a hopeful question; the librarian listens with a patient smile. Soft window light, blurred blank book spines behind. Vertical composition.",
+   "ref": "k1"
+  },
+  {
+   "name": "k3",
+   "prompt": "Use the reference image for the characters and the setting: keep the same faces, hair, clothes, colours and lighting. Close-up of the librarian's hands lifting a plain, titleless hardcover book from a low shelf and turning it so the blank cover faces Lena; another blank book lies open on the desk. Shallow depth of field, warm light. Vertical composition.",
+   "ref": "k1"
+  },
+  {
+   "name": "k4",
+   "prompt": "Use the reference image for the characters and the setting: keep the same faces, hair, clothes, colours and lighting. The librarian holds the book out with a warm smile; Lena takes it with both hands and opens it, already reading, pleased. Blank book spines and the green lamp behind, soft daylight. Vertical composition.",
+   "ref": "k1"
+  }
+ ],
+ "timeline": [
+  {
+   "shot": "k1",
+   "len": 3.0,
+   "move": [
+    1.0,
+    1.06,
+    0.45,
+    0.5,
+    0.5,
+    0.55
+   ],
+   "audio": "s02-01"
+  },
+  {
+   "shot": "k2",
+   "len": 3.0,
+   "move": [
+    1.08,
+    1.01,
+    0.55,
+    0.5,
+    0.5,
+    0.5
+   ],
+   "audio": "s02-02"
+  },
+  {
+   "shot": "k3",
+   "len": 2.6,
+   "move": [
+    1.0,
+    1.1,
+    0.5,
+    0.5,
+    0.5,
+    0.45
+   ]
+  },
+  {
+   "shot": "k4",
+   "len": 2.3,
+   "move": [
+    1.06,
+    1.0,
+    0.5,
+    0.55,
+    0.55,
+    0.5
+   ],
+   "audio": "s02-03"
+  }
+ ]
+}

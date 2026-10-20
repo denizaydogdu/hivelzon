@@ -68,9 +68,10 @@ arasında kalıyor. Stil tutarlılığı için örnek üretimde 2–3 model yan 
 ### 1.4 Ses — ayrı defter (karakter)
 
 ElevenLabs (Creator, ~22 USD/ay, ~100 bin karakter) kotasından düşer; **USD değil karakter**
-olarak raporlanır. Reel başına EN konuşma ≈ **100–150 karakter** (hedef ifade + 1–2 kısa replik,
-~6 sn konuşma) → **3 örnek ≈ 300–450**, **18 video ≈ 1.800–2.700 karakter**
-(aylık kotanın ~%2–3'ü). Türkçe ses pilotta zorunlu değil.
+olarak raporlanır. **Ölçüldü (2026-10-19, `tts_reel.py --dry-run`):** A1 örneklerinde reel başına
+**71–77 karakter** (3 cue, hedef ifade + 1–2 kısa replik) → **3 örnek = 220 karakter**,
+**18 video ≈ 1.300 karakter** (aylık kotanın ~%1,3'ü). Türkçe ses pilotta zorunlu değil.
+Tek anlatıcı: uygulamadaki sesle aynı — **Sarah** (`EXAVITQu4vr4xnSDxMaL`, `eleven_v3`, hız 0.9).
 
 ## 2. Varsayımlar (üretim modeli)
 
@@ -101,7 +102,7 @@ olarak raporlanır. Reel başına EN konuşma ≈ **100–150 karakter** (hedef 
 | Ara toplam | | **43,50** | **213,00** | **288,00** |
 | Yeniden üretim payı (%25) | | +10,88 | +53,25 | +72,00 |
 | **Pilot toplamı** | | **≈ 55 kr** | **≈ 266 kr** | **≈ 360 kr** |
-| Ses (ayrı defter) | | ≈ 1.800–2.700 karakter | ≈ 1.800–2.700 karakter | ≈ 1.800–2.700 karakter |
+| Ses (ayrı defter) | | ≈ 1.300 karakter | ≈ 1.300 karakter | ≈ 1.300 karakter |
 
 **Bakiye uyarısı:** mevcut kredi **298,06**. Senaryo A bakiyeye rahat sığar; **senaryo B
 bakiyenin neredeyse tamamını** (≈266 kr), senaryo C ise **bakiyeyi aşar** (≈360 kr) → kredi
@@ -141,3 +142,23 @@ fiyat sunar.
 **Kullanıcı kararı (2026-10-19):** değerlendirme için **senaryo A** seçildi (1k medium görsel +
 gerekli sahnelerde kısa hareket; 3 örnek ≈17 kr, 18 video ≈55 kr). Bu bir **senaryo tercihi**dir,
 harcama onayı değildir: üretime başlamadan önce 3 örnek için **ayrı bütçe onayı** alınır.
+
+## 7. Gerçekleşen — 3 örnek (2026-10-19)
+
+Kullanıcı 3 örnek için bütçe onayı verdi (2026-10-19). Ölçülen birim fiyatlarla harcama:
+
+| Kalem | Adet | Birim | Kr |
+|---|---:|---:|---:|
+| Görsel — `gpt_image_2_5` 9:16 2k `low` | 12 | 0,50 | 6,00 |
+| Görsel — CIN k3 yeniden üretim (hatalı el) | 1 | 0,50 | 0,50 |
+| Hareket — `seedance_2_0_mini` 9:16 720p 5 sn (sessiz) | 2 | 5,00 | 10,00 |
+| Ses — ElevenLabs | 0 | — | 0,00 |
+| **Toplam** | | | **16,50** |
+
+- Tahmin 17 kr idi; **16,50 kr** harcandı. Bakiye **298,06 → 281,56** (`higgsfield account status`).
+- Plandan iki küçük sapma (toplam üst sınır korunarak): görseller **2k low** (0,50 kr; 1k medium ile
+  aynı fiyat, daha yüksek çözünürlük), hareket **2 klip × 720p** (480p 720×1280'e yukarı ölçeklenirdi).
+  Kitap reeli yalnız Ken Burns (hareket zorunlu değil kararı).
+- **Ses henüz yok** (`ELEVENLABS_API_KEY` tanımlı değil): 220 karakter bekliyor, tahmini maliyet
+  ihmal edilebilir (ücretsiz kota içinde).
+- 18 video için **harcama onayı yok**; güncel tahmin senaryo A ile ≈55 kr.

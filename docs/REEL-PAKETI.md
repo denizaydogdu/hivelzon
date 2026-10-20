@@ -140,9 +140,53 @@ Backend `VideoHostingPort` yolu `packages/_reels/<id>/<yol>` aynı pakete gider
   içindedir (`higgsfield generate cost` ile ölçüldü; geçmiş 0,5 kr / 5 kr güncel
   sayılmaz). Önerilen yol: 3 örnek ≈ **17 kr** (senaryo A) → onay → 18 video
   ≈ **55 kr** (senaryo A) ya da ≈ **266 kr** (2k high, senaryo B). Bakiye 298,06 kr.
+- **3 örnek üretildi (2026-10-19):** A1 Sinema/Spor/Kitap için 13 görsel +
+  2 hareket klipI = **16,50 kr** (bakiye 298,06 → **281,56** kr). Paketler
+  `reeller/<id>/_build/package/` altında; kurgu ve krediler `reeller/PROMPTS.md`
+  içinde. **Ses (220 karakter) ElevenLabs anahtarı bekliyor** — mp4'ler şimdilik
+  sessiz. Ayrıntı: §8.
 - **Simülatör denemesi için yerel demo medyası:** `reeller/<id>/` altına
   ücretsiz, yerel üretilmiş yer tutucular (mp4, poster, `stills/`, `audio/`)
   konabilir; hepsi `.gitignore` dışındadır ve **onaylı üretimin yerine geçmez**
   (gerçek içerik üretimi ayrı bir teslimdir). Yer tutucular varken `reel-lint`
   medya uyarısı vermez; bu yüzden `tests/test_reels.py` medyanın varlığına
   değil "medya asla hata sayılmaz" kuralına bakar.
+
+## 8. Üretim hattı (ücretsiz araçlar + ücretli üretim)
+
+Kaynak dosyalar (`reel.json`, `shots.json`, `clips.json`) **depoda**; üretilen görsel/ses/video
+git dışında (`reeller/**/_raw/`, `clips/`, `_build/`).
+
+| Araç | İş | Ücret |
+|---|---|---|
+| `tools/content-pipeline/gen_reel_images.py` | `shots.json` → `_raw/kN.png` (Higgsfield `gpt_image_2_5`) | kare başına (2k low **0,50 kr**) |
+| `tools/content-pipeline/gen_reel_clips.py` | `clips.json` → `clips/<ad>.mp4` (`seedance_2_0_mini`) | klip başına (720p 5 sn **5,00 kr**) |
+| `tools/content-pipeline/tts_reel.py` | `reel.json` cue'ları → `_raw/tts/<cue>.mp3` (ElevenLabs, Sarah) | karakter (ortak aylık tavan) |
+| `tools/content-pipeline/build_reel.py` | `shots.json → timeline` + kaynaklar → `_build/package/` | **0** (yerel ffmpeg) |
+| `tools/content-pipeline/reel_lint.py` | paket denetimi; `--write-reports` → `_build/lint.json` | 0 |
+
+**Kurallar**
+- Ücretli araçlar **varsayılan olarak kuru çalışır** (`--dry-run`): karakter/kredi sayısı yazılır, çağrı
+  yapılmaz; yalnız `--execute` ile harcar. Her çağrıdan önce `generate cost` teyit edilir.
+- **İdempotent:** var olan kare/klip/ses yeniden üretilmez (`--force` ile); TTS metin sha'sıyla önbelleklenir.
+- Kayıt: `_raw/jobs.json`, `_raw/clip-jobs.json`, `_raw/tts/timing.json` + `reeller/PROMPTS.md`
+  (job kimliği, kredi, sha, tarih). İstem değişirse sha değişir, yeniden üretim ayrı görünür.
+- TTS **ortak defter** kullanır: `kitaplar/_maliyet/elevenlabs-karakter.json` (aylık tavan
+  `HIVELZON_TTS_MONTHLY_CHAR_CAP`; tavan yoksa üretim kapalıdır).
+
+**Paket (`_build/package/`)**
+```
+reel.json          # kaynağın kopyası; image/audio pakete göre güncellenir
+<id>.mp4           # 720×1280, H.264 High + AAC, faststart (uygulamanın oynattığı sürüm)
+<id>.webp          # afiş (ilk kare)
+stills/<sahne>.webp# Defter kartı ve önizleme durağan görseli (hedef cue'nun karesi)
+audio/<cue>.m4a    # hedef ifadenin sesi (TTS varsa); Defter'e bu gider
+production.json    # üretim izi: job kimlikleri, kredi, sha, aiLabel, kurgu planı
+```
+`production.json` kullanıcıya gösterilmez; `reel.json` şemasını değiştirmez (içe aktarma bilinmeyen
+dosyaları yok sayar). **Görüntüye yazı gömülmez** (alt Yazı uygulamada; AI notu `aiLabel` alanında —
+klip paketleriyle aynı yaklaşım, H-040).
+
+**3 örnek (2026-10-19, A1: CIN/SPO/BOK):** 13 görsel (6,50 kr) + 2 klip (10,00 kr) = **16,50 kr**;
+ses (220 karakter) anahtar bekliyor. Ayrıntı ve job kimlikleri: `reeller/PROMPTS.md`;
+fiyat tablosu: `docs/REEL-MALIYET-2026-10-19.md`.

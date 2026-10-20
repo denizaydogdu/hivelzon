@@ -1,0 +1,87 @@
+{
+ "schemaVersion": 1,
+ "id": "A1-R-SPO-01",
+ "model": "gpt_image_2_5",
+ "params": {
+  "aspect_ratio": "9:16",
+  "resolution": "2k",
+  "quality": "low"
+ },
+ "prefix": "Warm animated-series illustration, graphic-novel style, clean ink lines, soft cel shading, warm everyday palette with soft natural light, mature tone suitable for teens and adults, not childish, no text, no letters, no numbers, no logos.",
+ "shots": [
+  {
+   "name": "k1",
+   "prompt": "Wide shot on a school athletics track in warm late-afternoon light. Elif, a 15-year-old girl with dark hair in a high ponytail and a plain number-free navy sports kit, finishes a run in the red lane, breathing hard; the coach, a man in his forties in a light grey polo with a clipboard at his hip, watches from the side and nods. Low sun, long shadows, green fence and sports field behind, plain school building in the distance. Vertical composition.",
+   "ref": null
+  },
+  {
+   "name": "k2",
+   "prompt": "Use the reference image for the characters and the setting: keep the same faces, hair, clothes, colours and lighting. Medium shot: Elif stands on the track, hands on her knees, catching her breath; she looks up toward the coach with a small tired smile. Warm backlight on the red track. Vertical composition.",
+   "ref": "k1"
+  },
+  {
+   "name": "k3",
+   "prompt": "Use the reference image for the characters and the setting: keep the same faces, hair, clothes, colours and lighting. Medium close-up: Elif straightens up and asks, one hand raised slightly; the coach, slightly out of focus behind her, turns to listen. Soft warm light. Vertical composition.",
+   "ref": "k1"
+  },
+  {
+   "name": "k4",
+   "prompt": "Use the reference image for the characters and the setting: keep the same faces, hair, clothes, colours and lighting. The coach hands Elif a plain, label-free water bottle; she takes it with both hands, grateful and relieved. Track and green field softly blurred behind them in golden light. Vertical composition.",
+   "ref": "k1"
+  }
+ ],
+ "timeline": [
+  {
+   "shot": "k1",
+   "len": 3.2,
+   "move": [
+    1.0,
+    1.06,
+    0.45,
+    0.5,
+    0.5,
+    0.55
+   ],
+   "audio": "s01-01",
+   "clip": "clips/spo-k1.mp4"
+  },
+  {
+   "shot": "k2",
+   "len": 2.6,
+   "move": [
+    1.08,
+    1.01,
+    0.55,
+    0.5,
+    0.5,
+    0.5
+   ]
+  },
+  {
+   "shot": "k3",
+   "len": 3.6,
+   "move": [
+    1.0,
+    1.1,
+    0.5,
+    0.5,
+    0.5,
+    0.45
+   ],
+   "audio": "s01-02"
+  },
+  {
+   "shot": "k4",
+   "len": 2.5,
+   "move": [
+    1.06,
+    1.0,
+    0.5,
+    0.55,
+    0.55,
+    0.5
+   ],
+   "audio": "s01-03"
+  }
+ ]
+}

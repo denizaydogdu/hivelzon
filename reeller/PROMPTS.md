@@ -1,0 +1,137 @@
+# Reel örnekleri — istem ve üretim kayıtları (H-094, 3 örnek)
+
+> Kapsam: **3 örnek video** (kategori başına 1): `A1-R-CIN-01` (Sinema),
+> `A1-R-SPO-01` (Spor), `A1-R-BOK-01` (Kitap). Metinleri ve lint'i hazır A1 paketlerinden.
+> **Onay:** kullanıcı, 2026-10-19, senaryo A (≈17 kr) — 3 örnek için. Her ücretli çağrıdan
+> önce `higgsfield generate cost` ile maliyet doğrulanır; her prompt buraya yazılır (H-024).
+
+## Görsel dil
+
+App'in kilitli story-stil öneki (`icerik/_evren/style/STYLE_PREFIX.md`, K-24 v1.1) ile **aynı dil**
+kullanılır (uygulama içi tutarlılık). Reel sahneleri çağdaş ve "gündelik" olduğu için palet satırı
+sahneye bırakılmıştır; geri kalan dil (graphic-novel illüstrasyon, temiz çizgi, yumuşak cel shading,
+genç/Yetişkin tonu) aynen korunur.
+
+**Önek (her prompt'un sonuna eklenir):**
+`Warm animated-series illustration, graphic-novel style, clean ink lines, soft cel shading, warm everyday palette with soft natural light, mature tone suitable for teens and adults, not childish, no text, no letters, no numbers, no logos.`
+
+**Format:** 9:16, **2k**, `gpt_image_2_5`, `quality low` = **0,5 kr/görsel**
+(ölçüm 2026-10-19: 2k low = 0,50 kr; `quality low` pilot için yeterli bulunmuştu, H-024 pilot notu).
+**Yazı yok:** tabela, bilet, kitap sırtı, afiş, şişe etiketi, forma numarası — hepsi **yazısız/rakamsız**
+çizilir; gereken metin kurguda eklenir.
+
+**Tutarlılık yöntemi:** her reelde önce **k1** üretilir; k2–k4 bu karenin `image_references`'ı ile
+üretilir (kitap dalgalarındaki "kapak referansı" yöntemi). Ayrı karakter sayfası gerekmez.
+
+## Karakterler ve mekânlar (özgün; gerçek marka/kişi yok)
+
+### Sinema — `A1-R-CIN-01` "Gişede iki bilet"
+- **Mia:** young woman, 20, dark curly hair in a low bun, mustard-yellow jacket over a white shirt, small canvas tote bag; friendly, slightly hesitant.
+- **Clerk:** woman, early 30s, black hair in a low bun, navy uniform shirt with a plain round badge (blank, no letters), warm smile.
+- **Mekân:** small independent cinema lobby, evening: warm brass wall lamps, a wooden box-office counter with a glass front, a red velvet rope, dark green walls, framed posters that are **completely blank** (abstract shapes only).
+
+### Spor — `A1-R-SPO-01` "Antrenmandan sonra su"
+- **Elif:** girl, 15, dark hair in a high ponytail, navy school sports kit with a **plain, number-free** back, running shoes; tired but cheerful.
+- **Coach:** man, mid-40s, short grey-flecked hair, light grey polo, sweatpants, plain whistle on a cord (no letters), clipboard held at his hip, kind expression.
+- **Mekân:** school athletics track, late afternoon: red running lane with white lines, low green fence, sports field and a few trees, warm low sun, distant school building with a plain blank wall.
+
+### Kitap — `A1-R-BOK-01` "Kütüphanede kitap seçimi"
+- **Lena:** young woman, 22, light brown curly hair tied back, olive-green cardigan, small round glasses; curious.
+- **Librarian:** woman, mid-50s, short silver hair, brown cardigan with a plain round pin (blank), reading glasses on a cord, warm smile.
+- **Mekân:** small neighbourhood library, soft daylight: tall wooden shelves with **blank-spined** books (no readable titles), a reading table with a green lamp, a window with day light, a wooden desk.
+
+## Sahne planı (video başına 4 kare)
+
+### Sinema (12 sn; replikler 0,6–3,0 · 3,6–6,4 · 7,2–10,4)
+| Kare | Zaman | Sahne (prompt gövdesi; önek eklenir) |
+|---|---|---|
+| k1 (referans) | 0,0–3,0 | Wide shot of a small cinema lobby in the evening. Mia, in her mustard-yellow jacket, walks up to the wooden box-office counter, seen from the side; behind the counter the clerk in a navy uniform looks up with a friendly smile. Warm brass wall lamps glow; the framed posters on the green wall are completely blank. Vertical composition. |
+| k2 | 3,0–6,4 | Medium shot across the counter: Mia leans slightly forward and speaks, one hand on the counter; the clerk listens, head tilted. Warm lamp light on their faces, blurred blank posters behind. Vertical composition. |
+| k3 | 6,4–7,2 | Close-up of the counter top: the clerk's hand slides **two plain blank cinema tickets** across the wood toward Mia's open palm; a small brass bell and a blank ticket roll nearby. Shallow depth of field. Vertical composition. |
+| k4 | 7,2–10,4 | The clerk smiles and gestures toward an open doorway with a red velvet rope; Mia holds the two tickets and turns to go, looking back with a happy nod. Warm lobby light, blank posters behind. Vertical composition. (**Hareketli kare**, 720p) |
+
+### Spor (11 sn; replikler 0,6–3,2 · 4,0–6,6 · 7,2–9,6)
+| Kare | Zaman | Sahne (prompt gövdesi; önek eklenir) |
+|---|---|---|
+| k1 (referans) | 0,0–3,2 | Wide shot on a school athletics track in warm late-afternoon light. Elif in a plain navy sports kit finishes a run in the red lane, breathing hard, while the coach with a clipboard watches from the side and nods. Low sun, long shadows, green fence and field behind. Vertical composition. (**Hareketli kare**, 720p) |
+| k2 | 3,2–6,0 | Medium shot: Elif stands on the track, hands on her knees, catching her breath; she looks up toward the coach with a small tired smile. Warm backlight on the track. Vertical composition. |
+| k3 | 6,0–7,2 | Medium close-up: Elif straightens up and asks, one hand raised slightly; the coach, slightly out of focus behind her, turns to listen. Soft warm light. Vertical composition. |
+| k4 | 7,2–9,6 | The coach hands Elif a **plain, label-free** water bottle; she takes it with both hands, grateful and relieved. Track and green field blurred behind them in golden light. Vertical composition. |
+
+### Kitap (10 sn; replikler 0,6–3,0 · 3,8–5,6 · 6,4–8,6)
+| Kare | Zaman | Sahne (prompt gövdesi; önek eklenir) |
+|---|---|---|
+| k1 (referans) | 0,0–3,0 | Wide shot inside a small neighbourhood library in soft daylight. Lena in her olive-green cardigan and round glasses stands at the wooden desk, one hand on the counter; the librarian in a brown cardigan looks up from behind the desk. Tall shelves with completely blank book spines behind them; a green reading lamp on the desk. Vertical composition. |
+| k2 | 3,0–6,0 | Medium shot across the desk: Lena asks, leaning in slightly, eyebrows raised in a hopeful question; the librarian listens with a patient smile. Soft window light, blurred blank spines behind. Vertical composition. |
+| k3 | 6,0–7,0 | Close-up of the librarian's hands lifting a **plain, titleless hardcover book** from a low shelf and turning it so the blank cover faces Lena; another blank book lies open on the desk. Shallow depth of field, warm light. Vertical composition. |
+| k4 | 7,0–9,0 | The librarian holds the book out with a warm smile; Lena takes it with both hands and opens it, already reading, pleased. Blank spines and the green lamp behind, soft daylight. Vertical composition. |
+
+## Maliyet (ölçüldü 2026-10-19; **gerçekleşen**)
+
+| Kalem | Adet | Birim | Plan | Gerçekleşen |
+|---|---|---|---|---|
+| Görsel `gpt_image_2_5` 9:16 2k low | 12 | 0,50 | 6,00 | **6,00** |
+| Görsel yeniden üretim (CIN k3 — hatalı el) | 1 | 0,50 | — | **0,50** |
+| Hareket `seedance_2_0_mini` 9:16 720p 5 sn (sessiz) | 2 | 5,00 | 10,00 | **10,00** |
+| Ken Burns, poster, kurgu, paketleme, lint | — | yerel | 0 | 0 |
+| **Kredi toplamı (3 örnek)** | | | ≈16 | **16,50** |
+| Ses (ElevenLabs, tek anlatıcı Sarah) | 9 cue | — | ~350 karakter | **220 karakter** (ölçüldü, henüz üretilmedi) |
+
+**Senaryo A'dan iki küçük sapma (üst sınır korundu):** (1) görseller **2k low** (0,50 kr — plan da
+"quality low" varsayıyordu; Ken Burns için 1k'dan yüksek çözünürlük); (2) hareket klibi 480p yerine
+**720p** (480p dikey kare 720×1280'e yukarı ölçeklenirdi) ve **2 klip** yeterli görüldü.
+Ek: CIN k3 ilk üretiminde kadın görevli yerine **takım elbiseli bir erkek eli** çıktı → yeniden
+üretildi (+0,50 kr). Toplam **16,50 kr ≤ 17 kr**; bakiye içinde.
+
+## Üretim kaydı — görseller (13 çağrı · 6,50 kr)
+
+Her kare `gpt_image_2_5`, 9:16, 2k, quality low, önek eklenmiş istemle; k2–k4 **k1 referansıyla**.
+
+| Reel | Kare | Ref | Kredi | Job ID | sha256(16) |
+|---|---|---|---|---|---|
+| CIN | k1 | — | 0,50 | `575587d6-445e-409f-b38f-e4267526c7ef` | 53259d954981f7d1 |
+| CIN | k2 | k1 | 0,50 | `5566835e-1e75-4890-9fa7-0516cc0661c0` | f4c6cb46148c88b5 |
+| CIN | k3 *(elenen)* | k1 | 0,50 | `cb0f80f9-6c75-44bb-9c42-7fe3c8e215bc` | — (erkek el) |
+| CIN | **k3** | k1 | 0,50 | `56aade24-8224-420e-b02b-98ef581c2b06` | 4e2b9d49d50f2700 |
+| CIN | k4 | k1 | 0,50 | `adf29c9f-0dc9-41c9-9964-98f875e0cc7f` | b1ef9aae43e8695e |
+| SPO | k1 | — | 0,50 | `264fabde-d7c6-4d64-b300-e61a05143d94` | a9c7ad9cdbee9a27 |
+| SPO | k2 | k1 | 0,50 | `d531ab84-71b9-456c-8780-da3bd9afc3f3` | 9b2f83dd7f20ded2 |
+| SPO | k3 | k1 | 0,50 | `f6031cb7-d065-494c-a765-801104ae9afc` | 844a9a64d88a78df |
+| SPO | k4 | k1 | 0,50 | `1990b1f1-b6af-427a-a10d-930fc4a1a4fb` | 778da062a0623164 |
+| BOK | k1 | — | 0,50 | `191c2ca9-7482-4142-a42f-da1e05c7ba6e` | 8beba0a6b95f0eda |
+| BOK | k2 | k1 | 0,50 | `9768520f-5a20-470d-84d2-1e25b8720e5d` | 76b9687aec56161f |
+| BOK | k3 | k1 | 0,50 | `a5c0c0b6-fdd4-469c-b9d8-c71b6c6dd52c` | 70628ac46d4170c5 |
+| BOK | k4 | k1 | 0,50 | `ec12e00e-6013-4af7-81d9-5a4893877ffd` | 6f20f79512ac6a1a |
+
+## Üretim kaydı — hareket (2 çağrı · 10,00 kr)
+
+`seedance_2_0_mini`, 9:16, 720p, 5 sn, **ses yok** (`generate_audio: false`), başlangıç karesi verilerek.
+
+| Reel | Klip | Başlangıç | Kredi | Job ID |
+|---|---|---|---|---|
+| CIN | `cin-k3` (bilet kayışı) | k3 | 5,00 | `12407561-f9a0-4d61-bd4f-e4455b2645ef` |
+| SPO | `spo-k1` (koşu) | k1 | 5,00 | `45b29cf9-3e58-4d63-9b38-c5ead6baa21e` |
+
+**Kredi:** 298,06 → **281,56** (16,50 kr kullanıldı; ölçüm `higgsfield account status` ile teyit edilir).
+**Değerlendirme (kendi kontrolüm):** üç reelde karakter/renk/mekân tutarlı; **görselde yazı yok**
+(bilet, kitap sırtı, afiş, rozet, şişe etiketi hepsi yazısız); CIN klibi yüzsüz bir kayış olduğu için
+bozulma riski taşımıyor. **Öncelikli insan değerlendirmesi:** CIN: Mia'nın saçı (topuz) metinde
+"shoulder-length" yazıyordu — sheet gerçek tasarıma göre güncellenmeli; BOK k3: kitap **kapak** rengi
+koyu yeşil, "double" olmasın; SPO: forma rengi lacivert ✓.
+
+## Montaj (yerel, 0 kr)
+
+- `tools/content-pipeline/build_reel.py` → `_build/package/`: `<id>.mp4` (**720×1280**, H.264/AAC,
+  faststart), `<id>.webp` (afiş), `stills/<sahne>.webp` (Defter kartı), `audio/<cue>.m4a` (varsa),
+  `production.json` (job kimlikleri, kredi, sha, aiLabel).
+- Kurgu `shots.json → timeline`'dan: 4 kare, 0,3 sn xfade, Ken Burns; klip varsa oynatılır.
+- **Ses henüz yok:** mp4 sessiz (görüntülü önizleme). Ses gelince `build_reel.py <reel> --force`.
+
+## Ses (ElevenLabs) — araç hazır, **anahtar bekliyor**
+
+- Araç: `tools/content-pipeline/tts_reel.py` (kuru çalışma karakter sayısını verir; `--execute` ile üretir;
+  aylık tavan + **ortak** defter `kitaplar/_maliyet/elevenlabs-karakter.json`; metin sha ile idempotent).
+- Ses **Sarah** (`EXAVITQu4vr4xnSDxMaL`), model `eleven_v3`, hız 0.9 — uygulamadaki anlatıcıyla aynı
+  (tek anlatıcı; konuşmacı başına ayrı ses pilot dışı).
+- Ölçüm: CIN 72 · SPO 77 · BOK 71 = **220 karakter** (3 örnek). Anahtar yok → üretim yok.
+- Reel sesi cue bazında kesilir: `audio/<cue>.m4a` (hedef ifadenin sesi Defter'e giden kayıt).
