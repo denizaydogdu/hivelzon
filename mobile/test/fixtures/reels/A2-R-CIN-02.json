@@ -47,7 +47,7 @@
   {
    "id": "s03-01",
    "start": 0.5,
-   "end": 3.5,
+   "end": 1.94,
    "speaker": "SELIN",
    "text": "What kind of films do you like?",
    "tr": "Ne tür filmler seversin?",
@@ -56,39 +56,39 @@
     {
      "w": "What",
      "start": 0.5,
-     "end": 0.99
+     "end": 0.74
     },
     {
      "w": "kind",
-     "start": 0.99,
-     "end": 1.46,
+     "start": 0.74,
+     "end": 0.96,
      "gloss": "tür"
     },
     {
      "w": "of",
-     "start": 1.46,
-     "end": 1.76
+     "start": 0.96,
+     "end": 1.1
     },
     {
      "w": "films",
-     "start": 1.76,
-     "end": 2.34,
+     "start": 1.1,
+     "end": 1.38,
      "gloss": "filmler"
     },
     {
      "w": "do",
-     "start": 2.34,
-     "end": 2.63
+     "start": 1.38,
+     "end": 1.52
     },
     {
      "w": "you",
-     "start": 2.63,
-     "end": 3.01
+     "start": 1.52,
+     "end": 1.7
     },
     {
      "w": "like?",
-     "start": 3.01,
-     "end": 3.5,
+     "start": 1.7,
+     "end": 1.94,
      "gloss": "sevmek"
     }
    ]
@@ -96,7 +96,7 @@
   {
    "id": "s03-02",
    "start": 3.7,
-   "end": 6.8,
+   "end": 5.46,
    "speaker": "DENIZ",
    "text": "I love adventure films.",
    "tr": "Macera filmlerini severim.",
@@ -105,24 +105,24 @@
     {
      "w": "I",
      "start": 3.7,
-     "end": 3.97
+     "end": 3.85
     },
     {
      "w": "love",
-     "start": 3.97,
-     "end": 4.65,
+     "start": 3.85,
+     "end": 4.24,
      "gloss": "çok sevmek"
     },
     {
      "w": "adventure",
-     "start": 4.65,
-     "end": 5.99,
+     "start": 4.24,
+     "end": 5.0,
      "gloss": "macera"
     },
     {
      "w": "films.",
-     "start": 5.99,
-     "end": 6.8,
+     "start": 5.0,
+     "end": 5.46,
      "gloss": "filmler"
     }
    ]
@@ -130,7 +130,7 @@
   {
    "id": "s03-03",
    "start": 7.0,
-   "end": 10.3,
+   "end": 9.32,
    "speaker": "SELIN",
    "text": "Then let's watch this one. It is new.",
    "tr": "Öyleyse şunu izleyelim. Yeni.",
@@ -139,43 +139,43 @@
     {
      "w": "Then",
      "start": 7.0,
-     "end": 7.46
+     "end": 7.32
     },
     {
      "w": "let's",
-     "start": 7.46,
-     "end": 8.01
+     "start": 7.32,
+     "end": 7.71
     },
     {
      "w": "watch",
-     "start": 8.01,
-     "end": 8.56,
+     "start": 7.71,
+     "end": 8.1,
      "gloss": "izlemek"
     },
     {
      "w": "this",
-     "start": 8.56,
-     "end": 9.02
+     "start": 8.1,
+     "end": 8.42
     },
     {
      "w": "one.",
-     "start": 9.02,
-     "end": 9.38
+     "start": 8.42,
+     "end": 8.67
     },
     {
      "w": "It",
-     "start": 9.38,
-     "end": 9.66
+     "start": 8.67,
+     "end": 8.87
     },
     {
      "w": "is",
-     "start": 9.66,
-     "end": 9.93
+     "start": 8.87,
+     "end": 9.06
     },
     {
      "w": "new.",
-     "start": 9.93,
-     "end": 10.3,
+     "start": 9.06,
+     "end": 9.32,
      "gloss": "yeni"
     }
    ]

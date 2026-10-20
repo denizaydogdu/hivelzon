@@ -38,8 +38,11 @@ class OnboardingGateNotifier extends Notifier<OnboardingGate> {
           .read(onboardingStoreProvider)
           .needsOnboarding()
           .timeout(timeout);
+      // Kapsayıcı (ör. test/ekran kapanışı) okuma sürerken kapanabilir.
+      if (!ref.mounted) return;
       state = needed ? OnboardingGate.needed : OnboardingGate.done;
     } on Object catch (e) {
+      if (!ref.mounted) return;
       // Kayıt okunamazsa uygulama durmaz: açılış gösterilmez.
       debugPrint('[H039] açılış durumu okunamadı: $e');
       state = OnboardingGate.done;
@@ -53,12 +56,14 @@ class OnboardingGateNotifier extends Notifier<OnboardingGate> {
     } on Object catch (e) {
       debugPrint('[H039] açılış işareti yazılamadı: $e');
     }
+    if (!ref.mounted) return;
     state = OnboardingGate.done;
   }
 
   /// Açılışı yeniden göster (testler ve debug derleme).
   Future<void> restart() async {
     await ref.read(onboardingStoreProvider).reset();
+    if (!ref.mounted) return;
     state = OnboardingGate.needed;
   }
 }

@@ -141,6 +141,9 @@ koyu yeşil, "double" olmasın; SPO: forma rengi lacivert ✓.
 
 ## Seslendirme kayıtları (tts_reel.py)
 
+> 2026-10-20T13:38Z sonrası satırlar **ayrı ElevenLabs hesabıyla** üretildi (free plan, 10.000
+> karakter); ana hesabın ortak defteri (9.851 / 10.000) değişmedi. Ses aynı: Sarah `eleven_v3` 0.9.
+
 | Tarih (UTC) | Reel | Cue | Ses | Model | Hız | Karakter | Metin sha256 | Dosya |
 |---|---|---|---|---|---|---|---|---|
 | 2026-10-20T09:45:19Z | A1-R-CIN-01 | s02-01 | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 26 | e43e5a36e61f0482 | _raw/tts/s02-01.mp3 |
@@ -202,3 +205,48 @@ k1 Kerem sandalyeyi çeker · k2 "kitabın ne hakkında?" · k3 Lena eliyle deni
 k1 Kerem kitabı iade eder · k2 "okuyacak bir şey arıyorum" · k3 Lena yazısız kapağı iki kez tıklar · k4 Kerem kitabı alır, teşekkür eder.
 
 **Klip özeti (3 adet, 720p 5 sn, ses yok):** `cin-k2` (mısır), `spo-k3` (top), `bok-k3` (kitap).
+| 2026-10-20T13:36:28Z | A1-R-BOK-03 | s02-01 | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 16 | 8b4694d632895a5b | _raw/tts/s02-01.mp3 |
+| 2026-10-20T13:36:29Z | A1-R-BOK-03 | s02-02 | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 16 | 90b07aaa23f048fa | _raw/tts/s02-02.mp3 |
+| 2026-10-20T13:36:31Z | A1-R-BOK-03 | s02-03 | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 17 | 692b09ab2998cd6e | _raw/tts/s02-03.mp3 |
+| 2026-10-20T13:37:35Z | A1-R-BOK-02 | s01-01 | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 17 | 8dcdcb3b7f4b3d2f | _raw/tts/s01-01.mp3 |
+| 2026-10-20T13:37:37Z | A1-R-BOK-02 | s01-02 | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 18 | 736eaa02ed24fe5c | _raw/tts/s01-02.mp3 |
+| 2026-10-20T13:37:38Z | A1-R-BOK-02 | s01-03 | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 18 | 6ce581032e9d3f86 | _raw/tts/s01-03.mp3 |
+| 2026-10-20T13:37:42Z | A1-R-CIN-02 | s01-01 | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 29 | c41338bbcb34e018 | _raw/tts/s01-01.mp3 |
+| 2026-10-20T13:37:43Z | A1-R-CIN-02 | s01-02 | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 17 | 8e0c8f94781c9637 | _raw/tts/s01-02.mp3 |
+| 2026-10-20T13:37:45Z | A1-R-CIN-02 | s01-03 | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 29 | b085a6b76fcc7bb4 | _raw/tts/s01-03.mp3 |
+| 2026-10-20T13:37:46Z | A1-R-CIN-03 | s02-01 | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 20 | c2c8f141d8d18e50 | _raw/tts/s02-01.mp3 |
+| 2026-10-20T13:37:48Z | A1-R-CIN-03 | s02-02 | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 23 | a9d4abe5f154124c | _raw/tts/s02-02.mp3 |
+| 2026-10-20T13:37:49Z | A1-R-CIN-03 | s02-03 | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 29 | 84ba7c226f4fd084 | _raw/tts/s02-03.mp3 |
+| 2026-10-20T13:37:51Z | A1-R-SPO-02 | s01-01 | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 20 | 08a4181d21ca2bfb | _raw/tts/s01-01.mp3 |
+| 2026-10-20T13:37:52Z | A1-R-SPO-02 | s01-02 | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 22 | c43a6ab104656330 | _raw/tts/s01-02.mp3 |
+| 2026-10-20T13:37:54Z | A1-R-SPO-02 | s01-03 | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 12 | 01ded3fbc9ba4b98 | _raw/tts/s01-03.mp3 |
+| 2026-10-20T13:37:55Z | A1-R-SPO-03 | s02-01 | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 10 | 962643e35935ccc6 | _raw/tts/s02-01.mp3 |
+| 2026-10-20T13:37:57Z | A1-R-SPO-03 | s02-02 | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 11 | 4d63084cb98e8774 | _raw/tts/s02-02.mp3 |
+| 2026-10-20T13:37:58Z | A1-R-SPO-03 | s02-03 | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 27 | da0f6b19721ef1ec | _raw/tts/s02-03.mp3 |
+| 2026-10-20T13:38:00Z | A2-R-BOK-01 | s04-01 | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 23 | f5956af5e0a691ac | _raw/tts/s04-01.mp3 |
+| 2026-10-20T13:38:01Z | A2-R-BOK-01 | s04-02 | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 32 | 320d37ddf3624d41 | _raw/tts/s04-02.mp3 |
+| 2026-10-20T13:38:03Z | A2-R-BOK-01 | s04-03 | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 42 | 63883c10a31dbcdc | _raw/tts/s04-03.mp3 |
+| 2026-10-20T13:38:04Z | A2-R-BOK-02 | s03-01 | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 24 | d5cc06ca4315cad7 | _raw/tts/s03-01.mp3 |
+| 2026-10-20T13:38:06Z | A2-R-BOK-02 | s03-02 | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 35 | bae19478f229fee3 | _raw/tts/s03-02.mp3 |
+| 2026-10-20T13:38:07Z | A2-R-BOK-02 | s03-03 | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 24 | fee1a39c8e1f584d | _raw/tts/s03-03.mp3 |
+| 2026-10-20T13:38:09Z | A2-R-BOK-03 | s04-01 | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 25 | 26b2d45685ff3d1c | _raw/tts/s04-01.mp3 |
+| 2026-10-20T13:38:10Z | A2-R-BOK-03 | s04-02 | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 26 | 8990bca8d8f473b6 | _raw/tts/s04-02.mp3 |
+| 2026-10-20T13:38:11Z | A2-R-BOK-03 | s04-03 | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 20 | 3ac23c49226e9004 | _raw/tts/s04-03.mp3 |
+| 2026-10-20T13:38:13Z | A2-R-CIN-01 | s03-01 | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 30 | 87aa3db0df63a131 | _raw/tts/s03-01.mp3 |
+| 2026-10-20T13:38:14Z | A2-R-CIN-01 | s03-02 | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 31 | fb1f9316f3bef291 | _raw/tts/s03-02.mp3 |
+| 2026-10-20T13:38:16Z | A2-R-CIN-01 | s03-03 | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 42 | 29d91578e51534d7 | _raw/tts/s03-03.mp3 |
+| 2026-10-20T13:38:17Z | A2-R-CIN-02 | s03-01 | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 31 | eacedaf248728301 | _raw/tts/s03-01.mp3 |
+| 2026-10-20T13:38:19Z | A2-R-CIN-02 | s03-02 | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 23 | 42e0f48a71cba569 | _raw/tts/s03-02.mp3 |
+| 2026-10-20T13:38:20Z | A2-R-CIN-02 | s03-03 | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 37 | d051c9f8380efdbc | _raw/tts/s03-03.mp3 |
+| 2026-10-20T13:38:22Z | A2-R-CIN-03 | s04-01 | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 21 | 79779b14c1e7739f | _raw/tts/s04-01.mp3 |
+| 2026-10-20T13:38:23Z | A2-R-CIN-03 | s04-02 | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 32 | 720168f0535bb39d | _raw/tts/s04-02.mp3 |
+| 2026-10-20T13:38:25Z | A2-R-CIN-03 | s04-03 | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 29 | 772302b796938cfb | _raw/tts/s04-03.mp3 |
+| 2026-10-20T13:38:27Z | A2-R-SPO-01 | s01-01 | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 17 | 1ba2f13c0f540f99 | _raw/tts/s01-01.mp3 |
+| 2026-10-20T13:38:28Z | A2-R-SPO-01 | s01-02 | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 13 | 56c7041cb2d571a8 | _raw/tts/s01-02.mp3 |
+| 2026-10-20T13:38:30Z | A2-R-SPO-01 | s01-03 | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 27 | f6519d87be505908 | _raw/tts/s01-03.mp3 |
+| 2026-10-20T13:38:31Z | A2-R-SPO-02 | s03-01 | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 23 | 632315de6c7eb44b | _raw/tts/s03-01.mp3 |
+| 2026-10-20T13:38:33Z | A2-R-SPO-02 | s03-02 | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 25 | 3609d305a413bd43 | _raw/tts/s03-02.mp3 |
+| 2026-10-20T13:38:34Z | A2-R-SPO-02 | s03-03 | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 22 | b4900e4ab6cdcaa2 | _raw/tts/s03-03.mp3 |
+| 2026-10-20T13:38:36Z | A2-R-SPO-03 | s04-01 | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 19 | f4db0b1f1ac3572e | _raw/tts/s04-01.mp3 |
+| 2026-10-20T13:38:37Z | A2-R-SPO-03 | s04-02 | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 24 | cb9463d126f29c09 | _raw/tts/s04-02.mp3 |
+| 2026-10-20T13:38:39Z | A2-R-SPO-03 | s04-03 | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 17 | 7f35f4af81d2248d | _raw/tts/s04-03.mp3 |

@@ -47,7 +47,7 @@
   {
    "id": "s04-01",
    "start": 0.5,
-   "end": 3.4,
+   "end": 1.7,
    "speaker": "ELIF",
    "text": "What was the score?",
    "tr": "Skor neydi?",
@@ -56,22 +56,22 @@
     {
      "w": "What",
      "start": 0.5,
-     "end": 1.25
+     "end": 0.81
     },
     {
      "w": "was",
-     "start": 1.25,
-     "end": 1.87
+     "start": 0.81,
+     "end": 1.07
     },
     {
      "w": "the",
-     "start": 1.87,
-     "end": 2.49
+     "start": 1.07,
+     "end": 1.32
     },
     {
      "w": "score?",
-     "start": 2.49,
-     "end": 3.4,
+     "start": 1.32,
+     "end": 1.7,
      "gloss": "skor"
     }
    ]
@@ -79,7 +79,7 @@
   {
    "id": "s04-02",
    "start": 3.6,
-   "end": 6.7,
+   "end": 5.6,
    "speaker": "MERT",
    "text": "We lost, but it was fun.",
    "tr": "Kaybettik ama eğlenceliydi.",
@@ -88,33 +88,33 @@
     {
      "w": "We",
      "start": 3.6,
-     "end": 4.0
+     "end": 3.86
     },
     {
      "w": "lost,",
-     "start": 4.0,
-     "end": 4.68,
+     "start": 3.86,
+     "end": 4.3,
      "gloss": "kaybetmek"
     },
     {
      "w": "but",
-     "start": 4.68,
-     "end": 5.22
+     "start": 4.3,
+     "end": 4.65
     },
     {
      "w": "it",
-     "start": 5.22,
-     "end": 5.62
+     "start": 4.65,
+     "end": 4.9
     },
     {
      "w": "was",
-     "start": 5.62,
-     "end": 6.15
+     "start": 4.9,
+     "end": 5.25
     },
     {
      "w": "fun.",
-     "start": 6.15,
-     "end": 6.7,
+     "start": 5.25,
+     "end": 5.6,
      "gloss": "eğlenceli"
     }
    ]
@@ -122,7 +122,7 @@
   {
    "id": "s04-03",
    "start": 6.9,
-   "end": 10.0,
+   "end": 9.7,
    "speaker": "ELIF",
    "text": "Next time we win.",
    "tr": "Gelecek sefer kazanırız.",
@@ -131,24 +131,24 @@
     {
      "w": "Next",
      "start": 6.9,
-     "end": 7.81,
+     "end": 7.72,
      "gloss": "gelecek"
     },
     {
      "w": "time",
-     "start": 7.81,
-     "end": 8.72,
+     "start": 7.72,
+     "end": 8.54,
      "gloss": "sefer"
     },
     {
      "w": "we",
-     "start": 8.72,
-     "end": 9.28
+     "start": 8.54,
+     "end": 9.05
     },
     {
      "w": "win.",
-     "start": 9.28,
-     "end": 10.0,
+     "start": 9.05,
+     "end": 9.7,
      "gloss": "kazanmak"
     }
    ]

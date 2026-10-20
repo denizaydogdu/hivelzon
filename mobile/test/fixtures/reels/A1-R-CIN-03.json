@@ -47,7 +47,7 @@
   {
    "id": "s02-01",
    "start": 0.5,
-   "end": 3.4,
+   "end": 1.38,
    "speaker": "CLERK",
    "text": "What would you like?",
    "tr": "Ne istersiniz?",
@@ -56,23 +56,23 @@
     {
      "w": "What",
      "start": 0.5,
-     "end": 1.23,
+     "end": 0.72,
      "gloss": "ne"
     },
     {
      "w": "would",
-     "start": 1.23,
-     "end": 2.09
+     "start": 0.72,
+     "end": 0.98
     },
     {
      "w": "you",
-     "start": 2.09,
-     "end": 2.67
+     "start": 0.98,
+     "end": 1.16
     },
     {
      "w": "like?",
-     "start": 2.67,
-     "end": 3.4,
+     "start": 1.16,
+     "end": 1.38,
      "gloss": "istemek"
     }
    ]
@@ -80,7 +80,7 @@
   {
    "id": "s02-02",
    "start": 6.9,
-   "end": 9.8,
+   "end": 8.74,
    "speaker": "MIA",
    "text": "Popcorn, please. Small.",
    "tr": "Patlamış mısır, lütfen. Küçük.",
@@ -89,19 +89,19 @@
     {
      "w": "Popcorn,",
      "start": 6.9,
-     "end": 8.01,
+     "end": 7.6,
      "gloss": "patlamış mısır"
     },
     {
      "w": "please.",
-     "start": 8.01,
-     "end": 8.98,
+     "start": 7.6,
+     "end": 8.22,
      "gloss": "lütfen"
     },
     {
      "w": "Small.",
-     "start": 8.98,
-     "end": 9.8,
+     "start": 8.22,
+     "end": 8.74,
      "gloss": "küçük"
     }
    ]
@@ -109,7 +109,7 @@
   {
    "id": "s02-03",
    "start": 10.0,
-   "end": 12.7,
+   "end": 12.16,
    "speaker": "CLERK",
    "text": "Here you are. Enjoy the film.",
    "tr": "Buyurun. İyi seyirler.",
@@ -118,34 +118,34 @@
     {
      "w": "Here",
      "start": 10.0,
-     "end": 10.49,
+     "end": 10.39,
      "gloss": "buyurun"
     },
     {
      "w": "you",
-     "start": 10.49,
-     "end": 10.87
+     "start": 10.39,
+     "end": 10.7
     },
     {
      "w": "are.",
-     "start": 10.87,
-     "end": 11.26
+     "start": 10.7,
+     "end": 11.01
     },
     {
      "w": "Enjoy",
-     "start": 11.26,
-     "end": 11.84,
+     "start": 11.01,
+     "end": 11.47,
      "gloss": "keyif al"
     },
     {
      "w": "the",
-     "start": 11.84,
-     "end": 12.22
+     "start": 11.47,
+     "end": 11.78
     },
     {
      "w": "film.",
-     "start": 12.22,
-     "end": 12.7,
+     "start": 11.78,
+     "end": 12.16,
      "gloss": "film"
     }
    ]

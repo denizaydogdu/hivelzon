@@ -47,7 +47,7 @@
   {
    "id": "s04-01",
    "start": 0.5,
-   "end": 3.4,
+   "end": 1.62,
    "speaker": "DENIZ",
    "text": "Are you free tonight?",
    "tr": "Bu akşam boş musun?",
@@ -56,23 +56,23 @@
     {
      "w": "Are",
      "start": 0.5,
-     "end": 1.06
+     "end": 0.72
     },
     {
      "w": "you",
-     "start": 1.06,
-     "end": 1.6
+     "start": 0.72,
+     "end": 0.92
     },
     {
      "w": "free",
-     "start": 1.6,
-     "end": 2.3,
+     "start": 0.92,
+     "end": 1.2,
      "gloss": "boş"
     },
     {
      "w": "tonight?",
-     "start": 2.3,
-     "end": 3.4,
+     "start": 1.2,
+     "end": 1.62,
      "gloss": "bu akşam"
     }
    ]
@@ -80,7 +80,7 @@
   {
    "id": "s04-02",
    "start": 3.6,
-   "end": 6.7,
+   "end": 5.76,
    "speaker": "SELIN",
    "text": "Yes. Let's watch a film tonight.",
    "tr": "Evet. Bu akşam film izleyelim.",
@@ -89,34 +89,34 @@
     {
      "w": "Yes.",
      "start": 3.6,
-     "end": 4.0
+     "end": 3.88
     },
     {
      "w": "Let's",
-     "start": 4.0,
-     "end": 4.6
+     "start": 3.88,
+     "end": 4.3
     },
     {
      "w": "watch",
-     "start": 4.6,
-     "end": 5.19,
+     "start": 4.3,
+     "end": 4.71,
      "gloss": "izlemek"
     },
     {
      "w": "a",
-     "start": 5.19,
-     "end": 5.4
+     "start": 4.71,
+     "end": 4.85
     },
     {
      "w": "film",
-     "start": 5.4,
-     "end": 5.9,
+     "start": 4.85,
+     "end": 5.2,
      "gloss": "film"
     },
     {
      "w": "tonight.",
-     "start": 5.9,
-     "end": 6.7,
+     "start": 5.2,
+     "end": 5.76,
      "gloss": "bu akşam"
     }
    ]
@@ -124,7 +124,7 @@
   {
    "id": "s04-03",
    "start": 6.9,
-   "end": 10.2,
+   "end": 8.9,
    "speaker": "DENIZ",
    "text": "Good idea. I'll bring snacks.",
    "tr": "İyi fikir. Atıştırmalık getiririm.",
@@ -133,30 +133,30 @@
     {
      "w": "Good",
      "start": 6.9,
-     "end": 7.49,
+     "end": 7.26,
      "gloss": "iyi"
     },
     {
      "w": "idea.",
-     "start": 7.49,
-     "end": 8.07,
+     "start": 7.26,
+     "end": 7.61,
      "gloss": "fikir"
     },
     {
      "w": "I'll",
-     "start": 8.07,
-     "end": 8.66
+     "start": 7.61,
+     "end": 7.97
     },
     {
      "w": "bring",
-     "start": 8.66,
-     "end": 9.38,
+     "start": 7.97,
+     "end": 8.4,
      "gloss": "getirmek"
     },
     {
      "w": "snacks.",
-     "start": 9.38,
-     "end": 10.2,
+     "start": 8.4,
+     "end": 8.9,
      "gloss": "atıştırmalık"
     }
    ]

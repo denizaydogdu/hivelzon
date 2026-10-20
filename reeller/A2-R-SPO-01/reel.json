@@ -47,7 +47,7 @@
   {
    "id": "s01-01",
    "start": 0.5,
-   "end": 3.2,
+   "end": 2.26,
    "speaker": "COACH",
    "text": "Stop. Look at me.",
    "tr": "Dur. Bana bak.",
@@ -56,24 +56,24 @@
     {
      "w": "Stop.",
      "start": 0.5,
-     "end": 1.21,
+     "end": 0.96,
      "gloss": "dur"
     },
     {
      "w": "Look",
-     "start": 1.64,
-     "end": 2.21,
+     "start": 1.24,
+     "end": 1.61,
      "gloss": "bak"
     },
     {
      "w": "at",
-     "start": 2.21,
-     "end": 2.42
+     "start": 1.61,
+     "end": 1.75
     },
     {
      "w": "me.",
-     "start": 2.42,
-     "end": 2.92,
+     "start": 1.75,
+     "end": 2.08,
      "gloss": "bana"
     }
    ]
@@ -81,7 +81,7 @@
   {
    "id": "s01-02",
    "start": 3.4,
-   "end": 5.9,
+   "end": 4.44,
    "speaker": "MERT",
    "text": "Sorry, coach.",
    "tr": "Üzgünüm, antrenör.",
@@ -90,13 +90,13 @@
     {
      "w": "Sorry,",
      "start": 3.4,
-     "end": 4.23,
+     "end": 3.75,
      "gloss": "üzgünüm"
     },
     {
      "w": "coach.",
-     "start": 4.51,
-     "end": 5.34,
+     "start": 3.86,
+     "end": 4.21,
      "gloss": "antrenör"
     }
    ]
@@ -104,7 +104,7 @@
   {
    "id": "s01-03",
    "start": 6.1,
-   "end": 9.8,
+   "end": 7.62,
    "speaker": "COACH",
    "text": "Keep your eyes on the ball.",
    "tr": "Gözünü toptan ayırma.",
@@ -113,34 +113,34 @@
     {
      "w": "Keep",
      "start": 6.1,
-     "end": 6.61,
+     "end": 6.31,
      "gloss": "tut"
     },
     {
      "w": "your",
-     "start": 6.61,
-     "end": 6.92
+     "start": 6.31,
+     "end": 6.44
     },
     {
      "w": "eyes",
-     "start": 6.92,
-     "end": 7.44,
+     "start": 6.44,
+     "end": 6.65,
      "gloss": "gözlerin"
     },
     {
      "w": "on",
-     "start": 7.64,
-     "end": 7.85
+     "start": 6.73,
+     "end": 6.82
     },
     {
      "w": "the",
-     "start": 7.85,
-     "end": 8.05
+     "start": 6.82,
+     "end": 6.9
     },
     {
      "w": "ball.",
-     "start": 8.05,
-     "end": 8.67,
+     "start": 6.9,
+     "end": 7.16,
      "gloss": "top"
     }
    ]

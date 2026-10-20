@@ -47,7 +47,7 @@
   {
    "id": "s04-01",
    "start": 0.5,
-   "end": 3.5,
+   "end": 2.02,
    "speaker": "KEREM",
    "text": "I need something to read.",
    "tr": "Okuyacak bir şey arıyorum.",
@@ -56,29 +56,29 @@
     {
      "w": "I",
      "start": 0.5,
-     "end": 0.73
+     "end": 0.62
     },
     {
      "w": "need",
-     "start": 0.73,
-     "end": 1.33,
+     "start": 0.62,
+     "end": 0.92,
      "gloss": "ihtiyaç duymak"
     },
     {
      "w": "something",
-     "start": 1.33,
-     "end": 2.53,
+     "start": 0.92,
+     "end": 1.53,
      "gloss": "bir şey"
     },
     {
      "w": "to",
-     "start": 2.53,
-     "end": 2.9
+     "start": 1.53,
+     "end": 1.72
     },
     {
      "w": "read.",
-     "start": 2.9,
-     "end": 3.5,
+     "start": 1.72,
+     "end": 2.02,
      "gloss": "okumak"
     }
    ]
@@ -86,7 +86,7 @@
   {
    "id": "s04-02",
    "start": 3.7,
-   "end": 6.8,
+   "end": 5.06,
    "speaker": "LENA",
    "text": "You should read this book.",
    "tr": "Bu kitabı okumalısın.",
@@ -95,29 +95,29 @@
     {
      "w": "You",
      "start": 3.7,
-     "end": 4.18
+     "end": 3.91
     },
     {
      "w": "should",
-     "start": 4.18,
-     "end": 5.01,
+     "start": 3.91,
+     "end": 4.27,
      "gloss": "malı/meli"
     },
     {
      "w": "read",
-     "start": 5.01,
-     "end": 5.61,
+     "start": 4.27,
+     "end": 4.54,
      "gloss": "okumak"
     },
     {
      "w": "this",
-     "start": 5.61,
-     "end": 6.2
+     "start": 4.54,
+     "end": 4.8
     },
     {
      "w": "book.",
-     "start": 6.2,
-     "end": 6.8,
+     "start": 4.8,
+     "end": 5.06,
      "gloss": "kitap"
     }
    ]
@@ -125,7 +125,7 @@
   {
    "id": "s04-03",
    "start": 7.0,
-   "end": 10.1,
+   "end": 8.2,
    "speaker": "KEREM",
    "text": "I'll try it, thanks.",
    "tr": "Deneyeceğim, teşekkürler.",
@@ -134,23 +134,23 @@
     {
      "w": "I'll",
      "start": 7.0,
-     "end": 7.81
+     "end": 7.31
     },
     {
      "w": "try",
-     "start": 7.81,
-     "end": 8.47,
+     "start": 7.31,
+     "end": 7.57,
      "gloss": "denemek"
     },
     {
      "w": "it,",
-     "start": 8.47,
-     "end": 8.96
+     "start": 7.57,
+     "end": 7.76
     },
     {
      "w": "thanks.",
-     "start": 8.96,
-     "end": 10.1,
+     "start": 7.76,
+     "end": 8.2,
      "gloss": "teşekkürler"
     }
    ]

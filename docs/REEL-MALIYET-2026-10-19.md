@@ -191,3 +191,25 @@ Kullanıcı kalan **15 video** için bütçe onayı verdi (2026-10-20, ≈50 kr 
   Önceki "≈3.300 karakter" tahmini yanlıştı; gerçek ölçüm 1.065.
 - **Maliyet sonrası durum:** 3 örnek 16,50 + kalan 15 video 45,00 = **61,50 kr**; proje kredisi
   **236,56 kr**. Seslendirme Higgsfield kredisi harcamıyor (ElevenLabs karakter defteri).
+
+## 9. Seslendirme — 15 video, ayrı hesap (2026-10-20)
+
+Kullanıcı kararı: ana ElevenLabs kotası dolduğu için (9.851 / 10.000; kalan 149) ses **ayrı bir
+hesapla** üretildi. Ana hesabın anahtarı ve defteri **değiştirilmedi**.
+
+| | Değer |
+|---|---|
+| Hesap planı | **free**, 10.000 karakter/ay, 0 kullanılmış |
+| Üretilen | **1.065 karakter / 45 cue** (15 video) |
+| Defter | `kitaplar/_maliyet/elevenlabs-karakter-alt.json` → `{2026-10: 1065, 45}` |
+| Ana defter | `kitaplar/_maliyet/elevenlabs-karakter.json` → **9.851 / 10.000 (değişmedi)** |
+| Higgsfield kredisi | **harcanmadı** (236,56 kr) |
+| Ses | Sarah `EXAVITQu4vr4xnSDxMaL`, `eleven_v3`, hız 0.9 (örneklerle aynı) |
+
+- 18 video metni toplamı **1.285 karakter** (3 örnek 220 + kalan 15 video 1.065).
+- **Kota ayrımı:** ayrı hesap kullanıldığı için `HIVELZON_TTS_LEDGER` ayrı dosyaya yönlendirildi;
+  `tts_reel.py` ana defteri okumaz/yazmaz. Ayrıntı: `docs/REEL-PAKETI.md` §8.
+- **Not (free plan):** ElevenLabs free planı ticari kullanımda atıf ister. Bu üretim **pilot/deneme**
+  içindir; yayın öncesi ticari plana geçiş H-006 kapsamında değerlendirilir.
+- **Sonuç:** 15 paket yeniden kuruldu (`ses=var`), `reel-lint` **18 reel · 0 hata · 0 uyarı**;
+  `reel.audio.fit` hiçbir videoda tetiklenmedi (son kare uzatması gerekmedi).

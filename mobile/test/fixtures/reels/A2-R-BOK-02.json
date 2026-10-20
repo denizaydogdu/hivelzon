@@ -47,7 +47,7 @@
   {
    "id": "s03-01",
    "start": 0.5,
-   "end": 3.5,
+   "end": 1.94,
    "speaker": "KEREM",
    "text": "What is your book about?",
    "tr": "Kitabın ne hakkında?",
@@ -56,28 +56,28 @@
     {
      "w": "What",
      "start": 0.5,
-     "end": 1.13
+     "end": 0.8
     },
     {
      "w": "is",
-     "start": 1.13,
-     "end": 1.5
+     "start": 0.8,
+     "end": 0.98
     },
     {
      "w": "your",
-     "start": 1.5,
-     "end": 2.13
+     "start": 0.98,
+     "end": 1.28
     },
     {
      "w": "book",
-     "start": 2.13,
-     "end": 2.75,
+     "start": 1.28,
+     "end": 1.58,
      "gloss": "kitap"
     },
     {
      "w": "about?",
-     "start": 2.75,
-     "end": 3.5,
+     "start": 1.58,
+     "end": 1.94,
      "gloss": "hakkında"
     }
    ]
@@ -85,7 +85,7 @@
   {
    "id": "s03-02",
    "start": 3.7,
-   "end": 6.8,
+   "end": 5.54,
    "speaker": "LENA",
    "text": "This story is about a young sailor.",
    "tr": "Bu hikâye genç bir denizciyi anlatıyor.",
@@ -94,40 +94,40 @@
     {
      "w": "This",
      "start": 3.7,
-     "end": 4.14
+     "end": 3.96
     },
     {
      "w": "story",
-     "start": 4.14,
-     "end": 4.67,
+     "start": 3.96,
+     "end": 4.28,
      "gloss": "hikâye"
     },
     {
      "w": "is",
-     "start": 4.67,
-     "end": 4.94
+     "start": 4.28,
+     "end": 4.44
     },
     {
      "w": "about",
-     "start": 4.94,
-     "end": 5.47,
+     "start": 4.44,
+     "end": 4.75,
      "gloss": "hakkında"
     },
     {
      "w": "a",
-     "start": 5.47,
-     "end": 5.65
+     "start": 4.75,
+     "end": 4.86
     },
     {
      "w": "young",
-     "start": 5.65,
-     "end": 6.18,
+     "start": 4.86,
+     "end": 5.17,
      "gloss": "genç"
     },
     {
      "w": "sailor.",
-     "start": 6.18,
-     "end": 6.8,
+     "start": 5.17,
+     "end": 5.54,
      "gloss": "denizci"
     }
    ]
@@ -135,7 +135,7 @@
   {
    "id": "s03-03",
    "start": 7.0,
-   "end": 10.1,
+   "end": 8.52,
    "speaker": "KEREM",
    "text": "That sounds interesting.",
    "tr": "Kulağa ilginç geliyor.",
@@ -144,18 +144,18 @@
     {
      "w": "That",
      "start": 7.0,
-     "end": 7.65
+     "end": 7.32
     },
     {
      "w": "sounds",
-     "start": 7.65,
-     "end": 8.55,
+     "start": 7.32,
+     "end": 7.76,
      "gloss": "kulağa gelmek"
     },
     {
      "w": "interesting.",
-     "start": 8.55,
-     "end": 10.1,
+     "start": 7.76,
+     "end": 8.52,
      "gloss": "ilginç"
     }
    ]

@@ -172,7 +172,9 @@ git dışında (`reeller/**/_raw/`, `clips/`, `_build/`).
 - Kayıt: `_raw/jobs.json`, `_raw/clip-jobs.json`, `_raw/tts/timing.json` + `reeller/PROMPTS.md`
   (job kimliği, kredi, sha, tarih). İstem değişirse sha değişir, yeniden üretim ayrı görünür.
 - TTS **ortak defter** kullanır: `kitaplar/_maliyet/elevenlabs-karakter.json` (aylık tavan
-  `HIVELZON_TTS_MONTHLY_CHAR_CAP`; tavan yoksa üretim kapalıdır).
+  `HIVELZON_TTS_MONTHLY_CHAR_CAP`; tavan yoksa üretim kapalıdır). **Ayrı hesap** kullanılırsa
+  `HIVELZON_TTS_LEDGER` ile ayrı deftere yönlendirilir; ana defter okunmaz/yazılmaz
+  (2026-10-20: `elevenlabs-karakter-alt.json`).
 - **Ses sığması:** bir cue'nun sesi kendi çekim penceresine (`len − aoff`) sığmalıdır; sığmazsa kurgu
   sesi **keser** → `reel-lint` hatası `reel.audio.fit`. Çözüm: son kareyi uzatmak (metni kısaltmak değil).
 - **Cue hizası:** çekim süresi değişince elle yazılan alt yazı zamanları kayar. `build_reel.py` cue

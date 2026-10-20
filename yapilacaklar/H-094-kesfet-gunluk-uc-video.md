@@ -100,3 +100,12 @@ Kendi dalında; `git revert`. İçerik paketleri `/reels/` altında ayrı durur;
   - **Testler:** `pytest` **368**; `flutter test` **1277**; `flutter analyze` temiz. Güncellenen testler: günlük seçki havuzu (kategori başına 3 video; "Bugün" hâlâ 3), geri çekilen CIN-01 yerine **aynı seviye-kategoriden yedek CIN-02**, boş Spor havuzunda seçili kategorilerden tamamlama (CIN-01 + BOK-01 + BOK-02; farklı seviyeden doldurma yok), katalog/http listeleri 18 kimlik, `_trial_ids` 18, "Tekrar" golden'ı (üç CIN de gösterilmiş → en eski CIN-01 seçilir, rozet korunur).
   - **Maliyet:** 61,50 kr toplam (3 örnek 16,50 + kalan 15 video 45,00); bakiye **236,56 kr**. Ayrıntı: `docs/REEL-MALIYET-2026-10-19.md` §8.
   - **Sıradaki:** (1) sesi ay başında/ayrı hesapla topluca üret (`tts_reel.py --execute` + `build_reel.py --force`), (2) H-092 kullanıcı pilotu (P4 hazır), (3) insan değerlendirmesi (stil/karakter). **Commit:** bu tur (kaynaklar, paket düzeni, testler, belgeler) — onay bekleniyor.
+- 2026-10-20 (akşam): **15 videonun sesi ayrı ElevenLabs hesabıyla üretildi; 18 paket sesli.**
+  - **Neden ayrı hesap:** ana hesabın aylık ortak defteri **9.851 / 10.000** (kalan 149), 15 video **1.065** karakter istiyor. Kullanıcı "başka hesap/plan" dedi; ana anahtar ve ana defter **değiştirilmedi**.
+  - **Üretim:** 45 cue · **1.065 karakter** (free plan 10.000). Defter `kitaplar/_maliyet/elevenlabs-karakter-alt.json` (`HIVELZON_TTS_LEDGER`); ana defter 9.851'de kaldı. Ses: Sarah `eleven_v3` 0.9. Kayıtlar `PROMPTS.md`'de (ayrı hesap notuyla).
+  - **Kurgu:** 15 paket `build_reel.py --force` ile yeniden kuruldu → **ses=var**; süreler değişmedi (11,9–13,4 sn). `reel.audio.fit` hiçbir videoda tetiklenmedi; son kare uzatması gerekmedi.
+  - **Lint:** **18 reel · 0 hata · 0 uyarı** (`--write-reports` ile 18 rapor tazelendi).
+  - **Kaynak eşitleme:** ses sonrası yeniden hesaplanan `duration` + `cues` 15 kaynak `reel.json`'a yazıldı; mobil fixture'lar 18 paketle yenilendi.
+  - **Regresyon (H-039):** tam test koşusunda aralıklı düşen **"Ref after dispose"** hatası bulundu: `OnboardingGateNotifier._check` okuma sürerken kapsayıcı kapanınca `state` yazıyordu. `ref.mounted` guard'ı eklendi (`_check`, `complete`, `restart`); yeni test `mobile/test/features/onboarding/onboarding_gate_test.dart` düzeltme olmadan **düşüyor**, düzeltmeyle geçiyor.
+  - **Testler:** `pytest` **368**, `flutter test` **1278** (yeni H-039 regresyonu), `flutter analyze` temiz.
+  - **Sıradaki:** H-092 kullanıcı pilotu (P4 hazır, 18 paket sesli) + insan değerlendirmesi. **Commit:** onay bekleniyor.

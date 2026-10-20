@@ -47,7 +47,7 @@
   {
    "id": "s01-01",
    "start": 0.5,
-   "end": 3.4,
+   "end": 2.5,
    "speaker": "USHER",
    "text": "Good evening. Ticket, please.",
    "tr": "İyi akşamlar. Biletiniz, lütfen.",
@@ -56,24 +56,24 @@
     {
      "w": "Good",
      "start": 0.5,
-     "end": 1.04
+     "end": 0.87
     },
     {
      "w": "evening.",
-     "start": 1.04,
-     "end": 1.89,
+     "start": 0.87,
+     "end": 1.46,
      "gloss": "akşam"
     },
     {
      "w": "Ticket,",
-     "start": 1.89,
-     "end": 2.65,
+     "start": 1.46,
+     "end": 1.98,
      "gloss": "bilet"
     },
     {
      "w": "please.",
-     "start": 2.65,
-     "end": 3.4,
+     "start": 1.98,
+     "end": 2.5,
      "gloss": "lütfen"
     }
    ]
@@ -81,7 +81,7 @@
   {
    "id": "s01-02",
    "start": 3.6,
-   "end": 6.3,
+   "end": 5.28,
    "speaker": "MIA",
    "text": "Where is my seat?",
    "tr": "Koltugum nerede?",
@@ -90,23 +90,23 @@
     {
      "w": "Where",
      "start": 3.6,
-     "end": 4.55,
+     "end": 4.19,
      "gloss": "nerede"
     },
     {
      "w": "is",
-     "start": 4.55,
-     "end": 5.02
+     "start": 4.19,
+     "end": 4.48
     },
     {
      "w": "my",
-     "start": 5.02,
-     "end": 5.51
+     "start": 4.48,
+     "end": 4.79
     },
     {
      "w": "seat?",
-     "start": 5.51,
-     "end": 6.3,
+     "start": 4.79,
+     "end": 5.28,
      "gloss": "koltuk"
     }
    ]
@@ -114,7 +114,7 @@
   {
    "id": "s01-03",
    "start": 6.5,
-   "end": 9.6,
+   "end": 8.42,
    "speaker": "USHER",
    "text": "Row five, next to the screen.",
    "tr": "Beşinci sıra, perdenin yanında.",
@@ -123,34 +123,34 @@
     {
      "w": "Row",
      "start": 6.5,
-     "end": 6.94,
+     "end": 6.77,
      "gloss": "sıra"
     },
     {
      "w": "five,",
-     "start": 6.94,
-     "end": 7.49
+     "start": 6.77,
+     "end": 7.11
     },
     {
      "w": "next",
-     "start": 7.49,
-     "end": 8.05,
+     "start": 7.11,
+     "end": 7.46,
      "gloss": "yanında"
     },
     {
      "w": "to",
-     "start": 8.05,
-     "end": 8.37
+     "start": 7.46,
+     "end": 7.66
     },
     {
      "w": "the",
-     "start": 8.37,
-     "end": 8.82
+     "start": 7.66,
+     "end": 7.94
     },
     {
      "w": "screen.",
-     "start": 8.82,
-     "end": 9.6,
+     "start": 7.94,
+     "end": 8.42,
      "gloss": "perde"
     }
    ]
