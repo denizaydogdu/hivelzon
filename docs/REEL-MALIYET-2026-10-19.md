@@ -209,7 +209,5 @@ hesapla** üretildi. Ana hesabın anahtarı ve defteri **değiştirilmedi**.
 - 18 video metni toplamı **1.285 karakter** (3 örnek 220 + kalan 15 video 1.065).
 - **Kota ayrımı:** ayrı hesap kullanıldığı için `HIVELZON_TTS_LEDGER` ayrı dosyaya yönlendirildi;
   `tts_reel.py` ana defteri okumaz/yazmaz. Ayrıntı: `docs/REEL-PAKETI.md` §8.
-- **Not (free plan):** ElevenLabs free planı ticari kullanımda atıf ister. Bu üretim **pilot/deneme**
-  içindir; yayın öncesi ticari plana geçiş H-006 kapsamında değerlendirilir.
 - **Sonuç:** 15 paket yeniden kuruldu (`ses=var`), `reel-lint` **18 reel · 0 hata · 0 uyarı**;
   `reel.audio.fit` hiçbir videoda tetiklenmedi (son kare uzatması gerekmedi).
