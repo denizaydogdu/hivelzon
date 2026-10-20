@@ -246,10 +246,10 @@ void main() {
       expect(find.text('Sinema havuzu'), findsOneWidget);
       expect(
         h.feedState(tester).feed.whereType<VideoEntry>().map((e) => e.video.id),
-        ['A1-R-CIN-01'],
+        ['A1-R-CIN-01', 'A1-R-CIN-02', 'A1-R-CIN-03'],
       );
       // Havuzda "daha fazla" düğmesi yok (o zaten havuz).
-      await _jump(tester, h, 2);
+      await _jump(tester, h, h.feedState(tester).feed.length - 1);
       expect(_key('daily-end-card'), findsOneWidget);
       expect(_key('daily-end-more'), findsNothing);
 
@@ -257,7 +257,7 @@ void main() {
       expect(find.text('Spor havuzu'), findsOneWidget);
       expect(
         h.feedState(tester).feed.whereType<VideoEntry>().map((e) => e.video.id),
-        ['A1-R-SPO-01'],
+        ['A1-R-SPO-01', 'A1-R-SPO-02', 'A1-R-SPO-03'],
       );
 
       // "Hikâye klipleri" eski akışa döner (kaynak türleri karışmaz).
@@ -316,7 +316,8 @@ void main() {
       expect(find.text('Seviye: A1'), findsOneWidget);
       expect(
         h.feedState(tester).feed.whereType<VideoEntry>().map((e) => e.video.id),
-        _dailyOrder,
+        // A1-R-CIN-01 bugün gösterildi; dönüşte aynı kategoriden sıradaki gelir.
+        ['A1-R-CIN-02', 'A1-R-SPO-01', 'A1-R-BOK-01'],
       );
       final stored = await tester.runAsync(
         () => DiscoverStore(h.db).reelLevel(),
@@ -390,11 +391,13 @@ void main() {
         catalog: catalogWith(withdraw: ['A1-R-CIN-01']),
       );
       final s = h.feedState(tester);
+      // Geri çekilen CIN-01 oynatılmaz; aynı kategori-seviyeden yedek gelir.
       expect(s.feed.whereType<VideoEntry>().map((e) => e.video.id), [
+        'A1-R-CIN-02',
         'A1-R-SPO-01',
         'A1-R-BOK-01',
       ]);
-      expect(find.text('Bugün senin için 2 kısa video'), findsOneWidget);
+      expect(find.text('Bugün senin için 3 kısa video'), findsOneWidget);
       expect(_key('reel-page-A1-R-CIN-01'), findsNothing);
       await h.unmount(tester);
     });
@@ -478,10 +481,12 @@ void main() {
 
   group('boş ve hata durumları', () {
     testWidgets('havuz boşsa sakin boş durum ve "Bugüne dön"', (tester) async {
-      // Spor reelleri geri çekilmiş: Spor havuzu boş, günlük sette Sinema var.
+      // Bütün Spor reelleri geri çekilmiş: Spor havuzu boş, günlük sette Sinema ve Kitap var.
       final h = await _daily(
         tester,
-        catalog: catalogWith(withdraw: ['A1-R-BOK-01', 'A1-R-SPO-01']),
+        catalog: catalogWith(
+          withdraw: ['A1-R-SPO-01', 'A1-R-SPO-02', 'A1-R-SPO-03'],
+        ),
       );
       await _tapChip(tester, h, 'chip-sport');
       expect(find.text('Spor havuzu'), findsOneWidget);
@@ -492,9 +497,11 @@ void main() {
       await _tap(tester, h, 'reels-today');
       expect(
         h.feedState(tester).feed.whereType<VideoEntry>().map((e) => e.video.id),
-        ['A1-R-CIN-01'],
+        // Spor yok: seçili kategorilerden (Sinema, Kitap) üçe tamamlanır —
+        // farklı seviyeden doldurma yok, aile tekrarı yok.
+        ['A1-R-CIN-01', 'A1-R-BOK-01', 'A1-R-BOK-02'],
       );
-      expect(find.text('Bugün senin için 1 kısa video'), findsOneWidget);
+      expect(find.text('Bugün senin için 3 kısa video'), findsOneWidget);
       await h.unmount(tester);
     });
 

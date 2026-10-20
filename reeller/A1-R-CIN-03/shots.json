@@ -1,0 +1,87 @@
+{
+ "schemaVersion": 1,
+ "id": "A1-R-CIN-03",
+ "model": "gpt_image_2_5",
+ "params": {
+  "aspect_ratio": "9:16",
+  "resolution": "2k",
+  "quality": "low"
+ },
+ "prefix": "Warm animated-series illustration, graphic-novel style, clean ink lines, soft cel shading, warm everyday palette with soft natural light, mature tone suitable for teens and adults, not childish, no text, no letters, no numbers, no logos.",
+ "shots": [
+  {
+   "name": "k1",
+   "prompt": "Wide shot at a small cinema snack counter in the evening: a glass case with plain, label-free snacks, a popcorn machine glowing warm, a soda fountain with blank buttons. Mia, in her mustard-yellow jacket with dark curly hair in a low bun, stands at the counter; behind it the snack clerk, a woman of 30 in a red apron over a white shirt, smiles in welcome. Warm brass light. Vertical composition. Vertical composition.",
+   "ref": null
+  },
+  {
+   "name": "k2",
+   "prompt": "Use the reference image for the characters and the setting: keep the same faces, hair, clothes, colours and lighting. Close-up over the glass counter: the clerk's hand scoops golden popcorn from the machine into a plain, stripe-free paper box with both hands; steam and a few kernels in the warm light, Mia's sleeve in the foreground. Shallow depth of field. Vertical composition. Vertical composition.",
+   "ref": "k1"
+  },
+  {
+   "name": "k3",
+   "prompt": "Use the reference image for the characters and the setting: keep the same faces, hair, clothes, colours and lighting. Medium shot across the counter: Mia points at the smallest plain cup on the shelf and asks, polite and a little shy; the clerk nods, already reaching for it. Warm counter light, blurred snack shelves behind. Vertical composition. Vertical composition.",
+   "ref": "k1"
+  },
+  {
+   "name": "k4",
+   "prompt": "Use the reference image for the characters and the setting: keep the same faces, hair, clothes, colours and lighting. The clerk hands Mia the plain popcorn box; Mia takes it with both hands and smiles, tote bag on her shoulder; the clerk gestures toward the hall doorway. Warm light, clean counter. Vertical composition. Vertical composition.",
+   "ref": "k1"
+  }
+ ],
+ "timeline": [
+  {
+   "shot": "k1",
+   "len": 3.4,
+   "move": [
+    1.0,
+    1.06,
+    0.45,
+    0.5,
+    0.5,
+    0.55
+   ],
+   "audio": "s02-01"
+  },
+  {
+   "shot": "k2",
+   "len": 3.6,
+   "move": [
+    1.06,
+    1.0,
+    0.5,
+    0.55,
+    0.55,
+    0.5
+   ],
+   "clip": "clips/cin-k2.mp4"
+  },
+  {
+   "shot": "k3",
+   "len": 3.4,
+   "move": [
+    1.06,
+    1.0,
+    0.5,
+    0.55,
+    0.55,
+    0.5
+   ],
+   "audio": "s02-02"
+  },
+  {
+   "shot": "k4",
+   "len": 3.2,
+   "move": [
+    1.06,
+    1.0,
+    0.5,
+    0.55,
+    0.55,
+    0.5
+   ],
+   "audio": "s02-03"
+  }
+ ]
+}

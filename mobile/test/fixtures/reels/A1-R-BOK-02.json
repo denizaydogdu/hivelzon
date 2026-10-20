@@ -1,0 +1,147 @@
+{
+ "schemaVersion": 1,
+ "id": "A1-R-BOK-02",
+ "contentVersion": 1,
+ "sourceType": "standalone",
+ "category": "BOK",
+ "categoryTr": "Kitap",
+ "level": "A1",
+ "titleTr": "Beğeni",
+ "learningObjective": "Bir hikâye hakkında ne düşündüğünü söylemek",
+ "family": "FAM-BOK-LIKE",
+ "duration": 12.1,
+ "video": "A1-R-BOK-02.mp4",
+ "poster": "A1-R-BOK-02.webp",
+ "image": "stills/s01.webp",
+ "audio": "audio/s01-02.m4a",
+ "status": "DRAFT",
+ "target": {
+  "kind": "phrase",
+  "en": "I like this story.",
+  "tr": "Bu hikâyeyi seviyorum.",
+  "cue": "s01-02"
+ },
+ "practice": {
+  "promptTr": "Lena hikâye hakkında ne diyor?",
+  "explainTr": "Lena hikâyeyi seviyor.",
+  "options": [
+   {
+    "text": "Seviyor",
+    "lang": "tr",
+    "correct": true
+   },
+   {
+    "text": "Sevmiyor",
+    "lang": "tr",
+    "correct": false
+   },
+   {
+    "text": "Henüz okumadı",
+    "lang": "tr",
+    "correct": false
+   }
+  ]
+ },
+ "related": [],
+ "cues": [
+  {
+   "id": "s01-01",
+   "start": 0.5,
+   "end": 3.2,
+   "speaker": "KEREM",
+   "text": "Is the book good?",
+   "tr": "Kitap güzel mi?",
+   "chunks": [],
+   "words": [
+    {
+     "w": "Is",
+     "start": 0.5,
+     "end": 0.97
+    },
+    {
+     "w": "the",
+     "start": 0.97,
+     "end": 1.62
+    },
+    {
+     "w": "book",
+     "start": 1.62,
+     "end": 2.41,
+     "gloss": "kitap"
+    },
+    {
+     "w": "good?",
+     "start": 2.41,
+     "end": 3.2,
+     "gloss": "güzel"
+    }
+   ]
+  },
+  {
+   "id": "s01-02",
+   "start": 3.4,
+   "end": 6.1,
+   "speaker": "LENA",
+   "text": "I like this story.",
+   "tr": "Bu hikâyeyi seviyorum.",
+   "chunks": [],
+   "words": [
+    {
+     "w": "I",
+     "start": 3.4,
+     "end": 3.71
+    },
+    {
+     "w": "like",
+     "start": 3.71,
+     "end": 4.44,
+     "gloss": "sevmek"
+    },
+    {
+     "w": "this",
+     "start": 4.44,
+     "end": 5.2
+    },
+    {
+     "w": "story.",
+     "start": 5.2,
+     "end": 6.1,
+     "gloss": "hikâye"
+    }
+   ]
+  },
+  {
+   "id": "s01-03",
+   "start": 9.4,
+   "end": 12.1,
+   "speaker": "KEREM",
+   "text": "Then take it home.",
+   "tr": "Öyleyse eve götür.",
+   "chunks": [],
+   "words": [
+    {
+     "w": "Then",
+     "start": 9.4,
+     "end": 10.16
+    },
+    {
+     "w": "take",
+     "start": 10.16,
+     "end": 10.89,
+     "gloss": "götürmek"
+    },
+    {
+     "w": "it",
+     "start": 10.89,
+     "end": 11.34
+    },
+    {
+     "w": "home.",
+     "start": 11.34,
+     "end": 12.1,
+     "gloss": "ev"
+    }
+   ]
+  }
+ ]
+}

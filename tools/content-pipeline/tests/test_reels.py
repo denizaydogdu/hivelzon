@@ -75,15 +75,13 @@ def _codes(report) -> set[str]:
 def test_discover_finds_trial_packages():
     names = [reel_folder(p) for p in discover_reels(TRIAL)]
     assert names == _trial_ids()
-    # Pilot kapsamı: 3 kategori × 2 seviye (A1/A2) = 6 deneme paketi (plan §7).
-    assert names == [
-        "A1-R-BOK-01",
-        "A1-R-CIN-01",
-        "A1-R-SPO-01",
-        "A2-R-BOK-01",
-        "A2-R-CIN-01",
-        "A2-R-SPO-01",
-    ]
+    # Pilot kapsamı: 3 kategori × 2 seviye × 3 video = 18 paket (plan §9).
+    assert len(names) == 18
+    for level in ("A1", "A2"):
+        for cat in ("BOK", "CIN", "SPO"):
+            assert [f"{level}-R-{cat}-0{i}" for i in (1, 2, 3)] == [
+                n for n in names if n.startswith(f"{level}-R-{cat}-")
+            ]
 
 
 def test_load_trial_reel_reads_identity_and_target():

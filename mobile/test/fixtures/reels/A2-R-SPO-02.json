@@ -1,0 +1,153 @@
+{
+ "schemaVersion": 1,
+ "id": "A2-R-SPO-02",
+ "contentVersion": 1,
+ "sourceType": "standalone",
+ "category": "SPO",
+ "categoryTr": "Spor",
+ "level": "A2",
+ "titleTr": "Antrenman günü",
+ "learningObjective": "Antrenman düzenini anlatmak",
+ "family": "FAM-SPO-ROUTINE",
+ "duration": 12.4,
+ "video": "A2-R-SPO-02.mp4",
+ "poster": "A2-R-SPO-02.webp",
+ "image": "stills/s03.webp",
+ "audio": "audio/s03-02.m4a",
+ "status": "DRAFT",
+ "target": {
+  "kind": "phrase",
+  "en": "I practice every Tuesday.",
+  "tr": "Her salı çalışıyorum.",
+  "cue": "s03-02"
+ },
+ "practice": {
+  "promptTr": "Mert ne zaman çalışıyor?",
+  "explainTr": "Mert her salı antrenman yapıyor.",
+  "options": [
+   {
+    "text": "Her salı",
+    "lang": "tr",
+    "correct": true
+   },
+   {
+    "text": "Her gün",
+    "lang": "tr",
+    "correct": false
+   },
+   {
+    "text": "Yalnız pazar",
+    "lang": "tr",
+    "correct": false
+   }
+  ]
+ },
+ "related": [],
+ "cues": [
+  {
+   "id": "s03-01",
+   "start": 0.5,
+   "end": 3.5,
+   "speaker": "COACH",
+   "text": "How often do you train?",
+   "tr": "Ne sıklıkla çalışıyorsun?",
+   "chunks": [],
+   "words": [
+    {
+     "w": "How",
+     "start": 0.5,
+     "end": 1.02
+    },
+    {
+     "w": "often",
+     "start": 1.02,
+     "end": 1.8,
+     "gloss": "sıklıkla"
+    },
+    {
+     "w": "do",
+     "start": 1.8,
+     "end": 2.2
+    },
+    {
+     "w": "you",
+     "start": 2.2,
+     "end": 2.72
+    },
+    {
+     "w": "train?",
+     "start": 2.72,
+     "end": 3.5,
+     "gloss": "çalışmak"
+    }
+   ]
+  },
+  {
+   "id": "s03-02",
+   "start": 3.7,
+   "end": 6.6,
+   "speaker": "MERT",
+   "text": "I practice every Tuesday.",
+   "tr": "Her salı çalışıyorum.",
+   "chunks": [],
+   "words": [
+    {
+     "w": "I",
+     "start": 3.7,
+     "end": 3.93
+    },
+    {
+     "w": "practice",
+     "start": 3.93,
+     "end": 4.98,
+     "gloss": "çalışmak"
+    },
+    {
+     "w": "every",
+     "start": 4.98,
+     "end": 5.67,
+     "gloss": "her"
+    },
+    {
+     "w": "Tuesday.",
+     "start": 5.67,
+     "end": 6.6,
+     "gloss": "salı"
+    }
+   ]
+  },
+  {
+   "id": "s03-03",
+   "start": 6.8,
+   "end": 10.1,
+   "speaker": "COACH",
+   "text": "That's a good routine.",
+   "tr": "Bu iyi bir düzen.",
+   "chunks": [],
+   "words": [
+    {
+     "w": "That's",
+     "start": 6.8,
+     "end": 7.86
+    },
+    {
+     "w": "a",
+     "start": 7.86,
+     "end": 8.14
+    },
+    {
+     "w": "good",
+     "start": 8.14,
+     "end": 8.89,
+     "gloss": "iyi"
+    },
+    {
+     "w": "routine.",
+     "start": 8.89,
+     "end": 10.1,
+     "gloss": "düzen"
+    }
+   ]
+  }
+ ]
+}

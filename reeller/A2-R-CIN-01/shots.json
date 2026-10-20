@@ -1,0 +1,86 @@
+{
+ "schemaVersion": 1,
+ "id": "A2-R-CIN-01",
+ "model": "gpt_image_2_5",
+ "params": {
+  "aspect_ratio": "9:16",
+  "resolution": "2k",
+  "quality": "low"
+ },
+ "prefix": "Warm animated-series illustration, graphic-novel style, clean ink lines, soft cel shading, warm everyday palette with soft natural light, mature tone suitable for teens and adults, not childish, no text, no letters, no numbers, no logos.",
+ "shots": [
+  {
+   "name": "k1",
+   "prompt": "Wide shot at night on the pavement outside a small independent cinema: the glowing marquee has a completely blank sign board, the posters in the glass cases are abstract and unreadable. Selin, a woman of 22 with long dark hair, an olive-green coat and a shoulder bag, stands with her hands in her pockets; Deniz, a man of 24 with short dark hair, round glasses and a denim jacket, leans against the wall beside her. Both look relaxed after the film. Warm street lamp light, wet pavement reflections. Vertical composition.",
+   "ref": null
+  },
+  {
+   "name": "k2",
+   "prompt": "Use the reference image for the characters and the setting: keep the same faces, hair, clothes, colours and lighting. Medium two-shot outside the cinema: Deniz turns to Selin with a curious smile and asks, one hand raised slightly; Selin looks at him, thinking, her head tilted. Blank marquee lights blur behind them. Vertical composition.",
+   "ref": "k1"
+  },
+  {
+   "name": "k3",
+   "prompt": "Use the reference image for the characters and the setting: keep the same faces, hair, clothes, colours and lighting. Medium shot: Selin answers, gesturing with one hand as she explains, her expression warm but honest; Deniz listens with a small laugh, nodding. Warm lamp light on their faces, dark street and blank posters softly blurred. Vertical composition.",
+   "ref": "k1"
+  },
+  {
+   "name": "k4",
+   "prompt": "Use the reference image for the characters and the setting: keep the same faces, hair, clothes, colours and lighting. Wide shot from behind: the two walk away along the pavement side by side, still talking, the cinema entrance glowing warm behind them, blank marquee above. Night street, soft reflections. Vertical composition.",
+   "ref": "k1"
+  }
+ ],
+ "timeline": [
+  {
+   "shot": "k1",
+   "len": 3.5,
+   "move": [
+    1.0,
+    1.06,
+    0.45,
+    0.5,
+    0.5,
+    0.55
+   ],
+   "audio": "s03-01"
+  },
+  {
+   "shot": "k2",
+   "len": 3.6,
+   "move": [
+    1.08,
+    1.01,
+    0.55,
+    0.5,
+    0.5,
+    0.5
+   ],
+   "audio": "s03-02"
+  },
+  {
+   "shot": "k3",
+   "len": 3.9,
+   "move": [
+    1.0,
+    1.1,
+    0.5,
+    0.5,
+    0.5,
+    0.45
+   ],
+   "audio": "s03-03"
+  },
+  {
+   "shot": "k4",
+   "len": 2.5,
+   "move": [
+    1.06,
+    1.0,
+    0.5,
+    0.55,
+    0.55,
+    0.5
+   ]
+  }
+ ]
+}

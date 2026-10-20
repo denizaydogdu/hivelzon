@@ -166,3 +166,28 @@ Kullanıcı 3 örnek için bütçe onayı verdi (2026-10-19). Ölçülen birim f
 - **Süreler:** ses sığsın diye CIN son karesi 2,4 → 3,0 sn, BOK 2,3 → 3,3 sn (kesilen ses yok);
   paket süreleri **12,6 / 11,0 / 11,0 sn**, yükseklik ≈ −15,8 LUFS, tepe −5…−6 dBFS.
 - 18 video için **harcama onayı yok**; güncel tahmin senaryo A ile ≈55 kr.
+
+## 8. Gerçekleşen — kalan 15 video (2026-10-20)
+
+Kullanıcı kalan **15 video** için bütçe onayı verdi (2026-10-20, ≈50 kr üst sınır).
+Ölçülen birim fiyatlarla harcama:
+
+| Kalem | Adet | Birim | Kr |
+|---|---:|---:|---:|
+| Görsel — `gpt_image_2_5` 9:16 2k `low` | 60 | 0,50 | 30,00 |
+| Hareket — `seedance_2_0_mini` 9:16 720p 5 sn (sessiz) | 3 | 5,00 | 15,00 |
+| Yeniden üretim | 0 | — | 0,00 |
+| Ses — ElevenLabs | — | — | henüz yok (kota) |
+| **Toplam** | | | **45,00** |
+
+- Bakiye **281,56 → 236,56** (`higgsfield account status`, 2026-10-20).
+- Tahmin ≈50 kr idi; **45,00 kr** harcandı (yeniden üretim gerekmedi). Onaylanan üst sınır korundu.
+- Plandan sapma (üst sınır içinde): görseller **2k low** (0,50 kr; 1k medium ile aynı fiyat),
+  hareket **720p 5 sn** (480p yerine; doğrudan 720×1280), Kitap reellerinde yalnız Ken Burns.
+- **Klipler:** `A1-R-CIN-03` k2 (`cin-k2`), `A1-R-SPO-02` k3 (`spo-k3`), `A1-R-BOK-02` k3 (`bok-k3`).
+- **Ses (engel):** 15 reelin metni **1.065 karakter** (18 video toplamı **1.285**). Aylık ortak
+  defterde **9.851 / 10.000** dolu → kalan **149 karakter** yetmiyor. Ses, ay başında (veya ayrı
+  hesapla) toplu üretilecek; paketler o zamana kadar **sessiz** kuruldu (süreler 11,9–13,4 sn).
+  Önceki "≈3.300 karakter" tahmini yanlıştı; gerçek ölçüm 1.065.
+- **Maliyet sonrası durum:** 3 örnek 16,50 + kalan 15 video 45,00 = **61,50 kr**; proje kredisi
+  **236,56 kr**. Seslendirme Higgsfield kredisi harcamıyor (ElevenLabs karakter defteri).

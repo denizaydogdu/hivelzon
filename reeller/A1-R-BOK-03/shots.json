@@ -1,0 +1,86 @@
+{
+ "schemaVersion": 1,
+ "id": "A1-R-BOK-03",
+ "model": "gpt_image_2_5",
+ "params": {
+  "aspect_ratio": "9:16",
+  "resolution": "2k",
+  "quality": "low"
+ },
+ "prefix": "Warm animated-series illustration, graphic-novel style, clean ink lines, soft cel shading, warm everyday palette with soft natural light, mature tone suitable for teens and adults, not childish, no text, no letters, no numbers, no logos.",
+ "shots": [
+  {
+   "name": "k1",
+   "prompt": "Wide shot inside a quiet library reading room in soft daylight: a long wooden table, green reading lamps, tall shelves with completely blank book spines. Lena, a young woman of 22 with light brown curly hair tied back, an olive-green cardigan and round glasses, sits reading at the table; two seats away Kerem, a young man of 24 in a grey hoodie, quickly picks up a plain phone from the table, embarrassed. Vertical composition. Vertical composition.",
+   "ref": null
+  },
+  {
+   "name": "k2",
+   "prompt": "Use the reference image for the characters and the setting: keep the same faces, hair, clothes, colours and lighting. Close medium shot: Kerem holds the phone against his chest, whispering an apology, shoulders hunched; a blurred reader behind him looks up. Soft window light on the wooden table. Vertical composition. Vertical composition.",
+   "ref": "k1"
+  },
+  {
+   "name": "k3",
+   "prompt": "Use the reference image for the characters and the setting: keep the same faces, hair, clothes, colours and lighting. Medium shot: Lena looks up from her book and speaks quietly but clearly, one finger raised, her expression calm and kind rather than angry; Kerem listens, nodding. Warm library light, blank spines behind. Vertical composition. Vertical composition.",
+   "ref": "k1"
+  },
+  {
+   "name": "k4",
+   "prompt": "Use the reference image for the characters and the setting: keep the same faces, hair, clothes, colours and lighting. Kerem slips the phone into his pocket and returns to his book with a small nod of apology; Lena smiles briefly and goes back to reading, the green lamp glowing between them. Quiet reading room, soft daylight. Vertical composition. Vertical composition.",
+   "ref": "k1"
+  }
+ ],
+ "timeline": [
+  {
+   "shot": "k1",
+   "len": 3.4,
+   "move": [
+    1.0,
+    1.06,
+    0.45,
+    0.5,
+    0.5,
+    0.55
+   ],
+   "audio": "s02-01"
+  },
+  {
+   "shot": "k2",
+   "len": 3.4,
+   "move": [
+    1.06,
+    1.0,
+    0.5,
+    0.55,
+    0.55,
+    0.5
+   ],
+   "audio": "s02-02"
+  },
+  {
+   "shot": "k3",
+   "len": 3.4,
+   "move": [
+    1.06,
+    1.0,
+    0.5,
+    0.55,
+    0.55,
+    0.5
+   ],
+   "audio": "s02-03"
+  },
+  {
+   "shot": "k4",
+   "len": 2.6,
+   "move": [
+    1.06,
+    1.0,
+    0.5,
+    0.55,
+    0.55,
+    0.5
+   ]
+  }
+ ]
+}

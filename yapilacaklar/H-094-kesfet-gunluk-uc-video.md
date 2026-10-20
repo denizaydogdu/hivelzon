@@ -1,6 +1,6 @@
 # H-094: Keşfet — seviyeye ve ilgiye göre günlük üç kısa video (reel)
 
-- **Durum:** Sürüyor — **P0, P1, P2, P3 ve P4 tamamlandı** (kredisiz, deneme verisi); sırada maliyet onayı ve gerçek üretim. Ücretli üretim ve yayın onayı yok.
+- **Durum:** Sürüyor — **P0, P1, P2, P3 ve P4 tamamlandı** (kredisiz, deneme verisi). **18 reellik pilot üretildi** (3'ü sesli, 15'i sessiz; ses kotası ay başını bekliyor). Yayın/geri çekme kapısı hazır; ücretli üretim onayı alındı (2026-10-20), pilot yayını için ayrı onay gerekir.
 - **Tür:** Uygulama (kod) + içerik boru hattı + içerik pilotu
 - **Faz:** F1 MVP — ürün incelemesi sonrası (2026-10-18)
 - **Bağımlılık:** H-040 (Keşfet), H-089 (kanıt basamakları), H-088 (günlük plan); pilot içerik için ücretli üretim onayı ve `PROMPTS.md`
@@ -89,3 +89,14 @@ Kendi dalında; `git revert`. İçerik paketleri `/reels/` altında ayrı durur;
   - **Yeni araçlar (hepsi kuru çalışma varsayılan, idempotent):** `gen_reel_images.py`, `gen_reel_clips.py`, `tts_reel.py`, `build_reel.py`. **Yeni belge:** `docs/REEL-PAKETI.md` §8.
   - **Testler:** `pytest` **368** (reel: 29; yeni `reel.audio.fit` + `reel.cue.window` senaryoları), `flutter test` **1277**, `flutter analyze` temiz.
   - **Sıradaki:** (1) 3 örneğin insan değerlendirmesi (stil/karakter/ses), (2) onayla 18 video (senaryo A ≈55 kr), (3) H-092 pilotu. **Commit:** bu üretim turu (3 örnek + araçlar).
+- 2026-10-20: **Kalan 15 video üretildi ve 18 paket kuruldu (ses hariç).** Onay: kullanıcı, 2026-10-20, kalan 15 video ≈50 kr (üst sınır).
+  - **İçerik:** 12 yeni reelin kaynak dosyaları (`reel.json` + `shots.json`) yazıldı; 3 A2 reelinin (`A2-R-CIN-01`, `A2-R-SPO-01`, `A2-R-BOK-01`) `shots.json`'u eklendi, konuşmacılar `SELIN`/`MERT` ile hizalandı. Pilot artık **3 kategori × 2 seviye × 3 video = 18**.
+  - **Görsel:** 60 kare, `gpt_image_2_5` 9:16 2k low, **k2–k4 k1 referansıyla** → **30,00 kr** (yeniden üretim yok). İstemler ve sahne kaydı `PROMPTS.md`'de (Pilot 18 bölümü).
+  - **Hareket (3 klip, 720p 5 sn, sessiz):** `A1-R-CIN-03` k2 `cin-k2` (mısır), `A1-R-SPO-02` k3 `spo-k3` (top), `A1-R-BOK-02` k3 `bok-k3` (kitap) → **15,00 kr**. `clips.json` + kaynak kare bunlarla eşleşiyor; diğer reeller Ken Burns.
+  - **Kurgu:** `build_reel.py --force` ile **18 paket** kuruldu (720×1280, 4 kare, 0,3 sn xfade); klipli üç reel klibi kullanıyor (`production.json → timeline[].clip=true`, kredi 7,0). Süreler **11,9–13,4 sn** (A1: 11,9–12,7 · A2: 12,0–13,4).
+  - **Ses yok (engel):** aylık ortak ElevenLabs defteri **9.851 / 10.000**; 15 reelin metni **1.065 karakter** (18 video toplamı 1.285), kalan kota **149** → bu ay üretilemez. Paketler **sessiz önizleme** olarak kuruldu (`production.json → hasAudio=false`); `build_reel.py` ses gelince `--force` ile yeniden kurar. **"≈3.300 karakter" tahmini düzeltildi: gerçek 1.065.**
+  - **Kaynak eşitleme:** `build_reel.py`'nin yeniden hesapladığı `duration` + `cues` (kelime aralıkları dahil) 15 kaynak `reel.json`'a geri yazıldı; mobil fixture'lar 18 pakete göre yenilendi (`index.json` 18 özet, toplam 220,2 sn).
+  - **Lint:** 18 reel → **0 hata, 15 uyarı** (yalnız `reel.media: ses dosyası yok`; 3 sesli örnek temiz). `--write-reports` ile 18 `_build/lint.json` yazıldı (P4 onay kapısı için).
+  - **Testler:** `pytest` **368**; `flutter test` **1277**; `flutter analyze` temiz. Güncellenen testler: günlük seçki havuzu (kategori başına 3 video; "Bugün" hâlâ 3), geri çekilen CIN-01 yerine **aynı seviye-kategoriden yedek CIN-02**, boş Spor havuzunda seçili kategorilerden tamamlama (CIN-01 + BOK-01 + BOK-02; farklı seviyeden doldurma yok), katalog/http listeleri 18 kimlik, `_trial_ids` 18, "Tekrar" golden'ı (üç CIN de gösterilmiş → en eski CIN-01 seçilir, rozet korunur).
+  - **Maliyet:** 61,50 kr toplam (3 örnek 16,50 + kalan 15 video 45,00); bakiye **236,56 kr**. Ayrıntı: `docs/REEL-MALIYET-2026-10-19.md` §8.
+  - **Sıradaki:** (1) sesi ay başında/ayrı hesapla topluca üret (`tts_reel.py --execute` + `build_reel.py --force`), (2) H-092 kullanıcı pilotu (P4 hazır), (3) insan değerlendirmesi (stil/karakter). **Commit:** bu tur (kaynaklar, paket düzeni, testler, belgeler) — onay bekleniyor.

@@ -1,0 +1,86 @@
+{
+ "schemaVersion": 1,
+ "id": "A2-R-CIN-02",
+ "model": "gpt_image_2_5",
+ "params": {
+  "aspect_ratio": "9:16",
+  "resolution": "2k",
+  "quality": "low"
+ },
+ "prefix": "Warm animated-series illustration, graphic-novel style, clean ink lines, soft cel shading, warm everyday palette with soft natural light, mature tone suitable for teens and adults, not childish, no text, no letters, no numbers, no logos.",
+ "shots": [
+  {
+   "name": "k1",
+   "prompt": "Wide shot inside a small cinema lobby in the evening: a row of blank framed posters on a deep green wall, warm brass lamps, a wooden bench. Selin, a woman of 22 with long dark hair in an olive-green coat, stands in front of the posters, arms crossed, thinking; Deniz, a man of 24 with short dark hair, round glasses and a denim jacket, stands beside her, hands in his pockets. Vertical composition. Vertical composition.",
+   "ref": null
+  },
+  {
+   "name": "k2",
+   "prompt": "Use the reference image for the characters and the setting: keep the same faces, hair, clothes, colours and lighting. Medium shot: Selin turns to Deniz and asks, one hand gesturing at the posters; Deniz looks at her with a small smile, thinking about his answer. Warm lamps, blurred blank posters behind. Vertical composition. Vertical composition.",
+   "ref": "k1"
+  },
+  {
+   "name": "k3",
+   "prompt": "Use the reference image for the characters and the setting: keep the same faces, hair, clothes, colours and lighting. Close medium shot: Deniz answers with sudden enthusiasm, eyes bright, one hand making a small sweeping gesture as if describing a wide landscape; Selin smiles at his energy. Warm light on their faces. Vertical composition. Vertical composition.",
+   "ref": "k1"
+  },
+  {
+   "name": "k4",
+   "prompt": "Use the reference image for the characters and the setting: keep the same faces, hair, clothes, colours and lighting. Selin points at one blank poster and nods toward the hall doorway; Deniz grins and follows her, hands still in his pockets. Warm lobby light, blank posters behind. Vertical composition. Vertical composition.",
+   "ref": "k1"
+  }
+ ],
+ "timeline": [
+  {
+   "shot": "k1",
+   "len": 3.5,
+   "move": [
+    1.0,
+    1.06,
+    0.45,
+    0.5,
+    0.5,
+    0.55
+   ],
+   "audio": "s03-01"
+  },
+  {
+   "shot": "k2",
+   "len": 3.6,
+   "move": [
+    1.06,
+    1.0,
+    0.5,
+    0.55,
+    0.55,
+    0.5
+   ],
+   "audio": "s03-02"
+  },
+  {
+   "shot": "k3",
+   "len": 3.8,
+   "move": [
+    1.06,
+    1.0,
+    0.5,
+    0.55,
+    0.55,
+    0.5
+   ],
+   "audio": "s03-03"
+  },
+  {
+   "shot": "k4",
+   "len": 2.4,
+   "move": [
+    1.06,
+    1.0,
+    0.5,
+    0.55,
+    0.55,
+    0.5
+   ]
+  }
+ ]
+}

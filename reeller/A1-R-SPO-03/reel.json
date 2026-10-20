@@ -1,0 +1,137 @@
+{
+ "schemaVersion": 1,
+ "id": "A1-R-SPO-03",
+ "contentVersion": 1,
+ "sourceType": "standalone",
+ "category": "SPO",
+ "categoryTr": "Spor",
+ "level": "A1",
+ "titleTr": "Tribünde",
+ "learningObjective": "Bir golden sonra sevincini söylemek",
+ "family": "FAM-SPO-CHEER",
+ "duration": 12.5,
+ "video": "A1-R-SPO-03.mp4",
+ "poster": "A1-R-SPO-03.webp",
+ "image": "stills/s02.webp",
+ "audio": "audio/s02-02.m4a",
+ "status": "DRAFT",
+ "target": {
+  "kind": "phrase",
+  "en": "Great goal!",
+  "tr": "Harika gol!",
+  "cue": "s02-02"
+ },
+ "practice": {
+  "promptTr": "Ne oluyor?",
+  "explainTr": "Takım gol atıyor, tribün seviniyor.",
+  "options": [
+   {
+    "text": "Gol atılıyor",
+    "lang": "tr",
+    "correct": true
+   },
+   {
+    "text": "Maç bitiyor",
+    "lang": "tr",
+    "correct": false
+   },
+   {
+    "text": "Oyuncu sakatlanıyor",
+    "lang": "tr",
+    "correct": false
+   }
+  ]
+ },
+ "related": [],
+ "cues": [
+  {
+   "id": "s02-01",
+   "start": 0.5,
+   "end": 3.4,
+   "speaker": "SPECTATOR",
+   "text": "He shoots!",
+   "tr": "Şut çekiyor!",
+   "chunks": [],
+   "words": [
+    {
+     "w": "He",
+     "start": 0.5,
+     "end": 1.37
+    },
+    {
+     "w": "shoots!",
+     "start": 1.37,
+     "end": 3.4,
+     "gloss": "şut çekmek"
+    }
+   ]
+  },
+  {
+   "id": "s02-02",
+   "start": 3.6,
+   "end": 6.5,
+   "speaker": "ELIF",
+   "text": "Great goal!",
+   "tr": "Harika gol!",
+   "chunks": [],
+   "words": [
+    {
+     "w": "Great",
+     "start": 3.6,
+     "end": 5.18,
+     "gloss": "harika"
+    },
+    {
+     "w": "goal!",
+     "start": 5.18,
+     "end": 6.5,
+     "gloss": "gol"
+    }
+   ]
+  },
+  {
+   "id": "s02-03",
+   "start": 6.7,
+   "end": 10.2,
+   "speaker": "SPECTATOR",
+   "text": "The whole team runs to him.",
+   "tr": "Bütün takım ona koşuyor.",
+   "chunks": [],
+   "words": [
+    {
+     "w": "The",
+     "start": 6.7,
+     "end": 7.22
+    },
+    {
+     "w": "whole",
+     "start": 7.22,
+     "end": 8.0,
+     "gloss": "bütün"
+    },
+    {
+     "w": "team",
+     "start": 8.0,
+     "end": 8.65,
+     "gloss": "takım"
+    },
+    {
+     "w": "runs",
+     "start": 8.65,
+     "end": 9.3,
+     "gloss": "koşmak"
+    },
+    {
+     "w": "to",
+     "start": 9.3,
+     "end": 9.68
+    },
+    {
+     "w": "him.",
+     "start": 9.68,
+     "end": 10.2
+    }
+   ]
+  }
+ ]
+}

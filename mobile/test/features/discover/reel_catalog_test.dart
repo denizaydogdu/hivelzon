@@ -14,11 +14,23 @@ void main() {
       final cat = loadReelCatalogFixture();
       expect(cat.reels.map((r) => r.id), [
         'A1-R-BOK-01',
+        'A1-R-BOK-02',
+        'A1-R-BOK-03',
         'A1-R-CIN-01',
+        'A1-R-CIN-02',
+        'A1-R-CIN-03',
         'A1-R-SPO-01',
+        'A1-R-SPO-02',
+        'A1-R-SPO-03',
         'A2-R-BOK-01',
+        'A2-R-BOK-02',
+        'A2-R-BOK-03',
         'A2-R-CIN-01',
+        'A2-R-CIN-02',
+        'A2-R-CIN-03',
         'A2-R-SPO-01',
+        'A2-R-SPO-02',
+        'A2-R-SPO-03',
       ]);
       final first = cat.byId('A1-R-CIN-01')!;
       expect(first.category, 'CIN');
@@ -34,21 +46,35 @@ void main() {
       final cat = loadReelCatalogFixture();
       expect(cat.byCategory('CIN').map((r) => r.id), [
         'A1-R-CIN-01',
+        'A1-R-CIN-02',
+        'A1-R-CIN-03',
         'A2-R-CIN-01',
+        'A2-R-CIN-02',
+        'A2-R-CIN-03',
       ]);
       expect(cat.byCategory('CIN', level: 'A2').map((r) => r.id), [
         'A2-R-CIN-01',
+        'A2-R-CIN-02',
+        'A2-R-CIN-03',
       ]);
       expect(cat.byCategory('SPO', level: 'A2').map((r) => r.id), [
         'A2-R-SPO-01',
+        'A2-R-SPO-02',
+        'A2-R-SPO-03',
       ]);
-      // Pilot: her seviyede üç konu (Sinema · Spor · Kitap) dolu olmalı.
+      // Pilot: her seviyede üç konu, her konuda üç video (3 × 3 × 2 = 18).
       expect(cat.forLevel('A1').map((r) => r.id), [
         'A1-R-BOK-01',
+        'A1-R-BOK-02',
+        'A1-R-BOK-03',
         'A1-R-CIN-01',
+        'A1-R-CIN-02',
+        'A1-R-CIN-03',
         'A1-R-SPO-01',
+        'A1-R-SPO-02',
+        'A1-R-SPO-03',
       ]);
-      expect(cat.forLevel('A2'), hasLength(3));
+      expect(cat.forLevel('A2'), hasLength(9));
       expect(cat.forLevel('A2').map((r) => r.category).toSet(), {
         'CIN',
         'SPO',

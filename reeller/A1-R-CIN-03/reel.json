@@ -1,0 +1,154 @@
+{
+ "schemaVersion": 1,
+ "id": "A1-R-CIN-03",
+ "contentVersion": 1,
+ "sourceType": "standalone",
+ "category": "CIN",
+ "categoryTr": "Sinema",
+ "level": "A1",
+ "titleTr": "Atıştırmalık alıyor",
+ "learningObjective": "Sinemada atıştırmalık istemek",
+ "family": "FAM-CIN-SNACK",
+ "duration": 12.7,
+ "video": "A1-R-CIN-03.mp4",
+ "poster": "A1-R-CIN-03.webp",
+ "image": "stills/s02.webp",
+ "audio": "audio/s02-02.m4a",
+ "status": "DRAFT",
+ "target": {
+  "kind": "phrase",
+  "en": "Popcorn, please.",
+  "tr": "Patlamış mısır, lütfen.",
+  "cue": "s02-02"
+ },
+ "practice": {
+  "promptTr": "Mia ne istiyor?",
+  "explainTr": "Mia küçük bir patlamış mısır istiyor.",
+  "options": [
+   {
+    "text": "Patlamış mısır",
+    "lang": "tr",
+    "correct": true
+   },
+   {
+    "text": "Su",
+    "lang": "tr",
+    "correct": false
+   },
+   {
+    "text": "Çikolata",
+    "lang": "tr",
+    "correct": false
+   }
+  ]
+ },
+ "related": [],
+ "cues": [
+  {
+   "id": "s02-01",
+   "start": 0.5,
+   "end": 3.4,
+   "speaker": "CLERK",
+   "text": "What would you like?",
+   "tr": "Ne istersiniz?",
+   "chunks": [],
+   "words": [
+    {
+     "w": "What",
+     "start": 0.5,
+     "end": 1.23,
+     "gloss": "ne"
+    },
+    {
+     "w": "would",
+     "start": 1.23,
+     "end": 2.09
+    },
+    {
+     "w": "you",
+     "start": 2.09,
+     "end": 2.67
+    },
+    {
+     "w": "like?",
+     "start": 2.67,
+     "end": 3.4,
+     "gloss": "istemek"
+    }
+   ]
+  },
+  {
+   "id": "s02-02",
+   "start": 6.9,
+   "end": 9.8,
+   "speaker": "MIA",
+   "text": "Popcorn, please. Small.",
+   "tr": "Patlamış mısır, lütfen. Küçük.",
+   "chunks": [],
+   "words": [
+    {
+     "w": "Popcorn,",
+     "start": 6.9,
+     "end": 8.01,
+     "gloss": "patlamış mısır"
+    },
+    {
+     "w": "please.",
+     "start": 8.01,
+     "end": 8.98,
+     "gloss": "lütfen"
+    },
+    {
+     "w": "Small.",
+     "start": 8.98,
+     "end": 9.8,
+     "gloss": "küçük"
+    }
+   ]
+  },
+  {
+   "id": "s02-03",
+   "start": 10.0,
+   "end": 12.7,
+   "speaker": "CLERK",
+   "text": "Here you are. Enjoy the film.",
+   "tr": "Buyurun. İyi seyirler.",
+   "chunks": [],
+   "words": [
+    {
+     "w": "Here",
+     "start": 10.0,
+     "end": 10.49,
+     "gloss": "buyurun"
+    },
+    {
+     "w": "you",
+     "start": 10.49,
+     "end": 10.87
+    },
+    {
+     "w": "are.",
+     "start": 10.87,
+     "end": 11.26
+    },
+    {
+     "w": "Enjoy",
+     "start": 11.26,
+     "end": 11.84,
+     "gloss": "keyif al"
+    },
+    {
+     "w": "the",
+     "start": 11.84,
+     "end": 12.22
+    },
+    {
+     "w": "film.",
+     "start": 12.22,
+     "end": 12.7,
+     "gloss": "film"
+    }
+   ]
+  }
+ ]
+}

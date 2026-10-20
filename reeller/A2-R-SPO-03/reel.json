@@ -1,0 +1,157 @@
+{
+ "schemaVersion": 1,
+ "id": "A2-R-SPO-03",
+ "contentVersion": 1,
+ "sourceType": "standalone",
+ "category": "SPO",
+ "categoryTr": "Spor",
+ "level": "A2",
+ "titleTr": "Sonuç ve duygu",
+ "learningObjective": "Maç sonucunu ve duygusunu anlatmak",
+ "family": "FAM-SPO-RESULT",
+ "duration": 12.3,
+ "video": "A2-R-SPO-03.mp4",
+ "poster": "A2-R-SPO-03.webp",
+ "image": "stills/s04.webp",
+ "audio": "audio/s04-02.m4a",
+ "status": "DRAFT",
+ "target": {
+  "kind": "phrase",
+  "en": "We lost, but it was fun.",
+  "tr": "Kaybettik ama eğlenceliydi.",
+  "cue": "s04-02"
+ },
+ "practice": {
+  "promptTr": "Maç nasıl geçti?",
+  "explainTr": "Kaybettiler ama eğlendiler.",
+  "options": [
+   {
+    "text": "Kaybettiler ama eğlenceliydi",
+    "lang": "tr",
+    "correct": true
+   },
+   {
+    "text": "Kazandılar",
+    "lang": "tr",
+    "correct": false
+   },
+   {
+    "text": "Berabere bitti",
+    "lang": "tr",
+    "correct": false
+   }
+  ]
+ },
+ "related": [],
+ "cues": [
+  {
+   "id": "s04-01",
+   "start": 0.5,
+   "end": 3.4,
+   "speaker": "ELIF",
+   "text": "What was the score?",
+   "tr": "Skor neydi?",
+   "chunks": [],
+   "words": [
+    {
+     "w": "What",
+     "start": 0.5,
+     "end": 1.25
+    },
+    {
+     "w": "was",
+     "start": 1.25,
+     "end": 1.87
+    },
+    {
+     "w": "the",
+     "start": 1.87,
+     "end": 2.49
+    },
+    {
+     "w": "score?",
+     "start": 2.49,
+     "end": 3.4,
+     "gloss": "skor"
+    }
+   ]
+  },
+  {
+   "id": "s04-02",
+   "start": 3.6,
+   "end": 6.7,
+   "speaker": "MERT",
+   "text": "We lost, but it was fun.",
+   "tr": "Kaybettik ama eğlenceliydi.",
+   "chunks": [],
+   "words": [
+    {
+     "w": "We",
+     "start": 3.6,
+     "end": 4.0
+    },
+    {
+     "w": "lost,",
+     "start": 4.0,
+     "end": 4.68,
+     "gloss": "kaybetmek"
+    },
+    {
+     "w": "but",
+     "start": 4.68,
+     "end": 5.22
+    },
+    {
+     "w": "it",
+     "start": 5.22,
+     "end": 5.62
+    },
+    {
+     "w": "was",
+     "start": 5.62,
+     "end": 6.15
+    },
+    {
+     "w": "fun.",
+     "start": 6.15,
+     "end": 6.7,
+     "gloss": "eğlenceli"
+    }
+   ]
+  },
+  {
+   "id": "s04-03",
+   "start": 6.9,
+   "end": 10.0,
+   "speaker": "ELIF",
+   "text": "Next time we win.",
+   "tr": "Gelecek sefer kazanırız.",
+   "chunks": [],
+   "words": [
+    {
+     "w": "Next",
+     "start": 6.9,
+     "end": 7.81,
+     "gloss": "gelecek"
+    },
+    {
+     "w": "time",
+     "start": 7.81,
+     "end": 8.72,
+     "gloss": "sefer"
+    },
+    {
+     "w": "we",
+     "start": 8.72,
+     "end": 9.28
+    },
+    {
+     "w": "win.",
+     "start": 9.28,
+     "end": 10.0,
+     "gloss": "kazanmak"
+    }
+   ]
+  }
+ ]
+}

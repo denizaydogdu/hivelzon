@@ -1,0 +1,18 @@
+{
+ "schemaVersion": 1,
+ "id": "A1-R-BOK-02",
+ "model": "seedance_2_0_mini",
+ "params": {
+  "aspect_ratio": "9:16",
+  "duration": 5,
+  "resolution": "720p",
+  "generate_audio": false
+ },
+ "clips": [
+  {
+   "name": "bok-k3",
+   "start": "_raw/k3.png",
+   "prompt": "Gentle continuous shot: a hand slides a plain hardcover book with blank pages slowly across a polished wooden library table toward another hand reaching in from the foreground; the green reading lamp reflects on the wood, pages flutter slightly; subtle natural motion only, no camera shake, no faces."
+  }
+ ]
+}

@@ -1,0 +1,184 @@
+{
+ "schemaVersion": 1,
+ "id": "A2-R-CIN-02",
+ "contentVersion": 1,
+ "sourceType": "standalone",
+ "category": "CIN",
+ "categoryTr": "Sinema",
+ "level": "A2",
+ "titleTr": "Tür seçimi",
+ "learningObjective": "Sevdiği film türünü söylemek",
+ "family": "FAM-CIN-GENRE",
+ "duration": 12.4,
+ "video": "A2-R-CIN-02.mp4",
+ "poster": "A2-R-CIN-02.webp",
+ "image": "stills/s03.webp",
+ "audio": "audio/s03-02.m4a",
+ "status": "DRAFT",
+ "target": {
+  "kind": "phrase",
+  "en": "I love adventure films.",
+  "tr": "Macera filmlerini severim.",
+  "cue": "s03-02"
+ },
+ "practice": {
+  "promptTr": "Deniz hangi türü seviyor?",
+  "explainTr": "Deniz macera filmlerini seviyor.",
+  "options": [
+   {
+    "text": "Macera",
+    "lang": "tr",
+    "correct": true
+   },
+   {
+    "text": "Komedi",
+    "lang": "tr",
+    "correct": false
+   },
+   {
+    "text": "Korku",
+    "lang": "tr",
+    "correct": false
+   }
+  ]
+ },
+ "related": [],
+ "cues": [
+  {
+   "id": "s03-01",
+   "start": 0.5,
+   "end": 3.5,
+   "speaker": "SELIN",
+   "text": "What kind of films do you like?",
+   "tr": "Ne tür filmler seversin?",
+   "chunks": [],
+   "words": [
+    {
+     "w": "What",
+     "start": 0.5,
+     "end": 0.99
+    },
+    {
+     "w": "kind",
+     "start": 0.99,
+     "end": 1.46,
+     "gloss": "tür"
+    },
+    {
+     "w": "of",
+     "start": 1.46,
+     "end": 1.76
+    },
+    {
+     "w": "films",
+     "start": 1.76,
+     "end": 2.34,
+     "gloss": "filmler"
+    },
+    {
+     "w": "do",
+     "start": 2.34,
+     "end": 2.63
+    },
+    {
+     "w": "you",
+     "start": 2.63,
+     "end": 3.01
+    },
+    {
+     "w": "like?",
+     "start": 3.01,
+     "end": 3.5,
+     "gloss": "sevmek"
+    }
+   ]
+  },
+  {
+   "id": "s03-02",
+   "start": 3.7,
+   "end": 6.8,
+   "speaker": "DENIZ",
+   "text": "I love adventure films.",
+   "tr": "Macera filmlerini severim.",
+   "chunks": [],
+   "words": [
+    {
+     "w": "I",
+     "start": 3.7,
+     "end": 3.97
+    },
+    {
+     "w": "love",
+     "start": 3.97,
+     "end": 4.65,
+     "gloss": "çok sevmek"
+    },
+    {
+     "w": "adventure",
+     "start": 4.65,
+     "end": 5.99,
+     "gloss": "macera"
+    },
+    {
+     "w": "films.",
+     "start": 5.99,
+     "end": 6.8,
+     "gloss": "filmler"
+    }
+   ]
+  },
+  {
+   "id": "s03-03",
+   "start": 7.0,
+   "end": 10.3,
+   "speaker": "SELIN",
+   "text": "Then let's watch this one. It is new.",
+   "tr": "Öyleyse şunu izleyelim. Yeni.",
+   "chunks": [],
+   "words": [
+    {
+     "w": "Then",
+     "start": 7.0,
+     "end": 7.46
+    },
+    {
+     "w": "let's",
+     "start": 7.46,
+     "end": 8.01
+    },
+    {
+     "w": "watch",
+     "start": 8.01,
+     "end": 8.56,
+     "gloss": "izlemek"
+    },
+    {
+     "w": "this",
+     "start": 8.56,
+     "end": 9.02
+    },
+    {
+     "w": "one.",
+     "start": 9.02,
+     "end": 9.38
+    },
+    {
+     "w": "It",
+     "start": 9.38,
+     "end": 9.66
+    },
+    {
+     "w": "is",
+     "start": 9.66,
+     "end": 9.93
+    },
+    {
+     "w": "new.",
+     "start": 9.93,
+     "end": 10.3,
+     "gloss": "yeni"
+    }
+   ]
+  }
+ ]
+}

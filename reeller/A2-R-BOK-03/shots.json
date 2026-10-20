@@ -1,0 +1,86 @@
+{
+ "schemaVersion": 1,
+ "id": "A2-R-BOK-03",
+ "model": "gpt_image_2_5",
+ "params": {
+  "aspect_ratio": "9:16",
+  "resolution": "2k",
+  "quality": "low"
+ },
+ "prefix": "Warm animated-series illustration, graphic-novel style, clean ink lines, soft cel shading, warm everyday palette with soft natural light, mature tone suitable for teens and adults, not childish, no text, no letters, no numbers, no logos.",
+ "shots": [
+  {
+   "name": "k1",
+   "prompt": "Wide shot in a small neighbourhood library at the returns desk: Kerem, a young man of 24 in a grey hoodie with a backpack, hands a plain, titleless book across the wooden desk; Lena, a young woman of 22 in an olive-green cardigan and round glasses, takes it and looks up at him. Tall shelves with completely blank spines, warm afternoon window light. Vertical composition. Vertical composition.",
+   "ref": null
+  },
+  {
+   "name": "k2",
+   "prompt": "Use the reference image for the characters and the setting: keep the same faces, hair, clothes, colours and lighting. Medium shot across the desk: Kerem admits with a small shrug that he has nothing to read, one hand gesturing vaguely; Lena listens, the returned book still in her hands. Soft window light, blurred desk items. Vertical composition. Vertical composition.",
+   "ref": "k1"
+  },
+  {
+   "name": "k3",
+   "prompt": "Use the reference image for the characters and the setting: keep the same faces, hair, clothes, colours and lighting. Close medium shot: Lena holds up a plain hardcover book, tapping its blank cover twice, and speaks with quiet confidence; Kerem tilts his head, intrigued. Warm library light, shallow depth of field. Vertical composition. Vertical composition.",
+   "ref": "k1"
+  },
+  {
+   "name": "k4",
+   "prompt": "Use the reference image for the characters and the setting: keep the same faces, hair, clothes, colours and lighting. Kerem takes the book, turns it over curiously and smiles his thanks; Lena nods and reaches for the next return, pleased. Warm daylight, blank shelves and green lamp behind. Vertical composition. Vertical composition.",
+   "ref": "k1"
+  }
+ ],
+ "timeline": [
+  {
+   "shot": "k1",
+   "len": 3.5,
+   "move": [
+    1.0,
+    1.06,
+    0.45,
+    0.5,
+    0.5,
+    0.55
+   ],
+   "audio": "s04-01"
+  },
+  {
+   "shot": "k2",
+   "len": 3.6,
+   "move": [
+    1.06,
+    1.0,
+    0.5,
+    0.55,
+    0.55,
+    0.5
+   ],
+   "audio": "s04-02"
+  },
+  {
+   "shot": "k3",
+   "len": 3.6,
+   "move": [
+    1.06,
+    1.0,
+    0.5,
+    0.55,
+    0.55,
+    0.5
+   ],
+   "audio": "s04-03"
+  },
+  {
+   "shot": "k4",
+   "len": 2.6,
+   "move": [
+    1.06,
+    1.0,
+    0.5,
+    0.55,
+    0.55,
+    0.5
+   ]
+  }
+ ]
+}

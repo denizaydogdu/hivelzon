@@ -1,0 +1,87 @@
+{
+ "schemaVersion": 1,
+ "id": "A1-R-SPO-02",
+ "model": "gpt_image_2_5",
+ "params": {
+  "aspect_ratio": "9:16",
+  "resolution": "2k",
+  "quality": "low"
+ },
+ "prefix": "Warm animated-series illustration, graphic-novel style, clean ink lines, soft cel shading, warm everyday palette with soft natural light, mature tone suitable for teens and adults, not childish, no text, no letters, no numbers, no logos.",
+ "shots": [
+  {
+   "name": "k1",
+   "prompt": "Wide shot on a school football pitch in warm afternoon light: Elif, a girl of 15 with dark hair in a high ponytail and a plain navy sports kit without numbers, has the ball at her feet in the middle of the pitch; Mert, a boy of 16 in the same plain kit, waves both arms from the left wing, calling for it. Green grass, white lines, low fence and trees behind, warm sun. Vertical composition. Vertical composition.",
+   "ref": null
+  },
+  {
+   "name": "k2",
+   "prompt": "Use the reference image for the characters and the setting: keep the same faces, hair, clothes, colours and lighting. Medium shot: Mert keeps his hand raised, leaning forward, eyes fixed on Elif, his shadow long on the grass; Elif looks up from the ball, measuring the pass. Warm backlight, blurred green field. Vertical composition. Vertical composition.",
+   "ref": "k1"
+  },
+  {
+   "name": "k3",
+   "prompt": "Use the reference image for the characters and the setting: keep the same faces, hair, clothes, colours and lighting. Low close-up near the grass: Elif's foot strikes the plain white ball, small grass clippings flying, her laces blurred in motion; the ball rolls toward the foreground with a soft trail of dust. Warm sunlight, shallow depth of field. Vertical composition. Vertical composition.",
+   "ref": "k1"
+  },
+  {
+   "name": "k4",
+   "prompt": "Use the reference image for the characters and the setting: keep the same faces, hair, clothes, colours and lighting. Medium wide shot: Mert controls the ball with one foot and raises a hand in thanks, grinning; Elif jogs forward with a satisfied nod. Warm field light, trees and fence behind. Vertical composition. Vertical composition.",
+   "ref": "k1"
+  }
+ ],
+ "timeline": [
+  {
+   "shot": "k1",
+   "len": 3.2,
+   "move": [
+    1.0,
+    1.06,
+    0.45,
+    0.5,
+    0.5,
+    0.55
+   ],
+   "audio": "s01-01"
+  },
+  {
+   "shot": "k2",
+   "len": 3.2,
+   "move": [
+    1.06,
+    1.0,
+    0.5,
+    0.55,
+    0.55,
+    0.5
+   ],
+   "audio": "s01-02"
+  },
+  {
+   "shot": "k3",
+   "len": 3.6,
+   "move": [
+    1.06,
+    1.0,
+    0.5,
+    0.55,
+    0.55,
+    0.5
+   ],
+   "clip": "clips/spo-k3.mp4"
+  },
+  {
+   "shot": "k4",
+   "len": 3.0,
+   "move": [
+    1.06,
+    1.0,
+    0.5,
+    0.55,
+    0.55,
+    0.5
+   ],
+   "audio": "s01-03"
+  }
+ ]
+}

@@ -1,0 +1,86 @@
+{
+ "schemaVersion": 1,
+ "id": "A2-R-CIN-03",
+ "model": "gpt_image_2_5",
+ "params": {
+  "aspect_ratio": "9:16",
+  "resolution": "2k",
+  "quality": "low"
+ },
+ "prefix": "Warm animated-series illustration, graphic-novel style, clean ink lines, soft cel shading, warm everyday palette with soft natural light, mature tone suitable for teens and adults, not childish, no text, no letters, no numbers, no logos.",
+ "shots": [
+  {
+   "name": "k1",
+   "prompt": "Medium two-shot in a small apartment kitchen in the early evening: Selin, a woman of 22 with long dark hair, an olive-green sweater, leans against the counter with a mug of tea; Deniz, a man of 24 with short dark hair and round glasses, sits on a stool by the counter, phone face-down beside him. Warm pendant lamp, shelves with plain jars, a window with evening light. Vertical composition. Vertical composition.",
+   "ref": null
+  },
+  {
+   "name": "k2",
+   "prompt": "Use the reference image for the characters and the setting: keep the same faces, hair, clothes, colours and lighting. Medium shot: Deniz looks up from his mug and asks, eyebrows raised, one hand loosely pointing at his phone as if checking the time; Selin listens, mug held with both hands. Warm lamp light, soft evening window behind. Vertical composition. Vertical composition.",
+   "ref": "k1"
+  },
+  {
+   "name": "k3",
+   "prompt": "Use the reference image for the characters and the setting: keep the same faces, hair, clothes, colours and lighting. Close medium shot: Selin answers with a bright nod, setting her mug down and leaning forward slightly, clearly pleased with the plan; Deniz's face lights up. Warm kitchen light, blurred shelves. Vertical composition. Vertical composition.",
+   "ref": "k1"
+  },
+  {
+   "name": "k4",
+   "prompt": "Use the reference image for the characters and the setting: keep the same faces, hair, clothes, colours and lighting. Wide shot of the small living room: Deniz pulls a soft blanket over the back of a sofa while Selin arranges two plain cushions and a bowl of snacks on the low table; a blank dark screen waits across the room. Warm lamp light, cosy evening. Vertical composition. Vertical composition.",
+   "ref": "k1"
+  }
+ ],
+ "timeline": [
+  {
+   "shot": "k1",
+   "len": 3.4,
+   "move": [
+    1.0,
+    1.06,
+    0.45,
+    0.5,
+    0.5,
+    0.55
+   ],
+   "audio": "s04-01"
+  },
+  {
+   "shot": "k2",
+   "len": 3.6,
+   "move": [
+    1.06,
+    1.0,
+    0.5,
+    0.55,
+    0.55,
+    0.5
+   ],
+   "audio": "s04-02"
+  },
+  {
+   "shot": "k3",
+   "len": 3.8,
+   "move": [
+    1.06,
+    1.0,
+    0.5,
+    0.55,
+    0.55,
+    0.5
+   ],
+   "audio": "s04-03"
+  },
+  {
+   "shot": "k4",
+   "len": 2.6,
+   "move": [
+    1.06,
+    1.0,
+    0.5,
+    0.55,
+    0.55,
+    0.5
+   ]
+  }
+ ]
+}

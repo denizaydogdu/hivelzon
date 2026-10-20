@@ -1,0 +1,142 @@
+{
+ "schemaVersion": 1,
+ "id": "A1-R-SPO-02",
+ "contentVersion": 1,
+ "sourceType": "standalone",
+ "category": "SPO",
+ "categoryTr": "Spor",
+ "level": "A1",
+ "titleTr": "Sahada arkadaş",
+ "learningObjective": "Oyunda topu istemek",
+ "family": "FAM-SPO-PASS",
+ "duration": 12.1,
+ "video": "A1-R-SPO-02.mp4",
+ "poster": "A1-R-SPO-02.webp",
+ "image": "stills/s01.webp",
+ "audio": "audio/s01-02.m4a",
+ "status": "DRAFT",
+ "target": {
+  "kind": "phrase",
+  "en": "Pass the ball, please.",
+  "tr": "Topu at, lütfen.",
+  "cue": "s01-02"
+ },
+ "practice": {
+  "promptTr": "Elif ne istiyor?",
+  "explainTr": "Elif topun kendisine atılmasını istiyor.",
+  "options": [
+   {
+    "text": "Topu pas vermesini",
+    "lang": "tr",
+    "correct": true
+   },
+   {
+    "text": "Su getirmesini",
+    "lang": "tr",
+    "correct": false
+   },
+   {
+    "text": "Kapıyı açmasını",
+    "lang": "tr",
+    "correct": false
+   }
+  ]
+ },
+ "related": [],
+ "cues": [
+  {
+   "id": "s01-01",
+   "start": 0.5,
+   "end": 3.2,
+   "speaker": "MERT",
+   "text": "I'm open! Over here!",
+   "tr": "Boştayım! Burada!",
+   "chunks": [],
+   "words": [
+    {
+     "w": "I'm",
+     "start": 0.5,
+     "end": 1.08
+    },
+    {
+     "w": "open!",
+     "start": 1.08,
+     "end": 1.78,
+     "gloss": "boş"
+    },
+    {
+     "w": "Over",
+     "start": 1.78,
+     "end": 2.5
+    },
+    {
+     "w": "here!",
+     "start": 2.5,
+     "end": 3.2,
+     "gloss": "burada"
+    }
+   ]
+  },
+  {
+   "id": "s01-02",
+   "start": 3.4,
+   "end": 6.1,
+   "speaker": "ELIF",
+   "text": "Pass the ball, please.",
+   "tr": "Topu at, lütfen.",
+   "chunks": [],
+   "words": [
+    {
+     "w": "Pass",
+     "start": 3.4,
+     "end": 4.05,
+     "gloss": "pas vermek"
+    },
+    {
+     "w": "the",
+     "start": 4.05,
+     "end": 4.55
+    },
+    {
+     "w": "ball,",
+     "start": 4.55,
+     "end": 5.2,
+     "gloss": "top"
+    },
+    {
+     "w": "please.",
+     "start": 5.2,
+     "end": 6.1,
+     "gloss": "lütfen"
+    }
+   ]
+  },
+  {
+   "id": "s01-03",
+   "start": 9.6,
+   "end": 12.1,
+   "speaker": "MERT",
+   "text": "Here you go.",
+   "tr": "Buyur.",
+   "chunks": [],
+   "words": [
+    {
+     "w": "Here",
+     "start": 9.6,
+     "end": 10.64,
+     "gloss": "buyur"
+    },
+    {
+     "w": "you",
+     "start": 10.64,
+     "end": 11.47
+    },
+    {
+     "w": "go.",
+     "start": 11.47,
+     "end": 12.1
+    }
+   ]
+  }
+ ]
+}

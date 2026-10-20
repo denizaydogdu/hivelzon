@@ -1,0 +1,86 @@
+{
+ "schemaVersion": 1,
+ "id": "A2-R-BOK-02",
+ "model": "gpt_image_2_5",
+ "params": {
+  "aspect_ratio": "9:16",
+  "resolution": "2k",
+  "quality": "low"
+ },
+ "prefix": "Warm animated-series illustration, graphic-novel style, clean ink lines, soft cel shading, warm everyday palette with soft natural light, mature tone suitable for teens and adults, not childish, no text, no letters, no numbers, no logos.",
+ "shots": [
+  {
+   "name": "k1",
+   "prompt": "Wide shot in a small neighbourhood library in the afternoon: Lena, a young woman of 22 with light brown curly hair tied back, an olive-green cardigan and round glasses, sits at a wooden table with a plain, titleless hardcover book open in front of her; Kerem, a young man of 24 in a grey hoodie with a backpack, pulls out the chair opposite her. Tall shelves with completely blank spines, warm window light. Vertical composition. Vertical composition.",
+   "ref": null
+  },
+  {
+   "name": "k2",
+   "prompt": "Use the reference image for the characters and the setting: keep the same faces, hair, clothes, colours and lighting. Medium shot across the table: Kerem leans forward on his elbows and asks, nodding at the closed book cover; Lena rests a hand on the cover, ready to explain. Soft afternoon light, blurred blank shelves. Vertical composition. Vertical composition.",
+   "ref": "k1"
+  },
+  {
+   "name": "k3",
+   "prompt": "Use the reference image for the characters and the setting: keep the same faces, hair, clothes, colours and lighting. Close medium shot: Lena explains with calm gestures, one hand sketching a small wave in the air as if describing the sea, her eyes bright; Kerem listens, chin on his hand. Warm library light on their faces. Vertical composition. Vertical composition.",
+   "ref": "k1"
+  },
+  {
+   "name": "k4",
+   "prompt": "Use the reference image for the characters and the setting: keep the same faces, hair, clothes, colours and lighting. Kerem sits back with an interested smile and taps the table lightly; Lena turns the book around and slides it toward him so he can read the first page. Soft daylight, blank spines behind. Vertical composition. Vertical composition.",
+   "ref": "k1"
+  }
+ ],
+ "timeline": [
+  {
+   "shot": "k1",
+   "len": 3.5,
+   "move": [
+    1.0,
+    1.06,
+    0.45,
+    0.5,
+    0.5,
+    0.55
+   ],
+   "audio": "s03-01"
+  },
+  {
+   "shot": "k2",
+   "len": 3.6,
+   "move": [
+    1.06,
+    1.0,
+    0.5,
+    0.55,
+    0.55,
+    0.5
+   ],
+   "audio": "s03-02"
+  },
+  {
+   "shot": "k3",
+   "len": 3.6,
+   "move": [
+    1.06,
+    1.0,
+    0.5,
+    0.55,
+    0.55,
+    0.5
+   ],
+   "audio": "s03-03"
+  },
+  {
+   "shot": "k4",
+   "len": 2.6,
+   "move": [
+    1.06,
+    1.0,
+    0.5,
+    0.55,
+    0.55,
+    0.5
+   ]
+  }
+ ]
+}

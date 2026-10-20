@@ -1,0 +1,159 @@
+{
+ "schemaVersion": 1,
+ "id": "A2-R-BOK-03",
+ "contentVersion": 1,
+ "sourceType": "standalone",
+ "category": "BOK",
+ "categoryTr": "Kitap",
+ "level": "A2",
+ "titleTr": "Öneri",
+ "learningObjective": "Bir kitabı önermek",
+ "family": "FAM-BOK-RECOMMEND",
+ "duration": 12.4,
+ "video": "A2-R-BOK-03.mp4",
+ "poster": "A2-R-BOK-03.webp",
+ "image": "stills/s04.webp",
+ "audio": "audio/s04-02.m4a",
+ "status": "DRAFT",
+ "target": {
+  "kind": "phrase",
+  "en": "You should read this book.",
+  "tr": "Bu kitabı okumalısın.",
+  "cue": "s04-02"
+ },
+ "practice": {
+  "promptTr": "Lena ne öneriyor?",
+  "explainTr": "Kerem'e bu kitabı okumasını öneriyor.",
+  "options": [
+   {
+    "text": "Bu kitabı okumasını",
+    "lang": "tr",
+    "correct": true
+   },
+   {
+    "text": "Bir film izlemesini",
+    "lang": "tr",
+    "correct": false
+   },
+   {
+    "text": "Bir yürüyüş yapmasını",
+    "lang": "tr",
+    "correct": false
+   }
+  ]
+ },
+ "related": [],
+ "cues": [
+  {
+   "id": "s04-01",
+   "start": 0.5,
+   "end": 3.5,
+   "speaker": "KEREM",
+   "text": "I need something to read.",
+   "tr": "Okuyacak bir şey arıyorum.",
+   "chunks": [],
+   "words": [
+    {
+     "w": "I",
+     "start": 0.5,
+     "end": 0.73
+    },
+    {
+     "w": "need",
+     "start": 0.73,
+     "end": 1.33,
+     "gloss": "ihtiyaç duymak"
+    },
+    {
+     "w": "something",
+     "start": 1.33,
+     "end": 2.53,
+     "gloss": "bir şey"
+    },
+    {
+     "w": "to",
+     "start": 2.53,
+     "end": 2.9
+    },
+    {
+     "w": "read.",
+     "start": 2.9,
+     "end": 3.5,
+     "gloss": "okumak"
+    }
+   ]
+  },
+  {
+   "id": "s04-02",
+   "start": 3.7,
+   "end": 6.8,
+   "speaker": "LENA",
+   "text": "You should read this book.",
+   "tr": "Bu kitabı okumalısın.",
+   "chunks": [],
+   "words": [
+    {
+     "w": "You",
+     "start": 3.7,
+     "end": 4.18
+    },
+    {
+     "w": "should",
+     "start": 4.18,
+     "end": 5.01,
+     "gloss": "malı/meli"
+    },
+    {
+     "w": "read",
+     "start": 5.01,
+     "end": 5.61,
+     "gloss": "okumak"
+    },
+    {
+     "w": "this",
+     "start": 5.61,
+     "end": 6.2
+    },
+    {
+     "w": "book.",
+     "start": 6.2,
+     "end": 6.8,
+     "gloss": "kitap"
+    }
+   ]
+  },
+  {
+   "id": "s04-03",
+   "start": 7.0,
+   "end": 10.1,
+   "speaker": "KEREM",
+   "text": "I'll try it, thanks.",
+   "tr": "Deneyeceğim, teşekkürler.",
+   "chunks": [],
+   "words": [
+    {
+     "w": "I'll",
+     "start": 7.0,
+     "end": 7.81
+    },
+    {
+     "w": "try",
+     "start": 7.81,
+     "end": 8.47,
+     "gloss": "denemek"
+    },
+    {
+     "w": "it,",
+     "start": 8.47,
+     "end": 8.96
+    },
+    {
+     "w": "thanks.",
+     "start": 8.96,
+     "end": 10.1,
+     "gloss": "teşekkürler"
+    }
+   ]
+  }
+ ]
+}

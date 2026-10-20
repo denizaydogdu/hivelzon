@@ -9,7 +9,7 @@
  "titleTr": "Filmden sonra",
  "learningObjective": "Bir film hakkında görüş sormak",
  "family": "FAM-CIN-OPINION",
- "duration": 12.5,
+ "duration": 12.6,
  "video": "A2-R-CIN-01.mp4",
  "poster": "A2-R-CIN-01.webp",
  "image": "stills/s03.webp",
@@ -46,8 +46,8 @@
  "cues": [
   {
    "id": "s03-01",
-   "start": 0.6,
-   "end": 3.4,
+   "start": 0.5,
+   "end": 3.5,
    "speaker": "DENIZ",
    "text": "We are outside the cinema now.",
    "tr": "Şimdi sinemanın önündeyiz.",
@@ -55,92 +55,92 @@
    "words": [
     {
      "w": "We",
-     "start": 0.6,
-     "end": 0.75
+     "start": 0.5,
+     "end": 0.66
     },
     {
      "w": "are",
-     "start": 0.75,
-     "end": 0.95
+     "start": 0.66,
+     "end": 0.88
     },
     {
      "w": "outside",
-     "start": 0.95,
-     "end": 1.5,
+     "start": 0.88,
+     "end": 1.46,
      "gloss": "dışında"
     },
     {
      "w": "the",
-     "start": 1.5,
-     "end": 1.7
+     "start": 1.46,
+     "end": 1.68
     },
     {
      "w": "cinema",
-     "start": 1.7,
-     "end": 2.3,
+     "start": 1.68,
+     "end": 2.32,
      "gloss": "sinema"
     },
     {
      "w": "now.",
-     "start": 2.6,
-     "end": 3.1,
+     "start": 2.64,
+     "end": 3.18,
      "gloss": "şimdi"
     }
    ]
   },
   {
    "id": "s03-02",
-   "start": 4.0,
+   "start": 3.7,
    "end": 6.8,
-   "speaker": "ELIF",
+   "speaker": "SELIN",
    "text": "What did you think of the film?",
    "tr": "Film hakkında ne düşündün?",
    "chunks": [],
    "words": [
     {
      "w": "What",
-     "start": 4.0,
-     "end": 4.3,
+     "start": 3.7,
+     "end": 4.03,
      "gloss": "ne"
     },
     {
      "w": "did",
-     "start": 4.3,
-     "end": 4.5
+     "start": 4.03,
+     "end": 4.25
     },
     {
      "w": "you",
-     "start": 4.5,
-     "end": 4.7
+     "start": 4.25,
+     "end": 4.48
     },
     {
      "w": "think",
-     "start": 4.7,
-     "end": 5.2,
+     "start": 4.48,
+     "end": 5.03,
      "gloss": "düşünmek"
     },
     {
      "w": "of",
-     "start": 5.4,
-     "end": 5.6
+     "start": 5.25,
+     "end": 5.47
     },
     {
      "w": "the",
-     "start": 5.6,
-     "end": 5.8
+     "start": 5.47,
+     "end": 5.69
     },
     {
      "w": "film?",
-     "start": 5.8,
-     "end": 6.4,
+     "start": 5.69,
+     "end": 6.36,
      "gloss": "film"
     }
    ]
   },
   {
    "id": "s03-03",
-   "start": 7.4,
-   "end": 11.0,
+   "start": 7.0,
+   "end": 10.4,
    "speaker": "DENIZ",
    "text": "I liked the music, but the story was slow.",
    "tr": "Müziği sevdim ama hikâye yavaştı.",
@@ -148,52 +148,52 @@
    "words": [
     {
      "w": "I",
-     "start": 7.4,
-     "end": 7.5
+     "start": 7.0,
+     "end": 7.09
     },
     {
      "w": "liked",
-     "start": 7.5,
-     "end": 7.9,
+     "start": 7.09,
+     "end": 7.47,
      "gloss": "sevdim"
     },
     {
      "w": "the",
-     "start": 7.9,
-     "end": 8.1
+     "start": 7.47,
+     "end": 7.66
     },
     {
      "w": "music,",
-     "start": 8.1,
-     "end": 8.7,
+     "start": 7.66,
+     "end": 8.23,
      "gloss": "müzik"
     },
     {
      "w": "but",
-     "start": 9.0,
-     "end": 9.3,
+     "start": 8.51,
+     "end": 8.79,
      "gloss": "ama"
     },
     {
      "w": "the",
-     "start": 9.3,
-     "end": 9.5
+     "start": 8.79,
+     "end": 8.98
     },
     {
      "w": "story",
-     "start": 9.5,
-     "end": 10.0,
+     "start": 8.98,
+     "end": 9.46,
      "gloss": "hikâye"
     },
     {
      "w": "was",
-     "start": 10.0,
-     "end": 10.2
+     "start": 9.46,
+     "end": 9.64
     },
     {
      "w": "slow.",
-     "start": 10.2,
-     "end": 10.8,
+     "start": 9.64,
+     "end": 10.21,
      "gloss": "yavaş"
     }
    ]

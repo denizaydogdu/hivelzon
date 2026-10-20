@@ -1,0 +1,164 @@
+{
+ "schemaVersion": 1,
+ "id": "A2-R-BOK-02",
+ "contentVersion": 1,
+ "sourceType": "standalone",
+ "category": "BOK",
+ "categoryTr": "Kitap",
+ "level": "A2",
+ "titleTr": "Konu anlatma",
+ "learningObjective": "Bir kitabın konusunu kısaca anlatmak",
+ "family": "FAM-BOK-SUMMARY",
+ "duration": 12.4,
+ "video": "A2-R-BOK-02.mp4",
+ "poster": "A2-R-BOK-02.webp",
+ "image": "stills/s03.webp",
+ "audio": "audio/s03-02.m4a",
+ "status": "DRAFT",
+ "target": {
+  "kind": "phrase",
+  "en": "This story is about a young sailor.",
+  "tr": "Bu hikâye genç bir denizciyi anlatıyor.",
+  "cue": "s03-02"
+ },
+ "practice": {
+  "promptTr": "Kitap neyi anlatıyor?",
+  "explainTr": "Genç bir denizcinin hikâyesini anlatıyor.",
+  "options": [
+   {
+    "text": "Genç bir denizciyi",
+    "lang": "tr",
+    "correct": true
+   },
+   {
+    "text": "Bir öğretmeni",
+    "lang": "tr",
+    "correct": false
+   },
+   {
+    "text": "Bir kediyi",
+    "lang": "tr",
+    "correct": false
+   }
+  ]
+ },
+ "related": [],
+ "cues": [
+  {
+   "id": "s03-01",
+   "start": 0.5,
+   "end": 3.5,
+   "speaker": "KEREM",
+   "text": "What is your book about?",
+   "tr": "Kitabın ne hakkında?",
+   "chunks": [],
+   "words": [
+    {
+     "w": "What",
+     "start": 0.5,
+     "end": 1.13
+    },
+    {
+     "w": "is",
+     "start": 1.13,
+     "end": 1.5
+    },
+    {
+     "w": "your",
+     "start": 1.5,
+     "end": 2.13
+    },
+    {
+     "w": "book",
+     "start": 2.13,
+     "end": 2.75,
+     "gloss": "kitap"
+    },
+    {
+     "w": "about?",
+     "start": 2.75,
+     "end": 3.5,
+     "gloss": "hakkında"
+    }
+   ]
+  },
+  {
+   "id": "s03-02",
+   "start": 3.7,
+   "end": 6.8,
+   "speaker": "LENA",
+   "text": "This story is about a young sailor.",
+   "tr": "Bu hikâye genç bir denizciyi anlatıyor.",
+   "chunks": [],
+   "words": [
+    {
+     "w": "This",
+     "start": 3.7,
+     "end": 4.14
+    },
+    {
+     "w": "story",
+     "start": 4.14,
+     "end": 4.67,
+     "gloss": "hikâye"
+    },
+    {
+     "w": "is",
+     "start": 4.67,
+     "end": 4.94
+    },
+    {
+     "w": "about",
+     "start": 4.94,
+     "end": 5.47,
+     "gloss": "hakkında"
+    },
+    {
+     "w": "a",
+     "start": 5.47,
+     "end": 5.65
+    },
+    {
+     "w": "young",
+     "start": 5.65,
+     "end": 6.18,
+     "gloss": "genç"
+    },
+    {
+     "w": "sailor.",
+     "start": 6.18,
+     "end": 6.8,
+     "gloss": "denizci"
+    }
+   ]
+  },
+  {
+   "id": "s03-03",
+   "start": 7.0,
+   "end": 10.1,
+   "speaker": "KEREM",
+   "text": "That sounds interesting.",
+   "tr": "Kulağa ilginç geliyor.",
+   "chunks": [],
+   "words": [
+    {
+     "w": "That",
+     "start": 7.0,
+     "end": 7.65
+    },
+    {
+     "w": "sounds",
+     "start": 7.65,
+     "end": 8.55,
+     "gloss": "kulağa gelmek"
+    },
+    {
+     "w": "interesting.",
+     "start": 8.55,
+     "end": 10.1,
+     "gloss": "ilginç"
+    }
+   ]
+  }
+ ]
+}

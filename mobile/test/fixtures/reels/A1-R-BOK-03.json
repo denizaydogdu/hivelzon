@@ -1,0 +1,132 @@
+{
+ "schemaVersion": 1,
+ "id": "A1-R-BOK-03",
+ "contentVersion": 1,
+ "sourceType": "standalone",
+ "category": "BOK",
+ "categoryTr": "Kitap",
+ "level": "A1",
+ "titleTr": "Sessizlik ricası",
+ "learningObjective": "Kütüphanede kibarca sessizlik istemek",
+ "family": "FAM-BOK-QUIET",
+ "duration": 11.9,
+ "video": "A1-R-BOK-03.mp4",
+ "poster": "A1-R-BOK-03.webp",
+ "image": "stills/s02.webp",
+ "audio": "audio/s02-02.m4a",
+ "status": "DRAFT",
+ "target": {
+  "kind": "phrase",
+  "en": "Please be quiet.",
+  "tr": "Lütfen sessiz ol.",
+  "cue": "s02-02"
+ },
+ "practice": {
+  "promptTr": "Lena ne rica ediyor?",
+  "explainTr": "Lena sessiz olmasını rica ediyor.",
+  "options": [
+   {
+    "text": "Sessiz olmasını",
+    "lang": "tr",
+    "correct": true
+   },
+   {
+    "text": "Kitabı vermesini",
+    "lang": "tr",
+    "correct": false
+   },
+   {
+    "text": "Pencereyi açmasını",
+    "lang": "tr",
+    "correct": false
+   }
+  ]
+ },
+ "related": [],
+ "cues": [
+  {
+   "id": "s02-01",
+   "start": 0.5,
+   "end": 3.4,
+   "speaker": "KEREM",
+   "text": "Sorry, my phone.",
+   "tr": "Pardon, telefonum.",
+   "chunks": [],
+   "words": [
+    {
+     "w": "Sorry,",
+     "start": 0.5,
+     "end": 1.66,
+     "gloss": "pardon"
+    },
+    {
+     "w": "my",
+     "start": 1.66,
+     "end": 2.24
+    },
+    {
+     "w": "phone.",
+     "start": 2.24,
+     "end": 3.4,
+     "gloss": "telefon"
+    }
+   ]
+  },
+  {
+   "id": "s02-02",
+   "start": 3.6,
+   "end": 6.5,
+   "speaker": "LENA",
+   "text": "Please be quiet.",
+   "tr": "Lütfen sessiz ol.",
+   "chunks": [],
+   "words": [
+    {
+     "w": "Please",
+     "start": 3.6,
+     "end": 4.86,
+     "gloss": "lütfen"
+    },
+    {
+     "w": "be",
+     "start": 4.86,
+     "end": 5.41
+    },
+    {
+     "w": "quiet.",
+     "start": 5.41,
+     "end": 6.5,
+     "gloss": "sessiz"
+    }
+   ]
+  },
+  {
+   "id": "s02-03",
+   "start": 6.7,
+   "end": 9.6,
+   "speaker": "KEREM",
+   "text": "Of course. Sorry.",
+   "tr": "Elbette. Özür dilerim.",
+   "chunks": [],
+   "words": [
+    {
+     "w": "Of",
+     "start": 6.7,
+     "end": 7.23
+    },
+    {
+     "w": "course.",
+     "start": 7.23,
+     "end": 8.51,
+     "gloss": "elbette"
+    },
+    {
+     "w": "Sorry.",
+     "start": 8.51,
+     "end": 9.6,
+     "gloss": "özür dilerim"
+    }
+   ]
+  }
+ ]
+}

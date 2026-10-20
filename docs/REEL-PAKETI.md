@@ -181,6 +181,9 @@ git dışında (`reeller/**/_raw/`, `clips/`, `_build/`).
   zaman → `reel.cue.window` **uyarısı**; kurulmuş pakette → **hata**.
 - Süre de pakette güncellenir (`reel.json → duration`), böylece uygulamanın %90 tamamlanma eşiği
   videonun gerçek süresiyle uyuşur.
+- **Ses yoksa:** paket **sessiz önizleme** olarak kurulur (`production.json → hasAudio:false`, boş AAC
+  izi); `reel-lint` yalnız `reel.media` uyarısı verir (hata değil). TTS geldikten sonra
+  `build_reel.py --force` yeterlidir; kaynak dosya değişmez.
 
 **Paket (`_build/package/`)**
 ```

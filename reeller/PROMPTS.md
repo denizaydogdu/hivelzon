@@ -152,3 +152,53 @@ koyu yeşil, "double" olmasın; SPO: forma rengi lacivert ✓.
 | 2026-10-20T09:45:30Z | A1-R-BOK-01 | s02-01 | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 25 | 58c6107274925909 | _raw/tts/s02-01.mp3 |
 | 2026-10-20T09:45:31Z | A1-R-BOK-01 | s02-02 | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 18 | 586dd5da51eb7cc8 | _raw/tts/s02-02.mp3 |
 | 2026-10-20T09:45:33Z | A1-R-BOK-01 | s02-03 | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 28 | f6ebf1b3fd870cda | _raw/tts/s02-03.mp3 |
+
+## Pilot 18 video — kalan 15'in sahne kaydı (2026-10-20)
+
+Onay: kullanıcı, 2026-10-20, kalan 15 video ≈50 kr (60 görsel + 3 klip + yeniden üretim payı).
+Aşağıdaki istemler `shots.json` içinde **aynen** durur; önek yukarıdakiyle aynıdır (görselde yazı yok).
+Tutarlılık: **k1** referans, k2–k4 `ref: k1`.
+
+### Sinema
+
+**A1-R-CIN-02 "Salonda yer arıyor"** — *Mia + usher (25, siyah polo, el feneri); küçük sinema salonu, kırmızı koltuklar, yazısız perde.*
+k1 koridorda Mia elinde yazısız bilet, usher yanında · k2 Mia "koltugum nerede?" diye sorar · k3 usher el feneriyle sırayı gösterir · k4 Mia sıraya geçip oturur, rahatlar.
+
+**A1-R-CIN-03 "Atıştırmalık alıyor"** — *Mia + snack clerk (30, kırmızı önlük); sinema büfe, yazısız ürünler, mısır makinesi.*
+k1 Mia büfede, clerk gülümser · **k2 (klip `cin-k2`)** mısır yazısız kutuya dolar · k3 Mia en küçük boyu işaret eder · k4 clerk kutuyu uzatır.
+
+**A2-R-CIN-02 "Tür seçimi"** — *Selin (22, uzun koyu saç, zeytin yeşili palto) + Deniz (24, kısa saç, yuvarlak gözlük, kot ceket); sinema lobisi, yazısız afişler.*
+k1 ikisi afişlerin önünde · k2 Selin sorar · k3 Deniz hevesle anlatır · k4 Selin bir afişi işaret eder, salona yürürler.
+
+**A2-R-CIN-03 "Akşam planı"** — *Selin + Deniz; küçük mutfak ve oturma odası, sıcak akşam ışığı.*
+k1 mutfakta çay/telefon · k2 Deniz "bu akşam boş musun?" · k3 Selin sevinçle kabul eder · k4 oturma odasında battaniye ve atıştırmalık hazırlığı.
+
+### Spor
+
+**A1-R-SPO-02 "Sahada arkadaş"** — *Elif (15, at kuyruğu, numarasız lacivert forma) + Mert (16, aynı forma); okul sahası, sıcak ikindi.*
+k1 Elif topu ayağında, Mert sol kanatta el sallar · k2 Mert bekler, Elif ölçer · **k3 (klip `spo-k3`)** ayağın topla buluşması · k4 Mert topu kontrol eder, teşekkür eder.
+
+**A1-R-SPO-03 "Tribünde"** — *Elif + spectator (30, pas rengi atkı); küçük okul stadyumu, tribün.*
+k1 şut ve kaleci · k2 Elif sevinçle bağırır · k3 takım golcüye koşar · k4 Elif ve spectator birlikte alkışlar.
+
+**A2-R-SPO-02 "Antrenman günü"** — *Coach (45) + Mert; antrenman sahası, koniler, alçak güneş.*
+k1 koniler ve ikili sohbet · k2 coach sorar · k3 Mert parmaklarıyla sayarak anlatır · k4 coach not alır, Mert konilere koşar.
+
+**A2-R-SPO-03 "Sonuç ve duygu"** — *Elif + Mert; maç sonrası saha kenarı, bank, akşam ışığı.*
+k1 Mert bankta ayakkabı bağlar · k2 Elif skoru sorar · k3 Mert gülümseyerek "kaybettik ama eğlenceliydi" · k4 yumruk tokuşturup ayrılırlar.
+
+### Kitap
+
+**A1-R-BOK-02 "Beğeni"** — *Lena (22, gözlük, zeytin yeşili hırka) + Kerem (24, gri kapüşonlu, sırt çantası); mahalle kütüphanesi, yazısız sırtlar.*
+k1 masada açık yazısız kitap · k2 Kerem sorar · **k3 (klip `bok-k3`)** kitap masada kayar · k4 Lena sayfaya dokunur, Kerem okumaya başlar.
+
+**A1-R-BOK-03 "Sessizlik ricası"** — *Lena + Kerem; sessiz okuma odası, yeşil masa lambaları.*
+k1 Kerem telefonu kaldırır (utanç) · k2 özür diler · k3 Lena kibarca "sessiz ol" der · k4 Kerem telefonu cebine koyar, okumaya döner.
+
+**A2-R-BOK-02 "Konu anlatma"** — *Lena + Kerem; aynı kütüphane, öğleden sonra.*
+k1 Kerem sandalyeyi çeker · k2 "kitabın ne hakkında?" · k3 Lena eliyle denizi işaret eder gibi anlatır · k4 kitabı çevirip Kerem'e uzatır.
+
+**A2-R-BOK-03 "Öneri"** — *Lena + Kerem; iade bankosu, öğleden sonra.*
+k1 Kerem kitabı iade eder · k2 "okuyacak bir şey arıyorum" · k3 Lena yazısız kapağı iki kez tıklar · k4 Kerem kitabı alır, teşekkür eder.
+
+**Klip özeti (3 adet, 720p 5 sn, ses yok):** `cin-k2` (mısır), `spo-k3` (top), `bok-k3` (kitap).

@@ -1,0 +1,86 @@
+{
+ "schemaVersion": 1,
+ "id": "A2-R-SPO-01",
+ "model": "gpt_image_2_5",
+ "params": {
+  "aspect_ratio": "9:16",
+  "resolution": "2k",
+  "quality": "low"
+ },
+ "prefix": "Warm animated-series illustration, graphic-novel style, clean ink lines, soft cel shading, warm everyday palette with soft natural light, mature tone suitable for teens and adults, not childish, no text, no letters, no numbers, no logos.",
+ "shots": [
+  {
+   "name": "k1",
+   "prompt": "Medium wide shot on a green training pitch in late-afternoon light. The coach, a man of 45 with short grey-flecked hair, a light grey polo and a plain whistle on a cord, stands with his clipboard at his hip and raises one hand: stop. In front of him Mert, a boy of 16 with short dark hair, a plain navy training kit without numbers, has just kicked the ball and turns back, surprised. The plain white ball rests on the grass between them. Low sun, long shadows, simple goal frame in the distance. Vertical composition.",
+   "ref": null
+  },
+  {
+   "name": "k2",
+   "prompt": "Use the reference image for the characters and the setting: keep the same faces, hair, clothes, colours and lighting. Medium shot: Mert drops his shoulders and looks down, one hand scratching the back of his neck, saying sorry; the coach watches him calmly, clipboard lowered. Grass and white line of the pitch, warm low sun. Vertical composition.",
+   "ref": "k1"
+  },
+  {
+   "name": "k3",
+   "prompt": "Use the reference image for the characters and the setting: keep the same faces, hair, clothes, colours and lighting. Close medium shot of the coach leaning slightly toward Mert, pointing two fingers at his own eyes and then at the ball on the grass, speaking clearly and kindly; Mert looks up and follows the gesture. Warm backlight, blurred green field behind. Vertical composition.",
+   "ref": "k1"
+  },
+  {
+   "name": "k4",
+   "prompt": "Use the reference image for the characters and the setting: keep the same faces, hair, clothes, colours and lighting. Wide shot: Mert nods with new focus and runs back toward the ball, body angled forward; the coach watches with a small satisfied nod, clipboard under his arm. Long shadows on the green pitch, warm evening sky. Vertical composition.",
+   "ref": "k1"
+  }
+ ],
+ "timeline": [
+  {
+   "shot": "k1",
+   "len": 3.2,
+   "move": [
+    1.0,
+    1.06,
+    0.45,
+    0.5,
+    0.5,
+    0.55
+   ],
+   "audio": "s01-01"
+  },
+  {
+   "shot": "k2",
+   "len": 3.0,
+   "move": [
+    1.08,
+    1.01,
+    0.55,
+    0.5,
+    0.5,
+    0.5
+   ],
+   "audio": "s01-02"
+  },
+  {
+   "shot": "k3",
+   "len": 4.2,
+   "move": [
+    1.0,
+    1.1,
+    0.5,
+    0.5,
+    0.5,
+    0.45
+   ],
+   "audio": "s01-03"
+  },
+  {
+   "shot": "k4",
+   "len": 2.5,
+   "move": [
+    1.06,
+    1.0,
+    0.5,
+    0.55,
+    0.55,
+    0.5
+   ]
+  }
+ ]
+}

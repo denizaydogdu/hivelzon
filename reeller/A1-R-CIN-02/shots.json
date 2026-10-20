@@ -1,0 +1,86 @@
+{
+ "schemaVersion": 1,
+ "id": "A1-R-CIN-02",
+ "model": "gpt_image_2_5",
+ "params": {
+  "aspect_ratio": "9:16",
+  "resolution": "2k",
+  "quality": "low"
+ },
+ "prefix": "Warm animated-series illustration, graphic-novel style, clean ink lines, soft cel shading, warm everyday palette with soft natural light, mature tone suitable for teens and adults, not childish, no text, no letters, no numbers, no logos.",
+ "shots": [
+  {
+   "name": "k1",
+   "prompt": "Wide shot in the aisle of a small cinema hall just before the film: rows of red velvet seats curve toward a large blank screen, warm wall lights dimmed low. Mia, a young woman in a mustard-yellow jacket with dark curly hair in a low bun and a small canvas tote bag, stands in the aisle holding a plain blank ticket; a young usher, a woman of 25 in a black polo shirt with a small plain torch in her hand, waits beside her. Vertical composition. Vertical composition.",
+   "ref": null
+  },
+  {
+   "name": "k2",
+   "prompt": "Use the reference image for the characters and the setting: keep the same faces, hair, clothes, colours and lighting. Medium shot in the aisle: Mia turns to the usher and asks, the blank ticket raised slightly in one hand; the usher leans in to listen, torch pointing at the floor. Dim warm light, rows of seats blurred behind. Vertical composition. Vertical composition.",
+   "ref": "k1"
+  },
+  {
+   "name": "k3",
+   "prompt": "Use the reference image for the characters and the setting: keep the same faces, hair, clothes, colours and lighting. The usher points with her torch beam along a row of seats toward the middle of the hall, her other hand indicating the numberless seat backs; Mia follows the beam with her eyes. Warm dim light, blank screen glowing softly at the back. Vertical composition. Vertical composition.",
+   "ref": "k1"
+  },
+  {
+   "name": "k4",
+   "prompt": "Use the reference image for the characters and the setting: keep the same faces, hair, clothes, colours and lighting. Mia walks along the row, stepping carefully past seated silhouettes, and settles into an empty seat with a relieved smile, tote bag on her lap; the usher watches from the aisle. Soft screen glow, warm hall light. Vertical composition. Vertical composition.",
+   "ref": "k1"
+  }
+ ],
+ "timeline": [
+  {
+   "shot": "k1",
+   "len": 3.4,
+   "move": [
+    1.0,
+    1.06,
+    0.45,
+    0.5,
+    0.5,
+    0.55
+   ],
+   "audio": "s01-01"
+  },
+  {
+   "shot": "k2",
+   "len": 3.2,
+   "move": [
+    1.06,
+    1.0,
+    0.5,
+    0.55,
+    0.55,
+    0.5
+   ],
+   "audio": "s01-02"
+  },
+  {
+   "shot": "k3",
+   "len": 3.6,
+   "move": [
+    1.06,
+    1.0,
+    0.5,
+    0.55,
+    0.55,
+    0.5
+   ],
+   "audio": "s01-03"
+  },
+  {
+   "shot": "k4",
+   "len": 2.6,
+   "move": [
+    1.06,
+    1.0,
+    0.5,
+    0.55,
+    0.55,
+    0.5
+   ]
+  }
+ ]
+}

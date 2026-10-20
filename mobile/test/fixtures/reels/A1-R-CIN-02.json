@@ -1,0 +1,159 @@
+{
+ "schemaVersion": 1,
+ "id": "A1-R-CIN-02",
+ "contentVersion": 1,
+ "sourceType": "standalone",
+ "category": "CIN",
+ "categoryTr": "Sinema",
+ "level": "A1",
+ "titleTr": "Salonda yer arıyor",
+ "learningObjective": "Sinemada koltuğunu sormak",
+ "family": "FAM-CIN-SEAT",
+ "duration": 11.9,
+ "video": "A1-R-CIN-02.mp4",
+ "poster": "A1-R-CIN-02.webp",
+ "image": "stills/s01.webp",
+ "audio": "audio/s01-02.m4a",
+ "status": "DRAFT",
+ "target": {
+  "kind": "phrase",
+  "en": "Where is my seat?",
+  "tr": "Koltugum nerede?",
+  "cue": "s01-02"
+ },
+ "practice": {
+  "promptTr": "Mia ne soruyor?",
+  "explainTr": "Mia koltuğunun nerede olduğunu soruyor.",
+  "options": [
+   {
+    "text": "Koltuğu nerede",
+    "lang": "tr",
+    "correct": true
+   },
+   {
+    "text": "Bilet nerede",
+    "lang": "tr",
+    "correct": false
+   },
+   {
+    "text": "Film saat kaçta",
+    "lang": "tr",
+    "correct": false
+   }
+  ]
+ },
+ "related": [],
+ "cues": [
+  {
+   "id": "s01-01",
+   "start": 0.5,
+   "end": 3.4,
+   "speaker": "USHER",
+   "text": "Good evening. Ticket, please.",
+   "tr": "İyi akşamlar. Biletiniz, lütfen.",
+   "chunks": [],
+   "words": [
+    {
+     "w": "Good",
+     "start": 0.5,
+     "end": 1.04
+    },
+    {
+     "w": "evening.",
+     "start": 1.04,
+     "end": 1.89,
+     "gloss": "akşam"
+    },
+    {
+     "w": "Ticket,",
+     "start": 1.89,
+     "end": 2.65,
+     "gloss": "bilet"
+    },
+    {
+     "w": "please.",
+     "start": 2.65,
+     "end": 3.4,
+     "gloss": "lütfen"
+    }
+   ]
+  },
+  {
+   "id": "s01-02",
+   "start": 3.6,
+   "end": 6.3,
+   "speaker": "MIA",
+   "text": "Where is my seat?",
+   "tr": "Koltugum nerede?",
+   "chunks": [],
+   "words": [
+    {
+     "w": "Where",
+     "start": 3.6,
+     "end": 4.55,
+     "gloss": "nerede"
+    },
+    {
+     "w": "is",
+     "start": 4.55,
+     "end": 5.02
+    },
+    {
+     "w": "my",
+     "start": 5.02,
+     "end": 5.51
+    },
+    {
+     "w": "seat?",
+     "start": 5.51,
+     "end": 6.3,
+     "gloss": "koltuk"
+    }
+   ]
+  },
+  {
+   "id": "s01-03",
+   "start": 6.5,
+   "end": 9.6,
+   "speaker": "USHER",
+   "text": "Row five, next to the screen.",
+   "tr": "Beşinci sıra, perdenin yanında.",
+   "chunks": [],
+   "words": [
+    {
+     "w": "Row",
+     "start": 6.5,
+     "end": 6.94,
+     "gloss": "sıra"
+    },
+    {
+     "w": "five,",
+     "start": 6.94,
+     "end": 7.49
+    },
+    {
+     "w": "next",
+     "start": 7.49,
+     "end": 8.05,
+     "gloss": "yanında"
+    },
+    {
+     "w": "to",
+     "start": 8.05,
+     "end": 8.37
+    },
+    {
+     "w": "the",
+     "start": 8.37,
+     "end": 8.82
+    },
+    {
+     "w": "screen.",
+     "start": 8.82,
+     "end": 9.6,
+     "gloss": "perde"
+    }
+   ]
+  }
+ ]
+}

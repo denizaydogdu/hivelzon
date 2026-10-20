@@ -38,14 +38,33 @@ void main() {
     final list = await source.listReels();
     expect(list.reels.map((r) => r.id), [
       'A1-R-BOK-01',
+      'A1-R-BOK-02',
+      'A1-R-BOK-03',
       'A1-R-CIN-01',
+      'A1-R-CIN-02',
+      'A1-R-CIN-03',
       'A1-R-SPO-01',
+      'A1-R-SPO-02',
+      'A1-R-SPO-03',
       'A2-R-BOK-01',
+      'A2-R-BOK-02',
+      'A2-R-BOK-03',
       'A2-R-CIN-01',
+      'A2-R-CIN-02',
+      'A2-R-CIN-03',
       'A2-R-SPO-01',
+      'A2-R-SPO-02',
+      'A2-R-SPO-03',
     ]);
     expect(list.byId('A1-R-CIN-01')!.categoryTr, 'Sinema');
-    expect(list.byCategory('BOK').map((r) => r.level), ['A1', 'A2']);
+    expect(list.byCategory('BOK').map((r) => r.level), [
+      'A1',
+      'A1',
+      'A1',
+      'A2',
+      'A2',
+      'A2',
+    ]);
 
     final reel = await source.loadReel('A1-R-CIN-01');
     expect(reel.titleTr, 'Gişede iki bilet');

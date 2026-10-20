@@ -1,0 +1,86 @@
+{
+ "schemaVersion": 1,
+ "id": "A1-R-SPO-03",
+ "model": "gpt_image_2_5",
+ "params": {
+  "aspect_ratio": "9:16",
+  "resolution": "2k",
+  "quality": "low"
+ },
+ "prefix": "Warm animated-series illustration, graphic-novel style, clean ink lines, soft cel shading, warm everyday palette with soft natural light, mature tone suitable for teens and adults, not childish, no text, no letters, no numbers, no logos.",
+ "shots": [
+  {
+   "name": "k1",
+   "prompt": "Wide shot from the stands of a small school stadium in warm evening light: below, a player in a plain navy kit strikes the ball toward the goal, the goalkeeper diving; above, Elif, a girl of 15 with a high ponytail in a plain navy kit, leans over the railing beside a spectator, a woman of 30 in a rust-coloured scarf. Blurred crowd, low sun. Vertical composition. Vertical composition.",
+   "ref": null
+  },
+  {
+   "name": "k2",
+   "prompt": "Use the reference image for the characters and the setting: keep the same faces, hair, clothes, colours and lighting. Close medium shot: Elif throws both fists up and shouts with joy, eyes wide, ponytail swinging; the spectator beside her claps, laughing. Warm crowd light, blurred railing behind. Vertical composition. Vertical composition.",
+   "ref": "k1"
+  },
+  {
+   "name": "k3",
+   "prompt": "Use the reference image for the characters and the setting: keep the same faces, hair, clothes, colours and lighting. Wide shot down on the pitch: the ball rests inside the plain, net-strung goal while players in navy run toward the scorer with raised arms; the goalkeeper kneels, head down. Warm low sun, long shadows on the grass. Vertical composition. Vertical composition.",
+   "ref": "k1"
+  },
+  {
+   "name": "k4",
+   "prompt": "Use the reference image for the characters and the setting: keep the same faces, hair, clothes, colours and lighting. Medium shot: Elif and the spectator exchange a delighted look and clap together, the pitch glowing behind them; other blurred spectators rise in the stands. Warm evening light. Vertical composition. Vertical composition.",
+   "ref": "k1"
+  }
+ ],
+ "timeline": [
+  {
+   "shot": "k1",
+   "len": 3.4,
+   "move": [
+    1.0,
+    1.06,
+    0.45,
+    0.5,
+    0.5,
+    0.55
+   ],
+   "audio": "s02-01"
+  },
+  {
+   "shot": "k2",
+   "len": 3.4,
+   "move": [
+    1.06,
+    1.0,
+    0.5,
+    0.55,
+    0.55,
+    0.5
+   ],
+   "audio": "s02-02"
+  },
+  {
+   "shot": "k3",
+   "len": 4.0,
+   "move": [
+    1.06,
+    1.0,
+    0.5,
+    0.55,
+    0.55,
+    0.5
+   ],
+   "audio": "s02-03"
+  },
+  {
+   "shot": "k4",
+   "len": 2.6,
+   "move": [
+    1.06,
+    1.0,
+    0.5,
+    0.55,
+    0.55,
+    0.5
+   ]
+  }
+ ]
+}

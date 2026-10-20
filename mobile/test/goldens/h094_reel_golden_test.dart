@@ -43,10 +43,27 @@ final _cases = <String, _Case>{
   ),
   'gunluk_bitis': _Case(act: _jumpToLast),
   // Daha önce gösterilmiş video: "Tekrar" rozeti (plan §4.5).
+  // Sinema kategorisinin üçü de gösterilmiş; en uzun süre önce gösterilen
+  // (CIN-01) seçilir, böylece golden "Tekrar" rozetini korur.
   'gunluk_tekrar': _Case(
-    seed: (h) => DiscoverStore(
-      h.db,
-    ).mergeProgress('A1-R-CIN-01', contentVersion: 1, shownDay: '2026-10-13'),
+    seed: (h) async {
+      final store = DiscoverStore(h.db);
+      await store.mergeProgress(
+        'A1-R-CIN-01',
+        contentVersion: 1,
+        shownDay: '2026-10-11',
+      );
+      await store.mergeProgress(
+        'A1-R-CIN-02',
+        contentVersion: 1,
+        shownDay: '2026-10-12',
+      );
+      await store.mergeProgress(
+        'A1-R-CIN-03',
+        contentVersion: 1,
+        shownDay: '2026-10-13',
+      );
+    },
   ),
   'gunluk_seviye': _Case(
     act: (t, h) async {
