@@ -170,9 +170,10 @@ final routerProvider = Provider<GoRouter>((ref) {
       ),
       GoRoute(
         path: '/play/:contentId',
-        pageBuilder: (context, state) => MaterialPage(
+        // H-043: "Hareketi azalt" açıksa oynatıcı geçişsiz açılır.
+        pageBuilder: (context, state) => fullscreenPage(
+          context,
           key: state.pageKey,
-          fullscreenDialog: true,
           child: StudyTimeScope(
             child: PlayerScreen(
               contentId: state.pathParameters['contentId']!,

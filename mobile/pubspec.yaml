@@ -16,7 +16,11 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
 # In Windows, build-name is used as the major, minor, and patch parts
 # of the product and file versions while build-number is used as the build suffix.
-version: 1.0.0+1
+# H-043: iç beta 0.1.0. Yapı numarası (+N) her cihaz derlemesinde artar:
+# `flutter build … --build-number N --dart-define=HV_APP_VERSION=0.1.0+N`
+# (tools/device-build.sh). Buradaki +1 yerel/simülatör varsayılanıdır;
+# lib/app/app_info.dart ile aynı tutulur (test denetler).
+version: 0.1.0+1
 
 environment:
   sdk: ^3.10.4
@@ -66,6 +70,13 @@ dependencies:
   # derlemesine girmez).
   flutter_local_notifications: ^22.3.2
   timezone: ^0.11.2
+  # H-043: Profil → "Hata kaydını paylaş" (yalnızca kullanıcı dokununca
+  # sistem paylaşım penceresi; kendiliğinden hiçbir yere gönderilmez).
+  # Lisanslar: share_plus, share_plus_platform_interface ve cross_file
+  # BSD-3-Clause; url_launcher_linux / _web / _windows /
+  # _platform_interface BSD-3-Clause (yalnız masaüstü/web eklentileri;
+  # iOS/Android derlemesine girmez).
+  share_plus: ^13.3.1
 
 dev_dependencies:
   flutter_test:

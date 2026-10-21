@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:drift/drift.dart' hide isNull, isNotNull;
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -18,6 +20,8 @@ import 'package:hivelzon/shared/api/api_client.dart';
 import 'package:hivelzon/shared/api/auth_service.dart';
 import 'package:hivelzon/shared/api/token_store.dart';
 import 'package:hivelzon/shared/content/content_providers.dart';
+import 'package:hivelzon/shared/diagnostics/crash_log.dart';
+import 'package:hivelzon/shared/diagnostics/crash_reporting.dart';
 import 'package:hivelzon/shared/storage/app_database.dart';
 import 'package:hivelzon/shared/storage/storage_providers.dart';
 import 'package:hivelzon/shared/sync/sync_store.dart';
@@ -32,8 +36,12 @@ void main() {
   late FakeApiServer server;
   late MemoryTokenStore tokens;
   late FakeReminderScheduler reminders;
+  late Directory crashDir;
+  late CrashLog crashLog;
 
   setUp(() {
+    crashDir = Directory.systemTemp.createTempSync('hv_crash_');
+    crashLog = CrashLog(directory: () async => crashDir, appVersion: '0.1.0+1');
     db = AppDatabase.memory();
     server = FakeApiServer();
     tokens = MemoryTokenStore();
@@ -43,6 +51,7 @@ void main() {
   tearDown(() async {
     SyncController.listenLifecycle = true;
     await db.close();
+    crashDir.deleteSync(recursive: true);
   });
 
   Future<void> settle(WidgetTester tester, [int n = 20]) async {
@@ -90,6 +99,7 @@ void main() {
           apiHttpClientProvider.overrideWithValue(server.client),
           tokenStoreProvider.overrideWithValue(tokens),
           reminderSchedulerProvider.overrideWithValue(reminders),
+          crashLogProvider.overrideWithValue(crashLog),
         ],
         // Uygulama kökü gibi: eşitleme denetleyicisi baştan dinlenir.
         child: Consumer(
@@ -364,7 +374,7 @@ void main() {
   });
 
   testWidgets('H-042: "Bu telefondaki verileri sil" hatırlatmayı da '
-      'kaldırır', (tester) async {
+      'kaldırır; H-043: hata kaydı da silinir', (tester) async {
     final auth = AuthService(
       api: ApiClient(
         client: server.client,
@@ -388,7 +398,9 @@ void main() {
       await ReminderStore(
         db,
       ).write(const ReminderSettings(enabled: true, hour: 8, minute: 0));
+      await crashLog.record('test', StateError('x'), StackTrace.current);
     });
+    expect(await tester.runAsync(crashLog.entries), hasLength(1));
     reminders.scheduled = (8, 0, 'hiVelzon', '');
     await pump(tester, const AccountScreen());
     await tapKey(tester, 'account-sign-out-wipe');
@@ -398,6 +410,14 @@ void main() {
     expect(reminders.cancelCalls, 1);
     final s = await tester.runAsync(() => ReminderStore(db).read());
     expect(s, ReminderSettings.off);
+    // Dosya silme gerçek G/Ç: gerçek ve sahte zaman sırayla ilerler.
+    for (var i = 0; i < 10; i++) {
+      await tester.runAsync(
+        () => Future<void>.delayed(const Duration(milliseconds: 5)),
+      );
+      await tester.pump();
+    }
+    expect(await tester.runAsync(crashLog.entries), isEmpty);
     await tester.runAsync(auth.dispose);
     await unmount(tester);
   });

@@ -25,6 +25,19 @@ Page<T> appPage<T>({required LocalKey key, required Widget child}) {
   );
 }
 
+/// Tam ekran sayfa (oynatıcı; H-043): alttan açılan yerel geçiş. "Hareketi
+/// azalt" açıksa geçiş yok (sayfa doğrudan görünür).
+Page<T> fullscreenPage<T>(
+  BuildContext context, {
+  required LocalKey key,
+  required Widget child,
+}) {
+  if (AppMotion.reduced(context)) {
+    return NoTransitionPage<T>(key: key, child: child);
+  }
+  return MaterialPage<T>(key: key, fullscreenDialog: true, child: child);
+}
+
 /// Solarak geç + alttan hafif kayma; arkadaki sayfa hafifçe solar.
 Widget appFadeThroughTransition(
   BuildContext context,

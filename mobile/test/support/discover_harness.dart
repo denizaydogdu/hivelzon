@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_riverpod/misc.dart' show Override;
 import 'package:flutter_test/flutter_test.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hivelzon/app/theme.dart';
@@ -184,6 +185,7 @@ class DiscoverHarness {
     double textScale = 1,
     bool reduceMotion = false,
     Duration tick = const Duration(seconds: 1),
+    List<Override> overrides = const [],
   }) async {
     tester.view.physicalSize = size * 2;
     tester.view.devicePixelRatio = 2;
@@ -234,6 +236,7 @@ class DiscoverHarness {
           discoverClockProvider.overrideWithValue(() => clock),
           discoverTickProvider.overrideWithValue(tick),
           discoverInitialChipProvider.overrideWithValue(chip),
+          ...overrides,
         ],
         child: RepaintBoundary(
           key: const ValueKey('golden'),

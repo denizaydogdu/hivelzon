@@ -29,6 +29,8 @@ Future<String?> showMeaningSheet(
     useSafeArea: true,
     backgroundColor: AppPalette.sand,
     barrierColor: AppScrim.dimLight,
+    // H-043: "Hareketi azalt" açıksa panel anında açılır/kapanır.
+    sheetAnimationStyle: AppMotion.sheet(context),
     clipBehavior: Clip.antiAlias,
     shape: const RoundedRectangleBorder(borderRadius: AppRadius.sheetTop),
     builder: (context) => DraggableScrollableSheet(

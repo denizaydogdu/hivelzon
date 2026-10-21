@@ -35,6 +35,21 @@ class _SeasonIntroScreenState extends ConsumerState<SeasonIntroScreen> {
     unawaited(_start());
   }
 
+  /// H-043: "Tekrar dene": eski denetleyici bırakılır, jenerik yeniden açılır.
+  void _retry() {
+    final old = _controller;
+    old?.removeListener(_onTick);
+    setState(() {
+      _error = null;
+      _controller = null;
+    });
+    // dispose() ile aynı: ekrandaki VideoPlayer bir kare sonra sökülmüş olur.
+    if (old != null) {
+      Future<void>.delayed(const Duration(milliseconds: 600), old.dispose);
+    }
+    unawaited(_start());
+  }
+
   Future<void> _start() async {
     final source = ref.read(contentSourceProvider);
     try {
@@ -159,9 +174,20 @@ class _SeasonIntroScreenState extends ConsumerState<SeasonIntroScreen> {
                       ),
                     ),
                     const SizedBox(height: AppSpace.s16),
-                    FilledButton(
+                    FilledButton.icon(
+                      key: const ValueKey('season-intro-retry'),
+                      onPressed: _retry,
+                      icon: const Icon(Icons.refresh_rounded),
+                      label: const Text(CommonTexts.retry),
+                    ),
+                    const SizedBox(height: AppSpace.s8),
+                    OutlinedButton(
                       key: const ValueKey('season-intro-back'),
                       onPressed: _close,
+                      style: OutlinedButton.styleFrom(
+                        foregroundColor: AppPalette.white,
+                        side: const BorderSide(color: AppPalette.white),
+                      ),
                       child: const Text(SeasonIntroTexts.goBack),
                     ),
                   ],

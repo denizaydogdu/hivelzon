@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter/foundation.dart' show kDebugMode;
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -447,7 +448,11 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen>
               child: AnimatedOpacity(
                 key: const ValueKey('title-poster'),
                 opacity: s.activeReady ? 0 : 1,
-                duration: const Duration(milliseconds: 200),
+                // H-043: "Hareketi azalt" açıksa anında.
+                duration: AppMotion.of(
+                  context,
+                  const Duration(milliseconds: 200),
+                ),
                 child: Image.network(
                   s.media(node.posterPath!).toString(),
                   fit: BoxFit.cover,
@@ -460,7 +465,9 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen>
         // 3) Karar anında kararma (K-27).
         IgnorePointer(
           child: AnimatedContainer(
-            duration: AppMotion.base,
+            key: const ValueKey('player-dim'),
+            // H-043: "Hareketi azalt" açıksa kararma anında.
+            duration: AppMotion.of(context, AppMotion.base),
             color: !dim
                 ? AppScrim.dim.withValues(alpha: 0)
                 : node is CardNode && node.kind == CardKind.title
@@ -938,6 +945,18 @@ class _ErrorPanel extends StatelessWidget {
           ),
           const SizedBox(height: AppSpace.s8),
           const Text(PlayerTexts.errorHint, textAlign: TextAlign.center),
+          // Yerel geliştirme: içerik sunucusu notu yalnızca debug derlemede.
+          if (kDebugMode) ...[
+            const SizedBox(height: AppSpace.s8),
+            Text(
+              CommonTexts.devServerHint,
+              key: const ValueKey('player-dev-hint'),
+              textAlign: TextAlign.center,
+              style: Theme.of(
+                context,
+              ).textTheme.bodySmall?.copyWith(color: AppPalette.ink500),
+            ),
+          ],
           const SizedBox(height: AppSpace.s24),
           PrimaryAction(label: PlayerTexts.retry, onPressed: onRetry),
           const SizedBox(height: AppSpace.s8),

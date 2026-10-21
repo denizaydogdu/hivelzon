@@ -234,10 +234,18 @@ class _NotebookScreenState extends ConsumerState<NotebookScreen> {
         ),
       switch (entries) {
         AsyncData(:final value) => _list(value),
-        AsyncError() => const SliverToBoxAdapter(
+        AsyncError() => SliverToBoxAdapter(
           child: EmptyState(
+            key: const ValueKey('notebook-error'),
             icon: Icons.error_outline_rounded,
             title: NotebookTexts.loadError,
+            // H-043: hata durumunda "Tekrar dene".
+            action: FilledButton.icon(
+              key: const ValueKey('notebook-retry'),
+              onPressed: () => refreshNotebook(ref),
+              icon: const Icon(Icons.refresh_rounded),
+              label: const Text(CommonTexts.retry),
+            ),
           ),
         ),
         // H-054: spinner yerine liste iskeleti.
@@ -379,9 +387,17 @@ class _NotebookScreenState extends ConsumerState<NotebookScreen> {
         sliver: SliverToBoxAdapter(
           child: switch (board) {
             AsyncData(:final value) => _ClueBoard(data: value, seen: _seen),
-            AsyncError() => const EmptyState(
+            AsyncError() => EmptyState(
+              key: const ValueKey('clues-error'),
               icon: Icons.error_outline_rounded,
               title: NotebookTexts.cluesError,
+              // H-043: hata durumunda "Tekrar dene".
+              action: FilledButton.icon(
+                key: const ValueKey('clues-retry'),
+                onPressed: () => ref.invalidate(clueBoardProvider),
+                icon: const Icon(Icons.refresh_rounded),
+                label: const Text(CommonTexts.retry),
+              ),
             ),
             _ => const ListSkeleton(
               key: ValueKey('skeleton-clues'),

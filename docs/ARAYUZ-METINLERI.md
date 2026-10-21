@@ -137,7 +137,7 @@ Ana Sayfa'nın birincil kartı ile Hi'nin günlük önerisi **aynı karardan** g
 - **Anlam paneli:** "Türkçesini göster", "TÜRKÇESİ", "KALIP", "Tekrar dinle", "0,75x", "Deftere ekle", "Şu an deftere eklenemedi. Biraz sonra tekrar dene."
 - **Konuşmacı adları:** "Telsizdeki ses", "Not". Kart, görev ve başlık satırları için "Anlam".
 - **Bölüm sonu:** "Görev tamam!", "TOPLANAN İPUÇLARI", "AÇIK SORU", "Sıradaki: …", "BU BÖLÜMÜN İFADELERİ".
-- **Hata:** "Bölüm yükleniyor…", "Bağlantını ya da içerik sunucusunu kontrol edip tekrar deneyebilirsin.", "Tekrar dene" ve "Geri dön".
+- **Hata:** "Bölüm yükleniyor…", "Tekrar dene" ve "Geri dön". **H-043:** başlık "Bölüme şu an ulaşılamadı." (bağlantı) / "Bölüm açılamadı." (diğer), açıklama "Bağlantını kontrol edip tekrar deneyebilirsin." ("içerik sunucusu" kullanıcıya gösterilmez, §1.1). Yalnızca debug derlemede altına "Geliştirici notu: …" eklenir. Metinler artık `PlayerTexts.loadUnreachable` / `loadFailed`.
 - **Hi:** "Hi, yapay zekâ yardımcın" (ekran okuyucu).
 
 **H-062 (2026-10-14):** Bu bölümdeki metinler sözcüğü sözcüğüne aynı kalarak `tr_strings.dart` → `PlayerTexts` (oynatıcı) ve `MeaningTexts` (anlam paneli; oynatıcı, Keşfet ve kitap okuyucu ortak) altına taşındı. Büyük harfli etiketler ("GÖREV", "YENİ İPUCU", "HEDEF İFADELER", "TOPLANAN İPUÇLARI", "AÇIK SORU", "BU BÖLÜMÜN İFADELERİ", "KALIP", "TÜRKÇESİ") normal yazılır, ekranda `CapsLabel` büyütür; ekran okuyucu normal yazımla okur. Yalnız "Video yüklenemedi." oynatma katmanında (`player_session.dart`) kaldı: oynatma kodu bu işte değiştirilmedi.
@@ -230,7 +230,7 @@ Hikâye sekmesinin seçicisi **Macera · Kitaplık · Dilbilgisi** olur (sekme s
 | Kaynak satırı (H-078) | — | Dilbilgisi dersinden eklenende **"Dilbilgisi: Üçüncü tekil -s"** (kural kartı ve anlam panelinden eklenen); sol rozet kural ikonu. Kural kartının yüzünde **KURAL** başlığıyla kuralın kendisi. | "Hikâyeden" süzgecine girmez. |
 | Kaynağa göre süz | — | Kitaptan eklenen ifade varsa arama alanının altında çipler: **Hepsi · Hikâyeden · <kitap başlığı>** | H-067: "Defter'de kitaba göre süzme". Ekran okuyucu grubu "Kaynağa göre süz" diye okur. |
 | Eşleşme yok | Eşleşen ifade yok. | Aradığın ifade defterinde yok. | Sade. |
-| Hata | Defter açılamadı. Uygulamayı yeniden başlatmayı dene. | Defter açılamadı. Uygulamayı yeniden başlatıp dene. | Kısa. |
+| Hata | Defter açılamadı. Uygulamayı yeniden başlatmayı dene. | Defter açılamadı. Uygulamayı yeniden başlatıp dene. | Kısa. **H-043:** "Defter açılamadı. Biraz sonra tekrar dene." + **Tekrar dene** (§7.3). |
 | Çıkarıldı | "…" defterden çıkarıldı. | "…" defterinden çıkarıldı. | "Sen" dili. |
 | Kart durumu | Yeni kart: ilk tekrarını bekliyor. | Yeni ifade: ilk tekrarını bekliyor. | Terim. |
 | Kart durumu | Tekrar zamanı geldi. / Bugün, yarın ya da n gün sonra yeniden gelecek. | aynı | |
@@ -305,12 +305,13 @@ Hikâye sekmesinin seçicisi **Macera · Kitaplık · Dilbilgisi** olur (sekme s
 | | **Hi benim hakkımda ne biliyor?** · "Bu cihazda saklananları gör, istersen sil." | |
 | | **Adın** · "Ana Sayfa seni bu adla selamlar." · sağda ad ya da "Eklenmedi" | Panel: **Sana nasıl seslenelim?** · alan "Adın ya da takma adın" · "İsteğe bağlı. Yalnızca bu cihazda saklanır." · **Kaydet** (kaydedince panel kapanır). |
 | Grup **Hakkında** (H-042) | **Kullanım koşulları** · "Taslak · hukuk teyidi bekliyor" · **KVKK aydınlatma metni** · aynı ipucu · **Hakkında ve lisanslar** · "Sürüm, kaynaklar ve açık kaynak lisansları." | Hukuk metinleri §12'deki ekranı açar (taslak kartıyla). Kesin metin hukukçudan gelir (`docs/HUKUK-SORULARI.md`). |
+| | **Hata kaydını paylaş** (H-043) · "Uygulama hata verdiyse son kayıtları istediğin kişiye gönderebilirsin. Kişisel bilgi içermez." · kayıt yoksa "Kayıtlı hata yok." · açılamazsa "Paylaşım şu an açılamadı." · paylaşım konusu "hiVelzon hata kaydı" | Yalnızca dokununca sistem paylaşım penceresi açılır; kendiliğinden hiçbir yere gönderilmez. Paylaşılan metnin başı: "hiVelzon hata kaydı · sürüm 0.1.0+N" · "Kişisel bilgi içermez: yalnızca hata türü, kodun yeri, sürüm ve saat (UTC)." "Bu telefondaki verileri sil" kaydı da siler. |
 | Ad hataları | "En fazla 20 karakter yazabilirsin.", "Yalnızca harf, boşluk, kesme işareti ve tire kullanabilirsin." | Nedeni söyler, suçlamaz. |
 | Ad kaydı | "Adın kaydedildi." / Boş kaydedilince: "Adın silindi; Ana Sayfa "Merhaba!" der." | Sonucu görünür. |
 
 **Günlük hatırlatma bildirimi (H-013, H-042):** başlık "hiVelzon", metin "Bugün için kısa bir adım hazır. İstersen birkaç dakika ayır." Karakter ağzından konuşmaz; hikâye ayrıntısı, soru, geri sayım, seri ve suçlama yoktur (`docs/OYUN-TASARIMI.md` §4.5, K-32). Günde en fazla bir kez, kullanıcının seçtiği saatte (Android'de birkaç dakika kayabilir; kesin alarm izni istenmez). Android bildirim kanalı: **Günlük hatırlatma** · "Günde en fazla bir kez, seçtiğin saatte." "Bu telefondaki verileri sil" hatırlatmayı da kaldırır.
 
-**Hakkında ve lisanslar (H-042):** üst çubukta **Hakkında ve lisanslar** · kart: **hiVelzon** · "Yapay zekâ videolarıyla İngilizce. Ücretsiz, reklamsız." · **SÜRÜM 1.0.0 (1)** · "Velzon Bilişim Teknolojileri Ltd. Şti." · grup **Kaynaklar ve lisanslar** (CEFR-J Wordlist Version 1.6 · Octanove Vocabulary Profile C1/C2 v1.0 · FSRS · EnglishPractice · Yazı tipleri: Inter ve Nunito; atıf metinleri `docs/LISANS-RAPORU.md` §4 biçiminde, CEFR-J zorunlu atfı İngilizce ve olduğu gibi) · alt not "hiVelzon'un kelime seviyeleri ve tekrar düzeni bu açık kaynaklara dayanır. Teşekkür ederiz." · satır **Açık kaynak lisansları** · "Uygulamada kullanılan yazılımların lisans metinleri." (Flutter lisans sayfası). Atıf metinlerindeki İngilizce, kaynakların istediği biçim olduğu için §1.9'un istisnasıdır. Seviye vaadi yok (K-08); Profil'de CEFR seviyesi gösterilmez.
+**Hakkında ve lisanslar (H-042):** üst çubukta **Hakkında ve lisanslar** · kart: **hiVelzon** · "Yapay zekâ videolarıyla İngilizce. Ücretsiz, reklamsız." · **SÜRÜM 0.1.0 (1)** (H-043: iç beta 0.1.0; parantezde yapı numarası) · "Velzon Bilişim Teknolojileri Ltd. Şti." · grup **Kaynaklar ve lisanslar** (CEFR-J Wordlist Version 1.6 · Octanove Vocabulary Profile C1/C2 v1.0 · FSRS · EnglishPractice · Yazı tipleri: Inter ve Nunito; atıf metinleri `docs/LISANS-RAPORU.md` §4 biçiminde, CEFR-J zorunlu atfı İngilizce ve olduğu gibi) · alt not "hiVelzon'un kelime seviyeleri ve tekrar düzeni bu açık kaynaklara dayanır. Teşekkür ederiz." · satır **Açık kaynak lisansları** · "Uygulamada kullanılan yazılımların lisans metinleri." (Flutter lisans sayfası). Atıf metinlerindeki İngilizce, kaynakların istediği biçim olduğu için §1.9'un istisnasıdır. Seviye vaadi yok (K-08); Profil'de CEFR seviyesi gösterilmez.
 
 Ad kuralları: Baştaki ve sondaki boşluk atılır, aradaki boşluklar teke iner. Boş ad, kaydı siler. İzin verilen karakterler harf, boşluk, kesme işareti, tire ve noktadır. En fazla 20 karakter yazılabilir. Ad `app_meta` tablosunda `profile.displayName` anahtarıyla tutulur; şema değişmez. Onboarding'de (H-039) de sorulur. Hesap açılınca (H-038) hesaba taşınır.
 
@@ -367,6 +368,19 @@ Kod: `TalkTexts`, plan gerekçesi `TalkPlanTexts` (`mobile/lib/l10n/tr_strings.d
 | Mesaj sonucu | Kural geçti: **Mesajın anlaşılır!** + **ÖRNEK MESAJ** · Geçmedi: **Neredeyse!** "Mesajında "not" var; anlam tersine dönmüş olabilir." · "Mesajında şunu göremedim: sorry." + ipucu · **Gönder** · **Örnek mesaja bak** · Kural yok: **Kendin karşılaştır** · "Bu mesajı uygulama denetlemiyor. Örnekle karşılaştır:" + maddeler · **Benzer yazdım** / **Bir daha deneyeyim** · **Mesaj görevini bitirdin** | Kesin puan yok. |
 | Bugünün planı (§3.1) | **Konuş: Yeni komşunla tanış** · "İlk haftanın 2. günü. Bölüm 2'yi bitirdin; şimdi Maya ile kısa bir konuşmayı sen yap. Söyleyerek ya da dokunarak cevap verirsin; puan yok. Yaklaşık 3 dk sürer." · **Sahneye başla** / **Mesajı yaz**; adım etiketi KÜÇÜK GÖREV | İlk 7 gün (A1) küçük görevlerin başında; sonra sahne avından sonra; günde en çok bir tane; B1+ önerilmez. |
 
+### 7.3 Hata durumları ve "Tekrar dene" (H-043)
+Hata durumunda kullanıcıya her zaman bir çıkış yolu verilir; sonsuz yükleme yok.
+
+| Yer | Metin | Not |
+|---|---|---|
+| Defter (ifadeler) | "Defter açılamadı. Biraz sonra tekrar dene." (eski: "… Uygulamayı yeniden başlatıp dene.") + **Tekrar dene** | Yeniden başlatma istenmez; düğme yeniden okur. |
+| İpucu panosu | "İpucu panosu açılamadı." + **Tekrar dene** | Yeni düğme. |
+| Hi benim hakkımda ne biliyor? | "Kayıtlar okunamadı. Biraz sonra tekrar dene." + **Tekrar dene** | Yeni düğme. |
+| Kelime tekrarı | **Tekrar açılamadı** · "Defterin yerinde; birazdan yeniden dene." · **Tekrar dene** (birincil) + **Geri dön** | Cevap kaydı 10 sn'de bitmezse de bu ekran gelir. |
+| Sezon jeneriği | "Jenerik açılamadı." · **Tekrar dene** + **Geri dön** | |
+| Keşfet | Yaş bilgisi okunamazsa günlük sınır 20 dk (güvenli taraf; kullanıcı kararı 2); kalınan video okunamazsa günlük set baştan açılır | Yeni metin yok. |
+| Sakin hata kutusu (yalnız yayın derlemesi) | **Burası şu an gösterilemiyor.** · "Geri dönüp tekrar deneyebilirsin." | Çizilemeyen parçanın yerine kum zeminde; kırmızı hata ekranı ve teknik metin yok. Dar alanda yalnız zemin; ekran okuyucu başlığı okur. |
+
 ## 8. Sekme çubuğu
 "Ana Sayfa · Keşfet · Hikâye · Konuş · Profil" (K-30) aynı kalır.
 
@@ -422,7 +436,7 @@ Kod: `SpeakTexts` (`mobile/lib/l10n/tr_strings.dart`). Puan, yüzde, dalga biçi
 | İzin öncesi | **Söyle alıştırmaları** · "Sesin bu telefonda yazıya çevrilir; kaydedilmez, hiçbir yere gönderilmez. Söylediğinin yazısı da saklanmaz; yalnızca "söyledin" ya da "bir daha dene" sonucu bu cihazda kalır." · "Şimdi telefonun mikrofon ve konuşma tanıma iznini soracak." · **Devam et** / **Şimdi değil** · reddedilirse "İzin verilmedi. Her şey dokunarak çalışmaya devam eder." | |
 | Profil (H-059) | Anahtarlı satır **Söyle alıştırmaları** · ipucu "Sesin bu telefonda yazıya çevrilir; kaydedilmez, hiçbir yere gönderilmez." · desteklenmiyorsa sağda "Kapalı" + "Bu telefon İngilizceyi kendi içinde yazıya çeviremiyor; sesin dışarı gönderilmesin diye kapalı. Her şey dokunarak çalışır." · izin kapalıysa "Mikrofon izni kapalı. Telefonun Ayarlar bölümünden açabilirsin; her şey dokunarak da çalışır." | |
 | Hi benim hakkımda ne biliyor? | "3 kez söyledin; 2 tanesinde ifadenin tamamı duyuldu. Yalnızca bu sonuç saklanır; sesin ve söylediklerinin yazısı saklanmaz." | "Hi'nin kayıtlarını sil" bunları da siler. |
-| iOS izin metinleri (Info.plist) | Mikrofon: "Söyle alıştırmalarında İngilizceyi sesli söylediğinde mikrofon kullanılır. …" · Konuşma tanıma: "Söylediğin İngilizce yalnızca bu telefonda yazıya çevrilir …" | |
+| iOS izin metinleri (Info.plist) | Mikrofon: "Söyle alıştırmalarında İngilizceyi sesli söylediğinde mikrofon kullanılır. …" · Konuşma tanıma: "Söylediğin İngilizce yalnızca bu telefonda yazıya çevrilir …" | H-043: aynı metinler `ios/Runner/tr.lproj/InfoPlist.strings`'te; geliştirme bölgesi `tr` (telefon İngilizce olsa da izin pencereleri Türkçe). Yalnız debug/profile'da yerel ağ izni: "Geliştirme derlemesi bu ağdaki bilgisayardan içerik ve hata ayıklama bağlantısı alır." iOS bildirim izni için uygulamanın yazabileceği bir açıklama yoktur. |
 
 ## 12. Hesap ve eşitleme (H-038)
 

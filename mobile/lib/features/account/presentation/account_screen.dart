@@ -8,6 +8,7 @@ import '../../../app/router.dart';
 import '../../../app/design/design.dart';
 import '../../../l10n/tr_strings.dart';
 import '../../../shared/api/api_client.dart';
+import '../../../shared/diagnostics/crash_reporting.dart';
 import '../../../shared/ui/ui.dart';
 import '../../profile/application/profile_providers.dart';
 import '../../reminder/application/reminder_providers.dart';
@@ -316,6 +317,8 @@ class _SignedInState extends ConsumerState<_SignedIn> {
       await ref.read(dailyReminderServiceProvider).clear();
       ref.invalidate(reminderViewProvider);
       _refreshAll();
+      // H-043: yerel hata kaydı da silinir (fırlatmaz).
+      await ref.read(crashLogProvider).clear();
     }
     if (!mounted) return;
     setState(() => _busy = false);

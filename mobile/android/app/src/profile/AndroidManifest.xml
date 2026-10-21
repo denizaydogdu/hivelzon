@@ -4,4 +4,8 @@
          to allow setting breakpoints, to provide hot reload, etc.
     -->
     <uses-permission android:name="android.permission.INTERNET"/>
+    <!-- H-043: gerçek telefonda profile derlemesi (ölçüm) Mac'in yerel ağ
+         adresindeki içerik sunucusuna ve backend'e düz HTTP ile ulaşır
+         (tools/device-build.sh). Release etkilenmez. -->
+    <application android:networkSecurityConfig="@xml/network_security_config"/>
 </manifest>

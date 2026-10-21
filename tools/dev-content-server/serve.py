@@ -25,7 +25,11 @@ Bağımsız konu reelleri (`reeller/<id>/_build/package/`, H-094):
 
 Bölüm ve kitap listelerinde `grammarTopics` (varsa) yer alır: "Bu bölümdeki dilbilgisi".
 
-- Yalnızca 127.0.0.1'e bağlanır (dışarıya açık değildir).
+- Varsayılan olarak yalnızca 127.0.0.1'e bağlanır (dışarıya açık değildir).
+  Gerçek telefonla deneme (H-043): `--host <Mac'in yerel ağ adresi>` ile
+  ikinci bir örnek, ayrı bir portta açılabilir (ör. `--port 8788`);
+  yalnızca güvenilen ev/ofis ağında, iş bitince kapatılır.
+  Ayrıntı: `tools/device-build.sh`, `docs/BETA-KONTROL-LISTESI.md`.
 - HTTP Range isteklerini destekler (AVPlayer mp4 için bayt aralığı ister).
 - Yalnızca standart kütüphane kullanılır; ücretli ya da dış servis çağrısı yoktur.
 
@@ -418,6 +422,11 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--grammar-root", type=Path, default=REPO_ROOT / "dilbilgisi", help="dilbilgisi klasörü (H-077)")
     parser.add_argument("--reels-root", type=Path, default=REPO_ROOT / "reeller", help="reeller klasörü (H-094)")
     parser.add_argument("--quiet", action="store_true", help="istek günlüğünü kapat")
+    parser.add_argument(
+        "--host",
+        default="127.0.0.1",
+        help="bağlanılacak adres (varsayılan 127.0.0.1; gerçek telefon için Mac'in yerel ağ adresi, H-043)",
+    )
     args = parser.parse_args(argv)
 
     Handler.root = args.root.resolve()
@@ -426,9 +435,11 @@ def main(argv: list[str] | None = None) -> int:
     Handler.reels_root = args.reels_root.resolve()
     Handler.quiet = args.quiet
     packages = discover_packages(Handler.root)
-    server = ThreadingHTTPServer(("127.0.0.1", args.port), Handler)
+    server = ThreadingHTTPServer((args.host, args.port), Handler)
     server.daemon_threads = True
-    print(f"hiVelzon içerik sunucusu: http://127.0.0.1:{args.port}/packages/index.json")
+    if args.host not in ("127.0.0.1", "localhost", "::1"):
+        print(f"UYARI: yerel ağa açık ({args.host}); yalnızca güvenilen ağda, iş bitince kapat.")
+    print(f"hiVelzon içerik sunucusu: http://{args.host}:{args.port}/packages/index.json")
     for p in sorted(packages):
         print(f"  {p}  {packages[p]['title']}  ({packages[p]['dir']})")
     for s in discover_seasons(Handler.root):

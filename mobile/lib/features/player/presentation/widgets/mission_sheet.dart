@@ -23,6 +23,7 @@ Future<void> showMissionSheet(
     context: context,
     isScrollControlled: true,
     showDragHandle: true,
+    sheetAnimationStyle: AppMotion.sheet(context),
     builder: (context) => MissionSheet(info: info, onPhraseTap: onPhraseTap),
   );
 }

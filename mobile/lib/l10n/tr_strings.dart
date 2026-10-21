@@ -557,8 +557,8 @@ abstract final class NotebookTexts {
   static const filterAll = 'Hepsi';
   static const filterStory = 'Hikâyeden';
   static String filterBook(String title) => title;
-  static const loadError =
-      'Defter açılamadı. Uygulamayı yeniden başlatıp dene.';
+  // H-043: altında "Tekrar dene" düğmesi var; yeniden başlatma istenmez.
+  static const loadError = 'Defter açılamadı. Biraz sonra tekrar dene.';
   static String removed(String en) => '"$en" defterinden çıkarıldı.';
   static const remove = 'Defterden çıkar';
   static const options = 'Seçenekler';
@@ -833,6 +833,23 @@ abstract final class ProfileTexts {
   static const legalDraftHint = 'Taslak · hukuk teyidi bekliyor';
   static const aboutRow = 'Hakkında ve lisanslar';
   static const aboutRowHint = 'Sürüm, kaynaklar ve açık kaynak lisansları.';
+}
+
+/// Hata kaydı ve sakin hata kutusu (H-043). Kayıt yalnızca bu telefonda;
+/// kullanıcı isterse sistem paylaşımıyla kendisi gönderir.
+abstract final class CrashTexts {
+  // Profil → Hakkında grubu
+  static const shareRow = 'Hata kaydını paylaş';
+  static const shareRowHint =
+      'Uygulama hata verdiyse son kayıtları istediğin kişiye gönderebilirsin. '
+      'Kişisel bilgi içermez.';
+  static const shareEmpty = 'Kayıtlı hata yok.';
+  static const shareFailed = 'Paylaşım şu an açılamadı.';
+  static const shareSubject = 'hiVelzon hata kaydı';
+
+  // Yayın derlemesinde çizilemeyen parçanın yerine (kırmızı ekran yok)
+  static const errorBoxTitle = 'Burası şu an gösterilemiyor.';
+  static const errorBoxBody = 'Geri dönüp tekrar deneyebilirsin.';
 }
 
 /// Günlük hatırlatma (H-013, H-042): günde en fazla 1, saati kullanıcı
@@ -1154,8 +1171,11 @@ abstract final class PlayerTexts {
   // Yükleme ve hata
   static const loading = 'Bölüm yükleniyor…';
   static const genericError = 'Bir şeyler ters gitti.';
-  static const errorHint =
-      'Bağlantını ya da içerik sunucusunu kontrol edip tekrar deneyebilirsin.';
+  // H-043: bölüm yüklenemedi (bağlantı / diğer). "Sunucu" kullanıcıya
+  // gösterilmez; geliştirici notu yalnızca debug derlemede eklenir.
+  static const loadUnreachable = 'Bölüme şu an ulaşılamadı.';
+  static const loadFailed = 'Bölüm açılamadı.';
+  static const errorHint = 'Bağlantını kontrol edip tekrar deneyebilirsin.';
   static const retry = 'Tekrar dene';
 
   // Kaldığın yerden devam

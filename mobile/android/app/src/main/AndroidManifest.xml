@@ -1,5 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+    <!-- H-043: içerik, kısa video kataloğu ve isteğe bağlı hesap eşitlemesi
+         ağdan gelir. Yalnızca debug/profile manifestlerinde olduğu için
+         release derlemesi ağa çıkamıyordu. Çalışma anı izni değildir. -->
+    <uses-permission android:name="android.permission.INTERNET"/>
     <!-- H-055: "Söyle" alıştırmaları; yalnızca cihazda tanıma, ses kaydedilmez. -->
     <uses-permission android:name="android.permission.RECORD_AUDIO"/>
     <!-- H-068: kitap dinleme ekran kilitliyken sürer (audio_service ön plan

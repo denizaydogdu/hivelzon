@@ -364,6 +364,8 @@ Future<void> _openLevelPanel(BuildContext context, WidgetRef ref) async {
   await showModalBottomSheet<void>(
     context: context,
     backgroundColor: AppPalette.sand,
+    // H-043: "Hareketi azalt" açıksa panel anında açılır/kapanır.
+    sheetAnimationStyle: AppMotion.sheet(context),
     // İlgi alanları bölümüyle panel uzar: içerik kadar yükselir, kısa
     // ekranda kaydırılır.
     isScrollControlled: true,
@@ -486,7 +488,11 @@ class _StoryClipsBody extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final clips = ref.watch(discoverClipsProvider);
-    final limit = ref.watch(discoverLimitProvider);
+    // H-043: sınır okunamazsa güvenli taraf (20 dk); iskelet sonsuz kalmaz.
+    final safe = discoverLimitOrSafe(ref.watch(discoverLimitProvider));
+    final AsyncValue<DiscoverLimit> limit = safe == null
+        ? const AsyncLoading()
+        : AsyncData(safe);
     return switch ((clips, limit)) {
       (AsyncError(), _) => _Message(
         key: const ValueKey('discover-error'),
@@ -538,8 +544,9 @@ class _ReelFeed extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final limit = ref.watch(discoverLimitProvider);
-    if (!limit.hasValue) return const _Loading();
+    // H-043: sınır okunamazsa güvenli taraf (20 dk); iskelet sonsuz kalmaz.
+    final limit = discoverLimitOrSafe(ref.watch(discoverLimitProvider));
+    if (limit == null) return const _Loading();
     final source = ref.watch(contentSourceProvider);
     final videos = [
       for (final reel in set.reels)
@@ -550,7 +557,8 @@ class _ReelFeed extends ConsumerWidget {
     final resume = daily
         ? ref.watch(dailyResumeProvider)
         : const AsyncData<String?>(null);
-    if (daily && !resume.hasValue) return const _Loading();
+    // Okunamazsa (hata) baştan açılır; yalnız yüklenirken iskelet.
+    if (daily && !resume.hasValue && !resume.hasError) return const _Loading();
     final entries = buildDailyFeed(videos);
     final resumeId = resume.value;
     final at = resumeId == null
@@ -568,7 +576,7 @@ class _ReelFeed extends ConsumerWidget {
       initialIndex: at < 0 ? 0 : at,
       aiLabel: kDefaultAiLabel,
       moreLocked: false,
-      limit: limit.requireValue,
+      limit: limit,
       // "Hikâye kliplerine bak" yalnız günlük sette: kategori havuzu zaten
       // havuzun kendisi (bitişte yönlendirme zorlanmaz; plan §3).
       daily: daily,
