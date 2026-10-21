@@ -47,7 +47,7 @@
   {
    "id": "s03-01",
    "start": 0.5,
-   "end": 1.86,
+   "end": 1.46,
    "speaker": "COACH",
    "text": "How often do you train?",
    "tr": "Ne sıklıkla çalışıyorsun?",
@@ -56,28 +56,28 @@
     {
      "w": "How",
      "start": 0.5,
-     "end": 0.74
+     "end": 0.67
     },
     {
      "w": "often",
-     "start": 0.74,
-     "end": 1.09,
+     "start": 0.67,
+     "end": 0.92,
      "gloss": "sıklıkla"
     },
     {
      "w": "do",
-     "start": 1.09,
-     "end": 1.27
+     "start": 0.92,
+     "end": 1.04
     },
     {
      "w": "you",
-     "start": 1.27,
-     "end": 1.51
+     "start": 1.04,
+     "end": 1.21
     },
     {
      "w": "train?",
-     "start": 1.51,
-     "end": 1.86,
+     "start": 1.21,
+     "end": 1.46,
      "gloss": "çalışmak"
     }
    ]
@@ -85,7 +85,7 @@
   {
    "id": "s03-02",
    "start": 3.7,
-   "end": 5.78,
+   "end": 5.54,
    "speaker": "MERT",
    "text": "I practice every Tuesday.",
    "tr": "Her salı çalışıyorum.",
@@ -94,24 +94,24 @@
     {
      "w": "I",
      "start": 3.7,
-     "end": 3.86
+     "end": 3.84
     },
     {
      "w": "practice",
-     "start": 3.86,
-     "end": 4.62,
+     "start": 3.84,
+     "end": 4.51,
      "gloss": "çalışmak"
     },
     {
      "w": "every",
-     "start": 4.62,
-     "end": 5.11,
+     "start": 4.51,
+     "end": 4.95,
      "gloss": "her"
     },
     {
      "w": "Tuesday.",
-     "start": 5.11,
-     "end": 5.78,
+     "start": 4.95,
+     "end": 5.54,
      "gloss": "salı"
     }
    ]
@@ -119,7 +119,7 @@
   {
    "id": "s03-03",
    "start": 6.8,
-   "end": 8.0,
+   "end": 8.24,
    "speaker": "COACH",
    "text": "That's a good routine.",
    "tr": "Bu iyi bir düzen.",
@@ -128,23 +128,23 @@
     {
      "w": "That's",
      "start": 6.8,
-     "end": 7.19
+     "end": 7.27
     },
     {
      "w": "a",
-     "start": 7.19,
-     "end": 7.29
+     "start": 7.27,
+     "end": 7.39
     },
     {
      "w": "good",
-     "start": 7.29,
-     "end": 7.56,
+     "start": 7.39,
+     "end": 7.71,
      "gloss": "iyi"
     },
     {
      "w": "routine.",
-     "start": 7.56,
-     "end": 8.0,
+     "start": 7.71,
+     "end": 8.24,
      "gloss": "düzen"
     }
    ]

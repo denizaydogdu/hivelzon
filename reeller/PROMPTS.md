@@ -75,7 +75,7 @@ genç/Yetişkin tonu) aynen korunur.
 | Hareket `seedance_2_0_mini` 9:16 720p 5 sn (sessiz) | 2 | 5,00 | 10,00 | **10,00** |
 | Ken Burns, poster, kurgu, paketleme, lint | — | yerel | 0 | 0 |
 | **Kredi toplamı (3 örnek)** | | | ≈16 | **16,50** |
-| Ses (ElevenLabs, tek anlatıcı Sarah) | 9 cue | — | ~350 karakter | **220 karakter** (ölçüldü, henüz üretilmedi) |
+| Ses (ElevenLabs, konuşmacıya göre 3 ses) | 9 cue | — | ~350 karakter | **220 karakter** (ölçüldü) |
 
 **Senaryo A'dan iki küçük sapma (üst sınır korundu):** (1) görseller **2k low** (0,50 kr — plan da
 "quality low" varsayıyordu; Ken Burns için 1k'dan yüksek çözünürlük); (2) hareket klibi 480p yerine
@@ -131,8 +131,11 @@ koyu yeşil, "double" olmasın; SPO: forma rengi lacivert ✓.
 
 - Araç: `tools/content-pipeline/tts_reel.py` (kuru çalışma karakter sayısını verir; `--execute` ile üretir;
   aylık tavan + **ortak** defter `kitaplar/_maliyet/elevenlabs-karakter.json`; metin sha ile idempotent).
-- Ses **Sarah** (`EXAVITQu4vr4xnSDxMaL`), model `eleven_v3`, hız 0.9 — uygulamadaki anlatıcıyla aynı
-  (tek anlatıcı; konuşmacı başına ayrı ses pilot dışı).
+- **Ses (konuşmacıya göre, 2026-10-21):** kadın karakterler **Sarah** (`EXAVITQu4vr4xnSDxMaL`);
+  genç erkekler (Kerem, Mert, Deniz) **Will** (`bIHbv24MWmeRgasZH58o`); olgun erkekler
+  (Coach, seyirci) **Chris** (`iP95p4xoKVk53GoZ742B`). Hepsi `eleven_v3`, hız 0.9. Görseldeki
+  kadın/erkek karakter ile ses eşleşir; pilotun ilk sürümünde bütün replikler Sarah ile
+  okunmuştu (2026-10-21'de 27 erkek repliği yeniden üretildi).
 - Ölçüm: CIN 72 · SPO 77 · BOK 71 = **220 karakter** (3 örnek); ortak defter **9.851 / 10.000**.
 - Süreler (`_raw/tts/timing.json`): CIN 1,92 / 1,20 / 2,16 sn · SPO 2,00 / 1,68 / 1,52 sn · BOK 2,08 / 1,60 / 2,48 sn.
   Ses sığsın diye CIN son karesi 3,0 sn, BOK son karesi 3,3 sn (paketler **12,6 / 11,0 / 11,0 sn**);
@@ -143,6 +146,10 @@ koyu yeşil, "double" olmasın; SPO: forma rengi lacivert ✓.
 
 > 2026-10-20T13:38Z sonrası satırlar **ayrı ElevenLabs hesabıyla** üretildi (free plan, 10.000
 > karakter); ana hesabın ortak defteri (9.851 / 10.000) değişmedi. Ses aynı: Sarah `eleven_v3` 0.9.
+>
+> **2026-10-21:** erkek karakter replikleri **Will / Chris** ile yeniden üretildi (27 cue, **605
+> karakter**; ayrı defter 1.065 → **1.670 / 72 çağrı**). Bu tarihli satırlar geçerlidir; daha önceki
+> erkek repliklerinin Sarah satırları tarihsel kayıttır.
 
 | Tarih (UTC) | Reel | Cue | Ses | Model | Hız | Karakter | Metin sha256 | Dosya |
 |---|---|---|---|---|---|---|---|---|
@@ -250,3 +257,30 @@ k1 Kerem kitabı iade eder · k2 "okuyacak bir şey arıyorum" · k3 Lena yazıs
 | 2026-10-20T13:38:36Z | A2-R-SPO-03 | s04-01 | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 19 | f4db0b1f1ac3572e | _raw/tts/s04-01.mp3 |
 | 2026-10-20T13:38:37Z | A2-R-SPO-03 | s04-02 | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 24 | cb9463d126f29c09 | _raw/tts/s04-02.mp3 |
 | 2026-10-20T13:38:39Z | A2-R-SPO-03 | s04-03 | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 17 | 7f35f4af81d2248d | _raw/tts/s04-03.mp3 |
+| 2026-10-21T06:30:33Z | A1-R-BOK-02 | s01-01 | Will bIHbv24MWmeRgasZH58o | eleven_v3 | 0.9 | 17 | 8dcdcb3b7f4b3d2f | _raw/tts/s01-01.mp3 |
+| 2026-10-21T06:30:35Z | A1-R-BOK-02 | s01-03 | Will bIHbv24MWmeRgasZH58o | eleven_v3 | 0.9 | 18 | 6ce581032e9d3f86 | _raw/tts/s01-03.mp3 |
+| 2026-10-21T06:30:36Z | A1-R-BOK-03 | s02-01 | Will bIHbv24MWmeRgasZH58o | eleven_v3 | 0.9 | 16 | 8b4694d632895a5b | _raw/tts/s02-01.mp3 |
+| 2026-10-21T06:30:37Z | A1-R-BOK-03 | s02-03 | Will bIHbv24MWmeRgasZH58o | eleven_v3 | 0.9 | 17 | 692b09ab2998cd6e | _raw/tts/s02-03.mp3 |
+| 2026-10-21T06:30:40Z | A1-R-SPO-01 | s01-01 | Chris iP95p4xoKVk53GoZ742B | eleven_v3 | 0.9 | 28 | eeae57bc52d11503 | _raw/tts/s01-01.mp3 |
+| 2026-10-21T06:30:41Z | A1-R-SPO-01 | s01-03 | Chris iP95p4xoKVk53GoZ742B | eleven_v3 | 0.9 | 19 | 8e38acd7b1fc75a2 | _raw/tts/s01-03.mp3 |
+| 2026-10-21T06:30:43Z | A1-R-SPO-02 | s01-01 | Will bIHbv24MWmeRgasZH58o | eleven_v3 | 0.9 | 20 | 08a4181d21ca2bfb | _raw/tts/s01-01.mp3 |
+| 2026-10-21T06:30:44Z | A1-R-SPO-02 | s01-03 | Will bIHbv24MWmeRgasZH58o | eleven_v3 | 0.9 | 12 | 01ded3fbc9ba4b98 | _raw/tts/s01-03.mp3 |
+| 2026-10-21T06:30:46Z | A1-R-SPO-03 | s02-01 | Chris iP95p4xoKVk53GoZ742B | eleven_v3 | 0.9 | 10 | 962643e35935ccc6 | _raw/tts/s02-01.mp3 |
+| 2026-10-21T06:30:47Z | A1-R-SPO-03 | s02-03 | Chris iP95p4xoKVk53GoZ742B | eleven_v3 | 0.9 | 27 | da0f6b19721ef1ec | _raw/tts/s02-03.mp3 |
+| 2026-10-21T06:30:49Z | A2-R-BOK-01 | s04-02 | Will bIHbv24MWmeRgasZH58o | eleven_v3 | 0.9 | 32 | 320d37ddf3624d41 | _raw/tts/s04-02.mp3 |
+| 2026-10-21T06:30:50Z | A2-R-BOK-02 | s03-01 | Will bIHbv24MWmeRgasZH58o | eleven_v3 | 0.9 | 24 | d5cc06ca4315cad7 | _raw/tts/s03-01.mp3 |
+| 2026-10-21T06:30:52Z | A2-R-BOK-02 | s03-03 | Will bIHbv24MWmeRgasZH58o | eleven_v3 | 0.9 | 24 | fee1a39c8e1f584d | _raw/tts/s03-03.mp3 |
+| 2026-10-21T06:30:53Z | A2-R-BOK-03 | s04-01 | Will bIHbv24MWmeRgasZH58o | eleven_v3 | 0.9 | 25 | 26b2d45685ff3d1c | _raw/tts/s04-01.mp3 |
+| 2026-10-21T06:30:55Z | A2-R-BOK-03 | s04-03 | Will bIHbv24MWmeRgasZH58o | eleven_v3 | 0.9 | 20 | 3ac23c49226e9004 | _raw/tts/s04-03.mp3 |
+| 2026-10-21T06:30:57Z | A2-R-CIN-01 | s03-01 | Will bIHbv24MWmeRgasZH58o | eleven_v3 | 0.9 | 30 | 87aa3db0df63a131 | _raw/tts/s03-01.mp3 |
+| 2026-10-21T06:30:59Z | A2-R-CIN-01 | s03-03 | Will bIHbv24MWmeRgasZH58o | eleven_v3 | 0.9 | 42 | 29d91578e51534d7 | _raw/tts/s03-03.mp3 |
+| 2026-10-21T06:31:00Z | A2-R-CIN-02 | s03-02 | Will bIHbv24MWmeRgasZH58o | eleven_v3 | 0.9 | 23 | 42e0f48a71cba569 | _raw/tts/s03-02.mp3 |
+| 2026-10-21T06:31:02Z | A2-R-CIN-03 | s04-01 | Will bIHbv24MWmeRgasZH58o | eleven_v3 | 0.9 | 21 | 79779b14c1e7739f | _raw/tts/s04-01.mp3 |
+| 2026-10-21T06:31:03Z | A2-R-CIN-03 | s04-03 | Will bIHbv24MWmeRgasZH58o | eleven_v3 | 0.9 | 29 | 772302b796938cfb | _raw/tts/s04-03.mp3 |
+| 2026-10-21T06:31:05Z | A2-R-SPO-01 | s01-01 | Chris iP95p4xoKVk53GoZ742B | eleven_v3 | 0.9 | 17 | 1ba2f13c0f540f99 | _raw/tts/s01-01.mp3 |
+| 2026-10-21T06:31:06Z | A2-R-SPO-01 | s01-02 | Will bIHbv24MWmeRgasZH58o | eleven_v3 | 0.9 | 13 | 56c7041cb2d571a8 | _raw/tts/s01-02.mp3 |
+| 2026-10-21T06:31:08Z | A2-R-SPO-01 | s01-03 | Chris iP95p4xoKVk53GoZ742B | eleven_v3 | 0.9 | 27 | f6519d87be505908 | _raw/tts/s01-03.mp3 |
+| 2026-10-21T06:31:09Z | A2-R-SPO-02 | s03-01 | Chris iP95p4xoKVk53GoZ742B | eleven_v3 | 0.9 | 23 | 632315de6c7eb44b | _raw/tts/s03-01.mp3 |
+| 2026-10-21T06:31:11Z | A2-R-SPO-02 | s03-02 | Will bIHbv24MWmeRgasZH58o | eleven_v3 | 0.9 | 25 | 3609d305a413bd43 | _raw/tts/s03-02.mp3 |
+| 2026-10-21T06:31:12Z | A2-R-SPO-02 | s03-03 | Chris iP95p4xoKVk53GoZ742B | eleven_v3 | 0.9 | 22 | b4900e4ab6cdcaa2 | _raw/tts/s03-03.mp3 |
+| 2026-10-21T06:31:14Z | A2-R-SPO-03 | s04-02 | Will bIHbv24MWmeRgasZH58o | eleven_v3 | 0.9 | 24 | cb9463d126f29c09 | _raw/tts/s04-02.mp3 |

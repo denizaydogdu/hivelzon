@@ -92,7 +92,7 @@
   {
    "id": "s02-03",
    "start": 6.7,
-   "end": 8.46,
+   "end": 7.98,
    "speaker": "SPECTATOR",
    "text": "The whole team runs to him.",
    "tr": "Bütün takım ona koşuyor.",
@@ -101,35 +101,35 @@
     {
      "w": "The",
      "start": 6.7,
-     "end": 6.96
+     "end": 6.89
     },
     {
      "w": "whole",
-     "start": 6.96,
-     "end": 7.35,
+     "start": 6.89,
+     "end": 7.17,
      "gloss": "bütün"
     },
     {
      "w": "team",
-     "start": 7.35,
-     "end": 7.68,
+     "start": 7.17,
+     "end": 7.41,
      "gloss": "takım"
     },
     {
      "w": "runs",
-     "start": 7.68,
-     "end": 8.01,
+     "start": 7.41,
+     "end": 7.65,
      "gloss": "koşmak"
     },
     {
      "w": "to",
-     "start": 8.01,
-     "end": 8.2
+     "start": 7.65,
+     "end": 7.79
     },
     {
      "w": "him.",
-     "start": 8.2,
-     "end": 8.46
+     "start": 7.79,
+     "end": 7.98
     }
    ]
   }

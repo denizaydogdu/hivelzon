@@ -124,7 +124,7 @@
   {
    "id": "s04-03",
    "start": 6.9,
-   "end": 8.9,
+   "end": 9.22,
    "speaker": "DENIZ",
    "text": "Good idea. I'll bring snacks.",
    "tr": "İyi fikir. Atıştırmalık getiririm.",
@@ -133,30 +133,30 @@
     {
      "w": "Good",
      "start": 6.9,
-     "end": 7.26,
+     "end": 7.32,
      "gloss": "iyi"
     },
     {
      "w": "idea.",
-     "start": 7.26,
-     "end": 7.61,
+     "start": 7.32,
+     "end": 7.72,
      "gloss": "fikir"
     },
     {
      "w": "I'll",
-     "start": 7.61,
-     "end": 7.97
+     "start": 7.72,
+     "end": 8.14
     },
     {
      "w": "bring",
-     "start": 7.97,
-     "end": 8.4,
+     "start": 8.14,
+     "end": 8.64,
      "gloss": "getirmek"
     },
     {
      "w": "snacks.",
-     "start": 8.4,
-     "end": 8.9,
+     "start": 8.64,
+     "end": 9.22,
      "gloss": "atıştırmalık"
     }
    ]

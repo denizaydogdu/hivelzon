@@ -47,7 +47,7 @@
   {
    "id": "s03-01",
    "start": 0.5,
-   "end": 1.94,
+   "end": 1.7,
    "speaker": "KEREM",
    "text": "What is your book about?",
    "tr": "Kitabın ne hakkında?",
@@ -56,28 +56,28 @@
     {
      "w": "What",
      "start": 0.5,
-     "end": 0.8
+     "end": 0.75
     },
     {
      "w": "is",
-     "start": 0.8,
-     "end": 0.98
+     "start": 0.75,
+     "end": 0.9
     },
     {
      "w": "your",
-     "start": 0.98,
-     "end": 1.28
+     "start": 0.9,
+     "end": 1.15
     },
     {
      "w": "book",
-     "start": 1.28,
-     "end": 1.58,
+     "start": 1.15,
+     "end": 1.4,
      "gloss": "kitap"
     },
     {
      "w": "about?",
-     "start": 1.58,
-     "end": 1.94,
+     "start": 1.4,
+     "end": 1.7,
      "gloss": "hakkında"
     }
    ]
@@ -135,7 +135,7 @@
   {
    "id": "s03-03",
    "start": 7.0,
-   "end": 8.52,
+   "end": 8.44,
    "speaker": "KEREM",
    "text": "That sounds interesting.",
    "tr": "Kulağa ilginç geliyor.",
@@ -144,18 +144,18 @@
     {
      "w": "That",
      "start": 7.0,
-     "end": 7.32
+     "end": 7.3
     },
     {
      "w": "sounds",
-     "start": 7.32,
-     "end": 7.76,
+     "start": 7.3,
+     "end": 7.72,
      "gloss": "kulağa gelmek"
     },
     {
      "w": "interesting.",
-     "start": 7.76,
-     "end": 8.52,
+     "start": 7.72,
+     "end": 8.44,
      "gloss": "ilginç"
     }
    ]

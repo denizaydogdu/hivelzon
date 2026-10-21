@@ -87,7 +87,7 @@
   {
    "id": "s04-02",
    "start": 6.7,
-   "end": 8.38,
+   "end": 8.3,
    "speaker": "KEREM",
    "text": "Can I keep it for one more week?",
    "tr": "Bir hafta daha tutabilir miyim?",
@@ -96,45 +96,45 @@
     {
      "w": "Can",
      "start": 6.7,
-     "end": 6.82
+     "end": 6.81
     },
     {
      "w": "I",
-     "start": 6.82,
-     "end": 6.91
+     "start": 6.81,
+     "end": 6.9
     },
     {
      "w": "keep",
-     "start": 6.91,
-     "end": 7.18,
+     "start": 6.9,
+     "end": 7.16,
      "gloss": "tutmak"
     },
     {
      "w": "it",
-     "start": 7.18,
-     "end": 7.3
+     "start": 7.16,
+     "end": 7.27
     },
     {
      "w": "for",
-     "start": 7.36,
-     "end": 7.48
+     "start": 7.33,
+     "end": 7.44
     },
     {
      "w": "one",
-     "start": 7.48,
-     "end": 7.66,
+     "start": 7.44,
+     "end": 7.61,
      "gloss": "bir"
     },
     {
      "w": "more",
-     "start": 7.66,
-     "end": 7.9,
+     "start": 7.61,
+     "end": 7.84,
      "gloss": "daha"
     },
     {
      "w": "week?",
-     "start": 7.9,
-     "end": 8.2,
+     "start": 7.84,
+     "end": 8.13,
      "gloss": "hafta"
     }
    ]

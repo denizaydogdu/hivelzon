@@ -211,3 +211,20 @@ hesapla** üretildi. Ana hesabın anahtarı ve defteri **değiştirilmedi**.
   `tts_reel.py` ana defteri okumaz/yazmaz. Ayrıntı: `docs/REEL-PAKETI.md` §8.
 - **Sonuç:** 15 paket yeniden kuruldu (`ses=var`), `reel-lint` **18 reel · 0 hata · 0 uyarı**;
   `reel.audio.fit` hiçbir videoda tetiklenmedi (son kare uzatması gerekmedi).
+
+## 9.1 Konuşmacıya göre ses — 27 erkek repliği (2026-10-21)
+
+Kullanıcı geri bildirimi: görsellerde kadın ve erkek karakterler var, ama bütün replikler Sarah
+(kadın) sesiyle okunuyordu. Erkek replikleri yeniden üretildi; kadın replikleri (Sarah, önbellek)
+değişmedi.
+
+| Konuşmacı | Ses | Kimlik | Cue | Karakter |
+|---|---|---|---|---|
+| Kadın karakterler | Sarah | `EXAVITQu4vr4xnSDxMaL` | 27 | 680 (önbellek, yeni üretim yok) |
+| Kerem · Mert · Deniz | Will | `bIHbv24MWmeRgasZH58o` | 19 | 432 |
+| Coach · seyirci | Chris | `iP95p4xoKVk53GoZ742B` | 8 | 173 |
+| **Toplam yeni** | | | **27** | **605** |
+
+- Ayrı defter: `{2026-10: 1670, 72}` (1.065 + 605); ana defter **9.851 / 10.000 (değişmedi)**.
+- Higgsfield kredisi harcanmadı (236,56 kr); ses üretimi ElevenLabs karakter kotasından.
+- 18 paket `build_reel.py --force` ile yeniden kuruldu; `reel-lint` **18 · 0 hata · 0 uyarı**.

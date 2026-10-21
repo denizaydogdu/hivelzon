@@ -47,7 +47,7 @@
   {
    "id": "s01-01",
    "start": 0.5,
-   "end": 2.5,
+   "end": 2.42,
    "speaker": "COACH",
    "text": "Good job today. Take a rest.",
    "tr": "Bugün iyi iş çıkardın. Dinlen.",
@@ -56,36 +56,36 @@
     {
      "w": "Good",
      "start": 0.5,
-     "end": 0.81,
+     "end": 0.8,
      "gloss": "iyi"
     },
     {
      "w": "job",
-     "start": 0.81,
-     "end": 1.12,
+     "start": 0.8,
+     "end": 1.1,
      "gloss": "iş"
     },
     {
      "w": "today.",
-     "start": 1.19,
-     "end": 1.65,
+     "start": 1.16,
+     "end": 1.6,
      "gloss": "bugün"
     },
     {
      "w": "Take",
-     "start": 1.81,
-     "end": 2.04,
+     "start": 1.76,
+     "end": 1.98,
      "gloss": "al"
     },
     {
      "w": "a",
-     "start": 2.04,
-     "end": 2.12
+     "start": 1.98,
+     "end": 2.06
     },
     {
      "w": "rest.",
-     "start": 2.12,
-     "end": 2.42,
+     "start": 2.06,
+     "end": 2.34,
      "gloss": "dinlenme"
     }
    ]
@@ -138,7 +138,7 @@
   {
    "id": "s01-03",
    "start": 9.0,
-   "end": 10.52,
+   "end": 10.44,
    "speaker": "COACH",
    "text": "Sure. Here you are.",
    "tr": "Elbette. Buyur.",
@@ -147,24 +147,24 @@
     {
      "w": "Sure.",
      "start": 9.0,
-     "end": 9.25,
+     "end": 9.24,
      "gloss": "elbette"
     },
     {
      "w": "Here",
-     "start": 9.76,
-     "end": 10.01,
+     "start": 9.72,
+     "end": 9.96,
      "gloss": "burada"
     },
     {
      "w": "you",
-     "start": 10.01,
-     "end": 10.14
+     "start": 9.96,
+     "end": 10.08
     },
     {
      "w": "are.",
-     "start": 10.14,
-     "end": 10.33,
+     "start": 10.08,
+     "end": 10.26,
      "gloss": "veriyorum"
     }
    ]

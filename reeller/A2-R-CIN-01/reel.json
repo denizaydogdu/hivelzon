@@ -140,7 +140,7 @@
   {
    "id": "s03-03",
    "start": 7.0,
-   "end": 9.8,
+   "end": 10.28,
    "speaker": "DENIZ",
    "text": "I liked the music, but the story was slow.",
    "tr": "Müziği sevdim ama hikâye yavaştı.",
@@ -149,51 +149,51 @@
     {
      "w": "I",
      "start": 7.0,
-     "end": 7.07
+     "end": 7.08
     },
     {
      "w": "liked",
-     "start": 7.07,
-     "end": 7.39,
+     "start": 7.08,
+     "end": 7.46,
      "gloss": "sevdim"
     },
     {
      "w": "the",
-     "start": 7.39,
-     "end": 7.54
+     "start": 7.46,
+     "end": 7.63
     },
     {
      "w": "music,",
-     "start": 7.54,
-     "end": 8.01,
+     "start": 7.63,
+     "end": 8.18,
      "gloss": "müzik"
     },
     {
      "w": "but",
-     "start": 8.24,
-     "end": 8.47,
+     "start": 8.45,
+     "end": 8.72,
      "gloss": "ama"
     },
     {
      "w": "the",
-     "start": 8.47,
-     "end": 8.63
+     "start": 8.72,
+     "end": 8.91
     },
     {
      "w": "story",
-     "start": 8.63,
-     "end": 9.03,
+     "start": 8.91,
+     "end": 9.38,
      "gloss": "hikâye"
     },
     {
      "w": "was",
-     "start": 9.03,
-     "end": 9.17
+     "start": 9.38,
+     "end": 9.54
     },
     {
      "w": "slow.",
-     "start": 9.17,
-     "end": 9.64,
+     "start": 9.54,
+     "end": 10.09,
      "gloss": "yavaş"
     }
    ]

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Reel sesi (H-094): `reel.json` cue'ları → `_raw/tts/<cue>.mp3` (ElevenLabs, tek anlatıcı).
+"""Reel sesi (H-094): `reel.json` cue'ları → `_raw/tts/<cue>.mp3` (ElevenLabs).
 
 Kullanım:
     tools/content-pipeline/.venv/bin/python tools/content-pipeline/tts_reel.py reeller/A1-R-CIN-01 --dry-run
@@ -7,8 +7,10 @@ Kullanım:
       tools/content-pipeline/.venv/bin/python tools/content-pipeline/tts_reel.py reeller/A1-R-CIN-01 --execute
 
 Kurallar (CLAUDE.md, docs/REEL-PAKETI.md):
-- **Tek anlatıcı:** uygulamadaki sesle aynı — Sarah `EXAVITQu4vr4xnSDxMaL`, `eleven_v3`, hız 0.9 (A1/A2).
-  (Konuşmacı başına ayrı ses pilot dışı; ayrı karar.)
+- **Konuşmacıya göre ses (2026-10-21):** kadın karakterler Sarah
+  (`EXAVITQu4vr4xnSDxMaL`); genç erkekler (Kerem, Mert, Deniz) Will
+  (`bIHbv24MWmeRgasZH58o`); olgun erkekler (Coach, seyirci) Chris
+  (`iP95p4xoKVk53GoZ742B`). Hepsi `eleven_v3`, hız 0.9 (A1/A2).
 - **Anahtar** yalnızca çalışma anında ortamdan (`ELEVENLABS_API_KEY`); repoya/loga yazılmaz.
 - **Önce kuru çalışma:** karakter sayısı ve tahmini kredi yazılır, API çağrılmaz. Gerçek çağrı `--execute`.
 - **Aylık karakter tavanı** ortak defterle (`kitaplar/_maliyet/elevenlabs-karakter.json`) paylaşılır;
@@ -32,9 +34,30 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from hvpipeline import tts as T  # noqa: E402
 
-VOICE = "EXAVITQu4vr4xnSDxMaL"  # Sarah (uygulamayla aynı)
+VOICES: dict[str, tuple[str, str]] = {
+    "SARAH": ("Sarah", "EXAVITQu4vr4xnSDxMaL"),
+    # Genç erkekler: Kerem, Mert, Deniz.
+    "WILL": ("Will", "bIHbv24MWmeRgasZH58o"),
+    # Olgun erkekler: Coach, seyirci.
+    "CHRIS": ("Chris", "iP95p4xoKVk53GoZ742B"),
+}
+SPEAKER_VOICE: dict[str, str] = {
+    "KEREM": "WILL",
+    "MERT": "WILL",
+    "DENIZ": "WILL",
+    "COACH": "CHRIS",
+    "SPECTATOR": "CHRIS",
+}
+VOICE = VOICES["SARAH"][1]  # geriye dönük: varsayılan kadın ses
 MODEL = "eleven_v3"
 SPEED = 0.9
+
+
+def voice_for(cue: dict) -> tuple[str, str]:
+    """Konuşmacıya göre (ad, kimlik); bilinmeyen/kadın karakterler Sarah."""
+    key = SPEAKER_VOICE.get(str(cue.get("speaker", "")).upper(), "SARAH")
+    return VOICES[key]
+
 PROMPTS_HEADING = "## Seslendirme kayıtları (tts_reel.py)"
 PROMPTS_TABLE = ("| Tarih (UTC) | Reel | Cue | Ses | Model | Hız | Karakter | Metin sha256 | Dosya |\n"
                  "|---|---|---|---|---|---|---|---|---|")
@@ -81,19 +104,28 @@ def main(argv: list[str] | None = None) -> int:
     billable = 0
     for c in cues:
         text = c["text"].strip()
-        key = T._part_key(text, VOICE, MODEL, a.speed)
+        voice_name, voice = voice_for(c)
+        key = T._part_key(text, voice, MODEL, a.speed)
         cached = (parts / f"{key}.mp3").is_file()
-        plan.append({"cue": c["id"], "text": text, "key": key, "cached": cached, "chars": len(text)})
+        plan.append({"cue": c["id"], "text": text, "speaker": c.get("speaker"), "voice_name": voice_name,
+                     "voice": voice, "key": key, "cached": cached, "chars": len(text)})
         if not cached:
             billable += len(text)
 
     total = sum(p["chars"] for p in plan)
     print(f"{reel['id']}: {len(plan)} cue · toplam {total} karakter · ödenecek {billable} karakter "
           f"(önbellekte {total - billable})")
-    print(f"  ses={VOICE} (Sarah) · model={MODEL} · hız={a.speed} · {T.CREDITS_PER_CHAR.get(MODEL, 1.0)} kredi/karakter")
+    by_voice: dict[str, list[int]] = {}
+    for p in plan:
+        row = by_voice.setdefault(p["voice_name"], [0, 0])
+        row[0] += 1
+        row[1] += p["chars"]
+    for name, (count, chars) in by_voice.items():
+        print(f"  {name}: {count} cue · {chars} karakter")
+    print(f"  model={MODEL} · hız={a.speed} · {T.CREDITS_PER_CHAR.get(MODEL, 1.0)} kredi/karakter")
     for p in plan:
         flag = "(önbellek)" if p["cached"] else ""
-        print(f"    {p['cue']:8} {p['chars']:3} karakter  {p['text'][:60]} {flag}")
+        print(f"    {p['cue']:8} {p['voice_name']:6} {p['chars']:3} karakter  {p['text'][:60]} {flag}")
     if not a.execute:
         return 0
 
@@ -117,8 +149,9 @@ def main(argv: list[str] | None = None) -> int:
     for p in plan:
         mp3 = parts / f"{p['key']}.mp3"
         cue_json = out_dir / f"{p['cue']}.json"
+        generated = False
         if not mp3.is_file():
-            resp = client(VOICE, T.payload(p["text"], MODEL, a.speed))
+            resp = client(p["voice"], T.payload(p["text"], MODEL, a.speed))
             if "audio_base64" not in resp:
                 print("hata: yanıtta audio_base64 yok", file=sys.stderr)
                 return 1
@@ -126,16 +159,20 @@ def main(argv: list[str] | None = None) -> int:
             mp3.write_bytes(base64.b64decode(resp["audio_base64"]))
             T.ledger_add(ledger, month, p["chars"])
             spent += p["chars"]
+            generated = True
             _append_prompts(Path("reeller/PROMPTS.md"), {
                 "date": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"), "reel": reel["id"],
-                "cue": p["cue"], "voice": f"Sarah {VOICE}", "model": MODEL, "speed": a.speed,
-                "chars": p["chars"], "sha": _sha16(p["text"]), "file": f"_raw/tts/{p['cue']}.mp3"})
-            print(f"    {p['cue']}: {p['chars']} karakter üretildi")
+                "cue": p["cue"], "voice": f"{p['voice_name']} {p['voice']}", "model": MODEL,
+                "speed": a.speed, "chars": p["chars"], "sha": _sha16(p["text"]),
+                "file": f"_raw/tts/{p['cue']}.mp3"})
+            print(f"    {p['cue']}: {p['chars']} karakter üretildi ({p['voice_name']})")
         dest = out_dir / f"{p['cue']}.mp3"
-        if not dest.is_file():
+        # Ses değiştiyse eski cue dosyasını da tazele (önbellekteki yeni kayıt).
+        if generated or not dest.is_file():
             subprocess.run(["cp", str(mp3), str(dest)], check=True)
         cue_json.write_text(json.dumps({"cue": p["cue"], "text": p["text"], "sha256": _sha16(p["text"]),
-                                        "voice": VOICE, "model": MODEL, "speed": a.speed,
+                                        "voice": p["voice"], "voiceName": p["voice_name"],
+                                        "model": MODEL, "speed": a.speed,
                                         "seconds": round(_duration(dest), 3)},
                                        ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
         timing[p["cue"]] = round(_duration(dest), 3)

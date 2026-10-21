@@ -47,7 +47,7 @@
   {
    "id": "s02-01",
    "start": 0.5,
-   "end": 2.1,
+   "end": 1.86,
    "speaker": "KEREM",
    "text": "Sorry, my phone.",
    "tr": "Pardon, telefonum.",
@@ -56,18 +56,18 @@
     {
      "w": "Sorry,",
      "start": 0.5,
-     "end": 1.14,
+     "end": 1.04,
      "gloss": "pardon"
     },
     {
      "w": "my",
-     "start": 1.14,
-     "end": 1.46
+     "start": 1.04,
+     "end": 1.32
     },
     {
      "w": "phone.",
-     "start": 1.46,
-     "end": 2.1,
+     "start": 1.32,
+     "end": 1.86,
      "gloss": "telefon"
     }
    ]
@@ -103,7 +103,7 @@
   {
    "id": "s02-03",
    "start": 6.7,
-   "end": 8.22,
+   "end": 8.7,
    "speaker": "KEREM",
    "text": "Of course. Sorry.",
    "tr": "Elbette. Özür dilerim.",
@@ -112,18 +112,18 @@
     {
      "w": "Of",
      "start": 6.7,
-     "end": 6.98
+     "end": 7.07
     },
     {
      "w": "course.",
-     "start": 6.98,
-     "end": 7.65,
+     "start": 7.07,
+     "end": 7.95,
      "gloss": "elbette"
     },
     {
      "w": "Sorry.",
-     "start": 7.65,
-     "end": 8.22,
+     "start": 7.95,
+     "end": 8.7,
      "gloss": "özür dilerim"
     }
    ]

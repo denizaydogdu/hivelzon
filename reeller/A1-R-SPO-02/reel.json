@@ -114,7 +114,7 @@
   {
    "id": "s01-03",
    "start": 9.6,
-   "end": 10.64,
+   "end": 10.48,
    "speaker": "MERT",
    "text": "Here you go.",
    "tr": "Buyur.",
@@ -123,18 +123,18 @@
     {
      "w": "Here",
      "start": 9.6,
-     "end": 10.03,
+     "end": 9.96,
      "gloss": "buyur"
     },
     {
      "w": "you",
-     "start": 10.03,
-     "end": 10.38
+     "start": 9.96,
+     "end": 10.26
     },
     {
      "w": "go.",
-     "start": 10.38,
-     "end": 10.64
+     "start": 10.26,
+     "end": 10.48
     }
    ]
   }

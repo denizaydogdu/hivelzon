@@ -47,7 +47,7 @@
   {
    "id": "s01-01",
    "start": 0.5,
-   "end": 2.26,
+   "end": 2.1,
    "speaker": "COACH",
    "text": "Stop. Look at me.",
    "tr": "Dur. Bana bak.",
@@ -56,24 +56,24 @@
     {
      "w": "Stop.",
      "start": 0.5,
-     "end": 0.96,
+     "end": 0.92,
      "gloss": "dur"
     },
     {
      "w": "Look",
-     "start": 1.24,
-     "end": 1.61,
+     "start": 1.17,
+     "end": 1.51,
      "gloss": "bak"
     },
     {
      "w": "at",
-     "start": 1.61,
-     "end": 1.75
+     "start": 1.51,
+     "end": 1.64
     },
     {
      "w": "me.",
-     "start": 1.75,
-     "end": 2.08,
+     "start": 1.64,
+     "end": 1.94,
      "gloss": "bana"
     }
    ]
@@ -104,7 +104,7 @@
   {
    "id": "s01-03",
    "start": 6.1,
-   "end": 7.62,
+   "end": 7.46,
    "speaker": "COACH",
    "text": "Keep your eyes on the ball.",
    "tr": "Gözünü toptan ayırma.",
@@ -113,34 +113,34 @@
     {
      "w": "Keep",
      "start": 6.1,
-     "end": 6.31,
+     "end": 6.29,
      "gloss": "tut"
     },
     {
      "w": "your",
-     "start": 6.31,
-     "end": 6.44
+     "start": 6.29,
+     "end": 6.4
     },
     {
      "w": "eyes",
-     "start": 6.44,
-     "end": 6.65,
+     "start": 6.4,
+     "end": 6.59,
      "gloss": "gözlerin"
     },
     {
      "w": "on",
-     "start": 6.73,
-     "end": 6.82
+     "start": 6.66,
+     "end": 6.74
     },
     {
      "w": "the",
-     "start": 6.82,
-     "end": 6.9
+     "start": 6.74,
+     "end": 6.82
     },
     {
      "w": "ball.",
-     "start": 6.9,
-     "end": 7.16,
+     "start": 6.82,
+     "end": 7.05,
      "gloss": "top"
     }
    ]

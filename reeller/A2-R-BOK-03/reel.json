@@ -47,7 +47,7 @@
   {
    "id": "s04-01",
    "start": 0.5,
-   "end": 2.02,
+   "end": 2.26,
    "speaker": "KEREM",
    "text": "I need something to read.",
    "tr": "Okuyacak bir şey arıyorum.",
@@ -56,29 +56,29 @@
     {
      "w": "I",
      "start": 0.5,
-     "end": 0.62
+     "end": 0.64
     },
     {
      "w": "need",
-     "start": 0.62,
-     "end": 0.92,
+     "start": 0.64,
+     "end": 0.99,
      "gloss": "ihtiyaç duymak"
     },
     {
      "w": "something",
-     "start": 0.92,
-     "end": 1.53,
+     "start": 0.99,
+     "end": 1.69,
      "gloss": "bir şey"
     },
     {
      "w": "to",
-     "start": 1.53,
-     "end": 1.72
+     "start": 1.69,
+     "end": 1.91
     },
     {
      "w": "read.",
-     "start": 1.72,
-     "end": 2.02,
+     "start": 1.91,
+     "end": 2.26,
      "gloss": "okumak"
     }
    ]
@@ -125,7 +125,7 @@
   {
    "id": "s04-03",
    "start": 7.0,
-   "end": 8.2,
+   "end": 8.6,
    "speaker": "KEREM",
    "text": "I'll try it, thanks.",
    "tr": "Deneyeceğim, teşekkürler.",
@@ -134,23 +134,23 @@
     {
      "w": "I'll",
      "start": 7.0,
-     "end": 7.31
+     "end": 7.41
     },
     {
      "w": "try",
-     "start": 7.31,
-     "end": 7.57,
+     "start": 7.41,
+     "end": 7.76,
      "gloss": "denemek"
     },
     {
      "w": "it,",
-     "start": 7.57,
-     "end": 7.76
+     "start": 7.76,
+     "end": 8.01
     },
     {
      "w": "thanks.",
-     "start": 7.76,
-     "end": 8.2,
+     "start": 8.01,
+     "end": 8.6,
      "gloss": "teşekkürler"
     }
    ]
