@@ -1,6 +1,6 @@
 # H-074: Günlük hedef için gerçek süre ölçümü
 
-- **Durum:** Yapılacak
+- **Durum:** Bitti (2026-10-14; mobil 956, backend 139 test geçti; günlük halka gerçek etkin süreyi gösterir)
 - **Tür:** Uygulama (kod)
 - **Faz:** Tasarım yenilemesinin devamı (H-060'tan doğdu)
 - **Bağımlılık:** H-060

@@ -16,7 +16,7 @@ C1 ve C2 kapsaması için (Kitaplık, H-066). **CC BY-SA 4.0** olduğundan CEFR-
 - **Kaynak:** Octanove Vocabulary Profile C1/C2 v1.0, Octanove Labs, Open Language Profiles: https://github.com/openlanguageprofiles/olp-en-cefrj (README "Terms of use"). Lisans: https://creativecommons.org/licenses/by-sa/4.0/
 - **Biçim:** Özgün sütunlar `headword,pos,CEFR,notes`. Önerilen ek sütun `source` (değer `octanove`); yoksa okuyucu `octanove` varsayar. `#` ile başlayan satırlar atıf başlığıdır.
 - **Dosya yoksa:** C1/C2 kitap ve bölümlerinde kapsama denetlenmez; book-lint ve content-lint "liste yok; kapsama denetlenmedi" uyarısı verir. Araçlar bu dosyayı kendileri indirmez.
-- **Ekleme adımları:** `yapilacaklar/H-066-kitap-paketi-boru-hatti.md` → Notlar.
+- **Ekleme adımları:** `bitenler/H-066-kitap-paketi-boru-hatti.md` → Notlar.
 
 ## `proper_nouns.txt`
 

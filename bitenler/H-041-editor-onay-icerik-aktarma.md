@@ -1,6 +1,6 @@
 # H-041: Editör onay ekranı ve içerik içe aktarma
 
-- **Durum:** Bitti (2026-10-14; dal `h-041-editor-onay`, `main`'e birleştirilmeyi bekliyor)
+- **Durum:** Bitti (2026-10-14; `main`'de; daha sonra H-094 reelleri de aynı onay akışına eklendi)
 - **Tür:** Uygulama (kod)
 - **Faz:** 1.9 (`docs/UYGULAMA-PLANI.md`)
 - **Bağımlılık:** H-038

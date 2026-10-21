@@ -23,7 +23,7 @@ Sosyal medyadaki görsel kelime ızgaraları ("Bedroom Items", "Bathroom Sentenc
 ## Notlar
 2026-10-12: Kullanıcı kararıyla açıldı.
 
-2026-10-13: Uygulandı ve doğrulandı (commit yok; kullanıcı onayı bekliyor).
+2026-10-13: Uygulandı ve doğrulandı (commit edildi; kullanıcı onayladı).
 - **İçerik:** 4 set, `icerik/_evren/setler/` (şema `tools/content-pipeline/schema/topic-set.schema.json`, belge `docs/BOLUM-PAKETI.md` §7): Alex'in odası (B1 `T1-oda`, 10 nesne), Maya'nın dükkânı (B2 `B2-02`, 8), Liman (B3 `B3-05`, 8), Masadaki iki not (B4 `B4-08`, 9). Türkçe anlamlar ve örnek cümleler Claude taslağı: durum `DRAFT`, editör onayı bekliyor. Ses yalnızca kayıttan: 7 kelime (radio, clock, sea, map, fish, note, radio) kelime zamanlarıyla kesildi; diğerlerinde ses düğmesi yok. Ücretli üretim yok.
 - **Boru hattı:** `hvpipeline/sets.py` (lint + dışa aktarma), `media.crop_webp/scene_webp/cut_audio`; sezon paketinde `sets/` (512 px öğe WebP, 1080 px sahne WebP, m4a) ve `season.json → topicSets`. content-lint setleri de denetler.
 - **Uygulama:** Defter → "Konu setleri" sekmesi; set ızgarası, kart, "Hepsini defterime ekle"; Sahne avı (dokunma, 2 kaçırmada ipucu, "Bilmiyorum", özet, FSRS: Good/Again, `task_type = scene_hunt`); ekran okuyucuda Türkçe bölge etiketleri ve seçenek listesi; bölüm sonunda "Yeni konu seti açıldı: …". H-036 kartları: açık setteki aynı kelimenin kırpılmış görselini alır.

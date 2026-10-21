@@ -125,9 +125,9 @@ koyu yeşil, "double" olmasın; SPO: forma rengi lacivert ✓.
   faststart), `<id>.webp` (afiş), `stills/<sahne>.webp` (Defter kartı), `audio/<cue>.m4a` (varsa),
   `production.json` (job kimlikleri, kredi, sha, aiLabel).
 - Kurgu `shots.json → timeline`'dan: 4 kare, 0,3 sn xfade, Ken Burns; klip varsa oynatılır.
-- **Ses henüz yok:** mp4 sessiz (görüntülü önizleme). Ses gelince `build_reel.py <reel> --force`.
+- **Ses tamam (2026-10-20/21):** 18 mp4'te ses var; kadın/erkek karakter sesleri ayrı. Ses veya kurgu değişince `build_reel.py <reel> --force`.
 
-## Ses (ElevenLabs) — araç hazır, **anahtar bekliyor**
+## Ses (ElevenLabs) — tamam (18 video)
 
 - Araç: `tools/content-pipeline/tts_reel.py` (kuru çalışma karakter sayısını verir; `--execute` ile üretir;
   aylık tavan + **ortak** defter `kitaplar/_maliyet/elevenlabs-karakter.json`; metin sha ile idempotent).

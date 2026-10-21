@@ -34,7 +34,7 @@
 Kendi dalında (`h-067-kitaplik-okuyucu`); `git revert`.
 
 ## Notlar
-2026-10-14 (uygulama, dal `h-067-kitaplik-okuyucu`; kullanıcı denemesi ve pilot kitaplar H-069 bekliyor, bu yüzden iş henüz `bitenler/`e taşınmadı):
+2026-10-14 (uygulama; H-069 pilot kitapları ve kullanıcı denemesi sonrası `main`'e alındı):
 - **Yer:** Hikâye sekmesinde "Macera · Kitaplık" seçici (harita aynı). Kısa ekranda başlık haritayla kayar.
 - **Kod:** `mobile/lib/features/library/` — `domain/book.dart` (paket modeli, `ChapterTrack.indexAt` zaman araması), `domain/book_progress.dart` (raflar, "Bana bir kitap oku" seçimi, birleştirme), `domain/book_notebook.dart` (Defter kaydı), `application/reader_controller.dart` (ses eşlemesi, uyku zamanlayıcısı, panel), `application/book_audio.dart` (`BookAudio` arayüzü; bugün `video_player`, H-068'de `just_audio` + `audio_service` buraya gelir), `presentation/` (Kitaplık, okuyucu, kitap sonu). İçerik: `ContentSource.listBooks/loadBook/bookMediaUri`; defter yolu `_books/<kitap>/…`.
 - **Veri:** Drift şema 6 (`user_book_progress`, `notebook_items.source_title`), eşitleme tablosu `user_book_progress` (sıra 70); backend Flyway `V8__book_progress.sql`, `ProgressSyncTables` + `ProgressMerger.forBooks()`, defter kaynağı `book` ve `sourceTitle`. "Bitti" kazanır.

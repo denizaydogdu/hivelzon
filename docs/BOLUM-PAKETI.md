@@ -417,7 +417,7 @@ clips/<id>.webp    → ilk kare (720 genişlik), video açılana dek görünür
 | `clip-id`, `clip-title`, `clips-schema`, `clips-empty` | Hata | Biçim. |
 | `clips-status`, `clip-source-status` | Uyarı (`--require-approved` ile hata) | **Klipler yalnızca editörün onayladığı içerikten yayınlanır:** klip dosyası `APPROVED` değilse ya da kaynak bölümün `content.json` durumu `APPROVED`/`SCHEDULED`/`PUBLISHED` değilse. Yerel çalışmada uyarıdır; yayından önce `content_lint.py … --require-approved` hatasız geçmelidir. |
 
-**Uygulama (Keşfet):** yalnızca açılmış (oynanabilir) bölümlerin klipleri gösterilir; akış biter (bitiş kartı hikâyeyi önerir), 4–5 klipte bir quiz kartı, ~10 klipte bir mola kartı (K-15). Ayrıntı: `yapilacaklar/H-040-kesfet-akisi.md`.
+**Uygulama (Keşfet):** yalnızca açılmış (oynanabilir) bölümlerin klipleri gösterilir; akış biter (bitiş kartı hikâyeyi önerir), 4–5 klipte bir quiz kartı, ~10 klipte bir mola kartı (K-15). Ayrıntı: `bitenler/H-040-kesfet-akisi.md`.
 
 ## 9a. Konuş görevleri (H-090)
 

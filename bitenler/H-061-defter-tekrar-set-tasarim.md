@@ -67,7 +67,7 @@ Kendi dalında (`h-061-defter-tekrar-set-tasarim`); sorun olursa birleştirme co
 1. Kaynak satırı bugün yalnız konu setinden gelen ifadelerde. Altyazıdan "Deftere ekle" ile eklenenlere de "Sen ekledin" gibi bir satır istenir mi?
 2. Kelime tekrarı özetinde "ilk seferde bildin" sayısı gösteriliyor (sıfırsa gizli). Puan gibi algılanabilir mi; kalsın mı?
 3. Doğru cevapta tek hafif titreşim var; ayarlarda kapatma seçeneği istenir mi (şimdilik yok)?
-4. Simülatör önce/sonra görüntüleri (`.yerel/h-061/`) ve tasarım onayı bekleniyor.
+4. Simülatör önce/sonra görüntüleri (`.yerel/h-061/`) alındı; tasarım onaylandı.
 2026-10-14: `main`'e birleştirildi. Birleşmeden sonra `h061_tekrar_yok` golden'ı kararsız çıktı (illüstrasyon bazen çözülmeden görüntü alınıyordu); testte asset resimleri önceden yükleniyor, 5/5 geçti.
 2026-10-14 (kullanıcı kararları): Tasarım onaylandı. Özetteki "ilk seferde bildin" kalır (sıfırsa gizli). Titreşim için Profil'de aç/kapa ayarı → H-064. Altyazıdan eklenenlerde "Bölüm N'den ekledin" kaynak satırı → H-067 ile (aynı kod). İş kapandı.
 

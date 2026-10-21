@@ -5,7 +5,7 @@
 Bu dosya tek takip noktasıdır. Hangi işin hangi sırada yapıldığını, şu an ne üzerinde çalışıldığını ve neyin bittiğini gösterir. Her işin ayrıntısı kendi `H-<numara>-<başlık>.md` dosyasındadır.
 
 ## Nerede kaldık
-- **Şu an:** **Faz 1 (MVP) uygulaması sürüyor** (`docs/UYGULAMA-PLANI.md`, H-025 onaylı). Kod var: `mobile/` (Flutter), `backend/` (Spring Boot 4 iskeleti), `tools/content-pipeline/`, `tools/dev-content-server/`. Son commit: `61f678f` P4 yayın provası; `main` GitHub'da. **18 reelin sesi tamam** (konuşmacıya göre Sarah/Will/Chris), uygulama **backend'in yayımlanmış kataloğunu** okuyor; geri çekme uçtan uca doğrulandı. Sırada H-092 pilotu.
+- **Şu an:** **Faz 1 (MVP) uygulaması sürüyor** (`docs/UYGULAMA-PLANI.md`, H-025 onaylı). Kod var: `mobile/` (Flutter), `backend/` (Spring Boot 4 iskeleti), `tools/content-pipeline/`, `tools/dev-content-server/`. Son commit: 2026-10-21 H-094 pilot hazırlığı (konuşmacıya göre ses + backend kataloğu); `main` GitHub'da. **18 reelin sesi tamam** (konuşmacıya göre Sarah/Will/Chris), uygulama **backend'in yayımlanmış kataloğunu** okuyor; geri çekme uçtan uca doğrulandı. Sırada H-092 pilotu.
 - **Her şey yerelde** (kullanıcı kararı): Docker PostgreSQL (5434), yerel içerik sunucusu (`python3 tools/dev-content-server/serve.py`, 127.0.0.1:8787), iOS simülatörü "hiVelzon iPhone 17". Sunucu, Bunny Stream, mağaza ve geliştirici hesapları en sonda (H-044).
 - **Biten uygulama işleri:** H-033 repo iskeleti · H-034 bölüm paketi + content-lint · H-045 tasarım yönü (6 taslak, 6 kr) · H-031 etkileşimli oynatıcı · H-046 altyazıya dokun → Türkçe anlam (B1–B4 çevirileri APPROVED) · H-047 Hi kararları · H-049 sezon jeneriği (6,69 kr) · H-050 başlıkla açılış (schemaVersion 2) · H-035 hikâye haritası + Drift ilerleme + kilit kuralı.
 - **İçerik:** Sezon 1'in 12 bölümü üretildi (görsel, ★ klipler, TR + EN sesler; haritada 12/12) — kalan: editör onayı (H-028) ve cihaz denemesi. Dilbilgisi A1–C2'nin tamamı yazıldı; İngilizce örnek sesleri kısmen bekliyor. Kitaplık: 30 kitap yazıldı ve tam resimli (sesli kitap 5/30). Higgsfield kredisi **236,56** (2026-10-20 ölçümü; `higgsfield account status`); Keşfet için **18 reel** üretildi ve **hepsi sesli** (11,9–13,4 sn; toplam 61,50 kr); sesler konuşmacıya göre Sarah/Will/Chris. Ses: 18 video **1.285 karakter** (ayrı ElevenLabs hesabı, free; defter **1.670 / 10.000**); ana defter **9.851 / 10.000** değişmedi.
@@ -173,12 +173,12 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 
 **Sıra:** H-075 ve H-076 hemen ve paralel (Alania'nın ücretsiz ayı sınırlı) → H-077 → H-078 → H-079 → dalgalar.
 
-### Adım 9 — Keşfet: günlük üç kısa video (2026-10-18, kullanıcı isteği; plan bekliyor)
+### Adım 9 — Keşfet: günlük üç kısa video (2026-10-18; uygulama + pilot içerik tamam, H-092 pilotu sırada)
 | # | İş | Başlık | Öncelik | Bağımlılık | Durum |
 |---|---|---|---|---|---|
-| K0 | H-094 | Keşfet — seviyeye ve ilgiye göre günlük üç kısa video (reel): plan + 18 videoluk pilot | Orta | H-040, H-089; pilot içerik için ücretli üretim onayı | ⏳ |
+| K0 | H-094 | Keşfet — seviyeye ve ilgiye göre günlük üç kısa video (reel): P0–P4 + 18 sesli pilot + uçtan uca yayın/geri çekme | Orta | H-040, H-089; üretim onayı (2026-10-20) | 🔄 |
 
-**Plan:** `docs/KESFET-GUNLUK-UC-VIDEO-PLAN-2026-10-18.md`. **Kullanıcı kararları (2026-10-18)** planda §14: Hikâye klipleri ayrı çip; video koleksiyonu ertelendi; hareket zorunlu değil; **bütçe onaylanmadı**; seviye üstteki çipten (genel testi değiştirmez); seçki cihazda; pilot A1/A2; her videonun sonunda atlanabilir tek soru. **Üç ayrı teslim:** (1) kredisiz uygulama P0–P3, (2) gerçek içerik üretimi (3 örnek + 18 için ayrı maliyet), (3) kullanıcı pilotu (H-092; P4 yayın/geri çekme ön koşulu). 17 Ekim raporundaki hata örnekleri regresyon testi olur; bu iş H-087…H-091 temel düzeltmelerini gölgelemez; pilot sonucu görülmeden geniş katalog üretilmez.
+**Plan:** `docs/KESFET-GUNLUK-UC-VIDEO-PLAN-2026-10-18.md`. **Kullanıcı kararları (2026-10-18)** planda §14: Hikâye klipleri ayrı çip; video koleksiyonu ertelendi; hareket zorunlu değil; seviye üstteki çipten (genel testi değiştirmez); seçki cihazda; pilot A1/A2; her videonun sonunda atlanabilir tek soru. **Bütçe 2026-10-20'de onaylandı;** 3 örnek + kalan 15 video = **61,50 kr** harcandı (bakiye 236,56 kr), ses ayrı ücretsiz ElevenLabs hesabında. **Durum (2026-10-21):** P0–P4 bitti; 18 reel üretildi ve seslendirildi (konuşmacıya göre Sarah/Will/Chris), lint 18 · 0/0; backend'de 18/18 yayınlandı, geri çekme uçtan uca doğrulandı; uygulama `GET /api/v1/catalog/reels` okuyor. Kalan: **H-092 kullanıcı pilotu** ve insan değerlendirmesi; pilot sonucu görülmeden geniş katalog üretilmez. Ayrıntı: `docs/H-094-P4-PROVA-2026-10-21.md`, `yapilacaklar/H-094-kesfet-gunluk-uc-video.md`.
 
 ## Devam eden işler
 | İş | Başlık | Başlangıç | Not |

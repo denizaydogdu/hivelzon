@@ -9,7 +9,7 @@
 - **Sunucu yeri** (kullanıcıya sorulur): backend ve PostgreSQL kurulumu, yedekleme, TLS.
 - **Bunny Stream:** hesap (kullanıcı açar), `VideoHostingPort` için Bunny adaptörü, B1–B4 yüklemesi.
 - **Apple ve Google geliştirici hesapları** (kullanıcı açar): imzalama, TestFlight ve Google Play dahili test.
-- Ticari ElevenLabs (H-006) çözülmeden mağazaya çıkılmaz; free plan seslerle yayın yok.
+- **ElevenLabs:** H-006 kararı (2026-10-14) gereği ücretsiz hesapla üretilen sesler yayında kullanılabilir; yeniden üretim gerekmez. Ticari plan yalnız gelecekteki kotalar/koşullar değişirse değerlendirilir.
 - KVKK: yurt dışı aktarım bildirimi (hukukçu teyidi).
 
 ## Kabul kriterleri

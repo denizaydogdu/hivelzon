@@ -1,8 +1,10 @@
 # hiVelzon — İş ve Ürün Planı
 
-> **Sürüm:** 0.2 (kararlara göre güncellendi, H-023; son onay H-001'de) · **İlk sürüm:** 2026-10-11 · **Güncelleme:** 2026-10-12
+> **Sürüm:** 0.2 (kararlara göre güncellendi, H-023; son onay H-001'de) · **İlk sürüm:** 2026-10-11 · **Güncelleme:** 2026-10-21
 > **Sahibi / veri sorumlusu:** Velzon Bilişim Teknolojileri Ltd. Şti. (Eskişehir · info@velzon.tr)
 > **Durum:** Faz 1 (MVP) uygulaması sürüyor; uygulama planı onaylı (`docs/UYGULAMA-PLANI.md`, H-025). Bağlayıcı kararlar `CLAUDE.md` tablolarındadır; bu belgeyle çelişirse onlar geçerlidir.
+>
+> **Güncel durum (2026-10-21):** H-094 Keşfet tamamlandı (18 sesli reel, backend onay/yayın/geri çekme, uygulama yayımlanmış katalogdan okuyor); sıradaki iş **H-092 kullanıcı pilotu**. Kredi, test sonuçları ve açık kararlar için tek kaynak: `yapilacaklar/IS-SIRASI.md`.
 
 ## Güncel kararlar (v0.2, 2026-10-12)
 

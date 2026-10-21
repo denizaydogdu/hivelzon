@@ -21,9 +21,9 @@ CLAUDE.md "Plan ile şartname arasındaki açık çelişkiler" · `SARTNAME.md` 
 
 ## Notlar
 2026-10-11: `docs/SARTNAME.md` ve `docs/IS-PLANI.md` karşılaştırmasından açıldı.
-2026-10-11: **Madde 3 (seviye testi) çözüldü** (K-06): kademeli, en fazla ~20 soru, atlanabilir; sonuç "önerilen başlangıç seviyesi" olarak sunulur. **Madde 4 (seri)** H-013'te K-16 ile çözüldü. **Hâlâ açık:** konuşma pratiğinin MVP'deki yeri, faz yapısı (K-17; plan 4 / şartname 6 / strateji 8 faz) ve telaffuz puanı (H-015).
+2026-10-11: **Madde 3 (seviye testi) çözüldü** (K-06): kademeli, en fazla ~20 soru, atlanabilir; sonuç "önerilen başlangıç seviyesi" olarak sunulur. **Madde 4 (seri)** H-013'te K-16 ile çözüldü. Konuşma pratiğinin MVP'deki yeri, faz yapısı (K-17) ve telaffuz puanı (H-015) aşağıdaki kararlarla/ilgili işlerle kapandı.
 2026-10-11: Oyun çerçevesinde konuşma pratiği, karakterle **canlı sahne** ve "Hi ile pratik" olur (`OYUN-TASARIMI.md` §8.1). Bölüm görevlerinde konuşma **hiçbir zaman zorunlu değildir**; seçmeli ya da yazılı alternatifi vardır.
-2026-10-11: **Konuşma pratiği MVP'de yok** (kullanıcı kararı). MVP: hikâye, görev, defter, kısa akış. Konuşma pratiği v1'de gelir; kota, bütçe ve ses rızası hazır olunca. Hikâyedeki "Söyle" adımı isteğe bağlıdır ve puan vermez. **Açık kalan:** faz yapısı (K-17).
+2026-10-11: **Konuşma pratiği MVP'de yok** (kullanıcı kararı). MVP: hikâye, görev, defter, kısa akış. Konuşma pratiği v1'de gelir; kota, bütçe ve ses rızası hazır olunca. Hikâyedeki "Söyle" adımı isteğe bağlıdır ve puan vermez. Faz yapısı aşağıdaki K-17 kararıyla kapandı.
 
 ## Karar (2026-10-11)
 Plan ile şartname arasındaki çelişkiler kapandı:

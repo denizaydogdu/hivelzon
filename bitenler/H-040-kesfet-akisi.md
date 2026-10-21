@@ -26,7 +26,7 @@ Kendi dalında (`h-040-kesfet-akisi`) yapılır; `main`'e alınmadan önce testl
 2026-10-11: H-025 uygulama planıyla açıldı.
 2026-10-12: "Anlam" düğmesi H-046'daki anlam panelini (`lib/shared/meaning/`) yeniden kullanır. Klipler yalnızca editörün onayladığı içerikten türetilir; uygulama içinde AI etiketi gömülmez, kısa not gösterilir (CLAUDE.md Higgsfield kuralı 6).
 
-2026-10-14: **Uygulandı** (dal `h-040-kesfet`; birleştirme ve onay bekliyor).
+2026-10-14: **Uygulandı ve `main`'e alındı** (dal `h-040-kesfet`); kullanıcı onayladı.
 
 **Boru hattı (ücretli üretim yok):**
 - Kaynak `icerik/_evren/klipler/S1.json`: B1–B4'ten **17 klip** (5,3–15,6 sn, toplam 174 sn), her biri tek hedef (ifade/kelime + Türkçesi), 16'sında dilbilgisi dersi bağı, 15'inde quiz. Klip bir ya da birkaç ardışık segmentten kesilir (ör. karar öncesi sahne + doğru cevabın segmenti).
@@ -47,7 +47,7 @@ Kendi dalında (`h-040-kesfet-akisi`) yapılır; `main`'e alınmadan önce testl
 **Testler:** `test/features/discover/discover_feed_test.dart` (25), `test/goldens/h040_discover_golden_test.dart` (5 golden + erişilebilirlik + 320×568 1,3×: 15), `integration_test/h040_memory_test.dart` (simülatör ölçümü).
 
 **Açık sorular:**
-- 13 altına da 20 dk varsayılan sınır uygulandı (K-15 yalnız 13–17 diyor); kullanıcı onayı bekliyor.
+- 13 altına da 20 dk varsayılan sınır uygulandı (K-15 yalnız 13–17 diyor); kullanıcı onayladı (2026-10-14 kaydı).
 - Sınırın ayarlardan değiştirilmesi (ICERIK-MIMARISI §6.5) bu işte yok.
 - Defter kaynağı için ayrı bir `discover` kaynak türü backend'de (V9 `CHECK`) yok; şimdilik `user_saved` + `sourceTitle` "Keşfet: …". Ayrı tür istenirse backend göçü gerekir.
 - Bölümler ve klip dosyası `DRAFT`: yayından önce editör onayı (H-028) ve `content_lint.py --require-approved`.

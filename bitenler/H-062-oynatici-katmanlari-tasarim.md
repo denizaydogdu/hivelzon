@@ -65,4 +65,4 @@ Kendi dalında (`h-062-oynatici-katmanlari-tasarim`); sorun olursa birleştirme 
 **Açık sorular (kullanıcıya)**
 1. Bölüm sonunda kutlama ikonu bayrak (görev tamam). Hi'nin kendisi (mutlu ifadeyle) mi olsun? H-063'e bağlanabilir.
 2. Simülatör önce/sonra görüntüleri (`.yerel/h-062/`) ve H-031/H-054 cihaz ölçümü, birleştirmeden önce mi sonra mı alınsın?
-2026-10-14: Kullanıcı tasarımı onayladı. Açık kalan: bölüm sonu kutlamasında bayrak yerine mutlu Hi ifadesi H-063'te değerlendirilecek; simülatörde H-031/H-054 ölçümleri H-064 kalite turunda.
+2026-10-14: Kullanıcı tasarımı onayladı. Açık kalan: bölüm sonu kutlamasında bayrak yerine mutlu Hi ifadesi H-063'te uygulandı; simülatörde H-031/H-054 ölçümleri H-064 kalite turunda.

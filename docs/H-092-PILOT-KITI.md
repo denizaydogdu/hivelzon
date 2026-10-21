@@ -1,12 +1,13 @@
 # H-092 — Pilot kiti (gözlemli test + 7–14 günlük pilot)
 
-> **Durum:** Taslak — kullanıcı onayı ve hukuk teyidi (H-002) bekliyor. Bu belge H-092'nin
-> "test senaryosu ve onay metni hazır" teslimini karşılar; saha çalışması (5 kişi + 15–20 kişi)
-> henüz yapılmadı.
+> **Durum (2026-10-21):** Metin taslağı — kullanıcı onayı ve hukuk teyidi (H-002) bekliyor. Bu belge
+> H-092'nin "test senaryosu ve onay metni hazır" teslimini karşılar; saha çalışması (5 kişi + 15–20 kişi)
+> henüz yapılmadı. **Pilot içeriği ve teknik kapı hazır:** 18 sesli reel (Sarah/Will/Chris) yayında,
+> uygulama backend'in yayımlanmış kataloğunu okuyor, geri çekme uçtan uca doğrulandı.
 > **Amaç:** hiVelzon'un ilk sürümünü **gerçek kullanıcıyla** sınamak. İstatistiksel kanıt iddiası
 > yoktur; kararlar için **yön gösterici** bulgu toplanır.
 > **İlgili:** `docs/KESFET-GUNLUK-UC-VIDEO-PLAN-2026-10-18.md` §12, `docs/REEL-PAKETI.md` §8,
-> `yapilacaklar/H-002-yas-politikasi.md`, `yapilacaklar/H-092-kullanici-pilotu.md`.
+> `bitenler/H-002-yas-politikasi.md`, `yapilacaklar/H-092-kullanici-pilotu.md`.
 
 ## 1. İki aşama
 

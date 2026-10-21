@@ -157,10 +157,14 @@ Backend `VideoHostingPort` yolu `packages/_reels/<id>/<yol>` aynı pakete gider
   sayılmaz). Önerilen yol: 3 örnek ≈ **17 kr** (senaryo A) → onay → 18 video
   ≈ **55 kr** (senaryo A) ya da ≈ **266 kr** (2k high, senaryo B). Bakiye 298,06 kr.
 - **3 örnek üretildi (2026-10-19):** A1 Sinema/Spor/Kitap için 13 görsel +
-  2 hareket klipI = **16,50 kr** (bakiye 298,06 → **281,56** kr). Paketler
+  2 hareket klibi = **16,50 kr** (bakiye 298,06 → **281,56** kr). Paketler
   `reeller/<id>/_build/package/` altında; kurgu ve krediler `reeller/PROMPTS.md`
-  içinde. **Ses (220 karakter) ElevenLabs anahtarı bekliyor** — mp4'ler şimdilik
-  sessiz. Ayrıntı: §8.
+  içinde.
+- **18 video + ses tamam (2026-10-20/21):** 60 görsel + 3 klip = 45,00 kr
+  (toplam **61,50 kr**; bakiye **236,56**). Ses ayrı ücretsiz ElevenLabs
+  hesabında; konuşmacıya göre Sarah/Will/Chris. 18 paket sesli, süreler
+  11,9–13,4 sn; `reel-lint` **18 · 0 hata · 0 uyarı**. Ayrıntı: §8,
+  `docs/REEL-MALIYET-2026-10-19.md`.
 - **Simülatör denemesi için yerel demo medyası:** `reeller/<id>/` altına
   ücretsiz, yerel üretilmiş yer tutucular (mp4, poster, `stills/`, `audio/`)
   konabilir; hepsi `.gitignore` dışındadır ve **onaylı üretimin yerine geçmez**
@@ -217,6 +221,7 @@ dosyaları yok sayar). **Görüntüye yazı gömülmez** (alt Yazı uygulamada; 
 klip paketleriyle aynı yaklaşım, H-040).
 
 **3 örnek (2026-10-19/20, A1: CIN/SPO/BOK):** 13 görsel (6,50 kr) + 2 klip (10,00 kr) +
-TTS 220 karakter (defter 9.851/10.000) = **16,50 kr**; süreler **12,6 / 11,0 / 11,0 sn** (ses sığsın
-diye CIN ve BOK'un son karesi uzatıldı). Ayrıntı ve job kimlikleri: `reeller/PROMPTS.md`;
-fiyat tablosu: `docs/REEL-MALIYET-2026-10-19.md`.
+TTS 220 karakter (o gün ana defter 9.851/10.000) = **16,50 kr**; süreler **12,6 / 11,0 / 11,0 sn**
+(ses sığsın diye CIN ve BOK'un son karesi uzatıldı). **18 video toplamı:** 61,50 kr; ses ayrı
+ücretsiz hesapta (1.670 karakter / 72 çağrı), ana defter değişmedi. Ayrıntı ve job kimlikleri:
+`reeller/PROMPTS.md`; fiyat tablosu: `docs/REEL-MALIYET-2026-10-19.md`.

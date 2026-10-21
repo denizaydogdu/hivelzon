@@ -4,9 +4,9 @@ Yapay zekâ videolarıyla İngilizce öğrenme uygulaması (iOS + Android). Tüm
 
 Velzon Bilişim Teknolojileri Ltd. Şti. (Eskişehir · info@velzon.tr) ürünüdür.
 
-**Durum (2026-10-12):** Faz 1 (MVP) uygulaması sürüyor (`docs/UYGULAMA-PLANI.md`). Her şey yerelde çalışıyor; sunucu, video barındırma ve mağaza hesapları en sona bırakıldı (H-044).
+**Durum (2026-10-21):** Faz 1 (MVP) uygulaması sürüyor (`docs/UYGULAMA-PLANI.md`). Her şey yerelde çalışıyor; sunucu, video barındırma ve mağaza hesapları en sona bırakıldı (H-044). Son tamamlanan: **Keşfet — günde üç kısa video** (H-094): 18 reel (3 kategori × 2 seviye, sesli), backend yayın/onay/geri çekme ve uygulamanın yayımlanmış katalogdan okuması. **Sıradaki: H-092 kullanıcı pilotu.** Ayrıntı: `yapilacaklar/IS-SIRASI.md`.
 
-Ana deneyim oyunlaştırılmış, sürekli bir hikâye: *The Missing Signal*. Kahraman Aleyna "Alex" Yıldız, yol arkadaşı AI asistan Hi. Sezon 1 (A1) 12 bölüm + prolog; B1–B4 üretildi ve uygulamada oynanıyor. Bitenler: repo iskeleti, bölüm paketi + content-lint, etkileşimli oynatıcı, altyazıya dokununca Türkçe anlam, başlıkla açılış ve sezon jeneriği, hikâye haritası ve kalıcı yerel ilerleme (Drift). Sıradaki: defter, ipucu panosu ve FSRS tekrarı (H-036). AI konuşma pratiği MVP'de yok, v1'de gelir.
+Ana deneyim oyunlaştırılmış, sürekli bir hikâye: *The Missing Signal*. Kahraman Aleyna "Alex" Yıldız, yol arkadaşı AI asistan Hi. Sezon 1 (A1) 12 bölüm + prolog; B1–B4 üretildi ve uygulamada oynanıyor. Bitenler: repo iskeleti, bölüm paketi + content-lint, etkileşimli oynatıcı, altyazıya dokununca Türkçe anlam, başlıkla açılış ve sezon jeneriği, hikâye haritası ve kalıcı yerel ilerleme (Drift), defter + ipucu panosu + FSRS tekrarı, kitaplık, dilbilgisi ve Keşfet reelleri. AI konuşma pratiği MVP'de yok, v1'de gelir.
 
 ## Belgeler
 

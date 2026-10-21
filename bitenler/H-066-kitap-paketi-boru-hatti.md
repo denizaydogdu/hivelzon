@@ -36,7 +36,7 @@ Kendi dalında; `git revert`.
 ## Notlar
 2026-10-14: Kullanıcı isteğiyle açıldı: "Bir dinleme hikâyesi olsun; yatakta 'A2 bir hikâye aç' diyebileyim, okumadığım bir kitap sesli okunsun, ekranda renkli kitap gibi görünsün, okunan cümle işaretlensin, dokununca Türkçesi çıksın, durdurabileyim, sesi kapatıp kendim de okuyabileyim; okuduklarım ve yarıda kalanlar takip edilsin; her seviyeden 5, toplam 30 ilgi çekici kitap." Ek istek: bilmediği kelimeleri Defter'e ekleyip sonra çalışabilmeli. Kararlar (önerilenler onaylandı): önce 2 pilot kitap resimli, ElevenLabs önce pilotla, kısa kitap, bağımsız karışık türler. Ayrıntı: `docs/KITAPLIK.md`.
 
-2026-10-14 (uygulama, dal `h-066-kitap-paketi-boru-hatti`; birleştirme ve kabul onayı bekliyor, iş bu yüzden henüz taşınmadı):
+2026-10-14 (uygulama; sonradan `main`'e alındı ve kabul edildi):
 - **Biçim kesinleşti:** `docs/KITAPLIK.md` §6 (kaynak klasör, `text.en.md` işaretleri, paket, book-lint kuralları, TTS kuralları). Şemalar: `tools/content-pipeline/schema/book.schema.json`, `pages.schema.json`.
 - **Kod:** `hvpipeline/book.py` (kaynak ayrıştırma), `booklint.py`, `bookexport.py`, `tts.py`; CLI `book_lint.py`, `export_book.py`, `tts_book.py`; `align.py`'ye cümle düzeyi zamanlama (`locate`, `sentence_timings`, `concat_alignments`); `cefr.py`'de `LEVELS` A1–C2, `CEFRJ_LEVELS` A1–B2, Octanove ayrı dosya; `lint.py` kapsama kuralı ortak işleve (`coverage_issues`) ayrıldı. Dev sunucu: `/books/index.json`, `/books/<id>/…` (Range).
 - **Test kitabı:** `tools/content-pipeline/tests/fixtures/books/A1-K99-the-test-box/` (sahte hizalama; `kitaplar/` altında değil). `tests/test_books.py`: lint, paket (sahte ve gerçek ffmpeg/ImageMagick), TTS (sahte istemci; gerçek API çağrısı yok), sunucu.

@@ -307,6 +307,8 @@ Yapı: **3 kategori × 2 seviye × 3 video = 18**. Her satır tek küçük hedef
 
 **Durum (2026-10-19):** P0–P4 tamamlandı (kredisiz). Ayrıntılar `docs/REEL-PAKETI.md` §7 ve `yapilacaklar/H-094-kesfet-gunluk-uc-video.md`; P4 backend uçları `/api/v1/catalog/reels`.
 
+**Durum (2026-10-21):** Pilot içeriği de tamam. 18 reel (3 kategori × 2 seviye) üretildi ve seslendirildi (kadın/erkek karakter sesleri ayrı: Sarah/Will/Chris); `reel-lint` 18 · 0 hata · 0 uyarı. Backend'de 18/18 yayınlandı; **geri çekme uçtan uca** doğrulandı: uygulama artık `GET /api/v1/catalog/reels` okur, geri çekilen video oynatılmaz ve günlük seçki aynı seviye-kategoriden yedeklenir. Kalan: **H-092 kullanıcı pilotu** + insan değerlendirmesi. Ayrıntı: `docs/H-094-P4-PROVA-2026-10-21.md`.
+
 Her aşama **kendi dalında**, `flutter analyze && flutter test` + `pytest` yeşil; golden’lar bilinçli güncellenir.
 
 **Ayrı teslimler:** (1) **kredisiz uygulama** (P0–P3 + deneme verisi), (2) **gerçek içerik üretimi** (3 örnek → 18 video; bütçe onayı ayrı), (3) **kullanıcı pilotu** (H-092’ye ekleme; P4 ön koşulu). Her biri ayrı onay/bitiş kapısıdır.

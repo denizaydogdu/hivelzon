@@ -17,7 +17,7 @@ Hedefler 5/10/15 dk olsun (A1 için düşük eşik). Seri kalsın ama dondurma v
 ## Notlar
 2026-10-11: `docs/SARTNAME.md` ve `docs/IS-PLANI.md` karşılaştırmasından açıldı.
 2026-10-11 (`ICERIK-MIMARISI.md` §6.2, K-16): Araştırma (Silverman & Barasch 2023) kırık seriyi vurgulamanın uygulamayı bırakmayı artırdığını gösteriyor. Öneri: kırık seri vurgulanmasın, dondurma ve onarma imkânı olsun. Seri yalnızca video izleyerek değil, "anlamlı etkinlik" ile korunsun.
-2026-10-11: **Seri kısmı çözüldü** (K-16): kırık seri vurgulanmaz; dondurma ve onarma var; kurtarma görevi yok. **Hâlâ açık:** günlük hedef seçenekleri (5/10/15 mi, 10/20/30 mu) ve bildirim sıklığı.
+2026-10-11: **Seri kısmı çözüldü** (K-16): kırık seri vurgulanmaz; dondurma ve onarma var; kurtarma görevi yok. Günlük hedef seçenekleri ve bildirim sıklığı aşağıdaki kararda netleşti.
 
 ## Karar (2026-10-11)
 **Günlük hedef seçenekleri: 5 / 10 / 15 dk** (kullanıcı, soru-cevap).

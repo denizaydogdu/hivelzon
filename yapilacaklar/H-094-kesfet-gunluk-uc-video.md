@@ -19,14 +19,16 @@
 - Yeniden kullanılır: dikey oynatıcı, altyazı/anlam paneli, `ClipControllerCache` (sert sınır 3), Defter, FSRS, içerik lint ve onay yaklaşımı.
 
 ## Pilot ve teslimler (ücretli üretim onayı AYRI)
-- **Üç ayrı teslim:** (1) **kredisiz uygulama ve yayın kapısı** (P0–P4, deneme verisi), (2) **gerçek içerik üretimi**, (3) **kullanıcı pilotu** (H-092; P4 yayın/geri çekme **ön koşulu** — tamamlandı).
-- **Bütçe onaylanmadı.** Üretim öncesi **güncel fiyatla 3 örnek** ve **18 toplam** için **ayrı** maliyet çıkarılır; harcama sonra değerlendirilir.
-- **3 kategori × 2 seviye × 3 video = 18 video** (A1/A2); önce kategori başına 1 örnek. Hareket **zorunlu değil** (önce görsel + Ken Burns; gerekli sahnede ayrı maliyet). Geçmiş 0,5 kr ve 5 kr güncel fiyat sayılmaz; kredi/USD/TL/karakter ayrı raporlanır.
+- **Üç ayrı teslim:** (1) **kredisiz uygulama ve yayın kapısı** (P0–P4), (2) **gerçek içerik üretimi** (18 reel tamam), (3) **kullanıcı pilotu** (H-092; P4 yayın/geri çekme **ön koşulu tamamlandı**, uygulama backend kataloğunu okuyor).
+- **Bütçe 2026-10-20'de onaylandı.** Güncel fiyatla 3 örnek + 18 toplam maliyeti çıkarıldı; gerçekleşen **61,50 kr** (bakiye 236,56 kr). Ayrıntı: `docs/REEL-MALIYET-2026-10-19.md`.
+- **3 kategori × 2 seviye × 3 video = 18 video** (A1/A2); hepsi üretildi ve seslendirildi. Hareket **zorunlu değil** (3 sahnede klip, diğerleri Ken Burns). Geçmiş 0,5 kr ve 5 kr güncel fiyat sayılmaz; kredi/USD/TL/karakter ayrı raporlanır.
 
 ## Kabul kriterleri
 - Plan §12’deki **17 senaryo** geçer (seviye uygunluğu, gün içi kararlılık, gece yarısı, spoiler kilidi, mini soru, Defter’in doğru kaynakla çalışması, kanıt yazılmaması, sayaçlar, idempotent üretim, geri çekme, denetleyici ≤ 3, gerçek cihaz, **önceki hata regresyonları**, içerik sürümü, seviye çipi, P4 kapısı).
 - `flutter analyze && flutter test` ve `pytest` yeşil; golden’lar bilinçli güncellenir.
 - Büyük katalog üretimi, H-092 pilot sonucu görülmeden başlamaz.
+
+**Durum (2026-10-21):** Üretim, ses, lint, backend yayın/geri çekme ve uygulama katalog bağlantısı tamam. Kalan kabul adımı: H-092 pilotu + insan değerlendirmesi; gerçek cihaz testi H-092/H-044 kapsamında.
 
 ## Test
 ```bash
@@ -88,7 +90,7 @@ Kendi dalında; `git revert`. İçerik paketleri `/reels/` altında ayrı durur;
   - **Simülatör (2026-10-20):** açılış tohumlandı (`app_meta → onboarding.completedAt`), Keşfet "Bugün senin için 3 kısa video" → ilk video **A1-R-CIN-01**, **yeni klip karesiyle** oynadı; sonunda "Tekrar izle" + "Kısa soru için yukarı kaydır" (geri sayım/baskı yok). "Tekrar" rozeti 18 Ekim'deki izlemeden → doğru davranış (gün dönünce seçki yenilendi).
   - **Yeni araçlar (hepsi kuru çalışma varsayılan, idempotent):** `gen_reel_images.py`, `gen_reel_clips.py`, `tts_reel.py`, `build_reel.py`. **Yeni belge:** `docs/REEL-PAKETI.md` §8.
   - **Testler:** `pytest` **368** (reel: 29; yeni `reel.audio.fit` + `reel.cue.window` senaryoları), `flutter test` **1277**, `flutter analyze` temiz.
-  - **Sıradaki:** (1) 3 örneğin insan değerlendirmesi (stil/karakter/ses), (2) onayla 18 video (senaryo A ≈55 kr), (3) H-092 pilotu. **Commit:** bu üretim turu (3 örnek + araçlar).
+  - **Sıradaki:** (1) 3 örneğin insan değerlendirmesi (stil/karakter/ses), (2) onayla 18 video (senaryo A ≈55 kr), (3) H-092 pilotu. **Commit:** `dfbf8fb`.
 - 2026-10-20: **Kalan 15 video üretildi ve 18 paket kuruldu (ses hariç).** Onay: kullanıcı, 2026-10-20, kalan 15 video ≈50 kr (üst sınır).
   - **İçerik:** 12 yeni reelin kaynak dosyaları (`reel.json` + `shots.json`) yazıldı; 3 A2 reelinin (`A2-R-CIN-01`, `A2-R-SPO-01`, `A2-R-BOK-01`) `shots.json`'u eklendi, konuşmacılar `SELIN`/`MERT` ile hizalandı. Pilot artık **3 kategori × 2 seviye × 3 video = 18**.
   - **Görsel:** 60 kare, `gpt_image_2_5` 9:16 2k low, **k2–k4 k1 referansıyla** → **30,00 kr** (yeniden üretim yok). İstemler ve sahne kaydı `PROMPTS.md`'de (Pilot 18 bölümü).
@@ -99,7 +101,7 @@ Kendi dalında; `git revert`. İçerik paketleri `/reels/` altında ayrı durur;
   - **Lint:** 18 reel → **0 hata, 15 uyarı** (yalnız `reel.media: ses dosyası yok`; 3 sesli örnek temiz). `--write-reports` ile 18 `_build/lint.json` yazıldı (P4 onay kapısı için).
   - **Testler:** `pytest` **368**; `flutter test` **1277**; `flutter analyze` temiz. Güncellenen testler: günlük seçki havuzu (kategori başına 3 video; "Bugün" hâlâ 3), geri çekilen CIN-01 yerine **aynı seviye-kategoriden yedek CIN-02**, boş Spor havuzunda seçili kategorilerden tamamlama (CIN-01 + BOK-01 + BOK-02; farklı seviyeden doldurma yok), katalog/http listeleri 18 kimlik, `_trial_ids` 18, "Tekrar" golden'ı (üç CIN de gösterilmiş → en eski CIN-01 seçilir, rozet korunur).
   - **Maliyet:** 61,50 kr toplam (3 örnek 16,50 + kalan 15 video 45,00); bakiye **236,56 kr**. Ayrıntı: `docs/REEL-MALIYET-2026-10-19.md` §8.
-  - **Sıradaki:** (1) sesi ay başında/ayrı hesapla topluca üret (`tts_reel.py --execute` + `build_reel.py --force`), (2) H-092 kullanıcı pilotu (P4 hazır), (3) insan değerlendirmesi (stil/karakter). **Commit:** bu tur (kaynaklar, paket düzeni, testler, belgeler) — onay bekleniyor.
+  - **Sıradaki:** (1) sesi ay başında/ayrı hesapla topluca üret (`tts_reel.py --execute` + `build_reel.py --force`), (2) H-092 kullanıcı pilotu (P4 hazır), (3) insan değerlendirmesi (stil/karakter). **Commit:** `e9be545`.
 - 2026-10-20 (akşam): **15 videonun sesi ayrı ElevenLabs hesabıyla üretildi; 18 paket sesli.**
   - **Neden ayrı hesap:** ana hesabın aylık ortak defteri **9.851 / 10.000** (kalan 149), 15 video **1.065** karakter istiyor. Kullanıcı "başka hesap/plan" dedi; ana anahtar ve ana defter **değiştirilmedi**.
   - **Üretim:** 45 cue · **1.065 karakter** (free plan 10.000). Defter `kitaplar/_maliyet/elevenlabs-karakter-alt.json` (`HIVELZON_TTS_LEDGER`); ana defter 9.851'de kaldı. Ses: Sarah `eleven_v3` 0.9. Kayıtlar `PROMPTS.md`'de (ayrı hesap notuyla).
@@ -108,17 +110,17 @@ Kendi dalında; `git revert`. İçerik paketleri `/reels/` altında ayrı durur;
   - **Kaynak eşitleme:** ses sonrası yeniden hesaplanan `duration` + `cues` 15 kaynak `reel.json`'a yazıldı; mobil fixture'lar 18 paketle yenilendi.
   - **Regresyon (H-039):** tam test koşusunda aralıklı düşen **"Ref after dispose"** hatası bulundu: `OnboardingGateNotifier._check` okuma sürerken kapsayıcı kapanınca `state` yazıyordu. `ref.mounted` guard'ı eklendi (`_check`, `complete`, `restart`); yeni test `mobile/test/features/onboarding/onboarding_gate_test.dart` düzeltme olmadan **düşüyor**, düzeltmeyle geçiyor.
   - **Testler:** `pytest` **368**, `flutter test` **1278** (yeni H-039 regresyonu), `flutter analyze` temiz.
-  - **Sıradaki:** H-092 kullanıcı pilotu (P4 hazır, 18 paket sesli) + insan değerlendirmesi. **Commit:** onay bekleniyor.
+  - **Sıradaki:** H-092 kullanıcı pilotu (P4 hazır, 18 paket sesli) + insan değerlendirmesi. **Commit:** `238a074`.
 - 2026-10-21: **P4 yayın provası yapıldı (18 gerçek reel).** Ayrıntı: `docs/H-094-P4-PROVA-2026-10-21.md`.
   - **Ortam:** yerel Postgres + Mailpit (docker compose), backend 8080, içerik sunucusu 8787, editör hesabı (`pilot-editor@velzon.test`, Mailpit kodu + `users.role='EDITOR'`).
   - **İçe aktarma:** 18 reel **IN_REVIEW**, lint **0/0**; ikinci çağrı tamamen `UNCHANGED` (idempotent). Onay (4 madde; reelde kanon istenmiyor) + yayın: **18/18**. Açık katalog **A1 9 · A2 9**; paket `reel.json`, mp4 ve ses 200 döndü.
   - **Geri çekme:** `A2-R-CIN-03` → **WITHDRAWN**, A2 katalog **9 → 8**, kimlik yok, gerekçe `OTHER`, `allowedActions` boş. Prova sonunda yerel veri SQL ile geri alındı (üretimde yeni sürüm gerekir).
   - **Bulgu (pilot kapısı):** uygulama `/reels/index.json` (geliştirme sunucusu) okuyor; `GET /api/v1/catalog/reels` hiç çağrılmıyor. Backend'de yayın/geri çekme doğru, **uçtan uca değil**. Ayrıca backend yanıtında `categoryTr`, `family`, `poster`, `sourceType` yok. Karar: uygulamayı backend kataloğuna bağlamak (öneri), içeriği dondurmak ya da yalnız yerelde sunucuyu süzmek.
-  - **Sıradaki:** F1 kararı (backend kataloğuna bağlama) → H-092. **Commit:** belge + H-094 güncellemesi, onay bekliyor.
+  - **Sıradaki:** F1 kararı (backend kataloğuna bağlama) → H-092. **Commit:** `61f678f` (P4 prova belgesi).
 - 2026-10-21 (devam): **Uygulama backend kataloğuna bağlandı; sesler konuşmacıya göre ayrıldı.**
   - **F1 (pilot kapısı):** `HttpContentSource.listReels()` artık varsayılan olarak `GET /api/v1/catalog/reels` okur (`REEL_CATALOG_URL`; sayfalama `size=100`), her kaydın `packageBaseUrl`'ini saklar; `reel.json`/medya adresleri oradan kurulur. Yayında olmayan kimlik oynatılmaz; backend hatasında dosya kataloğuna sessizce düşülmez. Backend `ReelItem`'a `family` eklendi (seçki "aynı aile bir kez"). Dosya kataloğu yalnız `REEL_CATALOG_URL=''` demo modu.
   - **F4 (bulundu/düzeltildi):** backend kataloğunda hiç olmayan (geri çekilen) video seçkiden çıkarken yerine yedek konmuyordu (3 → 2 video). Kategori artık saklanan kimlikten okunur (`reelCategoryFromId`); regresyon testi eklendi. Simülatörde CIN-01 geri çekilince seçki **CIN-02 · SPO-01 · BOK-01** (üç video) oldu; dosya kataloğunda CIN-01 durmasına rağmen.
   - **Ses (kullanıcı geri bildirimi):** görsellerde kadın/erkek karakter varken bütün replikler Sarah (kadın) sesiyle okunuyordu. `tts_reel.py` konuşmacıya göre ses seçer: kadınlar **Sarah**, genç erkekler (Kerem/Mert/Deniz) **Will**, olgun erkekler (Coach/seyirci) **Chris**. 27 erkek repliği (605 karakter) yeniden üretildi; ayrı defter **1.670 / 72 çağrı** (ana defter 9.851 değişmedi), Higgsfield kredisi harcanmadı. Ölçülen F0: erkek ~130–170 Hz, kadın ~220–270 Hz.
   - **Yeniden kurulum:** 18 paket `build_reel.py --force`; kaynak `reel.json` süre/cue eşitlendi; 18 mobil fixture + `index.json` yenilendi. `reel-lint` **18 · 0 hata · 0 uyarı**.
   - **Testler:** `pytest` **368**, `flutter test` **1284** (+5 backend katalog, +1 seçki regresyonu), `flutter analyze` temiz, backend `mvn test` **153**. Uçtan uca prova: 18/18 yayın, geri çekme katalogdan düşüyor.
-  - **Sıradaki:** H-092 kullanıcı pilotu (backend + içerik sunucusu açık; uygulama backend kataloğunu okur). **Commit:** onay bekliyor.
+  - **Sıradaki:** H-092 kullanıcı pilotu (backend + içerik sunucusu açık; uygulama backend kataloğunu okur). **Commit:** `5e087eb`, `b0969c3`, `43c85f8`.

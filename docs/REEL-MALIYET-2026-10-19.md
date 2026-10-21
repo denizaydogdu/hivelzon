@@ -185,9 +185,9 @@ Kullanıcı kalan **15 video** için bütçe onayı verdi (2026-10-20, ≈50 kr 
 - Plandan sapma (üst sınır içinde): görseller **2k low** (0,50 kr; 1k medium ile aynı fiyat),
   hareket **720p 5 sn** (480p yerine; doğrudan 720×1280), Kitap reellerinde yalnız Ken Burns.
 - **Klipler:** `A1-R-CIN-03` k2 (`cin-k2`), `A1-R-SPO-02` k3 (`spo-k3`), `A1-R-BOK-02` k3 (`bok-k3`).
-- **Ses (engel):** 15 reelin metni **1.065 karakter** (18 video toplamı **1.285**). Aylık ortak
-  defterde **9.851 / 10.000** dolu → kalan **149 karakter** yetmiyor. Ses, ay başında (veya ayrı
-  hesapla) toplu üretilecek; paketler o zamana kadar **sessiz** kuruldu (süreler 11,9–13,4 sn).
+- **Ses (o günkü engel; §9'da çözüldü):** 15 reelin metni **1.065 karakter** (18 video toplamı **1.285**). Aylık ortak
+  defterde **9.851 / 10.000** dolu → kalan **149 karakter** yetmiyordu. Ses ayrı hesapla üretildi (§9);
+  paketler o arada **sessiz** kurulmuştu (süreler 11,9–13,4 sn).
   Önceki "≈3.300 karakter" tahmini yanlıştı; gerçek ölçüm 1.065.
 - **Maliyet sonrası durum:** 3 örnek 16,50 + kalan 15 video 45,00 = **61,50 kr**; proje kredisi
   **236,56 kr**. Seslendirme Higgsfield kredisi harcamıyor (ElevenLabs karakter defteri).
