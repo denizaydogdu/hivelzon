@@ -30,6 +30,12 @@ class AccountRow extends ConsumerWidget {
               AccountTexts.date(view.row?.scheduledPurgeAt ?? now),
             )
           : AccountTexts.syncLine(view.row?.lastSyncAt, now);
+    } else if (view.deletion != null) {
+      // H-042: oturum kapalı ama silme isteği bekliyor.
+      value = AccountTexts.rowValueSignedOut;
+      subtitle = AccountTexts.pendingDeletion(
+        AccountTexts.date(view.deletion!.purgeAt),
+      );
     } else if (view.ageBlocked(now)) {
       value = AccountTexts.rowValueBlocked;
       subtitle = AccountTexts.ageBlocked;

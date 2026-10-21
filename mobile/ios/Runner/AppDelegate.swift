@@ -2,6 +2,7 @@ import AVFoundation
 import Flutter
 import Speech
 import UIKit
+import UserNotifications
 
 @main
 @objc class AppDelegate: FlutterAppDelegate {
@@ -10,10 +11,33 @@ import UIKit
     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
   ) -> Bool {
     GeneratedPluginRegistrant.register(with: self)
+    // H-042: günlük hatırlatma (flutter_local_notifications, README "iOS
+    // setup"): uygulama öndeyken de bildirim çizilsin.
+    UNUserNotificationCenter.current().delegate = self as? UNUserNotificationCenterDelegate
+    if let registrar = self.registrar(forPlugin: "HvDevice") {
+      HvDevice.register(messenger: registrar.messenger())
+    }
     if let registrar = self.registrar(forPlugin: "HvSpeechCapability") {
       HvSpeechCapability.register(messenger: registrar.messenger())
     }
     return super.application(application, didFinishLaunchingWithOptions: launchOptions)
+  }
+}
+
+/// H-042: günlük hatırlatma cihazın saat diliminde kurulur (IANA adı, ör.
+/// "Europe/Istanbul"). Ek eklenti gerekmesin diye burada.
+enum HvDevice {
+  static func register(messenger: FlutterBinaryMessenger) {
+    let channel = FlutterMethodChannel(
+      name: "tr.velzon.hivelzon/device", binaryMessenger: messenger)
+    channel.setMethodCallHandler { call, result in
+      switch call.method {
+      case "timeZone":
+        result(TimeZone.current.identifier)
+      default:
+        result(FlutterMethodNotImplemented)
+      }
+    }
   }
 }
 

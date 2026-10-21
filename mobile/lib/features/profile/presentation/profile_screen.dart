@@ -17,6 +17,7 @@ import '../../notebook/domain/evidence_ladder.dart';
 import '../../notebook/domain/notebook_item.dart';
 import '../../notebook/domain/review_policy.dart';
 import '../../player/presentation/widgets/hi_avatar.dart';
+import '../../reminder/presentation/reminder_settings_row.dart';
 import '../../speak/speech_settings_section.dart';
 import '../application/profile_providers.dart';
 import '../data/user_profile_store.dart';
@@ -140,6 +141,8 @@ class ProfileScreen extends ConsumerWidget {
                           value: ProfileTexts.goalOption(minutes),
                           onTap: () => unawaited(showDailyGoalSheet(context)),
                         ),
+                        // H-013 / H-042: günde en fazla 1, saati seçilir.
+                        const ReminderSettingsRow(),
                         // H-055: aç/kapat; destek ya da izin yoksa nedeni.
                         const SpeechSettingsRow(),
                         // H-064: bütün dokunsal onaylar bu ayara bağlı.
@@ -169,6 +172,36 @@ class ProfileScreen extends ConsumerWidget {
                           subtitle: ProfileTexts.nameRowHint,
                           value: name ?? ProfileTexts.nameRowEmpty,
                           onTap: () => unawaited(showDisplayNameSheet(context)),
+                        ),
+                      ],
+                    ),
+                    // H-042: hukuk metinleri (taslak işaretli) ve lisanslar.
+                    SettingsGroup(
+                      key: const ValueKey('profile-about-group'),
+                      title: ProfileTexts.aboutGroup,
+                      children: [
+                        SettingsRow(
+                          key: const ValueKey('profile-terms'),
+                          icon: Icons.gavel_rounded,
+                          title: ProfileTexts.termsRow,
+                          subtitle: ProfileTexts.legalDraftHint,
+                          onTap: () =>
+                              unawaited(open(AppRoutes.legal('kosullar'))),
+                        ),
+                        SettingsRow(
+                          key: const ValueKey('profile-privacy'),
+                          icon: Icons.privacy_tip_outlined,
+                          title: ProfileTexts.privacyRow,
+                          subtitle: ProfileTexts.legalDraftHint,
+                          onTap: () =>
+                              unawaited(open(AppRoutes.legal('aydinlatma'))),
+                        ),
+                        SettingsRow(
+                          key: const ValueKey('profile-about'),
+                          icon: Icons.info_outline_rounded,
+                          title: ProfileTexts.aboutRow,
+                          subtitle: ProfileTexts.aboutRowHint,
+                          onTap: () => unawaited(open(AppRoutes.about)),
                         ),
                       ],
                     ),

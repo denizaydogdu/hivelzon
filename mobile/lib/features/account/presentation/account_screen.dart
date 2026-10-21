@@ -10,6 +10,7 @@ import '../../../l10n/tr_strings.dart';
 import '../../../shared/api/api_client.dart';
 import '../../../shared/ui/ui.dart';
 import '../../profile/application/profile_providers.dart';
+import '../../reminder/application/reminder_providers.dart';
 import '../application/account_providers.dart';
 
 /// Profil → Hesap (H-038).
@@ -74,7 +75,8 @@ class _SignedOut extends StatelessWidget {
     final theme = Theme.of(context);
     final now = DateTime.now().toUtc();
     final reason = AccountTexts.signedOutReason(view.row?.signedOutReason);
-    if (view.ageBlocked(now)) {
+    final deletion = view.deletion;
+    if (deletion == null && view.ageBlocked(now)) {
       return const InfoCard(
         key: ValueKey('account-age-blocked'),
         title: AccountTexts.ageBlockedTitle,
@@ -83,6 +85,23 @@ class _SignedOut extends StatelessWidget {
     }
     return StaggeredList(
       children: [
+        // H-042: silme isteği bu telefondan yapıldı; oturum kapansa da durum
+        // ve kalıcı silme tarihi görünür, geri alma yolu açıktır.
+        if (deletion != null)
+          InfoCard(
+            key: const ValueKey('account-pending-deletion-signed-out'),
+            tone: InfoTone.warning,
+            icon: Icons.schedule_rounded,
+            title: AccountTexts.restoreHeading,
+            body: AccountTexts.signedOutPendingBody(
+              AccountTexts.date(deletion.purgeAt),
+            ),
+            action: FilledButton(
+              key: const ValueKey('account-restore-signed-out'),
+              onPressed: () => context.push(AppRoutes.signIn),
+              child: const Text(AccountTexts.restore),
+            ),
+          ),
         if (reason != null)
           InfoCard(
             key: const ValueKey('account-signed-out-reason'),
@@ -293,6 +312,9 @@ class _SignedInState extends ConsumerState<_SignedIn> {
     await ref.read(authServiceProvider).signOut();
     if (wipe) {
       await ref.read(syncStoreProvider).wipeLocalLearningData();
+      // H-042: günlük hatırlatma da kaldırılır (ayar varsayılana döner).
+      await ref.read(dailyReminderServiceProvider).clear();
+      ref.invalidate(reminderViewProvider);
       _refreshAll();
     }
     if (!mounted) return;

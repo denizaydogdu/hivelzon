@@ -825,6 +825,107 @@ abstract final class ProfileTexts {
       'Yalnızca harf, boşluk, kesme işareti ve tire kullanabilirsin.';
   static const nameSaved = 'Adın kaydedildi.';
   static const nameCleared = 'Adın silindi; Ana Sayfa "Merhaba!" der.';
+
+  // Grup "Hakkında" (H-042): hukuk metinleri (taslak) ve lisanslar.
+  static const aboutGroup = 'Hakkında';
+  static const termsRow = 'Kullanım koşulları';
+  static const privacyRow = 'KVKK aydınlatma metni';
+  static const legalDraftHint = 'Taslak · hukuk teyidi bekliyor';
+  static const aboutRow = 'Hakkında ve lisanslar';
+  static const aboutRowHint = 'Sürüm, kaynaklar ve açık kaynak lisansları.';
+}
+
+/// Günlük hatırlatma (H-013, H-042): günde en fazla 1, saati kullanıcı
+/// seçer, varsayılan kapalı. Bildirim sakin, suçlamasız ve spoilersiz
+/// (OYUN-TASARIMI §4.5, K-32); karakter ağzından konuşmaz.
+abstract final class ReminderTexts {
+  static const tile = 'Günlük hatırlatma';
+  static const hintOff =
+      'Kapalı. Açarsan günde bir kez, seçtiğin saatte kısa bir not gelir.';
+  static String hintOn(String time) =>
+      'Her gün $time civarında, günde yalnızca bir kez.';
+  static const timeTile = 'Hatırlatma saati';
+  static const timeHint = 'İstediğin zaman değiştirebilirsin.';
+  static const timePickerHelp = 'Hatırlatma saatini seç';
+  static const blocked =
+      'Bildirim izni kapalı. İstersen telefonun ayarlarından hiVelzon için '
+      'bildirimleri açabilirsin; hatırlatma olmadan da her şey çalışır.';
+  static const denied =
+      'Bildirim izni verilmedi. Sorun değil; hatırlatma olmadan da her şey '
+      'çalışır.';
+  static const failed = 'Hatırlatma şu an kurulamadı. Biraz sonra tekrar dene.';
+  static const loadError = 'Hatırlatma ayarı şu an okunamadı.';
+  static String enabled(String time) => 'Hatırlatma açıldı: her gün $time.';
+  static const disabled = 'Hatırlatma kapatıldı.';
+  static String timeChanged(String time) => 'Hatırlatma saati: $time.';
+
+  // Bildirimin kendisi (hikâye ayrıntısı ve geri sayım yok).
+  static const notificationTitle = 'hiVelzon';
+  static const notificationBody =
+      'Bugün için kısa bir adım hazır. İstersen birkaç dakika ayır.';
+
+  // Android bildirim kanalı (telefon ayarlarında görünür).
+  static const channelName = 'Günlük hatırlatma';
+  static const channelDescription = 'Günde en fazla bir kez, seçtiğin saatte.';
+}
+
+/// Profil → "Hakkında ve lisanslar" (H-042). Atıf metinleri
+/// `docs/LISANS-RAPORU.md` §4'teki biçimdedir; CEFR-J atfı zorunlu biçimiyle.
+abstract final class AboutTexts {
+  static const title = 'Hakkında ve lisanslar';
+  static String version(String v) => 'Sürüm $v';
+  static const maker = 'Velzon Bilişim Teknolojileri Ltd. Şti.';
+  static const tagline =
+      'Yapay zekâ videolarıyla İngilizce. Ücretsiz, reklamsız.';
+  static const sourcesHeading = 'Kaynaklar ve lisanslar';
+  static const sourcesIntro =
+      'hiVelzon\'un kelime seviyeleri ve tekrar düzeni bu açık kaynaklara '
+      'dayanır. Teşekkür ederiz.';
+
+  /// (başlık, metin). Sıra: kelime listeleri → tekrar algoritması → kod
+  /// desenleri → yazı tipleri.
+  static const sources = <(String, String)>[
+    (
+      'CEFR-J Wordlist Version 1.6',
+      'The CEFR-J Wordlist Version 1.6. Compiled by Yukio Tono, Tokyo '
+          'University of Foreign Studies. Retrieved from '
+          'https://www.cefr-j.org/download.html on 11/10/26.\n'
+          '© Tono Laboratory, TUFS. Uygun atıfla araştırma ve ticari kullanıma '
+          'açıktır. hiVelzon bu listeyi temel alıp değiştirmiştir.',
+    ),
+    (
+      'Octanove Vocabulary Profile C1/C2 v1.0',
+      'Octanove Labs, Open Language Profiles. '
+          'https://github.com/openlanguageprofiles/olp-en-cefrj\n'
+          'Lisans: Creative Commons Attribution-ShareAlike 4.0 International '
+          '(https://creativecommons.org/licenses/by-sa/4.0/). C1–C2 kelime '
+          'kapsaması için ayrı bir veri seti olarak, aynı lisansla tutulur; '
+          'hiVelzon\'un öteki içeriğiyle karıştırılmaz.',
+    ),
+    (
+      'FSRS (Free Spaced Repetition Scheduler)',
+      'py-fsrs, Copyright (c) 2022 Open Spaced Repetition. MIT License. '
+          'Kelime tekrarının zamanlaması py-fsrs 6.3.2\'den Dart\'a '
+          'taşınmıştır. Tam lisans metni "Açık kaynak lisansları" sayfasında.',
+    ),
+    (
+      'EnglishPractice',
+      'https://github.com/recepyagmur/EnglishPractice, Copyright (c) 2026 '
+          'recepyagmur. MIT License. Yalnızca kod desenleri kaynak '
+          'belirtilerek uyarlanmıştır; içeriği (CC BY-SA 4.0) kullanılmamıştır.',
+    ),
+    (
+      'Yazı tipleri: Inter ve Nunito',
+      'Inter, Copyright (c) 2016 The Inter Project Authors. Nunito, '
+          'Copyright 2014 The Nunito Project Authors. İkisi de SIL Open Font '
+          'License 1.1 ile; lisans metinleri "Açık kaynak lisansları" '
+          'sayfasında.',
+    ),
+  ];
+
+  static const licensesButton = 'Açık kaynak lisansları';
+  static const licensesHint =
+      'Uygulamada kullanılan yazılımların lisans metinleri.';
 }
 
 /// Henüz gelmeyen sekmeler.
@@ -1593,9 +1694,26 @@ abstract final class AccountTexts {
 
   // Silinmek üzere olan hesap
   static const restoreHeading = 'Hesabın silinmek üzere';
+
+  /// Kodla girişten sonra (H-042): kodun neden istendiği de söylenir.
   static String restoreBody(String date) =>
-      'Hesabını silme isteğin var. $date tarihine kadar geri alabilirsin; o '
-      'gün hesabın ve hesabındaki veriler kalıcı olarak silinir.';
+      'Kodu doğruladın; bu hesabın sana ait olduğunu biliyoruz. Hesabını '
+      'silme isteğin var. $date tarihine kadar geri alabilirsin; o gün '
+      'hesabın ve hesabındaki veriler kalıcı olarak silinir.';
+
+  /// Oturum kapalıyken Hesap ekranındaki kart (H-042): silme isteği bu
+  /// telefondan yapıldı, oturum kapandı; tarih ve geri alma yolu görünür.
+  static String signedOutPendingBody(String date) =>
+      '$date tarihinde hesabın ve hesabındaki veriler kalıcı olarak silinir. '
+      'O güne kadar geri alabilirsin. Bu telefondaki verilerin silinmez.';
+
+  /// Giriş ekranında, silinmek üzere hesap varken (H-042): yeni kodun
+  /// gerekçesi.
+  static const restoreWhyCodeTitle = 'Geri almak için yeni bir kod gerekiyor';
+  static const restoreWhyCode =
+      'Silme isteğinden sonra güvenliğin için bütün oturumlarını kapattık. '
+      'Hesabının sana ait olduğunu yeniden doğrulamak için o hesabın '
+      'e-postasına tek kullanımlık bir kod göndereceğiz.';
   static const restore = 'Hesabımı geri al';
   static const restoreDecline = 'Geri alma, çıkış yap';
   static const restored = 'Hesabın geri alındı.';

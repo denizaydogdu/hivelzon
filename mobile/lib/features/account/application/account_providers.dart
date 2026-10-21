@@ -72,11 +72,30 @@ final accountStateProvider = StreamProvider<SyncStateRow?>((ref) async* {
   }
 });
 
+/// Silme isteği bekleyen hesap (H-042): oturum kapalıyken de "silinmek
+/// üzere" kartı için. Hesap durumu her değiştiğinde yeniden okunur; kalıcı
+/// silme tarihi geçtiyse işaret silinir. Okunamazsa yok sayılır.
+final pendingDeletionProvider = FutureProvider<PendingDeletion?>((ref) async {
+  ref.watch(accountStateProvider);
+  try {
+    return await ref.watch(syncStoreProvider).pendingDeletion();
+  } on Object catch (e) {
+    debugPrint('[H042] silme işareti okunamadı: $e');
+    return null;
+  }
+}, retry: (_, _) => null);
+
 /// Arayüz için hesap özeti.
 class AccountView {
-  const AccountView(this.row, {this.ageBlockedUntil});
+  const AccountView(this.row, {this.ageBlockedUntil, this.deletion});
 
   final SyncStateRow? row;
+
+  /// Silme isteği bekleyen hesap (oturum kapalıyken de; H-042).
+  final PendingDeletion? deletion;
+
+  /// Oturum kapalı ama bu telefonda silinmek üzere olan bir hesap var.
+  bool get signedOutPendingDeletion => !signedIn && deletion != null;
 
   /// 13 yaş altı (H-002): bu yıla kadar hesap açılamaz.
   final int? ageBlockedUntil;
@@ -95,6 +114,7 @@ AccountView accountViewOf(T Function<T>(ProviderListenable<T> p) watch) =>
     AccountView(
       watch(accountStateProvider).value,
       ageBlockedUntil: watch(ageGateProvider).value,
+      deletion: watch(pendingDeletionProvider).value,
     );
 
 // ------------------------------------------------------------ yaş kapısı

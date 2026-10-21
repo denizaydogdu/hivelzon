@@ -191,6 +191,18 @@ class FakeApiServer {
     };
   }
 
+  /// Hazır hesap (H-042 golden'ları): [purgeAt] verilirse silinmek üzere.
+  void seedAccount(String email, {int birthYear = 2000, DateTime? purgeAt}) {
+    final acc = accounts[email] = _Account(
+      'u-${accounts.length + 1}-0000-0000-0000-000000000000',
+      birthYear,
+    );
+    if (purgeAt != null) {
+      acc.status = 'PENDING_DELETION';
+      acc.purgeAt = purgeAt.toUtc();
+    }
+  }
+
   /// Bir hesabın erişim belirteçlerini geçersiz kılar (süre doldu gibi).
   void expireAccessTokens() => _access.clear();
 

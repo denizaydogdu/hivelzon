@@ -7,12 +7,24 @@ import android.speech.SpeechRecognizer
 import com.ryanheise.audioservice.AudioServiceActivity
 import io.flutter.embedding.engine.FlutterEngine
 import io.flutter.plugin.common.MethodChannel
+import java.util.TimeZone
 
 // H-068: audio_service'in paylaşılan FlutterEngine'i (kitap dinleme arka
 // planda ve bildirimde sürer).
 class MainActivity : AudioServiceActivity() {
     override fun configureFlutterEngine(flutterEngine: FlutterEngine) {
         super.configureFlutterEngine(flutterEngine)
+        // H-042: günlük hatırlatma cihazın saat diliminde kurulur (IANA adı,
+        // ör. "Europe/Istanbul"). Ek eklenti gerekmesin diye burada.
+        MethodChannel(
+            flutterEngine.dartExecutor.binaryMessenger,
+            "tr.velzon.hivelzon/device",
+        ).setMethodCallHandler { call, result ->
+            when (call.method) {
+                "timeZone" -> result.success(TimeZone.getDefault().id)
+                else -> result.notImplemented()
+            }
+        }
         // H-055: "Söyle" yalnızca cihazda tanıma varsa açılır (API 31+,
         // isOnDeviceRecognitionAvailable). Yoksa eklenti normal (ağ
         // kullanabilen) tanıyıcıya düşerdi; bu yüzden özellik hiç görünmez.

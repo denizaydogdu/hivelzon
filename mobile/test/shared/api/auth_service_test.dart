@@ -2,6 +2,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:hivelzon/features/notebook/data/notebook_store.dart';
 import 'package:hivelzon/shared/api/api_client.dart';
 import 'package:hivelzon/shared/api/auth_service.dart';
+import 'package:hivelzon/shared/sync/sync_store.dart';
 
 import '../../support/fake_api_server.dart';
 import '../../support/sync_harness.dart';
@@ -183,5 +184,65 @@ void main() {
     await d.auth.restore();
     expect((await d.store.state()).accountStatus, AccountStatus.active);
     expect((await d.engine.sync()).ok, isTrue);
+  });
+
+  group('silme bekliyor işareti (H-042; çıkıştan sonra da görünür)', () {
+    test('silince yazılır (e-posta yok), geri alınca silinir', () async {
+      await d.signIn('deniz@example.com');
+      final userId = (await d.store.state()).accountUserId;
+      final purge = await d.auth.deleteAccount();
+      final m = await d.store.pendingDeletion();
+      expect(m, isNotNull);
+      expect(m!.purgeAt, purge);
+      expect(m.userId, userId);
+      // Cihazda e-posta tutulmaz (maskeli bile).
+      final meta = await d.db.select(d.db.appMeta).get();
+      expect(
+        meta.where((r) => r.value.contains('example.com')),
+        isEmpty,
+        reason: meta.map((r) => '${r.key}=${r.value}').join(', '),
+      );
+      final r = await d.signIn('deniz@example.com');
+      expect(r.status, VerifyStatus.pendingDeletion);
+      expect(await d.store.pendingDeletion(), isNotNull);
+      await d.auth.restore();
+      expect(await d.store.pendingDeletion(), isNull);
+    });
+
+    test('geri almadan çıkınca işaret kalır', () async {
+      await d.signIn('deniz@example.com');
+      await d.auth.deleteAccount();
+      await d.signIn('deniz@example.com');
+      await d.auth.signOut();
+      expect(await d.store.pendingDeletion(), isNotNull);
+    });
+
+    test('kalıcı silme tarihi geçince işaret kendiliğinden silinir', () async {
+      await d.signIn('deniz@example.com');
+      await d.auth.deleteAccount();
+      clock.advance(const Duration(days: 30, seconds: 1));
+      expect(await d.store.pendingDeletion(), isNull);
+      final meta = await d.db.select(d.db.appMeta).get();
+      expect(
+        meta.map((r) => r.key),
+        isNot(contains(SyncStore.pendingDeletionKey)),
+      );
+    });
+
+    test('aynı hesap başka cihazda geri alındıysa girişte silinir; başka '
+        'hesapla girişte kalır', () async {
+      await d.signIn('deniz@example.com');
+      await d.auth.deleteAccount();
+      await d.signIn('ayse@example.com');
+      expect(await d.store.pendingDeletion(), isNotNull);
+      await d.auth.signOut();
+      // Deniz'in hesabı başka cihazda geri alındı.
+      final other = Device(server, clock);
+      addTearDown(other.close);
+      await other.signIn('deniz@example.com');
+      await other.auth.restore();
+      await d.signIn('deniz@example.com');
+      expect(await d.store.pendingDeletion(), isNull);
+    });
   });
 }
