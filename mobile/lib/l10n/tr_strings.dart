@@ -1061,6 +1061,23 @@ abstract final class DiscoverTexts {
   static const levelPanelClear = 'Seçimi kaldır';
   static const levelPanelClose = 'Kapat';
 
+  /// İlgi alanları (plan §4.3, §5): günlük seçkiye giren konular. Kapalı konu
+  /// "Bugün"e girmez ama çipinden gezilebilir; en az biri açık kalır.
+  static const interestsTitle = 'İlgi alanların';
+  static const interestsBody =
+      'Bugünün seçkisi açık konulardan hazırlanır. Kapalı bir konuya üstteki '
+      'çipinden yine bakabilirsin.';
+  static const interestsFooter =
+      'Değiştirince bugünün seçkisi yeniden hazırlanır. İzlediklerin ve '
+      'kayıtların silinmez.';
+  static const interestOff = 'Bugünün seçkisine girmez';
+  static const interestsKeepOne =
+      'En az bir konu açık kalsın; bugünün seçkisi bu konulardan hazırlanır.';
+  static const interestsLoading = 'İlgi alanların açılıyor…';
+  static const interestsError = 'İlgi alanların şu an açılamadı.';
+  static const interestsSaveFailed =
+      'Seçimin kaydedilemedi. Biraz sonra yeniden dene.';
+
   /// Kategori havuzu boş (o seviyede içerik daha yok).
   static const poolEmptyTitle = 'Burada henüz video yok';
   static const poolEmptyBody =
