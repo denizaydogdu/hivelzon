@@ -114,7 +114,7 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 | 1.8 | H-040 | Keşfet akışı | Orta | H-038 | ✅ |
 | 1.9 | H-041 | Editör onay ekranı, içerik içe aktarma | Orta | H-038 | ✅ |
 | 1.10 | H-042 | Profil, ayarlar, hukuki metinler | Orta | H-038 | 🔄 |
-| 1.11 | H-043 | Kalite ve iç beta hazırlığı | Orta | H-039 … H-042 | ⏳ |
+| 1.11 | H-043 | Kalite ve iç beta hazırlığı | Orta | H-039 … H-042 | 🔄 |
 | — | H-045 | Arayüz tasarım yönü (6 ekran taslağı, 6 kr) | Orta | H-033 | ✅ |
 | 1.12 | H-044 | Dış hesaplar, barındırma ve mağaza (en son) | Orta | H-043 | ⏳ |
 
