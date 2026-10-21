@@ -20,8 +20,10 @@ reeller/<id>/audio/<cue>.m4a     kesilmiş ifade sesi; Defter sesi (depo dışı
 ```
 
 Üretim çıktısı `reeller/<id>/_build/package/` altına yazılır; `reel.json` hazırsa
-paket klasörü tercih edilir, yoksa kaynak klasörden okunur. `/reels/index.json`
-katalog listesi **çalışma anında taranır** (kitap ve ders listeleri gibi).
+paket klasörü tercih edilir, yoksa kaynak klasörden okunur. Uygulama varsayılan
+olarak **backend'in yayımlanmış kataloğunu** okur (`/api/v1/catalog/reels`);
+`/reels/index.json` yalnız geliştirme/demo içindir (dosya sistemini tarar,
+yayın durumunu bilmez).
 
 ## 2. Kimlik
 
@@ -91,9 +93,20 @@ python3 tools/dev-content-server/serve.py            # --reels-root reeller
 ```
 
 ```
-http://127.0.0.1:8787/reels/index.json          -> reel listesi (çalışma anında taranır)
+http://127.0.0.1:8787/reels/index.json          -> demo listesi (dosya taraması; yayın durumu yok)
 http://127.0.0.1:8787/reels/<id>/<yol>          -> reel.json, <id>.mp4, stills/*.webp, audio/*.m4a
 ```
+
+Uygulamanın yetkili kataloğu backend'dedir:
+
+```
+GET http://127.0.0.1:8080/api/v1/catalog/reels?level=A1&size=100
+    -> yalnız yayımlanmış sürümler; her kayıtta packageBaseUrl
+```
+
+`ContentSource.listReels()` varsayılan olarak bu uca gider
+(`--dart-define=REEL_CATALOG_URL=...`, boş dize = eski dosya kataloğu). Backend
+yanıt vermezse dosya kataloğuna **sessizce düşülmez**; hata gösterilir.
 
 Backend `VideoHostingPort` yolu `packages/_reels/<id>/<yol>` aynı pakete gider
 (kitaplardaki `_books` gibi).
@@ -136,6 +149,9 @@ Backend `VideoHostingPort` yolu `packages/_reels/<id>/<yol>` aynı pakete gider
   (`?level=`, `?category=`) yalnız **yayımlanmış ya da zamanı gelmiş onaylı**
   sürümü döner; **geri çekilen içerik görünmez**. Testler:
   `backend/.../catalog/ReelCatalogTest.java` (7) + Python `write_reports` (2).
+  **Uygulama bağlantısı (2026-10-21):** `ContentSource.listReels()` varsayılan olarak
+  bu ucu okur; `family` alanı seçki için backend'den gelir; geri çekilen video
+  uygulamada oynatılmaz, günlük seçki aynı kategoriden yedeklenir.
 - **Maliyet (2026-10-19):** güncel fiyat tablosu `docs/REEL-MALIYET-2026-10-19.md`
   içindedir (`higgsfield generate cost` ile ölçüldü; geçmiş 0,5 kr / 5 kr güncel
   sayılmaz). Önerilen yol: 3 örnek ≈ **17 kr** (senaryo A) → onay → 18 video
@@ -161,7 +177,7 @@ git dışında (`reeller/**/_raw/`, `clips/`, `_build/`).
 |---|---|---|
 | `tools/content-pipeline/gen_reel_images.py` | `shots.json` → `_raw/kN.png` (Higgsfield `gpt_image_2_5`) | kare başına (2k low **0,50 kr**) |
 | `tools/content-pipeline/gen_reel_clips.py` | `clips.json` → `clips/<ad>.mp4` (`seedance_2_0_mini`) | klip başına (720p 5 sn **5,00 kr**) |
-| `tools/content-pipeline/tts_reel.py` | `reel.json` cue'ları → `_raw/tts/<cue>.mp3` (ElevenLabs, Sarah) | karakter (ortak aylık tavan) |
+| `tools/content-pipeline/tts_reel.py` | `reel.json` cue'ları → `_raw/tts/<cue>.mp3` (ElevenLabs; konuşmacıya göre Sarah/Will/Chris) | karakter (ortak aylık tavan) |
 | `tools/content-pipeline/build_reel.py` | `shots.json → timeline` + kaynaklar → `_build/package/` | **0** (yerel ffmpeg) |
 | `tools/content-pipeline/reel_lint.py` | paket denetimi; `--write-reports` → `_build/lint.json` | 0 |
 

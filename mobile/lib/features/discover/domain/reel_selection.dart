@@ -146,7 +146,9 @@ DailySet? reconcileDailySet({
     final yedek = substituteReel(
       catalog: catalog,
       level: set.level,
-      category: summary?.category ?? '',
+      // Katalogdan tamamen düşen içerikte `summary` yoktur; kategori
+      // saklanan kimlikten okunur (backend yalnız yayımlanmışları döndürür).
+      category: summary?.category ?? reelCategoryFromId(item.id) ?? '',
       used: used,
       progress: progress,
     );

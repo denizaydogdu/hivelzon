@@ -25,6 +25,14 @@ const Map<String, String> kReelCategoryTr = {
 /// sırayı izler — plan §4).
 const List<String> kReelCategoryOrder = ['CIN', 'SPO', 'BOK'];
 
+/// Kimlikten kategori kodu (`A1-R-CIN-02` → `CIN`). Katalogdan tamamen
+/// düşen (geri çekilen) videonun yedeğini **aynı kategoriden** seçmek için
+/// günlük seçkide saklanan kimlik kullanılır.
+String? reelCategoryFromId(String id) {
+  final m = RegExp(r'^[A-Z]\d-R-([A-Z]{3})-\d{2}$').firstMatch(id);
+  return m?.group(1);
+}
+
 /// Reelin gerçek bağı (varsa): bölüm, kitap ya da dilbilgisi dersi. Gerçek bir
 /// bağ yoksa boş kalır ve "Tam hikâye" gizlenir (plan §6.3).
 class ReelRelated {

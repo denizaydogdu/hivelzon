@@ -233,14 +233,16 @@ abstract interface class ContentSource {
   /// Keşfet klipleri (H-040): sezon paketindeki `clips.json` ([path]).
   Future<ClipCatalog> loadClips(int season, String path);
 
-  /// Bağımsız konu reelleri (H-094): `/reels/index.json` kataloğu.
+  /// Bağımsız konu reelleri (H-094): varsayılan olarak backend'in **yayımlanmış**
+  /// kataloğu (`/api/v1/catalog/reels`); dosya kataloğu yalnız deneme modunda.
   Future<ReelCatalog> listReels();
 
   /// Reel paketi: `/reels/<reelId>/reel.json`. Bilinmeyen `schemaVersion`
   /// sessizce boş göstermez; açık hata verir (plan §6.4).
   Future<Reel> loadReel(String reelId);
 
-  /// Reel paketindeki bir dosyanın adresi (`/reels/<reel>/<yol>`).
+  /// Reel paketindeki bir dosyanın adresi (`/reels/<reel>/<yol>`; backend
+  /// kataloğunda `packageBaseUrl`).
   Uri reelMediaUri(String reelId, String path);
 
   /// Konuş görevleri (H-090): sezon paketindeki `talk.json` ([path]).

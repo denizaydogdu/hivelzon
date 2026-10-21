@@ -144,6 +144,7 @@ class ReelCatalogTest extends IntegrationTest {
         assertThat(card.path("level").asString()).isEqualTo("A1");
         assertThat(card.path("number").asInt()).isEqualTo(1);
         assertThat(card.path("category").asString()).isEqualTo("CIN");
+        assertThat(card.path("family").asString()).isEqualTo("FAM-CIN-1");
         assertThat(card.path("titleTr").asString()).isEqualTo("Gişede iki bilet");
         assertThat(card.path("duration").asDouble()).isEqualTo(10.0);
         assertThat(card.path("target").path("en").asString()).isEqualTo("Two tickets, please.");

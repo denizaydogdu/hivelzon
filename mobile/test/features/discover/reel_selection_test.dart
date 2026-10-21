@@ -229,6 +229,29 @@ void main() {
       expect(fixed!.items.map((i) => i.id), ['A1-R-CIN-02', 'A1-R-SPO-01']);
     });
 
+    test('katalogdan tamamen düşen içerik de aynı kategoriden yedeklenir', () {
+      // Backend kataloğu yalnız yayımlanmışları döndürür: geri çekilen
+      // kimlik listede hiç yoktur, dolayısıyla kategori kimlikten okunur.
+      final catalog = catalogOf([
+        for (final r in _catalog())
+          if (r.id != 'A1-R-CIN-01') r,
+      ]);
+      final set = DailySet(
+        level: 'A1',
+        categories: kDefaultReelCategories,
+        items: const [
+          DailyItem(id: 'A1-R-CIN-01', contentVersion: 1),
+          DailyItem(id: 'A1-R-SPO-01', contentVersion: 1),
+        ],
+      );
+      final fixed = reconcileDailySet(set: set, catalog: catalog.reels);
+      expect(fixed, isNotNull);
+      expect(fixed!.items.map((i) => i.id), ['A1-R-CIN-02', 'A1-R-SPO-01']);
+      expect(reelCategoryFromId('A1-R-CIN-01'), 'CIN');
+      expect(reelCategoryFromId('A2-R-BOK-03'), 'BOK');
+      expect(reelCategoryFromId('A1-001'), isNull);
+    });
+
     test('değişiklik yoksa eşleme null (gereksiz yazma yok)', () {
       final set = DailySet(
         level: 'A1',

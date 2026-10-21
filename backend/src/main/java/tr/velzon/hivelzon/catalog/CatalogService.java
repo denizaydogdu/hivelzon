@@ -86,7 +86,7 @@ public class CatalogService {
      * {@code reel.json}'dır. {@code related} yalnız gerçek bağları taşır.
      */
     public record ReelItem(String contentId, int contentVersion, String slug, String level, int number,
-            String category, String titleTr, String title, String learningObjective, JsonNode target,
+            String category, String family, String titleTr, String title, String learningObjective, JsonNode target,
             Double duration, JsonNode related, Instant publishAt, String packageBaseUrl, String reelUrl,
             String sourceSha256, Long totalBytes, Instant updatedAt) {
     }
@@ -237,8 +237,8 @@ public class CatalogService {
         JsonNode d = json.readTree(rs.getString("descriptor"));
         OffsetDateTime publishAt = rs.getObject("publish_at", OffsetDateTime.class);
         return new ReelItem(rs.getString("content_id"), rs.getInt("content_version"), rs.getString("slug"),
-                rs.getString("level"), rs.getInt("number"), text(d, "category"), text(d, "titleTr"),
-                rs.getString("title"), text(d, "learningObjective"), d.get("target"),
+                rs.getString("level"), rs.getInt("number"), text(d, "category"), text(d, "family"),
+                text(d, "titleTr"), rs.getString("title"), text(d, "learningObjective"), d.get("target"),
                 d.hasNonNull("duration") ? d.path("duration").asDouble() : null, d.get("related"),
                 publishAt == null ? null : publishAt.toInstant(), packageUrl, packageUrl + "reel.json",
                 rs.getString("manifest_sha256"), (Long) rs.getObject("total_bytes"),

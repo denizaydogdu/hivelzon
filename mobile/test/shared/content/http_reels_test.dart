@@ -18,6 +18,9 @@ void main() {
     requests.clear();
     source = HttpContentSource(
       baseUrl: 'http://127.0.0.1:8787',
+      // Bu dosya dosya kataloğunu (`/reels/index.json`) sınar; backend
+      // kataloğu `http_reel_catalog_test.dart`'ta.
+      reelCatalogUrl: '',
       client: MockClient((r) async {
         requests.add(r.url.path);
         final body = switch (r.url.path) {
