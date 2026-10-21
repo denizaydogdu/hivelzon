@@ -218,13 +218,17 @@ class OtpFlowTest extends IntegrationTest {
     }
 
     @Test
-    void outdatedTermsVersionIsRejected() {
+    void olderTermsVersionIsAcceptedAndRecorded() {
+        // H-095: metin sürümü değişince yeniden onay yok; uygulamanın gösterdiği sürüm kaydedilir.
         startOtp(EMAIL);
         Map<String, Object> signup = signup(2000);
         signup.put("termsVersion", "eski-0");
         Response r = verify(EMAIL, mail.lastCodeFor(EMAIL), signup);
-        assertThat(r.status()).isEqualTo(409);
-        assertThat(problemCode(r)).isEqualTo("CONSENT_VERSION_OUTDATED");
-        assertThat(count("SELECT count(*) FROM users")).isZero();
+        assertThat(r.status()).isEqualTo(200);
+        assertThat(count("SELECT count(*) FROM users")).isEqualTo(1);
+        assertThat(count("SELECT count(*) FROM consents WHERE consent_type = 'TERMS' AND document_version = 'eski-0'"))
+                .isEqualTo(1);
+        assertThat(count("SELECT count(*) FROM consents WHERE consent_type = 'PRIVACY_NOTICE' "
+                + "AND document_version = 'taslak-2'")).isEqualTo(1);
     }
 }

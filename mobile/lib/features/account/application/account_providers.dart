@@ -12,6 +12,7 @@ import '../../../shared/storage/app_database.dart';
 import '../../../shared/storage/storage_providers.dart';
 import '../../../shared/sync/sync_engine.dart';
 import '../../../shared/sync/sync_store.dart';
+import '../../onboarding/data/onboarding_store.dart';
 
 // ------------------------------------------------------------ bağımlılıklar
 
@@ -215,6 +216,116 @@ final accountNudgeProvider = FutureProvider.autoDispose<bool>((ref) async {
     return false;
   }
 }, retry: (_, _) => null);
+
+// ------------------------------------------------------------ metin güncellendi
+
+/// Hangi hukuk metni bu cihazda son görülenden yeni? İkisi de `false` ise
+/// bildirim yok.
+class LegalUpdate {
+  const LegalUpdate({this.terms = false, this.privacy = false});
+
+  static const none = LegalUpdate();
+
+  final bool terms;
+  final bool privacy;
+
+  bool get any => terms || privacy;
+}
+
+/// "Metin güncellendi" bildirimi (H-095). Hukukçu cevabı (2026-10-21):
+/// metin sürümü değişince **yeniden onay gerekmez**, bildirim yeterli.
+/// Ana Sayfa'da sakin, kapatılabilir bir kart her yeni sürümde bir kez
+/// görünür; hiçbir şeyi engellemez. Kayıt yalnızca cihazda (`app_meta`);
+/// hesabın ilk onay kaydı sunucuda olduğu gibi kalır.
+class LegalUpdateNotice {
+  LegalUpdateNotice(this._db, {Future<void>? ready})
+    : _ready = ready ?? Future<void>.value();
+
+  final AppDatabase _db;
+  final Future<void> _ready;
+
+  static const seenTermsKey = 'legal.seenTermsVersion';
+  static const seenPrivacyKey = 'legal.seenPrivacyVersion';
+
+  Future<String?> _meta(String k) async => (await (_db.select(
+    _db.appMeta,
+  )..where((t) => t.key.equals(k))).getSingleOrNull())?.value;
+
+  Future<LegalUpdate> pending({
+    required String termsVersion,
+    required String privacyVersion,
+  }) async {
+    await _ready;
+    // Açılış (H-039) bitmeden bildirim yok: açılış güncel metni zaten
+    // gösterir. Bu anahtarlar yazılmadan önce görülen sürüm, açılışta
+    // okunan bilgilendirmenin sürümüdür (yoksa hiç görülmemiş sayılır).
+    if (await _meta(OnboardingStore.completedKey) == null) {
+      return LegalUpdate.none;
+    }
+    final fallback = await _meta(OnboardingStore.noticeVersionKey);
+    final seenTerms = await _meta(seenTermsKey) ?? fallback;
+    final seenPrivacy = await _meta(seenPrivacyKey) ?? fallback;
+    return LegalUpdate(
+      terms: seenTerms != termsVersion,
+      privacy: seenPrivacy != privacyVersion,
+    );
+  }
+
+  /// Güncel sürümler görüldü (kart kapatıldı, metin açıldı ya da açılışta
+  /// okundu). Tekrar çağrı bir şey değiştirmez.
+  Future<void> markSeen({
+    required String termsVersion,
+    required String privacyVersion,
+  }) async {
+    await _ready;
+    await _db.batch(
+      (b) => b.insertAllOnConflictUpdate(_db.appMeta, [
+        AppMetaCompanion.insert(key: seenTermsKey, value: termsVersion),
+        AppMetaCompanion.insert(key: seenPrivacyKey, value: privacyVersion),
+      ]),
+    );
+  }
+}
+
+final legalUpdateNoticeStoreProvider = Provider<LegalUpdateNotice>(
+  (ref) => LegalUpdateNotice(
+    ref.watch(appDatabaseProvider),
+    ready: ref.watch(legacyImportProvider),
+  ),
+);
+
+/// Ana Sayfa kartının koşulu. Okuma hatasında kart görünmez.
+final legalUpdateProvider = FutureProvider.autoDispose<LegalUpdate>((
+  ref,
+) async {
+  try {
+    final config = ref.watch(apiConfigProvider);
+    return await ref
+        .watch(legalUpdateNoticeStoreProvider)
+        .pending(
+          termsVersion: config.termsVersion,
+          privacyVersion: config.privacyNoticeVersion,
+        );
+  } on Object {
+    return LegalUpdate.none;
+  }
+}, retry: (_, _) => null);
+
+/// Güncel sürümleri görüldü say ve kartı yenile.
+Future<void> markLegalTextsSeen(WidgetRef ref) async {
+  final config = ref.read(apiConfigProvider);
+  try {
+    await ref
+        .read(legalUpdateNoticeStoreProvider)
+        .markSeen(
+          termsVersion: config.termsVersion,
+          privacyVersion: config.privacyNoticeVersion,
+        );
+  } on Object catch (e) {
+    debugPrint('[H095] metin görüldü kaydı yazılamadı: $e');
+  }
+  ref.invalidate(legalUpdateProvider);
+}
 
 // ------------------------------------------------------------ eşitleme zamanlayıcı
 

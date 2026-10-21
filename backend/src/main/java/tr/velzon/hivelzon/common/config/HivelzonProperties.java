@@ -1,6 +1,7 @@
 package tr.velzon.hivelzon.common.config;
 
 import java.time.Duration;
+import java.time.Period;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
@@ -20,6 +21,7 @@ public class HivelzonProperties {
     private final Catalog catalog = new Catalog();
     private final Media media = new Media();
     private final Sync sync = new Sync();
+    private final Retention retention = new Retention();
 
     public Security getSecurity() { return security; }
     public Otp getOtp() { return otp; }
@@ -30,6 +32,7 @@ public class HivelzonProperties {
     public Catalog getCatalog() { return catalog; }
     public Media getMedia() { return media; }
     public Sync getSync() { return sync; }
+    public Retention getRetention() { return retention; }
 
     public static class Security {
         /** HS256 anahtarı, Base64; en az 32 bayt. Ortam: HIVELZON_JWT_SECRET. */
@@ -102,10 +105,10 @@ public class HivelzonProperties {
     }
 
     public static class Consent {
-        /** Kullanım koşullarının güncel sürümü. Kayıtta istemci bu sürümü onaylamış olmalı. */
-        private String termsVersion = "taslak-1";
+        /** Kullanım koşullarının güncel sürümü. Eski sürümü onaylamış hesap engellenmez (H-095). */
+        private String termsVersion = "taslak-2";
         /** KVKK aydınlatma metninin güncel sürümü. */
-        private String privacyNoticeVersion = "taslak-1";
+        private String privacyNoticeVersion = "taslak-2";
         /** Ticari ileti izni metninin güncel sürümü. */
         private String marketingVersion = "taslak-1";
 
@@ -205,5 +208,17 @@ public class HivelzonProperties {
         public void setPullPerHour(int v) { pullPerHour = v; }
         public int getRatePerHour() { return ratePerHour; }
         public void setRatePerHour(int v) { ratePerHour = v; }
+    }
+
+    /** Saklama süreleri (H-095, hukukçu cevabı 2026-10-21). */
+    public static class Retention {
+        /**
+         * Rıza kayıtları (hesap kalıcı silindikten sonra) ve denetim kaydı (olay tarihinden) bu süre saklanır,
+         * sonra silinir. Sıfır ya da negatifse temizlik hiçbir şey silmez.
+         */
+        private Period records = Period.ofYears(2);
+
+        public Period getRecords() { return records; }
+        public void setRecords(Period v) { records = v; }
     }
 }

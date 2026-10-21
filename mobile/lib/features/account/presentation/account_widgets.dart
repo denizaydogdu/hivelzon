@@ -104,9 +104,60 @@ class AccountNudgeCard extends ConsumerWidget {
   }
 }
 
-/// Kesin metinler gelene kadar (H-042) hukuk metinlerinin yer tutucusu
-/// (tasarım H-059): sürüm etiketi, taslak notu, başlıklı bölümler; okunur
-/// satır genişliği (en fazla 600 px).
+/// Ana Sayfa'da "metin güncellendi" kartı (H-095). Yeniden onay istenmez;
+/// kart hiçbir şeyi engellemez, her yeni sürümde bir kez görünür. "Tamam"
+/// ya da metni açmak sürümü görüldü sayar (yalnızca cihazda).
+class LegalUpdateCard extends ConsumerWidget {
+  const LegalUpdateCard({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final update = ref.watch(legalUpdateProvider).value ?? LegalUpdate.none;
+    if (!update.any) return const SizedBox.shrink();
+    Future<void> open(String kind) async {
+      await markLegalTextsSeen(ref);
+      if (context.mounted) unawaited(context.push(AppRoutes.legal(kind)));
+    }
+
+    return InfoCard(
+      key: const ValueKey('home-legal-update'),
+      icon: Icons.article_outlined,
+      tone: InfoTone.info,
+      title: AccountTexts.legalUpdateTitle(
+        terms: update.terms,
+        privacy: update.privacy,
+      ),
+      body: AccountTexts.legalUpdateBody,
+      action: Wrap(
+        spacing: AppSpace.s8,
+        runSpacing: AppSpace.s4,
+        children: [
+          if (update.terms)
+            OutlinedButton(
+              key: const ValueKey('home-legal-update-terms'),
+              onPressed: () => unawaited(open('kosullar')),
+              child: const Text(AccountTexts.legalUpdateOpenTerms),
+            ),
+          if (update.privacy)
+            OutlinedButton(
+              key: const ValueKey('home-legal-update-privacy'),
+              onPressed: () => unawaited(open('aydinlatma')),
+              child: const Text(AccountTexts.legalUpdateOpenPrivacy),
+            ),
+          TextButton(
+            key: const ValueKey('home-legal-update-dismiss'),
+            onPressed: () => unawaited(markLegalTextsSeen(ref)),
+            child: const Text(AccountTexts.legalUpdateDismiss),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+/// Hukuk metinleri (H-095 taslağı; hukukçu gözden geçirecek; tasarım H-059):
+/// sürüm etiketi, taslak notu, başlıklı bölümler; okunur satır genişliği (en
+/// fazla 600 px).
 class LegalTextScreen extends ConsumerWidget {
   const LegalTextScreen({super.key, required this.kind});
 

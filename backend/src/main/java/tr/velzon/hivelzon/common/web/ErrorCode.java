@@ -15,7 +15,6 @@ public enum ErrorCode {
     SIGNUP_DETAILS_REQUIRED(HttpStatus.UNPROCESSABLE_CONTENT,
             "Hesabını açmak için doğum yılını yaz ve kullanım koşullarını onayla."),
     AGE_NOT_ALLOWED(HttpStatus.FORBIDDEN, "hiVelzon'u kullanmak için en az 13 yaşında olman gerekiyor."),
-    CONSENT_VERSION_OUTDATED(HttpStatus.CONFLICT, "Metnin yeni bir sürümü var. Güncel metni açıp yeniden onayla."),
     REFRESH_TOKEN_INVALID(HttpStatus.UNAUTHORIZED, "Oturumun sona erdi. Yeniden giriş yapabilirsin."),
     TOKEN_REUSED(HttpStatus.UNAUTHORIZED, "Güvenliğin için oturumun kapatıldı. Yeniden giriş yapabilirsin."),
     UNAUTHORIZED(HttpStatus.UNAUTHORIZED, "Bu işlem için giriş yapman gerekiyor."),

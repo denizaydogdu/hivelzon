@@ -1,5 +1,6 @@
 package tr.velzon.hivelzon.consent;
 
+import java.sql.Timestamp;
 import java.time.Clock;
 import java.time.Instant;
 import java.util.ArrayList;
@@ -22,11 +23,16 @@ import tr.velzon.hivelzon.common.web.RequestContext;
 import tr.velzon.hivelzon.consent.ConsentDtos.ConsentHistoryItem;
 import tr.velzon.hivelzon.consent.ConsentDtos.ConsentRequest;
 import tr.velzon.hivelzon.consent.ConsentDtos.ConsentState;
-import tr.velzon.hivelzon.user.UserDataPurger;
 import tr.velzon.hivelzon.user.UserService;
 
+/**
+ * Rızalar (yalnızca ekleme). Metin sürümü değişince yeniden onay istenmez (hukukçu cevabı 2026-10-21, H-095):
+ * istemcinin gösterip onaylattığı sürüm olduğu gibi kaydedilir; eski sürüm hiçbir isteği durdurmaz, uygulama
+ * yeni sürümü sakin bir bildirimle duyurur. Kalıcı silinen hesabın rızaları silinmez, 2 yıl saklanır; süre
+ * dolunca {@link #deleteRetainedBefore(Instant)} siler.
+ */
 @Service
-public class ConsentService implements UserDataPurger {
+public class ConsentService {
 
     private final ConsentRepository consents;
     private final UserService users;
@@ -54,7 +60,10 @@ public class ConsentService implements UserDataPurger {
         };
     }
 
-    /** Kayıt anındaki rızalar (aynı işlem içinde). Sürümler önceden doğrulanmış olmalı. */
+    /**
+     * Kayıt anındaki rızalar (aynı işlem içinde). Kaydedilen sürüm, istemcinin kullanıcıya gösterdiği sürümdür;
+     * güncel sürümden eski olsa da reddedilmez (H-095).
+     */
     @Transactional
     public void recordSignup(UUID userId, String termsVersion, String privacyVersion, Boolean marketing,
             RequestContext ctx) {
@@ -75,11 +84,8 @@ public class ConsentService implements UserDataPurger {
             // Kullanım koşulları ve aydınlatma geri çekilemez; bunun yolu hesap silmedir.
             throw new ApiException(ErrorCode.VALIDATION_FAILED);
         }
-        String current = currentVersion(request.type());
-        if (granted && !current.equals(request.version())) {
-            throw new ApiException(ErrorCode.CONSENT_VERSION_OUTDATED);
-        }
-        consents.save(new Consent(userId, request.type(), current, granted, clock.instant(), ctx.ip(),
+        // Gösterilen sürüm kaydedilir; güncel sürümden eskiyse de kabul edilir (yeniden onay yok, H-095).
+        consents.save(new Consent(userId, request.type(), request.version(), granted, clock.instant(), ctx.ip(),
                 ctx.port()));
         audit.record(AuditAction.CONSENT_CHANGE, userId, ctx, request.type().name() + (granted ? ":1" : ":0"));
         return currentState(userId);
@@ -109,12 +115,22 @@ public class ConsentService implements UserDataPurger {
                 c -> new ConsentHistoryItem(c.getType(), c.getDocumentVersion(), c.isGranted(), c.getCreatedAt()));
     }
 
-    /** Kalıcı silme: tetikleyici yalnızca bu işlem içinde silmeye izin verir. */
-    @Override
+    /**
+     * Saklama süresi dolan rızaları siler: kalıcı silinme anı {@code cutoff}'tan önce olan hesapların bütün
+     * rızaları ve mezar taşları. Etkin hesabın rızasına dokunmaz. Tetikleyici yalnızca bu işlem içinde silmeye
+     * izin verir. Tekrar çağrı zararsızdır (idempotent).
+     *
+     * @return silinen rıza satırı sayısı
+     */
     @Transactional
-    public void purgeUserData(UUID userId) {
+    public int deleteRetainedBefore(Instant cutoff) {
+        Timestamp at = Timestamp.from(cutoff);
         jdbc.queryForObject("SELECT set_config('hivelzon.allow_consent_purge', 'on', true)", String.class);
-        jdbc.update("DELETE FROM consents WHERE user_id = ?", userId);
+        int deleted = jdbc.update("""
+                DELETE FROM consents c USING account_tombstones t
+                 WHERE c.user_id = t.user_id AND t.purged_at < ?""", at);
         jdbc.queryForObject("SELECT set_config('hivelzon.allow_consent_purge', 'off', true)", String.class);
+        jdbc.update("DELETE FROM account_tombstones WHERE purged_at < ?", at);
+        return deleted;
     }
 }

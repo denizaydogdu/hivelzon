@@ -21,7 +21,6 @@ import tr.velzon.hivelzon.common.web.ApiException;
 import tr.velzon.hivelzon.common.web.ErrorCode;
 import tr.velzon.hivelzon.common.web.RequestContext;
 import tr.velzon.hivelzon.consent.ConsentService;
-import tr.velzon.hivelzon.consent.ConsentType;
 import tr.velzon.hivelzon.user.Ages;
 import tr.velzon.hivelzon.user.User;
 import tr.velzon.hivelzon.user.UserService;
@@ -172,10 +171,7 @@ public class OtpService {
                 deleteChallenge(emailKey);
                 return new Outcome.Failure(ErrorCode.AGE_NOT_ALLOWED);
             }
-            if (!consents.currentVersion(ConsentType.TERMS).equals(request.termsVersion())
-                    || !consents.currentVersion(ConsentType.PRIVACY_NOTICE).equals(request.privacyNoticeVersion())) {
-                return new Outcome.Failure(ErrorCode.CONSENT_VERSION_OUTDATED);
-            }
+            // Onaylanan sürüm, uygulamanın gösterdiği sürümdür; güncelden eski olsa da kayıt durmaz (H-095).
             String displayName = request.displayName() == null ? null : request.displayName().trim();
             user = users.create(email, displayName == null || displayName.isEmpty() ? null : displayName,
                     birthYear);

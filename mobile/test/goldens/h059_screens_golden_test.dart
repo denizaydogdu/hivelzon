@@ -7,6 +7,7 @@
 //   cd mobile && flutter test --update-goldens test/goldens
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_riverpod/misc.dart' show Override;
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hivelzon/app/theme.dart';
 import 'package:hivelzon/features/account/application/account_providers.dart';
@@ -123,6 +124,7 @@ void main() {
     SyncStateRow? account,
     double textScale = 1,
     ImageProvider? image,
+    List<Override> extraOverrides = const [],
   }) async {
     tester.view.physicalSize = Size(width * 2, height * 2);
     tester.view.devicePixelRatio = 2;
@@ -162,6 +164,7 @@ void main() {
             (ref) async => name == null ? EvidenceSummary.empty : _evidence,
           ),
           weeklySummaryProvider.overrideWith((ref) async => _week),
+          ...extraOverrides,
         ],
         // Uygulama kökü gibi: eşitleme denetleyicisi baştan dinlenir.
         child: Consumer(
@@ -427,6 +430,70 @@ void main() {
     );
     expect(find.byKey(const ValueKey('hi-privacy-account')), findsOneWidget);
     expect(find.byKey(const ValueKey('hi-privacy-local')), findsNothing);
+    await unmount(tester);
+  });
+
+  // H-095: Ana Sayfa'daki "metin güncellendi" kartı (iki metin birden
+  // güncellendi: en uzun hâli; iki açma düğmesi + Tamam).
+  const legalCard = Scaffold(
+    body: SingleChildScrollView(
+      padding: EdgeInsets.all(AppSpace.page),
+      child: LegalUpdateCard(),
+    ),
+  );
+  final legalCardOverride = legalUpdateProvider.overrideWith(
+    (ref) async => const LegalUpdate(terms: true, privacy: true),
+  );
+
+  testWidgets('golden: metin güncellendi kartı', (tester) async {
+    await pumpScreen(
+      tester,
+      legalCard,
+      height: 420,
+      extraOverrides: [legalCardOverride],
+    );
+    expect(find.byKey(const ValueKey('home-legal-update')), findsOneWidget);
+    await expectLater(
+      find.byKey(const ValueKey('golden')),
+      matchesGoldenFile('images/h059_metin_guncellendi.png'),
+    );
+    await unmount(tester);
+  }, skip: skipGoldensOffMac);
+
+  testWidgets('metin güncellendi kartı: erişilebilirlik yönergeleri', (
+    tester,
+  ) async {
+    final handle = tester.ensureSemantics();
+    await pumpScreen(
+      tester,
+      legalCard,
+      height: 844,
+      extraOverrides: [legalCardOverride],
+    );
+    expect(find.byKey(const ValueKey('home-legal-update')), findsOneWidget);
+    await expectLater(tester, meetsGuideline(androidTapTargetGuideline));
+    await expectLater(tester, meetsGuideline(iOSTapTargetGuideline));
+    await expectLater(tester, meetsGuideline(labeledTapTargetGuideline));
+    if (!skipGoldensOffMac) {
+      await expectLater(tester, meetsGuideline(textContrastGuideline));
+    }
+    handle.dispose();
+    await unmount(tester);
+  });
+
+  testWidgets('metin güncellendi kartı: 320 × 568, metin 1,3× taşma yok', (
+    tester,
+  ) async {
+    await pumpScreen(
+      tester,
+      legalCard,
+      width: 320,
+      height: 568,
+      textScale: 1.3,
+      extraOverrides: [legalCardOverride],
+    );
+    expect(find.byKey(const ValueKey('home-legal-update')), findsOneWidget);
+    expect(tester.takeException(), isNull);
     await unmount(tester);
   });
 

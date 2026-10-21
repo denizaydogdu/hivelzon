@@ -28,16 +28,16 @@ curl localhost:8080/actuator/health  # {"status":"UP"}
 | `HIVELZON_RL_OTP_START_PER_IP` | `20` | Saatte IP başına kod isteği |
 | `HIVELZON_RL_OTP_VERIFY_PER_IP` | `60` | Saatte IP başına kod doğrulama |
 | `HIVELZON_RL_REFRESH_PER_IP` | `120` | Saatte IP başına belirteç yenileme |
-| `HIVELZON_TERMS_VERSION` / `_PRIVACY_NOTICE_VERSION` / `_MARKETING_VERSION` | `taslak-1` | Hukuk metinlerinin güncel sürümleri |
+| `HIVELZON_TERMS_VERSION` / `_PRIVACY_NOTICE_VERSION` / `_MARKETING_VERSION` | `taslak-2` / `taslak-2` / `taslak-1` | Hukuk metinlerinin güncel sürümleri (uygulamadaki `ApiConfig.defaultLegalVersion` ile aynı). Sürüm değişince yeniden onay istenmez (H-095): eski sürümü onaylamış hesap hiçbir yerde engellenmez; `GET /me/consents` → `upToDate: false` yalnızca bilgidir. |
 | `HIVELZON_CATALOG_IMPORT_ROOT` | `../icerik` | Geliştirme içe aktarmasının okuduğu içerik kökü (bölüm paketleri `<kök>/<id>/_build/package/`, sezon `<kök>/_evren/_build/season/S<n>/`) |
 | `HIVELZON_CATALOG_BOOKS_IMPORT_ROOT` | `../kitaplar` | Kitaplık kökü (H-070): kitap paketleri `<kök>/<id>-<slug>/_build/package/`. Klasör yoksa kitaplar atlanır. |
 | `HIVELZON_CATALOG_REELS_IMPORT_ROOT` | `../reeller` | Keşfet reel kökü (H-094): `reeller/<id>[-<slug>]/` altında önce `_build/package/reel.json`, yoksa kaynak `reel.json`. Klasör yoksa reeller atlanır. |
 | `HIVELZON_CATALOG_DEV_IMPORT` | `true` (prod: `false`) | `POST /api/v1/admin/catalog/import` açık mı. prod profilinde uç hiç yok. |
 | `HIVELZON_MEDIA_LOCAL_BASE_URL` | `http://127.0.0.1:8787/packages/` | `VideoHostingPort` yerel adaptörü: katalogdaki medya adresleri yerel içerik sunucusunu gösterir (Bunny H-044'te) |
 | `HIVELZON_RL_SYNC_PUSH_PER_USER` / `_PULL_` / `HIVELZON_RL_REVIEW_RATE_PER_USER` | `240` / `1200` / `2000` | Saatte kullanıcı başına eşitleme itme / çekme / tekrar notu |
-| `HIVELZON_JOBS_ENABLED` | `true` | Zamanlanmış işler (kalıcı silme her saat :17'de, temizlik 15 dk'da bir; UTC) |
+| `HIVELZON_JOBS_ENABLED` | `true` | Zamanlanmış işler (kalıcı silme her saat :17'de, temizlik 15 dk'da bir, saklama süresi dolan rıza/denetim kayıtlarının temizliği her gün 03:41'de; UTC) |
 
-Anahtar üretmek için: `openssl rand -base64 32`. Sırlar repoya girmez (`~/.config/hivelzon/`). Sabit süreler `application.yml`'de: kod 10 dk / 5 deneme, erişim 15 dk, yenileme 30 gün, silme penceresi 30 gün, en küçük yaş 13, yetişkin 18.
+Anahtar üretmek için: `openssl rand -base64 32`. Sırlar repoya girmez (`~/.config/hivelzon/`). Sabit süreler `application.yml`'de: kod 10 dk / 5 deneme, erişim 15 dk, yenileme 30 gün, silme penceresi 30 gün, en küçük yaş 13, yetişkin 18, rıza ve denetim kaydı saklama 2 yıl (`hivelzon.retention.records: 2y`; sıfır ya da negatifse temizlik hiçbir şey silmez).
 
 ## API (v1)
 
@@ -46,14 +46,14 @@ Bütün hatalar RFC 9457 `application/problem+json`: `code` (makine), `detail` (
 | Uç | Kimlik | Açıklama |
 |---|---|---|
 | `POST /api/v1/auth/email/start` `{email}` | açık | Her zaman `202 {codeValidSeconds}`; hesap olup olmadığı belli edilmez. Sınır aşılırsa `429 RATE_LIMITED` + `Retry-After`. |
-| `POST /api/v1/auth/email/verify` `{email, code, deviceName?, birthYear?, displayName?, termsVersion?, privacyNoticeVersion?, marketing?}` | açık | Hesap varsa giriş, yoksa kayıt. Kayıtta alanlar eksikse kod harcanmadan `422 SIGNUP_DETAILS_REQUIRED`. 13 yaş altı `403 AGE_NOT_ALLOWED` (hiçbir şey saklanmaz). Hatalar: `OTP_INVALID`, `OTP_EXPIRED`, `OTP_TOO_MANY_ATTEMPTS`, `CONSENT_VERSION_OUTDATED`. |
+| `POST /api/v1/auth/email/verify` `{email, code, deviceName?, birthYear?, displayName?, termsVersion?, privacyNoticeVersion?, marketing?}` | açık | Hesap varsa giriş, yoksa kayıt. Kayıtta alanlar eksikse kod harcanmadan `422 SIGNUP_DETAILS_REQUIRED`. 13 yaş altı `403 AGE_NOT_ALLOWED` (hiçbir şey saklanmaz). Hatalar: `OTP_INVALID`, `OTP_EXPIRED`, `OTP_TOO_MANY_ATTEMPTS`. `termsVersion`/`privacyNoticeVersion`: uygulamanın gösterdiği sürüm olduğu gibi kaydedilir; güncelden eskiyse de reddedilmez (H-095; eski `CONSENT_VERSION_OUTDATED` kaldırıldı). |
 | `POST /api/v1/auth/refresh` `{refreshToken}` | açık | Yenileme belirteci döner (eskisi kullanılmış olur). Kullanılmış belirteç yeniden gelirse aile iptal: `401 TOKEN_REUSED`. **Hoşgörü (H-056):** dönen belirteç 30 sn içinde yeniden gelirse (cevap ağda kayboldu, çift istek) yeni erişim belirteci + **aynı** halef yenileme belirteci döner, denetimde `REFRESH_GRACE_REPLAY`; koşul: aile iptal edilmemiş (çıkış, yeniden kullanım) ve halef hâlâ geçerli (dönmemiş, süresi dolmamış). 30 sn sonrası ya da halef döndükten sonra eski kural. Süre `hivelzon.security.refresh-grace` (`HIVELZON_REFRESH_GRACE`, `0s` kapalı). Halef değeri eski satırda AES-256-GCM ile şifreli durur (anahtar `HIVELZON_OTP_PEPPER`'dan alan ayrımlı HMAC ile türetilir, AAD = eski belirtecin kimliği), pencere geçince bakım işi, aile iptalinde hemen silinir (V6). |
 | `POST /api/v1/auth/logout` `{refreshToken}` | açık | Bu cihaz oturumunu kapatır; `204`, idempotent. |
 | `GET /api/v1/me` | Bearer | Hesap: e-posta, görünen ad, doğum yılı, `ageBand` (`TEEN_13_17` / `ADULT_18_PLUS`), rol, durum. |
-| `DELETE /api/v1/me` | Bearer | `202 {status: PENDING_DELETION, scheduledPurgeAt}`; bütün oturumlar kapanır; idempotent. |
+| `DELETE /api/v1/me` | Bearer | `202 {status: PENDING_DELETION, scheduledPurgeAt}`; bütün oturumlar kapanır; idempotent. 30 gün sonra kalıcı silme: hesap ve bütün öğrenme verisi silinir; **rıza kayıtları ve denetim satırları (IP, port, saat) kalır**, eski kimlik `account_tombstones`'a yazılır (V16). `RecordRetentionJob` rızaları silinmeden 2 yıl, denetim satırlarını olaydan 2 yıl sonra siler (H-095). |
 | `POST /api/v1/me/restore` | Bearer (silme isteğinden **sonra** kodla giriş) | Hesabı geri alır; eski belirteçle `403 REAUTH_REQUIRED`. |
 | `GET /api/v1/me/consents` | Bearer | Her türün güncel durumu (`TERMS`, `PRIVACY_NOTICE`, `MARKETING`). |
-| `POST /api/v1/me/consents` `{type, version, granted}` | Bearer | Yeni satır ekler (güncellenmez). Koşullar/aydınlatma geri çekilemez (yolu hesap silme). |
+| `POST /api/v1/me/consents` `{type, version, granted}` | Bearer | Yeni satır ekler (güncellenmez); `version` olduğu gibi kaydedilir, eski sürüm reddedilmez (H-095). Koşullar/aydınlatma geri çekilemez (yolu hesap silme). |
 | `GET /api/v1/me/consents/history?page=&size=` | Bearer | Sayfalı geçmiş (`size` en çok 100). |
 | `GET /actuator/health` | açık | Yalnızca `UP/DOWN`. Diğer actuator uçları kapalı. |
 | `GET /api/v1/catalog/items?season=&page=&size=` | açık | Görünür bölümler (aşağıda), sayfalı (`size` en çok 100), sezon + sıra düzeninde. Her öğe: `contentId`, `contentVersion`, `season`, `number`, `level`, `title`, `estimatedMinutes`, `publishAt`, `packageBaseUrl`, `scenesUrl`, `manifestUrl`, `manifestSha256`, `totalBytes`, `renditionBytes`. |
@@ -97,7 +97,7 @@ Akış: içerik hattı (Claude üretir) → `content_lint.py --write-reports` �
 | `WITHDRAW` | `WITHDRAWN` dışındaki her durum → `WITHDRAWN` | `reason`: `COPYRIGHT` / `CONTENT_ERROR` / `SAFETY` / `OTHER` (serbest metin yok). Son durumdur; düzeltme yeni sürümdür. |
 
 - **İyimser kilit:** her geçiş `expectedLockVersion` ister; satırdaki `lock_version` farklıysa `409 CONCURRENT_MODIFICATION` (iki sekme aynı anda). Satır ayrıca `FOR UPDATE` ile kilitlenir.
-- **Denetim:** her geçiş `audit_log`'a `CONTENT_SUBMITTED|APPROVED|SCHEDULED|PUBLISHED|ARCHIVED|WITHDRAWN` yazar; `detail` = `A1-001:v1:IN_REVIEW>APPROVED:c=<liste özeti 12 hane>` (zamanlamada `:20261020T070000Z`, kaldırmada gerekçe kodu). Kişisel veri yok; kişi `actor_user_id`'dir (kalıcı silmede anonimleşir, içerik satırındaki `approved_by`/`status_changed_by` boşaltılır).
+- **Denetim:** her geçiş `audit_log`'a `CONTENT_SUBMITTED|APPROVED|SCHEDULED|PUBLISHED|ARCHIVED|WITHDRAWN` yazar; `detail` = `A1-001:v1:IN_REVIEW>APPROVED:c=<liste özeti 12 hane>` (zamanlamada `:20261020T070000Z`, kaldırmada gerekçe kodu). Kişisel veri yok; kişi `actor_user_id`'dir (kalıcı silmede mezar taşı olarak kalır, geçmişte "silinmiş hesap" görünür; içerik satırındaki `approved_by`/`status_changed_by` boşaltılır). 2 yıldan eski `CONTENT_*` satırları silinmez, yalnızca IP/port/tarayıcı özeti boşaltılır (H-095).
 - **Yetki:** `/api/v1/admin/**` belirteçte EDITOR/ADMIN ister; editör uçları rolü veritabanından da denetler (rolü geri alınan editörün belirteci 15 dk geçerli kalsa da reddedilir). Bu uçlar prod'da da açıktır; içe aktarma yalnızca prod dışında.
 
 **Ekran:** `http://localhost:8080/admin` (Türkçe, statik HTML + JS, `src/main/resources/static/admin/`). Giriş mevcut e-posta koduyla (`/auth/email/start` + `/verify`); hesap açılmaz, rolü EDITOR/ADMIN olmayan hesap girmez. Belirteçler sekme oturumunda (`sessionStorage`) durur, 401'de bir kez yenilenir, "Çıkış" sunucu oturumunu kapatır. Çerez kullanılmadığı için CSRF yüzeyi yok; CSP `default-src 'none'; script-src 'self'; …; frame-ancestors 'none'`, veriler yalnızca `textContent` ile yazılır. Liste: sezon süzgeci, durum etiketleri, katalogda görünürlük, lint, yayın zamanı (Türkiye saati); "İçe aktar" düğmesi (geliştirme). Ayrıntı: bilgiler, kontrol listesi + Onayla, İncelemeye gönder, Zamanla (Türkiye saati), Yayınla, Arşivle, Kaldır (gerekçe) ve geçmiş. Yerel editör hesabı: kodla giriş yap, sonra `UPDATE users SET role = 'EDITOR' WHERE email = '…'` ve yeniden gir.

@@ -830,7 +830,7 @@ abstract final class ProfileTexts {
   static const aboutGroup = 'Hakkında';
   static const termsRow = 'Kullanım koşulları';
   static const privacyRow = 'KVKK aydınlatma metni';
-  static const legalDraftHint = 'Taslak · hukuk teyidi bekliyor';
+  static const legalDraftHint = 'Taslak · hukukçu gözden geçirecek';
   static const aboutRow = 'Hakkında ve lisanslar';
   static const aboutRowHint = 'Sürüm, kaynaklar ve açık kaynak lisansları.';
 }
@@ -1823,33 +1823,306 @@ abstract final class AccountTexts {
     _ => null,
   };
 
-  // Hukuk metinleri (yer tutucu; kesin metinler H-042)
+  // Hukuk metinleri (H-095): Claude taslağı; hukukçu gözden geçirecek.
+  // Köşeli parantezli yerler yer tutucu (şirket bilgileri ayrı fazda).
   static const termsTitle = 'Kullanım koşulları';
   static const privacyTitle = 'KVKK aydınlatma metni';
   static String legalVersion(String v) => 'Sürüm: $v';
   static const legalDraftTitle = 'Taslak metin';
   static const legalDraft =
-      'Bu bir taslak. Kesin metin yayından önce buraya eklenecek.';
+      'Bu metin taslak. Yayından önce bir hukukçu gözden geçirecek; köşeli '
+      'parantez içindeki bilgiler o zaman eklenecek.';
 
-  /// Yer tutucu metinler bölüm bölüm: (başlık, metin). Kesin metinler H-042.
+  /// Şirket ve iletişim yer tutucuları (ayrı fazda kesinleşir).
+  static const legalCompany =
+      '[Veri sorumlusu unvanı — hiVelzon bir Velzon iştirakidir; ayrıntı '
+      'eklenecek]';
+  static const legalAddress = '[Adres eklenecek]';
+  static const legalEmail = '[İletişim e-postası eklenecek]';
+  static const legalCourtCity = '[şehir]';
+
+  /// Kullanım koşulları bölüm bölüm: (başlık, metin).
   static const termsSections = <(String, String)>[
-    ('Uygulama', 'hiVelzon ücretsiz bir İngilizce öğrenme uygulamasıdır.'),
-    ('Hesap', 'Hesap isteğe bağlıdır. Hesapsız da her şey çalışır.'),
     (
-      'Hesabını silmek',
-      'Hesabını istediğin zaman silebilirsin; silme isteğinden sonra 30 gün '
-          'içinde geri alabilirsin.',
+      'hiVelzon nedir?',
+      'hiVelzon, yapay zekâ ile hazırlanmış hikâyeler, videolar ve '
+          'alıştırmalarla İngilizce öğrenmene yardım eden bir mobil '
+          'uygulamadır. Uygulamayı $legalCompany sunar. Bu metinde "biz" '
+          'dediğimizde bu şirketi kastediyoruz.\n\n'
+          'Uygulamayı kullanarak bu koşulları kabul etmiş olursun. Kişisel '
+          'bilgilerinin nasıl işlendiğini KVKK aydınlatma metninde ayrıca '
+          'anlatıyoruz.',
     ),
+    (
+      'Ücretsiz ve tamamlayıcı',
+      'hiVelzon ücretsizdir. Abonelik, uygulama içi satın alma ve reklam '
+          'yoktur.\n\n'
+          'hiVelzon bir okulun ya da kursun yerine geçmez; öğrenmeni '
+          'destekleyen tamamlayıcı bir araçtır. Uygulamayı kullanarak belli '
+          'bir İngilizce seviyesine ulaşacağına dair bir söz vermiyoruz. '
+          'Seviye önerileri yalnızca bilgi içindir.',
+    ),
+    (
+      'Yapay zekâ ile üretilen içerik',
+      'Hikâyelerin metinleri, görselleri, videoları ve sesleri yapay zekâ '
+          'araçlarıyla üretilir; yayından önce bir editör kontrol eder. Bölüm '
+          'başında bunu kısa bir notla da hatırlatırız. Hi, uygulamadaki yapay '
+          'zekâ yardımcısıdır ve gerçek bir kişi değildir.\n\n'
+          'Bütün özenimize rağmen içeriklerde dil, çeviri ya da bilgi hatası '
+          'olabilir. Bir hata görürsen $legalEmail adresine yazarsan '
+          'düzeltiriz. İçerikleri öğrenme amacıyla kullan; sağlık, hukuk ya da '
+          'para gibi konularda uzman görüşü yerine koyma.',
+    ),
+    (
+      'Kimler kullanabilir?',
+      'Herkes kullanabilir. Uygulamanın tamamı hesapsız çalışır.\n\n'
+          'Hesap açmak için en az 13 yaşında olman gerekir. 13 yaşından '
+          'küçüksen hesap açamazsın; uygulamanın tamamını hesapsız kullanırsın '
+          've bilgilerin yalnızca bu telefonda kalır. Bu metni bir büyüğünle '
+          'birlikte okumanı öneririz.',
+    ),
+    (
+      'Hesabın',
+      'Hesap isteğe bağlıdır; ilerlemeni yedeklemek ve başka telefonda devam '
+          'etmek için açılır. Şifre yoktur: e-postana gelen tek kullanımlık '
+          'kodla giriş yaparsın. E-posta hesabını başkalarıyla paylaşma; '
+          'birinin hesabına girdiğini düşünürsen bize yaz.\n\n'
+          'Hesap açarken doğum yılını doğru yaz. Hesabını başkasına devretme.',
+    ),
+    (
+      'Hesabını kapatmak ve silmek',
+      'Hesabını istediğin zaman Profil → Hesap → "Hesabımı sil" ile '
+          'silebilirsin. Silme isteğinden sonra 30 gün içinde aynı e-postayla '
+          'giriş yapıp hesabını geri alabilirsin. 30 gün dolunca hesabın ve '
+          'hesabındaki öğrenme verilerin kalıcı olarak silinir; bazı güvenlik '
+          've onay kayıtları 2 yıl daha saklanır (ayrıntısı KVKK aydınlatma '
+          'metninde). Bu telefondaki verilerin, sen silmedikçe telefonda '
+          'kalır.\n\n'
+          'Bu koşulları ciddi biçimde ihlal eden hesapları, mümkünse önce '
+          'haber vererek, durdurabilir ya da kapatabiliriz.',
+    ),
+    (
+      'Kullanım kuralları',
+      'hiVelzon\'u kişisel öğrenme amacıyla kullan. Şunları yapma:\n'
+          '• uygulamayı ya da sunucularımızı bozmaya, aşırı yüklemeye veya '
+          'güvenlik önlemlerini aşmaya çalışmak;\n'
+          '• başkasının hesabına girmek ya da başkası adına hesap açmak;\n'
+          '• içerikleri otomatik araçlarla toplu olarak indirmek, kopyalayıp '
+          'dağıtmak ya da satmak;\n'
+          '• uygulamayı yasalara aykırı bir amaçla kullanmak.',
+    ),
+    (
+      'İçeriklerin hakları',
+      'Uygulamadaki hikâyeler, karakterler (Hi ve Alex dahil), görseller, '
+          'videolar, sesler, metinler ve tasarım bize ya da lisans aldığımız '
+          'kişilere aittir. Bunları uygulama içinde kişisel öğrenmen için '
+          'kullanabilirsin; izin almadan çoğaltamaz, yayımlayamaz ya da ticari '
+          'amaçla kullanamazsın.\n\n'
+          'Kullandığımız kelime listeleri, açık kaynak yazılımlar ve yazı '
+          'tipleri kendi lisanslarına tabidir. Kaynakları ve lisansları Profil '
+          '→ Hakkında → "Hakkında ve lisanslar" sayfasında bulabilirsin.',
+    ),
+    (
+      'Sorumluluğun sınırı',
+      'Uygulamayı olduğu gibi sunuyoruz. Kesintisiz ve hatasız çalışması '
+          'için çalışırız; ancak bakım, bağlantı sorunları ya da teknik '
+          'arızalar nedeniyle zaman zaman erişilemeyebilir. Bir özelliği '
+          'değiştirebilir ya da kaldırabiliriz.\n\n'
+          'Uygulamanın kullanımından doğan dolaylı zararlardan, kanunun izin '
+          'verdiği ölçüde sorumlu değiliz. Kast ya da ağır ihmal gibi kanunun '
+          'sınırlamaya izin vermediği durumlarda sorumluluğumuz sınırlanmaz.',
+    ),
+    (
+      'Değişiklikler',
+      'Bu koşulları ve KVKK aydınlatma metnini zaman zaman '
+          'güncelleyebiliriz. Güncel sürüm her zaman bu sayfadadır; sürüm '
+          'etiketi en üstte yazar. Bir metin değişince uygulama içinde sakin '
+          'bir bildirim gösteririz. Yeniden onay vermen gerekmez; daha önce '
+          'verdiğin onayın kaydı olduğu gibi kalır.\n\n'
+          'Yeni koşulları kabul etmiyorsan hesabını silebilir ve uygulamayı '
+          'kullanmayı bırakabilirsin.',
+    ),
+    (
+      'Uygulanacak hukuk ve yetkili mahkeme',
+      'Bu koşullara Türkiye Cumhuriyeti hukuku uygulanır. Uyuşmazlıklarda '
+          '$legalCourtCity mahkemeleri ve icra daireleri yetkilidir. Tüketici '
+          'olarak kanundan doğan hakların saklıdır; tüketici hakem heyetine ya '
+          'da tüketici mahkemesine başvurabilirsin.',
+    ),
+    ('İletişim', '$legalCompany\nAdres: $legalAddress\nE-posta: $legalEmail'),
   ];
+
+  /// KVKK aydınlatma metni bölüm bölüm: (başlık, metin).
   static const privacySections = <(String, String)>[
     (
-      'Hesap açarsan',
-      'E-posta adresin, doğum yılın, isteğe bağlı adın ve öğrenme ilerlemen '
-          'saklanır.',
+      'Bu metin ne anlatıyor?',
+      '6698 sayılı Kişisel Verilerin Korunması Kanunu (KVKK) gereği, '
+          'hiVelzon\'u kullanırken hangi bilgilerinin, neden ve hangi hukuki '
+          'sebeple işlendiğini, kimlere aktarıldığını, ne kadar saklandığını '
+          've haklarını sade bir dille anlatıyoruz.',
     ),
-    ('Sesin', 'Sesin ve söylediklerinin yazısı hiçbir zaman saklanmaz.'),
-    ('Hesap açmazsan', 'Hiçbir bilgin bu telefondan çıkmaz.'),
+    (
+      'Veri sorumlusu',
+      '$legalCompany\nAdres: $legalAddress\nE-posta: $legalEmail',
+    ),
+    (
+      'Hesap açmazsan',
+      'Uygulamanın tamamını hesapsız kullanabilirsin. Bu durumda hiçbir '
+          'bilgin bu telefondan çıkmaz: ilerlemen, defterin, kelime tekrarı '
+          'kayıtların, adın ve ayarların yalnızca bu telefonda durur; biz '
+          'bunları göremeyiz. Uygulamayı silersen bu bilgiler de silinir.\n\n'
+          'Videoları ve diğer içerikleri indirmek için telefonun sunucumuza '
+          'bağlanır; bu bağlantıda teknik olarak IP adresin sunucuya ulaşır. '
+          'Bunu seni tanımak ya da izlemek için kullanmayız.',
+    ),
+    (
+      'Hesap açarsan işlenen bilgiler',
+      'Hesap isteğe bağlıdır ve yalnızca 13 yaş ve üstü için açılır. Hesap '
+          'açarsan şunlar işlenir:\n'
+          '• E-posta adresin: giriş kodunu göndermek ve hesabını tanımak için.\n'
+          '• Doğum yılın: yalnızca yıl; hesap için yaş sınırını kontrol etmek '
+          'için.\n'
+          '• Adın: isteğe bağlı; yazarsan sana adınla seslenmek için.\n'
+          '• Öğrenme verilerin: bölüm ilerlemen, hikâyedeki seçimlerin, '
+          'defterin, kelime tekrarı kayıtların, okuma ve dilbilgisi ilerlemen, '
+          'günlük süren, Hi\'nin notları ve "Söyle" alıştırmalarının yalnızca '
+          'sonucu. Bunlar yedeklenmek ve telefonların arasında eşitlenmek için '
+          'hesabına gönderilir.\n\n'
+          '13 yaşından küçüksen hesap açılmaz; doğum yılın sunucuya gönderilmez '
+          've saklanmaz.',
+    ),
+    (
+      'Güvenlik ve onay kayıtları',
+      'Hesabını güvende tutmak ve verdiğin onayları ispatlayabilmek için şu '
+          'kayıtları tutarız:\n'
+          '• Denetim kaydı: giriş, hesap açma, onay, hesap silme ve geri alma '
+          'gibi işlemlerin saati, IP adresin, bağlantı portu ve cihaz '
+          'bilgisinin özeti.\n'
+          '• Onay kaydı: kullanım koşullarını ve bu metni hangi sürümüyle, ne '
+          'zaman onayladığın; yenilik e-postası tercihin; o andaki IP adresin '
+          've portu.\n\n'
+          'Bu kayıtlara e-posta adresin, giriş kodun ya da şifre yazılmaz. '
+          'Hesabını silsen de bu kayıtlar 2 yıl saklanır (aşağıda).',
+    ),
+    (
+      'Amaçlar ve hukuki sebepler',
+      'Bilgilerini şu amaçlarla işleriz: hesabını açmak ve giriş yapmanı '
+          'sağlamak; ilerlemeni yedeklemek ve telefonların arasında '
+          'eşitlemek; yaş sınırını uygulamak; hesap silme ve geri alma '
+          'isteklerini yerine getirmek; hesabını ve sistemlerimizi kötüye '
+          'kullanıma karşı korumak; verdiğin onayları ispatlamak.\n\n'
+          'Hukuki sebepler (KVKK md. 5/2):\n'
+          '• Sözleşmenin kurulması ve ifası (5/2-c): hesap, giriş, yaş kontrolü, '
+          'yedekleme ve eşitleme.\n'
+          '• Meşru menfaat (5/2-f): denetim kaydı, onay kaydı ve güvenlik.',
+    ),
+    (
+      'Kimlere aktarılır?',
+      'Bilgilerini satmayız ve reklam için kimseyle paylaşmayız. Hizmeti '
+          'verebilmek için yalnızca şu hizmet sağlayıcılarla, gerektiği '
+          'kadar paylaşırız:\n'
+          '• Barındırma: hesap verilerin Almanya\'daki bir sunucuda tutulur '
+          '([barındırma sağlayıcısı eklenecek]).\n'
+          '• E-posta gönderimi: giriş kodunu ve, istersen, yenilik '
+          'e-postalarını gönderen hizmet ([e-posta gönderim sağlayıcısı '
+          'eklenecek]); bu hizmet yalnızca e-posta adresini ve e-postanın '
+          'içeriğini görür.\n\n'
+          'Kanunen yetkili kurumlar isterse bilgileri kanunun gerektirdiği '
+          'ölçüde paylaşabiliriz.',
+    ),
+    (
+      'Yurt dışına aktarım',
+      'Sunucumuz Almanya\'da olduğu için hesap verilerin ve kayıtlar yurt '
+          'dışına aktarılmış olur. Bu aktarım KVKK\'nın yurt dışına aktarım '
+          'kurallarına uygun yapılır.',
+    ),
+    (
+      'Ne kadar saklanır?',
+      '• Hesap bilgilerin ve öğrenme verilerin: hesabın açık olduğu sürece.\n'
+          '• Hesabını silersen: 30 gün içinde geri alabilirsin; 30 gün dolunca '
+          'hesabın ve öğrenme verilerin kalıcı olarak silinir.\n'
+          '• Denetim kaydı (IP, port, saat): olay tarihinden itibaren 2 yıl.\n'
+          '• Onay kayıtların: hesabın açıkken ve silindikten sonra 2 yıl.\n\n'
+          'Bu süreler dolunca kayıtlar kendiliğinden silinir. Hesabın '
+          'silindikten sonra kalan kayıtlar e-posta adresinle eşleştirilemez. '
+          'Bu telefondaki verilerin, sen silmedikçe telefonda kalır.',
+    ),
+    (
+      '"Söyle" alıştırmaları ve sesin',
+      '"Söyle" alıştırmalarında telefonunun kendi konuşma tanıma özelliği '
+          'kullanılır. Sesin bize gönderilmez ve kaydedilmez; söylediğinin '
+          'yazısı da saklanmaz. Yalnızca sonuç (ör. beklenen ifadeyi söyleyip '
+          'söyleyemediğin) tutulur ve hesabın varsa eşitlenir.\n\n'
+          'Konuşma tanımayı telefonunun işletim sistemi (Apple ya da Google) '
+          'yapar; bu işlem o şirketin kendi kurallarına göre yürür. Ayrıntı '
+          'için telefonunun ayarlarına ve Apple ya da Google\'ın gizlilik '
+          'metnine bakabilirsin. Mikrofon izni vermesen de hikâyeler ve '
+          'videolar tam çalışır.',
+    ),
+    (
+      'Reklam ve izleme yok',
+      'Uygulamada reklam yok. Seni başka uygulamalarda ya da sitelerde '
+          'izlemeyiz; üçüncü taraf analitik ya da izleme aracı kullanmayız. '
+          'Bilgilerin yapay zekâ modellerini eğitmek için kullanılmaz.',
+    ),
+    (
+      'Hata kaydı',
+      'Uygulama hata verirse son hata kayıtları yalnızca bu telefonda '
+          'tutulur; bize kendiliğinden gönderilmez. İstersen Profil → Hakkında '
+          '→ "Hata kaydını paylaş" ile kendin, istediğin kişiye '
+          'gönderebilirsin. Bu kayıt kişisel bilgi içermez.',
+    ),
+    (
+      'Yenilik e-postaları',
+      'Hesap açarken "hiVelzon\'daki yenilikleri e-postayla almak '
+          'istiyorum" kutusu boş gelir. Yalnızca kutuyu işaretlersen yenilik '
+          'e-postası göndeririz. İstediğin zaman $legalEmail adresine yazarak '
+          'vazgeçebilirsin; tercihin onay kaydına işlenir.',
+    ),
+    (
+      'Hakların (KVKK md. 11)',
+      'Bize başvurarak şunları isteyebilirsin:\n'
+          '• bilgilerinin işlenip işlenmediğini öğrenmek ve işlendiyse '
+          'bilgi istemek;\n'
+          '• işlenme amacını ve amaca uygun kullanılıp kullanılmadığını '
+          'öğrenmek;\n'
+          '• yurt içinde ya da yurt dışında aktarıldığı kişileri bilmek;\n'
+          '• eksik ya da yanlışsa düzeltilmesini istemek;\n'
+          '• kanundaki şartlarla silinmesini ya da yok edilmesini istemek;\n'
+          '• düzeltme ve silmenin aktarılan kişilere bildirilmesini istemek;\n'
+          '• yalnızca otomatik sistemlerle analiz edilmesi sonucu aleyhine '
+          'bir sonuç çıkmasına itiraz etmek;\n'
+          '• kanuna aykırı işleme nedeniyle zarara uğradıysan zararın '
+          'giderilmesini istemek.',
+    ),
+    (
+      'Nasıl başvurursun?',
+      'Başvurunu $legalEmail adresine ya da $legalAddress adresine yazılı '
+          'olarak gönderebilirsin. Seni tanıyabilmemiz için hesabının e-posta '
+          'adresinden yazman yeterlidir. Başvurunu en geç 30 gün içinde, '
+          'ücretsiz olarak cevaplarız. Cevabımızı yeterli bulmazsan Kişisel '
+          'Verileri Koruma Kurulu\'na şikâyette bulunabilirsin.\n\n'
+          'Hesabını ve verilerini uygulamadan da yönetebilirsin: Profil → '
+          'Hesap.',
+    ),
   ];
+
+  // Metin güncellendi bildirimi (H-095): yeniden onay yok; Ana Sayfa'da bir
+  // kez, kapatılabilir.
+  static String legalUpdateTitle({
+    required bool terms,
+    required bool privacy,
+  }) => terms && privacy
+      ? 'Kullanım koşulları ve aydınlatma metni güncellendi'
+      : terms
+      ? 'Kullanım koşulları güncellendi'
+      : 'KVKK aydınlatma metni güncellendi';
+  static const legalUpdateBody =
+      'Yeniden onay vermen gerekmiyor; her şey eskisi gibi çalışıyor. Neyin '
+      'değiştiğini merak edersen metne göz atabilirsin.';
+  static const legalUpdateOpenTerms = 'Koşulları aç';
+  static const legalUpdateOpenPrivacy = 'Aydınlatma metnini aç';
+  static const legalUpdateDismiss = 'Tamam';
 
   /// Hata kodunun Türkçe açıklaması (sunucu metni yedek).
   static String errorFor(String code, {String? fallback}) => switch (code) {
@@ -1861,8 +2134,6 @@ abstract final class AccountTexts {
       'Bu kod için deneme hakkın bitti. Yeni bir kod isteyebilirsin.',
     'RATE_LIMITED' => 'Kısa sürede çok istek geldi. Biraz sonra tekrar dene.',
     'AGE_NOT_ALLOWED' => ageBlocked,
-    'CONSENT_VERSION_OUTDATED' =>
-      'Metnin yeni bir sürümü var. Uygulamayı güncelleyip yeniden dene.',
     'TOKEN_REUSED' || 'REFRESH_TOKEN_INVALID' => signedOutReason(code)!,
     'ACCOUNT_PENDING_DELETION' =>
       'Hesabın silinmek üzere. Devam etmek için önce hesabını geri '
@@ -1947,8 +2218,8 @@ abstract final class OnboardingTexts {
   static const privacyLink = AccountTexts.privacyTitle;
   static const draftTitle = AccountTexts.legalDraftTitle;
   static const draftBody =
-      'Kullanım koşulları ve aydınlatma metni taslak. Kesin metin yayından '
-      'önce eklenecek.';
+      'Kullanım koşulları ve aydınlatma metni taslak; yayından önce bir '
+      'hukukçu gözden geçirecek.';
   static const privacyAccept = 'Anladım, devam et';
 
   // Tercihler
