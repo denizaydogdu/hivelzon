@@ -37,7 +37,7 @@ Bu dosya tek takip noktasıdır. Hangi işin hangi sırada yapıldığını, şu
   - H dosyasının `Durum` satırı güncellenir;
   - **Günlük** bölümüne bir satır eklenir.
 - **Biten işler:** "Biten işler" tablosuna doğrulama kanıtıyla birlikte yazılır.
-- **Numaralar:** Tek sayaçla verilir. Sıradaki boş numara: **H-096**.
+- **Numaralar:** Tek sayaçla verilir. Sıradaki boş numara: **H-097**.
 
 **Durum simgeleri:**
 - ⛔ Kullanıcı kararı bekliyor
@@ -516,3 +516,4 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
   - 2026-10-21: **H-095 bitti:** metin sürümü değişince yeniden onay yok (Ana Sayfa'da bir kez 'metin güncellendi' kartı; `CONSENT_VERSION_OUTDATED` kaldırıldı; sürüm taslak-2); kalıcı silmede rıza ve denetim kayıtları kalır, 2 yıl sonra günlük iş siler (V16, `RecordRetentionJob`; içerik onayı denetim satırları ağ alanları boşaltılarak korunur); KVKK aydınlatma (15 bölüm) ve kullanım koşulları (12 bölüm) taslakları, 'hukukçu gözden geçirecek'. Yer tutucular: veri sorumlusu, adres, iletişim, mahkeme, sağlayıcılar. Testler mobil 1427 · backend 155. Not: çalışan pilot backend'i yeniden başlatılınca V16 yerel veritabanına uygulanır.
   - 2026-10-21: **Uçtan uca hesap testi (gerçek backend, geçici simülatör, ayrı test veritabanı):** kayıt + eşitleme, eski metin sürümüyle eşitleme engellenmez ve 'metin güncellendi' kartı bir kez çıkar (H-095), silme → 'silinmek üzere' kartı → yeni kodla geri alma → veri geri gelir (H-042), kalıcı silmede rıza/denetim kayıtları kalır. Hepsi geçti; ürün hatası yok. **H-042 bitti.**
   - 2026-10-21 (akşam, özet): Belge durumu denetlendi ve güncellendi. `main` = `3b8e044`. Bugün bitenler: H-042, H-095; H-043 yerel kısmı; H-094 "İlgi alanların" paneli; SyncController ilk eşitleme düzeltmesi; G-A1-13 açıklaması düzeltildi ve yeniden seslendirildi. Backend :8080 yeniden derlendi (V16, 18 reel PUBLISHED). Testler mobil 1427 · backend 155 · pytest 368 · reel lint 18/0/0 · grammar lint 71/0 · book lint 30/0. Kalanların hepsi kullanıcıya ya da dış taraflara bağlı ("Nerede kaldık").
+  - 2026-10-21: Yeni takip incelemesi (`docs/URUN-TAKIP-INCELEMESI-2026-10-21.md`): önceki 5 hata düzelmiş; 2 yeni P1 (geri çekilen reelin eski adresi bellekte, mesajda cümle birleştirme) kodda doğrulandı. H-096 açıldı; sürüm klasörü bulgusu H-044'e not edildi.
