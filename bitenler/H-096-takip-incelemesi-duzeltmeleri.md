@@ -1,6 +1,6 @@
 # H-096: 21 Ekim takip incelemesi düzeltmeleri
 
-- **Durum:** Devam ediyor (2026-10-21)
+- **Durum:** Bitti (2026-10-21); mobil 1454 test, pytest 381
 - **Tür:** Hata düzeltmesi (kod)
 - **Faz:** F1 MVP
 - **Bağımlılık:** H-094, H-090; kaynak: `docs/URUN-TAKIP-INCELEMESI-2026-10-21.md`
