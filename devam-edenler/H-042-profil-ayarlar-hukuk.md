@@ -1,6 +1,6 @@
 # H-042: Profil, ayarlar, hukuki metinler, hesap silme arayüzü
 
-- **Durum:** Devam ediyor (2026-10-21)
+- **Durum:** Devam ediyor — kod tamam ve main'de (2026-10-21; mobil 1351 test). Kalan: hukukçu metinleri (`docs/HUKUK-SORULARI.md` gönderilecek) ve hesap silme/geri almanın gerçek backend'le cihazda denenmesi (pilot backend'i dışında).
 - **Tür:** Uygulama (kod)
 - **Faz:** 1.10 (`docs/UYGULAMA-PLANI.md`)
 - **Bağımlılık:** H-038
