@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:video_player/video_player.dart';
 
+import '../../../l10n/tr_strings.dart';
 import '../../../shared/content/content_source.dart';
 import '../../../shared/meaning/error_taxonomy.dart';
 import '../../hi/domain/hi_content.dart';
@@ -280,9 +281,10 @@ class PlayerSession extends ChangeNotifier {
         _begin(null);
       }
     } on Object catch (e) {
+      // H-043: metinler tr_strings'te; geliştirici dili yok.
       _error = e is ContentUnavailableException
-          ? 'İçerik sunucusuna ulaşılamadı.'
-          : 'Bölüm açılamadı.';
+          ? PlayerTexts.loadUnreachable
+          : PlayerTexts.loadFailed;
       errors.add('load: $e');
       _log('bölüm yüklenemedi: $e');
       _setPhase(PlayerPhase.error);

@@ -41,6 +41,8 @@ final discoverStoreProvider = Provider<DiscoverStore>(
 );
 
 /// Günlük sınır (K-15): 13–17 ve 13 altı için 20 dk; 18+ için yok.
+/// H-043: yaş bilgisi okunamazsa [DiscoverLimit.failSafe] (20 dk; güvenli
+/// taraf). Sağlayıcı hata durumuna düşmez (ekranda sonsuz iskelet olmaz).
 final discoverLimitProvider = FutureProvider.autoDispose<DiscoverLimit>((
   ref,
 ) async {
@@ -53,10 +55,15 @@ final discoverLimitProvider = FutureProvider.autoDispose<DiscoverLimit>((
       ageBlockedUntil: blocked,
       adultFromYear: adultFrom,
     );
-  } on Object {
-    return DiscoverLimit.none;
+  } on Object catch (e) {
+    debugPrint('[H043] yaş bilgisi okunamadı, 20 dk sınır: ${e.runtimeType}');
+    return DiscoverLimit.failSafe;
   }
 }, retry: (_, _) => null);
+
+/// Ekranda kullanılan sınır: sağlayıcı yine de hata verirse güvenli taraf.
+DiscoverLimit? discoverLimitOrSafe(AsyncValue<DiscoverLimit> v) =>
+    v.hasValue ? v.value : (v.hasError ? DiscoverLimit.failSafe : null);
 
 /// Sezonun klipleri: sezon paketinde `clips` yoksa null (boş durum).
 final clipCatalogProvider = FutureProvider.autoDispose<ClipCatalog?>((
@@ -370,10 +377,16 @@ final dailySetProvider = FutureProvider.autoDispose<DailySet>((ref) async {
 }, retry: (_, _) => null);
 
 /// Aynı gün kalınan video (günlük set; plan §5). Boşsa seçki baştan açılır.
+/// H-043: okunamazsa da baştan (null); sağlayıcı hata durumuna düşmez.
 final dailyResumeProvider = FutureProvider.autoDispose<String?>((ref) async {
   final store = ref.watch(discoverStoreProvider);
   final now = ref.watch(discoverClockProvider)();
-  return store.resumeId(now);
+  try {
+    return await store.resumeId(now);
+  } on Object catch (e) {
+    debugPrint('[H043] kalınan video okunamadı, baştan: ${e.runtimeType}');
+    return null;
+  }
 }, retry: (_, _) => null);
 
 /// Yüklenmiş reel havuzu: reeller + "Tekrar" etiketli kimlikler.

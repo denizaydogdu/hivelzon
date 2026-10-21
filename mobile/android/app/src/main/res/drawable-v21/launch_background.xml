@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Modify this file to customize your launch splash screen -->
+<!-- H-043: GEÇİCİ açılış ekranı (asıl logo H-016): kum zemin + ortada "hi"
+     işareti (mobile/tool/placeholder_icons.sh). Uygulama yalnız açık tema
+     kullandığı için koyu modda da aynı zemin. -->
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:drawable="?android:colorBackground" />
-
-    <!-- You can insert your own image assets here -->
-    <!-- <item>
+    <item android:drawable="@color/launch_background" />
+    <item>
         <bitmap
             android:gravity="center"
-            android:src="@mipmap/launch_image" />
-    </item> -->
+            android:src="@mipmap/launch_mark" />
+    </item>
 </layer-list>

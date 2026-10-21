@@ -1,0 +1,24 @@
+/*
+  hiVelzon iOS izin metinleri (Türkçe; H-043, kullanıcı kararı 3).
+  Geliştirme bölgesi tr: telefonun dili İngilizce olsa da uygulama Türkçe
+  olduğu için izin pencereleri Türkçe açılır. Metinler Info.plist ile aynı
+  tutulur; yeni metin docs/ARAYUZ-METINLERI.md'ye de yazılır.
+
+  "Söyle" alıştırmaları yalnızca cihazda tanıma kullanır
+  (requiresOnDeviceRecognition); ses ve yazı saklanmaz, hiçbir yere
+  gönderilmez (H-055).
+
+  Bildirim izni (günlük hatırlatma, H-042): iOS bildirim penceresi için
+  uygulamanın yazabileceği bir açıklama anahtarı yoktur; pencere yalnızca
+  kullanıcı hatırlatmayı açınca sorulur.
+*/
+
+"CFBundleDisplayName" = "hiVelzon";
+
+"NSMicrophoneUsageDescription" = "Söyle alıştırmalarında İngilizceyi sesli söylediğinde mikrofon kullanılır. Sesin bu telefonda yazıya çevrilir; kaydedilmez, hiçbir yere gönderilmez.";
+
+"NSSpeechRecognitionUsageDescription" = "Söylediğin İngilizce yalnızca bu telefonda yazıya çevrilir ve beklenen ifadeyle karşılaştırılır. Ses ve yazı saklanmaz, hiçbir yere gönderilmez.";
+
+/* Yalnızca debug/profile derlemesinde (Flutter aracı anahtarı kendisi ekler):
+   gerçek telefonda Mac'teki geliştirme sunucularına ulaşmak için. */
+"NSLocalNetworkUsageDescription" = "Geliştirme derlemesi bu ağdaki bilgisayardan içerik ve hata ayıklama bağlantısı alır.";

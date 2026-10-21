@@ -30,7 +30,7 @@ void main() {
       multiLine: true,
     ).firstMatch(pubspec)!.group(1);
     expect(AppInfo.version, v);
-    expect(AppInfo.display, '1.0.0 (1)');
+    expect(AppInfo.display, '0.1.0 (1)');
   });
 
   test('taşınan kodun MIT bildirimleri Lisanslar sayfasında', () async {

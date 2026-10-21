@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- H-043: GEÇİCİ simge ve açılış ekranı renkleri (asıl logo H-016).
+     Tasarım belirteci: AppPalette.sand (lib/app/design/tokens.dart). -->
+<resources>
+    <color name="launch_background">#F7F1E6</color>
+    <color name="ic_launcher_background">#F7F1E6</color>
+</resources>

@@ -5,13 +5,17 @@
 /// denetler: `test/app/app_info_test.dart`). Mağaza derlemesinde sürüm
 /// `--build-name/--build-number` ile değişirse aynı değer
 /// `--dart-define=HV_APP_VERSION=1.2.0+7` ile de verilir.
+///
+/// H-043: iç beta sürümü 0.1.0; yapı numarası her derlemede artar
+/// (`tools/device-build.sh` ikisini birlikte verir; ayrıntı
+/// `docs/BETA-KONTROL-LISTESI.md`).
 abstract final class AppInfo {
   static const version = String.fromEnvironment(
     'HV_APP_VERSION',
-    defaultValue: '1.0.0+1',
+    defaultValue: '0.1.0+1',
   );
 
-  /// `1.0.0 (1)` biçimi.
+  /// `0.1.0 (1)` biçimi.
   static String get display {
     final parts = version.split('+');
     return parts.length == 2 ? '${parts[0]} (${parts[1]})' : version;

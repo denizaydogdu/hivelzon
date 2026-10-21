@@ -267,4 +267,9 @@ abstract final class AppMotion {
   /// Hareket azaltılmışsa sıfır süre.
   static Duration of(BuildContext context, Duration d) =>
       reduced(context) ? Duration.zero : d;
+
+  /// Alt panel (`showModalBottomSheet`) açılış/kapanışı (H-043): hareket
+  /// azaltılmışsa anında; değilse Flutter varsayılanı (null).
+  static AnimationStyle? sheet(BuildContext context) =>
+      reduced(context) ? AnimationStyle.noAnimation : null;
 }

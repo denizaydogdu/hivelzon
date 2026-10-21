@@ -21,6 +21,7 @@ import '../../reminder/presentation/reminder_settings_row.dart';
 import '../../speak/speech_settings_section.dart';
 import '../application/profile_providers.dart';
 import '../data/user_profile_store.dart';
+import 'crash_log_row.dart';
 import '../../hi/presentation/hi_bubble.dart';
 
 /// Profil (H-036, H-053; tasarım H-059): illüstrasyonlu dalga başlık, ad ve
@@ -203,6 +204,8 @@ class ProfileScreen extends ConsumerWidget {
                           subtitle: ProfileTexts.aboutRowHint,
                           onTap: () => unawaited(open(AppRoutes.about)),
                         ),
+                        // H-043: yerel hata kaydı, yalnızca kullanıcı isterse.
+                        const CrashLogShareRow(),
                       ],
                     ),
                   ],

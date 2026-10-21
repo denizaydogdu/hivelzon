@@ -104,12 +104,20 @@ class HiPrivacyScreen extends ConsumerWidget {
               ),
             ],
           ),
-          AsyncError() => const Center(
-            child: Padding(
-              padding: EdgeInsets.all(AppSpace.s24),
+          AsyncError() => Center(
+            child: SingleChildScrollView(
+              padding: const EdgeInsets.all(AppSpace.s24),
               child: EmptyState(
+                key: const ValueKey('hi-privacy-error'),
                 icon: Icons.cloud_off_outlined,
                 title: HiTexts.privacyError,
+                // H-043: hata durumunda "Tekrar dene".
+                action: FilledButton.icon(
+                  key: const ValueKey('hi-privacy-retry'),
+                  onPressed: () => ref.invalidate(hiKnowledgeProvider),
+                  icon: const Icon(Icons.refresh_rounded),
+                  label: const Text(CommonTexts.retry),
+                ),
               ),
             ),
           ),

@@ -62,6 +62,7 @@ void main() {
     String contentId = 'A1-001',
     PlayerStartMode startMode = PlayerStartMode.ask,
     AppDatabase? db,
+    bool reduceMotion = true,
   }) async {
     tester.view.physicalSize = const Size(1179, 2556);
     tester.view.devicePixelRatio = 3;
@@ -84,7 +85,7 @@ void main() {
         child: MaterialApp(
           theme: AppTheme.light(),
           home: MediaQuery(
-            data: const MediaQueryData(disableAnimations: true),
+            data: MediaQueryData(disableAnimations: reduceMotion),
             child: PlayerScreen(contentId: contentId, startMode: startMode),
           ),
         ),
@@ -281,11 +282,14 @@ void main() {
     source.fail = true;
     await pumpPlayer(tester);
     await step(tester, 300);
-    expect(find.text('İçerik sunucusuna ulaşılamadı.'), findsOneWidget);
+    expect(find.text('Bölüme şu an ulaşılamadı.'), findsOneWidget);
+    // H-043: kullanıcı metninde "sunucu" yok; geliştirici notu yalnız debug.
+    expect(find.textContaining('sunucu'), findsNothing);
+    expect(find.byKey(const ValueKey('player-dev-hint')), findsOneWidget);
     source.fail = false;
     await tester.tap(find.text('Tekrar dene'));
     await step(tester, 1500);
-    expect(find.text('İçerik sunucusuna ulaşılamadı.'), findsNothing);
+    expect(find.text('Bölüme şu an ulaşılamadı.'), findsNothing);
     await tester.pumpWidget(const SizedBox());
     await step(tester, 1200);
   });
@@ -481,6 +485,32 @@ void main() {
       await tester.pumpWidget(const SizedBox());
       await step(tester, 1200);
     });
+
+    for (final reduce in [true, false]) {
+      testWidgets(
+        'H-043: hareket ${reduce ? 'azaltılınca afiş ve kararma anında' : 'açıkken yumuşak geçiş'}',
+        (tester) async {
+          await pumpPlayer(tester, reduceMotion: reduce);
+          await step(tester, 300);
+          final poster = tester.widget<AnimatedOpacity>(
+            find.byKey(const ValueKey('title-poster')),
+          );
+          final dim = tester.widget<AnimatedContainer>(
+            find.byKey(const ValueKey('player-dim')),
+          );
+          expect(
+            poster.duration,
+            reduce ? Duration.zero : const Duration(milliseconds: 200),
+          );
+          expect(
+            dim.duration,
+            reduce ? Duration.zero : const Duration(milliseconds: 250),
+          );
+          await tester.pumpWidget(const SizedBox());
+          await step(tester, 1200);
+        },
+      );
+    }
 
     testWidgets('B2: başlık → "Önceki bölümde" → Atla → hikâye', (
       tester,

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Yalnızca debug ve profile: yerel içerik sunucusu (tools/dev-content-server) ve yerel
+     backend için düz HTTP. Emülatörden makineye 10.0.2.2 ile ulaşılır.
+     H-043: gerçek telefondan Mac'in yerel ağ adresine (192.168.x.x vb.;
+     tools/device-build.sh) ulaşmak için düz HTTP debug ve profile derlemelerinde genel olarak açık.
+     Ağ güvenliği kuralı alan adına bağlanır; IP aralığı yazılamadığı için
+     base-config kullanılır. Release yapılandırması etkilenmez (yalnız HTTPS;
+     gerçek adresler H-044). Aynı dosya src/debug ve src/profile altında. -->
+<network-security-config>
+    <base-config cleartextTrafficPermitted="true" />
+</network-security-config>

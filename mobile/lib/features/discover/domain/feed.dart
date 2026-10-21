@@ -146,6 +146,10 @@ class DiscoverLimit {
   bool get limited => daily != null;
 
   static const none = DiscoverLimit(null, null);
+
+  /// H-043 (kullanıcı kararı 2): yaş bilgisi okunamazsa güvenli taraf,
+  /// 13–17 varsayılanı (20 dk). Yaş grubu bilinmediği için [band] boş.
+  static const failSafe = DiscoverLimit(null, kTeenDailyLimit);
 }
 
 /// Yaş grubu, cihazdaki eşiklerden (H-039): [ageBlockedUntil] (13 yaş altı,

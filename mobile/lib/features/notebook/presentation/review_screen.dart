@@ -121,6 +121,14 @@ class _ReviewScreenState extends ConsumerState<ReviewScreen> {
     }
   }
 
+  /// H-043: "Tekrar dene" oturumu baştan kurar (kaydedilen cevaplar durur).
+  void _retry() {
+    _session = null;
+    _outcome = null;
+    setState(() => _phase = _Phase.loading);
+    unawaited(_load());
+  }
+
   void _beginTask() {
     _chosen = null;
     _revealed = false;
@@ -211,12 +219,15 @@ class _ReviewScreenState extends ConsumerState<ReviewScreen> {
     setState(() => _phase = _Phase.feedback);
     final ReviewOutcome outcome;
     try {
-      outcome = await s.answer(
-        correct: correct,
-        dontKnow: dontKnow,
-        elapsed: _watch.elapsed,
-        rating: rating,
-      );
+      // H-043: kayıt takılırsa sonsuz bekleme yerine hata + "Tekrar dene".
+      outcome = await s
+          .answer(
+            correct: correct,
+            dontKnow: dontKnow,
+            elapsed: _watch.elapsed,
+            rating: rating,
+          )
+          .timeout(answerTimeout);
     } on Object catch (e) {
       debugPrint('[H036] cevap kaydedilemedi: $e');
       if (mounted) setState(() => _phase = _Phase.error);
@@ -234,6 +245,11 @@ class _ReviewScreenState extends ConsumerState<ReviewScreen> {
     setState(() => _outcome = outcome);
     unawaited(_audio.play(outcome.item));
   }
+
+  /// Cevabın kaydı en fazla bu kadar beklenir (yerel veritabanı; normalde
+  /// milisaniyeler).
+  @visibleForTesting
+  static const answerTimeout = Duration(seconds: 10);
 
   static bool _speaks(TaskType t) =>
       t == TaskType.speak || t == TaskType.speakRecall;
@@ -326,6 +342,7 @@ class _ReviewScreenState extends ConsumerState<ReviewScreen> {
             title: ReviewTexts.errorTitle,
             body: ReviewTexts.errorBody,
             onBack: () => context.pop(),
+            onRetry: _retry,
           ),
           _Phase.asking => _taskView(context),
           _Phase.feedback => _feedbackView(context),
@@ -964,6 +981,7 @@ class _CenteredMessage extends StatelessWidget {
     required this.onBack,
     this.icon,
     this.illustration,
+    this.onRetry,
   });
 
   final IconData? icon;
@@ -971,6 +989,9 @@ class _CenteredMessage extends StatelessWidget {
   final String title;
   final String body;
   final VoidCallback onBack;
+
+  /// H-043: hata durumunda "Tekrar dene" (birincil) + "Geri dön".
+  final VoidCallback? onRetry;
 
   @override
   Widget build(BuildContext context) => Center(
@@ -980,10 +1001,27 @@ class _CenteredMessage extends StatelessWidget {
         illustration: illustration,
         title: title,
         message: body,
-        action: OutlinedButton(
-          onPressed: onBack,
-          child: const Text(CommonTexts.goBack),
-        ),
+        action: onRetry == null
+            ? OutlinedButton(
+                onPressed: onBack,
+                child: const Text(CommonTexts.goBack),
+              )
+            : Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  FilledButton.icon(
+                    key: const ValueKey('review-retry'),
+                    onPressed: onRetry,
+                    icon: const Icon(Icons.refresh_rounded),
+                    label: const Text(CommonTexts.retry),
+                  ),
+                  const SizedBox(height: AppSpace.s8),
+                  OutlinedButton(
+                    onPressed: onBack,
+                    child: const Text(CommonTexts.goBack),
+                  ),
+                ],
+              ),
       ),
     ),
   );
