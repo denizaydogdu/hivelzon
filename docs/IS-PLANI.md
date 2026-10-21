@@ -4,7 +4,7 @@
 > **Sahibi / veri sorumlusu:** Velzon Bilişim Teknolojileri Ltd. Şti. (Eskişehir · info@velzon.tr)
 > **Durum:** Faz 1 (MVP) uygulaması sürüyor; uygulama planı onaylı (`docs/UYGULAMA-PLANI.md`, H-025). Bağlayıcı kararlar `CLAUDE.md` tablolarındadır; bu belgeyle çelişirse onlar geçerlidir.
 >
-> **Güncel durum (2026-10-21):** H-094 Keşfet tamamlandı (18 sesli reel, backend onay/yayın/geri çekme, uygulama yayımlanmış katalogdan okuyor); sıradaki iş **H-092 kullanıcı pilotu**. Kredi, test sonuçları ve açık kararlar için tek kaynak: `yapilacaklar/IS-SIRASI.md`.
+> **Güncel durum (2026-10-21 akşam):** H-094 Keşfet'in ürün tarafı tamam (18 sesli reel, yayın/geri çekme, "İlgi alanların" paneli). H-042 (hesap silme/geri alma, Hakkında, hatırlatma) ve H-095 (hukukçu cevapları) bitti; H-043'ün yerel kısmı bitti, gerçek telefon kontrolleri kaldı. H-092 pilotu bölündü: aşama A erken ve isteğe bağlı, aşama B H-044 ile en sonda. Sıradaki boş numara: H-096. Kredi, test sonuçları ve açık kararlar için tek kaynak: `yapilacaklar/IS-SIRASI.md`.
 
 ## Güncel kararlar (v0.2, 2026-10-12)
 
@@ -16,7 +16,7 @@
 | Faz yapısı | **Birleşik 4 faz:** F0 kararlar + pilot · F1 MVP · F2 v1 · F3 v2 (§11) | K-17, H-007 |
 | MVP kapsamı | Hikâye modu (Sezon 1, A1, 12 bölüm + prolog; lansmanda 4 bölüm açık, sonra haftada 1), harita, defter, ipucu panosu, FSRS tekrarı, Keşfet (kısa klipler), Hi-A (kural tabanlı koç), editör onay ekranı, hesap + rıza + denetim kaydı + 30 gün geri alınabilir silme, misafir modu (prolog + B1) | H-025, K-26, K-31, H-009, H-047 |
 | Konuşma pratiği | **MVP'de yok.** v1'de (F2) Hi-B ile gelir: metin sohbeti, yerel LLM (Ollama) + RAG ile başlar; üretim sağlayıcısı ölçümle seçilir | H-007, H-047 |
-| Yaş | **13+.** 13 altı kayıt yok. AI sohbeti 18+; 13–17 rehberli mod. Hukuk teyidi bekliyor | H-002, H-047 |
+| Yaş | **Her yaş kullanır; hesap 13+.** 13 altı hesapsız tam kullanım (veri yalnız cihazda). AI sohbeti 18+; 13–17 rehberli mod. Hukukçu teyit etti (2026-10-21; veli onayı gerekmez) | H-002, H-047 |
 | Bölge, reklam | **Yalnızca Türkiye.** **Hiç reklam yok.** | H-018, H-020 |
 | AI bütçesi | **Aylık tavan 300 USD.** Tavan dolunca ücretli üretim ve AI özellikleri durur; günlük konuşma kotası v1 öncesi belirlenir | H-003 |
 | Günlük hedef ve bildirim | 5 / 10 / 15 dk; günde en fazla 1 hatırlatma, saati kullanıcı seçer; kırık seri vurgulanmaz, dondurma ve onarma var | H-013, K-16 |
@@ -632,7 +632,7 @@ Senaryo → Higgsfield CLI (Soul ID, video, ses) → kurgu → altyazı → QC �
 
 > **Güncel (K-17, 2026-10-11): birleşik 4 faz.** Aşağıdaki tablo bu karara göre yazıldı; ilk taslaktaki ders/akış odaklı faz içerikleri hikâye yönüyle değişti.
 
-| Faz | Kapsam | Durum (2026-10-12) |
+| Faz | Kapsam | Durum (2026-10-21) |
 |---|---|---|
 | **F0: Kararlar + pilot** | Açık kararlar, Story Bible ve Sezon 1 planı, pilot bölüm (B1) + 3 klip, gerçek maliyet ölçümü | ✅ Bitti (H-024, H-029, H-030) |
 | **F1: MVP** | Hikâye modu (S1, A1), etkileşimli oynatıcı, harita, defter, ipucu panosu, FSRS, Keşfet, Hi-A, onboarding, hesap ve KVKK kalıpları, editör onayı; her şey yerelde, dış hesaplar en sonda (H-044) | 🔄 Sürüyor (`UYGULAMA-PLANI.md`) |

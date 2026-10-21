@@ -82,7 +82,7 @@ H-054 ölçümleri simülatörde ve **debug** derlemeyle yapıldı. Gerçek ciha
 | 2.4 | "Söyle" izin akışı (iPhone) | iPhone | İzin penceresi Türkçe mi (`tr.lproj`)? Apple'ın sabit "ses Apple'a gönderilebilir" cümlesi çıkıyor mu? Biz cihazda tanımayı zorunlu tutuyoruz; metin ve hukuk incelemesi (H-055). İzin reddedilince her şey dokunarak çalışıyor mu? |
 | 2.5 | "Söyle" izin akışı (Android), İngilizce dil paketi **yokken** | Android | Paket yoksa "Söyle" düğmeleri görünmemeli (H-055). Paket indirilince görünmeli. |
 | 2.6 | Android'de `audio_service` (kilit ekranında kitap dinleme), bildirimler (günlük hatırlatma), Drift veritabanı | Android | Yeniden başlatma sonrası hatırlatma (BOOT_COMPLETED) |
-| 2.7 | Uçtan uca deneme: açılış → B1 → defter → kelime tekrarı → Keşfet → kitap → Profil (hata kaydını paylaş) | iPhone + Android | `tools/device-build.sh` ile |
+| 2.7 | Uçtan uca deneme: açılış → B1 → defter (Ana Sayfa → "Çalışma araçların" ya da Profil) → kelime tekrarı → Keşfet (18 reel, backend kataloğu) → kitap → Profil (hata kaydını paylaş) | iPhone + Android | `tools/device-build.sh` ile |
 | 2.8 | Geçici simge ve açılış ekranı telefonda düzgün mü | iPhone + Android | Android 12+ sistem açılış ekranı kum renginde |
 
 ### Cihaz derlemesi (yerel ağ)
@@ -119,5 +119,5 @@ tools/device-build.sh ios debug                  # iOS (Xcode'daki geliştirici 
 | 3.4 | **Gerçek adresler (HTTPS)** | **Risk:** `CONTENT_BASE_URL` (`http://127.0.0.1:8787`), `REEL_CATALOG_URL` (`http://127.0.0.1:8080/...`) ve `API_BASE_URL` (`http://127.0.0.1:8080`) varsayılanları yerel geliştirme içindir. `--dart-define` verilmeden yapılan bir **release** derlemesi telefonda hiçbir içeriğe ulaşamaz: 127.0.0.1 telefonun kendisidir ve Android release'te düz HTTP kapalıdır. Mağaza derlemesi bu üç değer HTTPS adresleriyle verilmeden yapılmaz. Gerekirse derleme anında boş/yerel adres denetimi H-044'te eklenir. |
 | 3.5 | iOS `NSAllowsLocalNetworking` | Şu an bütün derlemelerde açık. Yayın derlemesinde gerekip gerekmediği H-044'te gözden geçirilir. |
 | 3.6 | Asıl uygulama simgesi ve açılış ekranı | H-016 (logo, palet, ad kontrolü). Şimdiki simge **geçicidir**. |
-| 3.7 | Mağaza aile politikaları, yaş derecelendirmesi | H-043/H-044 (H-002 hukuk teyidiyle) |
+| 3.7 | Mağaza aile politikaları, yaş derecelendirmesi | H-044. Hukukçu H-002'yi teyit etti (2026-10-21): veli onayı gerekmez, doğum yılı beyanı yeterli |
 | 3.8 | Bunny Stream, sunucu | H-044 |

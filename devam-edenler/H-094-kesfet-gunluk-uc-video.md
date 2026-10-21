@@ -1,6 +1,6 @@
 # H-094: Keşfet — seviyeye ve ilgiye göre günlük üç kısa video (reel)
 
-- **Durum:** Sürüyor — **P0, P1, P2, P3 ve P4 tamamlandı** (kredisiz). **18 reellik pilot üretildi ve 18/18 sesli** (konuşmacıya göre Sarah/Will/Chris); uygulama **backend'in yayımlanmış kataloğunu** okuyor; yayın/geri çekme uçtan uca doğrulandı (2026-10-21). Ücretli üretim onayı alındı (2026-10-20), pilot yayını için ayrı onay gerekir.
+- **Durum:** Sürüyor — **P0, P1, P2, P3 ve P4 tamamlandı** (kredisiz). **18 reellik pilot üretildi ve 18/18 sesli** (konuşmacıya göre Sarah/Will/Chris); uygulama **backend'in yayımlanmış kataloğunu** okuyor; yayın/geri çekme uçtan uca doğrulandı; **"İlgi alanların" paneli** (son ürün eksiği) main'de (2026-10-21). Kalan yalnız H-092 pilotu ve insan değerlendirmesi. Ücretli üretim onayı alındı (2026-10-20), pilot yayını için ayrı onay gerekir.
 - **Tür:** Uygulama (kod) + içerik boru hattı + içerik pilotu
 - **Faz:** F1 MVP — ürün incelemesi sonrası (2026-10-18)
 - **Bağımlılık:** H-040 (Keşfet), H-089 (kanıt basamakları), H-088 (günlük plan); pilot içerik için ücretli üretim onayı ve `PROMPTS.md`
@@ -28,7 +28,7 @@
 - `flutter analyze && flutter test` ve `pytest` yeşil; golden’lar bilinçli güncellenir.
 - Büyük katalog üretimi, H-092 pilot sonucu görülmeden başlamaz.
 
-**Durum (2026-10-21):** Üretim, ses, lint, backend yayın/geri çekme ve uygulama katalog bağlantısı tamam. Kalan kabul adımı: H-092 pilotu + insan değerlendirmesi; gerçek cihaz testi H-092/H-044 kapsamında.
+**Durum (2026-10-21):** Üretim, ses, lint, backend yayın/geri çekme, uygulama katalog bağlantısı ve "İlgi alanların" paneli tamam. Kalan kabul adımı: H-092 pilotu + insan değerlendirmesi; gerçek cihaz testi H-092/H-044 kapsamında.
 
 ## Test
 ```bash
@@ -124,7 +124,7 @@ Kendi dalında; `git revert`. İçerik paketleri `/reels/` altında ayrı durur;
   - **Yeniden kurulum:** 18 paket `build_reel.py --force`; kaynak `reel.json` süre/cue eşitlendi; 18 mobil fixture + `index.json` yenilendi. `reel-lint` **18 · 0 hata · 0 uyarı**.
   - **Testler:** `pytest` **368**, `flutter test` **1284** (+5 backend katalog, +1 seçki regresyonu), `flutter analyze` temiz, backend `mvn test` **153**. Uçtan uca prova: 18/18 yayın, geri çekme katalogdan düşüyor.
   - **Sıradaki:** H-092 kullanıcı pilotu (backend + içerik sunucusu açık; uygulama backend kataloğunu okur). **Commit:** `5e087eb`, `b0969c3`, `43c85f8`.
-- 2026-10-21 (devam): **"İlgi alanların" paneli eklendi (kredisiz; H-094'ün kalan ürün boşluğu).** Commit **yok** (kullanıcı onayı bekleniyor).
+- 2026-10-21 (devam): **"İlgi alanların" paneli eklendi (kredisiz; H-094'ün kalan ürün boşluğu).** Commit **yok** (kullanıcı onayı bekleniyor). → Sonra main'e birleştirildi (`ba06c6d`, `942c6ae`).
   - **Yer:** seviye çipinin açtığı "Keşfet zorluğu" panelinin altında ikinci bölüm; **üst şerit değişmedi** (390/320 px ölçüleri aynı). Panel artık içerik kadar uzar (`isScrollControlled`), kısa ekranda kaydırılır.
   - **Denetimler:** Sinema / Spor / Kitap anahtarları (`SettingsGroup` + `SettingsRow.toggle`). **En az biri açık kalır:** son açık konu kapatılmak istenirse anahtar değişmez, altta sakin not (canlı bölge) çıkar. Yükleniyor (iskelet) ve hata (+ Tekrar dene) durumları var; yazma başarısızsa ayrı not.
   - **Saklama:** mevcut `DiscoverPrefs` (`discover.prefs.categories`, yalnız cihaz). Yeni `reelCategoriesProvider` (`AsyncNotifier`, yazmalar sırayla); `dailySetProvider` kategorileri artık bundan izler.

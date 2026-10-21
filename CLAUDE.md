@@ -5,7 +5,7 @@
 - Gelir modeli: tamamen ücretsiz.
 - Alan adı ileride `hi.velzon.tr`; şimdilik web yok.
 
-> **Durum (2026-10-21):** **Faz 1 (MVP) uygulaması sürüyor.** Uygulama planı onaylandı (H-025, `docs/UYGULAMA-PLANI.md`); kod `mobile/` (Flutter), `backend/` (Spring Boot 4 iskeleti) ve `tools/` altında. Son tamamlanan iş **H-094 Keşfet — günde üç kısa video**: 18 reel (3 kategori × 2 seviye, sesli; kadın/erkek karakter sesleri ayrı), backend onay/yayın/geri çekme ve uygulamanın `GET /api/v1/catalog/reels` kataloğunu okuması. **Sıradaki iş: H-042 Profil, ayarlar, hukuki metinler** (sonra H-043). **H-092 bölündü (kullanıcı kararı 2026-10-21):** aşama A (2–3 kişilik gözlemli test, kullanıcının iPhone'u + Mac, dışarı çıkmadan) erken ve isteğe bağlı; aşama B (evde 7–14 gün) H-044 ile **en sonda**. Pilot sonucu görülmeden büyük yeni içerik dalgası (yeni reel/sezon) başlamaz; ücretsiz kod ve kalite işleri sürer. Biten işler ve sıradaki iş: `yapilacaklar/IS-SIRASI.md`.
+> **Durum (2026-10-21 akşam):** **Faz 1 (MVP) uygulaması sürüyor.** Uygulama planı onaylandı (H-025, `docs/UYGULAMA-PLANI.md`); kod `mobile/` (Flutter), `backend/` (Spring Boot 4) ve `tools/` altında. Bugün bitenler: **H-042** (hesap silme/geri alma, Hakkında ve lisanslar, günlük hatırlatma) ve **H-095** (yeniden onay yok, yalnız bildirim; rıza ve denetim kayıtları 2 yıl; KVKK ve koşullar taslakları); ikisi gerçek backend'e karşı uçtan uca testle doğrulandı. **H-043**'ün yerel kısmı bitti; kalan gerçek telefon kontrolleri. **H-094** Keşfet'in ürün tarafı tamam (18 sesli reel, "İlgi alanların" paneli); yalnız H-092 pilotu ve insan değerlendirmesi kaldı. Hukukçu cevapları `docs/HUKUK-SORULARI.md` → "Cevaplar"; veri sorumlusu bilgileri ayrı fazda. **Kalan işler kullanıcıya ya da dış taraflara bağlı:** simülatör ve gerçek telefon denemeleri, editör kontrolü (H-028), yeni ElevenLabs anahtarı, H-044, H-016. **H-092 bölündü (kullanıcı kararı 2026-10-21):** aşama A (2–3 kişilik gözlemli test, kullanıcının iPhone'u + Mac, dışarı çıkmadan) erken ve isteğe bağlı; aşama B (evde 7–14 gün) H-044 ile **en sonda**. Pilot sonucu görülmeden büyük yeni içerik dalgası (yeni reel/sezon) başlamaz. Biten işler ve sıradaki iş: `yapilacaklar/IS-SIRASI.md`.
 > - **Her şey yerelde çalışır** (kullanıcı kararı): Docker PostgreSQL, yerel içerik sunucusu, iOS simülatörü. Sunucu, Bunny Stream, mağaza ve geliştirici hesapları en sonda (H-044); o zamana kadar dış barındırma ve yayın yapılmaz.
 > - **Planda olmayan yeni kapsam kullanıcı onayı olmadan eklenmez.** Her ücretli üretimden (Higgsfield vb.) önce maliyet gösterilir ve onay alınır.
 > - İş planı: `docs/IS-PLANI.md` (son onayı H-001'de). Ayrıntılı gereksinimler: `docs/SARTNAME.md` (taslak 0.1; güncel karar notları başında).
@@ -314,10 +314,10 @@ https://github.com/recepyagmur/EnglishPractice (Türk öğrenciye yönelik yerel
 
 Bu klasörden Higgsfield CLI ve Claude Code skill'leriyle görsel, video, ses (TTS/müzik/efekt) ve 3B üretilebilir.
 
-### Kurulum durumu (2026-10-11 doğrulandı; kredi 2026-10-12)
+### Kurulum durumu (2026-10-11 doğrulandı; kredi 2026-10-21)
 
 - CLI: `higgsfield` **1.1.26** kurulu (`~/.nvm/versions/node/v18.20.7/bin/higgsfield`; kısa adları `higgs`, `hf`).
-- Oturum: açık — `info@velzon.tr`, **lite** plan. Kredi **385,06** (2026-10-14; 500 kredi yüklendi, sonra C1–C2 kitap görselleri 40 kr ve S1 B5–B12; önce 499,56; önceki: 84,56 → H-058 8 kr → kitap pilotu 14 → dalga 1 17 → B1 14 → B2 15 kr. Daha önce: pilot sonrası 110,25, sonra B2–B4, 6 arayüz taslağı, jenerik ve harita görseli). Başka oturumlar da aynı hesabı kullanıyor; harcamadan önce her seferinde `higgsfield account status` ile kontrol edilir.
+- Oturum: açık — `info@velzon.tr`, **lite** plan. Kredi **236,56** (2026-10-20/21 ölçümü; son harcama Keşfet'in 18 reeli, 61,50 kr). Önceki ölçümler: 385,06 (2026-10-14; 500 kredi yüklendi, sonra C1–C2 kitap görselleri 40 kr ve S1 B5–B12); önce 499,56; önceki: 84,56 → H-058 8 kr → kitap pilotu 14 → dalga 1 17 → B1 14 → B2 15 kr. Daha önce: pilot sonrası 110,25, sonra B2–B4, 6 arayüz taslağı, jenerik ve harita görseli). Başka oturumlar da aynı hesabı kullanıyor; harcamadan önce her seferinde `higgsfield account status` ile kontrol edilir.
 - Skill'ler: `~/.claude/skills/higgsfield-*` altında kurulu (liste aşağıda).
 
 ### Yeni bir makinede kurulum (ya da kurulum bozulursa)

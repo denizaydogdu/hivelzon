@@ -2,7 +2,7 @@
 
 **Sürüm:** 0.2 · **Tarih:** 2026-10-11 (durum güncellemesi 2026-10-21) · **Durum:** Onaylandı (2026-10-11); uygulama sürüyor. İlk dilim: önce oynatıcı; ilk test cihazı iOS simülatörü.
 **Dayanak:** CLAUDE.md "Onaylı içerik mimarisi kararları" ve "Onaylı oyun tasarımı kararları"; `docs/OYUN-TASARIMI.md`; `docs/ICERIK-MIMARISI.md`.
-**Kural:** Plan onaylandı, kodlama bu plana göre sürüyor; plana yeni kapsam kullanıcı onayıyla eklenir. Oynatıcı işi var olan H-031 numarasını korur; yeni işler H-033'ten başlar. Sonradan eklenenler: H-045, H-046, H-048, H-049, H-050, H-051, H-052, H-053, H-054, H-055, H-056 tasarım yenilemesi H-057…H-064, Kitaplık H-065…H-073, ürün incelemesi sonrası odak H-087…H-092 ve Keşfet H-094. **Sıradaki boş numara: H-095.** (H-075…H-082: Dilbilgisi, `docs/DILBILGISI.md`; H-083 Türkçe sesler; H-084 B2-K01 eksik görsel; H-085 Bölüm 5–12 üretimi; H-086 kitapta Sayfanın Türkçesi; H-093 taklit/kanıt ayrımı.) (H-074: gerçek süre ölçümü.) Her alt faz ayrı bir H işidir: küçük, test edilebilir ve geri alınabilir.
+**Kural:** Plan onaylandı, kodlama bu plana göre sürüyor; plana yeni kapsam kullanıcı onayıyla eklenir. Oynatıcı işi var olan H-031 numarasını korur; yeni işler H-033'ten başlar. Sonradan eklenenler: H-045, H-046, H-048, H-049, H-050, H-051, H-052, H-053, H-054, H-055, H-056 tasarım yenilemesi H-057…H-064, Kitaplık H-065…H-073, ürün incelemesi sonrası odak H-087…H-092, Keşfet H-094 ve hukukçu cevapları H-095. **Sıradaki boş numara: H-096.** (H-075…H-082: Dilbilgisi, `docs/DILBILGISI.md`; H-083 Türkçe sesler; H-084 B2-K01 eksik görsel; H-085 Bölüm 5–12 üretimi; H-086 kitapta Sayfanın Türkçesi; H-093 taklit/kanıt ayrımı.) (H-074: gerçek süre ölçümü.) Her alt faz ayrı bir H işidir: küçük, test edilebilir ve geri alınabilir.
 
 ---
 
@@ -63,10 +63,10 @@
 | **1.5** | **H-037** Backend çekirdek | Kimlik doğrulama, kullanıcı, rızalar (yalnızca ekleme), `audit_log`, hesap silme (30 gün), içerik kataloğu API'si, ilerleme ve olay (`learning_events`) API'si; Flyway; ProblemDetail hata modeli | Entegrasyon testleri (Testcontainers) yeşil; silme ve geri alma testli; giriş hız sınırı var | ✅ |
 | **1.6** | **H-038** Mobil ↔ backend, misafir modu | Kayıt ve giriş; misafir verisinin hesaba taşınması; ilerleme ve olay eşitleme (idempotent `client_event_id`) | Misafir → kayıt akışı veri kaybetmeden çalışıyor | ✅ |
 | **1.7** | **H-039** Onboarding ve yerleştirme | Dil, yaş beyanı (13+), rızalar, prolog, atlanabilir kademeli test (K-06), bildirim izni sonra | Yaş altı kayıt engelleniyor; test atlanabiliyor | ✅ |
-| **1.8** | **H-040** Keşfet akışı | Kısa klipler (B1–B4'ten); Kaydet / Anlam / Tam hikâye; her 4–5 klipte quiz kartı, ~10 klipte mola kartı; 13–17 yaş için 20 dk sınırı (K-15) | Akış bellek sınırında; mola ve sınır testli | ⏳ |
+| **1.8** | **H-040** Keşfet akışı | Kısa klipler (B1–B4'ten); Kaydet / Anlam / Tam hikâye; her 4–5 klipte quiz kartı, ~10 klipte mola kartı; 13–17 yaş için 20 dk sınırı (K-15) | Akış bellek sınırında; mola ve sınır testli | ✅ |
 | **1.9** | **H-041** Editör onay ekranı ve içerik içe aktarma | `content-lint` → içe aktarma → Onayla / Zamanla / Kaldır; sürümler; `publish_at` (K-05, K-12); medya yerel adaptörle | Onaysız içerik katalogda görünmüyor (backend testi) | ✅ |
-| **1.10** | **H-042** Profil, ayarlar, hukuki metinler, hesap silme arayüzü | Beceri ve ilerleme gösterimi; bildirim ayarları; gizlilik; lisans atıfları (CEFR-J vb.) | Hesap silme ve geri alma arayüzden çalışıyor | ⏳ |
-| **1.11** | **H-043** Kalite ve iç beta hazırlığı | Erişilebilirlik, hata durumları, çökme raporlama (veri minimizasyonuyla); simülatör ve yerel cihazda uçtan uca deneme; H-031'den taşınan Android bellek/ısı ve gerçek telefon ses–yazı kontrolleri | Beta kontrol listesi tamam (mağaza hariç) | ⏳ |
+| **1.10** | **H-042** Profil, ayarlar, hukuki metinler, hesap silme arayüzü | Beceri ve ilerleme gösterimi; bildirim ayarları; gizlilik; lisans atıfları (CEFR-J vb.) | Hesap silme ve geri alma arayüzden çalışıyor | ✅ (2026-10-21; hukuk metinleri H-095) |
+| **1.11** | **H-043** Kalite ve iç beta hazırlığı | Erişilebilirlik, hata durumları, çökme raporlama (veri minimizasyonuyla); simülatör ve yerel cihazda uçtan uca deneme; H-031'den taşınan Android bellek/ısı ve gerçek telefon ses–yazı kontrolleri | Beta kontrol listesi tamam (mağaza hariç) | 🔄 (yerel kısım bitti; gerçek telefon kaldı) |
 | **1.12** | **H-044** Dış hesaplar, barındırma ve mağaza (en son) | Sunucu yeri ve kurulum; Bunny Stream hesabı ve adaptörü; Apple ve Google geliştirici hesapları; TestFlight / Play dahili test | Uygulama sunucudaki backend ve Bunny medyasıyla çalışıyor; dahili test sürümü yüklendi | ⏳ en son |
 
 ### Tasarım yenilemesi (2026-10-14, kullanıcı isteği)
@@ -74,14 +74,14 @@ Kullanıcı Profil'i beğenmedi ("her şey iç içe, düz yazı gibi"); bütün 
 
 | Faz | İş | Kapsam | Kabul kriteri (özet) | Durum |
 |---|---|---|---|---|
-| **T0** | **H-057** Tasarım sistemi v2 | Belirteçler (yazı, boşluk, köşe, gölge, anlamsal renk, hareket), tema bileşenleri, ortak bileşen kitaplığı (`shared/ui/`), `flutter_animate`, gömülü yazı tipleri, debug vitrin, golden altyapısı | Sabit stil yok testi; golden; testler yeşil | ⏳ |
+| **T0** | **H-057** Tasarım sistemi v2 | Belirteçler (yazı, boşluk, köşe, gölge, anlamsal renk, hareket), tema bileşenleri, ortak bileşen kitaplığı (`shared/ui/`), `flutter_animate`, gömülü yazı tipleri, debug vitrin, golden altyapısı | Sabit stil yok testi; golden; testler yeşil | ✅ |
 | **T1** | **H-058** Ekran taslakları v2 | ~10 ekran + ~6 illüstrasyon (Higgsfield, ~8 kr, maliyet önce) | Taslaklar kullanıcı onaylı | ✅ |
 | **T2** | **H-059** Profil + Hesap + Hi gizlilik + hukuk metni | Şekilli başlık, istatistik şeridi, gruplanmış ayarlar, tehlikeli bölge | Önce/sonra; golden; kullanıcı onayı | ✅ |
 | **—** | **H-039** Açılış (yeni tasarımla) | Kapsam aynı; H-057 bileşenleri | H-039 kriterleri | ✅ |
 | **T3** | **H-060** Ana Sayfa + harita + bölüm paneli + jenerik | Hedef halkası, hero kartı, harita animasyonu | Önce/sonra; golden | ✅ |
 | **T4** | **H-061** Defter + tekrar + konu seti + sahne avı | Tek satır biçimi, geri bildirim animasyonu, özet istatistikleri | Önce/sonra; golden | ✅ |
 | **T5** | **H-062** Oynatıcı katmanları | Palet belirteçlere, ~42 sabit metin l10n'e, giriş animasyonları | H-031/H-054 ölçümleri bozulmaz | ✅ |
-| **T6** | **H-063** Hi'nin canlılığı | Kodla çizilen ifade durumları, balonda nefes alma, panel bölünmesi | "Hareketi azalt" testi | ⏳ |
+| **T6** | **H-063** Hi'nin canlılığı | Kodla çizilen ifade durumları, balonda nefes alma, panel bölünmesi | "Hareketi azalt" testi | ✅ |
 | **—** | **H-040** Keşfet (yeni tasarımla) | T6 taslağı + H-057 bileşenleri | H-040 kriterleri | ✅ |
 | **T7** | **H-064** Tasarım kalite turu | Erişilebilirlik, metin büyütme, golden kapsamı, temizlik | Bütün testler yeşil | ✅ |
 
@@ -103,10 +103,10 @@ A1–C2, seviye başına 5 kitap, toplam 30. Kararlar: önce 2 pilot kitap, Elev
 | **K0** | **H-065** Kararlar + 30 kitaplık katalog | Katalog, yerleşim, tel çerçeve | ✅ |
 | **K1** | **H-066** Kitap paketi + boru hattı | `book.json`/`pages.json`, book-lint (A1–C2), Octanove C1/C2, TTS betiği | ✅ |
 | **K2** | **H-067** Kitaplık + okuyucu | Sesli/sessiz, vurgu, anlam paneli, Defter'e ekle, ilerleme + eşitleme | ✅ |
-| **K3** | **H-068** Arka planda dinleme | just_audio + audio_service, kilit ekranı | ⏳ |
+| **K3** | **H-068** Arka planda dinleme | just_audio + audio_service, kilit ekranı | 🔄 (kilit ekranı gerçek iPhone'da) |
 | **K4** | **H-069** Pilot A1 + A2 | ≈ 15 kr görsel, ücretsiz TTS kotası; sonra yoğunluk kararı | ✅ |
-| **K5** | **H-070** Arka uç | BOOK türü, C2, içe aktarma, onay | ⏳ |
-| **K6–K8** | **H-071…H-073** Kitap dalgaları | A1–A2 (8), B1–B2 (10), C1–C2 (10) | ⏳ |
+| **K5** | **H-070** Arka uç | BOOK türü, C2, içe aktarma, onay | ✅ |
+| **K6–K8** | **H-071…H-073** Kitap dalgaları | A1–A2 (8), B1–B2 (10), C1–C2 (10) | 🔄 (30 kitap yazıldı ve tam resimli; sesli 5/30) |
 
 **Durum simgeleri:** ✅ bitti · 🔄 sürüyor · ⏳ sırada. Ayrıntılı durum ve günlük: `yapilacaklar/IS-SIRASI.md`.
 

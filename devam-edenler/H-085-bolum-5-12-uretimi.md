@@ -25,7 +25,7 @@
 2026-10-14: Kullanıcı 500 Higgsfield kredisi yükledi, yarım kalan işler için onay verdi. B5 bütçesi 20 kr.
 # H-085: S1·B5 "Too Late?" üretimi (İngilizce ses hariç)
 
-- **Durum:** Devam ediyor (2026-10-14). Görseller, kurgu, çeviri ve Türkçe sesler bitti; İngilizce replikler (ElevenLabs kotası) ve Jordan'ın sesi için kullanıcı kararı bekleniyor.
+- **Durum:** Bitti (2026-10-14). B5 tamamlandı: İngilizce replikler hesap3 + hesap1 ile seslendirildi, Jordan = Chris; senkron 0,01 sn, lint 0 hata. (Kalan simülatör denemesi ve editör onayı yukarıdaki ana durumda.)
 - **Tür:** İçerik üretimi (bölüm)
 - **Faz:** F1 içerik (Sezon 1)
 - **Bağımlılık:** H-032 (onaylı diyalog), H-083 (Türkçe sesler), ElevenLabs kotası

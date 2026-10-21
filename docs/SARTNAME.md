@@ -16,7 +16,7 @@
 > - **§5.1 P0 "AI konuşma pratiği" ve "konuşma sonrası geri bildirim":** MVP'de yok; v1'de (F2) Hi-B ile gelir (H-007, H-047). Hi-A (kural tabanlı koç, AI yok) MVP'de (H-048).
 > - **§16 Faz 0–5:** Birleşik 4 faza bağlandı: F0 kararlar + pilot · F1 MVP · F2 v1 · F3 v2 (K-17).
 > - **§4.2 günlük hedef 5/10/15 dk:** Bu belgedeki seçenek kabul edildi (H-013); günde en fazla 1 hatırlatma.
-> - **Yaş (§12, §18/10):** 13+; 13 altı kayıt yok; AI sohbeti 18+, 13–17 rehberli (H-002, H-047). Hukuk teyidi bekliyor.
+> - **Yaş (§12, §18/10):** her yaş kullanır; hesap 13+, 13 altı hesapsız tam kullanım (veri yalnız cihazda); AI sohbeti 18+, 13–17 rehberli (H-002 2026-10-13 güncellemesi, H-047). Hukukçu teyit etti (2026-10-21): veli onayı gerekmez, doğum yılı beyanı yeterli.
 > - **Ürün yönü:** Ders kataloğu yerine oyunlaştırılmış, sürekli hikâye (*The Missing Signal*; H-029, `docs/OYUN-TASARIMI.md`). Sekmeler: Ana Sayfa · Keşfet · Hikâye · Konuş · Profil (K-30).
 > - **Altyazı biçimi:** Uygulamada WebVTT değil, zaman damgalı JSON'dan uygulamanın çizdiği altyazı; satıra dokununca Türkçe anlam paneli (K-03, H-046). Sosyal medyada gömülü `.ass`.
 > - **Bölüm açılışı:** Her bölüm doğrudan başlıkla açılır; açılışta görev kartı yok, görev 🎯 panelinde (H-050).
