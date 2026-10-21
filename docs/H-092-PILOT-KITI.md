@@ -11,6 +11,8 @@
 
 ## 1. İki aşama
 
+> **Zamanlama (kullanıcı kararı 2026-10-21):** A erken ve isteğe bağlı — 2–3 kişiyle de başlanabilir; uygulama kullanıcının iPhone'una Xcode ile kurulur, backend ve içerik sunucusu Mac'ten yerel ağda açılır (dışarı veri çıkmaz). B, katılımcılar evden bağlanacağı için internetten erişilebilir sunucu + TestFlight ister → H-044 ile **en sonda**.
+
 | Aşama | Kim | Süre | Ne ölçülür |
 |---|---|---|---|
 | **A. Gözlemli kullanılabilirlik** | 5 kişi (A1/A2) | 45–60 dk, bire bir | İlk kullanımda takılma, yardım ihtiyacı, sekme düzeni |

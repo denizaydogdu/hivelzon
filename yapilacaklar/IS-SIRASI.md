@@ -9,7 +9,7 @@ Bu dosya tek takip noktasıdır. Hangi işin hangi sırada yapıldığını, şu
 - **Her şey yerelde** (kullanıcı kararı): Docker PostgreSQL (127.0.0.1:5435; 5434 başka projenin), yerel içerik sunucusu (`python3 tools/dev-content-server/serve.py`, 127.0.0.1:8787), iOS simülatörü "hiVelzon iPhone 17". Sunucu, Bunny Stream, mağaza ve geliştirici hesapları en sonda (H-044).
 - **Biten uygulama işleri:** H-033 repo iskeleti · H-034 bölüm paketi + content-lint · H-045 tasarım yönü (6 taslak, 6 kr) · H-031 etkileşimli oynatıcı · H-046 altyazıya dokun → Türkçe anlam (B1–B4 çevirileri APPROVED) · H-047 Hi kararları · H-049 sezon jeneriği (6,69 kr) · H-050 başlıkla açılış (schemaVersion 2) · H-035 hikâye haritası + Drift ilerleme + kilit kuralı.
 - **İçerik:** Sezon 1'in 12 bölümü üretildi (görsel, ★ klipler, TR + EN sesler; haritada 12/12) — kalan: editör onayı (H-028) ve cihaz denemesi. Dilbilgisi A1–C2'nin tamamı yazıldı; İngilizce örnek sesleri kısmen bekliyor. Kitaplık: 30 kitap yazıldı ve tam resimli (sesli kitap 5/30). Higgsfield kredisi **236,56** (2026-10-20 ölçümü; `higgsfield account status`); Keşfet için **18 reel** üretildi ve **hepsi sesli** (11,9–13,4 sn; toplam 61,50 kr); sesler konuşmacıya göre Sarah/Will/Chris. Ses: 18 video **1.285 karakter** (ayrı ElevenLabs hesabı, free; defter **1.670 / 10.000**); ana defter **9.851 / 10.000** değişmedi.
-- **Sıradaki adım:** **H-092 kullanıcı pilotu** — **pilot kiti hazır** (`docs/H-092-PILOT-KITI.md`): 5 kişilik gözlemli test senaryosu + onam taslağı + ölçüm föyü, 7–14 günlük akış, hatırlama kontrolü, eşikler, pilot öncesi kontrol listesi. Pilot öncesi: backend + içerik sunucusu açık, 18 reel yayında; uygulama kataloğu backend'den okur (`REEL_CATALOG_URL`). Sırada: (1) onam metninin hukuk teyidi (H-002) ve gerçek cihaz/TestFlight kararı (H-044), (2) 5 kişilik testin yapılması ve notların `docs/H-092-BULGULAR-<tarih>.md`'ye yazılması. H-094 tarafı: 18 reel sesli (3 ses), lint 0/0, uçtan uca yayın/geri çekme; testler yeşil (pytest 368 · flutter 1284 · backend 153). Bağımsız: H-028 editör onayı.
+- **Sıradaki adım:** **H-042 Profil, ayarlar, hukuki metinler**, ardından H-043 kalite ve iç beta. **H-092 bölündü (kullanıcı kararı 2026-10-21):** aşama A (2–3 kişilik gözlemli test; kullanıcının iPhone'u, Mac'ten yerel ağ, dışarı veri çıkmaz) erken ve isteğe bağlı, kullanıcı istediği zaman yapar; aşama B (evde 7–14 gün) internetten erişilebilir sunucu ve TestFlight gerektirdiği için **H-044 ile en sonda**. Pilot sonucu görülmeden büyük yeni içerik dalgası başlamaz. Pilot kiti hazır (`docs/H-092-PILOT-KITI.md`); teknik kapı doğrulandı (2026-10-21: 18 reel yayında, lint 0/0, katalog ve paketler açılıyor; testler flutter 1284 · pytest 368 · backend 153).
 - **Kullanıcı kararı bekleyenler** (kodlamayı durdurmuyor):
   - H-001: güncellenen iş planının (`docs/IS-PLANI.md`, H-023) son onayı.
   - H-003: günlük konuşma kotasının ölçüsü, uyarı eşikleri, bütçe sorumlusu (tavan 300 USD/ay kararlaştı; v1 öncesi).
@@ -113,7 +113,7 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 | 1.7 | H-039 | Onboarding ve yerleştirme | Orta | H-038 | ✅ |
 | 1.8 | H-040 | Keşfet akışı | Orta | H-038 | ✅ |
 | 1.9 | H-041 | Editör onay ekranı, içerik içe aktarma | Orta | H-038 | ✅ |
-| 1.10 | H-042 | Profil, ayarlar, hukuki metinler | Orta | H-038 | ⏳ |
+| 1.10 | H-042 | Profil, ayarlar, hukuki metinler | Orta | H-038 | 🔄 |
 | 1.11 | H-043 | Kalite ve iç beta hazırlığı | Orta | H-039 … H-042 | ⏳ |
 | — | H-045 | Arayüz tasarım yönü (6 ekran taslağı, 6 kr) | Orta | H-033 | ✅ |
 | 1.12 | H-044 | Dış hesaplar, barındırma ve mağaza (en son) | Orta | H-043 | ⏳ |
@@ -154,7 +154,7 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 | İ3' | H-093 | Haftalık özette kanıt, Hi gizlilik, hikâye içi Söyle kanıtı | Orta | H-088, H-089 | ✅ |
 | İ4 | H-090 | İlk 7 gün A1 + Konuş'ta 3 yönlendirmeli sahne, kısa mesaj | Yüksek | H-088, H-089 | ✅ |
 | İ5 | H-091 | Kitap sonu anlama + yeniden anlatma | Orta | H-067 | ✅ |
-| İ6 | H-092 | Kullanılabilirlik testi ve 7–14 gün pilot | Yüksek | H-087…H-091 | ⏳ |
+| İ6 | H-092 | Kullanılabilirlik testi (A: erken, isteğe bağlı) ve 7–14 gün pilot (B: H-044 ile en sonda) | Yüksek | H-087…H-091; B için H-044 | ⏸ |
 
 **Sıra:** H-065 hemen (belge + katalog) → H-066 ve H-067, tasarım fazlarıyla paralel, ayrı dallarda → H-069 pilot → resim yoğunluğu ve ses planı kararı → H-068, H-070 → H-071 → H-072 → H-073.
 
@@ -480,3 +480,5 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
   - **Ses gelince iki hata çıktı ve düzeltildi:** (1) CIN/BOK'un son satırı kare penceresine sığmıyordu (kurgu sesi kesiyordu) → son kareler 3,0 / 3,3 sn'ye uzatıldı, paketler **12,6 / 11,0 / 11,0 sn**; yeni lint kuralı `reel.audio.fit` (hata). (2) Alt yazı zamanları eski kurguya göre elle yazılmıştı (CIN 3. satır 7,2 sn'de görünüyor, ses 10,1 sn'de başlıyordu) → `build_reel.py` cue ve kelime zamanlarını gerçek kurgudan hesaplıyor, `duration`'ı pakette güncelliyor; yeni lint kuralı `reel.cue.window` (kaynakta uyarı, pakette hata). Kaynak `reel.json`'lar ve mobil fixture'lar eşitlendi.
   - **Simülatörde doğrulandı** (2026-10-20): Keşfet "Bugün senin için 3 kısa video" → ilk video **A1-R-CIN-01** yeni **klip karesiyle** oynadı, sonunda "Tekrar izle" + "Kısa soru için yukarı kaydır" (geri sayım/baskı yok); gün dönünce seçki yenilendi, 18 Ekim'deki izleme "Tekrar" rozetini verdi (doğru davranış). Önizleme için açılış `app_meta.onboarding.completedAt` ile tohumlandı.
   - Testler: `flutter test` 1277, `pytest` 368, `flutter analyze` temiz; backend değişmedi. **Commit:** bu üretim turu. Sıradaki: örnek değerlendirmesi → 18 video bütçesi → H-092.
+  - 2026-10-21: Yeni oturum handoff'u (`docs/HANDOFF-2026-10-21.md`) doğrulandı: testler flutter 1284 · pytest 368 · backend 153, reel lint 18/0/0, backend kataloğu 18 yayında. Aralıklı düşen `showcase_route_test` bellek veritabanıyla düzeltildi; port (5435), Defter yolu ve simülatör notları düzeltildi (`f9b0720`). **Kullanıcı kararı:** H-092 bölündü — aşama A erken/isteğe bağlı, aşama B H-044 ile en sonda; sıradaki iş H-042.
+  - 2026-10-21: H-042 başladı (kullanıcı planı onayladı: hesap silme/geri alma uçtan uca, Hakkında ve lisanslar, günlük hatırlatma, hukukçu soru listesi; Profil'de CEFR seviyesi yok).
