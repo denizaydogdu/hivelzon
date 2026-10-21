@@ -154,9 +154,10 @@ Eşikler **garanti değil**, karar için çıtadır; sonuçlar kullanıcıya tek
 
 ## 8. Pilot öncesi kontrol listesi
 - [ ] P4: 18 reel `reel-lint` **0 hata** + `_build/lint.json` güncel.
-- [ ] Backend: 18 reel içe aktarıldı, **onaylandı ve yayınlandı**; geri çekme denendi (içerik oynatılmıyor).
+- [ ] Backend: 18 reel içe aktarıldı, **onaylandı ve yayınlandı**; geri çekme denendi (uygulama kataloğundan düşüyor, günlük seçki aynı kategoriden yedekliyor).
+- [ ] Uygulama **backend kataloğunu** okuyor (`REEL_CATALOG_URL` varsayılan `:8080/api/v1/catalog/reels`); backend kapalıyken Keşfet hata verir (dosya kataloğuna düşmez).
 - [ ] Uygulama sürümü sabit (build numarası kaydedildi); TestFlight/cihaz kurulumu H-044 kararı.
-- [ ] İçerik sunucusu/CDN erişimi; 18 paketin sesi açılıyor.
+- [ ] İçerik sunucusu/CDN erişimi; 18 paketin sesi açılıyor; **kadın/erkek karakter sesleri ayrı** (Sarah · Will · Chris).
 - [ ] Onam formu ve veli formu çıktı; katılımcı takvimi.
 - [ ] Moderator + not alan kişi belirlendi; görüşme yeri/sessizlik.
 - [ ] Yedek cihaz + şarj + kulaklık; ağ kesilirse planı (video indirilebilir mi?).

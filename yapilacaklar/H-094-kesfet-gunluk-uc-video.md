@@ -1,6 +1,6 @@
 # H-094: Keşfet — seviyeye ve ilgiye göre günlük üç kısa video (reel)
 
-- **Durum:** Sürüyor — **P0, P1, P2, P3 ve P4 tamamlandı** (kredisiz). **18 reellik pilot üretildi ve 18/18 sesli**; backend yayın/geri çekme provası yapıldı (2026-10-21). Pilotta uçtan uca geri çekme için uygulamanın backend kataloğuna bağlanması gerekiyor (`docs/H-094-P4-PROVA-2026-10-21.md` §5–§7). Ücretli üretim onayı alındı (2026-10-20), pilot yayını için ayrı onay gerekir.
+- **Durum:** Sürüyor — **P0, P1, P2, P3 ve P4 tamamlandı** (kredisiz). **18 reellik pilot üretildi ve 18/18 sesli** (konuşmacıya göre Sarah/Will/Chris); uygulama **backend'in yayımlanmış kataloğunu** okuyor; yayın/geri çekme uçtan uca doğrulandı (2026-10-21). Ücretli üretim onayı alındı (2026-10-20), pilot yayını için ayrı onay gerekir.
 - **Tür:** Uygulama (kod) + içerik boru hattı + içerik pilotu
 - **Faz:** F1 MVP — ürün incelemesi sonrası (2026-10-18)
 - **Bağımlılık:** H-040 (Keşfet), H-089 (kanıt basamakları), H-088 (günlük plan); pilot içerik için ücretli üretim onayı ve `PROMPTS.md`
@@ -115,3 +115,10 @@ Kendi dalında; `git revert`. İçerik paketleri `/reels/` altında ayrı durur;
   - **Geri çekme:** `A2-R-CIN-03` → **WITHDRAWN**, A2 katalog **9 → 8**, kimlik yok, gerekçe `OTHER`, `allowedActions` boş. Prova sonunda yerel veri SQL ile geri alındı (üretimde yeni sürüm gerekir).
   - **Bulgu (pilot kapısı):** uygulama `/reels/index.json` (geliştirme sunucusu) okuyor; `GET /api/v1/catalog/reels` hiç çağrılmıyor. Backend'de yayın/geri çekme doğru, **uçtan uca değil**. Ayrıca backend yanıtında `categoryTr`, `family`, `poster`, `sourceType` yok. Karar: uygulamayı backend kataloğuna bağlamak (öneri), içeriği dondurmak ya da yalnız yerelde sunucuyu süzmek.
   - **Sıradaki:** F1 kararı (backend kataloğuna bağlama) → H-092. **Commit:** belge + H-094 güncellemesi, onay bekliyor.
+- 2026-10-21 (devam): **Uygulama backend kataloğuna bağlandı; sesler konuşmacıya göre ayrıldı.**
+  - **F1 (pilot kapısı):** `HttpContentSource.listReels()` artık varsayılan olarak `GET /api/v1/catalog/reels` okur (`REEL_CATALOG_URL`; sayfalama `size=100`), her kaydın `packageBaseUrl`'ini saklar; `reel.json`/medya adresleri oradan kurulur. Yayında olmayan kimlik oynatılmaz; backend hatasında dosya kataloğuna sessizce düşülmez. Backend `ReelItem`'a `family` eklendi (seçki "aynı aile bir kez"). Dosya kataloğu yalnız `REEL_CATALOG_URL=''` demo modu.
+  - **F4 (bulundu/düzeltildi):** backend kataloğunda hiç olmayan (geri çekilen) video seçkiden çıkarken yerine yedek konmuyordu (3 → 2 video). Kategori artık saklanan kimlikten okunur (`reelCategoryFromId`); regresyon testi eklendi. Simülatörde CIN-01 geri çekilince seçki **CIN-02 · SPO-01 · BOK-01** (üç video) oldu; dosya kataloğunda CIN-01 durmasına rağmen.
+  - **Ses (kullanıcı geri bildirimi):** görsellerde kadın/erkek karakter varken bütün replikler Sarah (kadın) sesiyle okunuyordu. `tts_reel.py` konuşmacıya göre ses seçer: kadınlar **Sarah**, genç erkekler (Kerem/Mert/Deniz) **Will**, olgun erkekler (Coach/seyirci) **Chris**. 27 erkek repliği (605 karakter) yeniden üretildi; ayrı defter **1.670 / 72 çağrı** (ana defter 9.851 değişmedi), Higgsfield kredisi harcanmadı. Ölçülen F0: erkek ~130–170 Hz, kadın ~220–270 Hz.
+  - **Yeniden kurulum:** 18 paket `build_reel.py --force`; kaynak `reel.json` süre/cue eşitlendi; 18 mobil fixture + `index.json` yenilendi. `reel-lint` **18 · 0 hata · 0 uyarı**.
+  - **Testler:** `pytest` **368**, `flutter test` **1284** (+5 backend katalog, +1 seçki regresyonu), `flutter analyze` temiz, backend `mvn test` **153**. Uçtan uca prova: 18/18 yayın, geri çekme katalogdan düşüyor.
+  - **Sıradaki:** H-092 kullanıcı pilotu (backend + içerik sunucusu açık; uygulama backend kataloğunu okur). **Commit:** onay bekliyor.
