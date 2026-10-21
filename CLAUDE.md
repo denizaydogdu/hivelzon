@@ -53,7 +53,7 @@
 | K-34 | Durum makinesi K-05 olarak kalır. Kanon kontrolü onay kontrol listesinin bir maddesidir. |
 | K-35 | A1 hikâye videosu 45–90 sn (CEFR tablosu güncellendi). |
 | H-007 | **Konuşma pratiği (AI sohbet) MVP'de yok;** v1'de gelir. |
-| H-002 | **Her yaş kullanabilir; hesap 13+** (kullanıcı kararı 2026-10-13, eski "13+" kararının yerine). 13 yaş altı uygulamanın tamamını **hesapsız** kullanır: bütün bölümler, defter, tekrar, Söyle; veriler yalnızca cihazda, e-posta ve hesap yok. Hesap açma 13+ (backend 13 altı kaydı reddeder). AI sohbeti yalnızca 18+. Yaş için yalnız doğum yılı sorulur. (Hukuk teyidi bekliyor; mağaza aile politikaları H-043/H-044.) |
+| H-002 | **Her yaş kullanabilir; hesap 13+** (kullanıcı kararı 2026-10-13, eski "13+" kararının yerine). 13 yaş altı uygulamanın tamamını **hesapsız** kullanır: bütün bölümler, defter, tekrar, Söyle; veriler yalnızca cihazda, e-posta ve hesap yok. Hesap açma 13+ (backend 13 altı kaydı reddeder). AI sohbeti yalnızca 18+. Yaş için yalnız doğum yılı sorulur. **Hukukçu teyit etti (2026-10-21):** 13 altı hesapsız kullanım ve 13–17 hesap için veli onayı gerekmez, doğum yılı beyanı yeterli; cihazda konuşma tanıma KVKK kapsamında değil. Mağaza aile politikaları H-044. |
 | H-003 | **Aylık AI harcama tavanı 300 USD.** Tavan dolunca ücretli üretim ve AI özellikleri durur. |
 | H-028 | İçerik onayı: Claude üretir, kullanıcı onaylar; her ünite sonunda öğretmen ya da editör toplu kontrol yapar. |
 | K-17 | **Birleşik 4 faz:** F0 kararlar + pilot · F1 MVP (hikâye modu, S1 A1, harita, defter, kısa akış, editör onayı) · F2 v1 (AI konuşma, S2 A2) · F3 v2 (S3+, çevrimdışı, gelişmiş seviye modeli) |
@@ -160,7 +160,7 @@ cd mobile && flutter run -d "hiVelzon iPhone 17"       # içerik adresi: --dart-
 | ~~Günlük hedef seçenekleri~~ | **Çözüldü (H-013):** 5 / 10 / 15 dk; günde en fazla 1 hatırlatma | |
 | ~~Seri (streak)~~ | **Çözüldü (K-16, 2026-10-11):** kırık seri vurgulanmaz; dondurma ve onarma var; kurtarma görevi yok; seri anlamlı etkinlikle korunur | |
 | Telaffuz puanı (**açık, H-015**) | v1'de "Söyle" alıştırmalarıyla birlikte (§11) | Yalnızca güvenilir biçimde ölçülebiliyorsa gösterilir; kesin skor iddiası yok (§6.5) |
-| ~~Yaş~~ | **Çözüldü (H-002, 2026-10-13 güncellendi):** her yaş kullanır; hesap 13+, 13 altı hesapsız tam kullanım (cihazda); AI sohbeti 18+, 13–17 rehberli (H-047). Hukuk teyidi bekliyor. | |
+| ~~Yaş~~ | **Çözüldü (H-002, 2026-10-13 güncellendi):** her yaş kullanır; hesap 13+, 13 altı hesapsız tam kullanım (cihazda); AI sohbeti 18+, 13–17 rehberli (H-047). Hukukçu teyit etti (2026-10-21). | |
 
 Şartnamedeki **açık kararlar listesi** (§18) H-002…H-020 işlerine dağıtıldı. Sıra ve durum: `yapilacaklar/IS-SIRASI.md`.
 

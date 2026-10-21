@@ -26,7 +26,7 @@ Bazı fiillere ekten önce bir harf daha gelir. Birkaçı da tamamen değişir. 
 + Sam [[likes]] radios. | Sam telsizleri sever.
 
 ## contrast | Türkçede nasıl?
-Türkçede fiil her kişide ek alır, ama o için çoğu zaman eksizdir: çalışırım, çalışır. İngilizce tam tersi: ek yalnız o için gelir. Bu yüzden ek kolayca unutulur, hiç sorun değil.
+Türkçede fiil kişiye göre ek alır: çalışırım, çalışırsın. Yalnız o için kişi eki yoktur: çalışır. İngilizcede tam tersi: kişi eki yalnız o için gelir. Bu yüzden -s kolayca unutulur, hiç sorun değil.
 x He work every day. | Ek eksik.
 + He [[works]] every day. | O her gün çalışır.
 x They works here. | Onlar için ek gelmez.

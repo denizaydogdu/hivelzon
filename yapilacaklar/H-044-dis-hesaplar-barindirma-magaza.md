@@ -30,3 +30,4 @@ Medya adaptörü yapılandırmayla yerel adaptöre döner; sunucu kurulumu repo 
 2026-10-11: Kullanıcı sunucu yerini, Bunny Stream hesabını ve Apple / Google geliştirici hesaplarını en sona bıraktı. O zamana kadar her şey yerelde çalışır.
 2026-10-12: H-047'ye göre v1'deki AI sohbetinin (Hi-B) üretim sağlayıcısı da ölçümle bu aşamada seçilir (yerel Ollama mı, barındırılan model mi). Ticari ElevenLabs (H-006) yayından önce şart.
 2026-10-12 (H-054'ten): Medya CDN'den (Bunny), uyarlanabilir akış (HLS); sunucu Türkiye'de (gecikme + KVKK).
+2026-10-21: **Kullanıcı kararı:** kullanıcı verisi **Almanya'daki bir sunucuda** barındırılacak; hukukçuya göre KVKK md. 9 standart sözleşme/Kurul bildirimi gerekmez. Muhasebe soruları (yurt dışı hizmet KDV, fatura akışı) canlıya çıkarken bu işte ele alınacak. iOS `NSAllowsLocalNetworking` mağaza derlemesinde kapatılacak.

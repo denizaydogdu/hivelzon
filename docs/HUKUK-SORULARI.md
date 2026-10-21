@@ -174,3 +174,22 @@ Uygulamanın "Hakkında ve lisanslar" ekranında atıflar ve açık kaynak lisan
   - `docs/LISANS-RAPORU.md` §8;
   - `docs/H-092-PILOT-KITI.md` §3;
   - uygulamadaki yer tutucu metinlerin ekran görüntüleri (Profil → Hakkında → Kullanım koşulları / KVKK aydınlatma metni).
+
+## Cevaplar (hukukçu, kullanıcı aracılığıyla, 2026-10-21)
+
+- **§3 Yaş kuralları (S1, S2, S4):** 13 yaş altının hesapsız, verisi yalnız cihazda kalan kullanımı için **veli onayı gerekmez**. 13–17 yaş hesap açarken **veli onayı şart değil**; **doğum yılı beyanı yeterli**.
+- **§1 KVKK aydınlatma (S1, S2):** Metni **Claude taslak olarak yazar**; hukukçu sonra gözden geçirip düzeltir. Hukuki sebepler taslakta sözleşmenin ifası (5/2-c) ve meşru menfaat (5/2-f) olarak önerilecek; hukukçu kontrolünde kesinleşir.
+- **§1 S3 Ticari ileti kutusu:** "Yenilikleri e-postayla almak istiyorum" kutusu (varsayılan boş) **kalabilir**; şu aşamada **İYS kaydı gerekmiyor**.
+- **§1 S4 Sunucu yeri:** Kullanıcı verisi **Almanya'daki bir sunucuda** barındırılacak (kullanıcı kararı, H-044). Hukukçuya göre standart sözleşme / Kurul bildirimi **gerekmez**.
+- **§1 S5 VERBİS:** Kayıt **gerekmiyor**.
+- **Veri sorumlusu kimliği (unvan, adres, iletişim):** Kullanıcı notu: "hiVelzon, Velzon iştirakidir" denmeli; ayrıntı **ayrı bir fazda** ele alınacak (açık). Metinlerde şimdilik yer tutucu.
+- **§2 S1 Kullanım koşulları:** Taslağı **Claude yazar**, hukukçu gözden geçirir. Yetkili mahkeme şehri şirket bilgileriyle birlikte (ayrı faz) kesinleşecek; şimdilik yer tutucu.
+- **§2 S4 Metin değişince yeniden onay:** **Gerekmiyor**; bildirim yeterli. → Kod etkisi: backend'deki `CONSENT_VERSION_OUTDATED` eşitlemeyi durdurmamalı; yalnız uygulama içi bildirim (ayrı küçük iş, kullanıcı onayıyla).
+- **§2 S3 Yapay zekâ açıklaması:** Mevcut uygulama (bölüm başında ~4 sn not, sosyal medyada gömülü, Hi'nin kendini tanıtması) **yeterli**; ek yükümlülük yok.
+- **§4 Cihazda konuşma tanıma:** Ses saklanmadığı ve cihazdan çıkmadığı için **KVKK kapsamına girmez**; **biyometrik veri sayılmaz**; 13 altı ve 13–17 için açık bırakmanın **sakıncası yok**.
+- **§5 Denetim kaydı:** 5651 **uygulanmaz**. IP/port/saat kayıtları **2 yıl** saklanır; hesap silinince **hemen boşaltılmaz**, 2 yıl dolana kadar tutulur. → Kod etkisi: backend'in silme/temizlik işinin IP-port alanlarını erken silip silmediği kontrol edilecek; 2 yıl saklama ve süre sonunda silme kuralı (ayrı küçük iş).
+- **§6 S1 30 gün geri alınabilir silme:** Mevcut haliyle **kalabilir**; yönetmelikle çelişmiyor.
+- **§6 S2–S3 Silme sonrası:** Rıza kayıtları da hesap silindikten sonra **2 yıl saklanır** (ispat). → Kod etkisi: kalıcı silmede rıza ve denetim kayıtları 2 yıl tutulup sonra silinmeli (ayrı küçük iş). Saklama ve imha politikası: VERBİS gerekmediği için zorunlu sayılmadı (Claude notu); istenirse taslak yazılır.
+- **§7 Pilot onam metni:** Aydınlatma ve onamın tek metinde olması **uygun**; **90 gün** saklama **yeterli**; 13–17 katılımcı için **ek veli onayı gerekmez**. → `docs/H-092-PILOT-KITI.md` §2–§3 ve §7'deki "veli izni zorunlu" ifadeleri güncellenecek.
+- **§8 İçerik lisansları:** CEFR-J atfı ("Hakkında ve lisanslar" + veri dosyası başlığı) **yeterli**; Octanove CC BY-SA listesini **ayrı veri seti** olarak tutmak **yeterli**.
+- **Muhasebe soruları** (yurt dışı hizmet KDV, fatura akışı, bütçe sorumlusu): kullanıcı kararıyla **canlıya çıkarken (H-044)** ele alınacak.

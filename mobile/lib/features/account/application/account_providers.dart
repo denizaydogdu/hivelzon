@@ -290,7 +290,11 @@ class SyncController extends Notifier<SyncUiState> {
         },
       );
     }
-    unawaited(syncNow());
+    // Hesap durumu önceden yüklüyse dinleyici build() içinde hemen tetiklenir;
+    // durum henüz oluşmadığı için ilk tur build bittikten sonra başlar.
+    scheduleMicrotask(() {
+      if (ref.mounted && _running) unawaited(syncNow());
+    });
   }
 
   void _stop() {

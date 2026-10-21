@@ -1,6 +1,6 @@
 # H-092 — Pilot kiti (gözlemli test + 7–14 günlük pilot)
 
-> **Durum (2026-10-21):** Metin taslağı — kullanıcı onayı ve hukuk teyidi (H-002) bekliyor. Bu belge
+> **Durum (2026-10-21):** Onam metni hukukçu tarafından uygun bulundu (tek metin, 90 gün yeterli, 13–17 ek veli onayı yok); veri sorumlusu bilgileri ayrı fazda. Bu belge
 > H-092'nin "test senaryosu ve onay metni hazır" teslimini karşılar; saha çalışması (5 kişi + 15–20 kişi)
 > henüz yapılmadı. **Pilot içeriği ve teknik kapı hazır:** 18 sesli reel (Sarah/Will/Chris) yayında,
 > uygulama backend'in yayımlanmış kataloğunu okuyor, geri çekme uçtan uca doğrulandı.
@@ -25,7 +25,7 @@ düzeltilmeden B başlamaz.
 
 - **Dil seviyesi:** A1 veya A2 (kendi beyanı + uygulama yerleştirmesi). A2 ağırlıklı olabilir.
 - **Cihaz:** gerçek iPhone (simülatör değil), iOS 17+, kulaklık. Android bu turda **yok**.
-- **Yaş:** **13 yaş altı katılımcı yok** (H-002 kararı). 13–17 için **veli izni** zorunlu.
+- **Yaş:** **13 yaş altı katılımcı yok** (H-002 kararı). 13–17 için ek veli onayı **gerekmez** (hukukçu, 2026-10-21).
 - **Hariç:** proje ekibi, içerik üretiminde yer alanlar, aynı haneden ikinci kişi.
 - **Teşvik:** yok (pilot); ulaşım/cihaz sağlanmaz.
 - **Hedef çeşitlilik:** en az 2 katılımcı İngilizceyi iş için, 2'si seyahat için öğreniyor;
@@ -57,7 +57,6 @@ düzeltilmeden B başlamaz.
 > **Çekilme:** Çalışmadan ayrılırsanız o güne kadarki notlarınız silinir; bunun için
 > [iletişim] adresine yazmanız yeterlidir.
 >
-> **13–17 yaş:** Katılımcı 18 yaşından küçükse veli/vasi onayı ayrıca alınır.
 >
 > Onaylıyorum ☐  ·  Ekran görüntüsü alınmasına izin veriyorum ☐  ·  Tarih/İmza: ______
 
@@ -152,7 +151,7 @@ Eşikler **garanti değil**, karar için çıtadır; sonuçlar kullanıcıya tek
 ## 7. Veri ve etik sınırlar
 - İçerik metni, ham ses, transkript **toplanmaz**; ekran görüntüsü yalnız onam varsa.
 - Notlar katılımcı koduyla; rapor sonrası en geç 90 gün içinde silinir.
-- 13 yaş altı yok; 13–17 veli izni; istediği an çekilme.
+- 13 yaş altı yok; 13–17 için ek veli onayı gerekmez; istediği an çekilme.
 - Pilot verisi **Defter/FSRS kanıtı sayılmaz**; ürün kararı içindir.
 
 ## 8. Pilot öncesi kontrol listesi
@@ -161,7 +160,7 @@ Eşikler **garanti değil**, karar için çıtadır; sonuçlar kullanıcıya tek
 - [ ] Uygulama **backend kataloğunu** okuyor (`REEL_CATALOG_URL` varsayılan `:8080/api/v1/catalog/reels`); backend kapalıyken Keşfet hata verir (dosya kataloğuna düşmez).
 - [ ] Uygulama sürümü sabit (build numarası kaydedildi); TestFlight/cihaz kurulumu H-044 kararı.
 - [ ] İçerik sunucusu/CDN erişimi; 18 paketin sesi açılıyor; **kadın/erkek karakter sesleri ayrı** (Sarah · Will · Chris).
-- [ ] Onam formu ve veli formu çıktı; katılımcı takvimi.
+- [ ] Onam formu çıktı; katılımcı takvimi.
 - [ ] Moderator + not alan kişi belirlendi; görüşme yeri/sessizlik.
 - [ ] Yedek cihaz + şarj + kulaklık; ağ kesilirse planı (video indirilebilir mi?).
 

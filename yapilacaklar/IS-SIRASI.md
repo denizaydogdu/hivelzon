@@ -31,7 +31,7 @@ Bu dosya tek takip noktasıdır. Hangi işin hangi sırada yapıldığını, şu
   - H dosyasının `Durum` satırı güncellenir;
   - **Günlük** bölümüne bir satır eklenir.
 - **Biten işler:** "Biten işler" tablosuna doğrulama kanıtıyla birlikte yazılır.
-- **Numaralar:** Tek sayaçla verilir. Sıradaki boş numara: **H-095**.
+- **Numaralar:** Tek sayaçla verilir. Sıradaki boş numara: **H-096**.
 
 **Durum simgeleri:**
 - ⛔ Kullanıcı kararı bekliyor
@@ -115,6 +115,7 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 | 1.9 | H-041 | Editör onay ekranı, içerik içe aktarma | Orta | H-038 | ✅ |
 | 1.10 | H-042 | Profil, ayarlar, hukuki metinler | Orta | H-038 | 🔄 |
 | 1.11 | H-043 | Kalite ve iç beta hazırlığı | Orta | H-039 … H-042 | 🔄 |
+| 1.10' | H-095 | Hukukçu cevaplarının uygulanması (yeniden onay yok, 2 yıl saklama, KVKK ve koşullar metni) | Yüksek | H-042 | 🔄 |
 | — | H-045 | Arayüz tasarım yönü (6 ekran taslağı, 6 kr) | Orta | H-033 | ✅ |
 | 1.12 | H-044 | Dış hesaplar, barındırma ve mağaza (en son) | Orta | H-043 | ⏳ |
 
@@ -484,3 +485,4 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
   - 2026-10-21: H-042 başladı (kullanıcı planı onayladı: hesap silme/geri alma uçtan uca, Hakkında ve lisanslar, günlük hatırlatma, hukukçu soru listesi; Profil'de CEFR seviyesi yok).
   - 2026-10-21: **H-042 kodu main'de:** hesap silme/geri alma uçtan uca (oturum kapalıyken de 'silinmek üzere + tarih' kartı, yeni kod gerekçesi), Profil → Hakkında (kullanım koşulları ve KVKK taslak işaretli; 'Hakkında ve lisanslar': CEFR-J v1.6 zorunlu atfı, Octanove, py-fsrs, EnglishPractice, yazı tipleri, açık kaynak lisansları), günlük hatırlatma (kapalı varsayılan, saat seçimi, günde 1, izin açınca; flutter_local_notifications + timezone), `docs/HUKUK-SORULARI.md`. Keşfet 'İlgi alanların' paneli (H-094'ün son ürün eksiği) main'de. Testler mobil 1351, pytest 368. Kalan H-042: hukukçu metni ve gerçek backend'le cihaz denemesi. Küçük açık not: SyncController hesap açıkken ilk oluşturulunca hata veriyor (uygulamada tetiklenmiyor).
   - 2026-10-21: **H-043 yerel kısmı main'de:** Android ana manifestinde INTERNET, yerel çökme kaydı + 'Hata kaydını paylaş' (share_plus), sakin hata ekranı, sonsuz spinner ve tekrar dene düzeltmeleri, yaş sınırı okunamazsa 20 dk (güvenli taraf), hata/boş durum erişilebilirlik testleri (+40), hareketi azalt, Türkçe iOS izin metinleri (geliştirme bölgesi tr), sürüm 0.1.0+1, geçici simge ve açılış ekranı (H-016'ya kadar), `docs/BETA-KONTROL-LISTESI.md`, `tools/device-build.sh`, `serve.py --host`. Testler mobil 1416 · pytest 368; iOS simülatör ve Android debug derlemesi geçti. Kalan H-043: gerçek telefon kontrolleri (listenin 2. bölümü).
+  - 2026-10-21: Hukukçu soruları cevaplandı (`docs/HUKUK-SORULARI.md` → Cevaplar). H-095 açıldı: yeniden onay yerine bildirim, rıza/denetim kayıtları 2 yıl, KVKK ve kullanım koşulları taslakları.

@@ -49,3 +49,5 @@ Aşağıdaki satırları `tts_lesson.py` yazar.
 | 2026-10-14T12:15:38Z | c04-ex5 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 17 | d45d9d05be5e29f3 | audio/en/c04-ex5.mp3 |
 | 2026-10-14T12:15:39Z | c05-ex1 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 19 | fd897b50dc1b721f | audio/en/c05-ex1.mp3 |
 | 2026-10-14T12:15:40Z | c05-ex2 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 15 | 54c93338773343d8 | audio/en/c05-ex2.mp3 |
+| 2026-10-21T12:31:45Z | c05-tr | alania-v2 | alania2-f1 | alania-v2.1 | 198 | 16.37 | 8e1245fcf8434f94b012215a4f7db56b | c7304f6f7e274fa5 |
+| 2026-10-21T12:31:47Z | c05-tr | duyu-1 | - | - | - | 16.37 | - | c7304f6f7e274fa5 |
