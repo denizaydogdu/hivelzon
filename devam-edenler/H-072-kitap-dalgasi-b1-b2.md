@@ -1,6 +1,6 @@
 # H-072: Kitap dalgası 2: B1 + B2 (10 kitap)
 
-- **Durum:** Devam ediyor (5 B1 + 5 B2 kitabının metni ve taslak çevirisi main'de, lint 0 hata; kullanıcı onayı, görseller (B1 28 + B2 31 = 59 ≈ 29,5 kr; maliyet onayı) ve ses bekleniyor)
+- **Durum:** Devam ediyor (2026-10-21): 5 B1 + 5 B2 kitabının metni ve çevirisi kullanıcı onaylı, lint 0 hata; 10 kitabın hepsi tam resimli (B1 28 + B2 31 görsel; B2-K01 p13 H-084'te tamamlandı). Kalan: ses (yeni ElevenLabs anahtarı) ve editör kontrolü (H-028).
 - **Tür:** İçerik üretimi
 - **Faz:** Kitaplık K7 (`docs/KITAPLIK.md` §9)
 - **Bağımlılık:** H-071

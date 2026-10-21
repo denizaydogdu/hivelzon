@@ -1,6 +1,6 @@
 # H-071: Kitap dalgası 1: A1 + A2 (kalan 8 kitap)
 
-- **Durum:** Devam ediyor (metinler yazıldı, onay bekliyor)
+- **Durum:** Devam ediyor (2026-10-21): 10 A1–A2 kitabının metni ve çevirisi kullanıcı onaylı, hepsi tam resimli (dalga 1 görselleri 34, 17 kr). Sesli 5/10: A1-K01, A1-K03, A1-K04, A1-K05, A2-K03. Kalan: A1-K02, A2-K01, A2-K02, A2-K04, A2-K05 sesi ve A1-K01 metin düzeltmesinin sesi (yeni ElevenLabs anahtarı); editör kontrolü (H-028).
 - **Tür:** İçerik üretimi
 - **Faz:** Kitaplık K6 (`docs/KITAPLIK.md` §9)
 - **Bağımlılık:** H-069

@@ -1,6 +1,6 @@
 # H-043: Kalite ve iç beta hazırlığı
 
-- **Durum:** Devam ediyor (2026-10-21)
+- **Durum:** Devam ediyor (2026-10-21): yerel kısım bitti ve main'de (`docs/BETA-KONTROL-LISTESI.md` 1. bölüm); kalan gerçek telefon kontrolleri (2. bölüm). 3. bölüm H-044'te.
 - **Tür:** Uygulama (kod)
 - **Faz:** 1.11 (`docs/UYGULAMA-PLANI.md`)
 - **Bağımlılık:** H-039 … H-042 · **Sonraki:** H-044

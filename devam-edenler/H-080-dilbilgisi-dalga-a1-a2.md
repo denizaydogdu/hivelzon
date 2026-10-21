@@ -1,6 +1,6 @@
 # H-080: Dilbilgisi dalgası 1: A1 + A2
 
-- **Durum:** Devam ediyor (28 ders yazıldı + 3 pilot = 31 ders main'de, lint 0 hata, Türkçe sesler hazır (26.438 karakter, ücretsiz); İngilizce örnek sesi ~9.250 karakter bekliyor; kullanıcı onayı ve öğretmen kontrolü bekleniyor)
+- **Durum:** Devam ediyor (28 ders yazıldı + 3 pilot = 31 ders main'de, lint 0 hata, Türkçe sesler hazır (26.438 karakter, ücretsiz). İngilizce örnekler: A1 16/16 tam; A2 G-A2-01…07 tam, G-A2-08 kısmen; kalan A2 ≈ 2.990 karakter yeni ElevenLabs anahtarını bekliyor. G-A1-13 açıklaması 2026-10-21'de düzeltildi ve yeniden seslendirildi. Kullanıcı onayı ve öğretmen kontrolü bekleniyor)
 - **Tür:** İçerik üretimi
 - **Faz:** Dilbilgisi D4 (`docs/DILBILGISI.md` §8)
 - **Bağımlılık:** H-079

@@ -1,6 +1,6 @@
 # Kitaplık: seviyeli, resimli, sesli kitaplar (H-065…H-073)
 
-> Durum: **plan** (kullanıcı isteği ve onayı 2026-10-14). Kararlar §2'de; işler §9'da.
+> Durum: **uygulamada** (2026-10-21): 30 kitap yazıldı ve tam resimli, 5/30 sesli (kalan ses yeni ElevenLabs anahtarı bekliyor); okuyucu, "Sayfanın Türkçesi", kitap sonu anlama soruları ve backend kataloğu main'de. Kararlar §2'de; işler §9'da.
 
 ## 1. Neden
 Uygulamada hep okuma ve dilbilgisi var. Kullanıcı bazen yalnızca **dinlemek** ister (ör. yatakta): "A2 seviyesinde bir hikâye aç."
