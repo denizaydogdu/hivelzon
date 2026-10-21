@@ -113,7 +113,7 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 | 1.7 | H-039 | Onboarding ve yerleştirme | Orta | H-038 | ✅ |
 | 1.8 | H-040 | Keşfet akışı | Orta | H-038 | ✅ |
 | 1.9 | H-041 | Editör onay ekranı, içerik içe aktarma | Orta | H-038 | ✅ |
-| 1.10 | H-042 | Profil, ayarlar, hukuki metinler | Orta | H-038 | 🔄 |
+| 1.10 | H-042 | Profil, ayarlar, hukuki metinler | Orta | H-038 | ✅ |
 | 1.11 | H-043 | Kalite ve iç beta hazırlığı | Orta | H-039 … H-042 | 🔄 |
 | 1.10' | H-095 | Hukukçu cevaplarının uygulanması (yeniden onay yok, 2 yıl saklama, KVKK ve koşullar metni) | Yüksek | H-042 | ✅ |
 | — | H-045 | Arayüz tasarım yönü (6 ekran taslağı, 6 kr) | Orta | H-033 | ✅ |
@@ -487,3 +487,4 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
   - 2026-10-21: **H-043 yerel kısmı main'de:** Android ana manifestinde INTERNET, yerel çökme kaydı + 'Hata kaydını paylaş' (share_plus), sakin hata ekranı, sonsuz spinner ve tekrar dene düzeltmeleri, yaş sınırı okunamazsa 20 dk (güvenli taraf), hata/boş durum erişilebilirlik testleri (+40), hareketi azalt, Türkçe iOS izin metinleri (geliştirme bölgesi tr), sürüm 0.1.0+1, geçici simge ve açılış ekranı (H-016'ya kadar), `docs/BETA-KONTROL-LISTESI.md`, `tools/device-build.sh`, `serve.py --host`. Testler mobil 1416 · pytest 368; iOS simülatör ve Android debug derlemesi geçti. Kalan H-043: gerçek telefon kontrolleri (listenin 2. bölümü).
   - 2026-10-21: Hukukçu soruları cevaplandı (`docs/HUKUK-SORULARI.md` → Cevaplar). H-095 açıldı: yeniden onay yerine bildirim, rıza/denetim kayıtları 2 yıl, KVKK ve kullanım koşulları taslakları.
   - 2026-10-21: **H-095 bitti:** metin sürümü değişince yeniden onay yok (Ana Sayfa'da bir kez 'metin güncellendi' kartı; `CONSENT_VERSION_OUTDATED` kaldırıldı; sürüm taslak-2); kalıcı silmede rıza ve denetim kayıtları kalır, 2 yıl sonra günlük iş siler (V16, `RecordRetentionJob`; içerik onayı denetim satırları ağ alanları boşaltılarak korunur); KVKK aydınlatma (15 bölüm) ve kullanım koşulları (12 bölüm) taslakları, 'hukukçu gözden geçirecek'. Yer tutucular: veri sorumlusu, adres, iletişim, mahkeme, sağlayıcılar. Testler mobil 1427 · backend 155. Not: çalışan pilot backend'i yeniden başlatılınca V16 yerel veritabanına uygulanır.
+  - 2026-10-21: **Uçtan uca hesap testi (gerçek backend, geçici simülatör, ayrı test veritabanı):** kayıt + eşitleme, eski metin sürümüyle eşitleme engellenmez ve 'metin güncellendi' kartı bir kez çıkar (H-095), silme → 'silinmek üzere' kartı → yeni kodla geri alma → veri geri gelir (H-042), kalıcı silmede rıza/denetim kayıtları kalır. Hepsi geçti; ürün hatası yok. **H-042 bitti.**
