@@ -17,6 +17,9 @@ class AccountDeletionTest extends IntegrationTest {
     @Autowired
     AccountPurgeService purge;
 
+    @Autowired
+    RecordRetentionJob retention;
+
     @Test
     void deleteMarksPendingRevokesSessionsAndIsIdempotent() {
         Response session = login(EMAIL);
@@ -75,7 +78,7 @@ class AccountDeletionTest extends IntegrationTest {
     }
 
     @Test
-    void purgeAfterThirtyDaysDeletesPersonalDataKeepsAnonymisedAudit() {
+    void purgeAfterThirtyDaysDeletesPersonalDataKeepsConsentAndAuditProof() {
         String access = login(EMAIL).text("accessToken");
         String userId = get("/api/v1/me", access).text("id");
         login("kalan@example.com");
@@ -91,21 +94,75 @@ class AccountDeletionTest extends IntegrationTest {
 
         assertThat(count("SELECT count(*) FROM users")).isEqualTo(1);
         assertThat(count("SELECT count(*) FROM users WHERE email = ?", EMAIL)).isZero();
-        assertThat(count("SELECT count(*) FROM consents WHERE user_id = ?::uuid", userId)).isZero();
         assertThat(count("SELECT count(*) FROM refresh_tokens WHERE user_id = ?::uuid", userId)).isZero();
-        assertThat(count("SELECT count(*) FROM audit_log WHERE actor_user_id = ?::uuid", userId)).isZero();
-        assertThat(count("SELECT count(*) FROM audit_log WHERE action = 'SIGNUP' AND actor_user_id IS NULL "
-                + "AND ip IS NULL AND port IS NULL AND user_agent_hash IS NULL")).isEqualTo(1);
+        // H-095: rıza kayıtları (sürüm, saat, IP, port) ve denetim satırları ispat için kalır; eski kimlik
+        // mezar taşıdır (e-posta, ad, doğum yılı silindi).
+        assertThat(count("SELECT count(*) FROM consents WHERE user_id = ?::uuid AND document_version IS NOT NULL "
+                + "AND created_at IS NOT NULL AND ip IS NOT NULL AND port IS NOT NULL", userId)).isEqualTo(3);
+        assertThat(count("SELECT count(*) FROM account_tombstones WHERE user_id = ?::uuid "
+                + "AND purged_at = '2026-11-12T10:00:00Z'", userId)).isEqualTo(1);
+        assertThat(count("SELECT count(*) FROM audit_log WHERE action = 'SIGNUP' AND actor_user_id = ?::uuid "
+                + "AND ip IS NOT NULL AND port IS NOT NULL", userId)).isEqualTo(1);
         assertThat(count("SELECT count(*) FROM audit_log WHERE action = 'ACCOUNT_PURGED'")).isEqualTo(1);
         // Diğer hesap etkilenmez.
         assertThat(count("SELECT count(*) FROM users WHERE email = 'kalan@example.com' AND status = 'ACTIVE'"))
                 .isEqualTo(1);
-        assertThat(count("SELECT count(*) FROM consents")).isEqualTo(3);
+        assertThat(count("SELECT count(*) FROM consents")).isEqualTo(6);
 
         // Eski erişim belirteci artık işe yaramaz; aynı e-posta yeniden kayıt olabilir.
         assertThat(problemCode(get("/api/v1/me", access))).isEqualTo("UNAUTHORIZED");
         startOtp(EMAIL);
         Response again = verify(EMAIL, mail.lastCodeFor(EMAIL), null);
         assertThat(problemCode(again)).isEqualTo("SIGNUP_DETAILS_REQUIRED");
+    }
+
+    @Test
+    void retentionDeletesConsentsTwoYearsAfterPurgeAndAuditTwoYearsAfterEvent() {
+        String access = login(EMAIL).text("accessToken");
+        String userId = get("/api/v1/me", access).text("id");
+        login("kalan@example.com");
+        call("DELETE", "/api/v1/me", null, access);
+        clock.advance(Duration.ofDays(30));
+        assertThat(purge.purgeDue()).isEqualTo(1); // 2026-11-12T10:00Z
+        // Etkin hesapta 2 yıl sonra olacak bir olay (silinmemeli).
+        clock.advance(Duration.ofDays(400));
+        String keptAccess = login("kalan@example.com").text("accessToken");
+        assertThat(call("POST", "/api/v1/me/consents", java.util.Map.of("type", "MARKETING", "version", "taslak-1",
+                "granted", true), keptAccess).status()).isEqualTo(201);
+
+        // Silmeden 2 yıl geçmeden: hiçbir rıza silinmez; denetim satırları da olaydan 2 yıl dolmadan kalır.
+        moveTo("2028-10-13T09:59:59Z");
+        RecordRetentionJob.Result early = retention.run();
+        assertThat(early.consents()).isZero();
+        assertThat(early.auditRows()).isZero();
+        assertThat(count("SELECT count(*) FROM consents WHERE user_id = ?::uuid", userId)).isEqualTo(3);
+
+        // Olaydan 2 yıl sonra: 2026-10-13'teki denetim satırları silinir; silinen hesabın rızaları hâlâ kalır
+        // (süre silinme anından, 2026-11-12'den sayılır).
+        moveTo("2028-10-13T10:00:01Z");
+        assertThat(retention.run().auditRows()).isPositive();
+        assertThat(count("SELECT count(*) FROM audit_log WHERE at < '2026-10-14T00:00:00Z'")).isZero();
+        assertThat(count("SELECT count(*) FROM audit_log WHERE action = 'ACCOUNT_PURGED'")).isEqualTo(1);
+        assertThat(count("SELECT count(*) FROM consents WHERE user_id = ?::uuid", userId)).isEqualTo(3);
+
+        // Silinmeden 2 yıl sonra: rızalar ve mezar taşı silinir; etkin hesabın rızaları kalır.
+        moveTo("2028-11-12T10:00:01Z");
+        RecordRetentionJob.Result due = retention.run();
+        assertThat(due.consents()).isEqualTo(3);
+        assertThat(count("SELECT count(*) FROM consents WHERE user_id = ?::uuid", userId)).isZero();
+        assertThat(count("SELECT count(*) FROM account_tombstones")).isZero();
+        assertThat(count("SELECT count(*) FROM audit_log WHERE action = 'ACCOUNT_PURGED'")).isZero();
+        assertThat(count("SELECT count(*) FROM consents")).isEqualTo(4);
+        assertThat(count("SELECT count(*) FROM audit_log WHERE action = 'CONSENT_CHANGE'")).isEqualTo(1);
+
+        // İdempotent.
+        RecordRetentionJob.Result again = retention.run();
+        assertThat(again.consents()).isZero();
+        assertThat(again.auditRows()).isZero();
+        assertThat(count("SELECT count(*) FROM consents")).isEqualTo(4);
+    }
+
+    private void moveTo(String iso) {
+        clock.advance(Duration.between(clock.instant(), java.time.Instant.parse(iso)));
     }
 }

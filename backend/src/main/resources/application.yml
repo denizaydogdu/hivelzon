@@ -84,9 +84,10 @@ hivelzon:
     minimum-age: 13
     adult-age: 18
   consent:
-    # Hukuk metinleri yazılınca sürümler güncellenir (açık soru, H-037 notları).
-    terms-version: ${HIVELZON_TERMS_VERSION:taslak-1}
-    privacy-notice-version: ${HIVELZON_PRIVACY_NOTICE_VERSION:taslak-1}
+    # Metinlerin güncel sürümleri (uygulamadaki sürümle aynı tutulur). Sürüm değişince yeniden onay istenmez;
+    # eski sürümü onaylamış hesap her şeyi kullanmaya devam eder, uygulama bildirim gösterir (H-095).
+    terms-version: ${HIVELZON_TERMS_VERSION:taslak-2}
+    privacy-notice-version: ${HIVELZON_PRIVACY_NOTICE_VERSION:taslak-2}
     marketing-version: ${HIVELZON_MARKETING_VERSION:taslak-1}
   mail:
     from: ${HIVELZON_MAIL_FROM:hiVelzon <no-reply@hi.velzon.tr>}
@@ -113,10 +114,15 @@ hivelzon:
     push-per-hour: ${HIVELZON_RL_SYNC_PUSH_PER_USER:240}
     pull-per-hour: ${HIVELZON_RL_SYNC_PULL_PER_USER:1200}
     rate-per-hour: ${HIVELZON_RL_REVIEW_RATE_PER_USER:2000}
+  retention:
+    # Rıza kayıtları (hesap kalıcı silindikten sonra) ve denetim kaydı (olay tarihinden) saklama süresi (H-095).
+    records: 2y
   jobs:
     enabled: ${HIVELZON_JOBS_ENABLED:true}
     purge-cron: "0 17 * * * *"
     cleanup-cron: "0 */15 * * * *"
+    # H-095: süresi dolan rıza ve denetim kayıtlarının temizliği (her gün 03:41 UTC).
+    retention-cron: "0 41 3 * * *"
   tts:
     # Türkçe seslendirme (Alania) ve Türkçe konuşma tanıma (Duyu), PatientDesk AI (kullanıcı kararı
     # 2026-10-14: yalnızca Türkçe cümleler). Anahtar yalnızca sunucuda; yerelde backend.yml'den,

@@ -2,6 +2,7 @@ package tr.velzon.hivelzon.audit;
 
 import java.sql.Timestamp;
 import java.time.Clock;
+import java.time.Instant;
 import java.util.UUID;
 
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -39,12 +40,21 @@ public class AuditService {
         record(action, actor, ctx, null);
     }
 
-    /** Hesap kalıcı silinince: kullanıcıya bağlanan bütün alanlar boşaltılır, eylem ve saat kalır. */
+    /**
+     * Saklama süresi (olay tarihinden 2 yıl, H-095) dolan satırlar. Hesap silinmiş olsa da satır bu süreye kadar
+     * kalır. İçerik onay akışının satırları ({@code CONTENT_*}) editör geçmişi olduğu için silinmez; yalnızca
+     * IP, port, tarayıcı özeti ve istek kimliği boşaltılır. Tekrar çağrı zararsızdır (idempotent).
+     *
+     * @return silinen satır sayısı
+     */
     @Transactional
-    public int anonymiseActor(UUID actor) {
-        return jdbc.update("""
-                UPDATE audit_log SET actor_user_id = NULL, ip = NULL, port = NULL, user_agent_hash = NULL,
-                       request_id = NULL
-                 WHERE actor_user_id = ?""", actor);
+    public int applyRetention(Instant cutoff) {
+        Timestamp at = Timestamp.from(cutoff);
+        jdbc.update("""
+                UPDATE audit_log SET ip = NULL, port = NULL, user_agent_hash = NULL, request_id = NULL
+                 WHERE at < ? AND action LIKE 'CONTENT\\_%'
+                   AND (ip IS NOT NULL OR port IS NOT NULL OR user_agent_hash IS NOT NULL OR request_id IS NOT NULL)""",
+                at);
+        return jdbc.update("DELETE FROM audit_log WHERE at < ? AND action NOT LIKE 'CONTENT\\_%'", at);
     }
 }

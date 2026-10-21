@@ -34,9 +34,11 @@ class ApiConfig {
     ),
   );
 
-  /// Hukuk metinlerinin taslak sürümü (backend `HIVELZON_TERMS_VERSION`
-  /// varsayılanı; gerçek metinler H-042).
-  static const defaultLegalVersion = 'taslak-1';
+  /// Hukuk metinlerinin sürümü (backend `HIVELZON_TERMS_VERSION` /
+  /// `HIVELZON_PRIVACY_NOTICE_VERSION` varsayılanıyla aynı). `taslak-2`:
+  /// H-095 tam taslak metinleri (hukukçu gözden geçirecek). Sürüm değişince
+  /// yeniden onay istenmez; Ana Sayfa'da bir kez bildirim çıkar.
+  static const defaultLegalVersion = 'taslak-2';
 
   final Uri baseUrl;
   final String termsVersion;

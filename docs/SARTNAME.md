@@ -24,6 +24,7 @@
 > - **Yerel geliştirme:** Sunucu, Bunny Stream ve mağaza hesapları en sona bırakıldı (H-044); o zamana kadar her şey yerelde.
 > - **§10 veri modeli:** Taslaktır, H-037'de kesinleşir. Bilinen eksikler: `refresh_tokens` tablosu ve roller (kullanıcı / editör / yönetici) tanımlı değil; hesap silme durumu burada `DELETION_PENDING`, `docs/IS-PLANI.md` §9.4'te `PENDING_DELETION` yazıyor; tek ad H-037'de seçilecek.
 > - **§10/§11 kimlik ve hesap kısmı (2026-10-13):** H-037 Bölüm 1 ile geçersiz kaldı: parolasız e-posta kodu, `refresh_tokens`, roller USER/EDITOR/ADMIN, `PENDING_DELETION`, rızalar ve `audit_log`; güncel şema `backend/src/main/resources/db/migration/V2__identity_core.sql`, güncel API `backend/README.md`.
+> - **Hukukçu cevapları (2026-10-21, H-095; `docs/HUKUK-SORULARI.md` → "Cevaplar"):** (1) Kullanım koşulları ya da KVKK aydınlatma metninin sürümü değişince **yeniden onay istenmez**; eski sürümü onaylamış hesap hiçbir yerde engellenmez (eşitleme, giriş, rıza), uygulama Ana Sayfa'da her yeni sürümde bir kez sakin bir bildirim gösterir (yalnızca cihazda, `app_meta`); ilk onayın kaydı olduğu gibi kalır. (2) Denetim kaydı (IP/port/saat) olay tarihinden **2 yıl**, rıza kayıtları hesap kalıcı silindikten sonra **2 yıl** saklanır, süre dolunca zamanlanmış iş siler (§12.1, §12.2). (3) Aydınlatma metni ve kullanım koşulları Claude taslağı; hukukçu gözden geçirecek.
 > - Diğer kararlar: yalnızca Türkiye (H-018), reklam yok (H-020), misafir prolog + B1 (H-009), çevrimdışı F3 (H-010), AI tavanı 300 USD/ay (H-003), içerik onayı Claude üretir + kullanıcı onaylar (H-028).
 
 ---
@@ -697,6 +698,7 @@ Bu bölüm teknik gereksinim listesidir; hukuk görüşü değildir. KVKK, çocu
 - Ham ses varsayılan olarak kalıcı saklanmamalı. Saklanması gerekiyorsa amaç, açık rıza/hukuki dayanak, süre, silme ve erişim politikası ayrı belirlenmeli.
 - Konuşma transkriptleri kişisel veri içerebilir; erişimi kısıtla ve retention süresi belirle.
 - IP/port/saat gibi audit kayıtları için erişim rolü, amaç ve saklama süresi tanımla.
+  - *Karar (H-095, hukukçu cevabı 2026-10-21):* Amaç güvenlik ve onay ispatı (meşru menfaat, 5/2-f; taslak). Süre: olay tarihinden 2 yıl; hesap silinince boşaltılmaz. Süre dolunca günlük iş siler (`RecordRetentionJob`, `hivelzon.retention.records`). İçerik onay akışı satırlarında (`CONTENT_*`) editör geçmişi kalır, yalnızca IP/port/tarayıcı özeti boşaltılır.
 - Telemetride e-posta, token, ses, tam transkript ve serbest kullanıcı metni gibi hassas alanlar gönderme.
 
 ### 12.2 Hesap silme
@@ -706,6 +708,7 @@ Bu bölüm teknik gereksinim listesidir; hukuk görüşü değildir. KVKK, çocu
 - Bu pencere içinde talep iptal edilebilir.
 - Süre bitince kullanıcı hesabı ve ilişkili veriler belgelenmiş politikaya göre silinir veya anonimleştirilir.
 - Yasal olarak tutulması gereken kayıtlar varsa, neden ve süre açıkça belgelenir.
+  - *Karar (H-095):* Kalıcı silmede hesap, e-posta, ad, doğum yılı ve bütün öğrenme verisi silinir. **Rıza kayıtları** (metin sürümü, saat, IP, port) ve **denetim satırları** ispat için kalır; hesabın eski kimliği mezar taşı olarak `account_tombstones`'a yazılır (kişiyle bağ kurulamaz). Rızalar silinmeden 2 yıl sonra, denetim satırları olay tarihinden 2 yıl sonra silinir (V16).
 - Silme işlemi idempotent olmalı ve arka plan işi başarısız olursa tekrar denenebilmelidir.
 - Kullanıcıya talebin durumu gösterilir.
 

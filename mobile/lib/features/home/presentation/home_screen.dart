@@ -131,6 +131,9 @@ class HomeScreen extends ConsumerWidget {
                 // İkincil: çalışma araçları, daha sade (tek öğrenme eylemi
                 // ilkesi; dolu düğme yok).
                 const _Tools(),
+                // H-095: hukuk metni güncellendiyse bir kez, kapatılabilir;
+                // yeniden onay istemez, hiçbir şeyi engellemez.
+                const LegalUpdateCard(),
                 // H-038: hesap yoksa ara sıra, kapatılabilir; hiçbir şeyi
                 // engellemez.
                 const AccountNudgeCard(),

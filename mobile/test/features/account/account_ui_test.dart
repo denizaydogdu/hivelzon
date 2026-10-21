@@ -504,4 +504,101 @@ void main() {
       await unmount(tester);
     },
   );
+
+  Future<void> setMeta(String key, String value) => db
+      .into(db.appMeta)
+      .insertOnConflictUpdate(AppMetaCompanion.insert(key: key, value: value));
+
+  testWidgets('H-095: metin güncellendi kartı bir kez görünür, yeniden onay '
+      'istemez', (tester) async {
+    // Açılışta eski sürüm okunmuş; uygulamadaki sürüm yeni.
+    await setMeta('onboarding.completedAt', '2026-10-14T10:00:00Z');
+    await setMeta('onboarding.noticeVersion', 'taslak-1');
+    expect(ApiConfig.defaultLegalVersion, isNot('taslak-1'));
+
+    await pump(tester, const LegalUpdateCard());
+    expect(find.byKey(const ValueKey('home-legal-update')), findsOneWidget);
+    expect(
+      find.text(AccountTexts.legalUpdateTitle(terms: true, privacy: true)),
+      findsOneWidget,
+    );
+    expect(find.text(AccountTexts.legalUpdateBody), findsOneWidget);
+    // Onay kutusu ya da kabul isteği yok; sunucuya istek gitmez.
+    expect(find.byType(Checkbox), findsNothing);
+    expect(server.requests, isEmpty);
+
+    // Metni açmak sürümü görüldü sayar ve metne götürür.
+    await tapKey(tester, 'home-legal-update-privacy');
+    expect(find.text(AccountTexts.privacyTitle), findsOneWidget);
+    expect(find.byType(LegalTextScreen), findsOneWidget);
+    await unmount(tester);
+
+    // Aynı sürüm için bir daha görünmez.
+    await pump(tester, const LegalUpdateCard());
+    expect(find.byKey(const ValueKey('home-legal-update')), findsNothing);
+    await unmount(tester);
+  });
+
+  testWidgets('H-095: "Tamam" kapatır; yalnızca güncellenen metin anılır', (
+    tester,
+  ) async {
+    await setMeta('onboarding.completedAt', '2026-10-14T10:00:00Z');
+    await setMeta(
+      LegalUpdateNotice.seenTermsKey,
+      ApiConfig.defaultLegalVersion,
+    );
+    await setMeta(LegalUpdateNotice.seenPrivacyKey, 'taslak-1');
+    await pump(tester, const LegalUpdateCard());
+    expect(
+      find.text(AccountTexts.legalUpdateTitle(terms: false, privacy: true)),
+      findsOneWidget,
+    );
+    expect(find.byKey(const ValueKey('home-legal-update-terms')), findsNothing);
+    await tapKey(tester, 'home-legal-update-dismiss');
+    expect(find.byKey(const ValueKey('home-legal-update')), findsNothing);
+    await unmount(tester);
+    await pump(tester, const LegalUpdateCard());
+    expect(find.byKey(const ValueKey('home-legal-update')), findsNothing);
+    expect(server.requests, isEmpty);
+    await unmount(tester);
+  });
+
+  testWidgets('H-095: eski sürümü onaylamış hesap eşitlemeye devam eder', (
+    tester,
+  ) async {
+    // Hesap eski metin sürümüyle açılmış; uygulama yeni sürümde.
+    await setMeta('onboarding.completedAt', '2026-10-14T10:00:00Z');
+    await setMeta('onboarding.noticeVersion', 'taslak-1');
+    await pump(tester, const LegalUpdateCard());
+    final container = ProviderScope.containerOf(
+      tester.element(find.byType(LegalUpdateCard)),
+    );
+    final auth = container.read(authServiceProvider);
+    final started = auth.startEmail('eski@example.com');
+    await settle(tester);
+    await started;
+    final verified = auth.verify(
+      'eski@example.com',
+      server.lastCode!,
+      signup: const SignupDetails(
+        birthYear: 2000,
+        termsVersion: 'taslak-1',
+        privacyNoticeVersion: 'taslak-1',
+      ),
+    );
+    await settle(tester);
+    await verified;
+    expect(find.byKey(const ValueKey('home-legal-update')), findsOneWidget);
+    // Bildirim eşitlemeyi durdurmaz.
+    final before = server.requests.length;
+    final synced = container.read(syncControllerProvider.notifier).syncNow();
+    await settle(tester);
+    await synced;
+    expect(
+      server.requests.skip(before).where((r) => r.contains('/sync/')),
+      isNotEmpty,
+    );
+    expect(find.byKey(const ValueKey('home-legal-update')), findsOneWidget);
+    await unmount(tester);
+  });
 }

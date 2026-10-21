@@ -177,10 +177,19 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
   }
 
   Future<void> _acceptNotice() async {
+    final config = ref.read(apiConfigProvider);
     try {
       await ref
           .read(onboardingStoreProvider)
-          .setNoticeVersion(ref.read(apiConfigProvider).privacyNoticeVersion);
+          .setNoticeVersion(config.privacyNoticeVersion);
+      // H-095: açılışta gösterilen sürümler görüldü; "metin güncellendi"
+      // kartı yalnızca sonraki bir sürümde çıkar.
+      await ref
+          .read(legalUpdateNoticeStoreProvider)
+          .markSeen(
+            termsVersion: config.termsVersion,
+            privacyVersion: config.privacyNoticeVersion,
+          );
     } on Object catch (e) {
       debugPrint('[H039] bilgilendirme kaydı yazılamadı: $e');
     }

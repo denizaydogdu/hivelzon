@@ -64,7 +64,7 @@ public abstract class IntegrationTest {
                     + "content_items, catalog_seasons, user_story_progress, user_story_flags, gate_progress, "
                     + "season_state, clues, story_links, notebook_items, review_cards, review_logs, learning_events, "
                     + "hi_records, speech_attempts, user_book_progress, user_grammar_progress, daily_activity, "
-                    + "user_book_comprehension, expression_evidence, user_talk_progress");
+                    + "user_book_comprehension, expression_evidence, user_talk_progress, account_tombstones");
         });
         clock.reset();
         mail.clear();
@@ -147,8 +147,8 @@ public abstract class IntegrationTest {
     protected static Map<String, Object> signup(int birthYear) {
         Map<String, Object> signup = new LinkedHashMap<>();
         signup.put("birthYear", birthYear);
-        signup.put("termsVersion", "taslak-1");
-        signup.put("privacyNoticeVersion", "taslak-1");
+        signup.put("termsVersion", "taslak-2");
+        signup.put("privacyNoticeVersion", "taslak-2");
         return signup;
     }
 
