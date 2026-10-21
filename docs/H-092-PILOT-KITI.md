@@ -87,7 +87,7 @@ kesinleşecek**; metin o zamana kadar "taslak"tır.
 Profil**. Kâğıt prototip: **Ana Sayfa · Öğren · Pratik · Profil** (K-30). Soru: "Hangisinde
 aradığınızı daha kolay bulurdunuz? Neden?"
 
-> **Moderatör notu (okunmaz):** Defter yolu **Profil → Defter**; tekrar düğmesi Defter ekranında.
+> **Moderatör notu (okunmaz):** Defter iki yoldan açılır: **Ana Sayfa → "Çalışma araçların" → Defter / Kelime tekrarı** (H-088) ve **Profil → Defter**; tekrar düğmesi Defter ekranında da var.
 > Videonun sağ tarafındaki **"Kaydet"** düğmesi ifadeyi Defter'e ekler. Katılımcı bu yolları
 > kendisi bulmalı; yalnız 30 sn sonra §4.1'deki tek soru sorulur.
 
