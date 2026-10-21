@@ -152,43 +152,76 @@ def contains_in_order(text: str, phrase: str) -> bool:
     return False
 
 
-def covers(text: str, phrase: str) -> bool:
-    """[phrase]'in **bütün kelimeleri** [text]'te geçiyor mu (sıra serbest).
-
-    Yalnız anlam denetiminden geçen serbest mesajlarda kullanılır: kural hedefi doğrular,
-    burada ifadenin parçaları aranır. Cümlelerden birleştirme "kullanım" sayılmaz
-    (17 Ekim 2026 regresyonu).
-    """
-    want = match_tokens(phrase)
-    have = set(match_tokens(text))
-    return bool(want) and all(w in have for w in want)
-
-
 def _has_phrase(tokens: list[str], phrase: str) -> bool:
     p = match_tokens(phrase)
     return bool(p) and any(tokens[i:i + len(p)] == p for i in range(len(tokens) - len(p) + 1))
 
 
-def check_message(text: str, check: dict | None) -> bool | None:
-    """Mesaj kuralı (uygulamadaki `MessageCheck` ile aynı).
+def _check_detail(text: str, check: dict) -> tuple[bool, list[str], list[list[str]]]:
+    """(geçti mi, tek cümlede eşleşen gerekli kalıplar, gerekli kalıbın geçtiği cümleler)."""
+    sents = sentence_tokens(text)
+    groups = check.get("all") or []
+    matched_phrases: list[str] = []
+    ok = True
+    for group in groups:
+        hits = [alt for alt in group if any(_has_phrase(s, alt) for s in sents)]
+        if hits:
+            matched_phrases.extend(hits)
+        else:
+            ok = False
+    matched = [s for s in sents if any(_has_phrase(s, alt) for group in groups for alt in group)]
+    if any(_has_phrase(s, n) for n in check.get("none") or [] for s in matched):
+        ok = False
+    return ok, matched_phrases, matched
 
-    - Her `all` grubundan bir kalıp **mesajda** geçmeli (kalıplar tam sözcüklerdir:
-      "late" değil "I'm late"; anahtar kelime görevi tamamlamaz).
+
+def check_message(text: str, check: dict | None) -> bool | None:
+    """Mesaj kuralı (uygulamadaki `TalkMatcher.checkMessage` ile aynı).
+
+    - Her `all` grubundan bir kalıbın **tamamı tek bir cümlede** geçmeli. Farklı gruplar farklı
+      cümlelerde olabilir; kalıp cümle sınırını aşamaz: "Sorry, I am. Late." → "I am late" yok
+      (21 Ekim 2026 regresyonu, H-096). Kalıplar tam sözcüklerdir ("late" değil "I'm late").
     - `none` kelimeleri yalnız **gerekli bir kalıbın geçtiği cümlede** yasaktır:
       ayrı cümledeki olumsuzluk hedefi tersine çevirmez.
     - Kural yoksa None (öz değerlendirme).
     """
     if not check:
         return None
-    sents = sentence_tokens(text)
-    toks = [w for s in sents for w in s]
-    matched = [
-        s for s in sents
-        if any(_has_phrase(s, alt) for group in check.get("all") or [] for alt in group)
-    ]
-    if any(_has_phrase(s, n) for n in check.get("none") or [] for s in matched):
-        return False
-    return all(any(_has_phrase(toks, alt) for alt in group) for group in check.get("all") or [])
+    return _check_detail(text, check)[0]
+
+
+def covered_targets(targets: list[str], text: str, check: dict | None) -> list[str]:
+    """Kuraldan geçen mesajda kanıt yazılacak hedefler (uygulamadaki `TalkMatcher.coveredTargets`).
+
+    Hedef yalnız geçerli eşleşmelerden kurulur: bütün kelimeleri tek cümlede eşleşen gerekli
+    kalıplarda bulunur ya da gerekli kalıbın geçtiği tek bir cümlede sırayla geçer. Bütün mesajın
+    kelime kümesine bakılmaz (H-096).
+    """
+    if not check:
+        return []
+    ok, phrases, sents = _check_detail(text, check)
+    if not ok:
+        return []
+    have = {w for p in phrases for w in match_tokens(p)}
+    out = []
+    for t in targets:
+        want = match_tokens(t)
+        if not want:
+            continue
+        if all(w in have for w in want):
+            out.append(t)
+            continue
+        for toks in sents:
+            i = 0
+            for w in toks:
+                if w == want[i]:
+                    i += 1
+                    if i == len(want):
+                        break
+            if i == len(want):
+                out.append(t)
+                break
+    return out
 
 
 # --- denetim (content-lint) -----------------------------------------------------------------
@@ -333,9 +366,11 @@ def lint_task(path: Path, doc: dict, icerik_root: Path) -> tuple[list[Issue], di
             issues.append(Issue("error", "talk-check", f"{tid}: kural yoksa öz değerlendirme maddeleri (selfCheckTr) gerekli"))
         for tg in doc.get("targets") or []:
             # Serbest mesajda kullanım, kuralın doğruladığı anlamla birlikte
-            # aranır: ifadenin bütün kelimeleri örnek cevapta geçmeli
-            # (cümlelerden birleştirme yok — 17 Ekim 2026 regresyonu).
-            if not covers(model, tg):
+            # aranır: hedef yalnız geçerli eşleşen kalıplardan kurulur
+            # (uygulamayla aynı — H-096). Kural yoksa cümle içinde sırayla.
+            used = covered_targets([tg], model, check) if check else (
+                [tg] if contains_in_order(model, tg) else [])
+            if not used:
                 issues.append(Issue("warning", "talk-target",
                                     f"{tid}: hedef \"{tg}\" örnek cevapta geçmiyor (yalnız kullanıcı kullanırsa sayılır)"))
     if level in LEVELS and english:

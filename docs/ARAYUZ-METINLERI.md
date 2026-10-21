@@ -324,10 +324,10 @@ Kod: `DiscoverTexts` (`mobile/lib/l10n/tr_strings.dart`). Keşfet artık yer tut
 | Yer | Metin |
 |---|---|
 | Klip üstü | Sarı etiket **Bölüm 1** · klibin Türkçe başlığı ("Telsizde bir ses") · sağ üstte ses düğmesi (ekran okuyucu: "Sesi kapat" / "Sesi aç") |
-| Sağdaki düğmeler | **Kaydet** (kayıttan sonra **Defterinde**) · **Anlam** · **Tam hikâye**. Ekran okuyucu: `"Can you hear me?" ifadesini deftere ekle`, "Altyazının anlamını aç", "Bölüm 1'i aç". |
+| Sağdaki düğmeler | **İfadeyi kaydet** (kayıttan sonra **Defterinde**) · **Anlam** · **Tam hikâye**. Ekran okuyucu: `"Can you hear me?" ifadesini deftere ekle`, "Altyazının anlamını aç", "Bölüm 1'i aç". H-096 (2026-10-21): tek başına "Kaydet" videoyu kaydetmek gibi anlaşılıyordu; düğme ne kaydedildiğini söyler (hikâye klipleri ve günlük videolar ortak). |
 | Dilbilgisi etiketi | **Dilbilgisi: can / can't** (dersin kısa adı; dokununca ders açılır) |
 | Alt kart | **BU KLİBİN İFADESİ** (kelimede **BU KLİBİN KELİMESİ**) · İngilizce ifade · Türkçesi |
-| Kaydet onayı | `"Can you hear me?" deftere eklendi.` / `"Can you hear me?" zaten defterinde.` (anlam panelindekiyle aynı) |
+| İfadeyi kaydet onayı | `"Can you hear me?" deftere eklendi.` / `"Can you hear me?" zaten defterinde.` (anlam panelindekiyle aynı) |
 | Defter'de kaynak | **Keşfet: A Strange Message** |
 | Klip bitince | **Tekrar izle** · "Sonraki klip için yukarı kaydır." (kendiliğinden geçmez) |
 | Yapay zekâ notu | "Yapay zekâ ile üretilmiştir" (akış açılınca birkaç saniye, yalnızca klip üstünde) |
@@ -336,6 +336,7 @@ Kod: `DiscoverTexts` (`mobile/lib/l10n/tr_strings.dart`). Keşfet artık yer tut
 | Bitiş kartı | **Şimdilik bu kadar** · kilitli bölüm varsa "Açık bölümlerin bütün kliplerini izledin. Hikâyede ilerledikçe yeni klipler açılır.", yoksa "Bütün klipleri izledin. Yeni klipler yeni bölümlerle gelir." · **Hikâyeye git** / **Ana Sayfa'ya dön** |
 | Günlük süre (13–17 ve 13 altı) | Yalnızca dolunca: **Bugünlük Keşfet burada bitiyor** · "Keşfet için günlük 20 dakikan doldu. Klipler gece yarısından sonra yeniden açılır." · "Hikâyen, Defter ve Kelime tekrarı her zaman açık." · **Hikâyene devam et**. İzlerken kalan süre gösterilmez. |
 | Yükleniyor / boş / hata | İskelet ("Klipler hazırlanıyor…") · **Klipler hazırlanıyor** "Bölümlerden kısa klipler burada akacak. Şimdilik hikâyene devam edebilirsin." **Hikâyeye git** · **Klipler açılamadı** "Bağlantını kontrol edip tekrar dene." **Tekrar dene** |
+| Açık video yayından kaldırıldı (H-096) | Kısa not (alt bilgi çubuğu): "Bu video artık yayında değil. Listeni yeniledik." Video durur; günlük sette yerine aynı seviye ve konudan bir video gelir, akış aynı sıradan sürer (yedek yoksa seçki daha az videoyla sürer). Katalog Keşfet'e dönünce ya da uygulama öne gelince en fazla dakikada bir yeniden okunur; okunamazsa açık video kesilmez, not çıkmaz. Teknik dil yok ("sunucu", "katalog" denmez). |
 
 #### İlgi alanların (H-094, plan §4.3, §5)
 

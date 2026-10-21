@@ -973,7 +973,8 @@ abstract final class DiscoverTexts {
   static String episodeChip(int n) => 'Bölüm $n';
   static String clipSemantics(int n, int total, String title) =>
       'Klip $n / $total: $title';
-  static const save = 'Kaydet';
+  // H-096: tek başına "Kaydet" videoyu kaydetmek gibi anlaşılıyordu.
+  static const save = 'İfadeyi kaydet';
   static const saved = 'Defterinde';
   static String saveSemantics(String en) => '"$en" ifadesini deftere ekle';
   static String savedSemantics(String en) => '"$en" defterinde';
@@ -1053,6 +1054,11 @@ abstract final class DiscoverTexts {
   /// Kontrollü tekrar (plan §4.5): video daha önce gösterildi, açıkça denir.
   static const reelRepeatBadge = 'Tekrar';
   static const reelRepeatSemantics = 'Bu video daha önce gösterildi';
+
+  /// Açık video yayından kaldırıldı (H-096): video durur, liste yenilenir;
+  /// günlük sette yerine aynı seviye ve konudan bir video gelir.
+  static const reelWithdrawn =
+      'Bu video artık yayında değil. Listeni yeniledik.';
 
   /// Seviye çipi ve paneli: yalnızca Keşfet zorluğunu değiştirir (K-06).
   static String levelChip(String level) => 'Senin seviyen: $level · Değiştir';

@@ -7,8 +7,8 @@ from pathlib import Path
 import pytest
 
 import content_lint
-from hvpipeline.talk import (TALK_PACKAGE_FILE, check_message, contains_in_order, export_talk, lint_talk,
-                             lint_task, load_tasks, match_tokens, talk_dir)
+from hvpipeline.talk import (TALK_PACKAGE_FILE, check_message, contains_in_order, covered_targets, export_talk,
+                             lint_talk, lint_task, load_tasks, match_tokens, talk_dir)
 
 REPO = Path(__file__).resolve().parents[3]
 ICERIK = REPO / "icerik"
@@ -81,6 +81,12 @@ def test_match_tokens_normalizes_like_the_app():
 @pytest.mark.parametrize("v", VECTORS["checks"], ids=lambda v: v["text"])
 def test_message_check_vectors(v):
     assert check_message(v["text"], v["check"]) is v["expect"]
+
+
+@pytest.mark.parametrize("v", VECTORS["covered"], ids=lambda v: v["text"])
+def test_covered_target_vectors(v):
+    # H-096: kanıt yalnız geçerli (tek cümlede) eşleşen kalıplardan.
+    assert covered_targets(v["targets"], v["text"], v["check"]) == v["expect"]
 
 
 @pytest.mark.parametrize("v", VECTORS["contains"], ids=lambda v: f"{v['phrase']}<{v['text']}")
