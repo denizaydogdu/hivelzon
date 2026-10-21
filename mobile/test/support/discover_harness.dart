@@ -119,6 +119,9 @@ class DiscoverHarness {
   late GoRouter router;
   final List<String> opened = [];
 
+  /// Keşfet sekmesi görünür mü (başka sekmeye geçiş ve dönüş; H-096).
+  final ValueNotifier<bool> tabVisible = ValueNotifier(true);
+
   /// Anlam/telaffuz olayları (kanıt testleri: buraya yazılmaması gerekir).
   final InMemoryLearningEventLog learningLog = InMemoryLearningEventLog();
 
@@ -248,7 +251,12 @@ class DiscoverHarness {
               data: MediaQuery.of(
                 context,
               ).copyWith(textScaler: TextScaler.linear(textScale)),
-              child: child!,
+              // Sekme görünürlüğü (StatefulShellRoute gibi TickerMode).
+              child: ValueListenableBuilder<bool>(
+                valueListenable: tabVisible,
+                builder: (_, visible, _) =>
+                    TickerMode(enabled: visible, child: child!),
+              ),
             ),
           ),
         ),

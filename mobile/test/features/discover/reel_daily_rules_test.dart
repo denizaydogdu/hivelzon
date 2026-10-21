@@ -5,7 +5,8 @@
 // - Seviye değişince yeni seçim başlar; günlük izleme sayacı silinmez.
 // - Geri çekilen içerik sabit seçkide olsa oynatılmaz, yedeği konur.
 // - İçerik sürümü artınca eski izleme/soru sonucu taşınmaz.
-// - Tamamlanma: sona yaklaşma sayılır; iki saniyeyi döndürmek sayılmaz.
+// - Tamamlanma: sona yaklaşma (%90) + aktif izleme (sürenin %80'i) birlikte;
+//   iki saniyeyi döndürmek ya da sona atlayıp kısa izlemek sayılmaz (H-096).
 // - Soru sonucu yalnız ürün kaydına yazılır; Defter'e/kanıta yazılmaz.
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -377,13 +378,16 @@ void main() {
   });
 
   group('tamamlanma ölçümü (plan §5)', () {
-    testWidgets('sona yaklaşma tamamlanma sayılır', (tester) async {
+    testWidgets('sona yaklaşma + yeterli aktif izleme tamamlanma sayılır', (
+      tester,
+    ) async {
       final h = await _pump(
         tester,
         durationFor: (_) => const Duration(seconds: 10),
         positionFor: (_) => const Duration(milliseconds: 9200),
       );
-      await tester.pump(const Duration(seconds: 2));
+      // 9 sn aktif oynatma ≥ sürenin %80'i (8 sn).
+      await tester.pump(const Duration(seconds: 9));
       expect(h.video.isPlaying('A1-R-CIN-01.mp4'), isTrue);
       await h.swipeUp(tester); // sayfa değişimi ilerlemeyi yazar
       final p = await tester.runAsync(
@@ -391,6 +395,29 @@ void main() {
       );
       expect(p!.completed, isTrue);
       expect(p.lastShownDay, localDayKey(h.clock));
+      await h.unmount(tester);
+    });
+
+    // H-096 (21 Ekim 2026 takip incelemesi): konum %90'a atlarsa (ileri
+    // sarma, son parçaya geçiş) kısa bir izleme tamamlanma yazıyordu.
+    testWidgets('sona atlayıp kısa izlemek tamamlanma sayılmaz', (
+      tester,
+    ) async {
+      final h = await _pump(
+        tester,
+        durationFor: (_) => const Duration(seconds: 10),
+        positionFor: (_) => const Duration(milliseconds: 9200),
+      );
+      // Konum %92, ama yalnız 2 sn aktif oynatma (< %80 = 8 sn).
+      await tester.pump(const Duration(seconds: 2));
+      expect(h.video.isPlaying('A1-R-CIN-01.mp4'), isTrue);
+      await h.swipeUp(tester);
+      final p = await tester.runAsync(
+        () => DiscoverStore(h.db).reelProgress('A1-R-CIN-01'),
+      );
+      expect(p!.completed, isFalse);
+      // Açık oynatma yine sayılır (ürün ölçümü).
+      expect(p.watchedSeconds, greaterThan(0));
       await h.unmount(tester);
     });
 

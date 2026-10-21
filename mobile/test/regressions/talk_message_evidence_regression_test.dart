@@ -147,11 +147,72 @@ void main() {
         isTrue,
       );
       expect(
-        TalkMatcher.coveredTargets([
-          "Sorry, I'm late.",
-        ], 'Sorry, Maya. I am late.'),
+        TalkMatcher.coveredTargets(
+          ["Sorry, I'm late."],
+          'Sorry, Maya. I am late.',
+          _task('late-maya').check!,
+        ),
         ["Sorry, I'm late."],
       );
+    });
+  });
+
+  // 21 Ekim 2026 takip incelemesi (H-096): `checkMessage` gerekli kalıbı
+  // bütün cümleleri birleştirerek arıyordu; "Sorry, I am. Late." `late-maya`
+  // görevinden geçiyor ve ilk denemede own_use yazılabiliyordu.
+  group('bulgu 5 (H-096): gerekli kalıp tek cümlede geçmeli', () {
+    final late = _task('late-maya').check!;
+
+    test('`Sorry, I am. Late.` geçmez', () {
+      final r = TalkMatcher.checkMessage('Sorry, I am. Late.', late)!;
+      expect(r.passed, isFalse);
+      expect(r.missing, ["I'm late"]);
+    });
+
+    test('farklı gruplar farklı cümlelerde olabilir', () {
+      expect(
+        TalkMatcher.checkMessage("I'm late. Sorry about that.", late)!.passed,
+        isTrue,
+      );
+    });
+
+    test('kanıt yalnız geçerli eşleşen kalıplardan', () {
+      expect(
+        TalkMatcher.coveredTargets(
+          ["Sorry, I'm late."],
+          'Sorry, I am. Late.',
+          late,
+        ),
+        isEmpty,
+      );
+      // Kural geçse de hedefin parçası ilgisiz bir cümleden alınmaz.
+      expect(
+        TalkMatcher.coveredTargets(
+          ["Sorry, I'm late."],
+          "Sorry! I'll be late. I am at home.",
+          late,
+        ),
+        isEmpty,
+      );
+    });
+
+    testWidgets('ilk denemede `Sorry, I am. Late.`: kanıt yok, ipucu', (
+      tester,
+    ) async {
+      final h = TalkHarness(
+        completed: const ['A1-001', 'A1-002', 'A1-003', 'A1-004', 'A1-005'],
+      );
+      addTearDown(h.dispose);
+      await h.addTargets(["Sorry, I'm late."]);
+      await h.pump(tester, '/konusma/late-maya');
+      await tester.enterText(
+        find.byKey(const ValueKey('message-field')),
+        'Sorry, I am. Late.',
+      );
+      await h.tap(tester, 'message-send');
+      expect(find.byKey(const ValueKey('message-hint')), findsOneWidget);
+      final ev = await tester.runAsync(() => NotebookStore(h.db).evidence());
+      expect(ev!["phrase|sorry i'm late"], isNull);
     });
   });
 

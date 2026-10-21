@@ -50,7 +50,17 @@ class HttpContentSource implements ContentSource {
 
   /// Backend'in verdiği paket kökleri (`packageBaseUrl`); `_reels/<id>/`
   /// yerine gerçek yayın adresini kullanır (CDN dahil).
-  final Map<String, Uri> _reelPackageBases = {};
+  ///
+  /// Yalnız katalog **tam ve başarıyla** okununca bütünüyle değiştirilir
+  /// (H-096): katalogdan düşen kimliğin adresi kalmaz, yarım okuma haritayı
+  /// bozmaz. Medya adresi çözümü içindir; yayın kapısı [_publishedReels].
+  Map<String, Uri> _reelPackageBases = const {};
+
+  /// Son katalog okumasında yayında olan kimlikler (yetkili yayın kapısı).
+  /// `null`: henüz okunmadı ya da **son okuma başarısız** oldu; o zaman
+  /// `loadReel` önce kataloğu yeniden okur, okuyamazsa açık hata verir (eski
+  /// bilgiyle sessiz açma yok — H-096).
+  Set<String>? _publishedReels;
 
   Uri _packagesUri(List<String> segments) =>
       _base.resolveUri(Uri(pathSegments: ['packages', ...segments]));
@@ -208,19 +218,41 @@ class HttpContentSource implements ContentSource {
   /// Backend yanıtı sayfalanır (`size=100`); her kaydın `packageBaseUrl`
   /// değeri saklanır. Yetkili kaynak yanıt vermezse sessizce dosya kataloğuna
   /// düşülmez: hata gösterilir (geri çekilen içerik açığa çıkmasın).
+  ///
+  /// H-096: bütün sayfalar okununca yayın kümesi ve adres haritası **birlikte
+  /// ve bütünüyle** değiştirilir; okuma başarısızsa yayın kapısı kapanır
+  /// (sonraki `loadReel` kataloğu yeniden okur).
   @override
   Future<ReelCatalog> listReels() async {
     final catalog = _reelCatalog;
-    if (catalog == null) {
-      final json = await _getJson(_reelsUri(['index.json']));
-      if (json is! Map) throw ContentUnavailableException('Bozuk reel listesi');
-      try {
-        return ReelCatalog.fromJson(json.cast<String, dynamic>());
-      } on Object catch (e) {
-        throw ContentUnavailableException('Bozuk reel listesi', cause: e);
-      }
+    if (catalog == null) return _listFileReels();
+    try {
+      final bases = <String, Uri>{};
+      final reels = await _listBackendReels(catalog, bases);
+      _reelPackageBases = Map.unmodifiable(bases);
+      _publishedReels = {for (final r in reels.reels) r.id};
+      return reels;
+    } catch (_) {
+      _publishedReels = null;
+      rethrow;
     }
+  }
 
+  /// Eski dosya kataloğu (`/reels/index.json`; yalnız yerel/deneme).
+  Future<ReelCatalog> _listFileReels() async {
+    final json = await _getJson(_reelsUri(['index.json']));
+    if (json is! Map) throw ContentUnavailableException('Bozuk reel listesi');
+    try {
+      return ReelCatalog.fromJson(json.cast<String, dynamic>());
+    } on Object catch (e) {
+      throw ContentUnavailableException('Bozuk reel listesi', cause: e);
+    }
+  }
+
+  Future<ReelCatalog> _listBackendReels(
+    Uri catalog,
+    Map<String, Uri> bases,
+  ) async {
     final reels = <ReelSummary>[];
     for (var page = 0; page < 100; page++) {
       final json = await _getJson(
@@ -241,7 +273,7 @@ class HttpContentSource implements ContentSource {
       }
       try {
         for (final item in items) {
-          reels.add(_reelSummaryFromBackend((item as Map).cast()));
+          reels.add(_reelSummaryFromBackend((item as Map).cast(), bases));
         }
       } on Object catch (e) {
         throw ContentUnavailableException('Bozuk reel listesi', cause: e);
@@ -252,12 +284,15 @@ class HttpContentSource implements ContentSource {
     return ReelCatalog(reels: reels);
   }
 
-  ReelSummary _reelSummaryFromBackend(Map<String, dynamic> j) {
+  ReelSummary _reelSummaryFromBackend(
+    Map<String, dynamic> j,
+    Map<String, Uri> bases,
+  ) {
     final id = j['contentId'] as String;
     final category = (j['category'] as String?) ?? '';
     final packageBase = j['packageBaseUrl'] as String?;
     if (packageBase != null && packageBase.isNotEmpty) {
-      _reelPackageBases[id] = Uri.parse(packageBase);
+      bases[id] = Uri.parse(packageBase);
     }
     return ReelSummary(
       id: id,
@@ -275,19 +310,21 @@ class HttpContentSource implements ContentSource {
     );
   }
 
+  /// Paket yalnız **son başarılı** katalog okumasında yayında olan kimlik
+  /// için açılır (H-096). Katalog henüz okunmadıysa ya da son okuma
+  /// başarısızsa önce yeniden okunur; okunamazsa hata (eski adresle sessiz
+  /// açma yok). Yayında olmayan (geri çekilmiş) kimlik oynatılmaz.
   @override
   Future<Reel> loadReel(String reelId) async {
-    Uri uri;
-    final packageBase = _reelPackageBases[reelId];
-    if (packageBase != null) {
-      uri = packageBase.resolve('reel.json');
-    } else if (_reelCatalog != null) {
-      // Katalog henüz yüklenmediyse bir kez yükle; yayında olmayan kimlik
-      // (geri çekilmiş) oynatılmaz.
-      await listReels();
+    final Uri uri;
+    if (_reelCatalog != null) {
+      if (_publishedReels == null) await listReels();
+      if (!(_publishedReels?.contains(reelId) ?? false)) {
+        throw ContentUnavailableException('Reel yayında değil', cause: reelId);
+      }
       final base = _reelPackageBases[reelId];
       if (base == null) {
-        throw ContentUnavailableException('Reel yayında değil', cause: reelId);
+        throw ContentUnavailableException('Reel adresi yok', cause: reelId);
       }
       uri = base.resolve('reel.json');
     } else {

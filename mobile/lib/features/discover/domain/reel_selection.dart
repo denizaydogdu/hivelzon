@@ -114,7 +114,20 @@ DailySet? reconcileDailySet({
   required DailySet set,
   required List<ReelSummary> catalog,
   Map<String, ReelProgress> progress = const {},
+}) => reconcileDailySetDetailed(
+  set: set,
+  catalog: catalog,
+  progress: progress,
+)?.set;
+
+/// [reconcileDailySet] ile aynı; ayrıca hangi kimliğin hangi yedekle
+/// değiştirildiğini döndürür (H-096: kalınan video yedeğinden sürer).
+({DailySet set, Map<String, String> replaced})? reconcileDailySetDetailed({
+  required DailySet set,
+  required List<ReelSummary> catalog,
+  Map<String, ReelProgress> progress = const {},
 }) {
+  final replaced = <String, String>{};
   final byId = {for (final r in catalog) r.id: r};
   final items = <DailyItem>[];
   final used = <String>{};
@@ -152,10 +165,16 @@ DailySet? reconcileDailySet({
       used: used,
       progress: progress,
     );
-    if (yedek != null) keep(yedek, repeat: _shownBefore(yedek, progress));
+    if (yedek != null) {
+      keep(yedek, repeat: _shownBefore(yedek, progress));
+      replaced[item.id] = yedek.id;
+    }
   }
   if (!changed) return null;
-  return DailySet(level: set.level, categories: set.categories, items: items);
+  return (
+    set: DailySet(level: set.level, categories: set.categories, items: items),
+    replaced: replaced,
+  );
 }
 
 /// Hiç tamamlanmamış önce, sonra en uzun süredir gösterilmemiş, sonra kimlik.

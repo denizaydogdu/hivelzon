@@ -71,9 +71,10 @@ class _TalkMessageViewState extends ConsumerState<TalkMessageView> {
       });
       return;
     }
-    // Kural mesajın **anlamını** doğruladı; hedef ifadenin parçaları aranır
-    // (cümlelerden birleştirme yapılmaz, kural zaten anlamı denetler).
-    final used = TalkMatcher.coveredTargets(_task.targets, text);
+    // Kural mesajın **anlamını** doğruladı; hedef ifade yalnız geçerli
+    // eşleşen kalıplardan kurulur (H-096: mesajın bütün kelimelerine
+    // bakılmaz).
+    final used = TalkMatcher.coveredTargets(_task.targets, text, _task.check);
     setState(() {
       _check = r;
       _used = used;

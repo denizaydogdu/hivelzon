@@ -16,6 +16,9 @@ void main() {
   late int totalItems;
   late HttpContentSource source;
 
+  /// Katalog ucunun hata verdiği sayfalar (H-096: kısmi okuma).
+  late Set<int> failPages;
+
   Map<String, dynamic> card({
     required String id,
     required String level,
@@ -42,6 +45,7 @@ void main() {
 
   setUp(() {
     requests.clear();
+    failPages = {};
     items = [
       card(
         id: 'A1-R-CIN-01',
@@ -59,6 +63,7 @@ void main() {
         requests.add(r.url.path);
         if (r.url.path == '/api/v1/catalog/reels') {
           final page = int.parse(r.url.queryParameters['page'] ?? '0');
+          if (failPages.contains(page)) return http.Response('closed', 503);
           // Sayfalama sınaması: ilk sayfada yalnız ilk kayıt.
           final slice = totalItems == 2 && items.length == 2
               ? (page == 0 ? items.take(1).toList() : items.skip(1).toList())
@@ -76,7 +81,8 @@ void main() {
             200,
           );
         }
-        if (r.url.path == '/packages/_reels/A1-R-CIN-01/reel.json') {
+        if (r.url.path == '/packages/_reels/A1-R-CIN-01/reel.json' ||
+            r.url.path == '/cdn/v2/A1-R-CIN-01/reel.json') {
           return http.Response.bytes(
             utf8.encode(fixtureText('reels/A1-R-CIN-01.json')),
             200,
@@ -158,5 +164,75 @@ void main() {
       throwsA(isA<ContentUnavailableException>()),
     );
     expect(requests, isNot(contains('/reels/index.json')));
+  });
+
+  // 21 Ekim 2026 takip incelemesi (H-096): `_reelPackageBases` yalnız
+  // ekleniyordu; katalogdan düşen kimlik eski adresle açılmaya devam ediyordu.
+  group('H-096: katalog yenilenince yayın kapısı', () {
+    test('katalogdan düşen reel eski adresle açılmaz', () async {
+      await source.listReels();
+      expect((await source.loadReel('A1-R-CIN-01')).id, 'A1-R-CIN-01');
+
+      // Backend artık yalnız A2-R-SPO-01'i yayımlıyor (CIN-01 geri çekildi).
+      items = [items[1]];
+      totalItems = 1;
+      final list = await source.listReels();
+      expect(list.reels.map((r) => r.id), ['A2-R-SPO-01']);
+      requests.clear();
+
+      await expectLater(
+        source.loadReel('A1-R-CIN-01'),
+        throwsA(isA<ContentUnavailableException>()),
+      );
+      expect(requests.where((p) => p.contains('A1-R-CIN-01')), isEmpty);
+    });
+
+    test('yenileme ağ hatası verirse eski adresle sessiz açma yok', () async {
+      await source.listReels();
+      failPages = {0, 1};
+      await expectLater(
+        source.listReels(),
+        throwsA(isA<ContentUnavailableException>()),
+      );
+      requests.clear();
+      // Yetkili katalog doğrulanamıyor: paket istenmez, açık hata.
+      await expectLater(
+        source.loadReel('A1-R-CIN-01'),
+        throwsA(isA<ContentUnavailableException>()),
+      );
+      expect(requests.where((p) => p.contains('reel.json')), isEmpty);
+
+      // Bağlantı gelince katalog yeniden okunur ve açılır.
+      failPages = {};
+      expect((await source.loadReel('A1-R-CIN-01')).id, 'A1-R-CIN-01');
+    });
+
+    test('kısmi okuma haritayı yarım değiştirmez (atomik)', () async {
+      await source.listReels();
+      // Yeni katalog: CIN-01 yeni adreste; ikinci sayfa hata veriyor.
+      items = [
+        {
+          ...items[0],
+          'packageBaseUrl': 'http://127.0.0.1:8787/cdn/v2/A1-R-CIN-01/',
+        },
+        items[1],
+      ];
+      failPages = {1};
+      await expectLater(
+        source.listReels(),
+        throwsA(isA<ContentUnavailableException>()),
+      );
+      // Medya adresleri son **tam** okumadaki gibi kalır.
+      expect(
+        source.reelMediaUri('A1-R-CIN-01', 'reel.json').toString(),
+        'http://127.0.0.1:8787/packages/_reels/A1-R-CIN-01/reel.json',
+      );
+      failPages = {};
+      await source.listReels();
+      expect(
+        source.reelMediaUri('A1-R-CIN-01', 'reel.json').toString(),
+        'http://127.0.0.1:8787/cdn/v2/A1-R-CIN-01/reel.json',
+      );
+    });
   });
 }

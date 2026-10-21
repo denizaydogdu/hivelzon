@@ -240,6 +240,12 @@ const double _kLevelChipMaxShare = 0.45;
 /// ulaşmadığı için tamamlanma sayılmaz.
 const double _kReelCompletion = 0.9;
 
+/// Tamamlanmanın ikinci koşulu (H-096): bu açılışta **aktif oynatılan**
+/// saniyeler sürenin en az bu kadarı olmalı. Konum %90'a atlarsa (ileri sarma,
+/// son parçaya geçiş) kısa bir izleme tamamlanma sayılmaz. %80, saniyelik
+/// sayaç ve ilk karenin yüklenme payı için %90'ın altında tutuldu.
+const double _kReelActiveShare = 0.8;
+
 /// Seviye çipi: "Senin seviyen: A1 · Değiştir" (dar ekranda "A1 · Değiştir";
 /// yalnız Keşfet zorluğu; K-06).
 class _LevelChip extends StatelessWidget {
@@ -553,23 +559,22 @@ class _ReelFeed extends ConsumerWidget {
         feedVideoOfReel(reel, source, repeat: set.repeats.contains(reel.id)),
     ];
     final daily = set.chip == DiscoverChip.today;
-    // Aynı gün kalınan yer (plan §5): yalnız günlük sette; bulunamazsa baştan.
-    final resume = daily
-        ? ref.watch(dailyResumeProvider)
-        : const AsyncData<String?>(null);
-    // Okunamazsa (hata) baştan açılır; yalnız yüklenirken iskelet.
-    if (daily && !resume.hasValue && !resume.hasError) return const _Loading();
     final entries = buildDailyFeed(videos);
-    final resumeId = resume.value;
+    // Aynı gün kalınan yer (plan §5): yalnız günlük sette, seçkiyle aynı anda
+    // okunur; bulunamazsa baştan.
+    final resumeId = daily ? set.resumeId : null;
     final at = resumeId == null
         ? -1
         : entries.indexWhere((e) => e is VideoEntry && e.video.id == resumeId);
     return DiscoverFeed(
       // Çip, seviye ya da ilgi alanları değişince set baştan başlar (açık
-      // bir başlangıç; plan §5).
+      // bir başlangıç; plan §5). Katalog yenilenip seçkideki videolar
+      // değişirse (geri çekme, yedek) akış yeniden kurulur ve kalınan yerden
+      // açılır (H-096).
       key: ValueKey(
         'discover-reels-${set.chip.name}-${set.level}-'
-        '${set.categories.join('.')}',
+        '${set.categories.join('.')}-'
+        '${[for (final r in set.reels) '${r.id}@${r.contentVersion}'].join('.')}',
       ),
       videos: videos,
       entries: entries,
@@ -733,6 +738,9 @@ class DiscoverFeedState extends ConsumerState<DiscoverFeed>
   String? _reelId;
   int _reelVersion = 1;
   int _reelPending = 0;
+
+  /// Bu açılışta aktif oynatılan saniyeler (yazınca sıfırlanmaz; H-096).
+  int _reelActive = 0;
   bool _reelDone = false;
 
   /// Ölçüm ve testler: ekrandaki sayfa.
@@ -770,7 +778,16 @@ class DiscoverFeedState extends ConsumerState<DiscoverFeed>
   }
 
   bool get _canPlay =>
-      _visible && _foreground && !_sheetOpen && !_away && !_limitReached;
+      _visible &&
+      _foreground &&
+      !_sheetOpen &&
+      !_away &&
+      !_limitReached &&
+      !_withdrawn;
+
+  /// Açık video yayından kaldırıldı (H-096): akış yeni seçkiyle kurulana dek
+  /// oynatma durur.
+  bool _withdrawn = false;
 
   @override
   void initState() {
@@ -853,6 +870,9 @@ class DiscoverFeedState extends ConsumerState<DiscoverFeed>
       await _flushReel();
       return;
     }
+    // Keşfet'e dönüldü ya da uygulama öne geldi: reel kataloğu kontrollü
+    // yenilenir (H-096).
+    unawaited(_checkCatalog());
     // Geri gelindi: gün değişmiş olabilir; süre yeniden okunur.
     await _flush();
     await _loadWatched();
@@ -861,8 +881,29 @@ class DiscoverFeedState extends ConsumerState<DiscoverFeed>
     if (c != null && !c.value.isCompleted) await c.play();
   }
 
+  /// Reel kataloğunu (aralık dolduysa) yeniden okur. Açık video artık
+  /// yayında değilse sakin biçimde durur ve kısa bir not gösterilir; seçki
+  /// ve havuz sağlayıcılardan yeniden kurulur (günlük sette yerine aynı
+  /// seviye-konudan yedek gelir, plan §5). Okunamazsa açık video kesilmez.
+  Future<void> _checkCatalog() async {
+    if (!widget.videos.any((v) => v.isReel)) return;
+    final fresh = await ref.read(reelCatalogRefresherProvider).refreshIfDue();
+    if (fresh == null || !mounted || _withdrawn) return;
+    final video = _video;
+    if (video == null || !video.isReel) return;
+    final summary = fresh.byId(video.id);
+    if (summary != null && !summary.isWithdrawn) return;
+    setState(() => _withdrawn = true);
+    await cache.ready(video.cacheKey)?.pause();
+    await _flush();
+    await _flushReel();
+    _reelId = null;
+    if (mounted) _snack(DiscoverTexts.reelWithdrawn);
+  }
+
   void _onTick() {
     final c = _current;
+    if (c != null && _canPlay && c.value.isCompleted) _checkReelDone(c);
     if (c == null || !c.value.isPlaying || !_canPlay) return;
     _pending += _tickEvery.inSeconds.clamp(1, 60);
     _onReelTick(c);
@@ -879,11 +920,24 @@ class DiscoverFeedState extends ConsumerState<DiscoverFeed>
   /// + sona yaklaşmayla oluşur (aynı iki saniyeyi döndürmek yetmez — plan §5).
   void _onReelTick(VideoPlayerController c) {
     if (_reelId == null) return;
-    _reelPending += _tickEvery.inSeconds.clamp(1, 60);
+    final step = _tickEvery.inSeconds.clamp(1, 60);
+    _reelPending += step;
+    _reelActive += step;
+    _checkReelDone(c);
+  }
+
+  /// Tamamlanma (ürün ölçümü, öğrenme kanıtı değil): konum sürenin %90'ını
+  /// geçti **ve** bu açılışta en az %80'i kadar aktif oynatıldı (H-096).
+  /// Bitmiş videoda konum süreye eşit sayılır (son saniye sayaçlar arasında
+  /// kalabilir).
+  void _checkReelDone(VideoPlayerController c) {
+    if (_reelId == null || _reelDone) return;
     final duration = c.value.duration;
-    if (!_reelDone &&
-        duration > Duration.zero &&
-        c.value.position >= duration * _kReelCompletion) {
+    if (duration <= Duration.zero) return;
+    final position = c.value.isCompleted ? duration : c.value.position;
+    final activeEnough =
+        _reelActive * 1000 >= duration.inMilliseconds * _kReelActiveShare;
+    if (position >= duration * _kReelCompletion && activeEnough) {
       _reelDone = true;
     }
   }
@@ -958,6 +1012,7 @@ class DiscoverFeedState extends ConsumerState<DiscoverFeed>
     _reelId = here != null && here.isReel ? here.id : null;
     _reelVersion = here?.contentVersion ?? 1;
     _reelPending = 0;
+    _reelActive = 0;
     _reelDone = false;
     if (_reelId != null) {
       unawaited(_flushReel(markShown: true));

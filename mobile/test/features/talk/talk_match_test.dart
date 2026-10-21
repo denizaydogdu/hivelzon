@@ -127,6 +127,21 @@ void main() {
         expect(r.passed, v['expect']);
       });
     }
+    for (final v in (vectors['covered'] as List).cast<Map>()) {
+      test('kanıt hedefleri: ${v['text']}', () {
+        final check = MessageCheck.fromJson(
+          (v['check'] as Map).cast<String, dynamic>(),
+        );
+        expect(
+          TalkMatcher.coveredTargets(
+            (v['targets'] as List).cast<String>(),
+            v['text'] as String,
+            check,
+          ),
+          (v['expect'] as List).cast<String>(),
+        );
+      });
+    }
     for (final v in (vectors['contains'] as List).cast<Map>()) {
       test('hedef ifade: ${v['phrase']} ⊂ ${v['text']}', () {
         expect(
@@ -175,15 +190,23 @@ void main() {
         TalkMatcher.usedTargets(['on Friday', 'at seven'], 'Friday at 7'),
         ['at seven'],
       );
-      // Serbest mesaj: kural anlamı doğruladıktan sonra ifadenin parçaları.
+      // Serbest mesaj: kural anlamı doğruladıktan sonra yalnız geçerli
+      // eşleşen kalıplardan (H-096).
+      final late = catalog.byId('late-maya')!.check!;
       expect(
-        TalkMatcher.coveredTargets([
-          "Sorry, I'm late.",
-        ], 'Sorry, Maya. I am late.'),
+        TalkMatcher.coveredTargets(
+          ["Sorry, I'm late."],
+          'Sorry, Maya. I am late.',
+          late,
+        ),
         ["Sorry, I'm late."],
       );
       expect(
-        TalkMatcher.coveredTargets(["Sorry, I'm late."], 'Sorry, I am early.'),
+        TalkMatcher.coveredTargets(
+          ["Sorry, I'm late."],
+          'Sorry, I am early.',
+          late,
+        ),
         isEmpty,
       );
     });

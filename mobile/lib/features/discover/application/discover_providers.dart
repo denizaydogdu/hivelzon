@@ -176,11 +176,95 @@ final discoverChipProvider =
       DiscoverChipNotifier.new,
     );
 
-/// Bağımsız reellerin kataloğu (`/reels/index.json`, çalışma anında taranır).
-final reelCatalogProvider = FutureProvider.autoDispose<ReelCatalog>(
-  (ref) => ref.watch(contentSourceProvider).listReels(),
-  retry: (_, _) => null,
+/// Reel kataloğunun kontrollü yenilenmesi arasındaki en kısa süre (H-096).
+final reelCatalogRefreshIntervalProvider = Provider<Duration>(
+  (ref) => const Duration(minutes: 1),
 );
+
+/// Reel kataloğunun **kontrollü** yenilenmesi (H-096).
+///
+/// Keşfet'e dönüşte ve uygulama öne gelince çağrılır. En kısa aralık
+/// [reelCatalogRefreshIntervalProvider]: son okumadan (başarılı ya da değil)
+/// bu kadar geçmeden yeniden okunmaz; eşzamanlı çağrılar tek okumayı paylaşır.
+/// Katalog değiştiyse okunan sonuç [reelCatalogProvider]'a aktarılır (ikinci
+/// istek yok) ve seçki/havuz yeniden kurulur; değişmediyse hiçbir şey
+/// yenilenmez (açık akış kesilmez).
+class ReelCatalogRefresher {
+  ReelCatalogRefresher(this._ref);
+
+  final Ref _ref;
+  DateTime? _lastRead;
+  String? _signature;
+  ReelCatalog? _fresh;
+  Future<ReelCatalog?>? _inFlight;
+
+  /// [reelCatalogProvider] okudu.
+  void _loaded(ReelCatalog catalog) {
+    _lastRead = _ref.read(discoverClockProvider)();
+    _signature = _signatureOf(catalog);
+  }
+
+  ReelCatalog? _takeFresh() {
+    final f = _fresh;
+    _fresh = null;
+    return f;
+  }
+
+  /// Zamanı geldiyse kataloğu okur. Okunan kataloğu döndürür; zamanı
+  /// gelmediyse ya da okunamadıysa `null` (hata sessizce yutulmaz: kaynak
+  /// yayın kapısını kapatır, yeni paket açılmaz; açık video kesilmez).
+  Future<ReelCatalog?> refreshIfDue() {
+    final running = _inFlight;
+    if (running != null) return running;
+    final now = _ref.read(discoverClockProvider)();
+    final last = _lastRead;
+    final every = _ref.read(reelCatalogRefreshIntervalProvider);
+    if (last != null && now.difference(last).abs() < every) {
+      return Future.value();
+    }
+    _lastRead = now;
+    final f = _read().whenComplete(() => _inFlight = null);
+    _inFlight = f;
+    return f;
+  }
+
+  Future<ReelCatalog?> _read() async {
+    final ReelCatalog fresh;
+    try {
+      fresh = await _ref.read(contentSourceProvider).listReels();
+    } on Object catch (e) {
+      debugPrint('[H096] reel kataloğu yenilenemedi: ${e.runtimeType}');
+      return null;
+    }
+    final sig = _signatureOf(fresh);
+    if (sig != _signature) {
+      _signature = sig;
+      _fresh = fresh;
+      _ref.invalidate(reelCatalogProvider);
+    }
+    return fresh;
+  }
+
+  static String _signatureOf(ReelCatalog c) => ([
+    for (final r in c.reels) '${r.id}@${r.contentVersion}:${r.status}',
+  ]..sort()).join('|');
+}
+
+final reelCatalogRefresherProvider = Provider<ReelCatalogRefresher>(
+  ReelCatalogRefresher.new,
+);
+
+/// Bağımsız reellerin kataloğu (backend yayın kataloğu ya da yerel
+/// `/reels/index.json`). Kontrollü yenileme: [ReelCatalogRefresher].
+final reelCatalogProvider = FutureProvider.autoDispose<ReelCatalog>((
+  ref,
+) async {
+  final source = ref.watch(contentSourceProvider);
+  final refresher = ref.read(reelCatalogRefresherProvider);
+  final catalog = refresher._takeFresh() ?? await source.listReels();
+  refresher._loaded(catalog);
+  return catalog;
+}, retry: (_, _) => null);
 
 /// Katalogda video bulunan seviyeler (sıralı). Pilot A1/A2.
 final reelLevelsProvider = FutureProvider<List<String>>((ref) async {
@@ -344,14 +428,23 @@ final dailySetProvider = FutureProvider.autoDispose<DailySet>((ref) async {
   final now = clock();
   final stored = await store.dailySet(now);
   if (stored != null && stored.matches(level: level, categories: categories)) {
-    final fixed = reconcileDailySet(
+    final fixed = reconcileDailySetDetailed(
       set: stored,
       catalog: catalog.reels,
       progress: progress,
     );
     if (fixed == null) return stored;
-    await store.setDailySet(now, fixed);
-    return fixed;
+    await store.setDailySet(now, fixed.set);
+    // Kalınan video geri çekildiyse yedeğinden sürülür (H-096): akış aynı
+    // sıradan açılır.
+    try {
+      final resume = await store.resumeId(now);
+      final to = resume == null ? null : fixed.replaced[resume];
+      if (to != null) await store.setResumeId(now, to);
+    } on Object catch (e) {
+      debugPrint('[H096] kalınan video güncellenemedi: ${e.runtimeType}');
+    }
+    return fixed.set;
   }
   final picks = selectDailyReels(
     catalog: catalog.reels,
@@ -378,10 +471,14 @@ final dailySetProvider = FutureProvider.autoDispose<DailySet>((ref) async {
 
 /// Aynı gün kalınan video (günlük set; plan §5). Boşsa seçki baştan açılır.
 /// H-043: okunamazsa da baştan (null); sağlayıcı hata durumuna düşmez.
+///
+/// Seçki uzlaştırıldıktan **sonra** okunur (H-096: geri çekilen videonun
+/// yerine yedeği yazılmış olur).
 final dailyResumeProvider = FutureProvider.autoDispose<String?>((ref) async {
   final store = ref.watch(discoverStoreProvider);
   final now = ref.watch(discoverClockProvider)();
   try {
+    await ref.watch(dailySetProvider.future);
     return await store.resumeId(now);
   } on Object catch (e) {
     debugPrint('[H043] kalınan video okunamadı, baştan: ${e.runtimeType}');
@@ -395,9 +492,14 @@ class ReelPool {
     required this.reels,
     this.repeats = const {},
     this.categories = const [],
+    this.resumeId,
   });
 
   final List<Reel> reels;
+
+  /// Günlük sette aynı gün kalınan video (seçkiyle aynı anda okunur; kategori
+  /// havuzunda `null`).
+  final String? resumeId;
 
   /// Günlük sette seçkinin yapıldığı konular (`prefsSnapshot`); kategori
   /// havuzunda boş. Akışın anahtarına girer: konular değişince seçki baştan
@@ -418,6 +520,7 @@ final reelPoolProvider = FutureProvider.autoDispose.family<ReelPool, ReelQuery>(
     final source = ref.watch(contentSourceProvider);
     if (category == null) {
       final set = await ref.watch(dailySetProvider.future);
+      final resumeId = await ref.watch(dailyResumeProvider.future);
       final reels = <Reel>[];
       final repeats = <String>{};
       final seen = <String>{};
@@ -432,6 +535,7 @@ final reelPoolProvider = FutureProvider.autoDispose.family<ReelPool, ReelQuery>(
         reels: reels,
         repeats: repeats,
         categories: set.categories,
+        resumeId: resumeId,
       );
     }
     final summaries = [
@@ -457,6 +561,7 @@ class ReelSet {
     required this.reels,
     this.repeats = const {},
     this.categories = const [],
+    this.resumeId,
   });
 
   final DiscoverChip chip;
@@ -468,6 +573,9 @@ class ReelSet {
 
   /// "Tekrar" etiketli reeller (plan §4.5).
   final Set<String> repeats;
+
+  /// Günlük sette kalınan video (bkz. [ReelPool.resumeId]).
+  final String? resumeId;
 }
 
 final reelSetProvider = Provider.autoDispose<AsyncValue<ReelSet>>((ref) {
@@ -486,6 +594,7 @@ final reelSetProvider = Provider.autoDispose<AsyncValue<ReelSet>>((ref) {
       reels: value.reels,
       repeats: value.repeats,
       categories: value.categories,
+      resumeId: value.resumeId,
     ),
   );
 });

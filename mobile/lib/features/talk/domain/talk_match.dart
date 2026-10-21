@@ -13,7 +13,8 @@
 // - Anlamı değiştiren ek (olumsuzluk, kip, sayı; H-087) tam eşleşmeyi bozar.
 // - Kabul cevabı yoksa ve yakın seçeneklerden (distractor) biri tam
 //   duyulursa onun kibar tepkisi gösterilir (K-28: aynı tura dönülür).
-// - Mesaj: her gerekli gruptan bir kalıp geçmeli, yasak kelime (anlamı
+// - Mesaj: her gerekli gruptan bir kalıp **tek bir cümlede** tam geçmeli
+//   (kalıp cümle sınırını aşamaz; H-096), yasak kelime (anlamı
 //   tersine çeviren) **yalnız gerekli kalıbın geçtiği cümlede** olmamalı;
 //   kural yoksa öz değerlendirme. Kalıplar tam sözcüklerdir ("late" değil
 //   "I'm late"): anahtar kelime bulmak görevin anlamını tamamlamaz.
@@ -164,19 +165,51 @@ abstract final class TalkMatcher {
       if (usesPhrase(text, t)) t,
   ];
 
-  /// Hedef ifadenin **bütün kelimeleri** metinde geçiyor mu (sıra serbest).
+  /// Anlam denetiminden geçen serbest mesajda **kanıt yazılacak** hedef
+  /// ifadeler (H-096). Kural yoksa ya da geçmezse boş.
   ///
-  /// Yalnız **anlam denetiminden geçen** serbest mesajlarda kullanılır: kural
-  /// hedefi zaten doğrular, burada ifadenin parçaları aranır. Böylece
-  /// "Sorry, Maya. I'm late." → "Sorry, I'm late." sayılır, ama
-  /// "Sorry, I am early. Maya is late." kuraldan geçmediği için **hiçbir**
-  /// hedef yazılmaz (17 Ekim 2026 regresyonu).
-  static List<String> coveredTargets(Iterable<String> targets, String text) {
-    final have = tokens(text).toSet();
+  /// Hedef yalnız **geçerli eşleşmelerden** kurulur:
+  /// - bütün kelimeleri, kuralın tek cümle içinde eşleşen kalıplarının
+  ///   kelimelerinde bulunur ("Sorry, Maya. I'm late." → "sorry" + "I'm late"
+  ///   → "Sorry, I'm late." sayılır), ya da
+  /// - gerekli bir kalıbın geçtiği **tek bir cümlede** sırayla geçer
+  ///   ("Pier 3. On Friday at seven." → "on Friday", "at seven").
+  ///
+  /// Bütün mesajın kelime kümesine bakılmaz: "Sorry! I'll be late. I am at
+  /// home." → "Sorry, I'm late." yazılmaz ("am" ilgisiz cümleden gelir;
+  /// 21 Ekim 2026 regresyonu).
+  static List<String> coveredTargets(
+    Iterable<String> targets,
+    String text,
+    MessageCheck? check,
+  ) {
+    final r = checkMessage(text, check);
+    if (r == null || !r.passed) return const [];
+    final have = {for (final p in r.matched) ...tokens(p)};
+    final sents = [
+      for (final s in sentences(text))
+        if (check!.all.any((g) => g.any((alt) => _hasPhrase(s, alt)))) s,
+    ];
     return [
       for (final t in targets)
-        if (tokens(t).every(have.contains)) t,
+        if (_coveredBy(tokens(t), have, sents)) t,
     ];
+  }
+
+  static bool _coveredBy(
+    List<String> want,
+    Set<String> have,
+    List<List<String>> sents,
+  ) {
+    if (want.isEmpty) return false;
+    if (want.every(have.contains)) return true;
+    for (final toks in sents) {
+      var i = 0;
+      for (final w in toks) {
+        if (w == want[i] && ++i == want.length) return true;
+      }
+    }
+    return false;
   }
 
   static bool _hasPhrase(List<String> toks, String phrase) {
@@ -194,7 +227,10 @@ abstract final class TalkMatcher {
 
   /// Mesaj kuralı. Kural yoksa null (öz değerlendirme).
   ///
-  /// - Her `all` grubundan bir kalıp **mesajda** geçmeli. Kalıplar tam
+  /// - Her `all` grubundan bir kalıbın **tamamı tek bir cümlede** geçmeli.
+  ///   Farklı gruplar farklı cümlelerde olabilir ("Sorry, Maya. I'm late."
+  ///   geçer), ama bir kalıp cümle sınırını aşamaz: "Sorry, I am. Late." →
+  ///   "I am late" **yok** (21 Ekim 2026 regresyonu). Kalıplar tam
   ///   sözcüklerdir ("late" değil "I'm late"): anahtar kelime bulmak görevin
   ///   anlamını tamamlamaz (17 Ekim 2026 regresyonu).
   /// - `none` kelimeleri **yalnız gerekli bir kalıbın geçtiği cümlede**
@@ -204,11 +240,19 @@ abstract final class TalkMatcher {
   static MessageCheckResult? checkMessage(String text, MessageCheck? check) {
     if (check == null) return null;
     final sents = sentences(text);
-    final all = [for (final s in sents) ...s];
-    final missing = [
-      for (final g in check.all)
-        if (!g.any((alt) => _hasPhrase(all, alt))) g.first,
-    ];
+    final missing = <String>[];
+    final matchedPhrases = <String>[];
+    for (final g in check.all) {
+      final hits = [
+        for (final alt in g)
+          if (sents.any((s) => _hasPhrase(s, alt))) alt,
+      ];
+      if (hits.isEmpty) {
+        missing.add(g.first);
+      } else {
+        matchedPhrases.addAll(hits);
+      }
+    }
     final matched = [
       for (final s in sents)
         if (check.all.any((g) => g.any((alt) => _hasPhrase(s, alt)))) s,
@@ -217,7 +261,11 @@ abstract final class TalkMatcher {
       for (final n in check.none)
         if (matched.any((s) => _hasPhrase(s, n))) n,
     ];
-    return MessageCheckResult(missing: missing, forbidden: forbidden);
+    return MessageCheckResult(
+      missing: missing,
+      forbidden: forbidden,
+      matched: matchedPhrases,
+    );
   }
 
   /// "Kelimelerle kur" taşları: örnek cevabın kelimeleri (noktalamasıyla),
@@ -246,6 +294,7 @@ class MessageCheckResult {
   const MessageCheckResult({
     this.missing = const [],
     this.forbidden = const [],
+    this.matched = const [],
   });
 
   /// Eksik gruplar (her grubun ilk kalıbı; ipucu için).
@@ -253,6 +302,10 @@ class MessageCheckResult {
 
   /// Bulunan yasak kelimeler (anlamı tersine çevirebilir).
   final List<String> forbidden;
+
+  /// Tek bir cümle içinde tam eşleşen gerekli kalıplar (kanıt yalnız
+  /// bunlardan kurulur; H-096).
+  final List<String> matched;
 
   bool get passed => missing.isEmpty && forbidden.isEmpty;
 }

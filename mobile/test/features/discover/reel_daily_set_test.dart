@@ -404,11 +404,19 @@ void main() {
   });
 
   group('Defter bağlantısı (reel kaynağı)', () {
-    testWidgets('"Kaydet": ifade görsel ve ses bağlantısıyla eklenir', (
+    testWidgets('"İfadeyi kaydet": ifade görsel ve ses bağlantısıyla eklenir', (
       tester,
     ) async {
       final h = await _daily(tester);
-      expect(find.text('Kaydet'), findsOneWidget);
+      // H-096: düğme ne kaydedildiğini söyler; ekran okuyucu etiketi aynı.
+      final handle = tester.ensureSemantics();
+      expect(find.text('İfadeyi kaydet'), findsOneWidget);
+      expect(find.text('Kaydet'), findsNothing);
+      expect(
+        find.bySemanticsLabel('"Two tickets, please." ifadesini deftere ekle'),
+        findsOneWidget,
+      );
+      handle.dispose();
       await _tap(tester, h, 'reel-save');
       expect(
         find.text('"Two tickets, please." deftere eklendi.'),

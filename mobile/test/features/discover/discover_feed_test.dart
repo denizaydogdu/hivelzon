@@ -261,7 +261,9 @@ void main() {
     final h = DiscoverHarness();
     addTearDown(h.dispose);
     await h.pump(tester);
-    expect(find.text('Kaydet'), findsOneWidget);
+    // H-096: tek başına "Kaydet" videoyu kaydetmek gibi anlaşılıyordu.
+    expect(find.text('İfadeyi kaydet'), findsOneWidget);
+    expect(find.text('Kaydet'), findsNothing);
     await _tap(tester, h, 'clip-save');
     expect(find.text('"Can you hear me?" deftere eklendi.'), findsOneWidget);
     expect(find.text('Defterinde'), findsOneWidget);

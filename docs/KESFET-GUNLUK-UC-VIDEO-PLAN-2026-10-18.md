@@ -126,6 +126,7 @@ Günlük 3’lü, aşağıdaki **belirlenimli** sırayla seçilir:
 - **Yerel gün / gece yarısı:** gün dönünce **izlenmekte olan video kesilmez**; yeni seçki kullanıcı çıkınca/yeni oturumda sunulur. Saat dilimi ve saat değişimi test edilir.
 - **Gün içi değişiklik:** kategori veya seviye değişirse **yeni seçim açıkça başlar**; **günlük süre ve öğrenme kayıtları silinmez** (sayaç kategori/seviye değişerek sıfırlanmaz).
 - **Geri çekme:** içerik güvenlik/kalite nedeniyle geri çekildiyse sabit listeye rağmen erişim kesilir, aynı seviye/kategoriden yedek sunulur (ya da daha az video).
+  - **Açık oturumda (H-096, 2026-10-21):** katalog Keşfet'e dönünce ve uygulama öne gelince yeniden okunur (en fazla dakikada bir; eşzamanlı dönüşler tek okuma). Değişmediyse akış kesilmez. Açık video artık yayında değilse durur, sakin not çıkar ("Bu video artık yayında değil. Listeni yeniledik."), seçki aynı yedek kuralıyla yenilenir ve kalınan yer yedeğe taşınır. Uygulamanın paket yükleyicisi yalnız **son başarılı** katalog okumasındaki kimlikleri açar; okuma başarısızsa eski adresle sessiz açma yok. Katalogdan kaldırmak, daha önce indirilmiş doğrudan medya adresini iptal etmez (yayın tasarımında ayrı: H-044, değişmez sürüm klasörleri).
 - **İçerik değişimi:** içerik `contentVersion` artarsa (düzeltilmiş görsel/ses/altyazı ya da değişen hedef) eski izleme/soru sonucu **yeni sürüme taşınmaz**; o reel yeniden “izlenmemiş” sayılır. Sabit seçkide oynatılırken **güncel sürüm** gösterilir; geri çekilen içerik sabit seçkide olsa bile **oynatılmaz**.
 - **Saklama (en az veri):**
   - `discover.watch.<gün>` → **aynen kalır** (saniye).
@@ -133,6 +134,7 @@ Günlük 3’lü, aşağıdaki **belirlenimli** sırayla seçilir:
   - `discover.reel.<id>` → `{contentVersion, watchedSeconds, completed, lastShownDay, difficulty?, practiceResult?}`.
   - Tercihler (`discover.prefs`) → kategoriler + seviye geçersiz kılma (eşitlenmez; hesap eşitlemesi sonraki adım).
 - **Tamamlanma:** videoyu açmak/ilk kareyi görmek **tamamlanma değildir**; aktif oynatma kapsamı + sona yaklaşma birlikte değerlendirilir. Aynı iki saniyeyi döndürmek tamamlanma sayılmaz. Bu bir **ürün ölçümüdür**, öğrenme başarısı değil.
+  - **Kesin kural (H-096, 2026-10-21):** iki koşul birlikte: (1) oynatıcı konumu sürenin **≥ %90**'ı (bitmiş videoda konum = süre) ve (2) bu açılışta **aktif oynatılan** saniyeler sürenin **≥ %80**'i (ekran görünür, uygulama önde, panel kapalı, video oynuyor). Sona atlayıp kısa izlemek tamamlanma değildir. %80, saniyelik sayaç ve ilk kare payı için %90'ın altında tutuldu. Öğrenme kanıtına (Defter/FSRS) yazılmaz.
 
 ---
 
