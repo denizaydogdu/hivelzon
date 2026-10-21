@@ -5,13 +5,14 @@
 Bu dosya tek takip noktasıdır. Hangi işin hangi sırada yapıldığını, şu an ne üzerinde çalışıldığını ve neyin bittiğini gösterir. Her işin ayrıntısı kendi `H-<numara>-<başlık>.md` dosyasındadır.
 
 ## Nerede kaldık
-- **Şu an (2026-10-21):** Faz 1 (MVP) uygulaması sürüyor (`docs/UYGULAMA-PLANI.md`). `main` = `3b8e044`, GitHub'da.
+- **Şu an (2026-10-21):** Faz 1 (MVP) uygulaması sürüyor (`docs/UYGULAMA-PLANI.md`). `main` = `c6acb83`, GitHub'da.
   - Bugün bitenler: **H-042** (hesap silme/geri alma, Hakkında ve lisanslar, günlük hatırlatma, `docs/HUKUK-SORULARI.md`) ve **H-095** (yeniden onay yok, yalnız bildirim; rıza ve denetim kayıtları 2 yıl, V16; KVKK ve kullanım koşulları taslakları, yer tutuculu). İkisi gerçek backend'e karşı uçtan uca testle doğrulandı (`mobile/integration_test/h042_h095_account_e2e_test.dart`).
+  - Akşam: **H-096** (21 Ekim takip incelemesi: geri çekilen reel eski adresle açılmaz, mesaj kalıbı tek cümlede, reel tamamlanması %90 konum + %80 aktif izleme, 'İfadeyi kaydet') bitti; inceleme `docs/URUN-TAKIP-INCELEMESI-2026-10-21.md`. Değişmez sürüm klasörleri H-044'e not edildi.
   - **H-043:** yerel kısım bitti; kalan gerçek telefon kontrolleri (`docs/BETA-KONTROL-LISTESI.md` 2. bölüm).
   - **H-094:** Keşfet "İlgi alanların" paneli (son ürün eksiği) bitti; iş yalnız H-092 pilotu ve insan değerlendirmesi için açık.
   - SyncController ilk eşitleme hatası düzeltildi. G-A1-13 açıklaması düzeltildi ve yeniden seslendirildi.
   - Hukukçu cevapları `docs/HUKUK-SORULARI.md` → "Cevaplar": veli onayı yok; İYS ve VERBİS kaydı gerekmez; sunucu Almanya; cihazda konuşma tanıma KVKK kapsamında değil; kayıtlar 2 yıl; 30 gün silme uygun; pilot onamı uygun. Veri sorumlusu bilgileri ayrı fazda; muhasebe soruları H-044'te.
-- **Testler (son koşu):** mobil 1427 (`flutter analyze` temiz) · backend 155 · pytest 368 · reel lint 18/0/0 · grammar lint 71 ders 0 hata · book lint 30 kitap 0 hata.
+- **Testler (son koşu):** mobil 1454 (`flutter analyze` temiz) · backend 155 · pytest 381 · reel lint 18/0/0 · grammar lint 71 ders 0 hata · book lint 30 kitap 0 hata.
 - **Yerel ortam:** backend :8080 (yeniden derlendi; veritabanı V16, 18 reel PUBLISHED) · içerik sunucusu 127.0.0.1:8787 · PostgreSQL 127.0.0.1:5435 (5434 başka projenin) · simülatör "hiVelzon iPhone 17" (EEE1613C, şu an kapalı). Sunucu, Bunny Stream, mağaza ve geliştirici hesapları en sonda (H-044).
 - **İçerik:** Sezon 1'in 12 bölümü üretildi (haritada 12/12; editör onayı H-028 bekliyor). Dilbilgisi 71 dersin hepsi yazıldı ve Türkçe sesli; İngilizce örnek sesi A1 16/16, A2 7 tam + 1 kısmen, B1–C2 bekliyor. Kitaplık: 30 kitap yazıldı ve tam resimli; sesli kitap 5/30. Keşfet: 18 sesli reel yayında. Higgsfield kredisi **236,56**.
 - **Sıradaki adım:** Açık işlerin kalanı kullanıcıya ya da dış taraflara bağlı (aşağıda). **H-092** bölündü (kullanıcı kararı 2026-10-21): aşama A (2–3 kişilik gözlemli test; kullanıcının iPhone'u, Mac'ten yerel ağ, dışarı veri çıkmaz) erken ve isteğe bağlı; aşama B (evde 7–14 gün) **H-044 ile en sonda**. Pilot kiti hazır (`docs/H-092-PILOT-KITI.md`). Pilot sonucu görülmeden büyük yeni içerik dalgası başlamaz.
@@ -122,6 +123,7 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 | 1.10 | H-042 | Profil, ayarlar, hukuki metinler | Orta | H-038 | ✅ |
 | 1.11 | H-043 | Kalite ve iç beta hazırlığı | Orta | H-039 … H-042 | 🔄 |
 | 1.10' | H-095 | Hukukçu cevaplarının uygulanması (yeniden onay yok, 2 yıl saklama, KVKK ve koşullar metni) | Yüksek | H-042 | ✅ |
+| İ7 | H-096 | 21 Ekim takip incelemesi düzeltmeleri (reel kataloğu, mesaj kanıtı, tamamlanma, etiket) | Yüksek | H-094, H-090 | ✅ |
 | — | H-045 | Arayüz tasarım yönü (6 ekran taslağı, 6 kr) | Orta | H-033 | ✅ |
 | 1.12 | H-044 | Dış hesaplar, barındırma ve mağaza (en son) | Orta | H-043 | ⏳ |
 
@@ -206,6 +208,7 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 ## Biten işler
 | İş | Başlık | Bitiş | Doğrulama |
 |---|---|---|---|
+| H-096 | 21 Ekim takip incelemesi düzeltmeleri | 2026-10-21 | Geri çekilen reel eski adresle açılmaz + katalog yenileme (≥1 dk), mesaj kalıbı tek cümlede ve kanıt yalnız eşleşen hedefe, tamamlanma %90 konum + %80 aktif izleme, 'İfadeyi kaydet'; her madde önce düşen regresyon testiyle; mobil 1454, pytest 381 |
 | H-095 | Hukukçu cevaplarının uygulanması | 2026-10-21 | Yeniden onay yok (bildirim kartı), rıza ve denetim kayıtları 2 yıl (V16, `RecordRetentionJob`), KVKK ve koşullar taslakları (yer tutuculu); mobil 1427, backend 155; gerçek backend'e karşı uçtan uca test |
 | H-042 | Profil, ayarlar, hukuki metinler | 2026-10-21 | Hesap silme/geri alma, Hakkında ve lisanslar, günlük hatırlatma, `docs/HUKUK-SORULARI.md`; `mobile/integration_test/h042_h095_account_e2e_test.dart` gerçek backend'e karşı geçti |
 | H-093 | Haftalık özette kanıt, Hi gizlilik, hikâye içi Söyle kanıtı | 2026-10-16 | Kanıt cümlesi, "Öğrenme kanıtların", silme her yerde; testler yeşil |

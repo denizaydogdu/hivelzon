@@ -4,7 +4,7 @@
 > **Sahibi / veri sorumlusu:** Velzon Bilişim Teknolojileri Ltd. Şti. (Eskişehir · info@velzon.tr)
 > **Durum:** Faz 1 (MVP) uygulaması sürüyor; uygulama planı onaylı (`docs/UYGULAMA-PLANI.md`, H-025). Bağlayıcı kararlar `CLAUDE.md` tablolarındadır; bu belgeyle çelişirse onlar geçerlidir.
 >
-> **Güncel durum (2026-10-21 akşam):** H-094 Keşfet'in ürün tarafı tamam (18 sesli reel, yayın/geri çekme, "İlgi alanların" paneli). H-042 (hesap silme/geri alma, Hakkında, hatırlatma) ve H-095 (hukukçu cevapları) bitti; H-043'ün yerel kısmı bitti, gerçek telefon kontrolleri kaldı. H-092 pilotu bölündü: aşama A erken ve isteğe bağlı, aşama B H-044 ile en sonda. Sıradaki boş numara: H-096. Kredi, test sonuçları ve açık kararlar için tek kaynak: `yapilacaklar/IS-SIRASI.md`.
+> **Güncel durum (2026-10-21 akşam):** H-094 Keşfet'in ürün tarafı tamam (18 sesli reel, yayın/geri çekme, "İlgi alanların" paneli). H-042 (hesap silme/geri alma, Hakkında, hatırlatma) ve H-095 (hukukçu cevapları) ile H-096 (21 Ekim takip incelemesi düzeltmeleri) bitti; H-043'ün yerel kısmı bitti, gerçek telefon kontrolleri kaldı. H-092 pilotu bölündü: aşama A erken ve isteğe bağlı, aşama B H-044 ile en sonda. Sıradaki boş numara: H-097. Kredi, test sonuçları ve açık kararlar için tek kaynak: `yapilacaklar/IS-SIRASI.md`.
 
 ## Güncel kararlar (v0.2, 2026-10-12)
 
