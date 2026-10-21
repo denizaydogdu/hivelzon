@@ -1,6 +1,6 @@
 # H-094: Keşfet — seviyeye ve ilgiye göre günlük üç kısa video (reel)
 
-- **Durum:** Sürüyor — **P0, P1, P2, P3 ve P4 tamamlandı** (kredisiz, deneme verisi). **18 reellik pilot üretildi** (3'ü sesli, 15'i sessiz; ses kotası ay başını bekliyor). Yayın/geri çekme kapısı hazır; ücretli üretim onayı alındı (2026-10-20), pilot yayını için ayrı onay gerekir.
+- **Durum:** Sürüyor — **P0, P1, P2, P3 ve P4 tamamlandı** (kredisiz). **18 reellik pilot üretildi ve 18/18 sesli**; backend yayın/geri çekme provası yapıldı (2026-10-21). Pilotta uçtan uca geri çekme için uygulamanın backend kataloğuna bağlanması gerekiyor (`docs/H-094-P4-PROVA-2026-10-21.md` §5–§7). Ücretli üretim onayı alındı (2026-10-20), pilot yayını için ayrı onay gerekir.
 - **Tür:** Uygulama (kod) + içerik boru hattı + içerik pilotu
 - **Faz:** F1 MVP — ürün incelemesi sonrası (2026-10-18)
 - **Bağımlılık:** H-040 (Keşfet), H-089 (kanıt basamakları), H-088 (günlük plan); pilot içerik için ücretli üretim onayı ve `PROMPTS.md`
@@ -109,3 +109,9 @@ Kendi dalında; `git revert`. İçerik paketleri `/reels/` altında ayrı durur;
   - **Regresyon (H-039):** tam test koşusunda aralıklı düşen **"Ref after dispose"** hatası bulundu: `OnboardingGateNotifier._check` okuma sürerken kapsayıcı kapanınca `state` yazıyordu. `ref.mounted` guard'ı eklendi (`_check`, `complete`, `restart`); yeni test `mobile/test/features/onboarding/onboarding_gate_test.dart` düzeltme olmadan **düşüyor**, düzeltmeyle geçiyor.
   - **Testler:** `pytest` **368**, `flutter test` **1278** (yeni H-039 regresyonu), `flutter analyze` temiz.
   - **Sıradaki:** H-092 kullanıcı pilotu (P4 hazır, 18 paket sesli) + insan değerlendirmesi. **Commit:** onay bekleniyor.
+- 2026-10-21: **P4 yayın provası yapıldı (18 gerçek reel).** Ayrıntı: `docs/H-094-P4-PROVA-2026-10-21.md`.
+  - **Ortam:** yerel Postgres + Mailpit (docker compose), backend 8080, içerik sunucusu 8787, editör hesabı (`pilot-editor@velzon.test`, Mailpit kodu + `users.role='EDITOR'`).
+  - **İçe aktarma:** 18 reel **IN_REVIEW**, lint **0/0**; ikinci çağrı tamamen `UNCHANGED` (idempotent). Onay (4 madde; reelde kanon istenmiyor) + yayın: **18/18**. Açık katalog **A1 9 · A2 9**; paket `reel.json`, mp4 ve ses 200 döndü.
+  - **Geri çekme:** `A2-R-CIN-03` → **WITHDRAWN**, A2 katalog **9 → 8**, kimlik yok, gerekçe `OTHER`, `allowedActions` boş. Prova sonunda yerel veri SQL ile geri alındı (üretimde yeni sürüm gerekir).
+  - **Bulgu (pilot kapısı):** uygulama `/reels/index.json` (geliştirme sunucusu) okuyor; `GET /api/v1/catalog/reels` hiç çağrılmıyor. Backend'de yayın/geri çekme doğru, **uçtan uca değil**. Ayrıca backend yanıtında `categoryTr`, `family`, `poster`, `sourceType` yok. Karar: uygulamayı backend kataloğuna bağlamak (öneri), içeriği dondurmak ya da yalnız yerelde sunucuyu süzmek.
+  - **Sıradaki:** F1 kararı (backend kataloğuna bağlama) → H-092. **Commit:** belge + H-094 güncellemesi, onay bekliyor.
