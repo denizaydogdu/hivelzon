@@ -217,14 +217,15 @@ void main() {
       >{
         'profil': (
           const ProfileScreen(),
-          1480,
+          // H-042: hatırlatma satırı ve "Hakkında" grubu eklendi.
+          1960,
           name: 'Deniz',
           account: null,
           image: ProfileScreen.headerImage,
         ),
         'profil_adsiz': (
           const ProfileScreen(),
-          1340,
+          1820,
           name: null,
           account: null,
           image: ProfileScreen.headerImage,

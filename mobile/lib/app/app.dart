@@ -3,6 +3,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../features/account/application/account_providers.dart';
+import '../features/reminder/application/reminder_providers.dart';
 import 'local_data_refresh.dart';
 import 'router.dart';
 import 'theme.dart';
@@ -15,6 +16,9 @@ class HiVelzonApp extends ConsumerWidget {
     final router = ref.watch(routerProvider);
     // H-038: hesap açıksa eşitleme zamanlayıcısı (hesap yoksa hiçbir şey yapmaz).
     ref.watch(syncControllerProvider);
+    // H-042: günlük hatırlatma açılışta ve öne gelince yeniden kurulur
+    // (kapalıysa hiçbir şey yapmaz).
+    ref.watch(reminderLifecycleProvider);
     // H-056: başka cihazdan veri gelince (ya da yerel veri toplu değişince)
     // bütün sekmeler yenilenir. Dinleyici uygulama kökünde: duraklatılmaz ve
     // build dışında çalışır.

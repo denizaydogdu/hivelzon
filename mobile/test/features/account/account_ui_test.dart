@@ -10,25 +10,34 @@ import 'package:hivelzon/features/account/presentation/account_screen.dart';
 import 'package:hivelzon/features/account/presentation/account_widgets.dart';
 import 'package:hivelzon/features/account/presentation/sign_in_screen.dart';
 import 'package:hivelzon/features/player/data/progress_repository.dart';
+import 'package:hivelzon/features/reminder/application/reminder_providers.dart';
+import 'package:hivelzon/features/reminder/data/reminder_store.dart';
+import 'package:hivelzon/features/reminder/domain/daily_reminder.dart';
 import 'package:hivelzon/l10n/tr_strings.dart';
+import 'package:hivelzon/shared/api/api_client.dart';
+import 'package:hivelzon/shared/api/auth_service.dart';
 import 'package:hivelzon/shared/api/token_store.dart';
 import 'package:hivelzon/shared/content/content_providers.dart';
 import 'package:hivelzon/shared/storage/app_database.dart';
 import 'package:hivelzon/shared/storage/storage_providers.dart';
+import 'package:hivelzon/shared/sync/sync_store.dart';
 import 'package:hivelzon/shared/ui/ui.dart';
 
 import '../../support/fake_api_server.dart';
+import '../../support/fake_reminder_scheduler.dart';
 import '../../support/fake_content_source.dart';
 
 void main() {
   late AppDatabase db;
   late FakeApiServer server;
   late MemoryTokenStore tokens;
+  late FakeReminderScheduler reminders;
 
   setUp(() {
     db = AppDatabase.memory();
     server = FakeApiServer();
     tokens = MemoryTokenStore();
+    reminders = FakeReminderScheduler();
     SyncController.listenLifecycle = false;
   });
   tearDown(() async {
@@ -80,10 +89,18 @@ void main() {
           ),
           apiHttpClientProvider.overrideWithValue(server.client),
           tokenStoreProvider.overrideWithValue(tokens),
+          reminderSchedulerProvider.overrideWithValue(reminders),
         ],
-        child: MaterialApp.router(
-          theme: AppTheme.light(),
-          routerConfig: router,
+        // Uygulama kökü gibi: eşitleme denetleyicisi baştan dinlenir.
+        child: Consumer(
+          builder: (context, ref, child) {
+            ref.watch(syncControllerProvider);
+            return child!;
+          },
+          child: MaterialApp.router(
+            theme: AppTheme.light(),
+            routerConfig: router,
+          ),
         ),
       ),
     );
@@ -255,6 +272,171 @@ void main() {
       () => db.select(db.userStoryProgress).get(),
     );
     expect(rows, hasLength(1));
+    await unmount(tester);
+  });
+
+  testWidgets('H-042 uçtan uca: hesabı sil → çıkışta "silinmek üzere" kartı '
+      've tarih → yeni kodla giriş → geri al', (tester) async {
+    // Hesap açık başlar (kayıt akışı yukarıdaki testte).
+    final store = SyncStore(db);
+    final auth = AuthService(
+      api: ApiClient(
+        client: server.client,
+        baseUrl: Uri.parse('http://127.0.0.1:8080'),
+        sleep: (_) async {},
+      ),
+      tokens: tokens,
+      store: store,
+    );
+    await tester.runAsync(() async {
+      await auth.startEmail('deniz@example.com');
+      await auth.verify(
+        'deniz@example.com',
+        server.lastCode!,
+        signup: const SignupDetails(
+          birthYear: 2000,
+          termsVersion: 'taslak-1',
+          privacyNoticeVersion: 'taslak-1',
+        ),
+      );
+    });
+    await pump(tester, const AccountScreen());
+    expect(find.text('d•••@example.com'), findsOneWidget);
+
+    // 1) Sil: onay → istek → oturum kapanır.
+    await tapKey(tester, 'account-delete');
+    expect(find.text(AccountTexts.deleteBody), findsOneWidget);
+    await tapKey(tester, 'account-confirm-ok');
+    await settle(tester, 30);
+    expect(server.requests, contains('DELETE /api/v1/me'));
+    expect(tokens.tokens, isNull);
+    final purge = server.accounts['deniz@example.com']!.purgeAt!;
+    final date = AccountTexts.date(purge);
+
+    // 2) Oturum kapalı: durum ve kalıcı silme tarihi görünür.
+    expect(
+      find.byKey(const ValueKey('account-pending-deletion-signed-out')),
+      findsOneWidget,
+    );
+    expect(find.text(AccountTexts.signedOutPendingBody(date)), findsOneWidget);
+    expect(find.byKey(const ValueKey('account-email')), findsOneWidget);
+    // Cihazda e-posta yok; yalnızca işaret.
+    final marker = await tester.runAsync(store.pendingDeletion);
+    expect(marker!.purgeAt, purge);
+
+    // 3) Geri al → giriş: yeni kodun gerekçesi.
+    await tapKey(tester, 'account-restore-signed-out');
+    expect(find.text(AccountTexts.restoreWhyCode), findsOneWidget);
+    await tester.enterText(
+      find.byKey(const ValueKey('sign-in-email')),
+      'deniz@example.com',
+    );
+    await tapKey(tester, 'sign-in-send');
+    await tester.enterText(
+      find.byKey(const ValueKey('sign-in-code')),
+      server.lastCode!,
+    );
+    await settle(tester);
+
+    // 4) Geri alma adımı: tarih ve kodun neden istendiği.
+    expect(find.text(AccountTexts.restoreBody(date)), findsOneWidget);
+    await tapKey(tester, 'sign-in-restore');
+    await settle(tester, 40);
+    expect(server.requests, contains('POST /api/v1/me/restore'));
+    expect(server.accounts['deniz@example.com']!.status, 'ACTIVE');
+    expect(find.byKey(const ValueKey('sign-in-done')), findsOneWidget);
+    await tapKey(tester, 'sign-in-finish');
+
+    // 5) Hesap etkin; kart ve işaret yok.
+    expect(find.text('d•••@example.com'), findsOneWidget);
+    expect(find.byKey(const ValueKey('account-delete')), findsOneWidget);
+    expect(
+      find.byKey(const ValueKey('account-pending-deletion-signed-out')),
+      findsNothing,
+    );
+    expect(
+      find.byKey(const ValueKey('account-pending-deletion')),
+      findsNothing,
+    );
+    expect(await tester.runAsync(store.pendingDeletion), isNull);
+    await tester.runAsync(auth.dispose);
+    await unmount(tester);
+  });
+
+  testWidgets('H-042: "Bu telefondaki verileri sil" hatırlatmayı da '
+      'kaldırır', (tester) async {
+    final auth = AuthService(
+      api: ApiClient(
+        client: server.client,
+        baseUrl: Uri.parse('http://127.0.0.1:8080'),
+        sleep: (_) async {},
+      ),
+      tokens: tokens,
+      store: SyncStore(db),
+    );
+    await tester.runAsync(() async {
+      await auth.startEmail('deniz@example.com');
+      await auth.verify(
+        'deniz@example.com',
+        server.lastCode!,
+        signup: const SignupDetails(
+          birthYear: 2000,
+          termsVersion: 'taslak-1',
+          privacyNoticeVersion: 'taslak-1',
+        ),
+      );
+      await ReminderStore(
+        db,
+      ).write(const ReminderSettings(enabled: true, hour: 8, minute: 0));
+    });
+    reminders.scheduled = (8, 0, 'hiVelzon', '');
+    await pump(tester, const AccountScreen());
+    await tapKey(tester, 'account-sign-out-wipe');
+    await tapKey(tester, 'account-confirm-ok');
+    await settle(tester, 30);
+    expect(reminders.scheduled, isNull);
+    expect(reminders.cancelCalls, 1);
+    final s = await tester.runAsync(() => ReminderStore(db).read());
+    expect(s, ReminderSettings.off);
+    await tester.runAsync(auth.dispose);
+    await unmount(tester);
+  });
+
+  testWidgets('H-042: geri almadan çıkılırsa kart kalır; Profil satırı da '
+      'söyler', (tester) async {
+    final purge = DateTime.now().toUtc().add(const Duration(days: 12));
+    await tester.runAsync(
+      () => SyncStore(db).recordPendingDeletion('u-1', purge),
+    );
+    await pump(tester, const AccountRow());
+    expect(
+      find.text(AccountTexts.pendingDeletion(AccountTexts.date(purge))),
+      findsOneWidget,
+    );
+    await tapKey(tester, 'profile-account');
+    expect(
+      find.byKey(const ValueKey('account-pending-deletion-signed-out')),
+      findsOneWidget,
+    );
+    expect(server.requests, isEmpty);
+    await unmount(tester);
+  });
+
+  testWidgets('H-042: kalıcı silme tarihi geçtiyse kart görünmez', (
+    tester,
+  ) async {
+    await tester.runAsync(
+      () => SyncStore(db).recordPendingDeletion(
+        'u-1',
+        DateTime.now().toUtc().subtract(const Duration(minutes: 1)),
+      ),
+    );
+    await pump(tester, const AccountScreen());
+    expect(
+      find.byKey(const ValueKey('account-pending-deletion-signed-out')),
+      findsNothing,
+    );
+    expect(find.byKey(const ValueKey('account-email')), findsOneWidget);
     await unmount(tester);
   });
 

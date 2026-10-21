@@ -19,6 +19,7 @@ import '../features/notebook/presentation/notebook_screen.dart';
 import '../features/notebook/presentation/review_screen.dart';
 import '../features/onboarding/application/onboarding_providers.dart';
 import '../features/onboarding/presentation/onboarding_screen.dart';
+import '../features/profile/presentation/about_screen.dart';
 import '../features/profile/presentation/profile_screen.dart';
 import '../features/story/presentation/season_intro_screen.dart';
 import '../features/story/presentation/story_screen.dart';
@@ -60,6 +61,9 @@ abstract final class AppRoutes {
 
   /// Hesap aç / giriş yap (e-posta kodu).
   static const signIn = '/profil/hesap/giris';
+
+  /// Profil → "Hakkında ve lisanslar" (H-042).
+  static const about = '/profil/hakkinda';
 
   /// Hukuk metinleri (yer tutucu; H-042): `kosullar` | `aydinlatma`.
   static String legal(String kind) => '/profil/hesap/metin/$kind';
@@ -309,6 +313,11 @@ final routerProvider = Provider<GoRouter>((ref) {
                 path: 'hi',
                 pageBuilder: (context, state) =>
                     appPage(key: state.pageKey, child: const HiPrivacyScreen()),
+              ),
+              GoRoute(
+                path: 'hakkinda',
+                pageBuilder: (context, state) =>
+                    appPage(key: state.pageKey, child: const AboutScreen()),
               ),
               GoRoute(
                 path: 'hesap',

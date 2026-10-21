@@ -59,6 +59,13 @@ dependencies:
   just_audio: ^0.10.6
   audio_service: ^0.18.19
   audio_session: ^0.2.4
+  # H-042: günlük hatırlatma (H-013; günde en fazla 1, cihazda yerel
+  # bildirim, sunucu yok). Lisanslar: flutter_local_notifications
+  # BSD-3-Clause, timezone BSD-2-Clause; yan bağımlılıklar xml ve
+  # petitparser MIT, dbus MPL-2.0 (yalnız Linux eklentisinde; iOS/Android
+  # derlemesine girmez).
+  flutter_local_notifications: ^22.3.2
+  timezone: ^0.11.2
 
 dev_dependencies:
   flutter_test:

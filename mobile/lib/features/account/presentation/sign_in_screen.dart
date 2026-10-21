@@ -299,7 +299,19 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
   List<Widget> _body(ThemeData theme) {
     switch (_step) {
       case SignInStep.email:
+        // H-042: silinmek üzere hesap varsa yeni kodun gerekçesi.
+        final deletion = ref.watch(pendingDeletionProvider).value;
         return [
+          if (deletion != null) ...[
+            const InfoCard(
+              key: ValueKey('sign-in-restore-why'),
+              tone: InfoTone.info,
+              icon: Icons.lock_reset_rounded,
+              title: AccountTexts.restoreWhyCodeTitle,
+              body: AccountTexts.restoreWhyCode,
+            ),
+            const SizedBox(height: AppSpacing.sm),
+          ],
           const SectionHeading(AccountTexts.emailHeading),
           const SizedBox(height: AppSpacing.xs),
           TextField(

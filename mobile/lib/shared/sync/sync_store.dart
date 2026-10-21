@@ -100,6 +100,34 @@ class SyncStore {
   Future<void> _deleteMeta(String key) =>
       (db.delete(db.appMeta)..where((t) => t.key.equals(key))).go();
 
+  /// Silme isteği bekleyen hesap (H-042): hesap kimliği ve kalıcı silme anı
+  /// (JSON). Çıkıştan sonra da kalır; Hesap ekranı "silinmek üzere" kartını
+  /// bundan gösterir. E-posta yazılmaz (maskeli de değil).
+  static const pendingDeletionKey = 'account.pendingDeletion';
+
+  /// Silme isteği bekleyen hesap; kalıcı silme anı geçtiyse işaret silinir
+  /// ve `null` döner.
+  Future<PendingDeletion?> pendingDeletion() async {
+    final raw = await _meta(pendingDeletionKey);
+    if (raw == null) return null;
+    final m = PendingDeletion.tryParse(raw);
+    if (m == null || !m.purgeAt.isAfter(now())) {
+      await _deleteMeta(pendingDeletionKey);
+      return null;
+    }
+    return m;
+  }
+
+  /// Silme isteği alındı (ya da silinmek üzere olan hesapla girildi).
+  Future<void> recordPendingDeletion(String? userId, DateTime purgeAt) =>
+      _setMeta(
+        pendingDeletionKey,
+        PendingDeletion(userId: userId, purgeAt: purgeAt.toUtc()).encode(),
+      );
+
+  /// Hesap geri alındı.
+  Future<void> clearPendingDeletion() => _deleteMeta(pendingDeletionKey);
+
   /// Bekleyen (çıkışlıyken yapılmış) Hi silmesinin anı; yoksa `null`.
   Future<DateTime?> pendingHiReset() async =>
       DateTime.tryParse(await _meta(pendingHiResetKey) ?? '')?.toUtc();
@@ -159,6 +187,20 @@ class SyncStore {
         await _deleteMeta(pendingHiResetKey);
       }
       await _setMeta(lastAccountKey, userId);
+      // H-042: silme bekliyor işareti. Silinmek üzere olan hesapla girişte
+      // yazılır; aynı hesap etkin geldiyse (başka cihazda geri alındı)
+      // silinir. Başka bir hesabın işaretine dokunulmaz.
+      if (status == 'PENDING_DELETION' && scheduledPurgeAt != null) {
+        await recordPendingDeletion(userId, scheduledPurgeAt);
+      } else if (status != 'PENDING_DELETION') {
+        final marker = PendingDeletion.tryParse(
+          await _meta(pendingDeletionKey) ?? '',
+        );
+        if (marker != null &&
+            (marker.userId == null || marker.userId == userId)) {
+          await _deleteMeta(pendingDeletionKey);
+        }
+      }
       for (final sql in SyncSql.enqueueAll()) {
         await db.customStatement(sql);
       }
@@ -873,4 +915,38 @@ class _ProgressTable {
 
   /// Kalınan yer: (JSON adı, kolon).
   final List<(String, String)> place;
+}
+
+/// Silme isteği bekleyen hesap (H-042; `app_meta`
+/// [SyncStore.pendingDeletionKey]). E-posta tutulmaz.
+class PendingDeletion {
+  const PendingDeletion({required this.userId, required this.purgeAt});
+
+  /// Hesap kimliği (aynı hesap başka cihazda geri alınınca işareti silmek
+  /// için); yoksa `null`.
+  final String? userId;
+
+  /// Kalıcı silme anı (UTC).
+  final DateTime purgeAt;
+
+  String encode() => jsonEncode({
+    'userId': ?userId,
+    'purgeAt': purgeAt.toUtc().toIso8601String(),
+  });
+
+  static PendingDeletion? tryParse(String raw) {
+    try {
+      final m = jsonDecode(raw);
+      if (m is! Map) return null;
+      final at = DateTime.tryParse('${m['purgeAt']}');
+      if (at == null) return null;
+      final id = m['userId'];
+      return PendingDeletion(
+        userId: id is String ? id : null,
+        purgeAt: at.toUtc(),
+      );
+    } on FormatException {
+      return null;
+    }
+  }
 }

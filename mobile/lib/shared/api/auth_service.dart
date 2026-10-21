@@ -163,6 +163,7 @@ class AuthService {
   /// Silinmek üzere olan hesabı geri alır (kodla yeni girişten sonra).
   Future<void> restore() async {
     await authorized((b) => api.send('POST', '/api/v1/me/restore', bearer: b));
+    await store.clearPendingDeletion();
     await store.update(
       const SyncStateCompanion(accountStatus: Value(AccountStatus.active)),
     );
@@ -170,12 +171,20 @@ class AuthService {
 
   /// Hesap silme isteği (30 gün geri alınabilir). Sunucu bütün oturumları
   /// kapatır; bu cihazda da oturum kapanır, veri cihazda kalır.
+  ///
+  /// H-042: çıkıştan sonra da "silinmek üzere" görünsün diye cihazda küçük
+  /// bir işaret kalır (hesap kimliği + kalıcı silme anı; e-posta yok).
   Future<DateTime?> deleteAccount() async {
+    final userId = (await store.state()).accountUserId;
     final r = await authorized(
       (b) => api.send('DELETE', '/api/v1/me', bearer: b),
     );
+    final purge =
+        DateTime.tryParse('${r.map['scheduledPurgeAt']}')?.toUtc() ??
+        now().add(const Duration(days: 30));
+    await store.recordPendingDeletion(userId, purge);
     await _localSignOut(null);
-    return DateTime.tryParse('${r.map['scheduledPurgeAt']}')?.toUtc();
+    return purge;
   }
 
   /// Çıkış: sunucudaki oturum kapatılmaya çalışılır (bağlantı yoksa da
