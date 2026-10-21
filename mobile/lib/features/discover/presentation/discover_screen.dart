@@ -37,6 +37,7 @@ import '../domain/feed_video.dart';
 import '../domain/reel.dart';
 import '../domain/reel_progress.dart';
 import 'widgets/feed_cards.dart';
+import 'widgets/interests_section.dart';
 import 'widgets/video_page.dart';
 
 /// Keşfet (H-040, K-15; günlük üç video H-094).
@@ -363,6 +364,10 @@ Future<void> _openLevelPanel(BuildContext context, WidgetRef ref) async {
   await showModalBottomSheet<void>(
     context: context,
     backgroundColor: AppPalette.sand,
+    // İlgi alanları bölümüyle panel uzar: içerik kadar yükselir, kısa
+    // ekranda kaydırılır.
+    isScrollControlled: true,
+    useSafeArea: true,
     builder: (context) => _LevelPanel(
       level: level,
       levels: levels,
@@ -463,6 +468,8 @@ class _LevelPanel extends StatelessWidget {
                   ),
                 ),
               ],
+              const SizedBox(height: AppSpace.s24),
+              const DiscoverInterestsSection(),
             ],
           ),
         ),
@@ -550,8 +557,12 @@ class _ReelFeed extends ConsumerWidget {
         ? -1
         : entries.indexWhere((e) => e is VideoEntry && e.video.id == resumeId);
     return DiscoverFeed(
-      // Çip ya da seviye değişince set baştan başlar (açık bir başlangıç).
-      key: ValueKey('discover-reels-${set.chip.name}-${set.level}'),
+      // Çip, seviye ya da ilgi alanları değişince set baştan başlar (açık
+      // bir başlangıç; plan §5).
+      key: ValueKey(
+        'discover-reels-${set.chip.name}-${set.level}-'
+        '${set.categories.join('.')}',
+      ),
       videos: videos,
       entries: entries,
       initialIndex: at < 0 ? 0 : at,

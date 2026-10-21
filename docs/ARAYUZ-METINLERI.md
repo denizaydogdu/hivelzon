@@ -330,6 +330,20 @@ Kod: `DiscoverTexts` (`mobile/lib/l10n/tr_strings.dart`). Keşfet artık yer tut
 | Günlük süre (13–17 ve 13 altı) | Yalnızca dolunca: **Bugünlük Keşfet burada bitiyor** · "Keşfet için günlük 20 dakikan doldu. Klipler gece yarısından sonra yeniden açılır." · "Hikâyen, Defter ve Kelime tekrarı her zaman açık." · **Hikâyene devam et**. İzlerken kalan süre gösterilmez. |
 | Yükleniyor / boş / hata | İskelet ("Klipler hazırlanıyor…") · **Klipler hazırlanıyor** "Bölümlerden kısa klipler burada akacak. Şimdilik hikâyene devam edebilirsin." **Hikâyeye git** · **Klipler açılamadı** "Bağlantını kontrol edip tekrar dene." **Tekrar dene** |
 
+#### İlgi alanların (H-094, plan §4.3, §5)
+
+Yer: seviye çipinin açtığı **KEŞFET ZORLUĞU** panelinin altında ikinci bölüm (üst şerit değişmez). Konular **Sinema · Spor · Kitap**, satır başına anahtar. Kapalı konu "Bugün"e girmez ama üstteki çipi görünür kalır ve havuzu açılır. Tercih yalnız cihazda.
+
+| Yer | Metin |
+|---|---|
+| Başlık | **İLGİ ALANLARIN** |
+| Açıklama | "Bugünün seçkisi açık konulardan hazırlanır. Kapalı bir konuya üstteki çipinden yine bakabilirsin." |
+| Kapalı satırın alt yazısı | "Bugünün seçkisine girmez" |
+| Grup altı not | "Değiştirince bugünün seçkisi yeniden hazırlanır. İzlediklerin ve kayıtların silinmez." |
+| Son açık konu kapatılmak istenince | (anahtar değişmez) "En az bir konu açık kalsın; bugünün seçkisi bu konulardan hazırlanır." |
+| Yazılamazsa | "Seçimin kaydedilemedi. Biraz sonra yeniden dene." |
+| Yükleniyor / hata | İskelet ("İlgi alanların açılıyor…") · "İlgi alanların şu an açılamadı." **Tekrar dene** |
+
 ### 7.2 Konuş (H-090)
 
 Kod: `TalkTexts`, plan gerekçesi `TalkPlanTexts` (`mobile/lib/l10n/tr_strings.dart`). Yapay zekâ sohbeti değildir (H-007): sahnelerin cümleleri önceden yazılmıştır ve sayfanın başında açıkça söylenir. Puan, yüzde, "yanlış" yok; "Geç" hep var (K-32). Mikrofon izni yalnızca **Söyle**'ye ilk dokununca sorulur; izin yoksa her şey dokunarak çalışır.

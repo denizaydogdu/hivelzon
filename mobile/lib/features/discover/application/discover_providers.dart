@@ -256,6 +256,66 @@ final reelLevelProvider = Provider<String>((ref) {
   return kDefaultReelLevel;
 });
 
+/// "İlgi alanların" değişikliğinin sonucu.
+enum InterestToggle {
+  /// Tercih yazıldı; bugünün seçkisi yeniden hazırlanır.
+  changed,
+
+  /// Son açık konu kapatılmak istendi: tercih değişmedi (en az biri açık).
+  keepOne,
+
+  /// Cihaza yazılamadı: tercih değişmedi.
+  failed,
+}
+
+/// Günlük seçkiye giren konular (plan §4.3, §5): `discover.prefs.categories`,
+/// yalnız cihazda. Katalog sırasıyla (Sinema · Spor · Kitap) döner.
+///
+/// `dailySetProvider` bunu izler: değişince saklanan seçkinin
+/// `prefsSnapshot`'ı uyuşmaz ve seviye değişimindeki **aynı yolla** yeni
+/// seçim başlar (izleme sayacı ve öğrenme kayıtları silinmez).
+class ReelCategoriesNotifier extends AsyncNotifier<List<String>> {
+  /// Yazmalar sırayla uygulanır (hızlı art arda dokunuşta kayıp olmaz).
+  Future<void> _queue = Future<void>.value();
+
+  @override
+  Future<List<String>> build() async =>
+      (await ref.watch(discoverStoreProvider).prefs()).normalizedCategories();
+
+  /// [code] konusunu açar ya da kapatır. Son açık konu kapatılmaz.
+  Future<InterestToggle> toggle(String code) {
+    final done = Completer<InterestToggle>();
+    _queue = _queue.then((_) async {
+      done.complete(await _apply(code));
+    });
+    return done.future;
+  }
+
+  Future<InterestToggle> _apply(String code) async {
+    final current = state.value ?? await future;
+    final on = current.contains(code);
+    if (on && current.length <= 1) return InterestToggle.keepOne;
+    final next = [
+      for (final c in kReelCategoryOrder)
+        if (c == code ? !on : current.contains(c)) c,
+    ];
+    try {
+      await ref.read(discoverStoreProvider).setReelCategories(next);
+    } on Object catch (e) {
+      debugPrint('[H094] ilgi alanları yazılamadı: $e');
+      return InterestToggle.failed;
+    }
+    if (ref.mounted) state = AsyncData(next);
+    return InterestToggle.changed;
+  }
+}
+
+final reelCategoriesProvider =
+    AsyncNotifierProvider<ReelCategoriesNotifier, List<String>>(
+      ReelCategoriesNotifier.new,
+      retry: (_, _) => null,
+    );
+
 /// Günlük set / kategori havuzu sorgusu (çip + seviye).
 typedef ReelQuery = ({DiscoverChip chip, String level});
 
@@ -271,9 +331,8 @@ final dailySetProvider = FutureProvider.autoDispose<DailySet>((ref) async {
   final store = ref.watch(discoverStoreProvider);
   final clock = ref.watch(discoverClockProvider);
   final catalog = await ref.watch(reelCatalogProvider.future);
-  final prefs = await store.prefs();
   final level = ref.watch(reelLevelProvider);
-  final categories = prefs.normalizedCategories();
+  final categories = await ref.watch(reelCategoriesProvider.future);
   final progress = await store.allReelProgress();
   final now = clock();
   final stored = await store.dailySet(now);
@@ -319,9 +378,18 @@ final dailyResumeProvider = FutureProvider.autoDispose<String?>((ref) async {
 
 /// Yüklenmiş reel havuzu: reeller + "Tekrar" etiketli kimlikler.
 class ReelPool {
-  const ReelPool({required this.reels, this.repeats = const {}});
+  const ReelPool({
+    required this.reels,
+    this.repeats = const {},
+    this.categories = const [],
+  });
 
   final List<Reel> reels;
+
+  /// Günlük sette seçkinin yapıldığı konular (`prefsSnapshot`); kategori
+  /// havuzunda boş. Akışın anahtarına girer: konular değişince seçki baştan
+  /// başlar (plan §5).
+  final List<String> categories;
 
   /// Kullanıcıya daha önce gösterildiği için "Tekrar" denen videolar.
   final Set<String> repeats;
@@ -347,7 +415,11 @@ final reelPoolProvider = FutureProvider.autoDispose.family<ReelPool, ReelQuery>(
         reels.add(reel);
         if (item.repeat) repeats.add(item.id);
       }
-      return ReelPool(reels: reels, repeats: repeats);
+      return ReelPool(
+        reels: reels,
+        repeats: repeats,
+        categories: set.categories,
+      );
     }
     final summaries = [
       for (final r in catalog.reels)
@@ -371,11 +443,15 @@ class ReelSet {
     required this.level,
     required this.reels,
     this.repeats = const {},
+    this.categories = const [],
   });
 
   final DiscoverChip chip;
   final String level;
   final List<Reel> reels;
+
+  /// Günlük sette seçkinin konuları (bkz. [ReelPool.categories]).
+  final List<String> categories;
 
   /// "Tekrar" etiketli reeller (plan §4.5).
   final Set<String> repeats;
@@ -396,6 +472,7 @@ final reelSetProvider = Provider.autoDispose<AsyncValue<ReelSet>>((ref) {
       level: level,
       reels: value.reels,
       repeats: value.repeats,
+      categories: value.categories,
     ),
   );
 });
@@ -403,4 +480,5 @@ final reelSetProvider = Provider.autoDispose<AsyncValue<ReelSet>>((ref) {
 /// "Tekrar dene": reel kataloğu ve seçki yeniden okunur.
 void retryReels(WidgetRef ref) {
   ref.invalidate(reelCatalogProvider);
+  ref.invalidate(reelCategoriesProvider);
 }

@@ -4,7 +4,8 @@
 // `h040_*`'ta kalır.
 //
 // Altyazı: seçkinin ilk reeli Sinema (A1-R-CIN-01); hedef sahnesi 4,2 sn'de
-// ("Two tickets, please."). Bilinçli görsel değişiklikten sonra:
+// ("Two tickets, please."). İlgi alanları paneli (`gunluk_ilgi*`) seviye
+// panelinin içindedir. Bilinçli görsel değişiklikten sonra:
 //
 //   cd mobile && flutter test --update-goldens test/goldens
 import 'package:flutter/material.dart';
@@ -71,7 +72,35 @@ final _cases = <String, _Case>{
       await h.settle(t, rounds: 12);
     },
   ),
+  // İlgi alanları (seviye panelinin içinde): Kitap kapalı.
+  'gunluk_ilgi': _Case(
+    act: (t, h) async {
+      await t.tap(find.byKey(const ValueKey('level-chip')));
+      await h.settle(t, rounds: 12);
+      await _tapInterest(t, h, 'BOK');
+    },
+  ),
+  // Son açık konu kapatılmak istendi: anahtar değişmez, sakin not çıkar.
+  'gunluk_ilgi_enaz': _Case(
+    act: (t, h) async {
+      await t.tap(find.byKey(const ValueKey('level-chip')));
+      await h.settle(t, rounds: 12);
+      await _tapInterest(t, h, 'BOK');
+      await _tapInterest(t, h, 'SPO');
+      await _tapInterest(t, h, 'CIN');
+      await t.ensureVisible(find.byKey(const ValueKey('interests-keep-one')));
+      await h.settle(t, rounds: 6);
+    },
+  ),
 };
+
+Future<void> _tapInterest(WidgetTester t, DiscoverHarness h, String c) async {
+  final f = find.byKey(ValueKey('interest-$c'));
+  await t.ensureVisible(f);
+  await h.settle(t, rounds: 4);
+  await t.tap(f);
+  await h.settle(t, rounds: 12);
+}
 
 void main() {
   setUpAll(loadAppFonts);
