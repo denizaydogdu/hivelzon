@@ -1035,11 +1035,23 @@ class DiscoverFeedState extends ConsumerState<DiscoverFeed>
     if (here != null) {
       final c = await cache.acquire(here.cacheKey);
       if (!mounted || token != _activation || c == null) return;
-      await c.setVolume(_muted ? 0 : 1);
-      if (c.value.position > Duration.zero || c.value.isCompleted) {
-        await c.seekTo(Duration.zero);
+      bool ownsController() =>
+          mounted &&
+          token == _activation &&
+          identical(cache.ready(here.cacheKey), c);
+      try {
+        await c.setVolume(_muted ? 0 : 1);
+        if (!ownsController()) return;
+        if (c.value.position > Duration.zero || c.value.isCompleted) {
+          await c.seekTo(Duration.zero);
+        }
+        if (!ownsController()) return;
+        if (_canPlay) await c.play();
+      } on Object {
+        // Çip/sekme değişirken bu akışın denetleyicisi eşzamanlı atılabilir.
+        // Güncel denetleyicinin gerçek oynatma hatasını gizleme.
+        if (ownsController()) rethrow;
       }
-      if (_canPlay && token == _activation) await c.play();
     }
     if (!mounted || token != _activation) return;
     if (nextVideo != null && !_limitReached) cache.preload(nextVideo.cacheKey);

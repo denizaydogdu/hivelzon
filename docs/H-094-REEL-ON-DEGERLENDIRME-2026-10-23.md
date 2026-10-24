@@ -197,4 +197,4 @@ toplu düzeltme ≈2,5–3 kr.
 - `A1-R-SPO-02`, `A1-R-CIN-02`, `A1-R-SPO-03`, `A1-R-BOK-03`, `A2-R-BOK-01`,
   `A2-R-CIN-02`, `A2-R-SPO-02` sürüm 2 olarak yeniden kuruldu ve yayımlandı.
 - Lint 18/0/0; açık katalog A1 9 + A2 9; 7 yeni sürümün reel/mp4/hedef sesi 200.
-- `pytest` 383, `flutter test` 1454, `flutter analyze` temiz. **Commit yok.**
+- `pytest` 383, `flutter test` 1454, `flutter analyze` temiz. **Commit:** `1a66ae4` (`origin/main`).

@@ -1,19 +1,20 @@
 # İş Sırası — hiVelzon
 
-> Son güncelleme: 2026-10-23 · Güncelleyen: Claude
+> Son güncelleme: 2026-10-24 · Güncelleyen: Claude
 
 Bu dosya tek takip noktasıdır. Hangi işin hangi sırada yapıldığını, şu an ne üzerinde çalışıldığını ve neyin bittiğini gösterir. Her işin ayrıntısı kendi `H-<numara>-<başlık>.md` dosyasındadır.
 
 ## Nerede kaldık
-- **Şu an (2026-10-23):** Faz 1 (MVP) uygulaması sürüyor (`docs/UYGULAMA-PLANI.md`). `main` = `a4cf723`, GitHub'da.
+- **Şu an (2026-10-24):** Faz 1 (MVP) uygulaması sürüyor (`docs/UYGULAMA-PLANI.md`). `main` = `1a66ae4`, GitHub'da. Uygulamanın görünen adı bütün ekranlarda **Hi** (kullanıcı kararı 2026-10-24); depo/iç adlar `hiVelzon`, hukuki şirket Velzon Bilişim Teknolojileri Ltd. Şti.
   - Bugün bitenler: **H-042** (hesap silme/geri alma, Hakkında ve lisanslar, günlük hatırlatma, `docs/HUKUK-SORULARI.md`) ve **H-095** (yeniden onay yok, yalnız bildirim; rıza ve denetim kayıtları 2 yıl, V16; KVKK ve kullanım koşulları taslakları, yer tutuculu). İkisi gerçek backend'e karşı uçtan uca testle doğrulandı (`mobile/integration_test/h042_h095_account_e2e_test.dart`).
   - Akşam: **H-096** (21 Ekim takip incelemesi: geri çekilen reel eski adresle açılmaz, mesaj kalıbı tek cümlede, reel tamamlanması %90 konum + %80 aktif izleme, 'İfadeyi kaydet') bitti; inceleme `docs/URUN-TAKIP-INCELEMESI-2026-10-21.md`. Değişmez sürüm klasörleri H-044'e not edildi.
   - **H-043:** yerel kısım bitti; kalan gerçek telefon kontrolleri (`docs/BETA-KONTROL-LISTESI.md` 2. bölüm).
+  - **H-097:** Uçtan uca simülatör gezinmesi bitti: 54+ ekran görüntüsü, ayrı açılış akışı (karşılama → test → hazır), Keşfet'in Bugün/Hikâye klipleri/Sinema/Spor/Kitap akışları ve oynatıcı/okuyucu/panel yolları denendi. Backend kapalıyken görülen Keşfet hataları backend açılınca kayboldu; uygulama hatası değildi. Ayrıntı: `bitenler/H-097-uctan-uca-gezinme.md`.
   - **H-094:** Keşfet "İlgi alanların" paneli bitti; 18 reelin ön değerlendirmesi ve onaylanan kalite düzeltmeleri tamamlandı (`docs/H-094-REEL-ON-DEGERLENDIRME-2026-10-23.md`). Değişen 7 reel v2 olarak yayımlandı; iş yalnız H-092 pilotu ve insan değerlendirmesi için açık.
   - SyncController ilk eşitleme hatası düzeltildi. G-A1-13 açıklaması düzeltildi ve yeniden seslendirildi.
   - Hukukçu cevapları `docs/HUKUK-SORULARI.md` → "Cevaplar": veli onayı yok; İYS ve VERBİS kaydı gerekmez; sunucu Almanya; cihazda konuşma tanıma KVKK kapsamında değil; kayıtlar 2 yıl; 30 gün silme uygun; pilot onamı uygun. Veri sorumlusu bilgileri ayrı fazda; muhasebe soruları H-044'te.
 - **Testler (son koşu):** mobil 1454 (`flutter analyze` temiz) · backend 155 · pytest 383 · reel lint 18/0/0 · grammar lint 71 ders 0 hata · book lint 30 kitap 0 hata.
-- **Yerel ortam:** H-094 v2 yayın doğrulamasından sonra backend, içerik sunucusu ve Docker kapatıldı; simülatör "hiVelzon iPhone 17" (EEE1613C) kapalı. Sunucu, Bunny Stream, mağaza ve geliştirici hesapları en sonda (H-044).
+- **Yerel ortam (2026-10-24):** Docker PostgreSQL 5435, backend `127.0.0.1:8080`, içerik sunucusu `127.0.0.1:8787` ve simülatör "hiVelzon iPhone 17" (EEE1613C) açık. Sunucu, Bunny Stream, mağaza ve geliştirici hesapları en sonda (H-044).
 - **İçerik:** Sezon 1'in 12 bölümü üretildi (haritada 12/12; editör onayı H-028 bekliyor). Dilbilgisi 71 dersin hepsi yazıldı ve Türkçe sesli; İngilizce örnek sesi A1 16/16, A2 7 tam + 1 kısmen, B1–C2 bekliyor. Kitaplık: 30 kitap yazıldı ve tam resimli; sesli kitap 5/30. Keşfet: 18 sesli reel yayında; 7 kalite düzeltmesi v2. Higgsfield hesap bakiyesi **47,31** (hesap genelinde başka işlemler de var).
 - **Sıradaki adım:** Açık işlerin kalanı kullanıcıya ya da dış taraflara bağlı (aşağıda). **H-092 tamamı en sonda** (kullanıcı kararı 2026-10-23: şu an test telefonu yok; aşama A da ertelendi): aşama A (2–3 kişilik gözlemli test; iPhone + Mac, yerel ağ) ve aşama B (evde 7–14 gün, H-044 ile) birlikte **H-044'ten sonra** yapılır. Pilot kiti ve gözlem föyü hazır (`docs/H-092-PILOT-KITI.md`, `docs/H-092-GOZLEM-FOYU-2026-10-23.md`). Pilot sonucu görülmeden büyük yeni içerik dalgası başlamaz.
 - **Kullanıcıya ya da dış taraflara bağlı olanlar** (kodlamayı durdurmuyor):
@@ -38,7 +39,7 @@ Bu dosya tek takip noktasıdır. Hangi işin hangi sırada yapıldığını, şu
   - H dosyasının `Durum` satırı güncellenir;
   - **Günlük** bölümüne bir satır eklenir.
 - **Biten işler:** "Biten işler" tablosuna doğrulama kanıtıyla birlikte yazılır.
-- **Numaralar:** Tek sayaçla verilir. Sıradaki boş numara: **H-097**.
+- **Numaralar:** Tek sayaçla verilir. Sıradaki boş numara: **H-098**.
 
 **Durum simgeleri:**
 - ⛔ Kullanıcı kararı bekliyor
@@ -124,6 +125,7 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 | 1.11 | H-043 | Kalite ve iç beta hazırlığı | Orta | H-039 … H-042 | 🔄 |
 | 1.10' | H-095 | Hukukçu cevaplarının uygulanması (yeniden onay yok, 2 yıl saklama, KVKK ve koşullar metni) | Yüksek | H-042 | ✅ |
 | İ7 | H-096 | 21 Ekim takip incelemesi düzeltmeleri (reel kataloğu, mesaj kanıtı, tamamlanma, etiket) | Yüksek | H-094, H-090 | ✅ |
+| İ8 | H-097 | Uçtan uca simülatör gezinmesi ve görünen adın Hi olması | Yüksek | H-094, H-096 | ✅ |
 | — | H-045 | Arayüz tasarım yönü (6 ekran taslağı, 6 kr) | Orta | H-033 | ✅ |
 | 1.12 | H-044 | Dış hesaplar, barındırma ve mağaza (en son) | Orta | H-043 | ⏳ |
 
@@ -208,6 +210,7 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 ## Biten işler
 | İş | Başlık | Bitiş | Doğrulama |
 |---|---|---|---|
+| H-097 | Uçtan uca simülatör gezinmesi ve görünen ad | 2026-10-24 | 54+ ekran; ayrı açılış testi; Keşfet kategori akışları backend açıkken hatasız; mobil 1454 test, `flutter analyze` temiz; görünen ad Hi |
 | H-096 | 21 Ekim takip incelemesi düzeltmeleri | 2026-10-21 | Geri çekilen reel eski adresle açılmaz + katalog yenileme (≥1 dk), mesaj kalıbı tek cümlede ve kanıt yalnız eşleşen hedefe, tamamlanma %90 konum + %80 aktif izleme, 'İfadeyi kaydet'; her madde önce düşen regresyon testiyle; mobil 1454, pytest 381 |
 | H-095 | Hukukçu cevaplarının uygulanması | 2026-10-21 | Yeniden onay yok (bildirim kartı), rıza ve denetim kayıtları 2 yıl (V16, `RecordRetentionJob`), KVKK ve koşullar taslakları (yer tutuculu); mobil 1427, backend 155; gerçek backend'e karşı uçtan uca test |
 | H-042 | Profil, ayarlar, hukuki metinler | 2026-10-21 | Hesap silme/geri alma, Hakkında ve lisanslar, günlük hatırlatma, `docs/HUKUK-SORULARI.md`; `mobile/integration_test/h042_h095_account_e2e_test.dart` gerçek backend'e karşı geçti |
@@ -525,4 +528,9 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
   - H-092 aşama A için yerel ortam hazırlandı ve pilot öncesi teknik kapı yeniden doğrulandı: reel-lint **18/0/0**, veritabanında **18 REEL PUBLISHED**, backend :8080 ve içerik sunucusu LAN'da (:8788) açıldı, **18/18** reel `reel.json` ve örnek mp4/m4a telefonun erişebileceği adresten 200 döndü, iOS imza kimliği ve takım (`6YB6UUDVS5`) hazır. Gözlem föyü yazıldı: `docs/H-092-GOZLEM-FOYU-2026-10-23.md`.
   - **Kullanıcı kararı:** test telefonu yok; **H-092 aşama A da ertelendi, aşama B ile birlikte H-044'ten sonra** yapılacak. Ortam kapatıldı (backend, içerik sunucuları, Docker). Sırada kodlanabilir iş kalmadı; yeni kapsam kullanıcı onayı bekliyor.
   - **18 reelin ön değerlendirmesi yapıldı (ücretsiz; üretim yok, içerik değişmedi):** `docs/H-094-REEL-ON-DEGERLENDIRME-2026-10-23.md`. 18/18 teknik olarak uygun (720×1280, 11,0–13,4 sn, faststart, −15,5…−16,2 LUFS, altyazı–ses 0,04–0,28 sn, cue dışı konuşma yok, ses kimliği doğru). **P1:** `A1-R-SPO-02` konuşmacı/hedef ters, `A1-R-CIN-02` "Koltugum" yazım hatası. **P2:** boş afişler/raflar, saç değişimi, 6 parmaklı el, karakter yüz kimliği kayması. 8/18 %95 CEFR kapsamasının altında. Pilot için önerilen düzeltme seti ≈3,5 kr görsel + ~75 karakter TTS; **onay bekliyor**, commit yok.
-  - **Kullanıcı onaylı H-094 düzeltme seti tamamlandı:** 7 görsel **3,50 kr** (soyut afişler, dolu raflar, toplu saç, doğal el), 70 yeni TTS karakteri (ana defter 9.851 → 9.921); SPO-02 konuşmacı/soru, CIN-02 yazım + “Row five.”, SPO-03 sadeleştirme. `SPECTATOR` Sarah'ya düzeltildi; TTS önbelleğinin eski cue dosyasını bırakabildiği hata regresyon testiyle kapatıldı. 7 paket v2; lint 18/0/0; backend içe aktarma 7 CREATED, 7/7 onay/yayın; katalog A1 9 + A2 9, 7 kimlik v2 ve medya 200. Testler: pytest 383, mobil 1454, analyze temiz. Toplam reel maliyeti 65,00 kr; hesap bakiyesi 47,31 kr (başka işlemler dahil). **Commit yok.**
+  - **Kullanıcı onaylı H-094 düzeltme seti tamamlandı:** 7 görsel **3,50 kr** (soyut afişler, dolu raflar, toplu saç, doğal el), 70 yeni TTS karakteri (ana defter 9.851 → 9.921); SPO-02 konuşmacı/soru, CIN-02 yazım + “Row five.”, SPO-03 sadeleştirme. `SPECTATOR` Sarah'ya düzeltildi; TTS önbelleğinin eski cue dosyasını bırakabildiği hata regresyon testiyle kapatıldı. 7 paket v2; lint 18/0/0; backend içe aktarma 7 CREATED, 7/7 onay/yayın; katalog A1 9 + A2 9, 7 kimlik v2 ve medya 200. Testler: pytest 383, mobil 1454, analyze temiz. Toplam reel maliyeti 65,00 kr; hesap bakiyesi 47,31 kr (başka işlemler dahil). **Commit:** `1a66ae4` (`origin/main`).
+- **2026-10-24:**
+  - **H-097 bitti (ücretsiz; üretim yok):** bütün uygulama sayfaları iOS simülatöründe gerçek yerel backend ve içerik sunucusuyla gezildi; 54+ ekran görüntüsü `.yerel/h097/` altında. Ayrı açılış testi (`h097_onboarding_test.dart`) karşılama → doğum yılı/ad → bilgilendirme → tercihler → seviye → yerleştirme testi → sonuç → hazır → ana sayfa akışını geçti; görüntüler `.yerel/h097-onboarding/`. Keşfet'in Bugün/Hikâye klipleri/Sinema/Spor/Kitap akışları backend açıkken hatasız (`h097_discover_test.dart`). Backend kapalıyken görülen "Klipler açılamadı" uygulama hatası değildi.
+  - **Bulgular:** oynatıcıdaki "…" A1-004 yırtık afiş metninin tasarımı, altyazı kırpılması değil; tasarım vitrinindeki uzun renk adları tek satır + üç nokta ile sınırlandı; Hakkında/hukuk/onboarding metinleri ve iOS/Android etiketi **Hi** olarak güncellendi. Hukuki şirket adı Velzon Bilişim Teknolojileri Ltd. Şti. kaldı. Keşfet kategorisi hızlı değişirken eski video denetleyicisinin `seekTo`/`dispose` yarışı regresyon testiyle yakalanıp düzeltildi. Ekran görüntüsü sürücüsü eksik `SHOT_DIR` klasörünü artık kendisi oluşturuyor.
+  - **Testler:** `flutter analyze` temiz; `flutter test` **1454** geçti; H-097 gezinme ve açılış testleri simülatörde geçti. Değişen golden'lar (açılış, Hakkında, hukuk, renk vitrini) bilinçli güncellendi.
+  - **Commit:** H-094 v2 yayını `1a66ae4` ile `origin/main`'de. H-097 metin/test değişiklikleri **commit edilmedi**; kullanıcı onayı bekliyor. H-092 değişmedi: aşama A ve B H-044'ten sonra.

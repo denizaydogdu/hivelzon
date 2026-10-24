@@ -143,4 +143,4 @@ Kendi dalında; `git revert`. İçerik paketleri `/reels/` altında ayrı durur;
   - **Boru hattı düzeltmesi:** `SPECTATOR` yanlışlıkla Chris'e eşleniyordu → Sarah. Ayrıca yeni ses parçası önbellekteyse var olan cue dosyasının yenilenmediği hata düzeltildi; iki regresyon testi eklendi.
   - **Paket/yayın:** 7 paket `contentVersion=2` ile yeniden kuruldu; kaynak/fixture/index eşitlendi; lint **18/0/0**. Yerel backend içe aktarması **7 CREATED**, ardından 7/7 onay + yayın; açık katalog A1 9 + A2 9, tam olarak 7 kimlik v2; reel/mp4/hedef sesi adresleri 200.
   - **Teknik:** 7 video 720×1280 H.264/AAC faststart, 11,9–13,4 sn, −15,9…−16,6 LUFS, tepe −1,4…−7,6 dBFS. Nihai kareler görsel olarak kontrol edildi.
-  - **Testler:** `pytest` **383**, `flutter test` **1454**, `flutter analyze` temiz. **Commit yok; kullanıcı onayı bekliyor.**
+  - **Testler:** `pytest` **383**, `flutter test` **1454**, `flutter analyze` temiz. **Commit:** `1a66ae4` (`origin/main`).

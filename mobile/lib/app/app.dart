@@ -29,7 +29,7 @@ class HiVelzonApp extends ConsumerWidget {
       if (prev != next) refreshLocalData(ref);
     });
     return MaterialApp.router(
-      title: 'hiVelzon',
+      title: 'Hi',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.light(),
       // H-057: yalnız açık tema (karanlık mod sonra ayrı iş).

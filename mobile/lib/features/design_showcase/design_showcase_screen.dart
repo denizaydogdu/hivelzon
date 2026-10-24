@@ -171,6 +171,8 @@ class ShowcaseColorsSection extends StatelessWidget {
               ),
               child: Text(
                 name,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
                 style: style?.copyWith(
                   color: color.computeLuminance() > 0.35
                       ? AppPalette.ink

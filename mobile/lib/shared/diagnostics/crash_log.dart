@@ -92,7 +92,7 @@ class CrashLog {
     final list = await entries();
     if (list.isEmpty) return null;
     final b = StringBuffer()
-      ..writeln('hiVelzon hata kaydı · sürüm $appVersion')
+      ..writeln('Hi hata kaydı · sürüm $appVersion')
       ..writeln(
         'Kişisel bilgi içermez: yalnızca hata türü, kodun yeri, sürüm ve '
         'saat (UTC).',

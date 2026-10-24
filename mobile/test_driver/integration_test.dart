@@ -7,6 +7,7 @@ import 'package:integration_test/integration_test_driver_extended.dart';
 Future<void> main() => integrationDriver(
   onScreenshot: (name, bytes, [args]) async {
     final dir = Platform.environment['SHOT_DIR'] ?? '../.yerel/h038';
+    await Directory(dir).create(recursive: true);
     await File('$dir/$name.png').writeAsBytes(bytes);
     return true;
   },

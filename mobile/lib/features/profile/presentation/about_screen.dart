@@ -50,7 +50,7 @@ class AboutScreen extends StatelessWidget {
                           Semantics(
                             header: true,
                             child: Text(
-                              'hiVelzon',
+                              'Hi',
                               style: theme.textTheme.headlineSmall?.copyWith(
                                 color: AppPalette.seaBlue,
                               ),
@@ -114,7 +114,7 @@ class AboutScreen extends StatelessWidget {
                           subtitle: AboutTexts.licensesHint,
                           onTap: () => showLicensePage(
                             context: context,
-                            applicationName: 'hiVelzon',
+                            applicationName: 'Hi',
                             applicationVersion: AppInfo.display,
                             applicationLegalese: AboutTexts.maker,
                           ),

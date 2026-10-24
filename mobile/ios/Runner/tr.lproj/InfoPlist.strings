@@ -13,7 +13,7 @@
   kullanıcı hatırlatmayı açınca sorulur.
 */
 
-"CFBundleDisplayName" = "hiVelzon";
+"CFBundleDisplayName" = "Hi";
 
 "NSMicrophoneUsageDescription" = "Söyle alıştırmalarında İngilizceyi sesli söylediğinde mikrofon kullanılır. Sesin bu telefonda yazıya çevrilir; kaydedilmez, hiçbir yere gönderilmez.";
 

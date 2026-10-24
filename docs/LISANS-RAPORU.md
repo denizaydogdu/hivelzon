@@ -354,19 +354,19 @@ Bu bölüm bir hukuk görüşü değildir; lisans metinlerinden çıkan teknik b
 
 > **Kaynaklar ve lisanslar**
 >
-> hiVelzon'un kelime seviyeleri aşağıdaki açık kaynaklara dayanır. Teşekkür ederiz.
+> Hi'nin kelime seviyeleri aşağıdaki açık kaynaklara dayanır. Teşekkür ederiz.
 >
 > **CEFR-J Wordlist Version 1.6.** Compiled by Yukio Tono, Tokyo University of Foreign Studies. Retrieved from https://www.cefr-j.org/download.html on 11/10/2026. © Tono Laboratory, TUFS. Uygun atıfla araştırma ve ticari kullanıma açıktır. hiVelzon bu listeyi temel alıp değiştirmiştir.
 >
 > **CEFR-J Grammar Profile** — Ishii, Y. (2025). *CEFR-J Grammar Profile 2025* [Data set]. https://www.cefr-j.org/download.html. (Yalnızca dilbilgisi sırası için referans alınmıştır.)
 >
-> **Octanove Vocabulary Profile C1/C2 v1.0** — Octanove Labs, Open Language Profiles. https://github.com/openlanguageprofiles/olp-en-cefrj. Lisans: Creative Commons Attribution-ShareAlike 4.0 International (https://creativecommons.org/licenses/by-sa/4.0/). hiVelzon'daki C1 kelime verisi bu listeden uyarlanmıştır ve aynı lisansla paylaşılır.
+> **Octanove Vocabulary Profile C1/C2 v1.0** — Octanove Labs, Open Language Profiles. https://github.com/openlanguageprofiles/olp-en-cefrj. Lisans: Creative Commons Attribution-ShareAlike 4.0 International (https://creativecommons.org/licenses/by-sa/4.0/). Hi'deki C1 kelime verisi bu listeden uyarlanmıştır ve aynı lisansla paylaşılır.
 >
 > **New General Service List 1.2 / New Academic Word List 1.2** — Browne, C., Culligan, B., & Phillips, J. https://www.newgeneralservicelist.com. Lisans: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/). Değişiklik yapılmışsa: "Uyarlanmıştır."
 >
 > **FSRS (Free Spaced Repetition Scheduler)** — py-fsrs ve dart `fsrs`, Copyright (c) 2022 Open Spaced Repetition. MIT License. [Tam MIT metni]
 >
-> **Seviye sistemi** — Seviye adları (A1–C1), Avrupa Konseyi'nin *Common European Framework of Reference for Languages* (CEFR) çerçevesine göndermedir. Council of Europe (2020), *CEFR – Companion volume*, Council of Europe Publishing, Strasbourg, www.coe.int/lang-cefr. hiVelzon'un "yapabilirim" hedefleri hiVelzon tarafından yazılmıştır; Avrupa Konseyi tarafından onaylanmış değildir.
+> **Seviye sistemi** — Seviye adları (A1–C1), Avrupa Konseyi'nin *Common European Framework of Reference for Languages* (CEFR) çerçevesine göndermedir. Council of Europe (2020), *CEFR – Companion volume*, Council of Europe Publishing, Strasbourg, www.coe.int/lang-cefr. Hi'nin "yapabilirim" hedefleri Hi tarafından yazılmıştır; Avrupa Konseyi tarafından onaylanmış değildir.
 >
 > **Okul programı etiketleri** — Ünite etiketleri, T.C. Millî Eğitim Bakanlığı İngilizce Dersi Öğretim Programları (Türkiye Yüzyılı Maarif Modeli, 2025) tema adlarına göndermedir. hiVelzon, MEB ile bağlantılı değildir.
 >

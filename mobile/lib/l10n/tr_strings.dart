@@ -845,7 +845,7 @@ abstract final class CrashTexts {
       'Kişisel bilgi içermez.';
   static const shareEmpty = 'Kayıtlı hata yok.';
   static const shareFailed = 'Paylaşım şu an açılamadı.';
-  static const shareSubject = 'hiVelzon hata kaydı';
+  static const shareSubject = 'Hi hata kaydı';
 
   // Yayın derlemesinde çizilemeyen parçanın yerine (kırmızı ekran yok)
   static const errorBoxTitle = 'Burası şu an gösterilemiyor.';
@@ -865,7 +865,7 @@ abstract final class ReminderTexts {
   static const timeHint = 'İstediğin zaman değiştirebilirsin.';
   static const timePickerHelp = 'Hatırlatma saatini seç';
   static const blocked =
-      'Bildirim izni kapalı. İstersen telefonun ayarlarından hiVelzon için '
+      'Bildirim izni kapalı. İstersen telefonun ayarlarından Hi için '
       'bildirimleri açabilirsin; hatırlatma olmadan da her şey çalışır.';
   static const denied =
       'Bildirim izni verilmedi. Sorun değil; hatırlatma olmadan da her şey '
@@ -877,7 +877,7 @@ abstract final class ReminderTexts {
   static String timeChanged(String time) => 'Hatırlatma saati: $time.';
 
   // Bildirimin kendisi (hikâye ayrıntısı ve geri sayım yok).
-  static const notificationTitle = 'hiVelzon';
+  static const notificationTitle = 'Hi';
   static const notificationBody =
       'Bugün için kısa bir adım hazır. İstersen birkaç dakika ayır.';
 
@@ -896,7 +896,7 @@ abstract final class AboutTexts {
       'Yapay zekâ videolarıyla İngilizce. Ücretsiz, reklamsız.';
   static const sourcesHeading = 'Kaynaklar ve lisanslar';
   static const sourcesIntro =
-      'hiVelzon\'un kelime seviyeleri ve tekrar düzeni bu açık kaynaklara '
+      'Hi\'nin kelime seviyeleri ve tekrar düzeni bu açık kaynaklara '
       'dayanır. Teşekkür ederiz.';
 
   /// (başlık, metin). Sıra: kelime listeleri → tekrar algoritması → kod
@@ -908,7 +908,7 @@ abstract final class AboutTexts {
           'University of Foreign Studies. Retrieved from '
           'https://www.cefr-j.org/download.html on 11/10/26.\n'
           '© Tono Laboratory, TUFS. Uygun atıfla araştırma ve ticari kullanıma '
-          'açıktır. hiVelzon bu listeyi temel alıp değiştirmiştir.',
+          'açıktır. Hi bu listeyi temel alıp değiştirmiştir.',
     ),
     (
       'Octanove Vocabulary Profile C1/C2 v1.0',
@@ -917,7 +917,7 @@ abstract final class AboutTexts {
           'Lisans: Creative Commons Attribution-ShareAlike 4.0 International '
           '(https://creativecommons.org/licenses/by-sa/4.0/). C1–C2 kelime '
           'kapsaması için ayrı bir veri seti olarak, aynı lisansla tutulur; '
-          'hiVelzon\'un öteki içeriğiyle karıştırılmaz.',
+          'Hi\'nin öteki içeriğiyle karıştırılmaz.',
     ),
     (
       'FSRS (Free Spaced Repetition Scheduler)',
@@ -1729,8 +1729,7 @@ abstract final class AccountTexts {
   static const termsCheck = 'Kullanım koşullarını okudum, kabul ediyorum.';
   static const privacyCheck = 'KVKK aydınlatma metnini okudum.';
   static const readText = 'Metni aç';
-  static const marketing =
-      'hiVelzon\'daki yenilikleri e-postayla almak istiyorum.';
+  static const marketing = 'Hi\'deki yenilikleri e-postayla almak istiyorum.';
   static const marketingNote = 'İsteğe bağlı. İstediğin zaman vazgeçebilirsin.';
   static const consentMissing = 'Devam etmek için iki metni de onayla.';
   static const createAccount = 'Hesabımı aç';
@@ -1841,8 +1840,8 @@ abstract final class AccountTexts {
 
   /// Şirket ve iletişim yer tutucuları (ayrı fazda kesinleşir).
   static const legalCompany =
-      '[Veri sorumlusu unvanı — hiVelzon bir Velzon iştirakidir; ayrıntı '
-      'eklenecek]';
+      '[Velzon Bilişim Teknolojileri Ltd. Şti. — veri sorumlusu unvanı '
+      'kesinleştirilecek]';
   static const legalAddress = '[Adres eklenecek]';
   static const legalEmail = '[İletişim e-postası eklenecek]';
   static const legalCourtCity = '[şehir]';
@@ -1850,8 +1849,8 @@ abstract final class AccountTexts {
   /// Kullanım koşulları bölüm bölüm: (başlık, metin).
   static const termsSections = <(String, String)>[
     (
-      'hiVelzon nedir?',
-      'hiVelzon, yapay zekâ ile hazırlanmış hikâyeler, videolar ve '
+      'Hi nedir?',
+      'Hi, yapay zekâ ile hazırlanmış hikâyeler, videolar ve '
           'alıştırmalarla İngilizce öğrenmene yardım eden bir mobil '
           'uygulamadır. Uygulamayı $legalCompany sunar. Bu metinde "biz" '
           'dediğimizde bu şirketi kastediyoruz.\n\n'
@@ -1861,9 +1860,9 @@ abstract final class AccountTexts {
     ),
     (
       'Ücretsiz ve tamamlayıcı',
-      'hiVelzon ücretsizdir. Abonelik, uygulama içi satın alma ve reklam '
+      'Hi ücretsizdir. Abonelik, uygulama içi satın alma ve reklam '
           'yoktur.\n\n'
-          'hiVelzon bir okulun ya da kursun yerine geçmez; öğrenmeni '
+          'Hi bir okulun ya da kursun yerine geçmez; öğrenmeni '
           'destekleyen tamamlayıcı bir araçtır. Uygulamayı kullanarak belli '
           'bir İngilizce seviyesine ulaşacağına dair bir söz vermiyoruz. '
           'Seviye önerileri yalnızca bilgi içindir.',
@@ -1909,7 +1908,7 @@ abstract final class AccountTexts {
     ),
     (
       'Kullanım kuralları',
-      'hiVelzon\'u kişisel öğrenme amacıyla kullan. Şunları yapma:\n'
+      'Hi\'yi kişisel öğrenme amacıyla kullan. Şunları yapma:\n'
           '• uygulamayı ya da sunucularımızı bozmaya, aşırı yüklemeye veya '
           'güvenlik önlemlerini aşmaya çalışmak;\n'
           '• başkasının hesabına girmek ya da başkası adına hesap açmak;\n'
@@ -1963,7 +1962,7 @@ abstract final class AccountTexts {
     (
       'Bu metin ne anlatıyor?',
       '6698 sayılı Kişisel Verilerin Korunması Kanunu (KVKK) gereği, '
-          'hiVelzon\'u kullanırken hangi bilgilerinin, neden ve hangi hukuki '
+          'Hi\'yi kullanırken hangi bilgilerinin, neden ve hangi hukuki '
           'sebeple işlendiğini, kimlere aktarıldığını, ne kadar saklandığını '
           've haklarını sade bir dille anlatıyoruz.',
     ),
@@ -2080,7 +2079,7 @@ abstract final class AccountTexts {
     ),
     (
       'Yenilik e-postaları',
-      'Hesap açarken "hiVelzon\'daki yenilikleri e-postayla almak '
+      'Hesap açarken "Hi\'deki yenilikleri e-postayla almak '
           'istiyorum" kutusu boş gelir. Yalnızca kutuyu işaretlersen yenilik '
           'e-postası göndeririz. İstediğin zaman $legalEmail adresine yazarak '
           'vazgeçebilirsin; tercihin onay kaydına işlenir.',
@@ -2168,12 +2167,12 @@ abstract final class AccountTexts {
 /// atlanabilir, süresiz; sonuç yalnızca öneridir (K-06, K-08). Suçlamasız,
 /// geri sayımsız (K-32).
 abstract final class OnboardingTexts {
-  static const loading = 'hiVelzon açılıyor…';
+  static const loading = 'Hi açılıyor…';
   static const back = CommonTexts.back;
   static String stepLabel(int step, int total) => 'Adım $step / $total';
 
   // Karşılama
-  static const welcomeTitle = 'hiVelzon\'a hoş geldin!';
+  static const welcomeTitle = 'Hi\'ye hoş geldin!';
   static const welcomeBody = 'Bir hikâye oyna, İngilizceyi oynarken öğren.';
   static const welcomeNoAccount = 'Hesap gerekmez. Her şey bu telefonda kalır.';
   static const welcomeStart = CommonTexts.start;
