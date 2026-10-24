@@ -1,7 +1,7 @@
 {
  "schemaVersion": 1,
  "id": "A1-R-SPO-02",
- "contentVersion": 1,
+ "contentVersion": 2,
  "sourceType": "standalone",
  "category": "SPO",
  "categoryTr": "Spor",
@@ -18,15 +18,15 @@
  "target": {
   "kind": "phrase",
   "en": "Pass the ball, please.",
-  "tr": "Topu at, lütfen.",
+  "tr": "Pas ver, lütfen.",
   "cue": "s01-02"
  },
  "practice": {
-  "promptTr": "Elif ne istiyor?",
-  "explainTr": "Elif topun kendisine atılmasını istiyor.",
+  "promptTr": "Mert ne istiyor?",
+  "explainTr": "Mert topun kendisine pas verilmesini istiyor.",
   "options": [
    {
-    "text": "Topu pas vermesini",
+    "text": "Topu kendisine pas vermesini",
     "lang": "tr",
     "correct": true
    },
@@ -80,33 +80,33 @@
   {
    "id": "s01-02",
    "start": 3.4,
-   "end": 4.76,
-   "speaker": "ELIF",
+   "end": 4.84,
+   "speaker": "MERT",
    "text": "Pass the ball, please.",
-   "tr": "Topu at, lütfen.",
+   "tr": "Pas ver, lütfen.",
    "chunks": [],
    "words": [
     {
      "w": "Pass",
      "start": 3.4,
-     "end": 3.73,
+     "end": 3.75,
      "gloss": "pas vermek"
     },
     {
      "w": "the",
-     "start": 3.73,
-     "end": 3.98
+     "start": 3.75,
+     "end": 4.01
     },
     {
      "w": "ball,",
-     "start": 3.98,
-     "end": 4.31,
+     "start": 4.01,
+     "end": 4.36,
      "gloss": "top"
     },
     {
      "w": "please.",
-     "start": 4.31,
-     "end": 4.76,
+     "start": 4.36,
+     "end": 4.84,
      "gloss": "lütfen"
     }
    ]
@@ -114,8 +114,8 @@
   {
    "id": "s01-03",
    "start": 9.6,
-   "end": 10.48,
-   "speaker": "MERT",
+   "end": 10.64,
+   "speaker": "ELIF",
    "text": "Here you go.",
    "tr": "Buyur.",
    "chunks": [],
@@ -123,18 +123,18 @@
     {
      "w": "Here",
      "start": 9.6,
-     "end": 9.96,
+     "end": 10.03,
      "gloss": "buyur"
     },
     {
      "w": "you",
-     "start": 9.96,
-     "end": 10.26
+     "start": 10.03,
+     "end": 10.38
     },
     {
      "w": "go.",
-     "start": 10.26,
-     "end": 10.48
+     "start": 10.38,
+     "end": 10.64
     }
    ]
   }

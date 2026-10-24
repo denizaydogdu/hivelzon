@@ -1,25 +1,25 @@
 # İş Sırası — hiVelzon
 
-> Son güncelleme: 2026-10-21 · Güncelleyen: Claude
+> Son güncelleme: 2026-10-23 · Güncelleyen: Claude
 
 Bu dosya tek takip noktasıdır. Hangi işin hangi sırada yapıldığını, şu an ne üzerinde çalışıldığını ve neyin bittiğini gösterir. Her işin ayrıntısı kendi `H-<numara>-<başlık>.md` dosyasındadır.
 
 ## Nerede kaldık
-- **Şu an (2026-10-21):** Faz 1 (MVP) uygulaması sürüyor (`docs/UYGULAMA-PLANI.md`). `main` = `c6acb83`, GitHub'da.
+- **Şu an (2026-10-23):** Faz 1 (MVP) uygulaması sürüyor (`docs/UYGULAMA-PLANI.md`). `main` = `a4cf723`, GitHub'da.
   - Bugün bitenler: **H-042** (hesap silme/geri alma, Hakkında ve lisanslar, günlük hatırlatma, `docs/HUKUK-SORULARI.md`) ve **H-095** (yeniden onay yok, yalnız bildirim; rıza ve denetim kayıtları 2 yıl, V16; KVKK ve kullanım koşulları taslakları, yer tutuculu). İkisi gerçek backend'e karşı uçtan uca testle doğrulandı (`mobile/integration_test/h042_h095_account_e2e_test.dart`).
   - Akşam: **H-096** (21 Ekim takip incelemesi: geri çekilen reel eski adresle açılmaz, mesaj kalıbı tek cümlede, reel tamamlanması %90 konum + %80 aktif izleme, 'İfadeyi kaydet') bitti; inceleme `docs/URUN-TAKIP-INCELEMESI-2026-10-21.md`. Değişmez sürüm klasörleri H-044'e not edildi.
   - **H-043:** yerel kısım bitti; kalan gerçek telefon kontrolleri (`docs/BETA-KONTROL-LISTESI.md` 2. bölüm).
-  - **H-094:** Keşfet "İlgi alanların" paneli (son ürün eksiği) bitti; iş yalnız H-092 pilotu ve insan değerlendirmesi için açık.
+  - **H-094:** Keşfet "İlgi alanların" paneli bitti; 18 reelin ön değerlendirmesi ve onaylanan kalite düzeltmeleri tamamlandı (`docs/H-094-REEL-ON-DEGERLENDIRME-2026-10-23.md`). Değişen 7 reel v2 olarak yayımlandı; iş yalnız H-092 pilotu ve insan değerlendirmesi için açık.
   - SyncController ilk eşitleme hatası düzeltildi. G-A1-13 açıklaması düzeltildi ve yeniden seslendirildi.
   - Hukukçu cevapları `docs/HUKUK-SORULARI.md` → "Cevaplar": veli onayı yok; İYS ve VERBİS kaydı gerekmez; sunucu Almanya; cihazda konuşma tanıma KVKK kapsamında değil; kayıtlar 2 yıl; 30 gün silme uygun; pilot onamı uygun. Veri sorumlusu bilgileri ayrı fazda; muhasebe soruları H-044'te.
-- **Testler (son koşu):** mobil 1454 (`flutter analyze` temiz) · backend 155 · pytest 381 · reel lint 18/0/0 · grammar lint 71 ders 0 hata · book lint 30 kitap 0 hata.
-- **Yerel ortam:** backend :8080 (yeniden derlendi; veritabanı V16, 18 reel PUBLISHED) · içerik sunucusu 127.0.0.1:8787 · PostgreSQL 127.0.0.1:5435 (5434 başka projenin) · simülatör "hiVelzon iPhone 17" (EEE1613C, şu an kapalı). Sunucu, Bunny Stream, mağaza ve geliştirici hesapları en sonda (H-044).
-- **İçerik:** Sezon 1'in 12 bölümü üretildi (haritada 12/12; editör onayı H-028 bekliyor). Dilbilgisi 71 dersin hepsi yazıldı ve Türkçe sesli; İngilizce örnek sesi A1 16/16, A2 7 tam + 1 kısmen, B1–C2 bekliyor. Kitaplık: 30 kitap yazıldı ve tam resimli; sesli kitap 5/30. Keşfet: 18 sesli reel yayında. Higgsfield kredisi **236,56**.
-- **Sıradaki adım:** Açık işlerin kalanı kullanıcıya ya da dış taraflara bağlı (aşağıda). **H-092** bölündü (kullanıcı kararı 2026-10-21): aşama A (2–3 kişilik gözlemli test; kullanıcının iPhone'u, Mac'ten yerel ağ, dışarı veri çıkmaz) erken ve isteğe bağlı; aşama B (evde 7–14 gün) **H-044 ile en sonda**. Pilot kiti hazır (`docs/H-092-PILOT-KITI.md`). Pilot sonucu görülmeden büyük yeni içerik dalgası başlamaz.
+- **Testler (son koşu):** mobil 1454 (`flutter analyze` temiz) · backend 155 · pytest 383 · reel lint 18/0/0 · grammar lint 71 ders 0 hata · book lint 30 kitap 0 hata.
+- **Yerel ortam:** H-094 v2 yayın doğrulamasından sonra backend, içerik sunucusu ve Docker kapatıldı; simülatör "hiVelzon iPhone 17" (EEE1613C) kapalı. Sunucu, Bunny Stream, mağaza ve geliştirici hesapları en sonda (H-044).
+- **İçerik:** Sezon 1'in 12 bölümü üretildi (haritada 12/12; editör onayı H-028 bekliyor). Dilbilgisi 71 dersin hepsi yazıldı ve Türkçe sesli; İngilizce örnek sesi A1 16/16, A2 7 tam + 1 kısmen, B1–C2 bekliyor. Kitaplık: 30 kitap yazıldı ve tam resimli; sesli kitap 5/30. Keşfet: 18 sesli reel yayında; 7 kalite düzeltmesi v2. Higgsfield hesap bakiyesi **47,31** (hesap genelinde başka işlemler de var).
+- **Sıradaki adım:** Açık işlerin kalanı kullanıcıya ya da dış taraflara bağlı (aşağıda). **H-092 tamamı en sonda** (kullanıcı kararı 2026-10-23: şu an test telefonu yok; aşama A da ertelendi): aşama A (2–3 kişilik gözlemli test; iPhone + Mac, yerel ağ) ve aşama B (evde 7–14 gün, H-044 ile) birlikte **H-044'ten sonra** yapılır. Pilot kiti ve gözlem föyü hazır (`docs/H-092-PILOT-KITI.md`, `docs/H-092-GOZLEM-FOYU-2026-10-23.md`). Pilot sonucu görülmeden büyük yeni içerik dalgası başlamaz.
 - **Kullanıcıya ya da dış taraflara bağlı olanlar** (kodlamayı durdurmuyor):
   - Simülatörde kullanıcı denemesi: H-085 B5–B12, H-086 "Sayfanın Türkçesi", yeni ekranlar (H-042 Hakkında, hatırlatma, İlgi alanların).
   - Gerçek telefon: H-043 kontrol listesi 2. bölüm, H-068 kilit ekranı.
-  - H-092 aşama A (kullanıcı istediği zaman).
+  - H-092 aşama A (kullanıcı istediği zaman; 2026-10-23: test telefonu yok → H-044 ile en sonda).
   - H-028 öğretmen/editör kontrolü: Konuş metinleri, B5–B12, kitap soruları, dilbilgisi.
   - Yeni ElevenLabs anahtarı: 25 kitabın sesi, dilbilgisi İngilizce örnekleri, A1-K01 metin düzeltmesinin sesi (H-071 notu).
   - Veri sorumlusu bilgileri (unvan, adres, iletişim, mahkeme): KVKK ve koşullar metnindeki yer tutucular.
@@ -163,7 +163,7 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 | İ3' | H-093 | Haftalık özette kanıt, Hi gizlilik, hikâye içi Söyle kanıtı | Orta | H-088, H-089 | ✅ |
 | İ4 | H-090 | İlk 7 gün A1 + Konuş'ta 3 yönlendirmeli sahne, kısa mesaj | Yüksek | H-088, H-089 | ✅ |
 | İ5 | H-091 | Kitap sonu anlama + yeniden anlatma | Orta | H-067 | ✅ |
-| İ6 | H-092 | Kullanılabilirlik testi (A: erken, isteğe bağlı) ve 7–14 gün pilot (B: H-044 ile en sonda) | Yüksek | H-087…H-091; B için H-044 | ⏳ |
+| İ6 | H-092 | Kullanılabilirlik testi (A) ve 7–14 gün pilot (B) — **ikisi de H-044'ten sonra** (2026-10-23: test telefonu yok) | Yüksek | H-087…H-091; H-044 | ⏸ |
 
 **Sıra:** H-065 hemen (belge + katalog) → H-066 ve H-067, tasarım fazlarıyla paralel, ayrı dallarda → H-069 pilot → resim yoğunluğu ve ses planı kararı → H-068, H-070 → H-071 → H-072 → H-073.
 
@@ -182,12 +182,12 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 
 **Sıra:** H-075 ve H-076 hemen ve paralel (Alania'nın ücretsiz ayı sınırlı) → H-077 → H-078 → H-079 → dalgalar.
 
-### Adım 9 — Keşfet: günlük üç kısa video (2026-10-18; uygulama + pilot içerik tamam, H-092 pilotu sırada)
+### Adım 9 — Keşfet: günlük üç kısa video (2026-10-18; uygulama + pilot içerik tamam, H-092 pilotu en sonda)
 | # | İş | Başlık | Öncelik | Bağımlılık | Durum |
 |---|---|---|---|---|---|
 | K0 | H-094 | Keşfet — seviyeye ve ilgiye göre günlük üç kısa video (reel): P0–P4 + 18 sesli pilot + uçtan uca yayın/geri çekme | Orta | H-040, H-089; üretim onayı (2026-10-20) | 🔄 |
 
-**Plan:** `docs/KESFET-GUNLUK-UC-VIDEO-PLAN-2026-10-18.md`. **Kullanıcı kararları (2026-10-18)** planda §14: Hikâye klipleri ayrı çip; video koleksiyonu ertelendi; hareket zorunlu değil; seviye üstteki çipten (genel testi değiştirmez); seçki cihazda; pilot A1/A2; her videonun sonunda atlanabilir tek soru. **Bütçe 2026-10-20'de onaylandı;** 3 örnek + kalan 15 video = **61,50 kr** harcandı (bakiye 236,56 kr), ses ayrı ücretsiz ElevenLabs hesabında. **Durum (2026-10-21):** P0–P4 bitti; 18 reel üretildi ve seslendirildi (konuşmacıya göre Sarah/Will/Chris), lint 18 · 0/0; backend'de 18/18 yayınlandı, geri çekme uçtan uca doğrulandı; uygulama `GET /api/v1/catalog/reels` okuyor; "İlgi alanların" paneli eklendi. Kalan: **H-092 kullanıcı pilotu** ve insan değerlendirmesi; pilot sonucu görülmeden geniş katalog üretilmez. Ayrıntı: `docs/H-094-P4-PROVA-2026-10-21.md`, `devam-edenler/H-094-kesfet-gunluk-uc-video.md`.
+**Plan:** `docs/KESFET-GUNLUK-UC-VIDEO-PLAN-2026-10-18.md`. **Kullanıcı kararları (2026-10-18)** planda §14: Hikâye klipleri ayrı çip; video koleksiyonu ertelendi; hareket zorunlu değil; seviye üstteki çipten (genel testi değiştirmez); seçki cihazda; pilot A1/A2; her videonun sonunda atlanabilir tek soru. İlk üretim **61,50 kr**, 23 Ekim kalite düzeltmeleri **3,50 kr**; reel toplamı **65,00 kr**. Tur sonu hesap bakiyesi **47,31 kr** (aynı hesapta başka işlemler var). **Durum (2026-10-23):** P0–P4 bitti; 18 reel sesli ve yayında; ön değerlendirme düzeltmeleri uygulandı, değişen 7 reel v2 yayımlandı; lint 18 · 0/0; uygulama `GET /api/v1/catalog/reels` okuyor; "İlgi alanların" paneli hazır. Kalan: **H-092 kullanıcı pilotu** ve insan değerlendirmesi; pilot sonucu görülmeden geniş katalog üretilmez. Ayrıntı: `docs/H-094-P4-PROVA-2026-10-21.md`, `docs/H-094-REEL-ON-DEGERLENDIRME-2026-10-23.md`, `devam-edenler/H-094-kesfet-gunluk-uc-video.md`.
 
 ## Devam eden işler
 | İş | Başlık | Başlangıç | Not |
@@ -203,7 +203,7 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 | H-082 | Dilbilgisi dalga 3: C1 + C2 | 2026-10-14 | 14 ders, Türkçe sesli; İngilizce örnekler yeni anahtarı bekliyor; öğretmen kontrolü |
 | H-085 | Sezon 1 Bölüm 5–12 üretimi | 2026-10-14 | Üretim bitti (12/12 haritada); kullanıcının simülatör denemesi ve editör onayı (H-028) bekliyor |
 | H-086 | Kitapta "Sayfanın Türkçesi" | 2026-10-14 | Kod main'de; kullanıcı denemesi bekliyor |
-| H-094 | Keşfet — günlük üç kısa video | 2026-10-18 | Kod, 18 sesli reel, yayın/geri çekme ve "İlgi alanların" paneli bitti; kalan H-092 pilotu ve insan değerlendirmesi |
+| H-094 | Keşfet — günlük üç kısa video | 2026-10-18 | Kod, 18 sesli reel, yayın/geri çekme ve "İlgi alanların" paneli bitti; ön değerlendirme düzeltmeleri tamamlandı, 7 reel v2 yayımlandı (2026-10-23); kalan H-092 pilotu ve insan değerlendirmesi |
 
 ## Biten işler
 | İş | Başlık | Bitiş | Doğrulama |
@@ -521,3 +521,8 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
   - 2026-10-21 (akşam, özet): Belge durumu denetlendi ve güncellendi. `main` = `3b8e044`. Bugün bitenler: H-042, H-095; H-043 yerel kısmı; H-094 "İlgi alanların" paneli; SyncController ilk eşitleme düzeltmesi; G-A1-13 açıklaması düzeltildi ve yeniden seslendirildi. Backend :8080 yeniden derlendi (V16, 18 reel PUBLISHED). Testler mobil 1427 · backend 155 · pytest 368 · reel lint 18/0/0 · grammar lint 71/0 · book lint 30/0. Kalanların hepsi kullanıcıya ya da dış taraflara bağlı ("Nerede kaldık").
   - 2026-10-21: Yeni takip incelemesi (`docs/URUN-TAKIP-INCELEMESI-2026-10-21.md`): önceki 5 hata düzelmiş; 2 yeni P1 (geri çekilen reelin eski adresi bellekte, mesajda cümle birleştirme) kodda doğrulandı. H-096 açıldı; sürüm klasörü bulgusu H-044'e not edildi.
   - 2026-10-21: **H-096 bitti:** geri çekilen reel eski adresiyle açılmaz (katalog başarıyla okununca adres haritası yenilenir; Keşfet'e dönüşte / uygulama öne gelince en az 1 dk arayla yenileme; oynayan video geri çekildiyse durur, aynı slota aynı seviye-kategoriden yedek gelir, 'Bu video artık yayında değil. Listeni yeniledik.'), mesaj kalıbı tek cümlede aranır ve kanıt yalnız eşleşen hedefe yazılır, reel tamamlanması %90 konum + %80 aktif izleme, düğme 'İfadeyi kaydet'. Her madde için önce düşen regresyon testi. Mobil 1454, pytest 381.
+- **2026-10-23:**
+  - H-092 aşama A için yerel ortam hazırlandı ve pilot öncesi teknik kapı yeniden doğrulandı: reel-lint **18/0/0**, veritabanında **18 REEL PUBLISHED**, backend :8080 ve içerik sunucusu LAN'da (:8788) açıldı, **18/18** reel `reel.json` ve örnek mp4/m4a telefonun erişebileceği adresten 200 döndü, iOS imza kimliği ve takım (`6YB6UUDVS5`) hazır. Gözlem föyü yazıldı: `docs/H-092-GOZLEM-FOYU-2026-10-23.md`.
+  - **Kullanıcı kararı:** test telefonu yok; **H-092 aşama A da ertelendi, aşama B ile birlikte H-044'ten sonra** yapılacak. Ortam kapatıldı (backend, içerik sunucuları, Docker). Sırada kodlanabilir iş kalmadı; yeni kapsam kullanıcı onayı bekliyor.
+  - **18 reelin ön değerlendirmesi yapıldı (ücretsiz; üretim yok, içerik değişmedi):** `docs/H-094-REEL-ON-DEGERLENDIRME-2026-10-23.md`. 18/18 teknik olarak uygun (720×1280, 11,0–13,4 sn, faststart, −15,5…−16,2 LUFS, altyazı–ses 0,04–0,28 sn, cue dışı konuşma yok, ses kimliği doğru). **P1:** `A1-R-SPO-02` konuşmacı/hedef ters, `A1-R-CIN-02` "Koltugum" yazım hatası. **P2:** boş afişler/raflar, saç değişimi, 6 parmaklı el, karakter yüz kimliği kayması. 8/18 %95 CEFR kapsamasının altında. Pilot için önerilen düzeltme seti ≈3,5 kr görsel + ~75 karakter TTS; **onay bekliyor**, commit yok.
+  - **Kullanıcı onaylı H-094 düzeltme seti tamamlandı:** 7 görsel **3,50 kr** (soyut afişler, dolu raflar, toplu saç, doğal el), 70 yeni TTS karakteri (ana defter 9.851 → 9.921); SPO-02 konuşmacı/soru, CIN-02 yazım + “Row five.”, SPO-03 sadeleştirme. `SPECTATOR` Sarah'ya düzeltildi; TTS önbelleğinin eski cue dosyasını bırakabildiği hata regresyon testiyle kapatıldı. 7 paket v2; lint 18/0/0; backend içe aktarma 7 CREATED, 7/7 onay/yayın; katalog A1 9 + A2 9, 7 kimlik v2 ve medya 200. Testler: pytest 383, mobil 1454, analyze temiz. Toplam reel maliyeti 65,00 kr; hesap bakiyesi 47,31 kr (başka işlemler dahil). **Commit yok.**

@@ -7,10 +7,10 @@ Kullanım:
       tools/content-pipeline/.venv/bin/python tools/content-pipeline/tts_reel.py reeller/A1-R-CIN-01 --execute
 
 Kurallar (CLAUDE.md, docs/REEL-PAKETI.md):
-- **Konuşmacıya göre ses (2026-10-21):** kadın karakterler Sarah
-  (`EXAVITQu4vr4xnSDxMaL`); genç erkekler (Kerem, Mert, Deniz) Will
-  (`bIHbv24MWmeRgasZH58o`); olgun erkekler (Coach, seyirci) Chris
-  (`iP95p4xoKVk53GoZ742B`). Hepsi `eleven_v3`, hız 0.9 (A1/A2).
+- **Konuşmacıya göre ses (2026-10-23):** kadın karakterler (Lena, Mia, Elif, Selin,
+  kütüphaneci, gişe görevlisi, usher, **seyirci**) Sarah (`EXAVITQu4vr4xnSDxMaL`);
+  genç erkekler (Kerem, Mert, Deniz) Will (`bIHbv24MWmeRgasZH58o`); olgun erkek
+  (Coach) Chris (`iP95p4xoKVk53GoZ742B`). Hepsi `eleven_v3`, hız 0.9 (A1/A2).
 - **Anahtar** yalnızca çalışma anında ortamdan (`ELEVENLABS_API_KEY`); repoya/loga yazılmaz.
 - **Önce kuru çalışma:** karakter sayısı ve tahmini kredi yazılır, API çağrılmaz. Gerçek çağrı `--execute`.
 - **Aylık karakter tavanı** ortak defterle (`kitaplar/_maliyet/elevenlabs-karakter.json`) paylaşılır;
@@ -46,7 +46,9 @@ SPEAKER_VOICE: dict[str, str] = {
     "MERT": "WILL",
     "DENIZ": "WILL",
     "COACH": "CHRIS",
-    "SPECTATOR": "CHRIS",
+    # A1-R-SPO-03'te seyirci, Elif'in başörtülü arkadaşı (kadın). Chris'e eşlenirse
+    # görselle çelişen erkek ses çıkar; H-094 düzeltmesi (2026-10-23).
+    "SPECTATOR": "SARAH",
 }
 VOICE = VOICES["SARAH"][1]  # geriye dönük: varsayılan kadın ses
 MODEL = "eleven_v3"
@@ -149,7 +151,6 @@ def main(argv: list[str] | None = None) -> int:
     for p in plan:
         mp3 = parts / f"{p['key']}.mp3"
         cue_json = out_dir / f"{p['cue']}.json"
-        generated = False
         if not mp3.is_file():
             resp = client(p["voice"], T.payload(p["text"], MODEL, a.speed))
             if "audio_base64" not in resp:
@@ -159,7 +160,6 @@ def main(argv: list[str] | None = None) -> int:
             mp3.write_bytes(base64.b64decode(resp["audio_base64"]))
             T.ledger_add(ledger, month, p["chars"])
             spent += p["chars"]
-            generated = True
             _append_prompts(Path("reeller/PROMPTS.md"), {
                 "date": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"), "reel": reel["id"],
                 "cue": p["cue"], "voice": f"{p['voice_name']} {p['voice']}", "model": MODEL,
@@ -167,9 +167,9 @@ def main(argv: list[str] | None = None) -> int:
                 "file": f"_raw/tts/{p['cue']}.mp3"})
             print(f"    {p['cue']}: {p['chars']} karakter üretildi ({p['voice_name']})")
         dest = out_dir / f"{p['cue']}.mp3"
-        # Ses değiştiyse eski cue dosyasını da tazele (önbellekteki yeni kayıt).
-        if generated or not dest.is_file():
-            subprocess.run(["cp", str(mp3), str(dest)], check=True)
+        # Önbellekten gelse bile cue dosyasını tazele: konuşmacı/metin değişmiş olabilir.
+        # (Eski koşul yalnız yeni üretimde kopyalıyordu; ses değişince eski dosya kalıyordu.)
+        subprocess.run(["cp", str(mp3), str(dest)], check=True)
         cue_json.write_text(json.dumps({"cue": p["cue"], "text": p["text"], "sha256": _sha16(p["text"]),
                                         "voice": p["voice"], "voiceName": p["voice_name"],
                                         "model": MODEL, "speed": a.speed,

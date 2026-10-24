@@ -11,12 +11,12 @@
  "shots": [
   {
    "name": "k1",
-   "prompt": "Wide shot inside a small cinema lobby in the evening: a row of blank framed posters on a deep green wall, warm brass lamps, a wooden bench. Selin, a woman of 22 with long dark hair in an olive-green coat, stands in front of the posters, arms crossed, thinking; Deniz, a man of 24 with short dark hair, round glasses and a denim jacket, stands beside her, hands in his pockets. Vertical composition. Vertical composition.",
+   "prompt": "Wide shot inside a small cinema lobby in the evening: a row of framed posters with colourful abstract art on a deep green wall (no text, no letters), warm brass lamps, a wooden bench. Selin, a woman of 22 with long dark hair in an olive-green coat, stands in front of the posters, arms crossed, thinking; Deniz, a man of 24 with short dark hair, round glasses and a denim jacket, stands beside her, hands in his pockets. Vertical composition. Vertical composition.",
    "ref": null
   },
   {
    "name": "k2",
-   "prompt": "Use the reference image for the characters and the setting: keep the same faces, hair, clothes, colours and lighting. Medium shot: Selin turns to Deniz and asks, one hand gesturing at the posters; Deniz looks at her with a small smile, thinking about his answer. Warm lamps, blurred blank posters behind. Vertical composition. Vertical composition.",
+   "prompt": "Use the reference image for the characters and the setting: keep the same faces, hair, clothes, colours and lighting. Medium shot: Selin turns to Deniz and asks, one hand gesturing at the posters; Deniz looks at her with a small smile, thinking about his answer. Warm lamps, blurred colourful posters behind. Vertical composition. Vertical composition.",
    "ref": "k1"
   },
   {
@@ -26,7 +26,7 @@
   },
   {
    "name": "k4",
-   "prompt": "Use the reference image for the characters and the setting: keep the same faces, hair, clothes, colours and lighting. Selin points at one blank poster and nods toward the hall doorway; Deniz grins and follows her, hands still in his pockets. Warm lobby light, blank posters behind. Vertical composition. Vertical composition.",
+   "prompt": "Use the reference image for the characters and the setting: keep the same faces, hair, clothes, colours and lighting. Selin points at one colourful abstract poster and nods toward the hall doorway; Deniz grins and follows her, hands still in his pockets. Warm lobby light, colourful posters behind. Vertical composition. Vertical composition.",
    "ref": "k1"
   }
  ],

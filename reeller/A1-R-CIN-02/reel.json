@@ -1,7 +1,7 @@
 {
  "schemaVersion": 1,
  "id": "A1-R-CIN-02",
- "contentVersion": 1,
+ "contentVersion": 2,
  "sourceType": "standalone",
  "category": "CIN",
  "categoryTr": "Sinema",
@@ -18,7 +18,7 @@
  "target": {
   "kind": "phrase",
   "en": "Where is my seat?",
-  "tr": "Koltugum nerede?",
+  "tr": "Koltuğum nerede?",
   "cue": "s01-02"
  },
  "practice": {
@@ -84,7 +84,7 @@
    "end": 5.28,
    "speaker": "MIA",
    "text": "Where is my seat?",
-   "tr": "Koltugum nerede?",
+   "tr": "Koltuğum nerede?",
    "chunks": [],
    "words": [
     {
@@ -114,44 +114,22 @@
   {
    "id": "s01-03",
    "start": 6.5,
-   "end": 8.42,
+   "end": 8.02,
    "speaker": "USHER",
-   "text": "Row five, next to the screen.",
-   "tr": "Beşinci sıra, perdenin yanında.",
+   "text": "Row five.",
+   "tr": "Beşinci sıra.",
    "chunks": [],
    "words": [
     {
      "w": "Row",
      "start": 6.5,
-     "end": 6.77,
+     "end": 6.71,
      "gloss": "sıra"
     },
     {
-     "w": "five,",
-     "start": 6.77,
-     "end": 7.11
-    },
-    {
-     "w": "next",
-     "start": 7.11,
-     "end": 7.46,
-     "gloss": "yanında"
-    },
-    {
-     "w": "to",
-     "start": 7.46,
-     "end": 7.66
-    },
-    {
-     "w": "the",
-     "start": 7.66,
-     "end": 7.94
-    },
-    {
-     "w": "screen.",
-     "start": 7.94,
-     "end": 8.42,
-     "gloss": "perde"
+     "w": "five.",
+     "start": 6.71,
+     "end": 6.98
     }
    ]
   }

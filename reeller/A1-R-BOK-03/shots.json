@@ -26,7 +26,7 @@
   },
   {
    "name": "k4",
-   "prompt": "Use the reference image for the characters and the setting: keep the same faces, hair, clothes, colours and lighting. Kerem slips the phone into his pocket and returns to his book with a small nod of apology; Lena smiles briefly and goes back to reading, the green lamp glowing between them. Quiet reading room, soft daylight. Vertical composition. Vertical composition.",
+   "prompt": "Use the reference image for the characters and the setting: keep the same faces, hair, clothes, colours and lighting. Kerem slips the phone into his pocket and returns to his book with a small nod of apology; Lena (her hair still tied back in a bun with a headband, exactly as in the reference) smiles briefly and goes back to reading, the green lamp glowing between them. Quiet reading room, soft daylight. Vertical composition. Vertical composition.",
    "ref": "k1"
   }
  ],

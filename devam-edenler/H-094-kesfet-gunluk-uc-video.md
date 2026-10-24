@@ -1,6 +1,6 @@
 # H-094: Keşfet — seviyeye ve ilgiye göre günlük üç kısa video (reel)
 
-- **Durum:** Sürüyor — **P0, P1, P2, P3 ve P4 tamamlandı** (kredisiz). **18 reellik pilot üretildi ve 18/18 sesli** (konuşmacıya göre Sarah/Will/Chris); uygulama **backend'in yayımlanmış kataloğunu** okuyor; yayın/geri çekme uçtan uca doğrulandı; **"İlgi alanların" paneli** (son ürün eksiği) main'de (2026-10-21). Kalan yalnız H-092 pilotu ve insan değerlendirmesi. Ücretli üretim onayı alındı (2026-10-20), pilot yayını için ayrı onay gerekir.
+- **Durum:** Sürüyor — **P0, P1, P2, P3 ve P4 tamamlandı** (kredisiz). **18 reellik pilot üretildi ve 18/18 sesli** (konuşmacıya göre Sarah/Will/Chris); uygulama **backend'in yayımlanmış kataloğunu** okuyor; yayın/geri çekme uçtan uca doğrulandı; **"İlgi alanların" paneli** main'de. 2026-10-23 ön değerlendirme düzeltmeleri uygulandı; değişen 7 reel **v2 olarak yayımlandı**. Kalan yalnız H-092 pilotu ve insan değerlendirmesi.
 - **Tür:** Uygulama (kod) + içerik boru hattı + içerik pilotu
 - **Faz:** F1 MVP — ürün incelemesi sonrası (2026-10-18)
 - **Bağımlılık:** H-040 (Keşfet), H-089 (kanıt basamakları), H-088 (günlük plan); pilot içerik için ücretli üretim onayı ve `PROMPTS.md`
@@ -20,15 +20,15 @@
 
 ## Pilot ve teslimler (ücretli üretim onayı AYRI)
 - **Üç ayrı teslim:** (1) **kredisiz uygulama ve yayın kapısı** (P0–P4), (2) **gerçek içerik üretimi** (18 reel tamam), (3) **kullanıcı pilotu** (H-092; P4 yayın/geri çekme **ön koşulu tamamlandı**, uygulama backend kataloğunu okuyor).
-- **Bütçe 2026-10-20'de onaylandı.** Güncel fiyatla 3 örnek + 18 toplam maliyeti çıkarıldı; gerçekleşen **61,50 kr** (bakiye 236,56 kr). Ayrıntı: `docs/REEL-MALIYET-2026-10-19.md`.
-- **3 kategori × 2 seviye × 3 video = 18 video** (A1/A2); hepsi üretildi ve seslendirildi. Hareket **zorunlu değil** (3 sahnede klip, diğerleri Ken Burns). Geçmiş 0,5 kr ve 5 kr güncel fiyat sayılmaz; kredi/USD/TL/karakter ayrı raporlanır.
+- **Bütçe 2026-10-20'de, kalite düzeltme seti 2026-10-23'te onaylandı.** İlk üretim 61,50 kr + düzeltmeler 3,50 kr = gerçekleşen reel maliyeti **65,00 kr**. Tur sonu hesap bakiyesi **47,31 kr**; aynı hesapta bu tur dışındaki işlemler de bulunduğundan 236,56 kr'dan yalnız bu tur çıkarılarak bakiye yazılmıyor. Ayrıntı: `docs/REEL-MALIYET-2026-10-19.md` ve ön değerlendirme raporu.
+- **3 kategori × 2 seviye × 3 video = 18 video** (A1/A2); hepsi üretildi ve seslendirildi. Hareket **zorunlu değil** (3 sahnede klip, diğerleri Ken Burns). İlk üretim 61,50 kr, kalite düzeltmeleri 3,50 kr; gerçekleşen reel toplamı **65,00 kr**. Kredi/USD/TL/karakter ayrı raporlanır.
 
 ## Kabul kriterleri
 - Plan §12’deki **17 senaryo** geçer (seviye uygunluğu, gün içi kararlılık, gece yarısı, spoiler kilidi, mini soru, Defter’in doğru kaynakla çalışması, kanıt yazılmaması, sayaçlar, idempotent üretim, geri çekme, denetleyici ≤ 3, gerçek cihaz, **önceki hata regresyonları**, içerik sürümü, seviye çipi, P4 kapısı).
 - `flutter analyze && flutter test` ve `pytest` yeşil; golden’lar bilinçli güncellenir.
 - Büyük katalog üretimi, H-092 pilot sonucu görülmeden başlamaz.
 
-**Durum (2026-10-21):** Üretim, ses, lint, backend yayın/geri çekme, uygulama katalog bağlantısı ve "İlgi alanların" paneli tamam. Kalan kabul adımı: H-092 pilotu + insan değerlendirmesi; gerçek cihaz testi H-092/H-044 kapsamında.
+**Durum (2026-10-23):** Üretim, ses, lint, kalite düzeltmeleri, backend yayın/geri çekme, uygulama katalog bağlantısı ve "İlgi alanların" paneli tamam. Kalan kabul adımı: H-092 pilotu + insan değerlendirmesi; gerçek cihaz testi H-092/H-044 kapsamında.
 
 ## Test
 ```bash
@@ -120,7 +120,7 @@ Kendi dalında; `git revert`. İçerik paketleri `/reels/` altında ayrı durur;
 - 2026-10-21 (devam): **Uygulama backend kataloğuna bağlandı; sesler konuşmacıya göre ayrıldı.**
   - **F1 (pilot kapısı):** `HttpContentSource.listReels()` artık varsayılan olarak `GET /api/v1/catalog/reels` okur (`REEL_CATALOG_URL`; sayfalama `size=100`), her kaydın `packageBaseUrl`'ini saklar; `reel.json`/medya adresleri oradan kurulur. Yayında olmayan kimlik oynatılmaz; backend hatasında dosya kataloğuna sessizce düşülmez. Backend `ReelItem`'a `family` eklendi (seçki "aynı aile bir kez"). Dosya kataloğu yalnız `REEL_CATALOG_URL=''` demo modu.
   - **F4 (bulundu/düzeltildi):** backend kataloğunda hiç olmayan (geri çekilen) video seçkiden çıkarken yerine yedek konmuyordu (3 → 2 video). Kategori artık saklanan kimlikten okunur (`reelCategoryFromId`); regresyon testi eklendi. Simülatörde CIN-01 geri çekilince seçki **CIN-02 · SPO-01 · BOK-01** (üç video) oldu; dosya kataloğunda CIN-01 durmasına rağmen.
-  - **Ses (kullanıcı geri bildirimi):** görsellerde kadın/erkek karakter varken bütün replikler Sarah (kadın) sesiyle okunuyordu. `tts_reel.py` konuşmacıya göre ses seçer: kadınlar **Sarah**, genç erkekler (Kerem/Mert/Deniz) **Will**, olgun erkekler (Coach/seyirci) **Chris**. 27 erkek repliği (605 karakter) yeniden üretildi; ayrı defter **1.670 / 72 çağrı** (ana defter 9.851 değişmedi), Higgsfield kredisi harcanmadı. Ölçülen F0: erkek ~130–170 Hz, kadın ~220–270 Hz.
+  - **Ses (kullanıcı geri bildirimi):** görsellerde kadın/erkek karakter varken bütün replikler Sarah (kadın) sesiyle okunuyordu. `tts_reel.py` konuşmacıya göre ses seçer: kadınlar **Sarah**, genç erkekler (Kerem/Mert/Deniz) **Will**, olgun erkek Coach **Chris**. 27 erkek repliği (605 karakter) yeniden üretildi; ayrı defter **1.670 / 72 çağrı** (ana defter 9.851 değişmedi), Higgsfield kredisi harcanmadı. Ölçülen F0: erkek ~130–170 Hz, kadın ~220–270 Hz. `SPECTATOR` kadın karakter eşlemesi 23 Ekim turunda Sarah olarak sabitlendi.
   - **Yeniden kurulum:** 18 paket `build_reel.py --force`; kaynak `reel.json` süre/cue eşitlendi; 18 mobil fixture + `index.json` yenilendi. `reel-lint` **18 · 0 hata · 0 uyarı**.
   - **Testler:** `pytest` **368**, `flutter test` **1284** (+5 backend katalog, +1 seçki regresyonu), `flutter analyze` temiz, backend `mvn test` **153**. Uçtan uca prova: 18/18 yayın, geri çekme katalogdan düşüyor.
   - **Sıradaki:** H-092 kullanıcı pilotu (backend + içerik sunucusu açık; uygulama backend kataloğunu okur). **Commit:** `5e087eb`, `b0969c3`, `43c85f8`.
@@ -131,3 +131,16 @@ Kendi dalında; `git revert`. İçerik paketleri `/reels/` altında ayrı durur;
   - **Davranış (plan §5):** değişince seviye değişimindeki **aynı yol** çalışır — saklanan seçkinin `prefsSnapshot`'ı uyuşmaz, `selectDailyReels` yeni seçki yazar; akış baştan başlar (anahtar konuları da içerir). Günlük izleme sayacı ve `discover.reel.*` kayıtları silinmez. Kapalı konunun **çipi görünür kalır** ve havuzu açılır (plan §3/§4.3 ile uyumlu). Not: bugün izlenen video yeni seçkide geri planda kalır (§4.4 "en uzun süredir gösterilmemiş" kuralı); aynı gün konu kapatılıp açılırsa seçki ilk seçkiyle aynı olmayabilir.
   - **Testler:** `test/features/discover/reel_interests_test.dart` (8: başlangıç, aç/kapa + saklama, en az bir kuralı, yeniden açılışta korunma, günlük seçki etkisi + sayaç/kayıt + Kitap çipi havuzu, aynı tercihle kararlılık, yükleniyor, hata/Tekrar dene); eski mekanizmaya geri alınınca seçki testleri düşüyor (doğrulandı). Golden: `h094_gunluk_ilgi.png`, `h094_gunluk_ilgi_enaz.png` (yeni), `h094_gunluk_seviye.png` (bilinçli güncellendi: panelde yeni bölüm); her biri için erişilebilirlik yönergeleri + 320×568 / 1,3× taşma testi. `flutter analyze` temiz, **`flutter test` 1298**.
   - **Metinler:** `DiscoverTexts.interests*` + `docs/ARAYUZ-METINLERI.md` §7.1 "İlgi alanların".
+- 2026-10-23: **18 reelin ön değerlendirmesi yapıldı (ücretsiz; üretim yok, içerik değişmedi).** Rapor: `docs/H-094-REEL-ON-DEGERLENDIRME-2026-10-23.md`.
+  - **Teknik:** 18/18 yayına uygun; 720×1280, 11,0–13,4 sn, faststart, −15,5…−16,2 LUFS, tepe −1,4…−7,0 dBFS; altyazı–ses 0,04–0,28 sn; cue dışı konuşma yok; 54 cue, 3 seçenek/tek doğru; F0 ile Sarah/Will/Chris eşlemesi doğrulandı (kadın 182–271 Hz, erkek 81–149 Hz; bir bağırma 222 Hz).
+  - **P1:** `A1-R-SPO-02` konuşmacı/hedef ters (Elif topa sahipken pas istiyor; Mert "Here you go" diyor) — iki replik yeri değişmeli + soru güncellenmeli. `A1-R-CIN-02` çevirisi "Koltugum" → "Koltuğum" (kaynak + paket + fixture + yayın).
+  - **P2:** `A2-R-CIN-02` boş afiş çerçeveleri ("bu" işareti boşluğa), `A2-R-BOK-01` 4. karede boş raflar, `A1-R-BOK-03` 4. karede saç değişimi, `A2-R-SPO-02` 6 parmaklı jest eli; tekrar eden karakterlerde (ELIF/MERT/KEREM) yüz kimliği kayması — reeller arası ortak referans yok.
+  - **Kapsama:** 8/18 %95 altında (en düşük `A1-R-SPO-03` %80); CIN-02 ve SPO-03 metin sadeleştirmesiyle %100'e çıkar. Liste dışı kelimelerin hepsi sözlükte.
+  - **Öneri:** pilot için minimum set ≈3,5 kr görsel + ~75 karakter TTS (P1-1, P1-2, SPO-03 sadeleştirme, A2-CIN-02 afiş, A2-BOK-01 raf, A1-BOK-03 saç, A2-SPO-02 el); kullanıcı onayladı ve aşağıdaki turda uygulandı.
+- 2026-10-23 (devam): **Ön değerlendirme düzeltme seti tamamlandı ve yayımlandı.**
+  - **Görsel:** `A2-R-CIN-02` dört kareye yazısız renkli soyut afiş; `A2-R-BOK-01` k4 dolu raf; `A1-R-BOK-03` k4 toplu saç; `A2-R-SPO-02` k3 doğal el. Üretim job kayıtları: 7 kare × 0,50 kr = **3,50 kr**. Tur sonu hesap sorgusu **47,31 kr** gösterdi; aynı hesapta başka işlemler bulunduğu için ara bakiye bu üretime atfedilmedi.
+  - **Metin/ses:** `A1-R-SPO-02` Mert/Elif konuşmacıları ve soru düzeltildi; `A1-R-CIN-02` “Koltuğum” + “Row five.”; `A1-R-SPO-03` “He kicks the ball!” + “The team runs to him.”. Yeni üretim **70 karakter**, ana defter 9.851 → **9.921 / 10.000**. Ölçüm: Mert 113 Hz, Elif 205 Hz; kadın seyirci 198–205 Hz.
+  - **Boru hattı düzeltmesi:** `SPECTATOR` yanlışlıkla Chris'e eşleniyordu → Sarah. Ayrıca yeni ses parçası önbellekteyse var olan cue dosyasının yenilenmediği hata düzeltildi; iki regresyon testi eklendi.
+  - **Paket/yayın:** 7 paket `contentVersion=2` ile yeniden kuruldu; kaynak/fixture/index eşitlendi; lint **18/0/0**. Yerel backend içe aktarması **7 CREATED**, ardından 7/7 onay + yayın; açık katalog A1 9 + A2 9, tam olarak 7 kimlik v2; reel/mp4/hedef sesi adresleri 200.
+  - **Teknik:** 7 video 720×1280 H.264/AAC faststart, 11,9–13,4 sn, −15,9…−16,6 LUFS, tepe −1,4…−7,6 dBFS. Nihai kareler görsel olarak kontrol edildi.
+  - **Testler:** `pytest` **383**, `flutter test` **1454**, `flutter analyze` temiz. **Commit yok; kullanıcı onayı bekliyor.**

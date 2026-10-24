@@ -37,7 +37,7 @@
    "sourceType": "standalone",
    "family": "FAM-BOK-QUIET",
    "poster": "A1-R-BOK-03.webp",
-   "contentVersion": 1,
+   "contentVersion": 2,
    "status": "DRAFT"
   },
   {
@@ -63,7 +63,7 @@
    "sourceType": "standalone",
    "family": "FAM-CIN-SEAT",
    "poster": "A1-R-CIN-02.webp",
-   "contentVersion": 1,
+   "contentVersion": 2,
    "status": "DRAFT"
   },
   {
@@ -102,7 +102,7 @@
    "sourceType": "standalone",
    "family": "FAM-SPO-PASS",
    "poster": "A1-R-SPO-02.webp",
-   "contentVersion": 1,
+   "contentVersion": 2,
    "status": "DRAFT"
   },
   {
@@ -115,7 +115,7 @@
    "sourceType": "standalone",
    "family": "FAM-SPO-CHEER",
    "poster": "A1-R-SPO-03.webp",
-   "contentVersion": 1,
+   "contentVersion": 2,
    "status": "DRAFT"
   },
   {
@@ -128,7 +128,7 @@
    "sourceType": "standalone",
    "family": "FAM-BOK-DUE",
    "poster": "A2-R-BOK-01.webp",
-   "contentVersion": 1,
+   "contentVersion": 2,
    "status": "DRAFT"
   },
   {
@@ -180,7 +180,7 @@
    "sourceType": "standalone",
    "family": "FAM-CIN-GENRE",
    "poster": "A2-R-CIN-02.webp",
-   "contentVersion": 1,
+   "contentVersion": 2,
    "status": "DRAFT"
   },
   {
@@ -219,7 +219,7 @@
    "sourceType": "standalone",
    "family": "FAM-SPO-ROUTINE",
    "poster": "A2-R-SPO-02.webp",
-   "contentVersion": 1,
+   "contentVersion": 2,
    "status": "DRAFT"
   },
   {

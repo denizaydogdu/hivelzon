@@ -284,3 +284,7 @@ k1 Kerem kitabı iade eder · k2 "okuyacak bir şey arıyorum" · k3 Lena yazıs
 | 2026-10-21T06:31:11Z | A2-R-SPO-02 | s03-02 | Will bIHbv24MWmeRgasZH58o | eleven_v3 | 0.9 | 25 | 3609d305a413bd43 | _raw/tts/s03-02.mp3 |
 | 2026-10-21T06:31:12Z | A2-R-SPO-02 | s03-03 | Chris iP95p4xoKVk53GoZ742B | eleven_v3 | 0.9 | 22 | b4900e4ab6cdcaa2 | _raw/tts/s03-03.mp3 |
 | 2026-10-21T06:31:14Z | A2-R-SPO-03 | s04-02 | Will bIHbv24MWmeRgasZH58o | eleven_v3 | 0.9 | 24 | cb9463d126f29c09 | _raw/tts/s04-02.mp3 |
+| 2026-10-23T13:37:42Z | A1-R-SPO-02 | s01-02 | Will bIHbv24MWmeRgasZH58o | eleven_v3 | 0.9 | 22 | c43a6ab104656330 | _raw/tts/s01-02.mp3 |
+| 2026-10-23T13:37:44Z | A1-R-CIN-02 | s01-03 | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 9 | 4cb3539545da53b6 | _raw/tts/s01-03.mp3 |
+| 2026-10-23T13:37:45Z | A1-R-SPO-03 | s02-01 | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 18 | 5b12d611a545d304 | _raw/tts/s02-01.mp3 |
+| 2026-10-23T13:37:47Z | A1-R-SPO-03 | s02-03 | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 21 | 2100a228e80e328f | _raw/tts/s02-03.mp3 |

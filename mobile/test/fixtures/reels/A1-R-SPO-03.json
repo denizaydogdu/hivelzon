@@ -1,7 +1,7 @@
 {
  "schemaVersion": 1,
  "id": "A1-R-SPO-03",
- "contentVersion": 1,
+ "contentVersion": 2,
  "sourceType": "standalone",
  "category": "SPO",
  "categoryTr": "Spor",
@@ -47,22 +47,33 @@
   {
    "id": "s02-01",
    "start": 0.5,
-   "end": 1.62,
+   "end": 2.1,
    "speaker": "SPECTATOR",
-   "text": "He shoots!",
-   "tr": "Şut çekiyor!",
+   "text": "He kicks the ball!",
+   "tr": "Topa vuruyor!",
    "chunks": [],
    "words": [
     {
      "w": "He",
      "start": 0.5,
-     "end": 0.84
+     "end": 0.99
     },
     {
-     "w": "shoots!",
-     "start": 0.84,
-     "end": 1.62,
-     "gloss": "şut çekmek"
+     "w": "kicks",
+     "start": 0.99,
+     "end": 1.5,
+     "gloss": "vurmak"
+    },
+    {
+     "w": "the",
+     "start": 1.5,
+     "end": 1.7
+    },
+    {
+     "w": "ball!",
+     "start": 1.7,
+     "end": 2.1,
+     "gloss": "top"
     }
    ]
   },
@@ -92,44 +103,38 @@
   {
    "id": "s02-03",
    "start": 6.7,
-   "end": 7.98,
+   "end": 8.14,
    "speaker": "SPECTATOR",
-   "text": "The whole team runs to him.",
-   "tr": "Bütün takım ona koşuyor.",
+   "text": "The team runs to him.",
+   "tr": "Takım ona koşuyor.",
    "chunks": [],
    "words": [
     {
      "w": "The",
      "start": 6.7,
-     "end": 6.89
-    },
-    {
-     "w": "whole",
-     "start": 6.89,
-     "end": 7.17,
-     "gloss": "bütün"
+     "end": 6.91
     },
     {
      "w": "team",
-     "start": 7.17,
-     "end": 7.41,
+     "start": 6.91,
+     "end": 7.23,
      "gloss": "takım"
     },
     {
      "w": "runs",
-     "start": 7.41,
-     "end": 7.65,
+     "start": 7.23,
+     "end": 7.54,
      "gloss": "koşmak"
     },
     {
      "w": "to",
-     "start": 7.65,
-     "end": 7.79
+     "start": 7.54,
+     "end": 7.78
     },
     {
      "w": "him.",
-     "start": 7.79,
-     "end": 7.98
+     "start": 7.78,
+     "end": 8.14
     }
    ]
   }

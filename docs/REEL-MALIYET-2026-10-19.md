@@ -228,3 +228,24 @@ değişmedi.
 - Ayrı defter: `{2026-10: 1670, 72}` (1.065 + 605); ana defter **9.851 / 10.000 (değişmedi)**.
 - Higgsfield kredisi harcanmadı (236,56 kr); ses üretimi ElevenLabs karakter kotasından.
 - 18 paket `build_reel.py --force` ile yeniden kuruldu; `reel-lint` **18 · 0 hata · 0 uyarı**.
+
+## 10. Ön değerlendirme kalite düzeltmeleri (2026-10-23)
+
+Kullanıcı `docs/H-094-REEL-ON-DEGERLENDIRME-2026-10-23.md` içindeki minimum seti onayladı.
+
+| Kalem | Adet | Birim | Kr |
+|---|---:|---:|---:|
+| `A2-R-CIN-02` yazısız soyut afişli kare | 4 | 0,50 | 2,00 |
+| `A2-R-BOK-01` dolu raflı k4 | 1 | 0,50 | 0,50 |
+| `A1-R-BOK-03` toplu saçlı k4 | 1 | 0,50 | 0,50 |
+| `A2-R-SPO-02` doğal elli k3 | 1 | 0,50 | 0,50 |
+| **Toplam** | **7** | | **3,50** |
+
+- Job kayıtları bu turun harcamasını **3,50 kr** doğruluyor; ilk üretimle birlikte reel toplamı
+  **61,50 + 3,50 = 65,00 kr**. Tur sonu `higgsfield account status` bakiyesi **47,31 kr**;
+  aynı hesapta 21 ve 23 Ekim'de bu tur dışındaki işlemler de bulunduğundan 236,56 kr'dan yalnız bu tur
+  çıkarılarak hesap bakiyesi türetilmedi.
+- Metin/konuşmacı düzeltmeleri için 70 yeni ElevenLabs karakteri üretildi; ana defter
+  **9.851 → 9.921 / 10.000**. `SPECTATOR`, görseldeki kadın karakterle uyumlu olarak Sarah'ya
+  sabitlendi.
+- Değişen 7 reel sürüm 2 olarak yeniden kuruldu ve yerel backend'de yayımlandı; lint 18/0/0.

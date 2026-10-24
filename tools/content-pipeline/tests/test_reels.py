@@ -56,6 +56,41 @@ def _doc(**over) -> dict:
     return doc
 
 
+def test_reel_spectator_is_female_voice():
+    """A1-R-SPO-03 seyircisi kadın; SPECTATOR Sarah'ya eşlenmeli (H-094, 2026-10-23)."""
+    import tts_reel
+
+    assert tts_reel.voice_for({"speaker": "SPECTATOR"})[0] == "Sarah"
+
+
+def test_reel_tts_refreshes_cue_file_from_cache(tmp_path, monkeypatch):
+    """Metin/ses değişince var olan cue dosyası yeni önbellek parçasıyla yenilenmeli."""
+    import tts_reel
+
+    root = tmp_path / "A1-R-SPO-02"
+    parts = root / "_raw" / "tts" / "_parts"
+    parts.mkdir(parents=True)
+    (root / "reel.json").write_text(
+        json.dumps({
+            "id": "A1-R-SPO-02",
+            "cues": [{"id": "s01-03", "speaker": "ELIF", "text": "Here you go."}],
+        }),
+        encoding="utf-8",
+    )
+    _, voice = tts_reel.voice_for({"speaker": "ELIF"})
+    key = tts_reel.T._part_key("Here you go.", voice, tts_reel.MODEL, tts_reel.SPEED)
+    (parts / f"{key}.mp3").write_bytes(b"yeni-sarah-sesi")
+    cue_file = root / "_raw" / "tts" / "s01-03.mp3"
+    cue_file.write_bytes(b"eski-will-sesi")
+
+    monkeypatch.setattr(tts_reel.T, "ledger_path", lambda _: tmp_path / "ledger.json")
+    monkeypatch.setattr(tts_reel.T, "http_client", lambda: lambda *_: pytest.fail("API çağrılmamalı"))
+    monkeypatch.setattr(tts_reel, "_duration", lambda _: 1.0)
+
+    assert tts_reel.main([str(root), "--execute", "--monthly-char-cap", "100"]) == 0
+    assert cue_file.read_bytes() == b"yeni-sarah-sesi"
+
+
 def _lint(tmp_path: Path, doc: dict, folder: str = "A1-R-CIN-01"):
     d = tmp_path / folder
     d.mkdir(parents=True, exist_ok=True)

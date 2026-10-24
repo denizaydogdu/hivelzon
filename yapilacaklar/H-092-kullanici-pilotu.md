@@ -1,6 +1,6 @@
 # H-092: Kullanılabilirlik testi ve 7–14 günlük öğrenme pilotu
 
-- **Durum:** ⏳ Bölündü (kullanıcı kararı 2026-10-21). **Aşama A** (gözlemli kullanılabilirlik, 2–3 kişiyle başlanabilir; kullanıcının iPhone'u + Mac'ten yerel ağ; dışarı veri çıkmaz; hukuk ve dış hesap gerektirmez, basit izin yeter) **erken ve isteğe bağlı** — kullanıcı istediği zaman yapar. **Aşama B** (evde 7–14 gün) internetten erişilebilir backend/içerik ve TestFlight gerektirir → **H-044 ile en sonda**. Onam metni hukukçu tarafından uygun bulundu (2026-10-21: tek metin, 90 gün saklama, 13–17 için ek veli onayı yok); iletişim ve sorumlu kişi veri sorumlusu fazında doldurulur. Pilot kiti hazır (`docs/H-092-PILOT-KITI.md`); teknik kapı 2026-10-21'de doğrulandı. Pilot sonucu görülmeden büyük yeni içerik dalgası başlamaz.
+- **Durum:** ⏸ **Ertelendi (kullanıcı kararı 2026-10-23):** şu an test telefonu yok; **aşama A da aşama B ile birlikte H-044'ten sonra** yapılır. (2026-10-21 kararı: A erken/isteğe bağlı, B H-044 ile en sonda.) Onam metni hukukçu tarafından uygun bulundu (2026-10-21: tek metin, 90 gün saklama, 13–17 için ek veli onayı yok); iletişim ve sorumlu kişi veri sorumlusu fazında doldurulur. Pilot kiti hazır (`docs/H-092-PILOT-KITI.md`); gözlem föyü `docs/H-092-GOZLEM-FOYU-2026-10-23.md`; teknik kapı 2026-10-21 ve 2026-10-23'te doğrulandı. Pilot sonucu görülmeden büyük yeni içerik dalgası başlamaz.
 - **Tür:** Ürün araştırması
 - **Faz:** F1 MVP — ürün incelemesi sonrası (2026-10-16)
 - **Bağımlılık:** H-087…H-091 · gerçek cihaz dağıtımı için H-044
