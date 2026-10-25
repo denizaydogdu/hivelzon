@@ -109,15 +109,15 @@ tools/device-build.sh ios debug                  # iOS (Xcode'daki geliştirici 
 - **Yapı numarası:** Her derlemede artar. Varsayılan `git rev-list --count HEAD`; elle `HV_BUILD_NUMBER=…`. Flutter'a `--build-name 0.1.0 --build-number N` gider. Uygulamadaki **Hakkında** satırı da aynı değeri göstersin diye `--dart-define=HV_APP_VERSION=0.1.0+N` verilir.
 - **Sürüm kuralı:** `pubspec.yaml` `version: 0.1.0+1` ile `lib/app/app_info.dart` varsayılanı aynı tutulur; test bunu denetler. Sürüm adı değişince ikisi birlikte değişir. Yapı numarası pubspec'e yazılmaz, derleme anında verilir.
 
-## 3. H-044 bekleyenler
+## 3. H-044 — mağaza ve dış hesaplar
 
 | # | Madde | Not |
 |---|---|---|
-| 3.1 | Android imza anahtarı (upload key), Play App Signing | Kullanıcı kararı 6: H-044 |
-| 3.2 | iOS dağıtım imzası, TestFlight | Geliştirici hesapları H-044 |
-| 3.3 | Google Play iç test kanalı | |
-| 3.4 | **Gerçek adresler (HTTPS)** | **Risk:** `CONTENT_BASE_URL` (`http://127.0.0.1:8787`), `REEL_CATALOG_URL` (`http://127.0.0.1:8080/...`) ve `API_BASE_URL` (`http://127.0.0.1:8080`) varsayılanları yerel geliştirme içindir. `--dart-define` verilmeden yapılan bir **release** derlemesi telefonda hiçbir içeriğe ulaşamaz: 127.0.0.1 telefonun kendisidir ve Android release'te düz HTTP kapalıdır. Mağaza derlemesi bu üç değer HTTPS adresleriyle verilmeden yapılmaz. Gerekirse derleme anında boş/yerel adres denetimi H-044'te eklenir. |
-| 3.5 | iOS `NSAllowsLocalNetworking` | Şu an bütün derlemelerde açık. Yayın derlemesinde gerekip gerekmediği H-044'te gözden geçirilir. |
+| 3.1 | Android imza anahtarı (upload key), Play App Signing | **Kod hazır (2026-10-25):** release debug anahtarıyla imzalanmıyor; `android/key.properties.example` ve git dışı `key.properties`/`*.jks`. Anahtarın üretilmesi ve Play App Signing kullanıcı hesabına bağlı. |
+| 3.2 | iOS dağıtım imzası, TestFlight | Takım ve Distribution kimliği hazır; App Store Connect uygulama kaydı ve TestFlight kullanıcıya bağlı. |
+| 3.3 | Google Play iç test kanalı | Kullanıcı hesabına bağlı. |
+| 3.4 | **Gerçek adresler (HTTPS)** | **Çözüldü (2026-10-25):** Release derlemesi `API_BASE_URL`, `CONTENT_BASE_URL` ve `REEL_CATALOG_URL` genel HTTPS değilse **açılmaz** (`mobile/lib/app/release_config.dart`); boş, `http`, localhost, özel ağ IP'si ve kullanıcı bilgisi reddedilir. Debug/profile yerel adreslerle çalışmaya devam eder. |
+| 3.5 | iOS `NSAllowsLocalNetworking` | **Çözüldü (2026-10-25):** Release `Info-Release.plist` kullanır ve yerel ağ izni yoktur; debug/profile `Info.plist` ile yerel ağda çalışır. Paket plist'i iOS release derlemesinde doğrulandı. |
 | 3.6 | Asıl uygulama simgesi ve açılış ekranı | H-016 (logo, palet, ad kontrolü). Şimdiki simge **geçicidir**. |
 | 3.7 | Mağaza aile politikaları, yaş derecelendirmesi | H-044. Hukukçu H-002'yi teyit etti (2026-10-21): veli onayı gerekmez, doğum yılı beyanı yeterli |
-| 3.8 | Bunny Stream, sunucu | H-044 |
+| 3.8 | Bunny Stream, sunucu | **Kod hazır (2026-10-25):** `CdnPackageAdapter` sürümlü `v<N>` paket yolu, backend `prod` kapısı, mutlak HTTPS/HLS medya desteği. Hesap, sunucu ve yükleme kullanıcıya bağlı; adımlar `docs/H-044-YAYIN-HAZIRLIK.md`. |

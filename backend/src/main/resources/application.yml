@@ -101,9 +101,10 @@ hivelzon:
     dev-import-enabled: ${HIVELZON_CATALOG_DEV_IMPORT:true}
     cache-max-age: 60s
   media:
-    # VideoHostingPort (K-13): yerelde içerik sunucusu (tools/dev-content-server/serve.py); Bunny H-044'te.
-    provider: local
+    # VideoHostingPort (K-13): yerelde içerik sunucusu; üretimde sürümlü paket CDN'i.
+    provider: ${HIVELZON_MEDIA_PROVIDER:local}
     local-base-url: ${HIVELZON_MEDIA_LOCAL_BASE_URL:http://127.0.0.1:8787/packages/}
+    cdn-base-url: ${HIVELZON_MEDIA_CDN_BASE_URL:}
   sync:
     max-rows-per-push: 500
     max-push-bytes: 1048576

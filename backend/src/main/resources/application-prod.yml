@@ -1,4 +1,9 @@
 # Üretim profili (H-044'te kullanılacak). Varsayılan yok: eksik ayar uygulamayı başlatmaz.
+server:
+  # Ters vekil (Caddy/nginx) arkasında gerçek istemci IP'si: hız sınırı ve
+  # denetim kaydı proxy adresini değil istemciyi görsün. Backend portu dışarı
+  # açılmaz; yalnız vekil erişir (docs/H-044-YAYIN-HAZIRLIK.md).
+  forward-headers-strategy: framework
 spring:
   datasource:
     url: ${HIVELZON_DB_URL}
@@ -14,3 +19,6 @@ hivelzon:
   catalog:
     # Geliştirme içe aktarması üretimde kapalı; içerik yayını H-041 onay ekranı ve H-044 ile.
     dev-import-enabled: false
+  media:
+    provider: ${HIVELZON_MEDIA_PROVIDER}
+    cdn-base-url: ${HIVELZON_MEDIA_CDN_BASE_URL}

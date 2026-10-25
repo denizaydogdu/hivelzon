@@ -39,7 +39,7 @@
 | Yerel depolama | Drift (SQLite) — H-035'te kuruldu | İlerleme, kapı, bayraklar, sezon durumu (H-035); defter ve FSRS kartları H-036'da eklenecek; sunucuyla eşitlenir (H-038) |
 | FSRS | Dart `fsrs` (istemci) + Java portu (sunucu, py-fsrs'ten, MIT) | K-04; iki uygulama arasında eşdeğerlik testi |
 | Backend | Spring Boot 4, Java 17, Maven, Flyway, Testcontainers | Plan §10 |
-| Medya | `VideoHostingPort` arkasında; Faz 1.0–1.11'de yerel adaptör (dosya sistemi / yerel sunucu). Bunny Stream adaptörü en sonda (H-044) | K-13; kullanıcı kararı: dış hesaplar en sona |
+| Medya | `VideoHostingPort` arkasında; Faz 1.0–1.11'de yerel adaptör. H-044'te üretim için sürümlü paket CDN adaptörü (`CdnPackageAdapter`) ve mutlak HTTPS/HLS medya desteği eklendi; Bunny Stream video kimlikleri hesap açılınca işlenir | K-13; kullanıcı kararı: dış hesaplar en sona |
 | Sırlar | Repo dışı (`~/.config/hivelzon/`). Mobilde sağlayıcı anahtarı yok. | CLAUDE.md mühendislik ilkeleri |
 
 ## 3. Fazlar ve işler (sıra önemli)
@@ -67,7 +67,7 @@
 | **1.9** | **H-041** Editör onay ekranı ve içerik içe aktarma | `content-lint` → içe aktarma → Onayla / Zamanla / Kaldır; sürümler; `publish_at` (K-05, K-12); medya yerel adaptörle | Onaysız içerik katalogda görünmüyor (backend testi) | ✅ |
 | **1.10** | **H-042** Profil, ayarlar, hukuki metinler, hesap silme arayüzü | Beceri ve ilerleme gösterimi; bildirim ayarları; gizlilik; lisans atıfları (CEFR-J vb.) | Hesap silme ve geri alma arayüzden çalışıyor | ✅ (2026-10-21; hukuk metinleri H-095) |
 | **1.11** | **H-043** Kalite ve iç beta hazırlığı | Erişilebilirlik, hata durumları, çökme raporlama (veri minimizasyonuyla); simülatör ve yerel cihazda uçtan uca deneme; H-031'den taşınan Android bellek/ısı ve gerçek telefon ses–yazı kontrolleri | Beta kontrol listesi tamam (mağaza hariç) | 🔄 (yerel kısım bitti; gerçek telefon kaldı) |
-| **1.12** | **H-044** Dış hesaplar, barındırma ve mağaza (en son) | Sunucu yeri ve kurulum; Bunny Stream hesabı ve adaptörü; Apple ve Google geliştirici hesapları; TestFlight / Play dahili test | Uygulama sunucudaki backend ve Bunny medyasıyla çalışıyor; dahili test sürümü yüklendi | ⏳ en son |
+| **1.12** | **H-044** Dış hesaplar, barındırma ve mağaza (en son) | Sunucu yeri ve kurulum; Bunny Stream hesabı ve adaptörü; Apple ve Google geliştirici hesapları; TestFlight / Play dahili test | Uygulama sunucudaki backend ve Bunny medyasıyla çalışıyor; dahili test sürümü yüklendi | 🔄 (hesap gerektirmeyen kod bitti; dış hesaplar kullanıcıya bağlı) |
 
 ### Tasarım yenilemesi (2026-10-14, kullanıcı isteği)
 Kullanıcı Profil'i beğenmedi ("her şey iç içe, düz yazı gibi"); bütün sayfaların daha hareketli, şekilli ve çekici olması istendi. Kararlar: bütçe ~8 kr (Higgsfield 1k taslak + illüstrasyon), başlıklarda yuvarlak yazı tipi + metinde Inter (gömülü, OFL), yalnız açık tema, sıra aşağıdaki gibi. Ayrıntılı plan: `/Users/felece/.claude/plans/ek-i-olarak-sayfalar-n-delightful-elephant.md`.

@@ -162,15 +162,19 @@ public class HivelzonProperties {
     }
 
     public static class Media {
-        /** VideoHostingPort adaptörü: {@code local} (geliştirme içerik sunucusu). Bunny H-044'te eklenir. */
+        /** VideoHostingPort adaptörü: {@code local} (geliştirme) ya da {@code cdn} (üretim). */
         private String provider = "local";
         /** Yerel içerik sunucusunun paket kökü (tools/dev-content-server/serve.py). */
         private String localBaseUrl = "http://127.0.0.1:8787/packages/";
+        /** Üretim paket CDN kökü (Bunny Storage + Pull Zone); yalnız genel HTTPS. */
+        private String cdnBaseUrl = "";
 
         public String getProvider() { return provider; }
         public void setProvider(String v) { provider = v; }
         public String getLocalBaseUrl() { return localBaseUrl; }
         public void setLocalBaseUrl(String v) { localBaseUrl = v; }
+        public String getCdnBaseUrl() { return cdnBaseUrl; }
+        public void setCdnBaseUrl(String v) { cdnBaseUrl = v; }
     }
 
     public static class Sync {

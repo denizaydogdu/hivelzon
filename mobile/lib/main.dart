@@ -1,12 +1,16 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'app/app.dart';
 import 'app/design/font_licenses.dart';
+import 'app/release_config.dart';
 import 'app/third_party_licenses.dart';
 import 'features/library/application/audio_service_host.dart';
+import 'shared/api/api_client.dart';
+import 'shared/content/http_content_source.dart';
 import 'shared/diagnostics/crash_log.dart';
 import 'shared/diagnostics/crash_reporting.dart';
 import 'shared/perf/perf_log.dart';
@@ -18,6 +22,12 @@ void main() {
 }
 
 void _main() {
+  validateReleaseEndpoints(
+    isRelease: kReleaseMode,
+    apiBaseUrl: kApiBaseUrl,
+    contentBaseUrl: kContentBaseUrl,
+    reelCatalogUrl: kReelCatalogUrl,
+  );
   // H-054: açılış ve kare ölçümü (yalnızca debug/profile).
   PerfLog.start();
   WidgetsFlutterBinding.ensureInitialized();

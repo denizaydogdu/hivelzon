@@ -6,6 +6,11 @@ import 'package:http/http.dart' as http;
 
 import '../../l10n/tr_strings.dart';
 
+const String kApiBaseUrl = String.fromEnvironment(
+  'API_BASE_URL',
+  defaultValue: 'http://127.0.0.1:8080',
+);
+
 /// hiVelzon API ayarları (H-038). İçerik sunucusundan (`CONTENT_BASE_URL`)
 /// ayrıdır: katalog ve medya oradan, hesap ve eşitleme buradan.
 class ApiConfig {
@@ -18,12 +23,7 @@ class ApiConfig {
   /// `--dart-define=API_BASE_URL=http://127.0.0.1:8080` (backend varsayılan
   /// portu `HIVELZON_PORT` = 8080).
   factory ApiConfig.fromEnvironment() => ApiConfig(
-    baseUrl: Uri.parse(
-      const String.fromEnvironment(
-        'API_BASE_URL',
-        defaultValue: 'http://127.0.0.1:8080',
-      ),
-    ),
+    baseUrl: Uri.parse(kApiBaseUrl),
     termsVersion: const String.fromEnvironment(
       'TERMS_VERSION',
       defaultValue: defaultLegalVersion,

@@ -65,8 +65,25 @@ class HttpContentSource implements ContentSource {
   Uri _packagesUri(List<String> segments) =>
       _base.resolveUri(Uri(pathSegments: ['packages', ...segments]));
 
+  Uri? _absoluteMediaUri(String path) {
+    final parsed = Uri.tryParse(path);
+    if (parsed == null) throw ArgumentError.value(path, 'path', 'Geçersiz URI');
+    if (!parsed.hasScheme && !parsed.hasAuthority) return null;
+    if (parsed.scheme != 'https' ||
+        parsed.host.isEmpty ||
+        parsed.userInfo.isNotEmpty) {
+      throw ArgumentError.value(
+        path,
+        'path',
+        'Mutlak medya adresi kimlik bilgisi içermeyen HTTPS olmalı',
+      );
+    }
+    return parsed;
+  }
+
   @override
   Uri mediaUri(String contentId, String path) =>
+      _absoluteMediaUri(path) ??
       _packagesUri([contentId, ...path.split('/')]);
 
   Future<Object?> _getJson(Uri uri) async {
@@ -106,6 +123,7 @@ class HttpContentSource implements ContentSource {
 
   @override
   Uri seasonMediaUri(int season, String path) =>
+      _absoluteMediaUri(path) ??
       _packagesUri(['_season', 'S$season', ...path.split('/')]);
 
   @override
@@ -164,7 +182,7 @@ class HttpContentSource implements ContentSource {
 
   @override
   Uri bookMediaUri(String bookId, String path) =>
-      _booksUri([bookId, ...path.split('/')]);
+      _absoluteMediaUri(path) ?? _booksUri([bookId, ...path.split('/')]);
 
   @override
   Future<List<BookSummary>> listBooks() async {
@@ -199,13 +217,15 @@ class HttpContentSource implements ContentSource {
 
   @override
   Uri grammarMediaUri(String lessonId, String path) =>
-      _grammarUri([lessonId, ...path.split('/')]);
+      _absoluteMediaUri(path) ?? _grammarUri([lessonId, ...path.split('/')]);
 
   Uri _reelsUri(List<String> segments) =>
       _base.resolveUri(Uri(pathSegments: ['reels', ...segments]));
 
   @override
   Uri reelMediaUri(String reelId, String path) {
+    final absolute = _absoluteMediaUri(path);
+    if (absolute != null) return absolute;
     final packageBase = _reelPackageBases[reelId];
     if (packageBase != null) {
       return packageBase.resolveUri(Uri(pathSegments: path.split('/')));

@@ -4,7 +4,7 @@ Yapay zekâ videolarıyla İngilizce öğrenme uygulaması (iOS + Android). Tüm
 
 Velzon Bilişim Teknolojileri Ltd. Şti. (Eskişehir · info@velzon.tr) ürünüdür.
 
-**Durum (2026-10-24):** Faz 1 (MVP) uygulaması sürüyor (`docs/UYGULAMA-PLANI.md`). Her şey yerelde çalışıyor; sunucu, video barındırma ve mağaza hesapları en sona bırakıldı (H-044). Son tamamlananlar: **H-042** (hesap silme/geri alma, Hakkında ve lisanslar, günlük hatırlatma), **H-095** (hukukçu cevapları: yeniden onay yok, kayıtlar 2 yıl, KVKK ve koşullar taslakları), **H-096** (takip incelemesi düzeltmeleri), **H-097** (uçtan uca simülatör gezinmesi) ve Keşfet'in "İlgi alanların" paneli (H-094). **Uygulamanın görünen adı bütün ekranlarda Hi** (kullanıcı kararı 2026-10-24); depo ve iç adlar `hiVelzon`. Kalan işler kullanıcıya ya da dış taraflara bağlı: gerçek telefon denemeleri, editör kontrolü, H-092 pilotu (aşama A ve B birlikte H-044'ten sonra), H-044. Ayrıntı: `yapilacaklar/IS-SIRASI.md`.
+**Durum (2026-10-25):** Faz 1 (MVP) uygulaması sürüyor (`docs/UYGULAMA-PLANI.md`). Her şey yerelde çalışıyor; sunucu, video barındırma ve mağaza hesapları en sona bırakıldı (H-044). Son tamamlananlar: **H-042** (hesap silme/geri alma, Hakkında ve lisanslar, günlük hatırlatma), **H-095** (hukukçu cevapları: yeniden onay yok, kayıtlar 2 yıl, KVKK ve koşullar taslakları), **H-096** (takip incelemesi düzeltmeleri), **H-097** (uçtan uca simülatör gezinmesi) ve Keşfet'in "İlgi alanların" paneli (H-094). **Uygulamanın görünen adı bütün ekranlarda Hi** (kullanıcı kararı 2026-10-24); depo ve iç adlar `hiVelzon`. **H-044'ün hesap gerektirmeyen kısmı bitti:** release HTTPS adres kapısı, Android upload key, iOS mağaza plist'i, backend `prod` güvenlik kapısı ve sürümlü reel CDN yolu ([yayın hazırlığı](docs/H-044-YAYIN-HAZIRLIK.md)). Kalan işler kullanıcıya ya da dış taraflara bağlı: gerçek telefon denemeleri, editör kontrolü, H-092 pilotu (aşama A ve B birlikte H-044'ten sonra), H-044'ün sunucu/mağaza adımları. Ayrıntı: `yapilacaklar/IS-SIRASI.md`.
 
 Ana deneyim oyunlaştırılmış, sürekli bir hikâye: *The Missing Signal*. Kahraman Aleyna "Alex" Yıldız, yol arkadaşı AI asistan Hi. Sezon 1 (A1) 12 bölüm + prolog; 12 bölümün hepsi üretildi ve uygulamada oynanıyor (B5–B12 editör onayı bekliyor). Bitenler: repo iskeleti, bölüm paketi + content-lint, etkileşimli oynatıcı, altyazıya dokununca Türkçe anlam, başlıkla açılış ve sezon jeneriği, hikâye haritası ve kalıcı yerel ilerleme (Drift), defter + ipucu panosu + FSRS tekrarı, kitaplık, dilbilgisi ve Keşfet reelleri. AI konuşma pratiği MVP'de yok, v1'de gelir.
 
@@ -14,7 +14,7 @@ Ana deneyim oyunlaştırılmış, sürekli bir hikâye: *The Missing Signal*. Ka
 - [İş sırası](yapilacaklar/IS-SIRASI.md): nerede kaldık, sıradaki işler, günlük
 - [Faz 1 uygulama planı](docs/UYGULAMA-PLANI.md): alt fazlar ve durumları
 - [Oyun ve hikâye tasarımı](docs/OYUN-TASARIMI.md) · [Bölüm paketi biçimi](docs/BOLUM-PAKETI.md) · [Hi asistanı ve koç](docs/HI-ASISTAN-VE-KOC.md)
-- [İş ve ürün planı](docs/IS-PLANI.md) · [Şartname](docs/SARTNAME.md) · [İçerik mimarisi](docs/ICERIK-MIMARISI.md) · [Lisans raporu](docs/LISANS-RAPORU.md) · [Tasarım yönü](tasarim/README.md)
+- [İş ve ürün planı](docs/IS-PLANI.md) · [Şartname](docs/SARTNAME.md) · [İçerik mimarisi](docs/ICERIK-MIMARISI.md) · [Lisans raporu](docs/LISANS-RAPORU.md) · [Yayın hazırlığı](docs/H-044-YAYIN-HAZIRLIK.md) · [Tasarım yönü](tasarim/README.md)
 
 ## Dört ayak
 

@@ -233,10 +233,11 @@ public class CatalogService {
     }
 
     private ReelItem mapReel(ResultSet rs, int i) throws SQLException {
-        String packageUrl = hosting.packageBaseUrl(rs.getString("package_base_path"));
+        int version = rs.getInt("content_version");
+        String packageUrl = hosting.packageBaseUrl(rs.getString("package_base_path"), version);
         JsonNode d = json.readTree(rs.getString("descriptor"));
         OffsetDateTime publishAt = rs.getObject("publish_at", OffsetDateTime.class);
-        return new ReelItem(rs.getString("content_id"), rs.getInt("content_version"), rs.getString("slug"),
+        return new ReelItem(rs.getString("content_id"), version, rs.getString("slug"),
                 rs.getString("level"), rs.getInt("number"), text(d, "category"), text(d, "family"),
                 text(d, "titleTr"), rs.getString("title"), text(d, "learningObjective"), d.get("target"),
                 d.hasNonNull("duration") ? d.path("duration").asDouble() : null, d.get("related"),
@@ -246,11 +247,14 @@ public class CatalogService {
     }
 
     private BookItem mapBook(ResultSet rs, int i) throws SQLException {
+        int version = rs.getInt("content_version");
+        // Kitaplık paketleri mobilde `CONTENT_BASE_URL/packages/<id>/` sabit yolundan
+        // okunur; sürümlü klasör yalnız reellerde kullanılır (H-044 notu).
         String packageUrl = hosting.packageBaseUrl(rs.getString("package_base_path"));
         JsonNode d = json.readTree(rs.getString("descriptor"));
         OffsetDateTime publishAt = rs.getObject("publish_at", OffsetDateTime.class);
         String cover = text(d, "cover");
-        return new BookItem(rs.getString("content_id"), rs.getInt("content_version"), rs.getString("slug"),
+        return new BookItem(rs.getString("content_id"), version, rs.getString("slug"),
                 rs.getString("level"), rs.getInt("number"), rs.getString("genre"), rs.getString("title"),
                 text(d, "titleTr"), text(d, "blurbTr"), text(d, "hookEn"), d.get("palette"),
                 cover == null ? null : packageUrl + cover, integer(d, "wordCount"), integer(d, "pageCount"),
@@ -271,12 +275,14 @@ public class CatalogService {
 
     private CatalogItem mapItem(ResultSet rs, int i) throws SQLException {
         String base = rs.getString("package_base_path");
+        int version = rs.getInt("content_version");
+        // Bölüm paketleri de mobilde sabit `packages/<id>/` yolundan okunur.
         String packageUrl = hosting.packageBaseUrl(base);
         String rendition = rs.getString("rendition_bytes");
         OffsetDateTime publishAt = rs.getObject("publish_at", OffsetDateTime.class);
         Integer minutes = (Integer) rs.getObject("estimated_minutes");
         Long totalBytes = (Long) rs.getObject("total_bytes");
-        return new CatalogItem(rs.getString("content_id"), rs.getInt("content_version"), rs.getString("slug"),
+        return new CatalogItem(rs.getString("content_id"), version, rs.getString("slug"),
                 rs.getInt("season"), rs.getInt("number"), rs.getString("level"), rs.getString("title"), minutes,
                 publishAt == null ? null : publishAt.toInstant(), packageUrl, packageUrl + "scenes.json",
                 packageUrl + "manifest.json", rs.getString("manifest_sha256"), totalBytes,

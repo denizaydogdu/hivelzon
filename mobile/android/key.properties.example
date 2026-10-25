@@ -1,0 +1,7 @@
+# H-044: Bu dosyayı `android/key.properties` olarak kopyala ve gerçek
+# değerleri yalnız yerel parola yöneticisinden doldur. `key.properties` ve
+# *.jks git dışında tutulur.
+storeFile=/absolute/path/to/hivelzon-upload-key.jks
+storePassword=CHANGE_ME
+keyAlias=upload
+keyPassword=CHANGE_ME
