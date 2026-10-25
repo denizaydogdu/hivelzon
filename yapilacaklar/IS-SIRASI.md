@@ -5,7 +5,7 @@
 Bu dosya tek takip noktasıdır. Hangi işin hangi sırada yapıldığını, şu an ne üzerinde çalışıldığını ve neyin bittiğini gösterir. Her işin ayrıntısı kendi `H-<numara>-<başlık>.md` dosyasındadır.
 
 ## Nerede kaldık
-- **Şu an (2026-10-25):** Faz 1 (MVP) uygulaması sürüyor (`docs/UYGULAMA-PLANI.md`). `main` = `2d59738`, GitHub'da. Uygulamanın görünen adı bütün ekranlarda **Hi** (kullanıcı kararı 2026-10-24); depo/iç adlar `hiVelzon`, hukuki şirket Velzon Bilişim Teknolojileri Ltd. Şti.
+- **Şu an (2026-10-25):** Faz 1 (MVP) uygulaması sürüyor (`docs/UYGULAMA-PLANI.md`). `main` = `083a228` (H-044 dilimi), GitHub'da. Uygulamanın görünen adı bütün ekranlarda **Hi** (kullanıcı kararı 2026-10-24); depo/iç adlar `hiVelzon`, hukuki şirket Velzon Bilişim Teknolojileri Ltd. Şti.
   - Son bitenler: **H-042** (hesap silme/geri alma, Hakkında ve lisanslar, günlük hatırlatma, `docs/HUKUK-SORULARI.md`) ve **H-095** (yeniden onay yok, yalnız bildirim; rıza ve denetim kayıtları 2 yıl, V16; KVKK ve kullanım koşulları taslakları, yer tutuculu). İkisi gerçek backend'e karşı uçtan uca testle doğrulandı (`mobile/integration_test/h042_h095_account_e2e_test.dart`).
   - Akşam: **H-096** (21 Ekim takip incelemesi: geri çekilen reel eski adresle açılmaz, mesaj kalıbı tek cümlede, reel tamamlanması %90 konum + %80 aktif izleme, 'İfadeyi kaydet') bitti; inceleme `docs/URUN-TAKIP-INCELEMESI-2026-10-21.md`. Değişmez sürüm klasörleri H-044'e not edildi.
   - **H-043:** yerel kısım bitti; kalan gerçek telefon kontrolleri (`docs/BETA-KONTROL-LISTESI.md` 2. bölüm).
@@ -540,4 +540,4 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
   - **Bilinen sınır:** Reel dışındaki paketler (bölüm/kitap/dilbilgisi) mobilde sabit `packages/<id>/` yolundan okunur; CDN'de sürümlenmez, sürümleme yalnız reellerde.
   - **Testler:** mobil **1472** (analyze temiz) · backend **164** (Testcontainers) · Android debug + release APK (release imzasız, `apksigner` doğruladı) · iOS release `--no-codesign` (paket plist'inde yerel ağ izni yok, görünen ad **Hi**).
   - **Kalan:** Almanya sunucusu/DNS, Bunny Storage/Pull Zone, Apple App Store Connect kaydı, Google Play hesabı (ücret onayı), mağaza yüklemesi, veri sorumlusu bilgileri, muhasebe. H-092 aşama A ve B hâlâ H-044 tamamlandıktan sonra.
-  - **Commit:** Bu dilim `main`'e gönderildi.
+  - **Commit:** `083a228` ile `origin/main`'de.
