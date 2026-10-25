@@ -1,11 +1,15 @@
 # İş Sırası — hiVelzon
 
-> Son güncelleme: 2026-10-24 · Güncelleyen: Claude
+> Son güncelleme: 2026-10-25 · Güncelleyen: OpenCode ajanı
 
 Bu dosya tek takip noktasıdır. Hangi işin hangi sırada yapıldığını, şu an ne üzerinde çalışıldığını ve neyin bittiğini gösterir. Her işin ayrıntısı kendi `H-<numara>-<başlık>.md` dosyasındadır.
 
+> **Yeni oturum buradan başlasın:** `CLAUDE.md` → bu dosyanın "Nerede kaldık" bölümü → `docs/HANDOFF-2026-10-25.md`.
+> **Sıradaki iş:** H-044'ün dış hesap adımları (Almanya sunucusu/DNS, Bunny, Apple, Google) — hangilerinin hazır olduğu kullanıcıya sorulur.
+> Kod tarafında bekleyen iş **yok**. **H-092 aşama A ve B, H-044 tamamlanmadan başlamaz.** Ücretli üretim veya dış hesap açma ayrı onay ister.
+
 ## Nerede kaldık
-- **Şu an (2026-10-25):** Faz 1 (MVP) uygulaması sürüyor (`docs/UYGULAMA-PLANI.md`). `main` = `083a228` (H-044 dilimi), GitHub'da. Uygulamanın görünen adı bütün ekranlarda **Hi** (kullanıcı kararı 2026-10-24); depo/iç adlar `hiVelzon`, hukuki şirket Velzon Bilişim Teknolojileri Ltd. Şti.
+- **Şu an (2026-10-25):** Faz 1 (MVP) uygulaması sürüyor (`docs/UYGULAMA-PLANI.md`). `main` = `083a228` (H-044 dilimi) ve ardından gelen belge commit'leri, GitHub'da. Uygulamanın görünen adı bütün ekranlarda **Hi** (kullanıcı kararı 2026-10-24); depo/iç adlar `hiVelzon`, hukuki şirket Velzon Bilişim Teknolojileri Ltd. Şti.
   - Son bitenler: **H-042** (hesap silme/geri alma, Hakkında ve lisanslar, günlük hatırlatma, `docs/HUKUK-SORULARI.md`) ve **H-095** (yeniden onay yok, yalnız bildirim; rıza ve denetim kayıtları 2 yıl, V16; KVKK ve kullanım koşulları taslakları, yer tutuculu). İkisi gerçek backend'e karşı uçtan uca testle doğrulandı (`mobile/integration_test/h042_h095_account_e2e_test.dart`).
   - Akşam: **H-096** (21 Ekim takip incelemesi: geri çekilen reel eski adresle açılmaz, mesaj kalıbı tek cümlede, reel tamamlanması %90 konum + %80 aktif izleme, 'İfadeyi kaydet') bitti; inceleme `docs/URUN-TAKIP-INCELEMESI-2026-10-21.md`. Değişmez sürüm klasörleri H-044'e not edildi.
   - **H-043:** yerel kısım bitti; kalan gerçek telefon kontrolleri (`docs/BETA-KONTROL-LISTESI.md` 2. bölüm).

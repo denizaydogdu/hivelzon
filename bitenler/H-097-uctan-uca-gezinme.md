@@ -60,5 +60,5 @@ Yeni test dosyaları ve metin/golden değişiklikleri kendi dalında geri alına
 
 ## Notlar
 - Ücretli üretim yapılmadı; bu işte Higgsfield/ElevenLabs harcaması **0**.
-- Değişiklikler henüz commit edilmedi; kullanıcı onayı bekliyor.
+- Değişiklikler `2d59738` ile `origin/main`'de (2026-10-24).
 - H-092 pilotu değişmedi: aşama A ve B, H-044'ten sonra.

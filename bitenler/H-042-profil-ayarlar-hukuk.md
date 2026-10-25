@@ -29,7 +29,7 @@ Kendi dalında (`h-042-profil-ayarlar-hukuk`) yapılır; `main`'e alınmadan ön
 2026-10-13: Hukukçu sorusu: 13 yaş altının hesapsız, cihazda veriyle kullanımı (KVKK), mağaza aile politikaları ve ebeveyn kapısı gereksinimi.
 2026-10-14: Profil ekranının yeniden tasarımı H-059'a taşındı; bu iş hukuk metinleri, bildirim ayarları ve hesap silme arayüzünün içeriğiyle kalır.
 2026-10-21: **Kullanıcı onayı (plan):** (1) hesap silme/geri alma uçtan uca: oturum kapandıktan sonra da "silme bekliyor + kalıcı silme tarihi" görünür, geri almada yeni kod gerekçesi açıklanır, silme → yeniden giriş → geri alma testi; (2) Profil → "Hakkında ve lisanslar": sürüm, CEFR-J v1.6 zorunlu atfı, Octanove CC BY-SA, py-fsrs MIT, EnglishPractice MIT, yazı tipleri OFL, Flutter lisans sayfası; kullanım şartları ve gizlilik metni Profil'den de açılır (taslak işaretli); (3) günlük hatırlatma (H-013): aç/kapa + saat, günde en fazla 1, izin yalnız açınca, sakin ve spoilersiz metin, veri cihazda; `flutter_local_notifications` + `timezone` eklentisine izin verildi; (4) `docs/HUKUK-SORULARI.md`: hukukçuya tek seferde gidecek soru listesi. Profil'de CEFR seviyesi gösterilmez (K-08 vaat yasağı).
-2026-10-21: **Uygulandı (commit edilmedi, onay bekliyor):**
+2026-10-21: **Uygulandı (`1311987` ile `main`'e girdi):**
 - **(1) Silme / geri alma uçtan uca.** Silme isteğinden sonra cihazda küçük bir işaret kalır: `app_meta` `account.pendingDeletion` = hesap kimliği + kalıcı silme anı; e-posta yok.
   - **Hesap ekranı (oturum kapalı):** "Hesabın silinmek üzere" kartı, tarih ve **Hesabımı geri al**. Profil → Hesap satırı da aynı durumu söyler.
   - **Giriş ekranı:** "Geri almak için yeni bir kod gerekiyor" gerekçesi. Geri alma adımı kodun neden istendiğini de söyler.
