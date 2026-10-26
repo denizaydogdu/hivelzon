@@ -52,11 +52,17 @@ void main() {
       of: find.byKey(const ValueKey('library-view')),
       matching: find.byType(Scrollable),
     );
+    final sections = find.byKey(const ValueKey('story-sections'));
+    final sectionsTop = tester.getTopLeft(sections).dy;
     await tester.scrollUntilVisible(
       find.text('Okuduklarım'),
       200,
       scrollable: list.first,
     );
+    // Bölüm seçici sabit: yalnız liste kayar (kullanıcı geri bildirimi
+    // 2026-10-26).
+    expect(sections, findsOneWidget);
+    expect(tester.getTopLeft(sections).dy, sectionsTop);
     expect(find.text('Okuduklarım'), findsOneWidget);
     // Yarım kitabın kartı yüzdesiyle (2. sayfa / 3 → %33).
     final cont = find.byKey(const ValueKey('shelf-continue'));

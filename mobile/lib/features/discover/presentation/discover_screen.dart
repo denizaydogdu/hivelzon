@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:video_player/video_player.dart';
@@ -119,14 +120,17 @@ class DiscoverScreen extends ConsumerWidget {
       };
     }
     return Scaffold(
-      backgroundColor: AppScrim.playerBackground,
+      backgroundColor: AppPalette.sand,
       body: Semantics(
         label: DiscoverTexts.screenSemantics,
-        child: Column(
-          children: [
-            _DiscoverHeader(chip: chip, title: title),
-            Expanded(child: body),
-          ],
+        child: AnnotatedRegion<SystemUiOverlayStyle>(
+          value: SystemUiOverlayStyle.dark,
+          child: Column(
+            children: [
+              _DiscoverHeader(chip: chip, title: title),
+              Expanded(child: body),
+            ],
+          ),
         ),
       ),
     );
@@ -149,8 +153,11 @@ class _DiscoverHeader extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final level = ref.watch(reelLevelProvider);
     final pad = MediaQuery.paddingOf(context);
-    return ColoredBox(
-      color: AppScrim.playerBackground,
+    return DecoratedBox(
+      decoration: const BoxDecoration(
+        color: AppPalette.sand,
+        border: Border(bottom: BorderSide(color: AppPalette.ink100)),
+      ),
       child: Padding(
         padding: EdgeInsets.fromLTRB(
           AppSpace.s16,
@@ -178,7 +185,7 @@ class _DiscoverHeader extends ConsumerWidget {
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         style: Theme.of(context).textTheme.titleMedium
-                            ?.copyWith(color: AppPalette.white),
+                            ?.copyWith(color: AppPalette.seaBlue),
                       ),
                     ),
                     const SizedBox(width: AppSpace.s8),
@@ -268,8 +275,12 @@ class _LevelChip extends StatelessWidget {
     excludeSemantics: true,
     child: PressScale(
       child: Material(
-        color: AppScrim.chip,
-        borderRadius: const BorderRadius.all(Radius.circular(AppRadius.full)),
+        color: AppPalette.white,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(AppRadius.full)),
+          side: BorderSide(color: AppPalette.ink200),
+        ),
+        clipBehavior: Clip.antiAlias,
         child: InkWell(
           key: const ValueKey('level-chip'),
           borderRadius: const BorderRadius.all(Radius.circular(AppRadius.full)),
@@ -288,16 +299,16 @@ class _LevelChip extends StatelessWidget {
                           : DiscoverTexts.levelChip(level),
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
-                      style: Theme.of(
-                        context,
-                      ).textTheme.labelLarge?.copyWith(color: AppPalette.white),
+                      style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                        color: AppPalette.seaBlue,
+                      ),
                     ),
                   ),
                   if (compact)
                     Icon(
                       Icons.expand_more_rounded,
                       size: 18,
-                      color: AppPalette.white.withValues(alpha: 0.8),
+                      color: AppPalette.seaBlue.withValues(alpha: 0.8),
                     ),
                 ],
               ),
@@ -330,8 +341,14 @@ class _ChipButton extends StatelessWidget {
     excludeSemantics: true,
     child: PressScale(
       child: Material(
-        color: selected ? AppPalette.lighthouseYellow : AppScrim.chip,
-        borderRadius: const BorderRadius.all(Radius.circular(AppRadius.full)),
+        color: selected ? AppPalette.lighthouseYellow : AppPalette.white,
+        shape: RoundedRectangleBorder(
+          borderRadius: const BorderRadius.all(Radius.circular(AppRadius.full)),
+          side: BorderSide(
+            color: selected ? AppPalette.lighthouseYellow : AppPalette.ink200,
+          ),
+        ),
+        clipBehavior: Clip.antiAlias,
         child: InkWell(
           borderRadius: const BorderRadius.all(Radius.circular(AppRadius.full)),
           onTap: onTap,
@@ -344,7 +361,7 @@ class _ChipButton extends StatelessWidget {
                 child: Text(
                   label,
                   style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                    color: selected ? AppPalette.ink : AppPalette.white,
+                    color: selected ? AppPalette.ink : AppPalette.seaBlue,
                   ),
                 ),
               ),

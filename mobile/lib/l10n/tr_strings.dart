@@ -1003,7 +1003,7 @@ abstract final class DiscoverTexts {
   static const quizLabel = 'Kısa soru';
   static String quizFrom(String title) => 'Klip: $title';
   static const quizCorrect = 'Evet, doğru.';
-  static const quizTryAgain = 'Bir daha bakalım.';
+  static const quizTryAgain = 'Yanlış. Bir daha bakalım.';
   static const quizShown = 'Doğru cevap bu.';
   static const dontKnow = 'Bilmiyorum';
   static const next = 'Devam et';
@@ -1112,7 +1112,7 @@ abstract final class DiscoverTexts {
   static const practiceLabel = 'Kısa soru';
   static String practiceFrom(String title) => 'Video: $title';
   static const practiceCorrect = 'Evet, doğru.';
-  static const practiceTryAgain = 'Bir daha bakalım.';
+  static const practiceTryAgain = 'Yanlış. Bir daha bakalım.';
   static const practiceShown = 'Doğru cevap bu.';
   static const practiceSkip = 'Atla, sonraki videoya geç';
   static const practiceSkipSemantics = 'Soruyu atla, sonraki videoya geç';
@@ -2175,6 +2175,7 @@ abstract final class OnboardingTexts {
   static const welcomeTitle = 'Hi\'ye hoş geldin!';
   static const welcomeBody = 'Bir hikâye oyna, İngilizceyi oynarken öğren.';
   static const welcomeNoAccount = 'Hesap gerekmez. Her şey bu telefonda kalır.';
+  static const welcomeHiLine = 'Hazırsan ilk bölümü birlikte açalım.';
   static const welcomeStart = CommonTexts.start;
 
   // Seni tanıyalım
@@ -2211,11 +2212,6 @@ abstract final class OnboardingTexts {
       'Reklam yok',
       'Uygulamada reklam yok; seni başka uygulamalarda izlemiyoruz.',
     ),
-    (
-      'Yapay zekâ',
-      'Hikâye videoları yapay zekâ ile üretilir. Hi de bir yapay zekâ '
-          'yardımcısıdır.',
-    ),
   ];
   static const privacyUnder13 =
       '13 yaşından küçüksen bu sayfayı bir büyüğünle birlikte oku.';
@@ -2239,12 +2235,31 @@ abstract final class OnboardingTexts {
       'için önerimiz: açık. Oynatıcıdan da değiştirebilirsin.';
 
   // Seviye
-  static const levelTitle = 'Seviyeni merak ediyor musun?';
+  static const levelTitle = 'Seviyeni biliyor musun?';
   static const levelBody =
-      'Kısa bir test sana bir başlangıç seviyesi önerir. Süre yok, en fazla '
-      '20 soru. İstediğin an bırakabilirsin.';
-  static const levelGuessHeading = 'Kendi tahminin';
+      'Seviyeni seçersen doğrudan başlarsın. Emin değilsen kısa bir test sana '
+      'bir başlangıç seviyesi önerir; süre yok, istediğin an bırakabilirsin.';
+  static const levelGuessHeading = 'Başlangıç seviyen';
   static const levelGuessUnknown = 'Bilmiyorum';
+  static const levelGuessUnknownBody = 'Kısa bir testle birlikte bulalım.';
+  static String levelGuessTitle(String code) => switch (code) {
+    'A1' => 'Başlangıç',
+    'A2' => 'Temel',
+    'B1' => 'Orta',
+    'B2' => 'Orta üstü',
+    'C1' => 'İleri',
+    _ => code,
+  };
+  static String levelGuessBody(String code) => switch (code) {
+    'A1' => 'Yeni başlıyorum',
+    'A2' => 'Temel cümleleri anlıyorum',
+    'B1' => 'Günlük konuşmayı takip ediyorum',
+    'B2' => 'Akıcı konuşuyorum',
+    'C1' => 'İleri düzey',
+    _ => '',
+  };
+  static String levelStartWith(String code) => '$code ile başla';
+  static const levelTestAnyway = 'Yine de seviyemi ölç';
   static const levelStart = 'Teste başla';
   static const levelSkip = 'Testi atla';
 
@@ -2278,6 +2293,37 @@ abstract final class OnboardingTexts {
       'İstersen sonra Profil\'den hesap açıp ilerlemeni yedekleyebilirsin.';
   static const readyLocalChild = 'Hesap gerekmez; her şey bu telefonda kalır.';
   static const readyStart = 'Hikâyeye başla';
+}
+
+/// Uygulama ilk kez açıldığında bir kez gösterilen kısa tur (2026-10-26).
+/// Suçlamasız, sayaçsız; istenirse hemen atlanır.
+abstract final class TourTexts {
+  static const skip = 'Atla';
+  static const next = 'Devam';
+  static const finish = 'Başla';
+  static String stepLabel(int step, int total) => 'Tur $step / $total';
+
+  static const steps = <({String title, String body})>[
+    (
+      title: 'Merhaba, ben Hi',
+      body:
+          'Yol arkadaşınım. Takıldığında ipucu veririm; istersen hiç açmazsın.',
+    ),
+    (
+      title: 'Bugünün planı',
+      body: 'Ana Sayfa\'da her gün tek bir küçük adım seni bekler.',
+    ),
+    (
+      title: 'Beş sekme',
+      body:
+          'Ana Sayfa, Keşfet, Hikâye, Konuş ve Profil. Hepsine alttaki '
+          'menüden ulaşırsın.',
+    ),
+    (
+      title: 'Hikâye seni bekliyor',
+      body: 'Alex\'in hikâyesi 1. Sezon\'da başlıyor. İyi eğlenceler!',
+    ),
+  ];
 }
 
 /// Bugünün planında Konuş görevi (H-090): ilk 7 gün ve sonrası. Gerekçe

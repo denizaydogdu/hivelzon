@@ -86,11 +86,16 @@ void main() {
       of: key('grammar-view'),
       matching: find.byType(Scrollable),
     );
+    final sections = key('story-sections');
+    final sectionsTop = tester.getTopLeft(sections).dy;
     await tester.scrollUntilVisible(
       find.text('Tamamladıkların'),
       200,
       scrollable: list.first,
     );
+    // Bölüm seçici sabit: yalnız liste kayar (2026-10-26).
+    expect(sections, findsOneWidget);
+    expect(tester.getTopLeft(sections).dy, sectionsTop);
     expect(key('lesson-done-tick'), findsOneWidget);
   });
 

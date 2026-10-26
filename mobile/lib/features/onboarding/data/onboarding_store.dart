@@ -132,6 +132,37 @@ class OnboardingStore {
     return v == null ? null : DateTime.tryParse(v)?.toUtc();
   }
 
+  // ---- ilk tur (2026-10-26)
+
+  static const tourPendingKey = 'tour.pendingAt';
+  static const tourSeenKey = 'tour.seenAt';
+
+  /// Açılış bitince bir kez gösterilecek turu işaretler. Tur daha önce
+  /// görüldüyse yeniden açılmaz.
+  Future<void> startTour() async {
+    await _ready;
+    if (await _meta(tourSeenKey) != null) return;
+    await _setMeta(tourPendingKey, _clock().toIso8601String());
+  }
+
+  /// Tur bekliyor mu (uygulama açıldıktan sonra yalnızca bir kez)?
+  Future<bool> tourPending() async {
+    await _ready;
+    if (await _meta(tourPendingKey) == null) return false;
+    return await _meta(tourSeenKey) == null;
+  }
+
+  /// Tur tamamlandı ya da atlandı: bir daha gösterilmez.
+  Future<void> markTourSeen() async {
+    await _ready;
+    await _db.transaction(() async {
+      await (_db.delete(
+        _db.appMeta,
+      )..where((t) => t.key.equals(tourPendingKey))).go();
+      await _setMeta(tourSeenKey, _clock().toIso8601String());
+    });
+  }
+
   Future<String?> suggestedLevel() async {
     await _ready;
     return _meta(suggestedLevelKey);

@@ -1,6 +1,6 @@
 # İş Sırası — hiVelzon
 
-> Son güncelleme: 2026-10-25 · Güncelleyen: OpenCode ajanı
+> Son güncelleme: 2026-10-26 · Güncelleyen: OpenCode ajanı
 
 Bu dosya tek takip noktasıdır. Hangi işin hangi sırada yapıldığını, şu an ne üzerinde çalışıldığını ve neyin bittiğini gösterir. Her işin ayrıntısı kendi `H-<numara>-<başlık>.md` dosyasındadır.
 
@@ -16,11 +16,12 @@ Bu dosya tek takip noktasıdır. Hangi işin hangi sırada yapıldığını, şu
   - **H-097:** Uçtan uca simülatör gezinmesi bitti: 54+ ekran görüntüsü, ayrı açılış akışı (karşılama → test → hazır), Keşfet'in Bugün/Hikâye klipleri/Sinema/Spor/Kitap akışları ve oynatıcı/okuyucu/panel yolları denendi. Backend kapalıyken görülen Keşfet hataları backend açılınca kayboldu; uygulama hatası değildi. Ayrıntı: `bitenler/H-097-uctan-uca-gezinme.md`.
   - **H-094:** Keşfet "İlgi alanların" paneli bitti; 18 reelin ön değerlendirmesi ve onaylanan kalite düzeltmeleri tamamlandı (`docs/H-094-REEL-ON-DEGERLENDIRME-2026-10-23.md`). Değişen 7 reel v2 olarak yayımlandı; iş yalnız H-092 pilotu ve insan değerlendirmesi için açık.
   - **H-044 (2026-10-25):** Hesap gerektirmeyen yayın güvenlikleri bitti: release HTTPS adres kapısı, Android upload-key (debug imza kaldırıldı), iOS mağaza plist'i (yerel ağ izni yok), backend `prod` kapısı + ters vekil istemci IP'si, reellerde sürümlü `v<N>` CDN yolu, mutlak HTTPS/HLS medya adresi. Rehber ve kontrol listesi: `docs/H-044-YAYIN-HAZIRLIK.md`. Kalan: Almanya sunucusu/DNS, Bunny, Apple/Google hesapları ve mağaza yüklemesi — kullanıcıya bağlı.
+  - **H-098 (2026-10-26):** Canlı simülatör geri bildirimleri tamamlandı: yeni Higgsfield karşılama görseli, sadeleştirilmiş bilgilendirme, testsiz seviye başlangıcı, bir kez açılan Hi turu, Keşfet başlığı/yanlış geri bildirimi ve sabit Kitaplık/Dilbilgisi seçicisi. Kod incelemesi sonrası tur katmanı ve hata durumları sağlamlaştırıldı.
   - SyncController ilk eşitleme hatası düzeltildi. G-A1-13 açıklaması düzeltildi ve yeniden seslendirildi.
   - Hukukçu cevapları `docs/HUKUK-SORULARI.md` → "Cevaplar": veli onayı yok; İYS ve VERBİS kaydı gerekmez; sunucu Almanya; cihazda konuşma tanıma KVKK kapsamında değil; kayıtlar 2 yıl; 30 gün silme uygun; pilot onamı uygun. Veri sorumlusu bilgileri ayrı fazda; muhasebe soruları H-044'te.
-- **Testler (son koşu):** mobil 1472 (`flutter analyze` temiz) · backend 164 · pytest 383 · reel lint 18/0/0 · grammar lint 71 ders 0 hata · book lint 30 kitap 0 hata.
+- **Testler (son koşu):** mobil 1474 (`flutter analyze` temiz) · backend 164 · pytest 383 · reel lint 18/0/0 · grammar lint 71 ders 0 hata · book lint 30 kitap 0 hata.
 - **Yerel ortam (2026-10-25):** Docker PostgreSQL 5435, backend `127.0.0.1:8080` ve içerik sunucusu `127.0.0.1:8787` açık. H-097'de kullanılan "hiVelzon iPhone 17" simülatörü artık kurulu değil; arayüz denemesi gerekirse yeniden oluşturulur. Sunucu, Bunny Stream, mağaza ve geliştirici hesapları en sonda (H-044).
-- **İçerik:** Sezon 1'in 12 bölümü üretildi (haritada 12/12; editör onayı H-028 bekliyor). Dilbilgisi 71 dersin hepsi yazıldı ve Türkçe sesli; İngilizce örnek sesi A1 16/16, A2 7 tam + 1 kısmen, B1–C2 bekliyor. Kitaplık: 30 kitap yazıldı ve tam resimli; sesli kitap 5/30. Keşfet: 18 sesli reel yayında; 7 kalite düzeltmesi v2. Higgsfield hesap bakiyesi **47,31** (hesap genelinde başka işlemler de var).
+- **İçerik:** Sezon 1'in 12 bölümü üretildi (haritada 12/12; editör onayı H-028 bekliyor). Dilbilgisi 71 dersin hepsi yazıldı ve Türkçe sesli; İngilizce örnek sesi A1 16/16, A2 7 tam + 1 kısmen, B1–C2 bekliyor. Kitaplık: 30 kitap yazıldı ve tam resimli; sesli kitap 5/30. Keşfet: 18 sesli reel yayında; 7 kalite düzeltmesi v2. Higgsfield hesap bakiyesi **483,72** (2026-10-26; H-098 karşılama görseli sonrası).
 - **Sıradaki adım:** Açık işlerin kalanı kullanıcıya ya da dış taraflara bağlı (aşağıda). **H-092 tamamı en sonda** (kullanıcı kararı 2026-10-23: şu an test telefonu yok; aşama A da ertelendi): aşama A (2–3 kişilik gözlemli test; iPhone + Mac, yerel ağ) ve aşama B (evde 7–14 gün, H-044 ile) birlikte **H-044'ten sonra** yapılır. Pilot kiti ve gözlem föyü hazır (`docs/H-092-PILOT-KITI.md`, `docs/H-092-GOZLEM-FOYU-2026-10-23.md`). Pilot sonucu görülmeden büyük yeni içerik dalgası başlamaz.
 - **Kullanıcıya ya da dış taraflara bağlı olanlar** (kodlamayı durdurmuyor):
   - Simülatörde kullanıcı denemesi: H-085 B5–B12, H-086 "Sayfanın Türkçesi", yeni ekranlar (H-042 Hakkında, hatırlatma, İlgi alanların).
@@ -44,7 +45,7 @@ Bu dosya tek takip noktasıdır. Hangi işin hangi sırada yapıldığını, şu
   - H dosyasının `Durum` satırı güncellenir;
   - **Günlük** bölümüne bir satır eklenir.
 - **Biten işler:** "Biten işler" tablosuna doğrulama kanıtıyla birlikte yazılır.
-- **Numaralar:** Tek sayaçla verilir. Sıradaki boş numara: **H-098**.
+- **Numaralar:** Tek sayaçla verilir. Sıradaki boş numara: **H-099**.
 
 **Durum simgeleri:**
 - ⛔ Kullanıcı kararı bekliyor
@@ -131,6 +132,7 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 | 1.10' | H-095 | Hukukçu cevaplarının uygulanması (yeniden onay yok, 2 yıl saklama, KVKK ve koşullar metni) | Yüksek | H-042 | ✅ |
 | İ7 | H-096 | 21 Ekim takip incelemesi düzeltmeleri (reel kataloğu, mesaj kanıtı, tamamlanma, etiket) | Yüksek | H-094, H-090 | ✅ |
 | İ8 | H-097 | Uçtan uca simülatör gezinmesi ve görünen adın Hi olması | Yüksek | H-094, H-096 | ✅ |
+| İ9 | H-098 | Canlı arayüz geri bildirimi düzeltmeleri | Yüksek | H-039, H-040, H-064, H-067, H-078 | ✅ |
 | — | H-045 | Arayüz tasarım yönü (6 ekran taslağı, 6 kr) | Orta | H-033 | ✅ |
 | 1.12 | H-044 | Dış hesaplar, barındırma ve mağaza (en son) | Orta | H-043 | 🔄 |
 
@@ -215,6 +217,7 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 ## Biten işler
 | İş | Başlık | Bitiş | Doğrulama |
 |---|---|---|---|
+| H-098 | Canlı arayüz geri bildirimi düzeltmeleri | 2026-10-26 | Yeni Higgsfield karşılama görseli; açılış/seviye/tur/Keşfet/sabit bölüm seçicisi; kod incelemesi; mobil 1474/1474, analyze temiz, simülatör doğrulaması |
 | H-097 | Uçtan uca simülatör gezinmesi ve görünen ad | 2026-10-24 | 54+ ekran; ayrı açılış testi; Keşfet kategori akışları backend açıkken hatasız; mobil 1454 test, `flutter analyze` temiz; görünen ad Hi |
 | H-096 | 21 Ekim takip incelemesi düzeltmeleri | 2026-10-21 | Geri çekilen reel eski adresle açılmaz + katalog yenileme (≥1 dk), mesaj kalıbı tek cümlede ve kanıt yalnız eşleşen hedefe, tamamlanma %90 konum + %80 aktif izleme, 'İfadeyi kaydet'; her madde önce düşen regresyon testiyle; mobil 1454, pytest 381 |
 | H-095 | Hukukçu cevaplarının uygulanması | 2026-10-21 | Yeniden onay yok (bildirim kartı), rıza ve denetim kayıtları 2 yıl (V16, `RecordRetentionJob`), KVKK ve koşullar taslakları (yer tutuculu); mobil 1427, backend 155; gerçek backend'e karşı uçtan uca test |

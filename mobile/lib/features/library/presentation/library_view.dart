@@ -39,10 +39,7 @@ Future<void> openBook(
 /// raflar (Okumaya devam et · Senin seviyen · öteki seviyeler ·
 /// Okuduklarım), sakin boş / yükleniyor / hata durumları.
 class LibraryView extends ConsumerWidget {
-  const LibraryView({super.key, this.header});
-
-  /// Sayfanın üst kısmı (başlık ve bölüm seçici); kaydırmayla birlikte gider.
-  final Widget? header;
+  const LibraryView({super.key});
 
   static const errorImage = AssetImage(
     'assets/illustrations/baglanti-yok.webp',
@@ -57,7 +54,6 @@ class LibraryView extends ConsumerWidget {
     final bottom =
         MediaQuery.paddingOf(context).bottom + HiBubbleInset.of(context);
     final children = <Widget>[
-      ?header,
       // Yenilenirken eski veri kalır (iskelete dönüp zıplamaz).
       switch (data) {
         AsyncValue(:final value?) when value.books.isEmpty => const Padding(

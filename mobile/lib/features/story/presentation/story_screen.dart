@@ -89,14 +89,42 @@ class _StoryScreenState extends ConsumerState<StoryScreen> {
       section: _section,
       onChanged: (s) => setState(() => _section = s),
     );
+    // Kitaplık ve Dilbilgisi'nde bölüm seçici sabit kalır; yalnız içerik
+    // kayar (kullanıcı geri bildirimi 2026-10-26). Macera haritası tam ekran
+    // kalsın diye orada başlık haritayla birlikte kayar.
+    final fixedHeader = Padding(
+      padding: const EdgeInsets.fromLTRB(
+        AppSpace.page,
+        AppSpace.s8,
+        AppSpace.page,
+        AppSpace.s8,
+      ),
+      child: header,
+    );
     if (_section == StorySection.library) {
       return Scaffold(
-        body: SafeArea(bottom: false, child: LibraryView(header: header)),
+        body: SafeArea(
+          bottom: false,
+          child: Column(
+            children: [
+              fixedHeader,
+              const Expanded(child: LibraryView()),
+            ],
+          ),
+        ),
       );
     }
     if (_section == StorySection.grammar) {
       return Scaffold(
-        body: SafeArea(bottom: false, child: GrammarView(header: header)),
+        body: SafeArea(
+          bottom: false,
+          child: Column(
+            children: [
+              fixedHeader,
+              const Expanded(child: GrammarView()),
+            ],
+          ),
+        ),
       );
     }
     final top = Padding(

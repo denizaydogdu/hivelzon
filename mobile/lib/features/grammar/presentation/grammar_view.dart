@@ -18,10 +18,7 @@ import '../../hi/presentation/hi_bubble.dart';
 /// "Tamamladıkların"), sakin boş / yükleniyor / hata durumları. Kilit yok:
 /// her ders her zaman açık.
 class GrammarView extends ConsumerWidget {
-  const GrammarView({super.key, this.header});
-
-  /// Sayfanın üst kısmı (başlık ve bölüm seçici); kaydırmayla birlikte gider.
-  final Widget? header;
+  const GrammarView({super.key});
 
   static const errorImage = AssetImage(
     'assets/illustrations/baglanti-yok.webp',
@@ -42,7 +39,6 @@ class GrammarView extends ConsumerWidget {
         AppSpace.s32 + bottom,
       ),
       children: [
-        ?header,
         // Yenilenirken eski veri kalır (iskelete dönüp zıplamaz).
         switch (data) {
           AsyncValue(:final value?) when value.lessons.isEmpty => const Padding(

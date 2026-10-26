@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hivelzon/app/app.dart';
+import 'package:hivelzon/app/theme.dart';
 import 'package:hivelzon/features/account/application/account_providers.dart';
 import 'package:hivelzon/features/onboarding/application/onboarding_providers.dart';
 import 'package:hivelzon/features/onboarding/data/onboarding_store.dart';
+import 'package:hivelzon/features/onboarding/presentation/app_tour.dart';
 import 'package:hivelzon/features/player/data/subtitle_preference_store.dart';
 import 'package:hivelzon/features/story/data/season_intro_repository.dart';
 import 'package:hivelzon/l10n/tr_strings.dart';
@@ -15,6 +17,7 @@ import 'package:hivelzon/shared/storage/app_database.dart';
 import 'package:hivelzon/shared/storage/storage_providers.dart';
 import 'package:video_player_platform_interface/video_player_platform_interface.dart';
 
+import '../../support/app_fonts.dart';
 import '../../support/fake_api_server.dart';
 import '../../support/fake_content_source.dart';
 import '../../support/fake_video_platform.dart';
@@ -132,6 +135,8 @@ void main() {
     }
     await tapKey(tester, 'onboarding-about-next');
     expect(step('privacy'), findsOneWidget);
+    // Hukukçu kararı (2026-10-26): "Yapay zekâ" maddesi bilgilendirmede yok.
+    expect(find.text('Yapay zekâ'), findsNothing);
     // 13 altıysa "bir büyüğünle birlikte oku" notu.
     expect(
       find.byKey(const ValueKey('onboarding-under13-note')),
@@ -169,6 +174,10 @@ void main() {
     await tapKey(tester, 'onboarding-finish');
     expect(find.byType(NavigationBar), findsOneWidget);
     expect(find.text('Merhaba Ece!'), findsOneWidget);
+    // Uygulama açıldıktan sonra bir kez: Hi'nin kısa turu.
+    expect(find.byKey(const ValueKey('tour-overlay')), findsOneWidget);
+    await tapKey(tester, 'tour-skip');
+    expect(find.byKey(const ValueKey('tour-overlay')), findsNothing);
 
     // Kayıtlar yalnızca cihazda: yaş eşikleri (doğum yılı değil), ad,
     // altyazı, bitiş.
@@ -196,10 +205,11 @@ void main() {
     expect(find.text(AccountTexts.rowValueBlocked), findsOneWidget);
     await unmount(tester);
 
-    // Yeniden açılış: doğrudan sekmeler.
+    // Yeniden açılış: doğrudan sekmeler; tur bir daha gösterilmez.
     await pumpApp(tester);
     expect(step('welcome'), findsNothing);
     expect(find.byType(NavigationBar), findsOneWidget);
+    expect(find.byKey(const ValueKey('tour-overlay')), findsNothing);
     await unmount(tester);
   });
 
@@ -297,7 +307,10 @@ void main() {
     await pumpApp(tester);
     await toLevel(tester, birthYear: thisYear - 30);
     await tapKey(tester, 'onboarding-guess-B1');
-    await tapKey(tester, 'onboarding-test-start');
+    // Seviyeyi bilen kullanıcı testi görmez; testi yine de açmak isterse
+    // ikincil eylemle açabilir.
+    expect(find.byKey(const ValueKey('onboarding-test-start')), findsNothing);
+    await tapKey(tester, 'onboarding-test-anyway');
     while (step('test').evaluate().isNotEmpty) {
       await tapKey(tester, 'placement-dont-know');
     }
@@ -310,6 +323,18 @@ void main() {
       findsOneWidget,
     );
     expect(find.text(OnboardingTexts.resultBody('A2')), findsOneWidget);
+    await unmount(tester);
+  });
+
+  testWidgets('seviyesini seçen kullanıcı testi görmeden hazır adımına geçer '
+      've seviye öneri olarak yazılır', (tester) async {
+    await pumpApp(tester);
+    await toLevel(tester, birthYear: thisYear - 25);
+    await tapKey(tester, 'onboarding-guess-A1');
+    expect(find.text(OnboardingTexts.levelStartWith('A1')), findsOneWidget);
+    await tapKey(tester, 'onboarding-level-start');
+    expect(step('ready'), findsOneWidget);
+    expect(await meta(tester, OnboardingStore.suggestedLevelKey), 'A1');
     await unmount(tester);
   });
 
@@ -446,6 +471,56 @@ void main() {
       await pumpApp(tester, reduceMotion: false);
       await walk(tester, (_) async {});
       await unmount(tester);
+    });
+
+    testWidgets('tur: küçük ekran ve 1,3× metinde taşma yok; perde alttaki '
+        'düğmeyi kapatır; dört adım bitince bir kez kapanır', (tester) async {
+      await loadAppFonts();
+      tester.view.physicalSize = const Size(320 * 3, 568 * 3);
+      tester.view.devicePixelRatio = 3;
+      addTearDown(tester.view.reset);
+      tester.platformDispatcher.textScaleFactorTestValue = 1.3;
+      addTearDown(tester.platformDispatcher.clearTextScaleFactorTestValue);
+      tester.platformDispatcher.accessibilityFeaturesTestValue =
+          const FakeAccessibilityFeatures(disableAnimations: true);
+      addTearDown(
+        tester.platformDispatcher.clearAccessibilityFeaturesTestValue,
+      );
+      var underlying = 0;
+      var done = 0;
+      await tester.pumpWidget(
+        MaterialApp(
+          theme: AppTheme.light(),
+          home: Scaffold(
+            body: Stack(
+              children: [
+                TextButton(
+                  onPressed: () => underlying++,
+                  child: const Text('alttaki'),
+                ),
+                AppTourOverlay(onDone: () async => done++),
+              ],
+            ),
+          ),
+        ),
+      );
+      await tester.pumpAndSettle();
+      expect(tester.takeException(), isNull);
+      // Perde, alttaki sekmeye dokunmayı engeller.
+      await tester.tapAt(const Offset(8, 8));
+      await tester.pump();
+      expect(underlying, 0);
+      for (var i = 0; i < 4; i++) {
+        expect(
+          find.byKey(ValueKey('tour-step-$i')),
+          findsOneWidget,
+          reason: 'adım $i',
+        );
+        await tester.tap(find.byKey(const ValueKey('tour-next')));
+        await tester.pumpAndSettle();
+        expect(tester.takeException(), isNull, reason: 'adım $i');
+      }
+      expect(done, 1);
     });
   });
 }

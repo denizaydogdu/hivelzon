@@ -1,5 +1,6 @@
 // H-039 açılış golden'ları: karşılama, doğum yılı ve ad, bilgilendirme,
-// seviye, soru, sonuç ve hazır adımları (390 × 844, gömülü yazı tipleri).
+// seviye, soru, sonuç, hazır adımları ve açılış sonrası bir kez gösterilen
+// tur (390 × 844, gömülü yazı tipleri).
 //
 //   cd mobile && flutter test --update-goldens test/goldens
 import 'package:flutter/material.dart';
@@ -123,6 +124,14 @@ void main() {
     await shot('result', 'sonuc');
     await tapKey('onboarding-result-next');
     await shot('ready', 'hazir');
+
+    // Kapanıştan sonra bir kez açılan tur (2026-10-26).
+    await tapKey('onboarding-finish');
+    await tester.pumpAndSettle();
+    await expectLater(
+      find.byKey(const ValueKey('tour-overlay')),
+      matchesGoldenFile('images/h039_tur.png'),
+    );
 
     await tester.pumpWidget(const SizedBox());
     await tester.pump(const Duration(seconds: 1));

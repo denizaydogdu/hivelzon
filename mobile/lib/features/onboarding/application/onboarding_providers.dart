@@ -73,6 +73,11 @@ final onboardingGateProvider =
       OnboardingGateNotifier.new,
     );
 
+/// Uygulama açıldıktan sonra bir kez gösterilen kısa tur (2026-10-26).
+final tourPendingProvider = FutureProvider<bool>(
+  (ref) => ref.watch(onboardingStoreProvider).tourPending(),
+);
+
 /// Yerleştirme testi soru havuzu (TASLAK, H-028 onayı bekliyor). Uygulama
 /// içinde gelir; ağ yok. Testlerde geçersiz kılınabilir.
 final placementBankProvider = FutureProvider<PlacementBank>((ref) async {

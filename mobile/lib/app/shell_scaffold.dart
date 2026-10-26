@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../features/hi/presentation/hi_bubble.dart';
+import '../features/onboarding/presentation/app_tour.dart';
 import '../l10n/tr_strings.dart';
 import 'router.dart';
 import 'theme.dart';
@@ -23,50 +24,52 @@ class ShellScaffold extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bubble = hiBubbleVisibleFor(location);
-    return Scaffold(
-      body: Stack(
-        children: [
-          // H-064 (balon katmanı): balon içeriğin üstünde yüzer; sayfaların
-          // alt güvenli alanı büyümez, içerik balonun altından kayar.
-          // Kaydırılan listeler payı yalnızca son dolgu olarak ekler
-          // ([HiBubbleInset]). Keşfet tam ekran video: alt denetimler
-          // (Kaydet / Anlam / Tam hikâye) balonun altında kalmasın diye
-          // orada alt güvenli alan eskisi gibi balon kadar büyür (H-055).
-          Positioned.fill(
-            child: HiBubbleInset(
-              visible: bubble,
-              child: Builder(
-                builder: (context) {
-                  if (!bubble || location != AppRoutes.discover) {
-                    return navigationShell;
-                  }
-                  final mq = MediaQuery.of(context);
-                  return MediaQuery(
-                    data: mq.copyWith(
-                      padding: mq.padding.copyWith(
-                        bottom: mq.padding.bottom + HiBubble.clearance,
+    return AppTourGate(
+      child: Scaffold(
+        body: Stack(
+          children: [
+            // H-064 (balon katmanı): balon içeriğin üstünde yüzer; sayfaların
+            // alt güvenli alanı büyümez, içerik balonun altından kayar.
+            // Kaydırılan listeler payı yalnızca son dolgu olarak ekler
+            // ([HiBubbleInset]). Keşfet tam ekran video: alt denetimler
+            // (Kaydet / Anlam / Tam hikâye) balonun altında kalmasın diye
+            // orada alt güvenli alan eskisi gibi balon kadar büyür (H-055).
+            Positioned.fill(
+              child: HiBubbleInset(
+                visible: bubble,
+                child: Builder(
+                  builder: (context) {
+                    if (!bubble || location != AppRoutes.discover) {
+                      return navigationShell;
+                    }
+                    final mq = MediaQuery.of(context);
+                    return MediaQuery(
+                      data: mq.copyWith(
+                        padding: mq.padding.copyWith(
+                          bottom: mq.padding.bottom + HiBubble.clearance,
+                        ),
                       ),
-                    ),
-                    child: navigationShell,
-                  );
-                },
+                      child: navigationShell,
+                    );
+                  },
+                ),
               ),
             ),
-          ),
-          if (bubble)
-            const Positioned(
-              right: AppSpacing.sm,
-              bottom: AppSpacing.sm,
-              child: SafeArea(top: false, child: HiBubble()),
-            ),
-        ],
-      ),
-      // H-064: dar ekranda büyük yazıda "Ana Sayfa" iki satıra bölünmesin;
-      // etiket ölçeği en geniş etiketin tek satıra sığacağı değerde
-      // sınırlanır (ikonlar değişmez).
-      bottomNavigationBar: MediaQuery.withClampedTextScaling(
-        maxScaleFactor: _navLabelScale(context),
-        child: _navigationBar(),
+            if (bubble)
+              const Positioned(
+                right: AppSpacing.sm,
+                bottom: AppSpacing.sm,
+                child: SafeArea(top: false, child: HiBubble()),
+              ),
+          ],
+        ),
+        // H-064: dar ekranda büyük yazıda "Ana Sayfa" iki satıra bölünmesin;
+        // etiket ölçeği en geniş etiketin tek satıra sığacağı değerde
+        // sınırlanır (ikonlar değişmez).
+        bottomNavigationBar: MediaQuery.withClampedTextScaling(
+          maxScaleFactor: _navLabelScale(context),
+          child: _navigationBar(),
+        ),
       ),
     );
   }

@@ -203,7 +203,7 @@ void main() {
 
       // Yanlış seçenek (Kitap güzel mi? → 1. seçenek doğru; 3. seçenek yanlış).
       await _tap(tester, h, 'practice-opt-2');
-      expect(find.text('Bir daha bakalım.'), findsOneWidget);
+      expect(find.text('Yanlış. Bir daha bakalım.'), findsOneWidget);
       expect(h.feedState(tester).index, 1);
 
       // Atlanabilir: yanlış cevaptan sonra da "Atla" görünür.

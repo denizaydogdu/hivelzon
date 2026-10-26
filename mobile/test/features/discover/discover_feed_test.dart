@@ -356,26 +356,27 @@ void main() {
       return h;
     }
 
-    testWidgets('yanlış: "Bir daha bakalım.", doğru: açıklama ve "Devam et"', (
-      tester,
-    ) async {
-      final h = await toQuiz(tester);
-      // S1-K04: "Nice to meet you." → 0 doğru.
-      await _tap(tester, h, 'quiz-opt-1');
-      expect(find.text('Bir daha bakalım.'), findsOneWidget);
-      expect(_key('quiz-next'), findsNothing);
-      await _tap(tester, h, 'quiz-opt-0');
-      expect(find.text('Evet, doğru.'), findsOneWidget);
-      expect(_key('quiz-explain'), findsOneWidget);
-      await tester.tap(_key('quiz-next'));
-      await tester.pump(const Duration(milliseconds: 400));
-      await h.settle(tester);
-      expect(
-        h.feedState(tester).feed[h.feedState(tester).index],
-        isA<ClipEntry>(),
-      );
-      await h.unmount(tester);
-    });
+    testWidgets(
+      'yanlış: "Yanlış. Bir daha bakalım.", doğru: açıklama ve "Devam et"',
+      (tester) async {
+        final h = await toQuiz(tester);
+        // S1-K04: "Nice to meet you." → 0 doğru.
+        await _tap(tester, h, 'quiz-opt-1');
+        expect(find.text('Yanlış. Bir daha bakalım.'), findsOneWidget);
+        expect(_key('quiz-next'), findsNothing);
+        await _tap(tester, h, 'quiz-opt-0');
+        expect(find.text('Evet, doğru.'), findsOneWidget);
+        expect(_key('quiz-explain'), findsOneWidget);
+        await tester.tap(_key('quiz-next'));
+        await tester.pump(const Duration(milliseconds: 400));
+        await h.settle(tester);
+        expect(
+          h.feedState(tester).feed[h.feedState(tester).index],
+          isA<ClipEntry>(),
+        );
+        await h.unmount(tester);
+      },
+    );
 
     testWidgets(
       '"Bilmiyorum" doğru cevabı gösterir; hareket azaltılınca anında geçer',

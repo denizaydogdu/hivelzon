@@ -118,6 +118,8 @@ class _QuizCardState extends State<QuizCard> {
               text: o.text,
               state: _done && i == correct
                   ? _OptionState.correct
+                  : wrongLast && i == _tried.last
+                  ? _OptionState.wrong
                   : _tried.contains(i)
                   ? _OptionState.tried
                   : _OptionState.idle,
@@ -133,7 +135,11 @@ class _QuizCardState extends State<QuizCard> {
                 feedback,
                 key: const ValueKey('quiz-feedback'),
                 style: t.titleMedium?.copyWith(
-                  color: _done ? AppPalette.success : AppPalette.ink700,
+                  color: _done
+                      ? AppPalette.success
+                      : wrongLast
+                      ? AppPalette.danger
+                      : AppPalette.ink700,
                 ),
               ),
             ),
@@ -167,7 +173,7 @@ class _QuizCardState extends State<QuizCard> {
   }
 }
 
-enum _OptionState { idle, tried, correct }
+enum _OptionState { idle, tried, wrong, correct }
 
 /// Video sonundaki mini soru (H-094, plan §7): **isteğe bağlı ve atlanabilir**;
 /// yanlış cevap ilerlemeyi engellemez, puan ve süre yok (K-15). Günlük sette
@@ -261,6 +267,8 @@ class _PracticeCardState extends State<PracticeCard> {
               text: o.text,
               state: _done && i == correct
                   ? _OptionState.correct
+                  : wrongLast && i == _tried.last
+                  ? _OptionState.wrong
                   : _tried.contains(i)
                   ? _OptionState.tried
                   : _OptionState.idle,
@@ -276,7 +284,11 @@ class _PracticeCardState extends State<PracticeCard> {
                 feedback,
                 key: const ValueKey('practice-feedback'),
                 style: t.titleMedium?.copyWith(
-                  color: _done ? AppPalette.success : AppPalette.ink700,
+                  color: _done
+                      ? AppPalette.success
+                      : wrongLast
+                      ? AppPalette.danger
+                      : AppPalette.ink700,
                 ),
               ),
             ),
@@ -349,6 +361,12 @@ class _OptionButton extends StatelessWidget {
         AppPalette.ink500,
         AppPalette.sand300,
         null,
+      ),
+      _OptionState.wrong => (
+        AppPalette.dangerSurface,
+        AppPalette.danger,
+        AppPalette.danger,
+        Icons.close_rounded,
       ),
       _OptionState.idle => (
         AppPalette.white,

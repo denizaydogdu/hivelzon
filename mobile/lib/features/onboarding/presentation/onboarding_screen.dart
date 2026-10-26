@@ -15,6 +15,7 @@ import '../../notebook/application/notebook_providers.dart';
 import '../../notebook/domain/review_policy.dart';
 import '../../player/application/player_session.dart' show SubtitleMode;
 import '../../player/data/subtitle_preference_store.dart';
+import '../../player/presentation/widgets/hi_avatar.dart';
 import '../../profile/application/profile_providers.dart';
 import '../../profile/data/user_profile_store.dart';
 import '../application/onboarding_providers.dart';
@@ -55,7 +56,9 @@ class OnboardingScreen extends ConsumerStatefulWidget {
   final DateTime Function()? clock;
 
   /// Karşılama illüstrasyonu (H-058 I06; görselde yazı yok).
-  static const welcomeImage = AssetImage('assets/illustrations/hosgeldin.webp');
+  static const welcomeImage = AssetImage(
+    'assets/illustrations/hosgeldin-higgsfield.webp',
+  );
 
   @override
   ConsumerState<OnboardingScreen> createState() => _OnboardingScreenState();
@@ -246,6 +249,15 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
   Future<void> _finish() async {
     if (_busy) return;
     setState(() => _busy = true);
+    // Uygulama açıldıktan sonra bir kez: Hi'nin kısa tanıtım turu
+    // (2026-10-26). Yazılamazsa akış durmaz.
+    try {
+      await ref.read(onboardingStoreProvider).startTour();
+    } on Object catch (e) {
+      debugPrint('[H039] tur işareti yazılamadı: $e');
+    }
+    // İskelet turu yeniden okusun (önbellekte false kalmış olabilir).
+    ref.invalidate(tourPendingProvider);
     await ref.read(onboardingGateProvider.notifier).complete();
     if (!mounted) return;
     final next = widget.next;
@@ -305,6 +317,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
     Widget? header,
     bool showBack = true,
     Widget? trailing,
+    Widget? backdrop,
   }) {
     final body = Column(
       children: [
@@ -373,9 +386,16 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
     );
     return Scaffold(
       key: ValueKey('onboarding-${_step.name}'),
+      backgroundColor: backdrop == null ? null : AppPalette.sand50,
       // Başlık illüstrasyonu durum çubuğunun altına uzanır; kaydırınca
       // metin saatin altına girmesin (H-064 durum çubuğu perdesi).
-      body: header == null ? body : StatusBarScrim(child: body),
+      body: header == null
+          ? body
+          : StatusBarScrim(
+              child: backdrop == null
+                  ? body
+                  : Stack(fit: StackFit.expand, children: [backdrop, body]),
+            ),
     );
   }
 
@@ -436,6 +456,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
     final topInset = MediaQuery.paddingOf(context).top;
     return _page(
       showBack: false,
+      backdrop: const _WelcomeBackdrop(),
       header: ShapedHeader(
         image: OnboardingScreen.welcomeImage,
         height: 260 + topInset,
@@ -463,6 +484,8 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
           icon: Icons.phone_iphone_rounded,
           title: OnboardingTexts.welcomeNoAccount,
         ),
+        const SizedBox(height: AppSpace.s16),
+        const _HiWelcomeCard(),
       ],
       actions: [
         _primary(
@@ -546,10 +569,13 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
     Icons.phone_iphone_rounded,
     Icons.mic_off_outlined,
     Icons.block_rounded,
-    Icons.auto_awesome_outlined,
   ];
 
   Widget _privacy(BuildContext context) {
+    assert(
+      _privacyIcons.length == OnboardingTexts.privacyPoints.length,
+      'Her gizlilik maddesinin bir simgesi olmalı.',
+    );
     return _page(
       children: [
         _title(
@@ -675,14 +701,124 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
 
   // ---- seviye
 
+  /// Kendi seviyesini seçen kullanıcı testi görmez (kullanıcı geri bildirimi
+  /// 2026-10-26): seçim doğrudan öneri olarak yazılır, "Hazır" adımına
+  /// geçilir. Test yalnızca "Bilmiyorum" seçiliyken ya da açıkça istenirse.
+  Future<void> _useGuess() async {
+    final guess = _guess;
+    if (guess == null || _busy) return;
+    setState(() => _busy = true);
+    try {
+      await ref.read(onboardingStoreProvider).setSuggestedLevel(guess.code);
+    } on Object catch (e) {
+      debugPrint('[H039] seviye tahmini yazılamadı: $e');
+    }
+    if (!mounted) return;
+    setState(() => _busy = false);
+    _go(OnboardingStep.ready);
+  }
+
+  Widget _levelOption({
+    required String? level,
+    required String title,
+    required String body,
+    required IconData icon,
+  }) {
+    final selected = _guess?.code == level;
+    final theme = Theme.of(context);
+    return Semantics(
+      button: true,
+      selected: selected,
+      child: PressScale(
+        child: Material(
+          color: selected ? AppPalette.seaBlue50 : AppPalette.white,
+          shape: RoundedRectangleBorder(
+            borderRadius: AppRadius.mdAll,
+            side: BorderSide(
+              color: selected ? AppPalette.seaBlue : AppPalette.ink200,
+              width: selected ? 2 : 1,
+            ),
+          ),
+          clipBehavior: Clip.antiAlias,
+          child: InkWell(
+            key: ValueKey('onboarding-guess-${level ?? 'unknown'}'),
+            onTap: _busy
+                ? null
+                : () => setState(() {
+                    _guess = level == null
+                        ? null
+                        : CefrLevel.values.firstWhere((l) => l.code == level);
+                  }),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: AppSpace.s16,
+                vertical: AppSpace.s12,
+              ),
+              child: Row(
+                children: [
+                  Container(
+                    width: 44,
+                    height: 44,
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: selected
+                          ? AppPalette.seaBlue
+                          : AppPalette.seaBlue50,
+                    ),
+                    child: level == null
+                        ? Icon(
+                            icon,
+                            size: AppIconSize.md,
+                            color: selected
+                                ? AppPalette.white
+                                : AppPalette.seaBlue,
+                          )
+                        : Text(
+                            level,
+                            style: theme.textTheme.titleMedium?.copyWith(
+                              color: selected
+                                  ? AppPalette.white
+                                  : AppPalette.seaBlue,
+                            ),
+                          ),
+                  ),
+                  const SizedBox(width: AppSpace.s12),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(title, style: theme.textTheme.titleSmall),
+                        const SizedBox(height: AppSpace.s4),
+                        Text(
+                          body,
+                          style: theme.textTheme.bodySmall?.copyWith(
+                            color: AppPalette.ink500,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(width: AppSpace.s8),
+                  Icon(
+                    selected
+                        ? Icons.check_circle_rounded
+                        : Icons.circle_outlined,
+                    size: AppIconSize.md,
+                    color: selected ? AppPalette.seaBlue : AppPalette.ink200,
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
   Widget _level(BuildContext context) {
     final theme = Theme.of(context);
-    Widget chip(CefrLevel? level, String label) => ChoiceChip(
-      key: ValueKey('onboarding-guess-${level?.code ?? 'unknown'}'),
-      label: Text(label),
-      selected: _guess == level,
-      onSelected: (_) => setState(() => _guess = level),
-    );
+    final guess = _guess;
     return _page(
       children: [
         _title(
@@ -697,28 +833,51 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
             style: theme.textTheme.titleMedium,
           ),
         ),
-        const SizedBox(height: AppSpace.s8),
-        Wrap(
+        const SizedBox(height: AppSpace.s12),
+        StaggeredList(
           spacing: AppSpace.s8,
-          runSpacing: AppSpace.s4,
           children: [
-            chip(null, OnboardingTexts.levelGuessUnknown),
-            for (final l in CefrLevel.values) chip(l, l.code),
+            _levelOption(
+              level: null,
+              title: OnboardingTexts.levelGuessUnknown,
+              body: OnboardingTexts.levelGuessUnknownBody,
+              icon: Icons.help_outline_rounded,
+            ),
+            for (final l in CefrLevel.values)
+              _levelOption(
+                level: l.code,
+                title: OnboardingTexts.levelGuessTitle(l.code),
+                body: OnboardingTexts.levelGuessBody(l.code),
+                icon: Icons.school_outlined,
+              ),
           ],
         ),
       ],
-      actions: [
-        _primary(
-          OnboardingTexts.levelStart,
-          () => unawaited(_startTest()),
-          key: const ValueKey('onboarding-test-start'),
-        ),
-        _quiet(
-          OnboardingTexts.levelSkip,
-          () => _go(OnboardingStep.ready),
-          key: const ValueKey('onboarding-test-skip'),
-        ),
-      ],
+      actions: guess == null
+          ? [
+              _primary(
+                OnboardingTexts.levelStart,
+                () => unawaited(_startTest()),
+                key: const ValueKey('onboarding-test-start'),
+              ),
+              _quiet(
+                OnboardingTexts.levelSkip,
+                () => _go(OnboardingStep.ready),
+                key: const ValueKey('onboarding-test-skip'),
+              ),
+            ]
+          : [
+              _primary(
+                OnboardingTexts.levelStartWith(guess.code),
+                () => unawaited(_useGuess()),
+                key: const ValueKey('onboarding-level-start'),
+              ),
+              _quiet(
+                OnboardingTexts.levelTestAnyway,
+                () => unawaited(_startTest()),
+                key: const ValueKey('onboarding-test-anyway'),
+              ),
+            ],
     );
   }
 
@@ -997,6 +1156,150 @@ class _StepDots extends StatelessWidget {
       ),
     );
   }
+}
+
+/// Karşılama zemininde Hi'nin küçük bir tanıtımı: boş kalan alt bölümü
+/// doldurur ve uygulamanın sesini gösterir (2026-10-26 tasarım turu).
+class _HiWelcomeCard extends StatelessWidget {
+  const _HiWelcomeCard();
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return Container(
+      padding: const EdgeInsets.all(AppSpace.s16),
+      decoration: BoxDecoration(
+        color: AppPalette.white.withValues(alpha: 0.82),
+        borderRadius: AppRadius.lgAll,
+        border: Border.all(color: AppPalette.white),
+        boxShadow: AppShadows.level1,
+      ),
+      child: Row(
+        children: [
+          const ExcludeSemantics(
+            child: HiAvatar(
+              size: 56,
+              glow: false,
+              expression: HiExpression.happy,
+            ),
+          ),
+          const SizedBox(width: AppSpace.s12),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Hi',
+                  style: theme.textTheme.titleSmall?.copyWith(
+                    color: AppPalette.seaBlue,
+                  ),
+                ),
+                const SizedBox(height: AppSpace.s4),
+                Text(
+                  OnboardingTexts.welcomeHiLine,
+                  style: theme.textTheme.bodyMedium?.copyWith(
+                    color: AppPalette.ink700,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+/// Karşılama zemini: kum → sıcak akşam tonu geçişi, ufukta yumuşak güneş
+/// ışığı ve altta iç içe geçen dalgalar. Düz kum zeminin "boş" görünmesini
+/// engeller; metinler bu yüzeyin üstünde kalır (H-045 paleti).
+class _WelcomeBackdrop extends StatelessWidget {
+  const _WelcomeBackdrop();
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      fit: StackFit.expand,
+      children: [
+        const DecoratedBox(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [AppPalette.sand50, AppPalette.sand, AppPalette.orange50],
+              stops: [0, 0.45, 1],
+            ),
+          ),
+        ),
+        Positioned(
+          left: -80,
+          right: -80,
+          bottom: -140,
+          height: 460,
+          child: DecoratedBox(
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              gradient: RadialGradient(
+                colors: [
+                  AppPalette.lighthouseYellow.withValues(alpha: 0.34),
+                  AppPalette.lighthouseYellow.withValues(alpha: 0),
+                ],
+              ),
+            ),
+          ),
+        ),
+        const Positioned(
+          left: 0,
+          right: 0,
+          bottom: 0,
+          height: 230,
+          child: IgnorePointer(child: CustomPaint(painter: _WelcomeWaves())),
+        ),
+      ],
+    );
+  }
+}
+
+class _WelcomeWaves extends CustomPainter {
+  const _WelcomeWaves();
+
+  Path _band(Size size, double base, double amplitude) => Path()
+    ..moveTo(0, base - amplitude)
+    ..quadraticBezierTo(
+      size.width * 0.25,
+      base - amplitude * 2.4,
+      size.width * 0.5,
+      base - amplitude,
+    )
+    ..quadraticBezierTo(
+      size.width * 0.75,
+      base + amplitude * 0.4,
+      size.width,
+      base - amplitude * 0.6,
+    )
+    ..lineTo(size.width, size.height)
+    ..lineTo(0, size.height)
+    ..close();
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final paint = Paint()..style = PaintingStyle.fill;
+    canvas.drawPath(
+      _band(size, size.height * 0.42, 20),
+      paint..color = AppPalette.seaBlue50.withValues(alpha: 0.55),
+    );
+    canvas.drawPath(
+      _band(size, size.height * 0.62, 16),
+      paint..color = AppPalette.sand200.withValues(alpha: 0.55),
+    );
+    canvas.drawPath(
+      _band(size, size.height * 0.8, 12),
+      paint..color = AppPalette.white.withValues(alpha: 0.35),
+    );
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
 }
 
 /// Yol açılışa mı ait (`/acilis` ve alt yolları)?
