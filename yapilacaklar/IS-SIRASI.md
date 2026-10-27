@@ -1,15 +1,15 @@
 # İş Sırası — hiVelzon
 
-> Son güncelleme: 2026-10-26 · Güncelleyen: OpenCode ajanı
+> Son güncelleme: 2026-10-27 · Güncelleyen: OpenCode ajanı
 
 Bu dosya tek takip noktasıdır. Hangi işin hangi sırada yapıldığını, şu an ne üzerinde çalışıldığını ve neyin bittiğini gösterir. Her işin ayrıntısı kendi `H-<numara>-<başlık>.md` dosyasındadır.
 
-> **Yeni oturum buradan başlasın:** `CLAUDE.md` → bu dosyanın "Nerede kaldık" bölümü → `docs/HANDOFF-2026-10-25.md`.
+> **Yeni oturum buradan başlasın:** `CLAUDE.md` → bu dosyanın "Nerede kaldık" bölümü → `docs/HANDOFF-2026-10-27.md`.
 > **Sıradaki iş:** H-044'ün dış hesap adımları (Almanya sunucusu/DNS, Bunny, Apple, Google) — hangilerinin hazır olduğu kullanıcıya sorulur.
 > Kod tarafında bekleyen iş **yok**. **H-092 aşama A ve B, H-044 tamamlanmadan başlamaz.** Ücretli üretim veya dış hesap açma ayrı onay ister.
 
 ## Nerede kaldık
-- **Şu an (2026-10-25):** Faz 1 (MVP) uygulaması sürüyor (`docs/UYGULAMA-PLANI.md`). `main` = `083a228` (H-044 dilimi) ve ardından gelen belge commit'leri, GitHub'da. Uygulamanın görünen adı bütün ekranlarda **Hi** (kullanıcı kararı 2026-10-24); depo/iç adlar `hiVelzon`, hukuki şirket Velzon Bilişim Teknolojileri Ltd. Şti.
+- **Şu an (2026-10-27):** Faz 1 (MVP) uygulaması sürüyor (`docs/UYGULAMA-PLANI.md`). `main` = `80d2320` (H-099 Ana Sayfa kişisel önerileri); önceki `10726e3` (H-098) ve `083a228` (H-044 dilimi). Uygulamanın görünen adı bütün ekranlarda **Hi** (kullanıcı kararı 2026-10-24); depo/iç adlar `hiVelzon`, hukuki şirket Velzon Bilişim Teknolojileri Ltd. Şti.
   - Son bitenler: **H-042** (hesap silme/geri alma, Hakkında ve lisanslar, günlük hatırlatma, `docs/HUKUK-SORULARI.md`) ve **H-095** (yeniden onay yok, yalnız bildirim; rıza ve denetim kayıtları 2 yıl, V16; KVKK ve kullanım koşulları taslakları, yer tutuculu). İkisi gerçek backend'e karşı uçtan uca testle doğrulandı (`mobile/integration_test/h042_h095_account_e2e_test.dart`).
   - Akşam: **H-096** (21 Ekim takip incelemesi: geri çekilen reel eski adresle açılmaz, mesaj kalıbı tek cümlede, reel tamamlanması %90 konum + %80 aktif izleme, 'İfadeyi kaydet') bitti; inceleme `docs/URUN-TAKIP-INCELEMESI-2026-10-21.md`. Değişmez sürüm klasörleri H-044'e not edildi.
   - **H-043:** yerel kısım bitti; kalan gerçek telefon kontrolleri (`docs/BETA-KONTROL-LISTESI.md` 2. bölüm).
@@ -21,8 +21,8 @@ Bu dosya tek takip noktasıdır. Hangi işin hangi sırada yapıldığını, şu
   - SyncController ilk eşitleme hatası düzeltildi. G-A1-13 açıklaması düzeltildi ve yeniden seslendirildi.
   - Hukukçu cevapları `docs/HUKUK-SORULARI.md` → "Cevaplar": veli onayı yok; İYS ve VERBİS kaydı gerekmez; sunucu Almanya; cihazda konuşma tanıma KVKK kapsamında değil; kayıtlar 2 yıl; 30 gün silme uygun; pilot onamı uygun. Veri sorumlusu bilgileri ayrı fazda; muhasebe soruları H-044'te.
 - **Testler (son koşu):** mobil 1483 (`flutter analyze` temiz) · backend 164 · pytest 383 · reel lint 18/0/0 · grammar lint 71 ders 0 hata · book lint 30 kitap 0 hata.
-- **Yerel ortam (2026-10-25):** Docker PostgreSQL 5435, backend `127.0.0.1:8080` ve içerik sunucusu `127.0.0.1:8787` açık. H-097'de kullanılan "hiVelzon iPhone 17" simülatörü artık kurulu değil; arayüz denemesi gerekirse yeniden oluşturulur. Sunucu, Bunny Stream, mağaza ve geliştirici hesapları en sonda (H-044).
-- **İçerik:** Sezon 1'in 12 bölümü üretildi (haritada 12/12; editör onayı H-028 bekliyor). Dilbilgisi 71 dersin hepsi yazıldı ve Türkçe sesli; İngilizce örnek sesi A1 16/16, A2 7 tam + 1 kısmen, B1–C2 bekliyor. Kitaplık: 30 kitap yazıldı ve tam resimli; sesli kitap 5/30. Keşfet: 18 sesli reel yayında; 7 kalite düzeltmesi v2. Higgsfield hesap bakiyesi **483,72** (2026-10-26; H-098 karşılama görseli sonrası).
+- **Yerel ortam (2026-10-27):** Flutter testleri ve analiz yerelde çalıştırıldı. Arayüz denemesi için **"PIRU iPhone 17"** ve **"WishSay iPhone"** (`A79F74E2-A150-4A94-A676-DC466D69F2F4`) simülatörleri kullanılabilir. Backend ve içerik sunucusu gerektiğinde `--dart-define=API_BASE_URL=http://127.0.0.1:8080 --dart-define=CONTENT_BASE_URL=http://127.0.0.1:8787` ile açılır. Sunucu, Bunny Stream, mağaza ve geliştirici hesapları en sonda (H-044).
+- **İçerik:** Sezon 1'in 12 bölümü üretildi (haritada 12/12; editör onayı H-028 bekliyor). Dilbilgisi 71 dersin hepsi yazıldı ve Türkçe sesli; İngilizce örnek sesi A1 16/16, A2 7 tam + 1 kısmen, B1–C2 bekliyor. Kitaplık: 30 kitap yazıldı ve tam resimli; sesli kitap 5/30. Keşfet: 18 sesli reel yayında; 7 kalite düzeltmesi v2. Higgsfield hesap bakiyesi **483,72** (2026-10-27; H-099'da harcama yok).
 - **Sıradaki adım:** Açık işlerin kalanı kullanıcıya ya da dış taraflara bağlı (aşağıda). **H-092 tamamı en sonda** (kullanıcı kararı 2026-10-23: şu an test telefonu yok; aşama A da ertelendi): aşama A (2–3 kişilik gözlemli test; iPhone + Mac, yerel ağ) ve aşama B (evde 7–14 gün, H-044 ile) birlikte **H-044'ten sonra** yapılır. Pilot kiti ve gözlem föyü hazır (`docs/H-092-PILOT-KITI.md`, `docs/H-092-GOZLEM-FOYU-2026-10-23.md`). Pilot sonucu görülmeden büyük yeni içerik dalgası başlamaz.
 - **Kullanıcıya ya da dış taraflara bağlı olanlar** (kodlamayı durdurmuyor):
   - Simülatörde kullanıcı denemesi: H-085 B5–B12, H-086 "Sayfanın Türkçesi", yeni ekranlar (H-042 Hakkında, hatırlatma, İlgi alanların).

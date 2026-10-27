@@ -13,7 +13,7 @@
 3. **Suçlamasız ve sakin.** "Yanlış", "başarısız", "kaçırdın", "serini kaybettin" gibi ifadeler yok. Hata durumunda "Bir daha bakalım.", "Sorun değil, birlikte bakalım." denir. Geri sayım ve aciliyet de yok (K-32).
 4. **Her ekranda başlık.** Sekme sayfasında büyük başlık, gerekiyorsa altında **tek cümle** açıklama olur. İtilen sayfada (Defter, Kelime tekrarı) üst çubukta başlık durur. Sayfadaki bölümlerin de başlığı vardır.
 5. **Sayılar cümle içinde.** "4" tek başına durmaz. Doğrusu: "4 ifadenin tekrar zamanı geldi · yaklaşık 2 dk". Bağlamı belli olan ilerleme göstergeleri ("Soru 2 / 3", "0 / 12") istisnadır. Bunların yanında da ne sayıldığı yazar.
-6. **Düğmeler fiille.** "Başla", "Devam et", "Tekrara başla", "Tekrar oyna", "Haritaya dön", "Kaydet". Tek başına "Devam" ya da "Tamam" yerine fiil kullanılır. Oturum özetini kapatan "Tamam" istisnadır.
+6. **Düğmeler fiille.** "Bölümü başlat", "Başla", "Devam et", "5 ifadeyi tekrarla", "Nesneleri bul", "Tekrar oyna", "Haritaya dön", "Kaydet". Tek başına "Devam" ya da "Tamam" yerine fiil kullanılır. Oturum özetini kapatan "Tamam" istisnadır.
 7. **Türkçe büyük harf doğru yazılır.** Büyük harfli etiketler (ör. "SEZON 1 · BÖLÜM 2", "KİLİTLİ") kodda normal yazılır ve `upperTr` ile büyütülür. Dart'ın `toUpperCase` işlevi "kilitli" sözcüğünü "KILITLI" yapar. Aramada da `lowerTr` kullanılır: "İSTASYON" → "istasyon".
 8. **Sayı ekleri kesme işaretiyle ve ünlü uyumuyla yazılır.** "Bölüm 1'i tamamla", "12 bölümden 6'sı bitti". Bunun için `accusativeNumber` ve `possessiveNumber` kullanılır.
 9. **Arayüz çerçevesinde İngilizce yok.** İngilizce yalnızca öğrenilen içerikte olur: hikâye metni, ifade, bölüm adı. "EN / EN+TR" altyazı kısaltması menüde açılır ("EN (İngilizce)"). Ekran okuyucu bu kısaltmayı tam okur. Uygulama dili `tr` olarak sabittir (`flutter_localizations`). Böylece Material'ın kendi metinleri de Türkçedir: "Geri", "Kapat", "Sekme 1 / 5". Önceden bunlar İngilizceydi: "Back", "Dismiss", "Scrim", "Tab 1 of 5", "20 characters remaining".
@@ -392,7 +392,8 @@ Hata durumunda kullanıcıya her zaman bir çıkış yolu verilir; sonsuz yükle
 - `test/shared/text/turkish_test.dart`: `upperTr`, `lowerTr`, `possessiveNumber`; Ana Sayfa metin işlevleri.
 - `test/features/profile/profile_test.dart`: ad kuralı, kalıcılık (`app_meta`), Profil ekranı (başlık, istatistikler, gruplar, günlük hedef ve ad panelleri).
 - `test/features/notebook/notebook_ui_test.dart`: Ana Sayfa'da adlı ve adsız selam; tekrar zamanı gelmiş ve gelmemiş durum; Defter açıklamaları.
-- `test/features/home/home_screen_test.dart` ve `test/features/story/story_screen_test.dart`: sezon ilerleme cümlesi, harita başlığı ve açıklaması.
+- `test/features/home/home_screen_test.dart`: kişisel durum cümlesi, süre/hedef hapı, işi söyleyen düğmeler ve isteğe bağlı araçlar (H-099).
+- `test/features/story/story_screen_test.dart`: sezon ilerleme cümlesi, harita başlığı ve açıklaması.
 - `test/features/topic_sets/`: konu seti listesi ve kilit nedeni, ızgara ve ekleme metinleri, sahne avı geri bildirimleri ve özeti, bölüm sonu satırı (H-051).
 
 ## 10. Hi-A: balon, panel ve koç (H-048)

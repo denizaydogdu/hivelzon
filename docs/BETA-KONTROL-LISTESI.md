@@ -12,7 +12,7 @@ Kabul ölçütü (H-043): 1. ve 2. bölüm tamam. 3. bölüm H-044'tedir.
 
 | # | Madde | Durum | Doğrulama |
 |---|---|---|---|
-| 1.1 | Statik denetim ve bütün testler | Tamam (2026-10-21) | `cd mobile && flutter analyze && flutter test` |
+| 1.1 | Statik denetim ve bütün testler | Tamam (2026-10-27) | `cd mobile && flutter analyze && flutter test` — son koşu **1483/1483**, analyze temiz |
 | 1.2 | Android release manifestinde `INTERNET` izni | Tamam | `grep INTERNET mobile/android/app/src/main/AndroidManifest.xml`. Daha önce izin yalnız debug/profile manifestlerindeydi; release derlemesi ağa çıkamazdı. |
 | 1.3 | Yerel çökme kaydı | Tamam | `flutter test test/shared/diagnostics` |
 | 1.4 | Sakin hata ekranı (yalnız release) | Tamam | Aynı test dosyası (`CalmErrorBox`) |
@@ -82,7 +82,7 @@ H-054 ölçümleri simülatörde ve **debug** derlemeyle yapıldı. Gerçek ciha
 | 2.4 | "Söyle" izin akışı (iPhone) | iPhone | İzin penceresi Türkçe mi (`tr.lproj`)? Apple'ın sabit "ses Apple'a gönderilebilir" cümlesi çıkıyor mu? Biz cihazda tanımayı zorunlu tutuyoruz; metin ve hukuk incelemesi (H-055). İzin reddedilince her şey dokunarak çalışıyor mu? |
 | 2.5 | "Söyle" izin akışı (Android), İngilizce dil paketi **yokken** | Android | Paket yoksa "Söyle" düğmeleri görünmemeli (H-055). Paket indirilince görünmeli. |
 | 2.6 | Android'de `audio_service` (kilit ekranında kitap dinleme), bildirimler (günlük hatırlatma), Drift veritabanı | Android | Yeniden başlatma sonrası hatırlatma (BOOT_COMPLETED) |
-| 2.7 | Uçtan uca deneme: açılış → B1 → defter (Ana Sayfa → "Çalışma araçların" ya da Profil) → kelime tekrarı → Keşfet (18 reel, backend kataloğu) → kitap → Profil (hata kaydını paylaş) | iPhone + Android | `tools/device-build.sh` ile |
+| 2.7 | Uçtan uca deneme: açılış → B1 → defter (Ana Sayfa → "İstersen kendin çalış" ya da Profil) → kelime tekrarı → Keşfet (18 reel, backend kataloğu) → kitap → Profil (hata kaydını paylaş) | iPhone + Android | `tools/device-build.sh` ile |
 | 2.8 | Geçici simge ve açılış ekranı telefonda düzgün mü | iPhone + Android | Android 12+ sistem açılış ekranı kum renginde |
 
 ### Cihaz derlemesi (yerel ağ)

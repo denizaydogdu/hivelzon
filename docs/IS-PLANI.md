@@ -1,10 +1,10 @@
 # hiVelzon — İş ve Ürün Planı
 
-> **Sürüm:** 0.2 (kararlara göre güncellendi, H-023; son onay H-001'de) · **İlk sürüm:** 2026-10-11 · **Güncelleme:** 2026-10-21
+> **Sürüm:** 0.2 (kararlara göre güncellendi, H-023; son onay H-001'de) · **İlk sürüm:** 2026-10-11 · **Güncelleme:** 2026-10-27
 > **Sahibi / veri sorumlusu:** Velzon Bilişim Teknolojileri Ltd. Şti. (Eskişehir · info@velzon.tr)
 > **Durum:** Faz 1 (MVP) uygulaması sürüyor; uygulama planı onaylı (`docs/UYGULAMA-PLANI.md`, H-025). Bağlayıcı kararlar `CLAUDE.md` tablolarındadır; bu belgeyle çelişirse onlar geçerlidir.
 >
-> **Güncel durum (2026-10-21 akşam):** H-094 Keşfet'in ürün tarafı tamam (18 sesli reel, yayın/geri çekme, "İlgi alanların" paneli). H-042 (hesap silme/geri alma, Hakkında, hatırlatma) ve H-095 (hukukçu cevapları) ile H-096 (21 Ekim takip incelemesi düzeltmeleri) bitti; H-043'ün yerel kısmı bitti, gerçek telefon kontrolleri kaldı. H-092 pilotu bölündü: aşama A erken ve isteğe bağlı, aşama B H-044 ile en sonda. Sıradaki boş numara: H-097. Kredi, test sonuçları ve açık kararlar için tek kaynak: `yapilacaklar/IS-SIRASI.md`.
+> **Güncel durum (2026-10-27):** H-094 Keşfet'in ürün tarafı tamam (18 sesli reel, yayın/geri çekme, "İlgi alanların" paneli). H-042 (hesap silme/geri alma, Hakkında, hatırlatma), H-095 (hukukçu cevapları), H-096 (21 Ekim takip incelemesi düzeltmeleri), H-097 (uçtan uca simülatör gezinmesi), H-098 (canlı arayüz geri bildirimleri) ve H-099 (Ana Sayfa kişisel önerileri) bitti. H-043'ün yerel kısmı bitti; gerçek telefon kontrolleri kaldı. H-092 pilotunda aşama A ve B birlikte **H-044 tamamlandıktan sonra** yapılır (kullanıcı kararı 2026-10-23: test telefonu yok). Sıradaki boş numara: **H-100**. Kredi, test sonuçları ve açık kararlar için tek kaynak: `yapilacaklar/IS-SIRASI.md`.
 
 ## Güncel kararlar (v0.2, 2026-10-12)
 
@@ -29,7 +29,7 @@
 | AI etiketi | Uygulama içi videolara gömülmez, bölüm başında ~4 sn not; sosyal medyada gömülü | CLAUDE.md Higgsfield kuralı 6 |
 | Çalışma ortamı | Her şey yerelde (Docker PostgreSQL, yerel içerik sunucusu, iOS simülatörü); sunucu, Bunny Stream, mağaza hesapları en sonda | H-044 |
 
-**Üretim yolu (pilotla doğrulandı, H-024):** GPT Image 2.5 sahne görselleri (9:16, low, 0,5 kr/görsel) → yerel Ken Burns hareket → kilit anlarda Seedance 2.0 Mini (5 kr / 5 sn) → ElevenLabs zaman damgalı ses (-16 LUFS) → yerel kurgu ve paket (`tools/content-pipeline/`). **Bölüm başına ~8,5 kr.** Sezon 1'in B1–B4'ü üretildi; B5–B12 diyalogları onaylı, üretimi kaldı (≈ 8 × 8,5 kr). Kalan Higgsfield kredisi 84,56 (2026-10-12, lite plan).
+**Üretim yolu (pilotla doğrulandı, H-024):** GPT Image 2.5 sahne görselleri (9:16, low, 0,5 kr/görsel) → yerel Ken Burns hareket → kilit anlarda Seedance 2.0 Mini (5 kr / 5 sn) → ElevenLabs zaman damgalı ses (-16 LUFS) → yerel kurgu ve paket (`tools/content-pipeline/`). **Bölüm başına ~8,5 kr.** Sezon 1'in B1–B4'ü üretildi; B5–B12 diyalogları onaylı, üretimi kaldı (≈ 8 × 8,5 kr). Kalan Higgsfield kredisi **483,72** (2026-10-27; H-099'da harcama yok).
 
 
 ## Özet (1 dakikada)
@@ -282,7 +282,7 @@ Her video için `icerik/<id>/` altında şunlar saklanır: senaryo, prompt'lar, 
 **Kredinin dolar karşılığı:**
 - Plana göre değişir. Bir 2026 kaynağına göre Starter planında ~0,075 USD/kredi, üst planda ~0,028 USD/kredi [15].
 - Başka bir kaynak farklı plan adları ve fiyatlar veriyor [16].
-- Hesabımız **"lite" planda**; 2026-10-11'de 244,25 kredi vardı, 2026-10-12'de **84,56** kaldı (pilot, B2–B4, arayüz taslakları, jenerik, harita). Lite planın aylık ücreti ve kredi miktarı **doğrulanmadı**.
+- Hesabımız **"lite" planda**; 2026-10-11'de 244,25 kredi vardı, 2026-10-12'de **84,56** kaldı (pilot, B2–B4, arayüz taslakları, jenerik, harita). **2026-10-27 itibarıyla 483,72 kredi var** (H-098 karşılama görseli sonrası; H-099'da harcama yok). Lite planın aylık ücreti ve kredi miktarı **doğrulanmadı**.
 - **Güncel (H-024):** Ölçülen gerçek maliyet bölüm başına ~8,5 kr (görsel 0,5 kr/adet + bir kilit klip 5 kr). Aşağıdaki tahmin tablosu ilk taslağa aittir ve gerçek yoldan çok daha pahalıdır.
 
 **Tahmini üretim maliyeti:**
@@ -632,7 +632,7 @@ Senaryo → Higgsfield CLI (Soul ID, video, ses) → kurgu → altyazı → QC �
 
 > **Güncel (K-17, 2026-10-11): birleşik 4 faz.** Aşağıdaki tablo bu karara göre yazıldı; ilk taslaktaki ders/akış odaklı faz içerikleri hikâye yönüyle değişti.
 
-| Faz | Kapsam | Durum (2026-10-21) |
+| Faz | Kapsam | Durum (2026-10-27) |
 |---|---|---|
 | **F0: Kararlar + pilot** | Açık kararlar, Story Bible ve Sezon 1 planı, pilot bölüm (B1) + 3 klip, gerçek maliyet ölçümü | ✅ Bitti (H-024, H-029, H-030) |
 | **F1: MVP** | Hikâye modu (S1, A1), etkileşimli oynatıcı, harita, defter, ipucu panosu, FSRS, Keşfet, Hi-A, onboarding, hesap ve KVKK kalıpları, editör onayı; her şey yerelde, dış hesaplar en sonda (H-044) | 🔄 Sürüyor (`UYGULAMA-PLANI.md`) |
