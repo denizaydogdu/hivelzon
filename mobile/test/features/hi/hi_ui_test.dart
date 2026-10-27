@@ -357,6 +357,13 @@ void main() {
     expect(find.text('Ben Hi, yapay zekâ asistanınım.'), findsOneWidget);
     expect(find.text('Bugünkü öneri'), findsOneWidget);
     expect(
+      find.descendant(
+        of: find.byKey(const ValueKey('hi-panel')),
+        matching: find.text(HomeTexts.contextFirstEpisode),
+      ),
+      findsOneWidget,
+    );
+    expect(
       find.byKey(const ValueKey('hi-suggestion-startEpisode')),
       findsOneWidget,
     );

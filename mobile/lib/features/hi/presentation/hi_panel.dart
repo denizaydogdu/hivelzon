@@ -144,7 +144,7 @@ class _HiPanelViewState extends ConsumerState<HiPanelView> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final suggestion = ref.watch(hiSuggestionProvider);
+    final plan = ref.watch(dailyPlanProvider);
     final bridge = ref.watch(bridgeTaskProvider).value;
     final week = ref.watch(weeklySummaryProvider).value;
     return ListView(
@@ -158,9 +158,9 @@ class _HiPanelViewState extends ConsumerState<HiPanelView> {
       ),
       children: [
         HiPanelIntro(
-          expression: switch (suggestion) {
+          expression: switch (plan) {
             AsyncData(:final value) => hiExpressionForSuggestion(
-              value.kind,
+              value.primary.kind,
               now: DateTime.now(),
             ),
             _ => HiExpression.neutral,
@@ -169,11 +169,25 @@ class _HiPanelViewState extends ConsumerState<HiPanelView> {
         const SizedBox(height: AppSpacing.md),
         HiPanelHeading(HiTexts.todayHeading),
         const SizedBox(height: AppSpacing.xs),
-        switch (suggestion) {
-          AsyncData(:final value) => HiSuggestionCard(
-            suggestion: value,
-            onAct: () => unawaited(_act(value)),
-            onAnother: () => unawaited(dismissSuggestion(ref, value)),
+        switch (plan) {
+          AsyncData(:final value) => Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Text(
+                value.contextLine,
+                key: const ValueKey('hi-suggestion-context'),
+                style: theme.textTheme.bodyMedium?.copyWith(
+                  color: AppPalette.ink500,
+                ),
+              ),
+              const SizedBox(height: AppSpacing.xs),
+              HiSuggestionCard(
+                suggestion: value.primary,
+                onAct: () => unawaited(_act(value.primary)),
+                onAnother: () =>
+                    unawaited(dismissSuggestion(ref, value.primary)),
+              ),
+            ],
           ),
           _ => const HiPanelLoadingCard(),
         },

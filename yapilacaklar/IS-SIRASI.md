@@ -5,11 +5,10 @@
 Bu dosya tek takip noktasıdır. Hangi işin hangi sırada yapıldığını, şu an ne üzerinde çalışıldığını ve neyin bittiğini gösterir. Her işin ayrıntısı kendi `H-<numara>-<başlık>.md` dosyasındadır.
 
 > **Yeni oturum buradan başlasın:** `CLAUDE.md` → bu dosyanın "Nerede kaldık" bölümü → `docs/HANDOFF-2026-10-27.md`.
-> **Sıradaki iş:** H-044'ün dış hesap adımları (Almanya sunucusu/DNS, Bunny, Apple, Google) — hangilerinin hazır olduğu kullanıcıya sorulur.
-> Kod tarafında bekleyen iş **yok**. **H-092 aşama A ve B, H-044 tamamlanmadan başlamaz.** Ücretli üretim veya dış hesap açma ayrı onay ister.
+> **Sıradaki iş:** Kod tarafında bekleyen iş **yok**. H-044'ün dış hesap adımları (Almanya sunucusu/DNS, Bunny, Apple, Google) kullanıcı istediğinde **en sonda** yapılır; şu an açılmıyor. **H-092 aşama A ve B, H-044 tamamlanmadan başlamaz.** Ücretli üretim veya dış hesap açma ayrı onay ister.
 
 ## Nerede kaldık
-- **Şu an (2026-10-27):** Faz 1 (MVP) uygulaması sürüyor (`docs/UYGULAMA-PLANI.md`). `main` = `80d2320` (H-099 Ana Sayfa kişisel önerileri); önceki `10726e3` (H-098) ve `083a228` (H-044 dilimi). Uygulamanın görünen adı bütün ekranlarda **Hi** (kullanıcı kararı 2026-10-24); depo/iç adlar `hiVelzon`, hukuki şirket Velzon Bilişim Teknolojileri Ltd. Şti.
+- **Şu an (2026-10-27):** Faz 1 (MVP) uygulaması sürüyor (`docs/UYGULAMA-PLANI.md`). `main` = `80d2320` (H-099 Ana Sayfa kişisel önerileri); önceki `10726e3` (H-098) ve `083a228` (H-044 dilimi). H-100 Hi paneli kişisel durum cümlesi bu oturumda hazırlandı. Uygulamanın görünen adı bütün ekranlarda **Hi** (kullanıcı kararı 2026-10-24); depo/iç adlar `hiVelzon`, hukuki şirket Velzon Bilişim Teknolojileri Ltd. Şti.
   - Son bitenler: **H-042** (hesap silme/geri alma, Hakkında ve lisanslar, günlük hatırlatma, `docs/HUKUK-SORULARI.md`) ve **H-095** (yeniden onay yok, yalnız bildirim; rıza ve denetim kayıtları 2 yıl, V16; KVKK ve kullanım koşulları taslakları, yer tutuculu). İkisi gerçek backend'e karşı uçtan uca testle doğrulandı (`mobile/integration_test/h042_h095_account_e2e_test.dart`).
   - Akşam: **H-096** (21 Ekim takip incelemesi: geri çekilen reel eski adresle açılmaz, mesaj kalıbı tek cümlede, reel tamamlanması %90 konum + %80 aktif izleme, 'İfadeyi kaydet') bitti; inceleme `docs/URUN-TAKIP-INCELEMESI-2026-10-21.md`. Değişmez sürüm klasörleri H-044'e not edildi.
   - **H-043:** yerel kısım bitti; kalan gerçek telefon kontrolleri (`docs/BETA-KONTROL-LISTESI.md` 2. bölüm).
@@ -18,6 +17,7 @@ Bu dosya tek takip noktasıdır. Hangi işin hangi sırada yapıldığını, şu
   - **H-044 (2026-10-25):** Hesap gerektirmeyen yayın güvenlikleri bitti: release HTTPS adres kapısı, Android upload-key (debug imza kaldırıldı), iOS mağaza plist'i (yerel ağ izni yok), backend `prod` kapısı + ters vekil istemci IP'si, reellerde sürümlü `v<N>` CDN yolu, mutlak HTTPS/HLS medya adresi. Rehber ve kontrol listesi: `docs/H-044-YAYIN-HAZIRLIK.md`. Kalan: Almanya sunucusu/DNS, Bunny, Apple/Google hesapları ve mağaza yüklemesi — kullanıcıya bağlı.
   - **H-098 (2026-10-26):** Canlı simülatör geri bildirimleri tamamlandı: yeni Higgsfield karşılama görseli, sadeleştirilmiş bilgilendirme, testsiz seviye başlangıcı, bir kez açılan Hi turu, Keşfet başlığı/yanlış geri bildirimi ve sabit Kitaplık/Dilbilgisi seçicisi. Kod incelemesi sonrası tur katmanı ve hata durumları sağlamlaştırıldı.
   - **H-099 (2026-10-26):** Ana Sayfa önerileri kişiselleştirildi: selamın altında sabit "Bugün için önerimiz:" yerine son etkinliğe/seviyeye/ilk haftaya göre durum cümlesi; kartta süre ve günlük hedef ayrı hap satırda; gerekçeler tek cümle; düğmeler işi söylüyor (5 ifadeyi tekrarla, Bölümü başlat, Nesneleri bul); "Sahne" çipi "Bölüm" oldu; çalışma araçları isteğe bağlı olarak işaretlendi. Kural tabanlı plan ve tek eylem ilkesi korundu.
+  - **H-100 (2026-10-27):** Aynı kişisel durum cümlesi Hi panelinde öneri kartının üstünde de gösteriliyor. Panel artık `dailyPlanProvider`ı doğrudan izliyor; Ana Sayfa ve Hi tek plandan besleniyor. Mobil 1483/1483, analyze temiz; 320×568 1,3× taşma yok.
   - SyncController ilk eşitleme hatası düzeltildi. G-A1-13 açıklaması düzeltildi ve yeniden seslendirildi.
   - Hukukçu cevapları `docs/HUKUK-SORULARI.md` → "Cevaplar": veli onayı yok; İYS ve VERBİS kaydı gerekmez; sunucu Almanya; cihazda konuşma tanıma KVKK kapsamında değil; kayıtlar 2 yıl; 30 gün silme uygun; pilot onamı uygun. Veri sorumlusu bilgileri ayrı fazda; muhasebe soruları H-044'te.
 - **Testler (son koşu):** mobil 1483 (`flutter analyze` temiz) · backend 164 · pytest 383 · reel lint 18/0/0 · grammar lint 71 ders 0 hata · book lint 30 kitap 0 hata.
@@ -46,7 +46,7 @@ Bu dosya tek takip noktasıdır. Hangi işin hangi sırada yapıldığını, şu
   - H dosyasının `Durum` satırı güncellenir;
   - **Günlük** bölümüne bir satır eklenir.
 - **Biten işler:** "Biten işler" tablosuna doğrulama kanıtıyla birlikte yazılır.
-- **Numaralar:** Tek sayaçla verilir. Sıradaki boş numara: **H-100**.
+- **Numaralar:** Tek sayaçla verilir. Sıradaki boş numara: **H-101**.
 
 **Durum simgeleri:**
 - ⛔ Kullanıcı kararı bekliyor
@@ -219,6 +219,7 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 ## Biten işler
 | İş | Başlık | Bitiş | Doğrulama |
 |---|---|---|---|
+| H-100 | Hi panelinde kişisel durum cümlesi | 2026-10-27 | Aynı `DailyPlan.contextLine` panel kartının üstünde; Ana Sayfa ile tek kaynak; mobil 1483/1483, analyze temiz, 320×568 1,3× taşma yok |
 | H-099 | Ana Sayfa önerilerini kişiselleştir ve eylemi netleştir | 2026-10-26 | Kişisel durum cümlesi (yeni/dün/birkaç gün/uzun ara/B1+/ana adım bitti), ayrı süre-hedef hapı, tek cümle gerekçe, işi söyleyen düğmeler, "Bölüm" çipi, isteğe bağlı araçlar; mobil 1483/1483, analyze temiz, 320×568 1,3× taşma yok |
 | H-098 | Canlı arayüz geri bildirimi düzeltmeleri | 2026-10-26 | Yeni Higgsfield karşılama görseli; açılış/seviye/tur/Keşfet/sabit bölüm seçicisi; kod incelemesi; mobil 1474/1474, analyze temiz, simülatör doğrulaması |
 | H-097 | Uçtan uca simülatör gezinmesi ve görünen ad | 2026-10-24 | 54+ ekran; ayrı açılış testi; Keşfet kategori akışları backend açıkken hatasız; mobil 1454 test, `flutter analyze` temiz; görünen ad Hi |

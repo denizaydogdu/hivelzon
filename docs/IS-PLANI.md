@@ -4,7 +4,7 @@
 > **Sahibi / veri sorumlusu:** Velzon Bilişim Teknolojileri Ltd. Şti. (Eskişehir · info@velzon.tr)
 > **Durum:** Faz 1 (MVP) uygulaması sürüyor; uygulama planı onaylı (`docs/UYGULAMA-PLANI.md`, H-025). Bağlayıcı kararlar `CLAUDE.md` tablolarındadır; bu belgeyle çelişirse onlar geçerlidir.
 >
-> **Güncel durum (2026-10-27):** H-094 Keşfet'in ürün tarafı tamam (18 sesli reel, yayın/geri çekme, "İlgi alanların" paneli). H-042 (hesap silme/geri alma, Hakkında, hatırlatma), H-095 (hukukçu cevapları), H-096 (21 Ekim takip incelemesi düzeltmeleri), H-097 (uçtan uca simülatör gezinmesi), H-098 (canlı arayüz geri bildirimleri) ve H-099 (Ana Sayfa kişisel önerileri) bitti. H-043'ün yerel kısmı bitti; gerçek telefon kontrolleri kaldı. H-092 pilotunda aşama A ve B birlikte **H-044 tamamlandıktan sonra** yapılır (kullanıcı kararı 2026-10-23: test telefonu yok). Sıradaki boş numara: **H-100**. Kredi, test sonuçları ve açık kararlar için tek kaynak: `yapilacaklar/IS-SIRASI.md`.
+> **Güncel durum (2026-10-27):** H-094 Keşfet'in ürün tarafı tamam (18 sesli reel, yayın/geri çekme, "İlgi alanların" paneli). H-042 (hesap silme/geri alma, Hakkında, hatırlatma), H-095 (hukukçu cevapları), H-096 (21 Ekim takip incelemesi düzeltmeleri), H-097 (uçtan uca simülatör gezinmesi), H-098 (canlı arayüz geri bildirimleri), H-099 (Ana Sayfa kişisel önerileri) ve H-100 (Hi panelinde kişisel durum cümlesi) bitti. H-043'ün yerel kısmı bitti; gerçek telefon kontrolleri kaldı. H-092 pilotunda aşama A ve B birlikte **H-044 tamamlandıktan sonra** yapılır (kullanıcı kararı 2026-10-23: test telefonu yok). Sıradaki boş numara: **H-101**. Kredi, test sonuçları ve açık kararlar için tek kaynak: `yapilacaklar/IS-SIRASI.md`.
 
 ## Güncel kararlar (v0.2, 2026-10-12)
 

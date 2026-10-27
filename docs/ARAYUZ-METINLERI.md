@@ -2,6 +2,7 @@
 
 > **Durum:** Taslak 1 (2026-10-12). Uygulama bu kılavuza göre güncellendi.
 > **Ana Sayfa kişisel durum satırı (H-099, 2026-10-26):** Selamın altında sabit "Bugün için önerimiz:" yerine kullanıcının son etkinliğine, seviyesine, ilk haftasına ve tekrar borcuna göre değişen tek cümle; kartta süre/hedef ayrı hap satırda; gerekçeler tek cümle.
+> **Hi paneli kişisel durum satırı (H-100, 2026-10-27):** Aynı cümle Hi panelinde "Bugünkü öneri" kartının üstünde de görünür. Ana Sayfa ve panel tek `DailyPlan`dan beslenir; ayrı kişiselleştirme kuralı yoktur.
 > **Görünen ad (2026-10-24):** Bütün ekranlarda, uygulama etiketinde ve bildirim başlığında **Hi**; depo/iç adlar `hiVelzon`, hukuki şirket Velzon Bilişim Teknolojileri Ltd. Şti.
 > **Kod:** metinler `mobile/lib/l10n/tr_strings.dart` dosyasında ekran ekran durur. Oynatıcının ve anlam panelinin metinleri de H-062'den beri burada (`PlayerTexts`, `MeaningTexts`; §4.5).
 > **Türkçe yardımcılar:** `mobile/lib/shared/text/turkish.dart` (`upperTr`, `lowerTr`, `possessiveNumber`).
@@ -393,6 +394,7 @@ Hata durumunda kullanıcıya her zaman bir çıkış yolu verilir; sonsuz yükle
 - `test/features/profile/profile_test.dart`: ad kuralı, kalıcılık (`app_meta`), Profil ekranı (başlık, istatistikler, gruplar, günlük hedef ve ad panelleri).
 - `test/features/notebook/notebook_ui_test.dart`: Ana Sayfa'da adlı ve adsız selam; tekrar zamanı gelmiş ve gelmemiş durum; Defter açıklamaları.
 - `test/features/home/home_screen_test.dart`: kişisel durum cümlesi, süre/hedef hapı, işi söyleyen düğmeler ve isteğe bağlı araçlar (H-099).
+- `test/features/hi/hi_ui_test.dart`: Hi panelinde aynı kişisel durum cümlesi (H-100).
 - `test/features/story/story_screen_test.dart`: sezon ilerleme cümlesi, harita başlığı ve açıklaması.
 - `test/features/topic_sets/`: konu seti listesi ve kilit nedeni, ızgara ve ekleme metinleri, sahne avı geri bildirimleri ve özeti, bölüm sonu satırı (H-051).
 
@@ -404,7 +406,7 @@ Kod: `HiTexts` (`mobile/lib/l10n/tr_strings.dart`). Hi kendini yapay zekâ asist
 |---|---|---|
 | Balon (ekran okuyucu) | "Hi'yi aç" / "Hi'yi aç. Bugün için yeni bir önerisi var." | Yalnızca beş sekmenin kök sayfasında; 64 px. Yeni öneri varsa küçük turuncu nokta (sayı yok); panel o gün açılınca kalkar. Nabız iki kez atar, sonra durur; "Hareketi azalt" açıksa hiç atmaz. |
 | Panel başı | **Ben Hi, yapay zekâ asistanınım.** · "Önerilerimi bu cihazdaki ilerlemene bakarak, kurallarla seçiyorum." | Açıklama her açılışta görünür. |
-| Bugünkü öneri | Başlık + **Neden?** + gerekçe + **~N dk** + fiil düğmesi | Tek öneri. Örnekler: "Hikâyeye devam: Find the Station" · "Bölüm 3'ü yarıda bırakmıştın; kaldığın sahneden devam edersin." · "Kelime tekrarı" · "6 ifadenin tekrar zamanı geldi. Zamanında tekrar edilen ifade daha kolay hatırlanır." · "Hi'nin notu: Soru sözcüğü başa gelir" · "Son 7 günde "Kelime sırası" konusunda 2 kez takıldın. Bu çok olağan; Türkçeyle karşılaştıran kısa bir not var." · "Sıradaki bölüm: …" · "Sahne avı: Liman" · **Bugünlük bu kadar yeter**. Süre gerekçede değil, ayrı **~N dk** satırında; günlük hedefi aşarsa Ana Sayfa'daki hap **Hedefi aşar** der. |
+| Bugünkü öneri | **Kişisel durum cümlesi** + başlık + **Neden?** + gerekçe + **~N dk** + fiil düğmesi | Tek öneri. Üstteki cümle Ana Sayfa ile aynı `DailyPlan.contextLine`dan gelir (H-100): "Dün burada bıraktın; kaldığın yerden devam edelim." · "Bugün kısa bir tekrarla başlayalım." · "Bugünkü ana adımı bitirdin; şimdi küçük bir görev var." Örnekler: "Hikâyeye devam: Find the Station" · "Bölüm 3'ü yarıda bırakmıştın; kaldığın sahneden devam edersin." · "Kelime tekrarı" · "6 ifadenin tekrar zamanı geldi. Zamanında tekrar edilen ifade daha kolay hatırlanır." · "Hi'nin notu: Soru sözcüğü başa gelir" · "Son 7 günde "Kelime sırası" konusunda 2 kez takıldın. Bu çok olağan; Türkçeyle karşılaştıran kısa bir not var." · "Sıradaki bölüm: …" · "Sahne avı: Liman" · **Bugünlük bu kadar yeter**. Süre gerekçede değil, ayrı **~N dk** satırında; günlük hedefi aşarsa Ana Sayfa'daki hap **Hedefi aşar** der. |
 | Düğmeler | Devam et · 5 ifadeyi tekrarla · Notu aç · Defteri aç · Bölümü başlat · Nesneleri bul · Kitaba devam et · Kitabı dinle · Konuşmaya başla | Fiil; varsa sayıyı da söyler. |
 | Hızlı eylemler | Hikâyeye devam · Kelime tekrarı · Defter · Konu setleri | |
 | Bu ne demek? | "Bölümlerde geçen kelime ve kalıpların anlamını bulurum." · alan: "İngilizce ya da Türkçe yaz" · sonuç: ifade, anlam, **ÖRNEK**, "Geçtiği yer: B1" / "Defterinde" / "Konu setinde" · eşleşme yoksa: "Bunu henüz bilmiyorum; bölümlerde geçen kelimeleri arayabilirim." | Arama `foldForSearch`: Türkçe İ/ı, ç/ş/ğ/ö/ü katlanır ("İSTASYON", "statıon", "isik" bulunur). Yalnızca açılmış bölümler, defter ve açılmış konu setleri. |

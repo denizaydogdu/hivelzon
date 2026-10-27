@@ -2,7 +2,7 @@
 
 **Sürüm:** 0.2 · **Tarih:** 2026-10-11 (durum güncellemesi 2026-10-27) · **Durum:** Onaylandı (2026-10-11); uygulama sürüyor. İlk dilim: önce oynatıcı; ilk test cihazı iOS simülatörü.
 **Dayanak:** CLAUDE.md "Onaylı içerik mimarisi kararları" ve "Onaylı oyun tasarımı kararları"; `docs/OYUN-TASARIMI.md`; `docs/ICERIK-MIMARISI.md`.
-**Kural:** Plan onaylandı, kodlama bu plana göre sürüyor; plana yeni kapsam kullanıcı onayıyla eklenir. Oynatıcı işi var olan H-031 numarasını korur; yeni işler H-033'ten başlar. Sonradan eklenenler: H-045, H-046, H-048, H-049, H-050, H-051, H-052, H-053, H-054, H-055, H-056 tasarım yenilemesi H-057…H-064, Kitaplık H-065…H-073, ürün incelemesi sonrası odak H-087…H-092, Keşfet H-094 ve hukukçu cevapları H-095. **H-096 (takip incelemesi düzeltmeleri), H-097 (uçtan uca simülatör gezinmesi + görünen ad Hi), H-098 (canlı arayüz geri bildirimleri) ve H-099 (Ana Sayfa kişisel önerileri) bitti. Sıradaki boş numara: H-100.** (H-075…H-082: Dilbilgisi, `docs/DILBILGISI.md`; H-083 Türkçe sesler; H-084 B2-K01 eksik görsel; H-085 Bölüm 5–12 üretimi; H-086 kitapta Sayfanın Türkçesi; H-093 taklit/kanıt ayrımı.) (H-074: gerçek süre ölçümü.) Her alt faz ayrı bir H işidir: küçük, test edilebilir ve geri alınabilir.
+**Kural:** Plan onaylandı, kodlama bu plana göre sürüyor; plana yeni kapsam kullanıcı onayıyla eklenir. Oynatıcı işi var olan H-031 numarasını korur; yeni işler H-033'ten başlar. Sonradan eklenenler: H-045, H-046, H-048, H-049, H-050, H-051, H-052, H-053, H-054, H-055, H-056 tasarım yenilemesi H-057…H-064, Kitaplık H-065…H-073, ürün incelemesi sonrası odak H-087…H-092, Keşfet H-094 ve hukukçu cevapları H-095. **H-096 (takip incelemesi düzeltmeleri), H-097 (uçtan uca simülatör gezinmesi + görünen ad Hi), H-098 (canlı arayüz geri bildirimleri), H-099 (Ana Sayfa kişisel önerileri) ve H-100 (Hi panelinde kişisel durum cümlesi) bitti. Sıradaki boş numara: H-101.** (H-075…H-082: Dilbilgisi, `docs/DILBILGISI.md`; H-083 Türkçe sesler; H-084 B2-K01 eksik görsel; H-085 Bölüm 5–12 üretimi; H-086 kitapta Sayfanın Türkçesi; H-093 taklit/kanıt ayrımı.) (H-074: gerçek süre ölçümü.) Her alt faz ayrı bir H işidir: küçük, test edilebilir ve geri alınabilir.
 
 ---
 
@@ -117,14 +117,15 @@ A1–C2, seviye başına 5 kitap, toplam 30. Kararlar: önce 2 pilot kitap, Elev
 - H-039, H-040, H-041 ve H-042 H-038'den sonra.
 - H-043, sonra H-044 en son.
 
-### Son ürün iyileştirmeleri (H-098, H-099)
+### Son ürün iyileştirmeleri (H-098, H-099, H-100)
 
 | İş | Kapsam | Durum |
 |---|---|---|
 | **H-098** | Canlı simülatör geri bildirimleri: yeni karşılama görseli, sade bilgilendirme, testsiz seviye başlangıcı, bir kez açılan Hi turu, Keşfet başlığı/yanlış geri bildirimi, sabit Kitaplık/Dilbilgisi seçicisi | ✅ |
 | **H-099** | Ana Sayfa kişisel durum cümlesi; kartta ayrı süre/hedef hapı; tek cümle gerekçe; işi söyleyen düğmeler; "Bölüm" çipi; isteğe bağlı çalışma araçları. Kural tabanlı plan ve tek eylem ilkesi korundu. | ✅ |
+| **H-100** | Aynı kişisel durum cümlesi Hi panelinde öneri kartının üstünde; panel `dailyPlanProvider`ı doğrudan izler, Ana Sayfa ve Hi tek planı paylaşır. | ✅ |
 
-Ayrıntı: `bitenler/H-098-canli-arayuz-geri-bildirimi.md`, `bitenler/H-099-ana-sayfa-kisisel-oneriler.md`, `docs/ARAYUZ-METINLERI.md` §3.1.
+Ayrıntı: `bitenler/H-098-canli-arayuz-geri-bildirimi.md`, `bitenler/H-099-ana-sayfa-kisisel-oneriler.md`, `bitenler/H-100-hi-panel-kisisel-durum.md`, `docs/ARAYUZ-METINLERI.md` §3.1 ve §10.
 
 ## 4. Açık olanlar (ilgili fazdan önce sorulacak)
 
