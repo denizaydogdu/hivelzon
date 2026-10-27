@@ -5,7 +5,7 @@
 Bu dosya tek takip noktasıdır. Hangi işin hangi sırada yapıldığını, şu an ne üzerinde çalışıldığını ve neyin bittiğini gösterir. Her işin ayrıntısı kendi `H-<numara>-<başlık>.md` dosyasındadır.
 
 > **Yeni oturum buradan başlasın:** `CLAUDE.md` → bu dosyanın "Nerede kaldık" bölümü → `docs/HANDOFF-2026-10-27.md`.
-> **Sıradaki iş:** Kod tarafında bekleyen iş **yok**. H-044'ün dış hesap adımları (Almanya sunucusu/DNS, Bunny, Apple, Google) kullanıcı istediğinde **en sonda** yapılır; şu an açılmıyor. **H-092 aşama A ve B, H-044 tamamlanmadan başlamaz.** Ücretli üretim veya dış hesap açma ayrı onay ister.
+> **Sıradaki iş:** Kod tarafında bekleyen yerel iş **yok**. H-101 marka simgeleri tamamlandı. H-044'ün dış hesap adımları (Almanya sunucusu/DNS, Bunny, Apple, Google) kullanıcı istediğinde **en sonda** yapılır; şu an açılmıyor. **H-092 aşama A ve B, H-044 tamamlanmadan başlamaz.** Ücretli üretim veya dış hesap açma ayrı onay ister.
 
 ## Nerede kaldık
 - **Şu an (2026-10-27):** Faz 1 (MVP) uygulaması sürüyor (`docs/UYGULAMA-PLANI.md`). `main` = `1e030e0` (H-100 Hi panelinde kişisel durum cümlesi); önceki `80d2320` (H-099), `10726e3` (H-098) ve `083a228` (H-044 dilimi). Uygulamanın görünen adı bütün ekranlarda **Hi** (kullanıcı kararı 2026-10-24); depo/iç adlar `hiVelzon`, hukuki şirket Velzon Bilişim Teknolojileri Ltd. Şti.
@@ -18,9 +18,14 @@ Bu dosya tek takip noktasıdır. Hangi işin hangi sırada yapıldığını, şu
   - **H-098 (2026-10-26):** Canlı simülatör geri bildirimleri tamamlandı: yeni Higgsfield karşılama görseli, sadeleştirilmiş bilgilendirme, testsiz seviye başlangıcı, bir kez açılan Hi turu, Keşfet başlığı/yanlış geri bildirimi ve sabit Kitaplık/Dilbilgisi seçicisi. Kod incelemesi sonrası tur katmanı ve hata durumları sağlamlaştırıldı.
   - **H-099 (2026-10-26):** Ana Sayfa önerileri kişiselleştirildi: selamın altında sabit "Bugün için önerimiz:" yerine son etkinliğe/seviyeye/ilk haftaya göre durum cümlesi; kartta süre ve günlük hedef ayrı hap satırda; gerekçeler tek cümle; düğmeler işi söylüyor (5 ifadeyi tekrarla, Bölümü başlat, Nesneleri bul); "Sahne" çipi "Bölüm" oldu; çalışma araçları isteğe bağlı olarak işaretlendi. Kural tabanlı plan ve tek eylem ilkesi korundu.
   - **H-100 (2026-10-27):** Aynı kişisel durum cümlesi Hi panelinde öneri kartının üstünde de gösteriliyor. Panel artık `dailyPlanProvider`ı doğrudan izliyor; Ana Sayfa ve Hi tek plandan besleniyor. Mobil 1483/1483, analyze temiz; 320×568 1,3× taşma yok.
+  - **Açık kararlar kapandı (2026-10-27):** Kullanıcı H-001, H-003, H-006, H-008, H-015 ve H-016 için karar yetkisini ajana devretti. Plan onaylandı; AI kotası oturum bazlı belirlendi; sağlayıcılar yerel LLM + cihazda STT + mevcut TTS olarak netleşti; ham ses/transkript politikası ve telaffuz puanı kararı yazıldı; marka adı/logo/palet/mağaza metni seçildi. Ayrıntı: `docs/KARARLAR-2026-10-27.md`. H-016 simge entegrasyonu H-101 ile tamamlandı.
+  - **ElevenLabs (2026-10-27):** Kullanıcının verdiği yeni ücretsiz anahtar API'de **401 `detected_unusual_activity`** döndürdü; ücretsiz katman kapalı. Yeni ses üretimi çalışan anahtar/ücretli plan gelene kadar duruyor. Anahtar repoya yazılmadı.
+  - **H-101 (2026-10-27):** H-016 marka kararı uygulandı: konuşma balonu içinde “Hi” wordmark; 15 iOS simgesi, 5 Android legacy + 5 adaptive ön plan, iki platform açılış varlıkları ve 512 px Google Play master'ı yerelde üretildi. Deniz mavisi açılış zemini; ücretli üretim yok. `flutter analyze` temiz, mobil **1483/1483**, Android debug ve iOS simülatör derlemeleri geçti; PIRU iPhone 17'ye temiz kurulum/açılış yapıldı.
+  - **H-085/H-086 teknik kontrolü (2026-10-27):** H-085 B5–B12 otomatik iOS simülatör turunda 8/8 tamamlandı (kapılar açık, hata 0, en büyük altyazı sapması 131 ms); H-086 hedef testleri 14 + 2 golden geçti, görseller incelendi. Kullanıcının öznel simülatör denemesi hâlâ açık; H-028 editör onayı da ayrı bekliyor.
   - SyncController ilk eşitleme hatası düzeltildi. G-A1-13 açıklaması düzeltildi ve yeniden seslendirildi.
   - Hukukçu cevapları `docs/HUKUK-SORULARI.md` → "Cevaplar": veli onayı yok; İYS ve VERBİS kaydı gerekmez; sunucu Almanya; cihazda konuşma tanıma KVKK kapsamında değil; kayıtlar 2 yıl; 30 gün silme uygun; pilot onamı uygun. Veri sorumlusu bilgileri ayrı fazda; muhasebe soruları H-044'te.
-- **Testler (son koşu):** mobil 1483 (`flutter analyze` temiz) · backend 164 · pytest 383 · reel lint 18/0/0 · grammar lint 71 ders 0 hata · book lint 30 kitap 0 hata.
+- **Testler (son koşu):** mobil 1483/1483 (`flutter analyze` temiz; Android debug + iOS simülatör derlemesi geçti) · backend 164 · pytest 383 · reel lint 18/0/0 · grammar lint 71 ders 0 hata · book lint 30 kitap 0 hata.
+- **Hedef tekrar (2026-10-28):** Hikâye + oynatıcı ekranı + H-086 okuyucu/golden testleri **70/70**; `flutter analyze` temiz. Yukarıdaki 1483/1483 önceki tam takım sonucudur.
 - **Yerel ortam (2026-10-27):** Flutter testleri ve analiz yerelde çalıştırıldı. Arayüz denemesi için **"PIRU iPhone 17"** ve **"WishSay iPhone"** (`A79F74E2-A150-4A94-A676-DC466D69F2F4`) simülatörleri kullanılabilir. Backend ve içerik sunucusu gerektiğinde `--dart-define=API_BASE_URL=http://127.0.0.1:8080 --dart-define=CONTENT_BASE_URL=http://127.0.0.1:8787` ile açılır. Sunucu, Bunny Stream, mağaza ve geliştirici hesapları en sonda (H-044).
 - **İçerik:** Sezon 1'in 12 bölümü üretildi (haritada 12/12; editör onayı H-028 bekliyor). Dilbilgisi 71 dersin hepsi yazıldı ve Türkçe sesli; İngilizce örnek sesi A1 16/16, A2 7 tam + 1 kısmen, B1–C2 bekliyor. Kitaplık: 30 kitap yazıldı ve tam resimli; sesli kitap 5/30. Keşfet: 18 sesli reel yayında; 7 kalite düzeltmesi v2. Higgsfield hesap bakiyesi **483,72** (2026-10-27; H-099'da harcama yok).
 - **Sıradaki adım:** Açık işlerin kalanı kullanıcıya ya da dış taraflara bağlı (aşağıda). **H-092 tamamı en sonda** (kullanıcı kararı 2026-10-23: şu an test telefonu yok; aşama A da ertelendi): aşama A (2–3 kişilik gözlemli test; iPhone + Mac, yerel ağ) ve aşama B (evde 7–14 gün, H-044 ile) birlikte **H-044'ten sonra** yapılır. Pilot kiti ve gözlem föyü hazır (`docs/H-092-PILOT-KITI.md`, `docs/H-092-GOZLEM-FOYU-2026-10-23.md`). Pilot sonucu görülmeden büyük yeni içerik dalgası başlamaz.
@@ -29,11 +34,10 @@ Bu dosya tek takip noktasıdır. Hangi işin hangi sırada yapıldığını, şu
   - Gerçek telefon: H-043 kontrol listesi 2. bölüm, H-068 kilit ekranı.
   - H-092 aşama A (kullanıcı istediği zaman; 2026-10-23: test telefonu yok → H-044 ile en sonda).
   - H-028 öğretmen/editör kontrolü: Konuş metinleri, B5–B12, kitap soruları, dilbilgisi.
-  - Yeni ElevenLabs anahtarı: 25 kitabın sesi, dilbilgisi İngilizce örnekleri, A1-K01 metin düzeltmesinin sesi (H-071 notu).
+  - ElevenLabs: 25 kitabın sesi, dilbilgisi İngilizce örnekleri, A1-K01 metin düzeltmesinin sesi (H-071 notu). **2026-10-27:** Yeni ücretsiz anahtar API'de 401 `detected_unusual_activity` verdi; yeni ses için çalışan anahtar veya ücretli plan gerekir (ayrı onay).
   - Veri sorumlusu bilgileri (unvan, adres, iletişim, mahkeme): KVKK ve koşullar metnindeki yer tutucular.
   - H-044 dış hesaplar, sunucu (Almanya), mağaza; muhasebe soruları.
-  - H-016 logo, palet, mağaza adı (şimdiki simge geçici).
-  - Kararlar: H-001 iş planı onayı (H-023 güncellemesiyle), H-003 konuşma kotası ayrıntıları (v1 öncesi), H-006 AI sohbet sağlayıcısı ve yurt dışı aktarım (v1), H-008 ses ve transkript saklama (v1 öncesi), H-015 telaffuz puanı.
+  - Marka mağaza **yüklemesi** H-044'e bağlı; yerel simge ve master varlıklar H-101 ile hazır.
 - **Engel:** Yok. Dış hesaplar bilerek en sona bırakıldı.
 
 ## Nasıl takip ediyoruz
@@ -46,7 +50,7 @@ Bu dosya tek takip noktasıdır. Hangi işin hangi sırada yapıldığını, şu
   - H dosyasının `Durum` satırı güncellenir;
   - **Günlük** bölümüne bir satır eklenir.
 - **Biten işler:** "Biten işler" tablosuna doğrulama kanıtıyla birlikte yazılır.
-- **Numaralar:** Tek sayaçla verilir. Sıradaki boş numara: **H-101**.
+- **Numaralar:** Tek sayaçla verilir. Sıradaki boş numara: **H-102**.
 
 **Durum simgeleri:**
 - ⛔ Kullanıcı kararı bekliyor
@@ -60,23 +64,23 @@ Bu dosya tek takip noktasıdır. Hangi işin hangi sırada yapıldığını, şu
 ### Adım 1 — Kararlar (kullanıcı)
 | # | İş | Başlık | Öncelik | Bağımlılık | Durum |
 |---|---|---|---|---|---|
-| 1 | H-001 | İş planını gözden geçir ve onayla (uygulama planı H-025 onaylı; güncel `IS-PLANI.md` onayı kaldı) | Yüksek | H-023 | ⛔ |
+| 1 | H-001 | İş planını gözden geçir ve onayla (2026-10-27: v0.2 onaylandı; kapsam değişmedi) | Yüksek | H-023 | ✅ |
 | 2 | H-007 | Plan ile şartname arasındaki çelişkileri uzlaştır (konuşma pratiği MVP'de mi?) | Yüksek | H-001 ile birlikte | ✅ |
 | 1a | H-029 | **Oyun ve hikâye tasarımı kararları** (`OYUN-TASARIMI.md` §17) | Yüksek | — | ✅ |
 | 2a | H-026 | İçerik mimarisi kararları (`ICERIK-MIMARISI.md` §14) | Yüksek | H-007 ile birlikte | ✅ |
 | 2b | H-028 | İçerik onayı, roller ve kapasite | Yüksek | H-004 | ✅ |
 | 3 | H-002 | Yaş politikası | Yüksek | — | ✅ |
-| 4 | H-003 | Yapay zekâ aylık bütçe tavanı ve kotalar (tavan 300 USD/ay kararlaştı; kota ayrıntısı v1 öncesi) | Yüksek | — | ⛔ |
-| 5 | H-006 | Yapay zekâ sağlayıcıları ve yurt dışı aktarım | Yüksek | — | ⛔ |
-| 6 | H-008 | Ham ses ve transkript saklama politikası | Yüksek | H-006 | ⛔ |
+| 4 | H-003 | Yapay zekâ aylık bütçe tavanı ve kotalar (2026-10-27: oturum bazlı kota ve uyarı eşikleri belirlendi) | Yüksek | — | ✅ |
+| 5 | H-006 | Yapay zekâ sağlayıcıları ve yurt dışı aktarım (2026-10-27: yerel LLM + cihazda STT; TTS mevcut) | Yüksek | — | ✅ |
+| 6 | H-008 | Ham ses ve transkript saklama politikası (2026-10-27: ham ses yok; transkript en fazla 30 gün) | Yüksek | H-006 | ✅ |
 | 7 | H-004 | Higgsfield planı ve video üretim emeği | Yüksek | — | ✅ |
 | 8 | H-005 | Yapay zekâ öğretmen karakteri | Yüksek | — | ✅ |
 | 9 | H-018 | Mağaza yayın bölgesi | Orta | H-002 | ✅ |
 | 10 | H-009 | Misafir kullanım ve kayıt zorunluluğu | Orta | H-002 | ✅ |
 | 11 | H-013 | Günlük hedef, seri ve bildirim politikası | Orta | H-007 | ✅ |
 | 12 | H-014 | Kısa video akışının davranışı | Orta | — | ✅ |
-| 13 | H-015 | Konuşma geri bildirimi ve telaffuz puanının güvenilirliği | Orta | H-006, H-007 | ⛔ |
-| 14 | H-016 | Marka ve görsel kimlik | Orta | H-005 | ⛔ |
+| 13 | H-015 | Konuşma geri bildirimi ve telaffuz puanının güvenilirliği (2026-10-27: sayısal puan yok; S3 yalnız doğrulanırsa) | Orta | H-006, H-007 | ✅ |
+| 14 | H-016 | Marka ve görsel kimlik (2026-10-27: ad/logo/palet/mağaza metni kararı; simge entegrasyonu H-101) | Orta | H-005 | ✅ |
 | 16 | H-011 | İçerik yönetim ve editör onay paneli | Orta | H-021, H-022 | ✅ |
 | 17 | H-012 | Medya depolama ve CDN | Orta | H-021 | ✅ |
 | 18 | H-010 | Çevrimdışı kullanım MVP'de olacak mı? | Düşük | H-012 | ✅ |
@@ -94,7 +98,7 @@ Bu dosya tek takip noktasıdır. Hangi işin hangi sırada yapıldığını, şu
 |---|---|---|---|---|---|
 | 22b | H-030 | Story Bible, karakter kitabı ve Sezon 1 bölüm planı (Claude yazar; kredisiz) | Yüksek | H-029 | ✅ |
 | 22c | H-032 | Sezon 1 diyalog taslakları B4–B12 (A1 denetimli; kodsuz) | Yüksek | H-030 | ✅ |
-| 23 | H-023 | İş planını şartnameyle ve oyun yönüyle güncelle (belge güncellendi; kullanıcı onayı H-001'de) | Yüksek | H-007, H-026, H-029 | 🔄 |
+| 23 | H-023 | İş planını şartnameyle ve oyun yönüyle güncelle (belge güncellendi; H-001 onayı 2026-10-27) | Yüksek | H-007, H-026, H-029 | ✅ |
 | 24 | H-024 | Pilot: S1·B1 "A Strange Message" etkileşimli bölüm + 3 klip (kredi harcar, onaylı) | Yüksek | H-004, H-005, H-026, H-027, H-028 | ✅ |
 
 ### Adım 4 — Uygulama planı
@@ -166,8 +170,8 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 | K7 | H-072 | Kitap dalgası 2: B1 + B2 (10) | Orta | H-071 | 🔄 |
 | K8 | H-073 | Kitap dalgası 3: C1 + C2 (10) | Orta | H-072 | 🔄 |
 | K7' | H-084 | B2-K01 eksik bölüm başı görseli (p13), kredi yüklenince | Düşük | kredi | ✅ |
-| K2' | H-086 | Kitap okuyucuda "Sayfanın Türkçesi" (panel + satır altı ayarı) | Orta | H-067 | 🔄 |
-| S1 | H-085 | Sezon 1 Bölüm 5–12 üretimi (üretim bitti; simülatör denemesi + editör onayı bekliyor) | Yüksek | H-032, H-083 | 🔄 |
+| K2' | H-086 | Kitap okuyucuda "Sayfanın Türkçesi" (teknik testler yeşil; kullanıcı denemesi bekliyor) | Orta | H-067 | 🔄 |
+| S1 | H-085 | Sezon 1 Bölüm 5–12 üretimi (8/8 otomatik simülatör turu geçti; kullanıcı denemesi + H-028 editör kontrolü bekliyor) | Yüksek | H-032, H-083 | 🔄 |
 | İ1 | H-087 | Konuşma eşleştirmesinde anlam hatası (P0) | Kritik | H-055 | ✅ |
 | İ2 | H-088 | Tek günlük plan (Ana Sayfa = Hi; seviyeye göre öneri) | Yüksek | H-047, H-074 | ✅ |
 | İ3 | H-089 | Taklit/hatırlama ayrımı, öğrenme kanıtı basamakları | Yüksek | H-087 | ✅ |
@@ -200,26 +204,40 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 
 **Plan:** `docs/KESFET-GUNLUK-UC-VIDEO-PLAN-2026-10-18.md`. **Kullanıcı kararları (2026-10-18)** planda §14: Hikâye klipleri ayrı çip; video koleksiyonu ertelendi; hareket zorunlu değil; seviye üstteki çipten (genel testi değiştirmez); seçki cihazda; pilot A1/A2; her videonun sonunda atlanabilir tek soru. İlk üretim **61,50 kr**, 23 Ekim kalite düzeltmeleri **3,50 kr**; reel toplamı **65,00 kr**. Tur sonu hesap bakiyesi **47,31 kr** (aynı hesapta başka işlemler var). **Durum (2026-10-23):** P0–P4 bitti; 18 reel sesli ve yayında; ön değerlendirme düzeltmeleri uygulandı, değişen 7 reel v2 yayımlandı; lint 18 · 0/0; uygulama `GET /api/v1/catalog/reels` okuyor; "İlgi alanların" paneli hazır. Kalan: **H-092 kullanıcı pilotu** ve insan değerlendirmesi; pilot sonucu görülmeden geniş katalog üretilmez. Ayrıntı: `docs/H-094-P4-PROVA-2026-10-21.md`, `docs/H-094-REEL-ON-DEGERLENDIRME-2026-10-23.md`, `devam-edenler/H-094-kesfet-gunluk-uc-video.md`.
 
+### Adım 10 — Marka simgesi (2026-10-27; H-016 kararı sonrası)
+| # | İş | Başlık | Öncelik | Bağımlılık | Durum |
+|---|---|---|---|---|---|
+| M1 | H-101 | Marka simgesi ve mağaza görsellerini uygula (iOS/Android simge setleri, açılış ekranı, mağaza metinleri) | Orta | H-016 | ✅ |
+
+**Sınır:** Yeni görsel model çağrısı/ücretli üretim yok; yerel araçlarla üretilir. Mağaza hesabı ve yükleme H-044'e bağlı.
+
 ## Devam eden işler
 | İş | Başlık | Başlangıç | Not |
 |---|---|---|---|
-| H-023 | İş planını kararlarla güncelle | 2026-10-12 | `docs/IS-PLANI.md` v0.2 ve `docs/SARTNAME.md` karar notları yazıldı; kullanıcının gözden geçirmesi ve H-001 onayı bekleniyor |
 | H-043 | Kalite ve iç beta hazırlığı | 2026-10-21 | Yerel kısım bitti (`docs/BETA-KONTROL-LISTESI.md` 1. bölüm); kalan gerçek telefon kontrolleri (2. bölüm) |
 | H-068 | Arka planda dinleme ve kilit ekranı | 2026-10-14 | Kod main'de; kilit ekranı görünümü gerçek iPhone'da denenecek |
-| H-071 | Kitap dalgası 1: A1 + A2 | 2026-10-14 | 10 kitap onaylı ve tam resimli; sesli 5/10 (A1-K01, K03, K04, K05, A2-K03). Kalan: 5 kitabın sesi ve A1-K01 düzeltmesinin sesi (yeni ElevenLabs anahtarı), editör kontrolü |
-| H-072 | Kitap dalgası 2: B1 + B2 | 2026-10-14 | 10 kitap onaylı ve tam resimli; ses yeni ElevenLabs anahtarını bekliyor |
-| H-073 | Kitap dalgası 3: C1 + C2 | 2026-10-14 | 10 kitap onaylı ve tam resimli (80 görsel, 40 kr); ses yeni ElevenLabs anahtarını bekliyor |
+| H-071 | Kitap dalgası 1: A1 + A2 | 2026-10-14 | 10 kitap onaylı ve tam resimli; sesli 5/10 (A1-K01, K03, K04, K05, A2-K03). Kalan: 5 kitabın sesi ve A1-K01 düzeltmesinin sesi (çalışan ElevenLabs anahtarı/ayrı onaylı plan), editör kontrolü |
+| H-072 | Kitap dalgası 2: B1 + B2 | 2026-10-14 | 10 kitap onaylı ve tam resimli; ses çalışan ElevenLabs anahtarı/ayrı onaylı plan bekliyor |
+| H-073 | Kitap dalgası 3: C1 + C2 | 2026-10-14 | 10 kitap onaylı ve tam resimli (80 görsel, 40 kr); ses çalışan ElevenLabs anahtarı/ayrı onaylı plan bekliyor |
 | H-080 | Dilbilgisi dalga 1: A1 + A2 | 2026-10-14 | 31 ders, Türkçe sesli; İngilizce örnekler A1 tam, A2 7 tam + 1 kısmen (~2.990 karakter kaldı); öğretmen kontrolü |
 | H-081 | Dilbilgisi dalga 2: B1 + B2 | 2026-10-14 | 26 ders, Türkçe sesli; İngilizce örnekler yeni anahtarı bekliyor; öğretmen kontrolü |
 | H-082 | Dilbilgisi dalga 3: C1 + C2 | 2026-10-14 | 14 ders, Türkçe sesli; İngilizce örnekler yeni anahtarı bekliyor; öğretmen kontrolü |
-| H-085 | Sezon 1 Bölüm 5–12 üretimi | 2026-10-14 | Üretim bitti (12/12 haritada); kullanıcının simülatör denemesi ve editör onayı (H-028) bekliyor |
-| H-086 | Kitapta "Sayfanın Türkçesi" | 2026-10-14 | Kod main'de; kullanıcı denemesi bekliyor |
+| H-085 | Sezon 1 Bölüm 5–12 üretimi | 2026-10-14 | Üretim bitti (12/12 haritada); 2026-10-27 otomatik simülatör turu 8/8 geçti; kullanıcının denemesi ve H-028 editör kontrolü bekliyor |
+| H-086 | Kitapta "Sayfanın Türkçesi" | 2026-10-14 | Kod main'de; 2026-10-27 hedef 14 test + 2 golden geçti; kullanıcı denemesi bekliyor |
 | H-094 | Keşfet — günlük üç kısa video | 2026-10-18 | Kod, 18 sesli reel, yayın/geri çekme ve "İlgi alanların" paneli bitti; ön değerlendirme düzeltmeleri tamamlandı, 7 reel v2 yayımlandı (2026-10-23); kalan H-092 pilotu ve insan değerlendirmesi |
 
 ## Biten işler
 | İş | Başlık | Bitiş | Doğrulama |
 |---|---|---|---|
 | H-100 | Hi panelinde kişisel durum cümlesi | 2026-10-27 | Aynı `DailyPlan.contextLine` panel kartının üstünde; Ana Sayfa ile tek kaynak; mobil 1483/1483, analyze temiz, 320×568 1,3× taşma yok |
+| H-001 | İş planı onayı | 2026-10-27 | `docs/IS-PLANI.md` v0.2 olduğu gibi onaylandı; kapsam/faz değişmedi; `docs/KARARLAR-2026-10-27.md` |
+| H-003 | AI bütçesi ve günlük kota | 2026-10-27 | 300 USD/ay; oturum = 5 dk/10 tur sesli, 10 tur yazılı; 18+ 1+3, 13–17 1 rehberli yazılı; %50/%80/%100 uyarı; `docs/KARARLAR-2026-10-27.md` |
+| H-006 | Sağlayıcılar ve veri aktarımı | 2026-10-27 | v1 yerel Ollama + RAG; STT cihazda; TTS ElevenLabs/Alania; yeni ülke aktarımı ayrı onay; ElevenLabs ücretsiz anahtar 401 |
+| H-008 | Ham ses ve transkript politikası | 2026-10-27 | Ham ses yok; transkript en fazla 30 gün ve yalnız geri bildirim; eğitim/reklam yok; hesap silinince silinir; rıza/denetim 2 yıl |
+| H-015 | Telaffuz ve konuşma geri bildirimi | 2026-10-27 | S1/S2 sayısal puan yok; S3 yalnız Türk L1 doğrulamasından sonra 1–3 nitel nokta; yüzde yok |
+| H-016 | Marka ve görsel kimlik kararı | 2026-10-27 | Ad Hi; konuşma balonu "Hi" logosu; `AppPalette`; mağaza adı/alt başlık; `tasarim/marka/`; simge entegrasyonu H-101 |
+| H-023 | İş planını şartnameyle güncelle | 2026-10-27 | H-001 onayıyla kapandı; plan v0.2, şartname karar notları ve çelişki tablosu güncel |
+| H-101 | Marka simgesi ve mağaza varlıkları | 2026-10-27 | 15 iOS + 15 Android varlığı, deniz mavisi açılış ekranı, 1024/512 mağaza master'ı; mobil 1483/1483, analyze temiz, Android/iOS derlemeleri geçti; 0 ücret |
 | H-099 | Ana Sayfa önerilerini kişiselleştir ve eylemi netleştir | 2026-10-26 | Kişisel durum cümlesi (yeni/dün/birkaç gün/uzun ara/B1+/ana adım bitti), ayrı süre-hedef hapı, tek cümle gerekçe, işi söyleyen düğmeler, "Bölüm" çipi, isteğe bağlı araçlar; mobil 1483/1483, analyze temiz, 320×568 1,3× taşma yok |
 | H-098 | Canlı arayüz geri bildirimi düzeltmeleri | 2026-10-26 | Yeni Higgsfield karşılama görseli; açılış/seviye/tur/Keşfet/sabit bölüm seçicisi; kod incelemesi; mobil 1474/1474, analyze temiz, simülatör doğrulaması |
 | H-097 | Uçtan uca simülatör gezinmesi ve görünen ad | 2026-10-24 | 54+ ekran; ayrı açılış testi; Keşfet kategori akışları backend açıkken hatasız; mobil 1454 test, `flutter analyze` temiz; görünen ad Hi |

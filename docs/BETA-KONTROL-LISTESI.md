@@ -25,7 +25,7 @@ Kabul ölçütü (H-043): 1. ve 2. bölüm tamam. 3. bölüm H-044'tedir.
 | 1.11 | "Hareketi azalt": Keşfet ve oynatıcı geçişleri, alt paneller | Tamam | `flutter test test/app/design/reduce_motion_test.dart test/features/player/player_screen_test.dart` |
 | 1.12 | iOS geliştirme bölgesi `tr`, Türkçe `InfoPlist.strings` | Tamam | `flutter build ios --simulator --debug --no-codesign` (aşağıda) |
 | 1.13 | Sürüm `0.1.0+N`, `AppInfo` ile aynı | Tamam | `flutter test test/features/profile/profile_about_test.dart` |
-| 1.14 | Geçici simge ve açılış ekranı | Tamam | `bash mobile/tool/placeholder_icons.sh` ile yeniden üretilir. **Geçici; asıl logo H-016.** |
+| 1.14 | Marka simgesi ve açılış ekranı | Tamam | H-016/H-101; `cd mobile && bash tool/brand_icons.sh` ile yeniden üretilir. |
 | 1.15 | Android derlemesi | Tamam | `cd mobile && flutter build apk --debug` |
 | 1.16 | iOS simülatör derlemesi | Tamam | `cd mobile && flutter build ios --simulator --debug --no-codesign` |
 | 1.17 | `debugPrint` taraması | Tamam | Aşağıdaki not |
@@ -83,7 +83,7 @@ H-054 ölçümleri simülatörde ve **debug** derlemeyle yapıldı. Gerçek ciha
 | 2.5 | "Söyle" izin akışı (Android), İngilizce dil paketi **yokken** | Android | Paket yoksa "Söyle" düğmeleri görünmemeli (H-055). Paket indirilince görünmeli. |
 | 2.6 | Android'de `audio_service` (kilit ekranında kitap dinleme), bildirimler (günlük hatırlatma), Drift veritabanı | Android | Yeniden başlatma sonrası hatırlatma (BOOT_COMPLETED) |
 | 2.7 | Uçtan uca deneme: açılış → B1 → defter (Ana Sayfa → "İstersen kendin çalış" ya da Profil) → kelime tekrarı → Keşfet (18 reel, backend kataloğu) → kitap → Profil (hata kaydını paylaş) | iPhone + Android | `tools/device-build.sh` ile |
-| 2.8 | Geçici simge ve açılış ekranı telefonda düzgün mü | iPhone + Android | Android 12+ sistem açılış ekranı kum renginde |
+| 2.8 | Marka simgesi ve açılış ekranı telefonda düzgün mü | iPhone + Android | Android 12+ sistem açılış ekranı deniz mavisi |
 
 ### Cihaz derlemesi (yerel ağ)
 

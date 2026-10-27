@@ -100,7 +100,7 @@ packages/_reels/<id>/v<N>/audio/…
 
 ## 6. Apple (TestFlight)
 
-1. App Store Connect'te uygulama kaydı: bundle `tr.velzon.hivelzon`, ad **Hi**, birincil dil Türkçe, SKU kullanıcı kararı.
+1. App Store Connect'te uygulama kaydı: bundle `tr.velzon.hivelzon`, mağaza adı **Hi: İngilizce Öğren**, alt başlık **İngilizceyi hikâyeyle öğren** (27/30 karakter), birincil dil Türkçe, SKU kullanıcı kararı. 1024 px master: `tasarim/marka/logo-hi-1024.png` (H-016/H-101).
 2. Takım `6YB6UUDVS5`; Apple Distribution kimliği makinede hazır. Xcode otomatik imza ile App Store profilini üretir.
 3. `flutter build ipa --release` + üç `--dart-define`; `--export-method app-store`.
 4. TestFlight iç test grubu (kullanıcı + ekip). Dış test için Apple incelemesi gerekir.
@@ -111,7 +111,7 @@ packages/_reels/<id>/v<N>/audio/…
 ## 7. Google Play
 
 1. Play Console geliştirici hesabı (tek seferlik ücret — **kullanıcı onayı gerekir**).
-2. Uygulama: paket `tr.velzon.hivelzon`, ad **Hi**, varsayılan dil Türkçe.
+2. Uygulama: paket `tr.velzon.hivelzon`, mağaza adı **Hi: İngilizce Öğren**, varsayılan dil Türkçe. Kısa açıklama: **Hikâyelerle İngilizce öğren: oku, dinle, konuş.** (47/80 karakter). 512 px simge: `tasarim/marka/google-play-icon-512.png` (H-016/H-101).
 3. Play App Signing açık; **upload key** yerelde üretilir, repo dışında saklanır:
 
 ```bash

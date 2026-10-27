@@ -256,6 +256,14 @@ class _StoryScreenState extends ConsumerState<StoryScreen> {
     final ids = switch (kAutoplayMode) {
       'resume1' || 'resume2' || 'h035' || 'h055' => ['A1-001'],
       'h050' => ['A1-001', 'A1-002'],
+      'h085' => [
+        for (final e in initial.episodes)
+          if (e.contentId.compareTo('A1-005') >= 0 &&
+              (kAutoplayFrom.isEmpty ||
+                  e.contentId.compareTo(kAutoplayFrom) >= 0) &&
+              e.contentId.compareTo('A1-012') <= 0)
+            e.contentId,
+      ],
       _ => [
         for (final e in initial.episodes)
           if (e.playable || e.access.blockedBy != null) e.contentId,

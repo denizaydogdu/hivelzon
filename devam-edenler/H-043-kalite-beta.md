@@ -56,7 +56,7 @@ Kendi dalında (`h-043-kalite-beta`) yapılır; `main`'e alınmadan önce testle
   - `ios/Runner/tr.lproj/InfoPlist.strings` eklendi: mikrofon, konuşma tanıma ve yalnız debug/profile'da yerel ağ metni.
   - iOS'ta bildirim izni için açıklama anahtarı yoktur.
 - **Sürüm:** `0.1.0+1`; `AppInfo` ve testi aynı. Yapı numarası derleme anında `--build-number` ve `HV_APP_VERSION` ile verilir (`tools/device-build.sh`).
-- **Geçici simge ve açılış ekranı (H-016'ya kadar):** Kum zemin üstünde lacivert yuvarlak "hi" işareti. `mobile/tool/placeholder_icons.sh` ile ImageMagick'te üretildi; ücretli üretim yok.
+- **Tarihsel (H-043):** İlk geçici simge kum zemin üstünde lacivert yuvarlak "hi" işaretiydi. **2026-10-27 H-101:** bunun yerini H-016 marka simgesi ve deniz mavisi açılış ekranı aldı; `mobile/tool/brand_icons.sh` ile yerelde üretilir, ücretli üretim yok.
   - iOS: AppIcon'un bütün boyutları ve LaunchImage.
   - Android: mipmap'ler, uyarlanabilir simge, açılış zemini, Android 12+ `windowSplashScreenBackground`.
 - **Cihaz derlemesi:** `tools/device-build.sh` eklendi. Çalışan backend ve içerik sunucusuna dokunmaz.

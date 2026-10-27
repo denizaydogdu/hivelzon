@@ -1,6 +1,6 @@
 # H-085: Sezon 1 Bölüm 5–12 üretimi
 
-- **Durum:** Üretim bitti (2026-10-14): B5–B12 paketlendi, 12 bölümün hepsi haritada oynanabilir; content-lint 0 hata. **Bekleyen:** kullanıcının simülatörde denemesi ve editör onayı (H-028).
+- **Durum:** Devam ediyor. Üretim 2026-10-14'te bitti; B5–B12 otomatik simülatör turunda uçtan uca oynatıldı (aşağıdaki "Teknik doğrulama"). Kullanıcının öznel simülatör denemesi hâlâ bekleniyor; insan editör kontrolü H-028'de.
 - **Tür:** İçerik üretimi
 - **Faz:** F1 içerik (Sezon 1)
 - **Bağımlılık:** H-032 (diyaloglar onaylı), H-083 (Türkçe sesler Alania)
@@ -17,6 +17,38 @@
 ## Kabul kriterleri
 - Her bölüm content-lint 0 hata, paket ve senkron ölçümü (≤ 0,2 sn), -16 LUFS.
 - Kullanıcı simülatörde dener.
+
+## Teknik doğrulama (2026-10-27)
+
+Simülatör doğrulaması otomatik turla yapıldı: uygulama `AUTOPLAY_TEST=h085`
+ile B5–B12'yi sırayla açtı, her kararda yanlış ve doğru yolu denedi, bölüm
+sonlarını Hikâye ekranına yazdı.
+
+| Bölüm | completed | kapı | otomatik geçiş (medyan) | karar (medyan) | arayüz (medyan) | altyazı sapması | hata |
+|---|---|---|---|---|---|---|---|
+| A1-005 | ✅ | ✅ | 40,5 ms | 116,7 ms | 138,8 ms | 131 ms | 0 |
+| A1-006 | ✅ | ✅ | 40,5 ms | 137,0 ms | 147,2 ms | 30 ms | 0 |
+| A1-007 | ✅ | ✅ | 45,7 ms | 131,8 ms | 155,0 ms | 8 ms | 0 |
+| A1-008 | ✅ | ✅ | 42,5 ms | 136,1 ms | 153,9 ms | 3 ms | 0 |
+| A1-009 | ✅ | ✅ | 48,1 ms | 137,1 ms | 113,1 ms | 6 ms | 0 |
+| A1-010 | ✅ | ✅ | 35,4 ms | 116,4 ms | 122,9 ms | 33 ms | 0 |
+| A1-011 | ✅ | ✅ | 42,1 ms | 117,8 ms | 127,8 ms | 5 ms | 0 |
+| A1-012 | ✅ | ✅ | 41,5 ms | 113,2 ms | 126,7 ms | 107 ms | 0 |
+
+- Sekiz bölümde de `errors=0`, kapı açıldı, ön yükleme kaçağı yok
+  (`notPreloaded=0`).
+- En büyük ölçülen altyazı saat sapması **131 ms** (B5). Bu ölçüm,
+  insanın ses/altyazı uyumunu dinleyerek kontrol etmesinin yerine geçmez.
+- Bölüm başındaki video başlatma 215–1116 ms arasında; otomatik geçiş
+  medyanları önden başlatmayla 35–48 ms.
+- Content-lint B5–B12 için 0 hata; yalnız bilinen uyarılar (çeviri DRAFT,
+  bir liste dışı sözcük).
+- Bulunan tek içerik notu B11 `tr_c-clues` Türkçe zaman eşleşmesi (%80);
+  editör kulakla kontrolü H-028'e bağlı.
+
+**Kapanmayan kısım:** Otomatik tur kullanıcının kendi gözlemini veya insan
+editör onayını yerine getirmez. Kullanıcının simülatör denemesi burada,
+görsellerin/çevirilerin/ipuçlarının editör kontrolü **H-028**'de bekliyor.
 
 ## Engel
 - ~~İngilizce seslendirme kotası~~ çözüldü: arkadaş hesapları (hesap3, hesap4).

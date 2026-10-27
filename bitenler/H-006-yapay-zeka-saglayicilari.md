@@ -1,6 +1,6 @@
 # H-006: Yapay zekâ sağlayıcıları ve yurt dışı aktarım
 
-- **Durum:** Yapılacak (kullanıcı kararı)
+- **Durum:** Bitti (2026-10-27)
 - **Tür:** Karar
 - **Öncelik:** Yüksek
 - **Bağımlılık:** —
@@ -32,3 +32,4 @@ Sağlayıcılar kalite, Türk aksanı başarımı, veri işleme koşulları ve g
 - **Öneri:** ElevenLabs zaman damgalı TTS deseni alınsın, ayrı ticari hesapla. Görsel için OpenAI değil Higgsfield (K-24). Programatik LLM gerekirse şemalı çıktıyla kullanılsın.
 2026-10-11: **Kullanıcı kararı:** Yerel çalışma süresince **mevcut (videoGenerator) ElevenLabs hesabıyla** devam edilecek. Ücretsiz plan; aylık 10.000 karakter, videoGenerator ile ortak. Bu sesler iç kullanım içindir. **Yayından önce ticari plan şartı geçerli.** AI sohbet sağlayıcısı v1'de seçilecek.
 2026-10-14 (kullanıcı kararı, hukukçu görüşü): Ücretsiz ElevenLabs hesabıyla üretilen sesler yayında kullanılabilir; Türkiye'de sorun görülmedi; yeniden üretim gerekmez.
+2026-10-27: **Kullanıcı kararı (ajana devir):** v1 LLM'i yerel **Ollama + RAG (pgvector)** ile başlar; `AiTutorPort` arkasında kalır. Barındırılan sağlayıcı ancak ölçüm yetersizse ve H-044 sonrası ayrı onayla seçilir. STT yalnız cihazda (S1); bulut STT varsayılan değil. TTS İngilizce ElevenLabs, Türkçe PatientDesk Alania; anahtarlar yalnız sunucuda/repo dışında. Veri Almanya'daki sunucuda (H-044, hukukçu cevabı); bunun dışında yeni ülke/sağlayıcıya aktarım ayrı hukukçu onayı ister. **ElevenLabs:** Kullanıcının 2026-10-27'de verdiği ücretsiz anahtar API'de **401 `detected_unusual_activity`** döndürdü; ücretsiz katman erişimi kapalı, yeni ses üretilemedi. Ücretli plana geçiş ayrı onay ister. Ayrıntı: `docs/KARARLAR-2026-10-27.md`.

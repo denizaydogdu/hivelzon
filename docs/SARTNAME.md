@@ -12,7 +12,7 @@
 > **Depo notu (2026-10-11):** Bu belge kullanıcı tarafından sohbete yapıştırıldı ve olduğu gibi kaydedildi. `docs/IS-PLANI.md` ile çelişen noktalar CLAUDE.md'deki "Plan ile şartname arasındaki çelişkiler" bölümünde listelenir; telaffuz puanı (H-015) dışındakiler karara bağlandı.
 
 > **Güncel karar notları (2026-10-12):** Bu belgenin gövdesi kullanıcının taslağı olarak değiştirilmeden duruyor. Aşağıdaki bölümler sonradan verilen kararlarla **geçersiz kaldı ya da daraldı**; çelişkide `CLAUDE.md` karar tabloları geçerlidir.
-> - **Çalışma kuralı (üstteki not) ve "Durum":** Uygulama planı onaylandı (H-025, `docs/UYGULAMA-PLANI.md`); Faz 1 (MVP) kodlaması sürüyor. İş planının son onayı H-001'de.
+> - **Çalışma kuralı (üstteki not) ve "Durum":** Uygulama planı onaylandı (H-025, `docs/UYGULAMA-PLANI.md`); Faz 1 (MVP) kodlaması sürüyor. İş planı v0.2 H-001 ile 2026-10-27'de onaylandı.
 > - **§5.1 P0 "AI konuşma pratiği" ve "konuşma sonrası geri bildirim":** MVP'de yok; v1'de (F2) Hi-B ile gelir (H-007, H-047). Hi-A (kural tabanlı koç, AI yok) MVP'de (H-048).
 > - **§16 Faz 0–5:** Birleşik 4 faza bağlandı: F0 kararlar + pilot · F1 MVP · F2 v1 · F3 v2 (K-17).
 > - **§4.2 günlük hedef 5/10/15 dk:** Bu belgedeki seçenek kabul edildi (H-013); günde en fazla 1 hatırlatma.

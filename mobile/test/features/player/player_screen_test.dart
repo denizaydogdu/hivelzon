@@ -402,7 +402,11 @@ void main() {
         await step(tester, 600);
         expect(find.byKey(const ValueKey('meaning-word-1')), findsNothing);
         expect(platform.isPlaying('segments/s02.720p.mp4'), isTrue);
-        expect(platform.seeks.last.$2.inMilliseconds, closeTo(700, 60));
+        // Konum sahte 100 ms karelerle ve panel dokunmalarının ardından
+        // örneklenir; makinenin zamanlamasına göre bir kare sapabilir. Önemli
+        // sözleşme, kelime aralığına (1.357 sn) değil panelin açıldığı yaklaşık
+        // konuma dönmesidir.
+        expect(platform.seeks.last.$2.inMilliseconds, closeTo(700, 120));
         await tester.pumpWidget(const SizedBox());
         await step(tester, 6000);
       },

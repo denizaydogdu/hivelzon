@@ -1,6 +1,6 @@
 # H-086: Kitap okuyucuda "Sayfanın Türkçesi"
 
-- **Durum:** Devam ediyor (kod main'de: flutter 940; kullanıcı denemesi bekleniyor)
+- **Durum:** Devam ediyor (teknik doğrulama tamam; kullanıcı denemesi bekleniyor). Kod, hedef testler ve golden'lar yeşil; panel ve satır altı görünümü geliştirici tarafından gözle incelendi.
 - **Tür:** Uygulama (mobil)
 - **Faz:** Kitaplık (H-067 devamı)
 - **Bağımlılık:** H-067
@@ -37,3 +37,8 @@ Kullanıcı isteği (2026-10-14): "Kitap okurken sayfanın tamamının Türkçes
 - **Metinler:** `ReaderTexts` + `ARAYUZ-METINLERI.md` §4.7; `KITAPLIK.md` §7.
 - **Testler:** `test/features/library/reader_turkish_test.dart` (14: panel sırası ve sayfa değişimi, alt düğme, ses durur/sürer, duraklı kalır, sesli ve sessiz dokunma → vurgu + kaydırma, hareketi azalt, satır altı kalıcı ve çizimi, eksik `tr`, Türkçesiz sayfa, 320×568 1,3× iki modda, erişilebilirlik, ekran okuyucu). Golden: `test/goldens/images/h086_panel.png`, `h086_satir_alti.png` (`skipGoldensOffMac`); `h067_okuyucu.png` yeni düğmelerle güncellendi. Hepsi gözle kontrol edildi.
 - `flutter analyze` temiz; `flutter test` 940 test geçti.
+
+2026-10-27 teknik tekrar: `reader_turkish_test.dart` (14 test) ve
+`h086_page_turkish_golden_test.dart` (2 golden) geçti; panel ve satır altı
+görselleri incelendi. Bu testler kullanıcının okuyucuyu kendi denemesinin
+yerine geçmez; kabul için kullanıcı geri bildirimi bekleniyor.

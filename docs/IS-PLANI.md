@@ -1,10 +1,10 @@
 # hiVelzon — İş ve Ürün Planı
 
-> **Sürüm:** 0.2 (kararlara göre güncellendi, H-023; son onay H-001'de) · **İlk sürüm:** 2026-10-11 · **Güncelleme:** 2026-10-27
+> **Sürüm:** 0.2 (**H-001 ile 2026-10-27'de onaylandı**) · **İlk sürüm:** 2026-10-11 · **Güncelleme:** 2026-10-27
 > **Sahibi / veri sorumlusu:** Velzon Bilişim Teknolojileri Ltd. Şti. (Eskişehir · info@velzon.tr)
 > **Durum:** Faz 1 (MVP) uygulaması sürüyor; uygulama planı onaylı (`docs/UYGULAMA-PLANI.md`, H-025). Bağlayıcı kararlar `CLAUDE.md` tablolarındadır; bu belgeyle çelişirse onlar geçerlidir.
 >
-> **Güncel durum (2026-10-27):** H-094 Keşfet'in ürün tarafı tamam (18 sesli reel, yayın/geri çekme, "İlgi alanların" paneli). H-042 (hesap silme/geri alma, Hakkında, hatırlatma), H-095 (hukukçu cevapları), H-096 (21 Ekim takip incelemesi düzeltmeleri), H-097 (uçtan uca simülatör gezinmesi), H-098 (canlı arayüz geri bildirimleri), H-099 (Ana Sayfa kişisel önerileri) ve H-100 (Hi panelinde kişisel durum cümlesi) bitti. H-043'ün yerel kısmı bitti; gerçek telefon kontrolleri kaldı. H-092 pilotunda aşama A ve B birlikte **H-044 tamamlandıktan sonra** yapılır (kullanıcı kararı 2026-10-23: test telefonu yok). Sıradaki boş numara: **H-101**. Kredi, test sonuçları ve açık kararlar için tek kaynak: `yapilacaklar/IS-SIRASI.md`.
+> **Güncel durum (2026-10-27):** H-094 Keşfet'in ürün tarafı tamam (18 sesli reel, yayın/geri çekme, "İlgi alanların" paneli). H-042, H-095…H-101 bitti; H-101 marka simgelerini iOS/Android ve açılış ekranlarına uyguladı. H-001/H-003/H-006/H-008/H-015/H-016 kararları kapandı. H-043'ün yerel kısmı bitti; gerçek telefon kontrolleri kaldı. H-092 pilotunda aşama A ve B birlikte **H-044 tamamlandıktan sonra** yapılır (kullanıcı kararı 2026-10-23: test telefonu yok). Sıradaki boş numara: **H-102**. Kredi, test sonuçları ve durum için tek kaynak: `yapilacaklar/IS-SIRASI.md`.
 
 ## Güncel kararlar (v0.2, 2026-10-12)
 
@@ -18,7 +18,10 @@
 | Konuşma pratiği | **MVP'de yok.** v1'de (F2) Hi-B ile gelir: metin sohbeti, yerel LLM (Ollama) + RAG ile başlar; üretim sağlayıcısı ölçümle seçilir | H-007, H-047 |
 | Yaş | **Her yaş kullanır; hesap 13+.** 13 altı hesapsız tam kullanım (veri yalnız cihazda). AI sohbeti 18+; 13–17 rehberli mod. Hukukçu teyit etti (2026-10-21; veli onayı gerekmez) | H-002, H-047 |
 | Bölge, reklam | **Yalnızca Türkiye.** **Hiç reklam yok.** | H-018, H-020 |
-| AI bütçesi | **Aylık tavan 300 USD.** Tavan dolunca ücretli üretim ve AI özellikleri durur; günlük konuşma kotası v1 öncesi belirlenir | H-003 |
+| AI bütçesi | **Aylık tavan 300 USD.** Oturum bazlı kota: 18+ günde 1 sesli + 3 yazılı; 13–17 günde 1 rehberli yazılı; 13 altı AI sohbeti yok. %80'de yalnız metin, %100'de AI durur | H-003 |
+| Ses ve transkript | Ham ses saklanmaz; bulut ses işleme ayrı rıza ister. Transkript tutulursa yalnız geri bildirim için en fazla 30 gün; eğitim/reklam yok | H-008 |
+| Telaffuz | S1/S2'de sayısal puan yok. S3 yalnız Türk L1 insan doğrulamasından sonra; yüzde yerine 1–3 nitel nokta | H-015 |
+| Marka | **Hi**; konuşma balonu wordmark, mevcut kıyı paleti. Mağaza adı **Hi: İngilizce Öğren**, alt başlık **İngilizceyi hikâyeyle öğren** | H-016, H-101 |
 | Günlük hedef ve bildirim | 5 / 10 / 15 dk; günde en fazla 1 hatırlatma, saati kullanıcı seçer; kırık seri vurgulanmaz, dondurma ve onarma var | H-013, K-16 |
 | Seviye testi | Kademeli, en fazla ~20 soru, atlanabilir; sonuç "önerilen başlangıç seviyesi" | K-06 |
 | Sekmeler | Ana Sayfa · Keşfet · Hikâye · Konuş (MVP'de "yakında") · Profil | K-30 |
@@ -29,7 +32,7 @@
 | AI etiketi | Uygulama içi videolara gömülmez, bölüm başında ~4 sn not; sosyal medyada gömülü | CLAUDE.md Higgsfield kuralı 6 |
 | Çalışma ortamı | Her şey yerelde (Docker PostgreSQL, yerel içerik sunucusu, iOS simülatörü); sunucu, Bunny Stream, mağaza hesapları en sonda | H-044 |
 
-**Üretim yolu (pilotla doğrulandı, H-024):** GPT Image 2.5 sahne görselleri (9:16, low, 0,5 kr/görsel) → yerel Ken Burns hareket → kilit anlarda Seedance 2.0 Mini (5 kr / 5 sn) → ElevenLabs zaman damgalı ses (-16 LUFS) → yerel kurgu ve paket (`tools/content-pipeline/`). **Bölüm başına ~8,5 kr.** Sezon 1'in B1–B4'ü üretildi; B5–B12 diyalogları onaylı, üretimi kaldı (≈ 8 × 8,5 kr). Kalan Higgsfield kredisi **483,72** (2026-10-27; H-099'da harcama yok).
+**Üretim yolu (pilotla doğrulandı, H-024):** GPT Image 2.5 sahne görselleri (9:16, low, 0,5 kr/görsel) → yerel Ken Burns hareket → kilit anlarda Seedance 2.0 Mini (5 kr / 5 sn) → ElevenLabs zaman damgalı ses (-16 LUFS) → yerel kurgu ve paket (`tools/content-pipeline/`). **Bölüm başına ~8,5 kr.** Sezon 1'in B1–B12 üretimi tamamlandı ve haritada oynanabilir; kalan insan editör onayı H-028'dedir. Higgsfield kredisi **483,72** (2026-10-27; H-099/H-100/H-101'de harcama yok).
 
 
 ## Özet (1 dakikada)
@@ -148,7 +151,7 @@ Alt menü (öneri): **Bugün** · **Akış** (kısa videolar) · **Dersler** · 
 
 **Müfredat:** CEFR'e göre A1 → C1. Her seviyede ~8–10 ünite, her ünitede 4–6 ders. Toplam hedef 250–300 ders, **ama kademeli** (§11). MVP: A1–A2'de 20 ders.
 
-> **Güncel (H-029, K-25…K-27, H-050):** Ders yerine **etkileşimli hikâye bölümü** (5–8 dk, karar anları, yanlışta kibar tepki ve aynı karar anına dönüş). Sezon = seviye; MVP'de Sezon 1 (A1) = prolog + 12 bölüm. Bölüm doğrudan başlıkla açılır; görev ve hedef ifadeler 🎯 panelinde ve bölüm sonunda. Telaffuz puanı açık karar (H-015).
+> **Güncel (H-029, K-25…K-27, H-050, H-015):** Ders yerine **etkileşimli hikâye bölümü** (5–8 dk, karar anları, yanlışta kibar tepki ve aynı karar anına dönüş). Sezon = seviye; MVP'de Sezon 1 (A1) = prolog + 12 bölüm. Bölüm doğrudan başlıkla açılır; görev ve hedef ifadeler 🎯 panelinde ve bölüm sonunda. S1/S2'de sayısal telaffuz puanı yoktur.
 
 ### 4.2 Ayak 2 — Yapay zekâ konuşma pratiği
 
@@ -383,6 +386,12 @@ Hedef: kullanıcı sustuktan sonra **ilk sesin 1,5 saniyenin altında** gelmesi.
 - Sunucu Türkiye'ye yakın bir bölgede (AB) konumlanır.
 
 ### 6.4 Öneri
+
+> **Güncel karar (H-006, 2026-10-27):** Aşağıdaki ilk taslak sağlayıcı
+> önerisinin yerine Hi-B geliştirmesi yerel Ollama + RAG ile başlar. S1 STT
+> yalnız cihazdadır; bulut STT varsayılan değildir. İngilizce içerik TTS'i
+> ElevenLabs, Türkçe içerik TTS'i PatientDesk Alania'dır. Barındırılan LLM
+> yalnız ölçüm yetersizse ve H-044 sonrası ayrı onayla seçilir.
 
 - **MVP:** Konuşma pratiği yoktur.
 - **v1 başlangıç konfigürasyonu:**
@@ -636,7 +645,7 @@ Senaryo → Higgsfield CLI (Soul ID, video, ses) → kurgu → altyazı → QC �
 |---|---|---|
 | **F0: Kararlar + pilot** | Açık kararlar, Story Bible ve Sezon 1 planı, pilot bölüm (B1) + 3 klip, gerçek maliyet ölçümü | ✅ Bitti (H-024, H-029, H-030) |
 | **F1: MVP** | Hikâye modu (S1, A1), etkileşimli oynatıcı, harita, defter, ipucu panosu, FSRS, Keşfet, Hi-A, onboarding, hesap ve KVKK kalıpları, editör onayı; her şey yerelde, dış hesaplar en sonda (H-044) | 🔄 Sürüyor (`UYGULAMA-PLANI.md`) |
-| **F2: v1** | AI konuşma pratiği (Hi-B; metin, kotalı, 300 USD tavanlı), Sezon 2 (A2), ses rızası ve saklama kuralları (H-008), telaffuz kararı (H-015) | ⏳ |
+| **F2: v1** | AI konuşma pratiği (Hi-B; yerel Ollama + RAG ile başlar, oturum kotalı, 300 USD tavanlı), Sezon 2 (A2), H-008 ses/transkript kuralları; H-015'e göre sayısal telaffuz puanı yok | ⏳ |
 | **F3: v2** | Sezon 3 ve sonrası, çevrimdışı, gelişmiş seviye modeli | ⏳ |
 
 **İlk taslaktaki tablo (tarih için):**
@@ -699,13 +708,13 @@ Senaryo → Higgsfield CLI (Soul ID, video, ses) → kurgu → altyazı → QC �
 | **Çocuk kullanıcılar** (13–17 ve yaşını yanlış beyan eden 13 altı) | Yüksek | Yüksek | 13 altı kayıt yok, AI sohbeti 18+ ve 13–17 rehberli, reklam ve sosyal akış yok, Keşfet'te 20 dk sınır (K-15), suçlayıcı ya da bağımlılık yaratan dil yok |
 | **AI maliyeti** (v1 sohbet, içerik üretimi) | Orta | Yüksek | 300 USD/ay tavan, her ücretli çağrıdan önce kota ve bütçe kontrolü, tavan yoksa üretim kapalı, Higgsfield'da önce maliyet onayı |
 | **İçerik moderasyonu ve doğruluk** (LLM taslağı, çeviri, AI sohbet yanıtları) | Orta | Yüksek | Deterministik `content-lint`, kullanıcı onayı + dönemsel öğretmen kontrolü (H-028), AI'ın yayın yetkisi yok (K-05), v1'de bildir düğmesi |
-| **Medya saklama** (video barındırma, ham ses, transkript) | Orta | Orta | Medya nesne depolama/CDN'de (Bunny Stream adaptör arkasında), PostgreSQL'de blob yok, ham ses varsayılan saklanmaz (H-008), dış hesap kararı H-044 |
+| **Medya saklama** (video barındırma, ham ses, transkript) | Orta | Orta | Medya nesne depolama/CDN'de (Bunny Stream adaptör arkasında), PostgreSQL'de blob yok; ham ses saklanmaz, transkript en fazla 30 gün (H-008), dış hesap kararı H-044 |
 | **Yerel LLM kalite riski** (Hi-B, Ollama + RAG) | Orta | Orta | v1 öncesi Türk öğrenci örnekleriyle ölçüm; yetersizse barındırılan modele geçiş (`AiTutorPort` adaptörü, H-044); 13–17 rehberli mod |
-| **Ticari lisans** (ElevenLabs ücretsiz plan, kelime listeleri) | Orta | Yüksek | Yayından önce ticari ElevenLabs hesabı (H-006); CEFR-J atıfla, EVP/EGP ve Oxford listeleri kullanılmaz (H-027) |
+| **TTS erişimi/lisansı** (ElevenLabs ücretsiz plan, kelime listeleri) | Orta | Yüksek | Hukukçu görüşüne göre mevcut ücretsiz sesler yayında kullanılabilir; yeni ücretsiz anahtar 2026-10-27'de sağlayıcı tarafından engellendi, yeni üretim çalışan anahtar veya ayrı onaylı ücretli plan bekler (H-006). CEFR-J atıfla; EVP/EGP ve Oxford listeleri kullanılmaz (H-027) |
 
 ### 13.2 Kullanıcıya açık sorular (karar bekleyenler)
 
-> **Güncel (2026-10-12):** 1, 3, 4, 6, 8'in ad kısmı ve 9 karara bağlandı (H-002, H-004, H-005, H-018, H-016 ad yazımı, H-020). 2'nin tavanı kararlaştı (300 USD), kota ayrıntısı açık (H-003). Hâlâ açık: H-003 kota ayrıntısı, H-006 ticari ElevenLabs ve v1 sohbet sağlayıcısı, H-008 ses ve transkript saklama, H-015 telaffuz puanı, H-016 logo/palet/mağaza adı, H-037 öncesi giriş yöntemi, H-001 bu planın son onayı.
+> **Güncel (2026-10-27):** H-001, H-003, H-006, H-008, H-015 ve H-016 kapandı; ayrıntı `docs/KARARLAR-2026-10-27.md`. Plan v0.2 onaylıdır. H-016 marka kararı H-101 ile yerel simgelere uygulandı. Dış hesap, sunucu ve mağaza işleri H-044'te en sona bırakılmıştır. ElevenLabs yeni üretimi çalışan anahtar/ayrı onaylı ücretli plan bekler.
 
 **İlk taslaktaki sorular (tarih için):**
 

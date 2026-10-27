@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- H-043: Android 12+ sistem açılış ekranı (simge + zemin) kum renginde;
-     GEÇİCİ simge, asıl logo H-016. Geri kalanı values/styles.xml ile aynı. -->
+<!-- H-101: Android 12+ sistem açılış ekranı H-016 deniz mavisi zemininde;
+     geri kalanı values/styles.xml ile aynı. -->
 <resources>
     <style name="LaunchTheme" parent="@android:style/Theme.Light.NoTitleBar">
         <item name="android:windowBackground">@drawable/launch_background</item>

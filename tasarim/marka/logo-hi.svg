@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <title>Hi — uygulama simgesi</title>
+  <desc>Deniz mavisi zemin, kum rengi konuşma balonu ve fener sarısı ışık.</desc>
+  <rect width="1024" height="1024" fill="#1F4E79"/>
+  <path d="M310 210h404c88 0 160 72 160 160v200c0 88-72 160-160 160H430l-126 100V730h-4c-88 0-150-72-150-160V370c0-88 72-160 160-160z" fill="#F7F1E6"/>
+  <circle cx="772" cy="286" r="38" fill="#F2B33D"/>
+  <circle cx="772" cy="286" r="18" fill="#FFF4C9"/>
+  <text x="512" y="492" text-anchor="middle" dominant-baseline="central"
+        font-family="Nunito, Arial, sans-serif" font-size="348" font-weight="700"
+        fill="#1F4E79" letter-spacing="-8">Hi</text>
+</svg>

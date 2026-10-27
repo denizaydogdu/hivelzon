@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- H-043: GEÇİCİ uyarlanabilir simge (asıl logo H-016); üretim:
-     mobile/tool/placeholder_icons.sh -->
+<!-- H-101: H-016 marka kararındaki uyarlanabilir Hi simgesi; üretim:
+     mobile/tool/brand_icons.sh -->
 <adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
     <background android:drawable="@color/ic_launcher_background" />
     <foreground android:drawable="@mipmap/ic_launcher_foreground" />

@@ -1,6 +1,6 @@
 # H-023: İş planını şartnameyle güncelle
 
-- **Durum:** Devam ediyor (2026-10-12; belge güncellendi, kullanıcının gözden geçirmesi ve H-001 onayı bekleniyor)
+- **Durum:** Bitti (2026-10-27; H-001 onayıyla)
 - **Tür:** Belge
 - **Öncelik:** Yüksek
 - **Bağımlılık:** H-007, H-021, H-022
@@ -29,3 +29,4 @@ H-007 kararlarına göre `docs/IS-PLANI.md`'yi şartnameyle uyumlu hâle getirme
 - `docs/SARTNAME.md` gövdesi değiştirilmedi; başına "Güncel karar notları (2026-10-12)" kutusu eklendi. §10'daki `DELETION_PENDING` / `PENDING_DELETION` uyumsuzluğu ve eksik `refresh_tokens` / roller için not düşüldü; kesinleştirme H-037'de.
 - CLAUDE.md çelişki tablosu "çözüldü" olarak güncellendi; yalnızca telaffuz puanı (H-015) açık.
 - **Kalan kabul kriteri:** kullanıcı güncel planı onaylar (H-001).
+2026-10-27: H-001 onayı verildi (karar yetkisi ajana devredildi). Plan v0.2 onaylandı; H-023'ün bütün kabul kriterleri tamamlandı. Ayrıntı: `docs/KARARLAR-2026-10-27.md`.

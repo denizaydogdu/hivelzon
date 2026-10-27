@@ -20,7 +20,13 @@ import 'transition_metrics.dart';
 ///   ("Hedef ifadeleri söyle"). `HV_FAKE_SPEECH` ile birlikte kullanılır.
 /// - `h050`: sezon jeneriği (ilk açılış), B1 başlık ekranı ve 🎯 paneli, B2
 ///   başlık → "Önceki bölümde" + "Atla" (H-050). Yalnızca B1 ve B2 oynar.
+/// - `h085`: yalnız B5–B12'yi baştan sona oynatır; her kararda önce yanlış,
+///   sonra doğru yolu dener ve bölüm özetlerini Hikâye ekranında yazar.
 const String kAutoplayMode = String.fromEnvironment('AUTOPLAY_TEST');
+
+/// Uzun doğrulama turları bağlantı koparsa belirli bir bölümden sürsün.
+/// Yalnız `h085` turunda kullanılır (ör. `A1-006`).
+const String kAutoplayFrom = String.fromEnvironment('AUTOPLAY_FROM');
 
 bool get autoplayEnabled =>
     kAutoplayMode.isNotEmpty && kAutoplayMode != 'false';

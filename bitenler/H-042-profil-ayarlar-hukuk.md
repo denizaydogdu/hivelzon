@@ -60,5 +60,5 @@ Kendi dalında (`h-042-profil-ayarlar-hukuk`) yapılır; `main`'e alınmadan ön
 - **Açık:**
   - Hukuk metinlerinin kesin hâli hukukçudan gelecek (`HUKUK-SORULARI.md`).
   - Octanove veri dosyası henüz depoda yok; atıf ileriye dönük.
-  - Android bildirim ikonu şimdilik uygulama ikonu (`@mipmap/ic_launcher`); tek renkli ikon H-016 logo işiyle.
+  - Android bildirim ikonu şimdilik uygulama ikonu (`@mipmap/ic_launcher`); ayrı tek renkli bildirim ikonu gerekirse mağaza öncesi cihaz kontrolünde ele alınır. H-016/H-101 uygulama simgesi 2026-10-27'de tamamlandı.
   - Kabul kriterinin canlı backend'le cihazda denenmesi pilot ortamı dışında yapılmalı.

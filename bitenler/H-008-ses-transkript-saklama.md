@@ -1,6 +1,6 @@
 # H-008: Ham ses ve transkript saklama politikası
 
-- **Durum:** Yapılacak (kullanıcı kararı)
+- **Durum:** Bitti (2026-10-27)
 - **Tür:** Karar
 - **Öncelik:** Yüksek
 - **Bağımlılık:** H-006 (sağlayıcının veri koşulları)
@@ -16,3 +16,4 @@ Ham ses hiç saklanmasın: bellekte işlenip atılsın, diske yazılmasın. Tran
 
 ## Notlar
 2026-10-11: `docs/SARTNAME.md` ve `docs/IS-PLANI.md` karşılaştırmasından açıldı.
+2026-10-27: **Kullanıcı kararı (ajana devir):** Ham ses hiç saklanmaz; S1'de cihazda işlenir. v1'de bulut ses işleme ancak ayrı `VOICE_PROCESSING` rızasıyla açılır. Transkript tutulursa en fazla 30 gün, yalnız geri bildirim için; model eğitimi/reklam/analitik yok, kullanıcı erken silebilir, hesap silinince silinir. Öğrenme olayı olarak yalnız sonuç ve hata türü tutulur. Erişim yalnız kullanıcı; destek erişimi kullanıcı talebiyle ve kayıt altında. Rıza/denetim kayıtları 2 yıl (H-095). Ayrıntı: `docs/KARARLAR-2026-10-27.md`.

@@ -1,6 +1,6 @@
 # H-016: Marka ve görsel kimlik
 
-- **Durum:** Yapılacak (kullanıcı kararı)
+- **Durum:** Bitti (2026-10-27; karar + konsept; simge entegrasyonu H-101)
 - **Tür:** Karar
 - **Öncelik:** Orta
 - **Bağımlılık:** H-005
@@ -20,3 +20,4 @@ Logo ve palet `higgsfield-brandkit` ile denensin; üretimden önce maliyet göst
 2026-10-11: **Ad yazımı: hiVelzon** (eski karar). Claude'un yazdığı belgeler buna çevrildi. Kullanıcının olduğu gibi kaydedilen belgeleri (SARTNAME, ICERIK-STRATEJISI, HIKAYE-EVRENI) değiştirilmedi.
 2026-10-14: Yazı tipi kararı tasarım yenilemesiyle verildi (başlıklar yuvarlak/sıcak: Nunito ya da Fredoka; metin Inter; OFL, gömülü). Logo, palet ve "Port Lumen" ad kontrolü bu işte açık.
 2026-10-24: **Yeni kullanıcı kararı:** uygulamanın bütün ekranlarda ve iOS/Android uygulama etiketinde görünen adı **Hi**. Depo, paket ve iç teknik adlar `hiVelzon`; hukuki şirket Velzon Bilişim Teknolojileri Ltd. Şti. olarak kalır. **Açık kalan:** logo, palet, mağaza alt başlığı ve "Port Lumen" ad kontrolü.
+2026-10-27: **Kullanıcı kararı (ajana devir):** Logo, konuşma balonu içinde "Hi" wordmark'ı; deniz mavisi zemin, kum balon, fener sarısı ışık. Maskot yüzü logoya gömülmez. Palet mevcut `AppPalette` (deniz mavisi `#1F4E79`, fener sarısı `#F2B33D`, kum `#F7F1E6`, mürekkep `#2B2B2B`, akşam turuncusu `#E98A3C`). Mağaza adı **Hi: İngilizce Öğren**; Apple alt başlığı **İngilizceyi hikâyeyle öğren**; Google kısa açıklama **Hikâyelerle İngilizce öğren: oku, dinle, konuş.** "Port Lumen" yalnız hikâye mekânı, marka adı değil. Konsept: `tasarim/marka/logo-hi.svg` ve `logo-hi-1024.png`. Uygulama simgesi/mağaza görselleri H-101'de. Ayrıntı: `docs/KARARLAR-2026-10-27.md`.
