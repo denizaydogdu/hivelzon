@@ -12,6 +12,7 @@ import 'package:hivelzon/features/notebook/presentation/notebook_screen.dart';
 import 'package:hivelzon/features/notebook/presentation/review_screen.dart';
 import 'package:hivelzon/features/player/data/progress_repository.dart';
 import 'package:hivelzon/features/profile/data/user_profile_store.dart';
+import 'package:hivelzon/l10n/tr_strings.dart';
 import 'package:hivelzon/shared/content/content_providers.dart';
 import 'package:hivelzon/shared/meaning/learning_event_log.dart';
 import 'package:hivelzon/shared/storage/app_database.dart';
@@ -467,7 +468,8 @@ void main() {
     await pump(tester, '/');
     await settle(tester);
     expect(find.text('Merhaba Deniz!'), findsOneWidget);
-    expect(find.text('Bugün için önerimiz:'), findsOneWidget);
+    // H-099: sabit "Bugün için önerimiz:" yerine kişisel durum satırı.
+    expect(find.text(HomeTexts.contextFirstEpisode), findsOneWidget);
     await tester.pumpWidget(const SizedBox());
     await settle(tester);
   });

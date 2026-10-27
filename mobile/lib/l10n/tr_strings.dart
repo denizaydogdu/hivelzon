@@ -45,12 +45,58 @@ abstract final class TabTexts {
 abstract final class HomeTexts {
   static String greeting(String? name) =>
       name == null || name.isEmpty ? 'Merhaba!' : 'Merhaba $name!';
-  static const subtitle = 'Bugün için önerimiz:';
+
+  /// Plan hazırlanırken selamın altında görünen sakin satır.
+  static const subtitleLoading = 'Bugün için bir adım hazırlıyorum…';
+
+  // Kişisel durum satırı (H-099): kullanıcının bugünkü durumunu söyler;
+  // kart ne yapacağını söyler. Aynı cümleyi tekrarlamaz.
+  static const contextFirstEpisode =
+      'İlk bölüm seni bekliyor; birlikte başlayalım.';
+  static String contextNextEpisode(int done) => done <= 1
+      ? 'İlk bölümü bitirdin; sıradaki hazır.'
+      : '$done bölüm bitirdin; sıradaki hazır.';
+  static const contextFreshEpisode =
+      'Bugün burada bıraktın; kaldığın yerden sürdürelim.';
+  static const contextYesterdayEpisode =
+      'Dün burada bıraktın; kaldığın yerden devam edelim.';
+  static String contextWaitingEpisode(int days) =>
+      '$days gündür burada bekliyor; kaldığın yerden devam edelim.';
+  static const contextLongBreak =
+      'Bir süredir yoktun; kısa bir tekrarla başlayalım.';
+  static const contextBackAfterBreak =
+      'Bir süredir yoktun; bıraktığın yerden devam edelim.';
+  static const contextReview = 'Bugün kısa bir tekrarla başlayalım.';
+  static const contextNote =
+      'Son günlerde aynı noktada takıldın; birlikte bakalım.';
+  static const contextContinueBook = 'Kaldığın kitabın sayfası seni bekliyor.';
+  static const contextBookAdvanced =
+      'Seviyene uygun kısa bir kitapla devam edelim.';
+  static const contextBookListen =
+      'Bugünkü işler bitti; kulağın için kısa bir kitap var.';
+  static const contextHunt = 'Bugünün küçük görevi hazır; birkaç nesne saklı.';
+  static String contextTalkFirstWeek(int day) =>
+      'İlk haftanın $day. günü; bugün sıra konuşmada.';
+  static const contextTalk = 'Öğrendiklerini kullanma zamanı.';
+  static const contextGrammar = 'Bugün kısa bir dilbilgisi molası.';
+  static const contextMainDone =
+      'Bugünkü ana adımı bitirdin; şimdi küçük bir görev var.';
+  static const contextMainDoneReview =
+      'Bugünkü ana adımı bitirdin; yeni ifadeler kısa bir tekrar bekliyor.';
+  static const contextMainDoneNote =
+      'Bugünkü ana adımı bitirdin; Hi\'nin notuna bakalım.';
+  static const contextReviewDone =
+      'Kısa tekrarı tamamladın; sırada ana adım var.';
+  static const contextRest =
+      'Bugünlük yeni bir adım yok; dilediğin zaman tekrar edebilirsin.';
+  static const contextRestDismissed =
+      'Bugünlük başka önerim yok; yarın kaldığımız yerden devam ederiz.';
+  static const contextDefault = 'Bugün için küçük bir adım hazırladım.';
 
   // Bugünün planı (H-088): Hi'nin önerisiyle aynı karar.
   static const planSection = 'Bugünün planı';
   static const stepWarmUp = 'Kısa tekrar';
-  static const stepScene = 'Sahne';
+  static const stepScene = 'Bölüm';
   static const stepReading = 'Okuma';
   static const stepTask = 'Küçük görev';
   static String stepState(String label, String state) => '$label $state';
@@ -60,6 +106,16 @@ abstract final class HomeTexts {
   static String stepsSemantics(List<String> parts) =>
       'Bugünün planı: ${parts.join(', ')}';
 
+  /// Kart üstündeki süre/hedef satırı (H-099). Gerekçe metni süreyi
+  /// yinelemez; "ne kadar sürer?" sorusu tek yerde yanıtlanır.
+  static String minutesLabel(int minutes) => '~$minutes dk';
+  static String fitsGoal() => 'Hedefe uygun';
+  static String overGoal() => 'Hedefi aşar';
+  static String planMetaSemantics(int minutes, int goal, bool fits) => fits
+      ? 'Yaklaşık $minutes dakika; günlük hedefine sığar.'
+      : 'Yaklaşık $minutes dakika; günlük hedefin $goal dakika. '
+            'İstediğin yerde bırakabilirsin.';
+
   /// B1+ yerleştirmede hikâye isteğe bağlıdır (H-088).
   static const storyOptional = 'İsteğe bağlı';
   static const storyOptionalBody =
@@ -67,7 +123,9 @@ abstract final class HomeTexts {
       'için oynayabilirsin.';
 
   // Çalışma araçları (H-088): Defter ve Kelime tekrarı tek dokunuşla.
-  static const toolsSection = 'Çalışma araçların';
+  // H-099: bugünkü tek adımın dışında oldukları açıkça söylenir.
+  static const toolsSection = 'İstersen kendin çalış';
+  static const toolsOptional = 'Bugünkü adımın yukarıda; bunlar isteğe bağlı.';
   static const notebookTool = 'Defter';
   static const notebookToolBody = 'İfadelerin, ipuçların ve konu setlerin.';
 
@@ -77,7 +135,7 @@ abstract final class HomeTexts {
   static String seasonProgress(int done, int total) => done <= 0
       ? 'Bu sezonda $total bölüm var.'
       : 'Bu sezonda $total bölümden ${possessiveNumber(done)} bitti.';
-  static const play = 'Başla';
+  static const play = 'Bölümü başlat';
   static const resume = 'Devam et';
   static const replay = 'Tekrar oyna';
   static const goToMap = 'Haritaya git';
@@ -1302,102 +1360,84 @@ abstract final class HiTexts {
   static const quickSets = 'Konu setleri';
   static const loading = 'Hi hazırlanıyor…';
 
-  static String _minutes(int? est, int goal) {
-    if (est == null || est <= 0) return '';
-    if (est <= goal) {
-      return ' Yaklaşık $est dk sürer; günlük hedefine ($goal dk) sığar.';
-    }
-    return ' Yaklaşık $est dk sürer. Günlük hedefin $goal dk; istediğin yerde '
-        'bırakıp sonra devam edebilirsin.';
-  }
-
   // a) yarım bölüm
   static String continueTitle(String title) => 'Hikâyeye devam: $title';
-  static String continueReason(int number, int? est, int goal) =>
+  static String continueReason(int number) =>
       'Bölüm ${accusativeNumber(number)} yarıda bırakmıştın; kaldığın '
-      'sahneden devam edersin.${_minutes(est, goal)}';
+      'sahneden devam edersin.';
 
   /// Uzun süredir yarım duran bölüm (H-088): önce tekrar ve not gelir.
-  static String continueStaleReason(int number, int? est, int goal) =>
+  static String continueStaleReason(int number) =>
       'Bölüm ${accusativeNumber(number)} bir süre önce yarıda bırakmıştın. '
-      'Kaldığın sahne yerinde; istediğin zaman oradan sürersin.'
-      '${_minutes(est, goal)}';
+      'Kaldığın sahne yerinde; istediğin zaman oradan sürersin.';
   static const continueAction = 'Devam et';
 
   // b) kelime tekrarı
   static const reviewTitle = 'Kelime tekrarı';
-  static String reviewReason(int n, int minutes, int goal) =>
+  static String reviewReason(int n) =>
       '$n ifadenin tekrar zamanı geldi. Zamanında tekrar edilen ifade daha '
-      'kolay hatırlanır.${_minutes(minutes, goal)}';
-  static const reviewAction = 'Tekrara başla';
+      'kolay hatırlanır.';
+  static String reviewAction(int n) =>
+      n <= 0 ? 'Tekrara başla' : '$n ifadeyi tekrarla';
 
   /// Uzun aradan sonra (H-088): sıcak karşılama, suçlama yok.
-  static String reviewAfterBreakReason(int n, int minutes, int goal) =>
+  static String reviewAfterBreakReason(int n) =>
       'Tekrar hoş geldin! Kısa bir tekrarla başlamak işini kolaylaştırır; '
-      '$n ifadenin tekrar zamanı geldi.${_minutes(minutes, goal)}';
+      '$n ifadenin tekrar zamanı geldi.';
 
   // c) tekrarlayan hata türü
   static String noteTitle(String label) => "Hi'nin notu: $label";
   static String noteReason(String typeLabel, int n) =>
       'Son 7 günde "$typeLabel" konusunda $n kez takıldın. Bu çok olağan; '
-      'Türkçeyle karşılaştıran kısa bir not var, 1 dk sürer.';
+      'Türkçeyle karşılaştıran kısa bir not var.';
   static const noteAction = 'Notu aç';
   static const notebookTitle = 'Defterine göz at';
   static String notebookReason(String typeLabel, int n) =>
       'Son 7 günde "$typeLabel" konusunda $n kez yeniden denedin. '
-      'Kartlarına bir kez bakmak hatırlamayı kolaylaştırır; 2 dk sürer.';
+      'Kartlarına bir kez bakmak hatırlamayı kolaylaştırır.';
   static const notebookAction = 'Defteri aç';
 
   // d) sıradaki bölüm
   static String startTitle(String title) => 'Sıradaki bölüm: $title';
-  static String startReason(int number, int done, int? est, int goal) =>
-      (done == 0 || number <= 1
-          ? 'Hikâye buradan başlıyor.'
-          : 'Bölüm ${accusativeNumber(number - 1)} bitirdin; Bölüm $number '
-                'seni bekliyor.') +
-      _minutes(est, goal);
-  static const startAction = 'Başla';
+  static String startReason(int number, int done) => done == 0 || number <= 1
+      ? 'Hikâye buradan başlıyor.'
+      : 'Bölüm ${accusativeNumber(number - 1)} bitirdin; Bölüm $number '
+            'seni bekliyor.';
+  static const startAction = 'Bölümü başlat';
 
   // e) sahne avı
   static String huntTitle(String set) => 'Sahne avı: $set';
   static String huntReason(String set, int? episode) =>
       '${episode == null ? 'Bölümü' : 'Bölüm ${accusativeNumber(episode)}'} '
-      'bitirince "$set" seti açıldı. Nesneleri resimde bul; süre yok, '
-      'yaklaşık 3 dk.';
-  static const huntAction = 'Sahne avına başla';
+      'bitirince "$set" seti açıldı. Nesneleri resimde bul; süre yok.';
+  static const huntAction = 'Nesneleri bul';
 
   // g) yarım kitap (H-067)
   static String continueBookTitle(String title) => 'Kitaba devam: $title';
-  static String continueBookReason(
-    String title,
-    int percent,
-    int? est,
-    int goal,
-  ) =>
+  static String continueBookReason(String title, int percent) =>
       '"$title" kitabının %$percent kadarını okudun; kaldığın cümleden '
-      'devam edersin.${_minutes(est, goal)}';
+      'devam edersin.';
   static const continueBookAction = 'Kitaba devam et';
 
   // h) kitap başla (H-067)
   static String startBookTitle(String title) => 'Bir kitap dinle: $title';
-  static String startBookReason(String level, int? est, int goal) =>
+  static String startBookReason(String level) =>
       'Bugünkü işlerin bitti. İstersen $level seviyesinde kısa bir kitabı '
-      'dinleyerek kulağını çalıştır.${_minutes(est, goal)}';
-  static const startBookAction = 'Dinlemeye başla';
+      'dinleyerek kulağını çalıştır.';
+  static const startBookAction = 'Kitabı dinle';
 
   // h') seviyesindeki kitap: B1+ yerleştirmede birincil öneri (H-088).
   static String levelBookTitle(String title) => 'Seviyene uygun kitap: $title';
-  static String levelBookReason(String level, int? est, int goal) =>
+  static String levelBookReason(String level) =>
       'Seviye testin $level seviyesini önerdi. Bu seviyedeki kısa bir kitap '
-      'sana uygun; ister dinle, ister kendin oku.${_minutes(est, goal)}';
+      'sana uygun; ister dinle, ister kendin oku.';
   static const levelBookAction = 'Kitabı aç';
 
   // i) dilbilgisi (H-078): oynanan bölümde ya da okunan kitapta geçen,
   // bitirilmemiş konu.
   static String grammarTitle(String title) => 'Kısa bir konu: $title';
-  static String grammarReason(String source, int? est, int goal) =>
-      '$source bu yapı geçti. İstersen Türkçe ve kısaca anlatayım.'
-      '${_minutes(est, goal)}';
+  static String grammarReason(String source) =>
+      '$source bu yapı geçti. İstersen Türkçe ve kısaca anlatayım.';
   static String grammarSourceEpisode(String title) => '"$title" bölümünde';
   static String grammarSourceBook(String title) => '"$title" kitabında';
   static const grammarAction = 'Konuyu aç';
@@ -2336,8 +2376,6 @@ abstract final class TalkPlanTexts {
     required bool scene,
     int? episode,
     String? character,
-    int? minutes,
-    required int goal,
   }) {
     final first = day == null ? '' : 'İlk haftanın $day. günü. ';
     final now = episode == null
@@ -2348,15 +2386,10 @@ abstract final class TalkPlanTexts {
               'konuşmayı sen yap. Söyleyerek ya da dokunarak cevap verirsin; '
               'puan yok.'
         : '$now öğrendiklerinle kısa bir mesaj yaz. Puan yok.';
-    final m = minutes == null || minutes <= 0
-        ? ''
-        : minutes <= goal
-        ? ' Yaklaşık $minutes dk sürer.'
-        : ' Yaklaşık $minutes dk sürer; istediğin yerde bırakabilirsin.';
-    return '$first$body$m';
+    return '$first$body';
   }
 
-  static const sceneAction = 'Sahneye başla';
+  static const sceneAction = 'Konuşmaya başla';
   static const messageAction = 'Mesajı yaz';
 }
 

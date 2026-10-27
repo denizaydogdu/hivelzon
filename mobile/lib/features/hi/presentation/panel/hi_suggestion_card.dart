@@ -54,6 +54,26 @@ class HiSuggestionCard extends StatelessWidget {
               key: const ValueKey('hi-suggestion-reason'),
               style: theme.textTheme.bodyLarge,
             ),
+            if (s.minutes != null && s.minutes! > 0) ...[
+              const SizedBox(height: AppSpacing.xs),
+              Row(
+                key: const ValueKey('hi-suggestion-minutes'),
+                children: [
+                  Icon(
+                    Icons.schedule_rounded,
+                    size: 18,
+                    color: theme.colorScheme.onSurfaceVariant,
+                  ),
+                  const SizedBox(width: AppSpacing.xs),
+                  Text(
+                    HomeTexts.minutesLabel(s.minutes!),
+                    style: theme.textTheme.labelLarge?.copyWith(
+                      color: theme.colorScheme.onSurfaceVariant,
+                    ),
+                  ),
+                ],
+              ),
+            ],
             if (s.hasAction && s.actionLabel != null) ...[
               const SizedBox(height: AppSpacing.sm),
               FilledButton(

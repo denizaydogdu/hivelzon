@@ -180,8 +180,6 @@ void main() {
           scene: t.scene,
           episode: t.unlockEpisode,
           character: t.characterTr,
-          minutes: 12,
-          goal: 10,
         );
         for (final bad in [
           'yanlış',

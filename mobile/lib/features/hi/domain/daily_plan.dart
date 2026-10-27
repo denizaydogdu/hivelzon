@@ -94,6 +94,7 @@ class DailyPlan {
     required this.primary,
     required this.steps,
     required this.queue,
+    required this.contextLine,
     this.advanced = false,
   });
 
@@ -107,12 +108,16 @@ class DailyPlan {
   /// zaman "Bugünlük bu kadar yeter".
   final List<HiSuggestion> queue;
 
+  /// Ana Sayfa selamının altındaki kişisel durum cümlesi (H-099): "Dün
+  /// burada bıraktın." Kart ise ne yapılacağını söyler; bu satır yalnızca
+  /// kullanıcının bugünkü durumunu anlatır.
+  final String contextLine;
+
   /// Seviye testi B1+ (hikâye isteğe bağlı, kitap birincil).
   final bool advanced;
 }
 
 DailyPlan planToday(CoachInput i) {
-  final goal = i.dailyGoalMinutes;
   final advanced = isAdvancedLevel(i.level);
   final last = i.lastActiveAt;
   final longBreak = last != null && i.now.difference(last) >= kLongBreak;
@@ -133,12 +138,8 @@ DailyPlan planToday(CoachInput i) {
           kind: HiSuggestionKind.continueEpisode,
           title: HiTexts.continueTitle(ip.title),
           reasonTr: staleEpisode
-              ? HiTexts.continueStaleReason(
-                  ip.number,
-                  ip.estimatedMinutes,
-                  goal,
-                )
-              : HiTexts.continueReason(ip.number, ip.estimatedMinutes, goal),
+              ? HiTexts.continueStaleReason(ip.number)
+              : HiTexts.continueReason(ip.number),
           actionLabel: HiTexts.continueAction,
           actionRoute: '/play/${ip.contentId}?mode=resume',
           minutes: ip.estimatedMinutes,
@@ -154,7 +155,7 @@ DailyPlan planToday(CoachInput i) {
     return HiSuggestion(
       kind: HiSuggestionKind.continueBook,
       title: HiTexts.continueBookTitle(ib.title),
-      reasonTr: HiTexts.continueBookReason(ib.title, ib.percent, est, goal),
+      reasonTr: HiTexts.continueBookReason(ib.title, ib.percent),
       actionLabel: HiTexts.continueBookAction,
       actionRoute: '/kitap/${ib.bookId}',
       minutes: est,
@@ -167,12 +168,7 @@ DailyPlan planToday(CoachInput i) {
       : HiSuggestion(
           kind: HiSuggestionKind.startEpisode,
           title: HiTexts.startTitle(nx.title),
-          reasonTr: HiTexts.startReason(
-            nx.number,
-            i.completedCount,
-            nx.estimatedMinutes,
-            goal,
-          ),
+          reasonTr: HiTexts.startReason(nx.number, i.completedCount),
           actionLabel: HiTexts.startAction,
           actionRoute: '/play/${nx.contentId}',
           minutes: nx.estimatedMinutes,
@@ -187,11 +183,7 @@ DailyPlan planToday(CoachInput i) {
       ? HiSuggestion(
           kind: HiSuggestionKind.startBook,
           title: HiTexts.levelBookTitle(sb.title),
-          reasonTr: HiTexts.levelBookReason(
-            sb.level,
-            sb.estimatedMinutes,
-            goal,
-          ),
+          reasonTr: HiTexts.levelBookReason(sb.level),
           actionLabel: HiTexts.levelBookAction,
           actionRoute: '/kitap/${sb.bookId}',
           minutes: sb.estimatedMinutes,
@@ -200,11 +192,7 @@ DailyPlan planToday(CoachInput i) {
       : HiSuggestion(
           kind: HiSuggestionKind.startBook,
           title: HiTexts.startBookTitle(sb.title),
-          reasonTr: HiTexts.startBookReason(
-            sb.level,
-            sb.estimatedMinutes,
-            goal,
-          ),
+          reasonTr: HiTexts.startBookReason(sb.level),
           actionLabel: HiTexts.startBookAction,
           actionRoute: '/kitap/${sb.bookId}?mod=dinle',
           minutes: sb.estimatedMinutes,
@@ -229,7 +217,7 @@ DailyPlan planToday(CoachInput i) {
       : HiSuggestion(
           kind: HiSuggestionKind.grammarSuggest,
           title: HiTexts.grammarTitle(g.titleTr),
-          reasonTr: HiTexts.grammarReason(g.sourceTr, g.minutes, goal),
+          reasonTr: HiTexts.grammarReason(g.sourceTr),
           actionLabel: HiTexts.grammarAction,
           actionRoute: '/dilbilgisi/${g.lessonId}',
           minutes: g.minutes,
@@ -249,8 +237,6 @@ DailyPlan planToday(CoachInput i) {
             scene: tk.scene,
             episode: tk.unlockEpisode,
             character: tk.characterTr,
-            minutes: tk.minutes,
-            goal: goal,
           ),
           actionLabel: tk.scene
               ? TalkPlanTexts.sceneAction
@@ -263,11 +249,11 @@ DailyPlan planToday(CoachInput i) {
   final dueWarm =
       i.reviewDue >= kReviewThreshold || (longBreak && i.reviewDue > 0);
   final warm = <HiSuggestion?>[
-    if (dueWarm) reviewSuggestion(i.reviewDue, goal, afterBreak: longBreak),
+    if (dueWarm) reviewSuggestion(i.reviewDue, afterBreak: longBreak),
     repeatedErrorSuggestion(i),
   ];
   final smallReview = !dueWarm && i.reviewDue > 0
-      ? reviewSuggestion(i.reviewDue, goal, stage: PlanStage.task)
+      ? reviewSuggestion(i.reviewDue, stage: PlanStage.task)
       : null;
 
   // B1+: hikâye isteğe bağlıdır; kitap ve kısa görevden sonra gelir.
@@ -363,8 +349,93 @@ DailyPlan planToday(CoachInput i) {
     primary: primary,
     steps: steps,
     queue: ordered.skip(1).toList(),
+    contextLine: _contextLine(
+      i: i,
+      primary: primary,
+      advanced: advanced,
+      longBreak: longBreak,
+      freshEpisode: freshEpisode,
+      firstWeekDay: day,
+      hasDismissed: anyDismissed,
+    ),
     advanced: advanced,
   );
+}
+
+/// Selamın altındaki kişisel durum cümlesi (H-099). Kartın söylediği eylemi
+/// yinelemez; yalnızca "bugün bende ne var?" sorusunu yanıtlar.
+String _contextLine({
+  required CoachInput i,
+  required HiSuggestion primary,
+  required bool advanced,
+  required bool longBreak,
+  required bool freshEpisode,
+  required int? firstWeekDay,
+  required bool hasDismissed,
+}) {
+  if (primary.kind == HiSuggestionKind.rest) {
+    return hasDismissed
+        ? HomeTexts.contextRestDismissed
+        : HomeTexts.contextRest;
+  }
+  if (longBreak) {
+    return primary.kind == HiSuggestionKind.review
+        ? HomeTexts.contextLongBreak
+        : HomeTexts.contextBackAfterBreak;
+  }
+  if (i.mainDoneToday && primary.stage == PlanStage.task) {
+    return HomeTexts.contextMainDone;
+  }
+  if (i.mainDoneToday) {
+    if (primary.kind == HiSuggestionKind.review) {
+      return HomeTexts.contextMainDoneReview;
+    }
+    if (primary.kind == HiSuggestionKind.errorNote ||
+        primary.kind == HiSuggestionKind.notebook) {
+      return HomeTexts.contextMainDoneNote;
+    }
+  }
+  if (i.reviewedToday && primary.stage == PlanStage.main) {
+    return HomeTexts.contextReviewDone;
+  }
+  return switch (primary.kind) {
+    HiSuggestionKind.continueEpisode => _episodeContext(i, freshEpisode),
+    HiSuggestionKind.startEpisode =>
+      i.completedCount == 0
+          ? HomeTexts.contextFirstEpisode
+          : HomeTexts.contextNextEpisode(i.completedCount),
+    HiSuggestionKind.review => HomeTexts.contextReview,
+    HiSuggestionKind.errorNote ||
+    HiSuggestionKind.notebook => HomeTexts.contextNote,
+    HiSuggestionKind.continueBook => HomeTexts.contextContinueBook,
+    HiSuggestionKind.startBook =>
+      advanced ? HomeTexts.contextBookAdvanced : HomeTexts.contextBookListen,
+    HiSuggestionKind.sceneHunt => HomeTexts.contextHunt,
+    HiSuggestionKind.talk =>
+      firstWeekDay == null
+          ? HomeTexts.contextTalk
+          : HomeTexts.contextTalkFirstWeek(firstWeekDay),
+    HiSuggestionKind.grammarSuggest => HomeTexts.contextGrammar,
+    HiSuggestionKind.rest => HomeTexts.contextRest,
+  };
+}
+
+String _episodeContext(CoachInput i, bool freshEpisode) {
+  final played = i.inProgress?.lastPlayedAt;
+  if (freshEpisode || played == null) return HomeTexts.contextFreshEpisode;
+  final days = _localDayNumber(i.now) - _localDayNumber(played);
+  if (days <= 1) return HomeTexts.contextYesterdayEpisode;
+  return HomeTexts.contextWaitingEpisode(days);
+}
+
+int _localDayNumber(DateTime t) {
+  final local = t.toLocal();
+  return DateTime.utc(
+        local.year,
+        local.month,
+        local.day,
+      ).millisecondsSinceEpoch ~/
+      Duration.millisecondsPerDay;
 }
 
 bool _sameLocalDay(DateTime a, DateTime b) {

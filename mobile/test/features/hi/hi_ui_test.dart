@@ -369,13 +369,15 @@ void main() {
       ),
       findsOneWidget,
     );
-    // H-088: aynı gerekçe Ana Sayfa kartında ve panelde (tek karar).
+    // H-088/H-099: aynı gerekçe Ana Sayfa kartında ve panelde (tek karar);
+    // süre artık gerekçenin içinde değil, ayrı satırda.
+    expect(find.text('Hikâye buradan başlıyor.'), findsNWidgets(2));
     expect(
-      find.text(
-        'Hikâye buradan başlıyor. Yaklaşık 6 dk sürer; günlük hedefine '
-        '(10 dk) sığar.',
+      find.descendant(
+        of: find.byKey(const ValueKey('hi-panel')),
+        matching: find.text('~6 dk'),
       ),
-      findsNWidgets(2),
+      findsOneWidget,
     );
     for (final k in ['story', 'review', 'notebook', 'sets']) {
       expect(find.byKey(ValueKey('hi-quick-$k')), findsOneWidget);

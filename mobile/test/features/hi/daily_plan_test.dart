@@ -1,6 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hivelzon/app/router.dart';
 import 'package:hivelzon/features/hi/domain/coach_rules.dart';
+import 'package:hivelzon/l10n/tr_strings.dart';
 import 'package:hivelzon/shared/meaning/error_taxonomy.dart';
 
 import '../../support/fake_content_source.dart';
@@ -390,6 +391,88 @@ void main() {
           expect(text, isNot(contains(w)), reason: text);
         }
       }
+    });
+  });
+
+  group('kişisel durum satırı (H-099)', () {
+    test('yeni kullanıcı: ilk bölüm', () {
+      expect(
+        planToday(input(next: b1)).contextLine,
+        HomeTexts.contextFirstEpisode,
+      );
+    });
+
+    test('bugün yarım bırakılan bölüm', () {
+      expect(
+        planToday(input(inProgress: half())).contextLine,
+        HomeTexts.contextFreshEpisode,
+      );
+    });
+
+    test('dün yarım bırakılan bölüm', () {
+      final yesterday = half(ago: const Duration(hours: 26));
+      expect(
+        planToday(input(inProgress: yesterday)).contextLine,
+        HomeTexts.contextYesterdayEpisode,
+      );
+    });
+
+    test('birkaç gündür bekleyen yarım bölüm', () {
+      final waiting = half(ago: const Duration(days: 3));
+      expect(
+        planToday(input(inProgress: waiting)).contextLine,
+        HomeTexts.contextWaitingEpisode(3),
+      );
+    });
+
+    test('uzun aradan sonra dönen kullanıcı', () {
+      final plan = planToday(
+        input(
+          next: b1,
+          reviewDue: 2,
+          lastActiveAt: now.subtract(const Duration(days: 9)),
+        ),
+      );
+      expect(plan.primary.kind, HiSuggestionKind.review);
+      expect(plan.contextLine, HomeTexts.contextLongBreak);
+    });
+
+    test('bugün ana adım bitti: küçük görev', () {
+      final plan = planToday(
+        input(
+          next: b1,
+          mainDoneToday: true,
+          sets: const [CoachTopicSet(id: 'harbour', titleTr: 'Liman')],
+        ),
+      );
+      expect(plan.primary.kind, HiSuggestionKind.sceneHunt);
+      expect(plan.contextLine, HomeTexts.contextMainDone);
+    });
+
+    test('bugün ana adım bitti: tekrar borcu varsa selam tekrarı söyler', () {
+      final plan = planToday(
+        input(next: b1, mainDoneToday: true, reviewDue: 5),
+      );
+      expect(plan.primary.kind, HiSuggestionKind.review);
+      expect(plan.contextLine, HomeTexts.contextMainDoneReview);
+    });
+
+    test('B1+: seviyeye uygun kitap', () {
+      expect(
+        planToday(input(level: 'B2', start: b2Book)).contextLine,
+        HomeTexts.contextBookAdvanced,
+      );
+    });
+
+    test('hepsi geçildi: sakin kapanış', () {
+      final plan = planToday(
+        input(
+          next: b1,
+          dismissed: {'startEpisode:${AppRoutes.play('A1-001')}'},
+        ),
+      );
+      expect(plan.primary.kind, HiSuggestionKind.rest);
+      expect(plan.contextLine, HomeTexts.contextRestDismissed);
     });
   });
 }

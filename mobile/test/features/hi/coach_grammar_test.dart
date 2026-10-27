@@ -45,7 +45,8 @@ void main() {
     expect(s.kind, HiSuggestionKind.grammarSuggest);
     expect(s.title, 'Kısa bir konu: Üçüncü tekil -s');
     expect(s.reasonTr, startsWith('"The New Neighbour" bölümünde bu yapı'));
-    expect(s.reasonTr, contains('3 dk'));
+    expect(s.minutes, 3);
+    expect(s.reasonTr, isNot(contains('dk')));
     expect(s.actionLabel, 'Konuyu aç');
     expect(s.actionRoute, '/dilbilgisi/$kTestLessonId');
     expect(

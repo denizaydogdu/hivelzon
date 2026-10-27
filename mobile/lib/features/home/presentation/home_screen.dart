@@ -50,6 +50,8 @@ class HomeScreen extends ConsumerWidget {
     final today = ref.watch(todayActivityProvider).value;
     final p = plan.value;
     final primary = p?.primary;
+    final goalMinutes = (today ?? TodayActivity.empty).goalMinutes;
+    final contextLine = p?.contextLine ?? HomeTexts.subtitleLoading;
     final episodeFirst =
         primary == null ||
         primary.kind == HiSuggestionKind.continueEpisode ||
@@ -62,7 +64,11 @@ class HomeScreen extends ConsumerWidget {
     Widget storyCard({required bool primarySlot}) => switch (map) {
       AsyncData(:final value) =>
         primarySlot
-            ? _ContinueCard(map: value, suggestion: primary)
+            ? _ContinueCard(
+                map: value,
+                suggestion: primary,
+                goalMinutes: goalMinutes,
+              )
             : _StoryAside(map: value, optional: p?.advanced ?? false),
       AsyncError() => InfoCard(
         icon: Icons.cloud_off_rounded,
@@ -84,7 +90,7 @@ class HomeScreen extends ConsumerWidget {
       // kalır (Ana Sayfa hiçbir zaman boş ya da sonsuz iskelette kalmaz).
       primaryCard = storyCard(primarySlot: true);
     } else {
-      primaryCard = _PlanCard(suggestion: primary);
+      primaryCard = _PlanCard(suggestion: primary, goalMinutes: goalMinutes);
     }
     final steps = p?.steps ?? const <PlanStep>[];
     return Scaffold(
@@ -102,7 +108,11 @@ class HomeScreen extends ConsumerWidget {
             StaggeredList(
               spacing: AppSpace.s24,
               children: [
-                _Greeting(name: name, today: today ?? TodayActivity.empty),
+                _Greeting(
+                  name: name,
+                  today: today ?? TodayActivity.empty,
+                  contextLine: contextLine,
+                ),
                 Column(
                   key: const ValueKey('home-plan'),
                   crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -146,17 +156,25 @@ class HomeScreen extends ConsumerWidget {
   }
 }
 
-/// Selam + tek cümle + günlük hedef halkası ("6/10 dk").
+/// Selam + kişisel durum cümlesi + günlük hedef halkası ("6/10 dk").
 class _Greeting extends StatelessWidget {
-  const _Greeting({required this.name, required this.today});
+  const _Greeting({
+    required this.name,
+    required this.today,
+    required this.contextLine,
+  });
 
   final String? name;
   final TodayActivity today;
+
+  /// "Dün burada bıraktın." gibi, kullanıcının bugünkü durumu (H-099).
+  final String contextLine;
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Expanded(
           child: Column(
@@ -174,7 +192,7 @@ class _Greeting extends StatelessWidget {
               ),
               const SizedBox(height: AppSpace.s4),
               Text(
-                HomeTexts.subtitle,
+                contextLine,
                 key: const ValueKey('page-subtitle'),
                 style: theme.textTheme.bodyLarge?.copyWith(
                   color: AppPalette.ink500,
@@ -184,49 +202,52 @@ class _Greeting extends StatelessWidget {
           ),
         ),
         const SizedBox(width: AppSpace.s12),
-        ProgressRing(
-          key: const ValueKey('home-goal-ring'),
-          value: today.progress,
-          size: 76,
-          semanticLabel: HomeTexts.goalSemantics(
-            today.minutes,
-            today.goalMinutes,
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(AppSpace.s12),
-            child: FittedBox(
-              fit: BoxFit.scaleDown,
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Text(
-                        HomeTexts.goalRing(today.minutes, today.goalMinutes),
-                        style: theme.textTheme.titleMedium?.copyWith(
-                          color: AppPalette.ink,
+        Padding(
+          padding: const EdgeInsets.only(top: AppSpace.s4),
+          child: ProgressRing(
+            key: const ValueKey('home-goal-ring'),
+            value: today.progress,
+            size: 76,
+            semanticLabel: HomeTexts.goalSemantics(
+              today.minutes,
+              today.goalMinutes,
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(AppSpace.s12),
+              child: FittedBox(
+                fit: BoxFit.scaleDown,
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(
+                          HomeTexts.goalRing(today.minutes, today.goalMinutes),
+                          style: theme.textTheme.titleMedium?.copyWith(
+                            color: AppPalette.ink,
+                          ),
                         ),
-                      ),
-                      if (HomeTexts.goalReached(
-                        today.minutes,
-                        today.goalMinutes,
-                      ))
-                        const Icon(
-                          Icons.check_rounded,
-                          key: ValueKey('home-goal-done'),
-                          size: AppIconSize.sm,
-                          color: AppPalette.seaBlue,
-                        ),
-                    ],
-                  ),
-                  Text(
-                    HomeTexts.goalUnit,
-                    style: theme.textTheme.labelSmall?.copyWith(
-                      color: AppPalette.ink500,
+                        if (HomeTexts.goalReached(
+                          today.minutes,
+                          today.goalMinutes,
+                        ))
+                          const Icon(
+                            Icons.check_rounded,
+                            key: ValueKey('home-goal-done'),
+                            size: AppIconSize.sm,
+                            color: AppPalette.seaBlue,
+                          ),
+                      ],
                     ),
-                  ),
-                ],
+                    Text(
+                      HomeTexts.goalUnit,
+                      style: theme.textTheme.labelSmall?.copyWith(
+                        color: AppPalette.ink500,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
@@ -240,10 +261,15 @@ class _Greeting extends StatelessWidget {
 /// "Neden?" gerekçesi ve "Başka bir öneri" ile), plan yokken haritanın
 /// odağıyla.
 class _ContinueCard extends ConsumerWidget {
-  const _ContinueCard({required this.map, this.suggestion});
+  const _ContinueCard({
+    required this.map,
+    this.suggestion,
+    required this.goalMinutes,
+  });
 
   final SeasonMap map;
   final HiSuggestion? suggestion;
+  final int goalMinutes;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -370,7 +396,11 @@ class _ContinueCard extends ConsumerWidget {
                   ),
                 ),
                 if (s != null && s.contentId == focus.contentId) ...[
-                  const SizedBox(height: AppSpace.s12),
+                  if (s.minutes != null) ...[
+                    const SizedBox(height: AppSpace.s12),
+                    _PlanMeta(minutes: s.minutes!, goalMinutes: goalMinutes),
+                  ],
+                  const SizedBox(height: AppSpace.s8),
                   _Why(reason: s.reasonTr),
                 ],
                 const SizedBox(height: AppSpace.s16),
@@ -439,6 +469,64 @@ class _HeroBackdrop extends StatelessWidget {
                 color: AppPalette.lighthouseYellow,
                 size: AppIconSize.xl,
               ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+/// Süre ve günlük hedef (H-099): "ne kadar sürer, hedefime sığar mı?"
+/// sorusunun tek yeri. Gerekçe metni artık süreyi yinelemez.
+class _PlanMeta extends StatelessWidget {
+  const _PlanMeta({required this.minutes, required this.goalMinutes});
+
+  final int minutes;
+  final int goalMinutes;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final fits = goalMinutes <= 0 || minutes <= goalMinutes;
+    Widget pill(IconData icon, String label) => Container(
+      padding: const EdgeInsets.symmetric(
+        horizontal: AppSpace.s8,
+        vertical: AppSpace.s4,
+      ),
+      decoration: BoxDecoration(
+        color: AppPalette.sand50,
+        borderRadius: BorderRadius.circular(AppRadius.full),
+        border: Border.all(color: AppPalette.ink100),
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(icon, size: AppIconSize.sm, color: AppPalette.ink500),
+          const SizedBox(width: AppSpace.s4),
+          Text(
+            label,
+            style: theme.textTheme.labelMedium?.copyWith(
+              color: AppPalette.ink700,
+            ),
+          ),
+        ],
+      ),
+    );
+    return Semantics(
+      label: HomeTexts.planMetaSemantics(minutes, goalMinutes, fits),
+      child: ExcludeSemantics(
+        child: Wrap(
+          key: const ValueKey('home-plan-meta'),
+          spacing: AppSpace.s8,
+          runSpacing: AppSpace.s4,
+          children: [
+            pill(Icons.schedule_rounded, HomeTexts.minutesLabel(minutes)),
+            pill(
+              fits
+                  ? Icons.check_circle_outline_rounded
+                  : Icons.timelapse_rounded,
+              fits ? HomeTexts.fitsGoal() : HomeTexts.overGoal(),
             ),
           ],
         ),
@@ -591,9 +679,10 @@ class _PlanSteps extends StatelessWidget {
 /// Birincil öneri bölüm değilse (tekrar, not, kitap, sahne avı, dilbilgisi,
 /// dinlenme): ikon + adım etiketi + başlık + "Neden?" + tek dolu düğme.
 class _PlanCard extends ConsumerWidget {
-  const _PlanCard({required this.suggestion});
+  const _PlanCard({required this.suggestion, required this.goalMinutes});
 
   final HiSuggestion suggestion;
+  final int goalMinutes;
 
   static IconData _icon(HiSuggestionKind k) => switch (k) {
     HiSuggestionKind.review => Icons.style_rounded,
@@ -678,6 +767,10 @@ class _PlanCard extends ConsumerWidget {
             ],
           ),
           const SizedBox(height: AppSpace.s12),
+          if (!rest && s.minutes != null) ...[
+            _PlanMeta(minutes: s.minutes!, goalMinutes: goalMinutes),
+            const SizedBox(height: AppSpace.s8),
+          ],
           if (rest)
             Text(
               s.reasonTr,
@@ -808,6 +901,7 @@ class _Tools extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final theme = Theme.of(context);
     final o = ref.watch(reviewOverviewProvider).value;
     final n = o?.sessionCount ?? 0;
     final String reviewText;
@@ -825,6 +919,12 @@ class _Tools extends ConsumerWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         const SectionHeading(HomeTexts.toolsSection),
+        const SizedBox(height: AppSpace.s4),
+        Text(
+          HomeTexts.toolsOptional,
+          key: const ValueKey('home-tools-optional'),
+          style: theme.textTheme.bodyMedium?.copyWith(color: AppPalette.ink500),
+        ),
         const SizedBox(height: AppSpace.s8),
         _ToolRow(
           key: const ValueKey('home-review'),

@@ -127,10 +127,14 @@ void main() {
     }
   }
 
-  testWidgets('yeni kullanıcı: tek kart, B1 "Başla"', (tester) async {
+  testWidgets('yeni kullanıcı: tek kart, kişisel durum, B1 "Başla"', (
+    tester,
+  ) async {
     await pump(tester, FakeContentSource(packageIds: _four));
     expect(find.byKey(const ValueKey('home-continue')), findsOneWidget);
     expect(find.text('Merhaba!'), findsOneWidget);
+    // H-099: selamın altındaki satır kullanıcının bugünkü durumunu söyler.
+    expect(find.text(HomeTexts.contextFirstEpisode), findsOneWidget);
     // H-088: başlık "Bugünün planı"; bölüm önerisi görselli kartta, gerekçe
     // görünür.
     expect(find.text('Bugünün planı'), findsOneWidget);
@@ -140,7 +144,11 @@ void main() {
     expect(find.text('A Strange Message'), findsOneWidget);
     expect(find.text('İpucu 1.'), findsOneWidget);
     expect(find.text('SEZON 1 · BÖLÜM 1'), findsOneWidget);
-    expect(find.text('Başla'), findsOneWidget);
+    expect(find.text('Bölümü başlat'), findsOneWidget);
+    // H-099: süre ve hedef ayrı, taranabilir bir satırda.
+    expect(find.byKey(const ValueKey('home-plan-meta')), findsOneWidget);
+    expect(find.text('~6 dk'), findsOneWidget);
+    expect(find.text('Hedefe uygun'), findsOneWidget);
     await tester.ensureVisible(
       find.byKey(const ValueKey('home-continue-play')),
     );
@@ -154,8 +162,11 @@ void main() {
     await progress.markCompleted('A1-001', gate: _fullGate);
     await pump(tester, FakeContentSource(packageIds: _four));
     expect(find.text('The New Neighbour'), findsOneWidget);
+    // H-099: bugün bölüm bitince yeni ifadelerin tekrarı öne çıkar; selam
+    // satırı bunu kişisel biçimde söyler.
+    expect(find.text(HomeTexts.contextMainDoneReview), findsOneWidget);
     expect(find.text('SEZON 1 · BÖLÜM 2'), findsOneWidget);
-    expect(find.text('Başla'), findsOneWidget);
+    expect(find.text('Bölümü başlat'), findsOneWidget);
     expect(find.text("Bu sezonda 12 bölümden 1'i bitti."), findsOneWidget);
   });
 

@@ -285,8 +285,7 @@ HiSuggestion suggestToday(CoachInput i) => planToday(i).primary;
 /// Kelime tekrarı önerisi. [afterBreak]: uzun aradan sonra (gerekçe sıcak bir
 /// karşılamayla başlar). [stage]: borç varsa kısa tekrar, yoksa küçük görev.
 HiSuggestion reviewSuggestion(
-  int n,
-  int goal, {
+  int n, {
   bool afterBreak = false,
   PlanStage stage = PlanStage.warmUp,
 }) {
@@ -295,9 +294,9 @@ HiSuggestion reviewSuggestion(
     kind: HiSuggestionKind.review,
     title: HiTexts.reviewTitle,
     reasonTr: afterBreak
-        ? HiTexts.reviewAfterBreakReason(n, minutes, goal)
-        : HiTexts.reviewReason(n, minutes, goal),
-    actionLabel: HiTexts.reviewAction,
+        ? HiTexts.reviewAfterBreakReason(n)
+        : HiTexts.reviewReason(n),
+    actionLabel: HiTexts.reviewAction(n),
     actionRoute: '/tekrar',
     minutes: minutes,
     stage: stage,

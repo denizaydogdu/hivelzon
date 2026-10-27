@@ -148,27 +148,30 @@ void main() {
     }
   });
 
-  test('a) gerekçe: bölüm, kaldığı yer ve günlük hedef', () {
+  test('a) gerekçe: bölüm ve kaldığı yer; süre ayrı alanda', () {
     final s = suggestToday(_input(inProgress: _b2, goal: 10));
     expect(s.title, 'Hikâyeye devam: The New Neighbour');
     expect(
       s.reasonTr,
-      "Bölüm 2'yi yarıda bırakmıştın; kaldığın sahneden devam edersin. "
-      'Yaklaşık 7 dk sürer; günlük hedefine (10 dk) sığar.',
+      "Bölüm 2'yi yarıda bırakmıştın; kaldığın sahneden devam edersin.",
     );
+    expect(s.reasonTr, isNot(contains('Yaklaşık')));
+    expect(s.minutes, 7);
+    expect(s.actionLabel, 'Devam et');
     expect(s.actionRoute, AppRoutes.play('A1-002', mode: 'resume'));
   });
 
-  test('günlük hedefi aşan öneri: istediği yerde bırakabileceği söylenir', () {
+  test('süre gerekçeden ayrı: hedefi aşan öneri de tek cümlede kalır', () {
     final s = suggestToday(_input(inProgress: _b2, goal: 5));
-    expect(s.reasonTr, contains('Günlük hedefin 5 dk'));
-    expect(s.reasonTr, contains('istediğin yerde bırakıp'));
+    expect(s.reasonTr, isNot(contains('Günlük hedefin 5 dk')));
+    expect(s.minutes, 7);
   });
 
-  test('b) gerekçe: ifade sayısı ve süre', () {
+  test('b) gerekçe: ifade sayısı; düğme sayıyı söyler', () {
     final s = suggestToday(_input(reviewDue: 12));
     expect(s.reasonTr, startsWith('12 ifadenin tekrar zamanı geldi.'));
-    expect(s.reasonTr, contains('Yaklaşık 4 dk'));
+    expect(s.minutes, 4);
+    expect(s.actionLabel, '12 ifadeyi tekrarla');
     expect(s.actionRoute, AppRoutes.review);
   });
 
