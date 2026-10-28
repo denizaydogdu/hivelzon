@@ -1,6 +1,6 @@
 # Dilbilgisi: Hi'den Türkçe konu anlatımı (H-075…H-082)
 
-> Durum: **plan** (kullanıcı isteği ve kararları 2026-10-14). İşler §8'de. Ders paketi biçimi ve araçları (H-077): §9.
+> Durum: **uygulamada** (2026-10-28): A1–C2 toplam 71 ders yazıldı, Türkçe sesleri hazır ve `grammar_lint` 0 hata. A1 İngilizce örnekleri tam; A2 kısmen, B1–C2 bekliyor. Kalan: öğretmen/editör incelemesi ile çalışan ElevenLabs erişimi veya ayrı onaylı ücretli plan. İşler §8'de; ders paketi ve araçlar §9'da.
 
 ## 1. Neden
 Kullanıcının gözlemi: "Türk öğrenciler bazen konuları anlamıyor."

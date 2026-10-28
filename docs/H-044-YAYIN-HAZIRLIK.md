@@ -1,6 +1,6 @@
 # H-044 — Yayın Hazırlığı: Sunucu, Medya CDN'i ve Mağaza
 
-- **Durum:** Devam ediyor (2026-10-25; son test koşusu 2026-10-27). Hesap gerektirmeyen kod ve güvenlikler bitti; dış hesaplar, sunucu ve mağaza yüklemesi kullanıcıya bağlı.
+- **Durum:** Ertelendi/en son (2026-10-28). Hesap gerektirmeyen kod ve güvenlikler bitti; dış hesaplar, Almanya sunucusu/DNS ve mağaza yüklemesi ayrı kullanıcı onayına bağlı. H-092 bunun ardından gelir.
 - **İlgili iş:** `devam-edenler/H-044-dis-hesaplar-barindirma-magaza.md`
 - **Kararlar:** Sunucu **Almanya**'da; medya CDN'den (Bunny); kullanıcı verisi Almanya'da; hesaplar en sonda (2026-10-11 ve 2026-10-21 kararları).
 - **Kural:** Bu belgedeki dış hesap, ödeme, DNS ve mağaza adımları **kullanıcı onayı olmadan** yapılmaz. Sırlar repoya girmez.
@@ -20,7 +20,7 @@
 
 **Bilerek yapılmayanlar:** Reel dışındaki paketler (bölüm, kitap, dilbilgisi) mobilde sabit `packages/<id>/` yolundan okunur; bu yüzden onların CDN yolu sürümlenmez. Sürümleme yalnız reellerde ve backend'in verdiği `packageBaseUrl` üzerinden çalışır.
 
-## 2. Doğrulama (yayın kodu 2026-10-25; son test koşusu 2026-10-27)
+## 2. Doğrulama (yayın kodu 2026-10-25; son tam test koşusu 2026-10-28)
 
 ```bash
 cd backend && mvn verify                 # Testcontainers: DOCKER_HOST + TESTCONTAINERS_RYUK_DISABLED=true
@@ -31,7 +31,7 @@ cd mobile && flutter build ios --release --no-codesign
 ```
 
 - `flutter analyze`: temiz.
-- Mobil test: **1483/1483** (2026-10-27; H-099 sonrası). Yayın imzası ve plist kontrolleri H-099'dan etkilenmedi; mağaza derlemeleri H-044 hesap adımlarında yeniden alınacak.
+- Mobil test: **1483/1483** (2026-10-28). Yayın imzası ve plist kontrolleri marka değişikliğinden etkilenmedi; mağaza derlemeleri H-044 hesap adımlarında yeniden alınacak.
 - Backend: **164/164** (Testcontainers/PostgreSQL dahil).
 - Android debug APK üretildi; release APK **imzasız** (`apksigner`: `DOES NOT VERIFY`) — debug anahtarı kullanılmıyor.
 - iOS release `Runner.app` üretildi; paket `Info.plist` içinde `NSAllowsLocalNetworking` ve `NSAppTransportSecurity` **yok**, `CFBundleDisplayName` = **Hi**.

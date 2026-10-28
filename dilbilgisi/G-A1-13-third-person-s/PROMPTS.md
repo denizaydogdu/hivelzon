@@ -10,7 +10,7 @@ Ders: He / she / it ile fiile -s · Pilot (H-079) · `docs/DILBILGISI.md` §4, �
 - **Söyleniş:** `-s` → "se" (söyleniş sözlüğü denemesi; H-079'daki karşılaştırma için bu ders sözlük yolunu kullanır).
 
 ## Ses çağrıları
-Türkçe anlatım: PatientDesk Alania (`alania-v2`, `alania2-f1`) + Duyu (`duyu-1`) kelime zamanı. Lansman kampanyası: 14 Kasım 2026'ya kadar ücretsiz ve sınırsız (kullanıcı bildirimi 2026-10-14). İngilizce örnekler (Sarah, ElevenLabs): henüz üretilmedi (ücretsiz kota bitti; kullanıcı yeni anahtar verecek), yalnız kuru çalışma.
+Türkçe anlatım: PatientDesk Alania (`alania-v2`, `alania2-f1`) + Duyu (`duyu-1`) kelime zamanı. Lansman kampanyası: 14 Kasım 2026'ya kadar ücretsiz ve sınırsız (kullanıcı bildirimi 2026-10-14). İngilizce örnekler (Sarah, ElevenLabs) sonradan üretildi. Yeni üretimler için çalışan ElevenLabs erişimi/ayrı onaylı plan gerekir; 2026-10-27'de 401 veren anahtar kullanılmaz.
 
 Aşağıdaki satırları `tts_lesson.py` yazar.
 

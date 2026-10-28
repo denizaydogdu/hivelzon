@@ -1,8 +1,8 @@
 # hiVelzon: Faz 1 (MVP) uygulama planı (H-025)
 
-**Sürüm:** 0.2 · **Tarih:** 2026-10-11 (durum güncellemesi 2026-10-27) · **Durum:** Onaylandı (2026-10-11); uygulama sürüyor. İlk dilim: önce oynatıcı; ilk test cihazı iOS simülatörü.
+**Sürüm:** 0.2 · **Tarih:** 2026-10-11 (durum güncellemesi 2026-10-28) · **Durum:** Onaylandı (2026-10-11); uygulama sürüyor.
 **Dayanak:** CLAUDE.md "Onaylı içerik mimarisi kararları" ve "Onaylı oyun tasarımı kararları"; `docs/OYUN-TASARIMI.md`; `docs/ICERIK-MIMARISI.md`.
-**Kural:** Plan onaylandı, kodlama bu plana göre sürüyor; plana yeni kapsam kullanıcı onayıyla eklenir. Oynatıcı işi var olan H-031 numarasını korur; yeni işler H-033'ten başlar. Sonradan eklenenler: H-045, H-046, H-048, H-049, H-050, H-051, H-052, H-053, H-054, H-055, H-056 tasarım yenilemesi H-057…H-064, Kitaplık H-065…H-073, ürün incelemesi sonrası odak H-087…H-092, Keşfet H-094 ve hukukçu cevapları H-095. **H-096 (takip incelemesi düzeltmeleri), H-097 (uçtan uca simülatör gezinmesi + görünen ad Hi), H-098 (canlı arayüz geri bildirimleri), H-099 (Ana Sayfa kişisel önerileri) ve H-100 (Hi panelinde kişisel durum cümlesi) bitti. Sıradaki boş numara: H-101.** (H-075…H-082: Dilbilgisi, `docs/DILBILGISI.md`; H-083 Türkçe sesler; H-084 B2-K01 eksik görsel; H-085 Bölüm 5–12 üretimi; H-086 kitapta Sayfanın Türkçesi; H-093 taklit/kanıt ayrımı.) (H-074: gerçek süre ölçümü.) Her alt faz ayrı bir H işidir: küçük, test edilebilir ve geri alınabilir.
+**Kural:** Plan onaylandı, kodlama bu plana göre sürüyor; plana yeni kapsam kullanıcı onayıyla eklenir. H-096…H-101 tamamlandı; H-101 Hi marka simgelerini uyguladı. **Sıradaki boş numara H-102'dir.** Güncel sıra: H-043/H-068 gerçek iPhone → H-085/H-086 kullanıcı denemesi → öğretmen/editör incelemesi → eksik İngilizce sesler → en sonda H-044 dış hesap/mağaza → H-044 sonrasında H-092 pilotu. Şu an bağımsız yerel ürün kodu işi yoktur; ayrıntı `yapilacaklar/IS-SIRASI.md`.
 
 ---
 
@@ -11,7 +11,7 @@
 **Platform:** Flutter (iOS + Android), Spring Boot 4 + PostgreSQL.
 
 **MVP'de var:**
-- Hikâye modu: Sezon 1, A1; bölüm 1–4 hazır ve paketli (B5–B12 diyalogları onaylı, üretimi kaldı).
+- Hikâye modu: Sezon 1, A1; prolog + 12 bölüm hazır, paketli ve haritada oynanabilir. B5–B12 otomatik simülatör turu 8/8 geçti; kullanıcı ve editör incelemesi bekliyor.
 - Etkileşimli bölüm oynatıcısı.
 - Harita, ipucu panosu, defter ve FSRS tekrarı.
 - Keşfet (kısa klipler).
@@ -67,7 +67,7 @@
 | **1.9** | **H-041** Editör onay ekranı ve içerik içe aktarma | `content-lint` → içe aktarma → Onayla / Zamanla / Kaldır; sürümler; `publish_at` (K-05, K-12); medya yerel adaptörle | Onaysız içerik katalogda görünmüyor (backend testi) | ✅ |
 | **1.10** | **H-042** Profil, ayarlar, hukuki metinler, hesap silme arayüzü | Beceri ve ilerleme gösterimi; bildirim ayarları; gizlilik; lisans atıfları (CEFR-J vb.) | Hesap silme ve geri alma arayüzden çalışıyor | ✅ (2026-10-21; hukuk metinleri H-095) |
 | **1.11** | **H-043** Kalite ve iç beta hazırlığı | Erişilebilirlik, hata durumları, çökme raporlama (veri minimizasyonuyla); simülatör ve yerel cihazda uçtan uca deneme; H-031'den taşınan Android bellek/ısı ve gerçek telefon ses–yazı kontrolleri | Beta kontrol listesi tamam (mağaza hariç) | 🔄 (yerel kısım bitti; gerçek telefon kaldı) |
-| **1.12** | **H-044** Dış hesaplar, barındırma ve mağaza (en son) | Sunucu yeri ve kurulum; Bunny Stream hesabı ve adaptörü; Apple ve Google geliştirici hesapları; TestFlight / Play dahili test | Uygulama sunucudaki backend ve Bunny medyasıyla çalışıyor; dahili test sürümü yüklendi | 🔄 (hesap gerektirmeyen kod bitti; dış hesaplar kullanıcıya bağlı) |
+| **1.12** | **H-044** Dış hesaplar, barındırma ve mağaza (en son) | Sunucu yeri ve kurulum; Bunny Stream hesabı ve adaptörü; Apple ve Google geliştirici hesapları; TestFlight / Play dahili test | Uygulama sunucudaki backend ve Bunny medyasıyla çalışıyor; dahili test sürümü yüklendi | ⏸ (hesap gerektirmeyen kod bitti; dış hesaplar ayrı onayla en son) |
 
 ### Tasarım yenilemesi (2026-10-14, kullanıcı isteği)
 Kullanıcı Profil'i beğenmedi ("her şey iç içe, düz yazı gibi"); bütün sayfaların daha hareketli, şekilli ve çekici olması istendi. Kararlar: bütçe ~8 kr (Higgsfield 1k taslak + illüstrasyon), başlıklarda yuvarlak yazı tipi + metinde Inter (gömülü, OFL), yalnız açık tema, sıra aşağıdaki gibi. Ayrıntılı plan: `/Users/felece/.claude/plans/ek-i-olarak-sayfalar-n-delightful-elephant.md`.
@@ -117,24 +117,31 @@ A1–C2, seviye başına 5 kitap, toplam 30. Kararlar: önce 2 pilot kitap, Elev
 - H-039, H-040, H-041 ve H-042 H-038'den sonra.
 - H-043, sonra H-044 en son.
 
-### Son ürün iyileştirmeleri (H-098, H-099, H-100)
+### Son ürün iyileştirmeleri (H-098…H-101)
 
 | İş | Kapsam | Durum |
 |---|---|---|
 | **H-098** | Canlı simülatör geri bildirimleri: yeni karşılama görseli, sade bilgilendirme, testsiz seviye başlangıcı, bir kez açılan Hi turu, Keşfet başlığı/yanlış geri bildirimi, sabit Kitaplık/Dilbilgisi seçicisi | ✅ |
 | **H-099** | Ana Sayfa kişisel durum cümlesi; kartta ayrı süre/hedef hapı; tek cümle gerekçe; işi söyleyen düğmeler; "Bölüm" çipi; isteğe bağlı çalışma araçları. Kural tabanlı plan ve tek eylem ilkesi korundu. | ✅ |
 | **H-100** | Aynı kişisel durum cümlesi Hi panelinde öneri kartının üstünde; panel `dailyPlanProvider`ı doğrudan izler, Ana Sayfa ve Hi tek planı paylaşır. | ✅ |
+| **H-101** | H-016 konuşma balonu “Hi” markası; iOS/Android simgeleri, açılış ekranları ve mağaza master'ları. | ✅ |
 
 Ayrıntı: `bitenler/H-098-canli-arayuz-geri-bildirimi.md`, `bitenler/H-099-ana-sayfa-kisisel-oneriler.md`, `bitenler/H-100-hi-panel-kisisel-durum.md`, `docs/ARAYUZ-METINLERI.md` §3.1 ve §10.
 
-## 4. Açık olanlar (ilgili fazdan önce sorulacak)
+## 4. Açık olanlar (2026-10-28 bağımlılık sırası)
 
-- **Giriş yöntemi** (H-037): e-posta + parola mı, Apple / Google ile giriş mi?
-- **Kullanıcı kararı (2026-10-11):** Sunucu yeri, Bunny Stream hesabı ve Apple / Google geliştirici hesapları **en sona** bırakıldı (H-044). O zamana kadar her şey yerelde çalışır: backend Docker'daki PostgreSQL ile, medya yerel adaptörle, uygulama simülatörde.
-- **Ticari ElevenLabs** (H-006): yayından önce şart.
-- **Hukuk metinleri ve hukukçu soruları:** KVKK aydınlatması, yaş, lisanslar (H-042'den önce).
+1. H-043/H-068 gerçek iPhone kontrolleri.
+2. H-085/H-086 kullanıcı denemesi.
+3. Öğretmen/editör operasyonel incelemesi.
+4. Eksik İngilizce sesler için çalışan ElevenLabs erişimi veya ayrı onaylı plan.
+5. H-044 dış hesaplar, Almanya sunucusu/DNS, Bunny ve mağazalar — en son.
+6. H-092 aşama A+B — H-044 tamamlandıktan sonra.
+
+Giriş yöntemi H-037 ile e-posta kodu olarak tamamlandı. Hukukçu cevapları
+H-095 ile işlendi; metinlerdeki veri sorumlusu yer tutucuları H-044'e bağlıdır.
 
 ## 5. Çalışma şekli
 
 - Her H işi kendi dalında (`h-033-repo-iskeleti` gibi) yapılır. Testler yazılır ve çalıştırılır. Gerçek test çıktısı H dosyasına yazılır, sonra `main`'e alınır. Commit ve push yalnızca kullanıcı onayıyla.
-- İçerik üretimi (B5–B12) bu süreçten bağımsız; kullanıcı istediğinde sürer.
+- B5–B12 üretimi tamamlandı; yeni büyük içerik dalgası H-092 pilot sonucu
+  görülmeden ve kullanıcı onayı alınmadan başlamaz.

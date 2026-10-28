@@ -1,6 +1,6 @@
 # H-081: Dilbilgisi dalgası 2: B1 + B2
 
-- **Durum:** Devam ediyor (B1 14 + B2 12 ders main'de, lint 0 hata, Türkçe sesler hazır (26.707 karakter, ücretsiz); İngilizce örnek sesi ~11.070 karakter bekliyor; kullanıcı onayı ve öğretmen kontrolü bekleniyor)
+- **Durum:** Devam ediyor (2026-10-28): B1 14 + B2 12 ders main'de, lint 0 hata ve Türkçe sesler hazır. Yaklaşık 11.070 karakter İngilizce örnek çalışan ElevenLabs erişimi/ayrı onaylı ücretli plan bekliyor; kullanıcı ve öğretmen/editör incelemesi açık.
 - **Tür:** İçerik üretimi
 - **Faz:** Dilbilgisi D5 (`docs/DILBILGISI.md` §8)
 - **Bağımlılık:** H-080

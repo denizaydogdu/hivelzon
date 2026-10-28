@@ -1,6 +1,6 @@
 # H-085: Sezon 1 Bölüm 5–12 üretimi
 
-- **Durum:** Devam ediyor. Üretim 2026-10-14'te bitti; B5–B12 otomatik simülatör turunda uçtan uca oynatıldı (aşağıdaki "Teknik doğrulama"). Kullanıcının öznel simülatör denemesi hâlâ bekleniyor; insan editör kontrolü H-028'de.
+- **Durum:** Devam ediyor (2026-10-28). Üretim bitti; B5–B12 otomatik simülatör turu 8/8 geçti. Kalan kullanıcının öznel denemesi ile çeviri/görsel/ipucu için öğretmen-editör incelemesi. Simülatör her çalıştırmadan önce açık kullanıcı izni ister.
 - **Tür:** İçerik üretimi
 - **Faz:** F1 içerik (Sezon 1)
 - **Bağımlılık:** H-032 (diyaloglar onaylı), H-083 (Türkçe sesler Alania)

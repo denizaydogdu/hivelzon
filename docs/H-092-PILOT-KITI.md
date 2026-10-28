@@ -1,6 +1,6 @@
 # H-092 — Pilot kiti (gözlemli test + 7–14 günlük pilot)
 
-> **Durum (2026-10-21):** Onam metni hukukçu tarafından uygun bulundu (tek metin, 90 gün yeterli, 13–17 ek veli onayı yok); veri sorumlusu bilgileri ayrı fazda. Bu belge
+> **Durum (2026-10-28):** Kit hazır ve onam yaklaşımı hukukçu tarafından uygun bulundu (tek metin, 90 gün yeterli, 13–17 ek veli onayı yok); veri sorumlusu bilgileri H-044'te doldurulur. Aşama A ve B, H-044 tamamlandıktan sonra birlikte yapılır. Bu belge
 > H-092'nin "test senaryosu ve onay metni hazır" teslimini karşılar; saha çalışması (5 kişi + 15–20 kişi)
 > henüz yapılmadı. **Pilot içeriği ve teknik kapı hazır:** 18 sesli reel (Sarah/Will/Chris) yayında,
 > uygulama backend'in yayımlanmış kataloğunu okuyor, geri çekme uçtan uca doğrulandı.
@@ -11,7 +11,7 @@
 
 ## 1. İki aşama
 
-> **Zamanlama (kullanıcı kararı 2026-10-21):** A erken ve isteğe bağlı — 2–3 kişiyle de başlanabilir; uygulama kullanıcının iPhone'una Xcode ile kurulur, backend ve içerik sunucusu Mac'ten yerel ağda açılır (dışarı veri çıkmaz). B, katılımcılar evden bağlanacağı için internetten erişilebilir sunucu + TestFlight ister → H-044 ile **en sonda**.
+> **Zamanlama (son kullanıcı kararı 2026-10-23):** Önceki “A erken ve isteğe bağlı” kararı değişti. Test telefonu olmadığı için A ve B birlikte, H-044 tamamlandıktan sonra yapılır. H-044 bitmeden pilot başlatılmaz.
 
 | Aşama | Kim | Süre | Ne ölçülür |
 |---|---|---|---|

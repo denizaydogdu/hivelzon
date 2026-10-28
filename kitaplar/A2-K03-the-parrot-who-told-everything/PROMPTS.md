@@ -79,7 +79,7 @@ Kurallar: her ücretli üretimden **önce** `higgsfield generate cost` ile maliy
 
 ## Seslendirme kayıtları (tts_book.py)
 
-**Kısmen üretildi (2026-10-14), anlatıcı Sarah:** c1 + c2 (5.751 karakter), ücretsiz kotanın kalanıyla (kullanıcı: "6.120 karakteri bitir"); c3 (2.075) yeni anahtarla. Dışa aktarmada tempo: 120 k/dk (ham 156/162). Eski not: Pilot ses ElevenLabs ücretsiz kotasıyla, yalnız iç kullanım için üretilecek (H-069); önce `tts_book.py` kuru çalışmasıyla karakter ve kredi gösterilir. `narration.voiceId` henüz seçilmedi; pilotta tek anlatıcı (Kaptan'ın replikleri için ayrı ses daha sonra değerlendirilir). Aşağıdaki tabloya satırları `tts_book.py --execute` ekler.
+**Tamamlandı (2026-10-14), anlatıcı Sarah:** c1 + c2 ilk kotayla (5.751 karakter), c3 daha sonra ayrı anahtarla üretildi; kitap 3/3 bölüm seslidir. Dışa aktarmada tempo: 120 k/dk (ham 156/162). Yeni üretimler çalışan ElevenLabs erişimi/ayrı onaylı plan gerektirir. Aşağıdaki tabloya satırları `tts_book.py --execute` ekler.
 
 | Tarih (UTC) | Bölüm | Parça | Ses | Model | Hız | Karakter | Metin sha256 | Dosya |
 |---|---|---|---|---|---|---|---|---|

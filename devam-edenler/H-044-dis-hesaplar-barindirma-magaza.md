@@ -1,6 +1,6 @@
 # H-044: Dış hesaplar, barındırma ve mağaza (en son)
 
-- **Durum:** Devam ediyor (2026-10-25). Hesap gerektirmeyen kod ve güvenlikler bitti; sunucu, Bunny, Apple/Google hesapları ve mağaza yüklemesi kullanıcıya bağlı.
+- **Durum:** Ertelendi/en son (2026-10-28). Hesap gerektirmeyen kod ve güvenlikler bitti; Almanya sunucusu/DNS, Bunny, Apple/Google, mağaza yüklemesi, veri sorumlusu bilgileri ve muhasebe ayrı kullanıcı onayına bağlı. H-043/H-068, kullanıcı/editör incelemeleri ve TTS erişimi sırasından sonra ele alınır.
 - **Tür:** Uygulama + kullanıcı kararları
 - **Faz:** 1.12 (`docs/UYGULAMA-PLANI.md`)
 - **Bağımlılık:** H-043
@@ -8,7 +8,7 @@
 
 ## Kapsam
 - **Sunucu yeri** (kullanıcıya sorulur): backend ve PostgreSQL kurulumu, yedekleme, TLS.
-- **Bunny Stream:** hesap (kullanıcı açar), `VideoHostingPort` için Bunny adaptörü, B1–B4 yüklemesi.
+- **Bunny/CDN:** hesabı kullanıcı açar; Sezon 1 B1–B12, kitap, dilbilgisi ve reel paketleri sürümlü/değişmez yollarla yüklenir. Video için gerekirse Bunny Stream/HLS, diğer varlıklar için Storage + Pull Zone kullanılır (`docs/H-044-YAYIN-HAZIRLIK.md`).
 - **Apple ve Google geliştirici hesapları** (kullanıcı açar): imzalama, TestFlight ve Google Play dahili test.
 - **ElevenLabs:** H-006 kararı (2026-10-14) gereği ücretsiz hesapla üretilen sesler yayında kullanılabilir; yeniden üretim gerekmez. Ticari plan yalnız gelecekteki kotalar/koşullar değişirse değerlendirilir.
 - KVKK: yurt dışı aktarım bildirimi (hukukçu teyidi).

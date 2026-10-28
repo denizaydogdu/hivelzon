@@ -1,10 +1,10 @@
 # hiVelzon — İş ve Ürün Planı
 
-> **Sürüm:** 0.2 (**H-001 ile 2026-10-27'de onaylandı**) · **İlk sürüm:** 2026-10-11 · **Güncelleme:** 2026-10-27
+> **Sürüm:** 0.2 (**H-001 ile 2026-10-27'de onaylandı**) · **İlk sürüm:** 2026-10-11 · **Güncelleme:** 2026-10-28
 > **Sahibi / veri sorumlusu:** Velzon Bilişim Teknolojileri Ltd. Şti. (Eskişehir · info@velzon.tr)
 > **Durum:** Faz 1 (MVP) uygulaması sürüyor; uygulama planı onaylı (`docs/UYGULAMA-PLANI.md`, H-025). Bağlayıcı kararlar `CLAUDE.md` tablolarındadır; bu belgeyle çelişirse onlar geçerlidir.
 >
-> **Güncel durum (2026-10-27):** H-094 Keşfet'in ürün tarafı tamam (18 sesli reel, yayın/geri çekme, "İlgi alanların" paneli). H-042, H-095…H-101 bitti; H-101 marka simgelerini iOS/Android ve açılış ekranlarına uyguladı. H-001/H-003/H-006/H-008/H-015/H-016 kararları kapandı. H-043'ün yerel kısmı bitti; gerçek telefon kontrolleri kaldı. H-092 pilotunda aşama A ve B birlikte **H-044 tamamlandıktan sonra** yapılır (kullanıcı kararı 2026-10-23: test telefonu yok). Sıradaki boş numara: **H-102**. Kredi, test sonuçları ve durum için tek kaynak: `yapilacaklar/IS-SIRASI.md`.
+> **Güncel durum (2026-10-28):** H-042, H-095…H-101 ve açık kararlar tamamlandı. Tam sistem denetimi mobil 1483/1483, backend 164/164 ve bütün içerik lint'lerinde 0 hata verdi. Kalan sıra: H-043/H-068 gerçek iPhone; H-085/H-086 kullanıcı denemesi; öğretmen/editör incelemesi; eksik İngilizce sesler; en sonda H-044 dış hesap/mağaza; H-044 sonrasında H-092 pilotu. Sıradaki boş numara **H-102**; yeni kapsam pilot sonucu ve kullanıcı onayı olmadan açılmaz. Tek takip kaynağı: `yapilacaklar/IS-SIRASI.md`.
 
 ## Güncel kararlar (v0.2, 2026-10-12)
 

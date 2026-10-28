@@ -12,7 +12,7 @@ Kabul ölçütü (H-043): 1. ve 2. bölüm tamam. 3. bölüm H-044'tedir.
 
 | # | Madde | Durum | Doğrulama |
 |---|---|---|---|
-| 1.1 | Statik denetim ve bütün testler | Tamam (2026-10-27) | `cd mobile && flutter analyze && flutter test` — son koşu **1483/1483**, analyze temiz |
+| 1.1 | Statik denetim ve bütün testler | Tamam (2026-10-28) | `cd mobile && flutter analyze && flutter test` — son koşu **1483/1483**, analyze temiz |
 | 1.2 | Android release manifestinde `INTERNET` izni | Tamam | `grep INTERNET mobile/android/app/src/main/AndroidManifest.xml`. Daha önce izin yalnız debug/profile manifestlerindeydi; release derlemesi ağa çıkamazdı. |
 | 1.3 | Yerel çökme kaydı | Tamam | `flutter test test/shared/diagnostics` |
 | 1.4 | Sakin hata ekranı (yalnız release) | Tamam | Aynı test dosyası (`CalmErrorBox`) |
@@ -118,6 +118,6 @@ tools/device-build.sh ios debug                  # iOS (Xcode'daki geliştirici 
 | 3.3 | Google Play iç test kanalı | Kullanıcı hesabına bağlı. |
 | 3.4 | **Gerçek adresler (HTTPS)** | **Çözüldü (2026-10-25):** Release derlemesi `API_BASE_URL`, `CONTENT_BASE_URL` ve `REEL_CATALOG_URL` genel HTTPS değilse **açılmaz** (`mobile/lib/app/release_config.dart`); boş, `http`, localhost, özel ağ IP'si ve kullanıcı bilgisi reddedilir. Debug/profile yerel adreslerle çalışmaya devam eder. |
 | 3.5 | iOS `NSAllowsLocalNetworking` | **Çözüldü (2026-10-25):** Release `Info-Release.plist` kullanır ve yerel ağ izni yoktur; debug/profile `Info.plist` ile yerel ağda çalışır. Paket plist'i iOS release derlemesinde doğrulandı. |
-| 3.6 | Asıl uygulama simgesi ve açılış ekranı | H-016 (logo, palet, ad kontrolü). Şimdiki simge **geçicidir**. |
+| 3.6 | Asıl uygulama simgesi ve açılış ekranı | **Tamam (2026-10-27):** H-016/H-101 Hi marka simgesi, iki platform açılış ekranı ve mağaza master'ları hazır. Yükleme H-044'e bağlı. |
 | 3.7 | Mağaza aile politikaları, yaş derecelendirmesi | H-044. Hukukçu H-002'yi teyit etti (2026-10-21): veli onayı gerekmez, doğum yılı beyanı yeterli |
 | 3.8 | Bunny Stream, sunucu | **Kod hazır (2026-10-25):** `CdnPackageAdapter` sürümlü `v<N>` paket yolu, backend `prod` kapısı, mutlak HTTPS/HLS medya desteği. Hesap, sunucu ve yükleme kullanıcıya bağlı; adımlar `docs/H-044-YAYIN-HAZIRLIK.md`. |

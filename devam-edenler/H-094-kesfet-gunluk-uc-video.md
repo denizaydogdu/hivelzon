@@ -1,6 +1,6 @@
 # H-094: Keşfet — seviyeye ve ilgiye göre günlük üç kısa video (reel)
 
-- **Durum:** Sürüyor — **P0, P1, P2, P3 ve P4 tamamlandı** (kredisiz). **18 reellik pilot üretildi ve 18/18 sesli** (konuşmacıya göre Sarah/Will/Chris); uygulama **backend'in yayımlanmış kataloğunu** okuyor; yayın/geri çekme uçtan uca doğrulandı; **"İlgi alanların" paneli** main'de. 2026-10-23 ön değerlendirme düzeltmeleri uygulandı; değişen 7 reel **v2 olarak yayımlandı**. Kalan yalnız H-092 pilotu ve insan değerlendirmesi.
+- **Durum:** Sürüyor/bekliyor (2026-10-28): P0–P4, 18/18 ses, katalog, yayın/geri çekme, “İlgi alanların” ve 7 reel v2 tamam. Kalan yalnız insan değerlendirmesi ve H-044 sonrasına ertelenen H-092 pilotu; yeni geniş katalog pilot sonucu olmadan üretilmez.
 - **Tür:** Uygulama (kod) + içerik boru hattı + içerik pilotu
 - **Faz:** F1 MVP — ürün incelemesi sonrası (2026-10-18)
 - **Bağımlılık:** H-040 (Keşfet), H-089 (kanıt basamakları), H-088 (günlük plan); pilot içerik için ücretli üretim onayı ve `PROMPTS.md`

@@ -4,7 +4,7 @@ Yapay zekâ videolarıyla İngilizce öğrenme uygulaması (iOS + Android). Tüm
 
 Velzon Bilişim Teknolojileri Ltd. Şti. (Eskişehir · info@velzon.tr) ürünüdür.
 
-**Durum (2026-10-27):** Faz 1 (MVP) uygulaması sürüyor (`docs/UYGULAMA-PLANI.md`). Her şey yerelde çalışıyor; sunucu, video barındırma ve mağaza hesapları en sona bırakıldı (H-044). Son tamamlananlar: **H-098** (canlı simülatör geri bildirimleri: karşılama görseli, sade bilgilendirme, bir kez açılan Hi turu, Keşfet ve sabit seçiciler), **H-099** (Ana Sayfa önerileri: kişisel durum cümlesi, ayrı süre/hedef satırı, işi söyleyen düğmeler, isteğe bağlı araçlar) ve **H-100** (aynı kişisel durum cümlesi Hi panelinde). Önceki büyük işler: **H-042** (hesap silme/geri alma, Hakkında ve lisanslar, günlük hatırlatma), **H-095** (hukukçu cevapları), **H-096** (takip incelemesi düzeltmeleri), **H-097** (uçtan uca simülatör gezinmesi) ve Keşfet'in "İlgi alanların" paneli (H-094). **Uygulamanın görünen adı bütün ekranlarda Hi** (kullanıcı kararı 2026-10-24); depo ve iç adlar `hiVelzon`. **H-044'ün hesap gerektirmeyen kısmı bitti:** release HTTPS adres kapısı, Android upload key, iOS mağaza plist'i, backend `prod` güvenlik kapısı ve sürümlü reel CDN yolu ([yayın hazırlığı](docs/H-044-YAYIN-HAZIRLIK.md)). Kalan işler kullanıcıya ya da dış taraflara bağlı: gerçek telefon denemeleri, editör kontrolü, H-092 pilotu (aşama A ve B birlikte H-044'ten sonra), H-044'ün sunucu/mağaza adımları. Ayrıntı: `yapilacaklar/IS-SIRASI.md`; son devir: `docs/HANDOFF-2026-10-27.md`.
+**Durum (2026-10-28):** Faz 1 (MVP) uygulaması sürüyor (`docs/UYGULAMA-PLANI.md`). Son gönderilen commit `536dbe2`: kararlar ve H-101 Hi marka simgeleri. Tam sistem denetiminde mobil **1483/1483**, backend **164/164** ve bütün içerik lint'leri geçti. CI'daki eksik `ffmpeg` kurulumu ile kitap/dilbilgisi lint kapıları yerelde düzeltildi; commit/push sonrası runner doğrulaması bekliyor. **Uygulamanın görünen adı bütün ekranlarda Hi**; depo ve iç adlar `hiVelzon`. Bağımlılık sırasındaki kalan işler: (1) H-043/H-068 gerçek iPhone, (2) H-085/H-086 kullanıcı denemesi, (3) öğretmen/editör incelemesi, (4) çalışan ElevenLabs erişimi isteyen eksik İngilizce sesler, (5) en sonda H-044 dış hesap/mağaza, (6) H-044 sonrasında H-092 pilotu. Ayrıntı: `yapilacaklar/IS-SIRASI.md`; denetim: `docs/SISTEM-DENETIMI-2026-10-28.md`; son devir: `docs/HANDOFF-2026-10-27.md`.
 
 Ana deneyim oyunlaştırılmış, sürekli bir hikâye: *The Missing Signal*. Kahraman Aleyna "Alex" Yıldız, yol arkadaşı AI asistan Hi. Sezon 1 (A1) 12 bölüm + prolog; 12 bölümün hepsi üretildi ve uygulamada oynanıyor (B5–B12 editör onayı bekliyor). Bitenler: repo iskeleti, bölüm paketi + content-lint, etkileşimli oynatıcı, altyazıya dokununca Türkçe anlam, başlıkla açılış ve sezon jeneriği, hikâye haritası ve kalıcı yerel ilerleme (Drift), defter + ipucu panosu + FSRS tekrarı, kitaplık, dilbilgisi ve Keşfet reelleri. AI konuşma pratiği MVP'de yok, v1'de gelir.
 
@@ -12,7 +12,8 @@ Ana deneyim oyunlaştırılmış, sürekli bir hikâye: *The Missing Signal*. Ka
 
 - [Proje rehberi](CLAUDE.md): bağlayıcı kararlar, kurallar, iş takibi (H-numaraları)
 - [İş sırası](yapilacaklar/IS-SIRASI.md): nerede kaldık, sıradaki işler, günlük
-- [Son devir (2026-10-27)](docs/HANDOFF-2026-10-27.md): güncel durum, son iki iş ve sıradaki adımlar
+- [Son devir (28 Ekim güncel)](docs/HANDOFF-2026-10-27.md): güncel durum ve sıradaki adımlar
+- [Sistem denetimi (2026-10-28)](docs/SISTEM-DENETIMI-2026-10-28.md): testler, CI bulgusu ve gerçek açık işler
 - [Faz 1 uygulama planı](docs/UYGULAMA-PLANI.md): alt fazlar ve durumları
 - [Oyun ve hikâye tasarımı](docs/OYUN-TASARIMI.md) · [Bölüm paketi biçimi](docs/BOLUM-PAKETI.md) · [Hi asistanı ve koç](docs/HI-ASISTAN-VE-KOC.md)
 - [İş ve ürün planı](docs/IS-PLANI.md) · [Şartname](docs/SARTNAME.md) · [İçerik mimarisi](docs/ICERIK-MIMARISI.md) · [Lisans raporu](docs/LISANS-RAPORU.md) · [Yayın hazırlığı](docs/H-044-YAYIN-HAZIRLIK.md) · [Tasarım yönü](tasarim/README.md)
@@ -43,6 +44,9 @@ Depo düzeni: `mobile/` (Flutter, iOS + Android, paket kimliği `tr.velzon.hivel
 - **Docker**: macOS'ta Colima (`brew install colima docker docker-compose`, sonra `colima start`).
 
 ### Mobil
+Bu çalışma alanında proje sahibinin güncel talimatı gereği simülatör her
+çalıştırmadan önce açık izin alınarak açılır; genel “devam” talebi izin değildir.
+
 ```bash
 cd mobile
 flutter pub get
@@ -75,12 +79,12 @@ cd backend && mvn -B verify
 ### İçerik (yerel)
 ```bash
 python3 tools/dev-content-server/serve.py                  # bölüm paketleri, 127.0.0.1:8787
-tools/content-pipeline/.venv/bin/python tools/content-pipeline/export_package.py icerik/A1-00[1-4]-*   # paketleri üret
+tools/content-pipeline/.venv/bin/python tools/content-pipeline/export_package.py icerik/A1-*           # bölüm paketlerini üret
 tools/content-pipeline/.venv/bin/python tools/content-pipeline/export_package.py --season 1            # yalnızca sezon paketi
 tools/content-pipeline/.venv/bin/python tools/content-pipeline/content_lint.py icerik/A1-0*             # content-lint
 tools/content-pipeline/.venv/bin/python -m pytest tools/content-pipeline                               # boru hattı testleri
 ```
-Uygulama içeriği varsayılan olarak `http://127.0.0.1:8787` adresinden okur (`--dart-define=CONTENT_BASE_URL=...` ile değişir). Simülatör: `flutter run -d "hiVelzon iPhone 17"`. Drift kodunu yeniden üretmek için: `cd mobile && dart run build_runner build --force-jit`. Paket biçimi: `docs/BOLUM-PAKETI.md`.
+Uygulama içeriği varsayılan olarak `http://127.0.0.1:8787` adresinden okur (`--dart-define=CONTENT_BASE_URL=...` ile değişir). Drift kodunu yeniden üretmek için: `cd mobile && dart run build_runner build --force-jit`. Paket biçimi: `docs/BOLUM-PAKETI.md`.
 
 ### CI
-`.github/workflows/ci.yml`: her push ve PR'da `flutter analyze` + `flutter test` ile `mvn -B verify` çalışır.
+`.github/workflows/ci.yml`: her push ve PR'da `flutter analyze` + `flutter test`, `mvn -B verify`, içerik pytest'i ve bölüm/kitap/dilbilgisi lint'leri çalışır. TTS testleri için runner'a `ffmpeg` kurulur.

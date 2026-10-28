@@ -1,6 +1,6 @@
 # Kitaplık: seviyeli, resimli, sesli kitaplar (H-065…H-073)
 
-> Durum: **uygulamada** (2026-10-21): 30 kitap yazıldı ve tam resimli, 5/30 sesli (kalan ses yeni ElevenLabs anahtarı bekliyor); okuyucu, "Sayfanın Türkçesi", kitap sonu anlama soruları ve backend kataloğu main'de. Kararlar §2'de; işler §9'da.
+> Durum: **uygulamada** (2026-10-28): 30 kitap yazıldı ve tam resimli, 5/30 sesli; `book_lint` 30 kitapta 0 hata. Okuyucu, “Sayfanın Türkçesi”, kitap sonu anlama soruları ve backend kataloğu main'de. Kalan: H-085/H-086 kullanıcı denemesi, öğretmen/editör kontrolü ve 25 kitap + A1-K01 düzeltme sesi için çalışan ElevenLabs erişimi veya ayrı onaylı ücretli plan. 2026-10-27'de engellenen ücretsiz anahtar tekrar kullanılmaz.
 
 ## 1. Neden
 Uygulamada hep okuma ve dilbilgisi var. Kullanıcı bazen yalnızca **dinlemek** ister (ör. yatakta): "A2 seviyesinde bir hikâye aç."

@@ -1,7 +1,8 @@
 # Hi — marka dosyası
 
 > Karar: `docs/KARARLAR-2026-10-27.md` (H-016). Bu klasördeki dosyalar
-> **konsepttir**; uygulama simgesi ve mağaza görselleri H-101'de üretilecek.
+> H-101 ile iOS/Android uygulama simgelerine ve açılış ekranlarına uygulandı;
+> 1024/512 mağaza master'ları hazırdır. Hesaplara yükleme H-044'te en sondadır.
 
 ## Dosyalar
 

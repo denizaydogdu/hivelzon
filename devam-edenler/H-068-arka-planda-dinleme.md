@@ -1,6 +1,6 @@
 # H-068: Arka planda dinleme ve kilit ekranı
 
-- **Durum:** Devam ediyor (kod main'de: flutter 887; simülatörde arka planda çalma doğrulandı; kilit ekranı görünümü gerçek iPhone'da denenmeli)
+- **Durum:** Devam ediyor (2026-10-28): kod main'de; simülatörde arka planda çalma daha önce doğrulandı. Kalan gerçek iPhone'da arka plan sesi, kilit ekranı görünümü ve kumanda kontrolü. Kullanıcının cihazı/test izni gerekir.
 - **Tür:** Uygulama (kod)
 - **Faz:** Kitaplık K3 (`docs/KITAPLIK.md` §9)
 - **Bağımlılık:** H-067

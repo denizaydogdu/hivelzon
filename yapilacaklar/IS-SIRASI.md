@@ -1,14 +1,14 @@
 # İş Sırası — hiVelzon
 
-> Son güncelleme: 2026-10-27 · Güncelleyen: OpenCode ajanı
+> Son güncelleme: 2026-10-28 · Güncelleyen: OpenCode ajanı
 
 Bu dosya tek takip noktasıdır. Hangi işin hangi sırada yapıldığını, şu an ne üzerinde çalışıldığını ve neyin bittiğini gösterir. Her işin ayrıntısı kendi `H-<numara>-<başlık>.md` dosyasındadır.
 
 > **Yeni oturum buradan başlasın:** `CLAUDE.md` → bu dosyanın "Nerede kaldık" bölümü → `docs/HANDOFF-2026-10-27.md`.
-> **Sıradaki iş:** Kod tarafında bekleyen yerel iş **yok**. H-101 marka simgeleri tamamlandı. H-044'ün dış hesap adımları (Almanya sunucusu/DNS, Bunny, Apple, Google) kullanıcı istediğinde **en sonda** yapılır; şu an açılmıyor. **H-092 aşama A ve B, H-044 tamamlanmadan başlamaz.** Ücretli üretim veya dış hesap açma ayrı onay ister.
+> **Sıradaki işler:** Aşağıdaki altı bekleyen grup sırayla izlenir; hiçbiri şu an bağımsız ürün kodu işi değildir. Gerçek cihaz, kullanıcı/editör, çalışan TTS erişimi veya ayrı dış hesap onayı gerektirir. H-044 ve H-092 en sonda kalır.
 
 ## Nerede kaldık
-- **Şu an (2026-10-27):** Faz 1 (MVP) uygulaması sürüyor (`docs/UYGULAMA-PLANI.md`). `main` = `1e030e0` (H-100 Hi panelinde kişisel durum cümlesi); önceki `80d2320` (H-099), `10726e3` (H-098) ve `083a228` (H-044 dilimi). Uygulamanın görünen adı bütün ekranlarda **Hi** (kullanıcı kararı 2026-10-24); depo/iç adlar `hiVelzon`, hukuki şirket Velzon Bilişim Teknolojileri Ltd. Şti.
+- **Şu an (2026-10-28):** Faz 1 (MVP) uygulaması sürüyor (`docs/UYGULAMA-PLANI.md`). Son gönderilen `main` = `536dbe2` (kararlar + H-101 marka); CI ve belge senkronu yerelde commit/push bekliyor. Uygulamanın görünen adı bütün ekranlarda **Hi** (kullanıcı kararı 2026-10-24); depo/iç adlar `hiVelzon`, hukuki şirket Velzon Bilişim Teknolojileri Ltd. Şti.
   - Son bitenler: **H-042** (hesap silme/geri alma, Hakkında ve lisanslar, günlük hatırlatma, `docs/HUKUK-SORULARI.md`) ve **H-095** (yeniden onay yok, yalnız bildirim; rıza ve denetim kayıtları 2 yıl, V16; KVKK ve kullanım koşulları taslakları, yer tutuculu). İkisi gerçek backend'e karşı uçtan uca testle doğrulandı (`mobile/integration_test/h042_h095_account_e2e_test.dart`).
   - Akşam: **H-096** (21 Ekim takip incelemesi: geri çekilen reel eski adresle açılmaz, mesaj kalıbı tek cümlede, reel tamamlanması %90 konum + %80 aktif izleme, 'İfadeyi kaydet') bitti; inceleme `docs/URUN-TAKIP-INCELEMESI-2026-10-21.md`. Değişmez sürüm klasörleri H-044'e not edildi.
   - **H-043:** yerel kısım bitti; kalan gerçek telefon kontrolleri (`docs/BETA-KONTROL-LISTESI.md` 2. bölüm).
@@ -26,18 +26,22 @@ Bu dosya tek takip noktasıdır. Hangi işin hangi sırada yapıldığını, şu
   - Hukukçu cevapları `docs/HUKUK-SORULARI.md` → "Cevaplar": veli onayı yok; İYS ve VERBİS kaydı gerekmez; sunucu Almanya; cihazda konuşma tanıma KVKK kapsamında değil; kayıtlar 2 yıl; 30 gün silme uygun; pilot onamı uygun. Veri sorumlusu bilgileri ayrı fazda; muhasebe soruları H-044'te.
 - **Testler (son koşu):** mobil 1483/1483 (`flutter analyze` temiz; Android debug + iOS simülatör derlemesi geçti) · backend 164 · pytest 383 · reel lint 18/0/0 · grammar lint 71 ders 0 hata · book lint 30 kitap 0 hata.
 - **Hedef tekrar (2026-10-28):** Hikâye + oynatıcı ekranı + H-086 okuyucu/golden testleri **70/70**; `flutter analyze` temiz. Yukarıdaki 1483/1483 önceki tam takım sonucudur.
+- **Tam sistem denetimi (2026-10-28):** Simülatör açılmadan mobil **1483/1483**, backend **164/164**, pytest ve bütün bölüm/kitap/dilbilgisi/reel lint'leri geçti. Son GitHub CI hatası içerik runner'ında eksik `ffmpeg` idi (mobil/backend yeşil); kurulum adımı ile 30 kitap ve 71 dilbilgisi dersi lint kapıları workflow'a eklendi, commit/push sonrası runner doğrulaması bekliyor. Ayrıntı: `docs/SISTEM-DENETIMI-2026-10-28.md`.
 - **Yerel ortam (2026-10-27):** Flutter testleri ve analiz yerelde çalıştırıldı. Arayüz denemesi için **"PIRU iPhone 17"** ve **"WishSay iPhone"** (`A79F74E2-A150-4A94-A676-DC466D69F2F4`) simülatörleri kullanılabilir. Backend ve içerik sunucusu gerektiğinde `--dart-define=API_BASE_URL=http://127.0.0.1:8080 --dart-define=CONTENT_BASE_URL=http://127.0.0.1:8787` ile açılır. Sunucu, Bunny Stream, mağaza ve geliştirici hesapları en sonda (H-044).
 - **İçerik:** Sezon 1'in 12 bölümü üretildi (haritada 12/12; editör onayı H-028 bekliyor). Dilbilgisi 71 dersin hepsi yazıldı ve Türkçe sesli; İngilizce örnek sesi A1 16/16, A2 7 tam + 1 kısmen, B1–C2 bekliyor. Kitaplık: 30 kitap yazıldı ve tam resimli; sesli kitap 5/30. Keşfet: 18 sesli reel yayında; 7 kalite düzeltmesi v2. Higgsfield hesap bakiyesi **483,72** (2026-10-27; H-099'da harcama yok).
-- **Sıradaki adım:** Açık işlerin kalanı kullanıcıya ya da dış taraflara bağlı (aşağıda). **H-092 tamamı en sonda** (kullanıcı kararı 2026-10-23: şu an test telefonu yok; aşama A da ertelendi): aşama A (2–3 kişilik gözlemli test; iPhone + Mac, yerel ağ) ve aşama B (evde 7–14 gün, H-044 ile) birlikte **H-044'ten sonra** yapılır. Pilot kiti ve gözlem föyü hazır (`docs/H-092-PILOT-KITI.md`, `docs/H-092-GOZLEM-FOYU-2026-10-23.md`). Pilot sonucu görülmeden büyük yeni içerik dalgası başlamaz.
-- **Kullanıcıya ya da dış taraflara bağlı olanlar** (kodlamayı durdurmuyor):
-  - Simülatörde kullanıcı denemesi: H-085 B5–B12, H-086 "Sayfanın Türkçesi", yeni ekranlar (H-042 Hakkında, hatırlatma, İlgi alanların).
-  - Gerçek telefon: H-043 kontrol listesi 2. bölüm, H-068 kilit ekranı.
-  - H-092 aşama A (kullanıcı istediği zaman; 2026-10-23: test telefonu yok → H-044 ile en sonda).
-  - H-028 öğretmen/editör kontrolü: Konuş metinleri, B5–B12, kitap soruları, dilbilgisi.
-  - ElevenLabs: 25 kitabın sesi, dilbilgisi İngilizce örnekleri, A1-K01 metin düzeltmesinin sesi (H-071 notu). **2026-10-27:** Yeni ücretsiz anahtar API'de 401 `detected_unusual_activity` verdi; yeni ses için çalışan anahtar veya ücretli plan gerekir (ayrı onay).
-  - Veri sorumlusu bilgileri (unvan, adres, iletişim, mahkeme): KVKK ve koşullar metnindeki yer tutucular.
-  - H-044 dış hesaplar, sunucu (Almanya), mağaza; muhasebe soruları.
-  - Marka mağaza **yüklemesi** H-044'e bağlı; yerel simge ve master varlıklar H-101 ile hazır.
+- **Sıradaki adım:** Aşağıdaki sıraya göre dış bağımlılıklar çözülür. Pilot sonucu görülmeden büyük yeni içerik dalgası başlamaz.
+
+## Sıradaki işler (bağımlılık sırası)
+
+1. **Gerçek iPhone kontrolleri — H-043/H-068:** beta kontrol listesinin gerçek telefon bölümü; arka plan çalma ve kilit ekranı görünümü. Kullanıcının cihazı ve açık test izni gerekir.
+2. **Kullanıcı denemesi — H-085/H-086:** B5–B12 ile “Sayfanın Türkçesi” teknik olarak yeşil; kabul için kullanıcının öznel deneyimi gerekir. Simülatör ancak kullanıcı her çalıştırma öncesi açık izin verirse açılır.
+3. **Öğretmen/editör incelemesi:** H-028'de süreç kararı tamamlandı; operasyonel kontrol açık. Konuş metinleri, B5–B12 çeviri/görsel/ipucu, kitap soruları ve dilbilgisi dersleri incelenir.
+4. **Eksik İngilizce sesler:** H-071…H-073 kitap sesleri ve H-080…H-082 dilbilgisi örnekleri için çalışan ElevenLabs erişimi veya ayrı onaylı ücretli plan gerekir. 2026-10-27 anahtarı `401 detected_unusual_activity` verdi; tekrar kullanılmaz.
+5. **H-044 dış hesaplar ve mağaza — en son:** Almanya sunucusu/DNS, Bunny, Apple/Google, mağaza yüklemesi, veri sorumlusu bilgileri ve muhasebe. Ayrı kullanıcı onayı olmadan başlanmaz.
+6. **H-092 kullanıcı pilotu — H-044 sonrasında:** aşama A ve B birlikte yürütülür; pilot kiti ve gözlem föyü hazır. H-044 bitmeden başlamaz.
+
+- **Marka yüklemesi:** Yerel simge/master varlıkları H-101 ile hazır; mağazaya yükleme 5. adımdaki H-044'e bağlıdır.
+- **Engel:** Kod engeli yok. Bekleyenlerin tamamı cihaz, insan, TTS erişimi veya dış hesap bağımlılığıdır.
 - **Engel:** Yok. Dış hesaplar bilerek en sona bırakıldı.
 
 ## Nasıl takip ediyoruz
@@ -140,7 +144,7 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 | İ9 | H-098 | Canlı arayüz geri bildirimi düzeltmeleri | Yüksek | H-039, H-040, H-064, H-067, H-078 | ✅ |
 | İ10 | H-099 | Ana Sayfa önerilerini kişiselleştir ve eylemi netleştir | Yüksek | H-088, H-047, H-060 | ✅ |
 | — | H-045 | Arayüz tasarım yönü (6 ekran taslağı, 6 kr) | Orta | H-033 | ✅ |
-| 1.12 | H-044 | Dış hesaplar, barındırma ve mağaza (en son) | Orta | H-043 | 🔄 |
+| 1.12 | H-044 | Dış hesaplar, barındırma ve mağaza (en son; ayrı kullanıcı onayı) | Orta | H-043 | ⏸ |
 
 ### Adım 6 — Tasarım yenilemesi (2026-10-14, kullanıcı isteği; sıra önemli)
 | # | İş | Başlık | Öncelik | Bağımlılık | Durum |
@@ -214,15 +218,16 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 ## Devam eden işler
 | İş | Başlık | Başlangıç | Not |
 |---|---|---|---|
-| H-043 | Kalite ve iç beta hazırlığı | 2026-10-21 | Yerel kısım bitti (`docs/BETA-KONTROL-LISTESI.md` 1. bölüm); kalan gerçek telefon kontrolleri (2. bölüm) |
-| H-068 | Arka planda dinleme ve kilit ekranı | 2026-10-14 | Kod main'de; kilit ekranı görünümü gerçek iPhone'da denenecek |
+| H-043 | Kalite ve iç beta hazırlığı | 2026-10-21 | Yerel kısım bitti; kalan gerçek iPhone kontrolleri (`docs/BETA-KONTROL-LISTESI.md` 2. bölüm) |
+| H-044 | Dış hesaplar, barındırma ve mağaza | 2026-10-11 | Hesap gerektirmeyen güvenlikler bitti; dış hesap/sunucu/mağaza ayrı onayla en sonda; H-092 bundan sonra |
+| H-068 | Arka planda dinleme ve kilit ekranı | 2026-10-14 | Kod main'de; gerçek iPhone'da arka plan, kilit ekranı ve kumandalar kontrol edilecek |
 | H-071 | Kitap dalgası 1: A1 + A2 | 2026-10-14 | 10 kitap onaylı ve tam resimli; sesli 5/10 (A1-K01, K03, K04, K05, A2-K03). Kalan: 5 kitabın sesi ve A1-K01 düzeltmesinin sesi (çalışan ElevenLabs anahtarı/ayrı onaylı plan), editör kontrolü |
 | H-072 | Kitap dalgası 2: B1 + B2 | 2026-10-14 | 10 kitap onaylı ve tam resimli; ses çalışan ElevenLabs anahtarı/ayrı onaylı plan bekliyor |
 | H-073 | Kitap dalgası 3: C1 + C2 | 2026-10-14 | 10 kitap onaylı ve tam resimli (80 görsel, 40 kr); ses çalışan ElevenLabs anahtarı/ayrı onaylı plan bekliyor |
-| H-080 | Dilbilgisi dalga 1: A1 + A2 | 2026-10-14 | 31 ders, Türkçe sesli; İngilizce örnekler A1 tam, A2 7 tam + 1 kısmen (~2.990 karakter kaldı); öğretmen kontrolü |
-| H-081 | Dilbilgisi dalga 2: B1 + B2 | 2026-10-14 | 26 ders, Türkçe sesli; İngilizce örnekler yeni anahtarı bekliyor; öğretmen kontrolü |
-| H-082 | Dilbilgisi dalga 3: C1 + C2 | 2026-10-14 | 14 ders, Türkçe sesli; İngilizce örnekler yeni anahtarı bekliyor; öğretmen kontrolü |
-| H-085 | Sezon 1 Bölüm 5–12 üretimi | 2026-10-14 | Üretim bitti (12/12 haritada); 2026-10-27 otomatik simülatör turu 8/8 geçti; kullanıcının denemesi ve H-028 editör kontrolü bekliyor |
+| H-080 | Dilbilgisi dalga 1: A1 + A2 | 2026-10-14 | 31 ders, Türkçe sesli; A1 İngilizce tam, A2 kısmen (~2.990 karakter); çalışan TTS erişimi + öğretmen kontrolü |
+| H-081 | Dilbilgisi dalga 2: B1 + B2 | 2026-10-14 | 26 ders, Türkçe sesli; İngilizce örnekler çalışan TTS erişimi/ayrı onaylı plan + öğretmen kontrolü bekliyor |
+| H-082 | Dilbilgisi dalga 3: C1 + C2 | 2026-10-14 | 14 ders, Türkçe sesli; İngilizce örnekler çalışan TTS erişimi/ayrı onaylı plan + öğretmen kontrolü bekliyor |
+| H-085 | Sezon 1 Bölüm 5–12 üretimi | 2026-10-14 | Üretim bitti; otomatik simülatör turu 8/8 geçti; kullanıcının denemesi ve operasyonel editör kontrolü bekliyor |
 | H-086 | Kitapta "Sayfanın Türkçesi" | 2026-10-14 | Kod main'de; 2026-10-27 hedef 14 test + 2 golden geçti; kullanıcı denemesi bekliyor |
 | H-094 | Keşfet — günlük üç kısa video | 2026-10-18 | Kod, 18 sesli reel, yayın/geri çekme ve "İlgi alanların" paneli bitti; ön değerlendirme düzeltmeleri tamamlandı, 7 reel v2 yayımlandı (2026-10-23); kalan H-092 pilotu ve insan değerlendirmesi |
 
@@ -570,3 +575,12 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
   - **Testler:** mobil **1472** (analyze temiz) · backend **164** (Testcontainers) · Android debug + release APK (release imzasız, `apksigner` doğruladı) · iOS release `--no-codesign` (paket plist'inde yerel ağ izni yok, görünen ad **Hi**).
   - **Kalan:** Almanya sunucusu/DNS, Bunny Storage/Pull Zone, Apple App Store Connect kaydı, Google Play hesabı (ücret onayı), mağaza yüklemesi, veri sorumlusu bilgileri, muhasebe. H-092 aşama A ve B hâlâ H-044 tamamlandıktan sonra.
   - **Commit:** `083a228` ile `origin/main`'de.
+- **2026-10-26–27:**
+  - H-098, H-099 ve H-100 tamamlandı. H-001/H-003/H-006/H-008/H-015/H-016 kararları kapandı; H-101 Hi marka simgelerini iOS/Android ve açılış ekranlarına uyguladı.
+  - H-085 B5–B12 otomatik simülatör turu 8/8 geçti; H-086 hedef 14 test + 2 golden geçti. Kullanıcı/editör kabulü açık bırakıldı.
+  - Tam mobil takım **1483/1483**, analyze temiz; Android debug ve iOS simülatör derlemeleri geçti. Karar/marka teslimi `536dbe2` ile `origin/main`'e gönderildi.
+- **2026-10-28:**
+  - Kullanıcı talimatı kalıcılaştırıldı: simülatör her çalıştırmadan önce açık izin ister; genel “devam” izin değildir.
+  - Simülatör açılmadan tam sistem denetimi yapıldı: mobil **1483/1483**, backend **164/164**, pytest ve bölüm/konuş/kitap/dilbilgisi/reel lint'leri 0 hata. Rapor: `docs/SISTEM-DENETIMI-2026-10-28.md`.
+  - Son GitHub CI hatasının runner'da eksik `ffmpeg` olduğu bulundu; workflow'a `ffmpeg`, 30 kitap lint'i ve 71 dilbilgisi dersi lint'i eklendi. Commit/push sonrası GitHub doğrulaması bekliyor.
+  - Bütün yaşayan durum belgeleri ve iş dosyaları altı maddelik sıraya eşitlendi: gerçek iPhone → kullanıcı denemesi → öğretmen/editör → TTS → H-044 → H-092. Tarihsel handoff'lar tarihsel olarak işaretlendi.
