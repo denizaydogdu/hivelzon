@@ -58,6 +58,9 @@ jobs:
       - run: pip install -r tools/content-pipeline/requirements-dev.txt
       # Medya (mp3/png/mp4) git dışında: testler ve lint yalnızca metin, hizalama ve kurgu.json kullanır.
       - run: python -m pytest tools/content-pipeline
-      - run: python tools/content-pipeline/content_lint.py icerik/A1-0* --graph-source kurgu
+      # Bölüm kaynaklarını kurgu.json üzerinden denetle. Klip sınırları git
+      # dışı bölüm paketlerine/medyaya bağlıdır; pytest'te kuralları, yerelde
+      # tam paketlerle gerçek sınırları denetlenir.
+      - run: python tools/content-pipeline/content_lint.py icerik/A1-0* --graph-source kurgu --no-clips
       - run: python tools/content-pipeline/book_lint.py kitaplar/*-K*
       - run: python tools/content-pipeline/grammar_lint.py dilbilgisi/G-*
