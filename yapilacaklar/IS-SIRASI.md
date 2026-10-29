@@ -1,6 +1,6 @@
 # İş Sırası — hiVelzon
 
-> Son güncelleme: 2026-10-28 · Güncelleyen: OpenCode ajanı
+> Son güncelleme: 2026-10-29 · Güncelleyen: OpenCode ajanı
 
 Bu dosya tek takip noktasıdır. Hangi işin hangi sırada yapıldığını, şu an ne üzerinde çalışıldığını ve neyin bittiğini gösterir. Her işin ayrıntısı kendi `H-<numara>-<başlık>.md` dosyasındadır.
 
@@ -8,7 +8,7 @@ Bu dosya tek takip noktasıdır. Hangi işin hangi sırada yapıldığını, şu
 > **Sıradaki işler:** Aşağıdaki altı bekleyen grup sırayla izlenir; hiçbiri şu an bağımsız ürün kodu işi değildir. Gerçek cihaz, kullanıcı/editör, çalışan TTS erişimi veya ayrı dış hesap onayı gerektirir. H-044 ve H-092 en sonda kalır.
 
 ## Nerede kaldık
-- **Şu an (2026-10-28):** Faz 1 (MVP) uygulaması sürüyor (`docs/UYGULAMA-PLANI.md`). Son gönderilen `main` = `536dbe2` (kararlar + H-101 marka); CI ve belge senkronu yerelde commit/push bekliyor. Uygulamanın görünen adı bütün ekranlarda **Hi** (kullanıcı kararı 2026-10-24); depo/iç adlar `hiVelzon`, hukuki şirket Velzon Bilişim Teknolojileri Ltd. Şti.
+- **Şu an (2026-10-29):** Faz 1 (MVP) uygulaması sürüyor (`docs/UYGULAMA-PLANI.md`). Son gönderilen `main` = `32b5832` (CI düzeltmesi); GitHub CI koşusu `40828736476` mobil, backend ve içerik işleriyle **yeşil**. Uygulamanın görünen adı bütün ekranlarda **Hi** (kullanıcı kararı 2026-10-24); depo/iç adlar `hiVelzon`, hukuki şirket Velzon Bilişim Teknolojileri Ltd. Şti.
   - Son bitenler: **H-042** (hesap silme/geri alma, Hakkında ve lisanslar, günlük hatırlatma, `docs/HUKUK-SORULARI.md`) ve **H-095** (yeniden onay yok, yalnız bildirim; rıza ve denetim kayıtları 2 yıl, V16; KVKK ve kullanım koşulları taslakları, yer tutuculu). İkisi gerçek backend'e karşı uçtan uca testle doğrulandı (`mobile/integration_test/h042_h095_account_e2e_test.dart`).
   - Akşam: **H-096** (21 Ekim takip incelemesi: geri çekilen reel eski adresle açılmaz, mesaj kalıbı tek cümlede, reel tamamlanması %90 konum + %80 aktif izleme, 'İfadeyi kaydet') bitti; inceleme `docs/URUN-TAKIP-INCELEMESI-2026-10-21.md`. Değişmez sürüm klasörleri H-044'e not edildi.
   - **H-043:** yerel kısım bitti; kalan gerçek telefon kontrolleri (`docs/BETA-KONTROL-LISTESI.md` 2. bölüm).
@@ -26,7 +26,7 @@ Bu dosya tek takip noktasıdır. Hangi işin hangi sırada yapıldığını, şu
   - Hukukçu cevapları `docs/HUKUK-SORULARI.md` → "Cevaplar": veli onayı yok; İYS ve VERBİS kaydı gerekmez; sunucu Almanya; cihazda konuşma tanıma KVKK kapsamında değil; kayıtlar 2 yıl; 30 gün silme uygun; pilot onamı uygun. Veri sorumlusu bilgileri ayrı fazda; muhasebe soruları H-044'te.
 - **Testler (son koşu):** mobil 1483/1483 (`flutter analyze` temiz; Android debug + iOS simülatör derlemesi geçti) · backend 164 · pytest 383 · reel lint 18/0/0 · grammar lint 71 ders 0 hata · book lint 30 kitap 0 hata.
 - **Hedef tekrar (2026-10-28):** Hikâye + oynatıcı ekranı + H-086 okuyucu/golden testleri **70/70**; `flutter analyze` temiz. Yukarıdaki 1483/1483 önceki tam takım sonucudur.
-- **Tam sistem denetimi (2026-10-28):** Simülatör açılmadan mobil **1483/1483**, backend **164/164**, pytest ve bütün bölüm/kitap/dilbilgisi/reel lint'leri geçti. Son GitHub CI hatası içerik runner'ında eksik `ffmpeg` idi (mobil/backend yeşil); kurulum adımı ile 30 kitap ve 71 dilbilgisi dersi lint kapıları workflow'a eklendi, commit/push sonrası runner doğrulaması bekliyor. Ayrıntı: `docs/SISTEM-DENETIMI-2026-10-28.md`.
+- **Tam sistem denetimi (2026-10-28) ve CI (2026-10-29):** Simülatör açılmadan mobil **1483/1483**, backend **164/164**, pytest ve bütün bölüm/kitap/dilbilgisi/reel lint'leri geçti. CI'a `ffmpeg`, 30 kitap ve 71 dilbilgisi dersi lint kapıları eklendi. İlk koşuda (`40828152612`) ortaya çıkan paket dışı klip denetimi kaynak koşusundan ayrıldı; son koşu **`40828736476` üç işiyle yeşil**. Ayrıntı: `docs/SISTEM-DENETIMI-2026-10-28.md`.
 - **Yerel ortam (2026-10-27):** Flutter testleri ve analiz yerelde çalıştırıldı. Arayüz denemesi için **"PIRU iPhone 17"** ve **"WishSay iPhone"** (`A79F74E2-A150-4A94-A676-DC466D69F2F4`) simülatörleri kullanılabilir. Backend ve içerik sunucusu gerektiğinde `--dart-define=API_BASE_URL=http://127.0.0.1:8080 --dart-define=CONTENT_BASE_URL=http://127.0.0.1:8787` ile açılır. Sunucu, Bunny Stream, mağaza ve geliştirici hesapları en sonda (H-044).
 - **İçerik:** Sezon 1'in 12 bölümü üretildi (haritada 12/12; editör onayı H-028 bekliyor). Dilbilgisi 71 dersin hepsi yazıldı ve Türkçe sesli; İngilizce örnek sesi A1 16/16, A2 7 tam + 1 kısmen, B1–C2 bekliyor. Kitaplık: 30 kitap yazıldı ve tam resimli; sesli kitap 5/30. Keşfet: 18 sesli reel yayında; 7 kalite düzeltmesi v2. Higgsfield hesap bakiyesi **483,72** (2026-10-27; H-099'da harcama yok).
 - **Sıradaki adım:** Aşağıdaki sıraya göre dış bağımlılıklar çözülür. Pilot sonucu görülmeden büyük yeni içerik dalgası başlamaz.
@@ -582,5 +582,9 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 - **2026-10-28:**
   - Kullanıcı talimatı kalıcılaştırıldı: simülatör her çalıştırmadan önce açık izin ister; genel “devam” izin değildir.
   - Simülatör açılmadan tam sistem denetimi yapıldı: mobil **1483/1483**, backend **164/164**, pytest ve bölüm/konuş/kitap/dilbilgisi/reel lint'leri 0 hata. Rapor: `docs/SISTEM-DENETIMI-2026-10-28.md`.
-  - Son GitHub CI hatasının runner'da eksik `ffmpeg` olduğu bulundu; workflow'a `ffmpeg`, 30 kitap lint'i ve 71 dilbilgisi dersi lint'i eklendi. Commit/push sonrası GitHub doğrulaması bekliyor.
+  - Son GitHub CI hatasının runner'da eksik `ffmpeg` olduğu bulundu; workflow'a `ffmpeg`, 30 kitap lint'i ve 71 dilbilgisi dersi lint'i eklendi.
   - Bütün yaşayan durum belgeleri ve iş dosyaları altı maddelik sıraya eşitlendi: gerçek iPhone → kullanıcı denemesi → öğretmen/editör → TTS → H-044 → H-092. Tarihsel handoff'lar tarihsel olarak işaretlendi.
+- **2026-10-29:**
+  - CI ve belge senkronu `f994127` ile gönderildi. İlk koşu (`40828152612`) `ffmpeg` sonrası bölüm lint'inde paket dışı klip kaynaklarına takıldı; klip denetimi kaynak koşusundan ayrıldı (`32b5832`).
+  - Son CI koşusu **`40828736476` yeşil**: mobil, backend ve içerik (pytest + bölüm/kitap/dilbilgisi lint) işleri geçti.
+  - README, CLAUDE, devir, iş sırası, planlar ve iş dosyaları son commit/CI sonucuyla eşitlendi; commit/push bekleyen ifade kalmadı.

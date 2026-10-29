@@ -37,6 +37,12 @@ Mobil ve backend işleri geçmiş; içerik işinde 363 test geçmiş, 3 TTS test
 runner'da `ffmpeg` bulunmadığı için `FileNotFoundError` vermişti. Workflow'a
 pytest öncesi `ffmpeg` kurulumu eklendi.
 
+Düzeltme `f994127` ile gönderildi. Koşu `40828152612`'de `ffmpeg` sorunu
+çözüldü; bu kez bölüm lint'i, git dışındaki bölüm paketlerine/medyaya bağlı
+klip sınırlarını aradığı için düştü. Kaynak lint koşusuna `--no-clips`
+eklendi (`32b5832`); klip kuralları pytest'te, gerçek sınırlar yerelde tam
+paketlerle denetlenmeye devam eder.
+
 CI ayrıca pytest ve bölüm lint'ini çalıştırıyor, fakat kitap ve dilbilgisi
 kaynaklarını lint etmiyordu. `.github/workflows/ci.yml` içine şu kapılar da
 eklendi:
@@ -71,5 +77,14 @@ Kod tabanı ve kaynak içerikler yeşildir. Kalan işler insan/gerçek cihaz,
 çalışan TTS erişimi veya ertelenmiş dış hesaplara bağlıdır. Yeni ürün kapsamı
 pilot sonucu görülmeden açılmamalıdır.
 
-CI düzeltmesinin GitHub runner doğrulaması için bu değişikliklerin commit ve
-push edilmesi gerekir.
+## CI sonucu (2026-10-29)
+
+| Koşu | Commit | Sonuç |
+|---|---|---|
+| `40587989108` | `536dbe2` | ❌ İçerik işi: runner'da `ffmpeg` yok |
+| `40828152612` | `f994127` | ❌ İçerik işi: paket dışı klip denetimi |
+| **`40828736476`** | **`32b5832`** | **✅ Mobil, backend ve içerik yeşil** |
+
+Son koşuda mobil `flutter analyze + test`, backend `mvn -B verify` ve içerik
+`pytest + bölüm/kitap/dilbilgisi lint` işleri geçti. CI tarafında bekleyen
+hata yoktur.

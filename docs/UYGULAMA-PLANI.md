@@ -1,8 +1,8 @@
 # hiVelzon: Faz 1 (MVP) uygulama planı (H-025)
 
-**Sürüm:** 0.2 · **Tarih:** 2026-10-11 (durum güncellemesi 2026-10-28) · **Durum:** Onaylandı (2026-10-11); uygulama sürüyor.
+**Sürüm:** 0.2 · **Tarih:** 2026-10-11 (durum güncellemesi 2026-10-29) · **Durum:** Onaylandı (2026-10-11); uygulama sürüyor.
 **Dayanak:** CLAUDE.md "Onaylı içerik mimarisi kararları" ve "Onaylı oyun tasarımı kararları"; `docs/OYUN-TASARIMI.md`; `docs/ICERIK-MIMARISI.md`.
-**Kural:** Plan onaylandı, kodlama bu plana göre sürüyor; plana yeni kapsam kullanıcı onayıyla eklenir. H-096…H-101 tamamlandı; H-101 Hi marka simgelerini uyguladı. **Sıradaki boş numara H-102'dir.** Güncel sıra: H-043/H-068 gerçek iPhone → H-085/H-086 kullanıcı denemesi → öğretmen/editör incelemesi → eksik İngilizce sesler → en sonda H-044 dış hesap/mağaza → H-044 sonrasında H-092 pilotu. Şu an bağımsız yerel ürün kodu işi yoktur; ayrıntı `yapilacaklar/IS-SIRASI.md`.
+**Kural:** Plan onaylandı, kodlama bu plana göre sürüyor; plana yeni kapsam kullanıcı onayıyla eklenir. H-096…H-101 tamamlandı; H-101 Hi marka simgelerini uyguladı. **Sıradaki boş numara H-102'dir.** Güncel sıra: H-043/H-068 gerçek iPhone → H-085/H-086 kullanıcı denemesi → öğretmen/editör incelemesi → eksik İngilizce sesler → en sonda H-044 dış hesap/mağaza → H-044 sonrasında H-092 pilotu. CI düzeltmeleri `f994127` + `32b5832` ile gönderildi; son GitHub koşusu **`40828736476` yeşil**. Şu an bağımsız yerel ürün kodu işi yoktur; ayrıntı `yapilacaklar/IS-SIRASI.md`.
 
 ---
 

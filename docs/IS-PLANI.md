@@ -4,7 +4,7 @@
 > **Sahibi / veri sorumlusu:** Velzon Bilişim Teknolojileri Ltd. Şti. (Eskişehir · info@velzon.tr)
 > **Durum:** Faz 1 (MVP) uygulaması sürüyor; uygulama planı onaylı (`docs/UYGULAMA-PLANI.md`, H-025). Bağlayıcı kararlar `CLAUDE.md` tablolarındadır; bu belgeyle çelişirse onlar geçerlidir.
 >
-> **Güncel durum (2026-10-28):** H-042, H-095…H-101 ve açık kararlar tamamlandı. Tam sistem denetimi mobil 1483/1483, backend 164/164 ve bütün içerik lint'lerinde 0 hata verdi. Kalan sıra: H-043/H-068 gerçek iPhone; H-085/H-086 kullanıcı denemesi; öğretmen/editör incelemesi; eksik İngilizce sesler; en sonda H-044 dış hesap/mağaza; H-044 sonrasında H-092 pilotu. Sıradaki boş numara **H-102**; yeni kapsam pilot sonucu ve kullanıcı onayı olmadan açılmaz. Tek takip kaynağı: `yapilacaklar/IS-SIRASI.md`.
+> **Güncel durum (2026-10-29):** H-042, H-095…H-101 ve açık kararlar tamamlandı. Tam sistem denetimi mobil 1483/1483, backend 164/164 ve bütün içerik lint'lerinde 0 hata verdi. CI düzeltmeleri `f994127` + `32b5832` ile gönderildi; GitHub koşusu **`40828736476` yeşil**. Kalan sıra: H-043/H-068 gerçek iPhone; H-085/H-086 kullanıcı denemesi; öğretmen/editör incelemesi; eksik İngilizce sesler; en sonda H-044 dış hesap/mağaza; H-044 sonrasında H-092 pilotu. Sıradaki boş numara **H-102**; yeni kapsam pilot sonucu ve kullanıcı onayı olmadan açılmaz. Tek takip kaynağı: `yapilacaklar/IS-SIRASI.md`.
 
 ## Güncel kararlar (v0.2, 2026-10-12)
 
