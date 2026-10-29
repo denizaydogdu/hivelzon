@@ -84,7 +84,8 @@ pilot sonucu görülmeden açılmamalıdır.
 | `40587989108` | `536dbe2` | ❌ İçerik işi: runner'da `ffmpeg` yok |
 | `40828152612` | `f994127` | ❌ İçerik işi: paket dışı klip denetimi |
 | **`40828736476`** | **`32b5832`** | **✅ Mobil, backend ve içerik yeşil** |
+| **`40830363684`** | **`83783b2`** | **✅ Belge commit'i; üç iş de yeşil** |
 
-Son koşuda mobil `flutter analyze + test`, backend `mvn -B verify` ve içerik
+Son koşularda mobil `flutter analyze + test`, backend `mvn -B verify` ve içerik
 `pytest + bölüm/kitap/dilbilgisi lint` işleri geçti. CI tarafında bekleyen
 hata yoktur.
