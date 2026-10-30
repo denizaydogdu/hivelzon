@@ -1,6 +1,6 @@
 # H-072: Kitap dalgası 2: B1 + B2 (10 kitap)
 
-- **Durum:** Devam ediyor (2026-10-30): 5 B1 + 5 B2 kitabının metni/çevirisi onaylı, 10'u da tam resimli ve lint 0 hata. Kalan: çalışan ElevenLabs erişimi veya ayrı onaylı ücretli planla ses; operasyonel editör kontrolü. **2026-10-30:** Yeni ücretsiz anahtar 10.000 kredi gösterse de üretim çağrıları `401 detected_unusual_activity` verdi; B1–B2 sesi üretilmedi, kredi harcanmadı. Engelli ücretsiz anahtarla yeniden denenmez.
+- **Durum:** Devam ediyor (2026-10-30): 5 B1 + 5 B2 kitabının metni/çevirisi onaylı, 10'u da tam resimli ve lint 0 hata. Kalan: çalışan ElevenLabs erişimi veya ayrı onaylı ücretli planla ses; operasyonel editör kontrolü. **2026-10-30:** Sabahki ve akşamki (üçüncü) ücretsiz anahtar `401 detected_unusual_activity` verdi; çalışan ikinci anahtarın kotası A1/A2 öncelikli seslere gitti. B1–B2 kitap sesi üretilmedi. Engelli ücretsiz anahtarla yeniden denenmez. Onay tabloları gerçek duruma getirildi (`e7e7712`).
 - **Tür:** İçerik üretimi
 - **Faz:** Kitaplık K7 (`docs/KITAPLIK.md` §9)
 - **Bağımlılık:** H-071

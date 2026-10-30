@@ -1,6 +1,6 @@
 # H-080: Dilbilgisi dalgası 1: A1 + A2
 
-- **Durum:** Devam ediyor (2026-10-28): 31 ders main'de, lint 0 hata ve Türkçe sesler hazır. İngilizce A1 16/16 tam; A2 G-A2-01…07 tam, G-A2-08 kısmen; yaklaşık 2.990 karakter çalışan ElevenLabs erişimi/ayrı onaylı ücretli plan bekliyor. Kullanıcı ve öğretmen/editör incelemesi açık.
+- **Durum:** Devam ediyor (2026-10-30): 31 ders main'de, lint 0 hata ve Türkçe sesler hazır. İngilizce örnek sesleri **A1 16/16 ve A2 15/15 tam** (`95b0b2d`). Kalan kullanıcı ve öğretmen/editör incelemesi (`docs/EDITOR-INCELEME-PAKETI.md`) ile bağ eksikleri: G-A2-07 hikâye bağı üretilmemiş prologa (A1-000) gidiyor, G-A2-11'de "Hikâyede gör" kartı yok.
 - **2026-10-30 TTS kontrolü:** A2 İngilizce örneklerin kuru çalışması 2.991 karakter gösterdi. Yeni ücretsiz anahtarın abonelik sorgusu 10.000 kredi bildirdi, ancak A2 ders partisi, 105 karakterlik kart ve doğrudan 5 karakterlik deneme dahil üç üretim çağrısı `401 detected_unusual_activity` ile reddedildi; ses/kredi üretilmedi. Çalışan, uygun hesap/plan olmadan tekrar denenmez.
 - **Tür:** İçerik üretimi
 - **Faz:** Dilbilgisi D4 (`docs/DILBILGISI.md` §8)

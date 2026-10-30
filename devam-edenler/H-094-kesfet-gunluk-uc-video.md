@@ -1,6 +1,6 @@
 # H-094: Keşfet — seviyeye ve ilgiye göre günlük üç kısa video (reel)
 
-- **Durum:** Sürüyor/bekliyor (2026-10-30 itibarıyla değişmedi): P0–P4, 18/18 ses, katalog, yayın/geri çekme, “İlgi alanların” ve 7 reel v2 tamam. Kalan yalnız insan değerlendirmesi ve H-044 sonrasına ertelenen H-092 pilotu; yeni geniş katalog pilot sonucu olmadan üretilmez.
+- **Durum:** Sürüyor/bekliyor (2026-10-30): P0–P4, 18/18 ses, katalog, yayın/geri çekme, “İlgi alanların” ve 7 reel v2 tamam. 2026-10-30'da `reel_lint`'e kelime kapsama denetimi eklendi ve CI'a bağlandı (`788d775`). Kalan: P3 reel düzeltmeleri (editör paketi §7), insan değerlendirmesi ve H-044 sonrasına ertelenen H-092 pilotu; yeni geniş katalog pilot sonucu olmadan üretilmez.
 - **Tür:** Uygulama (kod) + içerik boru hattı + içerik pilotu
 - **Faz:** F1 MVP — ürün incelemesi sonrası (2026-10-18)
 - **Bağımlılık:** H-040 (Keşfet), H-089 (kanıt basamakları), H-088 (günlük plan); pilot içerik için ücretli üretim onayı ve `PROMPTS.md`
@@ -144,3 +144,4 @@ Kendi dalında; `git revert`. İçerik paketleri `/reels/` altında ayrı durur;
   - **Paket/yayın:** 7 paket `contentVersion=2` ile yeniden kuruldu; kaynak/fixture/index eşitlendi; lint **18/0/0**. Yerel backend içe aktarması **7 CREATED**, ardından 7/7 onay + yayın; açık katalog A1 9 + A2 9, tam olarak 7 kimlik v2; reel/mp4/hedef sesi adresleri 200.
   - **Teknik:** 7 video 720×1280 H.264/AAC faststart, 11,9–13,4 sn, −15,9…−16,6 LUFS, tepe −1,4…−7,6 dBFS. Nihai kareler görsel olarak kontrol edildi.
   - **Testler:** `pytest` **383**, `flutter test` **1454**, `flutter analyze` temiz. **Commit:** `1a66ae4` (`origin/main`).
+- **2026-10-30:** `reel_lint` kitap/dilbilgisiyle aynı `cefr.coverage`/`lint.coverage_issues` koduyla kapsama denetliyor (eşik altı uyarı, cümle uzunluğu hata; 8 test) ve CI içerik işinde koşuyor (`788d775`, CI `41070330880` yeşil). Sonuç 18 reel 0 hata/6 uyarı: 6 reel %98 altında, sözlükle %100. P3 maddeleri (`A2-R-BOK-01` "on Friday" ↔ "one more week" ve `due` sözlüğü, `A2-R-CIN-01` sahne cümlesi, `A2-R-SPO-01` soru cümlesi, `A1-R-BOK-02` başlığı vb.) `docs/EDITOR-INCELEME-PAKETI.md`'de açık.

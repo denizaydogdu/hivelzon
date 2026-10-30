@@ -189,8 +189,8 @@ Her föyde önce **kontrol maddeleri**, sonra **öğe tablosu** var. Tabloda kut
 
 | Kitap | Yol | İngilizce kelime | Durum | Not |
 |---|---|---|---|---|
-| A1-K01 *The Blue Door* | `kitaplar/A1-K01-the-blue-door/` | ~808 | ☐ Onay ☐ Düzeltme | Bekleyen 2 düzeltme (§7): "Her heart is fast." → "Her heart beats fast."; "floor four" → "the fourth floor". |
-| A1-K02 *Grandpa's New Phone* | `kitaplar/A1-K02-grandpas-new-phone/` | ~849 | ☐ Onay ☐ Düzeltme | EN ses yok |
+| A1-K01 *The Blue Door* | `kitaplar/A1-K01-the-blue-door/` | ~808 | ☐ Onay ☐ Düzeltme | "Her heart beats fast." düzeltmesi yapıldı (2026-10-30); "floor four" → "the fourth floor" bekliyor (§7). |
+| A1-K02 *Grandpa's New Phone* | `kitaplar/A1-K02-grandpas-new-phone/` | ~849 | ☐ Onay ☐ Düzeltme | — (EN ses 2026-10-30) |
 | A1-K03 *The Red Kite* | `kitaplar/A1-K03-the-red-kite/` | ~815 | ☐ Onay ☐ Düzeltme | — |
 | A1-K04 *Pip Cannot Sleep* | `kitaplar/A1-K04-pip-cannot-sleep/` | ~864 | ☐ Onay ☐ Düzeltme | — |
 | A1-K05 *The Window Across* | `kitaplar/A1-K05-the-window-across/` | ~834 | ☐ Onay ☐ Düzeltme | — |
@@ -266,28 +266,28 @@ Tablodaki notlar `grammar_lint` uyarılarıdır; hiçbiri inceleme engeli değil
 | A2-05 Geçmiş zaman: düzensiz fiiller | `dilbilgisi/G-A2-05-past-simple-irregular/` | ☐ Onay ☐ Düzeltme | — |
 | A2-06 did / didn't ile geçmişte soru ve olumsuz | `dilbilgisi/G-A2-06-past-questions-negatives/` | ☐ Onay ☐ Düzeltme | — |
 | A2-07 Sayılabilen ve sayılamayan: some / any / much / many / a lot of | `dilbilgisi/G-A2-07-countable-uncountable/` | ☐ Onay ☐ Düzeltme | hikâye bağı A1-000 düğümsüz |
-| A2-08 Karşılaştırma: -er / more … than | `dilbilgisi/G-A2-08-comparatives/` | ☐ Onay ☐ Düzeltme | EN örnek sesi eksik |
-| A2-09 En üstünlük: the -est / the most | `dilbilgisi/G-A2-09-superlatives/` | ☐ Onay ☐ Düzeltme | EN örnek sesi eksik |
-| A2-10 going to: plan ve kanıta dayalı tahmin | `dilbilgisi/G-A2-10-going-to/` | ☐ Onay ☐ Düzeltme | EN örnek sesi eksik |
-| A2-11 will: anlık karar, söz ve tahmin | `dilbilgisi/G-A2-11-will/` | ☐ Onay ☐ Düzeltme | "Hikâyede gör" kartı yok, EN örnek sesi eksik |
-| A2-12 Zarflar: always / usually / never ve -ly | `dilbilgisi/G-A2-12-adverbs/` | ☐ Onay ☐ Düzeltme | EN örnek sesi eksik |
-| A2-13 Bağlaçlar: and / but / because / so ve when | `dilbilgisi/G-A2-13-conjunctions/` | ☐ Onay ☐ Düzeltme | EN örnek sesi eksik |
-| A2-14 have to / must / should: zorunluluk ve öneri | `dilbilgisi/G-A2-14-have-to-must-should/` | ☐ Onay ☐ Düzeltme | EN örnek sesi eksik |
-| A2-15 Fiilden sonra fiil: want to, like + -ing | `dilbilgisi/G-A2-15-verb-patterns/` | ☐ Onay ☐ Düzeltme | EN örnek sesi eksik |
-| B1-01 Present perfect (1): deneyim, ever / never | `dilbilgisi/G-B1-01-present-perfect-experience/` | ☐ Onay ☐ Düzeltme | "Hikâyede gör" kartı yok, EN örnek sesi eksik |
+| A2-08 Karşılaştırma: -er / more … than | `dilbilgisi/G-A2-08-comparatives/` | ☐ Onay ☐ Düzeltme | — |
+| A2-09 En üstünlük: the -est / the most | `dilbilgisi/G-A2-09-superlatives/` | ☐ Onay ☐ Düzeltme | — |
+| A2-10 going to: plan ve kanıta dayalı tahmin | `dilbilgisi/G-A2-10-going-to/` | ☐ Onay ☐ Düzeltme | — |
+| A2-11 will: anlık karar, söz ve tahmin | `dilbilgisi/G-A2-11-will/` | ☐ Onay ☐ Düzeltme | "Hikâyede gör" kartı yok |
+| A2-12 Zarflar: always / usually / never ve -ly | `dilbilgisi/G-A2-12-adverbs/` | ☐ Onay ☐ Düzeltme | — |
+| A2-13 Bağlaçlar: and / but / because / so ve when | `dilbilgisi/G-A2-13-conjunctions/` | ☐ Onay ☐ Düzeltme | — |
+| A2-14 have to / must / should: zorunluluk ve öneri | `dilbilgisi/G-A2-14-have-to-must-should/` | ☐ Onay ☐ Düzeltme | — |
+| A2-15 Fiilden sonra fiil: want to, like + -ing | `dilbilgisi/G-A2-15-verb-patterns/` | ☐ Onay ☐ Düzeltme | — |
+| B1-01 Present perfect (1): deneyim, ever / never | `dilbilgisi/G-B1-01-present-perfect-experience/` | ☐ Onay ☐ Düzeltme | "Hikâyede gör" kartı yok, EN örnek sesi kısmi (yalnız c01-ex1) |
 | B1-02 Present perfect (2): since / for | `dilbilgisi/G-B1-02-present-perfect-since-for/` | ☐ Onay ☐ Düzeltme | "Hikâyede gör" kartı yok, EN örnek sesi eksik |
-| B1-03 Present perfect mi, past simple mı? just / already / yet | `dilbilgisi/G-B1-03-present-perfect-vs-past/` | ☐ Onay ☐ Düzeltme | "Hikâyede gör" kartı yok, EN örnek sesi eksik |
+| B1-03 Present perfect mi, past simple mı? just / already / yet | `dilbilgisi/G-B1-03-present-perfect-vs-past/` | ☐ Onay ☐ Düzeltme | "Hikâyede gör" kartı yok |
 | B1-04 Past continuous ve when / while | `dilbilgisi/G-B1-04-past-continuous/` | ☐ Onay ☐ Düzeltme | EN örnek sesi eksik |
 | B1-05 used to: geçmişteki alışkanlık | `dilbilgisi/G-B1-05-used-to/` | ☐ Onay ☐ Düzeltme | "Hikâyede gör" kartı yok, kanca gerçek cümle değil, EN örnek sesi eksik |
 | B1-06 Gelecek: will, going to, şimdiki zamanla randevu | `dilbilgisi/G-B1-06-future-forms/` | ☐ Onay ☐ Düzeltme | EN örnek sesi eksik |
 | B1-07 Koşul cümleleri: 0 ve 1. tip | `dilbilgisi/G-B1-07-zero-first-conditional/` | ☐ Onay ☐ Düzeltme | EN örnek sesi eksik |
 | B1-08 Tanımlayan sıfat cümlecikleri: who / which / that | `dilbilgisi/G-B1-08-defining-relative-clauses/` | ☐ Onay ☐ Düzeltme | EN örnek sesi eksik |
 | B1-09 -ing mi, to mu? Fiil kalıpları (2) | `dilbilgisi/G-B1-09-gerund-infinitive/` | ☐ Onay ☐ Düzeltme | EN örnek sesi eksik |
-| B1-10 Olasılık: might / may / could | `dilbilgisi/G-B1-10-might-may-could/` | ☐ Onay ☐ Düzeltme | EN örnek sesi eksik |
+| B1-10 Olasılık: might / may / could | `dilbilgisi/G-B1-10-might-may-could/` | ☐ Onay ☐ Düzeltme | — |
 | B1-11 Past perfect: "olmuştu" | `dilbilgisi/G-B1-11-past-perfect/` | ☐ Onay ☐ Düzeltme | "Hikâyede gör" kartı yok, EN örnek sesi eksik |
-| B1-12 bored mı boring mi? -ed / -ing sıfatları | `dilbilgisi/G-B1-12-ing-ed-adjectives/` | ☐ Onay ☐ Düzeltme | EN örnek sesi eksik |
+| B1-12 bored mı boring mi? -ed / -ing sıfatları | `dilbilgisi/G-B1-12-ing-ed-adjectives/` | ☐ Onay ☐ Düzeltme | — |
 | B1-13 Dolaylı sorular: Can you tell me where…? | `dilbilgisi/G-B1-13-indirect-questions/` | ☐ Onay ☐ Düzeltme | "Hikâyede gör" kartı yok, EN örnek sesi eksik |
-| B1-14 Artikeller (2): genel mi, belirli mi? | `dilbilgisi/G-B1-14-articles-general-specific/` | ☐ Onay ☐ Düzeltme | EN örnek sesi eksik |
+| B1-14 Artikeller (2): genel mi, belirli mi? | `dilbilgisi/G-B1-14-articles-general-specific/` | ☐ Onay ☐ Düzeltme | — |
 | B2-01 Edilgen yapı (passive): be + V3 | `dilbilgisi/G-B2-01-passive/` | ☐ Onay ☐ Düzeltme | EN örnek sesi eksik |
 | B2-02 Dolaylı anlatım (1): say, tell ve zaman kaydırma | `dilbilgisi/G-B2-02-reported-statements/` | ☐ Onay ☐ Düzeltme | EN örnek sesi eksik |
 | B2-03 Dolaylı anlatım (2): soru ve rica aktarma | `dilbilgisi/G-B2-03-reported-questions-commands/` | ☐ Onay ☐ Düzeltme | "Hikâyede gör" kartı yok, EN örnek sesi eksik |
@@ -402,7 +402,7 @@ Kapsam dışı bir şey görürseniz (yeni özellik, ekran önerisi) föyün son
 
 Bunlar **inceleme engeli değildir.** Editör bilsin diye yazıldı.
 
-1. **Eksik İngilizce sesler.** ElevenLabs hesabı `401 detected_unusual_activity` ile engelli (`docs/HANDOFF-2026-10-30.md` §2.2). Sesler metinden incelenir.
+1. **Eksik İngilizce sesler.** 2026-10-30'da ikinci ücretsiz ElevenLabs anahtarıyla 9.977 karakter üretildi, kota bitti; diğer iki anahtar `401 detected_unusual_activity` verdi (`docs/HANDOFF-2026-10-30.md` §2.2, §2.4). Eksik sesler metinden incelenir.
    - Kitaplar: 30 kitabın 24'ünde ses yok. Sesli olanlar (bütün bölümleri): A1-K01…K05 (A1-K02 2026-10-30'da) ve A2-K03.
    - Dilbilgisi: 36 dersin İngilizce örnek sesi eksik ya da kısmi (B1 10, B2 12, C1 8, C2 6; G-B1-01 kısmi). A1'in 16 ve A2'nin 15 dersi tam (2026-10-30). Türkçe anlatım sesleri hepsinde hazır.
 2. **A1-K01 *The Blue Door*:** "Her heart is fast." → "Her heart beats fast." düzeltmesi 2026-10-30'da c3 sesiyle birlikte yapıldı. "live on floor four" / "on floor four" → "on the fourth floor" bekliyor: metin değişince c1/c2 sesi geçersiz olur (book-align HATA), bu yüzden ses yeniden üretilince birlikte yapılacak. Önerilen biçim "Lina and Mum live on the fourth floor." (A1 sınırı 8 sözcük; `fourth` sözlüğe eklenmeli). Editör bu iki cümleyi değerlendirir.
@@ -436,7 +436,8 @@ $P tools/content-pipeline/reel_lint.py reeller/*-R-*
 
 - Dört komutun çıkış kodu 0.
 - Bu sayılar `docs/HANDOFF-2026-10-30.md` §5'teki son doğrulamayla (kitap 30/0, dilbilgisi 71/0) uyumludur.
-- Not: `reel_lint` kapsama denetlemiyor (H-094 §4 B); reel kapsama sayıları H-094 belgesinden alındı.
+- Not: Yukarıdaki tablo `e22e5d2` koşusudur; o sırada `reel_lint` kapsama denetlemiyordu (H-094 §4 B).
+- **Yeniden koşu (2026-10-30 akşam, `e7e7712`):** `content_lint` 13 bölüm 0 hata/25 uyarı · `book_lint` 30 kitap 0 hata/145 uyarı · `grammar_lint` 71 ders 0 hata/616 uyarı · `reel_lint` 18 reel 0 hata/6 uyarı (kapsama denetimi eklendi, `788d775`; 6 reel %98 altında, sözlükle %100). Dört lint de CI'da; CI `41070330880` yeşil.
 - Editör düzeltmelerinden sonra aynı dört komut yeniden koşulur ve sonuç bu bölüme eklenir.
 
 ## 9. Bağlantılar

@@ -1,6 +1,6 @@
 # H-073: Kitap dalgası 3: C1 + C2 (10 kitap)
 
-- **Durum:** Devam ediyor (2026-10-30): 10 kitap metni/çevirisi onaylı, 80 görsel üretildi (40 kr), hepsi tam resimli ve lint 0 hata. Kalan: çalışan ElevenLabs erişimi veya ayrı onaylı ücretli planla ses; operasyonel editör kontrolü. **2026-10-30:** Yeni ücretsiz anahtar 10.000 kredi gösterse de üretim çağrıları `401 detected_unusual_activity` verdi; C1–C2 sesi üretilmedi, kredi harcanmadı. Engelli ücretsiz anahtarla yeniden denenmez.
+- **Durum:** Devam ediyor (2026-10-30): 10 kitap metni/çevirisi onaylı, 80 görsel üretildi (40 kr), hepsi tam resimli ve lint 0 hata. Kalan: çalışan ElevenLabs erişimi veya ayrı onaylı ücretli planla ses; operasyonel editör kontrolü. **2026-10-30:** Sabahki ve üçüncü ücretsiz anahtar `401 detected_unusual_activity` verdi; çalışan ikinci anahtarın kotası A1/A2 öncelikli seslere gitti. C1–C2 sesi üretilmedi. Engelli ücretsiz anahtarla yeniden denenmez. Onay tabloları güncellendi (`e7e7712`). C1/C2 kapsama kodu hazır; Octanove listesi (`tools/content-pipeline/data/lexicon_ccbysa/`) depoda yok, eklemek kullanıcı onayı bekliyor.
 - **Tür:** İçerik üretimi
 - **Faz:** Kitaplık K8 (`docs/KITAPLIK.md` §9)
 - **Bağımlılık:** H-072
