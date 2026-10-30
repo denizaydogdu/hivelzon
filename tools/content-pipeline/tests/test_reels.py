@@ -213,6 +213,84 @@ def test_lint_rejects_category_mismatch_in_id(tmp_path):
     assert "reel.id.category" in _codes(report)
 
 
+# --- lint: kapsama (K-07; kitap ve dilbilgisiyle aynı hesap) -------------------------------------
+
+
+def _cue(cid: str, text: str, glossed: dict | None = None) -> dict:
+    words = [{"w": w, "gloss": (glossed or {}).get(w.strip(".,?!"))} for w in text.split()]
+    return {"id": cid, "start": 1.0, "end": 2.0, "text": text, "tr": "…",
+            "words": [w if w["gloss"] else {"w": w["w"]} for w in words]}
+
+
+def _warn_codes(report) -> set[str]:
+    return {i.code for i in report.warnings}
+
+
+def test_lint_coverage_in_list_reel_has_no_coverage_issue(tmp_path):
+    report = _lint(tmp_path, _doc())
+    assert "coverage" not in _codes(report) | _warn_codes(report)
+    assert report.coverage["pct"] == 100.0 and report.coverage["tokens"] == 1
+
+
+def test_lint_coverage_below_target_is_warning_not_error(tmp_path):
+    """Reel kısa (10–20 sözcük): tek liste dışı sözcük ~%5–10. Geçiş döneminde uyarı (hata değil)."""
+    doc = _doc(cues=[_cue("c1", "Hi. I like popcorn.")])
+    report = _lint(tmp_path, doc)
+    assert "coverage" not in _codes(report)
+    assert "coverage" in _warn_codes(report)
+    off = [str(i) for i in report.warnings if i.code == "off-list"]
+    assert off and "popcorn" in off[0]
+    assert report.coverage["pct"] < 98.0
+
+
+def test_lint_coverage_counts_word_gloss_as_glossary(tmp_path):
+    """Satırdaki sözcük anlamı (`words[].gloss`) uygulamada dokununca açılır: sözlük sayılır."""
+    doc = _doc(cues=[_cue("c1", "Hi. I like popcorn.", {"popcorn": "patlamış mısır"})])
+    report = _lint(tmp_path, doc)
+    assert "off-list" not in _warn_codes(report)
+    assert report.coverage["pctWithGlossary"] == 100.0
+    assert report.coverage["offList"]["popcorn"][0] == "gloss"
+
+
+def test_lint_coverage_long_sentence_is_error(tmp_path):
+    """A1 cümle sınırı (8 sözcük) bölüm ve kitaptaki gibi hatadır."""
+    doc = _doc(cues=[_cue("c1", "Hi. I like my red bag and my blue hat very much.")])
+    report = _lint(tmp_path, doc)
+    assert "sentence-length" in _codes(report)
+
+
+def test_lint_coverage_skips_declared_proper_nouns(tmp_path):
+    doc = _doc(cues=[_cue("c1", "Hi, Zorbax.")], properNouns=["Zorbax"])
+    report = _lint(tmp_path, doc)
+    assert report.coverage["pct"] == 100.0 and report.coverage["tokens"] == 1
+
+
+def test_lint_coverage_includes_english_options_only(tmp_path):
+    practice = {"promptTr": "Ne diyor?", "options": [
+        {"text": "Popcorn, please.", "lang": "en", "correct": True},
+        {"text": "Patlamış mısır", "lang": "tr", "correct": False},
+    ]}
+    report = _lint(tmp_path, _doc(practice=practice))
+    assert "popcorn" in report.coverage["offList"]
+    assert "patlamış" not in report.coverage["offList"]
+
+
+def test_lint_coverage_c1_without_octanove_warns_not_checked(tmp_path, monkeypatch):
+    import hvpipeline.reels as reels
+    from hvpipeline.cefr import NO_LIST_MSG
+
+    monkeypatch.setattr(reels, "has_extra_list", lambda level: False)
+    doc = _doc(id="C1-R-CIN-01", level="C1")
+    report = _lint(tmp_path, doc, folder="C1-R-CIN-01")
+    msgs = [str(i) for i in report.warnings if i.code == "coverage"]
+    assert msgs and NO_LIST_MSG in msgs[0]
+    assert report.coverage is None
+
+
+def test_as_dict_includes_coverage(tmp_path):
+    assert as_dict(_lint(tmp_path, _doc()))["coverage"]["pct"] == 100.0
+
+
 def test_lint_rejects_unknown_category(tmp_path):
     report = _lint(tmp_path, _doc(category="TAR", id="A1-R-TAR-01"), folder="A1-R-TAR-01")
     assert "reel.category" in _codes(report)

@@ -8,6 +8,10 @@ kalır.
 
 `parse_reel` katı okuma yapar (eksik/bozuk alan → `ReelError`);
 `lint_reel` hata ve uyarıları toplar. Ücretli çağrı yoktur.
+
+Kapsama (K-07) bölüm, kitap ve dilbilgisiyle aynı hesaptır (`cefr.coverage` +
+`lint.coverage_issues`). Reel 10–20 sözcüktür; tek liste dışı sözcük %5–10
+düşürür. Bu yüzden kapsama eşiği şimdilik **uyarı**dır; cümle uzunluğu hatadır.
 """
 
 from __future__ import annotations
@@ -18,8 +22,10 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
 
-from .cefr import LEVELS
+from .cefr import LEVELS, NO_LIST_MSG, coverage, has_extra_list
 from .graph import Issue
+from .lint import MAX_SENTENCE_WORDS, coverage_issues
+from .sentsplit import name_keys
 
 REEL_FILE = "reel.json"
 SCHEMA_VERSION = 1
@@ -186,6 +192,7 @@ class ReelReport:
     path: Path
     reel: Reel | None = None
     issues: list[Issue] = field(default_factory=list)
+    coverage: dict | None = None
 
     @property
     def errors(self) -> list[Issue]:
@@ -275,6 +282,35 @@ def _check_cues(doc: dict, issues: list[Issue]) -> None:
             issues.append(_err("reel.cue.time", f"{cid}: başlangıç/bitiş sayı olmalı"))
         elif end <= start:
             issues.append(_err("reel.cue.time", f"{cid}: bitiş başlangıçtan sonra olmalı"))
+
+
+def _check_language(doc: dict, level: str, issues: list[Issue]) -> dict | None:
+    """Kapsama ve cümle uzunluğu (K-07): altyazı satırları + İngilizce soru seçenekleri.
+
+    Sözlük = satırdaki sözcük anlamları (`words[].gloss`; uygulamada dokununca açılır).
+    Özel adlar `properNouns` alanından. Kapsama eşiği reelde uyarıdır (modül notu).
+    """
+    if level not in LEVELS:
+        return None
+    if not has_extra_list(level):
+        issues.append(_warn("coverage", f"{level}: Octanove C1/C2 {NO_LIST_MSG}"))
+        return None
+    cues = [c for c in doc.get("cues") or [] if isinstance(c, dict)]
+    texts = [c["text"] for c in cues if isinstance(c.get("text"), str)]
+    options = (doc.get("practice") or {}).get("options") if isinstance(doc.get("practice"), dict) else None
+    texts += [o["text"] for o in options or []
+              if isinstance(o, dict) and o.get("lang") == "en" and isinstance(o.get("text"), str)]
+    if not texts:
+        return None
+    gloss = [w["w"].strip(".,?!;:…\"'") for c in cues for w in c.get("words") or []
+             if isinstance(w, dict) and isinstance(w.get("w"), str) and w.get("gloss")]
+    max_words = MAX_SENTENCE_WORDS.get(level, 10_000)
+    cov = coverage(texts, level, gloss=gloss, proper=name_keys(doc.get("properNouns") or []),
+                   max_words=max_words)
+    found, rep = coverage_issues(cov, level, max_words)
+    for i in found:
+        issues.append(_warn(i.code, i.message) if i.code == "coverage" else i)
+    return rep
 
 
 def _check_media(root: Path, reel: Reel, issues: list[Issue]) -> None:
@@ -456,6 +492,7 @@ def lint_reel(root: Path) -> ReelReport:
     _check_cues(doc, report.issues)
     _check_practice(doc, report.issues)
     _check_related(doc, report.issues)
+    report.coverage = _check_language(doc, reel.level, report.issues)
     _check_media(report.path, reel, report.issues)
     source = (
         report.path.parent.parent
@@ -524,6 +561,7 @@ def as_dict(report: ReelReport) -> dict[str, Any]:
         "id": report.reel.id if report.reel else None,
         "errors": len(report.errors),
         "warnings": len(report.warnings),
+        "coverage": report.coverage,
         "issues": [
             {"level": i.level, "code": i.code, "message": i.message} for i in report.issues
         ],
