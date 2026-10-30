@@ -36,7 +36,7 @@ Bu dosya tek takip noktasıdır. Hangi işin hangi sırada yapıldığını, şu
 1. **Gerçek iPhone kontrolleri — H-043/H-068:** beta kontrol listesinin gerçek telefon bölümü; arka plan çalma ve kilit ekranı görünümü. Kullanıcının cihazı ve açık test izni gerekir.
 2. **Kullanıcı denemesi — H-085/H-086:** B5–B12 ile “Sayfanın Türkçesi” teknik olarak yeşil; kabul için kullanıcının öznel deneyimi gerekir. Simülatör ancak kullanıcı her çalıştırma öncesi açık izin verirse açılır.
 3. **Öğretmen/editör incelemesi:** H-028'de süreç kararı tamamlandı; operasyonel kontrol açık. Konuş metinleri, B5–B12 çeviri/görsel/ipucu, kitap soruları ve dilbilgisi dersleri incelenir.
-4. **Eksik İngilizce sesler:** H-071…H-073 kitap sesleri ve H-080…H-082 dilbilgisi örnekleri için çalışan ElevenLabs erişimi veya ayrı onaylı ücretli plan gerekir. 2026-10-27 anahtarı `401 detected_unusual_activity` verdi; tekrar kullanılmaz.
+4. **Eksik İngilizce sesler:** H-071…H-073 kitap sesleri ve H-080…H-082 dilbilgisi örnekleri için çalışan ElevenLabs erişimi veya ayrı onaylı ücretli plan gerekir. 2026-10-30'da verilen yeni anahtarın abonelik sorgusu ücretsiz 10.000 kredi gösterdi, ancak ilk ses üretim çağrısı yine `401 detected_unusual_activity` verdi; ses/kredi üretilmedi, engelli ücretsiz anahtarlarla yeniden denenmez. Toplam kuru çalışma ≈795.113 karakter (kitap 773.569, dilbilgisi 21.544); gerçek üretim çalışan, uygun hesap/planı bekler.
 5. **H-044 dış hesaplar ve mağaza — en son:** Almanya sunucusu/DNS, Bunny, Apple/Google, mağaza yüklemesi, veri sorumlusu bilgileri ve muhasebe. Ayrı kullanıcı onayı olmadan başlanmaz.
 6. **H-092 kullanıcı pilotu — H-044 sonrasında:** aşama A ve B birlikte yürütülür; pilot kiti ve gözlem föyü hazır. H-044 bitmeden başlamaz.
 

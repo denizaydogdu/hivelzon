@@ -1,6 +1,7 @@
 # H-071: Kitap dalgası 1: A1 + A2 (kalan 8 kitap)
 
 - **Durum:** Devam ediyor (2026-10-28): 10 A1–A2 kitabı onaylı ve tam resimli; 5/10 sesli. Kalan A1-K02, A2-K01, A2-K02, A2-K04, A2-K05 ve A1-K01 düzeltme sesi çalışan ElevenLabs erişimi/ayrı onaylı ücretli plan; operasyonel editör kontrolü. 2026-10-27'de 401 veren ücretsiz anahtar tekrar kullanılmaz.
+- **2026-10-30 TTS kontrolü:** Yeni anahtarın ücretsiz aboneliğinde 10.000 kredi görünse de ilk üretim çağrısı `401 detected_unusual_activity` ile durdu. Kitap sesi üretilmedi ve kredi harcanmadı; çalışan, uygun hesap/plan olmadan tekrar deneme yapılmaz. A1-K01 kaynak metnindeki önceki düzeltme henüz sese yansıtılmadı.
 - **Tür:** İçerik üretimi
 - **Faz:** Kitaplık K6 (`docs/KITAPLIK.md` §9)
 - **Bağımlılık:** H-069
