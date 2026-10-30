@@ -52,8 +52,8 @@
      "chars": 21,
      "audio": "en/c01-ex1.mp3",
      "align": "en/c01-ex1.align.json",
-     "present": false,
-     "duration": null,
+     "present": true,
+     "duration": 1.92,
      "quality": null
     }
    ]

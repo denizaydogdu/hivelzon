@@ -30,3 +30,18 @@ Aşağıdaki satırları `tts_lesson.py` yazar.
 | 2026-10-14T13:10:53Z | c07-tr | duyu-1 | - | - | - | 5.28 | - | a42858af37c6f967 |
 | 2026-10-14T13:10:55Z | c08-tr | alania-v2 | alania2-f1 | alania-v2.1 | 133 | 9.44 | 220c520cb9cb4acb887aab6cdfd6c658 | 8f7b9482c1f1696d |
 | 2026-10-14T13:10:56Z | c08-tr | duyu-1 | - | - | - | 9.44 | - | 8f7b9482c1f1696d |
+
+## İngilizce örnek seslendirme kayıtları (tts_lesson.py)
+
+| Tarih (UTC) | Parça | Ses | Model | Hız | Karakter | Metin sha256 | Dosya |
+|---|---|---|---|---|---|---|---|
+| 2026-10-30T13:28:32Z | c01-ex1 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.95 | 38 | 67ba80ea3b094968 | audio/en/c01-ex1.mp3 |
+| 2026-10-30T13:28:34Z | c03-ex1 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.95 | 41 | 0c5a9d8de8c2aa6d | audio/en/c03-ex1.mp3 |
+| 2026-10-30T13:28:35Z | c04-ex1 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.95 | 47 | a902f6e00cfc4f86 | audio/en/c04-ex1.mp3 |
+| 2026-10-30T13:28:37Z | c04-ex2 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.95 | 29 | 6f85ad9c380cfa5c | audio/en/c04-ex2.mp3 |
+| 2026-10-30T13:28:39Z | c04-ex3 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.95 | 37 | 24a102486e730819 | audio/en/c04-ex3.mp3 |
+| 2026-10-30T13:28:40Z | c04-ex4 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.95 | 37 | db9ca0a69cbbf6cc | audio/en/c04-ex4.mp3 |
+| 2026-10-30T13:28:42Z | c04-ex5 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.95 | 33 | db8b46031a68c3b0 | audio/en/c04-ex5.mp3 |
+| 2026-10-30T13:28:43Z | c05-ex1 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.95 | 27 | 8e79632bde114d2a | audio/en/c05-ex1.mp3 |
+| 2026-10-30T13:28:45Z | c05-ex2 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.95 | 23 | 29e095f9aa1556d9 | audio/en/c05-ex2.mp3 |
+| 2026-10-30T13:28:47Z | c08-ex1 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.95 | 34 | c25238803ed6e823 | audio/en/c08-ex1.mp3 |

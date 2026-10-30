@@ -30,3 +30,9 @@ Aşağıdaki satırları `tts_lesson.py` yazar.
 | 2026-10-14T14:05:45Z | c06-tr | duyu-1 | - | - | - | 16.44 | - | 900f8cd3b205ad4c |
 | 2026-10-14T14:05:48Z | c08-tr | alania-v2 | alania2-f1 | alania-v2.1 | 151 | 10.22 | 3c3bc7fb2cad47729f4df4e357ac5047 | 05494a0bf89ecb7d |
 | 2026-10-14T14:05:49Z | c08-tr | duyu-1 | - | - | - | 10.22 | - | 05494a0bf89ecb7d |
+
+## İngilizce örnek seslendirme kayıtları (tts_lesson.py)
+
+| Tarih (UTC) | Parça | Ses | Model | Hız | Karakter | Metin sha256 | Dosya |
+|---|---|---|---|---|---|---|---|
+| 2026-10-30T13:37:51Z | c01-ex1 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.0 | 21 | 44671de8b45bee4b | audio/en/c01-ex1.mp3 |

@@ -1506,13 +1506,13 @@
       "source": "p09-s02"
     },
     {
-      "en": "Her heart is fast.",
+      "en": "Her heart beats fast.",
       "tr": "Kalbi hızlı atıyor.",
       "chunks": [],
       "words": {
         "her": "onun; onu",
         "heart": "kalp",
-        "is": "(olmak; Türkçede çoğu zaman karşılığı yok)",
+        "beats": "atıyor (beat + -s)",
         "fast": "hızlı"
       },
       "source": "p09-s03"

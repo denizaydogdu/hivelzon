@@ -109,7 +109,7 @@ The blue door opens.
 ## [c3] The Light
 
 ### [p09]
-Lina goes up. She is very quiet. Her heart is fast.
+Lina goes up. She is very quiet. Her heart beats fast.
 
 The blue door is open now. Behind it, there are more steps. They are old and dark.
 

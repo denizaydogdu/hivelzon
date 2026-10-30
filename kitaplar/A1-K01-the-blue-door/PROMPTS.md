@@ -80,3 +80,4 @@ Kurallar: her ücretli üretimden **önce** `higgsfield generate cost` ile maliy
 | 2026-10-14T10:08:28Z | c1 | 1/1 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 1507 | a07284b8f5d8a618 | audio/c1.mp3 |
 | 2026-10-14T10:08:48Z | c2 | 1/1 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 1152 | cc0b4809cd518ed5 | audio/c2.mp3 |
 | 2026-10-14T10:09:06Z | c3 | 1/1 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 1221 | e9e4744a6f8da689 | audio/c3.mp3 |
+| 2026-10-30T13:32:25Z | c3 | 1/1 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 1224 | fb93c9054e2f8736 | audio/c3.mp3 |

@@ -41,3 +41,9 @@ Aşağıdaki satırları `tts_lesson.py` yazar.
 | 2026-10-14T18:27:39Z | c03-ex3 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.95 | 27 | 7a7052eb20349273 | audio/en/c03-ex3.mp3 |
 | 2026-10-14T18:27:40Z | c04-ex1 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.95 | 29 | 82efef4177a5e1b6 | audio/en/c04-ex1.mp3 |
 | 2026-10-14T18:27:41Z | c04-ex2 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.95 | 24 | d989b15d7dd94ec4 | audio/en/c04-ex2.mp3 |
+| 2026-10-30T13:28:00Z | c04-ex3 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.95 | 34 | ba29804c14c6406e | audio/en/c04-ex3.mp3 |
+| 2026-10-30T13:28:02Z | c04-ex4 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.95 | 41 | e36e21687b8f7cb5 | audio/en/c04-ex4.mp3 |
+| 2026-10-30T13:28:03Z | c04-ex5 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.95 | 30 | 4e65cb1f14a91000 | audio/en/c04-ex5.mp3 |
+| 2026-10-30T13:28:04Z | c05-ex1 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.95 | 20 | 2031acdaef878aba | audio/en/c05-ex1.mp3 |
+| 2026-10-30T13:28:06Z | c05-ex2 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.95 | 22 | 9e747a4f4fa5cc45 | audio/en/c05-ex2.mp3 |
+| 2026-10-30T13:28:07Z | c08-ex1 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.95 | 34 | 2e94e00ab33e915e | audio/en/c08-ex1.mp3 |

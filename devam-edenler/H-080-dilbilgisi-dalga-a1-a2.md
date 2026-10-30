@@ -23,3 +23,4 @@ Kendi dalında; `git revert`.
 2026-10-14: A1 (13) ve A2 (15) dersleri ayrı dallarda yazıldı ve birleştirildi. Öğretmen notları her dersin `rights-and-review.md`'sinde. Bölüm ve kitaplara `grammarTopics` (en fazla 3, yalnız aynı ya da alt seviye) ana oturumca eklendi.
 
 2026-10-14: A2 İngilizce örnekleri hesap4 ile seslendirildi: G-A2-01…07 tam, G-A2-08 kısmen (6 örnek); 2.469 karakter, hesap4 doldu (9.993/10.000). Kalan A2 ≈ 2.990 karakter TTS erişimi bekliyor. G-A1-15 "Hikâyede gör" bağı A1-008 kartından (altyazıda yok) A1-006 "There is a radio on the desk." cümlesine alındı; grammar_lint 71 ders 0 hata.
+2026-10-30: Yeni ücretsiz ElevenLabs anahtarı çalıştı (5 karakterlik test 200). A2 İngilizce örneklerinin kalanı seslendirildi: G-A2-08 (kalan) … G-A2-15, 2.991 karakter (defter). A2 15/15 İngilizce tam; `grammar_lint` 71/0 hata, `export_grammar --require-media` A2 15/15 TAMAM.

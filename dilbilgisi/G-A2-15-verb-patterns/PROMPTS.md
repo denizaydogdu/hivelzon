@@ -32,3 +32,20 @@ Aşağıdaki satırları `tts_lesson.py` yazar.
 | 2026-10-14T13:13:04Z | c08-tr | duyu-1 | - | - | - | 5.12 | - | d1958fa00e8d1ddf |
 | 2026-10-14T13:13:06Z | c09-tr | alania-v2 | alania2-f1 | alania-v2.1 | 147 | 10.27 | 81e6a01d8f5f4a0697fbbad6d3ba1e8d | ae90465ede57a5db |
 | 2026-10-14T13:13:08Z | c09-tr | duyu-1 | - | - | - | 10.27 | - | ae90465ede57a5db |
+
+## İngilizce örnek seslendirme kayıtları (tts_lesson.py)
+
+| Tarih (UTC) | Parça | Ses | Model | Hız | Karakter | Metin sha256 | Dosya |
+|---|---|---|---|---|---|---|---|
+| 2026-10-30T13:30:20Z | c01-ex1 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.95 | 23 | e7010cf8cff49020 | audio/en/c01-ex1.mp3 |
+| 2026-10-30T13:30:21Z | c03-ex1 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.95 | 15 | 928ce13f2c5126a2 | audio/en/c03-ex1.mp3 |
+| 2026-10-30T13:30:23Z | c03-ex2 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.95 | 18 | 1d446a13f81eeb15 | audio/en/c03-ex2.mp3 |
+| 2026-10-30T13:30:25Z | c04-ex1 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.95 | 33 | 8f76da14f8cf3c17 | audio/en/c04-ex1.mp3 |
+| 2026-10-30T13:30:26Z | c04-ex2 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.95 | 23 | cd9c9c75150c3012 | audio/en/c04-ex2.mp3 |
+| 2026-10-30T13:30:28Z | c05-ex1 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.95 | 24 | 38277d948581f642 | audio/en/c05-ex1.mp3 |
+| 2026-10-30T13:30:29Z | c05-ex2 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.95 | 26 | d0dc77335e4270ec | audio/en/c05-ex2.mp3 |
+| 2026-10-30T13:30:31Z | c05-ex3 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.95 | 24 | 89ff80483dc5ad5f | audio/en/c05-ex3.mp3 |
+| 2026-10-30T13:30:32Z | c05-ex4 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.95 | 26 | 1c2bc41402673b02 | audio/en/c05-ex4.mp3 |
+| 2026-10-30T13:30:34Z | c05-ex5 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.95 | 32 | e6fe43e95419e60f | audio/en/c05-ex5.mp3 |
+| 2026-10-30T13:30:35Z | c06-ex1 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.95 | 18 | 5fdf81f8a3ff018a | audio/en/c06-ex1.mp3 |
+| 2026-10-30T13:30:36Z | c06-ex2 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.95 | 19 | 3d95f62395df1fc3 | audio/en/c06-ex2.mp3 |
