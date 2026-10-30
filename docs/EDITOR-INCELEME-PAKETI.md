@@ -104,6 +104,7 @@ Her föyde önce **kontrol maddeleri**, sonra **öğe tablosu** var. Tabloda kut
 | Sözlük, hedef ifadeler, bağ alanları (`previously`, `payoff`, `openQuestion`, `answers`, `cluesUnlocked`, `callbackPhrases`) | `content.json` |
 | Görev kartı (B6 ve sonrası) | `mission.json` |
 | Görseller ve istemleri | `images/`, `PROMPTS.md` |
+| Haklar, AI açıklaması ve onay geçmişi | `rights-and-review.md` |
 | Kanon | `icerik/_evren/` (STORY_BIBLE, CHARACTER_PROFILES, CANON_AND_TIMELINE, OPEN_QUESTIONS, LANGUAGE_PROGRESSION, SEASON_01_OUTLINE) |
 
 **Bölüme özel kontrol maddeleri:**
@@ -402,11 +403,11 @@ Kapsam dışı bir şey görürseniz (yeni özellik, ekran önerisi) föyün son
 Bunlar **inceleme engeli değildir.** Editör bilsin diye yazıldı.
 
 1. **Eksik İngilizce sesler.** ElevenLabs hesabı `401 detected_unusual_activity` ile engelli (`docs/HANDOFF-2026-10-30.md` §2.2). Sesler metinden incelenir.
-   - Kitaplar: 30 kitabın 25'inde ses yok (sesli olanlar A1-K01, K03, K04, K05, A2-K03).
-   - Dilbilgisi: 48 dersin İngilizce örnek sesi eksik ya da kısmi (A2 8, B1 14, B2 12, C1 8, C2 6). A1'in 16 dersi tam. Türkçe anlatım sesleri hepsinde hazır.
-2. **A1-K01 *The Blue Door* için iki dil düzeltmesi bekliyor:** "Her heart is fast." → "Her heart beats fast."; "live on floor four" / "on floor four" → "on the fourth floor" (metin 2 cümle + anlama sorusu seçeneği; `devam-edenler/H-071-kitap-dalgasi-a1-a2.md`, 2026-10-21). Düzeltme sesle birlikte yapılacak. **Not:** `text.en.md` bugün hâlâ eski metni taşıyor; ses de eski metni okuyor. Editör bu iki düzeltmeyi teyit etsin.
-3. **Bölüm klasörlerinde `rights-and-review.md` yok.** K-01 bu dosyayı zorunlu sayıyor; kitap ve dilbilgisinde var, bölümlerde (`icerik/A1-0*`) yok. Bölümlerin `content.json` dosyasında `humanReviewed: false`, `rightsStatus: PENDING`. Editör onayı şimdilik bu föye yazılır; dosyaların oluşturulması kullanıcı kararıdır.
-4. **Kitap onay geçmişi tabloları eski.** Örnek A2-K01: `ceviri.tr.json` `APPROVED` (2026-10-14), ama `rights-and-review.md` tablosunda kullanıcı onayı "Bekliyor" ve görseller "henüz üretilmedi" yazıyor; görseller var. Editör turundan sonra tablolar güncellenir.
+   - Kitaplar: 30 kitabın 24'ünde ses yok. Sesli olanlar (bütün bölümleri): A1-K01…K05 (A1-K02 2026-10-30'da) ve A2-K03.
+   - Dilbilgisi: 36 dersin İngilizce örnek sesi eksik ya da kısmi (B1 10, B2 12, C1 8, C2 6; G-B1-01 kısmi). A1'in 16 ve A2'nin 15 dersi tam (2026-10-30). Türkçe anlatım sesleri hepsinde hazır.
+2. **A1-K01 *The Blue Door*:** "Her heart is fast." → "Her heart beats fast." düzeltmesi 2026-10-30'da c3 sesiyle birlikte yapıldı. "live on floor four" / "on floor four" → "on the fourth floor" bekliyor: metin değişince c1/c2 sesi geçersiz olur (book-align HATA), bu yüzden ses yeniden üretilince birlikte yapılacak. Önerilen biçim "Lina and Mum live on the fourth floor." (A1 sınırı 8 sözcük; `fourth` sözlüğe eklenmeli). Editör bu iki cümleyi değerlendirir.
+3. **Bölüm `rights-and-review.md` dosyaları 2026-10-30'da eklendi** (`icerik/A1-000`…`A1-012`, 13 dosya; K-01). Depodaki kayıtlardan derlendi: kaynaklar, AI açıklaması, güvenlik notu, §7.2 kontrol listesi (hiçbir madde işaretli değil) ve onay geçmişi. Bölümlerin `content.json` dosyasında hâlâ `status: DRAFT`, `humanReviewed: false`, `rightsStatus: PENDING`; editör onayı **bekliyor**. Doğrulanamayan noktalar dosyalarda "doğrulanmadı" diye işaretli (ör. B5–B12 İngilizce replik seslerinin ElevenLabs hesabı/planı, Higgsfield çıktılarının ticari kullanım koşulu). Editör onayı verildiğinde bu dosyaların onay geçmişine yazılır.
+4. **Kitap onay geçmişi tabloları 2026-10-30'da güncellendi.** 30 kitabın hepsinde metin ve çeviri onayı `ceviri.tr.json` `APPROVED` kaydına göre "Onaylandı", görseller `PROMPTS.md` üretim kayıtlarına göre "Üretildi" (GPT Image 2.5, 2026-10-14) yazıyor; ses satırı 6 sesli kitapta (A1-K01…K05, A2-K03) "Üretildi", 24 kitapta "Bekliyor". Editör toplu kontrolü bütün kitaplarda **bekliyor**. Not: bazı kitapların `PROMPTS.md` ses bölümü başlığında eski "Henüz üretilmedi" cümlesi duruyor; altındaki kayıt tablosu geçerlidir.
 5. **C1/C2 kapsaması otomatik denetlenmiyor.** Octanove C1/C2 listesi depoda yok. 10 kitap ve 14 derste seviye kararı tamamen editördedir.
 6. **Dilbilgisi kanca ve "Hikâyede gör" eksikleri.** 19 derste kanca hikâyeden ya da kitaptan gerçek bir cümle değil; 31 derste "Hikâyede gör" kartı yok. `G-A2-07` hikâye bağı üretilmemiş prologa (A1-000) gidiyor. Editör bu dersleri anlatım açısından yine onaylayabilir; bağ eksikleri ayrıca tamamlanır.
 7. **Keşfet reellerinde H-094 P3 maddeleri açık.** `A2-R-BOK-01` "on Friday" ↔ "one more week" çelişkisi ve `due` sözlüğü, `A2-R-CIN-01` sahne cümlesi, `A2-R-SPO-01` soru cümlesi, `A1-R-BOK-02` başlığı. Ayrıntı reel tablosunda.
@@ -453,4 +454,4 @@ $P tools/content-pipeline/reel_lint.py reeller/*-R-*
 | `docs/IS-PLANI.md` §5.5 · `docs/SARTNAME.md` §7.2 | Kalite ve yayın kontrol listeleri |
 | `devam-edenler/H-085-bolum-5-12-uretimi.md` · `H-086` · `H-094` | Açık işlerin durumu |
 | `bitenler/H-028-onay-ve-icerik-kapasitesi.md` | Onay süreci kararı |
-| `kitaplar/<kitap>/rights-and-review.md`, `dilbilgisi/<ders>/rights-and-review.md` | Haklar ve onay geçmişi |
+| `icerik/<bölüm>/rights-and-review.md`, `kitaplar/<kitap>/rights-and-review.md`, `dilbilgisi/<ders>/rights-and-review.md` | Haklar ve onay geçmişi |

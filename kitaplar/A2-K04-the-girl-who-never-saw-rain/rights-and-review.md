@@ -4,7 +4,7 @@
 - **Özgün eser.** Metin, katalogdaki özet (`kitaplar/KATALOG.md`, A2-K04; kullanıcı onayı 2026-10-14, H-065) temel alınarak Claude tarafından yazıldı (2026-10-14, H-071). Uyarlama değildir.
 - **Üçüncü taraf kaynak yok.** Başka bir kitaptan, filmden ya da şarkıdan alıntı yok. Gerçek kişi, ünlü, marka, kurum ya da telifli karakter yok; Ay kasabası (Lunaria) ve uzay gemisi kurmaca ve markasızdır.
 - **Kelime listesi:** Seviye denetimi CEFR-J Wordlist v1.6 ile yapıldı (atıf: Tono Laboratory, TUFS; `tools/content-pipeline/data/README.md`). Yasak kaynaklar (Cambridge EVP/EGP, Oxford 3000/5000, GSE, COCA, BNC) kullanılmadı ve isteme konmadı.
-- **Yapay zekâ açıklaması:** Metin ve Türkçe çeviri taslağı yapay zekâ (Claude) ile üretildi; `book.json → aiGenerated: true`. Görseller ve ses de yapay zekâ ile üretilecek (henüz üretilmedi). Uygulama içinde AI notu bölümlerdeki kuralla gösterilir; uygulama dışına çıkan her kesitte AI etiketi gömülür (K-14).
+- **Yapay zekâ açıklaması:** Metin ve Türkçe çeviri taslağı yapay zekâ (Claude) ile üretildi; `book.json → aiGenerated: true`. Görseller (5 görsel, GPT Image 2.5, 2026-10-14) de yapay zekâ ile üretildi (kayıt `PROMPTS.md`); ses de yapay zekâ ile üretilecek, henüz üretilmedi. Uygulama içinde AI notu bölümlerdeki kuralla gösterilir; uygulama dışına çıkan her kesitte AI etiketi gömülür (K-14).
 
 ## Güvenlik (13+, şartname §5.5)
 - Şiddet, cinsellik, siyaset ve din yok. Tehlike yok: uzay yolculuğu ve Dünya'ya alışma sakin anlatılır; açık gökyüzü korkusu yumuşak bir dille işlenir ve Nia onu adım adım yener.
@@ -19,9 +19,9 @@
 | Tarih | Adım | Kim | Sonuç |
 |---|---|---|---|
 | 2026-10-14 | Metin, çeviri ve sözlük taslağı | Claude | DRAFT |
-| — | Metin ve çeviri onayı (H-028) | Kullanıcı | **Bekliyor** |
-| — | Görsel maliyet onayı ve üretim (kapak + bölüm başı, 5 görsel) | Kullanıcı | Bekliyor (henüz üretilmedi) |
-| — | Seslendirme (ElevenLabs Creator, ticari; anlatıcı Sarah) | Kullanıcı | Bekliyor (henüz üretilmedi) |
+| 2026-10-14 | Metin ve çeviri onayı (H-028) | Kullanıcı | Onaylandı (`ceviri.tr.json` → `APPROVED`; onaylayan: kullanıcı, ürün sahibi) |
+| 2026-10-14 | Görsel maliyet onayı ve üretim (kapak + bölüm başı, 5 görsel) | Kullanıcı | Üretildi: 5 görsel, GPT Image 2.5 (iş kimlikleri `PROMPTS.md`) |
+| — | Seslendirme (ElevenLabs Creator, ticari; anlatıcı Sarah) | Kullanıcı | Bekliyor (henüz üretilmedi; 2026-10-30 itibarıyla çalışan ElevenLabs erişimi yok) |
 | — | Editör toplu kontrolü | Editör | Bekliyor |
 
 - 2026-10-14: Kullanıcı metni ve Türkçe çeviriyi onayladı (H-028). Görseller kapak + bölüm başı olarak üretilecek.

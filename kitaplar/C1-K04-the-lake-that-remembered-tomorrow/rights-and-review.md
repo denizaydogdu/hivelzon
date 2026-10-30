@@ -4,7 +4,7 @@
 - **Özgün eser.** Metin, katalogdaki özet (`kitaplar/KATALOG.md`, C1-K04; kullanıcı onayı 2026-10-14, H-065) temel alınarak Claude tarafından yazıldı (2026-10-14, H-073). Uyarlama değildir.
 - **Üçüncü taraf kaynak yok.** Başka bir kitaptan, filmden ya da şarkıdan alıntı yok. Gerçek kişi, ünlü, marka, kurum ya da telifli karakter yok. Ardal köyü ve gölü uydurmadır; ülkesi ve dağların adı verilmez. "Water Office" (Su Dairesi) adsız, genel bir kamu dairesidir; gerçek bir kurumu anmaz. Şehir adsızdır.
 - **Kelime listesi:** C1 için CEFR-J Wordlist v1.6 + Octanove C1/C2 (CC BY-SA, ayrı veri seti) öngörülür; Octanove C1/C2 listesi depoda olmadığından kapsama denetlenmedi (aşağıda). Yasak kaynaklar (Cambridge EVP/EGP, Oxford 3000/5000, GSE, COCA, BNC) kullanılmadı ve isteme konmadı.
-- **Yapay zekâ açıklaması:** Metin ve Türkçe çeviri taslağı yapay zekâ (Claude) ile üretildi; `book.json → aiGenerated: true`. Görseller ve ses de yapay zekâ ile üretilecek (henüz üretilmedi). Uygulama içinde AI notu bölümlerdeki kuralla gösterilir; uygulama dışına çıkan her kesitte AI etiketi gömülür (K-14).
+- **Yapay zekâ açıklaması:** Metin ve Türkçe çeviri taslağı yapay zekâ (Claude) ile üretildi; `book.json → aiGenerated: true`. Görseller (8 görsel, GPT Image 2.5, 2026-10-14) de yapay zekâ ile üretildi (kayıt `PROMPTS.md`); ses de yapay zekâ ile üretilecek, henüz üretilmedi. Uygulama içinde AI notu bölümlerdeki kuralla gösterilir; uygulama dışına çıkan her kesitte AI etiketi gömülür (K-14).
 
 ## Güvenlik (13+, şartname §5.5)
 - Şiddet, cinsellik, siyaset ve din yok. Göldeki "yansımalar" dinsel ya da kehanet temelli değil, büyülü gerçekçi bir doğa olayı olarak işlenir; kitabın sonunda insanın kendi kararlarıyla ilgili bir ders gibi değil, bir keşif olarak açıklanır.
@@ -25,9 +25,9 @@
 | Tarih | Adım | Kim | Sonuç |
 |---|---|---|---|
 | 2026-10-14 | Metin, çeviri ve sözlük taslağı | Claude | DRAFT |
-| — | Metin ve çeviri onayı (H-028) | Kullanıcı | **Bekliyor** |
-| — | Görsel maliyet onayı ve üretim (kapak + bölüm başı, 8 görsel, ≈ 4 kr) | Kullanıcı | Bekliyor (henüz üretilmedi) |
-| — | Seslendirme (ElevenLabs Creator, ticari; anlatıcı Sarah) | Kullanıcı | Bekliyor (henüz üretilmedi) |
+| 2026-10-14 | Metin ve çeviri onayı (H-028) | Kullanıcı | Onaylandı (`ceviri.tr.json` → `APPROVED`; onaylayan: kullanıcı, genel onay) |
+| 2026-10-14 | Görsel maliyet onayı ve üretim (kapak + bölüm başı, 8 görsel, ≈ 4 kr) | Kullanıcı | Üretildi: 8 görsel, GPT Image 2.5 (iş kimlikleri `PROMPTS.md`) |
+| — | Seslendirme (ElevenLabs Creator, ticari; anlatıcı Sarah) | Kullanıcı | Bekliyor (henüz üretilmedi; 2026-10-30 itibarıyla çalışan ElevenLabs erişimi yok) |
 | — | Editör toplu kontrolü | Editör | Bekliyor |
 
 - 2026-10-14: Kullanıcının genel onayıyla ("tüm onayları verdim") metin ve çeviri onaylı işaretlendi (H-028); editör toplu okuması yine önerilir.

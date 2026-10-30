@@ -5,7 +5,7 @@
 - **Üçüncü taraf kaynak yok.** Başka bir kitaptan, filmden ya da şarkıdan alıntı yok. Gerçek kişi, ünlü, marka, kurum ya da telifli karakter yok. Köy (Sarnıçlı) uydurmadır; katalogdaki gibi Kaş yakınlarında adsız bir kıyıda geçer. Ajans, otel, kafe, kahvehane, okul ve havalimanı adsızdır. Londra, İstanbul, Kaş, Alpler, İspanya ve Manchester yalnızca coğrafi arka plan olarak anılır.
 - **Sözlük girdisi:** Margaret'in 1967 tarihli cep sözlüğündeki "Emanet: a deposit; a thing lent; a trust." maddesi uydurmadır; gerçek bir sözlükten alıntı değildir.
 - **Kelime listesi:** C1 için CEFR-J + Octanove C1/C2 öngörülür; Octanove dosyası depoda olmadığından kapsama denetlenmedi. Yasak kaynaklar (Cambridge EVP/EGP, Oxford 3000/5000, GSE, COCA, BNC) kullanılmadı ve isteme konmadı. Dilbilgisi konuları `dilbilgisi/MUFREDAT.md` C1 (G-C1-01…08) listesinden.
-- **Yapay zekâ açıklaması:** Metin ve Türkçe çeviri taslağı yapay zekâ (Claude) ile üretildi; `book.json → aiGenerated: true`. Görseller ve ses de yapay zekâ ile üretilecek (henüz üretilmedi). Uygulama içinde AI notu bölümlerdeki kuralla gösterilir; uygulama dışına çıkan her kesitte AI etiketi gömülür (K-14).
+- **Yapay zekâ açıklaması:** Metin ve Türkçe çeviri taslağı yapay zekâ (Claude) ile üretildi; `book.json → aiGenerated: true`. Görseller (7 görsel, GPT Image 2.5, 2026-10-14) de yapay zekâ ile üretildi (kayıt `PROMPTS.md`); ses de yapay zekâ ile üretilecek, henüz üretilmedi. Uygulama içinde AI notu bölümlerdeki kuralla gösterilir; uygulama dışına çıkan her kesitte AI etiketi gömülür (K-14).
 
 ## Güvenlik (13+, şartname §5.5)
 - Şiddet, cinsellik, siyaset ve din yok. Suç yok: Margaret'in kendini "bir çeşit hırsız" sanması bir yanlış çeviriden doğan suçluluk duygusudur ve sevgiyle çözülür.
@@ -26,9 +26,9 @@
 | Tarih | Adım | Kim | Sonuç |
 |---|---|---|---|
 | 2026-10-14 | Metin, çeviri ve sözlük taslağı | Claude | DRAFT |
-| — | Metin ve çeviri onayı (H-028) | Kullanıcı | **Bekliyor** |
-| — | Görsel maliyet onayı ve üretim (kapak + bölüm başı, 7 görsel, ≈ 3,5 kr) | Kullanıcı | Bekliyor (henüz üretilmedi) |
-| — | Seslendirme (ElevenLabs Creator, ticari; anlatıcı Sarah) | Kullanıcı | Bekliyor (henüz üretilmedi) |
+| 2026-10-14 | Metin ve çeviri onayı (H-028) | Kullanıcı | Onaylandı (`ceviri.tr.json` → `APPROVED`; onaylayan: kullanıcı, genel onay) |
+| 2026-10-14 | Görsel maliyet onayı ve üretim (kapak + bölüm başı, 7 görsel, ≈ 3,5 kr) | Kullanıcı | Üretildi: 7 görsel, GPT Image 2.5 (iş kimlikleri `PROMPTS.md`) |
+| — | Seslendirme (ElevenLabs Creator, ticari; anlatıcı Sarah) | Kullanıcı | Bekliyor (henüz üretilmedi; 2026-10-30 itibarıyla çalışan ElevenLabs erişimi yok) |
 | — | Editör toplu kontrolü | Editör | Bekliyor |
 
 - 2026-10-14: Kullanıcının genel onayıyla ("tüm onayları verdim") metin ve çeviri onaylı işaretlendi (H-028); editör toplu okuması yine önerilir.

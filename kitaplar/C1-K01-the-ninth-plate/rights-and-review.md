@@ -5,7 +5,7 @@
 - **Üçüncü taraf kaynak yok.** Başka bir kitaptan, filmden ya da şarkıdan alıntı yok; kapalı mekân gizemi türünün genel kalıbı (karla kapanmış otel, bir araya getirilmiş yabancılar) kullanıldı, belirli bir eserin olay örgüsü ya da karakteri alınmadı. Gerçek kişi, ünlü, marka, kurum ya da telifli karakter yok. Otel (Glasswater), göl (Fennick), küçük istasyon (Fennick Halt) ve şehir (Calderbury) uydurmadır; gazete, otobüs şirketi, hayvan hastanesi ve eczane adsızdır.
 - **Bulmaca içeriği:** Kitaptaki anagramlar (Daryl Brie, Bridal Rye → Early Bird) ve takma ad (Night Owl) özgündür; gerçek bir gazetenin bulmacası ya da bulmaca yazarı ima edilmez.
 - **Kelime listesi:** C1 seviye denetimi CEFR-J Wordlist v1.6 (atıf: Tono Laboratory, TUFS) ve Octanove C1/C2 ile yapılacaktır; Octanove C1/C2 listesi depoda yok, bu nedenle kapsama denetlenmedi. Yasak kaynaklar (Cambridge EVP/EGP, Oxford 3000/5000, GSE, COCA, BNC) kullanılmadı ve isteme konmadı.
-- **Yapay zekâ açıklaması:** Metin ve Türkçe çeviri taslağı yapay zekâ (Claude) ile üretildi; `book.json → aiGenerated: true`. Görseller ve ses de yapay zekâ ile üretilecek (henüz üretilmedi). Uygulama içinde AI notu bölümlerdeki kuralla gösterilir; uygulama dışına çıkan her kesitte AI etiketi gömülür (K-14).
+- **Yapay zekâ açıklaması:** Metin ve Türkçe çeviri taslağı yapay zekâ (Claude) ile üretildi; `book.json → aiGenerated: true`. Görseller (8 görsel, GPT Image 2.5, 2026-10-14) de yapay zekâ ile üretildi (kayıt `PROMPTS.md`); ses de yapay zekâ ile üretilecek, henüz üretilmedi. Uygulama içinde AI notu bölümlerdeki kuralla gösterilir; uygulama dışına çıkan her kesitte AI etiketi gömülür (K-14).
 
 ## Güvenlik (13+, şartname §5.5)
 - Şiddet, cinsellik, siyaset ve din yok. Gizem bir suç değil, bir iyilik zinciridir: "şüpheli" yoktur, kimse zarar görmez; kaybolan tabak bile bir yanlış anlamadır.
@@ -24,9 +24,9 @@
 | Tarih | Adım | Kim | Sonuç |
 |---|---|---|---|
 | 2026-10-14 | Metin, çeviri ve sözlük taslağı | Claude | DRAFT |
-| — | Metin ve çeviri onayı (H-028) | Kullanıcı | **Bekliyor** |
-| — | Görsel maliyet onayı ve üretim (kapak + bölüm başı, 8 görsel, ≈ 4 kr) | Kullanıcı | Bekliyor (henüz üretilmedi) |
-| — | Seslendirme (ElevenLabs Creator, ticari; anlatıcı Sarah) | Kullanıcı | Bekliyor (henüz üretilmedi) |
+| 2026-10-14 | Metin ve çeviri onayı (H-028) | Kullanıcı | Onaylandı (`ceviri.tr.json` → `APPROVED`; onaylayan: kullanıcı, genel onay) |
+| 2026-10-14 | Görsel maliyet onayı ve üretim (kapak + bölüm başı, 8 görsel, ≈ 4 kr) | Kullanıcı | Üretildi: 8 görsel, GPT Image 2.5 (iş kimlikleri `PROMPTS.md`) |
+| — | Seslendirme (ElevenLabs Creator, ticari; anlatıcı Sarah) | Kullanıcı | Bekliyor (henüz üretilmedi; 2026-10-30 itibarıyla çalışan ElevenLabs erişimi yok) |
 | — | Editör toplu kontrolü | Editör | Bekliyor |
 
 - 2026-10-14: Kullanıcının genel onayıyla ("tüm onayları verdim") metin ve çeviri onaylı işaretlendi (H-028); editör toplu okuması yine önerilir.
