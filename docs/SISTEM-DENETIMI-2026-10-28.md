@@ -85,7 +85,27 @@ pilot sonucu görülmeden açılmamalıdır.
 | `40828152612` | `f994127` | ❌ İçerik işi: paket dışı klip denetimi |
 | **`40828736476`** | **`32b5832`** | **✅ Mobil, backend ve içerik yeşil** |
 | **`40830363684`** | **`83783b2`** | **✅ Belge commit'i; üç iş de yeşil** |
+| **`40830965943`** | **`8ee3a0a`** | **✅ Belge commit'i; üç iş de yeşil** |
+| **`41013181402`** | **`47c4c0a`** | **✅ TTS engeli kaydı; üç iş de yeşil** |
 
 Son koşularda mobil `flutter analyze + test`, backend `mvn -B verify` ve içerik
 `pytest + bölüm/kitap/dilbilgisi lint` işleri geçti. CI tarafında bekleyen
 hata yoktur.
+
+## TTS denemesi (2026-10-30)
+
+| Kontrol | Sonuç |
+|---|---|
+| ElevenLabs aboneliği | `free`; **0 / 10.000** karakter |
+| Kitap kuru çalışması | **773.569 karakter** |
+| Dilbilgisi kuru çalışması | **21.544 karakter** |
+| Toplam | **≈795.113 karakter/kredi** |
+| A2 ders partisi | **401 `detected_unusual_activity`** |
+| Tek kart (105 karakter) | **401** aynı durum |
+| Doğrudan 5 karakter | **401** aynı durum |
+| Üretilen ses / harcanan kredi | **0 / 0** |
+
+VPN ve sistem proxy'si etkin değildi. Engel hesap düzeyindedir; ücretsiz
+katman ses üretimi kapatılmıştır. Aynı ücretsiz anahtarla yeniden denenmez.
+Üretim, hesap ücretli plana geçince veya ElevenLabs kısıtı kaldırınca
+`docs/KITAPLIK.md` ve `docs/DILBILGISI.md` sırasıyla yapılır.

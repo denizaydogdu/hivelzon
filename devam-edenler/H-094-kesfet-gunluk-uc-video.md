@@ -1,6 +1,6 @@
 # H-094: Keşfet — seviyeye ve ilgiye göre günlük üç kısa video (reel)
 
-- **Durum:** Sürüyor/bekliyor (2026-10-28): P0–P4, 18/18 ses, katalog, yayın/geri çekme, “İlgi alanların” ve 7 reel v2 tamam. Kalan yalnız insan değerlendirmesi ve H-044 sonrasına ertelenen H-092 pilotu; yeni geniş katalog pilot sonucu olmadan üretilmez.
+- **Durum:** Sürüyor/bekliyor (2026-10-30 itibarıyla değişmedi): P0–P4, 18/18 ses, katalog, yayın/geri çekme, “İlgi alanların” ve 7 reel v2 tamam. Kalan yalnız insan değerlendirmesi ve H-044 sonrasına ertelenen H-092 pilotu; yeni geniş katalog pilot sonucu olmadan üretilmez.
 - **Tür:** Uygulama (kod) + içerik boru hattı + içerik pilotu
 - **Faz:** F1 MVP — ürün incelemesi sonrası (2026-10-18)
 - **Bağımlılık:** H-040 (Keşfet), H-089 (kanıt basamakları), H-088 (günlük plan); pilot içerik için ücretli üretim onayı ve `PROMPTS.md`

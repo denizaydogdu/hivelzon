@@ -1,6 +1,6 @@
 # H-092 — Pilot kiti (gözlemli test + 7–14 günlük pilot)
 
-> **Durum (2026-10-28):** Kit hazır ve onam yaklaşımı hukukçu tarafından uygun bulundu (tek metin, 90 gün yeterli, 13–17 ek veli onayı yok); veri sorumlusu bilgileri H-044'te doldurulur. Aşama A ve B, H-044 tamamlandıktan sonra birlikte yapılır. Bu belge
+> **Durum (2026-10-30, değişmedi):** Kit hazır ve onam yaklaşımı hukukçu tarafından uygun bulundu (tek metin, 90 gün yeterli, 13–17 ek veli onayı yok); veri sorumlusu bilgileri H-044'te doldurulur. Aşama A ve B, H-044 tamamlandıktan sonra birlikte yapılır. Bu belge
 > H-092'nin "test senaryosu ve onay metni hazır" teslimini karşılar; saha çalışması (5 kişi + 15–20 kişi)
 > henüz yapılmadı. **Pilot içeriği ve teknik kapı hazır:** 18 sesli reel (Sarah/Will/Chris) yayında,
 > uygulama backend'in yayımlanmış kataloğunu okuyor, geri çekme uçtan uca doğrulandı.

@@ -1,6 +1,6 @@
 # H-044: Dış hesaplar, barındırma ve mağaza (en son)
 
-- **Durum:** Ertelendi/en son (2026-10-28). Hesap gerektirmeyen kod ve güvenlikler bitti; Almanya sunucusu/DNS, Bunny, Apple/Google, mağaza yüklemesi, veri sorumlusu bilgileri ve muhasebe ayrı kullanıcı onayına bağlı. H-043/H-068, kullanıcı/editör incelemeleri ve TTS erişimi sırasından sonra ele alınır.
+- **Durum:** Ertelendi/en son (2026-10-30 itibarıyla değişmedi). Hesap gerektirmeyen kod ve güvenlikler bitti; Almanya sunucusu/DNS, Bunny, Apple/Google, mağaza yüklemesi, veri sorumlusu bilgileri ve muhasebe ayrı kullanıcı onayına bağlı. H-043/H-068, kullanıcı/editör incelemeleri ve TTS erişimi sırasından sonra ele alınır.
 - **Tür:** Uygulama + kullanıcı kararları
 - **Faz:** 1.12 (`docs/UYGULAMA-PLANI.md`)
 - **Bağımlılık:** H-043

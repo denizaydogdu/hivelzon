@@ -1,6 +1,6 @@
 # Dilbilgisi: Hi'den Türkçe konu anlatımı (H-075…H-082)
 
-> Durum: **uygulamada** (2026-10-28): A1–C2 toplam 71 ders yazıldı, Türkçe sesleri hazır ve `grammar_lint` 0 hata. A1 İngilizce örnekleri tam; A2 kısmen, B1–C2 bekliyor. Kalan: öğretmen/editör incelemesi ile çalışan ElevenLabs erişimi veya ayrı onaylı ücretli plan. İşler §8'de; ders paketi ve araçlar §9'da.
+> Durum: **uygulamada** (2026-10-30): A1–C2 toplam 71 ders yazıldı, Türkçe sesleri hazır ve `grammar_lint` 0 hata. A1 İngilizce örnekleri tam; A2 kısmen, B1–C2 bekliyor. Kalan: öğretmen/editör incelemesi ile çalışan ElevenLabs erişimi veya ayrı onaylı ücretli plan. **2026-10-30:** Yeni ücretsiz anahtarın abonelik sorgusu 10.000 kredi gösterse de üç üretim denemesi `401 detected_unusual_activity` verdi; ses/kredi üretilmedi. Kalan İngilizce örnekler ≈21.544 karakter. İşler §8'de; ders paketi ve araçlar §9'da.
 
 ## 1. Neden
 Kullanıcının gözlemi: "Türk öğrenciler bazen konuları anlamıyor."

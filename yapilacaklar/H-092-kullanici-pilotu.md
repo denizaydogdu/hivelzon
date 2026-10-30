@@ -1,6 +1,6 @@
 # H-092: Kullanılabilirlik testi ve 7–14 günlük öğrenme pilotu
 
-- **Durum:** ⏸ **Ertelendi (2026-10-28 itibarıyla değişmedi):** aşama A ve B birlikte H-044 tamamlandıktan sonra yapılır; şu an test telefonu yok. Pilot kiti, gözlem föyü ve hukukçu onaylı onam yaklaşımı hazır. Pilot sonucu görülmeden büyük yeni içerik dalgası başlamaz.
+- **Durum:** ⏸ **Ertelendi (2026-10-30 itibarıyla değişmedi):** aşama A ve B birlikte H-044 tamamlandıktan sonra yapılır; şu an test telefonu yok. Pilot kiti, gözlem föyü ve hukukçu onaylı onam yaklaşımı hazır. Pilot sonucu görülmeden büyük yeni içerik dalgası başlamaz.
 - **Tür:** Ürün araştırması
 - **Faz:** F1 MVP — ürün incelemesi sonrası (2026-10-16)
 - **Bağımlılık:** H-087…H-091 · gerçek cihaz dağıtımı için H-044

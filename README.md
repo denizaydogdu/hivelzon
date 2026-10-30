@@ -4,7 +4,7 @@ Yapay zekâ videolarıyla İngilizce öğrenme uygulaması (iOS + Android). Tüm
 
 Velzon Bilişim Teknolojileri Ltd. Şti. (Eskişehir · info@velzon.tr) ürünüdür.
 
-**Durum (2026-10-29):** Faz 1 (MVP) uygulaması sürüyor (`docs/UYGULAMA-PLANI.md`). Son doğrulanan iş commit'i `32b5832`; belge senkronu `83783b2`. Tam sistem denetiminde mobil **1483/1483**, backend **164/164** ve bütün içerik lint'leri geçti. GitHub CI'daki eksik `ffmpeg` ve paket dışı klip denetimi düzeltildi; **CI koşuları `40828736476` ve `40830363684` üçer işiyle yeşil** (mobil, backend, içerik). **Uygulamanın görünen adı bütün ekranlarda Hi**; depo ve iç adlar `hiVelzon`. Bağımlılık sırasındaki kalan işler: (1) H-043/H-068 gerçek iPhone, (2) H-085/H-086 kullanıcı denemesi, (3) öğretmen/editör incelemesi, (4) çalışan ElevenLabs erişimi isteyen eksik İngilizce sesler, (5) en sonda H-044 dış hesap/mağaza, (6) H-044 sonrasında H-092 pilotu. Ayrıntı: `yapilacaklar/IS-SIRASI.md`; denetim: `docs/SISTEM-DENETIMI-2026-10-28.md`; son devir: `docs/HANDOFF-2026-10-27.md`.
+**Durum (2026-10-30):** Faz 1 (MVP) uygulaması sürüyor (`docs/UYGULAMA-PLANI.md`). Son doğrulanan iş commit'i `47c4c0a`; CI koşusu **`41013181402` yeşil**. Tam sistem denetiminde mobil **1483/1483**, backend **164/164** ve bütün içerik lint'leri geçti. **Uygulamanın görünen adı bütün ekranlarda Hi**; depo ve iç adlar `hiVelzon`. Bağımlılık sırasındaki kalan işler: (1) H-043/H-068 gerçek iPhone, (2) H-085/H-086 kullanıcı denemesi, (3) öğretmen/editör incelemesi, (4) eksik İngilizce sesler, (5) en sonda H-044 dış hesap/mağaza, (6) H-044 sonrasında H-092 pilotu. **TTS engeli:** ElevenLabs hesabı 10.000 ücretsiz kredi gösterse de üretim çağrıları `401 detected_unusual_activity` veriyor; 2026-10-30'da üç denemede ses/kredi üretilmedi. Toplam kuru çalışma ≈795.113 karakter. Ayrıntı: `yapilacaklar/IS-SIRASI.md`; denetim: `docs/SISTEM-DENETIMI-2026-10-28.md`; son devir: `docs/HANDOFF-2026-10-30.md`.
 
 Ana deneyim oyunlaştırılmış, sürekli bir hikâye: *The Missing Signal*. Kahraman Aleyna "Alex" Yıldız, yol arkadaşı AI asistan Hi. Sezon 1 (A1) 12 bölüm + prolog; 12 bölümün hepsi üretildi ve uygulamada oynanıyor (B5–B12 editör onayı bekliyor). Bitenler: repo iskeleti, bölüm paketi + content-lint, etkileşimli oynatıcı, altyazıya dokununca Türkçe anlam, başlıkla açılış ve sezon jeneriği, hikâye haritası ve kalıcı yerel ilerleme (Drift), defter + ipucu panosu + FSRS tekrarı, kitaplık, dilbilgisi ve Keşfet reelleri. AI konuşma pratiği MVP'de yok, v1'de gelir.
 
@@ -12,7 +12,7 @@ Ana deneyim oyunlaştırılmış, sürekli bir hikâye: *The Missing Signal*. Ka
 
 - [Proje rehberi](CLAUDE.md): bağlayıcı kararlar, kurallar, iş takibi (H-numaraları)
 - [İş sırası](yapilacaklar/IS-SIRASI.md): nerede kaldık, sıradaki işler, günlük
-- [Son devir (28 Ekim güncel)](docs/HANDOFF-2026-10-27.md): güncel durum ve sıradaki adımlar
+- [Son devir (30 Ekim güncel)](docs/HANDOFF-2026-10-30.md): güncel durum ve sıradaki adımlar
 - [Sistem denetimi (2026-10-28)](docs/SISTEM-DENETIMI-2026-10-28.md): testler, CI bulgusu ve gerçek açık işler
 - [Faz 1 uygulama planı](docs/UYGULAMA-PLANI.md): alt fazlar ve durumları
 - [Oyun ve hikâye tasarımı](docs/OYUN-TASARIMI.md) · [Bölüm paketi biçimi](docs/BOLUM-PAKETI.md) · [Hi asistanı ve koç](docs/HI-ASISTAN-VE-KOC.md)

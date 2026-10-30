@@ -1,14 +1,14 @@
 # İş Sırası — hiVelzon
 
-> Son güncelleme: 2026-10-29 · Güncelleyen: OpenCode ajanı
+> Son güncelleme: 2026-10-30 · Güncelleyen: OpenCode ajanı
 
 Bu dosya tek takip noktasıdır. Hangi işin hangi sırada yapıldığını, şu an ne üzerinde çalışıldığını ve neyin bittiğini gösterir. Her işin ayrıntısı kendi `H-<numara>-<başlık>.md` dosyasındadır.
 
-> **Yeni oturum buradan başlasın:** `CLAUDE.md` → bu dosyanın "Nerede kaldık" bölümü → `docs/HANDOFF-2026-10-27.md`.
+> **Yeni oturum buradan başlasın:** `CLAUDE.md` → bu dosyanın "Nerede kaldık" bölümü → `docs/HANDOFF-2026-10-30.md`.
 > **Sıradaki işler:** Aşağıdaki altı bekleyen grup sırayla izlenir; hiçbiri şu an bağımsız ürün kodu işi değildir. Gerçek cihaz, kullanıcı/editör, çalışan TTS erişimi veya ayrı dış hesap onayı gerektirir. H-044 ve H-092 en sonda kalır.
 
 ## Nerede kaldık
-- **Şu an (2026-10-29):** Faz 1 (MVP) uygulaması sürüyor (`docs/UYGULAMA-PLANI.md`). Son doğrulanan iş commit'i `32b5832` (CI düzeltmesi); belge senkronu `83783b2`. GitHub CI koşuları `40828736476` ve `40830363684` mobil, backend ve içerik işleriyle **yeşil**. Uygulamanın görünen adı bütün ekranlarda **Hi** (kullanıcı kararı 2026-10-24); depo/iç adlar `hiVelzon`, hukuki şirket Velzon Bilişim Teknolojileri Ltd. Şti.
+- **Şu an (2026-10-30):** Faz 1 (MVP) uygulaması sürüyor (`docs/UYGULAMA-PLANI.md`). Son doğrulanan iş commit'i `47c4c0a` (TTS engeli kaydı); GitHub CI koşusu **`41013181402` yeşil**. Önceki doğrulanan koşular `40828736476`, `40830363684` ve `40830965943` de mobil, backend ve içerik işleriyle **yeşil**. Uygulamanın görünen adı bütün ekranlarda **Hi** (kullanıcı kararı 2026-10-24); depo/iç adlar `hiVelzon`, hukuki şirket Velzon Bilişim Teknolojileri Ltd. Şti.
   - Son bitenler: **H-042** (hesap silme/geri alma, Hakkında ve lisanslar, günlük hatırlatma, `docs/HUKUK-SORULARI.md`) ve **H-095** (yeniden onay yok, yalnız bildirim; rıza ve denetim kayıtları 2 yıl, V16; KVKK ve kullanım koşulları taslakları, yer tutuculu). İkisi gerçek backend'e karşı uçtan uca testle doğrulandı (`mobile/integration_test/h042_h095_account_e2e_test.dart`).
   - Akşam: **H-096** (21 Ekim takip incelemesi: geri çekilen reel eski adresle açılmaz, mesaj kalıbı tek cümlede, reel tamamlanması %90 konum + %80 aktif izleme, 'İfadeyi kaydet') bitti; inceleme `docs/URUN-TAKIP-INCELEMESI-2026-10-21.md`. Değişmez sürüm klasörleri H-044'e not edildi.
   - **H-043:** yerel kısım bitti; kalan gerçek telefon kontrolleri (`docs/BETA-KONTROL-LISTESI.md` 2. bölüm).
@@ -19,16 +19,16 @@ Bu dosya tek takip noktasıdır. Hangi işin hangi sırada yapıldığını, şu
   - **H-099 (2026-10-26):** Ana Sayfa önerileri kişiselleştirildi: selamın altında sabit "Bugün için önerimiz:" yerine son etkinliğe/seviyeye/ilk haftaya göre durum cümlesi; kartta süre ve günlük hedef ayrı hap satırda; gerekçeler tek cümle; düğmeler işi söylüyor (5 ifadeyi tekrarla, Bölümü başlat, Nesneleri bul); "Sahne" çipi "Bölüm" oldu; çalışma araçları isteğe bağlı olarak işaretlendi. Kural tabanlı plan ve tek eylem ilkesi korundu.
   - **H-100 (2026-10-27):** Aynı kişisel durum cümlesi Hi panelinde öneri kartının üstünde de gösteriliyor. Panel artık `dailyPlanProvider`ı doğrudan izliyor; Ana Sayfa ve Hi tek plandan besleniyor. Mobil 1483/1483, analyze temiz; 320×568 1,3× taşma yok.
   - **Açık kararlar kapandı (2026-10-27):** Kullanıcı H-001, H-003, H-006, H-008, H-015 ve H-016 için karar yetkisini ajana devretti. Plan onaylandı; AI kotası oturum bazlı belirlendi; sağlayıcılar yerel LLM + cihazda STT + mevcut TTS olarak netleşti; ham ses/transkript politikası ve telaffuz puanı kararı yazıldı; marka adı/logo/palet/mağaza metni seçildi. Ayrıntı: `docs/KARARLAR-2026-10-27.md`. H-016 simge entegrasyonu H-101 ile tamamlandı.
-  - **ElevenLabs (2026-10-27):** Kullanıcının verdiği yeni ücretsiz anahtar API'de **401 `detected_unusual_activity`** döndürdü; ücretsiz katman kapalı. Yeni ses üretimi çalışan anahtar/ücretli plan gelene kadar duruyor. Anahtar repoya yazılmadı.
+  - **ElevenLabs (2026-10-30):** Yeni anahtarın abonelik sorgusu ücretsiz planda **10.000 kredi** ve **0 kullanım** gösterdi; ancak üç ayrı üretim denemesi (A2 ders partisi, 105 karakterlik kart, doğrudan 5 karakter) **401 `detected_unusual_activity`** ile reddedildi. VPN/proxy yok. **Ses ve kredi üretilmedi (0/0).** Engel hesap düzeyinde; ücretsiz katman üretimi kapatılmış. Çalışan/ücretli plan gelene kadar aynı anahtarla yeniden denenmez. Anahtar repoya yazılmadı; yalnız `~/.config/hivelzon/elevenlabs.env` içinde, izni `600`.
   - **H-101 (2026-10-27):** H-016 marka kararı uygulandı: konuşma balonu içinde “Hi” wordmark; 15 iOS simgesi, 5 Android legacy + 5 adaptive ön plan, iki platform açılış varlıkları ve 512 px Google Play master'ı yerelde üretildi. Deniz mavisi açılış zemini; ücretli üretim yok. `flutter analyze` temiz, mobil **1483/1483**, Android debug ve iOS simülatör derlemeleri geçti; PIRU iPhone 17'ye temiz kurulum/açılış yapıldı.
   - **H-085/H-086 teknik kontrolü (2026-10-27):** H-085 B5–B12 otomatik iOS simülatör turunda 8/8 tamamlandı (kapılar açık, hata 0, en büyük altyazı sapması 131 ms); H-086 hedef testleri 14 + 2 golden geçti, görseller incelendi. Kullanıcının öznel simülatör denemesi hâlâ açık; H-028 editör onayı da ayrı bekliyor.
   - SyncController ilk eşitleme hatası düzeltildi. G-A1-13 açıklaması düzeltildi ve yeniden seslendirildi.
   - Hukukçu cevapları `docs/HUKUK-SORULARI.md` → "Cevaplar": veli onayı yok; İYS ve VERBİS kaydı gerekmez; sunucu Almanya; cihazda konuşma tanıma KVKK kapsamında değil; kayıtlar 2 yıl; 30 gün silme uygun; pilot onamı uygun. Veri sorumlusu bilgileri ayrı fazda; muhasebe soruları H-044'te.
 - **Testler (son koşu):** mobil 1483/1483 (`flutter analyze` temiz; Android debug + iOS simülatör derlemesi geçti) · backend 164 · pytest 383 · reel lint 18/0/0 · grammar lint 71 ders 0 hata · book lint 30 kitap 0 hata.
 - **Hedef tekrar (2026-10-28):** Hikâye + oynatıcı ekranı + H-086 okuyucu/golden testleri **70/70**; `flutter analyze` temiz. Yukarıdaki 1483/1483 önceki tam takım sonucudur.
-- **Tam sistem denetimi (2026-10-28) ve CI (2026-10-29):** Simülatör açılmadan mobil **1483/1483**, backend **164/164**, pytest ve bütün bölüm/kitap/dilbilgisi/reel lint'leri geçti. CI'a `ffmpeg`, 30 kitap ve 71 dilbilgisi dersi lint kapıları eklendi. İlk koşuda (`40828152612`) ortaya çıkan paket dışı klip denetimi kaynak koşusundan ayrıldı; son koşular **`40828736476` ve `40830363684` üçer işiyle yeşil**; ikincisi belge commit'i `83783b2` üzerindedir. Ayrıntı: `docs/SISTEM-DENETIMI-2026-10-28.md`.
+- **Tam sistem denetimi (2026-10-28) ve CI (2026-10-29/30):** Simülatör açılmadan mobil **1483/1483**, backend **164/164**, pytest ve bütün bölüm/kitap/dilbilgisi/reel lint'leri geçti. CI'a `ffmpeg`, 30 kitap ve 71 dilbilgisi dersi lint kapıları eklendi. İlk koşuda (`40828152612`) ortaya çıkan paket dışı klip denetimi kaynak koşusundan ayrıldı; son koşular **`40828736476`, `40830363684`, `40830965943` ve `41013181402` üçer işiyle yeşil**. Ayrıntı: `docs/SISTEM-DENETIMI-2026-10-28.md`.
 - **Yerel ortam (2026-10-27):** Flutter testleri ve analiz yerelde çalıştırıldı. Arayüz denemesi için **"PIRU iPhone 17"** ve **"WishSay iPhone"** (`A79F74E2-A150-4A94-A676-DC466D69F2F4`) simülatörleri kullanılabilir. Backend ve içerik sunucusu gerektiğinde `--dart-define=API_BASE_URL=http://127.0.0.1:8080 --dart-define=CONTENT_BASE_URL=http://127.0.0.1:8787` ile açılır. Sunucu, Bunny Stream, mağaza ve geliştirici hesapları en sonda (H-044).
-- **İçerik:** Sezon 1'in 12 bölümü üretildi (haritada 12/12; editör onayı H-028 bekliyor). Dilbilgisi 71 dersin hepsi yazıldı ve Türkçe sesli; İngilizce örnek sesi A1 16/16, A2 7 tam + 1 kısmen, B1–C2 bekliyor. Kitaplık: 30 kitap yazıldı ve tam resimli; sesli kitap 5/30. Keşfet: 18 sesli reel yayında; 7 kalite düzeltmesi v2. Higgsfield hesap bakiyesi **483,72** (2026-10-27; H-099'da harcama yok).
+- **İçerik:** Sezon 1'in 12 bölümü üretildi (haritada 12/12; editör onayı H-028 bekliyor). Dilbilgisi 71 dersin hepsi yazıldı ve Türkçe sesli; İngilizce örnek sesi A1 16/16, A2 7 tam + 1 kısmen, B1–C2 bekliyor. Kitaplık: 30 kitap yazıldı ve tam resimli; sesli kitap 5/30. Keşfet: 18 sesli reel yayında; 7 kalite düzeltmesi v2. Higgsfield hesap bakiyesi **483,72** (2026-10-27; H-099'da harcama yok). **2026-10-30:** Eksik İngilizce sesler için kuru çalışma ≈795.113 karakter; ElevenLabs üretimi hesap engeli nedeniyle yapılamadı, ses/kredi üretilmedi.
 - **Sıradaki adım:** Aşağıdaki sıraya göre dış bağımlılıklar çözülür. Pilot sonucu görülmeden büyük yeni içerik dalgası başlamaz.
 
 ## Sıradaki işler (bağımlılık sırası)
@@ -36,13 +36,13 @@ Bu dosya tek takip noktasıdır. Hangi işin hangi sırada yapıldığını, şu
 1. **Gerçek iPhone kontrolleri — H-043/H-068:** beta kontrol listesinin gerçek telefon bölümü; arka plan çalma ve kilit ekranı görünümü. Kullanıcının cihazı ve açık test izni gerekir.
 2. **Kullanıcı denemesi — H-085/H-086:** B5–B12 ile “Sayfanın Türkçesi” teknik olarak yeşil; kabul için kullanıcının öznel deneyimi gerekir. Simülatör ancak kullanıcı her çalıştırma öncesi açık izin verirse açılır.
 3. **Öğretmen/editör incelemesi:** H-028'de süreç kararı tamamlandı; operasyonel kontrol açık. Konuş metinleri, B5–B12 çeviri/görsel/ipucu, kitap soruları ve dilbilgisi dersleri incelenir.
-4. **Eksik İngilizce sesler:** H-071…H-073 kitap sesleri ve H-080…H-082 dilbilgisi örnekleri için çalışan ElevenLabs erişimi veya ayrı onaylı ücretli plan gerekir. 2026-10-30'da verilen yeni anahtarın abonelik sorgusu ücretsiz 10.000 kredi gösterdi, ancak ilk ses üretim çağrısı yine `401 detected_unusual_activity` verdi; ses/kredi üretilmedi, engelli ücretsiz anahtarlarla yeniden denenmez. Toplam kuru çalışma ≈795.113 karakter (kitap 773.569, dilbilgisi 21.544); gerçek üretim çalışan, uygun hesap/planı bekler.
+4. **Eksik İngilizce sesler:** H-071…H-073 kitap sesleri ve H-080…H-082 dilbilgisi örnekleri için çalışan ElevenLabs erişimi veya ayrı onaylı ücretli plan gerekir. 2026-10-30'da verilen yeni anahtarın abonelik sorgusu ücretsiz 10.000 kredi gösterdi, ancak üç ayrı üretim denemesi de `401 detected_unusual_activity` verdi; ses/kredi üretilmedi, engelli ücretsiz anahtarlarla yeniden denenmez. Toplam kuru çalışma ≈795.113 karakter (kitap 773.569, dilbilgisi 21.544); gerçek üretim çalışan, uygun hesap/planı bekler.
 5. **H-044 dış hesaplar ve mağaza — en son:** Almanya sunucusu/DNS, Bunny, Apple/Google, mağaza yüklemesi, veri sorumlusu bilgileri ve muhasebe. Ayrı kullanıcı onayı olmadan başlanmaz.
 6. **H-092 kullanıcı pilotu — H-044 sonrasında:** aşama A ve B birlikte yürütülür; pilot kiti ve gözlem föyü hazır. H-044 bitmeden başlamaz.
 
 - **Marka yüklemesi:** Yerel simge/master varlıkları H-101 ile hazır; mağazaya yükleme 5. adımdaki H-044'e bağlıdır.
 - **Engel:** Kod engeli yok. Bekleyenlerin tamamı cihaz, insan, TTS erişimi veya dış hesap bağımlılığıdır.
-- **Engel:** Yok. Dış hesaplar bilerek en sona bırakıldı.
+- **Not:** Dış hesaplar bilerek en sona bırakıldı.
 
 ## Nasıl takip ediyoruz
 - **İş dosyası nerede durur:** Durum değişince dosya klasör değiştirir:
@@ -588,3 +588,8 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
   - CI ve belge senkronu `f994127` ile gönderildi. İlk koşu (`40828152612`) `ffmpeg` sonrası bölüm lint'inde paket dışı klip kaynaklarına takıldı; klip denetimi kaynak koşusundan ayrıldı (`32b5832`).
   - Son CI koşusu **`40828736476` yeşil**: mobil, backend ve içerik (pytest + bölüm/kitap/dilbilgisi lint) işleri geçti.
   - README, CLAUDE, devir, iş sırası, planlar ve iş dosyaları son commit/CI sonucuyla eşitlendi; commit/push bekleyen ifade kalmadı.
+- **2026-10-30:**
+  - Yeni ElevenLabs anahtarı repo dışındaki `~/.config/hivelzon/elevenlabs.env` dosyasına izin `600` ile yerleştirildi; anahtar hiçbir loga, belgeye veya commit'e yazılmadı.
+  - Abonelik sorgusu ücretsiz planda **0 / 10.000 kredi** gösterdi. A2 ders partisi, 105 karakterlik tek kart ve doğrudan 5 karakterlik deneme dahil **üç üretim çağrısı** `401 detected_unusual_activity` verdi. VPN/proxy yok. **Ses ve kredi üretilmedi (0/0).**
+  - Kuru çalışma: kitaplar **773.569**, dilbilgisi İngilizce örnekleri **21.544**, toplam **≈795.113 karakter/kredi**.
+  - Engel `47c4c0a` ile kaydedildi; CI **`41013181402` yeşil**. Yeni oturum devri: `docs/HANDOFF-2026-10-30.md`. Aynı ücretsiz anahtarla yeniden denenmez; hesap ücretli plana geçmeli veya ElevenLabs kısıtı kaldırmalı.

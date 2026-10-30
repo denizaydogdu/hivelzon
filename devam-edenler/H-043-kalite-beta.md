@@ -1,6 +1,6 @@
 # H-043: Kalite ve iç beta hazırlığı
 
-- **Durum:** Devam ediyor (2026-10-28): yerel kısım ve hesap gerektirmeyen yayın güvenlikleri bitti. Kalan yalnız `docs/BETA-KONTROL-LISTESI.md` 2. bölümdeki gerçek iPhone kontrolleri; dış hesap/mağaza H-044'te en sonda.
+- **Durum:** Devam ediyor (2026-10-30 itibarıyla değişmedi): yerel kısım ve hesap gerektirmeyen yayın güvenlikleri bitti. Kalan yalnız `docs/BETA-KONTROL-LISTESI.md` 2. bölümdeki gerçek iPhone kontrolleri; dış hesap/mağaza H-044'te en sonda.
 - **Tür:** Uygulama (kod)
 - **Faz:** 1.11 (`docs/UYGULAMA-PLANI.md`)
 - **Bağımlılık:** H-039 … H-042 · **Sonraki:** H-044

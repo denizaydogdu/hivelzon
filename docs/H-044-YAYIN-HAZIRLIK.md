@@ -1,6 +1,6 @@
 # H-044 — Yayın Hazırlığı: Sunucu, Medya CDN'i ve Mağaza
 
-- **Durum:** Ertelendi/en son (2026-10-28). Hesap gerektirmeyen kod ve güvenlikler bitti; dış hesaplar, Almanya sunucusu/DNS ve mağaza yüklemesi ayrı kullanıcı onayına bağlı. H-092 bunun ardından gelir.
+- **Durum:** Ertelendi/en son (2026-10-30 itibarıyla değişmedi). Hesap gerektirmeyen kod ve güvenlikler bitti; dış hesaplar, Almanya sunucusu/DNS ve mağaza yüklemesi ayrı kullanıcı onayına bağlı. H-092 bunun ardından gelir.
 - **İlgili iş:** `devam-edenler/H-044-dis-hesaplar-barindirma-magaza.md`
 - **Kararlar:** Sunucu **Almanya**'da; medya CDN'den (Bunny); kullanıcı verisi Almanya'da; hesaplar en sonda (2026-10-11 ve 2026-10-21 kararları).
 - **Kural:** Bu belgedeki dış hesap, ödeme, DNS ve mağaza adımları **kullanıcı onayı olmadan** yapılmaz. Sırlar repoya girmez.

@@ -1,6 +1,6 @@
 # H-081: Dilbilgisi dalgası 2: B1 + B2
 
-- **Durum:** Devam ediyor (2026-10-28): B1 14 + B2 12 ders main'de, lint 0 hata ve Türkçe sesler hazır. Yaklaşık 11.070 karakter İngilizce örnek çalışan ElevenLabs erişimi/ayrı onaylı ücretli plan bekliyor; kullanıcı ve öğretmen/editör incelemesi açık.
+- **Durum:** Devam ediyor (2026-10-30): B1 14 + B2 12 ders main'de, lint 0 hata ve Türkçe sesler hazır. Yaklaşık 11.070 karakter İngilizce örnek çalışan ElevenLabs erişimi/ayrı onaylı ücretli plan bekliyor; kullanıcı ve öğretmen/editör incelemesi açık. **2026-10-30:** Yeni ücretsiz anahtar 10.000 kredi gösterse de üretim çağrıları `401 detected_unusual_activity` verdi; B1–B2 İngilizce örnek sesi üretilmedi, kredi harcanmadı.
 - **Tür:** İçerik üretimi
 - **Faz:** Dilbilgisi D5 (`docs/DILBILGISI.md` §8)
 - **Bağımlılık:** H-080

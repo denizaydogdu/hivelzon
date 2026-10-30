@@ -1,6 +1,6 @@
 # İç beta kontrol listesi (H-043)
 
-Faz 1.11. Amaç: uygulamayı iç beta için gerçek telefonlara güvenle kurabilmek. Liste üç bölümdür:
+Faz 1.11. Amaç: uygulamayı iç beta için gerçek telefonlara güvenle kurabilmek. **Son gözden geçirme: 2026-10-30; maddelerde değişiklik yok.** Liste üç bölümdür:
 
 1. bu Mac'te yapılıp doğrulanabilenler (komutlarla);
 2. gerçek telefon isteyenler;
