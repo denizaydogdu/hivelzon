@@ -14,7 +14,7 @@ import 'hi_panel.dart';
 bool hiBubbleVisibleFor(String path) => const {
   AppRoutes.home,
   AppRoutes.discover,
-  AppRoutes.story,
+  AppRoutes.learn,
   AppRoutes.talk,
   AppRoutes.profile,
 }.contains(path);

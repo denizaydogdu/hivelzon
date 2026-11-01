@@ -38,7 +38,7 @@ void main() {
       await s.markCompleted('B1-K01');
     });
     await h.pump(tester, '/hikaye');
-    expect(find.text('Macera'), findsOneWidget);
+    expect(find.text('Hikâye'), findsOneWidget);
     expect(find.byKey(const ValueKey('season-map')), findsOneWidget);
 
     await openLibrary(tester, h);
@@ -79,11 +79,11 @@ void main() {
     );
     // Geri dönünce harita yerinde.
     await tester.scrollUntilVisible(
-      find.text('Macera'),
+      find.text('Hikâye'),
       -200,
       scrollable: list.first,
     );
-    await tester.tap(find.text('Macera'));
+    await tester.tap(find.text('Hikâye'));
     await h.settle(tester);
     expect(find.byKey(const ValueKey('season-map')), findsOneWidget);
   });

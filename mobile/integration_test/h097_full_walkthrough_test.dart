@@ -24,6 +24,7 @@ import 'package:hivelzon/features/onboarding/application/onboarding_providers.da
 import 'package:hivelzon/features/onboarding/data/onboarding_store.dart';
 import 'package:hivelzon/features/player/data/progress_repository.dart';
 import 'package:hivelzon/features/profile/data/user_profile_store.dart';
+import 'package:hivelzon/features/story/domain/learn_section.dart';
 import 'package:hivelzon/shared/progress/story_progress.dart';
 import 'package:hivelzon/shared/storage/app_database.dart';
 import 'package:hivelzon/shared/storage/storage_providers.dart';
@@ -249,7 +250,7 @@ void main() {
 
     // ------------------------------------------------------------ 3. Hikâye
     await go(
-      AppRoutes.story,
+      AppRoutes.learnAt(LearnSection.story),
       find.byKey(const ValueKey('season-map')),
       name: '10-hikaye-haritasi',
     );
@@ -264,7 +265,7 @@ void main() {
     await waitFor(find.byKey(const ValueKey('season-intro')));
     await wait(const Duration(seconds: 2));
     await shot('13-sezon-jenerigi');
-    router().go(AppRoutes.story);
+    router().go(AppRoutes.learnAt(LearnSection.story));
     await waitFor(find.byKey(const ValueKey('season-map')));
     await wait(const Duration(milliseconds: 600));
 
@@ -276,7 +277,7 @@ void main() {
     );
     await wait(const Duration(seconds: 3));
     await shot('14-oynatici');
-    router().go(AppRoutes.story);
+    router().go(AppRoutes.learnAt(LearnSection.story));
     await waitFor(find.byKey(const ValueKey('season-map')));
     await wait(const Duration(milliseconds: 600));
 

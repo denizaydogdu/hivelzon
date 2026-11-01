@@ -17,7 +17,7 @@ import '../support/onboarding.dart';
 const _labels = [
   TabTexts.home,
   TabTexts.discover,
-  TabTexts.story,
+  TabTexts.learn,
   TabTexts.talk,
   TabTexts.profile,
 ];

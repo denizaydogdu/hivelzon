@@ -28,6 +28,7 @@ import '../../player/presentation/player_screen.dart'
     show AiNotice, videoControllerFactoryProvider;
 import '../../speak/speak_env.dart';
 import '../../story/application/story_providers.dart';
+import '../../story/domain/learn_section.dart';
 import '../application/clip_controllers.dart';
 import '../application/discover_providers.dart';
 import '../application/feed_videos.dart';
@@ -539,7 +540,7 @@ class _StoryClipsBody extends ConsumerWidget {
           action: FilledButton(
             key: const ValueKey('discover-go-story'),
             style: AppButtonStyles.primary(),
-            onPressed: () => context.go(AppRoutes.story),
+            onPressed: () => context.go(AppRoutes.learnAt(LearnSection.story)),
             child: const Text(DiscoverTexts.goStory),
           ),
         ),
@@ -1269,7 +1270,7 @@ class DiscoverFeedState extends ConsumerState<DiscoverFeed>
   Widget build(BuildContext context) {
     if (!_limitLoaded) return const _Loading();
     if (_limitReached) {
-      return LimitCard(onStory: () => context.go(AppRoutes.story));
+      return LimitCard(onStory: () => context.go(AppRoutes.learnAt(LearnSection.story)));
     }
     return MediaQuery.removePadding(
       // Güvenli alanı üst şerit (başlık + çipler) taşır.
@@ -1314,7 +1315,7 @@ class DiscoverFeedState extends ConsumerState<DiscoverFeed>
               ),
               EndEntry() => EndCard(
                 moreLocked: widget.moreLocked,
-                onStory: () => context.go(AppRoutes.story),
+                onStory: () => context.go(AppRoutes.learnAt(LearnSection.story)),
                 onHome: () => context.go(AppRoutes.home),
               ),
               DailyEndEntry() => DailyEndCard(

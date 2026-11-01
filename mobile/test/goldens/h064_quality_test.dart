@@ -61,7 +61,7 @@ Future<void> _openHiPanel(WidgetTester tester) async {
 
 final _cases = <String, _Case>{
   'kabuk_ana_sayfa': const _Case(AppRoutes.home, 'home-continue'),
-  'kabuk_hikaye': const _Case(AppRoutes.story, 'season-map'),
+  'kabuk_hikaye': const _Case(AppRoutes.learn, 'season-map'),
   'kabuk_profil': const _Case(AppRoutes.profile, 'profile-list'),
   'konus': const _Case(AppRoutes.talk, 'talk-screen'),
   'hi_paneli': const _Case(AppRoutes.home, 'hi-panel', act: _openHiPanel),

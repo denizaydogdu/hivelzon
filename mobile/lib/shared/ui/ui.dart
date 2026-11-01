@@ -2,6 +2,7 @@
 /// (`app/design/`) kullanır; sabit renk ya da yazı boyutu yok.
 library;
 
+export 'buttons.dart';
 export 'cards.dart';
 export 'dont_know_button.dart';
 export 'motion.dart';

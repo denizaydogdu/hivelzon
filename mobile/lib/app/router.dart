@@ -22,6 +22,8 @@ import '../features/onboarding/presentation/onboarding_screen.dart';
 import '../features/profile/presentation/about_screen.dart';
 import '../features/profile/presentation/profile_screen.dart';
 import '../features/story/presentation/season_intro_screen.dart';
+import '../features/story/application/learn_section_provider.dart';
+import '../features/story/domain/learn_section.dart';
 import '../features/story/presentation/story_screen.dart';
 import '../features/talk/presentation/talk_screen.dart';
 import '../features/talk/presentation/talk_task_screen.dart';
@@ -31,13 +33,22 @@ import '../shared/activity/study_clock.dart';
 import 'design/transitions.dart';
 import 'shell_scaffold.dart';
 
-/// Sekme yolları (K-30): Ana Sayfa · Keşfet · Hikâye · Konuş · Profil.
+/// Sekme yolları (K-30, H-103): Ana Sayfa · Keşfet · Öğren · Konuş · Profil.
 abstract final class AppRoutes {
   static const home = '/';
   static const discover = '/kesfet';
-  static const story = '/hikaye';
+
+  /// Öğren sekmesi (H-103; yol eski adıyla kalır, görünmez).
+  static const learn = '/hikaye';
   static const talk = '/konus';
   static const profile = '/profil';
+
+  /// Öğren sekmesini belirli bölümde açar (`?bolum=kitaplik`); cihazda
+  /// hatırlanan son bölümü ezer ve yeni son bölüm olur (H-103).
+  static String learnAt(LearnSection section) =>
+      '$learn?$learnSectionParam=${section.code}';
+
+  static const learnSectionParam = 'bolum';
 
   /// Bölüm oynatıcısı (sekme iskeletinin dışında, tam ekran).
   /// [mode]: `resume` (kaldığı yerden) ya da `restart` (baştan); yoksa kayıt varsa sorulur.
@@ -137,13 +148,16 @@ final routerProvider = Provider<GoRouter>((ref) {
     );
   }
   ref.onDispose(gate.dispose);
+  // H-103: Öğren'in son bölümü sekme açılmadan okunsun (harita bir an
+  // görünüp kaybolmasın).
+  ref.read(learnSectionProvider);
   final router = GoRouter(
     refreshListenable: gate,
     redirect: (context, state) => onboardingRedirect(gate.value, state.uri),
     initialLocation: kDebugMode && _debugStartRoute.isNotEmpty
         ? _debugStartRoute
         : autoplayEnabled
-        ? AppRoutes.story
+        ? AppRoutes.learn
         : AppRoutes.home,
     routes: [
       if (kDebugMode)
@@ -291,7 +305,15 @@ final routerProvider = Provider<GoRouter>((ref) {
             ],
           ),
           _branch(AppRoutes.discover, const DiscoverScreen()),
-          _branch(AppRoutes.story, const StoryScreen()),
+          _branch(
+            AppRoutes.learn,
+            const StoryScreen(),
+            // H-103: `?bolum=` derin bağlantısı bölümü seçer, yol sadeleşir.
+            redirect: (context, state) => learnSectionRedirect(
+              state.uri,
+              ref.read(learnSectionProvider.notifier).select,
+            ),
+          ),
           _branch(AppRoutes.talk, const TalkScreen()),
           _branch(
             AppRoutes.profile,
@@ -353,15 +375,35 @@ final routerProvider = Provider<GoRouter>((ref) {
   return router;
 });
 
+/// Öğren sekmesinin derin bağlantısı (H-103): `?bolum=` tanınırsa bölüm
+/// seçilir ve sorgusuz yola dönülür; yoksa `null` (yönlendirme yok).
+/// Aynı bağlantı tekrar gelirse yine seçer (kullanıcı arada değiştirmiş
+/// olabilir); aynı değeri yeniden seçmek zararsızdır.
+String? learnSectionRedirect(Uri uri, void Function(LearnSection) select) {
+  if (uri.path != AppRoutes.learn) return null;
+  final section = LearnSection.parse(
+    uri.queryParameters[AppRoutes.learnSectionParam],
+  );
+  if (section == null) {
+    return uri.queryParameters.containsKey(AppRoutes.learnSectionParam)
+        ? AppRoutes.learn
+        : null;
+  }
+  select(section);
+  return AppRoutes.learn;
+}
+
 StatefulShellBranch _branch(
   String path,
   Widget screen, {
   List<RouteBase> routes = const [],
+  GoRouterRedirect? redirect,
 }) {
   return StatefulShellBranch(
     routes: [
       GoRoute(
         path: path,
+        redirect: redirect,
         pageBuilder: (context, state) => NoTransitionPage(child: screen),
         routes: routes,
       ),

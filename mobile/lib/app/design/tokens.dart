@@ -224,6 +224,10 @@ abstract final class AppTouch {
 
   /// Ana eylem düğmesi yüksekliği.
   static const double primary = 56;
+
+  /// Kompakt düğmenin görünen yüksekliği (H-102). Dokunma alanı yine
+  /// [min]: düğme görünmez dolguyla [min]'e tamamlanır.
+  static const double compact = 36;
 }
 
 /// Hareket dili (H-057): sakin, kısa, amaçlı. K-32 yasakları geçerli:

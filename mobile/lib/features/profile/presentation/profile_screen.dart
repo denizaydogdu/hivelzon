@@ -157,55 +157,77 @@ class ProfileScreen extends ConsumerWidget {
                         ),
                       ],
                     ),
-                    SettingsGroup(
-                      title: ProfileTexts.accountGroup,
+                    // H-102 (Ana Sayfa'dan taşındı): hesap yoksa ara sıra,
+                    // kapatılabilir hesap kartı, Hesap grubunun hemen üstünde.
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      mainAxisSize: MainAxisSize.min,
                       children: [
-                        // H-038: isteğe bağlı hesap ve eşitleme.
-                        const AccountRow(),
-                        HiPrivacyRow(
-                          onTap: () =>
-                              unawaited(open(AppRoutes.hiPrivacy, hi: true)),
-                        ),
-                        SettingsRow(
-                          key: const ValueKey('profile-name-row'),
-                          icon: Icons.badge_outlined,
-                          title: ProfileTexts.nameRow,
-                          subtitle: ProfileTexts.nameRowHint,
-                          value: name ?? ProfileTexts.nameRowEmpty,
-                          onTap: () => unawaited(showDisplayNameSheet(context)),
+                        const AccountNudgeCard(bottomGap: AppSpace.s12),
+                        SettingsGroup(
+                          title: ProfileTexts.accountGroup,
+                          children: [
+                            // H-038: isteğe bağlı hesap ve eşitleme.
+                            const AccountRow(),
+                            HiPrivacyRow(
+                              onTap: () => unawaited(
+                                open(AppRoutes.hiPrivacy, hi: true),
+                              ),
+                            ),
+                            SettingsRow(
+                              key: const ValueKey('profile-name-row'),
+                              icon: Icons.badge_outlined,
+                              title: ProfileTexts.nameRow,
+                              subtitle: ProfileTexts.nameRowHint,
+                              value: name ?? ProfileTexts.nameRowEmpty,
+                              onTap: () =>
+                                  unawaited(showDisplayNameSheet(context)),
+                            ),
+                          ],
                         ),
                       ],
                     ),
-                    // H-042: hukuk metinleri (taslak işaretli) ve lisanslar.
-                    SettingsGroup(
-                      key: const ValueKey('profile-about-group'),
-                      title: ProfileTexts.aboutGroup,
+                    // H-102 (Ana Sayfa'dan taşındı): hukuk metni
+                    // güncellendiyse bir kez, kapatılabilir (H-095); yeniden
+                    // onay istemez. Hemen altında metinlerin satırları.
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      mainAxisSize: MainAxisSize.min,
                       children: [
-                        SettingsRow(
-                          key: const ValueKey('profile-terms'),
-                          icon: Icons.gavel_rounded,
-                          title: ProfileTexts.termsRow,
-                          subtitle: ProfileTexts.legalDraftHint,
-                          onTap: () =>
-                              unawaited(open(AppRoutes.legal('kosullar'))),
+                        const LegalUpdateCard(bottomGap: AppSpace.s12),
+                        // H-042: hukuk metinleri (taslak işaretli) ve lisanslar.
+                        SettingsGroup(
+                          key: const ValueKey('profile-about-group'),
+                          title: ProfileTexts.aboutGroup,
+                          children: [
+                            SettingsRow(
+                              key: const ValueKey('profile-terms'),
+                              icon: Icons.gavel_rounded,
+                              title: ProfileTexts.termsRow,
+                              subtitle: ProfileTexts.legalDraftHint,
+                              onTap: () =>
+                                  unawaited(open(AppRoutes.legal('kosullar'))),
+                            ),
+                            SettingsRow(
+                              key: const ValueKey('profile-privacy'),
+                              icon: Icons.privacy_tip_outlined,
+                              title: ProfileTexts.privacyRow,
+                              subtitle: ProfileTexts.legalDraftHint,
+                              onTap: () => unawaited(
+                                open(AppRoutes.legal('aydinlatma')),
+                              ),
+                            ),
+                            SettingsRow(
+                              key: const ValueKey('profile-about'),
+                              icon: Icons.info_outline_rounded,
+                              title: ProfileTexts.aboutRow,
+                              subtitle: ProfileTexts.aboutRowHint,
+                              onTap: () => unawaited(open(AppRoutes.about)),
+                            ),
+                            // H-043: yerel hata kaydı, yalnızca kullanıcı isterse.
+                            const CrashLogShareRow(),
+                          ],
                         ),
-                        SettingsRow(
-                          key: const ValueKey('profile-privacy'),
-                          icon: Icons.privacy_tip_outlined,
-                          title: ProfileTexts.privacyRow,
-                          subtitle: ProfileTexts.legalDraftHint,
-                          onTap: () =>
-                              unawaited(open(AppRoutes.legal('aydinlatma'))),
-                        ),
-                        SettingsRow(
-                          key: const ValueKey('profile-about'),
-                          icon: Icons.info_outline_rounded,
-                          title: ProfileTexts.aboutRow,
-                          subtitle: ProfileTexts.aboutRowHint,
-                          onTap: () => unawaited(open(AppRoutes.about)),
-                        ),
-                        // H-043: yerel hata kaydı, yalnızca kullanıcı isterse.
-                        const CrashLogShareRow(),
                       ],
                     ),
                   ],

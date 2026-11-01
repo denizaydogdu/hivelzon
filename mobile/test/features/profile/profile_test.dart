@@ -1,8 +1,10 @@
 import 'package:drift/drift.dart' show Value;
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_riverpod/misc.dart' show Override;
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hivelzon/app/theme.dart';
+import 'package:hivelzon/features/account/application/account_providers.dart';
 import 'package:hivelzon/features/notebook/data/notebook_store.dart';
 import 'package:hivelzon/features/notebook/domain/notebook_item.dart';
 import 'package:hivelzon/features/player/data/progress_repository.dart';
@@ -70,8 +72,14 @@ void main() {
     setUp(() => db = AppDatabase.memory());
     tearDown(() => db.close());
 
-    Future<void> pump(WidgetTester tester, {double topInset = 0}) async {
-      tester.view.physicalSize = const Size(1179, 2556);
+    Future<void> pump(
+      WidgetTester tester, {
+      double topInset = 0,
+      Size size = const Size(393, 852),
+      double textScale = 1,
+      List<Override> overrides = const [],
+    }) async {
+      tester.view.physicalSize = size * 3;
       tester.view.devicePixelRatio = 3;
       tester.view.padding = FakeViewPadding(top: topInset * 3);
       addTearDown(tester.view.reset);
@@ -84,10 +92,18 @@ void main() {
             progressRepositoryProvider.overrideWithValue(
               InMemoryProgressRepository(),
             ),
+            ...overrides,
           ],
           child: MaterialApp(
             theme: AppTheme.light(),
-            home: const ProfileScreen(),
+            home: Builder(
+              builder: (context) => MediaQuery(
+                data: MediaQuery.of(
+                  context,
+                ).copyWith(textScaler: TextScaler.linear(textScale)),
+                child: const ProfileScreen(),
+              ),
+            ),
           ),
         ),
       );
@@ -139,6 +155,63 @@ void main() {
       );
       expect(find.text('Eklenmedi'), findsOneWidget);
       expect(find.text('Bugün küçük bir adım yeter.'), findsOneWidget);
+      await tester.pumpWidget(const SizedBox());
+      await settle(tester);
+    });
+
+    final cardOverrides = [
+      legalUpdateProvider.overrideWith(
+        (ref) async => const LegalUpdate(terms: true, privacy: true),
+      ),
+      accountNudgeProvider.overrideWith((ref) async => true),
+    ];
+
+    testWidgets('H-102: bilgi kartları Profil\'de, ilgili grubun üstünde; '
+        'hesap satırı kartı tekrar etmez', (tester) async {
+      await pump(tester, overrides: cardOverrides);
+      await settle(tester);
+      final legal = find.byKey(const ValueKey('profile-legal-update'));
+      final nudge = find.byKey(const ValueKey('profile-account-nudge'));
+      expect(legal, findsOneWidget);
+      expect(nudge, findsOneWidget);
+      expect(
+        find.text(AccountTexts.legalUpdateTitle(terms: true, privacy: true)),
+        findsOneWidget,
+      );
+      expect(find.text(AccountTexts.nudgeTitle), findsOneWidget);
+      // Hesap kartı Hesap satırının hemen üstünde; metin kartı Hakkında
+      // grubunun üstünde.
+      double top(Finder f) => tester.getTopLeft(f).dy;
+      final accountRow = find.byKey(const ValueKey('profile-account'));
+      final about = find.byKey(const ValueKey('profile-about-group'));
+      await tester.ensureVisible(accountRow);
+      await tester.pump();
+      expect(top(nudge), lessThan(top(accountRow)));
+      await tester.ensureVisible(about);
+      await tester.pump();
+      expect(top(legal), lessThan(top(about)));
+      // Birleştirme: kart görünürken satır aynı cümleyi yinelemez.
+      expect(find.text(AccountTexts.localOnly), findsNothing);
+      expect(find.text(AccountTexts.tileSignedOut), findsOneWidget);
+      // Kısa, kompakt eylemler.
+      expect(find.text(AccountTexts.legalUpdateOpenTermsShort), findsOneWidget);
+      expect(
+        find.text(AccountTexts.legalUpdateOpenPrivacyShort),
+        findsOneWidget,
+      );
+      expect(find.byType(CompactButton), findsNWidgets(5));
+      await tester.pumpWidget(const SizedBox());
+      await settle(tester);
+    });
+
+    testWidgets('H-102: kart yokken hesap satırı sakin daveti gösterir', (
+      tester,
+    ) async {
+      await pump(tester);
+      await settle(tester);
+      expect(find.byKey(const ValueKey('profile-legal-update')), findsNothing);
+      expect(find.byKey(const ValueKey('profile-account-nudge')), findsNothing);
+      expect(find.text(AccountTexts.localOnly), findsOneWidget);
       await tester.pumpWidget(const SizedBox());
       await settle(tester);
     });

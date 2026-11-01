@@ -81,21 +81,21 @@ List<Override> _none(_Calls _) => const [];
 
 final _cases = <String, _Case>{
   'hikaye_hata': _Case(
-    AppRoutes.story,
+    AppRoutes.learn,
     'story-retry',
     source: (s) => s.fail = true,
   ),
   'kitaplik_hata': _Case(
-    AppRoutes.story,
+    AppRoutes.learn,
     'library-retry',
     source: (s) => s.booksFail = true,
-    act: _tapText(LibraryTexts.segmentLibrary),
+    act: _tapText(LearnTexts.segmentLibrary),
   ),
   'dilbilgisi_hata': _Case(
-    AppRoutes.story,
+    AppRoutes.learn,
     'grammar-retry',
     source: (s) => s.grammarFails = true,
-    act: _tapText(GrammarTexts.segment),
+    act: _tapText(LearnTexts.segmentGrammar),
   ),
   'konus_hata': _Case(
     AppRoutes.talk,

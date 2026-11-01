@@ -89,4 +89,41 @@ abstract final class AppButtonStyles {
       );
 
   static const IconData dontKnowIcon = Icons.help_outline_rounded;
+
+  static const EdgeInsets _compactPadding = EdgeInsets.symmetric(
+    horizontal: AppSpace.s12,
+    vertical: AppSpace.s8,
+  );
+
+  /// Kompakt düğmeler (H-102): görünen yükseklik [AppTouch.compact], dokunma
+  /// alanı `padded` ile en az [AppTouch.min].
+  static const Size _compactMinimum = Size(AppTouch.compact, AppTouch.compact);
+
+  /// Kompakt birincil (tonal): açık deniz mavisi dolgu, deniz mavisi yazı.
+  /// Ekrandaki tek dolu sarı ana eylemle yarışmaz.
+  static ButtonStyle compactTonal() => FilledButton.styleFrom(
+    backgroundColor: AppPalette.seaBlue100,
+    foregroundColor: AppPalette.seaBlue,
+    disabledBackgroundColor: AppPalette.ink100,
+    disabledForegroundColor: AppPalette.ink500,
+    minimumSize: _compactMinimum,
+    padding: _compactPadding,
+    tapTargetSize: MaterialTapTargetSize.padded,
+    visualDensity: VisualDensity.standard,
+    shape: pill,
+    textStyle: AppTypography.buttonCompact,
+    elevation: 0,
+  );
+
+  /// Kompakt ikincil: yalnız yazı (deniz mavisi).
+  static ButtonStyle compactQuiet() => TextButton.styleFrom(
+    foregroundColor: AppPalette.seaBlue,
+    disabledForegroundColor: AppPalette.ink500,
+    minimumSize: _compactMinimum,
+    padding: _compactPadding,
+    tapTargetSize: MaterialTapTargetSize.padded,
+    visualDensity: VisualDensity.standard,
+    shape: pill,
+    textStyle: AppTypography.buttonCompact,
+  );
 }

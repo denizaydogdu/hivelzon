@@ -74,7 +74,7 @@ void main() {
   /// Bütün sekmeler bir kez açılır (abonelikler kurulur), sonra Profil'de
   /// kalınır: Ana Sayfa ve Hikâye görünmez (duraklatılmış).
   Future<void> visitAllThenProfile(WidgetTester tester) async {
-    for (final tab in ['Hikâye', 'Ana Sayfa', 'Profil']) {
+    for (final tab in ['Öğren', 'Ana Sayfa', 'Profil']) {
       await openTab(tester, tab);
     }
   }
@@ -106,7 +106,7 @@ void main() {
         ..invalidate(coachInputProvider)
         ..invalidate(hiBadgeProvider);
       await settle(tester);
-      await openTab(tester, 'Hikâye');
+      await openTab(tester, 'Öğren');
       final error = takeAll(tester);
       expect(error, isNotNull);
       expect('$error', contains('called during build'));
@@ -126,7 +126,7 @@ void main() {
       await settle(tester);
       expect(takeAll(tester), isNull);
 
-      await openTab(tester, 'Hikâye');
+      await openTab(tester, 'Öğren');
       expect(takeAll(tester), isNull);
       expect(find.text('1 / 12'), findsOneWidget);
 
@@ -153,7 +153,7 @@ void main() {
       await tester.tap(
         find.descendant(
           of: find.byType(NavigationBar),
-          matching: find.text('Hikâye'),
+          matching: find.text('Öğren'),
         ),
       );
       await settle(tester);
@@ -174,7 +174,7 @@ void main() {
       await refreshWhenVisible(profile, profile as WidgetRef);
       await settle(tester);
       expect(takeAll(tester), isNull);
-      await openTab(tester, 'Hikâye');
+      await openTab(tester, 'Öğren');
       expect(takeAll(tester), isNull);
       expect(find.text('1 / 12'), findsOneWidget);
       await openTab(tester, 'Ana Sayfa');
@@ -186,7 +186,7 @@ void main() {
   testWidgets('Hikâye ekranından dönüş ve Hi/defter yenilemesi: öteki sekmeler '
       'açılırken hata yok', (tester) async {
     await pumpApp(tester);
-    for (final tab in ['Profil', 'Ana Sayfa', 'Hikâye']) {
+    for (final tab in ['Profil', 'Ana Sayfa', 'Öğren']) {
       await openTab(tester, tab);
     }
     await completeFirstEpisode();

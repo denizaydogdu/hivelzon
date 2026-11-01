@@ -145,8 +145,8 @@ void main() {
       (AppRoutes.home, null, null),
       (AppRoutes.profile, 'profile-list', null),
       (AppRoutes.talk, null, null),
-      (AppRoutes.story, 'library-view', 'Kitaplık'),
-      (AppRoutes.story, 'grammar-view', 'Dilbilgisi'),
+      (AppRoutes.learn, 'library-view', 'Kitaplık'),
+      (AppRoutes.learn, 'grammar-view', 'Dilbilgisi'),
     ];
 
     Future<Finder> open(
@@ -259,7 +259,7 @@ void main() {
         addTearDown(tester.platformDispatcher.clearTextScaleFactorTestValue);
         await pumpApp(tester, height: h, width: w);
         await container.read(seasonIntroRepositoryProvider).markSeen(1);
-        go(AppRoutes.story);
+        go(AppRoutes.learn);
         await settle(tester, 40);
         // Kısa ekranda sayfa kayar; odak kartı sayfanın sonundadır.
         final scroll = find.byKey(const ValueKey('story-scroll'));

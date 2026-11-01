@@ -44,7 +44,7 @@ void main() {
       ),
     );
     await h.pump(tester, '/hikaye');
-    expect(find.text('Macera'), findsOneWidget);
+    expect(find.text('Hikâye'), findsOneWidget);
     expect(find.text('Kitaplık'), findsOneWidget);
     expect(key('season-map'), findsOneWidget);
 
@@ -282,7 +282,7 @@ void main() {
     addTearDown(h.dispose);
     await h.pump(tester, '/hikaye', size: const Size(320, 568), textScale: 1.3);
     expect(tester.takeException(), isNull);
-    for (final t in ['Macera', 'Kitaplık', 'Dilbilgisi']) {
+    for (final t in ['Hikâye', 'Kitaplık', 'Dilbilgisi']) {
       final p = tester.renderObject<RenderParagraph>(find.text(t));
       expect(p.didExceedMaxLines, isFalse, reason: t);
     }

@@ -12,7 +12,8 @@ import '../application/account_providers.dart';
 
 /// Profil → **Hesap** satırı (H-038; tasarım H-059): hesap yoksa sakin bir
 /// davet, 13 yaş altıysa nedeni (satır kapalı), hesap varsa maskeli e-posta
-/// ve son eşitleme.
+/// ve son eşitleme. H-102: hesap kartı ([AccountNudgeCard]) üstündeyken
+/// davet cümlesini yinelemez, kısa "Hesap aç ya da giriş yap" der.
 class AccountRow extends ConsumerWidget {
   const AccountRow({super.key});
 
@@ -42,9 +43,10 @@ class AccountRow extends ConsumerWidget {
       enabled = false;
     } else {
       value = AccountTexts.rowValueSignedOut;
+      final nudgeShown = ref.watch(accountNudgeProvider).value ?? false;
       subtitle =
           AccountTexts.signedOutReason(view.row?.signedOutReason) ??
-          AccountTexts.localOnly;
+          (nudgeShown ? AccountTexts.tileSignedOut : AccountTexts.localOnly);
     }
     return SettingsRow(
       key: const ValueKey('profile-account'),
@@ -59,10 +61,14 @@ class AccountRow extends ConsumerWidget {
   }
 }
 
-/// Ana Sayfa'daki ara sıra görünen, kapatılabilir kart (H-038). Hiçbir şeyi
-/// engellemez; kapatılınca 30 gün görünmez.
+/// Profil'de, Hesap grubunun üstünde ara sıra görünen, kapatılabilir kart
+/// (H-038; H-102 ile Ana Sayfa'dan taşındı). Hiçbir şeyi engellemez;
+/// kapatılınca 30 gün görünmez. Görünürken altına [bottomGap] boşluk bırakır
+/// (gizliyken yer kaplamaz).
 class AccountNudgeCard extends ConsumerWidget {
-  const AccountNudgeCard({super.key});
+  const AccountNudgeCard({super.key, this.bottomGap = 0});
+
+  final double bottomGap;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -72,28 +78,30 @@ class AccountNudgeCard extends ConsumerWidget {
     }
     final show = ref.watch(accountNudgeProvider).value ?? false;
     if (!show) return const SizedBox.shrink();
-    // Tasarım H-060: ortak bilgi kartı, sakin bilgi tonu.
-    return InfoCard(
-      key: const ValueKey('home-account-nudge'),
-      icon: Icons.phone_iphone_rounded,
-      tone: InfoTone.info,
-      title: AccountTexts.nudgeTitle,
-      body: AccountTexts.nudgeBody,
-      action: Wrap(
-        spacing: AppSpace.s8,
-        runSpacing: AppSpace.s4,
-        children: [
-          OutlinedButton(
-            key: const ValueKey('home-account-nudge-open'),
-            onPressed: () => context.push(AppRoutes.account),
-            child: const Text(AccountTexts.nudgeOpen),
-          ),
-          TextButton(
-            key: const ValueKey('home-account-nudge-later'),
-            onPressed: () => unawaited(_dismiss(ref)),
-            child: const Text(AccountTexts.nudgeLater),
-          ),
-        ],
+    // Tasarım H-060: ortak bilgi kartı, sakin bilgi tonu; H-102: kompakt
+    // eylemler (birincil tonal, ikincil yalnız yazı).
+    return Padding(
+      padding: EdgeInsets.only(bottom: bottomGap),
+      child: InfoCard(
+        key: const ValueKey('profile-account-nudge'),
+        icon: Icons.phone_iphone_rounded,
+        tone: InfoTone.info,
+        title: AccountTexts.nudgeTitle,
+        body: AccountTexts.nudgeBody,
+        action: CompactActions(
+          children: [
+            CompactButton.tonal(
+              key: const ValueKey('profile-account-nudge-open'),
+              label: AccountTexts.nudgeOpen,
+              onPressed: () => unawaited(context.push(AppRoutes.account)),
+            ),
+            CompactButton.quiet(
+              key: const ValueKey('profile-account-nudge-later'),
+              label: AccountTexts.nudgeLater,
+              onPressed: () => unawaited(_dismiss(ref)),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -104,11 +112,15 @@ class AccountNudgeCard extends ConsumerWidget {
   }
 }
 
-/// Ana Sayfa'da "metin güncellendi" kartı (H-095). Yeniden onay istenmez;
-/// kart hiçbir şeyi engellemez, her yeni sürümde bir kez görünür. "Tamam"
-/// ya da metni açmak sürümü görüldü sayar (yalnızca cihazda).
+/// "Metin güncellendi" kartı (H-095; H-102 ile Ana Sayfa'dan Profil'e,
+/// Hakkında grubunun üstüne taşındı). Yeniden onay istenmez; kart hiçbir
+/// şeyi engellemez, her yeni sürümde bir kez görünür. "Tamam" ya da metni
+/// açmak sürümü görüldü sayar (yalnızca cihazda). Görünürken altına
+/// [bottomGap] boşluk bırakır.
 class LegalUpdateCard extends ConsumerWidget {
-  const LegalUpdateCard({super.key});
+  const LegalUpdateCard({super.key, this.bottomGap = 0});
+
+  final double bottomGap;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -119,37 +131,40 @@ class LegalUpdateCard extends ConsumerWidget {
       if (context.mounted) unawaited(context.push(AppRoutes.legal(kind)));
     }
 
-    return InfoCard(
-      key: const ValueKey('home-legal-update'),
-      icon: Icons.article_outlined,
-      tone: InfoTone.info,
-      title: AccountTexts.legalUpdateTitle(
-        terms: update.terms,
-        privacy: update.privacy,
-      ),
-      body: AccountTexts.legalUpdateBody,
-      action: Wrap(
-        spacing: AppSpace.s8,
-        runSpacing: AppSpace.s4,
-        children: [
-          if (update.terms)
-            OutlinedButton(
-              key: const ValueKey('home-legal-update-terms'),
-              onPressed: () => unawaited(open('kosullar')),
-              child: const Text(AccountTexts.legalUpdateOpenTerms),
+    return Padding(
+      padding: EdgeInsets.only(bottom: bottomGap),
+      child: InfoCard(
+        key: const ValueKey('profile-legal-update'),
+        icon: Icons.article_outlined,
+        tone: InfoTone.info,
+        title: AccountTexts.legalUpdateTitle(
+          terms: update.terms,
+          privacy: update.privacy,
+        ),
+        body: AccountTexts.legalUpdateBody,
+        action: CompactActions(
+          children: [
+            if (update.terms)
+              CompactButton.tonal(
+                key: const ValueKey('profile-legal-update-terms'),
+                label: AccountTexts.legalUpdateOpenTermsShort,
+                semanticLabel: AccountTexts.legalUpdateOpenTerms,
+                onPressed: () => unawaited(open('kosullar')),
+              ),
+            if (update.privacy)
+              CompactButton.tonal(
+                key: const ValueKey('profile-legal-update-privacy'),
+                label: AccountTexts.legalUpdateOpenPrivacyShort,
+                semanticLabel: AccountTexts.legalUpdateOpenPrivacy,
+                onPressed: () => unawaited(open('aydinlatma')),
+              ),
+            CompactButton.quiet(
+              key: const ValueKey('profile-legal-update-dismiss'),
+              label: AccountTexts.legalUpdateDismiss,
+              onPressed: () => unawaited(markLegalTextsSeen(ref)),
             ),
-          if (update.privacy)
-            OutlinedButton(
-              key: const ValueKey('home-legal-update-privacy'),
-              onPressed: () => unawaited(open('aydinlatma')),
-              child: const Text(AccountTexts.legalUpdateOpenPrivacy),
-            ),
-          TextButton(
-            key: const ValueKey('home-legal-update-dismiss'),
-            onPressed: () => unawaited(markLegalTextsSeen(ref)),
-            child: const Text(AccountTexts.legalUpdateDismiss),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

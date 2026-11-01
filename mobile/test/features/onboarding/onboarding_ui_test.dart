@@ -510,7 +510,7 @@ void main() {
       await tester.tapAt(const Offset(8, 8));
       await tester.pump();
       expect(underlying, 0);
-      for (var i = 0; i < 4; i++) {
+      for (var i = 0; i < TourTexts.steps.length; i++) {
         expect(
           find.byKey(ValueKey('tour-step-$i')),
           findsOneWidget,

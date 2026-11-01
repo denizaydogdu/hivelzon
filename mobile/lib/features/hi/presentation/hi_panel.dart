@@ -12,6 +12,7 @@ import '../../notebook/application/notebook_providers.dart';
 import '../../notebook/presentation/notebook_screen.dart' show createCardAudio;
 import '../../player/presentation/widgets/hi_avatar.dart';
 import '../../story/application/story_providers.dart';
+import '../../story/domain/learn_section.dart';
 import '../application/hi_providers.dart';
 import '../domain/coach_rules.dart';
 import 'hi_cards.dart';
@@ -67,7 +68,7 @@ Future<void> showHiPanel(BuildContext context, WidgetRef ref) async {
         },
         onStoryTab: () {
           Navigator.of(sheet).pop();
-          context.go(AppRoutes.story);
+          context.go(AppRoutes.learnAt(LearnSection.story));
         },
       ),
     ),

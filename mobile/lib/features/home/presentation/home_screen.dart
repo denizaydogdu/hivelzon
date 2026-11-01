@@ -10,7 +10,6 @@ import '../../../shared/perf/perf_log.dart';
 import '../../../shared/ui/ui.dart';
 import '../../../shared/widgets/page_header.dart';
 import '../../../shared/widgets/skeleton.dart';
-import '../../account/presentation/account_widgets.dart';
 import '../../hi/application/hi_providers.dart';
 import '../../hi/domain/coach_rules.dart';
 import '../../hi/presentation/suggestion_actions.dart';
@@ -18,6 +17,7 @@ import '../../notebook/application/notebook_providers.dart';
 import '../../notebook/presentation/notebook_screen.dart';
 import '../../profile/application/profile_providers.dart';
 import '../../story/application/story_providers.dart';
+import '../../story/domain/learn_section.dart';
 import '../../story/domain/season_map.dart';
 import '../application/home_providers.dart';
 import '../../hi/presentation/hi_bubble.dart';
@@ -141,12 +141,8 @@ class HomeScreen extends ConsumerWidget {
                 // İkincil: çalışma araçları, daha sade (tek öğrenme eylemi
                 // ilkesi; dolu düğme yok).
                 const _Tools(),
-                // H-095: hukuk metni güncellendiyse bir kez, kapatılabilir;
-                // yeniden onay istemez, hiçbir şeyi engellemez.
-                const LegalUpdateCard(),
-                // H-038: hesap yoksa ara sıra, kapatılabilir; hiçbir şeyi
-                // engellemez.
-                const AccountNudgeCard(),
+                // H-102: metin güncellendi (H-095) ve hesap (H-038) kartları
+                // Profil'de; Ana Sayfa tek öğrenme eylemine odaklanır.
               ],
             ),
           ],
@@ -290,7 +286,7 @@ class _ContinueCard extends ConsumerWidget {
             : HomeTexts.comingSoon(soon.number),
         body: soon?.teaser ?? HomeTexts.seasonDoneBody,
         action: OutlinedButton.icon(
-          onPressed: () => context.go(AppRoutes.story),
+          onPressed: () => context.go(AppRoutes.learnAt(LearnSection.story)),
           icon: const Icon(Icons.map_outlined),
           label: const Text(HomeTexts.goToMap),
         ),
@@ -825,7 +821,7 @@ class _StoryAside extends ConsumerWidget {
             : HomeTexts.comingSoon(soon.number),
         body: soon?.teaser ?? HomeTexts.seasonDoneBody,
         action: OutlinedButton.icon(
-          onPressed: () => context.go(AppRoutes.story),
+          onPressed: () => context.go(AppRoutes.learnAt(LearnSection.story)),
           icon: const Icon(Icons.map_outlined),
           label: const Text(HomeTexts.goToMap),
         ),

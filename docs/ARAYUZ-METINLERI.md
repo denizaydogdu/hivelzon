@@ -83,18 +83,20 @@ Ana Sayfa'nın birincil kartı ile Hi'nin günlük önerisi **aynı karardan** g
 | Adım göstergesi | Hap çipler: **Kısa tekrar** · **Bölüm** (kitapta **Okuma**) · **Küçük görev**; bitti ✓, şimdi →, sırada ○. Ekran okuyucu: "Bugünün planı: Kısa tekrar bitti, Bölüm şimdi, Küçük görev sırada" | En az iki adım varsa görünür. Sayı, yüzde, geri sayım yok; yapılmayan adım vurgulanmaz. "Sahne" yerine "Bölüm" (kullanıcının gördüğü ad). |
 | Birincil kart (bölüm) | Görselli bölüm kartı + **~6 dk · Hedefe uygun** + **Neden?** + gerekçe + **Bölümü başlat** / **Devam et** | Gerekçe Hi'dekiyle aynı cümle; süre gerekçede değil, hap satırda. |
 | Birincil kart (öteki) | Adım etiketi (KISA TEKRAR / OKUMA / KÜÇÜK GÖREV) · başlık · **~N dk · Hedefe uygun / Hedefi aşar** · **Neden?** · gerekçe · fiil düğmesi (**5 ifadeyi tekrarla**, **Notu aç**, **Kitabı aç**, **Nesneleri bul**, **Kitaba devam et**, **Kitabı dinle**, **Konuşmaya başla**, **Konuyu aç**…) | Tek dolu (sarı) düğme. Düğme, yapılacak işi ve varsa sayıyı söyler. |
-| Geçme | **Başka bir öneri** | Metin düğmesi; öneriyi yalnızca bugünlük geçer, sıradaki öneri gelir (Hi panelinde de). Hepsi geçilince: **Bugünlük bu kadar yeter** · "Bugünlük başka önerim yok. İstediğin zaman Hikâye sekmesinden ya da Ana Sayfa'daki Defter ve Kelime tekrarından kendin seçebilirsin." |
+| Geçme | **Başka bir öneri** | Metin düğmesi; öneriyi yalnızca bugünlük geçer, sıradaki öneri gelir (Hi panelinde de). Hepsi geçilince: **Bugünlük bu kadar yeter** · "Bugünlük başka önerim yok. İstediğin zaman Öğren sekmesinden ya da Ana Sayfa'daki Defter ve Kelime tekrarından kendin seçebilirsin." |
 | B1+ yerleştirme | **Seviyene uygun kitap: …** · "Seviye testin B2 seviyesini önerdi. Bu seviyedeki kısa bir kitap sana uygun; ister dinle, ister kendin oku." · **Kitabı aç**; altta **Hikâyen** kartı **İSTEĞE BAĞLI** · "Hikâye A1 seviyesinde başlıyor; sana kolay gelebilir. İstersen keyif için oynayabilirsin." | Hikâye isteğe bağlı kalır; yeni bölüm üretilmez (K-25). Süre hap satırda. |
 | Uzun aradan sonra | Selam altı: "Bir süredir yoktun; kısa bir tekrarla başlayalım." · Gerekçe: "Tekrar hoş geldin! Kısa bir tekrarla başlamak işini kolaylaştırır; 3 ifadenin tekrar zamanı geldi." | Ara vurgulanmaz, suçlanmaz. Süre hap satırda. |
 | Uzun süredir yarım bölüm | "Bölüm 2'yi bir süre önce yarıda bırakmıştın. Kaldığın sahne yerinde; istediğin zaman oradan sürersin." | Tekrar ve notun arkasına geçer. |
 | İstersen kendin çalış | Başlık **İstersen kendin çalış** · "Bugünkü adımın yukarıda; bunlar isteğe bağlı." · **Kelime tekrarı** (sayı cümle içinde ya da sakin durum cümlesi) · **Defter** · "İfadelerin, ipuçların ve konu setlerin." | İki satır da her zaman tek dokunuşla açılır. Defter Ana Sayfa sekmesinde açılır (`/defter`); sekme düzeni (K-30) değişmez. Başlık, bunların bugünkü zorunlu adım olmadığını söyler. |
 
-## 4. Hikâye sekmesi
+## 4. Öğren sekmesi (eski "Hikâye sekmesi"; H-103)
+
+**H-103 (kullanıcı kararı 2026-11-01):** Alt menüdeki sekmenin adı **Öğren** (kep simgesi). Üstteki sabit seçici **Hikâye** (film simgesi; eski "Macera") · **Kitaplık** (kitap simgesi) · **Dilbilgisi** ("Tt" simgesi); seçili bölümün simgesi dolgulu. Sayfa başlığı **Öğren**; açıklama satırı seçime göre değişir. Ekran okuyucu grubu: "Öğren bölümleri". Son açılan bölüm bu cihazda hatırlanır; başka ekrandan belirli bölüme giden bağlantılar (ör. Ana Sayfa "Haritaya git", Keşfet "Hikâyeye git", Hi) hatırlananı ezer. Dar ekranda ya da büyük yazıda simge etiketin üstüne geçer, kalkmaz; etiket tek satır kalır, sığmazsa küçülür. "Hikâye" sözcüğü artık sekmeyi değil, Alex'in maceralı bölümlerini anlatır. Kod: `TabTexts.learn`, `LearnTexts`.
 
 ### 4.1 Harita
 | Yer | Eski | Yeni | Neden |
 |---|---|---|---|
-| Sayfa başlığı | — | **Hikâye** | Her sekmede başlık. |
+| Sayfa başlığı | — | **Öğren** (H-103; önce **Hikâye**) | Her sekmede başlık. |
 | Açıklama | — | Bölümleri sırayla aç; bitirdiğin bölümü istediğin zaman yeniden oynayabilirsin. | Haritanın nasıl çalıştığını tek cümlede söyler. |
 | Sezon başlığı | SEZON 1 · The Missing Signal | **Sezon 1** · The Missing Signal | Sayfa başlığının altında ikinci düzey; büyük harf gerekmez. |
 | İlerleme | 0 / 12 (erişilebilirlik: "12 bölümden 0 tamamlandı") | 0 / 12 (erişilebilirlik: "12 bölümden 0'ı tamamlandı") | Ek doğru. |
@@ -147,11 +149,11 @@ Ana Sayfa'nın birincil kartı ile Hi'nin günlük önerisi **aynı karardan** g
 **H-062 (2026-10-14):** Bu bölümdeki metinler sözcüğü sözcüğüne aynı kalarak `tr_strings.dart` → `PlayerTexts` (oynatıcı) ve `MeaningTexts` (anlam paneli; oynatıcı, Keşfet ve kitap okuyucu ortak) altına taşındı. Büyük harfli etiketler ("GÖREV", "YENİ İPUCU", "HEDEF İFADELER", "TOPLANAN İPUÇLARI", "AÇIK SORU", "BU BÖLÜMÜN İFADELERİ", "KALIP", "TÜRKÇESİ") normal yazılır, ekranda `CapsLabel` büyütür; ekran okuyucu normal yazımla okur. Yalnız "Video yüklenemedi." oynatma katmanında (`player_session.dart`) kaldı: oynatma kodu bu işte değiştirilmedi.
 
 ### 4.6 Kitaplık (H-067)
-Hikâye sekmesinin üstünde **Macera · Kitaplık** seçici (sekme sayısı değişmez, K-30). Açıklama satırı seçime göre değişir.
+Öğren sekmesinin (eski Hikâye sekmesi) üstünde **Hikâye · Kitaplık** seçici (H-103 öncesi adı "Macera"; sekme sayısı değişmez, K-30). Açıklama satırı seçime göre değişir.
 
 | Yer | Metin | Not |
 |---|---|---|
-| Seçici | **Macera** (harita ikonu) · **Kitaplık** (kitap ikonu) | Ekran okuyucu grubu: "Hikâye bölümü". |
+| Seçici | **Hikâye** (film ikonu) · **Kitaplık** (kitap ikonu) | H-103 öncesi "Macera" (harita ikonu). Ekran okuyucu grubu: "Öğren bölümleri". |
 | Açıklama (Kitaplık) | Seviyene göre kısa, resimli kitaplar. İstersen dinle, istersen kendin oku. | Tek cümle. |
 | Dinleme kartı | "Seviyeni seç; okumadığın bir kitabı senin için sesli açalım." + **Bana bir kitap oku** | Sarı ana düğme. |
 | Seviye seçici | **Hangi seviyede olsun?** · "Önerilen seviye: A2" · seviye çipleri · **Kitabı aç** | Önerilen seviye yerleştirme sonucundan, yoksa A1. |
@@ -178,11 +180,11 @@ Hikâye sekmesinin üstünde **Macera · Kitaplık** seçici (sekme sayısı de�
 | Hata | **Bağlantı kurulamadı** · "Kitap açılamadı. …" · **Tekrar dene** | |
 
 ### 4.8 Dilbilgisi (H-078)
-Hikâye sekmesinin seçicisi **Macera · Kitaplık · Dilbilgisi** olur (sekme sayısı değişmez, K-30). Dar ekranda ya da büyük yazıda ikonlar kalkar; etiket yine sığmazsa küçülür, kesilmez. Kod: `GrammarTexts`.
+Öğren sekmesinin seçicisi **Hikâye · Kitaplık · Dilbilgisi** olur (sekme sayısı değişmez, K-30; H-103). Dar ekranda ya da büyük yazıda ikon etiketin üstüne geçer; etiket yine sığmazsa küçülür, kesilmez. Kod: `GrammarTexts`, seçici `LearnTexts`.
 
 | Yer | Metin | Not |
 |---|---|---|
-| Seçici | **Dilbilgisi** (kep ikonu) | Ekran okuyucu grubu "Hikâye bölümü" (aynı). |
+| Seçici | **Dilbilgisi** ("Tt" ikonu; H-103 öncesi kep) | Ekran okuyucu grubu "Öğren bölümleri" (aynı). |
 | Açıklama | Hi, İngilizcenin nasıl işlediğini Türkçe ve kısaca anlatır. | Tek cümle. |
 | Raflar | **Hikâyende geçenler** (oynadığın bölümde ya da açtığın kitapta geçen, bitmemiş konular) · **Senin seviyen · A1** · **A2 konuları** · **Tamamladıkların** | Her ders tek rafta; kilit yok. |
 | Seviye özeti (H-064 ek) | Seviye raflarının başlığı altında küçük satır: "A1 · 3/16 tamamlandı" (onay ya da boş daire ikonu) | Ekran okuyucu: "A1 seviyesinde 16 konudan 3 tanesi tamamlandı". Bütün dersler sayılır; biten ders "Tamamladıkların"da görünse de seviyesinde sayılır. |
@@ -387,7 +389,9 @@ Hata durumunda kullanıcıya her zaman bir çıkış yolu verilir; sonsuz yükle
 | Sakin hata kutusu (yalnız yayın derlemesi) | **Burası şu an gösterilemiyor.** · "Geri dönüp tekrar deneyebilirsin." | Çizilemeyen parçanın yerine kum zeminde; kırmızı hata ekranı ve teknik metin yok. Dar alanda yalnız zemin; ekran okuyucu başlığı okur. |
 
 ## 8. Sekme çubuğu
-"Ana Sayfa · Keşfet · Hikâye · Konuş · Profil" (K-30) aynı kalır.
+"Ana Sayfa · Keşfet · **Öğren** · Konuş · Profil" (K-30; H-103, kullanıcı kararı 2026-11-01: "Hikâye" → "Öğren", simge kep). Dört sekmeli "Ana Sayfa · Öğren · Pratik · Profil" yine pilotta karşılaştırılır (H-087).
+
+**Hi turu (bir kez):** "Merhaba, ben Hi" · "Bugünün planı" · **Beş sekme** "Ana Sayfa, Keşfet, Öğren, Konuş ve Profil. Hepsine alttaki menüden ulaşırsın." · **Öğren sekmesi** "Hikâye, Kitaplık ve Dilbilgisi burada." (H-103) · "Hikâye seni bekliyor". Kod: `TourTexts`.
 
 ## 9. Testler
 - `test/shared/text/turkish_test.dart`: `upperTr`, `lowerTr`, `possessiveNumber`; Ana Sayfa metin işlevleri.
@@ -453,7 +457,7 @@ Kod: `AccountTexts` (`mobile/lib/l10n/tr_strings.dart`). Hesap isteğe bağlıd�
 |---|---|---|
 | Profil → **Hesap** (hesap yok) | **Hesap** · sağda "Açık değil" · "İlerlemen yalnızca bu telefonda. Kaybolmasın istersen hesap aç." | Kullanıcı kararı; satır biçimi H-059. |
 | Profil → Hesap (hesap var) | **Hesap** · sağda "d•••@example.com" · "Eşitleme: son 2 dk önce" / "Eşitleme: az önce" / "Eşitleme: henüz yapılmadı" | E-posta cihazda yalnızca maskeli durur. |
-| Ana Sayfa kartı | **İlerlemen yalnızca bu telefonda** · "Kaybolmasın istersen hesap aç. İstemezsen hesapsız devam edebilirsin." · **Hesap aç** / **Şimdi değil** | Yalnızca hesap yokken ve biraz ilerleme varken (1 bölüm ya da 3 ifade). Kapatılınca 30 gün görünmez, en fazla 3 kez. |
+| Profil hesap kartı (H-102; eskiden Ana Sayfa'da) | **İlerlemen yalnızca bu telefonda** · "Kaybolmasın istersen hesap aç. İstemezsen hesapsız devam edebilirsin." · **Hesap aç** / **Şimdi değil** | Profil'de "Hesap ve gizlilik" grubunun üstünde; yalnızca hesap yokken ve biraz ilerleme varken (1 bölüm ya da 3 ifade). Kapatılınca 30 gün görünmez, en fazla 3 kez. Kart görünürken Hesap satırı cümleyi yinelemez: "Hesap aç ya da giriş yap". Kompakt düğmeler (H-102). |
 | Hesap ekranı (hesap yok; tasarım H-059) | Çapraz kesimli illüstrasyonlu başlık · "Hesap isteğe bağlı. Hesapsız da her şey çalışır." · üç fayda satırı (yuvarlak renkli ikon + başlık + açıklama): **İlerlemen yedeklenir** · **Başka telefonda devam et** · **Hesapsız da her şey çalışır** ("Hesap açmazsan hiçbir bilgin bu telefondan çıkmaz.") · büyük sarı **E-postayla devam et** · küçük "Şifre yok: e-postana tek kullanımlık bir kod göndeririz." · 13 yaş altında bilgi kartı | Apple ve Google (H-044) aynı yere eklenir. |
 | E-posta | **E-posta adresin** · "Hesabın varsa giriş yaparsın, yoksa yeni hesap açılır." · **Kod gönder** · hata: "Geçerli bir e-posta adresi yaz." | |
 | Kod | **Kodu yaz** · "… adresine 6 haneli bir kod gönderdik. Kod 10 dakika geçerli." · **Doğrula** · "Yeni kodu 42 sn sonra isteyebilirsin." → **Yeni kod gönder** · **E-postayı değiştir** | Otomatik doldurma (tek kullanımlık kod); 6 rakam girilince kendiliğinden doğrular. |
@@ -479,7 +483,7 @@ Giriş adımlarında hata metni ana düğmenin **hemen üstünde**, kırmızı b
 
 Yer tutucular (şirket bilgileri ayrı fazda): `[Velzon Bilişim Teknolojileri Ltd. Şti. — veri sorumlusu unvanı kesinleştirilecek]`, `[Adres eklenecek]`, `[İletişim e-postası eklenecek]`, `[şehir]`, `[barındırma sağlayıcısı eklenecek]`, `[e-posta gönderim sağlayıcısı eklenecek]`.
 
-**Metin güncellendi kartı (H-095):** Ana Sayfa'da, hesap kartının üstünde, sakin bilgi tonu. **Kullanım koşulları güncellendi** / **KVKK aydınlatma metni güncellendi** / **Kullanım koşulları ve aydınlatma metni güncellendi** · "Yeniden onay vermen gerekmiyor; her şey eskisi gibi çalışıyor. Neyin değiştiğini merak edersen metne göz atabilirsin." · **Koşulları aç** / **Aydınlatma metnini aç** (yalnızca güncellenen için) · **Tamam**. Hukukçu cevabı (2026-10-21): yeniden onay gerekmez, bildirim yeterli. Onay kutusu yok, hiçbir şeyi engellemez; her yeni sürümde bir kez görünür (Tamam ya da metni açmak kapatır). Kayıt yalnızca cihazda (`app_meta` `legal.seenTermsVersion` / `legal.seenPrivacyVersion`); açılış bitmeden görünmez.
+**Metin güncellendi kartı (H-095; H-102 ile Profil'e taşındı):** Profil'de, Hakkında grubunun üstünde, sakin bilgi tonu. **Kullanım koşulları güncellendi** / **KVKK aydınlatma metni güncellendi** / **Kullanım koşulları ve aydınlatma metni güncellendi** · "Yeniden onay vermen gerekmiyor; her şey eskisi gibi çalışıyor. Neyin değiştiğini merak edersen metne göz atabilirsin." · **Koşullar** / **KVKK metni** (yalnızca güncellenen için; kompakt düğme, ekran okuyucu "Koşulları aç" / "Aydınlatma metnini aç" okur — H-102) · **Tamam**. Hukukçu cevabı (2026-10-21): yeniden onay gerekmez, bildirim yeterli. Onay kutusu yok, hiçbir şeyi engellemez; her yeni sürümde bir kez görünür (Tamam ya da metni açmak kapatır). Kayıt yalnızca cihazda (`app_meta` `legal.seenTermsVersion` / `legal.seenPrivacyVersion`); açılış bitmeden görünmez.
 
 Testler: `test/features/account/account_ui_test.dart` (H-042: sil → çıkışta kart → yeni kodla giriş → geri al, uçtan uca), `test/shared/api/api_client_test.dart` (hata metinleri suçlamasız), `test/goldens/h059_screens_golden_test.dart` (H-059 golden'ları, erişilebilirlik, 1,3× yazı), `test/goldens/h042_screens_golden_test.dart` (silinmek üzere kartı, geri alma adımı, Hakkında, hatırlatma satırları).
 

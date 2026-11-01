@@ -77,7 +77,7 @@ class ShellScaffold extends StatelessWidget {
   static const _labels = [
     TabTexts.home,
     TabTexts.discover,
-    TabTexts.story,
+    TabTexts.learn,
     TabTexts.talk,
     TabTexts.profile,
   ];
@@ -108,9 +108,9 @@ class ShellScaffold extends StatelessWidget {
           label: TabTexts.discover,
         ),
         NavigationDestination(
-          icon: Icon(Icons.auto_stories_outlined),
-          selectedIcon: Icon(Icons.auto_stories),
-          label: TabTexts.story,
+          icon: Icon(Icons.school_outlined),
+          selectedIcon: Icon(Icons.school),
+          label: TabTexts.learn,
         ),
         NavigationDestination(
           icon: Icon(Icons.chat_bubble_outline),

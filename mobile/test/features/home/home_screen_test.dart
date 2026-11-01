@@ -6,6 +6,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_riverpod/misc.dart' show Override;
 import 'package:hivelzon/app/theme.dart';
+import 'package:hivelzon/features/account/application/account_providers.dart';
+import 'package:hivelzon/features/account/presentation/account_widgets.dart';
 import 'package:hivelzon/features/home/application/home_providers.dart';
 import 'package:hivelzon/features/hi/application/hi_providers.dart';
 import 'package:hivelzon/features/hi/domain/coach_rules.dart';
@@ -312,6 +314,30 @@ void main() {
       ),
       findsOneWidget,
     );
+  });
+
+  testWidgets('H-102: metin güncellendi ve hesap kartı Ana Sayfa\'da yok '
+      '(Profil\'e taşındı)', (tester) async {
+    await pump(
+      tester,
+      FakeContentSource(packageIds: _four),
+      overrides: [
+        legalUpdateProvider.overrideWith(
+          (ref) async => const LegalUpdate(terms: true, privacy: true),
+        ),
+        accountNudgeProvider.overrideWith((ref) async => true),
+      ],
+    );
+    expect(find.byType(LegalUpdateCard), findsNothing);
+    expect(find.byType(AccountNudgeCard), findsNothing);
+    expect(
+      find.text(AccountTexts.legalUpdateTitle(terms: true, privacy: true)),
+      findsNothing,
+    );
+    expect(find.text(AccountTexts.nudgeTitle), findsNothing);
+    // Tek ana eylem korunur.
+    expect(find.bySubtype<FilledButton>(), findsOneWidget);
+    expect(find.byKey(const ValueKey('home-plan')), findsOneWidget);
   });
 
   testWidgets('H-060/H-088: Kelime tekrarı ve Defter tek dokunuşla; sayı '

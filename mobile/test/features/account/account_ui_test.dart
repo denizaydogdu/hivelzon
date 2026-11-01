@@ -477,10 +477,10 @@ void main() {
   });
 
   testWidgets(
-    'Ana Sayfa kartı: ilerleme varsa görünür, "Şimdi değil" kapatır',
+    'Profil hesap kartı (H-102): ilerleme varsa görünür, "Şimdi değil" kapatır',
     (tester) async {
       await pump(tester, const AccountNudgeCard());
-      expect(find.byKey(const ValueKey('home-account-nudge')), findsNothing);
+      expect(find.byKey(const ValueKey('profile-account-nudge')), findsNothing);
       await unmount(tester);
 
       await db
@@ -494,12 +494,12 @@ void main() {
           );
       await pump(tester, const AccountNudgeCard());
       expect(find.text(AccountTexts.nudgeTitle), findsOneWidget);
-      await tapKey(tester, 'home-account-nudge-later');
-      expect(find.byKey(const ValueKey('home-account-nudge')), findsNothing);
+      await tapKey(tester, 'profile-account-nudge-later');
+      expect(find.byKey(const ValueKey('profile-account-nudge')), findsNothing);
       await unmount(tester);
       // 30 gün içinde yeniden görünmez.
       await pump(tester, const AccountNudgeCard());
-      expect(find.byKey(const ValueKey('home-account-nudge')), findsNothing);
+      expect(find.byKey(const ValueKey('profile-account-nudge')), findsNothing);
       expect(server.requests, isEmpty);
       await unmount(tester);
     },
@@ -517,7 +517,7 @@ void main() {
     expect(ApiConfig.defaultLegalVersion, isNot('taslak-1'));
 
     await pump(tester, const LegalUpdateCard());
-    expect(find.byKey(const ValueKey('home-legal-update')), findsOneWidget);
+    expect(find.byKey(const ValueKey('profile-legal-update')), findsOneWidget);
     expect(
       find.text(AccountTexts.legalUpdateTitle(terms: true, privacy: true)),
       findsOneWidget,
@@ -528,14 +528,14 @@ void main() {
     expect(server.requests, isEmpty);
 
     // Metni açmak sürümü görüldü sayar ve metne götürür.
-    await tapKey(tester, 'home-legal-update-privacy');
+    await tapKey(tester, 'profile-legal-update-privacy');
     expect(find.text(AccountTexts.privacyTitle), findsOneWidget);
     expect(find.byType(LegalTextScreen), findsOneWidget);
     await unmount(tester);
 
     // Aynı sürüm için bir daha görünmez.
     await pump(tester, const LegalUpdateCard());
-    expect(find.byKey(const ValueKey('home-legal-update')), findsNothing);
+    expect(find.byKey(const ValueKey('profile-legal-update')), findsNothing);
     await unmount(tester);
   });
 
@@ -553,12 +553,15 @@ void main() {
       find.text(AccountTexts.legalUpdateTitle(terms: false, privacy: true)),
       findsOneWidget,
     );
-    expect(find.byKey(const ValueKey('home-legal-update-terms')), findsNothing);
-    await tapKey(tester, 'home-legal-update-dismiss');
-    expect(find.byKey(const ValueKey('home-legal-update')), findsNothing);
+    expect(
+      find.byKey(const ValueKey('profile-legal-update-terms')),
+      findsNothing,
+    );
+    await tapKey(tester, 'profile-legal-update-dismiss');
+    expect(find.byKey(const ValueKey('profile-legal-update')), findsNothing);
     await unmount(tester);
     await pump(tester, const LegalUpdateCard());
-    expect(find.byKey(const ValueKey('home-legal-update')), findsNothing);
+    expect(find.byKey(const ValueKey('profile-legal-update')), findsNothing);
     expect(server.requests, isEmpty);
     await unmount(tester);
   });
@@ -588,7 +591,7 @@ void main() {
     );
     await settle(tester);
     await verified;
-    expect(find.byKey(const ValueKey('home-legal-update')), findsOneWidget);
+    expect(find.byKey(const ValueKey('profile-legal-update')), findsOneWidget);
     // Bildirim eşitlemeyi durdurmaz.
     final before = server.requests.length;
     final synced = container.read(syncControllerProvider.notifier).syncNow();
@@ -598,7 +601,7 @@ void main() {
       server.requests.skip(before).where((r) => r.contains('/sync/')),
       isNotEmpty,
     );
-    expect(find.byKey(const ValueKey('home-legal-update')), findsOneWidget);
+    expect(find.byKey(const ValueKey('profile-legal-update')), findsOneWidget);
     await unmount(tester);
   });
 }

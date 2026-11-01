@@ -433,7 +433,7 @@ void main() {
     await unmount(tester);
   });
 
-  // H-095: Ana Sayfa'daki "metin güncellendi" kartı (iki metin birden
+  // H-095/H-102: Profil'deki "metin güncellendi" kartı (iki metin birden
   // güncellendi: en uzun hâli; iki açma düğmesi + Tamam).
   const legalCard = Scaffold(
     body: SingleChildScrollView(
@@ -452,7 +452,7 @@ void main() {
       height: 420,
       extraOverrides: [legalCardOverride],
     );
-    expect(find.byKey(const ValueKey('home-legal-update')), findsOneWidget);
+    expect(find.byKey(const ValueKey('profile-legal-update')), findsOneWidget);
     await expectLater(
       find.byKey(const ValueKey('golden')),
       matchesGoldenFile('images/h059_metin_guncellendi.png'),
@@ -470,7 +470,7 @@ void main() {
       height: 844,
       extraOverrides: [legalCardOverride],
     );
-    expect(find.byKey(const ValueKey('home-legal-update')), findsOneWidget);
+    expect(find.byKey(const ValueKey('profile-legal-update')), findsOneWidget);
     await expectLater(tester, meetsGuideline(androidTapTargetGuideline));
     await expectLater(tester, meetsGuideline(iOSTapTargetGuideline));
     await expectLater(tester, meetsGuideline(labeledTapTargetGuideline));
@@ -492,8 +492,106 @@ void main() {
       textScale: 1.3,
       extraOverrides: [legalCardOverride],
     );
-    expect(find.byKey(const ValueKey('home-legal-update')), findsOneWidget);
+    expect(find.byKey(const ValueKey('profile-legal-update')), findsOneWidget);
     expect(tester.takeException(), isNull);
+    await unmount(tester);
+  });
+
+  testWidgets('H-102 metin güncellendi kartı: normal genişlikte (390) '
+      'düğmeler tek satırda', (tester) async {
+    await pumpScreen(
+      tester,
+      legalCard,
+      height: 600,
+      extraOverrides: [legalCardOverride],
+    );
+    double dy(String key) =>
+        tester.getCenter(find.byKey(ValueKey('profile-legal-update-$key'))).dy;
+    expect(dy('terms'), dy('privacy'));
+    expect(dy('terms'), dy('dismiss'));
+    expect(tester.takeException(), isNull);
+    await unmount(tester);
+  });
+
+  // H-102: hesap kartı da Profil'de; tek satır, dar ekranda taşma yok.
+  const nudgeCard = Scaffold(
+    body: SingleChildScrollView(
+      padding: EdgeInsets.all(AppSpace.page),
+      child: AccountNudgeCard(),
+    ),
+  );
+  final nudgeOverride = accountNudgeProvider.overrideWith((ref) async => true);
+
+  for (final (width, height, scale) in [
+    (_width, 600.0, 1.0),
+    (320.0, 568.0, 1.3),
+  ]) {
+    testWidgets('H-102 hesap kartı: ${width.toInt()} × ${height.toInt()}, '
+        'metin $scale× taşma yok', (tester) async {
+      await pumpScreen(
+        tester,
+        nudgeCard,
+        width: width,
+        height: height,
+        textScale: scale,
+        extraOverrides: [nudgeOverride],
+      );
+      expect(
+        find.byKey(const ValueKey('profile-account-nudge')),
+        findsOneWidget,
+      );
+      if (scale == 1.0) {
+        double dy(String key) => tester
+            .getCenter(find.byKey(ValueKey('profile-account-nudge-$key')))
+            .dy;
+        expect(dy('open'), dy('later'));
+      }
+      expect(tester.takeException(), isNull);
+      await unmount(tester);
+    });
+  }
+
+  // H-102: iki kart birden Profil'de (gerçek yazı tipleriyle).
+  for (final (width, height, scale) in [
+    (_width, 2400.0, 1.0),
+    (320.0, 568.0, 1.3),
+  ]) {
+    testWidgets('H-102 Profil, iki kartla: ${width.toInt()} × '
+        '${height.toInt()}, metin $scale× taşma yok', (tester) async {
+      await pumpScreen(
+        tester,
+        const ProfileScreen(),
+        width: width,
+        height: height,
+        textScale: scale,
+        extraOverrides: [legalCardOverride, nudgeOverride],
+      );
+      for (final key in ['profile-account-nudge', 'profile-legal-update']) {
+        final card = find.byKey(ValueKey(key));
+        expect(card, findsOneWidget);
+        await tester.ensureVisible(card);
+        await tester.pumpAndSettle();
+      }
+      expect(tester.takeException(), isNull);
+      await unmount(tester);
+    });
+  }
+
+  testWidgets('H-102 hesap kartı: erişilebilirlik yönergeleri', (tester) async {
+    final handle = tester.ensureSemantics();
+    await pumpScreen(
+      tester,
+      nudgeCard,
+      height: 844,
+      extraOverrides: [nudgeOverride],
+    );
+    await expectLater(tester, meetsGuideline(androidTapTargetGuideline));
+    await expectLater(tester, meetsGuideline(iOSTapTargetGuideline));
+    await expectLater(tester, meetsGuideline(labeledTapTargetGuideline));
+    if (!skipGoldensOffMac) {
+      await expectLater(tester, meetsGuideline(textContrastGuideline));
+    }
+    handle.dispose();
     await unmount(tester);
   });
 

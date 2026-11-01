@@ -73,6 +73,14 @@ abstract final class AppTypography {
     fontWeight: AppFonts.bold,
   );
 
+  /// Kompakt düğme etiketi (H-102): bilgi kartlarındaki küçük eylemler.
+  static const TextStyle buttonCompact = TextStyle(
+    fontFamily: AppFonts.body,
+    fontSize: 14,
+    height: 20 / 14,
+    fontWeight: AppFonts.bold,
+  );
+
   /// Büyük ana eylem (oynatıcı `PrimaryAction`).
   static const TextStyle buttonLarge = TextStyle(
     fontFamily: AppFonts.body,

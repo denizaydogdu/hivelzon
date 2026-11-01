@@ -187,6 +187,74 @@ void main() {
     expect(find.text('Tamam'), findsOneWidget);
   });
 
+  testWidgets('H-102 CompactButton: görsel küçük (36), dokunma alanı ≥ 48, '
+      'ekran okuyucu etiketi', (tester) async {
+    final handle = tester.ensureSemantics();
+    var taps = 0;
+    await tester.pumpWidget(
+      _app(
+        Center(
+          child: CompactActions(
+            children: [
+              CompactButton.tonal(
+                key: const ValueKey('c-tonal'),
+                label: 'Koşullar',
+                semanticLabel: 'Koşulları aç',
+                onPressed: () => taps++,
+              ),
+              CompactButton.quiet(
+                key: const ValueKey('c-quiet'),
+                label: 'Tamam',
+                onPressed: () => taps++,
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+    for (final key in ['c-tonal', 'c-quiet']) {
+      final button = find.byKey(ValueKey(key));
+      // Dokunma alanı en az AppTouch.min.
+      expect(tester.getSize(button).height, greaterThanOrEqualTo(AppTouch.min));
+      expect(tester.getSize(button).width, greaterThanOrEqualTo(AppTouch.min));
+      // Görünen yüzey kompakt.
+      final surface = find
+          .descendant(of: button, matching: find.byType(Material))
+          .first;
+      expect(tester.getSize(surface).height, AppTouch.compact);
+    }
+    // Birincil (tonal) dolgulu, ikincil yalnız yazı.
+    expect(
+      find.descendant(
+        of: find.byKey(const ValueKey('c-tonal')),
+        matching: find.bySubtype<FilledButton>(),
+      ),
+      findsOneWidget,
+    );
+    expect(
+      find.descendant(
+        of: find.byKey(const ValueKey('c-quiet')),
+        matching: find.bySubtype<TextButton>(),
+      ),
+      findsOneWidget,
+    );
+    // Görünen etiket kısa, ekran okuyucu tam eylemi okur.
+    expect(find.text('Koşullar'), findsOneWidget);
+    expect(find.bySemanticsLabel('Koşulları aç'), findsOneWidget);
+    // Yan yana, tek satırda.
+    expect(
+      tester.getCenter(find.byKey(const ValueKey('c-tonal'))).dy,
+      tester.getCenter(find.byKey(const ValueKey('c-quiet'))).dy,
+    );
+    await expectLater(tester, meetsGuideline(androidTapTargetGuideline));
+    await expectLater(tester, meetsGuideline(iOSTapTargetGuideline));
+    await expectLater(tester, meetsGuideline(labeledTapTargetGuideline));
+    await tester.tap(find.byKey(const ValueKey('c-tonal')));
+    await tester.tap(find.byKey(const ValueKey('c-quiet')));
+    expect(taps, 2);
+    handle.dispose();
+  });
+
   testWidgets('sayfa geçişi: hareketi azalt açıksa sayfa doğrudan', (
     tester,
   ) async {

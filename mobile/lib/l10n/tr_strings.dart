@@ -36,7 +36,9 @@ abstract final class CommonTexts {
 abstract final class TabTexts {
   static const home = 'Ana Sayfa';
   static const discover = 'Keşfet';
-  static const story = 'Hikâye';
+  /// Eski "Hikâye" sekmesi (H-103, kullanıcı kararı 2026-11-01): içinde
+  /// Hikâye · Kitaplık · Dilbilgisi.
+  static const learn = 'Öğren';
   static const talk = 'Konuş';
   static const profile = 'Profil';
 }
@@ -176,9 +178,21 @@ abstract final class HomeTexts {
       : 'Günlük hedef: bugün yaklaşık $minutes dakika, hedefin $goal dakika';
 }
 
-/// Hikâye sekmesi: harita ve bölüm paneli.
+/// Öğren sekmesi (H-103; eski "Hikâye sekmesi"): sayfa başlığı ve
+/// "Hikâye · Kitaplık · Dilbilgisi" seçici. Seçimin açıklama satırları
+/// [StoryTexts.intro], [LibraryTexts.intro], [GrammarTexts.intro].
+abstract final class LearnTexts {
+  static const title = 'Öğren';
+  static const segmentStory = 'Hikâye';
+  static const segmentLibrary = 'Kitaplık';
+  static const segmentGrammar = 'Dilbilgisi';
+
+  /// Ekran okuyucu grubu.
+  static const segmentsLabel = 'Öğren bölümleri';
+}
+
+/// Öğren sekmesinin Hikâye bölümü: harita ve bölüm paneli.
 abstract final class StoryTexts {
-  static const title = 'Hikâye';
   static const intro =
       'Bölümleri sırayla aç; bitirdiğin bölümü istediğin zaman yeniden '
       'oynayabilirsin.';
@@ -211,11 +225,9 @@ abstract final class StoryTexts {
   static String unlockedAnnouncement(int number) => 'Bölüm $number açıldı';
 }
 
-/// Kitaplık (H-067): Hikâye sekmesinde "Macera · Kitaplık".
+/// Kitaplık (H-067): Öğren sekmesinde "Hikâye · Kitaplık · Dilbilgisi"
+/// (H-103; seçici metinleri [LearnTexts]).
 abstract final class LibraryTexts {
-  static const segmentAdventure = 'Macera';
-  static const segmentLibrary = 'Kitaplık';
-  static const segmentsLabel = 'Hikâye bölümü';
   static const intro =
       'Seviyene göre kısa, resimli kitaplar. İstersen dinle, istersen kendin '
       'oku.';
@@ -406,10 +418,9 @@ abstract final class ComprehensionTexts {
   static const finish = 'Bitir';
 }
 
-/// Dilbilgisi (H-078): Hikâye sekmesinde "Macera · Kitaplık · Dilbilgisi",
-/// ders kartları ve giriş noktaları (`docs/DILBILGISI.md`).
+/// Dilbilgisi (H-078): Öğren sekmesinde "Hikâye · Kitaplık · Dilbilgisi"
+/// (H-103), ders kartları ve giriş noktaları (`docs/DILBILGISI.md`).
 abstract final class GrammarTexts {
-  static const segment = 'Dilbilgisi';
   static const intro =
       'Hi, İngilizcenin nasıl işlediğini Türkçe ve kısaca anlatır.';
 
@@ -1450,7 +1461,7 @@ abstract final class HiTexts {
 
   /// Bütün öneriler bugünlük geçildiyse (H-088).
   static const restDismissedReason =
-      'Bugünlük başka önerim yok. İstediğin zaman Hikâye sekmesinden ya da '
+      'Bugünlük başka önerim yok. İstediğin zaman Öğren sekmesinden ya da '
       "Ana Sayfa'daki Defter ve Kelime tekrarından kendin seçebilirsin.";
 
   /// Öneriyi bugünlük geçer; sıradaki öneri gelir (H-088).
@@ -1689,7 +1700,8 @@ abstract final class SpeakTexts {
 abstract final class AccountTexts {
   static const section = 'Hesap';
 
-  // Profil satırı ve Ana Sayfa kartı
+  // Profil satırı ve Profil'deki hesap kartı (H-102: Ana Sayfa'dan taşındı).
+  // Kart görünürken satır aynı cümleyi yinelemez: [tileSignedOut].
   static const tileSignedOut = 'Hesap aç ya da giriş yap';
   static const localOnly =
       'İlerlemen yalnızca bu telefonda. Kaybolmasın istersen hesap aç.';
@@ -2152,8 +2164,8 @@ abstract final class AccountTexts {
     ),
   ];
 
-  // Metin güncellendi bildirimi (H-095): yeniden onay yok; Ana Sayfa'da bir
-  // kez, kapatılabilir.
+  // Metin güncellendi bildirimi (H-095): yeniden onay yok; bir kez,
+  // kapatılabilir. H-102: Profil'de, Hakkında grubunun üstünde.
   static String legalUpdateTitle({
     required bool terms,
     required bool privacy,
@@ -2165,8 +2177,11 @@ abstract final class AccountTexts {
   static const legalUpdateBody =
       'Yeniden onay vermen gerekmiyor; her şey eskisi gibi çalışıyor. Neyin '
       'değiştiğini merak edersen metne göz atabilirsin.';
+  // Ekran okuyucu tam eylemi okur; düğmede kısa etiket (H-102).
   static const legalUpdateOpenTerms = 'Koşulları aç';
   static const legalUpdateOpenPrivacy = 'Aydınlatma metnini aç';
+  static const legalUpdateOpenTermsShort = 'Koşullar';
+  static const legalUpdateOpenPrivacyShort = 'KVKK metni';
   static const legalUpdateDismiss = 'Tamam';
 
   /// Hata kodunun Türkçe açıklaması (sunucu metni yedek).
@@ -2356,9 +2371,11 @@ abstract final class TourTexts {
     (
       title: 'Beş sekme',
       body:
-          'Ana Sayfa, Keşfet, Hikâye, Konuş ve Profil. Hepsine alttaki '
+          'Ana Sayfa, Keşfet, Öğren, Konuş ve Profil. Hepsine alttaki '
           'menüden ulaşırsın.',
     ),
+    // H-103: Kitaplık ve Dilbilgisi de Öğren'in içinde; bulunsun diye.
+    (title: 'Öğren sekmesi', body: 'Hikâye, Kitaplık ve Dilbilgisi burada.'),
     (
       title: 'Hikâye seni bekliyor',
       body: 'Alex\'in hikâyesi 1. Sezon\'da başlıyor. İyi eğlenceler!',

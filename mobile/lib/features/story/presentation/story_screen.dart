@@ -21,13 +21,17 @@ import '../../hi/presentation/hi_bubble.dart';
 import '../../library/presentation/library_view.dart';
 import '../../player/application/autoplay_driver.dart';
 import '../../player/data/progress_repository.dart';
+import '../application/learn_section_provider.dart';
 import '../application/story_providers.dart';
 import '../data/season_intro_repository.dart';
+import '../domain/learn_section.dart';
 import '../domain/season_map.dart';
 import 'widgets/episode_sheet.dart';
 import 'widgets/season_map_view.dart';
 
-/// Hikâye sekmesi: Sezon 1 haritası (H-035).
+/// Öğren sekmesi (H-103; eski "Hikâye sekmesi"): üstte sabit "Hikâye ·
+/// Kitaplık · Dilbilgisi" seçici; son açılan bölüm cihazda hatırlanır.
+/// Hikâye bölümü Sezon 1 haritasıdır (H-035).
 ///
 /// Üstte sayfa başlığı ve tek cümle açıklama (H-053), sezon başlığı, ilerleme
 /// ("n / 12") ve "Jeneriği izle"; ortada resimli
@@ -47,9 +51,6 @@ class StoryScreen extends ConsumerStatefulWidget {
 
 class _StoryScreenState extends ConsumerState<StoryScreen> {
   bool _autoplayStarted = false;
-
-  /// "Macera" (harita), "Kitaplık" (H-067) ya da "Dilbilgisi" (H-078).
-  StorySection _section = StorySection.adventure;
 
   void _openSheet(MapEpisode e) => EpisodeSheet.show(
     context,
@@ -85,12 +86,15 @@ class _StoryScreenState extends ConsumerState<StoryScreen> {
       _autoplayStarted = true;
       unawaited(_runAutoplay(map.requireValue));
     }
-    final header = _StoryHeader(
-      section: _section,
-      onChanged: (s) => setState(() => _section = s),
+    // "Hikâye" (harita), "Kitaplık" (H-067) ya da "Dilbilgisi" (H-078);
+    // son seçim cihazda (H-103).
+    final section = ref.watch(learnSectionProvider);
+    final header = _LearnHeader(
+      section: section,
+      onChanged: ref.read(learnSectionProvider.notifier).select,
     );
     // Kitaplık ve Dilbilgisi'nde bölüm seçici sabit kalır; yalnız içerik
-    // kayar (kullanıcı geri bildirimi 2026-10-26). Macera haritası tam ekran
+    // kayar (kullanıcı geri bildirimi 2026-10-26). Hikâye haritası tam ekran
     // kalsın diye orada başlık haritayla birlikte kayar.
     final fixedHeader = Padding(
       padding: const EdgeInsets.fromLTRB(
@@ -101,7 +105,7 @@ class _StoryScreenState extends ConsumerState<StoryScreen> {
       ),
       child: header,
     );
-    if (_section == StorySection.library) {
+    if (section == LearnSection.library) {
       return Scaffold(
         body: SafeArea(
           bottom: false,
@@ -114,7 +118,7 @@ class _StoryScreenState extends ConsumerState<StoryScreen> {
         ),
       );
     }
-    if (_section == StorySection.grammar) {
+    if (section == LearnSection.grammar) {
       return Scaffold(
         body: SafeArea(
           bottom: false,
@@ -380,46 +384,52 @@ class _MapBody extends StatelessWidget {
   }
 }
 
-enum StorySection { adventure, library, grammar }
+/// Sayfa başlığı ve "Hikâye · Kitaplık · Dilbilgisi" seçici (H-067, H-078,
+/// H-103; sekme sayısı değişmez, K-30). Her bölümde simge vardır; seçili
+/// bölümün simgesi dolgulu. Simge ile etiket yan yana sığmazsa (dar ekran,
+/// büyük yazı) simge etiketin üstüne geçer; etiket yine sığmazsa küçülür,
+/// kesilmez ve tek satır kalır. Dokunma alanı en az 44.
+class _LearnHeader extends StatelessWidget {
+  const _LearnHeader({required this.section, required this.onChanged});
 
-/// Sayfa başlığı ve "Macera · Kitaplık · Dilbilgisi" seçici (H-067, H-078;
-/// sekme sayısı değişmez, K-30). Dar ekranda ya da büyük yazıda ikonlar
-/// kalkar; etiket yine sığmazsa küçülür (kesilmez).
-class _StoryHeader extends StatelessWidget {
-  const _StoryHeader({required this.section, required this.onChanged});
+  final LearnSection section;
+  final ValueChanged<LearnSection> onChanged;
 
-  final StorySection section;
-  final ValueChanged<StorySection> onChanged;
+  static const _labels = {
+    LearnSection.story: LearnTexts.segmentStory,
+    LearnSection.library: LearnTexts.segmentLibrary,
+    LearnSection.grammar: LearnTexts.segmentGrammar,
+  };
+
+  static const _icons = {
+    LearnSection.story: (Icons.movie_outlined, Icons.movie),
+    LearnSection.library: (Icons.menu_book_outlined, Icons.menu_book),
+    LearnSection.grammar: (Icons.text_fields_outlined, Icons.text_fields),
+  };
+
+  /// Simge ile etiket arası.
+  static const double _gap = AppSpace.s4;
 
   @override
   Widget build(BuildContext context) {
-    const labels = [
-      LibraryTexts.segmentAdventure,
-      LibraryTexts.segmentLibrary,
-      GrammarTexts.segment,
-    ];
-    Widget label(String text) => FittedBox(
-      fit: BoxFit.scaleDown,
-      child: Text(text, maxLines: 1, overflow: TextOverflow.ellipsis),
-    );
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         PageHeader(
-          title: StoryTexts.title,
+          title: LearnTexts.title,
           subtitle: switch (section) {
-            StorySection.adventure => StoryTexts.intro,
-            StorySection.library => LibraryTexts.intro,
-            StorySection.grammar => GrammarTexts.intro,
+            LearnSection.story => StoryTexts.intro,
+            LearnSection.library => LibraryTexts.intro,
+            LearnSection.grammar => GrammarTexts.intro,
           },
         ),
         const SizedBox(height: AppSpace.s12),
         LayoutBuilder(
           builder: (context, c) {
-            // İkon + boşluk + en uzun etiket + iç boşluk sığıyor mu?
+            // Simge + boşluk + en uzun etiket + iç boşluk yan yana sığıyor mu?
             final style = Theme.of(context).textTheme.labelLarge;
             var widest = 0.0;
-            for (final l in labels) {
+            for (final l in _labels.values) {
               final tp = TextPainter(
                 text: TextSpan(text: l, style: style),
                 textDirection: Directionality.of(context),
@@ -429,36 +439,57 @@ class _StoryHeader extends StatelessWidget {
               if (tp.width > widest) widest = tp.width;
               tp.dispose();
             }
-            final icons =
-                c.maxWidth / labels.length >=
-                widest + AppIconSize.md + AppSpace.s8 + AppSpace.s24;
+            final inline =
+                c.maxWidth / _labels.length >=
+                widest + AppIconSize.md + _gap + AppSpace.s24;
+            Widget content(LearnSection s) {
+              final (off, on) = _icons[s]!;
+              final icon = Icon(s == section ? on : off, size: AppIconSize.md);
+              final label = Flexible(
+                child: FittedBox(
+                  fit: BoxFit.scaleDown,
+                  child: Text(
+                    _labels[s]!,
+                    maxLines: 1,
+                    softWrap: false,
+                    overflow: TextOverflow.visible,
+                  ),
+                ),
+              );
+              return inline
+                  ? Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        icon,
+                        const SizedBox(width: _gap),
+                        label,
+                      ],
+                    )
+                  : Padding(
+                      padding: const EdgeInsets.symmetric(
+                        vertical: AppSpace.s4,
+                      ),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [icon, label],
+                      ),
+                    );
+            }
+
             return Semantics(
               container: true,
-              label: LibraryTexts.segmentsLabel,
-              child: SegmentedButton<StorySection>(
+              label: LearnTexts.segmentsLabel,
+              child: SegmentedButton<LearnSection>(
                 key: const ValueKey('story-sections'),
                 showSelectedIcon: false,
                 style: SegmentedButton.styleFrom(
                   padding: const EdgeInsets.symmetric(horizontal: AppSpace.s8),
+                  minimumSize: const Size(0, AppTouch.min),
+                  tapTargetSize: MaterialTapTargetSize.padded,
                 ),
                 segments: [
-                  ButtonSegment(
-                    value: StorySection.adventure,
-                    icon: icons ? const Icon(Icons.map_outlined) : null,
-                    label: label(labels[0]),
-                  ),
-                  ButtonSegment(
-                    value: StorySection.library,
-                    icon: icons
-                        ? const Icon(Icons.auto_stories_outlined)
-                        : null,
-                    label: label(labels[1]),
-                  ),
-                  ButtonSegment(
-                    value: StorySection.grammar,
-                    icon: icons ? const Icon(Icons.school_outlined) : null,
-                    label: label(labels[2]),
-                  ),
+                  for (final s in LearnSection.values)
+                    ButtonSegment(value: s, label: content(s)),
                 ],
                 selected: {section},
                 onSelectionChanged: (s) => onChanged(s.first),
