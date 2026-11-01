@@ -1,6 +1,6 @@
 # Dilbilgisi: Hi'den Türkçe konu anlatımı (H-075…H-082)
 
-> Durum: **uygulamada** (2026-10-30): A1–C2 toplam 71 ders yazıldı, Türkçe sesleri hazır ve `grammar_lint` 0 hata. A1 İngilizce örnekleri tam; A2 kısmen, B1–C2 bekliyor. Kalan: öğretmen/editör incelemesi ile çalışan ElevenLabs erişimi veya ayrı onaylı ücretli plan. **2026-10-30:** Yeni ücretsiz anahtarın abonelik sorgusu 10.000 kredi gösterse de üç üretim denemesi `401 detected_unusual_activity` verdi; ses/kredi üretilmedi. Kalan İngilizce örnekler ≈21.544 karakter. İşler §8'de; ders paketi ve araçlar §9'da.
+> Durum: **uygulamada** (2026-11-01): A1–C2 toplam 71 ders yazıldı, Türkçe sesleri hazır ve `grammar_lint` 0 hata. İngilizce örnek sesleri: **A1 16/16, A2 15/15**, B1 4 ders tam (G-B1-03/-10/-12/-14) + G-B1-01 kısmen; kalan B1 ile B2, C1, C2 bekliyor. Dilbilgisi uygulamada **Öğren** sekmesinin Dilbilgisi bölümünde (H-103). Kalan: öğretmen/editör incelemesi (`docs/EDITOR-INCELEME-PAKETI.md`) ile çalışan ElevenLabs erişimi veya ayrı onaylı ücretli plan (öneri Creator, `docs/TTS-MALIYET-2026-10-30.md`). **2026-10-30:** İkinci ücretsiz anahtar kotası bitene kadar çalıştı (A2 15/15, B1 kısmi); birinci ve üçüncü anahtar `401 detected_unusual_activity` verdi. Şu an çalışan anahtar/plan yok. İşler §8'de; ders paketi ve araçlar §9'da.
 
 ## 1. Neden
 Kullanıcının gözlemi: "Türk öğrenciler bazen konuları anlamıyor."
@@ -20,7 +20,7 @@ Bu iş, ürünün ilk ayağının ("hazır ders videoları, sabit yapay zekâ ö
 |---|---|
 | Anlatıcı | **Hi.** K-23 ile uyumlu: Hi dile Türkçe yardım eder, gizemi çözmez. Türkçe anlatım PatientDesk **Alania** sesiyle (`alania2-f1`) yapılır. İngilizce örnekleri kitaplardaki gibi **Sarah** (ElevenLabs) okur. |
 | Biçim | **Canlı ders kartları:** uygulama içinde adım adım kartlar. Türkçe anlatımda okunan yer vurgulanır; İngilizce örnekler, kodla çizilen şemalar ve alıştırma var. Video değil. İstenirse sonra sosyal medya için videoya çevrilir. |
-| Yer | **Hikâye sekmesinde üçüncü bölüm:** "Macera · Kitaplık · Dilbilgisi". Ayrıca bağlamdan da açılır: anlam panelinde "Bu yapı ne?", Hi'nin hata notu, bölüm ya da kitap sonu. Sekme sayısı değişmez (K-30). |
+| Yer | **Öğren sekmesinde üçüncü bölüm:** "Hikâye · Kitaplık · Dilbilgisi" (H-103, 2026-11-01; önceden Hikâye sekmesinde "Macera · Kitaplık · Dilbilgisi"). Ayrıca bağlamdan da açılır: anlam panelinde "Bu yapı ne?", Hi'nin hata notu, bölüm ya da kitap sonu. Sekme sayısı değişmez (K-30). |
 | Kapsam | **Pilot 3 A1 konusu, sonra dalgalar.** Önce müfredat listesi (~70 konu) onaylanır, sonra 3 A1 konusu uçtan uca hazırlanır. A1–A2 Türkçe sesleri ücretsiz ayda üretilir. Ardından B1–B2 ve C1–C2. |
 | Hikâyeden önce | **Bölüm panelinde ikincil düğme** (kullanıcı kararı 2026-10-14). Haritada bölüme dokununca açılan panelde "Başla"nın yanında "Bu bölümdeki dilbilgisi (~2 dk)" düğmesi ve o bölümde geçen konuların adları bulunur. Kitapta aynı teklif kitap açma ekranında yer alır. Kullanıcı kabul ederse o hikâyede geçen konular sırayla anlatılır, sonra hikâye başlar. Kabul etmezse hiçbir şey görmez. H-050 bozulmaz: bölüm yine doğrudan başlıkla açılır. Ayrı Dilbilgisi alanı da vardır. |
 | Türkçe ses | PatientDesk Alania: **lansman kampanyasıyla 14 Kasım 2026'ya kadar ücretsiz ve sınırsız** (kullanıcı bildirimi 2026-10-14); bu yüzden 70 konunun Türkçe sesleri bu tarihten önce üretilir. Önceki bilgi: ilk ay ücretsiz, sonra 1.000 karakter 0,75 TL. Kelime zamanlaması **Duyu** ile çıkarılır; 2026-10-14'te denendi ve kelime kelime doğru çıktı. Anahtar sunucu ayarında (`hivelzon.tts.patientdesk`), değer repo dışında. Yalnız Türkçe cümleler için kullanılır. || Her yer Alania (H-083) | "Uygulamadaki Türkçe konuşan her yer Alania ile" (kullanıcı kararı 2026-10-14): bölümlerdeki Hi replikleri, Alex'in Türkçe cümleleri, babaannenin notu, ipucu panosu ve açık soru kartları, Hi panelinin metinleri (hata notu, konu tanıtımı, köprü görevi). Ses eşlemesi §2.1. |
@@ -128,7 +128,7 @@ $P tools/content-pipeline/tts_tr.py <parcalar.json> --out-dir <klasör> --execut
 
 ## 7. Uygulama
 - **Ekranlar:**
-  - Hikâye → Dilbilgisi: seviye rafları, "Senin seviyen", "Hikâyende geçenler", tamamlananlar.
+  - Öğren → Dilbilgisi (H-103 öncesi Hikâye → Dilbilgisi): seviye rafları, "Senin seviyen", "Hikâyende geçenler", tamamlananlar.
   - Ders ekranı: kartlar.
 - **Giriş noktaları:**
   - **Hikâyeden önce:** bölüm panelinde ve kitap açma ekranında "Bu bölümdeki dilbilgisi". Bölüm ve kitap paketinde `grammarTopics` alanı bulunur; bu alan etiketlerden üretilir.
@@ -152,7 +152,7 @@ $P tools/content-pipeline/tts_tr.py <parcalar.json> --out-dir <klasör> --execut
 | D0 | **H-075** Türkçe ses: Alania + Duyu | Boru hattında Türkçe TTS adaptörü (kuru çalışma, tavan, idempotent, kayıt), Duyu ile kelime zamanı → hizalama biçimi, -16 LUFS; sunucu ayarı (yapıldı) | pytest yeşil; örnek cümle uçtan uca |
 | D0 | **H-076** Müfredat (~70 konu) | Konu listesi, sıra, önkoşul, Türkçe karşılaştırma notu, hikâye bağı | Kullanıcı onayı |
 | D1 | **H-077** Ders paketi ve `grammar-lint` | `lesson.json` şeması (kartlar, örnekler, alıştırma, bağlar), lint, dışa aktarma, dev sunucuda `/grammar/` | pytest yeşil |
-| D2 | **H-078** Dilbilgisi ekranı (mobil) | Hikâye'de 3. bölüm, ders kartları, vurgulu Türkçe ses, örnek sesleri, alıştırma, Hikâyede gör, kural kartı → Defter/FSRS, giriş noktaları, ilerleme + eşitleme, Hi önerisi | Testler yeşil; golden; erişilebilirlik |
+| D2 | **H-078** Dilbilgisi ekranı (mobil) | Hikâye sekmesinde (bugün Öğren, H-103) 3. bölüm, ders kartları, vurgulu Türkçe ses, örnek sesleri, alıştırma, Hikâyede gör, kural kartı → Defter/FSRS, giriş noktaları, ilerleme + eşitleme, Hi önerisi | Testler yeşil; golden; erişilebilirlik |
 | D3 | **H-079** Pilot: 3 A1 konusu | Metin → lint → kullanıcı onayı → Türkçe ses (Alania, ücretsiz) + İngilizce örnek sesi → paket → simülatör | Kullanıcı dener ve onaylar |
 | D4 | **H-080** Dalga 1: A1 + A2 (kalan ~27) | Aynı akış; Türkçe sesler ücretsiz ayda | Onaylı |
 | D5 | **H-081** Dalga 2: B1 + B2 (~26) | Aynı akış | Onaylı |

@@ -80,12 +80,12 @@ düzeltilmeden B başlamaz.
 | 1 | **Keşfet → Bugün**: ilk videoyu izle, sonundaki soruyu yanıtla | video sonu + soru cevabı | 3 dk |
 | 2 | İzlediğin videodaki bir ifadeyi **Defter'e kaydet**, sonra kaydettiğin ifadeyi bul | kart göründü | 2 dk |
 | 3 | Bugün kaydettiğin ifadeyi **tekrar et** | kart ilerledi | 3 dk |
-| 4 | **Hikâye → Bölüm 1**: aç, altyazıya dokun, Türkçe anlamı gör | anlam paneli açıldı | 3 dk |
+| 4 | **Öğren → Hikâye → Bölüm 1**: aç, altyazıya dokun, Türkçe anlamı gör | anlam paneli açıldı | 3 dk |
 | 5 | **Kitaplık**'tan bir kitap aç · **Dilbilgisi**'nden bir konu aç · **Konuş**'ta yardımı bul | üçü de açıldı | 4 dk |
 | 6 | Günlük üçlüyü tamamla, bitiş kartını gör | bitiş kartı | 5 dk |
 
-**Sekme düzeni karşılaştırması (2 dk):** Mevcut düzen **Ana Sayfa · Keşfet · Hikâye · Konuş ·
-Profil**. Kâğıt prototip: **Ana Sayfa · Öğren · Pratik · Profil** (K-30). Soru: "Hangisinde
+**Sekme düzeni karşılaştırması (2 dk):** Mevcut düzen **Ana Sayfa · Keşfet · Öğren · Konuş ·
+Profil** (H-103, 2026-11-01; Öğren içinde Hikâye · Kitaplık · Dilbilgisi). Kâğıt prototip: **Ana Sayfa · Öğren · Pratik · Profil** (K-30). Soru: "Hangisinde
 aradığınızı daha kolay bulurdunuz? Neden?"
 
 > **Moderatör notu (okunmaz):** Defter iki yoldan açılır: **Ana Sayfa → "İstersen kendin çalış" → Defter / Kelime tekrarı** (H-088, H-099) ve **Profil → Defter**; tekrar düğmesi Defter ekranında da var.

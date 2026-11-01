@@ -111,7 +111,7 @@ Planında şu dosyaların etkisini göster:
 - `mobile/lib/features/discover/domain/clip.dart` ve `feed.dart`: kaynak ayrımı, konu/seviye, günlük üçlü ve mini soru davranışı.
 - `mobile/lib/features/discover/application/discover_providers.dart`: seviye/ilgi süzmesi, yeni katalog ve eski bölüm kilitleri.
 - `mobile/lib/features/discover/presentation/discover_screen.dart`: medya adresleri, anlam kaydı, Defter kaydı, isteğe bağlı hikâye bağlantısı.
-- `mobile/lib/features/discover/presentation/widgets/clip_page.dart`: bağımsız videoda “Tam hikâye” yerine gerçekten mevcut ilgili eylem.
+- `mobile/lib/features/discover/presentation/widgets/video_page.dart` (o zamanki adı `clip_page.dart`; H-094 P0+P1 ile yeniden adlandırıldı): bağımsız videoda “Tam hikâye” yerine gerçekten mevcut ilgili eylem.
 - `mobile/lib/features/discover/data/discover_store.dart`: mevcut kaydın yalnız günlük saniye sayacı olduğunu dikkate al; günlük seçki ve izleme geçmişini buna karıştırmadan tasarla.
 - `tools/content-pipeline/hvpipeline/clips.py`: mevcut kesme yolu korunsun; bağımsız video üretimi bunun üstüne uygun bir kaynak/derleme yolu olarak eklensin.
 - Backend katalog, editör ekranı, içerik tipi/yol doğrulama, içe aktarma ve yayın filtreleri: bağımsız videonun kendi onay ve geri çekme durumu olsun.

@@ -1,8 +1,8 @@
 # hiVelzon: Faz 1 (MVP) uygulama planı (H-025)
 
-**Sürüm:** 0.2 · **Tarih:** 2026-10-11 (durum güncellemesi 2026-10-30) · **Durum:** Onaylandı (2026-10-11); uygulama sürüyor.
+**Sürüm:** 0.2 · **Tarih:** 2026-10-11 (durum güncellemesi 2026-11-01) · **Durum:** Onaylandı (2026-10-11); uygulama sürüyor.
 **Dayanak:** CLAUDE.md "Onaylı içerik mimarisi kararları" ve "Onaylı oyun tasarımı kararları"; `docs/OYUN-TASARIMI.md`; `docs/ICERIK-MIMARISI.md`.
-**Kural:** Plan onaylandı, kodlama bu plana göre sürüyor; plana yeni kapsam kullanıcı onayıyla eklenir. H-096…H-101 tamamlandı; H-101 Hi marka simgelerini uyguladı. **Sıradaki boş numara H-102'dir.** Güncel sıra: H-043/H-068 gerçek iPhone → H-085/H-086 kullanıcı denemesi → öğretmen/editör incelemesi → eksik İngilizce sesler → en sonda H-044 dış hesap/mağaza → H-044 sonrasında H-092 pilotu. CI düzeltmeleri `f994127` + `32b5832`, belge senkronu `83783b2` + `8ee3a0a`, TTS engeli kaydı `47c4c0a` ile gönderildi; son GitHub koşusu **`41013181402` yeşil** (önceki `40828736476`, `40830363684` ve `40830965943` de yeşil). **TTS:** 2026-10-30'da üç üretim denemesi `401 detected_unusual_activity` verdi; ses/kredi üretilmedi. Şu an bağımsız yerel ürün kodu işi yoktur; ayrıntı `yapilacaklar/IS-SIRASI.md` ve `docs/HANDOFF-2026-10-30.md`.
+**Kural:** Plan onaylandı, kodlama bu plana göre sürüyor; plana yeni kapsam kullanıcı onayıyla eklenir. H-096…H-101 tamamlandı; H-101 Hi marka simgelerini uyguladı. **H-102** (bilgi kartları Profil'e) ve **H-103** (alt menü "Öğren") yerelde uygulandı, commit edilmedi, kullanıcı geri bildirimi bekliyor. **Sıradaki boş numara H-104'tür.** Güncel sıra: H-043/H-068 gerçek iPhone → H-085/H-086 (+ H-102/H-103) kullanıcı denemesi → öğretmen/editör incelemesi (`docs/EDITOR-INCELEME-PAKETI.md`) → eksik İngilizce sesler → en sonda H-044 dış hesap/mağaza → H-044 sonrasında H-092 pilotu. Son commit `df08362`, CI **`41076024227` yeşil** (son iş commit'i `e7e7712` → `41070330880`). **TTS:** 2026-10-30'da ikinci ücretsiz ElevenLabs anahtarıyla 9.977 karakter üretildi (sesli kitap 6/30), kota bitti; birinci ve üçüncü anahtar `401 detected_unusual_activity` verdi; çalışan anahtar/plan yok. Şu an bağımsız yerel ürün kodu işi yoktur; ayrıntı `yapilacaklar/IS-SIRASI.md` ve `docs/HANDOFF-2026-11-01.md`.
 
 ---
 
@@ -25,7 +25,7 @@
 - çevrimdışı indirme;
 - reklam, satın alma, lig.
 
-**Sekmeler (K-30):** Ana Sayfa · Keşfet · Hikâye · Konuş (MVP'de "yakında" durumu) · Profil.
+**Sekmeler (K-30, H-103):** Ana Sayfa · Keşfet · Öğren · Konuş (MVP'de "yakında" durumu) · Profil. Öğren içinde Hikâye · Kitaplık · Dilbilgisi seçicisi (2026-11-01; önceki sekme adı "Hikâye").
 
 ## 2. Teknik ilkeler
 
@@ -106,7 +106,7 @@ A1–C2, seviye başına 5 kitap, toplam 30. Kararlar: önce 2 pilot kitap, Elev
 | **K3** | **H-068** Arka planda dinleme | just_audio + audio_service, kilit ekranı | 🔄 (kilit ekranı gerçek iPhone'da) |
 | **K4** | **H-069** Pilot A1 + A2 | ≈ 15 kr görsel, ücretsiz TTS kotası; sonra yoğunluk kararı | ✅ |
 | **K5** | **H-070** Arka uç | BOOK türü, C2, içe aktarma, onay | ✅ |
-| **K6–K8** | **H-071…H-073** Kitap dalgaları | A1–A2 (8), B1–B2 (10), C1–C2 (10) | 🔄 (30 kitap yazıldı ve tam resimli; sesli 5/30) |
+| **K6–K8** | **H-071…H-073** Kitap dalgaları | A1–A2 (8), B1–B2 (10), C1–C2 (10) | 🔄 (30 kitap yazıldı ve tam resimli; sesli 6/30: A1-K01…K05, A2-K03) |
 
 **Durum simgeleri:** ✅ bitti · 🔄 sürüyor · ⏳ sırada. Ayrıntılı durum ve günlük: `yapilacaklar/IS-SIRASI.md`.
 
@@ -117,7 +117,7 @@ A1–C2, seviye başına 5 kitap, toplam 30. Kararlar: önce 2 pilot kitap, Elev
 - H-039, H-040, H-041 ve H-042 H-038'den sonra.
 - H-043, sonra H-044 en son.
 
-### Son ürün iyileştirmeleri (H-098…H-101)
+### Son ürün iyileştirmeleri (H-098…H-103)
 
 | İş | Kapsam | Durum |
 |---|---|---|
@@ -125,13 +125,15 @@ A1–C2, seviye başına 5 kitap, toplam 30. Kararlar: önce 2 pilot kitap, Elev
 | **H-099** | Ana Sayfa kişisel durum cümlesi; kartta ayrı süre/hedef hapı; tek cümle gerekçe; işi söyleyen düğmeler; "Bölüm" çipi; isteğe bağlı çalışma araçları. Kural tabanlı plan ve tek eylem ilkesi korundu. | ✅ |
 | **H-100** | Aynı kişisel durum cümlesi Hi panelinde öneri kartının üstünde; panel `dailyPlanProvider`ı doğrudan izler, Ana Sayfa ve Hi tek planı paylaşır. | ✅ |
 | **H-101** | H-016 konuşma balonu “Hi” markası; iOS/Android simgeleri, açılış ekranları ve mağaza master'ları. | ✅ |
+| **H-102** | "Kullanım koşulları güncellendi" bildirimi ve "İlerlemen yalnızca bu telefonda" hesap kartı Ana Sayfa'dan Profil'e; ortak `CompactButton` ("Koşullar" / "KVKK metni"). | 🔄 (yerelde, 1504/1504; kullanıcı geri bildirimi + commit bekliyor) |
+| **H-103** | Alt menü "Hikâye" → **Öğren**; simgeli Hikâye · Kitaplık · Dilbilgisi seçicisi, son bölüm cihazda hatırlanır, Hi turuna Öğren adımı (K-30 güncellendi). | 🔄 (yerelde, 1504/1504; kullanıcı geri bildirimi + commit bekliyor) |
 
-Ayrıntı: `bitenler/H-098-canli-arayuz-geri-bildirimi.md`, `bitenler/H-099-ana-sayfa-kisisel-oneriler.md`, `bitenler/H-100-hi-panel-kisisel-durum.md`, `docs/ARAYUZ-METINLERI.md` §3.1 ve §10.
+Ayrıntı: `bitenler/H-098-canli-arayuz-geri-bildirimi.md`, `bitenler/H-099-ana-sayfa-kisisel-oneriler.md`, `bitenler/H-100-hi-panel-kisisel-durum.md`, `devam-edenler/H-102-bilgi-kartlari-profile-kompakt-dugmeler.md`, `devam-edenler/H-103-ogren-sekmesi-simgeli-secici.md`, `docs/ARAYUZ-METINLERI.md` §3.1 ve §10.
 
-## 4. Açık olanlar (2026-10-28 bağımlılık sırası)
+## 4. Açık olanlar (bağımlılık sırası; 2026-11-01 itibarıyla)
 
 1. H-043/H-068 gerçek iPhone kontrolleri.
-2. H-085/H-086 kullanıcı denemesi.
+2. H-085/H-086 kullanıcı denemesi; H-102/H-103 kullanıcı geri bildirimi + commit.
 3. Öğretmen/editör operasyonel incelemesi.
 4. Eksik İngilizce sesler için çalışan ElevenLabs erişimi veya ayrı onaylı plan.
 5. H-044 dış hesaplar, Almanya sunucusu/DNS, Bunny ve mağazalar — en son.

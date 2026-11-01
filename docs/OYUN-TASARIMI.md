@@ -469,6 +469,8 @@ Sonraki bölümün açılması için üçü birden gerekir:
 |---|---|
 | Ana Sayfa · Keşfet · **Öğren** · Konuş · Profil | Ana Sayfa · Keşfet · **Hikâye** · Konuş · Profil |
 
+> **Güncelleme (H-103, kullanıcı kararı 2026-11-01):** Sekmenin adı yeniden **Öğren** oldu: Ana Sayfa · Keşfet · **Öğren** · Konuş · Profil. Öğren'in içinde **Hikâye** (bu bölümdeki harita; eski "Macera") · **Kitaplık** · **Dilbilgisi** seçicisi var; son seçim cihazda hatırlanır. Aşağıdaki "Hikâye sekmesi" anlatımı Öğren'in Hikâye bölümü için geçerlidir. Dört sekmeli "Ana Sayfa · Öğren · Pratik · Profil" yapısı pilotta karşılaştırılır (H-087).
+
 **Hikâye sekmesi:**
 - **Harita** (varsayılan)
 - İpucu panosu
@@ -718,7 +720,7 @@ Storyworld §11 + ICERIK-MIMARISI §7.7 + teknik not:
 | K-27 | Bölüm anatomisi | 9 adım, 5–8 dk. A1–A2'de sahne başına 1–2, bölüm başına en fazla 4 karar anı. Karar anında müzik ve hareket kısılır. |
 | K-28 | Dallanma | Dal ve dar boğaz. Yanlış seçim aynı karar anına döner. Ton bayrağı bölüm başına en fazla 3. Zaman mağarası ve çoklu son yok. |
 | K-29 | Kilit | Bölüm kapısı (anlama + hedef ifade + 1 aktif görev). Zaman kilidi yok. |
-| K-30 | Sekme | "Öğren" → "Hikâye" (K-02 revizyonu) |
+| K-30 | Sekme | "Öğren" → "Hikâye" (K-02 revizyonu); **2026-11-01 (H-103) yeniden "Öğren"**, içinde Hikâye · Kitaplık · Dilbilgisi |
 | K-31 | MVP oyun sistemleri | Harita, görev kartı, ipucu panosu, defter, anı albümü, sezon özeti, yan görevler. P1: meydan okuma modu, karakter güveni. |
 | K-32 | Yasaklar | §9'daki liste |
 | K-33 | Klasör | `icerik/_evren/` + K-01 bölüm klasörleri. `story/` yapısı kullanılmaz. |

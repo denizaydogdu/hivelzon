@@ -1,10 +1,10 @@
 # hiVelzon — İş ve Ürün Planı
 
-> **Sürüm:** 0.2 (**H-001 ile 2026-10-27'de onaylandı**) · **İlk sürüm:** 2026-10-11 · **Güncelleme:** 2026-10-28
+> **Sürüm:** 0.2 (**H-001 ile 2026-10-27'de onaylandı**) · **İlk sürüm:** 2026-10-11 · **Güncelleme:** 2026-11-01
 > **Sahibi / veri sorumlusu:** Velzon Bilişim Teknolojileri Ltd. Şti. (Eskişehir · info@velzon.tr)
 > **Durum:** Faz 1 (MVP) uygulaması sürüyor; uygulama planı onaylı (`docs/UYGULAMA-PLANI.md`, H-025). Bağlayıcı kararlar `CLAUDE.md` tablolarındadır; bu belgeyle çelişirse onlar geçerlidir.
 >
-> **Güncel durum (2026-10-30):** H-042, H-095…H-101 ve açık kararlar tamamlandı. Tam sistem denetimi mobil 1483/1483, backend 164/164 ve bütün içerik lint'lerinde 0 hata verdi. CI düzeltmeleri `f994127` + `32b5832`, belge senkronu `83783b2` + `8ee3a0a`, TTS engeli kaydı `47c4c0a`. GitHub koşusu **`41013181402` yeşil**; önceki koşular `40828736476`, `40830363684` ve `40830965943` de yeşil. Kalan sıra: H-043/H-068 gerçek iPhone; H-085/H-086 kullanıcı denemesi; öğretmen/editör incelemesi; eksik İngilizce sesler; en sonda H-044 dış hesap/mağaza; H-044 sonrasında H-092 pilotu. **TTS:** 2026-10-30'daki üç deneme `401 detected_unusual_activity` verdi; ses/kredi üretilmedi, toplam kuru çalışma ≈795.113 karakter. Sıradaki boş numara **H-102**; yeni kapsam pilot sonucu ve kullanıcı onayı olmadan açılmaz. Tek takip kaynağı: `yapilacaklar/IS-SIRASI.md`.
+> **Güncel durum (2026-11-01):** H-042, H-095…H-101 ve açık kararlar tamamlandı. Son commit `df08362`, CI **`41076024227` yeşil**; son iş commit'i `e7e7712` → `41070330880` yeşil. **H-102** (bilgi kartları Ana Sayfa'dan Profil'e) ve **H-103** (alt menü "Hikâye" → **Öğren**) yerelde uygulandı, commit edilmedi; kullanıcı geri bildirimi bekliyor. Mobil **1504/1504** (yerel), analyze temiz, backend 164/164, pytest 391, bütün içerik lint'lerinde 0 hata. Kalan sıra: H-043/H-068 gerçek iPhone; H-085/H-086 (+ H-102/H-103) kullanıcı denemesi; öğretmen/editör incelemesi (`docs/EDITOR-INCELEME-PAKETI.md`); eksik İngilizce sesler; en sonda H-044 dış hesap/mağaza; H-044 sonrasında H-092 pilotu. **TTS:** 2026-10-30'da ikinci ücretsiz ElevenLabs anahtarıyla 9.977 karakter üretildi (sesli kitap 6/30; dilbilgisi İngilizce A1 16/16, A2 15/15, B1 4 tam + 1 kısmi), kota bitti; birinci ve üçüncü anahtar `401 detected_unusual_activity` verdi. Çalışan anahtar/plan yok; öneri Creator (`docs/TTS-MALIYET-2026-10-30.md`), karar kullanıcıda. Sıradaki boş numara **H-104**; yeni kapsam pilot sonucu ve kullanıcı onayı olmadan açılmaz. Tek takip kaynağı: `yapilacaklar/IS-SIRASI.md`.
 
 ## Güncel kararlar (v0.2, 2026-10-12)
 
@@ -24,7 +24,7 @@
 | Marka | **Hi**; konuşma balonu wordmark, mevcut kıyı paleti. Mağaza adı **Hi: İngilizce Öğren**, alt başlık **İngilizceyi hikâyeyle öğren** | H-016, H-101 |
 | Günlük hedef ve bildirim | 5 / 10 / 15 dk; günde en fazla 1 hatırlatma, saati kullanıcı seçer; kırık seri vurgulanmaz, dondurma ve onarma var | H-013, K-16 |
 | Seviye testi | Kademeli, en fazla ~20 soru, atlanabilir; sonuç "önerilen başlangıç seviyesi" | K-06 |
-| Sekmeler | Ana Sayfa · Keşfet · Hikâye · Konuş (MVP'de "yakında") · Profil | K-30 |
+| Sekmeler | Ana Sayfa · Keşfet · Öğren · Konuş (MVP'de "yakında") · Profil; Öğren içinde Hikâye · Kitaplık · Dilbilgisi | K-30, H-103 |
 | Çevrimdışı | MVP'de yok (F3) | H-010 |
 | Sosyal medya | Ayrı ve onaylı faz; elle yükleme; AI etiketi gömülü | H-017, K-14 |
 | İçerik onayı | Claude üretir, kullanıcı onaylar; ünite sonunda öğretmen/editör toplu kontrolü | H-028 |
@@ -137,7 +137,7 @@ Kitle: **herkes, A1–C1**. Ancak ürün ve hukuk kararları yaşa göre çok de
 
 Alt menü (öneri): **Bugün** · **Akış** (kısa videolar) · **Dersler** · **Konuş** · **Profil**.
 
-> **Güncel (K-30, H-009, K-06):** Sekmeler Ana Sayfa · Keşfet · Hikâye · Konuş · Profil. Misafir prolog + B1'i kayıtsız oynar; hesap ilerleme için istenir. Seviye testi en fazla ~20 soru ve atlanabilir. Ana ekran tek öğrenme eylemi gösterir (çoğunlukla "Hikâyeye devam").
+> **Güncel (K-30, H-103, H-009, K-06):** Sekmeler Ana Sayfa · Keşfet · Öğren · Konuş · Profil (2026-11-01; Öğren içinde Hikâye · Kitaplık · Dilbilgisi). Uygulamanın tamamı hesapsız kullanılır; hesap (13+) isteğe bağlıdır, yalnız yedek ve çoklu cihaz için (H-009, 2026-10-13). Seviye testi en fazla ~20 soru ve atlanabilir. Ana ekran tek öğrenme eylemi gösterir (çoğunlukla "Hikâyeye devam").
 
 ### 4.1 Ayak 1 — Hazır ders videoları
 

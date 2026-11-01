@@ -12,7 +12,7 @@ Kabul ölçütü (H-043): 1. ve 2. bölüm tamam. 3. bölüm H-044'tedir.
 
 | # | Madde | Durum | Doğrulama |
 |---|---|---|---|
-| 1.1 | Statik denetim ve bütün testler | Tamam (2026-10-28) | `cd mobile && flutter analyze && flutter test` — son koşu **1483/1483**, analyze temiz |
+| 1.1 | Statik denetim ve bütün testler | Tamam (2026-10-28; son tekrar 2026-11-01) | `cd mobile && flutter analyze && flutter test` — son koşu **1504/1504** (yerel, commit edilmemiş H-102/H-103 dahil; CI'da 1483/1483), analyze temiz |
 | 1.2 | Android release manifestinde `INTERNET` izni | Tamam | `grep INTERNET mobile/android/app/src/main/AndroidManifest.xml`. Daha önce izin yalnız debug/profile manifestlerindeydi; release derlemesi ağa çıkamazdı. |
 | 1.3 | Yerel çökme kaydı | Tamam | `flutter test test/shared/diagnostics` |
 | 1.4 | Sakin hata ekranı (yalnız release) | Tamam | Aynı test dosyası (`CalmErrorBox`) |

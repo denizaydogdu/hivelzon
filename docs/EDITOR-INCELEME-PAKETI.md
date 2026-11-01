@@ -430,11 +430,11 @@ $P tools/content-pipeline/reel_lint.py reeller/*-R-*
 | Lint | Kapsam | Hata | Uyarı | Uyarıların dağılımı |
 |---|---|---|---|---|
 | `content_lint` | 13 bölüm, 4 konu seti, 3 Hi dosyası, 1 klip dosyası, 6 Konuş görevi | **0** | 27 | çeviri DRAFT/yok 9 · Konuş DRAFT 6 · kapsama 4 · liste dışı kelime 3 · klip DRAFT 2 · set kapsaması 1 · Konuş kapsaması 1 · Türkçe ses hizası 1 |
-| `book_lint` | 30 kitap | **0** | 148 | İngilizce ses yok 138 · C1/C2 kapsama denetlenmedi 10 |
-| `grammar_lint` | 71 ders | **0** | 792 | İngilizce örnek sesi eksik 727 · "Hikâyede gör" kartı yok 31 · kanca 19 · C1/C2 kapsama 14 · hikâye bağı 1 |
-| `reel_lint` | 18 reel | **0** | 0 | — |
+| `book_lint` | 30 kitap | **0** | 145 | İngilizce ses yok · C1/C2 kapsama denetlenmedi 10 |
+| `grammar_lint` | 71 ders | **0** | 616 | İngilizce örnek sesi eksik · "Hikâyede gör" kartı yok 31 · kanca 19 · C1/C2 kapsama 14 · hikâye bağı 1 |
+| `reel_lint` | 18 reel | **0** | 6 | kapsama %98 altı 6 (sözlükle %100) |
 
-- Dört komutun çıkış kodu 0.
+- Dört komutun çıkış kodu 0 (2026-11-01 koşusu).
 - Bu sayılar `docs/HANDOFF-2026-10-30.md` §5'teki son doğrulamayla (kitap 30/0, dilbilgisi 71/0) uyumludur.
 - Not: Yukarıdaki tablo `e22e5d2` koşusudur; o sırada `reel_lint` kapsama denetlemiyordu (H-094 §4 B).
 - **Yeniden koşu (2026-10-30 akşam, `e7e7712`):** `content_lint` 13 bölüm 0 hata/25 uyarı · `book_lint` 30 kitap 0 hata/145 uyarı · `grammar_lint` 71 ders 0 hata/616 uyarı · `reel_lint` 18 reel 0 hata/6 uyarı (kapsama denetimi eklendi, `788d775`; 6 reel %98 altında, sözlükle %100). Dört lint de CI'da; CI `41070330880` yeşil.

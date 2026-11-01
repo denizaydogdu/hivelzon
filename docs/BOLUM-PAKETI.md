@@ -112,7 +112,7 @@ Yanlışta `feedback.wrong` gösterilir ve aynı öğe tekrar denenir. Süre sı
 | B3 | başlık → `recap` (2,8 sn) → `c-msg` → `s02` → `k1` | B2'nin sonu (Maya haritada: "I can show you. Tomorrow?") özet oldu. Maya'nın mesajı Sahne 1'in ilk düğümü (kontrol noktası). |
 | B4 | başlık → `recap` (3,2 sn) → `h-01` → `s02` | B3'ün son karesi (kapıdaki yarım not) sessiz özet oldu. Hi kartı Sahne 1'in ilk düğümü (kontrol noktası). |
 
-- Tam jenerik bölüm başında oynamaz. Hikâye sekmesinde sezon ilk kez açılınca bir kez kendiliğinden oynar (cihazda saklanır), sezon başlığındaki "Jeneriği izle" ile yeniden açılır. "Geç" ile her an atlanır.
+- Tam jenerik bölüm başında oynamaz. Öğren sekmesinin Hikâye bölümünde (H-103) sezon ilk kez açılınca bir kez kendiliğinden oynar (cihazda saklanır), sezon başlığındaki "Jeneriği izle" ile yeniden açılır. "Geç" ile her an atlanır.
 - "Yapay zekâ ile üretilmiştir" notu başlık ekranında sol üstte 4 sn görünür; başlık yazısıyla çakışmaz.
 - Hi'nin konu tanıtımı (yeni dilbilgisi konusu ilk geçtiğinde) bu sürümde yok; H-048'e taşındı.
 

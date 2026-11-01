@@ -1,6 +1,6 @@
 # Kitaplık: seviyeli, resimli, sesli kitaplar (H-065…H-073)
 
-> Durum: **uygulamada** (2026-10-30): 30 kitap yazıldı ve tam resimli, 5/30 sesli; `book_lint` 30 kitapta 0 hata. Okuyucu, “Sayfanın Türkçesi”, kitap sonu anlama soruları ve backend kataloğu main'de. Kalan: H-085/H-086 kullanıcı denemesi, öğretmen/editör kontrolü ve 25 kitap + A1-K01 düzeltme sesi için çalışan ElevenLabs erişimi veya ayrı onaylı ücretli plan. **2026-10-30:** Yeni ücretsiz anahtarın abonelik sorgusu 10.000 kredi gösterse de üç üretim denemesi `401 detected_unusual_activity` verdi; ses/kredi üretilmedi. Engelli ücretsiz anahtarla yeniden denenmez; toplam kitap sesi ihtiyacı ≈773.569 karakter.
+> Durum: **uygulamada** (2026-11-01): 30 kitap yazıldı ve tam resimli, **6/30 sesli** (A1-K01…K05, A2-K03); `book_lint` 30 kitapta 0 hata. Okuyucu, “Sayfanın Türkçesi”, kitap sonu anlama soruları ve backend kataloğu main'de. Kitaplık uygulamada **Öğren** sekmesinin Kitaplık bölümünde (H-103, 2026-11-01). Kalan: H-085/H-086 kullanıcı denemesi, öğretmen/editör kontrolü (`docs/EDITOR-INCELEME-PAKETI.md`) ve 24 kitap + A1-K01 "the fourth floor" düzeltme sesi için çalışan ElevenLabs erişimi veya ayrı onaylı ücretli plan (öneri Creator, `docs/TTS-MALIYET-2026-10-30.md`; karar kullanıcıda). **2026-10-30:** Birinci ve üçüncü ücretsiz anahtar `401 detected_unusual_activity` verdi; ikinci anahtar kotası bitene kadar çalıştı (A1-K02 yeni, A1-K01 c3 düzeltmesi). Şu an çalışan anahtar/plan yok; engelli anahtarla yeniden denenmez.
 
 ## 1. Neden
 Uygulamada hep okuma ve dilbilgisi var. Kullanıcı bazen yalnızca **dinlemek** ister (ör. yatakta): "A2 seviyesinde bir hikâye aç."
@@ -22,7 +22,7 @@ Ana hikâyeden (*The Missing Signal*) ayrı ama onu tamamlayan bir **dinleme + k
 | Ses | **ElevenLabs, önce pilot.** Bölümlerdeki gibi zaman damgalı TTS. Pilot ücretsiz kotayla ve yalnız iç kullanım için. 30 kitap ≈ 870 bin karakter, ticari plan gerekir (H-006). Plan ve maliyet ayrıca onaylanır. |
 | Uzunluk | **Kısa kitap**, yatak öncesi bir oturuşta biter. Bölümlere ayrılır ve kaldığın yerden devam edilir. §4'teki tablo. |
 | Konu | **Bağımsız kitaplar, karışık türler.** Her seviyede 5 ayrı tür: gizem, macera, mizah, bilimkurgu/fantastik, günlük hayat/duygu. Hepsi özgün. Port Lumen kanonuna bağlı değil. |
-| Katalog ve pilot | 30 kitaplık katalog onaylı (`kitaplar/KATALOG.md`). Pilot kitaplar: A1-K01 *The Blue Door* (gizem) ve A2-K03 *The Parrot Who Told Everything* (mizah). Yerleşim: Hikâye sekmesinde "Macera · Kitaplık" (2026-10-14). |
+| Katalog ve pilot | 30 kitaplık katalog onaylı (`kitaplar/KATALOG.md`). Pilot kitaplar: A1-K01 *The Blue Door* (gizem) ve A2-K03 *The Parrot Who Told Everything* (mizah). Yerleşim: Hikâye sekmesinde "Macera · Kitaplık" (2026-10-14); bugün Öğren sekmesinde "Hikâye · Kitaplık · Dilbilgisi" (H-103, 2026-11-01). |
 | Pilot sonrası (2026-10-14) | Pilot onaylandı. Kalan 28 kitapta resim: **kapak + bölüm başı** (~180 görsel ≈ 90 kr). Ses: **ElevenLabs Creator** (~22 USD/ay, ~100 bin karakter, ticari lisans; kullanıcı hesabı açar). Uzun basma: sesli modda kelime → Defter, sessiz modda cümle → seslendir. |
 | Ses lisansı (2026-10-14) | Kullanıcı kararı (hukukçu görüşü): ücretsiz ElevenLabs hesaplarıyla üretilen sesler yayında kullanılabilir; ticari planla yeniden üretim gerekmez. |
 | C2 | Kullanıcı C2'yi de istedi. Belgelerdeki seviye tablosu C1'de bitiyordu; Kitaplık için C2 eklenir (§4, §6). |
@@ -226,9 +226,9 @@ Her kitabın sonunda **2 kısa anlama sorusu** ve **isteğe bağlı yeniden anla
 ## 7. Uygulama deneyimi (H-067'de uygulandı, 2026-10-14)
 Kod: `mobile/lib/features/library/` (alan modeli `domain/`, okuyucu durumu `application/reader_controller.dart`, ekranlar `presentation/`). Metinler: `ARAYUZ-METINLERI.md` §4.6–4.7.
 **Yer:**
-- **Hikâye** sekmesinde iki bölüm: "Macera" (harita) ve "Kitaplık". Sekme sayısı değişmez (K-30).
+- **Öğren** sekmesinde (H-103, 2026-11-01; önceki adı Hikâye) üç bölüm: "Hikâye" (harita; eski "Macera"), "Kitaplık" ve "Dilbilgisi" (H-078). Son seçilen bölüm cihazda hatırlanır. Sekme sayısı değişmez (K-30).
 - Ana Sayfa'daki tek eylem ilkesi korunur. Kitap, Hi'nin önerisi olarak görünür (H-067). Ana Sayfa'daki ikincil "yarım kitap" kartı henüz yok (sonraki iş).
-- Kısa ekranda (yükseklik < 600) Hikâye sayfasının başlığı ve seçici haritayla birlikte kayar; harita yine ekran boyu yer alır.
+- Kısa ekranda (yükseklik < 600) Öğren sayfasının başlığı ve seçici haritayla birlikte kayar; harita yine ekran boyu yer alır.
 - Yerleşim kullanıcı onaylı (2026-10-14, H-065).
 
 **Kitaplık ekranı:**
