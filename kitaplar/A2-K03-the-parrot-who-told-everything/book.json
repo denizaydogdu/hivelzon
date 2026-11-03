@@ -28,6 +28,23 @@
     "Biscuit",
     "Captain"
   ],
+  "narrationTr": {
+    "role": "hi",
+    "pronunciations": [
+      {
+        "term": "Max",
+        "say_as": "Meks"
+      },
+      {
+        "term": "Bell",
+        "say_as": "Bel"
+      },
+      {
+        "term": "Finn",
+        "say_as": "Fin"
+      }
+    ]
+  },
   "narration": {
     "modelId": "eleven_v3",
     "speed": 0.95,

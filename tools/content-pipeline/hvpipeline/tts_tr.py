@@ -67,6 +67,7 @@ RAW_DIR = "_raw"
 FUZZY_OK = 0.6                  # bulanık eşleşme benzerlik alt sınırı
 MIN_QUALITY = 0.85              # iyi eşleşen kelime oranı
 MAX_BAD_RUN = 2                 # art arda zayıf/eksik kelime sınırı (bu ve üstü uyarı)
+GAP_SECONDS = 3.0               # Duyu kelimeleri arasında bu kadar boşluk: Duyu bir parçayı atlamış olabilir (H-105)
 PROMPTS_HEADING = "## Türkçe seslendirme kayıtları (tts_tr.py)"
 PROMPTS_TABLE = ("| Tarih (UTC) | Parça | Model | Ses | Sürüm | Karakter | Ses (sn) | İstek kimliği | Metin sha256 |\n"
                  "|---|---|---|---|---|---|---|---|---|")
@@ -576,6 +577,51 @@ def with_retry(fn: Callable, *args, sleep: Callable[[float], None] = time.sleep,
             sleep(wait)
 
 
+def wav_slice(data: bytes, start: float, end: float) -> bytes:
+    with wave.open(io.BytesIO(data)) as src:
+        rate = src.getframerate()
+        src.setpos(max(0, int(start * rate)))
+        frames = src.readframes(max(0, int((end - start) * rate)))
+        params = src.getparams()
+    buf = io.BytesIO()
+    with wave.open(buf, "wb") as o:
+        o.setparams(params)
+        o.writeframes(frames)
+    return buf.getvalue()
+
+
+def duyu_gaps(words: list[dict], duration: float | None = None,
+              min_gap: float = GAP_SECONDS) -> list[tuple[float, float]]:
+    """Duyu'nun konuşmayı atladığı aralık adayları (Alania anlatımında 3 sn'lik sessizlik olmaz): kelimeler
+    arası, baştaki ve (`duration` verilirse) sondaki uzun boşluk (Duyu bazen sesin son 20 sn'sini yazmaz)."""
+    if not words:
+        return []
+    gaps = [(float(a["end"]), float(b["start"])) for a, b in zip(words, words[1:])
+            if float(b["start"]) - float(a["end"]) > min_gap]
+    if float(words[0]["start"]) > min_gap:
+        gaps.insert(0, (0.0, float(words[0]["start"])))
+    if duration is not None and duration - float(words[-1]["end"]) > min_gap:
+        gaps.append((float(words[-1]["end"]), duration))
+    return gaps
+
+
+def fill_gaps(client: "Client", wav: bytes, words: list[dict], key: str, sleep=time.sleep, log=print,
+              duration: float | None = None) -> tuple[list[dict], float]:
+    """Uzun Duyu boşluklarını ayrıca yazıya döker ve kelimeleri zamanı kaydırarak araya ekler (H-105:
+    Duyu uzun sayfalarda ortadaki 20 sn'yi atlayabiliyor; ses tamam). Dönüş: (kelimeler, ek Duyu saniyesi)."""
+    out = list(words)
+    spent = 0.0
+    for a, b in duyu_gaps(words, duration):
+        doc, _ = with_retry(client.transcribe, wav_slice(wav, a, b), f"{key}-{a:.1f}.wav", sleep=sleep, log=log)
+        spent += b - a
+        add = [{**w, "start": round(float(w["start"]) + a, 3), "end": round(float(w["end"]) + a, 3)}
+               for w in doc.get("words", [])]
+        k = next((i for i, w in enumerate(out) if float(w["start"]) >= b), len(out))
+        out = out[:k] + add + out[k:]
+        log(f"  Duyu boşluğu {a:.1f}–{b:.1f} sn yeniden yazıya döküldü: {len(add)} kelime")
+    return out, spent
+
+
 def wav_duration(data: bytes) -> float:
     with wave.open(io.BytesIO(data)) as w:
         return w.getnframes() / float(w.getframerate())
@@ -745,6 +791,10 @@ def execute(plan: Plan, client: Client, cap: int | None, ledger: Path, prompts: 
             if "words" not in doc:
                 raise TrTtsError(f"{sid}: Duyu yanıtında kelime zamanları yok (verbose_json + word)")
             secs = float(doc.get("duration") or duration)
+            words_, extra = fill_gaps(client, audio, doc["words"], j.key, sleep=sleep, log=log,
+                                     duration=duration)
+            doc = {**doc, "words": words_}
+            secs += extra
             ledger_add(ledger, month_key(now()), stt_seconds=secs)
             append_prompts(prompts, {"date": now().strftime("%Y-%m-%dT%H:%M:%SZ"), "segment": sid,
                                      "model": STT_MODEL, "voice": "-", "release": h.get("x-model-release", "-"),

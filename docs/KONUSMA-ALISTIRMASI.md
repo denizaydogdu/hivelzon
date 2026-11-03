@@ -22,6 +22,8 @@ Türk öğrencinin en sık sorunu "anlıyorum ama konuşamıyorum". Dinlediğini
 ## Konuş sekmesi: yönlendirmeli sahneler (H-090)
 MVP'de Konuş sekmesi "yakında" yerine 3 prova sahnesi (Maya'yla tanışma, yol sorma, Rosa'nın kafesinde sipariş) ve kısa mesaj görevleri sunar. Yapay zekâ yoktur: karakter satırları ve kabul edilen cevaplar önceden yazılmış, editör onayı bekleyen içeriktir (`icerik/_evren/konusma/`). Kurallar bu belgedekilerle aynıdır: cihazda tanıma, izin ilk kullanımda, ses ve yazı saklanmaz (sonuç `place = talk`), puan yok, 2 deneme + "Geç", dokunarak (seç ya da kelimelerle kur) baştan sona oynanır. Fark: her turda **birkaç doğal cevap** kabul edilir; söyleneni kabul için birinin **tam** duyulması gerekir; yakın seçenek duyulursa kibar tepkisi gösterilir.
 
+**Hi'nin Türkçe sesi (H-104, 2026-11-03):** Sahne girişi, tur görevi, kibar tepki, mesaj görevi ve ipucu PatientDesk Alania (`alania2-f1`) ile seslendirilir; yanında sade bir "dinle" düğmesi vardır, kendiliğinden çalmaz, ses yoksa görünmez. İngilizce ifadeler de Alania ile görevin söyleniş sözlüğüyle (`pronunciations`) okunur (kip a; ElevenLabs yok). Üretim: `tts_episode_tr.py --talk`; kaynakta `<alan>Audio`, pakette `talk/konusma-*.m4a`. Karakter replikleri bu kapsamda değildir.
+
 ## Fazlar
 | Faz | Ne | Ne zaman |
 |---|---|---|

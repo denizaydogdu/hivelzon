@@ -298,3 +298,137 @@ def test_hi_export_audio(tmp_path):
     assert "audio" not in out[1] and missing == ["hi-ses/bridge-y.mp3"]
     assert out[2] == {"id": "z", "textTr": "c"}
     assert written == [("bridge-x.mp3", "bridge-x.m4a")]
+
+
+# --- Konuş görevleri (H-104): Hi'nin Türkçe yönlendirmeleri, kip a (yalnız Alania) ----------------
+
+TALK = """{
+  "schemaVersion": 1,
+  "id": "cafe-x",
+  "kind": "scene",
+  "introTr": "Hilltop Café'desin. Bu bir prova.",
+  "pronunciations": [{"term": "Hilltop Café", "say_as": "Hiltap Kafe"}, {"term": "Here you are", "say_as": "Hiir yu ar"},
+                     {"term": "Unused", "say_as": "Anyuzd"}],
+  "character": {"nameTr": "Rosa", "speaker": "ROSA"},
+  "turns": [
+    {
+      "id": "t1",
+      "line": {"en": "Here you are.", "tr": "Buyurun."},
+      "promptTr": "Parayı uzatırken \\"Buyurun\\" de.",
+      "accept": ["Here you are.", "Here you go."],
+      "distractors": [
+        {"en": "Here are you.", "reactionTr": "Kelime sırası farklı: Here you are."}
+      ],
+      "targets": []
+    }
+  ]
+}
+"""
+
+MESSAGE = """{
+  "schemaVersion": 1,
+  "id": "note-x",
+  "kind": "message",
+  "taskTr": "Hi, kısa bir not yaz: 1–2 cümle.",
+  "taskSpeechTr": "Hi, kısa bir not yaz: bir ya da iki cümle.",
+  "pronunciations": [{"term": "Hi", "say_as": "Hay"}, {"term": "seven", "say_as": "sevın"}],
+  "check": {"all": [["seven"]], "hintTr": "Saati (seven) yazmayı unutma."},
+  "targets": []
+}
+"""
+
+
+@pytest.fixture
+def talk_root(root):
+    d = root / "_evren" / "konusma"
+    d.mkdir(parents=True)
+    (d / "cafe-x.json").write_text(TALK, encoding="utf-8")
+    (d / "note-x.json").write_text(MESSAGE, encoding="utf-8")
+    return root
+
+
+def run_talk(root, tr_client, en_client, *extra):
+    return tts_episode_tr.main(["--talk", "--root", str(root), *extra], tr_client=tr_client,
+                               en_client=en_client, finalize=fake_finalize, sleep=lambda s: None)
+
+
+def test_collect_talk_spots_roles_and_mode_a(talk_root):
+    vm = ep.VoiceMap.load(talk_root)
+    items = {it.stem: it for it in ep.collect_talk(talk_root, vm)}
+    assert set(items) == {"konusma-cafe-x-intro", "konusma-cafe-x-t1-prompt", "konusma-cafe-x-t1-d1",
+                          "konusma-note-x-task", "konusma-note-x-hint"}
+    assert {it.role for it in items.values()} == {"hi"}
+    # İngilizce ifade (ya da Türkçe ek alan özel ad) söyleniş sözlüğüyle: kip a; hiçbir zaman b (ElevenLabs yok).
+    assert {s: it.mode for s, it in items.items()} == {
+        "konusma-cafe-x-intro": "a", "konusma-cafe-x-t1-prompt": "tr", "konusma-cafe-x-t1-d1": "a",
+        "konusma-note-x-task": "a", "konusma-note-x-hint": "a"}
+    assert items["konusma-cafe-x-t1-d1"].pronunciations == [{"term": "Here you are", "say_as": "Hiir yu ar"}]
+    assert items["konusma-cafe-x-t1-prompt"].pronunciations is None
+    # Söylenen metin: `<alan>SpeechTr` varsa o.
+    assert items["konusma-note-x-task"].text == "Hi, kısa bir not yaz: bir ya da iki cümle."
+    assert all(it.out_dir == talk_root / "_evren" / "hi-ses" for it in items.values())
+    assert not any(it.has_ref for it in items.values())
+
+
+def test_talk_dry_run_counts_and_never_calls(talk_root, capsys, monkeypatch):
+    monkeypatch.delenv(tr.ENV_CAP, raising=False)
+
+    class Boom:
+        def speech(self, *a):
+            raise AssertionError("kuru çalışmada API çağrılmamalı")
+        transcribe = speech
+
+    def boom_en(*a):
+        raise AssertionError("Konuş seslerinde ElevenLabs çağrılmamalı")
+    assert run_talk(talk_root, Boom(), boom_en) == 0
+    out = capsys.readouterr().out
+    assert "Toplam: 5 ses" in out and "İngilizce 0 karakter" in out and "Kuru çalışma" in out
+
+
+def test_talk_execute_alania_only_updates_sources_and_is_idempotent(talk_root, tmp_path, monkeypatch, capsys):
+    monkeypatch.setenv(tr.ENV_CAP, "100000")
+    monkeypatch.setenv(tr.ENV_LEDGER, str(tmp_path / "tr-ledger.json"))
+    fc = FakeClient()
+
+    def boom_en(*a):
+        raise AssertionError("Konuş seslerinde ElevenLabs çağrılmamalı")
+    assert run_talk(talk_root, fc, boom_en, "--execute") == 0
+    assert {p["voice"] for p in fc.speech_calls} == {"alania2-f1"}
+    d1 = next(p for p in fc.speech_calls if p["input"].startswith("Kelime sırası"))
+    assert d1["pronunciations"] == [{"term": "Here you are", "say_as": "Hiir yu ar"}]
+    hi_dir = talk_root / "_evren" / "hi-ses"
+    for stem in ("konusma-cafe-x-intro", "konusma-cafe-x-t1-d1", "konusma-note-x-hint"):
+        assert (hi_dir / f"{stem}.mp3").exists()
+        al = json.loads((hi_dir / f"{stem}.align.json").read_text(encoding="utf-8"))
+        assert al["role"] == "hi" and al["voice_id"] == "alania2-f1"
+    # kaynak: `<alan>Audio` eklendi, el biçimi korundu (tek satırlık nesne tek satırda)
+    src = (talk_root / "_evren" / "konusma" / "cafe-x.json").read_text(encoding="utf-8")
+    assert ('{"en": "Here are you.", "reactionTr": "Kelime sırası farklı: Here you are.", '
+            '"reactionAudio": "hi-ses/konusma-cafe-x-t1-d1.mp3"}') in src
+    doc = json.loads(src)
+    assert doc["introAudio"] == "hi-ses/konusma-cafe-x-intro.mp3"
+    assert doc["turns"][0]["promptAudio"] == "hi-ses/konusma-cafe-x-t1-prompt.mp3"
+    msg = json.loads((talk_root / "_evren" / "konusma" / "note-x.json").read_text(encoding="utf-8"))
+    assert msg["taskAudio"] == "hi-ses/konusma-note-x-task.mp3"
+    assert msg["check"]["hintAudio"] == "hi-ses/konusma-note-x-hint.mp3"
+    # kayıt ve denetim
+    assert "konusma-cafe-x-intro" in (hi_dir / "PROMPTS.md").read_text(encoding="utf-8")
+    items = ep.collect_talk(talk_root, ep.VoiceMap.load(talk_root))
+    assert all(it.has_ref for it in items)
+    assert [i for i in ep.check_items(items) if i[0] == "error"] == []
+    # ikinci çalıştırma: hiçbir çağrı yok
+    fc2 = FakeClient()
+    capsys.readouterr()
+    assert run_talk(talk_root, fc2, boom_en, "--execute") == 0
+    assert fc2.speech_calls == [] and "0 ses kuruldu" in capsys.readouterr().out
+
+
+def test_talk_rejects_mixed_mode_b(talk_root):
+    p = talk_root / "_evren" / "konusma" / "cafe-x.json"
+    d = json.loads(p.read_text(encoding="utf-8"))
+    d["turns"][0]["distractors"][0]["reactionSpeechTr"] = "Kelime sırası farklı: {Here you are.}"
+    p.write_text(json.dumps(d, ensure_ascii=False), encoding="utf-8")
+    items = {it.stem: it for it in ep.collect_talk(talk_root, ep.VoiceMap.load(talk_root))}
+    it = items["konusma-cafe-x-t1-d1"]
+    assert it.mode == "a" and it.text == "Kelime sırası farklı: Here you are."
+    assert ep.plan_item(it, ep.VoiceMap.load(talk_root)).en == []

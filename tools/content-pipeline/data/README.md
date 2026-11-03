@@ -9,14 +9,18 @@
 - **Biçim:** `#` ile başlayan ilk satırlar atıf başlığıdır; okuyucu bunları atlar.
 - Uygulamanın "Lisanslar" ekranında da aynı atıf yer alır (H-042).
 
-## `lexicon_ccbysa/octanove-vocabulary-profile-c1c2-1.0.csv` (henüz depoda yok)
+## `lexicon_ccbysa/octanove-vocabulary-profile-c1c2-1.0.csv`
 
-C1 ve C2 kapsaması için (Kitaplık, H-066). **CC BY-SA 4.0** olduğundan CEFR-J'den ve hiVelzon'un özgün içeriğinden **ayrı veri seti** olarak bu alt klasörde durur (`docs/LISANS-RAPORU.md` §2.3, §3).
+> Octanove Vocabulary Profile C1/C2 v1.0 — Octanove Labs, Open Language Profiles. https://github.com/openlanguageprofiles/olp-en-cefrj (commit d4e45b75b3). Retrieved 2026-11-03. CC BY-SA 4.0.
 
+C1 ve C2 kapsaması için (Kitaplık, H-066; dilbilgisi ve bölümlerde de C1/C2 seviyesinde). **CC BY-SA 4.0** olduğundan CEFR-J'den ve hiVelzon'un özgün içeriğinden **ayrı veri seti** olarak bu alt klasörde durur (`docs/LISANS-RAPORU.md` §2.3, §3). Lisans bildirimi ve değişiklikler: `lexicon_ccbysa/README.md`.
+
+- **Eklendi:** 2026-11-03, kullanıcı onayıyla. Kaynak commit `d4e45b75b3` (olp-en-cefrj).
 - **Kaynak:** Octanove Vocabulary Profile C1/C2 v1.0, Octanove Labs, Open Language Profiles: https://github.com/openlanguageprofiles/olp-en-cefrj (README "Terms of use"). Lisans: https://creativecommons.org/licenses/by-sa/4.0/
-- **Biçim:** Özgün sütunlar `headword,pos,CEFR,notes`. Önerilen ek sütun `source` (değer `octanove`); yoksa okuyucu `octanove` varsayar. `#` ile başlayan satırlar atıf başlığıdır.
-- **Dosya yoksa:** C1/C2 kitap ve bölümlerinde kapsama denetlenmez; book-lint ve content-lint "liste yok; kapsama denetlenmedi" uyarısı verir. Araçlar bu dosyayı kendileri indirmez.
-- **Ekleme adımları:** `bitenler/H-066-kitap-paketi-boru-hatti.md` → Notlar.
+- **İçerik:** 2.136 veri satırı (C1 1.111, C2 1.025).
+- **Biçim:** Özgün sütunlar `headword,pos,CEFR,notes`; eklenen `source` sütunu (her satırda `octanove`). Başta `#` ile başlayan iki atıf satırı (kaynak, commit, alınma tarihi, lisans, değişiklikler); okuyucu bunları atlar.
+- **Kullanım:** `hvpipeline/cefr.py` C1/C2 için CEFR-J'nin tamamına bu listeyi ekler. Dosya kaldırılırsa C1/C2 kapsaması denetlenmez ("liste yok; kapsama denetlenmedi" uyarısı). Araçlar dosyayı kendileri indirmez.
+- Uygulamanın "Lisanslar" ekranında atıf yer alır (H-042; `mobile/lib/l10n/tr_strings.dart`, `AboutTexts.sources`).
 
 ## `proper_nouns.txt`
 

@@ -1,6 +1,6 @@
 # H-102: Ana Sayfa bilgi kartları Profil'e, kompakt düğmeler
 
-- **Durum:** Devam ediyor — uygulandı, testler yeşil (1504/1504), simülatörde gösterildi (2026-11-01), kullanıcı geri bildirimi + commit bekliyor (kod yerelde)
+- **Durum:** Devam ediyor — uygulandı, testler yeşil (1504/1504), simülatörde gösterildi (2026-11-01), commit `2988672` (CI `41315442268` yeşil); kullanıcı denemesi bekliyor
 - **Tür:** Mobil arayüz
 - **Öncelik:** Orta
 - **Bağımlılık:** H-038 (hesap kartı), H-095 (metin güncellendi kartı),

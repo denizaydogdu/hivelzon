@@ -6,6 +6,8 @@ import 'package:hivelzon/app/theme.dart';
 import 'package:hivelzon/features/notebook/data/notebook_store.dart';
 import 'package:hivelzon/features/notebook/domain/notebook_item.dart';
 import 'package:hivelzon/features/player/data/progress_repository.dart';
+import 'package:hivelzon/features/player/presentation/player_screen.dart'
+    show videoControllerFactoryProvider;
 import 'package:hivelzon/features/talk/presentation/talk_screen.dart';
 import 'package:hivelzon/features/talk/presentation/talk_task_screen.dart';
 import 'package:hivelzon/shared/content/content_providers.dart';
@@ -16,6 +18,7 @@ import 'package:hivelzon/shared/speech/speech_providers.dart';
 import 'package:hivelzon/shared/speech/speech_recognizer_port.dart';
 import 'package:hivelzon/shared/storage/app_database.dart';
 import 'package:hivelzon/shared/storage/storage_providers.dart';
+import 'package:video_player/video_player.dart';
 
 import 'fake_content_source.dart';
 import 'fake_example_speech.dart';
@@ -44,6 +47,9 @@ class TalkHarness {
   final source = FakeContentSource(packageIds: const ['A1-001', 'A1-002']);
   final progress = InMemoryProgressRepository();
   late GoRouter router;
+
+  /// Hi'nin Türkçe sesi için açılan çalarlar (H-104); ağ ve eklenti yok.
+  final List<FakeAudioController> audio = [];
 
   Future<void> dispose() => db.close();
 
@@ -102,6 +108,11 @@ class TalkHarness {
           speechRecognizerProvider.overrideWithValue(recognizer),
           speechVisibleProvider.overrideWithValue(speech),
           exampleSpeechProvider.overrideWithValue(voice as ExampleSpeech),
+          videoControllerFactoryProvider.overrideWithValue((uri) {
+            final c = FakeAudioController(uri);
+            audio.add(c);
+            return c;
+          }),
         ],
         child: RepaintBoundary(
           key: const ValueKey('golden'),
@@ -141,5 +152,41 @@ class TalkHarness {
     await tester.pump();
     await tester.tap(f);
     await settle(tester);
+  }
+}
+
+/// Sesi çalınmış gibi davranan çalar (Hi'nin Türkçe sesi, H-104).
+class FakeAudioController extends VideoPlayerController {
+  FakeAudioController(this.uri) : super.networkUrl(uri);
+
+  final Uri uri;
+  bool played = false;
+
+  @override
+  Future<void> initialize() async {
+    value = value.copyWith(
+      isInitialized: true,
+      duration: const Duration(seconds: 3),
+    );
+  }
+
+  @override
+  Future<void> play() async {
+    played = true;
+    value = value.copyWith(isPlaying: true);
+  }
+
+  @override
+  Future<void> pause() async {
+    value = value.copyWith(isPlaying: false);
+  }
+
+  /// Çalar bırakıldı mı (kart ya da panel kapanınca ses durur; H-105).
+  bool disposed = false;
+
+  @override
+  Future<void> dispose() async {
+    disposed = true;
+    await super.dispose();
   }
 }

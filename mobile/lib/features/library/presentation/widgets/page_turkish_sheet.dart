@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../app/design/design.dart';
 import '../../../../l10n/tr_strings.dart';
 import '../../../../shared/ui/ui.dart';
+import '../../../hi/presentation/hi_listen_button.dart';
 import '../../application/reader_controller.dart';
 import '../../domain/book.dart';
 
@@ -10,11 +11,17 @@ import '../../domain/book.dart';
 /// cümle, sırasıyla (bölümün ilk sayfasında başlık önce). Okunan / seçili
 /// cümle hafif vurgulu. Bir cümleye dokununca panel kapanır ve cümlenin
 /// sırası döner (−1: başlık); ekran İngilizcesini vurgular. Kapat: null.
+///
+/// Sayfanın Türkçe sesi varsa (H-105) küçük **Türkçesini dinle** düğmesi:
+/// yalnız dokununca çalar; İngilizce anlatımla aynı anda çalmaz (Türkçe
+/// başlarken anlatım duraklar, anlatım yeniden başlarsa Türkçe durur);
+/// panel kapanınca durur.
 Future<int?> showPageTurkishSheet(
   BuildContext context, {
   required Book book,
   required int pageIndex,
   ReaderPlace? current,
+  ReaderController? controller,
 }) => showAppSheet<int>(
   context: context,
   title: ReaderTexts.pageTurkish,
@@ -22,6 +29,7 @@ Future<int?> showPageTurkishSheet(
     book: book,
     pageIndex: pageIndex,
     current: current?.pageIndex == pageIndex ? current!.sentenceIndex : null,
+    controller: controller,
     onPick: (i) => Navigator.of(context).pop(i),
   ),
 );
@@ -34,7 +42,11 @@ class PageTurkishList extends StatelessWidget {
     required this.pageIndex,
     required this.onPick,
     this.current,
+    this.controller,
   });
+
+  /// Kitabın İngilizce anlatımı (Türkçe sesle çakışmasın diye; H-105).
+  final ReaderController? controller;
 
   final Book book;
   final int pageIndex;
@@ -47,6 +59,8 @@ class PageTurkishList extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final lines = book.turkishOf(pageIndex);
+    final audio = book.pages[pageIndex].trAudio;
+    final english = controller;
     return ListView(
       key: const ValueKey('page-turkish'),
       shrinkWrap: true,
@@ -60,6 +74,38 @@ class PageTurkishList extends StatelessWidget {
             ),
           ),
         ),
+        if (audio != null)
+          Padding(
+            padding: const EdgeInsets.only(bottom: AppSpace.s8),
+            child: Row(
+              children: [
+                HiListenButton(
+                  key: const ValueKey('page-tr-listen'),
+                  path: audio,
+                  bookId: book.id,
+                  label: ReaderTexts.pageTurkishListen,
+                  beforePlay: english == null
+                      ? null
+                      : () async {
+                          if (english.isPlaying) await english.pause();
+                        },
+                  stopOn: english,
+                  shouldStop: english == null ? null : () => english.isPlaying,
+                ),
+                const SizedBox(width: AppSpace.s8),
+                Expanded(
+                  child: ExcludeSemantics(
+                    child: Text(
+                      ReaderTexts.pageTurkishListen,
+                      style: theme.textTheme.labelLarge?.copyWith(
+                        color: AppPalette.ink700,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
         for (final (i, tr) in lines)
           Semantics(
             button: true,

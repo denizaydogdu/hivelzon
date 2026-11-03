@@ -24,6 +24,15 @@
     "Orrin",
     "Pell"
   ],
+  "narrationTr": {
+    "role": "hi",
+    "pronunciations": [
+      {
+        "term": "Ines",
+        "say_as": "İnes"
+      }
+    ]
+  },
   "narration": {
     "modelId": "eleven_v3",
     "speed": 1.0,

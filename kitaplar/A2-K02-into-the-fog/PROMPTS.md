@@ -70,3 +70,39 @@ Kurallar: her ücretli üretimden **önce** `higgsfield generate cost` ile maliy
 
 | Tarih (UTC) | Bölüm | Parça | Ses | Model | Hız | Karakter | Metin sha256 | Dosya |
 |---|---|---|---|---|---|---|---|---|
+
+## Türkçe seslendirme kayıtları (tts_tr.py)
+
+| Tarih (UTC) | Parça | Model | Ses | Sürüm | Karakter | Ses (sn) | İstek kimliği | Metin sha256 |
+|---|---|---|---|---|---|---|---|---|
+| 2026-11-03T17:15:53Z | p01 | alania-v2 | alania2-f1 | alania-v2.1 | 568 | 38.79 | 922d0afde0d64804bd34e63c3b07bc91 | 9bfcf9c8d13e50d5 |
+| 2026-11-03T17:15:56Z | p01 | duyu-1 | - | - | - | 38.79 | - | 9bfcf9c8d13e50d5 |
+| 2026-11-03T17:16:03Z | p02 | alania-v2 | alania2-f1 | alania-v2.1 | 678 | 50.25 | 71968d29841749d9a6bdbce553b1f4d3 | e8dc1ac275a4c778 |
+| 2026-11-03T17:16:07Z | p02 | duyu-1 | - | - | - | 50.25 | - | e8dc1ac275a4c778 |
+| 2026-11-03T17:16:15Z | p03 | alania-v2 | alania2-f1 | alania-v2.1 | 547 | 39.86 | 0d00fbae62fd478fa0ca7d5f7ffe30bd | 1a60da4ee72e23cf |
+| 2026-11-03T17:16:18Z | p03 | duyu-1 | - | - | - | 39.86 | - | 1a60da4ee72e23cf |
+| 2026-11-03T17:16:25Z | p04 | alania-v2 | alania2-f1 | alania-v2.1 | 667 | 46.48 | 36b5919066d4456e889fe911f3935ed9 | 5f6d13b2fda9fe52 |
+| 2026-11-03T17:16:29Z | p04 | duyu-1 | - | - | - | 46.48 | - | 5f6d13b2fda9fe52 |
+| 2026-11-03T17:16:35Z | p05 | alania-v2 | alania2-f1 | alania-v2.1 | 496 | 36.29 | 46555450840d46e5a3a7140b6dc91947 | a22e8ca301eeadd6 |
+| 2026-11-03T17:16:38Z | p05 | duyu-1 | - | - | - | 36.29 | - | a22e8ca301eeadd6 |
+| 2026-11-03T17:16:44Z | p06 | alania-v2 | alania2-f1 | alania-v2.1 | 570 | 38.74 | 3ef635c0327b45da88e4f8b819cf67d6 | f035e7b2578c708d |
+| 2026-11-03T17:16:47Z | p06 | duyu-1 | - | - | - | 38.74 | - | f035e7b2578c708d |
+| 2026-11-03T17:16:53Z | p07 | alania-v2 | alania2-f1 | alania-v2.1 | 501 | 34.86 | 306dcbdf90404b1185912708c4ba8e4d | 1f68b8972d556389 |
+| 2026-11-03T17:16:57Z | p07 | duyu-1 | - | - | - | 34.86 | - | 1f68b8972d556389 |
+| 2026-11-03T17:17:03Z | p08 | alania-v2 | alania2-f1 | alania-v2.1 | 585 | 40.96 | b0adeff112a841c4ad8348ca724e177a | 519a0edffd045820 |
+| 2026-11-03T17:17:06Z | p08 | duyu-1 | - | - | - | 40.96 | - | 519a0edffd045820 |
+| 2026-11-03T17:17:12Z | p09 | alania-v2 | alania2-f1 | alania-v2.1 | 480 | 35.37 | 22d082c2a2b74b1d87881942b67d9d36 | a68cd9de29f9ece2 |
+| 2026-11-03T17:17:15Z | p09 | duyu-1 | - | - | - | 35.37 | - | a68cd9de29f9ece2 |
+| 2026-11-03T17:17:21Z | p10 | alania-v2 | alania2-f1 | alania-v2.1 | 501 | 35.5 | e6bd7c853e7840af9c71d1d020fed7e3 | 3801c1a60b368dc8 |
+| 2026-11-03T17:17:24Z | p10 | duyu-1 | - | - | - | 35.5 | - | 3801c1a60b368dc8 |
+| 2026-11-03T17:17:29Z | p11 | alania-v2 | alania2-f1 | alania-v2.1 | 474 | 34.92 | 388cc7c6cb2f41f6969a257049cb4117 | 2c15201122953782 |
+| 2026-11-03T17:17:32Z | p11 | duyu-1 | - | - | - | 34.92 | - | 2c15201122953782 |
+| 2026-11-03T17:17:38Z | p12 | alania-v2 | alania2-f1 | alania-v2.1 | 428 | 31.89 | 6aebdbe9e1124a899c741fb4cad70577 | ea46de0a671fa720 |
+| 2026-11-03T17:17:41Z | p12 | duyu-1 | - | - | - | 31.89 | - | ea46de0a671fa720 |
+| 2026-11-03T17:17:46Z | p13 | alania-v2 | alania2-f1 | alania-v2.1 | 432 | 30.66 | 000f6b0997a842e3a178e149b3182288 | e47f4763423802df |
+| 2026-11-03T17:17:49Z | p13 | duyu-1 | - | - | - | 30.66 | - | e47f4763423802df |
+| 2026-11-03T17:17:54Z | p14 | alania-v2 | alania2-f1 | alania-v2.1 | 765 | 52.28 | 107cebb8a93b43cb841b5fc2540dbd72 | 5454ca617026bc1c |
+| 2026-11-03T17:18:02Z | p14 | duyu-1 | - | - | - | 52.28 | - | 5454ca617026bc1c |
+| 2026-11-03T17:18:09Z | p15 | alania-v2 | alania2-f1 | alania-v2.1 | 546 | 36.01 | 5d6605b0b68341d7b3be64fb15d98688 | a3aaba8914078fd4 |
+| 2026-11-03T17:18:12Z | p15 | duyu-1 | - | - | - | 36.01 | - | a3aaba8914078fd4 |
+| 2026-11-03T17:27:47Z | p13 | duyu-1 | - | - | - | 30.66 | - | e47f4763423802df |

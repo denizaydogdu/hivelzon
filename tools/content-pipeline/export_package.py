@@ -137,6 +137,10 @@ def main(argv: list[str] | None = None) -> int:
             h = sd["hi"]
             print(f"   Hi verisi: {h['errorCatalog']} hata notu, {h['topicIntros']} konu tanıtımı, "
                   f"{h['bridgeTasks']} köprü görevi, {h.get('audio', 0)} Türkçe ses (eksik {len(h.get('audioMissing', []))}), {h['lookup']} sözlük girdisi ({h['bytes'] / 1e3:.0f} kB)")
+        if "talk" in sd:
+            t = sd["talk"]
+            print(f"   Konuş: {t['tasks']} görev ({t['scenes']} sahne, {t['messages']} mesaj), {t['audio']} karakter satırı "
+                  f"sesi, Hi'nin Türkçe sesi {t.get('hiAudio', 0)} (eksik {len(t.get('hiAudioMissing', []))})")
         if "clips" in sd:
             c = sd["clips"]
             print(f"   Keşfet klipleri: {c['count']} klip ({c['seconds']} sn, {c['quizzes']} quiz), "

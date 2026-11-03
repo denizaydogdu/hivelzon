@@ -8,6 +8,8 @@ Kullanım:
     P=tools/content-pipeline/.venv/bin/python
     # Kuru çalışma (varsayılan): API çağrılmaz; her ses, kip, karakter (Türkçe/İngilizce) yazılır.
     $P tools/content-pipeline/tts_episode_tr.py icerik/A1-00[1-4]-* --hi
+    # Konuş görevlerinde Hi'nin Türkçe yönlendirmeleri (H-104; yalnız Alania, kip a, ElevenLabs yok):
+    $P tools/content-pipeline/tts_episode_tr.py --talk
 
     # Gerçek üretim (iki tavan da tanımlı olmalı):
     HIVELZON_TR_TTS_MONTHLY_CHAR_CAP=500000 \\
@@ -16,7 +18,8 @@ Kullanım:
     # Karışık dil karşılaştırması (a: tümü Alania + söyleniş sözlüğü, b: Alania + Sarah):
     $P tools/content-pipeline/tts_episode_tr.py icerik/A1-002-* --only b2_17_hi --compare-dir .yerel/h083 --execute
 
-Çıktı: bölümde audio/<ad>.mp3 + audio/<ad>.align.json; Hi verisinde icerik/_evren/hi-ses/<ad>.{mp3,align.json}.
+Çıktı: bölümde audio/<ad>.mp3 + audio/<ad>.align.json; Hi verisinde ve Konuş'ta (konusma-<görev>-<yer>)
+icerik/_evren/hi-ses/<ad>.{mp3,align.json}.
 Ödenmiş ham önbellek: audio/_raw/ (git dışı). Eski ElevenLabs Türkçe sesleri audio/_raw/elevenlabs/ altına
 kopyalanır. Sesi hazır olup kaynağında başvurusu olmayan yerlere `audio` eklenir (kurgu.json el biçimi korunur).
 Anahtarlar: PD_API_KEY (ortam ya da ~/.config/hivelzon/patientdesk.env), ELEVENLABS_API_KEY (ortam ya da
@@ -43,6 +46,8 @@ def main(argv: list[str] | None = None, tr_client=None, en_client=None, finalize
     ap = argparse.ArgumentParser(description="hiVelzon Türkçe sesler (Alania + Duyu; İngilizce ifadeler Sarah)")
     ap.add_argument("episodes", nargs="*", help="bölüm klasörleri (icerik/A1-00x-…)")
     ap.add_argument("--hi", action="store_true", help="Hi verisini de seslendir (hata notu, konu tanıtımı, köprü görevi)")
+    ap.add_argument("--talk", action="store_true",
+                    help="Konuş görevlerindeki Hi yönlendirmelerini de seslendir (H-104; yalnız Alania, kip a)")
     ap.add_argument("--root", default=str(ICERIK), help="içerik kökü (ses haritası ve Hi verisi)")
     g = ap.add_mutually_exclusive_group()
     g.add_argument("--dry-run", action="store_true", default=True, help="varsayılan: API çağrılmaz")
@@ -59,8 +64,8 @@ def main(argv: list[str] | None = None, tr_client=None, en_client=None, finalize
                          "b kipindeki satırların Türkçe parçaları önbelleğe (_raw/) alınır, satır İngilizce "
                          "parçası gelince tamamlanır")
     a = ap.parse_args(argv)
-    if not a.episodes and not a.hi:
-        ap.error("bölüm klasörü ya da --hi gerekli")
+    if not a.episodes and not a.hi and not a.talk:
+        ap.error("bölüm klasörü, --hi ya da --talk gerekli")
 
     root = Path(a.root)
     try:
@@ -70,6 +75,8 @@ def main(argv: list[str] | None = None, tr_client=None, en_client=None, finalize
             items += ep.collect_episode(Path(d), vm)
         if a.hi:
             items += ep.collect_hi(root, vm)
+        if a.talk:
+            items += ep.collect_talk(root, vm)
         if a.only:
             items = [it for it in items if it.stem in a.only]
             if not items:

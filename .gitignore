@@ -78,6 +78,8 @@ kitaplar/**/*.webp
 kitaplar/**/*.mp3
 kitaplar/**/*.m4a
 kitaplar/**/audio/_parts/
+# Sayfanın Türkçesi (H-105): ödenmiş ham Alania WAV + Duyu önbelleği; hizalama (audio/tr/*.align.json) depoda.
+kitaplar/**/_raw/
 kitaplar/**/_build/
 
 # Dilbilgisi dersleri (H-077): ses git dışında; hizalamalar (audio/**/*.align.json) ve

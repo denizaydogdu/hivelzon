@@ -17,6 +17,10 @@ Ses: ücretli üretim yok. Karakter satırı bölüm kaydında **aynen** varsa (
 `KONUŞAN|metin`) o kayıt kesilmeden pakete alınır; yoksa uygulama cihazın İngilizce sesini kullanır.
 Görseller bölüm paketinin `stills/` görselleridir (kopyalanmaz; uygulama bölüm paketinden okur).
 
+Hi'nin Türkçe yönlendirmeleri (H-104): giriş, görev, tur görevi, kibar tepki ve ipucu PatientDesk Alania ile
+seslendirilir (`tts_episode_tr.py --talk`; yalnız Alania, İngilizce ifadeler söyleniş sözlüğüyle). Kaynakta
+`<alan>Audio` = `hi-ses/konusma-<görev>-<yer>.mp3`; pakette `talk/konusma-<görev>-<yer>.m4a`. Medya yoksa alan düşer.
+
 Paket: `/packages/_season/S<n>/talk.json` (+ `talk/<görev>-<tur>.m4a`); season.json → `talk` özeti.
 """
 
@@ -395,6 +399,35 @@ def lint_task(path: Path, doc: dict, icerik_root: Path) -> tuple[list[Issue], di
     return issues, rep
 
 
+def _lint_hi_voice(path: Path, doc: dict, root: Path, rep: dict) -> list[Issue]:
+    """H-104: Hi'nin Türkçe sesleri (ses haritası varsa). Başvuru beklenen adda olmalı ve hizalaması bulunmalı;
+    medya (mp3) git dışıdır, yoksa uyarı."""
+    from .tts_episode_tr import (VOICE_MAP_FILE, EpisodeTtsError, VoiceMap, _at, check_items, collect_talk_task,
+                                 talk_audio_ref)
+    if not (root / VOICE_MAP_FILE).exists():
+        return []
+    try:
+        items = collect_talk_task(path, doc, root, VoiceMap.load(root))
+    except (EpisodeTtsError, KeyError, ValueError, TypeError) as e:
+        return [Issue("error", "tr-voice", f"{doc.get('id')}: {e}")]
+    issues = [Issue(lv, code, msg) for lv, code, msg in check_items(items)]
+    refs = 0
+    for it in items:
+        _, _, jpath, akey = it.target
+        ref = _at(doc, jpath).get(akey)
+        if not ref:
+            continue
+        refs += 1
+        if ref != talk_audio_ref(it.stem):
+            issues.append(Issue("error", "tr-voice", f"{it.where}: {akey} \"{ref}\" olmalı: {talk_audio_ref(it.stem)}"))
+        elif not it.align().exists():
+            issues.append(Issue("error", "tr-voice", f"{it.where}: {akey} var ama hizalama yok ({it.align().name})"))
+        elif not it.audio().exists():
+            issues.append(Issue("warning", "talk-media", f"{it.where}: ses dosyası yok (git dışı medya): {ref}"))
+    rep["hiVoice"] = f"{refs}/{len(items)}"
+    return issues
+
+
 def lint_talk(icerik_root: Path) -> list[tuple[str, list[Issue], dict]]:
     out = []
     try:
@@ -404,6 +437,7 @@ def lint_talk(icerik_root: Path) -> list[tuple[str, list[Issue], dict]]:
     seen: set[str] = set()
     for p, doc in tasks:
         issues, rep = lint_task(p, doc, icerik_root)
+        issues += _lint_hi_voice(p, doc, Path(icerik_root), rep)
         tid = str(doc.get("id", p.stem))
         if tid in seen:
             issues.append(Issue("error", "talk-schema", f"{tid}: aynı kimlik iki kez"))
@@ -416,6 +450,10 @@ def lint_talk(icerik_root: Path) -> list[tuple[str, list[Issue], dict]]:
 
 def _episode_number(content_id: str) -> int:
     return int(content_id.split("-")[1])
+
+
+HI_AUDIO_KEYS = ("introAudio", "taskAudio", "hintAudio", "promptAudio", "reactionAudio")
+SOURCE_ONLY = ("pronunciations",)
 
 
 def export_talk(icerik_root: Path, season: int, out: Path, audio=None) -> dict | None:
@@ -435,9 +473,40 @@ def export_talk(icerik_root: Path, season: int, out: Path, audio=None) -> dict |
     adir = out / TALK_AUDIO_DIR
     used: set[str] = set()
     missing: list[str] = []
+    hi_missing: list[str] = []
+    hi_count = 0
     pkg_tasks = []
+
+    def write_audio(src: Path, rel: str) -> None:
+        adir.mkdir(parents=True, exist_ok=True)
+        tmp = adir / f".tmp-{Path(rel).name}"  # ffmpeg biçimi uzantıdan çıkarır
+        tmp.unlink(missing_ok=True)
+        audio(src, tmp)
+        tmp.replace(out / rel)
+        used.add(rel)
+
+    def hi_voice(obj: dict) -> dict:
+        """H-104: `<alan>SpeechTr` ve söyleniş sözlüğü düşer; `<alan>Audio` (hi-ses/…mp3) → talk/…m4a."""
+        nonlocal hi_count
+        obj = {k: v for k, v in obj.items() if not k.endswith("SpeechTr") and k not in SOURCE_ONLY}
+        for k in HI_AUDIO_KEYS:
+            src = obj.pop(k, None)
+            if not src:
+                continue
+            f = root / "_evren" / src
+            rel = f"{TALK_AUDIO_DIR}/{Path(src).stem}.m4a"
+            if audio is not None and f.exists():
+                write_audio(f, rel)
+                obj[k] = rel
+                hi_count += 1
+            else:
+                hi_missing.append(src)
+        return obj
+
     for _, doc in tasks:
-        task = {k: v for k, v in doc.items() if k not in ("schemaVersion", "author", "date", "approvedBy")}
+        task = hi_voice({k: v for k, v in doc.items() if k not in ("schemaVersion", "author", "date", "approvedBy")})
+        if isinstance(task.get("check"), dict):
+            task["check"] = hi_voice(task["check"])
         task["unlockEpisode"] = _episode_number(doc["unlockAfter"])
         if doc.get("kind") == "scene":   # görevin hedefleri = turların hedefleri (sırayla, tekil)
             task["targets"] = list(dict.fromkeys(tg for t in doc["turns"] for tg in t.get("targets") or []))
@@ -453,19 +522,16 @@ def export_talk(icerik_root: Path, season: int, out: Path, audio=None) -> dict |
             src = ep / "audio" / f"{rec}.mp3"
             rel = f"{TALK_AUDIO_DIR}/{doc['id']}-{name}.m4a"
             if audio is not None and src.exists():
-                adir.mkdir(parents=True, exist_ok=True)
-                tmp = adir / f".tmp-{doc['id']}-{name}.m4a"  # ffmpeg biçimi uzantıdan çıkarır
-                tmp.unlink(missing_ok=True)
-                audio(src, tmp)
-                tmp.replace(out / rel)
+                write_audio(src, rel)
                 line["audio"] = rel
-                used.add(rel)
             else:
                 missing.append(f"{ep.name}/audio/{rec}.mp3")
             return line
 
         if doc.get("kind") == "scene":
-            task["turns"] = [{**t, "line": with_audio(t["line"], t["id"])} for t in doc["turns"]]
+            task["turns"] = [{**hi_voice(t), "line": with_audio(t["line"], t["id"]),
+                              "distractors": [hi_voice(d) for d in t.get("distractors") or []]}
+                             for t in doc["turns"]]
             if doc.get("outro"):
                 task["outro"] = with_audio(doc["outro"], "outro")
         pkg_tasks.append(task)
@@ -481,5 +547,6 @@ def export_talk(icerik_root: Path, season: int, out: Path, audio=None) -> dict |
     return {"path": TALK_PACKAGE_FILE, "tasks": len(pkg_tasks),
             "scenes": sum(1 for t in pkg_tasks if t["kind"] == "scene"),
             "messages": sum(1 for t in pkg_tasks if t["kind"] == "message"),
-            "audio": len(used), "audioMissing": missing,
+            "audio": len(used) - hi_count, "audioMissing": missing,
+            "hiAudio": hi_count, "hiAudioMissing": hi_missing,
             "bytes": (out / TALK_PACKAGE_FILE).stat().st_size}

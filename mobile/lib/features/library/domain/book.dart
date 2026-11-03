@@ -219,6 +219,7 @@ class BookPage {
     required this.chapterId,
     required this.sentences,
     this.image,
+    this.trAudio,
   });
 
   factory BookPage.fromJson(Map<String, dynamic> j) => BookPage(
@@ -226,6 +227,7 @@ class BookPage {
     number: (j['number'] as num).toInt(),
     chapterId: j['chapter'] as String,
     image: j['image'] as String?,
+    trAudio: j['trAudio'] as String?,
     sentences: [
       for (final s in (j['sentences'] as List? ?? const []))
         BookSentence.fromJson((s as Map).cast<String, dynamic>()),
@@ -240,6 +242,10 @@ class BookPage {
 
   /// `images/p01.webp` ya da resimsiz sayfada null (palet rengiyle çizilir).
   final String? image;
+
+  /// Sayfanın Türkçesinin sesi (H-105): `audio/tr/p01.m4a`; yoksa null
+  /// ("Türkçesini dinle" düğmesi görünmez).
+  final String? trAudio;
   final List<BookSentence> sentences;
 
   /// Paragraf sırasıyla cümleler.

@@ -64,13 +64,20 @@ IRREGULAR = {
     "written": "write", "drawn": "draw", "rung": "ring",
     # -ie fiilleri: lie → lying
     "lying": "lie", "dying": "die", "tying": "tie",
+    # C1/C2 kitaplarında görülen eksikler (2026-11-03). Başsözcük listede yoksa yine liste dışı sayılır.
+    "became": "become", "feet": "foot", "laid": "lay", "lit": "light", "swung": "swing", "slid": "slide",
+    "smelt": "smell", "blew": "blow", "shrank": "shrink", "burnt": "burn", "learnt": "learn",
+    "spilt": "spill", "torn": "tear", "strung": "string", "halves": "half", "shelves": "shelf",
+    "loaves": "loaf", "gentlemen": "gentleman", "fishermen": "fisherman", "misunderstood": "misunderstand",
+    "rebuilt": "rebuild",
 }
 
 # "'s" yalnızca bu sözcüklerde "is"; diğerlerinde iyelik ekidir ve atılır.
 S_IS = {"it", "what", "that", "he", "she", "there", "where", "who", "here", "how"}
 NT_BASE = {"can": "can", "won": "will", "don": "do", "doesn": "does", "didn": "did",
            "isn": "is", "aren": "are", "wasn": "was", "weren": "were", "couldn": "could",
-           "shouldn": "should", "wouldn": "would", "haven": "have", "hasn": "has", "hadn": "had", "mustn": "must"}
+           "shouldn": "should", "wouldn": "would", "haven": "have", "hasn": "has", "hadn": "had", "mustn": "must",
+           "needn": "need", "mightn": "might", "oughtn": "ought", "daren": "dare"}
 OTHER_CONTR = {"m": "am", "re": "are", "ll": "will", "ve": "have", "d": "would"}
 
 SUFFIXES = (("ies", "y"), ("es", ""), ("s", ""), ("ied", "y"), ("ed", ""), ("ed", "e"),
@@ -115,6 +122,7 @@ def load_wordlist(level: str = "A1", path: str | None = None, extra: str | None 
     allowed: set[str] = set()
     lv: dict[str, str] = {}
     src: dict[str, str] = {}
+    multi: dict[str, str] = {}    # çok sözcüklü başsözcüklerin parçaları -> en düşük seviye
     max_i = LEVELS.index(level) if level in LEVELS else len(CEFRJ_LEVELS) - 1
 
     def add(rows: list[dict], default_source: str) -> None:
@@ -132,12 +140,25 @@ def load_wordlist(level: str = "A1", path: str | None = None, extra: str | None 
                     src[h] = r.get("source") or default_source
                 if LEVELS.index(cefr) <= max_i:
                     allowed.add(h)
+                # Çok sözcüklü başsözcük (according to, ought to): kapsama tek sözcük token'larıyla sayılır;
+                # başka satırda seviyesi olmayan parçalar başsözcüğün seviyesini alır.
+                parts = h.split()
+                for part in parts if len(parts) > 1 else ():
+                    if part not in multi or LEVELS.index(cefr) < LEVELS.index(multi[part]):
+                        multi[part] = cefr
 
     add(_csv_rows(p), "cefrj")
     if level not in CEFRJ_LEVELS:
         ep = Path(extra) if extra else OCTANOVE
         if ep.exists():
             add(_csv_rows(ep), "octanove")
+    for part, cefr in multi.items():
+        if part in lv:          # tek başına da başsözcükse kendi seviyesi geçerli
+            continue
+        lv[part] = cefr
+        src[part] = "multiword"
+        if LEVELS.index(cefr) <= max_i:
+            allowed.add(part)
     allowed.update({"oclock", "not"})
     return Wordlist(allowed, lv, level, src)
 
@@ -167,6 +188,9 @@ def tokens(text: str) -> list[str]:
     for w in _TOKEN_RE.findall(low):
         if w == "o'clock":
             out.append("oclock")
+            continue
+        if w == "cannot":
+            out += ["can", "not"]
             continue
         if "'" not in w:
             out.append(w)

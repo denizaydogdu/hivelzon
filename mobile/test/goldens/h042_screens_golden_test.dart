@@ -243,6 +243,15 @@ void main() {
       ),
       findsOneWidget,
     );
+    expect(
+      find.textContaining(
+        'Octanove Vocabulary Profile C1/C2 v1.0. Octanove Labs, Open Language '
+        'Profiles. Retrieved from '
+        'https://github.com/openlanguageprofiles/olp-en-cefrj '
+        '(commit d4e45b75b3) on 03/11/26.',
+      ),
+      findsOneWidget,
+    );
     for (final needle in [
       'Creative Commons Attribution-ShareAlike 4.0',
       'Copyright (c) 2022 Open Spaced Repetition',

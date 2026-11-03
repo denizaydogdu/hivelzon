@@ -40,7 +40,10 @@
     "Kemerburnu",
     "Çınaraltı",
     "Sakızlı",
-    "Christmas"
+    "Christmas",
+    "English",
+    "Turkish",
+    "Turk"
   ],
   "narration": {
     "modelId": "eleven_v3",

@@ -4,6 +4,7 @@
     pages.json     sayfa → cümle → kelime; `start`/`end` sn (bölüm sesi içinde), `tr`, `gloss`
     audio/<bölüm>.m4a   AAC 96k, -16 LUFS (kitabın bütün bölümleri birlikte ölçülür, tek kazanç)
     images/<sayfa>.webp ve images/cover.webp   genişlik 1080, WebP q80
+    audio/tr/<sayfa>.m4a  sayfanın Türkçesinin sesi (H-105, isteğe bağlı; pages.json `trAudio`)
     manifest.json  dosya listesi, boyut, sha256, ses düzeyi, anlatım temposu, eksik medya
 
 Anlatım temposu (H-069, pacing.py): `narration.pacing` (yoksa seviye varsayılanı) etkinse bölüm sesi
@@ -23,7 +24,7 @@ import tempfile
 from dataclasses import dataclass, field
 from pathlib import Path
 
-from . import pacing
+from . import booktr, pacing
 from .align import Alignment, AlignmentMismatch, sentence_timings
 from .book import Book, BookError, text_sha256
 from .booklint import annotate, load_translation, word_count
@@ -80,6 +81,8 @@ class BookExport:
     errors: list[str] = field(default_factory=list)
     translation_misses: list[Miss] = field(default_factory=list)
     pacing: dict = field(default_factory=dict)
+    tr_audio: dict = field(default_factory=dict)
+    tr_missing: list[dict] = field(default_factory=list)
 
 
 def _sentence(tr, s, timing: dict | None, misses: list[Miss]) -> dict:
@@ -206,6 +209,27 @@ def export_book(book_dir: Path, media=None, clean: bool = True) -> BookExport:
     page_images = {p.id: image(page_meta.get(p.id, {}).get("image"), p.id) for p in book.text.pages}
     cover = image(book.meta.get("cover"), "cover")
 
+    # 3b) Sayfanın Türkçesinin sesi (H-105; isteğe bağlı): güncel hizalaması ve sesi olan sayfa pakete girer,
+    #     sayfa başına -16 LUFS. Eksik ya da eskimiş ses paketi durdurmaz ve `--require-media` ile de hata
+    #     değildir (manifest `trMissing`); uygulama sesi olmayan sayfada düğme göstermez.
+    tr_rel: dict[str, str] = {}
+    tr_dur: dict[str, float] = {}
+    tr_missing: list[dict] = []
+    tr_pages = booktr.page_audio(book)
+    for x in tr_pages:
+        if x.state == "ok":
+            rel = f"{booktr.TR_AUDIO_DIR}/{x.page}{AUDIO_EXT}"
+            g = media.target_lufs - media.loudness([x.audio])["I"]
+            media.audio(x.audio, g, pkg / rel)
+            tr_rel[x.page] = rel
+            tr_dur[x.page] = round(media.duration(pkg / rel), 3)
+        elif x.state in ("no-audio", "stale"):
+            tr_missing.append({"kind": "tr-audio", "page": x.page, "reason": x.state,
+                               "path": str(x.audio.relative_to(book.dir))})
+    tr_report = {"pages": len(tr_pages), "packaged": len(tr_rel),
+                 "aligned": sum(1 for x in tr_pages if x.state in ("ok", "no-audio")),
+                 "stale": sum(1 for x in tr_pages if x.state == "stale")}
+
     # 4) pages.json
     chapters, pages = [], []
     for c in book.text.chapters:
@@ -217,8 +241,11 @@ def export_book(book_dir: Path, media=None, clean: bool = True) -> BookExport:
             for s in p.sentences:
                 sents.append(_sentence(tr, s, t[k] if t else None, misses))
                 k += 1
-            pages.append({"id": p.id, "number": p.number, "chapter": c.id, "image": page_images[p.id],
-                          "sentences": sents})
+            page = {"id": p.id, "number": p.number, "chapter": c.id, "image": page_images[p.id],
+                    "sentences": sents}
+            if p.id in tr_rel:
+                page.update({"trAudio": tr_rel[p.id], "trDuration": tr_dur[p.id]})
+            pages.append(page)
         chapters.append({"id": c.id, "title": c.title, "audio": audio_rel.get(c.id),
                          "duration": durations.get(c.id), "heading": heading, "pages": [p.id for p in c.pages]})
     pages_doc = {"schemaVersion": PACKAGE_SCHEMA_VERSION, "bookId": book.id,
@@ -259,9 +286,12 @@ def export_book(book_dir: Path, media=None, clean: bool = True) -> BookExport:
         "loudness": loud,
         "pacing": pace_report,
         "missing": missing,
+        "trAudio": tr_report,
+        "trMissing": tr_missing,
         "files": [{"path": str(p.relative_to(pkg)), "bytes": p.stat().st_size, "sha256": file_digest(p)}
                   for p in files],
     }
     manifest["totalBytes"] = sum(f["bytes"] for f in manifest["files"])
     (pkg / "manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    return BookExport(book.id, pkg, book_doc, pages_doc, manifest, missing, errors, misses, pace_report)
+    return BookExport(book.id, pkg, book_doc, pages_doc, manifest, missing, errors, misses, pace_report,
+                      tr_report, tr_missing)

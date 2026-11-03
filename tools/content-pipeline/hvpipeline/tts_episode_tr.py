@@ -8,6 +8,12 @@ Toplanan yerler (bölüm `kurgu.json`):
 - Türkçe not kartı (`card` kind note, satırlar tr; ör. babaannenin notu, `voiceRole: nermin`),
 - ipucu panosu (`card` kind clue) ve açık soru (`card` kind openQuestion) kartları: anlatıcı sesi.
 Hi verisi (`icerik/_evren/`): hata notu (`explanationTr`), konu tanıtımı (`linesTr`), köprü görevi (`textTr`).
+Konuş görevleri (H-104, `icerik/_evren/konusma/*.json`): Hi'nin Türkçe yönlendirmeleri — sahne girişi (`introTr`),
+mesaj görevi (`taskTr`), tur görevi (`promptTr`), yakın seçeneğe kibar tepki (`reactionTr`) ve mesaj ipucu
+(`check.hintTr`). Karakter replikleri ve kullanıcının İngilizce cevapları kapsam dışıdır. Söylenen metin
+`<alan>SpeechTr` (ör. `promptSpeechTr`), ses başvurusu `<alan>Audio` (`hi-ses/konusma-<görev>-<yer>.mp3`);
+görev düzeyindeki `pronunciations` söyleniş sözlüğüdür. Konuş seslerinde **kip b yoktur**: İngilizce ifade
+ya da Türkçe ek alan özel ad varsa kip a (tümü Alania + söyleniş sözlüğü), yoksa düz Türkçe; ElevenLabs çağrılmaz.
 
 Söylenen metin: düğümde `speechTr` varsa o, yoksa ekrandaki metin. İngilizce ifadeler `{…}` ile işaretlenir.
 Roller ve sesler `icerik/_evren/sesler.json`'dadır (hi, alex, nermin, narrator; İngilizce Sarah).
@@ -165,6 +171,7 @@ class Item:
     out_dir: Path
     prompts: Path
     target: tuple                 # ("kurgu", kurgu_path, json_path) | ("hi", file_path, list_key, entry_id)
+                                  # | ("talk", file_path, json_path, audio_key)
     has_ref: bool
     pronunciations: list[dict] | None = None
 
@@ -281,6 +288,76 @@ def collect_hi(icerik_root: Path, vm: VoiceMap) -> list[Item]:
             items.append(Item(f"{prefix}-{e['id']}", f"Hi {fname} {e['id']}", "hi", speech, mode, out_dir,
                               out_dir / "PROMPTS.md", ("hi", p, key, e["id"]), bool(e.get("audio")),
                               e.get("pronunciations")))
+    return items
+
+
+TALK_DIR = Path("_evren") / "konusma"
+TALK_STEM = "konusma"
+
+
+def talk_keys(field_name: str) -> tuple[str, str]:
+    """Konuş metin alanı → (söylenen metin alanı, ses başvurusu alanı): `promptTr` → `promptSpeechTr`, `promptAudio`."""
+    base = field_name[:-2]
+    return f"{base}SpeechTr", f"{base}Audio"
+
+
+def talk_spots(doc: dict) -> list[tuple[tuple, str, str]]:
+    """Hi'nin Türkçe metinleri: (JSON yolu, alan, ses adı eki). Sıra: giriş/görev, ipucu, turlar."""
+    out: list[tuple[tuple, str, str]] = []
+    for f, suffix in (("introTr", "intro"), ("taskTr", "task")):
+        if isinstance(doc.get(f), str) and doc[f].strip():
+            out.append(((), f, suffix))
+    chk = doc.get("check")
+    if isinstance(chk, dict) and isinstance(chk.get("hintTr"), str) and chk["hintTr"].strip():
+        out.append((("check",), "hintTr", "hint"))
+    for i, t in enumerate(doc.get("turns") or []):
+        if not isinstance(t, dict):
+            continue
+        tid = str(t.get("id") or f"t{i + 1}")
+        if isinstance(t.get("promptTr"), str) and t["promptTr"].strip():
+            out.append((("turns", i), "promptTr", f"{tid}-prompt"))
+        for j, d in enumerate(t.get("distractors") or []):
+            if isinstance(d, dict) and isinstance(d.get("reactionTr"), str) and d["reactionTr"].strip():
+                out.append((("turns", i, "distractors", j), "reactionTr", f"{tid}-d{j + 1}"))
+    return out
+
+
+def _at(doc, path: tuple):
+    for k in path:
+        doc = doc[k]
+    return doc
+
+
+def talk_audio_ref(stem: str) -> str:
+    return f"{HI_AUDIO_DIR.name}/{stem}.mp3"
+
+
+def collect_talk_task(path: Path, doc: dict, icerik_root: Path, vm: VoiceMap) -> list[Item]:
+    """Bir Konuş görevindeki Hi seslendirmeleri (H-104). Kip yalnız `tr` ya da `a` (ElevenLabs yok)."""
+    root = Path(icerik_root)
+    out_dir = root / HI_AUDIO_DIR
+    tid = str(doc.get("id") or Path(path).stem)
+    task_pron = [p for p in doc.get("pronunciations") or [] if isinstance(p, dict)]
+    items = []
+    for jpath, f, suffix in talk_spots(doc):
+        obj = _at(doc, jpath)
+        speech_key, audio_key = talk_keys(f)
+        speech = obj.get(speech_key) or obj[f]
+        prons = vm.pron_for(plain(speech), task_pron)
+        mode = "a" if (_MARK.search(speech) or prons) else "tr"
+        items.append(Item(f"{TALK_STEM}-{tid}-{suffix}", f"Konuş {tid} {suffix}", "hi", speech, mode, out_dir,
+                          out_dir / "PROMPTS.md", ("talk", Path(path), jpath, audio_key), bool(obj.get(audio_key)),
+                          prons))
+    return items
+
+
+def collect_talk(icerik_root: Path, vm: VoiceMap) -> list[Item]:
+    d = Path(icerik_root) / TALK_DIR
+    items: list[Item] = []
+    if not d.is_dir():
+        return items
+    for p in sorted(d.glob("*.json")):
+        items += collect_talk_task(p, json.loads(p.read_text(encoding="utf-8")), icerik_root, vm)
     return items
 
 
@@ -739,7 +816,8 @@ def insert_key(text: str, path: tuple, key: str, value) -> str:
 
 def update_sources(items: list[Item], vm: VoiceMap, log=print) -> list[str]:
     """Sesi hazır olup kaynağında başvurusu olmayan yerlere `audio` ekler (kurgu.json: el biçimi korunur;
-    Hi verisi: `audio` = `hi-ses/<ad>.mp3`). Dönüş: değişen dosyalar."""
+    Hi verisi: `audio` = `hi-ses/<ad>.mp3`; Konuş: `<alan>Audio` = `hi-ses/<ad>.mp3`, el biçimi korunur).
+    Dönüş: değişen dosyalar."""
     changed: dict[Path, str] = {}
     hi_docs: dict[Path, dict] = {}
     for it in items:
@@ -752,6 +830,11 @@ def update_sources(items: list[Item], vm: VoiceMap, log=print) -> list[str]:
             ref = {"id": it.stem, "speaker": vm.role(it.role)["speaker"]}
             changed[kp] = insert_key(text, jpath, "audio", ref)
             log(f"  {it.where}: kurgu.json audio → {it.stem}")
+        elif kind == "talk" and not it.has_ref:
+            _, p, jpath, akey = it.target
+            text = changed.get(p) or p.read_text(encoding="utf-8")
+            changed[p] = insert_key(text, jpath, akey, talk_audio_ref(it.stem))
+            log(f"  {it.where}: {p.name} {akey} → {talk_audio_ref(it.stem)}")
         elif kind == "hi":
             _, p, key, eid = it.target
             d = hi_docs.setdefault(p, json.loads(p.read_text(encoding="utf-8")))
@@ -802,6 +885,9 @@ def check_items(items: list[Item]) -> list[tuple[str, str, str]]:
         if it.target[0] == "kurgu" and not it.has_ref:
             out.append(("warning", "tr-voice", f"{it.where}: ses var ama kurgu.json'da audio yok "
                                                "(tts_episode_tr.py --execute ekler)"))
+        if it.target[0] == "talk" and not it.has_ref:
+            out.append(("warning", "tr-voice", f"{it.where}: ses var ama kaynakta {it.target[3]} yok "
+                                               "(tts_episode_tr.py --talk --execute ekler)"))
     return out
 
 

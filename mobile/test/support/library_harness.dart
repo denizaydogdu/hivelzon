@@ -12,6 +12,8 @@ import 'package:hivelzon/features/library/application/library_providers.dart';
 import 'package:hivelzon/features/library/presentation/reader_screen.dart';
 import 'package:hivelzon/features/notebook/presentation/notebook_screen.dart';
 import 'package:hivelzon/features/player/data/progress_repository.dart';
+import 'package:hivelzon/features/player/presentation/player_screen.dart'
+    show videoControllerFactoryProvider;
 import 'package:hivelzon/features/story/presentation/story_screen.dart';
 import 'package:hivelzon/shared/content/content_providers.dart';
 import 'package:hivelzon/shared/meaning/learning_event_log.dart';
@@ -22,6 +24,7 @@ import 'package:hivelzon/shared/storage/storage_providers.dart';
 import 'fake_audio_session.dart';
 import 'fake_book_audio.dart';
 import 'fake_content_source.dart';
+import 'talk_harness.dart' show FakeAudioController;
 
 /// Kitaplık ve okuyucu testlerinin ortamı (H-067): bellekte veritabanı,
 /// sahte içerik (deneme kitabı A1-K99 kopyaları), sahte kitap sesi ve elle
@@ -33,13 +36,15 @@ class LibraryHarness {
     bool booksFail = false,
     Set<String> unnarrated = const {},
     Set<String> withoutTurkish = const {},
+    Set<String> turkishAudio = const {},
     this.background = false,
   }) : db = AppDatabase.memory(),
        source = FakeContentSource(packageIds: const ['A1-001'])
          ..books = testBookSummaries(bookIds)
          ..booksFail = booksFail
          ..unnarratedChapters = unnarrated
-         ..withoutTurkish = withoutTurkish {
+         ..withoutTurkish = withoutTurkish
+         ..turkishAudio = turkishAudio {
     audio = FakeBookAudio(
       clock,
       durations: const {'c1.m4a': 11.3, 'c2.m4a': 7.0},
@@ -67,6 +72,9 @@ class LibraryHarness {
       pauseStateDelay: Duration.zero,
     );
   }
+
+  /// Hi sesi çalarları (sayfanın Türkçesi, H-105), açılış sırasıyla.
+  final players = <FakeAudioController>[];
 
   final AppDatabase db;
   final FakeContentSource source;
@@ -154,6 +162,11 @@ class LibraryHarness {
           readerClockProvider.overrideWithValue(clock.call),
           libraryRandomProvider.overrideWithValue(math.Random(3)),
           speechVisibleProvider.overrideWithValue(false),
+          videoControllerFactoryProvider.overrideWithValue((uri) {
+            final c = FakeAudioController(uri);
+            players.add(c);
+            return c;
+          }),
         ],
         child: RepaintBoundary(
           key: const ValueKey('golden'),

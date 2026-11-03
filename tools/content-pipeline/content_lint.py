@@ -187,7 +187,8 @@ def main(argv: list[str] | None = None) -> int:
             extra = (f"{rep['turns']} tur, {rep['accepted']} kabul edilen cevap, {rep['audioMatches']} satır bölüm sesiyle; "
                      if rep.get("kind") == "scene" else "")
             print(f"   {extra}kapsama %{rep['pct']} (sözlükle %{rep['pctWithGlossary']}), "
-                  f"en uzun cümle {rep['maxSentenceWords']} sözcük")
+                  f"en uzun cümle {rep['maxSentenceWords']} sözcük"
+                  + (f"; Hi'nin Türkçe sesi {rep['hiVoice']} (H-104)" if rep.get("hiVoice") else ""))
         for i in iss:
             print(f"   - {i}")
     warns = (sum(len(r.warnings) for r in reports) + sum(1 for _, iss, _ in sets for i in iss if i.level == "warning")

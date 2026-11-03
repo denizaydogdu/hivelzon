@@ -52,6 +52,8 @@ Kendi dalında; `git revert`.
 5. Aynı klasöre CC BY-SA 4.0 bildirimini ve `data/README.md`'deki atfı (orada taslağı var) ekle; uygulamanın Lisanslar ekranı H-042 ile güncellenir. Hukuk sorusu (§8 S2) açık kalır.
 6. Doğrula: `tools/content-pipeline/.venv/bin/python tools/content-pipeline/book_lint.py <C1/C2 kitabı>` → "liste yok" uyarısı kalkar, kapsama yüzdesi görünür.
 
+**2026-11-03:** Adımlar uygulandı (kullanıcı onayı): dosya `lexicon_ccbysa/` altında (commit `d4e45b75b3`, 2.136 satır, `source` sütunu + atıf başlığı), bildirim `lexicon_ccbysa/README.md`, atıf `data/README.md` ve Lisanslar ekranında. C1/C2 kapsaması denetleniyor: 10 C1/C2 kitabı %98,0–%99,0, 0 hata.
+
 **Açık sorular:**
 - UNCONFIRMED: eleven_v3 istek başına karakter sınırı 3.000 varsayıldı (`tts.MAX_CHARS`); güncel sınır ve kredi/karakter oranı ElevenLabs belgesinden doğrulanmalı.
 - UNCONFIRMED: Seviye başına `speed` başlangıç değerleri (A2 0.95 … C2 1.05) tahmin; pilotta (H-069) book-lint'in ölçtüğü k/dk ile ayarlanır.

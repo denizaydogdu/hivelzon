@@ -30,6 +30,9 @@
     "Türkiye",
     "Martı"
   ],
+  "narrationTr": {
+    "role": "hi"
+  },
   "narration": {
     "modelId": "eleven_v3",
     "speed": 1.0,

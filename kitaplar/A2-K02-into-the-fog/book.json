@@ -25,6 +25,9 @@
     "Jonas",
     "Berg"
   ],
+  "narrationTr": {
+    "role": "hi"
+  },
   "narration": {
     "modelId": "eleven_v3",
     "speed": 0.95,

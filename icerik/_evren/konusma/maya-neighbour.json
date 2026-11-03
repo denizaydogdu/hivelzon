@@ -13,6 +13,15 @@
   "introTr": "Cumartesi sabahı, Tide & Pages'in kapısındasın. Bu bir prova: Maya'yla tanışırken Alex'in yerine sen konuşuyorsun.",
   "character": {"nameTr": "Maya", "speaker": "MAYA"},
   "image": {"episode": "A1-002", "path": "stills/B2-03-maya-pov.webp"},
+  "pronunciations": [
+    {"term": "Tide & Pages", "say_as": "Tayd end Peycız"},
+    {"term": "I'm Alex", "say_as": "Aym Aleks"},
+    {"term": "Are you", "say_as": "Ar yu"},
+    {"term": "Yes, I am", "say_as": "Yes, ay em"},
+    {"term": "I'm from Türkiye", "say_as": "Aym fram Türkiye"},
+    {"term": "am", "say_as": "em"},
+    {"term": "Nice to meet you", "say_as": "Nays tu miit yu"}
+  ],
   "turns": [
     {
       "id": "t1",
@@ -28,9 +37,9 @@
         "I'm Alex."
       ],
       "distractors": [
-        {"en": "I Alex.", "reactionTr": "Az kaldı! Türkçede \"ben Alex\" deriz ama İngilizcede \"am\" gerekir: I'm Alex."}
+        {"en": "I Alex.", "reactionTr": "Az kaldı! Türkçede \"ben Alex\" deriz ama İngilizcede \"am\" gerekir: I'm Alex.", "reactionAudio": "hi-ses/konusma-maya-neighbour-t1-d1.mp3"}
       ],
-      "targets": ["My name is…", "Nice to meet you."]
+      "targets": ["My name is…", "Nice to meet you."], "promptAudio": "hi-ses/konusma-maya-neighbour-t1-prompt.mp3"
     },
     {
       "id": "t2",
@@ -42,9 +51,9 @@
         "Yes, I am."
       ],
       "distractors": [
-        {"en": "Yes, I can.", "reactionTr": "Soru \"Are you…?\" ile başlıyor; kısa cevap da \"am\" ile olur: Yes, I am."}
+        {"en": "Yes, I can.", "reactionTr": "Soru \"Are you…?\" ile başlıyor; kısa cevap da \"am\" ile olur: Yes, I am.", "reactionAudio": "hi-ses/konusma-maya-neighbour-t2-d1.mp3"}
       ],
-      "targets": []
+      "targets": [], "promptAudio": "hi-ses/konusma-maya-neighbour-t2-prompt.mp3"
     },
     {
       "id": "t3",
@@ -58,9 +67,9 @@
         "I'm from İzmir, in Türkiye."
       ],
       "distractors": [
-        {"en": "I from Türkiye.", "reactionTr": "Neredeyse! \"am\" düşmesin: I'm from Türkiye. Türkçede \"-im\" ekiyle söyleriz, İngilizcede ayrı bir kelimedir."}
+        {"en": "I from Türkiye.", "reactionTr": "Neredeyse! \"am\" düşmesin: I'm from Türkiye. Türkçede \"-im\" ekiyle söyleriz, İngilizcede ayrı bir kelimedir.", "reactionAudio": "hi-ses/konusma-maya-neighbour-t3-d1.mp3"}
       ],
-      "targets": ["I'm from Türkiye."]
+      "targets": ["I'm from Türkiye."], "promptAudio": "hi-ses/konusma-maya-neighbour-t3-prompt.mp3"
     },
     {
       "id": "t4",
@@ -74,10 +83,10 @@
         "Hi! Nice to meet you."
       ],
       "distractors": [
-        {"en": "Nice to meet me.", "reactionTr": "Az kaldı! Karşındakiyle tanıştın: Nice to meet you."}
+        {"en": "Nice to meet me.", "reactionTr": "Az kaldı! Karşındakiyle tanıştın: Nice to meet you.", "reactionAudio": "hi-ses/konusma-maya-neighbour-t4-d1.mp3"}
       ],
-      "targets": ["Nice to meet you."]
+      "targets": ["Nice to meet you."], "promptAudio": "hi-ses/konusma-maya-neighbour-t4-prompt.mp3"
     }
   ],
-  "outro": {"speaker": "MRS BROOKS", "nameTr": "Mrs Brooks", "en": "Hello, Alex. Nice to meet you.", "tr": "Merhaba Alex. Tanıştığımıza memnun oldum."}
+  "outro": {"speaker": "MRS BROOKS", "nameTr": "Mrs Brooks", "en": "Hello, Alex. Nice to meet you.", "tr": "Merhaba Alex. Tanıştığımıza memnun oldum."}, "introAudio": "hi-ses/konusma-maya-neighbour-intro.mp3"
 }

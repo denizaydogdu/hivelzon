@@ -95,6 +95,10 @@ def main(argv: list[str] | None = None) -> int:
                             for k, v in md["wpm"].items()) or "ölçülmedi"
             print(f"   ses: {md['aligned']}/{md['chapters']} bölüm hizalı, {md['audio']} ses dosyası; hız {wpm}; "
                   f"görsel {md['imagesPresent']}/{md['images']}")
+        ta = st.get("trAudio") if st else None
+        if ta and (ta.get("aligned") or ta.get("stale")):
+            print(f"   Türkçe sayfa sesi: {ta['aligned']}/{ta['pages']} sayfa hizalı, {ta['audio']} ses dosyası"
+                  + (f", {ta['stale']} eskimiş" if ta.get("stale") else ""))
         for i in r.errors + r.warnings:
             print(f"   - {i}")
     warns = sum(len(r.warnings) for r in reports)

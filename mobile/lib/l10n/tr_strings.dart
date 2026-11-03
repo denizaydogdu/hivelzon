@@ -36,6 +36,7 @@ abstract final class CommonTexts {
 abstract final class TabTexts {
   static const home = 'Ana Sayfa';
   static const discover = 'Keşfet';
+
   /// Eski "Hikâye" sekmesi (H-103, kullanıcı kararı 2026-11-01): içinde
   /// Hikâye · Kitaplık · Dilbilgisi.
   static const learn = 'Öğren';
@@ -348,6 +349,10 @@ abstract final class ReaderTexts {
       'Bir cümleye dokun, İngilizcesi sayfada vurgulansın.';
   static const pageTurkishItemHint =
       'İngilizcesini sayfada göstermek için dokun';
+
+  /// Sayfanın Türkçesini Hi'nin sesiyle dinleme (H-105). Yalnız panelde ve
+  /// dokununca çalar; çalarken düğme "Durdur" olur.
+  static const pageTurkishListen = 'Türkçesini dinle';
 
   // Bölümler
   static const chapters = 'Bölümler';
@@ -981,12 +986,15 @@ abstract final class AboutTexts {
     ),
     (
       'Octanove Vocabulary Profile C1/C2 v1.0',
-      'Octanove Labs, Open Language Profiles. '
-          'https://github.com/openlanguageprofiles/olp-en-cefrj\n'
+      'Octanove Vocabulary Profile C1/C2 v1.0. Octanove Labs, Open Language '
+          'Profiles. Retrieved from '
+          'https://github.com/openlanguageprofiles/olp-en-cefrj '
+          '(commit d4e45b75b3) on 03/11/26.\n'
           'Lisans: Creative Commons Attribution-ShareAlike 4.0 International '
-          '(https://creativecommons.org/licenses/by-sa/4.0/). C1–C2 kelime '
-          'kapsaması için ayrı bir veri seti olarak, aynı lisansla tutulur; '
-          'Hi\'nin öteki içeriğiyle karıştırılmaz.',
+          '(https://creativecommons.org/licenses/by-sa/4.0/). Hi bu listeye '
+          'kaynak sütunu eklemiştir. C1–C2 kelime kapsaması için ayrı bir veri '
+          'seti olarak, aynı lisansla tutulur; Hi\'nin öteki içeriğiyle '
+          'karıştırılmaz.',
     ),
     (
       'FSRS (Free Spaced Repetition Scheduler)',
@@ -2414,6 +2422,10 @@ abstract final class TalkPlanTexts {
 /// zekâ sohbeti değildir (H-007); puan yok, "yanlış" yok, "Geç" hep var
 /// (K-32). Kılavuz: ARAYUZ-METINLERI §7.2.
 abstract final class TalkTexts {
+  // Hi'nin Türkçe yönlendirme sesi (H-104): düğmenin ekran okuyucu etiketi.
+  static const listenHiTask = "Görevi Hi'den dinle";
+  static const listenHiHint = "İpucunu Hi'den dinle";
+
   // Sekme
   static const title = 'Konuş';
   static const subtitle = 'Hikâyedeki karakterlerle kısa provalar.';

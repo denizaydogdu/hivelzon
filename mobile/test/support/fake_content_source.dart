@@ -129,11 +129,15 @@ class FakeContentSource implements ContentSource {
   bool talkFails = false;
   int talkLoads = 0;
 
+  /// H-104: Hi'nin Türkçe yönlendirme sesleri (`introAudio`, `promptAudio`…)
+  /// pakette olsun mu. Kapalıyken bu alanlar düşer (medya yok).
+  bool talkHiAudio = true;
+
   @override
   Future<TalkCatalog> loadTalk(int season, String path) async {
     talkLoads++;
     if (fail || talkFails) throw ContentUnavailableException('kapalı');
-    return loadTalkFixture();
+    return talkHiAudio ? loadTalkFixture() : loadTalkFixture(hiAudio: false);
   }
 
   /// Keşfet klipleri (H-040): sezon paketinde `clips.json` olsun mu.
@@ -184,9 +188,13 @@ class FakeContentSource implements ContentSource {
       id: bookId,
       unnarrated: unnarratedChapters,
       withoutTurkish: withoutTurkish,
+      turkishAudio: turkishAudio,
       grammarTopics: grammarTopics[bookId] ?? const [],
     );
   }
+
+  /// Türkçe sesi olan sayfalar (H-105): `audio/tr/<sayfa>.m4a`.
+  Set<String> turkishAudio = const {};
 
   /// Sesi henüz hazır olmayan bölümler (kitap bölüm bölüm seslendirilir).
   Set<String> unnarratedChapters = const {};
@@ -313,8 +321,8 @@ Reel reelWith(
 /// Deneme kataloğu; [withdraw] kimlikleri geri çekilmiş olarak işaretlenir
 /// (plan §5: sabit seçkide olsa bile oynatılmaz).
 ReelCatalog catalogWith({List<String> withdraw = const []}) {
-  final j =
-      (jsonDecode(fixtureText('reels/index.json')) as Map).cast<String, dynamic>();
+  final j = (jsonDecode(fixtureText('reels/index.json')) as Map)
+      .cast<String, dynamic>();
   for (final r in j['reels'] as List) {
     if (withdraw.contains((r as Map)['id'])) r['status'] = 'WITHDRAWN';
   }
@@ -447,6 +455,7 @@ Book loadTestBook({
   double? chapterDuration,
   Set<String> unnarrated = const {},
   Set<String> withoutTurkish = const {},
+  Set<String> turkishAudio = const {},
   List<String> grammarTopics = const [],
 }) {
   final book = (jsonDecode(fixtureText('books/A1-K99/book.json')) as Map)
@@ -492,6 +501,13 @@ Book loadTestBook({
       for (final s in ((p as Map)['sentences'] as List)) {
         if (withoutTurkish.contains((s as Map)['id'])) s.remove('tr');
       }
+    }
+  }
+  // Sayfanın Türkçesinin sesi (H-105).
+  for (final p in pages['pages'] as List) {
+    if (turkishAudio.contains((p as Map)['id'])) {
+      p['trAudio'] = 'audio/tr/${p['id']}.m4a';
+      p['trDuration'] = 3.0;
     }
   }
   for (final p in pages['pages'] as List) {
@@ -567,6 +583,17 @@ HiContent loadHiFixture() => HiContent.fromJson(
 );
 
 /// Sezon paketindeki Konuş görevleri (gerçek dışa aktarım kopyası, H-090).
-TalkCatalog loadTalkFixture() => TalkCatalog.fromJson(
-  (jsonDecode(fixtureText('talk.json')) as Map).cast<String, dynamic>(),
-);
+/// [hiAudio] false: Hi'nin Türkçe ses alanları (`…Audio`, H-104) düşer.
+TalkCatalog loadTalkFixture({bool hiAudio = true}) {
+  Object? strip(Object? o) => switch (o) {
+    final Map<String, dynamic> m => {
+      for (final e in m.entries)
+        if (hiAudio || !e.key.endsWith('Audio')) e.key: strip(e.value),
+    },
+    final List<dynamic> l => [for (final v in l) strip(v)],
+    _ => o,
+  };
+  return TalkCatalog.fromJson(
+    strip(jsonDecode(fixtureText('talk.json'))) as Map<String, dynamic>,
+  );
+}

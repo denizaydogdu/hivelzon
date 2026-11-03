@@ -10,6 +10,7 @@ import '../../../shared/speech/speech_providers.dart';
 import '../../../shared/speech/speech_store.dart';
 import '../../../shared/ui/ui.dart';
 import '../../hi/application/hi_providers.dart';
+import '../../hi/presentation/hi_listen_button.dart';
 import '../../notebook/application/notebook_providers.dart';
 import '../../speak/speak_env.dart';
 import '../application/talk_providers.dart';
@@ -67,6 +68,7 @@ class _TalkSceneViewState extends ConsumerState<TalkSceneView> {
   bool _listening = false;
   String? _feedback;
   String? _reaction;
+  String? _reactionAudio;
   final Set<int> _wrongOptions = {};
   final List<int> _built = [];
   bool _buildRetry = false;
@@ -96,6 +98,7 @@ class _TalkSceneViewState extends ConsumerState<TalkSceneView> {
     _listening = false;
     _feedback = null;
     _reaction = null;
+    _reactionAudio = null;
     _wrongOptions.clear();
     _built.clear();
     _buildRetry = false;
@@ -189,6 +192,7 @@ class _TalkSceneViewState extends ConsumerState<TalkSceneView> {
     setState(() {
       _listening = true;
       _reaction = null;
+      _reactionAudio = null;
     });
     final turn = _turn;
     final heard = await env.recognizer.listenOnce(debugExpected: turn.model);
@@ -225,7 +229,9 @@ class _TalkSceneViewState extends ConsumerState<TalkSceneView> {
         _ => SpeakTexts.tryAgain,
       };
       if (r.outcome == TalkSpeechOutcome.distractor) {
-        _reaction = turn.distractors[r.distractorIndex!].reactionTr;
+        final d = turn.distractors[r.distractorIndex!];
+        _reaction = d.reactionTr;
+        _reactionAudio = d.reactionAudio;
       }
       if (_attempts >= 2) _sawHelp = true;
     });
@@ -263,6 +269,7 @@ class _TalkSceneViewState extends ConsumerState<TalkSceneView> {
     setState(() {
       _wrongOptions.add(i);
       _reaction = _turn.distractors[d].reactionTr;
+      _reactionAudio = _turn.distractors[d].reactionAudio;
     });
   }
 
@@ -294,7 +301,12 @@ class _TalkSceneViewState extends ConsumerState<TalkSceneView> {
       children.addAll([
         TalkImage(task: _task),
         const SizedBox(height: AppSpace.s16),
-        Text(_task.introTr ?? '', style: theme.textTheme.bodyLarge),
+        TalkHiText(
+          text: _task.introTr ?? '',
+          audio: _task.introAudio,
+          listenKey: 'talk-intro-listen',
+          style: theme.textTheme.bodyLarge,
+        ),
         const SizedBox(height: AppSpace.s12),
         Text(
           TalkTexts.rehearsalNote,
@@ -390,9 +402,13 @@ class _TalkSceneViewState extends ConsumerState<TalkSceneView> {
     final c = <Widget>[
       const CapsLabel(TalkTexts.yourTurn),
       const SizedBox(height: AppSpace.s4),
-      Text(
-        t.promptTr,
-        key: const ValueKey('talk-prompt'),
+      TalkHiText(
+        // Tur değişince önceki turun sesi durur (yeni düğme).
+        key: ValueKey('talk-prompt-row-${t.id}'),
+        text: t.promptTr,
+        audio: t.promptAudio,
+        listenKey: 'talk-prompt-listen',
+        textKey: const ValueKey('talk-prompt'),
         style: theme.textTheme.titleMedium,
       ),
       const SizedBox(height: AppSpace.s12),
@@ -468,6 +484,17 @@ class _TalkSceneViewState extends ConsumerState<TalkSceneView> {
               icon: Icons.lightbulb_outline_rounded,
               title: SpeakTexts.closeTitle,
               body: _reaction,
+              action: _reactionAudio == null
+                  ? null
+                  : Align(
+                      alignment: Alignment.centerLeft,
+                      child: HiListenButton(
+                        key: const ValueKey('talk-reaction-listen'),
+                        path: _reactionAudio!,
+                        label: TalkTexts.listenHiHint,
+                        filled: false,
+                      ),
+                    ),
             ),
           );
       }

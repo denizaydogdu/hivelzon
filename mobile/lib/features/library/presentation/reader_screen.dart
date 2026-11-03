@@ -375,6 +375,7 @@ class _ReaderScreenState extends ConsumerState<ReaderScreen>
       book: book,
       pageIndex: pageIndex,
       current: c.highlighted ?? _focus,
+      controller: c,
     );
     if (!mounted) return;
     if (picked == null || c.pageIndex != pageIndex) {

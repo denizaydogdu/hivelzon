@@ -309,6 +309,8 @@ void main() {
       );
       await h.tap(tester, 'message-send');
       expect(find.text(TalkTexts.passed), findsOneWidget);
+      // Görev satırında Hi'nin "dinle" düğmesi var (H-104): sonuç biraz aşağıda.
+      await h.scrollTo(tester, find.textContaining('Kendin kullandığın'));
       expect(
         find.textContaining('Kendin kullandığın ifadeler'),
         findsOneWidget,

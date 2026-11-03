@@ -26,6 +26,7 @@ from dataclasses import dataclass, field
 from pathlib import Path
 
 from . import pacing
+from . import booktr
 from .align import Alignment, AlignmentMismatch, sentence_timings
 from .book import (BOOK_FILE, BOOK_LEVELS, DIR_RE, PROMPTS_FILE, RIGHTS_FILE, TEXT_FILE, GLOSSARY_FILE,
                    WORD_TOLERANCE, Book, BookError, text_sha256)
@@ -410,6 +411,9 @@ def lint_book(book_dir: Path, word_targets: dict | None = None, grammar_root: Pa
     rep.issues += ti
     mi, rep.stats["media"] = _check_media(book)
     rep.issues += mi
+    # Türkçe sayfa sesi (H-105, isteğe bağlı)
+    ti2, rep.stats["trAudio"] = booktr.check_book(book)
+    rep.issues += ti2
     rep.issues += [Issue(lv, "grammar-topics", msg)
                    for lv, msg in check_grammar_topics(book.meta.get("grammarTopics"), grammar_root)]
     return rep

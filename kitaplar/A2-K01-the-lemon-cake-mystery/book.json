@@ -31,6 +31,15 @@
     "Turkish",
     "English"
   ],
+  "narrationTr": {
+    "role": "hi",
+    "pronunciations": [
+      {
+        "term": "Theo",
+        "say_as": "Tiyo"
+      }
+    ]
+  },
   "narration": {
     "modelId": "eleven_v3",
     "speed": 0.95,

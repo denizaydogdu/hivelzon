@@ -1,6 +1,6 @@
 # H-103: Hikâye sekmesi → Öğren; simgeli seçici, son bölüm hatırlanır
 
-- **Durum:** Devam ediyor — uygulandı, testler yeşil (1504/1504), simülatörde gösterildi (2026-11-01), kullanıcı geri bildirimi + commit bekliyor (kod yerelde)
+- **Durum:** Devam ediyor — uygulandı, testler yeşil (1504/1504), simülatörde gösterildi (2026-11-01), commit `2988672` (CI `41315442268` yeşil); kullanıcı denemesi bekliyor
 - **Tür:** Mobil arayüz + bilgi mimarisi
 - **Öncelik:** Orta
 - **Bağımlılık:** K-30, H-067 (Kitaplık), H-078 (Dilbilgisi), H-098 (sabit

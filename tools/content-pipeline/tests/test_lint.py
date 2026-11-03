@@ -121,3 +121,27 @@ def test_write_reports_creates_per_episode_summary(tmp_path):
     assert ok["contentId"] and isinstance(ok["warnings"], list)
     assert len(bad["errors"]) > 0
     assert not list(good.glob("_build/*.tmp"))
+
+
+def test_tokens_needn_t_and_cannot_expand_to_listed_words():
+    """needn't → need + not (önceden "needn" liste dışı sayılıyordu); cannot → can + not."""
+    assert tokens("You needn't come. I cannot stay. You mightn't know.") == [
+        "you", "need", "not", "come", "i", "can", "not", "stay", "you", "might", "not", "know"]
+
+
+def test_lemma_more_irregular_forms():
+    """Listedeki başsözcüklerin düzensiz biçimleri (became, feet, lit, halves …) başsözcüğe iner."""
+    text = ("It became dark. My feet hurt. She laid the table and lit a lamp. It swung and slid. "
+            "It smelt good. The wind blew. It shrank. He burnt it. I learnt it. I spilt it. It was torn. "
+            "Cut it in halves. The shelves are full. Two loaves. The gentlemen and fishermen rebuilt it. "
+            "She misunderstood. He strung it.")
+    cov = coverage([text], "C2")
+    assert cov.in_list == cov.tokens, cov.off_list
+
+
+def test_multiword_headword_parts_count_as_listed():
+    """Listedeki çok sözcüklü başsözcükler (according to, ought to) tek sözcük token'larıyla eşleşir."""
+    cov = coverage(["According to Sam, we ought to go."], "B1", proper={"sam"})
+    assert cov.in_list == cov.tokens, cov.off_list
+    # A1'de B1 başsözcüğünün parçası hâlâ liste dışıdır
+    assert "according" in coverage(["According to Sam."], "A1", proper={"sam"}).off_list

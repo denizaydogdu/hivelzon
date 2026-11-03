@@ -13,6 +13,16 @@
   "introTr": "Hilltop Café'desin. Rosa tezgâhta seni bekliyor. Bu bir prova: Alex'in yerine sen sipariş ver.",
   "character": {"nameTr": "Rosa", "speaker": "ROSA"},
   "image": {"episode": "A1-009", "path": "stills/B9-04-k1-pov.webp"},
+  "pronunciations": [
+    {"term": "Hilltop Café", "say_as": "Hiltap Kafe"},
+    {"term": "Can I have a tea", "say_as": "Ken ay hev ı tii"},
+    {"term": "please", "say_as": "pliiz"},
+    {"term": "How much is it", "say_as": "Hav maç iz it"},
+    {"term": "How much", "say_as": "Hav maç"},
+    {"term": "Here you are", "say_as": "Hiir yu ar"},
+    {"term": "Do you want", "say_as": "Du yu vant"},
+    {"term": "No, thank you", "say_as": "Nou, tenk yu"}
+  ],
   "turns": [
     {
       "id": "t1",
@@ -27,9 +37,9 @@
         "Tea, please."
       ],
       "distractors": [
-        {"en": "I want tea.", "reactionTr": "Rosa gülümsüyor: \"Please?\" İngilizcede istekler kibar söylenir: Can I have a tea, please?"}
+        {"en": "I want tea.", "reactionTr": "Rosa gülümsüyor: \"Please?\" İngilizcede istekler kibar söylenir: Can I have a tea, please?", "reactionAudio": "hi-ses/konusma-cafe-rosa-t1-d1.mp3"}
       ],
-      "targets": ["Can I have a tea, please?"]
+      "targets": ["Can I have a tea, please?"], "promptAudio": "hi-ses/konusma-cafe-rosa-t1-prompt.mp3"
     },
     {
       "id": "t2",
@@ -43,9 +53,9 @@
         "How much is it?"
       ],
       "distractors": [
-        {"en": "Thank you. How many is it?", "reactionTr": "Fiyat sorarken \"How much\" denir: How much is it?"}
+        {"en": "Thank you. How many is it?", "reactionTr": "Fiyat sorarken \"How much\" denir: How much is it?", "reactionAudio": "hi-ses/konusma-cafe-rosa-t2-d1.mp3"}
       ],
-      "targets": ["How much is it?", "Thank you."]
+      "targets": ["How much is it?", "Thank you."], "promptAudio": "hi-ses/konusma-cafe-rosa-t2-prompt.mp3"
     },
     {
       "id": "t3",
@@ -58,9 +68,9 @@
         "OK. Here you are."
       ],
       "distractors": [
-        {"en": "Here are you.", "reactionTr": "Kelime sırası farklı: Here you are."}
+        {"en": "Here are you.", "reactionTr": "Kelime sırası farklı: Here you are.", "reactionAudio": "hi-ses/konusma-cafe-rosa-t3-d1.mp3"}
       ],
-      "targets": ["Here you are."]
+      "targets": ["Here you are."], "promptAudio": "hi-ses/konusma-cafe-rosa-t3-prompt.mp3"
     },
     {
       "id": "t4",
@@ -73,10 +83,10 @@
         "No, thank you. Just the tea."
       ],
       "distractors": [
-        {"en": "No, I can't.", "reactionTr": "\"Do you want…?\" sorusuna kibar cevap: No, thank you."}
+        {"en": "No, I can't.", "reactionTr": "\"Do you want…?\" sorusuna kibar cevap: No, thank you.", "reactionAudio": "hi-ses/konusma-cafe-rosa-t4-d1.mp3"}
       ],
-      "targets": ["Thank you."]
+      "targets": ["Thank you."], "promptAudio": "hi-ses/konusma-cafe-rosa-t4-prompt.mp3"
     }
   ],
-  "outro": {"en": "OK! Have a nice day.", "tr": "Peki! İyi günler."}
+  "outro": {"en": "OK! Have a nice day.", "tr": "Peki! İyi günler."}, "introAudio": "hi-ses/konusma-cafe-rosa-intro.mp3"
 }

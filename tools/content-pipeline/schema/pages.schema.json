@@ -40,6 +40,8 @@
           "number": { "type": "integer", "minimum": 1 },
           "chapter": { "type": "string" },
           "image": { "description": "images/<sayfa>.webp ya da resimsiz sayfada null (palet rengiyle çizilir).", "type": ["string", "null"] },
+          "trAudio": { "description": "Sayfanın Türkçesinin sesi (H-105): audio/tr/<sayfa>.m4a; yoksa alan yok ya da null (isteğe bağlı).", "type": ["string", "null"] },
+          "trDuration": { "type": ["number", "null"], "minimum": 0 },
           "sentences": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/sentence" } }
         }
       }

@@ -26,6 +26,27 @@
     "Leo",
     "Atlantic"
   ],
+  "narrationTr": {
+    "role": "hi",
+    "pronunciations": [
+      {
+        "term": "Ines",
+        "say_as": "İnes"
+      },
+      {
+        "term": "ynlş",
+        "say_as": "yanlış"
+      },
+      {
+        "term": "nmr",
+        "say_as": "numara"
+      },
+      {
+        "term": "lütfn",
+        "say_as": "lütfen"
+      }
+    ]
+  },
   "narration": {
     "modelId": "eleven_v3",
     "speed": 0.95,

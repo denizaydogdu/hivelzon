@@ -209,16 +209,16 @@ Her föyde önce **kontrol maddeleri**, sonra **öğe tablosu** var. Tabloda kut
 | B2-K03 *Please Don't Translate That* | `kitaplar/B2-K03-please-dont-translate-that/` | ~5.285 | ☐ Onay ☐ Düzeltme | EN ses yok |
 | B2-K04 *The Last Gardener on Mars* | `kitaplar/B2-K04-the-last-gardener-on-mars/` | ~5.429 | ☐ Onay ☐ Düzeltme | EN ses yok |
 | B2-K05 *What My Brother Didn't Say* | `kitaplar/B2-K05-what-my-brother-didnt-say/` | ~5.125 | ☐ Onay ☐ Düzeltme | EN ses yok |
-| C1-K01 *The Ninth Plate* | `kitaplar/C1-K01-the-ninth-plate/` | ~8.597 | ☐ Onay ☐ Düzeltme | EN ses yok, C1/C2 kapsama denetlenmedi |
-| C1-K02 *Eleven Bridges* | `kitaplar/C1-K02-eleven-bridges/` | ~8.729 | ☐ Onay ☐ Düzeltme | EN ses yok, C1/C2 kapsama denetlenmedi |
-| C1-K03 *The Anniversary Committee* | `kitaplar/C1-K03-the-anniversary-committee/` | ~8.739 | ☐ Onay ☐ Düzeltme | EN ses yok, C1/C2 kapsama denetlenmedi |
-| C1-K04 *The Lake That Remembered Tomorrow* | `kitaplar/C1-K04-the-lake-that-remembered-tomorrow/` | ~8.654 | ☐ Onay ☐ Düzeltme | EN ses yok, C1/C2 kapsama denetlenmedi |
-| C1-K05 *Held in Trust* | `kitaplar/C1-K05-held-in-trust/` | ~8.730 | ☐ Onay ☐ Düzeltme | EN ses yok, C1/C2 kapsama denetlenmedi |
-| C2-K01 *The Missing Entries* | `kitaplar/C2-K01-the-missing-entries/` | ~10.922 | ☐ Onay ☐ Düzeltme | EN ses yok, C1/C2 kapsama denetlenmedi |
-| C2-K02 *The Town That Wasn't There* | `kitaplar/C2-K02-the-town-that-wasnt-there/` | ~10.994 | ☐ Onay ☐ Düzeltme | EN ses yok, C1/C2 kapsama denetlenmedi |
-| C2-K03 *A Strongly Worded Letter* | `kitaplar/C2-K03-a-strongly-worded-letter/` | ~10.957 | ☐ Onay ☐ Düzeltme | EN ses yok, C1/C2 kapsama denetlenmedi |
-| C2-K04 *The Word Meter* | `kitaplar/C2-K04-the-word-meter/` | ~10.367 | ☐ Onay ☐ Düzeltme | EN ses yok, C1/C2 kapsama denetlenmedi |
-| C2-K05 *The Other Half of the Sentence* | `kitaplar/C2-K05-the-other-half-of-the-sentence/` | ~10.112 | ☐ Onay ☐ Düzeltme | EN ses yok, C1/C2 kapsama denetlenmedi |
+| C1-K01 *The Ninth Plate* | `kitaplar/C1-K01-the-ninth-plate/` | ~8.597 | ☐ Onay ☐ Düzeltme | EN ses yok, kapsama %98,8 |
+| C1-K02 *Eleven Bridges* | `kitaplar/C1-K02-eleven-bridges/` | ~8.729 | ☐ Onay ☐ Düzeltme | EN ses yok, kapsama %98,0 |
+| C1-K03 *The Anniversary Committee* | `kitaplar/C1-K03-the-anniversary-committee/` | ~8.739 | ☐ Onay ☐ Düzeltme | EN ses yok, kapsama %98,7 |
+| C1-K04 *The Lake That Remembered Tomorrow* | `kitaplar/C1-K04-the-lake-that-remembered-tomorrow/` | ~8.654 | ☐ Onay ☐ Düzeltme | EN ses yok, kapsama %99,0 |
+| C1-K05 *Held in Trust* | `kitaplar/C1-K05-held-in-trust/` | ~8.730 | ☐ Onay ☐ Düzeltme | EN ses yok, kapsama %98,5 (yeni özel adlar: English, Turkish, England) |
+| C2-K01 *The Missing Entries* | `kitaplar/C2-K01-the-missing-entries/` | ~10.922 | ☐ Onay ☐ Düzeltme | EN ses yok, kapsama %98,3 |
+| C2-K02 *The Town That Wasn't There* | `kitaplar/C2-K02-the-town-that-wasnt-there/` | ~10.994 | ☐ Onay ☐ Düzeltme | EN ses yok, kapsama %98,0 |
+| C2-K03 *A Strongly Worded Letter* | `kitaplar/C2-K03-a-strongly-worded-letter/` | ~10.957 | ☐ Onay ☐ Düzeltme | EN ses yok, kapsama %98,3 |
+| C2-K04 *The Word Meter* | `kitaplar/C2-K04-the-word-meter/` | ~10.367 | ☐ Onay ☐ Düzeltme | EN ses yok, kapsama %98,3 |
+| C2-K05 *The Other Half of the Sentence* | `kitaplar/C2-K05-the-other-half-of-the-sentence/` | ~10.112 | ☐ Onay ☐ Düzeltme | EN ses yok, kapsama %98,4 (yeni özel adlar: English, Turkish, Turk) |
 
 ---
 
@@ -300,20 +300,20 @@ Tablodaki notlar `grammar_lint` uyarılarıdır; hiçbiri inceleme engeli değil
 | B2-10 Ettirgen yapı (causative): have ya da get something done | `dilbilgisi/G-B2-10-causative/` | ☐ Onay ☐ Düzeltme | "Hikâyede gör" kartı yok, kanca gerçek cümle değil, EN örnek sesi eksik |
 | B2-11 Gelecekte süren ve bitmiş eylem: will be doing, will have done | `dilbilgisi/G-B2-11-future-continuous-perfect/` | ☐ Onay ☐ Düzeltme | "Hikâyede gör" kartı yok, kanca gerçek cümle değil, EN örnek sesi eksik |
 | B2-12 Zıtlık bağlaçları: although, despite, however, whereas | `dilbilgisi/G-B2-12-contrast-linkers/` | ☐ Onay ☐ Düzeltme | "Hikâyede gör" kartı yok, EN örnek sesi eksik |
-| C1-01 Devrik yapı (inversion): Never have I…, Not only… | `dilbilgisi/G-C1-01-inversion/` | ☐ Onay ☐ Düzeltme | "Hikâyede gör" kartı yok, C1/C2 kapsama denetlenmedi, kanca gerçek cümle değil, EN örnek sesi eksik |
-| C1-02 Vurgulu yapılar (cleft sentences): It was… that…, What I need is… | `dilbilgisi/G-C1-02-cleft-sentences/` | ☐ Onay ☐ Düzeltme | "Hikâyede gör" kartı yok, C1/C2 kapsama denetlenmedi, kanca gerçek cümle değil, EN örnek sesi eksik |
-| C1-03 Karışık koşul cümleleri (mixed conditionals) | `dilbilgisi/G-C1-03-mixed-conditionals/` | ☐ Onay ☐ Düzeltme | "Hikâyede gör" kartı yok, C1/C2 kapsama denetlenmedi, kanca gerçek cümle değil, EN örnek sesi eksik |
-| C1-04 Ortaç yan cümleleri (participle clauses): Having finished…, Walking home… | `dilbilgisi/G-C1-04-participle-clauses/` | ☐ Onay ☐ Düzeltme | "Hikâyede gör" kartı yok, C1/C2 kapsama denetlenmedi, kanca gerçek cümle değil, EN örnek sesi eksik |
-| C1-05 Modal incelikleri: needn't have, be supposed to, would rather | `dilbilgisi/G-C1-05-modal-nuances/` | ☐ Onay ☐ Düzeltme | "Hikâyede gör" kartı yok, C1/C2 kapsama denetlenmedi, kanca gerçek cümle değil, EN örnek sesi eksik |
-| C1-06 Kişisiz edilgen (impersonal passive): It is said that…, He is believed to… | `dilbilgisi/G-C1-06-impersonal-passive/` | ☐ Onay ☐ Düzeltme | "Hikâyede gör" kartı yok, C1/C2 kapsama denetlenmedi, kanca gerçek cümle değil, EN örnek sesi eksik |
-| C1-07 Gerçek dışı geçmiş (unreal past): It's time…, would rather…, as if… | `dilbilgisi/G-C1-07-unreal-past/` | ☐ Onay ☐ Düzeltme | "Hikâyede gör" kartı yok, C1/C2 kapsama denetlenmedi, kanca gerçek cümle değil, EN örnek sesi eksik |
-| C1-08 Eksiltme ve yerine koyma (ellipsis and substitution): So do I, I hope not | `dilbilgisi/G-C1-08-ellipsis-substitution/` | ☐ Onay ☐ Düzeltme | "Hikâyede gör" kartı yok, C1/C2 kapsama denetlenmedi, EN örnek sesi eksik |
-| C2-01 Öne alma ve bilgi yapısı (fronting): Little did she know…, Such was… | `dilbilgisi/G-C2-01-fronting/` | ☐ Onay ☐ Düzeltme | "Hikâyede gör" kartı yok, C1/C2 kapsama denetlenmedi, kanca gerçek cümle değil, EN örnek sesi eksik |
-| C2-02 Adlaştırma (nominalisation): resmî ve akademik yazı | `dilbilgisi/G-C2-02-nominalisation/` | ☐ Onay ☐ Düzeltme | "Hikâyede gör" kartı yok, C1/C2 kapsama denetlenmedi, kanca gerçek cümle değil, EN örnek sesi eksik |
-| C2-03 Yumuşatma ve tutum (hedging and stance): It would appear that…, arguably | `dilbilgisi/G-C2-03-hedging-stance/` | ☐ Onay ☐ Düzeltme | "Hikâyede gör" kartı yok, C1/C2 kapsama denetlenmedi, kanca gerçek cümle değil, EN örnek sesi eksik |
-| C2-04 Resmî dilek kipi ve if'siz şart (subjunctive, inverted conditionals): Should you…, Had I known… | `dilbilgisi/G-C2-04-formal-subjunctive/` | ☐ Onay ☐ Düzeltme | "Hikâyede gör" kartı yok, C1/C2 kapsama denetlenmedi, kanca gerçek cümle değil, EN örnek sesi eksik |
-| C2-05 Bağdaşıklık ve söylem belirleyicileri (cohesion and discourse markers) | `dilbilgisi/G-C2-05-cohesion-discourse/` | ☐ Onay ☐ Düzeltme | "Hikâyede gör" kartı yok, C1/C2 kapsama denetlenmedi, kanca gerçek cümle değil, EN örnek sesi eksik |
-| C2-06 Görünüş incelikleri (aspect): She's being rude, I was wondering… | `dilbilgisi/G-C2-06-aspect-nuance/` | ☐ Onay ☐ Düzeltme | "Hikâyede gör" kartı yok, C1/C2 kapsama denetlenmedi, kanca gerçek cümle değil, EN örnek sesi eksik |
+| C1-01 Devrik yapı (inversion): Never have I…, Not only… | `dilbilgisi/G-C1-01-inversion/` | ☐ Onay ☐ Düzeltme | "Hikâyede gör" kartı yok, kanca gerçek cümle değil, EN örnek sesi eksik |
+| C1-02 Vurgulu yapılar (cleft sentences): It was… that…, What I need is… | `dilbilgisi/G-C1-02-cleft-sentences/` | ☐ Onay ☐ Düzeltme | "Hikâyede gör" kartı yok, kanca gerçek cümle değil, EN örnek sesi eksik |
+| C1-03 Karışık koşul cümleleri (mixed conditionals) | `dilbilgisi/G-C1-03-mixed-conditionals/` | ☐ Onay ☐ Düzeltme | "Hikâyede gör" kartı yok, kanca gerçek cümle değil, EN örnek sesi eksik |
+| C1-04 Ortaç yan cümleleri (participle clauses): Having finished…, Walking home… | `dilbilgisi/G-C1-04-participle-clauses/` | ☐ Onay ☐ Düzeltme | "Hikâyede gör" kartı yok, kanca gerçek cümle değil, EN örnek sesi eksik |
+| C1-05 Modal incelikleri: needn't have, be supposed to, would rather | `dilbilgisi/G-C1-05-modal-nuances/` | ☐ Onay ☐ Düzeltme | "Hikâyede gör" kartı yok, kanca gerçek cümle değil, EN örnek sesi eksik |
+| C1-06 Kişisiz edilgen (impersonal passive): It is said that…, He is believed to… | `dilbilgisi/G-C1-06-impersonal-passive/` | ☐ Onay ☐ Düzeltme | "Hikâyede gör" kartı yok, kanca gerçek cümle değil, EN örnek sesi eksik |
+| C1-07 Gerçek dışı geçmiş (unreal past): It's time…, would rather…, as if… | `dilbilgisi/G-C1-07-unreal-past/` | ☐ Onay ☐ Düzeltme | "Hikâyede gör" kartı yok, kanca gerçek cümle değil, EN örnek sesi eksik |
+| C1-08 Eksiltme ve yerine koyma (ellipsis and substitution): So do I, I hope not | `dilbilgisi/G-C1-08-ellipsis-substitution/` | ☐ Onay ☐ Düzeltme | "Hikâyede gör" kartı yok, EN örnek sesi eksik |
+| C2-01 Öne alma ve bilgi yapısı (fronting): Little did she know…, Such was… | `dilbilgisi/G-C2-01-fronting/` | ☐ Onay ☐ Düzeltme | "Hikâyede gör" kartı yok, kanca gerçek cümle değil, EN örnek sesi eksik |
+| C2-02 Adlaştırma (nominalisation): resmî ve akademik yazı | `dilbilgisi/G-C2-02-nominalisation/` | ☐ Onay ☐ Düzeltme | "Hikâyede gör" kartı yok, kapsama %97,5, sözlükle %100 (sözlüğe `postponement` eklendi), kanca gerçek cümle değil, EN örnek sesi eksik |
+| C2-03 Yumuşatma ve tutum (hedging and stance): It would appear that…, arguably | `dilbilgisi/G-C2-03-hedging-stance/` | ☐ Onay ☐ Düzeltme | "Hikâyede gör" kartı yok, kapsama %97,3, sözlükle %100 (sözlüğe `arguably` eklendi), kanca gerçek cümle değil, EN örnek sesi eksik |
+| C2-04 Resmî dilek kipi ve if'siz şart (subjunctive, inverted conditionals): Should you…, Had I known… | `dilbilgisi/G-C2-04-formal-subjunctive/` | ☐ Onay ☐ Düzeltme | "Hikâyede gör" kartı yok, kanca gerçek cümle değil, EN örnek sesi eksik |
+| C2-05 Bağdaşıklık ve söylem belirleyicileri (cohesion and discourse markers) | `dilbilgisi/G-C2-05-cohesion-discourse/` | ☐ Onay ☐ Düzeltme | "Hikâyede gör" kartı yok, kanca gerçek cümle değil, EN örnek sesi eksik |
+| C2-06 Görünüş incelikleri (aspect): She's being rude, I was wondering… | `dilbilgisi/G-C2-06-aspect-nuance/` | ☐ Onay ☐ Düzeltme | "Hikâyede gör" kartı yok, kanca gerçek cümle değil, EN örnek sesi eksik |
 
 ---
 
@@ -408,7 +408,7 @@ Bunlar **inceleme engeli değildir.** Editör bilsin diye yazıldı.
 2. **A1-K01 *The Blue Door*:** "Her heart is fast." → "Her heart beats fast." düzeltmesi 2026-10-30'da c3 sesiyle birlikte yapıldı. "live on floor four" / "on floor four" → "on the fourth floor" bekliyor: metin değişince c1/c2 sesi geçersiz olur (book-align HATA), bu yüzden ses yeniden üretilince birlikte yapılacak. Önerilen biçim "Lina and Mum live on the fourth floor." (A1 sınırı 8 sözcük; `fourth` sözlüğe eklenmeli). Editör bu iki cümleyi değerlendirir.
 3. **Bölüm `rights-and-review.md` dosyaları 2026-10-30'da eklendi** (`icerik/A1-000`…`A1-012`, 13 dosya; K-01). Depodaki kayıtlardan derlendi: kaynaklar, AI açıklaması, güvenlik notu, §7.2 kontrol listesi (hiçbir madde işaretli değil) ve onay geçmişi. Bölümlerin `content.json` dosyasında hâlâ `status: DRAFT`, `humanReviewed: false`, `rightsStatus: PENDING`; editör onayı **bekliyor**. Doğrulanamayan noktalar dosyalarda "doğrulanmadı" diye işaretli (ör. B5–B12 İngilizce replik seslerinin ElevenLabs hesabı/planı, Higgsfield çıktılarının ticari kullanım koşulu). Editör onayı verildiğinde bu dosyaların onay geçmişine yazılır.
 4. **Kitap onay geçmişi tabloları 2026-10-30'da güncellendi.** 30 kitabın hepsinde metin ve çeviri onayı `ceviri.tr.json` `APPROVED` kaydına göre "Onaylandı", görseller `PROMPTS.md` üretim kayıtlarına göre "Üretildi" (GPT Image 2.5, 2026-10-14) yazıyor; ses satırı 6 sesli kitapta (A1-K01…K05, A2-K03) "Üretildi", 24 kitapta "Bekliyor". Editör toplu kontrolü bütün kitaplarda **bekliyor**. Not: bazı kitapların `PROMPTS.md` ses bölümü başlığında eski "Henüz üretilmedi" cümlesi duruyor; altındaki kayıt tablosu geçerlidir.
-5. **C1/C2 kapsaması otomatik denetlenmiyor.** Octanove C1/C2 listesi depoda yok. 10 kitap ve 14 derste seviye kararı tamamen editördedir.
+5. **C1/C2 kapsaması 2026-11-03'ten beri denetleniyor.** Octanove C1/C2 listesi (CC BY-SA 4.0) depoya eklendi; 10 kitap ve 14 ders %98 hedefini geçiyor (kitaplar %98,0–%99,0; G-C2-02 ve G-C2-03 %97,3–%97,5, sözlükle %100). Kapatmak için metin değişmedi; editör şu eklemeleri de inceler: G-C2-02 `glossary` → `postponement`, G-C2-03 `glossary` → `arguably`; C1-K05 ve C2-K05 `book.json` `properNouns` → English, Turkish, England / Turk (dil ve ulus adları, özel ad sayıldı). Lint düzeltmesi (needn't, cannot, eksik düzensiz biçimler, çok sözcüklü başsözcükler) G-C1-05 ve öteki kitapları kapattı. Kitap metinlerinde Türkçe sözcükler (emanet, sana, baba, vapur…) ve sözlükte olmayan seyrek kelimeler hâlâ liste dışı uyarısı verir; seviye kararı yine editördedir.
 6. **Dilbilgisi kanca ve "Hikâyede gör" eksikleri.** 19 derste kanca hikâyeden ya da kitaptan gerçek bir cümle değil; 31 derste "Hikâyede gör" kartı yok. `G-A2-07` hikâye bağı üretilmemiş prologa (A1-000) gidiyor. Editör bu dersleri anlatım açısından yine onaylayabilir; bağ eksikleri ayrıca tamamlanır.
 7. **Keşfet reellerinde H-094 P3 maddeleri açık.** `A2-R-BOK-01` "on Friday" ↔ "one more week" çelişkisi ve `due` sözlüğü, `A2-R-CIN-01` sahne cümlesi, `A2-R-SPO-01` soru cümlesi, `A1-R-BOK-02` başlığı. Ayrıntı reel tablosunda.
 8. **Görsel yüz kimliği kayması** (reellerde ELIF, MERT, KEREM) bilinçli olarak ertelendi (H-094 §4 C). Not düşülebilir; tek başına düzeltme gerekçesi değildir.
@@ -435,6 +435,7 @@ $P tools/content-pipeline/reel_lint.py reeller/*-R-*
 | `reel_lint` | 18 reel | **0** | 6 | kapsama %98 altı 6 (sözlükle %100) |
 
 - Dört komutun çıkış kodu 0 (2026-11-01 koşusu).
+- **Yeniden koşu (2026-11-03, Octanove eklendikten sonra):** `book_lint` 30 kitap 0 hata/145 uyarı · `grammar_lint` 71 ders 0 hata/606 uyarı · `content_lint` (kurgu, klipsiz) 13 bölüm 0 hata/25 uyarı · `reel_lint` 18 reel 0 hata/6 uyarı. "C1/C2 kapsama denetlenmedi" uyarıları kalktı; G-C2-02 ve G-C2-03'te sözlükle tamamlanan kapsama uyarısı var.
 - Bu sayılar `docs/HANDOFF-2026-10-30.md` §5'teki son doğrulamayla (kitap 30/0, dilbilgisi 71/0) uyumludur.
 - Not: Yukarıdaki tablo `e22e5d2` koşusudur; o sırada `reel_lint` kapsama denetlemiyordu (H-094 §4 B).
 - **Yeniden koşu (2026-10-30 akşam, `e7e7712`):** `content_lint` 13 bölüm 0 hata/25 uyarı · `book_lint` 30 kitap 0 hata/145 uyarı · `grammar_lint` 71 ders 0 hata/616 uyarı · `reel_lint` 18 reel 0 hata/6 uyarı (kapsama denetimi eklendi, `788d775`; 6 reel %98 altında, sözlükle %100). Dört lint de CI'da; CI `41070330880` yeşil.

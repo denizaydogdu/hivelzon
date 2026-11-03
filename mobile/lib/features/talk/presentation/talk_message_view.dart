@@ -5,6 +5,7 @@ import '../../../app/design/design.dart';
 import '../../../l10n/tr_strings.dart';
 import '../../../shared/ui/ui.dart';
 import '../../hi/application/hi_providers.dart';
+import '../../hi/presentation/hi_listen_button.dart';
 import '../../notebook/application/notebook_providers.dart';
 import '../application/talk_providers.dart';
 import '../domain/talk_match.dart';
@@ -107,9 +108,11 @@ class _TalkMessageViewState extends ConsumerState<TalkMessageView> {
     final c = <Widget>[
       TalkImage(task: _task),
       const SizedBox(height: AppSpace.s16),
-      Text(
-        _task.taskTr ?? '',
-        key: const ValueKey('message-task'),
+      TalkHiText(
+        text: _task.taskTr ?? '',
+        audio: _task.taskAudio,
+        listenKey: 'message-task-listen',
+        textKey: const ValueKey('message-task'),
         style: theme.textTheme.bodyLarge,
       ),
       const SizedBox(height: AppSpace.s12),
@@ -169,6 +172,17 @@ class _TalkMessageViewState extends ConsumerState<TalkMessageView> {
               icon: Icons.lightbulb_outline_rounded,
               title: SpeakTexts.closeTitle,
               body: lines.join(' '),
+              action: _task.check?.hintAudio == null
+                  ? null
+                  : Align(
+                      alignment: Alignment.centerLeft,
+                      child: HiListenButton(
+                        key: const ValueKey('message-hint-listen'),
+                        path: _task.check!.hintAudio!,
+                        label: TalkTexts.listenHiHint,
+                        filled: false,
+                      ),
+                    ),
             ),
           )
           ..add(const SizedBox(height: AppSpace.s12))

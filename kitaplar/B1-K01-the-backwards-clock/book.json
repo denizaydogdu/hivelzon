@@ -33,6 +33,19 @@
     "Bernard",
     "Klaus"
   ],
+  "narrationTr": {
+    "role": "hi",
+    "pronunciations": [
+      {
+        "term": "Brandt",
+        "say_as": "Brant"
+      },
+      {
+        "term": "Ilse",
+        "say_as": "İlse"
+      }
+    ]
+  },
   "narration": {
     "modelId": "eleven_v3",
     "speed": 1.0,

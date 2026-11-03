@@ -243,3 +243,80 @@ def test_export_audio_temp_file_keeps_m4a_extension(tmp_path):
 
     export_talk(root, 1, tmp_path / "S1", audio=audio)
     assert outs and all(p.suffix == ".m4a" for p in outs)
+
+
+# --- Hi'nin Türkçe sesleri (H-104) ----------------------------------------------------------
+
+def _with_voice(root):
+    """Ses haritası (yalnız varsa Konuş sesleri denetlenir) ve iki Hi sesi: biri hazır, biri medyasız."""
+    shutil.copy(ICERIK / "_evren" / "sesler.json", root / "_evren" / "sesler.json")
+
+    def strip(o):   # gerçek kaynaktaki Hi ses başvuruları (bu ortamda hizalaması yok)
+        if isinstance(o, dict):
+            return {k: strip(v) for k, v in o.items() if not k.endswith("Audio")}
+        return [strip(v) for v in o] if isinstance(o, list) else o
+    for q in talk_dir(root).glob("*.json"):
+        q.write_text(json.dumps(strip(json.loads(q.read_text(encoding="utf-8"))), ensure_ascii=False, indent=2),
+                     encoding="utf-8")
+    p = talk_dir(root) / "cafe-rosa.json"
+    doc = json.loads(p.read_text(encoding="utf-8"))
+    doc["introAudio"] = "hi-ses/konusma-cafe-rosa-intro.mp3"
+    doc["turns"][0]["promptAudio"] = "hi-ses/konusma-cafe-rosa-t1-prompt.mp3"
+    p.write_text(json.dumps(doc, ensure_ascii=False, indent=2), encoding="utf-8")
+    hs = root / "_evren" / "hi-ses"
+    hs.mkdir(parents=True, exist_ok=True)
+    from hvpipeline import tts_episode_tr as ep
+    vm = ep.VoiceMap.load(root)
+    for it in ep.collect_talk_task(p, doc, root, vm):
+        if it.stem in ("konusma-cafe-rosa-intro", "konusma-cafe-rosa-t1-prompt"):
+            (hs / f"{it.stem}.align.json").write_text(json.dumps(
+                {"text": it.text, "voice_id": "alania2-f1", "timing": "duyu-1", "quality": {"ok": True}},
+                ensure_ascii=False), encoding="utf-8")
+    (hs / "konusma-cafe-rosa-intro.mp3").write_bytes(b"mp3")   # t1-prompt: medya git dışı, yok
+    return root
+
+
+def test_export_hi_voice_to_package(tmp_path):
+    root = _with_voice(_copy_root(tmp_path))
+    written = []
+
+    def audio(src, out):
+        written.append(src.name)
+        Path(out).write_bytes(b"m4a")
+
+    out = tmp_path / "S1"
+    summary = export_talk(root, 1, out, audio=audio)
+    assert summary["hiAudio"] == 1 and summary["hiAudioMissing"] == ["hi-ses/konusma-cafe-rosa-t1-prompt.mp3"]
+    assert "konusma-cafe-rosa-intro.mp3" in written
+    pkg = {t["id"]: t for t in json.loads((out / TALK_PACKAGE_FILE).read_text(encoding="utf-8"))["tasks"]}
+    cafe = pkg["cafe-rosa"]
+    assert cafe["introAudio"] == "talk/konusma-cafe-rosa-intro.m4a"
+    assert (out / "talk" / "konusma-cafe-rosa-intro.m4a").exists()
+    assert "promptAudio" not in cafe["turns"][0]          # medya yok → alan düşer, uygulamada düğme görünmez
+    # Kaynağa özgü alanlar pakete girmez.
+    blob = json.dumps(pkg, ensure_ascii=False)
+    assert "SpeechTr" not in blob and "pronunciations" not in blob and "hi-ses/" not in blob
+    # Yeniden dışa aktarımda eski Hi sesleri silinmez (kullanılanlar listesinde).
+    export_talk(root, 1, out, audio=audio)
+    assert (out / "talk" / "konusma-cafe-rosa-intro.m4a").exists()
+
+
+def test_lint_hi_voice_reference_needs_alignment(tmp_path):
+    root = _with_voice(_copy_root(tmp_path))
+    (root / "_evren" / "hi-ses" / "konusma-cafe-rosa-intro.align.json").unlink()
+    results = {tid: iss for tid, iss, _ in lint_talk(root)}
+    errs = [str(i) for i in _errors(results["cafe-rosa"])]
+    assert any("konusma-cafe-rosa-intro" in e and "hizalama" in e for e in errs)
+    # medyası olmayan (git dışı) ses yalnız uyarı
+    warns = [str(i) for i in results["cafe-rosa"] if i.level == "warning"]
+    assert any("konusma-cafe-rosa-t1-prompt.mp3" in w for w in warns)
+
+
+def test_lint_hi_voice_wrong_reference_is_error(tmp_path):
+    root = _with_voice(_copy_root(tmp_path))
+    p = talk_dir(root) / "cafe-rosa.json"
+    doc = json.loads(p.read_text(encoding="utf-8"))
+    doc["introAudio"] = "hi-ses/baska.mp3"
+    p.write_text(json.dumps(doc, ensure_ascii=False), encoding="utf-8")
+    errs = [str(i) for i in _errors({tid: iss for tid, iss, _ in lint_talk(root)}["cafe-rosa"])]
+    assert any("konusma-cafe-rosa-intro" in e for e in errs)

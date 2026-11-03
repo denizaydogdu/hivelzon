@@ -23,6 +23,9 @@
     "Ravi",
     "Das"
   ],
+  "narrationTr": {
+    "role": "hi"
+  },
   "narration": {
     "modelId": "eleven_v3",
     "speed": 0.9,

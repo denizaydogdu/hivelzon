@@ -13,11 +13,16 @@
   "taskTr": "Notun tamamını çözdünüz. Unutmamak için telefonuna İngilizce kısa bir not yaz: yer, gün ve saat.",
   "to": "Notlar",
   "image": {"episode": "A1-004", "path": "stills/B4-08-iki-not.webp"},
+  "pronunciations": [
+    {"term": "Pier 3", "say_as": "Pir tri"},
+    {"term": "Friday", "say_as": "Fraydey"},
+    {"term": "seven", "say_as": "sevın"}
+  ],
   "model": {"en": "Pier 3. On Friday at seven.", "tr": "Pier 3. Cuma günü saat yedide."},
   "check": {
     "all": [["pier 3"], ["friday"], ["seven"]],
     "none": ["not", "never", "no"],
-    "hintTr": "Yeri (Pier 3), günü (Friday) ve saati (seven) yazmayı unutma."
+    "hintTr": "Yeri (Pier 3), günü (Friday) ve saati (seven) yazmayı unutma.", "hintAudio": "hi-ses/konusma-meet-note-hint.mp3"
   },
-  "targets": ["on Friday", "at seven"]
+  "targets": ["on Friday", "at seven"], "taskAudio": "hi-ses/konusma-meet-note-task.mp3"
 }

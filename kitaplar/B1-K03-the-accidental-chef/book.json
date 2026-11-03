@@ -34,6 +34,27 @@
     "Mill",
     "Kamala"
   ],
+  "narrationTr": {
+    "role": "hi",
+    "pronunciations": [
+      {
+        "term": "Ellie",
+        "say_as": "Eli"
+      },
+      {
+        "term": "Gus",
+        "say_as": "Gas"
+      },
+      {
+        "term": "Meera",
+        "say_as": "Mira"
+      },
+      {
+        "term": "web",
+        "say_as": "veb"
+      }
+    ]
+  },
   "narration": {
     "modelId": "eleven_v3",
     "speed": 1.0,

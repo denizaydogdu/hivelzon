@@ -13,6 +13,14 @@
   "introTr": "Limandasın ve otobüs durağını arıyorsun. Köpekli adam yine orada. Bu bir prova: Alex'in yerine sen sor.",
   "character": {"nameTr": "Köpekli adam", "speaker": "MAN"},
   "image": {"episode": "A1-003", "path": "stills/B3-02-kopekli-adam-pov.webp"},
+  "pronunciations": [
+    {"term": "where is the bus stop", "say_as": "ver iz dı bas stap"},
+    {"term": "Again, please", "say_as": "Egeyn pliiz"},
+    {"term": "Is it far", "say_as": "İz it far"},
+    {"term": "is", "say_as": "iz"},
+    {"term": "Sorry", "say_as": "Sori"},
+    {"term": "Thank you", "say_as": "Tenk yu"}
+  ],
   "turns": [
     {
       "id": "t1",
@@ -25,9 +33,9 @@
         "Excuse me, where is the bus stop, please?"
       ],
       "distractors": [
-        {"en": "Where bus stop?", "reactionTr": "Anlaşılıyor ama eksik. Kibar soru kalıbı: Excuse me, where is the bus stop?"}
+        {"en": "Where bus stop?", "reactionTr": "Anlaşılıyor ama eksik. Kibar soru kalıbı: Excuse me, where is the bus stop?", "reactionAudio": "hi-ses/konusma-ask-the-way-t1-d1.mp3"}
       ],
-      "targets": ["Excuse me, where is…?", "Where is…?"]
+      "targets": ["Excuse me, where is…?", "Where is…?"], "promptAudio": "hi-ses/konusma-ask-the-way-t1-prompt.mp3"
     },
     {
       "id": "t2",
@@ -39,9 +47,9 @@
         "Can you say it again, please?"
       ],
       "distractors": [
-        {"en": "What?", "reactionTr": "Kaba değil ama biraz sert duyulur. Daha kibarı: Again, please."}
+        {"en": "What?", "reactionTr": "Kaba değil ama biraz sert duyulur. Daha kibarı: Again, please.", "reactionAudio": "hi-ses/konusma-ask-the-way-t2-d1.mp3"}
       ],
-      "targets": ["Again, please."]
+      "targets": ["Again, please."], "promptAudio": "hi-ses/konusma-ask-the-way-t2-prompt.mp3"
     },
     {
       "id": "t3",
@@ -54,9 +62,9 @@
         "Thank you. Is it far?"
       ],
       "distractors": [
-        {"en": "It is far?", "reactionTr": "Soru için \"is\" başa gelir: Is it far?"}
+        {"en": "It is far?", "reactionTr": "Soru için \"is\" başa gelir: Is it far?", "reactionAudio": "hi-ses/konusma-ask-the-way-t3-d1.mp3"}
       ],
-      "targets": ["Is it far?"]
+      "targets": ["Is it far?"], "promptAudio": "hi-ses/konusma-ask-the-way-t3-prompt.mp3"
     },
     {
       "id": "t4",
@@ -70,10 +78,10 @@
         "Thank you. Bye!"
       ],
       "distractors": [
-        {"en": "Sorry!", "reactionTr": "\"Sorry\" özür dilemek içindir. Yardım için teşekkür: Thank you!"}
+        {"en": "Sorry!", "reactionTr": "\"Sorry\" özür dilemek içindir. Yardım için teşekkür: Thank you!", "reactionAudio": "hi-ses/konusma-ask-the-way-t4-d1.mp3"}
       ],
-      "targets": ["Thank you."]
+      "targets": ["Thank you."], "promptAudio": "hi-ses/konusma-ask-the-way-t4-prompt.mp3"
     }
   ],
-  "outro": {"en": "Have a nice day!", "tr": "İyi günler!"}
+  "outro": {"en": "Have a nice day!", "tr": "İyi günler!"}, "introAudio": "hi-ses/konusma-ask-the-way-intro.mp3"
 }

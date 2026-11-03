@@ -40,6 +40,23 @@
       "description": "Kitaptaki özel adlar (kapsamaya ve kelime anlamı zorunluluğuna girmez).",
       "type": "array", "items": { "type": "string", "minLength": 1 }
     },
+    "narrationTr": {
+      "description": "Sayfanın Türkçesinin Alania ile sesli okunması (H-105, tts_book_tr.py). role: icerik/_evren/sesler.json rolü (varsayılan hi). pronunciations: Türkçe metindeki İngilizce/yabancı adların Türkçe okunuşu (büyük/küçük harfe duyarlı; yalnız okunuşu bozulacak terimler).",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "role": { "type": "string", "minLength": 1 },
+        "pronunciations": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["term", "say_as"],
+            "additionalProperties": false,
+            "properties": { "term": { "type": "string", "minLength": 1 }, "say_as": { "type": "string", "minLength": 1 } }
+          }
+        }
+      }
+    },
     "narration": {
       "description": "Seslendirme (tts_book.py). Anahtar burada tutulmaz; yalnızca ses kimliği ve ayarlar.",
       "type": "object",

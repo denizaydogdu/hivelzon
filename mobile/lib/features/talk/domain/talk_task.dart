@@ -22,12 +22,7 @@ enum TalkKind {
 /// Karakterin bir satırı. [audio]: bölüm kaydından aynen alınmış ses
 /// (sezon paketinde `talk/…m4a`); yoksa cihazın İngilizce sesi okur.
 class TalkLine {
-  const TalkLine({
-    required this.en,
-    required this.tr,
-    this.audio,
-    this.nameTr,
-  });
+  const TalkLine({required this.en, required this.tr, this.audio, this.nameTr});
 
   factory TalkLine.fromJson(Map<String, dynamic> j) => TalkLine(
     en: j['en'] as String,
@@ -47,15 +42,23 @@ class TalkLine {
 /// Kabul edilmeyen ama yakın seçenek ve kibar tepkisi (K-28: tepkiden sonra
 /// aynı tura dönülür).
 class TalkDistractor {
-  const TalkDistractor({required this.en, required this.reactionTr});
+  const TalkDistractor({
+    required this.en,
+    required this.reactionTr,
+    this.reactionAudio,
+  });
 
   factory TalkDistractor.fromJson(Map<String, dynamic> j) => TalkDistractor(
     en: j['en'] as String,
     reactionTr: j['reactionTr'] as String,
+    reactionAudio: j['reactionAudio'] as String?,
   );
 
   final String en;
   final String reactionTr;
+
+  /// Hi'nin kibar tepkisinin Türkçe sesi (H-104; sezon paketine göre yol).
+  final String? reactionAudio;
 }
 
 class TalkTurn {
@@ -64,6 +67,7 @@ class TalkTurn {
     required this.line,
     required this.promptTr,
     required this.accept,
+    this.promptAudio,
     this.distractors = const [],
     this.targets = const [],
   });
@@ -72,6 +76,7 @@ class TalkTurn {
     id: j['id'] as String,
     line: TalkLine.fromJson((j['line'] as Map).cast()),
     promptTr: j['promptTr'] as String,
+    promptAudio: j['promptAudio'] as String?,
     accept: [for (final a in j['accept'] as List) a as String],
     distractors: [
       for (final d in (j['distractors'] as List? ?? const []))
@@ -88,6 +93,9 @@ class TalkTurn {
   /// Kullanıcının ne söyleyeceği (Türkçe görev cümlesi).
   final String promptTr;
 
+  /// Hi'nin tur görevini okuyan Türkçe sesi (H-104; yoksa düğme görünmez).
+  final String? promptAudio;
+
   /// Aynı anlama gelen, kabul edilen cevaplar; ilki örnek cevaptır.
   final List<String> accept;
   final List<TalkDistractor> distractors;
@@ -102,7 +110,12 @@ class TalkTurn {
 /// geçmeli; [none] kelimelerinden (anlamı tersine çevirenler) hiçbiri
 /// olmamalı. Kalıplar kelime sırasıyla ve bitişik aranır.
 class MessageCheck {
-  const MessageCheck({required this.all, this.none = const [], this.hintTr});
+  const MessageCheck({
+    required this.all,
+    this.none = const [],
+    this.hintTr,
+    this.hintAudio,
+  });
 
   factory MessageCheck.fromJson(Map<String, dynamic> j) => MessageCheck(
     all: [
@@ -111,11 +124,15 @@ class MessageCheck {
     ],
     none: [for (final n in (j['none'] as List? ?? const [])) n as String],
     hintTr: j['hintTr'] as String?,
+    hintAudio: j['hintAudio'] as String?,
   );
 
   final List<List<String>> all;
   final List<String> none;
   final String? hintTr;
+
+  /// Hi'nin ipucunu okuyan Türkçe sesi (H-104).
+  final String? hintAudio;
 }
 
 class TalkTask {
@@ -131,10 +148,12 @@ class TalkTask {
     required this.imagePath,
     this.unlockEpisode,
     this.introTr,
+    this.introAudio,
     this.characterName,
     this.turns = const [],
     this.outro,
     this.taskTr,
+    this.taskAudio,
     this.to,
     this.model,
     this.check,
@@ -159,6 +178,7 @@ class TalkTask {
       imageEpisode: image['episode'] as String,
       imagePath: image['path'] as String,
       introTr: j['introTr'] as String?,
+      introAudio: j['introAudio'] as String?,
       characterName: character?['nameTr'] as String?,
       turns: [
         for (final t in (j['turns'] as List? ?? const []))
@@ -168,6 +188,7 @@ class TalkTask {
           ? TalkLine.fromJson((j['outro'] as Map).cast())
           : null,
       taskTr: j['taskTr'] as String?,
+      taskAudio: j['taskAudio'] as String?,
       to: j['to'] as String?,
       model: j['model'] is Map
           ? TalkLine.fromJson((j['model'] as Map).cast())
@@ -203,12 +224,17 @@ class TalkTask {
 
   // sahne
   final String? introTr;
+
+  /// Hi'nin Türkçe yönlendirme sesleri (H-104, Alania): sezon paketine göre
+  /// yol (`talk/konusma-<görev>-<yer>.m4a`); yoksa "dinle" düğmesi görünmez.
+  final String? introAudio;
   final String? characterName;
   final List<TalkTurn> turns;
   final TalkLine? outro;
 
   // mesaj
   final String? taskTr;
+  final String? taskAudio;
 
   /// Mesajın alıcısı ("Maya", "Hi", "Notlar").
   final String? to;

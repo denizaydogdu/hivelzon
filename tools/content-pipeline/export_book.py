@@ -8,6 +8,8 @@ Kullanım:
 Yalnızca yerel ffmpeg ve ImageMagick kullanır; ücretli servis çağrısı yapmaz. Ses ve görseller git
 dışındadır: bu ortamda yoksa paket yine üretilir (sessiz okuma, palet renkli sayfa), eksikler
 manifest.json → `missing` listesine yazılır ve UYARI olarak gösterilir. `--require-media` ile hata olur.
+Sayfanın Türkçesinin sesi (H-105, audio/tr/) isteğe bağlıdır: eksik ya da eskimişse `trMissing` ve UYARI,
+`--require-media` ile de hata değildir.
 Çıkış kodu: 0 = tamam, 1 = hata (şema, hizalama uyuşmazlığı ya da --require-media ile eksik medya).
 """
 
@@ -63,11 +65,19 @@ def main(argv: list[str] | None = None) -> int:
         for x in r.missing:
             tag = "HATA" if a.require_media else "UYARI"
             print(f"   - {tag} [book-media] bu ortamda yok (git dışı medya): {x['path']}")
+        ta = m.get("trAudio") or {}
+        if ta.get("aligned") or ta.get("stale"):
+            print(f"   Türkçe sayfa sesi (H-105): {ta['packaged']}/{ta['pages']} sayfa pakette"
+                  + (f", {ta['stale']} eskimiş" if ta.get("stale") else ""))
+        for x in r.tr_missing:   # isteğe bağlı: --require-media ile de hata değil
+            why = "metin değişti, yeniden üret (tts_book_tr.py)" if x["reason"] == "stale" else "bu ortamda yok (git dışı medya)"
+            print(f"   - UYARI [book-tr-audio] {x['page']}: Türkçe ses {why}: {x['path']}")
         if miss_tr:
             print(f"   - UYARI [translation] {len(miss_tr)} eksik çeviri/anlam (book_lint.py ayrıntıyı verir)")
         summary.append({"book": r.book_id, "package": str(r.package), "errors": r.errors, "missing": r.missing,
                         "files": len(m["files"]), "bytes": m["totalBytes"], "loudness": m["loudness"],
-                        "pacing": m["pacing"]})
+                        "pacing": m["pacing"], "trAudio": m.get("trAudio"),
+                        "trMissing": m.get("trMissing")})
     if a.report:
         Path(a.report).write_text(json.dumps(summary, ensure_ascii=False, indent=2), encoding="utf-8")
     return 1 if failed else 0

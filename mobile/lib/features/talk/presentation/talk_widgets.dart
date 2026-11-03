@@ -8,6 +8,7 @@ import '../../../l10n/tr_strings.dart';
 import '../../../shared/content/content_providers.dart';
 import '../../../shared/speech/example_speech.dart';
 import '../../../shared/speech/speech_providers.dart';
+import '../../hi/presentation/hi_listen_button.dart';
 import '../../notebook/application/card_audio_player.dart';
 import '../../notebook/domain/notebook_item.dart';
 import '../../notebook/presentation/notebook_screen.dart' show createCardAudio;
@@ -98,6 +99,49 @@ class TalkLineSpeaker {
   void dispose() {
     unawaited(_speech.stop());
     _audio.dispose();
+  }
+}
+
+/// Hi'nin Türkçe yönlendirmesi (H-104): metin + sesi varsa yanında küçük
+/// "dinle" düğmesi (Alania; sezon paketinde `talk/…m4a`). Kendiliğinden
+/// çalmaz; ses yoksa düğme hiç görünmez. Düğmenin hareketi yoktur ("Hareketi
+/// azalt" açıkken de aynı); dokunma alanı en az [AppTouch.min].
+class TalkHiText extends StatelessWidget {
+  const TalkHiText({
+    super.key,
+    required this.text,
+    required this.audio,
+    required this.listenKey,
+    this.textKey,
+    this.style,
+    this.label = TalkTexts.listenHiTask,
+  });
+
+  final String text;
+  final String? audio;
+  final String listenKey;
+  final Key? textKey;
+  final TextStyle? style;
+  final String label;
+
+  @override
+  Widget build(BuildContext context) {
+    final a = audio;
+    final t = Text(text, key: textKey, style: style);
+    if (a == null) return t;
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Expanded(child: t),
+        const SizedBox(width: AppSpace.s8),
+        HiListenButton(
+          key: ValueKey(listenKey),
+          path: a,
+          label: label,
+          filled: false,
+        ),
+      ],
+    );
   }
 }
 
