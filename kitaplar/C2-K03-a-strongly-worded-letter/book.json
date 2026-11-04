@@ -47,6 +47,111 @@
     "Josh",
     "Audit"
   ],
+  "narrationTr": {
+    "role": "hi",
+    "pronunciations": [
+      {
+        "term": "Constance",
+        "say_as": "Kanstıns"
+      },
+      {
+        "term": "Webb",
+        "say_as": "Veb"
+      },
+      {
+        "term": "Con",
+        "say_as": "Kan"
+      },
+      {
+        "term": "Desmond",
+        "say_as": "Dezmınd"
+      },
+      {
+        "term": "Achterberg",
+        "say_as": "Ahtırberg"
+      },
+      {
+        "term": "Beatrice",
+        "say_as": "Biıtris"
+      },
+      {
+        "term": "Bea",
+        "say_as": "Bii"
+      },
+      {
+        "term": "Pike",
+        "say_as": "Payk"
+      },
+      {
+        "term": "Fernleigh",
+        "say_as": "Fırnli"
+      },
+      {
+        "term": "Hollybank",
+        "say_as": "Halibenk"
+      },
+      {
+        "term": "Larkspur",
+        "say_as": "Larkspır"
+      },
+      {
+        "term": "Nether Ambley",
+        "say_as": "Nedır Embli"
+      },
+      {
+        "term": "Ambley",
+        "say_as": "Embli"
+      },
+      {
+        "term": "Kingsmere",
+        "say_as": "Kingzmir"
+      },
+      {
+        "term": "Wexcombe",
+        "say_as": "Vekskım"
+      },
+      {
+        "term": "Hartwell Road",
+        "say_as": "Hartvel Roud"
+      },
+      {
+        "term": "Barry",
+        "say_as": "Beri"
+      },
+      {
+        "term": "Tuttle",
+        "say_as": "Tatıl"
+      },
+      {
+        "term": "Dhillon",
+        "say_as": "Dilon"
+      },
+      {
+        "term": "Fairweather",
+        "say_as": "Ferveder"
+      },
+      {
+        "term": "Quayle",
+        "say_as": "Kueyl"
+      },
+      {
+        "term": "Hollis",
+        "say_as": "Halis"
+      },
+      {
+        "term": "Josh",
+        "say_as": "Coş"
+      },
+      {
+        "term": "bowling",
+        "say_as": "bouling"
+      },
+      {
+        "term": "Bowling",
+        "say_as": "Bouling"
+      }
+    ]
+  },
   "narration": {
     "modelId": "eleven_v3",
     "speed": 1.05,

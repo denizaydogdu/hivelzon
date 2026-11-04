@@ -106,7 +106,7 @@ Tüm kontroller 2026-10-11 tarihinde yapıldı.
 
 ### 2.3 Octanove Vocabulary Profile C1/C2 [lisans doğrulandı]
 
-- **2026-11-03: depoya eklendi** (kullanıcı onayı): `tools/content-pipeline/data/lexicon_ccbysa/octanove-vocabulary-profile-c1c2-1.0.csv`, kaynak commit `d4e45b75b3`, 2.136 satır (C1 1.111, C2 1.025). Değişiklikler: `source` sütunu (`octanove`) ve `#` atıf satırları. Ayrı veri seti olarak CC BY-SA 4.0 bildirimiyle (`lexicon_ccbysa/README.md`); uygulamanın Lisanslar ekranında atıf var (H-042). §8 S2 hukuk sorusu açık.
+- **2026-11-03: depoya eklendi** (kullanıcı onayı): `tools/content-pipeline/data/lexicon_ccbysa/octanove-vocabulary-profile-c1c2-1.0.csv`, kaynak commit `d4e45b75b3`, 2.136 satır (C1 1.111, C2 1.025). Değişiklikler: `source` sütunu (`octanove`) ve `#` atıf satırları. Ayrı veri seti olarak CC BY-SA 4.0 bildirimiyle (`lexicon_ccbysa/README.md`); uygulamanın Lisanslar ekranında atıf var (H-042; CEFR-J biçiminde). Commit `d2d81c0`, CI `41690063999` yeşil; C1/C2 kapsaması kitap ve dilbilgisi lint'lerinde denetleniyor. §8 S2 hukuk sorusu açık.
 
 - **Birincil kaynak:** https://github.com/openlanguageprofiles/olp-en-cefrj, README "Terms of use" bölümü.
   - Open Language Profiles, Octanove Labs'ın yürüttüğü projedir. octanove.com ana sayfası "Open Language Profiles"a bağlantı veriyor.

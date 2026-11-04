@@ -24,7 +24,13 @@
     "Das"
   ],
   "narrationTr": {
-    "role": "hi"
+    "role": "hi",
+    "pronunciations": [
+      {
+        "term": "Yine mi",
+        "say_as": "Yine mi"
+      }
+    ]
   },
   "narration": {
     "modelId": "eleven_v3",

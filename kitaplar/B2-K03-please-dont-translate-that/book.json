@@ -49,6 +49,15 @@
     "Salik",
     "Sauluk"
   ],
+  "narrationTr": {
+    "role": "hi",
+    "pronunciations": [
+      {
+        "term": "Costa",
+        "say_as": "Kosta"
+      }
+    ]
+  },
   "narration": {
     "modelId": "eleven_v3",
     "speed": 1.0,

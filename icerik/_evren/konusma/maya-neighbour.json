@@ -14,12 +14,13 @@
   "character": {"nameTr": "Maya", "speaker": "MAYA"},
   "image": {"episode": "A1-002", "path": "stills/B2-03-maya-pov.webp"},
   "pronunciations": [
-    {"term": "Tide & Pages", "say_as": "Tayd end Peycız"},
+    {"term": "Tide & Pages", "say_as": "Tayd end Peyciz"},
     {"term": "I'm Alex", "say_as": "Aym Aleks"},
-    {"term": "Are you", "say_as": "Ar yu"},
+    {"term": "Are you", "say_as": "Aar yuu"},
     {"term": "Yes, I am", "say_as": "Yes, ay em"},
     {"term": "I'm from Türkiye", "say_as": "Aym fram Türkiye"},
     {"term": "am", "say_as": "em"},
+    {"term": "-im", "say_as": "im"},
     {"term": "Nice to meet you", "say_as": "Nays tu miit yu"}
   ],
   "turns": [

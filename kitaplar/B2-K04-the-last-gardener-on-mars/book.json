@@ -31,6 +31,23 @@
     "Mars",
     "Martian"
   ],
+  "narrationTr": {
+    "role": "hi",
+    "pronunciations": [
+      {
+        "term": "Lindqvist",
+        "say_as": "Lindkvist"
+      },
+      {
+        "term": "Hale",
+        "say_as": "Heyl"
+      },
+      {
+        "term": "Dr",
+        "say_as": "Doktor"
+      }
+    ]
+  },
   "narration": {
     "modelId": "eleven_v3",
     "speed": 1.0,

@@ -1,6 +1,6 @@
 # H-086: Kitap okuyucuda "Sayfanın Türkçesi"
 
-- **Durum:** Devam ediyor (2026-10-30 itibarıyla değişmedi): teknik doğrulama tamam (14 hedef test + 2 golden); kullanıcının okuyucu/panel/satır altı deneyimi bekleniyor. Simülatör her çalıştırmadan önce açık kullanıcı izni ister.
+- **Durum:** Devam ediyor (2026-11-03): teknik doğrulama tamam (14 hedef test + 2 golden); kullanıcının okuyucu/panel/satır altı deneyimi bekleniyor. Panelin Türkçe sesi ("Türkçesini dinle") ayrı iş olarak H-105'te (A1–B1 commitli `d2d81c0`). Simülatör her çalıştırmadan önce açık kullanıcı izni ister.
 - **Tür:** Uygulama (mobil)
 - **Faz:** Kitaplık (H-067 devamı)
 - **Bağımlılık:** H-067

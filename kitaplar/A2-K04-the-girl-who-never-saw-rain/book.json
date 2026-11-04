@@ -27,7 +27,17 @@
     "Edda"
   ],
   "narrationTr": {
-    "role": "hi"
+    "role": "hi",
+    "pronunciations": [
+      {
+        "term": "Nia",
+        "say_as": "Niya"
+      },
+      {
+        "term": "Edda",
+        "say_as": "Eda"
+      }
+    ]
   },
   "narration": {
     "modelId": "eleven_v3",

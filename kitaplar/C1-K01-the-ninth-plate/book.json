@@ -44,6 +44,99 @@
     "Daryl",
     "Brie"
   ],
+  "narrationTr": {
+    "role": "hi",
+    "pronunciations": [
+      {
+        "term": "Ruth",
+        "say_as": "Rut"
+      },
+      {
+        "term": "Calderbury Central",
+        "say_as": "Koldırbıri Sentral"
+      },
+      {
+        "term": "Calderbury",
+        "say_as": "Koldırbıri"
+      },
+      {
+        "term": "Glasswater",
+        "say_as": "Glasvotır"
+      },
+      {
+        "term": "Fennick Halt",
+        "say_as": "Fenik Holt"
+      },
+      {
+        "term": "Fennick",
+        "say_as": "Fenik"
+      },
+      {
+        "term": "Agnes",
+        "say_as": "Egnıs"
+      },
+      {
+        "term": "Thorne",
+        "say_as": "Torn"
+      },
+      {
+        "term": "Desmond",
+        "say_as": "Dezmınd"
+      },
+      {
+        "term": "Pike",
+        "say_as": "Payk"
+      },
+      {
+        "term": "Ambrose",
+        "say_as": "Embrouz"
+      },
+      {
+        "term": "Hale",
+        "say_as": "Heyl"
+      },
+      {
+        "term": "Felix",
+        "say_as": "Filiks"
+      },
+      {
+        "term": "Arden",
+        "say_as": "Ardın"
+      },
+      {
+        "term": "Hartley",
+        "say_as": "Hartli"
+      },
+      {
+        "term": "Nair",
+        "say_as": "Nayr"
+      },
+      {
+        "term": "Theo",
+        "say_as": "Tiyo"
+      },
+      {
+        "term": "Fallon",
+        "say_as": "Felın"
+      },
+      {
+        "term": "Crane",
+        "say_as": "Kreyn"
+      },
+      {
+        "term": "Daryl",
+        "say_as": "Deril"
+      },
+      {
+        "term": "Brie",
+        "say_as": "Bri"
+      },
+      {
+        "term": "Bridal Rye",
+        "say_as": "Braydıl Ray"
+      }
+    ]
+  },
   "narration": {
     "modelId": "eleven_v3",
     "speed": 1.05,

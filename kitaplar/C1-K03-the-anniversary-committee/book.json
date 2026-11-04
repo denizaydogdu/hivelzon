@@ -41,6 +41,103 @@
     "Seaborough",
     "Grandad"
   ],
+  "narrationTr": {
+    "role": "hi",
+    "pronunciations": [
+      {
+        "term": "Gwen",
+        "say_as": "Guen"
+      },
+      {
+        "term": "Holloway",
+        "say_as": "Halovey"
+      },
+      {
+        "term": "Howard",
+        "say_as": "Hauırd"
+      },
+      {
+        "term": "Brindle Umbrellas",
+        "say_as": "Brindıl Ambrelaz"
+      },
+      {
+        "term": "Brindle",
+        "say_as": "Brindıl"
+      },
+      {
+        "term": "Umbrellas",
+        "say_as": "Ambrelaz"
+      },
+      {
+        "term": "Clive",
+        "say_as": "Klayv"
+      },
+      {
+        "term": "Marsh",
+        "say_as": "Marş"
+      },
+      {
+        "term": "Jasper",
+        "say_as": "Caspır"
+      },
+      {
+        "term": "Nell",
+        "say_as": "Nel"
+      },
+      {
+        "term": "Derek",
+        "say_as": "Derik"
+      },
+      {
+        "term": "Pole",
+        "say_as": "Poul"
+      },
+      {
+        "term": "Ambrose",
+        "say_as": "Embrouz"
+      },
+      {
+        "term": "Penrose",
+        "say_as": "Penrouz"
+      },
+      {
+        "term": "Dorothy",
+        "say_as": "Dorıti"
+      },
+      {
+        "term": "Fairweather",
+        "say_as": "Ferveder"
+      },
+      {
+        "term": "Margaret",
+        "say_as": "Margrit"
+      },
+      {
+        "term": "Wexley Bridge",
+        "say_as": "Veksli Bric"
+      },
+      {
+        "term": "Wexley",
+        "say_as": "Veksli"
+      },
+      {
+        "term": "Bridge",
+        "say_as": "Bric"
+      },
+      {
+        "term": "Seaborough",
+        "say_as": "Sibırı"
+      },
+      {
+        "term": "web",
+        "say_as": "veb"
+      },
+      {
+        "term": "Bunu duyuyorum",
+        "say_as": "Bunu duyuyorum"
+      }
+    ]
+  },
   "narration": {
     "modelId": "eleven_v3",
     "speed": 1.05,

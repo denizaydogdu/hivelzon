@@ -93,3 +93,6 @@ Henüz üretilmedi. Anlatıcı **Sarah** (`EXAVITQu4vr4xnSDxMaL`, kullanıcı se
 | 2026-11-03T17:10:35Z | p11 | duyu-1 | - | - | - | 24.23 | - | 50f826becfb8af1e |
 | 2026-11-03T17:10:39Z | p12 | alania-v2 | alania2-f1 | alania-v2.1 | 387 | 29.18 | 4864ac76cc8343d98bfbd246e266af4a | ce72640932c8347c |
 | 2026-11-03T17:10:42Z | p12 | duyu-1 | - | - | - | 29.18 | - | ce72640932c8347c |
+| 2026-11-03T18:23:28Z | p10 | alania-v2 | alania2-f1 | alania-v2.1 | 339 | 24.22 | 280df3e89447447191c838770113a71d | ab4145d7208135e7 |
+| 2026-11-03T18:23:31Z | p10 | duyu-1 | - | - | - | 24.22 | - | ab4145d7208135e7 |
+| 2026-11-03T18:23:35Z | p10 | duyu-1 | - | - | - | 24.22 | - | ab4145d7208135e7 |

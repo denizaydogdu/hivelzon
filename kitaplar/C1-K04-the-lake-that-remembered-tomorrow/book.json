@@ -31,6 +31,31 @@
     "Constantin",
     "Luka"
   ],
+  "narrationTr": {
+    "role": "hi",
+    "pronunciations": [
+      {
+        "term": "Tomás",
+        "say_as": "Tomas"
+      },
+      {
+        "term": "Nico",
+        "say_as": "Niko"
+      },
+      {
+        "term": "Hallam",
+        "say_as": "Halım"
+      },
+      {
+        "term": "Constantin",
+        "say_as": "Konstantin"
+      },
+      {
+        "term": "Dr",
+        "say_as": "Doktor"
+      }
+    ]
+  },
   "narration": {
     "modelId": "eleven_v3",
     "speed": 1.05,

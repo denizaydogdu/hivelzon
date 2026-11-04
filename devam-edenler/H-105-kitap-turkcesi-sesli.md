@@ -1,6 +1,6 @@
 # H-105: Kitaplarda "Sayfanın Türkçesi"ni Alania ile sesli okuma
 
-- **Durum:** Devam ediyor — A1 + A2 + B1 sesli (2026-11-03), kod ve testler yeşil; B2/C1/C2 üretimi, kullanıcının dinlemesi, editör kontrolü ve commit bekliyor
+- **Durum:** Devam ediyor — **30 kitabın tamamı sesli** (A1–B1 2026-11-03, commit `d2d81c0`; B2/C1/C2 2026-11-03/04, commit edilmedi); kullanıcının dinlemesi ve editör kontrolü bekliyor
 - **Tür:** İçerik hattı (Alania TTS + Duyu) + mobil arayüz
 - **Öncelik:** Orta (Alania kampanyası 14 Kasım 2026'ya kadar ücretsiz ve sınırsız)
 - **Bağımlılık:** H-086 (Sayfanın Türkçesi), H-083 ("Türkçe konuşan her yer Alania"), H-104 (desen ve ders)
@@ -69,21 +69,44 @@ A2-K04 p16 "Edda" ("Eldaney"), A2-K04 p12 "Tıp tıp", A2-K02 p15 "Ding", A2-K03
 A2-K01 "Theo" (Tio), A1-K04 p09 "Onuncu" ("10."). Tam liste: `tts_book_tr.py kitaplar/A1-K* kitaplar/A2-K* kitaplar/B1-K* --suspects`.
 Düzeltme: `narrationTr.pronunciations` değiştir → `--execute` (yalnız o terimin geçtiği sayfalar yeniden üretilir).
 
-## Kalan seviyeler (devam komutu)
+## B2–C2 üretimi ve söyleniş düzeltmeleri (2026-11-03/04, 0 TL kampanya; ElevenLabs 0)
 
-B2 129.770 + C1 215.951 + C2 264.303 = **610.024 karakter** (≈ 340 sayfa; ölçülen hızla ~6–7 saat). Önce B2:
+| Seviye | Kitap | Sayfa | Karakter | Süre |
+|---|---|---|---|---|
+| B2 | 5 | 115 | 129.770 | 139 dk |
+| C1 | 5 | 138 | 215.951 | 229 dk |
+| C2 | 5 | 147 | 264.303 | 278 dk |
+| **Toplam B2–C2** | 15 | 400 | **610.024** | ≈ 646 dk |
 
-```bash
-P=tools/content-pipeline/.venv/bin/python
-HIVELZON_TR_TTS_MONTHLY_CHAR_CAP=1500000 $P tools/content-pipeline/tts_book_tr.py kitaplar/B2-K* --execute --strict
-HIVELZON_TR_TTS_MONTHLY_CHAR_CAP=1500000 $P tools/content-pipeline/tts_book_tr.py kitaplar/C1-K* --execute --strict
-HIVELZON_TR_TTS_MONTHLY_CHAR_CAP=1500000 $P tools/content-pipeline/tts_book_tr.py kitaplar/C2-K* --execute --strict
-```
+- **30 kitap / 626 sayfa / 747.515 karakter** sesli; kuru çalışma hepsini güncel gösteriyor. Defter 2026-11 toplamı **764.686**
+  karakter (H-104 + söyleniş düzeltmeleri + ilk dakikalarda yanlışlıkla iki kopya çalışan betikten birkaç tekrar dahil;
+  kampanya nedeniyle 0 TL, tarife karşılığı ≈ 574 TL olurdu). Aylık tavan 1.500.000 ile çalıştırıldı.
+- 400 dosyada boş/sıfır süreli yok (en kısa 56,9 sn); mp3 -16,5…-16,6 LUFS, pakette -16,0. Duyu boşluk onarımı 60 kez.
+- Geçici sunucu hataları (`RemoteDisconnected`, okuma zaman aşımı) C1'de 2, C2'de 1 kez; komut kaldığı yerden sürdü,
+  kalıcı hata yok.
+- Söyleniş sözlükleri (`book.json → narrationTr.pronunciations`): B2-K01 Lucía→Lusiya, Tomás→Tomas, Castell→Kastel,
+  Roig→Roç; B2-K02 Jonah→Couna, Price→Prays, Dr→Doktor; B2-K03 Costa→Kosta; B2-K04 Lindqvist→Lindkvist, Hale→Heyl;
+  B2-K05 Sophie/Soph, Daniel→Denyıl, Byrne, Doyle, Tommy, Kelly, Kilbrannock; C1 kitaplarında 5–22 ad/yer (Calderbury,
+  Glasswater, Gwen→Guen, Howard→Hauırd, Brindle Umbrellas, Wrenmouth→Renmıt, Ilan→İlan …); C2-K01'de 64 terim (kitaptaki
+  İngilizce sözcükler: lonely/too/will/me/are/you, crepuscular, octopi …), C2-K05'te 32 terim ("I am agree", "The Last
+  Ferry", "I can't bear to spend you", "Not to be opened until…" gibi İngilizce cümleler Türkçe harflerle).
+- **Alania tekrar cümlesi düşürüyor (ders):** Sayfada art arda iki kez geçen kısa cümlenin biri bazen okunmuyor
+  (A1-K03 p10 "Yine mi!", C1-K05 p21 "Bir cep sözlüğü yüzünden.", C1-K03 p08 "Bunu duyuyorum."). Duyu dökümünde
+  süresi ~0 olan "missing" dizileriyle bulundu; aynı metinle ödenmiş ham ses önbellekte olduğu için, ilgili ifade
+  kendisiyle aynı söylenişle sözlüğe eklenip (istek anahtarı değişir) yeniden üretildi; üçünde de iki kez okunuyor.
+- `--strict` uyarıları (Duyu; çoğu sayıların rakamla yazılması ya da İngilizce adların İngilizce yazımı): B2 4 sayfa,
+  C1 25, C2 31 (skor 0,93–0,99). Kulakla dinlenmesi önerilenler: B2-K02 "Jonah" (Duyu "Kuna" duyuyor; gerekirse
+  Couna→Cona), C1-K03 "Gwen" (yer yer "Güven"), B2-K05 "Daniel" ("Danielle"), C2-K01 p03/p18 İngilizce kelime dizileri,
+  C2-K05 p17/p30 ("I am agree", "Other Half of Sentence").
 
-İdempotent: kesilirse aynı komut kaldığı yerden sürer (güncel sayfalar atlanır, ödenmiş ham ses `_raw/`'dan).
-Önce B2–C2 kitaplarına `narrationTr` (rol + söyleniş sözlüğü) eklenmeli (şu an yalnız A1–B1'de; yoksa varsayılan
-`hi` rolü ve sözlüksüz okunur). 14 Kasım'dan sonra tarife 0,75 TL/1.000 karakter: kalan için ≈ 458 TL + Duyu; o
-tarihten sonra üretim ayrı maliyet onayı ister.
+**A1–B1 söyleniş düzeltmeleri (önce → sonra, Duyu dökümü):**
+- A1-K03 p10 "Yine mi!" okunmuyordu (ses "Ravi"den 0,13 sn sonra bitiyordu) → **düzeldi** (iki kelime tam eşleşti).
+- A2-K04 Edda→**Eda**: "Elda/Eldaney" → "Eda" (**düzeldi**). Nia→**Niya**: Duyu yine 4 yerde "Niye" yazıyor
+  (**belirsiz**, kulak kararı). "Tıp tıp" (p12): zaman aralığı (3,7 sn) okunduğunu gösteriyor; Duyu tekrarları birleştiriyor,
+  değişiklik gerekmedi.
+- A2-K02 Ding→**Diing**: Duyu yine "Dink/deyin" (**düzelmedi** ya da Duyu kaynaklı; kulak kararı).
+- A2-K03 "Max" (Meks) ve A2-K01 "Theo" (Tio), A1-K04 "Onuncu" (Duyu "10." yazıyor), B1-K01 p08/p19 (on biri→11,
+  "Bay Hofer"→"Bayhofer"), A2-K04 p11 ("hiç de"→"işte"): Duyu yazım farkı; ses doğru görünüyor, yeniden üretilmedi.
 
 ## Kabul kriterleri
 
@@ -92,7 +115,7 @@ tarihten sonra üretim ayrı maliyet onayı ister.
 - [x] Paket `audio/tr/*.m4a` + `pages.json trAudio`; eksik ses uyarı (zorunlu değil); book_lint denetliyor (0 hata).
 - [x] Uygulamada panelde "Türkçesini dinle": ses yoksa yok, yalnız dokununca, İngilizceyle çakışmaz, 320×568 1,3× taşma yok, dokunma ≥ 44, ekran okuyucu etiketi.
 - [ ] Kullanıcı sesleri dinler (yukarıdaki şüpheli satırlar).
-- [ ] B2, C1, C2 üretimi (14 Kasım'a kadar).
+- [x] B2, C1, C2 üretimi (2026-11-04; 400 sayfa, 610.024 karakter, 0 TL).
 - [ ] Editör kontrolü (H-028).
 
 ## Test komutları

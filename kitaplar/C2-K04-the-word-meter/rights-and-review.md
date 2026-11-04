@@ -3,8 +3,8 @@
 ## Kaynak ve haklar
 - **Özgün eser.** Metin, katalogdaki özet (`kitaplar/KATALOG.md`, C2-K04: kahraman, istek/engel, kanca, bölüm planı, son sürpriz, dil odağı; kullanıcı onayı 2026-10-14, H-065) temel alınarak Claude tarafından yazıldı (2026-10-14, H-073). Uyarlama değildir.
 - **Üçüncü taraf kaynak yok.** Başka bir kitaptan, filmden ya da şarkıdan alıntı yok. Gerçek kişi, ünlü, marka, kurum ya da telifli karakter yok. Şehir (Halvern), semtler (Eastmere), sokak ve yapı adları (Copper Street, Lantern Street, Glass Arcade, Iron Bridge), Kelime Hizmeti, Borsa ve "Gürültü Yılları" uydurmadır. Kurgusal kurumlar gerçek bir devlete ya da kuruluşa göndermede bulunmaz.
-- **Kelime listesi:** C2 kapsaması için gereken Octanove C1/C2 listesi depoda yok; kapsama denetlenmedi. Yasak kaynaklar (Cambridge EVP/EGP, Oxford 3000/5000, GSE, COCA, BNC) kullanılmadı ve isteme konmadı.
-- **Yapay zekâ açıklaması:** Metin ve Türkçe çeviri taslağı yapay zekâ (Claude) ile üretildi; `book.json → aiGenerated: true`. Görseller (8 görsel, GPT Image 2.5, 2026-10-14) de yapay zekâ ile üretildi (kayıt `PROMPTS.md`); ses de yapay zekâ ile üretilecek, henüz üretilmedi. Uygulama içinde AI notu bölümlerdeki kuralla gösterilir; uygulama dışına çıkan her kesitte AI etiketi gömülür (K-14).
+- **Kelime listesi:** C2 kapsaması için gereken Octanove C1/C2 listesi depoda yok; kapsama denetlenmedi. Yasak kaynaklar (Cambridge EVP/EGP, Oxford 3000/5000, GSE, COCA, BNC) kullanılmadı ve isteme konmadı. **Güncelleme (2026-11-03):** Octanove C1/C2 listesi depoya eklendi (`tools/content-pipeline/data/lexicon_ccbysa/`, CC BY-SA 4.0, ayrı veri seti); "depoda yok" ifadesi o tarihe kadarki durumdur. Kapsama artık denetleniyor: %98,3 (sözlükle %98,4).
+- **Yapay zekâ açıklaması:** Metin ve Türkçe çeviri taslağı yapay zekâ (Claude) ile üretildi; `book.json → aiGenerated: true`. Görseller (8 görsel, GPT Image 2.5, 2026-10-14) de yapay zekâ ile üretildi (kayıt `PROMPTS.md`); ses de yapay zekâ ile üretilecek, henüz üretilmedi. Türkçe sayfa sesi: Alania (PatientDesk `alania2-f1`, 2026-11-03; H-105, "Sayfanın Türkçesi" panelinde yalnız dokununca çalar; kayıt `PROMPTS.md`). Uygulama içinde AI notu bölümlerdeki kuralla gösterilir; uygulama dışına çıkan her kesitte AI etiketi gömülür (K-14).
 
 ## Güvenlik (13+, şartname §5.5)
 - Şiddet, cinsellik, siyaset ve din yok. Konuşma kotası bir "kamu sessizliği önlemi" olarak anlatılır; yergi siyasete değil alışkanlığa yöneliktir (insanlar artık zorunlu olmayan bir kurala görgü kuralı gibi uymayı sürdürür). Hiçbir siyasi grup, seçim ya da yönetim figürü yoktur.
@@ -14,7 +14,7 @@
 - Gerçek marka, gerçek yer ya da ünlü yok; görsellerde yazı yok (PROMPTS.md).
 
 ## Dil denetimi
-- `book-lint` (2026-10-14): 10.184 kelime (C2 hedefi 8.000–12.000), 30 sayfa, 7 bölüm, 758 cümle; 0 hata. Octanove C1/C2 listesi depoda yok; kapsama denetlenmedi. Çeviri 765/765 birim (7 bölüm başlığı + 758 cümle), 9.993/9.993 kelime anlamlı (DRAFT). Uyarılar yalnız: çeviri DRAFT, Octanove listesi yok, ses ve görsel henüz yok.
+- `book-lint` (2026-10-14): 10.184 kelime (C2 hedefi 8.000–12.000), 30 sayfa, 7 bölüm, 758 cümle; 0 hata. Octanove C1/C2 listesi depoda yok; kapsama denetlenmedi. Çeviri 765/765 birim (7 bölüm başlığı + 758 cümle), 9.993/9.993 kelime anlamlı (DRAFT). Uyarılar yalnız: çeviri DRAFT, Octanove listesi yok, ses ve görsel henüz yok. *(2026-11-03: Octanove listesi eklendi; yeni denetimde kapsama %98,3, sözlükle %98,4.)*
 - Özel adlar (`properNouns`): Halvern, Petra, Lind, Anna, Osric, Pell, Hilde, Matthias, Eastmere, Joaquim, Varga, Fenwick, Copper Street, Lantern Street, Glass Arcade, Iron Bridge.
 - C1 yapıları (devrik yapı, cleft, karma koşul, ortaç yan cümleleri, modal incelikleri, kişisiz edilgen, gerçek dışı geçmiş, eksiltme ve yerine koyma) ve C2 yapıları (öne alma, adlaştırma, temkinli dil, resmî dilek kipi ve if'siz şart, bağdaşıklık belirleyicileri, görünüş incelikleri) `glossary.md`'de Türkçesi, metinden örnek cümlesi ve Türk öğrenci notlarıyla (44 girdi).
 - C2 dil odağı (katalog): teknokratik/resmî dil (duyuru, raporlar, Petra'nın konuşmasının başı) ile duygusal dilin çatışması; türetilmiş sözcükler (word-broker, talk-debt); serbest dolaylı anlatımla kendini kandıran anlatı ("There was a mistake.", "Many people had left the Service."); başta kısa, kelime sayan cümleler, sonda (p30) uzun, akan cümleler.
@@ -27,6 +27,7 @@
 | 2026-10-14 | Metin ve çeviri onayı (H-028) | Kullanıcı | Onaylandı (`ceviri.tr.json` → `APPROVED`; onaylayan: kullanıcı, genel onay) |
 | 2026-10-14 | Görsel maliyet onayı ve üretim (kapak + bölüm başı, 8 görsel, ≈ 4 kr) | Kullanıcı | Üretildi: 8 görsel, GPT Image 2.5 (iş kimlikleri `PROMPTS.md`) |
 | — | Seslendirme (ElevenLabs Creator, ticari; anlatıcı Sarah) | Kullanıcı | Bekliyor (henüz üretilmedi; 2026-10-30 itibarıyla çalışan ElevenLabs erişimi yok) |
+| 2026-11-03 | Türkçe sayfa sesi (H-105, PatientDesk Alania, kampanya 0 TL) | Kullanıcı | Üretildi: 30 sayfa, 50.305 karakter, `alania2-f1` + Duyu hizalaması (`audio/tr/`) |
 | — | Editör toplu kontrolü | Editör | Bekliyor |
 
 - 2026-10-14: Kullanıcının genel onayıyla ("tüm onayları verdim") metin ve çeviri onaylı işaretlendi (H-028); editör toplu okuması yine önerilir.

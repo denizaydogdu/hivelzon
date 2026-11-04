@@ -1,8 +1,8 @@
 # hiVelzon: Faz 1 (MVP) uygulama planı (H-025)
 
-**Sürüm:** 0.2 · **Tarih:** 2026-10-11 (durum güncellemesi 2026-11-01) · **Durum:** Onaylandı (2026-10-11); uygulama sürüyor.
+**Sürüm:** 0.2 · **Tarih:** 2026-10-11 (durum güncellemesi 2026-11-03) · **Durum:** Onaylandı (2026-10-11); uygulama sürüyor.
 **Dayanak:** CLAUDE.md "Onaylı içerik mimarisi kararları" ve "Onaylı oyun tasarımı kararları"; `docs/OYUN-TASARIMI.md`; `docs/ICERIK-MIMARISI.md`.
-**Kural:** Plan onaylandı, kodlama bu plana göre sürüyor; plana yeni kapsam kullanıcı onayıyla eklenir. H-096…H-101 tamamlandı; H-101 Hi marka simgelerini uyguladı. **H-102** (bilgi kartları Profil'e) ve **H-103** (alt menü "Öğren") yerelde uygulandı, commit edilmedi, kullanıcı geri bildirimi bekliyor. **Sıradaki boş numara H-104'tür.** Güncel sıra: H-043/H-068 gerçek iPhone → H-085/H-086 (+ H-102/H-103) kullanıcı denemesi → öğretmen/editör incelemesi (`docs/EDITOR-INCELEME-PAKETI.md`) → eksik İngilizce sesler → en sonda H-044 dış hesap/mağaza → H-044 sonrasında H-092 pilotu. Son commit `df08362`, CI **`41076024227` yeşil** (son iş commit'i `e7e7712` → `41070330880`). **TTS:** 2026-10-30'da ikinci ücretsiz ElevenLabs anahtarıyla 9.977 karakter üretildi (sesli kitap 6/30), kota bitti; birinci ve üçüncü anahtar `401 detected_unusual_activity` verdi; çalışan anahtar/plan yok. Şu an bağımsız yerel ürün kodu işi yoktur; ayrıntı `yapilacaklar/IS-SIRASI.md` ve `docs/HANDOFF-2026-11-01.md`.
+**Kural:** Plan onaylandı, kodlama bu plana göre sürüyor; plana yeni kapsam kullanıcı onayıyla eklenir. H-096…H-101 tamamlandı; H-101 Hi marka simgelerini uyguladı. **H-102** (bilgi kartları Profil'e) ve **H-103** (alt menü "Öğren") commitli (`2988672`), kullanıcı denemesi bekliyor. **H-104** (Konuş'ta Hi'nin Türkçe yönlendirmeleri Alania ile sesli, 32 ses) ve **H-105** (kitapta "Sayfanın Türkçesi" sesli; A1–B1 226 sayfa) commitli (`d2d81c0`), kullanıcının kulakla kontrolü bekliyor; H-105 B2–C2 14 Kasım 2026'ya kadar. Octanove C1/C2 listesi depoda, C1/C2 kapsaması denetleniyor. **Sıradaki boş numara H-106'dır.** Güncel sıra: H-043/H-068 gerçek iPhone → kullanıcı simülatör denemesi (H-085/H-086, H-102/H-103, H-104/H-105 kulakla kontrol) → öğretmen/editör incelemesi (`docs/EDITOR-INCELEME-PAKETI.md`) → eksik İngilizce sesler (+ H-105 B2–C2 Türkçe sesleri, 14 Kasım'a kadar) → en sonda H-044 dış hesap/mağaza → H-044 sonrasında H-092 pilotu. Son commit `d2d81c0`, CI **`41690063999` yeşil**; mobil 1517/1517, backend 164, pytest 417. **TTS:** 2026-10-30'da ikinci ücretsiz ElevenLabs anahtarıyla 9.977 karakter üretildi (sesli kitap 6/30), kota bitti; birinci ve üçüncü anahtar `401 detected_unusual_activity` verdi; çalışan anahtar/plan yok. Şu an bağımsız yerel ürün kodu işi yoktur; ayrıntı `yapilacaklar/IS-SIRASI.md` ve `docs/HANDOFF-2026-11-03.md`.
 
 ---
 
@@ -117,7 +117,7 @@ A1–C2, seviye başına 5 kitap, toplam 30. Kararlar: önce 2 pilot kitap, Elev
 - H-039, H-040, H-041 ve H-042 H-038'den sonra.
 - H-043, sonra H-044 en son.
 
-### Son ürün iyileştirmeleri (H-098…H-103)
+### Son ürün iyileştirmeleri (H-098…H-105)
 
 | İş | Kapsam | Durum |
 |---|---|---|
@@ -125,10 +125,12 @@ A1–C2, seviye başına 5 kitap, toplam 30. Kararlar: önce 2 pilot kitap, Elev
 | **H-099** | Ana Sayfa kişisel durum cümlesi; kartta ayrı süre/hedef hapı; tek cümle gerekçe; işi söyleyen düğmeler; "Bölüm" çipi; isteğe bağlı çalışma araçları. Kural tabanlı plan ve tek eylem ilkesi korundu. | ✅ |
 | **H-100** | Aynı kişisel durum cümlesi Hi panelinde öneri kartının üstünde; panel `dailyPlanProvider`ı doğrudan izler, Ana Sayfa ve Hi tek planı paylaşır. | ✅ |
 | **H-101** | H-016 konuşma balonu “Hi” markası; iOS/Android simgeleri, açılış ekranları ve mağaza master'ları. | ✅ |
-| **H-102** | "Kullanım koşulları güncellendi" bildirimi ve "İlerlemen yalnızca bu telefonda" hesap kartı Ana Sayfa'dan Profil'e; ortak `CompactButton` ("Koşullar" / "KVKK metni"). | 🔄 (yerelde, 1504/1504; kullanıcı geri bildirimi + commit bekliyor) |
-| **H-103** | Alt menü "Hikâye" → **Öğren**; simgeli Hikâye · Kitaplık · Dilbilgisi seçicisi, son bölüm cihazda hatırlanır, Hi turuna Öğren adımı (K-30 güncellendi). | 🔄 (yerelde, 1504/1504; kullanıcı geri bildirimi + commit bekliyor) |
+| **H-102** | "Kullanım koşulları güncellendi" bildirimi ve "İlerlemen yalnızca bu telefonda" hesap kartı Ana Sayfa'dan Profil'e; ortak `CompactButton` ("Koşullar" / "KVKK metni"). | 🔄 (commit `2988672`; kullanıcı denemesi bekliyor) |
+| **H-103** | Alt menü "Hikâye" → **Öğren**; simgeli Hikâye · Kitaplık · Dilbilgisi seçicisi, son bölüm cihazda hatırlanır, Hi turuna Öğren adımı (K-30 güncellendi). | 🔄 (commit `2988672`; kullanıcı denemesi bekliyor) |
+| **H-104** | Konuş'ta Hi'nin Türkçe yönlendirmeleri (giriş, görev, tur görevi, kibar tepki, ipucu; 32 yer) Alania ile sesli; sade "dinle" düğmesi, otomatik oynatma yok. | 🔄 (commit `d2d81c0`; kullanıcının kulakla kontrolü + editör bekliyor) |
+| **H-105** | Kitapta "Sayfanın Türkçesi" Alania ile sesli ("Türkçesini dinle", yalnız dokununca); A1–B1 226 sayfa, 137.491 karakter, 0 TL. | 🔄 (commit `d2d81c0`; B2–C2 14 Kasım'a kadar; kulakla kontrol bekliyor) |
 
-Ayrıntı: `bitenler/H-098-canli-arayuz-geri-bildirimi.md`, `bitenler/H-099-ana-sayfa-kisisel-oneriler.md`, `bitenler/H-100-hi-panel-kisisel-durum.md`, `devam-edenler/H-102-bilgi-kartlari-profile-kompakt-dugmeler.md`, `devam-edenler/H-103-ogren-sekmesi-simgeli-secici.md`, `docs/ARAYUZ-METINLERI.md` §3.1 ve §10.
+Ayrıntı: `bitenler/H-098-canli-arayuz-geri-bildirimi.md`, `bitenler/H-099-ana-sayfa-kisisel-oneriler.md`, `bitenler/H-100-hi-panel-kisisel-durum.md`, `devam-edenler/H-102-bilgi-kartlari-profile-kompakt-dugmeler.md`, `devam-edenler/H-103-ogren-sekmesi-simgeli-secici.md`, `devam-edenler/H-104-konus-hi-turkce-sesleri.md`, `devam-edenler/H-105-kitap-turkcesi-sesli.md`, `docs/ARAYUZ-METINLERI.md` §3.1 ve §10.
 
 ## 4. Açık olanlar (bağımlılık sırası; 2026-11-01 itibarıyla)
 

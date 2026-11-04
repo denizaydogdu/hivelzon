@@ -106,3 +106,10 @@ Kurallar: her ücretli üretimden **önce** `higgsfield generate cost` ile maliy
 | 2026-11-03T17:18:09Z | p15 | alania-v2 | alania2-f1 | alania-v2.1 | 546 | 36.01 | 5d6605b0b68341d7b3be64fb15d98688 | a3aaba8914078fd4 |
 | 2026-11-03T17:18:12Z | p15 | duyu-1 | - | - | - | 36.01 | - | a3aaba8914078fd4 |
 | 2026-11-03T17:27:47Z | p13 | duyu-1 | - | - | - | 30.66 | - | e47f4763423802df |
+| 2026-11-03T18:23:37Z | p04 | alania-v2 | alania2-f1 | alania-v2.1 | 667 | 50.61 | 407c241f8e83496290015f06a4da8326 | 5f6d13b2fda9fe52 |
+| 2026-11-03T18:23:41Z | p04 | alania-v2 | alania2-f1 | alania-v2.1 | 667 | 50.06 | 98e36f09458c46a7920c84750c161771 | 5f6d13b2fda9fe52 |
+| 2026-11-03T18:23:41Z | p04 | duyu-1 | - | - | - | 50.61 | - | 5f6d13b2fda9fe52 |
+| 2026-11-03T18:23:45Z | p04 | duyu-1 | - | - | - | 50.06 | - | 5f6d13b2fda9fe52 |
+| 2026-11-03T18:23:47Z | p15 | alania-v2 | alania2-f1 | alania-v2.1 | 546 | 37.01 | a43f4f86c36c4f7e8e1289df55843377 | a3aaba8914078fd4 |
+| 2026-11-03T18:23:52Z | p15 | duyu-1 | - | - | - | 37.01 | - | a3aaba8914078fd4 |
+| 2026-11-03T18:23:53Z | p15 | duyu-1 | - | - | - | 37.01 | - | a3aaba8914078fd4 |

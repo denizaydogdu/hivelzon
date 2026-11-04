@@ -45,6 +45,139 @@
     "Turkish",
     "Turk"
   ],
+  "narrationTr": {
+    "role": "hi",
+    "pronunciations": [
+      {
+        "term": "I am agree",
+        "say_as": "Ay em ıgrii"
+      },
+      {
+        "term": "I agree",
+        "say_as": "Ay ıgrii"
+      },
+      {
+        "term": "agree",
+        "say_as": "ıgrii"
+      },
+      {
+        "term": "I am joining",
+        "say_as": "Ay em coyning"
+      },
+      {
+        "term": "I can't bear to spend you",
+        "say_as": "Ay kent beır tu spend yu"
+      },
+      {
+        "term": "I can't bear to",
+        "say_as": "Ay kent beır tu"
+      },
+      {
+        "term": "I love you",
+        "say_as": "Ay lav yu"
+      },
+      {
+        "term": "The Last Ferry",
+        "say_as": "Dı Last Feri"
+      },
+      {
+        "term": "Ferry",
+        "say_as": "Feri"
+      },
+      {
+        "term": "Apple",
+        "say_as": "Epıl"
+      },
+      {
+        "term": "Seagull",
+        "say_as": "Sigal"
+      },
+      {
+        "term": "my moon",
+        "say_as": "may mun"
+      },
+      {
+        "term": "Moon",
+        "say_as": "Mun"
+      },
+      {
+        "term": "vapour",
+        "say_as": "veypır"
+      },
+      {
+        "term": "English for Baba",
+        "say_as": "İngliş for Baba"
+      },
+      {
+        "term": "Sadness",
+        "say_as": "Sednıs"
+      },
+      {
+        "term": "sadness",
+        "say_as": "sednıs"
+      },
+      {
+        "term": "Melancholy",
+        "say_as": "Melınkoli"
+      },
+      {
+        "term": "wish",
+        "say_as": "viş"
+      },
+      {
+        "term": "tongue",
+        "say_as": "tang"
+      },
+      {
+        "term": "The rest he would tell her in her own language",
+        "say_as": "Dı rest hi vud tel hır in hır oun lengvic"
+      },
+      {
+        "term": "language",
+        "say_as": "lengvic"
+      },
+      {
+        "term": "The ve a",
+        "say_as": "Dı ve ey"
+      },
+      {
+        "term": "He goes, she goes",
+        "say_as": "Hi gouz, şi gouz"
+      },
+      {
+        "term": "Not to be opened until the ninth chapter has been translated",
+        "say_as": "Nat tu bi oupınd antil dı naynt çeptır hez bin trenzleytıd"
+      },
+      {
+        "term": "Other Half of Sentence",
+        "say_as": "Adır Haf ov Sentıns"
+      },
+      {
+        "term": "Rosalind",
+        "say_as": "Rozılind"
+      },
+      {
+        "term": "Judith",
+        "say_as": "Cudit"
+      },
+      {
+        "term": "Marsh",
+        "say_as": "Marş"
+      },
+      {
+        "term": "Pike",
+        "say_as": "Payk"
+      },
+      {
+        "term": "Halyard",
+        "say_as": "Halyırd"
+      },
+      {
+        "term": "Manchester",
+        "say_as": "Mençestır"
+      }
+    ]
+  },
   "narration": {
     "modelId": "eleven_v3",
     "speed": 1.05,

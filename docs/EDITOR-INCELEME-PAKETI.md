@@ -1,6 +1,6 @@
 # Öğretmen / editör inceleme paketi
 
-> **Durum:** Hazır, editör bekliyor (2026-10-30). Depo `e22e5d2` üzerinde sayıldı.
+> **Durum:** Hazır, editör bekliyor (2026-10-30; güncelleme 2026-11-03: Octanove C1/C2 ve Alania Türkçe sesleri, `d2d81c0`). Depo `e22e5d2` üzerinde sayıldı.
 > **Karar:** H-028 (`bitenler/H-028-onay-ve-icerik-kapasitesi.md`). Claude üretir, kullanıcı onaylar, ünite sonunda öğretmen ya da editör toplu kontrol yapar.
 > **Bu belge:** Editörün tek giriş noktası. Önce §1–§4'ü okuyun, sonra §5'teki föylere geçin.
 > **Bu iş sırasında içerik değiştirilmedi.** Bulgular §7'de, düzeltmeler editör turundan sonra yapılır.
@@ -140,7 +140,7 @@ Her föyde önce **kontrol maddeleri**, sonra **öğe tablosu** var. Tabloda kut
 
 ### 5.2 Konuş sekmesi (`icerik/_evren/konusma/`)
 
-**Ne:** Yapay zekâ olmayan, yönlendirmeli prova sahneleri ve kısa mesaj görevleri (H-090). Hepsi **DRAFT**, editör onayı bekliyor. Kullanıcı söyleyerek ya da dokunarak cevap verir. Söylenen cevap kabul listesindeki biriyle tam eşleşmelidir (H-087).
+**Ne:** Yapay zekâ olmayan, yönlendirmeli prova sahneleri ve kısa mesaj görevleri (H-090). Hepsi **DRAFT**, editör onayı bekliyor. Kullanıcı söyleyerek ya da dokunarak cevap verir. Söylenen cevap kabul listesindeki biriyle tam eşleşmelidir (H-087). **2026-11-03 (H-104):** Hi'nin Türkçe yönlendirmeleri (giriş, görev, tur görevi, kibar tepki, ipucu; 32 yer) Alania ile sesli; şüpheli söylenişler `devam-edenler/H-104-konus-hi-turkce-sesleri.md`'de, dinlenerek kontrol edilir.
 
 **Önce okuyun:** `bitenler/H-090-ilk-yedi-gun-ve-konusma-gorevleri.md` (Notlar), `docs/BOLUM-PAKETI.md` §9a, `docs/ARAYUZ-METINLERI.md` §7.2.
 
@@ -414,6 +414,7 @@ Bunlar **inceleme engeli değildir.** Editör bilsin diye yazıldı.
 8. **Görsel yüz kimliği kayması** (reellerde ELIF, MERT, KEREM) bilinçli olarak ertelendi (H-094 §4 C). Not düşülebilir; tek başına düzeltme gerekçesi değildir.
 9. **Prolog A1-000** üretilmedi; inceleme dışı.
 10. **H-085 / H-086 kullanıcı denemesi** ayrı iştir; editör incelemesini beklemez.
+11. **Türkçe Alania sesleri (2026-11-03, `d2d81c0`).** Konuş'ta Hi'nin Türkçe yönlendirmeleri 32 sesle (H-104) ve kitaplarda "Sayfanın Türkçesi" A1/A2/B1 15 kitapta 226 sayfa (H-105) sesli; B2–C2 14 Kasım 2026'ya kadar üretiliyor. Söyleniş sözlükleri (`book.json → narrationTr.pronunciations`, Konuş görevlerinde `pronunciations`) ve şüpheli satırlar H-104/H-105 dosyalarında; editör ses metnini çeviriyle birlikte dinleyebilir.
 
 ## 8. Teknik kontrol (lint) sonucu
 
@@ -436,6 +437,7 @@ $P tools/content-pipeline/reel_lint.py reeller/*-R-*
 
 - Dört komutun çıkış kodu 0 (2026-11-01 koşusu).
 - **Yeniden koşu (2026-11-03, Octanove eklendikten sonra):** `book_lint` 30 kitap 0 hata/145 uyarı · `grammar_lint` 71 ders 0 hata/606 uyarı · `content_lint` (kurgu, klipsiz) 13 bölüm 0 hata/25 uyarı · `reel_lint` 18 reel 0 hata/6 uyarı. "C1/C2 kapsama denetlenmedi" uyarıları kalktı; G-C2-02 ve G-C2-03'te sözlükle tamamlanan kapsama uyarısı var.
+- **Yeniden koşu (2026-11-03 akşam, `d2d81c0`, H-104/H-105 sonrası):** `content_lint` bölümler 0 hata/30 uyarı · `book_lint` 30 kitap 0 hata/149 uyarı · `grammar_lint` 71 ders 0 hata/606 uyarı · `reel_lint` 18 reel 0 hata/6 uyarı; CI `41690063999` yeşil.
 - Bu sayılar `docs/HANDOFF-2026-10-30.md` §5'teki son doğrulamayla (kitap 30/0, dilbilgisi 71/0) uyumludur.
 - Not: Yukarıdaki tablo `e22e5d2` koşusudur; o sırada `reel_lint` kapsama denetlemiyordu (H-094 §4 B).
 - **Yeniden koşu (2026-10-30 akşam, `e7e7712`):** `content_lint` 13 bölüm 0 hata/25 uyarı · `book_lint` 30 kitap 0 hata/145 uyarı · `grammar_lint` 71 ders 0 hata/616 uyarı · `reel_lint` 18 reel 0 hata/6 uyarı (kapsama denetimi eklendi, `788d775`; 6 reel %98 altında, sözlükle %100). Dört lint de CI'da; CI `41070330880` yeşil.

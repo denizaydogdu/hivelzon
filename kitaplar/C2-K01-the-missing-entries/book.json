@@ -42,6 +42,267 @@
     "Zofia",
     "Lenart"
   ],
+  "narrationTr": {
+    "role": "hi",
+    "pronunciations": [
+      {
+        "term": "Edmund",
+        "say_as": "Edmınd"
+      },
+      {
+        "term": "Pryce",
+        "say_as": "Prays"
+      },
+      {
+        "term": "Quillham",
+        "say_as": "Kuilım"
+      },
+      {
+        "term": "Thornwick",
+        "say_as": "Tornvik"
+      },
+      {
+        "term": "Janet",
+        "say_as": "Cenıt"
+      },
+      {
+        "term": "Keith",
+        "say_as": "Kiit"
+      },
+      {
+        "term": "Dunmore",
+        "say_as": "Danmor"
+      },
+      {
+        "term": "Callum",
+        "say_as": "Kalım"
+      },
+      {
+        "term": "Reid",
+        "say_as": "Riid"
+      },
+      {
+        "term": "Tidy",
+        "say_as": "Taydi"
+      },
+      {
+        "term": "Speake",
+        "say_as": "Spiik"
+      },
+      {
+        "term": "The Quizzly Bears",
+        "say_as": "Dı Kuizli Beırz"
+      },
+      {
+        "term": "Marjorie",
+        "say_as": "Marcıri"
+      },
+      {
+        "term": "Nigel",
+        "say_as": "Naycıl"
+      },
+      {
+        "term": "Brimble",
+        "say_as": "Brimbıl"
+      },
+      {
+        "term": "Fenn",
+        "say_as": "Fen"
+      },
+      {
+        "term": "Mill Lane",
+        "say_as": "Mil Leyn"
+      },
+      {
+        "term": "Mill Row",
+        "say_as": "Mil Rou"
+      },
+      {
+        "term": "Lark Cottage",
+        "say_as": "Lark Katic"
+      },
+      {
+        "term": "Marsh End",
+        "say_as": "Marş End"
+      },
+      {
+        "term": "Dr",
+        "say_as": "Doktor"
+      },
+      {
+        "term": "Wensday",
+        "say_as": "Venzdey"
+      },
+      {
+        "term": "Wednesday",
+        "say_as": "Venzdey"
+      },
+      {
+        "term": "W",
+        "say_as": "Dabılyu"
+      },
+      {
+        "term": "Lonely",
+        "say_as": "Lounli"
+      },
+      {
+        "term": "lonely",
+        "say_as": "lounli"
+      },
+      {
+        "term": "Too",
+        "say_as": "Tu"
+      },
+      {
+        "term": "too",
+        "say_as": "tu"
+      },
+      {
+        "term": "Will",
+        "say_as": "Vil"
+      },
+      {
+        "term": "will",
+        "say_as": "vil"
+      },
+      {
+        "term": "Me",
+        "say_as": "Mi"
+      },
+      {
+        "term": "me",
+        "say_as": "mi"
+      },
+      {
+        "term": "Are",
+        "say_as": "Ar"
+      },
+      {
+        "term": "are",
+        "say_as": "ar"
+      },
+      {
+        "term": "You",
+        "say_as": "Yu"
+      },
+      {
+        "term": "you",
+        "say_as": "yu"
+      },
+      {
+        "term": "And",
+        "say_as": "End"
+      },
+      {
+        "term": "Go",
+        "say_as": "Gou"
+      },
+      {
+        "term": "go",
+        "say_as": "gou"
+      },
+      {
+        "term": "Thing",
+        "say_as": "Sing"
+      },
+      {
+        "term": "thing",
+        "say_as": "sing"
+      },
+      {
+        "term": "Teach",
+        "say_as": "Tiiç"
+      },
+      {
+        "term": "teach",
+        "say_as": "tiiç"
+      },
+      {
+        "term": "Run",
+        "say_as": "Ran"
+      },
+      {
+        "term": "run",
+        "say_as": "ran"
+      },
+      {
+        "term": "Alone",
+        "say_as": "Ilon"
+      },
+      {
+        "term": "I agree",
+        "say_as": "Ay ıgrii"
+      },
+      {
+        "term": "Agree",
+        "say_as": "Igrii"
+      },
+      {
+        "term": "Am",
+        "say_as": "Em"
+      },
+      {
+        "term": "Crepuscular",
+        "say_as": "Kripaskyulır"
+      },
+      {
+        "term": "crepuscular",
+        "say_as": "kripaskyulır"
+      },
+      {
+        "term": "perspicacious",
+        "say_as": "pörspikeyşıs"
+      },
+      {
+        "term": "defenestration",
+        "say_as": "difenıstreyşın"
+      },
+      {
+        "term": "octopuses",
+        "say_as": "oktıpısız"
+      },
+      {
+        "term": "octopus",
+        "say_as": "oktıpıs"
+      },
+      {
+        "term": "octopi",
+        "say_as": "oktıpay"
+      },
+      {
+        "term": "Lodger",
+        "say_as": "Lacır"
+      },
+      {
+        "term": "lodger",
+        "say_as": "lacır"
+      },
+      {
+        "term": "Lollop",
+        "say_as": "Lalıp"
+      },
+      {
+        "term": "pocket",
+        "say_as": "pakıt"
+      },
+      {
+        "term": "literally",
+        "say_as": "litırıli"
+      },
+      {
+        "term": "hitherto",
+        "say_as": "hidırtu"
+      },
+      {
+        "term": "stick",
+        "say_as": "stik"
+      },
+      {
+        "term": "zero",
+        "say_as": "ziro"
+      }
+    ]
+  },
   "narration": {
     "modelId": "eleven_v3",
     "speed": 1.05,

@@ -34,6 +34,23 @@
     "Turkish",
     "English"
   ],
+  "narrationTr": {
+    "role": "hi",
+    "pronunciations": [
+      {
+        "term": "Jonah",
+        "say_as": "Couna"
+      },
+      {
+        "term": "Price",
+        "say_as": "Prays"
+      },
+      {
+        "term": "Dr",
+        "say_as": "Doktor"
+      }
+    ]
+  },
   "narration": {
     "modelId": "eleven_v3",
     "speed": 1.0,

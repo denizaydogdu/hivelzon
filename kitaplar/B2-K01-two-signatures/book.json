@@ -34,6 +34,27 @@
     "Marell",
     "Ai"
   ],
+  "narrationTr": {
+    "role": "hi",
+    "pronunciations": [
+      {
+        "term": "Lucía",
+        "say_as": "Lusiya"
+      },
+      {
+        "term": "Tomás",
+        "say_as": "Tomas"
+      },
+      {
+        "term": "Castell",
+        "say_as": "Kastel"
+      },
+      {
+        "term": "Roig",
+        "say_as": "Roç"
+      }
+    ]
+  },
   "narration": {
     "modelId": "eleven_v3",
     "speed": 1.0,

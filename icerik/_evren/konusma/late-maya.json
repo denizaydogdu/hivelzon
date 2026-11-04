@@ -14,8 +14,8 @@
   "to": "Maya",
   "image": {"episode": "A1-005", "path": "stills/B5-03-otobus-geliyor.webp"},
   "pronunciations": [
-    {"term": "Tide & Pages", "say_as": "Tayd end Peycız"},
-    {"term": "Sorry", "say_as": "Sori"},
+    {"term": "Tide & Pages", "say_as": "Tayd end Peyciz"},
+    {"term": "Sorry", "say_as": "Sorri"},
     {"term": "I'm late", "say_as": "Aym leyt"}
   ],
   "model": {"en": "Sorry, Maya. I'm late. The bus is late.", "tr": "Kusura bakma Maya. Geç kaldım. Otobüs gecikti."},

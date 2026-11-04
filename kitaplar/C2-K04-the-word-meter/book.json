@@ -37,6 +37,43 @@
     "Glass Arcade",
     "Iron Bridge"
   ],
+  "narrationTr": {
+    "role": "hi",
+    "pronunciations": [
+      {
+        "term": "Halvern",
+        "say_as": "Halvırn"
+      },
+      {
+        "term": "Osric",
+        "say_as": "Ozrik"
+      },
+      {
+        "term": "Eastmere",
+        "say_as": "İstmir"
+      },
+      {
+        "term": "Joaquim",
+        "say_as": "Joakim"
+      },
+      {
+        "term": "Fenwick",
+        "say_as": "Fenik"
+      },
+      {
+        "term": "Matthias",
+        "say_as": "Matias"
+      },
+      {
+        "term": "Copper",
+        "say_as": "Kapır"
+      },
+      {
+        "term": "Lantern",
+        "say_as": "Lentırn"
+      }
+    ]
+  },
   "narration": {
     "modelId": "eleven_v3",
     "speed": 1.05,

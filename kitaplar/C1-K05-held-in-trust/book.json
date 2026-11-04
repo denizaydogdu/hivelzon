@@ -46,6 +46,35 @@
     "Turkish",
     "England"
   ],
+  "narrationTr": {
+    "role": "hi",
+    "pronunciations": [
+      {
+        "term": "Margaret",
+        "say_as": "Margrit"
+      },
+      {
+        "term": "Ellis",
+        "say_as": "Elis"
+      },
+      {
+        "term": "Ollie",
+        "say_as": "Oli"
+      },
+      {
+        "term": "Peter",
+        "say_as": "Pitır"
+      },
+      {
+        "term": "Manchesterlı",
+        "say_as": "Mençestırlı"
+      },
+      {
+        "term": "Bir cep sözlüğü yüzünden",
+        "say_as": "Bir cep sözlüğü yüzünden"
+      }
+    ]
+  },
   "narration": {
     "modelId": "eleven_v3",
     "speed": 1.05,

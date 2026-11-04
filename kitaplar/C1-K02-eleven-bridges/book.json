@@ -43,6 +43,67 @@
     "Holm",
     "Dunmore"
   ],
+  "narrationTr": {
+    "role": "hi",
+    "pronunciations": [
+      {
+        "term": "Vogt",
+        "say_as": "Fogt"
+      },
+      {
+        "term": "Mortimer",
+        "say_as": "Mortimır"
+      },
+      {
+        "term": "Odderby",
+        "say_as": "Odırbi"
+      },
+      {
+        "term": "Kerrow",
+        "say_as": "Kerou"
+      },
+      {
+        "term": "Tamsby",
+        "say_as": "Temzbi"
+      },
+      {
+        "term": "Lindhaven",
+        "say_as": "Lindheyvın"
+      },
+      {
+        "term": "Pellow",
+        "say_as": "Pelou"
+      },
+      {
+        "term": "Ilan",
+        "say_as": "İlan"
+      },
+      {
+        "term": "Ambrey",
+        "say_as": "Embri"
+      },
+      {
+        "term": "Tomasz",
+        "say_as": "Tomaş"
+      },
+      {
+        "term": "Mardle",
+        "say_as": "Mardıl"
+      },
+      {
+        "term": "Saltings",
+        "say_as": "Soltingz"
+      },
+      {
+        "term": "Wrenmouth",
+        "say_as": "Renmıt"
+      },
+      {
+        "term": "Dunmore",
+        "say_as": "Danmor"
+      }
+    ]
+  },
   "narration": {
     "modelId": "eleven_v3",
     "speed": 1.05,

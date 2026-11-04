@@ -1,6 +1,6 @@
 # H-104: Konuş görevlerinde Hi'nin Türkçe yönlendirmelerini seslendirme
 
-- **Durum:** Devam ediyor — sesler üretildi, kod ve testler yeşil (2026-11-03); kullanıcının dinlemesi, editör kontrolü ve commit bekliyor
+- **Durum:** Devam ediyor — sesler üretildi, kod ve testler yeşil (2026-11-03), commit `d2d81c0` (CI `41690063999` yeşil); kullanıcının dinlemesi ve editör kontrolü bekliyor
 - **Tür:** İçerik hattı (Alania TTS) + mobil arayüz
 - **Öncelik:** Orta
 - **Bağımlılık:** H-083 ("Türkçe konuşan her yer Alania"), H-090 (Konuş), H-055, H-075…H-082 (Alania kampanyası 14 Kasım 2026'ya kadar ücretsiz)
@@ -56,6 +56,13 @@ ile seslendirilir (rol `hi`, ses `alania2-f1`):
   ("arıyor"), meet-note hint "Pier 3" ("pirtiri"), maya-neighbour t3-d1 "-im" ("yemek"), late-maya task
   "Tide & Pages'te". Düzeltme: görevin `pronunciations` ya da `<alan>SpeechTr` alanı değiştirilip yeniden
   `--talk --execute` (yalnız değişen ses yeniden üretilir).
+
+- **2026-11-03 söyleniş düzeltmeleri** (kullanıcı onayı; 8 ses yeniden, 695 karakter, 0 TL; Duyu önce → sonra):
+  ask-the-way "where is the bus stop" ver iz→**vır iz dı bas stap** (%46 → %62; "Veriz de bastildi" → "vrizdı bastırdı";
+  "Excuse me" artık tam eşleşiyor; kısmen düzeldi, kulak kararı) · "Sorry" Sori→**Sorri** ("Soru" → "Sori", düzeldi;
+  late-maya'da da) · maya-neighbour "Are you" Ar yu→**Aar yuu** ("arıyor" → tam eşleşme, düzeldi) · "-im" için sözlüğe
+  `-im`→`im` ("yemek" → "imek", kısmen) · meet-note "Pier 3" Pir tri→**Piır tırii** (Duyu "Peartree" yazıyor: İngilizce
+  söylenişe yakın, büyük olasılıkla düzeldi) · late-maya "Tide & Pages'te" Peycız→**Peyciz** ("Teycis'te" → tam eşleşme).
 
 ## Kabul kriterleri
 

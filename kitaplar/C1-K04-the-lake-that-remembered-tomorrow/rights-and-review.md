@@ -3,8 +3,8 @@
 ## Kaynak ve haklar
 - **Özgün eser.** Metin, katalogdaki özet (`kitaplar/KATALOG.md`, C1-K04; kullanıcı onayı 2026-10-14, H-065) temel alınarak Claude tarafından yazıldı (2026-10-14, H-073). Uyarlama değildir.
 - **Üçüncü taraf kaynak yok.** Başka bir kitaptan, filmden ya da şarkıdan alıntı yok. Gerçek kişi, ünlü, marka, kurum ya da telifli karakter yok. Ardal köyü ve gölü uydurmadır; ülkesi ve dağların adı verilmez. "Water Office" (Su Dairesi) adsız, genel bir kamu dairesidir; gerçek bir kurumu anmaz. Şehir adsızdır.
-- **Kelime listesi:** C1 için CEFR-J Wordlist v1.6 + Octanove C1/C2 (CC BY-SA, ayrı veri seti) öngörülür; Octanove C1/C2 listesi depoda olmadığından kapsama denetlenmedi (aşağıda). Yasak kaynaklar (Cambridge EVP/EGP, Oxford 3000/5000, GSE, COCA, BNC) kullanılmadı ve isteme konmadı.
-- **Yapay zekâ açıklaması:** Metin ve Türkçe çeviri taslağı yapay zekâ (Claude) ile üretildi; `book.json → aiGenerated: true`. Görseller (8 görsel, GPT Image 2.5, 2026-10-14) de yapay zekâ ile üretildi (kayıt `PROMPTS.md`); ses de yapay zekâ ile üretilecek, henüz üretilmedi. Uygulama içinde AI notu bölümlerdeki kuralla gösterilir; uygulama dışına çıkan her kesitte AI etiketi gömülür (K-14).
+- **Kelime listesi:** C1 için CEFR-J Wordlist v1.6 + Octanove C1/C2 (CC BY-SA, ayrı veri seti) öngörülür; Octanove C1/C2 listesi depoda olmadığından kapsama denetlenmedi (aşağıda). Yasak kaynaklar (Cambridge EVP/EGP, Oxford 3000/5000, GSE, COCA, BNC) kullanılmadı ve isteme konmadı. **Güncelleme (2026-11-03):** Octanove C1/C2 listesi depoya eklendi (`tools/content-pipeline/data/lexicon_ccbysa/`, CC BY-SA 4.0, ayrı veri seti); "depoda yok" ifadesi o tarihe kadarki durumdur. Kapsama artık denetleniyor: %99,0 (sözlükle %99,3).
+- **Yapay zekâ açıklaması:** Metin ve Türkçe çeviri taslağı yapay zekâ (Claude) ile üretildi; `book.json → aiGenerated: true`. Görseller (8 görsel, GPT Image 2.5, 2026-10-14) de yapay zekâ ile üretildi (kayıt `PROMPTS.md`); ses de yapay zekâ ile üretilecek, henüz üretilmedi. Türkçe sayfa sesi: Alania (PatientDesk `alania2-f1`, 2026-11-03; H-105, "Sayfanın Türkçesi" panelinde yalnız dokununca çalar; kayıt `PROMPTS.md`). Uygulama içinde AI notu bölümlerdeki kuralla gösterilir; uygulama dışına çıkan her kesitte AI etiketi gömülür (K-14).
 
 ## Güvenlik (13+, şartname §5.5)
 - Şiddet, cinsellik, siyaset ve din yok. Göldeki "yansımalar" dinsel ya da kehanet temelli değil, büyülü gerçekçi bir doğa olayı olarak işlenir; kitabın sonunda insanın kendi kararlarıyla ilgili bir ders gibi değil, bir keşif olarak açıklanır.
@@ -15,8 +15,8 @@
 - Kayıt defterindeki girdiler (vedalaşmadan gitmek, teklifi kabul etmek) kısa ve sakin bir dille, ayrıntısız verilir.
 
 ## Dil denetimi
-- `book-lint` (2026-10-14): 8.413 kelime (C1 hedefi 6.400–9.600), 28 sayfa, 7 bölüm, 699 cümle. Çeviri 706/706 birim (7 bölüm başlığı dahil), 8.233/8.233 kelime anlamlı; 0 hata. Uyarılar: çeviri DRAFT; Octanove C1/C2 listesi yok; ses ve görsel henüz yok.
-- **Kapsama:** Octanove C1/C2 listesi depoda yok; kapsama denetlenmedi. İleri düzey kelimeler (hydrologist, anomaly, fatigue, outflow, ledger, unremarkable, premature, primed vb.) `glossary.md`'de açıklandı.
+- `book-lint` (2026-10-14): 8.413 kelime (C1 hedefi 6.400–9.600), 28 sayfa, 7 bölüm, 699 cümle. Çeviri 706/706 birim (7 bölüm başlığı dahil), 8.233/8.233 kelime anlamlı; 0 hata. Uyarılar: çeviri DRAFT; Octanove C1/C2 listesi yok; ses ve görsel henüz yok. *(2026-11-03: Octanove listesi eklendi; yeni denetimde kapsama %99,0, sözlükle %99,3.)*
+- **Kapsama:** Octanove C1/C2 listesi depoda yok; kapsama denetlenmedi. İleri düzey kelimeler (hydrologist, anomaly, fatigue, outflow, ledger, unremarkable, premature, primed vb.) `glossary.md`'de açıklandı. *(2026-11-03: Octanove listesi eklendi; yeni denetimde kapsama %99,0, sözlükle %99,3.)*
 - Özel adlar (`properNouns`): Tomás, Arrieta, Ardal, Petra, Nico, Hallam, Oriana, Aurel, Constantin, Luka.
 - C1 yapıları (devrik yapı, cleft, karma koşul, devrik koşul, ortaç yan cümleleri, modal incelikleri, kişisiz edilgen, gerçek dışı geçmiş, eksiltme ve yerine koyma, temkinli bilimsel üslup, resmî dilek kipi) ve Türk öğrenci notları `glossary.md`'de Türkçesi ve metinden örnek cümlesiyle.
 - Anlatı dilbilgisi standart İngiliz İngilizcesidir (fortnight, jumper, torch, flat, cool box, per cent, realise, colour, metre, centimetre; Mr / Dr noktasız).
@@ -28,6 +28,7 @@
 | 2026-10-14 | Metin ve çeviri onayı (H-028) | Kullanıcı | Onaylandı (`ceviri.tr.json` → `APPROVED`; onaylayan: kullanıcı, genel onay) |
 | 2026-10-14 | Görsel maliyet onayı ve üretim (kapak + bölüm başı, 8 görsel, ≈ 4 kr) | Kullanıcı | Üretildi: 8 görsel, GPT Image 2.5 (iş kimlikleri `PROMPTS.md`) |
 | — | Seslendirme (ElevenLabs Creator, ticari; anlatıcı Sarah) | Kullanıcı | Bekliyor (henüz üretilmedi; 2026-10-30 itibarıyla çalışan ElevenLabs erişimi yok) |
+| 2026-11-03 | Türkçe sayfa sesi (H-105, PatientDesk Alania, kampanya 0 TL) | Kullanıcı | Üretildi: 28 sayfa, 41.744 karakter, `alania2-f1` + Duyu hizalaması (`audio/tr/`) |
 | — | Editör toplu kontrolü | Editör | Bekliyor |
 
 - 2026-10-14: Kullanıcının genel onayıyla ("tüm onayları verdim") metin ve çeviri onaylı işaretlendi (H-028); editör toplu okuması yine önerilir.

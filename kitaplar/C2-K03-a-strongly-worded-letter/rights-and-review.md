@@ -3,8 +3,8 @@
 ## Kaynak ve haklar
 - **Özgün eser.** Metin, katalogdaki özet (`kitaplar/KATALOG.md`, C2-K03; kullanıcı onayı 2026-10-14, H-065) temel alınarak Claude tarafından yazıldı (2026-10-14, H-073). Uyarlama değildir.
 - **Üçüncü taraf kaynak yok.** Başka bir kitaptan, filmden ya da şarkıdan alıntı yok. Gerçek kişi, ünlü, marka, kurum ya da telifli karakter yok. Köy (Nether Ambley), sokak (Larkspur Lane), evler (Fernleigh, Hollybank), kasabalar (Kingsmere, Wexcombe) ve okul (Hartwell Road School) uydurmadır. Posta hizmeti, hastane, arşiv ve ölçüm bürosu (Quayle and Daughter) gerçek bir kuruma işaret etmez; postacının üniforması ve kurum adı anılmaz. Kitap kulübünün okuduğu "balinayla ilgili uzun roman" adı verilmeden geçer.
-- **Kelime listesi:** C2 için CEFR-J + Octanove C1/C2 (ayrı veri seti) öngörülür; Octanove C1/C2 listesi depoda henüz yok, bu yüzden kapsama denetlenmedi (aşağıda). Yasak kaynaklar (Cambridge EVP/EGP, Oxford 3000/5000, GSE, COCA, BNC) kullanılmadı ve isteme konmadı.
-- **Yapay zekâ açıklaması:** Metin ve Türkçe çeviri taslağı yapay zekâ (Claude) ile üretildi; `book.json → aiGenerated: true`. Görseller (8 görsel, GPT Image 2.5, 2026-10-14) de yapay zekâ ile üretildi (kayıt `PROMPTS.md`); ses de yapay zekâ ile üretilecek, henüz üretilmedi. Uygulama içinde AI notu bölümlerdeki kuralla gösterilir; uygulama dışına çıkan her kesitte AI etiketi gömülür (K-14).
+- **Kelime listesi:** C2 için CEFR-J + Octanove C1/C2 (ayrı veri seti) öngörülür; Octanove C1/C2 listesi depoda henüz yok, bu yüzden kapsama denetlenmedi (aşağıda). Yasak kaynaklar (Cambridge EVP/EGP, Oxford 3000/5000, GSE, COCA, BNC) kullanılmadı ve isteme konmadı. **Güncelleme (2026-11-03):** Octanove C1/C2 listesi depoya eklendi (`tools/content-pipeline/data/lexicon_ccbysa/`, CC BY-SA 4.0, ayrı veri seti); "depoda yok" ifadesi o tarihe kadarki durumdur. Kapsama artık denetleniyor: %98,3 (sözlükle %98,8).
+- **Yapay zekâ açıklaması:** Metin ve Türkçe çeviri taslağı yapay zekâ (Claude) ile üretildi; `book.json → aiGenerated: true`. Görseller (8 görsel, GPT Image 2.5, 2026-10-14) de yapay zekâ ile üretildi (kayıt `PROMPTS.md`); ses de yapay zekâ ile üretilecek, henüz üretilmedi. Türkçe sayfa sesi: Alania (PatientDesk `alania2-f1`, 2026-11-03; H-105, "Sayfanın Türkçesi" panelinde yalnız dokununca çalar; kayıt `PROMPTS.md`). Uygulama içinde AI notu bölümlerdeki kuralla gösterilir; uygulama dışına çıkan her kesitte AI etiketi gömülür (K-14).
 
 ## Güvenlik (13+, şartname §5.5)
 - Şiddet, cinsellik, siyaset ve din yok. Anlaşmazlık baştan sona kibar bir mektuplaşmadır; kimse bağırmaz, tehdit etmez, kimsenin malına zarar vermez. Mizah ironiden ve kibarlık kalıplarından doğar, kimseyi aşağılamaz.
@@ -14,8 +14,8 @@
 - Gizlilik: Constance komşusunun evine yalnız kediyi beslemek için, verilen anahtarla girer ve kâğıtlarını bilerek okumaz; masada açık duran klasörü görmesi tek cümleyle geçer.
 
 ## Dil denetimi
-- `book-lint` (2026-10-14): 10.788 kelime (C2 hedefi 8.000–12.000), 28 sayfa, 7 bölüm, 708 cümle; 0 hata. Çeviri 715/715 birim (cümleler + bölüm başlıkları), 10.456/10.456 kelime anlamlı; durum DRAFT. Uyarılar yalnız: çeviri DRAFT, Octanove liste yok, ses ve görsel henüz yok.
-- **Kapsama:** Octanove C1/C2 listesi depoda yok; kapsama denetlenmedi (`coverage` uyarısı). Seviye üstü ve deyimsel öğeler `glossary.md`'de (45 girdi) Türkçesi ve metinden örnek cümlesiyle.
+- `book-lint` (2026-10-14): 10.788 kelime (C2 hedefi 8.000–12.000), 28 sayfa, 7 bölüm, 708 cümle; 0 hata. Çeviri 715/715 birim (cümleler + bölüm başlıkları), 10.456/10.456 kelime anlamlı; durum DRAFT. Uyarılar yalnız: çeviri DRAFT, Octanove liste yok, ses ve görsel henüz yok. *(2026-11-03: Octanove listesi eklendi; yeni denetimde kapsama %98,3, sözlükle %98,8.)*
+- **Kapsama:** Octanove C1/C2 listesi depoda yok; kapsama denetlenmedi (`coverage` uyarısı). Seviye üstü ve deyimsel öğeler `glossary.md`'de (45 girdi) Türkçesi ve metinden örnek cümlesiyle. *(2026-11-03: Octanove listesi eklendi; yeni denetimde kapsama %98,3, sözlükle %98,8.)*
 - Özel adlar (`properNouns`): Constance, Webb, Con, Desmond, Achterberg, Beatrice, Bea, Pike, Fernleigh, Hollybank, Larkspur, Nether, Ambley, Kingsmere, Wexcombe, Hartwell, Barry, Tuttle, Priya, Dhillon, Fairweather, Ogunleye, Quayle, Hollis, Josh, Audit (kedinin adı).
 - C1/C2 yapıları (devrik yapı, cleft, karma koşul, ortaç yan cümlesi, modal incelikleri, kişisiz edilgen, gerçek dışı geçmiş, eksiltme, öne alma, adlaştırma, temkin dili, resmî dilek kipi ve if'siz şart, söylem belirleyicileri, görünüş incelikleri) ve Türk öğrenci notları (*I am agree*, *informations*, Miss / Mrs / Ms) `glossary.md`'de.
 - Anlatı dili standart İngiliz İngilizcesidir (Mr / Mrs / Ms noktasız; neighbour, metre, centre, realise, learnt, smelt, aluminium; post box, letterbox, flat, estate agent, shepherd's pie, a quarter past three). Sayılar seslendirme için yazıyla; yıllar rakamla.
@@ -27,6 +27,7 @@
 | 2026-10-14 | Metin ve çeviri onayı (H-028) | Kullanıcı | Onaylandı (`ceviri.tr.json` → `APPROVED`; onaylayan: kullanıcı, genel onay) |
 | 2026-10-14 | Görsel maliyet onayı ve üretim (kapak + bölüm başı, 8 görsel, ≈ 4 kr) | Kullanıcı | Üretildi: 8 görsel, GPT Image 2.5 (iş kimlikleri `PROMPTS.md`) |
 | — | Seslendirme (ElevenLabs Creator, ticari; anlatıcı Sarah) | Kullanıcı | Bekliyor (henüz üretilmedi; 2026-10-30 itibarıyla çalışan ElevenLabs erişimi yok) |
+| 2026-11-03 | Türkçe sayfa sesi (H-105, PatientDesk Alania, kampanya 0 TL) | Kullanıcı | Üretildi: 28 sayfa, 53.985 karakter, `alania2-f1` + Duyu hizalaması (`audio/tr/`) |
 | — | Editör toplu kontrolü | Editör | Bekliyor |
 
 - 2026-10-14: Kullanıcının genel onayıyla ("tüm onayları verdim") metin ve çeviri onaylı işaretlendi (H-028); editör toplu okuması yine önerilir.

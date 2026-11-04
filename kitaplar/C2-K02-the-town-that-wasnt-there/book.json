@@ -44,6 +44,79 @@
     "Arthur",
     "Lisle"
   ],
+  "narrationTr": {
+    "role": "hi",
+    "pronunciations": [
+      {
+        "term": "Merrow Cross",
+        "say_as": "Merou Kros"
+      },
+      {
+        "term": "Merrow",
+        "say_as": "Merou"
+      },
+      {
+        "term": "Corrin",
+        "say_as": "Korin"
+      },
+      {
+        "term": "Gridwell",
+        "say_as": "Gridvel"
+      },
+      {
+        "term": "Gavin",
+        "say_as": "Gevin"
+      },
+      {
+        "term": "Theo",
+        "say_as": "Tiyo"
+      },
+      {
+        "term": "Marsh",
+        "say_as": "Marş"
+      },
+      {
+        "term": "Hollins",
+        "say_as": "Halinz"
+      },
+      {
+        "term": "Vane",
+        "say_as": "Veyn"
+      },
+      {
+        "term": "Callowford",
+        "say_as": "Kelofırd"
+      },
+      {
+        "term": "Bryony",
+        "say_as": "Brayıni"
+      },
+      {
+        "term": "Rowley",
+        "say_as": "Rauli"
+      },
+      {
+        "term": "Nell",
+        "say_as": "Nel"
+      },
+      {
+        "term": "Hester",
+        "say_as": "Hestır"
+      },
+      {
+        "term": "Gale",
+        "say_as": "Geyl"
+      },
+      {
+        "term": "Arthur",
+        "say_as": "Artır"
+      },
+      {
+        "term": "Lisle",
+        "say_as": "Layl"
+      }
+    ]
+  },
   "narration": {
     "modelId": "eleven_v3",
     "speed": 1.05,

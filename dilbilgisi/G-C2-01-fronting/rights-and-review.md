@@ -4,7 +4,7 @@
 - Metin, örnek cümleler, Türkçe anlatım ve alıştırmalar kendi metnimizdir (Claude taslağı, 2026-10-14).
 - Konu sırası ve hedef `dilbilgisi/MUFREDAT.md`'den (CEFR-J Grammar Profile yalnız referans; ham veri kullanılmadı, `docs/LISANS-RAPORU.md`).
 - Cambridge EGP/EVP, Oxford, GSE ve benzeri kaynakların metni kullanılmadı.
-- Kelime kapsaması: C2 için CEFR-J Wordlist v1.6 + Octanove C1/C2 (CC BY-SA, ayrı veri seti) gerekir; Octanove listesi depoda olmadığı için kapsama denetlenmedi (`grammar_lint.py`: "liste yok"). Liste eklenince yeniden denetlenmeli.
+- Kelime kapsaması: C2 için CEFR-J Wordlist v1.6 + Octanove C1/C2 (CC BY-SA, ayrı veri seti) gerekir; Octanove listesi depoda olmadığı için kapsama denetlenmedi (`grammar_lint.py`: "liste yok"). Liste eklenince yeniden denetlenmeli. **Güncelleme (2026-11-03):** Octanove C1/C2 listesi depoya eklendi (`tools/content-pipeline/data/lexicon_ccbysa/`, CC BY-SA 4.0, ayrı veri seti); "depoda yok" ifadesi o tarihe kadarki durumdur. Kapsama artık denetleniyor: %99,4 (sözlükle %99,4).
 - Kanca ve örnekler bizim cümlelerimizdir; S1 bölümlerinde ve kitaplarda bu yapı henüz yok (müfredat, 2026-10-14).
 
 ## Tipik hata kaynağı

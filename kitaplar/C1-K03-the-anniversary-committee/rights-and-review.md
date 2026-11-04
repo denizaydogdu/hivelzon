@@ -3,8 +3,8 @@
 ## Kaynak ve haklar
 - **Özgün eser.** Metin, katalogdaki özet (`kitaplar/KATALOG.md`, C1-K03; kullanıcı onayı 2026-10-14, H-065) temel alınarak Claude tarafından yazıldı (2026-10-14, H-073). Uyarlama değildir.
 - **Üçüncü taraf kaynak yok.** Başka bir kitaptan, filmden ya da şarkıdan alıntı yok. Gerçek kişi, ünlü, marka, kurum ya da telifli karakter yok. Şirket (Brindle Umbrellas), kasaba (Wexley Bridge), deniz kasabası (Seaborough) ve bando (Wexley Bridge Silver Band) uydurmadır. Matbaa, banka, sigorta şirketi ve dış muhasebeci adsızdır.
-- **Kelime listesi:** C1 için CEFR-J Wordlist v1.6 + Octanove C1/C2 öngörülür (atıf: Tono Laboratory, TUFS; `tools/content-pipeline/data/README.md`). Octanove C1/C2 listesi depoda yok; kapsama denetlenmedi. Yasak kaynaklar (Cambridge EVP/EGP, Oxford 3000/5000, GSE, COCA, BNC) kullanılmadı ve isteme konmadı.
-- **Yapay zekâ açıklaması:** Metin ve Türkçe çeviri taslağı yapay zekâ (Claude) ile üretildi; `book.json → aiGenerated: true`. Görseller (7 görsel, GPT Image 2.5, 2026-10-14) de yapay zekâ ile üretildi (kayıt `PROMPTS.md`); ses de yapay zekâ ile üretilecek, henüz üretilmedi. Uygulama içinde AI notu bölümlerdeki kuralla gösterilir; uygulama dışına çıkan her kesitte AI etiketi gömülür (K-14).
+- **Kelime listesi:** C1 için CEFR-J Wordlist v1.6 + Octanove C1/C2 öngörülür (atıf: Tono Laboratory, TUFS; `tools/content-pipeline/data/README.md`). Octanove C1/C2 listesi depoda yok; kapsama denetlenmedi. Yasak kaynaklar (Cambridge EVP/EGP, Oxford 3000/5000, GSE, COCA, BNC) kullanılmadı ve isteme konmadı. **Güncelleme (2026-11-03):** Octanove C1/C2 listesi depoya eklendi (`tools/content-pipeline/data/lexicon_ccbysa/`, CC BY-SA 4.0, ayrı veri seti); "depoda yok" ifadesi o tarihe kadarki durumdur. Kapsama artık denetleniyor: %98,7 (sözlükle %98,8).
+- **Yapay zekâ açıklaması:** Metin ve Türkçe çeviri taslağı yapay zekâ (Claude) ile üretildi; `book.json → aiGenerated: true`. Görseller (7 görsel, GPT Image 2.5, 2026-10-14) de yapay zekâ ile üretildi (kayıt `PROMPTS.md`); ses de yapay zekâ ile üretilecek, henüz üretilmedi. Türkçe sayfa sesi: Alania (PatientDesk `alania2-f1`, 2026-11-03; H-105, "Sayfanın Türkçesi" panelinde yalnız dokununca çalar; kayıt `PROMPTS.md`). Uygulama içinde AI notu bölümlerdeki kuralla gösterilir; uygulama dışına çıkan her kesitte AI etiketi gömülür (K-14).
 
 ## Güvenlik (13+, şartname §5.5)
 - Şiddet, cinsellik, siyaset ve din yok. Mizah kurumsal hayatın küçük absürtlüklerinden doğar; kimse aşağılanmaz, alay hedefi kişiler değil alışkanlıklardır (logo tartışması, alt komiteler, kurumsal klişeler).
@@ -14,7 +14,7 @@
 - Alkol yok (kutlamada bardak yalnız tıklatılır; Albert'in "years are for wine" sözü tek bir espri olarak kalır). Doğum sahnesi yalnız günlükteki iki satırdır (Seven pounds and very loud).
 
 ## Dil denetimi
-- `book-lint` (2026-10-14): 8.585 kelime (C1 hedefi 6.400–9.600), 27 sayfa, 6 bölüm, 770 cümle; 0 hata. Kapsama: C1 için Octanove C1/C2 listesi depoda yok; kapsama denetlenmedi (uyarı). Çeviri 776/776 birim (bölüm başlıkları dahil), 8.240/8.240 kelime anlamlı; uyarılar: çeviri DRAFT, ses ve görsel henüz yok.
+- `book-lint` (2026-10-14): 8.585 kelime (C1 hedefi 6.400–9.600), 27 sayfa, 6 bölüm, 770 cümle; 0 hata. Kapsama: C1 için Octanove C1/C2 listesi depoda yok; kapsama denetlenmedi (uyarı). Çeviri 776/776 birim (bölüm başlıkları dahil), 8.240/8.240 kelime anlamlı; uyarılar: çeviri DRAFT, ses ve görsel henüz yok. *(2026-11-03: Octanove listesi eklendi; yeni denetimde kapsama %98,7, sözlükle %98,8.)*
 - Özel adlar (`properNouns`): Gwen, Holloway, Howard, Brindle, Albert, Clive, Marsh, Jasper, Nell, Okafor, Derek, Pole, Ambrose, Penrose, Dorothy, Fairweather, Margaret, Wexley, Seaborough, Grandad.
 - C1 yapıları (devrik yapı, cleft, karma koşul, ortaç yan cümleleri, modal incelikleri, kişisiz edilgen, gerçek dışı geçmiş, eksiltme ve yerine koyma), kaçamak edilgen, temkinli dil, kurumsal klişeler, deyimler ve Türk öğrenci notları `glossary.md`'de (44 girdi) Türkçesi ve metinden birebir örnek cümlesiyle.
 - Anlatı standart İngiliz İngilizcesidir (realise, colour, centre, programme, metre, maths; Mr / Ms / Mrs noktasız; flat, lift, car park, torch, trainers, biscuit tin gibi İngiliz kullanımları bilinçli). Jasper'ın argosu (huge, a vibe, massively) ve kurumsal dil (going forward, circle back, take this offline, revert in due course) üslup karşıtlığı için bilinçli.
@@ -27,6 +27,7 @@
 | 2026-10-14 | Metin ve çeviri onayı (H-028) | Kullanıcı | Onaylandı (`ceviri.tr.json` → `APPROVED`; onaylayan: kullanıcı, genel onay) |
 | 2026-10-14 | Görsel maliyet onayı ve üretim (kapak + bölüm başı, 7 görsel, ≈ 3,5 kr) | Kullanıcı | Üretildi: 7 görsel, GPT Image 2.5 (iş kimlikleri `PROMPTS.md`) |
 | — | Seslendirme (ElevenLabs Creator, ticari; anlatıcı Sarah) | Kullanıcı | Bekliyor (henüz üretilmedi; 2026-10-30 itibarıyla çalışan ElevenLabs erişimi yok) |
+| 2026-11-03 | Türkçe sayfa sesi (H-105, PatientDesk Alania, kampanya 0 TL) | Kullanıcı | Üretildi: 27 sayfa, 45.318 karakter, `alania2-f1` + Duyu hizalaması (`audio/tr/`) |
 | — | Editör toplu kontrolü | Editör | Bekliyor |
 
 - 2026-10-14: Kullanıcının genel onayıyla ("tüm onayları verdim") metin ve çeviri onaylı işaretlendi (H-028); editör toplu okuması yine önerilir.

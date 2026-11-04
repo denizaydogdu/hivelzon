@@ -30,6 +30,43 @@
     "Kilbrannock",
     "Christmas"
   ],
+  "narrationTr": {
+    "role": "hi",
+    "pronunciations": [
+      {
+        "term": "Sophie",
+        "say_as": "Sofi"
+      },
+      {
+        "term": "Soph",
+        "say_as": "Sof"
+      },
+      {
+        "term": "Daniel",
+        "say_as": "Denyıl"
+      },
+      {
+        "term": "Byrne",
+        "say_as": "Börn"
+      },
+      {
+        "term": "Doyle",
+        "say_as": "Doyl"
+      },
+      {
+        "term": "Tommy",
+        "say_as": "Tomi"
+      },
+      {
+        "term": "Kelly",
+        "say_as": "Keli"
+      },
+      {
+        "term": "Kilbrannock",
+        "say_as": "Kilbrenık"
+      }
+    ]
+  },
   "narration": {
     "modelId": "eleven_v3",
     "speed": 1.0,

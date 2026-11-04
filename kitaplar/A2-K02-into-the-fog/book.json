@@ -26,7 +26,13 @@
     "Berg"
   ],
   "narrationTr": {
-    "role": "hi"
+    "role": "hi",
+    "pronunciations": [
+      {
+        "term": "Ding",
+        "say_as": "Diing"
+      }
+    ]
   },
   "narration": {
     "modelId": "eleven_v3",
