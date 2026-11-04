@@ -1,6 +1,6 @@
 # H-105: Kitaplarda "Sayfanın Türkçesi"ni Alania ile sesli okuma
 
-- **Durum:** Devam ediyor — **30 kitabın tamamı sesli** (A1–B1 2026-11-03, commit `d2d81c0`; B2/C1/C2 2026-11-03/04, commit edilmedi); kullanıcının dinlemesi ve editör kontrolü bekliyor
+- **Durum:** Devam ediyor — **üretim bitti, 30 kitabın tamamı sesli** (626 sayfa; A1–B1 2026-11-03, commit `d2d81c0`, CI `41690063999` yeşil; B2/C1/C2 ve söyleniş düzeltmeleri 2026-11-03/04, commit `fd56543`, CI `41798860052` yeşil); kullanıcının kulakla kontrolü ve editör kontrolü bekliyor; kabulden önce `bitenler/`e taşınmaz
 - **Tür:** İçerik hattı (Alania TTS + Duyu) + mobil arayüz
 - **Öncelik:** Orta (Alania kampanyası 14 Kasım 2026'ya kadar ücretsiz ve sınırsız)
 - **Bağımlılık:** H-086 (Sayfanın Türkçesi), H-083 ("Türkçe konuşan her yer Alania"), H-104 (desen ve ders)
@@ -99,6 +99,12 @@ Düzeltme: `narrationTr.pronunciations` değiştir → `--execute` (yalnız o te
   Couna→Cona), C1-K03 "Gwen" (yer yer "Güven"), B2-K05 "Daniel" ("Danielle"), C2-K01 p03/p18 İngilizce kelime dizileri,
   C2-K05 p17/p30 ("I am agree", "Other Half of Sentence").
 
+**Kulakla kontrol listesi (2026-11-04, `fd56543` sonrası, tek yer):**
+- Hâlâ şüpheli söylenişler: A2-K04 "Nia" (Niya; Duyu "Niye"), A2-K02 p15 "Ding" (Diing; Duyu "Dink"). Konuş tarafındakiler
+  ("where is the bus stop" kısmen, "Pier 3") H-104 dosyasında.
+- Dinlenecek B2–C2 sayfaları: B2-K02 "Jonah", C1-K03 "Gwen", B2-K05 "Daniel", C2-K01 p03 ve p18, C2-K05 p17 ve p30.
+- Düzeltme gerekirse `narrationTr.pronunciations` değiştirilip `--execute` (yalnız ilgili sayfalar; kampanya 14 Kasım 2026'ya kadar).
+
 **A1–B1 söyleniş düzeltmeleri (önce → sonra, Duyu dökümü):**
 - A1-K03 p10 "Yine mi!" okunmuyordu (ses "Ravi"den 0,13 sn sonra bitiyordu) → **düzeldi** (iki kelime tam eşleşti).
 - A2-K04 Edda→**Eda**: "Elda/Eldaney" → "Eda" (**düzeldi**). Nia→**Niya**: Duyu yine 4 yerde "Niye" yazıyor
@@ -115,7 +121,7 @@ Düzeltme: `narrationTr.pronunciations` değiştir → `--execute` (yalnız o te
 - [x] Paket `audio/tr/*.m4a` + `pages.json trAudio`; eksik ses uyarı (zorunlu değil); book_lint denetliyor (0 hata).
 - [x] Uygulamada panelde "Türkçesini dinle": ses yoksa yok, yalnız dokununca, İngilizceyle çakışmaz, 320×568 1,3× taşma yok, dokunma ≥ 44, ekran okuyucu etiketi.
 - [ ] Kullanıcı sesleri dinler (yukarıdaki şüpheli satırlar).
-- [x] B2, C1, C2 üretimi (2026-11-04; 400 sayfa, 610.024 karakter, 0 TL).
+- [x] B2, C1, C2 üretimi (2026-11-04; 400 sayfa, 610.024 karakter, 0 TL; commit `fd56543`).
 - [ ] Editör kontrolü (H-028).
 
 ## Test komutları
@@ -124,7 +130,7 @@ Düzeltme: `narrationTr.pronunciations` değiştir → `--execute` (yalnız o te
 P=tools/content-pipeline/.venv/bin/python
 $P -m pytest tools/content-pipeline                          # 417
 $P tools/content-pipeline/tts_book_tr.py kitaplar/A1-K* kitaplar/A2-K* kitaplar/B1-K*   # kuru: hepsi güncel
-$P tools/content-pipeline/book_lint.py kitaplar/*-K*         # 30 kitap 0 hata
+$P tools/content-pipeline/book_lint.py kitaplar/*-K*         # 30 kitap 0 hata (205 uyarı, 2026-11-04)
 $P tools/content-pipeline/export_book.py kitaplar/A1-K*      # "Türkçe sayfa sesi: 11/11 sayfa pakette"
 cd mobile && flutter analyze && flutter test                 # 1517
 ```

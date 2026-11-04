@@ -1,6 +1,6 @@
 # H-104: Konuş görevlerinde Hi'nin Türkçe yönlendirmelerini seslendirme
 
-- **Durum:** Devam ediyor — sesler üretildi, kod ve testler yeşil (2026-11-03), commit `d2d81c0` (CI `41690063999` yeşil); kullanıcının dinlemesi ve editör kontrolü bekliyor
+- **Durum:** Devam ediyor — sesler üretildi, kod ve testler yeşil (2026-11-03), commit `d2d81c0` (CI `41690063999` yeşil); söyleniş düzeltmeleri commit `fd56543` (CI `41798860052` yeşil). Kullanıcının kulakla kontrolü (şüpheli: "where is the bus stop" kısmen, "Pier 3") ve editör kontrolü bekliyor; kabulden önce `bitenler/`e taşınmaz
 - **Tür:** İçerik hattı (Alania TTS) + mobil arayüz
 - **Öncelik:** Orta
 - **Bağımlılık:** H-083 ("Türkçe konuşan her yer Alania"), H-090 (Konuş), H-055, H-075…H-082 (Alania kampanyası 14 Kasım 2026'ya kadar ücretsiz)
@@ -63,6 +63,10 @@ ile seslendirilir (rol `hi`, ses `alania2-f1`):
   late-maya'da da) · maya-neighbour "Are you" Ar yu→**Aar yuu** ("arıyor" → tam eşleşme, düzeldi) · "-im" için sözlüğe
   `-im`→`im` ("yemek" → "imek", kısmen) · meet-note "Pier 3" Pir tri→**Piır tırii** (Duyu "Peartree" yazıyor: İngilizce
   söylenişe yakın, büyük olasılıkla düzeldi) · late-maya "Tide & Pages'te" Peycız→**Peyciz** ("Teycis'te" → tam eşleşme).
+
+- **Güncel durum (2026-11-04, `fd56543`):** Düzeltmelerden sonra hâlâ şüpheli olanlar: ask-the-way "where is the bus
+  stop" (kısmen düzeldi) ve meet-note "Pier 3". Kullanıcı simülatör denemesinde kulakla dinler; gerekirse yalnız o
+  sesler yeniden üretilir (Alania kampanyası 14 Kasım 2026'ya kadar ücretsiz).
 
 ## Kabul kriterleri
 
