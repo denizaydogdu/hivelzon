@@ -100,9 +100,19 @@ Düzeltme: `narrationTr.pronunciations` değiştir → `--execute` (yalnız o te
   C2-K05 p17/p30 ("I am agree", "Other Half of Sentence").
 
 **Kulakla kontrol listesi (2026-11-04, `fd56543` sonrası, tek yer):**
-- Hâlâ şüpheli söylenişler: A2-K04 "Nia" (Niya; Duyu "Niye"), A2-K02 p15 "Ding" (Diing; Duyu "Dink"). Konuş tarafındakiler
-  ("where is the bus stop" kısmen, "Pier 3") H-104 dosyasında.
-- Dinlenecek B2–C2 sayfaları: B2-K02 "Jonah", C1-K03 "Gwen", B2-K05 "Daniel", C2-K01 p03 ve p18, C2-K05 p17 ve p30.
+- **Yazım denemesi (2026-11-04, commit edilmedi;** kısa deneme sesleri, 2–4 yazım × 1–2 kez, 0 TL; Konuş + kitap denemeleri toplam 7.599 karakter / 74 Alania çağrısı deftere elle eklendi):
+  - B2-K02 "Jonah": Couna (2/2 "Duna…kuna") · Cona ("Kona") · Coonı/Counı ("Jona/Joana/Juna") · **Cöuna** (2/2 "Jonah")
+    → **uygulandı**, 23 sayfa yeniden: sayfalarda "Kuna" 46 → 0; Duyu artık "Jonah/Joana/Jona"; ortalama skor 0,978 → 0,993.
+  - A2-K02 "Ding": sözlüksüz (2/2 "Dink") · Diing ("Dink", bir denemede tek "Ding") · **Diiing** (3 denemenin 2'sinde
+    "Ding. Ding.") → **uygulandı**; p04/p15'te 3/3 "Ding".
+  - A2-K04 "Nia": Niya (1/2 "Niye") · Nii-ya (2/2 "Niye") · Nıya (1/2 "Nıya") · **sözlüksüz "Nia"** (2/2 "Nia") →
+    **Nia sözlükten çıkarıldı**; 16 sayfa: "Niye" 4 → 2 (+1 "Nihat"), skor 0,990 → 0,991. Kalan "Niye"ler büyük olasılıkla
+    Duyu'nun Türkçe kelimeye benzetmesi.
+  - C1-K03 "Gwen": Guen ("Güen/Gen/güyen") · Gven ve Guven ("Güven") · Güen ("Güven") · Guenn ("Gen") · Gu-en (1/2 "Guen")
+    → açık iyileşme yok, **Guen kaldı** (Duyu sınırı: "Güven"e benzetiyor).
+  - B2-K05 "Daniel": Denyıl, Denyel, Daniyel ve sözlüksüz, hepsi "Danielle" → **Denyıl kaldı** (Duyu sınırı).
+- **Kulakla kontrolde kalan:** C1-K03 "Gwen", B2-K05 "Daniel", A2-K04 "Nia" (2 yer), C2-K01 p03 ve p18, C2-K05 p17 ve p30;
+  Jonah ve Ding için tek bir dinleme yeterli.
 - Düzeltme gerekirse `narrationTr.pronunciations` değiştirilip `--execute` (yalnız ilgili sayfalar; kampanya 14 Kasım 2026'ya kadar).
 
 **A1–B1 söyleniş düzeltmeleri (önce → sonra, Duyu dökümü):**

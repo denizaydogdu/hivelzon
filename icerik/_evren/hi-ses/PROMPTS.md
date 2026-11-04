@@ -231,3 +231,7 @@
 | 2026-11-03T18:23:23Z | konusma-maya-neighbour-t3-d1 | duyu-1 | - | - | - | 7.36 | - | 31e55d45af71dcb9 |
 | 2026-11-03T18:23:25Z | konusma-meet-note-hint | alania-v2 | alania2-f1 | alania-v2.1 | 61 | 4.32 | 929de461b0cc47e5842eff76ee69b6b1 | 5f018db1714502c4 |
 | 2026-11-03T18:23:26Z | konusma-meet-note-hint | duyu-1 | - | - | - | 4.32 | - | 5f018db1714502c4 |
+| 2026-11-04T08:36:52Z | konusma-ask-the-way-t1-d1 | alania-v2 | alania2-f1 | alania-v2.1 | 75 | 5.12 | c3a3a032d1a64487b3acd84d63a0d4dc | c6fb5b0826a18295 |
+| 2026-11-04T08:36:54Z | konusma-ask-the-way-t1-d1 | duyu-1 | - | - | - | 5.12 | - | c6fb5b0826a18295 |
+| 2026-11-04T08:36:55Z | konusma-meet-note-hint | alania-v2 | alania2-f1 | alania-v2.1 | 61 | 4.16 | d1c1bbdb9c8d4287818263550faa21bf | 5f018db1714502c4 |
+| 2026-11-04T08:36:56Z | konusma-meet-note-hint | duyu-1 | - | - | - | 4.16 | - | 5f018db1714502c4 |

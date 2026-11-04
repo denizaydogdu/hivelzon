@@ -45,8 +45,10 @@ class DailyReminderService {
       await _schedule(next);
       await store.write(next);
       return ReminderEnableResult.enabled;
-    } on Object catch (e) {
-      debugPrint('[H042] hatırlatma kurulamadı: ${e.runtimeType}');
+    } on Object catch (e, st) {
+      debugPrint(
+        '[H042] hatırlatma kurulamadı: ${reminderErrorSummary(e, st)}',
+      );
       return ReminderEnableResult.failed;
     }
   }
@@ -57,8 +59,10 @@ class DailyReminderService {
     await store.write(current.copyWith(enabled: false));
     try {
       await scheduler.cancel();
-    } on Object catch (e) {
-      debugPrint('[H042] hatırlatma kaldırılamadı: ${e.runtimeType}');
+    } on Object catch (e, st) {
+      debugPrint(
+        '[H042] hatırlatma kaldırılamadı: ${reminderErrorSummary(e, st)}',
+      );
     }
   }
 
@@ -69,8 +73,10 @@ class DailyReminderService {
     if (!next.enabled) return;
     try {
       await _schedule(next);
-    } on Object catch (e) {
-      debugPrint('[H042] hatırlatma kurulamadı: ${e.runtimeType}');
+    } on Object catch (e, st) {
+      debugPrint(
+        '[H042] hatırlatma kurulamadı: ${reminderErrorSummary(e, st)}',
+      );
     }
   }
 
@@ -82,8 +88,10 @@ class DailyReminderService {
       if (!s.enabled) return;
       if (await scheduler.permission() == ReminderPermission.denied) return;
       await _schedule(s);
-    } on Object catch (e) {
-      debugPrint('[H042] hatırlatma yeniden kurulamadı: ${e.runtimeType}');
+    } on Object catch (e, st) {
+      debugPrint(
+        '[H042] hatırlatma yeniden kurulamadı: ${reminderErrorSummary(e, st)}',
+      );
     }
   }
 
@@ -94,8 +102,10 @@ class DailyReminderService {
     if (!was.enabled) return;
     try {
       await scheduler.cancel();
-    } on Object catch (e) {
-      debugPrint('[H042] hatırlatma kaldırılamadı: ${e.runtimeType}');
+    } on Object catch (e, st) {
+      debugPrint(
+        '[H042] hatırlatma kaldırılamadı: ${reminderErrorSummary(e, st)}',
+      );
     }
   }
 }

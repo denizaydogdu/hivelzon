@@ -14,7 +14,7 @@
   "character": {"nameTr": "Köpekli adam", "speaker": "MAN"},
   "image": {"episode": "A1-003", "path": "stills/B3-02-kopekli-adam-pov.webp"},
   "pronunciations": [
-    {"term": "where is the bus stop", "say_as": "vır iz dı bas stap"},
+    {"term": "where is the bus stop", "say_as": "ver iz dı bas stop"},
     {"term": "Again, please", "say_as": "Egeyn pliiz"},
     {"term": "Is it far", "say_as": "İz it far"},
     {"term": "is", "say_as": "iz"},

@@ -160,8 +160,10 @@ class LocalNotificationsReminderScheduler implements ReminderScheduler {
     try {
       final name = await _device.invokeMethod<String>('timeZone');
       if (name != null && name.isNotEmpty) return tz.getLocation(name);
-    } on Object catch (e) {
-      debugPrint('[H042] saat dilimi okunamadı: ${e.runtimeType}');
+    } on Object catch (e, st) {
+      debugPrint(
+        '[H042] saat dilimi okunamadı: ${reminderErrorSummary(e, st)}',
+      );
     }
     return locationForOffset(DateTime.now().timeZoneOffset);
   }
@@ -181,4 +183,29 @@ tz.Location locationForOffset(Duration offset) {
     return tz.getLocation('Etc/GMT${h > 0 ? '-' : '+'}${h.abs()}');
   }
   return tz.UTC;
+}
+
+/// Günlük için kısa ve kişisel veri içermeyen hata özeti (H-106).
+///
+/// Hatanın metni (`toString`) yazılmaz: değer, yol, e-posta ya da token
+/// içerebilir. Yazılanlar: tür; `ArgumentError`'da parametre adı ve
+/// kütüphanenin sabit açıklaması (en fazla 120 karakter; geçersiz değer
+/// yazılmaz); `PlatformException`'da yalnız kod; varsa hatanın atıldığı ilk
+/// paket kod yeri (`package:…:satır:sütun`).
+String reminderErrorSummary(Object error, [StackTrace? stack]) {
+  final parts = <String>[error.runtimeType.toString()];
+  if (error is ArgumentError) {
+    if (error.name case final String name) parts.add('name=$name');
+    if (error.message case final Object message) {
+      final m = '$message';
+      parts.add('"${m.length > 120 ? '${m.substring(0, 120)}…' : m}"');
+    }
+  } else if (error is PlatformException) {
+    parts.add('code=${error.code}');
+  }
+  final at = stack == null
+      ? null
+      : RegExp(r'\((package:[^)\s]+:\d+(?::\d+)?)\)').firstMatch('$stack');
+  if (at != null) parts.add('@ ${at.group(1)}');
+  return parts.join(' ');
 }

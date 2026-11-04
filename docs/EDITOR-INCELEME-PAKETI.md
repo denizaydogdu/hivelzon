@@ -414,7 +414,7 @@ Bunlar **inceleme engeli değildir.** Editör bilsin diye yazıldı.
 8. **Görsel yüz kimliği kayması** (reellerde ELIF, MERT, KEREM) bilinçli olarak ertelendi (H-094 §4 C). Not düşülebilir; tek başına düzeltme gerekçesi değildir.
 9. **Prolog A1-000** üretilmedi; inceleme dışı.
 10. **H-085 / H-086 kullanıcı denemesi** ayrı iştir; editör incelemesini beklemez.
-11. **Türkçe Alania sesleri (2026-11-03, `d2d81c0`; 2026-11-04, `fd56543`).** Konuş'ta Hi'nin Türkçe yönlendirmeleri 32 sesle (H-104) ve kitaplarda "Sayfanın Türkçesi" 30 kitabın tamamında 626 sayfa (H-105; A1 54, A2 76, B1 96, B2 115, C1 138, C2 147) sesli; 30 kitabın `rights-and-review.md`'sinde Türkçe sayfa sesi satırı var. Kullanıcının kulakla kontrolü ayrıca bekliyor (şüpheli: Nia, Ding, "where is the bus stop", "Pier 3"). Söyleniş sözlükleri (`book.json → narrationTr.pronunciations`, Konuş görevlerinde `pronunciations`) ve şüpheli satırlar H-104/H-105 dosyalarında; editör ses metnini çeviriyle birlikte dinleyebilir.
+11. **Türkçe Alania sesleri (2026-11-03, `d2d81c0`; 2026-11-04, `fd56543`).** Konuş'ta Hi'nin Türkçe yönlendirmeleri 32 sesle (H-104) ve kitaplarda "Sayfanın Türkçesi" 30 kitabın tamamında 626 sayfa (H-105; A1 54, A2 76, B1 96, B2 115, C1 138, C2 147) sesli; 30 kitabın `rights-and-review.md`'sinde Türkçe sayfa sesi satırı var. Kullanıcının kulakla kontrolü ayrıca bekliyor (2026-11-04 sonrası şüpheli: Nia, "-im"; dinlenecek: C1-K03 "Gwen", B2-K05 "Daniel", C2-K01 p03/p18, C2-K05 p17/p30). Söyleniş sözlükleri (`book.json → narrationTr.pronunciations`, Konuş görevlerinde `pronunciations`) ve şüpheli satırlar H-104/H-105 dosyalarında; editör ses metnini çeviriyle birlikte dinleyebilir.
 
 ## 8. Teknik kontrol (lint) sonucu
 

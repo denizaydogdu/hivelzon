@@ -67,6 +67,15 @@ ile seslendirilir (rol `hi`, ses `alania2-f1`):
 - **Güncel durum (2026-11-04, `fd56543`):** Düzeltmelerden sonra hâlâ şüpheli olanlar: ask-the-way "where is the bus
   stop" (kısmen düzeldi) ve meet-note "Pier 3". Kullanıcı simülatör denemesinde kulakla dinler; gerekirse yalnız o
   sesler yeniden üretilir (Alania kampanyası 14 Kasım 2026'ya kadar ücretsiz).
+- **Yazım denemesi (2026-11-04, commit edilmedi):** Kısa deneme seslerinde 2–4 yazım, her biri 1–2 kez Alania + Duyu ile
+  karşılaştırıldı (deneme ≈ 1.900 karakter, 0 TL; yalnız iyileşme açıksa uygulandı).
+  - ask-the-way t1-d1 "where is the bus stop": vır iz dı bas stap ("bastili/bastild", %82–94) · ver iz dı bus stop
+    (%99–100) · **ver iz dı bas stop** (2/2 "where is the bus stop", %100) → **uygulandı**; sesin hizalaması %62 → **%100**.
+  - meet-note hint "Pier 3": Piır tırii ("Peartree/Kirtri") · Piyır tri (2/2 "Peer Tree" = *tree*) · **Piyır srii**
+    (2/2 "Peer 3") → **uygulandı**; hizalama %70 → **%90** (Duyu "Peer" yazıyor; "seven"→"7" yalnız rakam yazımı).
+  - maya-neighbour t3-d1 "-im": im ("im ekiyle", %98) · ım ("ımek ile") · iim ("emek ile") · sözlüksüz ("in ikiyle") →
+    mevcut `im` en iyisi; **değiştirilmedi** (önceki ses aynı istekle önbellekte; Duyu bir kez "imek" yazmıştı).
+- **Kulakla kontrolde kalan (Konuş):** yok denecek kadar az; "-im" ve "Pier 3"ü bir kez dinlemek yeterli.
 
 ## Kabul kriterleri
 
