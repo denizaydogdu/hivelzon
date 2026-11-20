@@ -177,6 +177,7 @@ def test_dry_run_counts_and_never_calls(root, capsys, monkeypatch):
     assert run(root, root / "A1-901-test", Boom(), boom_en) == 0
     out = capsys.readouterr().out
     assert "Kuru çalışma" in out and "İngilizce 25 karakter" in out and "TANIMLI DEĞİL" in out
+    assert "ücret durumu doğrulanamadı: çevrimdışı; ücretli varsayıldı" in out and "kampanya" not in out  # H-108
     assert not (root / "A1-901-test" / "audio" / "hi_02.mp3").exists()
 
 

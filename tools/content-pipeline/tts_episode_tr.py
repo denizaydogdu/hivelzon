@@ -6,7 +6,8 @@ icerik/_evren/sesler.json. Toplanan yerler ve kipler: hvpipeline/tts_episode_tr.
 
 Kullanım:
     P=tools/content-pipeline/.venv/bin/python
-    # Kuru çalışma (varsayılan): API çağrılmaz; her ses, kip, karakter (Türkçe/İngilizce) yazılır.
+    # Kuru çalışma (varsayılan): üretim çağrısı yapılmaz; her ses, kip, karakter (Türkçe/İngilizce) ve
+    # PatientDesk ücret durumu (yalnız okuma: GET /v1/usage; --offline ile o da yok) yazılır.
     $P tools/content-pipeline/tts_episode_tr.py icerik/A1-00[1-4]-* --hi
     # Konuş görevlerinde Hi'nin Türkçe yönlendirmeleri (H-104; yalnız Alania, kip a, ElevenLabs yok):
     $P tools/content-pipeline/tts_episode_tr.py --talk
@@ -23,7 +24,8 @@ icerik/_evren/hi-ses/<ad>.{mp3,align.json}.
 Ödenmiş ham önbellek: audio/_raw/ (git dışı). Eski ElevenLabs Türkçe sesleri audio/_raw/elevenlabs/ altına
 kopyalanır. Sesi hazır olup kaynağında başvurusu olmayan yerlere `audio` eklenir (kurgu.json el biçimi korunur).
 Anahtarlar: PD_API_KEY (ortam ya da ~/.config/hivelzon/patientdesk.env), ELEVENLABS_API_KEY (ortam ya da
-sesler.json english.keyFile); yalnız --execute ile ve yalnız iş varsa okunur, hiçbir yere yazılmaz.
+sesler.json english.keyFile); yalnız --execute ile ve yalnız iş varsa okunur (PD_API_KEY kuru çalışmada ücret
+durumu için de; --offline ile okunmaz), hiçbir yere yazılmaz.
 Çıkış kodu: 0 tamam, 1 hata ya da tavan, 2 kullanım hatası, 3 hizalama uyarısı (--strict).
 """
 
@@ -42,7 +44,8 @@ from hvpipeline import tts_episode_tr as ep  # noqa: E402
 ICERIK = Path(__file__).resolve().parents[2] / "icerik"
 
 
-def main(argv: list[str] | None = None, tr_client=None, en_client=None, finalize=None, sleep=None) -> int:
+def main(argv: list[str] | None = None, tr_client=None, en_client=None, finalize=None, sleep=None,
+         billing=None) -> int:
     ap = argparse.ArgumentParser(description="hiVelzon Türkçe sesler (Alania + Duyu; İngilizce ifadeler Sarah)")
     ap.add_argument("episodes", nargs="*", help="bölüm klasörleri (icerik/A1-00x-…)")
     ap.add_argument("--hi", action="store_true", help="Hi verisini de seslendir (hata notu, konu tanıtımı, köprü görevi)")
@@ -50,7 +53,7 @@ def main(argv: list[str] | None = None, tr_client=None, en_client=None, finalize
                     help="Konuş görevlerindeki Hi yönlendirmelerini de seslendir (H-104; yalnız Alania, kip a)")
     ap.add_argument("--root", default=str(ICERIK), help="içerik kökü (ses haritası ve Hi verisi)")
     g = ap.add_mutually_exclusive_group()
-    g.add_argument("--dry-run", action="store_true", default=True, help="varsayılan: API çağrılmaz")
+    g.add_argument("--dry-run", action="store_true", default=True, help="varsayılan: üretim çağrısı yapılmaz")
     g.add_argument("--execute", action="store_true", help="gerçek çağrı yap")
     ap.add_argument("--only", action="append", help="yalnız bu ses(ler) (ad, ör. hi_01, tr_c-oq, note-articles)")
     ap.add_argument("--force", action="store_true", help="güncel olsa da yeniden kur (önbellek kullanılır)")
@@ -59,6 +62,8 @@ def main(argv: list[str] | None = None, tr_client=None, en_client=None, finalize
     ap.add_argument("--compare-dir", help="karışık dil satırlarının a ve b sürümlerini bu klasöre de yaz")
     ap.add_argument("--no-update", action="store_true", help="kurgu.json ve Hi verisine audio ekleme")
     ap.add_argument("--strict", action="store_true", help="hizalama uyarısında çıkış kodu 3")
+    ap.add_argument("--offline", action="store_true",
+                    help=f"ücret durumunu PatientDesk'ten okuma (ya da {tr.ENV_OFFLINE}=1); ücretli varsayılır")
     ap.add_argument("--tr-only", action="store_true",
                     help="ElevenLabs çağrılmaz (H-085, İngilizce kota bitince): yalnız Türkçe sesler kurulur; "
                          "b kipindeki satırların Türkçe parçaları önbelleğe (_raw/) alınır, satır İngilizce "
@@ -102,12 +107,13 @@ def main(argv: list[str] | None = None, tr_client=None, en_client=None, finalize
         print(f"--tr-only: ElevenLabs çağrılmaz; {len(pend)} karışık satır bekler "
               f"({sum(len(e.text) for p in pend for e in p.en)} İngilizce karakter): "
               + (", ".join(p.item.stem for p in pend) or "-"))
+    st = billing if billing is not None else tr.billing_status(offline=a.offline)
     print(f"Ödenecek: Alania {t.tr_chars} karakter (bu ay {tr_used}; tavan {tr_cap if tr_cap else 'TANIMLI DEĞİL'}; "
-          f"≈ {tr.estimate_tl(t.tr_chars, t.tr_chars / tr.EST_CHARS_PER_SEC):.2f} TL, PatientDesk kampanyasında ücretsiz) · "
+          f"{tr.cost_text(t.tr_chars, t.tr_chars / tr.EST_CHARS_PER_SEC, st)}) · "
           f"ElevenLabs {vm.en['name']} {t.en_chars} karakter (bu ay {en_used}; tavan {en_cap if en_cap else 'TANIMLI DEĞİL'}; "
           f"defter {en_ledger.name})")
     if not a.execute:
-        print("Kuru çalışma: API çağrılmadı. Gerçek üretim için --execute.")
+        print(f"Kuru çalışma: {tr.dry_run_note(st)}. Gerçek üretim için --execute.")
         return 0
     if t.tr_chars and tr_cap is None:
         print(f"HATA: Türkçe aylık tavan tanımlı değil ({tr.ENV_CAP}); ücretli üretim kapalı.", file=sys.stderr)

@@ -7,7 +7,8 @@ Girdi: kimlikli parça listesi.
   Markdown: her parça "## <kimlik>" başlığı ve altındaki metin.
 
 Kullanım:
-    # Kuru çalışma (varsayılan): API çağrılmaz; karakter ve tahmini TL yazılır.
+    # Kuru çalışma (varsayılan): üretim çağrısı yapılmaz; karakter, tahmini TL ve PatientDesk ücret durumu
+    # (yalnız okuma: GET /v1/usage; --offline ya da HIVELZON_TR_TTS_OFFLINE=1 ile o da yok) yazılır.
     tools/content-pipeline/.venv/bin/python tools/content-pipeline/tts_tr.py ders.md --out-dir dilbilgisi/x/audio
 
     # Gerçek üretim (aylık tavan şart; ücretli dönemde önce maliyet onayı):
@@ -16,7 +17,8 @@ Kullanım:
 
 Çıktı (--out-dir): <kimlik>.mp3 (-16 LUFS, 44,1 kHz 128 kb/sn), <kimlik>.align.json (ElevenLabs
 `alignment` biçimi + kelime listesi + kalite), _raw/<anahtar>.wav ve .duyu.json (ödenmiş önbellek).
-Anahtar: PD_API_KEY (ortam) ya da ~/.config/hivelzon/patientdesk.env; yalnız --execute ile okunur.
+Anahtar: PD_API_KEY (ortam) ya da ~/.config/hivelzon/patientdesk.env; --execute ile ve kuru çalışmada ücret
+durumu okumak için kullanılır, hiçbir yere yazılmaz.
 Çıkış kodu: 0 = tamam, 1 = hata ya da tavan nedeniyle durdu, 2 = kullanım hatası,
 3 = tamamlandı ama hizalama uyarısı var (--strict ile).
 """
@@ -32,12 +34,12 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from hvpipeline import tts_tr as tr  # noqa: E402
 
 
-def main(argv: list[str] | None = None, client=None, finalize=None, sleep=None) -> int:
+def main(argv: list[str] | None = None, client=None, finalize=None, sleep=None, billing=None) -> int:
     ap = argparse.ArgumentParser(description="hiVelzon Türkçe anlatım (Alania + Duyu)")
     ap.add_argument("segments", help="parça dosyası (.json ya da .md)")
     ap.add_argument("--out-dir", help="çıktı klasörü (varsayılan: parça dosyasının yanında audio/)")
     g = ap.add_mutually_exclusive_group()
-    g.add_argument("--dry-run", action="store_true", default=True, help="varsayılan: API çağrılmaz")
+    g.add_argument("--dry-run", action="store_true", default=True, help="varsayılan: üretim çağrısı yapılmaz")
     g.add_argument("--execute", action="store_true", help="gerçek çağrı yap")
     ap.add_argument("--only", action="append", help="yalnızca bu parça(lar)")
     ap.add_argument("--force", action="store_true", help="çıktı güncel olsa da yeniden kur (önbellek kullanılır)")
@@ -47,6 +49,8 @@ def main(argv: list[str] | None = None, client=None, finalize=None, sleep=None) 
     ap.add_argument("--ledger", help=f"aylık kullanım defteri (varsayılan {tr.ENV_LEDGER} ya da {tr.DEFAULT_LEDGER})")
     ap.add_argument("--prompts", help="çağrı kaydı (varsayılan: parça dosyasının yanında PROMPTS.md)")
     ap.add_argument("--strict", action="store_true", help="hizalama uyarısında çıkış kodu 3")
+    ap.add_argument("--offline", action="store_true",
+                    help=f"ücret durumunu PatientDesk'ten okuma (ya da {tr.ENV_OFFLINE}=1); ücretli varsayılır")
     a = ap.parse_args(argv)
 
     src = Path(a.segments)
@@ -69,12 +73,12 @@ def main(argv: list[str] | None = None, client=None, finalize=None, sleep=None) 
     plan = tr.plan_segments(segs, out_dir, a.voice, a.model, a.force)
     print("\n".join(tr.describe(plan)))
     chars, secs = plan.billable_chars, plan.est_stt_seconds
-    print(f"Toplam Alania: {chars} karakter; Duyu ≈ {secs:.0f} sn (tahmin). Tahmini maliyet ≈ "
-          f"{tr.estimate_tl(chars, secs):.2f} TL ({tr.TL_PER_1000_CHARS} TL/1000 karakter + "
-          f"{tr.TL_PER_AUDIO_HOUR} TL/ses saati; ilk ay ücretsiz). "
+    st = billing if billing is not None else tr.billing_status(offline=a.offline)
+    print(f"Toplam Alania: {chars} karakter; Duyu ≈ {secs:.0f} sn (tahmin). Ücret: {tr.cost_text(chars, secs, st)} "
+          f"[tarife {tr.TL_PER_1000_CHARS} TL/1000 karakter + {tr.TL_PER_AUDIO_HOUR} TL/ses saati]. "
           f"Bu ay ({month}) kullanılan: {used}; tavan: {cap if cap is not None else 'TANIMLI DEĞİL'}")
     if not a.execute:
-        print("Kuru çalışma: API çağrılmadı. Gerçek üretim için --execute.")
+        print(f"Kuru çalışma: {tr.dry_run_note(st)}. Gerçek üretim için --execute.")
         if cap is None:
             print(f"Not: {tr.ENV_CAP} tanımlı değil; --execute reddedilir.")
         return 0

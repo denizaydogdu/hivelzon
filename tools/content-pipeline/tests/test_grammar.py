@@ -393,6 +393,8 @@ def test_tts_lesson_dry_run_never_calls(lesson_dir, tmp_path, capsys, monkeypatc
     en_chars = sum(len(t) for t in {s.text for s in lesson.en_segments()})   # aynı metin bir kez
     assert f"Türkçe (Alania): {tr_chars} karakter" in out and f"İngilizce (ElevenLabs): {en_chars} karakter" in out
     assert "Kuru çalışma" in out and "TANIMLI DEĞİL" in out
+    assert "ücret durumu doğrulanamadı: çevrimdışı; ücretli varsayıldı" in out   # H-108 (conftest)
+    assert "hiçbir API çağrısı yapılmadı" in out and "kampanya" not in out
     assert not (lesson_dir / "audio").exists() and not (tmp_path / "tr.json").exists()
     plan = la.plan_lesson(lesson)
     assert plan.en.billable_chars == sum(len(t) for t in {s.text for s in lesson.en_segments()})

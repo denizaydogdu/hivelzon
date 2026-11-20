@@ -97,6 +97,7 @@ def test_dry_run_never_calls_api(book_dir, tmp_path, capsys, monkeypatch):
     assert run(book_dir, tmp_path, c) == 0
     out = capsys.readouterr().out
     assert c.speech_calls == [] and "Kuru çalışma" in out and "3 sayfa" in out and "TANIMLI DEĞİL" in out
+    assert "ücret durumu doğrulanamadı: çevrimdışı; ücretli varsayıldı" in out and "kampanya" not in out  # H-108
     assert not (book_dir / "audio" / "tr").exists()
 
 

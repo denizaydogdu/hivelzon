@@ -2,7 +2,8 @@
 """Dilbilgisi dersi seslendirmesi (H-077): Türkçe anlatım (Alania + Duyu) + İngilizce örnekler (ElevenLabs).
 
 Kullanım:
-    # Kuru çalışma (varsayılan): API çağrılmaz; parça başına karakter, tahmini TL ve kredi yazılır.
+    # Kuru çalışma (varsayılan): üretim çağrısı yapılmaz; parça başına karakter, tahmini TL, kredi ve
+    # PatientDesk ücret durumu (yalnız okuma: GET /v1/usage; --offline ile o da yok) yazılır.
     tools/content-pipeline/.venv/bin/python tools/content-pipeline/tts_lesson.py dilbilgisi/G-A1-03-third-person-s
 
     # Gerçek üretim (iki tavan da şart; ücretli dönemde önce maliyet onayı):
@@ -14,7 +15,8 @@ Kullanım:
     … tts_lesson.py dilbilgisi/G-… --manifest-only
 
 Çıktı: audio/tr/<kart>-tr.{mp3,align.json}, audio/en/<örnek>.{mp3,align.json}, audio/lesson-audio.json.
-Anahtarlar: PD_API_KEY (ya da ~/.config/hivelzon/patientdesk.env) ve ELEVENLABS_API_KEY; yalnız --execute ile okunur.
+Anahtarlar: PD_API_KEY (ya da ~/.config/hivelzon/patientdesk.env) ve ELEVENLABS_API_KEY; --execute ile okunur
+(PD_API_KEY kuru çalışmada ücret durumu için de; --offline ile okunmaz). Hiçbir yere yazılmaz.
 Çıkış kodu: 0 = tamam, 1 = hata ya da tavan nedeniyle durdu, 2 = kullanım hatası,
 3 = tamamlandı ama Türkçe hizalama uyarısı var (--strict ile).
 """
@@ -31,11 +33,12 @@ from hvpipeline import lessonaudio as la, tts, tts_tr as tr  # noqa: E402
 from hvpipeline.lesson import Lesson, LessonError, english_in_turkish  # noqa: E402
 
 
-def main(argv: list[str] | None = None, tr_client=None, en_client=None, finalize=None, sleep=None) -> int:
+def main(argv: list[str] | None = None, tr_client=None, en_client=None, finalize=None, sleep=None,
+         billing=None) -> int:
     ap = argparse.ArgumentParser(description="hiVelzon dilbilgisi dersi seslendirmesi")
     ap.add_argument("lessons", nargs="+")
     g = ap.add_mutually_exclusive_group()
-    g.add_argument("--dry-run", action="store_true", default=True, help="varsayılan: API çağrılmaz")
+    g.add_argument("--dry-run", action="store_true", default=True, help="varsayılan: üretim çağrısı yapılmaz")
     g.add_argument("--execute", action="store_true", help="gerçek çağrı yap")
     g.add_argument("--manifest-only", action="store_true", help="yalnız audio/lesson-audio.json'u yaz (çağrı yok)")
     ap.add_argument("--lang", action="append", choices=["tr", "en"], help="yalnız bu dil(ler)")
@@ -46,6 +49,8 @@ def main(argv: list[str] | None = None, tr_client=None, en_client=None, finalize
     ap.add_argument("--tr-ledger", help=f"Türkçe defter (varsayılan {tr.DEFAULT_LEDGER})")
     ap.add_argument("--en-ledger", help=f"İngilizce defter (varsayılan {tts.DEFAULT_LEDGER})")
     ap.add_argument("--strict", action="store_true", help="Türkçe hizalama uyarısında çıkış kodu 3")
+    ap.add_argument("--offline", action="store_true",
+                    help=f"ücret durumunu PatientDesk'ten okuma (ya da {tr.ENV_OFFLINE}=1); ücretli varsayılır")
     a = ap.parse_args(argv)
     langs = tuple(a.lang or ("tr", "en"))
 
@@ -86,13 +91,14 @@ def main(argv: list[str] | None = None, tr_client=None, en_client=None, finalize
             if c.paragraphs and (en := english_in_turkish(c.narration, p.lesson.pronunciations)):
                 print(f"  UYARI {c.tr_segment_id}: Türkçe anlatımda İngilizce kelime ya da ek: {', '.join(en)} "
                       "(Alania Türkçe okur; grammar_lint.py)")
-    print(f"Türkçe (Alania): {tr_chars} karakter; Duyu ≈ {tr_secs:.0f} sn. Tahmini ≈ {tr.estimate_tl(tr_chars, tr_secs):.2f} TL "
-          f"(kampanya döneminde ücretsiz). Bu ay ({month}) kullanılan: {tr_used}; tavan: "
+    st = billing if billing is not None else tr.billing_status(offline=a.offline)
+    print(f"Türkçe (Alania): {tr_chars} karakter; Duyu ≈ {tr_secs:.0f} sn. Ücret: {tr.cost_text(tr_chars, tr_secs, st)}. "
+          f"Bu ay ({month}) kullanılan: {tr_used}; tavan: "
           f"{tr_cap if tr_cap is not None else 'TANIMLI DEĞİL'}")
     print(f"İngilizce (ElevenLabs): {en_chars} karakter ≈ {en_credits:.0f} kredi (tahmin). Bu ay kullanılan: {en_used}; "
           f"tavan: {en_cap if en_cap is not None else 'TANIMLI DEĞİL'}")
     if not a.execute:
-        print("Kuru çalışma: API çağrılmadı. Gerçek üretim için maliyet onayından sonra --execute.")
+        print(f"Kuru çalışma: {tr.dry_run_note(st)}. Gerçek üretim için maliyet onayından sonra --execute.")
         for name, cap in ((tr.ENV_CAP, tr_cap), (tts.ENV_CAP, en_cap)):
             if cap is None:
                 print(f"Not: {name} tanımlı değil; --execute reddedilir.")

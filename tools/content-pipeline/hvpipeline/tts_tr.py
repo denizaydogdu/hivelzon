@@ -12,14 +12,17 @@ Akış (parça başına):
    mp3 44,1 kHz 128 kb/sn olarak yazılır. Zamanlar değişmez (kırpma yok).
 
 Kurallar (CLAUDE.md):
-- Varsayılan **kuru çalışma**: karakter ve tahmini TL yazılır, API çağrılmaz; gerçek çağrı `execute=True`.
+- Varsayılan **kuru çalışma**: karakter ve tahmini TL yazılır, üretim çağrısı yapılmaz; gerçek çağrı `execute=True`.
+  Ücret satırı için yalnız okuma yapan `GET /v1/usage` çağrılır (`billing_status`, H-108; 2 sn bağlantı / 5 sn okuma);
+  `HIVELZON_TR_TTS_OFFLINE=1` ya da araçlarda `--offline` bunu da atlar ve "ücretli varsayıldı" yazar.
 - **Aylık karakter tavanı** (`HIVELZON_TR_TTS_MONTHLY_CHAR_CAP` ya da `--monthly-char-cap`) tanımlı değilse
   gerçek çağrı reddedilir. Defter: `kitaplar/_maliyet/patientdesk-karakter.json` (değiştirilebilir).
 - **İdempotent:** anahtar = metin + model + ses + üslup + söyleniş sha256'sı. Ödenmiş ham WAV ve Duyu
   sonucu `_raw/` önbelleğinde tutulur; güncel çıktı varsa hiçbir çağrı yapılmaz.
 - 429'da `Retry-After` kadar beklenir (sınırlı deneme).
-- **Anahtar** (`PD_API_KEY`) yalnız ortamdan ya da `~/.config/hivelzon/patientdesk.env`'den, yalnız gerçek
-  çağrıda okunur; ekrana, loga ve dosyaya yazılmaz.
+- **Anahtar** (`PD_API_KEY`) yalnız ortamdan ya da `~/.config/hivelzon/patientdesk.env`'den okunur (gerçek
+  çağrıda ve kuru çalışmadaki ücret durumu okumasında); ekrana, loga ve dosyaya yazılmaz. `/v1/usage`
+  yanıtındaki `user_id` de saklanmaz ve yazılmaz.
 - Her gerçek çağrı verilen `PROMPTS.md` tablosuna yazılır (tarih, parça, model, ses, sürüm, karakter,
   ses süresi, istek kimliği, metin sha256).
 """
@@ -28,6 +31,7 @@ from __future__ import annotations
 
 import io
 import json
+import math
 import os
 import re
 import time
@@ -50,6 +54,11 @@ ENV_URL = "PD_API_URL"
 KEY_FILE = Path.home() / ".config" / "hivelzon" / "patientdesk.env"
 ENV_CAP = "HIVELZON_TR_TTS_MONTHLY_CHAR_CAP"
 ENV_LEDGER = "HIVELZON_TR_TTS_LEDGER"
+ENV_OFFLINE = "HIVELZON_TR_TTS_OFFLINE"   # 1: ücret durumu okunmaz (testler, CI, ağsız çalışma)
+USAGE_PATH = "/v1/usage"
+USAGE_CONNECT_TIMEOUT = 2.0
+USAGE_READ_TIMEOUT = 5.0
+USAGE_MAX_BYTES = 65536
 DEFAULT_LEDGER = REPO_ROOT / "kitaplar" / "_maliyet" / "patientdesk-karakter.json"
 TTS_MODEL = "alania-v2"
 VOICE = "alania2-f1"
@@ -57,7 +66,7 @@ STT_MODEL = "duyu-1"
 LANGUAGE = "tr"
 MAX_CHARS = 5000
 MAX_INSTRUCTIONS = 200
-TL_PER_1000_CHARS = 0.75        # Alania (ilk ay ücretsiz; 2026-10-14)
+TL_PER_1000_CHARS = 0.75        # Alania tarifesi; ücretsiz dönem bitti (14.11.2026), güncel durum: billing_status()
 TL_PER_AUDIO_HOUR = 6.0         # Duyu dosya
 EST_CHARS_PER_SEC = 14.0        # kuru çalışmada Duyu süresi tahmini (Türkçe anlatım)
 MAX_RETRIES = 5
@@ -562,6 +571,144 @@ class HttpClient:
                                               "Content-Type": f"multipart/form-data; boundary={boundary}"})
         body, h = self._do(req)
         return json.loads(body), h
+
+
+# --- ücret durumu (H-108) ------------------------------------------------------------------------
+# PatientDesk `GET /v1/usage` (Bearer anahtar) → {"user_id", "used_seconds", "quota_seconds",
+# "remaining_seconds", "free", "free_until"}. `used/remaining_seconds` Duyu saniyeleridir; Alania karakter
+# ücreti burada görünmez. Ücretsiz kampanya 14.11.2026'da bitti; yanıt bunu `free: false` ile söyler.
+
+@dataclass(frozen=True)
+class BillingStatus:
+    """Okunan ücret durumu. `known=False` ise `reason` nedenini söyler ve ücretli varsayılır.
+    `fetched`: ağ isteği denendi mi. `user_id` ve anahtar bilerek tutulmaz."""
+    known: bool
+    fetched: bool = False
+    free: bool | None = None
+    free_until: datetime | None = None
+    remaining_seconds: float | None = None
+    quota_seconds: float | None = None
+    reason: str | None = None
+
+    def is_free(self, now: datetime | None = None) -> bool:
+        if not self.known or self.free is not True:
+            return False
+        return self.free_until is None or (now or datetime.now(timezone.utc)) < self.free_until
+
+
+def _unknown(reason: str, fetched: bool) -> BillingStatus:
+    return BillingStatus(known=False, fetched=fetched, reason=reason)
+
+
+def _http_get(url: str, headers: dict, connect_timeout: float, read_timeout: float) -> tuple[int, bytes]:
+    """Yalnız https, yönlendirme izlenmez (anahtar başka adrese gitmez). Bağlantı ve okuma süreleri ayrı."""
+    import http.client
+    from urllib.parse import urlsplit
+    u = urlsplit(url)
+    if u.scheme != "https" or not u.hostname:
+        raise ValueError("https olmayan adres")
+    conn = http.client.HTTPSConnection(u.hostname, u.port or 443, timeout=connect_timeout)
+    try:
+        conn.connect()
+        conn.sock.settimeout(read_timeout)
+        conn.request("GET", u.path + (f"?{u.query}" if u.query else ""), headers=headers)
+        r = conn.getresponse()
+        return r.status, r.read(USAGE_MAX_BYTES)
+    finally:
+        conn.close()
+
+
+def _num(v) -> float | None:
+    if v is None:
+        return None
+    if isinstance(v, bool) or not isinstance(v, (int, float)):
+        raise ValueError("sayı değil")
+    f = float(v)
+    if not math.isfinite(f) or f < 0:
+        raise ValueError("geçersiz sayı")
+    return f
+
+
+def _parse_usage(raw: bytes) -> BillingStatus:
+    try:
+        d = json.loads(raw)
+        if not isinstance(d, dict) or not isinstance(d.get("free"), bool):
+            raise ValueError("free alanı yok")
+        until = d.get("free_until")
+        if until is not None:
+            if not isinstance(until, str):
+                raise ValueError("free_until metin değil")
+            until = datetime.fromisoformat(until.replace("Z", "+00:00"))
+            if until.tzinfo is None:
+                until = until.replace(tzinfo=timezone.utc)
+        return BillingStatus(known=True, fetched=True, free=d["free"], free_until=until,
+                             remaining_seconds=_num(d.get("remaining_seconds")),
+                             quota_seconds=_num(d.get("quota_seconds")))
+    except Exception:  # noqa: BLE001 — bozuk/aşırı iç içe JSON vb.; "hiç fırlatmaz" sözleşmesi
+        return _unknown("geçersiz yanıt", True)
+
+
+def offline_requested(flag: bool | None = None) -> bool:
+    if flag:
+        return True
+    return os.environ.get(ENV_OFFLINE, "").strip().lower() in ("1", "true", "yes", "evet")
+
+
+def billing_status(fetch: Callable[[str, dict, float, float], tuple[int, bytes]] | None = None,
+                   key_file: Path | None = None, offline: bool | None = None) -> BillingStatus:
+    """PatientDesk ücret durumunu okur (yalnız okuma; üretim çağrısı değil). Hiçbir zaman istisna fırlatmaz;
+    sorun olursa nedeniyle `known=False` döner. Anahtar ve `user_id` hiçbir çıktıya girmez."""
+    if offline_requested(offline):
+        return _unknown("çevrimdışı", False)
+    try:
+        key, base = load_credentials(key_file)
+    except TrTtsError as e:
+        return _unknown("PD_API_URL https değil" if "https" in str(e) else "anahtar tanımlı değil", False)
+    except Exception as e:  # noqa: BLE001 — anahtar dosyası okunamadı vb.; çağırana istisna gitmez
+        return _unknown(f"anahtar okunamadı ({type(e).__name__})", False)
+    try:
+        status, raw = (fetch or _http_get)(base + USAGE_PATH, {"Authorization": f"Bearer {key}",
+                                                              "Accept": "application/json"},
+                                           USAGE_CONNECT_TIMEOUT, USAGE_READ_TIMEOUT)
+    except TimeoutError:                      # socket.timeout da TimeoutError'dır (3.10+)
+        return _unknown("zaman aşımı", True)
+    except OSError as e:                      # bağlantı, DNS, TLS
+        return _unknown(f"ağ hatası ({type(e).__name__})", True)
+    except Exception as e:  # noqa: BLE001
+        return _unknown(f"beklenmeyen hata ({type(e).__name__})", True)
+    if status != 200:
+        return _unknown(f"HTTP {status}" + (" (anahtar geçersiz ya da engelli)" if status in (401, 403) else ""), True)
+    return _parse_usage(raw)
+
+
+def _local_date(d: datetime) -> str:
+    return d.astimezone().strftime("%d.%m.%Y")
+
+
+def cost_text(chars: int, stt_seconds: float, status: BillingStatus, now: datetime | None = None) -> str:
+    """Bütün Türkçe ses araçlarının kuru çalışma ücret satırı (tarife TL_PER_1000_CHARS + TL_PER_AUDIO_HOUR)."""
+    now = now or datetime.now(timezone.utc)
+    tl = estimate_tl(chars, stt_seconds)
+    if not status.known:
+        return f"≈ {tl:.2f} TL (ücret durumu doğrulanamadı: {status.reason}; ücretli varsayıldı)"
+    if status.is_free(now):
+        until = f": {_local_date(status.free_until)} tarihine kadar" if status.free_until else ""
+        line = f"ücretsiz (PatientDesk{until}; tarife ≈ {tl:.2f} TL)"
+    elif status.free_until is not None and status.free_until <= now:
+        line = f"≈ {tl:.2f} TL ödenecek (ücretsiz dönem {_local_date(status.free_until)} bitti)"
+    else:
+        line = f"≈ {tl:.2f} TL ödenecek (ücretli dönem)"
+    if status.remaining_seconds is not None:
+        line += f"; kalan Duyu kotası ≈ {status.remaining_seconds / 3600:.0f} saat"
+    return line
+
+
+def dry_run_note(status: BillingStatus) -> str:
+    if not status.fetched:
+        return "hiçbir API çağrısı yapılmadı"
+    if status.known:
+        return f"üretim çağrısı yapılmadı; yalnız ücret durumu okundu (GET {USAGE_PATH})"
+    return f"üretim çağrısı yapılmadı; ücret durumu okunamadı (GET {USAGE_PATH})"
 
 
 def with_retry(fn: Callable, *args, sleep: Callable[[float], None] = time.sleep,

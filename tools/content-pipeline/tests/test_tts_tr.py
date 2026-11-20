@@ -122,6 +122,7 @@ def test_dry_run_never_calls_api(seg_file, tmp_path, capsys, monkeypatch):
     n = len(TEXT1) + len(TEXT2)
     assert "Kuru çalışma" in out and f"{n} karakter" in out and "TL" in out and "TANIMLI DEĞİL" in out
     assert SECRET not in out
+    assert "ücret durumu doğrulanamadı: çevrimdışı" in out and "ilk ay" not in out   # H-108 (conftest)
     assert not (tmp_path / "l.json").exists() and not (tmp_path / "out").exists()
 
 

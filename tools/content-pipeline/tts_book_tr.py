@@ -6,7 +6,8 @@ sözlüğü `book.json` → `narrationTr` (varsayılan rol `hi`, `icerik/_evren/
 
 Kullanım:
     P=tools/content-pipeline/.venv/bin/python
-    # Kuru çalışma (varsayılan): API çağrılmaz; sayfa, karakter ve tahmini TL yazılır.
+    # Kuru çalışma (varsayılan): üretim çağrısı yapılmaz; sayfa, karakter, tahmini TL ve PatientDesk ücret
+    # durumu (yalnız okuma: GET /v1/usage; --offline ile o da yok) yazılır.
     $P tools/content-pipeline/tts_book_tr.py kitaplar/A1-K*
 
     # Gerçek üretim (aylık tavan şart; kaldığı yerden sürer, güncel sayfalar atlanır):
@@ -17,7 +18,8 @@ Kullanım:
 
 Çıktı: `<kitap>/audio/tr/<sayfa>.mp3` (git dışı, -16 LUFS), `<sayfa>.align.json` (depoda), `_raw/` (ödenmiş
 önbellek, git dışı). Her gerçek çağrı `<kitap>/PROMPTS.md`'ye ve aylık deftere yazılır. Anahtar PD_API_KEY
-(ortam) ya da ~/.config/hivelzon/patientdesk.env; yalnız --execute ile okunur, yazdırılmaz.
+(ortam) ya da ~/.config/hivelzon/patientdesk.env; --execute ile ve kuru çalışmada ücret durumu için okunur
+(--offline ile okunmaz), yazdırılmaz.
 Çıkış kodu: 0 = tamam, 1 = hata ya da tavan nedeniyle durdu, 2 = kullanım hatası,
 3 = tamamlandı ama hizalama uyarısı var (--strict ile).
 """
@@ -53,11 +55,11 @@ def suspects(book: Book) -> list[str]:
     return out
 
 
-def main(argv: list[str] | None = None, client=None, finalize=None, sleep=None) -> int:
+def main(argv: list[str] | None = None, client=None, finalize=None, sleep=None, billing=None) -> int:
     ap = argparse.ArgumentParser(description="hiVelzon kitap sayfalarının Türkçesi (Alania + Duyu)")
     ap.add_argument("books", nargs="+")
     g = ap.add_mutually_exclusive_group()
-    g.add_argument("--dry-run", action="store_true", default=True, help="varsayılan: API çağrılmaz")
+    g.add_argument("--dry-run", action="store_true", default=True, help="varsayılan: üretim çağrısı yapılmaz")
     g.add_argument("--execute", action="store_true", help="gerçek çağrı yap")
     g.add_argument("--suspects", action="store_true", help="Duyu dökümünde şüpheli kelimeleri listele")
     ap.add_argument("--page", action="append", help="yalnızca bu sayfa(lar) (p01 …)")
@@ -66,6 +68,8 @@ def main(argv: list[str] | None = None, client=None, finalize=None, sleep=None) 
     ap.add_argument("--ledger", help=f"aylık kullanım defteri (varsayılan {tr.ENV_LEDGER} ya da {tr.DEFAULT_LEDGER})")
     ap.add_argument("--voice-map", help="ses haritası (varsayılan icerik/_evren/sesler.json)")
     ap.add_argument("--strict", action="store_true", help="hizalama uyarısında çıkış kodu 3")
+    ap.add_argument("--offline", action="store_true",
+                    help=f"ücret durumunu PatientDesk'ten okuma (ya da {tr.ENV_OFFLINE}=1); ücretli varsayılır")
     a = ap.parse_args(argv)
 
     dirs = [Path(p) for p in a.books if Path(p).is_dir() and not Path(p).name.startswith("_")]
@@ -96,11 +100,12 @@ def main(argv: list[str] | None = None, client=None, finalize=None, sleep=None) 
             print(f"   {j.seg.id}: {j.chars} karakter — {j.reason}")
         chars += plan.billable_chars
         secs += plan.est_stt_seconds
-    print(f"Toplam Alania: {chars} karakter; Duyu ≈ {secs:.0f} sn (tahmin). Tarife ≈ {tr.estimate_tl(chars, secs):.2f} TL "
-          f"(kampanya dönemi ücretsiz). Bu ay ({month}) kullanılan: {used}; "
+    st = billing if billing is not None else tr.billing_status(offline=a.offline)
+    print(f"Toplam Alania: {chars} karakter; Duyu ≈ {secs:.0f} sn (tahmin). Ücret: {tr.cost_text(chars, secs, st)}. "
+          f"Bu ay ({month}) kullanılan: {used}; "
           f"tavan: {cap if cap is not None else 'TANIMLI DEĞİL'}")
     if not a.execute:
-        print("Kuru çalışma: API çağrılmadı. Gerçek üretim için --execute.")
+        print(f"Kuru çalışma: {tr.dry_run_note(st)}. Gerçek üretim için --execute.")
         if cap is None:
             print(f"Not: {tr.ENV_CAP} tanımlı değil; --execute reddedilir.")
         return 0
