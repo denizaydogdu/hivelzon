@@ -75,3 +75,4 @@ Veri şeması değişmez (yalnız `app_meta`'ya bir anahtar). Geri almak için
 ilgili commit `git revert`; kalan `learn.section` kaydı zararsızdır
 (okunmaz). Yalnız adı geri almak için `TabTexts.learn`/`LearnTexts.title`
 metinleri ve `shell_scaffold.dart` simgesi yeterlidir.
+- **2026-11-20:** Kullanıcı izniyle ajan simülatör denemesi: alt menüde "Öğren" (Sekme 3/5); sekme son seçilen bölümle (Dilbilgisi) açıldı, `app_meta` `learn.section` kaydı çalışıyor (sonra `kitaplik`). Teknik olarak doğru; kullanıcının öznel kabulü bekliyor.

@@ -73,3 +73,4 @@ Değişiklik yalnız mobil arayüzde; veri ve şema değişmez. Geri almak için
 `CompactButton` yerine eski `OutlinedButton`/`TextButton`'a dönmek yeter
 (ya da ilgili commit `git revert`). Ortak `CompactButton` başka yerde
 kullanılmıyor; kalabilir.
+- **2026-11-20:** Kullanıcı izniyle ajan simülatör denemesi: Ana Sayfa'da bilgi kartı yok; "İlerlemen yalnızca bu telefonda" kartı Profil'de, "Hesap aç / Şimdi değil" düğmeleriyle. Teknik olarak doğru; kullanıcının öznel kabulü bekliyor.

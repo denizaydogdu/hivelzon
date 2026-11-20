@@ -150,3 +150,4 @@ cd mobile && flutter analyze && flutter test                 # 1517
 `book.json → narrationTr` silinirse varsayılan rol kullanılır (ses değişmez). `kitaplar/*/audio/tr/` silinirse paket
 `trAudio` taşımaz ve uygulama düğmeyi göstermez. Kod geri alınırsa eski paket biçimi aynen çalışır (yeni alanlar
 isteğe bağlı); `tts_tr.py` boşluk onarımı yalnız Duyu'ya ek çağrı yapar, mevcut hizalamaları değiştirmez.
+- **2026-11-20:** Ajan simülatör denemesi: A1-K01 p01 "Sayfanın Türkçesi" → "Türkçesini dinle" `audio/tr/p01.m4a`yı çaldı (25,9 sn); panelde okunan Türkçe cümle tasarım gereği vurgulanmıyor (sabit vurgu İngilizce okumanın durduğu cümle). Söyleniş için kulakla kontrol kullanıcıda.

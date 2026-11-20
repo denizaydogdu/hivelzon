@@ -103,3 +103,4 @@ cd mobile && flutter analyze && flutter test            # 1512
 Kaynak JSON'lardan `…Audio`, `taskSpeechTr` ve `pronunciations` alanları silinirse uygulama düğmeyi göstermez
 (paketten ses alanı düşer); `icerik/_evren/hi-ses/konusma-*` dosyaları silinebilir. Kod geri alınırsa eski
 paket biçimi aynen çalışır (yeni alanlar isteğe bağlı).
+- **2026-11-20:** Ajan simülatör denemesi: Konuş → Kafede sipariş ver → "Görevi Hi'den dinle" `konusma-cafe-rosa-intro.m4a`yı istedi ve çaldı (düğme "Durdur"a döndü). Söyleniş için kulakla kontrol kullanıcıda (ajan ses dinleyemez).
