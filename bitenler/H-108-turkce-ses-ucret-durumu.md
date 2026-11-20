@@ -1,7 +1,6 @@
 # H-108: Türkçe ses araçlarında gerçek ücret durumu
 
-- **Durum:** 🔄 Uygulandı (2026-11-20), kullanıcı onayı ve commit bekliyor. Testler yeşil (pytest 417 → 443),
-  gerçek kuru çalışmalar "ücretsiz dönem 14.11.2026 bitti" yazıyor. Commit/push yapılmadı.
+- **Durum:** ✅ Bitti (2026-11-20): commit `ff5bde1`, CI yeşil (içerik, mobil, backend); pytest 444; gerçek kuru çalışmalar "ücretsiz dönem 14.11.2026 bitti" ve kalan Duyu kotasını gösteriyor; qa-code-reviewer engelleyici bulgu yok (iki küçük bulgu düzeltildi).
 - **Tür:** Araç düzeltmesi (içerik boru hattı, `tools/content-pipeline`)
 - **Öncelik:** Orta (ücretli üretim kararı bayat "ücretsiz" metniyle verilmesin)
 - **Bağımlılık:** H-075 (Alania + Duyu), H-083, H-104, H-105 · Alania kampanyasının 14 Kasım 2026'da bitmesi
