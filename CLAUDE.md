@@ -1,5 +1,7 @@
 # hiVelzon — Proje Rehberi
 
+> **2026-11-20 durum güncellemesi:** H-107 (Higgsfield hakları ve B5–B12 İngilizce ses hesabı kayıtları) tamamlandı; ilk kayıt `ce0bfb7`. Higgsfield resmî Terms of Use §4.4 sürümü 2026-10-23 olarak düzeltildi. 2026-11-09'da dördüncü ücretsiz ElevenLabs anahtarı da 401 döndürdü; yeni İngilizce ses yok. H-104/H-105 kulakla kontrol ve H-106 kullanıcı simülatör doğrulaması bekliyor; editör incelemesi açık. Alania ücretsiz kampanyası 14 Kasım'da bitti: düzeltmeler 0,75 TL/1.000 karakter, ücretli üretim öncesi maliyet/onay gerekir. Sıradaki boş numara H-108. Aşağıdaki 2026-11-04 durum paragrafı tarihsel ölçüm kaydıdır; güncel sıra `yapilacaklar/IS-SIRASI.md`.
+
 **hiVelzon:** Velzon Bilişim Teknolojileri Ltd. Şti.'nin, yapay zekâ videolarıyla İngilizce öğreten **mobil uygulaması** (iOS + Android).
 - Kitle: herkes, A1–C1.
 - Gelir modeli: tamamen ücretsiz.

@@ -1,5 +1,7 @@
 # hiVelzon — Lisans Doğrulama Raporu (H-027)
 
+> **2026-11-20 ek not (H-107):** Bu rapor müfredat/veri kaynaklarıyla sınırlıdır. Higgsfield çıktı hakları için resmî [Terms of Use Agreement](https://higgsfield.ai/Terms-of-Use-Agreement) §4.4 (son güncelleme 2026-10-23; kontrol 2026-11-20) incelendi: sağlayıcı çıktının sahipliğini talep etmiyor ve ticari kullanımını kısıtlamıyor. Bölüm bazında kayıtlar `icerik/A1-001`…`A1-012` altındaki `rights-and-review.md` dosyalarında; editör/üçüncü taraf hak kontrolü hâlâ gerekli. ElevenLabs ücretsiz hesap sesleri için H-006 ek hukukçu görüşü ayrı karardır.
+
 - **Hazırlanma tarihi:** 2026-10-11
 - **Kapsam:** Müfredat omurgasında ve yardımcı araçlarda kullanılacak kelime/dilbilgisi listeleri, testler, yazılım kütüphaneleri ve MEB programı.
 - **Yöntem:** Yalnızca web araştırması. Kimseyle yazışılmadı, form doldurulmadı, hesap açılmadı.
