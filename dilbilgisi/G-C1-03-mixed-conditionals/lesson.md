@@ -46,6 +46,12 @@ x If I would have studied, I would be a doctor. | Koşul tarafında would kullan
 ! Önce geçmişteki koşul, sonra bugünkü sonuç gelir.
 ? say | If I had studied medicine, I would be a doctor now. | Tıp okusaydım, şimdi doktor olurdum.
 
+## seeInStory
+- book C1-K02 p10 | If I had stopped in Lindhaven, I would not now be sitting in a strange village with my leg on a cushion.
+- book C1-K05 p13 | If I had been braver at twenty-three, I would be a very different old woman today.
+- book C1-K04 p22 | If he had written the report Dr Hallam wanted, he would be a senior hydrologist by now.
+- book C1-K01 p24 | If I weren't so vain, I would have seen it on the very first day."
+
 ## rule
 Geçmişteki bir koşulun bugünkü sonucu için koşul üçüncü tipten, sonuç ikinci tipten gelir. Kalıcı bir özelliğin geçmişteki sonucu için tersi yapılır.
 + [[If I had studied]] medicine, [[I would be]] a doctor now. | Tıp okusaydım, şimdi doktor olurdum.

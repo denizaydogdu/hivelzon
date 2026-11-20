@@ -47,6 +47,12 @@ x The museum was closed, and it was raining, and we were tired, and we went home
 ! Bununla birlikte anlamındaki kalıp: That said.
 ? say | The plan is expensive. That said, it may save money in the long term. | Plan pahalı. Bununla birlikte uzun vadede para kazandırabilir.
 
+## seeInStory
+- book C2-K02 p11 | That said, there was the ford.
+- book C2-K03 p04 | That said, the blackbirds will have left by August, whereas the hedge, I fear, will not.
+- book C2-K01 p22 | "The outstanding security issue will nonetheless be reflected in my report."
+- book C2-K01 p03 | Even so, one does not close a library because it is quiet.
+
 ## rule
 Söylem belirleyicileri iki cümlenin gerçek ilişkisini gösterir: zıtlık, ekleme ya da sonuç. Geri gönderen kelimeler tekrarı önler. Levhayı yalnız gerektiğinde kullan.
 + The plan is expensive. [[That said]], it may save money. | Plan pahalı. Bununla birlikte para kazandırabilir.

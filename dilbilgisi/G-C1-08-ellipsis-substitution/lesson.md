@@ -52,6 +52,12 @@ x I hope it. | Ummak fiilinden sonra so gelir.
 ! Olumsuz umut için I hope not.
 ? say | I've never been to Paris. Neither have I. | Hiç Paris'e gitmedim. Ben de.
 
+## seeInStory
+- book C1-K01 p27 | "So am I," said Bev, wiping her eyes with a napkin and not pretending otherwise.
+- book C1-K02 p12 | "I hope not," I said.
+- book C1-K01 p18 | "So did I, once," said Ruth.
+- book C1-K01 p24 | "I think so," said Ruth.
+
 ## rule
 Katılmak için ben de anlamındaki kelime, yardımcı fiil ve özne gelir. Olumsuzda başka bir kelime kullanılır. Düşünmek ve ummaktan sonra cümlenin yerine kısa bir kelime gelir.
 + I love this song. [[So do I]]. | Bu şarkıyı çok seviyorum. Ben de.

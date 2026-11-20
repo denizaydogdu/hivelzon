@@ -14,7 +14,9 @@
   "teacherReview": null,
   "linksTo": {
     "episodes": [],
-    "books": []
+    "books": [
+      "C1-K01"
+    ]
   },
   "properNouns": [
     "Ali",

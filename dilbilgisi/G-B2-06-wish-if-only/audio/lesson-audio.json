@@ -361,17 +361,22 @@
   },
   {
    "card": "c08",
+   "type": "seeInStory",
+   "segments": []
+  },
+  {
+   "card": "c09",
    "type": "rule",
    "segments": [
     {
-     "id": "c08-tr",
+     "id": "c09-tr",
      "lang": "tr",
      "role": "narration",
      "text": "Şimdiki dilek için geçmiş biçim, geçmiş pişmanlık için önceki geçmiş zaman gelir. Başkasından yakınırken olurdu anlamı veren kelime kullanılır.",
      "textSha256": "da0824049e83247a53138ec7b410425f5521e0bd0fae1f16dbed4940391564da",
      "chars": 143,
-     "audio": "tr/c08-tr.mp3",
-     "align": "tr/c08-tr.align.json",
+     "audio": "tr/c09-tr.mp3",
+     "align": "tr/c09-tr.align.json",
      "present": true,
      "duration": 9.47,
      "quality": {
@@ -388,27 +393,27 @@
      }
     },
     {
-     "id": "c08-ex1",
+     "id": "c09-ex1",
      "lang": "en",
      "role": "example",
      "text": "I wish I knew her phone number.",
      "textSha256": "51c6188c8e84827d0d28c424664c7dfa645fa8efcaff7f212ddd6185ab0d618b",
      "chars": 31,
-     "audio": "en/c08-ex1.mp3",
-     "align": "en/c08-ex1.align.json",
+     "audio": "en/c09-ex1.mp3",
+     "align": "en/c09-ex1.align.json",
      "present": false,
      "duration": null,
      "quality": null
     },
     {
-     "id": "c08-ex2",
+     "id": "c09-ex2",
      "lang": "en",
      "role": "example",
      "text": "I wish I hadn't said that.",
      "textSha256": "bedd41637848540692b01175942e8b6276eebfd3349bed8f51b86de719a231a9",
      "chars": 26,
-     "audio": "en/c08-ex2.mp3",
-     "align": "en/c08-ex2.align.json",
+     "audio": "en/c09-ex2.mp3",
+     "align": "en/c09-ex2.align.json",
      "present": false,
      "duration": null,
      "quality": null

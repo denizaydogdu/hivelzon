@@ -42,6 +42,12 @@ x I had went home. | Üçüncü hâl gerekir: gone.
 ! Sıra: had, already, üçüncü hâl.
 ? say | When we got to the station, the train had left. | İstasyona vardığımızda tren kalkmıştı.
 
+## seeInStory
+- book B1-K01 p01 | He was seventeen, and he had arrived in the mountains only two weeks before.
+- book B1-K02 p08 | I had seen dolphins on television, of course, but I had never seen one so close.
+- book B1-K03 p05 | It was full of dishes that she had never heard of.
+- book B1-K01 p20 | He had come to the mountains to learn how clocks worked.
+
 ## rule
 Geçmişteki iki olaydan önce olanı, yardımcı fiilin geçmiş hâli ve fiilin üçüncü hâli gösterir. Sıra zaten belliyse bildiğin geçmiş zaman kullanılır.
 + When I arrived, the train [[had left]]. | Ben vardığımda tren kalkmıştı.

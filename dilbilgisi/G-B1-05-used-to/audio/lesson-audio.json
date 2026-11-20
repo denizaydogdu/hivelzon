@@ -318,17 +318,22 @@
   },
   {
    "card": "c07",
+   "type": "seeInStory",
+   "segments": []
+  },
+  {
+   "card": "c08",
    "type": "rule",
    "segments": [
     {
-     "id": "c07-tr",
+     "id": "c08-tr",
      "lang": "tr",
      "role": "narration",
      "text": "Geçmişte düzenli olan ama artık olmayan şeyler için bu kalıp ve yalın fiil kullanılır. Soru ve olumsuzda geçmiş yardımcı fiili gelir, kalıbın sonundaki d düşer.",
      "textSha256": "693882880a76f1fa6d2ca72804a327e9bca61863d1187b4e8b9715d40e138de9",
      "chars": 160,
-     "audio": "tr/c07-tr.mp3",
-     "align": "tr/c07-tr.align.json",
+     "audio": "tr/c08-tr.mp3",
+     "align": "tr/c08-tr.align.json",
      "present": true,
      "duration": 11.52,
      "quality": {
@@ -345,14 +350,14 @@
      }
     },
     {
-     "id": "c07-ex1",
+     "id": "c08-ex1",
      "lang": "en",
      "role": "example",
      "text": "I used to live in a village.",
      "textSha256": "2bbc64192d9a8b411bb1f1f3b7fc0246ef712996a410e9316c48dcdcb6c94819",
      "chars": 28,
-     "audio": "en/c07-ex1.mp3",
-     "align": "en/c07-ex1.align.json",
+     "audio": "en/c08-ex1.mp3",
+     "align": "en/c08-ex1.align.json",
      "present": false,
      "duration": null,
      "quality": null

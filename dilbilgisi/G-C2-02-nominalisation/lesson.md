@@ -48,6 +48,12 @@ x The increasing of prices worries everyone. | Hazır bir isim var: increase, ar
 ! Fiilden türeyen isim: the construction of.
 ? say | The postponement of the meeting caused confusion. | Toplantının ertelenmesi kafa karışıklığına yol açtı.
 
+## seeInStory
+- book C2-K04 p15 | The introduction of a daily spoken allowance is accordingly proposed as a temporary measure, for a period not exceeding three years.
+- book C2-K03 p14 | The inspection of 1994 had been, by common agreement, the finest week of her professional life.
+- book C2-K05 p28 | The correction of the more noticeable grammatical irregularities need not affect the emotional impact of the text."
+- book C2-K01 p21 | "In the circumstances," Mr Dunmore went on, as if no one had spoken, "the continuation of the placement would be inappropriate.
+
 ## rule
 Adlaştırmada fiil ya da sıfat isme döner ve olay tek bir isimde toplanır. İsmin edatı ya da mastarı kelimeyle birlikte öğrenilir. Metin ağırlaşırsa isim yeniden fiile açılır.
 + [[The postponement of the meeting]] caused confusion. | Toplantının ertelenmesi kafa karışıklığına yol açtı.

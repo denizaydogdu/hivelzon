@@ -387,17 +387,22 @@
   },
   {
    "card": "c08",
+   "type": "seeInStory",
+   "segments": []
+  },
+  {
+   "card": "c09",
    "type": "rule",
    "segments": [
     {
-     "id": "c08-tr",
+     "id": "c09-tr",
      "lang": "tr",
      "role": "narration",
      "text": "Aktarılan soruda düz sıra gelir; evet-hayır sorusu eğer anlamındaki kelimeyle aktarılır. Rica ve emirde kişiden sonra mastar gelir.",
      "textSha256": "0f53518fa219e349590f93d411632e15cc7576a58e02155edb3419ee183e898e",
      "chars": 131,
-     "audio": "tr/c08-tr.mp3",
-     "align": "tr/c08-tr.align.json",
+     "audio": "tr/c09-tr.mp3",
+     "align": "tr/c09-tr.align.json",
      "present": true,
      "duration": 8.96,
      "quality": {
@@ -414,27 +419,27 @@
      }
     },
     {
-     "id": "c08-ex1",
+     "id": "c09-ex1",
      "lang": "en",
      "role": "example",
      "text": "She asked me where I lived.",
      "textSha256": "41c727079a7e126cc07e381283af4b2105800993d28c8e6b5b29c7daf8233b76",
      "chars": 27,
-     "audio": "en/c08-ex1.mp3",
-     "align": "en/c08-ex1.align.json",
+     "audio": "en/c09-ex1.mp3",
+     "align": "en/c09-ex1.align.json",
      "present": false,
      "duration": null,
      "quality": null
     },
     {
-     "id": "c08-ex2",
+     "id": "c09-ex2",
      "lang": "en",
      "role": "example",
      "text": "He told me to wait.",
      "textSha256": "216d659c04f3d4329de2563af3d2b6d8b54ef81ced6a5372f76e3b6c3a6af9b0",
      "chars": 19,
-     "audio": "en/c08-ex2.mp3",
-     "align": "en/c08-ex2.align.json",
+     "audio": "en/c09-ex2.mp3",
+     "align": "en/c09-ex2.align.json",
      "present": false,
      "duration": null,
      "quality": null

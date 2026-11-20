@@ -348,17 +348,22 @@
   },
   {
    "card": "c08",
+   "type": "seeInStory",
+   "segments": []
+  },
+  {
+   "card": "c09",
    "type": "rule",
    "segments": [
     {
-     "id": "c08-tr",
+     "id": "c09-tr",
      "lang": "tr",
      "role": "narration",
      "text": "Şu an gerçek olmayan bir durum için koşul tarafında geçmiş biçim gelir. Sonuç tarafında olurdu anlamı veren kelime ve yalın fiil gelir.",
      "textSha256": "b9179aa14b166f550142391073a081c7b207fda832d268225fdff7e0f3797a12",
      "chars": 135,
-     "audio": "tr/c08-tr.mp3",
-     "align": "tr/c08-tr.align.json",
+     "audio": "tr/c09-tr.mp3",
+     "align": "tr/c09-tr.align.json",
      "present": true,
      "duration": 8.16,
      "quality": {
@@ -375,14 +380,14 @@
      }
     },
     {
-     "id": "c08-ex1",
+     "id": "c09-ex1",
      "lang": "en",
      "role": "example",
      "text": "If I had more time, I would learn the guitar.",
      "textSha256": "68a82fc4831a80c1a337f2776777154917be0adc8e0af686c8fde551edb78f76",
      "chars": 45,
-     "audio": "en/c08-ex1.mp3",
-     "align": "en/c08-ex1.align.json",
+     "audio": "en/c09-ex1.mp3",
+     "align": "en/c09-ex1.align.json",
      "present": false,
      "duration": null,
      "quality": null

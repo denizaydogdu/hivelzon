@@ -45,6 +45,12 @@ x When have you arrived? | Ne zaman sorusu: geçmiş zaman.
 ! Ne zaman sorusunda geçmiş zaman: did.
 ? say | I've already done my homework. | Ödevimi çoktan yaptım.
 
+## seeInStory
+- book B1-K05 p03 | "She has just moved here from another city.
+- book B1-K01 p05 | "Have you caught your ghost yet?"
+- book B1-K02 p06 | "Or it has already fallen off.
+- book B1-K02 p04 | Or he might be a young male whose tail hasn't grown yet.
+
 ## rule
 Zamanı belli, bitmiş bir olay için geçmiş zaman kullanılır. Zamanı söylenmeyen ve sonucu şimdi önemli olan olay için yardımcı fiil ve üçüncü hâl gelir.
 + [[I've just finished]] my homework. | Ödevimi az önce bitirdim.

@@ -387,17 +387,22 @@
   },
   {
    "card": "c08",
+   "type": "seeInStory",
+   "segments": []
+  },
+  {
+   "card": "c09",
    "type": "rule",
    "segments": [
     {
-     "id": "c08-tr",
+     "id": "c09-tr",
      "lang": "tr",
      "role": "narration",
      "text": "Zıtlıkta tam cümleden önce bağlaç, isimden ya da -ing ekli fiilden önce edat gelir. Bu bağlaçla birlikte ama kullanılmaz.",
      "textSha256": "c295b3e2d9152fc2bdc55cccd47cd1a1b61a0f305f71601d7111f5a5157e3b6b",
      "chars": 121,
-     "audio": "tr/c08-tr.mp3",
-     "align": "tr/c08-tr.align.json",
+     "audio": "tr/c09-tr.mp3",
+     "align": "tr/c09-tr.align.json",
      "present": true,
      "duration": 7.84,
      "quality": {
@@ -414,27 +419,27 @@
      }
     },
     {
-     "id": "c08-ex1",
+     "id": "c09-ex1",
      "lang": "en",
      "role": "example",
      "text": "Although it was late, we kept talking.",
      "textSha256": "bff965b17cb887c67e7fb2bd17fae9e2bdbf8868ec2fb9def59c87a56fb966e8",
      "chars": 38,
-     "audio": "en/c08-ex1.mp3",
-     "align": "en/c08-ex1.align.json",
+     "audio": "en/c09-ex1.mp3",
+     "align": "en/c09-ex1.align.json",
      "present": false,
      "duration": null,
      "quality": null
     },
     {
-     "id": "c08-ex2",
+     "id": "c09-ex2",
      "lang": "en",
      "role": "example",
      "text": "Despite the rain, the match continued.",
      "textSha256": "261e1271775d870c249247b24916ba24d636bd949e0a03c296fca2d51201c2ae",
      "chars": 38,
-     "audio": "en/c08-ex2.mp3",
-     "align": "en/c08-ex2.align.json",
+     "audio": "en/c09-ex2.mp3",
+     "align": "en/c09-ex2.align.json",
      "present": false,
      "duration": null,
      "quality": null

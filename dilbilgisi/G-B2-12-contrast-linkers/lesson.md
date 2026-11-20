@@ -52,6 +52,12 @@ x Despite of the rain, we played. | Despite'tan sonra of gelmez.
 ! İki şeyi karşılaştırırken iki cümlenin arasına whereas gelir.
 ? say | Although it was late, we kept talking. | Geç olmasına rağmen konuşmaya devam ettik.
 
+## seeInStory
+- book B1-K02 p14 | Although I didn't understand, I trusted her.
+- book B2-K04 p08 | Despite her age, she stood perfectly straight.
+- book B2-K03 p22 | However, the bread came out perfectly, and nothing caught fire.
+- book B2-K05 p02 | Mum talks when she is nervous, whereas Dad goes silent.
+
 ## rule
 Zıtlıkta tam cümleden önce bağlaç, isimden ya da -ing ekli fiilden önce edat gelir. Bu bağlaçla birlikte ama kullanılmaz.
 + [[Although]] it was late, we kept talking. | Geç olmasına rağmen konuşmaya devam ettik.

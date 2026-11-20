@@ -331,17 +331,22 @@
   },
   {
    "card": "c07",
+   "type": "seeInStory",
+   "segments": []
+  },
+  {
+   "card": "c08",
    "type": "rule",
    "segments": [
     {
-     "id": "c07-tr",
+     "id": "c08-tr",
      "lang": "tr",
      "role": "narration",
      "text": "Zamanı belli, bitmiş bir olay için geçmiş zaman kullanılır. Zamanı söylenmeyen ve sonucu şimdi önemli olan olay için yardımcı fiil ve üçüncü hâl gelir.",
      "textSha256": "8145a4f08e37448bfcdc549047b3fdf00d37c01d0febe7eafd5b26ad7294b2b4",
      "chars": 151,
-     "audio": "tr/c07-tr.mp3",
-     "align": "tr/c07-tr.align.json",
+     "audio": "tr/c08-tr.mp3",
+     "align": "tr/c08-tr.align.json",
      "present": true,
      "duration": 10.91,
      "quality": {
@@ -358,14 +363,14 @@
      }
     },
     {
-     "id": "c07-ex1",
+     "id": "c08-ex1",
      "lang": "en",
      "role": "example",
      "text": "I've just finished my homework.",
      "textSha256": "eca70b9d394aa8ee15406d62b0198559bf0fce9b82a2c129a935314b66829ee6",
      "chars": 31,
-     "audio": "en/c07-ex1.mp3",
-     "align": "en/c07-ex1.align.json",
+     "audio": "en/c08-ex1.mp3",
+     "align": "en/c08-ex1.align.json",
      "present": true,
      "duration": 1.76,
      "quality": null

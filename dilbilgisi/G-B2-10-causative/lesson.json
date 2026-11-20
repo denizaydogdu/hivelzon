@@ -14,7 +14,12 @@
   "teacherReview": null,
   "linksTo": {
     "episodes": [],
-    "books": []
+    "books": [
+      "B2-K02",
+      "B2-K03",
+      "B2-K04",
+      "B2-K05"
+    ]
   },
   "narration": {
     "tr": {

@@ -374,17 +374,22 @@
   },
   {
    "card": "c08",
+   "type": "seeInStory",
+   "segments": []
+  },
+  {
+   "card": "c09",
    "type": "rule",
    "segments": [
     {
-     "id": "c08-tr",
+     "id": "c09-tr",
      "lang": "tr",
      "role": "narration",
      "text": "Kibar bir kalıpla sorarken soru kelimesinden sonra düz cümle sırası gelir ve yardımcı fiil düşer. Evet ya da hayır sorusunda araya bir bağlantı kelimesi girer.",
      "textSha256": "dc992b79e0892d025a05b6510b63f9933da611d89535f16df95536b195e176bf",
      "chars": 159,
-     "audio": "tr/c08-tr.mp3",
-     "align": "tr/c08-tr.align.json",
+     "audio": "tr/c09-tr.mp3",
+     "align": "tr/c09-tr.align.json",
      "present": true,
      "duration": 9.61,
      "quality": {
@@ -401,14 +406,14 @@
      }
     },
     {
-     "id": "c08-ex1",
+     "id": "c09-ex1",
      "lang": "en",
      "role": "example",
      "text": "Do you know where the station is?",
      "textSha256": "e0df8d899e7d3aaa07ef2d88d2b2e180ce20e2f30323f60662036171c1a5ed07",
      "chars": 33,
-     "audio": "en/c08-ex1.mp3",
-     "align": "en/c08-ex1.align.json",
+     "audio": "en/c09-ex1.mp3",
+     "align": "en/c09-ex1.align.json",
      "present": false,
      "duration": null,
      "quality": null

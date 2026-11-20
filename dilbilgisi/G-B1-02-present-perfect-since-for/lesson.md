@@ -44,6 +44,12 @@ x We have lived here since three years. | Üç yıl bir süre: for.
 ! Hâlâ süren durum: have lived.
 ? say | I've lived here since 2020. | 2020'den beri burada yaşıyorum.
 
+## seeInStory
+- book B1-K05 p01 | Noah has played second violin for three years, and he wants more.
+- book B1-K02 p02 | She has worked at the sea turtle rescue centre for twelve years.
+- book B1-K02 p06 | "I've been a fisherman since I was fourteen," he said.
+- book B1-K03 p16 | "I have known it for fifty years."
+
 ## rule
 Geçmişte başlayıp hâlâ süren durum için yardımcı fiil ve fiilin üçüncü hâli kullanılır. Başlangıç anı için bir kelime, süre için başka bir kelime gelir.
 + [[I've lived]] here [[since]] 2020. | 2020'den beri burada yaşıyorum.

@@ -305,17 +305,22 @@
   },
   {
    "card": "c07",
+   "type": "seeInStory",
+   "segments": []
+  },
+  {
+   "card": "c08",
    "type": "rule",
    "segments": [
     {
-     "id": "c07-tr",
+     "id": "c08-tr",
      "lang": "tr",
      "role": "narration",
      "text": "Geçmişte olmamış bir koşul için koşul tarafında önceki geçmiş zaman gelir. Sonuç tarafında olurdu anlamı veren kelime, yardımcı fiil ve üçüncü hâl gelir.",
      "textSha256": "479144cb58a711317dfd2a1f069e9a05c9092ec8f907c196f93162d6dd622f7f",
      "chars": 153,
-     "audio": "tr/c07-tr.mp3",
-     "align": "tr/c07-tr.align.json",
+     "audio": "tr/c08-tr.mp3",
+     "align": "tr/c08-tr.align.json",
      "present": true,
      "duration": 9.62,
      "quality": {
@@ -332,14 +337,14 @@
      }
     },
     {
-     "id": "c07-ex1",
+     "id": "c08-ex1",
      "lang": "en",
      "role": "example",
      "text": "If I had left earlier, I wouldn't have missed the bus.",
      "textSha256": "5ead0c85efa6f8ee42f300150cd8c684ff2eef631df7b45a602dfb975d936484",
      "chars": 54,
-     "audio": "en/c07-ex1.mp3",
-     "align": "en/c07-ex1.align.json",
+     "audio": "en/c08-ex1.mp3",
+     "align": "en/c08-ex1.align.json",
      "present": false,
      "duration": null,
      "quality": null

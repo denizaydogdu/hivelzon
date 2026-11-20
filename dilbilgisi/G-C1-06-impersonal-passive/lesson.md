@@ -47,6 +47,12 @@ x She is believed to leave yesterday. | Geçmiş için to have ve üçüncü hâ
 ! Önce konu, sonra edilgen fiil, sonra geçmiş mastar gelir.
 ? say | It is said that the castle is haunted. | Kalenin perili olduğu söyleniyor.
 
+## seeInStory
+- book C1-K02 p17 | It is said that you can see the weather coming in the delta a full day before it arrives.
+- book C1-K01 p21 | She is believed to have danced in this very room every night of the summer of nineteen twenty-six."
+- book C1-K03 p08 | He was said to have smiled twice in thirty-one years, both times by accident.
+- book C1-K05 p25 | "In the village it is believed that I am proud," Hatice said.
+
 ## rule
 Söylenti ve haberleri mesafeli aktarmak için boş özneli çerçeve ve bağlaç kullanılır. Konuyla başlarsan edilgen fiilden sonra mastar gelir. Geçmiş için mastarda sahip olmak fiili ve üçüncü hâl kullanılır.
 + The painting [[is believed to be]] 300 years old. | Tablonun 300 yaşında olduğuna inanılıyor.

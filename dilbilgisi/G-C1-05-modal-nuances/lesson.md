@@ -48,6 +48,12 @@ x I'd rather to stay here. | Bu kalıptan sonra to gelmez.
 ! I'd rather'dan sonra yalın fiil gelir.
 ? say | You needn't have brought a gift. | Hediye getirmene gerek yoktu.
 
+## seeInStory
+- book C1-K02 p18 | "You needn't have come all this way for me," she said.
+- book C1-K03 p20 | It was supposed to be thirty.
+- book C1-K04 p01 | The truth was that he would rather not have come at all.
+- book C1-K01 p06 | "You might well have given them away," said Agnes quietly, "and simply forgotten."
+
 ## rule
 Gereksiz yapılan işte gerek yok yardımcısı, sahip olmak fiili ve üçüncü hâl gelir. Yapılmayan gerekli iş için öğüt veren yardımcı fiil aynı biçimle kullanılır. Tercih kalıbından sonra yalın fiil gelir.
 + You [[needn't have brought]] a gift. | Hediye getirmene gerek yoktu.

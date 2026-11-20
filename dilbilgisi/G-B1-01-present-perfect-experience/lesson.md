@@ -50,6 +50,12 @@ x I have went to Paris. | Üçüncü hâl gerekir.
 ! Sıra: kişi, have, never, üçüncü hâl.
 ? say | Have you ever been to London? | Hiç Londra'da bulundun mu?
 
+## seeInStory
+- book B1-K03 p02 | "Have you ever cooked for a hundred people?"
+- book B1-K02 p11 | "Have you ever been really frightened at sea?"
+- book B1-K02 p02 | I have never worked so hard in my life, and I have never been so happy.
+- book B1-K03 p08 | Nobody has ever seen the Silent Fork's face.
+
 ## rule
 Ne zaman olduğu önemli olmayan hayat deneyimleri için yardımcı fiil ve fiilin üçüncü hâli kullanılır. Zamanı söylersen bildiğin geçmiş zamana dönersin.
 + [[I've never seen]] snow. | Hiç kar görmedim.

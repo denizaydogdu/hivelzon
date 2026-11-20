@@ -49,6 +49,12 @@ x He is rude today. | Bugünkü geçici davranış için doğal olan: is being.
 ! Bugünkü geçici davranış: being.
 ? say | I was wondering if you could help me. | Acaba bana yardım edebilir misiniz?
 
+## seeInStory
+- book C2-K02 p24 | "You're being very quiet," he said, after twenty minutes of kneading in companionable silence.
+- book C2-K04 p10 | Don't mind him, he's being difficult.
+- book C2-K02 p06 | "I was wondering if you could tell me how to get to Merrow Cross."
+- book C2-K05 p02 | She was being kind.
+
 ## rule
 Durum fiilleri sürekli biçimde geçici bir davranışı ya da başka bir anlamı anlatabilir. Geçmiş sürekli biçim ricayı yumuşatır ve daha kibar yapar.
 + [[I was wondering if]] you could help me. | Acaba bana yardım edebilir misiniz?

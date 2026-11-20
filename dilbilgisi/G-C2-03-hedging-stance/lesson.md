@@ -47,6 +47,12 @@ x It is a fact that this is the best method. | Kanıt yoksa kesin konuşma.
 ! Eğilim kalıbı: tend to ve yalın fiil.
 ? say | It would appear that the plan has failed. | Plan başarısız olmuş gibi görünüyor.
 
+## seeInStory
+- book C2-K01 p11 | It would appear, he thought, sitting back on his heels, that this was not vandalism at all.
+- book C2-K02 p22 | It was arguably the most accurate report she had ever written.
+- book C2-K03 p04 | There was also a small arrow in the corner, faint as a rumour, which presumably pointed north.
+- book C2-K05 p02 | "It would seem," Rosalind wrote in her second email, "that your father intended you to finish it."
+
 ## rule
 İddiayı kanıt kadar güçlü söylemek için görünmek fiilleri ve olasılık kalıpları kullanılır. Tutum zarfları senin yorumunu gösterir. Ölçülü kullanılınca metin güvenilir olur.
 + [[It would appear that]] the plan has failed. | Plan başarısız olmuş gibi görünüyor.

@@ -47,6 +47,12 @@ x I've been knowing her for years. | Know bir durum fiilidir.
 ! Önce kişi, sonra have been ve -ing'li fiil gelir.
 ? say | I've been waiting for two hours. | İki saattir bekliyorum.
 
+## seeInStory
+- book B2-K04 p08 | I've been working in the greenhouse for two years.
+- book B2-K02 p11 | My uncle has been working in mines for thirty years.
+- book B2-K01 p24 | Ms Vidal has been searching for the other paintings ever since.
+- book B2-K03 p16 | "I've been practising for twenty minutes," he told the train, "and I'm getting worse."
+
 ## rule
 Geçmişte başlayıp hâlâ süren eylem için bu yapı kullanılır. Yardımcı fiil, olmak fiilinin üçüncü hâli ve -ing ekli fiil sırayla gelir. Durum fiilleri bu yapıyı almaz.
 + [[I've been waiting]] for two hours. | İki saattir bekliyorum.

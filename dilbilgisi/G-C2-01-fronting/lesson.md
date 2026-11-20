@@ -48,6 +48,12 @@ x Such the noise was that nobody slept. | Önce such ve olmak fiili, sonra özne
 ! Yer öne alınınca fiil özneden önce gelebilir.
 ? say | Little did she know that the letter would change everything. | Mektubun her şeyi değiştireceğinden hiç haberi yoktu.
 
+## seeInStory
+- book C2-K02 p12 | Little did Gavin know how much she wanted to agree with him.
+- book C2-K02 p26 | Such was the stillness of the air that Amira could hear, from the green, a dog barking somewhere on the far side of the ridge.
+- book C2-K02 p13 | So quietly did it appear that she could not afterwards say where the forest had ended.
+- book C2-K03 p12 | Such was the heat of the exchange that Barry began to carry a bottle of water.
+
 ## rule
 Vurgu ya da akış için bir öğe başa alınabilir. Az anlamındaki kelimeden ve olumsuz ifadelerden sonra yardımcı fiil özneden önce gelir. Böyle anlamındaki kalıpta özne olmak fiilinden sonra gelir.
 + [[Little did she know]] that the letter would change everything. | Mektubun her şeyi değiştireceğinden hiç haberi yoktu.

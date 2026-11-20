@@ -43,6 +43,12 @@ x I would of helped you. | Yazıda of değil, have yazılır.
 ! Önce koşul (if, had ve üçüncü hâl), sonra sonuç gelir.
 ? say | If I had known, I would have come. | Bilseydim gelirdim.
 
+## seeInStory
+- book B2-K01 p11 | If Mr Castell had been here, he would have sent her home.
+- book B2-K02 p03 | If he had heard it in a city, he would have thought it was a ship far away, or a train.
+- book B2-K05 p06 | If I had been a more patient person, I would have waited for him to tell me.
+- book B2-K05 p15 | If Daniel had told them the truth in April, none of this would have happened.
+
 ## rule
 Geçmişte olmamış bir koşul için koşul tarafında önceki geçmiş zaman gelir. Sonuç tarafında olurdu anlamı veren kelime, yardımcı fiil ve üçüncü hâl gelir.
 + [[If I had left]] earlier, [[I wouldn't have missed]] the bus. | Daha erken çıksaydım otobüsü kaçırmazdım.

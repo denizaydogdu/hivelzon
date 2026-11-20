@@ -48,6 +48,12 @@ x I will to call you. | Will'den sonra to gelmez.
 ! Soru cümlesinde will kişinin önüne geçer.
 ? say | It's cold. I'll close the window. | Hava soğuk. Pencereyi kapatayım.
 
+## seeInStory
+- book B1-K03 p03 | "I'll just tell them," she said to her own face in the dark window.
+- book B1-K02 p10 | "We'll stay here tonight," he said.
+- book B1-K02 p10 | "Tomorrow morning, the sea will be calm again."
+- book B1-K04 p13 | "I won't miss any of these," she said hopefully.
+
 ## rule
 Konuşurken o anda verilen karar, söz ve teklif için bu kelime kullanılır. Ardından fiil yalın gelir.
 + It's cold. [[I'll close]] the window. | Hava soğuk. Pencereyi kapatayım.

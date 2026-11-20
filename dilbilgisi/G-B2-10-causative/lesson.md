@@ -46,6 +46,12 @@ x I made my car repair. | Bu yapıda had ya da got ve üçüncü hâl gelir.
 ! Önce kişi ve had, sonra nesne, en sonda üçüncü hâl gelir.
 ? say | I had my hair cut yesterday. | Dün saçımı kestirdim.
 
+## seeInStory
+- book B2-K02 p23 | He has had his roof repaired, and he wants to know when you are coming back.
+- book B2-K03 p22 | Nermin Hanım had to have the oven checked by Emre first, just in case.
+- book B2-K04 p03 | A team in white suits took samples from every row and had them tested in the colony's small laboratory.
+- book B2-K05 p18 | Mr Doyle has had the ramp cleared, and the life jackets have been checked twice."
+
 ## rule
 Bir işi başkasına yaptırırken ilk fiil, nesne ve üçüncü hâl sırayla gelir. Zamanı yalnız ilk fiil gösterir.
 + [[I had my hair cut]] yesterday. | Dün saçımı kestirdim.

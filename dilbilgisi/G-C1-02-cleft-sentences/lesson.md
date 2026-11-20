@@ -49,6 +49,12 @@ x What I need it is a holiday. | Fazladan zamir var: it çıkar.
 ! Önce What ve merak uyandıran kısım, sonra is ve asıl bilgi gelir.
 ? say | It was my grandmother who taught me to cook. | Bana yemek yapmayı öğreten büyükannemdi.
 
+## seeInStory
+- book C1-K01 p08 | It was Bev who broke the silence, because of course it was.
+- book C1-K01 p13 | It was Agnes who said what everybody had been thinking.
+- book C1-K01 p10 | What she needed was the one thing that did not fit.
+- book C1-K01 p02 | It was the signature that had brought Ruth all this way.
+
 ## rule
 Bir parçayı vurgulamak için cümle ikiye bölünür. Vurgulanan parça ya baştaki çerçeveye girer ya da olmak fiilinden sonra sona kalır.
 + [[It was my grandmother who]] taught me to cook. | Bana yemek yapmayı öğreten büyükannemdi.

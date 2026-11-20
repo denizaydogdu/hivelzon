@@ -348,17 +348,22 @@
   },
   {
    "card": "c08",
+   "type": "seeInStory",
+   "segments": []
+  },
+  {
+   "card": "c09",
    "type": "rule",
    "segments": [
     {
-     "id": "c08-tr",
+     "id": "c09-tr",
      "lang": "tr",
      "role": "narration",
      "text": "Söylenti ve haberleri mesafeli aktarmak için boş özneli çerçeve ve bağlaç kullanılır. Konuyla başlarsan edilgen fiilden sonra mastar gelir. Geçmiş için mastarda sahip olmak fiili ve üçüncü hâl kullanılır.",
      "textSha256": "2ef6bf7667509b54cc632e7f570cc258f6c8111cdff14f15233ecb4cd08d6ba6",
      "chars": 204,
-     "audio": "tr/c08-tr.mp3",
-     "align": "tr/c08-tr.align.json",
+     "audio": "tr/c09-tr.mp3",
+     "align": "tr/c09-tr.align.json",
      "present": true,
      "duration": 15.87,
      "quality": {
@@ -375,14 +380,14 @@
      }
     },
     {
-     "id": "c08-ex1",
+     "id": "c09-ex1",
      "lang": "en",
      "role": "example",
      "text": "The painting is believed to be 300 years old.",
      "textSha256": "7a6bc4287155b5e407a77d1ffb6294e835e1ef7a10dedd6c2e70b2831b611983",
      "chars": 45,
-     "audio": "en/c08-ex1.mp3",
-     "align": "en/c08-ex1.align.json",
+     "audio": "en/c09-ex1.mp3",
+     "align": "en/c09-ex1.align.json",
      "present": false,
      "duration": null,
      "quality": null

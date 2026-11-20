@@ -47,6 +47,12 @@ x Finished the work, we went home. | Etken anlam: Having finished.
 ! Edattan sonra fiil -ing alır: having.
 ? say | Having finished the report, she went home. | Raporu bitirdikten sonra eve gitti.
 
+## seeInStory
+- book C1-K02 p06 | Having finished my drawing, I showed him Hedda's.
+- book C1-K04 p14 | Walking back along the shore, Tomás stopped at the water, as he now did without thinking.
+- book C1-K01 p17 | Left alone with the candles and the others, Ruth picked one up and went after her.
+- book C1-K04 p23 | Having lived in Ardal all her life, she did not need to be told twice that the lake could be dangerous.
+
 ## rule
 Özneler aynıysa yan cümle kısaltılabilir. Aynı anda olan etken işte -ing, edilgen anlamda üçüncü hâl gelir. Önce biten iş için sahip olmak fiilinin -ing biçimi ve üçüncü hâl kullanılır.
 + [[Having finished]] the report, she went home. | Raporu bitirdikten sonra eve gitti.

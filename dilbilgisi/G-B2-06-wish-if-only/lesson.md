@@ -47,6 +47,12 @@ x I wish I didn't say that. | Geçmiş pişmanlıkta had ve üçüncü hâl geli
 ! Başkasının davranışı için wish, kişi ve would gelir.
 ? say | I wish I could swim. | Keşke yüzebilsem.
 
+## seeInStory
+- book B2-K01 p23 | "If only my grandmother could see this," she whispered.
+- book B2-K03 p15 | He wished he had never bought the earpiece.
+- book B2-K05 p15 | I wished I could tell him he was wrong.
+- book B2-K03 p12 | If only he would smile, Bruno thought, just once.
+
 ## rule
 Şimdiki dilek için geçmiş biçim, geçmiş pişmanlık için önceki geçmiş zaman gelir. Başkasından yakınırken olurdu anlamı veren kelime kullanılır.
 + [[I wish I knew]] her phone number. | Keşke telefon numarasını bilsem.

@@ -387,17 +387,22 @@
   },
   {
    "card": "c08",
+   "type": "seeInStory",
+   "segments": []
+  },
+  {
+   "card": "c09",
    "type": "rule",
    "segments": [
     {
-     "id": "c08-tr",
+     "id": "c09-tr",
      "lang": "tr",
      "role": "narration",
      "text": "Olumsuz ya da kısıtlayıcı bir ifade başa gelirse yardımcı fiil özneden önce gelir. Yardımcı fiil yoksa soru yardımcısı eklenir; bu yapı vurgu katar ve resmîdir.",
      "textSha256": "4d57c0eda4aaceb34c27e19698359a0d7829b65ef03932f29ab47d189f809da8",
      "chars": 160,
-     "audio": "tr/c08-tr.mp3",
-     "align": "tr/c08-tr.align.json",
+     "audio": "tr/c09-tr.mp3",
+     "align": "tr/c09-tr.align.json",
      "present": true,
      "duration": 12.28,
      "quality": {
@@ -414,14 +419,14 @@
      }
     },
     {
-     "id": "c08-ex1",
+     "id": "c09-ex1",
      "lang": "en",
      "role": "example",
      "text": "Never have I seen such a beautiful sunset.",
      "textSha256": "3e5de10fb07f1c37db10ca520bed2a745f678a3cf06c9362e552f7b9c4e299b5",
      "chars": 42,
-     "audio": "en/c08-ex1.mp3",
-     "align": "en/c08-ex1.align.json",
+     "audio": "en/c09-ex1.mp3",
+     "align": "en/c09-ex1.align.json",
      "present": false,
      "duration": null,
      "quality": null

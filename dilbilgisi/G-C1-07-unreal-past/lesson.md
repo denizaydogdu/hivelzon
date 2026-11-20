@@ -47,6 +47,12 @@ x I'd rather you come tomorrow. | Başka bir kişiden sonra geçmiş biçim geli
 ! Kendi tercihin için yalın fiil: I'd rather go.
 ? say | It's time we went home. | Artık eve gitme vakti.
 
+## seeInStory
+- book C1-K01 p11 | With respect, it is high time you told us the truth."
+- book C1-K01 p21 | "I would rather you didn't," said Ambrose.
+- book C1-K02 p06 | He patted the rail as if it were his dog.
+- book C1-K02 p23 | It was high time I went home, I told myself.
+
 ## rule
 Bu üç kalıpta geçmiş biçim zamanı değil, gerçek dışılığı gösterir. Vakit kalıbından ve başka bir kişiye yönelik tercihten sonra geçmiş biçim gelir. Sanki anlamındaki bağlaçtan sonra da gelebilir.
 + [[It's time we went]] home. | Artık eve gitme vakti.

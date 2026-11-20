@@ -50,6 +50,12 @@ x Only then I understood. | Yardımcı fiil yok: did eklenir, fiil yalın kalır
 ! Önce kısıtlayıcı ifade, sonra did, özne ve yalın fiil gelir.
 ? say | Never have I seen such a beautiful sunset. | Hayatımda hiç bu kadar güzel bir gün batımı görmedim.
 
+## seeInStory
+- book C1-K01 p17 | No sooner had he opened his mouth than every light in the Glasswater Hotel went out.
+- book C1-K02 p23 | Never had I felt quite so foolish about a project.
+- book C1-K04 p04 | Only when the bus had disappeared did Tomás understand what he had done.
+- book C1-K03 p06 | Not only had she numbered every item, but she had also estimated how long each one would take.
+
 ## rule
 Olumsuz ya da kısıtlayıcı bir ifade başa gelirse yardımcı fiil özneden önce gelir. Yardımcı fiil yoksa soru yardımcısı eklenir; bu yapı vurgu katar ve resmîdir.
 + [[Never have I seen]] such a beautiful sunset. | Hayatımda hiç bu kadar güzel bir gün batımı görmedim.

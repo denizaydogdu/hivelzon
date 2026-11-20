@@ -348,17 +348,22 @@
   },
   {
    "card": "c08",
+   "type": "seeInStory",
+   "segments": []
+  },
+  {
+   "card": "c09",
    "type": "rule",
    "segments": [
     {
-     "id": "c08-tr",
+     "id": "c09-tr",
      "lang": "tr",
      "role": "narration",
      "text": "Gelecekteki bir anda sürecek eylem için olmak fiili ve -ing ekli fiil gelir. O ana kadar bitecek eylem için yardımcı fiil ve üçüncü hâl gelir.",
      "textSha256": "93c8f033d3049f26e2704b0ecddc5dbd01c90808d5f88ccd0672a074c3a6776c",
      "chars": 142,
-     "audio": "tr/c08-tr.mp3",
-     "align": "tr/c08-tr.align.json",
+     "audio": "tr/c09-tr.mp3",
+     "align": "tr/c09-tr.align.json",
      "present": true,
      "duration": 9.15,
      "quality": {
@@ -375,27 +380,27 @@
      }
     },
     {
-     "id": "c08-ex1",
+     "id": "c09-ex1",
      "lang": "en",
      "role": "example",
      "text": "This time tomorrow, I'll be flying to Berlin.",
      "textSha256": "b4a22a5cc079c3b07c0b0c07f1c43dd065f50e94fec89a4ba3195dad05fec814",
      "chars": 45,
-     "audio": "en/c08-ex1.mp3",
-     "align": "en/c08-ex1.align.json",
+     "audio": "en/c09-ex1.mp3",
+     "align": "en/c09-ex1.align.json",
      "present": false,
      "duration": null,
      "quality": null
     },
     {
-     "id": "c08-ex2",
+     "id": "c09-ex2",
      "lang": "en",
      "role": "example",
      "text": "By June, she will have finished school.",
      "textSha256": "f792a4afda5dfdedda776b7d6dcad361d278d0ee08ab43c2ca1a23de5fcbb2ef",
      "chars": 39,
-     "audio": "en/c08-ex2.mp3",
-     "align": "en/c08-ex2.align.json",
+     "audio": "en/c09-ex2.mp3",
+     "align": "en/c09-ex2.align.json",
      "present": false,
      "duration": null,
      "quality": null

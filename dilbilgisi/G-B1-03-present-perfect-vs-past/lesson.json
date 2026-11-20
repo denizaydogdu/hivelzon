@@ -16,7 +16,10 @@
   "linksTo": {
     "episodes": [],
     "books": [
-      "A2-K05"
+      "A2-K05",
+      "B1-K05",
+      "B1-K01",
+      "B1-K02"
     ]
   },
   "glossary": [

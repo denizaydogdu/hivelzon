@@ -48,6 +48,12 @@ x He didn't call which was strange. | Bütün cümleye yorumda virgül gerekir.
 ! Ek bilgi ismin hemen ardından, virgüller arasında gelir.
 ? say | My aunt, who lives in İzmir, is a doctor. | İzmir'de yaşayan teyzem doktor.
 
+## seeInStory
+- book B2-K01 p05 | The archive was kept in an old customs building near the harbour, which had been turned into offices in the 1970s.
+- book B1-K05 p12 | Noah brought his little sister, Ella, who was seven, and two of her friends.
+- book B1-K05 p15 | Ms Adeyemi didn't seem worried, which Noah found surprising and a little annoying.
+- book B1-K03 p01 | So her cousin Meera, who worked in restaurants, gave her some advice.
+
 ## rule
 Bilinen bir isme ek bilgi verirken cümlecik virgüllerle ayrılır. İnsan için ayrı, şey için ayrı kelime gelir; genel kelime bu yapıda kullanılmaz.
 + My aunt, [[who lives]] in İzmir, is a doctor. | İzmir'de yaşayan teyzem doktor.

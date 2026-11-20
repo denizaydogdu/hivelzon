@@ -361,17 +361,22 @@
   },
   {
    "card": "c08",
+   "type": "seeInStory",
+   "segments": []
+  },
+  {
+   "card": "c09",
    "type": "rule",
    "segments": [
     {
-     "id": "c08-tr",
+     "id": "c09-tr",
      "lang": "tr",
      "role": "narration",
      "text": "Bilinen bir isme ek bilgi verirken cümlecik virgüllerle ayrılır. İnsan için ayrı, şey için ayrı kelime gelir; genel kelime bu yapıda kullanılmaz.",
      "textSha256": "c5c471a4a0b671c53be21621fc314464b8f61b1ebe5dffc19ab6419c122e4b1a",
      "chars": 145,
-     "audio": "tr/c08-tr.mp3",
-     "align": "tr/c08-tr.align.json",
+     "audio": "tr/c09-tr.mp3",
+     "align": "tr/c09-tr.align.json",
      "present": true,
      "duration": 10.65,
      "quality": {
@@ -388,14 +393,14 @@
      }
     },
     {
-     "id": "c08-ex1",
+     "id": "c09-ex1",
      "lang": "en",
      "role": "example",
      "text": "My aunt, who lives in İzmir, is a doctor.",
      "textSha256": "50fd168434947439247711f49709e89465889eb1f61e44e319610fede486bbd0",
      "chars": 41,
-     "audio": "en/c08-ex1.mp3",
-     "align": "en/c08-ex1.align.json",
+     "audio": "en/c09-ex1.mp3",
+     "align": "en/c09-ex1.align.json",
      "present": false,
      "duration": null,
      "quality": null

@@ -348,17 +348,22 @@
   },
   {
    "card": "c08",
+   "type": "seeInStory",
+   "segments": []
+  },
+  {
+   "card": "c09",
    "type": "rule",
    "segments": [
     {
-     "id": "c08-tr",
+     "id": "c09-tr",
      "lang": "tr",
      "role": "narration",
      "text": "Geçmişte başlayıp hâlâ süren eylem için bu yapı kullanılır. Yardımcı fiil, olmak fiilinin üçüncü hâli ve -ing ekli fiil sırayla gelir. Durum fiilleri bu yapıyı almaz.",
      "textSha256": "155aa161899c2dd8ba01b18cc4d250acae3d0e86eb525d6c2b2368d4871822af",
      "chars": 166,
-     "audio": "tr/c08-tr.mp3",
-     "align": "tr/c08-tr.align.json",
+     "audio": "tr/c09-tr.mp3",
+     "align": "tr/c09-tr.align.json",
      "present": true,
      "duration": 10.56,
      "quality": {
@@ -375,14 +380,14 @@
      }
     },
     {
-     "id": "c08-ex1",
+     "id": "c09-ex1",
      "lang": "en",
      "role": "example",
      "text": "I've been waiting for two hours.",
      "textSha256": "926a524947cbb9d42ce17a3a63238a51f5ed97e004c53de9a6ded4bddad74502",
      "chars": 32,
-     "audio": "en/c08-ex1.mp3",
-     "align": "en/c08-ex1.align.json",
+     "audio": "en/c09-ex1.mp3",
+     "align": "en/c09-ex1.align.json",
      "present": false,
      "duration": null,
      "quality": null

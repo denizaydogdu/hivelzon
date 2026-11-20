@@ -361,17 +361,22 @@
   },
   {
    "card": "c08",
+   "type": "seeInStory",
+   "segments": []
+  },
+  {
+   "card": "c09",
    "type": "rule",
    "segments": [
     {
-     "id": "c08-tr",
+     "id": "c09-tr",
      "lang": "tr",
      "role": "narration",
      "text": "Bu üç kalıpta geçmiş biçim zamanı değil, gerçek dışılığı gösterir. Vakit kalıbından ve başka bir kişiye yönelik tercihten sonra geçmiş biçim gelir. Sanki anlamındaki bağlaçtan sonra da gelebilir.",
      "textSha256": "0c59e8f867ace0730a89df0bb7e5c821da8ad366c36b50d30e8fd1d1c1003f7e",
      "chars": 195,
-     "audio": "tr/c08-tr.mp3",
-     "align": "tr/c08-tr.align.json",
+     "audio": "tr/c09-tr.mp3",
+     "align": "tr/c09-tr.align.json",
      "present": true,
      "duration": 12.32,
      "quality": {
@@ -388,14 +393,14 @@
      }
     },
     {
-     "id": "c08-ex1",
+     "id": "c09-ex1",
      "lang": "en",
      "role": "example",
      "text": "It's time we went home.",
      "textSha256": "3eb97721e4349b9be3c818dc14edf6547bcc753a109a9286db10d2cfe7a55849",
      "chars": 23,
-     "audio": "en/c08-ex1.mp3",
-     "align": "en/c08-ex1.align.json",
+     "audio": "en/c09-ex1.mp3",
+     "align": "en/c09-ex1.align.json",
      "present": false,
      "duration": null,
      "quality": null

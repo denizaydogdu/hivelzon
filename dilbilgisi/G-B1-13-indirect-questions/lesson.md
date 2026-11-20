@@ -48,6 +48,12 @@ x Can you tell me what time does it open? | Does düşer: what time it opens.
 ! Önce kalıp, sonra soru kelimesi, özne ve fiil.
 ? say | Excuse me, can you tell me where the station is? | Afedersiniz, istasyonun nerede olduğunu söyleyebilir misiniz?
 
+## seeInStory
+- book B1-K02 p16 | "Kerem," said Aunt Sevgi, drying her eyes, "do you know what she was doing all night?"
+- book B2-K01 p19 | "Do you know how much Ms Vidal has offered me?" he said finally.
+- book B1-K02 p03 | I don't know if he understood.
+- book B1-K01 p05 | He wasn't sure who he could trust.
+
 ## rule
 Kibar bir kalıpla sorarken soru kelimesinden sonra düz cümle sırası gelir ve yardımcı fiil düşer. Evet ya da hayır sorusunda araya bir bağlantı kelimesi girer.
 + Do you know [[where the station is]]? | İstasyonun nerede olduğunu biliyor musun?

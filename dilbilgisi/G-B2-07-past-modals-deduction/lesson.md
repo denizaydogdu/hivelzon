@@ -47,6 +47,12 @@ x He mustn't have seen me. | Çıkarımda olumsuz için can't have gelir.
 ! Eleştiri için should have ve üçüncü hâl gelir.
 ? say | She must have forgotten. | Unutmuş olmalı.
 
+## seeInStory
+- book B2-K03 p09 | She must have seen him eating the burned pieces.
+- book B2-K01 p12 | She can't have seen the boat in them.
+- book B2-K02 p20 | "This might have been dropped by the person who built the wall," she said.
+- book B2-K03 p14 | He should have stayed in London and sent a nice card.
+
 ## rule
 Geçmiş hakkında çıkarım yaparken kelimeden sonra yardımcı fiil ve üçüncü hâl gelir. Eminsen zorunluluk, olmadığına eminsen olumsuz yapabilmek, emin değilsen olasılık kelimesi seçilir.
 + She [[must have forgotten]]. | Unutmuş olmalı.

@@ -400,17 +400,22 @@
   },
   {
    "card": "c08",
+   "type": "seeInStory",
+   "segments": []
+  },
+  {
+   "card": "c09",
    "type": "rule",
    "segments": [
     {
-     "id": "c08-tr",
+     "id": "c09-tr",
      "lang": "tr",
      "role": "narration",
      "text": "Katılmak için ben de anlamındaki kelime, yardımcı fiil ve özne gelir. Olumsuzda başka bir kelime kullanılır. Düşünmek ve ummaktan sonra cümlenin yerine kısa bir kelime gelir.",
      "textSha256": "4ebc4d5b841b8b3ad3de8c769c03c17a59506a38353e0fc7a93f8dfd20e0a6ab",
      "chars": 174,
-     "audio": "tr/c08-tr.mp3",
-     "align": "tr/c08-tr.align.json",
+     "audio": "tr/c09-tr.mp3",
+     "align": "tr/c09-tr.align.json",
      "present": true,
      "duration": 12.35,
      "quality": {
@@ -427,14 +432,14 @@
      }
     },
     {
-     "id": "c08-ex1",
+     "id": "c09-ex1",
      "lang": "en",
      "role": "example",
      "text": "I love this song. So do I.",
      "textSha256": "eec706c0c881e2a8bbc209679da1b008cc19e625f043ecab3e260f2726d5797f",
      "chars": 26,
-     "audio": "en/c08-ex1.mp3",
-     "align": "en/c08-ex1.align.json",
+     "audio": "en/c09-ex1.mp3",
+     "align": "en/c09-ex1.align.json",
      "present": false,
      "duration": null,
      "quality": null

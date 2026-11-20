@@ -47,6 +47,12 @@ x By next year, I will have finish school. | Will have'den sonra üçüncü hâl
 ! Bitmiş olacak eylem için will have ve üçüncü hâl gelir.
 ? say | This time tomorrow, I'll be flying to Berlin. | Yarın bu saatte Berlin'e uçuyor olacağım.
 
+## seeInStory
+- book B2-K02 p23 | This time next year, he thought, I'll be standing on that roof again, listening.
+- book B2-K04 p18 | "Then I'll be sitting in the front row," she said.
+- book B2-K05 p11 | "By then, I'll have finished my first real boat," Daniel said quietly.
+- book B2-K04 p21 | By the time the Martian winter begins, they'll have gone completely to sleep.
+
 ## rule
 Gelecekteki bir anda sürecek eylem için olmak fiili ve -ing ekli fiil gelir. O ana kadar bitecek eylem için yardımcı fiil ve üçüncü hâl gelir.
 + This time tomorrow, [[I'll be flying]] to Berlin. | Yarın bu saatte Berlin'e uçuyor olacağım.

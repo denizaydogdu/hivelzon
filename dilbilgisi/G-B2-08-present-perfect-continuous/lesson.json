@@ -15,7 +15,12 @@
   "teacherReview": null,
   "linksTo": {
     "episodes": [],
-    "books": []
+    "books": [
+      "B2-K04",
+      "B2-K02",
+      "B2-K01",
+      "B2-K03"
+    ]
   },
   "properNouns": [
     "English",

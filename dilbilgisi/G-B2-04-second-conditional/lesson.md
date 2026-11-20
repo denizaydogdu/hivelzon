@@ -45,6 +45,12 @@ x If I am you, I would go. | Bu kalıp geçmiş biçim ister: were.
 ! Sonuç tarafı başa da gelebilir; o zaman virgül gerekmez.
 ? say | If I were you, I'd talk to her. | Senin yerinde olsam onunla konuşurdum.
 
+## seeInStory
+- book B2-K02 p06 | If the hill were just a rock with a few holes in it, it would make the same noise every time.
+- book B2-K03 p08 | If the oven were a little hotter, he reasoned, the top would turn golden sooner.
+- book B2-K04 p07 | "If I were you, I'd ask the person who made the Mars-born lines in the first place."
+- book B2-K03 p17 | If my daughter came home with a man who burned my house, I wouldn't like him either."
+
 ## rule
 Şu an gerçek olmayan bir durum için koşul tarafında geçmiş biçim gelir. Sonuç tarafında olurdu anlamı veren kelime ve yalın fiil gelir.
 + [[If I had]] more time, [[I would learn]] the guitar. | Daha çok zamanım olsa gitar öğrenirdim.

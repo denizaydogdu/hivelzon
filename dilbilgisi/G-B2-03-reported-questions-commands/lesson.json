@@ -16,7 +16,11 @@
   "linksTo": {
     "episodes": [],
     "books": [
-      "A2-K04"
+      "A2-K04",
+      "B1-K05",
+      "B2-K05",
+      "B2-K01",
+      "B2-K03"
     ]
   },
   "properNouns": [

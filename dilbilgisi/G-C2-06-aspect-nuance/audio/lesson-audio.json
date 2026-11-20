@@ -387,17 +387,22 @@
   },
   {
    "card": "c08",
+   "type": "seeInStory",
+   "segments": []
+  },
+  {
+   "card": "c09",
    "type": "rule",
    "segments": [
     {
-     "id": "c08-tr",
+     "id": "c09-tr",
      "lang": "tr",
      "role": "narration",
      "text": "Durum fiilleri sürekli biçimde geçici bir davranışı ya da başka bir anlamı anlatabilir. Geçmiş sürekli biçim ricayı yumuşatır ve daha kibar yapar.",
      "textSha256": "0c4abb5e409895c83498fb780644c43f809068200336656c90d489baf9b55331",
      "chars": 146,
-     "audio": "tr/c08-tr.mp3",
-     "align": "tr/c08-tr.align.json",
+     "audio": "tr/c09-tr.mp3",
+     "align": "tr/c09-tr.align.json",
      "present": true,
      "duration": 9.63,
      "quality": {
@@ -414,14 +419,14 @@
      }
     },
     {
-     "id": "c08-ex1",
+     "id": "c09-ex1",
      "lang": "en",
      "role": "example",
      "text": "I was wondering if you could help me.",
      "textSha256": "97f5f0be61e09a2650a69fec6ce2e822acbb741cc60d9113f1268b2aec48cfbe",
      "chars": 37,
-     "audio": "en/c08-ex1.mp3",
-     "align": "en/c08-ex1.align.json",
+     "audio": "en/c09-ex1.mp3",
+     "align": "en/c09-ex1.align.json",
      "present": false,
      "duration": null,
      "quality": null

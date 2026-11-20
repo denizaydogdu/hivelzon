@@ -17,7 +17,11 @@
     "episodes": [
       "A1-006"
     ],
-    "books": []
+    "books": [
+      "B2-K03",
+      "B2-K01",
+      "B2-K02"
+    ]
   },
   "properNouns": [
     "Alex"

@@ -361,17 +361,22 @@
   },
   {
    "card": "c08",
+   "type": "seeInStory",
+   "segments": []
+  },
+  {
+   "card": "c09",
    "type": "rule",
    "segments": [
     {
-     "id": "c08-tr",
+     "id": "c09-tr",
      "lang": "tr",
      "role": "narration",
      "text": "Vurgu ya da akış için bir öğe başa alınabilir. Az anlamındaki kelimeden ve olumsuz ifadelerden sonra yardımcı fiil özneden önce gelir. Böyle anlamındaki kalıpta özne olmak fiilinden sonra gelir.",
      "textSha256": "320c8e9e147f0a0a84ff82c707cf5d322b3383d99240d963d36419f056d86b19",
      "chars": 194,
-     "audio": "tr/c08-tr.mp3",
-     "align": "tr/c08-tr.align.json",
+     "audio": "tr/c09-tr.mp3",
+     "align": "tr/c09-tr.align.json",
      "present": true,
      "duration": 12.98,
      "quality": {
@@ -388,14 +393,14 @@
      }
     },
     {
-     "id": "c08-ex1",
+     "id": "c09-ex1",
      "lang": "en",
      "role": "example",
      "text": "Little did she know that the letter would change everything.",
      "textSha256": "a8e664b15a535a5ae0e43c92239a3b7768c19ff3c2277756b0f2c9c232705dc8",
      "chars": 60,
-     "audio": "en/c08-ex1.mp3",
-     "align": "en/c08-ex1.align.json",
+     "audio": "en/c09-ex1.mp3",
+     "align": "en/c09-ex1.align.json",
      "present": false,
      "duration": null,
      "quality": null

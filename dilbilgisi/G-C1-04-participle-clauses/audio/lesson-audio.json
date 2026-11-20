@@ -348,17 +348,22 @@
   },
   {
    "card": "c08",
+   "type": "seeInStory",
+   "segments": []
+  },
+  {
+   "card": "c09",
    "type": "rule",
    "segments": [
     {
-     "id": "c08-tr",
+     "id": "c09-tr",
      "lang": "tr",
      "role": "narration",
      "text": "Özneler aynıysa yan cümle kısaltılabilir. Aynı anda olan etken işte -ing, edilgen anlamda üçüncü hâl gelir. Önce biten iş için sahip olmak fiilinin -ing biçimi ve üçüncü hâl kullanılır.",
      "textSha256": "a3a6ba442fb8a960d4ab8e89ba58934b756e920063dcf4ee632305eefacdf4f8",
      "chars": 185,
-     "audio": "tr/c08-tr.mp3",
-     "align": "tr/c08-tr.align.json",
+     "audio": "tr/c09-tr.mp3",
+     "align": "tr/c09-tr.align.json",
      "present": true,
      "duration": 13.31,
      "quality": {
@@ -375,14 +380,14 @@
      }
     },
     {
-     "id": "c08-ex1",
+     "id": "c09-ex1",
      "lang": "en",
      "role": "example",
      "text": "Having finished the report, she went home.",
      "textSha256": "802d1ba735b8c3182ef0108029ed459371e7bf4ebdc3d82caa89c4164aad5e86",
      "chars": 42,
-     "audio": "en/c08-ex1.mp3",
-     "align": "en/c08-ex1.align.json",
+     "audio": "en/c09-ex1.mp3",
+     "align": "en/c09-ex1.align.json",
      "present": false,
      "duration": null,
      "quality": null

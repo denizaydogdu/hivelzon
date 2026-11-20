@@ -361,17 +361,22 @@
   },
   {
    "card": "c08",
+   "type": "seeInStory",
+   "segments": []
+  },
+  {
+   "card": "c09",
    "type": "rule",
    "segments": [
     {
-     "id": "c08-tr",
+     "id": "c09-tr",
      "lang": "tr",
      "role": "narration",
      "text": "Söylem belirleyicileri iki cümlenin gerçek ilişkisini gösterir: zıtlık, ekleme ya da sonuç. Geri gönderen kelimeler tekrarı önler. Levhayı yalnız gerektiğinde kullan.",
      "textSha256": "f0316fe183ce77b599bc2ec80d99225dae5956ee88d06c85c26436d81d199b58",
      "chars": 166,
-     "audio": "tr/c08-tr.mp3",
-     "align": "tr/c08-tr.align.json",
+     "audio": "tr/c09-tr.mp3",
+     "align": "tr/c09-tr.align.json",
      "present": true,
      "duration": 12.13,
      "quality": {
@@ -388,14 +393,14 @@
      }
     },
     {
-     "id": "c08-ex1",
+     "id": "c09-ex1",
      "lang": "en",
      "role": "example",
      "text": "The plan is expensive. That said, it may save money.",
      "textSha256": "0656c5878795c8f6a232d3e586af5dcf895b8497308615b55ab44d0bce3debfc",
      "chars": 52,
-     "audio": "en/c08-ex1.mp3",
-     "align": "en/c08-ex1.align.json",
+     "audio": "en/c09-ex1.mp3",
+     "align": "en/c09-ex1.align.json",
      "present": false,
      "duration": null,
      "quality": null

@@ -305,17 +305,22 @@
   },
   {
    "card": "c07",
+   "type": "seeInStory",
+   "segments": []
+  },
+  {
+   "card": "c08",
    "type": "rule",
    "segments": [
     {
-     "id": "c07-tr",
+     "id": "c08-tr",
      "lang": "tr",
      "role": "narration",
      "text": "Geçmişteki iki olaydan önce olanı, yardımcı fiilin geçmiş hâli ve fiilin üçüncü hâli gösterir. Sıra zaten belliyse bildiğin geçmiş zaman kullanılır.",
      "textSha256": "212ef6a09031cd6ab146cca84ea3bff7e07619e43850b08ec5e0d2e0f4dea803",
      "chars": 148,
-     "audio": "tr/c07-tr.mp3",
-     "align": "tr/c07-tr.align.json",
+     "audio": "tr/c08-tr.mp3",
+     "align": "tr/c08-tr.align.json",
      "present": true,
      "duration": 9.63,
      "quality": {
@@ -332,14 +337,14 @@
      }
     },
     {
-     "id": "c07-ex1",
+     "id": "c08-ex1",
      "lang": "en",
      "role": "example",
      "text": "When I arrived, the train had left.",
      "textSha256": "baf7989b1034ef0524cf71526827bac9da1e6c607dbb27049b884ae3a0938ced",
      "chars": 35,
-     "audio": "en/c07-ex1.mp3",
-     "align": "en/c07-ex1.align.json",
+     "audio": "en/c08-ex1.mp3",
+     "align": "en/c08-ex1.align.json",
      "present": false,
      "duration": null,
      "quality": null

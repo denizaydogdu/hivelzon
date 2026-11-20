@@ -48,6 +48,12 @@ x Had I know, I would have come. | Üçüncü hâl gerekir: known.
 ! Önce Had, sonra it not been for ve isim, en sonda sonuç gelir.
 ? say | Should you need any help, please contact us. | Yardıma ihtiyacınız olursa lütfen bize ulaşın.
 
+## seeInStory
+- book C2-K03 p03 | "Should you wish to discuss the matter further, I would be glad to receive your views in writing.
+- book C2-K03 p27 | "Had I known the true position, I would never have written to you at all.
+- book C2-K05 p28 | "Were it not for the fact that you're entirely right," she said at last, "I would fight you on this."
+- book C2-K03 p04 | Before any decision is made, it is essential that the question of ownership be settled.
+
 ## rule
 Resmî dilde koşul bağlacı düşebilir; o zaman yardımcı fiil özneden önce gelir. Gereklilik bildiren ifadelerden sonra gelen yan cümlede fiil yalın kalır.
 + [[Should you need]] any help, please contact us. | Yardıma ihtiyacınız olursa lütfen bize ulaşın.

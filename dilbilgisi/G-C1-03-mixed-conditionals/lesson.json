@@ -15,7 +15,12 @@
   "teacherReview": null,
   "linksTo": {
     "episodes": [],
-    "books": []
+    "books": [
+      "C1-K02",
+      "C1-K05",
+      "C1-K04",
+      "C1-K01"
+    ]
   },
   "properNouns": [
     "London",

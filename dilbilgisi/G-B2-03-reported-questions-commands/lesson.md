@@ -52,6 +52,12 @@ x She asked me did I like it. | Evet-hayır sorusu if ile aktarılır.
 ! Önce söyleyen, sonra told, kişi ve to ile fiil gelir.
 ? say | She asked me where I lived. | Nerede yaşadığımı sordu.
 
+## seeInStory
+- book B1-K05 p04 | Ruby, who was the leader of the first violins, asked her where she had studied.
+- book B2-K05 p22 | Afterwards, people asked me if I had known all along.
+- book B2-K01 p07 | He told her to finish the sky by Thursday and to leave the signatures alone.
+- book B2-K03 p19 | She told me not to say anything.
+
 ## rule
 Aktarılan soruda düz sıra gelir; evet-hayır sorusu eğer anlamındaki kelimeyle aktarılır. Rica ve emirde kişiden sonra mastar gelir.
 + She [[asked me where I lived]]. | Nerede yaşadığımı sordu.

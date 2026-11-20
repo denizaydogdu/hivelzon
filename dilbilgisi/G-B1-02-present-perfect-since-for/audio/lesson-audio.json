@@ -305,17 +305,22 @@
   },
   {
    "card": "c07",
+   "type": "seeInStory",
+   "segments": []
+  },
+  {
+   "card": "c08",
    "type": "rule",
    "segments": [
     {
-     "id": "c07-tr",
+     "id": "c08-tr",
      "lang": "tr",
      "role": "narration",
      "text": "Geçmişte başlayıp hâlâ süren durum için yardımcı fiil ve fiilin üçüncü hâli kullanılır. Başlangıç anı için bir kelime, süre için başka bir kelime gelir.",
      "textSha256": "91cf34a468978b389282b10f5e1673a28ceb5e9409aaa3efa685b5e27b845a18",
      "chars": 152,
-     "audio": "tr/c07-tr.mp3",
-     "align": "tr/c07-tr.align.json",
+     "audio": "tr/c08-tr.mp3",
+     "align": "tr/c08-tr.align.json",
      "present": true,
      "duration": 9.95,
      "quality": {
@@ -332,14 +337,14 @@
      }
     },
     {
-     "id": "c07-ex1",
+     "id": "c08-ex1",
      "lang": "en",
      "role": "example",
      "text": "I've lived here since 2020.",
      "textSha256": "fb2b5f7309fd0b2c70c0a00782ca6c1f4404ec3fa9312560f55c6c98c435fcdd",
      "chars": 27,
-     "audio": "en/c07-ex1.mp3",
-     "align": "en/c07-ex1.align.json",
+     "audio": "en/c08-ex1.mp3",
+     "align": "en/c08-ex1.align.json",
      "present": false,
      "duration": null,
      "quality": null

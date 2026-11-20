@@ -42,6 +42,12 @@ x Did you used to live here? | Soruda d düşer: use to.
 ! Olumsuzda didn't ve use to.
 ? say | I used to live in a small village. | Eskiden küçük bir köyde yaşardım.
 
+## seeInStory
+- book B1-K04 p01 | She used to draw every day.
+- book B1-K01 p06 | "This square used to be the happiest place in the mountains," she said.
+- book B1-K03 p05 | She used to eat a lot of pasta when she was a student.
+- book B1-K04 p18 | A boy who used to be afraid of the dark.
+
 ## rule
 Geçmişte düzenli olan ama artık olmayan şeyler için bu kalıp ve yalın fiil kullanılır. Soru ve olumsuzda geçmiş yardımcı fiili gelir, kalıbın sonundaki d düşer.
 + I [[used to live]] in a village. | Eskiden bir köyde yaşardım.
