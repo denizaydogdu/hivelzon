@@ -2,7 +2,7 @@
 
 - **Durum:** Devam ediyor — **üretim bitti, 30 kitabın tamamı sesli** (626 sayfa; A1–B1 2026-11-03, commit `d2d81c0`, CI `41690063999` yeşil; B2/C1/C2 ve söyleniş düzeltmeleri 2026-11-03/04, commit `fd56543`, CI `41798860052` yeşil); kullanıcının kulakla kontrolü ve editör kontrolü bekliyor; kabulden önce `bitenler/`e taşınmaz
 - **Tür:** İçerik hattı (Alania TTS + Duyu) + mobil arayüz
-- **Öncelik:** Orta (Alania kampanyası 14 Kasım 2026'ya kadar ücretsiz ve sınırsız)
+- **Öncelik:** Orta (ücretsiz kampanya 14 Kasım 2026'da bitti; yeni üretim 0,75 TL/1.000 karakter tarifesi ve kullanıcı maliyet onayı gerektirir)
 - **Bağımlılık:** H-086 (Sayfanın Türkçesi), H-083 ("Türkçe konuşan her yer Alania"), H-104 (desen ve ders)
 - **Kullanıcı onayı:** 2026-11-03
 

@@ -119,7 +119,7 @@ A1–C2, seviye başına 5 kitap, toplam 30. Kararlar: önce 2 pilot kitap, Elev
 - H-039, H-040, H-041 ve H-042 H-038'den sonra.
 - H-043, sonra H-044 en son.
 
-### Son ürün iyileştirmeleri (H-098…H-105)
+### Son ürün iyileştirmeleri ve kayıt doğrulaması (H-098…H-107)
 
 | İş | Kapsam | Durum |
 |---|---|---|
@@ -131,6 +131,8 @@ A1–C2, seviye başına 5 kitap, toplam 30. Kararlar: önce 2 pilot kitap, Elev
 | **H-103** | Alt menü "Hikâye" → **Öğren**; simgeli Hikâye · Kitaplık · Dilbilgisi seçicisi, son bölüm cihazda hatırlanır, Hi turuna Öğren adımı (K-30 güncellendi). | 🔄 (commit `2988672`; kullanıcı denemesi bekliyor) |
 | **H-104** | Konuş'ta Hi'nin Türkçe yönlendirmeleri (giriş, görev, tur görevi, kibar tepki, ipucu; 32 yer) Alania ile sesli; sade "dinle" düğmesi, otomatik oynatma yok. | 🔄 (commit `d2d81c0`, söyleniş düzeltmeleri `fd56543`; kullanıcının kulakla kontrolü + editör bekliyor) |
 | **H-105** | Kitapta "Sayfanın Türkçesi" Alania ile sesli ("Türkçesini dinle", yalnız dokununca); 30 kitap, 626 sayfa (A1–B1 137.491, B2–C2 610.024 karakter), 0 TL. | 🔄 (commit `d2d81c0` + `fd56543`; üretim bitti; kulakla kontrol bekliyor) |
+| **H-106** | Açılışta hatırlatma yeniden kurulamadı; native assets önbelleği/temizlik kuralı düzeltildi. | 🔄 (`954b0bd`; kullanıcı simülatör doğrulaması bekliyor) |
+| **H-107** | Higgsfield ticari çıktı koşulu ve B5–B12 ses hesabı/planı bölüm hak dosyalarında belgelendi; sesli kitap durum kayıtları düzeltildi. | ✅ (`ce0bfb7`, `6e885b9`; editör onayı ayrı bekliyor) |
 
 Ayrıntı: `bitenler/H-098-canli-arayuz-geri-bildirimi.md`, `bitenler/H-099-ana-sayfa-kisisel-oneriler.md`, `bitenler/H-100-hi-panel-kisisel-durum.md`, `devam-edenler/H-102-bilgi-kartlari-profile-kompakt-dugmeler.md`, `devam-edenler/H-103-ogren-sekmesi-simgeli-secici.md`, `devam-edenler/H-104-konus-hi-turkce-sesleri.md`, `devam-edenler/H-105-kitap-turkcesi-sesli.md`, `docs/ARAYUZ-METINLERI.md` §3.1 ve §10.
 

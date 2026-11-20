@@ -3,7 +3,7 @@
 - **Durum:** Devam ediyor — sesler üretildi, kod ve testler yeşil (2026-11-03), commit `d2d81c0` (CI `41690063999` yeşil); söyleniş düzeltmeleri commit `fd56543` (CI `41798860052` yeşil). Kullanıcının kulakla kontrolü (şüpheli: "where is the bus stop" kısmen, "Pier 3") ve editör kontrolü bekliyor; kabulden önce `bitenler/`e taşınmaz
 - **Tür:** İçerik hattı (Alania TTS) + mobil arayüz
 - **Öncelik:** Orta
-- **Bağımlılık:** H-083 ("Türkçe konuşan her yer Alania"), H-090 (Konuş), H-055, H-075…H-082 (Alania kampanyası 14 Kasım 2026'ya kadar ücretsiz)
+- **Bağımlılık:** H-083 ("Türkçe konuşan her yer Alania"), H-090 (Konuş), H-055, H-075…H-082. Alania ücretsiz kampanyası 14 Kasım 2026'da sona erdi; yeni üretim için maliyet/onay gerekir.
 - **Kullanıcı onayı:** 2026-11-03
 
 ## Kapsam
@@ -66,7 +66,8 @@ ile seslendirilir (rol `hi`, ses `alania2-f1`):
 
 - **Güncel durum (2026-11-04, `fd56543`):** Düzeltmelerden sonra hâlâ şüpheli olanlar: ask-the-way "where is the bus
   stop" (kısmen düzeldi) ve meet-note "Pier 3". Kullanıcı simülatör denemesinde kulakla dinler; gerekirse yalnız o
-  sesler yeniden üretilir (Alania kampanyası 14 Kasım 2026'ya kadar ücretsiz).
+  sesler ancak kullanıcı maliyeti onaylarsa yeniden üretilir (14 Kasım 2026 ücretsiz kampanyası sona erdi;
+  güncel kayıtlı tarife 0,75 TL/1.000 karakter, üretim öncesinde teyit edilir).
 - **Yazım denemesi (2026-11-04, commit edilmedi):** Kısa deneme seslerinde 2–4 yazım, her biri 1–2 kez Alania + Duyu ile
   karşılaştırıldı (deneme ≈ 1.900 karakter, 0 TL; yalnız iyileşme açıksa uygulandı).
   - ask-the-way t1-d1 "where is the bus stop": vır iz dı bas stap ("bastili/bastild", %82–94) · ver iz dı bus stop

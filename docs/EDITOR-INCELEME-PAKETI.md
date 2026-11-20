@@ -1,5 +1,7 @@
 # Öğretmen / editör inceleme paketi
 
+> **2026-11-20 güncellemesi (H-107):** B5–B12 İngilizce ses hesabı/planı ve Higgsfield Terms of Use §4.4 (resmî 2026-10-23 sürümü) bölüm hak dosyalarına işlendi (`ce0bfb7`, `6e885b9`). Bu kayıtlar editör onayı yerine geçmez; bölüm `content.json` durumları DRAFT/PENDING olarak kalır. Dört lint 0 hata; bölüm 30, kitap 205, dilbilgisi 606, reel 6 uyarı. Aşağıdaki 2026-10/11 sayımlarının tarihi tarihsel ölçümdür.
+
 > **Durum:** Hazır, editör bekliyor (2026-10-30; güncelleme 2026-11-03: Octanove C1/C2 ve Alania Türkçe sesleri, `d2d81c0`; 2026-11-04: 30 kitabın Türkçe sayfa sesleri tamam, `fd56543`). Depo `e22e5d2` üzerinde sayıldı.
 > **Karar:** H-028 (`bitenler/H-028-onay-ve-icerik-kapasitesi.md`). Claude üretir, kullanıcı onaylar, ünite sonunda öğretmen ya da editör toplu kontrol yapar.
 > **Bu belge:** Editörün tek giriş noktası. Önce §1–§4'ü okuyun, sonra §5'teki föylere geçin.
@@ -439,6 +441,7 @@ $P tools/content-pipeline/reel_lint.py reeller/*-R-*
 - **Yeniden koşu (2026-11-03, Octanove eklendikten sonra):** `book_lint` 30 kitap 0 hata/145 uyarı · `grammar_lint` 71 ders 0 hata/606 uyarı · `content_lint` (kurgu, klipsiz) 13 bölüm 0 hata/25 uyarı · `reel_lint` 18 reel 0 hata/6 uyarı. "C1/C2 kapsama denetlenmedi" uyarıları kalktı; G-C2-02 ve G-C2-03'te sözlükle tamamlanan kapsama uyarısı var.
 - **Yeniden koşu (2026-11-03 akşam, `d2d81c0`, H-104/H-105 sonrası):** `content_lint` bölümler 0 hata/30 uyarı · `book_lint` 30 kitap 0 hata/149 uyarı · `grammar_lint` 71 ders 0 hata/606 uyarı · `reel_lint` 18 reel 0 hata/6 uyarı; CI `41690063999` yeşil.
 - **Yeniden koşu (2026-11-04, `fd56543`, H-105 B2–C2 sonrası):** `content_lint` bölümler 0 hata/30 uyarı · `book_lint` 30 kitap 0 hata/205 uyarı (artış Türkçe ses hizalama uyarıları) · `grammar_lint` 71 ders 0 hata/606 uyarı · `reel_lint` 18 reel 0 hata/6 uyarı; CI `41798860052` yeşil.
+- **Yeniden koşu (2026-11-20, H-107 belge turu):** içerik pytest 417 geçti; `content_lint` 13 bölüm ve bağlı dosyalar 0 hata/30 uyarı · `book_lint` 30 kitap 0 hata/205 uyarı · `grammar_lint` 71 ders 0 hata/606 uyarı · `reel_lint` 18 reel 0 hata/6 uyarı. Mobil/backend bu turda yeniden çalıştırılmadı; son CI `41815301690` önceki kod commit'i `954b0bd` içindir.
 - Bu sayılar `docs/HANDOFF-2026-10-30.md` §5'teki son doğrulamayla (kitap 30/0, dilbilgisi 71/0) uyumludur.
 - Not: Yukarıdaki tablo `e22e5d2` koşusudur; o sırada `reel_lint` kapsama denetlemiyordu (H-094 §4 B).
 - **Yeniden koşu (2026-10-30 akşam, `e7e7712`):** `content_lint` 13 bölüm 0 hata/25 uyarı · `book_lint` 30 kitap 0 hata/145 uyarı · `grammar_lint` 71 ders 0 hata/616 uyarı · `reel_lint` 18 reel 0 hata/6 uyarı (kapsama denetimi eklendi, `788d775`; 6 reel %98 altında, sözlükle %100). Dört lint de CI'da; CI `41070330880` yeşil.

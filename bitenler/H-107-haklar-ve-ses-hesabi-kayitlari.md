@@ -1,6 +1,6 @@
 # H-107: Haklar ve ses hesabı kayıtlarının doğrulanması
 
-- **Durum:** ✅ Bitti (2026-11-20). Commit `ce0bfb7`, GitHub'a gönderildi.
+- **Durum:** ✅ Bitti (2026-11-20). Kayıt `ce0bfb7`, şartname tarihi düzeltmesi ve takip `6e885b9`; ikisi GitHub'a gönderildi.
 - **Tür:** Belge ve kayıt (içerik hakları)
 - **Faz:** F1 içerik
 - **Bağımlılık:** H-085 (B5–B12 üretimi), H-069/H-071 (kitap sesleri), H-006 ek (ücretsiz seslerin yayında kullanımı)
