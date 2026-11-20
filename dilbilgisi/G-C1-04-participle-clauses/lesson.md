@@ -3,9 +3,10 @@
 > Kanca bizim cümlemiz: S1 ve kitaplarda bu yapı henüz yok. "Hikâyede gör" kartı yok.
 > Ek gösterimi -ing söyleniş sözlüğüyle okunur (-ing → ing); yapı ayrı örnek parçalarında (Sarah) duyulur.
 
-## hook | Yürürken
-Bu cümleyi dinle. Başında özne yok, yalnız bir fiil var; ama kimin yürüdüğünü anlıyoruz. Türkçedeki yürürken sözüne çok benziyor.
-+ [[Walking home]], I saw an old friend. | Eve yürürken eski bir arkadaşımı gördüm.
+## hook | Okurken
+Tomás gerçeği gizleyen bir rapor yazmış. Sayfaları okurken midesi bulanıyor. Başta özne yok, yalnız bir fiil var; Türkçedeki okurken sözüne benziyor.
+- book C1-K04 p19 | Reading them back, he felt slightly sick.
++ [[Reading them back]], he felt slightly sick. | Onları yeniden okurken midesi biraz bulandı.
 
 ## explain | Kısa yan cümle
 Yan cümlenin öznesi ana cümleyle aynıysa, bağlacı ve özneyi atıp cümleyi kısaltabilirsin. Etken ve aynı anda olan işlerde fiile -ing eki gelir. Türkçedeki yürürken, görünce, gülerek gibi biçimlere benzer.

@@ -3,9 +3,10 @@
 > Kanca bizim cümlemiz: S1 ve kitaplarda bu yapı henüz yok. "Hikâyede gör" kartı yok.
 > Ek gösterimi -ing söyleniş sözlüğüyle okunur (-ing → ing).
 
-## hook | İki saattir
-Bu cümleyi dinle. Bekleme iki saat önce başladı ve hâlâ sürüyor. Türkçede bekliyorum deriz, ama İngilizce burada şimdiki zamanı kullanmaz.
-+ [[I've been waiting]] for two hours. | İki saattir bekliyorum.
+## hook | Bir haftadır
+Genç araştırmacı, tepenin neden şarkı söylediğini bir haftadır çözmeye çalışıyor. Türkçede çalışıyorum deriz, ama İngilizce burada şimdiki zamanı kullanmaz.
+- book B2-K02 p07 | "I've been trying to understand this for a week," he told Defne, "and I've got more questions now than when I started."
++ [[I've been trying]] to understand this for a week. | Bir haftadır bunu anlamaya çalışıyorum.
 
 ## explain | Başladı ve sürüyor
 Geçmişte başlayıp şu ana kadar süren bir eylem için bu yapı kullanılır. Önce yardımcı fiil, sonra olmak fiilinin üçüncü hâli, en sonda -ing ekli fiil gelir. O için yardımcı fiil biraz değişir.

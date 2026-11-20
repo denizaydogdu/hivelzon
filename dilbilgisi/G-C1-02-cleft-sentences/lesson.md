@@ -3,9 +3,10 @@
 > Kanca bizim cümlemiz: S1 ve kitaplarda bu yapı henüz yok. "Hikâyede gör" kartı yok.
 > Türkçe anlatımda İngilizce kelime yok; yapı ayrı örnek parçalarında (Sarah) duyulur.
 
-## hook | Annem değil, büyükannem
-Bu cümleyi dinle. Konuşan, ona yemek yapmayı kimin öğrettiğini özellikle vurguluyor: annesi değil, büyükannesi. İngilizcede bunun için cümle ikiye bölünür.
-+ [[It was my grandmother who]] taught me to cook. | Bana yemek yapmayı öğreten büyükannemdi.
+## hook | Jeneratörü kim buldu?
+Otelde ışıklar gitmiş ve herkes jeneratörü arıyor. Anlatıcı, onu kimin bulduğunu özellikle vurguluyor. İngilizcede bunun için cümle ikiye bölünür.
+- book C1-K01 p20 | It was Theo, in the end, who found the generator, and it was Mr Crane who knew how to start it.
++ [[It was Theo who]] found the generator. | Jeneratörü bulan Theo'ydu.
 
 ## explain | Vurgu için bir çerçeve
 İngilizcede kelime sırası sabittir, bu yüzden vurgu için cümle ikiye bölünür. Vurgulanan parça baştaki bir çerçevenin içine yerleşir. Geri kalanı, arkadan gelen bir sıfat cümleciği gibi eklenir.

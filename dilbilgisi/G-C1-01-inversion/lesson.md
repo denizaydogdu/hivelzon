@@ -3,9 +3,10 @@
 > Kanca bizim cümlemiz: S1 ve kitaplarda bu yapı henüz yok. "Hikâyede gör" kartı yok.
 > Türkçe anlatımda İngilizce kelime yok; yapı ayrı örnek parçalarında (Sarah) duyulur.
 
-## hook | Soru gibi, ama soru değil
-Bu cümleyi dinle. Konuşan, hayatında gördüğü en güzel manzarayı anlatıyor. Cümle olumsuz bir kelimeyle başlıyor ve ardından soru gibi bir sıra geliyor.
-+ [[Never have I seen]] such a beautiful sunset. | Hayatımda hiç bu kadar güzel bir gün batımı görmedim.
+## hook | Bundan kötüsünü görmedim
+Otel görevlisi gizlice bir kedi saklıyor ve çok kötü yalan söylüyor. Bir misafir bunu iğneleyerek söylüyor. Cümle olumsuz bir kelimeyle başlıyor, ardından soru sırası geliyor.
+- book C1-K01 p19 | "Never have I met a worse one."
++ [[Never have I met]] a worse one. | Bundan daha kötü bir yalancı hiç görmedim.
 
 ## explain | Sıra değişir
 Olumsuz ya da kısıtlayıcı bir ifade cümlenin başına geçerse sıra değişir. Yardımcı fiil öznenin önüne gelir, tıpkı soruda olduğu gibi. Ama cümle soru değildir; güçlü bir vurgudur.

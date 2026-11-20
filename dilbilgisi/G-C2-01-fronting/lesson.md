@@ -4,8 +4,9 @@
 > Türkçe anlatımda İngilizce kelime yok; yapı ayrı örnek parçalarında (Sarah) duyulur.
 
 ## hook | Hiç haberi yoktu
-Bu cümleyi dinle. Hikâyenin heyecanlı bir yerinde anlatıcı, okura karakterin bilmediği bir şeyi fısıldıyor. Cümle az anlamında bir kelimeyle başlıyor ve sıra yine değişiyor.
-+ [[Little did she know]] that the letter would change everything. | Mektubun her şeyi değiştireceğinden hiç haberi yoktu.
+Haritacı Amira boş bir vadide yorgun bekliyor. Telefondaki iş arkadaşı vazgeçmesini istiyor; anlatıcı, onun bilmediği bir şeyi okura fısıldıyor. Cümle az anlamında bir kelimeyle başlıyor.
+- book C2-K02 p12 | Little did Gavin know how much she wanted to agree with him.
++ [[Little did Gavin know]] how much she wanted to agree with him. | Amira'nın onunla aynı fikirde olmayı ne kadar istediğinden Gavin'in hiç haberi yoktu.
 
 ## explain | Az kelimesiyle başlamak
 Hiç bilmiyordu anlamını güçlü vermek için az anlamındaki kelime başa alınır. Ardından devrik yapıdaki gibi yardımcı fiil özneden önce gelir. Bu kalıp çoğu zaman bilmek, fark etmek, tahmin etmek gibi fiillerle kullanılır.
@@ -49,7 +50,7 @@ x Such the noise was that nobody slept. | Önce such ve olmak fiili, sonra özne
 ? say | Little did she know that the letter would change everything. | Mektubun her şeyi değiştireceğinden hiç haberi yoktu.
 
 ## seeInStory
-- book C2-K02 p12 | Little did Gavin know how much she wanted to agree with him.
+- book C2-K01 p09 | Little did Edmund suspect, as he copied it into his notebook with a small nod of respect, whose work he was admiring.
 - book C2-K02 p26 | Such was the stillness of the air that Amira could hear, from the green, a dog barking somewhere on the far side of the ridge.
 - book C2-K02 p13 | So quietly did it appear that she could not afterwards say where the forest had ended.
 - book C2-K03 p12 | Such was the heat of the exchange that Barry began to carry a bottle of water.

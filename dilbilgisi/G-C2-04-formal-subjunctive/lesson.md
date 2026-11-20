@@ -3,9 +3,10 @@
 > Kanca bizim cümlemiz: S1 ve kitaplarda bu yapı henüz yok. "Hikâyede gör" kartı yok.
 > Türkçe anlatımda İngilizce kelime yok; yapı ayrı örnek parçalarında (Sarah) duyulur.
 
-## hook | Gerekirse
-Bu cümleyi dinle. Otel ya da şirket yazılarında çok görülür. Koşul bağlacı yok; yardımcı fiil başa geçmiş ve şart anlamı veriyor.
-+ [[Should you need]] any help, please contact us. | Yardıma ihtiyacınız olursa lütfen bize ulaşın.
+## hook | Açarsan
+Dilek Hanım anlatıcıya kapalı bir zarf veriyor. Zarfı erken açarsa bunu bilemeyeceğini söylüyor. Koşul bağlacı yok; yardımcı fiil başa geçmiş.
+- book C2-K05 p19 | "Should you open it before the ninth chapter is finished," she said, "I shall not know, of course.
++ [[Should you open]] it before the ninth chapter is finished, I shall not know. | Dokuzuncu bölüm bitmeden açarsan, ben bilemem tabii.
 
 ## explain | Bağlaçsız şart
 Resmî dilde koşul bağlacı düşebilir; o zaman yardımcı fiil özneden önce gelir. Olası durumda öğüt veren yardımcı fiil, gerçek dışı geçmişte sahip olmak fiilinin geçmişi başa gelir. Anlam aynıdır, yalnız daha resmîdir.

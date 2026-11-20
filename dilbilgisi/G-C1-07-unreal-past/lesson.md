@@ -3,9 +3,10 @@
 > Kanca bizim cümlemiz: S1 ve kitaplarda bu yapı henüz yok. "Hikâyede gör" kartı yok.
 > Türkçe anlatımda İngilizce kelime yok; yapı ayrı örnek parçalarında (Sarah) duyulur.
 
-## hook | Gitme vakti
-Bu cümleyi dinle. Saat geç olmuş ve konuşan eve gitmek istiyor. Fiil geçmiş biçimde, ama gitmek şimdi olacak.
-+ [[It's time we went]] home. | Artık eve gitme vakti.
+## hook | Eve dönme vakti
+Lena aradığı köprüyü bulamamış. Eve dönme vaktinin çoktan geldiğini kendine söylüyor. Fiil geçmiş biçimde, ama dönmek şimdi olacak.
+- book C1-K02 p23 | It was high time I went home, I told myself.
++ [[It was high time I went]] home. | Eve dönme vaktim çoktan gelmişti.
 
 ## explain | Geçmiş biçim, şimdiki anlam
 Dilek dersinde gördüğün gibi, geçmiş biçim bazen zamanı değil, gerçekten uzaklığı gösterir. Bu derste üç kalıpta aynı şey olur. Anlatılan şey şimdi ya da gelecek, ama fiil geçmiş biçimdedir.
@@ -51,7 +52,7 @@ x I'd rather you come tomorrow. | Başka bir kişiden sonra geçmiş biçim geli
 - book C1-K01 p11 | With respect, it is high time you told us the truth."
 - book C1-K01 p21 | "I would rather you didn't," said Ambrose.
 - book C1-K02 p06 | He patted the rail as if it were his dog.
-- book C1-K02 p23 | It was high time I went home, I told myself.
+- book C1-K02 p12 | He waved me off from the middle of the river, as if I were a ship.
 
 ## rule
 Bu üç kalıpta geçmiş biçim zamanı değil, gerçek dışılığı gösterir. Vakit kalıbından ve başka bir kişiye yönelik tercihten sonra geçmiş biçim gelir. Sanki anlamındaki bağlaçtan sonra da gelebilir.

@@ -51,7 +51,7 @@ x I don't have some money. | Olumsuz cümlede any gelir.
 
 ## seeInStory
 Bu kelimeler hikâyede ve kitaplarda da var. Şu cümlelere bir daha bak.
-- episode A1-000 | I have some questions.
+- book A1-K02 p11 | On the wall, there are many photos.
 - episode A1-009 | Some cake for you!
 - book A1-K01 p02 | There is not much sun here.
 - book A2-K05 p10 | "There aren't any trees on the beach."

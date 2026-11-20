@@ -3,9 +3,10 @@
 > Kanca bizim cümlemiz: S1 ve kitaplarda bu yapı henüz yok. "Hikâyede gör" kartı yok.
 > Türkçe anlatımda İngilizce kelime yok; yapı ayrı örnek parçalarında (Sarah) duyulur.
 
-## hook | İki fikri bağlamak
-Bu iki cümleyi dinle. İkinci cümle bir karşı fikir getiriyor, ama ilk cümleyi silmiyor. Baştaki kısa ifade iki fikri yumuşakça bağlıyor.
-+ The plan is expensive. [[That said]], it may save money in the long term. | Plan pahalı. Bununla birlikte uzun vadede para kazandırabilir.
+## hook | Yine de
+Çevirmen bir kelimeyi sonunda Türkçe bırakıyor ve bunun korkakça olduğunu kabul ediyor. Sonraki cümle bir karşı fikir getiriyor, ama öncekini silmiyor.
+- book C2-K05 p05 | Even so, it was the first honest decision I had made about the book.
++ [[Even so]], it was the first honest decision I had made about the book. | Yine de kitapla ilgili verdiğim ilk dürüst karardı.
 
 ## explain | Yön levhaları
 Söylem belirleyicileri, okura sıradaki cümlenin nereye gittiğini söyleyen yön levhalarıdır. Kimisi zıtlık, kimisi ekleme, kimisi sonuç bildirir. Doğru levhayı seçmek için iki cümlenin gerçek ilişkisine bakarsın.

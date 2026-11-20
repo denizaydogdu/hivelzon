@@ -30,3 +30,5 @@ Aşağıdaki satırları `tts_lesson.py` yazar.
 | 2026-10-14T14:38:27Z | c06-tr | duyu-1 | - | - | - | 14.27 | - | d46e73277dc15137 |
 | 2026-10-14T14:38:30Z | c08-tr | alania-v2 | alania2-f1 | alania-v2.1 | 149 | 10.27 | d2fba8e4d1aa46e6b0a9cd1f35d92228 | 7138f767339bb901 |
 | 2026-10-14T14:38:32Z | c08-tr | duyu-1 | - | - | - | 10.27 | - | 7138f767339bb901 |
+| 2026-11-20T16:01:30Z | c01-tr | alania-v2 | alania2-f1 | alania-v2.1 | 166 | 11.2 | 14598f4c68a644b68f018441bcdc2513 | 45cd783f67b2a44f |
+| 2026-11-20T16:01:33Z | c01-tr | duyu-1 | - | - | - | 11.2 | - | 45cd783f67b2a44f |

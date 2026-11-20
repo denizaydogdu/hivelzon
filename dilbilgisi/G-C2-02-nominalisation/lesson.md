@@ -4,8 +4,9 @@
 > Ek gösterimi -ing söyleniş sözlüğüyle okunur (-ing → ing); yapı ayrı örnek parçalarında (Sarah) duyulur.
 
 ## hook | Olay bir isimde
-Bu cümleyi dinle. Bir kurumun duyurusu gibi resmî ve yoğun. Toplantının ertelenmesi diyor; olayı fiille değil, isimle anlatıyor.
-+ [[The postponement of the meeting]] caused confusion. | Toplantının ertelenmesi kafa karışıklığına yol açtı.
+Kütüphanede birisi bir sözlükten parça kesmiş. Resmî görevli kimseyi suçlamıyor; olayı fiille değil, isimle anlatıyor.
+- book C2-K01 p07 | "It would appear," he said, "that there has been an incidence of damage to stock."
++ There has been [[an incidence of damage]] to stock. | Kitaplarda bir hasar vakası meydana gelmiştir.
 
 ## explain | Fiilden isme
 Adlaştırmada bir fiil ya da sıfat isme dönüşür ve cümlenin öznesi ya da nesnesi olur. Kimin yaptığı çoğu zaman cümleden çıkar, olay tek bir isimde toplanır. Bu, metni kısaltır ve daha resmî gösterir.

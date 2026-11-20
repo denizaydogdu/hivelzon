@@ -4,8 +4,9 @@
 > Türkçe anlatımda İngilizce kelime yok; yapı ayrı örnek parçalarında (Sarah) duyulur.
 
 ## hook | Söylenene göre
-Bu cümleyi dinle. Konuşan, kalenin perili olduğuna kendisi inanmıyor; yalnızca anlatılanı aktarıyor. Türkçedeki söyleniyor sözü gibi mesafeli bir anlam taşır.
-+ [[It is said that]] the castle is haunted. | Kalenin perili olduğu söyleniyor.
+Tomás küçük bir dağ köyüne geliyor. Anlatıcı, köylülerin yabancılara geç güvendiğini kendisi iddia etmiyor; yalnızca söyleneni aktarıyor. Türkçedeki söylenir sözü gibi mesafelidir.
+- book C1-K04 p05 | It is said that mountain villages are slow to trust strangers.
++ [[It is said that]] mountain villages are slow to trust strangers. | Dağ köylerinin yabancılara geç güvendiği söylenir.
 
 ## explain | Birinci yol: boş özneyle
 Cümle boş bir özneyle başlar, ardından edilgen bir söyleme fiili ve bağlaç gelir. Sonra haberi tam bir cümle olarak verirsin. Söyleme fiili yerine inanmak, düşünmek, bildirmek gibi fiiller de gelir.

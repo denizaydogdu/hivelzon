@@ -4,8 +4,9 @@
 > Ek gösterimi -ing söyleniş sözlüğüyle okunur (-ing → ing).
 
 ## hook | Yarın bu saatte
-Bu cümleyi dinle. Yarın bu saatte konuşan kişi uçakta olacak ve uçuş sürüyor olacak. Türkçedeki uçuyor olacağım sözü burada çok iyi bir köprüdür.
-+ This time tomorrow, [[I'll be flying]] to Berlin. | Yarın bu saatte Berlin'e uçuyor olacağım.
+Bruno, sevgilisinin babasıyla bir türlü konuşamıyor. Yarın bu saatte yine onun sofrasında oturuyor olacak. Türkçedeki oturuyor olacağım sözü iyi bir köprüdür.
+- book B2-K03 p17 | This time tomorrow, I'll be sitting at his table again, and he'll be leaving the room again."
++ This time tomorrow, [[I'll be sitting]] at his table again. | Yarın bu saatte yine onun masasında oturuyor olacağım.
 
 ## explain | O anda sürüyor olacak
 Gelecekteki belli bir anı düşün. O anda sürecek eylem için gelecek kelimesi, olmak fiili ve -ing ekli fiil gelir. Türkçedeki yapıyor olacağım sözü buna karşılık gelir.

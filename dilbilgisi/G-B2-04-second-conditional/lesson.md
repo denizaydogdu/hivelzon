@@ -2,9 +2,10 @@
 > Dalga 2 B2 (H-081). Taslak: kullanıcı onayı ve öğretmen kontrolü bekliyor.
 > Kanca bizim cümlemiz: S1 ve kitaplarda bu yapı henüz yok. "Hikâyede gör" kartı yok.
 
-## hook | Bir hayal
-Bu cümleyi dinle. Konuşanın arabası yok, yalnızca olsaydı diye hayal ediyor. Fiil geçmiş biçimde duruyor, ama anlatılan şey şimdi.
-+ [[If I had]] a car, [[I wouldn't wait]] for the bus. | Arabam olsa otobüs beklemezdim.
+## hook | Onların yerinde olsam
+Kofi'nin annesi kararı verenleri anlamaya çalışıyor. Onların yerinde değil, yalnızca öyle olduğunu hayal ediyor. Fiil geçmiş biçimde, ama anlatılan şey şimdi.
+- book B2-K04 p04 | "And honestly, Kofi, if I were in their position, I might do the same.
++ [[If I were]] in their position, [[I might do]] the same. | Onların yerinde olsam ben de aynısını yapabilirdim.
 
 ## explain | Gerçek değil, hayal
 Şu an gerçek olmayan bir durumu hayal ederken koşul tarafında geçmiş biçim kullanılır. Sonuç tarafında olurdu anlamı veren bir kelime ve yalın fiil gelir. Buradaki geçmiş biçim zamanı değil, gerçekten uzaklığı gösterir.

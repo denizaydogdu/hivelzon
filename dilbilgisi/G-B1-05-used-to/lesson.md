@@ -2,9 +2,10 @@
 > Dalga 2 B1 (H-081). Taslak: kullanıcı onayı ve öğretmen kontrolü bekliyor.
 > İngilizce bölüm ve kitap metinlerinde "used to" yok. Kanca, prologdaki (A1-000 Sahne 2) babaanne Nermin'in Türkçe repliğine ("Orada iyi çekerdi…") dayanır; Türkçe replik bağ olarak çözülemediği için kancada bağ yok (grammar-lint uyarısı). "Hikâyede gör" kartı yok.
 
-## hook | Orada iyi çekerdi
-Hikâyenin ilk sahnelerinde babaanne Nermin, telsiz için orada iyi çekerdi diyor. Bu erdi eki, geçmişte olan ama artık olmayan bir şeyi anlatıyor. İngilizcede bunun için kısa bir kalıp var, dinle.
-+ The signal [[used to be]] good there. | Orada iyi çekerdi.
+## hook | Her şeyi yakardı
+Kitaplıktaki Priya'nın annesi gençken hiç yemek yapamıyormuş. Eski komşusu Kamala bunu gülerek anlatıyor: her şeyi yakardı. Bu erdi eki, geçmişte olan ama artık olmayan bir alışkanlığı gösteriyor.
+- book B1-K03 p17 | She used to burn everything, even bread.
++ She [[used to burn]] everything, even bread. | Eskiden her şeyi yakardı, ekmeği bile.
 
 ## explain | Eskiden, artık değil
 Geçmişte düzenli olan ama artık olmayan alışkanlık ve durumlar için bu kalıp kullanılır. Kalıptan sonra fiil yalın gelir. Ben, sen, o, biz, siz ve onlar için biçim aynıdır.

@@ -4,8 +4,9 @@
 > Türkçe anlatımda İngilizce kelime yok; yapı ayrı örnek parçalarında (Sarah) duyulur.
 
 ## hook | Hiç gerek yoktu
-Bu cümleyi dinle. Misafir bir hediye getirmiş, ev sahibi de teşekkür ediyor. Hediye geldi, ama hiç gerek yoktu diyor.
-+ Oh, you [[needn't have brought]] a gift! | Ah, hediye getirmene hiç gerek yoktu!
+Genç aşçı, eski dostları için koca bir oteli hazırlamış. Bir misafir teşekkür ediyor, ama bu kadar zahmete gerek yoktu diyor.
+- book C1-K01 p26 | "You needn't have gone to all this trouble, you know," said Bev.
++ You [[needn't have gone]] to all this trouble. | Bu kadar zahmete hiç gerek yoktu.
 
 ## explain | Gerek yoktu, ama yaptın
 Bir işi yaptın, ama sonradan gereksiz olduğu anlaşıldı. Bunun için gerek yok anlamındaki yardımcı fiil, sahip olmak fiili ve üçüncü hâl gelir. Gerekmediği için hiç yapmadıysan başka bir kalıp kullanılır.

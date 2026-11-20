@@ -4,8 +4,9 @@
 > Türkçe anlatımda İngilizce kelime yok; yapı ayrı örnek parçalarında (Sarah) duyulur.
 
 ## hook | Öyle görünüyor
-Bu cümleyi dinle. Konuşan planın başarısız olduğunu söylüyor, ama kesin konuşmuyor. Elindeki kanıta göre öyle göründüğünü söylüyor; bu dikkatli bir dil.
-+ [[It would appear that]] the plan has failed. | Plan başarısız olmuş gibi görünüyor.
+Emekli bir okul müdürü, komşusunun planını inceliyor ve hiç ikna olmuyor. Kâğıtta yalnızca bir çizgi var gibi göründüğünü yazıyor. Bu kibar dil aslında alaycı.
+- book C2-K03 p05 | It would appear to show a line.
++ It [[would appear]] to show a line. | Bir çizgiyi gösteriyor gibi görünüyor.
 
 ## explain | Yumuşatmak
 Yazıda ve resmî konuşmada iddiaları çoğu zaman yumuşatırız. Görünmek fiilleri, olasılık bildiren yardımcı fiiller ve eğilim kalıbı bu işi yapar. Böylece kanıtın gücü kadar konuşursun, fazlasını değil.

@@ -15,10 +15,10 @@
   "teacherReview": null,
   "linksTo": {
     "episodes": [
-      "A1-000",
       "A1-009"
     ],
     "books": [
+      "A1-K02",
       "A1-K01",
       "A2-K05"
     ]

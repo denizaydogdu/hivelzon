@@ -3,9 +3,10 @@
 > Kanca bizim cümlemiz: S1 ve kitaplarda bu yapı henüz yok. "Hikâyede gör" kartı yok.
 > Türkçe anlatımda İngilizce kelime yok; yapı ayrı örnek parçalarında (Sarah) duyulur.
 
-## hook | Dünkü karar, bugünkü hayat
-Bu cümleyi dinle. Konuşan geçmişte bir işi kabul etmedi; sonucunu ise bugün yaşıyor. Cümlenin iki yarısı iki ayrı zamandan geliyor.
-+ [[If I had taken]] that job, [[I would be]] in London now. | O işi kabul etseydim, şimdi Londra'da olurdum.
+## hook | O gece durmasaydınız
+Genç aşçı, yıllar önce aç kaldığı gece ona çorba alanlara teşekkür ediyor. O gece durmasalardı, bugün aşçı olmayacaktı. Cümlenin iki yarısı iki ayrı zamandan geliyor.
+- book C1-K01 p27 | "If you hadn't all stopped that night, I wouldn't be a cook now.
++ [[If you hadn't all stopped]] that night, [[I wouldn't be]] a cook now. | O gece hepiniz durmasaydınız, şimdi aşçı olmazdım.
 
 ## explain | Geçmiş koşul, şimdiki sonuç
 Üçüncü tipte koşul da sonuç da geçmiştedir. Karışık koşulda koşul geçmişte kalır, ama sonuç bugüne bakar. Bu yüzden koşul tarafı üçüncü tipten, sonuç tarafı ikinci tipten gelir.

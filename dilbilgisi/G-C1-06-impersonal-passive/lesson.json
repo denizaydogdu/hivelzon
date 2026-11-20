@@ -19,12 +19,19 @@
       "C1-K02",
       "C1-K01",
       "C1-K03",
-      "C1-K05"
+      "C1-K05",
+      "C1-K04"
     ]
   },
   "narration": {
     "tr": {
       "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
     }
-  }
+  },
+  "pronunciations": [
+    {
+      "term": "Tomás",
+      "say_as": "Tomas"
+    }
+  ]
 }

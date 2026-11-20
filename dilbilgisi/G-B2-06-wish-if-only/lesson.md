@@ -2,9 +2,10 @@
 > Dalga 2 B2 (H-081). Taslak: kullanıcı onayı ve öğretmen kontrolü bekliyor.
 > Kanca bizim cümlemiz: S1 ve kitaplarda bu yapı henüz yok. "Hikâyede gör" kartı yok.
 
-## hook | Keşke
-Bu cümlede bir dilek var. Konuşan kişi denizden uzakta yaşıyor ve keşke diyor. Fiile dikkat et: şimdiyi anlatıyor, ama geçmiş biçimde.
-+ [[I wish I lived]] near the sea. | Keşke denize yakın yaşasam.
+## hook | Keşke vaktim olsaydı
+Doktor Aydın pencereden şarkı söyleyen tepeye bakıyor. O sesi çok kez duymuş, ama nedenini araştıracak vakti olmamış. Şimdi keşke diyor.
+- book B2-K02 p13 | If only I had had the time to find out why."
++ [[If only I had had]] the time to find out why. | Keşke nedenini bulmaya vaktim olsaydı.
 
 ## explain | Şimdi için keşke
 Şimdiki bir durumun farklı olmasını istiyorsan, dilek fiilinden sonra geçmiş biçim gelir. Yapabilmek için de onun geçmiş biçimi kullanılır. Olmak fiilinde, ikinci tip koşuldaki gibi her kişiyle aynı biçim tercih edilir.

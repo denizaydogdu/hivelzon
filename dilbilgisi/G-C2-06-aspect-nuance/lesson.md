@@ -3,9 +3,10 @@
 > Kanca bizim cümlemiz: S1 ve kitaplarda bu yapı henüz yok. "Hikâyede gör" kartı yok.
 > Türkçe anlatımda İngilizce kelime yok; yapı ayrı örnek parçalarında (Sarah) duyulur.
 
-## hook | Bugün çok sessizsin
-Bu cümleyi dinle. Arkadaşı normalde konuşkan biri, ama bugün hiç sesi çıkmıyor. Konuşan bunun geçici olduğunu fiilin biçimiyle gösteriyor.
-+ [[You're being]] very quiet today. | Bugün çok sessizsin.
+## hook | Zorluk çıkarıyorum
+Editör, çevirmeni kitabı bitirmesi için sıkıştırıyor. Sonra gülüyor ve zorluk çıkardığını kabul ediyor. Bunun geçici olduğunu fiilin biçimiyle gösteriyor.
+- book C2-K05 p07 | "I'm being difficult, aren't I?
++ [[I'm being]] difficult, aren't I? | Zorluk çıkarıyorum, değil mi?
 
 ## explain | Geçici davranış
 Olmak fiili genellikle sürekli biçimde kullanılmaz, çünkü bir durumu anlatır. Ama bir kişinin şu anki davranışını anlatırken sürekli biçim gelir. Böylece bunun kalıcı bir özellik değil, geçici bir davranış olduğunu söylersin.

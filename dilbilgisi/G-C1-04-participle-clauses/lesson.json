@@ -28,6 +28,10 @@
     {
       "term": "-ing",
       "say_as": "ing"
+    },
+    {
+      "term": "Tomás",
+      "say_as": "Tomas"
     }
   ],
   "narration": {

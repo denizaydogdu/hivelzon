@@ -2,9 +2,10 @@
 > Dalga 2 B2 (H-081). Taslak: kullanıcı onayı ve öğretmen kontrolü bekliyor.
 > Kanca bizim cümlemiz: S1 ve kitaplarda bu yapı henüz yok. "Hikâyede gör" kartı yok.
 
-## hook | Kuaförde
-Bu cümleyi dinle. Konuşan kişi saçını kendisi kesmedi, kuaföre kestirdi. İngilizcede bu fark bir ekle değil, ayrı bir yapıyla söylenir.
-+ [[I had my hair cut]] yesterday. | Dün saçımı kestirdim.
+## hook | Çatısını onarttı
+Köyden haber var: Kemal Bey çatısını onartmış. Çatıyı kendisi onarmadı, başkasına yaptırdı. İngilizcede bu fark ayrı bir yapıyla söylenir.
+- book B2-K02 p23 | He has had his roof repaired, and he wants to know when you are coming back.
++ He [[has had his roof repaired]]. | Çatısını onarttı.
 
 ## explain | Yaptın mı, yaptırdın mı?
 Bir işi başkasına yaptırdığında bu yapı kullanılır. Önce sahip olmak fiili, sonra işin yapıldığı nesne, en sonda fiilin üçüncü hâli gelir. Zamanı yalnız ilk fiil gösterir.
@@ -47,7 +48,7 @@ x I made my car repair. | Bu yapıda had ya da got ve üçüncü hâl gelir.
 ? say | I had my hair cut yesterday. | Dün saçımı kestirdim.
 
 ## seeInStory
-- book B2-K02 p23 | He has had his roof repaired, and he wants to know when you are coming back.
+- book B2-K01 p22 | Her son had it taken, I think, for her birthday."
 - book B2-K03 p22 | Nermin Hanım had to have the oven checked by Emre first, just in case.
 - book B2-K04 p03 | A team in white suits took samples from every row and had them tested in the colony's small laboratory.
 - book B2-K05 p18 | Mr Doyle has had the ramp cleared, and the life jackets have been checked twice."
