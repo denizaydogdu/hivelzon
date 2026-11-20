@@ -22,7 +22,7 @@
 | 2026-10-14 | Metin, çeviri ve sözlük taslağı (H-071) | Claude | DRAFT |
 | 2026-10-14 | Metin ve çeviri onayı (H-028) | Kullanıcı | Onaylandı (`ceviri.tr.json` → `APPROVED`; onaylayan: kullanıcı, ürün sahibi) |
 | 2026-10-14 | Görsel maliyet onayı ve üretim (kapak + bölüm başı, 4 görsel) | Kullanıcı | Üretildi: 4 görsel, GPT Image 2.5 (iş kimlikleri `PROMPTS.md`) |
-| 2026-10-30 | Seslendirme (ElevenLabs Creator, ticari; anlatıcı Sarah) | Kullanıcı | Üretildi: c1–c3 (3/3 bölüm), 4378 karakter, Sarah `eleven_v3`; hesap: yeni ücretsiz ElevenLabs anahtarı (`devam-edenler/H-071-kitap-dalgasi-a1-a2.md`, 2026-10-30); yayında kullanım H-006 ek (hukukçu görüşü) |
+| 2026-10-30 | Seslendirme (ElevenLabs, ücretsiz anahtar; anlatıcı Sarah) | Kullanıcı | Üretildi: c1–c3 (3/3 bölüm), 4378 karakter, Sarah `eleven_v3`; hesap: yeni ücretsiz ElevenLabs anahtarı (`devam-edenler/H-071-kitap-dalgasi-a1-a2.md`, 2026-10-30); yayında kullanım H-006 ek (hukukçu görüşü) |
 | 2026-11-03 | Türkçe sayfa sesi (H-105, PatientDesk Alania, kampanya 0 TL) | Kullanıcı | Üretildi: 11 sayfa, 4.181 karakter, `alania2-f1` + Duyu hizalaması (`audio/tr/`) |
 | — | Editör toplu kontrolü | Editör | Bekliyor |
 

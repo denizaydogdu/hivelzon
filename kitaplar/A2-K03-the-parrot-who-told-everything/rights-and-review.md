@@ -21,7 +21,7 @@
 | 2026-10-14 | Metin, çeviri ve sözlük taslağı | Claude | DRAFT |
 | 2026-10-14 | Metin ve çeviri onayı (H-028) | Kullanıcı | Onaylandı (`ceviri.tr.json` → `APPROVED`; onaylayan: kullanıcı, ürün sahibi) |
 | 2026-10-14 | Görsel maliyet onayı ve üretim | Kullanıcı | Üretildi: 15 görsel, GPT Image 2.5 (iş kimlikleri `PROMPTS.md`) |
-| 2026-10-14 | Seslendirme (ElevenLabs, iç kullanım) | Kullanıcı | Üretildi: c1–c3 (3/3 bölüm), 7826 karakter, Sarah `eleven_v3`; hesap: c1–c2 videoGenerator ücretsiz kotası (`kitaplar/_maliyet/elevenlabs-hesap1-karakter.json`), c3 ayrı anahtar; c3 hesabının planı kayıtta yok; ücretsiz hesap sesleri için H-006 ek (hukukçu görüşü) |
+| 2026-10-14 | Seslendirme (ElevenLabs, iç kullanım) | Kullanıcı | Üretildi: c1–c3 (3/3 bölüm), 7826 karakter, Sarah `eleven_v3`; hesap: c1–c2 videoGenerator ücretsiz kotası (`kitaplar/_maliyet/elevenlabs-hesap1-karakter.json`), c3 hesap2, ücretsiz plan (`yapilacaklar/IS-SIRASI.md` 2026-10-14 kaydı; defter `kitaplar/_maliyet/elevenlabs-hesap2-karakter.json`); ücretsiz hesap sesleri için H-006 ek (hukukçu görüşü) |
 | 2026-11-03 | Türkçe sayfa sesi (H-105, PatientDesk Alania, kampanya 0 TL) | Kullanıcı | Üretildi: 14 sayfa, 7.468 karakter, `alania2-f1` + Duyu hizalaması (`audio/tr/`) |
 | — | Editör toplu kontrolü | Editör | Bekliyor |
 
