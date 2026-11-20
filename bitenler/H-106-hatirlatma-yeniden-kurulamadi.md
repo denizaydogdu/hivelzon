@@ -1,6 +1,6 @@
 # H-106: Açılışta "[H042] hatırlatma yeniden kurulamadı: ArgumentError" günlüğü
 
-- **Durum:** 🔄 Kod düzeltildi, simülatör doğrulaması bekliyor (2026-11-04). Günlük artık tür + kısa, kişisel
+- **Durum:** ✅ Bitti (2026-11-20): kök neden 2026-11-04'te bulunup düzeltildi (`954b0bd`); 2026-11-20 simülatör doğrulaması geçti, kullanıcı onayıyla kapandı. Önceki: kod düzeltildi (2026-11-04). Günlük artık tür + kısa, kişisel
   veri içermeyen açıklama + atıldığı kod yerini yazıyor; gerçek kaynak bir sonraki simülatör çalıştırmasında
   bu satırdan okunacak.
 - **Tür:** Hata incelemesi (mobil, günlük hatırlatma)
@@ -104,7 +104,7 @@ gerçek eklenti Dart kodu (iOS hedefi, `IOSFlutterLocalNotificationsPlugin`), ya
 
 ## Kabul kriterleri
 
-- [ ] Hatanın gerçek nedeni (hangi çağrı, hangi argüman) bulunup bu dosyaya yazıldı. — **Kısmen:** zamanlama
+- [x] Hatanın gerçek nedeni (hangi çağrı, hangi argüman) bulunup bu dosyaya yazıldı. — 2026-11-04 öğleden sonra bulundu ("Kök neden bulundu" bölümü). İlk not: zamanlama
   yolu dışlandı, kaynak `store.read()` adımına daraltıldı; kesin yer bir sonraki simülatör günlüğünden okunacak.
 - [x] Neden bir kusursa düzeltildi ve onu yakalayan test eklendi; kusur değilse gerekçesi yazıldı. — Davranış
   kusuru kanıtlanmadı; teşhis eksikliği (yalnız tür) düzeltildi ve testlendi.
@@ -134,4 +134,25 @@ Yeni teşhis günlüğü ilk açılışta kaynağı gösterdi:
 - **Düzeltme:** `flutter clean && flutter pub get` sonrası yeniden derlendi. `objective_c.framework` pakette, `DOBJC` hatası 0, `[H0xx] … okunamadı` satırı yok, Ana Sayfa 2.280 ms'de hazır.
 - **Kalıcı önlem:** `CLAUDE.md` temizlik kuralı değişti. Derleme çıktıları artık `flutter clean && flutter pub get` ile temizleniyor; `.dart_tool/` tek başına bırakılmıyor.
 - Teşhis günlüğü (`reminderErrorSummary`) kalıyor: kaynağı bulan oydu.
-- **Kalan:** Kullanıcı simülatörde Ana Sayfa, Öğren ve hatırlatmayı denedikten sonra `bitenler/`e taşınır.
+- **Kalan:** ~~Kullanıcı simülatörde Ana Sayfa, Öğren ve hatırlatmayı denedikten sonra `bitenler/`e taşınır.~~ 2026-11-20 doğrulandı, `bitenler/`e taşındı.
+
+## Simülatör doğrulaması (2026-11-20, kullanıcı izniyle, Claude Code ajanı)
+
+PIRU iPhone 17, `flutter run` debug (`HEAD 9059f0c`); backend :8080, içerik sunucusu :8787, PostgreSQL + Mailpit docker'da.
+Adımlar `axe` ile simülatörde yapıldı, günlük `flutter run` çıktısından ve sistem günlüğünden (`log stream`) okundu.
+
+| Adım | Sonuç |
+|---|---|
+| 1. Açılış (hatırlatma kapalı) | `[H042]` satırı yok |
+| 3a. Profil → Günlük hatırlatma aç → iOS bildirim izni "Allow" | Açıldı ("Her gün 19:00 civarında"); `[H042]` yok |
+| 3b. Saat 19:00 → 20:00 | Kaydedildi (`app_meta`: `reminder.enabled=1`, `reminder.time=20:00`); `[H042]` yok |
+| 3c. İki kez arka plan → ön plan | `[H054] ön plana döndü` ×2; `[H042]` yok |
+| 3d. Hatırlatma açıkken soğuk açılış (uygulama sonlandırılıp yeniden açıldı) | `[H054]` açılış satırları var, `[H042]` yok |
+
+- Kök neden (2026-11-04 öğleden sonra bulundu: yarım temizlikte `objective_c.framework` pakete girmiyordu) bu
+  çalıştırmada görülmedi: `flutter run` ve sistem günlüğünde `DOBJC`, `[H0xx] … okunamadı` ve "bağlantı kurulamadı"
+  0 satır; Ana Sayfa, Profil, Öğren (Dilbilgisi, Kitaplık), kitap okuyucu ve Konuş verileri yüklendi.
+  Derleme `flutter clean && flutter pub get` kuralından sonraki temiz derlemeydi.
+- Bildirimin 20:00'de gerçekten gelmesi beklenmedi (simülatör iş bitiminde kapatıldı).
+- Simülatördeki deneme verisinde hatırlatma açık kaldı (20:00).
+
