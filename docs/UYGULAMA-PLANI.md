@@ -2,7 +2,7 @@
 
 **Sürüm:** 0.2 · **Tarih:** 2026-10-11 (durum güncellemesi 2026-11-20) · **Durum:** Onaylandı (2026-10-11); uygulama sürüyor.
 
-**2026-11-25 notu:** Bakım turu: H-110, H-112, H-113, H-114 bitti (`main`, pytest 534). H-115 Flutter 3.50.1 (FVM) + H-111 drift 2.35.4/sqlite3 3.9.2 uygulandı ama commit edilmedi; `main`'e alınmadan önce H-117 (material_ui + go_router 18) ve kullanıcı onayları (iOS en düşük 15.0). Yeni işler H-116 (Duyu tavanı, karar), H-117, H-118. Sıradaki boş numara H-119; güncel izleme `yapilacaklar/IS-SIRASI.md`.
+**2026-11-25 notu:** Bakım turu bitti (`main`, CI `45685003221` yeşil): H-110…H-115 ve H-117. Mobil artık Flutter 3.50.1 (FVM, `fvm flutter …`), drift 2.35.4/sqlite3 3.9.2, material_ui + go_router 18; iOS en düşük 15.0. Açık: H-116 (Duyu tavanı, karar), H-118 (küçük). Sıradaki boş numara H-119; güncel izleme `yapilacaklar/IS-SIRASI.md`.
 
 **2026-11-20 notu:** H-107 haklar ve ses hesabı kayıtları tamamlandı (`ce0bfb7`); Higgsfield Terms of Use §4.4'ün resmî 2026-10-23 sürümü kayda geçirildi. H-106 ve kullanıcı simülatör denemesi hâlâ açık, yeni simülatör çalıştırması için açık izin şart. Dördüncü ücretsiz ElevenLabs anahtarı da 2026-11-09'da 401 döndürdü. Alania ücretsiz dönemi 14 Kasım'da bitti; düzeltme için maliyet ve onay gerekir. Sıradaki boş numara H-108. Aşağıdaki 2026-11-03 durum satırı tarihsel kayıttır; güncel izleme `yapilacaklar/IS-SIRASI.md` dosyasındadır.
 **Dayanak:** CLAUDE.md "Onaylı içerik mimarisi kararları" ve "Onaylı oyun tasarımı kararları"; `docs/OYUN-TASARIMI.md`; `docs/ICERIK-MIMARISI.md`.

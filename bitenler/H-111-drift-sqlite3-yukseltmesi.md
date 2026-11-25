@@ -1,6 +1,6 @@
 # H-111: drift / sqlite3 3.x yükseltmesi (`sqlite3_flutter_libs` ömrünü tamamladı)
 
-- **Durum:** Devam ediyor (2026-11-25): Flutter 3.50.1 (H-115) ile drift 2.35.4 / sqlite3 3.9.2 uygulandı, testler ve native derlemeler doğrulandı; **commit edilmedi**, H-115 kararıyla birlikte `main`'e alınacak. Uyumluluk testi `21953d6` ile commitli. Kalan: simülatörde gerçek kurulumda veri kontrolü (izinle).
+- **Durum:** ✅ Bitti (2026-11-25): drift 2.35.4 / sqlite3 3.9.2, `sqlite3_flutter_libs` kaldırıldı; commit `1d26fca` (H-115 ile), CI `45685003221` yeşil; uyumluluk testi `21953d6` değişmeden geçti; simülatörde mevcut kurulumun üzerine yükseltmede 14 tablonun verisi korundu (H-115 kaydı).
 - **Tür:** Bağımlılık bakımı (mobil)
 - **Öncelik:** Orta (bugün çalışıyor; H-044 mağaza yüklemesinden önce çözülmeli)
 - **Bağımlılık:** Flutter SDK yükseltmesi (yeni iş) · H-106 dersi (native assets)

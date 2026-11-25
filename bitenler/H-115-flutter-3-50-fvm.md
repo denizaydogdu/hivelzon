@@ -1,6 +1,6 @@
 # H-115: Flutter 3.50.1'e geçiş (yalnız hiVelzon, FVM)
 
-- **Durum:** ⛔ Kullanıcı kararı bekliyor (2026-11-25): teknik iş bitti, **commit edilmedi — değişiklikler çalışma ağacında**
+- **Durum:** ✅ Bitti (2026-11-25): commit `1d26fca`, CI `45685003221` yeşil (Flutter 3.50.1 `.fvmrc`'den; analyze temiz; Linux 1439 test + 92 golden atlandı). Kullanıcı onayları: iOS en düşük 15.0, ilerleme çubuğu ekran okuyucu metni, simülatör denemesi, commit. H-117 ile birlikte.
   (ayrı dala commit izin sisteminde reddedildi). `main`'e alınmadan önce analyze kararı gerekir (aşağıda).
 - **Tür:** Altyapı (mobil SDK + CI)
 - **Bağımlılık:** H-111 (drift/sqlite3 3.x bunu bekliyordu) · H-117 (`main`e almadan önce)
@@ -30,20 +30,26 @@
 - `fvm flutter analyze`: **175 info** — 174 "`package:flutter/material.dart` kullanımdan kalkıyor, `package:material_ui`
   kullan" + 1 `GlobalMaterialLocalizations`. Başka bulgu yok. CI'da analyze info'da da kırmızı olur.
 
-## Karar bekleyen (kullanıcı)
-1. **material → material_ui (175 info) → H-117:** (a) ayrı iş: go_router 18 + `dart fix` + golden kontrolü (önerilen; o zamana
+## Kararlar (2026-11-25, hepsi verildi)
+1. **material → material_ui (175 info) → H-117 ile çözüldü (seçenek a):** (a) ayrı iş: go_router 18 + `dart fix` + golden kontrolü (önerilen; o zamana
    kadar bu iş `main`'e alınamaz); (b) geçici `deprecated_member_use: ignore` (bütün kullanım dışı uyarıları gizler);
    (c) CI'da `flutter analyze --no-fatal-infos`.
-2. iOS en düşük sürüm 15.0 ve ilerleme çubuğu ekran okuyucu metni.
-3. Simülatör denemesi (izinle): mevcut kurulumda veritabanı yeni SQLite ile açılıyor mu, eşitleme, hatırlatma, ses/video eklentileri SPM derlemesinde çalışıyor mu.
+2. iOS en düşük sürüm 15.0 ve ilerleme çubuğu ekran okuyucu metni — **onaylandı**.
+3. Simülatör denemesi — **yapıldı** (aşağıda): mevcut kurulumda veritabanı yeni SQLite ile açılıyor mu, eşitleme, hatırlatma, ses/video eklentileri SPM derlemesinde çalışıyor mu.
 
-## Dikkat (çalışma ağacı)
-Değişiklikler commit edilmediği için bu klasörde global `flutter` (3.38.5) ile `pub get` artık çözülmez; `fvm flutter`
-kullanılır. Commit edilecek dosyalar: `mobile/` (`.fvmrc`, `.gitignore`, `analysis_options.yaml`, `pubspec.*`, `lib/…`,
-`test/…`, 33 golden, `android/…`, `ios/…` + iki `swiftpm/Package.resolved`), `.github/workflows/ci.yml`, `README.md`,
-`CLAUDE.md`, `tools/device-build.sh`.
+## Not
+Bu depoda komutlar `fvm flutter …` / `fvm dart …` ile çalışır; global Homebrew Flutter 3.38.5 öteki projeler içindir.
 
 ## Geri alma
 `git checkout -- mobile .github/workflows/ci.yml README.md CLAUDE.md tools/device-build.sh` →
 `rm -rf mobile/.fvmrc mobile/.fvm mobile/ios/Runner.xcodeproj/project.xcworkspace/xcshareddata/swiftpm mobile/ios/Runner.xcworkspace/xcshareddata/swiftpm`
 → `cd mobile && flutter clean && flutter pub get && cd ios && pod install`.
+
+## Simülatör denemesi (2026-11-25, kullanıcı izniyle)
+PIRU iPhone 17'deki 2026-11-20 kurulumunun (eski derleme, `sqlite3_flutter_libs`) üzerine Flutter 3.50.1 + drift 2.35.4 +
+material_ui derlemesi kuruldu. Önce veritabanı yedeklendi ve satır sayıları alındı. Sonuç: uygulama açıldı (Ana Sayfa
+2,4 sn), `[H042]`/`DOBJC`/hata satırı yok; veritabanı `user_version` 11, `integrity_check` ok, **14 tablonun satır sayıları
+birebir aynı** (ör. `review_cards` 19, `notebook_items` 19, `gate_progress` 19); ekranda "10 ifadenin tekrar zamanı geldi"
+ve "12 bölümden 4'ü bitti". Cihazda hesap yok → eşitleme devreye girmez (tetikleyiciler uyumluluk testinde doğrulanır).
+Simülatör, backend, içerik sunucusu ve konteynerler kapatıldı; `fvm flutter clean && fvm flutter pub get`, hiVelzon
+DerivedData silindi.

@@ -10,6 +10,6 @@
    Ölçüm betikleri H-114 kaydında anlatıldı.
 2. **Segment denetimi:** `booktr.py`, `lesson.py`, `tts_episode_tr.py`'nin kurduğu parçalar `_check_segments`'ten geçmiyor;
    bozuk `pronunciations` `KeyError` verebilir ya da API'ye gidebilir (bugün 3.141 içerik JSON'unda bozuk kayıt yok).
-3. **Built-in Kotlin göçü (mobil, H-115 sonrası):** `android.builtInKotlin=false` / `android.newDsl=false` AGP 10'da kalkar;
+3. **Built-in Kotlin göçü (mobil; H-115 ile Flutter 3.50.1 geldi):** `android.builtInKotlin=false` / `android.newDsl=false` AGP 10'da kalkar;
    uygulama ve 4 eklenti (flutter_tts, shared_preferences_android, speech_to_text, video_player_android) hâlâ KGP uygular.
 4. **flutter_tts** Swift Package Manager desteklemiyor; tek CocoaPods bağımlılığı.
