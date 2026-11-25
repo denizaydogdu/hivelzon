@@ -1,6 +1,6 @@
 # H-114: Türkçe/İngilizce ses araçlarının sağlamlaştırılması (Codex kancası bulguları)
 
-- **Durum:** ✅ Bitti (2026-11-25): commitler `f92b45f`, `7dfdae4`, `bcffe4b`; pytest 534, Docker Linux'ta reel eşzamanlılık testleri 5/5; CI doğrulaması 2026-11-25 belge commit'iyle (`IS-SIRASI.md` günlüğü). Kalan Duyu tavanı kararı **H-116**, küçük artıklar **H-118**.
+- **Durum:** ✅ Bitti (2026-11-25): commitler `f92b45f`, `7dfdae4`, `bcffe4b`; pytest 534, Docker Linux'ta reel eşzamanlılık testleri 5/5; CI `45675530961` yeşil (mobil, backend, içerik). Kalan Duyu tavanı kararı **H-116**, küçük artıklar **H-118**.
 - **Tür:** Araç düzeltmesi (`tools/content-pipeline`)
 - **Öncelik:** Orta (1. madde ücretli harcama tavanıyla ilgili)
 - **Bağımlılık:** H-112 (bulgular onun kod denetiminde çıktı)

@@ -279,7 +279,7 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 ## Biten işler
 | İş | Başlık | Bitiş | Doğrulama |
 |---|---|---|---|
-| H-114 | Ses araçlarının sağlamlaştırılması | 2026-11-25 | `f92b45f`, `7dfdae4`, `bcffe4b`: defter kilidi (tavan + çağrı + kayıt + önbellek tek kilitte), çift ücret yarışı kapandı, harcama çağrı döner dönmez kaydedilir, Duyu her istekte kaydedilir ve ana çözümleme önbelleğe alınır, girdi/Duyu zamanı/ses adı denetimi; pytest 534; GNU `cp` yarışı atomik yazımla düzeldi |
+| H-114 | Ses araçlarının sağlamlaştırılması | 2026-11-25 | `f92b45f`, `7dfdae4`, `bcffe4b`: defter kilidi (tavan + çağrı + kayıt + önbellek tek kilitte), çift ücret yarışı kapandı, harcama çağrı döner dönmez kaydedilir, Duyu her istekte kaydedilir ve ana çözümleme önbelleğe alınır, girdi/Duyu zamanı/ses adı denetimi; pytest 534; GNU `cp` yarışı atomik yazımla düzeldi; CI `45675530961` yeşil |
 | H-113 | Lint uyarılarının sınıflandırılması | 2026-11-25 | 797 uyarı: %89 eksik İngilizce ses, kalanı editör/kulak işi; kural hatası yok |
 | H-112 | Ücret durumu okumasının iki sınırı | 2026-11-25 | `2c72db8`, CI `45617844634` yeşil: 8 sn toplam süre, Türkçe iş yokken okuma yok; Duyu-yalnız işin "üretim yok" görünmesi ve `--execute` çökmesi düzeltildi; pytest 451 |
 | H-110 | Golden'ları macOS 27.2.1 için yenile | 2026-11-25 | `f572b98`, CI `45617844634` yeşil: 84 golden yalnız harf kenarı farkıyla yenilendi; mobil 1526/1526 |
@@ -377,6 +377,7 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 | H-020 | Reklam yok | 2026-10-11 | Kullanıcı kararı: reklam SDK'sı eklenmez |
 
 ## Günlük
+- 2026-11-25 (gün sonu, CI): belge commit'i CI `45675530961` **yeşil** (mobil, backend, içerik) — `bcffe4b` reel düzeltmesi CI'da doğrulandı; `main` yeşil.
 - 2026-11-25 (gün sonu): H-110, H-112, H-114 `bitenler/`e; H-116 (Duyu tavanı, karar), H-117 (material_ui + go_router 18), H-118 (küçük artıklar) açıldı; H-111/H-115 çalışma ağacında, commit edilmedi. Devir `docs/HANDOFF-2026-11-25.md`. Sıradaki boş numara H-119.
 - 2026-11-25 (akşam): H-114 commit/push (`f92b45f`), kararsız test düzeltmesi `7dfdae4`; H-115 Flutter 3.50.1 + H-111 drift 2.35.4 uygulandı, commit edilmedi (karar bekliyor).
 - 2026-11-25: H-110 (golden yenileme, macOS 27.2.1), H-111 (drift/sqlite3; Flutter kararı bekliyor), H-112 (ücret durumu sınırları), H-113 (lint sınıflandırma, bitti) açıldı. Mobil 1526/1526, pytest 451, backend yeşil.
