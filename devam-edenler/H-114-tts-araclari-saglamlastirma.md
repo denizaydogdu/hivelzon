@@ -42,6 +42,13 @@
 - Bilinçli değiştirilmeyen: tavan tanımlı değilse `--execute` yalnız önbellekten kurulumda da reddedilir (kural: tavan yoksa üretim kapalı).
 - Testler: `tests/test_tts_h114.py` (38; düzeltmeden önce 35'i kırmızı, kalan 3'ü geçerli girdinin kabulü) + diğer dosyalarda eklemeler.
 
+## CI düzeltmesi (2026-11-25 akşam)
+CI `45624677439`/`45649519701`'de `test_h114_reel_concurrent_runs_same_cues_pay_once` kırmızıydı. İlk teşhis (yavaş
+makine, `7dfdae4` bekleme 60 sn) yanlıştı; asıl neden: `tts_reel.py` cue dosyasını kilit dışında `cp` alt süreciyle
+kopyalıyordu, iki çalıştırma aynı hedefe yazınca **GNU cp "File exists"** ile düştü (macOS cp düşmez; ödeme yine tekti).
+Düzeltme: kopya, cue JSON ve `timing.json` atomik yazılır (`T._atomic_bytes`); test önce istisnayı raporlar;
+`test_h114_reel_cue_copy_does_not_shell_out_to_cp`. pytest 534; Docker Linux'ta 5/5.
+
 ## Karar bekleyen (kullanıcı)
 - **Duyu (ses saati ücretli) için aylık tavan yok** — kural "her ücretli çağrıdan önce bütçe kontrolü". Seçenekler: ayrı
   `HIVELZON_TR_STT_MONTHLY_SECONDS_CAP` ya da Alania + Duyu'yu tek TL bütçesinde (`estimate_tl`) birleştirmek; tanımlı

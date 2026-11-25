@@ -187,14 +187,15 @@ def main(argv: list[str] | None = None) -> int:
         dest = out_dir / f"{p['cue']}.mp3"
         # Önbellekten gelse bile cue dosyasını tazele: konuşmacı/metin değişmiş olabilir.
         # (Eski koşul yalnız yeni üretimde kopyalıyordu; ses değişince eski dosya kalıyordu.)
-        subprocess.run(["cp", str(mp3), str(dest)], check=True)
-        cue_json.write_text(json.dumps({"cue": p["cue"], "text": p["text"], "sha256": _sha16(p["text"]),
-                                        "voice": p["voice"], "voiceName": p["voice_name"],
-                                        "model": MODEL, "speed": a.speed,
-                                        "seconds": round(_duration(dest), 3)},
-                                       ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+        # H-114: atomik kopya (eşzamanlı iki çalıştırma aynı hedefe yazınca GNU `cp` "File exists" ile düşüyordu).
+        T._atomic_bytes(dest, mp3.read_bytes())
+        T._atomic_bytes(cue_json, (json.dumps({"cue": p["cue"], "text": p["text"], "sha256": _sha16(p["text"]),
+                                               "voice": p["voice"], "voiceName": p["voice_name"],
+                                               "model": MODEL, "speed": a.speed,
+                                               "seconds": round(_duration(dest), 3)},
+                                              ensure_ascii=False, indent=1) + "\n").encode("utf-8"))
         timing[p["cue"]] = round(_duration(dest), 3)
-    timing_path.write_text(json.dumps(timing, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+    T._atomic_bytes(timing_path, (json.dumps(timing, ensure_ascii=False, indent=1) + "\n").encode("utf-8"))
     print(f"Bu turda harcanan: {spent} karakter · defter güncel: {T.ledger_used(ledger, T.month_key())}")
     print("Sıradaki: `build_reel.py <reel> --force` ile sesli sürümü kur.")
     return 0

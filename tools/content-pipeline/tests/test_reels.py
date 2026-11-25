@@ -549,7 +549,8 @@ def test_h114_reel_concurrent_runs_same_cues_pay_once(tmp_path, monkeypatch):
     rc = []
     go = lambda: rc.append(tts_reel.main([str(root), "--execute", "--monthly-char-cap", "100"]))  # noqa: E731
     race.run(go, go)
-    assert sorted(calls) == ["Here you go.", "Thank you."] and rc == [0, 0] and not race.errors
+    assert not race.errors, race.errors          # önce istisna: CI'da GNU `cp` yarışı burada görünür
+    assert sorted(calls) == ["Here you go.", "Thank you."] and rc == [0, 0]
     assert json.loads(led.read_text(encoding="utf-8"))[tts_reel.T.month_key()] == {"characters": 22, "calls": 2}
 
 
@@ -564,3 +565,21 @@ def test_h114_reel_cap_rechecked_under_lock_before_each_call(tmp_path, monkeypat
              lambda: rc.__setitem__("b", tts_reel.main([str(b), "--execute", "--monthly-char-cap", "30"])))
     assert sorted(calls) == ["Here you go.", "Thank you."] and rc == {"a": 0, "b": 1}
     assert json.loads(led.read_text(encoding="utf-8"))[tts_reel.T.month_key()]["characters"] == 22
+
+
+def test_h114_reel_cue_copy_does_not_shell_out_to_cp(tmp_path, monkeypatch):
+    """CI 45649519701: iki çalıştırma aynı cue'yu `cp` ile aynı anda kopyalayınca GNU cp "File exists" ile düştü
+    (macOS cp düşmüyor). Kopya ve cue/zamanlama JSON'ları atomik yazılır; `cp` alt süreci çağrılmaz."""
+    from test_tts_tr import Race
+    import subprocess
+    tts_reel, calls, led = _reel_env(tmp_path, monkeypatch, Race())
+    root = _reel(tmp_path, "A1-R-SPO-08", ["Here you go."])
+    real_run = subprocess.run
+
+    def no_cp(cmd, *a, **k):
+        assert not (isinstance(cmd, (list, tuple)) and cmd and cmd[0] == "cp"), "cp alt süreci çağrılmamalı"
+        return real_run(cmd, *a, **k)
+    monkeypatch.setattr(tts_reel.subprocess, "run", no_cp)
+    assert tts_reel.main([str(root), "--execute", "--monthly-char-cap", "100"]) == 0
+    out_dir = next(p for p in root.rglob("s01-01.json"))
+    assert (out_dir.parent / "s01-01.mp3").read_bytes() == b"mp3"
