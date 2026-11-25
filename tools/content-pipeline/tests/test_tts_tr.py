@@ -547,15 +547,19 @@ class Race:
                 except BaseException as e:  # noqa: BLE001 — çağıran sayıları denetler
                     self.errors.append(e)
             return go
-        t1 = threading.Thread(target=wrap(first))
+        # daemon: gerçek bir kilitlenme test koşusunu asmaz; süreler yavaş CI makinesi için geniş (H-114,
+        # CI 45624677439'da 10 sn yetmedi). Bitmeyen iş parçacığı yanlış bir eşitlik hatası yerine açıkça raporlanır.
+        t1 = threading.Thread(target=wrap(first), daemon=True)
         t1.start()
-        assert self.in_call.wait(5)
-        t2 = threading.Thread(target=wrap(second))
+        assert self.in_call.wait(30), "ilk çalıştırma ücretli çağrıya ulaşmadı"
+        t2 = threading.Thread(target=wrap(second), daemon=True)
         t2.start()
         t2.join(0.2)
         self.release.set()
-        t1.join(10)
-        t2.join(10)
+        t1.join(60)
+        t2.join(60)
+        alive = [n for n, t in (("ilk", t1), ("ikinci", t2)) if t.is_alive()]
+        assert not alive, f"çalıştırma bitmedi (kilitlenme?): {alive}"
 
 
 def test_h114_tr_same_segment_concurrent_runs_pay_once(tmp_path):
