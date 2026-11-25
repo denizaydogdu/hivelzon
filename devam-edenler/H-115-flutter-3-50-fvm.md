@@ -3,7 +3,7 @@
 - **Durum:** ⛔ Kullanıcı kararı bekliyor (2026-11-25): teknik iş bitti, **commit edilmedi — değişiklikler çalışma ağacında**
   (ayrı dala commit izin sisteminde reddedildi). `main`'e alınmadan önce analyze kararı gerekir (aşağıda).
 - **Tür:** Altyapı (mobil SDK + CI)
-- **Bağımlılık:** H-111 (drift/sqlite3 3.x bunu bekliyordu)
+- **Bağımlılık:** H-111 (drift/sqlite3 3.x bunu bekliyordu) · H-117 (`main`e almadan önce)
 - **Kullanıcı kararı (2026-11-25):** yalnız hiVelzon yükseltilir; Homebrew Flutter 3.38.5 (piru, quikt_monorepo, scyborsa_mobile…) değişmez.
 
 ## Yapılan
@@ -31,7 +31,7 @@
   kullan" + 1 `GlobalMaterialLocalizations`. Başka bulgu yok. CI'da analyze info'da da kırmızı olur.
 
 ## Karar bekleyen (kullanıcı)
-1. **material → material_ui (175 info):** (a) ayrı iş: go_router 18 + `dart fix` + golden kontrolü (önerilen; o zamana
+1. **material → material_ui (175 info) → H-117:** (a) ayrı iş: go_router 18 + `dart fix` + golden kontrolü (önerilen; o zamana
    kadar bu iş `main`'e alınamaz); (b) geçici `deprecated_member_use: ignore` (bütün kullanım dışı uyarıları gizler);
    (c) CI'da `flutter analyze --no-fatal-infos`.
 2. iOS en düşük sürüm 15.0 ve ilerleme çubuğu ekran okuyucu metni.

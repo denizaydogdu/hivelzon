@@ -1,6 +1,6 @@
 # H-112: Ücret durumu okumasının iki bilinen sınırı (H-108 devamı)
 
-- **Durum:** Devam ediyor (2026-11-25): uygulandı, qa-code-reviewer bulgusu düzeltildi, pytest 451; commit onayı bekliyor.
+- **Durum:** ✅ Bitti (2026-11-25): commit `2c72db8`, CI `45617844634` yeşil; pytest 451; qa-code-reviewer MAJOR bulgusu (Duyu-yalnız iş) düzeltildi.
 - **Tür:** Araç düzeltmesi (`tools/content-pipeline`)
 - **Öncelik:** Düşük
 - **Bağımlılık:** H-108

@@ -1,6 +1,6 @@
 # H-110: Golden görüntülerin macOS 27.2.1 için yenilenmesi
 
-- **Durum:** Devam ediyor (2026-11-25): golden'lar yenilendi, mobil 1526/1526 yerelde geçti; commit kullanıcı onayı bekliyor.
+- **Durum:** ✅ Bitti (2026-11-25): commit `f572b98`, CI `45617844634` yeşil (mobil, backend, içerik); mobil 1526/1526.
 - **Tür:** Test bakımı (mobil)
 - **Öncelik:** Yüksek (yerelde 84 test kırmızıydı; CI golden'ları atladığı için görünmüyordu)
 - **Bağımlılık:** yok

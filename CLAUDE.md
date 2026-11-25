@@ -1,5 +1,7 @@
 # hiVelzon — Proje Rehberi
 
+> **2026-11-25 durum güncellemesi:** Ücretsiz bakım turu: H-110 (golden'lar, macOS 27.2.1), H-112 (ücret durumu sınırları), H-113 (lint sınıflandırma), H-114 (ses araçlarında defter kilidi, çift ücret yarışı, harcamanın hemen kaydı) bitti; pytest 534. **H-115 Flutter 3.50.1 (FVM, yalnız hiVelzon; global Homebrew 3.38.5 öteki projeler için) + H-111 drift 2.35.4/sqlite3 3.9.2 commit edilmedi, çalışma ağacında**; `main`'e almak için H-117 (material → material_ui + go_router 18) ve kullanıcı onayları (iOS en düşük 15.0, ekran okuyucu metni, simülatör denemesi). Karar bekleyen: H-116 Duyu aylık tavanı, H-109. Güncel devir: `docs/HANDOFF-2026-11-25.md`. Sıradaki boş numara **H-119**.
+
 > **2026-11-20 durum güncellemesi:** H-107 (Higgsfield hakları ve B5–B12 İngilizce ses hesabı kayıtları) tamamlandı; ilk kayıt `ce0bfb7`. Higgsfield resmî Terms of Use §4.4 sürümü 2026-10-23 olarak düzeltildi. 2026-11-09'da dördüncü ücretsiz ElevenLabs anahtarı da 401 döndürdü; yeni İngilizce ses yok. H-106 2026-11-20'de simülatörde doğrulanıp kapandı (`31b721f`). Aynı gün dilbilgisinde: 31 derse "Hikâyede gör" kartı (`a907fba`), 19 dersin kancası gerçek kitap cümlesiyle + Türkçe anlatım Alania ile (3.254 karakter ≈ 2,44 TL, kullanıcı onaylı) ve G-A2-07 bağı A1-K02'ye (`54bd9f1`); grammar lint 71 ders 0 hata/558 uyarı. H-102/H-103 ve H-104/H-105 düğmeleri simülatörde teknik olarak çalıştı; H-104/H-105 kulakla kontrol (yeni kanca adları Priya, Kamala, Kofi, Bruno, Tomás, Lena, Amira dahil) ve öznel kabul kullanıcıda; editör incelemesi açık. Güncel devir: `docs/HANDOFF-2026-11-20.md`. Alania ücretsiz kampanyası 14 Kasım'da bitti: düzeltmeler 0,75 TL/1.000 karakter, ücretli üretim öncesi maliyet/onay gerekir. H-108 (Türkçe ses araçlarında gerçek ücret durumu, `GET /v1/usage`) bitti (`ff5bde1`, CI yeşil): ücretsiz dönem 2026-11-14 bitti, kalan Duyu kotası ≈ 985 saat. H-109 (yeni Türkçe ses yerleri Faz 1 ≈ 12 TL / Faz 2 ≈ 10,5 TL) kullanıcı kararı bekliyor. Sıradaki boş numara H-114. Aşağıdaki 2026-11-04 durum paragrafı tarihsel ölçüm kaydıdır; güncel sıra `yapilacaklar/IS-SIRASI.md`.
 
 **hiVelzon:** Velzon Bilişim Teknolojileri Ltd. Şti.'nin, yapay zekâ videolarıyla İngilizce öğreten **mobil uygulaması** (iOS + Android).
@@ -160,7 +162,7 @@ cd mobile && flutter run -d "hiVelzon iPhone 17"       # içerik adresi: --dart-
 | `docs/ARAYUZ-METINLERI.md` | Arayüz metin kılavuzu (H-053): ilkeler, terimler (ifade / kart / Kelime tekrarı), ekran ekran metinler. Yeni metin buna uyar. |
 | `docs/EDITOR-INCELEME-PAKETI.md` | Öğretmen/editör incelemesi için tek giriş ve föy (bölümler, Konuş, kitaplar, dilbilgisi, reeller; açık bulgular §7) |
 | `docs/TTS-MALIYET-2026-10-30.md` | Eksik İngilizce sesler için ElevenLabs plan/maliyet seçenekleri (öneri Creator; karar kullanıcıda) |
-| `docs/HANDOFF-2026-11-20.md` | Güncel oturum devri (önceki devirler tarihseldir) |
+| `docs/HANDOFF-2026-11-25.md` | Güncel oturum devri (önceki devirler tarihseldir) |
 | `yapilacaklar/IS-SIRASI.md` | Güncel durum ve sıra |
 
 - Şartnamedeki etiketler: **[KARAR]** onaysız değişmez. **[ARAŞTIRMA]** rakiplerin kamuya açık iddiasıdır ve doğrulanmadan ürün kararı sayılmaz. **[ÖNERİ]** plan onayında karara bağlanır.
