@@ -48,6 +48,7 @@ from typing import Callable, Protocol
 from . import REPO_ROOT
 from .align import Alignment, alignment_json
 from .book import text_sha256
+from .ledgerlock import atomic_bytes, ledger_lock
 
 API_BASE = "https://voice.patientdesk.ai"
 ENV_KEY = "PD_API_KEY"
@@ -78,6 +79,7 @@ RAW_DIR = "_raw"
 FUZZY_OK = 0.6                  # bulanık eşleşme benzerlik alt sınırı
 MIN_QUALITY = 0.85              # iyi eşleşen kelime oranı
 MAX_BAD_RUN = 2                 # art arda zayıf/eksik kelime sınırı (bu ve üstü uyarı)
+DURATION_TOLERANCE = 0.5        # Duyu kelime sonu ses süresini en çok bu kadar aşabilir (sn; H-114)
 GAP_SECONDS = 3.0               # Duyu kelimeleri arasında bu kadar boşluk: Duyu bir parçayı atlamış olabilir (H-105)
 PROMPTS_HEADING = "## Türkçe seslendirme kayıtları (tts_tr.py)"
 PROMPTS_TABLE = ("| Tarih (UTC) | Parça | Model | Ses | Sürüm | Karakter | Ses (sn) | İstek kimliği | Metin sha256 |\n"
@@ -123,6 +125,13 @@ def _check_segments(segs: list[Segment]) -> list[Segment]:
         seen.add(s.id)
         if not s.text.strip():
             raise TrTtsError(f"{s.id}: metin boş")
+        if s.instructions is not None and not isinstance(s.instructions, str):
+            raise TrTtsError(f"{s.id}: instructions metin olmalı ({type(s.instructions).__name__} verildi)")
+        if s.pronunciations is not None and not (
+                isinstance(s.pronunciations, list)
+                and all(isinstance(p, dict) and isinstance(p.get("term"), str) and isinstance(p.get("say_as"), str)
+                        for p in s.pronunciations)):
+            raise TrTtsError(f"{s.id}: pronunciations [{{\"term\": metin, \"say_as\": metin}}, …] biçiminde olmalı")
         if len(s.text) > MAX_CHARS:
             raise TrTtsError(f"{s.id}: {len(s.text)} karakter (istek sınırı {MAX_CHARS}); parçayı böl")
         if s.instructions and len(s.instructions) > MAX_INSTRUCTIONS:
@@ -142,6 +151,10 @@ def load_segments(path: Path) -> list[Segment]:
         if isinstance(doc, dict):
             default_ins = doc.get("instructions")
             doc = doc.get("segments", [])
+        if not isinstance(doc, list) or not all(isinstance(d, dict) and isinstance(d.get("id"), (str, int))
+                                               and not isinstance(d.get("id"), bool)
+                                               and isinstance(d.get("text"), str) for d in doc):
+            raise TrTtsError(f"{path}: parça listesi [{{\"id\", \"text\", …}}, …] biçiminde olmalı")
         segs = [Segment(str(d["id"]), str(d["text"]).strip(), d.get("instructions", default_ins),
                         d.get("pronunciations")) for d in doc]
         return _check_segments(segs)
@@ -306,11 +319,36 @@ class Quality:
                 "score": round(self.score, 3), "ok": self.ok, "warnings": self.warnings}
 
 
+def _time_ok(w: dict, duration: float | None = None) -> bool:
+    """Duyu kelime zamanı kullanılabilir mi: sonlu sayılar, 0 ≤ start ≤ end ve (süre biliniyorsa)
+    end ≤ süre + DURATION_TOLERANCE (H-114). Geçersiz kelime duyulmamış sayılır."""
+    try:
+        st, en = w.get("start"), w.get("end")
+        if isinstance(st, bool) or isinstance(en, bool) or not isinstance(st, (int, float)) \
+                or not isinstance(en, (int, float)):
+            return False
+        st, en = float(st), float(en)
+    except (AttributeError, TypeError, ValueError, OverflowError):
+        return False
+    if not (math.isfinite(st) and math.isfinite(en)) or st < 0 or en < st:
+        return False
+    return duration is None or en <= duration + DURATION_TOLERANCE
+
+
+def _word_ok(w, duration: float | None = None) -> bool:
+    """Duyu kelime girdisi kullanılabilir mi: sözlük, `word` metin ve zamanı geçerli (`_time_ok`; H-114)."""
+    return isinstance(w, dict) and isinstance(w.get("word"), str) and _time_ok(w, duration)
+
+
 def map_words(text: str, duyu_words: list[dict], duration: float | None = None) -> tuple[list[WordTime], Quality]:
     """Duyu kelimelerini özgün metnin kelimelerine eşler. Eksik kelimelere komşu zamanlar arasında
-    karakter uzunluğuna göre zaman verilir ve kalite düşürülür."""
+    karakter uzunluğuna göre zaman verilir ve kalite düşürülür. Zamanı geçersiz Duyu kelimeleri
+    (`_time_ok`) atlanır: karşılık gelen özgün kelime "missing" olur ve uyarı yazılır (H-114)."""
     toks = tokenize(text)
-    heard_raw = [w for w in duyu_words if norm(str(w.get("word", "")))]
+    # Bozuk girdi (sözlük değil, `word` metin değil, zaman geçersiz) duyulmamış sayılır ve uyarı verilir;
+    # yalnız noktalamadan oluşan geçerli kelime eskisi gibi sessizce atlanır.
+    bad_time = [w for w in duyu_words if not _word_ok(w, duration)]
+    heard_raw = [w for w in duyu_words if _word_ok(w, duration) and norm(w["word"])]
     heard = [norm(str(w["word"])) for w in heard_raw]
     groups = _dp_align([norm(t.text) for t in toks], heard)
     times: list[WordTime | None] = [None] * len(toks)
@@ -369,6 +407,9 @@ def map_words(text: str, duyu_words: list[dict], duration: float | None = None) 
     n = len(words) or 1
     score = (counts["exact"] + counts["fuzzy"]) / n
     warnings = []
+    if bad_time:
+        warnings.append(f"Duyu'nun {len(bad_time)} kelimesi geçersiz (zaman ya da biçim), atlandı: "
+                        + ", ".join(str(w.get("word") if isinstance(w, dict) else w) for w in bad_time[:8]))
     if score < MIN_QUALITY:
         warnings.append(f"iyi eşleşen kelime oranı düşük: %{score * 100:.0f} (alt sınır %{MIN_QUALITY * 100:.0f})")
     if worst >= MAX_BAD_RUN:
@@ -459,34 +500,34 @@ def ledger_used(path: Path, month: str) -> int:
 
 
 def ledger_add(path: Path, month: str, chars: int = 0, stt_seconds: float = 0.0) -> None:
-    d = json.loads(path.read_text(encoding="utf-8")) if path.exists() else {}
-    m = d.setdefault(month, {})
-    for k in ("characters", "calls", "duyuSeconds", "duyuCalls"):
-        m.setdefault(k, 0)
-    if chars:
-        m["characters"] += chars
-        m["calls"] += 1
-    if stt_seconds:
-        m["duyuSeconds"] = round(m["duyuSeconds"] + stt_seconds, 3)
-        m["duyuCalls"] += 1
-    _atomic_bytes(path, (json.dumps(d, ensure_ascii=False, indent=2) + "\n").encode("utf-8"))
+    """Okuma-değiştirme-yazma defter kilidi altında (H-114): eşzamanlı çalıştırma güncelleme kaybettirmez."""
+    with ledger_lock(path):
+        d = json.loads(path.read_text(encoding="utf-8")) if path.exists() else {}
+        m = d.setdefault(month, {})
+        for k in ("characters", "calls", "duyuSeconds", "duyuCalls"):
+            m.setdefault(k, 0)
+        if chars:
+            m["characters"] += chars
+            m["calls"] += 1
+        if stt_seconds:
+            m["duyuSeconds"] = round(m["duyuSeconds"] + stt_seconds, 3)
+            m["duyuCalls"] += 1
+        _atomic_bytes(path, (json.dumps(d, ensure_ascii=False, indent=2) + "\n").encode("utf-8"))
 
 
 def append_prompts(path: Path, row: dict) -> None:
-    text = path.read_text(encoding="utf-8") if path.exists() else "# PROMPTS\n"
-    if PROMPTS_HEADING not in text:
-        text = text.rstrip("\n") + f"\n\n{PROMPTS_HEADING}\n\n{PROMPTS_TABLE}\n"
-    text = text if text.endswith("\n") else text + "\n"
-    line = (f"| {row['date']} | {row['segment']} | {row['model']} | {row['voice']} | {row['release']} | "
-            f"{row['chars']} | {row['seconds']} | {row['request_id']} | {row['sha'][:16]} |\n")
-    _atomic_bytes(path, (text + line).encode("utf-8"))
+    with ledger_lock(path):     # H-114: eşzamanlı çalıştırmalar satır kaybettirmez
+        text = path.read_text(encoding="utf-8") if path.exists() else "# PROMPTS\n"
+        if PROMPTS_HEADING not in text:
+            text = text.rstrip("\n") + f"\n\n{PROMPTS_HEADING}\n\n{PROMPTS_TABLE}\n"
+        text = text if text.endswith("\n") else text + "\n"
+        line = (f"| {row['date']} | {row['segment']} | {row['model']} | {row['voice']} | {row['release']} | "
+                f"{row['chars']} | {row['seconds']} | {row['request_id']} | {row['sha'][:16]} |\n")
+        _atomic_bytes(path, (text + line).encode("utf-8"))
 
 
 def _atomic_bytes(path: Path, data: bytes) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    tmp = path.with_name(path.name + ".tmp")
-    tmp.write_bytes(data)
-    os.replace(tmp, path)
+    atomic_bytes(path, data)     # benzersiz geçici dosya (H-114)
 
 
 def estimate_tl(chars: int, stt_seconds: float) -> float:
@@ -780,7 +821,9 @@ def wav_slice(data: bytes, start: float, end: float) -> bytes:
 def duyu_gaps(words: list[dict], duration: float | None = None,
               min_gap: float = GAP_SECONDS) -> list[tuple[float, float]]:
     """Duyu'nun konuşmayı atladığı aralık adayları (Alania anlatımında 3 sn'lik sessizlik olmaz): kelimeler
-    arası, baştaki ve (`duration` verilirse) sondaki uzun boşluk (Duyu bazen sesin son 20 sn'sini yazmaz)."""
+    arası, baştaki ve (`duration` verilirse) sondaki uzun boşluk (Duyu bazen sesin son 20 sn'sini yazmaz).
+    Zamanı geçersiz kelimeler (`_time_ok`) hesaba katılmaz (H-114)."""
+    words = [w for w in words if _word_ok(w, duration)]
     if not words:
         return []
     gaps = [(float(a["end"]), float(b["start"])) for a, b in zip(words, words[1:])
@@ -793,20 +836,46 @@ def duyu_gaps(words: list[dict], duration: float | None = None,
 
 
 def fill_gaps(client: "Client", wav: bytes, words: list[dict], key: str, sleep=time.sleep, log=print,
-              duration: float | None = None) -> tuple[list[dict], float]:
+              duration: float | None = None,
+              on_paid: Callable[[float, float, dict], None] | None = None) -> tuple[list[dict], float]:
     """Uzun Duyu boşluklarını ayrıca yazıya döker ve kelimeleri zamanı kaydırarak araya ekler (H-105:
-    Duyu uzun sayfalarda ortadaki 20 sn'yi atlayabiliyor; ses tamam). Dönüş: (kelimeler, ek Duyu saniyesi)."""
+    Duyu uzun sayfalarda ortadaki 20 sn'yi atlayabiliyor; ses tamam). Dönüş: (kelimeler, ek Duyu saniyesi).
+    `on_paid(a, b, başlıklar)` her başarılı (ücretli) boşluk çağrısından hemen sonra, yanıt işlenmeden çağrılır
+    (H-114: harcama defterde kaybolmaz)."""
     out = list(words)
     spent = 0.0
     for a, b in duyu_gaps(words, duration):
-        doc, _ = with_retry(client.transcribe, wav_slice(wav, a, b), f"{key}-{a:.1f}.wav", sleep=sleep, log=log)
+        doc, h = with_retry(client.transcribe, wav_slice(wav, a, b), f"{key}-{a:.1f}.wav", sleep=sleep, log=log)
+        if on_paid is not None:
+            on_paid(a, b, h if isinstance(h, dict) else {})
         spent += b - a
+        got = doc.get("words") if isinstance(doc, dict) else None
         add = [{**w, "start": round(float(w["start"]) + a, 3), "end": round(float(w["end"]) + a, 3)}
-               for w in doc.get("words", [])]
-        k = next((i for i, w in enumerate(out) if float(w["start"]) >= b), len(out))
+               for w in (got if isinstance(got, list) else []) if _word_ok(w, b - a)]
+        k = next((i for i, w in enumerate(out) if _word_ok(w) and float(w["start"]) >= b), len(out))
         out = out[:k] + add + out[k:]
         log(f"  Duyu boşluğu {a:.1f}–{b:.1f} sn yeniden yazıya döküldü: {len(add)} kelime")
     return out, spent
+
+
+def _header_seconds(raw, audio: bytes) -> float:
+    """`x-audio-seconds` başlığı geçerli sonlu sayıysa o, değilse WAV süresi (H-114: bozuk başlık hata değil)."""
+    try:
+        v = float(raw)
+        if math.isfinite(v) and v >= 0:
+            return v
+    except (TypeError, ValueError):
+        pass
+    return wav_duration(audio)
+
+
+def _duyu_seconds(doc, audio_seconds: float) -> float:
+    """Deftere yazılacak Duyu saniyesi: yanıttaki geçerli `duration`, yoksa gönderilen sesin süresi."""
+    try:
+        v = float(doc.get("duration")) if isinstance(doc, dict) and doc.get("duration") is not None else None
+    except (TypeError, ValueError):
+        v = None
+    return v if v is not None and math.isfinite(v) and v > 0 else audio_seconds
 
 
 def wav_duration(data: bytes) -> float:
@@ -853,6 +922,10 @@ class Plan:
 
     def raw_stt(self, j: Job) -> Path:
         return self.out_dir / RAW_DIR / f"{j.key}.duyu.json"
+
+    def raw_stt_main(self, j: Job) -> Path:
+        """Ödenmiş ana Duyu yanıtı (boşluk doldurmadan önce; H-114): boşluk çağrısı düşerse yeniden ödenmez."""
+        return self.out_dir / RAW_DIR / f"{j.key}.duyu.main.json"
 
     def audio(self, j: Job) -> Path:
         return self.out_dir / f"{j.seg.id}.mp3"
@@ -949,50 +1022,82 @@ def execute(plan: Plan, client: Client, cap: int | None, ledger: Path, prompts: 
             continue
         wav_p, stt_p = plan.raw_wav(j), plan.raw_stt(j)
         sha = text_sha256(j.seg.text)
+        # H-114: tavan, defter kilidi altında ve ücretli çağrıdan hemen önce okunan defterle denetlenir; kilit
+        # çağrı, defter yazısı ve önbellek yazısı bitene kadar tutulur. Kilit alınınca önbellek yeniden
+        # denetlenir: aynı parçayı bekleyen eşzamanlı çalıştırma ilkinin ödediği sesi kullanır, yeniden ödemez.
         if not wav_p.exists():
-            month = month_key(now())
-            used = ledger_used(ledger, month)
-            if used + j.chars > cap:
-                res.stopped = f"aylık tavan aşılır: bu ay {used} + {j.chars} > {cap} karakter; {sid} üretilmedi"
-                log(res.stopped)
-                return res
-            audio, h = with_retry(client.speech, tts_payload(j.seg, plan.voice, plan.model), sleep=sleep, log=log)
-            if not audio[:4] == b"RIFF":
-                raise TrTtsError(f"{sid}: Alania yanıtı WAV değil")
-            # Ödeme yapıldı: önce defter ve kayıt, sonra önbellek (çift ücret olmasın).
-            ledger_add(ledger, month, chars=j.chars)
-            secs = float(h.get("x-audio-seconds") or wav_duration(audio))
-            append_prompts(prompts, {"date": now().strftime("%Y-%m-%dT%H:%M:%SZ"), "segment": sid,
-                                     "model": plan.model, "voice": plan.voice,
-                                     "release": h.get("x-model-release", "-"),
-                                     "chars": h.get("x-characters", j.chars), "seconds": round(secs, 2),
-                                     "request_id": h.get("x-request-id", "-"), "sha": sha})
-            _atomic_bytes(wav_p, audio)
-            res.tts_calls += 1
-            res.chars += j.chars
-            log(f"  {sid}: Alania {j.chars} karakter → {secs:.2f} sn")
+            with ledger_lock(ledger, log=log):
+                if not wav_p.exists():
+                    month = month_key(now())
+                    used = ledger_used(ledger, month)
+                    if used + j.chars > cap:
+                        res.stopped = f"aylık tavan aşılır: bu ay {used} + {j.chars} > {cap} karakter; {sid} üretilmedi"
+                        log(res.stopped)
+                        return res
+                    audio, h = with_retry(client.speech, tts_payload(j.seg, plan.voice, plan.model),
+                                          sleep=sleep, log=log)
+                    # H-114: çağrı başarıyla döndü = ödendi. Yanıt denetlenmeden önce deftere (bozuk gövdede de
+                    # gönderilen karakter ücretlenir), sonra önbellek, en son PROMPTS satırı.
+                    ledger_add(ledger, month, chars=j.chars)
+                    res.tts_calls += 1
+                    res.chars += j.chars
+                    if not isinstance(audio, (bytes, bytearray)) or audio[:4] != b"RIFF":
+                        raise TrTtsError(f"{sid}: Alania yanıtı WAV değil (ücret deftere yazıldı)")
+                    _atomic_bytes(wav_p, bytes(audio))
+                    h = h if isinstance(h, dict) else {}
+                    secs = _header_seconds(h.get("x-audio-seconds"), audio)
+                    append_prompts(prompts, {"date": now().strftime("%Y-%m-%dT%H:%M:%SZ"), "segment": sid,
+                                             "model": plan.model, "voice": plan.voice,
+                                             "release": h.get("x-model-release", "-"),
+                                             "chars": h.get("x-characters", j.chars), "seconds": round(secs, 2),
+                                             "request_id": h.get("x-request-id", "-"), "sha": sha})
+                    log(f"  {sid}: Alania {j.chars} karakter → {secs:.2f} sn")
         audio = wav_p.read_bytes()
         duration = wav_duration(audio)
         if not stt_p.exists():
-            doc, h = with_retry(client.transcribe, audio, f"{j.key}.wav", sleep=sleep, log=log)
-            if "words" not in doc:
-                raise TrTtsError(f"{sid}: Duyu yanıtında kelime zamanları yok (verbose_json + word)")
-            secs = float(doc.get("duration") or duration)
-            words_, extra = fill_gaps(client, audio, doc["words"], j.key, sleep=sleep, log=log,
-                                     duration=duration)
-            doc = {**doc, "words": words_}
-            secs += extra
-            ledger_add(ledger, month_key(now()), stt_seconds=secs)
-            append_prompts(prompts, {"date": now().strftime("%Y-%m-%dT%H:%M:%SZ"), "segment": sid,
-                                     "model": STT_MODEL, "voice": "-", "release": h.get("x-model-release", "-"),
-                                     "chars": "-", "seconds": round(secs, 2),
-                                     "request_id": h.get("x-request-id", "-"), "sha": sha})
-            _atomic_bytes(stt_p, (json.dumps({"text": doc.get("text"), "language": doc.get("language"),
-                                              "duration": doc.get("duration"), "words": doc["words"]},
-                                             ensure_ascii=False) + "\n").encode("utf-8"))
-            res.stt_calls += 1
-            res.stt_seconds += secs
-            log(f"  {sid}: Duyu {len(doc['words'])} kelime")
+            with ledger_lock(ledger, log=log):
+                if not stt_p.exists():
+                    main_p = plan.raw_stt_main(j)
+                    if main_p.exists():
+                        doc = json.loads(main_p.read_text(encoding="utf-8"))
+                        log(f"  {sid}: Duyu ana yanıtı önbellekten (ücret yok); yalnız boşluklar")
+                    else:
+                        doc, h = with_retry(client.transcribe, audio, f"{j.key}.wav", sleep=sleep, log=log)
+                        # H-114: ödendi → önce defter (Duyu ücreti gönderilen sesin süresine göre), sonra denetim.
+                        secs = _duyu_seconds(doc, duration)
+                        ledger_add(ledger, month_key(now()), stt_seconds=secs)
+                        res.stt_calls += 1
+                        res.stt_seconds += secs
+                        if not isinstance(doc, dict) or not isinstance(doc.get("words"), list):
+                            raise TrTtsError(f"{sid}: Duyu yanıtında kelime zamanları yok (verbose_json + word; "
+                                             "ücret deftere yazıldı)")
+                        doc = {"text": doc.get("text"), "language": doc.get("language"),
+                               "duration": doc.get("duration"), "words": doc["words"]}
+                        _atomic_bytes(main_p, (json.dumps(doc, ensure_ascii=False) + "\n").encode("utf-8"))
+                        h = h if isinstance(h, dict) else {}
+                        append_prompts(prompts, {"date": now().strftime("%Y-%m-%dT%H:%M:%SZ"), "segment": sid,
+                                                 "model": STT_MODEL, "voice": "-",
+                                                 "release": h.get("x-model-release", "-"),
+                                                 "chars": "-", "seconds": round(secs, 2),
+                                                 "request_id": h.get("x-request-id", "-"), "sha": sha})
+
+                    def gap_paid(a: float, b: float, gh: dict, sid=sid) -> None:
+                        ledger_add(ledger, month_key(now()), stt_seconds=b - a)
+                        res.stt_calls += 1
+                        res.stt_seconds += b - a
+                        append_prompts(prompts, {"date": now().strftime("%Y-%m-%dT%H:%M:%SZ"),
+                                                 "segment": f"{sid} boşluk {a:.1f}–{b:.1f}",
+                                                 "model": STT_MODEL, "voice": "-",
+                                                 "release": gh.get("x-model-release", "-"), "chars": "-",
+                                                 "seconds": round(b - a, 2),
+                                                 "request_id": gh.get("x-request-id", "-"), "sha": sha})
+                    words_, _extra = fill_gaps(client, audio, doc["words"], j.key, sleep=sleep, log=log,
+                                               duration=duration, on_paid=gap_paid)
+                    doc = {**doc, "words": words_}
+                    _atomic_bytes(stt_p, (json.dumps({"text": doc.get("text"), "language": doc.get("language"),
+                                                      "duration": doc.get("duration"), "words": doc["words"]},
+                                                     ensure_ascii=False) + "\n").encode("utf-8"))
+                    log(f"  {sid}: Duyu {len(doc['words'])} kelime")
         stt = json.loads(stt_p.read_text(encoding="utf-8"))
         words, q = map_words(j.seg.text, stt["words"], duration)
         al = char_alignment(j.seg.text, words)

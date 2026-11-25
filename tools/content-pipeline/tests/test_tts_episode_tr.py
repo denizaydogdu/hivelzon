@@ -449,7 +449,7 @@ def test_duyu_only_work_is_priced_and_executed(talk_root, tmp_path, monkeypatch,
     duyu = list((hi_dir / ep.RAW).glob("*.duyu.json"))
     wavs = list((hi_dir / ep.RAW).glob("*.wav"))
     assert duyu and wavs
-    for p in duyu:
+    for p in duyu + list((hi_dir / ep.RAW).glob("*.duyu.main.json")):   # ana yanıt önbelleği de (H-114)
         p.unlink()
 
     seen = {}
@@ -471,3 +471,86 @@ def test_duyu_only_work_is_priced_and_executed(talk_root, tmp_path, monkeypatch,
     assert len(fc.speech_calls) == speech_before          # Alania yeniden çağrılmadı
     assert len(fc.stt_calls) > stt_before                 # yalnız Duyu
     assert (hi_dir / f"{stem}.mp3").exists()
+
+
+# --- H-114 ---------------------------------------------------------------------------------------
+
+def test_h114_run_en_cap_checked_against_concurrent_run(tmp_path):
+    """İki eşzamanlı run_en aynı İngilizce defteri paylaşır; tavana yalnız biri sığar."""
+    import threading
+    led = tmp_path / "en.json"
+    en = {"voiceId": "v", "modelId": "m", "speed": 1.0, "name": "Sarah"}
+    in_call, release = threading.Event(), threading.Event()
+    fe = FakeEn(tmp_path)
+    calls: list[str] = []
+
+    def slow(voice, payload):
+        calls.append("a")
+        in_call.set()
+        release.wait(0.5)
+        return fe(voice, payload)
+
+    def fast(voice, payload):
+        calls.append("b")
+        return fe(voice, payload)
+    errs = {}
+
+    def go(name, client):
+        piece = ep.EnPiece(f"{name}1", "Again, please.", f"k{name}", tmp_path / name, tmp_path / f"{name}.md")
+        try:
+            ep.run_en([piece], en, client, 20, led, log=lambda s: None)
+        except ep.EpisodeTtsError as e:
+            errs[name] = str(e)
+    t1 = threading.Thread(target=go, args=("a", slow))
+    t1.start()
+    assert in_call.wait(5)
+    t2 = threading.Thread(target=go, args=("b", fast))
+    t2.start()
+    t2.join(0.2)
+    release.set()
+    t1.join(10)
+    t2.join(10)
+    assert calls == ["a"] and "tavan" in errs.get("b", "")
+    assert json.loads(led.read_text(encoding="utf-8"))[tr.month_key()]["characters"] == len("Again, please.")
+
+
+def test_h114_execute_reports_oserror_without_traceback(root, tmp_path, monkeypatch, capsys):
+    monkeypatch.setenv(tr.ENV_CAP, "100000")
+    monkeypatch.setenv(tr.ENV_LEDGER, str(tmp_path / "tr-ledger.json"))
+
+    def broken(it, log=print):
+        raise PermissionError(13, "izin yok", str(it.out_dir))
+    monkeypatch.setattr(ep, "backup_old", broken)
+    fc = FakeClient()
+    assert run(root, root / "A1-901-test", fc, FakeEn(tmp_path), "--execute") == 1
+    err = capsys.readouterr().err
+    assert err.startswith("HATA:") and "izin yok" in err and fc.speech_calls == []
+
+
+def test_h114_execute_reports_write_oserror(root, tmp_path, monkeypatch, capsys):
+    monkeypatch.setenv(tr.ENV_CAP, "100000")
+    monkeypatch.setenv(tr.ENV_LEDGER, str(tmp_path / "tr-ledger.json"))
+
+    def full(*a, **k):
+        raise OSError(28, "No space left on device")
+    monkeypatch.setattr(ep, "update_sources", full)
+    assert run(root, root / "A1-901-test", FakeClient(), FakeEn(tmp_path), "--execute") == 1
+    assert "HATA:" in capsys.readouterr().err
+
+
+def test_h114_run_en_same_piece_concurrent_runs_pay_once(tmp_path):
+    from test_tts_tr import Race
+    led, race, fe = tmp_path / "en.json", Race(), FakeEn(tmp_path)
+    en = {"voiceId": "v", "modelId": "m", "speed": 1.0, "name": "Sarah"}
+
+    def client(voice, payload):
+        r = fe(voice, payload)
+        race.gate()
+        return r
+
+    def go():
+        piece = ep.EnPiece("x1", "Again, please.", "kx", tmp_path / "o", tmp_path / "P.md")
+        ep.run_en([piece], en, client, 1000, led, log=lambda s: None)
+    race.run(go, go)
+    assert fe.calls == ["Again, please."] and not race.errors
+    assert json.loads(led.read_text(encoding="utf-8"))[tr.month_key()] == {"characters": 14, "calls": 1}

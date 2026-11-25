@@ -511,3 +511,56 @@ def test_lint_rejects_stale_cue_time_in_built_package(tmp_path):
     (pkg / "reel.json").write_text((src / "reel.json").read_text(encoding="utf-8"), encoding="utf-8")
     report = lint_reel(src)
     assert "reel.cue.window" in _codes(report)
+
+
+# --- H-114: defter kilidi ------------------------------------------------------------------------
+
+def _reel(tmp_path, rid, cues):
+    root = tmp_path / rid
+    root.mkdir(parents=True)
+    (root / "reel.json").write_text(json.dumps({"id": rid, "cues": [
+        {"id": f"s01-0{k}", "speaker": "ELIF", "text": t} for k, t in enumerate(cues, start=1)]}), encoding="utf-8")
+    return root
+
+
+def _reel_env(tmp_path, monkeypatch, race):
+    import base64 as _b64
+    import tts_reel
+    calls = []
+
+    def client(voice, payload):
+        calls.append(payload["text"])
+        race.gate()
+        return {"audio_base64": _b64.b64encode(b"mp3").decode()}
+    monkeypatch.chdir(tmp_path)
+    (tmp_path / "reeller").mkdir()
+    led = tmp_path / "ledger.json"
+    monkeypatch.setattr(tts_reel.T, "ledger_path", lambda _: led)
+    monkeypatch.setattr(tts_reel.T, "http_client", lambda: client)
+    monkeypatch.setattr(tts_reel, "_duration", lambda _: 1.0)
+    return tts_reel, calls, led
+
+
+def test_h114_reel_concurrent_runs_same_cues_pay_once(tmp_path, monkeypatch):
+    from test_tts_tr import Race
+    race = Race()
+    tts_reel, calls, led = _reel_env(tmp_path, monkeypatch, race)
+    root = _reel(tmp_path, "A1-R-SPO-09", ["Here you go.", "Thank you."])
+    rc = []
+    go = lambda: rc.append(tts_reel.main([str(root), "--execute", "--monthly-char-cap", "100"]))  # noqa: E731
+    race.run(go, go)
+    assert sorted(calls) == ["Here you go.", "Thank you."] and rc == [0, 0] and not race.errors
+    assert json.loads(led.read_text(encoding="utf-8"))[tts_reel.T.month_key()] == {"characters": 22, "calls": 2}
+
+
+def test_h114_reel_cap_rechecked_under_lock_before_each_call(tmp_path, monkeypatch):
+    from test_tts_tr import Race
+    race = Race()
+    tts_reel, calls, led = _reel_env(tmp_path, monkeypatch, race)
+    a = _reel(tmp_path, "A1-R-SPO-08", ["Here you go.", "Thank you."])
+    b = _reel(tmp_path, "A1-R-SPO-07", ["Two tickets, please."])
+    rc = {}
+    race.run(lambda: rc.__setitem__("a", tts_reel.main([str(a), "--execute", "--monthly-char-cap", "30"])),
+             lambda: rc.__setitem__("b", tts_reel.main([str(b), "--execute", "--monthly-char-cap", "30"])))
+    assert sorted(calls) == ["Here you go.", "Thank you."] and rc == {"a": 0, "b": 1}
+    assert json.loads(led.read_text(encoding="utf-8"))[tts_reel.T.month_key()]["characters"] == 22

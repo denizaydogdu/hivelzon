@@ -28,6 +28,7 @@ from typing import Callable
 from urllib.parse import quote
 
 from . import REPO_ROOT
+from .ledgerlock import atomic_bytes, ledger_lock
 from .align import Alignment, alignment_json, concat_alignments
 from .book import AUDIO_DIR, PROMPTS_FILE, Book, Chapter, split_sentences, text_sha256
 
@@ -132,6 +133,12 @@ def _part_key(text: str, voice: str | None, model: str, speed: float) -> str:
     return text_sha256(json.dumps([text, voice, model, speed, STABILITY, SIMILARITY, OUTPUT_FORMAT]))[:24]
 
 
+def _part_cached(book: Book, key: str) -> bool:
+    """Ödenmiş parça önbellekte mi: yürütmeyle aynı koşul, mp3 ve json birlikte (H-114)."""
+    d = _parts_dir(book)
+    return (d / f"{key}.mp3").exists() and (d / f"{key}.json").exists()
+
+
 def plan_book(book: Book, chapters: list[str] | None = None, force: bool = False) -> Plan:
     if book.text.errors:
         raise TtsError("text.en.md işaretleri hatalı: " + "; ".join(book.text.errors[:3]))
@@ -159,7 +166,7 @@ def plan_book(book: Book, chapters: list[str] | None = None, force: bool = False
             reason = "ses dosyası yok (hizalama var)"
         job = ChapterJob(c, text, sha, parts, action, reason)
         if action == "generate":
-            cached = [p for p in parts if (_parts_dir(book) / f"{_part_key(p, plan.voice_id, plan.model_id, plan.speed)}.json").exists()]
+            cached = [p for p in parts if _part_cached(book, _part_key(p, plan.voice_id, plan.model_id, plan.speed))]
             job.cached_parts = len(cached)
         plan.jobs.append(job)
     return plan
@@ -172,7 +179,7 @@ def plan_billable(plan: Plan) -> int:
         if j.action != "generate":
             continue
         for p in j.parts:
-            if not (_parts_dir(plan.book) / f"{_part_key(p, plan.voice_id, plan.model_id, plan.speed)}.json").exists():
+            if not _part_cached(plan.book, _part_key(p, plan.voice_id, plan.model_id, plan.speed)):
                 total += len(p)
     return total
 
@@ -208,27 +215,25 @@ def ledger_used(path: Path, month: str) -> int:
 
 
 def ledger_add(path: Path, month: str, chars: int) -> None:
-    d = json.loads(path.read_text(encoding="utf-8")) if path.exists() else {}
-    m = d.setdefault(month, {"characters": 0, "calls": 0})
-    m["characters"] += chars
-    m["calls"] += 1
-    path.parent.mkdir(parents=True, exist_ok=True)
-    tmp = path.with_suffix(".json.tmp")
-    tmp.write_text(json.dumps(d, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    os.replace(tmp, path)
+    """Okuma-değiştirme-yazma defter kilidi altında (H-114): eşzamanlı çalıştırma güncelleme kaybettirmez."""
+    with ledger_lock(path):
+        d = json.loads(path.read_text(encoding="utf-8")) if path.exists() else {}
+        m = d.setdefault(month, {"characters": 0, "calls": 0})
+        m["characters"] += chars
+        m["calls"] += 1
+        _atomic_bytes(path, (json.dumps(d, ensure_ascii=False, indent=2) + "\n").encode("utf-8"))
 
 
 def append_prompts(book: Book, row: dict) -> None:
     p = book.dir / PROMPTS_FILE
-    text = p.read_text(encoding="utf-8") if p.exists() else f"# {book.id} PROMPTS\n"
-    if PROMPTS_HEADING not in text:
-        text = text.rstrip("\n") + f"\n\n{PROMPTS_HEADING}\n\n{PROMPTS_TABLE}\n"
-    line = (f"| {row['date']} | {row['chapter']} | {row['part']} | {row['voice']} | {row['model']} | {row['speed']} | "
-            f"{row['chars']} | {row['sha'][:16]} | {row['file']} |\n")
-    text = text if text.endswith("\n") else text + "\n"
-    tmp = p.with_suffix(".md.tmp")
-    tmp.write_text(text + line, encoding="utf-8")
-    os.replace(tmp, p)
+    with ledger_lock(p):     # H-114: eşzamanlı çalıştırmalar satır kaybettirmez
+        text = p.read_text(encoding="utf-8") if p.exists() else f"# {book.id} PROMPTS\n"
+        if PROMPTS_HEADING not in text:
+            text = text.rstrip("\n") + f"\n\n{PROMPTS_HEADING}\n\n{PROMPTS_TABLE}\n"
+        line = (f"| {row['date']} | {row['chapter']} | {row['part']} | {row['voice']} | {row['model']} | "
+                f"{row['speed']} | {row['chars']} | {row['sha'][:16]} | {row['file']} |\n")
+        text = text if text.endswith("\n") else text + "\n"
+        _atomic_bytes(p, (text + line).encode("utf-8"))
 
 
 # --- API -----------------------------------------------------------------------------------------
@@ -256,6 +261,17 @@ def http_client(timeout: float = 180.0) -> Callable[[str, dict], dict]:
     return call
 
 
+def decode_response(resp, what: str) -> bytes:
+    """ElevenLabs zaman damgalı yanıtını denetler ve sesi çözer; bozuksa TtsError (H-114: çağıran ücreti
+    deftere bundan önce yazar)."""
+    if not isinstance(resp, dict) or "audio_base64" not in resp or "alignment" not in resp:
+        raise TtsError(f"{what}: ElevenLabs yanıtında audio_base64/alignment yok (ücret deftere yazıldı)")
+    try:
+        return base64.b64decode(resp["audio_base64"], validate=True)
+    except (TypeError, ValueError) as e:
+        raise TtsError(f"{what}: ElevenLabs sesi çözülemedi ({type(e).__name__}; ücret deftere yazıldı)") from None
+
+
 def payload(text: str, model_id: str, speed: float) -> dict:
     return {"text": text, "model_id": model_id, "language_code": LANGUAGE,
             "voice_settings": {"stability": STABILITY, "similarity_boost": SIMILARITY, "speed": speed}}
@@ -273,10 +289,7 @@ class RunResult:
 
 
 def _atomic_bytes(path: Path, data: bytes) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    tmp = path.with_name(path.name + ".tmp")
-    tmp.write_bytes(data)
-    os.replace(tmp, path)
+    atomic_bytes(path, data)     # benzersiz geçici dosya (H-114)
 
 
 def _atomic_json(path: Path, doc: dict) -> None:
@@ -306,29 +319,34 @@ def execute(plan: Plan, client: Callable[[str, dict], dict], cap: int | None, le
             key = _part_key(text, plan.voice_id, plan.model_id, plan.speed)
             mp3, aj = _parts_dir(book) / f"{key}.mp3", _parts_dir(book) / f"{key}.json"
             if not (mp3.exists() and aj.exists()):
-                month = month_key(now())
-                used = ledger_used(ledger, month)
-                if used + len(text) > cap:
-                    res.stopped = (f"aylık tavan aşılır: bu ay {used} + {len(text)} > {cap} karakter; "
-                                   f"{cid} parça {k} üretilmedi")
-                    log(res.stopped)
-                    return res
-                resp = client(plan.voice_id, payload(text, plan.model_id, plan.speed))
-                if "audio_base64" not in resp or "alignment" not in resp:
-                    raise TtsError("ElevenLabs yanıtında audio_base64/alignment yok")
-                # Ödeme yapıldı: önce defter ve kayıt, sonra dosyalar (çift ücret olmasın diye önbelleğe).
-                ledger_add(ledger, month, len(text))
-                res.calls += 1
-                res.chars += len(text)
-                _atomic_bytes(mp3, base64.b64decode(resp["audio_base64"]))
-                _atomic_json(aj, {"text": text, "textSha256": text_sha256(text), "voice_id": plan.voice_id,
-                                  "model_id": plan.model_id, "speed": plan.speed, "lang": LANGUAGE,
-                                  "alignment": resp["alignment"]})
-                append_prompts(book, {"date": now().strftime("%Y-%m-%dT%H:%M:%SZ"), "chapter": cid,
-                                      "part": f"{k}/{len(job.parts)}", "voice": plan.voice_id,
-                                      "model": plan.model_id, "speed": plan.speed, "chars": len(text),
-                                      "sha": text_sha256(text), "file": f"audio/{cid}.mp3"})
-                log(f"  {cid} parça {k}/{len(job.parts)}: {len(text)} karakter üretildi")
+                # H-114: tavan denetimi, ücretli çağrı, defter ve önbellek yazısı tek defter kilidi altında; kilit
+                # alınınca önbellek yeniden denetlenir (bekleyen eşzamanlı çalıştırma aynı parçayı yeniden ödemez).
+                with ledger_lock(ledger, log=log):
+                    if mp3.exists() and aj.exists():
+                        log(f"  {cid} parça {k}/{len(job.parts)}: önbellekten (ücret yok; eşzamanlı çalıştırma üretti)")
+                    else:
+                        month = month_key(now())
+                        used = ledger_used(ledger, month)
+                        if used + len(text) > cap:
+                            res.stopped = (f"aylık tavan aşılır: bu ay {used} + {len(text)} > {cap} karakter; "
+                                           f"{cid} parça {k} üretilmedi")
+                            log(res.stopped)
+                            return res
+                        resp = client(plan.voice_id, payload(text, plan.model_id, plan.speed))
+                        # H-114: çağrı döndü = ödendi. Önce defter, sonra yanıt denetimi ve önbellek, en son PROMPTS.
+                        ledger_add(ledger, month, len(text))
+                        res.calls += 1
+                        res.chars += len(text)
+                        audio = decode_response(resp, f"{cid} parça {k}")
+                        _atomic_bytes(mp3, audio)
+                        _atomic_json(aj, {"text": text, "textSha256": text_sha256(text), "voice_id": plan.voice_id,
+                                          "model_id": plan.model_id, "speed": plan.speed, "lang": LANGUAGE,
+                                          "alignment": resp["alignment"]})
+                        append_prompts(book, {"date": now().strftime("%Y-%m-%dT%H:%M:%SZ"), "chapter": cid,
+                                              "part": f"{k}/{len(job.parts)}", "voice": plan.voice_id,
+                                              "model": plan.model_id, "speed": plan.speed, "chars": len(text),
+                                              "sha": text_sha256(text), "file": f"audio/{cid}.mp3"})
+                        log(f"  {cid} parça {k}/{len(job.parts)}: {len(text)} karakter üretildi")
             else:
                 log(f"  {cid} parça {k}/{len(job.parts)}: önbellekten (ücret yok)")
             part_files.append((mp3, aj))

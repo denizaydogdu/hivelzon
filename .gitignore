@@ -113,3 +113,7 @@ tasarim/*.png
 /.yerel/
 tasarim/v2/*.png
 /.claude/worktrees/
+
+# Maliyet defteri ve PROMPTS.md kilitleri (H-114; fcntl.flock yan dosyası)
+*.json.lock
+*.md.lock

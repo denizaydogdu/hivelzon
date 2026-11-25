@@ -16,7 +16,8 @@ Kullanım:
       tools/content-pipeline/.venv/bin/python tools/content-pipeline/tts_tr.py ders.md --out-dir … --execute
 
 Çıktı (--out-dir): <kimlik>.mp3 (-16 LUFS, 44,1 kHz 128 kb/sn), <kimlik>.align.json (ElevenLabs
-`alignment` biçimi + kelime listesi + kalite), _raw/<anahtar>.wav ve .duyu.json (ödenmiş önbellek).
+`alignment` biçimi + kelime listesi + kalite), _raw/<anahtar>.wav, .duyu.main.json (ana Duyu yanıtı) ve
+.duyu.json (boşluklar dolu); hepsi ödenmiş önbellek. Duyu bilerek yeniden ödenecekse iki .duyu dosyası da silinir.
 Anahtar: PD_API_KEY (ortam) ya da ~/.config/hivelzon/patientdesk.env; --execute ile ve kuru çalışmada ücret
 durumu okumak için kullanılır, hiçbir yere yazılmaz.
 Çıkış kodu: 0 = tamam, 1 = hata ya da tavan nedeniyle durdu, 2 = kullanım hatası,

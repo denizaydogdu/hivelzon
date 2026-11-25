@@ -25,7 +25,6 @@ Her çağrı bölümün PROMPTS.md'sine ve defterine yazılır. Anahtar yalnız 
 from __future__ import annotations
 
 import argparse
-import base64
 import json
 import sys
 from datetime import datetime, timezone
@@ -35,6 +34,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from hvpipeline import REPO_ROOT, tts, tts_tr  # noqa: E402
 from hvpipeline.book import text_sha256  # noqa: E402
+from hvpipeline.ledgerlock import ledger_lock  # noqa: E402
 from hvpipeline.tts_episode_tr import VOICE_MAP_FILE, load_en_key  # noqa: E402
 
 ICERIK = REPO_ROOT / "icerik"
@@ -67,13 +67,14 @@ def collect(ep_dir: Path, voices: dict) -> list[dict]:
 
 
 def append_prompts(path: Path, row: dict) -> None:
-    text = path.read_text(encoding="utf-8") if path.exists() else "# PROMPTS\n"
-    if PROMPTS_HEADING not in text:
-        text = text.rstrip("\n") + f"\n\n{PROMPTS_HEADING}\n\n{PROMPTS_TABLE}\n"
-    text = text if text.endswith("\n") else text + "\n"
-    text += (f"| {row['date']} | {row['stem']} | {row['speaker']} | {row['voice']} | {row['model']} | "
-             f"{row['speed']} | {row['chars']} | {row['sha']} |\n")
-    tts_tr._atomic_bytes(path, text.encode("utf-8"))
+    with ledger_lock(path):     # H-114: eşzamanlı çalıştırmalar satır kaybettirmez
+        text = path.read_text(encoding="utf-8") if path.exists() else "# PROMPTS\n"
+        if PROMPTS_HEADING not in text:
+            text = text.rstrip("\n") + f"\n\n{PROMPTS_HEADING}\n\n{PROMPTS_TABLE}\n"
+        text = text if text.endswith("\n") else text + "\n"
+        text += (f"| {row['date']} | {row['stem']} | {row['speaker']} | {row['voice']} | {row['model']} | "
+                 f"{row['speed']} | {row['chars']} | {row['sha']} |\n")
+        tts_tr._atomic_bytes(path, text.encode("utf-8"))
 
 
 def main(argv: list[str] | None = None, client=None) -> int:
@@ -135,26 +136,44 @@ def main(argv: list[str] | None = None, client=None) -> int:
         if a.key_file:
             load_en_key(Path(a.key_file))
         client = tts.http_client()
+    spent = 0
     for r in todo:
-        resp = client(r["voiceId"], tts.payload(r["text"], cfg["modelId"], float(cfg["speed"])))
-        if "audio_base64" not in resp or "alignment" not in resp:
-            print(f"HATA: {r['stem']}: yanıtta audio_base64/alignment yok", file=sys.stderr)
-            return 1
-        # Ödeme yapıldı: önce defter ve kayıt, sonra dosyalar (çift ücret olmasın).
-        tts.ledger_add(ledger, month, len(r["text"]))
-        append_prompts(r["dir"] / "PROMPTS.md", {
-            "date": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"), "stem": r["stem"],
-            "speaker": r["speaker"], "voice": f"{r['voiceName']} {r['voiceId']}", "model": cfg["modelId"],
-            "speed": cfg["speed"], "chars": len(r["text"]), "sha": text_sha256(r["text"])[:16]})
         out = r["dir"] / "audio"
-        tts_tr._atomic_bytes(out / f"{r['stem']}.mp3", base64.b64decode(resp["audio_base64"]))
-        doc = {"text": r["text"], "voice_id": r["voiceId"], "lang": "en", "alignment": resp["alignment"]}
-        if resp.get("normalized_alignment"):
-            doc["normalized_alignment"] = resp["normalized_alignment"]
-        tts_tr._atomic_bytes(out / f"{r['stem']}.align.json",
-                             (json.dumps(doc, ensure_ascii=False) + "\n").encode("utf-8"))
+        mp3, aj = out / f"{r['stem']}.mp3", out / f"{r['stem']}.align.json"
+        # H-114: tavan bu çağrıdan hemen önce defter kilidi altında yeniden okunur; çağrı, defter ve çıktı
+        # yazısı kilit bırakılmadan biter. Kilit alınınca çıktı yeniden denetlenir: eşzamanlı çalıştırmanın
+        # ürettiği replik yeniden ödenmez.
+        with ledger_lock(ledger):
+            if mp3.exists() and aj.exists():
+                print(f"  {r['stem']}: eşzamanlı çalıştırma üretti (ücret yok)")
+                continue
+            month = tts.month_key()          # H-114: ay anahtarı her ücretli çağrıda, kilit altında
+            used = tts.ledger_used(ledger, month)
+            if used + len(r["text"]) > a.cap:
+                print(f"HATA: tavan aşılır ({used} + {len(r['text'])} > {a.cap}); {r['stem']} üretilmedi.",
+                      file=sys.stderr)
+                return 1
+            resp = client(r["voiceId"], tts.payload(r["text"], cfg["modelId"], float(cfg["speed"])))
+            # H-114: çağrı döndü = ödendi. Önce defter, sonra yanıt denetimi ve dosyalar, en son PROMPTS.
+            tts.ledger_add(ledger, month, len(r["text"]))
+            spent += len(r["text"])
+            try:
+                audio = tts.decode_response(resp, r["stem"])
+            except tts.TtsError as e:
+                print(f"HATA: {e}", file=sys.stderr)
+                return 1
+            tts_tr._atomic_bytes(mp3, audio)
+            doc = {"text": r["text"], "voice_id": r["voiceId"], "lang": "en", "alignment": resp["alignment"]}
+            if resp.get("normalized_alignment"):
+                doc["normalized_alignment"] = resp["normalized_alignment"]
+            tts_tr._atomic_bytes(aj, (json.dumps(doc, ensure_ascii=False) + "\n").encode("utf-8"))
+            append_prompts(r["dir"] / "PROMPTS.md", {
+                "date": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"), "stem": r["stem"],
+                "speaker": r["speaker"], "voice": f"{r['voiceName']} {r['voiceId']}", "model": cfg["modelId"],
+                "speed": cfg["speed"], "chars": len(r["text"]), "sha": text_sha256(r["text"])[:16]})
         print(f"  {r['stem']}: {len(r['text'])} karakter")
-    print(f"== {len(todo)} replik seslendirildi, {total} karakter (defter {ledger.name}: {used + total}/{a.cap})")
+    print(f"== {len(todo)} replik hazır, bu turda {spent} karakter ödendi "
+          f"(defter {ledger.name}: {tts.ledger_used(ledger, tts.month_key())}/{a.cap})")
     return 0
 
 

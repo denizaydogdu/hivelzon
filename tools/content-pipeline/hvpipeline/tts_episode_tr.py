@@ -35,7 +35,6 @@ Eski ElevenLabs Türkçe sesleri silinmez: `audio/_raw/elevenlabs/` altına taş
 
 from __future__ import annotations
 
-import base64
 import json
 import os
 import re
@@ -48,6 +47,7 @@ from typing import Callable
 from . import REPO_ROOT, tts, tts_tr
 from .align import Alignment, alignment_json, concat_alignments
 from .book import text_sha256
+from .ledgerlock import ledger_lock
 
 VOICE_MAP_FILE = Path("_evren") / "sesler.json"
 HI_AUDIO_DIR = Path("_evren") / "hi-ses"
@@ -204,6 +204,20 @@ def _ref_stem(ref) -> str | None:
     return ref.get("id")
 
 
+def _safe_stem(stem, out_dir: Path, where: str) -> str:
+    """`audio` başvurusundan gelen ses adı dosya adı olarak güvenli mi (H-114): metin, boş değil, ayırıcı
+    (`/`, `\\`), `..`/`.` ve mutlak yol yok; çıktı `out_dir` içinde kalır. Değilse EpisodeTtsError."""
+    bad = (not isinstance(stem, str) or not stem.strip() or "/" in stem or "\\" in stem or stem in (".", "..")
+           or Path(stem).is_absolute())
+    if not bad:
+        base = Path(out_dir).resolve()
+        bad = (base / f"{stem}.mp3").resolve().parent != base
+    if bad:
+        raise EpisodeTtsError(f"{where}: geçersiz ses adı {stem!r} (yalnız dosya adı; ayırıcı, '..' ve mutlak yol "
+                              "olmaz)")
+    return stem
+
+
 def _role_for_card(node: dict) -> str | None:
     if node.get("voiceRole"):
         return node["voiceRole"]
@@ -231,7 +245,7 @@ def collect_episode(ep_dir: Path, vm: VoiceMap) -> list[Item]:
 
     def add(spec: dict, role: str, display: str, where: str, jpath: tuple, default_stem: str):
         ref = spec.get("audio")
-        stem = _ref_stem(ref) or default_stem
+        stem = _safe_stem(_ref_stem(ref) if ref is not None else default_stem, out_dir, f"{cid} {where}")
         speech = spec.get("speechTr") or display
         mode = spec.get("speechMode") or ("tr" if not _MARK.search(speech) else vm.default_mode)
         if mode not in ("tr", "a", "b"):
@@ -285,7 +299,8 @@ def collect_hi(icerik_root: Path, vm: VoiceMap) -> list[Item]:
             mode = e.get("speechMode") or ("b" if _MARK.search(speech) else "tr")
             if not _MARK.search(speech):
                 mode = "tr"
-            items.append(Item(f"{prefix}-{e['id']}", f"Hi {fname} {e['id']}", "hi", speech, mode, out_dir,
+            stem = _safe_stem(f"{prefix}-{e['id']}", out_dir, f"Hi {fname} {e['id']}")
+            items.append(Item(stem, f"Hi {fname} {e['id']}", "hi", speech, mode, out_dir,
                               out_dir / "PROMPTS.md", ("hi", p, key, e["id"]), bool(e.get("audio")),
                               e.get("pronunciations")))
     return items
@@ -345,7 +360,8 @@ def collect_talk_task(path: Path, doc: dict, icerik_root: Path, vm: VoiceMap) ->
         speech = obj.get(speech_key) or obj[f]
         prons = vm.pron_for(plain(speech), task_pron)
         mode = "a" if (_MARK.search(speech) or prons) else "tr"
-        items.append(Item(f"{TALK_STEM}-{tid}-{suffix}", f"Konuş {tid} {suffix}", "hi", speech, mode, out_dir,
+        stem = _safe_stem(f"{TALK_STEM}-{tid}-{suffix}", out_dir, f"Konuş {tid} {suffix}")
+        items.append(Item(stem, f"Konuş {tid} {suffix}", "hi", speech, mode, out_dir,
                           out_dir / "PROMPTS.md", ("talk", Path(path), jpath, audio_key), bool(obj.get(audio_key)),
                           prons))
     return items
@@ -552,13 +568,14 @@ def run_tr(pieces: list[TrPiece], client, cap: int | None, ledger: Path, log=pri
 
 
 def append_en_prompts(path: Path, row: dict) -> None:
-    text = path.read_text(encoding="utf-8") if path.exists() else "# PROMPTS\n"
-    if EN_PROMPTS_HEADING not in text:
-        text = text.rstrip("\n") + f"\n\n{EN_PROMPTS_HEADING}\n\n{EN_PROMPTS_TABLE}\n"
-    text = text if text.endswith("\n") else text + "\n"
-    line = (f"| {row['date']} | {row['segment']} | {row['voice']} | {row['model']} | {row['speed']} | "
-            f"{row['chars']} | {row['sha'][:16]} |\n")
-    tts_tr._atomic_bytes(path, (text + line).encode("utf-8"))
+    with ledger_lock(path):     # H-114: eşzamanlı çalıştırmalar satır kaybettirmez
+        text = path.read_text(encoding="utf-8") if path.exists() else "# PROMPTS\n"
+        if EN_PROMPTS_HEADING not in text:
+            text = text.rstrip("\n") + f"\n\n{EN_PROMPTS_HEADING}\n\n{EN_PROMPTS_TABLE}\n"
+        text = text if text.endswith("\n") else text + "\n"
+        line = (f"| {row['date']} | {row['segment']} | {row['voice']} | {row['model']} | {row['speed']} | "
+                f"{row['chars']} | {row['sha'][:16]} |\n")
+        tts_tr._atomic_bytes(path, (text + line).encode("utf-8"))
 
 
 def run_en(pieces: list[EnPiece], en: dict, client: Callable[[str, dict], dict] | None, cap: int | None,
@@ -571,21 +588,29 @@ def run_en(pieces: list[EnPiece], en: dict, client: Callable[[str, dict], dict] 
             continue
         if cap is None:
             raise EpisodeTtsError("İngilizce aylık karakter tavanı tanımlı değil; ücretli üretim kapalı")
-        month = tts.month_key(now())
-        used = tts.ledger_used(ledger, month)
-        if used + len(p.text) > cap:
-            raise EpisodeTtsError(f"İngilizce aylık tavan aşılır: {used} + {len(p.text)} > {cap}; {p.id} üretilmedi")
-        resp = client(en["voiceId"], tts.payload(p.text, en["modelId"], float(en["speed"])))
-        if "audio_base64" not in resp or "alignment" not in resp:
-            raise EpisodeTtsError(f"{p.id}: ElevenLabs yanıtında audio_base64/alignment yok")
-        # Ödeme yapıldı: önce defter ve kayıt, sonra önbellek (çift ücret olmasın).
-        tts.ledger_add(ledger, month, len(p.text))
-        append_en_prompts(p.prompts, {"date": now().strftime("%Y-%m-%dT%H:%M:%SZ"), "segment": p.id,
-                                      "voice": f"{en['name']} {en['voiceId']}", "model": en["modelId"],
-                                      "speed": en["speed"], "chars": len(p.text), "sha": text_sha256(p.text)})
-        tts_tr._atomic_bytes(p.raw_mp3(), base64.b64decode(resp["audio_base64"]))
-        tts_tr._atomic_bytes(p.raw_json(), (json.dumps({"text": p.text, "alignment": resp["alignment"]},
-                                                       ensure_ascii=False) + "\n").encode("utf-8"))
+        # H-114: tavan denetimi, ücretli çağrı, defter ve önbellek yazısı tek defter kilidi altında; kilit
+        # alınınca önbellek yeniden denetlenir (bekleyen eşzamanlı çalıştırma aynı ifadeyi yeniden ödemez).
+        with ledger_lock(ledger, log=log):
+            if p.raw_mp3().exists() and p.raw_json().exists():
+                continue
+            month = tts.month_key(now())
+            used = tts.ledger_used(ledger, month)
+            if used + len(p.text) > cap:
+                raise EpisodeTtsError(f"İngilizce aylık tavan aşılır: {used} + {len(p.text)} > {cap}; "
+                                      f"{p.id} üretilmedi")
+            resp = client(en["voiceId"], tts.payload(p.text, en["modelId"], float(en["speed"])))
+            # H-114: çağrı döndü = ödendi. Önce defter, sonra yanıt denetimi ve önbellek, en son PROMPTS.
+            tts.ledger_add(ledger, month, len(p.text))
+            try:
+                audio = tts.decode_response(resp, p.id)
+            except tts.TtsError as e:
+                raise EpisodeTtsError(str(e)) from None
+            tts_tr._atomic_bytes(p.raw_mp3(), audio)
+            tts_tr._atomic_bytes(p.raw_json(), (json.dumps({"text": p.text, "alignment": resp["alignment"]},
+                                                           ensure_ascii=False) + "\n").encode("utf-8"))
+            append_en_prompts(p.prompts, {"date": now().strftime("%Y-%m-%dT%H:%M:%SZ"), "segment": p.id,
+                                          "voice": f"{en['name']} {en['voiceId']}", "model": en["modelId"],
+                                          "speed": en["speed"], "chars": len(p.text), "sha": text_sha256(p.text)})
         chars += len(p.text)
         calls += 1
         log(f"  {p.id}: ElevenLabs {len(p.text)} karakter ({p.text!r})")

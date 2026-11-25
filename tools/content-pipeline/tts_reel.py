@@ -24,6 +24,7 @@ Kurallar (CLAUDE.md, docs/REEL-PAKETI.md):
 from __future__ import annotations
 
 import argparse
+import base64
 import json
 import subprocess
 import sys
@@ -33,6 +34,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from hvpipeline import tts as T  # noqa: E402
+from hvpipeline.ledgerlock import ledger_lock  # noqa: E402
 
 VOICES: dict[str, tuple[str, str]] = {
     "SARAH": ("Sarah", "EXAVITQu4vr4xnSDxMaL"),
@@ -70,14 +72,14 @@ def _sha16(text: str) -> str:
 
 
 def _append_prompts(prompts: Path, row: dict) -> None:
-    if not prompts.is_file():
-        prompts.write_text("# Reel örnekleri — istem ve üretim kayıtları\n", encoding="utf-8")
-    text = prompts.read_text(encoding="utf-8")
-    if PROMPTS_HEADING not in text:
-        text = text.rstrip("\n") + f"\n\n{PROMPTS_HEADING}\n\n{PROMPTS_TABLE}\n"
-    text = text.rstrip("\n") + (f"\n| {row['date']} | {row['reel']} | {row['cue']} | {row['voice']} | "
-                               f"{row['model']} | {row['speed']} | {row['chars']} | {row['sha']} | {row['file']} |")
-    prompts.write_text(text + "\n", encoding="utf-8")
+    with ledger_lock(prompts):     # H-114: eşzamanlı çalıştırmalar satır kaybettirmez; yazım atomik
+        text = prompts.read_text(encoding="utf-8") if prompts.is_file() \
+            else "# Reel örnekleri — istem ve üretim kayıtları\n"
+        if PROMPTS_HEADING not in text:
+            text = text.rstrip("\n") + f"\n\n{PROMPTS_HEADING}\n\n{PROMPTS_TABLE}\n"
+        text = text.rstrip("\n") + (f"\n| {row['date']} | {row['reel']} | {row['cue']} | {row['voice']} | "
+                                   f"{row['model']} | {row['speed']} | {row['chars']} | {row['sha']} | {row['file']} |")
+        T._atomic_bytes(prompts, (text + "\n").encode("utf-8"))
 
 
 def _duration(path: Path) -> float:
@@ -152,20 +154,36 @@ def main(argv: list[str] | None = None) -> int:
         mp3 = parts / f"{p['key']}.mp3"
         cue_json = out_dir / f"{p['cue']}.json"
         if not mp3.is_file():
-            resp = client(p["voice"], T.payload(p["text"], MODEL, a.speed))
-            if "audio_base64" not in resp:
-                print("hata: yanıtta audio_base64 yok", file=sys.stderr)
-                return 1
-            import base64
-            mp3.write_bytes(base64.b64decode(resp["audio_base64"]))
-            T.ledger_add(ledger, month, p["chars"])
-            spent += p["chars"]
-            _append_prompts(Path("reeller/PROMPTS.md"), {
-                "date": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"), "reel": reel["id"],
-                "cue": p["cue"], "voice": f"{p['voice_name']} {p['voice']}", "model": MODEL,
-                "speed": a.speed, "chars": p["chars"], "sha": _sha16(p["text"]),
-                "file": f"_raw/tts/{p['cue']}.mp3"})
-            print(f"    {p['cue']}: {p['chars']} karakter üretildi ({p['voice_name']})")
+            # H-114: tavan bu çağrıdan hemen önce defter kilidi altında yeniden okunur; çağrı, defter ve önbellek
+            # yazısı kilit bırakılmadan biter. Kilit alınınca önbellek yeniden denetlenir: eşzamanlı çalıştırmanın
+            # ödediği parça yeniden ödenmez.
+            with ledger_lock(ledger):
+                if mp3.is_file():
+                    print(f"    {p['cue']}: eşzamanlı çalıştırma üretti (ücret yok)")
+                else:
+                    pay_month = T.month_key()        # H-114: ay anahtarı her ücretli çağrıda, kilit altında
+                    used = T.ledger_used(ledger, pay_month)
+                    if used + p["chars"] > cap:
+                        print(f"hata: tavan aşılır ({used} + {p['chars']} > {cap}); {p['cue']} üretilmedi",
+                              file=sys.stderr)
+                        return 1
+                    resp = client(p["voice"], T.payload(p["text"], MODEL, a.speed))
+                    # H-114: çağrı döndü = ödendi. Önce defter, sonra yanıt denetimi ve önbellek, en son PROMPTS.
+                    T.ledger_add(ledger, pay_month, p["chars"])
+                    spent += p["chars"]
+                    try:
+                        audio = base64.b64decode(resp["audio_base64"], validate=True)
+                    except (KeyError, TypeError, ValueError):
+                        print(f"hata: {p['cue']}: yanıtta geçerli audio_base64 yok (ücret deftere yazıldı)",
+                              file=sys.stderr)
+                        return 1
+                    T._atomic_bytes(mp3, audio)
+                    _append_prompts(Path("reeller/PROMPTS.md"), {
+                        "date": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"), "reel": reel["id"],
+                        "cue": p["cue"], "voice": f"{p['voice_name']} {p['voice']}", "model": MODEL,
+                        "speed": a.speed, "chars": p["chars"], "sha": _sha16(p["text"]),
+                        "file": f"_raw/tts/{p['cue']}.mp3"})
+                    print(f"    {p['cue']}: {p['chars']} karakter üretildi ({p['voice_name']})")
         dest = out_dir / f"{p['cue']}.mp3"
         # Önbellekten gelse bile cue dosyasını tazele: konuşmacı/metin değişmiş olabilir.
         # (Eski koşul yalnız yeni üretimde kopyalıyordu; ses değişince eski dosya kalıyordu.)
@@ -177,7 +195,7 @@ def main(argv: list[str] | None = None) -> int:
                                        ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
         timing[p["cue"]] = round(_duration(dest), 3)
     timing_path.write_text(json.dumps(timing, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
-    print(f"Bu turda harcanan: {spent} karakter · defter güncel: {T.ledger_used(ledger, month)}")
+    print(f"Bu turda harcanan: {spent} karakter · defter güncel: {T.ledger_used(ledger, T.month_key())}")
     print("Sıradaki: `build_reel.py <reel> --force` ile sesli sürümü kur.")
     return 0
 

@@ -179,7 +179,7 @@ def main(argv: list[str] | None = None, tr_client=None, en_client=None, finalize
             changed = ep.update_sources(items, vm)
             if changed:
                 print("Güncellenen kaynaklar: " + ", ".join(changed))
-    except (ep.EpisodeTtsError, tr.TrTtsError, tts.TtsError) as e:
+    except (ep.EpisodeTtsError, tr.TrTtsError, tts.TtsError, OSError) as e:   # OSError: yedek/yazma (H-114)
         print(f"HATA: {e}", file=sys.stderr)
         return 1
     print(f"== {len(work) - len(waiting)} ses kuruldu, {len(waiting)} İngilizce parça bekliyor, {len(plans) - len(work)} güncel; Alania {tr_calls} çağrı / {tr_chars} karakter, "

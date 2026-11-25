@@ -621,3 +621,46 @@ def test_dev_server_serves_books_with_range(book_dir):
     finally:
         srv.shutdown()
         srv.server_close()
+
+
+def test_h114_book_paid_call_runs_under_ledger_lock(book_dir, tmp_path):
+    """H-114: tavan denetimi, ElevenLabs çağrısı ve defter yazısı aynı defter kilidi altında."""
+    from test_tts_tr import _lock_is_held_elsewhere
+    _fresh_audio(book_dir)
+    ledger, seen = tmp_path / "l.json", []
+    fc = FakeClient()
+
+    def client(voice_id, payload):
+        seen.append(_lock_is_held_elsewhere(ledger))
+        return fc(voice_id, payload)
+
+    def concat(paths, gap, out):
+        out.write_bytes(b"".join(p.read_bytes() for p in paths))
+        return out
+    tts.execute(tts.plan_book(Book.load(book_dir)), client, 10_000, ledger, concat=concat,
+                duration=lambda p: 5.0, log=lambda s: None)
+    assert seen and all(seen)
+
+
+def test_h114_book_concurrent_runs_never_pay_same_part_twice(book_dir, tmp_path):
+    from test_tts_tr import Race
+    _fresh_audio(book_dir)
+    ledger, race, fc = tmp_path / "l.json", Race(), FakeClient()
+
+    def client(voice_id, payload):
+        r = fc(voice_id, payload)
+        race.gate()
+        return r
+
+    def concat(paths, gap, out):
+        out.write_bytes(b"".join(p.read_bytes() for p in paths))
+        return out
+
+    def go():
+        tts.execute(tts.plan_book(Book.load(book_dir)), client, 100_000, ledger, concat=concat,
+                    duration=lambda p: 5.0, log=lambda s: None)
+    race.run(go, go)
+    texts = [p["text"] for _, p in fc.calls]
+    assert texts and len(texts) == len(set(texts))
+    m = json.loads(ledger.read_text(encoding="utf-8"))[tts.month_key()]
+    assert m["calls"] == len(texts) and m["characters"] == sum(len(t) for t in texts)

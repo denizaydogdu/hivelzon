@@ -65,3 +65,44 @@ def test_execute_writes_audio_align_ledger_and_is_idempotent(tmp_path):
     f2 = Fake()
     assert en.main([str(ep), "--root", str(root), "--execute", "--cap", "100", "--ledger", str(led)], client=f2) == 0
     assert f2.calls == []
+
+
+# --- H-114: defter kilidi ------------------------------------------------------------------------
+
+def _racing_fake(race):
+    f = Fake()
+
+    def client(voice, payload):
+        r = f(voice, payload)
+        race.gate()
+        return r
+    return f, client
+
+
+def test_h114_concurrent_runs_same_lines_pay_once(tmp_path):
+    from test_tts_tr import Race
+    root, ep = setup(tmp_path, jordan_voice="v-jordan")
+    led, race = tmp_path / "l.json", Race()
+    f, client = _racing_fake(race)
+    rc = []
+    go = lambda: rc.append(en.main([str(ep), "--root", str(root), "--execute", "--cap", "100",  # noqa: E731
+                                    "--ledger", str(led)], client=client))
+    race.run(go, go)
+    texts = [t for _, t in f.calls]
+    assert sorted(texts) == ["No problem!", "Sorry, I'm late."] and rc == [0, 0]
+    assert json.loads(led.read_text(encoding="utf-8"))[en.tts.month_key()] == {"characters": 27, "calls": 2}
+
+
+def test_h114_cap_rechecked_under_lock_before_each_call(tmp_path, capsys):
+    from test_tts_tr import Race
+    root, ep = setup(tmp_path, jordan_voice="v-jordan")
+    root2, ep2 = setup(tmp_path / "b", jordan_voice="v-jordan")
+    led, race = tmp_path / "l.json", Race()
+    f, client = _racing_fake(race)
+    rc = {}
+    race.run(lambda: rc.__setitem__("a", en.main([str(ep), "--root", str(root), "--execute", "--cap", "30",
+                                                  "--ledger", str(led)], client=client)),
+             lambda: rc.__setitem__("b", en.main([str(ep2), "--root", str(root2), "--execute", "--cap", "30",
+                                                  "--ledger", str(led)], client=client)))
+    assert len(f.calls) == 2 and rc == {"a": 0, "b": 1}
+    assert json.loads(led.read_text(encoding="utf-8"))[en.tts.month_key()]["characters"] == 27

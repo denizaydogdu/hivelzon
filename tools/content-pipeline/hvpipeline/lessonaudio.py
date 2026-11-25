@@ -15,7 +15,6 @@ anahtarlar yalnız ortamdan, yalnız gerçek çağrıda okunur.
 
 from __future__ import annotations
 
-import base64
 import json
 import os
 from dataclasses import dataclass, field
@@ -25,6 +24,7 @@ from typing import Callable
 
 from . import tts, tts_tr
 from .align import Alignment
+from .ledgerlock import atomic_bytes, ledger_lock
 from .lesson import AUDIO_DIR, AUDIO_MANIFEST, PROMPTS_FILE, EN_DIR, TR_DIR, EnSegment, Lesson, text_sha256
 
 EN_PROMPTS_HEADING = "## İngilizce örnek seslendirme kayıtları (tts_lesson.py)"
@@ -148,20 +148,18 @@ class EnResult:
 
 
 def _atomic_bytes(path: Path, data: bytes) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    tmp = path.with_name(path.name + ".tmp")
-    tmp.write_bytes(data)
-    os.replace(tmp, path)
+    atomic_bytes(path, data)     # benzersiz geçici dosya (H-114)
 
 
 def append_en_prompts(path: Path, row: dict) -> None:
-    text = path.read_text(encoding="utf-8") if path.exists() else "# PROMPTS\n"
-    if EN_PROMPTS_HEADING not in text:
-        text = text.rstrip("\n") + f"\n\n{EN_PROMPTS_HEADING}\n\n{EN_PROMPTS_TABLE}\n"
-    text = text if text.endswith("\n") else text + "\n"
-    line = (f"| {row['date']} | {row['segment']} | {row['voice']} | {row['model']} | {row['speed']} | {row['chars']} | "
-            f"{row['sha'][:16]} | {row['file']} |\n")
-    _atomic_bytes(path, (text + line).encode("utf-8"))
+    with ledger_lock(path):     # H-114: eşzamanlı çalıştırmalar satır kaybettirmez
+        text = path.read_text(encoding="utf-8") if path.exists() else "# PROMPTS\n"
+        if EN_PROMPTS_HEADING not in text:
+            text = text.rstrip("\n") + f"\n\n{EN_PROMPTS_HEADING}\n\n{EN_PROMPTS_TABLE}\n"
+        text = text if text.endswith("\n") else text + "\n"
+        line = (f"| {row['date']} | {row['segment']} | {row['voice']} | {row['model']} | {row['speed']} | "
+                f"{row['chars']} | {row['sha'][:16]} | {row['file']} |\n")
+        _atomic_bytes(path, (text + line).encode("utf-8"))
 
 
 def execute_en(plan: EnPlan, client: Callable[[str, dict], dict] | None, cap: int | None, ledger: Path,
@@ -179,27 +177,34 @@ def execute_en(plan: EnPlan, client: Callable[[str, dict], dict] | None, cap: in
             continue
         raw_mp3, raw_json = plan.raw_mp3(j), plan.raw_json(j)
         sha = text_sha256(j.seg.text)
-        if not (raw_mp3.exists() and raw_json.exists()):
-            month = tts.month_key(now())
-            used = tts.ledger_used(ledger, month)
-            if used + j.chars > cap:
-                res.stopped = f"aylık tavan aşılır: bu ay {used} + {j.chars} > {cap} karakter; {sid} üretilmedi"
-                log(res.stopped)
-                return res
-            resp = client(plan.voice, tts.payload(j.seg.text, plan.model, plan.speed))
-            if "audio_base64" not in resp or "alignment" not in resp:
-                raise tts.TtsError(f"{sid}: ElevenLabs yanıtında audio_base64/alignment yok")
-            # Ödeme yapıldı: önce defter ve kayıt, sonra önbellek (çift ücret olmasın).
-            tts.ledger_add(ledger, month, j.chars)
-            append_en_prompts(prompts, {"date": now().strftime("%Y-%m-%dT%H:%M:%SZ"), "segment": sid,
-                                        "voice": plan.voice, "model": plan.model, "speed": plan.speed,
-                                        "chars": j.chars, "sha": sha, "file": f"audio/en/{sid}.mp3"})
-            _atomic_bytes(raw_mp3, base64.b64decode(resp["audio_base64"]))
-            _atomic_bytes(raw_json, (json.dumps({"text": j.seg.text, "alignment": resp["alignment"]},
-                                                ensure_ascii=False) + "\n").encode("utf-8"))
-            res.calls += 1
-            res.chars += j.chars
-            log(f"  {sid}: ElevenLabs {j.chars} karakter")
+        def cached() -> bool:
+            return raw_mp3.exists() and raw_json.exists()
+        if not cached():
+            # H-114: tavan denetimi, ücretli çağrı, defter ve önbellek yazısı tek defter kilidi altında; kilit
+            # alınınca önbellek yeniden denetlenir (bekleyen eşzamanlı çalıştırma yeniden ödemez).
+            with ledger_lock(ledger, log=log):
+                if cached():
+                    log(f"  {sid}: önbellekten (ücret yok; eşzamanlı çalıştırma üretti)")
+                else:
+                    month = tts.month_key(now())
+                    used = tts.ledger_used(ledger, month)
+                    if used + j.chars > cap:
+                        res.stopped = f"aylık tavan aşılır: bu ay {used} + {j.chars} > {cap} karakter; {sid} üretilmedi"
+                        log(res.stopped)
+                        return res
+                    resp = client(plan.voice, tts.payload(j.seg.text, plan.model, plan.speed))
+                    # H-114: çağrı döndü = ödendi. Önce defter, sonra yanıt denetimi ve önbellek, en son PROMPTS.
+                    tts.ledger_add(ledger, month, j.chars)
+                    res.calls += 1
+                    res.chars += j.chars
+                    audio = tts.decode_response(resp, sid)
+                    _atomic_bytes(raw_mp3, audio)
+                    _atomic_bytes(raw_json, (json.dumps({"text": j.seg.text, "alignment": resp["alignment"]},
+                                                        ensure_ascii=False) + "\n").encode("utf-8"))
+                    append_en_prompts(prompts, {"date": now().strftime("%Y-%m-%dT%H:%M:%SZ"), "segment": sid,
+                                                "voice": plan.voice, "model": plan.model, "speed": plan.speed,
+                                                "chars": j.chars, "sha": sha, "file": f"audio/en/{sid}.mp3"})
+                    log(f"  {sid}: ElevenLabs {j.chars} karakter")
         else:
             log(f"  {sid}: önbellekten (ücret yok)")
         al = json.loads(raw_json.read_text(encoding="utf-8"))["alignment"]
