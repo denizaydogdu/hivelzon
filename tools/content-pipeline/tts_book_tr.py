@@ -100,7 +100,8 @@ def main(argv: list[str] | None = None, client=None, finalize=None, sleep=None, 
             print(f"   {j.seg.id}: {j.chars} karakter — {j.reason}")
         chars += plan.billable_chars
         secs += plan.est_stt_seconds
-    st = billing if billing is not None else tr.billing_status(offline=a.offline)
+    st = billing if billing is not None else tr.billing_status(offline=a.offline,
+                                                                     needed=tr.work_needed(chars, secs))
     print(f"Toplam Alania: {chars} karakter; Duyu ≈ {secs:.0f} sn (tahmin). Ücret: {tr.cost_text(chars, secs, st)}. "
           f"Bu ay ({month}) kullanılan: {used}; "
           f"tavan: {cap if cap is not None else 'TANIMLI DEĞİL'}")

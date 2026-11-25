@@ -73,7 +73,8 @@ def main(argv: list[str] | None = None, client=None, finalize=None, sleep=None, 
     plan = tr.plan_segments(segs, out_dir, a.voice, a.model, a.force)
     print("\n".join(tr.describe(plan)))
     chars, secs = plan.billable_chars, plan.est_stt_seconds
-    st = billing if billing is not None else tr.billing_status(offline=a.offline)
+    st = billing if billing is not None else tr.billing_status(offline=a.offline,
+                                                                     needed=tr.work_needed(chars, secs))
     print(f"Toplam Alania: {chars} karakter; Duyu ≈ {secs:.0f} sn (tahmin). Ücret: {tr.cost_text(chars, secs, st)} "
           f"[tarife {tr.TL_PER_1000_CHARS} TL/1000 karakter + {tr.TL_PER_AUDIO_HOUR} TL/ses saati]. "
           f"Bu ay ({month}) kullanılan: {used}; tavan: {cap if cap is not None else 'TANIMLI DEĞİL'}")

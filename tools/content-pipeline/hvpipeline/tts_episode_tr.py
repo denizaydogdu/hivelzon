@@ -506,22 +506,36 @@ def _noop_finalize(wav: Path, out: Path) -> None:
     return None
 
 
-def run_tr(pieces: list[TrPiece], client, cap: int | None, ledger: Path, log=print,
-           finalize: Callable | None = None, sleep: Callable | None = None) -> tuple[int, int, list[str]]:
-    """Alania + Duyu (tts_tr.execute). Aynı (klasör, ses, kayıt) grubundaki parçalar tek planda.
-    Dönüş: (karakter, çağrı, uyarılar)."""
+def tr_plans(pieces: list[TrPiece]) -> list[tuple[tuple, "tts_tr.Plan"]]:
+    """`run_tr`'nin yürüteceği planlar: aynı (klasör, ses, kayıt, son işlem) grubu tek plan."""
     groups: dict[tuple, list[TrPiece]] = {}
     for p in pieces:
         groups.setdefault((p.out_dir, p.voice, p.prompts, p.finalize), []).append(p)
-    chars = calls = 0
-    warns: list[str] = []
-    for (out_dir, voice, prompts, fin), ps in groups.items():
+    out = []
+    for key, ps in groups.items():
         segs, seen = [], set()
         for p in ps:
             if p.seg.id not in seen:
                 segs.append(p.seg)
                 seen.add(p.seg.id)
-        plan = tts_tr.plan_segments(segs, out_dir, voice)
+        out.append((key, tts_tr.plan_segments(segs, key[0], key[1])))
+    return out
+
+
+def tr_work(pieces: list[TrPiece]) -> tuple[int, float]:
+    """Ücretli Türkçe iş: (Alania karakteri, Duyu saniyesi tahmini). WAV'ı önbellekte olup Duyu'su eksik
+    parçalar da sayılır (H-112 incelemesi); `run_tr` ile aynı planlardan hesaplanır."""
+    plans = [pl for _, pl in tr_plans(pieces)]
+    return sum(pl.billable_chars for pl in plans), sum(pl.est_stt_seconds for pl in plans)
+
+
+def run_tr(pieces: list[TrPiece], client, cap: int | None, ledger: Path, log=print,
+           finalize: Callable | None = None, sleep: Callable | None = None) -> tuple[int, int, list[str]]:
+    """Alania + Duyu (tts_tr.execute). Aynı (klasör, ses, kayıt) grubundaki parçalar tek planda.
+    Dönüş: (karakter, çağrı, uyarılar)."""
+    chars = calls = 0
+    warns: list[str] = []
+    for (out_dir, voice, prompts, fin), plan in tr_plans(pieces):
         if all(j.action == "skip" for j in plan.jobs):
             continue
         kw = {"log": log}

@@ -34,6 +34,7 @@ import json
 import math
 import os
 import re
+import threading
 import time
 import unicodedata
 import uuid
@@ -58,6 +59,7 @@ ENV_OFFLINE = "HIVELZON_TR_TTS_OFFLINE"   # 1: ücret durumu okunmaz (testler, C
 USAGE_PATH = "/v1/usage"
 USAGE_CONNECT_TIMEOUT = 2.0
 USAGE_READ_TIMEOUT = 5.0
+USAGE_TOTAL_TIMEOUT = 8.0   # DNS ve yanıt gövdesi dahil üst sınır (H-112)
 USAGE_MAX_BYTES = 65536
 DEFAULT_LEDGER = REPO_ROOT / "kitaplar" / "_maliyet" / "patientdesk-karakter.json"
 TTS_MODEL = "alania-v2"
@@ -600,6 +602,36 @@ def _unknown(reason: str, fetched: bool) -> BillingStatus:
     return BillingStatus(known=False, fetched=fetched, reason=reason)
 
 
+NO_TR_WORK = "Türkçe iş yok"
+
+
+def work_needed(chars: int, stt_seconds: float) -> bool:
+    """Ücretli Türkçe iş var mı: Alania karakteri ya da Duyu hizalaması (ses saatiyle ücretli)."""
+    return chars > 0 or stt_seconds > 0
+
+
+def _with_deadline(fn: Callable, args: tuple, seconds: float):
+    """`fn(*args)` en çok `seconds` bekler. Soket süreleri DNS çözümlemesini ve gövdenin tamamını
+    kapsamadığı için genel sınır ayrı bir iş parçacığıyla konur; süre aşılırsa iş parçacığı arka planda
+    (daemon) biter, sonucu kullanılmaz."""
+    box: dict = {}
+
+    def run():
+        try:
+            box["v"] = fn(*args)
+        except BaseException as e:  # noqa: BLE001 — çağırana aynen iletilir
+            box["e"] = e
+
+    t = threading.Thread(target=run, name="pd-usage", daemon=True)
+    t.start()
+    t.join(seconds)
+    if t.is_alive():
+        raise TimeoutError("toplam süre aşıldı")
+    if "e" in box:
+        raise box["e"]
+    return box["v"]
+
+
 def _http_get(url: str, headers: dict, connect_timeout: float, read_timeout: float) -> tuple[int, bytes]:
     """Yalnız https, yönlendirme izlenmez (anahtar başka adrese gitmez). Bağlantı ve okuma süreleri ayrı."""
     import http.client
@@ -655,9 +687,13 @@ def offline_requested(flag: bool | None = None) -> bool:
 
 
 def billing_status(fetch: Callable[[str, dict, float, float], tuple[int, bytes]] | None = None,
-                   key_file: Path | None = None, offline: bool | None = None) -> BillingStatus:
+                   key_file: Path | None = None, offline: bool | None = None, needed: bool = True,
+                   total_timeout: float = USAGE_TOTAL_TIMEOUT) -> BillingStatus:
     """PatientDesk ücret durumunu okur (yalnız okuma; üretim çağrısı değil). Hiçbir zaman istisna fırlatmaz;
-    sorun olursa nedeniyle `known=False` döner. Anahtar ve `user_id` hiçbir çıktıya girmez."""
+    sorun olursa nedeniyle `known=False` döner. Anahtar ve `user_id` hiçbir çıktıya girmez.
+    `needed=False` (ücretli Türkçe iş yok, bkz. `work_needed`) ise ağa çıkılmaz."""
+    if not needed:
+        return _unknown(NO_TR_WORK, False)
     if offline_requested(offline):
         return _unknown("çevrimdışı", False)
     try:
@@ -667,9 +703,11 @@ def billing_status(fetch: Callable[[str, dict, float, float], tuple[int, bytes]]
     except Exception as e:  # noqa: BLE001 — anahtar dosyası okunamadı vb.; çağırana istisna gitmez
         return _unknown(f"anahtar okunamadı ({type(e).__name__})", False)
     try:
-        status, raw = (fetch or _http_get)(base + USAGE_PATH, {"Authorization": f"Bearer {key}",
-                                                              "Accept": "application/json"},
-                                           USAGE_CONNECT_TIMEOUT, USAGE_READ_TIMEOUT)
+        status, raw = _with_deadline(fetch or _http_get,
+                                     (base + USAGE_PATH, {"Authorization": f"Bearer {key}",
+                                                          "Accept": "application/json"},
+                                      USAGE_CONNECT_TIMEOUT, USAGE_READ_TIMEOUT),
+                                     total_timeout)
     except TimeoutError:                      # socket.timeout da TimeoutError'dır (3.10+)
         return _unknown("zaman aşımı", True)
     except OSError as e:                      # bağlantı, DNS, TLS
@@ -688,6 +726,8 @@ def _local_date(d: datetime) -> str:
 def cost_text(chars: int, stt_seconds: float, status: BillingStatus, now: datetime | None = None) -> str:
     """Bütün Türkçe ses araçlarının kuru çalışma ücret satırı (tarife TL_PER_1000_CHARS + TL_PER_AUDIO_HOUR)."""
     now = now or datetime.now(timezone.utc)
+    if not status.fetched and not work_needed(chars, stt_seconds):
+        return "0 TL (Türkçe üretim yok; ücret durumu okunmadı)"
     tl = estimate_tl(chars, stt_seconds)
     if not status.known:
         return f"≈ {tl:.2f} TL (ücret durumu doğrulanamadı: {status.reason}; ücretli varsayıldı)"

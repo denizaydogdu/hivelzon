@@ -211,6 +211,65 @@ def test_tests_run_offline_by_default():
     assert os.environ.get(tr.ENV_OFFLINE) == "1"
 
 
+# --- H-112: genel süre sınırı ve Türkçe iş yokken okumama -------------------------------------------
+
+def test_total_deadline_covers_hanging_fetch(online):
+    """DNS/yanıt gövdesi soket sürelerine girmez; toplam süre yine de aşılmaz."""
+    import threading
+    import time as _t
+    release = threading.Event()
+
+    def hang(url, headers, ct, rt):
+        release.wait(5)
+        return 200, json.dumps(SAMPLE).encode()
+
+    t0 = _t.monotonic()
+    try:
+        s = tr.billing_status(fetch=hang, key_file=online, total_timeout=0.2)
+    finally:
+        release.set()
+    assert _t.monotonic() - t0 < 2
+    assert not s.known and s.fetched and s.reason == "zaman aşımı"
+
+
+def test_total_deadline_default_is_bounded():
+    assert tr.USAGE_TOTAL_TIMEOUT >= tr.USAGE_CONNECT_TIMEOUT + tr.USAGE_READ_TIMEOUT
+    assert tr.USAGE_TOTAL_TIMEOUT <= 10
+
+
+def test_fetch_errors_still_mapped_through_deadline(online):
+    s = tr.billing_status(fetch=FakeFetch(exc=socket.gaierror("dns")), key_file=online)
+    assert not s.known and s.fetched and s.reason == "ağ hatası (gaierror)"
+
+
+def test_no_turkish_work_skips_read(online):
+    f = FakeFetch()
+    s = tr.billing_status(fetch=f, key_file=online, needed=False)
+    assert f.calls == [] and not s.fetched
+    assert tr.cost_text(0, 0, s, now=NOW) == "0 TL (Türkçe üretim yok; ücret durumu okunmadı)"
+    assert tr.dry_run_note(s) == "hiçbir API çağrısı yapılmadı"
+    assert tr.billing_status(fetch=f, key_file=online).known and len(f.calls) == 1
+
+
+def test_work_needed_only_when_tts_or_duyu_pending():
+    assert tr.work_needed(0, 0) is False
+    assert tr.work_needed(5, 0) is True
+    assert tr.work_needed(0, 12.5) is True          # yalnız Duyu hizalaması da ses saatiyle ücretli
+
+
+def test_cli_without_turkish_work_does_not_touch_network(tmp_path, capsys, monkeypatch):
+    import tts_tr
+    monkeypatch.delenv(tr.ENV_OFFLINE, raising=False)
+    monkeypatch.setenv(tr.ENV_KEY, SECRET)
+    monkeypatch.setattr(tr, "_http_get", lambda *a, **k: (_ for _ in ()).throw(AssertionError("ağ!")))
+    p = tmp_path / "d.json"
+    p.write_text(json.dumps([{"id": "s01", "text": "Merhaba."}]), encoding="utf-8")
+    monkeypatch.setattr(tr, "plan_segments", lambda segs, out_dir, *a, **k: tr.Plan(out_dir, "v", "m", []))
+    assert tts_tr.main([str(p), "--ledger", str(tmp_path / "l.json")]) == 0
+    out = capsys.readouterr().out
+    assert "0 TL (Türkçe üretim yok; ücret durumu okunmadı)" in out and "hiçbir API çağrısı yapılmadı" in out
+
+
 def test_review_findings_never_raise_and_reject_nonfinite():
     from hvpipeline import tts_tr as tr
     deep = tr._parse_usage(b"[" * 65536)

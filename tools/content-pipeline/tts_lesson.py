@@ -91,7 +91,8 @@ def main(argv: list[str] | None = None, tr_client=None, en_client=None, finalize
             if c.paragraphs and (en := english_in_turkish(c.narration, p.lesson.pronunciations)):
                 print(f"  UYARI {c.tr_segment_id}: Türkçe anlatımda İngilizce kelime ya da ek: {', '.join(en)} "
                       "(Alania Türkçe okur; grammar_lint.py)")
-    st = billing if billing is not None else tr.billing_status(offline=a.offline)
+    st = billing if billing is not None else tr.billing_status(offline=a.offline,
+                                                                     needed=tr.work_needed(tr_chars, tr_secs))
     print(f"Türkçe (Alania): {tr_chars} karakter; Duyu ≈ {tr_secs:.0f} sn. Ücret: {tr.cost_text(tr_chars, tr_secs, st)}. "
           f"Bu ay ({month}) kullanılan: {tr_used}; tavan: "
           f"{tr_cap if tr_cap is not None else 'TANIMLI DEĞİL'}")

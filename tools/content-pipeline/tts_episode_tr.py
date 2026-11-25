@@ -107,15 +107,19 @@ def main(argv: list[str] | None = None, tr_client=None, en_client=None, finalize
         print(f"--tr-only: ElevenLabs çağrılmaz; {len(pend)} karışık satır bekler "
               f"({sum(len(e.text) for p in pend for e in p.en)} İngilizce karakter): "
               + (", ".join(p.item.stem for p in pend) or "-"))
-    st = billing if billing is not None else tr.billing_status(offline=a.offline)
+    work = [p for p in plans if p.action != "skip"]
+    tr_pieces = [tp for p in work for tp in p.tr] + [p.compare_a for p in plans if p.compare_a]
+    tr_pay_chars, tr_pay_secs = ep.tr_work(tr_pieces)    # run_tr ile aynı planlar (Duyu dahil)
+    tr_needed = tr.work_needed(tr_pay_chars, tr_pay_secs)
+    st = billing if billing is not None else tr.billing_status(offline=a.offline, needed=tr_needed)
     print(f"Ödenecek: Alania {t.tr_chars} karakter (bu ay {tr_used}; tavan {tr_cap if tr_cap else 'TANIMLI DEĞİL'}; "
-          f"{tr.cost_text(t.tr_chars, t.tr_chars / tr.EST_CHARS_PER_SEC, st)}) · "
+          f"{tr.cost_text(tr_pay_chars, tr_pay_secs, st)}) · "
           f"ElevenLabs {vm.en['name']} {t.en_chars} karakter (bu ay {en_used}; tavan {en_cap if en_cap else 'TANIMLI DEĞİL'}; "
           f"defter {en_ledger.name})")
     if not a.execute:
         print(f"Kuru çalışma: {tr.dry_run_note(st)}. Gerçek üretim için --execute.")
         return 0
-    if t.tr_chars and tr_cap is None:
+    if tr_needed and tr_cap is None:
         print(f"HATA: Türkçe aylık tavan tanımlı değil ({tr.ENV_CAP}); ücretli üretim kapalı.", file=sys.stderr)
         return 1
     if t.en_chars and not en_cap and not a.tr_only:
@@ -126,14 +130,11 @@ def main(argv: list[str] | None = None, tr_client=None, en_client=None, finalize
               file=sys.stderr)
         return 1
 
-    work = [p for p in plans if p.action != "skip"]
     waiting: list[str] = []
     try:
         for p in work:
             ep.backup_old(p.item)
-        tr_pieces = [tp for p in work for tp in p.tr] + [p.compare_a for p in plans if p.compare_a]
-        need_tr = any(not tp.raw_wav().exists() for tp in tr_pieces)
-        call = tr_client or (tr.HttpClient() if need_tr else None)
+        call = tr_client or (tr.HttpClient() if tr_needed else None)
         tr_chars, tr_calls, warns = ep.run_tr(tr_pieces, call, tr_cap, tr_ledger, finalize=finalize, sleep=sleep)
         en_pieces = [] if a.tr_only else [e for p in work for e in p.en]
         en_chars = en_calls = 0

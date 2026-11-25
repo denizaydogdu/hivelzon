@@ -433,3 +433,41 @@ def test_talk_rejects_mixed_mode_b(talk_root):
     it = items["konusma-cafe-x-t1-d1"]
     assert it.mode == "a" and it.text == "Kelime sırası farklı: Here you are."
     assert ep.plan_item(it, ep.VoiceMap.load(talk_root)).en == []
+
+
+def test_duyu_only_work_is_priced_and_executed(talk_root, tmp_path, monkeypatch, capsys):
+    """H-112 incelemesi: Alania WAV önbellekte, Duyu yarıda kalmış. Kuru çalışma "Türkçe üretim yok" dememeli
+    (Duyu ses saatiyle ücretli) ve `--execute` istemciyi kurup yalnız Duyu'yu çağırmalı (önceden `None`)."""
+    monkeypatch.setenv(tr.ENV_CAP, "100000")
+    monkeypatch.setenv(tr.ENV_LEDGER, str(tmp_path / "tr-ledger.json"))
+    fc = FakeClient()
+    assert run_talk(talk_root, fc, None, "--execute") == 0
+    hi_dir = talk_root / "_evren" / "hi-ses"
+    stem = "konusma-cafe-x-intro"
+    (hi_dir / f"{stem}.mp3").unlink()
+    (hi_dir / f"{stem}.align.json").unlink()
+    duyu = list((hi_dir / ep.RAW).glob("*.duyu.json"))
+    wavs = list((hi_dir / ep.RAW).glob("*.wav"))
+    assert duyu and wavs
+    for p in duyu:
+        p.unlink()
+
+    seen = {}
+
+    def fake_status(**kw):
+        seen.update(kw)
+        return tr.BillingStatus(known=True, fetched=True, free=False)
+    monkeypatch.setattr(tr, "billing_status", fake_status)
+    capsys.readouterr()
+    assert tts_episode_tr.main(["--talk", "--root", str(talk_root)]) == 0
+    out = capsys.readouterr().out
+    assert seen["needed"] is True
+    assert "Türkçe üretim yok" not in out and "TL ödenecek" in out
+
+    speech_before, stt_before = len(fc.speech_calls), len(fc.stt_calls)
+    monkeypatch.setattr(tr, "HttpClient", lambda *a, **k: fc)
+    assert tts_episode_tr.main(["--talk", "--root", str(talk_root), "--execute"], tr_client=None,
+                               en_client=None, finalize=fake_finalize, sleep=lambda s: None) == 0
+    assert len(fc.speech_calls) == speech_before          # Alania yeniden çağrılmadı
+    assert len(fc.stt_calls) > stt_before                 # yalnız Duyu
+    assert (hi_dir / f"{stem}.mp3").exists()
