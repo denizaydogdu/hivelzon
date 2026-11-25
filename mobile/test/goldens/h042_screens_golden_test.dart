@@ -6,7 +6,7 @@
 // değişiklikten sonra:
 //
 //   cd mobile && flutter test --update-goldens test/goldens
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hivelzon/app/app_info.dart';

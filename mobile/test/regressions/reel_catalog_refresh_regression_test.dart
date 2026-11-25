@@ -11,7 +11,7 @@
 //   seçki kuralları, plan §5) ve akış aynı sıradan sürer.
 // - Katalog değişmediyse akış yeniden kurulmaz; okuma başarısızsa açık video
 //   kesilmez (yeni paket açılışı kaynakta kapalıdır: http_reel_catalog_test).
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hivelzon/features/discover/application/discover_providers.dart';
 import 'package:hivelzon/features/discover/data/discover_store.dart';

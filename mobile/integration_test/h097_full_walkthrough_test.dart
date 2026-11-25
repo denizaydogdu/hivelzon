@@ -12,7 +12,7 @@
 //     -d EEE1613C-61A1-4B5F-8D5B-BED2170FC340 \
 //     --dart-define=SHOT_PREFIX=h097
 import 'package:drift/drift.dart' show Value;
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:go_router/go_router.dart';

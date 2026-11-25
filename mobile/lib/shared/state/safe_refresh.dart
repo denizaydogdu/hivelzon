@@ -29,7 +29,7 @@ void invalidateAndFlush(WidgetRef ref, Iterable<ProviderOrFamily> providers) {
       ref.invalidate(p);
     }
     for (final p in list) {
-      if (p is ProviderBase<Object?> && ref.exists(p)) ref.read(p);
+      if (p is ProviderBase<Object?> && ref.read(p.exists)) ref.read(p);
     }
   }
 

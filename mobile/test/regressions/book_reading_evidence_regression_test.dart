@@ -10,7 +10,7 @@
 // Doğru davranış: kayıt gerçek ilerlemeyle (sayfa/cümle) oluşur; yeniden
 // anlatma yalnız gerçek bir denemeyle (yazılan anlatım) ya da kullanıcının
 // kendini değerlendirmesiyle sayılır. Örnek görüntülemek ikisi de değildir.
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hivelzon/features/library/data/book_comprehension_store.dart';
 import 'package:hivelzon/features/library/data/book_progress_store.dart';

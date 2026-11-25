@@ -1,5 +1,5 @@
 import 'package:drift/drift.dart' show Value;
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hivelzon/app/app.dart';
@@ -475,7 +475,14 @@ void main() {
 
     testWidgets('tur: küçük ekran ve 1,3× metinde taşma yok; perde alttaki '
         'düğmeyi kapatır; dört adım bitince bir kez kapanır', (tester) async {
-      await loadAppFonts();
+      // Flutter 3.47+: yazı tipi yüklemesi sistem yazı tipi bildirimiyle bir
+      // kare ister. Bildirim gerçek zamanda gelir; yükleme runAsync içinde
+      // yapılıp kare burada çizilir, test sonunda bekleyen geri çağrı kalmaz.
+      await tester.runAsync(() async {
+        await loadAppFonts();
+        await Future<void>.delayed(Duration.zero);
+      });
+      await tester.pump();
       tester.view.physicalSize = const Size(320 * 3, 568 * 3);
       tester.view.devicePixelRatio = 3;
       addTearDown(tester.view.reset);

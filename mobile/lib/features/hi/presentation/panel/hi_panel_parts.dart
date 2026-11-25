@@ -1,6 +1,6 @@
 // Hi paneli (H-047) ortak parçaları: tanıtım satırı, bölüm başlığı ve
 // yükleniyor kartı. H-063'te `hi_panel.dart`'tan davranış değişmeden ayrıldı.
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 import '../../../../app/theme.dart';
 import '../../../../l10n/tr_strings.dart';

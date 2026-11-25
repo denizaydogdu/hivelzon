@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 /// hiVelzon tasarım belirteçleri v2 (H-057, `tasarim/README.md`).
 ///

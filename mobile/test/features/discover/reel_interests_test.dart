@@ -8,7 +8,7 @@
 //   hazırlanır (`prefsSnapshot` uyuşmaz → yeni seçim). Kapalı konu
 //   "Bugün"e girmez ama çipi görünür kalır ve havuzu açılır. Günlük izleme
 //   sayacı ve öğrenme kayıtları silinmez.
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hivelzon/app/theme.dart';

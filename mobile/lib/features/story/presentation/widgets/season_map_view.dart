@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter/semantics.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -90,7 +90,7 @@ class _SeasonMapViewState extends ConsumerState<SeasonMapView>
   /// animasyonu başlatır.
   void _maybeClaimUnlock() {
     // Görünmeyen sekmede ya da örtülü sayfada animasyon sessizce biterdi.
-    if (!TickerMode.of(context)) return;
+    if (!TickerMode.valuesOf(context).enabled) return;
     final map = widget.map;
     final ids = map.unlockedIds;
     if (ids.isEmpty) return;

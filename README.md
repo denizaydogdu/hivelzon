@@ -35,14 +35,14 @@ Teknoloji: Flutter + Spring Boot 4 + PostgreSQL.
 Depo düzeni: `mobile/` (Flutter, iOS + Android, paket kimliği `tr.velzon.hivelzon`), `backend/` (Spring Boot 4, Java 17, Maven), `docker-compose.yml` (yerel PostgreSQL 17).
 
 ### Gerekenler
-- **Flutter 3.38.5** (stable): `flutter --version`, sonra `flutter doctor`.
+- **Flutter, FVM ile** (`brew install fvm`): hiVelzon Flutter sürümünü `mobile/.fvmrc` ile sabitler (şimdi 3.50.1); global Homebrew Flutter öteki projeler için olduğu gibi kalır. `cd mobile && fvm install && fvm flutter --version`, sonra `fvm flutter doctor`. Mobil komutların hepsi `fvm flutter …` / `fvm dart …` ile çalışır.
 - **Xcode** ve iOS simülatörü (macOS).
 - **Android SDK** (Android Studio ile). `adb` için platform-tools'u PATH'e ekleyin (`~/.zshrc`):
   ```bash
   export ANDROID_HOME="$HOME/Library/Android/sdk"
   export PATH="$PATH:$ANDROID_HOME/platform-tools:$ANDROID_HOME/emulator"
   ```
-  Ardından `adb version` ve `flutter doctor --android-licenses`.
+  Ardından `adb version` ve `fvm flutter doctor --android-licenses`.
 - **Java 17** ve **Maven 3.6.3+**.
 - **Docker**: macOS'ta Colima (`brew install colima docker docker-compose`, sonra `colima start`).
 
@@ -52,11 +52,11 @@ Bu çalışma alanında proje sahibinin güncel talimatı gereği simülatör he
 
 ```bash
 cd mobile
-flutter pub get
-flutter analyze && flutter test
+fvm flutter pub get
+fvm flutter analyze && fvm flutter test
 xcrun simctl list devices available        # simülatör seç
 xcrun simctl boot <cihaz-id> && open -a Simulator
-flutter run -d <cihaz-id>
+fvm flutter run -d <cihaz-id>
 ```
 
 ### Backend
@@ -87,7 +87,7 @@ tools/content-pipeline/.venv/bin/python tools/content-pipeline/export_package.py
 tools/content-pipeline/.venv/bin/python tools/content-pipeline/content_lint.py icerik/A1-0*             # content-lint
 tools/content-pipeline/.venv/bin/python -m pytest tools/content-pipeline                               # boru hattı testleri
 ```
-Uygulama içeriği varsayılan olarak `http://127.0.0.1:8787` adresinden okur (`--dart-define=CONTENT_BASE_URL=...` ile değişir). Drift kodunu yeniden üretmek için: `cd mobile && dart run build_runner build --force-jit`. Paket biçimi: `docs/BOLUM-PAKETI.md`.
+Uygulama içeriği varsayılan olarak `http://127.0.0.1:8787` adresinden okur (`--dart-define=CONTENT_BASE_URL=...` ile değişir). Drift kodunu yeniden üretmek için: `cd mobile && fvm dart run build_runner build --force-jit`. Paket biçimi: `docs/BOLUM-PAKETI.md`.
 
 ### CI
 `.github/workflows/ci.yml`: her push ve PR'da `flutter analyze` + `flutter test`, `mvn -B verify`, içerik pytest'i ve bölüm/kitap/dilbilgisi lint'leri çalışır. TTS testleri için runner'a `ffmpeg` kurulur.

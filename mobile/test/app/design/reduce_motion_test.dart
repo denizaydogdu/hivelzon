@@ -1,6 +1,6 @@
 // H-043: "Hareketi azalt" oynatıcının açılışına ve alt panellere (oynatıcı
 // görev ve anlam paneli, Keşfet seviye paneli) de uygulanır.
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hivelzon/app/design/design.dart';

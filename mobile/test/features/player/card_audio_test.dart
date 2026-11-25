@@ -1,7 +1,7 @@
 // H-083: Türkçe konuşan kartlar (ipucu, açık soru, Alex'in iç sesi, not)
 // Hi kartı gibi `audio` taşır; oynatıcı kart açılınca sesi çalar ve
 // "Dinle" düğmesi gösterir.
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hivelzon/app/theme.dart';
 import 'package:hivelzon/features/player/application/player_session.dart';

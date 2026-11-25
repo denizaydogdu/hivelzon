@@ -42,9 +42,10 @@ void main() {
     final project = File(
       'ios/Runner.xcodeproj/project.pbxproj',
     ).readAsStringSync();
+    // Xcode değeri tırnaklı da yazabilir (Flutter 3.50 göçü: "Runner/Info-Release.plist").
     expect(
       project,
-      contains('INFOPLIST_FILE = Runner/Info-Release.plist;'),
+      matches(RegExp(r'INFOPLIST_FILE = "?Runner/Info-Release\.plist"?;')),
       reason: 'Release yapılandırması ayrı plist kullanmalı',
     );
   });

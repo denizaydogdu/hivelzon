@@ -82,7 +82,7 @@ Future<void> openEpisode(
 Future<void> refreshWhenVisible(BuildContext context, WidgetRef ref) async {
   for (var i = 0; i < 60; i++) {
     if (!context.mounted) return;
-    if (TickerMode.getNotifier(context).value) break;
+    if (TickerMode.getValuesNotifier(context).value.enabled) break;
     await WidgetsBinding.instance.endOfFrame;
   }
   if (!context.mounted) return;

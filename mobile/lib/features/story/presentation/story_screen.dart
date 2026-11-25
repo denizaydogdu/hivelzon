@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:math' as math;
 
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
@@ -671,11 +671,12 @@ class _MapHeaderState extends ConsumerState<_MapHeader> {
                                 alpha: 0.2,
                               ),
                               color: AppPalette.lighthouseYellow,
-                              semanticsLabel: StoryTexts.progressLabel,
-                              semanticsValue: StoryTexts.progressSemantics(
-                                done,
-                                map.total,
-                              ),
+                              // Flutter 3.47+: ilerleme çubuğunun semantik
+                              // değeri sayı olmalı (varsayılan yüzde); metinli
+                              // açıklama etikete taşındı (H-115).
+                              semanticsLabel:
+                                  '${StoryTexts.progressLabel}, '
+                                  '${StoryTexts.progressSemantics(done, map.total)}',
                             ),
                           ),
                         ),

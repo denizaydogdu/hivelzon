@@ -27,10 +27,6 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
 
-    kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_17.toString()
-    }
-
     defaultConfig {
         applicationId = "tr.velzon.hivelzon"
         // You can update the following values to match your application needs.
@@ -59,6 +55,13 @@ android {
             // kopyalanır; dosya yoksa çıktı imzasız kalır ve yayımlanamaz.
             signingConfig = signingConfigs.findByName("release")
         }
+    }
+}
+
+// H-115: Kotlin 2.4 / AGP 9: kotlinOptions yerine compilerOptions (Flutter 3.50 şablonu).
+kotlin {
+    compilerOptions {
+        jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17
     }
 }
 

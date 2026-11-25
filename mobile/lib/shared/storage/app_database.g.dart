@@ -10529,7 +10529,18 @@ class $$UserStoryProgressTableTableManager
                 rowid: rowid,
               ),
           withReferenceMapper: (p0) => p0
-              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .map(
+                (e) => (
+                  e.readTable<$UserStoryProgressTable, UserStoryProgressData>(
+                    table,
+                  ),
+                  BaseReferences<
+                    _$AppDatabase,
+                    $UserStoryProgressTable,
+                    UserStoryProgressData
+                  >(db, table, e),
+                ),
+              )
               .toList(),
           prefetchHooksCallback: null,
         ),
@@ -10716,7 +10727,16 @@ class $$UserStoryFlagsTableTableManager
                 rowid: rowid,
               ),
           withReferenceMapper: (p0) => p0
-              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .map(
+                (e) => (
+                  e.readTable<$UserStoryFlagsTable, UserStoryFlag>(table),
+                  BaseReferences<
+                    _$AppDatabase,
+                    $UserStoryFlagsTable,
+                    UserStoryFlag
+                  >(db, table, e),
+                ),
+              )
               .toList(),
           prefetchHooksCallback: null,
         ),
@@ -10899,7 +10919,16 @@ class $$GateProgressTableTableManager
                 rowid: rowid,
               ),
           withReferenceMapper: (p0) => p0
-              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .map(
+                (e) => (
+                  e.readTable<$GateProgressTable, GateProgressData>(table),
+                  BaseReferences<
+                    _$AppDatabase,
+                    $GateProgressTable,
+                    GateProgressData
+                  >(db, table, e),
+                ),
+              )
               .toList(),
           prefetchHooksCallback: null,
         ),
@@ -11076,7 +11105,16 @@ class $$SeasonStateTableTableManager
                 updatedAt: updatedAt,
               ),
           withReferenceMapper: (p0) => p0
-              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .map(
+                (e) => (
+                  e.readTable<$SeasonStateTable, SeasonStateData>(table),
+                  BaseReferences<
+                    _$AppDatabase,
+                    $SeasonStateTable,
+                    SeasonStateData
+                  >(db, table, e),
+                ),
+              )
               .toList(),
           prefetchHooksCallback: null,
         ),
@@ -11212,7 +11250,16 @@ class $$AppMetaTableTableManager
               }) =>
                   AppMetaCompanion.insert(key: key, value: value, rowid: rowid),
           withReferenceMapper: (p0) => p0
-              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .map(
+                (e) => (
+                  e.readTable<$AppMetaTable, AppMetaData>(table),
+                  BaseReferences<_$AppDatabase, $AppMetaTable, AppMetaData>(
+                    db,
+                    table,
+                    e,
+                  ),
+                ),
+              )
               .toList(),
           prefetchHooksCallback: null,
         ),
@@ -11292,7 +11339,7 @@ final class $$NotebookItemsTableReferences
   static MultiTypedResultKey<$ReviewCardsTable, List<ReviewCardRow>>
   _reviewCardsRefsTable(_$AppDatabase db) => MultiTypedResultKey.fromTable(
     db.reviewCards,
-    aliasName: $_aliasNameGenerator(db.notebookItems.id, db.reviewCards.itemId),
+    aliasName: 'notebook_items__id__review_cards__item_id',
   );
 
   $$ReviewCardsTableProcessedTableManager get reviewCardsRefs {
@@ -11773,7 +11820,7 @@ class $$NotebookItemsTableTableManager
           withReferenceMapper: (p0) => p0
               .map(
                 (e) => (
-                  e.readTable(table),
+                  e.readTable<$NotebookItemsTable, NotebookItemRow>(table),
                   $$NotebookItemsTableReferences(db, table, e),
                 ),
               )
@@ -11786,10 +11833,11 @@ class $$NotebookItemsTableTableManager
               getPrefetchedDataCallback: (items) async {
                 return [
                   if (reviewCardsRefs)
-                    await $_getPrefetchedData<
+                    await $_getPrefetchedDataByColumns<
                       NotebookItemRow,
                       $NotebookItemsTable,
-                      ReviewCardRow
+                      ReviewCardRow,
+                      $ReviewCardsTable
                     >(
                       currentTable: table,
                       referencedTable: $$NotebookItemsTableReferences
@@ -11800,8 +11848,8 @@ class $$NotebookItemsTableTableManager
                             table,
                             p0,
                           ).reviewCardsRefs,
-                      referencedItemsForCurrentItem: (item, referencedItems) =>
-                          referencedItems.where((e) => e.itemId == item.id),
+                      currentColumn: 'id',
+                      referencedColumn: 'item_id',
                       typedResults: items,
                     ),
                 ];
@@ -11860,9 +11908,7 @@ final class $$ReviewCardsTableReferences
   $$ReviewCardsTableReferences(super.$_db, super.$_table, super.$_typedResult);
 
   static $NotebookItemsTable _itemIdTable(_$AppDatabase db) =>
-      db.notebookItems.createAlias(
-        $_aliasNameGenerator(db.reviewCards.itemId, db.notebookItems.id),
-      );
+      db.notebookItems.createAlias('review_cards__item_id__notebook_items__id');
 
   $$NotebookItemsTableProcessedTableManager get itemId {
     final $_column = $_itemColumn<int>('item_id')!;
@@ -11881,7 +11927,7 @@ final class $$ReviewCardsTableReferences
   static MultiTypedResultKey<$ReviewLogsTable, List<ReviewLogRow>>
   _reviewLogsRefsTable(_$AppDatabase db) => MultiTypedResultKey.fromTable(
     db.reviewLogs,
-    aliasName: $_aliasNameGenerator(db.reviewCards.id, db.reviewLogs.cardId),
+    aliasName: 'review_cards__id__review_logs__card_id',
   );
 
   $$ReviewLogsTableProcessedTableManager get reviewLogsRefs {
@@ -12261,7 +12307,7 @@ class $$ReviewCardsTableTableManager
           withReferenceMapper: (p0) => p0
               .map(
                 (e) => (
-                  e.readTable(table),
+                  e.readTable<$ReviewCardsTable, ReviewCardRow>(table),
                   $$ReviewCardsTableReferences(db, table, e),
                 ),
               )
@@ -12305,10 +12351,11 @@ class $$ReviewCardsTableTableManager
               getPrefetchedDataCallback: (items) async {
                 return [
                   if (reviewLogsRefs)
-                    await $_getPrefetchedData<
+                    await $_getPrefetchedDataByColumns<
                       ReviewCardRow,
                       $ReviewCardsTable,
-                      ReviewLogRow
+                      ReviewLogRow,
+                      $ReviewLogsTable
                     >(
                       currentTable: table,
                       referencedTable: $$ReviewCardsTableReferences
@@ -12319,8 +12366,8 @@ class $$ReviewCardsTableTableManager
                             table,
                             p0,
                           ).reviewLogsRefs,
-                      referencedItemsForCurrentItem: (item, referencedItems) =>
-                          referencedItems.where((e) => e.cardId == item.id),
+                      currentColumn: 'id',
+                      referencedColumn: 'card_id',
                       typedResults: items,
                     ),
                 ];
@@ -12377,9 +12424,7 @@ final class $$ReviewLogsTableReferences
   $$ReviewLogsTableReferences(super.$_db, super.$_table, super.$_typedResult);
 
   static $ReviewCardsTable _cardIdTable(_$AppDatabase db) =>
-      db.reviewCards.createAlias(
-        $_aliasNameGenerator(db.reviewLogs.cardId, db.reviewCards.id),
-      );
+      db.reviewCards.createAlias('review_logs__card_id__review_cards__id');
 
   $$ReviewCardsTableProcessedTableManager get cardId {
     final $_column = $_itemColumn<int>('card_id')!;
@@ -12693,7 +12738,7 @@ class $$ReviewLogsTableTableManager
           withReferenceMapper: (p0) => p0
               .map(
                 (e) => (
-                  e.readTable(table),
+                  e.readTable<$ReviewLogsTable, ReviewLogRow>(table),
                   $$ReviewLogsTableReferences(db, table, e),
                 ),
               )
@@ -13013,7 +13058,16 @@ class $$LearningEventsTableTableManager
                 clientId: clientId,
               ),
           withReferenceMapper: (p0) => p0
-              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .map(
+                (e) => (
+                  e.readTable<$LearningEventsTable, LearningEventRow>(table),
+                  BaseReferences<
+                    _$AppDatabase,
+                    $LearningEventsTable,
+                    LearningEventRow
+                  >(db, table, e),
+                ),
+              )
               .toList(),
           prefetchHooksCallback: null,
         ),
@@ -13211,7 +13265,16 @@ class $$CluesTableTableManager
                 rowid: rowid,
               ),
           withReferenceMapper: (p0) => p0
-              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .map(
+                (e) => (
+                  e.readTable<$CluesTable, ClueRow>(table),
+                  BaseReferences<_$AppDatabase, $CluesTable, ClueRow>(
+                    db,
+                    table,
+                    e,
+                  ),
+                ),
+              )
               .toList(),
           prefetchHooksCallback: null,
         ),
@@ -13454,7 +13517,16 @@ class $$StoryLinksTableTableManager
                 rowid: rowid,
               ),
           withReferenceMapper: (p0) => p0
-              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .map(
+                (e) => (
+                  e.readTable<$StoryLinksTable, StoryLinkRow>(table),
+                  BaseReferences<_$AppDatabase, $StoryLinksTable, StoryLinkRow>(
+                    db,
+                    table,
+                    e,
+                  ),
+                ),
+              )
               .toList(),
           prefetchHooksCallback: null,
         ),
@@ -13635,7 +13707,16 @@ class $$HiRecordsTableTableManager
                 rowid: rowid,
               ),
           withReferenceMapper: (p0) => p0
-              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .map(
+                (e) => (
+                  e.readTable<$HiRecordsTable, HiRecordRow>(table),
+                  BaseReferences<_$AppDatabase, $HiRecordsTable, HiRecordRow>(
+                    db,
+                    table,
+                    e,
+                  ),
+                ),
+              )
               .toList(),
           prefetchHooksCallback: null,
         ),
@@ -13917,7 +13998,16 @@ class $$SpeechAttemptsTableTableManager
                 clientId: clientId,
               ),
           withReferenceMapper: (p0) => p0
-              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .map(
+                (e) => (
+                  e.readTable<$SpeechAttemptsTable, SpeechAttemptRow>(table),
+                  BaseReferences<
+                    _$AppDatabase,
+                    $SpeechAttemptsTable,
+                    SpeechAttemptRow
+                  >(db, table, e),
+                ),
+              )
               .toList(),
           prefetchHooksCallback: null,
         ),
@@ -14304,7 +14394,16 @@ class $$SyncStateTableTableManager
                 signedOutReason: signedOutReason,
               ),
           withReferenceMapper: (p0) => p0
-              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .map(
+                (e) => (
+                  e.readTable<$SyncStateTable, SyncStateRow>(table),
+                  BaseReferences<_$AppDatabase, $SyncStateTable, SyncStateRow>(
+                    db,
+                    table,
+                    e,
+                  ),
+                ),
+              )
               .toList(),
           prefetchHooksCallback: null,
         ),
@@ -14561,7 +14660,16 @@ class $$SyncOutboxTableTableManager
                 rowid: rowid,
               ),
           withReferenceMapper: (p0) => p0
-              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .map(
+                (e) => (
+                  e.readTable<$SyncOutboxTable, SyncOutboxRow>(table),
+                  BaseReferences<
+                    _$AppDatabase,
+                    $SyncOutboxTable,
+                    SyncOutboxRow
+                  >(db, table, e),
+                ),
+              )
               .toList(),
           prefetchHooksCallback: null,
         ),
@@ -14851,7 +14959,18 @@ class $$UserBookProgressTableTableManager
                 rowid: rowid,
               ),
           withReferenceMapper: (p0) => p0
-              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .map(
+                (e) => (
+                  e.readTable<$UserBookProgressTable, UserBookProgressData>(
+                    table,
+                  ),
+                  BaseReferences<
+                    _$AppDatabase,
+                    $UserBookProgressTable,
+                    UserBookProgressData
+                  >(db, table, e),
+                ),
+              )
               .toList(),
           prefetchHooksCallback: null,
         ),
@@ -15088,7 +15207,19 @@ class $$UserGrammarProgressTableTableManager
                 rowid: rowid,
               ),
           withReferenceMapper: (p0) => p0
-              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .map(
+                (e) => (
+                  e.readTable<
+                    $UserGrammarProgressTable,
+                    UserGrammarProgressData
+                  >(table),
+                  BaseReferences<
+                    _$AppDatabase,
+                    $UserGrammarProgressTable,
+                    UserGrammarProgressData
+                  >(db, table, e),
+                ),
+              )
               .toList(),
           prefetchHooksCallback: null,
         ),
@@ -15279,7 +15410,16 @@ class $$DailyActivityTableTableManager
                 rowid: rowid,
               ),
           withReferenceMapper: (p0) => p0
-              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .map(
+                (e) => (
+                  e.readTable<$DailyActivityTable, DailyActivityRow>(table),
+                  BaseReferences<
+                    _$AppDatabase,
+                    $DailyActivityTable,
+                    DailyActivityRow
+                  >(db, table, e),
+                ),
+              )
               .toList(),
           prefetchHooksCallback: null,
         ),
@@ -15559,7 +15699,19 @@ class $$UserBookComprehensionTableTableManager
                 rowid: rowid,
               ),
           withReferenceMapper: (p0) => p0
-              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .map(
+                (e) => (
+                  e.readTable<
+                    $UserBookComprehensionTable,
+                    BookComprehensionRow
+                  >(table),
+                  BaseReferences<
+                    _$AppDatabase,
+                    $UserBookComprehensionTable,
+                    BookComprehensionRow
+                  >(db, table, e),
+                ),
+              )
               .toList(),
           prefetchHooksCallback: null,
         ),
@@ -15727,7 +15879,16 @@ class $$EvidenceRecordsTableTableManager
                 rowid: rowid,
               ),
           withReferenceMapper: (p0) => p0
-              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .map(
+                (e) => (
+                  e.readTable<$EvidenceRecordsTable, EvidenceRow>(table),
+                  BaseReferences<
+                    _$AppDatabase,
+                    $EvidenceRecordsTable,
+                    EvidenceRow
+                  >(db, table, e),
+                ),
+              )
               .toList(),
           prefetchHooksCallback: null,
         ),
@@ -15918,7 +16079,16 @@ class $$UserTalkProgressTableTableManager
                 rowid: rowid,
               ),
           withReferenceMapper: (p0) => p0
-              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .map(
+                (e) => (
+                  e.readTable<$UserTalkProgressTable, TalkProgressRow>(table),
+                  BaseReferences<
+                    _$AppDatabase,
+                    $UserTalkProgressTable,
+                    TalkProgressRow
+                  >(db, table, e),
+                ),
+              )
               .toList(),
           prefetchHooksCallback: null,
         ),

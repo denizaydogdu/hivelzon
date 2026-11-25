@@ -2,7 +2,7 @@
 // (sonsuz kaydırma yok), günlük süre (13–17, 13 altı, 18+), anlam paneli
 // (durur / sürer), Defter'e kaydetme, "Tam hikâye", dilbilgisi etiketi,
 // denetleyici sınırı (en çok 3), boş / hata durumları, "Hareketi azalt".
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hivelzon/features/discover/domain/clip.dart';
 import 'package:hivelzon/features/discover/domain/feed.dart';

@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hivelzon/app/app.dart';
@@ -94,9 +94,13 @@ void main() {
     return e;
   }
 
+  // Riverpod 3.5.0 bu hatayı kendisi düzeltti ("Fix resuming a paused
+  // subscription scheduling a provider refresh while its dependency graph is
+  // still being flushed"; Flutter 3.50 yükseltmesi, H-115). Eski yol artık
+  // hata vermiyor; uygulama yine [invalidateAndFlush] kullanır (H-056).
   testWidgets(
-    'eski yol (yeniden üretim): görünmeyen sekmede doğrudan geçersiz kılma, '
-    'sekme açılırken build sırasında setState hatası verir',
+    'eski yol: görünmeyen sekmede doğrudan geçersiz kılma, sekme açılırken '
+    'Riverpod 3.5+ ile build sırasında setState hatası vermez',
     (tester) async {
       await pumpApp(tester);
       await visitAllThenProfile(tester);
@@ -107,9 +111,7 @@ void main() {
         ..invalidate(hiBadgeProvider);
       await settle(tester);
       await openTab(tester, 'Öğren');
-      final error = takeAll(tester);
-      expect(error, isNotNull);
-      expect('$error', contains('called during build'));
+      expect(takeAll(tester), isNull);
     },
   );
 

@@ -1,5 +1,5 @@
 // H-063: Hi'nin ifadeleri, geçişleri, nefes, selamlama ve "hareketi azalt".
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hivelzon/app/theme.dart';

@@ -8,7 +8,7 @@
 // değişiklikten sonra:
 //
 //   cd mobile && flutter test --update-goldens test/goldens
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hivelzon/features/discover/domain/clip.dart';
 import 'package:hivelzon/features/discover/domain/feed.dart';

@@ -9,7 +9,7 @@
 // Not: Golden'lar macOS'ta üretildi; yazı çizimi işletim sistemine göre
 // birkaç piksel değişebilir. Başka bir platformda (CI) çalıştırılacaksa o
 // platformda yeniden üretilir.
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hivelzon/app/theme.dart';
 import 'package:hivelzon/features/design_showcase/design_showcase_screen.dart';

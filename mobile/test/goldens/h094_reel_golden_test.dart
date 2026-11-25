@@ -8,7 +8,7 @@
 // panelinin içindedir. Bilinçli görsel değişiklikten sonra:
 //
 //   cd mobile && flutter test --update-goldens test/goldens
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hivelzon/features/discover/application/discover_providers.dart';
 import 'package:hivelzon/features/discover/data/discover_store.dart';

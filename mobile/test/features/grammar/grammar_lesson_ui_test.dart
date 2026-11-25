@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hivelzon/app/design/tokens.dart';
 import 'package:hivelzon/features/grammar/data/grammar_progress_store.dart';

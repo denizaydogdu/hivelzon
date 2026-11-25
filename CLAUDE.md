@@ -120,21 +120,22 @@ Ayrıntı: `docs/IS-PLANI.md` §10.
 colima start && docker compose up -d --wait            # PostgreSQL 17, 127.0.0.1:5435
 python3 tools/dev-content-server/serve.py              # içerik sunucusu, 127.0.0.1:8787 (ayrı terminal)
 xcrun simctl boot "hiVelzon iPhone 17"; open -a Simulator
-cd mobile && flutter run -d "hiVelzon iPhone 17"       # içerik adresi: --dart-define=CONTENT_BASE_URL=...
+cd mobile && fvm flutter run -d "hiVelzon iPhone 17"   # içerik adresi: --dart-define=CONTENT_BASE_URL=...
 ```
+- **Flutter FVM ile sabit** (H-115): hiVelzon kendi Flutter sürümünü `mobile/.fvmrc` ile kullanır (3.50.1); mobil komutlar `fvm flutter …` / `fvm dart …` ile çalışır. Global Homebrew Flutter (3.38.5) öteki projeler içindir, yükseltilmez ve hiVelzon'da kullanılmaz.
 - Bölüm paketi üretme: `tools/content-pipeline/.venv/bin/python tools/content-pipeline/export_package.py icerik/A1-00[1-4]-*`; yalnızca sezon paketi: `… export_package.py --season 1`. Uygulama içi pakette AI etiketi gömülmez; sosyal medya için `--ai-label`.
 - İçerik denetimi: `tools/content-pipeline/.venv/bin/python tools/content-pipeline/content_lint.py icerik/A1-0*`; testler: `tools/content-pipeline/.venv/bin/python -m pytest tools/content-pipeline`.
-- Drift kodu yeniden üretme: `cd mobile && dart run build_runner build --force-jit` (`app_database.g.dart` depoda tutulur).
-- Mobil testler: `cd mobile && flutter analyze && flutter test`. Backend: `cd backend && mvn -B verify` (Colima için Testcontainers değişkenleri README'de).
+- Drift kodu yeniden üretme: `cd mobile && fvm dart run build_runner build --force-jit` (`app_database.g.dart` depoda tutulur).
+- Mobil testler: `cd mobile && fvm flutter analyze && fvm flutter test`. Backend: `cd backend && mvn -B verify` (Colima için Testcontainers değişkenleri README'de).
 
 ### Simülatör ve disk temizliği (kullanıcı kuralı, 2026-11-03)
 - **Kapatma izin istemez:** Bir işe başlarken simülatör açıksa kapatılabilir (`flutter run` çıkışı + `xcrun simctl shutdown`, Simulator uygulamasından çık). **Açmak** yine her seferinde açık izin ister (yukarıdaki simülatör izni).
 - **Her iş bitiminde temizlik** (diskte gereksiz yer kaplamasın); bizim açtıklarımız kapatılır ve silinir:
   - çalıştırdığımız backend, içerik sunucusu, `flutter run` ve docker konteynerleri durdurulur (`docker compose stop`; Colima başka projeler için açık kalabilir);
-  - derleme çıktıları: **`cd mobile && flutter clean && flutter pub get`** (yalnız `mobile/build/` silinip `.dart_tool/` bırakılırsa yerel varlık (native assets) önbelleği bayatlar, sonraki derlemede `objective_c.framework` pakete girmez ve cihazdaki bütün kayıtlar okunamaz; H-106, 2026-11-04), `mobile/ios/build/` ve **yalnız hiVelzon'a ait** Xcode DerivedData `Runner-*` klasörleri (`info.plist` içindeki `WorkspacePath` `hiVelzon/mobile` olanlar; başka projelerinkine dokunulmaz);
+  - derleme çıktıları: **`cd mobile && fvm flutter clean && fvm flutter pub get`** (yalnız `mobile/build/` silinip `.dart_tool/` bırakılırsa yerel varlık (native assets) önbelleği bayatlar, sonraki derlemede `objective_c.framework` pakete girmez ve cihazdaki bütün kayıtlar okunamaz; H-106, 2026-11-04), `mobile/ios/build/` ve **yalnız hiVelzon'a ait** Xcode DerivedData `Runner-*` klasörleri (`info.plist` içindeki `WorkspacePath` `hiVelzon/mobile` olanlar; başka projelerinkine dokunulmaz);
   - geçici git worktree'leri, oturum çalışma klasöründeki indirmeler ve deneme dosyaları;
   - bizim oluşturduğumuz ek/yedek simülatörler (`xcrun simctl delete <id>`) ve `xcrun simctl delete unavailable`. Ana deneme simülatörü (PIRU iPhone 17) silinmez, yalnız kapatılır.
-  - Depodaki dosyalar (`app_database.g.dart` gibi) ve paket önbellekleri (`~/.pub-cache`) silinmez; `.dart_tool/` yalnız `flutter clean` ile birlikte gider ve hemen `flutter pub get` yapılır (sonraki test/derleme bozulmasın). Başka bir oturum aynı anda derleme/test yapıyorsa temizlik o bitince yapılır.
+  - Depodaki dosyalar (`app_database.g.dart` gibi) ve paket önbellekleri (`~/.pub-cache`) silinmez; `.dart_tool/` yalnız `fvm flutter clean` ile birlikte gider ve hemen `fvm flutter pub get` yapılır (sonraki test/derleme bozulmasın). Başka bir oturum aynı anda derleme/test yapıyorsa temizlik o bitince yapılır.
 
 ## Belgeler ve öncelik sırası
 

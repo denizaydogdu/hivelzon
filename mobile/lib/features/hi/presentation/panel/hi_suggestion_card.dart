@@ -1,6 +1,6 @@
 // Hi paneli: bugünkü öneri kartı ve hızlı eylem düğmesi (H-063 bölme).
 
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 import '../../../../app/theme.dart';
 import '../../../../l10n/tr_strings.dart';

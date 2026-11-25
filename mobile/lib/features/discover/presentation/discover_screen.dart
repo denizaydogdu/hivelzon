@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -743,7 +743,7 @@ class DiscoverFeedState extends ConsumerState<DiscoverFeed>
   int _watched = 0; // bugün kaydedilen saniye
   int _pending = 0; // henüz yazılmamış saniye
   Timer? _tick;
-  ValueListenable<bool>? _tickerMode;
+  ValueListenable<TickerModeData>? _tickerMode;
   final Set<String> _savedKeys = {};
   int _savedCount = 0;
   int _activation = 0;
@@ -857,11 +857,11 @@ class DiscoverFeedState extends ConsumerState<DiscoverFeed>
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    final n = TickerMode.getNotifier(context);
+    final n = TickerMode.getValuesNotifier(context);
     if (!identical(n, _tickerMode)) {
       _tickerMode?.removeListener(_onVisibility);
       _tickerMode = n..addListener(_onVisibility);
-      _visible = n.value;
+      _visible = n.value.enabled;
     }
   }
 
@@ -874,7 +874,7 @@ class DiscoverFeedState extends ConsumerState<DiscoverFeed>
   }
 
   void _onVisibility() {
-    final v = _tickerMode?.value ?? true;
+    final v = _tickerMode?.value.enabled ?? true;
     if (v == _visible) return;
     _visible = v;
     unawaited(_onPlayability());

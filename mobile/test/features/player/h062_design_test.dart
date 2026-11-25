@@ -2,7 +2,7 @@
 // Hi paneli, kartlar), sakin bölüm sonu, "Hareketi azalt"ta durağanlık ve
 // tasarımın oynatma zamanlamasını bozmadığı (H-031: segment geçişi ≤ 150 ms;
 // H-054: altyazı ekranda ≤ 0,2 sn içinde).
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hivelzon/app/theme.dart';

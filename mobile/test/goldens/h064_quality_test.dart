@@ -17,7 +17,7 @@
 //   panelleri: h059_screens_golden_test.dart
 // - Bu dosya: sekme kökleri kabukla birlikte, Hi paneli, Konuş, sezon
 //   jeneriği.
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hivelzon/app/app.dart';

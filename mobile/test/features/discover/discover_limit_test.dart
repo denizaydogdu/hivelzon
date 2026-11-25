@@ -1,7 +1,7 @@
 // H-043 (kullanıcı kararı 2): yaş bilgisi okunamazsa Keşfet güvenli tarafta
 // kalır, 13–17 varsayılanı (20 dk) uygulanır. Okunabiliyorsa eski kurallar
 // (K-15) aynen geçerli. Okuma hatalarında ekran sonsuz iskelette kalmaz.
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hivelzon/features/discover/application/discover_providers.dart';

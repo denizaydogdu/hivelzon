@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'dart:typed_data';
 
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hivelzon/app/theme.dart';
 
@@ -130,7 +130,14 @@ void main() {
   testWidgets('Türkçe metin gerçek yazı tipiyle çizilir (Inter ≠ Nunito)', (
     tester,
   ) async {
-    await loadAppFonts();
+    // Flutter 3.47+: yazı tipi yüklemesi sistem yazı tipi bildirimiyle bir
+    // kare ister. Bildirim gerçek zamanda gelir; yükleme runAsync içinde
+    // yapılıp kare burada çizilir, test sonunda bekleyen geri çağrı kalmaz.
+    await tester.runAsync(() async {
+      await loadAppFonts();
+      await Future<void>.delayed(Duration.zero);
+    });
+    await tester.pump();
     const text = 'Çığlık öğrenci İzmir şâir';
     double widthOf(String family) {
       final p = TextPainter(

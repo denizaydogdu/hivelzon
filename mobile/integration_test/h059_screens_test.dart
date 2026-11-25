@@ -8,7 +8,7 @@
 //     --driver=test_driver/integration_test.dart \
 //     --target=integration_test/h059_screens_test.dart \
 //     -d <simülatör> --dart-define=SHOT_PREFIX=sonra
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:go_router/go_router.dart';

@@ -105,11 +105,17 @@ defines=(
 )
 version_args=(--build-name "$VERSION_NAME" --build-number "$BUILD_NUMBER")
 
+# hiVelzon Flutter'ı FVM ile sabitler (mobile/.fvmrc, H-115); global Flutter öteki projeler içindir.
+if [[ "$action" != print ]] && ! command -v fvm >/dev/null 2>&1; then
+  echo "fvm bulunamadı: hiVelzon Flutter'ı mobile/.fvmrc ile sabitler (brew install fvm; fvm install)" >&2
+  exit 2
+fi
+
 case "$action" in
   print) exit 0 ;;
-  run) cmd=(flutter run "--$mode" "${defines[@]}" "$@") ;;
-  apk) cmd=(flutter build apk "--$mode" "${version_args[@]}" "${defines[@]}" "$@") ;;
-  ios) cmd=(flutter build ios "--$mode" "${version_args[@]}" "${defines[@]}" "$@") ;;
+  run) cmd=(fvm flutter run "--$mode" "${defines[@]}" "$@") ;;
+  apk) cmd=(fvm flutter build apk "--$mode" "${version_args[@]}" "${defines[@]}" "$@") ;;
+  ios) cmd=(fvm flutter build ios "--$mode" "${version_args[@]}" "${defines[@]}" "$@") ;;
   *) echo "Eylem run | apk | ios | print olmalı: $action" >&2; exit 2 ;;
 esac
 

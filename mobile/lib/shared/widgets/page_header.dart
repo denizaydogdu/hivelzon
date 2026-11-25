@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 /// Sekme sayfası başlığı (H-053): büyük başlık + gerekiyorsa tek cümle.
 class PageHeader extends StatelessWidget {

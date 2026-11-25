@@ -2,7 +2,7 @@
 // atlanabilir tek anlama sorusu, sakin bitiş, çipler ve seviye paneli;
 // eski hikâye kliplerinin bozulmadığı ve reel kaynağının Defter'e görsel/ses
 // bağlantısını doğru kurduğu burada kanıtlanır.
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hivelzon/features/discover/application/discover_providers.dart';
 import 'package:hivelzon/features/discover/data/discover_store.dart';

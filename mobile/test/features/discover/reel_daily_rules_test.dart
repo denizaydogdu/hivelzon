@@ -8,7 +8,7 @@
 // - Tamamlanma: sona yaklaşma (%90) + aktif izleme (sürenin %80'i) birlikte;
 //   iki saniyeyi döndürmek ya da sona atlayıp kısa izlemek sayılmaz (H-096).
 // - Soru sonucu yalnız ürün kaydına yazılır; Defter'e/kanıta yazılmaz.
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hivelzon/features/discover/application/discover_providers.dart';
 import 'package:hivelzon/features/discover/data/discover_store.dart';
