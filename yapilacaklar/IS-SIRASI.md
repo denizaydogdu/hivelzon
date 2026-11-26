@@ -378,6 +378,7 @@ Plan: `docs/UYGULAMA-PLANI.md`. H-025 2026-10-11'de onaylandı; kodlama başlad�
 | H-020 | Reklam yok | 2026-10-11 | Kullanıcı kararı: reklam SDK'sı eklenmez |
 
 ## Günlük
+- 2026-11-26: Higgsfield kredisi **0,37** (ortak hesap; H-004 gereği bir kez hatırlatıldı). Kullanıcı Eachlabs anahtarı verdi (ücretsiz hesap, 0 USD; MiniMax H3) — şu an ücretli görsel/video işi olmadığı için kullanılmadı ve saklanmadı. `gorsel` (Kıraathane) oturumu kullanımı anlattı; kullanıcı kararıyla hesap/bakiye ortak (18,02 USD), anahtar Kıraathane `infra/.env`'de kalır. Kurallar ve fiyatlar `docs/EACHLABS-NOTLARI.md`.
 - 2026-11-25 (gece): H-117 (material_ui + go_router 18) yapıldı; kullanıcı izniyle simülatörde eski kurulumun üzerine yükseltme denendi (14 tablo verisi aynı); H-115 + H-111 + H-117 `1d26fca` ile commit/push, CI `45685003221` yeşil (Flutter 3.50.1); üçü `bitenler/`e.
 - 2026-11-25 (gün sonu, CI): belge commit'i CI `45675530961` **yeşil** (mobil, backend, içerik) — `bcffe4b` reel düzeltmesi CI'da doğrulandı; `main` yeşil.
 - 2026-11-25 (gün sonu): H-110, H-112, H-114 `bitenler/`e; H-116 (Duyu tavanı, karar), H-117 (material_ui + go_router 18), H-118 (küçük artıklar) açıldı; H-111/H-115 çalışma ağacında, commit edilmedi. Devir `docs/HANDOFF-2026-11-25.md`. Sıradaki boş numara H-119.
