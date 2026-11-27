@@ -7,8 +7,8 @@
 ## Kurallar (hiVelzon)
 1. **Her üretimden önce** maliyet kullanıcıya gösterilir ve onay alınır (CLAUDE.md, Higgsfield kuralı 1 ile aynı).
 2. **Ortak bakiye:** partiye başlamadan planlanan toplam USD `gorsel` oturumuna yazılır; her işten önce bakiye okunur.
-   Bakiye 0,50 USD'nin altındayken Eachlabs yeni işi reddeder. Kıraathane'nin kalan işi en kötü ≈ 12 USD (2026-11-26,
-   bakiye 18,02 USD).
+   Bakiye 0,50 USD'nin altındayken Eachlabs yeni işi reddeder. 2026-11-26: Kıraathane'nin iki partisi bitti
+   (≈ 4,80 + 1,36 USD), bakiye **13,84 USD**; Kıraathane'nin görsel üretim listesi boş.
 3. **Anahtar kopyalanmaz:** tek kaynak `~/Dev/kıraathane/infra/.env` (`EACHLABS_API_KEY`, git dışı). Kullanım yalnız komut
    süresince: `set -a; . ~/Dev/kıraathane/infra/.env; set +a`. Değer hiçbir dosyaya, günlüğe ya da commit'e yazılmaz.
    Anahtar 2026-11-26'da sohbete düştü; kullanıcı panelden yenileyecek (rotate).
@@ -32,8 +32,8 @@
   `metrics.cost`. 2–3 sn'de bir sorgulanır (ya da `webhook_url`).
 - Bakiye: `GET /v1/billing/balance` → `{"balance_usd": n}`.
 - Model alanları (anahtarsız): `GET /v1/models?name=<ad>`; fiyat (anahtarla): `GET /v1/models/{slug}` → `cost`.
-- Hazır betik (Python stdlib): `~/Dev/kıraathane/tools/art/eachlabs.py` (`balance`, `run --model … --input @girdi.json
-  --out … [--dry-run]`). hiVelzon'a gerekirse **desen olarak** alınır, iki repo bağlanmaz.
+- Hazır betik (Python stdlib): `~/Dev/kıraathane/tools/art/eachlabs.py` (Kıraathane deposunda, commit `e28cddf`;
+  `balance`, `run --model … --input @girdi.json --out … [--dry-run]`). hiVelzon'a gerekirse **desen olarak** alınır, iki repo bağlanmaz.
 
 ## Modeller ve fiyatlar (API'den, 2026-11-26)
 | İş | Slug | Önemli alanlar | Fiyat |
@@ -49,4 +49,10 @@ doğrulanmadı. Başarısız/iptal iş ücretlenmez; ön ödemeli bakiye 12 ay g
 ## Deneme bulguları
 - Tutarlılık için karakter yeniden üretilmez: onaylı kare ilk (ve gerekirse son) kare olarak verilir, eski istem aynen kullanılır.
 - MiniMax H3 Max istemdeki, sahnede olmayan bir nesne adını ("table") uydurdu → istemde yalnız sahnede olan şeyler yazılır.
+- MiniMax'ta başlangıç ve bitiş karesi aynı URL verilince döngü dikişi temiz (SSIM ≈ 0,97–0,98). Çıktı 768×1024 gelir;
+  kaynak oranı farklıysa (hiVelzon 9:16) yerelde ölçeklenir/kırpılır.
+- `nano-banana-2-edit` ile yazı/logo: Türkçe harfler harf harf tarif edilir ("dotless ı (no dot!)"); stil referansı
+  olarak insanlı sahne verilmez (3 logodan 2'sinde sahneden hayalet kalıntı ve eksik ı). hiVelzon'da yazı zaten
+  görsele değil kurguya eklenir (Higgsfield kuralı 7). `num_images > 1` iken `output` bir dizidir (Kıraathane
+  betiği `-1`, `-2`… diye kaydeder; 11 görsel 1,00 USD ölçüldü).
 - hiVelzon karşılığı: "kilit an" (H-024, Seedance 2.0 Mini 5 sn) için en ucuz aday MiniMax H3 Max 768P, 5 sn ≈ 0,30 USD.

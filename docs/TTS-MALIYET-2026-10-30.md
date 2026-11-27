@@ -1,5 +1,14 @@
 # Eksik İngilizce sesler — ElevenLabs maliyet seçenekleri (2026-10-30)
 
+> **Ölçülen maliyet (2026-11-26):** Kullanıcı **Creator** planını aldı (131.000 kredi/ay, yenilenme
+> 2026-12-26). İlk üretimde `eleven_v3` için **≈ 0,45 kredi/karakter** ölçüldü (134.519 karakter →
+> 60.085 kredi; hesap sonrası 60.085/131.000). Aşağıdaki "1 karakter ≈ 1 kredi" varsayımı bu yüzden
+> yaklaşık 2 kat yüksektir. Bu ay kalan ≈ 70.900 kredi. Üretilen: dilbilgisi İngilizce örnekleri
+> (71/71 tam), A2 ve B1 kitapları (sesli kitap 15/30). Kalan B2 + C1 + C2 kitapları 139.884 + 229.655 +
+> 282.922 = **652.461 karakter ≈ 295.000 kredi** → Creator'da yaklaşık 2,5 ay daha. B2 tek başına
+> ≈ 63.000 kredi, bu ayın kalanına sığar. B2/C1/C2 kararı kullanıcıda (H-087 odağı A1–A2; önceki
+> öneri: H-092 pilotundan sonra).
+
 > Amaç: H-071…H-073 (kitap) ve H-080…H-082 (dilbilgisi) İngilizce seslerinin
 > ücretsiz katman engeli (`401 detected_unusual_activity`) sonrası nasıl
 > üretileceğine **tek kararla** karar vermek. Bu belge harcama değildir; plan
