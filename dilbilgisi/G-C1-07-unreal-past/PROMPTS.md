@@ -32,3 +32,20 @@ Aşağıdaki satırları `tts_lesson.py` yazar.
 | 2026-10-14T14:40:17Z | c08-tr | duyu-1 | - | - | - | 12.32 | - | 0c59e8f867ace073 |
 | 2026-11-20T16:02:22Z | c01-tr | alania-v2 | alania2-f1 | alania-v2.1 | 131 | 11.2 | 123db561e1ff4e3ba0fea7548e59e7d7 | d930617c04c30271 |
 | 2026-11-20T16:02:29Z | c01-tr | duyu-1 | - | - | - | 11.2 | - | d930617c04c30271 |
+
+## İngilizce örnek seslendirme kayıtları (tts_lesson.py)
+
+| Tarih (UTC) | Parça | Ses | Model | Hız | Karakter | Metin sha256 | Dosya |
+|---|---|---|---|---|---|---|---|
+| 2026-11-26T14:09:30Z | c01-ex1 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.05 | 29 | d2c76c9d503ad41d | audio/en/c01-ex1.mp3 |
+| 2026-11-26T14:09:32Z | c02-ex1 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.05 | 36 | 1833a43121b33633 | audio/en/c02-ex1.mp3 |
+| 2026-11-26T14:09:33Z | c03-ex1 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.05 | 24 | e887b4c9b782c0b7 | audio/en/c03-ex1.mp3 |
+| 2026-11-26T14:09:36Z | c03-ex2 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.05 | 29 | 4c2eed48385a8918 | audio/en/c03-ex2.mp3 |
+| 2026-11-26T14:09:37Z | c04-ex1 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.05 | 34 | 682f9e17a0fd49d1 | audio/en/c04-ex1.mp3 |
+| 2026-11-26T14:09:39Z | c04-ex2 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.05 | 34 | e7c8ad07dad8da01 | audio/en/c04-ex2.mp3 |
+| 2026-11-26T14:09:41Z | c05-ex1 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.05 | 35 | 94935a7b1a3d8c45 | audio/en/c05-ex1.mp3 |
+| 2026-11-26T14:09:42Z | c05-ex2 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.05 | 34 | 79c87cd9b08fa84b | audio/en/c05-ex2.mp3 |
+| 2026-11-26T14:09:45Z | c05-ex3 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.05 | 31 | 3d8977bb36fce552 | audio/en/c05-ex3.mp3 |
+| 2026-11-26T14:09:46Z | c05-ex4 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.05 | 34 | 01a7a05dcc82c52f | audio/en/c05-ex4.mp3 |
+| 2026-11-26T14:09:48Z | c05-ex5 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.05 | 38 | e9eb542030dafe39 | audio/en/c05-ex5.mp3 |
+| 2026-11-26T14:09:50Z | c06-ex1 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.05 | 23 | 3eb97721e4349b9b | audio/en/c06-ex1.mp3 |

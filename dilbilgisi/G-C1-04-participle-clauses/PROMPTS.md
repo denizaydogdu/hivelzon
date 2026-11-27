@@ -34,3 +34,20 @@ Aşağıdaki satırları `tts_lesson.py` yazar.
 | 2026-11-20T16:01:42Z | c01-tr | duyu-1 | - | - | - | 10.52 | - | a209a828228c1056 |
 | 2026-11-20T16:10:37Z | c01-tr | alania-v2 | alania2-f1 | alania-v2.1 | 149 | 10.04 | 71977175fcdf4cd49f7a5fd1e0809859 | ed627b1ae0eb5f06 |
 | 2026-11-20T16:10:40Z | c01-tr | duyu-1 | - | - | - | 10.04 | - | ed627b1ae0eb5f06 |
+
+## İngilizce örnek seslendirme kayıtları (tts_lesson.py)
+
+| Tarih (UTC) | Parça | Ses | Model | Hız | Karakter | Metin sha256 | Dosya |
+|---|---|---|---|---|---|---|---|
+| 2026-11-26T14:08:13Z | c01-ex1 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.05 | 41 | 30bae2242ce5963b | audio/en/c01-ex1.mp3 |
+| 2026-11-26T14:08:15Z | c02-ex1 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.05 | 35 | 24cde46f49210537 | audio/en/c02-ex1.mp3 |
+| 2026-11-26T14:08:17Z | c03-ex1 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.05 | 42 | 802d1ba735b8c318 | audio/en/c03-ex1.mp3 |
+| 2026-11-26T14:08:19Z | c04-ex1 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.05 | 42 | 6a63c9e40d1bd421 | audio/en/c04-ex1.mp3 |
+| 2026-11-26T14:08:21Z | c05-ex1 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.05 | 35 | bf44e52344305e15 | audio/en/c05-ex1.mp3 |
+| 2026-11-26T14:08:23Z | c05-ex2 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.05 | 45 | a0484c38c1e1809c | audio/en/c05-ex2.mp3 |
+| 2026-11-26T14:08:25Z | c05-ex3 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.05 | 52 | 10bff5ac4e856dc1 | audio/en/c05-ex3.mp3 |
+| 2026-11-26T14:08:28Z | c05-ex4 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.05 | 53 | c236c048edef4746 | audio/en/c05-ex4.mp3 |
+| 2026-11-26T14:08:30Z | c05-ex5 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.05 | 42 | 06d2e8b583c19440 | audio/en/c05-ex5.mp3 |
+| 2026-11-26T14:08:32Z | c06-ex1 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.05 | 39 | d5ce2d647d275b94 | audio/en/c06-ex1.mp3 |
+| 2026-11-26T14:08:34Z | c06-ex2 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.05 | 34 | 3743959e3e04968c | audio/en/c06-ex2.mp3 |
+| 2026-11-26T14:08:36Z | c06-ex3 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.05 | 39 | 335bacf23d5c6e5a | audio/en/c06-ex3.mp3 |

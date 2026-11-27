@@ -30,3 +30,21 @@ Aşağıdaki satırları `tts_lesson.py` yazar.
 | 2026-10-14T14:11:44Z | c06-tr | duyu-1 | - | - | - | 16.37 | - | cf9dd4f59ee911b5 |
 | 2026-10-14T14:11:47Z | c08-tr | alania-v2 | alania2-f1 | alania-v2.1 | 145 | 10.65 | 4cd2ae85d0aa4c98b70f67cfe4d9624c | c5c471a4a0b671c5 |
 | 2026-10-14T14:11:48Z | c08-tr | duyu-1 | - | - | - | 10.65 | - | c5c471a4a0b671c5 |
+
+## İngilizce örnek seslendirme kayıtları (tts_lesson.py)
+
+| Tarih (UTC) | Parça | Ses | Model | Hız | Karakter | Metin sha256 | Dosya |
+|---|---|---|---|---|---|---|---|
+| 2026-11-26T14:05:02Z | c01-ex1 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.0 | 64 | fe885d6eaf0b6624 | audio/en/c01-ex1.mp3 |
+| 2026-11-26T14:05:04Z | c02-ex1 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.0 | 41 | 50fd168434947439 | audio/en/c02-ex1.mp3 |
+| 2026-11-26T14:05:07Z | c02-ex2 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.0 | 56 | 48007749061c0226 | audio/en/c02-ex2.mp3 |
+| 2026-11-26T14:05:09Z | c03-ex1 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.0 | 44 | 44ab144fc00c5996 | audio/en/c03-ex1.mp3 |
+| 2026-11-26T14:05:12Z | c03-ex2 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.0 | 46 | 5c3b976ec52c87d1 | audio/en/c03-ex2.mp3 |
+| 2026-11-26T14:05:15Z | c04-ex1 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.0 | 44 | 4897816e80d97954 | audio/en/c04-ex1.mp3 |
+| 2026-11-26T14:05:17Z | c04-ex2 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.0 | 34 | e8f636c546f569ef | audio/en/c04-ex2.mp3 |
+| 2026-11-26T14:05:20Z | c05-ex1 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.0 | 73 | 7b6e013f0c661356 | audio/en/c05-ex1.mp3 |
+| 2026-11-26T14:05:22Z | c05-ex2 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.0 | 53 | 8038a189b26e5f3e | audio/en/c05-ex2.mp3 |
+| 2026-11-26T14:05:24Z | c05-ex3 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.0 | 54 | 10fb92f76d18070f | audio/en/c05-ex3.mp3 |
+| 2026-11-26T14:05:26Z | c05-ex4 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.0 | 38 | 0e20e6ca8e8bb00e | audio/en/c05-ex4.mp3 |
+| 2026-11-26T14:05:28Z | c06-ex1 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.0 | 44 | c59d8ce51033615e | audio/en/c06-ex1.mp3 |
+| 2026-11-26T21:00:28Z | c01-ex1 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.0 | 64 | fe885d6eaf0b6624 | audio/en/c01-ex1.mp3 |

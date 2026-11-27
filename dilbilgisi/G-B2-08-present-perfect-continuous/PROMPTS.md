@@ -32,3 +32,20 @@ Aşağıdaki satırları `tts_lesson.py` yazar.
 | 2026-10-14T14:11:23Z | c08-tr | duyu-1 | - | - | - | 10.56 | - | 155aa161899c2dd8 |
 | 2026-11-20T16:00:49Z | c01-tr | alania-v2 | alania2-f1 | alania-v2.1 | 156 | 10.27 | 38524111776e4d259b44c64212d1e837 | 453e4c27847e88a2 |
 | 2026-11-20T16:00:51Z | c01-tr | duyu-1 | - | - | - | 10.27 | - | 453e4c27847e88a2 |
+
+## İngilizce örnek seslendirme kayıtları (tts_lesson.py)
+
+| Tarih (UTC) | Parça | Ses | Model | Hız | Karakter | Metin sha256 | Dosya |
+|---|---|---|---|---|---|---|---|
+| 2026-11-26T14:04:40Z | c01-ex1 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.0 | 47 | e58c23815f4f82c5 | audio/en/c01-ex1.mp3 |
+| 2026-11-26T14:04:42Z | c02-ex1 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.0 | 33 | c8f6f0889bb48887 | audio/en/c02-ex1.mp3 |
+| 2026-11-26T14:04:43Z | c03-ex1 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.0 | 35 | ee962c24d11ae331 | audio/en/c03-ex1.mp3 |
+| 2026-11-26T14:04:45Z | c03-ex2 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.0 | 39 | 567bffee959d9a99 | audio/en/c03-ex2.mp3 |
+| 2026-11-26T14:04:47Z | c04-ex1 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.0 | 29 | fa32e924ff568869 | audio/en/c04-ex1.mp3 |
+| 2026-11-26T14:04:49Z | c05-ex1 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.0 | 43 | eee3c6ed2d793eed | audio/en/c05-ex1.mp3 |
+| 2026-11-26T14:04:51Z | c05-ex2 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.0 | 31 | 67e367fec8304090 | audio/en/c05-ex2.mp3 |
+| 2026-11-26T14:04:53Z | c05-ex3 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.0 | 39 | 4fdc0ade561d6596 | audio/en/c05-ex3.mp3 |
+| 2026-11-26T14:04:55Z | c05-ex4 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.0 | 36 | 669ba1ae00f4e3cc | audio/en/c05-ex4.mp3 |
+| 2026-11-26T14:04:56Z | c05-ex5 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.0 | 40 | ed120a86895ab1b2 | audio/en/c05-ex5.mp3 |
+| 2026-11-26T14:04:58Z | c06-ex1 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.0 | 32 | 926a524947cbb9d4 | audio/en/c06-ex1.mp3 |
+| 2026-11-26T14:05:00Z | c06-ex2 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.0 | 25 | 500e53c241dbbcc5 | audio/en/c06-ex2.mp3 |

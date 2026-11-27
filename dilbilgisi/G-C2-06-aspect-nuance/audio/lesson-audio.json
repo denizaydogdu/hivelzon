@@ -52,8 +52,8 @@
      "chars": 30,
      "audio": "en/c01-ex1.mp3",
      "align": "en/c01-ex1.align.json",
-     "present": false,
-     "duration": null,
+     "present": true,
+     "duration": 1.52,
      "quality": null
     }
    ]
@@ -95,8 +95,8 @@
      "chars": 11,
      "audio": "en/c02-ex1.mp3",
      "align": "en/c02-ex1.align.json",
-     "present": false,
-     "duration": null,
+     "present": true,
+     "duration": 1.36,
      "quality": null
     },
     {
@@ -108,8 +108,8 @@
      "chars": 17,
      "audio": "en/c02-ex2.mp3",
      "align": "en/c02-ex2.align.json",
-     "present": false,
-     "duration": null,
+     "present": true,
+     "duration": 1.44,
      "quality": null
     }
    ]
@@ -151,8 +151,8 @@
      "chars": 21,
      "audio": "en/c03-ex1.mp3",
      "align": "en/c03-ex1.align.json",
-     "present": false,
-     "duration": null,
+     "present": true,
+     "duration": 1.2,
      "quality": null
     },
     {
@@ -164,8 +164,8 @@
      "chars": 31,
      "audio": "en/c03-ex2.mp3",
      "align": "en/c03-ex2.align.json",
-     "present": false,
-     "duration": null,
+     "present": true,
+     "duration": 1.84,
      "quality": null
     },
     {
@@ -177,8 +177,8 @@
      "chars": 31,
      "audio": "en/c03-ex3.mp3",
      "align": "en/c03-ex3.align.json",
-     "present": false,
-     "duration": null,
+     "present": true,
+     "duration": 1.6,
      "quality": null
     }
    ]
@@ -220,8 +220,8 @@
      "chars": 37,
      "audio": "en/c04-ex1.mp3",
      "align": "en/c04-ex1.align.json",
-     "present": false,
-     "duration": null,
+     "present": true,
+     "duration": 1.76,
      "quality": null
     },
     {
@@ -233,8 +233,8 @@
      "chars": 27,
      "audio": "en/c04-ex2.mp3",
      "align": "en/c04-ex2.align.json",
-     "present": false,
-     "duration": null,
+     "present": true,
+     "duration": 1.44,
      "quality": null
     }
    ]
@@ -252,8 +252,8 @@
      "chars": 29,
      "audio": "en/c05-ex1.mp3",
      "align": "en/c05-ex1.align.json",
-     "present": false,
-     "duration": null,
+     "present": true,
+     "duration": 1.92,
      "quality": null
     },
     {
@@ -265,8 +265,8 @@
      "chars": 33,
      "audio": "en/c05-ex2.mp3",
      "align": "en/c05-ex2.align.json",
-     "present": false,
-     "duration": null,
+     "present": true,
+     "duration": 1.76,
      "quality": null
     },
     {
@@ -278,8 +278,8 @@
      "chars": 41,
      "audio": "en/c05-ex3.mp3",
      "align": "en/c05-ex3.align.json",
-     "present": false,
-     "duration": null,
+     "present": true,
+     "duration": 2.32,
      "quality": null
     },
     {
@@ -291,8 +291,8 @@
      "chars": 39,
      "audio": "en/c05-ex4.mp3",
      "align": "en/c05-ex4.align.json",
-     "present": false,
-     "duration": null,
+     "present": true,
+     "duration": 2.16,
      "quality": null
     },
     {
@@ -304,8 +304,8 @@
      "chars": 40,
      "audio": "en/c05-ex5.mp3",
      "align": "en/c05-ex5.align.json",
-     "present": false,
-     "duration": null,
+     "present": true,
+     "duration": 1.92,
      "quality": null
     }
    ]
@@ -347,8 +347,8 @@
      "chars": 46,
      "audio": "en/c06-ex1.mp3",
      "align": "en/c06-ex1.align.json",
-     "present": false,
-     "duration": null,
+     "present": true,
+     "duration": 2.24,
      "quality": null
     },
     {
@@ -360,8 +360,8 @@
      "chars": 23,
      "audio": "en/c06-ex2.mp3",
      "align": "en/c06-ex2.align.json",
-     "present": false,
-     "duration": null,
+     "present": true,
+     "duration": 1.68,
      "quality": null
     }
    ]
@@ -379,8 +379,8 @@
      "chars": 37,
      "audio": "en/c07-q5.mp3",
      "align": "en/c07-q5.align.json",
-     "present": false,
-     "duration": null,
+     "present": true,
+     "duration": 1.76,
      "quality": null
     }
    ]
@@ -427,8 +427,8 @@
      "chars": 37,
      "audio": "en/c09-ex1.mp3",
      "align": "en/c09-ex1.align.json",
-     "present": false,
-     "duration": null,
+     "present": true,
+     "duration": 1.76,
      "quality": null
     }
    ]

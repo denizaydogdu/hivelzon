@@ -119,3 +119,13 @@ Henüz üretilmedi. Anlatıcı **Sarah** (`EXAVITQu4vr4xnSDxMaL`, kullanıcı se
 | 2026-11-03T17:33:44Z | p19 | duyu-1 | - | - | - | 57.82 | - | c0524a9d6b02f975 |
 | 2026-11-03T17:33:53Z | p20 | alania-v2 | alania2-f1 | alania-v2.1 | 909 | 57.7 | 2e43774b7dfc4c868a884c9af4b9e964 | c86c659db287f48a |
 | 2026-11-03T17:34:00Z | p20 | duyu-1 | - | - | - | 76.79 | - | c86c659db287f48a |
+| 2026-11-26T14:26:40Z | c1 | 1/2 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.0 | 2881 | 55d645ebed8fd42a | audio/c1.mp3 |
+| 2026-11-26T14:26:55Z | c1 | 2/2 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.0 | 655 | 51c4e61fe93ddf42 | audio/c1.mp3 |
+| 2026-11-26T14:28:01Z | c2 | 1/2 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.0 | 2938 | 5c19f83a47303066 | audio/c2.mp3 |
+| 2026-11-26T14:28:17Z | c2 | 2/2 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.0 | 575 | 228fee08d6277697 | audio/c2.mp3 |
+| 2026-11-26T14:29:39Z | c3 | 1/2 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.0 | 2977 | 8adbaa5003c39ad4 | audio/c3.mp3 |
+| 2026-11-26T14:29:48Z | c3 | 2/2 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.0 | 348 | ceca0decaf808ba7 | audio/c3.mp3 |
+| 2026-11-26T14:30:53Z | c4 | 1/2 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.0 | 2972 | 737023c596f2ac6a | audio/c4.mp3 |
+| 2026-11-26T14:30:56Z | c4 | 2/2 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.0 | 78 | 0c21aa6e506dadb2 | audio/c4.mp3 |
+| 2026-11-26T14:32:00Z | c5 | 1/2 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.0 | 2880 | fda6d4852bd4b89a | audio/c5.mp3 |
+| 2026-11-26T14:32:22Z | c5 | 2/2 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.0 | 802 | ac970eb4a68ef24b | audio/c5.mp3 |

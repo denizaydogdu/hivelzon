@@ -52,8 +52,8 @@
      "chars": 29,
      "audio": "en/c01-ex1.mp3",
      "align": "en/c01-ex1.align.json",
-     "present": false,
-     "duration": null,
+     "present": true,
+     "duration": 3.04,
      "quality": null
     }
    ]
@@ -95,8 +95,8 @@
      "chars": 26,
      "audio": "en/c02-ex1.mp3",
      "align": "en/c02-ex1.align.json",
-     "present": false,
-     "duration": null,
+     "present": true,
+     "duration": 2.56,
      "quality": null
     },
     {
@@ -108,8 +108,8 @@
      "chars": 30,
      "audio": "en/c02-ex2.mp3",
      "align": "en/c02-ex2.align.json",
-     "present": false,
-     "duration": null,
+     "present": true,
+     "duration": 2.48,
      "quality": null
     }
    ]
@@ -151,8 +151,8 @@
      "chars": 19,
      "audio": "en/c03-ex1.mp3",
      "align": "en/c03-ex1.align.json",
-     "present": false,
-     "duration": null,
+     "present": true,
+     "duration": 2.48,
      "quality": null
     },
     {
@@ -164,8 +164,8 @@
      "chars": 36,
      "audio": "en/c03-ex2.mp3",
      "align": "en/c03-ex2.align.json",
-     "present": false,
-     "duration": null,
+     "present": true,
+     "duration": 2.4,
      "quality": null
     }
    ]
@@ -207,8 +207,8 @@
      "chars": 34,
      "audio": "en/c04-ex1.mp3",
      "align": "en/c04-ex1.align.json",
-     "present": false,
-     "duration": null,
+     "present": true,
+     "duration": 2.48,
      "quality": null
     },
     {
@@ -220,8 +220,8 @@
      "chars": 26,
      "audio": "en/c04-ex2.mp3",
      "align": "en/c04-ex2.align.json",
-     "present": false,
-     "duration": null,
+     "present": true,
+     "duration": 2.16,
      "quality": null
     },
     {
@@ -233,8 +233,8 @@
      "chars": 47,
      "audio": "en/c04-ex3.mp3",
      "align": "en/c04-ex3.align.json",
-     "present": false,
-     "duration": null,
+     "present": true,
+     "duration": 2.72,
      "quality": null
     }
    ]
@@ -252,8 +252,8 @@
      "chars": 41,
      "audio": "en/c05-ex1.mp3",
      "align": "en/c05-ex1.align.json",
-     "present": false,
-     "duration": null,
+     "present": true,
+     "duration": 2.88,
      "quality": null
     },
     {
@@ -265,8 +265,8 @@
      "chars": 40,
      "audio": "en/c05-ex2.mp3",
      "align": "en/c05-ex2.align.json",
-     "present": false,
-     "duration": null,
+     "present": true,
+     "duration": 2.48,
      "quality": null
     },
     {
@@ -278,8 +278,8 @@
      "chars": 33,
      "audio": "en/c05-ex3.mp3",
      "align": "en/c05-ex3.align.json",
-     "present": false,
-     "duration": null,
+     "present": true,
+     "duration": 2.24,
      "quality": null
     },
     {
@@ -291,8 +291,8 @@
      "chars": 39,
      "audio": "en/c05-ex4.mp3",
      "align": "en/c05-ex4.align.json",
-     "present": false,
-     "duration": null,
+     "present": true,
+     "duration": 2.72,
      "quality": null
     },
     {
@@ -304,8 +304,8 @@
      "chars": 42,
      "audio": "en/c05-ex5.mp3",
      "align": "en/c05-ex5.align.json",
-     "present": false,
-     "duration": null,
+     "present": true,
+     "duration": 2.48,
      "quality": null
     }
    ]
@@ -347,8 +347,8 @@
      "chars": 34,
      "audio": "en/c06-ex1.mp3",
      "align": "en/c06-ex1.align.json",
-     "present": false,
-     "duration": null,
+     "present": true,
+     "duration": 2.72,
      "quality": null
     },
     {
@@ -360,8 +360,8 @@
      "chars": 11,
      "audio": "en/c06-ex2.mp3",
      "align": "en/c06-ex2.align.json",
-     "present": false,
-     "duration": null,
+     "present": true,
+     "duration": 0.64,
      "quality": null
     },
     {
@@ -373,8 +373,8 @@
      "chars": 10,
      "audio": "en/c06-ex3.mp3",
      "align": "en/c06-ex3.align.json",
-     "present": false,
-     "duration": null,
+     "present": true,
+     "duration": 0.72,
      "quality": null
     }
    ]
@@ -392,8 +392,8 @@
      "chars": 41,
      "audio": "en/c07-q5.mp3",
      "align": "en/c07-q5.align.json",
-     "present": false,
-     "duration": null,
+     "present": true,
+     "duration": 2.88,
      "quality": null
     }
    ]
@@ -440,8 +440,8 @@
      "chars": 26,
      "audio": "en/c09-ex1.mp3",
      "align": "en/c09-ex1.align.json",
-     "present": false,
-     "duration": null,
+     "present": true,
+     "duration": 2.56,
      "quality": null
     }
    ]

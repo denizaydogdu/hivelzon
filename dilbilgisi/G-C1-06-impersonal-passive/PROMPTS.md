@@ -34,3 +34,21 @@ Aşağıdaki satırları `tts_lesson.py` yazar.
 | 2026-11-20T16:02:09Z | c01-tr | duyu-1 | - | - | - | 12.8 | - | b96bf53b80c10fd4 |
 | 2026-11-20T16:10:48Z | c01-tr | alania-v2 | alania2-f1 | alania-v2.1 | 180 | 12.67 | a373b71ab26d40bea9b9deff9071d965 | a708bbbbf348f6c1 |
 | 2026-11-20T16:10:56Z | c01-tr | duyu-1 | - | - | - | 12.67 | - | a708bbbbf348f6c1 |
+
+## İngilizce örnek seslendirme kayıtları (tts_lesson.py)
+
+| Tarih (UTC) | Parça | Ses | Model | Hız | Karakter | Metin sha256 | Dosya |
+|---|---|---|---|---|---|---|---|
+| 2026-11-26T14:09:05Z | c01-ex1 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.05 | 62 | 884e4c5dc61c2235 | audio/en/c01-ex1.mp3 |
+| 2026-11-26T14:09:08Z | c02-ex1 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.05 | 45 | 3948f7209db608d5 | audio/en/c02-ex1.mp3 |
+| 2026-11-26T14:09:10Z | c03-ex1 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.05 | 45 | 7a6bc4287155b5e4 | audio/en/c03-ex1.mp3 |
+| 2026-11-26T14:09:11Z | c04-ex1 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.05 | 43 | 661290f267141e0b | audio/en/c04-ex1.mp3 |
+| 2026-11-26T14:09:13Z | c05-ex1 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.05 | 51 | cc7b47c0a4f26b6d | audio/en/c05-ex1.mp3 |
+| 2026-11-26T14:09:16Z | c05-ex2 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.05 | 49 | 1c417acf8965be2a | audio/en/c05-ex2.mp3 |
+| 2026-11-26T14:09:19Z | c05-ex3 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.05 | 37 | 6753f45d2a72765a | audio/en/c05-ex3.mp3 |
+| 2026-11-26T14:09:21Z | c05-ex4 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.05 | 42 | 7331901779e89f6a | audio/en/c05-ex4.mp3 |
+| 2026-11-26T14:09:23Z | c05-ex5 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.05 | 42 | e4322547972c54c0 | audio/en/c05-ex5.mp3 |
+| 2026-11-26T14:09:24Z | c06-ex1 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.05 | 22 | abb15031d60dc4f2 | audio/en/c06-ex1.mp3 |
+| 2026-11-26T14:09:26Z | c06-ex2 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.05 | 27 | a05f5265eabc59dc | audio/en/c06-ex2.mp3 |
+| 2026-11-26T14:09:27Z | c06-ex3 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.05 | 39 | 1d156dc10a6b499d | audio/en/c06-ex3.mp3 |
+| 2026-11-26T14:09:29Z | c07-q5 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.05 | 38 | 5d7e0ee1a005f2b9 | audio/en/c07-q5.mp3 |

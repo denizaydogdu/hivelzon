@@ -115,3 +115,11 @@ Henüz üretilmedi. Anlatıcı **Sarah** (`EXAVITQu4vr4xnSDxMaL`, kullanıcı se
 | 2026-11-03T17:52:22Z | p02 | duyu-1 | - | - | - | 70.15 | - | 2f58c21bfa2973d9 |
 | 2026-11-03T17:52:39Z | p05 | duyu-1 | - | - | - | 83.79 | - | 80a7a72f83ac08b3 |
 | 2026-11-03T17:52:54Z | p13 | duyu-1 | - | - | - | 78.76 | - | 15ff049fcce8137e |
+| 2026-11-26T20:25:42Z | c1 | 1/2 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.0 | 2892 | ce219c4bb593ebca | audio/c1.mp3 |
+| 2026-11-26T20:26:02Z | c1 | 2/2 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.0 | 1429 | 3e81aaa42f9e4761 | audio/c1.mp3 |
+| 2026-11-26T20:26:49Z | c2 | 1/2 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.0 | 2967 | 7e0c327ebf75579f | audio/c2.mp3 |
+| 2026-11-26T20:26:59Z | c2 | 2/2 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.0 | 589 | 94e3c65271257884 | audio/c2.mp3 |
+| 2026-11-26T20:27:44Z | c3 | 1/2 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.0 | 2919 | 4b48c0426346943a | audio/c3.mp3 |
+| 2026-11-26T20:28:14Z | c3 | 2/2 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.0 | 1810 | 8c2c21a732fee893 | audio/c3.mp3 |
+| 2026-11-26T20:28:56Z | c4 | 1/2 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.0 | 2733 | 697b1f9440c49196 | audio/c4.mp3 |
+| 2026-11-26T20:29:11Z | c4 | 2/2 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.0 | 843 | 234d963ba5708667 | audio/c4.mp3 |

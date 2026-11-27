@@ -52,8 +52,8 @@
      "chars": 41,
      "audio": "en/c01-ex1.mp3",
      "align": "en/c01-ex1.align.json",
-     "present": false,
-     "duration": null,
+     "present": true,
+     "duration": 2.32,
      "quality": null
     }
    ]
@@ -95,8 +95,8 @@
      "chars": 35,
      "audio": "en/c02-ex1.mp3",
      "align": "en/c02-ex1.align.json",
-     "present": false,
-     "duration": null,
+     "present": true,
+     "duration": 2.32,
      "quality": null
     }
    ]
@@ -138,8 +138,8 @@
      "chars": 42,
      "audio": "en/c03-ex1.mp3",
      "align": "en/c03-ex1.align.json",
-     "present": false,
-     "duration": null,
+     "present": true,
+     "duration": 2.08,
      "quality": null
     }
    ]
@@ -181,8 +181,8 @@
      "chars": 42,
      "audio": "en/c04-ex1.mp3",
      "align": "en/c04-ex1.align.json",
-     "present": false,
-     "duration": null,
+     "present": true,
+     "duration": 3.04,
      "quality": null
     }
    ]
@@ -200,8 +200,8 @@
      "chars": 35,
      "audio": "en/c05-ex1.mp3",
      "align": "en/c05-ex1.align.json",
-     "present": false,
-     "duration": null,
+     "present": true,
+     "duration": 1.76,
      "quality": null
     },
     {
@@ -213,8 +213,8 @@
      "chars": 45,
      "audio": "en/c05-ex2.mp3",
      "align": "en/c05-ex2.align.json",
-     "present": false,
-     "duration": null,
+     "present": true,
+     "duration": 2.72,
      "quality": null
     },
     {
@@ -226,8 +226,8 @@
      "chars": 52,
      "audio": "en/c05-ex3.mp3",
      "align": "en/c05-ex3.align.json",
-     "present": false,
-     "duration": null,
+     "present": true,
+     "duration": 3.04,
      "quality": null
     },
     {
@@ -239,8 +239,8 @@
      "chars": 53,
      "audio": "en/c05-ex4.mp3",
      "align": "en/c05-ex4.align.json",
-     "present": false,
-     "duration": null,
+     "present": true,
+     "duration": 2.96,
      "quality": null
     },
     {
@@ -252,8 +252,8 @@
      "chars": 42,
      "audio": "en/c05-ex5.mp3",
      "align": "en/c05-ex5.align.json",
-     "present": false,
-     "duration": null,
+     "present": true,
+     "duration": 2.64,
      "quality": null
     }
    ]
@@ -295,8 +295,8 @@
      "chars": 39,
      "audio": "en/c06-ex1.mp3",
      "align": "en/c06-ex1.align.json",
-     "present": false,
-     "duration": null,
+     "present": true,
+     "duration": 2.48,
      "quality": null
     },
     {
@@ -308,8 +308,8 @@
      "chars": 34,
      "audio": "en/c06-ex2.mp3",
      "align": "en/c06-ex2.align.json",
-     "present": false,
-     "duration": null,
+     "present": true,
+     "duration": 2.4,
      "quality": null
     },
     {
@@ -321,8 +321,8 @@
      "chars": 39,
      "audio": "en/c06-ex3.mp3",
      "align": "en/c06-ex3.align.json",
-     "present": false,
-     "duration": null,
+     "present": true,
+     "duration": 2.4,
      "quality": null
     }
    ]
@@ -340,8 +340,8 @@
      "chars": 42,
      "audio": "en/c07-q5.mp3",
      "align": "en/c07-q5.align.json",
-     "present": false,
-     "duration": null,
+     "present": true,
+     "duration": 2.08,
      "quality": null
     }
    ]
@@ -388,8 +388,8 @@
      "chars": 42,
      "audio": "en/c09-ex1.mp3",
      "align": "en/c09-ex1.align.json",
-     "present": false,
-     "duration": null,
+     "present": true,
+     "duration": 2.08,
      "quality": null
     }
    ]

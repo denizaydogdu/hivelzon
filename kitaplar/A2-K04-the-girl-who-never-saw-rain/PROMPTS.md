@@ -169,3 +169,7 @@ Henüz üretilmedi. Anlatıcı **Sarah** (`EXAVITQu4vr4xnSDxMaL`, kullanıcı se
 | 2026-11-04T08:38:31Z | p10 | duyu-1 | - | - | - | 30.39 | - | 2a27b24d8cd6fe20 |
 | 2026-11-04T08:38:51Z | p16 | alania-v2 | alania2-f1 | alania-v2.1 | 619 | 41.42 | 2d3220068a6f49dba73110a608216846 | ae510e1e9c2346a1 |
 | 2026-11-04T08:38:57Z | p16 | duyu-1 | - | - | - | 41.42 | - | ae510e1e9c2346a1 |
+| 2026-11-26T14:20:39Z | c1 | 1/1 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.95 | 2089 | 75ec4460d571c335 | audio/c1.mp3 |
+| 2026-11-26T14:21:25Z | c2 | 1/1 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.95 | 2128 | 0f7a35af589e2ba9 | audio/c2.mp3 |
+| 2026-11-26T14:22:09Z | c3 | 1/1 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.95 | 1807 | 20c0347e3d694a41 | audio/c3.mp3 |
+| 2026-11-26T14:22:54Z | c4 | 1/1 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.95 | 2151 | 0dc9dfd3b0af06bc | audio/c4.mp3 |

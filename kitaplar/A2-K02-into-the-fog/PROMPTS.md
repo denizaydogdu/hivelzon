@@ -117,3 +117,7 @@ Kurallar: her ücretli üretimden **önce** `higgsfield generate cost` ile maliy
 | 2026-11-04T08:37:06Z | p04 | duyu-1 | - | - | - | 51.97 | - | 5f6d13b2fda9fe52 |
 | 2026-11-04T08:37:14Z | p15 | alania-v2 | alania2-f1 | alania-v2.1 | 546 | 38.41 | 8273cb876fed4d7b8d8b289367e892a8 | a3aaba8914078fd4 |
 | 2026-11-04T08:37:22Z | p15 | duyu-1 | - | - | - | 38.41 | - | a3aaba8914078fd4 |
+| 2026-11-26T14:17:20Z | c1 | 1/1 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.95 | 2575 | f0bdfb0a82392929 | audio/c1.mp3 |
+| 2026-11-26T14:18:12Z | c2 | 1/1 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.95 | 2206 | e1963a7f3ba3d2a2 | audio/c2.mp3 |
+| 2026-11-26T14:18:59Z | c3 | 1/1 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.95 | 1561 | e7e6eb8985f8d01a | audio/c3.mp3 |
+| 2026-11-26T14:19:50Z | c4 | 1/1 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.95 | 2224 | 744719a67657f5df | audio/c4.mp3 |

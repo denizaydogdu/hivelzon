@@ -101,3 +101,7 @@ Henüz üretilmedi. Anlatıcı **Sarah** (`EXAVITQu4vr4xnSDxMaL`, kullanıcı se
 | 2026-11-03T17:15:39Z | p15 | duyu-1 | - | - | - | 34.0 | - | fd0ddeac7cc04c21 |
 | 2026-11-03T17:15:44Z | p16 | alania-v2 | alania2-f1 | alania-v2.1 | 600 | 39.74 | b6fb7d7fef9f4ae998ebf86be928cbf6 | e7feb1b3cbb1800a |
 | 2026-11-03T17:15:47Z | p16 | duyu-1 | - | - | - | 39.74 | - | e7feb1b3cbb1800a |
+| 2026-11-26T14:13:44Z | c1 | 1/1 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.95 | 2222 | 08003e9154de4602 | audio/c1.mp3 |
+| 2026-11-26T14:14:25Z | c2 | 1/1 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.95 | 1887 | d35174eb00042748 | audio/c2.mp3 |
+| 2026-11-26T14:15:16Z | c3 | 1/1 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.95 | 1942 | 243047a393034732 | audio/c3.mp3 |
+| 2026-11-26T14:16:17Z | c4 | 1/1 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.95 | 2309 | 63cf45e14587b810 | audio/c4.mp3 |
