@@ -1,6 +1,8 @@
 # H-109: Yeni Türkçe ses yerleri — Faz 1 ve Faz 2 (öneri)
 
-- **Durum:** ⛔ Kullanıcı kararı bekliyor (2026-11-20 önerisi). Planda olmayan yeni kapsam; onaysız başlanmaz.
+- **Durum:** ⏸ Ertelendi (kullanıcı kararı 2026-11-27): editör incelemesi ve H-092 pilotundan sonra yeniden değerlendirilir
+  (metin değişirse yeniden seslendirme olmasın; öğrencinin yanlış cevap açıklamasını dinlemek isteyip istemediği pilotta görülsün).
+  Ücretli üretim için önce H-116 tavanı gerekir. Planda olmayan yeni kapsam; onaysız başlanmaz.
 - **Tür:** İçerik hattı (Alania + Duyu) + mobil arayüz
 - **Öncelik:** Düşük–Orta
 - **Bağımlılık:** H-083, H-104, H-105, H-108 (gerçek ücret durumu) · editör incelemesi (metin değişirse yeniden seslendirme)

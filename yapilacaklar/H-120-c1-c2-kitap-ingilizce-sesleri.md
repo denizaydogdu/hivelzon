@@ -96,3 +96,6 @@ yansıttığı için geri alınmaz.
 ## Notlar
 - 2026-11-27: Kullanıcı isteğiyle açıldı ("C1 ve C2 kitap seslerini yapılacaklara yazalım"). A1–B2 kitapları sesli (20/30),
   dilbilgisi İngilizce örnekleri 71/71.
+
+## Not (2026-11-27)
+- Kullanıcı kararı: Kıraathane aynı ElevenLabs Creator hesabını **yalnız bu dönemin kalan kredisiyle** (≈ 2.566 kredi, 2026-11-27 ölçümü; yenilenme 2026-12-26) İngilizce ses için kullanabilir. Yenilenen Aralık/Ocak kredisi H-120 içindir; Kıraathane yeni dönemde ancak kullanıcının ayrı onayıyla kullanır. Kıraathane harcaması hiVelzon defterine (`kitaplar/_maliyet/elevenlabs-karakter.json`) girmez; dashboard toplamıyla defter arasındaki fark buradan gelir.
