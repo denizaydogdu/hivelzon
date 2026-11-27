@@ -192,7 +192,7 @@ def execute_en(plan: EnPlan, client: Callable[[str, dict], dict] | None, cap: in
                         res.stopped = f"aylık tavan aşılır: bu ay {used} + {j.chars} > {cap} karakter; {sid} üretilmedi"
                         log(res.stopped)
                         return res
-                    resp = client(plan.voice, tts.payload(j.seg.text, plan.model, plan.speed))
+                    resp = tts.paid_call(client, ledger, month, j.chars, plan.voice, tts.payload(j.seg.text, plan.model, plan.speed))
                     # H-114: çağrı döndü = ödendi. Önce defter, sonra yanıt denetimi ve önbellek, en son PROMPTS.
                     tts.ledger_add(ledger, month, j.chars)
                     res.calls += 1

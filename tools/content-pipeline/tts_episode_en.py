@@ -153,7 +153,8 @@ def main(argv: list[str] | None = None, client=None) -> int:
                 print(f"HATA: tavan aşılır ({used} + {len(r['text'])} > {a.cap}); {r['stem']} üretilmedi.",
                       file=sys.stderr)
                 return 1
-            resp = client(r["voiceId"], tts.payload(r["text"], cfg["modelId"], float(cfg["speed"])))
+            resp = tts.paid_call(client, ledger, month, len(r["text"]), r["voiceId"],
+                                 tts.payload(r["text"], cfg["modelId"], float(cfg["speed"])))
             # H-114: çağrı döndü = ödendi. Önce defter, sonra yanıt denetimi ve dosyalar, en son PROMPTS.
             tts.ledger_add(ledger, month, len(r["text"]))
             spent += len(r["text"])

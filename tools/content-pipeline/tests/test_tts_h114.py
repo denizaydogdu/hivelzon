@@ -370,3 +370,98 @@ def test_g_unsafe_hi_and_talk_ids_rejected(tmp_path):
     doc = {"id": "ok", "turns": [{"id": "../t", "promptTr": "Söyle."}]}
     with pytest.raises(ep.EpisodeTtsError, match="ses adı"):
         ep.collect_talk_task(root / "t.json", doc, root, vm)
+
+
+# --- 2026-11-27: yanıtı yarıda kesilen çağrı da ücretlidir ----------------------------------------------
+
+def _truncated_en(voice, payload):
+    """ElevenLabs HTTP 200 verdi, gövde yarıda kesildi (IncompleteRead): ücret ödenmiştir."""
+    raise tts.TtsPaidError("ElevenLabs yanıtı yarıda kesildi (IncompleteRead)")
+
+
+def test_paid_truncated_book_call_is_recorded_and_not_cached(tmp_path):
+    from test_books import FX
+    import shutil
+    d = tmp_path / FX.name
+    shutil.copytree(FX, d)
+    for f in (d / "audio").glob("*"):
+        f.unlink()
+    led, plan = tmp_path / "l.json", tts.plan_book(Book.load(d))
+    with pytest.raises(tts.TtsPaidError):
+        tts.execute(plan, _truncated_en, 100_000, led, log=lambda s: None)
+    assert _month(led)["calls"] == 1 and _month(led)["characters"] == len(plan.jobs[0].parts[0])
+    assert not list((d / "audio").rglob("*.mp3"))
+
+
+def test_paid_truncated_lesson_and_run_en_calls_are_recorded(tmp_path):
+    led = tmp_path / "en.json"
+    plan = lessonaudio.plan_en([EnSegment("e1", "I am here.", "c1", "example")], tmp_path / "en", "v", "m", 1.0)
+    with pytest.raises(tts.TtsPaidError):
+        lessonaudio.execute_en(plan, _truncated_en, 1000, led, tmp_path / "P.md", log=lambda s: None)
+    assert _month(led) == {"characters": 10, "calls": 1}
+    piece = ep.EnPiece("x1", "Again, please.", "kx", tmp_path / "o", tmp_path / "P.md")
+    with pytest.raises(tts.TtsPaidError):
+        ep.run_en([piece], {"voiceId": "v", "modelId": "m", "speed": 1.0, "name": "S"}, _truncated_en, 1000, led,
+                  log=lambda s: None)
+    assert _month(led) == {"characters": 24, "calls": 2}
+
+
+def test_paid_truncated_episode_en_call_is_recorded(tmp_path):
+    from test_tts_episode_en import setup
+    root, epd = setup(tmp_path)
+    led = tmp_path / "l.json"
+    with pytest.raises(tts.TtsPaidError):
+        tts_episode_en.main([str(epd), "--root", str(root), "--execute", "--cap", "100", "--only", "x_01_alex",
+                             "--ledger", str(led)], client=_truncated_en)
+    assert _month(led) == {"characters": len("Sorry, I'm late."), "calls": 1}
+
+
+def test_http_client_turns_incomplete_body_into_paid_error(monkeypatch):
+    import http.client
+    import urllib.request
+
+    class Resp:
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *a):
+            return False
+
+        def read(self):
+            raise http.client.IncompleteRead(b"x" * 10, 90)
+
+    monkeypatch.setenv(tts.ENV_KEY, "test-key")
+    monkeypatch.setattr(urllib.request, "urlopen", lambda req, timeout=None: Resp())
+    with pytest.raises(tts.TtsPaidError, match="yarıda kesildi"):
+        tts.http_client()("v", {"text": "hi"})
+
+
+def test_failure_before_response_is_not_a_paid_error(monkeypatch):
+    import urllib.request
+
+    def refuse(req, timeout=None):
+        raise ConnectionRefusedError("no route")
+
+    monkeypatch.setenv(tts.ENV_KEY, "test-key")
+    monkeypatch.setattr(urllib.request, "urlopen", refuse)
+    with pytest.raises(ConnectionRefusedError):
+        tts.http_client()("v", {"text": "hi"})
+
+
+def test_http_client_turns_invalid_json_into_paid_error(monkeypatch):
+    import urllib.request
+
+    class Resp:
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *a):
+            return False
+
+        def read(self):
+            return b'{"audio_base64": "SUQz'  # gövde yarıda, JSON eksik
+
+    monkeypatch.setenv(tts.ENV_KEY, "test-key")
+    monkeypatch.setattr(urllib.request, "urlopen", lambda req, timeout=None: Resp())
+    with pytest.raises(tts.TtsPaidError, match="geçersiz JSON"):
+        tts.http_client()("v", {"text": "hi"})

@@ -167,7 +167,7 @@ def main(argv: list[str] | None = None) -> int:
                         print(f"hata: tavan aşılır ({used} + {p['chars']} > {cap}); {p['cue']} üretilmedi",
                               file=sys.stderr)
                         return 1
-                    resp = client(p["voice"], T.payload(p["text"], MODEL, a.speed))
+                    resp = T.paid_call(client, ledger, pay_month, p["chars"], p["voice"], T.payload(p["text"], MODEL, a.speed))
                     # H-114: çağrı döndü = ödendi. Önce defter, sonra yanıt denetimi ve önbellek, en son PROMPTS.
                     T.ledger_add(ledger, pay_month, p["chars"])
                     spent += p["chars"]

@@ -44,7 +44,7 @@ SIMILARITY = 0.75
 PART_GAP = 0.40            # parçalar arası sessizlik (sn)
 # İstek başına karakter sınırı. eleven_v3 için 3.000 varsayıldı (UNCONFIRMED: güncel sınır
 # ElevenLabs belgesinden doğrulanmalı); diğer modellerde 5.000.
-MAX_CHARS = {"eleven_v3": 3000}
+MAX_CHARS = {"eleven_v3": 1500}  # 2026-11-27: büyük yanıtlar (~4,7 MB) yarıda kesiliyordu
 DEFAULT_MAX_CHARS = 5000
 # Karakter başına kredi (tahmin; güncel fiyat doğrulanmalı). Flash/Turbo yarım kredi.
 CREDITS_PER_CHAR = {"eleven_v3": 1.0, "eleven_multilingual_v2": 1.0,
@@ -56,6 +56,21 @@ PROMPTS_TABLE = ("| Tarih (UTC) | Bölüm | Parça | Ses | Model | Hız | Karakt
 
 class TtsError(RuntimeError):
     pass
+
+
+class TtsPaidError(TtsError):
+    """İstek kabul edildi (HTTP 200) ama yanıt gövdesi eksik geldi: ElevenLabs bu çağrıyı ücretlendirir."""
+
+
+def paid_call(client: Callable[[str, dict], dict], ledger: Path, month: str, chars: int,
+              voice_id: str, body: dict) -> dict:
+    """Ücretli çağrı. Yanıt yarıda kesilse de (TtsPaidError) harcama deftere yazılır, sonra hata yükselir;
+    başarılı çağrının kaydı çağıranda kalır (H-114 sırası)."""
+    try:
+        return client(voice_id, body)
+    except TtsPaidError:
+        ledger_add(ledger, month, chars)
+        raise
 
 
 # --- plan ----------------------------------------------------------------------------------------
@@ -241,6 +256,7 @@ def append_prompts(book: Book, row: dict) -> None:
 def http_client(timeout: float = 180.0) -> Callable[[str, dict], dict]:
     """Gerçek ElevenLabs istemcisi. Anahtar burada, çağrı anında ortamdan okunur; döndürülen işlev
     anahtarı yalnızca istek başlığına koyar."""
+    import http.client
     import urllib.error
     import urllib.request
 
@@ -254,7 +270,16 @@ def http_client(timeout: float = 180.0) -> Callable[[str, dict], dict]:
                                               "Content-Type": "application/json", "Accept": "application/json"})
         try:
             with urllib.request.urlopen(req, timeout=timeout) as r:
-                return json.loads(r.read())
+                try:
+                    raw = r.read()
+                except (http.client.IncompleteRead, OSError) as e:  # bağlantı koptu, zaman aşımı, SSL
+                    raise TtsPaidError(f"ElevenLabs yanıtı yarıda kesildi ({type(e).__name__}); "
+                                       "çağrı ücretlendi, deftere yazıldı") from None
+            try:
+                return json.loads(raw)
+            except ValueError:  # HTTP 200 ama gövde JSON değil/eksik: yine ücretli
+                raise TtsPaidError("ElevenLabs yanıtı çözülemedi (geçersiz JSON); çağrı ücretlendi, "
+                                   "deftere yazıldı") from None
         except urllib.error.HTTPError as e:
             body = e.read().decode("utf-8", errors="replace")[:300]
             raise TtsError(f"ElevenLabs HTTP {e.code}: {body}") from None
@@ -332,7 +357,7 @@ def execute(plan: Plan, client: Callable[[str, dict], dict], cap: int | None, le
                                            f"{cid} parça {k} üretilmedi")
                             log(res.stopped)
                             return res
-                        resp = client(plan.voice_id, payload(text, plan.model_id, plan.speed))
+                        resp = paid_call(client, ledger, month, len(text), plan.voice_id, payload(text, plan.model_id, plan.speed))
                         # H-114: çağrı döndü = ödendi. Önce defter, sonra yanıt denetimi ve önbellek, en son PROMPTS.
                         ledger_add(ledger, month, len(text))
                         res.calls += 1

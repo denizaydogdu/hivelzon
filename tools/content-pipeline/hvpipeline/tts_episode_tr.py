@@ -598,7 +598,8 @@ def run_en(pieces: list[EnPiece], en: dict, client: Callable[[str, dict], dict] 
             if used + len(p.text) > cap:
                 raise EpisodeTtsError(f"İngilizce aylık tavan aşılır: {used} + {len(p.text)} > {cap}; "
                                       f"{p.id} üretilmedi")
-            resp = client(en["voiceId"], tts.payload(p.text, en["modelId"], float(en["speed"])))
+            resp = tts.paid_call(client, ledger, month, len(p.text), en["voiceId"],
+                                 tts.payload(p.text, en["modelId"], float(en["speed"])))
             # H-114: çağrı döndü = ödendi. Önce defter, sonra yanıt denetimi ve önbellek, en son PROMPTS.
             tts.ledger_add(ledger, month, len(p.text))
             try:
