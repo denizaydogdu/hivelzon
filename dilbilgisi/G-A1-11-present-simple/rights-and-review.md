@@ -8,7 +8,7 @@
 - Kanca ve "Hikâyede gör" cümleleri hiVelzon'un kendi bölüm ve kitap metinlerinden birebir alındı; `grammar_lint.py` her bağı yeniden çözer (A1-005 ve sonrası bölümlerde kurgu yok, bağ story.en.md satırına çözülür):
   - A1-005 · "I work here every day." (kanca)
   - A1-008 · "I think it's a recording."
-  - A1-K01 p01 · "Lina and her mum live on floor four."
+  - A1-K01 p01 · "Lina and Mum live on the fourth floor."
   - A1-K02 p04 · "They drink tea and play a game."
   - A1-K05 p07 · "I make bread."
 

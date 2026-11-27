@@ -71,7 +71,7 @@ Kurallar: her ücretli üretimden **önce** `higgsfield generate cost` ile maliy
 
 ## Seslendirme kayıtları (tts_book.py)
 
-Henüz üretilmedi. Anlatıcı **Sarah** (`EXAVITQu4vr4xnSDxMaL`, kullanıcı seçimi), model `eleven_v3`, hız 1.0 (B2 başlangıç değeri; B2'de anlatım temposu varsayılanı `off`, hedef 145–155 k/dk, §6.5). Ses **ElevenLabs Creator** (ticari lisans) hesabıyla, önce `tts_book.py` kuru çalışmasıyla karakter ve kredi gösterilip kullanıcı onayı alındıktan sonra üretilecek. Anahtar repo dışında (`ELEVENLABS_API_KEY`). Aşağıdaki tabloya satırları `tts_book.py --execute` ekler.
+Üretildi (2026-11-27, ElevenLabs Creator, ticari lisans). Anlatıcı **Sarah** (`EXAVITQu4vr4xnSDxMaL`, kullanıcı seçimi), model `eleven_v3`, hız 1.0 (B2 başlangıç değeri; B2'de anlatım temposu varsayılanı `off`, hedef 145–155 k/dk, §6.5). Ses **ElevenLabs Creator** (ticari lisans) hesabıyla, önce `tts_book.py` kuru çalışmasıyla karakter ve kredi gösterilip kullanıcı onayı alındıktan sonra üretilecek. Anahtar repo dışında (`ELEVENLABS_API_KEY`). Aşağıdaki tabloya satırları `tts_book.py --execute` ekler.
 
 | Tarih (UTC) | Bölüm | Parça | Ses | Model | Hız | Karakter | Metin sha256 | Dosya |
 |---|---|---|---|---|---|---|---|---|
@@ -124,3 +124,24 @@ Henüz üretilmedi. Anlatıcı **Sarah** (`EXAVITQu4vr4xnSDxMaL`, kullanıcı se
 | 2026-11-03T18:59:30Z | p21 | duyu-1 | - | - | - | 75.84 | - | 032bfcf555813c4c |
 | 2026-11-03T18:59:40Z | p22 | alania-v2 | alania2-f1 | alania-v2.1 | 1219 | 75.75 | 10644453df7f4f3180caf43bbcee9852 | f4259dbe0461e59d |
 | 2026-11-03T18:59:46Z | p22 | duyu-1 | - | - | - | 75.75 | - | f4259dbe0461e59d |
+| 2026-11-27T07:02:56Z | c1 | 1/4 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.0 | 1418 | d5c3752e68516264 | audio/c1.mp3 |
+| 2026-11-27T07:03:27Z | c1 | 2/4 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.0 | 1481 | b7c132bc7c94d46f | audio/c1.mp3 |
+| 2026-11-27T07:03:57Z | c1 | 3/4 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.0 | 1496 | 6650dd23d83f88eb | audio/c1.mp3 |
+| 2026-11-27T07:04:33Z | c1 | 4/4 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.0 | 1466 | cd96efc74ebb66c6 | audio/c1.mp3 |
+| 2026-11-27T07:04:59Z | c2 | 1/4 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.0 | 1487 | 63db59bd03c0ea99 | audio/c2.mp3 |
+| 2026-11-27T07:05:24Z | c2 | 2/4 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.0 | 1453 | 4730e63886d33566 | audio/c2.mp3 |
+| 2026-11-27T07:05:50Z | c2 | 3/4 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.0 | 1239 | 0ee8d59777199be0 | audio/c2.mp3 |
+| 2026-11-27T07:05:59Z | c2 | 4/4 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.0 | 434 | dc9fc5559471ea70 | audio/c2.mp3 |
+| 2026-11-27T07:06:40Z | c3 | 1/5 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.0 | 1450 | 2aea6f85e113322c | audio/c3.mp3 |
+| 2026-11-27T07:07:08Z | c3 | 2/5 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.0 | 1375 | ab0d7fd27fde14dc | audio/c3.mp3 |
+| 2026-11-27T07:07:34Z | c3 | 3/5 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.0 | 1487 | 4cb021416475276b | audio/c3.mp3 |
+| 2026-11-27T07:08:06Z | c3 | 4/5 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.0 | 1426 | 2ff62bdd6141f646 | audio/c3.mp3 |
+| 2026-11-27T07:08:13Z | c3 | 5/5 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.0 | 251 | 8e65ac239db77d65 | audio/c3.mp3 |
+| 2026-11-27T07:08:43Z | c4 | 1/4 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.0 | 1374 | 7fb563d3a4307324 | audio/c4.mp3 |
+| 2026-11-27T07:09:13Z | c4 | 2/4 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.0 | 1450 | a723f3918639e81e | audio/c4.mp3 |
+| 2026-11-27T07:09:40Z | c4 | 3/4 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.0 | 1445 | 246e3129f5a0f554 | audio/c4.mp3 |
+| 2026-11-27T07:09:51Z | c4 | 4/4 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.0 | 583 | 5edd25b6e85d22c8 | audio/c4.mp3 |
+| 2026-11-27T07:10:17Z | c5 | 1/4 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.0 | 1464 | 799428142ae503bc | audio/c5.mp3 |
+| 2026-11-27T07:10:40Z | c5 | 2/4 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.0 | 1408 | 071ccd32314cea56 | audio/c5.mp3 |
+| 2026-11-27T07:11:05Z | c5 | 3/4 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.0 | 1340 | ae316c46a2a12bfb | audio/c5.mp3 |
+| 2026-11-27T07:11:16Z | c5 | 4/4 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.0 | 667 | a1450a3bb862948e | audio/c5.mp3 |

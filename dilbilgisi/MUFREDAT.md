@@ -291,7 +291,7 @@ Kullanıcının bakması gerekenler:
 - **Hikâye bağı:**
   - A1-005 Sahne 3 (Jordan anlatıyor): JORDAN "I work here every day."
   - A1-008 Sahne 1 (Tepe yolunda): ALEX "I think it's a recording."
-  - A1-K01 p01: "Lina and her mum live on floor four."
+  - A1-K01 p01: "Lina and Mum live on the fourth floor."
 - **Hata kataloğu:** `agree-no-be`
 
 ### G-A1-12-word-order-svo · Kelime sırası: özne + fiil + nesne

@@ -74,7 +74,7 @@ Kurallar: her ücretli üretimden **önce** `higgsfield generate cost` ile maliy
 
 ## Seslendirme kayıtları (tts_book.py)
 
-Henüz üretilmedi. Anlatıcı **Sarah** (`EXAVITQu4vr4xnSDxMaL`, kullanıcı seçimi), model `eleven_v3`, hız 1.0 (B2 başlangıç değeri; anlatım temposu B2 varsayılanı `off`, hedef 145–155 k/dk, §6.5; ölçümden sonra gerekirse `narration.pacing` ayarlanır). Kulaklığın çevirileri aynı anlatıcıyla, hafif mekanik bir tonla okunabilir (katalog notu; ayrı ses yok). Ses **ElevenLabs Creator** (ticari lisans) hesabıyla, önce `tts_book.py` kuru çalışmasıyla karakter ve kredi gösterilip kullanıcı onayı alındıktan sonra üretilecek. Anahtar repo dışında (`ELEVENLABS_API_KEY`). Aşağıdaki tabloya satırları `tts_book.py --execute` ekler.
+Üretildi (2026-11-27, ElevenLabs Creator, ticari lisans). Anlatıcı **Sarah** (`EXAVITQu4vr4xnSDxMaL`, kullanıcı seçimi), model `eleven_v3`, hız 1.0 (B2 başlangıç değeri; anlatım temposu B2 varsayılanı `off`, hedef 145–155 k/dk, §6.5; ölçümden sonra gerekirse `narration.pacing` ayarlanır). Kulaklığın çevirileri aynı anlatıcıyla, hafif mekanik bir tonla okunabilir (katalog notu; ayrı ses yok). Ses **ElevenLabs Creator** (ticari lisans) hesabıyla, önce `tts_book.py` kuru çalışmasıyla karakter ve kredi gösterilip kullanıcı onayı alındıktan sonra üretilecek. Anahtar repo dışında (`ELEVENLABS_API_KEY`). Aşağıdaki tabloya satırları `tts_book.py --execute` ekler.
 
 | Tarih (UTC) | Bölüm | Parça | Ses | Model | Hız | Karakter | Metin sha256 | Dosya |
 |---|---|---|---|---|---|---|---|---|
@@ -127,3 +127,25 @@ Henüz üretilmedi. Anlatıcı **Sarah** (`EXAVITQu4vr4xnSDxMaL`, kullanıcı se
 | 2026-11-03T18:47:01Z | p21 | duyu-1 | - | - | - | 70.36 | - | 145cc4b028678898 |
 | 2026-11-03T18:47:12Z | p22 | alania-v2 | alania2-f1 | alania-v2.1 | 1157 | 74.21 | c017b87c39594a42a3172c73c43008be | 38b479bab680af05 |
 | 2026-11-03T18:47:18Z | p22 | duyu-1 | - | - | - | 74.21 | - | 38b479bab680af05 |
+| 2026-11-27T06:43:10Z | c1 | 1/5 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.0 | 1445 | b67ced07b7bb4f7e | audio/c1.mp3 |
+| 2026-11-27T06:43:36Z | c1 | 2/5 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.0 | 1460 | a1fab421c293cd69 | audio/c1.mp3 |
+| 2026-11-27T06:44:03Z | c1 | 3/5 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.0 | 1352 | 2e0883ffd792575a | audio/c1.mp3 |
+| 2026-11-27T06:44:29Z | c1 | 4/5 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.0 | 1493 | c500cfaa4c34ed08 | audio/c1.mp3 |
+| 2026-11-27T06:44:36Z | c1 | 5/5 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.0 | 265 | 0f6cf0015b7671f9 | audio/c1.mp3 |
+| 2026-11-27T06:45:03Z | c2 | 1/5 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.0 | 1391 | 0cb2feb2fd9271fa | audio/c2.mp3 |
+| 2026-11-27T06:45:27Z | c2 | 2/5 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.0 | 1420 | 2056bc7db12cdfc0 | audio/c2.mp3 |
+| 2026-11-27T06:45:51Z | c2 | 3/5 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.0 | 1355 | 93a272e50510bdc9 | audio/c2.mp3 |
+| 2026-11-27T06:46:17Z | c2 | 4/5 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.0 | 1495 | 4d70860ca6251df6 | audio/c2.mp3 |
+| 2026-11-27T06:46:32Z | c2 | 5/5 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.0 | 847 | a1423e80b35fc07e | audio/c2.mp3 |
+| 2026-11-27T06:46:57Z | c3 | 1/4 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.0 | 1396 | 1fd353915142839a | audio/c3.mp3 |
+| 2026-11-27T06:47:21Z | c3 | 2/4 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.0 | 1374 | 9e40d5ef6b9861c3 | audio/c3.mp3 |
+| 2026-11-27T06:47:42Z | c3 | 3/4 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.0 | 1196 | fa8c35cedacc3ac2 | audio/c3.mp3 |
+| 2026-11-27T06:48:02Z | c3 | 4/4 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.0 | 1240 | eb58ec038b0e454a | audio/c3.mp3 |
+| 2026-11-27T06:48:28Z | c4 | 1/4 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.0 | 1490 | d9693120b1eb0a3c | audio/c4.mp3 |
+| 2026-11-27T06:48:54Z | c4 | 2/4 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.0 | 1229 | e417a678e7534639 | audio/c4.mp3 |
+| 2026-11-27T06:49:19Z | c4 | 3/4 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.0 | 1472 | eeb54c77a411875c | audio/c4.mp3 |
+| 2026-11-27T06:49:39Z | c4 | 4/4 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.0 | 903 | c17e95904c008992 | audio/c4.mp3 |
+| 2026-11-27T06:50:08Z | c5 | 1/4 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.0 | 1287 | 0849037b3fad08ef | audio/c5.mp3 |
+| 2026-11-27T06:50:38Z | c5 | 2/4 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.0 | 1480 | 6489403375bed865 | audio/c5.mp3 |
+| 2026-11-27T06:51:04Z | c5 | 3/4 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.0 | 1323 | 596de8552fd85d31 | audio/c5.mp3 |
+| 2026-11-27T06:51:26Z | c5 | 4/4 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.0 | 886 | ea5eb95254691996 | audio/c5.mp3 |

@@ -54,7 +54,7 @@ x Every day I am walking. | Her gün olan iş için bu zaman.
 ## seeInStory
 Bu zamanı hikâyede ve kitaplarda çok duydun. Şu cümlelere bir daha bak.
 - episode A1-008 | I think it's a recording.
-- book A1-K01 p01 | Lina and her mum live on floor four.
+- book A1-K01 p01 | Lina and Mum live on the fourth floor.
 - book A1-K02 p04 | They drink tea and play a game.
 - book A1-K05 p07 | I make bread.
 

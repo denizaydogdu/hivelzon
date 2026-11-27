@@ -10,6 +10,7 @@ Seviye üstü kelimeler (CEFR-J A1 listesi dışında) ve Türk öğrenci notlar
 | plants | bitkiler | There are many plants and flowers. | A1 dışı (A2). Tekili: plant. |
 | clues | ipuçları | Lina has a notebook. She writes her clues in it. | A1 dışı (A2). Tekili: clue. Bölüm 2'nin başlığı. |
 | locked | kilitli | The door does not open. It is locked. | A1 dışı (A2). lock = kilit, kilitlemek. |
+| fourth | dördüncü | Lina and Mum live on the fourth floor. | A1 dışı (sıra sayısı). Katlar sıra sayısıyla söylenir: ~~floor four~~ → the fourth floor (Türkçedeki "dördüncü kat" gibi). |
 | next to | yanında | It is next to the tomatoes. | A1 dışı (A2). Hep ikisi birlikte: next to. |
 | goes | gidiyor; iniyor | The earth goes down to floor three. | **-s takısı:** he / she / it ile fiile -s ya da -es eklenir: She goes, Lina has, Mum says. Türkçede böyle bir ek olmadığı için sık unutulur: ~~She go~~ → She goes. |
 | beats | atıyor (kalp) | Her heart beats fast. | A1 dışı. beat = (kalp) atmak; he / she / it ile -s alır. ~~Her heart is fast~~ yerine Her heart beats fast. |

@@ -7,7 +7,7 @@
 ### [p01]
 Lina is eleven. Today she has a new home.
 
-It is an old building on a river. It has five floors. Lina and her mum live on floor four.
+It is an old building on a river. It has five floors. Lina and Mum live on the fourth floor.
 
 Lina runs up the steps. Every door has a number.
 
@@ -78,7 +78,7 @@ Lina looks at her hands. They are green!
 
 "Your flower is very dry," says Mrs Ada. "The flower in the red pot."
 
-Lina is surprised. Her flower is on floor four. How does Mrs Ada know?
+Lina is surprised. Her flower is on the fourth floor. How does Mrs Ada know?
 
 ### [p07]
 "Mrs Ada, who lives behind the blue door?" asks Lina.
