@@ -8,6 +8,12 @@
 > 282.922 = **652.461 karakter ≈ 295.000 kredi** → Creator'da yaklaşık 2,5 ay daha. B2 tek başına
 > ≈ 63.000 kredi, bu ayın kalanına sığar. B2/C1/C2 kararı kullanıcıda (H-087 odağı A1–A2; önceki
 > öneri: H-092 pilotundan sonra).
+>
+> **2026-11-27:** Kullanıcı kararıyla B2 kitapları seslendirildi (139.782 karakter) → **sesli kitap 20/30
+> (A1–B2)**; A1-K01 c1+c2 düzeltme sesi 2.667 karakter. Hesap 128.141/131.000 kullanıldı, **kalan 2.859 kredi**
+> (yenilenme 2026-12-26). Defter 2026-11: 289.009 karakter, 667 çağrı; ölçülen ≈ 0,44 kredi/karakter (B2-K01'de
+> deftere girmeden ücretlenen 4 kesik yanıt dahil ≈ 5.300 kredi kayıp, H-119). Kalan yalnız C1 + C2:
+> 229.655 + 282.922 = **512.577 karakter ≈ 227.000 kredi** → Creator'da ~2 ay. Karar kullanıcıda.
 
 > Amaç: H-071…H-073 (kitap) ve H-080…H-082 (dilbilgisi) İngilizce seslerinin
 > ücretsiz katman engeli (`401 detected_unusual_activity`) sonrası nasıl
