@@ -26,6 +26,7 @@ from .align import Alignment, AlignmentMismatch, sentence_timings
 from .cefr import LEVELS, NO_LIST_MSG, coverage, has_extra_list
 from .sentsplit import name_keys
 from .graph import Issue, schema_errors
+from .tts_tr import TrTtsError
 from .lesson import (BLANK, CARD_TYPES, LESSON_FILE, CARDS_FILE, PROMPTS_FILE, REQUIRED_CARDS, REPEATABLE_CARDS,
                      REVIEW_REQUIRED, RIGHTS_FILE, ID_RE, Lesson, LessonError, english_in_turkish, known_lessons,
                      text_sha256, tr_words)
@@ -269,7 +270,12 @@ def _check_audio(lesson: Lesson) -> tuple[list[Issue], dict]:
     issues: list[Issue] = []
     st = {"trSegments": 0, "trAligned": 0, "trAudio": 0, "enSegments": 0, "enAligned": 0, "enAudio": 0}
     cards = {c.id: c for c in lesson.cards}
-    jobs = [("tr", s.id, s.text, cards[s.id[:-3]].sentences, *lesson.tr_paths(s.id)) for s in lesson.tr_segments()]
+    try:
+        tr_segs = lesson.tr_segments()
+    except TrTtsError as e:      # H-118: bozuk söyleniş sözlüğü / parça → hata, lint çökmez
+        issues.append(Issue("error", "lesson-audio", f"Türkçe ses parçaları kurulamadı: {e}"))
+        tr_segs = []
+    jobs = [("tr", s.id, s.text, cards[s.id[:-3]].sentences, *lesson.tr_paths(s.id)) for s in tr_segs]
     jobs += [("en", s.id, s.text, [s.text], *lesson.en_paths(s.id)) for s in lesson.en_segments()]
     for lang, sid, text, sents, mp3, aj in jobs:
         st[f"{lang}Segments"] += 1
@@ -325,6 +331,6 @@ def lint_lesson(lesson_dir: Path, grammar_root: Path | None = None, icerik_root:
     rep.issues += ai
     rep.stats = {"cards": len(lesson.cards), "examples": sum(len(c.right) for c in lesson.cards),
                  "practice": sum(len(c.practice) for c in lesson.cards), "links": len(rep.links),
-                 "narrationChars": sum(len(s.text) for s in lesson.tr_segments()),
+                 "narrationChars": sum(len(c.narration) for c in lesson.cards if c.paragraphs),
                  "exampleChars": sum(len(s.text) for s in lesson.en_segments()), "audio": audio}
     return rep

@@ -118,7 +118,10 @@ def pron_for(text: str, prons: list[dict]) -> list[dict] | None:
 
 def segments(book: Book, voice_map: Path | None = None, pages: list[str] | None = None) -> list[tts_tr.Segment]:
     _, ins, _ = voice_for(book, voice_map)
-    prons = [p for p in narration_tr(book).get("pronunciations") or [] if isinstance(p, dict)]
+    # H-118: söyleniş sözlüğü ve kurulan parçalar tts_tr ile aynı denetimden geçer (bozuk girdi ücretli
+    # çağrıdan önce açık iletiyle durur; önceden sözlük dışı öğe sessizce atlanır, `term` metin değilse çökerdi).
+    prons = tts_tr.check_pronunciations(narration_tr(book).get("pronunciations"), f"{book.id} narrationTr",
+                                        BookTrError)
     out = []
     for pt in page_turkish(book):
         if pages and pt.page not in pages:
@@ -126,7 +129,10 @@ def segments(book: Book, voice_map: Path | None = None, pages: list[str] | None 
         if len(pt.text) > tts_tr.MAX_CHARS:
             raise BookTrError(f"{book.id} {pt.page}: {len(pt.text)} karakter (istek sınırı {tts_tr.MAX_CHARS})")
         out.append(tts_tr.Segment(pt.page, pt.text, ins, pron_for(pt.text, prons)))
-    return out
+    try:
+        return tts_tr.check_segments(out, allow_empty=True)
+    except tts_tr.TrTtsError as e:
+        raise BookTrError(f"{book.id}: {e}") from e
 
 
 def out_dir(book: Book) -> Path:
@@ -183,6 +189,7 @@ def check_book(book: Book, voice_map: Path | None = None) -> tuple[list[Issue], 
     issues: list[Issue] = []
     try:
         voice_for(book, voice_map)
+        segments(book, voice_map)        # H-118: bozuk söyleniş sözlüğü / parça lint hatası olur
     except (BookTrError, OSError, KeyError, ValueError) as e:
         return [Issue("error", "book-tr-audio", str(e))], {}
     pa = page_audio(book, voice_map)

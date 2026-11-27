@@ -98,7 +98,9 @@ class VoiceMap:
                 raise EpisodeTtsError(f"{name}: Türkçe ses Alania olmalı ({r.get('voice')})")
         m = d.get("mixed", {})
         return cls(t["roles"], t.get("model", tts_tr.TTS_MODEL), d["english"], m.get("default", "b"),
-                   float(m.get("gap", 0.15)), list(d.get("pronunciations", [])), p)
+                   float(m.get("gap", 0.15)),
+                   # H-118: bozuk söyleniş sözlüğü ücretli çağrıdan önce açık iletiyle durur
+                   tts_tr.check_pronunciations(d.get("pronunciations"), str(p), EpisodeTtsError), p)
 
     def role(self, name: str) -> dict:
         if name not in self.roles:
@@ -352,7 +354,8 @@ def collect_talk_task(path: Path, doc: dict, icerik_root: Path, vm: VoiceMap) ->
     root = Path(icerik_root)
     out_dir = root / HI_AUDIO_DIR
     tid = str(doc.get("id") or Path(path).stem)
-    task_pron = [p for p in doc.get("pronunciations") or [] if isinstance(p, dict)]
+    # H-118: önceden sözlük dışı öğe sessizce atlanıyordu; artık bozuk sözlük açık hata
+    task_pron = tts_tr.check_pronunciations(doc.get("pronunciations"), f"Konuş {tid}", EpisodeTtsError)
     items = []
     for jpath, f, suffix in talk_spots(doc):
         obj = _at(doc, jpath)
@@ -439,6 +442,7 @@ def _align_key(path: Path) -> str | None:
 def plan_item(it: Item, vm: VoiceMap, force: bool = False, compare: bool = False) -> ItemPlan:
     r = vm.role(it.role)
     voice, ins = r["voice"], r.get("instructions")
+    tts_tr.check_pronunciations(it.pronunciations, it.where, EpisodeTtsError)   # H-118
     ip = ItemPlan(it, "build", "ses yok")
     if it.mode in ("tr", "a"):
         text = it.text
@@ -463,6 +467,13 @@ def plan_item(it: Item, vm: VoiceMap, force: bool = False, compare: bool = False
             text = it.text
             seg = tts_tr.Segment(it.stem, text, ins, vm.pron_for(text, it.pronunciations))
             ip.compare_a = TrPiece(seg, voice, it.out_dir / RAW / VARIANT_A, it.prompts, True)
+    # H-118: kurulan parçalar tts_tr.py girdisiyle aynı denetimden geçer (kimlik, metin, uzunluk, sözlük)
+    try:
+        tts_tr.check_segments([t.seg for t in ip.tr], allow_empty=True)
+        if ip.compare_a:
+            tts_tr.check_segments([ip.compare_a.seg])
+    except tts_tr.TrTtsError as e:
+        raise EpisodeTtsError(f"{it.where}: {e}") from e
     if not force and it.audio().exists() and _align_key(it.align()) == ip.key:
         ip.action, ip.reason = "skip", "ses ve hizalama güncel (anahtar aynı)"
     elif it.align().exists():

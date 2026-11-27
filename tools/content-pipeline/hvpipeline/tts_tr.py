@@ -39,6 +39,7 @@ import time
 import unicodedata
 import uuid
 import wave
+from array import array
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from difflib import SequenceMatcher
@@ -115,6 +116,45 @@ class Segment:
     pronunciations: list[dict] | None = None
 
 
+_PRON_SHAPE = '[{"term": metin, "say_as": metin}, …]'
+
+
+def pron_problem(prons) -> str | None:
+    """Söyleniş sözlüğü biçim hatası (yoksa None). Kural şemalardakiyle aynı (book/lesson/talk-task):
+    liste; her öğe yalnız `term` ve `say_as` anahtarlı sözlük, ikisi de boş olmayan metin (H-118)."""
+    if prons is None:
+        return None
+    if not isinstance(prons, list):
+        return f"liste olmalı ({type(prons).__name__} verildi)"
+    for k, q in enumerate(prons, 1):
+        if not isinstance(q, dict):
+            return f"{k}. öğe sözlük değil ({q!r})"
+        extra = sorted(set(q) - {"term", "say_as"})
+        if extra:
+            return f"{k}. öğede bilinmeyen anahtar: {', '.join(map(str, extra))}"
+        for f in ("term", "say_as"):
+            if not isinstance(q.get(f), str) or not q[f]:
+                return f"{k}. öğede `{f}` boş olmayan metin olmalı ({q.get(f)!r})"
+    return None
+
+
+def check_pronunciations(prons, where: str, exc: type[Exception] | None = None) -> list[dict]:
+    """Söyleniş sözlüğünü denetler (ücretli çağrıdan önce; H-118). None → []. Bozuksa `exc` (varsayılan
+    TrTtsError) açık Türkçe iletiyle; geçerliyse öğelerin kopyası döner."""
+    problem = pron_problem(prons)
+    if problem:
+        raise (exc or TrTtsError)(f"{where}: pronunciations {_PRON_SHAPE} biçiminde olmalı: {problem}")
+    return [dict(q) for q in prons or []]
+
+
+def check_segments(segs: list[Segment], allow_empty: bool = False) -> list[Segment]:
+    """Parça denetimi (kimlik, metin, instructions, pronunciations, uzunluk). `tts_tr.py` girdisi ve
+    kitap/ders/bölüm araçlarının kurduğu parçalar aynı denetimden geçer (H-118)."""
+    if not segs and allow_empty:
+        return segs
+    return _check_segments(segs)
+
+
 def _check_segments(segs: list[Segment]) -> list[Segment]:
     seen: set[str] = set()
     for s in segs:
@@ -127,11 +167,7 @@ def _check_segments(segs: list[Segment]) -> list[Segment]:
             raise TrTtsError(f"{s.id}: metin boş")
         if s.instructions is not None and not isinstance(s.instructions, str):
             raise TrTtsError(f"{s.id}: instructions metin olmalı ({type(s.instructions).__name__} verildi)")
-        if s.pronunciations is not None and not (
-                isinstance(s.pronunciations, list)
-                and all(isinstance(p, dict) and isinstance(p.get("term"), str) and isinstance(p.get("say_as"), str)
-                        for p in s.pronunciations)):
-            raise TrTtsError(f"{s.id}: pronunciations [{{\"term\": metin, \"say_as\": metin}}, …] biçiminde olmalı")
+        check_pronunciations(s.pronunciations, s.id)
         if len(s.text) > MAX_CHARS:
             raise TrTtsError(f"{s.id}: {len(s.text)} karakter (istek sınırı {MAX_CHARS}); parçayı böl")
         if s.instructions and len(s.instructions) > MAX_INSTRUCTIONS:
@@ -258,43 +294,140 @@ _GAP = -0.45
 _PAIR_BIAS = -0.30
 
 
+# Geri izleme adım kodları (`_dp_align`): 0 = yok; 1 = 1:1, 2 = 2:1, 3 = 1:2, 4 = özgün atla, 5 = Duyu atla.
+_STEPS = ((0, 0), (1, 1), (2, 1), (1, 2), (1, 0), (0, 1))
+
+
 def _dp_align(orig: list[str], heard: list[str]) -> list[tuple[list[int], list[int], float]]:
     """Dizi hizalama (Needleman–Wunsch türevi). Adımlar: 1:1, 2:1, 1:2, özgün atla, Duyu atla.
-    Dönüş: (özgün indeksleri, Duyu indeksleri, benzerlik) grupları, sırayla."""
+    Dönüş: (özgün indeksleri, Duyu indeksleri, benzerlik) grupları, sırayla.
+
+    H-118: sonuç önceki sürümle birebir aynıdır (adım sırası, `>` eşitlik kuralı ve kayan nokta işlemleri
+    korunur); yalnız maliyet düştü:
+    - `fold()` her kelime ve komşu çift için bir kez hesaplanır (önceden hücre başına 6 kez);
+    - `SequenceMatcher` oranı aynı (fa, fb) çifti için bir kez hesaplanır (1:1 için yoğun `array` tablosu);
+    - 2:1 ve 1:2 adımları benzerlik `FUZZY_OK` altındaysa zaten seçilemez (kazanç -inf); bu durum önce
+      `real_quick_ratio()`/`quick_ratio()` üst sınırıyla elenir (`ratio() ≤ quick_ratio() ≤ real_quick_ratio()`);
+    - geri izleme satır başına `bytearray` adım kodu + `array('d')` benzerlik; `best` yalnız canlı 3 satır."""
     n, m = len(orig), len(heard)
     NEG = float("-inf")
-    best = [[NEG] * (m + 1) for _ in range(n + 1)]
-    back: list[list[tuple | None]] = [[None] * (m + 1) for _ in range(n + 1)]
+    fo = [fold(w) for w in orig]
+    fh = [fold(w) for w in heard]
+    o2 = [orig[i] + orig[i + 1] for i in range(n - 1)]
+    h2 = [heard[j] + heard[j + 1] for j in range(m - 1)]
+    fo2 = [fold(w) for w in o2]
+    fh2 = [fold(w) for w in h2]
+    ratios: dict[tuple[str, str], float] = {}   # 2:1 / 1:2 çiftleri (azdır: çoğu uzunluk sınırında elenir)
+    # 1:1 oranları: benzersiz katlanmış kelime kimlikleri üzerinden yoğun tablo (-1 = henüz hesaplanmadı).
+    uo: dict[str, int] = {}
+    uh: dict[str, int] = {}
+    io = [uo.setdefault(w, len(uo)) for w in fo]
+    ih = [uh.setdefault(w, len(uh)) for w in fh]
+    nuh = len(uh)
+    table = array("d", [-1.0]) * (len(uo) * nuh)
+
+    def sim_1(i: int, j: int) -> float:                     # = sim(orig[i], heard[j])
+        if orig[i] == heard[j]:
+            return 1.0
+        fa, fb = fo[i], fh[j]
+        if not fa or not fb:
+            return 0.0
+        if fa == fb:
+            return 0.95
+        k = io[i] * nuh + ih[j]
+        r = table[k]
+        if r < 0.0:
+            r = table[k] = SequenceMatcher(None, fa, fb).ratio()
+        return r
+
+    def sim_gate(a: str, b: str, fa: str, fb: str) -> float | None:   # sim(a, b) ≥ FUZZY_OK ise değeri, yoksa None
+        if a == b:
+            return 1.0
+        if not fa or not fb:
+            return None
+        if fa == fb:
+            return 0.95 if 0.95 >= FUZZY_OK else None
+        r = ratios.get((fa, fb))
+        if r is None:
+            la, lb = len(fa), len(fb)
+            if 2.0 * min(la, lb) / (la + lb) < FUZZY_OK:        # real_quick_ratio (ratio için üst sınır)
+                return None
+            sm = SequenceMatcher(None, fa, fb)
+            if sm.quick_ratio() < FUZZY_OK:
+                return None
+            r = ratios[(fa, fb)] = sm.ratio()
+        return r if r >= FUZZY_OK else None
+
+    best: dict[int, list[float]] = {0: [NEG] * (m + 1)}
     best[0][0] = 0.0
+    codes = [bytearray(m + 1) for _ in range(n + 1)]
+    sims = [array("d", [0.0]) * (m + 1) for _ in range(n + 1)]
+
+    def row(k: int) -> list[float]:
+        r = best.get(k)
+        if r is None:
+            r = best[k] = [NEG] * (m + 1)
+        return r
+
     for i in range(n + 1):
+        b0 = row(i)
+        b1 = row(i + 1) if i < n else None
+        b2 = row(i + 2) if i + 1 < n else None
+        c0, s0 = codes[i], sims[i]
+        if b1 is not None:
+            c1, s1 = codes[i + 1], sims[i + 1]
+        if b2 is not None:
+            c2, s2 = codes[i + 2], sims[i + 2]
+        a, fa = (orig[i], fo[i]) if i < n else ("", "")
+        if i + 1 < n:
+            a2, fa2 = o2[i], fo2[i]
         for j in range(m + 1):
-            cur = best[i][j]
+            cur = b0[j]
             if cur == NEG:
                 continue
-            steps = []
+            # Adım sırası önceki sürümle aynı: 1:1, 2:1, 1:2, özgün atla, Duyu atla (eşitlikte ilk gelen kalır).
             if i < n and j < m:
-                s = sim(orig[i], heard[j])
-                steps.append((1, 1, s + _PAIR_BIAS, s))
+                s = sim_1(i, j)
+                v = cur + (s + _PAIR_BIAS)
+                if v > b1[j + 1]:
+                    b1[j + 1] = v
+                    c1[j + 1] = 1
+                    s1[j + 1] = s
             if i + 1 < n and j < m:
-                s = sim(orig[i] + orig[i + 1], heard[j])
-                steps.append((2, 1, s + 2 * _PAIR_BIAS - 0.05 if s >= FUZZY_OK else NEG, s))
+                s = sim_gate(a2, heard[j], fa2, fh[j])
+                if s is not None:
+                    v = cur + (s + 2 * _PAIR_BIAS - 0.05)   # önceki ifadeyle aynı sıra (kayan nokta)
+                    if v > b2[j + 1]:
+                        b2[j + 1] = v
+                        c2[j + 1] = 2
+                        s2[j + 1] = s
             if i < n and j + 1 < m:
-                s = sim(orig[i], heard[j] + heard[j + 1])
-                steps.append((1, 2, s + 2 * _PAIR_BIAS - 0.05 if s >= FUZZY_OK else NEG, s))
+                s = sim_gate(a, h2[j], fa, fh2[j])
+                if s is not None:
+                    v = cur + (s + 2 * _PAIR_BIAS - 0.05)   # önceki ifadeyle aynı sıra (kayan nokta)
+                    if v > b1[j + 2]:
+                        b1[j + 2] = v
+                        c1[j + 2] = 3
+                        s1[j + 2] = s
             if i < n:
-                steps.append((1, 0, _GAP, 0.0))
+                v = cur + _GAP
+                if v > b1[j]:
+                    b1[j] = v
+                    c1[j] = 4
+                    s1[j] = 0.0
             if j < m:
-                steps.append((0, 1, _GAP, 0.0))
-            for di, dj, gain, s in steps:
-                v = cur + gain
-                if v > best[i + di][j + dj]:
-                    best[i + di][j + dj] = v
-                    back[i + di][j + dj] = (i, j, s)
+                v = cur + _GAP
+                if v > b0[j + 1]:
+                    b0[j + 1] = v
+                    c0[j + 1] = 5
+                    s0[j + 1] = 0.0
+        del best[i]
     out = []
     i, j = n, m
     while (i, j) != (0, 0):
-        pi, pj, s = back[i][j]
-        out.append((list(range(pi, i)), list(range(pj, j)), s))
+        di, dj = _STEPS[codes[i][j]]
+        pi, pj = i - di, j - dj
+        out.append((list(range(pi, i)), list(range(pj, j)), sims[i][j]))
         i, j = pi, pj
     out.reverse()
     return out

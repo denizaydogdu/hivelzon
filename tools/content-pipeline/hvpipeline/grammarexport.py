@@ -24,6 +24,7 @@ from .build import TOOL_ID, file_digest
 from .graph import schema_errors
 from .lesson import Lesson, LessonError, text_sha256
 from .storylinks import StoryIndex
+from .tts_tr import TrTtsError
 
 PACKAGE_SCHEMA_VERSION = 1
 AUDIO_EXT = ".m4a"
@@ -193,7 +194,12 @@ def export_lesson(lesson_dir: Path, media=None, icerik_root: Path | None = None,
         (pkg / name).write_text(json.dumps(doc, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
 
     files = sorted(p for p in pkg.rglob("*") if p.is_file() and p.name != "manifest.json")
-    seg_text = {s.id: s.text for s in lesson.tr_segments()} | {s.id: s.text for s in lesson.en_segments()}
+    try:
+        tr_text = {s.id: s.text for s in lesson.tr_segments()}
+    except TrTtsError as e:     # H-118: bozuk söyleniş sözlüğü / parça → paket hatası, dışa aktarma çökmez
+        errors.append(f"Türkçe ses parçaları kurulamadı: {e}")
+        tr_text = {c.tr_segment_id: c.narration for c in lesson.cards if c.paragraphs}
+    seg_text = tr_text | {s.id: s.text for s in lesson.en_segments()}
     manifest = {
         "schemaVersion": 1,
         "contentId": lesson.id,

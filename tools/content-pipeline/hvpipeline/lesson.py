@@ -375,7 +375,11 @@ class Lesson:
 
     @property
     def pronunciations(self) -> list[dict]:
-        return list(self.meta.get("pronunciations") or [])
+        """Söyleniş sözlüğü. Biçimi bozuksa boş liste (lint ve uyarılar çökmesin); seslendirmede
+        `tr_segments` bozuk sözlüğü hata olarak durdurur (H-118)."""
+        from .tts_tr import pron_problem
+        raw = self.meta.get("pronunciations")
+        return [] if pron_problem(raw) else [dict(p) for p in raw or []]
 
     def tr_voice(self) -> dict:
         n = dict((self.meta.get("narration") or {}).get("tr") or {})
@@ -395,16 +399,19 @@ class Lesson:
     # --- ses parçaları ---
     def tr_segments(self):
         """Türkçe anlatım parçaları (kart başına bir parça): tts_tr.Segment listesi."""
-        from .tts_tr import Segment
+        from .tts_tr import Segment, check_pronunciations, check_segments
         ins = self.tr_voice().get("instructions")
+        # H-118: sözlük ve parçalar tts_tr ile aynı denetimden geçer; bozuk girdi ücretli çağrıdan önce
+        # TrTtsError ile durur (önceden `say_as`'sız öğe API'ye gidebiliyor, sözlük dışı öğe çöküyordu).
+        prons = check_pronunciations(self.meta.get("pronunciations"), f"{self.id} lesson.json")
         out = []
         for c in self.cards:
             if not c.paragraphs:
                 continue
             low = c.narration.lower()
-            pr = [p for p in self.pronunciations if str(p.get("term", "")).lower() in low] or None
+            pr = [p for p in prons if p["term"].lower() in low] or None
             out.append(Segment(c.tr_segment_id, c.narration, ins, pr))
-        return out
+        return check_segments(out, allow_empty=True)
 
     def en_segments(self) -> list[EnSegment]:
         """İngilizce parçalar: her doğru örnek (+) ve her "Söyle" alıştırması."""

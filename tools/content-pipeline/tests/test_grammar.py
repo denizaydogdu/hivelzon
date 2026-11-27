@@ -671,3 +671,14 @@ def test_dev_server_indexes_include_grammar_topics(tmp_path):
     assert serve.discover_books(tmp_path / "kitaplar")["A1-K99"]["grammarTopics"] == [LESSON_ID]
     pk = serve.discover_packages(tmp_path / "icerik")
     assert pk["A1-901"]["grammarTopics"] == [LESSON_ID] and "grammarTopics" not in pk["A1-902"]
+
+
+def test_export_reports_bad_pronunciations_without_crashing(lesson_dir):
+    # H-118: bozuk söyleniş sözlüğü dışa aktarmayı traceback'le durdurmaz, paket hatası olur
+    lj = lesson_dir / "lesson.json"
+    doc = json.loads(lj.read_text(encoding="utf-8"))
+    doc["pronunciations"] = [{"term": "Ece"}]
+    lj.write_text(json.dumps(doc, ensure_ascii=False), encoding="utf-8")
+    r = export_lesson(lesson_dir, media=FakeMedia(), **ROOTS)
+    assert any("Türkçe ses parçaları kurulamadı" in e for e in r.errors)
+    assert "c02-tr" in r.manifest["textSha256"]
