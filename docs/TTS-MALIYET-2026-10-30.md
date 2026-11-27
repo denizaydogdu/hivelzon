@@ -14,6 +14,11 @@
 > (yenilenme 2026-12-26). Defter 2026-11: 289.009 karakter, 667 çağrı; ölçülen ≈ 0,44 kredi/karakter (B2-K01'de
 > deftere girmeden ücretlenen 4 kesik yanıt dahil ≈ 5.300 kredi kayıp, H-119). Kalan yalnız C1 + C2:
 > 229.655 + 282.922 = **512.577 karakter ≈ 227.000 kredi** → Creator'da ~2 ay. Karar kullanıcıda.
+>
+> **2026-11-27 (akşam):** C1/C2 sesleri **H-120** olarak planlandı (`yapilacaklar/H-120-c1-c2-kitap-ingilizce-sesleri.md`).
+> Güncel kuru çalışma: C1 229.489 + C2 282.698 = **512.187 karakter** → C1 ≈ 101.000, C2 ≈ 124.400 kredi. İkisi bir
+> döneme sığmaz: **Aralık dönemi (2026-12-26 sonrası) C1, Ocak dönemi C2**; kullanıcı "devam" deyince, her koşudan önce
+> abonelik okuması + kuru çalışma + `--monthly-char-cap`.
 
 > Amaç: H-071…H-073 (kitap) ve H-080…H-082 (dilbilgisi) İngilizce seslerinin
 > ücretsiz katman engeli (`401 detected_unusual_activity`) sonrası nasıl

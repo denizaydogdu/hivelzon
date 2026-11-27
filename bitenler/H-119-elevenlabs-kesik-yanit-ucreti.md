@@ -1,6 +1,6 @@
 # H-119: ElevenLabs kesik yanıtlarının ücreti deftere yazılmıyordu
 
-- **Durum:** ✅ Bitti (2026-11-27): araç düzeltmesi ve testler çalışma ağacında; content-pipeline pytest tamamı geçti. **Commit yok, kullanıcı onayı bekliyor.**
+- **Durum:** ✅ Bitti (2026-11-27): commit `d4d6d76` (belgeler `0dce295`), CI **`45964721594` yeşil** (mobil, içerik, backend); content-pipeline pytest 540 geçti.
 - **Tür:** Araç düzeltmesi (`tools/content-pipeline`), harcama kaydı
 - **Öncelik:** Yüksek (ücretli harcama kaydı ve aylık tavan doğruluğu)
 - **Bağımlılık:** H-114 ("çağrı döndü = ödendi" kuralı yalnız dönen çağrıları kapsıyordu)

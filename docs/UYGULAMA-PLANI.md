@@ -1,6 +1,8 @@
 # hiVelzon: Faz 1 (MVP) uygulama planı (H-025)
 
-**Sürüm:** 0.2 · **Tarih:** 2026-10-11 (durum güncellemesi 2026-11-20) · **Durum:** Onaylandı (2026-10-11); uygulama sürüyor.
+**Sürüm:** 0.2 · **Tarih:** 2026-10-11 (durum güncellemesi 2026-11-27) · **Durum:** Onaylandı (2026-10-11); uygulama sürüyor.
+
+**2026-11-27 notu:** İngilizce sesler ElevenLabs Creator ile: dilbilgisi örnekleri 71/71, sesli kitap 20/30 (A1–B2), A1-K01 "the fourth floor" düzeltildi; H-119 (kesik yanıt ücreti deftere) bitti. `main` `0dce295`, CI `45964721594` yeşil. Açık: **H-120** C1/C2 kitap sesleri (Aralık C1, Ocak C2; kullanıcı "devam" deyince), H-116, H-118, H-109. Sıradaki boş numara H-121; güncel izleme `yapilacaklar/IS-SIRASI.md`.
 
 **2026-11-25 notu:** Bakım turu bitti (`main`, CI `45685003221` yeşil): H-110…H-115 ve H-117. Mobil artık Flutter 3.50.1 (FVM, `fvm flutter …`), drift 2.35.4/sqlite3 3.9.2, material_ui + go_router 18; iOS en düşük 15.0. Açık: H-116 (Duyu tavanı, karar), H-118 (küçük). Sıradaki boş numara H-119; güncel izleme `yapilacaklar/IS-SIRASI.md`.
 
@@ -110,7 +112,7 @@ A1–C2, seviye başına 5 kitap, toplam 30. Kararlar: önce 2 pilot kitap, Elev
 | **K3** | **H-068** Arka planda dinleme | just_audio + audio_service, kilit ekranı | 🔄 (kilit ekranı gerçek iPhone'da) |
 | **K4** | **H-069** Pilot A1 + A2 | ≈ 15 kr görsel, ücretsiz TTS kotası; sonra yoğunluk kararı | ✅ |
 | **K5** | **H-070** Arka uç | BOOK türü, C2, içe aktarma, onay | ✅ |
-| **K6–K8** | **H-071…H-073** Kitap dalgaları | A1–A2 (8), B1–B2 (10), C1–C2 (10) | 🔄 (30 kitap yazıldı ve tam resimli; sesli 6/30: A1-K01…K05, A2-K03) |
+| **K6–K8** | **H-071…H-073** Kitap dalgaları | A1–A2 (8), B1–B2 (10), C1–C2 (10) | 🔄 (30 kitap yazıldı ve tam resimli; sesli 20/30: A1–B2, 2026-11-27; C1/C2 sesi H-120; kalan editör kontrolü) |
 
 **Durum simgeleri:** ✅ bitti · 🔄 sürüyor · ⏳ sırada. Ayrıntılı durum ve günlük: `yapilacaklar/IS-SIRASI.md`.
 

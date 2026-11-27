@@ -1,5 +1,7 @@
 # Öğretmen / editör inceleme paketi
 
+> **2026-11-27 güncellemesi:** İngilizce sesler ElevenLabs Creator ile ilerledi: dilbilgisi örnekleri **71/71**, sesli kitap **20/30** (A1–B2); A1-K01 "the fourth floor" düzeltmesi yapıldı (§7/2). Kalan yalnız C1/C2 kitap sesleri (**H-120**, kullanıcı "devam" deyince). Lint: kitap 30 kitap 0 hata/157 uyarı, dilbilgisi 71 ders 0 hata/7 uyarı (`0dce295`, CI `45964721594` yeşil).
+
 > **2026-11-20 güncellemesi (H-107):** B5–B12 İngilizce ses hesabı/planı ve Higgsfield Terms of Use §4.4 (resmî 2026-10-23 sürümü) bölüm hak dosyalarına işlendi (`ce0bfb7`, `6e885b9`). Bu kayıtlar editör onayı yerine geçmez; bölüm `content.json` durumları DRAFT/PENDING olarak kalır. Dört lint 0 hata; bölüm 30, kitap 205, dilbilgisi 606, reel 6 uyarı. Aşağıdaki 2026-10/11 sayımlarının tarihi tarihsel ölçümdür.
 
 > **Durum:** Hazır, editör bekliyor (2026-10-30; güncelleme 2026-11-03: Octanove C1/C2 ve Alania Türkçe sesleri, `d2d81c0`; 2026-11-04: 30 kitabın Türkçe sayfa sesleri tamam, `fd56543`). Depo `e22e5d2` üzerinde sayıldı.
@@ -196,31 +198,31 @@ Her föyde önce **kontrol maddeleri**, sonra **öğe tablosu** var. Tabloda kut
 | A1-K03 *The Red Kite* | `kitaplar/A1-K03-the-red-kite/` | ~815 | ☐ Onay ☐ Düzeltme | — |
 | A1-K04 *Pip Cannot Sleep* | `kitaplar/A1-K04-pip-cannot-sleep/` | ~864 | ☐ Onay ☐ Düzeltme | — |
 | A1-K05 *The Window Across* | `kitaplar/A1-K05-the-window-across/` | ~834 | ☐ Onay ☐ Düzeltme | — |
-| A2-K01 *The Lemon Cake Mystery* | `kitaplar/A2-K01-the-lemon-cake-mystery/` | ~1.633 | ☐ Onay ☐ Düzeltme | EN ses yok |
-| A2-K02 *Into the Fog* | `kitaplar/A2-K02-into-the-fog/` | ~1.626 | ☐ Onay ☐ Düzeltme | EN ses yok |
+| A2-K01 *The Lemon Cake Mystery* | `kitaplar/A2-K01-the-lemon-cake-mystery/` | ~1.633 | ☐ Onay ☐ Düzeltme | — (EN ses 2026-11-26) |
+| A2-K02 *Into the Fog* | `kitaplar/A2-K02-into-the-fog/` | ~1.626 | ☐ Onay ☐ Düzeltme | — (EN ses 2026-11-26) |
 | A2-K03 *The Parrot Who Told Everything* | `kitaplar/A2-K03-the-parrot-who-told-everything/` | ~1.495 | ☐ Onay ☐ Düzeltme | — |
-| A2-K04 *The Girl Who Never Saw Rain* | `kitaplar/A2-K04-the-girl-who-never-saw-rain/` | ~1.615 | ☐ Onay ☐ Düzeltme | EN ses yok |
-| A2-K05 *Good Morning. Wrong Number* | `kitaplar/A2-K05-good-morning-wrong-number/` | ~1.573 | ☐ Onay ☐ Düzeltme | EN ses yok |
-| B1-K01 *The Backwards Clock* | `kitaplar/B1-K01-the-backwards-clock/` | ~3.227 | ☐ Onay ☐ Düzeltme | EN ses yok |
-| B1-K02 *Where Is Pamuk?* | `kitaplar/B1-K02-where-is-pamuk/` | ~3.280 | ☐ Onay ☐ Düzeltme | EN ses yok |
-| B1-K03 *The Accidental Chef* | `kitaplar/B1-K03-the-accidental-chef/` | ~3.048 | ☐ Onay ☐ Düzeltme | EN ses yok |
-| B1-K04 *The Library of Lost Things* | `kitaplar/B1-K04-the-library-of-lost-things/` | ~3.345 | ☐ Onay ☐ Düzeltme | EN ses yok |
-| B1-K05 *Second Violin* | `kitaplar/B1-K05-second-violin/` | ~3.100 | ☐ Onay ☐ Düzeltme | EN ses yok |
-| B2-K01 *Two Signatures* | `kitaplar/B2-K01-two-signatures/` | ~5.399 | ☐ Onay ☐ Düzeltme | EN ses yok |
-| B2-K02 *The Singing Hill* | `kitaplar/B2-K02-the-singing-hill/` | ~5.424 | ☐ Onay ☐ Düzeltme | EN ses yok |
-| B2-K03 *Please Don't Translate That* | `kitaplar/B2-K03-please-dont-translate-that/` | ~5.285 | ☐ Onay ☐ Düzeltme | EN ses yok |
-| B2-K04 *The Last Gardener on Mars* | `kitaplar/B2-K04-the-last-gardener-on-mars/` | ~5.429 | ☐ Onay ☐ Düzeltme | EN ses yok |
-| B2-K05 *What My Brother Didn't Say* | `kitaplar/B2-K05-what-my-brother-didnt-say/` | ~5.125 | ☐ Onay ☐ Düzeltme | EN ses yok |
-| C1-K01 *The Ninth Plate* | `kitaplar/C1-K01-the-ninth-plate/` | ~8.597 | ☐ Onay ☐ Düzeltme | EN ses yok, kapsama %98,8 |
-| C1-K02 *Eleven Bridges* | `kitaplar/C1-K02-eleven-bridges/` | ~8.729 | ☐ Onay ☐ Düzeltme | EN ses yok, kapsama %98,0 |
-| C1-K03 *The Anniversary Committee* | `kitaplar/C1-K03-the-anniversary-committee/` | ~8.739 | ☐ Onay ☐ Düzeltme | EN ses yok, kapsama %98,7 |
-| C1-K04 *The Lake That Remembered Tomorrow* | `kitaplar/C1-K04-the-lake-that-remembered-tomorrow/` | ~8.654 | ☐ Onay ☐ Düzeltme | EN ses yok, kapsama %99,0 |
-| C1-K05 *Held in Trust* | `kitaplar/C1-K05-held-in-trust/` | ~8.730 | ☐ Onay ☐ Düzeltme | EN ses yok, kapsama %98,5 (yeni özel adlar: English, Turkish, England) |
-| C2-K01 *The Missing Entries* | `kitaplar/C2-K01-the-missing-entries/` | ~10.922 | ☐ Onay ☐ Düzeltme | EN ses yok, kapsama %98,3 |
-| C2-K02 *The Town That Wasn't There* | `kitaplar/C2-K02-the-town-that-wasnt-there/` | ~10.994 | ☐ Onay ☐ Düzeltme | EN ses yok, kapsama %98,0 |
-| C2-K03 *A Strongly Worded Letter* | `kitaplar/C2-K03-a-strongly-worded-letter/` | ~10.957 | ☐ Onay ☐ Düzeltme | EN ses yok, kapsama %98,3 |
-| C2-K04 *The Word Meter* | `kitaplar/C2-K04-the-word-meter/` | ~10.367 | ☐ Onay ☐ Düzeltme | EN ses yok, kapsama %98,3 |
-| C2-K05 *The Other Half of the Sentence* | `kitaplar/C2-K05-the-other-half-of-the-sentence/` | ~10.112 | ☐ Onay ☐ Düzeltme | EN ses yok, kapsama %98,4 (yeni özel adlar: English, Turkish, Turk) |
+| A2-K04 *The Girl Who Never Saw Rain* | `kitaplar/A2-K04-the-girl-who-never-saw-rain/` | ~1.615 | ☐ Onay ☐ Düzeltme | — (EN ses 2026-11-26) |
+| A2-K05 *Good Morning. Wrong Number* | `kitaplar/A2-K05-good-morning-wrong-number/` | ~1.573 | ☐ Onay ☐ Düzeltme | — (EN ses 2026-11-26) |
+| B1-K01 *The Backwards Clock* | `kitaplar/B1-K01-the-backwards-clock/` | ~3.227 | ☐ Onay ☐ Düzeltme | — (EN ses 2026-11-26) |
+| B1-K02 *Where Is Pamuk?* | `kitaplar/B1-K02-where-is-pamuk/` | ~3.280 | ☐ Onay ☐ Düzeltme | — (EN ses 2026-11-26) |
+| B1-K03 *The Accidental Chef* | `kitaplar/B1-K03-the-accidental-chef/` | ~3.048 | ☐ Onay ☐ Düzeltme | — (EN ses 2026-11-26) |
+| B1-K04 *The Library of Lost Things* | `kitaplar/B1-K04-the-library-of-lost-things/` | ~3.345 | ☐ Onay ☐ Düzeltme | — (EN ses 2026-11-26) |
+| B1-K05 *Second Violin* | `kitaplar/B1-K05-second-violin/` | ~3.100 | ☐ Onay ☐ Düzeltme | — (EN ses 2026-11-26) |
+| B2-K01 *Two Signatures* | `kitaplar/B2-K01-two-signatures/` | ~5.399 | ☐ Onay ☐ Düzeltme | — (EN ses 2026-11-27) |
+| B2-K02 *The Singing Hill* | `kitaplar/B2-K02-the-singing-hill/` | ~5.424 | ☐ Onay ☐ Düzeltme | — (EN ses 2026-11-27) |
+| B2-K03 *Please Don't Translate That* | `kitaplar/B2-K03-please-dont-translate-that/` | ~5.285 | ☐ Onay ☐ Düzeltme | — (EN ses 2026-11-27) |
+| B2-K04 *The Last Gardener on Mars* | `kitaplar/B2-K04-the-last-gardener-on-mars/` | ~5.429 | ☐ Onay ☐ Düzeltme | — (EN ses 2026-11-27) |
+| B2-K05 *What My Brother Didn't Say* | `kitaplar/B2-K05-what-my-brother-didnt-say/` | ~5.125 | ☐ Onay ☐ Düzeltme | — (EN ses 2026-11-27) |
+| C1-K01 *The Ninth Plate* | `kitaplar/C1-K01-the-ninth-plate/` | ~8.597 | ☐ Onay ☐ Düzeltme | EN ses yok (H-120), kapsama %98,8 |
+| C1-K02 *Eleven Bridges* | `kitaplar/C1-K02-eleven-bridges/` | ~8.729 | ☐ Onay ☐ Düzeltme | EN ses yok (H-120), kapsama %98,0 |
+| C1-K03 *The Anniversary Committee* | `kitaplar/C1-K03-the-anniversary-committee/` | ~8.739 | ☐ Onay ☐ Düzeltme | EN ses yok (H-120), kapsama %98,7 |
+| C1-K04 *The Lake That Remembered Tomorrow* | `kitaplar/C1-K04-the-lake-that-remembered-tomorrow/` | ~8.654 | ☐ Onay ☐ Düzeltme | EN ses yok (H-120), kapsama %99,0 |
+| C1-K05 *Held in Trust* | `kitaplar/C1-K05-held-in-trust/` | ~8.730 | ☐ Onay ☐ Düzeltme | EN ses yok (H-120), kapsama %98,5 (yeni özel adlar: English, Turkish, England) |
+| C2-K01 *The Missing Entries* | `kitaplar/C2-K01-the-missing-entries/` | ~10.922 | ☐ Onay ☐ Düzeltme | EN ses yok (H-120), kapsama %98,3 |
+| C2-K02 *The Town That Wasn't There* | `kitaplar/C2-K02-the-town-that-wasnt-there/` | ~10.994 | ☐ Onay ☐ Düzeltme | EN ses yok (H-120), kapsama %98,0 |
+| C2-K03 *A Strongly Worded Letter* | `kitaplar/C2-K03-a-strongly-worded-letter/` | ~10.957 | ☐ Onay ☐ Düzeltme | EN ses yok (H-120), kapsama %98,3 |
+| C2-K04 *The Word Meter* | `kitaplar/C2-K04-the-word-meter/` | ~10.367 | ☐ Onay ☐ Düzeltme | EN ses yok (H-120), kapsama %98,3 |
+| C2-K05 *The Other Half of the Sentence* | `kitaplar/C2-K05-the-other-half-of-the-sentence/` | ~10.112 | ☐ Onay ☐ Düzeltme | EN ses yok (H-120), kapsama %98,4 (yeni özel adlar: English, Turkish, Turk) |
 
 ---
 
@@ -404,9 +406,10 @@ Kapsam dışı bir şey görürseniz (yeni özellik, ekran önerisi) föyün son
 
 Bunlar **inceleme engeli değildir.** Editör bilsin diye yazıldı.
 
-1. **Eksik İngilizce sesler.** 2026-10-30'da ikinci ücretsiz ElevenLabs anahtarıyla 9.977 karakter üretildi, kota bitti; diğer iki anahtar `401 detected_unusual_activity` verdi (`docs/HANDOFF-2026-10-30.md` §2.2, §2.4). Eksik sesler metinden incelenir.
+1. **Eksik İngilizce sesler.** 2026-10-30'da ikinci ücretsiz ElevenLabs anahtarıyla 9.977 karakter üretildi, kota bitti; diğer iki anahtar `401 detected_unusual_activity` verdi (`docs/HANDOFF-2026-10-30.md` §2.2, §2.4). 2026-11-26/27'de ElevenLabs Creator planıyla dilbilgisi ve A2–B2 kitapları tamamlandı. Eksik sesler (yalnız C1/C2 kitapları) metinden incelenir.
    - Kitaplar: 30 kitabın 20'si sesli (A1–B2, bütün bölümleri; A2-K01/K02/K04/K05 ve B1 2026-11-26'da, B2 2026-11-27'de ElevenLabs Creator ile). C1 ve C2'nin 10 kitabında ses yok.
-   - Dilbilgisi: 36 dersin İngilizce örnek sesi eksik ya da kısmi (B1 10, B2 12, C1 8, C2 6; G-B1-01 kısmi). A1'in 16 ve A2'nin 15 dersi tam (2026-10-30). Türkçe anlatım sesleri hepsinde hazır.
+   - Dilbilgisi: 71 dersin hepsinde İngilizce örnek sesi tam (A1/A2 2026-10-30, kalan 40 ders 2026-11-26 ElevenLabs Creator ile). Türkçe anlatım sesleri hepsinde hazır.
+   - C1/C2 kitap sesleri **H-120** olarak planlandı (`yapilacaklar/H-120-c1-c2-kitap-ingilizce-sesleri.md`; C1 Aralık, C2 Ocak dönemi; kullanıcı "devam" deyince).
 2. **A1-K01 *The Blue Door*:** "Her heart is fast." → "Her heart beats fast." düzeltmesi 2026-10-30'da c3 sesiyle birlikte yapıldı. "floor four" → "the fourth floor" düzeltmesi 2026-11-27'de c1+c2 sesiyle birlikte yapıldı: p01 "Lina and Mum live on the fourth floor." (8 sözcük), p06 "Her flower is on the fourth floor.", anlama sorusu seçeneği "At Lina's door on the fourth floor", sözlüğe `fourth`; Türkçe "dördüncü katta" değişmedi. Editör bu iki cümleyi değerlendirir.
 3. **Bölüm `rights-and-review.md` dosyaları 2026-10-30'da eklendi** (`icerik/A1-000`…`A1-012`, 13 dosya; K-01). Depodaki kayıtlardan derlendi: kaynaklar, AI açıklaması, güvenlik notu, §7.2 kontrol listesi (hiçbir madde işaretli değil) ve onay geçmişi. Bölümlerin `content.json` dosyasında hâlâ `status: DRAFT`, `humanReviewed: false`, `rightsStatus: PENDING`; editör onayı **bekliyor**. 2026-11-20'de iki açık nokta kayda geçirildi: **B5–B12 İngilizce ses hesapları** (B5: hesap3 + hesap1/videoGenerator; B6–B12: hesap4; hepsi ücretsiz plan; kaynak `devam-edenler/H-085-bolum-5-12-uretimi.md` ve `kitaplar/_maliyet/` defterleri) ve **Higgsfield ticari kullanım koşulu** (Terms of Use §4.4: çıktıların ticari kullanımı kısıtlanmıyor, ayrı ticari lisans yok; 2026-11-20'de doğrulandı). Dosyalarda editörün kendi kontrolünü bekleyen maddeler sürüyor (marka/kişi benzerliği/yaş uygunluğu); bunlar editör onayıyla işaretlenir.
 4. **Kitap onay geçmişi tabloları 2026-10-30'da güncellendi.** 30 kitabın hepsinde metin ve çeviri onayı `ceviri.tr.json` `APPROVED` kaydına göre "Onaylandı", görseller `PROMPTS.md` üretim kayıtlarına göre "Üretildi" (GPT Image 2.5, 2026-10-14) yazıyor; ses satırı 20 sesli kitapta (A1–B2) "Üretildi" (2026-11-27 güncellemesi), C1/C2'nin 10 kitabında "Bekliyor". Editör toplu kontrolü bütün kitaplarda **bekliyor**. Not: sesli 4 kitabın (A1-K02…K05) `PROMPTS.md` ses bölümü başlığındaki eski "Henüz üretilmedi" cümlesi 2026-11-20'de düzeltildi; başlıklar artık "Üretildi" diyor. Sesli kitapların hesap kayıtları (ücretsiz anahtarlar) `rights-and-review.md` tablolarına işlendi (A1-K01…K05, A2-K03).
