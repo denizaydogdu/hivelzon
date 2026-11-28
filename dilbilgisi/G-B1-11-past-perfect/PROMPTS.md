@@ -44,3 +44,33 @@ Aşağıdaki satırları `tts_lesson.py` yazar.
 | 2026-11-26T14:01:16Z | c04-ex5 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.0 | 33 | d8662be4cce2b2fd | audio/en/c04-ex5.mp3 |
 | 2026-11-26T14:01:18Z | c05-ex1 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.0 | 35 | baf7989b1034ef05 | audio/en/c05-ex1.mp3 |
 | 2026-11-26T14:01:19Z | c05-ex2 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.0 | 16 | 87edb17ac6f41ec2 | audio/en/c05-ex2.mp3 |
+| 2026-11-27T18:26:24Z | c06-q1-fb | alania-v2 | alania2-f1 | alania-v2.1 | 27 | 2.08 | 979d96e512be41a98c18ffc773dd6ff8 | b7f7ea98c11b8b61 |
+| 2026-11-27T18:26:25Z | c06-q1-fb | duyu-1 | - | - | - | 2.08 | - | b7f7ea98c11b8b61 |
+| 2026-11-27T18:26:27Z | c06-q2-fb | alania-v2 | alania2-f1 | alania-v2.1 | 40 | 2.88 | 7075cec757dd4e478a98e1b80bf3742f | 6ba94966b08dd54e |
+| 2026-11-27T18:26:28Z | c06-q2-fb | duyu-1 | - | - | - | 2.88 | - | 6ba94966b08dd54e |
+| 2026-11-27T18:26:30Z | c06-q3-fb | alania-v2 | alania2-f1 | alania-v2.1 | 40 | 3.2 | bead7a84118c459fb527e32221fdd077 | 4ba45cf14bdc9d67 |
+| 2026-11-27T18:26:31Z | c06-q3-fb | duyu-1 | - | - | - | 3.2 | - | 4ba45cf14bdc9d67 |
+| 2026-11-27T18:26:34Z | c06-q4-fb | alania-v2 | alania2-f1 | alania-v2.1 | 31 | 4.96 | b7107e7658924221b0ed55dfede93d7c | 5076892ba2a41c0a |
+| 2026-11-27T18:26:35Z | c06-q4-fb | duyu-1 | - | - | - | 4.96 | - | 5076892ba2a41c0a |
+| 2026-11-27T19:24:50Z | c01-ex1-tl | alania-v2 | alania2-f1 | alania-v2.1 | 42 | 2.56 | 4ba3984d964840a3a992f24a3bcac73b | 4d6e1118cee55dba |
+| 2026-11-27T19:24:51Z | c01-ex1-tl | duyu-1 | - | - | - | 2.56 | - | 4d6e1118cee55dba |
+| 2026-11-27T19:24:54Z | c02-ex1-tl | alania-v2 | alania2-f1 | alania-v2.1 | 38 | 3.04 | 66a3126c1a4a4840a5d9e9c4ce1c3567 | 95bcc3f89df394a4 |
+| 2026-11-27T19:24:55Z | c02-ex1-tl | duyu-1 | - | - | - | 3.04 | - | 95bcc3f89df394a4 |
+| 2026-11-27T19:24:57Z | c03-ex1-tl | alania-v2 | alania2-f1 | alania-v2.1 | 29 | 2.4 | 73f56578bd2c43cbbf5b5d3b8e5960dc | ee09ec3e015ed858 |
+| 2026-11-27T19:24:59Z | c03-ex1-tl | duyu-1 | - | - | - | 2.4 | - | ee09ec3e015ed858 |
+| 2026-11-27T19:25:01Z | c03-ex2-tl | alania-v2 | alania2-f1 | alania-v2.1 | 45 | 2.88 | d7882319d69e47fa89888ce6c34b6851 | ec290ee92eca7362 |
+| 2026-11-27T19:25:02Z | c03-ex2-tl | duyu-1 | - | - | - | 2.88 | - | ec290ee92eca7362 |
+| 2026-11-27T19:25:04Z | c04-ex1-tl | alania-v2 | alania2-f1 | alania-v2.1 | 35 | 2.56 | eb5033025d5349cebd273a7961f73381 | 46cafa446af1e9d8 |
+| 2026-11-27T19:25:05Z | c04-ex1-tl | duyu-1 | - | - | - | 2.56 | - | 46cafa446af1e9d8 |
+| 2026-11-27T19:25:07Z | c04-ex2-tl | alania-v2 | alania2-f1 | alania-v2.1 | 38 | 2.56 | fc5c28d9dcd14882b1bf2df603fef5fd | d4ab8bbf223e9459 |
+| 2026-11-27T19:25:08Z | c04-ex2-tl | duyu-1 | - | - | - | 2.56 | - | d4ab8bbf223e9459 |
+| 2026-11-27T19:25:10Z | c04-ex3-tl | alania-v2 | alania2-f1 | alania-v2.1 | 41 | 3.36 | b02f3a8d4f0148dbaa4c3d3370528312 | c2d9d82d6dbca195 |
+| 2026-11-27T19:25:11Z | c04-ex3-tl | duyu-1 | - | - | - | 3.36 | - | c2d9d82d6dbca195 |
+| 2026-11-27T19:25:13Z | c04-ex4-tl | alania-v2 | alania2-f1 | alania-v2.1 | 35 | 2.56 | b5270fbb270748e089f277bfdaf8372f | 1cbe35bab19fb0e0 |
+| 2026-11-27T19:25:14Z | c04-ex4-tl | duyu-1 | - | - | - | 2.56 | - | 1cbe35bab19fb0e0 |
+| 2026-11-27T19:25:16Z | c04-ex5-tl | alania-v2 | alania2-f1 | alania-v2.1 | 37 | 2.56 | 9d7269dd61274ecebb7be7906ec78a13 | d42d57e849aff624 |
+| 2026-11-27T19:25:17Z | c04-ex5-tl | duyu-1 | - | - | - | 2.56 | - | d42d57e849aff624 |
+| 2026-11-27T19:25:20Z | c05-ex1-tl | alania-v2 | alania2-f1 | alania-v2.1 | 30 | 4.0 | a8536ebf34cb446bac6602bf821d7930 | b81cff46b6eac9bc |
+| 2026-11-27T19:25:21Z | c05-ex1-tl | duyu-1 | - | - | - | 4.0 | - | b81cff46b6eac9bc |
+| 2026-11-27T19:25:23Z | c05-ex2-tl | alania-v2 | alania2-f1 | alania-v2.1 | 14 | 1.28 | f4be907a695749b1928145086577c789 | 5cd2bbb8eaa016d3 |
+| 2026-11-27T19:25:24Z | c05-ex2-tl | duyu-1 | - | - | - | 1.28 | - | 5cd2bbb8eaa016d3 |

@@ -23,6 +23,7 @@
     {"term": "Do you want", "say_as": "Du yu vant"},
     {"term": "No, thank you", "say_as": "Nou, tenk yu"}
   ],
+  "translationPronunciations": [{"term": "Alex", "say_as": "Aleks"}],
   "turns": [
     {
       "id": "t1",

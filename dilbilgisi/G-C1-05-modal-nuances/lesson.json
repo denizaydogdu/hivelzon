@@ -22,6 +22,19 @@
       "C1-K01"
     ]
   },
+  "feedbackPronunciations": [
+    { "term": "needn't", "say_as": "niidınt" },
+    { "term": "have", "say_as": "hev" },
+    { "term": "got", "say_as": "gat" },
+    { "term": "up", "say_as": "ap" },
+    { "term": "should", "say_as": "şud" },
+    { "term": "told", "say_as": "tould" },
+    { "term": "be", "say_as": "bi" },
+    { "term": "supposed", "say_as": "sıpouzd" },
+    { "term": "to", "say_as": "tu" },
+    { "term": "I'd", "say_as": "ayd" },
+    { "term": "rather", "say_as": "redır" }
+  ],
   "narration": {
     "tr": {
       "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"

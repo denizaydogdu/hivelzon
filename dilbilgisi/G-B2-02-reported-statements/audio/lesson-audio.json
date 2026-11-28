@@ -55,6 +55,30 @@
      "present": true,
      "duration": 1.36,
      "quality": null
+    },
+    {
+     "id": "c01-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Annem soğuk olduğunu söyledi.",
+     "textSha256": "e481130181cf82b85701ac7973e67126282f2e93c030ae67880cc551de504716",
+     "chars": 29,
+     "audio": "tr/c01-ex1-tl.mp3",
+     "align": "tr/c01-ex1-tl.align.json",
+     "present": true,
+     "duration": 2.08,
+     "quality": {
+      "words": 4,
+      "exact": 4,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -124,6 +148,78 @@
      "present": true,
      "duration": 1.76,
      "quality": null
+    },
+    {
+     "id": "c02-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "\"Yorgunum,\" dedi.",
+     "textSha256": "5b1c2ccc9e61aa0f504602032166fa51182148f5fbca6b4ac4275c5306fb77a5",
+     "chars": 17,
+     "audio": "tr/c02-ex1-tl.mp3",
+     "align": "tr/c02-ex1-tl.align.json",
+     "present": true,
+     "duration": 1.6,
+     "quality": {
+      "words": 2,
+      "exact": 2,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c02-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Yorgun olduğunu söyledi.",
+     "textSha256": "4f07fdc8c46320316db18998a8057e0e10479a98942e9a21533dd1c0fda9f44d",
+     "chars": 24,
+     "audio": "tr/c02-ex2-tl.mp3",
+     "align": "tr/c02-ex2-tl.align.json",
+     "present": true,
+     "duration": 1.76,
+     "quality": {
+      "words": 3,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c02-ex3-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Ertesi gün geleceğini söyledi.",
+     "textSha256": "f9e9ce0b8860b170a2a9fdc9062aeb82e61b17a89d64c4592e6ca48d1145f192",
+     "chars": 30,
+     "audio": "tr/c02-ex3-tl.mp3",
+     "align": "tr/c02-ex3-tl.align.json",
+     "present": true,
+     "duration": 2.08,
+     "quality": {
+      "words": 4,
+      "exact": 4,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -180,6 +276,54 @@
      "present": true,
      "duration": 1.84,
      "quality": null
+    },
+    {
+     "id": "c03-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Sonra arayacağını söyledi.",
+     "textSha256": "092bf81631a3697e1d12c6808377016aee3c00396678fc8a69315c2a66bb5293",
+     "chars": 26,
+     "audio": "tr/c03-ex1-tl.mp3",
+     "align": "tr/c03-ex1-tl.align.json",
+     "present": true,
+     "duration": 1.76,
+     "quality": {
+      "words": 3,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Anahtarlarını kaybettiğini söyledi.",
+     "textSha256": "10c6e446def8079c489f77c59976b2160e6444a8a5a103c69797d10e6e984069",
+     "chars": 35,
+     "audio": "tr/c03-ex2-tl.mp3",
+     "align": "tr/c03-ex2-tl.align.json",
+     "present": true,
+     "duration": 2.24,
+     "quality": {
+      "words": 3,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -236,6 +380,54 @@
      "present": true,
      "duration": 1.76,
      "quality": null
+    },
+    {
+     "id": "c04-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Aç olduğunu söyledi.",
+     "textSha256": "16a36efe2c0c29ae9aa348b956a2d2270c683a388c3a16a432a0c2e371607170",
+     "chars": 20,
+     "audio": "tr/c04-ex1-tl.mp3",
+     "align": "tr/c04-ex1-tl.align.json",
+     "present": true,
+     "duration": 1.44,
+     "quality": {
+      "words": 3,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c04-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Bana aç olduğunu söyledi.",
+     "textSha256": "bf97c6ddac54da13fa9217b99b123b4ae256e817a8aa08aaca546cad45f42905",
+     "chars": 25,
+     "audio": "tr/c04-ex2-tl.mp3",
+     "align": "tr/c04-ex2-tl.align.json",
+     "present": true,
+     "duration": 1.6,
+     "quality": {
+      "words": 4,
+      "exact": 4,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -307,6 +499,126 @@
      "present": true,
      "duration": 1.68,
      "quality": null
+    },
+    {
+     "id": "c05-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Ali Ankara'da yaşadığını söyledi.",
+     "textSha256": "d6292d9dd672d15c155dfd7b92df43d433b3069bf3cae3cd858b2f81cc36f970",
+     "chars": 33,
+     "audio": "tr/c05-ex1-tl.mp3",
+     "align": "tr/c05-ex1-tl.align.json",
+     "present": true,
+     "duration": 3.36,
+     "quality": {
+      "words": 4,
+      "exact": 4,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Öğretmenim bana iyi gittiğimi söyledi.",
+     "textSha256": "60998b1d7d7c3f2ff697dffa3fc17d36ed394686ff1d402c63c8b6e8cc0e1f68",
+     "chars": 38,
+     "audio": "tr/c05-ex2-tl.mp3",
+     "align": "tr/c05-ex2-tl.align.json",
+     "present": true,
+     "duration": 2.4,
+     "quality": {
+      "words": 5,
+      "exact": 5,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex3-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Bize yardım edeceklerini söylediler.",
+     "textSha256": "29b2c45e42877d0a67564cf1ccb0ff3d85a3eeaf86f93317bea1b458f11ece14",
+     "chars": 36,
+     "audio": "tr/c05-ex3-tl.mp3",
+     "align": "tr/c05-ex3-tl.align.json",
+     "present": true,
+     "duration": 2.24,
+     "quality": {
+      "words": 4,
+      "exact": 4,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex4-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Bize filmi gördüğünü söyledi.",
+     "textSha256": "e68aaec5df1f3a2d7ea829ded4395e26bdf78ce70616cffb71711f2c173d343a",
+     "chars": 29,
+     "audio": "tr/c05-ex4-tl.mp3",
+     "align": "tr/c05-ex4-tl.align.json",
+     "present": true,
+     "duration": 2.88,
+     "quality": {
+      "words": 4,
+      "exact": 4,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 1,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex5-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Dükkânın kapalı olduğunu söyledi.",
+     "textSha256": "96f32966e84771b462585ae09a2ec5f677e563ecfabebd75e734787433499258",
+     "chars": 33,
+     "audio": "tr/c05-ex5-tl.mp3",
+     "align": "tr/c05-ex5-tl.align.json",
+     "present": true,
+     "duration": 4.8,
+     "quality": {
+      "words": 4,
+      "exact": 3,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 2,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -363,6 +675,54 @@
      "present": true,
      "duration": 1.68,
      "quality": null
+    },
+    {
+     "id": "c06-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Bana yorgun olduğunu söyledi.",
+     "textSha256": "e7286a70163b9888183d360bd3e0c5cada3264bd65aea60dcad3c5bb75dd6cca",
+     "chars": 29,
+     "audio": "tr/c06-ex1-tl.mp3",
+     "align": "tr/c06-ex1-tl.align.json",
+     "present": true,
+     "duration": 1.92,
+     "quality": {
+      "words": 4,
+      "exact": 4,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c06-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Meşgul olduğunu söyledi.",
+     "textSha256": "2b57d1c6071397e33506de070e18a416e99b1fd0a90b026e3175c3e7a2459be0",
+     "chars": 24,
+     "audio": "tr/c06-ex2-tl.mp3",
+     "align": "tr/c06-ex2-tl.align.json",
+     "present": true,
+     "duration": 1.76,
+     "quality": {
+      "words": 3,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -382,6 +742,113 @@
      "present": true,
      "duration": 1.2,
      "quality": null
+    },
+    {
+     "id": "c07-q1-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Kişi (me) varsa told gelir.",
+     "textSha256": "672ec2d49fc2e96c2ca0e40db39c001f168e4767c9fdd8162ac749325edccb48",
+     "chars": 27,
+     "audio": "tr/c07-q1-fb.mp3",
+     "align": "tr/c07-q1-fb.align.json",
+     "present": true,
+     "duration": 2.4,
+     "quality": {
+      "words": 5,
+      "exact": 3,
+      "fuzzy": 1,
+      "weak": 1,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 1,
+      "score": 0.8,
+      "ok": false,
+      "warnings": [
+       "iyi eşleşen kelime oranı düşük: %80 (alt sınır %85)",
+       "zayıf/eksik: me→mi"
+      ]
+     }
+    },
+    {
+     "id": "c07-q2-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Aktarmada geniş zaman bir adım geri kayar: is, was olur.",
+     "textSha256": "463308d9f11f2519d033e8df9296336f11d4835753087039a537f55f81b474fb",
+     "chars": 56,
+     "audio": "tr/c07-q2-fb.mp3",
+     "align": "tr/c07-q2-fb.align.json",
+     "present": true,
+     "duration": 4.0,
+     "quality": {
+      "words": 10,
+      "exact": 8,
+      "fuzzy": 0,
+      "weak": 2,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 2,
+      "score": 0.8,
+      "ok": false,
+      "warnings": [
+       "iyi eşleşen kelime oranı düşük: %80 (alt sınır %85)",
+       "art arda 2 kelime zayıf ya da eksik eşleşti",
+       "zayıf/eksik: is→iz, was→vaz"
+      ]
+     }
+    },
+    {
+     "id": "c07-q3-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Aktarmada will, would olur.",
+     "textSha256": "831e9e2e4028c29d2f70d4f228e13a5242515926db07615192734aac23ab0e31",
+     "chars": 27,
+     "audio": "tr/c07-q3-fb.mp3",
+     "align": "tr/c07-q3-fb.align.json",
+     "present": true,
+     "duration": 2.24,
+     "quality": {
+      "words": 4,
+      "exact": 2,
+      "fuzzy": 0,
+      "weak": 2,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 2,
+      "score": 0.5,
+      "ok": false,
+      "warnings": [
+       "iyi eşleşen kelime oranı düşük: %50 (alt sınır %85)",
+       "art arda 2 kelime zayıf ya da eksik eşleşti",
+       "zayıf/eksik: will→bil,, would→vood"
+      ]
+     }
+    },
+    {
+     "id": "c07-q4-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Önce söyleyen, sonra told ve kime söylendiği gelir.",
+     "textSha256": "01fdf9e1a1c004a895c1b5127f85ccd4c26d329be94781c8f7952e43f40e429c",
+     "chars": 51,
+     "audio": "tr/c07-q4-fb.mp3",
+     "align": "tr/c07-q4-fb.align.json",
+     "present": true,
+     "duration": 3.04,
+     "quality": {
+      "words": 8,
+      "exact": 7,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },

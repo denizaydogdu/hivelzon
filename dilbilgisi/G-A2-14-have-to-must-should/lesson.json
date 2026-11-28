@@ -25,6 +25,15 @@
     "Paloma",
     "Jonas"
   ],
+  "feedbackPronunciations": [
+    { "term": "don't", "say_as": "dount" },
+    { "term": "have", "say_as": "hev" },
+    { "term": "to", "say_as": "tu" },
+    { "term": "mustn't", "say_as": "masınt" },
+    { "term": "Should", "say_as": "Şud" },
+    { "term": "he", "say_as": "hi" },
+    { "term": "has", "say_as": "hez" }
+  ],
   "narration": {
     "tr": {
       "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"

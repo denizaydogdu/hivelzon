@@ -32,6 +32,14 @@
       "say_as": "ing"
     }
   ],
+  "feedbackPronunciations": [
+    { "term": "Want", "say_as": "Vant" },
+    { "term": "to", "say_as": "tu" },
+    { "term": "Like", "say_as": "Layk" },
+    { "term": "Would", "say_as": "Vud" },
+    { "term": "like", "say_as": "layk" },
+    { "term": "Try", "say_as": "Tray" }
+  ],
   "narration": {
     "tr": {
       "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"

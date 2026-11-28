@@ -35,6 +35,15 @@
       "say_as": "est"
     }
   ],
+  "feedbackPronunciations": [
+    { "term": "the", "say_as": "dı" },
+    { "term": "bright", "say_as": "brayt" },
+    { "term": "brightest", "say_as": "braytıst" },
+    { "term": "world", "say_as": "vörld" },
+    { "term": "Busy", "say_as": "Bizi" },
+    { "term": "Good", "say_as": "Gud" },
+    { "term": "best", "say_as": "best" }
+  ],
   "narration": {
     "tr": {
       "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"

@@ -25,6 +25,15 @@
   "properNouns": [
     "Erzurum"
   ],
+  "feedbackPronunciations": [
+    { "term": "had", "say_as": "hed" },
+    { "term": "left", "say_as": "left" },
+    { "term": "hadn't", "say_as": "hedınt" },
+    { "term": "eaten", "say_as": "iitın" },
+    { "term": "never", "say_as": "nevır" },
+    { "term": "seen", "say_as": "siin" },
+    { "term": "already", "say_as": "olredi" }
+  ],
   "narration": {
     "tr": {
       "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"

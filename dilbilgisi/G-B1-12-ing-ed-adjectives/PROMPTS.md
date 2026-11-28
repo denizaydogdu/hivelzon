@@ -47,3 +47,35 @@ Aşağıdaki satırları `tts_lesson.py` yazar.
 | 2026-10-30T13:37:08Z | c04-ex5 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.0 | 31 | c122b9e2f7f880a3 | audio/en/c04-ex5.mp3 |
 | 2026-10-30T13:37:09Z | c05-ex2 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.0 | 24 | b06b2db64f301257 | audio/en/c05-ex2.mp3 |
 | 2026-10-30T13:37:10Z | c08-ex1 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.0 | 38 | 31b4ded8f028ed4b | audio/en/c08-ex1.mp3 |
+| 2026-11-27T18:26:37Z | c06-q1-fb | alania-v2 | alania2-f1 | alania-v2.1 | 27 | 2.56 | 31a05a7ab82a41e6b352ca6725b72db9 | 0ce6d13e27b3fd93 |
+| 2026-11-27T18:26:38Z | c06-q1-fb | duyu-1 | - | - | - | 2.56 | - | 0ce6d13e27b3fd93 |
+| 2026-11-27T18:26:40Z | c06-q2-fb | alania-v2 | alania2-f1 | alania-v2.1 | 28 | 2.88 | 19cade95c4fc41d088b716771036b0fa | cb81bb367549ec33 |
+| 2026-11-27T18:26:41Z | c06-q2-fb | duyu-1 | - | - | - | 2.88 | - | cb81bb367549ec33 |
+| 2026-11-27T18:26:44Z | c06-q3-fb | alania-v2 | alania2-f1 | alania-v2.1 | 30 | 3.68 | 93111b7b98cc44bca0b19dc6a50c3089 | 7e2068bcc162e87d |
+| 2026-11-27T18:26:45Z | c06-q3-fb | duyu-1 | - | - | - | 3.68 | - | 7e2068bcc162e87d |
+| 2026-11-27T18:26:47Z | c06-q4-fb | alania-v2 | alania2-f1 | alania-v2.1 | 27 | 2.4 | 4f6e0da700784630a71eb005b0144511 | e04542c8eee991eb |
+| 2026-11-27T18:26:48Z | c06-q4-fb | duyu-1 | - | - | - | 2.4 | - | e04542c8eee991eb |
+| 2026-11-27T19:25:26Z | c01-ex1-tl | alania-v2 | alania2-f1 | alania-v2.1 | 41 | 4.32 | 20b949ff791c44a382fb9e836c49a70a | ea7caa6c5720ae55 |
+| 2026-11-27T19:25:27Z | c01-ex1-tl | duyu-1 | - | - | - | 4.32 | - | ea7caa6c5720ae55 |
+| 2026-11-27T19:25:29Z | c02-ex1-tl | alania-v2 | alania2-f1 | alania-v2.1 | 9 | 1.76 | 8f0284c941b14fe48648e80976a0e8c1 | 86ec414261159a20 |
+| 2026-11-27T19:25:30Z | c02-ex1-tl | duyu-1 | - | - | - | 1.76 | - | 86ec414261159a20 |
+| 2026-11-27T19:25:32Z | c02-ex2-tl | alania-v2 | alania2-f1 | alania-v2.1 | 12 | 1.28 | 2c91fc58f4a647b8ba4ec4060775f4f0 | 120fcb2b46a7d553 |
+| 2026-11-27T19:25:33Z | c02-ex2-tl | duyu-1 | - | - | - | 1.28 | - | 120fcb2b46a7d553 |
+| 2026-11-27T19:25:35Z | c03-ex1-tl | alania-v2 | alania2-f1 | alania-v2.1 | 14 | 1.28 | e3a35302a3954f31b337ea774708cc12 | 46a1375fb8a8b0f0 |
+| 2026-11-27T19:25:36Z | c03-ex1-tl | duyu-1 | - | - | - | 1.28 | - | 46a1375fb8a8b0f0 |
+| 2026-11-27T19:25:38Z | c03-ex2-tl | alania-v2 | alania2-f1 | alania-v2.1 | 22 | 1.6 | a7907be3db7c477e8ed3f878860a6c3d | 927ced711bdd87b0 |
+| 2026-11-27T19:25:39Z | c03-ex2-tl | duyu-1 | - | - | - | 1.6 | - | 927ced711bdd87b0 |
+| 2026-11-27T19:25:41Z | c04-ex1-tl | alania-v2 | alania2-f1 | alania-v2.1 | 35 | 2.56 | f0c7ba0130b1493fbb2ee278ffcc3d47 | 4c98cc17e55f3b15 |
+| 2026-11-27T19:25:42Z | c04-ex1-tl | duyu-1 | - | - | - | 2.56 | - | 4c98cc17e55f3b15 |
+| 2026-11-27T19:25:44Z | c04-ex2-tl | alania-v2 | alania2-f1 | alania-v2.1 | 22 | 1.44 | 3c3e79b4c82046229f42a0f336ce8404 | 91120776eaf18962 |
+| 2026-11-27T19:25:45Z | c04-ex2-tl | duyu-1 | - | - | - | 1.44 | - | 91120776eaf18962 |
+| 2026-11-27T19:25:47Z | c04-ex3-tl | alania-v2 | alania2-f1 | alania-v2.1 | 19 | 1.6 | dd6b7c0fb41f48ff874dc218d362f96e | f95d48168b9e97ea |
+| 2026-11-27T19:25:48Z | c04-ex3-tl | duyu-1 | - | - | - | 1.6 | - | f95d48168b9e97ea |
+| 2026-11-27T19:25:50Z | c04-ex4-tl | alania-v2 | alania2-f1 | alania-v2.1 | 34 | 2.24 | 81003b657b214f8da851f626e6a1b49f | 2a4516f293a1b843 |
+| 2026-11-27T19:25:51Z | c04-ex4-tl | duyu-1 | - | - | - | 2.24 | - | 2a4516f293a1b843 |
+| 2026-11-27T19:25:53Z | c04-ex5-tl | alania-v2 | alania2-f1 | alania-v2.1 | 26 | 1.92 | 417529176bc1430eadf6420f4119d665 | eccc0ff99501dc2e |
+| 2026-11-27T19:25:54Z | c04-ex5-tl | duyu-1 | - | - | - | 1.92 | - | eccc0ff99501dc2e |
+| 2026-11-27T19:25:56Z | c05-ex2-tl | alania-v2 | alania2-f1 | alania-v2.1 | 22 | 1.6 | 2cbf828909f44a4ca7d4ae97ccea17f3 | 50096eb1bce60521 |
+| 2026-11-27T19:25:57Z | c05-ex2-tl | duyu-1 | - | - | - | 1.6 | - | 50096eb1bce60521 |
+| 2026-11-27T19:25:59Z | c08-ex1-tl | alania-v2 | alania2-f1 | alania-v2.1 | 35 | 2.72 | d2d339490eed413f9c12712f392d133b | b51a11d6b7780fda |
+| 2026-11-27T19:26:00Z | c08-ex1-tl | duyu-1 | - | - | - | 2.72 | - | b51a11d6b7780fda |

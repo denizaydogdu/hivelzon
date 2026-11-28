@@ -55,6 +55,33 @@
      "present": true,
      "duration": 1.6,
      "quality": null
+    },
+    {
+     "id": "c01-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Cuma günü, saat yedide.",
+     "textSha256": "5c33e1323a9d713a02e6e3c4e434260317ac8c064082ff790d97199b520608f1",
+     "chars": 23,
+     "audio": "tr/c01-ex1-tl.mp3",
+     "align": "tr/c01-ex1-tl.align.json",
+     "present": true,
+     "duration": 2.4,
+     "quality": {
+      "words": 4,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 1,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 1,
+      "score": 0.75,
+      "ok": false,
+      "warnings": [
+       "iyi eşleşen kelime oranı düşük: %75 (alt sınır %85)",
+       "zayıf/eksik: Cuma→Mua"
+      ]
+     }
     }
    ]
   },
@@ -124,6 +151,78 @@
      "present": true,
      "duration": 1.28,
      "quality": null
+    },
+    {
+     "id": "c02-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Dersim saat dokuzda başlar.",
+     "textSha256": "bf561bbc15194288b294e7686512db505ad1c885d45f3ca679a61ca5169772fd",
+     "chars": 27,
+     "audio": "tr/c02-ex1-tl.mp3",
+     "align": "tr/c02-ex1-tl.align.json",
+     "present": true,
+     "duration": 2.4,
+     "quality": {
+      "words": 4,
+      "exact": 3,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c02-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Cumartesi günü futbol oynarız.",
+     "textSha256": "706357d3b1f690a810dbd093d3f38321152f926513c85f1e9e490c6f61528d90",
+     "chars": 30,
+     "audio": "tr/c02-ex2-tl.mp3",
+     "align": "tr/c02-ex2-tl.align.json",
+     "present": true,
+     "duration": 2.56,
+     "quality": {
+      "words": 4,
+      "exact": 4,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c02-ex3-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Akşamları kitap okurum.",
+     "textSha256": "98ee4863230a854ba8af841ab5bdc34d08039ce07b8d851ec557c9d8b49b85c3",
+     "chars": 23,
+     "audio": "tr/c02-ex3-tl.mp3",
+     "align": "tr/c02-ex3-tl.align.json",
+     "present": true,
+     "duration": 3.04,
+     "quality": {
+      "words": 3,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 1,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -167,6 +266,30 @@
      "present": true,
      "duration": 1.28,
      "quality": null
+    },
+    {
+     "id": "c03-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Geceleri uyurum.",
+     "textSha256": "5fa9ecfe0256810a4f56eb53872b72318ff407aa5e55b5cd325ee59532beb343",
+     "chars": 16,
+     "audio": "tr/c03-ex1-tl.mp3",
+     "align": "tr/c03-ex1-tl.align.json",
+     "present": true,
+     "duration": 1.28,
+     "quality": {
+      "words": 2,
+      "exact": 2,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -210,6 +333,30 @@
      "present": true,
      "duration": 2.8,
      "quality": null
+    },
+    {
+     "id": "c04-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Saat kaç? Saat yedi.",
+     "textSha256": "30e94ee2ed7d8211b871027b6b02177ebd44304a31e41618baaa80e9f02a097f",
+     "chars": 20,
+     "audio": "tr/c04-ex1-tl.mp3",
+     "align": "tr/c04-ex1-tl.align.json",
+     "present": true,
+     "duration": 2.56,
+     "quality": {
+      "words": 4,
+      "exact": 4,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -281,6 +428,126 @@
      "present": true,
      "duration": 2.0,
      "quality": null
+    },
+    {
+     "id": "c05-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Dükkân saat dokuzda açılır.",
+     "textSha256": "962e96848f8ce0f2def9617aa5ec013d41e8b6a5f33c8fe987f139d80065b7da",
+     "chars": 27,
+     "audio": "tr/c05-ex1-tl.mp3",
+     "align": "tr/c05-ex1-tl.align.json",
+     "present": true,
+     "duration": 1.92,
+     "quality": {
+      "words": 4,
+      "exact": 3,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Pazartesi görüşürüz!",
+     "textSha256": "2e7dcc63fb999f0c2dbf3b94d275fb244b7da8331e3eb17fb752d1bc25f41c28",
+     "chars": 20,
+     "audio": "tr/c05-ex2-tl.mp3",
+     "align": "tr/c05-ex2-tl.align.json",
+     "present": true,
+     "duration": 1.6,
+     "quality": {
+      "words": 2,
+      "exact": 2,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex3-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Sabahları çay içerim.",
+     "textSha256": "1906975f5506ff822223da1b35f3b11e8fca1a587565f2dbc69cacf7556fe9b9",
+     "chars": 21,
+     "audio": "tr/c05-ex3-tl.mp3",
+     "align": "tr/c05-ex3-tl.align.json",
+     "present": true,
+     "duration": 1.6,
+     "quality": {
+      "words": 3,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex4-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Ders saat sekizde.",
+     "textSha256": "2cf5a57bb6d72d8cf263a3d639885426601b6a761d3491a78024123844379442",
+     "chars": 18,
+     "audio": "tr/c05-ex4-tl.mp3",
+     "align": "tr/c05-ex4-tl.align.json",
+     "present": true,
+     "duration": 1.6,
+     "quality": {
+      "words": 3,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex5-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Cuma günleri İngilizce dersimiz var.",
+     "textSha256": "3358e81d5ec694d352115a79c5ff6e8a79aa993af3175db8f9a6cfe51294cb48",
+     "chars": 36,
+     "audio": "tr/c05-ex5-tl.mp3",
+     "align": "tr/c05-ex5-tl.align.json",
+     "present": true,
+     "duration": 2.24,
+     "quality": {
+      "words": 5,
+      "exact": 5,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -337,6 +604,54 @@
      "present": true,
      "duration": 2.0,
      "quality": null
+    },
+    {
+     "id": "c06-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Saat yedi.",
+     "textSha256": "97723f868655f3a3ff9e1a53ab545bd83cbbc57b6a9b779873d7e3ed85f87ab3",
+     "chars": 10,
+     "audio": "tr/c06-ex1-tl.mp3",
+     "align": "tr/c06-ex1-tl.align.json",
+     "present": true,
+     "duration": 1.44,
+     "quality": {
+      "words": 2,
+      "exact": 2,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c06-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "cuma günü",
+     "textSha256": "3d679a6eb5a908a649700a25b3575b6eb77bac94fd38589122d42e41a9f0508c",
+     "chars": 9,
+     "audio": "tr/c06-ex2-tl.mp3",
+     "align": "tr/c06-ex2-tl.align.json",
+     "present": true,
+     "duration": 1.12,
+     "quality": {
+      "words": 2,
+      "exact": 2,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -356,6 +671,132 @@
      "present": true,
      "duration": 1.44,
      "quality": null
+    },
+    {
+     "id": "c07-q1-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Saat için at gelir.",
+     "textSha256": "9ab8e83b6d4c1d9a8fa3443dd7c6e7215b89a0c03a66d939257bf401b3d63b89",
+     "chars": 19,
+     "audio": "tr/c07-q1-fb.mp3",
+     "align": "tr/c07-q1-fb.align.json",
+     "present": true,
+     "duration": 1.76,
+     "quality": {
+      "words": 4,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 1,
+      "missing": 0,
+      "extraHeard": 1,
+      "worstRun": 1,
+      "score": 0.75,
+      "ok": false,
+      "warnings": [
+       "iyi eşleşen kelime oranı düşük: %75 (alt sınır %85)",
+       "zayıf/eksik: at→et"
+      ]
+     }
+    },
+    {
+     "id": "c07-q2-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Gün için on gelir.",
+     "textSha256": "8f696bab30f88d9e27ebcd5659792ed7f053368003296e63844464bc9c07e68e",
+     "chars": 18,
+     "audio": "tr/c07-q2-fb.mp3",
+     "align": "tr/c07-q2-fb.align.json",
+     "present": true,
+     "duration": 1.28,
+     "quality": {
+      "words": 4,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 1,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 1,
+      "score": 0.75,
+      "ok": false,
+      "warnings": [
+       "iyi eşleşen kelime oranı düşük: %75 (alt sınır %85)",
+       "zayıf/eksik: on→an"
+      ]
+     }
+    },
+    {
+     "id": "c07-q3-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Sabah ve akşam için in gelir.",
+     "textSha256": "d0e6683422781efde9d73b8b2f52282e0166d8828c4049a407958bdda464d4c1",
+     "chars": 29,
+     "audio": "tr/c07-q3-fb.mp3",
+     "align": "tr/c07-q3-fb.align.json",
+     "present": true,
+     "duration": 2.56,
+     "quality": {
+      "words": 6,
+      "exact": 6,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c07-q4-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Saati söylerken başa it's gelir.",
+     "textSha256": "0a1be3cea39364ac6602029494ad00bab65ee26b7fc562835345ce3849acce11",
+     "chars": 32,
+     "audio": "tr/c07-q4-fb.mp3",
+     "align": "tr/c07-q4-fb.align.json",
+     "present": true,
+     "duration": 2.4,
+     "quality": {
+      "words": 5,
+      "exact": 4,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c07-q5-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Cuma günü saat yedide görüşürüz.",
+     "textSha256": "ce3e07262cef51d8c29d0131027d565ba888c676273cc7c2c51ff60d58caff57",
+     "chars": 32,
+     "audio": "tr/c07-q5-tl.mp3",
+     "align": "tr/c07-q5-tl.align.json",
+     "present": true,
+     "duration": 2.4,
+     "quality": {
+      "words": 5,
+      "exact": 5,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },

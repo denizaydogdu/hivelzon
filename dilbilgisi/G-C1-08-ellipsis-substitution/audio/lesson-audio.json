@@ -55,6 +55,30 @@
      "present": true,
      "duration": 3.04,
      "quality": null
+    },
+    {
+     "id": "c01-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Uyuyamıyorum. Ben de.",
+     "textSha256": "7dc3ffd8eaa4bb7ff5a6502a09b4801e375a091de6eea197b853db7d8b71adfd",
+     "chars": 21,
+     "audio": "tr/c01-ex1-tl.mp3",
+     "align": "tr/c01-ex1-tl.align.json",
+     "present": true,
+     "duration": 1.76,
+     "quality": {
+      "words": 3,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -111,6 +135,54 @@
      "present": true,
      "duration": 2.48,
      "quality": null
+    },
+    {
+     "id": "c02-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Bu şarkıyı çok seviyorum. Ben de.",
+     "textSha256": "5739a5bcf6d2e566bd7bf141345565bbc1891686f425c1bb743c9962acd908f0",
+     "chars": 33,
+     "audio": "tr/c02-ex1-tl.mp3",
+     "align": "tr/c02-ex1-tl.align.json",
+     "present": true,
+     "duration": 2.24,
+     "quality": {
+      "words": 6,
+      "exact": 6,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c02-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "O yüzemiyor. Ben de.",
+     "textSha256": "91c71aaa5410b62a504ff8201eced2562972be2a8e7f18aaec3807aa6a894217",
+     "chars": 20,
+     "audio": "tr/c02-ex2-tl.mp3",
+     "align": "tr/c02-ex2-tl.align.json",
+     "present": true,
+     "duration": 1.92,
+     "quality": {
+      "words": 4,
+      "exact": 4,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -167,6 +239,54 @@
      "present": true,
      "duration": 2.4,
      "quality": null
+    },
+    {
+     "id": "c03-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Yorgunum. Ben de.",
+     "textSha256": "975732af11c5e412a9e9e66b1f1e45ed83cc5a1d1df4806772fb6157fd02037e",
+     "chars": 17,
+     "audio": "tr/c03-ex1-tl.mp3",
+     "align": "tr/c03-ex1-tl.align.json",
+     "present": true,
+     "duration": 1.76,
+     "quality": {
+      "words": 3,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Konsere gittik. Onlar da gitti.",
+     "textSha256": "26c4a48558e21c40006e7c377effd2444d4a0bfba0557a4818a14a595ac26807",
+     "chars": 31,
+     "audio": "tr/c03-ex2-tl.mp3",
+     "align": "tr/c03-ex2-tl.align.json",
+     "present": true,
+     "duration": 2.56,
+     "quality": {
+      "words": 5,
+      "exact": 5,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 1,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -236,6 +356,78 @@
      "present": true,
      "duration": 2.72,
      "quality": null
+    },
+    {
+     "id": "c04-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Yarın yağmur yağacak mı? Umarım yağmaz.",
+     "textSha256": "5330ab9d2dccb22a1f4780fd60e8a438733746bc4eabc07d8cef5adde3a93586",
+     "chars": 39,
+     "audio": "tr/c04-ex1-tl.mp3",
+     "align": "tr/c04-ex1-tl.align.json",
+     "present": true,
+     "duration": 3.52,
+     "quality": {
+      "words": 6,
+      "exact": 6,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c04-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "O geliyor mu? Sanırım evet.",
+     "textSha256": "764a5b3e60af210e432f70d0d80f6cf16a1285dc3bb147014e04d6f1114b6cf5",
+     "chars": 27,
+     "audio": "tr/c04-ex2-tl.mp3",
+     "align": "tr/c04-ex2-tl.align.json",
+     "present": true,
+     "duration": 2.72,
+     "quality": {
+      "words": 5,
+      "exact": 5,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 1,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c04-ex3-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Bu bardağı beğenmedim. Mavi olanı alabilir miyim?",
+     "textSha256": "d88e6ee5220acdc92efea31cfef85c5b39c5d43a2728697f56dd854312fab0a0",
+     "chars": 49,
+     "audio": "tr/c04-ex3-tl.mp3",
+     "align": "tr/c04-ex3-tl.align.json",
+     "present": true,
+     "duration": 3.68,
+     "quality": {
+      "words": 7,
+      "exact": 7,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -307,6 +499,126 @@
      "present": true,
      "duration": 2.48,
      "quality": null
+    },
+    {
+     "id": "c05-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Hiç Paris'e gitmedim. Ben de.",
+     "textSha256": "916f8a9716066a97e0757e2c824cfc9d34c0308f58a89e1242596a83667b7a97",
+     "chars": 29,
+     "audio": "tr/c05-ex1-tl.mp3",
+     "align": "tr/c05-ex1-tl.align.json",
+     "present": true,
+     "duration": 2.08,
+     "quality": {
+      "words": 5,
+      "exact": 5,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "O filmi beğenmedi, ben de beğenmedim.",
+     "textSha256": "a9d764fe646236d770365dc4460a4ebfc97d962fc9639e206fcd265fdaf0e391",
+     "chars": 37,
+     "audio": "tr/c05-ex2-tl.mp3",
+     "align": "tr/c05-ex2-tl.align.json",
+     "present": true,
+     "duration": 2.56,
+     "quality": {
+      "words": 6,
+      "exact": 6,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex3-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Yardım etmek istedim, ama edemedim.",
+     "textSha256": "f580fba43342078e73ebe3771ce90c6324f9573986e5b49468112fccbd8705ff",
+     "chars": 35,
+     "audio": "tr/c05-ex3-tl.mp3",
+     "align": "tr/c05-ex3-tl.align.json",
+     "present": true,
+     "duration": 2.4,
+     "quality": {
+      "words": 5,
+      "exact": 5,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex4-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Sence kazanır mıyız? Korkarım hayır.",
+     "textSha256": "23907d46b2a5bb76851d98b8332a996a3ac62bf39f93c50f147372ba1c1bcf52",
+     "chars": 36,
+     "audio": "tr/c05-ex4-tl.mp3",
+     "align": "tr/c05-ex4-tl.align.json",
+     "present": true,
+     "duration": 3.2,
+     "quality": {
+      "words": 5,
+      "exact": 5,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 1,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex5-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Telefonum çok eski, yenisi lazım.",
+     "textSha256": "1d7b2bc42512fbe9dab07aee64bb86d8f80d7febf5f79d1e03c7af4300d2f2de",
+     "chars": 33,
+     "audio": "tr/c05-ex5-tl.mp3",
+     "align": "tr/c05-ex5-tl.align.json",
+     "present": true,
+     "duration": 2.56,
+     "quality": {
+      "words": 5,
+      "exact": 5,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 1,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -376,6 +688,78 @@
      "present": true,
      "duration": 0.72,
      "quality": null
+    },
+    {
+     "id": "c06-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Kahve sevmem. Ben de.",
+     "textSha256": "4d242d9345dc0eac3cb90736803df11d19b5057949b21f97c4bd91025a4fa9e4",
+     "chars": 21,
+     "audio": "tr/c06-ex1-tl.mp3",
+     "align": "tr/c06-ex1-tl.align.json",
+     "present": true,
+     "duration": 1.76,
+     "quality": {
+      "words": 4,
+      "exact": 4,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c06-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Sanırım öyle.",
+     "textSha256": "9166f990c9637af1677d02a66ebdd63c54297d27ce24300974219d355e521313",
+     "chars": 13,
+     "audio": "tr/c06-ex2-tl.mp3",
+     "align": "tr/c06-ex2-tl.align.json",
+     "present": true,
+     "duration": 1.28,
+     "quality": {
+      "words": 2,
+      "exact": 2,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 1,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c06-ex3-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Umarım.",
+     "textSha256": "748eb88190019380a5fd0bf6a085aa243a98b91baf5fa3de3d064792388219f0",
+     "chars": 7,
+     "audio": "tr/c06-ex3-tl.mp3",
+     "align": "tr/c06-ex3-tl.align.json",
+     "present": true,
+     "duration": 0.8,
+     "quality": {
+      "words": 1,
+      "exact": 1,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -395,6 +779,102 @@
      "present": true,
      "duration": 2.88,
      "quality": null
+    },
+    {
+     "id": "c07-q1-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "İlk cümlede olmak fiili var: So am I.",
+     "textSha256": "f9272993fd9fa22a3faeeb2fc2478fa0edecf6da00aaf9d692eaf3348608adf8",
+     "chars": 37,
+     "audio": "tr/c07-q1-fb.mp3",
+     "align": "tr/c07-q1-fb.align.json",
+     "present": true,
+     "duration": 2.72,
+     "quality": {
+      "words": 8,
+      "exact": 8,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c07-q2-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Olumsuz bir cümleye katılırken Neither gelir.",
+     "textSha256": "8b8e3f39cd09ab3214c62305227f7aa332264443efccdf3605e47710df65003d",
+     "chars": 45,
+     "audio": "tr/c07-q2-fb.mp3",
+     "align": "tr/c07-q2-fb.align.json",
+     "present": true,
+     "duration": 2.88,
+     "quality": {
+      "words": 6,
+      "exact": 5,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c07-q3-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Geçmiş zamanda soru yardımcısı did olur.",
+     "textSha256": "390f51bec6ee0fa615509612c3a1b7f54c54e9eed33f4f1c78214dc1cbe8069f",
+     "chars": 40,
+     "audio": "tr/c07-q3-fb.mp3",
+     "align": "tr/c07-q3-fb.align.json",
+     "present": true,
+     "duration": 2.56,
+     "quality": {
+      "words": 6,
+      "exact": 6,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c07-q4-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Olumsuz umut için I hope not.",
+     "textSha256": "9c94abb5c46069306a04177095fd2edc55ab2201b6adf3475d7bc83ce7654022",
+     "chars": 29,
+     "audio": "tr/c07-q4-fb.mp3",
+     "align": "tr/c07-q4-fb.align.json",
+     "present": true,
+     "duration": 2.24,
+     "quality": {
+      "words": 6,
+      "exact": 5,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },

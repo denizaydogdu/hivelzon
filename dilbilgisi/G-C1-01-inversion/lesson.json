@@ -25,6 +25,16 @@
   "properNouns": [
     "İzmir"
   ],
+  "feedbackPronunciations": [
+    { "term": "Never", "say_as": "Nevır" },
+    { "term": "have", "say_as": "hev" },
+    { "term": "I", "say_as": "ay" },
+    { "term": "seen", "say_as": "siin" },
+    { "term": "was", "say_as": "vaz" },
+    { "term": "he", "say_as": "hi" },
+    { "term": "does", "say_as": "daz" },
+    { "term": "did", "say_as": "did" }
+  ],
   "narration": {
     "tr": {
       "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"

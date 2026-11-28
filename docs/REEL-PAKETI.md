@@ -53,8 +53,8 @@ Klasör adı kimlikle **aynı** olmalı. Seviye ve kategori kimlikten okunur ve
 | `video`, `poster` | ✔ / — | Video ve ilk kare (paket içi yol). |
 | `image`, `audio` | — | Defter kartının taşıyacağı görsel ve kesilmiş ses (paket içi yol). |
 | `target` | ✔ | `{kind: phrase\|word, en, tr, cue}`. `cue` altyazıda bulunmalı. |
-| `cues` | ✔ | Zamanlı altyazı: `id`, `start`, `end`, `speaker`, `text`, `tr`, `words[]`. Zamanlar videonun başına görelidir. |
-| `practice` | — | İsteğe bağlı **tek** anlama sorusu (atlanabilir): `{promptTr, options[], explainTr}`; tam olarak bir doğru. |
+| `cues` | ✔ | Zamanlı altyazı: `id`, `start`, `end`, `speaker`, `text`, `tr`, `words[]`. Zamanlar videonun başına görelidir. Pakette varsa `trAudio: "audio/tr/sub-<satır>.m4a"`: satırın Türkçesinin Hi sesi (H-109 Faz 3; `tts_reel_tr.py --part subtitles`, sözlük `narrationTr.translationPronunciations`; anlam panelinde "Türkçesini dinle"). |
+| `practice` | — | İsteğe bağlı **tek** anlama sorusu (atlanabilir): `{promptTr, options[], explainTr}`; tam olarak bir doğru. Pakette varsa `audioTr: {prompt, explain}` = `{audio, duration, textSha256}`: sorunun (+ Türkçe seçenekler) ve açıklamanın Hi sesi (H-109; `tts_reel_tr.py`, kaynak `audio/tr/practice-*.{mp3,align.json}`; `--package` kurulmuş pakete ekler). |
 | `related` | — | Gerçek bağ: `{kind: episode\|book\|grammar, id, titleTr}`. Boşsa arayüzde "Tam hikâye" gizlenir. |
 | `status` | — | `DRAFT` · `APPROVED` · `PUBLISHED` · `WITHDRAWN`. **Yayın yetkisi vermez**; yetkili durum backend'dedir (plan §6.4). |
 

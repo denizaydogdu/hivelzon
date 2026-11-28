@@ -55,6 +55,30 @@
      "present": true,
      "duration": 2.56,
      "quality": null
+    },
+    {
+     "id": "c01-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Sabah gökyüzü masmavi ve açıktı.",
+     "textSha256": "8965e8343564268bc32d81b9c992721728f0ec5835ebc90c1fd798ae9df4e05e",
+     "chars": 32,
+     "audio": "tr/c01-ex1-tl.mp3",
+     "align": "tr/c01-ex1-tl.align.json",
+     "present": true,
+     "duration": 2.24,
+     "quality": {
+      "words": 5,
+      "exact": 5,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -124,6 +148,78 @@
      "present": true,
      "duration": 0.96,
      "quality": null
+    },
+    {
+     "id": "c02-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Evdeydim.",
+     "textSha256": "983c6a875535bc2d78596c3ed34ffa1c571e7f0afd479f04b1fc6c905caef506",
+     "chars": 9,
+     "audio": "tr/c02-ex1-tl.mp3",
+     "align": "tr/c02-ex1-tl.align.json",
+     "present": true,
+     "duration": 1.12,
+     "quality": {
+      "words": 1,
+      "exact": 1,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c02-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "O yorgundu.",
+     "textSha256": "794d9e18ac8fde139dacd50dc04e617f60e8c3c5f7640803c3e231c65d07f6d8",
+     "chars": 11,
+     "audio": "tr/c02-ex2-tl.mp3",
+     "align": "tr/c02-ex2-tl.align.json",
+     "present": true,
+     "duration": 1.12,
+     "quality": {
+      "words": 2,
+      "exact": 2,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c02-ex3-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Sahildeydik.",
+     "textSha256": "2011108561c96894b65ab5617441962f43f445353d5c7ff569560fc121dee18d",
+     "chars": 12,
+     "audio": "tr/c02-ex3-tl.mp3",
+     "align": "tr/c02-ex3-tl.align.json",
+     "present": true,
+     "duration": 1.28,
+     "quality": {
+      "words": 1,
+      "exact": 1,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -180,6 +276,54 @@
      "present": true,
      "duration": 1.12,
      "quality": null
+    },
+    {
+     "id": "c03-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Hava soğuk değildi.",
+     "textSha256": "ee138ea5971ceed5d36a380349cc92537b157673cc2175d002cbd166086f54fd",
+     "chars": 19,
+     "audio": "tr/c03-ex1-tl.mp3",
+     "align": "tr/c03-ex1-tl.align.json",
+     "present": true,
+     "duration": 1.44,
+     "quality": {
+      "words": 3,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Yorgun muydun?",
+     "textSha256": "b1181c42a09cc9e74f22c4ca8e9c99220fb70b21e63d860f2899cbf6e4b47df0",
+     "chars": 14,
+     "audio": "tr/c03-ex2-tl.mp3",
+     "align": "tr/c03-ex2-tl.align.json",
+     "present": true,
+     "duration": 1.28,
+     "quality": {
+      "words": 2,
+      "exact": 2,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -251,6 +395,126 @@
      "present": true,
      "duration": 1.12,
      "quality": null
+    },
+    {
+     "id": "c04-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Dün evdeydim.",
+     "textSha256": "8c67ce4aa61392f495e99667e4eb84f395c69f05c7e640bb641b9960e8d4a937",
+     "chars": 13,
+     "audio": "tr/c04-ex1-tl.mp3",
+     "align": "tr/c04-ex1-tl.align.json",
+     "present": true,
+     "duration": 1.44,
+     "quality": {
+      "words": 2,
+      "exact": 2,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c04-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Dükkân pazar günü kapalıydı.",
+     "textSha256": "846d076a1273f89e7144bb318dd9641b399b99ba8be72da046e2ca4bdf186b0b",
+     "chars": 28,
+     "audio": "tr/c04-ex2-tl.mp3",
+     "align": "tr/c04-ex2-tl.align.json",
+     "present": true,
+     "duration": 3.68,
+     "quality": {
+      "words": 4,
+      "exact": 2,
+      "fuzzy": 2,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 1,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c04-ex3-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Arkadaşlarım kafedeydi.",
+     "textSha256": "03de8f20b4e2edaf8ebd898c5855ce1066eba3ba32acc71c0eb551447e673a8b",
+     "chars": 23,
+     "audio": "tr/c04-ex3-tl.mp3",
+     "align": "tr/c04-ex3-tl.align.json",
+     "present": true,
+     "duration": 3.36,
+     "quality": {
+      "words": 2,
+      "exact": 2,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 1,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c04-ex4-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Yolculuktan sonra yorgun muydun?",
+     "textSha256": "b2a75a6aaa15bae9fa44677513d9dc893f5dadde67412bddf6e5d66d34dd90ef",
+     "chars": 32,
+     "audio": "tr/c04-ex4-tl.mp3",
+     "align": "tr/c04-ex4-tl.align.json",
+     "present": true,
+     "duration": 2.24,
+     "quality": {
+      "words": 4,
+      "exact": 4,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c04-ex5-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Geç kalmadık.",
+     "textSha256": "57315eb1f19b8e467b86cd199c7f496bd50b53db8bf1f780402f84c14b4a9aa6",
+     "chars": 13,
+     "audio": "tr/c04-ex5-tl.mp3",
+     "align": "tr/c04-ex5-tl.align.json",
+     "present": true,
+     "duration": 1.12,
+     "quality": {
+      "words": 2,
+      "exact": 2,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -307,6 +571,54 @@
      "present": true,
      "duration": 1.84,
      "quality": null
+    },
+    {
+     "id": "c05-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "O dün buradaydı.",
+     "textSha256": "cf9a6595cde3034e78c1f0c1298486114ae5a6ab88ff6452cf403a648e088bf0",
+     "chars": 16,
+     "audio": "tr/c05-ex1-tl.mp3",
+     "align": "tr/c05-ex1-tl.align.json",
+     "present": true,
+     "duration": 1.28,
+     "quality": {
+      "words": 3,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Onlar okuldaydı.",
+     "textSha256": "6560b3b58065a8fbf343b9c3e9b2b3b931cfb77e38d223f9039f0cd287d3372d",
+     "chars": 16,
+     "audio": "tr/c05-ex2-tl.mp3",
+     "align": "tr/c05-ex2-tl.align.json",
+     "present": true,
+     "duration": 1.44,
+     "quality": {
+      "words": 2,
+      "exact": 2,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -326,6 +638,112 @@
      "present": true,
      "duration": 1.36,
      "quality": null
+    },
+    {
+     "id": "c06-q1-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Ben (I) için was gelir.",
+     "textSha256": "7ed43a01ae6f9acef6edef96ede008db7771e517dce9715fa4d61ca303a4330f",
+     "chars": 23,
+     "audio": "tr/c06-q1-fb.mp3",
+     "align": "tr/c06-q1-fb.align.json",
+     "present": true,
+     "duration": 2.24,
+     "quality": {
+      "words": 5,
+      "exact": 2,
+      "fuzzy": 2,
+      "weak": 1,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 1,
+      "score": 0.8,
+      "ok": false,
+      "warnings": [
+       "iyi eşleşen kelime oranı düşük: %80 (alt sınır %85)",
+       "zayıf/eksik: was→vaz"
+      ]
+     }
+    },
+    {
+     "id": "c06-q2-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "İki kişi var, yani \"onlar\": were gelir.",
+     "textSha256": "a98bdd91cbb257c458ddae1f09b9cff525edc6024aa26f9200a3b9dab6b10add",
+     "chars": 39,
+     "audio": "tr/c06-q2-fb.mp3",
+     "align": "tr/c06-q2-fb.align.json",
+     "present": true,
+     "duration": 2.72,
+     "quality": {
+      "words": 7,
+      "exact": 6,
+      "fuzzy": 0,
+      "weak": 1,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 1,
+      "score": 0.857,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c06-q3-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Olumsuz için was + not: wasn't.",
+     "textSha256": "66fcf121e220021f2b5516c068c53f044582b49db9da7fe46d66172a41c0afec",
+     "chars": 31,
+     "audio": "tr/c06-q3-fb.mp3",
+     "align": "tr/c06-q3-fb.align.json",
+     "present": true,
+     "duration": 3.52,
+     "quality": {
+      "words": 5,
+      "exact": 2,
+      "fuzzy": 0,
+      "weak": 3,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 3,
+      "score": 0.4,
+      "ok": false,
+      "warnings": [
+       "iyi eşleşen kelime oranı düşük: %40 (alt sınır %85)",
+       "art arda 3 kelime zayıf ya da eksik eşleşti",
+       "zayıf/eksik: was→vazartın, not→at., wasn't→Vazınt."
+      ]
+     }
+    },
+    {
+     "id": "c06-q4-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Soru cümlesinde were kişinin önüne geçer.",
+     "textSha256": "df8bc51752e81cacbe314807d1e5f3b182347fead2ec610209b442ece6e2f112",
+     "chars": 41,
+     "audio": "tr/c06-q4-fb.mp3",
+     "align": "tr/c06-q4-fb.align.json",
+     "present": true,
+     "duration": 2.56,
+     "quality": {
+      "words": 6,
+      "exact": 4,
+      "fuzzy": 1,
+      "weak": 1,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 1,
+      "score": 0.833,
+      "ok": false,
+      "warnings": [
+       "iyi eşleşen kelime oranı düşük: %83 (alt sınır %85)",
+       "zayıf/eksik: were→work"
+      ]
+     }
     }
    ]
   },
@@ -399,6 +817,30 @@
      "present": true,
      "duration": 1.68,
      "quality": null
+    },
+    {
+     "id": "c08-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Dün sahildeydik.",
+     "textSha256": "86b832f05f44fe5c6690a17b6c1c82f33ec75718d9d9285e2671962b47c78f6b",
+     "chars": 16,
+     "audio": "tr/c08-ex1-tl.mp3",
+     "align": "tr/c08-ex1-tl.align.json",
+     "present": true,
+     "duration": 1.6,
+     "quality": {
+      "words": 2,
+      "exact": 2,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   }

@@ -55,6 +55,30 @@
      "present": true,
      "duration": 1.92,
      "quality": null
+    },
+    {
+     "id": "c01-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Bundan daha kötü bir yalancı hiç görmedim.",
+     "textSha256": "025c1d86a52c921b6e73185b15b9e7b436afebd99ea772b85113e5da34229bc8",
+     "chars": 42,
+     "audio": "tr/c01-ex1-tl.mp3",
+     "align": "tr/c01-ex1-tl.align.json",
+     "present": true,
+     "duration": 2.88,
+     "quality": {
+      "words": 7,
+      "exact": 7,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -111,6 +135,54 @@
      "present": true,
      "duration": 2.08,
      "quality": null
+    },
+    {
+     "id": "c02-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Hiç böyle bir manzara görmedim.",
+     "textSha256": "091114e20ef80121f792cfcd46b1b89804b1164224d64644e61467fcaec819ed",
+     "chars": 31,
+     "audio": "tr/c02-ex1-tl.mp3",
+     "align": "tr/c02-ex1-tl.align.json",
+     "present": true,
+     "duration": 2.88,
+     "quality": {
+      "words": 5,
+      "exact": 5,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 1,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c02-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Hiç böyle bir manzara görmedim!",
+     "textSha256": "dfd20b655933c35a6e7cffe06df505faeff6a3250ce8933f02c5b670ee31fd36",
+     "chars": 31,
+     "audio": "tr/c02-ex2-tl.mp3",
+     "align": "tr/c02-ex2-tl.align.json",
+     "present": true,
+     "duration": 2.08,
+     "quality": {
+      "words": 5,
+      "exact": 5,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -167,6 +239,54 @@
      "present": true,
      "duration": 2.96,
      "quality": null
+    },
+    {
+     "id": "c03-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Yarışı kazanmakla kalmadı, rekoru da kırdı.",
+     "textSha256": "58b41c1698690743f5e75da563f4e134378005035660aaf012886d30e7d3179e",
+     "chars": 43,
+     "audio": "tr/c03-ex1-tl.mp3",
+     "align": "tr/c03-ex1-tl.align.json",
+     "present": true,
+     "duration": 3.04,
+     "quality": {
+      "words": 6,
+      "exact": 6,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Hem zeki hem de nazik biri.",
+     "textSha256": "b593d2185036a3391a9f9517333d4a343e3aedf2ac9a63340bd21008f2207168",
+     "chars": 27,
+     "audio": "tr/c03-ex2-tl.mp3",
+     "align": "tr/c03-ex2-tl.align.json",
+     "present": true,
+     "duration": 2.08,
+     "quality": {
+      "words": 6,
+      "exact": 6,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -223,6 +343,54 @@
      "present": true,
      "duration": 2.24,
      "quality": null
+    },
+    {
+     "id": "c04-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "İzmir'de nadiren kar görürüz.",
+     "textSha256": "0c65d728272a2321d1c6fd1015871760052ae41fd478db64dac93945af9a1edb",
+     "chars": 29,
+     "audio": "tr/c04-ex1-tl.mp3",
+     "align": "tr/c04-ex1-tl.align.json",
+     "present": true,
+     "duration": 2.24,
+     "quality": {
+      "words": 4,
+      "exact": 4,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c04-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Sorunu ancak o zaman anladım.",
+     "textSha256": "62c726a3ec1934d23a1f4ec4c2ccbf328a2778d90c61974b53c07a926caad483",
+     "chars": 29,
+     "audio": "tr/c04-ex2-tl.mp3",
+     "align": "tr/c04-ex2-tl.align.json",
+     "present": true,
+     "duration": 2.24,
+     "quality": {
+      "words": 5,
+      "exact": 5,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -294,6 +462,126 @@
      "present": true,
      "duration": 3.2,
      "quality": null
+    },
+    {
+     "id": "c05-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Hayatımda hiç bu kadar yorulmadım.",
+     "textSha256": "a78f261f5eca72b345161d567716cf3699e17fbad4074efe86fd439aba5001f1",
+     "chars": 34,
+     "audio": "tr/c05-ex1-tl.mp3",
+     "align": "tr/c05-ex1-tl.align.json",
+     "present": true,
+     "duration": 2.24,
+     "quality": {
+      "words": 5,
+      "exact": 5,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "İşinden pek nadir yakınır.",
+     "textSha256": "49b3c82d88e79c746a55fb03208a7a5d590d82f90e62ade84d7a4071bd469b38",
+     "chars": 26,
+     "audio": "tr/c05-ex2-tl.mp3",
+     "align": "tr/c05-ex2-tl.align.json",
+     "present": true,
+     "duration": 1.92,
+     "quality": {
+      "words": 4,
+      "exact": 4,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex3-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Daha yeni varmıştık ki yağmur başladı.",
+     "textSha256": "f23c15e99bc48b5c068eeabf31931b6cd4df71fc4a8e1fb893ee94bb3539d834",
+     "chars": 38,
+     "audio": "tr/c05-ex3-tl.mp3",
+     "align": "tr/c05-ex3-tl.align.json",
+     "present": true,
+     "duration": 2.88,
+     "quality": {
+      "words": 6,
+      "exact": 6,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex4-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Hatayı ancak eve varınca fark ettim.",
+     "textSha256": "7ab1d87df93cf83b873fe6841669afca4ef27d5eded3c82ffc597671652237a7",
+     "chars": 36,
+     "audio": "tr/c05-ex4-tl.mp3",
+     "align": "tr/c05-ex4-tl.align.json",
+     "present": true,
+     "duration": 2.24,
+     "quality": {
+      "words": 6,
+      "exact": 5,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex5-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Bu kapıyı hiçbir koşulda açmamalısın.",
+     "textSha256": "59be5069caa50973269c7eabb51d9c49669cf2fc6a3fc4c981ad24016fa2a7ee",
+     "chars": 37,
+     "audio": "tr/c05-ex5-tl.mp3",
+     "align": "tr/c05-ex5-tl.align.json",
+     "present": true,
+     "duration": 3.36,
+     "quality": {
+      "words": 5,
+      "exact": 4,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -363,6 +651,54 @@
      "present": true,
      "duration": 2.16,
      "quality": null
+    },
+    {
+     "id": "c06-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Hiç böyle bir gün batımı görmedim.",
+     "textSha256": "b4a08a9cf7c2a89fe1da15a054afa573a26125f3b8d21e9b29f74cd420507fe9",
+     "chars": 34,
+     "audio": "tr/c06-ex1-tl.mp3",
+     "align": "tr/c06-ex1-tl.align.json",
+     "present": true,
+     "duration": 4.16,
+     "quality": {
+      "words": 6,
+      "exact": 6,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c06-ex3-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Ancak o zaman anladım.",
+     "textSha256": "707cfe1d0bab3ef0032a59fc3eca96b8d707312591174d8323bdfd595a734488",
+     "chars": 22,
+     "audio": "tr/c06-ex3-tl.mp3",
+     "align": "tr/c06-ex3-tl.align.json",
+     "present": true,
+     "duration": 2.72,
+     "quality": {
+      "words": 4,
+      "exact": 4,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 2,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -382,6 +718,130 @@
      "present": true,
      "duration": 2.64,
      "quality": null
+    },
+    {
+     "id": "c07-q1-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Never başa gelince yardımcı fiil özneden önce gelir: have I seen.",
+     "textSha256": "dc10964ddf07a7502ce6c5b4fe12458bb16619c1c412daad54958bfadec013e0",
+     "chars": 65,
+     "audio": "tr/c07-q1-fb.mp3",
+     "align": "tr/c07-q1-fb.align.json",
+     "present": true,
+     "duration": 4.64,
+     "quality": {
+      "words": 11,
+      "exact": 11,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c07-q2-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Cümlede olmak fiili var; o öne geçer: was he.",
+     "textSha256": "ab5fd746c376caa651f333f78568235d55f513bd99a89c90ca9e2d54f70fe7aa",
+     "chars": 45,
+     "audio": "tr/c07-q2-fb.mp3",
+     "align": "tr/c07-q2-fb.align.json",
+     "present": true,
+     "duration": 3.84,
+     "quality": {
+      "words": 9,
+      "exact": 7,
+      "fuzzy": 0,
+      "weak": 1,
+      "missing": 1,
+      "extraHeard": 0,
+      "worstRun": 2,
+      "score": 0.778,
+      "ok": false,
+      "warnings": [
+       "iyi eşleşen kelime oranı düşük: %78 (alt sınır %85)",
+       "art arda 2 kelime zayıf ya da eksik eşleşti",
+       "zayıf/eksik: was→Vasii., he→∅"
+      ]
+     }
+    },
+    {
+     "id": "c07-q3-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Cümlede yardımcı fiil yok; geniş zamanda o için does gelir, fiil yalın kalır.",
+     "textSha256": "8527592e266debab7d78486cd8b5268f128d102f3fb03045d1f10da02acd0050",
+     "chars": 77,
+     "audio": "tr/c07-q3-fb.mp3",
+     "align": "tr/c07-q3-fb.align.json",
+     "present": true,
+     "duration": 5.92,
+     "quality": {
+      "words": 13,
+      "exact": 12,
+      "fuzzy": 0,
+      "weak": 1,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 1,
+      "score": 0.923,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c07-q4-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Önce kısıtlayıcı ifade, sonra did, özne ve yalın fiil gelir.",
+     "textSha256": "135518010ec8218e45c7184e904508be77fb8723288ec0bd0613d46d3158c7b9",
+     "chars": 60,
+     "audio": "tr/c07-q4-fb.mp3",
+     "align": "tr/c07-q4-fb.align.json",
+     "present": true,
+     "duration": 4.32,
+     "quality": {
+      "words": 10,
+      "exact": 9,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c07-q5-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Hayatımda hiç bu kadar güzel bir gün batımı görmedim.",
+     "textSha256": "55d5d17770af4190600613d0d10ac8738983e3e53ba63446641563f2a81422fd",
+     "chars": 53,
+     "audio": "tr/c07-q5-tl.mp3",
+     "align": "tr/c07-q5-tl.align.json",
+     "present": true,
+     "duration": 3.04,
+     "quality": {
+      "words": 9,
+      "exact": 9,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },

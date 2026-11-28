@@ -55,6 +55,30 @@
      "present": true,
      "duration": 4.16,
      "quality": null
+    },
+    {
+     "id": "c01-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Dokuzuncu bölüm bitmeden açarsan, ben bilemem tabii.",
+     "textSha256": "1befc29dedbaa393ac3f04ba7bca51e57c08543ef53dbd8c9d8a165936ed2b77",
+     "chars": 52,
+     "audio": "tr/c01-ex1-tl.mp3",
+     "align": "tr/c01-ex1-tl.align.json",
+     "present": true,
+     "duration": 4.16,
+     "quality": {
+      "words": 7,
+      "exact": 7,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -111,6 +135,30 @@
      "present": true,
      "duration": 2.72,
      "quality": null
+    },
+    {
+     "id": "c02-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Gecikmeyi bilseydim evde kalırdım.",
+     "textSha256": "d436568161658faa7fd1acac1e049892eee307a35fbb687df388817a6084a191",
+     "chars": 34,
+     "audio": "tr/c02-ex1-tl.mp3",
+     "align": "tr/c02-ex1-tl.align.json",
+     "present": true,
+     "duration": 2.4,
+     "quality": {
+      "words": 4,
+      "exact": 4,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -167,6 +215,54 @@
      "present": true,
      "duration": 2.8,
      "quality": null
+    },
+    {
+     "id": "c03-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Senin yerinde olsam teklifi kabul ederdim.",
+     "textSha256": "4a9aa95a592f051ebfee2a96e1081e78ec19410c73be60c37754db3c099f450b",
+     "chars": 42,
+     "audio": "tr/c03-ex1-tl.mp3",
+     "align": "tr/c03-ex1-tl.align.json",
+     "present": true,
+     "duration": 3.04,
+     "quality": {
+      "words": 6,
+      "exact": 6,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Senin yardımın olmasaydı başaramazdık.",
+     "textSha256": "18104c98b34d1f9e13d3c3b0c880466033dee9cf56584010f7b74ed862270b62",
+     "chars": 38,
+     "audio": "tr/c03-ex2-tl.mp3",
+     "align": "tr/c03-ex2-tl.align.json",
+     "present": true,
+     "duration": 2.56,
+     "quality": {
+      "words": 4,
+      "exact": 4,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -223,6 +319,54 @@
      "present": true,
      "duration": 2.48,
      "quality": null
+    },
+    {
+     "id": "c04-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Onun zamanında gelmesi çok önemli.",
+     "textSha256": "0e5bcf7e7d79ad0fc798f606e6d77b94f19b0c8ecb2790bfa6123d6d7d14ae60",
+     "chars": 34,
+     "audio": "tr/c04-ex1-tl.mp3",
+     "align": "tr/c04-ex1-tl.align.json",
+     "present": true,
+     "duration": 3.52,
+     "quality": {
+      "words": 5,
+      "exact": 5,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c04-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Doktor bir hafta dinlenmesini önerdi.",
+     "textSha256": "536a49980e225be03a2cdf9c8bb69f464a38d71ac35bb6efe125926621cea609",
+     "chars": 37,
+     "audio": "tr/c04-ex2-tl.mp3",
+     "align": "tr/c04-ex2-tl.align.json",
+     "present": true,
+     "duration": 2.4,
+     "quality": {
+      "words": 5,
+      "exact": 5,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -294,6 +438,126 @@
      "present": true,
      "duration": 2.8,
      "quality": null
+    },
+    {
+     "id": "c05-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Sorunuz olursa lütfen bizi arayın.",
+     "textSha256": "8ea0f9a2fcdd66d019bfddfcbe71895256111a2dae7281a78afd4b7e9fa580f7",
+     "chars": 34,
+     "audio": "tr/c05-ex1-tl.mp3",
+     "align": "tr/c05-ex1-tl.align.json",
+     "present": true,
+     "duration": 2.56,
+     "quality": {
+      "words": 5,
+      "exact": 5,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Daha erken çıksaydık treni yakalardık.",
+     "textSha256": "c5cbb1619214309a81ca817d072d706a7d76ce6cca0c68024859084fb9ff2669",
+     "chars": 38,
+     "audio": "tr/c05-ex2-tl.mp3",
+     "align": "tr/c05-ex2-tl.align.json",
+     "present": true,
+     "duration": 3.04,
+     "quality": {
+      "words": 5,
+      "exact": 5,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex3-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Yağmur olmasa dışarı çıkardık.",
+     "textSha256": "edca6300ebce3f86b11b0286f91981025ec924a28d01cba16e92413fada1c4e1",
+     "chars": 30,
+     "audio": "tr/c05-ex3-tl.mp3",
+     "align": "tr/c05-ex3-tl.align.json",
+     "present": true,
+     "duration": 2.08,
+     "quality": {
+      "words": 4,
+      "exact": 4,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex4-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "İşin cumaya kadar bitirilmesinde ısrar ediyoruz.",
+     "textSha256": "4178ef6136811641fc681fb10ff7ac7f988e562f29b8902b4e0969fdb213bb66",
+     "chars": 48,
+     "audio": "tr/c05-ex4-tl.mp3",
+     "align": "tr/c05-ex4-tl.align.json",
+     "present": true,
+     "duration": 2.88,
+     "quality": {
+      "words": 6,
+      "exact": 6,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 1,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex5-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Her öğrencinin bir kopyası olması önemli.",
+     "textSha256": "770d57b73b71fd363c9b76c4769934718f8ca38e53acc4287eeffbd43180212e",
+     "chars": 41,
+     "audio": "tr/c05-ex5-tl.mp3",
+     "align": "tr/c05-ex5-tl.align.json",
+     "present": true,
+     "duration": 2.88,
+     "quality": {
+      "words": 6,
+      "exact": 6,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 1,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -350,6 +614,54 @@
      "present": true,
      "duration": 1.92,
      "quality": null
+    },
+    {
+     "id": "c06-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Yardım gerekirse bizi arayın.",
+     "textSha256": "ee23f8eec46ebe3ee51666828ed5c3cb0fd2123515e95ef82d764eabb1348df5",
+     "chars": 29,
+     "audio": "tr/c06-ex1-tl.mp3",
+     "align": "tr/c06-ex1-tl.align.json",
+     "present": true,
+     "duration": 2.08,
+     "quality": {
+      "words": 4,
+      "exact": 4,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c06-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Bilseydim gelirdim.",
+     "textSha256": "1fc6ca85a5d7a7dfc016df3c3da47a02f0dfd159ee7e2d5b3eca163c2df8820c",
+     "chars": 19,
+     "audio": "tr/c06-ex2-tl.mp3",
+     "align": "tr/c06-ex2-tl.align.json",
+     "present": true,
+     "duration": 1.44,
+     "quality": {
+      "words": 2,
+      "exact": 2,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -369,6 +681,129 @@
      "present": true,
      "duration": 2.56,
      "quality": null
+    },
+    {
+     "id": "c07-q1-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Bağlaçsız şartta Should başa gelir: Should you require.",
+     "textSha256": "ce766d9771012849652038d87fdaff1a20e75ecfe4a6e07871231f194664a4cd",
+     "chars": 55,
+     "audio": "tr/c07-q1-fb.mp3",
+     "align": "tr/c07-q1-fb.align.json",
+     "present": true,
+     "duration": 3.68,
+     "quality": {
+      "words": 8,
+      "exact": 8,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c07-q2-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Geçmişteki gerçek dışı koşul: Had ve üçüncü hâl.",
+     "textSha256": "4eed5dd49ab978c5f6cf2fe06a6628fdefac8569644fc0e997e20fe590db4e9d",
+     "chars": 48,
+     "audio": "tr/c07-q2-fb.mp3",
+     "align": "tr/c07-q2-fb.align.json",
+     "present": true,
+     "duration": 3.52,
+     "quality": {
+      "words": 8,
+      "exact": 6,
+      "fuzzy": 2,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c07-q3-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Bu yapıda fiil yalın kalır: be.",
+     "textSha256": "c91946c629dca2d53d7aea37ff0361d94255f48d27134f1391939cabe2f45591",
+     "chars": 31,
+     "audio": "tr/c07-q3-fb.mp3",
+     "align": "tr/c07-q3-fb.align.json",
+     "present": true,
+     "duration": 2.24,
+     "quality": {
+      "words": 6,
+      "exact": 5,
+      "fuzzy": 0,
+      "weak": 1,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 1,
+      "score": 0.833,
+      "ok": false,
+      "warnings": [
+       "iyi eşleşen kelime oranı düşük: %83 (alt sınır %85)",
+       "zayıf/eksik: be→Bi."
+      ]
+     }
+    },
+    {
+     "id": "c07-q4-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Önce Had, sonra it not been for ve isim, en sonda sonuç gelir.",
+     "textSha256": "6eac7adc2dcfc235d9b82b842b2cf674be866cb780df86b301c4f846a5e5fb1e",
+     "chars": 62,
+     "audio": "tr/c07-q4-fb.mp3",
+     "align": "tr/c07-q4-fb.align.json",
+     "present": true,
+     "duration": 4.32,
+     "quality": {
+      "words": 13,
+      "exact": 12,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c07-q5-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Yardıma ihtiyacınız olursa lütfen bize ulaşın.",
+     "textSha256": "47d63a4659280aec03bd327d2c337c319941fe51398517f8de00328e4a51041a",
+     "chars": 46,
+     "audio": "tr/c07-q5-tl.mp3",
+     "align": "tr/c07-q5-tl.align.json",
+     "present": true,
+     "duration": 3.68,
+     "quality": {
+      "words": 6,
+      "exact": 6,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },

@@ -55,6 +55,30 @@
      "present": true,
      "duration": 2.32,
      "quality": null
+    },
+    {
+     "id": "c01-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Eskiden her şeyi yakardı, ekmeği bile.",
+     "textSha256": "63740dc9f3ab63abc2ab2515d0c38b830bf7c4904fb79d31911ed1a7a7938fa5",
+     "chars": 38,
+     "audio": "tr/c01-ex1-tl.mp3",
+     "align": "tr/c01-ex1-tl.align.json",
+     "present": true,
+     "duration": 2.56,
+     "quality": {
+      "words": 6,
+      "exact": 6,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -98,6 +122,30 @@
      "present": true,
      "duration": 1.2,
      "quality": null
+    },
+    {
+     "id": "c02-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Eskiden piyano çalardım.",
+     "textSha256": "2efe4a5b64e680d971b15e612162725bd4771a6b7730344ab55f866a13996df0",
+     "chars": 24,
+     "audio": "tr/c02-ex1-tl.mp3",
+     "align": "tr/c02-ex1-tl.align.json",
+     "present": true,
+     "duration": 4.0,
+     "quality": {
+      "words": 3,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 1,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -154,6 +202,54 @@
      "present": true,
      "duration": 1.76,
      "quality": null
+    },
+    {
+     "id": "c03-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Eskiden okula yürür müydün?",
+     "textSha256": "e73ce22370c76b01761e3431147a81ac730c3ebb72776974be899e674b5a2e40",
+     "chars": 27,
+     "audio": "tr/c03-ex1-tl.mp3",
+     "align": "tr/c03-ex1-tl.align.json",
+     "present": true,
+     "duration": 3.36,
+     "quality": {
+      "words": 4,
+      "exact": 3,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 1,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Eskiden kahve sevmezdi.",
+     "textSha256": "1363ad49621557152aed9d0fe18eaabcb4740912ccab3f119c5a22bf5024881d",
+     "chars": 23,
+     "audio": "tr/c03-ex2-tl.mp3",
+     "align": "tr/c03-ex2-tl.align.json",
+     "present": true,
+     "duration": 1.92,
+     "quality": {
+      "words": 3,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -225,6 +321,126 @@
      "present": true,
      "duration": 1.36,
      "quality": null
+    },
+    {
+     "id": "c04-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Eskiden küçük bir köyde yaşardım.",
+     "textSha256": "23c62b73b67bbec2b6d528781266805983623f658c9a90401eba683a9fe901a3",
+     "chars": 33,
+     "audio": "tr/c04-ex1-tl.mp3",
+     "align": "tr/c04-ex1-tl.align.json",
+     "present": true,
+     "duration": 3.68,
+     "quality": {
+      "words": 5,
+      "exact": 5,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 2,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c04-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Eskiden burada bir sinema vardı.",
+     "textSha256": "f6959824ce5e6afd23abead2c77fa04fdd2e6887016a12cd7cea3e3dfd2cf2d6",
+     "chars": 32,
+     "audio": "tr/c04-ex2-tl.mp3",
+     "align": "tr/c04-ex2-tl.align.json",
+     "present": true,
+     "duration": 3.04,
+     "quality": {
+      "words": 5,
+      "exact": 5,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c04-ex3-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Dedem bize hikâyeler anlatırdı.",
+     "textSha256": "40dfba6ec2e9a215d79d05303dd73f2482c39ad396c57be2dd1114269a24b5aa",
+     "chars": 31,
+     "audio": "tr/c04-ex3-tl.mp3",
+     "align": "tr/c04-ex3-tl.align.json",
+     "present": true,
+     "duration": 2.24,
+     "quality": {
+      "words": 4,
+      "exact": 3,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c04-ex4-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Eskiden arabamız yoktu.",
+     "textSha256": "79abc84f36c9385aeeab0f1c2a3d8bef9b00f10c2b1569f7f61080fdfd6da616",
+     "chars": 23,
+     "audio": "tr/c04-ex4-tl.mp3",
+     "align": "tr/c04-ex4-tl.align.json",
+     "present": true,
+     "duration": 2.72,
+     "quality": {
+      "words": 3,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c04-ex5-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Eskiden futbol oynar mıydı?",
+     "textSha256": "62cb3ef5f5c0e2bc3cb52733afb0c4cd50cbb7295925367a6f8581559d8a4940",
+     "chars": 27,
+     "audio": "tr/c04-ex5-tl.mp3",
+     "align": "tr/c04-ex5-tl.align.json",
+     "present": true,
+     "duration": 1.92,
+     "quality": {
+      "words": 4,
+      "exact": 4,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -294,6 +510,78 @@
      "present": true,
      "duration": 1.68,
      "quality": null
+    },
+    {
+     "id": "c05-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Eskiden futbol oynardım.",
+     "textSha256": "9d32e6690d190f05c58bb3d8dfa62fbc0fc20aaf29cfb8822ecba1d4eee1edde",
+     "chars": 24,
+     "audio": "tr/c05-ex1-tl.mp3",
+     "align": "tr/c05-ex1-tl.align.json",
+     "present": true,
+     "duration": 1.76,
+     "quality": {
+      "words": 3,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Eskiden burada mı yaşardın?",
+     "textSha256": "ecfad7b4710c9b5ffe8e8edf08f02e170d07b3c5e7dfcbc5ada59d4fab878680",
+     "chars": 27,
+     "audio": "tr/c05-ex2-tl.mp3",
+     "align": "tr/c05-ex2-tl.align.json",
+     "present": true,
+     "duration": 3.2,
+     "quality": {
+      "words": 4,
+      "exact": 4,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 2,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex3-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Erken kalkmaya alışkınım.",
+     "textSha256": "da2273060bcd06c6c9d51b42e7cb32041bef99c4fadcfdf4ddbda9dfe7ccc2a3",
+     "chars": 25,
+     "audio": "tr/c05-ex3-tl.mp3",
+     "align": "tr/c05-ex3-tl.align.json",
+     "present": true,
+     "duration": 3.04,
+     "quality": {
+      "words": 3,
+      "exact": 2,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -313,6 +601,105 @@
      "present": true,
      "duration": 1.6,
      "quality": null
+    },
+    {
+     "id": "c06-q1-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Olumluda used to, ardından yalın fiil.",
+     "textSha256": "8dbecee55377ecc4433134cf61d964ec3fd4f18753cb81ec107933296245f336",
+     "chars": 38,
+     "audio": "tr/c06-q1-fb.mp3",
+     "align": "tr/c06-q1-fb.align.json",
+     "present": true,
+     "duration": 3.04,
+     "quality": {
+      "words": 6,
+      "exact": 4,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 1,
+      "extraHeard": 0,
+      "worstRun": 1,
+      "score": 0.833,
+      "ok": false,
+      "warnings": [
+       "iyi eşleşen kelime oranı düşük: %83 (alt sınır %85)",
+       "zayıf/eksik: to→∅"
+      ]
+     }
+    },
+    {
+     "id": "c06-q2-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Soruda did gelir, kalıp use to olur.",
+     "textSha256": "28db2b9163019731eaf7444f99aa7926cb1fc3089e68c579dc8c9502fa8dada8",
+     "chars": 36,
+     "audio": "tr/c06-q2-fb.mp3",
+     "align": "tr/c06-q2-fb.align.json",
+     "present": true,
+     "duration": 3.04,
+     "quality": {
+      "words": 7,
+      "exact": 4,
+      "fuzzy": 3,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c06-q3-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Eskiden vardı, artık yok: used to be.",
+     "textSha256": "af338c92f000aaabe3b2864fc2ff89906a17e0403750dac3acae1a087f87d27f",
+     "chars": 37,
+     "audio": "tr/c06-q3-fb.mp3",
+     "align": "tr/c06-q3-fb.align.json",
+     "present": true,
+     "duration": 2.88,
+     "quality": {
+      "words": 7,
+      "exact": 7,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c06-q4-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Olumsuzda didn't ve use to.",
+     "textSha256": "0c9f39da1146bd8be8a4c2eb2165c3487088ce214e922ba19fa8bf91e42683a2",
+     "chars": 27,
+     "audio": "tr/c06-q4-fb.mp3",
+     "align": "tr/c06-q4-fb.align.json",
+     "present": true,
+     "duration": 2.4,
+     "quality": {
+      "words": 5,
+      "exact": 4,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -361,6 +748,32 @@
      "present": true,
      "duration": 1.52,
      "quality": null
+    },
+    {
+     "id": "c08-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Eskiden bir köyde yaşardım.",
+     "textSha256": "e9b183a6f598808300b4b1446cc13a507d3a6ffeb11d71acb71c78c21426458b",
+     "chars": 27,
+     "audio": "tr/c08-ex1-tl.mp3",
+     "align": "tr/c08-ex1-tl.align.json",
+     "present": true,
+     "duration": 3.36,
+     "quality": {
+      "words": 4,
+      "exact": 4,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 3,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": false,
+      "warnings": [
+       "Duyu metinde olmayan 3 kelime duydu"
+      ]
+     }
     }
    ]
   }

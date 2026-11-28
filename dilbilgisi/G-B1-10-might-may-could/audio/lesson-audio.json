@@ -55,6 +55,30 @@
      "present": true,
      "duration": 1.68,
      "quality": null
+    },
+    {
+     "id": "c01-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Cuma günü yağmur yağabilir.",
+     "textSha256": "6159e0f1a5701b425cade3e57a9e89a75196e9bc6ac15e0ede7bca9de3819179",
+     "chars": 27,
+     "audio": "tr/c01-ex1-tl.mp3",
+     "align": "tr/c01-ex1-tl.align.json",
+     "present": true,
+     "duration": 2.24,
+     "quality": {
+      "words": 4,
+      "exact": 4,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -111,6 +135,54 @@
      "present": true,
      "duration": 1.52,
      "quality": null
+    },
+    {
+     "id": "c02-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Şu an evde olabilir.",
+     "textSha256": "45aa440e42836861863dfd9811b077292d02cea631fb7666a24630d4990065c5",
+     "chars": 20,
+     "audio": "tr/c02-ex1-tl.mp3",
+     "align": "tr/c02-ex1-tl.align.json",
+     "present": true,
+     "duration": 1.44,
+     "quality": {
+      "words": 4,
+      "exact": 4,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c02-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Sınav zor olabilir.",
+     "textSha256": "e3f9eec209f0ff4bb09f059666570efb3da5ec51f341017fc88498a609931b20",
+     "chars": 19,
+     "audio": "tr/c02-ex2-tl.mp3",
+     "align": "tr/c02-ex2-tl.align.json",
+     "present": true,
+     "duration": 1.44,
+     "quality": {
+      "words": 3,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -167,6 +239,54 @@
      "present": true,
      "duration": 2.56,
      "quality": null
+    },
+    {
+     "id": "c03-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Bugün gelmeyebilir.",
+     "textSha256": "24831064cdfe4fc45072952a47a4b798612aace13a33b5197266a34bf775dc27",
+     "chars": 19,
+     "audio": "tr/c03-ex1-tl.mp3",
+     "align": "tr/c03-ex1-tl.align.json",
+     "present": true,
+     "duration": 1.44,
+     "quality": {
+      "words": 2,
+      "exact": 2,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "O Ece olamaz. Ankara'da.",
+     "textSha256": "2657e2a476d8c81a380234d232bffa697c304bce1236337ac7c96c5751467560",
+     "chars": 24,
+     "audio": "tr/c03-ex2-tl.mp3",
+     "align": "tr/c03-ex2-tl.align.json",
+     "present": true,
+     "duration": 2.4,
+     "quality": {
+      "words": 4,
+      "exact": 4,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -210,6 +330,30 @@
      "present": true,
      "duration": 2.4,
      "quality": null
+    },
+    {
+     "id": "c04-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Beş yaşındayken yüzebiliyordum.",
+     "textSha256": "b0e01b0df6bd11790be1a4669e25d6fad2805e316f75fd1fa6389b0e21a2fdfb",
+     "chars": 31,
+     "audio": "tr/c04-ex1-tl.mp3",
+     "align": "tr/c04-ex1-tl.align.json",
+     "present": true,
+     "duration": 2.08,
+     "quality": {
+      "words": 3,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -281,6 +425,126 @@
      "present": true,
      "duration": 1.28,
      "quality": null
+    },
+    {
+     "id": "c05-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Şemsiye al. Sonra yağmur yağabilir.",
+     "textSha256": "0bdcebe56f582f3d2581adf1fe67f71c2ac7bebd0bda0bcfc2884bb09760edbb",
+     "chars": 35,
+     "audio": "tr/c05-ex1-tl.mp3",
+     "align": "tr/c05-ex1-tl.align.json",
+     "present": true,
+     "duration": 3.2,
+     "quality": {
+      "words": 5,
+      "exact": 5,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 1,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Bu akşam geç kalabilirim.",
+     "textSha256": "ed6d99e76d176a85d25cbe11db7c82861badf4f0ff16f5a17599733c06ff9e27",
+     "chars": 25,
+     "audio": "tr/c05-ex2-tl.mp3",
+     "align": "tr/c05-ex2-tl.align.json",
+     "present": true,
+     "duration": 3.36,
+     "quality": {
+      "words": 4,
+      "exact": 4,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex3-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Anahtarlar arabada olabilir.",
+     "textSha256": "06a028b861d980b763c451114d78b389af28db8c54ae7e161ca0294b8f485d1b",
+     "chars": 28,
+     "audio": "tr/c05-ex3-tl.mp3",
+     "align": "tr/c05-ex3-tl.align.json",
+     "present": true,
+     "duration": 3.36,
+     "quality": {
+      "words": 3,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 2,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex4-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Vaktimiz olmayabilir.",
+     "textSha256": "8af340c6dd627de1e828d1424dee0728fdb2bb2186640ef51516d1c1d50f77c2",
+     "chars": 21,
+     "audio": "tr/c05-ex4-tl.mp3",
+     "align": "tr/c05-ex4-tl.align.json",
+     "present": true,
+     "duration": 3.36,
+     "quality": {
+      "words": 2,
+      "exact": 2,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex5-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Doğru olmayabilir.",
+     "textSha256": "9dd5515f8a7fbee4b89020f2f52143133ebf68ad8ab1f6faf5110fdf5c340949",
+     "chars": 18,
+     "audio": "tr/c05-ex5-tl.mp3",
+     "align": "tr/c05-ex5-tl.align.json",
+     "present": true,
+     "duration": 1.44,
+     "quality": {
+      "words": 2,
+      "exact": 2,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -337,6 +601,54 @@
      "present": true,
      "duration": 1.2,
      "quality": null
+    },
+    {
+     "id": "c06-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Yarın yağmur yağabilir.",
+     "textSha256": "88ab7d0919becf9a7f91e1ac17c94f91ece6006fb6f05a310fd8870fafa27a79",
+     "chars": 23,
+     "audio": "tr/c06-ex1-tl.mp3",
+     "align": "tr/c06-ex1-tl.align.json",
+     "present": true,
+     "duration": 2.08,
+     "quality": {
+      "words": 3,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 2,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c06-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Gelebilir.",
+     "textSha256": "aaa8dfe9d937d072fa5f93c3dd08ebc4123fa046f30c633374c4bbd97e532b6d",
+     "chars": 10,
+     "audio": "tr/c06-ex2-tl.mp3",
+     "align": "tr/c06-ex2-tl.align.json",
+     "present": true,
+     "duration": 1.12,
+     "quality": {
+      "words": 1,
+      "exact": 1,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -356,6 +668,136 @@
      "present": true,
      "duration": 1.44,
      "quality": null
+    },
+    {
+     "id": "c07-q1-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Emin değilsin: might.",
+     "textSha256": "48c6c5d2248ed4e893ff8142bb9331056b4017fa0d6e44c20b6112fdcc0f7b71",
+     "chars": 21,
+     "audio": "tr/c07-q1-fb.mp3",
+     "align": "tr/c07-q1-fb.align.json",
+     "present": true,
+     "duration": 1.92,
+     "quality": {
+      "words": 3,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c07-q2-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Ardından yalın fiil: be.",
+     "textSha256": "3dc55bb8ea49f398b538ac6528a6dab0382ce28428083a640c6a98d5edeadae2",
+     "chars": 24,
+     "audio": "tr/c07-q2-fb.mp3",
+     "align": "tr/c07-q2-fb.align.json",
+     "present": true,
+     "duration": 2.24,
+     "quality": {
+      "words": 4,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 1,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 1,
+      "score": 0.75,
+      "ok": false,
+      "warnings": [
+       "iyi eşleşen kelime oranı düşük: %75 (alt sınır %85)",
+       "zayıf/eksik: be→bi."
+      ]
+     }
+    },
+    {
+     "id": "c07-q3-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Olumsuz olasılık: might not ya da may not.",
+     "textSha256": "b2fd59335e0aacfc26423d69b90880e89b654797f3e466b70f8f2b284e13f97d",
+     "chars": 42,
+     "audio": "tr/c07-q3-fb.mp3",
+     "align": "tr/c07-q3-fb.align.json",
+     "present": true,
+     "duration": 2.88,
+     "quality": {
+      "words": 8,
+      "exact": 4,
+      "fuzzy": 2,
+      "weak": 1,
+      "missing": 1,
+      "extraHeard": 0,
+      "worstRun": 2,
+      "score": 0.75,
+      "ok": false,
+      "warnings": [
+       "iyi eşleşen kelime oranı düşük: %75 (alt sınır %85)",
+       "art arda 2 kelime zayıf ya da eksik eşleşti",
+       "zayıf/eksik: might→Maytınat, not→∅"
+      ]
+     }
+    },
+    {
+     "id": "c07-q4-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Geçmişteki yetenek: could.",
+     "textSha256": "accefd42bd6bea4403614271c5d2f8ba7d7f5a50095cada3b66a198d58e09c4e",
+     "chars": 26,
+     "audio": "tr/c07-q4-fb.mp3",
+     "align": "tr/c07-q4-fb.align.json",
+     "present": true,
+     "duration": 2.24,
+     "quality": {
+      "words": 3,
+      "exact": 2,
+      "fuzzy": 0,
+      "weak": 1,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 1,
+      "score": 0.667,
+      "ok": false,
+      "warnings": [
+       "iyi eşleşen kelime oranı düşük: %67 (alt sınır %85)",
+       "zayıf/eksik: could→kud."
+      ]
+     }
+    },
+    {
+     "id": "c07-q5-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Sonra yağmur yağabilir.",
+     "textSha256": "a578b4d1469be71b8933ebaa348ad936c674aa35e1df94129e1dad3b7a67b1f7",
+     "chars": 23,
+     "audio": "tr/c07-q5-tl.mp3",
+     "align": "tr/c07-q5-tl.align.json",
+     "present": true,
+     "duration": 1.76,
+     "quality": {
+      "words": 3,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },

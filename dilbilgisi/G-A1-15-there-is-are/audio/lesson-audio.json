@@ -55,6 +55,30 @@
      "present": true,
      "duration": 2.4,
      "quality": null
+    },
+    {
+     "id": "c01-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Bir de yatağın altında bir kutu var.",
+     "textSha256": "3eff7c83422738c335f86b456546126ebff577f87fab0a604b4ceca75d9e02cf",
+     "chars": 36,
+     "audio": "tr/c01-ex1-tl.mp3",
+     "align": "tr/c01-ex1-tl.align.json",
+     "present": true,
+     "duration": 3.2,
+     "quality": {
+      "words": 7,
+      "exact": 7,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 1,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -98,6 +122,30 @@
      "present": true,
      "duration": 1.76,
      "quality": null
+    },
+    {
+     "id": "c02-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Masada bir telsiz var.",
+     "textSha256": "8c94fc0f63054ac8b2f59f19c3528de3ee363201f593ef2dc5353bc50dce9443",
+     "chars": 22,
+     "audio": "tr/c02-ex1-tl.mp3",
+     "align": "tr/c02-ex1-tl.align.json",
+     "present": true,
+     "duration": 3.36,
+     "quality": {
+      "words": 4,
+      "exact": 4,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -154,6 +202,54 @@
      "present": true,
      "duration": 1.36,
      "quality": null
+    },
+    {
+     "id": "c03-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Bir kapı var.",
+     "textSha256": "6483b871bbbff5c2016a15dc0eb91f1b356e3ccbbf62bc36ae311f85697fb4c1",
+     "chars": 13,
+     "audio": "tr/c03-ex1-tl.mp3",
+     "align": "tr/c03-ex1-tl.align.json",
+     "present": true,
+     "duration": 1.12,
+     "quality": {
+      "words": 3,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "İki sandalye var.",
+     "textSha256": "43dbce236ed1bb04e1d2a94dc4b013c4d3338dc2dd799bccb81cc7f6bd8b07a8",
+     "chars": 17,
+     "audio": "tr/c03-ex2-tl.mp3",
+     "align": "tr/c03-ex2-tl.align.json",
+     "present": true,
+     "duration": 1.44,
+     "quality": {
+      "words": 3,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -210,6 +306,54 @@
      "present": true,
      "duration": 1.84,
      "quality": null
+    },
+    {
+     "id": "c04-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Buraya yakın bir park var mı?",
+     "textSha256": "0995b9ba39e5ccbef0b2997097c89b9bd9479c281940933d120c50c595871eae",
+     "chars": 29,
+     "audio": "tr/c04-ex1-tl.mp3",
+     "align": "tr/c04-ex1-tl.align.json",
+     "present": true,
+     "duration": 3.36,
+     "quality": {
+      "words": 6,
+      "exact": 6,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c04-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Şimdi otobüs yok.",
+     "textSha256": "034c411ea430deb081a2b05d44669b81b551882aed8f7f3c283b9b67b76c98d6",
+     "chars": 17,
+     "audio": "tr/c04-ex2-tl.mp3",
+     "align": "tr/c04-ex2-tl.align.json",
+     "present": true,
+     "duration": 1.6,
+     "quality": {
+      "words": 3,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -281,6 +425,126 @@
      "present": true,
      "duration": 1.76,
      "quality": null
+    },
+    {
+     "id": "c05-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Evimin yakınında bir park var.",
+     "textSha256": "1a290054ccb9e7e27e722f21b9932a587a4fd6ae009f77bdb5696588ea644ef6",
+     "chars": 30,
+     "audio": "tr/c05-ex1-tl.mp3",
+     "align": "tr/c05-ex1-tl.align.json",
+     "present": true,
+     "duration": 2.08,
+     "quality": {
+      "words": 5,
+      "exact": 5,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Bahçede üç kedi var.",
+     "textSha256": "4d98f273e9554beaad1f2d7c495154d818413ab0f06d4e0b5f73bda7c1f7eb1a",
+     "chars": 20,
+     "audio": "tr/c05-ex2-tl.mp3",
+     "align": "tr/c05-ex2-tl.align.json",
+     "present": true,
+     "duration": 1.92,
+     "quality": {
+      "words": 4,
+      "exact": 4,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex3-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Burada bir kafe var mı?",
+     "textSha256": "3dfcc065df4820f60aae0cf1e1171d3a60b828427bc51017701ae2d05e5b21f3",
+     "chars": 23,
+     "audio": "tr/c05-ex3-tl.mp3",
+     "align": "tr/c05-ex3-tl.align.json",
+     "present": true,
+     "duration": 2.4,
+     "quality": {
+      "words": 5,
+      "exact": 5,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex4-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Burada banka yok.",
+     "textSha256": "c204955f53707f68ac7930762011e0f9fb73911341e1060bc95c02cf47fd178d",
+     "chars": 17,
+     "audio": "tr/c05-ex4-tl.mp3",
+     "align": "tr/c05-ex4-tl.align.json",
+     "present": true,
+     "duration": 1.6,
+     "quality": {
+      "words": 3,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 1,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex5-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Odada iki sandalye var.",
+     "textSha256": "4342e9b833ecac9f82a9be67666d7b5d11111e81a9d2ad1442e2e81f41ab5c78",
+     "chars": 23,
+     "audio": "tr/c05-ex5-tl.mp3",
+     "align": "tr/c05-ex5-tl.align.json",
+     "present": true,
+     "duration": 2.4,
+     "quality": {
+      "words": 4,
+      "exact": 4,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 1,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -350,6 +614,78 @@
      "present": true,
      "duration": 0.72,
      "quality": null
+    },
+    {
+     "id": "c06-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Odada bir yatak var.",
+     "textSha256": "762d886419239b8a277d60e4777f5f706d3afcfd11e51de574598eb0872eea36",
+     "chars": 20,
+     "audio": "tr/c06-ex1-tl.mp3",
+     "align": "tr/c06-ex1-tl.align.json",
+     "present": true,
+     "duration": 2.56,
+     "quality": {
+      "words": 4,
+      "exact": 4,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 1,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c06-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "İki kutu var.",
+     "textSha256": "3ed3833114a2f62f71881694003de2b1a4979a2b4f6724f6330998f116428a0d",
+     "chars": 13,
+     "audio": "tr/c06-ex2-tl.mp3",
+     "align": "tr/c06-ex2-tl.align.json",
+     "present": true,
+     "duration": 2.4,
+     "quality": {
+      "words": 3,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c06-ex3-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Bir kedim var.",
+     "textSha256": "eeccb6fa581735ebe96482d6be5aedcdb9326c798c76150b224d175aa8794b21",
+     "chars": 14,
+     "audio": "tr/c06-ex3-tl.mp3",
+     "align": "tr/c06-ex3-tl.align.json",
+     "present": true,
+     "duration": 2.4,
+     "quality": {
+      "words": 3,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -369,6 +705,137 @@
      "present": true,
      "duration": 1.68,
      "quality": null
+    },
+    {
+     "id": "c07-q1-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "İki kutu, yani çoğul: there are gelir.",
+     "textSha256": "683d28611f5fb3a3ee4a333134f29976354db16b2847185191bc0b74cf624813",
+     "chars": 38,
+     "audio": "tr/c07-q1-fb.mp3",
+     "align": "tr/c07-q1-fb.align.json",
+     "present": true,
+     "duration": 2.88,
+     "quality": {
+      "words": 7,
+      "exact": 5,
+      "fuzzy": 0,
+      "weak": 2,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 2,
+      "score": 0.714,
+      "ok": false,
+      "warnings": [
+       "iyi eşleşen kelime oranı düşük: %71 (alt sınır %85)",
+       "art arda 2 kelime zayıf ya da eksik eşleşti",
+       "zayıf/eksik: there→derar, are→gelir."
+      ]
+     }
+    },
+    {
+     "id": "c07-q2-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Soruda is başa geçer; park tek bir şey.",
+     "textSha256": "1d9e244f26b6b1c19cfa8de6c7607e8f262c45f0bbf9bb9460479abcc00f0291",
+     "chars": 39,
+     "audio": "tr/c07-q2-fb.mp3",
+     "align": "tr/c07-q2-fb.align.json",
+     "present": true,
+     "duration": 3.04,
+     "quality": {
+      "words": 8,
+      "exact": 5,
+      "fuzzy": 2,
+      "weak": 1,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 1,
+      "score": 0.875,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c07-q3-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Tek bir telsiz: is gelir.",
+     "textSha256": "40b1a202c1ba1f7ec68aac1868f57b2962dd13352ea12ef7079620928c6b3595",
+     "chars": 25,
+     "audio": "tr/c07-q3-fb.mp3",
+     "align": "tr/c07-q3-fb.align.json",
+     "present": true,
+     "duration": 2.24,
+     "quality": {
+      "words": 5,
+      "exact": 4,
+      "fuzzy": 0,
+      "weak": 1,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 1,
+      "score": 0.8,
+      "ok": false,
+      "warnings": [
+       "iyi eşleşen kelime oranı düşük: %80 (alt sınır %85)",
+       "zayıf/eksik: is→iz"
+      ]
+     }
+    },
+    {
+     "id": "c07-q4-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Önce there is, sonra şey, en sonda yer gelir.",
+     "textSha256": "e5dd9ecdafcfb0bfb2aeeaeb5b8b3cf1445ef52c6f4dd3e0061128d42e5c03ed",
+     "chars": 45,
+     "audio": "tr/c07-q4-fb.mp3",
+     "align": "tr/c07-q4-fb.align.json",
+     "present": true,
+     "duration": 3.84,
+     "quality": {
+      "words": 9,
+      "exact": 6,
+      "fuzzy": 1,
+      "weak": 1,
+      "missing": 1,
+      "extraHeard": 0,
+      "worstRun": 2,
+      "score": 0.778,
+      "ok": false,
+      "warnings": [
+       "iyi eşleşen kelime oranı düşük: %78 (alt sınır %85)",
+       "art arda 2 kelime zayıf ya da eksik eşleşti",
+       "zayıf/eksik: there→deriz,, is→∅"
+      ]
+     }
+    },
+    {
+     "id": "c07-q5-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Parkın yakınında bir kafe var.",
+     "textSha256": "33ff64bf9790d271f3f810a591bc05ce48381a2acad9f6815880a2e564d3d4f3",
+     "chars": 30,
+     "audio": "tr/c07-q5-tl.mp3",
+     "align": "tr/c07-q5-tl.align.json",
+     "present": true,
+     "duration": 3.68,
+     "quality": {
+      "words": 5,
+      "exact": 5,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },

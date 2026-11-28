@@ -55,6 +55,30 @@
      "present": true,
      "duration": 2.8,
      "quality": null
+    },
+    {
+     "id": "c01-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Vücudunu ağırlaştıran bir makinede koştu.",
+     "textSha256": "76b23b5f66e735abf51d33b974f3d11c370ed1b97a20ee3711e73403dfdf300f",
+     "chars": 41,
+     "audio": "tr/c01-ex1-tl.mp3",
+     "align": "tr/c01-ex1-tl.align.json",
+     "present": true,
+     "duration": 2.72,
+     "quality": {
+      "words": 5,
+      "exact": 5,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -98,6 +122,30 @@
      "present": true,
      "duration": 1.76,
      "quality": null
+    },
+    {
+     "id": "c02-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "yan evde oturan kız",
+     "textSha256": "966ff02637b03b1d603597108e5ba36b8cea207b21dad68efa2772a67ebd1857",
+     "chars": 19,
+     "audio": "tr/c02-ex1-tl.mp3",
+     "align": "tr/c02-ex1-tl.align.json",
+     "present": true,
+     "duration": 1.76,
+     "quality": {
+      "words": 4,
+      "exact": 3,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -167,6 +215,78 @@
      "present": true,
      "duration": 2.16,
      "quality": null
+    },
+    {
+     "id": "c03-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Seni arayan adam amcam.",
+     "textSha256": "57ec661d95580efec959275f3b0831268dc735f4463a46a9a7cb24b9a82d074d",
+     "chars": 23,
+     "audio": "tr/c03-ex1-tl.mp3",
+     "align": "tr/c03-ex1-tl.align.json",
+     "present": true,
+     "duration": 1.76,
+     "quality": {
+      "words": 4,
+      "exact": 4,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Bu, kaybettiğim çanta.",
+     "textSha256": "1145d323f3d3db36a106ba20994000ebc4b875dd9673130919f21429a6464a06",
+     "chars": 22,
+     "audio": "tr/c03-ex2-tl.mp3",
+     "align": "tr/c03-ex2-tl.align.json",
+     "present": true,
+     "duration": 2.72,
+     "quality": {
+      "words": 3,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex3-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "İzlediğimiz film harikaydı.",
+     "textSha256": "3072c460a014fb9455dc6c3e5ad2a0b1b62edd64d59b4c53dec2d55e74bcb1c6",
+     "chars": 27,
+     "audio": "tr/c03-ex3-tl.mp3",
+     "align": "tr/c03-ex3-tl.align.json",
+     "present": true,
+     "duration": 2.08,
+     "quality": {
+      "words": 3,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -210,6 +330,30 @@
      "present": true,
      "duration": 2.0,
      "quality": null
+    },
+    {
+     "id": "c04-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Bu, geçen hafta aldığım telefon.",
+     "textSha256": "9695197cdd3f8dfe365dd3447a87c4f22c0ad070ff11296615746789c460289c",
+     "chars": 32,
+     "audio": "tr/c04-ex1-tl.mp3",
+     "align": "tr/c04-ex1-tl.align.json",
+     "present": true,
+     "duration": 2.4,
+     "quality": {
+      "words": 5,
+      "exact": 5,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -281,6 +425,126 @@
      "present": true,
      "duration": 1.84,
      "quality": null
+    },
+    {
+     "id": "c05-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Yan evde oturan kız arkadaşım.",
+     "textSha256": "b6c6ee69e6399f373339f9ef79dceb245e4ab8503ba861dc96efaf5a6b6cb5bc",
+     "chars": 30,
+     "audio": "tr/c05-ex1-tl.mp3",
+     "align": "tr/c05-ex1-tl.align.json",
+     "present": true,
+     "duration": 3.04,
+     "quality": {
+      "words": 5,
+      "exact": 5,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 1,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Bütün gün uyuyan bir kedim var.",
+     "textSha256": "147ca2e1666bc34c7569cdef3e896ac2ad109c1c20b87e4d3a219d4df6b3fa71",
+     "chars": 31,
+     "audio": "tr/c05-ex2-tl.mp3",
+     "align": "tr/c05-ex2-tl.align.json",
+     "present": true,
+     "duration": 1.92,
+     "quality": {
+      "words": 6,
+      "exact": 6,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex3-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Bana verdiğin kitap çok güzel.",
+     "textSha256": "5b0ffd7ebfb280c8f28563dc25a54db7eb1df4812ef2c9ee90d90c1bfe79ec50",
+     "chars": 30,
+     "audio": "tr/c05-ex3-tl.mp3",
+     "align": "tr/c05-ex3-tl.align.json",
+     "present": true,
+     "duration": 4.16,
+     "quality": {
+      "words": 5,
+      "exact": 5,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex4-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Kafede çalışan kadını tanıyor musun?",
+     "textSha256": "e9faa2f18c9b047ad849c02de8c376590b7c571c947ca6b6320150225995dc9f",
+     "chars": 36,
+     "audio": "tr/c05-ex4-tl.mp3",
+     "align": "tr/c05-ex4-tl.align.json",
+     "present": true,
+     "duration": 3.2,
+     "quality": {
+      "words": 5,
+      "exact": 5,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex5-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Bu, her sabah bindiğimiz otobüs.",
+     "textSha256": "851ea7529bb075726db217abe309bbfa81f10d60a15e5e5d5342527dc17aef62",
+     "chars": 32,
+     "audio": "tr/c05-ex5-tl.mp3",
+     "align": "tr/c05-ex5-tl.align.json",
+     "present": true,
+     "duration": 2.56,
+     "quality": {
+      "words": 5,
+      "exact": 5,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -337,6 +601,54 @@
      "present": true,
      "duration": 1.92,
      "quality": null
+    },
+    {
+     "id": "c06-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Okuduğum kitap güzeldi.",
+     "textSha256": "5733faf9e50346d1bdfcea7ddca54e2a12bbdc51bcb36a695795809dc63c12aa",
+     "chars": 23,
+     "audio": "tr/c06-ex1-tl.mp3",
+     "align": "tr/c06-ex1-tl.align.json",
+     "present": true,
+     "duration": 1.76,
+     "quality": {
+      "words": 3,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c06-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "İzlediğim film komikti.",
+     "textSha256": "19108b957b0ff0ff9b23fc541710176b25161873af81e32c430cb777903f0185",
+     "chars": 23,
+     "audio": "tr/c06-ex2-tl.mp3",
+     "align": "tr/c06-ex2-tl.align.json",
+     "present": true,
+     "duration": 3.2,
+     "quality": {
+      "words": 3,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -356,6 +668,111 @@
      "present": true,
      "duration": 2.24,
      "quality": null
+    },
+    {
+     "id": "c07-q1-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "İnsan için who (ya da that).",
+     "textSha256": "bb9ad88f635132b3e3b1f320b7f8f8d386ee1e09425598139c40e4063c3606cd",
+     "chars": 28,
+     "audio": "tr/c07-q1-fb.mp3",
+     "align": "tr/c07-q1-fb.align.json",
+     "present": true,
+     "duration": 2.24,
+     "quality": {
+      "words": 6,
+      "exact": 4,
+      "fuzzy": 0,
+      "weak": 2,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 1,
+      "score": 0.667,
+      "ok": false,
+      "warnings": [
+       "iyi eşleşen kelime oranı düşük: %67 (alt sınır %85)",
+       "zayıf/eksik: who→hu, that→det."
+      ]
+     }
+    },
+    {
+     "id": "c07-q2-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Eşya için that ya da which; bu cümlede düşebilir de.",
+     "textSha256": "bd107fef1b511e40585a96677177ad118d63d7bc31fc2def698cc94486b8a7db",
+     "chars": 52,
+     "audio": "tr/c07-q2-fb.mp3",
+     "align": "tr/c07-q2-fb.align.json",
+     "present": true,
+     "duration": 3.52,
+     "quality": {
+      "words": 10,
+      "exact": 6,
+      "fuzzy": 1,
+      "weak": 3,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 1,
+      "score": 0.7,
+      "ok": false,
+      "warnings": [
+       "iyi eşleşen kelime oranı düşük: %70 (alt sınır %85)",
+       "zayıf/eksik: that→det, which→viç,, de→Ne?"
+      ]
+     }
+    },
+    {
+     "id": "c07-q3-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "İnsan özne için who ya da that.",
+     "textSha256": "f7b7147ef1b6e3315a018377e5589b340ff3ab05e2e7274136997578da5f6395",
+     "chars": 31,
+     "audio": "tr/c07-q3-fb.mp3",
+     "align": "tr/c07-q3-fb.align.json",
+     "present": true,
+     "duration": 2.08,
+     "quality": {
+      "words": 7,
+      "exact": 5,
+      "fuzzy": 0,
+      "weak": 2,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 1,
+      "score": 0.714,
+      "ok": false,
+      "warnings": [
+       "iyi eşleşen kelime oranı düşük: %71 (alt sınır %85)",
+       "zayıf/eksik: who→hu, that→det."
+      ]
+     }
+    },
+    {
+     "id": "c07-q4-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Önce isim, sonra onu tanımlayan cümlecik.",
+     "textSha256": "7c7050dcde621438c7aad04a93d6b749ec1785aa910f8c9dcec47609ccb08f34",
+     "chars": 41,
+     "audio": "tr/c07-q4-fb.mp3",
+     "align": "tr/c07-q4-fb.align.json",
+     "present": true,
+     "duration": 2.88,
+     "quality": {
+      "words": 6,
+      "exact": 6,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },

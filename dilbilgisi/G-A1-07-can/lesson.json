@@ -13,5 +13,9 @@
   "linksTo": { "episodes": ["A1-001", "A1-002", "A1-007"], "books": ["A1-K01"] },
   "properNouns": ["Lina", "English"],
   "pronunciations": [{ "term": "Alex", "say_as": "Aleks" }],
+  "feedbackPronunciations": [
+    { "term": "can", "say_as": "ken" },
+    { "term": "can't", "say_as": "kent" }
+  ],
   "narration": { "tr": { "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı" } }
 }

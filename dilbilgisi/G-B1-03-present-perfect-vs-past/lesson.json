@@ -28,6 +28,15 @@
   "properNouns": [
     "Rome"
   ],
+  "feedbackPronunciations": [
+    { "term": "went", "say_as": "vent" },
+    { "term": "Just", "say_as": "Cast" },
+    { "term": "has", "say_as": "hez" },
+    { "term": "just", "say_as": "cast" },
+    { "term": "left", "say_as": "left" },
+    { "term": "yet", "say_as": "yet" },
+    { "term": "did", "say_as": "did" }
+  ],
   "narration": {
     "tr": {
       "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"

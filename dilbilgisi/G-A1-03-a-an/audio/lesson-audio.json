@@ -55,6 +55,30 @@
      "present": true,
      "duration": 1.28,
      "quality": null
+    },
+    {
+     "id": "c01-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Bak, işte bir harita.",
+     "textSha256": "dfa3aa7281c8c4d80c244e3d73bd73e9f0e0415fd30e558932938179a594ac9f",
+     "chars": 21,
+     "audio": "tr/c01-ex1-tl.mp3",
+     "align": "tr/c01-ex1-tl.align.json",
+     "present": true,
+     "duration": 1.44,
+     "quality": {
+      "words": 4,
+      "exact": 4,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -141,6 +165,54 @@
      "present": true,
      "duration": 0.8,
      "quality": null
+    },
+    {
+     "id": "c03-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Öğrenciyim.",
+     "textSha256": "b94bd0d3ae914bee86a6c31ceb54adc0ce07b8ab2c5ceae8311a4bfc499d25be",
+     "chars": 11,
+     "audio": "tr/c03-ex1-tl.mp3",
+     "align": "tr/c03-ex1-tl.align.json",
+     "present": true,
+     "duration": 1.12,
+     "quality": {
+      "words": 1,
+      "exact": 1,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "O doktor.",
+     "textSha256": "ee35c24251b3ac430bd1c38acefabb9c7e0a1475e3360581771a0784b68aa224",
+     "chars": 9,
+     "audio": "tr/c03-ex2-tl.mp3",
+     "align": "tr/c03-ex2-tl.align.json",
+     "present": true,
+     "duration": 1.12,
+     "quality": {
+      "words": 2,
+      "exact": 2,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -197,6 +269,54 @@
      "present": true,
      "duration": 1.04,
      "quality": null
+    },
+    {
+     "id": "c04-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Büyük bir bina.",
+     "textSha256": "e494bcae1f45055b0d87da11111b8acdbf18e3374a33e7bf763ac5f99fe8a3df",
+     "chars": 15,
+     "audio": "tr/c04-ex1-tl.mp3",
+     "align": "tr/c04-ex1-tl.align.json",
+     "present": true,
+     "duration": 2.08,
+     "quality": {
+      "words": 3,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 1,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c04-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Eski bir bina.",
+     "textSha256": "8179cf853a1e50b69a3ea17ab7c3831c5cf314e8ed7516fcb1b5e9b0817a208a",
+     "chars": 14,
+     "audio": "tr/c04-ex2-tl.mp3",
+     "align": "tr/c04-ex2-tl.align.json",
+     "present": true,
+     "duration": 1.28,
+     "quality": {
+      "words": 3,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -268,6 +388,126 @@
      "present": true,
      "duration": 1.36,
      "quality": null
+    },
+    {
+     "id": "c05-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Bu bir not.",
+     "textSha256": "9bfb7a8391eeaaa26b5091c02f291fe95422a3fe91c8f10ddc8307f618c37b4b",
+     "chars": 11,
+     "audio": "tr/c05-ex1-tl.mp3",
+     "align": "tr/c05-ex1-tl.align.json",
+     "present": true,
+     "duration": 1.12,
+     "quality": {
+      "words": 3,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Küçük bir telsizim var.",
+     "textSha256": "b6ed64da2746f47f6fdad12e92bae7dfd69f30e9b2d7c9aee0a04a5303fb35d0",
+     "chars": 23,
+     "audio": "tr/c05-ex2-tl.mp3",
+     "align": "tr/c05-ex2-tl.align.json",
+     "present": true,
+     "duration": 1.44,
+     "quality": {
+      "words": 4,
+      "exact": 4,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex3-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Eski bir harita.",
+     "textSha256": "5e45c4b1f4c23e7b892c91d776751d4bb34c76f9da58f25ddc53ee2202a77471",
+     "chars": 16,
+     "audio": "tr/c05-ex3-tl.mp3",
+     "align": "tr/c05-ex3-tl.align.json",
+     "present": true,
+     "duration": 1.28,
+     "quality": {
+      "words": 3,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex4-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Bir elma alabilir miyim, lütfen?",
+     "textSha256": "82d671484e4c3c0f2f1579ad467bf74d278330d4cd32a41f609822872c5deb48",
+     "chars": 32,
+     "audio": "tr/c05-ex4-tl.mp3",
+     "align": "tr/c05-ex4-tl.align.json",
+     "present": true,
+     "duration": 2.08,
+     "quality": {
+      "words": 5,
+      "exact": 5,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex5-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Babam öğretmen.",
+     "textSha256": "b8caa9109c19467d3129fc754639738c87edc30abf6928b5c18f884120d3eb2b",
+     "chars": 15,
+     "audio": "tr/c05-ex5-tl.mp3",
+     "align": "tr/c05-ex5-tl.align.json",
+     "present": true,
+     "duration": 1.28,
+     "quality": {
+      "words": 2,
+      "exact": 2,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -343,6 +583,105 @@
      "present": true,
      "duration": 0.8,
      "quality": null
+    },
+    {
+     "id": "c07-q1-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Student ünsüz bir sesle başlıyor: a gelir.",
+     "textSha256": "a7501b4cc27b3bf1b73cb90772a6879d68b7c3ecedd67a5f4be7efc591c80660",
+     "chars": 42,
+     "audio": "tr/c07-q1-fb.mp3",
+     "align": "tr/c07-q1-fb.align.json",
+     "present": true,
+     "duration": 3.68,
+     "quality": {
+      "words": 7,
+      "exact": 5,
+      "fuzzy": 0,
+      "weak": 2,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 1,
+      "score": 0.714,
+      "ok": false,
+      "warnings": [
+       "iyi eşleşen kelime oranı düşük: %71 (alt sınır %85)",
+       "zayıf/eksik: Student→Sufrunt, a→Ey"
+      ]
+     }
+    },
+    {
+     "id": "c07-q2-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Old ünlü bir sesle başlıyor: an gelir.",
+     "textSha256": "08cc7118bac720c22ea8b1ffc5d075c012d4c80138300335e98491b371869ccc",
+     "chars": 38,
+     "audio": "tr/c07-q2-fb.mp3",
+     "align": "tr/c07-q2-fb.align.json",
+     "present": true,
+     "duration": 3.36,
+     "quality": {
+      "words": 7,
+      "exact": 5,
+      "fuzzy": 2,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c07-q3-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Tek bir harita var; önüne a gelir.",
+     "textSha256": "31b64b16568bed763e04c10e5144888e7d1cbd7473ad4ad057463d7d2a124818",
+     "chars": 34,
+     "audio": "tr/c07-q3-fb.mp3",
+     "align": "tr/c07-q3-fb.align.json",
+     "present": true,
+     "duration": 2.88,
+     "quality": {
+      "words": 7,
+      "exact": 6,
+      "fuzzy": 0,
+      "weak": 1,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 1,
+      "score": 0.857,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c07-q4-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Önce kişi, sonra fiil, en sonda şey gelir.",
+     "textSha256": "cef68cff705be9295b6b8d959a452715bd7c454b77767dad2a8122e22f21ace5",
+     "chars": 42,
+     "audio": "tr/c07-q4-fb.mp3",
+     "align": "tr/c07-q4-fb.align.json",
+     "present": true,
+     "duration": 3.68,
+     "quality": {
+      "words": 8,
+      "exact": 8,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 1,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -416,6 +755,30 @@
      "present": true,
      "duration": 0.96,
      "quality": null
+    },
+    {
+     "id": "c09-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Eski bir not.",
+     "textSha256": "5fccf98bf8c0a30df6c9e84870a3955e87dd9b2d3e5c031f2cda9ba5093d62ae",
+     "chars": 13,
+     "audio": "tr/c09-ex1-tl.mp3",
+     "align": "tr/c09-ex1-tl.align.json",
+     "present": true,
+     "duration": 1.28,
+     "quality": {
+      "words": 3,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   }

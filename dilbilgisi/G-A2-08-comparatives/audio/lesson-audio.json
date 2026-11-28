@@ -55,6 +55,30 @@
      "present": true,
      "duration": 2.32,
      "quality": null
+    },
+    {
+     "id": "c01-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Dünya, Ay'dan çok daha büyüktü.",
+     "textSha256": "a36690d69038f2174f165eb48b9e09f6514baa259943d52ab4745600bdc1b316",
+     "chars": 31,
+     "audio": "tr/c01-ex1-tl.mp3",
+     "align": "tr/c01-ex1-tl.align.json",
+     "present": true,
+     "duration": 2.08,
+     "quality": {
+      "words": 5,
+      "exact": 5,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -154,6 +178,78 @@
      "present": true,
      "duration": 1.36,
      "quality": null
+    },
+    {
+     "id": "c03-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Bu kitap filmden daha ilginç.",
+     "textSha256": "51b4d9bb97a657aa035013886ee165434ae2c2b6e3953f10f0b05fc39274e211",
+     "chars": 29,
+     "audio": "tr/c03-ex1-tl.mp3",
+     "align": "tr/c03-ex1-tl.align.json",
+     "present": true,
+     "duration": 2.88,
+     "quality": {
+      "words": 5,
+      "exact": 5,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Benim kekim seninkinden daha iyi.",
+     "textSha256": "93586cdc146d73ca53bed21d710e8ba746edabeecb6ee105452297e47f95391e",
+     "chars": 33,
+     "audio": "tr/c03-ex2-tl.mp3",
+     "align": "tr/c03-ex2-tl.align.json",
+     "present": true,
+     "duration": 2.24,
+     "quality": {
+      "words": 5,
+      "exact": 5,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex3-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Bugün hava daha kötü.",
+     "textSha256": "f8538b1457869aeaa32fa47f4c521cb51f2375f42ff76ab17211bd1efff5dd91",
+     "chars": 21,
+     "audio": "tr/c03-ex3-tl.mp3",
+     "align": "tr/c03-ex3-tl.align.json",
+     "present": true,
+     "duration": 2.88,
+     "quality": {
+      "words": 4,
+      "exact": 4,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 1,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -225,6 +321,126 @@
      "present": true,
      "duration": 2.32,
      "quality": null
+    },
+    {
+     "id": "c04-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Erkek kardeşim benden daha uzun.",
+     "textSha256": "8b2990c2191c81fb1fe820c92519779576046c4593a7fe614d465c0197b0e6bb",
+     "chars": 32,
+     "audio": "tr/c04-ex1-tl.mp3",
+     "align": "tr/c04-ex1-tl.align.json",
+     "present": true,
+     "duration": 2.08,
+     "quality": {
+      "words": 5,
+      "exact": 5,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c04-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Deniz bugün daha soğuk.",
+     "textSha256": "af68fe404ee543869a2af2bb9bf88d312ccfd910f6173097cfe90318e0806b26",
+     "chars": 23,
+     "audio": "tr/c04-ex2-tl.mp3",
+     "align": "tr/c04-ex2-tl.align.json",
+     "present": true,
+     "duration": 1.92,
+     "quality": {
+      "words": 4,
+      "exact": 4,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c04-ex3-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Bu çanta o çantadan daha ağır.",
+     "textSha256": "0486ac593bff597f06fd2f06fd6a4c13c7b4dd98ee93ed98f4e90e31e0836907",
+     "chars": 30,
+     "audio": "tr/c04-ex3-tl.mp3",
+     "align": "tr/c04-ex3-tl.align.json",
+     "present": true,
+     "duration": 2.4,
+     "quality": {
+      "words": 6,
+      "exact": 6,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c04-ex4-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Film kitaptan daha heyecanlıydı.",
+     "textSha256": "2c9827683bec7790c6f9bf9e9f6ca8e0c7fea95522020350df0421487b26c63e",
+     "chars": 32,
+     "audio": "tr/c04-ex4-tl.mp3",
+     "align": "tr/c04-ex4-tl.align.json",
+     "present": true,
+     "duration": 2.4,
+     "quality": {
+      "words": 4,
+      "exact": 4,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c04-ex5-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Senin fikrin benimkinden daha iyi.",
+     "textSha256": "a6a47ed7b548f4c53908759468c9a4cf139e07a5b2b3b163c0c5c8e6e564beca",
+     "chars": 34,
+     "audio": "tr/c04-ex5-tl.mp3",
+     "align": "tr/c04-ex5-tl.align.json",
+     "present": true,
+     "duration": 2.08,
+     "quality": {
+      "words": 5,
+      "exact": 5,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -281,6 +497,54 @@
      "present": true,
      "duration": 1.2,
      "quality": null
+    },
+    {
+     "id": "c05-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Bu kek daha iyi.",
+     "textSha256": "0df85c16ee15e8bf147c58d6dc51089730c89a6911f49d7faaee13ed56626492",
+     "chars": 16,
+     "audio": "tr/c05-ex1-tl.mp3",
+     "align": "tr/c05-ex1-tl.align.json",
+     "present": true,
+     "duration": 1.44,
+     "quality": {
+      "words": 4,
+      "exact": 4,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "O benden daha uzun.",
+     "textSha256": "e87d7a2a35104d8fdd1d877b699be62b25149d1a0d146e1a8dbdc5fcb61bca14",
+     "chars": 19,
+     "audio": "tr/c05-ex2-tl.mp3",
+     "align": "tr/c05-ex2-tl.align.json",
+     "present": true,
+     "duration": 1.6,
+     "quality": {
+      "words": 4,
+      "exact": 4,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -300,6 +564,105 @@
      "present": true,
      "duration": 1.68,
      "quality": null
+    },
+    {
+     "id": "c06-q1-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Tall kısa bir sıfat: taller.",
+     "textSha256": "e52d97ee0d227bffef2bdc2f7c380fc7680ad8faa1946e7f1014b02251297dce",
+     "chars": 28,
+     "audio": "tr/c06-q1-fb.mp3",
+     "align": "tr/c06-q1-fb.align.json",
+     "present": true,
+     "duration": 2.72,
+     "quality": {
+      "words": 5,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 2,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 1,
+      "score": 0.6,
+      "ok": false,
+      "warnings": [
+       "iyi eşleşen kelime oranı düşük: %60 (alt sınır %85)",
+       "zayıf/eksik: Tall→Tol, taller→tolır."
+      ]
+     }
+    },
+    {
+     "id": "c06-q2-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Interesting uzun bir sıfat: more interesting.",
+     "textSha256": "129bc7799f29ac08f694ff7fddd27ae34dd57b1f6cea0fe28fab6168da7050be",
+     "chars": 45,
+     "audio": "tr/c06-q2-fb.mp3",
+     "align": "tr/c06-q2-fb.align.json",
+     "present": true,
+     "duration": 3.84,
+     "quality": {
+      "words": 6,
+      "exact": 5,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 1,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c06-q3-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Hot kısa ve bir ünlü ile bir ünsüzle bitiyor: son harf iki kez yazılır, hotter.",
+     "textSha256": "56b85d1ac40f3dcd03d0820da8ca169b31cefbe5ffc1bb0bf6dae868e42fc2a8",
+     "chars": 79,
+     "audio": "tr/c06-q3-fb.mp3",
+     "align": "tr/c06-q3-fb.align.json",
+     "present": true,
+     "duration": 5.6,
+     "quality": {
+      "words": 15,
+      "exact": 13,
+      "fuzzy": 1,
+      "weak": 1,
+      "missing": 0,
+      "extraHeard": 1,
+      "worstRun": 1,
+      "score": 0.933,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c06-q4-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Good düzensiz: better.",
+     "textSha256": "57ead4123c5153f3e7db38e6bd0572e0f91f04aee213463ac9a84ff45ad248e7",
+     "chars": 22,
+     "audio": "tr/c06-q4-fb.mp3",
+     "align": "tr/c06-q4-fb.align.json",
+     "present": true,
+     "duration": 2.56,
+     "quality": {
+      "words": 3,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 1,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -373,6 +736,30 @@
      "present": true,
      "duration": 2.0,
      "quality": null
+    },
+    {
+     "id": "c08-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Dünya, Ay'dan daha büyük.",
+     "textSha256": "ef0180130c0c5a19109788f26b5cc54bd278fa8182cf347461fcb5c02f456b14",
+     "chars": 25,
+     "audio": "tr/c08-ex1-tl.mp3",
+     "align": "tr/c08-ex1-tl.align.json",
+     "present": true,
+     "duration": 1.92,
+     "quality": {
+      "words": 4,
+      "exact": 4,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   }

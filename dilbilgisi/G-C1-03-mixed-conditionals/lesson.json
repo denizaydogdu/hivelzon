@@ -26,6 +26,12 @@
     "London",
     "German"
   ],
+  "feedbackPronunciations": [
+    { "term": "would", "say_as": "vud" },
+    { "term": "be", "say_as": "bi" },
+    { "term": "weren't", "say_as": "vörınt" },
+    { "term": "wouldn't", "say_as": "vudınt" }
+  ],
   "narration": {
     "tr": {
       "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"

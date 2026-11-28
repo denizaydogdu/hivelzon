@@ -49,3 +49,37 @@ Aşağıdaki satırları `tts_lesson.py` yazar.
 | 2026-11-26T14:09:46Z | c05-ex4 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.05 | 34 | 01a7a05dcc82c52f | audio/en/c05-ex4.mp3 |
 | 2026-11-26T14:09:48Z | c05-ex5 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.05 | 38 | e9eb542030dafe39 | audio/en/c05-ex5.mp3 |
 | 2026-11-26T14:09:50Z | c06-ex1 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.05 | 23 | 3eb97721e4349b9b | audio/en/c06-ex1.mp3 |
+| 2026-11-27T18:31:40Z | c07-q1-fb | alania-v2 | alania2-f1 | alania-v2.1 | 57 | 3.36 | 50ade988a05f4b7fb18f0689251f743e | b6e8a3d08e3a3877 |
+| 2026-11-27T18:31:41Z | c07-q1-fb | duyu-1 | - | - | - | 3.36 | - | b6e8a3d08e3a3877 |
+| 2026-11-27T18:31:44Z | c07-q2-fb | alania-v2 | alania2-f1 | alania-v2.1 | 54 | 3.68 | 71348fc355e6417796208f041d6f844f | f124ef38b11ff34f |
+| 2026-11-27T18:31:45Z | c07-q2-fb | duyu-1 | - | - | - | 3.68 | - | f124ef38b11ff34f |
+| 2026-11-27T18:31:47Z | c07-q3-fb | alania-v2 | alania2-f1 | alania-v2.1 | 33 | 2.88 | a5654bf2ba4c4c54b31d0a317d5ba2fb | d2e92fcdacc28d7c |
+| 2026-11-27T18:31:48Z | c07-q3-fb | duyu-1 | - | - | - | 2.88 | - | d2e92fcdacc28d7c |
+| 2026-11-27T18:31:50Z | c07-q4-fb | alania-v2 | alania2-f1 | alania-v2.1 | 46 | 3.52 | f3a6656904254a5d8c2d704c01b80957 | 89ecb75883d2c3ad |
+| 2026-11-27T18:31:51Z | c07-q4-fb | duyu-1 | - | - | - | 3.52 | - | 89ecb75883d2c3ad |
+| 2026-11-27T19:40:15Z | c01-ex1-tl | alania-v2 | alania2-f1 | alania-v2.1 | 33 | 2.4 | 309d870cb1b248ef999103718c57ef90 | 3e25271474086473 |
+| 2026-11-27T19:40:16Z | c01-ex1-tl | duyu-1 | - | - | - | 2.4 | - | 3e25271474086473 |
+| 2026-11-27T19:40:18Z | c02-ex1-tl | alania-v2 | alania2-f1 | alania-v2.1 | 37 | 2.4 | bd64979971d8417c90b5ed9447449935 | 17f7884ffec54412 |
+| 2026-11-27T19:40:19Z | c02-ex1-tl | duyu-1 | - | - | - | 2.4 | - | 17f7884ffec54412 |
+| 2026-11-27T19:40:21Z | c03-ex1-tl | alania-v2 | alania2-f1 | alania-v2.1 | 27 | 2.08 | 932d17071eac4060bfcda3baa44693f5 | fd942e1f767beeca |
+| 2026-11-27T19:40:22Z | c03-ex1-tl | duyu-1 | - | - | - | 2.08 | - | fd942e1f767beeca |
+| 2026-11-27T19:40:24Z | c03-ex2-tl | alania-v2 | alania2-f1 | alania-v2.1 | 28 | 2.08 | 04dbcb99427547c9b5d8603af1fb5287 | c3fca594ab435dc5 |
+| 2026-11-27T19:40:25Z | c03-ex2-tl | duyu-1 | - | - | - | 2.08 | - | c3fca594ab435dc5 |
+| 2026-11-27T19:40:27Z | c04-ex1-tl | alania-v2 | alania2-f1 | alania-v2.1 | 34 | 2.24 | a00d4f21fc5844838e25dd9c35071e07 | 1bebcc25eb38992f |
+| 2026-11-27T19:40:28Z | c04-ex1-tl | duyu-1 | - | - | - | 2.24 | - | 1bebcc25eb38992f |
+| 2026-11-27T19:40:30Z | c04-ex2-tl | alania-v2 | alania2-f1 | alania-v2.1 | 30 | 3.52 | 9b337c121ec8401380ea30a57fc5e3b1 | 9e45206980d4e07c |
+| 2026-11-27T19:40:31Z | c04-ex2-tl | duyu-1 | - | - | - | 3.52 | - | 9e45206980d4e07c |
+| 2026-11-27T19:40:33Z | c05-ex1-tl | alania-v2 | alania2-f1 | alania-v2.1 | 29 | 2.24 | c382f5d364004450afa6e5155f8695f6 | bbf6358beb1680bb |
+| 2026-11-27T19:40:34Z | c05-ex1-tl | duyu-1 | - | - | - | 2.24 | - | bbf6358beb1680bb |
+| 2026-11-27T19:40:37Z | c05-ex2-tl | alania-v2 | alania2-f1 | alania-v2.1 | 33 | 4.0 | 29bea1f1a210484e9b24a0f754ba266f | c21f7ff2d31c0c4c |
+| 2026-11-27T19:40:38Z | c05-ex2-tl | duyu-1 | - | - | - | 4.0 | - | c21f7ff2d31c0c4c |
+| 2026-11-27T19:40:40Z | c05-ex3-tl | alania-v2 | alania2-f1 | alania-v2.1 | 26 | 1.76 | 904643e1e7fc4fd99f6020b3a870f2b8 | 89f4b559d6ead6a1 |
+| 2026-11-27T19:40:41Z | c05-ex3-tl | duyu-1 | - | - | - | 1.76 | - | 89f4b559d6ead6a1 |
+| 2026-11-27T19:40:43Z | c05-ex4-tl | alania-v2 | alania2-f1 | alania-v2.1 | 40 | 2.56 | 2b9120dfc1214c5b81b1cca004ae65d9 | f3042d95a3370c35 |
+| 2026-11-27T19:40:44Z | c05-ex4-tl | duyu-1 | - | - | - | 2.56 | - | f3042d95a3370c35 |
+| 2026-11-27T19:40:46Z | c05-ex5-tl | alania-v2 | alania2-f1 | alania-v2.1 | 23 | 1.6 | e521338e06954959bd31d5f23676e50e | 6695c345ef140026 |
+| 2026-11-27T19:40:47Z | c05-ex5-tl | duyu-1 | - | - | - | 1.6 | - | 6695c345ef140026 |
+| 2026-11-27T19:40:49Z | c06-ex1-tl | alania-v2 | alania2-f1 | alania-v2.1 | 16 | 1.44 | ab230878d25b4eb398ff58b51fab55a3 | 33d23af9633f0fb1 |
+| 2026-11-27T19:40:49Z | c06-ex1-tl | duyu-1 | - | - | - | 1.44 | - | 33d23af9633f0fb1 |
+| 2026-11-27T19:40:51Z | c07-q5-tl | alania-v2 | alania2-f1 | alania-v2.1 | 22 | 2.56 | 0928c75d7d8945f5ab511c7c87704d2c | a9ffcc890cfa30c9 |
+| 2026-11-27T19:40:53Z | c07-q5-tl | duyu-1 | - | - | - | 2.56 | - | a9ffcc890cfa30c9 |

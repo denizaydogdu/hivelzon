@@ -55,6 +55,30 @@
      "present": true,
      "duration": 3.04,
      "quality": null
+    },
+    {
+     "id": "c01-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Yarın bu saatte yine onun masasında oturuyor olacağım.",
+     "textSha256": "a134d23e7a086c7f4afe4e725b3c30d1e06f500dc9aa46a099d97e6d26bc33db",
+     "chars": 54,
+     "audio": "tr/c01-ex1-tl.mp3",
+     "align": "tr/c01-ex1-tl.align.json",
+     "present": true,
+     "duration": 3.36,
+     "quality": {
+      "words": 8,
+      "exact": 8,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -98,6 +122,30 @@
      "present": true,
      "duration": 2.24,
      "quality": null
+    },
+    {
+     "id": "c02-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Bu akşam sekizde yemek yiyor olacağız.",
+     "textSha256": "92b1c3ada57331bf05aa258ae69364792279881736d200ddc8e60af57a75d7fa",
+     "chars": 38,
+     "audio": "tr/c02-ex1-tl.mp3",
+     "align": "tr/c02-ex1-tl.align.json",
+     "present": true,
+     "duration": 2.24,
+     "quality": {
+      "words": 6,
+      "exact": 6,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -141,6 +189,30 @@
      "present": true,
      "duration": 2.4,
      "quality": null
+    },
+    {
+     "id": "c03-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Hazirana kadar okulu bitirmiş olacak.",
+     "textSha256": "ec2c7c94ea8b5bd79ac6c8cfa7c3b7904afef4c63522a34ef31c96a037fb4618",
+     "chars": 37,
+     "audio": "tr/c03-ex1-tl.mp3",
+     "align": "tr/c03-ex1-tl.align.json",
+     "present": true,
+     "duration": 2.56,
+     "quality": {
+      "words": 5,
+      "exact": 5,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 1,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -197,6 +269,56 @@
      "present": true,
      "duration": 1.6,
      "quality": null
+    },
+    {
+     "id": "c04-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Raporu cumaya kadar bitireceğim.",
+     "textSha256": "51d574d69deda9413ea2f5f1f39dd7dab3e0346b636ef09956f829673e15d9ed",
+     "chars": 32,
+     "audio": "tr/c04-ex1-tl.mp3",
+     "align": "tr/c04-ex1-tl.align.json",
+     "present": true,
+     "duration": 2.88,
+     "quality": {
+      "words": 4,
+      "exact": 2,
+      "fuzzy": 2,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c04-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Cumaya kadar burada çalışacağım.",
+     "textSha256": "0af81d0e2034a2a75b7de996a5cd0b22d7d014b32cff0b9aa4a00b7ee53c876c",
+     "chars": 32,
+     "audio": "tr/c04-ex2-tl.mp3",
+     "align": "tr/c04-ex2-tl.align.json",
+     "present": true,
+     "duration": 4.0,
+     "quality": {
+      "words": 4,
+      "exact": 2,
+      "fuzzy": 2,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 4,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": false,
+      "warnings": [
+       "Duyu metinde olmayan 4 kelime duydu"
+      ]
+     }
     }
    ]
   },
@@ -268,6 +390,126 @@
      "present": true,
      "duration": 2.88,
      "quality": null
+    },
+    {
+     "id": "c05-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Dokuzda arama. Uyuyor olacağım.",
+     "textSha256": "41427a5997eec7a84d58287eae4c4ca2b8b2ef67e972efc73fa770742d0fcdcc",
+     "chars": 31,
+     "audio": "tr/c05-ex1-tl.mp3",
+     "align": "tr/c05-ex1-tl.align.json",
+     "present": true,
+     "duration": 2.08,
+     "quality": {
+      "words": 4,
+      "exact": 4,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Bu akşam arabayı kullanıyor olacak mısın?",
+     "textSha256": "c15a6bbff7bd96b1325d7bf6f2af2767d656bc33265d36592dfdd8e84d0c59fd",
+     "chars": 41,
+     "audio": "tr/c05-ex2-tl.mp3",
+     "align": "tr/c05-ex2-tl.align.json",
+     "present": true,
+     "duration": 2.24,
+     "quality": {
+      "words": 6,
+      "exact": 6,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex3-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Sen gelene kadar yemeğimizi yemiş olacağız.",
+     "textSha256": "51968d68a00edeb4f8f5f242310cf1cae023b5427221640620008dc6e477710c",
+     "chars": 43,
+     "audio": "tr/c05-ex3-tl.mp3",
+     "align": "tr/c05-ex3-tl.align.json",
+     "present": true,
+     "duration": 2.72,
+     "quality": {
+      "words": 6,
+      "exact": 6,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex4-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "2030'a kadar üniversiteyi bitirmiş olacağım.",
+     "textSha256": "f65adaa067138c1cd77a675d7a2ef7a9a2cc04fed04efcd029b55053e360f447",
+     "chars": 44,
+     "audio": "tr/c05-ex4-tl.mp3",
+     "align": "tr/c05-ex4-tl.align.json",
+     "present": true,
+     "duration": 4.48,
+     "quality": {
+      "words": 5,
+      "exact": 5,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex5-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Gelecek hafta bu zaman plajda uzanıyor olacağız.",
+     "textSha256": "5b012551305b3be40eaa269cd095bc964d88440949436b714a2ea6de13b416ab",
+     "chars": 48,
+     "audio": "tr/c05-ex5-tl.mp3",
+     "align": "tr/c05-ex5-tl.align.json",
+     "present": true,
+     "duration": 3.04,
+     "quality": {
+      "words": 7,
+      "exact": 7,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -324,6 +566,30 @@
      "present": true,
      "duration": 2.32,
      "quality": null
+    },
+    {
+     "id": "c06-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Gelecek yıla kadar okulu bitirmiş olacağım.",
+     "textSha256": "395bad6e32f0ef51e9cab989c67132d94444bbe95945fb9649b51d6edbb8ead9",
+     "chars": 43,
+     "audio": "tr/c06-ex2-tl.mp3",
+     "align": "tr/c06-ex2-tl.align.json",
+     "present": true,
+     "duration": 2.72,
+     "quality": {
+      "words": 6,
+      "exact": 6,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -343,6 +609,126 @@
      "present": true,
      "duration": 2.48,
      "quality": null
+    },
+    {
+     "id": "c07-q1-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Saat onda uyku sürüyor olacak: will be sleeping.",
+     "textSha256": "d363a23a0417b324e2edda7ca6ce6c8d81c8b343bc7d1c7a920c28802f6ab48c",
+     "chars": 48,
+     "audio": "tr/c07-q1-fb.mp3",
+     "align": "tr/c07-q1-fb.align.json",
+     "present": true,
+     "duration": 3.2,
+     "quality": {
+      "words": 8,
+      "exact": 8,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c07-q2-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Cumaya kadar bitmiş olacak: will have read.",
+     "textSha256": "2057b526022d9b3787b54cea498d0354290d9d985ce81e2fa2be50882da62b53",
+     "chars": 43,
+     "audio": "tr/c07-q2-fb.mp3",
+     "align": "tr/c07-q2-fb.align.json",
+     "present": true,
+     "duration": 2.72,
+     "quality": {
+      "words": 7,
+      "exact": 5,
+      "fuzzy": 2,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c07-q3-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Süren durum için until gelir; bitiş anı için by.",
+     "textSha256": "adaa3f9d314e338e9821ff5b9a5b04cf59e6773e1b8d4a3646d475dc6c5a2e94",
+     "chars": 48,
+     "audio": "tr/c07-q3-fb.mp3",
+     "align": "tr/c07-q3-fb.align.json",
+     "present": true,
+     "duration": 4.0,
+     "quality": {
+      "words": 9,
+      "exact": 7,
+      "fuzzy": 2,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c07-q4-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Bitmiş olacak eylem için will have ve üçüncü hâl gelir.",
+     "textSha256": "778a09479555d84f195e0d36bfbfdc9ed5313730672f6359064eb78598484e6a",
+     "chars": 55,
+     "audio": "tr/c07-q4-fb.mp3",
+     "align": "tr/c07-q4-fb.align.json",
+     "present": true,
+     "duration": 3.36,
+     "quality": {
+      "words": 10,
+      "exact": 9,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c07-q5-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Yarın bu saatte Berlin'e uçuyor olacağım.",
+     "textSha256": "b777a07a508647c2713cd4e31d78c23b89d440fe998f8f07eebf6e688877d8ed",
+     "chars": 41,
+     "audio": "tr/c07-q5-tl.mp3",
+     "align": "tr/c07-q5-tl.align.json",
+     "present": true,
+     "duration": 2.56,
+     "quality": {
+      "words": 6,
+      "exact": 6,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },

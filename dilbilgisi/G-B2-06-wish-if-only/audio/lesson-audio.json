@@ -55,6 +55,30 @@
      "present": true,
      "duration": 2.96,
      "quality": null
+    },
+    {
+     "id": "c01-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Keşke nedenini bulmaya vaktim olsaydı.",
+     "textSha256": "47b05e506fe913d03ee9c5ebedb22a32c4f4be96a491bd49dc86cb3fbc442339",
+     "chars": 38,
+     "audio": "tr/c01-ex1-tl.mp3",
+     "align": "tr/c01-ex1-tl.align.json",
+     "present": true,
+     "duration": 3.36,
+     "quality": {
+      "words": 5,
+      "exact": 5,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -111,6 +135,54 @@
      "present": true,
      "duration": 1.44,
      "quality": null
+    },
+    {
+     "id": "c02-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Keşke yüzebilsem.",
+     "textSha256": "e21387ec3f5707a0c8927ffbc4e9a433c812e403fdbd7356d1c70e6f261e6577",
+     "chars": 17,
+     "audio": "tr/c02-ex1-tl.mp3",
+     "align": "tr/c02-ex1-tl.align.json",
+     "present": true,
+     "duration": 1.6,
+     "quality": {
+      "words": 2,
+      "exact": 1,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 1,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c02-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Keşke daha uzun olsam.",
+     "textSha256": "790630f0b31803fca9b08cec03d9dbde6efed963b35c15702a4b540e64ef7f44",
+     "chars": 22,
+     "audio": "tr/c02-ex2-tl.mp3",
+     "align": "tr/c02-ex2-tl.align.json",
+     "present": true,
+     "duration": 3.52,
+     "quality": {
+      "words": 4,
+      "exact": 4,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -154,6 +226,30 @@
      "present": true,
      "duration": 1.36,
      "quality": null
+    },
+    {
+     "id": "c03-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Keşke onu söylemeseydim.",
+     "textSha256": "3a0ff5dc74259051fdafb023afffe6d0194f07093ac890ad239c328319f86a46",
+     "chars": 24,
+     "audio": "tr/c03-ex1-tl.mp3",
+     "align": "tr/c03-ex1-tl.align.json",
+     "present": true,
+     "duration": 1.92,
+     "quality": {
+      "words": 3,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -210,6 +306,54 @@
      "present": true,
      "duration": 2.0,
      "quality": null
+    },
+    {
+     "id": "c04-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Keşke konuşmayı bıraksan.",
+     "textSha256": "52bb88d8f641101ff08e32dca13b6b5d596a40f82d0de00a68841820c4d20561",
+     "chars": 25,
+     "audio": "tr/c04-ex1-tl.mp3",
+     "align": "tr/c04-ex1-tl.align.json",
+     "present": true,
+     "duration": 3.68,
+     "quality": {
+      "words": 3,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 1,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c04-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Ah, keşke biraz daha zamanım olsa!",
+     "textSha256": "ec9412797433626cd160d6ebed3f9def5ab664b7a1aa30de0a1ab4475a1bd4ef",
+     "chars": 34,
+     "audio": "tr/c04-ex2-tl.mp3",
+     "align": "tr/c04-ex2-tl.align.json",
+     "present": true,
+     "duration": 4.16,
+     "quality": {
+      "words": 6,
+      "exact": 6,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 1,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -281,6 +425,126 @@
      "present": true,
      "duration": 2.0,
      "quality": null
+    },
+    {
+     "id": "c05-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Keşke telefon numarasını bilsem.",
+     "textSha256": "a6600eed59df34bfb96933902c8211cbe19a7d04e3014c3ce9d0cfec8a871d93",
+     "chars": 32,
+     "audio": "tr/c05-ex1-tl.mp3",
+     "align": "tr/c05-ex1-tl.align.json",
+     "present": true,
+     "duration": 2.72,
+     "quality": {
+      "words": 4,
+      "exact": 4,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 1,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Keşke daha büyük bir odam olsa.",
+     "textSha256": "4fae627b1772d5ac575429ae6932445950ed707ab1f25fe59626d7eb4fd0f691",
+     "chars": 31,
+     "audio": "tr/c05-ex2-tl.mp3",
+     "align": "tr/c05-ex2-tl.align.json",
+     "present": true,
+     "duration": 2.08,
+     "quality": {
+      "words": 6,
+      "exact": 6,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex3-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "O kadar çok pasta yediğine pişman.",
+     "textSha256": "14a6e575f6059b5db11ce6f717692262172655d69fe33a25323a3a10a29d60f0",
+     "chars": 34,
+     "audio": "tr/c05-ex3-tl.mp3",
+     "align": "tr/c05-ex3-tl.align.json",
+     "present": true,
+     "duration": 3.52,
+     "quality": {
+      "words": 6,
+      "exact": 6,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex4-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Keşke yağmur dursa.",
+     "textSha256": "b0a0cc4d2a09b04bb181dca00a63e9ae27b5be1753add22b545947cafd9cb09f",
+     "chars": 19,
+     "audio": "tr/c05-ex4-tl.mp3",
+     "align": "tr/c05-ex4-tl.align.json",
+     "present": true,
+     "duration": 1.6,
+     "quality": {
+      "words": 3,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex5-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Ah, keşke seni dinleseydim!",
+     "textSha256": "5f268e5b7bf750569f15daa6c2a2585a133f4c9c657a4690b14816264ac7dfa2",
+     "chars": 27,
+     "audio": "tr/c05-ex5-tl.mp3",
+     "align": "tr/c05-ex5-tl.align.json",
+     "present": true,
+     "duration": 2.4,
+     "quality": {
+      "words": 4,
+      "exact": 3,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -337,6 +601,30 @@
      "present": true,
      "duration": 1.36,
      "quality": null
+    },
+    {
+     "id": "c06-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Keşke araba kullanabilsem.",
+     "textSha256": "7d20dcc2268ac7a936ac72430df51ba44c2a5a324e12245d718aa057d27e1f38",
+     "chars": 26,
+     "audio": "tr/c06-ex1-tl.mp3",
+     "align": "tr/c06-ex1-tl.align.json",
+     "present": true,
+     "duration": 2.72,
+     "quality": {
+      "words": 3,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 1,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -356,6 +644,111 @@
      "present": true,
      "duration": 1.44,
      "quality": null
+    },
+    {
+     "id": "c07-q1-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Şimdiki dilekte geçmiş biçim gelir: knew.",
+     "textSha256": "330f6eeef8c16f778d4b18fb4a851b60aca59a9bc3a3b910661c27785b45b285",
+     "chars": 41,
+     "audio": "tr/c07-q1-fb.mp3",
+     "align": "tr/c07-q1-fb.align.json",
+     "present": true,
+     "duration": 2.88,
+     "quality": {
+      "words": 6,
+      "exact": 4,
+      "fuzzy": 1,
+      "weak": 1,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 1,
+      "score": 0.833,
+      "ok": false,
+      "warnings": [
+       "iyi eşleşen kelime oranı düşük: %83 (alt sınır %85)",
+       "zayıf/eksik: knew→Nu."
+      ]
+     }
+    },
+    {
+     "id": "c07-q2-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Yesterday geçmişi gösterir: pişmanlıkta had ve üçüncü hâl gelir.",
+     "textSha256": "8eb8f11c735e65dca3ed83f3ea488e93ecf859a105c38c0bc9aed3edf720deb4",
+     "chars": 64,
+     "audio": "tr/c07-q2-fb.mp3",
+     "align": "tr/c07-q2-fb.align.json",
+     "present": true,
+     "duration": 4.96,
+     "quality": {
+      "words": 9,
+      "exact": 7,
+      "fuzzy": 1,
+      "weak": 1,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 1,
+      "score": 0.889,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c07-q3-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Dilekte can, could olur.",
+     "textSha256": "406d400330a193c0f45d8a48bdb45c41411a09aa4b9dc976b11b6ee9e215f6e4",
+     "chars": 24,
+     "audio": "tr/c07-q3-fb.mp3",
+     "align": "tr/c07-q3-fb.align.json",
+     "present": true,
+     "duration": 1.92,
+     "quality": {
+      "words": 4,
+      "exact": 1,
+      "fuzzy": 2,
+      "weak": 1,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 1,
+      "score": 0.75,
+      "ok": false,
+      "warnings": [
+       "iyi eşleşen kelime oranı düşük: %75 (alt sınır %85)",
+       "zayıf/eksik: could→kud"
+      ]
+     }
+    },
+    {
+     "id": "c07-q4-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Başkasının davranışı için wish, kişi ve would gelir.",
+     "textSha256": "91613babb31ab17677e4aa21d825f4d82fb6edcc811028456991e5cd8a3756f2",
+     "chars": 52,
+     "audio": "tr/c07-q4-fb.mp3",
+     "align": "tr/c07-q4-fb.align.json",
+     "present": true,
+     "duration": 4.0,
+     "quality": {
+      "words": 8,
+      "exact": 6,
+      "fuzzy": 0,
+      "weak": 2,
+      "missing": 0,
+      "extraHeard": 1,
+      "worstRun": 1,
+      "score": 0.75,
+      "ok": false,
+      "warnings": [
+       "iyi eşleşen kelime oranı düşük: %75 (alt sınır %85)",
+       "zayıf/eksik: wish→viş,, would→vud"
+      ]
+     }
     }
    ]
   },

@@ -3,6 +3,10 @@
   "status": "DRAFT",
   "author": "Claude taslak",
   "date": "2026-10-14",
+  "pronunciations": [
+    { "term": "Alex", "say_as": "Aleks" },
+    { "term": "Tide & Pages", "say_as": "Tayd end Peyciz" }
+  ],
   "lines": [
     {
       "en": "Too Late?",

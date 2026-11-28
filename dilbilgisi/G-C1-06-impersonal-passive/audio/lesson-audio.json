@@ -55,6 +55,30 @@
      "present": true,
      "duration": 3.92,
      "quality": null
+    },
+    {
+     "id": "c01-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Dağ köylerinin yabancılara geç güvendiği söylenir.",
+     "textSha256": "05f60e6215171b4e50b74531a95440310c259977459950267fd4faf375b5a9a5",
+     "chars": 50,
+     "audio": "tr/c01-ex1-tl.mp3",
+     "align": "tr/c01-ex1-tl.align.json",
+     "present": true,
+     "duration": 3.2,
+     "quality": {
+      "words": 6,
+      "exact": 6,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -98,6 +122,30 @@
      "present": true,
      "duration": 3.2,
      "quality": null
+    },
+    {
+     "id": "c02-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Tablonun çok eski olduğuna inanılıyor.",
+     "textSha256": "7d6f923ada2498c09aae12c4d58e99765223d20ca97d5f931a89429fe0a52b6d",
+     "chars": 38,
+     "audio": "tr/c02-ex1-tl.mp3",
+     "align": "tr/c02-ex1-tl.align.json",
+     "present": true,
+     "duration": 2.56,
+     "quality": {
+      "words": 5,
+      "exact": 5,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -141,6 +189,30 @@
      "present": true,
      "duration": 2.88,
      "quality": null
+    },
+    {
+     "id": "c03-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Tablonun 300 yaşında olduğuna inanılıyor.",
+     "textSha256": "7f6289081375d09d29a1f86e91cf0cfbfc76fddef4d1d306b9a04ccc8634963e",
+     "chars": 41,
+     "audio": "tr/c03-ex1-tl.mp3",
+     "align": "tr/c03-ex1-tl.align.json",
+     "present": true,
+     "duration": 2.72,
+     "quality": {
+      "words": 5,
+      "exact": 5,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -184,6 +256,30 @@
      "present": true,
      "duration": 2.0,
      "quality": null
+    },
+    {
+     "id": "c04-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Hırsızın şehri terk ettiği düşünülüyor.",
+     "textSha256": "5d87d6348a2c3f0391ff5c67fdc2253221b7eec7773368f70c71da28b3490521",
+     "chars": 39,
+     "audio": "tr/c04-ex1-tl.mp3",
+     "align": "tr/c04-ex1-tl.align.json",
+     "present": true,
+     "duration": 2.4,
+     "quality": {
+      "words": 5,
+      "exact": 5,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -255,6 +351,126 @@
      "present": true,
      "duration": 2.16,
      "quality": null
+    },
+    {
+     "id": "c05-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Yolun pazartesi yeniden açılacağı bildiriliyor.",
+     "textSha256": "ae9581d8fe3f757055f02fb96cddb3d9257651ff811abb2c9bd00f1d2b04a5aa",
+     "chars": 47,
+     "audio": "tr/c05-ex1-tl.mp3",
+     "align": "tr/c05-ex1-tl.align.json",
+     "present": true,
+     "duration": 3.04,
+     "quality": {
+      "words": 5,
+      "exact": 5,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Okulun en iyi öğretmeni olduğu söyleniyor.",
+     "textSha256": "667fc27c330033cfd0923a08d6f1e0d658cb0816321f7bb507d21668a27d8eab",
+     "chars": 42,
+     "audio": "tr/c05-ex2-tl.mp3",
+     "align": "tr/c05-ex2-tl.align.json",
+     "present": true,
+     "duration": 2.4,
+     "quality": {
+      "words": 6,
+      "exact": 6,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex3-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Fiyatların artması bekleniyor.",
+     "textSha256": "f645a126ca265e52460d450e659892be7f479123604a0d3d85ef94e0e49630fc",
+     "chars": 30,
+     "audio": "tr/c05-ex3-tl.mp3",
+     "align": "tr/c05-ex3-tl.align.json",
+     "present": true,
+     "duration": 2.88,
+     "quality": {
+      "words": 3,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 1,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex4-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Geminin 1850'de battığına inanılıyor.",
+     "textSha256": "475c2fc5e5e61e9ff7a0354e3a638e160e18c3ecc169ed2bbff8cf3d024bd7de",
+     "chars": 37,
+     "audio": "tr/c05-ex4-tl.mp3",
+     "align": "tr/c05-ex4-tl.align.json",
+     "present": true,
+     "duration": 3.2,
+     "quality": {
+      "words": 4,
+      "exact": 4,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex5-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Parasına çok dikkat ettiği biliniyor.",
+     "textSha256": "bce88e8cbd23e8a47cc0f2481b5afb4955063f3560ebb3a21aca0bd84deea751",
+     "chars": 37,
+     "audio": "tr/c05-ex5-tl.mp3",
+     "align": "tr/c05-ex5-tl.align.json",
+     "present": true,
+     "duration": 4.16,
+     "quality": {
+      "words": 5,
+      "exact": 5,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -324,6 +540,54 @@
      "present": true,
      "duration": 2.08,
      "quality": null
+    },
+    {
+     "id": "c06-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Zengin olduğu söyleniyor.",
+     "textSha256": "157893a09e3c24c1e685ac16e996e28e1737a59c2d08a6544eb95c7274c5372a",
+     "chars": 25,
+     "audio": "tr/c06-ex1-tl.mp3",
+     "align": "tr/c06-ex1-tl.align.json",
+     "present": true,
+     "duration": 2.72,
+     "quality": {
+      "words": 3,
+      "exact": 2,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c06-ex3-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Dün gittiğine inanılıyor.",
+     "textSha256": "0dd89d92c614e07061964e440b3b2082eec2edce29e788cbe9281a16310d4b45",
+     "chars": 25,
+     "audio": "tr/c06-ex3-tl.mp3",
+     "align": "tr/c06-ex3-tl.align.json",
+     "present": true,
+     "duration": 1.6,
+     "quality": {
+      "words": 3,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -343,6 +607,132 @@
      "present": true,
      "duration": 2.32,
      "quality": null
+    },
+    {
+     "id": "c07-q1-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Konu başta: is thought to be.",
+     "textSha256": "712488e5d1610fb532e810f5438c1e90e798fa5dc212bbe11b8ea6276a7463d0",
+     "chars": 29,
+     "audio": "tr/c07-q1-fb.mp3",
+     "align": "tr/c07-q1-fb.align.json",
+     "present": true,
+     "duration": 2.56,
+     "quality": {
+      "words": 6,
+      "exact": 2,
+      "fuzzy": 4,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c07-q2-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "It ile başlayan kalıpta edilgen fiilden sonra that gelir.",
+     "textSha256": "2252dc77bc76c5503d1f93e146592aad8090978aa92b36565d67388689cd0730",
+     "chars": 57,
+     "audio": "tr/c07-q2-fb.mp3",
+     "align": "tr/c07-q2-fb.align.json",
+     "present": true,
+     "duration": 4.0,
+     "quality": {
+      "words": 9,
+      "exact": 6,
+      "fuzzy": 1,
+      "weak": 1,
+      "missing": 1,
+      "extraHeard": 1,
+      "worstRun": 1,
+      "score": 0.778,
+      "ok": false,
+      "warnings": [
+       "iyi eşleşen kelime oranı düşük: %78 (alt sınır %85)",
+       "zayıf/eksik: It→∅, that→ded"
+      ]
+     }
+    },
+    {
+     "id": "c07-q3-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Mastar to ile başlar: to have lived.",
+     "textSha256": "cd9633c44e8e10f3b876c627cca5d2891b0d4320ab85a826faf71800b7b5954e",
+     "chars": 36,
+     "audio": "tr/c07-q3-fb.mp3",
+     "align": "tr/c07-q3-fb.align.json",
+     "present": true,
+     "duration": 3.36,
+     "quality": {
+      "words": 7,
+      "exact": 5,
+      "fuzzy": 0,
+      "weak": 2,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 1,
+      "score": 0.714,
+      "ok": false,
+      "warnings": [
+       "iyi eşleşen kelime oranı düşük: %71 (alt sınır %85)",
+       "zayıf/eksik: to→tu, to→tu"
+      ]
+     }
+    },
+    {
+     "id": "c07-q4-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Önce konu, sonra edilgen fiil, sonra geçmiş mastar gelir.",
+     "textSha256": "a5866e25da4321ea80b40e67b5283b989b6bde60900a2bca8b11a118bceecb9c",
+     "chars": 57,
+     "audio": "tr/c07-q4-fb.mp3",
+     "align": "tr/c07-q4-fb.align.json",
+     "present": true,
+     "duration": 4.0,
+     "quality": {
+      "words": 9,
+      "exact": 8,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c07-q5-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Kalenin perili olduğu söyleniyor.",
+     "textSha256": "ec1a423e87332c8a637d30f8e2e7d8e22c4789f1291fdbc355e00d36c0b398b0",
+     "chars": 33,
+     "audio": "tr/c07-q5-tl.mp3",
+     "align": "tr/c07-q5-tl.align.json",
+     "present": true,
+     "duration": 2.4,
+     "quality": {
+      "words": 4,
+      "exact": 4,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },

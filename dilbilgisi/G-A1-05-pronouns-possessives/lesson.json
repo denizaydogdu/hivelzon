@@ -13,5 +13,10 @@
   "linksTo": { "episodes": ["A1-001", "A1-002", "A1-007"], "books": ["A1-K01", "A1-K03"] },
   "properNouns": ["Maya", "Sam", "Elif", "Zeynep", "Aleyna", "Lina", "Ravi"],
   "pronunciations": [{ "term": "Alex", "say_as": "Aleks" }],
+  "feedbackPronunciations": [
+    { "term": "he", "say_as": "hi" },
+    { "term": "her", "say_as": "hır" },
+    { "term": "me", "say_as": "mi" }
+  ],
   "narration": { "tr": { "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı" } }
 }

@@ -55,6 +55,30 @@
      "present": true,
      "duration": 3.2,
      "quality": null
+    },
+    {
+     "id": "c01-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Otobüs zamanında gelseydi Alex geç kalmazdı.",
+     "textSha256": "d511ac1c608755fa6c972c54323b672c00d60bfe391b95db049d597a5ec450c9",
+     "chars": 44,
+     "audio": "tr/c01-ex1-tl.mp3",
+     "align": "tr/c01-ex1-tl.align.json",
+     "present": true,
+     "duration": 3.04,
+     "quality": {
+      "words": 6,
+      "exact": 6,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -98,6 +122,30 @@
      "present": true,
      "duration": 2.64,
      "quality": null
+    },
+    {
+     "id": "c02-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Daha erken çıksaydım otobüsü kaçırmazdım.",
+     "textSha256": "636abc6bfd5c5e0d8b0c6c35598c6eded8a5ade1726ca3e5334617983288bd42",
+     "chars": 41,
+     "audio": "tr/c02-ex1-tl.mp3",
+     "align": "tr/c02-ex1-tl.align.json",
+     "present": true,
+     "duration": 3.2,
+     "quality": {
+      "words": 5,
+      "exact": 5,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -154,6 +202,54 @@
      "present": true,
      "duration": 2.16,
      "quality": null
+    },
+    {
+     "id": "c03-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Bana söyleseydin yardım ederdim.",
+     "textSha256": "86f33dd9ccccbd166c24cabd885f7137335fb6b81de6ab6dd73b67482599af5f",
+     "chars": 32,
+     "audio": "tr/c03-ex1-tl.mp3",
+     "align": "tr/c03-ex1-tl.align.json",
+     "present": true,
+     "duration": 2.08,
+     "quality": {
+      "words": 4,
+      "exact": 4,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Bana söylemedin, ben de yardım etmedim.",
+     "textSha256": "3cf7fcee4c6d2cbf4797cbfe055c9a4ef7e8b39eb32463840de244729b55fd50",
+     "chars": 39,
+     "audio": "tr/c03-ex2-tl.mp3",
+     "align": "tr/c03-ex2-tl.align.json",
+     "present": true,
+     "duration": 2.4,
+     "quality": {
+      "words": 6,
+      "exact": 6,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -225,6 +321,126 @@
      "present": true,
      "duration": 2.48,
      "quality": null
+    },
+    {
+     "id": "c04-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Taksiye binseydik zamanında varırdık.",
+     "textSha256": "c4fa46af72ac4a410712dd395f88d3b93ac74291f0fed9433f552a4c841fdadd",
+     "chars": 37,
+     "audio": "tr/c04-ex1-tl.mp3",
+     "align": "tr/c04-ex1-tl.align.json",
+     "present": true,
+     "duration": 2.56,
+     "quality": {
+      "words": 4,
+      "exact": 4,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c04-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Çalışsaydı sınavı geçerdi.",
+     "textSha256": "97b212033390c5188cb57a6d261775189b58f3a9066e73987f1d732033e2ca02",
+     "chars": 26,
+     "audio": "tr/c04-ex2-tl.mp3",
+     "align": "tr/c04-ex2-tl.align.json",
+     "present": true,
+     "duration": 1.92,
+     "quality": {
+      "words": 3,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c04-ex3-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Partiyi bilseydim gelirdim.",
+     "textSha256": "e3591debf9c17f072185bc7d08eb5830ef2f9c148d32bdfa54ed5115848d1ff7",
+     "chars": 27,
+     "audio": "tr/c04-ex3-tl.mp3",
+     "align": "tr/c04-ex3-tl.align.json",
+     "present": true,
+     "duration": 1.92,
+     "quality": {
+      "words": 3,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c04-ex4-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Yağmur yağmasaydı plaja giderdik.",
+     "textSha256": "372f8339a845fbfd04cd1feab97bbf5b6a9893c22d9fb0cb02b11950ffa72785",
+     "chars": 33,
+     "audio": "tr/c04-ex4-tl.mp3",
+     "align": "tr/c04-ex4-tl.align.json",
+     "present": true,
+     "duration": 2.4,
+     "quality": {
+      "words": 4,
+      "exact": 4,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c04-ex5-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Pasaportunu kaybetseydin ne yapardın?",
+     "textSha256": "604f00feb56c21f2f033f85d041792d324d46a7cc470d945b4b34ee579d9c4b3",
+     "chars": 37,
+     "audio": "tr/c04-ex5-tl.mp3",
+     "align": "tr/c04-ex5-tl.align.json",
+     "present": true,
+     "duration": 2.4,
+     "quality": {
+      "words": 4,
+      "exact": 4,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -281,6 +497,54 @@
      "present": true,
      "duration": 1.28,
      "quality": null
+    },
+    {
+     "id": "c05-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Bilseydim gelirdim.",
+     "textSha256": "1fc6ca85a5d7a7dfc016df3c3da47a02f0dfd159ee7e2d5b3eca163c2df8820c",
+     "chars": 19,
+     "audio": "tr/c05-ex1-tl.mp3",
+     "align": "tr/c05-ex1-tl.align.json",
+     "present": true,
+     "duration": 1.44,
+     "quality": {
+      "words": 2,
+      "exact": 2,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Sana yardım ederdim.",
+     "textSha256": "c772234b6aea22561292312910eb637dba8ac77ced62976e83164cb554abfc3f",
+     "chars": 20,
+     "audio": "tr/c05-ex2-tl.mp3",
+     "align": "tr/c05-ex2-tl.align.json",
+     "present": true,
+     "duration": 1.44,
+     "quality": {
+      "words": 3,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -300,6 +564,102 @@
      "present": true,
      "duration": 2.16,
      "quality": null
+    },
+    {
+     "id": "c06-q1-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Geçmişte olmamış koşul için had ve üçüncü hâl gelir.",
+     "textSha256": "5c3d5569d8d366738dec0e779535f2daad0ddb36183ede3f2e078d78594fe401",
+     "chars": 52,
+     "audio": "tr/c06-q1-fb.mp3",
+     "align": "tr/c06-q1-fb.align.json",
+     "present": true,
+     "duration": 3.36,
+     "quality": {
+      "words": 9,
+      "exact": 7,
+      "fuzzy": 1,
+      "weak": 1,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 1,
+      "score": 0.889,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c06-q2-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Sonuç tarafında would have ve üçüncü hâl gelir.",
+     "textSha256": "ce2b6877083820f52b48002ab287638819c6cd040ed7491d81756dd54d681f8b",
+     "chars": 47,
+     "audio": "tr/c06-q2-fb.mp3",
+     "align": "tr/c06-q2-fb.align.json",
+     "present": true,
+     "duration": 3.84,
+     "quality": {
+      "words": 8,
+      "exact": 7,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c06-q3-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Wouldn't'tan sonra have ve üçüncü hâl gelir.",
+     "textSha256": "782647ce89c797199af3c2bfe4e05bfb7239ec7af1c727e5229d820a1b16524f",
+     "chars": 44,
+     "audio": "tr/c06-q3-fb.mp3",
+     "align": "tr/c06-q3-fb.align.json",
+     "present": true,
+     "duration": 2.4,
+     "quality": {
+      "words": 7,
+      "exact": 4,
+      "fuzzy": 3,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c06-q4-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Önce koşul (if, had ve üçüncü hâl), sonra sonuç gelir.",
+     "textSha256": "035d082cd519777977f11c47b9592a78f3913ba32297cee93d1848ced3adba39",
+     "chars": 54,
+     "audio": "tr/c06-q4-fb.mp3",
+     "align": "tr/c06-q4-fb.align.json",
+     "present": true,
+     "duration": 4.16,
+     "quality": {
+      "words": 10,
+      "exact": 9,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },

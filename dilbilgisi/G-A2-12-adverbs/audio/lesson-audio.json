@@ -55,6 +55,30 @@
      "present": true,
      "duration": 2.16,
      "quality": null
+    },
+    {
+     "id": "c01-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "O öğretmenleri hep dinlerdi.",
+     "textSha256": "1405b148c621d3bdd751fc25929da53d79fd76509af5bf7cece282209c110d75",
+     "chars": 28,
+     "audio": "tr/c01-ex1-tl.mp3",
+     "align": "tr/c01-ex1-tl.align.json",
+     "present": true,
+     "duration": 2.24,
+     "quality": {
+      "words": 4,
+      "exact": 4,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -111,6 +135,54 @@
      "present": true,
      "duration": 1.84,
      "quality": null
+    },
+    {
+     "id": "c02-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Okula hep yürüyerek giderim.",
+     "textSha256": "f5ec7a05fba2253a6686c930d6bed1a5c627595951601b422999a4e29de8de0b",
+     "chars": 28,
+     "audio": "tr/c02-ex1-tl.mp3",
+     "align": "tr/c02-ex1-tl.align.json",
+     "present": true,
+     "duration": 3.2,
+     "quality": {
+      "words": 4,
+      "exact": 4,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 1,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c02-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "O hep geç kalır.",
+     "textSha256": "2bc66b14b2ce25ebffcf4b317741f616ec19fa05b819ba9a1c6b9c97c7ec42c4",
+     "chars": 16,
+     "audio": "tr/c02-ex2-tl.mp3",
+     "align": "tr/c02-ex2-tl.align.json",
+     "present": true,
+     "duration": 1.28,
+     "quality": {
+      "words": 4,
+      "exact": 4,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -180,6 +252,78 @@
      "present": true,
      "duration": 1.68,
      "quality": null
+    },
+    {
+     "id": "c03-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Genelde yedide kalkarım.",
+     "textSha256": "40358b9a7fad8100fd682946957310ca2e95513fa338bf3520bfb80004dc0ef0",
+     "chars": 24,
+     "audio": "tr/c03-ex1-tl.mp3",
+     "align": "tr/c03-ex1-tl.align.json",
+     "present": true,
+     "duration": 2.56,
+     "quality": {
+      "words": 3,
+      "exact": 2,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Bazen balık yeriz.",
+     "textSha256": "669d2e49e61fac7ed71475514d1ef8ae055e255876208c0cd921871663d1c12b",
+     "chars": 18,
+     "audio": "tr/c03-ex2-tl.mp3",
+     "align": "tr/c03-ex2-tl.align.json",
+     "present": true,
+     "duration": 1.44,
+     "quality": {
+      "words": 3,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex3-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "O hiç kahve içmez.",
+     "textSha256": "57a0ce30ffd54ff60aacf3fd5fb523b3a49523231ca4c92100fabb05aa59be5c",
+     "chars": 18,
+     "audio": "tr/c03-ex3-tl.mp3",
+     "align": "tr/c03-ex3-tl.align.json",
+     "present": true,
+     "duration": 1.76,
+     "quality": {
+      "words": 4,
+      "exact": 4,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 1,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -236,6 +380,54 @@
      "present": true,
      "duration": 1.84,
      "quality": null
+    },
+    {
+     "id": "c04-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Lütfen yavaş konuş.",
+     "textSha256": "189ff4d05eee840465e14c070707e4f94eeeb4a7fd3625fe56a93f3d7a564b8a",
+     "chars": 19,
+     "audio": "tr/c04-ex1-tl.mp3",
+     "align": "tr/c04-ex1-tl.align.json",
+     "present": true,
+     "duration": 1.76,
+     "quality": {
+      "words": 3,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c04-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Kapıyı sessizce kapattı.",
+     "textSha256": "e8cea5683785c48f6c65dc4e878f3346a43bb39e10462da45ff4b6fa4286632c",
+     "chars": 24,
+     "audio": "tr/c04-ex2-tl.mp3",
+     "align": "tr/c04-ex2-tl.align.json",
+     "present": true,
+     "duration": 2.08,
+     "quality": {
+      "words": 3,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -307,6 +499,126 @@
      "present": true,
      "duration": 1.92,
      "quality": null
+    },
+    {
+     "id": "c05-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Mateo yazın genelde yüzer.",
+     "textSha256": "6a50953149416c783d00100c8e79f40c2ccc21018fddc09c2c3163154a43c953",
+     "chars": 26,
+     "audio": "tr/c05-ex1-tl.mp3",
+     "align": "tr/c05-ex1-tl.align.json",
+     "present": true,
+     "duration": 2.24,
+     "quality": {
+      "words": 4,
+      "exact": 3,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Kedim hep aç.",
+     "textSha256": "6475a60df98002fb059b221dd52fbaec2a660a0aec04d385dbdda7c9a8bd8238",
+     "chars": 13,
+     "audio": "tr/c05-ex2-tl.mp3",
+     "align": "tr/c05-ex2-tl.align.json",
+     "present": true,
+     "duration": 1.28,
+     "quality": {
+      "words": 3,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex3-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Pazar günleri sık sık parka gideriz.",
+     "textSha256": "41fc630d8e447fc98a4cd8c77715a380aed2a99bced22d82a199a43ed2d38b78",
+     "chars": 36,
+     "audio": "tr/c05-ex3-tl.mp3",
+     "align": "tr/c05-ex3-tl.align.json",
+     "present": true,
+     "duration": 2.4,
+     "quality": {
+      "words": 6,
+      "exact": 6,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex4-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Lütfen soruyu dikkatlice oku.",
+     "textSha256": "b11e114618729932f8e02b3ef69b8f7cdc0b78abcef63b44017bdfbc1c9562f8",
+     "chars": 29,
+     "audio": "tr/c05-ex4-tl.mp3",
+     "align": "tr/c05-ex4-tl.align.json",
+     "present": true,
+     "duration": 2.08,
+     "quality": {
+      "words": 4,
+      "exact": 4,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex5-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "O İngilizceyi çok iyi konuşur.",
+     "textSha256": "5c88c9089433745c6bcb4c90f0c9126e3718f6f48a68beba1f525eecc26890c4",
+     "chars": 30,
+     "audio": "tr/c05-ex5-tl.mp3",
+     "align": "tr/c05-ex5-tl.align.json",
+     "present": true,
+     "duration": 3.36,
+     "quality": {
+      "words": 5,
+      "exact": 5,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 1,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -376,13 +688,185 @@
      "present": true,
      "duration": 1.6,
      "quality": null
+    },
+    {
+     "id": "c06-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Okula hep otobüsle giderim.",
+     "textSha256": "4e695e6b496a309248dd4897f8f22e2b6ed0599ab4e8d70cfe55a4214a988f62",
+     "chars": 27,
+     "audio": "tr/c06-ex1-tl.mp3",
+     "align": "tr/c06-ex1-tl.align.json",
+     "present": true,
+     "duration": 2.72,
+     "quality": {
+      "words": 4,
+      "exact": 4,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 2,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c06-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Hiç et yemem.",
+     "textSha256": "c6c2fd2bc4dfd461bef3505751e5c60e0522143fd8cc9a92867172da1e0a1f91",
+     "chars": 13,
+     "audio": "tr/c06-ex2-tl.mp3",
+     "align": "tr/c06-ex2-tl.align.json",
+     "present": true,
+     "duration": 1.12,
+     "quality": {
+      "words": 3,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
   {
    "card": "c07",
    "type": "practice",
-   "segments": []
+   "segments": [
+    {
+     "id": "c07-q1-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Sıklık kelimesi ana fiilden önce gelir.",
+     "textSha256": "5b9406a277166c77dbb4b2dc6a26602d784b67d9b8f58b524fe382e7ae8e9bff",
+     "chars": 39,
+     "audio": "tr/c07-q1-fb.mp3",
+     "align": "tr/c07-q1-fb.align.json",
+     "present": true,
+     "duration": 3.04,
+     "quality": {
+      "words": 6,
+      "exact": 6,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c07-q2-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Olmak fiili varsa sıklık kelimesi ondan sonra gelir.",
+     "textSha256": "8c60f0cbc8125d2556641d90f0fa39e1b9cc923fa2df1ab564038f9bc108d64a",
+     "chars": 52,
+     "audio": "tr/c07-q2-fb.mp3",
+     "align": "tr/c07-q2-fb.align.json",
+     "present": true,
+     "duration": 4.64,
+     "quality": {
+      "words": 8,
+      "exact": 8,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 1,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c07-q3-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Nasıl yapıldığını söylerken sıfata -ly eklenir.",
+     "textSha256": "c2de8e016fa63e639d98b8c2fd9e17aba7cc80dfb5010e91cdaad552a82add8f",
+     "chars": 47,
+     "audio": "tr/c07-q3-fb.mp3",
+     "align": "tr/c07-q3-fb.align.json",
+     "present": true,
+     "duration": 3.2,
+     "quality": {
+      "words": 6,
+      "exact": 4,
+      "fuzzy": 1,
+      "weak": 1,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 1,
+      "score": 0.833,
+      "ok": false,
+      "warnings": [
+       "iyi eşleşen kelime oranı düşük: %83 (alt sınır %85)",
+       "zayıf/eksik: ly→ali"
+      ]
+     }
+    },
+    {
+     "id": "c07-q4-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Never zaten olumsuz; yanına don't gelmez.",
+     "textSha256": "374641564adcc3cca250669ce56840b6fae0ef0166821b3ea0a77bb075c63ed1",
+     "chars": 41,
+     "audio": "tr/c07-q4-fb.mp3",
+     "align": "tr/c07-q4-fb.align.json",
+     "present": true,
+     "duration": 3.36,
+     "quality": {
+      "words": 6,
+      "exact": 5,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c07-q5-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Good'un zarfı düzensizdir: well.",
+     "textSha256": "a4bc6a315fc87b7242b8c99009dfd489f6844f74e1efdd74dae01c276c90b1ef",
+     "chars": 32,
+     "audio": "tr/c07-q5-fb.mp3",
+     "align": "tr/c07-q5-fb.align.json",
+     "present": true,
+     "duration": 2.4,
+     "quality": {
+      "words": 4,
+      "exact": 4,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    }
+   ]
   },
   {
    "card": "c08",
@@ -454,6 +938,30 @@
      "present": true,
      "duration": 2.4,
      "quality": null
+    },
+    {
+     "id": "c09-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "O hep yavaş konuşur.",
+     "textSha256": "207b10cb4d2e51692f88bdf994222c36557f13e65ffcf1b95dbbb7cf2a0daf51",
+     "chars": 20,
+     "audio": "tr/c09-ex1-tl.mp3",
+     "align": "tr/c09-ex1-tl.align.json",
+     "present": true,
+     "duration": 1.92,
+     "quality": {
+      "words": 4,
+      "exact": 4,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   }

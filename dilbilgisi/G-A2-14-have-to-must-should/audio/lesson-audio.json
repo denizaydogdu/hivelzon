@@ -55,6 +55,30 @@
      "present": true,
      "duration": 1.6,
      "quality": null
+    },
+    {
+     "id": "c01-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Patikada kalmak zorundayız.",
+     "textSha256": "d65879696ad3f2570c74a5880a94ce2c9c76fc40cfc0fe08176204403c424013",
+     "chars": 27,
+     "audio": "tr/c01-ex1-tl.mp3",
+     "align": "tr/c01-ex1-tl.align.json",
+     "present": true,
+     "duration": 3.04,
+     "quality": {
+      "words": 3,
+      "exact": 2,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 1,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -124,6 +148,54 @@
      "present": true,
      "duration": 1.68,
      "quality": null
+    },
+    {
+     "id": "c02-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Çocuklar on ikide öğle yemeği yemeli.",
+     "textSha256": "37250a5f5c5ecb18e07b3a8acc1426ed71c39c83568ff59de93cc57c554bf6b2",
+     "chars": 37,
+     "audio": "tr/c02-ex2-tl.mp3",
+     "align": "tr/c02-ex2-tl.align.json",
+     "present": true,
+     "duration": 2.56,
+     "quality": {
+      "words": 6,
+      "exact": 6,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c02-ex3-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Cumartesi çalışmak zorunda.",
+     "textSha256": "e986d6b5733059331050cb0448ebb6ab2313b61840a1f467a7aa1511426577ba",
+     "chars": 27,
+     "audio": "tr/c02-ex3-tl.mp3",
+     "align": "tr/c02-ex3-tl.align.json",
+     "present": true,
+     "duration": 2.56,
+     "quality": {
+      "words": 3,
+      "exact": 2,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 1,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -180,6 +252,54 @@
      "present": true,
      "duration": 1.2,
      "quality": null
+    },
+    {
+     "id": "c03-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Burada yüzmemelisin.",
+     "textSha256": "3a7ab116c338504a1b06448da55843884e116a6ff5cc3b4eb926114fbd110728",
+     "chars": 20,
+     "audio": "tr/c03-ex1-tl.mp3",
+     "align": "tr/c03-ex1-tl.align.json",
+     "present": true,
+     "duration": 2.56,
+     "quality": {
+      "words": 2,
+      "exact": 1,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 2,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Para ödemek zorunda değilsin.",
+     "textSha256": "3c2627201ebdabcb9b86f58c1685ab49fb42c29a699d7c86ac5584933f959e50",
+     "chars": 29,
+     "audio": "tr/c03-ex2-tl.mp3",
+     "align": "tr/c03-ex2-tl.align.json",
+     "present": true,
+     "duration": 2.88,
+     "quality": {
+      "words": 4,
+      "exact": 4,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -236,6 +356,54 @@
      "present": true,
      "duration": 2.0,
      "quality": null
+    },
+    {
+     "id": "c04-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Daha çok su içmelisin.",
+     "textSha256": "2a73e3968ac507486648fa2d540d9598a9d4561ae4d83e2bb53b2280f81c2bd4",
+     "chars": 22,
+     "audio": "tr/c04-ex1-tl.mp3",
+     "align": "tr/c04-ex1-tl.align.json",
+     "present": true,
+     "duration": 3.52,
+     "quality": {
+      "words": 4,
+      "exact": 4,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c04-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Bu kadar çok şeker yememelisin.",
+     "textSha256": "391e468a5ae6989c51c22c9f4356d1252436aa877f852930b3342a9a08d222f4",
+     "chars": 31,
+     "audio": "tr/c04-ex2-tl.mp3",
+     "align": "tr/c04-ex2-tl.align.json",
+     "present": true,
+     "duration": 4.16,
+     "quality": {
+      "words": 5,
+      "exact": 5,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 2,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -307,6 +475,126 @@
      "present": true,
      "duration": 1.2,
      "quality": null
+    },
+    {
+     "id": "c05-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Yarın erken kalkmak zorundayım.",
+     "textSha256": "5d22ac6f28ee96c7c0eaaa84029bfe10f826072ffb2be5696a626e8062a63ef6",
+     "chars": 31,
+     "audio": "tr/c05-ex1-tl.mp3",
+     "align": "tr/c05-ex1-tl.align.json",
+     "present": true,
+     "duration": 2.24,
+     "quality": {
+      "words": 4,
+      "exact": 4,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Babam cumartesileri çalışmak zorunda.",
+     "textSha256": "ffc0d1dd7bb029f076465b7eec338b34322b04c4cf657f694d5ae37cd2f255d9",
+     "chars": 37,
+     "audio": "tr/c05-ex2-tl.mp3",
+     "align": "tr/c05-ex2-tl.align.json",
+     "present": true,
+     "duration": 2.4,
+     "quality": {
+      "words": 4,
+      "exact": 4,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex3-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Kırmızı ışıkta durmalısın.",
+     "textSha256": "b4d9991427305068029469429065f41fdff4f576ca6c089e1a6137de2b7475bd",
+     "chars": 26,
+     "audio": "tr/c05-ex3-tl.mp3",
+     "align": "tr/c05-ex3-tl.align.json",
+     "present": true,
+     "duration": 3.52,
+     "quality": {
+      "words": 3,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 1,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex4-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Cumartesi okula gitmek zorunda değiliz.",
+     "textSha256": "2feaec8462d8d0a0eb0c6525c9a3e2455e0ef9a0b8607fa1a0b45fdcce23bc0c",
+     "chars": 39,
+     "audio": "tr/c05-ex4-tl.mp3",
+     "align": "tr/c05-ex4-tl.align.json",
+     "present": true,
+     "duration": 2.56,
+     "quality": {
+      "words": 5,
+      "exact": 5,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex5-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Bir doktora görünmelisin.",
+     "textSha256": "3adbb5e108f8b14535f422bf18e0f6b75ef52b975363a6c584c3a4f72308bb61",
+     "chars": 25,
+     "audio": "tr/c05-ex5-tl.mp3",
+     "align": "tr/c05-ex5-tl.align.json",
+     "present": true,
+     "duration": 2.88,
+     "quality": {
+      "words": 3,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 2,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -376,6 +664,78 @@
      "present": true,
      "duration": 1.28,
      "quality": null
+    },
+    {
+     "id": "c06-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Gitmelisin.",
+     "textSha256": "ea9715443aad50f9525d2efc7b5fe7f8ba2e371f5320b20d48e804bddb6027ff",
+     "chars": 11,
+     "audio": "tr/c06-ex1-tl.mp3",
+     "align": "tr/c06-ex1-tl.align.json",
+     "present": true,
+     "duration": 2.4,
+     "quality": {
+      "words": 1,
+      "exact": 0,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 2,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c06-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Gelmek zorunda değilsin.",
+     "textSha256": "78726f72b6e442a5ffb0ca7126d49db456eec93751c399e48ba76156de1e3df2",
+     "chars": 24,
+     "audio": "tr/c06-ex2-tl.mp3",
+     "align": "tr/c06-ex2-tl.align.json",
+     "present": true,
+     "duration": 3.04,
+     "quality": {
+      "words": 3,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c06-ex3-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "O çalışmak zorunda.",
+     "textSha256": "50accf2cf5c44828fe024b6b9fede17741b534ccf0d50eb068c60a6ffa5af6f1",
+     "chars": 19,
+     "audio": "tr/c06-ex3-tl.mp3",
+     "align": "tr/c06-ex3-tl.align.json",
+     "present": true,
+     "duration": 1.76,
+     "quality": {
+      "words": 3,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -395,6 +755,109 @@
      "present": true,
      "duration": 1.6,
      "quality": null
+    },
+    {
+     "id": "c07-q1-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Yasak değil, gerek yok: don't have to.",
+     "textSha256": "d5f5ae130f83fc25725e5ec7092b9920329db3f702f628da91ae1d66fef30959",
+     "chars": 38,
+     "audio": "tr/c07-q1-fb.mp3",
+     "align": "tr/c07-q1-fb.align.json",
+     "present": true,
+     "duration": 3.52,
+     "quality": {
+      "words": 7,
+      "exact": 7,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c07-q2-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Bu bir yasak: mustn't.",
+     "textSha256": "0a6059f34b2e2f25bbb554158e753d52b9de8c35486bde2499ef60caa295823b",
+     "chars": 22,
+     "audio": "tr/c07-q2-fb.mp3",
+     "align": "tr/c07-q2-fb.align.json",
+     "present": true,
+     "duration": 1.92,
+     "quality": {
+      "words": 4,
+      "exact": 3,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c07-q3-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Should'dan sonra to gelmez.",
+     "textSha256": "429e96430f2a9846aa2709c9610a6ea8fece800a9c478d3a45d2a447afb25e36",
+     "chars": 27,
+     "audio": "tr/c07-q3-fb.mp3",
+     "align": "tr/c07-q3-fb.align.json",
+     "present": true,
+     "duration": 1.76,
+     "quality": {
+      "words": 4,
+      "exact": 2,
+      "fuzzy": 1,
+      "weak": 1,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 1,
+      "score": 0.75,
+      "ok": false,
+      "warnings": [
+       "iyi eşleşen kelime oranı düşük: %75 (alt sınır %85)",
+       "zayıf/eksik: to→tu"
+      ]
+     }
+    },
+    {
+     "id": "c07-q4-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "O (he) için has to gelir.",
+     "textSha256": "d61e28713d1922930fda8160ea5fa970d085d4bd951fb37387bd63bc251277b9",
+     "chars": 25,
+     "audio": "tr/c07-q4-fb.mp3",
+     "align": "tr/c07-q4-fb.align.json",
+     "present": true,
+     "duration": 2.72,
+     "quality": {
+      "words": 6,
+      "exact": 3,
+      "fuzzy": 1,
+      "weak": 2,
+      "missing": 0,
+      "extraHeard": 1,
+      "worstRun": 2,
+      "score": 0.667,
+      "ok": false,
+      "warnings": [
+       "iyi eşleşen kelime oranı düşük: %67 (alt sınır %85)",
+       "art arda 2 kelime zayıf ya da eksik eşleşti",
+       "zayıf/eksik: has→hez, to→tu"
+      ]
+     }
     }
    ]
   },

@@ -24,6 +24,13 @@
   "properNouns": [
     "Elif"
   ],
+  "feedbackPronunciations": [
+    { "term": "so", "say_as": "sou" },
+    { "term": "because", "say_as": "bikaz" },
+    { "term": "When", "say_as": "Ven" },
+    { "term": "will", "say_as": "vil" },
+    { "term": "but", "say_as": "bat" }
+  ],
   "narration": {
     "tr": {
       "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"

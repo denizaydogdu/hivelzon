@@ -55,6 +55,30 @@
      "present": true,
      "duration": 1.6,
      "quality": null
+    },
+    {
+     "id": "c01-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Fotoğraflar neden kesildi?",
+     "textSha256": "087395f548222ed5a000b7818bc4921e1966df1bde356a83b357cbbc150ad8ec",
+     "chars": 26,
+     "audio": "tr/c01-ex1-tl.mp3",
+     "align": "tr/c01-ex1-tl.align.json",
+     "present": true,
+     "duration": 2.08,
+     "quality": {
+      "words": 3,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -141,6 +165,54 @@
      "present": true,
      "duration": 0.64,
      "quality": null
+    },
+    {
+     "id": "c03-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Gitmedim.",
+     "textSha256": "017b06d898e75092c9e98af50febc6cbab06f8c641dc13b84e54f03a46e10b8b",
+     "chars": 9,
+     "audio": "tr/c03-ex1-tl.mp3",
+     "align": "tr/c03-ex1-tl.align.json",
+     "present": true,
+     "duration": 2.24,
+     "quality": {
+      "words": 1,
+      "exact": 1,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 1,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Onu gördün mü?",
+     "textSha256": "c277f5de2abe00f4968f5975f87b617c3c824305f4249be99bed5f4e0ae870a2",
+     "chars": 14,
+     "audio": "tr/c03-ex2-tl.mp3",
+     "align": "tr/c03-ex2-tl.align.json",
+     "present": true,
+     "duration": 1.28,
+     "quality": {
+      "words": 3,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -212,6 +284,126 @@
      "present": true,
      "duration": 0.96,
      "quality": null
+    },
+    {
+     "id": "c04-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Anneni aradın mı?",
+     "textSha256": "c61f707e096f06dce2b493867f34ae19153ef3877680cf80595c18f65669d696",
+     "chars": 17,
+     "audio": "tr/c04-ex1-tl.mp3",
+     "align": "tr/c04-ex1-tl.align.json",
+     "present": true,
+     "duration": 1.44,
+     "quality": {
+      "words": 3,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c04-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Mesajı görmedim.",
+     "textSha256": "938fe730a2eadb72e7d0c9dc88ee5648bb12e3d3ec56fbd995fae4caa9b33ecf",
+     "chars": 16,
+     "audio": "tr/c04-ex2-tl.mp3",
+     "align": "tr/c04-ex2-tl.align.json",
+     "present": true,
+     "duration": 1.28,
+     "quality": {
+      "words": 2,
+      "exact": 2,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c04-ex3-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Keki sevmedi.",
+     "textSha256": "e0f2bf58fc8a50077eddf8fc24af6c3a345ee780404f7850c7c1bbed2b124639",
+     "chars": 13,
+     "audio": "tr/c04-ex3-tl.mp3",
+     "align": "tr/c04-ex3-tl.align.json",
+     "present": true,
+     "duration": 1.28,
+     "quality": {
+      "words": 2,
+      "exact": 2,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c04-ex4-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Cumartesi nereye gittin?",
+     "textSha256": "86775ab4dd039136354ddb964adf9f4c2d78c49f21f702d7d15e152778ca0dd0",
+     "chars": 24,
+     "audio": "tr/c04-ex4-tl.mp3",
+     "align": "tr/c04-ex4-tl.align.json",
+     "present": true,
+     "duration": 3.04,
+     "quality": {
+      "words": 3,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 1,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c04-ex5-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Vaktimiz yoktu.",
+     "textSha256": "a6dcefd9076d311ba0d5d5d2d4b6b82f96b13a5364168fdd9cdafd3e9b50b2ca",
+     "chars": 15,
+     "audio": "tr/c04-ex5-tl.mp3",
+     "align": "tr/c04-ex5-tl.align.json",
+     "present": true,
+     "duration": 1.44,
+     "quality": {
+      "words": 2,
+      "exact": 2,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -268,6 +460,30 @@
      "present": true,
      "duration": 1.28,
      "quality": null
+    },
+    {
+     "id": "c05-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Kuşu gördün mü?",
+     "textSha256": "26754735eff36dd9ee7dd3f212d59474dd54aae02290a4c96d2e301421f3e016",
+     "chars": 15,
+     "audio": "tr/c05-ex2-tl.mp3",
+     "align": "tr/c05-ex2-tl.align.json",
+     "present": true,
+     "duration": 1.28,
+     "quality": {
+      "words": 3,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -287,6 +503,102 @@
      "present": true,
      "duration": 1.44,
      "quality": null
+    },
+    {
+     "id": "c06-q1-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Didn't'ten sonra fiil yalın kalır: see.",
+     "textSha256": "a987fe89539beffa22f762fbfa84a0fb166dd313b98d9f9910856acc14aaa8f2",
+     "chars": 39,
+     "audio": "tr/c06-q1-fb.mp3",
+     "align": "tr/c06-q1-fb.align.json",
+     "present": true,
+     "duration": 3.2,
+     "quality": {
+      "words": 6,
+      "exact": 5,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 1,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c06-q2-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Yesterday geçmişi gösterir; soru için Did gelir.",
+     "textSha256": "7e65010d1ad720a84364b10d23dca4af19666d4a1e36488ab1058e735debac14",
+     "chars": 48,
+     "audio": "tr/c06-q2-fb.mp3",
+     "align": "tr/c06-q2-fb.align.json",
+     "present": true,
+     "duration": 3.68,
+     "quality": {
+      "words": 7,
+      "exact": 6,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c06-q3-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Geçmişte olumsuz için didn't gelir, fiil yalın kalır.",
+     "textSha256": "2cbd1f33ae166addbfb66e93c21be669d16b9fa559385f28ef8f5ff8ab9554e8",
+     "chars": 53,
+     "audio": "tr/c06-q3-fb.mp3",
+     "align": "tr/c06-q3-fb.align.json",
+     "present": true,
+     "duration": 3.36,
+     "quality": {
+      "words": 8,
+      "exact": 8,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c06-q4-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Önce soru kelimesi, sonra did, kişi ve yalın fiil gelir.",
+     "textSha256": "418deaa15a2303a8c75fe561dfa23e957bba82f074de6b468f3b1ad009e3e907",
+     "chars": 56,
+     "audio": "tr/c06-q4-fb.mp3",
+     "align": "tr/c06-q4-fb.align.json",
+     "present": true,
+     "duration": 4.0,
+     "quality": {
+      "words": 10,
+      "exact": 10,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 1,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },

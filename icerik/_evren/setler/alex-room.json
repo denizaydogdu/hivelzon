@@ -8,6 +8,7 @@
   "unlockAfter": "A1-001",
   "sceneImage": "A1-001-a-strange-message/images/T1-oda.png",
   "glossary": [],
+  "translationPronunciations": [{"term": "Alex", "say_as": "Aleks"}],
   "status": "APPROVED",
   "author": "Claude taslak",
   "date": "2026-10-13",

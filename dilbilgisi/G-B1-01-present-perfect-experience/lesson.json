@@ -31,6 +31,19 @@
     "Paris",
     "Japanese"
   ],
+  "feedbackPronunciations": [
+    { "term": "have", "say_as": "hev" },
+    { "term": "Have", "say_as": "Hev" },
+    { "term": "you", "say_as": "yu" },
+    { "term": "ever", "say_as": "evır" },
+    { "term": "been", "say_as": "bin" },
+    { "term": "Ride", "say_as": "Rayd" },
+    { "term": "ridden", "say_as": "ridın" },
+    { "term": "Last", "say_as": "Last" },
+    { "term": "week", "say_as": "viik" },
+    { "term": "saw", "say_as": "so" },
+    { "term": "never", "say_as": "nevır" }
+  ],
   "narration": {
     "tr": {
       "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"

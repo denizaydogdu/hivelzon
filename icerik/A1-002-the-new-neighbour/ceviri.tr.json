@@ -3,6 +3,10 @@
   "status": "APPROVED",
   "author": "Claude taslak",
   "date": "2026-10-11",
+  "pronunciations": [
+    { "term": "Alex", "say_as": "Aleks" },
+    { "term": "Port Lumen", "say_as": "Port Lumın" }
+  ],
   "lines": [
     {
       "en": "The New Neighbour",

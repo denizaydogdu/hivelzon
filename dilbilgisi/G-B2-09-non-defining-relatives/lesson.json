@@ -31,6 +31,12 @@
     "Ms Demir",
     "Elif"
   ],
+  "feedbackPronunciations": [
+    { "term": "who", "say_as": "hu" },
+    { "term": "that", "say_as": "det" },
+    { "term": "which", "say_as": "viç" },
+    { "term": "whose", "say_as": "huz" }
+  ],
   "narration": {
     "tr": {
       "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"

@@ -22,6 +22,15 @@
       "B2-K02"
     ]
   },
+  "feedbackPronunciations": [
+    { "term": "knew", "say_as": "nuu" },
+    { "term": "Yesterday", "say_as": "Yestırdey" },
+    { "term": "had", "say_as": "hed" },
+    { "term": "can", "say_as": "ken" },
+    { "term": "could", "say_as": "kud" },
+    { "term": "wish", "say_as": "viş" },
+    { "term": "would", "say_as": "vud" }
+  ],
   "narration": {
     "tr": {
       "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"

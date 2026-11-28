@@ -25,6 +25,16 @@
   "glossary": [
     "arguably"
   ],
+  "feedbackPronunciations": [
+    { "term": "Appear", "say_as": "Ipiır" },
+    { "term": "to", "say_as": "tu" },
+    { "term": "arguably", "say_as": "argyuıbli" },
+    { "term": "It", "say_as": "İt" },
+    { "term": "would", "say_as": "vud" },
+    { "term": "appear", "say_as": "ıpiır" },
+    { "term": "seem", "say_as": "siim" },
+    { "term": "tend", "say_as": "tend" }
+  ],
   "narration": {
     "tr": {
       "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"

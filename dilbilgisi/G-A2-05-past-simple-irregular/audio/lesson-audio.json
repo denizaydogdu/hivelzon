@@ -55,6 +55,30 @@
      "present": true,
      "duration": 0.64,
      "quality": null
+    },
+    {
+     "id": "c01-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Onu kim aldı?",
+     "textSha256": "1191dda582945454276c59a8d87669e287d3f31bf908ab6d9af51460ea856ca9",
+     "chars": 13,
+     "audio": "tr/c01-ex1-tl.mp3",
+     "align": "tr/c01-ex1-tl.align.json",
+     "present": true,
+     "duration": 1.28,
+     "quality": {
+      "words": 3,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -167,6 +191,102 @@
      "present": true,
      "duration": 1.84,
      "quality": null
+    },
+    {
+     "id": "c03-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Eve gittim.",
+     "textSha256": "280498bfcf3cf6023ec15cca57152bf1b2f54bf3baa225342cd426a0ed4a6a6d",
+     "chars": 11,
+     "audio": "tr/c03-ex1-tl.mp3",
+     "align": "tr/c03-ex1-tl.align.json",
+     "present": true,
+     "duration": 2.08,
+     "quality": {
+      "words": 2,
+      "exact": 2,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 1,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Bir kuş gördü.",
+     "textSha256": "dc9210d0cdfc584884d7ff783191952ad2e59eb44c39149cce3a28191de2b750",
+     "chars": 14,
+     "audio": "tr/c03-ex2-tl.mp3",
+     "align": "tr/c03-ex2-tl.align.json",
+     "present": true,
+     "duration": 1.28,
+     "quality": {
+      "words": 3,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex3-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Geç geldi.",
+     "textSha256": "4df5ff106f545e1d44cba054a01f4e30d28b5dcddd1b61d22acb245f6cfb8d83",
+     "chars": 10,
+     "audio": "tr/c03-ex3-tl.mp3",
+     "align": "tr/c03-ex3-tl.align.json",
+     "present": true,
+     "duration": 1.12,
+     "quality": {
+      "words": 2,
+      "exact": 2,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 1,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex4-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Merhaba dediler.",
+     "textSha256": "2eca7e7ff4302b533aab44f176a9de64a1f44f62f3c1e65035f594c343bacf58",
+     "chars": 16,
+     "audio": "tr/c03-ex4-tl.mp3",
+     "align": "tr/c03-ex4-tl.align.json",
+     "present": true,
+     "duration": 1.28,
+     "quality": {
+      "words": 2,
+      "exact": 2,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -238,6 +358,126 @@
      "present": true,
      "duration": 1.36,
      "quality": null
+    },
+    {
+     "id": "c04-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Cumartesi sahile gittim.",
+     "textSha256": "22cd5c21ed9477e513c1812a6a6b9611a52262d6b4be8ad0b9676d390f860314",
+     "chars": 24,
+     "audio": "tr/c04-ex1-tl.mp3",
+     "align": "tr/c04-ex1-tl.align.json",
+     "present": true,
+     "duration": 1.76,
+     "quality": {
+      "words": 3,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c04-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Denizin yakınında büyük bir gemi gördük.",
+     "textSha256": "724bfed3ed186d1a832247e6fb571b048af62d31702fa6a07f7018c9e52c86ec",
+     "chars": 40,
+     "audio": "tr/c04-ex2-tl.mp3",
+     "align": "tr/c04-ex2-tl.align.json",
+     "present": true,
+     "duration": 2.72,
+     "quality": {
+      "words": 6,
+      "exact": 6,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c04-ex3-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Annesine bir kek yaptı.",
+     "textSha256": "8affd729501b00ff75c55e55b1d58feb1e136276cb4e3df3681012830df4c9c4",
+     "chars": 23,
+     "audio": "tr/c04-ex3-tl.mp3",
+     "align": "tr/c04-ex3-tl.align.json",
+     "present": true,
+     "duration": 1.76,
+     "quality": {
+      "words": 4,
+      "exact": 4,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c04-ex4-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Anahtarı yatağın altında buldular.",
+     "textSha256": "1c69167719bec9a8498cfe55dffec7c89d7bb2989a6756477ac7f1e69475d6e1",
+     "chars": 34,
+     "audio": "tr/c04-ex4-tl.mp3",
+     "align": "tr/c04-ex4-tl.align.json",
+     "present": true,
+     "duration": 2.24,
+     "quality": {
+      "words": 4,
+      "exact": 4,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c04-ex5-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Bir fincan çay içti.",
+     "textSha256": "c57c9bcb0b75dfc0184d38a7aba8c6d316984935c6e10bbd2ccab0571bec208f",
+     "chars": 20,
+     "audio": "tr/c04-ex5-tl.mp3",
+     "align": "tr/c04-ex5-tl.align.json",
+     "present": true,
+     "duration": 1.76,
+     "quality": {
+      "words": 4,
+      "exact": 4,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -294,6 +534,54 @@
      "present": true,
      "duration": 1.52,
      "quality": null
+    },
+    {
+     "id": "c05-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Kalemimi aldı.",
+     "textSha256": "e3bd97f1bf69bcffe525302c5a49ec4b02ddefb6e62eb76f2baa62ecfbfd8e2f",
+     "chars": 14,
+     "audio": "tr/c05-ex1-tl.mp3",
+     "align": "tr/c05-ex1-tl.align.json",
+     "present": true,
+     "duration": 1.28,
+     "quality": {
+      "words": 2,
+      "exact": 2,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Dün sahile gittim.",
+     "textSha256": "c4b0ef528a6a8918f1042b6d47689d7e450878b41fa19ad661f3f54ca0a15c8f",
+     "chars": 18,
+     "audio": "tr/c05-ex2-tl.mp3",
+     "align": "tr/c05-ex2-tl.align.json",
+     "present": true,
+     "duration": 1.44,
+     "quality": {
+      "words": 3,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -313,6 +601,105 @@
      "present": true,
      "duration": 1.76,
      "quality": null
+    },
+    {
+     "id": "c06-q1-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Go düzensiz bir fiil: geçmişi went.",
+     "textSha256": "e37d9b1dbef84a222de79046b96523e7e002c76cec7302afd8ee3c110a87fc39",
+     "chars": 35,
+     "audio": "tr/c06-q1-fb.mp3",
+     "align": "tr/c06-q1-fb.align.json",
+     "present": true,
+     "duration": 3.2,
+     "quality": {
+      "words": 6,
+      "exact": 5,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c06-q2-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "See düzensiz bir fiil: geçmişi saw.",
+     "textSha256": "5d5eaea39e65b7a667288a31987999d7ea848a3832e101d92c73fca63ded6b0f",
+     "chars": 35,
+     "audio": "tr/c06-q2-fb.mp3",
+     "align": "tr/c06-q2-fb.align.json",
+     "present": true,
+     "duration": 2.24,
+     "quality": {
+      "words": 6,
+      "exact": 4,
+      "fuzzy": 0,
+      "weak": 1,
+      "missing": 1,
+      "extraHeard": 0,
+      "worstRun": 1,
+      "score": 0.667,
+      "ok": false,
+      "warnings": [
+       "iyi eşleşen kelime oranı düşük: %67 (alt sınır %85)",
+       "zayıf/eksik: See→∅, saw→so."
+      ]
+     }
+    },
+    {
+     "id": "c06-q3-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Find düzensiz bir fiil: geçmişi found.",
+     "textSha256": "2804c93ab345f952d1563a473d0eb95e9957d71416cee52e986cf46bfa3cc8db",
+     "chars": 38,
+     "audio": "tr/c06-q3-fb.mp3",
+     "align": "tr/c06-q3-fb.align.json",
+     "present": true,
+     "duration": 3.68,
+     "quality": {
+      "words": 6,
+      "exact": 4,
+      "fuzzy": 2,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c06-q4-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Önce kişi, sonra geçmiş biçimdeki fiil gelir.",
+     "textSha256": "ab1cd064dfe30206d055f19b8bb37cabf96caa152575f37bc7da80a01e91d7a0",
+     "chars": 45,
+     "audio": "tr/c06-q4-fb.mp3",
+     "align": "tr/c06-q4-fb.align.json",
+     "present": true,
+     "duration": 3.2,
+     "quality": {
+      "words": 7,
+      "exact": 7,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 1,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -386,6 +773,30 @@
      "present": true,
      "duration": 1.28,
      "quality": null
+    },
+    {
+     "id": "c08-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Denize gittik.",
+     "textSha256": "a69c8b7fe30868b8a3eaae86811b359cf85314b19bdb889b643f38bf0209968c",
+     "chars": 14,
+     "audio": "tr/c08-ex1-tl.mp3",
+     "align": "tr/c08-ex1-tl.align.json",
+     "present": true,
+     "duration": 1.28,
+     "quality": {
+      "words": 2,
+      "exact": 2,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   }

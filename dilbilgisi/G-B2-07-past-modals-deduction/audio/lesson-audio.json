@@ -55,6 +55,30 @@
      "present": true,
      "duration": 1.28,
      "quality": null
+    },
+    {
+     "id": "c01-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Burada olmuş olmalı.",
+     "textSha256": "d0fa23838210a028cc30fded453ecb47cca4421b36c37ef0319d7ae7136e4296",
+     "chars": 20,
+     "audio": "tr/c01-ex1-tl.mp3",
+     "align": "tr/c01-ex1-tl.align.json",
+     "present": true,
+     "duration": 1.44,
+     "quality": {
+      "words": 3,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -98,6 +122,30 @@
      "present": true,
      "duration": 2.4,
      "quality": null
+    },
+    {
+     "id": "c02-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Işıklar kapalı. Dışarı çıkmış olmalılar.",
+     "textSha256": "aadd30a89f324fd2c8871a7eebf0c6c594c0ff2db723d0d1b579e2892641a570",
+     "chars": 40,
+     "audio": "tr/c02-ex1-tl.mp3",
+     "align": "tr/c02-ex1-tl.align.json",
+     "present": true,
+     "duration": 3.84,
+     "quality": {
+      "words": 5,
+      "exact": 5,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -154,6 +202,54 @@
      "present": true,
      "duration": 1.68,
      "quality": null
+    },
+    {
+     "id": "c03-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Bizi görmüş olamaz. El sallamadı.",
+     "textSha256": "aed08bdb12f8528b662b51f420853cffd38831f1ec28de736e2f9a0bca88dc65",
+     "chars": 33,
+     "audio": "tr/c03-ex1-tl.mp3",
+     "align": "tr/c03-ex1-tl.align.json",
+     "present": true,
+     "duration": 2.88,
+     "quality": {
+      "words": 5,
+      "exact": 5,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Otobüsü kaçırmış olabilir.",
+     "textSha256": "67f115f018647fdd1bc1075a06008f7dfa8b2673aa77228da27373474676b020",
+     "chars": 26,
+     "audio": "tr/c03-ex2-tl.mp3",
+     "align": "tr/c03-ex2-tl.align.json",
+     "present": true,
+     "duration": 3.84,
+     "quality": {
+      "words": 3,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -197,6 +293,30 @@
      "present": true,
      "duration": 1.2,
      "quality": null
+    },
+    {
+     "id": "c04-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Bana söylemeliydin.",
+     "textSha256": "398a897fedf64513b1cfb28fdb83ab9dd4de79ca08033b11dfacadd7d684690e",
+     "chars": 19,
+     "audio": "tr/c04-ex1-tl.mp3",
+     "align": "tr/c04-ex1-tl.align.json",
+     "present": true,
+     "duration": 2.08,
+     "quality": {
+      "words": 2,
+      "exact": 2,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -268,6 +388,126 @@
      "present": true,
      "duration": 1.36,
      "quality": null
+    },
+    {
+     "id": "c05-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Yer ıslak. Dün gece yağmur yağmış olmalı.",
+     "textSha256": "0ca8e62c24813dca31581c51f8ab372295ab63654aaa3e88342882ce1998c474",
+     "chars": 41,
+     "audio": "tr/c05-ex1-tl.mp3",
+     "align": "tr/c05-ex1-tl.align.json",
+     "present": true,
+     "duration": 3.2,
+     "quality": {
+      "words": 7,
+      "exact": 6,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Bitirmiş olamaz. Daha on dakika önce başladı.",
+     "textSha256": "291639f22ab6e00ebdf7d1c214a84a575070abb52f56d25c1990cedaa80c2bd8",
+     "chars": 45,
+     "audio": "tr/c05-ex2-tl.mp3",
+     "align": "tr/c05-ex2-tl.align.json",
+     "present": true,
+     "duration": 3.2,
+     "quality": {
+      "words": 7,
+      "exact": 7,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex3-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Anahtarlarımı bulamıyorum. Okulda bırakmış olabilirim.",
+     "textSha256": "c0e33dfc5ab8401a5615cfd05ec915fd419fe8d499ac67e2d112376e0beca7e0",
+     "chars": 54,
+     "audio": "tr/c05-ex3-tl.mp3",
+     "align": "tr/c05-ex3-tl.align.json",
+     "present": true,
+     "duration": 3.36,
+     "quality": {
+      "words": 5,
+      "exact": 5,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex4-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Çok mutlu görünüyor. Sınavı geçmiş olmalı.",
+     "textSha256": "17bbde101551e09631e4c8555b6393e692d10955047a797970293595cd6aa9ab",
+     "chars": 42,
+     "audio": "tr/c05-ex4-tl.mp3",
+     "align": "tr/c05-ex4-tl.align.json",
+     "present": true,
+     "duration": 2.72,
+     "quality": {
+      "words": 6,
+      "exact": 6,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex5-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Daha erken çıkmalıydık.",
+     "textSha256": "8a9c6bbf34d1988b8770be96d8fa63edc4cdc6fb00afc418d8c196aa8a05e3e3",
+     "chars": 23,
+     "audio": "tr/c05-ex5-tl.mp3",
+     "align": "tr/c05-ex5-tl.align.json",
+     "present": true,
+     "duration": 2.4,
+     "quality": {
+      "words": 3,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -324,6 +564,54 @@
      "present": true,
      "duration": 1.52,
      "quality": null
+    },
+    {
+     "id": "c06-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Unutmuş olmalı.",
+     "textSha256": "33ae4e1565eb31d7df3f8c07f804f906a43ccb9f10f41dde34fff5990b534927",
+     "chars": 15,
+     "audio": "tr/c06-ex1-tl.mp3",
+     "align": "tr/c06-ex1-tl.align.json",
+     "present": true,
+     "duration": 1.44,
+     "quality": {
+      "words": 2,
+      "exact": 2,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c06-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Beni görmüş olamaz.",
+     "textSha256": "ae3681da629711519f6b19ffe991c8ddb038be90cc7d783435cacab068ffbbc5",
+     "chars": 19,
+     "audio": "tr/c06-ex2-tl.mp3",
+     "align": "tr/c06-ex2-tl.align.json",
+     "present": true,
+     "duration": 1.44,
+     "quality": {
+      "words": 3,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -343,6 +631,106 @@
      "present": true,
      "duration": 1.04,
      "quality": null
+    },
+    {
+     "id": "c07-q1-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Kanıt güçlü: must have ve üçüncü hâl.",
+     "textSha256": "4dc3f2090b1dabdf96db52cf686f909fa52e61be601d92b3d3d15a3ed1d078cf",
+     "chars": 37,
+     "audio": "tr/c07-q1-fb.mp3",
+     "align": "tr/c07-q1-fb.align.json",
+     "present": true,
+     "duration": 3.2,
+     "quality": {
+      "words": 7,
+      "exact": 6,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c07-q2-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Telefonu bütün gün kapalıydı, yani okumuş olamaz: can't have.",
+     "textSha256": "0f9a3767b44225033c667e10d4b914aae595853b6362cdc34378bf545c58a989",
+     "chars": 61,
+     "audio": "tr/c07-q2-fb.mp3",
+     "align": "tr/c07-q2-fb.align.json",
+     "present": true,
+     "duration": 4.96,
+     "quality": {
+      "words": 9,
+      "exact": 6,
+      "fuzzy": 1,
+      "weak": 2,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 2,
+      "score": 0.778,
+      "ok": false,
+      "warnings": [
+       "iyi eşleşen kelime oranı düşük: %78 (alt sınır %85)",
+       "art arda 2 kelime zayıf ya da eksik eşleşti",
+       "zayıf/eksik: can't→Kent, have→ev."
+      ]
+     }
+    },
+    {
+     "id": "c07-q3-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Emin değilsen might, may ya da could gelir.",
+     "textSha256": "d013e690a9835963263e4ece8c816e98d6ebf0ad060c2e8c50c0ecb8a4627bd7",
+     "chars": 43,
+     "audio": "tr/c07-q3-fb.mp3",
+     "align": "tr/c07-q3-fb.align.json",
+     "present": true,
+     "duration": 3.04,
+     "quality": {
+      "words": 8,
+      "exact": 8,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c07-q4-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Eleştiri için should have ve üçüncü hâl gelir.",
+     "textSha256": "f5a9b16f03ce1eeed0ff7a06e727b56c4085a65715332fbf5e279990fda6a0af",
+     "chars": 46,
+     "audio": "tr/c07-q4-fb.mp3",
+     "align": "tr/c07-q4-fb.align.json",
+     "present": true,
+     "duration": 3.68,
+     "quality": {
+      "words": 8,
+      "exact": 7,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -404,6 +792,30 @@
      "present": true,
      "duration": 1.12,
      "quality": null
+    },
+    {
+     "id": "c09-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Bizi görmüş olamaz.",
+     "textSha256": "5207bb8cdd50b6d718c04fd87dbb51e9f07b429698f31d725b73134ee285f86c",
+     "chars": 19,
+     "audio": "tr/c09-ex2-tl.mp3",
+     "align": "tr/c09-ex2-tl.align.json",
+     "present": true,
+     "duration": 3.04,
+     "quality": {
+      "words": 3,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   }

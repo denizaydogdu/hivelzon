@@ -3,6 +3,11 @@
   "status": "DRAFT",
   "author": "Claude taslak",
   "date": "2026-10-14",
+  "pronunciations": [
+    { "term": "Lumen Point", "say_as": "Lumın Poynt" },
+    { "term": "Light Night", "say_as": "Layt Nayt" },
+    { "term": "Alex", "say_as": "Aleks" }
+  ],
   "lines": [
     {
       "en": "The Lighthouse",

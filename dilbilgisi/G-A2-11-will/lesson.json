@@ -31,6 +31,13 @@
       "say_as": "Aleks"
     }
   ],
+  "feedbackPronunciations": [
+    { "term": "I'll", "say_as": "ayl" },
+    { "term": "Will", "say_as": "Vil" },
+    { "term": "to", "say_as": "tu" },
+    { "term": "won't", "say_as": "vount" },
+    { "term": "will", "say_as": "vil" }
+  ],
   "narration": {
     "tr": {
       "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"

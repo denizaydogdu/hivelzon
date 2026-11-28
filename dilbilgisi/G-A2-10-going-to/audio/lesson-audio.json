@@ -55,6 +55,30 @@
      "present": true,
      "duration": 1.92,
      "quality": null
+    },
+    {
+     "id": "c01-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Bugün göle yürüyeceğiz.",
+     "textSha256": "85aa5dd1964647df77a515f4ef97105af82686fe6945dd8c3ddb942a1ecff6e1",
+     "chars": 23,
+     "audio": "tr/c01-ex1-tl.mp3",
+     "align": "tr/c01-ex1-tl.align.json",
+     "present": true,
+     "duration": 3.2,
+     "quality": {
+      "words": 3,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 1,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -128,6 +152,30 @@
      "present": true,
      "duration": 2.48,
      "quality": null
+    },
+    {
+     "id": "c03-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Şu bulutlara bak. Yağmur yağacak.",
+     "textSha256": "de649c9f786f6eccaa8a53c1a6cc8419267686737fb4d6bd6e645b5020886532",
+     "chars": 33,
+     "audio": "tr/c03-ex1-tl.mp3",
+     "align": "tr/c03-ex1-tl.align.json",
+     "present": true,
+     "duration": 2.88,
+     "quality": {
+      "words": 5,
+      "exact": 5,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -199,6 +247,126 @@
      "present": true,
      "duration": 2.0,
      "quality": null
+    },
+    {
+     "id": "c04-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Bu hafta sonu büyükannemi ziyaret edeceğim.",
+     "textSha256": "91a970e3208ecc4931e7876ee75a17013873fe2acc5bafb9192c25f9be1e668d",
+     "chars": 43,
+     "audio": "tr/c04-ex1-tl.mp3",
+     "align": "tr/c04-ex1-tl.align.json",
+     "present": true,
+     "duration": 2.72,
+     "quality": {
+      "words": 6,
+      "exact": 6,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c04-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Birlikte yemek yapacağız.",
+     "textSha256": "abbe036ed9a44f6da38831d092a265459215456993ddae82348e7ab793225d1c",
+     "chars": 25,
+     "audio": "tr/c04-ex2-tl.mp3",
+     "align": "tr/c04-ex2-tl.align.json",
+     "present": true,
+     "duration": 1.6,
+     "quality": {
+      "words": 3,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c04-ex3-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Bugün futbol oynayacak mısın?",
+     "textSha256": "78f9f423ae801e0f21ede2e20037384069feca06560eeb89176149cfacb9a968",
+     "chars": 29,
+     "audio": "tr/c04-ex3-tl.mp3",
+     "align": "tr/c04-ex3-tl.align.json",
+     "present": true,
+     "duration": 3.04,
+     "quality": {
+      "words": 4,
+      "exact": 4,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 1,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c04-ex4-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "O partiye gelmeyecek.",
+     "textSha256": "e3d83a66c56886b42e24144d89f70e0a32cc61f029e4e42a862f6ac65f60ea2c",
+     "chars": 21,
+     "audio": "tr/c04-ex4-tl.mp3",
+     "align": "tr/c04-ex4-tl.align.json",
+     "present": true,
+     "duration": 1.6,
+     "quality": {
+      "words": 3,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c04-ex5-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Dikkat et! Düşeceksin!",
+     "textSha256": "a5c9e2c7db88d7934352273ad5bca91c557a040031c42a0146e5e8cf652e646a",
+     "chars": 22,
+     "audio": "tr/c04-ex5-tl.mp3",
+     "align": "tr/c04-ex5-tl.align.json",
+     "present": true,
+     "duration": 2.56,
+     "quality": {
+      "words": 3,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -255,6 +423,54 @@
      "present": true,
      "duration": 1.44,
      "quality": null
+    },
+    {
+     "id": "c05-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Teyzemi ziyaret edeceğim.",
+     "textSha256": "5ada3de72ba3991d77d04909278833d8382422046233a3b64d3d648dec8e6afb",
+     "chars": 25,
+     "audio": "tr/c05-ex1-tl.mp3",
+     "align": "tr/c05-ex1-tl.align.json",
+     "present": true,
+     "duration": 3.36,
+     "quality": {
+      "words": 3,
+      "exact": 2,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Eve gideceğiz.",
+     "textSha256": "2899e9fe468ce26338ee67064858664d4ce4766922c5aea5baea9c80975e1da4",
+     "chars": 14,
+     "audio": "tr/c05-ex2-tl.mp3",
+     "align": "tr/c05-ex2-tl.align.json",
+     "present": true,
+     "duration": 1.12,
+     "quality": {
+      "words": 2,
+      "exact": 2,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -274,6 +490,105 @@
      "present": true,
      "duration": 2.48,
      "quality": null
+    },
+    {
+     "id": "c06-q1-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Olmak fiili, going to ve yalın fiil birlikte gelir.",
+     "textSha256": "b63285dd52b6b5df4bf5873a278aeba0f16b963247dd35147c9894598b3e6038",
+     "chars": 51,
+     "audio": "tr/c06-q1-fb.mp3",
+     "align": "tr/c06-q1-fb.align.json",
+     "present": true,
+     "duration": 4.32,
+     "quality": {
+      "words": 9,
+      "exact": 9,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 1,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c06-q2-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Ben (I) için am going to gelir.",
+     "textSha256": "49e2eda619a7964ea4a02279d528de49a588c299bc4caf6a9f656c789f14fa69",
+     "chars": 31,
+     "audio": "tr/c06-q2-fb.mp3",
+     "align": "tr/c06-q2-fb.align.json",
+     "present": true,
+     "duration": 2.56,
+     "quality": {
+      "words": 7,
+      "exact": 2,
+      "fuzzy": 3,
+      "weak": 1,
+      "missing": 1,
+      "extraHeard": 0,
+      "worstRun": 1,
+      "score": 0.714,
+      "ok": false,
+      "warnings": [
+       "iyi eşleşen kelime oranı düşük: %71 (alt sınır %85)",
+       "zayıf/eksik: I→∅, to→Tuki"
+      ]
+     }
+    },
+    {
+     "id": "c06-q3-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Going to'dan sonra fiil yalın kalır.",
+     "textSha256": "daf3a43b7bb5cbfcfdaf229a2c06e22042d05cb49e29dcd36bd7a8346730d52e",
+     "chars": 36,
+     "audio": "tr/c06-q3-fb.mp3",
+     "align": "tr/c06-q3-fb.align.json",
+     "present": true,
+     "duration": 2.4,
+     "quality": {
+      "words": 6,
+      "exact": 6,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c06-q4-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Önce kişi, sonra olmak fiili, going to ve yalın fiil gelir.",
+     "textSha256": "e7a6f1f6b0ec20072ec18e89061d5a24cacb3c10a826322125b73b0b4d99e36a",
+     "chars": 59,
+     "audio": "tr/c06-q4-fb.mp3",
+     "align": "tr/c06-q4-fb.align.json",
+     "present": true,
+     "duration": 5.6,
+     "quality": {
+      "words": 11,
+      "exact": 11,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 1,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -347,6 +662,30 @@
      "present": true,
      "duration": 1.76,
      "quality": null
+    },
+    {
+     "id": "c08-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Büyükannemi ziyaret edeceğim.",
+     "textSha256": "730953727a9cf64b7c85f998fd1d59183cd904e042f3cc01edba7ca7162ae6e4",
+     "chars": 29,
+     "audio": "tr/c08-ex1-tl.mp3",
+     "align": "tr/c08-ex1-tl.align.json",
+     "present": true,
+     "duration": 3.52,
+     "quality": {
+      "words": 3,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   }

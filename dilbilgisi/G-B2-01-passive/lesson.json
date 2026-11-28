@@ -25,6 +25,19 @@
     "İzmir",
     "English"
   ],
+  "feedbackPronunciations": [
+    { "term": "was", "say_as": "vaz" },
+    { "term": "built", "say_as": "bilt" },
+    { "term": "You", "say_as": "Yu" },
+    { "term": "were", "say_as": "vör" },
+    { "term": "Where", "say_as": "Ver" },
+    { "term": "you", "say_as": "yu" },
+    { "term": "born", "say_as": "born" },
+    { "term": "will", "say_as": "vil" },
+    { "term": "be", "say_as": "bi" },
+    { "term": "sent", "say_as": "sent" },
+    { "term": "by", "say_as": "bay" }
+  ],
   "narration": {
     "tr": {
       "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"

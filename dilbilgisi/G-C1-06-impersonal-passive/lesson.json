@@ -23,6 +23,16 @@
       "C1-K04"
     ]
   },
+  "feedbackPronunciations": [
+    { "term": "is", "say_as": "iz" },
+    { "term": "thought", "say_as": "tot" },
+    { "term": "to", "say_as": "tu" },
+    { "term": "be", "say_as": "bi" },
+    { "term": "It", "say_as": "İt" },
+    { "term": "that", "say_as": "det" },
+    { "term": "have", "say_as": "hev" },
+    { "term": "lived", "say_as": "livd" }
+  ],
   "narration": {
     "tr": {
       "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"

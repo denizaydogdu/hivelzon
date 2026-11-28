@@ -23,6 +23,17 @@
   "properNouns": [
     "Friday"
   ],
+  "feedbackPronunciations": [
+    { "term": "Should", "say_as": "Şud" },
+    { "term": "you", "say_as": "yu" },
+    { "term": "require", "say_as": "rikvayır" },
+    { "term": "Had", "say_as": "Hed" },
+    { "term": "be", "say_as": "bi" },
+    { "term": "it", "say_as": "it" },
+    { "term": "not", "say_as": "nat" },
+    { "term": "been", "say_as": "bin" },
+    { "term": "for", "say_as": "for" }
+  ],
   "narration": {
     "tr": {
       "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"

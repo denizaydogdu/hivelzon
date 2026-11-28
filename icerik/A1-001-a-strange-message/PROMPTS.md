@@ -213,3 +213,35 @@ Kalan kredi 110,25 olduğu için tutar karşılanamıyor. Biçim de uymuyor: tek
 | 2026-10-14T13:07:01Z | hi_03.p3 | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 14 | 308c8f3227d091b7 |
 | 2026-10-14T13:07:02Z | tr_c-clues.p2 | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 30 | a4acd7d16224f757 |
 | 2026-10-14T13:07:03Z | tr_c-oq.p2 | Sarah EXAVITQu4vr4xnSDxMaL | eleven_v3 | 0.9 | 11 | 71b2f4da8bfabde3 |
+| 2026-11-27T19:46:50Z | l-e13f8b30be | alania-v2 | alania2-f1 | alania-v2.1 | 12 | 1.92 | e5a9d2227995440c98a6e766fd539311 | 794309ccfabecf6e |
+| 2026-11-27T19:46:51Z | l-e13f8b30be | duyu-1 | - | - | - | 1.92 | - | 794309ccfabecf6e |
+| 2026-11-27T19:46:52Z | l-4f05e2e6f4 | alania-v2 | alania2-f1 | alania-v2.1 | 14 | 1.28 | 05e309b28fda42aba82e055409688d31 | a7845a9d87798bd8 |
+| 2026-11-27T19:46:53Z | l-4f05e2e6f4 | duyu-1 | - | - | - | 1.28 | - | a7845a9d87798bd8 |
+| 2026-11-27T19:46:55Z | l-aaf2190772 | alania-v2 | alania2-f1 | alania-v2.1 | 9 | 2.4 | a2375fd3687746d1883ad678d648a0f4 | cb895fea667eceb8 |
+| 2026-11-27T19:46:56Z | l-aaf2190772 | duyu-1 | - | - | - | 2.4 | - | cb895fea667eceb8 |
+| 2026-11-27T19:46:58Z | l-37e79c35d4 | alania-v2 | alania2-f1 | alania-v2.1 | 23 | 1.6 | c571376dad124917b98e35cda89d8b06 | a87521cf883b0062 |
+| 2026-11-27T19:46:59Z | l-37e79c35d4 | duyu-1 | - | - | - | 1.6 | - | a87521cf883b0062 |
+| 2026-11-27T19:47:01Z | l-e96eb9f8b7 | alania-v2 | alania2-f1 | alania-v2.1 | 33 | 2.4 | 6298b77905044eb59970576757f44906 | c63fb377ec49787c |
+| 2026-11-27T19:47:02Z | l-e96eb9f8b7 | duyu-1 | - | - | - | 2.4 | - | c63fb377ec49787c |
+| 2026-11-27T19:47:04Z | l-aa8a384085 | alania-v2 | alania2-f1 | alania-v2.1 | 25 | 1.92 | 4d77b773dd874013a1a18a8c49ea6df6 | 54d51b0a193a1731 |
+| 2026-11-27T19:47:05Z | l-aa8a384085 | duyu-1 | - | - | - | 1.92 | - | 54d51b0a193a1731 |
+| 2026-11-27T19:47:07Z | l-cc07850c5e | alania-v2 | alania2-f1 | alania-v2.1 | 14 | 1.28 | 8cb4b619cb0b42d4900fcb4e5d56df32 | 334c499e2d1143eb |
+| 2026-11-27T19:47:08Z | l-cc07850c5e | duyu-1 | - | - | - | 1.28 | - | 334c499e2d1143eb |
+| 2026-11-27T19:47:09Z | l-aef7491dc7 | alania-v2 | alania2-f1 | alania-v2.1 | 6 | 0.8 | 21355520145e4de49faaaa938d87e34b | bb833e5f1c35faa1 |
+| 2026-11-27T19:47:10Z | l-aef7491dc7 | duyu-1 | - | - | - | 0.8 | - | bb833e5f1c35faa1 |
+| 2026-11-27T19:47:11Z | l-9242eb956c | alania-v2 | alania2-f1 | alania-v2.1 | 30 | 2.08 | 601c5cc1f7f4485bbe683f3e11ecbdc8 | 8dbedf2a05d0f4a1 |
+| 2026-11-27T19:47:12Z | l-9242eb956c | duyu-1 | - | - | - | 2.08 | - | 8dbedf2a05d0f4a1 |
+| 2026-11-27T19:47:14Z | l-09a8f386b0 | alania-v2 | alania2-f1 | alania-v2.1 | 16 | 2.24 | 04a532f4090945f58cb77e86248e8ec4 | b708eaecbf9eda25 |
+| 2026-11-27T19:47:15Z | l-09a8f386b0 | duyu-1 | - | - | - | 2.24 | - | b708eaecbf9eda25 |
+| 2026-11-27T19:47:16Z | l-80495816f7 | alania-v2 | alania2-f1 | alania-v2.1 | 11 | 1.12 | 414bb2fc6de64c12ae3839d50a1109a3 | 8fec9bf7d095510b |
+| 2026-11-27T19:47:17Z | l-80495816f7 | duyu-1 | - | - | - | 1.12 | - | 8fec9bf7d095510b |
+| 2026-11-27T19:47:19Z | l-308c8f3227 | alania-v2 | alania2-f1 | alania-v2.1 | 17 | 1.6 | 9e408ed600724f95a57a7a2f23fbbe67 | db672b7bb819657b |
+| 2026-11-27T19:47:20Z | l-308c8f3227 | duyu-1 | - | - | - | 1.6 | - | db672b7bb819657b |
+| 2026-11-27T19:47:22Z | l-a4949e2c96 | alania-v2 | alania2-f1 | alania-v2.1 | 3 | 1.12 | bd087302f2884699af05d43ea5483dad | 1d6f114663e11992 |
+| 2026-11-27T19:47:23Z | l-a4949e2c96 | duyu-1 | - | - | - | 1.12 | - | 1d6f114663e11992 |
+| 2026-11-27T19:47:24Z | l-197fbdee66 | alania-v2 | alania2-f1 | alania-v2.1 | 21 | 1.76 | 8116ff26e9c447fe82b8fa8ab1614e2d | 1e17fba3c373fbe6 |
+| 2026-11-27T19:47:25Z | l-197fbdee66 | duyu-1 | - | - | - | 1.76 | - | 1e17fba3c373fbe6 |
+| 2026-11-27T19:47:27Z | l-78a641580c | alania-v2 | alania2-f1 | alania-v2.1 | 10 | 1.28 | dbc8c8750f9e4c099f7798b9489b0dd1 | ac3bd7604dfdfac0 |
+| 2026-11-27T19:47:28Z | l-78a641580c | duyu-1 | - | - | - | 1.28 | - | ac3bd7604dfdfac0 |
+| 2026-11-27T19:47:29Z | p-64df403570 | alania-v2 | alania2-f1 | alania-v2.1 | 6 | 0.8 | c54f19b249c24f7891522677116ab594 | e03b41d6f05ae2bd |
+| 2026-11-27T19:47:30Z | p-64df403570 | duyu-1 | - | - | - | 0.8 | - | e03b41d6f05ae2bd |

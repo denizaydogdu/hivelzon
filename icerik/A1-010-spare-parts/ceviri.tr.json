@@ -3,6 +3,10 @@
   "status": "DRAFT",
   "author": "Claude taslak",
   "date": "2026-10-14",
+  "pronunciations": [
+    { "term": "Grant", "say_as": "Grent" },
+    { "term": "Alex", "say_as": "Aleks" }
+  ],
   "lines": [
     {
       "en": "Spare Parts",

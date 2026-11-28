@@ -32,6 +32,15 @@
       "say_as": "Aleks"
     }
   ],
+  "feedbackPronunciations": [
+    { "term": "had", "say_as": "hed" },
+    { "term": "would", "say_as": "vud" },
+    { "term": "have", "say_as": "hev" },
+    { "term": "Wouldn't'tan", "say_as": "Vudınt'tan" }
+  ],
+  "translationPronunciations": [
+    { "term": "Alex", "say_as": "Aleks" }
+  ],
   "narration": {
     "tr": {
       "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"

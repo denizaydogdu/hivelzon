@@ -21,6 +21,17 @@
       "C2-K01"
     ]
   },
+  "feedbackPronunciations": [
+    { "term": "Little", "say_as": "Litıl" },
+    { "term": "did", "say_as": "did" },
+    { "term": "we", "say_as": "vi" },
+    { "term": "know", "say_as": "nou" },
+    { "term": "Such", "say_as": "Saç" },
+    { "term": "So", "say_as": "Sou" }
+  ],
+  "translationPronunciations": [
+    { "term": "Gavin", "say_as": "Gevin" }
+  ],
   "narration": {
     "tr": {
       "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"

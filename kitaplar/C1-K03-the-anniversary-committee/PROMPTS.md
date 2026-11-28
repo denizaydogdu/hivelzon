@@ -143,3 +143,9 @@ Henüz üretilmedi. Anlatıcı **Sarah** (`EXAVITQu4vr4xnSDxMaL`, kullanıcı se
 | 2026-11-03T19:30:49Z | p27 | duyu-1 | - | - | - | 121.76 | - | e44d09363ae09e20 |
 | 2026-11-04T07:12:40Z | p08 | alania-v2 | alania2-f1 | alania-v2.1 | 1704 | 110.7 | de9fae3007374cb088ea7fe3b20ee6d9 | b749c05d0f8bc145 |
 | 2026-11-04T07:12:58Z | p08 | duyu-1 | - | - | - | 110.7 | - | b749c05d0f8bc145 |
+| 2026-11-27T18:37:19Z | q1 | alania-v2 | alania2-f1 | alania-v2.1 | 57 | 3.2 | 156caf817da44d9cb457347bc67676d6 | 23174fa99d24ad11 |
+| 2026-11-27T18:37:20Z | q1 | duyu-1 | - | - | - | 3.2 | - | 23174fa99d24ad11 |
+| 2026-11-27T18:37:22Z | q2 | alania-v2 | alania2-f1 | alania-v2.1 | 88 | 5.6 | 692961a11be74db9be348b8b1d8edacd | a355e86695898d02 |
+| 2026-11-27T18:37:23Z | q2 | duyu-1 | - | - | - | 5.6 | - | a355e86695898d02 |
+| 2026-11-27T18:40:10Z | blurb | alania-v2 | alania2-f1 | alania-v2.1 | 436 | 27.66 | 3e659af96a5c4fd194e04405e3ecc506 | 2ac36e1c05b5a01b |
+| 2026-11-27T18:40:12Z | blurb | duyu-1 | - | - | - | 27.66 | - | 2ac36e1c05b5a01b |

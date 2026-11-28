@@ -23,6 +23,14 @@
   "properNouns": [
     "Elif"
   ],
+  "feedbackPronunciations": [
+    { "term": "Go", "say_as": "Gou" },
+    { "term": "went", "say_as": "vent" },
+    { "term": "See", "say_as": "Sii" },
+    { "term": "saw", "say_as": "so" },
+    { "term": "Find", "say_as": "Faynd" },
+    { "term": "found", "say_as": "faund" }
+  ],
   "narration": {
     "tr": {
       "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"

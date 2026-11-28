@@ -55,6 +55,30 @@
      "present": true,
      "duration": 1.52,
      "quality": null
+    },
+    {
+     "id": "c01-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Benimle eski istasyonda buluş.",
+     "textSha256": "8dbedf2a05d0f4a1e4e8d5298dc47c0ae3407bc1ffa8cbc0d7483bfeefc76a14",
+     "chars": 30,
+     "audio": "tr/c01-ex1-tl.mp3",
+     "align": "tr/c01-ex1-tl.align.json",
+     "present": true,
+     "duration": 2.24,
+     "quality": {
+      "words": 4,
+      "exact": 4,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -141,6 +165,54 @@
      "present": true,
      "duration": 1.12,
      "quality": null
+    },
+    {
+     "id": "c03-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Bir kedim var.",
+     "textSha256": "eeccb6fa581735ebe96482d6be5aedcdb9326c798c76150b224d175aa8794b21",
+     "chars": 14,
+     "audio": "tr/c03-ex1-tl.mp3",
+     "align": "tr/c03-ex1-tl.align.json",
+     "present": true,
+     "duration": 1.28,
+     "quality": {
+      "words": 3,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Kedi siyah.",
+     "textSha256": "9473a9675984fb823d6c53cbc370c1c0f3c294e0e3b95b95675a8b434cecc263",
+     "chars": 11,
+     "audio": "tr/c03-ex2-tl.mp3",
+     "align": "tr/c03-ex2-tl.align.json",
+     "present": true,
+     "duration": 1.28,
+     "quality": {
+      "words": 2,
+      "exact": 2,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -197,6 +269,54 @@
      "present": true,
      "duration": 1.36,
      "quality": null
+    },
+    {
+     "id": "c04-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Bugün güneş sıcak.",
+     "textSha256": "d9bb79bdca6f58c2722013f9f665b5062d35130166475eb33d046364126f536d",
+     "chars": 18,
+     "audio": "tr/c04-ex1-tl.mp3",
+     "align": "tr/c04-ex1-tl.align.json",
+     "present": true,
+     "duration": 1.28,
+     "quality": {
+      "words": 3,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c04-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Kapıyı kapatır mısın, lütfen?",
+     "textSha256": "502b9f7c31c926f8e4e681b35aada7a0decd8c9f32359cb78b02bc989f5d2bc7",
+     "chars": 29,
+     "audio": "tr/c04-ex2-tl.mp3",
+     "align": "tr/c04-ex2-tl.align.json",
+     "present": true,
+     "duration": 2.08,
+     "quality": {
+      "words": 4,
+      "exact": 4,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -268,6 +388,126 @@
      "present": true,
      "duration": 1.6,
      "quality": null
+    },
+    {
+     "id": "c05-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Eski istasyon nerede?",
+     "textSha256": "1e17fba3c373fbe62db240eba005fd0edefeabcd15fc3998274296f1525a3f4b",
+     "chars": 21,
+     "audio": "tr/c05-ex1-tl.mp3",
+     "align": "tr/c05-ex1-tl.align.json",
+     "present": true,
+     "duration": 1.76,
+     "quality": {
+      "words": 3,
+      "exact": 2,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Pencereyi aç, lütfen.",
+     "textSha256": "cf7579d6122d7ecba70b72dfe811c135ef552cdd8f00cbcce73e3e4b34514f74",
+     "chars": 21,
+     "audio": "tr/c05-ex2-tl.mp3",
+     "align": "tr/c05-ex2-tl.align.json",
+     "present": true,
+     "duration": 2.08,
+     "quality": {
+      "words": 3,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 1,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex3-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Bir köpeğim var. Köpek küçük.",
+     "textSha256": "184489fd4668e0d415fec62dc3605689d0210a2298bb00e42ffdb2dcef27fcbb",
+     "chars": 29,
+     "audio": "tr/c05-ex3-tl.mp3",
+     "align": "tr/c05-ex3-tl.align.json",
+     "present": true,
+     "duration": 2.4,
+     "quality": {
+      "words": 5,
+      "exact": 5,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex4-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Denize bak!",
+     "textSha256": "67749da8bab961d6de955ae8519cecce9eb06af09331c628080100d393fd5575",
+     "chars": 11,
+     "audio": "tr/c05-ex4-tl.mp3",
+     "align": "tr/c05-ex4-tl.align.json",
+     "present": true,
+     "duration": 1.12,
+     "quality": {
+      "words": 2,
+      "exact": 2,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex5-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Dükkân parkın yakınında.",
+     "textSha256": "c9f779692da7bff5354d803d658372f368760ee76d3bcb4120e723d29dc3e67d",
+     "chars": 24,
+     "audio": "tr/c05-ex5-tl.mp3",
+     "align": "tr/c05-ex5-tl.align.json",
+     "present": true,
+     "duration": 3.04,
+     "quality": {
+      "words": 3,
+      "exact": 2,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -324,6 +564,30 @@
      "present": true,
      "duration": 2.64,
      "quality": null
+    },
+    {
+     "id": "c06-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Bir kedi görüyorum. Kedi siyah.",
+     "textSha256": "4933db4beb6417fb8c38b423c357fa48bbfe7280e209db386521211501087517",
+     "chars": 31,
+     "audio": "tr/c06-ex2-tl.mp3",
+     "align": "tr/c06-ex2-tl.align.json",
+     "present": true,
+     "duration": 2.56,
+     "quality": {
+      "words": 5,
+      "exact": 5,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -343,6 +607,105 @@
      "present": true,
      "duration": 1.68,
      "quality": null
+    },
+    {
+     "id": "c07-q1-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Hangi istasyon olduğunu ikiniz de biliyorsunuz: the gelir.",
+     "textSha256": "7dcfc1a59900cff144219e07e4587c80fde4cc2e06f24075e08af4a9be630487",
+     "chars": 58,
+     "audio": "tr/c07-q1-fb.mp3",
+     "align": "tr/c07-q1-fb.align.json",
+     "present": true,
+     "duration": 3.04,
+     "quality": {
+      "words": 8,
+      "exact": 7,
+      "fuzzy": 0,
+      "weak": 1,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 1,
+      "score": 0.875,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c07-q2-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Kediden ikinci kez söz ediyorsun: the gelir.",
+     "textSha256": "16af6114700e04e300bc28160e665ada98cf2949e8971911c4c0107fc39cc268",
+     "chars": 44,
+     "audio": "tr/c07-q2-fb.mp3",
+     "align": "tr/c07-q2-fb.align.json",
+     "present": true,
+     "duration": 3.36,
+     "quality": {
+      "words": 7,
+      "exact": 6,
+      "fuzzy": 0,
+      "weak": 1,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 1,
+      "score": 0.857,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c07-q3-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Odadaki kapı belli: the gelir.",
+     "textSha256": "25ac632f14e6e60f4b4005b135c97f22eef68a68298fce436a1edbbcbca148e9",
+     "chars": 30,
+     "audio": "tr/c07-q3-fb.mp3",
+     "align": "tr/c07-q3-fb.align.json",
+     "present": true,
+     "duration": 2.08,
+     "quality": {
+      "words": 5,
+      "exact": 4,
+      "fuzzy": 0,
+      "weak": 1,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 1,
+      "score": 0.8,
+      "ok": false,
+      "warnings": [
+       "iyi eşleşen kelime oranı düşük: %80 (alt sınır %85)",
+       "zayıf/eksik: the→dı"
+      ]
+     }
+    },
+    {
+     "id": "c07-q4-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Soru kelimesi başa gelir; the ismin hemen önünde durur.",
+     "textSha256": "ba0dcd55032d9d074f8cf5347fc0eeccfea6673fa94558f1628ebd6c174d08df",
+     "chars": 55,
+     "audio": "tr/c07-q4-fb.mp3",
+     "align": "tr/c07-q4-fb.align.json",
+     "present": true,
+     "duration": 3.84,
+     "quality": {
+      "words": 9,
+      "exact": 9,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -416,6 +779,30 @@
      "present": true,
      "duration": 1.44,
      "quality": null
+    },
+    {
+     "id": "c09-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Kapıyı aç, lütfen.",
+     "textSha256": "617489c172884805d351d7711141b97197e4176ed8d51e05e6dd7905d0eed1eb",
+     "chars": 18,
+     "audio": "tr/c09-ex1-tl.mp3",
+     "align": "tr/c09-ex1-tl.align.json",
+     "present": true,
+     "duration": 1.92,
+     "quality": {
+      "words": 3,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 1,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   }

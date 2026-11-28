@@ -3,6 +3,11 @@
   "status": "DRAFT",
   "author": "Claude taslak",
   "date": "2026-10-14",
+  "pronunciations": [
+    { "term": "Alex", "say_as": "Aleks" },
+    { "term": "Lumen Point", "say_as": "Lumın Poynt" },
+    { "term": "Grant", "say_as": "Grent" }
+  ],
   "lines": [
     {
       "en": "The Café on the Hill",

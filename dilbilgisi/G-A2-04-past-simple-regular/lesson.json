@@ -33,6 +33,13 @@
       "say_as": "ed"
     }
   ],
+  "feedbackPronunciations": [
+    { "term": "Last", "say_as": "Last" },
+    { "term": "night", "say_as": "nayt" },
+    { "term": "watched", "say_as": "vaçt" },
+    { "term": "stopped", "say_as": "stopt" },
+    { "term": "studied", "say_as": "stadid" }
+  ],
   "narration": {
     "tr": {
       "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"

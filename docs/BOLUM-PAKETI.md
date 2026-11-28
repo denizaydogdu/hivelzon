@@ -39,6 +39,7 @@ icerik/A1-001-a-strange-message/_build/package/
 | `episode` | `id`, `slug`, `level`, `season`, `number`, `title`, `contentVersion`, `status`, `aiGenerated`, `aiLabel`, `mission.tr` (🎯 panelindeki görev cümlesi), `targetPhrases`, `targetPhraseGloss`, `glossary`, `prev`, `next`, `links`. |
 | `episode.targetPhraseGloss` | 🎯 paneli için hedef ifadenin Türkçe anlamı: `text`, `tr`, `words` (`w`, `gloss`), `chunks`. `ceviri.tr.json`'dan gelir: önce birebir satır, yoksa herhangi bir satırdaki aynı kalıp (`chunks[].en`). Sonra `ceviri.tr.json` → `phrases` (H-052; altyazıda geçmeyen ifadeler, ör. B1 *Listen.* → "Dinle."). content-lint, anlamı olmayan hedef ifadeyi hata sayar (`target-meaning`). |
 | `episode.glossary` | Bölüm sözlüğü (H-052): `content.json` → `glossary` (seviye üstü kelimeler) ve Türkçesi: `[{"w": "channel", "tr": "kanal"}]`. Türkçe `phrases` → satır kalıbı (çok kelimeli giriş) → herhangi bir satırın `words` anlamından gelir; bulunamazsa `tr` yoktur. Uygulama, altyazıda bakılan kelimelerden **yalnızca bu listedekileri** defter kartına çevirir (hedef ifadeler ve "Deftere ekle" bundan etkilenmez). |
+| `episode.translationAudio` | İsteğe bağlı (H-109 Faz 3): anlam panelindeki Türkçe cümlelerin Hi sesi, `{ekrandaki Türkçe metin: "audio/ceviri/<parça>.m4a"}`. Altyazı satırında ayrıca `trAudio` (Keşfet klipleri satırı olduğu gibi kopyalar). Yalnız güncel ses girer; anahtar metnin birebir aynısıdır, eşleşmeyen metinde düğme görünmez. Kaynak: `audio/ceviri/<l-|p-><sha256(İngilizce)[:10]>.{mp3,align.json}`, araç `tts_episode_tr.py --part translation` (`--package` kurulmuş pakete ekler). |
 | `episode.links` | `content.json`'daki bağ alanları: `previously`, `payoff`, `openQuestion`, `answers`, `cluesUnlocked`, `callbackPhrases` (OYUN-TASARIMI §4.3). |
 | `flags` | Bu bölümde yazılan kalıcı bayraklar (`id`, `values`). **En fazla 3 (K-28).** |
 | `externalFlags` | Önceki bölümde yazılıp bu bölümde okunan bayraklar (`episode`, `id`, `values`, `default`). |
@@ -186,6 +187,7 @@ python3 tools/content-pipeline/export_package.py --season 1
 - Satır, İngilizce metnin **birebir aynısıyla** eşlenir; yalnızca boşluklar normalleştirilir. Konuşmacı eşlemeye girmez (aynı cümle iki karakterde tek kayıtla çevrilir).
 - `words` anahtarı küçük harfli kelimedir; baştaki ve sondaki noktalama atılır, içteki `'` ve `:` kalır (`it's`, `o'clock`, `2:00`).
 - `source` yalnızca bilgi içindir. `status`: `DRAFT` → editör onayı → `APPROVED` (H-028).
+- `pronunciations` (isteğe bağlı, H-109 Faz 3): yalnız çeviri sesine giden söyleniş sözlüğü (`[{term, say_as}]`, ör. Alex → Aleks, Lumen Point → Lumın Poynt). Pakette bağlanan `lines`/`phrases` Türkçesi seslendirilir; kalıp ve kelime anlamları seslendirilmez.
 - Çeviriyi Claude taslak olarak yazar, kullanıcı onaylar. `story.tr.md` aynı çevirinin okunur sürümüdür.
 - **Karar seçenekleri çevrilmez** (kullanıcı kararı); destek Hi ipuçlarıyla verilir. Görev seçenekleri de cevabı ele vermemek için çevrilmez.
 - Dışa aktarıcı aynı çeviriyi zamansız metinlere de ekler: kart satırları (`lines[]`, `lang: en`) ve karar repliği (`cue`) `tr`, `words` (`w`, `gloss`) ve `chunks` alır; görev kökü (`items[].stem`) `stemTr`, `stemWords`, `stemChunks` alır. "Bölüm 2: The New Neighbour" gibi önekli satırda iki noktadan sonraki kısım eşlenir.
@@ -356,7 +358,15 @@ sets/<id>.json         → set verisi: scene {image, width, height}, items[] (ka
 sets/<id>/scene.webp   → sahne avı görseli (1080 px genişlik, oran korunur, yazısız)
 sets/<id>/<öğe>.webp   → öğe kartı (512×512)
 sets/<id>/<öğe>.m4a, <öğe>.example.m4a → kelime ve örnek cümle sesi (AAC, kayıt -16 LUFS'a getirilir)
+sets/<id>/tr-<öğe>.m4a → örnek cümlenin Türkçesinin Hi sesi (H-109 Faz 3b; öğede `exampleTrAudio`)
 ```
+
+**Örnek Türkçesinin sesi (H-109 Faz 3b):** `exampleTr` PatientDesk Alania ile (ses Hi) `tts_season_tr.py --part sets`;
+kaynak `setler/audio/ceviri/<set>-<öğe>-ex.{mp3,align.json}`, isteğe bağlı set düzeyinde `translationPronunciations`
+(yalnız bu sese gider; ör. Alex → Aleks). Yalnız güncel ses (anahtar = metin + ses + model + üslup + söyleniş) pakete
+girer. Uygulama düğmeyi yalnız Türkçenin zaten göründüğü kart yüzünde çizer (tekrarda cevaptan sonra); soru yüzünde
+yoktur. Defterdeki kopya metin setteki metinle aynı değilse düğme görünmez. content-lint `set-tr-audio` (eksik ses set
+başına tek uyarı, eskimiş/sahipsiz ses uyarı, bozuk sözlük hata) ve `set-tr-english`.
 
 **Uygulama:**
 - Set, `unlockAfter` bölümü bitince açılır (zaman kilidi yok). Kilitli set sakin bir nedenle görünür: "Bölüm 3'ü bitirince açılır."
@@ -396,7 +406,15 @@ clips.json         → schemaVersion, season, level, status, aiLabel, clips[]:
                      sourceStatus (kaynak bölümün durumu), loudness {before, gainDb, after}, bytes, videoDuration
 clips/<id>.mp4     → 720×1280 H.264 High (720p sürümüyle aynı ayarlar) + AAC 128k, faststart; görüntüye yazı yok
 clips/<id>.webp    → ilk kare (720 genişlik), video açılana dek görünür
+clips/<id>.tr-prompt.m4a, <id>.tr-explain.m4a → alıştırmanın Türkçe sesi (H-109 Faz 3b; `quiz.audioTr`)
 ```
+
+- **Alıştırmanın Türkçe sesi (H-109 Faz 3b):** reel alıştırmasının (H-109 Faz 1) kuralıyla `<klip>-prompt` (soru +
+  seçenekler, yalnız hepsi Türkçeyse, kaynaktaki sırayla) ve `<klip>-explain` (cevaptan sonra görünen açıklama);
+  `tts_season_tr.py --part clips`, kaynak `klipler/audio/tr/`, söyleniş sözlüğü dosya düzeyinde `pronunciations`
+  (sorulardaki İngilizce ifadeler, ör. "Nice to meet you" → "Nays tu miit yu"). Pakette `quiz.audioTr = {prompt|explain:
+  {audio, textSha256, duration}}`; uygulama yolu sezon önekiyle çözer. content-lint `clip-tr-audio` (eksik ses dosya
+  başına tek uyarı) ve `clip-tr-english`.
 
 - Görüntü ve ses bölüm paketinin **720p** segmentlerinden kesilir. Parça uçlarında 20/30 ms yumuşak geçiş, ses her klipte ölçülüp **-16 LUFS**'a getirilir (kazanç + sınırlayıcı; S1: 17 klipte -16,02…-16,04 LUFS).
 - Altyazı satır kimlikleri bölümdekiyle aynı kalır: Keşfet'ten Defter'e eklenen ifade bölüm verisinden görsel ve ses alır.
@@ -427,6 +445,13 @@ Kaynak `icerik/_evren/konusma/<id>.json` (şema `tools/content-pipeline/schema/t
 - **`kind: message`** — `taskTr`, `to`, `model` (`en`, `tr`), `check` (`all`: her gruptan en az bir kalıp, `none`: anlamı tersine çeviren kelimeler, `hintTr`) ya da `null` (öz değerlendirme; `selfCheckTr` zorunlu), `targets`.
 - **Ses:** ücretli üretim yok. Satır bölüm kaydında **konuşan + metin aynen** varsa o kayıt -16 LUFS m4a olarak pakete girer; yoksa uygulama cihazın İngilizce sesini kullanır (ElevenLabs sesleri sonra).
 - **Hi'nin Türkçe sesi (H-104):** `introTr`, `taskTr`, `promptTr`, `reactionTr`, `check.hintTr` PatientDesk Alania ile (`tts_episode_tr.py --talk`; yalnız kip a/düz Türkçe, ElevenLabs yok). Kaynakta isteğe bağlı `<alan>SpeechTr` (söylenen metin), `<alan>Audio` = `hi-ses/konusma-<görev>-<yer>.mp3` ve görev düzeyinde `pronunciations` (söyleniş sözlüğü); pakette `<alan>Audio` = `talk/konusma-<görev>-<yer>.m4a` (-16 LUFS), `SpeechTr` ve `pronunciations` girmez, medya yoksa alan düşer; season.json `talk` özetinde `hiAudio`, `hiAudioMissing`. content-lint (ses haritası varsa): başvuru beklenen adda ve hizalaması var (hata), mp3 yoksa uyarı (git dışı medya).
+- **Çeviri sesi (H-109 Faz 3b):** karakter repliğinin (`turns[].line.tr`), örnek cevabın (`model.tr`) ve kapanışın
+  (`outro.tr`) Türkçesi Alania ile (ses Hi) `tts_season_tr.py --part talk`; kaynak `konusma/audio/ceviri/<görev>-<tur>-line`,
+  `<görev>-model`, `<görev>-outro` (`.mp3` git dışı, `.align.json` depoda), görev düzeyinde ayrı sözlük
+  `translationPronunciations` (Hi yönlendirme seslerinin anahtarı değişmesin). Pakette satırda `trAudio` =
+  `talk/ceviri-<parça>.m4a`, yalnız güncel ses; season.json `talk` özetinde `trAudio`, `trAudioMissing`. Uygulamada
+  düğme yalnız "Türkçesi" açıkken (örnek cevap kartında Türkçe hep görünür); İngilizce satır başlayınca durur.
+  content-lint `talk-tr-audio` / `talk-tr-english`.
 - **content-lint (`talk-*`):** şema, dosya adı = kimlik, durum (DRAFT uyarı), kilit bölümü var, görsel bölümde var ve kilitten sonraki bölümden değil (spoiler), hedef ifade kilit ve öncesindeki bölümlerin `targetPhrases`'inde var ve en az bir kabul cevabında sırayla geçiyor, aynı cevap iki kez yok (normalleştirilmiş), yakın seçenek kabul listesinde değil, mesajın örneği kendi kuralından geçiyor, gerekli ve yasak kelime çakışmıyor, CEFR-J kapsama (%98; %95 yalnız bölüm sözlüğüyle) ve A1 cümle ≤ 8 sözcük. Normalleştirme uygulamadaki `SpeechMatcher` ile aynıdır; ortak örnekler `mobile/test/fixtures/talk_check_vectors.json`.
 
 ## 10. Atıf

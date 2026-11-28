@@ -14,5 +14,10 @@
   "glossary": ["voice"],
   "properNouns": ["Maya", "Rosa"],
   "pronunciations": [{ "term": "Alex", "say_as": "Aleks" }],
+  "feedbackPronunciations": [
+    { "term": "you", "say_as": "yu" },
+    { "term": "do", "say_as": "du" },
+    { "term": "does", "say_as": "daz" }
+  ],
   "narration": { "tr": { "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı" } }
 }

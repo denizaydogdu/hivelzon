@@ -18,6 +18,7 @@
     {"term": "Friday", "say_as": "Fraydey"},
     {"term": "seven", "say_as": "sevın"}
   ],
+  "translationPronunciations": [{"term": "Pier 3", "say_as": "Piyır srii"}],
   "model": {"en": "Pier 3. On Friday at seven.", "tr": "Pier 3. Cuma günü saat yedide."},
   "check": {
     "all": [["pier 3"], ["friday"], ["seven"]],

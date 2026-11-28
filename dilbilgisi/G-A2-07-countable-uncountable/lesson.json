@@ -26,6 +26,14 @@
   "properNouns": [
     "Sam"
   ],
+  "feedbackPronunciations": [
+    { "term": "Milk", "say_as": "Milk" },
+    { "term": "any", "say_as": "eni" },
+    { "term": "Apples", "say_as": "Epılz" },
+    { "term": "many", "say_as": "meni" },
+    { "term": "Time", "say_as": "Taym" },
+    { "term": "much", "say_as": "maç" }
+  ],
   "narration": {
     "tr": {
       "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"

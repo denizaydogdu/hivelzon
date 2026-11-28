@@ -174,6 +174,8 @@ Araçlar `tools/content-pipeline/` altındadır. Şemalar: `schema/lesson.schema
 | `lesson.md` | Kartlar (§9.2). |
 | `PROMPTS.md`, `rights-and-review.md` | Zorunlu. Ses çağrıları `PROMPTS.md`'ye yazılır. |
 | `audio/tr/<kart>-tr.{mp3,align.json}` | Türkçe anlatım (kart başına bir parça). |
+| `audio/tr/<alıştırma>-fb.{mp3,align.json}` | Yanlış cevap açıklaması (`!`; H-109, isteğe bağlı): `tts_lesson.py --part feedback`; söyleniş sözlüğü `lesson.json → feedbackPronunciations` (yalnız açıklamaya gider). |
+| `audio/tr/<örnek>-tl.{mp3,align.json}` | Doğru örneğin ve "Söyle"nin Türkçesi (H-109 Faz 3, isteğe bağlı): `tts_lesson.py --part translation`; aynı Türkçe metin bir kez; sözlük `lesson.json → translationPronunciations`. Yanlış biçimin (`x`) notu seslendirilmez. |
 | `audio/en/<örnek>.{mp3,align.json}` | İngilizce örnek ve "Söyle" cümlesi (her biri ayrı parça). |
 | `audio/lesson-audio.json` | Kart → ses parçaları haritası (yol, metin sha256, süre, Duyu kalitesi, var mı). |
 
@@ -262,7 +264,7 @@ $P tools/content-pipeline/export_grammar.py dilbilgisi/G-… [--require-media]
 | Dosya | İçerik |
 |---|---|
 | `lesson.json` | Kaynak meta veri (ses ayarı, söyleniş ve öğretmen notu olmadan). Ek alanlar: `durations` (`narration`, `examples`, `total`, kart başına), `estimatedMinutes` (ses + soru başına 10 sn), `cardCount`, `teacherReviewed`. |
-| `cards.json` | Kartlar: `narration` (Türkçe metin, ses, süre, cümle başına `start/end` ve kelime zamanları), `examples` (en, tr, `targets` karakter aralıkları, ses, kelime zamanları), `wrong`, `diagrams`, `practice` (seç: `options[{text, correct}]`; boşluk: `answers`; sırala: `tokens`, `answer`; söyle: `text`, ses; `feedbackTr`), `links` (derin bağ: `episodeId + node + cueId` ya da `bookId + chapter + page + sentenceId`). |
+| `cards.json` | Kartlar: `narration` (Türkçe metin, ses, süre, cümle başına `start/end` ve kelime zamanları), `examples` (en, tr, `targets` karakter aralıkları, ses, kelime zamanları), `wrong`, `diagrams`, `practice` (seç: `options[{text, correct}]`; boşluk: `answers`; sırala: `tokens`, `answer`; söyle: `text`, ses; `feedbackTr`, varsa `feedbackAudio`/`feedbackDuration` — H-109; örnekte ve "Söyle"de varsa `trAudio`/`trDuration` — H-109 Faz 3), `links` (derin bağ: `episodeId + node + cueId` ya da `bookId + chapter + page + sentenceId`). |
 | `audio/<parça>.m4a` | Her parça ayrı -16 LUFS. |
 | `manifest.json` | Dosyalar, sha256, ses düzeyi, metin sha256, eksik medya. |
 

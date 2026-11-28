@@ -23,6 +23,12 @@
     "Ece",
     "Leo"
   ],
+  "feedbackPronunciations": [
+    { "term": "rains", "say_as": "reynz" },
+    { "term": "boils", "say_as": "boylz" },
+    { "term": "will", "say_as": "vil" },
+    { "term": "unless", "say_as": "anles" }
+  ],
   "narration": {
     "tr": {
       "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"

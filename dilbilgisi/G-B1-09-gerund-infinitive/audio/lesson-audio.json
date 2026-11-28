@@ -55,6 +55,30 @@
      "present": true,
      "duration": 2.16,
      "quality": null
+    },
+    {
+     "id": "c01-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Paloma kuralları hatırlamaya çalıştı.",
+     "textSha256": "065f1316e0bafad1412c2f5a63fb7e445f1c42b16969644de77264546af28b01",
+     "chars": 37,
+     "audio": "tr/c01-ex1-tl.mp3",
+     "align": "tr/c01-ex1-tl.align.json",
+     "present": true,
+     "duration": 2.4,
+     "quality": {
+      "words": 4,
+      "exact": 4,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -111,6 +135,54 @@
      "present": true,
      "duration": 1.84,
      "quality": null
+    },
+    {
+     "id": "c02-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Yemek yapmayı severim.",
+     "textSha256": "0d9c9372c08445ac416835bf907cabb3932e40e840d5b6cdc219148a57ca8a4a",
+     "chars": 22,
+     "audio": "tr/c02-ex1-tl.mp3",
+     "align": "tr/c02-ex1-tl.align.json",
+     "present": true,
+     "duration": 3.52,
+     "quality": {
+      "words": 3,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 1,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c02-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Yurt dışında okumaya karar verdi.",
+     "textSha256": "06c0c2b29c67125b0142161d366e8983fdc8ae864db6d9254619e214ba0d77fc",
+     "chars": 33,
+     "audio": "tr/c02-ex2-tl.mp3",
+     "align": "tr/c02-ex2-tl.align.json",
+     "present": true,
+     "duration": 2.24,
+     "quality": {
+      "words": 5,
+      "exact": 5,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -193,6 +265,102 @@
      "present": true,
      "duration": 1.44,
      "quality": null
+    },
+    {
+     "id": "c03-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Konuşmayı kestiler.",
+     "textSha256": "139fca57f81e6ea407fdf3b23ac56b59d3e847c0a882ff79a5d5ae660105e1c4",
+     "chars": 19,
+     "audio": "tr/c03-ex1-tl.mp3",
+     "align": "tr/c03-ex1-tl.align.json",
+     "present": true,
+     "duration": 1.6,
+     "quality": {
+      "words": 2,
+      "exact": 2,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Su almak için durduk.",
+     "textSha256": "a394d1c12b524eda2133f1a344ea0f2ffaf30ab9a9c97f63cd20578760dabba4",
+     "chars": 21,
+     "audio": "tr/c03-ex2-tl.mp3",
+     "align": "tr/c03-ex2-tl.align.json",
+     "present": true,
+     "duration": 1.76,
+     "quality": {
+      "words": 4,
+      "exact": 4,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex3-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Kapıyı kilitlemeyi unutma.",
+     "textSha256": "7f1034514d55c55ac6bbdf5b301070b08b24199891aeb635a3883c010510cfee",
+     "chars": 26,
+     "audio": "tr/c03-ex3-tl.mp3",
+     "align": "tr/c03-ex3-tl.align.json",
+     "present": true,
+     "duration": 1.92,
+     "quality": {
+      "words": 3,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex4-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Onunla tanıştığımı hatırlıyorum.",
+     "textSha256": "5de04cf81d94b29f69f755735517a1bdc2b930df933a8518150c8d4cd37d7e97",
+     "chars": 32,
+     "audio": "tr/c03-ex4-tl.mp3",
+     "align": "tr/c03-ex4-tl.align.json",
+     "present": true,
+     "duration": 2.24,
+     "quality": {
+      "words": 3,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -236,6 +404,30 @@
      "present": true,
      "duration": 1.76,
      "quality": null
+    },
+    {
+     "id": "c04-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Bana yardım etmeni istiyorum.",
+     "textSha256": "a4994d91525e1f076ccd4cc5c749bf9e1e44200c28cfd22c61a4e6537b21ba6d",
+     "chars": 29,
+     "audio": "tr/c04-ex1-tl.mp3",
+     "align": "tr/c04-ex1-tl.align.json",
+     "present": true,
+     "duration": 2.56,
+     "quality": {
+      "words": 4,
+      "exact": 4,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -307,6 +499,126 @@
      "present": true,
      "duration": 1.76,
      "quality": null
+    },
+    {
+     "id": "c05-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Yatmadan önce okumayı severim.",
+     "textSha256": "5f67762db391580dfe2cb921ab262917c05387ac703686ac3597c4cb56581443",
+     "chars": 30,
+     "audio": "tr/c05-ex1-tl.mp3",
+     "align": "tr/c05-ex1-tl.align.json",
+     "present": true,
+     "duration": 3.36,
+     "quality": {
+      "words": 4,
+      "exact": 4,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 2,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Seni yakında görmeyi umuyoruz.",
+     "textSha256": "3da58b5bb74a652fa924d7091a95fe107b0ec9d1ede5ad543a6c56fa86c6624a",
+     "chars": 30,
+     "audio": "tr/c05-ex2-tl.mp3",
+     "align": "tr/c05-ex2-tl.align.json",
+     "present": true,
+     "duration": 2.24,
+     "quality": {
+      "words": 4,
+      "exact": 4,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex3-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Odanı temizlemeyi bitirdin mi?",
+     "textSha256": "2c26a2c3bbf8691a855580262fbbebee06493ea9035d639f1ef35a17e8f6073a",
+     "chars": 30,
+     "audio": "tr/c05-ex3-tl.mp3",
+     "align": "tr/c05-ex3-tl.align.json",
+     "present": true,
+     "duration": 1.92,
+     "quality": {
+      "words": 4,
+      "exact": 4,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex4-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Onu aramamı istiyor.",
+     "textSha256": "0845d499d0b44cef5670212f46673f110bed8552e0db7d76a5ba50cbe2aa21ab",
+     "chars": 20,
+     "audio": "tr/c05-ex4-tl.mp3",
+     "align": "tr/c05-ex4-tl.align.json",
+     "present": true,
+     "duration": 1.44,
+     "quality": {
+      "words": 3,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex5-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Seni görmeyi dört gözle bekliyorum.",
+     "textSha256": "7af5adf151bc83cd25459bc87020f94154557766778ceabfffab707ee869432b",
+     "chars": 35,
+     "audio": "tr/c05-ex5-tl.mp3",
+     "align": "tr/c05-ex5-tl.align.json",
+     "present": true,
+     "duration": 2.56,
+     "quality": {
+      "words": 5,
+      "exact": 5,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -376,6 +688,30 @@
      "present": true,
      "duration": 1.76,
      "quality": null
+    },
+    {
+     "id": "c06-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Yüzmeyi severim.",
+     "textSha256": "e41433970176f21c173b49a5bf4228e7f87f2e452d63af3c87c2bf86b40357ef",
+     "chars": 16,
+     "audio": "tr/c06-ex1-tl.mp3",
+     "align": "tr/c06-ex1-tl.align.json",
+     "present": true,
+     "duration": 1.28,
+     "quality": {
+      "words": 2,
+      "exact": 2,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -395,6 +731,105 @@
      "present": true,
      "duration": 1.76,
      "quality": null
+    },
+    {
+     "id": "c07-q1-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Enjoy'dan sonra -ing gelir.",
+     "textSha256": "d14f948fae9603364a5b2cd8108d55629aa91c00e497c0f575bdfa0ea89589ef",
+     "chars": 27,
+     "audio": "tr/c07-q1-fb.mp3",
+     "align": "tr/c07-q1-fb.align.json",
+     "present": true,
+     "duration": 2.08,
+     "quality": {
+      "words": 4,
+      "exact": 2,
+      "fuzzy": 2,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 1,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c07-q2-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Decide'dan sonra to gelir.",
+     "textSha256": "d17797fefe24adfe3f7c5f057a6127b69c7c5100ab20483f5f070812bd274908",
+     "chars": 26,
+     "audio": "tr/c07-q2-fb.mp3",
+     "align": "tr/c07-q2-fb.align.json",
+     "present": true,
+     "duration": 2.24,
+     "quality": {
+      "words": 4,
+      "exact": 2,
+      "fuzzy": 1,
+      "weak": 1,
+      "missing": 0,
+      "extraHeard": 1,
+      "worstRun": 1,
+      "score": 0.75,
+      "ok": false,
+      "warnings": [
+       "iyi eşleşen kelime oranı düşük: %75 (alt sınır %85)",
+       "zayıf/eksik: to→Tu"
+      ]
+     }
+    },
+    {
+     "id": "c07-q3-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Want, kişi, to ve fiil: wants me to clean.",
+     "textSha256": "d813af18d3961d901ba6e17e7df12d61e79ccc79e730385e8d670c3ddc207bc4",
+     "chars": 42,
+     "audio": "tr/c07-q3-fb.mp3",
+     "align": "tr/c07-q3-fb.align.json",
+     "present": true,
+     "duration": 4.48,
+     "quality": {
+      "words": 9,
+      "exact": 5,
+      "fuzzy": 3,
+      "weak": 1,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 1,
+      "score": 0.889,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c07-q4-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Bir şey yapmak için durmak: stop ve to.",
+     "textSha256": "0026653c7d4006151f882de6e2f0afa4c76bd9c1529b1a5940311b9cbbcc74d6",
+     "chars": 39,
+     "audio": "tr/c07-q4-fb.mp3",
+     "align": "tr/c07-q4-fb.align.json",
+     "present": true,
+     "duration": 3.04,
+     "quality": {
+      "words": 8,
+      "exact": 7,
+      "fuzzy": 0,
+      "weak": 1,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 1,
+      "score": 0.875,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -468,6 +903,30 @@
      "present": true,
      "duration": 2.8,
      "quality": null
+    },
+    {
+     "id": "c09-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Okumayı severim ve bir kitap yazmak istiyorum.",
+     "textSha256": "faba15a2495c2060b0a8fa2103b310b574e5a009ce3bb39e5a428b2bc11af133",
+     "chars": 46,
+     "audio": "tr/c09-ex1-tl.mp3",
+     "align": "tr/c09-ex1-tl.align.json",
+     "present": true,
+     "duration": 4.48,
+     "quality": {
+      "words": 7,
+      "exact": 7,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 1,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   }

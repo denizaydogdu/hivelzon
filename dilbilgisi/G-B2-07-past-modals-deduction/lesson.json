@@ -32,6 +32,15 @@
       "say_as": "Aleks"
     }
   ],
+  "feedbackPronunciations": [
+    { "term": "must", "say_as": "mast" },
+    { "term": "have", "say_as": "hev" },
+    { "term": "can't", "say_as": "kent" },
+    { "term": "might", "say_as": "mayt" },
+    { "term": "may", "say_as": "mey" },
+    { "term": "could", "say_as": "kud" },
+    { "term": "should", "say_as": "şud" }
+  ],
   "narration": {
     "tr": {
       "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"

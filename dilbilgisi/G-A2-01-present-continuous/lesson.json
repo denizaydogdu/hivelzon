@@ -37,6 +37,14 @@
       "say_as": "ing"
     }
   ],
+  "feedbackPronunciations": [
+    { "term": "Children", "say_as": "Çildrın" },
+    { "term": "are", "say_as": "ar" },
+    { "term": "I", "say_as": "ay" },
+    { "term": "am", "say_as": "em" },
+    { "term": "is", "say_as": "iz" },
+    { "term": "making", "say_as": "meyking" }
+  ],
   "narration": {
     "tr": {
       "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"

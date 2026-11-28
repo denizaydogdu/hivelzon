@@ -29,6 +29,13 @@
     "Finn",
     "Nora"
   ],
+  "feedbackPronunciations": [
+    { "term": "I", "say_as": "ay" },
+    { "term": "was", "say_as": "vaz" },
+    { "term": "were", "say_as": "vör" },
+    { "term": "not", "say_as": "nat" },
+    { "term": "wasn't", "say_as": "vazınt" }
+  ],
   "narration": {
     "tr": {
       "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"

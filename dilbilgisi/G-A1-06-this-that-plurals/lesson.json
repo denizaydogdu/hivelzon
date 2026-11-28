@@ -13,5 +13,11 @@
   "linksTo": { "episodes": ["A1-002", "A1-003", "A1-010"], "books": ["A1-K01", "A1-K02"] },
   "properNouns": ["Can", "Sam"],
   "pronunciations": [{ "term": "Alex", "say_as": "Aleks" }],
+  "feedbackPronunciations": [
+    { "term": "this", "say_as": "dis" },
+    { "term": "Those", "say_as": "Douz" },
+    { "term": "are", "say_as": "ar" },
+    { "term": "-s", "say_as": "se" }
+  ],
   "narration": { "tr": { "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı" } }
 }

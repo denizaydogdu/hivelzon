@@ -29,6 +29,13 @@
       "say_as": "Aleks"
     }
   ],
+  "feedbackPronunciations": [
+    { "term": "the", "say_as": "dı" },
+    { "term": "is", "say_as": "iz" },
+    { "term": "Does", "say_as": "Daz" },
+    { "term": "starts", "say_as": "starts" },
+    { "term": "whether", "say_as": "vedır" }
+  ],
   "narration": {
     "tr": {
       "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"

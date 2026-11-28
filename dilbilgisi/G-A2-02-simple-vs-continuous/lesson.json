@@ -39,6 +39,18 @@
       "say_as": "ing"
     }
   ],
+  "feedbackPronunciations": [
+    { "term": "Listen", "say_as": "Lisın" },
+    { "term": "is", "say_as": "iz" },
+    { "term": "singing", "say_as": "singing" },
+    { "term": "Every", "say_as": "Evri" },
+    { "term": "day", "say_as": "dey" },
+    { "term": "works", "say_as": "vörks" },
+    { "term": "Know", "say_as": "Nou" },
+    { "term": "Look", "say_as": "Luk" },
+    { "term": "are", "say_as": "ar" },
+    { "term": "playing", "say_as": "pleying" }
+  ],
   "narration": {
     "tr": {
       "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"

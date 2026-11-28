@@ -22,6 +22,14 @@
       "B1-K03"
     ]
   },
+  "feedbackPronunciations": [
+    { "term": "used", "say_as": "yuust" },
+    { "term": "to", "say_as": "tu" },
+    { "term": "did", "say_as": "did" },
+    { "term": "use", "say_as": "yuus" },
+    { "term": "be", "say_as": "bi" },
+    { "term": "didn't", "say_as": "didınt" }
+  ],
   "narration": {
     "tr": {
       "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"

@@ -151,3 +151,9 @@ Kurallar: her ücretli üretimden **önce** `higgsfield generate cost` ile maliy
 | 2026-11-27T06:32:11Z | c6 | 2/4 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.0 | 1244 | 124f81284348a52d | audio/c6.mp3 |
 | 2026-11-27T06:32:34Z | c6 | 3/4 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.0 | 1482 | 19ea345b3d3d490f | audio/c6.mp3 |
 | 2026-11-27T06:32:54Z | c6 | 4/4 | EXAVITQu4vr4xnSDxMaL | eleven_v3 | 1.0 | 1064 | e1d505b95145f5b8 | audio/c6.mp3 |
+| 2026-11-27T18:36:37Z | q1 | alania-v2 | alania2-f1 | alania-v2.1 | 55 | 3.36 | 5c53dd848d694ffc903e2f99e88ae561 | dcd41ce420c41c8a |
+| 2026-11-27T18:36:38Z | q1 | duyu-1 | - | - | - | 3.36 | - | dcd41ce420c41c8a |
+| 2026-11-27T18:36:39Z | q2 | alania-v2 | alania2-f1 | alania-v2.1 | 66 | 4.16 | d41a54654fe04393876d15547932f845 | ff025ca0e8c55903 |
+| 2026-11-27T18:36:41Z | q2 | duyu-1 | - | - | - | 4.16 | - | ff025ca0e8c55903 |
+| 2026-11-27T18:39:31Z | blurb | alania-v2 | alania2-f1 | alania-v2.1 | 275 | 17.13 | 0e6c7429cb0849b5bb15669478a6cc3b | 3aed9681e3144e9f |
+| 2026-11-27T18:39:33Z | blurb | duyu-1 | - | - | - | 17.13 | - | 3aed9681e3144e9f |

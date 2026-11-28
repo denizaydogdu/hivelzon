@@ -36,6 +36,12 @@
       "say_as": "ing"
     }
   ],
+  "feedbackPronunciations": [
+    { "term": "Although", "say_as": "Oldou" },
+    { "term": "Despite", "say_as": "Dispayt" },
+    { "term": "However", "say_as": "Hauevır" },
+    { "term": "whereas", "say_as": "verez" }
+  ],
   "narration": {
     "tr": {
       "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"

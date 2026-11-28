@@ -24,6 +24,16 @@
     "İzmir",
     "Ankara"
   ],
+  "feedbackPronunciations": [
+    { "term": "It", "say_as": "İt" },
+    { "term": "was", "say_as": "vaz" },
+    { "term": "What", "say_as": "Vat" },
+    { "term": "is", "say_as": "iz" },
+    { "term": "that", "say_as": "det" }
+  ],
+  "translationPronunciations": [
+    { "term": "Theo", "say_as": "Tiyo" }
+  ],
   "narration": {
     "tr": {
       "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"

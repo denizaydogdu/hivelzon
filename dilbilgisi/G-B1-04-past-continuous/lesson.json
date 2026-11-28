@@ -33,6 +33,15 @@
       "say_as": "ing"
     }
   ],
+  "feedbackPronunciations": [
+    { "term": "was", "say_as": "vaz" },
+    { "term": "having", "say_as": "heving" },
+    { "term": "I", "say_as": "ay" },
+    { "term": "they", "say_as": "dey" },
+    { "term": "were", "say_as": "vör" },
+    { "term": "went", "say_as": "vent" },
+    { "term": "when", "say_as": "ven" }
+  ],
   "narration": {
     "tr": {
       "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"

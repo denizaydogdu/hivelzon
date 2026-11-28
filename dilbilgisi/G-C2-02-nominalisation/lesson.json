@@ -31,6 +31,15 @@
       "say_as": "ing"
     }
   ],
+  "feedbackPronunciations": [
+    { "term": "increase", "say_as": "inkriis" },
+    { "term": "decision", "say_as": "disijın" },
+    { "term": "to", "say_as": "tu" },
+    { "term": "opening", "say_as": "oupıning" },
+    { "term": "the", "say_as": "dı" },
+    { "term": "construction", "say_as": "kınstrakşın" },
+    { "term": "of", "say_as": "ov" }
+  ],
   "narration": {
     "tr": {
       "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"

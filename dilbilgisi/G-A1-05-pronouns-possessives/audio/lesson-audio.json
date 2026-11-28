@@ -55,6 +55,30 @@
      "present": true,
      "duration": 1.52,
      "quality": null
+    },
+    {
+     "id": "c01-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Bu benim annem.",
+     "textSha256": "84871a8cf65fe9b5ca36cfbbcfbea99f506a9f5abbf86ad49efdd0460b17270c",
+     "chars": 15,
+     "audio": "tr/c01-ex1-tl.mp3",
+     "align": "tr/c01-ex1-tl.align.json",
+     "present": true,
+     "duration": 1.12,
+     "quality": {
+      "words": 3,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -111,6 +135,54 @@
      "present": true,
      "duration": 1.28,
      "quality": null
+    },
+    {
+     "id": "c02-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "O benim erkek kardeşim.",
+     "textSha256": "3fe40d3b79eaacc735db13b111033a18746e528fee5a063aabf62d5a1196568d",
+     "chars": 23,
+     "audio": "tr/c02-ex1-tl.mp3",
+     "align": "tr/c02-ex1-tl.align.json",
+     "present": true,
+     "duration": 2.72,
+     "quality": {
+      "words": 4,
+      "exact": 4,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 1,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c02-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "O benim kız kardeşim.",
+     "textSha256": "131950a57ae2e6cee7565d245c5a8733a58468c8d41e64569a521579e90d59c7",
+     "chars": 21,
+     "audio": "tr/c02-ex2-tl.mp3",
+     "align": "tr/c02-ex2-tl.align.json",
+     "present": true,
+     "duration": 3.04,
+     "quality": {
+      "words": 4,
+      "exact": 4,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -167,6 +239,54 @@
      "present": true,
      "duration": 1.36,
      "quality": null
+    },
+    {
+     "id": "c03-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Onun adı Sam.",
+     "textSha256": "abf899f07bdb41761d61d36c24d8915679c688ace01629cd7e806df69e41b0c8",
+     "chars": 13,
+     "audio": "tr/c03-ex1-tl.mp3",
+     "align": "tr/c03-ex1-tl.align.json",
+     "present": true,
+     "duration": 1.12,
+     "quality": {
+      "words": 3,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Onun adı Maya.",
+     "textSha256": "b7cd42716f1c06656c4d9ab93d43a65a1006ba9cfc3337504dd32e2803e296dd",
+     "chars": 14,
+     "audio": "tr/c03-ex2-tl.mp3",
+     "align": "tr/c03-ex2-tl.align.json",
+     "present": true,
+     "duration": 1.28,
+     "quality": {
+      "words": 3,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 1,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -223,6 +343,54 @@
      "present": true,
      "duration": 1.36,
      "quality": null
+    },
+    {
+     "id": "c04-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Beni duyabiliyor musun?",
+     "textSha256": "a87521cf883b00621991bcaba3383fd3ab002aa5de0e1509181ee016a90f5291",
+     "chars": 23,
+     "audio": "tr/c04-ex1-tl.mp3",
+     "align": "tr/c04-ex1-tl.align.json",
+     "present": true,
+     "duration": 1.44,
+     "quality": {
+      "words": 3,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c04-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Onu tanıyorum.",
+     "textSha256": "e9f4a1c7a5e7729c1f033c3862dbc1de2899ba73ddcd03947a4834caae4d96cd",
+     "chars": 14,
+     "audio": "tr/c04-ex2-tl.mp3",
+     "align": "tr/c04-ex2-tl.align.json",
+     "present": true,
+     "duration": 2.72,
+     "quality": {
+      "words": 2,
+      "exact": 1,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 1,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -266,6 +434,30 @@
      "present": true,
      "duration": 1.52,
      "quality": null
+    },
+    {
+     "id": "c05-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Bu, Maya'nın haritası.",
+     "textSha256": "11d68732b3228216eb37a88a3e85cded497c673859ab64600da50028f4374911",
+     "chars": 22,
+     "audio": "tr/c05-ex1-tl.mp3",
+     "align": "tr/c05-ex1-tl.align.json",
+     "present": true,
+     "duration": 1.76,
+     "quality": {
+      "words": 3,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -337,6 +529,126 @@
      "present": true,
      "duration": 1.28,
      "quality": null
+    },
+    {
+     "id": "c06-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Bu benim erkek kardeşim. Futbolu sever.",
+     "textSha256": "05164cbdfb85c2820283cf03070024ffa01f5e38b07f057e1775d88e03fb1a98",
+     "chars": 39,
+     "audio": "tr/c06-ex1-tl.mp3",
+     "align": "tr/c06-ex1-tl.align.json",
+     "present": true,
+     "duration": 3.36,
+     "quality": {
+      "words": 6,
+      "exact": 6,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c06-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Onun adı Elif.",
+     "textSha256": "6529f33d5d424a148881c85564efbae59e8ae7c694e250a8661cac62cfa2479c",
+     "chars": 14,
+     "audio": "tr/c06-ex2-tl.mp3",
+     "align": "tr/c06-ex2-tl.align.json",
+     "present": true,
+     "duration": 1.28,
+     "quality": {
+      "words": 3,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c06-ex3-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Bizim evimiz küçük.",
+     "textSha256": "397fff93db5d1b2575a534194b2f6681180adfc9506bd193120c6b9d6c1677e7",
+     "chars": 19,
+     "audio": "tr/c06-ex3-tl.mp3",
+     "align": "tr/c06-ex3-tl.align.json",
+     "present": true,
+     "duration": 1.44,
+     "quality": {
+      "words": 3,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c06-ex4-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Beni ara, lütfen.",
+     "textSha256": "b3d3fef58d963e753572a646607c1760106de62318623e57076f69cdf18aaeb8",
+     "chars": 17,
+     "audio": "tr/c06-ex4-tl.mp3",
+     "align": "tr/c06-ex4-tl.align.json",
+     "present": true,
+     "duration": 1.6,
+     "quality": {
+      "words": 3,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c06-ex5-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Sam'in odası büyük.",
+     "textSha256": "3a54b41fc67ac75f0c0a8c9591d54421cc0b05c59d8775188ff346667881fcb8",
+     "chars": 19,
+     "audio": "tr/c06-ex5-tl.mp3",
+     "align": "tr/c06-ex5-tl.align.json",
+     "present": true,
+     "duration": 1.44,
+     "quality": {
+      "words": 3,
+      "exact": 2,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -393,6 +705,54 @@
      "present": true,
      "duration": 2.72,
      "quality": null
+    },
+    {
+     "id": "c07-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Onun adı Zeynep.",
+     "textSha256": "db481f31b4b5da518e29cc6feea29ab0a29fb951cad135a46510fd8b439c2d00",
+     "chars": 16,
+     "audio": "tr/c07-ex1-tl.mp3",
+     "align": "tr/c07-ex1-tl.align.json",
+     "present": true,
+     "duration": 1.28,
+     "quality": {
+      "words": 3,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c07-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Annem öğretmen. O iyi biri.",
+     "textSha256": "ed6f2e15429a8ba9579902b797713a5f6d8386600fd4f79353c409a5e195529a",
+     "chars": 27,
+     "audio": "tr/c07-ex2-tl.mp3",
+     "align": "tr/c07-ex2-tl.align.json",
+     "present": true,
+     "duration": 2.4,
+     "quality": {
+      "words": 5,
+      "exact": 5,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -412,6 +772,108 @@
      "present": true,
      "duration": 1.76,
      "quality": null
+    },
+    {
+     "id": "c08-q1-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Sam erkek: he gelir.",
+     "textSha256": "ec8b31266c05056885fe60c07e7eeec040cda10b2734534ec7635fd4a5aea67e",
+     "chars": 20,
+     "audio": "tr/c08-q1-fb.mp3",
+     "align": "tr/c08-q1-fb.align.json",
+     "present": true,
+     "duration": 2.24,
+     "quality": {
+      "words": 4,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 1,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 1,
+      "score": 0.75,
+      "ok": false,
+      "warnings": [
+       "iyi eşleşen kelime oranı düşük: %75 (alt sınır %85)",
+       "zayıf/eksik: he→iyi"
+      ]
+     }
+    },
+    {
+     "id": "c08-q2-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Maya kadın; sahiplik için her gelir.",
+     "textSha256": "47acd6e2475a810585634684afc9a0684d82ec4e3398f4b4c850ac729dc09515",
+     "chars": 36,
+     "audio": "tr/c08-q2-fb.mp3",
+     "align": "tr/c08-q2-fb.align.json",
+     "present": true,
+     "duration": 2.88,
+     "quality": {
+      "words": 6,
+      "exact": 5,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 1,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c08-q3-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Fiilden sonra \"beni\" için me gelir.",
+     "textSha256": "2e5fc7931e56c48b1d8686fd79ffe8e335feeeed4864e8ef59ad5956e657c607",
+     "chars": 35,
+     "audio": "tr/c08-q3-fb.mp3",
+     "align": "tr/c08-q3-fb.align.json",
+     "present": true,
+     "duration": 2.4,
+     "quality": {
+      "words": 6,
+      "exact": 4,
+      "fuzzy": 1,
+      "weak": 1,
+      "missing": 0,
+      "extraHeard": 1,
+      "worstRun": 1,
+      "score": 0.833,
+      "ok": false,
+      "warnings": [
+       "iyi eşleşen kelime oranı düşük: %83 (alt sınır %85)",
+       "zayıf/eksik: me→mi"
+      ]
+     }
+    },
+    {
+     "id": "c08-q4-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Sahiplik kelimesi ismin önüne gelir.",
+     "textSha256": "d747b483a0acc2e7d21e3fd4e6ebb8beb0734e6b7b81494eb3f87d68dec42923",
+     "chars": 36,
+     "audio": "tr/c08-q4-fb.mp3",
+     "align": "tr/c08-q4-fb.align.json",
+     "present": true,
+     "duration": 2.72,
+     "quality": {
+      "words": 5,
+      "exact": 5,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },

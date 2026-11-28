@@ -13,5 +13,12 @@
   "linksTo": { "episodes": ["A1-001", "A1-002"], "books": ["A1-K01"] },
   "properNouns": ["Türkiye", "İzmir", "Maya", "Lina", "E"],
   "pronunciations": [{ "term": "Alex", "say_as": "Aleks" }],
+  "feedbackPronunciations": [
+    { "term": "I", "say_as": "ay" },
+    { "term": "am", "say_as": "em" },
+    { "term": "is", "say_as": "iz" },
+    { "term": "we", "say_as": "vi" },
+    { "term": "are", "say_as": "ar" }
+  ],
   "narration": { "tr": { "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı" } }
 }

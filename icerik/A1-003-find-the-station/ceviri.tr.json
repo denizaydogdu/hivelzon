@@ -3,6 +3,9 @@
   "status": "APPROVED",
   "author": "Claude taslak",
   "date": "2026-10-11",
+  "pronunciations": [
+    { "term": "Alex", "say_as": "Aleks" }
+  ],
   "lines": [
     {
       "en": "Find the Station",

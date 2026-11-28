@@ -3,7 +3,7 @@
 > **Durum:** TASLAK (Claude, 2026-10-14; H-085). Editör onayı bekliyor (H-028).
 > **Kaynak:** `story.en.md` (taslak 0.1, H-032 onaylı). Satır satır veri: `ceviri.tr.json`.
 > **Görev kartı:** Üç tanığın cümlelerini karşılaştır ve kadının **doğru tarifini** kur.
-> **Hedef ifadeler:** *She has white hair.* (Saçları beyaz.) · *He is tall.* (O [erkek] uzun boylu.) · *She can't walk fast.* (Hızlı yürüyemiyor.) · *a red coat* (kırmızı bir palto) · *I don't know.* (Bilmiyorum.) · kalıp: *What does she look like?* (Nasıl biri? / Görünüşü nasıl?)
+> **Hedef ifadeler:** *She has white hair.* (Saçları beyaz.) · *He is tall.* (O (erkek) uzun boylu.) · *She can't walk fast.* (Hızlı yürüyemiyor.) · *a red coat* (kırmızı bir palto) · *I don't know.* (Bilmiyorum.) · kalıp: *What does she look like?* (Nasıl biri? / Görünüşü nasıl?)
 > **Not:** Karar ve görev seçeneklerinin Türkçesi yalnızca editör içindir; uygulamada çevrilmez (H-046 kararı).
 
 ---
@@ -52,7 +52,7 @@
 
 [KARAR K2 · Alex, Mrs Brooks'un söylediğini Sam'e aktarır]
 - ✓ "She has white hair." (Saçları beyaz.)
-- ✗ "He has white hair." (Hatalı: "O [erkek] beyaz saçlı.")
+- ✗ "He has white hair." (Hatalı: "O (erkek) beyaz saçlı.")
   - [TEPKİ] **SAM:** He mi? Bir erkek mi?
   - **HI (TR):** Türkçede "o" hem kadın hem erkek için. İngilizcede kadın için **she**, erkek için **he**. Böyle de söyleyebilirsin: **"She has white hair."**
 

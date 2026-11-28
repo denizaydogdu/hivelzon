@@ -13,5 +13,8 @@
   "linksTo": { "episodes": ["A1-001", "A1-003", "A1-008", "A1-011"], "books": ["A2-K02"] },
   "properNouns": ["Jonas"],
   "pronunciations": [{ "term": "Alex", "say_as": "Aleks" }],
+  "feedbackPronunciations": [
+    { "term": "don't", "say_as": "dount" }
+  ],
   "narration": { "tr": { "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı" } }
 }

@@ -21,6 +21,12 @@
       "B2-K04"
     ]
   },
+  "feedbackPronunciations": [
+    { "term": "had", "say_as": "hed" },
+    { "term": "would", "say_as": "vud" },
+    { "term": "were", "say_as": "vör" },
+    { "term": "was", "say_as": "vaz" }
+  ],
   "narration": {
     "tr": {
       "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"

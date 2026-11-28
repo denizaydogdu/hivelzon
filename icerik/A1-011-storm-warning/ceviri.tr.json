@@ -3,6 +3,11 @@
   "status": "DRAFT",
   "author": "Claude taslak",
   "date": "2026-10-14",
+  "pronunciations": [
+    { "term": "Alex", "say_as": "Aleks" },
+    { "term": "Light Night", "say_as": "Layt Nayt" },
+    { "term": "Lumen Point", "say_as": "Lumın Poynt" }
+  ],
   "lines": [
     {
       "en": "Storm Warning",

@@ -22,6 +22,11 @@
       "B2-K01"
     ]
   },
+  "feedbackPronunciations": [
+    { "term": "had", "say_as": "hed" },
+    { "term": "painted", "say_as": "peyntıd" },
+    { "term": "Get", "say_as": "Get" }
+  ],
   "narration": {
     "tr": {
       "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"

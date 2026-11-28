@@ -32,6 +32,14 @@
       "say_as": "ing"
     }
   ],
+  "feedbackPronunciations": [
+    { "term": "has", "say_as": "hez" },
+    { "term": "been", "say_as": "bin" },
+    { "term": "playing", "say_as": "pleying" },
+    { "term": "Know", "say_as": "Nou" },
+    { "term": "Have", "say_as": "Hev" },
+    { "term": "have", "say_as": "hev" }
+  ],
   "narration": {
     "tr": {
       "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"

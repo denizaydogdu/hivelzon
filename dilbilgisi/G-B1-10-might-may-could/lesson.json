@@ -28,6 +28,13 @@
     "Earth",
     "Jonas"
   ],
+  "feedbackPronunciations": [
+    { "term": "might", "say_as": "mayt" },
+    { "term": "be", "say_as": "bi" },
+    { "term": "not", "say_as": "nat" },
+    { "term": "may", "say_as": "mey" },
+    { "term": "could", "say_as": "kud" }
+  ],
   "narration": {
     "tr": {
       "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"

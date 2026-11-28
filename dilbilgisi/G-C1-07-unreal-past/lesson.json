@@ -19,6 +19,15 @@
       "C1-K02"
     ]
   },
+  "feedbackPronunciations": [
+    { "term": "It's", "say_as": "İts" },
+    { "term": "time", "say_as": "taym" },
+    { "term": "didn't", "say_as": "didınt" },
+    { "term": "knew", "say_as": "nuu" },
+    { "term": "I'd", "say_as": "ayd" },
+    { "term": "rather", "say_as": "redır" },
+    { "term": "go", "say_as": "gou" }
+  ],
   "narration": {
     "tr": {
       "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"

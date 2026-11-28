@@ -26,6 +26,15 @@
     "Zara",
     "Paris"
   ],
+  "feedbackPronunciations": [
+    { "term": "So", "say_as": "Sou" },
+    { "term": "am", "say_as": "em" },
+    { "term": "I", "say_as": "ay" },
+    { "term": "Neither", "say_as": "Niidır" },
+    { "term": "did", "say_as": "did" },
+    { "term": "hope", "say_as": "houp" },
+    { "term": "not", "say_as": "nat" }
+  ],
   "narration": {
     "tr": {
       "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"

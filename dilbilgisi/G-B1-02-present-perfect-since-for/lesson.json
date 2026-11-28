@@ -26,6 +26,15 @@
     "Ankara",
     "May"
   ],
+  "feedbackPronunciations": [
+    { "term": "since", "say_as": "sins" },
+    { "term": "for", "say_as": "for" },
+    { "term": "we", "say_as": "vi" },
+    { "term": "have", "say_as": "hev" },
+    { "term": "We", "say_as": "Vi" },
+    { "term": "known", "say_as": "noun" },
+    { "term": "lived", "say_as": "livd" }
+  ],
   "narration": {
     "tr": {
       "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"

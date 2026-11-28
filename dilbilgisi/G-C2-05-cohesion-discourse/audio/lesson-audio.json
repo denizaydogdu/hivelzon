@@ -55,6 +55,30 @@
      "present": true,
      "duration": 4.16,
      "quality": null
+    },
+    {
+     "id": "c01-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Yine de kitapla ilgili verdiğim ilk dürüst karardı.",
+     "textSha256": "6769b63902c256882caf53961fb7cfd92d0db66105c48597100e5de354419f0c",
+     "chars": 51,
+     "audio": "tr/c01-ex1-tl.mp3",
+     "align": "tr/c01-ex1-tl.align.json",
+     "present": true,
+     "duration": 3.04,
+     "quality": {
+      "words": 8,
+      "exact": 8,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -111,6 +135,54 @@
      "present": true,
      "duration": 3.76,
      "quality": null
+    },
+    {
+     "id": "c02-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Otel eskiydi. Yine de çok sevdik.",
+     "textSha256": "2cafda836c685745723f3c95d071b942510f4fc0ff5f7ccb4a40281025850335",
+     "chars": 33,
+     "audio": "tr/c02-ex1-tl.mp3",
+     "align": "tr/c02-ex1-tl.align.json",
+     "present": true,
+     "duration": 2.88,
+     "quality": {
+      "words": 6,
+      "exact": 6,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c02-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Uçuş iptal edildi. Bu yüzden bir gece daha kaldık.",
+     "textSha256": "73b65358ec79713f0be9fb73efe7b3017f27d9080dbe18dff9fb0200c7179ccd",
+     "chars": 50,
+     "audio": "tr/c02-ex2-tl.mp3",
+     "align": "tr/c02-ex2-tl.align.json",
+     "present": true,
+     "duration": 3.68,
+     "quality": {
+      "words": 9,
+      "exact": 9,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -167,6 +239,54 @@
      "present": true,
      "duration": 3.84,
      "quality": null
+    },
+    {
+     "id": "c03-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "İki şehir de çok sevilir; ama ilki daha sakindir.",
+     "textSha256": "8105a9595afa8e064d47aab8a0e10ce5a9e7c7ca350b7db194bad0b63315562c",
+     "chars": 49,
+     "audio": "tr/c03-ex1-tl.mp3",
+     "align": "tr/c03-ex1-tl.align.json",
+     "present": true,
+     "duration": 3.04,
+     "quality": {
+      "words": 9,
+      "exact": 9,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Fiyatlar hızla arttı. Bu, birçok aileyi endişelendirdi.",
+     "textSha256": "2a2a629136a737c0cf8bfce1a59e60cdba555afb83da1a9ed4e831493a79f9f7",
+     "chars": 55,
+     "audio": "tr/c03-ex2-tl.mp3",
+     "align": "tr/c03-ex2-tl.align.json",
+     "present": true,
+     "duration": 4.32,
+     "quality": {
+      "words": 7,
+      "exact": 7,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -210,6 +330,30 @@
      "present": true,
      "duration": 4.96,
      "quality": null
+    },
+    {
+     "id": "c04-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "İlk çalışma güçlü bir etki buldu. Buna karşılık ikincisi hiç bulamadı.",
+     "textSha256": "d0106c95c84eb548c3a10d23f410ddbbf2327596447399424906d4ae234a137f",
+     "chars": 70,
+     "audio": "tr/c04-ex1-tl.mp3",
+     "align": "tr/c04-ex1-tl.align.json",
+     "present": true,
+     "duration": 4.48,
+     "quality": {
+      "words": 11,
+      "exact": 11,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -281,6 +425,126 @@
      "present": true,
      "duration": 4.16,
      "quality": null
+    },
+    {
+     "id": "c05-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Kurs zordu. Yine de öğrencilerin çoğu geçti.",
+     "textSha256": "ad217f29f601019b406e3c3231d3a84196eca9c236e69799e727f179ced6dccd",
+     "chars": 44,
+     "audio": "tr/c05-ex1-tl.mp3",
+     "align": "tr/c05-ex1-tl.align.json",
+     "present": true,
+     "duration": 3.68,
+     "quality": {
+      "words": 7,
+      "exact": 7,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Kimi treni, kimi uçağı seçer; ikincisi daha hızlıdır.",
+     "textSha256": "8ed4acd8b96322e0a366eb5885d37deb305d6486e0a2b0f8a83b7a70cd7932d4",
+     "chars": 53,
+     "audio": "tr/c05-ex2-tl.mp3",
+     "align": "tr/c05-ex2-tl.align.json",
+     "present": true,
+     "duration": 3.84,
+     "quality": {
+      "words": 8,
+      "exact": 8,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex3-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Test iki kez başarısız oldu. Başka bir deyişle yöntem işe yaramıyor.",
+     "textSha256": "8fd813daf19dee3903e03af9e455897dde9beb50d9c7e94ea503d4eccfd04161",
+     "chars": 68,
+     "audio": "tr/c05-ex3-tl.mp3",
+     "align": "tr/c05-ex3-tl.align.json",
+     "present": true,
+     "duration": 4.64,
+     "quality": {
+      "words": 11,
+      "exact": 11,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex4-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Yorgundu. Üstelik açtı.",
+     "textSha256": "a381414a2119d3943a6c95657d5ebe4a14947835de3c3319f2781bdd56da1fe4",
+     "chars": 23,
+     "audio": "tr/c05-ex4-tl.mp3",
+     "align": "tr/c05-ex4-tl.align.json",
+     "present": true,
+     "duration": 2.72,
+     "quality": {
+      "words": 3,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex5-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Şehir hızla büyüdü. Böyle bir büyüme yeni sorunlar getirir.",
+     "textSha256": "81f9fee0d818ac99922ec6c4529649a90d92c548d9578d891b37f4f50a8ea78b",
+     "chars": 59,
+     "audio": "tr/c05-ex5-tl.mp3",
+     "align": "tr/c05-ex5-tl.align.json",
+     "present": true,
+     "duration": 4.0,
+     "quality": {
+      "words": 9,
+      "exact": 9,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -337,6 +601,54 @@
      "present": true,
      "duration": 4.64,
      "quality": null
+    },
+    {
+     "id": "c06-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Şehri seviyorum. Üstelik yemeklerine bayılıyorum.",
+     "textSha256": "abc51420617fd7a8cf714cd6d9f34ffaa03b0063168ce296ebc5d2c3063f19e4",
+     "chars": 49,
+     "audio": "tr/c06-ex1-tl.mp3",
+     "align": "tr/c06-ex1-tl.align.json",
+     "present": true,
+     "duration": 3.52,
+     "quality": {
+      "words": 5,
+      "exact": 5,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c06-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Müze kapalıydı, yağmur da yağıyordu. Bu yüzden eve döndük.",
+     "textSha256": "45f77e10eb5480899043dac31d6f024120595d3654ba399389b481c9f2a45526",
+     "chars": 58,
+     "audio": "tr/c06-ex2-tl.mp3",
+     "align": "tr/c06-ex2-tl.align.json",
+     "present": true,
+     "duration": 4.64,
+     "quality": {
+      "words": 9,
+      "exact": 8,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -356,6 +668,133 @@
      "present": true,
      "duration": 5.04,
      "quality": null
+    },
+    {
+     "id": "c07-q1-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "İki cümle arasında zıtlık var: Nonetheless.",
+     "textSha256": "d0ae2c64d99362a9750d63ca878d730c56020b13ce6f0c4e0b1962bb9e870a95",
+     "chars": 43,
+     "audio": "tr/c07-q1-fb.mp3",
+     "align": "tr/c07-q1-fb.align.json",
+     "present": true,
+     "duration": 2.88,
+     "quality": {
+      "words": 6,
+      "exact": 5,
+      "fuzzy": 0,
+      "weak": 1,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 1,
+      "score": 0.833,
+      "ok": false,
+      "warnings": [
+       "iyi eşleşen kelime oranı düşük: %83 (alt sınır %85)",
+       "zayıf/eksik: Nonetheless→Nandres."
+      ]
+     }
+    },
+    {
+     "id": "c07-q2-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "İki şeyden ilkini göstermek için the former.",
+     "textSha256": "ff9c6c58d59e4d7ce586d9744ad46bc9e42ef50ad9e2430b91faa4e98ddbbd1c",
+     "chars": 44,
+     "audio": "tr/c07-q2-fb.mp3",
+     "align": "tr/c07-q2-fb.align.json",
+     "present": true,
+     "duration": 2.88,
+     "quality": {
+      "words": 7,
+      "exact": 7,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c07-q3-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "İkinci cümle bir sonuç: As a result.",
+     "textSha256": "c56ff8cfaa03c13f780c2c6845010820cb353ffcc6daf7a3de00744f1f1e801f",
+     "chars": 36,
+     "audio": "tr/c07-q3-fb.mp3",
+     "align": "tr/c07-q3-fb.align.json",
+     "present": true,
+     "duration": 3.04,
+     "quality": {
+      "words": 7,
+      "exact": 4,
+      "fuzzy": 0,
+      "weak": 3,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 3,
+      "score": 0.571,
+      "ok": false,
+      "warnings": [
+       "iyi eşleşen kelime oranı düşük: %57 (alt sınır %85)",
+       "art arda 3 kelime zayıf ya da eksik eşleşti",
+       "zayıf/eksik: As→Ez, a→ırr, result→izalt."
+      ]
+     }
+    },
+    {
+     "id": "c07-q4-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Bununla birlikte anlamındaki kalıp: That said.",
+     "textSha256": "5a24a5d7e8ef4939535ffc57e921ee37d135c229572bb2dc8e2d1b0d7545bdb3",
+     "chars": 46,
+     "audio": "tr/c07-q4-fb.mp3",
+     "align": "tr/c07-q4-fb.align.json",
+     "present": true,
+     "duration": 3.52,
+     "quality": {
+      "words": 6,
+      "exact": 4,
+      "fuzzy": 2,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c07-q5-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Plan pahalı. Bununla birlikte uzun vadede para kazandırabilir.",
+     "textSha256": "9aabc0c1094c82c063f4618f815a949d6cfa43666f57157144f9a55f27d44762",
+     "chars": 62,
+     "audio": "tr/c07-q5-tl.mp3",
+     "align": "tr/c07-q5-tl.align.json",
+     "present": true,
+     "duration": 4.64,
+     "quality": {
+      "words": 8,
+      "exact": 8,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -404,6 +843,30 @@
      "present": true,
      "duration": 3.44,
      "quality": null
+    },
+    {
+     "id": "c09-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Plan pahalı. Bununla birlikte para kazandırabilir.",
+     "textSha256": "ed582cd74be099d6ab6a518f326aea3bf9b5dcad4bc82f5f2f6e91f408010069",
+     "chars": 50,
+     "audio": "tr/c09-ex1-tl.mp3",
+     "align": "tr/c09-ex1-tl.align.json",
+     "present": true,
+     "duration": 3.68,
+     "quality": {
+      "words": 6,
+      "exact": 6,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   }

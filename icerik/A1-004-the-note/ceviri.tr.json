@@ -3,6 +3,11 @@
   "status": "APPROVED",
   "author": "Claude taslak",
   "date": "2026-10-11",
+  "pronunciations": [
+    { "term": "Alex", "say_as": "Aleks" },
+    { "term": "Free", "say_as": "Frii" },
+    { "term": "Fried", "say_as": "Frayd" }
+  ],
   "lines": [
     {
       "en": "The Note",

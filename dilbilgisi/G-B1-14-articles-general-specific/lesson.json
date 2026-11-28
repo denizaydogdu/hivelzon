@@ -28,6 +28,12 @@
     "Pip",
     "Moon"
   ],
+  "feedbackPronunciations": [
+    { "term": "the", "say_as": "dı" },
+    { "term": "by", "say_as": "bay" },
+    { "term": "car", "say_as": "kar" },
+    { "term": "sun", "say_as": "san" }
+  ],
   "narration": {
     "tr": {
       "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"

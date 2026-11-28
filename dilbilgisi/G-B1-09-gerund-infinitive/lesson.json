@@ -32,6 +32,16 @@
       "say_as": "ing"
     }
   ],
+  "feedbackPronunciations": [
+    { "term": "Enjoy", "say_as": "Encoy" },
+    { "term": "Decide", "say_as": "Disayd" },
+    { "term": "to", "say_as": "tu" },
+    { "term": "Want", "say_as": "Vant" },
+    { "term": "wants", "say_as": "vants" },
+    { "term": "me", "say_as": "mi" },
+    { "term": "clean", "say_as": "kliin" },
+    { "term": "stop", "say_as": "stop" }
+  ],
   "narration": {
     "tr": {
       "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"

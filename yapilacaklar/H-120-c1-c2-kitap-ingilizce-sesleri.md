@@ -99,3 +99,4 @@ yansıttığı için geri alınmaz.
 
 ## Not (2026-11-27)
 - Kullanıcı kararı: Kıraathane aynı ElevenLabs Creator hesabını **yalnız bu dönemin kalan kredisiyle** (≈ 2.566 kredi, 2026-11-27 ölçümü; yenilenme 2026-12-26) İngilizce ses için kullanabilir. Yenilenen Aralık/Ocak kredisi H-120 içindir; Kıraathane yeni dönemde ancak kullanıcının ayrı onayıyla kullanır. Kıraathane harcaması hiVelzon defterine (`kitaplar/_maliyet/elevenlabs-karakter.json`) girmez; dashboard toplamıyla defter arasındaki fark buradan gelir.
+- 2026-11-27 Kıraathane kullanımı (bildirim): eleven_v3, 28 kısa ses örneği, 688 karakter, 107 kredi (kalan 2.566 → 2.459). hiVelzon defterine girmez.

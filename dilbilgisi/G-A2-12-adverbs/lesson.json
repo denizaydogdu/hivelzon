@@ -41,6 +41,12 @@
       "say_as": "li"
     }
   ],
+  "feedbackPronunciations": [
+    { "term": "Never", "say_as": "Nevır" },
+    { "term": "don't", "say_as": "dount" },
+    { "term": "Good", "say_as": "Gud" },
+    { "term": "well", "say_as": "vel" }
+  ],
   "narration": {
     "tr": {
       "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"

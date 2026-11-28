@@ -55,6 +55,33 @@
      "present": true,
      "duration": 2.08,
      "quality": null
+    },
+    {
+     "id": "c01-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Bir çizgiyi gösteriyor gibi görünüyor.",
+     "textSha256": "6ad4fc80ed63fa00914d08ebba8089598d9facd6d7e573c9ee6bddabf594bbed",
+     "chars": 38,
+     "audio": "tr/c01-ex1-tl.mp3",
+     "align": "tr/c01-ex1-tl.align.json",
+     "present": true,
+     "duration": 3.04,
+     "quality": {
+      "words": 5,
+      "exact": 3,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 1,
+      "extraHeard": 1,
+      "worstRun": 1,
+      "score": 0.8,
+      "ok": false,
+      "warnings": [
+       "iyi eşleşen kelime oranı düşük: %80 (alt sınır %85)",
+       "zayıf/eksik: Bir→∅"
+      ]
+     }
     }
    ]
   },
@@ -111,6 +138,54 @@
      "present": true,
      "duration": 1.84,
      "quality": null
+    },
+    {
+     "id": "c02-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Sonuçlar bir bağlantıya işaret ediyor gibi.",
+     "textSha256": "300f733c9832f3b50450e384977d1c2f9308af29198247841a5b2eec08068085",
+     "chars": 43,
+     "audio": "tr/c02-ex1-tl.mp3",
+     "align": "tr/c02-ex1-tl.align.json",
+     "present": true,
+     "duration": 2.56,
+     "quality": {
+      "words": 6,
+      "exact": 6,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c02-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Gençler daha geç uyuma eğiliminde.",
+     "textSha256": "11154d566732195ed09c0131b113af8d0be27202a0573805bd7dc6b082a20e9c",
+     "chars": 34,
+     "audio": "tr/c02-ex2-tl.mp3",
+     "align": "tr/c02-ex2-tl.align.json",
+     "present": true,
+     "duration": 2.4,
+     "quality": {
+      "words": 5,
+      "exact": 5,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -180,6 +255,78 @@
      "present": true,
      "duration": 2.24,
      "quality": null
+    },
+    {
+     "id": "c03-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Bu, belki de onun en iyi romanı.",
+     "textSha256": "576ac2876bf34fc3918bad0056416f5fe07635bd7363b45855ce5ac819a783dd",
+     "chars": 32,
+     "audio": "tr/c03-ex1-tl.mp3",
+     "align": "tr/c03-ex1-tl.align.json",
+     "present": true,
+     "duration": 2.88,
+     "quality": {
+      "words": 7,
+      "exact": 7,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Herhalde tren gecikti.",
+     "textSha256": "b0cc0202c443f66fee748717655f7f4e2c4ee4872f3879b921d7565d832cc078",
+     "chars": 22,
+     "audio": "tr/c03-ex2-tl.mp3",
+     "align": "tr/c03-ex2-tl.align.json",
+     "present": true,
+     "duration": 1.76,
+     "quality": {
+      "words": 3,
+      "exact": 3,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c03-ex3-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Şaşırtıcı biçimde kimse şikâyet etmedi.",
+     "textSha256": "5c4f410c87a14a4dac8f59f884c6282752c56025d0c4c621e0e467fc3d112c09",
+     "chars": 39,
+     "audio": "tr/c03-ex3-tl.mp3",
+     "align": "tr/c03-ex3-tl.align.json",
+     "present": true,
+     "duration": 2.88,
+     "quality": {
+      "words": 5,
+      "exact": 4,
+      "fuzzy": 1,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -223,6 +370,30 @@
      "present": true,
      "duration": 2.48,
      "quality": null
+    },
+    {
+     "id": "c04-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Yöntemin işe yaradığına dair bazı kanıtlar var.",
+     "textSha256": "47666feaad5a03d409d77cd5e0c8ede85a17bc66932759d554ae8db251d185a4",
+     "chars": 47,
+     "audio": "tr/c04-ex1-tl.mp3",
+     "align": "tr/c04-ex1-tl.align.json",
+     "present": true,
+     "duration": 3.2,
+     "quality": {
+      "words": 7,
+      "exact": 7,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -294,6 +465,126 @@
      "present": true,
      "duration": 2.4,
      "quality": null
+    },
+    {
+     "id": "c05-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Görünüşe göre kimse e-postayı okumadı.",
+     "textSha256": "7f716cd16a0c1cbfb160a5677ae068daadf308869aa32641674f8f575632e431",
+     "chars": 38,
+     "audio": "tr/c05-ex1-tl.mp3",
+     "align": "tr/c05-ex1-tl.align.json",
+     "present": true,
+     "duration": 2.56,
+     "quality": {
+      "words": 6,
+      "exact": 6,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Fiyatın gelecek yıl artması muhtemel.",
+     "textSha256": "231e00df5b155761425e29961aa9855d0af1944059ddb38e3665eeb85a8e0f6b",
+     "chars": 37,
+     "audio": "tr/c05-ex2-tl.mp3",
+     "align": "tr/c05-ex2-tl.align.json",
+     "present": true,
+     "duration": 2.56,
+     "quality": {
+      "words": 5,
+      "exact": 5,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex3-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Bunun nedeni talimatların açık olmaması olabilir.",
+     "textSha256": "801ee24bd48af907ddfa57e2e9ce84e77dadd4052c8412f2b92150c9f2764d0c",
+     "chars": 49,
+     "audio": "tr/c05-ex3-tl.mp3",
+     "align": "tr/c05-ex3-tl.align.json",
+     "present": true,
+     "duration": 3.04,
+     "quality": {
+      "words": 6,
+      "exact": 6,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 1,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex4-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "İkinci filmin birinciden daha iyi olduğu söylenebilir.",
+     "textSha256": "feac87ea66fe39469132af45210a4593215c8aefd3e7e227731ece7bb843cbb2",
+     "chars": 54,
+     "audio": "tr/c05-ex4-tl.mp3",
+     "align": "tr/c05-ex4-tl.align.json",
+     "present": true,
+     "duration": 3.36,
+     "quality": {
+      "words": 7,
+      "exact": 7,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c05-ex5-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Veriler bu fikri destekliyor gibi görünüyor.",
+     "textSha256": "4b66d604e3c955d4c6dad003866531754aa801644dc69181d7f623df8501816d",
+     "chars": 44,
+     "audio": "tr/c05-ex5-tl.mp3",
+     "align": "tr/c05-ex5-tl.align.json",
+     "present": true,
+     "duration": 2.72,
+     "quality": {
+      "words": 6,
+      "exact": 6,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -350,6 +641,54 @@
      "present": true,
      "duration": 2.16,
      "quality": null
+    },
+    {
+     "id": "c06-ex1-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Muhtemelen doğru.",
+     "textSha256": "3b829bbcd19864edb71091158d48c23d466198a59f1fe9a72e76e8979de7830c",
+     "chars": 17,
+     "audio": "tr/c06-ex1-tl.mp3",
+     "align": "tr/c06-ex1-tl.align.json",
+     "present": true,
+     "duration": 1.28,
+     "quality": {
+      "words": 2,
+      "exact": 2,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c06-ex2-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Bu, belki de en iyi yöntem.",
+     "textSha256": "e6daa3a5dca9438e55817398951324114c508af50aaf3e661d0fd631e04b9d51",
+     "chars": 27,
+     "audio": "tr/c06-ex2-tl.mp3",
+     "align": "tr/c06-ex2-tl.align.json",
+     "present": true,
+     "duration": 1.92,
+     "quality": {
+      "words": 6,
+      "exact": 6,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },
@@ -369,6 +708,130 @@
      "present": true,
      "duration": 2.32,
      "quality": null
+    },
+    {
+     "id": "c07-q1-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Appear'dan sonra to ve yalın fiil gelir.",
+     "textSha256": "3eb4c1eefe6a364f3da4414e62b1c858c5bdf88a58bc25580eb6d6991ef6535d",
+     "chars": 40,
+     "audio": "tr/c07-q1-fb.mp3",
+     "align": "tr/c07-q1-fb.align.json",
+     "present": true,
+     "duration": 2.72,
+     "quality": {
+      "words": 7,
+      "exact": 6,
+      "fuzzy": 0,
+      "weak": 1,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 1,
+      "score": 0.857,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c07-q2-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Herkes katılmıyorsa iddia yumuşatılır: arguably.",
+     "textSha256": "00688c0bdda20e54478251cf667475e6e4a88435a0ee61d6c751a1cca5b5cbc1",
+     "chars": 48,
+     "audio": "tr/c07-q2-fb.mp3",
+     "align": "tr/c07-q2-fb.align.json",
+     "present": true,
+     "duration": 4.16,
+     "quality": {
+      "words": 5,
+      "exact": 5,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 1,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c07-q3-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Yumuşatma kalıbı: It would appear ya da It would seem.",
+     "textSha256": "8674369136ca82ecd851e0cec08b86c7a69f11e851384d012aba2f2062bafd76",
+     "chars": 54,
+     "audio": "tr/c07-q3-fb.mp3",
+     "align": "tr/c07-q3-fb.align.json",
+     "present": true,
+     "duration": 4.64,
+     "quality": {
+      "words": 10,
+      "exact": 4,
+      "fuzzy": 2,
+      "weak": 1,
+      "missing": 3,
+      "extraHeard": 0,
+      "worstRun": 3,
+      "score": 0.6,
+      "ok": false,
+      "warnings": [
+       "iyi eşleşen kelime oranı düşük: %60 (alt sınır %85)",
+       "art arda 3 kelime zayıf ya da eksik eşleşti",
+       "zayıf/eksik: It→∅, It→itwootsy'm., would→∅, seem→∅"
+      ]
+     }
+    },
+    {
+     "id": "c07-q4-fb",
+     "lang": "tr",
+     "role": "feedback",
+     "text": "Eğilim kalıbı: tend to ve yalın fiil.",
+     "textSha256": "215429cf3d6b9da68a2098d3a3347ac09968490dea86455366d1c5112b0bd837",
+     "chars": 37,
+     "audio": "tr/c07-q4-fb.mp3",
+     "align": "tr/c07-q4-fb.align.json",
+     "present": true,
+     "duration": 3.52,
+     "quality": {
+      "words": 7,
+      "exact": 5,
+      "fuzzy": 2,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
+    },
+    {
+     "id": "c07-q5-tl",
+     "lang": "tr",
+     "role": "translation",
+     "text": "Plan başarısız olmuş gibi görünüyor.",
+     "textSha256": "04eba52619f8e75a9fb2833bc2d65d6dd9b3af81b50ca08c5e81d9fefbb65324",
+     "chars": 36,
+     "audio": "tr/c07-q5-tl.mp3",
+     "align": "tr/c07-q5-tl.align.json",
+     "present": true,
+     "duration": 2.24,
+     "quality": {
+      "words": 5,
+      "exact": 5,
+      "fuzzy": 0,
+      "weak": 0,
+      "missing": 0,
+      "extraHeard": 0,
+      "worstRun": 0,
+      "score": 1.0,
+      "ok": true,
+      "warnings": []
+     }
     }
    ]
   },

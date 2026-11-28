@@ -26,6 +26,14 @@
     "Limon",
     "Elif"
   ],
+  "feedbackPronunciations": [
+    { "term": "Didn't'ten", "say_as": "Didınt'ten" },
+    { "term": "see", "say_as": "sii" },
+    { "term": "Yesterday", "say_as": "Yestırdey" },
+    { "term": "Did", "say_as": "Did" },
+    { "term": "didn't", "say_as": "didınt" },
+    { "term": "did", "say_as": "did" }
+  ],
   "narration": {
     "tr": {
       "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"

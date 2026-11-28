@@ -33,6 +33,17 @@
       "say_as": "er"
     }
   ],
+  "feedbackPronunciations": [
+    { "term": "Tall", "say_as": "Tol" },
+    { "term": "taller", "say_as": "tolır" },
+    { "term": "Interesting", "say_as": "İntrısting" },
+    { "term": "more", "say_as": "mor" },
+    { "term": "interesting", "say_as": "intrısting" },
+    { "term": "Hot", "say_as": "Hat" },
+    { "term": "hotter", "say_as": "hatır" },
+    { "term": "Good", "say_as": "Gud" },
+    { "term": "better", "say_as": "betır" }
+  ],
   "narration": {
     "tr": {
       "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"

@@ -24,6 +24,16 @@
   "properNouns": [
     "Ankara"
   ],
+  "feedbackPronunciations": [
+    { "term": "are", "say_as": "ar" },
+    { "term": "having", "say_as": "heving" },
+    { "term": "I", "say_as": "ay" },
+    { "term": "was", "say_as": "vaz" },
+    { "term": "wondering", "say_as": "vandıring" },
+    { "term": "am", "say_as": "em" },
+    { "term": "thinking", "say_as": "tinking" },
+    { "term": "being", "say_as": "biing" }
+  ],
   "narration": {
     "tr": {
       "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"

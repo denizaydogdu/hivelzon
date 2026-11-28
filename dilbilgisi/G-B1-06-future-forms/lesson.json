@@ -30,6 +30,18 @@
     "Ece",
     "Mum"
   ],
+  "feedbackPronunciations": [
+    { "term": "I'm", "say_as": "aym" },
+    { "term": "I", "say_as": "ay" },
+    { "term": "flying", "say_as": "flaying" },
+    { "term": "will", "say_as": "vil" },
+    { "term": "When", "say_as": "Ven" },
+    { "term": "get", "say_as": "get" },
+    { "term": "home", "say_as": "houm" },
+    { "term": "is", "say_as": "iz" },
+    { "term": "going", "say_as": "gouing" },
+    { "term": "to", "say_as": "tu" }
+  ],
   "narration": {
     "tr": {
       "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"

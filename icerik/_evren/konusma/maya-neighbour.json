@@ -23,6 +23,7 @@
     {"term": "-im", "say_as": "im"},
     {"term": "Nice to meet you", "say_as": "Nays tu miit yu"}
   ],
+  "translationPronunciations": [{"term": "Alex", "say_as": "Aleks"}],
   "turns": [
     {
       "id": "t1",

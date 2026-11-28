@@ -24,6 +24,14 @@
     "Ali",
     "Ankara"
   ],
+  "feedbackPronunciations": [
+    { "term": "me", "say_as": "mi" },
+    { "term": "told", "say_as": "tould" },
+    { "term": "is", "say_as": "iz" },
+    { "term": "was", "say_as": "vaz" },
+    { "term": "will", "say_as": "vil" },
+    { "term": "would", "say_as": "vud" }
+  ],
   "narration": {
     "tr": {
       "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"

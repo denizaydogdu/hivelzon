@@ -23,6 +23,13 @@
     "Mrs Berg",
     "Leo"
   ],
+  "feedbackPronunciations": [
+    { "term": "going", "say_as": "gouing" },
+    { "term": "to", "say_as": "tu" },
+    { "term": "I", "say_as": "ay" },
+    { "term": "am", "say_as": "em" },
+    { "term": "Going", "say_as": "Gouing" }
+  ],
   "narration": {
     "tr": {
       "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"

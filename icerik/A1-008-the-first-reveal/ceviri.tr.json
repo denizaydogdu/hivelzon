@@ -3,6 +3,9 @@
   "status": "DRAFT",
   "author": "Claude taslak",
   "date": "2026-10-14",
+  "pronunciations": [
+    { "term": "Lumen Point", "say_as": "Lumın Poynt" }
+  ],
   "lines": [
     {
       "en": "The First Reveal",

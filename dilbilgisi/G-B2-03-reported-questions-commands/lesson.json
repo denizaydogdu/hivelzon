@@ -26,6 +26,12 @@
   "properNouns": [
     "Nia"
   ],
+  "feedbackPronunciations": [
+    { "term": "I", "say_as": "ay" },
+    { "term": "lived", "say_as": "livd" },
+    { "term": "to", "say_as": "tu" },
+    { "term": "told", "say_as": "tould" }
+  ],
   "narration": {
     "tr": {
       "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"

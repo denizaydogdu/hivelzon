@@ -33,6 +33,15 @@
       "say_as": "ing"
     }
   ],
+  "feedbackPronunciations": [
+    { "term": "will", "say_as": "vil" },
+    { "term": "be", "say_as": "bi" },
+    { "term": "sleeping", "say_as": "sliiping" },
+    { "term": "have", "say_as": "hev" },
+    { "term": "read", "say_as": "red" },
+    { "term": "until", "say_as": "antil" },
+    { "term": "by", "say_as": "bay" }
+  ],
   "narration": {
     "tr": {
       "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"

@@ -22,6 +22,16 @@
       "C2-K05"
     ]
   },
+  "feedbackPronunciations": [
+    { "term": "Nonetheless", "say_as": "Nandıles" },
+    { "term": "the", "say_as": "dı" },
+    { "term": "former", "say_as": "formır" },
+    { "term": "As", "say_as": "Ez" },
+    { "term": "a", "say_as": "ı" },
+    { "term": "result", "say_as": "rizalt" },
+    { "term": "That", "say_as": "Det" },
+    { "term": "said", "say_as": "sed" }
+  ],
   "narration": {
     "tr": {
       "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"

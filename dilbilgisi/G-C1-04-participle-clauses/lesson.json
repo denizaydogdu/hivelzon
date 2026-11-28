@@ -34,6 +34,13 @@
       "say_as": "Tomas"
     }
   ],
+  "feedbackPronunciations": [
+    { "term": "Having", "say_as": "Heving" },
+    { "term": "sent", "say_as": "sent" },
+    { "term": "Built", "say_as": "Bilt" },
+    { "term": "I", "say_as": "ay" },
+    { "term": "having", "say_as": "heving" }
+  ],
   "narration": {
     "tr": {
       "instructions": "sıcak, sakin, yavaş; genç ve güler yüzlü bir yardımcı"
