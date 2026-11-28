@@ -34,7 +34,11 @@ def main(argv: list[str] | None = None) -> int:
     a = ap.parse_args(argv)
     failed = False
     summary = []
-    for d in [Path(p) for p in a.books if Path(p).is_dir() and not Path(p).name.startswith("_")]:
+    dirs = [Path(p) for p in a.books if Path(p).is_dir() and not Path(p).name.startswith("_")]
+    if not dirs:   # hiçbir kitap dışa aktarılmadıysa başarı sayılmaz (Codex bulgusu, 2026-11-27)
+        print("Kitap klasörü bulunamadı.", file=sys.stderr)
+        return 1
+    for d in dirs:
         try:
             r = export_book(d)
         except BookError as e:
@@ -69,6 +73,10 @@ def main(argv: list[str] | None = None) -> int:
         if ta.get("aligned") or ta.get("stale"):
             print(f"   Türkçe sayfa sesi (H-105): {ta['packaged']}/{ta['pages']} sayfa pakette"
                   + (f", {ta['stale']} eskimiş" if ta.get("stale") else ""))
+        tx = m.get("trExtraAudio") or {}
+        if tx.get("aligned") or tx.get("stale"):
+            print(f"   Türkçe soru/tanıtım sesi (H-109): {tx['packaged']}/{tx['segments']} parça pakette"
+                  + (f", {tx['stale']} eskimiş" if tx.get("stale") else ""))
         for x in r.tr_missing:   # isteğe bağlı: --require-media ile de hata değil
             why = "metin değişti, yeniden üret (tts_book_tr.py)" if x["reason"] == "stale" else "bu ortamda yok (git dışı medya)"
             print(f"   - UYARI [book-tr-audio] {x['page']}: Türkçe ses {why}: {x['path']}")
@@ -77,6 +85,7 @@ def main(argv: list[str] | None = None) -> int:
         summary.append({"book": r.book_id, "package": str(r.package), "errors": r.errors, "missing": r.missing,
                         "files": len(m["files"]), "bytes": m["totalBytes"], "loudness": m["loudness"],
                         "pacing": m["pacing"], "trAudio": m.get("trAudio"),
+                        "trExtraAudio": m.get("trExtraAudio"),
                         "trMissing": m.get("trMissing")})
     if a.report:
         Path(a.report).write_text(json.dumps(summary, ensure_ascii=False, indent=2), encoding="utf-8")

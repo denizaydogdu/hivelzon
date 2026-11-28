@@ -391,6 +391,9 @@ abstract final class ComprehensionTexts {
   static const skip = 'Atla';
   static const skipHint = 'Hatırlamayı atla, kitabın sonuna geç';
   static String questionOf(int n, int total) => 'Soru $n / $total';
+
+  /// Sorunun Türkçesini Hi'nin sesiyle dinleme (H-109).
+  static const promptTrListen = 'Türkçesini dinle';
   static const correct = 'Evet, doğru.';
   static String tryAgain(int? page) => page == null
       ? 'Bu değil. Bir daha düşünebilirsin.'
@@ -503,6 +506,12 @@ abstract final class GrammarTexts {
     _ => 'Anlatım',
   };
   static String playExample(String en) => 'Örneği dinle: $en';
+
+  /// Yanlış cevap açıklamasını Hi'nin sesiyle dinleme (H-109).
+  static const feedbackListen = 'Açıklamayı dinle';
+
+  /// "Söyle" cümlesinin Türkçesini Hi'nin sesiyle dinleme (H-109 Faz 3).
+  static const sayTrListen = 'Türkçesini dinle';
   static const examplesHint = 'Anlamı için kelimeye dokun.';
   static const wrongLabel = 'Sık yapılan hata';
   static const rightLabel = 'Doğrusu';
@@ -513,6 +522,9 @@ abstract final class GrammarTexts {
 
   // Alıştırma (puan, süre, can yok; K-32)
   static String questionOf(int n, int total) => 'Soru $n / $total';
+
+  /// Sorunun Türkçesini Hi'nin sesiyle dinleme (H-109).
+  static const promptTrListen = 'Türkçesini dinle';
   static const chooseHint = 'Boşluğa uyan kelimeyi seç.';
   static const fillHint = 'Boşluğa uyan kelimeyi yaz.';
   static const fillField = 'Cevabın';
@@ -575,6 +587,9 @@ abstract final class SeasonIntroTexts {
 
 /// Defter, İpucu panosu ve kelime tekrarı.
 abstract final class NotebookTexts {
+  /// Örnek cümlenin Türkçesini Hi'nin sesiyle dinleme (H-109 Faz 3b; konu
+  /// seti kartı, yalnız Türkçe görünürken).
+  static const exampleTrListen = 'Türkçesini dinle';
   static const title = 'Defter';
   static const tabPhrases = 'İfadeler';
   static const tabClues = 'İpucu panosu';
@@ -1035,6 +1050,10 @@ abstract final class PlaceholderTexts {
 /// kaydırma yok); quiz ve mola kartı sakin, puansız; süre sınırı izlerken
 /// geri sayım göstermez (K-32). Kılavuz: ARAYUZ-METINLERI §7.
 abstract final class DiscoverTexts {
+  /// Reel alıştırmasının Türkçesini Hi'nin sesiyle dinleme (H-109); yalnız
+  /// dokununca çalar.
+  static const practicePromptListen = 'Soruyu dinle';
+  static const practiceExplainListen = 'Açıklamayı dinle';
   static const title = 'Keşfet';
   static const screenSemantics = 'Keşfet: bölümlerden kısa klipler';
   static const loading = 'Klipler hazırlanıyor…';
@@ -1346,6 +1365,9 @@ abstract final class MeaningTexts {
   static const chunkLabel = 'Kalıp';
   static const turkishLabel = 'Türkçesi';
   static const reveal = 'Türkçesini göster';
+
+  /// Türkçesini Hi'nin sesiyle dinleme (H-109 Faz 3); yalnız dokununca çalar.
+  static const trListen = 'Türkçesini dinle';
   static const replay = 'Tekrar dinle';
   static const slow = '0,75x';
   static const slowOn = 'Yavaş dinleme açık (0,75). Normale dönmek için dokun.';
@@ -2422,6 +2444,9 @@ abstract final class TalkPlanTexts {
 /// zekâ sohbeti değildir (H-007); puan yok, "yanlış" yok, "Geç" hep var
 /// (K-32). Kılavuz: ARAYUZ-METINLERI §7.2.
 abstract final class TalkTexts {
+  /// Karakter satırının ya da örnek cevabın Türkçesini Hi'nin sesiyle
+  /// dinleme (H-109 Faz 3b); yalnız Türkçe görünürken ve dokununca.
+  static const trListen = 'Türkçesini dinle';
   // Hi'nin Türkçe yönlendirme sesi (H-104): düğmenin ekran okuyucu etiketi.
   static const listenHiTask = "Görevi Hi'den dinle";
   static const listenHiHint = "İpucunu Hi'den dinle";

@@ -164,6 +164,11 @@
             }
           }
         },
+        "translationAudio": {
+          "description": "H-109 Faz 3: anlam panelindeki Türkçe cümlelerin sesi (Hi, Alania). Anahtar ekranda gösterilen Türkçe metnin birebir aynısı, değer bölüm paketine göre yol; yalnız güncel ses varsa.",
+          "type": "object",
+          "additionalProperties": { "type": "string", "pattern": "^audio/ceviri/[A-Za-z0-9_.-]+\\.m4a$" }
+        },
         "prev": { "type": ["string", "null"] },
         "next": { "type": ["string", "null"] },
         "links": {

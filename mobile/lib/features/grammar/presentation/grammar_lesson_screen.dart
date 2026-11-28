@@ -265,7 +265,8 @@ class _GrammarLessonScreenState extends ConsumerState<GrammarLessonScreen> {
     await c.stop();
     if (!mounted) return;
     final m = MeaningController(
-      text: e.toMeaning(lesson.id),
+      // Sessiz modda Türkçe ses de çalmaz (H-109 Faz 3).
+      text: e.toMeaning(lesson.id, trSound: !c.silent),
       audio: c.meaningAudio(e),
       events: ref.read(learningEventLogProvider),
       notebook: ref.read(notebookRepositoryProvider),

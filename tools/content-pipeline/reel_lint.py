@@ -51,6 +51,14 @@ def main(argv: list[str] | None = None) -> int:
             print(f"== {reel.id} ({reel.level}, {reel.category_tr}): {status}")
         else:
             print(f"== {r.path}: {status}")
+        ta = r.tr_audio or {}
+        if ta.get("segments"):
+            print(f"   alıştırma Türkçe sesi (H-109): {ta['aligned']}/{ta['segments']} hizalı ({ta['audio']} ses), "
+                  f"{ta['chars']} karakter" + (f", {ta['stale']} eskimiş" if ta.get("stale") else ""))
+        ts = ta.get("subtitles") or {}
+        if ts.get("segments"):
+            print(f"   altyazı Türkçesi sesi (H-109 Faz 3): {ts['aligned']}/{ts['segments']} hizalı ({ts['audio']} ses), "
+                  f"{ts['chars']} karakter" + (f", {ts['stale']} eskimiş" if ts.get("stale") else ""))
         for i in r.errors + r.warnings:
             print(f"   - {i}")
     warns = sum(len(r.warnings) for r in reports)

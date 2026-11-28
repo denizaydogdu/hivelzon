@@ -168,6 +168,11 @@ def _check_segments(segs: list[Segment]) -> list[Segment]:
         if s.instructions is not None and not isinstance(s.instructions, str):
             raise TrTtsError(f"{s.id}: instructions metin olmalı ({type(s.instructions).__name__} verildi)")
         check_pronunciations(s.pronunciations, s.id)
+        if spoken_text(s.text).lstrip().startswith(("(", "[")):
+            raise TrTtsError(f"{s.id}: metin parantezle başlıyor ve açılamadı (kapanmayan/iç içe); Alania baştaki "
+                             f"parantezi yönerge sayar, metni düzelt: {s.text!r}")
+        if not norm(spoken_text(s.text)):
+            raise TrTtsError(f"{s.id}: okunacak metin yok (Alania'ya giden: {spoken_text(s.text)!r})")
         if len(s.text) > MAX_CHARS:
             raise TrTtsError(f"{s.id}: {len(s.text)} karakter (istek sınırı {MAX_CHARS}); parçayı böl")
         if s.instructions and len(s.instructions) > MAX_INSTRUCTIONS:
@@ -1018,8 +1023,30 @@ def wav_duration(data: bytes) -> float:
 
 # --- plan ve yürütme -----------------------------------------------------------------------------
 
+def spoken_text(text: str) -> str:
+    """Alania'ya giden metin. Alania metnin başındaki parantezli bölümü (ve köşeli parantezi) okunacak metin
+    değil yönerge sayar: "(Hatalı) Geç kaldım" → "Hatalı" okunmaz; tamamı parantezli "(Hatalı sıra: Yedi cuma.)"
+    → HTTP 400 "nothing to speak after its instruction" (2026-11-28, H-109). Baştaki grup açılır:
+    tamamını sarıyorsa parantezler kalkar, değilse "X: geri kalan" olur. Ekranda görünen metin değişmez;
+    Duyu eşlemesi noktalamayı saymadığı için hizalama aynı metne göre yapılır."""
+    t = text.replace("[", "(").replace("]", ")")
+    lead = len(t) - len(t.lstrip())
+    if not t[lead:].startswith("("):
+        return t
+    depth = 0
+    for k in range(lead, len(t)):
+        depth += {"(": 1, ")": -1}.get(t[k], 0)
+        if depth == 0:
+            inner, rest = t[lead + 1:k].strip(), t[k + 1:].strip()
+            if not rest:
+                return inner
+            sep = "" if inner[-1:] in ":.!?;," else ":"
+            return f"{inner}{sep} {rest}"
+    return t   # kapanmayan parantez: olduğu gibi
+
+
 def tts_payload(seg: Segment, voice: str = VOICE, model: str = TTS_MODEL) -> dict:
-    p = {"model": model, "voice": voice, "input": seg.text}
+    p = {"model": model, "voice": voice, "input": spoken_text(seg.text)}
     if seg.instructions:
         p["instructions"] = seg.instructions
     if seg.pronunciations:

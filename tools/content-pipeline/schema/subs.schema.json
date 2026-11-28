@@ -24,6 +24,7 @@
           "speaker": { "type": "string" },
           "text": { "type": "string", "minLength": 1 },
           "tr": { "description": "Türkçe cümle (ceviri.tr.json, H-046). Çeviri yoksa null.", "type": ["string", "null"] },
+          "trAudio": { "description": "Türkçe cümlenin sesi (H-109 Faz 3; Hi, Alania; yalnız güncel ses varsa). Bölüm paketine göre yol.", "type": "string", "pattern": "^audio/ceviri/[A-Za-z0-9_.-]+\\.m4a$" },
           "words": {
             "type": "array",
             "items": {

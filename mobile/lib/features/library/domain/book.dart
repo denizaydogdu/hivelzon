@@ -369,6 +369,7 @@ class Book {
     this.titleTr,
     this.genre,
     this.blurbTr,
+    this.blurbTrAudio,
     this.cover,
     this.estimatedMinutes,
     this.contentVersion = 1,
@@ -414,6 +415,13 @@ class Book {
       );
     }
     final id = (bookJson['id'] as String?) ?? pagesJson['bookId'] as String;
+    // H-109: kitap sonu soru Türkçesi ve tanıtım sesi (yalnız pakette).
+    final trAudio = bookJson['trAudio'] is Map
+        ? bookJson['trAudio'] as Map
+        : const {};
+    final questionAudio = trAudio['questions'] is Map
+        ? trAudio['questions'] as Map
+        : const {};
     return Book(
       id: id,
       title: (bookJson['title'] as String?) ?? id,
@@ -424,11 +432,19 @@ class Book {
           BookSummary.levelOf(id),
       genre: BookGenre.parse(bookJson['genre']),
       blurbTr: bookJson['blurbTr'] as String?,
+      blurbTrAudio: _clipAudio(trAudio['blurb']),
       cover: bookJson['cover'] as String?,
       estimatedMinutes: (bookJson['estimatedMinutes'] as num?)?.round(),
       contentVersion: (bookJson['contentVersion'] as num?)?.toInt() ?? 1,
       grammarTopics: grammarTopicsOf(bookJson['grammarTopics']),
-      comprehension: BookComprehension.fromJson(bookJson['comprehension']),
+      comprehension: BookComprehension.fromJson(
+        bookJson['comprehension'],
+        trAudio: {
+          for (final e in questionAudio.entries)
+            if (e.key is String && _clipAudio(e.value) != null)
+              e.key as String: _clipAudio(e.value)!,
+        },
+      ),
       palette: BookPalette.fromJson(bookJson['palette']),
       chapters: chapters,
       pages: pages,
@@ -441,6 +457,10 @@ class Book {
   final String level;
   final BookGenre? genre;
   final String? blurbTr;
+
+  /// Tanıtımın Hi sesiyle okunuşu (H-109; paket `trAudio.blurb`). Tanıtım
+  /// şimdilik uygulamada gösterilmiyor; ses yalnız taşınır.
+  final String? blurbTrAudio;
   final String? cover;
   final int? estimatedMinutes;
   final int contentVersion;
@@ -545,4 +565,11 @@ class Book {
     final m = RegExp(r'^p(\d{2,3})').firstMatch(sentenceId ?? '');
     return m == null ? null : int.parse(m.group(1)!);
   }
+}
+
+/// Paket `trAudio` girdisi (`{audio, duration}`) → ses yolu; bozuksa null.
+String? _clipAudio(Object? v) {
+  if (v is! Map) return null;
+  final a = v['audio'];
+  return a is String && a.isNotEmpty ? a : null;
 }

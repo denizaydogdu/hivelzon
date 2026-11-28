@@ -20,6 +20,11 @@ duyarlıdır (ör. özel ad "Ada" ile Türkçe "ada" karışmasın).
 
 İdempotentlik tts_tr'dedir: anahtar = metin + model + ses + üslup + söyleniş; metin değişirse yeniden
 üretilir, güncel olan atlanır.
+
+**Ek Türkçe metinler (H-109 Faz 2, isteğe bağlı):** kitap sonu soruların Türkçesi
+(`comprehension.questions[].promptTr`, parça kimliği soru kimliği: `q1`, `q2`) ve kitap tanıtımı (`blurbTr`,
+parça `blurb`). Aynı klasöre (`audio/tr/`), aynı sesle ve sözlükle; kimlik soru kimliğidir, sıra kaymaz.
+Araçta bölüm seçimi `parts`: `pages` (varsayılan; H-105), `questions`, `blurb`.
 """
 
 from __future__ import annotations
@@ -36,6 +41,9 @@ from .translation import Translation
 
 TR_AUDIO_DIR = "audio/tr"
 DEFAULT_ROLE = "hi"
+PARTS = ("pages", "questions", "blurb")
+DEFAULT_PARTS = ("pages",)
+BLURB_ID = "blurb"
 VOICE_MAP = REPO_ROOT / "icerik" / "_evren" / "sesler.json"
 
 
@@ -86,6 +94,35 @@ def page_turkish(book: Book, tr: Translation | None = None) -> list[PageTr]:
     return out
 
 
+def extra_turkish(book: Book, parts=("questions", "blurb")) -> list[PageTr]:
+    """H-109 Faz 2: kitap sonu soruların Türkçesi (soru kimliğiyle) ve tanıtım (`blurb`). Metin uygulamada
+    gösterilenin aynısıdır; boş/eksik alan atlanır. Kimlik soru kimliğidir (q1, q2): sıra değişse de kaymaz."""
+    out: list[PageTr] = []
+    if "questions" in parts:
+        comp = book.meta.get("comprehension")
+        qs = comp.get("questions") if isinstance(comp, dict) else None
+        for q in qs if isinstance(qs, list) else []:
+            if not isinstance(q, dict) or not isinstance(q.get("id"), str):
+                continue
+            t = _clean(q.get("promptTr"))
+            if t:
+                out.append(PageTr(q["id"], [t]))
+    if "blurb" in parts:
+        t = _clean(book.meta.get("blurbTr"))
+        if t:
+            out.append(PageTr(BLURB_ID, [t]))
+    return out
+
+
+def turkish_units(book: Book, parts=DEFAULT_PARTS) -> list[PageTr]:
+    """Seçilen bölümlerin Türkçe parçaları: sayfalar (H-105) + ek metinler (H-109)."""
+    bad = [p for p in parts if p not in PARTS]
+    if bad:
+        raise BookTrError(f"bilinmeyen bölüm: {', '.join(bad)} ({', '.join(PARTS)})")
+    out = page_turkish(book) if "pages" in parts else []
+    return out + extra_turkish(book, parts)
+
+
 def narration_tr(book: Book) -> dict:
     n = book.meta.get("narrationTr") or {}
     return n if isinstance(n, dict) else {}
@@ -116,14 +153,15 @@ def pron_for(text: str, prons: list[dict]) -> list[dict] | None:
     return out or None
 
 
-def segments(book: Book, voice_map: Path | None = None, pages: list[str] | None = None) -> list[tts_tr.Segment]:
+def segments(book: Book, voice_map: Path | None = None, pages: list[str] | None = None,
+             parts=DEFAULT_PARTS) -> list[tts_tr.Segment]:
     _, ins, _ = voice_for(book, voice_map)
     # H-118: söyleniş sözlüğü ve kurulan parçalar tts_tr ile aynı denetimden geçer (bozuk girdi ücretli
     # çağrıdan önce açık iletiyle durur; önceden sözlük dışı öğe sessizce atlanır, `term` metin değilse çökerdi).
     prons = tts_tr.check_pronunciations(narration_tr(book).get("pronunciations"), f"{book.id} narrationTr",
                                         BookTrError)
     out = []
-    for pt in page_turkish(book):
+    for pt in turkish_units(book, parts):
         if pages and pt.page not in pages:
             continue
         if len(pt.text) > tts_tr.MAX_CHARS:
@@ -140,9 +178,9 @@ def out_dir(book: Book) -> Path:
 
 
 def plan_book(book: Book, voice_map: Path | None = None, pages: list[str] | None = None,
-              force: bool = False) -> tts_tr.Plan:
+              force: bool = False, parts=DEFAULT_PARTS) -> tts_tr.Plan:
     voice, _, model = voice_for(book, voice_map)
-    return tts_tr.plan_segments(segments(book, voice_map, pages), out_dir(book), voice, model, force)
+    return tts_tr.plan_segments(segments(book, voice_map, pages, parts), out_dir(book), voice, model, force)
 
 
 # --- durum (lint ve dışa aktarma ortak) ------------------------------------------------------------
@@ -156,10 +194,11 @@ class PageAudio:
     quality_ok: bool | None = None
 
 
-def page_audio(book: Book, voice_map: Path | None = None) -> list[PageAudio]:
-    """Türkçesi olan her sayfa için ses durumu. `stale`: hizalamanın anahtarı güncel metinle uyuşmuyor."""
+def page_audio(book: Book, voice_map: Path | None = None, parts=DEFAULT_PARTS) -> list[PageAudio]:
+    """Türkçesi olan her sayfa (ya da `parts` ile ek metin) için ses durumu. `stale`: hizalamanın anahtarı
+    güncel metinle uyuşmuyor."""
     try:
-        plan = plan_book(book, voice_map)
+        plan = plan_book(book, voice_map, parts=parts)
     except (BookTrError, OSError, KeyError, ValueError):
         return []
     out = []
@@ -185,17 +224,22 @@ def page_audio(book: Book, voice_map: Path | None = None) -> list[PageAudio]:
 
 def check_book(book: Book, voice_map: Path | None = None) -> tuple[list[Issue], dict]:
     """book-lint: Türkçe sayfa sesi isteğe bağlıdır. Hiç üretilmemiş kitap sorun değildir; üretilmiş seste
-    metin değiştiyse (eskimiş) ya da hizalaması olan sesin dosyası yoksa uyarı. Sahipsiz dosya uyarı."""
+    metin değiştiyse (eskimiş) ya da hizalaması olan sesin dosyası yoksa uyarı. Sahipsiz dosya uyarı.
+    Ek metinler (kitap sonu sorular, tanıtım; H-109) aynı kurallarla `extra` istatistiğinde."""
     issues: list[Issue] = []
     try:
         voice_for(book, voice_map)
-        segments(book, voice_map)        # H-118: bozuk söyleniş sözlüğü / parça lint hatası olur
+        segments(book, voice_map, parts=PARTS)   # H-118: bozuk söyleniş sözlüğü / parça lint hatası olur
     except (BookTrError, OSError, KeyError, ValueError) as e:
         return [Issue("error", "book-tr-audio", str(e))], {}
     pa = page_audio(book, voice_map)
+    ex = page_audio(book, voice_map, parts=("questions", "blurb"))
     stats = {"pages": len(pa), "aligned": sum(1 for x in pa if x.state in ("ok", "no-audio")),
-             "audio": sum(1 for x in pa if x.state == "ok"), "stale": sum(1 for x in pa if x.state == "stale")}
-    for x in pa:
+             "audio": sum(1 for x in pa if x.state == "ok"), "stale": sum(1 for x in pa if x.state == "stale"),
+             "extra": {"segments": len(ex), "aligned": sum(1 for x in ex if x.state in ("ok", "no-audio")),
+                       "audio": sum(1 for x in ex if x.state == "ok"),
+                       "stale": sum(1 for x in ex if x.state == "stale")}}
+    for x in pa + ex:
         rel = x.align.relative_to(book.dir)
         if x.state == "stale":
             issues.append(Issue("warning", "book-tr-audio",
@@ -207,12 +251,13 @@ def check_book(book: Book, voice_map: Path | None = None) -> tuple[list[Issue], 
         if x.state in ("ok", "no-audio") and x.quality_ok is False:
             issues.append(Issue("warning", "book-tr-align", f"{x.page}: Türkçe ses hizalaması zayıf (Duyu); "
                                                             "kulakla dinlenmeli"))
-    known = {x.page for x in pa}
+    known = {x.page for x in pa + ex}
     d = out_dir(book)
     if d.exists():
         for f in sorted(d.glob("*.align.json")):
             pid = f.name.removesuffix(".align.json")
             if pid not in known:
                 issues.append(Issue("warning", "book-tr-audio",
-                                    f"{pid}: Türkçe sesi var ama sayfanın Türkçesi yok ({f.relative_to(book.dir)})"))
+                                    f"{pid}: Türkçe sesi var ama sayfanın, sorunun ya da tanıtımın Türkçesi yok "
+                                    f"({f.relative_to(book.dir)})"))
     return issues, stats

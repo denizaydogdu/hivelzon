@@ -12,6 +12,11 @@ Denetimler:
   kelimeler; söyle: metin). Yanlış cevap açıklaması yoksa uyarı.
 - "Hikâyede gör" bağları gerçek bölüm altyazı satırına ya da kitap cümlesine birebir çözülmeli.
 - Ses: hizalama metinle uyuşmalı (textSha256 ve karakterler; hata); ses ya da hizalama yoksa uyarı.
+- Yanlış cevap açıklamasının sesi (H-109 Faz 1, `<alıştırma>-fb`): eksikse ders başına tek uyarı; açıklama
+  sesten sonra değiştiyse (eskimiş) uyarı ve pakete girmez; açıklamada söyleniş sözlüğünde olmayan İngilizce
+  kelime ders başına tek uyarı (Alania Türkçe okur → `feedbackPronunciations`).
+- Çeviri sesi (H-109 Faz 3, `<örnek>-tl`: doğru örneklerin ve "Söyle"nin Türkçesi): açıklamayla aynı kurallar
+  (`translation-audio`, `translation-english` → `translationPronunciations`).
 - Öğretmen kontrolü (`teacherReview`) APPROVED ve sonrası için zorunlu.
 """
 
@@ -28,8 +33,8 @@ from .sentsplit import name_keys
 from .graph import Issue, schema_errors
 from .tts_tr import TrTtsError
 from .lesson import (BLANK, CARD_TYPES, LESSON_FILE, CARDS_FILE, PROMPTS_FILE, REQUIRED_CARDS, REPEATABLE_CARDS,
-                     REVIEW_REQUIRED, RIGHTS_FILE, ID_RE, Lesson, LessonError, english_in_turkish, known_lessons,
-                     text_sha256, tr_words)
+                     REVIEW_REQUIRED, RIGHTS_FILE, ID_RE, Lesson, LessonError, english_in_translation,
+                     english_in_turkish, known_lessons, text_sha256, tr_words)
 from .lint import MAX_SENTENCE_WORDS, coverage_issues
 from .storylinks import StoryIndex
 
@@ -307,6 +312,121 @@ def _check_audio(lesson: Lesson) -> tuple[list[Issue], dict]:
         else:
             issues.append(Issue("warning", "lesson-media", f"{sid}: ses dosyası bu ortamda yok (git dışı medya): "
                                                            f"{mp3.relative_to(lesson.dir)}"))
+    fi, st["feedback"] = _check_feedback_audio(lesson)
+    issues += fi
+    ti, st["translation"] = _check_translation_audio(lesson)
+    issues += ti
+    return issues, st
+
+
+def feedback_audio_state(lesson: Lesson, seg) -> str:
+    """Açıklama sesinin durumu: ok | no-audio (hizalama var, mp3 bu ortamda yok) | stale | none | bad."""
+    mp3, aj = lesson.tr_paths(seg.id)
+    if not aj.exists():
+        return "none"
+    from .tts_tr import seg_key
+    trv = lesson.tr_voice()
+    try:
+        doc = json.loads(aj.read_text(encoding="utf-8"))
+        # Anahtar = metin + ses + model + üslup + söyleniş (kitap ve reel ile aynı kural): sözlük ya da ses
+        # değişince eski ses pakete girmez.
+        if doc.get("textSha256") != text_sha256(seg.text) or doc.get("key") != seg_key(seg, trv["voice"],
+                                                                                       trv["model"]):
+            return "stale"
+        sentence_timings(Alignment.load(aj), [seg.text])
+    except AlignmentMismatch:
+        return "stale"
+    except (OSError, ValueError, KeyError):
+        return "bad"
+    return "ok" if mp3.exists() else "no-audio"
+
+
+def _check_feedback_audio(lesson: Lesson) -> tuple[list[Issue], dict]:
+    issues: list[Issue] = []
+    try:
+        segs = lesson.feedback_segments()
+    except TrTtsError as e:      # bozuk söyleniş sözlüğü → hata, lint çökmez
+        return [Issue("error", "feedback-audio", f"açıklama ses parçaları kurulamadı: {e}")], {}
+    states = {s.id: feedback_audio_state(lesson, s) for s in segs}
+    by = lambda *k: [sid for sid, v in states.items() if v in k]  # noqa: E731
+    st = {"segments": len(segs), "chars": sum(len(s.text) for s in segs), "aligned": len(by("ok", "no-audio")),
+          "audio": len(by("ok")), "stale": len(by("stale"))}
+    if by("none"):
+        n = by("none")
+        issues.append(Issue("warning", "feedback-audio",
+                            f"{len(n)}/{len(segs)} yanlış cevap açıklamasının Türkçe sesi yok "
+                            f"({', '.join(n[:6])}{' …' if len(n) > 6 else ''}); tts_lesson.py --part feedback"))
+    for sid in by("stale"):
+        issues.append(Issue("warning", "feedback-audio", f"{sid}: açıklama sesi eski metinden ya da ayardan; pakete girmez — "
+                                                         "tts_lesson.py --part feedback ile yeniden üret"))
+    for sid in by("bad"):
+        issues.append(Issue("warning", "feedback-audio", f"{sid}: açıklama hizalaması okunamadı"))
+    for sid in by("no-audio"):
+        issues.append(Issue("warning", "lesson-media", f"{sid}: ses dosyası bu ortamda yok (git dışı medya)"))
+    prons = lesson.feedback_pronunciations()
+    found: dict[str, list[str]] = {}
+    for c in lesson.cards:
+        for q in c.feedback:
+            for w in english_in_turkish(q.feedback, prons):
+                found.setdefault(w, []).append(q.id)
+    if found:
+        issues.append(Issue("warning", "feedback-english",
+                            f"açıklamalarda söyleniş sözlüğünde olmayan İngilizce: {', '.join(sorted(found))} "
+                            f"({len({q for v in found.values() for q in v})} açıklamada; Alania Türkçe okur → lesson.json "
+                            "`feedbackPronunciations`)"))
+    known = set(states)
+    d = lesson.tr_dir()
+    if d.exists():
+        for f in sorted(d.glob("*-fb.align.json")):
+            sid = f.name.removesuffix(".align.json")
+            if sid not in known:
+                issues.append(Issue("warning", "feedback-audio", f"{sid}: sesi var ama açıklaması yok "
+                                                                 f"({f.relative_to(lesson.dir)})"))
+    return issues, st
+
+
+def _check_translation_audio(lesson: Lesson) -> tuple[list[Issue], dict]:
+    """H-109 Faz 3: çeviri sesi (`<örnek>-tl`). Eksik ses ders başına tek uyarı; eskimiş ses uyarı ve pakete
+    girmez; sözlükte olmayan İngilizce kelime/ad ders başına tek uyarı; sahipsiz ses dosyası uyarı."""
+    issues: list[Issue] = []
+    try:
+        segs = lesson.translation_segments()
+    except TrTtsError as e:      # bozuk söyleniş sözlüğü → hata, lint çökmez
+        return [Issue("error", "translation-audio", f"çeviri ses parçaları kurulamadı: {e}")], {}
+    states = {s.id: feedback_audio_state(lesson, s) for s in segs}
+    by = lambda *k: [sid for sid, v in states.items() if v in k]  # noqa: E731
+    st = {"segments": len(segs), "chars": sum(len(s.text) for s in segs), "aligned": len(by("ok", "no-audio")),
+          "audio": len(by("ok")), "stale": len(by("stale"))}
+    if by("none"):
+        n = by("none")
+        issues.append(Issue("warning", "translation-audio",
+                            f"{len(n)}/{len(segs)} çevirinin Türkçe sesi yok "
+                            f"({', '.join(n[:6])}{' …' if len(n) > 6 else ''}); tts_lesson.py --part translation"))
+    for sid in by("stale"):
+        issues.append(Issue("warning", "translation-audio", f"{sid}: çeviri sesi eski metinden ya da ayardan; pakete "
+                                                            "girmez — tts_lesson.py --part translation ile yeniden üret"))
+    for sid in by("bad"):
+        issues.append(Issue("warning", "translation-audio", f"{sid}: çeviri hizalaması okunamadı"))
+    for sid in by("no-audio"):
+        issues.append(Issue("warning", "lesson-media", f"{sid}: ses dosyası bu ortamda yok (git dışı medya)"))
+    prons = lesson.translation_pronunciations()
+    found: dict[str, list[str]] = {}
+    for s in segs:
+        for w in english_in_translation(s.text, prons):
+            found.setdefault(w, []).append(s.id)
+    if found:
+        issues.append(Issue("warning", "translation-english",
+                            f"çevirilerde söyleniş sözlüğünde olmayan İngilizce kelime/ad: {', '.join(sorted(found))} "
+                            f"({len({q for v in found.values() for q in v})} çeviride; Alania Türkçe okur → lesson.json "
+                            "`translationPronunciations`)"))
+    known = set(states)
+    d = lesson.tr_dir()
+    if d.exists():
+        for f in sorted(d.glob("*-tl.align.json")):
+            sid = f.name.removesuffix(".align.json")
+            if sid not in known:
+                issues.append(Issue("warning", "translation-audio", f"{sid}: sesi var ama çevirisi yok "
+                                                                    f"({f.relative_to(lesson.dir)})"))
     return issues, st
 
 

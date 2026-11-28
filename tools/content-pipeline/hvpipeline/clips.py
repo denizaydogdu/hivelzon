@@ -331,6 +331,7 @@ def lint_clip_file(path: Path, doc: dict, root: Path, require_approved: bool = F
         issues += iss
         if rec is not None:
             recs.append(rec)
+    issues += _lint_tr_audio(path, doc, root)
     level = "error" if require_approved else "warning"
     status = doc.get("status", "DRAFT")
     if status not in APPROVED:
@@ -348,6 +349,22 @@ def lint_clip_file(path: Path, doc: dict, root: Path, require_approved: bool = F
               "grammar": sum(1 for r in recs if "grammar" in r),
               "episodes": sorted({r["episode"] for r in recs})}
     return issues, report, recs
+
+
+def _lint_tr_audio(path: Path, doc: dict, root: Path) -> list[Issue]:
+    """H-109 Faz 3b: klip alıştırmasının Türkçe sesi (`tts_season_tr.py --part clips`)."""
+    from .seasontr import Unit, check_unit, orphan_audio, safe_units
+    us = safe_units(root, "clips", path, doc)
+    if any(isinstance(u, Exception) for u in us):
+        return [Issue(lv, code, msg) for lv, code, msg in check_unit(root, us[0])[0]]
+    # Dosya tek birim gibi denetlenir: eksik ses dosya başına tek uyarı (kimlikler klip kimliğiyle benzersiz).
+    whole = Unit("clips", Path(path).name, Path(path), [it for u in us for it in u.items], us[0].prons if us else [])
+    issues = [Issue(lv, code, msg) for lv, code, msg in check_unit(root, whole)[0]]
+    if not ({p.name for p in clips_dir(root).glob("S*.json")} - {Path(path).name}):
+        # Tek klip dosyası: sesi olup metni olmayan parça sahipsizdir (birden çok dosyada her dosya kendini bilmez).
+        issues += [Issue("warning", "clip-tr-audio", f"{sid}: Türkçe alıştırma sesi var ama metni yok "
+                                                     "(klipler/audio/tr)") for sid in orphan_audio(root, "clips", us)]
+    return issues
 
 
 def lint_clips(icerik_root: Path, season: int | None = None,
@@ -371,12 +388,15 @@ def _media_key(rec: dict, package_dirs: dict[str, Path]) -> str:
 
 
 def export_clips(icerik_root: Path, season: int, out: Path, cut=None, measure=None, poster=None,
-                 probe=None) -> dict | None:
+                 probe=None, tr_audio=None) -> dict | None:
     """Sezon paketine `clips.json` ve `clips/` yazar; season.json için özet döndürür. Kaynak yoksa None.
 
     cut(parts, gain_db, out): [(kaynak, başlangıç, bitiş)] parçalarını tek klibe keser (media.cut_clip);
     measure(parts) → {"I", "TP", "LRA"}: parçaların birleşik ses ölçümü (media.parts_loudness);
     poster(src, out): ilk kare WebP; probe(path) → süre. `cut` verilmezse yalnızca JSON yazılır (testler).
+    tr_audio(src_mp3, out_m4a): H-109 Faz 3b — alıştırmanın güncel Türkçe sesi (`klipler/audio/tr/`) →
+    `clips/<klip>.tr-prompt.m4a` / `.tr-explain.m4a` ve `quiz.audioTr = {prompt|explain: {audio, textSha256}}`
+    (+ `duration`, probe verilirse); eskimiş ya da eksik ses girmez.
     Denetim hatası varsa ValueError (hatalı klip pakete girmez).
     """
     root = Path(icerik_root)
@@ -395,6 +415,12 @@ def export_clips(icerik_root: Path, season: int, out: Path, cut=None, measure=No
     media_dir.mkdir(parents=True, exist_ok=True)
     package_dirs = {cid: e.package for cid, e in episodes.items() if e.package}
     total = 0
+    tr_sources: dict[str, dict] = {}
+    if tr_audio is not None:
+        from .seasontr import clip_units, package_sources
+        for u in clip_units(src, doc):
+            tr_sources[u.uid] = package_sources(root, u)
+    tr_files: set[str] = set()
     for rec in recs:
         mp4 = media_dir / f"{rec['id']}.mp4"
         webp = media_dir / f"{rec['id']}.webp"
@@ -426,14 +452,33 @@ def export_clips(icerik_root: Path, season: int, out: Path, cut=None, measure=No
         if mp4.exists():
             rec["bytes"] = mp4.stat().st_size
             total += rec["bytes"] + (webp.stat().st_size if webp.exists() else 0)
+        quiz = rec.get("quiz")
+        if quiz is not None and tr_sources.get(rec["id"]):
+            from .seasontr import clip_package_name, quiz_texts, text_sha256
+            texts = quiz_texts(quiz)
+            at = {}
+            for key, (mp3, _, text) in tr_sources[rec["id"]].items():
+                if texts.get(key) != text:
+                    continue
+                name = clip_package_name(rec["id"], key)
+                tmp = media_dir / f".tmp-{name}"
+                tmp.unlink(missing_ok=True)
+                tr_audio(mp3, tmp)
+                tmp.replace(media_dir / name)
+                tr_files.add(name)
+                at[key] = {"audio": f"{CLIPS_MEDIA_DIR}/{name}", "textSha256": text_sha256(text),
+                           **({"duration": round(probe(media_dir / name), 3)} if probe is not None else {})}
+                total += (media_dir / name).stat().st_size
+            if at:
+                quiz["audioTr"] = at
         for p in rec["parts"]:
             p.pop("video", None)
     # Kaynakta artık olmayan kliplerin dosyaları silinir.
     keep = {r["id"] for r in recs}
     for f in media_dir.iterdir():
         stem = f.name.lstrip(".").split(".")[0]
-        if stem not in keep:
-            f.unlink()
+        if stem not in keep or (".tr-" in f.name and f.name not in tr_files):
+            f.unlink()    # eskimiş ya da kaldırılan Türkçe ses de kalmasın (H-109 Faz 3b)
     pkg = {"schemaVersion": 1, "season": season, "level": doc.get("level"), "status": doc.get("status", "DRAFT"),
            "aiLabel": "Yapay zekâ ile üretilmiştir", "clips": recs}
     tmp = out / f".{CLIPS_PACKAGE_FILE}.tmp"

@@ -26,6 +26,7 @@ class SubtitleCue {
     required this.words,
     this.tr,
     this.chunks = const [],
+    this.trAudio,
   });
 
   final String id;
@@ -38,6 +39,9 @@ class SubtitleCue {
 
   /// Kalıp ifadeler (kelime aralığı, H-046).
   final List<PhraseChunk> chunks;
+
+  /// Türkçesinin sesi (H-109 Faz 3), paket içi yol; yoksa null.
+  final String? trAudio;
 
   bool covers(double t) => t >= start && t < end;
 
@@ -55,6 +59,7 @@ class SubtitleCue {
         MeaningWord(w.w, gloss: w.gloss, start: w.start, end: w.end),
     ],
     chunks: chunks,
+    trAudio: hasTurkish ? trAudio : null,
   );
 }
 
@@ -91,6 +96,7 @@ class SubtitleTrack {
               ),
           ],
           chunks: PhraseChunk.listFromJson(m['chunks']),
+          trAudio: _path(m['trAudio']),
         ),
       );
     }
@@ -172,3 +178,9 @@ Iterable<List<String>> _phraseVariants(List<String> phrases) sync* {
 
 String _norm(String w) =>
     w.toLowerCase().replaceAll(RegExp(r"[^a-z0-9'’]"), '').replaceAll('’', "'");
+
+/// Paket içi göreli yol (boş, mutlak ya da `..` içeren değer yok sayılır).
+String? _path(Object? v) =>
+    v is String && v.isNotEmpty && !v.startsWith('/') && !v.contains('..')
+    ? v
+    : null;

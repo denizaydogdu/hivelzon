@@ -207,8 +207,11 @@ def test_fixture_alignments_match_text():
 def test_fixture_lesson_lints_clean():
     rep = lint_lesson(FX, **ROOTS)
     assert rep.errors == [], [str(i) for i in rep.errors]
-    # yalnız git dışı ses uyarıları
-    assert set(codes(rep, "warning")) == {"lesson-media"}, [str(i) for i in rep.warnings]
+    # yalnız git dışı ses uyarıları ve henüz üretilmemiş açıklama ve çeviri sesi (H-109, ders başına tek uyarı)
+    assert set(codes(rep, "warning")) == {"lesson-media", "feedback-audio", "translation-audio"}, \
+        [str(i) for i in rep.warnings]
+    assert len([i for i in rep.warnings if i.code == "feedback-audio"]) == 1
+    assert len([i for i in rep.warnings if i.code == "translation-audio"]) == 1
     assert rep.coverage["pct"] >= 98.0
     au = rep.stats["audio"]
     assert (au["trSegments"], au["trAligned"], au["enSegments"], au["enAligned"]) == (5, 5, 7, 7)
@@ -432,9 +435,15 @@ def test_tts_lesson_execute_writes_audio_manifest_and_is_idempotent(lesson_dir, 
         assert mp3.read_bytes() == b"ID3-en:" + s.text.encode()
     man = json.loads((lesson_dir / "audio" / "lesson-audio.json").read_text(encoding="utf-8"))
     assert schema_errors(man, "lesson-audio.schema.json") == []
-    assert all(seg["present"] for c in man["cards"] for seg in c["segments"])
+    # Yanlış cevap açıklamaları ve çeviriler (H-109) yalnız `--part feedback|translation` ile üretilir;
+    # varsayılan çalıştırmada eksik.
+    assert all(seg["present"] for c in man["cards"] for seg in c["segments"]
+               if seg["role"] not in ("feedback", "translation"))
+    assert [seg["present"] for c in man["cards"] for seg in c["segments"] if seg["role"] == "feedback"] == \
+        [False] * sum(len(c.feedback) for c in Lesson.load(lesson_dir).cards)
     c01 = man["cards"][0]["segments"]
-    assert [(x["id"], x["lang"], x["role"]) for x in c01] == [("c01-tr", "tr", "narration"), ("c01-ex1", "en", "example")]
+    assert [(x["id"], x["lang"], x["role"]) for x in c01] == [("c01-tr", "tr", "narration"), ("c01-ex1", "en", "example"),
+                                                              ("c01-ex1-tl", "tr", "translation")]
     assert man["cards"][4]["segments"][0]["role"] == "say"
     prompts = (lesson_dir / "PROMPTS.md").read_text(encoding="utf-8")
     assert tr.PROMPTS_HEADING in prompts and la.EN_PROMPTS_HEADING in prompts
@@ -445,7 +454,8 @@ def test_tts_lesson_execute_writes_audio_manifest_and_is_idempotent(lesson_dir, 
     assert led_en["characters"] == sum(len(t) for t in unique_en) and led_en["calls"] == 5
     # lint: hizalamalar metinle uyuşuyor, ses var
     rep = lint_lesson(lesson_dir, **ROOTS)
-    assert rep.errors == [] and rep.warnings == [], [str(i) for i in rep.issues]
+    assert rep.errors == [] and [i.code for i in rep.warnings] == ["feedback-audio", "translation-audio"], \
+        [str(i) for i in rep.issues]
     # ikinci çalışma: hiç çağrı yok, kayıt değişmez
     ft2, fe2 = FakeTr(), FakeEn()
     assert run_tts(lesson_dir, tmp_path, "--execute", "--tr-cap", "5000", "--en-cap", "5000",
@@ -682,3 +692,140 @@ def test_export_reports_bad_pronunciations_without_crashing(lesson_dir):
     r = export_lesson(lesson_dir, media=FakeMedia(), **ROOTS)
     assert any("Türkçe ses parçaları kurulamadı" in e for e in r.errors)
     assert "c02-tr" in r.manifest["textSha256"]
+
+
+# --- H-109 Faz 1: yanlış cevap açıklamalarının Türkçe sesi ------------------------------------------
+
+FB = {"c05-q1-fb": "Tek kişi var; fiile ek gelir.", "c05-q2-fb": "Tek kişi var; ek unutulmasın.",
+      "c05-q3-fb": "Önce kişi, sonra fiil gelir."}
+
+
+def test_feedback_segments_have_stable_ids_and_own_dictionary(lesson_dir):
+    lesson = Lesson.load(lesson_dir)
+    segs = lesson.feedback_segments()
+    assert {s.id: s.text for s in segs} == FB
+    assert all(s.instructions == lesson.tr_voice().get("instructions") for s in segs)
+    narr_keys = {s.id: tr.seg_key(s) for s in lesson.tr_segments()}
+    # Açıklama sözlüğü yalnız açıklamaya gider: anlatımın (ödenmiş) anahtarı değişmez. Eşleşme kelime
+    # sınırında ve büyük/küçük harfe duyarlı ("ek" → "fiile ek", ama "eklenir"/"Ek" değil).
+    lj = json.loads((lesson_dir / "lesson.json").read_text(encoding="utf-8"))
+    lj["feedbackPronunciations"] = [{"term": "ek", "say_as": "eek"}, {"term": "Önce", "say_as": "Önce"}]
+    (lesson_dir / "lesson.json").write_text(json.dumps(lj, ensure_ascii=False), encoding="utf-8")
+    assert schema_errors(lj, "lesson.schema.json") == []
+    lesson = Lesson.load(lesson_dir)
+    assert {s.id: tr.seg_key(s) for s in lesson.tr_segments()} == narr_keys
+    by = {s.id: s for s in lesson.feedback_segments()}
+    assert by["c05-q1-fb"].pronunciations == [{"term": "ek", "say_as": "eek"}]
+    assert by["c05-q3-fb"].pronunciations == [{"term": "Önce", "say_as": "Önce"}]
+    # Bir alıştırma eklense de başka karttaki kimlikler kaymaz; aynı karttaki önceki kimlikler de.
+    _edit(lesson_dir, "? say | She goes", "? fill | It ___ well. (work) | works\n! Ek gelir.\n? say | She goes")
+    ids = [s.id for s in Lesson.load(lesson_dir).feedback_segments()]
+    assert ids == ["c05-q1-fb", "c05-q2-fb", "c05-q3-fb", "c05-q4-fb"]
+
+
+def test_feedback_bad_dictionary_is_lint_error(lesson_dir):
+    lj = json.loads((lesson_dir / "lesson.json").read_text(encoding="utf-8"))
+    lj["feedbackPronunciations"] = [{"term": "ek"}]
+    (lesson_dir / "lesson.json").write_text(json.dumps(lj, ensure_ascii=False), encoding="utf-8")
+    rep = lint_lesson(lesson_dir, **ROOTS)
+    assert "feedback-audio" in codes(rep)
+
+
+def test_feedback_english_words_are_one_warning_per_lesson(lesson_dir):
+    _edit(lesson_dir, "! Tek kişi var; fiile ek gelir.", "! Tek kişi: goes gelir.")
+    _edit(lesson_dir, "! Tek kişi var; ek unutulmasın.", "! Tek kişi: plays gelir.")
+    rep = lint_lesson(lesson_dir, **ROOTS)
+    w = [i for i in rep.warnings if i.code == "feedback-english"]
+    assert len(w) == 1 and "goes, plays" in w[0].message and "2 açıklamada" in w[0].message
+    lj = json.loads((lesson_dir / "lesson.json").read_text(encoding="utf-8"))
+    lj["feedbackPronunciations"] = [{"term": "goes", "say_as": "gooz"}, {"term": "plays", "say_as": "pleyz"}]
+    (lesson_dir / "lesson.json").write_text(json.dumps(lj, ensure_ascii=False), encoding="utf-8")
+    assert not [i for i in lint_lesson(lesson_dir, **ROOTS).warnings if i.code == "feedback-english"]
+
+
+def test_tts_lesson_feedback_part_dry_run_and_execute(lesson_dir, tmp_path, capsys, monkeypatch):
+    monkeypatch.delenv(tr.ENV_CAP, raising=False)
+    # varsayılan bölümler açıklamayı planlamaz (önceki davranış)
+    assert not [j for j in la.plan_lesson(Lesson.load(lesson_dir)).tr.jobs if j.seg.id.endswith("-fb")]
+    ft = FakeTr()
+    assert run_tts(lesson_dir, tmp_path, "--part", "feedback", tr_client=ft) == 0
+    out = capsys.readouterr().out
+    n = sum(len(t) for t in FB.values())
+    assert ft.speech_calls == [] and f"Türkçe (Alania): {n} karakter" in out
+    assert "Bölümler: feedback; 1 ders, Türkçe 3 parça" in out and "İngilizce (ElevenLabs): 0 karakter" in out
+    assert run_tts(lesson_dir, tmp_path, "--part", "feedback", "--execute", tr_client=ft) == 1   # tavan yok
+    assert ft.speech_calls == []
+    assert run_tts(lesson_dir, tmp_path, "--part", "feedback", "--execute", "--tr-cap", "5000", tr_client=ft) == 0
+    assert [p["input"] for p in ft.speech_calls] == list(FB.values())
+    for sid, text in FB.items():
+        mp3, aj = Lesson.load(lesson_dir).tr_paths(sid)
+        assert mp3.exists() and json.loads(aj.read_text(encoding="utf-8"))["textSha256"] == text_sha256(text)
+    assert "| c05-q1-fb | alania-v2 | alania2-f1 |" in (lesson_dir / "PROMPTS.md").read_text(encoding="utf-8")
+    led = json.loads((tmp_path / "tr.json").read_text(encoding="utf-8"))[tr.month_key()]
+    assert led["characters"] == n
+    man = json.loads((lesson_dir / "audio" / "lesson-audio.json").read_text(encoding="utf-8"))
+    assert schema_errors(man, "lesson-audio.schema.json") == []
+    fb = [s for c in man["cards"] for s in c["segments"] if s["role"] == "feedback"]
+    assert [s["id"] for s in fb] == list(FB) and all(s["present"] and s["audio"].startswith("tr/") for s in fb)
+    rep = lint_lesson(lesson_dir, **ROOTS)
+    assert not [i for i in rep.issues if i.code.startswith("feedback")], [str(i) for i in rep.issues]
+    assert rep.stats["audio"]["feedback"] == {"segments": 3, "chars": n, "aligned": 3, "audio": 3, "stale": 0}
+    # ikinci çalışma: çağrı yok
+    ft2 = FakeTr()
+    assert run_tts(lesson_dir, tmp_path, "--part", "feedback", "--execute", "--tr-cap", "5000", tr_client=ft2) == 0
+    assert ft2.speech_calls == []
+
+
+def test_export_packages_feedback_audio_and_skips_stale(lesson_dir, tmp_path):
+    add_fake_mp3s(lesson_dir)
+    assert run_tts(lesson_dir, tmp_path, "--part", "feedback", "--execute", "--tr-cap", "5000",
+                   tr_client=FakeTr()) == 0
+    r = export_lesson(lesson_dir, media=FakeMedia(), **ROOTS)
+    assert r.errors == [] and r.manifest["feedbackMissing"] == []
+    cards = json.loads((lesson_dir / "_build" / "package" / "cards.json").read_text(encoding="utf-8"))
+    assert schema_errors(cards, "cards.schema.json") == []
+    pr = next(c for c in cards["cards"] if c["type"] == "practice")["practice"]
+    assert [(p.get("feedbackAudio"), p.get("feedbackDuration")) for p in pr] == [
+        ("audio/c05-q1-fb.m4a", 9.0), ("audio/c05-q2-fb.m4a", 9.0), ("audio/c05-q3-fb.m4a", 9.0), (None, None)]
+    assert r.manifest["textSha256"]["c05-q2-fb"] == text_sha256(FB["c05-q2-fb"])
+    assert "audio/c05-q3-fb.m4a" in {f["path"] for f in r.manifest["files"]}
+    # açıklama sesten sonra değişti: o ses pakete girmez, paket yine kurulur, lint uyarır
+    _edit(lesson_dir, "! Önce kişi, sonra fiil gelir.", "! Önce kişi gelir, sonra fiil.")
+    r = export_lesson(lesson_dir, media=FakeMedia(), **ROOTS)
+    assert r.errors == [] and [x["segment"] for x in r.manifest["feedbackMissing"]] == ["c05-q3-fb"]
+    pr = next(c for c in r.cards["cards"] if c["type"] == "practice")["practice"]
+    assert "feedbackAudio" not in pr[2] and pr[2]["feedbackTr"] == "Önce kişi gelir, sonra fiil."
+    assert "c05-q3-fb" not in r.manifest["textSha256"]
+    w = [str(i) for i in lint_lesson(lesson_dir, **ROOTS).warnings if i.code == "feedback-audio"]
+    assert len(w) == 1 and "c05-q3-fb" in w[0] and "eski metinden" in w[0]
+
+
+def test_feedback_execute_refuses_unresolved_english_and_dictionary_change_makes_audio_stale(lesson_dir, tmp_path):
+    _edit(lesson_dir, "! Tek kişi var; fiile ek gelir.", "! Tek kişi: goes gelir.")
+    ft = FakeTr()
+    assert run_tts(lesson_dir, tmp_path, "--part", "feedback", "--execute", "--tr-cap", "5000", tr_client=ft) == 1
+    assert ft.speech_calls == []
+    assert run_tts(lesson_dir, tmp_path, "--part", "feedback", "--execute", "--tr-cap", "5000",
+                   "--allow-english", tr_client=ft) == 0
+    assert len(ft.speech_calls) == 3
+    add_fake_mp3s(lesson_dir)
+    assert not [i for i in lint_lesson(lesson_dir, **ROOTS).warnings if i.code == "feedback-audio"]
+    # Sözlük sonradan eklenince metin aynı ama anahtar değişir: ses eskimiş sayılır, pakete girmez.
+    lj = json.loads((lesson_dir / "lesson.json").read_text(encoding="utf-8"))
+    lj["feedbackPronunciations"] = [{"term": "goes", "say_as": "gooz"}]
+    (lesson_dir / "lesson.json").write_text(json.dumps(lj, ensure_ascii=False), encoding="utf-8")
+    w = [str(i) for i in lint_lesson(lesson_dir, **ROOTS).warnings if i.code == "feedback-audio"]
+    assert len(w) == 1 and "c05-q1-fb" in w[0]
+    r = export_lesson(lesson_dir, media=FakeMedia(), **ROOTS)
+    assert [x["segment"] for x in r.manifest["feedbackMissing"]] == ["c05-q1-fb"]
+    ft2 = FakeTr()
+    assert run_tts(lesson_dir, tmp_path, "--part", "feedback", "--execute", "--tr-cap", "5000", tr_client=ft2) == 0
+    assert [p["input"] for p in ft2.speech_calls] == ["Tek kişi: goes gelir."]
+
+
+def test_bad_feedback_dictionary_does_not_break_default_manifest(lesson_dir):
+    lj = json.loads((lesson_dir / "lesson.json").read_text(encoding="utf-8"))
+    lj["feedbackPronunciations"] = [{"term": "ek"}]
+    (lesson_dir / "lesson.json").write_text(json.dumps(lj, ensure_ascii=False), encoding="utf-8")
+    man = la.audio_manifest(Lesson.load(lesson_dir))
+    assert not [s for c in man["cards"] for s in c["segments"] if s["role"] == "feedback"]

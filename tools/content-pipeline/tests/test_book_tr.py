@@ -12,7 +12,7 @@ import export_book
 import tts_book_tr
 from hvpipeline import booktr
 from hvpipeline import tts_tr as tr
-from hvpipeline.book import Book
+from hvpipeline.book import Book, text_sha256
 from hvpipeline.booklint import lint_book
 from hvpipeline.bookexport import export_book as export
 from hvpipeline.graph import schema_errors
@@ -154,13 +154,15 @@ def produce(book_dir: Path, tmp_path: Path) -> None:
 def test_lint_without_turkish_audio_is_silent(book_dir):
     rep = lint_book(book_dir)
     assert not [i for i in rep.issues if i.code.startswith("book-tr")]
-    assert rep.stats["trAudio"] == {"pages": 3, "aligned": 0, "audio": 0, "stale": 0}
+    assert rep.stats["trAudio"] == {"pages": 3, "aligned": 0, "audio": 0, "stale": 0,
+                                    "extra": {"segments": 3, "aligned": 0, "audio": 0, "stale": 0}}
 
 
 def test_lint_reports_stale_and_missing_turkish_audio_as_warnings(book_dir, tmp_path, capsys):
     produce(book_dir, tmp_path)
     rep = lint_book(book_dir)
-    assert rep.stats["trAudio"] == {"pages": 3, "aligned": 3, "audio": 3, "stale": 0}
+    assert rep.stats["trAudio"] == {"pages": 3, "aligned": 3, "audio": 3, "stale": 0,
+                                    "extra": {"segments": 3, "aligned": 0, "audio": 0, "stale": 0}}
     assert not [i for i in rep.issues if i.code.startswith("book-tr")]
     edit_tr(book_dir, "It is a little cat!", "Minik bir kedi!")
     (book_dir / "audio" / "tr" / "p01.mp3").unlink()
@@ -246,3 +248,63 @@ def test_duyu_gaps_include_head_and_tail():
     assert tr.duyu_gaps(w, duration=20.0) == [(1.0, 5.0), (5.4, 20.0)]
     assert tr.duyu_gaps([{"word": "x", "start": 4.0, "end": 4.3}], duration=5.0) == [(0.0, 4.0)]
     assert tr.duyu_gaps([], duration=9.0) == []
+
+
+# --- H-109 Faz 2: kitap sonu soruların Türkçesi ve tanıtım -----------------------------------------
+
+BLURB = "Yalnızca testler için: Ece'nin açamadığı küçük kırmızı bir kutu."
+
+
+def test_extra_units_use_question_ids_and_blurb(book_dir):
+    b = Book.load(book_dir)
+    assert [(u.page, u.text) for u in booktr.extra_turkish(b)] == [
+        ("q1", "Kutu ne renk?"), ("q2", "Kutuda ne var?"), ("blurb", BLURB)]
+    assert [s.id for s in booktr.segments(b)] == ["p01", "p02", "p03"]           # varsayılan yalnız sayfalar
+    assert [s.id for s in booktr.segments(b, parts=("questions",))] == ["q1", "q2"]
+    with pytest.raises(booktr.BookTrError):
+        booktr.segments(b, parts=("yok",))
+    # sorunun Türkçesi yoksa o parça yok; sıra değişse de kimlik soru kimliğidir
+    bj = json.loads((book_dir / "book.json").read_text(encoding="utf-8"))
+    q1, q2 = bj["comprehension"]["questions"]
+    q1.pop("promptTr")
+    bj["comprehension"]["questions"] = [q2, q1]
+    (book_dir / "book.json").write_text(json.dumps(bj, ensure_ascii=False), encoding="utf-8")
+    assert [u.page for u in booktr.extra_turkish(Book.load(book_dir))] == ["q2", "blurb"]
+
+
+def test_extra_parts_dry_run_execute_lint_and_export(book_dir, tmp_path, capsys, monkeypatch):
+    monkeypatch.delenv("HIVELZON_TR_TTS_MONTHLY_CHAR_CAP", raising=False)
+    c = FakeClient()
+    assert run(book_dir, tmp_path, c, "--part", "questions", "--part", "blurb") == 0
+    out = capsys.readouterr().out
+    n = len("Kutu ne renk?") + len("Kutuda ne var?") + len(BLURB)
+    assert c.speech_calls == [] and f"Toplam Alania: {n} karakter" in out and "3 parça" in out
+    assert run(book_dir, tmp_path, c, "--part", "questions", "--part", "blurb", "--execute",
+               "--monthly-char-cap", "100000") == 0
+    assert [x["input"] for x in c.speech_calls] == ["Kutu ne renk?", "Kutuda ne var?", BLURB]
+    out_dir = book_dir / "audio" / "tr"
+    assert sorted(p.name for p in out_dir.glob("*.mp3")) == ["blurb.mp3", "q1.mp3", "q2.mp3"]
+    assert "| q1 | alania-v2 | alania2-f1 |" in (book_dir / "PROMPTS.md").read_text(encoding="utf-8")
+    # lint: sahipsiz dosya sayılmaz; istatistik ayrı
+    rep = lint_book(book_dir)
+    assert not [i for i in rep.issues if i.code.startswith("book-tr")], [str(i) for i in rep.issues]
+    assert rep.stats["trAudio"]["extra"] == {"segments": 3, "aligned": 3, "audio": 3, "stale": 0}
+    # paket: book.json → trAudio, şemaya uygun; manifestte metin sha256
+    set_pacing(book_dir, {"mode": "off"})
+    add_fake_media(book_dir)
+    r = export(book_dir, media=FakeMedia())
+    assert r.errors == [] and r.tr_missing == []
+    assert schema_errors(r.book, "book.schema.json") == []
+    assert r.book["trAudio"] == {"questions": {"q1": {"audio": "audio/tr/q1.m4a", "duration": 12.5},
+                                               "q2": {"audio": "audio/tr/q2.m4a", "duration": 12.5}},
+                                 "blurb": {"audio": "audio/tr/blurb.m4a", "duration": 12.5}}
+    assert r.manifest["trTextSha256"]["blurb"] == text_sha256(BLURB)
+    assert set(r.manifest["trTextSha256"]) == {"q1", "q2", "blurb"}     # sayfa sesi bu testte üretilmedi
+    assert r.manifest["trExtraAudio"] == {"segments": 3, "packaged": 3, "aligned": 3, "stale": 0}
+    # tanıtım değişti: eskimiş → pakete girmez, uyarı
+    bj = json.loads((book_dir / "book.json").read_text(encoding="utf-8"))
+    bj["blurbTr"] = BLURB + " Yeni."
+    (book_dir / "book.json").write_text(json.dumps(bj, ensure_ascii=False), encoding="utf-8")
+    r = export(book_dir, media=FakeMedia())
+    assert "blurb" not in r.book["trAudio"] and ("blurb", "stale") in {(x["page"], x["reason"]) for x in r.tr_missing}
+    assert any("blurb" in str(i) and "eski metinden" in str(i) for i in lint_book(book_dir).warnings)

@@ -13,11 +13,17 @@ class ComprehensionQuestion {
     required this.options,
     required this.answer,
     this.promptTr,
+    this.promptTrAudio,
     this.pageId,
   });
 
   /// Geçersiz soru (seçenek sayısı ya da cevap sırası bozuk) null döner.
-  static ComprehensionQuestion? fromJson(Object? json) {
+  /// [trAudio]: paket `book.json → trAudio.questions` (soru kimliği → ses
+  /// yolu; H-109).
+  static ComprehensionQuestion? fromJson(
+    Object? json, {
+    Map<String, String> trAudio = const {},
+  }) {
     if (json is! Map) return null;
     final options = [
       for (final o in (json['options'] as List? ?? const []))
@@ -28,10 +34,13 @@ class ComprehensionQuestion {
     if (prompt is! String || prompt.trim().isEmpty) return null;
     if (options.length < 2 || answer is! int) return null;
     if (answer < 0 || answer >= options.length) return null;
+    final id = (json['id'] as String?) ?? '';
+    final promptTr = json['promptTr'] as String?;
     return ComprehensionQuestion(
-      id: (json['id'] as String?) ?? '',
+      id: id,
       prompt: prompt,
-      promptTr: json['promptTr'] as String?,
+      promptTr: promptTr,
+      promptTrAudio: promptTr == null ? null : trAudio[id],
       options: options,
       answer: answer,
       pageId: json['page'] as String?,
@@ -41,6 +50,10 @@ class ComprehensionQuestion {
   final String id;
   final String prompt;
   final String? promptTr;
+
+  /// Türkçesinin Hi sesiyle okunuşu (H-109; kitap paketi içi yol, ör.
+  /// `audio/tr/q1.m4a`); yoksa "dinle" düğmesi görünmez.
+  final String? promptTrAudio;
   final List<String> options;
 
   /// Doğru seçeneğin sırası (0'dan).
@@ -60,11 +73,14 @@ class BookComprehension {
 
   /// İçerik yoksa ya da kullanılamazsa null (okuyucu doğrudan kitap sonuna
   /// geçer).
-  static BookComprehension? fromJson(Object? json) {
+  static BookComprehension? fromJson(
+    Object? json, {
+    Map<String, String> trAudio = const {},
+  }) {
     if (json is! Map) return null;
     final questions = [
       for (final q in (json['questions'] as List? ?? const []))
-        ?ComprehensionQuestion.fromJson(q),
+        ?ComprehensionQuestion.fromJson(q, trAudio: trAudio),
     ];
     final retell = json['retell'];
     final modelEn = retell is Map ? retell['modelEn'] : null;

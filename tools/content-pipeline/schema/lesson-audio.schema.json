@@ -43,7 +43,7 @@
               "properties": {
                 "id": { "type": "string", "minLength": 1 },
                 "lang": { "enum": ["tr", "en"] },
-                "role": { "enum": ["narration", "example", "say"] },
+                "role": { "enum": ["narration", "example", "say", "feedback", "translation"] },
                 "text": { "type": "string", "minLength": 1 },
                 "textSha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
                 "chars": { "type": "integer", "minimum": 0 },

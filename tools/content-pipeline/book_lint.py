@@ -99,6 +99,10 @@ def main(argv: list[str] | None = None) -> int:
         if ta and (ta.get("aligned") or ta.get("stale")):
             print(f"   Türkçe sayfa sesi: {ta['aligned']}/{ta['pages']} sayfa hizalı, {ta['audio']} ses dosyası"
                   + (f", {ta['stale']} eskimiş" if ta.get("stale") else ""))
+        tx = (ta or {}).get("extra") or {}
+        if tx.get("aligned") or tx.get("stale"):
+            print(f"   Türkçe soru/tanıtım sesi (H-109): {tx['aligned']}/{tx['segments']} parça hizalı, "
+                  f"{tx['audio']} ses dosyası" + (f", {tx['stale']} eskimiş" if tx.get("stale") else ""))
         for i in r.errors + r.warnings:
             print(f"   - {i}")
     warns = sum(len(r.warnings) for r in reports)

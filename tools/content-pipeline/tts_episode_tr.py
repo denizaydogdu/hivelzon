@@ -16,6 +16,12 @@ Kullanım:
     HIVELZON_TR_TTS_MONTHLY_CHAR_CAP=500000 \\
       $P tools/content-pipeline/tts_episode_tr.py icerik/A1-00[1-4]-* --hi --execute
 
+    # H-109 Faz 3: anlam panelindeki çevirilerin Türkçesi (ceviri.tr.json; yalnız Alania + Duyu, ses Hi):
+    $P tools/content-pipeline/tts_episode_tr.py icerik/A1-0* --part translation --offline
+    HIVELZON_TR_TTS_MONTHLY_CHAR_CAP=… $P tools/content-pipeline/tts_episode_tr.py icerik/A1-0* --part translation --execute
+    # Kurulmuş bölüm paketine çeviri seslerini ekle (ücretsiz, yerel ffmpeg; video yeniden kurulmaz):
+    $P tools/content-pipeline/tts_episode_tr.py icerik/A1-0* --part translation --package
+
     # Karışık dil karşılaştırması (a: tümü Alania + söyleniş sözlüğü, b: Alania + Sarah):
     $P tools/content-pipeline/tts_episode_tr.py icerik/A1-002-* --only b2_17_hi --compare-dir .yerel/h083 --execute
 
@@ -40,6 +46,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from hvpipeline import tts, tts_tr as tr  # noqa: E402
 from hvpipeline import tts_episode_tr as ep  # noqa: E402
+from hvpipeline import episodetl  # noqa: E402
+from hvpipeline.media import MediaError  # noqa: E402
 
 ICERIK = Path(__file__).resolve().parents[2] / "icerik"
 
@@ -64,11 +72,30 @@ def main(argv: list[str] | None = None, tr_client=None, en_client=None, finalize
     ap.add_argument("--strict", action="store_true", help="hizalama uyarısında çıkış kodu 3")
     ap.add_argument("--offline", action="store_true",
                     help=f"ücret durumunu PatientDesk'ten okuma (ya da {tr.ENV_OFFLINE}=1); ücretli varsayılır")
+    ap.add_argument("--part", choices=["speech", "translation"], default="speech",
+                    help="speech (varsayılan: kurgu ve Hi'nin Türkçe konuşmaları, önceki davranış) ya da translation "
+                         "(H-109 Faz 3: ceviri.tr.json cümlelerinin sesi; ayrı plan, yalnız bölüm klasörleri)")
+    ap.add_argument("--package", action="store_true",
+                    help="--part translation ile: kurulmuş bölüm paketine çeviri seslerini ekle (çağrı yok)")
+    ap.add_argument("--tr-ledger", help=f"--part translation ile: Türkçe defter (varsayılan {tr.ENV_LEDGER} ya da "
+                                        f"{tr.DEFAULT_LEDGER})")
+    ap.add_argument("--allow-english", action="store_true",
+                    help="--part translation ile: sözlükte olmayan İngilizce kelime/ad olsa da üret (varsayılan: "
+                         "--execute reddeder; sözlük sonra eklenirse ses yeniden ücretlenir)")
     ap.add_argument("--tr-only", action="store_true",
                     help="ElevenLabs çağrılmaz (H-085, İngilizce kota bitince): yalnız Türkçe sesler kurulur; "
                          "b kipindeki satırların Türkçe parçaları önbelleğe (_raw/) alınır, satır İngilizce "
                          "parçası gelince tamamlanır")
     a = ap.parse_args(argv)
+    if a.part == "translation":
+        if a.hi or a.talk or a.compare_dir or a.tr_only or a.en_cap is not None:
+            ap.error("--part translation yalnız bölüm klasörleriyle çalışır (--hi, --talk, --compare-dir, --tr-only, "
+                     "--en-cap yok)")
+        if not a.episodes:
+            ap.error("--part translation için bölüm klasörü gerekli")
+        return translation_main(a, tr_client, finalize, sleep, billing)
+    if a.package or a.allow_english or a.tr_ledger:
+        ap.error("--package, --allow-english ve --tr-ledger yalnız --part translation ile")
     if not a.episodes and not a.hi and not a.talk:
         ap.error("bölüm klasörü, --hi ya da --talk gerekli")
 
@@ -189,6 +216,113 @@ def main(argv: list[str] | None = None, tr_client=None, en_client=None, finalize
     if warns and a.strict:
         return 3
     return 0
+
+
+def translation_main(a, client=None, finalize=None, sleep=None, billing=None, media=None) -> int:
+    """H-109 Faz 3: bölüm çevirilerinin Türkçe sesi (hvpipeline/episodetl.py)."""
+    dirs = sorted(Path(d) for d in a.episodes
+                  if (Path(d) / "content.json").is_file() and not Path(d).name.startswith("_"))
+    if not dirs:
+        print("Bölüm klasörü bulunamadı.", file=sys.stderr)
+        return 2
+    vm = Path(a.root) / ep.VOICE_MAP_FILE      # --part speech ile aynı ses haritası (--root)
+    if a.package:
+        if a.execute:
+            print("HATA: --package ile --execute birlikte kullanılmaz.", file=sys.stderr)
+            return 2
+        rc = 0
+        for d in dirs:
+            if not (d / "_build" / "package" / "scenes.json").is_file():
+                print(f"== {d.name}: paket yok, atlandı (önce export_package.py)")
+                continue
+            try:
+                r = episodetl.package_built(d, media, vm)
+            except (episodetl.EpisodeTlError, tr.TrTtsError, MediaError, OSError, KeyError, ValueError) as e:
+                print(f"HATA {d.name}: {e}", file=sys.stderr)
+                rc = 1
+                continue
+            print(f"== {d.name}: pakette {len(r.packaged)} çeviri sesi")
+            for x in r.missing:
+                print(f"   - UYARI {x['segment']}: {x['reason']} ({x['path']})")
+        return rc
+    try:
+        cap = tr.monthly_cap(a.tr_cap)
+        plans = [(d, episodetl.plan_episode(d, vm, a.only, a.force)) for d in dirs]
+    except (episodetl.EpisodeTlError, tr.TrTtsError, OSError, KeyError, ValueError) as e:
+        print(f"HATA: {e}", file=sys.stderr)
+        return 2
+    if a.only and not any(p.jobs for _, p in plans):
+        print("HATA: --only hiçbir parçayla eşleşmedi", file=sys.stderr)
+        return 2
+    ledger = tr.ledger_path(a.tr_ledger)
+    month = tr.month_key()
+    used = tr.ledger_used(ledger, month)
+    chars = secs = 0
+    english: list[str] = []
+    for d, plan in plans:
+        todo = [j for j in plan.jobs if j.action != "skip"]
+        print(f"== {d.name}: {len(plan.jobs)} çeviri, {sum(j.chars for j in plan.jobs)} karakter; "
+              f"yapılacak {len(todo)} (Alania {plan.billable_chars} karakter)")
+        for j in todo:
+            print(f"   {j.seg.id}: {j.chars} karakter — {j.reason}: {j.seg.text!r}")
+        found = episodetl.english_report(d, [j.seg for j in plan.jobs])
+        for w, sids in sorted(found.items()):
+            print(f"   UYARI sözlükte olmayan İngilizce kelime/ad {w!r}: {', '.join(sids)} "
+                  "(ceviri.tr.json → pronunciations)")
+        todo_ids = {j.seg.id for j in todo}
+        english += [f"{d.name} {sid}" for sids in found.values() for sid in sids if sid in todo_ids]
+        chars += plan.billable_chars
+        secs += plan.est_stt_seconds
+    english = list(dict.fromkeys(english))
+    print(f"{len(plans)} bölüm, {sum(len(p.jobs) for _, p in plans)} çeviri, "
+          f"{sum(j.chars for _, p in plans for j in p.jobs)} karakter (yapılacak + güncel)")
+    st = billing if billing is not None else tr.billing_status(offline=a.offline,
+                                                               needed=tr.work_needed(chars, secs))
+    print(f"Toplam Alania: {chars} karakter; Duyu ≈ {secs:.0f} sn (tahmin). Ücret: {tr.cost_text(chars, secs, st)}. "
+          f"Bu ay ({month}) kullanılan: {used}; tavan: {cap if cap is not None else 'TANIMLI DEĞİL'}")
+    if english:
+        print(f"Not: {len(english)} çeviride sözlükte olmayan İngilizce kelime/ad var; --execute bunları reddeder "
+              "(ceviri.tr.json → pronunciations ya da --allow-english).")
+    if not a.execute:
+        print(f"Kuru çalışma: {tr.dry_run_note(st)}. Gerçek üretim için --execute.")
+        if cap is None:
+            print(f"Not: {tr.ENV_CAP} tanımlı değil; --execute reddedilir.")
+        return 0
+    if english and not a.allow_english:
+        print(f"HATA: {len(english)} çeviride sözlükte olmayan İngilizce kelime/ad var ({', '.join(english[:5])}"
+              f"{' …' if len(english) > 5 else ''}); Alania Türkçe okur ve sözlük sonra eklenirse ses yeniden "
+              "ücretlenir. ceviri.tr.json → pronunciations yaz ya da --allow-english.", file=sys.stderr)
+        return 1
+    if cap is None:
+        print(f"HATA: aylık karakter tavanı tanımlı değil ({tr.ENV_CAP}); ücretli üretim kapalı.", file=sys.stderr)
+        return 1
+    kw = {}
+    if finalize is not None:
+        kw["finalize"] = finalize
+    if sleep is not None:
+        kw["sleep"] = sleep
+    call = client
+    warned = False
+    for d, plan in plans:
+        if not any(j.action != "skip" for j in plan.jobs):
+            continue
+        try:
+            if call is None and any(j.action in ("tts", "stt") for j in plan.jobs):
+                call = tr.HttpClient()
+            r = tr.execute(plan, call, cap, ledger, episodetl.prompts_path(d), **kw)
+        except tr.TrTtsError as e:
+            print(f"HATA {d.name}: {e}", file=sys.stderr)
+            return 1
+        for x in r.done:
+            q = x.quality
+            print(f"  {d.name} {x.id}: {x.chars} karakter, {x.duration:.2f} sn, LUFS {x.lufs}, hizalama "
+                  f"{q['exact']}+{q['fuzzy']}/{q['words']} (skor {q['score']}){'' if q['ok'] else ' — UYARI'}")
+        print(f"== {d.name}: {len(r.done)} çeviri kuruldu, {len(r.skipped)} atlandı; Alania {r.tts_calls} çağrı / "
+              f"{r.chars} karakter, Duyu {r.stt_calls} çağrı / {r.stt_seconds:.1f} sn")
+        warned |= bool(r.warnings)
+        if r.stopped:
+            return 1
+    return 3 if warned and a.strict else 0
 
 
 if __name__ == "__main__":

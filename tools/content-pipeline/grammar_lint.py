@@ -49,6 +49,14 @@ def main(argv: list[str] | None = None) -> int:
                   f"Türkçe {st['narrationChars']} karakter, İngilizce {st['exampleChars']} karakter")
             print(f"   ses: Türkçe {au['trAligned']}/{au['trSegments']} hizalı ({au['trAudio']} ses), "
                   f"İngilizce {au['enAligned']}/{au['enSegments']} hizalı ({au['enAudio']} ses)")
+            fb = au.get("feedback") or {}
+            if fb.get("segments"):
+                print(f"   açıklama sesi (H-109): {fb['aligned']}/{fb['segments']} hizalı ({fb['audio']} ses), "
+                      f"{fb['chars']} karakter" + (f", {fb['stale']} eskimiş" if fb.get("stale") else ""))
+            tl = au.get("translation") or {}
+            if tl.get("segments"):
+                print(f"   çeviri sesi (H-109 Faz 3): {tl['aligned']}/{tl['segments']} hizalı ({tl['audio']} ses), "
+                      f"{tl['chars']} karakter" + (f", {tl['stale']} eskimiş" if tl.get("stale") else ""))
         if r.coverage:
             cv = r.coverage
             print(f"   kapsama: %{cv['pct']} (sözlükle %{cv['pctWithGlossary']}), {cv['tokens']} token, "

@@ -10,6 +10,7 @@
 // `resolveMediaUri`). Katalogdaki `status` bilgisi yayın yetkisi vermez
 // (yetkili durum backend'dedir, plan §6.4).
 
+import '../../../shared/content/content_source.dart' show reelMediaPath;
 import '../../player/domain/episode.dart';
 import '../../player/domain/subtitles.dart';
 import 'clip.dart';
@@ -111,6 +112,8 @@ class Reel {
           : ClipQuiz(
               promptTr: p['promptTr'] as String,
               explainTr: p['explainTr'] as String?,
+              promptAudio: practiceTrAudio(p, 'prompt'),
+              explainAudio: practiceTrAudio(p, 'explain'),
               options: [
                 for (final o in (p['options'] as List? ?? const []))
                   ClipQuizOption(
@@ -129,7 +132,7 @@ class Reel {
         'schemaVersion': 1,
         'segment': j['id'],
         'duration': duration,
-        'cues': j['cues'] ?? const [],
+        'cues': _reelCues(j['id'], j['cues']),
       }),
     );
   }
@@ -286,4 +289,18 @@ class ReelCatalog {
     }
     return null;
   }
+}
+
+/// Reel satırları; Türkçe sesin (`trAudio`, H-109 Faz 3) yolu reel paketine
+/// bağlanır (`_reels/<reel>/<yol>`): anlam paneli `resolveMediaUri` ile çözer.
+List<Object?> _reelCues(Object? id, Object? cues) {
+  if (cues is! List) return const [];
+  if (id is! String) return cues;
+  return [
+    for (final c in cues)
+      if (c is Map && c['trAudio'] is String)
+        {...c, 'trAudio': reelMediaPath(id, c['trAudio'] as String)}
+      else
+        c,
+  ];
 }

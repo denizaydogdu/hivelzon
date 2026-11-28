@@ -117,6 +117,19 @@
         }
       }
     },
+    "trAudio": {
+      "description": "Yalnız pakette (H-109 Faz 2): kitap sonu soruların Türkçesinin (soru kimliğiyle) ve tanıtımın (blurbTr) Alania sesi. Sesi olmayan metin burada yoktur; uygulama düğmeyi göstermez.",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "questions": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": { "q1": { "$ref": "#/$defs/trClip" }, "q2": { "$ref": "#/$defs/trClip" } }
+        },
+        "blurb": { "$ref": "#/$defs/trClip" }
+      }
+    },
     "wordCount": { "type": "integer", "minimum": 0 },
     "pageCount": { "type": "integer", "minimum": 0 },
     "estimatedMinutes": { "type": ["number", "null"], "minimum": 0 },
@@ -151,6 +164,15 @@
     }
   },
   "$defs": {
-    "color": { "type": "string", "pattern": "^#[0-9A-Fa-f]{6}$" }
+    "color": { "type": "string", "pattern": "^#[0-9A-Fa-f]{6}$" },
+    "trClip": {
+      "type": "object",
+      "required": ["audio", "duration"],
+      "additionalProperties": false,
+      "properties": {
+        "audio": { "description": "Paket içi yol (audio/tr/q1.m4a).", "type": "string", "pattern": "^audio/tr/[A-Za-z0-9_.-]+\\.m4a$" },
+        "duration": { "type": ["number", "null"], "minimum": 0 }
+      }
+    }
   }
 }

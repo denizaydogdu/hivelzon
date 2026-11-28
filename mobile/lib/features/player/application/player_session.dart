@@ -517,9 +517,13 @@ class PlayerSession extends ChangeNotifier {
     notifyListeners();
   }
 
+  /// H-109 Faz 3: Türkçesinin sesi bölümün `translationAudio` haritasından
+  /// (metin birebir aynıysa; altyazı satırı kendi `trAudio`sunu taşır).
   MeaningController _newMeaning(MeaningText text, MeaningAudio a) =>
       MeaningController(
-        text: text,
+        text: text.hasTurkish
+            ? text.withTrAudio(_episode?.info.trAudioFor(text.tr))
+            : text,
         audio: a,
         events: _events,
         notebook: _notebook,

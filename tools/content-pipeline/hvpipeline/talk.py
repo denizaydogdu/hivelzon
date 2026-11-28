@@ -435,15 +435,39 @@ def lint_talk(icerik_root: Path) -> list[tuple[str, list[Issue], dict]]:
     except ValueError as e:
         return [("konusma", [Issue("error", "talk-schema", str(e))], {})]
     seen: set[str] = set()
+    units: list = []
     for p, doc in tasks:
         issues, rep = lint_task(p, doc, icerik_root)
         issues += _lint_hi_voice(p, doc, Path(icerik_root), rep)
+        issues += _lint_tr_audio(p, doc, Path(icerik_root), rep, units)
         tid = str(doc.get("id", p.stem))
         if tid in seen:
             issues.append(Issue("error", "talk-schema", f"{tid}: aynı kimlik iki kez"))
         seen.add(tid)
         out.append((tid, issues, rep))
+    if out:
+        out[0][1].extend(_orphan_tr_audio(Path(icerik_root), units))
     return out
+
+
+def _lint_tr_audio(path: Path, doc: dict, root: Path, rep: dict, units: list) -> list[Issue]:
+    """H-109 Faz 3b: karakter repliği, örnek cevap ve kapanışın Türkçe sesi (`tts_season_tr.py --part talk`)."""
+    from .seasontr import check_unit, safe_units
+    issues = []
+    for u in safe_units(root, "talk", path, doc):
+        if not isinstance(u, Exception):
+            units.append(u)
+        iss, st = check_unit(root, u)
+        issues += [Issue(lv, code, msg) for lv, code, msg in iss]
+        if st.get("segments"):
+            rep["trAudio"] = f"{st['aligned']}/{st['segments']}"
+    return issues
+
+
+def _orphan_tr_audio(root: Path, units: list) -> list[Issue]:
+    from .seasontr import orphan_audio
+    return [Issue("warning", "talk-tr-audio", f"{sid}: Türkçe çeviri sesi var ama metni yok "
+                                              "(konusma/audio/ceviri)") for sid in orphan_audio(root, "talk", units)]
 
 
 # --- dışa aktarma ---------------------------------------------------------------------------
@@ -453,14 +477,15 @@ def _episode_number(content_id: str) -> int:
 
 
 HI_AUDIO_KEYS = ("introAudio", "taskAudio", "hintAudio", "promptAudio", "reactionAudio")
-SOURCE_ONLY = ("pronunciations",)
+SOURCE_ONLY = ("pronunciations", "translationPronunciations")
 
 
 def export_talk(icerik_root: Path, season: int, out: Path, audio=None) -> dict | None:
     """Sezon paketine `talk.json` yazar; season.json için özet döndürür. Kaynak yoksa None (eski paket silinir).
     Denetim hatası varsa ValueError (hatalı veri pakete girmez).
     audio(src_mp3, out_m4a): bölüm kaydında aynen geçen satırın sesini pakete yazar; verilmezse ses alanı düşer
-    (uygulama cihaz sesini kullanır)."""
+    (uygulama cihaz sesini kullanır). Aynı yazıcı H-109 Faz 3b çeviri seslerini de yazar: güncel sesi olan
+    `line.tr`/`model.tr`/`outro.tr` → `talk/ceviri-<parça>.m4a` ve satırda `trAudio` (eskimiş ya da eksik ses girmez)."""
     root = Path(icerik_root)
     out = Path(out)
     tasks = load_tasks(root, season)
@@ -475,6 +500,9 @@ def export_talk(icerik_root: Path, season: int, out: Path, audio=None) -> dict |
     missing: list[str] = []
     hi_missing: list[str] = []
     hi_count = 0
+    tr_count = 0
+    tr_rels: set[str] = set()   # Türkçe çeviri dosyaları (karakter satırı ses sayısına girmez)
+    tr_missing: list[str] = []
     pkg_tasks = []
 
     def write_audio(src: Path, rel: str) -> None:
@@ -503,7 +531,34 @@ def export_talk(icerik_root: Path, season: int, out: Path, audio=None) -> dict |
                 hi_missing.append(src)
         return obj
 
-    for _, doc in tasks:
+    def tr_voice(line: dict, where: str, sources: dict, planned: set[str]) -> dict:
+        """H-109 Faz 3b: satırın Türkçesinin güncel sesi (metin aynıysa) → `trAudio`."""
+        nonlocal tr_count
+        hit = sources.get(where)
+        if hit is None or hit[2] != (line.get("tr") or "").strip():
+            if where in planned:
+                tr_missing.append(f"{doc_id}:{where}")
+            return line
+        mp3, sid, _ = hit
+        rel = f"{TALK_AUDIO_DIR}/{talk_package_name(sid)}"
+        if rel not in used:
+            write_audio(mp3, rel)
+        tr_count += 1
+        tr_rels.add(rel)
+        return {**line, "trAudio": rel}
+
+    from .seasontr import package_sources, talk_package_name, talk_unit
+    for path, doc in tasks:
+        doc_id = str(doc.get("id"))
+        sources: dict = {}
+        planned: set[str] = set()
+        if audio is not None:
+            try:
+                unit = talk_unit(path, doc)
+                planned = set(unit.texts)
+                sources = package_sources(root, unit) if (root / "_evren" / "sesler.json").exists() else {}
+            except ValueError:      # bozuk sözlük: lint hatası zaten dışa aktarmayı durdurur
+                sources = {}
         task = hi_voice({k: v for k, v in doc.items() if k not in ("schemaVersion", "author", "date", "approvedBy")})
         if isinstance(task.get("check"), dict):
             task["check"] = hi_voice(task["check"])
@@ -529,11 +584,14 @@ def export_talk(icerik_root: Path, season: int, out: Path, audio=None) -> dict |
             return line
 
         if doc.get("kind") == "scene":
-            task["turns"] = [{**hi_voice(t), "line": with_audio(t["line"], t["id"]),
+            task["turns"] = [{**hi_voice(t),
+                              "line": tr_voice(with_audio(t["line"], t["id"]), t["id"], sources, planned),
                               "distractors": [hi_voice(d) for d in t.get("distractors") or []]}
                              for t in doc["turns"]]
             if doc.get("outro"):
-                task["outro"] = with_audio(doc["outro"], "outro")
+                task["outro"] = tr_voice(with_audio(doc["outro"], "outro"), "outro", sources, planned)
+        if isinstance(task.get("model"), dict):
+            task["model"] = tr_voice(dict(task["model"]), "model", sources, planned)
         pkg_tasks.append(task)
     pkg = {"schemaVersion": 1, "season": season, "tasks": pkg_tasks}
     out.mkdir(parents=True, exist_ok=True)
@@ -547,6 +605,7 @@ def export_talk(icerik_root: Path, season: int, out: Path, audio=None) -> dict |
     return {"path": TALK_PACKAGE_FILE, "tasks": len(pkg_tasks),
             "scenes": sum(1 for t in pkg_tasks if t["kind"] == "scene"),
             "messages": sum(1 for t in pkg_tasks if t["kind"] == "message"),
-            "audio": len(used) - hi_count, "audioMissing": missing,
+            "audio": len(used) - hi_count - len(tr_rels), "audioMissing": missing,
             "hiAudio": hi_count, "hiAudioMissing": hi_missing,
+            "trAudio": tr_count, "trAudioMissing": tr_missing,
             "bytes": (out / TALK_PACKAGE_FILE).stat().st_size}

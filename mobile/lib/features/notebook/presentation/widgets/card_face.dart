@@ -5,7 +5,10 @@ import '../../../../app/design/design.dart';
 import '../../../../l10n/tr_strings.dart';
 import '../../../../shared/content/content_providers.dart';
 import '../../../../shared/content/content_source.dart';
+import '../../../hi/presentation/hi_listen_button.dart';
 import '../../../player/domain/video_rendition.dart';
+import '../../../topic_sets/application/topic_set_providers.dart'
+    show setExampleTrAudioProvider;
 import '../../application/card_audio_player.dart';
 import '../../domain/notebook_item.dart';
 
@@ -227,11 +230,20 @@ class CardFace extends StatelessWidget {
                       ),
                     ),
                     if (item.exampleTr != null)
-                      Text(
-                        item.exampleTr!,
-                        style: theme.textTheme.bodyMedium?.copyWith(
-                          color: AppPalette.ink500,
-                        ),
+                      Row(
+                        children: [
+                          Flexible(
+                            child: Text(
+                              item.exampleTr!,
+                              style: theme.textTheme.bodyMedium?.copyWith(
+                                color: AppPalette.ink500,
+                              ),
+                            ),
+                          ),
+                          if (item.source == NotebookSource.topicSet &&
+                              (item.cueId?.startsWith('set:') ?? false))
+                            _ExampleTrListen(item: item, player: player),
+                        ],
                       ),
                   ],
                 ),
@@ -241,6 +253,35 @@ class CardFace extends StatelessWidget {
           ),
         ],
       ],
+    );
+  }
+}
+
+/// Konu seti kartında örnek cümlenin Türkçesinin sesi (H-109 Faz 3b). Kart
+/// yüzü Türkçeyi zaten gösterdiği için cevabı ele vermez (tekrarda kart yüzü
+/// cevaptan sonra görünür). Yalnız ses varken ve yalnız dokununca; kartın
+/// İngilizce sesi başlarken durur, başlarken İngilizce sesi durdurur.
+class _ExampleTrListen extends ConsumerWidget {
+  const _ExampleTrListen({required this.item, required this.player});
+
+  final NotebookItem item;
+  final CardAudioPlayer player;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final path = ref
+        .watch(setExampleTrAudioProvider((item.cueId!, item.exampleTr!)))
+        .value;
+    if (path == null) return const SizedBox.shrink();
+    return HiListenButton(
+      key: ValueKey('card-example-tr-listen-${item.key}'),
+      path: path,
+      contentId: item.contentId ?? '',
+      label: NotebookTexts.exampleTrListen,
+      filled: false,
+      beforePlay: player.stop,
+      stopOn: player,
+      shouldStop: () => player.playingKey != null,
     );
   }
 }

@@ -193,6 +193,7 @@ class ReelReport:
     reel: Reel | None = None
     issues: list[Issue] = field(default_factory=list)
     coverage: dict | None = None
+    tr_audio: dict | None = None
 
     @property
     def errors(self) -> list[Issue]:
@@ -501,7 +502,25 @@ def lint_reel(root: Path) -> ReelReport:
     )
     _check_audio_fit(source, report.issues)
     _check_cue_windows(source, doc, report.issues, built=report.path != source)
+    _check_tr_audio(source, doc, report)
     return report
+
+
+def _check_tr_audio(source: Path, doc: dict, report: ReelReport) -> None:
+    """Alıştırmanın Türkçe sesi (H-109 Faz 1; `reeltr`): eksik ses reel başına tek **uyarı**; pakette
+    `practice.audioTr` dosyası ve metin sha256'sı denetlenir."""
+    from . import reeltr
+
+    src = doc
+    if (source / "reel.json").is_file():
+        try:
+            src = reeltr.source_doc(source)
+        except reeltr.ReelTrError:
+            src = doc
+    found, report.tr_audio = reeltr.check_reel(source, src)
+    report.issues += [Issue(lv, "reel.tr-audio", msg) for lv, msg in found]
+    if report.path != source:
+        report.issues += [Issue(lv, "reel.tr-audio", msg) for lv, msg in reeltr.check_package(doc, report.path)]
 
 
 def discover_reels(root: Path) -> list[Path]:
@@ -562,6 +581,7 @@ def as_dict(report: ReelReport) -> dict[str, Any]:
         "errors": len(report.errors),
         "warnings": len(report.warnings),
         "coverage": report.coverage,
+        "trAudio": report.tr_audio,
         "issues": [
             {"level": i.level, "code": i.code, "message": i.message} for i in report.issues
         ],

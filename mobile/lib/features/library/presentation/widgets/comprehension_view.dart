@@ -3,6 +3,7 @@ import 'package:material_ui/material_ui.dart';
 import '../../../../app/design/design.dart';
 import '../../../../l10n/tr_strings.dart';
 import '../../../../shared/ui/ui.dart';
+import '../../../hi/presentation/hi_listen_button.dart';
 import '../../domain/book.dart';
 import '../../domain/book_comprehension.dart';
 
@@ -224,9 +225,27 @@ class _ComprehensionViewState extends State<ComprehensionView> {
           ),
           if (q.promptTr != null) ...[
             const SizedBox(height: AppSpace.s4),
-            Text(
-              q.promptTr!,
-              style: theme.textTheme.bodyMedium?.copyWith(color: colors.muted),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Expanded(
+                  child: Text(
+                    q.promptTr!,
+                    style: theme.textTheme.bodyMedium?.copyWith(
+                      color: colors.muted,
+                    ),
+                  ),
+                ),
+                // H-109: sorunun Türkçesi Hi'nin sesiyle; yalnız dokununca.
+                if (q.promptTrAudio != null)
+                  HiListenButton(
+                    key: ValueKey('comp-q${i + 1}-tr-listen'),
+                    path: q.promptTrAudio!,
+                    bookId: widget.book.id,
+                    label: ComprehensionTexts.promptTrListen,
+                    filled: false,
+                  ),
+              ],
             ),
           ],
           const SizedBox(height: AppSpace.s12),

@@ -361,11 +361,27 @@ class _TalkMessageViewState extends ConsumerState<TalkMessageView> {
           const SizedBox(height: AppSpace.s4),
           Text(model.en, style: theme.textTheme.titleMedium),
           const SizedBox(height: AppSpace.s4),
-          Text(
-            model.tr,
-            style: theme.textTheme.bodyMedium?.copyWith(
-              color: AppPalette.ink500,
-            ),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Expanded(
+                child: Text(
+                  model.tr,
+                  style: theme.textTheme.bodyMedium?.copyWith(
+                    color: AppPalette.ink500,
+                  ),
+                ),
+              ),
+              // H-109 Faz 3b: örnek cevabın Türkçesinin sesi (yalnız varsa,
+              // yalnız dokununca).
+              if (model.trAudio != null)
+                HiListenButton(
+                  key: const ValueKey('message-model-tr-listen'),
+                  path: model.trAudio!,
+                  label: TalkTexts.trListen,
+                  filled: false,
+                ),
+            ],
           ),
         ],
       ),

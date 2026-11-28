@@ -304,14 +304,28 @@ def lint_sets(icerik_root: Path) -> list[tuple[str, list[Issue], dict]]:
         sets = load_sets(icerik_root)
     except ValueError as e:
         return [("?", [Issue("error", "set-schema", str(e))], {})]
+    from .seasontr import check_unit, orphan_audio, safe_units
     ids = set()
+    units = []
     for p, doc in sets:
         issues, rep = lint_set(p, doc, icerik_root)
         key = (doc.get("season"), doc.get("id"))
         if key in ids:
             issues.append(Issue("error", "set-schema", f"aynı set kimliği iki kez: {doc.get('id')}"))
         ids.add(key)
+        # H-109 Faz 3b: örnek cümle Türkçesinin sesi (`tts_season_tr.py --part sets`).
+        for u in safe_units(Path(icerik_root), "sets", p, doc):
+            if not isinstance(u, Exception):
+                units.append(u)
+            iss, st = check_unit(Path(icerik_root), u)
+            issues += [Issue(lv, code, msg) for lv, code, msg in iss]
+            if st.get("segments"):
+                rep["trAudio"] = f"{st['aligned']}/{st['segments']}"
         out.append((doc.get("id", p.stem), issues, rep))
+    if out:
+        out[0][1].extend(Issue("warning", "set-tr-audio", f"{sid}: Türkçe örnek sesi var ama metni yok "
+                                                          "(setler/audio/ceviri)")
+                         for sid in orphan_audio(Path(icerik_root), "sets", units))
     return out
 
 
@@ -322,12 +336,14 @@ def item_kind(w: str) -> str:
 
 
 def export_sets(icerik_root: Path, season: int, out: Path, *, crop=None, scene=None, cut=None, gain=None,
-                probe=None, size=None) -> list[dict]:
+                probe=None, size=None, tr_audio=None) -> list[dict]:
     """Setleri sezon paketine yazar; season.json için özet listeyi döndürür.
 
     crop(src, box, out): öğe görseli (WebP 512); scene(src, out): sahne görseli (WebP 1080);
     cut(src, start, end, gain_db, out): ses kesiti (m4a); gain(src) → dB (-16 LUFS hedefine);
     probe(src) → süre; size(src) → (genişlik, yükseklik). Verilmeyen adım atlanır (testler).
+    tr_audio(src_mp3, out_m4a): H-109 Faz 3b — örnek cümle Türkçesinin güncel sesi (`setler/audio/ceviri/`) →
+    `sets/<set>/tr-<öğe>.m4a`, öğede `exampleTrAudio`; eskimiş ya da eksik ses girmez.
     Hatası olan set (content-lint) dışa aktarılmaz: ValueError.
     """
     root = Path(icerik_root)
@@ -353,6 +369,10 @@ def export_sets(icerik_root: Path, season: int, out: Path, *, crop=None, scene=N
             number = json.loads((ep / "content.json").read_text(encoding="utf-8")).get("episode")
         gains: dict[str, float] = {}
         items = []
+        tr_sources: dict = {}
+        if tr_audio is not None:
+            from .seasontr import package_sources, set_package_name, set_unit
+            tr_sources = package_sources(root, set_unit(path, doc))
         for it in doc["items"]:
             iid = it["id"]
             box = square_box(it["crop"], width, height)
@@ -384,6 +404,14 @@ def export_sets(icerik_root: Path, season: int, out: Path, *, crop=None, scene=N
                     cut(mp3, start, end, gains[ref["source"]], base / name)
                 entry[field] = name
                 entry[field + "Source"] = {"source": ref["source"], "start": start, "end": end}
+            hit = tr_sources.get(iid)
+            if hit is not None and hit[2] == it["exampleTr"].strip():
+                name = set_package_name(sid, iid)
+                tmp = base / f"{sid}/.tmp-tr-{iid}.m4a"
+                tmp.unlink(missing_ok=True)
+                tr_audio(hit[0], tmp)
+                tmp.replace(base / name)
+                entry["exampleTrAudio"] = name
             items.append(entry)
         pkg = {"schemaVersion": 1, "id": sid, "season": season, "level": doc["level"], "order": doc["order"],
                "titleTr": doc["titleTr"], "unlockAfter": doc["unlockAfter"], "unlockEpisode": number,
@@ -393,9 +421,9 @@ def export_sets(icerik_root: Path, season: int, out: Path, *, crop=None, scene=N
         tmp.write_text(json.dumps(pkg, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
         tmp.replace(base / f"{sid}.json")
         wanted = {"scene.webp"} | {Path(e["image"]).name for e in items} | {
-            Path(e[f]).name for e in items for f in ("audio", "exampleAudio") if e.get(f)}
+            Path(e[f]).name for e in items for f in ("audio", "exampleAudio", "exampleTrAudio") if e.get(f)}
         for p in d.iterdir():
-            if p.is_file() and p.name not in wanted and (scene or crop or cut):
+            if p.is_file() and p.name not in wanted and (scene or crop or cut or tr_audio):
                 p.unlink()   # kaldırılan öğenin eski görseli ya da sesi kalmasın
         files = sorted(p for p in d.iterdir() if p.is_file() and not p.name.startswith("."))
         summary.append({"id": sid, "order": doc["order"], "titleTr": doc["titleTr"], "unlockAfter": doc["unlockAfter"],

@@ -2,7 +2,13 @@
 
     lesson.json    meta veri (+ `durations`, `estimatedMinutes`, `cardCount`, `teacherReviewed`); şema lesson.schema.json
     cards.json     kartlar: Türkçe anlatım cümleleri + kelime zamanları, örnekler (ses, hedef aralıkları, kelime
-                   zamanları), yanlış biçimler, şemalar, alıştırma, "Hikâyede gör" derin bağları; şema cards.schema.json
+                   zamanları), yanlış biçimler, şemalar, alıştırma, "Hikâyede gör" derin bağları; şema cards.schema.json.
+                   Alıştırmada yanlış cevap açıklamasının sesi (H-109 Faz 1, isteğe bağlı): `feedbackAudio`,
+                   `feedbackDuration`; yalnız güncel sesi olan açıklamada (eskimiş ya da eksik ses paketi durdurmaz,
+                   `manifest.feedbackMissing`).
+                   Örneğin ve "Söyle" alıştırmasının Türkçesinin sesi (H-109 Faz 3, isteğe bağlı): `trAudio`, `trDuration`;
+                   metni sesli çeviriyle birebir aynı olan her yerde (aynı ses bir kez paketlenir), yalnız güncel ses
+                   (`manifest.translationMissing`).
     audio/<parça>.m4a   AAC, -16 LUFS (her parça ayrı ölçülür; parçalar ayrı çalınır)
     manifest.json  dosya listesi, boyut, sha256, ses düzeyi, metin sha256, eksik medya
 
@@ -21,8 +27,9 @@ from pathlib import Path
 from .align import Alignment, AlignmentMismatch, sentence_timings
 from .bookexport import LocalMedia
 from .build import TOOL_ID, file_digest
+from .grammarlint import feedback_audio_state
 from .graph import schema_errors
-from .lesson import Lesson, LessonError, text_sha256
+from .lesson import Lesson, LessonError, feedback_segment_id, text_sha256
 from .storylinks import StoryIndex
 from .tts_tr import TrTtsError
 
@@ -94,6 +101,64 @@ def export_lesson(lesson_dir: Path, media=None, icerik_root: Path | None = None,
             return [dict(w) for w in t["words"]]
         return [{"w": w, "start": None, "end": None} for w in text.split()]
 
+    fb_missing: list[dict] = []
+    fb_sha: dict[str, str] = {}
+    try:
+        fb_segs = {s.id: s for s in lesson.feedback_segments()}
+    except TrTtsError as e:      # bozuk söyleniş sözlüğü → paket hatası, açıklama sesi yok
+        errors.append(f"açıklama ses parçaları kurulamadı: {e}")
+        fb_segs = {}
+
+    def feedback_audio(pid: str) -> tuple[str | None, float | None]:
+        seg = fb_segs.get(feedback_segment_id(pid))
+        if seg is None:
+            return None, None
+        state = feedback_audio_state(lesson, seg)
+        mp3, _ = lesson.tr_paths(seg.id)
+        if state in ("no-audio", "stale", "bad"):
+            fb_missing.append({"segment": seg.id, "reason": state, "path": str(mp3.relative_to(lesson.dir))})
+        if state != "ok":
+            return None, None
+        i = media.loudness([mp3]).get("I")
+        gain = media.target_lufs - i if isinstance(i, (int, float)) and i > MIN_MEASURABLE_LUFS else 0.0
+        rel = f"audio/{seg.id}{AUDIO_EXT}"
+        media.audio(mp3, gain, pkg / rel)
+        loud[seg.id] = {"before": i, "gainDb": round(gain, 2)}
+        fb_sha[seg.id] = text_sha256(seg.text)
+        return rel, round(media.duration(pkg / rel), 3)
+
+    tl_missing: list[dict] = []
+    tl_sha: dict[str, str] = {}
+    try:
+        tl_segs = {s.text: s for s in lesson.translation_segments()}
+    except TrTtsError as e:      # bozuk çeviri sözlüğü → paket hatası, çeviri sesi yok
+        errors.append(f"çeviri ses parçaları kurulamadı: {e}")
+        tl_segs = {}
+    tl_done: dict[str, tuple[str | None, float | None]] = {}
+
+    def translation_audio(tr: str | None) -> tuple[str | None, float | None]:
+        """Türkçe metnin sesi (metinle birebir eşleşen güncel parça); her parça bir kez paketlenir."""
+        seg = tl_segs.get((tr or "").strip())
+        if seg is None:
+            return None, None
+        if seg.id in tl_done:
+            return tl_done[seg.id]
+        state = feedback_audio_state(lesson, seg)
+        mp3, _ = lesson.tr_paths(seg.id)
+        tl_done[seg.id] = (None, None)
+        if state in ("no-audio", "stale", "bad"):
+            tl_missing.append({"segment": seg.id, "reason": state, "path": str(mp3.relative_to(lesson.dir))})
+        if state != "ok":
+            return None, None
+        i = media.loudness([mp3]).get("I")
+        gain = media.target_lufs - i if isinstance(i, (int, float)) and i > MIN_MEASURABLE_LUFS else 0.0
+        rel = f"audio/{seg.id}{AUDIO_EXT}"
+        media.audio(mp3, gain, pkg / rel)
+        loud[seg.id] = {"before": i, "gainDb": round(gain, 2)}
+        tl_sha[seg.id] = text_sha256(seg.text)
+        tl_done[seg.id] = (rel, round(media.duration(pkg / rel), 3))
+        return tl_done[seg.id]
+
     cards_out = []
     narr_total = ex_total = 0.0
     narr_any = ex_any = False
@@ -120,9 +185,13 @@ def export_lesson(lesson_dir: Path, media=None, icerik_root: Path | None = None,
             mp3, aj = lesson.en_paths(e.id)
             t, rel, dur = audio(e.id, mp3, aj, [e.en], e.en)
             t0 = t[0] if t else None
-            examples.append({"id": e.id, "en": e.en, "tr": e.tr, "targets": e.targets, "audio": rel, "duration": dur,
-                             "start": t0["start"] if t0 else None, "end": t0["end"] if t0 else None,
-                             "words": words(t0, e.en)})
+            ex = {"id": e.id, "en": e.en, "tr": e.tr, "targets": e.targets, "audio": rel, "duration": dur,
+                  "start": t0["start"] if t0 else None, "end": t0["end"] if t0 else None,
+                  "words": words(t0, e.en)}
+            tl_rel, tl_dur = translation_audio(e.tr)
+            if tl_rel:
+                ex["trAudio"], ex["trDuration"] = tl_rel, tl_dur
+            examples.append(ex)
             if dur:
                 ex_total += dur
                 ex_any = True
@@ -146,6 +215,9 @@ def export_lesson(lesson_dir: Path, media=None, icerik_root: Path | None = None,
                 item["text"] = p.stem
                 if p.tr:
                     item["tr"] = p.tr
+                    tl_rel, tl_dur = translation_audio(p.tr)
+                    if tl_rel:
+                        item["trAudio"], item["trDuration"] = tl_rel, tl_dur
                 mp3, aj = lesson.en_paths(p.id)
                 t, rel, dur = audio(p.id, mp3, aj, [p.stem], p.stem)
                 item["audio"], item["duration"] = rel, dur
@@ -156,6 +228,9 @@ def export_lesson(lesson_dir: Path, media=None, icerik_root: Path | None = None,
                     per_card[c.id] = per_card.get(c.id, 0.0) + dur
             if p.feedback:
                 item["feedbackTr"] = p.feedback
+                rel, dur = feedback_audio(p.id)
+                if rel:
+                    item["feedbackAudio"], item["feedbackDuration"] = rel, dur
             practice.append(item)
         card["practice"] = practice
         links = []
@@ -206,9 +281,11 @@ def export_lesson(lesson_dir: Path, media=None, icerik_root: Path | None = None,
         "contentType": "GRAMMAR_LESSON",
         "contentVersion": m.get("contentVersion", 1),
         "tool": TOOL_ID,
-        "textSha256": {k: text_sha256(v) for k, v in seg_text.items()},
+        "textSha256": {k: text_sha256(v) for k, v in seg_text.items()} | fb_sha | tl_sha,
         "loudness": {"targetLUFS": media.target_lufs, "segments": loud} if loud else None,
         "missing": missing,
+        "feedbackMissing": fb_missing,
+        "translationMissing": tl_missing,
         "files": [{"path": str(p.relative_to(pkg)), "bytes": p.stat().st_size, "sha256": file_digest(p)}
                   for p in files],
     }

@@ -12,6 +12,8 @@ import 'package:hivelzon/features/library/application/book_audio.dart';
 import 'package:hivelzon/features/library/application/library_providers.dart';
 import 'package:hivelzon/features/library/presentation/reader_screen.dart';
 import 'package:hivelzon/features/player/data/progress_repository.dart';
+import 'package:hivelzon/features/player/presentation/player_screen.dart'
+    show videoControllerFactoryProvider;
 import 'package:hivelzon/features/story/presentation/story_screen.dart';
 import 'package:hivelzon/shared/content/content_providers.dart';
 import 'package:hivelzon/shared/meaning/learning_event_log.dart';
@@ -22,6 +24,7 @@ import 'package:hivelzon/shared/storage/storage_providers.dart';
 
 import 'fake_book_audio.dart';
 import 'fake_content_source.dart';
+import 'talk_harness.dart' show FakeAudioController;
 import 'fake_example_speech.dart';
 
 /// Dilbilgisi testlerinin ortamı (H-078): bellekte veritabanı, sahte içerik
@@ -43,6 +46,7 @@ class GrammarHarness {
     String? episodeLink,
     this.suggestedLevel,
     bool deviceVoice = false,
+    bool feedbackAudio = false,
   }) : speech = FakeExampleSpeech(hasVoice: deviceVoice),
        db = AppDatabase.memory(),
        source = FakeContentSource(packageIds: const ['A1-001'])
@@ -52,7 +56,8 @@ class GrammarHarness {
          ..lessonsSilent = silent
          ..lessonsNoEnglishAudio = noEnglishAudio
          ..grammarFails = grammarFails
-         ..lessonEpisodeLink = episodeLink {
+         ..lessonEpisodeLink = episodeLink
+         ..lessonsFeedbackAudio = feedbackAudio {
     audio = FakeBookAudio(clock);
     bookAudio = FakeBookAudio(
       clock,
@@ -61,6 +66,9 @@ class GrammarHarness {
   }
 
   final AppDatabase db;
+
+  /// Hi sesi çalarları (yanlış cevap açıklaması, H-109), açılış sırasıyla.
+  final players = <FakeAudioController>[];
 
   /// Cihaz sesi (H-064); varsayılan: cihazda İngilizce ses yok.
   final FakeExampleSpeech speech;
@@ -176,6 +184,11 @@ class GrammarHarness {
           libraryRandomProvider.overrideWithValue(math.Random(3)),
           speechVisibleProvider.overrideWithValue(speech),
           exampleSpeechProvider.overrideWithValue(this.speech as ExampleSpeech),
+          videoControllerFactoryProvider.overrideWithValue((uri) {
+            final c = FakeAudioController(uri);
+            players.add(c);
+            return c;
+          }),
         ],
         child: RepaintBoundary(
           key: const ValueKey('golden'),

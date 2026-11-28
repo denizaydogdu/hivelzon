@@ -3,6 +3,7 @@
 // Saf Dart. Kaynak: dev içerik sunucusunun `/grammar/index.json` listesi ve
 // ders paketindeki `lesson.json` + `cards.json`.
 
+import '../../../shared/content/content_source.dart' show grammarMediaPath;
 import '../../../shared/meaning/meaning_text.dart';
 
 /// Ders listesindeki bir ders (`/grammar/index.json` → `lessons[]`).
@@ -193,6 +194,7 @@ class GrammarExample {
     this.start,
     this.end,
     this.words = const [],
+    this.trAudio,
   });
 
   factory GrammarExample.fromJson(Map<String, dynamic> j) => GrammarExample(
@@ -209,11 +211,16 @@ class GrammarExample {
     start: (j['start'] as num?)?.toDouble(),
     end: (j['end'] as num?)?.toDouble(),
     words: _words(j['words']),
+    trAudio: _packagePath(j['trAudio']),
   );
 
   final String id;
   final String en;
   final String? tr;
+
+  /// Türkçesinin sesi (H-109 Faz 3; ders paketi içi yol, ör.
+  /// `audio/c03-ex1-tl.m4a`); yoksa "Türkçesini dinle" görünmez.
+  final String? trAudio;
 
   /// Hedef yapının karakter aralıkları (`[[goes]]` → (3, 7)).
   final List<(int, int)> targets;
@@ -249,11 +256,15 @@ class GrammarExample {
   }
 
   /// Anlam paneli metni: kelimelerin Türkçesi yok, cümlenin Türkçesi var.
-  MeaningText toMeaning(String lessonId) => MeaningText(
+  /// [trSound] false: Türkçe ses verilmez (ders sessiz modda, H-109 Faz 3).
+  MeaningText toMeaning(String lessonId, {bool trSound = true}) => MeaningText(
     contentId: lessonId,
     sourceId: id,
     en: en,
     tr: tr,
+    trAudio: trAudio == null || !trSound
+        ? null
+        : grammarMediaPath(lessonId, trAudio!),
     words: [
       for (final (i, t) in tokens.indexed)
         MeaningWord(
@@ -400,6 +411,9 @@ class PracticeItem {
     this.audio,
     this.words = const [],
     this.feedbackTr,
+    this.feedbackAudio,
+    this.feedbackDuration,
+    this.trAudio,
   });
 
   static PracticeItem? fromJson(Object? json) {
@@ -424,6 +438,9 @@ class PracticeItem {
       audio: j['audio'] as String?,
       words: _words(j['words']),
       feedbackTr: j['feedbackTr'] as String?,
+      feedbackAudio: j['feedbackAudio'] as String?,
+      trAudio: _packagePath(j['trAudio']),
+      feedbackDuration: (j['feedbackDuration'] as num?)?.toDouble(),
     );
   }
 
@@ -449,6 +466,14 @@ class PracticeItem {
 
   /// Yanlış cevapta kısa Türkçe açıklama.
   final String? feedbackTr;
+
+  /// Açıklamanın Türkçe sesi (H-109; paket içi yol, ör. `audio/c07-q1-fb.m4a`);
+  /// yoksa "dinle" düğmesi görünmez.
+  final String? feedbackAudio;
+  final double? feedbackDuration;
+
+  /// "Söyle" Türkçesinin sesi (H-109 Faz 3; paket içi yol); yoksa düğme yok.
+  final String? trAudio;
 
   /// Cevap doğru mu? Seçimde seçeneğin sırası; boşlukta yazılan; sıralamada
   /// seçilen parçalar sırasıyla boşlukla birleştirilmiş metin.
@@ -691,3 +716,9 @@ List<TimedWord> _words(Object? v) => [
       if (w is Map && w['w'] is String)
         TimedWord.fromJson(w.cast<String, dynamic>()),
 ];
+
+/// Paket içi göreli yol (boş, mutlak ya da `..` içeren değer yok sayılır).
+String? _packagePath(Object? v) =>
+    v is String && v.isNotEmpty && !v.startsWith('/') && !v.contains('..')
+    ? v
+    : null;

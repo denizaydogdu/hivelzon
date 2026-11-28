@@ -28,6 +28,12 @@
       "items": {"type": "object", "required": ["term", "say_as"], "additionalProperties": false,
                 "properties": {"term": {"type": "string", "minLength": 1}, "say_as": {"type": "string", "minLength": 1}}}
     },
+    "translationPronunciations": {
+      "description": "H-109 Faz 3b: yalnız Türkçe çeviri seslerinin (line.tr, model.tr, outro.tr) söyleniş sözlüğü",
+      "type": "array",
+      "items": {"type": "object", "required": ["term", "say_as"], "additionalProperties": false,
+                "properties": {"term": {"type": "string", "minLength": 1}, "say_as": {"type": "string", "minLength": 1}}}
+    },
     "to": {"type": "string", "minLength": 1},
     "character": {
       "type": "object", "required": ["nameTr", "speaker"], "additionalProperties": false,

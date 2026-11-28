@@ -7,6 +7,7 @@
 
 import '../../../l10n/tr_strings.dart';
 import '../../../shared/content/content_source.dart';
+import '../../topic_sets/domain/topic_set.dart' show seasonMediaPath;
 import '../domain/clip.dart';
 import '../domain/feed_video.dart';
 import '../domain/reel.dart';
@@ -38,7 +39,9 @@ FeedVideo feedVideoOfClip(
   sourceTitle: DiscoverTexts.notebookSource(clip.episodeTitle ?? clip.titleTr),
   episodeId: clip.episodeId,
   episodeNumber: clip.episodeNumber,
-  practice: clip.quiz,
+  // H-109 Faz 3b: alıştırma sesi sezon paketinde; yol sezon önekiyle bağlanır
+  // (`resolveMediaUri` çözer).
+  practice: clip.quiz?.mapAudio((p) => seasonMediaPath(season, p)),
 );
 
 /// Bağımsız konu reeli → video modeli.

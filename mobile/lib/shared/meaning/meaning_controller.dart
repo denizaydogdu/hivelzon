@@ -90,6 +90,10 @@ class MeaningController extends ChangeNotifier {
   final NotebookRepository _notebook;
   final DateTime Function() _now;
 
+  /// İngilizce ses (kelime ya da "Tekrar dinle") her başladığında artar:
+  /// Türkçe sesi (H-109 Faz 3) durdurmak için; iki ses aynı anda çalmaz.
+  final ValueNotifier<int> englishAudioStarts = ValueNotifier(0);
+
   int? _selected;
   bool _revealed = false;
   double _speed;
@@ -112,6 +116,7 @@ class MeaningController extends ChangeNotifier {
     _selected = index;
     notifyListeners();
     if (audio.canPlayWords && w.hasTiming) {
+      englishAudioStarts.value++;
       unawaited(audio.playWord(w, speed: _speed));
     }
     _record(w.bare);
@@ -125,7 +130,10 @@ class MeaningController extends ChangeNotifier {
     _record(LearningEvent.sentence);
   }
 
-  Future<void> replay() => audio.playSentence(speed: _speed);
+  Future<void> replay() {
+    englishAudioStarts.value++;
+    return audio.playSentence(speed: _speed);
+  }
 
   void toggleSlow() {
     _speed = slow ? 1.0 : 0.75;
@@ -201,6 +209,7 @@ class MeaningController extends ChangeNotifier {
   @override
   void dispose() {
     _disposed = true;
+    englishAudioStarts.dispose();
     super.dispose();
   }
 }

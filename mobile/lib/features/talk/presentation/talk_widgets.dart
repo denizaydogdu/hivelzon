@@ -68,11 +68,16 @@ class TalkLineSpeaker {
   final ExampleSpeech _speech;
   bool? _device;
 
+  /// İngilizce satır her başladığında artar: Türkçe ses (H-109 Faz 3b) durur;
+  /// iki ses aynı anda çalmaz.
+  final ValueNotifier<int> englishStarts = ValueNotifier(0);
+
   /// Cihaz sesi var mı (bir kez sorulur).
   Future<bool> deviceAvailable() async => _device ??= await _speech.available();
 
   Future<void> play(TalkLine line) async {
     await stop();
+    englishStarts.value++;
     final audio = line.audio;
     if (audio != null) {
       await _audio.play(
@@ -99,6 +104,7 @@ class TalkLineSpeaker {
   void dispose() {
     unawaited(_speech.stop());
     _audio.dispose();
+    englishStarts.dispose();
   }
 }
 
@@ -289,6 +295,18 @@ class _TalkLineViewState extends State<TalkLineView> {
             icon: const Icon(Icons.translate_rounded),
             label: Text(_tr ? TalkTexts.hideTr : TalkTexts.showTr),
           ),
+          // H-109 Faz 3b: Türkçesinin sesi yalnız Türkçe açıkken ve ses
+          // varken; yalnız dokununca. Türkçe kapanınca düğme gider, ses durur.
+          if (_tr && widget.line.trAudio != null)
+            HiListenButton(
+              key: ValueKey('$p-tr-listen'),
+              path: widget.line.trAudio!,
+              label: TalkTexts.trListen,
+              filled: false,
+              beforePlay: widget.player.stop,
+              stopOn: widget.player.englishStarts,
+              shouldStop: () => true,
+            ),
         ],
       ),
     );

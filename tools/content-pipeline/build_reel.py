@@ -14,7 +14,8 @@ Kaynaklar:
 - Kareler: `_raw/<shot>.png`. Ses: `_raw/tts/<cue>.m4a` (yoksa sessiz önizleme).
 
 Çıktı paketi (`_build/package/`): `reel.json`, `<id>.mp4` (**720p**, uygulamanın oynattığı sürüm),
-`<id>.webp` (afiş), `stills/<sahne>.webp`, `audio/<cue>.m4a` (varsa), `production.json` (üretim izi).
+`<id>.webp` (afiş), `stills/<sahne>.webp`, `audio/<cue>.m4a` (varsa), `production.json` (üretim izi),
+`audio/tr/practice-*.m4a` + `practice.audioTr` (alıştırmanın Türkçe sesi, varsa; H-109, `tts_reel_tr.py`).
 
 Ücretli çağrı yok; yalnız yerel ffmpeg/ImageMagick. Çıkış kodu: 0 başarı, 1 hata, 2 kullanım hatası.
 """
@@ -25,13 +26,15 @@ import argparse
 import datetime as dt
 import hashlib
 import json
+import re
 import shutil
+import subprocess
 import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from hvpipeline import media  # noqa: E402
+from hvpipeline import media, reeltr  # noqa: E402
 
 DEFAULT_MOVE = [1.0, 1.08, 0.45, 0.5, 0.5, 0.55]
 AI_LABEL = media.AI_LABEL
@@ -102,6 +105,36 @@ def _retime_cues(doc: dict, plan: list[dict], timing: dict[str, float], total: f
     return changed
 
 
+_SAFE_NAME = re.compile(r"^[A-Za-z0-9][A-Za-z0-9_.-]*$")
+
+
+def _unsafe_names(reel: dict, timeline: list) -> list[str]:
+    """Paket ve ara dosya yollarına giren alanlar düz dosya adı olmalı: mutlak yol ya da `../` paketin
+    dışına yazdırmasın (Codex bulgusu, 2026-11-27)."""
+    vals = [("video", reel.get("video")), ("poster", reel.get("poster"))]
+    target = reel.get("target")
+    if target is not None and not isinstance(target, dict):
+        vals.append(("target", None))   # nesne olmalı
+    cue = target.get("cue") if isinstance(target, dict) else None
+    if cue:   # sahne afişi `stills/<sahne>.webp` adına girer
+        vals.append(("target.cue", cue))
+    else:
+        vals.append(("id", reel.get("id", "reel")))
+    vals += [(f"cues[{k}].id", c.get("id") if isinstance(c, dict) else None)
+             for k, c in enumerate(reel.get("cues", []) or [])]
+    vals += [(f"timeline[{k}].shot", t.get("shot") if isinstance(t, dict) else None) for k, t in enumerate(timeline)]
+    for k, t in enumerate(timeline):
+        if not isinstance(t, dict):
+            continue
+        if t.get("audio") is not None:
+            vals.append((f"timeline[{k}].audio", t["audio"]))
+        clip = t.get("clip")
+        if clip is not None:   # yalnız reel klasöründeki clips/<ad>
+            ok = isinstance(clip, str) and clip.startswith("clips/") and clip.count("/") == 1
+            vals.append((f"timeline[{k}].clip", clip.split("/", 1)[1] if ok else None))
+    return [f"{k}={v!r}" for k, v in vals if not (isinstance(v, str) and _SAFE_NAME.match(v) and ".." not in v)]
+
+
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description="Reel montajı (H-094)")
     ap.add_argument("reel", help="reel klasörü (reeller/A1-R-CIN-01)")
@@ -119,6 +152,11 @@ def main(argv: list[str] | None = None) -> int:
     timeline = spec.get("timeline")
     if not timeline:
         print("hata: shots.json içinde `timeline` yok", file=sys.stderr)
+        return 2
+    bad = _unsafe_names(reel, timeline)
+    if bad:
+        print("hata: dosya adı olarak kullanılan alanlar güvenli değil (yalnız harf/rakam/._-, alt klasör yok): "
+              + ", ".join(bad), file=sys.stderr)
         return 2
 
     build = root / "_build"
@@ -138,6 +176,9 @@ def main(argv: list[str] | None = None) -> int:
         name, length = seg["shot"], float(seg["len"])
         clip_rel = seg.get("clip")
         clip = (root / clip_rel) if clip_rel else None
+        if clip is not None and not clip.resolve().is_relative_to(root.resolve() / "clips"):
+            print(f"hata: klip reel klasörünün clips/ dizini dışına gösteriyor: {clip_rel}", file=sys.stderr)
+            return 2
         use_clip = bool(clip and clip.is_file() and not a.no_clips)
         src = clip if use_clip else raw / f"{name}.png"
         if not src.is_file():
@@ -206,6 +247,13 @@ def main(argv: list[str] | None = None) -> int:
     (pkg / "reel.json").write_text(json.dumps(doc, ensure_ascii=False, indent=1) + "\n",
                                    encoding="utf-8")
 
+    # 7b. Alıştırmanın Türkçe sesi (H-109; varsa, güncel olan): audio/tr/*.m4a + practice.audioTr
+    try:
+        tr_pkg = reeltr.package_tr(root)
+    except (reeltr.ReelTrError, media.MediaError, subprocess.CalledProcessError, OSError, KeyError, ValueError) as e:
+        print(f"  uyarı: alıştırmanın Türkçe sesi pakete eklenemedi: {e}", file=sys.stderr)
+        tr_pkg = None
+
     img_ledger = _ledger(root, "jobs.json")
     clip_ledger = _ledger(root, "clip-jobs.json")
     used = {p["shot"] for p in plan}
@@ -237,6 +285,9 @@ def main(argv: list[str] | None = None) -> int:
           + (f" · cue hizası güncellendi: {retimed}" if retimed else ""))
     print(f"  paket: {pkg}")
     print(f"  kredi: görsel {credits['images']} + hareket {credits['clips']} = {credits['total']} kr")
+    if tr_pkg is not None and (tr_pkg.packaged or tr_pkg.missing):
+        print(f"  alıştırma Türkçe sesi: {len(tr_pkg.packaged)} parça pakette"
+              + (f"; eksik/eskimiş {len(tr_pkg.missing)}" if tr_pkg.missing else ""))
     for p in plan:
         print(f"    {p['shot']:4} {p['len']:4.1f} sn  {'klip' if p['clip'] else 'kare':4}  {p['source']}")
     if abs(total - float(reel.get("duration", total))) > 0.05:

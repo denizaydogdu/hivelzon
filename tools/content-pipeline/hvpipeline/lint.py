@@ -130,6 +130,7 @@ def check_graph(ep_dir: Path, c: dict, source: str = "auto") -> tuple[list[Issue
         issues = check_scenes(doc)
         issues += _check_package_files(pkg.parent, doc)
         issues += _check_season_files(ep_dir, doc)
+        issues += _check_package_translation_audio(pkg.parent, doc)
     elif has_kurgu and source in ("auto", "kurgu"):
         try:
             doc, b = build_dry(ep_dir)
@@ -277,7 +278,28 @@ def lint_episode(ep_dir: Path, graph_source: str = "auto", grammar_root: Path | 
     ti, rep.translation = check_translation(ep_dir, c)
     rep.issues += ti
     rep.issues += check_turkish_voice(ep_dir)
+    rep.issues += check_translation_audio(ep_dir, rep)
     return rep
+
+
+def check_translation_audio(ep_dir: Path, rep: "EpisodeReport | None" = None) -> list[Issue]:
+    """H-109 Faz 3: çevirilerin Türkçe sesi (`episodetl`). Eksik ses bölüm başına tek uyarı."""
+    from .episodetl import check_episode
+    found, st = check_episode(ep_dir)
+    if rep is not None and st and isinstance(rep.translation, dict):
+        rep.translation["audio"] = st
+    return [Issue(lv, code, msg) for lv, code, msg in found]
+
+
+def _check_package_translation_audio(pkg: Path, doc: dict) -> list[Issue]:
+    from .episodetl import check_package
+    subs = {}
+    for f in sorted((pkg / "subs").glob("*.json")) if (pkg / "subs").exists() else []:
+        try:
+            subs[f"subs/{f.name}"] = json.loads(f.read_text(encoding="utf-8"))
+        except (OSError, ValueError):
+            continue
+    return [Issue(lv, "translation-audio", msg) for lv, msg in check_package(doc, subs, pkg)]
 
 
 def check_turkish_voice(ep_dir: Path) -> list[Issue]:

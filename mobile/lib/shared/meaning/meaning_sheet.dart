@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:material_ui/material_ui.dart';
 
 import '../../app/design/design.dart';
+import '../../features/hi/presentation/hi_listen_button.dart';
 import '../../l10n/tr_strings.dart';
 import '../speech/speak_widgets.dart';
 import '../speech/speech_store.dart';
@@ -488,7 +489,30 @@ class _TurkishStep extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const CapsLabel(MeaningTexts.turkishLabel, tone: CapsTone.blue),
+          Row(
+            children: [
+              const Expanded(
+                child: CapsLabel(
+                  MeaningTexts.turkishLabel,
+                  tone: CapsTone.blue,
+                ),
+              ),
+              // H-109 Faz 3: Türkçesinin sesi (Hi) yalnız varsa ve yalnız
+              // dokununca; İngilizce ses başlarken durur, başlarken
+              // İngilizce sesi durdurur.
+              if (controller.text.hasTurkishAudio)
+                HiListenButton(
+                  key: const ValueKey('meaning-tr-listen'),
+                  path: controller.text.trAudio!,
+                  contentId: controller.text.contentId,
+                  label: MeaningTexts.trListen,
+                  filled: false,
+                  beforePlay: controller.audio.stop,
+                  stopOn: controller.englishAudioStarts,
+                  shouldStop: () => true,
+                ),
+            ],
+          ),
           const SizedBox(height: AppSpace.s4),
           Text(
             controller.text.tr!,

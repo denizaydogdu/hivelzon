@@ -15,6 +15,12 @@
     "unlockAfter": {"type": "string", "pattern": "^[A-C][12]-\\d{3}$"},
     "sceneImage": {"type": "string", "pattern": "^[A-C][12]-\\d{3}-[^/]+/images/[^/]+\\.png$"},
     "glossary": {"type": "array", "items": {"type": "string", "minLength": 1}},
+    "translationPronunciations": {
+      "description": "H-109 Faz 3b: yalnız örnek cümle Türkçesinin (exampleTr) sesine giden söyleniş sözlüğü",
+      "type": "array",
+      "items": {"type": "object", "required": ["term", "say_as"], "additionalProperties": false,
+                "properties": {"term": {"type": "string", "minLength": 1}, "say_as": {"type": "string", "minLength": 1}}}
+    },
     "status": {"enum": ["DRAFT", "IN_REVIEW", "APPROVED"]},
     "author": {"type": "string"},
     "date": {"type": "string"},

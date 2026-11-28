@@ -44,6 +44,17 @@ class MediaError(RuntimeError):
     pass
 
 
+
+def _probe_fmt(path) -> list[str]:
+    return ["-f", "mp3"] if str(path).lower().endswith(".mp3") else []
+
+
+def _inp(path) -> list[str]:
+    """ffmpeg girdisi. `.mp3` açıkça mp3 olarak verilir: ffmpeg kısa mp3'leri bazen VVC video sanıyor
+    ("Video: vvc … unspecified size"; 2026-11-27, H-109 bölüm çevirisi l-be768cd243)."""
+    p = str(path)
+    return ["-f", "mp3", "-i", p] if p.lower().endswith(".mp3") else ["-i", p]
+
 def run(cmd: list[str]) -> None:
     r = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     if r.returncode:
@@ -58,20 +69,20 @@ def _tmp(out: Path) -> Path:
 
 def probe_duration(path: Path) -> float:
     out = subprocess.check_output(["ffprobe", "-v", "error", "-show_entries", "format=duration",
-                                   "-of", "csv=p=0", str(path)])
+                                   "-of", "csv=p=0", *_probe_fmt(path), str(path)])
     return float(out.decode().strip())
 
 
 def probe_streams(path: Path) -> list[dict]:
     out = subprocess.check_output(["ffprobe", "-v", "error", "-show_entries",
                                    "stream=codec_type,codec_name,width,height,duration,sample_rate,channels,pix_fmt,profile",
-                                   "-of", "json", str(path)])
+                                   "-of", "json", *_probe_fmt(path), str(path)])
     return json.loads(out)["streams"]
 
 
 def envelope(path: Path, rate: int = 8000, win: int = 80) -> list[float]:
     """Mono RMS zarfı; pencere 80 örnek @ 8 kHz = 10 ms (indeks × 0,01 = sn)."""
-    raw = subprocess.check_output(["ffmpeg", "-loglevel", "error", "-i", str(path), "-ac", "1",
+    raw = subprocess.check_output(["ffmpeg", "-loglevel", "error", *_inp(path), "-ac", "1",
                                    "-ar", str(rate), "-f", "s16le", "-"])
     smp = array.array("h")
     smp.frombytes(raw[: len(raw) // 2 * 2])
@@ -113,7 +124,7 @@ def radio(src: Path, out: Path) -> Path:
     """Telsiz filtresi (bolum_yardimci.telsiz)."""
     if not out.exists():
         tmp = _tmp(out)
-        run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(src), "-filter_complex",
+        run(["ffmpeg", "-y", "-loglevel", "error", *_inp(src), "-filter_complex",
              "[0:a]highpass=f=350,lowpass=f=3200,acompressor=threshold=-18dB:ratio=4,volume=1.4[s];"
              "anoisesrc=color=pink:amplitude=0.02:d=20:seed=7[n];[s][n]amix=inputs=2:duration=first:weights='1 0.6'",
              "-c:a", "libmp3lame", "-b:a", "128k", str(tmp)])
@@ -127,7 +138,7 @@ def concat_audio(paths: list[Path], gap: float, out: Path) -> Path:
         return out
     cmd = ["ffmpeg", "-y", "-loglevel", "error"]
     for p in paths:
-        cmd += ["-i", str(p)]
+        cmd += [*_inp(p)]
     flt = "".join(f"[{i}:a]aresample=44100,aformat=channel_layouts=stereo,apad=pad_dur={gap}[p{i}];"
                   for i in range(len(paths)))
     flt += "".join(f"[p{i}]" for i in range(len(paths))) + f"concat=n={len(paths)}:v=0:a=1[a]"
@@ -140,7 +151,7 @@ def concat_audio(paths: list[Path], gap: float, out: Path) -> Path:
 def tempo(src: Path, atempo: float, out: Path) -> Path:
     if not out.exists():
         tmp = _tmp(out)
-        run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(src), "-af",
+        run(["ffmpeg", "-y", "-loglevel", "error", *_inp(src), "-af",
              f"aresample=44100,atempo={atempo}", "-ac", "2", "-c:a", "pcm_s16le", str(tmp)])
         tmp.replace(out)
     return out
@@ -173,7 +184,7 @@ def pacing_filter(segments: list[dict], tempo: float) -> str:
 def pace_audio(src: Path, segments: list[dict], tempo: float, out: Path) -> Path:
     """Tempo planını uygular → PCM WAV (44,1 kHz, float; kazanç ve AAC sonra `audio_clip`te)."""
     tmp = _tmp(out)
-    run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(src), "-filter_complex", pacing_filter(segments, tempo),
+    run(["ffmpeg", "-y", "-loglevel", "error", *_inp(src), "-filter_complex", pacing_filter(segments, tempo),
          "-map", "[a]", "-c:a", "pcm_f32le", "-ar", "44100", str(tmp)])
     tmp.replace(out)
     return out
@@ -181,7 +192,7 @@ def pace_audio(src: Path, segments: list[dict], tempo: float, out: Path) -> Path
 
 def probe_samples(path: Path) -> int:
     """Çözülmüş ses örnek sayısı (kanal başına, 44,1 kHz'e örneklenmiş)."""
-    raw = subprocess.check_output(["ffmpeg", "-loglevel", "error", "-i", str(path), "-ac", "1", "-ar", "44100",
+    raw = subprocess.check_output(["ffmpeg", "-loglevel", "error", *_inp(path), "-ac", "1", "-ar", "44100",
                                    "-f", "s16le", "-"])
     return len(raw) // 2
 
@@ -190,7 +201,7 @@ def loudness(paths: list[Path]) -> dict:
     """Birleştirilmiş sesin tümleşik ölçümü (loudnorm ölçüm geçişi)."""
     cmd = ["ffmpeg", "-hide_banner", "-nostats"]
     for p in paths:
-        cmd += ["-i", str(p)]
+        cmd += [*_inp(p)]
     flt = "".join(f"[{i}:a]aresample=44100,aformat=channel_layouts=stereo[a{i}];" for i in range(len(paths)))
     flt += "".join(f"[a{i}]" for i in range(len(paths))) + f"concat=n={len(paths)}:v=0:a=1,"
     flt += f"loudnorm=I={TARGET_LUFS}:TP=-1.5:LRA=11:print_format=json[o]"
@@ -212,7 +223,7 @@ def gain_filter(gain_db: float) -> str:
 
 def audio_clip(src: Path, gain_db: float, out: Path) -> Path:
     out.parent.mkdir(parents=True, exist_ok=True)
-    run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(src), "-af", gain_filter(gain_db),
+    run(["ffmpeg", "-y", "-loglevel", "error", *_inp(src), "-af", gain_filter(gain_db),
          "-c:a", "aac", "-b:a", "96k", "-movflags", "+faststart", str(out)])
     return out
 
@@ -309,7 +320,7 @@ def cut_audio(src: Path, start: float, end: float | None, gain_db: float, out: P
     trim = ["-ss", f"{start:.3f}"] + (["-to", f"{end:.3f}"] if end is not None else [])
     length = (end - start) if end is not None else None
     fade = "afade=t=in:d=0.015" + (f",afade=t=out:st={max(0.0, length - 0.03):.3f}:d=0.03" if length else "")
-    run(["ffmpeg", "-y", "-loglevel", "error"] + trim + ["-i", str(src), "-af", f"{gain_filter(gain_db)},{fade}",
+    run(["ffmpeg", "-y", "-loglevel", "error"] + trim + [*_inp(src), "-af", f"{gain_filter(gain_db)},{fade}",
          "-c:a", "aac", "-b:a", "96k", "-f", "mp4", "-movflags", "+faststart", str(tmp)])
     tmp.replace(out)
     return out
@@ -324,7 +335,7 @@ def still(image: Path, out: Path) -> Path:
         out.parent.mkdir(parents=True, exist_ok=True)
         webp = out.suffix.lower() == ".webp"
         frame = out.with_name(out.stem + ".frame.png") if webp else _tmp(out)
-        run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(image), "-vf",
+        run(["ffmpeg", "-y", "-loglevel", "error", *_inp(image), "-vf",
              f"crop='min(iw,ih*9/16)':'min(ih,iw*16/9)',scale={W}:{H}:flags=lanczos,setsar=1",
              "-frames:v", "1"] + ([] if webp else ["-q:v", "3"]) + [str(frame)])
         if webp:
@@ -349,7 +360,7 @@ def rendition_720(src: Path, out: Path) -> Path:
     """
     out.parent.mkdir(parents=True, exist_ok=True)
     tmp = _tmp(out)
-    run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(src), "-map", "0:v:0", "-map", "0:a?",
+    run(["ffmpeg", "-y", "-loglevel", "error", *_inp(src), "-map", "0:v:0", "-map", "0:a?",
          "-vf", f"scale={R720_W}:{R720_H}:flags=lanczos,setsar=1",
          "-c:v", "libx264", "-preset", "slow", "-tune", "animation", "-profile:v", "high",
          "-pix_fmt", "yuv420p", "-crf", str(R720_CRF), "-maxrate", R720_MAXRATE, "-bufsize", R720_BUFSIZE,
@@ -376,7 +387,7 @@ def _parts_graph(parts: list[tuple[Path, float, float | None]], video: bool) -> 
     labels = ""
     for i, (src, start, end) in enumerate(parts):
         length = (end if end is not None else probe_duration(src)) - start
-        args += ["-ss", f"{start:.3f}", "-t", f"{length:.3f}", "-i", str(src)]
+        args += ["-ss", f"{start:.3f}", "-t", f"{length:.3f}", *_inp(src)]
         a_in = f"[{i}:a]" if _has_audio(src) else None
         if video:
             flt.append(f"[{i}:v]setpts=PTS-STARTPTS,fps={FPS},scale={R720_W}:{R720_H}:flags=lanczos,"
@@ -424,7 +435,7 @@ def frame_webp(src: Path, out: Path, width: int = R720_W) -> Path:
     """Videonun ilk karesi WebP olarak (klip afişi; yüklenirken görünür)."""
     out.parent.mkdir(parents=True, exist_ok=True)
     frame = out.with_name(out.stem + ".frame.png")
-    run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(src), "-vf", f"scale={width}:-2:flags=lanczos",
+    run(["ffmpeg", "-y", "-loglevel", "error", *_inp(src), "-vf", f"scale={width}:-2:flags=lanczos",
          "-frames:v", "1", str(frame)])
     try:
         to_webp(frame, out)
@@ -439,15 +450,15 @@ def render_shot(shot: dict, out: Path, label: Path | None) -> Path:
         return out
     out.parent.mkdir(parents=True, exist_ok=True)
     L = shot["len"]
-    cmd = ["ffmpeg", "-y", "-loglevel", "error", "-i", str(shot["source"])]
+    cmd = ["ffmpeg", "-y", "-loglevel", "error", *_inp(shot["source"])]
     overlays = list(shot.get("overlays", []))
     for p, _, _ in overlays:
-        cmd += ["-loop", "1", "-t", f"{L}", "-i", str(p)]
+        cmd += ["-loop", "1", "-t", f"{L}", *_inp(p)]
     if label:
-        cmd += ["-loop", "1", "-t", f"{L}", "-i", str(label)]
+        cmd += ["-loop", "1", "-t", f"{L}", *_inp(label)]
     ai = None
     if shot.get("audio"):
-        cmd += ["-i", str(shot["audio"])]
+        cmd += [*_inp(shot["audio"])]
         ai = 1 + len(overlays) + (1 if label else 0)
     if shot.get("clip"):
         f = [f"[0:v]fps={FPS},scale=1090:-2,crop={W}:{H},setsar=1,tpad=stop_mode=clone:stop_duration=2,"
@@ -485,7 +496,7 @@ def join_shots(movs: list[Path], lens: list[float], out: Path) -> Path:
         return out
     cmd = ["ffmpeg", "-y", "-loglevel", "error"]
     for m in movs:
-        cmd += ["-i", str(m)]
+        cmd += [*_inp(m)]
     enc = ["-c:v", "libx264", "-crf", "21", "-preset", "medium", "-profile:v", "high", "-pix_fmt", "yuv420p",
            "-g", "60", "-c:a", "pcm_s16le", "-ar", "44100", "-ac", "2"]
     tmp = _tmp(out)
@@ -510,7 +521,7 @@ def finalize(mov: Path, gain_db: float, out: Path) -> Path:
     vd = next(float(s["duration"]) for s in probe_streams(mov) if s["codec_type"] == "video")
     # acrossfade sesi görüntüden bir kare kadar kısa bırakabilir: sona sessizlik eklenip görüntü süresine kırpılır.
     af = gain_filter(gain_db) + f",apad=whole_dur={vd:.4f},atrim=end={vd:.4f}"
-    run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(mov), "-map", "0:v", "-map", "0:a", "-c:v", "copy",
+    run(["ffmpeg", "-y", "-loglevel", "error", *_inp(mov), "-map", "0:v", "-map", "0:a", "-c:v", "copy",
          "-af", af, "-c:a", "aac", "-b:a", "128k", "-ar", "44100",
          "-movflags", "+faststart", str(out)])
     return out

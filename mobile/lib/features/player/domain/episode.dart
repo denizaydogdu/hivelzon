@@ -227,6 +227,7 @@ class EpisodeInfo {
     this.next,
     this.estimatedMinutes,
     this.grammarTopics = const [],
+    this.translationAudio = const {},
   });
 
   factory EpisodeInfo.fromJson(Object? json) {
@@ -261,6 +262,12 @@ class EpisodeInfo {
       next: j['next'] as String?,
       estimatedMinutes: _num(j['estimatedMinutes']),
       grammarTopics: _strings(j['grammarTopics']),
+      translationAudio: {
+        if (j['translationAudio'] case final Map m)
+          for (final e in m.entries)
+            if (e.key is String && _isPackagePath(e.value))
+              e.key as String: e.value as String,
+      },
     );
   }
 
@@ -288,7 +295,19 @@ class EpisodeInfo {
 
   /// Bölümde geçen dilbilgisi konuları (G-ID; H-077 `grammarTopics`).
   final List<String> grammarTopics;
+
+  /// Anlam panelindeki Türkçe cümlelerin sesi (H-109 Faz 3): ekrandaki
+  /// Türkçe metin → paket içi yol. Eşleşmeyen metinde "Türkçesini dinle"
+  /// görünmez.
+  final Map<String, String> translationAudio;
+
+  /// [text] için Türkçe ses (metin birebir aynıysa).
+  String? trAudioFor(String? tr) =>
+      tr == null ? null : translationAudio[tr.trim()];
 }
+
+bool _isPackagePath(Object? v) =>
+    v is String && v.isNotEmpty && !v.startsWith('/') && !v.contains('..');
 
 /// Bölüm sözlüğündeki kelime ve Türkçesi (`episode.glossary`, H-052).
 class GlossaryEntry {

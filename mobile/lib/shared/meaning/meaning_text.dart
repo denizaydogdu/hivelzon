@@ -79,6 +79,7 @@ class MeaningText {
     this.tr,
     this.speaker,
     this.chunks = const [],
+    this.trAudio,
   });
 
   /// `scenes.json` zamansız metni: `{tr, words: [{w, gloss}], chunks}`.
@@ -117,7 +118,30 @@ class MeaningText {
   final List<MeaningWord> words;
   final List<PhraseChunk> chunks;
 
+  /// Türkçesinin sesi (H-109 Faz 3; Hi, Alania): [contentId]'ye göre paket
+  /// yolu (`resolveMediaUri` biçimi: bölümde `audio/ceviri/…`, reelde
+  /// `_reels/<reel>/…`, derste `_grammar/<ders>/…`). Yoksa "Türkçesini
+  /// dinle" görünmez.
+  final String? trAudio;
+
   bool get hasTurkish => tr != null && tr!.trim().isNotEmpty;
+
+  /// Türkçe ses yalnız gösterilen Türkçe metin varken anlamlıdır.
+  bool get hasTurkishAudio => hasTurkish && trAudio != null;
+
+  /// Aynı metin, Türkçe sesiyle (yalnız henüz yoksa ve [path] boş değilse).
+  MeaningText withTrAudio(String? path) => trAudio != null || path == null
+      ? this
+      : MeaningText(
+          contentId: contentId,
+          sourceId: sourceId,
+          en: en,
+          words: words,
+          tr: tr,
+          speaker: speaker,
+          chunks: chunks,
+          trAudio: path,
+        );
 
   /// Kelimeyi içeren en uzun kalıp (yoksa null).
   PhraseChunk? chunkAt(int index) {

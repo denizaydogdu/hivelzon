@@ -109,21 +109,31 @@ def main(argv: list[str] | None = None) -> int:
         rb = m["renditionBytes"]
         print(f"   boyut: paket {m['totalBytes'] / 1e6:.1f} MB, {len(m['files'])} dosya; uygulamanın indirdiği "
               f"720p {rb['720p'] / 1e6:.1f} MB, 1080p {rb['1080p'] / 1e6:.1f} MB")
+        tl = r.get("translationAudio") or {}
+        row["translationAudio"] = tl
+        if tl.get("packaged") or tl.get("missing") or tl.get("error"):
+            print(f"   çeviri sesi (H-109 Faz 3): {len(tl.get('packaged') or [])} pakette"
+                  + (f"; eksik/eskimiş {len(tl['missing'])}" if tl.get("missing") else "")
+                  + (f"; UYARI {tl['error']}" if tl.get("error") else ""))
         for e in errs:
             print(f"   - {e}")
         for k, v in sub_errs.items():
             print(f"   - {k}: {v[:3]}")
     # Sezon paketi bölümlerden sonra: harita kataloğundaki `available` yeni paketleri de görür (H-035).
+    def tr_audio(s, o):     # H-109 Faz 3b: Konuş/konu seti/klip Türkçe sesleri (-16 LUFS m4a)
+        return media.audio_clip(s, media.gain_to_target(s), o)
+
     for (root, n) in seasons:
         sr = export_season(root, n, probe=media.probe_duration, digest=file_digest, poster=media.still,
                            rendition=media.rendition_720, image=media.to_webp,
                            set_media={"crop": media.crop_webp, "scene": media.scene_webp, "cut": media.cut_audio,
                                       "gain": media.gain_to_target, "probe": media.probe_duration,
-                                      "size": media.image_size},
+                                      "size": media.image_size, "tr_audio": tr_audio},
                            hi_audio=lambda s, o: media.audio_clip(s, media.gain_to_target(s), o),
                            talk_audio=lambda s, o: media.audio_clip(s, media.gain_to_target(s), o),
                            clip_media={"cut": media.cut_clip, "measure": media.parts_loudness,
-                                       "poster": media.frame_webp, "probe": media.probe_duration})
+                                       "poster": media.frame_webp, "probe": media.probe_duration,
+                                       "tr_audio": tr_audio})
         sd = sr["doc"]
         print(f"== Sezon {n} paketi → {sr['dir']}")
         print("   " + ", ".join(f"{k} {sd[k]['video']} {sd[k].get('duration')} sn"
@@ -140,7 +150,8 @@ def main(argv: list[str] | None = None) -> int:
         if "talk" in sd:
             t = sd["talk"]
             print(f"   Konuş: {t['tasks']} görev ({t['scenes']} sahne, {t['messages']} mesaj), {t['audio']} karakter satırı "
-                  f"sesi, Hi'nin Türkçe sesi {t.get('hiAudio', 0)} (eksik {len(t.get('hiAudioMissing', []))})")
+                  f"sesi, Hi'nin Türkçe sesi {t.get('hiAudio', 0)} (eksik {len(t.get('hiAudioMissing', []))}), "
+                  f"çeviri sesi {t.get('trAudio', 0)} (eksik/eskimiş {len(t.get('trAudioMissing', []))})")
         if "clips" in sd:
             c = sd["clips"]
             print(f"   Keşfet klipleri: {c['count']} klip ({c['seconds']} sn, {c['quizzes']} quiz), "

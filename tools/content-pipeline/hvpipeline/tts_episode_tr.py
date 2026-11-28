@@ -688,7 +688,7 @@ def assemble(parts: list[PartAudio], gap: float, out_mp3: Path, work: Path,
     wav = work / f"{out_mp3.stem}.birlesik.wav"
     cmd = ["ffmpeg", "-y", "-loglevel", "error"]
     for p in parts:
-        cmd += ["-i", str(p.src)]
+        cmd += media._inp(p.src)
     flt = ""
     for k, (p, r) in enumerate(zip(parts, rows)):
         s, e = r["trim"]

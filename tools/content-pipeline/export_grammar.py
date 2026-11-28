@@ -62,8 +62,26 @@ def main(argv: list[str] | None = None, media=None) -> int:
         for x in r.missing:
             tag = "HATA" if a.require_media else "UYARI"
             print(f"   - {tag} [lesson-media] bu ortamda yok: {x['path']}")
+        fbs = [it for c in cards for it in c["practice"] if it.get("feedbackTr")]
+        if any(it.get("feedbackAudio") for it in fbs) or m.get("feedbackMissing"):
+            print(f"   açıklama sesi (H-109): {sum(1 for it in fbs if it.get('feedbackAudio'))}/{len(fbs)} pakette")
+        for x in m.get("feedbackMissing") or []:   # isteğe bağlı: --require-media ile de hata değil
+            why = {"stale": "metin değişti, yeniden üret (tts_lesson.py --part feedback)",
+                   "bad": "hizalama bozuk ya da sesle uyuşmuyor, yeniden üret (tts_lesson.py --part feedback --force)"
+                   }.get(x["reason"], "bu ortamda yok (git dışı medya)")
+            print(f"   - UYARI [feedback-audio] {x['segment']}: açıklama sesi {why}: {x['path']}")
+        tls = [it for c in cards for it in c["examples"] + c["practice"] if it.get("tr")]
+        if any(it.get("trAudio") for it in tls) or m.get("translationMissing"):
+            print(f"   çeviri sesi (H-109 Faz 3): {sum(1 for it in tls if it.get('trAudio'))}/{len(tls)} pakette")
+        for x in m.get("translationMissing") or []:   # isteğe bağlı: --require-media ile de hata değil
+            why = {"stale": "metin değişti, yeniden üret (tts_lesson.py --part translation)",
+                   "bad": "hizalama bozuk ya da sesle uyuşmuyor, yeniden üret (tts_lesson.py --part translation --force)"
+                   }.get(x["reason"], "bu ortamda yok (git dışı medya)")
+            print(f"   - UYARI [translation-audio] {x['segment']}: çeviri sesi {why}: {x['path']}")
         summary.append({"lesson": r.lesson_id, "package": str(r.package), "errors": r.errors, "missing": r.missing,
-                        "files": len(m["files"]), "bytes": m["totalBytes"]})
+                        "feedbackMissing": m.get("feedbackMissing"),
+                        "translationMissing": m.get("translationMissing"), "files": len(m["files"]),
+                        "bytes": m["totalBytes"]})
     if a.report:
         Path(a.report).write_text(json.dumps(summary, ensure_ascii=False, indent=2), encoding="utf-8")
     return 1 if failed else 0

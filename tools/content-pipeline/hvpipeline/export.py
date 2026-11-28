@@ -140,6 +140,14 @@ def export_episode(ep_dir: Path, label: bool = True, clean: bool = True) -> dict
     for rel, img in fm.stills.items():
         media.still(img, pkg / rel)
 
+    # H-109 Faz 3: çevirilerin Türkçe sesi (güncel olanlar; eksik/eskimiş ses paketi durdurmaz)
+    from . import episodetl
+    try:
+        tl = episodetl.attach(ep.dir, pkg, doc, b.subs)
+        tl_report = {"packaged": tl.packaged, "missing": tl.missing}
+    except (episodetl.EpisodeTlError, media.MediaError, OSError, KeyError, ValueError) as e:
+        tl_report = {"packaged": [], "missing": [], "error": str(e)}
+
     # Gerçek süreleri yaz
     for n in doc["nodes"]:
         if n.get("video"):
@@ -170,6 +178,7 @@ def export_episode(ep_dir: Path, label: bool = True, clean: bool = True) -> dict
                      "before": before, "after": after,
                      "turkishClips": {k: round(v, 2) for k, v in sorted(clip_gains.items())}},
         "textOnly": [{"node": t.node, "what": t.what, "reason": t.reason} for t in b.text_only],
+        "translationMissing": tl_report["missing"],
         "files": [{"path": str(p.relative_to(pkg)), "bytes": p.stat().st_size, "sha256": file_digest(p)}
                   for p in files],
     }
@@ -177,7 +186,8 @@ def export_episode(ep_dir: Path, label: bool = True, clean: bool = True) -> dict
     manifest["renditionBytes"] = rendition_bytes(manifest["files"])
     (pkg / "manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     return {"episode": ep.id, "package": pkg, "doc": doc, "manifest": manifest, "sync": sync,
-            "sync720": sync720, "probes720": probes720, "probes": probes, "issues": issues, "subErrors": sub_errors, "textOnly": b.text_only}
+            "sync720": sync720, "probes720": probes720, "probes": probes, "issues": issues, "subErrors": sub_errors, "textOnly": b.text_only,
+            "translationAudio": tl_report}
 
 
 def _video_path(pkg: Path, sid: str, rendition: str | None) -> Path:

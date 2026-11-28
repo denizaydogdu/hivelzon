@@ -1,6 +1,9 @@
 // Hi'nin Türkçe sesi için "Dinle" düğmesi (H-083): not, konu kartı, yan görev;
 // Konuş görevlerinde Hi'nin yönlendirmeleri (H-104); kitapta "Sayfanın
-// Türkçesi" (H-105, `bookId` ile kitap paketinden).
+// Türkçesi" (H-105, `bookId` ile kitap paketinden); dilbilgisinde yanlış
+// cevap açıklaması (H-109, `lessonId`), Keşfet reel alıştırması (H-109,
+// `reelId`), kitap sonu soru Türkçesi (H-109, `bookId`); anlam panelinde
+// çevirinin Türkçesi (H-109 Faz 3, `contentId`: `resolveMediaUri` biçimi).
 import 'dart:async';
 
 import 'package:material_ui/material_ui.dart';
@@ -8,6 +11,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../l10n/tr_strings.dart';
 import '../../../shared/content/content_providers.dart';
+import '../../../shared/content/content_source.dart' show resolveMediaUri;
 import '../../player/application/clip_audio_player.dart';
 import '../../player/presentation/player_screen.dart'
     show videoControllerFactoryProvider;
@@ -25,17 +29,32 @@ class HiListenButton extends ConsumerStatefulWidget {
     this.label = HiTexts.listen,
     this.filled = true,
     this.bookId,
+    this.lessonId,
+    this.reelId,
+    this.contentId,
     this.beforePlay,
     this.stopOn,
     this.shouldStop,
   });
 
   /// Sezon paketine göre yol (ör. `hi/note-be-dropped.m4a`); `bookId`
-  /// verilirse kitap paketine göre (ör. `audio/tr/p01.m4a`).
+  /// verilirse kitap paketine göre (ör. `audio/tr/p01.m4a`), `lessonId`
+  /// verilirse ders paketine göre (`audio/c07-q1-fb.m4a`), `reelId` verilirse
+  /// reel paketine göre (`audio/tr/practice-prompt.m4a`).
   final String path;
 
   /// Kitap sesi (H-105): yol bu kitabın paketinden çözülür.
   final String? bookId;
+
+  /// Dilbilgisi dersi sesi (H-109): yol bu dersin paketinden çözülür.
+  final String? lessonId;
+
+  /// Reel sesi (H-109): yol bu reelin paketinden çözülür.
+  final String? reelId;
+
+  /// Anlam paneli (H-109 Faz 3): yol `resolveMediaUri(source, contentId,
+  /// path)` ile çözülür (bölüm paketi; `_reels/…`, `_grammar/…` önekleri).
+  final String? contentId;
 
   /// Çalmadan hemen önce (ör. kitabın İngilizce anlatımını duraklat):
   /// iki ses aynı anda çalmaz.
@@ -97,8 +116,17 @@ class _HiListenButtonState extends ConsumerState<HiListenButton> {
     )..addListener(_onPlayer);
     final source = ref.read(contentSourceProvider);
     final book = widget.bookId;
-    final uri = book != null
+    final lesson = widget.lessonId;
+    final reel = widget.reelId;
+    final content = widget.contentId;
+    final uri = content != null
+        ? resolveMediaUri(source, content, widget.path)
+        : book != null
         ? source.bookMediaUri(book, widget.path)
+        : lesson != null
+        ? source.grammarMediaUri(lesson, widget.path)
+        : reel != null
+        ? source.reelMediaUri(reel, widget.path)
         : source.seasonMediaUri(kTopicSetSeason, widget.path);
     await player.play(uri);
   }
@@ -106,7 +134,11 @@ class _HiListenButtonState extends ConsumerState<HiListenButton> {
   @override
   void didUpdateWidget(HiListenButton oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (oldWidget.path != widget.path || oldWidget.bookId != widget.bookId) {
+    if (oldWidget.path != widget.path ||
+        oldWidget.bookId != widget.bookId ||
+        oldWidget.lessonId != widget.lessonId ||
+        oldWidget.reelId != widget.reelId ||
+        oldWidget.contentId != widget.contentId) {
       unawaited(_player?.stop());
     }
     if (!identical(oldWidget.stopOn, widget.stopOn)) {

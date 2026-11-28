@@ -178,6 +178,7 @@ class TopicSetItem {
     this.aboveLevel = false,
     this.audio,
     this.exampleAudio,
+    this.exampleTrAudio,
   });
 
   factory TopicSetItem.fromJson(Map<String, dynamic> j) {
@@ -202,6 +203,11 @@ class TopicSetItem {
         j['exampleAudio'],
         j['exampleAudioSource'],
       ),
+      exampleTrAudio:
+          j['exampleTrAudio'] is String &&
+              (j['exampleTrAudio'] as String).isNotEmpty
+          ? j['exampleTrAudio'] as String
+          : null,
     );
   }
 
@@ -222,6 +228,11 @@ class TopicSetItem {
   final bool aboveLevel;
   final SetAudio? audio;
   final SetAudio? exampleAudio;
+
+  /// Örnek cümlenin Türkçesinin Hi sesiyle okunuşu (H-109 Faz 3b; `sets/`
+  /// altındaki yol, `alex-room/tr-radio.m4a`). Kart yalnız Türkçe görünürken
+  /// gösterir (cevabı ele vermez); yoksa düğme yok.
+  final String? exampleTrAudio;
 
   NotebookKind get kind => multiWord ? NotebookKind.phrase : NotebookKind.word;
 

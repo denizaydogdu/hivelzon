@@ -193,7 +193,8 @@ class FakeContentSource implements ContentSource {
     );
   }
 
-  /// Türkçe sesi olan sayfalar (H-105): `audio/tr/<sayfa>.m4a`.
+  /// Türkçe sesi olan sayfalar (H-105): `audio/tr/<sayfa>.m4a`; `q1`, `q2`
+  /// ve `blurb` kitap sonu soru Türkçesi ve tanıtım sesi (H-109).
   Set<String> turkishAudio = const {};
 
   /// Sesi henüz hazır olmayan bölümler (kitap bölüm bölüm seslendirilir).
@@ -239,8 +240,12 @@ class FakeContentSource implements ContentSource {
       silent: lessonsSilent,
       noEnglishAudio: lessonsNoEnglishAudio,
       episodeLink: lessonEpisodeLink,
+      feedbackAudio: lessonsFeedbackAudio,
     );
   }
+
+  /// Yanlış cevap açıklamalarının Türkçe sesi var (H-109).
+  bool lessonsFeedbackAudio = false;
 
   @override
   Uri grammarMediaUri(String lessonId, String path) =>
@@ -391,6 +396,7 @@ GrammarLesson loadTestLesson({
   bool silent = false,
   bool noEnglishAudio = false,
   String? episodeLink,
+  bool feedbackAudio = false,
 }) {
   final lesson =
       (jsonDecode(fixtureText('grammar/$kTestLessonId/lesson.json')) as Map)
@@ -406,6 +412,14 @@ GrammarLesson loadTestLesson({
     if (episodeLink != null) {
       for (final l in card['links'] as List) {
         if ((l as Map)['kind'] == 'episode') l['episodeId'] = episodeLink;
+      }
+    }
+    if (feedbackAudio) {
+      for (final q in card['practice'] as List) {
+        if ((q as Map)['feedbackTr'] != null) {
+          q['feedbackAudio'] = 'audio/${q['id']}-fb.m4a';
+          q['feedbackDuration'] = 2.0;
+        }
       }
     }
     if (silent && card['narration'] is Map) {
@@ -509,6 +523,19 @@ Book loadTestBook({
       p['trAudio'] = 'audio/tr/${p['id']}.m4a';
       p['trDuration'] = 3.0;
     }
+  }
+  // H-109: kitap sonu soruların Türkçesi (`q1`, `q2`) ve tanıtım (`blurb`).
+  final questionAudio = {
+    for (final q in const ['q1', 'q2'])
+      if (turkishAudio.contains(q))
+        q: {'audio': 'audio/tr/$q.m4a', 'duration': 2.0},
+  };
+  if (questionAudio.isNotEmpty || turkishAudio.contains('blurb')) {
+    book['trAudio'] = {
+      if (questionAudio.isNotEmpty) 'questions': questionAudio,
+      if (turkishAudio.contains('blurb'))
+        'blurb': {'audio': 'audio/tr/blurb.m4a', 'duration': 9.0},
+    };
   }
   for (final p in pages['pages'] as List) {
     if (unnarrated.contains((p as Map)['chapter'])) {

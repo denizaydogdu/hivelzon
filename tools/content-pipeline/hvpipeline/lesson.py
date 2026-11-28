@@ -6,6 +6,8 @@ Dosyalar:
 - `lesson.md`            kartlar (aşağıdaki işaretler)
 - `PROMPTS.md`, `rights-and-review.md`
 - `audio/tr/<kart>-tr.{mp3,align.json}`   Türkçe anlatım (tts_tr: Alania + Duyu)
+- `audio/tr/<alıştırma>-fb.{mp3,align.json}`  yanlış cevap açıklaması (`!`; H-109 Faz 1, ör. c07-q1-fb)
+- `audio/tr/<örnek>-tl.{mp3,align.json}`  örnek / "Söyle" Türkçesi (H-109 Faz 3, ör. c03-ex1-tl, c07-q5-tl)
 - `audio/en/<örnek>.{mp3,align.json}`     İngilizce örnek (ElevenLabs, Sarah)
 - `audio/lesson-audio.json`               kart → ses parçası haritası (tts_lesson.py yazar)
 Ses dosyaları (mp3) git dışındadır; hizalamalar ve harita depodadır (kitaplardaki gibi).
@@ -48,6 +50,8 @@ AUDIO_DIR = "audio"
 TR_DIR = "tr"
 EN_DIR = "en"
 AUDIO_MANIFEST = "lesson-audio.json"
+FEEDBACK_SUFFIX = "-fb"
+TRANSLATION_SUFFIX = "-tl"       # H-109 Faz 3: örnek / "Söyle" Türkçesi (anlatım `<kart>-tr` ile karışmasın)
 DEFAULT_ROOT = REPO_ROOT / "dilbilgisi"
 
 ID_PATTERN = r"G-(A1|A2|B1|B2|C1|C2)-\d{2}-[a-z0-9]+(?:-[a-z0-9]+)*"
@@ -173,6 +177,11 @@ class Card:
     @property
     def tr_segment_id(self) -> str:
         return f"{self.id}-tr"
+
+    @property
+    def feedback(self) -> list["PracticeItem"]:
+        """Yanlış cevap açıklaması (`!`) olan alıştırmalar."""
+        return [p for p in self.practice if p.feedback]
 
 
 @dataclass
@@ -413,6 +422,60 @@ class Lesson:
             out.append(Segment(c.tr_segment_id, c.narration, ins, pr))
         return check_segments(out, allow_empty=True)
 
+    def feedback_pronunciations(self) -> list[dict]:
+        """Açıklama sesine giden sözlük: `feedbackPronunciations` önce, sonra `pronunciations`. Biçimi bozuksa
+        boş (lint ve uyarılar çökmesin); seslendirmede `feedback_segments` hatayla durur."""
+        from .tts_tr import pron_problem
+        raw = self.meta.get("feedbackPronunciations")
+        return ([] if pron_problem(raw) else [dict(p) for p in raw or []]) + self.pronunciations
+
+    def feedback_segments(self):
+        """H-109 Faz 1: yanlış cevap açıklamaları (alıştırma başına bir parça, kimlik `<alıştırma>-fb`, ör.
+        `c07-q1-fb`). Alıştırma kimliği kart ve kart içi sıradan gelir (uygulamadaki kimlikle aynı). Ses ve
+        üslup anlatımla aynı (Hi). Sözlük kelime sınırında ve büyük/küçük harfe duyarlı eşleşir."""
+        from .tts_tr import Segment, check_pronunciations, check_segments
+        ins = self.tr_voice().get("instructions")
+        prons = check_pronunciations(self.meta.get("feedbackPronunciations"), f"{self.id} feedbackPronunciations")
+        prons += check_pronunciations(self.meta.get("pronunciations"), f"{self.id} lesson.json")
+        out = []
+        for c in self.cards:
+            for p in c.feedback:
+                out.append(Segment(feedback_segment_id(p.id), p.feedback, ins, terms_in(p.feedback, prons)))
+        return check_segments(out, allow_empty=True)
+
+    def translation_items(self) -> list[tuple[str, str]]:
+        """H-109 Faz 3: ekranda görünen Türkçe çeviriler — doğru örneklerin (`+ … | Türkçesi`) ve "Söyle"
+        alıştırmalarının Türkçesi, (örnek/alıştırma kimliği, metin), ekrandaki sırayla. Aynı Türkçe metin
+        bir kez (ilk geçtiği yerin kimliğiyle; pakette metinle eşleşen her yer aynı sesi kullanır).
+        Yanlış biçimlerin (`x`) kısa notu çeviri değildir, dışarıda."""
+        out, seen = [], set()
+        for c in self.cards:
+            items = [(e.id, e.tr) for e in c.right] + [(p.id, p.tr) for p in c.practice if p.kind == "say"]
+            for iid, tr in items:
+                t = (tr or "").strip()
+                if t and t not in seen:
+                    seen.add(t)
+                    out.append((iid, t))
+        return out
+
+    def translation_pronunciations(self) -> list[dict]:
+        """Çeviri sesine giden sözlük (`translationPronunciations`; anlatım ve açıklama sözlükleri buraya
+        karışmaz: Türkçe "on", "her", "an" gibi kelimeler İngilizce okunmasın). Biçimi bozuksa boş."""
+        from .tts_tr import pron_problem
+        raw = self.meta.get("translationPronunciations")
+        return [] if pron_problem(raw) else [dict(p) for p in raw or []]
+
+    def translation_segments(self):
+        """H-109 Faz 3: çeviri parçaları (kimlik `<örnek|alıştırma>-tl`, ör. `c03-ex1-tl`, `c07-q5-tl`). Ses ve
+        üslup anlatımla aynı (Hi). Sözlük kelime sınırında ve büyük/küçük harfe duyarlı eşleşir."""
+        from .tts_tr import Segment, check_pronunciations, check_segments
+        ins = self.tr_voice().get("instructions")
+        prons = check_pronunciations(self.meta.get("translationPronunciations"),
+                                     f"{self.id} translationPronunciations")
+        out = [Segment(translation_segment_id(iid), text, ins, terms_in(text, prons))
+               for iid, text in self.translation_items()]
+        return check_segments(out, allow_empty=True)
+
     def en_segments(self) -> list[EnSegment]:
         """İngilizce parçalar: her doğru örnek (+) ve her "Söyle" alıştırması."""
         out = []
@@ -441,6 +504,27 @@ class Lesson:
         out = [e.en for c in self.cards for e in c.right]
         out += [s for c in self.cards for p in c.practice if (s := p.solved())]
         return out
+
+
+def feedback_segment_id(practice_id: str) -> str:
+    return f"{practice_id}{FEEDBACK_SUFFIX}"
+
+
+def translation_segment_id(item_id: str) -> str:
+    return f"{item_id}{TRANSLATION_SUFFIX}"
+
+
+def terms_in(text: str, prons: list[dict]) -> list[dict] | None:
+    """Metinde kelime sınırında (büyük/küçük harf duyarlı) geçen sözlük terimleri; ilk tanım kazanır."""
+    out, seen = [], set()
+    for p in prons:
+        term = p.get("term")
+        if not term or term in seen or not p.get("say_as"):
+            continue
+        if re.search(rf"(?<![\w'’]){re.escape(term)}(?![\w])", text):
+            out.append({"term": term, "say_as": p["say_as"]})
+            seen.add(term)
+    return out or None
 
 
 # --- Türkçe anlatımdaki İngilizce kelimeler ------------------------------------------------------
@@ -491,6 +575,40 @@ def english_in_turkish(text: str, pronunciations: list[dict] | None = None) -> l
     return out
 
 
+# --- çevirilerdeki İngilizce kelimeler ve adlar (H-109 Faz 3) -------------------------------------
+# Çeviri cümleleri düz Türkçedir; Alania'nın yanlış okuyacağı şey çoğunlukla İngilizce adlar ("Lumen Point",
+# "Light Night", "Alex") ve alıntılanan İngilizce kelimelerdir ("He mi?"). Aşağıdakiler İngilizce kelime
+# listesinde de bulunan Türkçe kelimeler ya da Türkçe ek gösterimleridir (yanlış alarm olmasın).
+TR_TRANSLATION_WORDS = {"not", "pasta", "pardon", "bay", "piller", "denim", "-in", "-den", "-ma", "-im"}
+# Hikâye ad listesindeki (cefr.load_proper_nouns) Türkçe okunuşu yeterli adlar ve harfler.
+TR_READABLE_NAMES = {"e", "n", "maya", "sam", "tom", "rosa", "jordan", "helen", "ellen", "hart", "izmir",
+                     "i̇zmir", "türkiye", "turkey", "yıldız", "yildiz", "yil", "nermin", "aleyna", "alper", "marin",
+                     "port"}
+
+
+def english_in_translation(text: str, pronunciations: list[dict] | None = None) -> list[str]:
+    """Türkçe çeviride söyleniş sözlüğüyle karşılanmamış İngilizce kelime ve adlar (sıralı, tekrarsız).
+    Çok kelimeli terimler ("Lumen Point") kelime sınırında ve büyük/küçük harfe duyarlı karşılanır;
+    tek kelimelik terimler `english_in_turkish` kuralıyla (büyük/küçük harf duyarsız)."""
+    from .cefr import load_proper_nouns
+    prons = [p for p in pronunciations or [] if isinstance(p, dict) and p.get("term") and p.get("say_as")]
+    rest = text
+    for p in sorted((p for p in prons if " " in p["term"] or "&" in p["term"]), key=lambda p: -len(p["term"])):
+        rest = re.sub(rf"(?<![\w'’]){re.escape(p['term'])}(?![\w])", lambda m: " " * len(m.group(0)), rest)
+    said = {str(p["term"]).lower() for p in prons}
+    out = [w for w in english_in_turkish(rest, prons)
+           if re.split(r"['’]", w.lower())[0] not in TR_TRANSLATION_WORDS and w.lower() not in TR_TRANSLATION_WORDS]
+    proper = load_proper_nouns()
+    for tok in _TR_WORD_RE.findall(rest):
+        base = re.split(r"['’]", tok)[0]
+        low = base.lower()
+        if tok.startswith("-") or tok in out or low in said or low in TR_READABLE_NAMES:
+            continue
+        if low in proper and base[:1].isupper():
+            out.append(tok)
+    return out
+
+
 # --- ders klasörleri -----------------------------------------------------------------------------
 
 def known_lessons(root: Path | None = None) -> set[str]:
@@ -533,4 +651,4 @@ def check_grammar_topics(topics, root: Path | None = None) -> list[tuple[str, st
 
 __all__ = ["Lesson", "LessonError", "Card", "Example", "PracticeItem", "Link", "Diagram", "EnSegment",
            "parse_lesson_md", "parse_diagram", "english_in_turkish", "known_lessons", "check_grammar_topics",
-           "text_sha256"]
+           "text_sha256", "feedback_segment_id", "terms_in", "translation_segment_id", "english_in_translation"]

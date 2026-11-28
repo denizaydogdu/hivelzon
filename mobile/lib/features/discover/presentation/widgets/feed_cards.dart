@@ -3,6 +3,10 @@ import 'package:material_ui/material_ui.dart';
 import '../../../../app/design/design.dart';
 import '../../../../l10n/tr_strings.dart';
 import '../../../../shared/ui/ui.dart';
+import '../../../hi/presentation/hi_listen_button.dart';
+import '../../../topic_sets/domain/topic_set.dart'
+    show parseSeasonMediaPath, seasonMediaPath;
+import '../../application/discover_providers.dart' show kDiscoverSeason;
 import '../../domain/clip.dart';
 import '../../domain/feed_video.dart';
 import '../../domain/reel_progress.dart';
@@ -71,6 +75,18 @@ class _QuizCardState extends State<QuizCard> {
 
   ClipQuiz get _quiz => widget.clip.quiz!;
 
+  /// Klip alıştırmasının Türkçe sesi (H-109 Faz 3b): yol sezon paketine göre
+  /// (`clips/S1-K04.tr-prompt.m4a`); yalnız varsa, yalnız dokununca.
+  Widget? _listen(String? path, String key, String label) => path == null
+      ? null
+      : HiListenButton(
+          key: ValueKey(key),
+          path: seasonMediaPath(kDiscoverSeason, path),
+          contentId: widget.clip.episodeId,
+          label: label,
+          filled: false,
+        );
+
   void _pick(int i) {
     if (_done || _tried.contains(i)) return;
     setState(() {
@@ -102,9 +118,21 @@ class _QuizCardState extends State<QuizCard> {
         children: [
           const CapsLabel(DiscoverTexts.quizLabel),
           const SizedBox(height: AppSpace.s8),
-          Semantics(
-            header: true,
-            child: Text(quiz.promptTr, style: t.headlineSmall),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Expanded(
+                child: Semantics(
+                  header: true,
+                  child: Text(quiz.promptTr, style: t.headlineSmall),
+                ),
+              ),
+              ?_listen(
+                quiz.promptAudio,
+                'quiz-prompt-listen',
+                DiscoverTexts.practicePromptListen,
+              ),
+            ],
           ),
           const SizedBox(height: AppSpace.s4),
           Text(
@@ -146,10 +174,22 @@ class _QuizCardState extends State<QuizCard> {
           ],
           if (_done && quiz.explainTr != null) ...[
             const SizedBox(height: AppSpace.s4),
-            Text(
-              quiz.explainTr!,
-              key: const ValueKey('quiz-explain'),
-              style: t.bodyLarge?.copyWith(color: AppPalette.ink700),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Expanded(
+                  child: Text(
+                    quiz.explainTr!,
+                    key: const ValueKey('quiz-explain'),
+                    style: t.bodyLarge?.copyWith(color: AppPalette.ink700),
+                  ),
+                ),
+                ?_listen(
+                  quiz.explainAudio,
+                  'quiz-explain-listen',
+                  DiscoverTexts.practiceExplainListen,
+                ),
+              ],
             ),
           ],
           const SizedBox(height: AppSpace.s24),
@@ -206,6 +246,23 @@ class _PracticeCardState extends State<PracticeCard> {
 
   ClipQuiz get _quiz => widget.video.practice!;
 
+  /// Alıştırmanın Türkçe sesi (H-109): reelde yol reel paketinden; hikâye
+  /// klibinde (H-109 Faz 3b) yalnız sezon yolundan (`_season/S1/…`,
+  /// `feedVideoOfClip` bağlar; `resolveMediaUri` çözer). Başka yol → düğme yok.
+  Widget? _listen(String? path, String key, String label) {
+    if (path == null) return null;
+    final reel = widget.video.isReel;
+    if (!reel && parseSeasonMediaPath(path) == null) return null;
+    return HiListenButton(
+      key: ValueKey(key),
+      path: path,
+      reelId: reel ? widget.video.id : null,
+      contentId: reel ? null : (widget.video.contentId ?? widget.video.id),
+      label: label,
+      filled: false,
+    );
+  }
+
   void _pick(int i) {
     if (_done || _tried.contains(i)) return;
     final correct = _quiz.options[i].correct;
@@ -251,9 +308,21 @@ class _PracticeCardState extends State<PracticeCard> {
         children: [
           const CapsLabel(DiscoverTexts.practiceLabel),
           const SizedBox(height: AppSpace.s8),
-          Semantics(
-            header: true,
-            child: Text(quiz.promptTr, style: t.headlineSmall),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Expanded(
+                child: Semantics(
+                  header: true,
+                  child: Text(quiz.promptTr, style: t.headlineSmall),
+                ),
+              ),
+              ?_listen(
+                quiz.promptAudio,
+                'practice-prompt-listen',
+                DiscoverTexts.practicePromptListen,
+              ),
+            ],
           ),
           const SizedBox(height: AppSpace.s4),
           Text(
@@ -295,10 +364,22 @@ class _PracticeCardState extends State<PracticeCard> {
           ],
           if (_done && quiz.explainTr != null) ...[
             const SizedBox(height: AppSpace.s4),
-            Text(
-              quiz.explainTr!,
-              key: const ValueKey('practice-explain'),
-              style: t.bodyLarge?.copyWith(color: AppPalette.ink700),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Expanded(
+                  child: Text(
+                    quiz.explainTr!,
+                    key: const ValueKey('practice-explain'),
+                    style: t.bodyLarge?.copyWith(color: AppPalette.ink700),
+                  ),
+                ),
+                ?_listen(
+                  quiz.explainAudio,
+                  'practice-explain-listen',
+                  DiscoverTexts.practiceExplainListen,
+                ),
+              ],
             ),
           ],
           const SizedBox(height: AppSpace.s24),

@@ -36,6 +36,29 @@ final topicSetProvider = FutureProvider.autoDispose.family<TopicSet, String>((
       .loadTopicSet(kTopicSetSeason, summary.path);
 }, retry: (_, _) => null);
 
+/// Konu seti kartının örnek cümle Türkçesinin sesi (H-109 Faz 3b): kartın
+/// `cueId`si (`set:<set>/<öğe>`) ve gösterilen Türkçe metin → sezon yolu
+/// (`_season/S1/sets/…`). Defterdeki kopya metin setteki metinle aynı değilse
+/// (eski kayıt, düzeltilmiş çeviri) ya da set okunamazsa null: düğme görünmez.
+final setExampleTrAudioProvider = FutureProvider.autoDispose
+    .family<String?, (String, String)>((ref, key) async {
+      final (cueId, tr) = key;
+      final m = RegExp(r'^set:([^/]+)/(.+)$').firstMatch(cueId);
+      if (m == null) return null;
+      try {
+        final set = await ref.watch(topicSetProvider(m.group(1)!).future);
+        final it = set.items.where((i) => i.id == m.group(2)).firstOrNull;
+        final audio = it?.exampleTrAudio;
+        if (it == null || audio == null || it.exampleTr.trim() != tr.trim()) {
+          return null;
+        }
+        return seasonMediaPath(set.season, set.setsPath(audio));
+      } on Object catch (e) {
+        debugPrint('[H109] konu seti Türkçe sesi okunamadı: $e');
+        return null;
+      }
+    }, retry: (_, _) => null);
+
 /// Defterdeki ifade anahtarları (setteki öğe "defterinde" mi).
 final deckKeysProvider = FutureProvider.autoDispose<Set<String>>((ref) async {
   final entries = await ref.watch(notebookStoreProvider).entries();

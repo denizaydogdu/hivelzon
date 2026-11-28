@@ -7,6 +7,7 @@ import '../../../../l10n/tr_strings.dart';
 import '../../../../shared/speech/speak_widgets.dart';
 import '../../../../shared/speech/speech_store.dart';
 import '../../../../shared/ui/ui.dart';
+import '../../../hi/presentation/hi_listen_button.dart';
 import '../../application/lesson_controller.dart';
 import '../../domain/grammar_lesson.dart';
 
@@ -346,11 +347,26 @@ class _PracticeViewState extends State<PracticeView> {
                         ),
                       ),
                       if (item.tr != null)
-                        Text(
-                          item.tr!,
-                          style: theme.textTheme.bodyMedium?.copyWith(
-                            color: AppPalette.ink500,
-                          ),
+                        Row(
+                          children: [
+                            Flexible(
+                              child: Text(
+                                item.tr!,
+                                style: theme.textTheme.bodyMedium?.copyWith(
+                                  color: AppPalette.ink500,
+                                ),
+                              ),
+                            ),
+                            // H-109 Faz 3: Türkçesinin sesi (yalnız varsa).
+                            if (item.trAudio != null)
+                              _FeedbackListen(
+                                key: ValueKey('say-tr-listen-${item.id}'),
+                                lessonId: widget.lessonId,
+                                path: item.trAudio!,
+                                controller: c,
+                                label: GrammarTexts.sayTrListen,
+                              ),
+                          ],
                         ),
                     ],
                   ),
@@ -517,6 +533,13 @@ class _PracticeViewState extends State<PracticeView> {
                       ],
                     ),
                   ),
+                  if (item.feedbackTr != null && item.feedbackAudio != null)
+                    _FeedbackListen(
+                      key: ValueKey('feedback-listen-${item.id}'),
+                      lessonId: widget.lessonId,
+                      path: item.feedbackAudio!,
+                      controller: widget.controller,
+                    ),
                 ],
               ),
             ),
@@ -623,5 +646,43 @@ class _TokenChip extends StatelessWidget {
       side: const BorderSide(color: AppPalette.seaBlue200),
     ),
     child: Text(text, style: AppTypography.lead),
+  );
+}
+
+/// Yanlış cevap açıklamasının (ve "Söyle" Türkçesinin, H-109 Faz 3) Türkçe
+/// sesi (H-109): yalnız ses varsa ve ders
+/// sessiz modda değilse görünür; yalnız dokununca çalar (kendiliğinden
+/// çalmaz). Dersin sesiyle aynı anda çalmaz: açıklama başlarken ders sesi
+/// durur, ders sesi yeniden başlarsa açıklama durur.
+class _FeedbackListen extends StatelessWidget {
+  const _FeedbackListen({
+    super.key,
+    required this.lessonId,
+    required this.path,
+    required this.controller,
+    this.label = GrammarTexts.feedbackListen,
+  });
+
+  final String lessonId;
+  final String path;
+  final LessonController controller;
+  final String label;
+
+  @override
+  Widget build(BuildContext context) => ListenableBuilder(
+    listenable: controller,
+    builder: (context, _) => controller.silent
+        ? const SizedBox.shrink()
+        : HiListenButton(
+            path: path,
+            lessonId: lessonId,
+            label: label,
+            filled: false,
+            beforePlay: () async {
+              if (controller.isPlaying) await controller.stop();
+            },
+            stopOn: controller,
+            shouldStop: () => controller.isPlaying,
+          ),
   );
 }

@@ -13,8 +13,14 @@ Kullanım:
     # Gerçek üretim (aylık tavan şart; kaldığı yerden sürer, güncel sayfalar atlanır):
     HIVELZON_TR_TTS_MONTHLY_CHAR_CAP=1500000 $P tools/content-pipeline/tts_book_tr.py kitaplar/A1-K* --execute
 
+    # H-109 Faz 2: kitap sonu soruların Türkçesi ve kitap tanıtımı (yalnız bunlar; kuru çalışma):
+    $P tools/content-pipeline/tts_book_tr.py kitaplar/*-K* --part questions --part blurb --offline
+
     # Duyu dökümünde şüpheli kelimeler (söyleniş denetimi; API çağrılmaz):
     $P tools/content-pipeline/tts_book_tr.py kitaplar/A2-K* --suspects
+
+Bölüm seçimi `--part` (tekrarlanabilir): `pages` (varsayılan; H-105), `questions` (kitap sonu soruların Türkçesi,
+parça kimliği q1/q2), `blurb` (kitap tanıtımı `blurbTr`, parça `blurb`) — H-109 Faz 2.
 
 Çıktı: `<kitap>/audio/tr/<sayfa>.mp3` (git dışı, -16 LUFS), `<sayfa>.align.json` (depoda), `_raw/` (ödenmiş
 önbellek, git dışı). Her gerçek çağrı `<kitap>/PROMPTS.md`'ye ve aylık deftere yazılır. Anahtar PD_API_KEY
@@ -62,7 +68,9 @@ def main(argv: list[str] | None = None, client=None, finalize=None, sleep=None, 
     g.add_argument("--dry-run", action="store_true", default=True, help="varsayılan: üretim çağrısı yapılmaz")
     g.add_argument("--execute", action="store_true", help="gerçek çağrı yap")
     g.add_argument("--suspects", action="store_true", help="Duyu dökümünde şüpheli kelimeleri listele")
-    ap.add_argument("--page", action="append", help="yalnızca bu sayfa(lar) (p01 …)")
+    ap.add_argument("--page", action="append", help="yalnızca bu sayfa(lar) / parça(lar) (p01 …, q1, blurb)")
+    ap.add_argument("--part", action="append", choices=booktr.PARTS,
+                    help="seslendirilecek bölüm(ler): pages (varsayılan), questions, blurb (H-109)")
     ap.add_argument("--force", action="store_true", help="çıktı güncel olsa da yeniden kur (önbellek kullanılır)")
     ap.add_argument("--monthly-char-cap", type=int, help=f"aylık karakter tavanı (yoksa {tr.ENV_CAP})")
     ap.add_argument("--ledger", help=f"aylık kullanım defteri (varsayılan {tr.ENV_LEDGER} ya da {tr.DEFAULT_LEDGER})")
@@ -80,7 +88,8 @@ def main(argv: list[str] | None = None, client=None, finalize=None, sleep=None, 
     try:
         cap = tr.monthly_cap(a.monthly_char_cap)
         books = [Book.load(d) for d in sorted(dirs)]
-        plans = [(b, booktr.plan_book(b, vm, a.page, a.force)) for b in books]
+        parts = tuple(dict.fromkeys(a.part or booktr.DEFAULT_PARTS))
+        plans = [(b, booktr.plan_book(b, vm, a.page, a.force, parts)) for b in books]
     except (BookError, booktr.BookTrError, tr.TrTtsError, OSError, KeyError, ValueError) as e:
         print(f"HATA: {e}", file=sys.stderr)
         return 2
@@ -92,9 +101,10 @@ def main(argv: list[str] | None = None, client=None, finalize=None, sleep=None, 
     month = tr.month_key()
     used = tr.ledger_used(ledger, month)
     chars = secs = 0
+    unit = "sayfa" if parts == ("pages",) else "parça"
     for b, plan in plans:
         todo = [j for j in plan.jobs if j.action != "skip"]
-        print(f"== {b.id}: {len(plan.jobs)} sayfa, {sum(j.chars for j in plan.jobs)} karakter; "
+        print(f"== {b.id}: {len(plan.jobs)} {unit}, {sum(j.chars for j in plan.jobs)} karakter; "
               f"yapılacak {len(todo)} (Alania {plan.billable_chars} karakter)")
         for j in todo:
             print(f"   {j.seg.id}: {j.chars} karakter — {j.reason}")
@@ -102,6 +112,8 @@ def main(argv: list[str] | None = None, client=None, finalize=None, sleep=None, 
         secs += plan.est_stt_seconds
     st = billing if billing is not None else tr.billing_status(offline=a.offline,
                                                                      needed=tr.work_needed(chars, secs))
+    print(f"Bölümler: {', '.join(parts)}; {len(plans)} kitap, {sum(len(p.jobs) for _, p in plans)} parça, "
+          f"{sum(j.chars for _, p in plans for j in p.jobs)} karakter (yapılacak + güncel)")
     print(f"Toplam Alania: {chars} karakter; Duyu ≈ {secs:.0f} sn (tahmin). Ücret: {tr.cost_text(chars, secs, st)}. "
           f"Bu ay ({month}) kullanılan: {used}; "
           f"tavan: {cap if cap is not None else 'TANIMLI DEĞİL'}")
@@ -134,7 +146,7 @@ def main(argv: list[str] | None = None, client=None, finalize=None, sleep=None, 
             q = d.quality
             print(f"  {b.id} {d.id}: {d.chars} karakter, {d.duration:.2f} sn, LUFS {d.lufs}, hizalama "
                   f"{q['exact']}+{q['fuzzy']}/{q['words']} (skor {q['score']}){'' if q['ok'] else ' — UYARI'}")
-        print(f"== {b.id}: {len(r.done)} sayfa kuruldu, {len(r.skipped)} atlandı; Alania {r.tts_calls} çağrı / "
+        print(f"== {b.id}: {len(r.done)} {unit} kuruldu, {len(r.skipped)} atlandı; Alania {r.tts_calls} çağrı / "
               f"{r.chars} karakter, Duyu {r.stt_calls} çağrı / {r.stt_seconds:.1f} sn")
         warned |= bool(r.warnings)
         if r.stopped:

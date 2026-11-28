@@ -48,6 +48,8 @@ class ClipQuiz {
     required this.promptTr,
     required this.options,
     this.explainTr,
+    this.promptAudio,
+    this.explainAudio,
   });
 
   final String promptTr;
@@ -56,7 +58,37 @@ class ClipQuiz {
   /// Cevaptan sonra görünen kısa açıklama.
   final String? explainTr;
 
+  /// Sorunun (ve Türkçe seçeneklerin) Hi sesiyle okunuşu (H-109). Reelde
+  /// reel paketi içi yol (`audio/tr/practice-prompt.m4a`); hikâye klibinde
+  /// (H-109 Faz 3b) sezon yolu (`_season/S1/clips/S1-K04.tr-prompt.m4a`,
+  /// `feedVideoOfClip` bağlar). Yoksa düğme görünmez.
+  final String? promptAudio;
+
+  /// Açıklamanın Hi sesiyle okunuşu (H-109).
+  final String? explainAudio;
+
   int get correctIndex => options.indexWhere((o) => o.correct);
+
+  /// Aynı soru, ses yolları [map] ile dönüştürülmüş (ör. sezon öneki).
+  ClipQuiz mapAudio(String Function(String path) map) => ClipQuiz(
+    promptTr: promptTr,
+    options: options,
+    explainTr: explainTr,
+    promptAudio: promptAudio == null ? null : map(promptAudio!),
+    explainAudio: explainAudio == null ? null : map(explainAudio!),
+  );
+}
+
+/// `practice.audioTr.<key>.audio` / `quiz.audioTr.<key>.audio` (H-109):
+/// alıştırmanın Türkçe sesi, paket içi yol. Eski paket ya da bozuk alan →
+/// null (düğme görünmez).
+String? practiceTrAudio(Map<String, dynamic> practice, String key) {
+  final at = practice['audioTr'];
+  if (at is! Map) return null;
+  final e = at[key];
+  if (e is! Map) return null;
+  final a = e['audio'];
+  return a is String && a.isNotEmpty ? a : null;
 }
 
 class FeedClip {
@@ -108,6 +140,8 @@ class FeedClip {
           : ClipQuiz(
               promptTr: q['promptTr'] as String,
               explainTr: q['explainTr'] as String?,
+              promptAudio: practiceTrAudio(q, 'prompt'),
+              explainAudio: practiceTrAudio(q, 'explain'),
               options: [
                 for (final o in (q['options'] as List))
                   ClipQuizOption(

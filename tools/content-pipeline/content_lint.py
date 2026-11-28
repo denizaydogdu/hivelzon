@@ -154,6 +154,10 @@ def main(argv: list[str] | None = None) -> int:
             print(f"   çeviri [{t['status']}]: {t['cuesTranslated']}/{t['cues']} altyazı satırı, "
                   f"{t['wordsGlossed']}/{t['wordsNeedingGloss']} kelime anlamlı (özel adlar hariç; toplam {t['words']}), "
                   f"{t['chunks']} kalıp")
+            ta = t.get("audio") or {}
+            if ta.get("segments"):
+                print(f"   çeviri sesi (H-109 Faz 3): {ta['aligned']}/{ta['segments']} hizalı ({ta['audio']} ses), "
+                      f"{ta['chars']} karakter" + (f", {ta['stale']} eskimiş" if ta.get("stale") else ""))
         for i in r.errors + r.warnings:
             print(f"   - {i}")
     if chain:

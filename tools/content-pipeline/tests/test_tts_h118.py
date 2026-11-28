@@ -141,3 +141,125 @@ def test_voice_map_rejects_bad_pronunciations(tmp_path):
     doc["pronunciations"] = [{"term": "Lina", "say_as": "Lina"}]
     p.write_text(json.dumps(doc), encoding="utf-8")
     assert VoiceMap.load(tmp_path).pronunciations == doc["pronunciations"]
+
+
+# --- Codex review findings (2026-11-27) -------------------------------------------------------------
+
+def test_export_book_with_no_book_dirs_fails(tmp_path, capsys):
+    import export_book
+    assert export_book.main([str(tmp_path / "missing"), str(tmp_path / "_hidden")]) == 1
+    assert "bulunamadı" in capsys.readouterr().err
+
+
+@pytest.mark.parametrize("reel, timeline", [
+    ({"video": "../escape.mp4", "poster": "p.webp"}, [{"shot": "s1"}]),
+    ({"video": "/tmp/x.mp4", "poster": "p.webp"}, [{"shot": "s1"}]),
+    ({"video": "v.mp4", "poster": "sub/p.webp"}, [{"shot": "s1"}]),
+    ({"video": "v.mp4", "poster": "p.webp", "cues": [{"id": "../a"}]}, [{"shot": "s1"}]),
+    ({"video": "v.mp4", "poster": "p.webp"}, [{"shot": "../s1"}]),
+    ({"poster": "p.webp"}, [{"shot": "s1"}]),
+])
+def test_build_reel_rejects_unsafe_names(tmp_path, reel, timeline, capsys):
+    import build_reel
+    root = tmp_path / "A1-R-X-01"
+    root.mkdir()
+    (root / "reel.json").write_text(json.dumps(reel), encoding="utf-8")
+    (root / "shots.json").write_text(json.dumps({"timeline": timeline}), encoding="utf-8")
+    assert build_reel.main([str(root)]) == 2
+    assert "güvenli değil" in capsys.readouterr().err
+    assert not (tmp_path / "escape.mp4").exists()
+
+
+def test_build_reel_accepts_safe_names():
+    import build_reel
+    reel = {"video": "A1-R-CIN-01.mp4", "poster": "A1-R-CIN-01.webp", "cues": [{"id": "s01-01"}]}
+    assert build_reel._unsafe_names(reel, [{"shot": "s1"}, {"shot": "k_2"}]) == []
+
+
+@pytest.mark.parametrize("seg", [{"shot": "s1", "audio": "../../x"}, {"shot": "s1", "clip": "../x.mp4"},
+                                 {"shot": "s1", "clip": "/tmp/x.mp4"}, {"shot": "s1", "clip": "clips/a/b.mp4"},
+                                 {"shot": "s1", "clip": "x.mp4"}])
+def test_build_reel_rejects_unsafe_timeline_paths(seg):
+    import build_reel
+    assert build_reel._unsafe_names({"video": "v.mp4", "poster": "p.webp"}, [seg])
+
+
+def test_build_reel_accepts_real_timeline_paths():
+    import build_reel
+    seg = {"shot": "k3", "audio": "s01-02", "clip": "clips/cin-k3.mp4"}
+    assert build_reel._unsafe_names({"video": "v.mp4", "poster": "p.webp"}, [seg]) == []
+
+
+@pytest.mark.parametrize("reel", [{"target": {"cue": "../../x-1"}}, {"id": "../x"}, {"target": {"cue": "a/b-1"}}])
+def test_build_reel_rejects_unsafe_scene_names(reel):
+    import build_reel
+    assert build_reel._unsafe_names({"video": "v.mp4", "poster": "p.webp", **reel}, [{"shot": "s1"}])
+
+
+def test_build_reel_rejects_symlinked_clip_outside(tmp_path, capsys):
+    import build_reel
+    outside = tmp_path / "secret.mp4"
+    outside.write_bytes(b"x")
+    root = tmp_path / "A1-R-X-01"
+    (root / "clips").mkdir(parents=True)
+    (root / "clips" / "k1.mp4").symlink_to(outside)
+    (root / "reel.json").write_text(json.dumps({"video": "v.mp4", "poster": "p.webp"}), encoding="utf-8")
+    (root / "shots.json").write_text(json.dumps({"timeline": [{"shot": "s1", "len": 1, "clip": "clips/k1.mp4"}]}),
+                                     encoding="utf-8")
+    assert build_reel.main([str(root)]) == 2
+    assert "clips/ dizini dışına" in capsys.readouterr().err
+
+
+def test_build_reel_rejects_symlinked_clips_dir(tmp_path, capsys):
+    import build_reel
+    ext = tmp_path / "ext"
+    ext.mkdir()
+    (ext / "k1.mp4").write_bytes(b"x")
+    root = tmp_path / "A1-R-X-01"
+    root.mkdir()
+    (root / "clips").symlink_to(ext)
+    (root / "reel.json").write_text(json.dumps({"video": "v.mp4", "poster": "p.webp"}), encoding="utf-8")
+    (root / "shots.json").write_text(json.dumps({"timeline": [{"shot": "s1", "len": 1, "clip": "clips/k1.mp4"}]}),
+                                     encoding="utf-8")
+    assert build_reel.main([str(root)]) == 2
+    assert "clips/ dizini dışına" in capsys.readouterr().err
+
+
+def test_ffmpeg_inputs_force_mp3_demuxer():
+    # ffmpeg sometimes probes short mp3 files as VVC video (2026-11-27)
+    from hvpipeline import media
+    assert media._inp("a/b.mp3") == ["-f", "mp3", "-i", "a/b.mp3"]
+    assert media._inp("a/b.MP3")[:2] == ["-f", "mp3"]
+    assert media._inp("a/b.wav") == ["-i", "a/b.wav"]
+    assert media._probe_fmt("x.mp3") == ["-f", "mp3"] and media._probe_fmt("x.m4a") == []
+
+
+@pytest.mark.parametrize("target", ["s01-01", ["x"], 3])
+def test_build_reel_rejects_non_object_target(target):
+    import build_reel
+    assert build_reel._unsafe_names({"video": "v.mp4", "poster": "p.webp", "target": target}, [{"shot": "s1"}])
+
+
+@pytest.mark.parametrize("text, spoken", [
+    ("(Hatalı sıra: Yedi cuma.)", "Hatalı sıra: Yedi cuma."),
+    ("(Hatalı) Geç kaldım, beni üzgün.", "Hatalı: Geç kaldım, beni üzgün."),
+    ("(Hatalı: O (erkek) beyaz saçlı.)", "Hatalı: O (erkek) beyaz saçlı."),
+    ("O [erkek] uzun boylu.", "O (erkek) uzun boylu."),
+    ("İstasyon nerede? (eksik cümle)", "İstasyon nerede? (eksik cümle)"),
+    ("Bak!", "Bak!"),
+])
+def test_spoken_text_opens_leading_parenthesis(text, spoken):
+    # Alania treats a leading parenthetical as an instruction (2026-11-28)
+    assert tts_tr.spoken_text(text) == spoken
+    assert tts_tr.tts_payload(tts_tr.Segment("x", text, None))["input"] == spoken
+
+
+def test_segment_with_nothing_to_speak_is_rejected():
+    with pytest.raises(tts_tr.TrTtsError, match="okunacak metin yok"):
+        tts_tr.check_segments([tts_tr.Segment("x", "( )", None)])
+
+
+@pytest.mark.parametrize("text", ["(Hatalı sıra: Yedi cuma.", "((x)) y"])
+def test_unopenable_leading_parenthesis_is_rejected(text):
+    with pytest.raises(tts_tr.TrTtsError, match="parantezle başlıyor"):
+        tts_tr.check_segments([tts_tr.Segment("x", text, None)])

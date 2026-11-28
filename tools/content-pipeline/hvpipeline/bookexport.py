@@ -230,6 +230,33 @@ def export_book(book_dir: Path, media=None, clean: bool = True) -> BookExport:
                  "aligned": sum(1 for x in tr_pages if x.state in ("ok", "no-audio")),
                  "stale": sum(1 for x in tr_pages if x.state == "stale")}
 
+    # 3c) Kitap sonu soruların Türkçesi ve tanıtımın sesi (H-109 Faz 2; isteğe bağlı, sayfa sesiyle aynı kural):
+    #     paket book.json → `trAudio` = {"questions": {"q1": {audio, duration}}, "blurb": {audio, duration}}.
+    tr_extra: dict = {}
+    tr_sha: dict[str, str] = {}
+    extra_units = {u.page: u.text for u in booktr.extra_turkish(book)}
+    tr_extra_list = booktr.page_audio(book, parts=("questions", "blurb"))
+    for x in tr_extra_list:
+        if x.state == "ok":
+            rel = f"{booktr.TR_AUDIO_DIR}/{x.page}{AUDIO_EXT}"
+            g = media.target_lufs - media.loudness([x.audio])["I"]
+            media.audio(x.audio, g, pkg / rel)
+            entry = {"audio": rel, "duration": round(media.duration(pkg / rel), 3)}
+            if x.page == booktr.BLURB_ID:
+                tr_extra["blurb"] = entry
+            else:
+                tr_extra.setdefault("questions", {})[x.page] = entry
+            tr_sha[x.page] = text_sha256(extra_units[x.page])
+        elif x.state in ("no-audio", "stale"):
+            tr_missing.append({"kind": "tr-audio", "page": x.page, "reason": x.state,
+                               "path": str(x.audio.relative_to(book.dir))})
+    tr_extra_report = {"segments": len(tr_extra_list),
+                       "packaged": sum(1 for x in tr_extra_list if x.state == "ok"),
+                       "aligned": sum(1 for x in tr_extra_list if x.state in ("ok", "no-audio")),
+                       "stale": sum(1 for x in tr_extra_list if x.state == "stale")}
+    if tr_rel:
+        tr_sha.update({pt.page: text_sha256(pt.text) for pt in booktr.page_turkish(book) if pt.page in tr_rel})
+
     # 4) pages.json
     chapters, pages = [], []
     for c in book.text.chapters:
@@ -259,6 +286,8 @@ def export_book(book_dir: Path, media=None, clean: bool = True) -> BookExport:
             "comprehension")   # kitap sonu anlama (H-091): kaynakla aynı biçim
     book_doc = {k: m[k] for k in keep if k in m}
     total = sum(durations.values()) if durations else None
+    if tr_extra:
+        book_doc["trAudio"] = tr_extra
     book_doc.update({
         "cover": cover,
         "wordCount": word_count(book.text.texts()),
@@ -287,7 +316,9 @@ def export_book(book_dir: Path, media=None, clean: bool = True) -> BookExport:
         "pacing": pace_report,
         "missing": missing,
         "trAudio": tr_report,
+        "trExtraAudio": tr_extra_report,
         "trMissing": tr_missing,
+        "trTextSha256": dict(sorted(tr_sha.items())),
         "files": [{"path": str(p.relative_to(pkg)), "bytes": p.stat().st_size, "sha256": file_digest(p)}
                   for p in files],
     }

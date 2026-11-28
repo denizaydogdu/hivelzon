@@ -1,6 +1,10 @@
 """Dilbilgisi dersi ses planı (H-077; docs/DILBILGISI.md §6, §9.3).
 
 - **Türkçe anlatım** (kart başına bir parça, `<kart>-tr`): tts_tr (Alania + Duyu) → `audio/tr/`.
+- **Yanlış cevap açıklaması** (H-109 Faz 1; alıştırma başına bir parça, `<alıştırma>-fb`): aynı ses ve klasör.
+  Yalnız istenirse planlanır (`parts` içinde `feedback`); varsayılan anlatım + İngilizce örnekler (önceki davranış).
+- **Çeviri** (H-109 Faz 3; doğru örneklerin ve "Söyle" alıştırmalarının Türkçesi, `<örnek>-tl`): aynı ses ve klasör;
+  yalnız `parts` içinde `translation` varsa. Sözlük `lesson.json → translationPronunciations`.
   Tavan `HIVELZON_TR_TTS_MONTHLY_CHAR_CAP`, defter `kitaplar/_maliyet/patientdesk-karakter.json`.
 - **İngilizce örnekler** (her `+` örnek ve her "Söyle" alıştırması ayrı parça): ElevenLabs zaman damgalı TTS
   (tts.py ile aynı uç nokta ve ayarlar; ses Sarah) → `audio/en/`. Tavan `HIVELZON_TTS_MONTHLY_CHAR_CAP`,
@@ -111,14 +115,27 @@ class LessonAudioPlan:
     en: EnPlan
 
 
+PARTS = ("narration", "feedback", "examples", "translation")
+DEFAULT_PARTS = ("narration", "examples")
+
+
 def plan_lesson(lesson: Lesson, langs: tuple[str, ...] = ("tr", "en"), cards: list[str] | None = None,
-                force: bool = False) -> LessonAudioPlan:
+                force: bool = False, parts: tuple[str, ...] = DEFAULT_PARTS) -> LessonAudioPlan:
     if lesson.text.errors:
         raise tts.TtsError("lesson.md işaretleri hatalı: " + "; ".join(lesson.text.errors[:3]))
+    bad = [p for p in parts if p not in PARTS]
+    if bad:
+        raise tts.TtsError(f"bilinmeyen bölüm: {', '.join(bad)} ({', '.join(PARTS)})")
     keep = (lambda cid: cid in cards) if cards else (lambda cid: True)
     trv, env = lesson.tr_voice(), lesson.en_voice()
-    tr_segs = [s for s in lesson.tr_segments() if keep(s.id[:-3])] if "tr" in langs else []
-    en_segs = [s for s in lesson.en_segments() if keep(s.card)] if "en" in langs else []
+    tr_segs = []
+    if "tr" in langs and "narration" in parts:
+        tr_segs += [s for s in lesson.tr_segments() if keep(s.id[:-3])]
+    if "tr" in langs and "feedback" in parts:
+        tr_segs += [s for s in lesson.feedback_segments() if keep(s.id.split("-", 1)[0])]
+    if "tr" in langs and "translation" in parts:
+        tr_segs += [s for s in lesson.translation_segments() if keep(s.id.split("-", 1)[0])]
+    en_segs = [s for s in lesson.en_segments() if keep(s.card)] if "en" in langs and "examples" in parts else []
     tr_plan = tts_tr.plan_segments(tr_segs, lesson.dir / AUDIO_DIR / TR_DIR, trv["voice"], trv["model"], force)
     en_plan = plan_en(en_segs, lesson.dir / AUDIO_DIR / EN_DIR, env["voiceId"], env["modelId"], env["speed"], force)
     return LessonAudioPlan(lesson, tr_plan, en_plan)
@@ -223,6 +240,20 @@ def audio_manifest(lesson: Lesson) -> dict:
     """Kart → ses parçaları. Var olan dosyalara bakar; ağ çağrısı yapmaz."""
     trv, env = lesson.tr_voice(), lesson.en_voice()
     tr_by_card = {s.id[:-3]: s for s in lesson.tr_segments()}
+    fb_by_card: dict[str, list] = {}
+    try:
+        fb_segs = lesson.feedback_segments()
+    except tts_tr.TrTtsError:     # bozuk açıklama sözlüğü varsayılan çalıştırmayı durdurmaz (lint hata verir)
+        fb_segs = []
+    for s in fb_segs:
+        fb_by_card.setdefault(s.id.split("-", 1)[0], []).append(s)
+    tl_by_card: dict[str, list] = {}
+    try:
+        tl_segs = lesson.translation_segments()
+    except tts_tr.TrTtsError:     # bozuk çeviri sözlüğü varsayılan çalıştırmayı durdurmaz (lint hata verir)
+        tl_segs = []
+    for s in tl_segs:
+        tl_by_card.setdefault(s.id.split("-", 1)[0], []).append(s)
     en_by_card: dict[str, list[EnSegment]] = {}
     for s in lesson.en_segments():
         en_by_card.setdefault(s.card, []).append(s)
@@ -235,6 +266,10 @@ def audio_manifest(lesson: Lesson) -> dict:
             items.append(("tr", "narration", s.id, s.text, *lesson.tr_paths(s.id)))
         for s in en_by_card.get(c.id, []):
             items.append(("en", s.role, s.id, s.text, *lesson.en_paths(s.id)))
+        for s in fb_by_card.get(c.id, []):
+            items.append(("tr", "feedback", s.id, s.text, *lesson.tr_paths(s.id)))
+        for s in tl_by_card.get(c.id, []):
+            items.append(("tr", "translation", s.id, s.text, *lesson.tr_paths(s.id)))
         for lang, role, sid, text, mp3, aj in items:
             sha = text_sha256(text)
             entry = {"id": sid, "lang": lang, "role": role, "text": text, "textSha256": sha, "chars": len(text),
