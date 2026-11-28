@@ -1,6 +1,6 @@
 # H-116: Duyu (Türkçe ses hizalaması) için aylık bütçe tavanı
 
-- **Durum:** ❌ İptal (kullanıcı kararı 2026-11-28: "tavan filan yok, unut"). Mevcut karakter tavanı kuralı araçta duruyor; her ücretli koşuya o işin karakteri kadar tek seferlik tavan verilir.
+- **Durum:** ❌ İptal (kullanıcı kararı 2026-11-28: "tavan filan yok, unut"); iptal kaydı olarak `bitenler/`e taşındı. Mevcut karakter tavanı kuralı araçta duruyor; her ücretli koşuya o işin karakteri kadar tek seferlik tavan verilir.
 - **Tür:** Araç kuralı (`tools/content-pipeline`) — ücretli harcama
 - **Öncelik:** Orta (Duyu ücretsiz kota ≈ 985 saat bitince ya da toplu yeniden hizalamada önemli)
 - **Bağımlılık:** H-114 (Duyu çağrıları artık her istekte deftere yazılıyor, kilit altında)

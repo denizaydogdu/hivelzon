@@ -73,7 +73,9 @@ Komutlar (P=`tools/content-pipeline/.venv/bin/python`):
 `$P tools/content-pipeline/tts_reel_tr.py reeller/*-R-* --offline` ·
 `$P tools/content-pipeline/tts_book_tr.py kitaplar/*-K* --part questions --part blurb --offline`.
 
-### Karar bekleyen bulgular
+### Karar bekleyen bulgular (2026-11-28: çözüldü)
+> Çözüm: 69 derse `feedbackPronunciations` söyleniş sözlüğü yazıldı ve açıklamalar sözlükle üretildi; tanıtım sesleri
+> kullanıcının "her yere yap" kararıyla üretildi ve pakette (`Book.blurbTrAudio`), ekranda yeri hâlâ yok (ayrı küçük karar).
 - **Açıklamalarda İngilizce kelime:** 285 açıklamanın 221'inde İngilizce kelime var (ör. "Ben (I) için am gelir.";
   en sık: to, have, the, is, will, was, be, are). Alania bunları Türkçe okur. Üretimden önce
   `feedbackPronunciations` sözlüğü yazılmalı (lint `feedback-english` ders başına listeler; 67 ders) ya da kabul edilmeli.
@@ -158,7 +160,7 @@ Komutlar (P=`tools/content-pipeline/.venv/bin/python`):
 Üretimden sonra paket: `export_grammar.py`, `tts_episode_tr.py icerik/A1-0* --part translation --package` (ya da
 `export_package.py`), `tts_reel_tr.py reeller/*-R-* --package`.
 
-### Karar bekleyen (Faz 3)
+### Karar bekleyen (Faz 3) — 2026-11-28: çözüldü (onaylandı, H-116 iptal, üretildi)
 - Maliyet onayı (≈ 33 TL, 37.946 karakter) ve H-116 tavanı.
 - ~~Faz 3b: Konuş çevirileri ve konu seti örnek Türkçesi yapılsın mı?~~ **Karar 2026-11-27: Türkçe gösterilen her
   yerde Türkçe ses** → Faz 3b (aşağıda; Keşfet bölüm kliplerinin alıştırması da dahil).
@@ -230,7 +232,7 @@ Komut (P=`tools/content-pipeline/.venv/bin/python`):
 akışının gösterdiği `QuizCard`'a eklendi, akıştan geçen test eklendi); 1 küçük bulgu belgelendi (aynı metin bir
 birimde iki yerdeyse ses kimliği ilk yerden).
 
-### Karar bekleyen (Faz 3b)
+### Karar bekleyen (Faz 3b) — 2026-11-28: çözüldü (onaylandı, üretildi)
 - Maliyet onayı (≈ 2,66 TL, 3.063 karakter) ve H-116 tavanı.
 - Klip sorularındaki İngilizce ifadeler Alania ile söyleniş sözlüğünden okunur (Konuş H-104'teki kip a gibi); kulakla
   kontrol önerilir. İstenirse Türkçe seçenekler soru sesinden çıkarılabilir (reel kuralından ayrılır; −586 karakter).
@@ -261,3 +263,16 @@ birimde iki yerdeyse ses kimliği ilk yerden).
   (`build_reel` yol/sembolik bağ denetimi, `export_book` boş klasör, hata mesajları) düzeltildi.
 - **Kulakla dinlenecekler:** İngilizce kelimeli açıklamalar ("However" → "Hauevır", "Although" → "Oldou", "arguably"),
   hizalama uyarılı parçalar (lint listesi), "(Hatalı) …" satırları, A1-007 "O (erkek)".
+- **Commitler (push edildi):** `80f8492` (kod: araçlar, mobil düğmeler, testler, güvenli reel/ffmpeg girdileri) ve
+  `a1ecec2` (içerik: hizalamalar, söyleniş sözlükleri, belgeler). CI **`46129256249`** yeşil (içerik, backend, mobil).
+  Ses dosyaları git dışı (`.mp3`/`.m4a`); `align.json`, `lesson-audio.json`, PROMPTS kayıtları depoda.
+
+## Kabul için kalan (2026-11-28)
+1. **Simülatörde deneme** (kullanıcının açık izniyle): dilbilgisi yanlış cevap açıklaması ve örnek Türkçesi "dinle",
+   bölüm anlam paneli çeviri sesi, Keşfet reel alıştırması/altyazı Türkçesi ve bölüm klipleri, kitap sonu soruları,
+   Konuş replik/örnek cevap çevirileri, konu seti kartları. Kontrol: yalnız dokununca çalar, ses yoksa düğme yok,
+   İngilizceyle üst üste çalmaz, sessiz mod korunur, cevabı önceden açmaz.
+2. **Kulakla kontrol** (kullanıcı): yukarıdaki "Kulakla dinlenecekler".
+3. İkisi tamamsa dosya `bitenler/`e, `IS-SIRASI.md` güncellenir. Düzeltme gerekirse yalnız ilgili parça yeniden üretilir
+   (≈ 0,87 TL/1.000 karakter, maliyet gösterilip onay alınır).
+

@@ -1,6 +1,6 @@
 # hiVelzon — Proje Rehberi
 
-> **2026-11-28 durum:** **H-109** Türkçe sesler üretildi ve paketlendi (dilbilgisi açıklama + örnek çevirileri, kitap soruları/tanıtımları, bölüm çevirileri, Keşfet alıştırma/altyazı, Konuş/konu seti/klip; 66.462 karakter ≈ 58 TL); simülatör + kulak kontrolü bekliyor. **H-116 iptal** (kullanıcı). Alania baştaki parantezi yönerge sayar → `tts_tr.spoken_text()`.
+> **2026-11-28 durum:** **H-109** Türkçe sesler üretildi ve paketlendi (dilbilgisi açıklama + örnek çevirileri, kitap soruları/tanıtımları, bölüm çevirileri, Keşfet alıştırma/altyazı, Konuş/konu seti/klip; 66.462 karakter ≈ 58 TL); simülatör + kulak kontrolü bekliyor. **H-116 iptal** (kullanıcı; `bitenler/`). Alania baştaki parantezi yönerge sayar → `tts_tr.spoken_text()`; ffmpeg kısa mp3'ü video sanabilir → `media._inp` `-f mp3`. Commitler `80f8492` + `a1ecec2`, CI **`46129256249`** yeşil; pytest 685, mobil 1556. Sıradaki: H-109 kabulü (simülatör izinle + kulak), **H-120** (2026-12-26 sonrası, "devam" ile), sonra eski sıra (H-043/H-068 → kullanıcı denemesi → editör → H-044 → H-092). Sıradaki boş numara **H-121**. Güncel devir: `docs/HANDOFF-2026-11-28.md`.
 
 > **2026-11-27 durum:** ElevenLabs **Creator** (131.000 kredi/ay; anahtar yalnız `~/.config/hivelzon/elevenlabs.env`, sohbete yapıştırıldığı için kullanıcı yenilemeli) ile dilbilgisi İngilizce örnekleri **71/71**, sesli kitap **20/30** (A1–B2); A1-K01 "the fourth floor" düzeltildi; **H-119** bitti (kesik ama ücretlenen yanıtlar deftere, `eleven_v3` parçaları 1500). Hepsi `main`'de (`0dce295`), CI **`45964721594` yeşil**. Bu dönem kalan **2.859 kredi** (yenilenme 2026-12-26). **H-120:** C1/C2 kitap sesleri (512.187 karakter ≈ 225.000 kredi, ≈ 0,44 kredi/karakter) — Aralık dönemi C1, Ocak dönemi C2, kullanıcı "devam" deyince. Eachlabs ortak bakiye 13,84 USD, Higgsfield 0,37. Kıraathane ElevenLabs hesabını yalnız bu dönemin kalan kredisiyle kullanabilir (H-120 notu). **H-118** bitti (hizalama ≈ 3,6× hızlı ve birebir aynı, parça denetimi, `speech_to_text` 7.5.0; flutter_tts built-in Kotlin/SPM sürümü bekleniyor). Sıradaki boş numara **H-121**. Güncel devir: `docs/HANDOFF-2026-11-27.md`.
 
@@ -168,7 +168,7 @@ cd mobile && fvm flutter run -d "hiVelzon iPhone 17"   # içerik adresi: --dart-
 | `docs/EDITOR-INCELEME-PAKETI.md` | Öğretmen/editör incelemesi için tek giriş ve föy (bölümler, Konuş, kitaplar, dilbilgisi, reeller; açık bulgular §7) |
 | `docs/EACHLABS-NOTLARI.md` | Görsel/video yedek sağlayıcı Eachlabs: ortak bakiye kuralları, API, modeller ve fiyatlar (2026-11-26) |
 | `docs/TTS-MALIYET-2026-10-30.md` | Eksik İngilizce sesler için ElevenLabs plan/maliyet seçenekleri (öneri Creator; karar kullanıcıda) |
-| `docs/HANDOFF-2026-11-27.md` | Güncel oturum devri (önceki `docs/HANDOFF-2026-11-25.md`; eski devirler tarihseldir) |
+| `docs/HANDOFF-2026-11-28.md` | Güncel oturum devri (önceki `docs/HANDOFF-2026-11-27.md`; eski devirler tarihseldir) |
 | `yapilacaklar/IS-SIRASI.md` | Güncel durum ve sıra |
 
 - Şartnamedeki etiketler: **[KARAR]** onaysız değişmez. **[ARAŞTIRMA]** rakiplerin kamuya açık iddiasıdır ve doğrulanmadan ürün kararı sayılmaz. **[ÖNERİ]** plan onayında karara bağlanır.

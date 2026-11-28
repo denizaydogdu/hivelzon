@@ -1,5 +1,7 @@
 # Öğretmen / editör inceleme paketi
 
+> **2026-11-28 güncellemesi (H-109):** Türkçe gösterilen her yer artık Alania ile sesli: dilbilgisi yanlış cevap açıklamaları ve örnek Türkçeleri, bölüm anlam paneli çevirileri, kitap sonu soruları ve tanıtımlar, Keşfet alıştırma ve altyazıları, Konuş replik/örnek cevap çevirileri, konu seti örnekleri ve klip alıştırmaları (2.062 parça, `a1ecec2`). Ekrandaki metin değişmedi. Editör bir Türkçe metni düzeltirse o parçanın sesi yeniden üretilir (ücretli, ≈ 0,87 TL/1.000 karakter); açıklamalardaki İngilizce kelimeler söyleniş sözlüğüyle okunur (`devam-edenler/H-109-turkce-ses-faz-1-2.md`).
+
 > **2026-11-27 güncellemesi:** İngilizce sesler ElevenLabs Creator ile ilerledi: dilbilgisi örnekleri **71/71**, sesli kitap **20/30** (A1–B2); A1-K01 "the fourth floor" düzeltmesi yapıldı (§7/2). Kalan yalnız C1/C2 kitap sesleri (**H-120**, kullanıcı "devam" deyince). Lint: kitap 30 kitap 0 hata/157 uyarı, dilbilgisi 71 ders 0 hata/7 uyarı (`0dce295`, CI `45964721594` yeşil).
 
 > **2026-11-20 güncellemesi (H-107):** B5–B12 İngilizce ses hesabı/planı ve Higgsfield Terms of Use §4.4 (resmî 2026-10-23 sürümü) bölüm hak dosyalarına işlendi (`ce0bfb7`, `6e885b9`). Bu kayıtlar editör onayı yerine geçmez; bölüm `content.json` durumları DRAFT/PENDING olarak kalır. Dört lint 0 hata; bölüm 30, kitap 205, dilbilgisi 606, reel 6 uyarı. Aşağıdaki 2026-10/11 sayımlarının tarihi tarihsel ölçümdür.

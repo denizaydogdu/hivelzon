@@ -2,6 +2,8 @@
 
 **Sürüm:** 0.2 · **Tarih:** 2026-10-11 (durum güncellemesi 2026-11-27) · **Durum:** Onaylandı (2026-10-11); uygulama sürüyor.
 
+**2026-11-28 notu:** H-109 Türkçe sesler üretildi ve paketlendi (2.062 parça, 66.462 karakter ≈ 58 TL; `80f8492` + `a1ecec2`, CI `46129256249` yeşil); simülatör + kulak kontrolü bekliyor. H-116 iptal. Açık: H-120 (Aralık C1, Ocak C2). Sıradaki boş numara H-121.
+
 **2026-11-27 notu:** İngilizce sesler ElevenLabs Creator ile: dilbilgisi örnekleri 71/71, sesli kitap 20/30 (A1–B2), A1-K01 "the fourth floor" düzeltildi; H-119 (kesik yanıt ücreti deftere) bitti. `main` `0dce295`, CI `45964721594` yeşil. Açık: **H-120** C1/C2 kitap sesleri (Aralık C1, Ocak C2; kullanıcı "devam" deyince), H-116, H-118, H-109. Sıradaki boş numara H-121; güncel izleme `yapilacaklar/IS-SIRASI.md`.
 
 **2026-11-25 notu:** Bakım turu bitti (`main`, CI `45685003221` yeşil): H-110…H-115 ve H-117. Mobil artık Flutter 3.50.1 (FVM, `fvm flutter …`), drift 2.35.4/sqlite3 3.9.2, material_ui + go_router 18; iOS en düşük 15.0. Açık: H-116 (Duyu tavanı, karar), H-118 (küçük). Sıradaki boş numara H-119; güncel izleme `yapilacaklar/IS-SIRASI.md`.
