@@ -61,9 +61,8 @@ $P tools/content-pipeline/tts_book.py kitaplar/C1-K* --monthly-char-cap <N> --ex
   `eleven_v3` parçaları en fazla 1500 karakter. **Aynı parçada kesik tekrar ederse dur**, körlemesine yeniden deneme
   (her deneme ücretlenir); önce nedeni ele al.
 - Önceden seslendirilmiş bölümler `textSha256` ile atlanır, yeniden ödeme yok; yarıda kalan koşu kaldığı yerden sürer.
-- **Anahtar** yalnız `~/.config/hivelzon/elevenlabs.env` (izin 600); repoya, belgelere, günlüğe yazılmaz. Mevcut anahtar
-  sohbete yapıştırıldığı için **kullanıcı anahtarı yenilemeli** ve yenisini yalnız bu dosyaya yazmalı (C1'den önce
-  yapılırsa en iyisi).
+- **Anahtar** yalnız `~/.config/hivelzon/elevenlabs.env` (izin 600); repoya, belgelere, günlüğe yazılmaz. Mevcut anahtarla
+  devam edilir (kullanıcı kararı 2026-11-28: yenileme hatırlatması yapılmaz).
 - H-087 odağı A1–A2'dir; C1/C2 yardımcı kitaplıktır. Başlatıp başlatmama ve zamanlama kararı kullanıcıdadır.
 
 ## Kabul ölçütleri

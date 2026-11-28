@@ -1,8 +1,9 @@
 {
   "contentId": "A1-006",
-  "status": "DRAFT",
+  "status": "APPROVED",
   "author": "Claude taslak",
   "date": "2026-10-14",
+  "approvedBy": "kullanıcı (2026-11-28, \"onay herşey ok olsun\")",
   "pronunciations": [
     { "term": "Alex", "say_as": "Aleks" },
     { "term": "Lumen Point", "say_as": "Lumın Poynt" },
